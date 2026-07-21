@@ -106,25 +106,117 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
+  "ResourceLimitExceededException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ServiceFailureException extends S.TaggedErrorClass<ServiceFailureException>()(
+  "ServiceFailureException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ThrottledClientException extends S.TaggedErrorClass<ThrottledClientException>()(
+  "ThrottledClientException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedClientException extends S.TaggedErrorClass<UnauthorizedClientException>()(
+  "UnauthorizedClientException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
+  "UnprocessableEntityException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(422),
+).pipe(C.withBadRequestError) {}
 export type E164PhoneNumber = string | redacted.Redacted<string>;
-export type NonEmptyString = string;
-export type CallingName = string | redacted.Redacted<string>;
-export type SensitiveString = string | redacted.Redacted<string>;
-export type AccountName = string;
-export type Iso8601Timestamp = Date;
-export type GuidString = string;
-export type JoinTokenString = string | redacted.Redacted<string>;
-export type ClientRequestToken = string | redacted.Redacted<string>;
-export type EmailAddress = string | redacted.Redacted<string>;
-export type Alpha2CountryCode = string;
-export type RetentionDays = number;
-export type ProfileServiceMaxResults = number;
-export type ResultMax = number;
-export type TollFreePrefix = string;
-export type PhoneNumberMaxResults = number;
-
-//# Schemas
 export interface AssociatePhoneNumberWithUserRequest {
   AccountId: string;
   UserId: string;
@@ -157,24 +249,7 @@ export const AssociatePhoneNumberWithUserResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociatePhoneNumberWithUserResponse",
 }) as any as S.Schema<AssociatePhoneNumberWithUserResponse>;
-export type ErrorCode =
-  | "BadRequest"
-  | "Conflict"
-  | "Forbidden"
-  | "NotFound"
-  | "PreconditionFailed"
-  | "ResourceLimitExceeded"
-  | "ServiceFailure"
-  | "AccessDenied"
-  | "ServiceUnavailable"
-  | "Throttled"
-  | "Throttling"
-  | "Unauthorized"
-  | "Unprocessable"
-  | "VoiceConnectorGroupAssociationsExist"
-  | "PhoneNumberAssociationsExist"
-  | (string & {});
-export const ErrorCode = /*@__PURE__*/ S.String;
+export type NonEmptyString = string;
 export interface SigninDelegateGroup {
   GroupName?: string;
 }
@@ -218,6 +293,7 @@ export const AssociateSigninDelegateGroupsWithAccountResponse =
   }) as any as S.Schema<AssociateSigninDelegateGroupsWithAccountResponse>;
 export type RoomMembershipRole = "Administrator" | "Member" | (string & {});
 export const RoomMembershipRole = /*@__PURE__*/ S.String;
+
 export interface MembershipItem {
   MemberId?: string;
   Role?: RoomMembershipRole;
@@ -256,6 +332,25 @@ export const BatchCreateRoomMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchCreateRoomMembershipRequest",
 }) as any as S.Schema<BatchCreateRoomMembershipRequest>;
+export type ErrorCode =
+  | "BadRequest"
+  | "Conflict"
+  | "Forbidden"
+  | "NotFound"
+  | "PreconditionFailed"
+  | "ResourceLimitExceeded"
+  | "ServiceFailure"
+  | "AccessDenied"
+  | "ServiceUnavailable"
+  | "Throttled"
+  | "Throttling"
+  | "Unauthorized"
+  | "Unprocessable"
+  | "VoiceConnectorGroupAssociationsExist"
+  | "PhoneNumberAssociationsExist"
+  | (string & {});
+export const ErrorCode = /*@__PURE__*/ S.String;
+
 export interface MemberError {
   MemberId?: string;
   ErrorCode?: ErrorCode;
@@ -407,6 +502,8 @@ export type PhoneNumberProductType =
   | "SipMediaApplicationDialIn"
   | (string & {});
 export const PhoneNumberProductType = /*@__PURE__*/ S.String;
+
+export type CallingName = string | redacted.Redacted<string>;
 export interface UpdatePhoneNumberRequestItem {
   PhoneNumberId: string;
   ProductType?: PhoneNumberProductType;
@@ -454,8 +551,11 @@ export const BatchUpdatePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchUpdatePhoneNumberResponse>;
 export type License = "Basic" | "Plus" | "Pro" | "ProTrial" | (string & {});
 export const License = /*@__PURE__*/ S.String;
+
 export type UserType = "PrivateUser" | "SharedDevice" | (string & {});
 export const UserType = /*@__PURE__*/ S.String;
+
+export type SensitiveString = string | redacted.Redacted<string>;
 export interface AlexaForBusinessMetadata {
   IsAlexaForBusinessEnabled?: boolean;
   AlexaForBusinessRoomArn?: string | redacted.Redacted<string>;
@@ -517,6 +617,7 @@ export const BatchUpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchUpdateUserResponse",
 }) as any as S.Schema<BatchUpdateUserResponse>;
+export type AccountName = string;
 export interface CreateAccountRequest {
   Name: string;
 }
@@ -541,10 +642,13 @@ export type AccountType =
   | "EnterpriseOIDC"
   | (string & {});
 export const AccountType = /*@__PURE__*/ S.String;
+
+export type Iso8601Timestamp = Date;
 export type LicenseList = License[];
 export const LicenseList = /*@__PURE__*/ S.Array(License);
 export type AccountStatus = "Suspended" | "Active" | (string & {});
 export const AccountStatus = /*@__PURE__*/ S.String;
+
 export interface Account {
   AwsAccountId: string;
   AccountId: string;
@@ -604,6 +708,7 @@ export const CreateBotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBotRequest>;
 export type BotType = "ChatBot" | (string & {});
 export const BotType = /*@__PURE__*/ S.String;
+
 export interface Bot {
   BotId?: string;
   UserId?: string;
@@ -640,6 +745,8 @@ export const CreateBotResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBotResponse",
 }) as any as S.Schema<CreateBotResponse>;
+export type GuidString = string;
+export type JoinTokenString = string | redacted.Redacted<string>;
 export interface CreateMeetingDialOutRequest {
   MeetingId: string;
   FromPhoneNumber: string | redacted.Redacted<string>;
@@ -703,12 +810,14 @@ export type PhoneNumberOrderStatus =
   | "Partial"
   | (string & {});
 export const PhoneNumberOrderStatus = /*@__PURE__*/ S.String;
+
 export type OrderedPhoneNumberStatus =
   | "Processing"
   | "Acquired"
   | "Failed"
   | (string & {});
 export const OrderedPhoneNumberStatus = /*@__PURE__*/ S.String;
+
 export interface OrderedPhoneNumber {
   E164PhoneNumber?: string | redacted.Redacted<string>;
   Status?: OrderedPhoneNumberStatus;
@@ -755,6 +864,7 @@ export const CreatePhoneNumberOrderResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePhoneNumberOrderResponse",
 }) as any as S.Schema<CreatePhoneNumberOrderResponse>;
+export type ClientRequestToken = string | redacted.Redacted<string>;
 export interface CreateRoomRequest {
   AccountId: string;
   Name: string | redacted.Redacted<string>;
@@ -838,6 +948,7 @@ export const CreateRoomMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRoomMembershipRequest>;
 export type MemberType = "User" | "Bot" | "Webhook" | (string & {});
 export const MemberType = /*@__PURE__*/ S.String;
+
 export interface Member {
   MemberId?: string;
   MemberType?: MemberType;
@@ -880,6 +991,7 @@ export const CreateRoomMembershipResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRoomMembershipResponse",
 }) as any as S.Schema<CreateRoomMembershipResponse>;
+export type EmailAddress = string | redacted.Redacted<string>;
 export interface CreateUserRequest {
   AccountId: string;
   Username?: string;
@@ -914,8 +1026,10 @@ export type RegistrationStatus =
   | "Suspended"
   | (string & {});
 export const RegistrationStatus = /*@__PURE__*/ S.String;
+
 export type InviteStatus = "Pending" | "Accepted" | "Failed" | (string & {});
 export const InviteStatus = /*@__PURE__*/ S.String;
+
 export interface User {
   UserId: string;
   AccountId?: string;
@@ -1349,8 +1463,10 @@ export const GetPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPhoneNumberRequest",
 }) as any as S.Schema<GetPhoneNumberRequest>;
+export type Alpha2CountryCode = string;
 export type PhoneNumberType = "Local" | "TollFree" | (string & {});
 export const PhoneNumberType = /*@__PURE__*/ S.String;
+
 export type PhoneNumberStatus =
   | "AcquireInProgress"
   | "AcquireFailed"
@@ -1362,6 +1478,7 @@ export type PhoneNumberStatus =
   | "DeleteFailed"
   | (string & {});
 export const PhoneNumberStatus = /*@__PURE__*/ S.String;
+
 export interface PhoneNumberCapabilities {
   InboundCall?: boolean;
   OutboundCall?: boolean;
@@ -1390,6 +1507,7 @@ export type PhoneNumberAssociationName =
   | "SipRuleId"
   | (string & {});
 export const PhoneNumberAssociationName = /*@__PURE__*/ S.String;
+
 export interface PhoneNumberAssociation {
   Value?: string;
   Name?: PhoneNumberAssociationName;
@@ -1417,6 +1535,7 @@ export type CallingNameStatus =
   | "UpdateFailed"
   | (string & {});
 export const CallingNameStatus = /*@__PURE__*/ S.String;
+
 export interface PhoneNumber {
   PhoneNumberId?: string;
   E164PhoneNumber?: string | redacted.Redacted<string>;
@@ -1542,6 +1661,7 @@ export const GetRetentionSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRetentionSettingsRequest",
 }) as any as S.Schema<GetRetentionSettingsRequest>;
+export type RetentionDays = number;
 export interface RoomRetentionSettings {
   RetentionDays?: number;
 }
@@ -1720,6 +1840,7 @@ export const InviteUsersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InviteUsersRequest>;
 export type EmailStatus = "NotSent" | "Sent" | "Failed" | (string & {});
 export const EmailStatus = /*@__PURE__*/ S.String;
+
 export interface Invite {
   InviteId?: string;
   Status?: InviteStatus;
@@ -1744,6 +1865,7 @@ export const InviteUsersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InviteUsersResponse",
 }) as any as S.Schema<InviteUsersResponse>;
+export type ProfileServiceMaxResults = number;
 export interface ListAccountsRequest {
   Name?: string;
   UserEmail?: string | redacted.Redacted<string>;
@@ -1783,6 +1905,7 @@ export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAccountsResponse",
 }) as any as S.Schema<ListAccountsResponse>;
+export type ResultMax = number;
 export interface ListBotsRequest {
   AccountId: string;
   MaxResults?: number;
@@ -2321,6 +2444,8 @@ export const RestorePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RestorePhoneNumberResponse",
 }) as any as S.Schema<RestorePhoneNumberResponse>;
+export type TollFreePrefix = string;
+export type PhoneNumberMaxResults = number;
 export interface SearchAvailablePhoneNumbersRequest {
   AreaCode?: string;
   City?: string;
@@ -2672,65 +2797,6 @@ export const UpdateUserSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateUserSettingsResponse",
 }) as any as S.Schema<UpdateUserSettingsResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceFailureException extends S.TaggedErrorClass<ServiceFailureException>()(
-  "ServiceFailureException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ThrottledClientException extends S.TaggedErrorClass<ThrottledClientException>()(
-  "ThrottledClientException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedClientException extends S.TaggedErrorClass<UnauthorizedClientException>()(
-  "UnauthorizedClientException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
-  "ResourceLimitExceededException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
-  "UnprocessableEntityException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(422),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type AssociatePhoneNumberWithUserError =
   | AccessDeniedException
   | BadRequestException
@@ -2766,6 +2832,7 @@ export const associatePhoneNumberWithUser: API.OperationMethod<
   retry: Retry,
   operationName: "AssociatePhoneNumberWithUser",
 }));
+
 export type AssociateSigninDelegateGroupsWithAccountError =
   | BadRequestException
   | ForbiddenException
@@ -2799,6 +2866,7 @@ export const associateSigninDelegateGroupsWithAccount: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateSigninDelegateGroupsWithAccount",
 }));
+
 export type BatchCreateRoomMembershipError =
   | BadRequestException
   | ForbiddenException
@@ -2833,6 +2901,7 @@ export const batchCreateRoomMembership: API.OperationMethod<
   retry: Retry,
   operationName: "BatchCreateRoomMembership",
 }));
+
 export type BatchDeletePhoneNumberError =
   | BadRequestException
   | ForbiddenException
@@ -2870,6 +2939,7 @@ export const batchDeletePhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeletePhoneNumber",
 }));
+
 export type BatchSuspendUserError =
   | BadRequestException
   | ForbiddenException
@@ -2917,6 +2987,7 @@ export const batchSuspendUser: API.OperationMethod<
   retry: Retry,
   operationName: "BatchSuspendUser",
 }));
+
 export type BatchUnsuspendUserError =
   | BadRequestException
   | ForbiddenException
@@ -2959,6 +3030,7 @@ export const batchUnsuspendUser: API.OperationMethod<
   retry: Retry,
   operationName: "BatchUnsuspendUser",
 }));
+
 export type BatchUpdatePhoneNumberError =
   | BadRequestException
   | ForbiddenException
@@ -2996,6 +3068,7 @@ export const batchUpdatePhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "BatchUpdatePhoneNumber",
 }));
+
 export type BatchUpdateUserError =
   | BadRequestException
   | ForbiddenException
@@ -3029,6 +3102,7 @@ export const batchUpdateUser: API.OperationMethod<
   retry: Retry,
   operationName: "BatchUpdateUser",
 }));
+
 export type CreateAccountError =
   | BadRequestException
   | ForbiddenException
@@ -3065,6 +3139,7 @@ export const createAccount: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAccount",
 }));
+
 export type CreateBotError =
   | BadRequestException
   | ForbiddenException
@@ -3100,6 +3175,7 @@ export const createBot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBot",
 }));
+
 export type CreateMeetingDialOutError =
   | AccessDeniedException
   | BadRequestException
@@ -3141,6 +3217,7 @@ export const createMeetingDialOut: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMeetingDialOut",
 }));
+
 export type CreatePhoneNumberOrderError =
   | AccessDeniedException
   | BadRequestException
@@ -3177,6 +3254,7 @@ export const createPhoneNumberOrder: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePhoneNumberOrder",
 }));
+
 export type CreateRoomError =
   | BadRequestException
   | ForbiddenException
@@ -3212,6 +3290,7 @@ export const createRoom: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRoom",
 }));
+
 export type CreateRoomMembershipError =
   | BadRequestException
   | ConflictException
@@ -3249,6 +3328,7 @@ export const createRoomMembership: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRoomMembership",
 }));
+
 export type CreateUserError =
   | BadRequestException
   | ConflictException
@@ -3284,6 +3364,7 @@ export const createUser: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUser",
 }));
+
 export type DeleteAccountError =
   | BadRequestException
   | ForbiddenException
@@ -3332,6 +3413,7 @@ export const deleteAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccount",
 }));
+
 export type DeleteEventsConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -3363,6 +3445,7 @@ export const deleteEventsConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEventsConfiguration",
 }));
+
 export type DeletePhoneNumberError =
   | BadRequestException
   | ForbiddenException
@@ -3402,6 +3485,7 @@ export const deletePhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePhoneNumber",
 }));
+
 export type DeleteRoomError =
   | BadRequestException
   | ForbiddenException
@@ -3435,6 +3519,7 @@ export const deleteRoom: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRoom",
 }));
+
 export type DeleteRoomMembershipError =
   | BadRequestException
   | ForbiddenException
@@ -3468,6 +3553,7 @@ export const deleteRoomMembership: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRoomMembership",
 }));
+
 export type DisassociatePhoneNumberFromUserError =
   | BadRequestException
   | ForbiddenException
@@ -3501,6 +3587,7 @@ export const disassociatePhoneNumberFromUser: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociatePhoneNumberFromUser",
 }));
+
 export type DisassociateSigninDelegateGroupsFromAccountError =
   | BadRequestException
   | ForbiddenException
@@ -3534,6 +3621,7 @@ export const disassociateSigninDelegateGroupsFromAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateSigninDelegateGroupsFromAccount",
 }));
+
 export type GetAccountError =
   | BadRequestException
   | ForbiddenException
@@ -3568,6 +3656,7 @@ export const getAccount: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccount",
 }));
+
 export type GetAccountSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -3603,6 +3692,7 @@ export const getAccountSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountSettings",
 }));
+
 export type GetBotError =
   | BadRequestException
   | ForbiddenException
@@ -3636,6 +3726,7 @@ export const getBot: API.OperationMethod<
   retry: Retry,
   operationName: "GetBot",
 }));
+
 export type GetEventsConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -3669,6 +3760,7 @@ export const getEventsConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetEventsConfiguration",
 }));
+
 export type GetGlobalSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -3701,6 +3793,7 @@ export const getGlobalSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetGlobalSettings",
 }));
+
 export type GetPhoneNumberError =
   | BadRequestException
   | ForbiddenException
@@ -3734,6 +3827,7 @@ export const getPhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "GetPhoneNumber",
 }));
+
 export type GetPhoneNumberOrderError =
   | BadRequestException
   | ForbiddenException
@@ -3768,6 +3862,7 @@ export const getPhoneNumberOrder: API.OperationMethod<
   retry: Retry,
   operationName: "GetPhoneNumberOrder",
 }));
+
 export type GetPhoneNumberSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -3799,6 +3894,7 @@ export const getPhoneNumberSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetPhoneNumberSettings",
 }));
+
 export type GetRetentionSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -3833,6 +3929,7 @@ export const getRetentionSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetRetentionSettings",
 }));
+
 export type GetRoomError =
   | BadRequestException
   | ForbiddenException
@@ -3866,6 +3963,7 @@ export const getRoom: API.OperationMethod<
   retry: Retry,
   operationName: "GetRoom",
 }));
+
 export type GetUserError =
   | BadRequestException
   | ForbiddenException
@@ -3902,6 +4000,7 @@ export const getUser: API.OperationMethod<
   retry: Retry,
   operationName: "GetUser",
 }));
+
 export type GetUserSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -3935,6 +4034,7 @@ export const getUserSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetUserSettings",
 }));
+
 export type InviteUsersError =
   | BadRequestException
   | ForbiddenException
@@ -3970,6 +4070,7 @@ export const inviteUsers: API.OperationMethod<
   retry: Retry,
   operationName: "InviteUsers",
 }));
+
 export type ListAccountsError =
   | BadRequestException
   | ForbiddenException
@@ -4025,6 +4126,7 @@ export const listAccounts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListBotsError =
   | BadRequestException
   | ForbiddenException
@@ -4078,6 +4180,7 @@ export const listBots: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPhoneNumberOrdersError =
   | BadRequestException
   | ForbiddenException
@@ -4129,6 +4232,7 @@ export const listPhoneNumberOrders: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPhoneNumbersError =
   | BadRequestException
   | ForbiddenException
@@ -4182,6 +4286,7 @@ export const listPhoneNumbers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRoomMembershipsError =
   | BadRequestException
   | ForbiddenException
@@ -4236,6 +4341,7 @@ export const listRoomMemberships: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRoomsError =
   | BadRequestException
   | ForbiddenException
@@ -4289,6 +4395,7 @@ export const listRooms: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSupportedPhoneNumberCountriesError =
   | AccessDeniedException
   | BadRequestException
@@ -4322,6 +4429,7 @@ export const listSupportedPhoneNumberCountries: API.OperationMethod<
   retry: Retry,
   operationName: "ListSupportedPhoneNumberCountries",
 }));
+
 export type ListUsersError =
   | BadRequestException
   | ForbiddenException
@@ -4376,6 +4484,7 @@ export const listUsers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type LogoutUserError =
   | BadRequestException
   | ForbiddenException
@@ -4409,6 +4518,7 @@ export const logoutUser: API.OperationMethod<
   retry: Retry,
   operationName: "LogoutUser",
 }));
+
 export type PutEventsConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -4444,6 +4554,7 @@ export const putEventsConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutEventsConfiguration",
 }));
+
 export type PutRetentionSettingsError =
   | BadRequestException
   | ConflictException
@@ -4489,6 +4600,7 @@ export const putRetentionSettings: API.OperationMethod<
   retry: Retry,
   operationName: "PutRetentionSettings",
 }));
+
 export type RedactConversationMessageError =
   | BadRequestException
   | ForbiddenException
@@ -4522,6 +4634,7 @@ export const redactConversationMessage: API.OperationMethod<
   retry: Retry,
   operationName: "RedactConversationMessage",
 }));
+
 export type RedactRoomMessageError =
   | BadRequestException
   | ForbiddenException
@@ -4555,6 +4668,7 @@ export const redactRoomMessage: API.OperationMethod<
   retry: Retry,
   operationName: "RedactRoomMessage",
 }));
+
 export type RegenerateSecurityTokenError =
   | BadRequestException
   | ForbiddenException
@@ -4588,6 +4702,7 @@ export const regenerateSecurityToken: API.OperationMethod<
   retry: Retry,
   operationName: "RegenerateSecurityToken",
 }));
+
 export type ResetPersonalPINError =
   | BadRequestException
   | ForbiddenException
@@ -4622,6 +4737,7 @@ export const resetPersonalPIN: API.OperationMethod<
   retry: Retry,
   operationName: "ResetPersonalPIN",
 }));
+
 export type RestorePhoneNumberError =
   | BadRequestException
   | ForbiddenException
@@ -4658,6 +4774,7 @@ export const restorePhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "RestorePhoneNumber",
 }));
+
 export type SearchAvailablePhoneNumbersError =
   | AccessDeniedException
   | BadRequestException
@@ -4715,6 +4832,7 @@ export const searchAvailablePhoneNumbers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type UpdateAccountError =
   | BadRequestException
   | ForbiddenException
@@ -4748,6 +4866,7 @@ export const updateAccount: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAccount",
 }));
+
 export type UpdateAccountSettingsError =
   | BadRequestException
   | ConflictException
@@ -4787,6 +4906,7 @@ export const updateAccountSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAccountSettings",
 }));
+
 export type UpdateBotError =
   | BadRequestException
   | ForbiddenException
@@ -4820,6 +4940,7 @@ export const updateBot: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBot",
 }));
+
 export type UpdateGlobalSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -4851,6 +4972,7 @@ export const updateGlobalSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGlobalSettings",
 }));
+
 export type UpdatePhoneNumberError =
   | BadRequestException
   | ConflictException
@@ -4890,6 +5012,7 @@ export const updatePhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePhoneNumber",
 }));
+
 export type UpdatePhoneNumberSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -4923,6 +5046,7 @@ export const updatePhoneNumberSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePhoneNumberSettings",
 }));
+
 export type UpdateRoomError =
   | BadRequestException
   | ForbiddenException
@@ -4956,6 +5080,7 @@ export const updateRoom: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRoom",
 }));
+
 export type UpdateRoomMembershipError =
   | BadRequestException
   | ForbiddenException
@@ -4992,6 +5117,7 @@ export const updateRoomMembership: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRoomMembership",
 }));
+
 export type UpdateUserError =
   | BadRequestException
   | ForbiddenException
@@ -5025,6 +5151,7 @@ export const updateUser: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateUser",
 }));
+
 export type UpdateUserSettingsError =
   | BadRequestException
   | ForbiddenException

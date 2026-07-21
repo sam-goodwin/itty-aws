@@ -83,31 +83,20 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class CloudHsmInternalException extends S.TaggedErrorClass<CloudHsmInternalException>()(
+  "CloudHsmInternalException",
+  { message: S.optional(S.String), retryable: S.optional(S.Boolean) },
+) {}
+export class CloudHsmServiceException extends S.TaggedErrorClass<CloudHsmServiceException>()(
+  "CloudHsmServiceException",
+  { message: S.optional(S.String), retryable: S.optional(S.Boolean) },
+) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { message: S.optional(S.String), retryable: S.optional(S.Boolean) },
+) {}
 export type TagKey = string;
 export type TagValue = string;
-export type Label = string;
-export type HapgArn = string;
-export type SubnetId = string;
-export type SshKey = string;
-export type IpAddress = string;
-export type IamRoleArn = string;
-export type ExternalId = string;
-export type ClientToken = string;
-export type HsmArn = string;
-export type ClientLabel = string;
-export type Certificate = string;
-export type ClientArn = string;
-export type PartitionSerial = string;
-export type HsmSerialNumber = string;
-export type AZ = string;
-export type EniId = string;
-export type VpcId = string;
-export type PartitionArn = string;
-export type CertificateFingerprint = string;
-export type PaginationToken = string;
-
-//# Schemas
 export interface Tag {
   Key: string;
   Value: string;
@@ -136,6 +125,7 @@ export const AddTagsToResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddTagsToResourceResponse",
 }) as any as S.Schema<AddTagsToResourceResponse>;
+export type Label = string;
 export interface CreateHapgRequest {
   Label: string;
 }
@@ -146,6 +136,7 @@ export const CreateHapgRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHapgRequest",
 }) as any as S.Schema<CreateHapgRequest>;
+export type HapgArn = string;
 export interface CreateHapgResponse {
   HapgArn?: string;
 }
@@ -154,8 +145,15 @@ export const CreateHapgResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHapgResponse",
 }) as any as S.Schema<CreateHapgResponse>;
+export type SubnetId = string;
+export type SshKey = string;
+export type IpAddress = string;
+export type IamRoleArn = string;
+export type ExternalId = string;
 export type SubscriptionType = "PRODUCTION" | (string & {});
 export const SubscriptionType = /*@__PURE__*/ S.String;
+
+export type ClientToken = string;
 export interface CreateHsmRequest {
   SubnetId: string;
   SshKey: string;
@@ -190,6 +188,7 @@ export const CreateHsmRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHsmRequest",
 }) as any as S.Schema<CreateHsmRequest>;
+export type HsmArn = string;
 export interface CreateHsmResponse {
   HsmArn?: string;
 }
@@ -198,6 +197,8 @@ export const CreateHsmResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHsmResponse",
 }) as any as S.Schema<CreateHsmResponse>;
+export type ClientLabel = string;
+export type Certificate = string;
 export interface CreateLunaClientRequest {
   Label?: string;
   Certificate: string;
@@ -209,6 +210,7 @@ export const CreateLunaClientRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLunaClientRequest",
 }) as any as S.Schema<CreateLunaClientRequest>;
+export type ClientArn = string;
 export interface CreateLunaClientResponse {
   ClientArn?: string;
 }
@@ -291,6 +293,7 @@ export const DescribeHapgRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeHapgRequest>;
 export type HsmList = string[];
 export const HsmList = /*@__PURE__*/ S.Array(S.String);
+export type PartitionSerial = string;
 export type PartitionSerialList = string[];
 export const PartitionSerialList = /*@__PURE__*/ S.Array(S.String);
 export type CloudHsmObjectState =
@@ -299,6 +302,7 @@ export type CloudHsmObjectState =
   | "DEGRADED"
   | (string & {});
 export const CloudHsmObjectState = /*@__PURE__*/ S.String;
+
 export interface DescribeHapgResponse {
   HapgArn?: string;
   HapgSerial?: string;
@@ -325,6 +329,7 @@ export const DescribeHapgResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeHapgResponse",
 }) as any as S.Schema<DescribeHapgResponse>;
+export type HsmSerialNumber = string;
 export interface DescribeHsmRequest {
   HsmArn?: string;
   HsmSerialNumber?: string;
@@ -349,6 +354,11 @@ export type HsmStatus =
   | "DEGRADED"
   | (string & {});
 export const HsmStatus = /*@__PURE__*/ S.String;
+
+export type AZ = string;
+export type EniId = string;
+export type VpcId = string;
+export type PartitionArn = string;
 export type PartitionList = string[];
 export const PartitionList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeHsmResponse {
@@ -401,6 +411,7 @@ export const DescribeHsmResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeHsmResponse",
 }) as any as S.Schema<DescribeHsmResponse>;
+export type CertificateFingerprint = string;
 export interface DescribeLunaClientRequest {
   ClientArn?: string;
   CertificateFingerprint?: string;
@@ -435,6 +446,7 @@ export const DescribeLunaClientResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeLunaClientResponse>;
 export type ClientVersion = "5.1" | "5.3" | (string & {});
 export const ClientVersion = /*@__PURE__*/ S.String;
+
 export type HapgList = string[];
 export const HapgList = /*@__PURE__*/ S.Array(S.String);
 export interface GetConfigRequest {
@@ -485,6 +497,7 @@ export const ListAvailableZonesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAvailableZonesResponse",
 }) as any as S.Schema<ListAvailableZonesResponse>;
+export type PaginationToken = string;
 export interface ListHapgsRequest {
   NextToken?: string;
 }
@@ -664,22 +677,6 @@ export const RemoveTagsFromResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RemoveTagsFromResourceResponse",
 }) as any as S.Schema<RemoveTagsFromResourceResponse>;
-
-//# Errors
-export class CloudHsmInternalException extends S.TaggedErrorClass<CloudHsmInternalException>()(
-  "CloudHsmInternalException",
-  { message: S.optional(S.String), retryable: S.optional(S.Boolean) },
-) {}
-export class CloudHsmServiceException extends S.TaggedErrorClass<CloudHsmServiceException>()(
-  "CloudHsmServiceException",
-  { message: S.optional(S.String), retryable: S.optional(S.Boolean) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String), retryable: S.optional(S.Boolean) },
-) {}
-
-//# Operations
 export type AddTagsToResourceError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -719,6 +716,7 @@ export const addTagsToResource: API.OperationMethod<
   retry: Retry,
   operationName: "AddTagsToResource",
 }));
+
 export type CreateHapgError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -756,6 +754,7 @@ export const createHapg: API.OperationMethod<
   retry: Retry,
   operationName: "CreateHapg",
 }));
+
 export type CreateHsmError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -801,6 +800,7 @@ export const createHsm: API.OperationMethod<
   retry: Retry,
   operationName: "CreateHsm",
 }));
+
 export type CreateLunaClientError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -837,6 +837,7 @@ export const createLunaClient: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLunaClient",
 }));
+
 export type DeleteHapgError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -873,6 +874,7 @@ export const deleteHapg: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteHapg",
 }));
+
 export type DeleteHsmError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -910,6 +912,7 @@ export const deleteHsm: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteHsm",
 }));
+
 export type DeleteLunaClientError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -946,6 +949,7 @@ export const deleteLunaClient: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLunaClient",
 }));
+
 export type DescribeHapgError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -982,6 +986,7 @@ export const describeHapg: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeHapg",
 }));
+
 export type DescribeHsmError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -1019,6 +1024,7 @@ export const describeHsm: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeHsm",
 }));
+
 export type DescribeLunaClientError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -1055,6 +1061,7 @@ export const describeLunaClient: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLunaClient",
 }));
+
 export type GetConfigError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -1092,6 +1099,7 @@ export const getConfig: API.OperationMethod<
   retry: Retry,
   operationName: "GetConfig",
 }));
+
 export type ListAvailableZonesError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -1128,6 +1136,7 @@ export const listAvailableZones: API.OperationMethod<
   retry: Retry,
   operationName: "ListAvailableZones",
 }));
+
 export type ListHapgsError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -1169,6 +1178,7 @@ export const listHapgs: API.OperationMethod<
   retry: Retry,
   operationName: "ListHapgs",
 }));
+
 export type ListHsmsError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -1211,6 +1221,7 @@ export const listHsms: API.OperationMethod<
   retry: Retry,
   operationName: "ListHsms",
 }));
+
 export type ListLunaClientsError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -1252,6 +1263,7 @@ export const listLunaClients: API.OperationMethod<
   retry: Retry,
   operationName: "ListLunaClients",
 }));
+
 export type ListTagsForResourceError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -1288,6 +1300,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ModifyHapgError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -1324,6 +1337,7 @@ export const modifyHapg: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyHapg",
 }));
+
 export type ModifyHsmError =
   | CloudHsmInternalException
   | CloudHsmServiceException
@@ -1365,6 +1379,7 @@ export const modifyHsm: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyHsm",
 }));
+
 export type ModifyLunaClientError = CloudHsmServiceException | CommonErrors;
 /**
  * This is documentation for **AWS CloudHSM Classic**. For
@@ -1396,6 +1411,7 @@ export const modifyLunaClient: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyLunaClient",
 }));
+
 export type RemoveTagsFromResourceError =
   | CloudHsmInternalException
   | CloudHsmServiceException

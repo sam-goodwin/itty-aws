@@ -140,33 +140,21 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidPaginationToken extends S.TaggedErrorClass<InvalidPaginationToken>()(
+  "InvalidPaginationToken",
+  { message: S.optional(S.String) },
+) {}
+export class UnsupportedLocale extends S.TaggedErrorClass<UnsupportedLocale>()(
+  "UnsupportedLocale",
+  { message: S.optional(S.String) },
+) {}
 export type EventArn = string;
 export type NextToken = string;
 export type MaxResults = number;
-export type AccountId = string;
-export type EntityArn = string;
-export type EntityValue = string;
-export type TagKey = string;
-export type TagValue = string;
-export type Locale = string;
-export type MaxResultsLowerRange = number;
-export type EntityUrl = string;
-export type EntityMetadataKey = string;
-export type EntityMetadataValue = string;
-export type Count = number;
-export type EventType2 = string;
-export type Service = string;
-export type Region = string;
-export type AvailabilityZone = string;
-export type AggregateValue = string;
-export type EventTypeCode = string;
-export type EventDescription2 = string;
-export type MetadataKey = string;
-export type MetadataValue = string;
-export type HealthServiceAccessStatusForOrganization = string;
-
-//# Schemas
 export interface DescribeAffectedAccountsForOrganizationRequest {
   eventArn: string;
   nextToken?: string;
@@ -184,6 +172,7 @@ export const DescribeAffectedAccountsForOrganizationRequest =
   ).annotate({
     identifier: "DescribeAffectedAccountsForOrganizationRequest",
   }) as any as S.Schema<DescribeAffectedAccountsForOrganizationRequest>;
+export type AccountId = string;
 export type AffectedAccountsList = string[];
 export const AffectedAccountsList = /*@__PURE__*/ S.Array(S.String);
 export type EventScopeCode =
@@ -192,6 +181,7 @@ export type EventScopeCode =
   | "NONE"
   | (string & {});
 export const EventScopeCode = /*@__PURE__*/ S.String;
+
 export interface DescribeAffectedAccountsForOrganizationResponse {
   affectedAccounts?: string[];
   eventScopeCode?: EventScopeCode;
@@ -209,8 +199,10 @@ export const DescribeAffectedAccountsForOrganizationResponse =
   }) as any as S.Schema<DescribeAffectedAccountsForOrganizationResponse>;
 export type EventArnList = string[];
 export const EventArnList = /*@__PURE__*/ S.Array(S.String);
+export type EntityArn = string;
 export type EntityArnList = string[];
 export const EntityArnList = /*@__PURE__*/ S.Array(S.String);
+export type EntityValue = string;
 export type EntityValueList = string[];
 export const EntityValueList = /*@__PURE__*/ S.Array(S.String);
 export interface DateTimeRange {
@@ -225,6 +217,8 @@ export const DateTimeRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DateTimeRange" }) as any as S.Schema<DateTimeRange>;
 export type DateTimeRangeList = DateTimeRange[];
 export const DateTimeRangeList = /*@__PURE__*/ S.Array(DateTimeRange);
+export type TagKey = string;
+export type TagValue = string;
 export type TagSet = { [key: string]: string | undefined };
 export const TagSet = /*@__PURE__*/ S.Record(
   S.String,
@@ -240,6 +234,7 @@ export type EntityStatusCode =
   | "RESOLVED"
   | (string & {});
 export const EntityStatusCode = /*@__PURE__*/ S.String;
+
 export type EntityStatusCodeList = EntityStatusCode[];
 export const EntityStatusCodeList = /*@__PURE__*/ S.Array(EntityStatusCode);
 export interface EntityFilter {
@@ -260,6 +255,8 @@ export const EntityFilter = /*@__PURE__*/ S.suspend(() =>
     statusCodes: S.optional(EntityStatusCodeList),
   }),
 ).annotate({ identifier: "EntityFilter" }) as any as S.Schema<EntityFilter>;
+export type Locale = string;
+export type MaxResultsLowerRange = number;
 export interface DescribeAffectedEntitiesRequest {
   filter: EntityFilter;
   locale?: string;
@@ -278,6 +275,9 @@ export const DescribeAffectedEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAffectedEntitiesRequest",
 }) as any as S.Schema<DescribeAffectedEntitiesRequest>;
+export type EntityUrl = string;
+export type EntityMetadataKey = string;
+export type EntityMetadataValue = string;
 export type EntityMetadata = { [key: string]: string | undefined };
 export const EntityMetadata = /*@__PURE__*/ S.Record(
   S.String,
@@ -423,6 +423,7 @@ export const DescribeEntityAggregatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEntityAggregatesRequest",
 }) as any as S.Schema<DescribeEntityAggregatesRequest>;
+export type Count = number;
 export type EntityStatuses = { [key in EntityStatusCode]?: number };
 export const EntityStatuses = /*@__PURE__*/ S.Record(
   EntityStatusCode,
@@ -528,14 +529,19 @@ export type EventActionability =
   | "INFORMATIONAL"
   | (string & {});
 export const EventActionability = /*@__PURE__*/ S.String;
+
 export type EventActionabilityList = EventActionability[];
 export const EventActionabilityList = /*@__PURE__*/ S.Array(EventActionability);
+export type EventType2 = string;
 export type EventTypeList2 = string[];
 export const EventTypeList2 = /*@__PURE__*/ S.Array(S.String);
+export type Service = string;
 export type ServiceList = string[];
 export const ServiceList = /*@__PURE__*/ S.Array(S.String);
+export type Region = string;
 export type RegionList = string[];
 export const RegionList = /*@__PURE__*/ S.Array(S.String);
+export type AvailabilityZone = string;
 export type AvailabilityZones = string[];
 export const AvailabilityZones = /*@__PURE__*/ S.Array(S.String);
 export type EventTypeCategory =
@@ -545,10 +551,12 @@ export type EventTypeCategory =
   | "investigation"
   | (string & {});
 export const EventTypeCategory = /*@__PURE__*/ S.String;
+
 export type EventTypeCategoryList2 = EventTypeCategory[];
 export const EventTypeCategoryList2 = /*@__PURE__*/ S.Array(EventTypeCategory);
 export type EventStatusCode = "open" | "closed" | "upcoming" | (string & {});
 export const EventStatusCode = /*@__PURE__*/ S.String;
+
 export type EventStatusCodeList = EventStatusCode[];
 export const EventStatusCodeList = /*@__PURE__*/ S.Array(EventStatusCode);
 export type EventPersona =
@@ -557,6 +565,7 @@ export type EventPersona =
   | "BILLING"
   | (string & {});
 export const EventPersona = /*@__PURE__*/ S.String;
+
 export type EventPersonaList = EventPersona[];
 export const EventPersonaList = /*@__PURE__*/ S.Array(EventPersona);
 export interface EventFilter {
@@ -597,6 +606,7 @@ export const EventFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventFilter" }) as any as S.Schema<EventFilter>;
 export type EventAggregateField = "eventTypeCategory" | (string & {});
 export const EventAggregateField = /*@__PURE__*/ S.String;
+
 export interface DescribeEventAggregatesRequest {
   filter?: EventFilter;
   aggregateField: EventAggregateField;
@@ -615,6 +625,7 @@ export const DescribeEventAggregatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEventAggregatesRequest",
 }) as any as S.Schema<DescribeEventAggregatesRequest>;
+export type AggregateValue = string;
 export interface EventAggregate {
   aggregateValue?: string;
   count?: number;
@@ -650,6 +661,7 @@ export const DescribeEventDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEventDetailsRequest",
 }) as any as S.Schema<DescribeEventDetailsRequest>;
+export type EventTypeCode = string;
 export interface Event {
   arn?: string;
   service?: string;
@@ -684,6 +696,7 @@ export const Event = /*@__PURE__*/ S.suspend(() =>
     personas: S.optional(EventPersonaList),
   }),
 ).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
+export type EventDescription2 = string;
 export interface EventDescription {
   latestDescription?: string;
 }
@@ -692,6 +705,8 @@ export const EventDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EventDescription",
 }) as any as S.Schema<EventDescription>;
+export type MetadataKey = string;
+export type MetadataValue = string;
 export type EventMetadata = { [key: string]: string | undefined };
 export const EventMetadata = /*@__PURE__*/ S.Record(
   S.String,
@@ -958,6 +973,7 @@ export type EventTypeActionability =
   | "INFORMATIONAL"
   | (string & {});
 export const EventTypeActionability = /*@__PURE__*/ S.String;
+
 export type EventTypeActionabilityList = EventTypeActionability[];
 export const EventTypeActionabilityList = /*@__PURE__*/ S.Array(
   EventTypeActionability,
@@ -968,6 +984,7 @@ export type EventTypePersona =
   | "BILLING"
   | (string & {});
 export const EventTypePersona = /*@__PURE__*/ S.String;
+
 export type EventTypePersonaList = EventTypePersona[];
 export const EventTypePersonaList = /*@__PURE__*/ S.Array(EventTypePersona);
 export interface EventTypeFilter {
@@ -1045,6 +1062,7 @@ export const DescribeHealthServiceStatusForOrganizationRequest =
   ).annotate({
     identifier: "DescribeHealthServiceStatusForOrganizationRequest",
   }) as any as S.Schema<DescribeHealthServiceStatusForOrganizationRequest>;
+export type HealthServiceAccessStatusForOrganization = string;
 export interface DescribeHealthServiceStatusForOrganizationResponse {
   healthServiceAccessStatusForOrganization?: string;
 }
@@ -1084,22 +1102,6 @@ export const EnableHealthServiceAccessForOrganizationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "EnableHealthServiceAccessForOrganizationResponse",
   }) as any as S.Schema<EnableHealthServiceAccessForOrganizationResponse>;
-
-//# Errors
-export class InvalidPaginationToken extends S.TaggedErrorClass<InvalidPaginationToken>()(
-  "InvalidPaginationToken",
-  { message: S.optional(S.String) },
-) {}
-export class UnsupportedLocale extends S.TaggedErrorClass<UnsupportedLocale>()(
-  "UnsupportedLocale",
-  { message: S.optional(S.String) },
-) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
 export type DescribeAffectedAccountsForOrganizationError =
   | InvalidPaginationToken
   | CommonErrors;
@@ -1148,6 +1150,7 @@ export const describeAffectedAccountsForOrganization: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeAffectedEntitiesError =
   | InvalidPaginationToken
   | UnsupportedLocale
@@ -1200,6 +1203,7 @@ export const describeAffectedEntities: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeAffectedEntitiesForOrganizationError =
   | InvalidPaginationToken
   | UnsupportedLocale
@@ -1255,6 +1259,7 @@ export const describeAffectedEntitiesForOrganization: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeEntityAggregatesError = CommonErrors;
 /**
  * Returns the number of entities that are affected by each of the specified events.
@@ -1272,6 +1277,7 @@ export const describeEntityAggregates: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEntityAggregates",
 }));
+
 export type DescribeEntityAggregatesForOrganizationError = CommonErrors;
 /**
  * Returns a list of entity aggregates for your Organizations that are affected by each of the specified events.
@@ -1289,6 +1295,7 @@ export const describeEntityAggregatesForOrganization: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEntityAggregatesForOrganization",
 }));
+
 export type DescribeEventAggregatesError =
   | InvalidPaginationToken
   | CommonErrors;
@@ -1333,6 +1340,7 @@ export const describeEventAggregates: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeEventDetailsError = UnsupportedLocale | CommonErrors;
 /**
  * Returns detailed information about one or more specified events. Information includes
@@ -1359,6 +1367,7 @@ export const describeEventDetails: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEventDetails",
 }));
+
 export type DescribeEventDetailsForOrganizationError =
   | UnsupportedLocale
   | CommonErrors;
@@ -1405,6 +1414,7 @@ export const describeEventDetailsForOrganization: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEventDetailsForOrganization",
 }));
+
 export type DescribeEventsError =
   | InvalidPaginationToken
   | UnsupportedLocale
@@ -1463,6 +1473,7 @@ export const describeEvents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeEventsForOrganizationError =
   | InvalidPaginationToken
   | UnsupportedLocale
@@ -1526,6 +1537,7 @@ export const describeEventsForOrganization: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeEventTypesError =
   | InvalidPaginationToken
   | UnsupportedLocale
@@ -1573,6 +1585,7 @@ export const describeEventTypes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeHealthServiceStatusForOrganizationError = CommonErrors;
 /**
  * This operation provides status information on enabling or disabling Health to work
@@ -1592,6 +1605,7 @@ export const describeHealthServiceStatusForOrganization: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeHealthServiceStatusForOrganization",
 }));
+
 export type DisableHealthServiceAccessForOrganizationError =
   | ConcurrentModificationException
   | CommonErrors;
@@ -1624,6 +1638,7 @@ export const disableHealthServiceAccessForOrganization: API.OperationMethod<
   retry: Retry,
   operationName: "DisableHealthServiceAccessForOrganization",
 }));
+
 export type EnableHealthServiceAccessForOrganizationError =
   | ConcurrentModificationException
   | CommonErrors;

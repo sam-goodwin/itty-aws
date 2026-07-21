@@ -90,54 +90,32 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String), Type: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { Message: S.optional(S.String), Type: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String), Type: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { Message: S.optional(S.String), Type: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String), Type: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type DetectorId = string;
-export type FindingId = string;
-export type ClientToken = string;
-export type TagKey = string;
-export type TagValue = string;
-export type FilterName = string;
-export type FilterDescription = string;
-export type FilterRank = number;
-export type Match = string;
-export type NotMatch = string;
-export type TriggerPrompt = string;
-export type InvestigationId = string;
-export type Name = string;
-export type Location = string;
-export type AccountId = string;
-export type Email = string | redacted.Redacted<string>;
-export type FindingType = string;
-export type ExpectedBucketOwner = string;
-export type IntegerValueWithMax = number;
-export type NonEmptyString = string;
-export type LongValue = number;
-export type InstanceArn = string;
-export type PositiveLong = number;
-export type MaxResults = number;
-export type SensitiveString = string | redacted.Redacted<string>;
-export type SequenceDescription = string;
-export type ProcessName = string;
-export type ProcessPath = string;
-export type ProcessSha256 = string;
-export type Ec2InstanceUid = string;
-export type ContainerUid = string;
-export type ContainerImageUid = string;
-export type LaunchTemplateVersion = string;
-export type SignalDescription = string;
-export type IndicatorValueString = string;
-export type IndicatorTitle = string;
-export type MaxResults100 = number;
-export type TriggeredBy = string;
-export type RiskDetails = string;
-export type InvestigationErrorDetails = string;
-export type NonNegativeInteger = number;
-export type NextToken = string;
-export type InvestigationTitle = string;
-export type GuardDutyArn = string;
-export type ResourceArn = string;
-
-//# Schemas
 export interface AcceptAdministratorInvitationRequest {
   DetectorId: string;
   AdministratorId?: string;
@@ -209,6 +187,7 @@ export const AcceptInvitationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptInvitationResponse",
 }) as any as S.Schema<AcceptInvitationResponse>;
+export type FindingId = string;
 export type FindingIds = string[];
 export const FindingIds = /*@__PURE__*/ S.Array(S.String);
 export interface ArchiveFindingsRequest {
@@ -243,12 +222,14 @@ export const ArchiveFindingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ArchiveFindingsResponse",
 }) as any as S.Schema<ArchiveFindingsResponse>;
+export type ClientToken = string;
 export type FindingPublishingFrequency =
   | "FIFTEEN_MINUTES"
   | "ONE_HOUR"
   | "SIX_HOURS"
   | (string & {});
 export const FindingPublishingFrequency = /*@__PURE__*/ S.String;
+
 export interface S3LogsConfiguration {
   Enable?: boolean;
 }
@@ -323,6 +304,8 @@ export const DataSourceConfigurations = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataSourceConfigurations",
 }) as any as S.Schema<DataSourceConfigurations>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -338,14 +321,17 @@ export type DetectorFeature =
   | "RUNTIME_MONITORING"
   | (string & {});
 export const DetectorFeature = /*@__PURE__*/ S.String;
+
 export type FeatureStatus = "ENABLED" | "DISABLED" | (string & {});
 export const FeatureStatus = /*@__PURE__*/ S.String;
+
 export type FeatureAdditionalConfiguration =
   | "EKS_ADDON_MANAGEMENT"
   | "ECS_FARGATE_AGENT_MANAGEMENT"
   | "EC2_AGENT_MANAGEMENT"
   | (string & {});
 export const FeatureAdditionalConfiguration = /*@__PURE__*/ S.String;
+
 export interface DetectorAdditionalConfiguration {
   Name?: FeatureAdditionalConfiguration;
   Status?: FeatureStatus;
@@ -429,6 +415,7 @@ export const CreateDetectorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDetectorRequest>;
 export type DataSourceStatus = "ENABLED" | "DISABLED" | (string & {});
 export const DataSourceStatus = /*@__PURE__*/ S.String;
+
 export interface EbsVolumesResult {
   Status?: DataSourceStatus;
   Reason?: string;
@@ -498,8 +485,12 @@ export const CreateDetectorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDetectorResponse",
 }) as any as S.Schema<CreateDetectorResponse>;
+export type FilterName = string;
+export type FilterDescription = string;
 export type FilterAction = "NOOP" | "ARCHIVE" | (string & {});
 export const FilterAction = /*@__PURE__*/ S.String;
+
+export type FilterRank = number;
 export type Eq = string[];
 export const Eq = /*@__PURE__*/ S.Array(S.String);
 export type Neq = string[];
@@ -508,8 +499,10 @@ export type Equals = string[];
 export const Equals = /*@__PURE__*/ S.Array(S.String);
 export type NotEquals = string[];
 export const NotEquals = /*@__PURE__*/ S.Array(S.String);
+export type Match = string;
 export type Matches = string[];
 export const Matches = /*@__PURE__*/ S.Array(S.String);
+export type NotMatch = string;
 export type NotMatches = string[];
 export const NotMatches = /*@__PURE__*/ S.Array(S.String);
 export interface Condition {
@@ -631,6 +624,7 @@ export const CreateFilterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFilterResponse",
 }) as any as S.Schema<CreateFilterResponse>;
+export type TriggerPrompt = string;
 export interface CreateInvestigationRequest {
   DetectorId: string;
   TriggerPrompt?: string;
@@ -661,6 +655,7 @@ export const CreateInvestigationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInvestigationRequest",
 }) as any as S.Schema<CreateInvestigationRequest>;
+export type InvestigationId = string;
 export interface CreateInvestigationResponse {
   InvestigationId: string;
 }
@@ -671,6 +666,7 @@ export const CreateInvestigationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInvestigationResponse",
 }) as any as S.Schema<CreateInvestigationResponse>;
+export type Name = string;
 export type IpSetFormat =
   | "TXT"
   | "STIX"
@@ -680,6 +676,9 @@ export type IpSetFormat =
   | "FIRE_EYE"
   | (string & {});
 export const IpSetFormat = /*@__PURE__*/ S.String;
+
+export type Location = string;
+export type AccountId = string;
 export interface CreateIPSetRequest {
   DetectorId: string;
   Name?: string;
@@ -771,6 +770,7 @@ export type MalwareProtectionPlanTaggingActionStatus =
   | "DISABLED"
   | (string & {});
 export const MalwareProtectionPlanTaggingActionStatus = /*@__PURE__*/ S.String;
+
 export interface MalwareProtectionPlanTaggingAction {
   Status?: MalwareProtectionPlanTaggingActionStatus;
 }
@@ -838,6 +838,7 @@ export const CreateMalwareProtectionPlanResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMalwareProtectionPlanResponse",
 }) as any as S.Schema<CreateMalwareProtectionPlanResponse>;
+export type Email = string | redacted.Redacted<string>;
 export interface AccountDetail {
   AccountId?: string;
   Email?: string | redacted.Redacted<string>;
@@ -902,6 +903,7 @@ export const CreateMembersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMembersResponse>;
 export type DestinationType = "S3" | (string & {});
 export const DestinationType = /*@__PURE__*/ S.String;
+
 export interface DestinationProperties {
   DestinationArn?: string;
   KmsKeyArn?: string;
@@ -965,6 +967,7 @@ export const CreatePublishingDestinationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePublishingDestinationResponse",
 }) as any as S.Schema<CreatePublishingDestinationResponse>;
+export type FindingType = string;
 export type FindingTypes = string[];
 export const FindingTypes = /*@__PURE__*/ S.Array(S.String);
 export interface CreateSampleFindingsRequest {
@@ -1008,6 +1011,8 @@ export type ThreatEntitySetFormat =
   | "FIRE_EYE"
   | (string & {});
 export const ThreatEntitySetFormat = /*@__PURE__*/ S.String;
+
+export type ExpectedBucketOwner = string;
 export interface CreateThreatEntitySetRequest {
   DetectorId: string;
   Name?: string;
@@ -1075,6 +1080,7 @@ export type ThreatIntelSetFormat =
   | "FIRE_EYE"
   | (string & {});
 export const ThreatIntelSetFormat = /*@__PURE__*/ S.String;
+
 export interface CreateThreatIntelSetRequest {
   DetectorId: string;
   Name?: string;
@@ -1142,6 +1148,7 @@ export type TrustedEntitySetFormat =
   | "FIRE_EYE"
   | (string & {});
 export const TrustedEntitySetFormat = /*@__PURE__*/ S.String;
+
 export interface CreateTrustedEntitySetRequest {
   DetectorId: string;
   Name?: string;
@@ -1537,6 +1544,7 @@ export const DeleteTrustedEntitySetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteTrustedEntitySetResponse",
 }) as any as S.Schema<DeleteTrustedEntitySetResponse>;
+export type IntegerValueWithMax = number;
 export type CriterionKey =
   | "EC2_INSTANCE_ARN"
   | "SCAN_ID"
@@ -1547,6 +1555,9 @@ export type CriterionKey =
   | "SCAN_TYPE"
   | (string & {});
 export const CriterionKey = /*@__PURE__*/ S.String;
+
+export type NonEmptyString = string;
+export type LongValue = number;
 export interface FilterCondition {
   EqualsValue?: string;
   GreaterThan?: number;
@@ -1596,6 +1607,7 @@ export const FilterCriteria = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilterCriteria" }) as any as S.Schema<FilterCriteria>;
 export type OrderBy = "ASC" | "DESC" | (string & {});
 export const OrderBy = /*@__PURE__*/ S.String;
+
 export interface SortCriteria {
   AttributeName?: string;
   OrderBy?: OrderBy;
@@ -1649,8 +1661,10 @@ export type ScanStatus =
   | "SKIPPED"
   | (string & {});
 export const ScanStatus = /*@__PURE__*/ S.String;
+
 export type TriggerType = "BACKUP" | "GUARDDUTY" | (string & {});
 export const TriggerType = /*@__PURE__*/ S.String;
+
 export interface TriggerDetails {
   GuardDutyFindingId?: string;
   Description?: string;
@@ -1669,6 +1683,7 @@ export const TriggerDetails = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "TriggerDetails" }) as any as S.Schema<TriggerDetails>;
+export type InstanceArn = string;
 export interface ResourceDetails {
   InstanceArn?: string;
 }
@@ -1681,6 +1696,7 @@ export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceDetails>;
 export type ScanResult = "CLEAN" | "INFECTED" | (string & {});
 export const ScanResult = /*@__PURE__*/ S.String;
+
 export interface ScanResultDetails {
   ScanResult?: ScanResult;
 }
@@ -1691,6 +1707,7 @@ export const ScanResultDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScanResultDetails",
 }) as any as S.Schema<ScanResultDetails>;
+export type PositiveLong = number;
 export interface VolumeDetail {
   VolumeArn?: string;
   VolumeType?: string;
@@ -1725,6 +1742,7 @@ export type VolumeDetails = VolumeDetail[];
 export const VolumeDetails = /*@__PURE__*/ S.Array(VolumeDetail);
 export type ScanType = "GUARDDUTY_INITIATED" | "ON_DEMAND" | (string & {});
 export const ScanType = /*@__PURE__*/ S.String;
+
 export interface Scan {
   DetectorId?: string;
   AdminDetectorId?: string;
@@ -1792,6 +1810,7 @@ export const DescribeMalwareScansResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeMalwareScansResponse",
 }) as any as S.Schema<DescribeMalwareScansResponse>;
+export type MaxResults = number;
 export interface DescribeOrganizationConfigurationRequest {
   DetectorId: string;
   MaxResults?: number;
@@ -1920,14 +1939,17 @@ export type OrgFeature =
   | "RUNTIME_MONITORING"
   | (string & {});
 export const OrgFeature = /*@__PURE__*/ S.String;
+
 export type OrgFeatureStatus = "NEW" | "NONE" | "ALL" | (string & {});
 export const OrgFeatureStatus = /*@__PURE__*/ S.String;
+
 export type OrgFeatureAdditionalConfiguration =
   | "EKS_ADDON_MANAGEMENT"
   | "ECS_FARGATE_AGENT_MANAGEMENT"
   | "EC2_AGENT_MANAGEMENT"
   | (string & {});
 export const OrgFeatureAdditionalConfiguration = /*@__PURE__*/ S.String;
+
 export interface OrganizationAdditionalConfigurationResult {
   Name?: OrgFeatureAdditionalConfiguration;
   AutoEnable?: OrgFeatureStatus;
@@ -1976,6 +1998,7 @@ export const OrganizationFeaturesConfigurationsResults = /*@__PURE__*/ S.Array(
 );
 export type AutoEnableMembers = "NEW" | "ALL" | "NONE" | (string & {});
 export const AutoEnableMembers = /*@__PURE__*/ S.String;
+
 export interface DescribeOrganizationConfigurationResponse {
   AutoEnable?: boolean;
   MemberAccountLimitReached: boolean;
@@ -2045,6 +2068,7 @@ export type PublishingStatus =
   | "STOPPED"
   | (string & {});
 export const PublishingStatus = /*@__PURE__*/ S.String;
+
 export interface DescribePublishingDestinationResponse {
   DestinationId: string;
   DestinationType: DestinationType;
@@ -2281,6 +2305,7 @@ export type CoverageFilterCriterionKey =
   | "CLUSTER_ARN"
   | (string & {});
 export const CoverageFilterCriterionKey = /*@__PURE__*/ S.String;
+
 export interface CoverageFilterCondition {
   Equals?: string[];
   NotEquals?: string[];
@@ -2329,6 +2354,7 @@ export type CoverageStatisticsType =
   | "COUNT_BY_COVERAGE_STATUS"
   | (string & {});
 export const CoverageStatisticsType = /*@__PURE__*/ S.String;
+
 export type CoverageStatisticsTypeList = CoverageStatisticsType[];
 export const CoverageStatisticsTypeList = /*@__PURE__*/ S.Array(
   CoverageStatisticsType,
@@ -2368,6 +2394,7 @@ export const GetCoverageStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCoverageStatisticsRequest>;
 export type ResourceType = "EKS" | "ECS" | "EC2" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export type CountByResourceType = { [key in ResourceType]?: number };
 export const CountByResourceType = /*@__PURE__*/ S.Record(
   ResourceType,
@@ -2375,6 +2402,7 @@ export const CountByResourceType = /*@__PURE__*/ S.Record(
 );
 export type CoverageStatus = "HEALTHY" | "UNHEALTHY" | (string & {});
 export const CoverageStatus = /*@__PURE__*/ S.String;
+
 export type CountByCoverageStatus = { [key in CoverageStatus]?: number };
 export const CountByCoverageStatus = /*@__PURE__*/ S.Record(
   CoverageStatus,
@@ -2426,6 +2454,7 @@ export const GetDetectorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDetectorRequest>;
 export type DetectorStatus = "ENABLED" | "DISABLED" | (string & {});
 export const DetectorStatus = /*@__PURE__*/ S.String;
+
 export interface CloudTrailConfigurationResult {
   Status?: DataSourceStatus;
 }
@@ -2529,6 +2558,7 @@ export type DetectorFeatureResult =
   | "RUNTIME_MONITORING"
   | (string & {});
 export const DetectorFeatureResult = /*@__PURE__*/ S.String;
+
 export interface DetectorAdditionalConfigurationResult {
   Name?: FeatureAdditionalConfiguration;
   Status?: FeatureStatus;
@@ -2955,6 +2985,7 @@ export const IamInstanceProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IamInstanceProfile>;
 export type Ipv6Addresses = string[];
 export const Ipv6Addresses = /*@__PURE__*/ S.Array(S.String);
+export type SensitiveString = string | redacted.Redacted<string>;
 export interface PrivateIpAddressDetails {
   PrivateDnsName?: string;
   PrivateIpAddress?: string | redacted.Redacted<string>;
@@ -4504,6 +4535,7 @@ export const RuntimeDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuntimeDetails" }) as any as S.Schema<RuntimeDetails>;
 export type ProfileType = "FREQUENCY" | (string & {});
 export const ProfileType = /*@__PURE__*/ S.String;
+
 export type ProfileSubtype =
   | "FREQUENT"
   | "INFREQUENT"
@@ -4511,6 +4543,7 @@ export type ProfileSubtype =
   | "RARE"
   | (string & {});
 export const ProfileSubtype = /*@__PURE__*/ S.String;
+
 export type ObservationTexts = string[];
 export const ObservationTexts = /*@__PURE__*/ S.Array(S.String);
 export interface Observations {
@@ -4592,6 +4625,7 @@ export const Anomaly = /*@__PURE__*/ S.suspend(() =>
     Unusual: S.optional(AnomalyUnusual),
   }).pipe(S.encodeKeys({ Profiles: "profiles", Unusual: "unusual" })),
 ).annotate({ identifier: "Anomaly" }) as any as S.Schema<Anomaly>;
+export type SequenceDescription = string;
 export interface Account {
   Uid?: string;
   Name?: string;
@@ -4627,6 +4661,7 @@ export const User = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "User" }) as any as S.Schema<User>;
 export type MfaStatus = "ENABLED" | "DISABLED" | (string & {});
 export const MfaStatus = /*@__PURE__*/ S.String;
+
 export interface Session {
   Uid?: string;
   MfaStatus?: MfaStatus;
@@ -4648,6 +4683,9 @@ export const Session = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "Session" }) as any as S.Schema<Session>;
+export type ProcessName = string;
+export type ProcessPath = string;
+export type ProcessSha256 = string;
 export interface ActorProcess {
   Name?: string;
   Path?: string;
@@ -4702,15 +4740,19 @@ export type FindingResourceType =
   | "EC2_IMAGE"
   | (string & {});
 export const FindingResourceType = /*@__PURE__*/ S.String;
+
 export type PublicAccessStatus = "BLOCKED" | "ALLOWED" | (string & {});
 export const PublicAccessStatus = /*@__PURE__*/ S.String;
+
 export type PublicAclIgnoreBehavior = "IGNORED" | "NOT_IGNORED" | (string & {});
 export const PublicAclIgnoreBehavior = /*@__PURE__*/ S.String;
+
 export type PublicBucketRestrictBehavior =
   | "RESTRICTED"
   | "NOT_RESTRICTED"
   | (string & {});
 export const PublicBucketRestrictBehavior = /*@__PURE__*/ S.String;
+
 export interface PublicAccessConfiguration {
   PublicAclAccess?: PublicAccessStatus;
   PublicPolicyAccess?: PublicAccessStatus;
@@ -4880,6 +4922,8 @@ export type ClusterStatus =
   | "PENDING"
   | (string & {});
 export const ClusterStatus = /*@__PURE__*/ S.String;
+
+export type Ec2InstanceUid = string;
 export type Ec2InstanceUids = string[];
 export const Ec2InstanceUids = /*@__PURE__*/ S.Array(S.String);
 export interface EksCluster {
@@ -4906,6 +4950,7 @@ export const EksCluster = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({ identifier: "EksCluster" }) as any as S.Schema<EksCluster>;
+export type ContainerUid = string;
 export type ContainerUids = string[];
 export const ContainerUids = /*@__PURE__*/ S.Array(S.String);
 export type KubernetesResourcesTypes =
@@ -4919,6 +4964,7 @@ export type KubernetesResourcesTypes =
   | "REPLICATIONCONTROLLERS"
   | (string & {});
 export const KubernetesResourcesTypes = /*@__PURE__*/ S.String;
+
 export interface KubernetesWorkload {
   ContainerUids?: string[];
   Namespace?: string;
@@ -4939,6 +4985,7 @@ export const KubernetesWorkload = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KubernetesWorkload",
 }) as any as S.Schema<KubernetesWorkload>;
+export type ContainerImageUid = string;
 export interface ContainerFindingResource {
   Image?: string;
   ImageUid?: string;
@@ -4959,6 +5006,7 @@ export type EcsClusterStatus =
   | "INACTIVE"
   | (string & {});
 export const EcsClusterStatus = /*@__PURE__*/ S.String;
+
 export interface EcsCluster {
   Status?: EcsClusterStatus;
   Ec2InstanceUids?: string[];
@@ -4973,6 +5021,7 @@ export const EcsCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EcsCluster" }) as any as S.Schema<EcsCluster>;
 export type EcsLaunchType = "FARGATE" | "EC2" | (string & {});
 export const EcsLaunchType = /*@__PURE__*/ S.String;
+
 export interface EcsTask {
   CreatedAt?: Date;
   TaskDefinitionArn?: string;
@@ -5014,6 +5063,7 @@ export const AutoscalingAutoScalingGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutoscalingAutoScalingGroup",
 }) as any as S.Schema<AutoscalingAutoScalingGroup>;
+export type LaunchTemplateVersion = string;
 export interface Ec2LaunchTemplate {
   Ec2InstanceUids?: string[];
   Version?: string;
@@ -5185,6 +5235,7 @@ export const AutonomousSystem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutonomousSystem>;
 export type NetworkDirection = "INBOUND" | "OUTBOUND" | (string & {});
 export const NetworkDirection = /*@__PURE__*/ S.String;
+
 export interface NetworkConnection {
   Direction?: NetworkDirection;
 }
@@ -5239,6 +5290,8 @@ export type SignalType =
   | "RUNTIME_MONITORING"
   | (string & {});
 export const SignalType = /*@__PURE__*/ S.String;
+
+export type SignalDescription = string;
 export type ResourceUids = string[];
 export const ResourceUids = /*@__PURE__*/ S.Array(S.String);
 export type ActorIds = string[];
@@ -5270,8 +5323,11 @@ export type IndicatorType =
   | "SENSITIVE_DATA"
   | (string & {});
 export const IndicatorType = /*@__PURE__*/ S.String;
+
+export type IndicatorValueString = string;
 export type IndicatorValues = string[];
 export const IndicatorValues = /*@__PURE__*/ S.Array(S.String);
+export type IndicatorTitle = string;
 export interface Indicator {
   Key?: IndicatorType;
   Values?: string[];
@@ -5464,8 +5520,10 @@ export type MalwareProtectionScanType =
   | "GUARDDUTY_INITIATED"
   | (string & {});
 export const MalwareProtectionScanType = /*@__PURE__*/ S.String;
+
 export type ScanCategory = "FULL_SCAN" | "INCREMENTAL_SCAN" | (string & {});
 export const ScanCategory = /*@__PURE__*/ S.String;
+
 export interface IncrementalScanDetails {
   BaselineResourceArn?: string;
 }
@@ -5720,6 +5778,7 @@ export const GetFindingsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFindingsResponse>;
 export type FindingStatisticType = "COUNT_BY_SEVERITY" | (string & {});
 export const FindingStatisticType = /*@__PURE__*/ S.String;
+
 export type FindingStatisticTypes = FindingStatisticType[];
 export const FindingStatisticTypes =
   /*@__PURE__*/ S.Array(FindingStatisticType);
@@ -5731,6 +5790,8 @@ export type GroupByType =
   | "SEVERITY"
   | (string & {});
 export const GroupByType = /*@__PURE__*/ S.String;
+
+export type MaxResults100 = number;
 export interface GetFindingsStatisticsRequest {
   DetectorId: string;
   FindingStatisticTypes?: FindingStatisticType[];
@@ -5983,6 +6044,8 @@ export type InvestigationStatus =
   | "FAILED"
   | (string & {});
 export const InvestigationStatus = /*@__PURE__*/ S.String;
+
+export type TriggeredBy = string;
 export interface Product {
   Name?: string;
   Feature?: string;
@@ -6006,6 +6069,7 @@ export const InvestigationMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvestigationMetadata>;
 export type CloudProvider = "AWS" | (string & {});
 export const CloudProvider = /*@__PURE__*/ S.String;
+
 export interface CloudDetails {
   Provider?: CloudProvider;
   Region?: string;
@@ -6032,8 +6096,12 @@ export type RiskLevel =
   | "Critical"
   | (string & {});
 export const RiskLevel = /*@__PURE__*/ S.String;
+
+export type RiskDetails = string;
 export type Confidence = "Unknown" | "Low" | "Medium" | "High" | (string & {});
 export const Confidence = /*@__PURE__*/ S.String;
+
+export type InvestigationErrorDetails = string;
 export interface Investigation {
   InvestigationId?: string;
   Status?: InvestigationStatus;
@@ -6162,6 +6230,7 @@ export type IpSetStatus =
   | "DELETED"
   | (string & {});
 export const IpSetStatus = /*@__PURE__*/ S.String;
+
 export interface GetIPSetResponse {
   Name: string;
   Format: IpSetFormat;
@@ -6221,6 +6290,7 @@ export type MalwareProtectionPlanStatus =
   | "ERROR"
   | (string & {});
 export const MalwareProtectionPlanStatus = /*@__PURE__*/ S.String;
+
 export interface MalwareProtectionPlanStatusReason {
   Code?: string;
   Message?: string;
@@ -6301,6 +6371,8 @@ export type MalwareProtectionResourceType =
   | "S3_POINT_IN_TIME_RECOVERY"
   | (string & {});
 export const MalwareProtectionResourceType = /*@__PURE__*/ S.String;
+
+export type NonNegativeInteger = number;
 export type MalwareProtectionScanStatus =
   | "RUNNING"
   | "COMPLETED"
@@ -6309,6 +6381,7 @@ export type MalwareProtectionScanStatus =
   | "SKIPPED"
   | (string & {});
 export const MalwareProtectionScanStatus = /*@__PURE__*/ S.String;
+
 export type ScanStatusReason =
   | "ACCESS_DENIED"
   | "RESOURCE_NOT_FOUND"
@@ -6329,6 +6402,7 @@ export type ScanStatusReason =
   | "ALL_FILES_SKIPPED_OR_FAILED"
   | (string & {});
 export const ScanStatusReason = /*@__PURE__*/ S.String;
+
 export interface EbsSnapshot {
   DeviceName?: string;
 }
@@ -6435,8 +6509,10 @@ export type ScanResultStatus =
   | "THREATS_FOUND"
   | (string & {});
 export const ScanResultStatus = /*@__PURE__*/ S.String;
+
 export type DetectionSource = "AMAZON" | "BITDEFENDER" | (string & {});
 export const DetectionSource = /*@__PURE__*/ S.String;
+
 export interface ScanResultThreat {
   Name?: string;
   Source?: DetectionSource;
@@ -6590,6 +6666,7 @@ export const GetMalwareScanSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMalwareScanSettingsRequest>;
 export type ScanCriterionKey = "EC2_INSTANCE_TAG" | (string & {});
 export const ScanCriterionKey = /*@__PURE__*/ S.String;
+
 export interface ScanConditionPair {
   Key?: string;
   Value?: string;
@@ -6633,6 +6710,7 @@ export type EbsSnapshotPreservation =
   | "RETENTION_WITH_FINDING"
   | (string & {});
 export const EbsSnapshotPreservation = /*@__PURE__*/ S.String;
+
 export interface GetMalwareScanSettingsResponse {
   ScanResourceCriteria?: ScanResourceCriteria & {
     Include: {
@@ -7150,6 +7228,7 @@ export type FreeTrialFeatureResult =
   | "FARGATE_RUNTIME_MONITORING"
   | (string & {});
 export const FreeTrialFeatureResult = /*@__PURE__*/ S.String;
+
 export interface FreeTrialFeatureConfigurationResult {
   Name?: FreeTrialFeatureResult;
   FreeTrialDaysRemaining?: number;
@@ -7251,6 +7330,7 @@ export type ThreatEntitySetStatus =
   | "DELETED"
   | (string & {});
 export const ThreatEntitySetStatus = /*@__PURE__*/ S.String;
+
 export interface GetThreatEntitySetResponse {
   Name: string;
   Format: ThreatEntitySetFormat;
@@ -7323,6 +7403,7 @@ export type ThreatIntelSetStatus =
   | "DELETED"
   | (string & {});
 export const ThreatIntelSetStatus = /*@__PURE__*/ S.String;
+
 export interface GetThreatIntelSetResponse {
   Name: string;
   Format: ThreatIntelSetFormat;
@@ -7386,6 +7467,7 @@ export type TrustedEntitySetStatus =
   | "DELETED"
   | (string & {});
 export const TrustedEntitySetStatus = /*@__PURE__*/ S.String;
+
 export interface GetTrustedEntitySetResponse {
   Name: string;
   Format: TrustedEntitySetFormat;
@@ -7433,6 +7515,7 @@ export type UsageStatisticType =
   | "TOP_ACCOUNTS_BY_FEATURE"
   | (string & {});
 export const UsageStatisticType = /*@__PURE__*/ S.String;
+
 export type DataSource =
   | "FLOW_LOGS"
   | "CLOUD_TRAIL"
@@ -7442,6 +7525,7 @@ export type DataSource =
   | "EC2_MALWARE_SCAN"
   | (string & {});
 export const DataSource = /*@__PURE__*/ S.String;
+
 export type DataSourceList = DataSource[];
 export const DataSourceList = /*@__PURE__*/ S.Array(DataSource);
 export type ResourceList = string[];
@@ -7462,6 +7546,7 @@ export type UsageFeature =
   | "RDS_DBI_PROTECTION_SERVERLESS"
   | (string & {});
 export const UsageFeature = /*@__PURE__*/ S.String;
+
 export type UsageFeatureList = UsageFeature[];
 export const UsageFeatureList = /*@__PURE__*/ S.Array(UsageFeature);
 export interface UsageCriteria {
@@ -7728,6 +7813,7 @@ export type CoverageSortKey =
   | "INSTANCE_ID"
   | (string & {});
 export const CoverageSortKey = /*@__PURE__*/ S.String;
+
 export interface CoverageSortCriteria {
   AttributeName?: CoverageSortKey;
   OrderBy?: OrderBy;
@@ -7794,6 +7880,7 @@ export type ManagementType =
   | "DISABLED"
   | (string & {});
 export const ManagementType = /*@__PURE__*/ S.String;
+
 export interface CoverageEksClusterDetails {
   ClusterName?: string;
   CoveredNodes?: number;
@@ -8100,6 +8187,7 @@ export type InvestigationSortField =
   | "CONFIDENCE"
   | (string & {});
 export const InvestigationSortField = /*@__PURE__*/ S.String;
+
 export interface InvestigationSortCriteria {
   AttributeName?: InvestigationSortField;
   OrderBy?: OrderBy;
@@ -8112,6 +8200,7 @@ export const InvestigationSortCriteria = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvestigationSortCriteria",
 }) as any as S.Schema<InvestigationSortCriteria>;
+export type NextToken = string;
 export interface ListInvestigationsRequest {
   DetectorId: string;
   SortCriteria?: InvestigationSortCriteria;
@@ -8148,6 +8237,7 @@ export const ListInvestigationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInvestigationsRequest",
 }) as any as S.Schema<ListInvestigationsRequest>;
+export type InvestigationTitle = string;
 export interface InvestigationSummary {
   InvestigationId?: string;
   Status?: InvestigationStatus;
@@ -8357,6 +8447,7 @@ export type ListMalwareScansCriterionKey =
   | "SCAN_TYPE"
   | (string & {});
 export const ListMalwareScansCriterionKey = /*@__PURE__*/ S.String;
+
 export interface ListMalwareScansFilterCriterion {
   ListMalwareScansCriterionKey?: ListMalwareScansCriterionKey;
   FilterCondition?: FilterCondition;
@@ -8539,6 +8630,7 @@ export const ListOrganizationAdminAccountsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationAdminAccountsRequest>;
 export type AdminStatus = "ENABLED" | "DISABLE_IN_PROGRESS" | (string & {});
 export const AdminStatus = /*@__PURE__*/ S.String;
+
 export interface AdminAccount {
   AdminAccountId?: string;
   AdminStatus?: AdminStatus;
@@ -8635,6 +8727,7 @@ export const ListPublishingDestinationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPublishingDestinationsResponse",
 }) as any as S.Schema<ListPublishingDestinationsResponse>;
+export type GuardDutyArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -8827,6 +8920,7 @@ export const SendObjectMalwareScanResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendObjectMalwareScanResponse",
 }) as any as S.Schema<SendObjectMalwareScanResponse>;
+export type ResourceArn = string;
 export interface ContinuousScanDetails {
   StartTime?: Date;
   EndTime: Date;
@@ -9170,6 +9264,7 @@ export const UpdateFilterResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateFilterResponse>;
 export type Feedback = "USEFUL" | "NOT_USEFUL" | (string & {});
 export const Feedback = /*@__PURE__*/ S.String;
+
 export interface UpdateFindingsFeedbackRequest {
   DetectorId: string;
   FindingIds?: string[];
@@ -9803,35 +9898,6 @@ export const UpdateTrustedEntitySetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTrustedEntitySetResponse",
 }) as any as S.Schema<UpdateTrustedEntitySetResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Message: S.optional(S.String), Type: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { Message: S.optional(S.String), Type: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String), Type: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String), Type: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String), Type: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type AcceptAdministratorInvitationError =
   | BadRequestException
   | InternalServerErrorException
@@ -9852,6 +9918,7 @@ export const acceptAdministratorInvitation: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptAdministratorInvitation",
 }));
+
 export type AcceptInvitationError =
   | BadRequestException
   | InternalServerErrorException
@@ -9872,6 +9939,7 @@ export const acceptInvitation: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptInvitation",
 }));
+
 export type ArchiveFindingsError =
   | BadRequestException
   | InternalServerErrorException
@@ -9894,6 +9962,7 @@ export const archiveFindings: API.OperationMethod<
   retry: Retry,
   operationName: "ArchiveFindings",
 }));
+
 export type CreateDetectorError =
   | BadRequestException
   | InternalServerErrorException
@@ -9922,6 +9991,7 @@ export const createDetector: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDetector",
 }));
+
 export type CreateFilterError =
   | BadRequestException
   | InternalServerErrorException
@@ -9942,6 +10012,7 @@ export const createFilter: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFilter",
 }));
+
 export type CreateInvestigationError =
   | AccessDeniedException
   | BadRequestException
@@ -9975,6 +10046,7 @@ export const createInvestigation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInvestigation",
 }));
+
 export type CreateIPSetError =
   | AccessDeniedException
   | BadRequestException
@@ -10000,6 +10072,7 @@ export const createIPSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIPSet",
 }));
+
 export type CreateMalwareProtectionPlanError =
   | AccessDeniedException
   | BadRequestException
@@ -10029,6 +10102,7 @@ export const createMalwareProtectionPlan: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMalwareProtectionPlan",
 }));
+
 export type CreateMembersError =
   | BadRequestException
   | InternalServerErrorException
@@ -10057,6 +10131,7 @@ export const createMembers: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMembers",
 }));
+
 export type CreatePublishingDestinationError =
   | BadRequestException
   | InternalServerErrorException
@@ -10077,6 +10152,7 @@ export const createPublishingDestination: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePublishingDestination",
 }));
+
 export type CreateSampleFindingsError =
   | BadRequestException
   | InternalServerErrorException
@@ -10097,6 +10173,7 @@ export const createSampleFindings: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSampleFindings",
 }));
+
 export type CreateThreatEntitySetError =
   | BadRequestException
   | InternalServerErrorException
@@ -10117,6 +10194,7 @@ export const createThreatEntitySet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateThreatEntitySet",
 }));
+
 export type CreateThreatIntelSetError =
   | AccessDeniedException
   | BadRequestException
@@ -10142,6 +10220,7 @@ export const createThreatIntelSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateThreatIntelSet",
 }));
+
 export type CreateTrustedEntitySetError =
   | BadRequestException
   | InternalServerErrorException
@@ -10164,6 +10243,7 @@ export const createTrustedEntitySet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTrustedEntitySet",
 }));
+
 export type DeclineInvitationsError =
   | BadRequestException
   | InternalServerErrorException
@@ -10184,6 +10264,7 @@ export const declineInvitations: API.OperationMethod<
   retry: Retry,
   operationName: "DeclineInvitations",
 }));
+
 export type DeleteDetectorError =
   | BadRequestException
   | InternalServerErrorException
@@ -10204,6 +10285,7 @@ export const deleteDetector: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDetector",
 }));
+
 export type DeleteFilterError =
   | BadRequestException
   | InternalServerErrorException
@@ -10224,6 +10306,7 @@ export const deleteFilter: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFilter",
 }));
+
 export type DeleteInvitationsError =
   | BadRequestException
   | InternalServerErrorException
@@ -10244,6 +10327,7 @@ export const deleteInvitations: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInvitations",
 }));
+
 export type DeleteIPSetError =
   | BadRequestException
   | InternalServerErrorException
@@ -10264,6 +10348,7 @@ export const deleteIPSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIPSet",
 }));
+
 export type DeleteMalwareProtectionPlanError =
   | AccessDeniedException
   | BadRequestException
@@ -10291,6 +10376,7 @@ export const deleteMalwareProtectionPlan: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMalwareProtectionPlan",
 }));
+
 export type DeleteMembersError =
   | BadRequestException
   | InternalServerErrorException
@@ -10313,6 +10399,7 @@ export const deleteMembers: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMembers",
 }));
+
 export type DeletePublishingDestinationError =
   | BadRequestException
   | InternalServerErrorException
@@ -10333,6 +10420,7 @@ export const deletePublishingDestination: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePublishingDestination",
 }));
+
 export type DeleteThreatEntitySetError =
   | BadRequestException
   | InternalServerErrorException
@@ -10353,6 +10441,7 @@ export const deleteThreatEntitySet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteThreatEntitySet",
 }));
+
 export type DeleteThreatIntelSetError =
   | BadRequestException
   | InternalServerErrorException
@@ -10373,6 +10462,7 @@ export const deleteThreatIntelSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteThreatIntelSet",
 }));
+
 export type DeleteTrustedEntitySetError =
   | BadRequestException
   | InternalServerErrorException
@@ -10393,6 +10483,7 @@ export const deleteTrustedEntitySet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTrustedEntitySet",
 }));
+
 export type DescribeMalwareScansError =
   | BadRequestException
   | InternalServerErrorException
@@ -10436,6 +10527,7 @@ export const describeMalwareScans: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeOrganizationConfigurationError =
   | BadRequestException
   | InternalServerErrorException
@@ -10478,6 +10570,7 @@ export const describeOrganizationConfiguration: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribePublishingDestinationError =
   | BadRequestException
   | InternalServerErrorException
@@ -10498,6 +10591,7 @@ export const describePublishingDestination: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePublishingDestination",
 }));
+
 export type DisableOrganizationAdminAccountError =
   | BadRequestException
   | InternalServerErrorException
@@ -10518,6 +10612,7 @@ export const disableOrganizationAdminAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DisableOrganizationAdminAccount",
 }));
+
 export type DisassociateFromAdministratorAccountError =
   | BadRequestException
   | InternalServerErrorException
@@ -10542,6 +10637,7 @@ export const disassociateFromAdministratorAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateFromAdministratorAccount",
 }));
+
 export type DisassociateFromMasterAccountError =
   | BadRequestException
   | InternalServerErrorException
@@ -10564,6 +10660,7 @@ export const disassociateFromMasterAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateFromMasterAccount",
 }));
+
 export type DisassociateMembersError =
   | BadRequestException
   | InternalServerErrorException
@@ -10592,6 +10689,7 @@ export const disassociateMembers: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateMembers",
 }));
+
 export type EnableOrganizationAdminAccountError =
   | BadRequestException
   | InternalServerErrorException
@@ -10612,6 +10710,7 @@ export const enableOrganizationAdminAccount: API.OperationMethod<
   retry: Retry,
   operationName: "EnableOrganizationAdminAccount",
 }));
+
 export type GetAdministratorAccountError =
   | BadRequestException
   | InternalServerErrorException
@@ -10640,6 +10739,7 @@ export const getAdministratorAccount: API.OperationMethod<
   retry: Retry,
   operationName: "GetAdministratorAccount",
 }));
+
 export type GetCoverageStatisticsError =
   | BadRequestException
   | InternalServerErrorException
@@ -10660,6 +10760,7 @@ export const getCoverageStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "GetCoverageStatistics",
 }));
+
 export type GetDetectorError =
   | BadRequestException
   | InternalServerErrorException
@@ -10682,6 +10783,7 @@ export const getDetector: API.OperationMethod<
   retry: Retry,
   operationName: "GetDetector",
 }));
+
 export type GetFilterError =
   | BadRequestException
   | InternalServerErrorException
@@ -10702,6 +10804,7 @@ export const getFilter: API.OperationMethod<
   retry: Retry,
   operationName: "GetFilter",
 }));
+
 export type GetFindingsError =
   | BadRequestException
   | InternalServerErrorException
@@ -10722,6 +10825,7 @@ export const getFindings: API.OperationMethod<
   retry: Retry,
   operationName: "GetFindings",
 }));
+
 export type GetFindingsStatisticsError =
   | BadRequestException
   | InternalServerErrorException
@@ -10746,6 +10850,7 @@ export const getFindingsStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "GetFindingsStatistics",
 }));
+
 export type GetInvestigationError =
   | AccessDeniedException
   | BadRequestException
@@ -10777,6 +10882,7 @@ export const getInvestigation: API.OperationMethod<
   retry: Retry,
   operationName: "GetInvestigation",
 }));
+
 export type GetInvitationsCountError =
   | BadRequestException
   | InternalServerErrorException
@@ -10797,6 +10903,7 @@ export const getInvitationsCount: API.OperationMethod<
   retry: Retry,
   operationName: "GetInvitationsCount",
 }));
+
 export type GetIPSetError =
   | BadRequestException
   | InternalServerErrorException
@@ -10817,6 +10924,7 @@ export const getIPSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetIPSet",
 }));
+
 export type GetMalwareProtectionPlanError =
   | AccessDeniedException
   | BadRequestException
@@ -10844,6 +10952,7 @@ export const getMalwareProtectionPlan: API.OperationMethod<
   retry: Retry,
   operationName: "GetMalwareProtectionPlan",
 }));
+
 export type GetMalwareScanError =
   | BadRequestException
   | InternalServerErrorException
@@ -10871,6 +10980,7 @@ export const getMalwareScan: API.OperationMethod<
   retry: Retry,
   operationName: "GetMalwareScan",
 }));
+
 export type GetMalwareScanSettingsError =
   | BadRequestException
   | InternalServerErrorException
@@ -10893,6 +11003,7 @@ export const getMalwareScanSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetMalwareScanSettings",
 }));
+
 export type GetMasterAccountError =
   | BadRequestException
   | InternalServerErrorException
@@ -10913,6 +11024,7 @@ export const getMasterAccount: API.OperationMethod<
   retry: Retry,
   operationName: "GetMasterAccount",
 }));
+
 export type GetMemberDetectorsError =
   | BadRequestException
   | InternalServerErrorException
@@ -10935,6 +11047,7 @@ export const getMemberDetectors: API.OperationMethod<
   retry: Retry,
   operationName: "GetMemberDetectors",
 }));
+
 export type GetMembersError =
   | BadRequestException
   | InternalServerErrorException
@@ -10955,6 +11068,7 @@ export const getMembers: API.OperationMethod<
   retry: Retry,
   operationName: "GetMembers",
 }));
+
 export type GetOrganizationStatisticsError =
   | BadRequestException
   | InternalServerErrorException
@@ -10977,6 +11091,7 @@ export const getOrganizationStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "GetOrganizationStatistics",
 }));
+
 export type GetRemainingFreeTrialDaysError =
   | BadRequestException
   | InternalServerErrorException
@@ -10997,6 +11112,7 @@ export const getRemainingFreeTrialDays: API.OperationMethod<
   retry: Retry,
   operationName: "GetRemainingFreeTrialDays",
 }));
+
 export type GetThreatEntitySetError =
   | BadRequestException
   | InternalServerErrorException
@@ -11017,6 +11133,7 @@ export const getThreatEntitySet: API.OperationMethod<
   retry: Retry,
   operationName: "GetThreatEntitySet",
 }));
+
 export type GetThreatIntelSetError =
   | BadRequestException
   | InternalServerErrorException
@@ -11037,6 +11154,7 @@ export const getThreatIntelSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetThreatIntelSet",
 }));
+
 export type GetTrustedEntitySetError =
   | BadRequestException
   | InternalServerErrorException
@@ -11057,6 +11175,7 @@ export const getTrustedEntitySet: API.OperationMethod<
   retry: Retry,
   operationName: "GetTrustedEntitySet",
 }));
+
 export type GetUsageStatisticsError =
   | BadRequestException
   | InternalServerErrorException
@@ -11097,6 +11216,7 @@ export const getUsageStatistics: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type InviteMembersError =
   | BadRequestException
   | InternalServerErrorException
@@ -11125,6 +11245,7 @@ export const inviteMembers: API.OperationMethod<
   retry: Retry,
   operationName: "InviteMembers",
 }));
+
 export type ListCoverageError =
   | BadRequestException
   | InternalServerErrorException
@@ -11168,6 +11289,7 @@ export const listCoverage: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDetectorsError =
   | BadRequestException
   | InternalServerErrorException
@@ -11209,6 +11331,7 @@ export const listDetectors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFiltersError =
   | BadRequestException
   | InternalServerErrorException
@@ -11250,6 +11373,7 @@ export const listFilters: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFindingsError =
   | BadRequestException
   | InternalServerErrorException
@@ -11293,6 +11417,7 @@ export const listFindings: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInvestigationsError =
   | AccessDeniedException
   | BadRequestException
@@ -11343,6 +11468,7 @@ export const listInvestigations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInvitationsError =
   | BadRequestException
   | InternalServerErrorException
@@ -11384,6 +11510,7 @@ export const listInvitations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListIPSetsError =
   | BadRequestException
   | InternalServerErrorException
@@ -11425,6 +11552,7 @@ export const listIPSets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMalwareProtectionPlansError =
   | AccessDeniedException
   | BadRequestException
@@ -11450,6 +11578,7 @@ export const listMalwareProtectionPlans: API.OperationMethod<
   retry: Retry,
   operationName: "ListMalwareProtectionPlans",
 }));
+
 export type ListMalwareScansError =
   | BadRequestException
   | InternalServerErrorException
@@ -11491,6 +11620,7 @@ export const listMalwareScans: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMembersError =
   | BadRequestException
   | InternalServerErrorException
@@ -11532,6 +11662,7 @@ export const listMembers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOrganizationAdminAccountsError =
   | BadRequestException
   | InternalServerErrorException
@@ -11573,6 +11704,7 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPublishingDestinationsError =
   | BadRequestException
   | InternalServerErrorException
@@ -11613,6 +11745,7 @@ export const listPublishingDestinations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | BadRequestException
@@ -11638,6 +11771,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListThreatEntitySetsError =
   | BadRequestException
   | InternalServerErrorException
@@ -11679,6 +11813,7 @@ export const listThreatEntitySets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListThreatIntelSetsError =
   | BadRequestException
   | InternalServerErrorException
@@ -11720,6 +11855,7 @@ export const listThreatIntelSets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTrustedEntitySetsError =
   | BadRequestException
   | InternalServerErrorException
@@ -11761,6 +11897,7 @@ export const listTrustedEntitySets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SendObjectMalwareScanError =
   | AccessDeniedException
   | BadRequestException
@@ -11788,6 +11925,7 @@ export const sendObjectMalwareScan: API.OperationMethod<
   retry: Retry,
   operationName: "SendObjectMalwareScan",
 }));
+
 export type StartMalwareScanError =
   | BadRequestException
   | ConflictException
@@ -11817,6 +11955,7 @@ export const startMalwareScan: API.OperationMethod<
   retry: Retry,
   operationName: "StartMalwareScan",
 }));
+
 export type StartMonitoringMembersError =
   | BadRequestException
   | InternalServerErrorException
@@ -11837,6 +11976,7 @@ export const startMonitoringMembers: API.OperationMethod<
   retry: Retry,
   operationName: "StartMonitoringMembers",
 }));
+
 export type StopMonitoringMembersError =
   | BadRequestException
   | InternalServerErrorException
@@ -11859,6 +11999,7 @@ export const stopMonitoringMembers: API.OperationMethod<
   retry: Retry,
   operationName: "StopMonitoringMembers",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | BadRequestException
@@ -11884,6 +12025,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UnarchiveFindingsError =
   | BadRequestException
   | InternalServerErrorException
@@ -11904,6 +12046,7 @@ export const unarchiveFindings: API.OperationMethod<
   retry: Retry,
   operationName: "UnarchiveFindings",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | BadRequestException
@@ -11929,6 +12072,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDetectorError =
   | BadRequestException
   | InternalServerErrorException
@@ -11953,6 +12097,7 @@ export const updateDetector: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDetector",
 }));
+
 export type UpdateFilterError =
   | BadRequestException
   | InternalServerErrorException
@@ -11973,6 +12118,7 @@ export const updateFilter: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFilter",
 }));
+
 export type UpdateFindingsFeedbackError =
   | BadRequestException
   | InternalServerErrorException
@@ -11993,6 +12139,7 @@ export const updateFindingsFeedback: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFindingsFeedback",
 }));
+
 export type UpdateIPSetError =
   | AccessDeniedException
   | BadRequestException
@@ -12018,6 +12165,7 @@ export const updateIPSet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateIPSet",
 }));
+
 export type UpdateMalwareProtectionPlanError =
   | AccessDeniedException
   | BadRequestException
@@ -12045,6 +12193,7 @@ export const updateMalwareProtectionPlan: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMalwareProtectionPlan",
 }));
+
 export type UpdateMalwareScanSettingsError =
   | BadRequestException
   | InternalServerErrorException
@@ -12067,6 +12216,7 @@ export const updateMalwareScanSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMalwareScanSettings",
 }));
+
 export type UpdateMemberDetectorsError =
   | BadRequestException
   | InternalServerErrorException
@@ -12091,6 +12241,7 @@ export const updateMemberDetectors: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMemberDetectors",
 }));
+
 export type UpdateOrganizationConfigurationError =
   | BadRequestException
   | InternalServerErrorException
@@ -12115,6 +12266,7 @@ export const updateOrganizationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateOrganizationConfiguration",
 }));
+
 export type UpdatePublishingDestinationError =
   | BadRequestException
   | InternalServerErrorException
@@ -12135,6 +12287,7 @@ export const updatePublishingDestination: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePublishingDestination",
 }));
+
 export type UpdateThreatEntitySetError =
   | BadRequestException
   | InternalServerErrorException
@@ -12155,6 +12308,7 @@ export const updateThreatEntitySet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateThreatEntitySet",
 }));
+
 export type UpdateThreatIntelSetError =
   | AccessDeniedException
   | BadRequestException
@@ -12180,6 +12334,7 @@ export const updateThreatIntelSet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateThreatIntelSet",
 }));
+
 export type UpdateTrustedEntitySetError =
   | BadRequestException
   | InternalServerErrorException

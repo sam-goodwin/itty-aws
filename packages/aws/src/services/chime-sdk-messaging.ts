@@ -87,41 +87,97 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
+  "ResourceLimitExceededException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ServiceFailureException extends S.TaggedErrorClass<ServiceFailureException>()(
+  "ServiceFailureException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ThrottledClientException extends S.TaggedErrorClass<ThrottledClientException>()(
+  "ThrottledClientException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedClientException extends S.TaggedErrorClass<UnauthorizedClientException>()(
+  "UnauthorizedClientException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
 export type ChimeArn = string;
-export type SubChannelId = string;
-export type ResourceName = string | redacted.Redacted<string>;
-export type CallbackIdType = string;
-export type NonNullableBoolean = boolean;
-export type MessageId = string;
-export type NonEmptyContent = string | redacted.Redacted<string>;
-export type Metadata = string | redacted.Redacted<string>;
-export type PushNotificationTitle = string | redacted.Redacted<string>;
-export type PushNotificationBody = string | redacted.Redacted<string>;
-export type MessageAttributeName = string | redacted.Redacted<string>;
-export type MessageAttributeStringValue = string | redacted.Redacted<string>;
-export type ContentType = string | redacted.Redacted<string>;
-export type NonEmptyResourceName = string | redacted.Redacted<string>;
-export type ClientRequestToken = string | redacted.Redacted<string>;
-export type TagKey = string | redacted.Redacted<string>;
-export type TagValue = string | redacted.Redacted<string>;
-export type ChannelId = string | redacted.Redacted<string>;
-export type MaximumSubChannels = number;
-export type TargetMembershipsPerSubChannel = number;
-export type MinimumMembershipPercentage = number;
-export type ExpirationDays = number;
-export type LambdaFunctionArn = string;
-export type ChannelFlowExecutionOrder = number;
-export type FilterRule = string | redacted.Redacted<string>;
-export type Content = string | redacted.Redacted<string>;
-export type StatusDetail = string;
-export type UrlType = string;
-export type MaxResults = number;
-export type NextToken = string | redacted.Redacted<string>;
-export type MembershipCount = number;
-export type SearchFieldValue = string;
-
-//# Schemas
 export interface AssociateChannelFlowRequest {
   ChannelArn: string;
   ChannelFlowArn: string;
@@ -151,28 +207,12 @@ export const AssociateChannelFlowResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateChannelFlowResponse",
 }) as any as S.Schema<AssociateChannelFlowResponse>;
-export type ErrorCode =
-  | "BadRequest"
-  | "Conflict"
-  | "Forbidden"
-  | "NotFound"
-  | "PreconditionFailed"
-  | "ResourceLimitExceeded"
-  | "ServiceFailure"
-  | "AccessDenied"
-  | "ServiceUnavailable"
-  | "Throttled"
-  | "Throttling"
-  | "Unauthorized"
-  | "Unprocessable"
-  | "VoiceConnectorGroupAssociationsExist"
-  | "PhoneNumberAssociationsExist"
-  | (string & {});
-export const ErrorCode = /*@__PURE__*/ S.String;
 export type ChannelMembershipType = "DEFAULT" | "HIDDEN" | (string & {});
 export const ChannelMembershipType = /*@__PURE__*/ S.String;
+
 export type MemberArns = string[];
 export const MemberArns = /*@__PURE__*/ S.Array(S.String);
+export type SubChannelId = string;
 export interface BatchCreateChannelMembershipRequest {
   ChannelArn: string;
   Type?: ChannelMembershipType;
@@ -203,6 +243,7 @@ export const BatchCreateChannelMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchCreateChannelMembershipRequest",
 }) as any as S.Schema<BatchCreateChannelMembershipRequest>;
+export type ResourceName = string | redacted.Redacted<string>;
 export interface Identity {
   Arn?: string;
   Name?: string | redacted.Redacted<string>;
@@ -230,6 +271,25 @@ export const BatchChannelMemberships = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchChannelMemberships",
 }) as any as S.Schema<BatchChannelMemberships>;
+export type ErrorCode =
+  | "BadRequest"
+  | "Conflict"
+  | "Forbidden"
+  | "NotFound"
+  | "PreconditionFailed"
+  | "ResourceLimitExceeded"
+  | "ServiceFailure"
+  | "AccessDenied"
+  | "ServiceUnavailable"
+  | "Throttled"
+  | "Throttling"
+  | "Unauthorized"
+  | "Unprocessable"
+  | "VoiceConnectorGroupAssociationsExist"
+  | "PhoneNumberAssociationsExist"
+  | (string & {});
+export const ErrorCode = /*@__PURE__*/ S.String;
+
 export interface BatchCreateChannelMembershipError_ {
   MemberArn?: string;
   ErrorCode?: ErrorCode;
@@ -262,8 +322,16 @@ export const BatchCreateChannelMembershipResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchCreateChannelMembershipResponse",
 }) as any as S.Schema<BatchCreateChannelMembershipResponse>;
+export type CallbackIdType = string;
+export type NonNullableBoolean = boolean;
+export type MessageId = string;
+export type NonEmptyContent = string | redacted.Redacted<string>;
+export type Metadata = string | redacted.Redacted<string>;
+export type PushNotificationTitle = string | redacted.Redacted<string>;
+export type PushNotificationBody = string | redacted.Redacted<string>;
 export type PushNotificationType = "DEFAULT" | "VOIP" | (string & {});
 export const PushNotificationType = /*@__PURE__*/ S.String;
+
 export interface PushNotificationConfiguration {
   Title?: string | redacted.Redacted<string>;
   Body?: string | redacted.Redacted<string>;
@@ -278,6 +346,8 @@ export const PushNotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PushNotificationConfiguration",
 }) as any as S.Schema<PushNotificationConfiguration>;
+export type MessageAttributeName = string | redacted.Redacted<string>;
+export type MessageAttributeStringValue = string | redacted.Redacted<string>;
 export type MessageAttributeStringValues = (
   | string
   | redacted.Redacted<string>
@@ -299,6 +369,7 @@ export const MessageAttributeMap = /*@__PURE__*/ S.Record(
   S.String,
   MessageAttributeValue.pipe(S.optional),
 );
+export type ContentType = string | redacted.Redacted<string>;
 export interface ChannelMessageCallback {
   MessageId: string;
   Content?: string | redacted.Redacted<string>;
@@ -361,10 +432,16 @@ export const ChannelFlowCallbackResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ChannelFlowCallbackResponse",
 }) as any as S.Schema<ChannelFlowCallbackResponse>;
+export type NonEmptyResourceName = string | redacted.Redacted<string>;
 export type ChannelMode = "UNRESTRICTED" | "RESTRICTED" | (string & {});
 export const ChannelMode = /*@__PURE__*/ S.String;
+
 export type ChannelPrivacy = "PUBLIC" | "PRIVATE" | (string & {});
 export const ChannelPrivacy = /*@__PURE__*/ S.String;
+
+export type ClientRequestToken = string | redacted.Redacted<string>;
+export type TagKey = string | redacted.Redacted<string>;
+export type TagValue = string | redacted.Redacted<string>;
 export interface Tag {
   Key: string | redacted.Redacted<string>;
   Value: string | redacted.Redacted<string>;
@@ -374,10 +451,14 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
+export type ChannelId = string | redacted.Redacted<string>;
 export type ChannelMemberArns = string[];
 export const ChannelMemberArns = /*@__PURE__*/ S.Array(S.String);
 export type ChannelModeratorArns = string[];
 export const ChannelModeratorArns = /*@__PURE__*/ S.Array(S.String);
+export type MaximumSubChannels = number;
+export type TargetMembershipsPerSubChannel = number;
+export type MinimumMembershipPercentage = number;
 export interface ElasticChannelConfiguration {
   MaximumSubChannels: number;
   TargetMembershipsPerSubChannel: number;
@@ -392,11 +473,13 @@ export const ElasticChannelConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ElasticChannelConfiguration",
 }) as any as S.Schema<ElasticChannelConfiguration>;
+export type ExpirationDays = number;
 export type ExpirationCriterion =
   | "CREATED_TIMESTAMP"
   | "LAST_MESSAGE_TIMESTAMP"
   | (string & {});
 export const ExpirationCriterion = /*@__PURE__*/ S.String;
+
 export interface ExpirationSettings {
   ExpirationDays: number;
   ExpirationCriterion: ExpirationCriterion;
@@ -492,8 +575,10 @@ export const CreateChannelBanResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateChannelBanResponse",
 }) as any as S.Schema<CreateChannelBanResponse>;
+export type LambdaFunctionArn = string;
 export type InvocationType = "ASYNC" | (string & {});
 export const InvocationType = /*@__PURE__*/ S.String;
+
 export interface LambdaConfiguration {
   ResourceArn: string;
   InvocationType: InvocationType;
@@ -511,8 +596,10 @@ export const ProcessorConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProcessorConfiguration",
 }) as any as S.Schema<ProcessorConfiguration>;
+export type ChannelFlowExecutionOrder = number;
 export type FallbackAction = "CONTINUE" | "ABORT" | (string & {});
 export const FallbackAction = /*@__PURE__*/ S.String;
+
 export interface Processor {
   Name: string | redacted.Redacted<string>;
   Configuration: ProcessorConfiguration;
@@ -1319,6 +1406,8 @@ export const GetChannelMembershipPreferencesRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetChannelMembershipPreferencesRequest>;
 export type AllowNotifications = "ALL" | "NONE" | "FILTERED" | (string & {});
 export const AllowNotifications = /*@__PURE__*/ S.String;
+
+export type FilterRule = string | redacted.Redacted<string>;
 export interface PushNotificationPreferences {
   AllowNotifications: AllowNotifications;
   FilterRule?: string | redacted.Redacted<string>;
@@ -1382,13 +1471,16 @@ export const GetChannelMessageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetChannelMessageRequest",
 }) as any as S.Schema<GetChannelMessageRequest>;
+export type Content = string | redacted.Redacted<string>;
 export type ChannelMessageType = "STANDARD" | "CONTROL" | (string & {});
 export const ChannelMessageType = /*@__PURE__*/ S.String;
+
 export type ChannelMessagePersistenceType =
   | "PERSISTENT"
   | "NON_PERSISTENT"
   | (string & {});
 export const ChannelMessagePersistenceType = /*@__PURE__*/ S.String;
+
 export type ChannelMessageStatus =
   | "SENT"
   | "PENDING"
@@ -1396,6 +1488,8 @@ export type ChannelMessageStatus =
   | "DENIED"
   | (string & {});
 export const ChannelMessageStatus = /*@__PURE__*/ S.String;
+
+export type StatusDetail = string;
 export interface ChannelMessageStatusStructure {
   Value?: ChannelMessageStatus;
   Detail?: string;
@@ -1506,6 +1600,7 @@ export const GetChannelMessageStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetChannelMessageStatusResponse>;
 export type NetworkType = "IPV4_ONLY" | "DUAL_STACK" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
+
 export interface GetMessagingSessionEndpointRequest {
   NetworkType?: NetworkType;
 }
@@ -1525,6 +1620,7 @@ export const GetMessagingSessionEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMessagingSessionEndpointRequest",
 }) as any as S.Schema<GetMessagingSessionEndpointRequest>;
+export type UrlType = string;
 export interface MessagingSessionEndpoint {
   Url?: string;
 }
@@ -1566,6 +1662,7 @@ export const GetMessagingStreamingConfigurationsRequest =
   }) as any as S.Schema<GetMessagingStreamingConfigurationsRequest>;
 export type MessagingDataType = "Channel" | "ChannelMessage" | (string & {});
 export const MessagingDataType = /*@__PURE__*/ S.String;
+
 export interface StreamingConfiguration {
   DataType: MessagingDataType;
   ResourceArn: string;
@@ -1590,6 +1687,8 @@ export const GetMessagingStreamingConfigurationsResponse =
   ).annotate({
     identifier: "GetMessagingStreamingConfigurationsResponse",
   }) as any as S.Schema<GetMessagingStreamingConfigurationsResponse>;
+export type MaxResults = number;
+export type NextToken = string | redacted.Redacted<string>;
 export interface ListChannelBansRequest {
   ChannelArn: string;
   MaxResults?: number;
@@ -1797,6 +1896,7 @@ export const ListChannelMembershipsForAppInstanceUserResponse =
   }) as any as S.Schema<ListChannelMembershipsForAppInstanceUserResponse>;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface ListChannelMessagesRequest {
   ChannelArn: string;
   SortOrder?: SortOrder;
@@ -2122,6 +2222,7 @@ export const ListSubChannelsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSubChannelsRequest",
 }) as any as S.Schema<ListSubChannelsRequest>;
+export type MembershipCount = number;
 export interface SubChannelSummary {
   SubChannelId?: string;
   MembershipCount?: number;
@@ -2338,10 +2439,13 @@ export const RedactChannelMessageResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RedactChannelMessageResponse>;
 export type SearchFieldKey = "MEMBERS" | (string & {});
 export const SearchFieldKey = /*@__PURE__*/ S.String;
+
+export type SearchFieldValue = string;
 export type SearchFieldValues = string[];
 export const SearchFieldValues = /*@__PURE__*/ S.Array(S.String);
 export type SearchFieldOperator = "EQUALS" | "INCLUDES" | (string & {});
 export const SearchFieldOperator = /*@__PURE__*/ S.String;
+
 export interface SearchField {
   Key: SearchFieldKey;
   Values: string[];
@@ -2645,55 +2749,6 @@ export const UpdateChannelReadMarkerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateChannelReadMarkerResponse",
 }) as any as S.Schema<UpdateChannelReadMarkerResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceFailureException extends S.TaggedErrorClass<ServiceFailureException>()(
-  "ServiceFailureException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ThrottledClientException extends S.TaggedErrorClass<ThrottledClientException>()(
-  "ThrottledClientException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedClientException extends S.TaggedErrorClass<UnauthorizedClientException>()(
-  "UnauthorizedClientException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
-  "ResourceLimitExceededException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type AssociateChannelFlowError =
   | BadRequestException
   | ConflictException
@@ -2735,6 +2790,7 @@ export const associateChannelFlow: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateChannelFlow",
 }));
+
 export type BatchCreateChannelMembershipError =
   | BadRequestException
   | ForbiddenException
@@ -2770,6 +2826,7 @@ export const batchCreateChannelMembership: API.OperationMethod<
   retry: Retry,
   operationName: "BatchCreateChannelMembership",
 }));
+
 export type ChannelFlowCallbackError =
   | BadRequestException
   | ConflictException
@@ -2811,6 +2868,7 @@ export const channelFlowCallback: API.OperationMethod<
   retry: Retry,
   operationName: "ChannelFlowCallback",
 }));
+
 export type CreateChannelError =
   | BadRequestException
   | ConflictException
@@ -2853,6 +2911,7 @@ export const createChannel: API.OperationMethod<
   retry: Retry,
   operationName: "CreateChannel",
 }));
+
 export type CreateChannelBanError =
   | BadRequestException
   | ConflictException
@@ -2898,6 +2957,7 @@ export const createChannelBan: API.OperationMethod<
   retry: Retry,
   operationName: "CreateChannelBan",
 }));
+
 export type CreateChannelFlowError =
   | BadRequestException
   | ConflictException
@@ -2947,6 +3007,7 @@ export const createChannelFlow: API.OperationMethod<
   retry: Retry,
   operationName: "CreateChannelFlow",
 }));
+
 export type CreateChannelMembershipError =
   | BadRequestException
   | ConflictException
@@ -3006,6 +3067,7 @@ export const createChannelMembership: API.OperationMethod<
   retry: Retry,
   operationName: "CreateChannelMembership",
 }));
+
 export type CreateChannelModeratorError =
   | BadRequestException
   | ConflictException
@@ -3055,6 +3117,7 @@ export const createChannelModerator: API.OperationMethod<
   retry: Retry,
   operationName: "CreateChannelModerator",
 }));
+
 export type DeleteChannelError =
   | BadRequestException
   | ConflictException
@@ -3093,6 +3156,7 @@ export const deleteChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteChannel",
 }));
+
 export type DeleteChannelBanError =
   | BadRequestException
   | ForbiddenException
@@ -3128,6 +3192,7 @@ export const deleteChannelBan: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteChannelBan",
 }));
+
 export type DeleteChannelFlowError =
   | BadRequestException
   | ConflictException
@@ -3164,6 +3229,7 @@ export const deleteChannelFlow: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteChannelFlow",
 }));
+
 export type DeleteChannelMembershipError =
   | BadRequestException
   | ConflictException
@@ -3201,6 +3267,7 @@ export const deleteChannelMembership: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteChannelMembership",
 }));
+
 export type DeleteChannelMessageError =
   | BadRequestException
   | ForbiddenException
@@ -3238,6 +3305,7 @@ export const deleteChannelMessage: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteChannelMessage",
 }));
+
 export type DeleteChannelModeratorError =
   | BadRequestException
   | ForbiddenException
@@ -3273,6 +3341,7 @@ export const deleteChannelModerator: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteChannelModerator",
 }));
+
 export type DeleteMessagingStreamingConfigurationsError =
   | BadRequestException
   | ForbiddenException
@@ -3305,6 +3374,7 @@ export const deleteMessagingStreamingConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMessagingStreamingConfigurations",
 }));
+
 export type DescribeChannelError =
   | BadRequestException
   | ForbiddenException
@@ -3341,6 +3411,7 @@ export const describeChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeChannel",
 }));
+
 export type DescribeChannelBanError =
   | BadRequestException
   | ForbiddenException
@@ -3378,6 +3449,7 @@ export const describeChannelBan: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeChannelBan",
 }));
+
 export type DescribeChannelFlowError =
   | BadRequestException
   | ForbiddenException
@@ -3409,6 +3481,7 @@ export const describeChannelFlow: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeChannelFlow",
 }));
+
 export type DescribeChannelMembershipError =
   | BadRequestException
   | ForbiddenException
@@ -3446,6 +3519,7 @@ export const describeChannelMembership: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeChannelMembership",
 }));
+
 export type DescribeChannelMembershipForAppInstanceUserError =
   | BadRequestException
   | ForbiddenException
@@ -3482,6 +3556,7 @@ export const describeChannelMembershipForAppInstanceUser: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeChannelMembershipForAppInstanceUser",
 }));
+
 export type DescribeChannelModeratedByAppInstanceUserError =
   | BadRequestException
   | ForbiddenException
@@ -3518,6 +3593,7 @@ export const describeChannelModeratedByAppInstanceUser: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeChannelModeratedByAppInstanceUser",
 }));
+
 export type DescribeChannelModeratorError =
   | BadRequestException
   | ForbiddenException
@@ -3555,6 +3631,7 @@ export const describeChannelModerator: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeChannelModerator",
 }));
+
 export type DisassociateChannelFlowError =
   | BadRequestException
   | ConflictException
@@ -3597,6 +3674,7 @@ export const disassociateChannelFlow: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateChannelFlow",
 }));
+
 export type GetChannelMembershipPreferencesError =
   | BadRequestException
   | ForbiddenException
@@ -3636,6 +3714,7 @@ export const getChannelMembershipPreferences: API.OperationMethod<
   retry: Retry,
   operationName: "GetChannelMembershipPreferences",
 }));
+
 export type GetChannelMessageError =
   | BadRequestException
   | ForbiddenException
@@ -3673,6 +3752,7 @@ export const getChannelMessage: API.OperationMethod<
   retry: Retry,
   operationName: "GetChannelMessage",
 }));
+
 export type GetChannelMessageStatusError =
   | BadRequestException
   | ForbiddenException
@@ -3731,6 +3811,7 @@ export const getChannelMessageStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetChannelMessageStatus",
 }));
+
 export type GetMessagingSessionEndpointError =
   | ForbiddenException
   | ServiceFailureException
@@ -3760,6 +3841,7 @@ export const getMessagingSessionEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "GetMessagingSessionEndpoint",
 }));
+
 export type GetMessagingStreamingConfigurationsError =
   | BadRequestException
   | ForbiddenException
@@ -3794,6 +3876,7 @@ export const getMessagingStreamingConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "GetMessagingStreamingConfigurations",
 }));
+
 export type ListChannelBansError =
   | BadRequestException
   | ForbiddenException
@@ -3849,6 +3932,7 @@ export const listChannelBans: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListChannelFlowsError =
   | BadRequestException
   | ForbiddenException
@@ -3900,6 +3984,7 @@ export const listChannelFlows: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListChannelMembershipsError =
   | BadRequestException
   | ForbiddenException
@@ -3958,6 +4043,7 @@ export const listChannelMemberships: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListChannelMembershipsForAppInstanceUserError =
   | BadRequestException
   | ForbiddenException
@@ -4014,6 +4100,7 @@ export const listChannelMembershipsForAppInstanceUser: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListChannelMessagesError =
   | BadRequestException
   | ForbiddenException
@@ -4075,6 +4162,7 @@ export const listChannelMessages: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListChannelModeratorsError =
   | BadRequestException
   | ForbiddenException
@@ -4130,6 +4218,7 @@ export const listChannelModerators: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListChannelsError =
   | BadRequestException
   | ForbiddenException
@@ -4194,6 +4283,7 @@ export const listChannels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListChannelsAssociatedWithChannelFlowError =
   | BadRequestException
   | ForbiddenException
@@ -4245,6 +4335,7 @@ export const listChannelsAssociatedWithChannelFlow: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListChannelsModeratedByAppInstanceUserError =
   | BadRequestException
   | ForbiddenException
@@ -4300,6 +4391,7 @@ export const listChannelsModeratedByAppInstanceUser: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSubChannelsError =
   | BadRequestException
   | ForbiddenException
@@ -4351,6 +4443,7 @@ export const listSubChannels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | ForbiddenException
@@ -4382,6 +4475,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutChannelExpirationSettingsError =
   | BadRequestException
   | ConflictException
@@ -4425,6 +4519,7 @@ export const putChannelExpirationSettings: API.OperationMethod<
   retry: Retry,
   operationName: "PutChannelExpirationSettings",
 }));
+
 export type PutChannelMembershipPreferencesError =
   | BadRequestException
   | ConflictException
@@ -4466,6 +4561,7 @@ export const putChannelMembershipPreferences: API.OperationMethod<
   retry: Retry,
   operationName: "PutChannelMembershipPreferences",
 }));
+
 export type PutMessagingStreamingConfigurationsError =
   | BadRequestException
   | ConflictException
@@ -4502,6 +4598,7 @@ export const putMessagingStreamingConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "PutMessagingStreamingConfigurations",
 }));
+
 export type RedactChannelMessageError =
   | BadRequestException
   | ConflictException
@@ -4540,6 +4637,7 @@ export const redactChannelMessage: API.OperationMethod<
   retry: Retry,
   operationName: "RedactChannelMessage",
 }));
+
 export type SearchChannelsError =
   | BadRequestException
   | ForbiddenException
@@ -4599,6 +4697,7 @@ export const searchChannels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SendChannelMessageError =
   | BadRequestException
   | ConflictException
@@ -4641,6 +4740,7 @@ export const sendChannelMessage: API.OperationMethod<
   retry: Retry,
   operationName: "SendChannelMessage",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | ForbiddenException
@@ -4674,6 +4774,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | ForbiddenException
@@ -4705,6 +4806,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateChannelError =
   | BadRequestException
   | ConflictException
@@ -4744,6 +4846,7 @@ export const updateChannel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateChannel",
 }));
+
 export type UpdateChannelFlowError =
   | BadRequestException
   | ConflictException
@@ -4777,6 +4880,7 @@ export const updateChannelFlow: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateChannelFlow",
 }));
+
 export type UpdateChannelMessageError =
   | BadRequestException
   | ConflictException
@@ -4814,6 +4918,7 @@ export const updateChannelMessage: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateChannelMessage",
 }));
+
 export type UpdateChannelReadMarkerError =
   | BadRequestException
   | ConflictException

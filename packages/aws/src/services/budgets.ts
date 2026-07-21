@@ -180,38 +180,70 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BillingViewHealthStatusException extends S.TaggedErrorClass<BillingViewHealthStatusException>()(
+  "BillingViewHealthStatusException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class CreationLimitExceededException extends S.TaggedErrorClass<CreationLimitExceededException>()(
+  "CreationLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(405),
+).pipe(C.withBadRequestError) {}
+export class DuplicateRecordException extends S.TaggedErrorClass<DuplicateRecordException>()(
+  "DuplicateRecordException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ExpiredNextTokenException extends S.TaggedErrorClass<ExpiredNextTokenException>()(
+  "ExpiredNextTokenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
+  "InternalErrorException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceLockedException extends S.TaggedErrorClass<ResourceLockedException>()(
+  "ResourceLockedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(423),
+) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type AccountId = string;
 export type BudgetName = string;
 export type NumericValue = string;
 export type UnitValue = string;
-export type DimensionValue = string;
-export type AdjustmentPeriod = number;
-export type Value = string;
-export type TagKey = string;
-export type CostCategoryName = string;
-export type BillingViewArn = string;
-export type NotificationThreshold = number;
-export type SubscriberAddress = string | redacted.Redacted<string>;
-export type ResourceTagKey = string;
-export type ResourceTagValue = string;
-export type ErrorMessage = string;
-export type PolicyArn = string;
-export type Role = string;
-export type Group = string;
-export type User = string;
-export type PolicyId = string;
-export type TargetId = string;
-export type Region = string;
-export type InstanceId = string;
-export type RoleArn = string;
-export type ActionId = string;
-export type MaxResults = number;
-export type MaxResultsBudgetNotifications = number;
-export type MaxResultsDescribeBudgets = number;
-export type AmazonResourceName = string;
-
-//# Schemas
 export interface Spend {
   Amount: string;
   Unit: string;
@@ -224,6 +256,7 @@ export const PlannedBudgetLimits = /*@__PURE__*/ S.Record(
   S.String,
   Spend.pipe(S.optional),
 );
+export type DimensionValue = string;
 export type DimensionValues = string[];
 export const DimensionValues = /*@__PURE__*/ S.Array(S.String);
 export type CostFilters = { [key: string]: string[] | undefined };
@@ -267,6 +300,7 @@ export type TimeUnit =
   | "CUSTOM"
   | (string & {});
 export const TimeUnit = /*@__PURE__*/ S.String;
+
 export interface TimePeriod {
   Start?: Date;
   End?: Date;
@@ -295,8 +329,11 @@ export type BudgetType =
   | "SAVINGS_PLANS_COVERAGE"
   | (string & {});
 export const BudgetType = /*@__PURE__*/ S.String;
+
 export type AutoAdjustType = "HISTORICAL" | "FORECAST" | (string & {});
 export const AutoAdjustType = /*@__PURE__*/ S.String;
+
+export type AdjustmentPeriod = number;
 export interface HistoricalOptions {
   BudgetAdjustmentPeriod: number;
   LookBackAvailablePeriods?: number;
@@ -365,6 +402,8 @@ export type Dimension =
   | "COST_CATEGORY_NAME"
   | (string & {});
 export const Dimension = /*@__PURE__*/ S.String;
+
+export type Value = string;
 export type Values = string[];
 export const Values = /*@__PURE__*/ S.Array(S.String);
 export type MatchOption =
@@ -378,6 +417,7 @@ export type MatchOption =
   | "CASE_INSENSITIVE"
   | (string & {});
 export const MatchOption = /*@__PURE__*/ S.String;
+
 export type MatchOptions = MatchOption[];
 export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface ExpressionDimensionValues {
@@ -394,6 +434,7 @@ export const ExpressionDimensionValues = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExpressionDimensionValues",
 }) as any as S.Schema<ExpressionDimensionValues>;
+export type TagKey = string;
 export interface TagValues {
   Key?: string;
   Values?: string[];
@@ -406,6 +447,7 @@ export const TagValues = /*@__PURE__*/ S.suspend(() =>
     MatchOptions: S.optional(MatchOptions),
   }),
 ).annotate({ identifier: "TagValues" }) as any as S.Schema<TagValues>;
+export type CostCategoryName = string;
 export interface CostCategoryValues {
   Key?: string;
   Values?: string[];
@@ -457,10 +499,13 @@ export type Metric =
   | "Hours"
   | (string & {});
 export const Metric = /*@__PURE__*/ S.String;
+
 export type Metrics = Metric[];
 export const Metrics = /*@__PURE__*/ S.Array(Metric);
+export type BillingViewArn = string;
 export type HealthStatusValue = "HEALTHY" | "UNHEALTHY" | (string & {});
 export const HealthStatusValue = /*@__PURE__*/ S.String;
+
 export type HealthStatusReason =
   | "BILLING_VIEW_NO_ACCESS"
   | "BILLING_VIEW_UNHEALTHY"
@@ -468,6 +513,7 @@ export type HealthStatusReason =
   | "MULTI_YEAR_HISTORICAL_DATA_DISABLED"
   | (string & {});
 export const HealthStatusReason = /*@__PURE__*/ S.String;
+
 export interface HealthStatus {
   Status?: HealthStatusValue;
   StatusReason?: HealthStatusReason;
@@ -522,16 +568,21 @@ export const Budget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Budget" }) as any as S.Schema<Budget>;
 export type NotificationType = "ACTUAL" | "FORECASTED" | (string & {});
 export const NotificationType = /*@__PURE__*/ S.String;
+
 export type ComparisonOperator =
   | "GREATER_THAN"
   | "LESS_THAN"
   | "EQUAL_TO"
   | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
+export type NotificationThreshold = number;
 export type ThresholdType = "PERCENTAGE" | "ABSOLUTE_VALUE" | (string & {});
 export const ThresholdType = /*@__PURE__*/ S.String;
+
 export type NotificationState = "OK" | "ALARM" | (string & {});
 export const NotificationState = /*@__PURE__*/ S.String;
+
 export interface Notification {
   NotificationType: NotificationType;
   ComparisonOperator: ComparisonOperator;
@@ -550,6 +601,8 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
 export type SubscriptionType = "SNS" | "EMAIL" | (string & {});
 export const SubscriptionType = /*@__PURE__*/ S.String;
+
+export type SubscriberAddress = string | redacted.Redacted<string>;
 export interface Subscriber {
   SubscriptionType: SubscriptionType;
   Address: string | redacted.Redacted<string>;
@@ -572,6 +625,8 @@ export type NotificationWithSubscribersList = NotificationWithSubscribers[];
 export const NotificationWithSubscribersList = /*@__PURE__*/ S.Array(
   NotificationWithSubscribers,
 );
+export type ResourceTagKey = string;
+export type ResourceTagValue = string;
 export interface ResourceTag {
   Key: string;
   Value: string;
@@ -611,6 +666,7 @@ export type ActionType =
   | "RUN_SSM_DOCUMENTS"
   | (string & {});
 export const ActionType = /*@__PURE__*/ S.String;
+
 export interface ActionThreshold {
   ActionThresholdValue: number;
   ActionThresholdType: ThresholdType;
@@ -623,10 +679,14 @@ export const ActionThreshold = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActionThreshold",
 }) as any as S.Schema<ActionThreshold>;
+export type PolicyArn = string;
+export type Role = string;
 export type Roles = string[];
 export const Roles = /*@__PURE__*/ S.Array(S.String);
+export type Group = string;
 export type Groups = string[];
 export const Groups = /*@__PURE__*/ S.Array(S.String);
+export type User = string;
 export type Users = string[];
 export const Users = /*@__PURE__*/ S.Array(S.String);
 export interface IamActionDefinition {
@@ -645,6 +705,8 @@ export const IamActionDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IamActionDefinition",
 }) as any as S.Schema<IamActionDefinition>;
+export type PolicyId = string;
+export type TargetId = string;
 export type TargetIds = string[];
 export const TargetIds = /*@__PURE__*/ S.Array(S.String);
 export interface ScpActionDefinition {
@@ -661,6 +723,9 @@ export type ActionSubType =
   | "STOP_RDS_INSTANCES"
   | (string & {});
 export const ActionSubType = /*@__PURE__*/ S.String;
+
+export type Region = string;
+export type InstanceId = string;
 export type InstanceIds = string[];
 export const InstanceIds = /*@__PURE__*/ S.Array(S.String);
 export interface SsmActionDefinition {
@@ -689,8 +754,10 @@ export const Definition = /*@__PURE__*/ S.suspend(() =>
     SsmActionDefinition: S.optional(SsmActionDefinition),
   }),
 ).annotate({ identifier: "Definition" }) as any as S.Schema<Definition>;
+export type RoleArn = string;
 export type ApprovalModel = "AUTOMATIC" | "MANUAL" | (string & {});
 export const ApprovalModel = /*@__PURE__*/ S.String;
+
 export interface CreateBudgetActionRequest {
   AccountId: string;
   BudgetName: string;
@@ -721,6 +788,7 @@ export const CreateBudgetActionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBudgetActionRequest",
 }) as any as S.Schema<CreateBudgetActionRequest>;
+export type ActionId = string;
 export interface CreateBudgetActionResponse {
   AccountId: string;
   BudgetName: string;
@@ -825,6 +893,7 @@ export type ActionStatus =
   | "RESET_FAILURE"
   | (string & {});
 export const ActionStatus = /*@__PURE__*/ S.String;
+
 export interface Action {
   ActionId: string;
   BudgetName: string;
@@ -957,6 +1026,7 @@ export const DescribeBudgetActionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeBudgetActionResponse",
 }) as any as S.Schema<DescribeBudgetActionResponse>;
+export type MaxResults = number;
 export interface DescribeBudgetActionHistoriesRequest {
   AccountId: string;
   BudgetName: string;
@@ -988,6 +1058,7 @@ export type EventType =
   | "EXECUTE_ACTION"
   | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
+
 export interface ActionHistoryDetails {
   Message: string;
   Action: Action;
@@ -1082,6 +1153,7 @@ export const DescribeBudgetActionsForBudgetResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeBudgetActionsForBudgetResponse",
 }) as any as S.Schema<DescribeBudgetActionsForBudgetResponse>;
+export type MaxResultsBudgetNotifications = number;
 export interface DescribeBudgetNotificationsForAccountRequest {
   AccountId: string;
   MaxResults?: number;
@@ -1210,6 +1282,7 @@ export const DescribeBudgetPerformanceHistoryResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeBudgetPerformanceHistoryResponse",
 }) as any as S.Schema<DescribeBudgetPerformanceHistoryResponse>;
+export type MaxResultsDescribeBudgets = number;
 export interface DescribeBudgetsRequest {
   AccountId: string;
   MaxResults?: number;
@@ -1312,6 +1385,7 @@ export type ExecutionType =
   | "RESET_BUDGET_ACTION"
   | (string & {});
 export const ExecutionType = /*@__PURE__*/ S.String;
+
 export interface ExecuteBudgetActionRequest {
   AccountId: string;
   BudgetName: string;
@@ -1346,6 +1420,7 @@ export const ExecuteBudgetActionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecuteBudgetActionResponse",
 }) as any as S.Schema<ExecuteBudgetActionResponse>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
@@ -1511,70 +1586,7 @@ export const UpdateSubscriberResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSubscriberResponse",
 }) as any as S.Schema<UpdateSubscriberResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class BillingViewHealthStatusException extends S.TaggedErrorClass<BillingViewHealthStatusException>()(
-  "BillingViewHealthStatusException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class CreationLimitExceededException extends S.TaggedErrorClass<CreationLimitExceededException>()(
-  "CreationLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(405),
-).pipe(C.withBadRequestError) {}
-export class DuplicateRecordException extends S.TaggedErrorClass<DuplicateRecordException>()(
-  "DuplicateRecordException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
-  "InternalErrorException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceLockedException extends S.TaggedErrorClass<ResourceLockedException>()(
-  "ResourceLockedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(423),
-) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ExpiredNextTokenException extends S.TaggedErrorClass<ExpiredNextTokenException>()(
-  "ExpiredNextTokenException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CreateBudgetError =
   | AccessDeniedException
   | BillingViewHealthStatusException
@@ -1624,6 +1636,7 @@ export const createBudget: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBudget",
 }));
+
 export type CreateBudgetActionError =
   | AccessDeniedException
   | CreationLimitExceededException
@@ -1659,6 +1672,7 @@ export const createBudgetAction: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBudgetAction",
 }));
+
 export type CreateNotificationError =
   | AccessDeniedException
   | CreationLimitExceededException
@@ -1692,6 +1706,7 @@ export const createNotification: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNotification",
 }));
+
 export type CreateSubscriberError =
   | AccessDeniedException
   | CreationLimitExceededException
@@ -1725,6 +1740,7 @@ export const createSubscriber: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSubscriber",
 }));
+
 export type DeleteBudgetError =
   | AccessDeniedException
   | InternalErrorException
@@ -1756,6 +1772,7 @@ export const deleteBudget: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBudget",
 }));
+
 export type DeleteBudgetActionError =
   | AccessDeniedException
   | InternalErrorException
@@ -1787,6 +1804,7 @@ export const deleteBudgetAction: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBudgetAction",
 }));
+
 export type DeleteNotificationError =
   | AccessDeniedException
   | InternalErrorException
@@ -1818,6 +1836,7 @@ export const deleteNotification: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNotification",
 }));
+
 export type DeleteSubscriberError =
   | AccessDeniedException
   | InternalErrorException
@@ -1849,6 +1868,7 @@ export const deleteSubscriber: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSubscriber",
 }));
+
 export type DescribeBudgetError =
   | AccessDeniedException
   | InternalErrorException
@@ -1881,6 +1901,7 @@ export const describeBudget: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBudget",
 }));
+
 export type DescribeBudgetActionError =
   | AccessDeniedException
   | InternalErrorException
@@ -1910,6 +1931,7 @@ export const describeBudgetAction: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBudgetAction",
 }));
+
 export type DescribeBudgetActionHistoriesError =
   | AccessDeniedException
   | InternalErrorException
@@ -1962,6 +1984,7 @@ export const describeBudgetActionHistories: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeBudgetActionsForAccountError =
   | AccessDeniedException
   | InternalErrorException
@@ -2012,6 +2035,7 @@ export const describeBudgetActionsForAccount: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeBudgetActionsForBudgetError =
   | AccessDeniedException
   | InternalErrorException
@@ -2064,6 +2088,7 @@ export const describeBudgetActionsForBudget: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeBudgetNotificationsForAccountError =
   | AccessDeniedException
   | ExpiredNextTokenException
@@ -2118,6 +2143,7 @@ export const describeBudgetNotificationsForAccount: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeBudgetPerformanceHistoryError =
   | AccessDeniedException
   | BillingViewHealthStatusException
@@ -2173,6 +2199,7 @@ export const describeBudgetPerformanceHistory: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeBudgetsError =
   | AccessDeniedException
   | ExpiredNextTokenException
@@ -2230,6 +2257,7 @@ export const describeBudgets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeNotificationsForBudgetError =
   | AccessDeniedException
   | ExpiredNextTokenException
@@ -2284,6 +2312,7 @@ export const describeNotificationsForBudget: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSubscribersForNotificationError =
   | AccessDeniedException
   | ExpiredNextTokenException
@@ -2338,6 +2367,7 @@ export const describeSubscribersForNotification: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ExecuteBudgetActionError =
   | AccessDeniedException
   | InternalErrorException
@@ -2369,6 +2399,7 @@ export const executeBudgetAction: API.OperationMethod<
   retry: Retry,
   operationName: "ExecuteBudgetAction",
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalErrorException
@@ -2398,6 +2429,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalErrorException
@@ -2429,6 +2461,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalErrorException
@@ -2458,6 +2491,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateBudgetError =
   | AccessDeniedException
   | BillingViewHealthStatusException
@@ -2503,6 +2537,7 @@ export const updateBudget: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBudget",
 }));
+
 export type UpdateBudgetActionError =
   | AccessDeniedException
   | InternalErrorException
@@ -2534,6 +2569,7 @@ export const updateBudgetAction: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBudgetAction",
 }));
+
 export type UpdateNotificationError =
   | AccessDeniedException
   | DuplicateRecordException
@@ -2565,6 +2601,7 @@ export const updateNotification: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNotification",
 }));
+
 export type UpdateSubscriberError =
   | AccessDeniedException
   | DuplicateRecordException

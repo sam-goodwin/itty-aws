@@ -125,32 +125,49 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "InternalServerException", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "ResourceNotFoundException",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "ServiceQuotaExceededException",
+      httpResponseCode: 402,
+    }),
+    T.HttpError(402),
+  ),
+).pipe(C.withQuotaError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type SavingsPlanOfferingId = string;
 export type Amount = string;
 export type ClientToken = string;
 export type TagKey = string;
 export type TagValue = string;
-export type SavingsPlanId = string;
-export type PaginationToken = string;
-export type MaxResults = number;
-export type SavingsPlanRateUsageType = string;
-export type SavingsPlanRateOperation = string;
-export type JsonSafeFilterValueString = string;
-export type SavingsPlanArn = string;
-export type Region = string;
-export type EC2InstanceFamily = string;
-export type TermDurationInSeconds = number;
-export type UUID = string;
-export type PageSize = number;
-export type SavingsPlansDuration = number;
-export type SavingsPlanDescription = string;
-export type SavingsPlanRatePricePerUnit = string;
-export type SavingsPlanServiceCode = string;
-export type SavingsPlanUsageType = string;
-export type SavingsPlanOperation = string;
-
-//# Schemas
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -185,6 +202,7 @@ export const CreateSavingsPlanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSavingsPlanRequest",
 }) as any as S.Schema<CreateSavingsPlanRequest>;
+export type SavingsPlanId = string;
 export interface CreateSavingsPlanResponse {
   savingsPlanId?: string;
 }
@@ -227,6 +245,7 @@ export type SavingsPlanRateFilterName =
   | "operation"
   | (string & {});
 export const SavingsPlanRateFilterName = /*@__PURE__*/ S.String;
+
 export type ListOfStrings = string[];
 export const ListOfStrings = /*@__PURE__*/ S.Array(S.String);
 export interface SavingsPlanRateFilter {
@@ -245,6 +264,8 @@ export type SavingsPlanRateFilterList = SavingsPlanRateFilter[];
 export const SavingsPlanRateFilterList = /*@__PURE__*/ S.Array(
   SavingsPlanRateFilter,
 );
+export type PaginationToken = string;
+export type MaxResults = number;
 export interface DescribeSavingsPlanRatesRequest {
   savingsPlanId: string;
   filters?: SavingsPlanRateFilter[];
@@ -272,6 +293,7 @@ export const DescribeSavingsPlanRatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeSavingsPlanRatesRequest>;
 export type CurrencyCode = "CNY" | "USD" | "EUR" | (string & {});
 export const CurrencyCode = /*@__PURE__*/ S.String;
+
 export type SavingsPlanRateUnit =
   | "Hrs"
   | "Lambda-GB-Second"
@@ -292,6 +314,7 @@ export type SavingsPlanRateUnit =
   | "Jobs"
   | (string & {});
 export const SavingsPlanRateUnit = /*@__PURE__*/ S.String;
+
 export type SavingsPlanProductType =
   | "EC2"
   | "Fargate"
@@ -309,6 +332,7 @@ export type SavingsPlanProductType =
   | "OpenSearch"
   | (string & {});
 export const SavingsPlanProductType = /*@__PURE__*/ S.String;
+
 export type SavingsPlanRateServiceCode =
   | "AmazonEC2"
   | "AmazonECS"
@@ -327,6 +351,9 @@ export type SavingsPlanRateServiceCode =
   | "AmazonES"
   | (string & {});
 export const SavingsPlanRateServiceCode = /*@__PURE__*/ S.String;
+
+export type SavingsPlanRateUsageType = string;
+export type SavingsPlanRateOperation = string;
 export type SavingsPlanRatePropertyKey =
   | "region"
   | "instanceType"
@@ -335,6 +362,8 @@ export type SavingsPlanRatePropertyKey =
   | "tenancy"
   | (string & {});
 export const SavingsPlanRatePropertyKey = /*@__PURE__*/ S.String;
+
+export type JsonSafeFilterValueString = string;
 export interface SavingsPlanRateProperty {
   name?: SavingsPlanRatePropertyKey;
   value?: string;
@@ -391,6 +420,7 @@ export const DescribeSavingsPlanRatesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSavingsPlanRatesResponse",
 }) as any as S.Schema<DescribeSavingsPlanRatesResponse>;
+export type SavingsPlanArn = string;
 export type SavingsPlanArnList = string[];
 export const SavingsPlanArnList = /*@__PURE__*/ S.Array(S.String);
 export type SavingsPlanIdList = string[];
@@ -406,6 +436,7 @@ export type SavingsPlanState =
   | "returned"
   | (string & {});
 export const SavingsPlanState = /*@__PURE__*/ S.String;
+
 export type SavingsPlanStateList = SavingsPlanState[];
 export const SavingsPlanStateList = /*@__PURE__*/ S.Array(SavingsPlanState);
 export type SavingsPlansFilterName =
@@ -421,6 +452,7 @@ export type SavingsPlansFilterName =
   | "instance-family"
   | (string & {});
 export const SavingsPlansFilterName = /*@__PURE__*/ S.String;
+
 export interface SavingsPlanFilter {
   name?: SavingsPlansFilterName;
   values?: string[];
@@ -464,6 +496,8 @@ export const DescribeSavingsPlansRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSavingsPlansRequest",
 }) as any as S.Schema<DescribeSavingsPlansRequest>;
+export type Region = string;
+export type EC2InstanceFamily = string;
 export type SavingsPlanType =
   | "Compute"
   | "EC2Instance"
@@ -471,16 +505,19 @@ export type SavingsPlanType =
   | "Database"
   | (string & {});
 export const SavingsPlanType = /*@__PURE__*/ S.String;
+
 export type SavingsPlanPaymentOption =
   | "All Upfront"
   | "Partial Upfront"
   | "No Upfront"
   | (string & {});
 export const SavingsPlanPaymentOption = /*@__PURE__*/ S.String;
+
 export type SavingsPlanProductTypeList = SavingsPlanProductType[];
 export const SavingsPlanProductTypeList = /*@__PURE__*/ S.Array(
   SavingsPlanProductType,
 );
+export type TermDurationInSeconds = number;
 export interface SavingsPlan {
   offeringId?: string;
   savingsPlanId?: string;
@@ -539,6 +576,7 @@ export const DescribeSavingsPlansResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSavingsPlansResponse",
 }) as any as S.Schema<DescribeSavingsPlansResponse>;
+export type UUID = string;
 export type UUIDs = string[];
 export const UUIDs = /*@__PURE__*/ S.Array(S.String);
 export type SavingsPlanPaymentOptionList = SavingsPlanPaymentOption[];
@@ -564,6 +602,7 @@ export type SavingsPlanRateFilterAttribute =
   | "productId"
   | (string & {});
 export const SavingsPlanRateFilterAttribute = /*@__PURE__*/ S.String;
+
 export type FilterValuesList = string[];
 export const FilterValuesList = /*@__PURE__*/ S.Array(S.String);
 export interface SavingsPlanOfferingRateFilterElement {
@@ -584,6 +623,7 @@ export type SavingsPlanOfferingRateFiltersList =
 export const SavingsPlanOfferingRateFiltersList = /*@__PURE__*/ S.Array(
   SavingsPlanOfferingRateFilterElement,
 );
+export type PageSize = number;
 export interface DescribeSavingsPlansOfferingRatesRequest {
   savingsPlanOfferingIds?: string[];
   savingsPlanPaymentOptions?: SavingsPlanPaymentOption[];
@@ -622,6 +662,8 @@ export const DescribeSavingsPlansOfferingRatesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeSavingsPlansOfferingRatesRequest",
 }) as any as S.Schema<DescribeSavingsPlansOfferingRatesRequest>;
+export type SavingsPlansDuration = number;
+export type SavingsPlanDescription = string;
 export interface ParentSavingsPlanOffering {
   offeringId?: string;
   paymentOption?: SavingsPlanPaymentOption;
@@ -642,6 +684,7 @@ export const ParentSavingsPlanOffering = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ParentSavingsPlanOffering",
 }) as any as S.Schema<ParentSavingsPlanOffering>;
+export type SavingsPlanRatePricePerUnit = string;
 export interface SavingsPlanOfferingRateProperty {
   name?: string;
   value?: string;
@@ -703,10 +746,13 @@ export type CurrencyList = CurrencyCode[];
 export const CurrencyList = /*@__PURE__*/ S.Array(CurrencyCode);
 export type SavingsPlanDescriptionsList = string[];
 export const SavingsPlanDescriptionsList = /*@__PURE__*/ S.Array(S.String);
+export type SavingsPlanServiceCode = string;
 export type SavingsPlanServiceCodeList = string[];
 export const SavingsPlanServiceCodeList = /*@__PURE__*/ S.Array(S.String);
+export type SavingsPlanUsageType = string;
 export type SavingsPlanUsageTypeList = string[];
 export const SavingsPlanUsageTypeList = /*@__PURE__*/ S.Array(S.String);
+export type SavingsPlanOperation = string;
 export type SavingsPlanOperationList = string[];
 export const SavingsPlanOperationList = /*@__PURE__*/ S.Array(S.String);
 export type SavingsPlanOfferingFilterAttribute =
@@ -714,6 +760,7 @@ export type SavingsPlanOfferingFilterAttribute =
   | "instanceFamily"
   | (string & {});
 export const SavingsPlanOfferingFilterAttribute = /*@__PURE__*/ S.String;
+
 export interface SavingsPlanOfferingFilterElement {
   name?: SavingsPlanOfferingFilterAttribute;
   values?: string[];
@@ -779,6 +826,7 @@ export type SavingsPlanOfferingPropertyKey =
   | "instanceFamily"
   | (string & {});
 export const SavingsPlanOfferingPropertyKey = /*@__PURE__*/ S.String;
+
 export interface SavingsPlanOfferingProperty {
   name?: SavingsPlanOfferingPropertyKey;
   value?: string;
@@ -945,48 +993,6 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "InternalServerException", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "ResourceNotFoundException",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "ServiceQuotaExceededException",
-      httpResponseCode: 402,
-    }),
-    T.HttpError(402),
-  ),
-).pipe(C.withQuotaError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateSavingsPlanError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1014,6 +1020,7 @@ export const createSavingsPlan: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSavingsPlan",
 }));
+
 export type DeleteQueuedSavingsPlanError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1041,6 +1048,7 @@ export const deleteQueuedSavingsPlan: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteQueuedSavingsPlan",
 }));
+
 export type DescribeSavingsPlanRatesError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1066,6 +1074,7 @@ export const describeSavingsPlanRates: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSavingsPlanRates",
 }));
+
 export type DescribeSavingsPlansError =
   | InternalServerException
   | ValidationException
@@ -1086,6 +1095,7 @@ export const describeSavingsPlans: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSavingsPlans",
 }));
+
 export type DescribeSavingsPlansOfferingRatesError =
   | InternalServerException
   | ValidationException
@@ -1106,6 +1116,7 @@ export const describeSavingsPlansOfferingRates: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSavingsPlansOfferingRates",
 }));
+
 export type DescribeSavingsPlansOfferingsError =
   | InternalServerException
   | ValidationException
@@ -1126,6 +1137,7 @@ export const describeSavingsPlansOfferings: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSavingsPlansOfferings",
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1151,6 +1163,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ReturnSavingsPlanError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1178,6 +1191,7 @@ export const returnSavingsPlan: API.OperationMethod<
   retry: Retry,
   operationName: "ReturnSavingsPlan",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1205,6 +1219,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException

@@ -145,22 +145,91 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type __stringMin5Max32 = string;
-export type __integerMin1Max16384 = number;
-export type __stringMin1Max64 = string;
-export type __stringMin1Max128 = string;
-export type __integerMin1Max15 = number;
-export type __blob = Uint8Array;
-export type __timestampIso8601 = Date;
-export type __stringMax1024 = string;
-export type __stringMax256 = string;
-export type __stringMax249 = string;
-export type __stringMin1Max128Pattern09AZaZ09AZaZ0 = string;
-export type __integerMin1 = number;
-export type MaxResults = number;
-
-//# Schemas
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ClusterConnectivityException extends S.TaggedErrorClass<ClusterConnectivityException>()(
+  "ClusterConnectivityException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ControllerMovedException extends S.TaggedErrorClass<ControllerMovedException>()(
+  "ControllerMovedException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class GroupSubscribedToTopicException extends S.TaggedErrorClass<GroupSubscribedToTopicException>()(
+  "GroupSubscribedToTopicException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class KafkaRequestException extends S.TaggedErrorClass<KafkaRequestException>()(
+  "KafkaRequestException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class KafkaTimeoutException extends S.TaggedErrorClass<KafkaTimeoutException>()(
+  "KafkaTimeoutException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class NotControllerException extends S.TaggedErrorClass<NotControllerException>()(
+  "NotControllerException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ReassignmentInProgressException extends S.TaggedErrorClass<ReassignmentInProgressException>()(
+  "ReassignmentInProgressException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TopicExistsException extends S.TaggedErrorClass<TopicExistsException>()(
+  "TopicExistsException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class UnknownTopicOrPartitionException extends S.TaggedErrorClass<UnknownTopicOrPartitionException>()(
+  "UnknownTopicOrPartitionException",
+  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type __listOf__string = string[];
 export const __listOf__string = /*@__PURE__*/ S.Array(S.String);
 export interface BatchAssociateScramSecretRequest {
@@ -276,6 +345,8 @@ export const BatchDisassociateScramSecretResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<BatchDisassociateScramSecretResponse>;
 export type BrokerAZDistribution = "DEFAULT" | (string & {});
 export const BrokerAZDistribution = /*@__PURE__*/ S.String;
+
+export type __stringMin5Max32 = string;
 export interface ProvisionedThroughput {
   Enabled?: boolean;
   VolumeThroughput?: number;
@@ -290,6 +361,7 @@ export const ProvisionedThroughput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProvisionedThroughput",
 }) as any as S.Schema<ProvisionedThroughput>;
+export type __integerMin1Max16384 = number;
 export interface EBSStorageInfo {
   ProvisionedThroughput?: ProvisionedThroughput;
   VolumeSize?: number;
@@ -385,6 +457,7 @@ export const VpcConnectivity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpcConnectivity>;
 export type NetworkType = "IPV4" | "DUAL" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
+
 export interface ConnectivityInfo {
   PublicAccess?: PublicAccess;
   VpcConnectivity?: VpcConnectivity;
@@ -439,6 +512,7 @@ export const BrokerNodeGroupInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrokerNodeGroupInfo>;
 export type RebalancingStatus = "PAUSED" | "ACTIVE" | (string & {});
 export const RebalancingStatus = /*@__PURE__*/ S.String;
+
 export interface Rebalancing {
   Status?: RebalancingStatus;
 }
@@ -517,6 +591,7 @@ export const ClientAuthentication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClientAuthentication",
 }) as any as S.Schema<ClientAuthentication>;
+export type __stringMin1Max64 = string;
 export interface ConfigurationInfo {
   Arn?: string;
   Revision?: number;
@@ -544,6 +619,7 @@ export type ClientBroker =
   | "PLAINTEXT"
   | (string & {});
 export const ClientBroker = /*@__PURE__*/ S.String;
+
 export interface EncryptionInTransit {
   ClientBroker?: ClientBroker;
   InCluster?: boolean;
@@ -580,6 +656,7 @@ export type EnhancedMonitoring =
   | "PER_TOPIC_PER_PARTITION"
   | (string & {});
 export const EnhancedMonitoring = /*@__PURE__*/ S.String;
+
 export interface JmxExporterInfo {
   EnabledInBroker?: boolean;
 }
@@ -622,6 +699,7 @@ export const OpenMonitoringInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OpenMonitoringInfo",
 }) as any as S.Schema<OpenMonitoringInfo>;
+export type __stringMin1Max128 = string;
 export interface CloudWatchLogs {
   Enabled?: boolean;
   LogGroup?: string;
@@ -684,6 +762,7 @@ export const LoggingInfo = /*@__PURE__*/ S.suspend(() =>
     S.encodeKeys({ BrokerLogs: "brokerLogs" }),
   ),
 ).annotate({ identifier: "LoggingInfo" }) as any as S.Schema<LoggingInfo>;
+export type __integerMin1Max15 = number;
 export type __mapOf__string = { [key: string]: string | undefined };
 export const __mapOf__string = /*@__PURE__*/ S.Record(
   S.String,
@@ -691,6 +770,7 @@ export const __mapOf__string = /*@__PURE__*/ S.Record(
 );
 export type StorageMode = "LOCAL" | "TIERED" | (string & {});
 export const StorageMode = /*@__PURE__*/ S.String;
+
 export interface CreateClusterRequest {
   BrokerNodeGroupInfo?: BrokerNodeGroupInfo;
   Rebalancing?: Rebalancing;
@@ -763,6 +843,7 @@ export type ClusterState =
   | "UPDATING"
   | (string & {});
 export const ClusterState = /*@__PURE__*/ S.String;
+
 export interface CreateClusterResponse {
   ClusterArn?: string;
   ClusterName?: string;
@@ -913,6 +994,7 @@ export const CreateClusterV2Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateClusterV2Request>;
 export type ClusterType = "PROVISIONED" | "SERVERLESS" | (string & {});
 export const ClusterType = /*@__PURE__*/ S.String;
+
 export interface CreateClusterV2Response {
   ClusterArn?: string;
   ClusterName?: string;
@@ -936,6 +1018,7 @@ export const CreateClusterV2Response = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateClusterV2Response",
 }) as any as S.Schema<CreateClusterV2Response>;
+export type __blob = Uint8Array;
 export interface CreateConfigurationRequest {
   Description?: string;
   KafkaVersions?: string[];
@@ -970,6 +1053,7 @@ export const CreateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConfigurationRequest",
 }) as any as S.Schema<CreateConfigurationRequest>;
+export type __timestampIso8601 = Date;
 export interface ConfigurationRevision {
   CreationTime?: Date;
   Description?: string;
@@ -998,6 +1082,7 @@ export type ConfigurationState =
   | "DELETE_FAILED"
   | (string & {});
 export const ConfigurationState = /*@__PURE__*/ S.String;
+
 export interface CreateConfigurationResponse {
   Arn?: string;
   CreationTime?: Date;
@@ -1029,6 +1114,7 @@ export const CreateConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConfigurationResponse",
 }) as any as S.Schema<CreateConfigurationResponse>;
+export type __stringMax1024 = string;
 export interface AmazonMskCluster {
   MskClusterArn?: string;
 }
@@ -1078,6 +1164,7 @@ export type KafkaClusterSaslScramMechanism =
   | "SHA512"
   | (string & {});
 export const KafkaClusterSaslScramMechanism = /*@__PURE__*/ S.String;
+
 export interface KafkaClusterSaslScramAuthentication {
   Mechanism?: KafkaClusterSaslScramMechanism;
   SecretArn?: string;
@@ -1114,6 +1201,7 @@ export const KafkaClusterClientAuthentication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KafkaClusterClientAuthentication>;
 export type KafkaClusterEncryptionInTransitType = "TLS" | (string & {});
 export const KafkaClusterEncryptionInTransitType = /*@__PURE__*/ S.String;
+
 export interface KafkaClusterEncryptionInTransit {
   EncryptionType?: KafkaClusterEncryptionInTransitType;
   RootCaCertificate?: string;
@@ -1157,10 +1245,12 @@ export const KafkaCluster = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "KafkaCluster" }) as any as S.Schema<KafkaCluster>;
 export type __listOfKafkaCluster = KafkaCluster[];
 export const __listOfKafkaCluster = /*@__PURE__*/ S.Array(KafkaCluster);
+export type __stringMax256 = string;
 export type __listOf__stringMax256 = string[];
 export const __listOf__stringMax256 = /*@__PURE__*/ S.Array(S.String);
 export type ConsumerGroupOffsetSyncMode = "LEGACY" | "ENHANCED" | (string & {});
 export const ConsumerGroupOffsetSyncMode = /*@__PURE__*/ S.String;
+
 export interface ConsumerGroupReplication {
   ConsumerGroupsToExclude?: string[];
   ConsumerGroupsToReplicate?: string[];
@@ -1195,11 +1285,13 @@ export type TargetCompressionType =
   | "ZSTD"
   | (string & {});
 export const TargetCompressionType = /*@__PURE__*/ S.String;
+
 export type ReplicationStartingPositionType =
   | "LATEST"
   | "EARLIEST"
   | (string & {});
 export const ReplicationStartingPositionType = /*@__PURE__*/ S.String;
+
 export interface ReplicationStartingPosition {
   Type?: ReplicationStartingPositionType;
 }
@@ -1215,6 +1307,7 @@ export type ReplicationTopicNameConfigurationType =
   | "IDENTICAL"
   | (string & {});
 export const ReplicationTopicNameConfigurationType = /*@__PURE__*/ S.String;
+
 export interface ReplicationTopicNameConfiguration {
   Type?: ReplicationTopicNameConfigurationType;
 }
@@ -1225,6 +1318,7 @@ export const ReplicationTopicNameConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReplicationTopicNameConfiguration",
 }) as any as S.Schema<ReplicationTopicNameConfiguration>;
+export type __stringMax249 = string;
 export type __listOf__stringMax249 = string[];
 export const __listOf__stringMax249 = /*@__PURE__*/ S.Array(S.String);
 export interface TopicReplication {
@@ -1293,6 +1387,7 @@ export const ReplicationInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationInfo>;
 export type __listOfReplicationInfo = ReplicationInfo[];
 export const __listOfReplicationInfo = /*@__PURE__*/ S.Array(ReplicationInfo);
+export type __stringMin1Max128Pattern09AZaZ09AZaZ0 = string;
 export interface ReplicatorCloudWatchLogs {
   Enabled?: boolean;
   LogGroup?: string;
@@ -1412,6 +1507,7 @@ export type ReplicatorState =
   | "FAILED"
   | (string & {});
 export const ReplicatorState = /*@__PURE__*/ S.String;
+
 export interface CreateReplicatorResponse {
   ReplicatorArn?: string;
   ReplicatorName?: string;
@@ -1432,6 +1528,7 @@ export const CreateReplicatorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateReplicatorResponse",
 }) as any as S.Schema<CreateReplicatorResponse>;
+export type __integerMin1 = number;
 export interface CreateTopicRequest {
   ClusterArn: string;
   TopicName?: string;
@@ -1475,6 +1572,7 @@ export type TopicState =
   | "ACTIVE"
   | (string & {});
 export const TopicState = /*@__PURE__*/ S.String;
+
 export interface CreateTopicResponse {
   TopicArn?: string;
   TopicName?: string;
@@ -1546,6 +1644,7 @@ export type VpcConnectionState =
   | "REJECTING"
   | (string & {});
 export const VpcConnectionState = /*@__PURE__*/ S.String;
+
 export interface CreateVpcConnectionResponse {
   VpcConnectionArn?: string;
   State?: VpcConnectionState;
@@ -1872,6 +1971,7 @@ export type CustomerActionStatus =
   | "NONE"
   | (string & {});
 export const CustomerActionStatus = /*@__PURE__*/ S.String;
+
 export interface ClusterInfo {
   ActiveOperationArn?: string;
   BrokerNodeGroupInfo?: BrokerNodeGroupInfo;
@@ -2141,6 +2241,7 @@ export const MutableClusterInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MutableClusterInfo>;
 export type UserIdentityType = "AWSACCOUNT" | "AWSSERVICE" | (string & {});
 export const UserIdentityType = /*@__PURE__*/ S.String;
+
 export interface UserIdentity {
   Type?: UserIdentityType;
   PrincipalId?: string;
@@ -2990,6 +3091,7 @@ export const DescribeTopicResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTopicResponse",
 }) as any as S.Schema<DescribeTopicResponse>;
+export type MaxResults = number;
 export interface DescribeTopicPartitionsRequest {
   ClusterArn: string;
   TopicName: string;
@@ -3799,6 +3901,7 @@ export const ListKafkaVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListKafkaVersionsRequest>;
 export type KafkaVersionStatus = "ACTIVE" | "DEPRECATED" | (string & {});
 export const KafkaVersionStatus = /*@__PURE__*/ S.String;
+
 export interface KafkaVersion {
   Version?: string;
   Status?: KafkaVersionStatus;
@@ -3887,6 +3990,7 @@ export const ControllerNodeInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ControllerNodeInfo>;
 export type NodeType = "BROKER" | (string & {});
 export const NodeType = /*@__PURE__*/ S.String;
+
 export interface ZookeeperNodeInfo {
   AttachedENIId?: string;
   ClientVpcIpAddress?: string;
@@ -5167,95 +5271,6 @@ export const UpdateTopicResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTopicResponse",
 }) as any as S.Schema<UpdateTopicResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ClusterConnectivityException extends S.TaggedErrorClass<ClusterConnectivityException>()(
-  "ClusterConnectivityException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ControllerMovedException extends S.TaggedErrorClass<ControllerMovedException>()(
-  "ControllerMovedException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class GroupSubscribedToTopicException extends S.TaggedErrorClass<GroupSubscribedToTopicException>()(
-  "GroupSubscribedToTopicException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class KafkaRequestException extends S.TaggedErrorClass<KafkaRequestException>()(
-  "KafkaRequestException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class KafkaTimeoutException extends S.TaggedErrorClass<KafkaTimeoutException>()(
-  "KafkaTimeoutException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class NotControllerException extends S.TaggedErrorClass<NotControllerException>()(
-  "NotControllerException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ReassignmentInProgressException extends S.TaggedErrorClass<ReassignmentInProgressException>()(
-  "ReassignmentInProgressException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class TopicExistsException extends S.TaggedErrorClass<TopicExistsException>()(
-  "TopicExistsException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class UnknownTopicOrPartitionException extends S.TaggedErrorClass<UnknownTopicOrPartitionException>()(
-  "UnknownTopicOrPartitionException",
-  { InvalidParameter: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type BatchAssociateScramSecretError =
   | BadRequestException
   | ForbiddenException
@@ -5289,6 +5304,7 @@ export const batchAssociateScramSecret: API.OperationMethod<
   retry: Retry,
   operationName: "BatchAssociateScramSecret",
 }));
+
 export type BatchDisassociateScramSecretError =
   | BadRequestException
   | ForbiddenException
@@ -5322,6 +5338,7 @@ export const batchDisassociateScramSecret: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDisassociateScramSecret",
 }));
+
 export type CreateClusterError =
   | BadRequestException
   | ConflictException
@@ -5355,6 +5372,7 @@ export const createCluster: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCluster",
 }));
+
 export type CreateClusterV2Error =
   | BadRequestException
   | ConflictException
@@ -5388,6 +5406,7 @@ export const createClusterV2: API.OperationMethod<
   retry: Retry,
   operationName: "CreateClusterV2",
 }));
+
 export type CreateConfigurationError =
   | BadRequestException
   | ConflictException
@@ -5421,6 +5440,7 @@ export const createConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConfiguration",
 }));
+
 export type CreateReplicatorError =
   | BadRequestException
   | ConflictException
@@ -5456,6 +5476,7 @@ export const createReplicator: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReplicator",
 }));
+
 export type CreateTopicError =
   | BadRequestException
   | ClusterConnectivityException
@@ -5507,6 +5528,7 @@ export const createTopic: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTopic",
 }));
+
 export type CreateVpcConnectionError =
   | BadRequestException
   | ForbiddenException
@@ -5538,6 +5560,7 @@ export const createVpcConnection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpcConnection",
 }));
+
 export type DeleteClusterError =
   | BadRequestException
   | ForbiddenException
@@ -5565,6 +5588,7 @@ export const deleteCluster: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCluster",
 }));
+
 export type DeleteClusterPolicyError =
   | BadRequestException
   | ForbiddenException
@@ -5592,6 +5616,7 @@ export const deleteClusterPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteClusterPolicy",
 }));
+
 export type DeleteConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -5619,6 +5644,7 @@ export const deleteConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfiguration",
 }));
+
 export type DeleteReplicatorError =
   | BadRequestException
   | ForbiddenException
@@ -5652,6 +5678,7 @@ export const deleteReplicator: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReplicator",
 }));
+
 export type DeleteTopicError =
   | BadRequestException
   | ClusterConnectivityException
@@ -5695,6 +5722,7 @@ export const deleteTopic: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTopic",
 }));
+
 export type DeleteVpcConnectionError =
   | BadRequestException
   | ForbiddenException
@@ -5722,6 +5750,7 @@ export const deleteVpcConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpcConnection",
 }));
+
 export type DescribeClusterError =
   | BadRequestException
   | ForbiddenException
@@ -5751,6 +5780,7 @@ export const describeCluster: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCluster",
 }));
+
 export type DescribeClusterOperationError =
   | BadRequestException
   | ForbiddenException
@@ -5780,6 +5810,7 @@ export const describeClusterOperation: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeClusterOperation",
 }));
+
 export type DescribeClusterOperationV2Error =
   | BadRequestException
   | ForbiddenException
@@ -5813,6 +5844,7 @@ export const describeClusterOperationV2: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeClusterOperationV2",
 }));
+
 export type DescribeClusterV2Error =
   | BadRequestException
   | ForbiddenException
@@ -5842,6 +5874,7 @@ export const describeClusterV2: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeClusterV2",
 }));
+
 export type DescribeConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -5873,6 +5906,7 @@ export const describeConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConfiguration",
 }));
+
 export type DescribeConfigurationRevisionError =
   | BadRequestException
   | ForbiddenException
@@ -5904,6 +5938,7 @@ export const describeConfigurationRevision: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConfigurationRevision",
 }));
+
 export type DescribeReplicatorError =
   | BadRequestException
   | ForbiddenException
@@ -5937,6 +5972,7 @@ export const describeReplicator: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeReplicator",
 }));
+
 export type DescribeTopicError =
   | BadRequestException
   | ForbiddenException
@@ -5966,6 +6002,7 @@ export const describeTopic: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTopic",
 }));
+
 export type DescribeTopicPartitionsError =
   | BadRequestException
   | ForbiddenException
@@ -6016,6 +6053,7 @@ export const describeTopicPartitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVpcConnectionError =
   | BadRequestException
   | ForbiddenException
@@ -6047,6 +6085,7 @@ export const describeVpcConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpcConnection",
 }));
+
 export type GetBootstrapBrokersError =
   | BadRequestException
   | ConflictException
@@ -6078,6 +6117,7 @@ export const getBootstrapBrokers: API.OperationMethod<
   retry: Retry,
   operationName: "GetBootstrapBrokers",
 }));
+
 export type GetClusterPolicyError =
   | BadRequestException
   | ForbiddenException
@@ -6105,6 +6145,7 @@ export const getClusterPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetClusterPolicy",
 }));
+
 export type GetCompatibleKafkaVersionsError =
   | BadRequestException
   | ForbiddenException
@@ -6138,6 +6179,7 @@ export const getCompatibleKafkaVersions: API.OperationMethod<
   retry: Retry,
   operationName: "GetCompatibleKafkaVersions",
 }));
+
 export type ListClientVpcConnectionsError =
   | BadRequestException
   | ForbiddenException
@@ -6188,6 +6230,7 @@ export const listClientVpcConnections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListClusterOperationsError =
   | BadRequestException
   | ForbiddenException
@@ -6236,6 +6279,7 @@ export const listClusterOperations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListClusterOperationsV2Error =
   | BadRequestException
   | ForbiddenException
@@ -6290,6 +6334,7 @@ export const listClusterOperationsV2: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListClustersError =
   | BadRequestException
   | ForbiddenException
@@ -6338,6 +6383,7 @@ export const listClusters: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListClustersV2Error =
   | BadRequestException
   | ForbiddenException
@@ -6386,6 +6432,7 @@ export const listClustersV2: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListConfigurationRevisionsError =
   | BadRequestException
   | ForbiddenException
@@ -6438,6 +6485,7 @@ export const listConfigurationRevisions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListConfigurationsError =
   | BadRequestException
   | ForbiddenException
@@ -6488,6 +6536,7 @@ export const listConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListKafkaVersionsError =
   | BadRequestException
   | ForbiddenException
@@ -6536,6 +6585,7 @@ export const listKafkaVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNodesError =
   | BadRequestException
   | ForbiddenException
@@ -6584,6 +6634,7 @@ export const listNodes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListReplicatorsError =
   | BadRequestException
   | ForbiddenException
@@ -6638,6 +6689,7 @@ export const listReplicators: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListScramSecretsError =
   | BadRequestException
   | ForbiddenException
@@ -6692,6 +6744,7 @@ export const listScramSecrets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | InternalServerErrorException
@@ -6717,6 +6770,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTopicsError =
   | BadRequestException
   | ForbiddenException
@@ -6769,6 +6823,7 @@ export const listTopics: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListVpcConnectionsError =
   | BadRequestException
   | ForbiddenException
@@ -6819,6 +6874,7 @@ export const listVpcConnections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutClusterPolicyError =
   | BadRequestException
   | ForbiddenException
@@ -6844,6 +6900,7 @@ export const putClusterPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutClusterPolicy",
 }));
+
 export type RebootBrokerError =
   | BadRequestException
   | ForbiddenException
@@ -6877,6 +6934,7 @@ export const rebootBroker: API.OperationMethod<
   retry: Retry,
   operationName: "RebootBroker",
 }));
+
 export type RejectClientVpcConnectionError =
   | BadRequestException
   | ForbiddenException
@@ -6906,6 +6964,7 @@ export const rejectClientVpcConnection: API.OperationMethod<
   retry: Retry,
   operationName: "RejectClientVpcConnection",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | InternalServerErrorException
@@ -6931,6 +6990,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | InternalServerErrorException
@@ -6956,6 +7016,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateBrokerCountError =
   | BadRequestException
   | ForbiddenException
@@ -6985,6 +7046,7 @@ export const updateBrokerCount: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBrokerCount",
 }));
+
 export type UpdateBrokerStorageError =
   | BadRequestException
   | ForbiddenException
@@ -7014,6 +7076,7 @@ export const updateBrokerStorage: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBrokerStorage",
 }));
+
 export type UpdateBrokerTypeError =
   | BadRequestException
   | ForbiddenException
@@ -7047,6 +7110,7 @@ export const updateBrokerType: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBrokerType",
 }));
+
 export type UpdateClusterConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -7078,6 +7142,7 @@ export const updateClusterConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateClusterConfiguration",
 }));
+
 export type UpdateClusterKafkaVersionError =
   | BadRequestException
   | ForbiddenException
@@ -7111,6 +7176,7 @@ export const updateClusterKafkaVersion: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateClusterKafkaVersion",
 }));
+
 export type UpdateConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -7142,6 +7208,7 @@ export const updateConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConfiguration",
 }));
+
 export type UpdateConnectivityError =
   | BadRequestException
   | ForbiddenException
@@ -7173,6 +7240,7 @@ export const updateConnectivity: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConnectivity",
 }));
+
 export type UpdateMonitoringError =
   | BadRequestException
   | ForbiddenException
@@ -7202,6 +7270,7 @@ export const updateMonitoring: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMonitoring",
 }));
+
 export type UpdateRebalancingError =
   | BadRequestException
   | ForbiddenException
@@ -7235,6 +7304,7 @@ export const updateRebalancing: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRebalancing",
 }));
+
 export type UpdateReplicationInfoError =
   | BadRequestException
   | ForbiddenException
@@ -7268,6 +7338,7 @@ export const updateReplicationInfo: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateReplicationInfo",
 }));
+
 export type UpdateSecurityError =
   | BadRequestException
   | ForbiddenException
@@ -7301,6 +7372,7 @@ export const updateSecurity: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSecurity",
 }));
+
 export type UpdateStorageError =
   | BadRequestException
   | ForbiddenException
@@ -7334,6 +7406,7 @@ export const updateStorage: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateStorage",
 }));
+
 export type UpdateTopicError =
   | BadRequestException
   | ClusterConnectivityException

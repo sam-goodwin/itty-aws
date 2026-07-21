@@ -87,37 +87,91 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class DetectedLanguageLowConfidenceException extends S.TaggedErrorClass<DetectedLanguageLowConfidenceException>()(
+  "DetectedLanguageLowConfidenceException",
+  { Message: S.optional(S.String), DetectedLanguageCode: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidFilterException extends S.TaggedErrorClass<InvalidFilterException>()(
+  "InvalidFilterException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class TextSizeLimitExceededException extends S.TaggedErrorClass<TextSizeLimitExceededException>()(
+  "TextSizeLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { message: S.optional(S.String), ResourceArn: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedDisplayLanguageCodeException extends S.TaggedErrorClass<UnsupportedDisplayLanguageCodeException>()(
+  "UnsupportedDisplayLanguageCodeException",
+  { Message: S.optional(S.String), DisplayLanguageCode: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedLanguagePairException extends S.TaggedErrorClass<UnsupportedLanguagePairException>()(
+  "UnsupportedLanguagePairException",
+  {
+    Message: S.optional(S.String),
+    SourceLanguageCode: S.optional(S.String),
+    TargetLanguageCode: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ResourceName = string;
 export type Description = string;
 export type S3Uri = string;
-export type EncryptionKeyID = string;
-export type ClientTokenString = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ResourceArn = string;
-export type JobId = string;
-export type JobName = string;
-export type LanguageCodeString = string;
-export type UnboundedLengthString = string;
-export type ContentType = string;
-export type IamRoleArn = string;
-export type ParallelDataArn = string;
-export type TerminologyArn = string;
-export type TerminologyFile = Uint8Array | redacted.Redacted<Uint8Array>;
-export type NextToken = string;
-export type MaxResultsInteger = number;
-export type LocalizedNameString = string;
-export type DocumentContent = Uint8Array | redacted.Redacted<Uint8Array>;
-export type TranslatedDocumentContent =
-  | Uint8Array
-  | redacted.Redacted<Uint8Array>;
-export type BoundedLengthString = string;
-export type TranslatedTextString = string;
-
-//# Schemas
 export type ParallelDataFormat = "TSV" | "CSV" | "TMX" | (string & {});
 export const ParallelDataFormat = /*@__PURE__*/ S.String;
+
 export interface ParallelDataConfig {
   S3Uri?: string;
   Format?: ParallelDataFormat;
@@ -132,6 +186,8 @@ export const ParallelDataConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ParallelDataConfig>;
 export type EncryptionKeyType = "KMS" | (string & {});
 export const EncryptionKeyType = /*@__PURE__*/ S.String;
+
+export type EncryptionKeyID = string;
 export interface EncryptionKey {
   Type: EncryptionKeyType;
   Id: string;
@@ -139,6 +195,9 @@ export interface EncryptionKey {
 export const EncryptionKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: EncryptionKeyType, Id: S.String }),
 ).annotate({ identifier: "EncryptionKey" }) as any as S.Schema<EncryptionKey>;
+export type ClientTokenString = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -178,6 +237,7 @@ export type ParallelDataStatus =
   | "FAILED"
   | (string & {});
 export const ParallelDataStatus = /*@__PURE__*/ S.String;
+
 export interface CreateParallelDataResponse {
   Name?: string;
   Status?: ParallelDataStatus;
@@ -228,6 +288,7 @@ export const DeleteTerminologyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteTerminologyResponse",
 }) as any as S.Schema<DeleteTerminologyResponse>;
+export type JobId = string;
 export interface DescribeTextTranslationJobRequest {
   JobId: string;
 }
@@ -238,6 +299,7 @@ export const DescribeTextTranslationJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTextTranslationJobRequest",
 }) as any as S.Schema<DescribeTextTranslationJobRequest>;
+export type JobName = string;
 export type JobStatus =
   | "SUBMITTED"
   | "IN_PROGRESS"
@@ -248,6 +310,7 @@ export type JobStatus =
   | "STOPPED"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
 export interface JobDetails {
   TranslatedDocumentsCount?: number;
   DocumentsWithErrorsCount?: number;
@@ -260,10 +323,13 @@ export const JobDetails = /*@__PURE__*/ S.suspend(() =>
     InputDocumentsCount: S.optional(S.Number),
   }),
 ).annotate({ identifier: "JobDetails" }) as any as S.Schema<JobDetails>;
+export type LanguageCodeString = string;
 export type TargetLanguageCodeStringList = string[];
 export const TargetLanguageCodeStringList = /*@__PURE__*/ S.Array(S.String);
 export type ResourceNameList = string[];
 export const ResourceNameList = /*@__PURE__*/ S.Array(S.String);
+export type UnboundedLengthString = string;
+export type ContentType = string;
 export interface InputDataConfig {
   S3Uri: string;
   ContentType: string;
@@ -282,12 +348,16 @@ export const OutputDataConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OutputDataConfig",
 }) as any as S.Schema<OutputDataConfig>;
+export type IamRoleArn = string;
 export type Formality = "FORMAL" | "INFORMAL" | (string & {});
 export const Formality = /*@__PURE__*/ S.String;
+
 export type Profanity = "MASK" | (string & {});
 export const Profanity = /*@__PURE__*/ S.String;
+
 export type Brevity = "ON" | (string & {});
 export const Brevity = /*@__PURE__*/ S.String;
+
 export interface TranslationSettings {
   Formality?: Formality;
   Profanity?: Profanity;
@@ -360,6 +430,7 @@ export const GetParallelDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetParallelDataRequest",
 }) as any as S.Schema<GetParallelDataRequest>;
+export type ParallelDataArn = string;
 export type LanguageCodeStringList = string[];
 export const LanguageCodeStringList = /*@__PURE__*/ S.Array(S.String);
 export interface ParallelDataProperties {
@@ -435,6 +506,7 @@ export const GetParallelDataResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetParallelDataResponse>;
 export type TerminologyDataFormat = "CSV" | "TMX" | "TSV" | (string & {});
 export const TerminologyDataFormat = /*@__PURE__*/ S.String;
+
 export interface GetTerminologyRequest {
   Name: string;
   TerminologyDataFormat?: TerminologyDataFormat;
@@ -449,8 +521,10 @@ export const GetTerminologyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTerminologyRequest",
 }) as any as S.Schema<GetTerminologyRequest>;
+export type TerminologyArn = string;
 export type Directionality = "UNI" | "MULTI" | (string & {});
 export const Directionality = /*@__PURE__*/ S.String;
+
 export interface TerminologyProperties {
   Name?: string;
   Description?: string;
@@ -512,6 +586,8 @@ export const GetTerminologyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTerminologyResponse>;
 export type MergeStrategy = "OVERWRITE" | (string & {});
 export const MergeStrategy = /*@__PURE__*/ S.String;
+
+export type TerminologyFile = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface TerminologyData {
   File: Uint8Array | redacted.Redacted<Uint8Array>;
   Format: TerminologyDataFormat;
@@ -573,6 +649,9 @@ export type DisplayLanguageCode =
   | "zh-TW"
   | (string & {});
 export const DisplayLanguageCode = /*@__PURE__*/ S.String;
+
+export type NextToken = string;
+export type MaxResultsInteger = number;
 export interface ListLanguagesRequest {
   DisplayLanguageCode?: DisplayLanguageCode;
   NextToken?: string;
@@ -589,6 +668,7 @@ export const ListLanguagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListLanguagesRequest",
 }) as any as S.Schema<ListLanguagesRequest>;
+export type LocalizedNameString = string;
 export interface Language {
   LanguageName: string;
   LanguageCode: string;
@@ -642,6 +722,7 @@ export const ListParallelDataResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListParallelDataResponse",
 }) as any as S.Schema<ListParallelDataResponse>;
+export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -819,6 +900,7 @@ export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TagResourceResponse",
 }) as any as S.Schema<TagResourceResponse>;
+export type DocumentContent = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface Document {
   Content: Uint8Array | redacted.Redacted<Uint8Array>;
   ContentType: string;
@@ -846,6 +928,9 @@ export const TranslateDocumentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TranslateDocumentRequest",
 }) as any as S.Schema<TranslateDocumentRequest>;
+export type TranslatedDocumentContent =
+  | Uint8Array
+  | redacted.Redacted<Uint8Array>;
 export interface TranslatedDocument {
   Content: Uint8Array | redacted.Redacted<Uint8Array>;
 }
@@ -895,6 +980,7 @@ export const TranslateDocumentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TranslateDocumentResponse",
 }) as any as S.Schema<TranslateDocumentResponse>;
+export type BoundedLengthString = string;
 export interface TranslateTextRequest {
   Text: string;
   TerminologyNames?: string[];
@@ -915,6 +1001,7 @@ export const TranslateTextRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TranslateTextRequest",
 }) as any as S.Schema<TranslateTextRequest>;
+export type TranslatedTextString = string;
 export interface TranslateTextResponse {
   TranslatedText: string;
   SourceLanguageCode: string;
@@ -988,89 +1075,6 @@ export const UpdateParallelDataResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateParallelDataResponse",
 }) as any as S.Schema<UpdateParallelDataResponse>;
-
-//# Errors
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String), ResourceArn: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedDisplayLanguageCodeException extends S.TaggedErrorClass<UnsupportedDisplayLanguageCodeException>()(
-  "UnsupportedDisplayLanguageCodeException",
-  { Message: S.optional(S.String), DisplayLanguageCode: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidFilterException extends S.TaggedErrorClass<InvalidFilterException>()(
-  "InvalidFilterException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedLanguagePairException extends S.TaggedErrorClass<UnsupportedLanguagePairException>()(
-  "UnsupportedLanguagePairException",
-  {
-    Message: S.optional(S.String),
-    SourceLanguageCode: S.optional(S.String),
-    TargetLanguageCode: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class DetectedLanguageLowConfidenceException extends S.TaggedErrorClass<DetectedLanguageLowConfidenceException>()(
-  "DetectedLanguageLowConfidenceException",
-  { Message: S.optional(S.String), DetectedLanguageCode: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TextSizeLimitExceededException extends S.TaggedErrorClass<TextSizeLimitExceededException>()(
-  "TextSizeLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateParallelDataError =
   | ConcurrentModificationException
   | ConflictException
@@ -1109,6 +1113,7 @@ export const createParallelData: API.OperationMethod<
   retry: Retry,
   operationName: "CreateParallelData",
 }));
+
 export type DeleteParallelDataError =
   | ConcurrentModificationException
   | InternalServerException
@@ -1136,6 +1141,7 @@ export const deleteParallelData: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteParallelData",
 }));
+
 export type DeleteTerminologyError =
   | InternalServerException
   | InvalidParameterValueException
@@ -1163,6 +1169,7 @@ export const deleteTerminology: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTerminology",
 }));
+
 export type DescribeTextTranslationJobError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1189,6 +1196,7 @@ export const describeTextTranslationJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTextTranslationJob",
 }));
+
 export type GetParallelDataError =
   | InternalServerException
   | InvalidParameterValueException
@@ -1216,6 +1224,7 @@ export const getParallelData: API.OperationMethod<
   retry: Retry,
   operationName: "GetParallelData",
 }));
+
 export type GetTerminologyError =
   | InternalServerException
   | InvalidParameterValueException
@@ -1243,6 +1252,7 @@ export const getTerminology: API.OperationMethod<
   retry: Retry,
   operationName: "GetTerminology",
 }));
+
 export type ImportTerminologyError =
   | ConcurrentModificationException
   | InternalServerException
@@ -1282,6 +1292,7 @@ export const importTerminology: API.OperationMethod<
   retry: Retry,
   operationName: "ImportTerminology",
 }));
+
 export type ListLanguagesError =
   | InternalServerException
   | InvalidParameterValueException
@@ -1329,6 +1340,7 @@ export const listLanguages: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListParallelDataError =
   | InternalServerException
   | InvalidParameterValueException
@@ -1374,6 +1386,7 @@ export const listParallelData: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | InvalidParameterValueException
@@ -1401,6 +1414,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTerminologiesError =
   | InternalServerException
   | InvalidParameterValueException
@@ -1446,6 +1460,7 @@ export const listTerminologies: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTextTranslationJobsError =
   | InternalServerException
   | InvalidFilterException
@@ -1493,6 +1508,7 @@ export const listTextTranslationJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type StartTextTranslationJobError =
   | InternalServerException
   | InvalidParameterValueException
@@ -1532,6 +1548,7 @@ export const startTextTranslationJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartTextTranslationJob",
 }));
+
 export type StopTextTranslationJobError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1565,6 +1582,7 @@ export const stopTextTranslationJob: API.OperationMethod<
   retry: Retry,
   operationName: "StopTextTranslationJob",
 }));
+
 export type TagResourceError =
   | ConcurrentModificationException
   | InternalServerException
@@ -1597,6 +1615,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TranslateDocumentError =
   | InternalServerException
   | InvalidRequestException
@@ -1639,6 +1658,7 @@ export const translateDocument: API.OperationMethod<
   retry: Retry,
   operationName: "TranslateDocument",
 }));
+
 export type TranslateTextError =
   | DetectedLanguageLowConfidenceException
   | InternalServerException
@@ -1675,6 +1695,7 @@ export const translateText: API.OperationMethod<
   retry: Retry,
   operationName: "TranslateText",
 }));
+
 export type UntagResourceError =
   | ConcurrentModificationException
   | InternalServerException
@@ -1704,6 +1725,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateParallelDataError =
   | ConcurrentModificationException
   | ConflictException

@@ -85,20 +85,39 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class DryRunOperation extends S.TaggedErrorClass<DryRunOperation>()(
+  "DryRunOperation",
+  { Message: S.optional(S.String) },
+) {}
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  { Message: S.optional(S.String) },
+) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { Message: S.optional(S.String) },
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    Message: S.String,
+    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type HomeRegion = string;
-export type TargetId = string;
-export type DryRun = boolean;
-export type ControlId = string;
-export type RequestedTime = Date;
-export type ErrorMessage = string;
-export type RetryAfterSeconds = number;
-export type DescribeHomeRegionControlsMaxResults = number;
-export type Token = string;
-
-//# Schemas
 export type TargetType = "ACCOUNT" | (string & {});
 export const TargetType = /*@__PURE__*/ S.String;
+
+export type TargetId = string;
 export interface Target {
   Type: TargetType;
   Id?: string;
@@ -106,6 +125,7 @@ export interface Target {
 export const Target = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: TargetType, Id: S.optional(S.String) }),
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
+export type DryRun = boolean;
 export interface CreateHomeRegionControlRequest {
   HomeRegion: string;
   Target: Target;
@@ -122,6 +142,8 @@ export const CreateHomeRegionControlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHomeRegionControlRequest",
 }) as any as S.Schema<CreateHomeRegionControlRequest>;
+export type ControlId = string;
+export type RequestedTime = Date;
 export interface HomeRegionControl {
   ControlId?: string;
   HomeRegion?: string;
@@ -162,6 +184,8 @@ export const DeleteHomeRegionControlResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteHomeRegionControlResult",
 }) as any as S.Schema<DeleteHomeRegionControlResult>;
+export type DescribeHomeRegionControlsMaxResults = number;
+export type Token = string;
 export interface DescribeHomeRegionControlsRequest {
   ControlId?: string;
   HomeRegion?: string;
@@ -212,38 +236,8 @@ export const GetHomeRegionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetHomeRegionResult",
 }) as any as S.Schema<GetHomeRegionResult>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class DryRunOperation extends S.TaggedErrorClass<DryRunOperation>()(
-  "DryRunOperation",
-  { Message: S.optional(S.String) },
-) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { Message: S.optional(S.String) },
-) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    Message: S.String,
-    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-
-//# Operations
+export type ErrorMessage = string;
+export type RetryAfterSeconds = number;
 export type CreateHomeRegionControlError =
   | AccessDeniedException
   | DryRunOperation
@@ -275,6 +269,7 @@ export const createHomeRegionControl: API.OperationMethod<
   retry: Retry,
   operationName: "CreateHomeRegionControl",
 }));
+
 export type DeleteHomeRegionControlError =
   | AccessDeniedException
   | InternalServerError
@@ -304,6 +299,7 @@ export const deleteHomeRegionControl: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteHomeRegionControl",
 }));
+
 export type DescribeHomeRegionControlsError =
   | AccessDeniedException
   | InternalServerError
@@ -354,6 +350,7 @@ export const describeHomeRegionControls: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetHomeRegionError =
   | AccessDeniedException
   | InternalServerError

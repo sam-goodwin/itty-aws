@@ -92,24 +92,42 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
+  "InvalidParameterCombinationException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NoSuchDomainException extends S.TaggedErrorClass<NoSuchDomainException>()(
+  "NoSuchDomainException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NoSuchExportException extends S.TaggedErrorClass<NoSuchExportException>()(
+  "NoSuchExportException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NumberExportsLimitExceeded extends S.TaggedErrorClass<NumberExportsLimitExceeded>()(
+  "NumberExportsLimitExceeded",
+  { message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withThrottlingError) {}
 export type ExportArn = string;
-export type IdempotencyToken = string;
-export type DomainName = string;
-export type RequestedAt = Date;
-export type S3BucketName = string;
-export type S3KeyPrefix = string;
-export type S3SseKmsKeyId = string;
-export type AwsAccountId = string;
-export type FailureCode = string;
-export type FailureMessage = string;
-export type ExportManifestSummary = string;
-export type ItemsCount = number;
-export type ExportDataCutoffTime = Date;
-export type MaxResults = number;
-export type NextToken = string;
-
-//# Schemas
 export interface GetExportRequest {
   exportArn: string;
 }
@@ -127,6 +145,7 @@ export const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetExportRequest",
 }) as any as S.Schema<GetExportRequest>;
+export type IdempotencyToken = string;
 export type ExportStatus =
   | "PENDING"
   | "IN_PROGRESS"
@@ -134,8 +153,21 @@ export type ExportStatus =
   | "FAILED"
   | (string & {});
 export const ExportStatus = /*@__PURE__*/ S.String;
+
+export type DomainName = string;
+export type RequestedAt = Date;
+export type S3BucketName = string;
+export type S3KeyPrefix = string;
 export type S3SseAlgorithm = "AES256" | "KMS" | (string & {});
 export const S3SseAlgorithm = /*@__PURE__*/ S.String;
+
+export type S3SseKmsKeyId = string;
+export type AwsAccountId = string;
+export type FailureCode = string;
+export type FailureMessage = string;
+export type ExportManifestSummary = string;
+export type ItemsCount = number;
+export type ExportDataCutoffTime = Date;
 export interface GetExportResponse {
   exportArn: string;
   clientToken: string;
@@ -176,6 +208,8 @@ export const GetExportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetExportResponse",
 }) as any as S.Schema<GetExportResponse>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface ListExportsRequest {
   domainName?: string;
   maxResults?: number;
@@ -272,45 +306,6 @@ export const StartDomainExportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartDomainExportResponse",
 }) as any as S.Schema<StartDomainExportResponse>;
-
-//# Errors
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NoSuchExportException extends S.TaggedErrorClass<NoSuchExportException>()(
-  "NoSuchExportException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NoSuchDomainException extends S.TaggedErrorClass<NoSuchDomainException>()(
-  "NoSuchDomainException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
-  "InvalidParameterCombinationException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NumberExportsLimitExceeded extends S.TaggedErrorClass<NumberExportsLimitExceeded>()(
-  "NumberExportsLimitExceeded",
-  { message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withThrottlingError) {}
-
-//# Operations
 export type GetExportError =
   | InvalidParameterValueException
   | NoSuchExportException
@@ -331,6 +326,7 @@ export const getExport: API.OperationMethod<
   retry: Retry,
   operationName: "GetExport",
 }));
+
 export type ListExportsError =
   | InvalidNextTokenException
   | InvalidParameterValueException
@@ -377,6 +373,7 @@ export const listExports: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type StartDomainExportError =
   | ConflictException
   | InvalidParameterCombinationException

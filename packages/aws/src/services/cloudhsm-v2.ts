@@ -91,37 +91,38 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class CloudHsmAccessDeniedException extends S.TaggedErrorClass<CloudHsmAccessDeniedException>()(
+  "CloudHsmAccessDeniedException",
+  { Message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class CloudHsmInternalFailureException extends S.TaggedErrorClass<CloudHsmInternalFailureException>()(
+  "CloudHsmInternalFailureException",
+  { Message: S.optional(S.String) },
+) {}
+export class CloudHsmInvalidRequestException extends S.TaggedErrorClass<CloudHsmInvalidRequestException>()(
+  "CloudHsmInvalidRequestException",
+  { Message: S.optional(S.String) },
+) {}
+export class CloudHsmResourceLimitExceededException extends S.TaggedErrorClass<CloudHsmResourceLimitExceededException>()(
+  "CloudHsmResourceLimitExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class CloudHsmResourceNotFoundException extends S.TaggedErrorClass<CloudHsmResourceNotFoundException>()(
+  "CloudHsmResourceNotFoundException",
+  { Message: S.optional(S.String) },
+) {}
+export class CloudHsmServiceException extends S.TaggedErrorClass<CloudHsmServiceException>()(
+  "CloudHsmServiceException",
+  { Message: S.optional(S.String) },
+) {}
+export class CloudHsmTagException extends S.TaggedErrorClass<CloudHsmTagException>()(
+  "CloudHsmTagException",
+  { Message: S.optional(S.String) },
+) {}
 export type Region = string;
 export type BackupId = string;
 export type TagKey = string;
 export type TagValue = string;
-export type ClusterId = string;
-export type ErrorMessage = string;
-export type BackupRetentionValue = string;
-export type HsmType = string;
-export type BackupArn = string;
-export type SubnetId = string;
-export type ExternalAz = string;
-export type EniId = string;
-export type IpAddress = string;
-export type IpV6Address = string;
-export type HsmId = string;
-export type PreCoPassword = string;
-export type SecurityGroup = string;
-export type StateMessage = string;
-export type VpcId = string;
-export type Cert = string;
-export type CloudHsmArn = string;
-export type ResourcePolicy = string;
-export type NextToken = string;
-export type BackupsMaxSize = number;
-export type Field = string;
-export type ClustersMaxSize = number;
-export type ResourceId = string;
-export type MaxSize = number;
-
-//# Schemas
 export interface Tag {
   Key: string;
   Value: string;
@@ -147,6 +148,7 @@ export const CopyBackupToRegionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyBackupToRegionRequest",
 }) as any as S.Schema<CopyBackupToRegionRequest>;
+export type ClusterId = string;
 export interface DestinationBackup {
   CreateTimestamp?: Date;
   SourceRegion?: string;
@@ -175,6 +177,8 @@ export const CopyBackupToRegionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CopyBackupToRegionResponse>;
 export type BackupRetentionType = "DAYS" | (string & {});
 export const BackupRetentionType = /*@__PURE__*/ S.String;
+
+export type BackupRetentionValue = string;
 export interface BackupRetentionPolicy {
   Type?: BackupRetentionType;
   Value?: string;
@@ -187,12 +191,17 @@ export const BackupRetentionPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BackupRetentionPolicy",
 }) as any as S.Schema<BackupRetentionPolicy>;
+export type HsmType = string;
+export type BackupArn = string;
+export type SubnetId = string;
 export type SubnetIds = string[];
 export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type NetworkType = "IPV4" | "DUALSTACK" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
+
 export type ClusterMode = "FIPS" | "NON_FIPS" | (string & {});
 export const ClusterMode = /*@__PURE__*/ S.String;
+
 export interface CreateClusterRequest {
   BackupRetentionPolicy?: BackupRetentionPolicy;
   HsmType: string;
@@ -219,6 +228,12 @@ export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateClusterRequest>;
 export type BackupPolicy = "DEFAULT" | (string & {});
 export const BackupPolicy = /*@__PURE__*/ S.String;
+
+export type ExternalAz = string;
+export type EniId = string;
+export type IpAddress = string;
+export type IpV6Address = string;
+export type HsmId = string;
 export type HsmState =
   | "CREATE_IN_PROGRESS"
   | "ACTIVE"
@@ -227,6 +242,7 @@ export type HsmState =
   | "DELETED"
   | (string & {});
 export const HsmState = /*@__PURE__*/ S.String;
+
 export interface Hsm {
   AvailabilityZone?: string;
   ClusterId?: string;
@@ -255,6 +271,8 @@ export const Hsm = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Hsm" }) as any as S.Schema<Hsm>;
 export type Hsms = Hsm[];
 export const Hsms = /*@__PURE__*/ S.Array(Hsm);
+export type PreCoPassword = string;
+export type SecurityGroup = string;
 export type ClusterState =
   | "CREATE_IN_PROGRESS"
   | "UNINITIALIZED"
@@ -269,11 +287,15 @@ export type ClusterState =
   | "DEGRADED"
   | (string & {});
 export const ClusterState = /*@__PURE__*/ S.String;
+
+export type StateMessage = string;
 export type ExternalSubnetMapping = { [key: string]: string | undefined };
 export const ExternalSubnetMapping = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type VpcId = string;
+export type Cert = string;
 export interface Certificates {
   ClusterCsr?: string;
   HsmCertificate?: string;
@@ -385,6 +407,7 @@ export type BackupState =
   | "PENDING_DELETION"
   | (string & {});
 export const BackupState = /*@__PURE__*/ S.String;
+
 export interface Backup {
   BackupId: string;
   BackupArn?: string;
@@ -475,6 +498,7 @@ export const DeleteHsmResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteHsmResponse",
 }) as any as S.Schema<DeleteHsmResponse>;
+export type CloudHsmArn = string;
 export interface DeleteResourcePolicyRequest {
   ResourceArn?: string;
 }
@@ -485,6 +509,7 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
+export type ResourcePolicy = string;
 export interface DeleteResourcePolicyResponse {
   ResourceArn?: string;
   Policy?: string;
@@ -494,6 +519,9 @@ export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteResourcePolicyResponse",
 }) as any as S.Schema<DeleteResourcePolicyResponse>;
+export type NextToken = string;
+export type BackupsMaxSize = number;
+export type Field = string;
 export type Strings = string[];
 export const Strings = /*@__PURE__*/ S.Array(S.String);
 export type Filters = { [key: string]: string[] | undefined };
@@ -532,6 +560,7 @@ export const DescribeBackupsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeBackupsResponse",
 }) as any as S.Schema<DescribeBackupsResponse>;
+export type ClustersMaxSize = number;
 export interface DescribeClustersRequest {
   Filters?: { [key: string]: string[] | undefined };
   NextToken?: string;
@@ -605,6 +634,8 @@ export const InitializeClusterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InitializeClusterResponse",
 }) as any as S.Schema<InitializeClusterResponse>;
+export type ResourceId = string;
+export type MaxSize = number;
 export interface ListTagsRequest {
   ResourceId: string;
   NextToken?: string;
@@ -750,38 +781,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-
-//# Errors
-export class CloudHsmAccessDeniedException extends S.TaggedErrorClass<CloudHsmAccessDeniedException>()(
-  "CloudHsmAccessDeniedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class CloudHsmInternalFailureException extends S.TaggedErrorClass<CloudHsmInternalFailureException>()(
-  "CloudHsmInternalFailureException",
-  { Message: S.optional(S.String) },
-) {}
-export class CloudHsmInvalidRequestException extends S.TaggedErrorClass<CloudHsmInvalidRequestException>()(
-  "CloudHsmInvalidRequestException",
-  { Message: S.optional(S.String) },
-) {}
-export class CloudHsmResourceNotFoundException extends S.TaggedErrorClass<CloudHsmResourceNotFoundException>()(
-  "CloudHsmResourceNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class CloudHsmServiceException extends S.TaggedErrorClass<CloudHsmServiceException>()(
-  "CloudHsmServiceException",
-  { Message: S.optional(S.String) },
-) {}
-export class CloudHsmTagException extends S.TaggedErrorClass<CloudHsmTagException>()(
-  "CloudHsmTagException",
-  { Message: S.optional(S.String) },
-) {}
-export class CloudHsmResourceLimitExceededException extends S.TaggedErrorClass<CloudHsmResourceLimitExceededException>()(
-  "CloudHsmResourceLimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CopyBackupToRegionError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -815,6 +815,7 @@ export const copyBackupToRegion: API.OperationMethod<
   retry: Retry,
   operationName: "CopyBackupToRegion",
 }));
+
 export type CreateClusterError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -849,6 +850,7 @@ export const createCluster: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCluster",
 }));
+
 export type CreateHsmError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -881,6 +883,7 @@ export const createHsm: API.OperationMethod<
   retry: Retry,
   operationName: "CreateHsm",
 }));
+
 export type DeleteBackupError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -914,6 +917,7 @@ export const deleteBackup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBackup",
 }));
+
 export type DeleteClusterError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -948,6 +952,7 @@ export const deleteCluster: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCluster",
 }));
+
 export type DeleteHsmError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -981,6 +986,7 @@ export const deleteHsm: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteHsm",
 }));
+
 export type DeleteResourcePolicyError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -1014,6 +1020,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DescribeBackupsError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -1073,6 +1080,7 @@ export const describeBackups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeClustersError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -1130,6 +1138,7 @@ export const describeClusters: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetResourcePolicyError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -1161,6 +1170,7 @@ export const getResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type InitializeClusterError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -1195,6 +1205,7 @@ export const initializeCluster: API.OperationMethod<
   retry: Retry,
   operationName: "InitializeCluster",
 }));
+
 export type ListTagsError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -1254,6 +1265,7 @@ export const listTags: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ModifyBackupAttributesError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -1285,6 +1297,7 @@ export const modifyBackupAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyBackupAttributes",
 }));
+
 export type ModifyClusterError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -1316,6 +1329,7 @@ export const modifyCluster: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyCluster",
 }));
+
 export type PutResourcePolicyError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -1361,6 +1375,7 @@ export const putResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type RestoreBackupError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -1394,6 +1409,7 @@ export const restoreBackup: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreBackup",
 }));
+
 export type TagResourceError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException
@@ -1429,6 +1445,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | CloudHsmAccessDeniedException
   | CloudHsmInternalFailureException

@@ -87,42 +87,73 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    message: S.String,
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(
+      S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+    ),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    message: S.String,
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(
+      S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+    ),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(
+      S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+    ),
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type DomainName = string;
 export type AccountId = string;
 export type RepositoryName = string;
 export type ExternalConnectionName = string;
-export type Arn = string;
-export type Description = string;
-export type RetryAfterSeconds = number;
-export type PackageNamespace = string;
-export type PackageName = string;
-export type PackageVersion = string;
-export type PackageVersionRevision = string;
-export type ErrorMessage = string;
-export type TagKey = string;
-export type TagValue = string;
-export type PackageGroupPattern = string;
-export type PackageGroupContactInfo = string;
-export type PolicyRevision = string;
-export type PolicyDocument = string;
-export type String255 = string;
-export type AuthorizationTokenDurationSeconds = number;
-export type AssetName = string;
-export type ListAllowedRepositoriesForGroupMaxResults = number;
-export type PaginationToken = string;
-export type ListPackagesMaxResults = number;
-export type ListDomainsMaxResults = number;
-export type ListPackageGroupsMaxResults = number;
-export type PackageGroupPatternPrefix = string;
-export type ListPackageVersionAssetsMaxResults = number;
-export type HashValue = string;
-export type ListPackageVersionsMaxResults = number;
-export type ListRepositoriesMaxResults = number;
-export type ListRepositoriesInDomainMaxResults = number;
-export type SHA256 = string;
-
-//# Schemas
 export interface AssociateExternalConnectionRequest {
   domain: string;
   domainOwner?: string;
@@ -148,6 +179,8 @@ export const AssociateExternalConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateExternalConnectionRequest",
 }) as any as S.Schema<AssociateExternalConnectionRequest>;
+export type Arn = string;
+export type Description = string;
 export interface UpstreamRepositoryInfo {
   repositoryName?: string;
 }
@@ -171,8 +204,10 @@ export type PackageFormat =
   | "cargo"
   | (string & {});
 export const PackageFormat = /*@__PURE__*/ S.String;
+
 export type ExternalConnectionStatus = "Available" | (string & {});
 export const ExternalConnectionStatus = /*@__PURE__*/ S.String;
+
 export interface RepositoryExternalConnectionInfo {
   externalConnectionName?: string;
   packageFormat?: PackageFormat;
@@ -226,24 +261,12 @@ export const AssociateExternalConnectionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateExternalConnectionResult",
 }) as any as S.Schema<AssociateExternalConnectionResult>;
-export type ResourceType =
-  | "domain"
-  | "repository"
-  | "package"
-  | "package-version"
-  | "asset"
-  | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
-export type ValidationExceptionReason =
-  | "CANNOT_PARSE"
-  | "ENCRYPTION_KEY_ERROR"
-  | "FIELD_VALIDATION_FAILED"
-  | "UNKNOWN_OPERATION"
-  | "OTHER"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export type PackageNamespace = string;
+export type PackageName = string;
+export type PackageVersion = string;
 export type PackageVersionList = string[];
 export const PackageVersionList = /*@__PURE__*/ S.Array(S.String);
+export type PackageVersionRevision = string;
 export type PackageVersionRevisionMap = { [key: string]: string | undefined };
 export const PackageVersionRevisionMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -297,6 +320,7 @@ export type PackageVersionStatus =
   | "Deleted"
   | (string & {});
 export const PackageVersionStatus = /*@__PURE__*/ S.String;
+
 export interface SuccessfulPackageVersionInfo {
   revision?: string;
   status?: PackageVersionStatus;
@@ -325,6 +349,8 @@ export type PackageVersionErrorCode =
   | "SKIPPED"
   | (string & {});
 export const PackageVersionErrorCode = /*@__PURE__*/ S.String;
+
+export type ErrorMessage = string;
 export interface PackageVersionError {
   errorCode?: PackageVersionErrorCode;
   errorMessage?: string;
@@ -358,6 +384,8 @@ export const CopyPackageVersionsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyPackageVersionsResult",
 }) as any as S.Schema<CopyPackageVersionsResult>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
@@ -392,6 +420,7 @@ export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDomainRequest>;
 export type DomainStatus = "Active" | "Deleted" | (string & {});
 export const DomainStatus = /*@__PURE__*/ S.String;
+
 export interface DomainDescription {
   name?: string;
   owner?: string;
@@ -426,6 +455,8 @@ export const CreateDomainResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDomainResult",
 }) as any as S.Schema<CreateDomainResult>;
+export type PackageGroupPattern = string;
+export type PackageGroupContactInfo = string;
 export interface CreatePackageGroupRequest {
   domain: string;
   domainOwner?: string;
@@ -461,6 +492,7 @@ export type PackageGroupOriginRestrictionType =
   | "PUBLISH"
   | (string & {});
 export const PackageGroupOriginRestrictionType = /*@__PURE__*/ S.String;
+
 export type PackageGroupOriginRestrictionMode =
   | "ALLOW"
   | "ALLOW_SPECIFIC_REPOSITORIES"
@@ -468,6 +500,7 @@ export type PackageGroupOriginRestrictionMode =
   | "INHERIT"
   | (string & {});
 export const PackageGroupOriginRestrictionMode = /*@__PURE__*/ S.String;
+
 export interface PackageGroupReference {
   arn?: string;
   pattern?: string;
@@ -618,6 +651,7 @@ export const DeleteDomainResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteDomainResult",
 }) as any as S.Schema<DeleteDomainResult>;
+export type PolicyRevision = string;
 export interface DeleteDomainPermissionsPolicyRequest {
   domain: string;
   domainOwner?: string;
@@ -642,6 +676,7 @@ export const DeleteDomainPermissionsPolicyRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteDomainPermissionsPolicyRequest",
 }) as any as S.Schema<DeleteDomainPermissionsPolicyRequest>;
+export type PolicyDocument = string;
 export interface ResourcePolicy {
   resourceArn?: string;
   revision?: string;
@@ -693,8 +728,10 @@ export const DeletePackageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeletePackageRequest>;
 export type AllowPublish = "ALLOW" | "BLOCK" | (string & {});
 export const AllowPublish = /*@__PURE__*/ S.String;
+
 export type AllowUpstream = "ALLOW" | "BLOCK" | (string & {});
 export const AllowUpstream = /*@__PURE__*/ S.String;
+
 export interface PackageOriginRestrictions {
   publish: AllowPublish;
   upstream: AllowUpstream;
@@ -1024,6 +1061,7 @@ export const DescribePackageVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePackageVersionRequest",
 }) as any as S.Schema<DescribePackageVersionRequest>;
+export type String255 = string;
 export interface LicenseInfo {
   name?: string;
   url?: string;
@@ -1051,6 +1089,7 @@ export type PackageVersionOriginType =
   | "UNKNOWN"
   | (string & {});
 export const PackageVersionOriginType = /*@__PURE__*/ S.String;
+
 export interface PackageVersionOrigin {
   domainEntryPoint?: DomainEntryPoint;
   originType?: PackageVersionOriginType;
@@ -1248,6 +1287,7 @@ export const GetAssociatedPackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAssociatedPackageGroupRequest>;
 export type PackageGroupAssociationType = "STRONG" | "WEAK" | (string & {});
 export const PackageGroupAssociationType = /*@__PURE__*/ S.String;
+
 export interface GetAssociatedPackageGroupResult {
   packageGroup?: PackageGroupDescription;
   associationType?: PackageGroupAssociationType;
@@ -1260,6 +1300,7 @@ export const GetAssociatedPackageGroupResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAssociatedPackageGroupResult",
 }) as any as S.Schema<GetAssociatedPackageGroupResult>;
+export type AuthorizationTokenDurationSeconds = number;
 export interface GetAuthorizationTokenRequest {
   domain: string;
   domainOwner?: string;
@@ -1324,6 +1365,7 @@ export const GetDomainPermissionsPolicyResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDomainPermissionsPolicyResult",
 }) as any as S.Schema<GetDomainPermissionsPolicyResult>;
+export type AssetName = string;
 export interface GetPackageVersionAssetRequest {
   domain: string;
   domainOwner?: string;
@@ -1430,6 +1472,7 @@ export const GetPackageVersionReadmeResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPackageVersionReadmeResult>;
 export type EndpointType = "dualstack" | "ipv4" | (string & {});
 export const EndpointType = /*@__PURE__*/ S.String;
+
 export interface GetRepositoryEndpointRequest {
   domain: string;
   domainOwner?: string;
@@ -1497,6 +1540,8 @@ export const GetRepositoryPermissionsPolicyResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetRepositoryPermissionsPolicyResult",
 }) as any as S.Schema<GetRepositoryPermissionsPolicyResult>;
+export type ListAllowedRepositoriesForGroupMaxResults = number;
+export type PaginationToken = string;
 export interface ListAllowedRepositoriesForGroupRequest {
   domain: string;
   domainOwner?: string;
@@ -1547,6 +1592,7 @@ export const ListAllowedRepositoriesForGroupResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListAllowedRepositoriesForGroupResult",
 }) as any as S.Schema<ListAllowedRepositoriesForGroupResult>;
+export type ListPackagesMaxResults = number;
 export interface ListAssociatedPackagesRequest {
   domain: string;
   domainOwner?: string;
@@ -1606,6 +1652,7 @@ export const ListAssociatedPackagesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAssociatedPackagesResult",
 }) as any as S.Schema<ListAssociatedPackagesResult>;
+export type ListDomainsMaxResults = number;
 export interface ListDomainsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -1659,6 +1706,8 @@ export const ListDomainsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDomainsResult",
 }) as any as S.Schema<ListDomainsResult>;
+export type ListPackageGroupsMaxResults = number;
+export type PackageGroupPatternPrefix = string;
 export interface ListPackageGroupsRequest {
   domain: string;
   domainOwner?: string;
@@ -1778,6 +1827,7 @@ export const ListPackagesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPackagesResult",
 }) as any as S.Schema<ListPackagesResult>;
+export type ListPackageVersionAssetsMaxResults = number;
 export interface ListPackageVersionAssetsRequest {
   domain: string;
   domainOwner?: string;
@@ -1820,6 +1870,8 @@ export type HashAlgorithm =
   | "SHA-512"
   | (string & {});
 export const HashAlgorithm = /*@__PURE__*/ S.String;
+
+export type HashValue = string;
 export type AssetHashes = { [key in HashAlgorithm]?: string };
 export const AssetHashes = /*@__PURE__*/ S.Record(
   HashAlgorithm,
@@ -1938,6 +1990,8 @@ export const ListPackageVersionDependenciesResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPackageVersionDependenciesResult>;
 export type PackageVersionSortType = "PUBLISHED_TIME" | (string & {});
 export const PackageVersionSortType = /*@__PURE__*/ S.String;
+
+export type ListPackageVersionsMaxResults = number;
 export interface ListPackageVersionsRequest {
   domain: string;
   domainOwner?: string;
@@ -2019,6 +2073,7 @@ export const ListPackageVersionsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPackageVersionsResult",
 }) as any as S.Schema<ListPackageVersionsResult>;
+export type ListRepositoriesMaxResults = number;
 export interface ListRepositoriesRequest {
   repositoryPrefix?: string;
   maxResults?: number;
@@ -2080,6 +2135,7 @@ export const ListRepositoriesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRepositoriesResult",
 }) as any as S.Schema<ListRepositoriesResult>;
+export type ListRepositoriesInDomainMaxResults = number;
 export interface ListRepositoriesInDomainRequest {
   domain: string;
   domainOwner?: string;
@@ -2189,6 +2245,7 @@ export const ListTagsForResourceResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResult",
 }) as any as S.Schema<ListTagsForResourceResult>;
+export type SHA256 = string;
 export interface PublishPackageVersionRequest {
   domain: string;
   domainOwner?: string;
@@ -2513,6 +2570,7 @@ export type PackageGroupAllowedRepositoryUpdateType =
   | "REMOVED"
   | (string & {});
 export const PackageGroupAllowedRepositoryUpdateType = /*@__PURE__*/ S.String;
+
 export type PackageGroupAllowedRepositoryUpdate = {
   [key in PackageGroupAllowedRepositoryUpdateType]?: string[];
 };
@@ -2632,60 +2690,25 @@ export const UpdateRepositoryResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRepositoryResult",
 }) as any as S.Schema<UpdateRepositoryResult>;
+export type ResourceType =
+  | "domain"
+  | "repository"
+  | "package"
+  | "package-version"
+  | "asset"
+  | (string & {});
+export const ResourceType = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    message: S.String,
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(ResourceType),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    message: S.String,
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(ResourceType),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(ResourceType),
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.String, reason: S.optional(ValidationExceptionReason) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
+export type RetryAfterSeconds = number;
+export type ValidationExceptionReason =
+  | "CANNOT_PARSE"
+  | "ENCRYPTION_KEY_ERROR"
+  | "FIELD_VALIDATION_FAILED"
+  | "UNKNOWN_OPERATION"
+  | "OTHER"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Operations
 export type AssociateExternalConnectionError =
   | AccessDeniedException
   | ConflictException
@@ -2722,6 +2745,7 @@ export const associateExternalConnection: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateExternalConnection",
 }));
+
 export type CopyPackageVersionsError =
   | AccessDeniedException
   | ConflictException
@@ -2757,6 +2781,7 @@ export const copyPackageVersions: API.OperationMethod<
   retry: Retry,
   operationName: "CopyPackageVersions",
 }));
+
 export type CreateDomainError =
   | AccessDeniedException
   | ConflictException
@@ -2797,6 +2822,7 @@ export const createDomain: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDomain",
 }));
+
 export type CreatePackageGroupError =
   | AccessDeniedException
   | ConflictException
@@ -2830,6 +2856,7 @@ export const createPackageGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePackageGroup",
 }));
+
 export type CreateRepositoryError =
   | AccessDeniedException
   | ConflictException
@@ -2863,6 +2890,7 @@ export const createRepository: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRepository",
 }));
+
 export type DeleteDomainError =
   | AccessDeniedException
   | ConflictException
@@ -2893,6 +2921,7 @@ export const deleteDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDomain",
 }));
+
 export type DeleteDomainPermissionsPolicyError =
   | AccessDeniedException
   | ConflictException
@@ -2924,6 +2953,7 @@ export const deleteDomainPermissionsPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDomainPermissionsPolicy",
 }));
+
 export type DeletePackageError =
   | AccessDeniedException
   | ConflictException
@@ -2956,6 +2986,7 @@ export const deletePackage: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePackage",
 }));
+
 export type DeletePackageGroupError =
   | AccessDeniedException
   | ConflictException
@@ -2993,6 +3024,7 @@ export const deletePackageGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePackageGroup",
 }));
+
 export type DeletePackageVersionsError =
   | AccessDeniedException
   | ConflictException
@@ -3028,6 +3060,7 @@ export const deletePackageVersions: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePackageVersions",
 }));
+
 export type DeleteRepositoryError =
   | AccessDeniedException
   | ConflictException
@@ -3059,6 +3092,7 @@ export const deleteRepository: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRepository",
 }));
+
 export type DeleteRepositoryPermissionsPolicyError =
   | AccessDeniedException
   | ConflictException
@@ -3094,6 +3128,7 @@ export const deleteRepositoryPermissionsPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRepositoryPermissionsPolicy",
 }));
+
 export type DescribeDomainError =
   | AccessDeniedException
   | InternalServerException
@@ -3125,6 +3160,7 @@ export const describeDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDomain",
 }));
+
 export type DescribePackageError =
   | AccessDeniedException
   | InternalServerException
@@ -3156,6 +3192,7 @@ export const describePackage: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePackage",
 }));
+
 export type DescribePackageGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -3186,6 +3223,7 @@ export const describePackageGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePackageGroup",
 }));
+
 export type DescribePackageVersionError =
   | AccessDeniedException
   | ConflictException
@@ -3219,6 +3257,7 @@ export const describePackageVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePackageVersion",
 }));
+
 export type DescribeRepositoryError =
   | AccessDeniedException
   | InternalServerException
@@ -3249,6 +3288,7 @@ export const describeRepository: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRepository",
 }));
+
 export type DisassociateExternalConnectionError =
   | AccessDeniedException
   | ConflictException
@@ -3282,6 +3322,7 @@ export const disassociateExternalConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateExternalConnection",
 }));
+
 export type DisposePackageVersionsError =
   | AccessDeniedException
   | ConflictException
@@ -3320,6 +3361,7 @@ export const disposePackageVersions: API.OperationMethod<
   retry: Retry,
   operationName: "DisposePackageVersions",
 }));
+
 export type GetAssociatedPackageGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -3353,6 +3395,7 @@ export const getAssociatedPackageGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetAssociatedPackageGroup",
 }));
+
 export type GetAuthorizationTokenError =
   | AccessDeniedException
   | InternalServerException
@@ -3401,6 +3444,7 @@ export const getAuthorizationToken: API.OperationMethod<
   retry: Retry,
   operationName: "GetAuthorizationToken",
 }));
+
 export type GetDomainPermissionsPolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -3434,6 +3478,7 @@ export const getDomainPermissionsPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetDomainPermissionsPolicy",
 }));
+
 export type GetPackageVersionAssetError =
   | AccessDeniedException
   | ConflictException
@@ -3467,6 +3512,7 @@ export const getPackageVersionAsset: API.OperationMethod<
   retry: Retry,
   operationName: "GetPackageVersionAsset",
 }));
+
 export type GetPackageVersionReadmeError =
   | AccessDeniedException
   | InternalServerException
@@ -3498,6 +3544,7 @@ export const getPackageVersionReadme: API.OperationMethod<
   retry: Retry,
   operationName: "GetPackageVersionReadme",
 }));
+
 export type GetRepositoryEndpointError =
   | AccessDeniedException
   | InternalServerException
@@ -3544,6 +3591,7 @@ export const getRepositoryEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "GetRepositoryEndpoint",
 }));
+
 export type GetRepositoryPermissionsPolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -3573,6 +3621,7 @@ export const getRepositoryPermissionsPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetRepositoryPermissionsPolicy",
 }));
+
 export type ListAllowedRepositoriesForGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -3626,6 +3675,7 @@ export const listAllowedRepositoriesForGroup: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssociatedPackagesError =
   | AccessDeniedException
   | InternalServerException
@@ -3676,6 +3726,7 @@ export const listAssociatedPackages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDomainsError =
   | AccessDeniedException
   | InternalServerException
@@ -3726,6 +3777,7 @@ export const listDomains: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPackageGroupsError =
   | AccessDeniedException
   | InternalServerException
@@ -3776,6 +3828,7 @@ export const listPackageGroups: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPackagesError =
   | AccessDeniedException
   | InternalServerException
@@ -3828,6 +3881,7 @@ export const listPackages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPackageVersionAssetsError =
   | AccessDeniedException
   | InternalServerException
@@ -3880,6 +3934,7 @@ export const listPackageVersionAssets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPackageVersionDependenciesError =
   | AccessDeniedException
   | InternalServerException
@@ -3913,6 +3968,7 @@ export const listPackageVersionDependencies: API.OperationMethod<
   retry: Retry,
   operationName: "ListPackageVersionDependencies",
 }));
+
 export type ListPackageVersionsError =
   | AccessDeniedException
   | InternalServerException
@@ -3965,6 +4021,7 @@ export const listPackageVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListRepositoriesError =
   | AccessDeniedException
   | InternalServerException
@@ -4016,6 +4073,7 @@ export const listRepositories: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListRepositoriesInDomainError =
   | AccessDeniedException
   | InternalServerException
@@ -4069,6 +4127,7 @@ export const listRepositoriesInDomain: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSubPackageGroupsError =
   | AccessDeniedException
   | InternalServerException
@@ -4123,6 +4182,7 @@ export const listSubPackageGroups: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -4150,6 +4210,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PublishPackageVersionError =
   | AccessDeniedException
   | ConflictException
@@ -4192,6 +4253,7 @@ export const publishPackageVersion: API.OperationMethod<
   retry: Retry,
   operationName: "PublishPackageVersion",
 }));
+
 export type PutDomainPermissionsPolicyError =
   | AccessDeniedException
   | ConflictException
@@ -4229,6 +4291,7 @@ export const putDomainPermissionsPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutDomainPermissionsPolicy",
 }));
+
 export type PutPackageOriginConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -4267,6 +4330,7 @@ export const putPackageOriginConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutPackageOriginConfiguration",
 }));
+
 export type PutRepositoryPermissionsPolicyError =
   | AccessDeniedException
   | ConflictException
@@ -4304,6 +4368,7 @@ export const putRepositoryPermissionsPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutRepositoryPermissionsPolicy",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -4333,6 +4398,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -4360,6 +4426,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdatePackageGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -4392,6 +4459,7 @@ export const updatePackageGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePackageGroup",
 }));
+
 export type UpdatePackageGroupOriginConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -4429,6 +4497,7 @@ export const updatePackageGroupOriginConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePackageGroupOriginConfiguration",
 }));
+
 export type UpdatePackageVersionsStatusError =
   | AccessDeniedException
   | ConflictException
@@ -4463,6 +4532,7 @@ export const updatePackageVersionsStatus: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePackageVersionsStatus",
 }));
+
 export type UpdateRepositoryError =
   | AccessDeniedException
   | ConflictException

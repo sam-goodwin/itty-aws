@@ -85,25 +85,114 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AlreadyStreamedException extends S.TaggedErrorClass<AlreadyStreamedException>()(
+  "AlreadyStreamedException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "AlreadyStreamed", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "ConcurrentModification", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DuplicateRequestException extends S.TaggedErrorClass<DuplicateRequestException>()(
+  "DuplicateRequestException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "DuplicateRequest", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
+  "InternalErrorException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class InvalidConfigurationException extends S.TaggedErrorClass<InvalidConfigurationException>()(
+  "InvalidConfigurationException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "InvalidConfiguration", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidLambdaFunctionOutputException extends S.TaggedErrorClass<InvalidLambdaFunctionOutputException>()(
+  "InvalidLambdaFunctionOutputException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidLambdaFunctionOutput",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class LambdaThrottledException extends S.TaggedErrorClass<LambdaThrottledException>()(
+  "LambdaThrottledException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "LambdaThrottled", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
+  "NotAuthorizedException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "NotAuthorizedError", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
+  "ResourceConflictException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "ResourceConflict", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "TooManyRequests", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
 export type IdentityPoolId = string;
-export type ExceptionMessage = string;
-export type IdentityId = string;
-export type DatasetName = string;
-export type CognitoEventType = string;
-export type LambdaFunctionArn = string;
-export type ApplicationArn = string;
-export type AssumeRoleArn = string;
-export type StreamName = string;
-export type IntegerString = number;
-export type SyncSessionToken = string;
-export type RecordKey = string;
-export type RecordValue = string;
-export type PushToken = string;
-export type DeviceId = string;
-export type ClientContext = string;
-
-//# Schemas
 export interface BulkPublishRequest {
   IdentityPoolId: string;
 }
@@ -135,6 +224,8 @@ export const BulkPublishResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BulkPublishResponse",
 }) as any as S.Schema<BulkPublishResponse>;
+export type IdentityId = string;
+export type DatasetName = string;
 export interface DeleteDatasetRequest {
   IdentityPoolId: string;
   IdentityId: string;
@@ -354,6 +445,7 @@ export type BulkPublishStatus =
   | "SUCCEEDED"
   | (string & {});
 export const BulkPublishStatus = /*@__PURE__*/ S.String;
+
 export interface GetBulkPublishDetailsResponse {
   IdentityPoolId?: string;
   BulkPublishStartTime?: Date;
@@ -396,6 +488,8 @@ export const GetCognitoEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCognitoEventsRequest",
 }) as any as S.Schema<GetCognitoEventsRequest>;
+export type CognitoEventType = string;
+export type LambdaFunctionArn = string;
 export type Events = { [key: string]: string | undefined };
 export const Events = /*@__PURE__*/ S.Record(
   S.String,
@@ -432,8 +526,10 @@ export const GetIdentityPoolConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIdentityPoolConfigurationRequest",
 }) as any as S.Schema<GetIdentityPoolConfigurationRequest>;
+export type ApplicationArn = string;
 export type ApplicationArnList = string[];
 export const ApplicationArnList = /*@__PURE__*/ S.Array(S.String);
+export type AssumeRoleArn = string;
 export interface PushSync {
   ApplicationArns?: string[];
   RoleArn?: string;
@@ -444,8 +540,10 @@ export const PushSync = /*@__PURE__*/ S.suspend(() =>
     RoleArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "PushSync" }) as any as S.Schema<PushSync>;
+export type StreamName = string;
 export type StreamingStatus = "ENABLED" | "DISABLED" | (string & {});
 export const StreamingStatus = /*@__PURE__*/ S.String;
+
 export interface CognitoStreams {
   StreamName?: string;
   RoleArn?: string;
@@ -473,6 +571,7 @@ export const GetIdentityPoolConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetIdentityPoolConfigurationResponse",
 }) as any as S.Schema<GetIdentityPoolConfigurationResponse>;
+export type IntegerString = number;
 export interface ListDatasetsRequest {
   IdentityPoolId: string;
   IdentityId: string;
@@ -558,6 +657,7 @@ export const ListIdentityPoolUsageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListIdentityPoolUsageResponse",
 }) as any as S.Schema<ListIdentityPoolUsageResponse>;
+export type SyncSessionToken = string;
 export interface ListRecordsRequest {
   IdentityPoolId: string;
   IdentityId: string;
@@ -595,6 +695,8 @@ export const ListRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecordsRequest",
 }) as any as S.Schema<ListRecordsRequest>;
+export type RecordKey = string;
+export type RecordValue = string;
 export interface Record {
   Key?: string;
   Value?: string;
@@ -649,6 +751,8 @@ export const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRecordsResponse>;
 export type Platform = "APNS" | "APNS_SANDBOX" | "GCM" | "ADM" | (string & {});
 export const Platform = /*@__PURE__*/ S.String;
+
+export type PushToken = string;
 export interface RegisterDeviceRequest {
   IdentityPoolId: string;
   IdentityId: string;
@@ -678,6 +782,7 @@ export const RegisterDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RegisterDeviceRequest",
 }) as any as S.Schema<RegisterDeviceRequest>;
+export type DeviceId = string;
 export interface RegisterDeviceResponse {
   DeviceId?: string;
 }
@@ -828,6 +933,7 @@ export const UnsubscribeFromDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UnsubscribeFromDatasetResponse>;
 export type Operation = "replace" | "remove" | (string & {});
 export const Operation = /*@__PURE__*/ S.String;
+
 export interface RecordPatch {
   Op: Operation;
   Key: string;
@@ -848,6 +954,7 @@ export const RecordPatch = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecordPatch" }) as any as S.Schema<RecordPatch>;
 export type RecordPatchList = RecordPatch[];
 export const RecordPatchList = /*@__PURE__*/ S.Array(RecordPatch);
+export type ClientContext = string;
 export interface UpdateRecordsRequest {
   IdentityPoolId: string;
   IdentityId: string;
@@ -893,117 +1000,7 @@ export const UpdateRecordsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRecordsResponse",
 }) as any as S.Schema<UpdateRecordsResponse>;
-
-//# Errors
-export class AlreadyStreamedException extends S.TaggedErrorClass<AlreadyStreamedException>()(
-  "AlreadyStreamedException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "AlreadyStreamed", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DuplicateRequestException extends S.TaggedErrorClass<DuplicateRequestException>()(
-  "DuplicateRequestException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "DuplicateRequest", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
-  "InternalErrorException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
-  "NotAuthorizedException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "NotAuthorizedError", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
-  "ResourceConflictException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "ResourceConflict", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "TooManyRequests", httpResponseCode: 429 }),
-    T.HttpError(429),
-  ),
-).pipe(C.withThrottlingError) {}
-export class InvalidConfigurationException extends S.TaggedErrorClass<InvalidConfigurationException>()(
-  "InvalidConfigurationException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "InvalidConfiguration", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "ConcurrentModification", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidLambdaFunctionOutputException extends S.TaggedErrorClass<InvalidLambdaFunctionOutputException>()(
-  "InvalidLambdaFunctionOutputException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidLambdaFunctionOutput",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class LambdaThrottledException extends S.TaggedErrorClass<LambdaThrottledException>()(
-  "LambdaThrottledException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "LambdaThrottled", httpResponseCode: 429 }),
-    T.HttpError(429),
-  ),
-).pipe(C.withThrottlingError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type BulkPublishError =
   | AlreadyStreamedException
   | DuplicateRequestException
@@ -1037,6 +1034,7 @@ export const bulkPublish: API.OperationMethod<
   retry: Retry,
   operationName: "BulkPublish",
 }));
+
 export type DeleteDatasetError =
   | InternalErrorException
   | InvalidParameterException
@@ -1073,6 +1071,7 @@ export const deleteDataset: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataset",
 }));
+
 export type DescribeDatasetError =
   | InternalErrorException
   | InvalidParameterException
@@ -1106,6 +1105,7 @@ export const describeDataset: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDataset",
 }));
+
 export type DescribeIdentityPoolUsageError =
   | InternalErrorException
   | InvalidParameterException
@@ -1178,6 +1178,7 @@ export const describeIdentityPoolUsage: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeIdentityPoolUsage",
 }));
+
 export type DescribeIdentityUsageError =
   | InternalErrorException
   | InvalidParameterException
@@ -1252,6 +1253,7 @@ export const describeIdentityUsage: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeIdentityUsage",
 }));
+
 export type GetBulkPublishDetailsError =
   | InternalErrorException
   | InvalidParameterException
@@ -1281,6 +1283,7 @@ export const getBulkPublishDetails: API.OperationMethod<
   retry: Retry,
   operationName: "GetBulkPublishDetails",
 }));
+
 export type GetCognitoEventsError =
   | InternalErrorException
   | InvalidParameterException
@@ -1312,6 +1315,7 @@ export const getCognitoEvents: API.OperationMethod<
   retry: Retry,
   operationName: "GetCognitoEvents",
 }));
+
 export type GetIdentityPoolConfigurationError =
   | InternalErrorException
   | InvalidParameterException
@@ -1383,6 +1387,7 @@ export const getIdentityPoolConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetIdentityPoolConfiguration",
 }));
+
 export type ListDatasetsError =
   | InternalErrorException
   | InvalidParameterException
@@ -1464,6 +1469,7 @@ export const listDatasets: API.OperationMethod<
   retry: Retry,
   operationName: "ListDatasets",
 }));
+
 export type ListIdentityPoolUsageError =
   | InternalErrorException
   | InvalidParameterException
@@ -1545,6 +1551,7 @@ export const listIdentityPoolUsage: API.OperationMethod<
   retry: Retry,
   operationName: "ListIdentityPoolUsage",
 }));
+
 export type ListRecordsError =
   | InternalErrorException
   | InvalidParameterException
@@ -1623,6 +1630,7 @@ export const listRecords: API.OperationMethod<
   retry: Retry,
   operationName: "ListRecords",
 }));
+
 export type RegisterDeviceError =
   | InternalErrorException
   | InvalidConfigurationException
@@ -1695,6 +1703,7 @@ export const registerDevice: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterDevice",
 }));
+
 export type SetCognitoEventsError =
   | InternalErrorException
   | InvalidParameterException
@@ -1726,6 +1735,7 @@ export const setCognitoEvents: API.OperationMethod<
   retry: Retry,
   operationName: "SetCognitoEvents",
 }));
+
 export type SetIdentityPoolConfigurationError =
   | ConcurrentModificationException
   | InternalErrorException
@@ -1804,6 +1814,7 @@ export const setIdentityPoolConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "SetIdentityPoolConfiguration",
 }));
+
 export type SubscribeToDatasetError =
   | InternalErrorException
   | InvalidConfigurationException
@@ -1875,6 +1886,7 @@ export const subscribeToDataset: API.OperationMethod<
   retry: Retry,
   operationName: "SubscribeToDataset",
 }));
+
 export type UnsubscribeFromDatasetError =
   | InternalErrorException
   | InvalidConfigurationException
@@ -1947,6 +1959,7 @@ export const unsubscribeFromDataset: API.OperationMethod<
   retry: Retry,
   operationName: "UnsubscribeFromDataset",
 }));
+
 export type UpdateRecordsError =
   | InternalErrorException
   | InvalidLambdaFunctionOutputException

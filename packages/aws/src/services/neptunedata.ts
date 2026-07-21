@@ -84,10 +84,176 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type PositiveInteger = number;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class BulkLoadIdNotFoundException extends S.TaggedErrorClass<BulkLoadIdNotFoundException>()(
+  "BulkLoadIdNotFoundException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.all(T.HttpError(404), T.Retryable()),
+).pipe(C.withBadRequestError, C.withRetryableError) {}
+export class CancelledByUserException extends S.TaggedErrorClass<CancelledByUserException>()(
+  "CancelledByUserException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ClientTimeoutException extends S.TaggedErrorClass<ClientTimeoutException>()(
+  "ClientTimeoutException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.all(T.HttpError(408), T.Retryable()),
+).pipe(C.withTimeoutError, C.withRetryableError) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ConstraintViolationException extends S.TaggedErrorClass<ConstraintViolationException>()(
+  "ConstraintViolationException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.all(T.HttpError(400), T.Retryable()),
+).pipe(C.withBadRequestError, C.withRetryableError) {}
+export class ExpiredStreamException extends S.TaggedErrorClass<ExpiredStreamException>()(
+  "ExpiredStreamException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class FailureByQueryException extends S.TaggedErrorClass<FailureByQueryException>()(
+  "FailureByQueryException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class IllegalArgumentException extends S.TaggedErrorClass<IllegalArgumentException>()(
+  "IllegalArgumentException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
+  "InternalFailureException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
+  "InvalidArgumentException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidNumericDataException extends S.TaggedErrorClass<InvalidNumericDataException>()(
+  "InvalidNumericDataException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LoadUrlAccessDeniedException extends S.TaggedErrorClass<LoadUrlAccessDeniedException>()(
+  "LoadUrlAccessDeniedException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAuthError) {}
+export class MalformedQueryException extends S.TaggedErrorClass<MalformedQueryException>()(
+  "MalformedQueryException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class MemoryLimitExceededException extends S.TaggedErrorClass<MemoryLimitExceededException>()(
+  "MemoryLimitExceededException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
+  "MethodNotAllowedException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(405),
+).pipe(C.withBadRequestError) {}
+export class MissingParameterException extends S.TaggedErrorClass<MissingParameterException>()(
+  "MissingParameterException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class MLResourceNotFoundException extends S.TaggedErrorClass<MLResourceNotFoundException>()(
+  "MLResourceNotFoundException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ParsingException extends S.TaggedErrorClass<ParsingException>()(
+  "ParsingException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class PreconditionsFailedException extends S.TaggedErrorClass<PreconditionsFailedException>()(
+  "PreconditionsFailedException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class QueryLimitExceededException extends S.TaggedErrorClass<QueryLimitExceededException>()(
+  "QueryLimitExceededException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class QueryLimitException extends S.TaggedErrorClass<QueryLimitException>()(
+  "QueryLimitException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class QueryTooLargeException extends S.TaggedErrorClass<QueryTooLargeException>()(
+  "QueryTooLargeException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ReadOnlyViolationException extends S.TaggedErrorClass<ReadOnlyViolationException>()(
+  "ReadOnlyViolationException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class S3Exception extends S.TaggedErrorClass<S3Exception>()(
+  "S3Exception",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.all(T.HttpError(400), T.Retryable()),
+).pipe(C.withBadRequestError, C.withRetryableError) {}
+export class ServerShutdownException extends S.TaggedErrorClass<ServerShutdownException>()(
+  "ServerShutdownException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class StatisticsNotAvailableException extends S.TaggedErrorClass<StatisticsNotAvailableException>()(
+  "StatisticsNotAvailableException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class StreamRecordsNotFoundException extends S.TaggedErrorClass<StreamRecordsNotFoundException>()(
+  "StreamRecordsNotFoundException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class TimeLimitExceededException extends S.TaggedErrorClass<TimeLimitExceededException>()(
+  "TimeLimitExceededException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.all(T.HttpError(429), T.Retryable()),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
+  "UnsupportedOperationException",
+  { detailedMessage: S.String, requestId: S.String, code: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export interface CancelGremlinQueryInput {
   queryId: string;
 }
@@ -425,6 +591,7 @@ export type Action =
   | "performDatabaseReset"
   | (string & {});
 export const Action = /*@__PURE__*/ S.String;
+
 export interface ExecuteFastResetInput {
   action: Action;
   token?: string;
@@ -589,6 +756,7 @@ export type OpenCypherExplainMode =
   | "details"
   | (string & {});
 export const OpenCypherExplainMode = /*@__PURE__*/ S.String;
+
 export interface ExecuteOpenCypherExplainQueryInput {
   openCypherQuery: string;
   parameters?: string;
@@ -762,6 +930,7 @@ export const GetGremlinQueryStatusOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetGremlinQueryStatusOutput",
 }) as any as S.Schema<GetGremlinQueryStatusOutput>;
+export type PositiveInteger = number;
 export interface GetLoaderJobStatusInput {
   loadId: string;
   details?: boolean;
@@ -1085,8 +1254,10 @@ export type IteratorType =
   | "LATEST"
   | (string & {});
 export const IteratorType = /*@__PURE__*/ S.String;
+
 export type Encoding = "gzip" | (string & {});
 export const Encoding = /*@__PURE__*/ S.String;
+
 export interface GetPropertygraphStreamInput {
   limit?: number;
   iteratorType?: IteratorType;
@@ -1175,6 +1346,7 @@ export const GetPropertygraphStreamOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPropertygraphStreamOutput>;
 export type GraphSummaryType = "basic" | "detailed" | (string & {});
 export const GraphSummaryType = /*@__PURE__*/ S.String;
+
 export interface GetPropertygraphSummaryInput {
   mode?: GraphSummaryType;
 }
@@ -1732,6 +1904,7 @@ export type StatisticsAutoGenerationMode =
   | "refresh"
   | (string & {});
 export const StatisticsAutoGenerationMode = /*@__PURE__*/ S.String;
+
 export interface ManagePropertygraphStatisticsInput {
   mode?: StatisticsAutoGenerationMode;
 }
@@ -1801,6 +1974,7 @@ export type Format =
   | "turtle"
   | (string & {});
 export const Format = /*@__PURE__*/ S.String;
+
 export type S3BucketRegion =
   | "us-east-1"
   | "us-east-2"
@@ -1840,8 +2014,10 @@ export type S3BucketRegion =
   | "eu-central-2"
   | (string & {});
 export const S3BucketRegion = /*@__PURE__*/ S.String;
+
 export type Mode = "RESUME" | "NEW" | "AUTO" | (string & {});
 export const Mode = /*@__PURE__*/ S.String;
+
 export type Parallelism =
   | "LOW"
   | "MEDIUM"
@@ -1849,6 +2025,7 @@ export type Parallelism =
   | "OVERSUBSCRIBE"
   | (string & {});
 export const Parallelism = /*@__PURE__*/ S.String;
+
 export interface StartLoaderJobInput {
   source: string;
   format: Format;
@@ -2116,180 +2293,6 @@ export const StartMLModelTransformJobOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartMLModelTransformJobOutput",
 }) as any as S.Schema<StartMLModelTransformJobOutput>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ClientTimeoutException extends S.TaggedErrorClass<ClientTimeoutException>()(
-  "ClientTimeoutException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(408), T.Retryable()),
-).pipe(C.withTimeoutError, C.withRetryableError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ConstraintViolationException extends S.TaggedErrorClass<ConstraintViolationException>()(
-  "ConstraintViolationException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(400), T.Retryable()),
-).pipe(C.withBadRequestError, C.withRetryableError) {}
-export class FailureByQueryException extends S.TaggedErrorClass<FailureByQueryException>()(
-  "FailureByQueryException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class IllegalArgumentException extends S.TaggedErrorClass<IllegalArgumentException>()(
-  "IllegalArgumentException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
-  "InvalidArgumentException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class MissingParameterException extends S.TaggedErrorClass<MissingParameterException>()(
-  "MissingParameterException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ParsingException extends S.TaggedErrorClass<ParsingException>()(
-  "ParsingException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class PreconditionsFailedException extends S.TaggedErrorClass<PreconditionsFailedException>()(
-  "PreconditionsFailedException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TimeLimitExceededException extends S.TaggedErrorClass<TimeLimitExceededException>()(
-  "TimeLimitExceededException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(429), T.Retryable()),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class BulkLoadIdNotFoundException extends S.TaggedErrorClass<BulkLoadIdNotFoundException>()(
-  "BulkLoadIdNotFoundException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(404), T.Retryable()),
-).pipe(C.withBadRequestError, C.withRetryableError) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class LoadUrlAccessDeniedException extends S.TaggedErrorClass<LoadUrlAccessDeniedException>()(
-  "LoadUrlAccessDeniedException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAuthError) {}
-export class MLResourceNotFoundException extends S.TaggedErrorClass<MLResourceNotFoundException>()(
-  "MLResourceNotFoundException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InvalidNumericDataException extends S.TaggedErrorClass<InvalidNumericDataException>()(
-  "InvalidNumericDataException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ReadOnlyViolationException extends S.TaggedErrorClass<ReadOnlyViolationException>()(
-  "ReadOnlyViolationException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class StatisticsNotAvailableException extends S.TaggedErrorClass<StatisticsNotAvailableException>()(
-  "StatisticsNotAvailableException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
-  "MethodNotAllowedException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(405),
-).pipe(C.withBadRequestError) {}
-export class ServerShutdownException extends S.TaggedErrorClass<ServerShutdownException>()(
-  "ServerShutdownException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class CancelledByUserException extends S.TaggedErrorClass<CancelledByUserException>()(
-  "CancelledByUserException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class MalformedQueryException extends S.TaggedErrorClass<MalformedQueryException>()(
-  "MalformedQueryException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class MemoryLimitExceededException extends S.TaggedErrorClass<MemoryLimitExceededException>()(
-  "MemoryLimitExceededException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class QueryLimitExceededException extends S.TaggedErrorClass<QueryLimitExceededException>()(
-  "QueryLimitExceededException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class QueryLimitException extends S.TaggedErrorClass<QueryLimitException>()(
-  "QueryLimitException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class QueryTooLargeException extends S.TaggedErrorClass<QueryTooLargeException>()(
-  "QueryTooLargeException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ExpiredStreamException extends S.TaggedErrorClass<ExpiredStreamException>()(
-  "ExpiredStreamException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class StreamRecordsNotFoundException extends S.TaggedErrorClass<StreamRecordsNotFoundException>()(
-  "StreamRecordsNotFoundException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class S3Exception extends S.TaggedErrorClass<S3Exception>()(
-  "S3Exception",
-  { detailedMessage: S.String, requestId: S.String, code: S.String },
-  T.all(T.HttpError(400), T.Retryable()),
-).pipe(C.withBadRequestError, C.withRetryableError) {}
-
-//# Operations
 export type CancelGremlinQueryError =
   | BadRequestException
   | ClientTimeoutException
@@ -2339,6 +2342,7 @@ export const cancelGremlinQuery: API.OperationMethod<
   retry: Retry,
   operationName: "CancelGremlinQuery",
 }));
+
 export type CancelLoaderJobError =
   | BadRequestException
   | BulkLoadIdNotFoundException
@@ -2386,6 +2390,7 @@ export const cancelLoaderJob: API.OperationMethod<
   retry: Retry,
   operationName: "CancelLoaderJob",
 }));
+
 export type CancelMLDataProcessingJobError =
   | BadRequestException
   | ClientTimeoutException
@@ -2429,6 +2434,7 @@ export const cancelMLDataProcessingJob: API.OperationMethod<
   retry: Retry,
   operationName: "CancelMLDataProcessingJob",
 }));
+
 export type CancelMLModelTrainingJobError =
   | BadRequestException
   | ClientTimeoutException
@@ -2472,6 +2478,7 @@ export const cancelMLModelTrainingJob: API.OperationMethod<
   retry: Retry,
   operationName: "CancelMLModelTrainingJob",
 }));
+
 export type CancelMLModelTransformJobError =
   | BadRequestException
   | ClientTimeoutException
@@ -2515,6 +2522,7 @@ export const cancelMLModelTransformJob: API.OperationMethod<
   retry: Retry,
   operationName: "CancelMLModelTransformJob",
 }));
+
 export type CancelOpenCypherQueryError =
   | BadRequestException
   | ClientTimeoutException
@@ -2566,6 +2574,7 @@ export const cancelOpenCypherQuery: API.OperationMethod<
   retry: Retry,
   operationName: "CancelOpenCypherQuery",
 }));
+
 export type CreateMLEndpointError =
   | BadRequestException
   | ClientTimeoutException
@@ -2609,6 +2618,7 @@ export const createMLEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMLEndpoint",
 }));
+
 export type DeleteMLEndpointError =
   | BadRequestException
   | ClientTimeoutException
@@ -2652,6 +2662,7 @@ export const deleteMLEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMLEndpoint",
 }));
+
 export type DeletePropertygraphStatisticsError =
   | AccessDeniedException
   | BadRequestException
@@ -2699,6 +2710,7 @@ export const deletePropertygraphStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePropertygraphStatistics",
 }));
+
 export type DeleteSparqlStatisticsError =
   | AccessDeniedException
   | BadRequestException
@@ -2746,6 +2758,7 @@ export const deleteSparqlStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSparqlStatistics",
 }));
+
 export type ExecuteFastResetError =
   | AccessDeniedException
   | ClientTimeoutException
@@ -2795,6 +2808,7 @@ export const executeFastReset: API.OperationMethod<
   retry: Retry,
   operationName: "ExecuteFastReset",
 }));
+
 export type ExecuteGremlinExplainQueryError =
   | BadRequestException
   | CancelledByUserException
@@ -2868,6 +2882,7 @@ export const executeGremlinExplainQuery: API.OperationMethod<
   retry: Retry,
   operationName: "ExecuteGremlinExplainQuery",
 }));
+
 export type ExecuteGremlinProfileQueryError =
   | BadRequestException
   | CancelledByUserException
@@ -2931,6 +2946,7 @@ export const executeGremlinProfileQuery: API.OperationMethod<
   retry: Retry,
   operationName: "ExecuteGremlinProfileQuery",
 }));
+
 export type ExecuteGremlinQueryError =
   | BadRequestException
   | CancelledByUserException
@@ -3000,6 +3016,7 @@ export const executeGremlinQuery: API.OperationMethod<
   retry: Retry,
   operationName: "ExecuteGremlinQuery",
 }));
+
 export type ExecuteOpenCypherExplainQueryError =
   | BadRequestException
   | CancelledByUserException
@@ -3065,6 +3082,7 @@ export const executeOpenCypherExplainQuery: API.OperationMethod<
   retry: Retry,
   operationName: "ExecuteOpenCypherExplainQuery",
 }));
+
 export type ExecuteOpenCypherQueryError =
   | BadRequestException
   | CancelledByUserException
@@ -3140,6 +3158,7 @@ export const executeOpenCypherQuery: API.OperationMethod<
   retry: Retry,
   operationName: "ExecuteOpenCypherQuery",
 }));
+
 export type GetEngineStatusError =
   | ClientTimeoutException
   | ConstraintViolationException
@@ -3177,6 +3196,7 @@ export const getEngineStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetEngineStatus",
 }));
+
 export type GetGremlinQueryStatusError =
   | AccessDeniedException
   | BadRequestException
@@ -3232,6 +3252,7 @@ export const getGremlinQueryStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetGremlinQueryStatus",
 }));
+
 export type GetLoaderJobStatusError =
   | BadRequestException
   | BulkLoadIdNotFoundException
@@ -3281,6 +3302,7 @@ export const getLoaderJobStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetLoaderJobStatus",
 }));
+
 export type GetMLDataProcessingJobError =
   | BadRequestException
   | ClientTimeoutException
@@ -3324,6 +3346,7 @@ export const getMLDataProcessingJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetMLDataProcessingJob",
 }));
+
 export type GetMLEndpointError =
   | BadRequestException
   | ClientTimeoutException
@@ -3367,6 +3390,7 @@ export const getMLEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "GetMLEndpoint",
 }));
+
 export type GetMLModelTrainingJobError =
   | BadRequestException
   | ClientTimeoutException
@@ -3410,6 +3434,7 @@ export const getMLModelTrainingJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetMLModelTrainingJob",
 }));
+
 export type GetMLModelTransformJobError =
   | BadRequestException
   | ClientTimeoutException
@@ -3453,6 +3478,7 @@ export const getMLModelTransformJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetMLModelTransformJob",
 }));
+
 export type GetOpenCypherQueryStatusError =
   | AccessDeniedException
   | BadRequestException
@@ -3510,6 +3536,7 @@ export const getOpenCypherQueryStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetOpenCypherQueryStatus",
 }));
+
 export type GetPropertygraphStatisticsError =
   | AccessDeniedException
   | BadRequestException
@@ -3557,6 +3584,7 @@ export const getPropertygraphStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "GetPropertygraphStatistics",
 }));
+
 export type GetPropertygraphStreamError =
   | ClientTimeoutException
   | ConstraintViolationException
@@ -3618,6 +3646,7 @@ export const getPropertygraphStream: API.OperationMethod<
   retry: Retry,
   operationName: "GetPropertygraphStream",
 }));
+
 export type GetPropertygraphSummaryError =
   | AccessDeniedException
   | BadRequestException
@@ -3665,6 +3694,7 @@ export const getPropertygraphSummary: API.OperationMethod<
   retry: Retry,
   operationName: "GetPropertygraphSummary",
 }));
+
 export type GetRDFGraphSummaryError =
   | AccessDeniedException
   | BadRequestException
@@ -3712,6 +3742,7 @@ export const getRDFGraphSummary: API.OperationMethod<
   retry: Retry,
   operationName: "GetRDFGraphSummary",
 }));
+
 export type GetSparqlStatisticsError =
   | AccessDeniedException
   | BadRequestException
@@ -3757,6 +3788,7 @@ export const getSparqlStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "GetSparqlStatistics",
 }));
+
 export type GetSparqlStreamError =
   | ClientTimeoutException
   | ConstraintViolationException
@@ -3810,6 +3842,7 @@ export const getSparqlStream: API.OperationMethod<
   retry: Retry,
   operationName: "GetSparqlStream",
 }));
+
 export type ListGremlinQueriesError =
   | AccessDeniedException
   | BadRequestException
@@ -3865,6 +3898,7 @@ export const listGremlinQueries: API.OperationMethod<
   retry: Retry,
   operationName: "ListGremlinQueries",
 }));
+
 export type ListLoaderJobsError =
   | BadRequestException
   | BulkLoadIdNotFoundException
@@ -3910,6 +3944,7 @@ export const listLoaderJobs: API.OperationMethod<
   retry: Retry,
   operationName: "ListLoaderJobs",
 }));
+
 export type ListMLDataProcessingJobsError =
   | BadRequestException
   | ClientTimeoutException
@@ -3953,6 +3988,7 @@ export const listMLDataProcessingJobs: API.OperationMethod<
   retry: Retry,
   operationName: "ListMLDataProcessingJobs",
 }));
+
 export type ListMLEndpointsError =
   | BadRequestException
   | ClientTimeoutException
@@ -3996,6 +4032,7 @@ export const listMLEndpoints: API.OperationMethod<
   retry: Retry,
   operationName: "ListMLEndpoints",
 }));
+
 export type ListMLModelTrainingJobsError =
   | BadRequestException
   | ClientTimeoutException
@@ -4039,6 +4076,7 @@ export const listMLModelTrainingJobs: API.OperationMethod<
   retry: Retry,
   operationName: "ListMLModelTrainingJobs",
 }));
+
 export type ListMLModelTransformJobsError =
   | BadRequestException
   | ClientTimeoutException
@@ -4082,6 +4120,7 @@ export const listMLModelTransformJobs: API.OperationMethod<
   retry: Retry,
   operationName: "ListMLModelTransformJobs",
 }));
+
 export type ListOpenCypherQueriesError =
   | AccessDeniedException
   | BadRequestException
@@ -4139,6 +4178,7 @@ export const listOpenCypherQueries: API.OperationMethod<
   retry: Retry,
   operationName: "ListOpenCypherQueries",
 }));
+
 export type ManagePropertygraphStatisticsError =
   | AccessDeniedException
   | BadRequestException
@@ -4186,6 +4226,7 @@ export const managePropertygraphStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "ManagePropertygraphStatistics",
 }));
+
 export type ManageSparqlStatisticsError =
   | AccessDeniedException
   | BadRequestException
@@ -4233,6 +4274,7 @@ export const manageSparqlStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "ManageSparqlStatistics",
 }));
+
 export type StartLoaderJobError =
   | BadRequestException
   | BulkLoadIdNotFoundException
@@ -4282,6 +4324,7 @@ export const startLoaderJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartLoaderJob",
 }));
+
 export type StartMLDataProcessingJobError =
   | BadRequestException
   | ClientTimeoutException
@@ -4325,6 +4368,7 @@ export const startMLDataProcessingJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartMLDataProcessingJob",
 }));
+
 export type StartMLModelTrainingJobError =
   | BadRequestException
   | ClientTimeoutException
@@ -4368,6 +4412,7 @@ export const startMLModelTrainingJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartMLModelTrainingJob",
 }));
+
 export type StartMLModelTransformJobError =
   | BadRequestException
   | ClientTimeoutException

@@ -87,18 +87,78 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ViewName = string;
-export type AWSServiceAccessStatus = string;
-export type IndexType = string;
-export type IndexState = string;
-export type OperationStatus = string;
-export type ServiceViewName = string;
-export type RecorderType = string;
-export type AccountId = string;
-export type QueryString = string | redacted.Redacted<string>;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.String, Name: S.String, Value: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.String,
+    FieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export interface AssociateDefaultViewInput {
+  ViewArn: string;
+}
+export const AssociateDefaultViewInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ViewArn: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/AssociateDefaultView" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "AssociateDefaultViewInput",
+}) as any as S.Schema<AssociateDefaultViewInput>;
+export interface AssociateDefaultViewOutput {
+  ViewArn?: string;
+}
+export const AssociateDefaultViewOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ViewArn: S.optional(S.String) }),
+).annotate({
+  identifier: "AssociateDefaultViewOutput",
+}) as any as S.Schema<AssociateDefaultViewOutput>;
 export type ViewArnList = string[];
 export const ViewArnList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetViewInput {
@@ -118,6 +178,7 @@ export const BatchGetViewInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetViewInput",
 }) as any as S.Schema<BatchGetViewInput>;
+export type ViewName = string;
 export interface IncludedProperty {
   Name: string;
 }
@@ -181,19 +242,49 @@ export const BatchGetViewOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetViewOutput",
 }) as any as S.Schema<BatchGetViewOutput>;
-export interface ValidationExceptionField {
-  Name: string;
-  ValidationIssue: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, ValidationIssue: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
+export type TagMap = { [key: string]: string | undefined };
+export const TagMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
 );
+export interface CreateIndexInput {
+  ClientToken?: string;
+  Tags?: { [key: string]: string | undefined };
+}
+export const CreateIndexInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    Tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateIndex" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateIndexInput",
+}) as any as S.Schema<CreateIndexInput>;
+export type IndexState = string;
+export interface CreateIndexOutput {
+  Arn?: string;
+  State?: string;
+  CreatedAt?: Date;
+}
+export const CreateIndexOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    State: S.optional(S.String),
+    CreatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "CreateIndexOutput",
+}) as any as S.Schema<CreateIndexOutput>;
 export type RegionList = string[];
 export const RegionList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateResourceExplorerSetupInput {
@@ -227,6 +318,76 @@ export const CreateResourceExplorerSetupOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateResourceExplorerSetupOutput",
 }) as any as S.Schema<CreateResourceExplorerSetupOutput>;
+export interface CreateViewInput {
+  ClientToken?: string;
+  ViewName: string;
+  IncludedProperties?: IncludedProperty[];
+  Scope?: string;
+  Filters?: SearchFilter;
+  Tags?: { [key: string]: string | undefined };
+}
+export const CreateViewInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    ViewName: S.String,
+    IncludedProperties: S.optional(IncludedPropertyList),
+    Scope: S.optional(S.String),
+    Filters: S.optional(SearchFilter),
+    Tags: S.optional(TagMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/CreateView" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateViewInput",
+}) as any as S.Schema<CreateViewInput>;
+export interface CreateViewOutput {
+  View?: View;
+}
+export const CreateViewOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ View: S.optional(View) }),
+).annotate({
+  identifier: "CreateViewOutput",
+}) as any as S.Schema<CreateViewOutput>;
+export interface DeleteIndexInput {
+  Arn: string;
+}
+export const DeleteIndexInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DeleteIndex" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteIndexInput",
+}) as any as S.Schema<DeleteIndexInput>;
+export interface DeleteIndexOutput {
+  Arn?: string;
+  State?: string;
+  LastUpdatedAt?: Date;
+}
+export const DeleteIndexOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    State: S.optional(S.String),
+    LastUpdatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "DeleteIndexOutput",
+}) as any as S.Schema<DeleteIndexOutput>;
 export interface DeleteResourceExplorerSetupInput {
   RegionList?: string[];
   DeleteInAllRegions?: boolean;
@@ -256,6 +417,31 @@ export const DeleteResourceExplorerSetupOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteResourceExplorerSetupOutput",
 }) as any as S.Schema<DeleteResourceExplorerSetupOutput>;
+export interface DeleteViewInput {
+  ViewArn: string;
+}
+export const DeleteViewInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ViewArn: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/DeleteView" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteViewInput",
+}) as any as S.Schema<DeleteViewInput>;
+export interface DeleteViewOutput {
+  ViewArn?: string;
+}
+export const DeleteViewOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ViewArn: S.optional(S.String) }),
+).annotate({
+  identifier: "DeleteViewOutput",
+}) as any as S.Schema<DeleteViewOutput>;
 export interface DisassociateDefaultViewRequest {}
 export const DisassociateDefaultViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -293,6 +479,7 @@ export const GetAccountLevelServiceConfigurationRequest =
   ).annotate({
     identifier: "GetAccountLevelServiceConfigurationRequest",
   }) as any as S.Schema<GetAccountLevelServiceConfigurationRequest>;
+export type AWSServiceAccessStatus = string;
 export interface OrgConfiguration {
   AWSServiceAccessStatus: string;
   ServiceLinkedRole?: string;
@@ -352,11 +539,7 @@ export const GetIndexRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIndexRequest",
 }) as any as S.Schema<GetIndexRequest>;
-export type TagMap = { [key: string]: string | undefined };
-export const TagMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
+export type IndexType = string;
 export interface GetIndexOutput {
   Arn?: string;
   Type?: string;
@@ -459,6 +642,7 @@ export const GetResourceExplorerSetupInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourceExplorerSetupInput",
 }) as any as S.Schema<GetResourceExplorerSetupInput>;
+export type OperationStatus = string;
 export interface Index {
   Region?: string;
   Arn?: string;
@@ -569,6 +753,8 @@ export const GetServiceViewInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetServiceViewInput",
 }) as any as S.Schema<GetServiceViewInput>;
+export type ServiceViewName = string;
+export type RecorderType = string;
 export interface ServiceLinkedRecorderInfo {
   ServicePrincipal?: string;
   RecorderName?: string;
@@ -611,6 +797,65 @@ export const GetServiceViewOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetServiceViewOutput",
 }) as any as S.Schema<GetServiceViewOutput>;
+export interface GetViewInput {
+  ViewArn: string;
+}
+export const GetViewInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ViewArn: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/GetView" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({ identifier: "GetViewInput" }) as any as S.Schema<GetViewInput>;
+export interface GetViewOutput {
+  View?: View;
+  Tags?: { [key: string]: string | undefined };
+}
+export const GetViewOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ View: S.optional(View), Tags: S.optional(TagMap) }),
+).annotate({ identifier: "GetViewOutput" }) as any as S.Schema<GetViewOutput>;
+export interface ListIndexesInput {
+  Type?: string;
+  Regions?: string[];
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListIndexesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Type: S.optional(S.String),
+    Regions: S.optional(RegionList),
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListIndexes" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListIndexesInput",
+}) as any as S.Schema<ListIndexesInput>;
+export type IndexList = Index[];
+export const IndexList = /*@__PURE__*/ S.Array(Index);
+export interface ListIndexesOutput {
+  Indexes?: Index[];
+  NextToken?: string;
+}
+export const ListIndexesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Indexes: S.optional(IndexList), NextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListIndexesOutput",
+}) as any as S.Schema<ListIndexesOutput>;
+export type AccountId = string;
 export type AccountIdList = string[];
 export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
 export interface ListIndexesForMembersInput {
@@ -807,8 +1052,6 @@ export const ListServiceIndexesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListServiceIndexesInput",
 }) as any as S.Schema<ListServiceIndexesInput>;
-export type IndexList = Index[];
-export const IndexList = /*@__PURE__*/ S.Array(Index);
 export interface ListServiceIndexesOutput {
   Indexes?: Index[];
   NextToken?: string;
@@ -979,6 +1222,35 @@ export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
+export interface ListViewsInput {
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const ListViewsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ListViews" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({ identifier: "ListViewsInput" }) as any as S.Schema<ListViewsInput>;
+export interface ListViewsOutput {
+  Views?: string[];
+  NextToken?: string;
+}
+export const ListViewsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Views: S.optional(ViewArnList), NextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListViewsOutput",
+}) as any as S.Schema<ListViewsOutput>;
+export type QueryString = string | redacted.Redacted<string>;
 export interface SearchInput {
   QueryString: string | redacted.Redacted<string>;
   MaxResults?: number;
@@ -1082,43 +1354,6 @@ export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceOutput",
 }) as any as S.Schema<UntagResourceOutput>;
-export interface CreateIndexInput {
-  ClientToken?: string;
-  Tags?: { [key: string]: string | undefined };
-}
-export const CreateIndexInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    Tags: S.optional(TagMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/CreateIndex" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateIndexInput",
-}) as any as S.Schema<CreateIndexInput>;
-export interface CreateIndexOutput {
-  Arn?: string;
-  State?: string;
-  CreatedAt?: Date;
-}
-export const CreateIndexOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    State: S.optional(S.String),
-    CreatedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({
-  identifier: "CreateIndexOutput",
-}) as any as S.Schema<CreateIndexOutput>;
 export interface UpdateIndexTypeInput {
   Arn: string;
   Type: string;
@@ -1155,132 +1390,6 @@ export const UpdateIndexTypeOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateIndexTypeOutput",
 }) as any as S.Schema<UpdateIndexTypeOutput>;
-export interface DeleteIndexInput {
-  Arn: string;
-}
-export const DeleteIndexInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/DeleteIndex" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteIndexInput",
-}) as any as S.Schema<DeleteIndexInput>;
-export interface DeleteIndexOutput {
-  Arn?: string;
-  State?: string;
-  LastUpdatedAt?: Date;
-}
-export const DeleteIndexOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    State: S.optional(S.String),
-    LastUpdatedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({
-  identifier: "DeleteIndexOutput",
-}) as any as S.Schema<DeleteIndexOutput>;
-export interface ListIndexesInput {
-  Type?: string;
-  Regions?: string[];
-  MaxResults?: number;
-  NextToken?: string;
-}
-export const ListIndexesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: S.optional(S.String),
-    Regions: S.optional(RegionList),
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/ListIndexes" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListIndexesInput",
-}) as any as S.Schema<ListIndexesInput>;
-export interface ListIndexesOutput {
-  Indexes?: Index[];
-  NextToken?: string;
-}
-export const ListIndexesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Indexes: S.optional(IndexList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListIndexesOutput",
-}) as any as S.Schema<ListIndexesOutput>;
-export interface CreateViewInput {
-  ClientToken?: string;
-  ViewName: string;
-  IncludedProperties?: IncludedProperty[];
-  Scope?: string;
-  Filters?: SearchFilter;
-  Tags?: { [key: string]: string | undefined };
-}
-export const CreateViewInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    ViewName: S.String,
-    IncludedProperties: S.optional(IncludedPropertyList),
-    Scope: S.optional(S.String),
-    Filters: S.optional(SearchFilter),
-    Tags: S.optional(TagMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/CreateView" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateViewInput",
-}) as any as S.Schema<CreateViewInput>;
-export interface CreateViewOutput {
-  View?: View;
-}
-export const CreateViewOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ View: S.optional(View) }),
-).annotate({
-  identifier: "CreateViewOutput",
-}) as any as S.Schema<CreateViewOutput>;
-export interface GetViewInput {
-  ViewArn: string;
-}
-export const GetViewInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ViewArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/GetView" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetViewInput" }) as any as S.Schema<GetViewInput>;
-export interface GetViewOutput {
-  View?: View;
-  Tags?: { [key: string]: string | undefined };
-}
-export const GetViewOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ View: S.optional(View), Tags: S.optional(TagMap) }),
-).annotate({ identifier: "GetViewOutput" }) as any as S.Schema<GetViewOutput>;
 export interface UpdateViewInput {
   ViewArn: string;
   IncludedProperties?: IncludedProperty[];
@@ -1312,128 +1421,51 @@ export const UpdateViewOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateViewOutput",
 }) as any as S.Schema<UpdateViewOutput>;
-export interface DeleteViewInput {
-  ViewArn: string;
+export interface ValidationExceptionField {
+  Name: string;
+  ValidationIssue: string;
 }
-export const DeleteViewInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ViewArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/DeleteView" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, ValidationIssue: S.String }),
 ).annotate({
-  identifier: "DeleteViewInput",
-}) as any as S.Schema<DeleteViewInput>;
-export interface DeleteViewOutput {
-  ViewArn?: string;
-}
-export const DeleteViewOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ViewArn: S.optional(S.String) }),
-).annotate({
-  identifier: "DeleteViewOutput",
-}) as any as S.Schema<DeleteViewOutput>;
-export interface ListViewsInput {
-  NextToken?: string;
-  MaxResults?: number;
-}
-export const ListViewsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String),
-    MaxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/ListViews" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "ListViewsInput" }) as any as S.Schema<ListViewsInput>;
-export interface ListViewsOutput {
-  Views?: string[];
-  NextToken?: string;
-}
-export const ListViewsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Views: S.optional(ViewArnList), NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListViewsOutput",
-}) as any as S.Schema<ListViewsOutput>;
-export interface AssociateDefaultViewInput {
-  ViewArn: string;
-}
-export const AssociateDefaultViewInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ViewArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/AssociateDefaultView" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AssociateDefaultViewInput",
-}) as any as S.Schema<AssociateDefaultViewInput>;
-export interface AssociateDefaultViewOutput {
-  ViewArn?: string;
-}
-export const AssociateDefaultViewOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ViewArn: S.optional(S.String) }),
-).annotate({
-  identifier: "AssociateDefaultViewOutput",
-}) as any as S.Schema<AssociateDefaultViewOutput>;
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
+export type AssociateDefaultViewError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Sets the specified view as the default for the Amazon Web Services Region in which you call this operation. When a user performs a Search that doesn't explicitly specify which view to use, then Amazon Web Services Resource Explorer automatically chooses this default view for searches performed in this Amazon Web Services Region.
+ *
+ * If an Amazon Web Services Region doesn't have a default view configured, then users must explicitly specify a view with every `Search` operation performed in that Region.
+ */
+export const associateDefaultView: API.OperationMethod<
+  AssociateDefaultViewInput,
+  AssociateDefaultViewOutput,
+  AssociateDefaultViewError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: AssociateDefaultViewInput,
+  output: AssociateDefaultViewOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "AssociateDefaultView",
+}));
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.String, FieldList: S.optional(ValidationExceptionFieldList) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.String, Name: S.String, Value: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
 export type BatchGetViewError =
   | AccessDeniedException
   | InternalServerException
@@ -1463,6 +1495,57 @@ export const batchGetView: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetView",
 }));
+
+export type CreateIndexError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Turns on Amazon Web Services Resource Explorer in the Amazon Web Services Region in which you called this operation by creating an index. Resource Explorer begins discovering the resources in this Region and stores the details about the resources in the index so that they can be queried by using the Search operation. You can create only one index in a Region.
+ *
+ * This operation creates only a *local* index. To promote the local index in one Amazon Web Services Region into the aggregator index for the Amazon Web Services account, use the UpdateIndexType operation. For more information, see Turning on cross-Region search by creating an aggregator index in the *Amazon Web Services Resource Explorer User Guide*.
+ *
+ * For more details about what happens when you turn on Resource Explorer in an Amazon Web Services Region, see Turn on Resource Explorer to index your resources in an Amazon Web Services Region in the *Amazon Web Services Resource Explorer User Guide*.
+ *
+ * If this is the first Amazon Web Services Region in which you've created an index for Resource Explorer, then this operation also creates a service-linked role in your Amazon Web Services account that allows Resource Explorer to enumerate your resources to populate the index.
+ *
+ * - **Action**: `resource-explorer-2:CreateIndex`
+ *
+ * **Resource**: The ARN of the index (as it will exist after the operation completes) in the Amazon Web Services Region and account in which you're trying to create the index. Use the wildcard character (`*`) at the end of the string to match the eventual UUID. For example, the following `Resource` element restricts the role or user to creating an index in only the `us-east-2` Region of the specified account.
+ *
+ * `"Resource": "arn:aws:resource-explorer-2:us-west-2:*<account-id>*:index/*"`
+ *
+ * Alternatively, you can use `"Resource": "*"` to allow the role or user to create an index in any Region.
+ *
+ * - **Action**: `iam:CreateServiceLinkedRole`
+ *
+ * **Resource**: No specific resource (*).
+ *
+ * This permission is required only the first time you create an index to turn on Resource Explorer in the account. Resource Explorer uses this to create the service-linked role needed to index the resources in your account. Resource Explorer uses the same service-linked role for all additional indexes you create afterwards.
+ */
+export const createIndex: API.OperationMethod<
+  CreateIndexInput,
+  CreateIndexOutput,
+  CreateIndexError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateIndexInput,
+  output: CreateIndexOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateIndex",
+}));
+
 export type CreateResourceExplorerSetupError =
   | AccessDeniedException
   | ConflictException
@@ -1492,6 +1575,75 @@ export const createResourceExplorerSetup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateResourceExplorerSetup",
 }));
+
+export type CreateViewError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a view that users can query by using the Search operation. Results from queries that you make using this view include only resources that match the view's `Filters`. For more information about Amazon Web Services Resource Explorer views, see Managing views in the *Amazon Web Services Resource Explorer User Guide*.
+ *
+ * Only the principals with an IAM identity-based policy that grants `Allow` to the `Search` action on a `Resource` with the Amazon resource name (ARN) of this view can Search using views you create with this operation.
+ */
+export const createView: API.OperationMethod<
+  CreateViewInput,
+  CreateViewOutput,
+  CreateViewError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateViewInput,
+  output: CreateViewOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateView",
+}));
+
+export type DeleteIndexError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the specified index and turns off Amazon Web Services Resource Explorer in the specified Amazon Web Services Region. When you delete an index, Resource Explorer stops discovering and indexing resources in that Region. Resource Explorer also deletes all views in that Region. These actions occur as asynchronous background tasks. You can check to see when the actions are complete by using the GetIndex operation and checking the `Status` response value.
+ *
+ * If the index you delete is the aggregator index for the Amazon Web Services account, you must wait 24 hours before you can promote another local index to be the aggregator index for the account. Users can't perform account-wide searches using Resource Explorer until another aggregator index is configured.
+ */
+export const deleteIndex: API.OperationMethod<
+  DeleteIndexInput,
+  DeleteIndexOutput,
+  DeleteIndexError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteIndexInput,
+  output: DeleteIndexOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteIndex",
+}));
+
 export type DeleteResourceExplorerSetupError =
   | AccessDeniedException
   | ConflictException
@@ -1521,6 +1673,41 @@ export const deleteResourceExplorerSetup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourceExplorerSetup",
 }));
+
+export type DeleteViewError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the specified view.
+ *
+ * If the specified view is the default view for its Amazon Web Services Region, then all Search operations in that Region must explicitly specify the view to use until you configure a new default by calling the AssociateDefaultView operation.
+ */
+export const deleteView: API.OperationMethod<
+  DeleteViewInput,
+  DeleteViewOutput,
+  DeleteViewError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteViewInput,
+  output: DeleteViewOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteView",
+}));
+
 export type DisassociateDefaultViewError =
   | AccessDeniedException
   | InternalServerException
@@ -1552,6 +1739,7 @@ export const disassociateDefaultView: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateDefaultView",
 }));
+
 export type GetAccountLevelServiceConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -1579,6 +1767,7 @@ export const getAccountLevelServiceConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountLevelServiceConfiguration",
 }));
+
 export type GetDefaultViewError =
   | AccessDeniedException
   | InternalServerException
@@ -1608,6 +1797,7 @@ export const getDefaultView: API.OperationMethod<
   retry: Retry,
   operationName: "GetDefaultView",
 }));
+
 export type GetIndexError =
   | AccessDeniedException
   | InternalServerException
@@ -1637,6 +1827,7 @@ export const getIndex: API.OperationMethod<
   retry: Retry,
   operationName: "GetIndex",
 }));
+
 export type GetManagedViewError =
   | AccessDeniedException
   | InternalServerException
@@ -1668,6 +1859,7 @@ export const getManagedView: API.OperationMethod<
   retry: Retry,
   operationName: "GetManagedView",
 }));
+
 export type GetResourceExplorerSetupError =
   | AccessDeniedException
   | InternalServerException
@@ -1718,6 +1910,7 @@ export const getResourceExplorerSetup: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetServiceIndexError =
   | AccessDeniedException
   | InternalServerException
@@ -1747,6 +1940,7 @@ export const getServiceIndex: API.OperationMethod<
   retry: Retry,
   operationName: "GetServiceIndex",
 }));
+
 export type GetServiceViewError =
   | AccessDeniedException
   | InternalServerException
@@ -1776,6 +1970,88 @@ export const getServiceView: API.OperationMethod<
   retry: Retry,
   operationName: "GetServiceView",
 }));
+
+export type GetViewError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves details of the specified view.
+ */
+export const getView: API.OperationMethod<
+  GetViewInput,
+  GetViewOutput,
+  GetViewError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetViewInput,
+  output: GetViewOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetView",
+}));
+
+export type ListIndexesError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves a list of all of the indexes in Amazon Web Services Regions that are currently collecting resource information for Amazon Web Services Resource Explorer.
+ */
+export const listIndexes: API.OperationMethod<
+  ListIndexesInput,
+  ListIndexesOutput,
+  ListIndexesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListIndexesInput,
+  ) => stream.Stream<
+    ListIndexesOutput,
+    ListIndexesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListIndexesInput,
+  ) => stream.Stream<
+    Index,
+    ListIndexesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListIndexesInput,
+  output: ListIndexesOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListIndexes",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Indexes",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
 export type ListIndexesForMembersError =
   | AccessDeniedException
   | InternalServerException
@@ -1824,6 +2100,7 @@ export const listIndexesForMembers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListManagedViewsError =
   | AccessDeniedException
   | InternalServerException
@@ -1874,6 +2151,7 @@ export const listManagedViews: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourcesError =
   | AccessDeniedException
   | InternalServerException
@@ -1926,6 +2204,7 @@ export const listResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListServiceIndexesError =
   | AccessDeniedException
   | InternalServerException
@@ -1974,6 +2253,7 @@ export const listServiceIndexes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListServiceViewsError =
   | AccessDeniedException
   | InternalServerException
@@ -2022,6 +2302,7 @@ export const listServiceViews: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStreamingAccessForServicesError =
   | AccessDeniedException
   | InternalServerException
@@ -2064,6 +2345,7 @@ export const listStreamingAccessForServices: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSupportedResourceTypesError =
   | AccessDeniedException
   | InternalServerException
@@ -2112,6 +2394,7 @@ export const listSupportedResourceTypes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2143,6 +2426,58 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
+export type ListViewsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the Amazon resource names (ARNs) of the views available in the Amazon Web Services Region in which you call this operation.
+ *
+ * Always check the `NextToken` response parameter for a `null` value when calling a paginated operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
+ */
+export const listViews: API.OperationMethod<
+  ListViewsInput,
+  ListViewsOutput,
+  ListViewsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListViewsInput,
+  ) => stream.Stream<
+    ListViewsOutput,
+    ListViewsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListViewsInput,
+  ) => stream.Stream<
+    string,
+    ListViewsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListViewsInput,
+  output: ListViewsOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListViews",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Views",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
 export type SearchError =
   | AccessDeniedException
   | InternalServerException
@@ -2201,6 +2536,7 @@ export const search: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -2232,6 +2568,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2263,55 +2600,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
-export type CreateIndexError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Turns on Amazon Web Services Resource Explorer in the Amazon Web Services Region in which you called this operation by creating an index. Resource Explorer begins discovering the resources in this Region and stores the details about the resources in the index so that they can be queried by using the Search operation. You can create only one index in a Region.
- *
- * This operation creates only a *local* index. To promote the local index in one Amazon Web Services Region into the aggregator index for the Amazon Web Services account, use the UpdateIndexType operation. For more information, see Turning on cross-Region search by creating an aggregator index in the *Amazon Web Services Resource Explorer User Guide*.
- *
- * For more details about what happens when you turn on Resource Explorer in an Amazon Web Services Region, see Turn on Resource Explorer to index your resources in an Amazon Web Services Region in the *Amazon Web Services Resource Explorer User Guide*.
- *
- * If this is the first Amazon Web Services Region in which you've created an index for Resource Explorer, then this operation also creates a service-linked role in your Amazon Web Services account that allows Resource Explorer to enumerate your resources to populate the index.
- *
- * - **Action**: `resource-explorer-2:CreateIndex`
- *
- * **Resource**: The ARN of the index (as it will exist after the operation completes) in the Amazon Web Services Region and account in which you're trying to create the index. Use the wildcard character (`*`) at the end of the string to match the eventual UUID. For example, the following `Resource` element restricts the role or user to creating an index in only the `us-east-2` Region of the specified account.
- *
- * `"Resource": "arn:aws:resource-explorer-2:us-west-2:*<account-id>*:index/*"`
- *
- * Alternatively, you can use `"Resource": "*"` to allow the role or user to create an index in any Region.
- *
- * - **Action**: `iam:CreateServiceLinkedRole`
- *
- * **Resource**: No specific resource (*).
- *
- * This permission is required only the first time you create an index to turn on Resource Explorer in the account. Resource Explorer uses this to create the service-linked role needed to index the resources in your account. Resource Explorer uses the same service-linked role for all additional indexes you create afterwards.
- */
-export const createIndex: API.OperationMethod<
-  CreateIndexInput,
-  CreateIndexOutput,
-  CreateIndexError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateIndexInput,
-  output: CreateIndexOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateIndex",
-}));
+
 export type UpdateIndexTypeError =
   | AccessDeniedException
   | ConflictException
@@ -2361,151 +2650,7 @@ export const updateIndexType: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateIndexType",
 }));
-export type DeleteIndexError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes the specified index and turns off Amazon Web Services Resource Explorer in the specified Amazon Web Services Region. When you delete an index, Resource Explorer stops discovering and indexing resources in that Region. Resource Explorer also deletes all views in that Region. These actions occur as asynchronous background tasks. You can check to see when the actions are complete by using the GetIndex operation and checking the `Status` response value.
- *
- * If the index you delete is the aggregator index for the Amazon Web Services account, you must wait 24 hours before you can promote another local index to be the aggregator index for the account. Users can't perform account-wide searches using Resource Explorer until another aggregator index is configured.
- */
-export const deleteIndex: API.OperationMethod<
-  DeleteIndexInput,
-  DeleteIndexOutput,
-  DeleteIndexError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIndexInput,
-  output: DeleteIndexOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteIndex",
-}));
-export type ListIndexesError =
-  | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves a list of all of the indexes in Amazon Web Services Regions that are currently collecting resource information for Amazon Web Services Resource Explorer.
- */
-export const listIndexes: API.OperationMethod<
-  ListIndexesInput,
-  ListIndexesOutput,
-  ListIndexesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListIndexesInput,
-  ) => stream.Stream<
-    ListIndexesOutput,
-    ListIndexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListIndexesInput,
-  ) => stream.Stream<
-    Index,
-    ListIndexesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListIndexesInput,
-  output: ListIndexesOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListIndexes",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "Indexes",
-    pageSize: "MaxResults",
-  } as const,
-}));
-export type CreateViewError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a view that users can query by using the Search operation. Results from queries that you make using this view include only resources that match the view's `Filters`. For more information about Amazon Web Services Resource Explorer views, see Managing views in the *Amazon Web Services Resource Explorer User Guide*.
- *
- * Only the principals with an IAM identity-based policy that grants `Allow` to the `Search` action on a `Resource` with the Amazon resource name (ARN) of this view can Search using views you create with this operation.
- */
-export const createView: API.OperationMethod<
-  CreateViewInput,
-  CreateViewOutput,
-  CreateViewError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateViewInput,
-  output: CreateViewOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateView",
-}));
-export type GetViewError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves details of the specified view.
- */
-export const getView: API.OperationMethod<
-  GetViewInput,
-  GetViewOutput,
-  GetViewError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetViewInput,
-  output: GetViewOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetView",
-}));
+
 export type UpdateViewError =
   | AccessDeniedException
   | InternalServerException
@@ -2536,118 +2681,4 @@ export const updateView: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "UpdateView",
-}));
-export type DeleteViewError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes the specified view.
- *
- * If the specified view is the default view for its Amazon Web Services Region, then all Search operations in that Region must explicitly specify the view to use until you configure a new default by calling the AssociateDefaultView operation.
- */
-export const deleteView: API.OperationMethod<
-  DeleteViewInput,
-  DeleteViewOutput,
-  DeleteViewError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteViewInput,
-  output: DeleteViewOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteView",
-}));
-export type ListViewsError =
-  | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Lists the Amazon resource names (ARNs) of the views available in the Amazon Web Services Region in which you call this operation.
- *
- * Always check the `NextToken` response parameter for a `null` value when calling a paginated operation. These operations can occasionally return an empty set of results even when there are more results available. The `NextToken` response parameter value is `null` *only* when there are no more results to display.
- */
-export const listViews: API.OperationMethod<
-  ListViewsInput,
-  ListViewsOutput,
-  ListViewsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListViewsInput,
-  ) => stream.Stream<
-    ListViewsOutput,
-    ListViewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListViewsInput,
-  ) => stream.Stream<
-    string,
-    ListViewsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListViewsInput,
-  output: ListViewsOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListViews",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "Views",
-    pageSize: "MaxResults",
-  } as const,
-}));
-export type AssociateDefaultViewError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Sets the specified view as the default for the Amazon Web Services Region in which you call this operation. When a user performs a Search that doesn't explicitly specify which view to use, then Amazon Web Services Resource Explorer automatically chooses this default view for searches performed in this Amazon Web Services Region.
- *
- * If an Amazon Web Services Region doesn't have a default view configured, then users must explicitly specify a view with every `Search` operation performed in that Region.
- */
-export const associateDefaultView: API.OperationMethod<
-  AssociateDefaultViewInput,
-  AssociateDefaultViewOutput,
-  AssociateDefaultViewError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: AssociateDefaultViewInput,
-  output: AssociateDefaultViewOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "AssociateDefaultView",
 }));

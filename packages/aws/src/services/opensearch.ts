@@ -97,129 +97,86 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BaseException extends S.TaggedErrorClass<BaseException>()(
+  "BaseException",
+  { message: S.optional(S.String) },
+) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class DependencyFailureException extends S.TaggedErrorClass<DependencyFailureException>()(
+  "DependencyFailureException",
+  { message: S.optional(S.String) },
+  T.HttpError(424),
+) {}
+export class DisabledOperationException extends S.TaggedErrorClass<DisabledOperationException>()(
+  "DisabledOperationException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalException extends S.TaggedErrorClass<InternalException>()(
+  "InternalException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidPaginationTokenException extends S.TaggedErrorClass<InvalidPaginationTokenException>()(
+  "InvalidPaginationTokenException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidTypeException extends S.TaggedErrorClass<InvalidTypeException>()(
+  "InvalidTypeException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class SlotNotAvailableException extends S.TaggedErrorClass<SlotNotAvailableException>()(
+  "SlotNotAvailableException",
+  {
+    SlotSuggestions: S.optional(
+      S.suspend(() => SlotList).annotate({ identifier: "SlotList" }),
+    ),
+    message: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ConnectionId = string;
-export type OwnerId = string;
-export type DomainName = string;
-export type Region = string;
-export type ConnectionStatusMessage = string;
-export type ErrorMessage = string;
-export type DataSourceName = string;
-export type RoleArn = string;
-export type DataSourceDescription = string;
-export type DirectQueryDataSourceName = string;
-export type DirectQueryDataSourceRoleArn = string;
-export type AMPWorkspaceArn = string;
-export type DirectQueryDataSourceDescription = string;
-export type ARN = string;
-export type PolicyDocument = string;
-export type TagKey = string;
-export type TagValue = string;
-export type PackageID = string;
-export type PackageName = string;
-export type LastUpdated = Date;
-export type PackageVersion = string;
-export type ReferencePath = string;
-export type ErrorType = string;
-export type Id = string;
-export type ClientToken = string;
-export type AWSAccount = string;
-export type DryRun = boolean;
-export type GUID = string;
-export type DeploymentCloseDateTimeStamp = Date;
-export type ApplicationName = string;
-export type AppConfigValue = string;
-export type KmsKeyArn = string;
-export type VersionString = string;
-export type IntegerClass = number;
-export type UserPoolId = string;
-export type IdentityPoolId = string;
-export type KmsKeyId = string;
-export type CloudWatchLogsLogGroupArn = string;
-export type DomainNameFqdn = string;
-export type Username = string | redacted.Redacted<string>;
-export type Password = string | redacted.Redacted<string>;
-export type SAMLMetadata = string;
-export type SAMLEntityId = string;
-export type BackendRole = string;
-export type SubjectKey = string;
-export type RolesKey = string;
-export type JwksUrl = string;
-export type IAMFederationSubjectKey = string;
-export type IAMFederationRolesKey = string;
-export type IdentityCenterInstanceARN = string;
-export type StartAt = Date;
-export type DurationValue = number;
-export type StartTimeHours = number;
-export type StartTimeMinutes = number;
-export type DomainId = string;
-export type ServiceUrl = string;
-export type HostedZoneId = string;
-export type DisableTimestamp = Date;
-export type IdentityCenterApplicationARN = string;
-export type IdentityStoreId = string;
-export type Message = string;
-export type UpdateTimestamp = Date;
-export type IndexName = string;
-export type IndexSchema = unknown;
-export type ConnectionAlias = string;
-export type Endpoint = string;
-export type PackageDescription = string;
-export type S3BucketName = string;
-export type S3Key = string;
-export type LicenseFilepath = string;
-export type EngineVersion = string;
-export type CreatedAt = Date;
-export type PluginName = string;
-export type PluginDescription = string;
-export type PluginVersion = string;
-export type PluginClassName = string;
-export type UncompressedPluginSizeInBytes = number;
-export type PackageUser = string;
-export type PackageOwner = string;
-export type DomainArn = string;
-export type VpcEndpointId = string;
-export type ApplicationId = string;
-export type CapabilityName = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type AutoTuneDate = Date;
-export type ScheduledAutoTuneDescription = string;
-export type TotalNumberOfStages = number;
-export type ChangeProgressStageName = string;
-export type ChangeProgressStageStatus = string;
-export type Description = string;
-export type UIntValue = number;
-export type NumberOfAZs = string;
-export type NumberOfNodes = string;
-export type NumberOfShards = string;
-export type AvailabilityZone = string;
-export type NodeId = string;
-export type StorageTypeName = string;
-export type VolumeSize = string;
-export type DeploymentType = string;
-export type NonEmptyString = string;
-export type InsightEntityValue = string;
-export type InstanceRole = string;
-export type StorageSubTypeName = string;
-export type LimitName = string;
-export type LimitValue = string;
-export type MinimumInstanceCount = number;
-export type MaximumInstanceCount = number;
-export type DescribePackagesFilterValue = string;
-export type ReservationToken = string;
-export type CapabilityFailureDetails = string;
-export type RequestId = string;
-export type MaintenanceStatusMessage = string;
-export type CommitMessage = string;
-export type UpgradeName = string;
-export type StartTimestamp = Date;
-export type Issue = string;
-export type InsightPageSize = number;
-export type InstanceTypeString = string;
-export type InstanceCount = number;
-
-//# Schemas
 export interface AcceptInboundConnectionRequest {
   ConnectionId: string;
 }
@@ -241,6 +198,9 @@ export const AcceptInboundConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptInboundConnectionRequest",
 }) as any as S.Schema<AcceptInboundConnectionRequest>;
+export type OwnerId = string;
+export type DomainName = string;
+export type Region = string;
 export interface AWSDomainInformation {
   OwnerId?: string;
   DomainName: string;
@@ -274,6 +234,8 @@ export type InboundConnectionStatusCode =
   | "DELETED"
   | (string & {});
 export const InboundConnectionStatusCode = /*@__PURE__*/ S.String;
+
+export type ConnectionStatusMessage = string;
 export interface InboundConnectionStatus {
   StatusCode?: InboundConnectionStatusCode;
   Message?: string;
@@ -288,6 +250,7 @@ export const InboundConnectionStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InboundConnectionStatus>;
 export type ConnectionMode = "DIRECT" | "VPC_ENDPOINT" | (string & {});
 export const ConnectionMode = /*@__PURE__*/ S.String;
+
 export interface InboundConnection {
   LocalDomainInfo?: DomainInformationContainer;
   RemoteDomainInfo?: DomainInformationContainer;
@@ -314,6 +277,8 @@ export const AcceptInboundConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptInboundConnectionResponse",
 }) as any as S.Schema<AcceptInboundConnectionResponse>;
+export type DataSourceName = string;
+export type RoleArn = string;
 export interface S3GlueDataCatalog {
   RoleArn?: string;
 }
@@ -326,6 +291,7 @@ export type DataSourceType = { S3GlueDataCatalog: S3GlueDataCatalog };
 export const DataSourceType = /*@__PURE__*/ S.Union([
   S.Struct({ S3GlueDataCatalog: S3GlueDataCatalog }),
 ]);
+export type DataSourceDescription = string;
 export interface AddDataSourceRequest {
   DomainName: string;
   Name: string;
@@ -363,6 +329,8 @@ export const AddDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddDataSourceResponse",
 }) as any as S.Schema<AddDataSourceResponse>;
+export type DirectQueryDataSourceName = string;
+export type DirectQueryDataSourceRoleArn = string;
 export interface CloudWatchDirectQueryDataSource {
   RoleArn: string;
 }
@@ -379,6 +347,7 @@ export const SecurityLakeDirectQueryDataSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SecurityLakeDirectQueryDataSource",
 }) as any as S.Schema<SecurityLakeDirectQueryDataSource>;
+export type AMPWorkspaceArn = string;
 export interface PrometheusDirectQueryDataSource {
   RoleArn: string;
   WorkspaceArn: string;
@@ -409,8 +378,13 @@ export const DirectQueryDataSourceType = /*@__PURE__*/ S.Union([
   S.Struct({ SecurityLake: SecurityLakeDirectQueryDataSource }),
   S.Struct({ Prometheus: PrometheusDirectQueryDataSource }),
 ]);
+export type DirectQueryDataSourceDescription = string;
+export type ARN = string;
 export type DirectQueryOpenSearchARNList = string[];
 export const DirectQueryOpenSearchARNList = /*@__PURE__*/ S.Array(S.String);
+export type PolicyDocument = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -484,6 +458,7 @@ export const AddTagsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddTagsResponse",
 }) as any as S.Schema<AddTagsResponse>;
+export type PackageID = string;
 export type PackageIDList = string[];
 export const PackageIDList = /*@__PURE__*/ S.Array(S.String);
 export interface KeyStoreAccessOption {
@@ -535,6 +510,7 @@ export const AssociatePackageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociatePackageRequest",
 }) as any as S.Schema<AssociatePackageRequest>;
+export type PackageName = string;
 export type PackageType =
   | "TXT-DICTIONARY"
   | "ZIP-PLUGIN"
@@ -542,6 +518,8 @@ export type PackageType =
   | "PACKAGE-CONFIG"
   | (string & {});
 export const PackageType = /*@__PURE__*/ S.String;
+
+export type LastUpdated = Date;
 export type DomainPackageStatus =
   | "ASSOCIATING"
   | "ASSOCIATION_FAILED"
@@ -550,6 +528,11 @@ export type DomainPackageStatus =
   | "DISSOCIATION_FAILED"
   | (string & {});
 export const DomainPackageStatus = /*@__PURE__*/ S.String;
+
+export type PackageVersion = string;
+export type ReferencePath = string;
+export type ErrorType = string;
+export type ErrorMessage = string;
 export interface ErrorDetails {
   ErrorType?: string;
   ErrorMessage?: string;
@@ -651,6 +634,7 @@ export const AssociatePackagesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociatePackagesResponse",
 }) as any as S.Schema<AssociatePackagesResponse>;
+export type Id = string;
 export interface WorkspaceConfigurationInput {
   name: string;
   workspaceType: string;
@@ -660,6 +644,7 @@ export const WorkspaceConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkspaceConfigurationInput",
 }) as any as S.Schema<WorkspaceConfigurationInput>;
+export type ClientToken = string;
 export interface AttachDataSourceRequest {
   id: string;
   dataSourceArn: string;
@@ -697,6 +682,7 @@ export type DataSourceAttachmentStatus =
   | "FAILED"
   | (string & {});
 export const DataSourceAttachmentStatus = /*@__PURE__*/ S.String;
+
 export interface AttachDataSourceResponse {
   attachmentId?: string;
   id?: string;
@@ -715,10 +701,12 @@ export const AttachDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachDataSourceResponse",
 }) as any as S.Schema<AttachDataSourceResponse>;
+export type AWSAccount = string;
 export type AWSServicePrincipal =
   | "application.opensearchservice.amazonaws.com"
   | (string & {});
 export const AWSServicePrincipal = /*@__PURE__*/ S.String;
+
 export type RegionsList = string[];
 export const RegionsList = /*@__PURE__*/ S.Array(S.String);
 export interface ServiceOptions {
@@ -758,6 +746,7 @@ export const AuthorizeVpcEndpointAccessRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthorizeVpcEndpointAccessRequest>;
 export type PrincipalType = "AWS_ACCOUNT" | "AWS_SERVICE" | (string & {});
 export const PrincipalType = /*@__PURE__*/ S.String;
+
 export interface AuthorizedPrincipal {
   PrincipalType?: PrincipalType;
   Principal?: string;
@@ -780,6 +769,7 @@ export const AuthorizeVpcEndpointAccessResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthorizeVpcEndpointAccessResponse",
 }) as any as S.Schema<AuthorizeVpcEndpointAccessResponse>;
+export type DryRun = boolean;
 export interface CancelDomainConfigChangeRequest {
   DomainName: string;
   DryRun?: boolean;
@@ -805,6 +795,7 @@ export const CancelDomainConfigChangeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelDomainConfigChangeRequest",
 }) as any as S.Schema<CancelDomainConfigChangeRequest>;
+export type GUID = string;
 export type GUIDList = string[];
 export const GUIDList = /*@__PURE__*/ S.Array(S.String);
 export interface CancelledChangeProperty {
@@ -868,6 +859,8 @@ export type DeploymentStatus =
   | "ELIGIBLE"
   | (string & {});
 export const DeploymentStatus = /*@__PURE__*/ S.String;
+
+export type DeploymentCloseDateTimeStamp = Date;
 export interface ServiceSoftwareOptions {
   CurrentVersion?: string;
   NewVersion?: string;
@@ -904,6 +897,7 @@ export const CancelServiceSoftwareUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelServiceSoftwareUpdateResponse",
 }) as any as S.Schema<CancelServiceSoftwareUpdateResponse>;
+export type ApplicationName = string;
 export interface DataSource {
   dataSourceArn?: string;
   dataSourceDescription?: string;
@@ -937,6 +931,8 @@ export type AppConfigType =
   | "opensearchDashboards.dashboardAdmin.groups"
   | (string & {});
 export const AppConfigType = /*@__PURE__*/ S.String;
+
+export type AppConfigValue = string;
 export interface AppConfig {
   key?: AppConfigType;
   value?: string;
@@ -946,6 +942,7 @@ export const AppConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AppConfig" }) as any as S.Schema<AppConfig>;
 export type AppConfigs = AppConfig[];
 export const AppConfigs = /*@__PURE__*/ S.Array(AppConfig);
+export type KmsKeyArn = string;
 export interface CreateApplicationRequest {
   clientToken?: string;
   name: string;
@@ -1020,6 +1017,7 @@ export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationResponse",
 }) as any as S.Schema<CreateApplicationResponse>;
+export type VersionString = string;
 export type OpenSearchPartitionInstanceType =
   | "m3.medium.search"
   | "m3.large.search"
@@ -1126,6 +1124,8 @@ export type OpenSearchPartitionInstanceType =
   | "t4g.medium.search"
   | (string & {});
 export const OpenSearchPartitionInstanceType = /*@__PURE__*/ S.String;
+
+export type IntegerClass = number;
 export interface ZoneAwarenessConfig {
   AvailabilityZoneCount?: number;
 }
@@ -1140,6 +1140,7 @@ export type OpenSearchWarmPartitionInstanceType =
   | "ultrawarm1.xlarge.search"
   | (string & {});
 export const OpenSearchWarmPartitionInstanceType = /*@__PURE__*/ S.String;
+
 export interface ColdStorageOptions {
   Enabled: boolean;
 }
@@ -1150,6 +1151,7 @@ export const ColdStorageOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ColdStorageOptions>;
 export type NodeOptionsNodeType = "coordinator" | (string & {});
 export const NodeOptionsNodeType = /*@__PURE__*/ S.String;
+
 export interface NodeConfig {
   Enabled?: boolean;
   Type?: OpenSearchPartitionInstanceType;
@@ -1208,6 +1210,7 @@ export const ClusterConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ClusterConfig" }) as any as S.Schema<ClusterConfig>;
 export type VolumeType = "standard" | "gp2" | "io1" | "gp3" | (string & {});
 export const VolumeType = /*@__PURE__*/ S.String;
+
 export interface EBSOptions {
   EBSEnabled?: boolean;
   VolumeType?: VolumeType;
@@ -1226,6 +1229,7 @@ export const EBSOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EBSOptions" }) as any as S.Schema<EBSOptions>;
 export type IPAddressType = "ipv4" | "dualstack" | (string & {});
 export const IPAddressType = /*@__PURE__*/ S.String;
+
 export interface SnapshotOptions {
   AutomatedSnapshotStartHour?: number;
 }
@@ -1248,6 +1252,8 @@ export const VPCOptions = /*@__PURE__*/ S.suspend(() =>
     EgressEnabled: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "VPCOptions" }) as any as S.Schema<VPCOptions>;
+export type UserPoolId = string;
+export type IdentityPoolId = string;
 export interface CognitoOptions {
   Enabled?: boolean;
   UserPoolId?: string;
@@ -1262,6 +1268,7 @@ export const CognitoOptions = /*@__PURE__*/ S.suspend(() =>
     RoleArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "CognitoOptions" }) as any as S.Schema<CognitoOptions>;
+export type KmsKeyId = string;
 export interface EncryptionAtRestOptions {
   Enabled?: boolean;
   KmsKeyId?: string;
@@ -1291,6 +1298,8 @@ export type LogType =
   | "AUDIT_LOGS"
   | (string & {});
 export const LogType = /*@__PURE__*/ S.String;
+
+export type CloudWatchLogsLogGroupArn = string;
 export interface LogPublishingOption {
   CloudWatchLogsLogGroupArn?: string;
   Enabled?: boolean;
@@ -1315,6 +1324,8 @@ export type TLSSecurityPolicy =
   | "Policy-Min-TLS-1-2-RFC9151-FIPS-2024-08"
   | (string & {});
 export const TLSSecurityPolicy = /*@__PURE__*/ S.String;
+
+export type DomainNameFqdn = string;
 export interface DomainEndpointOptions {
   EnforceHTTPS?: boolean;
   TLSSecurityPolicy?: TLSSecurityPolicy;
@@ -1333,6 +1344,8 @@ export const DomainEndpointOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DomainEndpointOptions",
 }) as any as S.Schema<DomainEndpointOptions>;
+export type Username = string | redacted.Redacted<string>;
+export type Password = string | redacted.Redacted<string>;
 export interface MasterUserOptions {
   MasterUserARN?: string;
   MasterUserName?: string | redacted.Redacted<string>;
@@ -1347,6 +1360,8 @@ export const MasterUserOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MasterUserOptions",
 }) as any as S.Schema<MasterUserOptions>;
+export type SAMLMetadata = string;
+export type SAMLEntityId = string;
 export interface SAMLIdp {
   MetadataContent: string;
   EntityId: string;
@@ -1354,6 +1369,7 @@ export interface SAMLIdp {
 export const SAMLIdp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MetadataContent: S.String, EntityId: S.String }),
 ).annotate({ identifier: "SAMLIdp" }) as any as S.Schema<SAMLIdp>;
+export type BackendRole = string;
 export interface SAMLOptionsInput {
   Enabled?: boolean;
   Idp?: SAMLIdp;
@@ -1376,6 +1392,9 @@ export const SAMLOptionsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SAMLOptionsInput",
 }) as any as S.Schema<SAMLOptionsInput>;
+export type SubjectKey = string;
+export type RolesKey = string;
+export type JwksUrl = string;
 export interface JWTOptionsInput {
   Enabled?: boolean;
   SubjectKey?: string;
@@ -1394,6 +1413,8 @@ export const JWTOptionsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JWTOptionsInput",
 }) as any as S.Schema<JWTOptionsInput>;
+export type IAMFederationSubjectKey = string;
+export type IAMFederationRolesKey = string;
 export interface IAMFederationOptionsInput {
   Enabled?: boolean;
   SubjectKey?: string;
@@ -1430,14 +1451,17 @@ export const AdvancedSecurityOptionsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdvancedSecurityOptionsInput",
 }) as any as S.Schema<AdvancedSecurityOptionsInput>;
+export type IdentityCenterInstanceARN = string;
 export type SubjectKeyIdCOption =
   | "UserName"
   | "UserId"
   | "Email"
   | (string & {});
 export const SubjectKeyIdCOption = /*@__PURE__*/ S.String;
+
 export type RolesKeyIdCOption = "GroupName" | "GroupId" | (string & {});
 export const RolesKeyIdCOption = /*@__PURE__*/ S.String;
+
 export interface IdentityCenterOptionsInput {
   EnabledAPIAccess?: boolean;
   IdentityCenterInstanceARN?: string;
@@ -1458,8 +1482,12 @@ export const IdentityCenterOptionsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IdentityCenterOptionsInput>;
 export type AutoTuneDesiredState = "ENABLED" | "DISABLED" | (string & {});
 export const AutoTuneDesiredState = /*@__PURE__*/ S.String;
+
+export type StartAt = Date;
+export type DurationValue = number;
 export type TimeUnit = "HOURS" | (string & {});
 export const TimeUnit = /*@__PURE__*/ S.String;
+
 export interface Duration {
   Value?: number;
   Unit?: TimeUnit;
@@ -1499,6 +1527,8 @@ export const AutoTuneOptionsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutoTuneOptionsInput",
 }) as any as S.Schema<AutoTuneOptionsInput>;
+export type StartTimeHours = number;
+export type StartTimeMinutes = number;
 export interface WindowStartTime {
   Hours: number;
   Minutes: number;
@@ -1544,6 +1574,7 @@ export type NaturalLanguageQueryGenerationDesiredState =
   | (string & {});
 export const NaturalLanguageQueryGenerationDesiredState =
   /*@__PURE__*/ S.String;
+
 export interface NaturalLanguageQueryGenerationOptionsInput {
   DesiredState?: NaturalLanguageQueryGenerationDesiredState;
 }
@@ -1592,6 +1623,7 @@ export type DeploymentStrategy =
   | "CapacityOptimized"
   | (string & {});
 export const DeploymentStrategy = /*@__PURE__*/ S.String;
+
 export interface DeploymentStrategyOptions {
   DeploymentStrategy: DeploymentStrategy;
 }
@@ -1681,11 +1713,14 @@ export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDomainRequest",
 }) as any as S.Schema<CreateDomainRequest>;
+export type DomainId = string;
+export type ServiceUrl = string;
 export type EndpointsMap = { [key: string]: string | undefined };
 export const EndpointsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type HostedZoneId = string;
 export interface VPCDerivedInfo {
   VPCId?: string;
   SubnetIds?: string[];
@@ -1752,6 +1787,7 @@ export const IAMFederationOptionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IAMFederationOptionsOutput",
 }) as any as S.Schema<IAMFederationOptionsOutput>;
+export type DisableTimestamp = Date;
 export interface AdvancedSecurityOptions {
   Enabled?: boolean;
   InternalUserDatabaseEnabled?: boolean;
@@ -1776,6 +1812,8 @@ export const AdvancedSecurityOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdvancedSecurityOptions",
 }) as any as S.Schema<AdvancedSecurityOptions>;
+export type IdentityCenterApplicationARN = string;
+export type IdentityStoreId = string;
 export interface IdentityCenterOptions {
   EnabledAPIAccess?: boolean;
   IdentityCenterInstanceARN?: string;
@@ -1810,6 +1848,7 @@ export type AutoTuneState =
   | "ERROR"
   | (string & {});
 export const AutoTuneState = /*@__PURE__*/ S.String;
+
 export interface AutoTuneOptionsOutput {
   State?: AutoTuneState;
   ErrorMessage?: string;
@@ -1824,6 +1863,7 @@ export const AutoTuneOptionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutoTuneOptionsOutput",
 }) as any as S.Schema<AutoTuneOptionsOutput>;
+export type Message = string;
 export type ConfigChangeStatus =
   | "Pending"
   | "Initializing"
@@ -1835,8 +1875,11 @@ export type ConfigChangeStatus =
   | "Cancelled"
   | (string & {});
 export const ConfigChangeStatus = /*@__PURE__*/ S.String;
+
 export type InitiatedBy = "CUSTOMER" | "SERVICE" | (string & {});
 export const InitiatedBy = /*@__PURE__*/ S.String;
+
+export type UpdateTimestamp = Date;
 export interface ChangeProgressDetails {
   ChangeId?: string;
   Message?: string;
@@ -1869,11 +1912,13 @@ export type DomainProcessingStatusType =
   | "Deleting"
   | (string & {});
 export const DomainProcessingStatusType = /*@__PURE__*/ S.String;
+
 export type PropertyValueType =
   | "PLAIN_TEXT"
   | "STRINGIFIED_JSON"
   | (string & {});
 export const PropertyValueType = /*@__PURE__*/ S.String;
+
 export interface ModifyingProperties {
   Name?: string;
   ActiveValue?: string;
@@ -1904,6 +1949,7 @@ export type NaturalLanguageQueryGenerationCurrentState =
   | (string & {});
 export const NaturalLanguageQueryGenerationCurrentState =
   /*@__PURE__*/ S.String;
+
 export interface NaturalLanguageQueryGenerationOptionsOutput {
   DesiredState?: NaturalLanguageQueryGenerationDesiredState;
   CurrentState?: NaturalLanguageQueryGenerationCurrentState;
@@ -1940,6 +1986,7 @@ export type PauseState =
   | "Disabled"
   | (string & {});
 export const PauseState = /*@__PURE__*/ S.String;
+
 export interface AutomatedSnapshotPauseOptions {
   Enabled: boolean;
   StartTime?: Date;
@@ -2042,6 +2089,8 @@ export const CreateDomainResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDomainResponse",
 }) as any as S.Schema<CreateDomainResponse>;
+export type IndexName = string;
+export type IndexSchema = unknown;
 export interface CreateIndexRequest {
   DomainName: string;
   IndexName: string;
@@ -2071,6 +2120,7 @@ export const CreateIndexRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIndexRequest>;
 export type IndexStatus = "CREATED" | "UPDATED" | "DELETED" | (string & {});
 export const IndexStatus = /*@__PURE__*/ S.String;
+
 export interface CreateIndexResponse {
   Status: IndexStatus;
 }
@@ -2079,8 +2129,11 @@ export const CreateIndexResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIndexResponse",
 }) as any as S.Schema<CreateIndexResponse>;
+export type ConnectionAlias = string;
+export type Endpoint = string;
 export type SkipUnavailableStatus = "ENABLED" | "DISABLED" | (string & {});
 export const SkipUnavailableStatus = /*@__PURE__*/ S.String;
+
 export interface CrossClusterSearchConnectionProperties {
   SkipUnavailable?: SkipUnavailableStatus;
 }
@@ -2145,6 +2198,7 @@ export type OutboundConnectionStatusCode =
   | "DELETED"
   | (string & {});
 export const OutboundConnectionStatusCode = /*@__PURE__*/ S.String;
+
 export interface OutboundConnectionStatus {
   StatusCode?: OutboundConnectionStatusCode;
   Message?: string;
@@ -2179,6 +2233,9 @@ export const CreateOutboundConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOutboundConnectionResponse",
 }) as any as S.Schema<CreateOutboundConnectionResponse>;
+export type PackageDescription = string;
+export type S3BucketName = string;
+export type S3Key = string;
 export interface PackageSource {
   S3BucketName?: string;
   S3Key?: string;
@@ -2188,6 +2245,8 @@ export const PackageSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PackageSource" }) as any as S.Schema<PackageSource>;
 export type RequirementLevel = "REQUIRED" | "OPTIONAL" | "NONE" | (string & {});
 export const RequirementLevel = /*@__PURE__*/ S.String;
+
+export type LicenseFilepath = string;
 export interface PackageConfiguration {
   LicenseRequirement: RequirementLevel;
   LicenseFilepath?: string;
@@ -2204,6 +2263,7 @@ export const PackageConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PackageConfiguration",
 }) as any as S.Schema<PackageConfiguration>;
+export type EngineVersion = string;
 export interface PackageVendingOptions {
   VendingEnabled: boolean;
 }
@@ -2269,6 +2329,13 @@ export type PackageStatus =
   | "DELETE_FAILED"
   | (string & {});
 export const PackageStatus = /*@__PURE__*/ S.String;
+
+export type CreatedAt = Date;
+export type PluginName = string;
+export type PluginDescription = string;
+export type PluginVersion = string;
+export type PluginClassName = string;
+export type UncompressedPluginSizeInBytes = number;
 export interface PluginProperties {
   Name?: string;
   Description?: string;
@@ -2287,8 +2354,10 @@ export const PluginProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PluginProperties",
 }) as any as S.Schema<PluginProperties>;
+export type PackageUser = string;
 export type PackageUserList = string[];
 export const PackageUserList = /*@__PURE__*/ S.Array(S.String);
+export type PackageOwner = string;
 export interface PackageDetails {
   PackageID?: string;
   PackageName?: string;
@@ -2335,6 +2404,7 @@ export const CreatePackageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePackageResponse",
 }) as any as S.Schema<CreatePackageResponse>;
+export type DomainArn = string;
 export interface CreateVpcEndpointRequest {
   DomainArn: string;
   VpcOptions: VPCOptions;
@@ -2359,6 +2429,7 @@ export const CreateVpcEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVpcEndpointRequest",
 }) as any as S.Schema<CreateVpcEndpointRequest>;
+export type VpcEndpointId = string;
 export type VpcEndpointStatus =
   | "CREATING"
   | "CREATE_FAILED"
@@ -2369,6 +2440,7 @@ export type VpcEndpointStatus =
   | "DELETE_FAILED"
   | (string & {});
 export const VpcEndpointStatus = /*@__PURE__*/ S.String;
+
 export interface VpcEndpoint {
   VpcEndpointId?: string;
   VpcEndpointOwner?: string;
@@ -2697,6 +2769,8 @@ export const DeleteVpcEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteVpcEndpointResponse",
 }) as any as S.Schema<DeleteVpcEndpointResponse>;
+export type ApplicationId = string;
+export type CapabilityName = string;
 export interface DeregisterCapabilityRequest {
   applicationId: string;
   capabilityName: string;
@@ -2732,6 +2806,7 @@ export type CapabilityStatus =
   | "delete_failed"
   | (string & {});
 export const CapabilityStatus = /*@__PURE__*/ S.String;
+
 export interface DeregisterCapabilityResponse {
   status?: CapabilityStatus;
 }
@@ -2813,6 +2888,8 @@ export const DescribeDomainResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDomainResponse",
 }) as any as S.Schema<DescribeDomainResponse>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface DescribeDomainAutoTunesRequest {
   DomainName: string;
   MaxResults?: number;
@@ -2842,17 +2919,22 @@ export const DescribeDomainAutoTunesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeDomainAutoTunesRequest>;
 export type AutoTuneType = "SCHEDULED_ACTION" | (string & {});
 export const AutoTuneType = /*@__PURE__*/ S.String;
+
+export type AutoTuneDate = Date;
 export type ScheduledAutoTuneActionType =
   | "JVM_HEAP_SIZE_TUNING"
   | "JVM_YOUNG_GEN_TUNING"
   | (string & {});
 export const ScheduledAutoTuneActionType = /*@__PURE__*/ S.String;
+
+export type ScheduledAutoTuneDescription = string;
 export type ScheduledAutoTuneSeverityType =
   | "LOW"
   | "MEDIUM"
   | "HIGH"
   | (string & {});
 export const ScheduledAutoTuneSeverityType = /*@__PURE__*/ S.String;
+
 export interface ScheduledAutoTuneDetails {
   Date?: Date;
   ActionType?: ScheduledAutoTuneActionType;
@@ -2933,6 +3015,11 @@ export type OverallChangeStatus =
   | "FAILED"
   | (string & {});
 export const OverallChangeStatus = /*@__PURE__*/ S.String;
+
+export type TotalNumberOfStages = number;
+export type ChangeProgressStageName = string;
+export type ChangeProgressStageStatus = string;
+export type Description = string;
 export interface ChangeProgressStage {
   Name?: string;
   Status?: string;
@@ -3014,12 +3101,14 @@ export const DescribeDomainConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDomainConfigRequest",
 }) as any as S.Schema<DescribeDomainConfigRequest>;
+export type UIntValue = number;
 export type OptionState =
   | "RequiresIndexDocuments"
   | "Processing"
   | "Active"
   | (string & {});
 export const OptionState = /*@__PURE__*/ S.String;
+
 export interface OptionStatus {
   CreationDate: Date;
   UpdateDate: Date;
@@ -3177,6 +3266,7 @@ export type RollbackOnDisable =
   | "DEFAULT_ROLLBACK"
   | (string & {});
 export const RollbackOnDisable = /*@__PURE__*/ S.String;
+
 export interface AutoTuneOptions {
   DesiredState?: AutoTuneDesiredState;
   RollbackOnDisable?: RollbackOnDisable;
@@ -3366,8 +3456,12 @@ export type DomainState =
   | "NotAvailable"
   | (string & {});
 export const DomainState = /*@__PURE__*/ S.String;
+
+export type NumberOfAZs = string;
+export type NumberOfNodes = string;
 export type MasterNodeStatus = "Available" | "UnAvailable" | (string & {});
 export const MasterNodeStatus = /*@__PURE__*/ S.String;
+
 export type DomainHealth =
   | "Red"
   | "Yellow"
@@ -3375,8 +3469,12 @@ export type DomainHealth =
   | "NotAvailable"
   | (string & {});
 export const DomainHealth = /*@__PURE__*/ S.String;
+
+export type NumberOfShards = string;
+export type AvailabilityZone = string;
 export type ZoneStatus = "Active" | "StandBy" | "NotAvailable" | (string & {});
 export const ZoneStatus = /*@__PURE__*/ S.String;
+
 export interface AvailabilityZoneInfo {
   AvailabilityZoneName?: string;
   ZoneStatus?: ZoneStatus;
@@ -3467,10 +3565,15 @@ export const DescribeDomainNodesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDomainNodesRequest",
 }) as any as S.Schema<DescribeDomainNodesRequest>;
+export type NodeId = string;
 export type NodeType = "Data" | "Ultrawarm" | "Master" | "Warm" | (string & {});
 export const NodeType = /*@__PURE__*/ S.String;
+
 export type NodeStatus = "Active" | "StandBy" | "NotAvailable" | (string & {});
 export const NodeStatus = /*@__PURE__*/ S.String;
+
+export type StorageTypeName = string;
+export type VolumeSize = string;
 export interface DomainNodesStatus {
   NodeId?: string;
   NodeType?: NodeType;
@@ -3595,6 +3698,7 @@ export const DryRunProgressStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DryRunProgressStatus",
 }) as any as S.Schema<DryRunProgressStatus>;
+export type DeploymentType = string;
 export interface DryRunResults {
   DeploymentType?: string;
   Message?: string;
@@ -3619,6 +3723,7 @@ export const DescribeDryRunProgressResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDryRunProgressResponse",
 }) as any as S.Schema<DescribeDryRunProgressResponse>;
+export type NonEmptyString = string;
 export type ValueStringList = string[];
 export const ValueStringList = /*@__PURE__*/ S.Array(S.String);
 export interface Filter {
@@ -3673,6 +3778,8 @@ export const DescribeInboundConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeInboundConnectionsResponse>;
 export type InsightEntityType = "Account" | "DomainName" | (string & {});
 export const InsightEntityType = /*@__PURE__*/ S.String;
+
+export type InsightEntityValue = string;
 export interface InsightEntity {
   Type: InsightEntityType;
   Value?: string;
@@ -3706,6 +3813,7 @@ export const DescribeInsightDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeInsightDetailsRequest>;
 export type InsightFieldType = "text" | "metric" | (string & {});
 export const InsightFieldType = /*@__PURE__*/ S.String;
+
 export interface InsightField {
   Name: string;
   Type: InsightFieldType;
@@ -3753,6 +3861,10 @@ export const DescribeInstanceTypeLimitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInstanceTypeLimitsRequest",
 }) as any as S.Schema<DescribeInstanceTypeLimitsRequest>;
+export type InstanceRole = string;
+export type StorageSubTypeName = string;
+export type LimitName = string;
+export type LimitValue = string;
 export type LimitValueList = string[];
 export const LimitValueList = /*@__PURE__*/ S.Array(S.String);
 export interface StorageTypeLimit {
@@ -3783,6 +3895,8 @@ export const StorageType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StorageType" }) as any as S.Schema<StorageType>;
 export type StorageTypeList = StorageType[];
 export const StorageTypeList = /*@__PURE__*/ S.Array(StorageType);
+export type MinimumInstanceCount = number;
+export type MaximumInstanceCount = number;
 export interface InstanceCountLimits {
   MinimumInstanceCount?: number;
   MaximumInstanceCount?: number;
@@ -3890,6 +4004,8 @@ export type DescribePackagesFilterName =
   | "PackageOwner"
   | (string & {});
 export const DescribePackagesFilterName = /*@__PURE__*/ S.String;
+
+export type DescribePackagesFilterValue = string;
 export type DescribePackagesFilterValues = string[];
 export const DescribePackagesFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface DescribePackagesFilter {
@@ -3982,6 +4098,7 @@ export type ReservedInstancePaymentOption =
   | "NO_UPFRONT"
   | (string & {});
 export const ReservedInstancePaymentOption = /*@__PURE__*/ S.String;
+
 export interface RecurringCharge {
   RecurringChargeAmount?: number;
   RecurringChargeFrequency?: string;
@@ -4070,6 +4187,7 @@ export const DescribeReservedInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeReservedInstancesRequest",
 }) as any as S.Schema<DescribeReservedInstancesRequest>;
+export type ReservationToken = string;
 export interface ReservedInstance {
   ReservationName?: string;
   ReservedInstanceId?: string;
@@ -4150,6 +4268,7 @@ export type VpcEndpointErrorCode =
   | "SERVER_ERROR"
   | (string & {});
 export const VpcEndpointErrorCode = /*@__PURE__*/ S.String;
+
 export interface VpcEndpointError {
   VpcEndpointId?: string;
   ErrorCode?: VpcEndpointErrorCode;
@@ -4308,6 +4427,7 @@ export type ApplicationStatus =
   | "FAILED"
   | (string & {});
 export const ApplicationStatus = /*@__PURE__*/ S.String;
+
 export interface GetApplicationResponse {
   id?: string;
   arn?: string;
@@ -4375,6 +4495,8 @@ export type CapabilityFailureReason =
   | "KMS_KEY_INSUFFICIENT_PERMISSION"
   | (string & {});
 export const CapabilityFailureReason = /*@__PURE__*/ S.String;
+
+export type CapabilityFailureDetails = string;
 export interface CapabilityFailure {
   reason?: CapabilityFailureReason;
   details?: string;
@@ -4483,6 +4605,7 @@ export const GetDataSourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDataSourceRequest>;
 export type DataSourceStatus = "ACTIVE" | "DISABLED" | (string & {});
 export const DataSourceStatus = /*@__PURE__*/ S.String;
+
 export interface GetDataSourceResponse {
   DataSourceType?: DataSourceType;
   Name?: string;
@@ -4569,6 +4692,7 @@ export const GetDirectQueryDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDirectQueryDataSourceResponse",
 }) as any as S.Schema<GetDirectQueryDataSourceResponse>;
+export type RequestId = string;
 export interface GetDomainMaintenanceStatusRequest {
   DomainName: string;
   MaintenanceId: string;
@@ -4602,12 +4726,15 @@ export type MaintenanceStatus =
   | "TIMED_OUT"
   | (string & {});
 export const MaintenanceStatus = /*@__PURE__*/ S.String;
+
+export type MaintenanceStatusMessage = string;
 export type MaintenanceType =
   | "REBOOT_NODE"
   | "RESTART_SEARCH_PROCESS"
   | "RESTART_DASHBOARD"
   | (string & {});
 export const MaintenanceType = /*@__PURE__*/ S.String;
+
 export interface GetDomainMaintenanceStatusResponse {
   Status?: MaintenanceStatus;
   StatusMessage?: string;
@@ -4688,6 +4815,7 @@ export const GetPackageVersionHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPackageVersionHistoryRequest",
 }) as any as S.Schema<GetPackageVersionHistoryRequest>;
+export type CommitMessage = string;
 export interface PackageVersionHistory {
   PackageVersion?: string;
   CommitMessage?: string;
@@ -4751,6 +4879,8 @@ export const GetUpgradeHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetUpgradeHistoryRequest",
 }) as any as S.Schema<GetUpgradeHistoryRequest>;
+export type UpgradeName = string;
+export type StartTimestamp = Date;
 export type UpgradeStatus =
   | "IN_PROGRESS"
   | "SUCCEEDED"
@@ -4758,12 +4888,15 @@ export type UpgradeStatus =
   | "FAILED"
   | (string & {});
 export const UpgradeStatus = /*@__PURE__*/ S.String;
+
 export type UpgradeStep =
   | "PRE_UPGRADE_CHECK"
   | "SNAPSHOT"
   | "UPGRADE"
   | (string & {});
 export const UpgradeStep = /*@__PURE__*/ S.String;
+
+export type Issue = string;
 export type Issues = string[];
 export const Issues = /*@__PURE__*/ S.Array(S.String);
 export interface UpgradeStepItem {
@@ -5148,6 +5281,7 @@ export const ListDomainMaintenancesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDomainMaintenancesResponse>;
 export type EngineType = "OpenSearch" | "Elasticsearch" | (string & {});
 export const EngineType = /*@__PURE__*/ S.String;
+
 export interface ListDomainNamesRequest {
   EngineType?: EngineType;
 }
@@ -5238,6 +5372,8 @@ export const InsightTimeRange = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InsightTimeRange>;
 export type InsightSortOrder = "ASC" | "DESC" | (string & {});
 export const InsightSortOrder = /*@__PURE__*/ S.String;
+
+export type InsightPageSize = number;
 export interface ListInsightsRequest {
   Entity: InsightEntity;
   TimeRange?: InsightTimeRange;
@@ -5268,6 +5404,7 @@ export const ListInsightsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListInsightsRequest>;
 export type InsightType = "EVENT" | "RECOMMENDATION" | (string & {});
 export const InsightType = /*@__PURE__*/ S.String;
+
 export type InsightPriorityLevel =
   | "CRITICAL"
   | "HIGH"
@@ -5275,8 +5412,10 @@ export type InsightPriorityLevel =
   | "LOW"
   | (string & {});
 export const InsightPriorityLevel = /*@__PURE__*/ S.String;
+
 export type InsightStatus = "ACTIVE" | "RESOLVED" | "DISMISSED" | (string & {});
 export const InsightStatus = /*@__PURE__*/ S.String;
+
 export interface Insight {
   InsightId?: string;
   DisplayName?: string;
@@ -5313,6 +5452,7 @@ export const ListInsightsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInsightsResponse",
 }) as any as S.Schema<ListInsightsResponse>;
+export type InstanceTypeString = string;
 export interface ListInstanceTypeDetailsRequest {
   EngineVersion: string;
   DomainName?: string;
@@ -5461,10 +5601,13 @@ export type ActionType =
   | "JVM_YOUNG_GEN_TUNING"
   | (string & {});
 export const ActionType = /*@__PURE__*/ S.String;
+
 export type ActionSeverity = "HIGH" | "MEDIUM" | "LOW" | (string & {});
 export const ActionSeverity = /*@__PURE__*/ S.String;
+
 export type ScheduledBy = "CUSTOMER" | "SYSTEM" | (string & {});
 export const ScheduledBy = /*@__PURE__*/ S.String;
+
 export type ActionStatus =
   | "PENDING_UPDATE"
   | "IN_PROGRESS"
@@ -5474,6 +5617,7 @@ export type ActionStatus =
   | "ELIGIBLE"
   | (string & {});
 export const ActionStatus = /*@__PURE__*/ S.String;
+
 export interface ScheduledAction {
   Id: string;
   Type: ActionType;
@@ -5685,6 +5829,7 @@ export const ListVpcEndpointsForDomainResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListVpcEndpointsForDomainResponse",
 }) as any as S.Schema<ListVpcEndpointsForDomainResponse>;
+export type InstanceCount = number;
 export interface PurchaseReservedInstanceOfferingRequest {
   ReservedInstanceOfferingId: string;
   ReservationName: string;
@@ -5988,6 +6133,7 @@ export type ScheduleAt =
   | "OFF_PEAK_WINDOW"
   | (string & {});
 export const ScheduleAt = /*@__PURE__*/ S.String;
+
 export interface StartServiceSoftwareUpdateRequest {
   DomainName: string;
   ScheduleAt?: ScheduleAt;
@@ -6155,6 +6301,7 @@ export const UpdateDirectQueryDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDirectQueryDataSourceResponse>;
 export type DryRunMode = "Basic" | "Verbose" | (string & {});
 export const DryRunMode = /*@__PURE__*/ S.String;
+
 export interface UpdateDomainConfigRequest {
   DomainName: string;
   ClusterConfig?: ClusterConfig;
@@ -6317,6 +6464,7 @@ export type PackageScopeOperationEnum =
   | "REMOVE"
   | (string & {});
 export const PackageScopeOperationEnum = /*@__PURE__*/ S.String;
+
 export interface UpdatePackageScopeRequest {
   PackageID: string;
   Operation: PackageScopeOperationEnum;
@@ -6394,8 +6542,6 @@ export const UpdateScheduledActionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateScheduledActionResponse",
 }) as any as S.Schema<UpdateScheduledActionResponse>;
-export type SlotList = number[];
-export const SlotList = /*@__PURE__*/ S.Array(S.Number);
 export interface UpdateVpcEndpointRequest {
   VpcEndpointId: string;
   VpcOptions: VPCOptions;
@@ -6472,84 +6618,8 @@ export const UpgradeDomainResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpgradeDomainResponse",
 }) as any as S.Schema<UpgradeDomainResponse>;
-
-//# Errors
-export class DisabledOperationException extends S.TaggedErrorClass<DisabledOperationException>()(
-  "DisabledOperationException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class BaseException extends S.TaggedErrorClass<BaseException>()(
-  "BaseException",
-  { message: S.optional(S.String) },
-) {}
-export class DependencyFailureException extends S.TaggedErrorClass<DependencyFailureException>()(
-  "DependencyFailureException",
-  { message: S.optional(S.String) },
-  T.HttpError(424),
-) {}
-export class InternalException extends S.TaggedErrorClass<InternalException>()(
-  "InternalException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InvalidTypeException extends S.TaggedErrorClass<InvalidTypeException>()(
-  "InvalidTypeException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class InvalidPaginationTokenException extends S.TaggedErrorClass<InvalidPaginationTokenException>()(
-  "InvalidPaginationTokenException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class SlotNotAvailableException extends S.TaggedErrorClass<SlotNotAvailableException>()(
-  "SlotNotAvailableException",
-  { SlotSuggestions: S.optional(SlotList), message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-
-//# Operations
+export type SlotList = number[];
+export const SlotList = /*@__PURE__*/ S.Array(S.Number);
 export type AcceptInboundConnectionError =
   | DisabledOperationException
   | LimitExceededException
@@ -6576,6 +6646,7 @@ export const acceptInboundConnection: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptInboundConnection",
 }));
+
 export type AddDataSourceError =
   | BaseException
   | DependencyFailureException
@@ -6611,6 +6682,7 @@ export const addDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "AddDataSource",
 }));
+
 export type AddDirectQueryDataSourceError =
   | BaseException
   | DisabledOperationException
@@ -6643,6 +6715,7 @@ export const addDirectQueryDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "AddDirectQueryDataSource",
 }));
+
 export type AddTagsError =
   | BaseException
   | InternalException
@@ -6674,6 +6747,7 @@ export const addTags: API.OperationMethod<
   retry: Retry,
   operationName: "AddTags",
 }));
+
 export type AssociatePackageError =
   | AccessDeniedException
   | BaseException
@@ -6707,6 +6781,7 @@ export const associatePackage: API.OperationMethod<
   retry: Retry,
   operationName: "AssociatePackage",
 }));
+
 export type AssociatePackagesError =
   | BaseException
   | ConflictException
@@ -6739,6 +6814,7 @@ export const associatePackages: API.OperationMethod<
   retry: Retry,
   operationName: "AssociatePackages",
 }));
+
 export type AttachDataSourceError =
   | AccessDeniedException
   | ConflictException
@@ -6770,6 +6846,7 @@ export const attachDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "AttachDataSource",
 }));
+
 export type AuthorizeVpcEndpointAccessError =
   | BaseException
   | DisabledOperationException
@@ -6802,6 +6879,7 @@ export const authorizeVpcEndpointAccess: API.OperationMethod<
   retry: Retry,
   operationName: "AuthorizeVpcEndpointAccess",
 }));
+
 export type CancelDomainConfigChangeError =
   | BaseException
   | DisabledOperationException
@@ -6831,6 +6909,7 @@ export const cancelDomainConfigChange: API.OperationMethod<
   retry: Retry,
   operationName: "CancelDomainConfigChange",
 }));
+
 export type CancelServiceSoftwareUpdateError =
   | BaseException
   | InternalException
@@ -6862,6 +6941,7 @@ export const cancelServiceSoftwareUpdate: API.OperationMethod<
   retry: Retry,
   operationName: "CancelServiceSoftwareUpdate",
 }));
+
 export type CreateApplicationError =
   | AccessDeniedException
   | BaseException
@@ -6893,6 +6973,7 @@ export const createApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApplication",
 }));
+
 export type CreateDomainError =
   | BaseException
   | DisabledOperationException
@@ -6927,6 +7008,7 @@ export const createDomain: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDomain",
 }));
+
 export type CreateIndexError =
   | AccessDeniedException
   | DependencyFailureException
@@ -6962,6 +7044,7 @@ export const createIndex: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIndex",
 }));
+
 export type CreateOutboundConnectionError =
   | DisabledOperationException
   | InternalException
@@ -6991,6 +7074,7 @@ export const createOutboundConnection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateOutboundConnection",
 }));
+
 export type CreatePackageError =
   | AccessDeniedException
   | BaseException
@@ -7026,6 +7110,7 @@ export const createPackage: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePackage",
 }));
+
 export type CreateVpcEndpointError =
   | BaseException
   | ConflictException
@@ -7057,6 +7142,7 @@ export const createVpcEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpcEndpoint",
 }));
+
 export type DeleteApplicationError =
   | AccessDeniedException
   | BaseException
@@ -7090,6 +7176,7 @@ export const deleteApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplication",
 }));
+
 export type DeleteDataSourceError =
   | BaseException
   | DependencyFailureException
@@ -7122,6 +7209,7 @@ export const deleteDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataSource",
 }));
+
 export type DeleteDirectQueryDataSourceError =
   | BaseException
   | DisabledOperationException
@@ -7152,6 +7240,7 @@ export const deleteDirectQueryDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDirectQueryDataSource",
 }));
+
 export type DeleteDomainError =
   | BaseException
   | InternalException
@@ -7180,6 +7269,7 @@ export const deleteDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDomain",
 }));
+
 export type DeleteInboundConnectionError =
   | DisabledOperationException
   | ResourceNotFoundException
@@ -7201,6 +7291,7 @@ export const deleteInboundConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInboundConnection",
 }));
+
 export type DeleteIndexError =
   | AccessDeniedException
   | DependencyFailureException
@@ -7234,6 +7325,7 @@ export const deleteIndex: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIndex",
 }));
+
 export type DeleteOutboundConnectionError =
   | DisabledOperationException
   | ResourceNotFoundException
@@ -7255,6 +7347,7 @@ export const deleteOutboundConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteOutboundConnection",
 }));
+
 export type DeletePackageError =
   | AccessDeniedException
   | BaseException
@@ -7287,6 +7380,7 @@ export const deletePackage: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePackage",
 }));
+
 export type DeleteVpcEndpointError =
   | BaseException
   | DisabledOperationException
@@ -7314,6 +7408,7 @@ export const deleteVpcEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpcEndpoint",
 }));
+
 export type DeregisterCapabilityError =
   | AccessDeniedException
   | ConflictException
@@ -7345,6 +7440,7 @@ export const deregisterCapability: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterCapability",
 }));
+
 export type DescribeDataSourceAttachmentError =
   | AccessDeniedException
   | DisabledOperationException
@@ -7374,6 +7470,7 @@ export const describeDataSourceAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDataSourceAttachment",
 }));
+
 export type DescribeDomainError =
   | BaseException
   | InternalException
@@ -7402,6 +7499,7 @@ export const describeDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDomain",
 }));
+
 export type DescribeDomainAutoTunesError =
   | BaseException
   | InternalException
@@ -7451,6 +7549,7 @@ export const describeDomainAutoTunes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeDomainChangeProgressError =
   | BaseException
   | InternalException
@@ -7479,6 +7578,7 @@ export const describeDomainChangeProgress: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDomainChangeProgress",
 }));
+
 export type DescribeDomainConfigError =
   | BaseException
   | InternalException
@@ -7506,6 +7606,7 @@ export const describeDomainConfig: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDomainConfig",
 }));
+
 export type DescribeDomainHealthError =
   | BaseException
   | DisabledOperationException
@@ -7536,6 +7637,7 @@ export const describeDomainHealth: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDomainHealth",
 }));
+
 export type DescribeDomainNodesError =
   | BaseException
   | DependencyFailureException
@@ -7569,6 +7671,7 @@ export const describeDomainNodes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDomainNodes",
 }));
+
 export type DescribeDomainsError =
   | BaseException
   | InternalException
@@ -7591,6 +7694,7 @@ export const describeDomains: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDomains",
 }));
+
 export type DescribeDryRunProgressError =
   | BaseException
   | DisabledOperationException
@@ -7621,6 +7725,7 @@ export const describeDryRunProgress: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDryRunProgress",
 }));
+
 export type DescribeInboundConnectionsError =
   | DisabledOperationException
   | InvalidPaginationTokenException
@@ -7662,6 +7767,7 @@ export const describeInboundConnections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInsightDetailsError =
   | BaseException
   | DisabledOperationException
@@ -7695,6 +7801,7 @@ export const describeInsightDetails: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInsightDetails",
 }));
+
 export type DescribeInstanceTypeLimitsError =
   | BaseException
   | InternalException
@@ -7727,6 +7834,7 @@ export const describeInstanceTypeLimits: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInstanceTypeLimits",
 }));
+
 export type DescribeOutboundConnectionsError =
   | DisabledOperationException
   | InvalidPaginationTokenException
@@ -7768,6 +7876,7 @@ export const describeOutboundConnections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribePackagesError =
   | AccessDeniedException
   | BaseException
@@ -7819,6 +7928,7 @@ export const describePackages: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeReservedInstanceOfferingsError =
   | DisabledOperationException
   | InternalException
@@ -7868,6 +7978,7 @@ export const describeReservedInstanceOfferings: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeReservedInstancesError =
   | DisabledOperationException
   | InternalException
@@ -7917,6 +8028,7 @@ export const describeReservedInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVpcEndpointsError =
   | BaseException
   | DisabledOperationException
@@ -7944,6 +8056,7 @@ export const describeVpcEndpoints: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpcEndpoints",
 }));
+
 export type DetachDataSourceError =
   | AccessDeniedException
   | ConflictException
@@ -7975,6 +8088,7 @@ export const detachDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "DetachDataSource",
 }));
+
 export type DissociatePackageError =
   | AccessDeniedException
   | BaseException
@@ -8010,6 +8124,7 @@ export const dissociatePackage: API.OperationMethod<
   retry: Retry,
   operationName: "DissociatePackage",
 }));
+
 export type DissociatePackagesError =
   | BaseException
   | ConflictException
@@ -8041,6 +8156,7 @@ export const dissociatePackages: API.OperationMethod<
   retry: Retry,
   operationName: "DissociatePackages",
 }));
+
 export type GetApplicationError =
   | AccessDeniedException
   | BaseException
@@ -8072,6 +8188,7 @@ export const getApplication: API.OperationMethod<
   retry: Retry,
   operationName: "GetApplication",
 }));
+
 export type GetCapabilityError =
   | AccessDeniedException
   | DisabledOperationException
@@ -8101,6 +8218,7 @@ export const getCapability: API.OperationMethod<
   retry: Retry,
   operationName: "GetCapability",
 }));
+
 export type GetCompatibleVersionsError =
   | BaseException
   | DisabledOperationException
@@ -8131,6 +8249,7 @@ export const getCompatibleVersions: API.OperationMethod<
   retry: Retry,
   operationName: "GetCompatibleVersions",
 }));
+
 export type GetDataSourceError =
   | BaseException
   | DependencyFailureException
@@ -8162,6 +8281,7 @@ export const getDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataSource",
 }));
+
 export type GetDefaultApplicationSettingError =
   | AccessDeniedException
   | InternalException
@@ -8192,6 +8312,7 @@ export const getDefaultApplicationSetting: API.OperationMethod<
   retry: Retry,
   operationName: "GetDefaultApplicationSetting",
 }));
+
 export type GetDirectQueryDataSourceError =
   | BaseException
   | DisabledOperationException
@@ -8222,6 +8343,7 @@ export const getDirectQueryDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "GetDirectQueryDataSource",
 }));
+
 export type GetDomainMaintenanceStatusError =
   | BaseException
   | DisabledOperationException
@@ -8251,6 +8373,7 @@ export const getDomainMaintenanceStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetDomainMaintenanceStatus",
 }));
+
 export type GetIndexError =
   | AccessDeniedException
   | DependencyFailureException
@@ -8284,6 +8407,7 @@ export const getIndex: API.OperationMethod<
   retry: Retry,
   operationName: "GetIndex",
 }));
+
 export type GetPackageVersionHistoryError =
   | AccessDeniedException
   | BaseException
@@ -8336,6 +8460,7 @@ export const getPackageVersionHistory: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetUpgradeHistoryError =
   | BaseException
   | DisabledOperationException
@@ -8386,6 +8511,7 @@ export const getUpgradeHistory: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetUpgradeStatusError =
   | BaseException
   | DisabledOperationException
@@ -8416,6 +8542,7 @@ export const getUpgradeStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetUpgradeStatus",
 }));
+
 export type ListApplicationsError =
   | AccessDeniedException
   | BaseException
@@ -8468,6 +8595,7 @@ export const listApplications: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDataSourceAttachmentsError =
   | AccessDeniedException
   | DisabledOperationException
@@ -8497,6 +8625,7 @@ export const listDataSourceAttachments: API.OperationMethod<
   retry: Retry,
   operationName: "ListDataSourceAttachments",
 }));
+
 export type ListDataSourcesError =
   | BaseException
   | DependencyFailureException
@@ -8530,6 +8659,7 @@ export const listDataSources: API.OperationMethod<
   retry: Retry,
   operationName: "ListDataSources",
 }));
+
 export type ListDirectQueryDataSourcesError =
   | BaseException
   | DisabledOperationException
@@ -8560,6 +8690,7 @@ export const listDirectQueryDataSources: API.OperationMethod<
   retry: Retry,
   operationName: "ListDirectQueryDataSources",
 }));
+
 export type ListDomainMaintenancesError =
   | BaseException
   | DisabledOperationException
@@ -8609,6 +8740,7 @@ export const listDomainMaintenances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDomainNamesError =
   | BaseException
   | ValidationException
@@ -8630,6 +8762,7 @@ export const listDomainNames: API.OperationMethod<
   retry: Retry,
   operationName: "ListDomainNames",
 }));
+
 export type ListDomainsForPackageError =
   | AccessDeniedException
   | BaseException
@@ -8681,6 +8814,7 @@ export const listDomainsForPackage: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInsightsError =
   | BaseException
   | DisabledOperationException
@@ -8714,6 +8848,7 @@ export const listInsights: API.OperationMethod<
   retry: Retry,
   operationName: "ListInsights",
 }));
+
 export type ListInstanceTypeDetailsError =
   | BaseException
   | InternalException
@@ -8762,6 +8897,7 @@ export const listInstanceTypeDetails: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPackagesForDomainError =
   | AccessDeniedException
   | BaseException
@@ -8813,6 +8949,7 @@ export const listPackagesForDomain: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListScheduledActionsError =
   | BaseException
   | InternalException
@@ -8864,6 +9001,7 @@ export const listScheduledActions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsError =
   | BaseException
   | InternalException
@@ -8892,6 +9030,7 @@ export const listTags: API.OperationMethod<
   retry: Retry,
   operationName: "ListTags",
 }));
+
 export type ListVersionsError =
   | BaseException
   | InternalException
@@ -8940,6 +9079,7 @@ export const listVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListVpcEndpointAccessError =
   | BaseException
   | DisabledOperationException
@@ -8969,6 +9109,7 @@ export const listVpcEndpointAccess: API.OperationMethod<
   retry: Retry,
   operationName: "ListVpcEndpointAccess",
 }));
+
 export type ListVpcEndpointsError =
   | BaseException
   | DisabledOperationException
@@ -8990,6 +9131,7 @@ export const listVpcEndpoints: API.OperationMethod<
   retry: Retry,
   operationName: "ListVpcEndpoints",
 }));
+
 export type ListVpcEndpointsForDomainError =
   | BaseException
   | DisabledOperationException
@@ -9018,6 +9160,7 @@ export const listVpcEndpointsForDomain: API.OperationMethod<
   retry: Retry,
   operationName: "ListVpcEndpointsForDomain",
 }));
+
 export type PurchaseReservedInstanceOfferingError =
   | DisabledOperationException
   | InternalException
@@ -9049,6 +9192,7 @@ export const purchaseReservedInstanceOffering: API.OperationMethod<
   retry: Retry,
   operationName: "PurchaseReservedInstanceOffering",
 }));
+
 export type PutDefaultApplicationSettingError =
   | AccessDeniedException
   | InternalException
@@ -9081,6 +9225,7 @@ export const putDefaultApplicationSetting: API.OperationMethod<
   retry: Retry,
   operationName: "PutDefaultApplicationSetting",
 }));
+
 export type RegisterCapabilityError =
   | AccessDeniedException
   | ConflictException
@@ -9114,6 +9259,7 @@ export const registerCapability: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterCapability",
 }));
+
 export type RejectInboundConnectionError =
   | DisabledOperationException
   | ResourceNotFoundException
@@ -9135,6 +9281,7 @@ export const rejectInboundConnection: API.OperationMethod<
   retry: Retry,
   operationName: "RejectInboundConnection",
 }));
+
 export type RemoveTagsError =
   | BaseException
   | InternalException
@@ -9157,6 +9304,7 @@ export const removeTags: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveTags",
 }));
+
 export type RevokeVpcEndpointAccessError =
   | BaseException
   | DisabledOperationException
@@ -9187,6 +9335,7 @@ export const revokeVpcEndpointAccess: API.OperationMethod<
   retry: Retry,
   operationName: "RevokeVpcEndpointAccess",
 }));
+
 export type RollbackServiceSoftwareUpdateError =
   | BaseException
   | DisabledOperationException
@@ -9218,6 +9367,7 @@ export const rollbackServiceSoftwareUpdate: API.OperationMethod<
   retry: Retry,
   operationName: "RollbackServiceSoftwareUpdate",
 }));
+
 export type StartDomainMaintenanceError =
   | BaseException
   | DisabledOperationException
@@ -9249,6 +9399,7 @@ export const startDomainMaintenance: API.OperationMethod<
   retry: Retry,
   operationName: "StartDomainMaintenance",
 }));
+
 export type StartServiceSoftwareUpdateError =
   | BaseException
   | InternalException
@@ -9278,6 +9429,7 @@ export const startServiceSoftwareUpdate: API.OperationMethod<
   retry: Retry,
   operationName: "StartServiceSoftwareUpdate",
 }));
+
 export type UpdateApplicationError =
   | AccessDeniedException
   | BaseException
@@ -9311,6 +9463,7 @@ export const updateApplication: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApplication",
 }));
+
 export type UpdateDataSourceError =
   | BaseException
   | DependencyFailureException
@@ -9344,6 +9497,7 @@ export const updateDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDataSource",
 }));
+
 export type UpdateDirectQueryDataSourceError =
   | BaseException
   | DisabledOperationException
@@ -9376,6 +9530,7 @@ export const updateDirectQueryDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDirectQueryDataSource",
 }));
+
 export type UpdateDomainConfigError =
   | BaseException
   | InternalException
@@ -9408,6 +9563,7 @@ export const updateDomainConfig: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDomainConfig",
 }));
+
 export type UpdateIndexError =
   | AccessDeniedException
   | DependencyFailureException
@@ -9441,6 +9597,7 @@ export const updateIndex: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateIndex",
 }));
+
 export type UpdatePackageError =
   | AccessDeniedException
   | BaseException
@@ -9474,6 +9631,7 @@ export const updatePackage: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePackage",
 }));
+
 export type UpdatePackageScopeError =
   | BaseException
   | DisabledOperationException
@@ -9504,6 +9662,7 @@ export const updatePackageScope: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePackageScope",
 }));
+
 export type UpdateScheduledActionError =
   | BaseException
   | ConflictException
@@ -9539,6 +9698,7 @@ export const updateScheduledAction: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateScheduledAction",
 }));
+
 export type UpdateVpcEndpointError =
   | BaseException
   | ConflictException
@@ -9570,6 +9730,7 @@ export const updateVpcEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateVpcEndpoint",
 }));
+
 export type UpgradeDomainError =
   | BaseException
   | DisabledOperationException

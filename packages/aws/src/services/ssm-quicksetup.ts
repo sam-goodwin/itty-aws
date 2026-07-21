@@ -85,15 +85,42 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type IAMRoleArn = string;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.String },
+  T.all(T.HttpError(429), T.Retryable()),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ConfigurationParametersMap = { [key: string]: string | undefined };
 export const ConfigurationParametersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type IAMRoleArn = string;
 export interface ConfigurationDefinitionInput {
   Type: string;
   Parameters: { [key: string]: string | undefined };
@@ -198,6 +225,7 @@ export const GetConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConfigurationInput>;
 export type StatusType = "Deployment" | "AsyncExecutions" | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
+
 export type Status =
   | "INITIALIZING"
   | "DEPLOYING"
@@ -211,6 +239,7 @@ export type Status =
   | "NONE"
   | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export type StatusDetails = { [key: string]: string | undefined };
 export const StatusDetails = /*@__PURE__*/ S.Record(
   S.String,
@@ -744,40 +773,6 @@ export const UpdateServiceSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateServiceSettingsResponse",
 }) as any as S.Schema<UpdateServiceSettingsResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.String },
-  T.all(T.HttpError(429), T.Retryable()),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateConfigurationManagerError =
   | AccessDeniedException
   | ConflictException
@@ -809,6 +804,7 @@ export const createConfigurationManager: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConfigurationManager",
 }));
+
 export type DeleteConfigurationManagerError =
   | AccessDeniedException
   | ConflictException
@@ -840,6 +836,7 @@ export const deleteConfigurationManager: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfigurationManager",
 }));
+
 export type GetConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -871,6 +868,7 @@ export const getConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetConfiguration",
 }));
+
 export type GetConfigurationManagerError =
   | AccessDeniedException
   | ConflictException
@@ -902,6 +900,7 @@ export const getConfigurationManager: API.OperationMethod<
   retry: Retry,
   operationName: "GetConfigurationManager",
 }));
+
 export type GetServiceSettingsError =
   | AccessDeniedException
   | ConflictException
@@ -929,6 +928,7 @@ export const getServiceSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetServiceSettings",
 }));
+
 export type ListConfigurationManagersError =
   | AccessDeniedException
   | ConflictException
@@ -979,6 +979,7 @@ export const listConfigurationManagers: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListConfigurationsError =
   | AccessDeniedException
   | InternalServerException
@@ -1029,6 +1030,7 @@ export const listConfigurations: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListQuickSetupTypesError =
   | AccessDeniedException
   | ConflictException
@@ -1056,6 +1058,7 @@ export const listQuickSetupTypes: API.OperationMethod<
   retry: Retry,
   operationName: "ListQuickSetupTypes",
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1087,6 +1090,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1118,6 +1122,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1149,6 +1154,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateConfigurationDefinitionError =
   | AccessDeniedException
   | ConflictException
@@ -1180,6 +1186,7 @@ export const updateConfigurationDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConfigurationDefinition",
 }));
+
 export type UpdateConfigurationManagerError =
   | AccessDeniedException
   | ConflictException
@@ -1211,6 +1218,7 @@ export const updateConfigurationManager: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConfigurationManager",
 }));
+
 export type UpdateServiceSettingsError =
   | AccessDeniedException
   | ConflictException

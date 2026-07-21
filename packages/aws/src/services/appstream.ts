@@ -93,56 +93,83 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DryRunOperationException extends S.TaggedErrorClass<DryRunOperationException>()(
+  "DryRunOperationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(412),
+) {}
+export class EntitlementAlreadyExistsException extends S.TaggedErrorClass<EntitlementAlreadyExistsException>()(
+  "EntitlementAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class EntitlementNotFoundException extends S.TaggedErrorClass<EntitlementNotFoundException>()(
+  "EntitlementNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class IncompatibleImageException extends S.TaggedErrorClass<IncompatibleImageException>()(
+  "IncompatibleImageException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidAccountStatusException extends S.TaggedErrorClass<InvalidAccountStatusException>()(
+  "InvalidAccountStatusException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
+  "InvalidParameterCombinationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidRoleException extends S.TaggedErrorClass<InvalidRoleException>()(
+  "InvalidRoleException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class OperationNotPermittedException extends S.TaggedErrorClass<OperationNotPermittedException>()(
+  "OperationNotPermittedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class RequestLimitExceededException extends S.TaggedErrorClass<RequestLimitExceededException>()(
+  "RequestLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotAvailableException extends S.TaggedErrorClass<ResourceNotAvailableException>()(
+  "ResourceNotAvailableException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type Name = string;
-export type ErrorMessage = string;
-export type Username = string | redacted.Redacted<string>;
-export type RegionName = string;
-export type Description = string;
-export type DisplayName = string;
-export type S3Bucket = string;
-export type S3Key = string;
-export type TagKey = string;
-export type TagValue = string;
-export type DirectoryName = string;
-export type OrganizationalUnitDistinguishedName = string;
-export type AccountName = string | redacted.Redacted<string>;
-export type AccountPassword = string | redacted.Redacted<string>;
-export type AmiName = string;
-export type UUID = string;
-export type PhotonAmiId = string;
-export type UsbDeviceFilterString = string;
-export type AppstreamAgentVersion = string;
-export type WorkspaceImageId = string;
-export type ImageImportDescription = string;
-export type ImageImportDisplayName = string;
-export type InstanceType = string;
-export type AppName = string;
-export type AppDisplayName = string;
-export type FilePath = string | redacted.Redacted<string>;
-export type LaunchParameters = string | redacted.Redacted<string>;
-export type ResourceIdentifier = string;
-export type Domain = string;
-export type RedirectURL = string;
-export type FeedbackURL = string;
-export type SettingsGroup = string;
-export type EmbedHostDomain = string;
-export type UrlPattern = string;
-export type S3BucketArn = string;
-export type StreamingUrlUserId = string;
-export type ThemeFooterLinkDisplayName = string;
-export type ThemeFooterLinkURL = string;
-export type ThemeTitleText = string;
-export type UserAttributeValue = string | redacted.Redacted<string>;
-export type AwsAccountId = string;
-export type MaxResults = number;
-export type DescribeImagesMaxResults = number;
-export type UserId = string;
-export type FilterName = string;
-export type FilterValue = string;
-
-//# Schemas
 export interface AssociateAppBlockBuilderAppBlockRequest {
   AppBlockArn?: string;
   AppBlockBuilderName?: string;
@@ -291,6 +318,7 @@ export const AssociateSoftwareToImageBuilderResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociateSoftwareToImageBuilderResult",
 }) as any as S.Schema<AssociateSoftwareToImageBuilderResult>;
+export type Username = string | redacted.Redacted<string>;
 export type AuthenticationType =
   | "API"
   | "SAML"
@@ -298,6 +326,7 @@ export type AuthenticationType =
   | "AWS_AD"
   | (string & {});
 export const AuthenticationType = /*@__PURE__*/ S.String;
+
 export interface UserStackAssociation {
   StackName?: string;
   UserName?: string | redacted.Redacted<string>;
@@ -336,6 +365,7 @@ export type UserStackAssociationErrorCode =
   | "INTERNAL_ERROR"
   | (string & {});
 export const UserStackAssociationErrorCode = /*@__PURE__*/ S.String;
+
 export interface UserStackAssociationError {
   UserStackAssociation?: UserStackAssociation;
   ErrorCode?: UserStackAssociationErrorCode;
@@ -394,6 +424,8 @@ export const BatchDisassociateUserStackResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDisassociateUserStackResult",
 }) as any as S.Schema<BatchDisassociateUserStackResult>;
+export type RegionName = string;
+export type Description = string;
 export interface CopyImageRequest {
   SourceImageName?: string;
   DestinationImageName?: string;
@@ -420,6 +452,9 @@ export const CopyImageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyImageResponse",
 }) as any as S.Schema<CopyImageResponse>;
+export type DisplayName = string;
+export type S3Bucket = string;
+export type S3Key = string;
 export interface S3Location {
   S3Bucket?: string;
   S3Key?: string;
@@ -441,10 +476,13 @@ export const ScriptDetails = /*@__PURE__*/ S.suspend(() =>
     TimeoutInSeconds: S.optional(S.Number),
   }),
 ).annotate({ identifier: "ScriptDetails" }) as any as S.Schema<ScriptDetails>;
+export type TagKey = string;
+export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export type PackagingType = "CUSTOM" | "APPSTREAM2" | (string & {});
 export const PackagingType = /*@__PURE__*/ S.String;
+
 export interface CreateAppBlockRequest {
   Name?: string;
   Description?: string;
@@ -473,6 +511,7 @@ export const CreateAppBlockRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAppBlockRequest>;
 export type AppBlockState = "INACTIVE" | "ACTIVE" | (string & {});
 export const AppBlockState = /*@__PURE__*/ S.String;
+
 export interface ErrorDetails {
   ErrorCode?: string;
   ErrorMessage?: string;
@@ -537,6 +576,7 @@ export const CreateAppBlockResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAppBlockResult>;
 export type AppBlockBuilderPlatformType = "WINDOWS_SERVER_2019" | (string & {});
 export const AppBlockBuilderPlatformType = /*@__PURE__*/ S.String;
+
 export type SubnetIdList = string[];
 export const SubnetIdList = /*@__PURE__*/ S.Array(S.String);
 export type SecurityGroupIdList = string[];
@@ -553,6 +593,7 @@ export const VpcConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
 export type AccessEndpointType = "STREAMING" | (string & {});
 export const AccessEndpointType = /*@__PURE__*/ S.String;
+
 export interface AccessEndpoint {
   EndpointType?: AccessEndpointType;
   VpceId?: string;
@@ -604,6 +645,7 @@ export type AppBlockBuilderState =
   | "STOPPED"
   | (string & {});
 export const AppBlockBuilderState = /*@__PURE__*/ S.String;
+
 export type FleetErrorCode =
   | "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"
   | "IAM_SERVICE_ROLE_MISSING_ENI_CREATE_ACTION"
@@ -638,6 +680,7 @@ export type FleetErrorCode =
   | "VALIDATION_ERROR"
   | (string & {});
 export const FleetErrorCode = /*@__PURE__*/ S.String;
+
 export interface ResourceError {
   ErrorCode?: FleetErrorCode;
   ErrorMessage?: string;
@@ -656,6 +699,7 @@ export type AppBlockBuilderStateChangeReasonCode =
   | "INTERNAL_ERROR"
   | (string & {});
 export const AppBlockBuilderStateChangeReasonCode = /*@__PURE__*/ S.String;
+
 export interface AppBlockBuilderStateChangeReason {
   Code?: AppBlockBuilderStateChangeReasonCode;
   Message?: string;
@@ -762,6 +806,7 @@ export type PlatformType =
   | "UBUNTU_PRO_2404"
   | (string & {});
 export const PlatformType = /*@__PURE__*/ S.String;
+
 export type Platforms = PlatformType[];
 export const Platforms = /*@__PURE__*/ S.Array(PlatformType);
 export interface CreateApplicationRequest {
@@ -847,10 +892,14 @@ export const CreateApplicationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationResult",
 }) as any as S.Schema<CreateApplicationResult>;
+export type DirectoryName = string;
+export type OrganizationalUnitDistinguishedName = string;
 export type OrganizationalUnitDistinguishedNamesList = string[];
 export const OrganizationalUnitDistinguishedNamesList = /*@__PURE__*/ S.Array(
   S.String,
 );
+export type AccountName = string | redacted.Redacted<string>;
+export type AccountPassword = string | redacted.Redacted<string>;
 export interface ServiceAccountCredentials {
   AccountName?: string | redacted.Redacted<string>;
   AccountPassword?: string | redacted.Redacted<string>;
@@ -869,6 +918,7 @@ export type CertificateBasedAuthStatus =
   | "ENABLED_NO_DIRECTORY_LOGIN_FALLBACK"
   | (string & {});
 export const CertificateBasedAuthStatus = /*@__PURE__*/ S.String;
+
 export interface CertificateBasedAuthProperties {
   Status?: CertificateBasedAuthStatus;
   CertificateAuthorityArn?: string;
@@ -937,6 +987,7 @@ export const CreateDirectoryConfigResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDirectoryConfigResult>;
 export type AppVisibility = "ALL" | "ASSOCIATED" | (string & {});
 export const AppVisibility = /*@__PURE__*/ S.String;
+
 export interface EntitlementAttribute {
   Name?: string;
   Value?: string;
@@ -1004,6 +1055,7 @@ export const CreateEntitlementResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEntitlementResult",
 }) as any as S.Schema<CreateEntitlementResult>;
+export type AmiName = string;
 export interface CreateExportImageTaskRequest {
   ImageName?: string;
   AmiName?: string;
@@ -1024,6 +1076,7 @@ export const CreateExportImageTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateExportImageTaskRequest",
 }) as any as S.Schema<CreateExportImageTaskRequest>;
+export type UUID = string;
 export type ExportImageTaskState =
   | "EXPORTING"
   | "COMPLETED"
@@ -1031,6 +1084,8 @@ export type ExportImageTaskState =
   | "TIMED_OUT"
   | (string & {});
 export const ExportImageTaskState = /*@__PURE__*/ S.String;
+
+export type PhotonAmiId = string;
 export interface ExportImageTask {
   TaskId?: string;
   ImageArn?: string;
@@ -1072,6 +1127,7 @@ export const CreateExportImageTaskResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateExportImageTaskResult>;
 export type FleetType = "ALWAYS_ON" | "ON_DEMAND" | "ELASTIC" | (string & {});
 export const FleetType = /*@__PURE__*/ S.String;
+
 export interface ComputeCapacity {
   DesiredInstances?: number;
   DesiredSessions?: number;
@@ -1096,6 +1152,8 @@ export const DomainJoinInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainJoinInfo" }) as any as S.Schema<DomainJoinInfo>;
 export type StreamView = "APP" | "DESKTOP" | (string & {});
 export const StreamView = /*@__PURE__*/ S.String;
+
+export type UsbDeviceFilterString = string;
 export type UsbDeviceFilterStrings = string[];
 export const UsbDeviceFilterStrings = /*@__PURE__*/ S.Array(S.String);
 export interface VolumeConfig {
@@ -1199,6 +1257,7 @@ export type FleetState =
   | "STOPPED"
   | (string & {});
 export const FleetState = /*@__PURE__*/ S.String;
+
 export interface FleetError {
   ErrorCode?: FleetErrorCode;
   ErrorMessage?: string;
@@ -1286,6 +1345,7 @@ export const CreateFleetResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFleetResult",
 }) as any as S.Schema<CreateFleetResult>;
+export type AppstreamAgentVersion = string;
 export interface CreateImageBuilderRequest {
   Name?: string;
   ImageName?: string;
@@ -1347,11 +1407,13 @@ export type ImageBuilderState =
   | "PENDING_IMAGE_IMPORT"
   | (string & {});
 export const ImageBuilderState = /*@__PURE__*/ S.String;
+
 export type ImageBuilderStateChangeReasonCode =
   | "INTERNAL_ERROR"
   | "IMAGE_UNAVAILABLE"
   | (string & {});
 export const ImageBuilderStateChangeReasonCode = /*@__PURE__*/ S.String;
+
 export interface ImageBuilderStateChangeReason {
   Code?: ImageBuilderStateChangeReasonCode;
   Message?: string;
@@ -1380,6 +1442,7 @@ export const NetworkAccessConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkAccessConfiguration>;
 export type LatestAppstreamAgentVersion = "TRUE" | "FALSE" | (string & {});
 export const LatestAppstreamAgentVersion = /*@__PURE__*/ S.String;
+
 export interface ImageBuilder {
   Name?: string;
   Arn?: string;
@@ -1467,6 +1530,10 @@ export const CreateImageBuilderStreamingURLResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateImageBuilderStreamingURLResult",
 }) as any as S.Schema<CreateImageBuilderStreamingURLResult>;
+export type WorkspaceImageId = string;
+export type ImageImportDescription = string;
+export type ImageImportDisplayName = string;
+export type InstanceType = string;
 export interface RuntimeValidationConfig {
   IntendedInstanceType?: string;
 }
@@ -1480,6 +1547,11 @@ export type AgentSoftwareVersion =
   | "ALWAYS_LATEST"
   | (string & {});
 export const AgentSoftwareVersion = /*@__PURE__*/ S.String;
+
+export type AppName = string;
+export type AppDisplayName = string;
+export type FilePath = string | redacted.Redacted<string>;
+export type LaunchParameters = string | redacted.Redacted<string>;
 export interface ApplicationConfig {
   Name?: string;
   DisplayName?: string;
@@ -1547,8 +1619,10 @@ export type ImageState =
   | "VALIDATING"
   | (string & {});
 export const ImageState = /*@__PURE__*/ S.String;
+
 export type VisibilityType = "PUBLIC" | "PRIVATE" | "SHARED" | (string & {});
 export const VisibilityType = /*@__PURE__*/ S.String;
+
 export type ImageStateChangeReasonCode =
   | "INTERNAL_ERROR"
   | "IMAGE_BUILDER_NOT_AVAILABLE"
@@ -1557,6 +1631,7 @@ export type ImageStateChangeReasonCode =
   | "IMAGE_IMPORT_FAILURE"
   | (string & {});
 export const ImageStateChangeReasonCode = /*@__PURE__*/ S.String;
+
 export interface ImageStateChangeReason {
   Code?: ImageStateChangeReasonCode;
   Message?: string;
@@ -1585,10 +1660,13 @@ export const ImagePermissions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImagePermissions>;
 export type DynamicAppProvidersEnabled = "ENABLED" | "DISABLED" | (string & {});
 export const DynamicAppProvidersEnabled = /*@__PURE__*/ S.String;
+
 export type ImageSharedWithOthers = "TRUE" | "FALSE" | (string & {});
 export const ImageSharedWithOthers = /*@__PURE__*/ S.String;
+
 export type ImageType = "CUSTOM" | "NATIVE" | "BYOL" | (string & {});
 export const ImageType = /*@__PURE__*/ S.String;
+
 export interface Image {
   Name?: string;
   Arn?: string;
@@ -1662,6 +1740,9 @@ export type StorageConnectorType =
   | "ONE_DRIVE"
   | (string & {});
 export const StorageConnectorType = /*@__PURE__*/ S.String;
+
+export type ResourceIdentifier = string;
+export type Domain = string;
 export type DomainList = string[];
 export const DomainList = /*@__PURE__*/ S.Array(S.String);
 export interface StorageConnector {
@@ -1682,6 +1763,8 @@ export const StorageConnector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StorageConnector>;
 export type StorageConnectorList = StorageConnector[];
 export const StorageConnectorList = /*@__PURE__*/ S.Array(StorageConnector);
+export type RedirectURL = string;
+export type FeedbackURL = string;
 export type Action =
   | "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"
   | "CLIPBOARD_COPY_TO_LOCAL_DEVICE"
@@ -1693,8 +1776,10 @@ export type Action =
   | "AUTO_TIME_ZONE_REDIRECTION"
   | (string & {});
 export const Action = /*@__PURE__*/ S.String;
+
 export type Permission = "ENABLED" | "DISABLED" | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
+
 export interface UserSetting {
   Action?: Action;
   Permission?: Permission;
@@ -1709,6 +1794,7 @@ export const UserSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserSetting" }) as any as S.Schema<UserSetting>;
 export type UserSettingList = UserSetting[];
 export const UserSettingList = /*@__PURE__*/ S.Array(UserSetting);
+export type SettingsGroup = string;
 export interface ApplicationSettings {
   Enabled?: boolean;
   SettingsGroup?: string;
@@ -1721,10 +1807,12 @@ export const ApplicationSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplicationSettings",
 }) as any as S.Schema<ApplicationSettings>;
+export type EmbedHostDomain = string;
 export type EmbedHostDomains = string[];
 export const EmbedHostDomains = /*@__PURE__*/ S.Array(S.String);
 export type PreferredProtocol = "TCP" | "UDP" | (string & {});
 export const PreferredProtocol = /*@__PURE__*/ S.String;
+
 export interface StreamingExperienceSettings {
   PreferredProtocol?: PreferredProtocol;
 }
@@ -1733,6 +1821,7 @@ export const StreamingExperienceSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StreamingExperienceSettings",
 }) as any as S.Schema<StreamingExperienceSettings>;
+export type UrlPattern = string;
 export type UrlPatternList = string[];
 export const UrlPatternList = /*@__PURE__*/ S.Array(S.String);
 export interface UrlRedirectionConfig {
@@ -1763,6 +1852,7 @@ export type AgentAction =
   | "FORWARD_MCP_TOOLS"
   | (string & {});
 export const AgentAction = /*@__PURE__*/ S.String;
+
 export interface AgentAccessSetting {
   AgentAction?: AgentAction;
   Permission?: Permission;
@@ -1777,16 +1867,20 @@ export const AgentAccessSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AgentAccessSetting>;
 export type AgentAccessSettingList = AgentAccessSetting[];
 export const AgentAccessSettingList = /*@__PURE__*/ S.Array(AgentAccessSetting);
+export type S3BucketArn = string;
 export type ScreenResolution = "W_1280xH_720" | (string & {});
 export const ScreenResolution = /*@__PURE__*/ S.String;
+
 export type ScreenImageFormat = "PNG" | "JPEG" | (string & {});
 export const ScreenImageFormat = /*@__PURE__*/ S.String;
+
 export type UserControlMode =
   | "VIEW_ONLY"
   | "VIEW_STOP"
   | "DISABLED"
   | (string & {});
 export const UserControlMode = /*@__PURE__*/ S.String;
+
 export interface AgentAccessConfig {
   Settings?: AgentAccessSetting[];
   S3BucketArn?: string;
@@ -1850,6 +1944,7 @@ export type StackErrorCode =
   | "INTERNAL_SERVICE_ERROR"
   | (string & {});
 export const StackErrorCode = /*@__PURE__*/ S.String;
+
 export interface StackError {
   ErrorCode?: StackErrorCode;
   ErrorMessage?: string;
@@ -1940,6 +2035,7 @@ export const CreateStackResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStackResult",
 }) as any as S.Schema<CreateStackResult>;
+export type StreamingUrlUserId = string;
 export interface CreateStreamingURLRequest {
   StackName?: string;
   FleetName?: string;
@@ -1974,6 +2070,8 @@ export const CreateStreamingURLResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStreamingURLResult",
 }) as any as S.Schema<CreateStreamingURLResult>;
+export type ThemeFooterLinkDisplayName = string;
+export type ThemeFooterLinkURL = string;
 export interface ThemeFooterLink {
   DisplayName?: string;
   FooterLinkURL?: string;
@@ -1988,6 +2086,7 @@ export const ThemeFooterLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ThemeFooterLink>;
 export type ThemeFooterLinks = ThemeFooterLink[];
 export const ThemeFooterLinks = /*@__PURE__*/ S.Array(ThemeFooterLink);
+export type ThemeTitleText = string;
 export type ThemeStyling =
   | "LIGHT_BLUE"
   | "BLUE"
@@ -1995,6 +2094,7 @@ export type ThemeStyling =
   | "RED"
   | (string & {});
 export const ThemeStyling = /*@__PURE__*/ S.String;
+
 export interface CreateThemeForStackRequest {
   StackName?: string;
   FooterLinks?: ThemeFooterLink[];
@@ -2019,6 +2119,7 @@ export const CreateThemeForStackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateThemeForStackRequest>;
 export type ThemeState = "ENABLED" | "DISABLED" | (string & {});
 export const ThemeState = /*@__PURE__*/ S.String;
+
 export interface Theme {
   StackName?: string;
   State?: ThemeState;
@@ -2096,6 +2197,7 @@ export const CreateUsageReportSubscriptionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateUsageReportSubscriptionRequest>;
 export type UsageReportSchedule = "DAILY" | (string & {});
 export const UsageReportSchedule = /*@__PURE__*/ S.String;
+
 export interface CreateUsageReportSubscriptionResult {
   S3BucketName?: string;
   Schedule?: UsageReportSchedule;
@@ -2110,6 +2212,8 @@ export const CreateUsageReportSubscriptionResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateUsageReportSubscriptionResult>;
 export type MessageAction = "SUPPRESS" | "RESEND" | (string & {});
 export const MessageAction = /*@__PURE__*/ S.String;
+
+export type UserAttributeValue = string | redacted.Redacted<string>;
 export interface CreateUserRequest {
   UserName?: string | redacted.Redacted<string>;
   MessageAction?: MessageAction;
@@ -2280,6 +2384,7 @@ export const DeleteImageBuilderResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteImageBuilderResult",
 }) as any as S.Schema<DeleteImageBuilderResult>;
+export type AwsAccountId = string;
 export interface DeleteImagePermissionsRequest {
   Name?: string;
   SharedAccountId?: string;
@@ -2768,6 +2873,7 @@ export const DescribeImageBuildersResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeImageBuildersResult",
 }) as any as S.Schema<DescribeImageBuildersResult>;
+export type MaxResults = number;
 export type AwsAccountIdList = string[];
 export const AwsAccountIdList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeImagePermissionsRequest {
@@ -2821,6 +2927,7 @@ export const DescribeImagePermissionsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeImagePermissionsResult",
 }) as any as S.Schema<DescribeImagePermissionsResult>;
+export type DescribeImagesMaxResults = number;
 export interface DescribeImagesRequest {
   Names?: string[];
   Arns?: string[];
@@ -2857,6 +2964,7 @@ export const DescribeImagesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeImagesResult",
 }) as any as S.Schema<DescribeImagesResult>;
+export type UserId = string;
 export interface DescribeSessionsRequest {
   StackName?: string;
   FleetName?: string;
@@ -2883,17 +2991,20 @@ export const DescribeSessionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeSessionsRequest>;
 export type SessionState = "ACTIVE" | "PENDING" | "EXPIRED" | (string & {});
 export const SessionState = /*@__PURE__*/ S.String;
+
 export type SessionConnectionState =
   | "CONNECTED"
   | "NOT_CONNECTED"
   | (string & {});
 export const SessionConnectionState = /*@__PURE__*/ S.String;
+
 export type InstanceDrainStatus =
   | "ACTIVE"
   | "DRAINING"
   | "NOT_APPLICABLE"
   | (string & {});
 export const InstanceDrainStatus = /*@__PURE__*/ S.String;
+
 export interface Session {
   Id?: string;
   UserId?: string;
@@ -2972,6 +3083,7 @@ export type SoftwareDeploymentStatus =
   | "FAILED_TO_UNINSTALL"
   | (string & {});
 export const SoftwareDeploymentStatus = /*@__PURE__*/ S.String;
+
 export interface SoftwareAssociations {
   SoftwareName?: string;
   Status?: SoftwareDeploymentStatus;
@@ -3085,6 +3197,7 @@ export type UsageReportExecutionErrorCode =
   | "INTERNAL_SERVICE_ERROR"
   | (string & {});
 export const UsageReportExecutionErrorCode = /*@__PURE__*/ S.String;
+
 export interface LastReportGenerationExecutionError {
   ErrorCode?: UsageReportExecutionErrorCode;
   ErrorMessage?: string;
@@ -3509,6 +3622,8 @@ export const ListEntitledApplicationsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEntitledApplicationsResult",
 }) as any as S.Schema<ListEntitledApplicationsResult>;
+export type FilterName = string;
+export type FilterValue = string;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface Filter {
@@ -3768,6 +3883,7 @@ export type AppBlockBuilderAttribute =
   | "VPC_CONFIGURATION_SECURITY_GROUP_IDS"
   | (string & {});
 export const AppBlockBuilderAttribute = /*@__PURE__*/ S.String;
+
 export type AppBlockBuilderAttributes = AppBlockBuilderAttribute[];
 export const AppBlockBuilderAttributes = /*@__PURE__*/ S.Array(
   AppBlockBuilderAttribute,
@@ -3825,6 +3941,7 @@ export type ApplicationAttribute =
   | "WORKING_DIRECTORY"
   | (string & {});
 export const ApplicationAttribute = /*@__PURE__*/ S.String;
+
 export type ApplicationAttributes = ApplicationAttribute[];
 export const ApplicationAttributes =
   /*@__PURE__*/ S.Array(ApplicationAttribute);
@@ -3944,6 +4061,7 @@ export type FleetAttribute =
   | "VOLUME_CONFIGURATION"
   | (string & {});
 export const FleetAttribute = /*@__PURE__*/ S.String;
+
 export type FleetAttributes = FleetAttribute[];
 export const FleetAttributes = /*@__PURE__*/ S.Array(FleetAttribute);
 export interface UpdateFleetRequest {
@@ -4058,6 +4176,7 @@ export type StackAttribute =
   | "AGENT_ACCESS_CONFIG"
   | (string & {});
 export const StackAttribute = /*@__PURE__*/ S.String;
+
 export type StackAttributes = StackAttribute[];
 export const StackAttributes = /*@__PURE__*/ S.Array(StackAttribute);
 export interface AgentAccessConfigForUpdate {
@@ -4148,6 +4267,7 @@ export const UpdateStackResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateStackResult>;
 export type ThemeAttribute = "FOOTER_LINKS" | (string & {});
 export const ThemeAttribute = /*@__PURE__*/ S.String;
+
 export type ThemeAttributes = ThemeAttribute[];
 export const ThemeAttributes = /*@__PURE__*/ S.Array(ThemeAttribute);
 export interface UpdateThemeForStackRequest {
@@ -4184,85 +4304,7 @@ export const UpdateThemeForStackResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateThemeForStackResult",
 }) as any as S.Schema<UpdateThemeForStackResult>;
-
-//# Errors
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
-  "InvalidParameterCombinationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class OperationNotPermittedException extends S.TaggedErrorClass<OperationNotPermittedException>()(
-  "OperationNotPermittedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class EntitlementNotFoundException extends S.TaggedErrorClass<EntitlementNotFoundException>()(
-  "EntitlementNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class IncompatibleImageException extends S.TaggedErrorClass<IncompatibleImageException>()(
-  "IncompatibleImageException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidAccountStatusException extends S.TaggedErrorClass<InvalidAccountStatusException>()(
-  "InvalidAccountStatusException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ResourceNotAvailableException extends S.TaggedErrorClass<ResourceNotAvailableException>()(
-  "ResourceNotAvailableException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidRoleException extends S.TaggedErrorClass<InvalidRoleException>()(
-  "InvalidRoleException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class RequestLimitExceededException extends S.TaggedErrorClass<RequestLimitExceededException>()(
-  "RequestLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class EntitlementAlreadyExistsException extends S.TaggedErrorClass<EntitlementAlreadyExistsException>()(
-  "EntitlementAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class DryRunOperationException extends S.TaggedErrorClass<DryRunOperationException>()(
-  "DryRunOperationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(412),
-) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type AssociateAppBlockBuilderAppBlockError =
   | ConcurrentModificationException
   | InvalidParameterCombinationException
@@ -4292,6 +4334,7 @@ export const associateAppBlockBuilderAppBlock: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateAppBlockBuilderAppBlock",
 }));
+
 export type AssociateApplicationFleetError =
   | ConcurrentModificationException
   | InvalidParameterCombinationException
@@ -4321,6 +4364,7 @@ export const associateApplicationFleet: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateApplicationFleet",
 }));
+
 export type AssociateApplicationToEntitlementError =
   | EntitlementNotFoundException
   | LimitExceededException
@@ -4348,6 +4392,7 @@ export const associateApplicationToEntitlement: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateApplicationToEntitlement",
 }));
+
 export type AssociateFleetError =
   | ConcurrentModificationException
   | IncompatibleImageException
@@ -4379,6 +4424,7 @@ export const associateFleet: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateFleet",
 }));
+
 export type AssociateSoftwareToImageBuilderError =
   | ConcurrentModificationException
   | IncompatibleImageException
@@ -4408,6 +4454,7 @@ export const associateSoftwareToImageBuilder: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateSoftwareToImageBuilder",
 }));
+
 export type BatchAssociateUserStackError =
   | InvalidParameterCombinationException
   | OperationNotPermittedException
@@ -4431,6 +4478,7 @@ export const batchAssociateUserStack: API.OperationMethod<
   retry: Retry,
   operationName: "BatchAssociateUserStack",
 }));
+
 export type BatchDisassociateUserStackError =
   | InvalidParameterCombinationException
   | OperationNotPermittedException
@@ -4454,6 +4502,7 @@ export const batchDisassociateUserStack: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDisassociateUserStack",
 }));
+
 export type CopyImageError =
   | IncompatibleImageException
   | InvalidAccountStatusException
@@ -4485,6 +4534,7 @@ export const copyImage: API.OperationMethod<
   retry: Retry,
   operationName: "CopyImage",
 }));
+
 export type CreateAppBlockError =
   | ConcurrentModificationException
   | LimitExceededException
@@ -4520,6 +4570,7 @@ export const createAppBlock: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAppBlock",
 }));
+
 export type CreateAppBlockBuilderError =
   | ConcurrentModificationException
   | InvalidAccountStatusException
@@ -4559,6 +4610,7 @@ export const createAppBlockBuilder: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAppBlockBuilder",
 }));
+
 export type CreateAppBlockBuilderStreamingURLError =
   | OperationNotPermittedException
   | ResourceNotFoundException
@@ -4579,6 +4631,7 @@ export const createAppBlockBuilderStreamingURL: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAppBlockBuilderStreamingURL",
 }));
+
 export type CreateApplicationError =
   | ConcurrentModificationException
   | LimitExceededException
@@ -4616,6 +4669,7 @@ export const createApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApplication",
 }));
+
 export type CreateDirectoryConfigError =
   | InvalidAccountStatusException
   | InvalidRoleException
@@ -4647,6 +4701,7 @@ export const createDirectoryConfig: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDirectoryConfig",
 }));
+
 export type CreateEntitlementError =
   | EntitlementAlreadyExistsException
   | LimitExceededException
@@ -4679,6 +4734,7 @@ export const createEntitlement: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEntitlement",
 }));
+
 export type CreateExportImageTaskError =
   | ConcurrentModificationException
   | InvalidAccountStatusException
@@ -4712,6 +4768,7 @@ export const createExportImageTask: API.OperationMethod<
   retry: Retry,
   operationName: "CreateExportImageTask",
 }));
+
 export type CreateFleetError =
   | ConcurrentModificationException
   | IncompatibleImageException
@@ -4753,6 +4810,7 @@ export const createFleet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFleet",
 }));
+
 export type CreateImageBuilderError =
   | ConcurrentModificationException
   | IncompatibleImageException
@@ -4796,6 +4854,7 @@ export const createImageBuilder: API.OperationMethod<
   retry: Retry,
   operationName: "CreateImageBuilder",
 }));
+
 export type CreateImageBuilderStreamingURLError =
   | OperationNotPermittedException
   | ResourceNotFoundException
@@ -4816,6 +4875,7 @@ export const createImageBuilderStreamingURL: API.OperationMethod<
   retry: Retry,
   operationName: "CreateImageBuilderStreamingURL",
 }));
+
 export type CreateImportedImageError =
   | DryRunOperationException
   | IncompatibleImageException
@@ -4853,6 +4913,7 @@ export const createImportedImage: API.OperationMethod<
   retry: Retry,
   operationName: "CreateImportedImage",
 }));
+
 export type CreateStackError =
   | ConcurrentModificationException
   | InvalidAccountStatusException
@@ -4888,6 +4949,7 @@ export const createStack: API.OperationMethod<
   retry: Retry,
   operationName: "CreateStack",
 }));
+
 export type CreateStreamingURLError =
   | InvalidParameterCombinationException
   | OperationNotPermittedException
@@ -4915,6 +4977,7 @@ export const createStreamingURL: API.OperationMethod<
   retry: Retry,
   operationName: "CreateStreamingURL",
 }));
+
 export type CreateThemeForStackError =
   | ConcurrentModificationException
   | InvalidAccountStatusException
@@ -4946,6 +5009,7 @@ export const createThemeForStack: API.OperationMethod<
   retry: Retry,
   operationName: "CreateThemeForStack",
 }));
+
 export type CreateUpdatedImageError =
   | ConcurrentModificationException
   | IncompatibleImageException
@@ -4982,6 +5046,7 @@ export const createUpdatedImage: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUpdatedImage",
 }));
+
 export type CreateUsageReportSubscriptionError =
   | InvalidAccountStatusException
   | InvalidRoleException
@@ -5007,6 +5072,7 @@ export const createUsageReportSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUsageReportSubscription",
 }));
+
 export type CreateUserError =
   | InvalidAccountStatusException
   | InvalidParameterCombinationException
@@ -5036,6 +5102,7 @@ export const createUser: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUser",
 }));
+
 export type DeleteAppBlockError =
   | ConcurrentModificationException
   | ResourceInUseException
@@ -5061,6 +5128,7 @@ export const deleteAppBlock: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAppBlock",
 }));
+
 export type DeleteAppBlockBuilderError =
   | ConcurrentModificationException
   | OperationNotPermittedException
@@ -5091,6 +5159,7 @@ export const deleteAppBlockBuilder: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAppBlockBuilder",
 }));
+
 export type DeleteApplicationError =
   | ConcurrentModificationException
   | OperationNotPermittedException
@@ -5118,6 +5187,7 @@ export const deleteApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplication",
 }));
+
 export type DeleteDirectoryConfigError =
   | ResourceInUseException
   | ResourceNotFoundException
@@ -5138,6 +5208,7 @@ export const deleteDirectoryConfig: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDirectoryConfig",
 }));
+
 export type DeleteEntitlementError =
   | ConcurrentModificationException
   | EntitlementNotFoundException
@@ -5165,6 +5236,7 @@ export const deleteEntitlement: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEntitlement",
 }));
+
 export type DeleteFleetError =
   | ConcurrentModificationException
   | ResourceInUseException
@@ -5190,6 +5262,7 @@ export const deleteFleet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFleet",
 }));
+
 export type DeleteImageError =
   | ConcurrentModificationException
   | OperationNotPermittedException
@@ -5218,6 +5291,7 @@ export const deleteImage: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteImage",
 }));
+
 export type DeleteImageBuilderError =
   | ConcurrentModificationException
   | OperationNotPermittedException
@@ -5243,6 +5317,7 @@ export const deleteImageBuilder: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteImageBuilder",
 }));
+
 export type DeleteImagePermissionsError =
   | ResourceNotAvailableException
   | ResourceNotFoundException
@@ -5263,6 +5338,7 @@ export const deleteImagePermissions: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteImagePermissions",
 }));
+
 export type DeleteStackError =
   | ConcurrentModificationException
   | OperationNotPermittedException
@@ -5290,6 +5366,7 @@ export const deleteStack: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteStack",
 }));
+
 export type DeleteThemeForStackError =
   | ConcurrentModificationException
   | OperationNotPermittedException
@@ -5315,6 +5392,7 @@ export const deleteThemeForStack: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteThemeForStack",
 }));
+
 export type DeleteUsageReportSubscriptionError =
   | InvalidAccountStatusException
   | ResourceNotFoundException
@@ -5335,6 +5413,7 @@ export const deleteUsageReportSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUsageReportSubscription",
 }));
+
 export type DeleteUserError = ResourceNotFoundException | CommonErrors;
 /**
  * Deletes a user from the user pool.
@@ -5352,6 +5431,7 @@ export const deleteUser: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUser",
 }));
+
 export type DescribeAppBlockBuilderAppBlockAssociationsError =
   | InvalidParameterCombinationException
   | OperationNotPermittedException
@@ -5395,6 +5475,7 @@ export const describeAppBlockBuilderAppBlockAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeAppBlockBuildersError =
   | OperationNotPermittedException
   | ResourceNotFoundException
@@ -5435,6 +5516,7 @@ export const describeAppBlockBuilders: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeAppBlocksError =
   | OperationNotPermittedException
   | ResourceNotFoundException
@@ -5455,6 +5537,7 @@ export const describeAppBlocks: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAppBlocks",
 }));
+
 export type DescribeApplicationFleetAssociationsError =
   | InvalidParameterCombinationException
   | OperationNotPermittedException
@@ -5478,6 +5561,7 @@ export const describeApplicationFleetAssociations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeApplicationFleetAssociations",
 }));
+
 export type DescribeApplicationsError =
   | OperationNotPermittedException
   | ResourceNotFoundException
@@ -5498,6 +5582,7 @@ export const describeApplications: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeApplications",
 }));
+
 export type DescribeAppLicenseUsageError =
   | InvalidParameterCombinationException
   | OperationNotPermittedException
@@ -5523,6 +5608,7 @@ export const describeAppLicenseUsage: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAppLicenseUsage",
 }));
+
 export type DescribeDirectoryConfigsError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -5544,6 +5630,7 @@ export const describeDirectoryConfigs: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDirectoryConfigs",
 }));
+
 export type DescribeEntitlementsError =
   | EntitlementNotFoundException
   | OperationNotPermittedException
@@ -5569,6 +5656,7 @@ export const describeEntitlements: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEntitlements",
 }));
+
 export type DescribeFleetsError = ResourceNotFoundException | CommonErrors;
 /**
  * Retrieves a list that describes one or more specified fleets, if the fleet names are provided. Otherwise, all fleets in the account are described.
@@ -5586,6 +5674,7 @@ export const describeFleets: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFleets",
 }));
+
 export type DescribeImageBuildersError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -5605,6 +5694,7 @@ export const describeImageBuilders: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeImageBuilders",
 }));
+
 export type DescribeImagePermissionsError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -5644,6 +5734,7 @@ export const describeImagePermissions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeImagesError =
   | InvalidParameterCombinationException
   | ResourceNotFoundException
@@ -5684,6 +5775,7 @@ export const describeImages: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSessionsError =
   | InvalidParameterCombinationException
   | CommonErrors;
@@ -5705,6 +5797,7 @@ export const describeSessions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSessions",
 }));
+
 export type DescribeSoftwareAssociationsError =
   | OperationNotPermittedException
   | ResourceNotFoundException
@@ -5725,6 +5818,7 @@ export const describeSoftwareAssociations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSoftwareAssociations",
 }));
+
 export type DescribeStacksError = ResourceNotFoundException | CommonErrors;
 /**
  * Retrieves a list that describes one or more specified stacks, if the stack names are provided. Otherwise, all stacks in the account are described.
@@ -5742,6 +5836,7 @@ export const describeStacks: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeStacks",
 }));
+
 export type DescribeThemeForStackError =
   | OperationNotPermittedException
   | ResourceNotFoundException
@@ -5762,6 +5857,7 @@ export const describeThemeForStack: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeThemeForStack",
 }));
+
 export type DescribeUsageReportSubscriptionsError =
   | InvalidAccountStatusException
   | ResourceNotFoundException
@@ -5782,6 +5878,7 @@ export const describeUsageReportSubscriptions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeUsageReportSubscriptions",
 }));
+
 export type DescribeUsersError =
   | InvalidParameterCombinationException
   | OperationNotPermittedException
@@ -5807,6 +5904,7 @@ export const describeUsers: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeUsers",
 }));
+
 export type DescribeUserStackAssociationsError =
   | InvalidParameterCombinationException
   | OperationNotPermittedException
@@ -5834,6 +5932,7 @@ export const describeUserStackAssociations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeUserStackAssociations",
 }));
+
 export type DisableUserError = ResourceNotFoundException | CommonErrors;
 /**
  * Disables the specified user in the user pool. Users can't sign in to WorkSpaces Applications until they are re-enabled. This action does not delete the user.
@@ -5851,6 +5950,7 @@ export const disableUser: API.OperationMethod<
   retry: Retry,
   operationName: "DisableUser",
 }));
+
 export type DisassociateAppBlockBuilderAppBlockError =
   | ConcurrentModificationException
   | InvalidParameterCombinationException
@@ -5878,6 +5978,7 @@ export const disassociateAppBlockBuilderAppBlock: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateAppBlockBuilderAppBlock",
 }));
+
 export type DisassociateApplicationFleetError =
   | ConcurrentModificationException
   | InvalidParameterCombinationException
@@ -5903,6 +6004,7 @@ export const disassociateApplicationFleet: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateApplicationFleet",
 }));
+
 export type DisassociateApplicationFromEntitlementError =
   | EntitlementNotFoundException
   | OperationNotPermittedException
@@ -5928,6 +6030,7 @@ export const disassociateApplicationFromEntitlement: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateApplicationFromEntitlement",
 }));
+
 export type DisassociateFleetError =
   | ConcurrentModificationException
   | OperationNotPermittedException
@@ -5955,6 +6058,7 @@ export const disassociateFleet: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateFleet",
 }));
+
 export type DisassociateSoftwareFromImageBuilderError =
   | ConcurrentModificationException
   | InvalidParameterCombinationException
@@ -5982,6 +6086,7 @@ export const disassociateSoftwareFromImageBuilder: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateSoftwareFromImageBuilder",
 }));
+
 export type DrainSessionInstanceError =
   | ConcurrentModificationException
   | OperationNotPermittedException
@@ -6007,6 +6112,7 @@ export const drainSessionInstance: API.OperationMethod<
   retry: Retry,
   operationName: "DrainSessionInstance",
 }));
+
 export type EnableUserError =
   | InvalidAccountStatusException
   | ResourceNotFoundException
@@ -6027,6 +6133,7 @@ export const enableUser: API.OperationMethod<
   retry: Retry,
   operationName: "EnableUser",
 }));
+
 export type ExpireSessionError = CommonErrors;
 /**
  * Immediately stops the specified streaming session.
@@ -6044,6 +6151,7 @@ export const expireSession: API.OperationMethod<
   retry: Retry,
   operationName: "ExpireSession",
 }));
+
 export type GetExportImageTaskError =
   | OperationNotPermittedException
   | ResourceNotFoundException
@@ -6064,6 +6172,7 @@ export const getExportImageTask: API.OperationMethod<
   retry: Retry,
   operationName: "GetExportImageTask",
 }));
+
 export type ListAssociatedFleetsError = CommonErrors;
 /**
  * Retrieves the name of the fleet that is associated with the specified stack.
@@ -6081,6 +6190,7 @@ export const listAssociatedFleets: API.OperationMethod<
   retry: Retry,
   operationName: "ListAssociatedFleets",
 }));
+
 export type ListAssociatedStacksError = CommonErrors;
 /**
  * Retrieves the name of the stack with which the specified fleet is associated.
@@ -6098,6 +6208,7 @@ export const listAssociatedStacks: API.OperationMethod<
   retry: Retry,
   operationName: "ListAssociatedStacks",
 }));
+
 export type ListEntitledApplicationsError =
   | EntitlementNotFoundException
   | OperationNotPermittedException
@@ -6123,6 +6234,7 @@ export const listEntitledApplications: API.OperationMethod<
   retry: Retry,
   operationName: "ListEntitledApplications",
 }));
+
 export type ListExportImageTasksError =
   | OperationNotPermittedException
   | CommonErrors;
@@ -6142,6 +6254,7 @@ export const listExportImageTasks: API.OperationMethod<
   retry: Retry,
   operationName: "ListExportImageTasks",
 }));
+
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**
  * Retrieves a list of all tags for the specified WorkSpaces Applications resource. You can tag WorkSpaces Applications image builders, images, fleets, and stacks.
@@ -6161,6 +6274,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type StartAppBlockBuilderError =
   | ConcurrentModificationException
   | InvalidAccountStatusException
@@ -6200,6 +6314,7 @@ export const startAppBlockBuilder: API.OperationMethod<
   retry: Retry,
   operationName: "StartAppBlockBuilder",
 }));
+
 export type StartFleetError =
   | ConcurrentModificationException
   | InvalidAccountStatusException
@@ -6235,6 +6350,7 @@ export const startFleet: API.OperationMethod<
   retry: Retry,
   operationName: "StartFleet",
 }));
+
 export type StartImageBuilderError =
   | ConcurrentModificationException
   | IncompatibleImageException
@@ -6264,6 +6380,7 @@ export const startImageBuilder: API.OperationMethod<
   retry: Retry,
   operationName: "StartImageBuilder",
 }));
+
 export type StartSoftwareDeploymentToImageBuilderError =
   | ConcurrentModificationException
   | OperationNotPermittedException
@@ -6289,6 +6406,7 @@ export const startSoftwareDeploymentToImageBuilder: API.OperationMethod<
   retry: Retry,
   operationName: "StartSoftwareDeploymentToImageBuilder",
 }));
+
 export type StopAppBlockBuilderError =
   | ConcurrentModificationException
   | OperationNotPermittedException
@@ -6317,6 +6435,7 @@ export const stopAppBlockBuilder: API.OperationMethod<
   retry: Retry,
   operationName: "StopAppBlockBuilder",
 }));
+
 export type StopFleetError =
   | ConcurrentModificationException
   | ResourceNotFoundException
@@ -6337,6 +6456,7 @@ export const stopFleet: API.OperationMethod<
   retry: Retry,
   operationName: "StopFleet",
 }));
+
 export type StopImageBuilderError =
   | ConcurrentModificationException
   | OperationNotPermittedException
@@ -6362,6 +6482,7 @@ export const stopImageBuilder: API.OperationMethod<
   retry: Retry,
   operationName: "StopImageBuilder",
 }));
+
 export type TagResourceError =
   | InvalidAccountStatusException
   | LimitExceededException
@@ -6395,6 +6516,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
  * Disassociates one or more specified tags from the specified WorkSpaces Applications resource.
@@ -6416,6 +6538,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAppBlockBuilderError =
   | ConcurrentModificationException
   | InvalidAccountStatusException
@@ -6460,6 +6583,7 @@ export const updateAppBlockBuilder: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAppBlockBuilder",
 }));
+
 export type UpdateApplicationError =
   | ConcurrentModificationException
   | OperationNotPermittedException
@@ -6485,6 +6609,7 @@ export const updateApplication: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApplication",
 }));
+
 export type UpdateDirectoryConfigError =
   | ConcurrentModificationException
   | IncompatibleImageException
@@ -6516,6 +6641,7 @@ export const updateDirectoryConfig: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDirectoryConfig",
 }));
+
 export type UpdateEntitlementError =
   | ConcurrentModificationException
   | EntitlementNotFoundException
@@ -6543,6 +6669,7 @@ export const updateEntitlement: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEntitlement",
 }));
+
 export type UpdateFleetError =
   | ConcurrentModificationException
   | IncompatibleImageException
@@ -6606,6 +6733,7 @@ export const updateFleet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFleet",
 }));
+
 export type UpdateImagePermissionsError =
   | LimitExceededException
   | ResourceNotAvailableException
@@ -6631,6 +6759,7 @@ export const updateImagePermissions: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateImagePermissions",
 }));
+
 export type UpdateStackError =
   | ConcurrentModificationException
   | IncompatibleImageException
@@ -6668,6 +6797,7 @@ export const updateStack: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateStack",
 }));
+
 export type UpdateThemeForStackError =
   | ConcurrentModificationException
   | InvalidAccountStatusException

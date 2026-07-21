@@ -87,29 +87,101 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
+  "ResourceLimitExceededException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ServiceFailureException extends S.TaggedErrorClass<ServiceFailureException>()(
+  "ServiceFailureException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ThrottledClientException extends S.TaggedErrorClass<ThrottledClientException>()(
+  "ThrottledClientException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedClientException extends S.TaggedErrorClass<UnauthorizedClientException>()(
+  "UnauthorizedClientException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
 export type NonEmptyResourceName = string | redacted.Redacted<string>;
 export type Metadata = string | redacted.Redacted<string>;
 export type ClientRequestToken = string;
 export type TagKey = string | redacted.Redacted<string>;
 export type TagValue = string | redacted.Redacted<string>;
-export type ChimeArn = string;
-export type ResourceName = string | redacted.Redacted<string>;
-export type LexBotAliasArn = string;
-export type LexIntentName = string;
-export type UserId = string | redacted.Redacted<string>;
-export type UserName = string | redacted.Redacted<string>;
-export type ExpirationDays = number;
-export type String64 = string;
-export type String1600 = string;
-export type SensitiveString1600 = string | redacted.Redacted<string>;
-export type NonEmptySensitiveString1600 = string | redacted.Redacted<string>;
-export type RetentionDays = number;
-export type MaxResults = number;
-export type NextToken = string | redacted.Redacted<string>;
-export type SensitiveChimeArn = string | redacted.Redacted<string>;
-
-//# Schemas
 export interface Tag {
   Key: string | redacted.Redacted<string>;
   Value: string | redacted.Redacted<string>;
@@ -144,6 +216,7 @@ export const CreateAppInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppInstanceRequest",
 }) as any as S.Schema<CreateAppInstanceRequest>;
+export type ChimeArn = string;
 export interface CreateAppInstanceResponse {
   AppInstanceArn?: string;
 }
@@ -152,24 +225,6 @@ export const CreateAppInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppInstanceResponse",
 }) as any as S.Schema<CreateAppInstanceResponse>;
-export type ErrorCode =
-  | "BadRequest"
-  | "Conflict"
-  | "Forbidden"
-  | "NotFound"
-  | "PreconditionFailed"
-  | "ResourceLimitExceeded"
-  | "ServiceFailure"
-  | "AccessDenied"
-  | "ServiceUnavailable"
-  | "Throttled"
-  | "Throttling"
-  | "Unauthorized"
-  | "Unprocessable"
-  | "VoiceConnectorGroupAssociationsExist"
-  | "PhoneNumberAssociationsExist"
-  | (string & {});
-export const ErrorCode = /*@__PURE__*/ S.String;
 export interface CreateAppInstanceAdminRequest {
   AppInstanceAdminArn: string;
   AppInstanceArn: string;
@@ -191,6 +246,7 @@ export const CreateAppInstanceAdminRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppInstanceAdminRequest",
 }) as any as S.Schema<CreateAppInstanceAdminRequest>;
+export type ResourceName = string | redacted.Redacted<string>;
 export interface Identity {
   Arn?: string;
   Name?: string | redacted.Redacted<string>;
@@ -212,6 +268,7 @@ export const CreateAppInstanceAdminResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAppInstanceAdminResponse>;
 export type RespondsTo = "STANDARD_MESSAGES" | (string & {});
 export const RespondsTo = /*@__PURE__*/ S.String;
+
 export type StandardMessages =
   | "AUTO"
   | "ALL"
@@ -219,8 +276,10 @@ export type StandardMessages =
   | "NONE"
   | (string & {});
 export const StandardMessages = /*@__PURE__*/ S.String;
+
 export type TargetedMessages = "ALL" | "NONE" | (string & {});
 export const TargetedMessages = /*@__PURE__*/ S.String;
+
 export interface InvokedBy {
   StandardMessages: StandardMessages;
   TargetedMessages: TargetedMessages;
@@ -231,6 +290,8 @@ export const InvokedBy = /*@__PURE__*/ S.suspend(() =>
     TargetedMessages: TargetedMessages,
   }),
 ).annotate({ identifier: "InvokedBy" }) as any as S.Schema<InvokedBy>;
+export type LexBotAliasArn = string;
+export type LexIntentName = string;
 export interface LexConfiguration {
   RespondsTo?: RespondsTo;
   InvokedBy?: InvokedBy;
@@ -292,8 +353,12 @@ export const CreateAppInstanceBotResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppInstanceBotResponse",
 }) as any as S.Schema<CreateAppInstanceBotResponse>;
+export type UserId = string | redacted.Redacted<string>;
+export type UserName = string | redacted.Redacted<string>;
+export type ExpirationDays = number;
 export type ExpirationCriterion = "CREATED_TIMESTAMP" | (string & {});
 export const ExpirationCriterion = /*@__PURE__*/ S.String;
+
 export interface ExpirationSettings {
   ExpirationDays: number;
   ExpirationCriterion: ExpirationCriterion;
@@ -456,6 +521,7 @@ export const DeleteAppInstanceUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteAppInstanceUserResponse",
 }) as any as S.Schema<DeleteAppInstanceUserResponse>;
+export type String64 = string;
 export interface DeregisterAppInstanceUserEndpointRequest {
   AppInstanceUserArn: string;
   EndpointId: string;
@@ -684,6 +750,7 @@ export const DescribeAppInstanceUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAppInstanceUserResponse",
 }) as any as S.Schema<DescribeAppInstanceUserResponse>;
+export type String1600 = string;
 export interface DescribeAppInstanceUserEndpointRequest {
   AppInstanceUserArn: string;
   EndpointId: string;
@@ -709,12 +776,15 @@ export const DescribeAppInstanceUserEndpointRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeAppInstanceUserEndpointRequest",
 }) as any as S.Schema<DescribeAppInstanceUserEndpointRequest>;
+export type SensitiveString1600 = string | redacted.Redacted<string>;
 export type AppInstanceUserEndpointType =
   | "APNS"
   | "APNS_SANDBOX"
   | "GCM"
   | (string & {});
 export const AppInstanceUserEndpointType = /*@__PURE__*/ S.String;
+
+export type NonEmptySensitiveString1600 = string | redacted.Redacted<string>;
 export interface EndpointAttributes {
   DeviceToken: string | redacted.Redacted<string>;
   VoipDeviceToken?: string | redacted.Redacted<string>;
@@ -729,13 +799,16 @@ export const EndpointAttributes = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EndpointAttributes>;
 export type AllowMessages = "ALL" | "NONE" | (string & {});
 export const AllowMessages = /*@__PURE__*/ S.String;
+
 export type EndpointStatus = "ACTIVE" | "INACTIVE" | (string & {});
 export const EndpointStatus = /*@__PURE__*/ S.String;
+
 export type EndpointStatusReason =
   | "INVALID_DEVICE_TOKEN"
   | "INVALID_PINPOINT_ARN"
   | (string & {});
 export const EndpointStatusReason = /*@__PURE__*/ S.String;
+
 export interface EndpointState {
   Status: EndpointStatus;
   StatusReason?: EndpointStatusReason;
@@ -810,6 +883,7 @@ export const GetAppInstanceRetentionSettingsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetAppInstanceRetentionSettingsRequest",
 }) as any as S.Schema<GetAppInstanceRetentionSettingsRequest>;
+export type RetentionDays = number;
 export interface ChannelRetentionSettings {
   RetentionDays?: number;
 }
@@ -841,6 +915,8 @@ export const GetAppInstanceRetentionSettingsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetAppInstanceRetentionSettingsResponse",
 }) as any as S.Schema<GetAppInstanceRetentionSettingsResponse>;
+export type MaxResults = number;
+export type NextToken = string | redacted.Redacted<string>;
 export interface ListAppInstanceAdminsRequest {
   AppInstanceArn: string;
   MaxResults?: number;
@@ -992,6 +1068,7 @@ export const ListAppInstancesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAppInstancesResponse",
 }) as any as S.Schema<ListAppInstancesResponse>;
+export type SensitiveChimeArn = string | redacted.Redacted<string>;
 export interface ListAppInstanceUserEndpointsRequest {
   AppInstanceUserArn: string | redacted.Redacted<string>;
   MaxResults?: number;
@@ -1454,55 +1531,25 @@ export const UpdateAppInstanceUserEndpointResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateAppInstanceUserEndpointResponse",
 }) as any as S.Schema<UpdateAppInstanceUserEndpointResponse>;
+export type ErrorCode =
+  | "BadRequest"
+  | "Conflict"
+  | "Forbidden"
+  | "NotFound"
+  | "PreconditionFailed"
+  | "ResourceLimitExceeded"
+  | "ServiceFailure"
+  | "AccessDenied"
+  | "ServiceUnavailable"
+  | "Throttled"
+  | "Throttling"
+  | "Unauthorized"
+  | "Unprocessable"
+  | "VoiceConnectorGroupAssociationsExist"
+  | "PhoneNumberAssociationsExist"
+  | (string & {});
+export const ErrorCode = /*@__PURE__*/ S.String;
 
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
-  "ResourceLimitExceededException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceFailureException extends S.TaggedErrorClass<ServiceFailureException>()(
-  "ServiceFailureException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ThrottledClientException extends S.TaggedErrorClass<ThrottledClientException>()(
-  "ThrottledClientException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedClientException extends S.TaggedErrorClass<UnauthorizedClientException>()(
-  "UnauthorizedClientException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateAppInstanceError =
   | BadRequestException
   | ConflictException
@@ -1542,6 +1589,7 @@ export const createAppInstance: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAppInstance",
 }));
+
 export type CreateAppInstanceAdminError =
   | BadRequestException
   | ConflictException
@@ -1587,6 +1635,7 @@ export const createAppInstanceAdmin: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAppInstanceAdmin",
 }));
+
 export type CreateAppInstanceBotError =
   | BadRequestException
   | ConflictException
@@ -1623,6 +1672,7 @@ export const createAppInstanceBot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAppInstanceBot",
 }));
+
 export type CreateAppInstanceUserError =
   | BadRequestException
   | ConflictException
@@ -1659,6 +1709,7 @@ export const createAppInstanceUser: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAppInstanceUser",
 }));
+
 export type DeleteAppInstanceError =
   | BadRequestException
   | ForbiddenException
@@ -1692,6 +1743,7 @@ export const deleteAppInstance: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAppInstance",
 }));
+
 export type DeleteAppInstanceAdminError =
   | BadRequestException
   | ConflictException
@@ -1729,6 +1781,7 @@ export const deleteAppInstanceAdmin: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAppInstanceAdmin",
 }));
+
 export type DeleteAppInstanceBotError =
   | BadRequestException
   | ConflictException
@@ -1764,6 +1817,7 @@ export const deleteAppInstanceBot: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAppInstanceBot",
 }));
+
 export type DeleteAppInstanceUserError =
   | BadRequestException
   | ConflictException
@@ -1799,6 +1853,7 @@ export const deleteAppInstanceUser: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAppInstanceUser",
 }));
+
 export type DeregisterAppInstanceUserEndpointError =
   | BadRequestException
   | ForbiddenException
@@ -1830,6 +1885,7 @@ export const deregisterAppInstanceUserEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterAppInstanceUserEndpoint",
 }));
+
 export type DescribeAppInstanceError =
   | BadRequestException
   | ForbiddenException
@@ -1861,6 +1917,7 @@ export const describeAppInstance: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAppInstance",
 }));
+
 export type DescribeAppInstanceAdminError =
   | BadRequestException
   | ForbiddenException
@@ -1892,6 +1949,7 @@ export const describeAppInstanceAdmin: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAppInstanceAdmin",
 }));
+
 export type DescribeAppInstanceBotError =
   | BadRequestException
   | ForbiddenException
@@ -1925,6 +1983,7 @@ export const describeAppInstanceBot: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAppInstanceBot",
 }));
+
 export type DescribeAppInstanceUserError =
   | BadRequestException
   | ForbiddenException
@@ -1956,6 +2015,7 @@ export const describeAppInstanceUser: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAppInstanceUser",
 }));
+
 export type DescribeAppInstanceUserEndpointError =
   | BadRequestException
   | ForbiddenException
@@ -1987,6 +2047,7 @@ export const describeAppInstanceUserEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAppInstanceUserEndpoint",
 }));
+
 export type GetAppInstanceRetentionSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -2018,6 +2079,7 @@ export const getAppInstanceRetentionSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetAppInstanceRetentionSettings",
 }));
+
 export type ListAppInstanceAdminsError =
   | BadRequestException
   | ForbiddenException
@@ -2071,6 +2133,7 @@ export const listAppInstanceAdmins: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAppInstanceBotsError =
   | BadRequestException
   | ForbiddenException
@@ -2124,6 +2187,7 @@ export const listAppInstanceBots: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAppInstancesError =
   | BadRequestException
   | ForbiddenException
@@ -2176,6 +2240,7 @@ export const listAppInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAppInstanceUserEndpointsError =
   | BadRequestException
   | ForbiddenException
@@ -2227,6 +2292,7 @@ export const listAppInstanceUserEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAppInstanceUsersError =
   | BadRequestException
   | ForbiddenException
@@ -2279,6 +2345,7 @@ export const listAppInstanceUsers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | ForbiddenException
@@ -2310,6 +2377,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutAppInstanceRetentionSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -2342,6 +2410,7 @@ export const putAppInstanceRetentionSettings: API.OperationMethod<
   retry: Retry,
   operationName: "PutAppInstanceRetentionSettings",
 }));
+
 export type PutAppInstanceUserExpirationSettingsError =
   | BadRequestException
   | ConflictException
@@ -2381,6 +2450,7 @@ export const putAppInstanceUserExpirationSettings: API.OperationMethod<
   retry: Retry,
   operationName: "PutAppInstanceUserExpirationSettings",
 }));
+
 export type RegisterAppInstanceUserEndpointError =
   | BadRequestException
   | ConflictException
@@ -2416,6 +2486,7 @@ export const registerAppInstanceUserEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterAppInstanceUserEndpoint",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | ForbiddenException
@@ -2449,6 +2520,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | ForbiddenException
@@ -2480,6 +2552,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAppInstanceError =
   | BadRequestException
   | ConflictException
@@ -2513,6 +2586,7 @@ export const updateAppInstance: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAppInstance",
 }));
+
 export type UpdateAppInstanceBotError =
   | BadRequestException
   | ConflictException
@@ -2548,6 +2622,7 @@ export const updateAppInstanceBot: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAppInstanceBot",
 }));
+
 export type UpdateAppInstanceUserError =
   | BadRequestException
   | ConflictException
@@ -2584,6 +2659,7 @@ export const updateAppInstanceUser: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAppInstanceUser",
 }));
+
 export type UpdateAppInstanceUserEndpointError =
   | BadRequestException
   | ConflictException

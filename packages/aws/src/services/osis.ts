@@ -86,28 +86,55 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class DisabledOperationException extends S.TaggedErrorClass<DisabledOperationException>()(
+  "DisabledOperationException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalException extends S.TaggedErrorClass<InternalException>()(
+  "InternalException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidPaginationTokenException extends S.TaggedErrorClass<InvalidPaginationTokenException>()(
+  "InvalidPaginationTokenException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type PipelineName = string;
 export type PipelineUnits = number;
 export type PipelineConfigurationBody = string;
 export type LogGroup = string;
-export type SubnetId = string;
-export type SecurityGroupId = string;
-export type CidrBlock = string;
-export type KmsKeyArn = string;
-export type TagKey = string;
-export type TagValue = string;
-export type PipelineRoleArn = string;
-export type ErrorMessage = string;
-export type PipelineArn = string;
-export type PipelineEndpointId = string;
-export type BlueprintFormat = string;
-export type ResourcePolicy = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type AwsAccountId = string;
-
-//# Schemas
 export interface CloudWatchLogDestination {
   LogGroup: string;
 }
@@ -128,10 +155,13 @@ export const LogPublishingOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LogPublishingOptions",
 }) as any as S.Schema<LogPublishingOptions>;
+export type SubnetId = string;
 export type SubnetIds = string[];
 export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export type CidrBlock = string;
 export interface VpcAttachmentOptions {
   AttachToVpc: boolean;
   CidrBlock?: string;
@@ -143,6 +173,7 @@ export const VpcAttachmentOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpcAttachmentOptions>;
 export type VpcEndpointManagement = "CUSTOMER" | "SERVICE" | (string & {});
 export const VpcEndpointManagement = /*@__PURE__*/ S.String;
+
 export interface VpcOptions {
   SubnetIds: string[];
   SecurityGroupIds?: string[];
@@ -163,6 +194,7 @@ export interface BufferOptions {
 export const BufferOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PersistentBufferEnabled: S.Boolean }),
 ).annotate({ identifier: "BufferOptions" }) as any as S.Schema<BufferOptions>;
+export type KmsKeyArn = string;
 export interface EncryptionAtRestOptions {
   KmsKeyArn: string;
 }
@@ -171,6 +203,8 @@ export const EncryptionAtRestOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptionAtRestOptions",
 }) as any as S.Schema<EncryptionAtRestOptions>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -180,6 +214,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
+export type PipelineRoleArn = string;
 export interface CreatePipelineRequest {
   PipelineName: string;
   MinUnits: number;
@@ -231,6 +266,7 @@ export type PipelineStatus =
   | "STOPPED"
   | (string & {});
 export const PipelineStatus = /*@__PURE__*/ S.String;
+
 export interface PipelineStatusReason {
   Description?: string;
 }
@@ -257,6 +293,7 @@ export type VpcEndpointsList = VpcEndpoint[];
 export const VpcEndpointsList = /*@__PURE__*/ S.Array(VpcEndpoint);
 export type VpcEndpointServiceName = "OPENSEARCH_SERVERLESS" | (string & {});
 export const VpcEndpointServiceName = /*@__PURE__*/ S.String;
+
 export interface ServiceVpcEndpoint {
   ServiceName?: VpcEndpointServiceName;
   VpcEndpointId?: string;
@@ -339,6 +376,7 @@ export const CreatePipelineResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePipelineResponse",
 }) as any as S.Schema<CreatePipelineResponse>;
+export type PipelineArn = string;
 export interface PipelineEndpointVpcOptions {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
@@ -376,6 +414,7 @@ export const CreatePipelineEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePipelineEndpointRequest",
 }) as any as S.Schema<CreatePipelineEndpointRequest>;
+export type PipelineEndpointId = string;
 export type PipelineEndpointStatus =
   | "CREATING"
   | "ACTIVE"
@@ -385,6 +424,7 @@ export type PipelineEndpointStatus =
   | "REVOKED"
   | (string & {});
 export const PipelineEndpointStatus = /*@__PURE__*/ S.String;
+
 export interface CreatePipelineEndpointResponse {
   PipelineArn?: string;
   EndpointId?: string;
@@ -511,6 +551,7 @@ export const GetPipelineResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPipelineResponse",
 }) as any as S.Schema<GetPipelineResponse>;
+export type BlueprintFormat = string;
 export interface GetPipelineBlueprintRequest {
   BlueprintName: string;
   Format?: string;
@@ -596,6 +637,7 @@ export type ChangeProgressStatuses =
   | "FAILED"
   | (string & {});
 export const ChangeProgressStatuses = /*@__PURE__*/ S.String;
+
 export type ChangeProgressStageStatuses =
   | "PENDING"
   | "IN_PROGRESS"
@@ -603,6 +645,7 @@ export type ChangeProgressStageStatuses =
   | "FAILED"
   | (string & {});
 export const ChangeProgressStageStatuses = /*@__PURE__*/ S.String;
+
 export interface ChangeProgressStage {
   Name?: string;
   Status?: ChangeProgressStageStatuses;
@@ -672,6 +715,7 @@ export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyRequest",
 }) as any as S.Schema<GetResourcePolicyRequest>;
+export type ResourcePolicy = string;
 export interface GetResourcePolicyResponse {
   ResourceArn?: string;
   Policy?: string;
@@ -733,6 +777,8 @@ export const ListPipelineBlueprintsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPipelineBlueprintsResponse",
 }) as any as S.Schema<ListPipelineBlueprintsResponse>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface ListPipelineEndpointConnectionsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -759,6 +805,7 @@ export const ListPipelineEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListPipelineEndpointConnectionsRequest",
 }) as any as S.Schema<ListPipelineEndpointConnectionsRequest>;
+export type AwsAccountId = string;
 export interface PipelineEndpointConnection {
   PipelineArn?: string;
   EndpointId?: string;
@@ -1214,55 +1261,7 @@ export const ValidatePipelineResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ValidatePipelineResponse",
 }) as any as S.Schema<ValidatePipelineResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class DisabledOperationException extends S.TaggedErrorClass<DisabledOperationException>()(
-  "DisabledOperationException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalException extends S.TaggedErrorClass<InternalException>()(
-  "InternalException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InvalidPaginationTokenException extends S.TaggedErrorClass<InvalidPaginationTokenException>()(
-  "InvalidPaginationTokenException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CreatePipelineError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1297,6 +1296,7 @@ export const createPipeline: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePipeline",
 }));
+
 export type CreatePipelineEndpointError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1329,6 +1329,7 @@ export const createPipelineEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePipelineEndpoint",
 }));
+
 export type DeletePipelineError =
   | AccessDeniedException
   | ConflictException
@@ -1361,6 +1362,7 @@ export const deletePipeline: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePipeline",
 }));
+
 export type DeletePipelineEndpointError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1388,6 +1390,7 @@ export const deletePipelineEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePipelineEndpoint",
 }));
+
 export type DeleteResourcePolicyError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1419,6 +1422,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type GetPipelineError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1448,6 +1452,7 @@ export const getPipeline: API.OperationMethod<
   retry: Retry,
   operationName: "GetPipeline",
 }));
+
 export type GetPipelineBlueprintError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1480,6 +1485,7 @@ export const getPipelineBlueprint: API.OperationMethod<
   retry: Retry,
   operationName: "GetPipelineBlueprint",
 }));
+
 export type GetPipelineChangeProgressError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1513,6 +1519,7 @@ export const getPipelineChangeProgress: API.OperationMethod<
   retry: Retry,
   operationName: "GetPipelineChangeProgress",
 }));
+
 export type GetResourcePolicyError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1544,6 +1551,7 @@ export const getResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type ListPipelineBlueprintsError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1575,6 +1583,7 @@ export const listPipelineBlueprints: API.OperationMethod<
   retry: Retry,
   operationName: "ListPipelineBlueprints",
 }));
+
 export type ListPipelineEndpointConnectionsError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1625,6 +1634,7 @@ export const listPipelineEndpointConnections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPipelineEndpointsError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1675,6 +1685,7 @@ export const listPipelineEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPipelinesError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1726,6 +1737,7 @@ export const listPipelines: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1756,6 +1768,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutResourcePolicyError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1788,6 +1801,7 @@ export const putResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type RevokePipelineEndpointConnectionsError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1817,6 +1831,7 @@ export const revokePipelineEndpointConnections: API.OperationMethod<
   retry: Retry,
   operationName: "RevokePipelineEndpointConnections",
 }));
+
 export type StartPipelineError =
   | AccessDeniedException
   | ConflictException
@@ -1848,6 +1863,7 @@ export const startPipeline: API.OperationMethod<
   retry: Retry,
   operationName: "StartPipeline",
 }));
+
 export type StopPipelineError =
   | AccessDeniedException
   | ConflictException
@@ -1880,6 +1896,7 @@ export const stopPipeline: API.OperationMethod<
   retry: Retry,
   operationName: "StopPipeline",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1912,6 +1929,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | DisabledOperationException
@@ -1942,6 +1960,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdatePipelineError =
   | AccessDeniedException
   | ConflictException
@@ -1974,6 +1993,7 @@ export const updatePipeline: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePipeline",
 }));
+
 export type ValidatePipelineError =
   | AccessDeniedException
   | DisabledOperationException

@@ -91,31 +91,1447 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ExceptionMessage = string;
-export type PartnerIntegrationAccountId = string;
-export type PartnerIntegrationClusterIdentifier = string;
-export type PartnerIntegrationDatabaseName = string;
-export type PartnerIntegrationPartnerName = string;
-export type AuthenticationProfileNameString = string;
-export type SensitiveString = string | redacted.Redacted<string>;
-export type CatalogNameString = string;
-export type CustomDomainNameString = string;
-export type CustomDomainCertificateArnString = string;
-export type SourceArn = string;
-export type TargetArn = string;
-export type IntegrationName = string;
-export type IntegrationDescription = string;
-export type IntegrationArn = string;
-export type Description = string;
-export type RedshiftIdcApplicationName = string;
-export type IdentityNamespaceString = string;
-export type IdcDisplayNameString = string;
-export type InboundIntegrationArn = string;
-export type S3KeyPrefixValue = string;
-export type PartnerIntegrationStatusMessage = string;
-
-//# Schemas
+export class AccessToClusterDeniedFault extends S.TaggedErrorClass<AccessToClusterDeniedFault>()(
+  "AccessToClusterDeniedFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AccessToClusterDenied", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AccessToSnapshotDeniedFault extends S.TaggedErrorClass<AccessToSnapshotDeniedFault>()(
+  "AccessToSnapshotDeniedFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AccessToSnapshotDenied", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AuthenticationProfileAlreadyExistsFault extends S.TaggedErrorClass<AuthenticationProfileAlreadyExistsFault>()(
+  "AuthenticationProfileAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "AuthenticationProfileAlreadyExistsFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class AuthenticationProfileNotFoundFault extends S.TaggedErrorClass<AuthenticationProfileNotFoundFault>()(
+  "AuthenticationProfileNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "AuthenticationProfileNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AuthenticationProfileQuotaExceededFault extends S.TaggedErrorClass<AuthenticationProfileQuotaExceededFault>()(
+  "AuthenticationProfileQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "AuthenticationProfileQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AuthorizationAlreadyExistsFault extends S.TaggedErrorClass<AuthorizationAlreadyExistsFault>()(
+  "AuthorizationAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "AuthorizationAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class AuthorizationNotFoundFault extends S.TaggedErrorClass<AuthorizationNotFoundFault>()(
+  "AuthorizationNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AuthorizationNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AuthorizationQuotaExceededFault extends S.TaggedErrorClass<AuthorizationQuotaExceededFault>()(
+  "AuthorizationQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "AuthorizationQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class BatchDeleteRequestSizeExceededFault extends S.TaggedErrorClass<BatchDeleteRequestSizeExceededFault>()(
+  "BatchDeleteRequestSizeExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "BatchDeleteRequestSizeExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class BatchModifyClusterSnapshotsLimitExceededFault extends S.TaggedErrorClass<BatchModifyClusterSnapshotsLimitExceededFault>()(
+  "BatchModifyClusterSnapshotsLimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "BatchModifyClusterSnapshotsLimitExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class BucketNotFoundFault extends S.TaggedErrorClass<BucketNotFoundFault>()(
+  "BucketNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "BucketNotFoundFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterAlreadyExistsFault extends S.TaggedErrorClass<ClusterAlreadyExistsFault>()(
+  "ClusterAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ClusterAlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ClusterNotFoundFault extends S.TaggedErrorClass<ClusterNotFoundFault>()(
+  "ClusterNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ClusterNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterOnLatestRevisionFault extends S.TaggedErrorClass<ClusterOnLatestRevisionFault>()(
+  "ClusterOnLatestRevisionFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ClusterOnLatestRevision", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterParameterGroupAlreadyExistsFault extends S.TaggedErrorClass<ClusterParameterGroupAlreadyExistsFault>()(
+  "ClusterParameterGroupAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterParameterGroupAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ClusterParameterGroupNotFoundFault extends S.TaggedErrorClass<ClusterParameterGroupNotFoundFault>()(
+  "ClusterParameterGroupNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterParameterGroupNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterParameterGroupQuotaExceededFault extends S.TaggedErrorClass<ClusterParameterGroupQuotaExceededFault>()(
+  "ClusterParameterGroupQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterParameterGroupQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterQuotaExceededFault extends S.TaggedErrorClass<ClusterQuotaExceededFault>()(
+  "ClusterQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ClusterQuotaExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterSecurityGroupAlreadyExistsFault extends S.TaggedErrorClass<ClusterSecurityGroupAlreadyExistsFault>()(
+  "ClusterSecurityGroupAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSecurityGroupAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ClusterSecurityGroupNotFoundFault extends S.TaggedErrorClass<ClusterSecurityGroupNotFoundFault>()(
+  "ClusterSecurityGroupNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSecurityGroupNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterSecurityGroupQuotaExceededFault extends S.TaggedErrorClass<ClusterSecurityGroupQuotaExceededFault>()(
+  "ClusterSecurityGroupQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "QuotaExceeded.ClusterSecurityGroup",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterSnapshotAlreadyExistsFault extends S.TaggedErrorClass<ClusterSnapshotAlreadyExistsFault>()(
+  "ClusterSnapshotAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSnapshotAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ClusterSnapshotNotFoundFault extends S.TaggedErrorClass<ClusterSnapshotNotFoundFault>()(
+  "ClusterSnapshotNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ClusterSnapshotNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterSnapshotQuotaExceededFault extends S.TaggedErrorClass<ClusterSnapshotQuotaExceededFault>()(
+  "ClusterSnapshotQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSnapshotQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterSubnetGroupAlreadyExistsFault extends S.TaggedErrorClass<ClusterSubnetGroupAlreadyExistsFault>()(
+  "ClusterSubnetGroupAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSubnetGroupAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ClusterSubnetGroupNotFoundFault extends S.TaggedErrorClass<ClusterSubnetGroupNotFoundFault>()(
+  "ClusterSubnetGroupNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSubnetGroupNotFoundFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterSubnetGroupQuotaExceededFault extends S.TaggedErrorClass<ClusterSubnetGroupQuotaExceededFault>()(
+  "ClusterSubnetGroupQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSubnetGroupQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ClusterSubnetQuotaExceededFault extends S.TaggedErrorClass<ClusterSubnetQuotaExceededFault>()(
+  "ClusterSubnetQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ClusterSubnetQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ConflictPolicyUpdateFault extends S.TaggedErrorClass<ConflictPolicyUpdateFault>()(
+  "ConflictPolicyUpdateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ConflictPolicyUpdateFault",
+      httpResponseCode: 409,
+    }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class CopyToRegionDisabledFault extends S.TaggedErrorClass<CopyToRegionDisabledFault>()(
+  "CopyToRegionDisabledFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CopyToRegionDisabledFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CustomCnameAssociationFault extends S.TaggedErrorClass<CustomCnameAssociationFault>()(
+  "CustomCnameAssociationFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CustomCnameAssociationFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CustomDomainAssociationNotFoundFault extends S.TaggedErrorClass<CustomDomainAssociationNotFoundFault>()(
+  "CustomDomainAssociationNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CustomDomainAssociationNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DependentServiceAccessDeniedFault extends S.TaggedErrorClass<DependentServiceAccessDeniedFault>()(
+  "DependentServiceAccessDeniedFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DependentServiceAccessDenied",
+      httpResponseCode: 403,
+    }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class DependentServiceRequestThrottlingFault extends S.TaggedErrorClass<DependentServiceRequestThrottlingFault>()(
+  "DependentServiceRequestThrottlingFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DependentServiceRequestThrottlingFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DependentServiceUnavailableFault extends S.TaggedErrorClass<DependentServiceUnavailableFault>()(
+  "DependentServiceUnavailableFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DependentServiceUnavailableFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withServerError) {}
+export class EndpointAlreadyExistsFault extends S.TaggedErrorClass<EndpointAlreadyExistsFault>()(
+  "EndpointAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "EndpointAlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class EndpointAuthorizationAlreadyExistsFault extends S.TaggedErrorClass<EndpointAuthorizationAlreadyExistsFault>()(
+  "EndpointAuthorizationAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EndpointAuthorizationAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class EndpointAuthorizationNotFoundFault extends S.TaggedErrorClass<EndpointAuthorizationNotFoundFault>()(
+  "EndpointAuthorizationNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EndpointAuthorizationNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EndpointAuthorizationsPerClusterLimitExceededFault extends S.TaggedErrorClass<EndpointAuthorizationsPerClusterLimitExceededFault>()(
+  "EndpointAuthorizationsPerClusterLimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EndpointAuthorizationsPerClusterLimitExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EndpointNotFoundFault extends S.TaggedErrorClass<EndpointNotFoundFault>()(
+  "EndpointNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "EndpointNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EndpointsPerAuthorizationLimitExceededFault extends S.TaggedErrorClass<EndpointsPerAuthorizationLimitExceededFault>()(
+  "EndpointsPerAuthorizationLimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EndpointsPerAuthorizationLimitExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EndpointsPerClusterLimitExceededFault extends S.TaggedErrorClass<EndpointsPerClusterLimitExceededFault>()(
+  "EndpointsPerClusterLimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EndpointsPerClusterLimitExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EventSubscriptionQuotaExceededFault extends S.TaggedErrorClass<EventSubscriptionQuotaExceededFault>()(
+  "EventSubscriptionQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EventSubscriptionQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class HsmClientCertificateAlreadyExistsFault extends S.TaggedErrorClass<HsmClientCertificateAlreadyExistsFault>()(
+  "HsmClientCertificateAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "HsmClientCertificateAlreadyExistsFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class HsmClientCertificateNotFoundFault extends S.TaggedErrorClass<HsmClientCertificateNotFoundFault>()(
+  "HsmClientCertificateNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "HsmClientCertificateNotFoundFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class HsmClientCertificateQuotaExceededFault extends S.TaggedErrorClass<HsmClientCertificateQuotaExceededFault>()(
+  "HsmClientCertificateQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "HsmClientCertificateQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class HsmConfigurationAlreadyExistsFault extends S.TaggedErrorClass<HsmConfigurationAlreadyExistsFault>()(
+  "HsmConfigurationAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "HsmConfigurationAlreadyExistsFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class HsmConfigurationNotFoundFault extends S.TaggedErrorClass<HsmConfigurationNotFoundFault>()(
+  "HsmConfigurationNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "HsmConfigurationNotFoundFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class HsmConfigurationQuotaExceededFault extends S.TaggedErrorClass<HsmConfigurationQuotaExceededFault>()(
+  "HsmConfigurationQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "HsmConfigurationQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IncompatibleOrderableOptions extends S.TaggedErrorClass<IncompatibleOrderableOptions>()(
+  "IncompatibleOrderableOptions",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IncompatibleOrderableOptions",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InProgressTableRestoreQuotaExceededFault extends S.TaggedErrorClass<InProgressTableRestoreQuotaExceededFault>()(
+  "InProgressTableRestoreQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InProgressTableRestoreQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InsufficientClusterCapacityFault extends S.TaggedErrorClass<InsufficientClusterCapacityFault>()(
+  "InsufficientClusterCapacityFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientClusterCapacity",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InsufficientS3BucketPolicyFault extends S.TaggedErrorClass<InsufficientS3BucketPolicyFault>()(
+  "InsufficientS3BucketPolicyFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientS3BucketPolicyFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IntegrationAlreadyExistsFault extends S.TaggedErrorClass<IntegrationAlreadyExistsFault>()(
+  "IntegrationAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IntegrationAlreadyExistsFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class IntegrationConflictOperationFault extends S.TaggedErrorClass<IntegrationConflictOperationFault>()(
+  "IntegrationConflictOperationFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IntegrationConflictOperationFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IntegrationConflictStateFault extends S.TaggedErrorClass<IntegrationConflictStateFault>()(
+  "IntegrationConflictStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IntegrationConflictStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IntegrationNotFoundFault extends S.TaggedErrorClass<IntegrationNotFoundFault>()(
+  "IntegrationNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IntegrationNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IntegrationQuotaExceededFault extends S.TaggedErrorClass<IntegrationQuotaExceededFault>()(
+  "IntegrationQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IntegrationQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IntegrationSourceNotFoundFault extends S.TaggedErrorClass<IntegrationSourceNotFoundFault>()(
+  "IntegrationSourceNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IntegrationSourceNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IntegrationTargetNotFoundFault extends S.TaggedErrorClass<IntegrationTargetNotFoundFault>()(
+  "IntegrationTargetNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IntegrationTargetNotFoundFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidAuthenticationProfileRequestFault extends S.TaggedErrorClass<InvalidAuthenticationProfileRequestFault>()(
+  "InvalidAuthenticationProfileRequestFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidAuthenticationProfileRequestFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidAuthorizationStateFault extends S.TaggedErrorClass<InvalidAuthorizationStateFault>()(
+  "InvalidAuthorizationStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidAuthorizationState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterParameterGroupStateFault extends S.TaggedErrorClass<InvalidClusterParameterGroupStateFault>()(
+  "InvalidClusterParameterGroupStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidClusterParameterGroupState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterSecurityGroupStateFault extends S.TaggedErrorClass<InvalidClusterSecurityGroupStateFault>()(
+  "InvalidClusterSecurityGroupStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidClusterSecurityGroupState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterSnapshotScheduleStateFault extends S.TaggedErrorClass<InvalidClusterSnapshotScheduleStateFault>()(
+  "InvalidClusterSnapshotScheduleStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidClusterSnapshotScheduleState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterSnapshotStateFault extends S.TaggedErrorClass<InvalidClusterSnapshotStateFault>()(
+  "InvalidClusterSnapshotStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidClusterSnapshotState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterStateFault extends S.TaggedErrorClass<InvalidClusterStateFault>()(
+  "InvalidClusterStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidClusterState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterSubnetGroupStateFault extends S.TaggedErrorClass<InvalidClusterSubnetGroupStateFault>()(
+  "InvalidClusterSubnetGroupStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidClusterSubnetGroupStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterSubnetStateFault extends S.TaggedErrorClass<InvalidClusterSubnetStateFault>()(
+  "InvalidClusterSubnetStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidClusterSubnetStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClusterTrackFault extends S.TaggedErrorClass<InvalidClusterTrackFault>()(
+  "InvalidClusterTrackFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidClusterTrack", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidDataShareFault extends S.TaggedErrorClass<InvalidDataShareFault>()(
+  "InvalidDataShareFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidDataShareFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidElasticIpFault extends S.TaggedErrorClass<InvalidElasticIpFault>()(
+  "InvalidElasticIpFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidElasticIpFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidEndpointStateFault extends S.TaggedErrorClass<InvalidEndpointStateFault>()(
+  "InvalidEndpointStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidEndpointState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidHsmClientCertificateStateFault extends S.TaggedErrorClass<InvalidHsmClientCertificateStateFault>()(
+  "InvalidHsmClientCertificateStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidHsmClientCertificateStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidHsmConfigurationStateFault extends S.TaggedErrorClass<InvalidHsmConfigurationStateFault>()(
+  "InvalidHsmConfigurationStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidHsmConfigurationStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidNamespaceFault extends S.TaggedErrorClass<InvalidNamespaceFault>()(
+  "InvalidNamespaceFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidNamespaceFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidPolicyFault extends S.TaggedErrorClass<InvalidPolicyFault>()(
+  "InvalidPolicyFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidPolicyFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidReservedNodeStateFault extends S.TaggedErrorClass<InvalidReservedNodeStateFault>()(
+  "InvalidReservedNodeStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidReservedNodeState",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidRestoreFault extends S.TaggedErrorClass<InvalidRestoreFault>()(
+  "InvalidRestoreFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidRestore", httpResponseCode: 406 }),
+    T.HttpError(406),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidRetentionPeriodFault extends S.TaggedErrorClass<InvalidRetentionPeriodFault>()(
+  "InvalidRetentionPeriodFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidRetentionPeriodFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidS3BucketNameFault extends S.TaggedErrorClass<InvalidS3BucketNameFault>()(
+  "InvalidS3BucketNameFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidS3BucketNameFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidS3KeyPrefixFault extends S.TaggedErrorClass<InvalidS3KeyPrefixFault>()(
+  "InvalidS3KeyPrefixFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidS3KeyPrefixFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidScheduledActionFault extends S.TaggedErrorClass<InvalidScheduledActionFault>()(
+  "InvalidScheduledActionFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidScheduledAction", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidScheduleFault extends S.TaggedErrorClass<InvalidScheduleFault>()(
+  "InvalidScheduleFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidSchedule", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSnapshotCopyGrantStateFault extends S.TaggedErrorClass<InvalidSnapshotCopyGrantStateFault>()(
+  "InvalidSnapshotCopyGrantStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidSnapshotCopyGrantStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
+  "InvalidSubnet",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSubscriptionStateFault extends S.TaggedErrorClass<InvalidSubscriptionStateFault>()(
+  "InvalidSubscriptionStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidSubscriptionStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidTableRestoreArgumentFault extends S.TaggedErrorClass<InvalidTableRestoreArgumentFault>()(
+  "InvalidTableRestoreArgumentFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidTableRestoreArgument",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidTagFault extends S.TaggedErrorClass<InvalidTagFault>()(
+  "InvalidTagFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidTagFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidUsageLimitFault extends S.TaggedErrorClass<InvalidUsageLimitFault>()(
+  "InvalidUsageLimitFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidUsageLimit", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidVPCNetworkStateFault extends S.TaggedErrorClass<InvalidVPCNetworkStateFault>()(
+  "InvalidVPCNetworkStateFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidVPCNetworkStateFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class Ipv6CidrBlockNotFoundFault extends S.TaggedErrorClass<Ipv6CidrBlockNotFoundFault>()(
+  "Ipv6CidrBlockNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "Ipv6CidrBlockNotFoundFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededFault extends S.TaggedErrorClass<LimitExceededFault>()(
+  "LimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "LimitExceededFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class NumberOfNodesPerClusterLimitExceededFault extends S.TaggedErrorClass<NumberOfNodesPerClusterLimitExceededFault>()(
+  "NumberOfNodesPerClusterLimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "NumberOfNodesPerClusterLimitExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class NumberOfNodesQuotaExceededFault extends S.TaggedErrorClass<NumberOfNodesQuotaExceededFault>()(
+  "NumberOfNodesQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "NumberOfNodesQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class PartnerNotFoundFault extends S.TaggedErrorClass<PartnerNotFoundFault>()(
+  "PartnerNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "PartnerNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class RedshiftIdcApplicationAlreadyExistsFault extends S.TaggedErrorClass<RedshiftIdcApplicationAlreadyExistsFault>()(
+  "RedshiftIdcApplicationAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "RedshiftIdcApplicationAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class RedshiftIdcApplicationNotExistsFault extends S.TaggedErrorClass<RedshiftIdcApplicationNotExistsFault>()(
+  "RedshiftIdcApplicationNotExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "RedshiftIdcApplicationNotExists",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class RedshiftIdcApplicationQuotaExceededFault extends S.TaggedErrorClass<RedshiftIdcApplicationQuotaExceededFault>()(
+  "RedshiftIdcApplicationQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "RedshiftIdcApplicationQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class RedshiftInvalidParameterFault extends S.TaggedErrorClass<RedshiftInvalidParameterFault>()(
+  "RedshiftInvalidParameterFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "RedshiftInvalidParameter",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ReservedNodeAlreadyExistsFault extends S.TaggedErrorClass<ReservedNodeAlreadyExistsFault>()(
+  "ReservedNodeAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ReservedNodeAlreadyExists",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ReservedNodeAlreadyMigratedFault extends S.TaggedErrorClass<ReservedNodeAlreadyMigratedFault>()(
+  "ReservedNodeAlreadyMigratedFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ReservedNodeAlreadyMigrated",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ReservedNodeExchangeNotFoundFault extends S.TaggedErrorClass<ReservedNodeExchangeNotFoundFault>()(
+  "ReservedNodeExchangeNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ReservedNodeExchangeNotFond",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ReservedNodeNotFoundFault extends S.TaggedErrorClass<ReservedNodeNotFoundFault>()(
+  "ReservedNodeNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ReservedNodeNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ReservedNodeOfferingNotFoundFault extends S.TaggedErrorClass<ReservedNodeOfferingNotFoundFault>()(
+  "ReservedNodeOfferingNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ReservedNodeOfferingNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ReservedNodeQuotaExceededFault extends S.TaggedErrorClass<ReservedNodeQuotaExceededFault>()(
+  "ReservedNodeQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ReservedNodeQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResizeNotFoundFault extends S.TaggedErrorClass<ResizeNotFoundFault>()(
+  "ResizeNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResizeNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundFault extends S.TaggedErrorClass<ResourceNotFoundFault>()(
+  "ResourceNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceNotFoundFault", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ScheduledActionAlreadyExistsFault extends S.TaggedErrorClass<ScheduledActionAlreadyExistsFault>()(
+  "ScheduledActionAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ScheduledActionAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ScheduledActionNotFoundFault extends S.TaggedErrorClass<ScheduledActionNotFoundFault>()(
+  "ScheduledActionNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ScheduledActionNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ScheduledActionQuotaExceededFault extends S.TaggedErrorClass<ScheduledActionQuotaExceededFault>()(
+  "ScheduledActionQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ScheduledActionQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ScheduledActionTypeUnsupportedFault extends S.TaggedErrorClass<ScheduledActionTypeUnsupportedFault>()(
+  "ScheduledActionTypeUnsupportedFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ScheduledActionTypeUnsupported",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ScheduleDefinitionTypeUnsupportedFault extends S.TaggedErrorClass<ScheduleDefinitionTypeUnsupportedFault>()(
+  "ScheduleDefinitionTypeUnsupportedFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ScheduleDefinitionTypeUnsupported",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotCopyAlreadyDisabledFault extends S.TaggedErrorClass<SnapshotCopyAlreadyDisabledFault>()(
+  "SnapshotCopyAlreadyDisabledFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotCopyAlreadyDisabledFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotCopyAlreadyEnabledFault extends S.TaggedErrorClass<SnapshotCopyAlreadyEnabledFault>()(
+  "SnapshotCopyAlreadyEnabledFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotCopyAlreadyEnabledFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotCopyDisabledFault extends S.TaggedErrorClass<SnapshotCopyDisabledFault>()(
+  "SnapshotCopyDisabledFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotCopyDisabledFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotCopyGrantAlreadyExistsFault extends S.TaggedErrorClass<SnapshotCopyGrantAlreadyExistsFault>()(
+  "SnapshotCopyGrantAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotCopyGrantAlreadyExistsFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class SnapshotCopyGrantNotFoundFault extends S.TaggedErrorClass<SnapshotCopyGrantNotFoundFault>()(
+  "SnapshotCopyGrantNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotCopyGrantNotFoundFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotCopyGrantQuotaExceededFault extends S.TaggedErrorClass<SnapshotCopyGrantQuotaExceededFault>()(
+  "SnapshotCopyGrantQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotCopyGrantQuotaExceededFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotScheduleAlreadyExistsFault extends S.TaggedErrorClass<SnapshotScheduleAlreadyExistsFault>()(
+  "SnapshotScheduleAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotScheduleAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class SnapshotScheduleNotFoundFault extends S.TaggedErrorClass<SnapshotScheduleNotFoundFault>()(
+  "SnapshotScheduleNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotScheduleNotFound",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotScheduleQuotaExceededFault extends S.TaggedErrorClass<SnapshotScheduleQuotaExceededFault>()(
+  "SnapshotScheduleQuotaExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotScheduleQuotaExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SnapshotScheduleUpdateInProgressFault extends S.TaggedErrorClass<SnapshotScheduleUpdateInProgressFault>()(
+  "SnapshotScheduleUpdateInProgressFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SnapshotScheduleUpdateInProgress",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SNSInvalidTopicFault extends S.TaggedErrorClass<SNSInvalidTopicFault>()(
+  "SNSInvalidTopicFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SNSInvalidTopic", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SNSNoAuthorizationFault extends S.TaggedErrorClass<SNSNoAuthorizationFault>()(
+  "SNSNoAuthorizationFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SNSNoAuthorization", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SNSTopicArnNotFoundFault extends S.TaggedErrorClass<SNSTopicArnNotFoundFault>()(
+  "SNSTopicArnNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SNSTopicArnNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SourceNotFoundFault extends S.TaggedErrorClass<SourceNotFoundFault>()(
+  "SourceNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SourceNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubnetAlreadyInUse extends S.TaggedErrorClass<SubnetAlreadyInUse>()(
+  "SubnetAlreadyInUse",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SubnetAlreadyInUse", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
+export class SubscriptionAlreadyExistFault extends S.TaggedErrorClass<SubscriptionAlreadyExistFault>()(
+  "SubscriptionAlreadyExistFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SubscriptionAlreadyExist",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubscriptionCategoryNotFoundFault extends S.TaggedErrorClass<SubscriptionCategoryNotFoundFault>()(
+  "SubscriptionCategoryNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SubscriptionCategoryNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubscriptionEventIdNotFoundFault extends S.TaggedErrorClass<SubscriptionEventIdNotFoundFault>()(
+  "SubscriptionEventIdNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SubscriptionEventIdNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubscriptionNotFoundFault extends S.TaggedErrorClass<SubscriptionNotFoundFault>()(
+  "SubscriptionNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SubscriptionNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubscriptionSeverityNotFoundFault extends S.TaggedErrorClass<SubscriptionSeverityNotFoundFault>()(
+  "SubscriptionSeverityNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SubscriptionSeverityNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TableLimitExceededFault extends S.TaggedErrorClass<TableLimitExceededFault>()(
+  "TableLimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TableLimitExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TableRestoreNotFoundFault extends S.TaggedErrorClass<TableRestoreNotFoundFault>()(
+  "TableRestoreNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TableRestoreNotFoundFault",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TagLimitExceededFault extends S.TaggedErrorClass<TagLimitExceededFault>()(
+  "TagLimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TagLimitExceededFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class UnauthorizedOperation extends S.TaggedErrorClass<UnauthorizedOperation>()(
+  "UnauthorizedOperation",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "UnauthorizedOperation", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAuthError) {}
+export class UnauthorizedPartnerIntegrationFault extends S.TaggedErrorClass<UnauthorizedPartnerIntegrationFault>()(
+  "UnauthorizedPartnerIntegrationFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "UnauthorizedPartnerIntegration",
+      httpResponseCode: 401,
+    }),
+    T.HttpError(401),
+  ),
+).pipe(C.withAuthError) {}
+export class UnknownSnapshotCopyRegionFault extends S.TaggedErrorClass<UnknownSnapshotCopyRegionFault>()(
+  "UnknownSnapshotCopyRegionFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "UnknownSnapshotCopyRegionFault",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedOperationFault extends S.TaggedErrorClass<UnsupportedOperationFault>()(
+  "UnsupportedOperationFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "UnsupportedOperation", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedOptionFault extends S.TaggedErrorClass<UnsupportedOptionFault>()(
+  "UnsupportedOptionFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "UnsupportedOptionFault", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class UsageLimitAlreadyExistsFault extends S.TaggedErrorClass<UsageLimitAlreadyExistsFault>()(
+  "UsageLimitAlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "UsageLimitAlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class UsageLimitNotFoundFault extends S.TaggedErrorClass<UsageLimitNotFoundFault>()(
+  "UsageLimitNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "UsageLimitNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
 export interface AcceptReservedNodeExchangeInputMessage {
   ReservedNodeId?: string;
   TargetReservedNodeOfferingId?: string;
@@ -159,6 +1575,7 @@ export const RecurringChargeList = /*@__PURE__*/ S.Array(
 );
 export type ReservedNodeOfferingType = "Regular" | "Upgradable" | (string & {});
 export const ReservedNodeOfferingType = /*@__PURE__*/ S.String;
+
 export interface ReservedNode {
   ReservedNodeId?: string;
   ReservedNodeOfferingId?: string;
@@ -201,6 +1618,10 @@ export const AcceptReservedNodeExchangeOutputMessage = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AcceptReservedNodeExchangeOutputMessage",
 }) as any as S.Schema<AcceptReservedNodeExchangeOutputMessage>;
+export type PartnerIntegrationAccountId = string;
+export type PartnerIntegrationClusterIdentifier = string;
+export type PartnerIntegrationDatabaseName = string;
+export type PartnerIntegrationPartnerName = string;
 export interface PartnerIntegrationInputMessage {
   AccountId?: string;
   ClusterIdentifier?: string;
@@ -276,6 +1697,7 @@ export type DataShareStatus =
   | "AVAILABLE"
   | (string & {});
 export const DataShareStatus = /*@__PURE__*/ S.String;
+
 export interface DataShareAssociation {
   ConsumerIdentifier?: string;
   Status?: DataShareStatus;
@@ -307,6 +1729,7 @@ export const DataShareAssociationList =
   /*@__PURE__*/ S.Array(DataShareAssociation);
 export type DataShareType = "INTERNAL" | (string & {});
 export const DataShareType = /*@__PURE__*/ S.String;
+
 export interface DataShare {
   DataShareArn?: string;
   ProducerArn?: string;
@@ -484,6 +1907,7 @@ export const AuthorizeEndpointAccessMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthorizeEndpointAccessMessage>;
 export type AuthorizationStatus = "Authorized" | "Revoking" | (string & {});
 export const AuthorizationStatus = /*@__PURE__*/ S.String;
+
 export interface EndpointAuthorization {
   Grantor?: string;
   Grantee?: string;
@@ -879,6 +2303,7 @@ export const CopyClusterSnapshotResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyClusterSnapshotResult",
 }) as any as S.Schema<CopyClusterSnapshotResult>;
+export type AuthenticationProfileNameString = string;
 export interface CreateAuthenticationProfileMessage {
   AuthenticationProfileName?: string;
   AuthenticationProfileContent?: string;
@@ -913,6 +2338,7 @@ export const CreateAuthenticationProfileResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAuthenticationProfileResult",
 }) as any as S.Schema<CreateAuthenticationProfileResult>;
+export type SensitiveString = string | redacted.Redacted<string>;
 export type ClusterSecurityGroupNameList = string[];
 export const ClusterSecurityGroupNameList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ClusterSecurityGroupName")),
@@ -931,6 +2357,8 @@ export type AquaConfigurationStatus =
   | "auto"
   | (string & {});
 export const AquaConfigurationStatus = /*@__PURE__*/ S.String;
+
+export type CatalogNameString = string;
 export interface CreateClusterMessage {
   DBName?: string;
   ClusterIdentifier?: string;
@@ -1323,6 +2751,7 @@ export const DeferredMaintenanceWindowsList = /*@__PURE__*/ S.Array(
 );
 export type ScheduleState = "MODIFYING" | "ACTIVE" | "FAILED" | (string & {});
 export const ScheduleState = /*@__PURE__*/ S.String;
+
 export interface ResizeInfo {
   ResizeType?: string;
   AllowCancelResize?: boolean;
@@ -1335,6 +2764,7 @@ export const ResizeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResizeInfo" }) as any as S.Schema<ResizeInfo>;
 export type AquaStatus = "enabled" | "disabled" | "applying" | (string & {});
 export const AquaStatus = /*@__PURE__*/ S.String;
+
 export interface AquaConfiguration {
   AquaStatus?: AquaStatus;
   AquaConfigurationStatus?: AquaConfigurationStatus;
@@ -1356,6 +2786,7 @@ export type ReservedNodeExchangeStatusType =
   | "FAILED"
   | (string & {});
 export const ReservedNodeExchangeStatusType = /*@__PURE__*/ S.String;
+
 export interface ReservedNodeExchangeStatus {
   ReservedNodeExchangeRequestId?: string;
   Status?: ReservedNodeExchangeStatusType;
@@ -1768,6 +3199,8 @@ export const CreateClusterSubnetGroupResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateClusterSubnetGroupResult",
 }) as any as S.Schema<CreateClusterSubnetGroupResult>;
+export type CustomDomainNameString = string;
+export type CustomDomainCertificateArnString = string;
 export interface CreateCustomDomainAssociationMessage {
   CustomDomainName?: string;
   CustomDomainCertificateArn?: string;
@@ -2049,11 +3482,15 @@ export const CreateHsmConfigurationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHsmConfigurationResult",
 }) as any as S.Schema<CreateHsmConfigurationResult>;
+export type SourceArn = string;
+export type TargetArn = string;
+export type IntegrationName = string;
 export type EncryptionContextMap = { [key: string]: string | undefined };
 export const EncryptionContextMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type IntegrationDescription = string;
 export interface CreateIntegrationMessage {
   SourceArn?: string;
   TargetArn?: string;
@@ -2086,6 +3523,7 @@ export const CreateIntegrationMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIntegrationMessage",
 }) as any as S.Schema<CreateIntegrationMessage>;
+export type IntegrationArn = string;
 export type ZeroETLIntegrationStatus =
   | "creating"
   | "active"
@@ -2096,6 +3534,7 @@ export type ZeroETLIntegrationStatus =
   | "needs_attention"
   | (string & {});
 export const ZeroETLIntegrationStatus = /*@__PURE__*/ S.String;
+
 export interface IntegrationError {
   ErrorCode?: string;
   ErrorMessage?: string;
@@ -2114,6 +3553,7 @@ export const IntegrationErrorList = /*@__PURE__*/ S.Array(
     identifier: "IntegrationError",
   }),
 );
+export type Description = string;
 export interface Integration {
   IntegrationArn?: string;
   IntegrationName?: string;
@@ -2144,6 +3584,9 @@ export const Integration = /*@__PURE__*/ S.suspend(() =>
     Tags: S.optional(TagList),
   }).pipe(ns),
 ).annotate({ identifier: "Integration" }) as any as S.Schema<Integration>;
+export type RedshiftIdcApplicationName = string;
+export type IdentityNamespaceString = string;
+export type IdcDisplayNameString = string;
 export type AuthorizedAudienceList = string[];
 export const AuthorizedAudienceList = /*@__PURE__*/ S.Array(S.String);
 export interface AuthorizedTokenIssuer {
@@ -2164,6 +3607,7 @@ export const AuthorizedTokenIssuerList = /*@__PURE__*/ S.Array(
 );
 export type ServiceAuthorization = "Enabled" | "Disabled" | (string & {});
 export const ServiceAuthorization = /*@__PURE__*/ S.String;
+
 export interface LakeFormationQuery {
   Authorization?: ServiceAuthorization;
 }
@@ -2238,6 +3682,7 @@ export const ServiceIntegrationList = /*@__PURE__*/ S.Array(
 );
 export type ApplicationType = "None" | "Lakehouse" | (string & {});
 export const ApplicationType = /*@__PURE__*/ S.String;
+
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("TagKey")),
@@ -2444,6 +3889,7 @@ export const CreateScheduledActionMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateScheduledActionMessage>;
 export type ScheduledActionState = "ACTIVE" | "DISABLED" | (string & {});
 export const ScheduledActionState = /*@__PURE__*/ S.String;
+
 export type ScheduledActionTimeList = Date[];
 export const ScheduledActionTimeList = /*@__PURE__*/ S.Array(
   T.DateFromString.pipe(T.TimestampFormat("date-time")).pipe(
@@ -2643,16 +4089,20 @@ export type UsageLimitFeatureType =
   | "extra-compute-for-automatic-optimization"
   | (string & {});
 export const UsageLimitFeatureType = /*@__PURE__*/ S.String;
+
 export type UsageLimitLimitType = "time" | "data-scanned" | (string & {});
 export const UsageLimitLimitType = /*@__PURE__*/ S.String;
+
 export type UsageLimitPeriod = "daily" | "weekly" | "monthly" | (string & {});
 export const UsageLimitPeriod = /*@__PURE__*/ S.String;
+
 export type UsageLimitBreachAction =
   | "log"
   | "emit-metric"
   | "disable"
   | (string & {});
 export const UsageLimitBreachAction = /*@__PURE__*/ S.String;
+
 export interface CreateUsageLimitMessage {
   ClusterIdentifier?: string;
   FeatureType?: UsageLimitFeatureType;
@@ -3240,6 +4690,7 @@ export type NamespaceRegistrationStatus =
   | "Deregistering"
   | (string & {});
 export const NamespaceRegistrationStatus = /*@__PURE__*/ S.String;
+
 export interface DeregisterNamespaceOutputMessage {
   Status?: NamespaceRegistrationStatus;
 }
@@ -3515,6 +4966,7 @@ export const DescribeClusterParametersMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeClusterParametersMessage>;
 export type ParameterApplyType = "static" | "dynamic" | (string & {});
 export const ParameterApplyType = /*@__PURE__*/ S.String;
+
 export interface Parameter {
   ParameterName?: string;
   ParameterValue?: string;
@@ -3652,8 +5104,10 @@ export type SnapshotAttributeToSortBy =
   | "CREATE_TIME"
   | (string & {});
 export const SnapshotAttributeToSortBy = /*@__PURE__*/ S.String;
+
 export type SortByOrder = "ASC" | "DESC" | (string & {});
 export const SortByOrder = /*@__PURE__*/ S.String;
+
 export interface SnapshotSortingEntity {
   Attribute?: SnapshotAttributeToSortBy;
   SortOrder?: SortByOrder;
@@ -4041,6 +5495,7 @@ export const DescribeDataSharesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeDataSharesResult>;
 export type DataShareStatusForConsumer = "ACTIVE" | "AVAILABLE" | (string & {});
 export const DataShareStatusForConsumer = /*@__PURE__*/ S.String;
+
 export interface DescribeDataSharesForConsumerMessage {
   ConsumerArn?: string;
   Status?: DataShareStatusForConsumer;
@@ -4088,6 +5543,7 @@ export type DataShareStatusForProducer =
   | "REJECTED"
   | (string & {});
 export const DataShareStatusForProducer = /*@__PURE__*/ S.String;
+
 export interface DescribeDataSharesForProducerMessage {
   ProducerArn?: string;
   Status?: DataShareStatusForProducer;
@@ -4340,6 +5796,7 @@ export type SourceType =
   | "scheduled-action"
   | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
+
 export interface DescribeEventsMessage {
   SourceIdentifier?: string;
   SourceType?: SourceType;
@@ -4547,6 +6004,7 @@ export const HsmConfigurationMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HsmConfigurationMessage",
 }) as any as S.Schema<HsmConfigurationMessage>;
+export type InboundIntegrationArn = string;
 export interface DescribeInboundIntegrationsMessage {
   IntegrationArn?: string;
   TargetArn?: string;
@@ -4622,6 +6080,7 @@ export type DescribeIntegrationsFilterName =
   | "status"
   | (string & {});
 export const DescribeIntegrationsFilterName = /*@__PURE__*/ S.String;
+
 export type DescribeIntegrationsFilterValueList = string[];
 export const DescribeIntegrationsFilterValueList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("Value")),
@@ -4708,8 +6167,10 @@ export const DescribeLoggingStatusMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLoggingStatusMessage",
 }) as any as S.Schema<DescribeLoggingStatusMessage>;
+export type S3KeyPrefixValue = string;
 export type LogDestinationType = "s3" | "cloudwatch" | (string & {});
 export const LogDestinationType = /*@__PURE__*/ S.String;
+
 export type LogTypeList = string[];
 export const LogTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface LoggingStatus {
@@ -4744,6 +6205,7 @@ export type ActionType =
   | "resize-cluster"
   | (string & {});
 export const ActionType = /*@__PURE__*/ S.String;
+
 export type NodeConfigurationOptionsFilterName =
   | "NodeType"
   | "NumberOfNodes"
@@ -4751,6 +6213,7 @@ export type NodeConfigurationOptionsFilterName =
   | "Mode"
   | (string & {});
 export const NodeConfigurationOptionsFilterName = /*@__PURE__*/ S.String;
+
 export type OperatorType =
   | "eq"
   | "lt"
@@ -4761,6 +6224,7 @@ export type OperatorType =
   | "between"
   | (string & {});
 export const OperatorType = /*@__PURE__*/ S.String;
+
 export interface NodeConfigurationOptionsFilter {
   Name?: NodeConfigurationOptionsFilterName;
   Operator?: OperatorType;
@@ -4821,6 +6285,7 @@ export const DescribeNodeConfigurationOptionsMessage = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeNodeConfigurationOptionsMessage>;
 export type Mode = "standard" | "high-performance" | (string & {});
 export const Mode = /*@__PURE__*/ S.String;
+
 export interface NodeConfigurationOption {
   NodeType?: string;
   NumberOfNodes?: number;
@@ -4955,6 +6420,8 @@ export type PartnerIntegrationStatus =
   | "ConnectionFailure"
   | (string & {});
 export const PartnerIntegrationStatus = /*@__PURE__*/ S.String;
+
+export type PartnerIntegrationStatusMessage = string;
 export interface PartnerIntegrationInfo {
   DatabaseName?: string;
   PartnerName?: string;
@@ -5220,11 +6687,13 @@ export type ScheduledActionTypeValues =
   | "ResumeCluster"
   | (string & {});
 export const ScheduledActionTypeValues = /*@__PURE__*/ S.String;
+
 export type ScheduledActionFilterName =
   | "cluster-identifier"
   | "iam-role"
   | (string & {});
 export const ScheduledActionFilterName = /*@__PURE__*/ S.String;
+
 export interface ScheduledActionFilter {
   Name?: ScheduledActionFilterName;
   Values?: string[];
@@ -5460,6 +6929,7 @@ export type TableRestoreStatusType =
   | "CANCELED"
   | (string & {});
 export const TableRestoreStatusType = /*@__PURE__*/ S.String;
+
 export interface TableRestoreStatus {
   TableRestoreRequestId?: string;
   Status?: TableRestoreStatusType;
@@ -5920,6 +7390,7 @@ export type ReservedNodeExchangeActionType =
   | "resize-cluster"
   | (string & {});
 export const ReservedNodeExchangeActionType = /*@__PURE__*/ S.String;
+
 export interface GetReservedNodeExchangeConfigurationOptionsInputMessage {
   ActionType?: ReservedNodeExchangeActionType;
   ClusterIdentifier?: string;
@@ -6084,8 +7555,10 @@ export const ListRecommendationsMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRecommendationsMessage>;
 export type ImpactRankingType = "HIGH" | "MEDIUM" | "LOW" | (string & {});
 export const ImpactRankingType = /*@__PURE__*/ S.String;
+
 export type RecommendedActionType = "SQL" | "CLI" | (string & {});
 export const RecommendedActionType = /*@__PURE__*/ S.String;
+
 export interface RecommendedAction {
   Text?: string;
   Database?: string;
@@ -6685,11 +8158,13 @@ export const ModifyIntegrationMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModifyIntegrationMessage>;
 export type LakehouseRegistration = "Register" | "Deregister" | (string & {});
 export const LakehouseRegistration = /*@__PURE__*/ S.String;
+
 export type LakehouseIdcRegistration =
   | "Associate"
   | "Disassociate"
   | (string & {});
 export const LakehouseIdcRegistration = /*@__PURE__*/ S.String;
+
 export interface ModifyLakehouseConfigurationMessage {
   ClusterIdentifier?: string;
   LakehouseRegistration?: LakehouseRegistration;
@@ -7377,1451 +8852,7 @@ export const UpdatePartnerStatusInputMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdatePartnerStatusInputMessage",
 }) as any as S.Schema<UpdatePartnerStatusInputMessage>;
-
-//# Errors
-export class DependentServiceUnavailableFault extends S.TaggedErrorClass<DependentServiceUnavailableFault>()(
-  "DependentServiceUnavailableFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DependentServiceUnavailableFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withServerError) {}
-export class InvalidReservedNodeStateFault extends S.TaggedErrorClass<InvalidReservedNodeStateFault>()(
-  "InvalidReservedNodeStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidReservedNodeState",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ReservedNodeAlreadyExistsFault extends S.TaggedErrorClass<ReservedNodeAlreadyExistsFault>()(
-  "ReservedNodeAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ReservedNodeAlreadyExists",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ReservedNodeAlreadyMigratedFault extends S.TaggedErrorClass<ReservedNodeAlreadyMigratedFault>()(
-  "ReservedNodeAlreadyMigratedFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ReservedNodeAlreadyMigrated",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ReservedNodeNotFoundFault extends S.TaggedErrorClass<ReservedNodeNotFoundFault>()(
-  "ReservedNodeNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ReservedNodeNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ReservedNodeOfferingNotFoundFault extends S.TaggedErrorClass<ReservedNodeOfferingNotFoundFault>()(
-  "ReservedNodeOfferingNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ReservedNodeOfferingNotFound",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedOperationFault extends S.TaggedErrorClass<UnsupportedOperationFault>()(
-  "UnsupportedOperationFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "UnsupportedOperation", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ClusterNotFoundFault extends S.TaggedErrorClass<ClusterNotFoundFault>()(
-  "ClusterNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ClusterNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class PartnerNotFoundFault extends S.TaggedErrorClass<PartnerNotFoundFault>()(
-  "PartnerNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "PartnerNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class UnauthorizedPartnerIntegrationFault extends S.TaggedErrorClass<UnauthorizedPartnerIntegrationFault>()(
-  "UnauthorizedPartnerIntegrationFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "UnauthorizedPartnerIntegration",
-      httpResponseCode: 401,
-    }),
-    T.HttpError(401),
-  ),
-).pipe(C.withAuthError) {}
-export class InvalidDataShareFault extends S.TaggedErrorClass<InvalidDataShareFault>()(
-  "InvalidDataShareFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidDataShareFault", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidNamespaceFault extends S.TaggedErrorClass<InvalidNamespaceFault>()(
-  "InvalidNamespaceFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidNamespaceFault", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class AuthorizationAlreadyExistsFault extends S.TaggedErrorClass<AuthorizationAlreadyExistsFault>()(
-  "AuthorizationAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "AuthorizationAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class AuthorizationQuotaExceededFault extends S.TaggedErrorClass<AuthorizationQuotaExceededFault>()(
-  "AuthorizationQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "AuthorizationQuotaExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ClusterSecurityGroupNotFoundFault extends S.TaggedErrorClass<ClusterSecurityGroupNotFoundFault>()(
-  "ClusterSecurityGroupNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ClusterSecurityGroupNotFound",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterSecurityGroupStateFault extends S.TaggedErrorClass<InvalidClusterSecurityGroupStateFault>()(
-  "InvalidClusterSecurityGroupStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidClusterSecurityGroupState",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class EndpointAuthorizationAlreadyExistsFault extends S.TaggedErrorClass<EndpointAuthorizationAlreadyExistsFault>()(
-  "EndpointAuthorizationAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "EndpointAuthorizationAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class EndpointAuthorizationsPerClusterLimitExceededFault extends S.TaggedErrorClass<EndpointAuthorizationsPerClusterLimitExceededFault>()(
-  "EndpointAuthorizationsPerClusterLimitExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "EndpointAuthorizationsPerClusterLimitExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidAuthorizationStateFault extends S.TaggedErrorClass<InvalidAuthorizationStateFault>()(
-  "InvalidAuthorizationStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidAuthorizationState",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterStateFault extends S.TaggedErrorClass<InvalidClusterStateFault>()(
-  "InvalidClusterStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidClusterState", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ClusterSnapshotNotFoundFault extends S.TaggedErrorClass<ClusterSnapshotNotFoundFault>()(
-  "ClusterSnapshotNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ClusterSnapshotNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DependentServiceRequestThrottlingFault extends S.TaggedErrorClass<DependentServiceRequestThrottlingFault>()(
-  "DependentServiceRequestThrottlingFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DependentServiceRequestThrottlingFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterSnapshotStateFault extends S.TaggedErrorClass<InvalidClusterSnapshotStateFault>()(
-  "InvalidClusterSnapshotStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidClusterSnapshotState",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededFault extends S.TaggedErrorClass<LimitExceededFault>()(
-  "LimitExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "LimitExceededFault", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class BatchDeleteRequestSizeExceededFault extends S.TaggedErrorClass<BatchDeleteRequestSizeExceededFault>()(
-  "BatchDeleteRequestSizeExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "BatchDeleteRequestSizeExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class BatchModifyClusterSnapshotsLimitExceededFault extends S.TaggedErrorClass<BatchModifyClusterSnapshotsLimitExceededFault>()(
-  "BatchModifyClusterSnapshotsLimitExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "BatchModifyClusterSnapshotsLimitExceededFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidRetentionPeriodFault extends S.TaggedErrorClass<InvalidRetentionPeriodFault>()(
-  "InvalidRetentionPeriodFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidRetentionPeriodFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResizeNotFoundFault extends S.TaggedErrorClass<ResizeNotFoundFault>()(
-  "ResizeNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResizeNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ClusterSnapshotAlreadyExistsFault extends S.TaggedErrorClass<ClusterSnapshotAlreadyExistsFault>()(
-  "ClusterSnapshotAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ClusterSnapshotAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ClusterSnapshotQuotaExceededFault extends S.TaggedErrorClass<ClusterSnapshotQuotaExceededFault>()(
-  "ClusterSnapshotQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ClusterSnapshotQuotaExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class AuthenticationProfileAlreadyExistsFault extends S.TaggedErrorClass<AuthenticationProfileAlreadyExistsFault>()(
-  "AuthenticationProfileAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "AuthenticationProfileAlreadyExistsFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class AuthenticationProfileQuotaExceededFault extends S.TaggedErrorClass<AuthenticationProfileQuotaExceededFault>()(
-  "AuthenticationProfileQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "AuthenticationProfileQuotaExceededFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidAuthenticationProfileRequestFault extends S.TaggedErrorClass<InvalidAuthenticationProfileRequestFault>()(
-  "InvalidAuthenticationProfileRequestFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidAuthenticationProfileRequestFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ClusterAlreadyExistsFault extends S.TaggedErrorClass<ClusterAlreadyExistsFault>()(
-  "ClusterAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ClusterAlreadyExists", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ClusterParameterGroupNotFoundFault extends S.TaggedErrorClass<ClusterParameterGroupNotFoundFault>()(
-  "ClusterParameterGroupNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ClusterParameterGroupNotFound",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ClusterQuotaExceededFault extends S.TaggedErrorClass<ClusterQuotaExceededFault>()(
-  "ClusterQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ClusterQuotaExceeded", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ClusterSubnetGroupNotFoundFault extends S.TaggedErrorClass<ClusterSubnetGroupNotFoundFault>()(
-  "ClusterSubnetGroupNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ClusterSubnetGroupNotFoundFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DependentServiceAccessDeniedFault extends S.TaggedErrorClass<DependentServiceAccessDeniedFault>()(
-  "DependentServiceAccessDeniedFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DependentServiceAccessDenied",
-      httpResponseCode: 403,
-    }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class HsmClientCertificateNotFoundFault extends S.TaggedErrorClass<HsmClientCertificateNotFoundFault>()(
-  "HsmClientCertificateNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "HsmClientCertificateNotFoundFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class HsmConfigurationNotFoundFault extends S.TaggedErrorClass<HsmConfigurationNotFoundFault>()(
-  "HsmConfigurationNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "HsmConfigurationNotFoundFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InsufficientClusterCapacityFault extends S.TaggedErrorClass<InsufficientClusterCapacityFault>()(
-  "InsufficientClusterCapacityFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InsufficientClusterCapacity",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterSubnetGroupStateFault extends S.TaggedErrorClass<InvalidClusterSubnetGroupStateFault>()(
-  "InvalidClusterSubnetGroupStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidClusterSubnetGroupStateFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterTrackFault extends S.TaggedErrorClass<InvalidClusterTrackFault>()(
-  "InvalidClusterTrackFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidClusterTrack", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidElasticIpFault extends S.TaggedErrorClass<InvalidElasticIpFault>()(
-  "InvalidElasticIpFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidElasticIpFault", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
-  "InvalidSubnet",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidTagFault extends S.TaggedErrorClass<InvalidTagFault>()(
-  "InvalidTagFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidTagFault", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidVPCNetworkStateFault extends S.TaggedErrorClass<InvalidVPCNetworkStateFault>()(
-  "InvalidVPCNetworkStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidVPCNetworkStateFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class Ipv6CidrBlockNotFoundFault extends S.TaggedErrorClass<Ipv6CidrBlockNotFoundFault>()(
-  "Ipv6CidrBlockNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "Ipv6CidrBlockNotFoundFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class NumberOfNodesPerClusterLimitExceededFault extends S.TaggedErrorClass<NumberOfNodesPerClusterLimitExceededFault>()(
-  "NumberOfNodesPerClusterLimitExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "NumberOfNodesPerClusterLimitExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class NumberOfNodesQuotaExceededFault extends S.TaggedErrorClass<NumberOfNodesQuotaExceededFault>()(
-  "NumberOfNodesQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "NumberOfNodesQuotaExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class RedshiftIdcApplicationNotExistsFault extends S.TaggedErrorClass<RedshiftIdcApplicationNotExistsFault>()(
-  "RedshiftIdcApplicationNotExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "RedshiftIdcApplicationNotExists",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SnapshotScheduleNotFoundFault extends S.TaggedErrorClass<SnapshotScheduleNotFoundFault>()(
-  "SnapshotScheduleNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SnapshotScheduleNotFound",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TagLimitExceededFault extends S.TaggedErrorClass<TagLimitExceededFault>()(
-  "TagLimitExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TagLimitExceededFault", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class UnauthorizedOperation extends S.TaggedErrorClass<UnauthorizedOperation>()(
-  "UnauthorizedOperation",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "UnauthorizedOperation", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAuthError) {}
-export class ClusterParameterGroupAlreadyExistsFault extends S.TaggedErrorClass<ClusterParameterGroupAlreadyExistsFault>()(
-  "ClusterParameterGroupAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ClusterParameterGroupAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ClusterParameterGroupQuotaExceededFault extends S.TaggedErrorClass<ClusterParameterGroupQuotaExceededFault>()(
-  "ClusterParameterGroupQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ClusterParameterGroupQuotaExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ClusterSecurityGroupAlreadyExistsFault extends S.TaggedErrorClass<ClusterSecurityGroupAlreadyExistsFault>()(
-  "ClusterSecurityGroupAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ClusterSecurityGroupAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ClusterSecurityGroupQuotaExceededFault extends S.TaggedErrorClass<ClusterSecurityGroupQuotaExceededFault>()(
-  "ClusterSecurityGroupQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "QuotaExceeded.ClusterSecurityGroup",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ClusterSubnetGroupAlreadyExistsFault extends S.TaggedErrorClass<ClusterSubnetGroupAlreadyExistsFault>()(
-  "ClusterSubnetGroupAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ClusterSubnetGroupAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ClusterSubnetGroupQuotaExceededFault extends S.TaggedErrorClass<ClusterSubnetGroupQuotaExceededFault>()(
-  "ClusterSubnetGroupQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ClusterSubnetGroupQuotaExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ClusterSubnetQuotaExceededFault extends S.TaggedErrorClass<ClusterSubnetQuotaExceededFault>()(
-  "ClusterSubnetQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ClusterSubnetQuotaExceededFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CustomCnameAssociationFault extends S.TaggedErrorClass<CustomCnameAssociationFault>()(
-  "CustomCnameAssociationFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "CustomCnameAssociationFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class AccessToClusterDeniedFault extends S.TaggedErrorClass<AccessToClusterDeniedFault>()(
-  "AccessToClusterDeniedFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AccessToClusterDenied", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class EndpointAlreadyExistsFault extends S.TaggedErrorClass<EndpointAlreadyExistsFault>()(
-  "EndpointAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "EndpointAlreadyExists", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class EndpointsPerAuthorizationLimitExceededFault extends S.TaggedErrorClass<EndpointsPerAuthorizationLimitExceededFault>()(
-  "EndpointsPerAuthorizationLimitExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "EndpointsPerAuthorizationLimitExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class EndpointsPerClusterLimitExceededFault extends S.TaggedErrorClass<EndpointsPerClusterLimitExceededFault>()(
-  "EndpointsPerClusterLimitExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "EndpointsPerClusterLimitExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class EventSubscriptionQuotaExceededFault extends S.TaggedErrorClass<EventSubscriptionQuotaExceededFault>()(
-  "EventSubscriptionQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "EventSubscriptionQuotaExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SNSInvalidTopicFault extends S.TaggedErrorClass<SNSInvalidTopicFault>()(
-  "SNSInvalidTopicFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SNSInvalidTopic", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SNSNoAuthorizationFault extends S.TaggedErrorClass<SNSNoAuthorizationFault>()(
-  "SNSNoAuthorizationFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SNSNoAuthorization", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SNSTopicArnNotFoundFault extends S.TaggedErrorClass<SNSTopicArnNotFoundFault>()(
-  "SNSTopicArnNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SNSTopicArnNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SourceNotFoundFault extends S.TaggedErrorClass<SourceNotFoundFault>()(
-  "SourceNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SourceNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SubscriptionAlreadyExistFault extends S.TaggedErrorClass<SubscriptionAlreadyExistFault>()(
-  "SubscriptionAlreadyExistFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SubscriptionAlreadyExist",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SubscriptionCategoryNotFoundFault extends S.TaggedErrorClass<SubscriptionCategoryNotFoundFault>()(
-  "SubscriptionCategoryNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SubscriptionCategoryNotFound",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SubscriptionEventIdNotFoundFault extends S.TaggedErrorClass<SubscriptionEventIdNotFoundFault>()(
-  "SubscriptionEventIdNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SubscriptionEventIdNotFound",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SubscriptionSeverityNotFoundFault extends S.TaggedErrorClass<SubscriptionSeverityNotFoundFault>()(
-  "SubscriptionSeverityNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SubscriptionSeverityNotFound",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class HsmClientCertificateAlreadyExistsFault extends S.TaggedErrorClass<HsmClientCertificateAlreadyExistsFault>()(
-  "HsmClientCertificateAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "HsmClientCertificateAlreadyExistsFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class HsmClientCertificateQuotaExceededFault extends S.TaggedErrorClass<HsmClientCertificateQuotaExceededFault>()(
-  "HsmClientCertificateQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "HsmClientCertificateQuotaExceededFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class HsmConfigurationAlreadyExistsFault extends S.TaggedErrorClass<HsmConfigurationAlreadyExistsFault>()(
-  "HsmConfigurationAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "HsmConfigurationAlreadyExistsFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class HsmConfigurationQuotaExceededFault extends S.TaggedErrorClass<HsmConfigurationQuotaExceededFault>()(
-  "HsmConfigurationQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "HsmConfigurationQuotaExceededFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class IntegrationAlreadyExistsFault extends S.TaggedErrorClass<IntegrationAlreadyExistsFault>()(
-  "IntegrationAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "IntegrationAlreadyExistsFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class IntegrationConflictOperationFault extends S.TaggedErrorClass<IntegrationConflictOperationFault>()(
-  "IntegrationConflictOperationFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "IntegrationConflictOperationFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class IntegrationQuotaExceededFault extends S.TaggedErrorClass<IntegrationQuotaExceededFault>()(
-  "IntegrationQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "IntegrationQuotaExceededFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class IntegrationSourceNotFoundFault extends S.TaggedErrorClass<IntegrationSourceNotFoundFault>()(
-  "IntegrationSourceNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "IntegrationSourceNotFoundFault",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class IntegrationTargetNotFoundFault extends S.TaggedErrorClass<IntegrationTargetNotFoundFault>()(
-  "IntegrationTargetNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "IntegrationTargetNotFoundFault",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class RedshiftIdcApplicationAlreadyExistsFault extends S.TaggedErrorClass<RedshiftIdcApplicationAlreadyExistsFault>()(
-  "RedshiftIdcApplicationAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "RedshiftIdcApplicationAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class RedshiftIdcApplicationQuotaExceededFault extends S.TaggedErrorClass<RedshiftIdcApplicationQuotaExceededFault>()(
-  "RedshiftIdcApplicationQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "RedshiftIdcApplicationQuotaExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidScheduledActionFault extends S.TaggedErrorClass<InvalidScheduledActionFault>()(
-  "InvalidScheduledActionFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidScheduledAction", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidScheduleFault extends S.TaggedErrorClass<InvalidScheduleFault>()(
-  "InvalidScheduleFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidSchedule", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ScheduledActionAlreadyExistsFault extends S.TaggedErrorClass<ScheduledActionAlreadyExistsFault>()(
-  "ScheduledActionAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ScheduledActionAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ScheduledActionQuotaExceededFault extends S.TaggedErrorClass<ScheduledActionQuotaExceededFault>()(
-  "ScheduledActionQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ScheduledActionQuotaExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ScheduledActionTypeUnsupportedFault extends S.TaggedErrorClass<ScheduledActionTypeUnsupportedFault>()(
-  "ScheduledActionTypeUnsupportedFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ScheduledActionTypeUnsupported",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SnapshotCopyGrantAlreadyExistsFault extends S.TaggedErrorClass<SnapshotCopyGrantAlreadyExistsFault>()(
-  "SnapshotCopyGrantAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SnapshotCopyGrantAlreadyExistsFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class SnapshotCopyGrantQuotaExceededFault extends S.TaggedErrorClass<SnapshotCopyGrantQuotaExceededFault>()(
-  "SnapshotCopyGrantQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SnapshotCopyGrantQuotaExceededFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ScheduleDefinitionTypeUnsupportedFault extends S.TaggedErrorClass<ScheduleDefinitionTypeUnsupportedFault>()(
-  "ScheduleDefinitionTypeUnsupportedFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ScheduleDefinitionTypeUnsupported",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SnapshotScheduleAlreadyExistsFault extends S.TaggedErrorClass<SnapshotScheduleAlreadyExistsFault>()(
-  "SnapshotScheduleAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SnapshotScheduleAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class SnapshotScheduleQuotaExceededFault extends S.TaggedErrorClass<SnapshotScheduleQuotaExceededFault>()(
-  "SnapshotScheduleQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SnapshotScheduleQuotaExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundFault extends S.TaggedErrorClass<ResourceNotFoundFault>()(
-  "ResourceNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceNotFoundFault", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidUsageLimitFault extends S.TaggedErrorClass<InvalidUsageLimitFault>()(
-  "InvalidUsageLimitFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidUsageLimit", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class UsageLimitAlreadyExistsFault extends S.TaggedErrorClass<UsageLimitAlreadyExistsFault>()(
-  "UsageLimitAlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "UsageLimitAlreadyExists", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class AuthenticationProfileNotFoundFault extends S.TaggedErrorClass<AuthenticationProfileNotFoundFault>()(
-  "AuthenticationProfileNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "AuthenticationProfileNotFoundFault",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterParameterGroupStateFault extends S.TaggedErrorClass<InvalidClusterParameterGroupStateFault>()(
-  "InvalidClusterParameterGroupStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidClusterParameterGroupState",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterSubnetStateFault extends S.TaggedErrorClass<InvalidClusterSubnetStateFault>()(
-  "InvalidClusterSubnetStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidClusterSubnetStateFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CustomDomainAssociationNotFoundFault extends S.TaggedErrorClass<CustomDomainAssociationNotFoundFault>()(
-  "CustomDomainAssociationNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "CustomDomainAssociationNotFoundFault",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class EndpointNotFoundFault extends S.TaggedErrorClass<EndpointNotFoundFault>()(
-  "EndpointNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "EndpointNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidEndpointStateFault extends S.TaggedErrorClass<InvalidEndpointStateFault>()(
-  "InvalidEndpointStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidEndpointState", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidSubscriptionStateFault extends S.TaggedErrorClass<InvalidSubscriptionStateFault>()(
-  "InvalidSubscriptionStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidSubscriptionStateFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SubscriptionNotFoundFault extends S.TaggedErrorClass<SubscriptionNotFoundFault>()(
-  "SubscriptionNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SubscriptionNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidHsmClientCertificateStateFault extends S.TaggedErrorClass<InvalidHsmClientCertificateStateFault>()(
-  "InvalidHsmClientCertificateStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidHsmClientCertificateStateFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidHsmConfigurationStateFault extends S.TaggedErrorClass<InvalidHsmConfigurationStateFault>()(
-  "InvalidHsmConfigurationStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidHsmConfigurationStateFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class IntegrationConflictStateFault extends S.TaggedErrorClass<IntegrationConflictStateFault>()(
-  "IntegrationConflictStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "IntegrationConflictStateFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class IntegrationNotFoundFault extends S.TaggedErrorClass<IntegrationNotFoundFault>()(
-  "IntegrationNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "IntegrationNotFoundFault",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ScheduledActionNotFoundFault extends S.TaggedErrorClass<ScheduledActionNotFoundFault>()(
-  "ScheduledActionNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ScheduledActionNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidSnapshotCopyGrantStateFault extends S.TaggedErrorClass<InvalidSnapshotCopyGrantStateFault>()(
-  "InvalidSnapshotCopyGrantStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidSnapshotCopyGrantStateFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SnapshotCopyGrantNotFoundFault extends S.TaggedErrorClass<SnapshotCopyGrantNotFoundFault>()(
-  "SnapshotCopyGrantNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SnapshotCopyGrantNotFoundFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidClusterSnapshotScheduleStateFault extends S.TaggedErrorClass<InvalidClusterSnapshotScheduleStateFault>()(
-  "InvalidClusterSnapshotScheduleStateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidClusterSnapshotScheduleState",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class UsageLimitNotFoundFault extends S.TaggedErrorClass<UsageLimitNotFoundFault>()(
-  "UsageLimitNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "UsageLimitNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class AccessToSnapshotDeniedFault extends S.TaggedErrorClass<AccessToSnapshotDeniedFault>()(
-  "AccessToSnapshotDeniedFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AccessToSnapshotDenied", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ReservedNodeExchangeNotFoundFault extends S.TaggedErrorClass<ReservedNodeExchangeNotFoundFault>()(
-  "ReservedNodeExchangeNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ReservedNodeExchangeNotFond",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TableRestoreNotFoundFault extends S.TaggedErrorClass<TableRestoreNotFoundFault>()(
-  "TableRestoreNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TableRestoreNotFoundFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SnapshotCopyAlreadyDisabledFault extends S.TaggedErrorClass<SnapshotCopyAlreadyDisabledFault>()(
-  "SnapshotCopyAlreadyDisabledFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SnapshotCopyAlreadyDisabledFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class BucketNotFoundFault extends S.TaggedErrorClass<BucketNotFoundFault>()(
-  "BucketNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "BucketNotFoundFault", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InsufficientS3BucketPolicyFault extends S.TaggedErrorClass<InsufficientS3BucketPolicyFault>()(
-  "InsufficientS3BucketPolicyFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InsufficientS3BucketPolicyFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidS3BucketNameFault extends S.TaggedErrorClass<InvalidS3BucketNameFault>()(
-  "InvalidS3BucketNameFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidS3BucketNameFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidS3KeyPrefixFault extends S.TaggedErrorClass<InvalidS3KeyPrefixFault>()(
-  "InvalidS3KeyPrefixFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidS3KeyPrefixFault", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CopyToRegionDisabledFault extends S.TaggedErrorClass<CopyToRegionDisabledFault>()(
-  "CopyToRegionDisabledFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "CopyToRegionDisabledFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class IncompatibleOrderableOptions extends S.TaggedErrorClass<IncompatibleOrderableOptions>()(
-  "IncompatibleOrderableOptions",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "IncompatibleOrderableOptions",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SnapshotCopyAlreadyEnabledFault extends S.TaggedErrorClass<SnapshotCopyAlreadyEnabledFault>()(
-  "SnapshotCopyAlreadyEnabledFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SnapshotCopyAlreadyEnabledFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class UnknownSnapshotCopyRegionFault extends S.TaggedErrorClass<UnknownSnapshotCopyRegionFault>()(
-  "UnknownSnapshotCopyRegionFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "UnknownSnapshotCopyRegionFault",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class RedshiftInvalidParameterFault extends S.TaggedErrorClass<RedshiftInvalidParameterFault>()(
-  "RedshiftInvalidParameterFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "RedshiftInvalidParameter",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidPolicyFault extends S.TaggedErrorClass<InvalidPolicyFault>()(
-  "InvalidPolicyFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidPolicyFault", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TableLimitExceededFault extends S.TaggedErrorClass<TableLimitExceededFault>()(
-  "TableLimitExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TableLimitExceeded", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedOptionFault extends S.TaggedErrorClass<UnsupportedOptionFault>()(
-  "UnsupportedOptionFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "UnsupportedOptionFault", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ClusterOnLatestRevisionFault extends S.TaggedErrorClass<ClusterOnLatestRevisionFault>()(
-  "ClusterOnLatestRevisionFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ClusterOnLatestRevision", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SubnetAlreadyInUse extends S.TaggedErrorClass<SubnetAlreadyInUse>()(
-  "SubnetAlreadyInUse",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SubnetAlreadyInUse", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
-export class SnapshotCopyDisabledFault extends S.TaggedErrorClass<SnapshotCopyDisabledFault>()(
-  "SnapshotCopyDisabledFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SnapshotCopyDisabledFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SnapshotScheduleUpdateInProgressFault extends S.TaggedErrorClass<SnapshotScheduleUpdateInProgressFault>()(
-  "SnapshotScheduleUpdateInProgressFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SnapshotScheduleUpdateInProgress",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ReservedNodeQuotaExceededFault extends S.TaggedErrorClass<ReservedNodeQuotaExceededFault>()(
-  "ReservedNodeQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ReservedNodeQuotaExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ConflictPolicyUpdateFault extends S.TaggedErrorClass<ConflictPolicyUpdateFault>()(
-  "ConflictPolicyUpdateFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ConflictPolicyUpdateFault",
-      httpResponseCode: 409,
-    }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class InvalidRestoreFault extends S.TaggedErrorClass<InvalidRestoreFault>()(
-  "InvalidRestoreFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidRestore", httpResponseCode: 406 }),
-    T.HttpError(406),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InProgressTableRestoreQuotaExceededFault extends S.TaggedErrorClass<InProgressTableRestoreQuotaExceededFault>()(
-  "InProgressTableRestoreQuotaExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InProgressTableRestoreQuotaExceededFault",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidTableRestoreArgumentFault extends S.TaggedErrorClass<InvalidTableRestoreArgumentFault>()(
-  "InvalidTableRestoreArgumentFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidTableRestoreArgument",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class AuthorizationNotFoundFault extends S.TaggedErrorClass<AuthorizationNotFoundFault>()(
-  "AuthorizationNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AuthorizationNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class EndpointAuthorizationNotFoundFault extends S.TaggedErrorClass<EndpointAuthorizationNotFoundFault>()(
-  "EndpointAuthorizationNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "EndpointAuthorizationNotFound",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type AcceptReservedNodeExchangeError =
   | DependentServiceUnavailableFault
   | InvalidReservedNodeStateFault
@@ -8856,6 +8887,7 @@ export const acceptReservedNodeExchange: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptReservedNodeExchange",
 }));
+
 export type AddPartnerError =
   | ClusterNotFoundFault
   | PartnerNotFoundFault
@@ -8885,6 +8917,7 @@ export const addPartner: API.OperationMethod<
   retry: Retry,
   operationName: "AddPartner",
 }));
+
 export type AssociateDataShareConsumerError =
   | InvalidDataShareFault
   | InvalidNamespaceFault
@@ -8907,6 +8940,7 @@ export const associateDataShareConsumer: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateDataShareConsumer",
 }));
+
 export type AuthorizeClusterSecurityGroupIngressError =
   | AuthorizationAlreadyExistsFault
   | AuthorizationQuotaExceededFault
@@ -8952,6 +8986,7 @@ export const authorizeClusterSecurityGroupIngress: API.OperationMethod<
   retry: Retry,
   operationName: "AuthorizeClusterSecurityGroupIngress",
 }));
+
 export type AuthorizeDataShareError = InvalidDataShareFault | CommonErrors;
 /**
  * From a data producer account, authorizes the sharing of a datashare with one or more
@@ -8971,6 +9006,7 @@ export const authorizeDataShare: API.OperationMethod<
   retry: Retry,
   operationName: "AuthorizeDataShare",
 }));
+
 export type AuthorizeEndpointAccessError =
   | ClusterNotFoundFault
   | EndpointAuthorizationAlreadyExistsFault
@@ -9002,6 +9038,7 @@ export const authorizeEndpointAccess: API.OperationMethod<
   retry: Retry,
   operationName: "AuthorizeEndpointAccess",
 }));
+
 export type AuthorizeSnapshotAccessError =
   | AuthorizationAlreadyExistsFault
   | AuthorizationQuotaExceededFault
@@ -9040,6 +9077,7 @@ export const authorizeSnapshotAccess: API.OperationMethod<
   retry: Retry,
   operationName: "AuthorizeSnapshotAccess",
 }));
+
 export type BatchDeleteClusterSnapshotsError =
   | BatchDeleteRequestSizeExceededFault
   | CommonErrors;
@@ -9059,6 +9097,7 @@ export const batchDeleteClusterSnapshots: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteClusterSnapshots",
 }));
+
 export type BatchModifyClusterSnapshotsError =
   | BatchModifyClusterSnapshotsLimitExceededFault
   | InvalidRetentionPeriodFault
@@ -9082,6 +9121,7 @@ export const batchModifyClusterSnapshots: API.OperationMethod<
   retry: Retry,
   operationName: "BatchModifyClusterSnapshots",
 }));
+
 export type CancelResizeError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -9109,6 +9149,7 @@ export const cancelResize: API.OperationMethod<
   retry: Retry,
   operationName: "CancelResize",
 }));
+
 export type CopyClusterSnapshotError =
   | ClusterNotFoundFault
   | ClusterSnapshotAlreadyExistsFault
@@ -9152,6 +9193,7 @@ export const copyClusterSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CopyClusterSnapshot",
 }));
+
 export type CreateAuthenticationProfileError =
   | AuthenticationProfileAlreadyExistsFault
   | AuthenticationProfileQuotaExceededFault
@@ -9177,6 +9219,7 @@ export const createAuthenticationProfile: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAuthenticationProfile",
 }));
+
 export type CreateClusterError =
   | ClusterAlreadyExistsFault
   | ClusterParameterGroupNotFoundFault
@@ -9275,6 +9318,7 @@ export const createCluster: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCluster",
 }));
+
 export type CreateClusterParameterGroupError =
   | ClusterParameterGroupAlreadyExistsFault
   | ClusterParameterGroupQuotaExceededFault
@@ -9312,6 +9356,7 @@ export const createClusterParameterGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateClusterParameterGroup",
 }));
+
 export type CreateClusterSecurityGroupError =
   | ClusterSecurityGroupAlreadyExistsFault
   | ClusterSecurityGroupQuotaExceededFault
@@ -9344,6 +9389,7 @@ export const createClusterSecurityGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateClusterSecurityGroup",
 }));
+
 export type CreateClusterSnapshotError =
   | ClusterNotFoundFault
   | ClusterSnapshotAlreadyExistsFault
@@ -9382,6 +9428,7 @@ export const createClusterSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateClusterSnapshot",
 }));
+
 export type CreateClusterSubnetGroupError =
   | ClusterSubnetGroupAlreadyExistsFault
   | ClusterSubnetGroupQuotaExceededFault
@@ -9423,6 +9470,7 @@ export const createClusterSubnetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateClusterSubnetGroup",
 }));
+
 export type CreateCustomDomainAssociationError =
   | ClusterNotFoundFault
   | CustomCnameAssociationFault
@@ -9449,6 +9497,7 @@ export const createCustomDomainAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCustomDomainAssociation",
 }));
+
 export type CreateEndpointAccessError =
   | AccessToClusterDeniedFault
   | ClusterNotFoundFault
@@ -9488,6 +9537,7 @@ export const createEndpointAccess: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEndpointAccess",
 }));
+
 export type CreateEventSubscriptionError =
   | EventSubscriptionQuotaExceededFault
   | InvalidTagFault
@@ -9547,6 +9597,7 @@ export const createEventSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEventSubscription",
 }));
+
 export type CreateHsmClientCertificateError =
   | HsmClientCertificateAlreadyExistsFault
   | HsmClientCertificateQuotaExceededFault
@@ -9582,6 +9633,7 @@ export const createHsmClientCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateHsmClientCertificate",
 }));
+
 export type CreateHsmConfigurationError =
   | HsmConfigurationAlreadyExistsFault
   | HsmConfigurationQuotaExceededFault
@@ -9616,6 +9668,7 @@ export const createHsmConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateHsmConfiguration",
 }));
+
 export type CreateIntegrationError =
   | IntegrationAlreadyExistsFault
   | IntegrationConflictOperationFault
@@ -9653,6 +9706,7 @@ export const createIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIntegration",
 }));
+
 export type CreateRedshiftIdcApplicationError =
   | DependentServiceAccessDeniedFault
   | DependentServiceUnavailableFault
@@ -9686,6 +9740,7 @@ export const createRedshiftIdcApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRedshiftIdcApplication",
 }));
+
 export type CreateScheduledActionError =
   | ClusterNotFoundFault
   | InvalidScheduledActionFault
@@ -9722,6 +9777,7 @@ export const createScheduledAction: API.OperationMethod<
   retry: Retry,
   operationName: "CreateScheduledAction",
 }));
+
 export type CreateSnapshotCopyGrantError =
   | DependentServiceRequestThrottlingFault
   | InvalidTagFault
@@ -9759,6 +9815,7 @@ export const createSnapshotCopyGrant: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSnapshotCopyGrant",
 }));
+
 export type CreateSnapshotScheduleError =
   | InvalidScheduleFault
   | InvalidTagFault
@@ -9790,6 +9847,7 @@ export const createSnapshotSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSnapshotSchedule",
 }));
+
 export type CreateTagsError =
   | InvalidClusterStateFault
   | InvalidTagFault
@@ -9823,6 +9881,7 @@ export const createTags: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTags",
 }));
+
 export type CreateUsageLimitError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -9857,6 +9916,7 @@ export const createUsageLimit: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUsageLimit",
 }));
+
 export type DeauthorizeDataShareError = InvalidDataShareFault | CommonErrors;
 /**
  * From a datashare producer account, removes authorization from the specified datashare.
@@ -9874,6 +9934,7 @@ export const deauthorizeDataShare: API.OperationMethod<
   retry: Retry,
   operationName: "DeauthorizeDataShare",
 }));
+
 export type DeleteAuthenticationProfileError =
   | AuthenticationProfileNotFoundFault
   | InvalidAuthenticationProfileRequestFault
@@ -9897,6 +9958,7 @@ export const deleteAuthenticationProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAuthenticationProfile",
 }));
+
 export type DeleteClusterError =
   | ClusterNotFoundFault
   | ClusterSnapshotAlreadyExistsFault
@@ -9942,6 +10004,7 @@ export const deleteCluster: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCluster",
 }));
+
 export type DeleteClusterParameterGroupError =
   | ClusterParameterGroupNotFoundFault
   | InvalidClusterParameterGroupStateFault
@@ -9968,6 +10031,7 @@ export const deleteClusterParameterGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteClusterParameterGroup",
 }));
+
 export type DeleteClusterSecurityGroupError =
   | ClusterSecurityGroupNotFoundFault
   | InvalidClusterSecurityGroupStateFault
@@ -9998,6 +10062,7 @@ export const deleteClusterSecurityGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteClusterSecurityGroup",
 }));
+
 export type DeleteClusterSnapshotError =
   | ClusterSnapshotNotFoundFault
   | InvalidClusterSnapshotStateFault
@@ -10025,6 +10090,7 @@ export const deleteClusterSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteClusterSnapshot",
 }));
+
 export type DeleteClusterSubnetGroupError =
   | ClusterSubnetGroupNotFoundFault
   | InvalidClusterSubnetGroupStateFault
@@ -10050,6 +10116,7 @@ export const deleteClusterSubnetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteClusterSubnetGroup",
 }));
+
 export type DeleteCustomDomainAssociationError =
   | ClusterNotFoundFault
   | CustomCnameAssociationFault
@@ -10077,6 +10144,7 @@ export const deleteCustomDomainAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCustomDomainAssociation",
 }));
+
 export type DeleteEndpointAccessError =
   | ClusterNotFoundFault
   | EndpointNotFoundFault
@@ -10106,6 +10174,7 @@ export const deleteEndpointAccess: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEndpointAccess",
 }));
+
 export type DeleteEventSubscriptionError =
   | InvalidSubscriptionStateFault
   | SubscriptionNotFoundFault
@@ -10126,6 +10195,7 @@ export const deleteEventSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEventSubscription",
 }));
+
 export type DeleteHsmClientCertificateError =
   | HsmClientCertificateNotFoundFault
   | InvalidHsmClientCertificateStateFault
@@ -10149,6 +10219,7 @@ export const deleteHsmClientCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteHsmClientCertificate",
 }));
+
 export type DeleteHsmConfigurationError =
   | HsmConfigurationNotFoundFault
   | InvalidHsmConfigurationStateFault
@@ -10169,6 +10240,7 @@ export const deleteHsmConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteHsmConfiguration",
 }));
+
 export type DeleteIntegrationError =
   | IntegrationConflictOperationFault
   | IntegrationConflictStateFault
@@ -10196,6 +10268,7 @@ export const deleteIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIntegration",
 }));
+
 export type DeletePartnerError =
   | ClusterNotFoundFault
   | PartnerNotFoundFault
@@ -10223,6 +10296,7 @@ export const deletePartner: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePartner",
 }));
+
 export type DeleteRedshiftIdcApplicationError =
   | DependentServiceAccessDeniedFault
   | DependentServiceUnavailableFault
@@ -10250,6 +10324,7 @@ export const deleteRedshiftIdcApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRedshiftIdcApplication",
 }));
+
 export type DeleteResourcePolicyError =
   | ResourceNotFoundFault
   | UnsupportedOperationFault
@@ -10270,6 +10345,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteScheduledActionError =
   | ScheduledActionNotFoundFault
   | UnauthorizedOperation
@@ -10290,6 +10366,7 @@ export const deleteScheduledAction: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteScheduledAction",
 }));
+
 export type DeleteSnapshotCopyGrantError =
   | InvalidSnapshotCopyGrantStateFault
   | SnapshotCopyGrantNotFoundFault
@@ -10310,6 +10387,7 @@ export const deleteSnapshotCopyGrant: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSnapshotCopyGrant",
 }));
+
 export type DeleteSnapshotScheduleError =
   | InvalidClusterSnapshotScheduleStateFault
   | SnapshotScheduleNotFoundFault
@@ -10333,6 +10411,7 @@ export const deleteSnapshotSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSnapshotSchedule",
 }));
+
 export type DeleteTagsError =
   | InvalidTagFault
   | ResourceNotFoundFault
@@ -10354,6 +10433,7 @@ export const deleteTags: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTags",
 }));
+
 export type DeleteUsageLimitError =
   | UnsupportedOperationFault
   | UsageLimitNotFoundFault
@@ -10374,6 +10454,7 @@ export const deleteUsageLimit: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUsageLimit",
 }));
+
 export type DeregisterNamespaceError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -10399,6 +10480,7 @@ export const deregisterNamespace: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterNamespace",
 }));
+
 export type DescribeAccountAttributesError = CommonErrors;
 /**
  * Returns a list of attributes attached to an account
@@ -10416,6 +10498,7 @@ export const describeAccountAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccountAttributes",
 }));
+
 export type DescribeAuthenticationProfilesError =
   | AuthenticationProfileNotFoundFault
   | InvalidAuthenticationProfileRequestFault
@@ -10439,6 +10522,7 @@ export const describeAuthenticationProfiles: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAuthenticationProfiles",
 }));
+
 export type DescribeClusterDbRevisionsError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -10480,6 +10564,7 @@ export const describeClusterDbRevisions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClusterParameterGroupsError =
   | ClusterParameterGroupNotFoundFault
   | InvalidTagFault
@@ -10539,6 +10624,7 @@ export const describeClusterParameterGroups: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClusterParametersError =
   | ClusterParameterGroupNotFoundFault
   | CommonErrors;
@@ -10591,6 +10677,7 @@ export const describeClusterParameters: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClustersError =
   | ClusterNotFoundFault
   | InvalidTagFault
@@ -10646,6 +10733,7 @@ export const describeClusters: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClusterSecurityGroupsError =
   | ClusterSecurityGroupNotFoundFault
   | InvalidTagFault
@@ -10703,6 +10791,7 @@ export const describeClusterSecurityGroups: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClusterSnapshotsError =
   | ClusterNotFoundFault
   | ClusterSnapshotNotFoundFault
@@ -10765,6 +10854,7 @@ export const describeClusterSnapshots: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClusterSubnetGroupsError =
   | ClusterSubnetGroupNotFoundFault
   | InvalidTagFault
@@ -10818,6 +10908,7 @@ export const describeClusterSubnetGroups: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClusterTracksError =
   | InvalidClusterTrackFault
   | UnauthorizedOperation
@@ -10859,6 +10950,7 @@ export const describeClusterTracks: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeClusterVersionsError = CommonErrors;
 /**
  * Returns descriptions of the available Amazon Redshift cluster versions. You can call this
@@ -10902,6 +10994,7 @@ export const describeClusterVersions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeCustomDomainAssociationsError =
   | CustomDomainAssociationNotFoundFault
   | UnsupportedOperationFault
@@ -10943,6 +11036,7 @@ export const describeCustomDomainAssociations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDataSharesError = InvalidDataShareFault | CommonErrors;
 /**
  * Shows the status of any inbound or outbound datashares available in the specified
@@ -10982,6 +11076,7 @@ export const describeDataShares: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDataSharesForConsumerError =
   | InvalidNamespaceFault
   | CommonErrors;
@@ -11022,6 +11117,7 @@ export const describeDataSharesForConsumer: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDataSharesForProducerError =
   | InvalidNamespaceFault
   | CommonErrors;
@@ -11062,6 +11158,7 @@ export const describeDataSharesForProducer: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDefaultClusterParametersError = CommonErrors;
 /**
  * Returns a list of parameter settings for the specified parameter group
@@ -11105,6 +11202,7 @@ export const describeDefaultClusterParameters: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEndpointAccessError =
   | ClusterNotFoundFault
   | EndpointNotFoundFault
@@ -11151,6 +11249,7 @@ export const describeEndpointAccess: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEndpointAuthorizationError =
   | ClusterNotFoundFault
   | UnsupportedOperationFault
@@ -11192,6 +11291,7 @@ export const describeEndpointAuthorization: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEventCategoriesError = CommonErrors;
 /**
  * Displays a list of event categories for all event source types, or for a specified
@@ -11211,6 +11311,7 @@ export const describeEventCategories: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEventCategories",
 }));
+
 export type DescribeEventsError = CommonErrors;
 /**
  * Returns events related to clusters, security groups, snapshots, and parameter
@@ -11252,6 +11353,7 @@ export const describeEvents: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEventSubscriptionsError =
   | InvalidTagFault
   | SubscriptionNotFoundFault
@@ -11305,6 +11407,7 @@ export const describeEventSubscriptions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeHsmClientCertificatesError =
   | HsmClientCertificateNotFoundFault
   | InvalidTagFault
@@ -11357,6 +11460,7 @@ export const describeHsmClientCertificates: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeHsmConfigurationsError =
   | HsmConfigurationNotFoundFault
   | InvalidTagFault
@@ -11410,6 +11514,7 @@ export const describeHsmConfigurations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeInboundIntegrationsError =
   | IntegrationNotFoundFault
   | InvalidNamespaceFault
@@ -11456,6 +11561,7 @@ export const describeInboundIntegrations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeIntegrationsError =
   | IntegrationNotFoundFault
   | UnsupportedOperationFault
@@ -11497,6 +11603,7 @@ export const describeIntegrations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeLoggingStatusError =
   | ClusterNotFoundFault
   | UnsupportedOperationFault
@@ -11518,6 +11625,7 @@ export const describeLoggingStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLoggingStatus",
 }));
+
 export type DescribeNodeConfigurationOptionsError =
   | AccessToSnapshotDeniedFault
   | ClusterNotFoundFault
@@ -11569,6 +11677,7 @@ export const describeNodeConfigurationOptions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeOrderableClusterOptionsError = CommonErrors;
 /**
  * Returns a list of orderable cluster options. Before you create a new cluster you
@@ -11615,6 +11724,7 @@ export const describeOrderableClusterOptions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribePartnersError =
   | ClusterNotFoundFault
   | UnauthorizedPartnerIntegrationFault
@@ -11640,6 +11750,7 @@ export const describePartners: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePartners",
 }));
+
 export type DescribeRedshiftIdcApplicationsError =
   | DependentServiceAccessDeniedFault
   | DependentServiceUnavailableFault
@@ -11688,6 +11799,7 @@ export const describeRedshiftIdcApplications: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReservedNodeExchangeStatusError =
   | ReservedNodeExchangeNotFoundFault
   | ReservedNodeNotFoundFault
@@ -11735,6 +11847,7 @@ export const describeReservedNodeExchangeStatus: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReservedNodeOfferingsError =
   | DependentServiceUnavailableFault
   | ReservedNodeOfferingNotFoundFault
@@ -11790,6 +11903,7 @@ export const describeReservedNodeOfferings: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReservedNodesError =
   | DependentServiceUnavailableFault
   | ReservedNodeNotFoundFault
@@ -11831,6 +11945,7 @@ export const describeReservedNodes: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeResizeError =
   | ClusterNotFoundFault
   | ResizeNotFoundFault
@@ -11862,6 +11977,7 @@ export const describeResize: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeResize",
 }));
+
 export type DescribeScheduledActionsError =
   | ScheduledActionNotFoundFault
   | UnauthorizedOperation
@@ -11903,6 +12019,7 @@ export const describeScheduledActions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeSnapshotCopyGrantsError =
   | InvalidTagFault
   | SnapshotCopyGrantNotFoundFault
@@ -11949,6 +12066,7 @@ export const describeSnapshotCopyGrants: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeSnapshotSchedulesError = CommonErrors;
 /**
  * Returns a list of snapshot schedules.
@@ -11987,6 +12105,7 @@ export const describeSnapshotSchedules: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeStorageError = CommonErrors;
 /**
  * Returns account level backups storage size and provisional storage.
@@ -12004,6 +12123,7 @@ export const describeStorage: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeStorage",
 }));
+
 export type DescribeTableRestoreStatusError =
   | ClusterNotFoundFault
   | TableRestoreNotFoundFault
@@ -12050,6 +12170,7 @@ export const describeTableRestoreStatus: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeTagsError =
   | InvalidTagFault
   | ResourceNotFoundFault
@@ -12113,6 +12234,7 @@ export const describeTags: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeUsageLimitsError =
   | ClusterNotFoundFault
   | UnsupportedOperationFault
@@ -12167,6 +12289,7 @@ export const describeUsageLimits: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DisableLoggingError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -12193,6 +12316,7 @@ export const disableLogging: API.OperationMethod<
   retry: Retry,
   operationName: "DisableLogging",
 }));
+
 export type DisableSnapshotCopyError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -12227,6 +12351,7 @@ export const disableSnapshotCopy: API.OperationMethod<
   retry: Retry,
   operationName: "DisableSnapshotCopy",
 }));
+
 export type DisassociateDataShareConsumerError =
   | InvalidDataShareFault
   | InvalidNamespaceFault
@@ -12247,6 +12372,7 @@ export const disassociateDataShareConsumer: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateDataShareConsumer",
 }));
+
 export type EnableLoggingError =
   | BucketNotFoundFault
   | ClusterNotFoundFault
@@ -12281,6 +12407,7 @@ export const enableLogging: API.OperationMethod<
   retry: Retry,
   operationName: "EnableLogging",
 }));
+
 export type EnableSnapshotCopyError =
   | ClusterNotFoundFault
   | CopyToRegionDisabledFault
@@ -12323,6 +12450,7 @@ export const enableSnapshotCopy: API.OperationMethod<
   retry: Retry,
   operationName: "EnableSnapshotCopy",
 }));
+
 export type FailoverPrimaryComputeError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -12350,6 +12478,7 @@ export const failoverPrimaryCompute: API.OperationMethod<
   retry: Retry,
   operationName: "FailoverPrimaryCompute",
 }));
+
 export type GetClusterCredentialsError =
   | ClusterNotFoundFault
   | UnsupportedOperationFault
@@ -12394,6 +12523,7 @@ export const getClusterCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "GetClusterCredentials",
 }));
+
 export type GetClusterCredentialsWithIAMError =
   | ClusterNotFoundFault
   | UnsupportedOperationFault
@@ -12424,6 +12554,7 @@ export const getClusterCredentialsWithIAM: API.OperationMethod<
   retry: Retry,
   operationName: "GetClusterCredentialsWithIAM",
 }));
+
 export type GetIdentityCenterAuthTokenError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -12462,6 +12593,7 @@ export const getIdentityCenterAuthToken: API.OperationMethod<
   retry: Retry,
   operationName: "GetIdentityCenterAuthToken",
 }));
+
 export type GetReservedNodeExchangeConfigurationOptionsError =
   | ClusterNotFoundFault
   | ClusterSnapshotNotFoundFault
@@ -12520,6 +12652,7 @@ export const getReservedNodeExchangeConfigurationOptions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type GetReservedNodeExchangeOfferingsError =
   | DependentServiceUnavailableFault
   | InvalidReservedNodeStateFault
@@ -12573,6 +12706,7 @@ export const getReservedNodeExchangeOfferings: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type GetResourcePolicyError =
   | InvalidPolicyFault
   | ResourceNotFoundFault
@@ -12598,6 +12732,7 @@ export const getResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type ListRecommendationsError =
   | ClusterNotFoundFault
   | UnsupportedOperationFault
@@ -12639,6 +12774,7 @@ export const listRecommendations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type ModifyAquaConfigurationError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -12664,6 +12800,7 @@ export const modifyAquaConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyAquaConfiguration",
 }));
+
 export type ModifyAuthenticationProfileError =
   | AuthenticationProfileNotFoundFault
   | AuthenticationProfileQuotaExceededFault
@@ -12689,6 +12826,7 @@ export const modifyAuthenticationProfile: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyAuthenticationProfile",
 }));
+
 export type ModifyClusterError =
   | ClusterAlreadyExistsFault
   | ClusterNotFoundFault
@@ -12780,6 +12918,7 @@ export const modifyCluster: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyCluster",
 }));
+
 export type ModifyClusterDbRevisionError =
   | ClusterNotFoundFault
   | ClusterOnLatestRevisionFault
@@ -12808,6 +12947,7 @@ export const modifyClusterDbRevision: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyClusterDbRevision",
 }));
+
 export type ModifyClusterIamRolesError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -12833,6 +12973,7 @@ export const modifyClusterIamRoles: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyClusterIamRoles",
 }));
+
 export type ModifyClusterMaintenanceError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -12853,6 +12994,7 @@ export const modifyClusterMaintenance: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyClusterMaintenance",
 }));
+
 export type ModifyClusterParameterGroupError =
   | ClusterParameterGroupNotFoundFault
   | InvalidClusterParameterGroupStateFault
@@ -12880,6 +13022,7 @@ export const modifyClusterParameterGroup: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyClusterParameterGroup",
 }));
+
 export type ModifyClusterSnapshotError =
   | ClusterSnapshotNotFoundFault
   | InvalidClusterSnapshotStateFault
@@ -12907,6 +13050,7 @@ export const modifyClusterSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyClusterSnapshot",
 }));
+
 export type ModifyClusterSnapshotScheduleError =
   | ClusterNotFoundFault
   | InvalidClusterSnapshotScheduleStateFault
@@ -12932,6 +13076,7 @@ export const modifyClusterSnapshotSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyClusterSnapshotSchedule",
 }));
+
 export type ModifyClusterSubnetGroupError =
   | ClusterSubnetGroupNotFoundFault
   | ClusterSubnetQuotaExceededFault
@@ -12982,6 +13127,7 @@ export const modifyClusterSubnetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyClusterSubnetGroup",
 }));
+
 export type ModifyCustomDomainAssociationError =
   | ClusterNotFoundFault
   | CustomCnameAssociationFault
@@ -13009,6 +13155,7 @@ export const modifyCustomDomainAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyCustomDomainAssociation",
 }));
+
 export type ModifyEndpointAccessError =
   | ClusterNotFoundFault
   | EndpointNotFoundFault
@@ -13040,6 +13187,7 @@ export const modifyEndpointAccess: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyEndpointAccess",
 }));
+
 export type ModifyEventSubscriptionError =
   | InvalidSubscriptionStateFault
   | SNSInvalidTopicFault
@@ -13077,6 +13225,7 @@ export const modifyEventSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyEventSubscription",
 }));
+
 export type ModifyIntegrationError =
   | IntegrationAlreadyExistsFault
   | IntegrationConflictOperationFault
@@ -13106,6 +13255,7 @@ export const modifyIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyIntegration",
 }));
+
 export type ModifyLakehouseConfigurationError =
   | ClusterNotFoundFault
   | DependentServiceAccessDeniedFault
@@ -13139,6 +13289,7 @@ export const modifyLakehouseConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyLakehouseConfiguration",
 }));
+
 export type ModifyRedshiftIdcApplicationError =
   | DependentServiceAccessDeniedFault
   | DependentServiceUnavailableFault
@@ -13166,6 +13317,7 @@ export const modifyRedshiftIdcApplication: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyRedshiftIdcApplication",
 }));
+
 export type ModifyScheduledActionError =
   | ClusterNotFoundFault
   | InvalidScheduledActionFault
@@ -13199,6 +13351,7 @@ export const modifyScheduledAction: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyScheduledAction",
 }));
+
 export type ModifySnapshotCopyRetentionPeriodError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -13234,6 +13387,7 @@ export const modifySnapshotCopyRetentionPeriod: API.OperationMethod<
   retry: Retry,
   operationName: "ModifySnapshotCopyRetentionPeriod",
 }));
+
 export type ModifySnapshotScheduleError =
   | InvalidScheduleFault
   | SnapshotScheduleNotFoundFault
@@ -13260,6 +13414,7 @@ export const modifySnapshotSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "ModifySnapshotSchedule",
 }));
+
 export type ModifyUsageLimitError =
   | InvalidUsageLimitFault
   | UnsupportedOperationFault
@@ -13286,6 +13441,7 @@ export const modifyUsageLimit: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyUsageLimit",
 }));
+
 export type PauseClusterError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -13311,6 +13467,7 @@ export const pauseCluster: API.OperationMethod<
   retry: Retry,
   operationName: "PauseCluster",
 }));
+
 export type PurchaseReservedNodeOfferingError =
   | ReservedNodeAlreadyExistsFault
   | ReservedNodeOfferingNotFoundFault
@@ -13346,6 +13503,7 @@ export const purchaseReservedNodeOffering: API.OperationMethod<
   retry: Retry,
   operationName: "PurchaseReservedNodeOffering",
 }));
+
 export type PutResourcePolicyError =
   | ConflictPolicyUpdateFault
   | InvalidPolicyFault
@@ -13373,6 +13531,7 @@ export const putResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type RebootClusterError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -13400,6 +13559,7 @@ export const rebootCluster: API.OperationMethod<
   retry: Retry,
   operationName: "RebootCluster",
 }));
+
 export type RegisterNamespaceError =
   | ClusterNotFoundFault
   | InvalidClusterStateFault
@@ -13425,6 +13585,7 @@ export const registerNamespace: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterNamespace",
 }));
+
 export type RejectDataShareError = InvalidDataShareFault | CommonErrors;
 /**
  * From a datashare consumer account, rejects the specified datashare.
@@ -13442,6 +13603,7 @@ export const rejectDataShare: API.OperationMethod<
   retry: Retry,
   operationName: "RejectDataShare",
 }));
+
 export type ResetClusterParameterGroupError =
   | ClusterParameterGroupNotFoundFault
   | InvalidClusterParameterGroupStateFault
@@ -13468,6 +13630,7 @@ export const resetClusterParameterGroup: API.OperationMethod<
   retry: Retry,
   operationName: "ResetClusterParameterGroup",
 }));
+
 export type ResizeClusterError =
   | ClusterNotFoundFault
   | DependentServiceUnavailableFault
@@ -13543,6 +13706,7 @@ export const resizeCluster: API.OperationMethod<
   retry: Retry,
   operationName: "ResizeCluster",
 }));
+
 export type RestoreFromClusterSnapshotError =
   | AccessToSnapshotDeniedFault
   | ClusterAlreadyExistsFault
@@ -13662,6 +13826,7 @@ export const restoreFromClusterSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreFromClusterSnapshot",
 }));
+
 export type RestoreTableFromClusterSnapshotError =
   | ClusterNotFoundFault
   | ClusterSnapshotNotFoundFault
@@ -13710,6 +13875,7 @@ export const restoreTableFromClusterSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreTableFromClusterSnapshot",
 }));
+
 export type ResumeClusterError =
   | ClusterNotFoundFault
   | InsufficientClusterCapacityFault
@@ -13737,6 +13903,7 @@ export const resumeCluster: API.OperationMethod<
   retry: Retry,
   operationName: "ResumeCluster",
 }));
+
 export type RevokeClusterSecurityGroupIngressError =
   | AuthorizationNotFoundFault
   | ClusterSecurityGroupNotFoundFault
@@ -13766,6 +13933,7 @@ export const revokeClusterSecurityGroupIngress: API.OperationMethod<
   retry: Retry,
   operationName: "RevokeClusterSecurityGroupIngress",
 }));
+
 export type RevokeEndpointAccessError =
   | ClusterNotFoundFault
   | EndpointAuthorizationNotFoundFault
@@ -13799,6 +13967,7 @@ export const revokeEndpointAccess: API.OperationMethod<
   retry: Retry,
   operationName: "RevokeEndpointAccess",
 }));
+
 export type RevokeSnapshotAccessError =
   | AccessToSnapshotDeniedFault
   | AuthorizationNotFoundFault
@@ -13832,6 +14001,7 @@ export const revokeSnapshotAccess: API.OperationMethod<
   retry: Retry,
   operationName: "RevokeSnapshotAccess",
 }));
+
 export type RotateEncryptionKeyError =
   | ClusterNotFoundFault
   | DependentServiceRequestThrottlingFault
@@ -13859,6 +14029,7 @@ export const rotateEncryptionKey: API.OperationMethod<
   retry: Retry,
   operationName: "RotateEncryptionKey",
 }));
+
 export type UpdatePartnerStatusError =
   | ClusterNotFoundFault
   | PartnerNotFoundFault

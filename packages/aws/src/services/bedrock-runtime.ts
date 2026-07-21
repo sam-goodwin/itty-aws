@@ -87,271 +87,86 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type InvocationArn = string;
-export type AsyncInvokeArn = string;
-export type AsyncInvokeIdempotencyToken = string;
-export type AsyncInvokeMessage = string | redacted.Redacted<string>;
-export type S3Uri = string;
-export type KmsKeyId = string;
-export type AccountId = string;
-export type NonBlankString = string;
-export type MaxResults = number;
-export type PaginationToken = string;
-export type AsyncInvokeIdentifier = string;
-export type ModelInputPayload = unknown;
-export type TagKey = string;
-export type TagValue = string;
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ModelErrorException extends S.TaggedErrorClass<ModelErrorException>()(
+  "ModelErrorException",
+  {
+    message: S.optional(S.String),
+    originalStatusCode: S.optional(S.Number),
+    resourceName: S.optional(S.String),
+  },
+  T.HttpError(424),
+) {}
+export class ModelNotReadyException extends S.TaggedErrorClass<ModelNotReadyException>()(
+  "ModelNotReadyException",
+  { message: S.optional(S.String) },
+  T.all(T.HttpError(429), T.Retryable()),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ModelStreamErrorException extends S.TaggedErrorClass<ModelStreamErrorException>()(
+  "ModelStreamErrorException",
+  {
+    message: S.optional(S.String),
+    originalStatusCode: S.optional(S.Number),
+    originalMessage: S.optional(S.String),
+  },
+  T.HttpError(424),
+) {}
+export class ModelTimeoutException extends S.TaggedErrorClass<ModelTimeoutException>()(
+  "ModelTimeoutException",
+  { message: S.optional(S.String) },
+  T.HttpError(408),
+).pipe(C.withTimeoutError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type GuardrailIdentifier = string;
 export type GuardrailVersion = string;
-export type GuardrailTopicPolicyUnitsProcessed = number;
-export type GuardrailContentPolicyUnitsProcessed = number;
-export type GuardrailWordPolicyUnitsProcessed = number;
-export type GuardrailSensitiveInformationPolicyUnitsProcessed = number;
-export type GuardrailSensitiveInformationPolicyFreeUnitsProcessed = number;
-export type GuardrailContextualGroundingPolicyUnitsProcessed = number;
-export type GuardrailContentPolicyImageUnitsProcessed = number;
-export type GuardrailAutomatedReasoningPolicyUnitsProcessed = number;
-export type GuardrailAutomatedReasoningPoliciesProcessed = number;
-export type GuardrailOutputText = string;
-export type GuardrailAutomatedReasoningStatementLogicContent =
-  | string
-  | redacted.Redacted<string>;
-export type GuardrailAutomatedReasoningStatementNaturalLanguageContent =
-  | string
-  | redacted.Redacted<string>;
-export type GuardrailAutomatedReasoningTranslationConfidence = number;
-export type AutomatedReasoningRuleIdentifier = string;
-export type GuardrailAutomatedReasoningPolicyVersionArn = string;
-export type GuardrailProcessingLatency = number;
-export type TextCharactersGuarded = number;
-export type TextCharactersTotal = number;
-export type ImagesGuarded = number;
-export type ImagesTotal = number;
-export type GuardrailId = string;
-export type GuardrailArn = string;
-export type GuardrailChecksTextContent = string | redacted.Redacted<string>;
-export type ConversationalModelId = string;
-export type ToolUseId = string;
-export type ToolName = string;
-export type NonEmptyString = string;
-export type InvokedModelId = string;
-export type StatusCode = number;
-export type NonNegativeInteger = number;
-export type MimeType = string;
-export type InvokeModelIdentifier = string;
-export type RequestMetadataJson = string | redacted.Redacted<string>;
-export type PartBody = Uint8Array | redacted.Redacted<Uint8Array>;
-export type FoundationModelVersionIdentifier = string;
-export type Body = Uint8Array | redacted.Redacted<Uint8Array>;
-
-//# Schemas
-export interface GetAsyncInvokeRequest {
-  invocationArn: string;
-}
-export const GetAsyncInvokeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ invocationArn: S.String.pipe(T.HttpLabel("invocationArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/async-invoke/{invocationArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAsyncInvokeRequest",
-}) as any as S.Schema<GetAsyncInvokeRequest>;
-export type AsyncInvokeStatus =
-  | "InProgress"
-  | "Completed"
-  | "Failed"
-  | (string & {});
-export const AsyncInvokeStatus = /*@__PURE__*/ S.String;
-export interface AsyncInvokeS3OutputDataConfig {
-  s3Uri: string;
-  kmsKeyId?: string;
-  bucketOwner?: string;
-}
-export const AsyncInvokeS3OutputDataConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    s3Uri: S.String,
-    kmsKeyId: S.optional(S.String),
-    bucketOwner: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AsyncInvokeS3OutputDataConfig",
-}) as any as S.Schema<AsyncInvokeS3OutputDataConfig>;
-export type AsyncInvokeOutputDataConfig = {
-  s3OutputDataConfig: AsyncInvokeS3OutputDataConfig;
-};
-export const AsyncInvokeOutputDataConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ s3OutputDataConfig: AsyncInvokeS3OutputDataConfig }),
-]);
-export interface GetAsyncInvokeResponse {
-  invocationArn: string;
-  modelArn: string;
-  clientRequestToken?: string;
-  status: AsyncInvokeStatus;
-  failureMessage?: string | redacted.Redacted<string>;
-  submitTime: Date;
-  lastModifiedTime?: Date;
-  endTime?: Date;
-  outputDataConfig: AsyncInvokeOutputDataConfig;
-}
-export const GetAsyncInvokeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invocationArn: S.String,
-    modelArn: S.String,
-    clientRequestToken: S.optional(S.String),
-    status: AsyncInvokeStatus,
-    failureMessage: S.optional(SensitiveString),
-    submitTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModifiedTime: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    outputDataConfig: AsyncInvokeOutputDataConfig,
-  }),
-).annotate({
-  identifier: "GetAsyncInvokeResponse",
-}) as any as S.Schema<GetAsyncInvokeResponse>;
-export type SortAsyncInvocationBy = "SubmissionTime" | (string & {});
-export const SortAsyncInvocationBy = /*@__PURE__*/ S.String;
-export type SortOrder = "Ascending" | "Descending" | (string & {});
-export const SortOrder = /*@__PURE__*/ S.String;
-export interface ListAsyncInvokesRequest {
-  submitTimeAfter?: Date;
-  submitTimeBefore?: Date;
-  statusEquals?: AsyncInvokeStatus;
-  maxResults?: number;
-  nextToken?: string;
-  sortBy?: SortAsyncInvocationBy;
-  sortOrder?: SortOrder;
-}
-export const ListAsyncInvokesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    submitTimeAfter: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ).pipe(T.HttpQuery("submitTimeAfter")),
-    submitTimeBefore: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ).pipe(T.HttpQuery("submitTimeBefore")),
-    statusEquals: S.optional(AsyncInvokeStatus).pipe(
-      T.HttpQuery("statusEquals"),
-    ),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortBy: S.optional(SortAsyncInvocationBy).pipe(T.HttpQuery("sortBy")),
-    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/async-invoke" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAsyncInvokesRequest",
-}) as any as S.Schema<ListAsyncInvokesRequest>;
-export interface AsyncInvokeSummary {
-  invocationArn: string;
-  modelArn: string;
-  clientRequestToken?: string;
-  status?: AsyncInvokeStatus;
-  failureMessage?: string | redacted.Redacted<string>;
-  submitTime: Date;
-  lastModifiedTime?: Date;
-  endTime?: Date;
-  outputDataConfig: AsyncInvokeOutputDataConfig;
-}
-export const AsyncInvokeSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invocationArn: S.String,
-    modelArn: S.String,
-    clientRequestToken: S.optional(S.String),
-    status: S.optional(AsyncInvokeStatus),
-    failureMessage: S.optional(SensitiveString),
-    submitTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastModifiedTime: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    outputDataConfig: AsyncInvokeOutputDataConfig,
-  }),
-).annotate({
-  identifier: "AsyncInvokeSummary",
-}) as any as S.Schema<AsyncInvokeSummary>;
-export type AsyncInvokeSummaries = AsyncInvokeSummary[];
-export const AsyncInvokeSummaries = /*@__PURE__*/ S.Array(AsyncInvokeSummary);
-export interface ListAsyncInvokesResponse {
-  nextToken?: string;
-  asyncInvokeSummaries?: AsyncInvokeSummary[];
-}
-export const ListAsyncInvokesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    asyncInvokeSummaries: S.optional(AsyncInvokeSummaries),
-  }),
-).annotate({
-  identifier: "ListAsyncInvokesResponse",
-}) as any as S.Schema<ListAsyncInvokesResponse>;
-export interface Tag {
-  key: string;
-  value: string;
-}
-export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, value: S.String }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
-export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
-export interface StartAsyncInvokeRequest {
-  clientRequestToken?: string;
-  modelId: string;
-  modelInput: any;
-  outputDataConfig: AsyncInvokeOutputDataConfig;
-  tags?: Tag[];
-}
-export const StartAsyncInvokeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    modelId: S.String,
-    modelInput: S.Any,
-    outputDataConfig: AsyncInvokeOutputDataConfig,
-    tags: S.optional(TagList),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/async-invoke" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartAsyncInvokeRequest",
-}) as any as S.Schema<StartAsyncInvokeRequest>;
-export interface StartAsyncInvokeResponse {
-  invocationArn: string;
-}
-export const StartAsyncInvokeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ invocationArn: S.String }),
-).annotate({
-  identifier: "StartAsyncInvokeResponse",
-}) as any as S.Schema<StartAsyncInvokeResponse>;
 export type GuardrailContentSource = "INPUT" | "OUTPUT" | (string & {});
 export const GuardrailContentSource = /*@__PURE__*/ S.String;
+
 export type GuardrailContentQualifier =
   | "grounding_source"
   | "query"
   | "guard_content"
   | (string & {});
 export const GuardrailContentQualifier = /*@__PURE__*/ S.String;
+
 export type GuardrailContentQualifierList = GuardrailContentQualifier[];
 export const GuardrailContentQualifierList = /*@__PURE__*/ S.Array(
   GuardrailContentQualifier,
@@ -370,6 +185,7 @@ export const GuardrailTextBlock = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuardrailTextBlock>;
 export type GuardrailImageFormat = "png" | "jpeg" | (string & {});
 export const GuardrailImageFormat = /*@__PURE__*/ S.String;
+
 export type GuardrailImageSource = { bytes: Uint8Array };
 export const GuardrailImageSource = /*@__PURE__*/ S.Union([
   S.Struct({ bytes: T.Blob }),
@@ -396,6 +212,7 @@ export const GuardrailContentBlockList = /*@__PURE__*/ S.Array(
 );
 export type GuardrailOutputScope = "INTERVENTIONS" | "FULL" | (string & {});
 export const GuardrailOutputScope = /*@__PURE__*/ S.String;
+
 export interface ApplyGuardrailRequest {
   guardrailIdentifier: string;
   guardrailVersion: string;
@@ -426,6 +243,15 @@ export const ApplyGuardrailRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplyGuardrailRequest",
 }) as any as S.Schema<ApplyGuardrailRequest>;
+export type GuardrailTopicPolicyUnitsProcessed = number;
+export type GuardrailContentPolicyUnitsProcessed = number;
+export type GuardrailWordPolicyUnitsProcessed = number;
+export type GuardrailSensitiveInformationPolicyUnitsProcessed = number;
+export type GuardrailSensitiveInformationPolicyFreeUnitsProcessed = number;
+export type GuardrailContextualGroundingPolicyUnitsProcessed = number;
+export type GuardrailContentPolicyImageUnitsProcessed = number;
+export type GuardrailAutomatedReasoningPolicyUnitsProcessed = number;
+export type GuardrailAutomatedReasoningPoliciesProcessed = number;
 export interface GuardrailUsage {
   topicPolicyUnits: number;
   contentPolicyUnits: number;
@@ -452,6 +278,8 @@ export const GuardrailUsage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GuardrailUsage" }) as any as S.Schema<GuardrailUsage>;
 export type GuardrailAction = "NONE" | "GUARDRAIL_INTERVENED" | (string & {});
 export const GuardrailAction = /*@__PURE__*/ S.String;
+
+export type GuardrailOutputText = string;
 export interface GuardrailOutputContent {
   text?: string;
 }
@@ -466,8 +294,10 @@ export const GuardrailOutputContentList = /*@__PURE__*/ S.Array(
 );
 export type GuardrailTopicType = "DENY" | (string & {});
 export const GuardrailTopicType = /*@__PURE__*/ S.String;
+
 export type GuardrailTopicPolicyAction = "BLOCKED" | "NONE" | (string & {});
 export const GuardrailTopicPolicyAction = /*@__PURE__*/ S.String;
+
 export interface GuardrailTopic {
   name: string;
   type: GuardrailTopicType;
@@ -501,6 +331,7 @@ export type GuardrailContentFilterType =
   | "PROMPT_ATTACK"
   | (string & {});
 export const GuardrailContentFilterType = /*@__PURE__*/ S.String;
+
 export type GuardrailContentFilterConfidence =
   | "NONE"
   | "LOW"
@@ -508,6 +339,7 @@ export type GuardrailContentFilterConfidence =
   | "HIGH"
   | (string & {});
 export const GuardrailContentFilterConfidence = /*@__PURE__*/ S.String;
+
 export type GuardrailContentFilterStrength =
   | "NONE"
   | "LOW"
@@ -515,8 +347,10 @@ export type GuardrailContentFilterStrength =
   | "HIGH"
   | (string & {});
 export const GuardrailContentFilterStrength = /*@__PURE__*/ S.String;
+
 export type GuardrailContentPolicyAction = "BLOCKED" | "NONE" | (string & {});
 export const GuardrailContentPolicyAction = /*@__PURE__*/ S.String;
+
 export interface GuardrailContentFilter {
   type: GuardrailContentFilterType;
   confidence: GuardrailContentFilterConfidence;
@@ -549,6 +383,7 @@ export const GuardrailContentPolicyAssessment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuardrailContentPolicyAssessment>;
 export type GuardrailWordPolicyAction = "BLOCKED" | "NONE" | (string & {});
 export const GuardrailWordPolicyAction = /*@__PURE__*/ S.String;
+
 export interface GuardrailCustomWord {
   match: string;
   action: GuardrailWordPolicyAction;
@@ -568,6 +403,7 @@ export const GuardrailCustomWordList =
   /*@__PURE__*/ S.Array(GuardrailCustomWord);
 export type GuardrailManagedWordType = "PROFANITY" | (string & {});
 export const GuardrailManagedWordType = /*@__PURE__*/ S.String;
+
 export interface GuardrailManagedWord {
   match: string;
   type: GuardrailManagedWordType;
@@ -633,12 +469,14 @@ export type GuardrailPiiEntityType =
   | "VEHICLE_IDENTIFICATION_NUMBER"
   | (string & {});
 export const GuardrailPiiEntityType = /*@__PURE__*/ S.String;
+
 export type GuardrailSensitiveInformationPolicyAction =
   | "ANONYMIZED"
   | "BLOCKED"
   | "NONE"
   | (string & {});
 export const GuardrailSensitiveInformationPolicyAction = /*@__PURE__*/ S.String;
+
 export interface GuardrailPiiEntityFilter {
   match: string;
   type: GuardrailPiiEntityType;
@@ -698,11 +536,13 @@ export type GuardrailContextualGroundingFilterType =
   | "RELEVANCE"
   | (string & {});
 export const GuardrailContextualGroundingFilterType = /*@__PURE__*/ S.String;
+
 export type GuardrailContextualGroundingPolicyAction =
   | "BLOCKED"
   | "NONE"
   | (string & {});
 export const GuardrailContextualGroundingPolicyAction = /*@__PURE__*/ S.String;
+
 export interface GuardrailContextualGroundingFilter {
   type: GuardrailContextualGroundingFilterType;
   threshold: number;
@@ -735,6 +575,12 @@ export const GuardrailContextualGroundingPolicyAssessment =
   ).annotate({
     identifier: "GuardrailContextualGroundingPolicyAssessment",
   }) as any as S.Schema<GuardrailContextualGroundingPolicyAssessment>;
+export type GuardrailAutomatedReasoningStatementLogicContent =
+  | string
+  | redacted.Redacted<string>;
+export type GuardrailAutomatedReasoningStatementNaturalLanguageContent =
+  | string
+  | redacted.Redacted<string>;
 export interface GuardrailAutomatedReasoningStatement {
   logic?: string | redacted.Redacted<string>;
   naturalLanguage?: string | redacted.Redacted<string>;
@@ -766,6 +612,7 @@ export type GuardrailAutomatedReasoningInputTextReferenceList =
   GuardrailAutomatedReasoningInputTextReference[];
 export const GuardrailAutomatedReasoningInputTextReferenceList =
   /*@__PURE__*/ S.Array(GuardrailAutomatedReasoningInputTextReference);
+export type GuardrailAutomatedReasoningTranslationConfidence = number;
 export interface GuardrailAutomatedReasoningTranslation {
   premises?: GuardrailAutomatedReasoningStatement[];
   claims?: GuardrailAutomatedReasoningStatement[];
@@ -799,6 +646,8 @@ export const GuardrailAutomatedReasoningScenario = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GuardrailAutomatedReasoningScenario",
 }) as any as S.Schema<GuardrailAutomatedReasoningScenario>;
+export type AutomatedReasoningRuleIdentifier = string;
+export type GuardrailAutomatedReasoningPolicyVersionArn = string;
 export interface GuardrailAutomatedReasoningRule {
   identifier?: string;
   policyVersionArn?: string;
@@ -822,6 +671,7 @@ export type GuardrailAutomatedReasoningLogicWarningType =
   | (string & {});
 export const GuardrailAutomatedReasoningLogicWarningType =
   /*@__PURE__*/ S.String;
+
 export interface GuardrailAutomatedReasoningLogicWarning {
   type?: GuardrailAutomatedReasoningLogicWarningType;
   premises?: GuardrailAutomatedReasoningStatement[];
@@ -1042,6 +892,9 @@ export const GuardrailAutomatedReasoningPolicyAssessment =
   ).annotate({
     identifier: "GuardrailAutomatedReasoningPolicyAssessment",
   }) as any as S.Schema<GuardrailAutomatedReasoningPolicyAssessment>;
+export type GuardrailProcessingLatency = number;
+export type TextCharactersGuarded = number;
+export type TextCharactersTotal = number;
 export interface GuardrailTextCharactersCoverage {
   guarded?: number;
   total?: number;
@@ -1051,6 +904,8 @@ export const GuardrailTextCharactersCoverage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GuardrailTextCharactersCoverage",
 }) as any as S.Schema<GuardrailTextCharactersCoverage>;
+export type ImagesGuarded = number;
+export type ImagesTotal = number;
 export interface GuardrailImageCoverage {
   guarded?: number;
   total?: number;
@@ -1086,16 +941,20 @@ export const GuardrailInvocationMetrics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GuardrailInvocationMetrics",
 }) as any as S.Schema<GuardrailInvocationMetrics>;
+export type GuardrailId = string;
+export type GuardrailArn = string;
 export type GuardrailOrigin =
   | "REQUEST"
   | "ACCOUNT_ENFORCED"
   | "ORGANIZATION_ENFORCED"
   | (string & {});
 export const GuardrailOrigin = /*@__PURE__*/ S.String;
+
 export type GuardrailOriginList = GuardrailOrigin[];
 export const GuardrailOriginList = /*@__PURE__*/ S.Array(GuardrailOrigin);
 export type GuardrailOwnership = "SELF" | "CROSS_ACCOUNT" | (string & {});
 export const GuardrailOwnership = /*@__PURE__*/ S.String;
+
 export interface AppliedGuardrailDetails {
   guardrailId?: string;
   guardrailVersion?: string;
@@ -1167,344 +1026,15 @@ export const ApplyGuardrailResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplyGuardrailResponse",
 }) as any as S.Schema<ApplyGuardrailResponse>;
-export type GuardrailChecksRole =
-  | "user"
-  | "assistant"
-  | "system"
-  | (string & {});
-export const GuardrailChecksRole = /*@__PURE__*/ S.String;
-export type GuardrailChecksContentBlock = {
-  text: string | redacted.Redacted<string>;
-};
-export const GuardrailChecksContentBlock = /*@__PURE__*/ S.Union([
-  S.Struct({ text: SensitiveString }),
-]);
-export type GuardrailChecksContentBlockList = GuardrailChecksContentBlock[];
-export const GuardrailChecksContentBlockList = /*@__PURE__*/ S.Array(
-  GuardrailChecksContentBlock,
-);
-export interface GuardrailChecksMessage {
-  role: GuardrailChecksRole;
-  content: GuardrailChecksContentBlock[];
-}
-export const GuardrailChecksMessage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: GuardrailChecksRole,
-    content: GuardrailChecksContentBlockList,
-  }),
-).annotate({
-  identifier: "GuardrailChecksMessage",
-}) as any as S.Schema<GuardrailChecksMessage>;
-export type GuardrailChecksMessageList = GuardrailChecksMessage[];
-export const GuardrailChecksMessageList = /*@__PURE__*/ S.Array(
-  GuardrailChecksMessage,
-);
-export type GuardrailChecksContentFilterCategory =
-  | "VIOLENCE"
-  | "HATE"
-  | "SEXUAL"
-  | "MISCONDUCT"
-  | "INSULTS"
-  | (string & {});
-export const GuardrailChecksContentFilterCategory = /*@__PURE__*/ S.String;
-export interface GuardrailChecksContentFilterCategoryConfig {
-  category: GuardrailChecksContentFilterCategory;
-}
-export const GuardrailChecksContentFilterCategoryConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ category: GuardrailChecksContentFilterCategory }),
-  ).annotate({
-    identifier: "GuardrailChecksContentFilterCategoryConfig",
-  }) as any as S.Schema<GuardrailChecksContentFilterCategoryConfig>;
-export type GuardrailChecksContentFilterCategoryConfigList =
-  GuardrailChecksContentFilterCategoryConfig[];
-export const GuardrailChecksContentFilterCategoryConfigList =
-  /*@__PURE__*/ S.Array(GuardrailChecksContentFilterCategoryConfig);
-export interface GuardrailChecksContentFilterConfig {
-  categories: GuardrailChecksContentFilterCategoryConfig[];
-}
-export const GuardrailChecksContentFilterConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ categories: GuardrailChecksContentFilterCategoryConfigList }),
-).annotate({
-  identifier: "GuardrailChecksContentFilterConfig",
-}) as any as S.Schema<GuardrailChecksContentFilterConfig>;
-export type GuardrailChecksPromptAttackCategory =
-  | "JAILBREAK"
-  | "PROMPT_INJECTION"
-  | "PROMPT_LEAKAGE"
-  | (string & {});
-export const GuardrailChecksPromptAttackCategory = /*@__PURE__*/ S.String;
-export interface GuardrailChecksPromptAttackCategoryConfig {
-  category: GuardrailChecksPromptAttackCategory;
-}
-export const GuardrailChecksPromptAttackCategoryConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ category: GuardrailChecksPromptAttackCategory }),
-  ).annotate({
-    identifier: "GuardrailChecksPromptAttackCategoryConfig",
-  }) as any as S.Schema<GuardrailChecksPromptAttackCategoryConfig>;
-export type GuardrailChecksPromptAttackCategoryConfigList =
-  GuardrailChecksPromptAttackCategoryConfig[];
-export const GuardrailChecksPromptAttackCategoryConfigList =
-  /*@__PURE__*/ S.Array(GuardrailChecksPromptAttackCategoryConfig);
-export interface GuardrailChecksPromptAttackConfig {
-  categories: GuardrailChecksPromptAttackCategoryConfig[];
-}
-export const GuardrailChecksPromptAttackConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ categories: GuardrailChecksPromptAttackCategoryConfigList }),
-).annotate({
-  identifier: "GuardrailChecksPromptAttackConfig",
-}) as any as S.Schema<GuardrailChecksPromptAttackConfig>;
-export type GuardrailChecksSensitiveInformationEntityType =
-  | "ADDRESS"
-  | "AGE"
-  | "AWS_ACCESS_KEY"
-  | "AWS_SECRET_KEY"
-  | "CA_HEALTH_NUMBER"
-  | "CA_SOCIAL_INSURANCE_NUMBER"
-  | "CREDIT_DEBIT_CARD_CVV"
-  | "CREDIT_DEBIT_CARD_EXPIRY"
-  | "CREDIT_DEBIT_CARD_NUMBER"
-  | "DRIVER_ID"
-  | "EMAIL"
-  | "INTERNATIONAL_BANK_ACCOUNT_NUMBER"
-  | "IP_ADDRESS"
-  | "LICENSE_PLATE"
-  | "MAC_ADDRESS"
-  | "NAME"
-  | "PASSWORD"
-  | "PHONE"
-  | "PIN"
-  | "SWIFT_CODE"
-  | "UK_NATIONAL_HEALTH_SERVICE_NUMBER"
-  | "UK_NATIONAL_INSURANCE_NUMBER"
-  | "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
-  | "URL"
-  | "USERNAME"
-  | "US_BANK_ACCOUNT_NUMBER"
-  | "US_BANK_ROUTING_NUMBER"
-  | "US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"
-  | "US_PASSPORT_NUMBER"
-  | "US_SOCIAL_SECURITY_NUMBER"
-  | "VEHICLE_IDENTIFICATION_NUMBER"
-  | (string & {});
-export const GuardrailChecksSensitiveInformationEntityType =
-  /*@__PURE__*/ S.String;
-export interface GuardrailChecksSensitiveInformationEntityConfig {
-  type: GuardrailChecksSensitiveInformationEntityType;
-}
-export const GuardrailChecksSensitiveInformationEntityConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ type: GuardrailChecksSensitiveInformationEntityType }),
-  ).annotate({
-    identifier: "GuardrailChecksSensitiveInformationEntityConfig",
-  }) as any as S.Schema<GuardrailChecksSensitiveInformationEntityConfig>;
-export type GuardrailChecksSensitiveInformationEntityConfigList =
-  GuardrailChecksSensitiveInformationEntityConfig[];
-export const GuardrailChecksSensitiveInformationEntityConfigList =
-  /*@__PURE__*/ S.Array(GuardrailChecksSensitiveInformationEntityConfig);
-export interface GuardrailChecksSensitiveInformationConfig {
-  entities: GuardrailChecksSensitiveInformationEntityConfig[];
-}
-export const GuardrailChecksSensitiveInformationConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ entities: GuardrailChecksSensitiveInformationEntityConfigList }),
-  ).annotate({
-    identifier: "GuardrailChecksSensitiveInformationConfig",
-  }) as any as S.Schema<GuardrailChecksSensitiveInformationConfig>;
-export interface GuardrailChecksConfig {
-  contentFilter?: GuardrailChecksContentFilterConfig;
-  promptAttack?: GuardrailChecksPromptAttackConfig;
-  sensitiveInformation?: GuardrailChecksSensitiveInformationConfig;
-}
-export const GuardrailChecksConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentFilter: S.optional(GuardrailChecksContentFilterConfig),
-    promptAttack: S.optional(GuardrailChecksPromptAttackConfig),
-    sensitiveInformation: S.optional(GuardrailChecksSensitiveInformationConfig),
-  }),
-).annotate({
-  identifier: "GuardrailChecksConfig",
-}) as any as S.Schema<GuardrailChecksConfig>;
-export interface InvokeGuardrailChecksRequest {
-  messages: GuardrailChecksMessage[];
-  checks: GuardrailChecksConfig;
-}
-export const InvokeGuardrailChecksRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    messages: GuardrailChecksMessageList,
-    checks: GuardrailChecksConfig,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/guardrail-checks/invoke" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "InvokeGuardrailChecksRequest",
-}) as any as S.Schema<InvokeGuardrailChecksRequest>;
-export interface GuardrailChecksContentFilterResultEntry {
-  category: GuardrailChecksContentFilterCategory;
-  severityScore: number;
-}
-export const GuardrailChecksContentFilterResultEntry = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      category: GuardrailChecksContentFilterCategory,
-      severityScore: S.Number,
-    }),
-).annotate({
-  identifier: "GuardrailChecksContentFilterResultEntry",
-}) as any as S.Schema<GuardrailChecksContentFilterResultEntry>;
-export type GuardrailChecksContentFilterResultList =
-  GuardrailChecksContentFilterResultEntry[];
-export const GuardrailChecksContentFilterResultList = /*@__PURE__*/ S.Array(
-  GuardrailChecksContentFilterResultEntry,
-);
-export interface GuardrailChecksContentFilterResult {
-  results: GuardrailChecksContentFilterResultEntry[];
-}
-export const GuardrailChecksContentFilterResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ results: GuardrailChecksContentFilterResultList }),
-).annotate({
-  identifier: "GuardrailChecksContentFilterResult",
-}) as any as S.Schema<GuardrailChecksContentFilterResult>;
-export interface GuardrailChecksPromptAttackResultEntry {
-  category: GuardrailChecksPromptAttackCategory;
-  severityScore: number;
-}
-export const GuardrailChecksPromptAttackResultEntry = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      category: GuardrailChecksPromptAttackCategory,
-      severityScore: S.Number,
-    }),
-).annotate({
-  identifier: "GuardrailChecksPromptAttackResultEntry",
-}) as any as S.Schema<GuardrailChecksPromptAttackResultEntry>;
-export type GuardrailChecksPromptAttackResultList =
-  GuardrailChecksPromptAttackResultEntry[];
-export const GuardrailChecksPromptAttackResultList = /*@__PURE__*/ S.Array(
-  GuardrailChecksPromptAttackResultEntry,
-);
-export interface GuardrailChecksPromptAttackResult {
-  results: GuardrailChecksPromptAttackResultEntry[];
-}
-export const GuardrailChecksPromptAttackResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ results: GuardrailChecksPromptAttackResultList }),
-).annotate({
-  identifier: "GuardrailChecksPromptAttackResult",
-}) as any as S.Schema<GuardrailChecksPromptAttackResult>;
-export interface GuardrailChecksSensitiveInformationResultEntry {
-  type: GuardrailChecksSensitiveInformationEntityType;
-  confidenceScore: number;
-  beginOffset: number;
-  endOffset: number;
-  messageIndex: number;
-  contentIndex: number;
-}
-export const GuardrailChecksSensitiveInformationResultEntry =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: GuardrailChecksSensitiveInformationEntityType,
-      confidenceScore: S.Number,
-      beginOffset: S.Number,
-      endOffset: S.Number,
-      messageIndex: S.Number,
-      contentIndex: S.Number,
-    }),
-  ).annotate({
-    identifier: "GuardrailChecksSensitiveInformationResultEntry",
-  }) as any as S.Schema<GuardrailChecksSensitiveInformationResultEntry>;
-export type GuardrailChecksSensitiveInformationResultList =
-  GuardrailChecksSensitiveInformationResultEntry[];
-export const GuardrailChecksSensitiveInformationResultList =
-  /*@__PURE__*/ S.Array(GuardrailChecksSensitiveInformationResultEntry);
-export interface GuardrailChecksSensitiveInformationResult {
-  results: GuardrailChecksSensitiveInformationResultEntry[];
-  truncated?: boolean;
-}
-export const GuardrailChecksSensitiveInformationResult =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      results: GuardrailChecksSensitiveInformationResultList,
-      truncated: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "GuardrailChecksSensitiveInformationResult",
-  }) as any as S.Schema<GuardrailChecksSensitiveInformationResult>;
-export interface GuardrailChecksResults {
-  contentFilter?: GuardrailChecksContentFilterResult;
-  promptAttack?: GuardrailChecksPromptAttackResult;
-  sensitiveInformation?: GuardrailChecksSensitiveInformationResult;
-}
-export const GuardrailChecksResults = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentFilter: S.optional(GuardrailChecksContentFilterResult),
-    promptAttack: S.optional(GuardrailChecksPromptAttackResult),
-    sensitiveInformation: S.optional(GuardrailChecksSensitiveInformationResult),
-  }),
-).annotate({
-  identifier: "GuardrailChecksResults",
-}) as any as S.Schema<GuardrailChecksResults>;
-export interface GuardrailChecksContentFilterUsage {
-  textUnits: number;
-}
-export const GuardrailChecksContentFilterUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ textUnits: S.Number }),
-).annotate({
-  identifier: "GuardrailChecksContentFilterUsage",
-}) as any as S.Schema<GuardrailChecksContentFilterUsage>;
-export interface GuardrailChecksPromptAttackUsage {
-  textUnits: number;
-}
-export const GuardrailChecksPromptAttackUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ textUnits: S.Number }),
-).annotate({
-  identifier: "GuardrailChecksPromptAttackUsage",
-}) as any as S.Schema<GuardrailChecksPromptAttackUsage>;
-export interface GuardrailChecksSensitiveInformationUsage {
-  textUnits: number;
-}
-export const GuardrailChecksSensitiveInformationUsage = /*@__PURE__*/ S.suspend(
-  () => S.Struct({ textUnits: S.Number }),
-).annotate({
-  identifier: "GuardrailChecksSensitiveInformationUsage",
-}) as any as S.Schema<GuardrailChecksSensitiveInformationUsage>;
-export interface GuardrailChecksUsageResults {
-  contentFilter?: GuardrailChecksContentFilterUsage;
-  promptAttack?: GuardrailChecksPromptAttackUsage;
-  sensitiveInformation?: GuardrailChecksSensitiveInformationUsage;
-}
-export const GuardrailChecksUsageResults = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentFilter: S.optional(GuardrailChecksContentFilterUsage),
-    promptAttack: S.optional(GuardrailChecksPromptAttackUsage),
-    sensitiveInformation: S.optional(GuardrailChecksSensitiveInformationUsage),
-  }),
-).annotate({
-  identifier: "GuardrailChecksUsageResults",
-}) as any as S.Schema<GuardrailChecksUsageResults>;
-export interface InvokeGuardrailChecksResponse {
-  results: GuardrailChecksResults;
-  usage: GuardrailChecksUsageResults;
-}
-export const InvokeGuardrailChecksResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: GuardrailChecksResults,
-    usage: GuardrailChecksUsageResults,
-  }),
-).annotate({
-  identifier: "InvokeGuardrailChecksResponse",
-}) as any as S.Schema<InvokeGuardrailChecksResponse>;
+export type ConversationalModelId = string;
 export type ConversationRole = "user" | "assistant" | "system" | (string & {});
 export const ConversationRole = /*@__PURE__*/ S.String;
+
 export type ImageFormat = "png" | "jpeg" | "gif" | "webp" | (string & {});
 export const ImageFormat = /*@__PURE__*/ S.String;
+
+export type S3Uri = string;
+export type AccountId = string;
 export interface S3Location {
   uri: string;
   bucketOwner?: string;
@@ -1549,6 +1079,7 @@ export type DocumentFormat =
   | "md"
   | (string & {});
 export const DocumentFormat = /*@__PURE__*/ S.String;
+
 export type DocumentContentBlock = { text: string };
 export const DocumentContentBlock = /*@__PURE__*/ S.Union([
   S.Struct({ text: S.String }),
@@ -1608,6 +1139,7 @@ export type VideoFormat =
   | "three_gp"
   | (string & {});
 export const VideoFormat = /*@__PURE__*/ S.String;
+
 export type VideoSource =
   | { bytes: Uint8Array; s3Location?: never }
   | { bytes?: never; s3Location: S3Location };
@@ -1640,6 +1172,7 @@ export type AudioFormat =
   | "webm"
   | (string & {});
 export const AudioFormat = /*@__PURE__*/ S.String;
+
 export type AudioSource =
   | { bytes: Uint8Array; s3Location?: never }
   | { bytes?: never; s3Location: S3Location };
@@ -1659,8 +1192,11 @@ export const AudioBlock = /*@__PURE__*/ S.suspend(() =>
     error: S.optional(ErrorBlock),
   }),
 ).annotate({ identifier: "AudioBlock" }) as any as S.Schema<AudioBlock>;
+export type ToolUseId = string;
+export type ToolName = string;
 export type ToolUseType = "server_tool_use" | (string & {});
 export const ToolUseType = /*@__PURE__*/ S.String;
+
 export interface ToolUseBlock {
   toolUseId: string;
   name: string;
@@ -1766,6 +1302,7 @@ export const ToolResultContentBlocks = /*@__PURE__*/ S.Array(
 );
 export type ToolResultStatus = "success" | "error" | (string & {});
 export const ToolResultStatus = /*@__PURE__*/ S.String;
+
 export interface ToolResultBlock {
   toolUseId: string;
   content: ToolResultContentBlock[];
@@ -1788,6 +1325,7 @@ export type GuardrailConverseContentQualifier =
   | "guard_content"
   | (string & {});
 export const GuardrailConverseContentQualifier = /*@__PURE__*/ S.String;
+
 export type GuardrailConverseContentQualifierList =
   GuardrailConverseContentQualifier[];
 export const GuardrailConverseContentQualifierList = /*@__PURE__*/ S.Array(
@@ -1807,6 +1345,7 @@ export const GuardrailConverseTextBlock = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GuardrailConverseTextBlock>;
 export type GuardrailConverseImageFormat = "png" | "jpeg" | (string & {});
 export const GuardrailConverseImageFormat = /*@__PURE__*/ S.String;
+
 export type GuardrailConverseImageSource = { bytes: Uint8Array };
 export const GuardrailConverseImageSource = /*@__PURE__*/ S.Union([
   S.Struct({ bytes: T.Blob }),
@@ -1832,8 +1371,10 @@ export const GuardrailConverseContentBlock = /*@__PURE__*/ S.Union([
 ]);
 export type CachePointType = "default" | (string & {});
 export const CachePointType = /*@__PURE__*/ S.String;
+
 export type CacheTTL = "5m" | "1h" | (string & {});
 export const CacheTTL = /*@__PURE__*/ S.String;
+
 export interface CachePointBlock {
   type: CachePointType;
   ttl?: CacheTTL;
@@ -2203,6 +1744,7 @@ export const Message = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
 export type Messages = Message[];
 export const Messages = /*@__PURE__*/ S.Array(Message);
+export type NonEmptyString = string;
 export type SystemContentBlock =
   | { text: string; guardContent?: never; cachePoint?: never }
   | {
@@ -2313,6 +1855,7 @@ export type GuardrailTrace =
   | "enabled_full"
   | (string & {});
 export const GuardrailTrace = /*@__PURE__*/ S.String;
+
 export interface GuardrailConfiguration {
   guardrailIdentifier?: string;
   guardrailVersion?: string;
@@ -2349,6 +1892,7 @@ export const RequestMetadata = /*@__PURE__*/ S.Record(
 );
 export type PerformanceConfigLatency = "standard" | "optimized" | (string & {});
 export const PerformanceConfigLatency = /*@__PURE__*/ S.String;
+
 export interface PerformanceConfiguration {
   latency?: PerformanceConfigLatency;
 }
@@ -2364,6 +1908,7 @@ export type ServiceTierType =
   | "reserved"
   | (string & {});
 export const ServiceTierType = /*@__PURE__*/ S.String;
+
 export interface ServiceTier {
   type: ServiceTierType;
 }
@@ -2372,6 +1917,7 @@ export const ServiceTier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceTier" }) as any as S.Schema<ServiceTier>;
 export type OutputFormatType = "json_schema" | (string & {});
 export const OutputFormatType = /*@__PURE__*/ S.String;
+
 export interface JsonSchemaDefinition {
   schema: string;
   name?: string;
@@ -2464,6 +2010,7 @@ export type StopReason =
   | "model_context_window_exceeded"
   | (string & {});
 export const StopReason = /*@__PURE__*/ S.String;
+
 export interface CacheDetail {
   ttl: CacheTTL;
   inputTokens: number;
@@ -2531,6 +2078,7 @@ export const GuardrailTraceAssessment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GuardrailTraceAssessment",
 }) as any as S.Schema<GuardrailTraceAssessment>;
+export type InvokedModelId = string;
 export interface PromptRouterTrace {
   invokedModelId?: string;
 }
@@ -2575,6 +2123,7 @@ export const ConverseResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConverseResponse>;
 export type GuardrailStreamProcessingMode = "sync" | "async" | (string & {});
 export const GuardrailStreamProcessingMode = /*@__PURE__*/ S.String;
+
 export interface GuardrailStreamConfiguration {
   guardrailIdentifier?: string;
   guardrailVersion?: string;
@@ -2689,6 +2238,7 @@ export const ContentBlockStart = /*@__PURE__*/ S.Union([
   S.Struct({ toolResult: ToolResultBlockStart }),
   S.Struct({ image: ImageBlockStart }),
 ]);
+export type NonNegativeInteger = number;
 export interface ContentBlockStartEvent {
   start: ContentBlockStart;
   contentBlockIndex: number;
@@ -2884,6 +2434,8 @@ export const ConverseStreamMetadataEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConverseStreamMetadataEvent",
 }) as any as S.Schema<ConverseStreamMetadataEvent>;
+export type NonBlankString = string;
+export type StatusCode = number;
 export type ConverseStreamOutput =
   | {
       messageStart: MessageStartEvent;
@@ -3071,8 +2623,490 @@ export const ConverseStreamResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConverseStreamResponse",
 }) as any as S.Schema<ConverseStreamResponse>;
+export type FoundationModelVersionIdentifier = string;
+export type Body = Uint8Array | redacted.Redacted<Uint8Array>;
+export interface InvokeModelTokensRequest {
+  body: Uint8Array | redacted.Redacted<Uint8Array>;
+}
+export const InvokeModelTokensRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ body: SensitiveBlob }),
+).annotate({
+  identifier: "InvokeModelTokensRequest",
+}) as any as S.Schema<InvokeModelTokensRequest>;
+export interface ConverseTokensRequest {
+  messages?: Message[];
+  system?: SystemContentBlock[];
+  toolConfig?: ToolConfiguration;
+  additionalModelRequestFields?: any;
+}
+export const ConverseTokensRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    messages: S.optional(Messages),
+    system: S.optional(SystemContentBlocks),
+    toolConfig: S.optional(ToolConfiguration),
+    additionalModelRequestFields: S.optional(S.Any),
+  }),
+).annotate({
+  identifier: "ConverseTokensRequest",
+}) as any as S.Schema<ConverseTokensRequest>;
+export type CountTokensInput =
+  | { invokeModel: InvokeModelTokensRequest; converse?: never }
+  | { invokeModel?: never; converse: ConverseTokensRequest };
+export const CountTokensInput = /*@__PURE__*/ S.Union([
+  S.Struct({ invokeModel: InvokeModelTokensRequest }),
+  S.Struct({ converse: ConverseTokensRequest }),
+]);
+export interface CountTokensRequest {
+  modelId: string;
+  input: CountTokensInput;
+}
+export const CountTokensRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modelId: S.String.pipe(T.HttpLabel("modelId")),
+    input: CountTokensInput,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/model/{modelId}/count-tokens" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CountTokensRequest",
+}) as any as S.Schema<CountTokensRequest>;
+export interface CountTokensResponse {
+  inputTokens: number;
+}
+export const CountTokensResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ inputTokens: S.Number }),
+).annotate({
+  identifier: "CountTokensResponse",
+}) as any as S.Schema<CountTokensResponse>;
+export type InvocationArn = string;
+export interface GetAsyncInvokeRequest {
+  invocationArn: string;
+}
+export const GetAsyncInvokeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ invocationArn: S.String.pipe(T.HttpLabel("invocationArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/async-invoke/{invocationArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetAsyncInvokeRequest",
+}) as any as S.Schema<GetAsyncInvokeRequest>;
+export type AsyncInvokeArn = string;
+export type AsyncInvokeIdempotencyToken = string;
+export type AsyncInvokeStatus =
+  | "InProgress"
+  | "Completed"
+  | "Failed"
+  | (string & {});
+export const AsyncInvokeStatus = /*@__PURE__*/ S.String;
+
+export type AsyncInvokeMessage = string | redacted.Redacted<string>;
+export type KmsKeyId = string;
+export interface AsyncInvokeS3OutputDataConfig {
+  s3Uri: string;
+  kmsKeyId?: string;
+  bucketOwner?: string;
+}
+export const AsyncInvokeS3OutputDataConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    s3Uri: S.String,
+    kmsKeyId: S.optional(S.String),
+    bucketOwner: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AsyncInvokeS3OutputDataConfig",
+}) as any as S.Schema<AsyncInvokeS3OutputDataConfig>;
+export type AsyncInvokeOutputDataConfig = {
+  s3OutputDataConfig: AsyncInvokeS3OutputDataConfig;
+};
+export const AsyncInvokeOutputDataConfig = /*@__PURE__*/ S.Union([
+  S.Struct({ s3OutputDataConfig: AsyncInvokeS3OutputDataConfig }),
+]);
+export interface GetAsyncInvokeResponse {
+  invocationArn: string;
+  modelArn: string;
+  clientRequestToken?: string;
+  status: AsyncInvokeStatus;
+  failureMessage?: string | redacted.Redacted<string>;
+  submitTime: Date;
+  lastModifiedTime?: Date;
+  endTime?: Date;
+  outputDataConfig: AsyncInvokeOutputDataConfig;
+}
+export const GetAsyncInvokeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    invocationArn: S.String,
+    modelArn: S.String,
+    clientRequestToken: S.optional(S.String),
+    status: AsyncInvokeStatus,
+    failureMessage: S.optional(SensitiveString),
+    submitTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastModifiedTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    outputDataConfig: AsyncInvokeOutputDataConfig,
+  }),
+).annotate({
+  identifier: "GetAsyncInvokeResponse",
+}) as any as S.Schema<GetAsyncInvokeResponse>;
+export type GuardrailChecksRole =
+  | "user"
+  | "assistant"
+  | "system"
+  | (string & {});
+export const GuardrailChecksRole = /*@__PURE__*/ S.String;
+
+export type GuardrailChecksTextContent = string | redacted.Redacted<string>;
+export type GuardrailChecksContentBlock = {
+  text: string | redacted.Redacted<string>;
+};
+export const GuardrailChecksContentBlock = /*@__PURE__*/ S.Union([
+  S.Struct({ text: SensitiveString }),
+]);
+export type GuardrailChecksContentBlockList = GuardrailChecksContentBlock[];
+export const GuardrailChecksContentBlockList = /*@__PURE__*/ S.Array(
+  GuardrailChecksContentBlock,
+);
+export interface GuardrailChecksMessage {
+  role: GuardrailChecksRole;
+  content: GuardrailChecksContentBlock[];
+}
+export const GuardrailChecksMessage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    role: GuardrailChecksRole,
+    content: GuardrailChecksContentBlockList,
+  }),
+).annotate({
+  identifier: "GuardrailChecksMessage",
+}) as any as S.Schema<GuardrailChecksMessage>;
+export type GuardrailChecksMessageList = GuardrailChecksMessage[];
+export const GuardrailChecksMessageList = /*@__PURE__*/ S.Array(
+  GuardrailChecksMessage,
+);
+export type GuardrailChecksContentFilterCategory =
+  | "VIOLENCE"
+  | "HATE"
+  | "SEXUAL"
+  | "MISCONDUCT"
+  | "INSULTS"
+  | (string & {});
+export const GuardrailChecksContentFilterCategory = /*@__PURE__*/ S.String;
+
+export interface GuardrailChecksContentFilterCategoryConfig {
+  category: GuardrailChecksContentFilterCategory;
+}
+export const GuardrailChecksContentFilterCategoryConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ category: GuardrailChecksContentFilterCategory }),
+  ).annotate({
+    identifier: "GuardrailChecksContentFilterCategoryConfig",
+  }) as any as S.Schema<GuardrailChecksContentFilterCategoryConfig>;
+export type GuardrailChecksContentFilterCategoryConfigList =
+  GuardrailChecksContentFilterCategoryConfig[];
+export const GuardrailChecksContentFilterCategoryConfigList =
+  /*@__PURE__*/ S.Array(GuardrailChecksContentFilterCategoryConfig);
+export interface GuardrailChecksContentFilterConfig {
+  categories: GuardrailChecksContentFilterCategoryConfig[];
+}
+export const GuardrailChecksContentFilterConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ categories: GuardrailChecksContentFilterCategoryConfigList }),
+).annotate({
+  identifier: "GuardrailChecksContentFilterConfig",
+}) as any as S.Schema<GuardrailChecksContentFilterConfig>;
+export type GuardrailChecksPromptAttackCategory =
+  | "JAILBREAK"
+  | "PROMPT_INJECTION"
+  | "PROMPT_LEAKAGE"
+  | (string & {});
+export const GuardrailChecksPromptAttackCategory = /*@__PURE__*/ S.String;
+
+export interface GuardrailChecksPromptAttackCategoryConfig {
+  category: GuardrailChecksPromptAttackCategory;
+}
+export const GuardrailChecksPromptAttackCategoryConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ category: GuardrailChecksPromptAttackCategory }),
+  ).annotate({
+    identifier: "GuardrailChecksPromptAttackCategoryConfig",
+  }) as any as S.Schema<GuardrailChecksPromptAttackCategoryConfig>;
+export type GuardrailChecksPromptAttackCategoryConfigList =
+  GuardrailChecksPromptAttackCategoryConfig[];
+export const GuardrailChecksPromptAttackCategoryConfigList =
+  /*@__PURE__*/ S.Array(GuardrailChecksPromptAttackCategoryConfig);
+export interface GuardrailChecksPromptAttackConfig {
+  categories: GuardrailChecksPromptAttackCategoryConfig[];
+}
+export const GuardrailChecksPromptAttackConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ categories: GuardrailChecksPromptAttackCategoryConfigList }),
+).annotate({
+  identifier: "GuardrailChecksPromptAttackConfig",
+}) as any as S.Schema<GuardrailChecksPromptAttackConfig>;
+export type GuardrailChecksSensitiveInformationEntityType =
+  | "ADDRESS"
+  | "AGE"
+  | "AWS_ACCESS_KEY"
+  | "AWS_SECRET_KEY"
+  | "CA_HEALTH_NUMBER"
+  | "CA_SOCIAL_INSURANCE_NUMBER"
+  | "CREDIT_DEBIT_CARD_CVV"
+  | "CREDIT_DEBIT_CARD_EXPIRY"
+  | "CREDIT_DEBIT_CARD_NUMBER"
+  | "DRIVER_ID"
+  | "EMAIL"
+  | "INTERNATIONAL_BANK_ACCOUNT_NUMBER"
+  | "IP_ADDRESS"
+  | "LICENSE_PLATE"
+  | "MAC_ADDRESS"
+  | "NAME"
+  | "PASSWORD"
+  | "PHONE"
+  | "PIN"
+  | "SWIFT_CODE"
+  | "UK_NATIONAL_HEALTH_SERVICE_NUMBER"
+  | "UK_NATIONAL_INSURANCE_NUMBER"
+  | "UK_UNIQUE_TAXPAYER_REFERENCE_NUMBER"
+  | "URL"
+  | "USERNAME"
+  | "US_BANK_ACCOUNT_NUMBER"
+  | "US_BANK_ROUTING_NUMBER"
+  | "US_INDIVIDUAL_TAX_IDENTIFICATION_NUMBER"
+  | "US_PASSPORT_NUMBER"
+  | "US_SOCIAL_SECURITY_NUMBER"
+  | "VEHICLE_IDENTIFICATION_NUMBER"
+  | (string & {});
+export const GuardrailChecksSensitiveInformationEntityType =
+  /*@__PURE__*/ S.String;
+
+export interface GuardrailChecksSensitiveInformationEntityConfig {
+  type: GuardrailChecksSensitiveInformationEntityType;
+}
+export const GuardrailChecksSensitiveInformationEntityConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ type: GuardrailChecksSensitiveInformationEntityType }),
+  ).annotate({
+    identifier: "GuardrailChecksSensitiveInformationEntityConfig",
+  }) as any as S.Schema<GuardrailChecksSensitiveInformationEntityConfig>;
+export type GuardrailChecksSensitiveInformationEntityConfigList =
+  GuardrailChecksSensitiveInformationEntityConfig[];
+export const GuardrailChecksSensitiveInformationEntityConfigList =
+  /*@__PURE__*/ S.Array(GuardrailChecksSensitiveInformationEntityConfig);
+export interface GuardrailChecksSensitiveInformationConfig {
+  entities: GuardrailChecksSensitiveInformationEntityConfig[];
+}
+export const GuardrailChecksSensitiveInformationConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ entities: GuardrailChecksSensitiveInformationEntityConfigList }),
+  ).annotate({
+    identifier: "GuardrailChecksSensitiveInformationConfig",
+  }) as any as S.Schema<GuardrailChecksSensitiveInformationConfig>;
+export interface GuardrailChecksConfig {
+  contentFilter?: GuardrailChecksContentFilterConfig;
+  promptAttack?: GuardrailChecksPromptAttackConfig;
+  sensitiveInformation?: GuardrailChecksSensitiveInformationConfig;
+}
+export const GuardrailChecksConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentFilter: S.optional(GuardrailChecksContentFilterConfig),
+    promptAttack: S.optional(GuardrailChecksPromptAttackConfig),
+    sensitiveInformation: S.optional(GuardrailChecksSensitiveInformationConfig),
+  }),
+).annotate({
+  identifier: "GuardrailChecksConfig",
+}) as any as S.Schema<GuardrailChecksConfig>;
+export interface InvokeGuardrailChecksRequest {
+  messages: GuardrailChecksMessage[];
+  checks: GuardrailChecksConfig;
+}
+export const InvokeGuardrailChecksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    messages: GuardrailChecksMessageList,
+    checks: GuardrailChecksConfig,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/guardrail-checks/invoke" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "InvokeGuardrailChecksRequest",
+}) as any as S.Schema<InvokeGuardrailChecksRequest>;
+export interface GuardrailChecksContentFilterResultEntry {
+  category: GuardrailChecksContentFilterCategory;
+  severityScore: number;
+}
+export const GuardrailChecksContentFilterResultEntry = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      category: GuardrailChecksContentFilterCategory,
+      severityScore: S.Number,
+    }),
+).annotate({
+  identifier: "GuardrailChecksContentFilterResultEntry",
+}) as any as S.Schema<GuardrailChecksContentFilterResultEntry>;
+export type GuardrailChecksContentFilterResultList =
+  GuardrailChecksContentFilterResultEntry[];
+export const GuardrailChecksContentFilterResultList = /*@__PURE__*/ S.Array(
+  GuardrailChecksContentFilterResultEntry,
+);
+export interface GuardrailChecksContentFilterResult {
+  results: GuardrailChecksContentFilterResultEntry[];
+}
+export const GuardrailChecksContentFilterResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ results: GuardrailChecksContentFilterResultList }),
+).annotate({
+  identifier: "GuardrailChecksContentFilterResult",
+}) as any as S.Schema<GuardrailChecksContentFilterResult>;
+export interface GuardrailChecksPromptAttackResultEntry {
+  category: GuardrailChecksPromptAttackCategory;
+  severityScore: number;
+}
+export const GuardrailChecksPromptAttackResultEntry = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      category: GuardrailChecksPromptAttackCategory,
+      severityScore: S.Number,
+    }),
+).annotate({
+  identifier: "GuardrailChecksPromptAttackResultEntry",
+}) as any as S.Schema<GuardrailChecksPromptAttackResultEntry>;
+export type GuardrailChecksPromptAttackResultList =
+  GuardrailChecksPromptAttackResultEntry[];
+export const GuardrailChecksPromptAttackResultList = /*@__PURE__*/ S.Array(
+  GuardrailChecksPromptAttackResultEntry,
+);
+export interface GuardrailChecksPromptAttackResult {
+  results: GuardrailChecksPromptAttackResultEntry[];
+}
+export const GuardrailChecksPromptAttackResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ results: GuardrailChecksPromptAttackResultList }),
+).annotate({
+  identifier: "GuardrailChecksPromptAttackResult",
+}) as any as S.Schema<GuardrailChecksPromptAttackResult>;
+export interface GuardrailChecksSensitiveInformationResultEntry {
+  type: GuardrailChecksSensitiveInformationEntityType;
+  confidenceScore: number;
+  beginOffset: number;
+  endOffset: number;
+  messageIndex: number;
+  contentIndex: number;
+}
+export const GuardrailChecksSensitiveInformationResultEntry =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: GuardrailChecksSensitiveInformationEntityType,
+      confidenceScore: S.Number,
+      beginOffset: S.Number,
+      endOffset: S.Number,
+      messageIndex: S.Number,
+      contentIndex: S.Number,
+    }),
+  ).annotate({
+    identifier: "GuardrailChecksSensitiveInformationResultEntry",
+  }) as any as S.Schema<GuardrailChecksSensitiveInformationResultEntry>;
+export type GuardrailChecksSensitiveInformationResultList =
+  GuardrailChecksSensitiveInformationResultEntry[];
+export const GuardrailChecksSensitiveInformationResultList =
+  /*@__PURE__*/ S.Array(GuardrailChecksSensitiveInformationResultEntry);
+export interface GuardrailChecksSensitiveInformationResult {
+  results: GuardrailChecksSensitiveInformationResultEntry[];
+  truncated?: boolean;
+}
+export const GuardrailChecksSensitiveInformationResult =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      results: GuardrailChecksSensitiveInformationResultList,
+      truncated: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "GuardrailChecksSensitiveInformationResult",
+  }) as any as S.Schema<GuardrailChecksSensitiveInformationResult>;
+export interface GuardrailChecksResults {
+  contentFilter?: GuardrailChecksContentFilterResult;
+  promptAttack?: GuardrailChecksPromptAttackResult;
+  sensitiveInformation?: GuardrailChecksSensitiveInformationResult;
+}
+export const GuardrailChecksResults = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentFilter: S.optional(GuardrailChecksContentFilterResult),
+    promptAttack: S.optional(GuardrailChecksPromptAttackResult),
+    sensitiveInformation: S.optional(GuardrailChecksSensitiveInformationResult),
+  }),
+).annotate({
+  identifier: "GuardrailChecksResults",
+}) as any as S.Schema<GuardrailChecksResults>;
+export interface GuardrailChecksContentFilterUsage {
+  textUnits: number;
+}
+export const GuardrailChecksContentFilterUsage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ textUnits: S.Number }),
+).annotate({
+  identifier: "GuardrailChecksContentFilterUsage",
+}) as any as S.Schema<GuardrailChecksContentFilterUsage>;
+export interface GuardrailChecksPromptAttackUsage {
+  textUnits: number;
+}
+export const GuardrailChecksPromptAttackUsage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ textUnits: S.Number }),
+).annotate({
+  identifier: "GuardrailChecksPromptAttackUsage",
+}) as any as S.Schema<GuardrailChecksPromptAttackUsage>;
+export interface GuardrailChecksSensitiveInformationUsage {
+  textUnits: number;
+}
+export const GuardrailChecksSensitiveInformationUsage = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ textUnits: S.Number }),
+).annotate({
+  identifier: "GuardrailChecksSensitiveInformationUsage",
+}) as any as S.Schema<GuardrailChecksSensitiveInformationUsage>;
+export interface GuardrailChecksUsageResults {
+  contentFilter?: GuardrailChecksContentFilterUsage;
+  promptAttack?: GuardrailChecksPromptAttackUsage;
+  sensitiveInformation?: GuardrailChecksSensitiveInformationUsage;
+}
+export const GuardrailChecksUsageResults = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentFilter: S.optional(GuardrailChecksContentFilterUsage),
+    promptAttack: S.optional(GuardrailChecksPromptAttackUsage),
+    sensitiveInformation: S.optional(GuardrailChecksSensitiveInformationUsage),
+  }),
+).annotate({
+  identifier: "GuardrailChecksUsageResults",
+}) as any as S.Schema<GuardrailChecksUsageResults>;
+export interface InvokeGuardrailChecksResponse {
+  results: GuardrailChecksResults;
+  usage: GuardrailChecksUsageResults;
+}
+export const InvokeGuardrailChecksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: GuardrailChecksResults,
+    usage: GuardrailChecksUsageResults,
+  }),
+).annotate({
+  identifier: "InvokeGuardrailChecksResponse",
+}) as any as S.Schema<InvokeGuardrailChecksResponse>;
+export type MimeType = string;
+export type InvokeModelIdentifier = string;
 export type Trace = "ENABLED" | "DISABLED" | "ENABLED_FULL" | (string & {});
 export const Trace = /*@__PURE__*/ S.String;
+
+export type RequestMetadataJson = string | redacted.Redacted<string>;
 export interface InvokeModelRequest {
   body?: T.StreamingInputBody;
   contentType?: string;
@@ -3140,6 +3174,7 @@ export const InvokeModelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvokeModelResponse",
 }) as any as S.Schema<InvokeModelResponse>;
+export type PartBody = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface BidirectionalInputPayloadPart {
   bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
@@ -3480,48 +3515,41 @@ export const InvokeModelWithResponseStreamResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "InvokeModelWithResponseStreamResponse",
 }) as any as S.Schema<InvokeModelWithResponseStreamResponse>;
-export interface InvokeModelTokensRequest {
-  body: Uint8Array | redacted.Redacted<Uint8Array>;
+export type MaxResults = number;
+export type PaginationToken = string;
+export type SortAsyncInvocationBy = "SubmissionTime" | (string & {});
+export const SortAsyncInvocationBy = /*@__PURE__*/ S.String;
+
+export type SortOrder = "Ascending" | "Descending" | (string & {});
+export const SortOrder = /*@__PURE__*/ S.String;
+
+export interface ListAsyncInvokesRequest {
+  submitTimeAfter?: Date;
+  submitTimeBefore?: Date;
+  statusEquals?: AsyncInvokeStatus;
+  maxResults?: number;
+  nextToken?: string;
+  sortBy?: SortAsyncInvocationBy;
+  sortOrder?: SortOrder;
 }
-export const InvokeModelTokensRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ body: SensitiveBlob }),
-).annotate({
-  identifier: "InvokeModelTokensRequest",
-}) as any as S.Schema<InvokeModelTokensRequest>;
-export interface ConverseTokensRequest {
-  messages?: Message[];
-  system?: SystemContentBlock[];
-  toolConfig?: ToolConfiguration;
-  additionalModelRequestFields?: any;
-}
-export const ConverseTokensRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAsyncInvokesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    messages: S.optional(Messages),
-    system: S.optional(SystemContentBlocks),
-    toolConfig: S.optional(ToolConfiguration),
-    additionalModelRequestFields: S.optional(S.Any),
-  }),
-).annotate({
-  identifier: "ConverseTokensRequest",
-}) as any as S.Schema<ConverseTokensRequest>;
-export type CountTokensInput =
-  | { invokeModel: InvokeModelTokensRequest; converse?: never }
-  | { invokeModel?: never; converse: ConverseTokensRequest };
-export const CountTokensInput = /*@__PURE__*/ S.Union([
-  S.Struct({ invokeModel: InvokeModelTokensRequest }),
-  S.Struct({ converse: ConverseTokensRequest }),
-]);
-export interface CountTokensRequest {
-  modelId: string;
-  input: CountTokensInput;
-}
-export const CountTokensRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modelId: S.String.pipe(T.HttpLabel("modelId")),
-    input: CountTokensInput,
+    submitTimeAfter: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.HttpQuery("submitTimeAfter")),
+    submitTimeBefore: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ).pipe(T.HttpQuery("submitTimeBefore")),
+    statusEquals: S.optional(AsyncInvokeStatus).pipe(
+      T.HttpQuery("statusEquals"),
+    ),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    sortBy: S.optional(SortAsyncInvocationBy).pipe(T.HttpQuery("sortBy")),
+    sortOrder: S.optional(SortOrder).pipe(T.HttpQuery("sortOrder")),
   }).pipe(
     T.all(
-      T.Http({ method: "POST", uri: "/model/{modelId}/count-tokens" }),
+      T.Http({ method: "GET", uri: "/async-invoke" }),
       svc,
       auth,
       proto,
@@ -3530,202 +3558,98 @@ export const CountTokensRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "CountTokensRequest",
-}) as any as S.Schema<CountTokensRequest>;
-export interface CountTokensResponse {
-  inputTokens: number;
+  identifier: "ListAsyncInvokesRequest",
+}) as any as S.Schema<ListAsyncInvokesRequest>;
+export interface AsyncInvokeSummary {
+  invocationArn: string;
+  modelArn: string;
+  clientRequestToken?: string;
+  status?: AsyncInvokeStatus;
+  failureMessage?: string | redacted.Redacted<string>;
+  submitTime: Date;
+  lastModifiedTime?: Date;
+  endTime?: Date;
+  outputDataConfig: AsyncInvokeOutputDataConfig;
 }
-export const CountTokensResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ inputTokens: S.Number }),
+export const AsyncInvokeSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    invocationArn: S.String,
+    modelArn: S.String,
+    clientRequestToken: S.optional(S.String),
+    status: S.optional(AsyncInvokeStatus),
+    failureMessage: S.optional(SensitiveString),
+    submitTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastModifiedTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    endTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    outputDataConfig: AsyncInvokeOutputDataConfig,
+  }),
 ).annotate({
-  identifier: "CountTokensResponse",
-}) as any as S.Schema<CountTokensResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ModelErrorException extends S.TaggedErrorClass<ModelErrorException>()(
-  "ModelErrorException",
-  {
-    message: S.optional(S.String),
-    originalStatusCode: S.optional(S.Number),
-    resourceName: S.optional(S.String),
-  },
-  T.HttpError(424),
-) {}
-export class ModelNotReadyException extends S.TaggedErrorClass<ModelNotReadyException>()(
-  "ModelNotReadyException",
-  { message: S.optional(S.String) },
-  T.all(T.HttpError(429), T.Retryable()),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ModelTimeoutException extends S.TaggedErrorClass<ModelTimeoutException>()(
-  "ModelTimeoutException",
-  { message: S.optional(S.String) },
-  T.HttpError(408),
-).pipe(C.withTimeoutError) {}
-export class ModelStreamErrorException extends S.TaggedErrorClass<ModelStreamErrorException>()(
-  "ModelStreamErrorException",
-  {
-    message: S.optional(S.String),
-    originalStatusCode: S.optional(S.Number),
-    originalMessage: S.optional(S.String),
-  },
-  T.HttpError(424),
-) {}
-
-//# Operations
-export type GetAsyncInvokeError =
-  | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieve information about an asynchronous invocation.
- */
-export const getAsyncInvoke: API.OperationMethod<
-  GetAsyncInvokeRequest,
-  GetAsyncInvokeResponse,
-  GetAsyncInvokeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetAsyncInvokeRequest,
-  output: GetAsyncInvokeResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetAsyncInvoke",
-}));
-export type ListAsyncInvokesError =
-  | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Lists asynchronous invocations.
- */
-export const listAsyncInvokes: API.OperationMethod<
-  ListAsyncInvokesRequest,
-  ListAsyncInvokesResponse,
-  ListAsyncInvokesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListAsyncInvokesRequest,
-  ) => stream.Stream<
-    ListAsyncInvokesResponse,
-    ListAsyncInvokesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListAsyncInvokesRequest,
-  ) => stream.Stream<
-    AsyncInvokeSummary,
-    ListAsyncInvokesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAsyncInvokesRequest,
-  output: ListAsyncInvokesResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListAsyncInvokes",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "asyncInvokeSummaries",
-    pageSize: "maxResults",
-  } as const,
-}));
-export type StartAsyncInvokeError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Starts an asynchronous invocation.
- *
- * This operation requires permission for the `bedrock:InvokeModel` action.
- *
- * To deny all inference access to resources that you specify in the modelId field, you need to deny access to the `bedrock:InvokeModel` and `bedrock:InvokeModelWithResponseStream` actions. Doing this also denies access to the resource through the Converse API actions (Converse and ConverseStream). For more information see Deny access for inference on specific models.
- */
-export const startAsyncInvoke: API.OperationMethod<
-  StartAsyncInvokeRequest,
-  StartAsyncInvokeResponse,
-  StartAsyncInvokeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: StartAsyncInvokeRequest,
-  output: StartAsyncInvokeResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "StartAsyncInvoke",
-}));
+  identifier: "AsyncInvokeSummary",
+}) as any as S.Schema<AsyncInvokeSummary>;
+export type AsyncInvokeSummaries = AsyncInvokeSummary[];
+export const AsyncInvokeSummaries = /*@__PURE__*/ S.Array(AsyncInvokeSummary);
+export interface ListAsyncInvokesResponse {
+  nextToken?: string;
+  asyncInvokeSummaries?: AsyncInvokeSummary[];
+}
+export const ListAsyncInvokesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    asyncInvokeSummaries: S.optional(AsyncInvokeSummaries),
+  }),
+).annotate({
+  identifier: "ListAsyncInvokesResponse",
+}) as any as S.Schema<ListAsyncInvokesResponse>;
+export type AsyncInvokeIdentifier = string;
+export type ModelInputPayload = unknown;
+export type TagKey = string;
+export type TagValue = string;
+export interface Tag {
+  key: string;
+  value: string;
+}
+export const Tag = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ key: S.String, value: S.String }),
+).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+export type TagList = Tag[];
+export const TagList = /*@__PURE__*/ S.Array(Tag);
+export interface StartAsyncInvokeRequest {
+  clientRequestToken?: string;
+  modelId: string;
+  modelInput: any;
+  outputDataConfig: AsyncInvokeOutputDataConfig;
+  tags?: Tag[];
+}
+export const StartAsyncInvokeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    modelId: S.String,
+    modelInput: S.Any,
+    outputDataConfig: AsyncInvokeOutputDataConfig,
+    tags: S.optional(TagList),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/async-invoke" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StartAsyncInvokeRequest",
+}) as any as S.Schema<StartAsyncInvokeRequest>;
+export interface StartAsyncInvokeResponse {
+  invocationArn: string;
+}
+export const StartAsyncInvokeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ invocationArn: S.String }),
+).annotate({
+  identifier: "StartAsyncInvokeResponse",
+}) as any as S.Schema<StartAsyncInvokeResponse>;
 export type ApplyGuardrailError =
   | AccessDeniedException
   | InternalServerException
@@ -3761,35 +3685,7 @@ export const applyGuardrail: API.OperationMethod<
   retry: Retry,
   operationName: "ApplyGuardrail",
 }));
-export type InvokeGuardrailChecksError =
-  | AccessDeniedException
-  | InternalServerException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Evaluates messages against inline guardrail checks. You specify the check configurations directly in the request, and Amazon Bedrock returns per-check results with severity or confidence scores.
- */
-export const invokeGuardrailChecks: API.OperationMethod<
-  InvokeGuardrailChecksRequest,
-  InvokeGuardrailChecksResponse,
-  InvokeGuardrailChecksError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvokeGuardrailChecksRequest,
-  output: InvokeGuardrailChecksResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "InvokeGuardrailChecks",
-}));
+
 export type ConverseError =
   | AccessDeniedException
   | InternalServerException
@@ -3843,6 +3739,7 @@ export const converse: API.OperationMethod<
   retry: Retry,
   operationName: "Converse",
 }));
+
 export type ConverseStreamError =
   | AccessDeniedException
   | InternalServerException
@@ -3900,6 +3797,115 @@ export const converseStream: API.OperationMethod<
   retry: Retry,
   operationName: "ConverseStream",
 }));
+
+export type CountTokensError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns the token count for a given inference request. This operation helps you estimate token usage before sending requests to foundation models by returning the token count that would be used if the same input were sent to the model in an inference request.
+ *
+ * Token counting is model-specific because different models use different tokenization strategies. The token count returned by this operation will match the token count that would be charged if the same input were sent to the model in an `InvokeModel` or `Converse` request.
+ *
+ * You can use this operation to:
+ *
+ * - Estimate costs before sending inference requests.
+ *
+ * - Optimize prompts to fit within token limits.
+ *
+ * - Plan for token usage in your applications.
+ *
+ * This operation accepts the same input formats as `InvokeModel` and `Converse`, allowing you to count tokens for both raw text inputs and structured conversation formats.
+ *
+ * The following operations are related to `CountTokens`:
+ *
+ * - InvokeModel - Sends inference requests to foundation models
+ *
+ * - Converse - Sends conversation-based inference requests to foundation models
+ */
+export const countTokens: API.OperationMethod<
+  CountTokensRequest,
+  CountTokensResponse,
+  CountTokensError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CountTokensRequest,
+  output: CountTokensResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CountTokens",
+}));
+
+export type GetAsyncInvokeError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieve information about an asynchronous invocation.
+ */
+export const getAsyncInvoke: API.OperationMethod<
+  GetAsyncInvokeRequest,
+  GetAsyncInvokeResponse,
+  GetAsyncInvokeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAsyncInvokeRequest,
+  output: GetAsyncInvokeResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetAsyncInvoke",
+}));
+
+export type InvokeGuardrailChecksError =
+  | AccessDeniedException
+  | InternalServerException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Evaluates messages against inline guardrail checks. You specify the check configurations directly in the request, and Amazon Bedrock returns per-check results with severity or confidence scores.
+ */
+export const invokeGuardrailChecks: API.OperationMethod<
+  InvokeGuardrailChecksRequest,
+  InvokeGuardrailChecksResponse,
+  InvokeGuardrailChecksError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: InvokeGuardrailChecksRequest,
+  output: InvokeGuardrailChecksResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "InvokeGuardrailChecks",
+}));
+
 export type InvokeModelError =
   | AccessDeniedException
   | InternalServerException
@@ -3947,6 +3953,7 @@ export const invokeModel: API.OperationMethod<
   retry: Retry,
   operationName: "InvokeModel",
 }));
+
 export type InvokeModelWithBidirectionalStreamError =
   | AccessDeniedException
   | InternalServerException
@@ -3990,6 +3997,7 @@ export const invokeModelWithBidirectionalStream: API.OperationMethod<
   retry: Retry,
   operationName: "InvokeModelWithBidirectionalStream",
 }));
+
 export type InvokeModelWithResponseStreamError =
   | AccessDeniedException
   | InternalServerException
@@ -4043,52 +4051,92 @@ export const invokeModelWithResponseStream: API.OperationMethod<
   retry: Retry,
   operationName: "InvokeModelWithResponseStream",
 }));
-export type CountTokensError =
+
+export type ListAsyncInvokesError =
   | AccessDeniedException
   | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists asynchronous invocations.
+ */
+export const listAsyncInvokes: API.OperationMethod<
+  ListAsyncInvokesRequest,
+  ListAsyncInvokesResponse,
+  ListAsyncInvokesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListAsyncInvokesRequest,
+  ) => stream.Stream<
+    ListAsyncInvokesResponse,
+    ListAsyncInvokesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListAsyncInvokesRequest,
+  ) => stream.Stream<
+    AsyncInvokeSummary,
+    ListAsyncInvokesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListAsyncInvokesRequest,
+  output: ListAsyncInvokesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListAsyncInvokes",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "asyncInvokeSummaries",
+    pageSize: "maxResults",
+  } as const,
+}));
+
+export type StartAsyncInvokeError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
   | ResourceNotFoundException
+  | ServiceQuotaExceededException
   | ServiceUnavailableException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Returns the token count for a given inference request. This operation helps you estimate token usage before sending requests to foundation models by returning the token count that would be used if the same input were sent to the model in an inference request.
+ * Starts an asynchronous invocation.
  *
- * Token counting is model-specific because different models use different tokenization strategies. The token count returned by this operation will match the token count that would be charged if the same input were sent to the model in an `InvokeModel` or `Converse` request.
+ * This operation requires permission for the `bedrock:InvokeModel` action.
  *
- * You can use this operation to:
- *
- * - Estimate costs before sending inference requests.
- *
- * - Optimize prompts to fit within token limits.
- *
- * - Plan for token usage in your applications.
- *
- * This operation accepts the same input formats as `InvokeModel` and `Converse`, allowing you to count tokens for both raw text inputs and structured conversation formats.
- *
- * The following operations are related to `CountTokens`:
- *
- * - InvokeModel - Sends inference requests to foundation models
- *
- * - Converse - Sends conversation-based inference requests to foundation models
+ * To deny all inference access to resources that you specify in the modelId field, you need to deny access to the `bedrock:InvokeModel` and `bedrock:InvokeModelWithResponseStream` actions. Doing this also denies access to the resource through the Converse API actions (Converse and ConverseStream). For more information see Deny access for inference on specific models.
  */
-export const countTokens: API.OperationMethod<
-  CountTokensRequest,
-  CountTokensResponse,
-  CountTokensError,
+export const startAsyncInvoke: API.OperationMethod<
+  StartAsyncInvokeRequest,
+  StartAsyncInvokeResponse,
+  StartAsyncInvokeError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CountTokensRequest,
-  output: CountTokensResponse,
+  input: StartAsyncInvokeRequest,
+  output: StartAsyncInvokeResponse,
   errors: [
     AccessDeniedException,
+    ConflictException,
     InternalServerException,
     ResourceNotFoundException,
+    ServiceQuotaExceededException,
     ServiceUnavailableException,
     ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "CountTokens",
+  operationName: "StartAsyncInvoke",
 }));

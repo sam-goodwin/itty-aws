@@ -82,61 +82,87 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class GroupAlreadyExists extends S.TaggedErrorClass<GroupAlreadyExists>()(
+  "GroupAlreadyExists",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: " already exists$" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class GroupNotFound extends S.TaggedErrorClass<GroupNotFound>()(
+  "GroupNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: "Group not found",
+  }),
+).pipe(C.withNotFoundError) {}
+export class InvalidPolicyRevisionIdException extends S.TaggedErrorClass<InvalidPolicyRevisionIdException>()(
+  "InvalidPolicyRevisionIdException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String) },
+) {}
+export class LockoutPreventionException extends S.TaggedErrorClass<LockoutPreventionException>()(
+  "LockoutPreventionException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class MalformedPolicyDocumentException extends S.TaggedErrorClass<MalformedPolicyDocumentException>()(
+  "MalformedPolicyDocumentException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class PolicyCountLimitExceededException extends S.TaggedErrorClass<PolicyCountLimitExceededException>()(
+  "PolicyCountLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class PolicySizeLimitExceededException extends S.TaggedErrorClass<PolicySizeLimitExceededException>()(
+  "PolicySizeLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class RuleLimitExceededException extends S.TaggedErrorClass<RuleLimitExceededException>()(
+  "RuleLimitExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class SamplingRuleAlreadyExists extends S.TaggedErrorClass<SamplingRuleAlreadyExists>()(
+  "SamplingRuleAlreadyExists",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: "Sampling rule already exists",
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class SamplingRuleNotFound extends S.TaggedErrorClass<SamplingRuleNotFound>()(
+  "SamplingRuleNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: "Sampling rule does not exist",
+  }),
+).pipe(C.withNotFoundError) {}
+export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
+  "ThrottledException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type TraceId = string;
-export type SegmentId = string;
-export type SegmentDocument = string;
-export type ErrorMessage = string;
-export type RetrievalToken = string;
-export type AmazonResourceName = string;
-export type GroupName = string;
-export type FilterExpression = string;
-export type TagKey = string;
-export type TagValue = string;
-export type RuleName = string;
-export type ResourceARN = string;
-export type Priority = number;
-export type FixedRate = number;
-export type ReservoirSize = number;
-export type ServiceName = string;
-export type ServiceType = string;
-export type Host = string;
-export type HTTPMethod = string;
-export type URLPath = string;
-export type Version = number;
-export type AttributeKey = string;
-export type AttributeValue = string;
-export type MaxRate = number;
-export type CooldownWindowMinutes = number;
-export type GroupARN = string;
-export type PolicyName = string;
-export type PolicyRevisionId = string;
-export type GetGroupsNextToken = string;
-export type InsightId = string;
-export type InsightSummaryText = string;
-export type GetInsightEventsMaxResults = number;
-export type Token = string;
-export type EventSummaryText = string;
-export type GetInsightSummariesMaxResults = number;
-export type ClientID = string;
-export type RequestCount = number;
-export type SampledCount = number;
-export type BorrowCount = number;
-export type AnomalyCount = number;
-export type TotalCount = number;
-export type SampledAnomalyCount = number;
-export type EntitySelectorExpression = string;
-export type AnnotationKey = string;
-export type ResourcePolicyNextToken = string;
-export type PolicyDocument = string;
-export type SpanId = string;
-export type SpanDocument = string;
-export type EncryptionKeyId = string;
-export type EC2InstanceId = string;
-export type Hostname = string;
-export type TraceSegmentDocument = string;
-
-//# Schemas
 export type TraceIdList = string[];
 export const TraceIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetTracesRequest {
@@ -157,6 +183,8 @@ export const BatchGetTracesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetTracesRequest",
 }) as any as S.Schema<BatchGetTracesRequest>;
+export type SegmentId = string;
+export type SegmentDocument = string;
 export interface Segment {
   Id?: string;
   Document?: string;
@@ -198,6 +226,7 @@ export const BatchGetTracesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetTracesResult",
 }) as any as S.Schema<BatchGetTracesResult>;
+export type RetrievalToken = string;
 export interface CancelTraceRetrievalRequest {
   RetrievalToken: string;
 }
@@ -221,6 +250,8 @@ export const CancelTraceRetrievalResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelTraceRetrievalResult",
 }) as any as S.Schema<CancelTraceRetrievalResult>;
+export type GroupName = string;
+export type FilterExpression = string;
 export interface InsightsConfiguration {
   InsightsEnabled?: boolean;
   NotificationsEnabled?: boolean;
@@ -233,6 +264,8 @@ export const InsightsConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InsightsConfiguration",
 }) as any as S.Schema<InsightsConfiguration>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -289,11 +322,26 @@ export const CreateGroupResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGroupResult",
 }) as any as S.Schema<CreateGroupResult>;
+export type RuleName = string;
+export type ResourceARN = string;
+export type Priority = number;
+export type FixedRate = number;
+export type ReservoirSize = number;
+export type ServiceName = string;
+export type ServiceType = string;
+export type Host = string;
+export type HTTPMethod = string;
+export type URLPath = string;
+export type Version = number;
+export type AttributeKey = string;
+export type AttributeValue = string;
 export type AttributeMap = { [key: string]: string | undefined };
 export const AttributeMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type MaxRate = number;
+export type CooldownWindowMinutes = number;
 export interface SamplingRateBoost {
   MaxRate: number;
   CooldownWindowMinutes: number;
@@ -377,6 +425,7 @@ export const CreateSamplingRuleResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSamplingRuleResult",
 }) as any as S.Schema<CreateSamplingRuleResult>;
+export type GroupARN = string;
 export interface DeleteGroupRequest {
   GroupName?: string;
   GroupARN?: string;
@@ -404,6 +453,8 @@ export const DeleteGroupResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteGroupResult",
 }) as any as S.Schema<DeleteGroupResult>;
+export type PolicyName = string;
+export type PolicyRevisionId = string;
 export interface DeleteResourcePolicyRequest {
   PolicyName: string;
   PolicyRevisionId?: string;
@@ -477,8 +528,10 @@ export const GetEncryptionConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEncryptionConfigRequest>;
 export type EncryptionStatus = "UPDATING" | "ACTIVE" | (string & {});
 export const EncryptionStatus = /*@__PURE__*/ S.String;
+
 export type EncryptionType = "NONE" | "KMS" | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
+
 export interface EncryptionConfig {
   KeyId?: string;
   Status?: EncryptionStatus;
@@ -528,6 +581,7 @@ export interface GetGroupResult {
 export const GetGroupResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Group: S.optional(Group) }),
 ).annotate({ identifier: "GetGroupResult" }) as any as S.Schema<GetGroupResult>;
+export type GetGroupsNextToken = string;
 export interface GetGroupsRequest {
   NextToken?: string;
 }
@@ -632,6 +686,7 @@ export const GetIndexingRulesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIndexingRulesResult",
 }) as any as S.Schema<GetIndexingRulesResult>;
+export type InsightId = string;
 export interface GetInsightRequest {
   InsightId: string;
 }
@@ -667,10 +722,13 @@ export const ServiceId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceId" }) as any as S.Schema<ServiceId>;
 export type InsightCategory = "FAULT" | (string & {});
 export const InsightCategory = /*@__PURE__*/ S.String;
+
 export type InsightCategoryList = InsightCategory[];
 export const InsightCategoryList = /*@__PURE__*/ S.Array(InsightCategory);
 export type InsightState = "ACTIVE" | "CLOSED" | (string & {});
 export const InsightState = /*@__PURE__*/ S.String;
+
+export type InsightSummaryText = string;
 export interface RequestImpactStatistics {
   FaultCount?: number;
   OkCount?: number;
@@ -735,6 +793,8 @@ export const GetInsightResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInsightResult",
 }) as any as S.Schema<GetInsightResult>;
+export type GetInsightEventsMaxResults = number;
+export type Token = string;
 export interface GetInsightEventsRequest {
   InsightId: string;
   MaxResults?: number;
@@ -758,6 +818,7 @@ export const GetInsightEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInsightEventsRequest",
 }) as any as S.Schema<GetInsightEventsRequest>;
+export type EventSummaryText = string;
 export interface InsightEvent {
   Summary?: string;
   EventTime?: Date;
@@ -879,6 +940,7 @@ export const GetInsightImpactGraphResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInsightImpactGraphResult>;
 export type InsightStateList = InsightState[];
 export const InsightStateList = /*@__PURE__*/ S.Array(InsightState);
+export type GetInsightSummariesMaxResults = number;
 export interface GetInsightSummariesRequest {
   States?: InsightState[];
   GroupARN?: string;
@@ -985,6 +1047,7 @@ export type RetrievalStatus =
   | "TIMEOUT"
   | (string & {});
 export const RetrievalStatus = /*@__PURE__*/ S.String;
+
 export interface ErrorStatistics {
   ThrottleCount?: number;
   OtherCount?: number;
@@ -1248,6 +1311,10 @@ export const GetSamplingStatisticSummariesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSamplingStatisticSummariesResult",
 }) as any as S.Schema<GetSamplingStatisticSummariesResult>;
+export type ClientID = string;
+export type RequestCount = number;
+export type SampledCount = number;
+export type BorrowCount = number;
 export interface SamplingStatisticsDocument {
   RuleName: string;
   ClientID: string;
@@ -1272,6 +1339,9 @@ export type SamplingStatisticsDocumentList = SamplingStatisticsDocument[];
 export const SamplingStatisticsDocumentList = /*@__PURE__*/ S.Array(
   SamplingStatisticsDocument,
 );
+export type AnomalyCount = number;
+export type TotalCount = number;
+export type SampledAnomalyCount = number;
 export interface SamplingBoostStatisticsDocument {
   RuleName: string;
   ServiceName: string;
@@ -1439,6 +1509,7 @@ export const GetServiceGraphResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetServiceGraphResult",
 }) as any as S.Schema<GetServiceGraphResult>;
+export type EntitySelectorExpression = string;
 export interface GetTimeSeriesServiceStatisticsRequest {
   StartTime: Date;
   EndTime: Date;
@@ -1569,11 +1640,13 @@ export const GetTraceSegmentDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTraceSegmentDestinationRequest>;
 export type TraceSegmentDestination = "XRay" | "CloudWatchLogs" | (string & {});
 export const TraceSegmentDestination = /*@__PURE__*/ S.String;
+
 export type TraceSegmentDestinationStatus =
   | "PENDING"
   | "ACTIVE"
   | (string & {});
 export const TraceSegmentDestinationStatus = /*@__PURE__*/ S.String;
+
 export interface GetTraceSegmentDestinationResult {
   Destination?: TraceSegmentDestination;
   Status?: TraceSegmentDestinationStatus;
@@ -1588,8 +1661,10 @@ export const GetTraceSegmentDestinationResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTraceSegmentDestinationResult>;
 export type TimeRangeType = "TraceId" | "Event" | "Service" | (string & {});
 export const TimeRangeType = /*@__PURE__*/ S.String;
+
 export type SamplingStrategyName = "PartialScan" | "FixedRate" | (string & {});
 export const SamplingStrategyName = /*@__PURE__*/ S.String;
+
 export interface SamplingStrategy {
   Name?: SamplingStrategyName;
   Value?: number;
@@ -1649,6 +1724,7 @@ export const Http = /*@__PURE__*/ S.suspend(() =>
     ClientIp: S.optional(S.String),
   }),
 ).annotate({ identifier: "Http" }) as any as S.Schema<Http>;
+export type AnnotationKey = string;
 export type AnnotationValue =
   | { NumberValue: number; BooleanValue?: never; StringValue?: never }
   | { NumberValue?: never; BooleanValue: boolean; StringValue?: never }
@@ -1968,6 +2044,7 @@ export const GetTraceSummariesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTraceSummariesResult",
 }) as any as S.Schema<GetTraceSummariesResult>;
+export type ResourcePolicyNextToken = string;
 export interface ListResourcePoliciesRequest {
   NextToken?: string;
 }
@@ -1985,6 +2062,7 @@ export const ListResourcePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListResourcePoliciesRequest",
 }) as any as S.Schema<ListResourcePoliciesRequest>;
+export type PolicyDocument = string;
 export interface ResourcePolicy {
   PolicyName?: string;
   PolicyDocument?: string;
@@ -2017,6 +2095,7 @@ export const ListResourcePoliciesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListResourcePoliciesResult>;
 export type TraceFormatType = "XRAY" | "OTEL" | (string & {});
 export const TraceFormatType = /*@__PURE__*/ S.String;
+
 export interface ListRetrievedTracesRequest {
   RetrievalToken: string;
   TraceFormat?: TraceFormatType;
@@ -2040,6 +2119,8 @@ export const ListRetrievedTracesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRetrievedTracesRequest",
 }) as any as S.Schema<ListRetrievedTracesRequest>;
+export type SpanId = string;
+export type SpanDocument = string;
 export interface Span {
   Id?: string;
   Document?: string;
@@ -2079,6 +2160,7 @@ export const ListRetrievedTracesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRetrievedTracesResult",
 }) as any as S.Schema<ListRetrievedTracesResult>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
   NextToken?: string;
@@ -2106,6 +2188,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
+export type EncryptionKeyId = string;
 export interface PutEncryptionConfigRequest {
   KeyId?: string;
   Type: EncryptionType;
@@ -2207,6 +2290,8 @@ export const TelemetryRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TelemetryRecord>;
 export type TelemetryRecordList = TelemetryRecord[];
 export const TelemetryRecordList = /*@__PURE__*/ S.Array(TelemetryRecord);
+export type EC2InstanceId = string;
+export type Hostname = string;
 export interface PutTelemetryRecordsRequest {
   TelemetryRecords: TelemetryRecord[];
   EC2InstanceId?: string;
@@ -2238,6 +2323,7 @@ export const PutTelemetryRecordsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutTelemetryRecordsResult",
 }) as any as S.Schema<PutTelemetryRecordsResult>;
+export type TraceSegmentDocument = string;
 export type TraceSegmentDocumentList = string[];
 export const TraceSegmentDocumentList = /*@__PURE__*/ S.Array(S.String);
 export interface PutTraceSegmentsRequest {
@@ -2530,90 +2616,7 @@ export const UpdateTraceSegmentDestinationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTraceSegmentDestinationResult",
 }) as any as S.Schema<UpdateTraceSegmentDestinationResult>;
-
-//# Errors
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-) {}
-export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
-  "ThrottledException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class GroupAlreadyExists extends S.TaggedErrorClass<GroupAlreadyExists>()(
-  "GroupAlreadyExists",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: " already exists$" },
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class RuleLimitExceededException extends S.TaggedErrorClass<RuleLimitExceededException>()(
-  "RuleLimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class SamplingRuleAlreadyExists extends S.TaggedErrorClass<SamplingRuleAlreadyExists>()(
-  "SamplingRuleAlreadyExists",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: "Sampling rule already exists",
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class GroupNotFound extends S.TaggedErrorClass<GroupNotFound>()(
-  "GroupNotFound",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: "Group not found",
-  }),
-).pipe(C.withNotFoundError) {}
-export class InvalidPolicyRevisionIdException extends S.TaggedErrorClass<InvalidPolicyRevisionIdException>()(
-  "InvalidPolicyRevisionIdException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class SamplingRuleNotFound extends S.TaggedErrorClass<SamplingRuleNotFound>()(
-  "SamplingRuleNotFound",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: "Sampling rule does not exist",
-  }),
-).pipe(C.withNotFoundError) {}
-export class LockoutPreventionException extends S.TaggedErrorClass<LockoutPreventionException>()(
-  "LockoutPreventionException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class MalformedPolicyDocumentException extends S.TaggedErrorClass<MalformedPolicyDocumentException>()(
-  "MalformedPolicyDocumentException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class PolicyCountLimitExceededException extends S.TaggedErrorClass<PolicyCountLimitExceededException>()(
-  "PolicyCountLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class PolicySizeLimitExceededException extends S.TaggedErrorClass<PolicySizeLimitExceededException>()(
-  "PolicySizeLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type BatchGetTracesError =
   | InvalidRequestException
   | ThrottledException
@@ -2658,6 +2661,7 @@ export const batchGetTraces: API.OperationMethod<
     items: "Traces",
   } as const,
 }));
+
 export type CancelTraceRetrievalError =
   | InvalidRequestException
   | ResourceNotFoundException
@@ -2683,6 +2687,7 @@ export const cancelTraceRetrieval: API.OperationMethod<
   retry: Retry,
   operationName: "CancelTraceRetrieval",
 }));
+
 export type CreateGroupError =
   | InvalidRequestException
   | ThrottledException
@@ -2704,6 +2709,7 @@ export const createGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGroup",
 }));
+
 export type CreateSamplingRuleError =
   | InvalidRequestException
   | RuleLimitExceededException
@@ -2737,6 +2743,7 @@ export const createSamplingRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSamplingRule",
 }));
+
 export type DeleteGroupError =
   | InvalidRequestException
   | ThrottledException
@@ -2758,6 +2765,7 @@ export const deleteGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGroup",
 }));
+
 export type DeleteResourcePolicyError =
   | InvalidPolicyRevisionIdException
   | InvalidRequestException
@@ -2783,6 +2791,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteSamplingRuleError =
   | InvalidRequestException
   | ThrottledException
@@ -2804,6 +2813,7 @@ export const deleteSamplingRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSamplingRule",
 }));
+
 export type GetEncryptionConfigError =
   | InvalidRequestException
   | ThrottledException
@@ -2824,6 +2834,7 @@ export const getEncryptionConfig: API.OperationMethod<
   retry: Retry,
   operationName: "GetEncryptionConfig",
 }));
+
 export type GetGroupError =
   | InvalidRequestException
   | ThrottledException
@@ -2845,6 +2856,7 @@ export const getGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetGroup",
 }));
+
 export type GetGroupsError =
   | InvalidRequestException
   | ThrottledException
@@ -2885,6 +2897,7 @@ export const getGroups: API.OperationMethod<
     items: "Groups",
   } as const,
 }));
+
 export type GetIndexingRulesError =
   | InvalidRequestException
   | ThrottledException
@@ -2907,6 +2920,7 @@ export const getIndexingRules: API.OperationMethod<
   retry: Retry,
   operationName: "GetIndexingRules",
 }));
+
 export type GetInsightError =
   | InvalidRequestException
   | ThrottledException
@@ -2929,6 +2943,7 @@ export const getInsight: API.OperationMethod<
   retry: Retry,
   operationName: "GetInsight",
 }));
+
 export type GetInsightEventsError =
   | InvalidRequestException
   | ThrottledException
@@ -2971,6 +2986,7 @@ export const getInsightEvents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetInsightImpactGraphError =
   | InvalidRequestException
   | ThrottledException
@@ -2992,6 +3008,7 @@ export const getInsightImpactGraph: API.OperationMethod<
   retry: Retry,
   operationName: "GetInsightImpactGraph",
 }));
+
 export type GetInsightSummariesError =
   | InvalidRequestException
   | ThrottledException
@@ -3032,6 +3049,7 @@ export const getInsightSummaries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetRetrievedTracesGraphError =
   | InvalidRequestException
   | ResourceNotFoundException
@@ -3065,6 +3083,7 @@ export const getRetrievedTracesGraph: API.OperationMethod<
   retry: Retry,
   operationName: "GetRetrievedTracesGraph",
 }));
+
 export type GetSamplingRulesError =
   | InvalidRequestException
   | ThrottledException
@@ -3105,6 +3124,7 @@ export const getSamplingRules: API.OperationMethod<
     items: "SamplingRuleRecords",
   } as const,
 }));
+
 export type GetSamplingStatisticSummariesError =
   | InvalidRequestException
   | ThrottledException
@@ -3145,6 +3165,7 @@ export const getSamplingStatisticSummaries: API.OperationMethod<
     items: "SamplingStatisticSummaries",
   } as const,
 }));
+
 export type GetSamplingTargetsError =
   | InvalidRequestException
   | ThrottledException
@@ -3165,6 +3186,7 @@ export const getSamplingTargets: API.OperationMethod<
   retry: Retry,
   operationName: "GetSamplingTargets",
 }));
+
 export type GetServiceGraphError =
   | InvalidRequestException
   | ThrottledException
@@ -3209,6 +3231,7 @@ export const getServiceGraph: API.OperationMethod<
     items: "Services",
   } as const,
 }));
+
 export type GetTimeSeriesServiceStatisticsError =
   | InvalidRequestException
   | ThrottledException
@@ -3250,6 +3273,7 @@ export const getTimeSeriesServiceStatistics: API.OperationMethod<
     items: "TimeSeriesServiceStatistics",
   } as const,
 }));
+
 export type GetTraceGraphError =
   | InvalidRequestException
   | ThrottledException
@@ -3290,6 +3314,7 @@ export const getTraceGraph: API.OperationMethod<
     items: "Services",
   } as const,
 }));
+
 export type GetTraceSegmentDestinationError =
   | InvalidRequestException
   | ThrottledException
@@ -3310,6 +3335,7 @@ export const getTraceSegmentDestination: API.OperationMethod<
   retry: Retry,
   operationName: "GetTraceSegmentDestination",
 }));
+
 export type GetTraceSummariesError =
   | InvalidRequestException
   | ThrottledException
@@ -3367,6 +3393,7 @@ export const getTraceSummaries: API.OperationMethod<
     items: "TraceSummaries",
   } as const,
 }));
+
 export type ListResourcePoliciesError =
   | InvalidRequestException
   | ThrottledException
@@ -3407,6 +3434,7 @@ export const listResourcePolicies: API.OperationMethod<
     items: "ResourcePolicies",
   } as const,
 }));
+
 export type ListRetrievedTracesError =
   | InvalidRequestException
   | ResourceNotFoundException
@@ -3440,6 +3468,7 @@ export const listRetrievedTraces: API.OperationMethod<
   retry: Retry,
   operationName: "ListRetrievedTraces",
 }));
+
 export type ListTagsForResourceError =
   | InvalidRequestException
   | ResourceNotFoundException
@@ -3485,6 +3514,7 @@ export const listTagsForResource: API.OperationMethod<
     items: "Tags",
   } as const,
 }));
+
 export type PutEncryptionConfigError =
   | InvalidRequestException
   | ThrottledException
@@ -3505,6 +3535,7 @@ export const putEncryptionConfig: API.OperationMethod<
   retry: Retry,
   operationName: "PutEncryptionConfig",
 }));
+
 export type PutResourcePolicyError =
   | InvalidPolicyRevisionIdException
   | LockoutPreventionException
@@ -3539,6 +3570,7 @@ export const putResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type PutTelemetryRecordsError =
   | InvalidRequestException
   | ThrottledException
@@ -3559,6 +3591,7 @@ export const putTelemetryRecords: API.OperationMethod<
   retry: Retry,
   operationName: "PutTelemetryRecords",
 }));
+
 export type PutTraceSegmentsError =
   | InvalidRequestException
   | ThrottledException
@@ -3630,6 +3663,7 @@ export const putTraceSegments: API.OperationMethod<
   retry: Retry,
   operationName: "PutTraceSegments",
 }));
+
 export type StartTraceRetrievalError =
   | InvalidRequestException
   | ResourceNotFoundException
@@ -3661,6 +3695,7 @@ export const startTraceRetrieval: API.OperationMethod<
   retry: Retry,
   operationName: "StartTraceRetrieval",
 }));
+
 export type TagResourceError =
   | InvalidRequestException
   | ResourceNotFoundException
@@ -3688,6 +3723,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InvalidRequestException
   | ResourceNotFoundException
@@ -3714,6 +3750,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateGroupError =
   | InvalidRequestException
   | ThrottledException
@@ -3735,6 +3772,7 @@ export const updateGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGroup",
 }));
+
 export type UpdateIndexingRuleError =
   | InvalidRequestException
   | ResourceNotFoundException
@@ -3762,6 +3800,7 @@ export const updateIndexingRule: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateIndexingRule",
 }));
+
 export type UpdateSamplingRuleError =
   | InvalidRequestException
   | ThrottledException
@@ -3783,6 +3822,7 @@ export const updateSamplingRule: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSamplingRule",
 }));
+
 export type UpdateTraceSegmentDestinationError =
   | InvalidRequestException
   | ThrottledException

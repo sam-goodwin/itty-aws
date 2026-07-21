@@ -54,7 +54,41 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.String },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Identifier = string;
 export type LocationName = string;
 export type AlwaysOnCapacity = number;
@@ -63,31 +97,6 @@ export type TargetIdleCapacity = number;
 export type MaximumCapacity = number;
 export type VpcId = string;
 export type Ipv4CidrBlock = string;
-export type CapacityValue = number;
-export type Arn = string;
-export type ClientToken = string;
-export type SignalRequest = string | redacted.Redacted<string>;
-export type SignalResponse = string | redacted.Redacted<string>;
-export type OutputUri = string;
-export type Description = string;
-export type Id = string;
-export type UserId = string;
-export type ConnectionTimeoutSeconds = number;
-export type SessionLengthSeconds = number;
-export type FileLocationUri = string;
-export type WebSdkProtocolUrl = string;
-export type ExportFilesReason = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type TagKey = string;
-export type TagValue = string;
-export type RuntimeEnvironmentVersion = string;
-export type ExecutablePath = string;
-export type ApplicationSourceUri = string;
-export type FilePath = string;
-export type ApplicationLogOutputUri = string;
-
-//# Schemas
 export type Ipv4CidrBlockList = string[];
 export const Ipv4CidrBlockList = /*@__PURE__*/ S.Array(S.String);
 export interface VpcTransitConfiguration {
@@ -151,6 +160,8 @@ export type StreamGroupLocationStatus =
   | "REMOVING"
   | (string & {});
 export const StreamGroupLocationStatus = /*@__PURE__*/ S.String;
+
+export type CapacityValue = number;
 export interface VpcTransitConfigurationResponse {
   VpcId?: string;
   Ipv4CidrBlocks?: string[];
@@ -232,6 +243,7 @@ export const AssociateApplicationsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateApplicationsInput",
 }) as any as S.Schema<AssociateApplicationsInput>;
+export type Arn = string;
 export type ArnList = string[];
 export const ArnList = /*@__PURE__*/ S.Array(S.String);
 export interface AssociateApplicationsOutput {
@@ -243,6 +255,247 @@ export const AssociateApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateApplicationsOutput",
 }) as any as S.Schema<AssociateApplicationsOutput>;
+export type Description = string;
+export type RuntimeEnvironmentType =
+  | "PROTON"
+  | "WINDOWS"
+  | "UBUNTU"
+  | (string & {});
+export const RuntimeEnvironmentType = /*@__PURE__*/ S.String;
+
+export type RuntimeEnvironmentVersion = string;
+export interface RuntimeEnvironment {
+  Type: RuntimeEnvironmentType;
+  Version: string;
+}
+export const RuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Type: RuntimeEnvironmentType, Version: S.String }),
+).annotate({
+  identifier: "RuntimeEnvironment",
+}) as any as S.Schema<RuntimeEnvironment>;
+export type ExecutablePath = string;
+export type ApplicationSourceUri = string;
+export type FilePath = string;
+export type FilePaths = string[];
+export const FilePaths = /*@__PURE__*/ S.Array(S.String);
+export type ApplicationLogOutputUri = string;
+export type TagKey = string;
+export type TagValue = string;
+export type Tags = { [key: string]: string | undefined };
+export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export type ClientToken = string;
+export interface CreateApplicationInput {
+  Description: string;
+  RuntimeEnvironment: RuntimeEnvironment;
+  ExecutablePath: string;
+  ApplicationSourceUri: string;
+  ApplicationLogPaths?: string[];
+  ApplicationLogOutputUri?: string;
+  Tags?: { [key: string]: string | undefined };
+  ClientToken?: string;
+}
+export const CreateApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Description: S.String,
+    RuntimeEnvironment: RuntimeEnvironment,
+    ExecutablePath: S.String,
+    ApplicationSourceUri: S.String,
+    ApplicationLogPaths: S.optional(FilePaths),
+    ApplicationLogOutputUri: S.optional(S.String),
+    Tags: S.optional(Tags),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/applications" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateApplicationInput",
+}) as any as S.Schema<CreateApplicationInput>;
+export type Id = string;
+export type ApplicationStatus =
+  | "INITIALIZED"
+  | "PROCESSING"
+  | "READY"
+  | "DELETING"
+  | "ERROR"
+  | (string & {});
+export const ApplicationStatus = /*@__PURE__*/ S.String;
+
+export type ApplicationStatusReason =
+  | "internalError"
+  | "accessDenied"
+  | "sourceModified"
+  | (string & {});
+export const ApplicationStatusReason = /*@__PURE__*/ S.String;
+
+export type ReplicationStatusType = "REPLICATING" | "COMPLETED" | (string & {});
+export const ReplicationStatusType = /*@__PURE__*/ S.String;
+
+export interface ReplicationStatus {
+  Location?: string;
+  Status?: ReplicationStatusType;
+}
+export const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Location: S.optional(S.String),
+    Status: S.optional(ReplicationStatusType),
+  }),
+).annotate({
+  identifier: "ReplicationStatus",
+}) as any as S.Schema<ReplicationStatus>;
+export type ReplicationStatuses = ReplicationStatus[];
+export const ReplicationStatuses = /*@__PURE__*/ S.Array(ReplicationStatus);
+export interface CreateApplicationOutput {
+  Arn: string;
+  Description?: string;
+  RuntimeEnvironment?: RuntimeEnvironment;
+  ExecutablePath?: string;
+  ApplicationLogPaths?: string[];
+  ApplicationLogOutputUri?: string;
+  ApplicationSourceUri?: string;
+  Id?: string;
+  Status?: ApplicationStatus;
+  StatusReason?: ApplicationStatusReason;
+  ReplicationStatuses?: ReplicationStatus[];
+  CreatedAt?: Date;
+  LastUpdatedAt?: Date;
+  AssociatedStreamGroups?: string[];
+}
+export const CreateApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    Description: S.optional(S.String),
+    RuntimeEnvironment: S.optional(RuntimeEnvironment),
+    ExecutablePath: S.optional(S.String),
+    ApplicationLogPaths: S.optional(FilePaths),
+    ApplicationLogOutputUri: S.optional(S.String),
+    ApplicationSourceUri: S.optional(S.String),
+    Id: S.optional(S.String),
+    Status: S.optional(ApplicationStatus),
+    StatusReason: S.optional(ApplicationStatusReason),
+    ReplicationStatuses: S.optional(ReplicationStatuses),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    AssociatedStreamGroups: S.optional(ArnList),
+  }),
+).annotate({
+  identifier: "CreateApplicationOutput",
+}) as any as S.Schema<CreateApplicationOutput>;
+export type StreamClass =
+  | "gen4n_high"
+  | "gen4n_ultra"
+  | "gen4n_win2022"
+  | "gen5n_high"
+  | "gen5n_ultra"
+  | "gen5n_win2022"
+  | "gen6n_small"
+  | "gen6n_medium"
+  | "gen6n_high"
+  | "gen6n_ultra"
+  | "gen6n_ultra_win2022"
+  | "gen6n_pro"
+  | "gen6n_pro_win2022"
+  | "gen6n_small_win2022"
+  | "gen6n_medium_win2022"
+  | "gen6e_pro"
+  | "gen6e_pro_win2022"
+  | (string & {});
+export const StreamClass = /*@__PURE__*/ S.String;
+
+export interface CreateStreamGroupInput {
+  Description: string;
+  StreamClass: StreamClass;
+  DefaultApplicationIdentifier?: string;
+  LocationConfigurations?: LocationConfiguration[];
+  Tags?: { [key: string]: string | undefined };
+  ClientToken?: string;
+}
+export const CreateStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Description: S.String,
+    StreamClass: StreamClass,
+    DefaultApplicationIdentifier: S.optional(S.String),
+    LocationConfigurations: S.optional(LocationConfigurations),
+    Tags: S.optional(Tags),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/streamgroups" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateStreamGroupInput",
+}) as any as S.Schema<CreateStreamGroupInput>;
+export interface DefaultApplication {
+  Id?: string;
+  Arn?: string;
+}
+export const DefaultApplication = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
+).annotate({
+  identifier: "DefaultApplication",
+}) as any as S.Schema<DefaultApplication>;
+export type StreamGroupStatus =
+  | "ACTIVATING"
+  | "UPDATING_LOCATIONS"
+  | "ACTIVE"
+  | "ACTIVE_WITH_ERRORS"
+  | "ERROR"
+  | "DELETING"
+  | "EXPIRED"
+  | (string & {});
+export const StreamGroupStatus = /*@__PURE__*/ S.String;
+
+export type StreamGroupStatusReason =
+  | "internalError"
+  | "noAvailableInstances"
+  | (string & {});
+export const StreamGroupStatusReason = /*@__PURE__*/ S.String;
+
+export interface CreateStreamGroupOutput {
+  Arn: string;
+  Description?: string;
+  DefaultApplication?: DefaultApplication;
+  LocationStates?: LocationState[];
+  StreamClass?: StreamClass;
+  Id?: string;
+  Status?: StreamGroupStatus;
+  StatusReason?: StreamGroupStatusReason;
+  LastUpdatedAt?: Date;
+  CreatedAt?: Date;
+  ExpiresAt?: Date;
+  AssociatedApplications?: string[];
+}
+export const CreateStreamGroupOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    Description: S.optional(S.String),
+    DefaultApplication: S.optional(DefaultApplication),
+    LocationStates: S.optional(LocationStates),
+    StreamClass: S.optional(StreamClass),
+    Id: S.optional(S.String),
+    Status: S.optional(StreamGroupStatus),
+    StatusReason: S.optional(StreamGroupStatusReason),
+    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    AssociatedApplications: S.optional(ArnList),
+  }),
+).annotate({
+  identifier: "CreateStreamGroupOutput",
+}) as any as S.Schema<CreateStreamGroupOutput>;
+export type SignalRequest = string | redacted.Redacted<string>;
 export interface CreateStreamSessionConnectionInput {
   ClientToken?: string;
   Identifier: string;
@@ -273,6 +526,7 @@ export const CreateStreamSessionConnectionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStreamSessionConnectionInput",
 }) as any as S.Schema<CreateStreamSessionConnectionInput>;
+export type SignalResponse = string | redacted.Redacted<string>;
 export interface CreateStreamSessionConnectionOutput {
   SignalResponse?: string | redacted.Redacted<string>;
 }
@@ -281,6 +535,52 @@ export const CreateStreamSessionConnectionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStreamSessionConnectionOutput",
 }) as any as S.Schema<CreateStreamSessionConnectionOutput>;
+export interface DeleteApplicationInput {
+  Identifier: string;
+}
+export const DeleteApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/applications/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteApplicationInput",
+}) as any as S.Schema<DeleteApplicationInput>;
+export interface DeleteApplicationResponse {}
+export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteApplicationResponse",
+}) as any as S.Schema<DeleteApplicationResponse>;
+export interface DeleteStreamGroupInput {
+  Identifier: string;
+}
+export const DeleteStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/streamgroups/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteStreamGroupInput",
+}) as any as S.Schema<DeleteStreamGroupInput>;
+export interface DeleteStreamGroupResponse {}
+export const DeleteStreamGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteStreamGroupResponse",
+}) as any as S.Schema<DeleteStreamGroupResponse>;
 export interface DisassociateApplicationsInput {
   Identifier: string;
   ApplicationIdentifiers: string[];
@@ -314,6 +614,7 @@ export const DisassociateApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisassociateApplicationsOutput",
 }) as any as S.Schema<DisassociateApplicationsOutput>;
+export type OutputUri = string;
 export interface ExportStreamSessionFilesInput {
   Identifier: string;
   StreamSessionIdentifier: string;
@@ -348,6 +649,108 @@ export const ExportStreamSessionFilesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExportStreamSessionFilesOutput",
 }) as any as S.Schema<ExportStreamSessionFilesOutput>;
+export interface GetApplicationInput {
+  Identifier: string;
+}
+export const GetApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/applications/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetApplicationInput",
+}) as any as S.Schema<GetApplicationInput>;
+export interface GetApplicationOutput {
+  Arn: string;
+  Description?: string;
+  RuntimeEnvironment?: RuntimeEnvironment;
+  ExecutablePath?: string;
+  ApplicationLogPaths?: string[];
+  ApplicationLogOutputUri?: string;
+  ApplicationSourceUri?: string;
+  Id?: string;
+  Status?: ApplicationStatus;
+  StatusReason?: ApplicationStatusReason;
+  ReplicationStatuses?: ReplicationStatus[];
+  CreatedAt?: Date;
+  LastUpdatedAt?: Date;
+  AssociatedStreamGroups?: string[];
+}
+export const GetApplicationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    Description: S.optional(S.String),
+    RuntimeEnvironment: S.optional(RuntimeEnvironment),
+    ExecutablePath: S.optional(S.String),
+    ApplicationLogPaths: S.optional(FilePaths),
+    ApplicationLogOutputUri: S.optional(S.String),
+    ApplicationSourceUri: S.optional(S.String),
+    Id: S.optional(S.String),
+    Status: S.optional(ApplicationStatus),
+    StatusReason: S.optional(ApplicationStatusReason),
+    ReplicationStatuses: S.optional(ReplicationStatuses),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    AssociatedStreamGroups: S.optional(ArnList),
+  }),
+).annotate({
+  identifier: "GetApplicationOutput",
+}) as any as S.Schema<GetApplicationOutput>;
+export interface GetStreamGroupInput {
+  Identifier: string;
+}
+export const GetStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/streamgroups/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetStreamGroupInput",
+}) as any as S.Schema<GetStreamGroupInput>;
+export interface GetStreamGroupOutput {
+  Arn: string;
+  Description?: string;
+  DefaultApplication?: DefaultApplication;
+  LocationStates?: LocationState[];
+  StreamClass?: StreamClass;
+  Id?: string;
+  Status?: StreamGroupStatus;
+  StatusReason?: StreamGroupStatusReason;
+  LastUpdatedAt?: Date;
+  CreatedAt?: Date;
+  ExpiresAt?: Date;
+  AssociatedApplications?: string[];
+}
+export const GetStreamGroupOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    Description: S.optional(S.String),
+    DefaultApplication: S.optional(DefaultApplication),
+    LocationStates: S.optional(LocationStates),
+    StreamClass: S.optional(StreamClass),
+    Id: S.optional(S.String),
+    Status: S.optional(StreamGroupStatus),
+    StatusReason: S.optional(StreamGroupStatusReason),
+    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    AssociatedApplications: S.optional(ArnList),
+  }),
+).annotate({
+  identifier: "GetStreamGroupOutput",
+}) as any as S.Schema<GetStreamGroupOutput>;
 export interface GetStreamSessionInput {
   Identifier: string;
   StreamSessionIdentifier: string;
@@ -374,6 +777,7 @@ export const GetStreamSessionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetStreamSessionInput",
 }) as any as S.Schema<GetStreamSessionInput>;
+export type UserId = string;
 export type StreamSessionStatus =
   | "ACTIVATING"
   | "ACTIVE"
@@ -385,6 +789,7 @@ export type StreamSessionStatus =
   | "ERROR"
   | (string & {});
 export const StreamSessionStatus = /*@__PURE__*/ S.String;
+
 export type StreamSessionStatusReason =
   | "internalError"
   | "invalidSignalRequest"
@@ -398,8 +803,12 @@ export type StreamSessionStatusReason =
   | "apiTerminated"
   | (string & {});
 export const StreamSessionStatusReason = /*@__PURE__*/ S.String;
+
 export type Protocol = "WebRTC" | (string & {});
 export const Protocol = /*@__PURE__*/ S.String;
+
+export type ConnectionTimeoutSeconds = number;
+export type SessionLengthSeconds = number;
 export type GameLaunchArgList = string[];
 export const GameLaunchArgList = /*@__PURE__*/ S.Array(S.String);
 export type EnvironmentVariables = { [key: string]: string | undefined };
@@ -415,12 +824,16 @@ export const PerformanceStatsConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PerformanceStatsConfiguration",
 }) as any as S.Schema<PerformanceStatsConfiguration>;
+export type FileLocationUri = string;
+export type WebSdkProtocolUrl = string;
 export type ExportFilesStatus =
   | "SUCCEEDED"
   | "FAILED"
   | "PENDING"
   | (string & {});
 export const ExportFilesStatus = /*@__PURE__*/ S.String;
+
+export type ExportFilesReason = string;
 export interface ExportFilesMetadata {
   Status?: ExportFilesStatus;
   StatusReason?: string;
@@ -485,6 +898,126 @@ export const GetStreamSessionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetStreamSessionOutput",
 }) as any as S.Schema<GetStreamSessionOutput>;
+export type NextToken = string;
+export type MaxResults = number;
+export interface ListApplicationsInput {
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const ListApplicationsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/applications" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListApplicationsInput",
+}) as any as S.Schema<ListApplicationsInput>;
+export interface ApplicationSummary {
+  Arn: string;
+  Id?: string;
+  Description?: string;
+  Status?: ApplicationStatus;
+  CreatedAt?: Date;
+  LastUpdatedAt?: Date;
+  RuntimeEnvironment?: RuntimeEnvironment;
+}
+export const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    Id: S.optional(S.String),
+    Description: S.optional(S.String),
+    Status: S.optional(ApplicationStatus),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    RuntimeEnvironment: S.optional(RuntimeEnvironment),
+  }),
+).annotate({
+  identifier: "ApplicationSummary",
+}) as any as S.Schema<ApplicationSummary>;
+export type ApplicationSummaryList = ApplicationSummary[];
+export const ApplicationSummaryList = /*@__PURE__*/ S.Array(ApplicationSummary);
+export interface ListApplicationsOutput {
+  Items?: ApplicationSummary[];
+  NextToken?: string;
+}
+export const ListApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Items: S.optional(ApplicationSummaryList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListApplicationsOutput",
+}) as any as S.Schema<ListApplicationsOutput>;
+export interface ListStreamGroupsInput {
+  NextToken?: string;
+  MaxResults?: number;
+}
+export const ListStreamGroupsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/streamgroups" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListStreamGroupsInput",
+}) as any as S.Schema<ListStreamGroupsInput>;
+export interface StreamGroupSummary {
+  Arn: string;
+  Id?: string;
+  Description?: string;
+  DefaultApplication?: DefaultApplication;
+  StreamClass?: StreamClass;
+  Status?: StreamGroupStatus;
+  CreatedAt?: Date;
+  LastUpdatedAt?: Date;
+  ExpiresAt?: Date;
+}
+export const StreamGroupSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    Id: S.optional(S.String),
+    Description: S.optional(S.String),
+    DefaultApplication: S.optional(DefaultApplication),
+    StreamClass: S.optional(StreamClass),
+    Status: S.optional(StreamGroupStatus),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "StreamGroupSummary",
+}) as any as S.Schema<StreamGroupSummary>;
+export type StreamGroupSummaryList = StreamGroupSummary[];
+export const StreamGroupSummaryList = /*@__PURE__*/ S.Array(StreamGroupSummary);
+export interface ListStreamGroupsOutput {
+  Items?: StreamGroupSummary[];
+  NextToken?: string;
+}
+export const ListStreamGroupsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Items: S.optional(StreamGroupSummaryList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListStreamGroupsOutput",
+}) as any as S.Schema<ListStreamGroupsOutput>;
 export interface ListStreamSessionsInput {
   Status?: StreamSessionStatus;
   ExportFilesStatus?: ExportFilesStatus;
@@ -616,8 +1149,6 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
-export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
@@ -841,175 +1372,6 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-export type RuntimeEnvironmentType =
-  | "PROTON"
-  | "WINDOWS"
-  | "UBUNTU"
-  | (string & {});
-export const RuntimeEnvironmentType = /*@__PURE__*/ S.String;
-export interface RuntimeEnvironment {
-  Type: RuntimeEnvironmentType;
-  Version: string;
-}
-export const RuntimeEnvironment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: RuntimeEnvironmentType, Version: S.String }),
-).annotate({
-  identifier: "RuntimeEnvironment",
-}) as any as S.Schema<RuntimeEnvironment>;
-export type FilePaths = string[];
-export const FilePaths = /*@__PURE__*/ S.Array(S.String);
-export interface CreateApplicationInput {
-  Description: string;
-  RuntimeEnvironment: RuntimeEnvironment;
-  ExecutablePath: string;
-  ApplicationSourceUri: string;
-  ApplicationLogPaths?: string[];
-  ApplicationLogOutputUri?: string;
-  Tags?: { [key: string]: string | undefined };
-  ClientToken?: string;
-}
-export const CreateApplicationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.String,
-    RuntimeEnvironment: RuntimeEnvironment,
-    ExecutablePath: S.String,
-    ApplicationSourceUri: S.String,
-    ApplicationLogPaths: S.optional(FilePaths),
-    ApplicationLogOutputUri: S.optional(S.String),
-    Tags: S.optional(Tags),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/applications" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateApplicationInput",
-}) as any as S.Schema<CreateApplicationInput>;
-export type ApplicationStatus =
-  | "INITIALIZED"
-  | "PROCESSING"
-  | "READY"
-  | "DELETING"
-  | "ERROR"
-  | (string & {});
-export const ApplicationStatus = /*@__PURE__*/ S.String;
-export type ApplicationStatusReason =
-  | "internalError"
-  | "accessDenied"
-  | "sourceModified"
-  | (string & {});
-export const ApplicationStatusReason = /*@__PURE__*/ S.String;
-export type ReplicationStatusType = "REPLICATING" | "COMPLETED" | (string & {});
-export const ReplicationStatusType = /*@__PURE__*/ S.String;
-export interface ReplicationStatus {
-  Location?: string;
-  Status?: ReplicationStatusType;
-}
-export const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Location: S.optional(S.String),
-    Status: S.optional(ReplicationStatusType),
-  }),
-).annotate({
-  identifier: "ReplicationStatus",
-}) as any as S.Schema<ReplicationStatus>;
-export type ReplicationStatuses = ReplicationStatus[];
-export const ReplicationStatuses = /*@__PURE__*/ S.Array(ReplicationStatus);
-export interface CreateApplicationOutput {
-  Arn: string;
-  Description?: string;
-  RuntimeEnvironment?: RuntimeEnvironment;
-  ExecutablePath?: string;
-  ApplicationLogPaths?: string[];
-  ApplicationLogOutputUri?: string;
-  ApplicationSourceUri?: string;
-  Id?: string;
-  Status?: ApplicationStatus;
-  StatusReason?: ApplicationStatusReason;
-  ReplicationStatuses?: ReplicationStatus[];
-  CreatedAt?: Date;
-  LastUpdatedAt?: Date;
-  AssociatedStreamGroups?: string[];
-}
-export const CreateApplicationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Description: S.optional(S.String),
-    RuntimeEnvironment: S.optional(RuntimeEnvironment),
-    ExecutablePath: S.optional(S.String),
-    ApplicationLogPaths: S.optional(FilePaths),
-    ApplicationLogOutputUri: S.optional(S.String),
-    ApplicationSourceUri: S.optional(S.String),
-    Id: S.optional(S.String),
-    Status: S.optional(ApplicationStatus),
-    StatusReason: S.optional(ApplicationStatusReason),
-    ReplicationStatuses: S.optional(ReplicationStatuses),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AssociatedStreamGroups: S.optional(ArnList),
-  }),
-).annotate({
-  identifier: "CreateApplicationOutput",
-}) as any as S.Schema<CreateApplicationOutput>;
-export interface GetApplicationInput {
-  Identifier: string;
-}
-export const GetApplicationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/applications/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetApplicationInput",
-}) as any as S.Schema<GetApplicationInput>;
-export interface GetApplicationOutput {
-  Arn: string;
-  Description?: string;
-  RuntimeEnvironment?: RuntimeEnvironment;
-  ExecutablePath?: string;
-  ApplicationLogPaths?: string[];
-  ApplicationLogOutputUri?: string;
-  ApplicationSourceUri?: string;
-  Id?: string;
-  Status?: ApplicationStatus;
-  StatusReason?: ApplicationStatusReason;
-  ReplicationStatuses?: ReplicationStatus[];
-  CreatedAt?: Date;
-  LastUpdatedAt?: Date;
-  AssociatedStreamGroups?: string[];
-}
-export const GetApplicationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Description: S.optional(S.String),
-    RuntimeEnvironment: S.optional(RuntimeEnvironment),
-    ExecutablePath: S.optional(S.String),
-    ApplicationLogPaths: S.optional(FilePaths),
-    ApplicationLogOutputUri: S.optional(S.String),
-    ApplicationSourceUri: S.optional(S.String),
-    Id: S.optional(S.String),
-    Status: S.optional(ApplicationStatus),
-    StatusReason: S.optional(ApplicationStatusReason),
-    ReplicationStatuses: S.optional(ReplicationStatuses),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AssociatedStreamGroups: S.optional(ArnList),
-  }),
-).annotate({
-  identifier: "GetApplicationOutput",
-}) as any as S.Schema<GetApplicationOutput>;
 export interface UpdateApplicationInput {
   Identifier: string;
   Description?: string;
@@ -1071,240 +1433,6 @@ export const UpdateApplicationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateApplicationOutput",
 }) as any as S.Schema<UpdateApplicationOutput>;
-export interface DeleteApplicationInput {
-  Identifier: string;
-}
-export const DeleteApplicationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/applications/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteApplicationInput",
-}) as any as S.Schema<DeleteApplicationInput>;
-export interface DeleteApplicationResponse {}
-export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApplicationResponse",
-}) as any as S.Schema<DeleteApplicationResponse>;
-export interface ListApplicationsInput {
-  NextToken?: string;
-  MaxResults?: number;
-}
-export const ListApplicationsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/applications" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListApplicationsInput",
-}) as any as S.Schema<ListApplicationsInput>;
-export interface ApplicationSummary {
-  Arn: string;
-  Id?: string;
-  Description?: string;
-  Status?: ApplicationStatus;
-  CreatedAt?: Date;
-  LastUpdatedAt?: Date;
-  RuntimeEnvironment?: RuntimeEnvironment;
-}
-export const ApplicationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Id: S.optional(S.String),
-    Description: S.optional(S.String),
-    Status: S.optional(ApplicationStatus),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    RuntimeEnvironment: S.optional(RuntimeEnvironment),
-  }),
-).annotate({
-  identifier: "ApplicationSummary",
-}) as any as S.Schema<ApplicationSummary>;
-export type ApplicationSummaryList = ApplicationSummary[];
-export const ApplicationSummaryList = /*@__PURE__*/ S.Array(ApplicationSummary);
-export interface ListApplicationsOutput {
-  Items?: ApplicationSummary[];
-  NextToken?: string;
-}
-export const ListApplicationsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Items: S.optional(ApplicationSummaryList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListApplicationsOutput",
-}) as any as S.Schema<ListApplicationsOutput>;
-export type StreamClass =
-  | "gen4n_high"
-  | "gen4n_ultra"
-  | "gen4n_win2022"
-  | "gen5n_high"
-  | "gen5n_ultra"
-  | "gen5n_win2022"
-  | "gen6n_small"
-  | "gen6n_medium"
-  | "gen6n_high"
-  | "gen6n_ultra"
-  | "gen6n_ultra_win2022"
-  | "gen6n_pro"
-  | "gen6n_pro_win2022"
-  | "gen6n_small_win2022"
-  | "gen6n_medium_win2022"
-  | "gen6e_pro"
-  | "gen6e_pro_win2022"
-  | (string & {});
-export const StreamClass = /*@__PURE__*/ S.String;
-export interface CreateStreamGroupInput {
-  Description: string;
-  StreamClass: StreamClass;
-  DefaultApplicationIdentifier?: string;
-  LocationConfigurations?: LocationConfiguration[];
-  Tags?: { [key: string]: string | undefined };
-  ClientToken?: string;
-}
-export const CreateStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.String,
-    StreamClass: StreamClass,
-    DefaultApplicationIdentifier: S.optional(S.String),
-    LocationConfigurations: S.optional(LocationConfigurations),
-    Tags: S.optional(Tags),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/streamgroups" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateStreamGroupInput",
-}) as any as S.Schema<CreateStreamGroupInput>;
-export interface DefaultApplication {
-  Id?: string;
-  Arn?: string;
-}
-export const DefaultApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String), Arn: S.optional(S.String) }),
-).annotate({
-  identifier: "DefaultApplication",
-}) as any as S.Schema<DefaultApplication>;
-export type StreamGroupStatus =
-  | "ACTIVATING"
-  | "UPDATING_LOCATIONS"
-  | "ACTIVE"
-  | "ACTIVE_WITH_ERRORS"
-  | "ERROR"
-  | "DELETING"
-  | "EXPIRED"
-  | (string & {});
-export const StreamGroupStatus = /*@__PURE__*/ S.String;
-export type StreamGroupStatusReason =
-  | "internalError"
-  | "noAvailableInstances"
-  | (string & {});
-export const StreamGroupStatusReason = /*@__PURE__*/ S.String;
-export interface CreateStreamGroupOutput {
-  Arn: string;
-  Description?: string;
-  DefaultApplication?: DefaultApplication;
-  LocationStates?: LocationState[];
-  StreamClass?: StreamClass;
-  Id?: string;
-  Status?: StreamGroupStatus;
-  StatusReason?: StreamGroupStatusReason;
-  LastUpdatedAt?: Date;
-  CreatedAt?: Date;
-  ExpiresAt?: Date;
-  AssociatedApplications?: string[];
-}
-export const CreateStreamGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Description: S.optional(S.String),
-    DefaultApplication: S.optional(DefaultApplication),
-    LocationStates: S.optional(LocationStates),
-    StreamClass: S.optional(StreamClass),
-    Id: S.optional(S.String),
-    Status: S.optional(StreamGroupStatus),
-    StatusReason: S.optional(StreamGroupStatusReason),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AssociatedApplications: S.optional(ArnList),
-  }),
-).annotate({
-  identifier: "CreateStreamGroupOutput",
-}) as any as S.Schema<CreateStreamGroupOutput>;
-export interface GetStreamGroupInput {
-  Identifier: string;
-}
-export const GetStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/streamgroups/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetStreamGroupInput",
-}) as any as S.Schema<GetStreamGroupInput>;
-export interface GetStreamGroupOutput {
-  Arn: string;
-  Description?: string;
-  DefaultApplication?: DefaultApplication;
-  LocationStates?: LocationState[];
-  StreamClass?: StreamClass;
-  Id?: string;
-  Status?: StreamGroupStatus;
-  StatusReason?: StreamGroupStatusReason;
-  LastUpdatedAt?: Date;
-  CreatedAt?: Date;
-  ExpiresAt?: Date;
-  AssociatedApplications?: string[];
-}
-export const GetStreamGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Description: S.optional(S.String),
-    DefaultApplication: S.optional(DefaultApplication),
-    LocationStates: S.optional(LocationStates),
-    StreamClass: S.optional(StreamClass),
-    Id: S.optional(S.String),
-    Status: S.optional(StreamGroupStatus),
-    StatusReason: S.optional(StreamGroupStatusReason),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    AssociatedApplications: S.optional(ArnList),
-  }),
-).annotate({
-  identifier: "GetStreamGroupOutput",
-}) as any as S.Schema<GetStreamGroupOutput>;
 export interface UpdateStreamGroupInput {
   Identifier: string;
   LocationConfigurations?: LocationConfiguration[];
@@ -1362,129 +1490,6 @@ export const UpdateStreamGroupOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateStreamGroupOutput",
 }) as any as S.Schema<UpdateStreamGroupOutput>;
-export interface DeleteStreamGroupInput {
-  Identifier: string;
-}
-export const DeleteStreamGroupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/streamgroups/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteStreamGroupInput",
-}) as any as S.Schema<DeleteStreamGroupInput>;
-export interface DeleteStreamGroupResponse {}
-export const DeleteStreamGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteStreamGroupResponse",
-}) as any as S.Schema<DeleteStreamGroupResponse>;
-export interface ListStreamGroupsInput {
-  NextToken?: string;
-  MaxResults?: number;
-}
-export const ListStreamGroupsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/streamgroups" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListStreamGroupsInput",
-}) as any as S.Schema<ListStreamGroupsInput>;
-export interface StreamGroupSummary {
-  Arn: string;
-  Id?: string;
-  Description?: string;
-  DefaultApplication?: DefaultApplication;
-  StreamClass?: StreamClass;
-  Status?: StreamGroupStatus;
-  CreatedAt?: Date;
-  LastUpdatedAt?: Date;
-  ExpiresAt?: Date;
-}
-export const StreamGroupSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Id: S.optional(S.String),
-    Description: S.optional(S.String),
-    DefaultApplication: S.optional(DefaultApplication),
-    StreamClass: S.optional(StreamClass),
-    Status: S.optional(StreamGroupStatus),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "StreamGroupSummary",
-}) as any as S.Schema<StreamGroupSummary>;
-export type StreamGroupSummaryList = StreamGroupSummary[];
-export const StreamGroupSummaryList = /*@__PURE__*/ S.Array(StreamGroupSummary);
-export interface ListStreamGroupsOutput {
-  Items?: StreamGroupSummary[];
-  NextToken?: string;
-}
-export const ListStreamGroupsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Items: S.optional(StreamGroupSummaryList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListStreamGroupsOutput",
-}) as any as S.Schema<ListStreamGroupsOutput>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.String },
-  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-
-//# Operations
 export type AddStreamGroupLocationsError =
   | AccessDeniedException
   | InternalServerException
@@ -1518,6 +1523,7 @@ export const addStreamGroupLocations: API.OperationMethod<
   retry: Retry,
   operationName: "AddStreamGroupLocations",
 }));
+
 export type AssociateApplicationsError =
   | AccessDeniedException
   | InternalServerException
@@ -1551,6 +1557,95 @@ export const associateApplications: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateApplications",
 }));
+
+export type CreateApplicationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates an application resource in Amazon GameLift Streams, which specifies the application content you want to stream, such as a game build or other software, and configures the settings to run it.
+ *
+ * Before you create an application, upload your application content files to an Amazon Simple Storage Service (Amazon S3) bucket. For more information, see **Getting Started** in the Amazon GameLift Streams Developer Guide.
+ *
+ * Make sure that your files in the Amazon S3 bucket are the correct version you want to use. If you change the files at a later time, you will need to create a new Amazon GameLift Streams application.
+ *
+ * If the request is successful, Amazon GameLift Streams begins to create an application and sets the status to `INITIALIZED`. When an application reaches `READY` status, you can use the application to set up stream groups and start streams. To track application status, call GetApplication.
+ */
+export const createApplication: API.OperationMethod<
+  CreateApplicationInput,
+  CreateApplicationOutput,
+  CreateApplicationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateApplicationInput,
+  output: CreateApplicationOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateApplication",
+}));
+
+export type CreateStreamGroupError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Stream groups manage how Amazon GameLift Streams allocates resources and handles concurrent streams, allowing you to effectively manage capacity and costs. Within a stream group, you specify an application to stream, streaming locations and their capacity, and the stream class you want to use when streaming applications to your end-users. A stream class defines the hardware configuration of the compute resources that Amazon GameLift Streams will use when streaming, such as the CPU, GPU, and memory.
+ *
+ * Stream capacity represents the number of concurrent streams that can be active at a time. You set stream capacity per location, per stream group. The following capacity settings are available:
+ *
+ * - **Always-on capacity**: This setting, if non-zero, indicates minimum streaming capacity which is allocated to you and is never released back to the service. You pay for this base level of capacity at all times, whether used or idle.
+ *
+ * - **Maximum capacity**: This indicates the maximum capacity that the service can allocate for you. Newly created streams may take a few minutes to start. Capacity is released back to the service when idle. You pay for capacity that is allocated to you until it is released.
+ *
+ * - **Target-idle capacity**: This indicates idle capacity which the service pre-allocates and holds for you in anticipation of future activity. This helps to insulate your users from capacity-allocation delays. You pay for capacity which is held in this intentional idle state.
+ *
+ * Values for capacity must be whole number multiples of the tenancy value of the stream group's stream class.
+ *
+ * To adjust the capacity of any `ACTIVE` stream group, call UpdateStreamGroup.
+ *
+ * If the `CreateStreamGroup` request is successful, Amazon GameLift Streams assigns a unique ID to the stream group resource and sets the status to `ACTIVATING`. It can take a few minutes for Amazon GameLift Streams to finish creating the stream group while it searches for unallocated compute resources and provisions them. When complete, the stream group status will be `ACTIVE` and you can start stream sessions by using StartStreamSession. To check the stream group's status, call GetStreamGroup.
+ *
+ * Stream groups should be recreated every 3-4 weeks to pick up important service updates and fixes. Stream groups that are older than 180 days can no longer be updated with new application associations. Stream groups expire when they are 365 days old, at which point they can no longer stream sessions. The exact expiration date is indicated by the date value in the `ExpiresAt` field.
+ */
+export const createStreamGroup: API.OperationMethod<
+  CreateStreamGroupInput,
+  CreateStreamGroupOutput,
+  CreateStreamGroupError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateStreamGroupInput,
+  output: CreateStreamGroupOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateStreamGroup",
+}));
+
 export type CreateStreamSessionConnectionError =
   | AccessDeniedException
   | ConflictException
@@ -1608,6 +1703,83 @@ export const createStreamSessionConnection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateStreamSessionConnection",
 }));
+
+export type DeleteApplicationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Permanently deletes an Amazon GameLift Streams application resource. This also deletes the application content files stored with Amazon GameLift Streams. However, this does not delete the original files that you uploaded to your Amazon S3 bucket; you can delete these any time after Amazon GameLift Streams creates an application, which is the only time Amazon GameLift Streams accesses your Amazon S3 bucket.
+ *
+ * You can only delete an application that meets the following conditions:
+ *
+ * - The application is in `READY` or `ERROR` status. You cannot delete an application that's in `PROCESSING` or `INITIALIZED` status.
+ *
+ * - The application is not the default application of any stream groups. You must first delete the stream group by using DeleteStreamGroup.
+ *
+ * - The application is not linked to any stream groups. You must first unlink the stream group by using DisassociateApplications.
+ *
+ * - An application is not streaming in any ongoing stream session. You must wait until the client ends the stream session or call TerminateStreamSession to end the stream.
+ *
+ * If any active stream groups exist for this application, this request returns a `ValidationException`.
+ */
+export const deleteApplication: API.OperationMethod<
+  DeleteApplicationInput,
+  DeleteApplicationResponse,
+  DeleteApplicationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteApplicationInput,
+  output: DeleteApplicationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteApplication",
+}));
+
+export type DeleteStreamGroupError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Permanently deletes all compute resources and information related to a stream group. To delete a stream group, specify the unique stream group identifier. During the deletion process, the stream group's status is `DELETING`. This operation stops streams in progress and prevents new streams from starting. As a best practice, before deleting the stream group, call ListStreamSessions to check for streams in progress and take action to stop them. When you delete a stream group, any application associations referring to that stream group are automatically removed.
+ */
+export const deleteStreamGroup: API.OperationMethod<
+  DeleteStreamGroupInput,
+  DeleteStreamGroupResponse,
+  DeleteStreamGroupError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteStreamGroupInput,
+  output: DeleteStreamGroupResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteStreamGroup",
+}));
+
 export type DisassociateApplicationsError =
   | AccessDeniedException
   | InternalServerException
@@ -1639,6 +1811,7 @@ export const disassociateApplications: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateApplications",
 }));
+
 export type ExportStreamSessionFilesError =
   | AccessDeniedException
   | InternalServerException
@@ -1682,6 +1855,67 @@ export const exportStreamSessionFiles: API.OperationMethod<
   retry: Retry,
   operationName: "ExportStreamSessionFiles",
 }));
+
+export type GetApplicationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves properties for an Amazon GameLift Streams application resource. Specify the ID of the application that you want to retrieve. If the operation is successful, it returns properties for the requested application.
+ */
+export const getApplication: API.OperationMethod<
+  GetApplicationInput,
+  GetApplicationOutput,
+  GetApplicationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetApplicationInput,
+  output: GetApplicationOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetApplication",
+}));
+
+export type GetStreamGroupError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves properties for a Amazon GameLift Streams stream group resource. Specify the ID of the stream group that you want to retrieve. If the operation is successful, it returns properties for the requested stream group.
+ */
+export const getStreamGroup: API.OperationMethod<
+  GetStreamGroupInput,
+  GetStreamGroupOutput,
+  GetStreamGroupError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetStreamGroupInput,
+  output: GetStreamGroupOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetStreamGroup",
+}));
+
 export type GetStreamSessionError =
   | AccessDeniedException
   | InternalServerException
@@ -1711,6 +1945,105 @@ export const getStreamSession: API.OperationMethod<
   retry: Retry,
   operationName: "GetStreamSession",
 }));
+
+export type ListApplicationsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves a list of all Amazon GameLift Streams applications that are associated with the Amazon Web Services account in use. This operation returns applications in all statuses, in no particular order. You can paginate the results as needed.
+ */
+export const listApplications: API.OperationMethod<
+  ListApplicationsInput,
+  ListApplicationsOutput,
+  ListApplicationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListApplicationsInput,
+  ) => stream.Stream<
+    ListApplicationsOutput,
+    ListApplicationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListApplicationsInput,
+  ) => stream.Stream<
+    ApplicationSummary,
+    ListApplicationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListApplicationsInput,
+  output: ListApplicationsOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListApplications",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Items",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
+export type ListStreamGroupsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves a list of all Amazon GameLift Streams stream groups that are associated with the Amazon Web Services account in use. This operation returns stream groups in all statuses, in no particular order. You can paginate the results as needed.
+ */
+export const listStreamGroups: API.OperationMethod<
+  ListStreamGroupsInput,
+  ListStreamGroupsOutput,
+  ListStreamGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListStreamGroupsInput,
+  ) => stream.Stream<
+    ListStreamGroupsOutput,
+    ListStreamGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListStreamGroupsInput,
+  ) => stream.Stream<
+    StreamGroupSummary,
+    ListStreamGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListStreamGroupsInput,
+  output: ListStreamGroupsOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListStreamGroups",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Items",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
 export type ListStreamSessionsError =
   | AccessDeniedException
   | InternalServerException
@@ -1765,6 +2098,7 @@ export const listStreamSessions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStreamSessionsByAccountError =
   | AccessDeniedException
   | InternalServerException
@@ -1817,6 +2151,7 @@ export const listStreamSessionsByAccount: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1850,6 +2185,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RemoveStreamGroupLocationsError =
   | AccessDeniedException
   | InternalServerException
@@ -1881,6 +2217,7 @@ export const removeStreamGroupLocations: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveStreamGroupLocations",
 }));
+
 export type StartStreamSessionError =
   | AccessDeniedException
   | ConflictException
@@ -1966,6 +2303,7 @@ export const startStreamSession: API.OperationMethod<
   retry: Retry,
   operationName: "StartStreamSession",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2003,6 +2341,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TerminateStreamSessionError =
   | AccessDeniedException
   | InternalServerException
@@ -2032,6 +2371,7 @@ export const terminateStreamSession: API.OperationMethod<
   retry: Retry,
   operationName: "TerminateStreamSession",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2059,72 +2399,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
-export type CreateApplicationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates an application resource in Amazon GameLift Streams, which specifies the application content you want to stream, such as a game build or other software, and configures the settings to run it.
- *
- * Before you create an application, upload your application content files to an Amazon Simple Storage Service (Amazon S3) bucket. For more information, see **Getting Started** in the Amazon GameLift Streams Developer Guide.
- *
- * Make sure that your files in the Amazon S3 bucket are the correct version you want to use. If you change the files at a later time, you will need to create a new Amazon GameLift Streams application.
- *
- * If the request is successful, Amazon GameLift Streams begins to create an application and sets the status to `INITIALIZED`. When an application reaches `READY` status, you can use the application to set up stream groups and start streams. To track application status, call GetApplication.
- */
-export const createApplication: API.OperationMethod<
-  CreateApplicationInput,
-  CreateApplicationOutput,
-  CreateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateApplicationInput,
-  output: CreateApplicationOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateApplication",
-}));
-export type GetApplicationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves properties for an Amazon GameLift Streams application resource. Specify the ID of the application that you want to retrieve. If the operation is successful, it returns properties for the requested application.
- */
-export const getApplication: API.OperationMethod<
-  GetApplicationInput,
-  GetApplicationOutput,
-  GetApplicationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationInput,
-  output: GetApplicationOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetApplication",
-}));
+
 export type UpdateApplicationError =
   | AccessDeniedException
   | InternalServerException
@@ -2156,175 +2431,7 @@ export const updateApplication: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApplication",
 }));
-export type DeleteApplicationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Permanently deletes an Amazon GameLift Streams application resource. This also deletes the application content files stored with Amazon GameLift Streams. However, this does not delete the original files that you uploaded to your Amazon S3 bucket; you can delete these any time after Amazon GameLift Streams creates an application, which is the only time Amazon GameLift Streams accesses your Amazon S3 bucket.
- *
- * You can only delete an application that meets the following conditions:
- *
- * - The application is in `READY` or `ERROR` status. You cannot delete an application that's in `PROCESSING` or `INITIALIZED` status.
- *
- * - The application is not the default application of any stream groups. You must first delete the stream group by using DeleteStreamGroup.
- *
- * - The application is not linked to any stream groups. You must first unlink the stream group by using DisassociateApplications.
- *
- * - An application is not streaming in any ongoing stream session. You must wait until the client ends the stream session or call TerminateStreamSession to end the stream.
- *
- * If any active stream groups exist for this application, this request returns a `ValidationException`.
- */
-export const deleteApplication: API.OperationMethod<
-  DeleteApplicationInput,
-  DeleteApplicationResponse,
-  DeleteApplicationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationInput,
-  output: DeleteApplicationResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteApplication",
-}));
-export type ListApplicationsError =
-  | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves a list of all Amazon GameLift Streams applications that are associated with the Amazon Web Services account in use. This operation returns applications in all statuses, in no particular order. You can paginate the results as needed.
- */
-export const listApplications: API.OperationMethod<
-  ListApplicationsInput,
-  ListApplicationsOutput,
-  ListApplicationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationsInput,
-  ) => stream.Stream<
-    ListApplicationsOutput,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationsInput,
-  ) => stream.Stream<
-    ApplicationSummary,
-    ListApplicationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListApplicationsInput,
-  output: ListApplicationsOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListApplications",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "Items",
-    pageSize: "MaxResults",
-  } as const,
-}));
-export type CreateStreamGroupError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Stream groups manage how Amazon GameLift Streams allocates resources and handles concurrent streams, allowing you to effectively manage capacity and costs. Within a stream group, you specify an application to stream, streaming locations and their capacity, and the stream class you want to use when streaming applications to your end-users. A stream class defines the hardware configuration of the compute resources that Amazon GameLift Streams will use when streaming, such as the CPU, GPU, and memory.
- *
- * Stream capacity represents the number of concurrent streams that can be active at a time. You set stream capacity per location, per stream group. The following capacity settings are available:
- *
- * - **Always-on capacity**: This setting, if non-zero, indicates minimum streaming capacity which is allocated to you and is never released back to the service. You pay for this base level of capacity at all times, whether used or idle.
- *
- * - **Maximum capacity**: This indicates the maximum capacity that the service can allocate for you. Newly created streams may take a few minutes to start. Capacity is released back to the service when idle. You pay for capacity that is allocated to you until it is released.
- *
- * - **Target-idle capacity**: This indicates idle capacity which the service pre-allocates and holds for you in anticipation of future activity. This helps to insulate your users from capacity-allocation delays. You pay for capacity which is held in this intentional idle state.
- *
- * Values for capacity must be whole number multiples of the tenancy value of the stream group's stream class.
- *
- * To adjust the capacity of any `ACTIVE` stream group, call UpdateStreamGroup.
- *
- * If the `CreateStreamGroup` request is successful, Amazon GameLift Streams assigns a unique ID to the stream group resource and sets the status to `ACTIVATING`. It can take a few minutes for Amazon GameLift Streams to finish creating the stream group while it searches for unallocated compute resources and provisions them. When complete, the stream group status will be `ACTIVE` and you can start stream sessions by using StartStreamSession. To check the stream group's status, call GetStreamGroup.
- *
- * Stream groups should be recreated every 3-4 weeks to pick up important service updates and fixes. Stream groups that are older than 180 days can no longer be updated with new application associations. Stream groups expire when they are 365 days old, at which point they can no longer stream sessions. The exact expiration date is indicated by the date value in the `ExpiresAt` field.
- */
-export const createStreamGroup: API.OperationMethod<
-  CreateStreamGroupInput,
-  CreateStreamGroupOutput,
-  CreateStreamGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateStreamGroupInput,
-  output: CreateStreamGroupOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateStreamGroup",
-}));
-export type GetStreamGroupError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves properties for a Amazon GameLift Streams stream group resource. Specify the ID of the stream group that you want to retrieve. If the operation is successful, it returns properties for the requested stream group.
- */
-export const getStreamGroup: API.OperationMethod<
-  GetStreamGroupInput,
-  GetStreamGroupOutput,
-  GetStreamGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetStreamGroupInput,
-  output: GetStreamGroupOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetStreamGroup",
-}));
+
 export type UpdateStreamGroupError =
   | AccessDeniedException
   | ConflictException
@@ -2369,83 +2476,4 @@ export const updateStreamGroup: API.OperationMethod<
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "UpdateStreamGroup",
-}));
-export type DeleteStreamGroupError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Permanently deletes all compute resources and information related to a stream group. To delete a stream group, specify the unique stream group identifier. During the deletion process, the stream group's status is `DELETING`. This operation stops streams in progress and prevents new streams from starting. As a best practice, before deleting the stream group, call ListStreamSessions to check for streams in progress and take action to stop them. When you delete a stream group, any application associations referring to that stream group are automatically removed.
- */
-export const deleteStreamGroup: API.OperationMethod<
-  DeleteStreamGroupInput,
-  DeleteStreamGroupResponse,
-  DeleteStreamGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStreamGroupInput,
-  output: DeleteStreamGroupResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteStreamGroup",
-}));
-export type ListStreamGroupsError =
-  | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves a list of all Amazon GameLift Streams stream groups that are associated with the Amazon Web Services account in use. This operation returns stream groups in all statuses, in no particular order. You can paginate the results as needed.
- */
-export const listStreamGroups: API.OperationMethod<
-  ListStreamGroupsInput,
-  ListStreamGroupsOutput,
-  ListStreamGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListStreamGroupsInput,
-  ) => stream.Stream<
-    ListStreamGroupsOutput,
-    ListStreamGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListStreamGroupsInput,
-  ) => stream.Stream<
-    StreamGroupSummary,
-    ListStreamGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListStreamGroupsInput,
-  output: ListStreamGroupsOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListStreamGroups",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "Items",
-    pageSize: "MaxResults",
-  } as const,
 }));

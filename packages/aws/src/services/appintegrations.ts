@@ -85,39 +85,55 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class DuplicateResourceException extends S.TaggedErrorClass<DuplicateResourceException>()(
+  "DuplicateResourceException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
+  "InternalServiceError",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceQuotaExceededException extends S.TaggedErrorClass<ResourceQuotaExceededException>()(
+  "ResourceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  {},
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
+  "UnsupportedOperationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ApplicationName = string;
 export type ApplicationNamespace = string;
 export type Description = string;
 export type URL = string;
 export type ApplicationTrustedSource = string;
-export type EventName = string;
-export type EventDefinitionSchema = string;
-export type IdempotencyToken = string;
-export type TagKey = string;
-export type TagValue = string;
-export type Permission = string;
-export type InitializationTimeout = number;
-export type IframePermission = string;
-export type Arn = string;
-export type UUID = string;
-export type Message = string;
-export type Name = string;
-export type NonBlankString = string;
-export type SourceURI = string;
-export type NonBlankLongString = string;
-export type Fields = string;
-export type Identifier = string;
-export type ClientId = string;
-export type DestinationURI = string;
-export type Source = string;
-export type EventBridgeBus = string;
-export type ArnOrUUID = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type EventBridgeRuleName = string;
-
-//# Schemas
 export type ApplicationApprovedOrigins = string[];
 export const ApplicationApprovedOrigins = /*@__PURE__*/ S.Array(S.String);
 export interface ExternalUrlConfig {
@@ -140,6 +156,7 @@ export const ApplicationSourceConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplicationSourceConfig",
 }) as any as S.Schema<ApplicationSourceConfig>;
+export type EventName = string;
 export interface Subscription {
   Event: string;
   Description?: string;
@@ -149,6 +166,7 @@ export const Subscription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subscription" }) as any as S.Schema<Subscription>;
 export type SubscriptionList = Subscription[];
 export const SubscriptionList = /*@__PURE__*/ S.Array(Subscription);
+export type EventDefinitionSchema = string;
 export interface Publication {
   Event: string;
   Schema: string;
@@ -163,18 +181,24 @@ export const Publication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Publication" }) as any as S.Schema<Publication>;
 export type PublicationList = Publication[];
 export const PublicationList = /*@__PURE__*/ S.Array(Publication);
+export type IdempotencyToken = string;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type Permission = string;
 export type PermissionList = string[];
 export const PermissionList = /*@__PURE__*/ S.Array(S.String);
+export type InitializationTimeout = number;
 export type ContactHandlingScope =
   | "CROSS_CONTACTS"
   | "PER_CONTACT"
   | (string & {});
 export const ContactHandlingScope = /*@__PURE__*/ S.String;
+
 export interface ContactHandling {
   Scope?: ContactHandlingScope;
 }
@@ -191,6 +215,7 @@ export const ApplicationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplicationConfig",
 }) as any as S.Schema<ApplicationConfig>;
+export type IframePermission = string;
 export type IframePermissionList = string[];
 export const IframePermissionList = /*@__PURE__*/ S.Array(S.String);
 export interface IframeConfig {
@@ -209,6 +234,7 @@ export type ApplicationType =
   | "MCP_SERVER"
   | (string & {});
 export const ApplicationType = /*@__PURE__*/ S.String;
+
 export interface CreateApplicationRequest {
   Name: string;
   Namespace: string;
@@ -254,6 +280,8 @@ export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationRequest",
 }) as any as S.Schema<CreateApplicationRequest>;
+export type Arn = string;
+export type UUID = string;
 export interface CreateApplicationResponse {
   Arn?: string;
   Id?: string;
@@ -263,6 +291,9 @@ export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationResponse",
 }) as any as S.Schema<CreateApplicationResponse>;
+export type Name = string;
+export type NonBlankString = string;
+export type SourceURI = string;
 export interface ScheduleConfiguration {
   FirstExecutionFrom?: string;
   Object?: string;
@@ -277,8 +308,10 @@ export const ScheduleConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScheduleConfiguration",
 }) as any as S.Schema<ScheduleConfiguration>;
+export type NonBlankLongString = string;
 export type FolderList = string[];
 export const FolderList = /*@__PURE__*/ S.Array(S.String);
+export type Fields = string;
 export type FieldsList = string[];
 export const FieldsList = /*@__PURE__*/ S.Array(S.String);
 export type FieldsMap = { [key: string]: string[] | undefined };
@@ -371,6 +404,9 @@ export const CreateDataIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDataIntegrationResponse",
 }) as any as S.Schema<CreateDataIntegrationResponse>;
+export type Identifier = string;
+export type ClientId = string;
+export type DestinationURI = string;
 export type ClientAssociationMetadata = { [key: string]: string | undefined };
 export const ClientAssociationMetadata = /*@__PURE__*/ S.Record(
   S.String,
@@ -378,6 +414,7 @@ export const ClientAssociationMetadata = /*@__PURE__*/ S.Record(
 );
 export type ExecutionMode = "ON_DEMAND" | "SCHEDULED" | (string & {});
 export const ExecutionMode = /*@__PURE__*/ S.String;
+
 export interface OnDemandConfiguration {
   StartTime: string;
   EndTime?: string;
@@ -453,12 +490,14 @@ export const CreateDataIntegrationAssociationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateDataIntegrationAssociationResponse",
 }) as any as S.Schema<CreateDataIntegrationAssociationResponse>;
+export type Source = string;
 export interface EventFilter {
   Source: string;
 }
 export const EventFilter = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Source: S.String }),
 ).annotate({ identifier: "EventFilter" }) as any as S.Schema<EventFilter>;
+export type EventBridgeBus = string;
 export interface CreateEventIntegrationRequest {
   Name: string;
   Description?: string;
@@ -496,6 +535,7 @@ export const CreateEventIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEventIntegrationResponse",
 }) as any as S.Schema<CreateEventIntegrationResponse>;
+export type ArnOrUUID = string;
 export interface DeleteApplicationRequest {
   Arn: string;
 }
@@ -717,6 +757,8 @@ export const GetEventIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEventIntegrationResponse",
 }) as any as S.Schema<GetEventIntegrationResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListApplicationAssociationsRequest {
   ApplicationId: string;
   NextToken?: string;
@@ -873,6 +915,7 @@ export type ExecutionStatus =
   | "FAILED"
   | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
+
 export interface LastExecutionStatus {
   ExecutionStatus?: ExecutionStatus;
   StatusMessage?: string;
@@ -1001,6 +1044,7 @@ export const ListEventIntegrationAssociationsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListEventIntegrationAssociationsRequest",
 }) as any as S.Schema<ListEventIntegrationAssociationsRequest>;
+export type EventBridgeRuleName = string;
 export interface EventIntegrationAssociation {
   EventIntegrationAssociationArn?: string;
   EventIntegrationAssociationId?: string;
@@ -1316,54 +1360,7 @@ export const UpdateEventIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateEventIntegrationResponse",
 }) as any as S.Schema<UpdateEventIntegrationResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class DuplicateResourceException extends S.TaggedErrorClass<DuplicateResourceException>()(
-  "DuplicateResourceException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
-  "InternalServiceError",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceQuotaExceededException extends S.TaggedErrorClass<ResourceQuotaExceededException>()(
-  "ResourceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  {},
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type Message = string;
 export type CreateApplicationError =
   | AccessDeniedException
   | DuplicateResourceException
@@ -1399,6 +1396,7 @@ export const createApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApplication",
 }));
+
 export type CreateDataIntegrationError =
   | AccessDeniedException
   | DuplicateResourceException
@@ -1436,6 +1434,7 @@ export const createDataIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataIntegration",
 }));
+
 export type CreateDataIntegrationAssociationError =
   | AccessDeniedException
   | InternalServiceError
@@ -1469,6 +1468,7 @@ export const createDataIntegrationAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataIntegrationAssociation",
 }));
+
 export type CreateEventIntegrationError =
   | AccessDeniedException
   | DuplicateResourceException
@@ -1505,6 +1505,7 @@ export const createEventIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEventIntegration",
 }));
+
 export type DeleteApplicationError =
   | AccessDeniedException
   | InternalServiceError
@@ -1537,6 +1538,7 @@ export const deleteApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplication",
 }));
+
 export type DeleteDataIntegrationError =
   | AccessDeniedException
   | InternalServiceError
@@ -1574,6 +1576,7 @@ export const deleteDataIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataIntegration",
 }));
+
 export type DeleteEventIntegrationError =
   | AccessDeniedException
   | InternalServiceError
@@ -1606,6 +1609,7 @@ export const deleteEventIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEventIntegration",
 }));
+
 export type GetApplicationError =
   | AccessDeniedException
   | InternalServiceError
@@ -1637,6 +1641,7 @@ export const getApplication: API.OperationMethod<
   retry: Retry,
   operationName: "GetApplication",
 }));
+
 export type GetDataIntegrationError =
   | AccessDeniedException
   | InternalServiceError
@@ -1672,6 +1677,7 @@ export const getDataIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataIntegration",
 }));
+
 export type GetEventIntegrationError =
   | AccessDeniedException
   | InternalServiceError
@@ -1703,6 +1709,7 @@ export const getEventIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "GetEventIntegration",
 }));
+
 export type ListApplicationAssociationsError =
   | AccessDeniedException
   | InternalServiceError
@@ -1755,6 +1762,7 @@ export const listApplicationAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListApplicationsError =
   | AccessDeniedException
   | InternalServiceError
@@ -1805,6 +1813,7 @@ export const listApplications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDataIntegrationAssociationsError =
   | AccessDeniedException
   | InternalServiceError
@@ -1861,6 +1870,7 @@ export const listDataIntegrationAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDataIntegrationsError =
   | AccessDeniedException
   | InternalServiceError
@@ -1915,6 +1925,7 @@ export const listDataIntegrations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEventIntegrationAssociationsError =
   | AccessDeniedException
   | InternalServiceError
@@ -1967,6 +1978,7 @@ export const listEventIntegrationAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEventIntegrationsError =
   | AccessDeniedException
   | InternalServiceError
@@ -2017,6 +2029,7 @@ export const listEventIntegrations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServiceError
   | InvalidRequestException
@@ -2046,6 +2059,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError =
   | InternalServiceError
   | InvalidRequestException
@@ -2075,6 +2089,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServiceError
   | InvalidRequestException
@@ -2104,6 +2119,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateApplicationError =
   | AccessDeniedException
   | InternalServiceError
@@ -2137,6 +2153,7 @@ export const updateApplication: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApplication",
 }));
+
 export type UpdateDataIntegrationError =
   | AccessDeniedException
   | InternalServiceError
@@ -2172,6 +2189,7 @@ export const updateDataIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDataIntegration",
 }));
+
 export type UpdateDataIntegrationAssociationError =
   | AccessDeniedException
   | InternalServiceError
@@ -2205,6 +2223,7 @@ export const updateDataIntegrationAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDataIntegrationAssociation",
 }));
+
 export type UpdateEventIntegrationError =
   | AccessDeniedException
   | InternalServiceError

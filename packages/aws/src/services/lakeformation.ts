@@ -87,79 +87,110 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
+  "AlreadyExistsException",
+  { Message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { Message: S.optional(S.String) },
+) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+) {}
+export class EntityNotFoundException extends S.TaggedErrorClass<EntityNotFoundException>()(
+  "EntityNotFoundException",
+  { Message: S.optional(S.String) },
+) {}
+export class ExpiredException extends S.TaggedErrorClass<ExpiredException>()(
+  "ExpiredException",
+  { Message: S.optional(S.String) },
+  T.HttpError(410),
+).pipe(C.withBadRequestError) {}
+export class GlueEncryptionException extends S.TaggedErrorClass<GlueEncryptionException>()(
+  "GlueEncryptionException",
+  { Message: S.optional(S.String) },
+) {}
+export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
+  "InternalServiceException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidLakeFormationPrincipal extends S.TaggedErrorClass<InvalidLakeFormationPrincipal>()(
+  "InvalidLakeFormationPrincipal",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidInputException",
+    message: { includes: "Invalid principal" },
+  }),
+).pipe(C.withBadRequestError, C.withRetryableError) {}
+export class LastServiceLinkedRoleRegistration extends S.TaggedErrorClass<LastServiceLinkedRoleRegistration>()(
+  "LastServiceLinkedRoleRegistration",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidInputException",
+    message: { includes: "Must manually delete service-linked role" },
+  }),
+).pipe(C.withConflictError) {}
+export class OperationTimeoutException extends S.TaggedErrorClass<OperationTimeoutException>()(
+  "OperationTimeoutException",
+  { Message: S.optional(S.String) },
+) {}
+export class PermissionTypeMismatchException extends S.TaggedErrorClass<PermissionTypeMismatchException>()(
+  "PermissionTypeMismatchException",
+  { Message: S.optional(S.String) },
+) {}
+export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotReadyException>()(
+  "ResourceNotReadyException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNumberLimitExceededException extends S.TaggedErrorClass<ResourceNumberLimitExceededException>()(
+  "ResourceNumberLimitExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class StatisticsNotReadyYetException extends S.TaggedErrorClass<StatisticsNotReadyYetException>()(
+  "StatisticsNotReadyYetException",
+  { Message: S.optional(S.String) },
+  T.HttpError(420),
+) {}
+export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
+  "ThrottledException",
+  { Message: S.optional(S.String) },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class TransactionCanceledException extends S.TaggedErrorClass<TransactionCanceledException>()(
+  "TransactionCanceledException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TransactionCommitInProgressException extends S.TaggedErrorClass<TransactionCommitInProgressException>()(
+  "TransactionCommitInProgressException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TransactionCommittedException extends S.TaggedErrorClass<TransactionCommittedException>()(
+  "TransactionCommittedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class WorkUnitsNotReadyYetException extends S.TaggedErrorClass<WorkUnitsNotReadyYetException>()(
+  "WorkUnitsNotReadyYetException",
+  { Message: S.optional(S.String) },
+  T.HttpError(420),
+) {}
 export type CatalogIdString = string;
-export type NameString = string;
-export type ResourceArnString = string;
-export type LFTagValue = string;
-export type LFTagKey = string;
-export type DescriptionString = string;
-export type MessageString = string;
-export type SAMLAssertionString = string;
-export type IAMRoleArn = string;
-export type IAMSAMLProviderArn = string;
-export type CredentialTimeoutDurationSecondInteger = number;
-export type AccessKeyIdString = string;
-export type SecretAccessKeyString = string;
-export type SessionTokenString = string;
-export type ExpirationTimestamp = Date;
-export type Identifier = string;
-export type DataLakePrincipalString = string;
-export type ExpressionString = string;
-export type TransactionIdString = string;
-export type PredicateString = string;
-export type VersionString = string;
-export type IdentityCenterInstanceArn = string;
-export type ScopeTarget = string;
-export type ApplicationArn = string;
-export type URI = string;
-export type ETagString = string;
-export type RAMResourceShareArn = string;
-export type LastModifiedTimestamp = Date;
-export type AccountIdString = string;
-export type IdentityString = string;
-export type KeyString = string;
-export type ParametersMapValue = string;
-export type Token = string;
-export type PageSize = number;
-export type GetQueryStateRequestQueryIdString = string;
-export type ErrorMessageString = string;
-export type GetQueryStatisticsRequestQueryIdString = string;
-export type NumberOfMilliseconds = number;
-export type NumberOfBytes = number;
-export type NumberOfItems = number;
-export type BooleanNullable = boolean;
-export type TokenString = string;
-export type PartitionValueString = string;
-export type ObjectSize = number;
-export type AuditContextString = string;
-export type PathString = string;
-export type ValueString = string;
-export type HashString = string;
-export type NullableString = string;
-export type ContextKey = string;
-export type ContextValue = string;
-export type GetWorkUnitResultsRequestQueryIdString = string;
-export type GetWorkUnitResultsRequestWorkUnitIdLong = number;
-export type SyntheticGetWorkUnitResultsRequestWorkUnitTokenString =
-  | string
-  | redacted.Redacted<string>;
-export type GetWorkUnitsRequestQueryIdString = string;
-export type QueryIdString = string;
-export type WorkUnitIdLong = number;
-export type WorkUnitTokenString = string;
-export type TrueFalseString = string;
-export type StringValue = string;
-export type StorageOptimizerConfigKey = string;
-export type StorageOptimizerConfigValue = string;
-export type SearchPageSize = number;
-export type QueryPlanningContextDatabaseNameString = string;
-export type SyntheticStartQueryPlanningRequestQueryString =
-  | string
-  | redacted.Redacted<string>;
-export type Result = string;
-
-//# Schemas
 export interface CatalogResource {
   Id?: string;
 }
@@ -168,6 +199,7 @@ export const CatalogResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CatalogResource",
 }) as any as S.Schema<CatalogResource>;
+export type NameString = string;
 export interface DatabaseResource {
   CatalogId?: string;
   Name: string;
@@ -221,6 +253,7 @@ export const TableWithColumnsResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TableWithColumnsResource",
 }) as any as S.Schema<TableWithColumnsResource>;
+export type ResourceArnString = string;
 export interface DataLocationResource {
   CatalogId?: string;
   ResourceArn: string;
@@ -246,6 +279,7 @@ export const DataCellsFilterResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataCellsFilterResource",
 }) as any as S.Schema<DataCellsFilterResource>;
+export type LFTagValue = string;
 export type TagValueList = string[];
 export const TagValueList = /*@__PURE__*/ S.Array(S.String);
 export interface LFTagKeyResource {
@@ -264,6 +298,8 @@ export const LFTagKeyResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LFTagKeyResource>;
 export type ResourceType = "DATABASE" | "TABLE" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
+export type LFTagKey = string;
 export interface LFTag {
   TagKey: string;
   TagValues: string[];
@@ -359,6 +395,7 @@ export const AddLFTagsToResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddLFTagsToResourceRequest",
 }) as any as S.Schema<AddLFTagsToResourceRequest>;
+export type DescriptionString = string;
 export interface ErrorDetail {
   ErrorCode?: string;
   ErrorMessage?: string;
@@ -386,6 +423,10 @@ export const AddLFTagsToResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddLFTagsToResourceResponse",
 }) as any as S.Schema<AddLFTagsToResourceResponse>;
+export type SAMLAssertionString = string;
+export type IAMRoleArn = string;
+export type IAMSAMLProviderArn = string;
+export type CredentialTimeoutDurationSecondInteger = number;
 export interface AssumeDecoratedRoleWithSAMLRequest {
   SAMLAssertion: string;
   RoleArn: string;
@@ -411,6 +452,10 @@ export const AssumeDecoratedRoleWithSAMLRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssumeDecoratedRoleWithSAMLRequest",
 }) as any as S.Schema<AssumeDecoratedRoleWithSAMLRequest>;
+export type AccessKeyIdString = string;
+export type SecretAccessKeyString = string;
+export type SessionTokenString = string;
+export type ExpirationTimestamp = Date;
 export interface AssumeDecoratedRoleWithSAMLResponse {
   AccessKeyId?: string;
   SecretAccessKey?: string | redacted.Redacted<string>;
@@ -427,6 +472,8 @@ export const AssumeDecoratedRoleWithSAMLResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssumeDecoratedRoleWithSAMLResponse",
 }) as any as S.Schema<AssumeDecoratedRoleWithSAMLResponse>;
+export type Identifier = string;
+export type DataLakePrincipalString = string;
 export interface DataLakePrincipal {
   DataLakePrincipalIdentifier?: string;
 }
@@ -454,8 +501,10 @@ export type Permission =
   | "SUPER_USER"
   | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
+
 export type PermissionList = Permission[];
 export const PermissionList = /*@__PURE__*/ S.Array(Permission);
+export type ExpressionString = string;
 export interface Condition {
   Expression?: string;
 }
@@ -560,6 +609,7 @@ export const BatchRevokePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchRevokePermissionsResponse",
 }) as any as S.Schema<BatchRevokePermissionsResponse>;
+export type TransactionIdString = string;
 export interface CancelTransactionRequest {
   TransactionId: string;
 }
@@ -607,6 +657,7 @@ export type TransactionStatus =
   | "COMMIT_IN_PROGRESS"
   | (string & {});
 export const TransactionStatus = /*@__PURE__*/ S.String;
+
 export interface CommitTransactionResponse {
   TransactionStatus?: TransactionStatus;
 }
@@ -615,6 +666,7 @@ export const CommitTransactionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CommitTransactionResponse",
 }) as any as S.Schema<CommitTransactionResponse>;
+export type PredicateString = string;
 export interface AllRowsWildcard {}
 export const AllRowsWildcard = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
@@ -631,6 +683,7 @@ export const RowFilter = /*@__PURE__*/ S.suspend(() =>
     AllRowsWildcard: S.optional(AllRowsWildcard),
   }),
 ).annotate({ identifier: "RowFilter" }) as any as S.Schema<RowFilter>;
+export type VersionString = string;
 export interface DataCellsFilter {
   TableCatalogId: string;
   DatabaseName: string;
@@ -678,8 +731,11 @@ export const CreateDataCellsFilterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDataCellsFilterResponse",
 }) as any as S.Schema<CreateDataCellsFilterResponse>;
+export type IdentityCenterInstanceArn = string;
 export type EnableStatus = "ENABLED" | "DISABLED" | (string & {});
 export const EnableStatus = /*@__PURE__*/ S.String;
+
+export type ScopeTarget = string;
 export type ScopeTargets = string[];
 export const ScopeTargets = /*@__PURE__*/ S.Array(S.String);
 export interface ExternalFilteringConfiguration {
@@ -695,6 +751,7 @@ export type DataLakePrincipalList = DataLakePrincipal[];
 export const DataLakePrincipalList = /*@__PURE__*/ S.Array(DataLakePrincipal);
 export type ServiceAuthorization = "ENABLED" | "DISABLED" | (string & {});
 export const ServiceAuthorization = /*@__PURE__*/ S.String;
+
 export interface RedshiftConnect {
   Authorization: ServiceAuthorization;
 }
@@ -749,6 +806,7 @@ export const CreateLakeFormationIdentityCenterConfigurationRequest =
   ).annotate({
     identifier: "CreateLakeFormationIdentityCenterConfigurationRequest",
   }) as any as S.Schema<CreateLakeFormationIdentityCenterConfigurationRequest>;
+export type ApplicationArn = string;
 export interface CreateLakeFormationIdentityCenterConfigurationResponse {
   ApplicationArn?: string;
 }
@@ -981,6 +1039,8 @@ export const DeleteLFTagExpressionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteLFTagExpressionResponse",
 }) as any as S.Schema<DeleteLFTagExpressionResponse>;
+export type URI = string;
+export type ETagString = string;
 export interface VirtualObject {
   Uri: string;
   ETag?: string;
@@ -1067,6 +1127,7 @@ export const DescribeLakeFormationIdentityCenterConfigurationRequest =
   ).annotate({
     identifier: "DescribeLakeFormationIdentityCenterConfigurationRequest",
   }) as any as S.Schema<DescribeLakeFormationIdentityCenterConfigurationRequest>;
+export type RAMResourceShareArn = string;
 export interface DescribeLakeFormationIdentityCenterConfigurationResponse {
   CatalogId?: string;
   InstanceArn?: string;
@@ -1107,12 +1168,15 @@ export const DescribeResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeResourceRequest",
 }) as any as S.Schema<DescribeResourceRequest>;
+export type LastModifiedTimestamp = Date;
 export type VerificationStatus =
   | "VERIFIED"
   | "VERIFICATION_FAILED"
   | "NOT_VERIFIED"
   | (string & {});
 export const VerificationStatus = /*@__PURE__*/ S.String;
+
+export type AccountIdString = string;
 export interface ResourceInfo {
   ResourceArn?: string;
   RoleArn?: string;
@@ -1259,6 +1323,7 @@ export const GetDataLakePrincipalRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDataLakePrincipalRequest",
 }) as any as S.Schema<GetDataLakePrincipalRequest>;
+export type IdentityString = string;
 export interface GetDataLakePrincipalResponse {
   Identity?: string;
 }
@@ -1299,6 +1364,8 @@ export const PrincipalPermissions = /*@__PURE__*/ S.suspend(() =>
 export type PrincipalPermissionsList = PrincipalPermissions[];
 export const PrincipalPermissionsList =
   /*@__PURE__*/ S.Array(PrincipalPermissions);
+export type KeyString = string;
+export type ParametersMapValue = string;
 export type ParametersMap = { [key: string]: string | undefined };
 export const ParametersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1344,6 +1411,8 @@ export const GetDataLakeSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDataLakeSettingsResponse",
 }) as any as S.Schema<GetDataLakeSettingsResponse>;
+export type Token = string;
+export type PageSize = number;
 export interface GetEffectivePermissionsForPathRequest {
   CatalogId?: string;
   ResourceArn: string;
@@ -1485,6 +1554,7 @@ export const GetLFTagExpressionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLFTagExpressionResponse",
 }) as any as S.Schema<GetLFTagExpressionResponse>;
+export type GetQueryStateRequestQueryIdString = string;
 export interface GetQueryStateRequest {
   QueryId: string;
 }
@@ -1502,6 +1572,7 @@ export const GetQueryStateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetQueryStateRequest",
 }) as any as S.Schema<GetQueryStateRequest>;
+export type ErrorMessageString = string;
 export type QueryStateString =
   | "PENDING"
   | "WORKUNITS_AVAILABLE"
@@ -1510,6 +1581,7 @@ export type QueryStateString =
   | "EXPIRED"
   | (string & {});
 export const QueryStateString = /*@__PURE__*/ S.String;
+
 export interface GetQueryStateResponse {
   Error?: string;
   State: QueryStateString;
@@ -1519,6 +1591,7 @@ export const GetQueryStateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetQueryStateResponse",
 }) as any as S.Schema<GetQueryStateResponse>;
+export type GetQueryStatisticsRequestQueryIdString = string;
 export interface GetQueryStatisticsRequest {
   QueryId: string;
 }
@@ -1536,6 +1609,9 @@ export const GetQueryStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetQueryStatisticsRequest",
 }) as any as S.Schema<GetQueryStatisticsRequest>;
+export type NumberOfMilliseconds = number;
+export type NumberOfBytes = number;
+export type NumberOfItems = number;
 export interface ExecutionStatistics {
   AverageExecutionTimeMillis?: number;
   DataScannedBytes?: number;
@@ -1582,6 +1658,7 @@ export const GetQueryStatisticsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetQueryStatisticsResponse",
 }) as any as S.Schema<GetQueryStatisticsResponse>;
+export type BooleanNullable = boolean;
 export interface GetResourceLFTagsRequest {
   CatalogId?: string;
   Resource: Resource;
@@ -1628,6 +1705,7 @@ export const GetResourceLFTagsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourceLFTagsResponse",
 }) as any as S.Schema<GetResourceLFTagsResponse>;
+export type TokenString = string;
 export interface GetTableObjectsRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -1661,8 +1739,10 @@ export const GetTableObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTableObjectsRequest",
 }) as any as S.Schema<GetTableObjectsRequest>;
+export type PartitionValueString = string;
 export type PartitionValuesList = string[];
 export const PartitionValuesList = /*@__PURE__*/ S.Array(S.String);
+export type ObjectSize = number;
 export interface TableObject {
   Uri?: string;
   ETag?: string;
@@ -1704,16 +1784,19 @@ export const GetTableObjectsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTableObjectsResponse",
 }) as any as S.Schema<GetTableObjectsResponse>;
+export type AuditContextString = string;
 export interface AuditContext {
   AdditionalAuditContext?: string;
 }
 export const AuditContext = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AdditionalAuditContext: S.optional(S.String) }),
 ).annotate({ identifier: "AuditContext" }) as any as S.Schema<AuditContext>;
+export type PathString = string;
 export type PathStringList = string[];
 export const PathStringList = /*@__PURE__*/ S.Array(S.String);
 export type CredentialsScope = "READ" | "READWRITE" | (string & {});
 export const CredentialsScope = /*@__PURE__*/ S.String;
+
 export interface GetTemporaryDataLocationCredentialsRequest {
   DurationSeconds?: number;
   AuditContext?: AuditContext;
@@ -1771,6 +1854,7 @@ export const GetTemporaryDataLocationCredentialsResponse =
   ).annotate({
     identifier: "GetTemporaryDataLocationCredentialsResponse",
   }) as any as S.Schema<GetTemporaryDataLocationCredentialsResponse>;
+export type ValueString = string;
 export type ValueStringList = string[];
 export const ValueStringList = /*@__PURE__*/ S.Array(S.String);
 export interface PartitionValueList {
@@ -1788,6 +1872,7 @@ export type PermissionType =
   | "NESTED_CELL_PERMISSION"
   | (string & {});
 export const PermissionType = /*@__PURE__*/ S.String;
+
 export type PermissionTypeList = PermissionType[];
 export const PermissionTypeList = /*@__PURE__*/ S.Array(PermissionType);
 export interface GetTemporaryGluePartitionCredentialsRequest {
@@ -1840,6 +1925,10 @@ export const GetTemporaryGluePartitionCredentialsResponse =
   ).annotate({
     identifier: "GetTemporaryGluePartitionCredentialsResponse",
   }) as any as S.Schema<GetTemporaryGluePartitionCredentialsResponse>;
+export type HashString = string;
+export type NullableString = string;
+export type ContextKey = string;
+export type ContextValue = string;
 export type AdditionalContextMap = { [key: string]: string | undefined };
 export const AdditionalContextMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1914,6 +2003,11 @@ export const GetTemporaryGlueTableCredentialsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetTemporaryGlueTableCredentialsResponse",
 }) as any as S.Schema<GetTemporaryGlueTableCredentialsResponse>;
+export type GetWorkUnitResultsRequestQueryIdString = string;
+export type GetWorkUnitResultsRequestWorkUnitIdLong = number;
+export type SyntheticGetWorkUnitResultsRequestWorkUnitTokenString =
+  | string
+  | redacted.Redacted<string>;
 export interface GetWorkUnitResultsRequest {
   QueryId: string;
   WorkUnitId: number;
@@ -1947,6 +2041,7 @@ export const GetWorkUnitResultsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWorkUnitResultsResponse",
 }) as any as S.Schema<GetWorkUnitResultsResponse>;
+export type GetWorkUnitsRequestQueryIdString = string;
 export interface GetWorkUnitsRequest {
   NextToken?: string;
   PageSize?: number;
@@ -1970,6 +2065,9 @@ export const GetWorkUnitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWorkUnitsRequest",
 }) as any as S.Schema<GetWorkUnitsRequest>;
+export type QueryIdString = string;
+export type WorkUnitIdLong = number;
+export type WorkUnitTokenString = string;
 export interface WorkUnitRange {
   WorkUnitIdMax: number;
   WorkUnitIdMin: number;
@@ -2184,6 +2282,7 @@ export const ListLFTagExpressionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListLFTagExpressionsResponse>;
 export type ResourceShareType = "FOREIGN" | "ALL" | (string & {});
 export const ResourceShareType = /*@__PURE__*/ S.String;
+
 export interface ListLFTagsRequest {
   CatalogId?: string;
   ResourceShareType?: ResourceShareType;
@@ -2230,6 +2329,8 @@ export type DataLakeResourceType =
   | "LF_NAMED_TAG_EXPRESSION"
   | (string & {});
 export const DataLakeResourceType = /*@__PURE__*/ S.String;
+
+export type TrueFalseString = string;
 export interface ListPermissionsRequest {
   CatalogId?: string;
   Principal?: DataLakePrincipal;
@@ -2279,6 +2380,7 @@ export type FieldNameString =
   | "LAST_MODIFIED"
   | (string & {});
 export const FieldNameString = /*@__PURE__*/ S.String;
+
 export type ComparisonOperator =
   | "EQ"
   | "NE"
@@ -2293,6 +2395,8 @@ export type ComparisonOperator =
   | "BETWEEN"
   | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
+export type StringValue = string;
 export type StringValueList = string[];
 export const StringValueList = /*@__PURE__*/ S.Array(S.String);
 export interface FilterCondition {
@@ -2354,6 +2458,7 @@ export type OptimizerType =
   | "ALL"
   | (string & {});
 export const OptimizerType = /*@__PURE__*/ S.String;
+
 export interface ListTableStorageOptimizersRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -2383,11 +2488,14 @@ export const ListTableStorageOptimizersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTableStorageOptimizersRequest",
 }) as any as S.Schema<ListTableStorageOptimizersRequest>;
+export type StorageOptimizerConfigKey = string;
+export type StorageOptimizerConfigValue = string;
 export type StorageOptimizerConfig = { [key: string]: string | undefined };
 export const StorageOptimizerConfig = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type MessageString = string;
 export interface StorageOptimizer {
   StorageOptimizerType?: OptimizerType;
   Config?: { [key: string]: string | undefined };
@@ -2428,6 +2536,7 @@ export type TransactionStatusFilter =
   | "ABORTED"
   | (string & {});
 export const TransactionStatusFilter = /*@__PURE__*/ S.String;
+
 export interface ListTransactionsRequest {
   CatalogId?: string;
   StatusFilter?: TransactionStatusFilter;
@@ -2599,6 +2708,7 @@ export const RevokePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RevokePermissionsResponse",
 }) as any as S.Schema<RevokePermissionsResponse>;
+export type SearchPageSize = number;
 export interface SearchDatabasesByLFTagsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2701,6 +2811,7 @@ export const SearchTablesByLFTagsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchTablesByLFTagsResponse",
 }) as any as S.Schema<SearchTablesByLFTagsResponse>;
+export type QueryPlanningContextDatabaseNameString = string;
 export type QueryParameterMap = { [key: string]: string | undefined };
 export const QueryParameterMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2724,6 +2835,9 @@ export const QueryPlanningContext = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "QueryPlanningContext",
 }) as any as S.Schema<QueryPlanningContext>;
+export type SyntheticStartQueryPlanningRequestQueryString =
+  | string
+  | redacted.Redacted<string>;
 export interface StartQueryPlanningRequest {
   QueryPlanningContext: QueryPlanningContext;
   QueryString: string | redacted.Redacted<string>;
@@ -2755,6 +2869,7 @@ export const StartQueryPlanningResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartQueryPlanningResponse>;
 export type TransactionType = "READ_AND_WRITE" | "READ_ONLY" | (string & {});
 export const TransactionType = /*@__PURE__*/ S.String;
+
 export interface StartTransactionRequest {
   TransactionType?: TransactionType;
 }
@@ -2805,6 +2920,7 @@ export const UpdateDataCellsFilterResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDataCellsFilterResponse>;
 export type ApplicationStatus = "ENABLED" | "DISABLED" | (string & {});
 export const ApplicationStatus = /*@__PURE__*/ S.String;
+
 export interface UpdateLakeFormationIdentityCenterConfigurationRequest {
   CatalogId?: string;
   ShareRecipients?: DataLakePrincipal[];
@@ -3043,6 +3159,7 @@ export const UpdateTableStorageOptimizerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTableStorageOptimizerRequest",
 }) as any as S.Schema<UpdateTableStorageOptimizerRequest>;
+export type Result = string;
 export interface UpdateTableStorageOptimizerResponse {
   Result?: string;
 }
@@ -3051,113 +3168,6 @@ export const UpdateTableStorageOptimizerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTableStorageOptimizerResponse",
 }) as any as S.Schema<UpdateTableStorageOptimizerResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { Message: S.optional(S.String) },
-) {}
-export class EntityNotFoundException extends S.TaggedErrorClass<EntityNotFoundException>()(
-  "EntityNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class OperationTimeoutException extends S.TaggedErrorClass<OperationTimeoutException>()(
-  "OperationTimeoutException",
-  { Message: S.optional(S.String) },
-) {}
-export class TransactionCommitInProgressException extends S.TaggedErrorClass<TransactionCommitInProgressException>()(
-  "TransactionCommitInProgressException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TransactionCommittedException extends S.TaggedErrorClass<TransactionCommittedException>()(
-  "TransactionCommittedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TransactionCanceledException extends S.TaggedErrorClass<TransactionCanceledException>()(
-  "TransactionCanceledException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
-  "AlreadyExistsException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class ResourceNumberLimitExceededException extends S.TaggedErrorClass<ResourceNumberLimitExceededException>()(
-  "ResourceNumberLimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidLakeFormationPrincipal extends S.TaggedErrorClass<InvalidLakeFormationPrincipal>()(
-  "InvalidLakeFormationPrincipal",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidInputException",
-    message: { includes: "Invalid principal" },
-  }),
-).pipe(C.withBadRequestError, C.withRetryableError) {}
-export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotReadyException>()(
-  "ResourceNotReadyException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LastServiceLinkedRoleRegistration extends S.TaggedErrorClass<LastServiceLinkedRoleRegistration>()(
-  "LastServiceLinkedRoleRegistration",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidInputException",
-    message: { includes: "Must manually delete service-linked role" },
-  }),
-).pipe(C.withConflictError) {}
-export class ExpiredException extends S.TaggedErrorClass<ExpiredException>()(
-  "ExpiredException",
-  { Message: S.optional(S.String) },
-  T.HttpError(410),
-).pipe(C.withBadRequestError) {}
-export class StatisticsNotReadyYetException extends S.TaggedErrorClass<StatisticsNotReadyYetException>()(
-  "StatisticsNotReadyYetException",
-  { Message: S.optional(S.String) },
-  T.HttpError(420),
-) {}
-export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
-  "ThrottledException",
-  { Message: S.optional(S.String) },
-  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class GlueEncryptionException extends S.TaggedErrorClass<GlueEncryptionException>()(
-  "GlueEncryptionException",
-  { Message: S.optional(S.String) },
-) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-) {}
-export class PermissionTypeMismatchException extends S.TaggedErrorClass<PermissionTypeMismatchException>()(
-  "PermissionTypeMismatchException",
-  { Message: S.optional(S.String) },
-) {}
-export class WorkUnitsNotReadyYetException extends S.TaggedErrorClass<WorkUnitsNotReadyYetException>()(
-  "WorkUnitsNotReadyYetException",
-  { Message: S.optional(S.String) },
-  T.HttpError(420),
-) {}
-
-//# Operations
 export type AddLFTagsToResourceError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -3189,6 +3199,7 @@ export const addLFTagsToResource: API.OperationMethod<
   retry: Retry,
   operationName: "AddLFTagsToResource",
 }));
+
 export type AssumeDecoratedRoleWithSAMLError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -3233,6 +3244,7 @@ export const assumeDecoratedRoleWithSAML: API.OperationMethod<
   retry: Retry,
   operationName: "AssumeDecoratedRoleWithSAML",
 }));
+
 export type BatchGrantPermissionsError =
   | InvalidInputException
   | OperationTimeoutException
@@ -3253,6 +3265,7 @@ export const batchGrantPermissions: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGrantPermissions",
 }));
+
 export type BatchRevokePermissionsError =
   | InvalidInputException
   | OperationTimeoutException
@@ -3273,6 +3286,7 @@ export const batchRevokePermissions: API.OperationMethod<
   retry: Retry,
   operationName: "BatchRevokePermissions",
 }));
+
 export type CancelTransactionError =
   | ConcurrentModificationException
   | EntityNotFoundException
@@ -3306,6 +3320,7 @@ export const cancelTransaction: API.OperationMethod<
   retry: Retry,
   operationName: "CancelTransaction",
 }));
+
 export type CommitTransactionError =
   | ConcurrentModificationException
   | EntityNotFoundException
@@ -3337,6 +3352,7 @@ export const commitTransaction: API.OperationMethod<
   retry: Retry,
   operationName: "CommitTransaction",
 }));
+
 export type CreateDataCellsFilterError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -3370,6 +3386,7 @@ export const createDataCellsFilter: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataCellsFilter",
 }));
+
 export type CreateLakeFormationIdentityCenterConfigurationError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -3401,6 +3418,7 @@ export const createLakeFormationIdentityCenterConfiguration: API.OperationMethod
   retry: Retry,
   operationName: "CreateLakeFormationIdentityCenterConfiguration",
 }));
+
 export type CreateLakeFormationOptInError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -3436,6 +3454,7 @@ export const createLakeFormationOptIn: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLakeFormationOptIn",
 }));
+
 export type CreateLFTagError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -3467,6 +3486,7 @@ export const createLFTag: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLFTag",
 }));
+
 export type CreateLFTagExpressionError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -3506,6 +3526,7 @@ export const createLFTagExpression: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLFTagExpression",
 }));
+
 export type DeleteDataCellsFilterError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -3535,6 +3556,7 @@ export const deleteDataCellsFilter: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataCellsFilter",
 }));
+
 export type DeleteLakeFormationIdentityCenterConfigurationError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -3566,6 +3588,7 @@ export const deleteLakeFormationIdentityCenterConfiguration: API.OperationMethod
   retry: Retry,
   operationName: "DeleteLakeFormationIdentityCenterConfiguration",
 }));
+
 export type DeleteLakeFormationOptInError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -3599,6 +3622,7 @@ export const deleteLakeFormationOptIn: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLakeFormationOptIn",
 }));
+
 export type DeleteLFTagError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -3634,6 +3658,7 @@ export const deleteLFTag: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLFTag",
 }));
+
 export type DeleteLFTagExpressionError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -3664,6 +3689,7 @@ export const deleteLFTagExpression: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLFTagExpression",
 }));
+
 export type DeleteObjectsOnCancelError =
   | ConcurrentModificationException
   | EntityNotFoundException
@@ -3704,6 +3730,7 @@ export const deleteObjectsOnCancel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteObjectsOnCancel",
 }));
+
 export type DeregisterResourceError =
   | EntityNotFoundException
   | InternalServiceException
@@ -3735,6 +3762,7 @@ export const deregisterResource: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterResource",
 }));
+
 export type DescribeLakeFormationIdentityCenterConfigurationError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -3764,6 +3792,7 @@ export const describeLakeFormationIdentityCenterConfiguration: API.OperationMeth
   retry: Retry,
   operationName: "DescribeLakeFormationIdentityCenterConfiguration",
 }));
+
 export type DescribeResourceError =
   | EntityNotFoundException
   | InternalServiceException
@@ -3791,6 +3820,7 @@ export const describeResource: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeResource",
 }));
+
 export type DescribeTransactionError =
   | EntityNotFoundException
   | InternalServiceException
@@ -3818,6 +3848,7 @@ export const describeTransaction: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTransaction",
 }));
+
 export type ExtendTransactionError =
   | EntityNotFoundException
   | InternalServiceException
@@ -3853,6 +3884,7 @@ export const extendTransaction: API.OperationMethod<
   retry: Retry,
   operationName: "ExtendTransaction",
 }));
+
 export type GetDataCellsFilterError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -3882,6 +3914,7 @@ export const getDataCellsFilter: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataCellsFilter",
 }));
+
 export type GetDataLakePrincipalError =
   | AccessDeniedException
   | InternalServiceException
@@ -3907,6 +3940,7 @@ export const getDataLakePrincipal: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataLakePrincipal",
 }));
+
 export type GetDataLakeSettingsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -3932,6 +3966,7 @@ export const getDataLakeSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataLakeSettings",
 }));
+
 export type GetEffectivePermissionsForPathError =
   | EntityNotFoundException
   | InternalServiceException
@@ -3980,6 +4015,7 @@ export const getEffectivePermissionsForPath: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetLFTagError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -4009,6 +4045,7 @@ export const getLFTag: API.OperationMethod<
   retry: Retry,
   operationName: "GetLFTag",
 }));
+
 export type GetLFTagExpressionError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -4038,6 +4075,7 @@ export const getLFTagExpression: API.OperationMethod<
   retry: Retry,
   operationName: "GetLFTagExpression",
 }));
+
 export type GetQueryStateError =
   | AccessDeniedException
   | InternalServiceException
@@ -4064,6 +4102,7 @@ export const getQueryState: API.OperationMethod<
   operationName: "GetQueryState",
   endpointHostPrefix: "query-",
 }));
+
 export type GetQueryStatisticsError =
   | AccessDeniedException
   | ExpiredException
@@ -4096,6 +4135,7 @@ export const getQueryStatistics: API.OperationMethod<
   operationName: "GetQueryStatistics",
   endpointHostPrefix: "query-",
 }));
+
 export type GetResourceLFTagsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -4127,6 +4167,7 @@ export const getResourceLFTags: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourceLFTags",
 }));
+
 export type GetTableObjectsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -4180,6 +4221,7 @@ export const getTableObjects: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetTemporaryDataLocationCredentialsError =
   | AccessDeniedException
   | ConflictException
@@ -4232,6 +4274,7 @@ export const getTemporaryDataLocationCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "GetTemporaryDataLocationCredentials",
 }));
+
 export type GetTemporaryGluePartitionCredentialsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -4263,6 +4306,7 @@ export const getTemporaryGluePartitionCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "GetTemporaryGluePartitionCredentials",
 }));
+
 export type GetTemporaryGlueTableCredentialsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -4296,6 +4340,7 @@ export const getTemporaryGlueTableCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "GetTemporaryGlueTableCredentials",
 }));
+
 export type GetWorkUnitResultsError =
   | AccessDeniedException
   | ExpiredException
@@ -4326,6 +4371,7 @@ export const getWorkUnitResults: API.OperationMethod<
   operationName: "GetWorkUnitResults",
   endpointHostPrefix: "data-",
 }));
+
 export type GetWorkUnitsError =
   | AccessDeniedException
   | ExpiredException
@@ -4377,6 +4423,7 @@ export const getWorkUnits: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type GrantPermissionsError =
   | ConcurrentModificationException
   | EntityNotFoundException
@@ -4406,6 +4453,7 @@ export const grantPermissions: API.OperationMethod<
   retry: Retry,
   operationName: "GrantPermissions",
 }));
+
 export type ListDataCellsFilterError =
   | AccessDeniedException
   | InternalServiceException
@@ -4454,6 +4502,7 @@ export const listDataCellsFilter: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLakeFormationOptInsError =
   | AccessDeniedException
   | InternalServiceException
@@ -4505,6 +4554,7 @@ export const listLakeFormationOptIns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLFTagExpressionsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -4555,6 +4605,7 @@ export const listLFTagExpressions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLFTagsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -4605,6 +4656,7 @@ export const listLFTags: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPermissionsError =
   | InternalServiceException
   | InvalidInputException
@@ -4658,6 +4710,7 @@ export const listPermissions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourcesError =
   | InternalServiceException
   | InvalidInputException
@@ -4703,6 +4756,7 @@ export const listResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTableStorageOptimizersError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -4750,6 +4804,7 @@ export const listTableStorageOptimizers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTransactionsError =
   | InternalServiceException
   | InvalidInputException
@@ -4797,6 +4852,7 @@ export const listTransactions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutDataLakeSettingsError =
   | InternalServiceException
   | InvalidInputException
@@ -4824,6 +4880,7 @@ export const putDataLakeSettings: API.OperationMethod<
   retry: Retry,
   operationName: "PutDataLakeSettings",
 }));
+
 export type RegisterResourceError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -4868,6 +4925,7 @@ export const registerResource: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterResource",
 }));
+
 export type RemoveLFTagsFromResourceError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -4901,6 +4959,7 @@ export const removeLFTagsFromResource: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveLFTagsFromResource",
 }));
+
 export type RevokePermissionsError =
   | ConcurrentModificationException
   | EntityNotFoundException
@@ -4928,6 +4987,7 @@ export const revokePermissions: API.OperationMethod<
   retry: Retry,
   operationName: "RevokePermissions",
 }));
+
 export type SearchDatabasesByLFTagsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -4980,6 +5040,7 @@ export const searchDatabasesByLFTags: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchTablesByLFTagsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -5032,6 +5093,7 @@ export const searchTablesByLFTags: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type StartQueryPlanningError =
   | AccessDeniedException
   | InternalServiceException
@@ -5062,6 +5124,7 @@ export const startQueryPlanning: API.OperationMethod<
   operationName: "StartQueryPlanning",
   endpointHostPrefix: "query-",
 }));
+
 export type StartTransactionError =
   | InternalServiceException
   | OperationTimeoutException
@@ -5082,6 +5145,7 @@ export const startTransaction: API.OperationMethod<
   retry: Retry,
   operationName: "StartTransaction",
 }));
+
 export type UpdateDataCellsFilterError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -5113,6 +5177,7 @@ export const updateDataCellsFilter: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDataCellsFilter",
 }));
+
 export type UpdateLakeFormationIdentityCenterConfigurationError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -5144,6 +5209,7 @@ export const updateLakeFormationIdentityCenterConfiguration: API.OperationMethod
   retry: Retry,
   operationName: "UpdateLakeFormationIdentityCenterConfiguration",
 }));
+
 export type UpdateLFTagError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -5175,6 +5241,7 @@ export const updateLFTag: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLFTag",
 }));
+
 export type UpdateLFTagExpressionError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -5207,6 +5274,7 @@ export const updateLFTagExpression: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLFTagExpression",
 }));
+
 export type UpdateResourceError =
   | EntityNotFoundException
   | InternalServiceException
@@ -5234,6 +5302,7 @@ export const updateResource: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateResource",
 }));
+
 export type UpdateTableObjectsError =
   | ConcurrentModificationException
   | EntityNotFoundException
@@ -5271,6 +5340,7 @@ export const updateTableObjects: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTableObjects",
 }));
+
 export type UpdateTableStorageOptimizerError =
   | AccessDeniedException
   | EntityNotFoundException

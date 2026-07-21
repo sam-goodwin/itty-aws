@@ -53,28 +53,8 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
 export type DirectConnectGatewayAttachPoint = string;
 export type AmazonResourceName = string;
-export type ActivationKey = string | redacted.Redacted<string>;
-export type ConnectionDescription = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ConnectionId = string;
-export type ConnectionBandwidth = string;
-export type EnvironmentId = string;
-export type CloudServiceProvider = string;
-export type LastMileProvider = string;
-export type Location = string;
-export type ProductType = string;
-export type ConnectionSharedId = string;
-export type BillingTier = number;
-export type OwnerAccountId = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type RemoteOwnerAccount = string;
-
-//# Schemas
 export type AttachPoint =
   | { directConnectGateway: string; arn?: never }
   | { directConnectGateway?: never; arn: string };
@@ -82,6 +62,10 @@ export const AttachPoint = /*@__PURE__*/ S.Union([
   S.Struct({ directConnectGateway: S.String }),
   S.Struct({ arn: S.String }),
 ]);
+export type ActivationKey = string | redacted.Redacted<string>;
+export type ConnectionDescription = string;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -107,6 +91,11 @@ export const AcceptConnectionProposalRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptConnectionProposalRequest",
 }) as any as S.Schema<AcceptConnectionProposalRequest>;
+export type ConnectionId = string;
+export type ConnectionBandwidth = string;
+export type EnvironmentId = string;
+export type CloudServiceProvider = string;
+export type LastMileProvider = string;
 export type Provider =
   | { cloudServiceProvider: string; lastMileProvider?: never }
   | { cloudServiceProvider?: never; lastMileProvider: string };
@@ -114,6 +103,8 @@ export const Provider = /*@__PURE__*/ S.Union([
   S.Struct({ cloudServiceProvider: S.String }),
   S.Struct({ lastMileProvider: S.String }),
 ]);
+export type Location = string;
+export type ProductType = string;
 export type ConnectionState =
   | "available"
   | "requested"
@@ -125,6 +116,10 @@ export type ConnectionState =
   | "updating"
   | (string & {});
 export const ConnectionState = /*@__PURE__*/ S.String;
+
+export type ConnectionSharedId = string;
+export type BillingTier = number;
+export type OwnerAccountId = string;
 export interface Connection {
   id: string;
   arn: string;
@@ -169,130 +164,7 @@ export const AcceptConnectionProposalResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptConnectionProposalResponse",
 }) as any as S.Schema<AcceptConnectionProposalResponse>;
-export interface DescribeConnectionProposalRequest {
-  activationKey: string | redacted.Redacted<string>;
-}
-export const DescribeConnectionProposalRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ activationKey: SensitiveString }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeConnectionProposalRequest",
-}) as any as S.Schema<DescribeConnectionProposalRequest>;
-export interface DescribeConnectionProposalResponse {
-  bandwidth: string;
-  environmentId: string;
-  provider: Provider;
-  location: string;
-}
-export const DescribeConnectionProposalResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bandwidth: S.String,
-    environmentId: S.String,
-    provider: Provider,
-    location: S.String,
-  }),
-).annotate({
-  identifier: "DescribeConnectionProposalResponse",
-}) as any as S.Schema<DescribeConnectionProposalResponse>;
-export interface ListAttachPointsRequest {
-  environmentId: string;
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListAttachPointsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListAttachPointsRequest",
-}) as any as S.Schema<ListAttachPointsRequest>;
-export type AttachPointType = "DirectConnectGateway" | (string & {});
-export const AttachPointType = /*@__PURE__*/ S.String;
-export interface AttachPointDescriptor {
-  type: AttachPointType;
-  identifier: string;
-  name: string;
-}
-export const AttachPointDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ type: AttachPointType, identifier: S.String, name: S.String }),
-).annotate({
-  identifier: "AttachPointDescriptor",
-}) as any as S.Schema<AttachPointDescriptor>;
-export type AttachPointDescriptorList = AttachPointDescriptor[];
-export const AttachPointDescriptorList = /*@__PURE__*/ S.Array(
-  AttachPointDescriptor,
-);
-export interface ListAttachPointsResponse {
-  attachPoints: AttachPointDescriptor[];
-  nextToken?: string;
-}
-export const ListAttachPointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attachPoints: AttachPointDescriptorList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAttachPointsResponse",
-}) as any as S.Schema<ListAttachPointsResponse>;
-export interface ListTagsForResourceRequest {
-  arn: string;
-}
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
-export interface ListTagsForResourceResponse {
-  tags?: { [key: string]: string | undefined };
-}
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(TagMap) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
-export interface TagResourceRequest {
-  arn: string;
-  tags: { [key: string]: string | undefined };
-}
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, tags: TagMap }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "TagResourceRequest",
-}) as any as S.Schema<TagResourceRequest>;
-export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
-export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
-export interface UntagResourceRequest {
-  arn: string;
-  tagKeys: string[];
-}
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ arn: S.String, tagKeys: TagKeyList }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UntagResourceRequest",
-}) as any as S.Schema<UntagResourceRequest>;
-export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export type RemoteOwnerAccount = string;
 export type RemoteAccountIdentifier = { identifier: string };
 export const RemoteAccountIdentifier = /*@__PURE__*/ S.Union([
   S.Struct({ identifier: S.String }),
@@ -329,50 +201,6 @@ export const CreateConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectionResponse",
 }) as any as S.Schema<CreateConnectionResponse>;
-export interface GetConnectionRequest {
-  identifier: string;
-}
-export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identifier: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetConnectionRequest",
-}) as any as S.Schema<GetConnectionRequest>;
-export interface GetConnectionResponse {
-  connection?: Connection;
-}
-export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connection: S.optional(Connection) }),
-).annotate({
-  identifier: "GetConnectionResponse",
-}) as any as S.Schema<GetConnectionResponse>;
-export interface UpdateConnectionRequest {
-  identifier: string;
-  description?: string;
-  bandwidth?: string;
-  clientToken?: string;
-}
-export const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String,
-    description: S.optional(S.String),
-    bandwidth: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateConnectionRequest",
-}) as any as S.Schema<UpdateConnectionRequest>;
-export interface UpdateConnectionResponse {
-  connection?: Connection;
-}
-export const UpdateConnectionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ connection: S.optional(Connection) }),
-).annotate({
-  identifier: "UpdateConnectionResponse",
-}) as any as S.Schema<UpdateConnectionResponse>;
 export interface DeleteConnectionRequest {
   identifier: string;
   clientToken?: string;
@@ -395,6 +223,159 @@ export const DeleteConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteConnectionResponse",
 }) as any as S.Schema<DeleteConnectionResponse>;
+export interface DescribeConnectionProposalRequest {
+  activationKey: string | redacted.Redacted<string>;
+}
+export const DescribeConnectionProposalRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ activationKey: SensitiveString }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeConnectionProposalRequest",
+}) as any as S.Schema<DescribeConnectionProposalRequest>;
+export interface DescribeConnectionProposalResponse {
+  bandwidth: string;
+  environmentId: string;
+  provider: Provider;
+  location: string;
+}
+export const DescribeConnectionProposalResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bandwidth: S.String,
+    environmentId: S.String,
+    provider: Provider,
+    location: S.String,
+  }),
+).annotate({
+  identifier: "DescribeConnectionProposalResponse",
+}) as any as S.Schema<DescribeConnectionProposalResponse>;
+export interface GetConnectionRequest {
+  identifier: string;
+}
+export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ identifier: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetConnectionRequest",
+}) as any as S.Schema<GetConnectionRequest>;
+export interface GetConnectionResponse {
+  connection?: Connection;
+}
+export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ connection: S.optional(Connection) }),
+).annotate({
+  identifier: "GetConnectionResponse",
+}) as any as S.Schema<GetConnectionResponse>;
+export interface GetEnvironmentRequest {
+  id: string;
+}
+export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetEnvironmentRequest",
+}) as any as S.Schema<GetEnvironmentRequest>;
+export type EnvironmentState =
+  | "available"
+  | "limited"
+  | "unavailable"
+  | (string & {});
+export const EnvironmentState = /*@__PURE__*/ S.String;
+
+export type BandwidthList = string[];
+export const BandwidthList = /*@__PURE__*/ S.Array(S.String);
+export interface Bandwidths {
+  available?: string[];
+  supported?: string[];
+}
+export const Bandwidths = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    available: S.optional(BandwidthList),
+    supported: S.optional(BandwidthList),
+  }),
+).annotate({ identifier: "Bandwidths" }) as any as S.Schema<Bandwidths>;
+export type RemoteAccountIdentifierType = "account" | "email" | (string & {});
+export const RemoteAccountIdentifierType = /*@__PURE__*/ S.String;
+
+export interface Environment {
+  provider: Provider;
+  location: string;
+  environmentId: string;
+  state: EnvironmentState;
+  bandwidths: Bandwidths;
+  type: string;
+  activationPageUrl?: string;
+  remoteIdentifierType?: RemoteAccountIdentifierType;
+}
+export const Environment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: Provider,
+    location: S.String,
+    environmentId: S.String,
+    state: EnvironmentState,
+    bandwidths: Bandwidths,
+    type: S.String,
+    activationPageUrl: S.optional(S.String),
+    remoteIdentifierType: S.optional(RemoteAccountIdentifierType),
+  }),
+).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
+export interface GetEnvironmentResponse {
+  environment: Environment;
+}
+export const GetEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ environment: Environment }),
+).annotate({
+  identifier: "GetEnvironmentResponse",
+}) as any as S.Schema<GetEnvironmentResponse>;
+export type MaxResults = number;
+export type NextToken = string;
+export interface ListAttachPointsRequest {
+  environmentId: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListAttachPointsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListAttachPointsRequest",
+}) as any as S.Schema<ListAttachPointsRequest>;
+export type AttachPointType = "DirectConnectGateway" | (string & {});
+export const AttachPointType = /*@__PURE__*/ S.String;
+
+export interface AttachPointDescriptor {
+  type: AttachPointType;
+  identifier: string;
+  name: string;
+}
+export const AttachPointDescriptor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ type: AttachPointType, identifier: S.String, name: S.String }),
+).annotate({
+  identifier: "AttachPointDescriptor",
+}) as any as S.Schema<AttachPointDescriptor>;
+export type AttachPointDescriptorList = AttachPointDescriptor[];
+export const AttachPointDescriptorList = /*@__PURE__*/ S.Array(
+  AttachPointDescriptor,
+);
+export interface ListAttachPointsResponse {
+  attachPoints: AttachPointDescriptor[];
+  nextToken?: string;
+}
+export const ListAttachPointsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    attachPoints: AttachPointDescriptorList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAttachPointsResponse",
+}) as any as S.Schema<ListAttachPointsResponse>;
 export interface ListConnectionsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -463,66 +444,6 @@ export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListConnectionsResponse",
 }) as any as S.Schema<ListConnectionsResponse>;
-export interface GetEnvironmentRequest {
-  id: string;
-}
-export const GetEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetEnvironmentRequest",
-}) as any as S.Schema<GetEnvironmentRequest>;
-export type EnvironmentState =
-  | "available"
-  | "limited"
-  | "unavailable"
-  | (string & {});
-export const EnvironmentState = /*@__PURE__*/ S.String;
-export type BandwidthList = string[];
-export const BandwidthList = /*@__PURE__*/ S.Array(S.String);
-export interface Bandwidths {
-  available?: string[];
-  supported?: string[];
-}
-export const Bandwidths = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    available: S.optional(BandwidthList),
-    supported: S.optional(BandwidthList),
-  }),
-).annotate({ identifier: "Bandwidths" }) as any as S.Schema<Bandwidths>;
-export type RemoteAccountIdentifierType = "account" | "email" | (string & {});
-export const RemoteAccountIdentifierType = /*@__PURE__*/ S.String;
-export interface Environment {
-  provider: Provider;
-  location: string;
-  environmentId: string;
-  state: EnvironmentState;
-  bandwidths: Bandwidths;
-  type: string;
-  activationPageUrl?: string;
-  remoteIdentifierType?: RemoteAccountIdentifierType;
-}
-export const Environment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: Provider,
-    location: S.String,
-    environmentId: S.String,
-    state: EnvironmentState,
-    bandwidths: Bandwidths,
-    type: S.String,
-    activationPageUrl: S.optional(S.String),
-    remoteIdentifierType: S.optional(RemoteAccountIdentifierType),
-  }),
-).annotate({ identifier: "Environment" }) as any as S.Schema<Environment>;
-export interface GetEnvironmentResponse {
-  environment: Environment;
-}
-export const GetEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ environment: Environment }),
-).annotate({
-  identifier: "GetEnvironmentResponse",
-}) as any as S.Schema<GetEnvironmentResponse>;
 export interface ListEnvironmentsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -552,10 +473,86 @@ export const ListEnvironmentsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEnvironmentsResponse",
 }) as any as S.Schema<ListEnvironmentsResponse>;
-
-//# Errors
-
-//# Operations
+export interface ListTagsForResourceRequest {
+  arn: string;
+}
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListTagsForResourceRequest",
+}) as any as S.Schema<ListTagsForResourceRequest>;
+export interface ListTagsForResourceResponse {
+  tags?: { [key: string]: string | undefined };
+}
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
+export interface TagResourceRequest {
+  arn: string;
+  tags: { [key: string]: string | undefined };
+}
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String, tags: TagMap }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "TagResourceRequest",
+}) as any as S.Schema<TagResourceRequest>;
+export interface TagResourceResponse {}
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "TagResourceResponse",
+}) as any as S.Schema<TagResourceResponse>;
+export type TagKeyList = string[];
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export interface UntagResourceRequest {
+  arn: string;
+  tagKeys: string[];
+}
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ arn: S.String, tagKeys: TagKeyList }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UntagResourceRequest",
+}) as any as S.Schema<UntagResourceRequest>;
+export interface UntagResourceResponse {}
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UntagResourceResponse",
+}) as any as S.Schema<UntagResourceResponse>;
+export interface UpdateConnectionRequest {
+  identifier: string;
+  description?: string;
+  bandwidth?: string;
+  clientToken?: string;
+}
+export const UpdateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identifier: S.String,
+    description: S.optional(S.String),
+    bandwidth: S.optional(S.String),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateConnectionRequest",
+}) as any as S.Schema<UpdateConnectionRequest>;
+export interface UpdateConnectionResponse {
+  connection?: Connection;
+}
+export const UpdateConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ connection: S.optional(Connection) }),
+).annotate({
+  identifier: "UpdateConnectionResponse",
+}) as any as S.Schema<UpdateConnectionResponse>;
 export type AcceptConnectionProposalError = CommonErrors;
 /**
  * Accepts a connection proposal which was generated at a supported partner's portal.
@@ -577,6 +574,51 @@ export const acceptConnectionProposal: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptConnectionProposal",
 }));
+
+export type CreateConnectionError = CommonErrors;
+/**
+ * Initiates the process to create a Connection across the specified Environment.
+ *
+ * The Environment dictates the specified partner and location to which the other end of the connection should attach. You can see a list of the available Environments by calling ListEnvironments
+ *
+ * The Attach Point specifies where within the AWS Network your connection will logically connect.
+ *
+ * After a successful call to this method, the resulting Connection will return an Activation Key which will need to be brought to the specific partner's portal to confirm the Connection on both sides. (See Environment$activationPageUrl for a direct link to the partner portal).
+ */
+export const createConnection: API.OperationMethod<
+  CreateConnectionRequest,
+  CreateConnectionResponse,
+  CreateConnectionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateConnectionRequest,
+  output: CreateConnectionResponse,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateConnection",
+}));
+
+export type DeleteConnectionError = CommonErrors;
+/**
+ * Deletes an existing Connection with the supplied identifier.
+ *
+ * This operation will also inform the remote partner of your intention to delete your connection. Note, the partner may still require you to delete to fully clean up resources, but the network connectivity provided by the Connection will cease to exist.
+ */
+export const deleteConnection: API.OperationMethod<
+  DeleteConnectionRequest,
+  DeleteConnectionResponse,
+  DeleteConnectionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConnectionRequest,
+  output: DeleteConnectionResponse,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteConnection",
+}));
+
 export type DescribeConnectionProposalError = CommonErrors;
 /**
  * Describes the details of a connection proposal generated at a partner's portal.
@@ -594,6 +636,43 @@ export const describeConnectionProposal: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConnectionProposal",
 }));
+
+export type GetConnectionError = CommonErrors;
+/**
+ * Describes the current state of a Connection resource as specified by the identifier.
+ */
+export const getConnection: API.OperationMethod<
+  GetConnectionRequest,
+  GetConnectionResponse,
+  GetConnectionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConnectionRequest,
+  output: GetConnectionResponse,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetConnection",
+}));
+
+export type GetEnvironmentError = CommonErrors;
+/**
+ * Describes a specific Environment
+ */
+export const getEnvironment: API.OperationMethod<
+  GetEnvironmentRequest,
+  GetEnvironmentResponse,
+  GetEnvironmentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetEnvironmentRequest,
+  output: GetEnvironmentResponse,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetEnvironment",
+}));
+
 export type ListAttachPointsError = CommonErrors;
 /**
  * Lists all Attach Points the caller has access to that are valid for the specified Environment.
@@ -632,133 +711,7 @@ export const listAttachPoints: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type ListTagsForResourceError = CommonErrors;
-/**
- * List all current tags on the specified resource. Currently this supports Connection resources.
- */
-export const listTagsForResource: API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResponse,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
-  errors: [],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListTagsForResource",
-}));
-export type TagResourceError = CommonErrors;
-/**
- * Add new tags to the specified resource.
- */
-export const tagResource: API.OperationMethod<
-  TagResourceRequest,
-  TagResourceResponse,
-  TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
-  errors: [],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "TagResource",
-}));
-export type UntagResourceError = CommonErrors;
-/**
- * Removes tags from the specified resource.
- */
-export const untagResource: API.OperationMethod<
-  UntagResourceRequest,
-  UntagResourceResponse,
-  UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
-  errors: [],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UntagResource",
-}));
-export type CreateConnectionError = CommonErrors;
-/**
- * Initiates the process to create a Connection across the specified Environment.
- *
- * The Environment dictates the specified partner and location to which the other end of the connection should attach. You can see a list of the available Environments by calling ListEnvironments
- *
- * The Attach Point specifies where within the AWS Network your connection will logically connect.
- *
- * After a successful call to this method, the resulting Connection will return an Activation Key which will need to be brought to the specific partner's portal to confirm the Connection on both sides. (See Environment$activationPageUrl for a direct link to the partner portal).
- */
-export const createConnection: API.OperationMethod<
-  CreateConnectionRequest,
-  CreateConnectionResponse,
-  CreateConnectionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateConnectionRequest,
-  output: CreateConnectionResponse,
-  errors: [],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateConnection",
-}));
-export type GetConnectionError = CommonErrors;
-/**
- * Describes the current state of a Connection resource as specified by the identifier.
- */
-export const getConnection: API.OperationMethod<
-  GetConnectionRequest,
-  GetConnectionResponse,
-  GetConnectionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectionRequest,
-  output: GetConnectionResponse,
-  errors: [],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetConnection",
-}));
-export type UpdateConnectionError = CommonErrors;
-/**
- * Modifies an existing connection. Currently we support modifications to the connection's description and/or bandwidth.
- */
-export const updateConnection: API.OperationMethod<
-  UpdateConnectionRequest,
-  UpdateConnectionResponse,
-  UpdateConnectionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConnectionRequest,
-  output: UpdateConnectionResponse,
-  errors: [],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateConnection",
-}));
-export type DeleteConnectionError = CommonErrors;
-/**
- * Deletes an existing Connection with the supplied identifier.
- *
- * This operation will also inform the remote partner of your intention to delete your connection. Note, the partner may still require you to delete to fully clean up resources, but the network connectivity provided by the Connection will cease to exist.
- */
-export const deleteConnection: API.OperationMethod<
-  DeleteConnectionRequest,
-  DeleteConnectionResponse,
-  DeleteConnectionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConnectionRequest,
-  output: DeleteConnectionResponse,
-  errors: [],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteConnection",
-}));
+
 export type ListConnectionsError = CommonErrors;
 /**
  * Lists all connection objects to which the caller has access.
@@ -809,23 +762,7 @@ export const listConnections: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type GetEnvironmentError = CommonErrors;
-/**
- * Describes a specific Environment
- */
-export const getEnvironment: API.OperationMethod<
-  GetEnvironmentRequest,
-  GetEnvironmentResponse,
-  GetEnvironmentError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetEnvironmentRequest,
-  output: GetEnvironmentResponse,
-  errors: [],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetEnvironment",
-}));
+
 export type ListEnvironmentsError = CommonErrors;
 /**
  * Lists all of the environments that can produce connections that will land in the called AWS region.
@@ -863,4 +800,76 @@ export const listEnvironments: API.OperationMethod<
     items: "environments",
     pageSize: "maxResults",
   } as const,
+}));
+
+export type ListTagsForResourceError = CommonErrors;
+/**
+ * List all current tags on the specified resource. Currently this supports Connection resources.
+ */
+export const listTagsForResource: API.OperationMethod<
+  ListTagsForResourceRequest,
+  ListTagsForResourceResponse,
+  ListTagsForResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTagsForResource",
+}));
+
+export type TagResourceError = CommonErrors;
+/**
+ * Add new tags to the specified resource.
+ */
+export const tagResource: API.OperationMethod<
+  TagResourceRequest,
+  TagResourceResponse,
+  TagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: TagResourceRequest,
+  output: TagResourceResponse,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TagResource",
+}));
+
+export type UntagResourceError = CommonErrors;
+/**
+ * Removes tags from the specified resource.
+ */
+export const untagResource: API.OperationMethod<
+  UntagResourceRequest,
+  UntagResourceResponse,
+  UntagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UntagResource",
+}));
+
+export type UpdateConnectionError = CommonErrors;
+/**
+ * Modifies an existing connection. Currently we support modifications to the connection's description and/or bandwidth.
+ */
+export const updateConnection: API.OperationMethod<
+  UpdateConnectionRequest,
+  UpdateConnectionResponse,
+  UpdateConnectionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateConnectionRequest,
+  output: UpdateConnectionResponse,
+  errors: [],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateConnection",
 }));

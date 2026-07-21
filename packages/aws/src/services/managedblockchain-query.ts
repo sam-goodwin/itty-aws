@@ -85,30 +85,61 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    resourceId: S.String,
+    resourceType: S.String,
+    serviceCode: S.String,
+    quotaCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    serviceCode: S.String,
+    quotaCode: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.String,
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type QueryNetwork = string;
 export type ChainAddress = string;
 export type QueryTokenId = string;
-export type ErrorType = string;
-export type ExceptionMessage = string;
-export type ResourceId = string;
-export type ResourceType = string;
-export type ServiceCode = string;
-export type QuotaCode = string;
-export type ValidationExceptionReason = string;
-export type QueryTokenStandard = string;
-export type QueryTransactionHash = string;
-export type QueryTransactionId = string;
-export type BlockHash = string;
-export type ConfirmationStatus = string;
-export type ExecutionStatus = string;
-export type NextToken = string;
-export type ListFilteredTransactionEventsSortBy = string;
-export type SortOrder = string;
-export type QueryTransactionEventType = string;
-export type ListTransactionsSortBy = string;
-
-//# Schemas
 export interface TokenIdentifier {
   network: string;
   contractAddress?: string;
@@ -200,6 +231,7 @@ export type BatchGetTokenBalanceOutputList = BatchGetTokenBalanceOutputItem[];
 export const BatchGetTokenBalanceOutputList = /*@__PURE__*/ S.Array(
   BatchGetTokenBalanceOutputItem,
 );
+export type ErrorType = string;
 export interface BatchGetTokenBalanceErrorItem {
   tokenIdentifier?: TokenIdentifier;
   ownerIdentifier?: OwnerIdentifier;
@@ -236,19 +268,6 @@ export const BatchGetTokenBalanceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetTokenBalanceOutput",
 }) as any as S.Schema<BatchGetTokenBalanceOutput>;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
 export interface ContractIdentifier {
   network: string;
   contractAddress: string;
@@ -275,6 +294,7 @@ export const GetAssetContractInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAssetContractInput",
 }) as any as S.Schema<GetAssetContractInput>;
+export type QueryTokenStandard = string;
 export interface ContractMetadata {
   name?: string;
   symbol?: string;
@@ -346,6 +366,8 @@ export const GetTokenBalanceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTokenBalanceOutput",
 }) as any as S.Schema<GetTokenBalanceOutput>;
+export type QueryTransactionHash = string;
+export type QueryTransactionId = string;
 export interface GetTransactionInput {
   transactionHash?: string;
   transactionId?: string;
@@ -369,6 +391,9 @@ export const GetTransactionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTransactionInput",
 }) as any as S.Schema<GetTransactionInput>;
+export type BlockHash = string;
+export type ConfirmationStatus = string;
+export type ExecutionStatus = string;
 export interface Transaction {
   network: string;
   blockHash?: string;
@@ -435,6 +460,7 @@ export const ContractFilter = /*@__PURE__*/ S.suspend(() =>
     deployerAddress: S.String,
   }),
 ).annotate({ identifier: "ContractFilter" }) as any as S.Schema<ContractFilter>;
+export type NextToken = string;
 export interface ListAssetContractsInput {
   contractFilter: ContractFilter;
   nextToken?: string;
@@ -517,6 +543,8 @@ export const ConfirmationStatusFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfirmationStatusFilter",
 }) as any as S.Schema<ConfirmationStatusFilter>;
+export type ListFilteredTransactionEventsSortBy = string;
+export type SortOrder = string;
 export interface ListFilteredTransactionEventsSort {
   sortBy?: string;
   sortOrder?: string;
@@ -559,6 +587,7 @@ export const ListFilteredTransactionEventsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFilteredTransactionEventsInput",
 }) as any as S.Schema<ListFilteredTransactionEventsInput>;
+export type QueryTransactionEventType = string;
 export interface TransactionEvent {
   network: string;
   transactionHash: string;
@@ -719,6 +748,7 @@ export const ListTransactionEventsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTransactionEventsOutput",
 }) as any as S.Schema<ListTransactionEventsOutput>;
+export type ListTransactionsSortBy = string;
 export interface ListTransactionsSort {
   sortBy?: string;
   sortOrder?: string;
@@ -795,58 +825,25 @@ export const ListTransactionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTransactionsOutput",
 }) as any as S.Schema<ListTransactionsOutput>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    resourceId: S.String,
-    resourceType: S.String,
-    serviceCode: S.String,
-    quotaCode: S.String,
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    serviceCode: S.String,
-    quotaCode: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: S.String,
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ExceptionMessage = string;
+export type ResourceId = string;
+export type ResourceType = string;
+export type ServiceCode = string;
+export type QuotaCode = string;
+export type ValidationExceptionReason = string;
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type BatchGetTokenBalanceError =
   | AccessDeniedException
   | InternalServerException
@@ -882,6 +879,7 @@ export const batchGetTokenBalance: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetTokenBalance",
 }));
+
 export type GetAssetContractError =
   | AccessDeniedException
   | InternalServerException
@@ -919,6 +917,7 @@ export const getAssetContract: API.OperationMethod<
   retry: Retry,
   operationName: "GetAssetContract",
 }));
+
 export type GetTokenBalanceError =
   | AccessDeniedException
   | InternalServerException
@@ -953,6 +952,7 @@ export const getTokenBalance: API.OperationMethod<
   retry: Retry,
   operationName: "GetTokenBalance",
 }));
+
 export type GetTransactionError =
   | AccessDeniedException
   | InternalServerException
@@ -988,6 +988,7 @@ export const getTransaction: API.OperationMethod<
   retry: Retry,
   operationName: "GetTransaction",
 }));
+
 export type ListAssetContractsError =
   | AccessDeniedException
   | InternalServerException
@@ -1042,6 +1043,7 @@ export const listAssetContracts: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFilteredTransactionEventsError =
   | AccessDeniedException
   | InternalServerException
@@ -1094,6 +1096,7 @@ export const listFilteredTransactionEvents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTokenBalancesError =
   | AccessDeniedException
   | InternalServerException
@@ -1154,6 +1157,7 @@ export const listTokenBalances: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTransactionEventsError =
   | AccessDeniedException
   | InternalServerException
@@ -1208,6 +1212,7 @@ export const listTransactionEvents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTransactionsError =
   | AccessDeniedException
   | InternalServerException

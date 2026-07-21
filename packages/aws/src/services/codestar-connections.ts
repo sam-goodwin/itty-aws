@@ -85,49 +85,91 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ConnectionName = string;
-export type TagKey = string;
-export type TagValue = string;
-export type HostArn = string;
-export type ConnectionArn = string;
-export type ErrorMessage = string;
-export type HostName = string;
-export type Url = string;
-export type VpcId = string;
-export type SubnetId = string;
-export type SecurityGroupId = string;
-export type TlsCertificate = string;
-export type OwnerId = string;
-export type RepositoryName = string;
-export type KmsKeyArn = string;
-export type RepositoryLinkArn = string;
-export type RepositoryLinkId = string;
-export type BranchName = string;
-export type DeploymentFilePath = string;
-export type ResourceName = string;
-export type IamRoleArn = string;
-export type AccountId = string;
-export type HostStatus = string;
-export type Event = string;
-export type ExternalId = string;
-export type Type = string;
-export type Directory = string;
-export type SHA = string;
-export type Target = string;
-export type Id = string;
-export type CreatedReason = string;
-export type SyncBlockerContextKey = string;
-export type SyncBlockerContextValue = string;
-export type ResolvedReason = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type HostStatusMessage = string;
-export type SharpNextToken = string;
-export type Parent = string;
-export type AmazonResourceName = string;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ConditionalCheckFailedException extends S.TaggedErrorClass<ConditionalCheckFailedException>()(
+  "ConditionalCheckFailedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
+  "ResourceUnavailableException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class RetryLatestCommitFailedException extends S.TaggedErrorClass<RetryLatestCommitFailedException>()(
+  "RetryLatestCommitFailedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class SyncBlockerDoesNotExistException extends S.TaggedErrorClass<SyncBlockerDoesNotExistException>()(
+  "SyncBlockerDoesNotExistException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class SyncConfigurationStillExistsException extends S.TaggedErrorClass<SyncConfigurationStillExistsException>()(
+  "SyncConfigurationStillExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
+  "UnsupportedOperationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedProviderTypeException extends S.TaggedErrorClass<UnsupportedProviderTypeException>()(
+  "UnsupportedProviderTypeException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UpdateOutOfSyncException extends S.TaggedErrorClass<UpdateOutOfSyncException>()(
+  "UpdateOutOfSyncException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
 export type ProviderType =
   | "Bitbucket"
   | "GitHub"
@@ -136,6 +178,10 @@ export type ProviderType =
   | "GitLabSelfManaged"
   | (string & {});
 export const ProviderType = /*@__PURE__*/ S.String;
+
+export type ConnectionName = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -145,6 +191,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
+export type HostArn = string;
 export interface CreateConnectionInput {
   ProviderType?: ProviderType;
   ConnectionName: string;
@@ -163,6 +210,7 @@ export const CreateConnectionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectionInput",
 }) as any as S.Schema<CreateConnectionInput>;
+export type ConnectionArn = string;
 export interface CreateConnectionOutput {
   ConnectionArn: string;
   Tags?: Tag[];
@@ -172,10 +220,16 @@ export const CreateConnectionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectionOutput",
 }) as any as S.Schema<CreateConnectionOutput>;
+export type HostName = string;
+export type Url = string;
+export type VpcId = string;
+export type SubnetId = string;
 export type SubnetIds = string[];
 export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export type TlsCertificate = string;
 export interface VpcConfiguration {
   VpcId: string;
   SubnetIds: string[];
@@ -221,6 +275,9 @@ export const CreateHostOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHostOutput",
 }) as any as S.Schema<CreateHostOutput>;
+export type OwnerId = string;
+export type RepositoryName = string;
+export type KmsKeyArn = string;
 export interface CreateRepositoryLinkInput {
   ConnectionArn: string;
   OwnerId: string;
@@ -241,6 +298,8 @@ export const CreateRepositoryLinkInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRepositoryLinkInput",
 }) as any as S.Schema<CreateRepositoryLinkInput>;
+export type RepositoryLinkArn = string;
+export type RepositoryLinkId = string;
 export interface RepositoryLinkInfo {
   ConnectionArn: string;
   EncryptionKeyArn?: string;
@@ -271,15 +330,22 @@ export const CreateRepositoryLinkOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRepositoryLinkOutput",
 }) as any as S.Schema<CreateRepositoryLinkOutput>;
+export type BranchName = string;
+export type DeploymentFilePath = string;
+export type ResourceName = string;
+export type IamRoleArn = string;
 export type SyncConfigurationType = "CFN_STACK_SYNC" | (string & {});
 export const SyncConfigurationType = /*@__PURE__*/ S.String;
+
 export type PublishDeploymentStatus = "ENABLED" | "DISABLED" | (string & {});
 export const PublishDeploymentStatus = /*@__PURE__*/ S.String;
+
 export type TriggerResourceUpdateOn =
   | "ANY_CHANGE"
   | "FILE_CHANGE"
   | (string & {});
 export const TriggerResourceUpdateOn = /*@__PURE__*/ S.String;
+
 export interface CreateSyncConfigurationInput {
   Branch: string;
   ConfigFile: string;
@@ -419,12 +485,14 @@ export const GetConnectionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConnectionInput",
 }) as any as S.Schema<GetConnectionInput>;
+export type AccountId = string;
 export type ConnectionStatus =
   | "PENDING"
   | "AVAILABLE"
   | "ERROR"
   | (string & {});
 export const ConnectionStatus = /*@__PURE__*/ S.String;
+
 export interface Connection {
   ConnectionName?: string;
   ConnectionArn?: string;
@@ -459,6 +527,7 @@ export const GetHostInput = /*@__PURE__*/ S.suspend(() =>
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "GetHostInput" }) as any as S.Schema<GetHostInput>;
+export type HostStatus = string;
 export interface GetHostOutput {
   Name?: string;
   Status?: string;
@@ -517,6 +586,10 @@ export type RepositorySyncStatus =
   | "QUEUED"
   | (string & {});
 export const RepositorySyncStatus = /*@__PURE__*/ S.String;
+
+export type Event = string;
+export type ExternalId = string;
+export type Type = string;
 export interface RepositorySyncEvent {
   Event: string;
   ExternalId?: string;
@@ -569,6 +642,8 @@ export const GetResourceSyncStatusInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourceSyncStatusInput",
 }) as any as S.Schema<GetResourceSyncStatusInput>;
+export type Directory = string;
+export type SHA = string;
 export interface Revision {
   Branch: string;
   Directory: string;
@@ -612,6 +687,8 @@ export type ResourceSyncStatus =
   | "SUCCEEDED"
   | (string & {});
 export const ResourceSyncStatus = /*@__PURE__*/ S.String;
+
+export type Target = string;
 export interface ResourceSyncAttempt {
   Events: ResourceSyncEvent[];
   InitialRevision: Revision;
@@ -657,10 +734,16 @@ export const GetSyncBlockerSummaryInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSyncBlockerSummaryInput",
 }) as any as S.Schema<GetSyncBlockerSummaryInput>;
+export type Id = string;
 export type BlockerType = "AUTOMATED" | (string & {});
 export const BlockerType = /*@__PURE__*/ S.String;
+
 export type BlockerStatus = "ACTIVE" | "RESOLVED" | (string & {});
 export const BlockerStatus = /*@__PURE__*/ S.String;
+
+export type CreatedReason = string;
+export type SyncBlockerContextKey = string;
+export type SyncBlockerContextValue = string;
 export interface SyncBlockerContext {
   Key: string;
   Value: string;
@@ -672,6 +755,7 @@ export const SyncBlockerContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncBlockerContext>;
 export type SyncBlockerContextList = SyncBlockerContext[];
 export const SyncBlockerContextList = /*@__PURE__*/ S.Array(SyncBlockerContext);
+export type ResolvedReason = string;
 export interface SyncBlocker {
   Id: string;
   Type: BlockerType;
@@ -737,6 +821,8 @@ export const GetSyncConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSyncConfigurationOutput",
 }) as any as S.Schema<GetSyncConfigurationOutput>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface ListConnectionsInput {
   ProviderTypeFilter?: ProviderType;
   HostArnFilter?: string;
@@ -781,6 +867,7 @@ export const ListHostsInput = /*@__PURE__*/ S.suspend(() =>
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "ListHostsInput" }) as any as S.Schema<ListHostsInput>;
+export type HostStatusMessage = string;
 export interface Host {
   Name?: string;
   HostArn?: string;
@@ -812,6 +899,7 @@ export const ListHostsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListHostsOutput",
 }) as any as S.Schema<ListHostsOutput>;
+export type SharpNextToken = string;
 export interface ListRepositoryLinksInput {
   MaxResults?: number;
   NextToken?: string;
@@ -854,6 +942,7 @@ export const ListRepositorySyncDefinitionsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRepositorySyncDefinitionsInput",
 }) as any as S.Schema<ListRepositorySyncDefinitionsInput>;
+export type Parent = string;
 export interface RepositorySyncDefinition {
   Branch: string;
   Directory: string;
@@ -918,6 +1007,7 @@ export const ListSyncConfigurationsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSyncConfigurationsOutput",
 }) as any as S.Schema<ListSyncConfigurationsOutput>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceInput {
   ResourceArn: string;
 }
@@ -1084,95 +1174,7 @@ export const UpdateSyncConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSyncConfigurationOutput",
 }) as any as S.Schema<UpdateSyncConfigurationOutput>;
-
-//# Errors
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
-  "ResourceUnavailableException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class SyncConfigurationStillExistsException extends S.TaggedErrorClass<SyncConfigurationStillExistsException>()(
-  "SyncConfigurationStillExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class UnsupportedProviderTypeException extends S.TaggedErrorClass<UnsupportedProviderTypeException>()(
-  "UnsupportedProviderTypeException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConditionalCheckFailedException extends S.TaggedErrorClass<ConditionalCheckFailedException>()(
-  "ConditionalCheckFailedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class UpdateOutOfSyncException extends S.TaggedErrorClass<UpdateOutOfSyncException>()(
-  "UpdateOutOfSyncException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class RetryLatestCommitFailedException extends S.TaggedErrorClass<RetryLatestCommitFailedException>()(
-  "RetryLatestCommitFailedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class SyncBlockerDoesNotExistException extends S.TaggedErrorClass<SyncBlockerDoesNotExistException>()(
-  "SyncBlockerDoesNotExistException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CreateConnectionError =
   | LimitExceededException
   | ResourceNotFoundException
@@ -1200,6 +1202,7 @@ export const createConnection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConnection",
 }));
+
 export type CreateHostError = LimitExceededException | CommonErrors;
 /**
  * Creates a resource that represents the infrastructure where a third-party provider is
@@ -1223,6 +1226,7 @@ export const createHost: API.OperationMethod<
   retry: Retry,
   operationName: "CreateHost",
 }));
+
 export type CreateRepositoryLinkError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -1256,6 +1260,7 @@ export const createRepositoryLink: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRepositoryLink",
 }));
+
 export type CreateSyncConfigurationError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -1291,6 +1296,7 @@ export const createSyncConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSyncConfiguration",
 }));
+
 export type DeleteConnectionError = ResourceNotFoundException | CommonErrors;
 /**
  * The connection to be deleted.
@@ -1308,6 +1314,7 @@ export const deleteConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConnection",
 }));
+
 export type DeleteHostError =
   | ResourceNotFoundException
   | ResourceUnavailableException
@@ -1330,6 +1337,7 @@ export const deleteHost: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteHost",
 }));
+
 export type DeleteRepositoryLinkError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -1365,6 +1373,7 @@ export const deleteRepositoryLink: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRepositoryLink",
 }));
+
 export type DeleteSyncConfigurationError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -1396,6 +1405,7 @@ export const deleteSyncConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSyncConfiguration",
 }));
+
 export type GetConnectionError =
   | ResourceNotFoundException
   | ResourceUnavailableException
@@ -1416,6 +1426,7 @@ export const getConnection: API.OperationMethod<
   retry: Retry,
   operationName: "GetConnection",
 }));
+
 export type GetHostError =
   | ResourceNotFoundException
   | ResourceUnavailableException
@@ -1437,6 +1448,7 @@ export const getHost: API.OperationMethod<
   retry: Retry,
   operationName: "GetHost",
 }));
+
 export type GetRepositoryLinkError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -1469,6 +1481,7 @@ export const getRepositoryLink: API.OperationMethod<
   retry: Retry,
   operationName: "GetRepositoryLink",
 }));
+
 export type GetRepositorySyncStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -1499,6 +1512,7 @@ export const getRepositorySyncStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetRepositorySyncStatus",
 }));
+
 export type GetResourceSyncStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -1529,6 +1543,7 @@ export const getResourceSyncStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourceSyncStatus",
 }));
+
 export type GetSyncBlockerSummaryError =
   | AccessDeniedException
   | InternalServerException
@@ -1558,6 +1573,7 @@ export const getSyncBlockerSummary: API.OperationMethod<
   retry: Retry,
   operationName: "GetSyncBlockerSummary",
 }));
+
 export type GetSyncConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -1587,6 +1603,7 @@ export const getSyncConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetSyncConfiguration",
 }));
+
 export type ListConnectionsError = ResourceNotFoundException | CommonErrors;
 /**
  * Lists the connections associated with your account.
@@ -1624,6 +1641,7 @@ export const listConnections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListHostsError = CommonErrors;
 /**
  * Lists the hosts associated with your account.
@@ -1661,6 +1679,7 @@ export const listHosts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRepositoryLinksError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -1712,6 +1731,7 @@ export const listRepositoryLinks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRepositorySyncDefinitionsError =
   | AccessDeniedException
   | InternalServerException
@@ -1741,6 +1761,7 @@ export const listRepositorySyncDefinitions: API.OperationMethod<
   retry: Retry,
   operationName: "ListRepositorySyncDefinitions",
 }));
+
 export type ListSyncConfigurationsError =
   | AccessDeniedException
   | InternalServerException
@@ -1790,6 +1811,7 @@ export const listSyncConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**
  * Gets the set of key-value pairs (metadata) that are used to manage the resource.
@@ -1807,6 +1829,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError =
   | LimitExceededException
   | ResourceNotFoundException
@@ -1828,6 +1851,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
  * Removes tags from an Amazon Web Services resource.
@@ -1845,6 +1869,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateHostError =
   | ConflictException
   | ResourceNotFoundException
@@ -1872,6 +1897,7 @@ export const updateHost: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateHost",
 }));
+
 export type UpdateRepositoryLinkError =
   | AccessDeniedException
   | ConditionalCheckFailedException
@@ -1907,6 +1933,7 @@ export const updateRepositoryLink: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRepositoryLink",
 }));
+
 export type UpdateSyncBlockerError =
   | AccessDeniedException
   | InternalServerException
@@ -1940,6 +1967,7 @@ export const updateSyncBlocker: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSyncBlocker",
 }));
+
 export type UpdateSyncConfigurationError =
   | AccessDeniedException
   | ConcurrentModificationException

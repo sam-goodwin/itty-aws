@@ -87,110 +87,86 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Message: S.String,
+    ResourceId: S.String,
+    ResourceType: S.String,
+    ErrorId: S.optional(S.String),
+    ErrorArguments: S.optional(
+      S.suspend(() => ConflictExceptionErrorArgumentList).annotate({
+        identifier: "ConflictExceptionErrorArgumentList",
+      }),
+    ),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    Message: S.String,
+    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.String,
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    QuotaCode: S.String,
+    ServiceCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.String,
+    Reason: S.optional(S.String),
+    ErrorId: S.optional(S.String),
+    ErrorArguments: S.optional(
+      S.suspend(() => ValidationExceptionErrorArgumentList).annotate({
+        identifier: "ValidationExceptionErrorArgumentList",
+      }),
+    ),
+    Fields: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ApplicationInstanceName = string;
 export type Description = string;
 export type ManifestPayloadData = string;
+export type ManifestPayload = { PayloadData: string };
+export const ManifestPayload = /*@__PURE__*/ S.Union([
+  S.Struct({ PayloadData: S.String }),
+]);
 export type ManifestOverridesPayloadData = string;
+export type ManifestOverridesPayload = { PayloadData: string };
+export const ManifestOverridesPayload = /*@__PURE__*/ S.Union([
+  S.Struct({ PayloadData: S.String }),
+]);
 export type ApplicationInstanceId = string;
 export type RuntimeRoleArn = string;
 export type DefaultRuntimeContextDevice = string;
 export type TagKey = string;
 export type TagValue = string;
-export type RetryAfterSeconds = number;
-export type ValidationExceptionReason = string;
-export type DeviceId = string;
-export type ImageVersion = string;
-export type JobType = string;
-export type JobId = string;
-export type TemplateType = string;
-export type NodePackageName = string;
-export type NodePackageVersion = string;
-export type NodeName = string;
-export type TemplateKey = string;
-export type TemplateValue = string | redacted.Redacted<string>;
-export type JobResourceType = string;
-export type NodePackageId = string;
-export type NodePackageArn = string;
-export type Bucket = string;
-export type PackageImportJobType = string;
-export type Region = string;
-export type BucketName = string;
-export type ObjectKey = string;
-export type MarkLatestPatch = boolean;
-export type ClientToken = string;
-export type PackageOwnerAccount = string;
-export type NodePackagePatchVersion = string;
-export type DeviceName = string;
-export type ApplicationInstanceStatus = string;
-export type ApplicationInstanceHealthStatus = string;
-export type ApplicationInstanceStatusDescription = string;
-export type ApplicationInstanceArn = string;
-export type DesiredState = string;
-export type RuntimeContextName = string;
-export type DeviceReportedStatus = string;
-export type DeviceArn = string;
-export type DeviceType = string;
-export type DeviceConnectionStatus = string;
-export type CreatedTime = Date;
-export type DeviceStatus = string;
-export type LatestSoftware = string;
-export type CurrentSoftware = string;
-export type DeviceSerialNumber = string;
-export type ConnectionType = string;
-export type IpAddress = string;
-export type Mask = string;
-export type Dns = string;
-export type DefaultGateway = string;
-export type IpAddressOrServerName = string;
-export type NetworkConnectionStatus = string;
-export type HwAddress = string;
-export type NtpServerName = string;
-export type LastUpdatedTime = Date;
-export type LeaseExpirationTime = Date;
-export type Version = string;
-export type LatestAlternateSoftware = string;
-export type DeviceBrand = string;
-export type UpdateProgress = string;
-export type DeviceAggregatedStatus = string;
-export type UpdateCreatedTime = Date;
-export type NodeId = string;
-export type NodeCategory = string;
-export type PortName = string;
-export type PortType = string;
-export type PortDefaultValue = string;
-export type MaxConnections = number;
-export type NodeAssetName = string;
-export type NodeFromTemplateJobStatus = string;
-export type NodeFromTemplateJobStatusMessage = string;
-export type PrincipalArn = string;
-export type PackageImportJobStatus = string;
-export type PackageImportJobStatusMessage = string;
-export type PackageVersionStatus = string;
-export type PackageVersionStatusDescription = string;
-export type MaxSize25 = number;
-export type NextToken = string;
-export type NodeInstanceId = string;
-export type NodeInstanceStatus = string;
-export type StatusFilter = string;
-export type ListDevicesSortBy = string;
-export type SortOrder = string;
-export type NameFilter = string;
-export type Token = string;
-export type ResourceArn = string;
-export type Certificates = Uint8Array;
-export type IotThingName = string;
-export type NodeSignalValue = string;
-
-//# Schemas
-export type ManifestPayload = { PayloadData: string };
-export const ManifestPayload = /*@__PURE__*/ S.Union([
-  S.Struct({ PayloadData: S.String }),
-]);
-export type ManifestOverridesPayload = { PayloadData: string };
-export const ManifestOverridesPayload = /*@__PURE__*/ S.Union([
-  S.Struct({ PayloadData: S.String }),
-]);
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -237,35 +213,10 @@ export const CreateApplicationInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationInstanceResponse",
 }) as any as S.Schema<CreateApplicationInstanceResponse>;
-export interface ValidationExceptionErrorArgument {
-  Name: string;
-  Value: string;
-}
-export const ValidationExceptionErrorArgument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Value: S.String }),
-).annotate({
-  identifier: "ValidationExceptionErrorArgument",
-}) as any as S.Schema<ValidationExceptionErrorArgument>;
-export type ValidationExceptionErrorArgumentList =
-  ValidationExceptionErrorArgument[];
-export const ValidationExceptionErrorArgumentList = /*@__PURE__*/ S.Array(
-  ValidationExceptionErrorArgument,
-);
-export interface ValidationExceptionField {
-  Name: string;
-  Message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type DeviceId = string;
 export type DeviceIdList = string[];
 export const DeviceIdList = /*@__PURE__*/ S.Array(S.String);
+export type ImageVersion = string;
 export interface OTAJobConfig {
   ImageVersion: string;
   AllowMajorVersionUpdate?: boolean;
@@ -284,6 +235,7 @@ export const DeviceJobConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeviceJobConfig",
 }) as any as S.Schema<DeviceJobConfig>;
+export type JobType = string;
 export interface CreateJobForDevicesRequest {
   DeviceIds: string[];
   DeviceJobConfig?: DeviceJobConfig;
@@ -307,6 +259,7 @@ export const CreateJobForDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateJobForDevicesRequest",
 }) as any as S.Schema<CreateJobForDevicesRequest>;
+export type JobId = string;
 export interface Job {
   JobId?: string;
   DeviceId?: string;
@@ -324,20 +277,12 @@ export const CreateJobForDevicesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateJobForDevicesResponse",
 }) as any as S.Schema<CreateJobForDevicesResponse>;
-export interface ConflictExceptionErrorArgument {
-  Name: string;
-  Value: string;
-}
-export const ConflictExceptionErrorArgument = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Value: S.String }),
-).annotate({
-  identifier: "ConflictExceptionErrorArgument",
-}) as any as S.Schema<ConflictExceptionErrorArgument>;
-export type ConflictExceptionErrorArgumentList =
-  ConflictExceptionErrorArgument[];
-export const ConflictExceptionErrorArgumentList = /*@__PURE__*/ S.Array(
-  ConflictExceptionErrorArgument,
-);
+export type TemplateType = string;
+export type NodePackageName = string;
+export type NodePackageVersion = string;
+export type NodeName = string;
+export type TemplateKey = string;
+export type TemplateValue = string | redacted.Redacted<string>;
 export type TemplateParametersMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -345,6 +290,7 @@ export const TemplateParametersMap = /*@__PURE__*/ S.Record(
   S.String,
   SensitiveString.pipe(S.optional),
 );
+export type JobResourceType = string;
 export interface JobResourceTags {
   ResourceType: string;
   Tags: { [key: string]: string | undefined };
@@ -415,6 +361,9 @@ export const CreatePackageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePackageRequest",
 }) as any as S.Schema<CreatePackageRequest>;
+export type NodePackageId = string;
+export type NodePackageArn = string;
+export type Bucket = string;
 export interface StorageLocation {
   Bucket: string;
   RepoPrefixLocation: string;
@@ -447,6 +396,10 @@ export const CreatePackageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePackageResponse",
 }) as any as S.Schema<CreatePackageResponse>;
+export type PackageImportJobType = string;
+export type Region = string;
+export type BucketName = string;
+export type ObjectKey = string;
 export interface S3Location {
   Region?: string;
   BucketName: string;
@@ -477,6 +430,7 @@ export const PackageImportJobInputConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PackageImportJobInputConfig",
 }) as any as S.Schema<PackageImportJobInputConfig>;
+export type MarkLatestPatch = boolean;
 export interface PackageVersionOutputConfig {
   PackageName: string;
   PackageVersion: string;
@@ -501,6 +455,7 @@ export const PackageImportJobOutputConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PackageImportJobOutputConfig",
 }) as any as S.Schema<PackageImportJobOutputConfig>;
+export type ClientToken = string;
 export interface CreatePackageImportJobRequest {
   JobType: string;
   InputConfig: PackageImportJobInputConfig;
@@ -588,6 +543,8 @@ export const DeletePackageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeletePackageResponse",
 }) as any as S.Schema<DeletePackageResponse>;
+export type PackageOwnerAccount = string;
+export type NodePackagePatchVersion = string;
 export interface DeregisterPackageVersionRequest {
   OwnerAccount?: string;
   PackageId: string;
@@ -648,6 +605,14 @@ export const DescribeApplicationInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeApplicationInstanceRequest",
 }) as any as S.Schema<DescribeApplicationInstanceRequest>;
+export type DeviceName = string;
+export type ApplicationInstanceStatus = string;
+export type ApplicationInstanceHealthStatus = string;
+export type ApplicationInstanceStatusDescription = string;
+export type ApplicationInstanceArn = string;
+export type DesiredState = string;
+export type RuntimeContextName = string;
+export type DeviceReportedStatus = string;
 export interface ReportedRuntimeContextState {
   DesiredState: string;
   RuntimeContextName: string;
@@ -775,8 +740,21 @@ export const DescribeDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDeviceRequest",
 }) as any as S.Schema<DescribeDeviceRequest>;
+export type DeviceArn = string;
+export type DeviceType = string;
+export type DeviceConnectionStatus = string;
+export type CreatedTime = Date;
+export type DeviceStatus = string;
+export type LatestSoftware = string;
+export type CurrentSoftware = string;
+export type DeviceSerialNumber = string;
+export type ConnectionType = string;
+export type IpAddress = string;
+export type Mask = string;
+export type Dns = string;
 export type DnsList = string[];
 export const DnsList = /*@__PURE__*/ S.Array(S.String);
+export type DefaultGateway = string;
 export interface StaticIpConnectionInfo {
   IpAddress: string;
   Mask: string;
@@ -805,6 +783,7 @@ export const EthernetPayload = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EthernetPayload",
 }) as any as S.Schema<EthernetPayload>;
+export type IpAddressOrServerName = string;
 export type NtpServerList = string[];
 export const NtpServerList = /*@__PURE__*/ S.Array(S.String);
 export interface NtpPayload {
@@ -825,6 +804,8 @@ export const NetworkPayload = /*@__PURE__*/ S.suspend(() =>
     Ntp: S.optional(NtpPayload),
   }),
 ).annotate({ identifier: "NetworkPayload" }) as any as S.Schema<NetworkPayload>;
+export type NetworkConnectionStatus = string;
+export type HwAddress = string;
 export interface EthernetStatus {
   IpAddress?: string;
   ConnectionStatus?: string;
@@ -837,6 +818,7 @@ export const EthernetStatus = /*@__PURE__*/ S.suspend(() =>
     HwAddress: S.optional(S.String),
   }),
 ).annotate({ identifier: "EthernetStatus" }) as any as S.Schema<EthernetStatus>;
+export type NtpServerName = string;
 export interface NtpStatus {
   ConnectionStatus?: string;
   IpAddress?: string;
@@ -849,6 +831,7 @@ export const NtpStatus = /*@__PURE__*/ S.suspend(() =>
     NtpServerName: S.optional(S.String),
   }),
 ).annotate({ identifier: "NtpStatus" }) as any as S.Schema<NtpStatus>;
+export type LastUpdatedTime = Date;
 export interface NetworkStatus {
   Ethernet0Status?: EthernetStatus;
   Ethernet1Status?: EthernetStatus;
@@ -865,6 +848,8 @@ export const NetworkStatus = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "NetworkStatus" }) as any as S.Schema<NetworkStatus>;
+export type LeaseExpirationTime = Date;
+export type Version = string;
 export interface AlternateSoftwareMetadata {
   Version?: string;
 }
@@ -877,6 +862,9 @@ export type AlternateSoftwares = AlternateSoftwareMetadata[];
 export const AlternateSoftwares = /*@__PURE__*/ S.Array(
   AlternateSoftwareMetadata,
 );
+export type LatestAlternateSoftware = string;
+export type DeviceBrand = string;
+export type UpdateProgress = string;
 export interface LatestDeviceJob {
   ImageVersion?: string;
   Status?: string;
@@ -891,6 +879,7 @@ export const LatestDeviceJob = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LatestDeviceJob",
 }) as any as S.Schema<LatestDeviceJob>;
+export type DeviceAggregatedStatus = string;
 export interface DescribeDeviceResponse {
   DeviceId?: string;
   Name?: string;
@@ -958,6 +947,7 @@ export const DescribeDeviceJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDeviceJobRequest",
 }) as any as S.Schema<DescribeDeviceJobRequest>;
+export type UpdateCreatedTime = Date;
 export interface DescribeDeviceJobResponse {
   JobId?: string;
   DeviceId?: string;
@@ -984,6 +974,7 @@ export const DescribeDeviceJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDeviceJobResponse",
 }) as any as S.Schema<DescribeDeviceJobResponse>;
+export type NodeId = string;
 export interface DescribeNodeRequest {
   NodeId: string;
   OwnerAccount?: string;
@@ -1005,6 +996,11 @@ export const DescribeNodeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeNodeRequest",
 }) as any as S.Schema<DescribeNodeRequest>;
+export type NodeCategory = string;
+export type PortName = string;
+export type PortType = string;
+export type PortDefaultValue = string;
+export type MaxConnections = number;
 export interface NodeInputPort {
   Name?: string;
   Description?: string;
@@ -1044,6 +1040,7 @@ export interface NodeInterface {
 export const NodeInterface = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Inputs: InputPortList, Outputs: OutputPortList }),
 ).annotate({ identifier: "NodeInterface" }) as any as S.Schema<NodeInterface>;
+export type NodeAssetName = string;
 export interface DescribeNodeResponse {
   NodeId: string;
   Name: string;
@@ -1097,6 +1094,8 @@ export const DescribeNodeFromTemplateJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeNodeFromTemplateJobRequest",
 }) as any as S.Schema<DescribeNodeFromTemplateJobRequest>;
+export type NodeFromTemplateJobStatus = string;
+export type NodeFromTemplateJobStatusMessage = string;
 export interface DescribeNodeFromTemplateJobResponse {
   JobId: string;
   Status: string;
@@ -1148,6 +1147,7 @@ export const DescribePackageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePackageRequest",
 }) as any as S.Schema<DescribePackageRequest>;
+export type PrincipalArn = string;
 export type PrincipalArnsList = string[];
 export const PrincipalArnsList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribePackageResponse {
@@ -1216,6 +1216,8 @@ export const PackageImportJobOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PackageImportJobOutput",
 }) as any as S.Schema<PackageImportJobOutput>;
+export type PackageImportJobStatus = string;
+export type PackageImportJobStatusMessage = string;
 export interface DescribePackageImportJobResponse {
   JobId: string;
   ClientToken?: string;
@@ -1274,6 +1276,8 @@ export const DescribePackageVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePackageVersionRequest",
 }) as any as S.Schema<DescribePackageVersionRequest>;
+export type PackageVersionStatus = string;
+export type PackageVersionStatusDescription = string;
 export interface DescribePackageVersionResponse {
   OwnerAccount?: string;
   PackageId: string;
@@ -1302,6 +1306,8 @@ export const DescribePackageVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePackageVersionResponse",
 }) as any as S.Schema<DescribePackageVersionResponse>;
+export type MaxSize25 = number;
+export type NextToken = string;
 export interface ListApplicationInstanceDependenciesRequest {
   ApplicationInstanceId: string;
   MaxResults?: number;
@@ -1387,6 +1393,8 @@ export const ListApplicationInstanceNodeInstancesRequest =
   ).annotate({
     identifier: "ListApplicationInstanceNodeInstancesRequest",
   }) as any as S.Schema<ListApplicationInstanceNodeInstancesRequest>;
+export type NodeInstanceId = string;
+export type NodeInstanceStatus = string;
 export interface NodeInstance {
   NodeInstanceId: string;
   NodeId?: string;
@@ -1422,6 +1430,7 @@ export const ListApplicationInstanceNodeInstancesResponse =
   ).annotate({
     identifier: "ListApplicationInstanceNodeInstancesResponse",
   }) as any as S.Schema<ListApplicationInstanceNodeInstancesResponse>;
+export type StatusFilter = string;
 export interface ListApplicationInstancesRequest {
   DeviceId?: string;
   StatusFilter?: string;
@@ -1493,6 +1502,9 @@ export const ListApplicationInstancesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListApplicationInstancesResponse",
 }) as any as S.Schema<ListApplicationInstancesResponse>;
+export type ListDevicesSortBy = string;
+export type SortOrder = string;
+export type NameFilter = string;
 export interface ListDevicesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -1680,6 +1692,7 @@ export const ListNodeFromTemplateJobsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListNodeFromTemplateJobsResponse",
 }) as any as S.Schema<ListNodeFromTemplateJobsResponse>;
+export type Token = string;
 export interface ListNodesRequest {
   Category?: string;
   OwnerAccount?: string;
@@ -1860,6 +1873,7 @@ export const ListPackagesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPackagesResponse",
 }) as any as S.Schema<ListPackagesResponse>;
+export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -1910,6 +1924,8 @@ export const ProvisionDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProvisionDeviceRequest",
 }) as any as S.Schema<ProvisionDeviceRequest>;
+export type Certificates = Uint8Array;
+export type IotThingName = string;
 export interface ProvisionDeviceResponse {
   DeviceId?: string;
   Arn: string;
@@ -1992,6 +2008,7 @@ export const RemoveApplicationInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RemoveApplicationInstanceResponse",
 }) as any as S.Schema<RemoveApplicationInstanceResponse>;
+export type NodeSignalValue = string;
 export interface NodeSignal {
   NodeInstanceId: string;
   Signal: string;
@@ -2122,61 +2139,49 @@ export const UpdateDeviceMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateDeviceMetadataResponse",
 }) as any as S.Schema<UpdateDeviceMetadataResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    Message: S.String,
-    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.String,
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    QuotaCode: S.String,
-    ServiceCode: S.String,
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.String,
-    Reason: S.optional(S.String),
-    ErrorId: S.optional(S.String),
-    ErrorArguments: S.optional(ValidationExceptionErrorArgumentList),
-    Fields: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Message: S.String,
-    ResourceId: S.String,
-    ResourceType: S.String,
-    ErrorId: S.optional(S.String),
-    ErrorArguments: S.optional(ConflictExceptionErrorArgumentList),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type RetryAfterSeconds = number;
+export type ValidationExceptionReason = string;
+export interface ValidationExceptionErrorArgument {
+  Name: string;
+  Value: string;
+}
+export const ValidationExceptionErrorArgument = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Value: S.String }),
+).annotate({
+  identifier: "ValidationExceptionErrorArgument",
+}) as any as S.Schema<ValidationExceptionErrorArgument>;
+export type ValidationExceptionErrorArgumentList =
+  ValidationExceptionErrorArgument[];
+export const ValidationExceptionErrorArgumentList = /*@__PURE__*/ S.Array(
+  ValidationExceptionErrorArgument,
+);
+export interface ValidationExceptionField {
+  Name: string;
+  Message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
+export interface ConflictExceptionErrorArgument {
+  Name: string;
+  Value: string;
+}
+export const ConflictExceptionErrorArgument = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Value: S.String }),
+).annotate({
+  identifier: "ConflictExceptionErrorArgument",
+}) as any as S.Schema<ConflictExceptionErrorArgument>;
+export type ConflictExceptionErrorArgumentList =
+  ConflictExceptionErrorArgument[];
+export const ConflictExceptionErrorArgumentList = /*@__PURE__*/ S.Array(
+  ConflictExceptionErrorArgument,
+);
 export type CreateApplicationInstanceError =
   | AccessDeniedException
   | InternalServerException
@@ -2204,6 +2209,7 @@ export const createApplicationInstance: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApplicationInstance",
 }));
+
 export type CreateJobForDevicesError =
   | AccessDeniedException
   | ConflictException
@@ -2233,6 +2239,7 @@ export const createJobForDevices: API.OperationMethod<
   retry: Retry,
   operationName: "CreateJobForDevices",
 }));
+
 export type CreateNodeFromTemplateJobError =
   | AccessDeniedException
   | ConflictException
@@ -2260,6 +2267,7 @@ export const createNodeFromTemplateJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNodeFromTemplateJob",
 }));
+
 export type CreatePackageError =
   | AccessDeniedException
   | ConflictException
@@ -2287,6 +2295,7 @@ export const createPackage: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePackage",
 }));
+
 export type CreatePackageImportJobError =
   | AccessDeniedException
   | ConflictException
@@ -2314,6 +2323,7 @@ export const createPackageImportJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePackageImportJob",
 }));
+
 export type DeleteDeviceError =
   | AccessDeniedException
   | ConflictException
@@ -2343,6 +2353,7 @@ export const deleteDevice: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDevice",
 }));
+
 export type DeletePackageError =
   | AccessDeniedException
   | ConflictException
@@ -2375,6 +2386,7 @@ export const deletePackage: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePackage",
 }));
+
 export type DeregisterPackageVersionError =
   | AccessDeniedException
   | ConflictException
@@ -2404,6 +2416,7 @@ export const deregisterPackageVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterPackageVersion",
 }));
+
 export type DescribeApplicationInstanceError =
   | AccessDeniedException
   | ConflictException
@@ -2433,6 +2446,7 @@ export const describeApplicationInstance: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeApplicationInstance",
 }));
+
 export type DescribeApplicationInstanceDetailsError =
   | AccessDeniedException
   | ConflictException
@@ -2462,6 +2476,7 @@ export const describeApplicationInstanceDetails: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeApplicationInstanceDetails",
 }));
+
 export type DescribeDeviceError =
   | AccessDeniedException
   | InternalServerException
@@ -2489,6 +2504,7 @@ export const describeDevice: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDevice",
 }));
+
 export type DescribeDeviceJobError =
   | AccessDeniedException
   | ConflictException
@@ -2518,6 +2534,7 @@ export const describeDeviceJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDeviceJob",
 }));
+
 export type DescribeNodeError =
   | AccessDeniedException
   | ConflictException
@@ -2547,6 +2564,7 @@ export const describeNode: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeNode",
 }));
+
 export type DescribeNodeFromTemplateJobError =
   | AccessDeniedException
   | ConflictException
@@ -2574,6 +2592,7 @@ export const describeNodeFromTemplateJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeNodeFromTemplateJob",
 }));
+
 export type DescribePackageError =
   | AccessDeniedException
   | ConflictException
@@ -2603,6 +2622,7 @@ export const describePackage: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePackage",
 }));
+
 export type DescribePackageImportJobError =
   | AccessDeniedException
   | ConflictException
@@ -2630,6 +2650,7 @@ export const describePackageImportJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePackageImportJob",
 }));
+
 export type DescribePackageVersionError =
   | AccessDeniedException
   | ConflictException
@@ -2659,6 +2680,7 @@ export const describePackageVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePackageVersion",
 }));
+
 export type ListApplicationInstanceDependenciesError =
   | AccessDeniedException
   | InternalServerException
@@ -2699,6 +2721,7 @@ export const listApplicationInstanceDependencies: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListApplicationInstanceNodeInstancesError =
   | AccessDeniedException
   | InternalServerException
@@ -2739,6 +2762,7 @@ export const listApplicationInstanceNodeInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListApplicationInstancesError =
   | AccessDeniedException
   | InternalServerException
@@ -2779,6 +2803,7 @@ export const listApplicationInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDevicesError =
   | AccessDeniedException
   | ConflictException
@@ -2826,6 +2851,7 @@ export const listDevices: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDevicesJobsError =
   | AccessDeniedException
   | ConflictException
@@ -2875,6 +2901,7 @@ export const listDevicesJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNodeFromTemplateJobsError =
   | AccessDeniedException
   | ConflictException
@@ -2922,6 +2949,7 @@ export const listNodeFromTemplateJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNodesError =
   | ConflictException
   | InternalServerException
@@ -2963,6 +2991,7 @@ export const listNodes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPackageImportJobsError =
   | AccessDeniedException
   | ConflictException
@@ -3010,6 +3039,7 @@ export const listPackageImportJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPackagesError =
   | AccessDeniedException
   | ConflictException
@@ -3059,6 +3089,7 @@ export const listPackages: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3084,6 +3115,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ProvisionDeviceError =
   | AccessDeniedException
   | ConflictException
@@ -3116,6 +3148,7 @@ export const provisionDevice: API.OperationMethod<
   retry: Retry,
   operationName: "ProvisionDevice",
 }));
+
 export type RegisterPackageVersionError =
   | AccessDeniedException
   | ConflictException
@@ -3143,6 +3176,7 @@ export const registerPackageVersion: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterPackageVersion",
 }));
+
 export type RemoveApplicationInstanceError =
   | AccessDeniedException
   | ConflictException
@@ -3172,6 +3206,7 @@ export const removeApplicationInstance: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveApplicationInstance",
 }));
+
 export type SignalApplicationInstanceNodeInstancesError =
   | AccessDeniedException
   | InternalServerException
@@ -3199,6 +3234,7 @@ export const signalApplicationInstanceNodeInstances: API.OperationMethod<
   retry: Retry,
   operationName: "SignalApplicationInstanceNodeInstances",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3224,6 +3260,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3249,6 +3286,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDeviceMetadataError =
   | AccessDeniedException
   | ConflictException

@@ -85,48 +85,42 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Name = string;
-export type ConnectionArn = string;
-export type Owner = string;
-export type S3BucketName = string;
-export type ClientRequestToken = string;
-export type TagKey = string;
-export type TagValue = string;
-export type KMSKeyId = string;
-export type AssociationId = string;
-export type Arn = string;
-export type StateReason = string;
-export type SourceCodeArtifactsObjectKey = string;
-export type BuildArtifactsObjectKey = string;
-export type ErrorMessage = string;
-export type CodeReviewName = string;
-export type AssociationArn = string;
-export type BranchName = string;
-export type CommitId = string;
-export type RequestId = string;
-export type Requester = string;
-export type EventName = string;
-export type EventState = string;
-export type PullRequestId = string;
-export type LinesOfCodeCount = number;
-export type FindingsCount = number;
-export type RecommendationId = string;
-export type UserId = string;
-export type ListCodeReviewsMaxResults = number;
-export type NextToken = string;
-export type MaxResults = number;
-export type ListRecommendationsMaxResults = number;
-export type FilePath = string;
-export type LineNumber = number;
-export type Text = string;
-export type RuleId = string;
-export type RuleName = string;
-export type ShortDescription = string;
-export type LongDescription = string;
-export type RuleTag = string;
-
-//# Schemas
 export interface CodeCommitRepository {
   Name: string;
 }
@@ -135,6 +129,8 @@ export const CodeCommitRepository = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CodeCommitRepository",
 }) as any as S.Schema<CodeCommitRepository>;
+export type ConnectionArn = string;
+export type Owner = string;
 export interface ThirdPartySourceRepository {
   Name: string;
   ConnectionArn: string;
@@ -145,6 +141,7 @@ export const ThirdPartySourceRepository = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ThirdPartySourceRepository",
 }) as any as S.Schema<ThirdPartySourceRepository>;
+export type S3BucketName = string;
 export interface S3Repository {
   Name: string;
   BucketName: string;
@@ -166,16 +163,21 @@ export const Repository = /*@__PURE__*/ S.suspend(() =>
     S3Bucket: S.optional(S3Repository),
   }),
 ).annotate({ identifier: "Repository" }) as any as S.Schema<Repository>;
+export type ClientRequestToken = string;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type KMSKeyId = string;
 export type EncryptionOption =
   | "AWS_OWNED_CMK"
   | "CUSTOMER_MANAGED_CMK"
   | (string & {});
 export const EncryptionOption = /*@__PURE__*/ S.String;
+
 export interface KMSKeyDetails {
   KMSKeyId?: string;
   EncryptionOption?: EncryptionOption;
@@ -211,6 +213,8 @@ export const AssociateRepositoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateRepositoryRequest",
 }) as any as S.Schema<AssociateRepositoryRequest>;
+export type AssociationId = string;
+export type Arn = string;
 export type ProviderType =
   | "CodeCommit"
   | "GitHub"
@@ -219,6 +223,7 @@ export type ProviderType =
   | "S3Bucket"
   | (string & {});
 export const ProviderType = /*@__PURE__*/ S.String;
+
 export type RepositoryAssociationState =
   | "Associated"
   | "Associating"
@@ -227,6 +232,10 @@ export type RepositoryAssociationState =
   | "Disassociated"
   | (string & {});
 export const RepositoryAssociationState = /*@__PURE__*/ S.String;
+
+export type StateReason = string;
+export type SourceCodeArtifactsObjectKey = string;
+export type BuildArtifactsObjectKey = string;
 export interface CodeArtifacts {
   SourceCodeArtifactsObjectKey: string;
   BuildArtifactsObjectKey?: string;
@@ -297,6 +306,9 @@ export const AssociateRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateRepositoryResponse",
 }) as any as S.Schema<AssociateRepositoryResponse>;
+export type CodeReviewName = string;
+export type AssociationArn = string;
+export type BranchName = string;
 export interface RepositoryHeadSourceCodeType {
   BranchName: string;
 }
@@ -305,6 +317,7 @@ export const RepositoryHeadSourceCodeType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RepositoryHeadSourceCodeType",
 }) as any as S.Schema<RepositoryHeadSourceCodeType>;
+export type CommitId = string;
 export interface CommitDiffSourceCodeType {
   SourceCommit?: string;
   DestinationCommit?: string;
@@ -337,6 +350,10 @@ export const S3BucketRepository = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3BucketRepository",
 }) as any as S.Schema<S3BucketRepository>;
+export type RequestId = string;
+export type Requester = string;
+export type EventName = string;
+export type EventState = string;
 export interface EventInfo {
   Name?: string;
   State?: string;
@@ -346,6 +363,7 @@ export const EventInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventInfo" }) as any as S.Schema<EventInfo>;
 export type VendorName = "GitHub" | "GitLab" | "NativeS3" | (string & {});
 export const VendorName = /*@__PURE__*/ S.String;
+
 export interface RequestMetadata {
   RequestId?: string;
   Requester?: string;
@@ -392,6 +410,7 @@ export const RepositoryAnalysis = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RepositoryAnalysis>;
 export type AnalysisType = "Security" | "CodeQuality" | (string & {});
 export const AnalysisType = /*@__PURE__*/ S.String;
+
 export type AnalysisTypes = AnalysisType[];
 export const AnalysisTypes = /*@__PURE__*/ S.Array(AnalysisType);
 export interface CodeReviewType {
@@ -436,8 +455,13 @@ export type JobState =
   | "Deleting"
   | (string & {});
 export const JobState = /*@__PURE__*/ S.String;
+
 export type Type = "PullRequest" | "RepositoryAnalysis" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
+
+export type PullRequestId = string;
+export type LinesOfCodeCount = number;
+export type FindingsCount = number;
 export interface Metrics {
   MeteredLinesOfCodeCount?: number;
   SuppressedLinesOfCodeCount?: number;
@@ -456,6 +480,7 @@ export type ConfigFileState =
   | "PresentWithErrors"
   | (string & {});
 export const ConfigFileState = /*@__PURE__*/ S.String;
+
 export interface CodeReview {
   Name?: string;
   CodeReviewArn?: string;
@@ -531,6 +556,8 @@ export const DescribeCodeReviewResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCodeReviewResponse",
 }) as any as S.Schema<DescribeCodeReviewResponse>;
+export type RecommendationId = string;
+export type UserId = string;
 export interface DescribeRecommendationFeedbackRequest {
   CodeReviewArn: string;
   RecommendationId: string;
@@ -557,6 +584,7 @@ export const DescribeRecommendationFeedbackRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeRecommendationFeedbackRequest>;
 export type Reaction = "ThumbsUp" | "ThumbsDown" | (string & {});
 export const Reaction = /*@__PURE__*/ S.String;
+
 export type Reactions = Reaction[];
 export const Reactions = /*@__PURE__*/ S.Array(Reaction);
 export interface RecommendationFeedback {
@@ -662,6 +690,8 @@ export type JobStates = JobState[];
 export const JobStates = /*@__PURE__*/ S.Array(JobState);
 export type RepositoryNames = string[];
 export const RepositoryNames = /*@__PURE__*/ S.Array(S.String);
+export type ListCodeReviewsMaxResults = number;
+export type NextToken = string;
 export interface ListCodeReviewsRequest {
   ProviderTypes?: ProviderType[];
   States?: JobState[];
@@ -755,6 +785,7 @@ export const ListCodeReviewsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCodeReviewsResponse",
 }) as any as S.Schema<ListCodeReviewsResponse>;
+export type MaxResults = number;
 export type UserIds = string[];
 export const UserIds = /*@__PURE__*/ S.Array(S.String);
 export type RecommendationIds = string[];
@@ -823,6 +854,7 @@ export const ListRecommendationFeedbackResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecommendationFeedbackResponse",
 }) as any as S.Schema<ListRecommendationFeedbackResponse>;
+export type ListRecommendationsMaxResults = number;
 export interface ListRecommendationsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -849,6 +881,9 @@ export const ListRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecommendationsRequest",
 }) as any as S.Schema<ListRecommendationsRequest>;
+export type FilePath = string;
+export type LineNumber = number;
+export type Text = string;
 export type RecommendationCategory =
   | "AWSBestPractices"
   | "AWSCloudFormationIssues"
@@ -863,6 +898,12 @@ export type RecommendationCategory =
   | "CodeInconsistencies"
   | (string & {});
 export const RecommendationCategory = /*@__PURE__*/ S.String;
+
+export type RuleId = string;
+export type RuleName = string;
+export type ShortDescription = string;
+export type LongDescription = string;
+export type RuleTag = string;
 export type RuleTags = string[];
 export const RuleTags = /*@__PURE__*/ S.Array(S.String);
 export interface RuleMetadata {
@@ -889,6 +930,7 @@ export type Severity =
   | "Critical"
   | (string & {});
 export const Severity = /*@__PURE__*/ S.String;
+
 export interface RecommendationSummary {
   FilePath?: string;
   RecommendationId?: string;
@@ -1118,45 +1160,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type AssociateRepositoryError =
   | AccessDeniedException
   | ConflictException
@@ -1203,6 +1207,7 @@ export const associateRepository: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateRepository",
 }));
+
 export type CreateCodeReviewError =
   | AccessDeniedException
   | ConflictException
@@ -1237,6 +1242,7 @@ export const createCodeReview: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCodeReview",
 }));
+
 export type DescribeCodeReviewError =
   | AccessDeniedException
   | InternalServerException
@@ -1266,6 +1272,7 @@ export const describeCodeReview: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCodeReview",
 }));
+
 export type DescribeRecommendationFeedbackError =
   | AccessDeniedException
   | InternalServerException
@@ -1295,6 +1302,7 @@ export const describeRecommendationFeedback: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRecommendationFeedback",
 }));
+
 export type DescribeRepositoryAssociationError =
   | AccessDeniedException
   | InternalServerException
@@ -1325,6 +1333,7 @@ export const describeRepositoryAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRepositoryAssociation",
 }));
+
 export type DisassociateRepositoryError =
   | AccessDeniedException
   | ConflictException
@@ -1356,6 +1365,7 @@ export const disassociateRepository: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateRepository",
 }));
+
 export type ListCodeReviewsError =
   | AccessDeniedException
   | InternalServerException
@@ -1403,6 +1413,7 @@ export const listCodeReviews: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRecommendationFeedbackError =
   | AccessDeniedException
   | InternalServerException
@@ -1453,6 +1464,7 @@ export const listRecommendationFeedback: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -1502,6 +1514,7 @@ export const listRecommendations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRepositoryAssociationsError =
   | InternalServerException
   | ThrottlingException
@@ -1545,6 +1558,7 @@ export const listRepositoryAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1570,6 +1584,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutRecommendationFeedbackError =
   | AccessDeniedException
   | InternalServerException
@@ -1600,6 +1615,7 @@ export const putRecommendationFeedback: API.OperationMethod<
   retry: Retry,
   operationName: "PutRecommendationFeedback",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1625,6 +1641,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException

@@ -93,51 +93,40 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class EKSRequestThrottledException extends S.TaggedErrorClass<EKSRequestThrottledException>()(
+  "EKSRequestThrottledException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidResourceArn extends S.TaggedErrorClass<InvalidResourceArn>()(
+  "InvalidResourceArn",
+  {},
+  T.SyntheticError({
+    from: "BadRequestException",
+    message: { includes: "Invalid input resource arn" },
+  }),
+) {}
+export class RequestThrottledException extends S.TaggedErrorClass<RequestThrottledException>()(
+  "RequestThrottledException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ResourceIdString = string;
-export type String1024 = string;
-export type ResourceNameString = string;
-export type ClientToken = string;
-export type ParametricIAMRoleArn = string;
-export type ParametricReleaseLabel = string;
-export type TemplateParameter = string;
-export type String256 = string;
-export type UriString = string;
-export type EntryPointPath = string | redacted.Redacted<string>;
-export type EntryPointArgument = string | redacted.Redacted<string>;
-export type SparkSubmitParameters = string | redacted.Redacted<string>;
-export type SparkSqlParameters = string | redacted.Redacted<string>;
-export type TemplateParameterName = string;
-export type String128 = string;
-export type StringEmpty256 = string;
-export type KmsKeyArn = string;
-export type JobTemplateArn = string;
-export type EndpointType = string;
-export type ReleaseLabel = string;
-export type IAMRoleArn = string;
-export type ACMCertArn = string;
-export type LogGroupName = string;
-export type RotationSize = string;
-export type MaxFilesToKeep = number;
-export type EndpointArn = string;
-export type ClusterId = string;
-export type KubernetesNamespace = string;
-export type SessionTagValue = string;
-export type SecretsManagerArn = string;
-export type SecurityConfigurationArn = string;
-export type VirtualClusterArn = string;
-export type JobArn = string;
-export type RequestIdentityUserArn = string;
-export type JavaInteger = number;
-export type String2048 = string;
-export type Base64Encoded = string;
-export type CredentialType = string;
-export type LogContext = string;
-export type Token = string | redacted.Redacted<string>;
-export type NextToken = string;
-export type RsiArn = string;
-
-//# Schemas
 export interface CancelJobRunRequest {
   id: string;
   virtualClusterId: string;
@@ -174,6 +163,11 @@ export const CancelJobRunResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelJobRunResponse",
 }) as any as S.Schema<CancelJobRunResponse>;
+export type ResourceNameString = string;
+export type ClientToken = string;
+export type ParametricIAMRoleArn = string;
+export type ParametricReleaseLabel = string;
+export type String1024 = string;
 export type SensitivePropertiesMap = { [key: string]: string | undefined };
 export const SensitivePropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -201,6 +195,8 @@ export const ConfigurationList = /*@__PURE__*/ S.Array(
     identifier: "Configuration",
   }),
 ) as any as S.Schema<ConfigurationList>;
+export type TemplateParameter = string;
+export type String256 = string;
 export interface ParametricCloudWatchMonitoringConfiguration {
   logGroupName?: string;
   logStreamNamePrefix?: string;
@@ -214,6 +210,7 @@ export const ParametricCloudWatchMonitoringConfiguration =
   ).annotate({
     identifier: "ParametricCloudWatchMonitoringConfiguration",
   }) as any as S.Schema<ParametricCloudWatchMonitoringConfiguration>;
+export type UriString = string;
 export interface ParametricS3MonitoringConfiguration {
   logUri?: string;
 }
@@ -250,8 +247,11 @@ export const ParametricConfigurationOverrides = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ParametricConfigurationOverrides",
 }) as any as S.Schema<ParametricConfigurationOverrides>;
+export type EntryPointPath = string | redacted.Redacted<string>;
+export type EntryPointArgument = string | redacted.Redacted<string>;
 export type EntryPointArguments = (string | redacted.Redacted<string>)[];
 export const EntryPointArguments = /*@__PURE__*/ S.Array(SensitiveString);
+export type SparkSubmitParameters = string | redacted.Redacted<string>;
 export interface SparkSubmitJobDriver {
   entryPoint: string | redacted.Redacted<string>;
   entryPointArguments?: (string | redacted.Redacted<string>)[];
@@ -266,6 +266,7 @@ export const SparkSubmitJobDriver = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SparkSubmitJobDriver",
 }) as any as S.Schema<SparkSubmitJobDriver>;
+export type SparkSqlParameters = string | redacted.Redacted<string>;
 export interface SparkSqlJobDriver {
   entryPoint?: string | redacted.Redacted<string>;
   sparkSqlParameters?: string | redacted.Redacted<string>;
@@ -288,8 +289,10 @@ export const JobDriver = /*@__PURE__*/ S.suspend(() =>
     sparkSqlJobDriver: S.optional(SparkSqlJobDriver),
   }),
 ).annotate({ identifier: "JobDriver" }) as any as S.Schema<JobDriver>;
+export type TemplateParameterName = string;
 export type TemplateParameterDataType = "NUMBER" | "STRING" | (string & {});
 export const TemplateParameterDataType = /*@__PURE__*/ S.String;
+
 export interface TemplateParameterConfiguration {
   type?: TemplateParameterDataType;
   defaultValue?: string;
@@ -309,6 +312,8 @@ export const TemplateParameterConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
   TemplateParameterConfiguration.pipe(S.optional),
 );
+export type String128 = string;
+export type StringEmpty256 = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -336,6 +341,7 @@ export const JobTemplateData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JobTemplateData",
 }) as any as S.Schema<JobTemplateData>;
+export type KmsKeyArn = string;
 export interface CreateJobTemplateRequest {
   name: string;
   clientToken: string;
@@ -363,6 +369,7 @@ export const CreateJobTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateJobTemplateRequest",
 }) as any as S.Schema<CreateJobTemplateRequest>;
+export type JobTemplateArn = string;
 export interface CreateJobTemplateResponse {
   id?: string;
   name?: string;
@@ -381,8 +388,13 @@ export const CreateJobTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateJobTemplateResponse",
 }) as any as S.Schema<CreateJobTemplateResponse>;
+export type EndpointType = string;
+export type ReleaseLabel = string;
+export type IAMRoleArn = string;
+export type ACMCertArn = string;
 export type AllowAWSToRetainLogs = "ENABLED" | "DISABLED" | (string & {});
 export const AllowAWSToRetainLogs = /*@__PURE__*/ S.String;
+
 export interface ManagedLogs {
   allowAWSToRetainLogs?: AllowAWSToRetainLogs;
   encryptionKeyArn?: string;
@@ -395,6 +407,8 @@ export const ManagedLogs = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ManagedLogs" }) as any as S.Schema<ManagedLogs>;
 export type PersistentAppUI = "ENABLED" | "DISABLED" | (string & {});
 export const PersistentAppUI = /*@__PURE__*/ S.String;
+
+export type LogGroupName = string;
 export interface CloudWatchMonitoringConfiguration {
   logGroupName: string;
   logStreamNamePrefix?: string;
@@ -415,6 +429,8 @@ export const S3MonitoringConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3MonitoringConfiguration",
 }) as any as S.Schema<S3MonitoringConfiguration>;
+export type RotationSize = string;
+export type MaxFilesToKeep = number;
 export interface ContainerLogRotationConfiguration {
   rotationSize: string;
   maxFilesToKeep: number;
@@ -496,6 +512,7 @@ export const CreateManagedEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateManagedEndpointRequest",
 }) as any as S.Schema<CreateManagedEndpointRequest>;
+export type EndpointArn = string;
 export interface CreateManagedEndpointResponse {
   id?: string;
   name?: string;
@@ -514,6 +531,9 @@ export const CreateManagedEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateManagedEndpointResponse>;
 export type ContainerProviderType = "EKS" | (string & {});
 export const ContainerProviderType = /*@__PURE__*/ S.String;
+
+export type ClusterId = string;
+export type KubernetesNamespace = string;
 export interface EksInfo {
   namespace?: string;
   nodeLabel?: string;
@@ -542,6 +562,7 @@ export const ContainerProvider = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContainerProvider",
 }) as any as S.Schema<ContainerProvider>;
+export type SessionTagValue = string;
 export interface SecureNamespaceInfo {
   clusterId?: string;
   namespace?: string;
@@ -570,6 +591,8 @@ export const LakeFormationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LakeFormationConfiguration>;
 export type CertificateProviderType = "PEM" | (string & {});
 export const CertificateProviderType = /*@__PURE__*/ S.String;
+
+export type SecretsManagerArn = string;
 export interface TLSCertificateConfiguration {
   certificateProviderType?: CertificateProviderType;
   publicCertificateSecretArn?: string;
@@ -655,6 +678,7 @@ export const CreateSecurityConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSecurityConfigurationRequest",
 }) as any as S.Schema<CreateSecurityConfigurationRequest>;
+export type SecurityConfigurationArn = string;
 export interface CreateSecurityConfigurationResponse {
   id?: string;
   name?: string;
@@ -696,6 +720,7 @@ export const CreateVirtualClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVirtualClusterRequest",
 }) as any as S.Schema<CreateVirtualClusterRequest>;
+export type VirtualClusterArn = string;
 export interface CreateVirtualClusterResponse {
   id?: string;
   name?: string;
@@ -820,6 +845,7 @@ export const DescribeJobRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeJobRunRequest",
 }) as any as S.Schema<DescribeJobRunRequest>;
+export type JobArn = string;
 export type JobRunState =
   | "PENDING"
   | "SUBMITTED"
@@ -830,6 +856,8 @@ export type JobRunState =
   | "COMPLETED"
   | (string & {});
 export const JobRunState = /*@__PURE__*/ S.String;
+
+export type RequestIdentityUserArn = string;
 export type FailureReason =
   | "INTERNAL_ERROR"
   | "USER_ERROR"
@@ -837,6 +865,8 @@ export type FailureReason =
   | "CLUSTER_UNAVAILABLE"
   | (string & {});
 export const FailureReason = /*@__PURE__*/ S.String;
+
+export type JavaInteger = number;
 export interface RetryPolicyConfiguration {
   maxAttempts: number;
 }
@@ -924,6 +954,7 @@ export const DescribeJobTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeJobTemplateRequest",
 }) as any as S.Schema<DescribeJobTemplateRequest>;
+export type String2048 = string;
 export interface JobTemplate {
   name?: string;
   id?: string;
@@ -990,6 +1021,8 @@ export type EndpointState =
   | "TERMINATED_WITH_ERRORS"
   | (string & {});
 export const EndpointState = /*@__PURE__*/ S.String;
+
+export type Base64Encoded = string;
 export interface Certificate {
   certificateArn?: string;
   certificateData?: string;
@@ -1128,6 +1161,7 @@ export type VirtualClusterState =
   | "ARRESTED"
   | (string & {});
 export const VirtualClusterState = /*@__PURE__*/ S.String;
+
 export interface VirtualCluster {
   id?: string;
   name?: string;
@@ -1160,6 +1194,8 @@ export const DescribeVirtualClusterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeVirtualClusterResponse",
 }) as any as S.Schema<DescribeVirtualClusterResponse>;
+export type CredentialType = string;
+export type LogContext = string;
 export interface GetManagedEndpointSessionCredentialsRequest {
   endpointIdentifier: string;
   virtualClusterIdentifier: string;
@@ -1197,6 +1233,7 @@ export const GetManagedEndpointSessionCredentialsRequest =
   ).annotate({
     identifier: "GetManagedEndpointSessionCredentialsRequest",
   }) as any as S.Schema<GetManagedEndpointSessionCredentialsRequest>;
+export type Token = string | redacted.Redacted<string>;
 export type Credentials = { token: string | redacted.Redacted<string> };
 export const Credentials = /*@__PURE__*/ S.Union([
   S.Struct({ token: SensitiveString }),
@@ -1220,6 +1257,7 @@ export const GetManagedEndpointSessionCredentialsResponse =
   }) as any as S.Schema<GetManagedEndpointSessionCredentialsResponse>;
 export type JobRunStates = JobRunState[];
 export const JobRunStates = /*@__PURE__*/ S.Array(JobRunState);
+export type NextToken = string;
 export interface ListJobRunsRequest {
   virtualClusterId: string;
   createdBefore?: Date;
@@ -1413,6 +1451,7 @@ export const ListSecurityConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSecurityConfigurationsResponse",
 }) as any as S.Schema<ListSecurityConfigurationsResponse>;
+export type RsiArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -1616,43 +1655,6 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class EKSRequestThrottledException extends S.TaggedErrorClass<EKSRequestThrottledException>()(
-  "EKSRequestThrottledException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class RequestThrottledException extends S.TaggedErrorClass<RequestThrottledException>()(
-  "RequestThrottledException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidResourceArn extends S.TaggedErrorClass<InvalidResourceArn>()(
-  "InvalidResourceArn",
-  {},
-  T.SyntheticError({
-    from: "BadRequestException",
-    message: { includes: "Invalid input resource arn" },
-  }),
-) {}
-
-//# Operations
 export type CancelJobRunError =
   | InternalServerException
   | ValidationException
@@ -1674,6 +1676,7 @@ export const cancelJobRun: API.OperationMethod<
   retry: Retry,
   operationName: "CancelJobRun",
 }));
+
 export type CreateJobTemplateError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1702,6 +1705,7 @@ export const createJobTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateJobTemplate",
 }));
+
 export type CreateManagedEndpointError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1728,6 +1732,7 @@ export const createManagedEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateManagedEndpoint",
 }));
+
 export type CreateSecurityConfigurationError =
   | InternalServerException
   | ValidationException
@@ -1751,6 +1756,7 @@ export const createSecurityConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSecurityConfiguration",
 }));
+
 export type CreateVirtualClusterError =
   | EKSRequestThrottledException
   | InternalServerException
@@ -1781,6 +1787,7 @@ export const createVirtualCluster: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVirtualCluster",
 }));
+
 export type DeleteJobTemplateError =
   | InternalServerException
   | ValidationException
@@ -1804,6 +1811,7 @@ export const deleteJobTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteJobTemplate",
 }));
+
 export type DeleteManagedEndpointError =
   | InternalServerException
   | ValidationException
@@ -1825,6 +1833,7 @@ export const deleteManagedEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteManagedEndpoint",
 }));
+
 export type DeleteVirtualClusterError =
   | InternalServerException
   | ValidationException
@@ -1848,6 +1857,7 @@ export const deleteVirtualCluster: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVirtualCluster",
 }));
+
 export type DescribeJobRunError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1874,6 +1884,7 @@ export const describeJobRun: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeJobRun",
 }));
+
 export type DescribeJobTemplateError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1902,6 +1913,7 @@ export const describeJobTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeJobTemplate",
 }));
+
 export type DescribeManagedEndpointError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1928,6 +1940,7 @@ export const describeManagedEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeManagedEndpoint",
 }));
+
 export type DescribeSecurityConfigurationError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1957,6 +1970,7 @@ export const describeSecurityConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSecurityConfiguration",
 }));
+
 export type DescribeVirtualClusterError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1987,6 +2001,7 @@ export const describeVirtualCluster: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVirtualCluster",
 }));
+
 export type GetManagedEndpointSessionCredentialsError =
   | InternalServerException
   | RequestThrottledException
@@ -2014,6 +2029,7 @@ export const getManagedEndpointSessionCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "GetManagedEndpointSessionCredentials",
 }));
+
 export type ListJobRunsError =
   | InternalServerException
   | ValidationException
@@ -2056,6 +2072,7 @@ export const listJobRuns: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListJobTemplatesError =
   | InternalServerException
   | ValidationException
@@ -2100,6 +2117,7 @@ export const listJobTemplates: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListManagedEndpointsError =
   | InternalServerException
   | ValidationException
@@ -2142,6 +2160,7 @@ export const listManagedEndpoints: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSecurityConfigurationsError =
   | InternalServerException
   | ValidationException
@@ -2187,6 +2206,7 @@ export const listSecurityConfigurations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2212,6 +2232,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListVirtualClustersError =
   | InternalServerException
   | ValidationException
@@ -2258,6 +2279,7 @@ export const listVirtualClusters: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type StartJobRunError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2284,6 +2306,7 @@ export const startJobRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartJobRun",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2319,6 +2342,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException

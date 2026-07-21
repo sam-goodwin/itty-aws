@@ -54,547 +54,82 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type EndpointAddress = string;
-export type ErrorMessage = string;
-export type ErrorResourceId = string;
-export type ErrorResourceType = string;
-export type IoTManagedIntegrationsResourceARN = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ConnectorId = string;
-export type ThirdPartyUserId = string | redacted.Redacted<string>;
-export type ConnectorEventOperationVersion = string;
-export type ConnectorEventStatusCode = number;
-export type ConnectorEventMessage = string | redacted.Redacted<string>;
-export type DeviceDiscoveryId = string;
-export type ConnectorDeviceId = string | redacted.Redacted<string>;
-export type TraceId = string;
-export type ConnectorDeviceName = string;
-export type CapabilityReportVersion = string;
-export type NodeId = string;
-export type EndpointId = string;
-export type DeviceType = string;
-export type ClusterId = string;
-export type MatterCapabilityReportClusterRevisionId = number;
-export type SchemaVersionedId = string;
-export type CapabilityName = string;
-export type SpecVersion = string;
-export type MatterAttributeId = string;
-export type ActionName = string;
-export type MatterCapabilityReportAttributeValue = unknown;
-export type MatterCommandId = string;
-export type MatterEventId = string;
-export type MatterCapabilityReportFeatureMap = number;
-export type MatterCapabilityReportFabricIndex = number;
-export type EndpointSemanticTag = string;
-export type ExtrinsicSchemaId = string;
-export type ValidationSchema = unknown;
-export type DeviceMetadata = unknown;
-export type MatterAttributes = unknown;
-export type MatterFields = unknown;
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
+  "InternalFailureException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(410),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.optional(S.String),
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ClientToken = string;
 export type ConnectorDestinationId = string;
 export type AccountAssociationName = string;
 export type AccountAssociationDescription = string;
-export type AuthMaterialName = string;
-export type OAuthAuthorizationUrlOutput = string | redacted.Redacted<string>;
-export type AccountAssociationId = string;
-export type AccountAssociationArn = string;
-export type AccountAssociationErrorMessage = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type DisplayName = string;
-export type LambdaArn = string;
-export type CloudConnectorDescription = string;
-export type CloudConnectorId = string;
-export type ConnectorDestinationName = string;
-export type ConnectorDestinationDescription = string;
-export type AuthUrl = string;
-export type TokenUrl = string;
-export type SecretsManagerArn = string;
-export type SecretsManagerVersionId = string;
-export type OAuthCompleteRedirectUrl = string;
-export type CredentialLockerName = string | redacted.Redacted<string>;
-export type CredentialLockerId = string;
-export type CredentialLockerArn = string;
-export type CredentialLockerCreatedAt = Date;
-export type DeliveryDestinationArn = string;
-export type DestinationName = string;
-export type DeliveryDestinationRoleArn = string;
-export type DestinationDescription = string;
-export type DestinationCreatedAt = Date;
-export type DestinationUpdatedAt = Date;
-export type CustomProtocolDetailKey = string;
-export type CustomProtocolDetailValue = string;
-export type ManagedThingId = string;
-export type ConnectorAssociationId = string;
-export type DiscoveryAuthMaterialString = string | redacted.Redacted<string>;
-export type DiscoveryStartedAt = Date;
-export type DeviceDiscoveryArn = string;
-export type DiscoveryFinishedAt = Date;
-export type DiscoveredAt = Date;
-export type Brand = string | redacted.Redacted<string>;
-export type Model = string | redacted.Redacted<string>;
-export type AuthMaterialString = string | redacted.Redacted<string>;
-export type SmartHomeResourceType = string;
-export type SmartHomeResourceId = string;
-export type LogConfigurationId = string;
-export type HubTokenTimerExpirySettingInSeconds = number;
-export type HubConfigurationUpdatedAt = Date;
-export type ConfigurationErrorCode = string;
-export type ConfigurationErrorMessage = string;
-export type KmsKeyArn = string;
-export type CapabilityVersion = string;
-export type CapabilityActionName = string;
-export type ActionReference = string;
-export type ActionTraceId = string;
-export type CapabilityProperties = unknown;
-export type Owner = string | redacted.Redacted<string>;
-export type EnableAsProvisioner = boolean;
-export type EnableAsProvisionee = boolean;
-export type TimeoutInMinutes = number;
-export type SerialNumber = string | redacted.Redacted<string>;
-export type Name = string;
-export type PropertyName = string;
-export type EventName = string;
-export type Capabilities = string;
-export type Classification = string | redacted.Redacted<string>;
-export type AttributeName = string;
-export type AttributeValue = string;
-export type ManagedThingArn = string;
-export type CreatedAt = Date;
-export type AdvertisedProductId = string;
-export type UniversalProductCode = string | redacted.Redacted<string>;
-export type InternationalArticleNumber = string | redacted.Redacted<string>;
-export type ConnectorPolicyId = string;
-export type DeviceSpecificKey = string | redacted.Redacted<string>;
-export type MacAddress = string | redacted.Redacted<string>;
-export type ParentControllerId = string;
-export type UpdatedAt = Date;
-export type SetupAt = Date;
-export type CertificatePem = string;
-export type ConnectivityStatus = boolean;
-export type ConnectivityTimestamp = Date;
-export type CapabilityId = string;
-export type NotificationConfigurationCreatedAt = Date;
-export type NotificationConfigurationUpdatedAt = Date;
-export type OtaDescription = string;
-export type OtaTaskConfigurationName = string | redacted.Redacted<string>;
-export type MinNumberOfExecutedThings = number;
-export type ThresholdPercentage = number;
-export type BaseRatePerMinute = number;
-export type IncrementFactor = number;
-export type NumberOfNotifiedThings = number;
-export type NumberOfSucceededThings = number;
-export type MaximumPerMinute = number;
-export type InProgressTimeoutInMinutes = number;
-export type OtaTaskConfigurationId = string;
-export type S3Url = string;
-export type OtaTargetQueryString = string;
-export type EndTime = string;
-export type DurationInMinutes = number;
-export type StartTime = string;
-export type ScheduleStartTime = string;
-export type MinNumberOfRetries = number;
-export type OtaTaskId = string;
-export type OtaTaskArn = string;
-export type LastUpdatedAt = Date;
-export type OtaNextToken = string;
-export type ExecutionNumber = number;
-export type QueuedAt = Date;
-export type RetryAttempt = number;
-export type StartedAt = Date;
-export type CaCertificate = string | redacted.Redacted<string>;
-export type ClaimCertificate = string | redacted.Redacted<string>;
-export type ProvisioningProfileName = string;
-export type ProvisioningProfileArn = string;
-export type ProvisioningProfileId = string;
-export type ClaimCertificatePrivateKey = string | redacted.Redacted<string>;
-export type LocalStoreLocation = string;
-export type LocalStoreFileRotationMaxFiles = number;
-export type LocalStoreFileRotationMaxBytes = number;
-export type UploadLog = boolean;
-export type UploadPeriodMinutes = number;
-export type DeleteLocalStoreAfterUpload = boolean;
-export type SchemaId = string;
-export type SchemaVersionDescription = string;
-export type SchemaVersionNamespaceName = string;
-export type SchemaVersionVersion = string;
-export type SchemaVersionSchema = unknown;
-
-//# Schemas
-export interface GetCustomEndpointRequest {}
-export const GetCustomEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/custom-endpoint" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCustomEndpointRequest",
-}) as any as S.Schema<GetCustomEndpointRequest>;
-export interface GetCustomEndpointResponse {
-  EndpointAddress: string;
-}
-export const GetCustomEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EndpointAddress: S.String }),
-).annotate({
-  identifier: "GetCustomEndpointResponse",
-}) as any as S.Schema<GetCustomEndpointResponse>;
-export interface ListTagsForResourceRequest {
-  ResourceArn: string;
-}
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
 export const TagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export interface ListTagsForResourceResponse {
-  tags?: { [key: string]: string | undefined };
-}
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(TagsMap) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
-export interface RegisterCustomEndpointRequest {}
-export const RegisterCustomEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/custom-endpoint" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RegisterCustomEndpointRequest",
-}) as any as S.Schema<RegisterCustomEndpointRequest>;
-export interface RegisterCustomEndpointResponse {
-  EndpointAddress: string;
-}
-export const RegisterCustomEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EndpointAddress: S.String }),
-).annotate({
-  identifier: "RegisterCustomEndpointResponse",
-}) as any as S.Schema<RegisterCustomEndpointResponse>;
-export type ConnectorEventOperation =
-  | "DEVICE_COMMAND_RESPONSE"
-  | "DEVICE_DISCOVERY"
-  | "DEVICE_EVENT"
-  | "DEVICE_COMMAND_REQUEST"
-  | (string & {});
-export const ConnectorEventOperation = /*@__PURE__*/ S.String;
-export type DeviceTypes = string[];
-export const DeviceTypes = /*@__PURE__*/ S.Array(S.String);
-export interface MatterCapabilityReportAttribute {
-  id?: string;
-  name?: string;
-  value?: any;
-}
-export const MatterCapabilityReportAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    value: S.optional(S.Any),
-  }),
-).annotate({
-  identifier: "MatterCapabilityReportAttribute",
-}) as any as S.Schema<MatterCapabilityReportAttribute>;
-export type MatterCapabilityReportAttributes =
-  MatterCapabilityReportAttribute[];
-export const MatterCapabilityReportAttributes = /*@__PURE__*/ S.Array(
-  MatterCapabilityReportAttribute,
-);
-export type MatterCapabilityReportCommands = string[];
-export const MatterCapabilityReportCommands = /*@__PURE__*/ S.Array(S.String);
-export type MatterCapabilityReportEvents = string[];
-export const MatterCapabilityReportEvents = /*@__PURE__*/ S.Array(S.String);
-export type MatterCapabilityReportGeneratedCommands = string[];
-export const MatterCapabilityReportGeneratedCommands = /*@__PURE__*/ S.Array(
-  S.String,
-);
-export interface MatterCapabilityReportCluster {
-  id: string;
-  revision: number;
-  publicId?: string;
-  name?: string;
-  specVersion?: string;
-  attributes?: MatterCapabilityReportAttribute[];
-  commands?: string[];
-  events?: string[];
-  featureMap?: number;
-  generatedCommands?: string[];
-  fabricIndex?: number;
-}
-export const MatterCapabilityReportCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    revision: S.Number,
-    publicId: S.optional(S.String),
-    name: S.optional(S.String),
-    specVersion: S.optional(S.String),
-    attributes: S.optional(MatterCapabilityReportAttributes),
-    commands: S.optional(MatterCapabilityReportCommands),
-    events: S.optional(MatterCapabilityReportEvents),
-    featureMap: S.optional(S.Number),
-    generatedCommands: S.optional(MatterCapabilityReportGeneratedCommands),
-    fabricIndex: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MatterCapabilityReportCluster",
-}) as any as S.Schema<MatterCapabilityReportCluster>;
-export type MatterCapabilityReportClusters = MatterCapabilityReportCluster[];
-export const MatterCapabilityReportClusters = /*@__PURE__*/ S.Array(
-  MatterCapabilityReportCluster,
-);
-export type MatterCapabilityReportEndpointParts = string[];
-export const MatterCapabilityReportEndpointParts = /*@__PURE__*/ S.Array(
-  S.String,
-);
-export type MatterCapabilityReportEndpointSemanticTags = string[];
-export const MatterCapabilityReportEndpointSemanticTags = /*@__PURE__*/ S.Array(
-  S.String,
-);
-export type MatterCapabilityReportEndpointClientClusters = string[];
-export const MatterCapabilityReportEndpointClientClusters =
-  /*@__PURE__*/ S.Array(S.String);
-export interface MatterCapabilityReportEndpoint {
-  id: string;
-  deviceTypes: string[];
-  clusters: MatterCapabilityReportCluster[];
-  parts?: string[];
-  semanticTags?: string[];
-  clientClusters?: string[];
-}
-export const MatterCapabilityReportEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    deviceTypes: DeviceTypes,
-    clusters: MatterCapabilityReportClusters,
-    parts: S.optional(MatterCapabilityReportEndpointParts),
-    semanticTags: S.optional(MatterCapabilityReportEndpointSemanticTags),
-    clientClusters: S.optional(MatterCapabilityReportEndpointClientClusters),
-  }),
-).annotate({
-  identifier: "MatterCapabilityReportEndpoint",
-}) as any as S.Schema<MatterCapabilityReportEndpoint>;
-export type MatterCapabilityReportEndpoints = MatterCapabilityReportEndpoint[];
-export const MatterCapabilityReportEndpoints = /*@__PURE__*/ S.Array(
-  MatterCapabilityReportEndpoint,
-);
-export interface MatterCapabilityReport {
-  version: string;
-  nodeId?: string;
-  endpoints: MatterCapabilityReportEndpoint[];
-}
-export const MatterCapabilityReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.String,
-    nodeId: S.optional(S.String),
-    endpoints: MatterCapabilityReportEndpoints,
-  }),
-).annotate({
-  identifier: "MatterCapabilityReport",
-}) as any as S.Schema<MatterCapabilityReport>;
-export type SchemaVersionFormat = "AWS" | "ZCL" | "CONNECTOR" | (string & {});
-export const SchemaVersionFormat = /*@__PURE__*/ S.String;
-export interface CapabilitySchemaItem {
-  Format: SchemaVersionFormat;
-  CapabilityId: string;
-  ExtrinsicId: string;
-  ExtrinsicVersion: number;
-  Schema: any;
-}
-export const CapabilitySchemaItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Format: SchemaVersionFormat,
-    CapabilityId: S.String,
-    ExtrinsicId: S.String,
-    ExtrinsicVersion: S.Number,
-    Schema: S.Any,
-  }),
-).annotate({
-  identifier: "CapabilitySchemaItem",
-}) as any as S.Schema<CapabilitySchemaItem>;
-export type CapabilitySchemas = CapabilitySchemaItem[];
-export const CapabilitySchemas = /*@__PURE__*/ S.Array(CapabilitySchemaItem);
-export interface Device {
-  ConnectorDeviceId: string | redacted.Redacted<string>;
-  ConnectorDeviceName?: string;
-  CapabilityReport: MatterCapabilityReport;
-  CapabilitySchemas?: CapabilitySchemaItem[];
-  DeviceMetadata?: any;
-}
-export const Device = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConnectorDeviceId: SensitiveString,
-    ConnectorDeviceName: S.optional(S.String),
-    CapabilityReport: MatterCapabilityReport,
-    CapabilitySchemas: S.optional(CapabilitySchemas),
-    DeviceMetadata: S.optional(S.Any),
-  }),
-).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
-export type Devices = Device[];
-export const Devices = /*@__PURE__*/ S.Array(Device);
-export type MatterCommands = { [key: string]: any | undefined };
-export const MatterCommands = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Any.pipe(S.optional),
-);
-export type MatterEvents = { [key: string]: any | undefined };
-export const MatterEvents = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Any.pipe(S.optional),
-);
-export interface MatterCluster {
-  id?: string;
-  attributes?: any;
-  commands?: { [key: string]: any | undefined };
-  events?: { [key: string]: any | undefined };
-}
-export const MatterCluster = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    attributes: S.optional(S.Any),
-    commands: S.optional(MatterCommands),
-    events: S.optional(MatterEvents),
-  }),
-).annotate({ identifier: "MatterCluster" }) as any as S.Schema<MatterCluster>;
-export type MatterClusters = MatterCluster[];
-export const MatterClusters = /*@__PURE__*/ S.Array(MatterCluster);
-export interface MatterEndpoint {
-  id?: string;
-  clusters?: MatterCluster[];
-}
-export const MatterEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ id: S.optional(S.String), clusters: S.optional(MatterClusters) }),
-).annotate({ identifier: "MatterEndpoint" }) as any as S.Schema<MatterEndpoint>;
-export interface SendConnectorEventRequest {
-  ConnectorId: string;
-  UserId?: string | redacted.Redacted<string>;
-  Operation: ConnectorEventOperation;
-  OperationVersion?: string;
-  StatusCode?: number;
-  Message?: string | redacted.Redacted<string>;
-  DeviceDiscoveryId?: string;
-  ConnectorDeviceId?: string | redacted.Redacted<string>;
-  TraceId?: string;
-  Devices?: Device[];
-  MatterEndpoint?: MatterEndpoint;
-}
-export const SendConnectorEventRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConnectorId: S.String.pipe(T.HttpLabel("ConnectorId")),
-    UserId: S.optional(SensitiveString),
-    Operation: ConnectorEventOperation,
-    OperationVersion: S.optional(S.String),
-    StatusCode: S.optional(S.Number),
-    Message: S.optional(SensitiveString),
-    DeviceDiscoveryId: S.optional(S.String),
-    ConnectorDeviceId: S.optional(SensitiveString),
-    TraceId: S.optional(S.String),
-    Devices: S.optional(Devices),
-    MatterEndpoint: S.optional(MatterEndpoint),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/connector-event/{ConnectorId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "SendConnectorEventRequest",
-}) as any as S.Schema<SendConnectorEventRequest>;
-export interface SendConnectorEventResponse {
-  ConnectorId: string;
-}
-export const SendConnectorEventResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ConnectorId: S.String }),
-).annotate({
-  identifier: "SendConnectorEventResponse",
-}) as any as S.Schema<SendConnectorEventResponse>;
-export interface TagResourceRequest {
-  ResourceArn: string;
-  Tags: { [key: string]: string | undefined };
-}
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    Tags: TagsMap,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "TagResourceRequest",
-}) as any as S.Schema<TagResourceRequest>;
-export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
-export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
-export interface UntagResourceRequest {
-  ResourceArn: string;
-  TagKeys: string[];
-}
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UntagResourceRequest",
-}) as any as S.Schema<UntagResourceRequest>;
-export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+export type AuthMaterialName = string;
 export interface GeneralAuthorizationName {
   AuthMaterialName?: string;
 }
@@ -632,6 +167,8 @@ export const CreateAccountAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccountAssociationRequest",
 }) as any as S.Schema<CreateAccountAssociationRequest>;
+export type OAuthAuthorizationUrlOutput = string | redacted.Redacted<string>;
+export type AccountAssociationId = string;
 export type AssociationState =
   | "ASSOCIATION_IN_PROGRESS"
   | "ASSOCIATION_FAILED"
@@ -640,6 +177,8 @@ export type AssociationState =
   | "REFRESH_TOKEN_EXPIRED"
   | (string & {});
 export const AssociationState = /*@__PURE__*/ S.String;
+
+export type AccountAssociationArn = string;
 export interface CreateAccountAssociationResponse {
   OAuthAuthorizationUrl: string | redacted.Redacted<string>;
   AccountAssociationId: string;
@@ -656,210 +195,8 @@ export const CreateAccountAssociationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccountAssociationResponse",
 }) as any as S.Schema<CreateAccountAssociationResponse>;
-export interface GetAccountAssociationRequest {
-  AccountAssociationId: string;
-}
-export const GetAccountAssociationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountAssociationId: S.String.pipe(T.HttpLabel("AccountAssociationId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/account-associations/{AccountAssociationId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAccountAssociationRequest",
-}) as any as S.Schema<GetAccountAssociationRequest>;
-export interface GetAccountAssociationResponse {
-  AccountAssociationId: string;
-  AssociationState: AssociationState;
-  ErrorMessage?: string;
-  ConnectorDestinationId?: string;
-  Name?: string;
-  Description?: string;
-  Arn?: string;
-  OAuthAuthorizationUrl: string | redacted.Redacted<string>;
-  Tags?: { [key: string]: string | undefined };
-  GeneralAuthorization?: GeneralAuthorizationName;
-}
-export const GetAccountAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountAssociationId: S.String,
-    AssociationState: AssociationState,
-    ErrorMessage: S.optional(S.String),
-    ConnectorDestinationId: S.optional(S.String),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-    Arn: S.optional(S.String),
-    OAuthAuthorizationUrl: SensitiveString,
-    Tags: S.optional(TagsMap),
-    GeneralAuthorization: S.optional(GeneralAuthorizationName),
-  }),
-).annotate({
-  identifier: "GetAccountAssociationResponse",
-}) as any as S.Schema<GetAccountAssociationResponse>;
-export interface UpdateAccountAssociationRequest {
-  AccountAssociationId: string;
-  Name?: string;
-  Description?: string;
-}
-export const UpdateAccountAssociationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountAssociationId: S.String.pipe(T.HttpLabel("AccountAssociationId")),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/account-associations/{AccountAssociationId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateAccountAssociationRequest",
-}) as any as S.Schema<UpdateAccountAssociationRequest>;
-export interface UpdateAccountAssociationResponse {}
-export const UpdateAccountAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateAccountAssociationResponse",
-}) as any as S.Schema<UpdateAccountAssociationResponse>;
-export interface DeleteAccountAssociationRequest {
-  AccountAssociationId: string;
-}
-export const DeleteAccountAssociationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountAssociationId: S.String.pipe(T.HttpLabel("AccountAssociationId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/account-associations/{AccountAssociationId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteAccountAssociationRequest",
-}) as any as S.Schema<DeleteAccountAssociationRequest>;
-export interface DeleteAccountAssociationResponse {}
-export const DeleteAccountAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteAccountAssociationResponse",
-}) as any as S.Schema<DeleteAccountAssociationResponse>;
-export interface ListAccountAssociationsRequest {
-  ConnectorDestinationId?: string;
-  MaxResults?: number;
-  NextToken?: string;
-}
-export const ListAccountAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConnectorDestinationId: S.optional(S.String).pipe(
-      T.HttpQuery("ConnectorDestinationId"),
-    ),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/account-associations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAccountAssociationsRequest",
-}) as any as S.Schema<ListAccountAssociationsRequest>;
-export interface AccountAssociationItem {
-  AccountAssociationId: string;
-  AssociationState: AssociationState;
-  ErrorMessage?: string;
-  ConnectorDestinationId?: string;
-  Name?: string;
-  Description?: string;
-  Arn?: string;
-}
-export const AccountAssociationItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountAssociationId: S.String,
-    AssociationState: AssociationState,
-    ErrorMessage: S.optional(S.String),
-    ConnectorDestinationId: S.optional(S.String),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-    Arn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AccountAssociationItem",
-}) as any as S.Schema<AccountAssociationItem>;
-export type AccountAssociationListDefinition = AccountAssociationItem[];
-export const AccountAssociationListDefinition = /*@__PURE__*/ S.Array(
-  AccountAssociationItem,
-);
-export interface ListAccountAssociationsResponse {
-  Items?: AccountAssociationItem[];
-  NextToken?: string;
-}
-export const ListAccountAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Items: S.optional(AccountAssociationListDefinition),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAccountAssociationsResponse",
-}) as any as S.Schema<ListAccountAssociationsResponse>;
-export interface StartAccountAssociationRefreshRequest {
-  AccountAssociationId: string;
-}
-export const StartAccountAssociationRefreshRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      AccountAssociationId: S.String.pipe(T.HttpLabel("AccountAssociationId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/account-associations/{AccountAssociationId}/refresh",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "StartAccountAssociationRefreshRequest",
-}) as any as S.Schema<StartAccountAssociationRefreshRequest>;
-export interface StartAccountAssociationRefreshResponse {
-  OAuthAuthorizationUrl: string | redacted.Redacted<string>;
-}
-export const StartAccountAssociationRefreshResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({ OAuthAuthorizationUrl: SensitiveString }),
-).annotate({
-  identifier: "StartAccountAssociationRefreshResponse",
-}) as any as S.Schema<StartAccountAssociationRefreshResponse>;
+export type DisplayName = string;
+export type LambdaArn = string;
 export interface LambdaConfig {
   arn: string;
 }
@@ -872,8 +209,10 @@ export interface EndpointConfig {
 export const EndpointConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ lambda: S.optional(LambdaConfig) }),
 ).annotate({ identifier: "EndpointConfig" }) as any as S.Schema<EndpointConfig>;
+export type CloudConnectorDescription = string;
 export type EndpointType = "LAMBDA" | (string & {});
 export const EndpointType = /*@__PURE__*/ S.String;
+
 export interface CreateCloudConnectorRequest {
   Name: string;
   EndpointConfig: EndpointConfig;
@@ -901,6 +240,7 @@ export const CreateCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCloudConnectorRequest",
 }) as any as S.Schema<CreateCloudConnectorRequest>;
+export type CloudConnectorId = string;
 export interface CreateCloudConnectorResponse {
   Id?: string;
 }
@@ -909,161 +249,19 @@ export const CreateCloudConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCloudConnectorResponse",
 }) as any as S.Schema<CreateCloudConnectorResponse>;
-export interface GetCloudConnectorRequest {
-  Identifier: string;
-}
-export const GetCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/cloud-connectors/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCloudConnectorRequest",
-}) as any as S.Schema<GetCloudConnectorRequest>;
-export type CloudConnectorType = "LISTED" | "UNLISTED" | (string & {});
-export const CloudConnectorType = /*@__PURE__*/ S.String;
-export interface GetCloudConnectorResponse {
-  Name: string;
-  EndpointConfig: EndpointConfig;
-  Description?: string;
-  EndpointType?: EndpointType;
-  Id?: string;
-  Type?: CloudConnectorType;
-}
-export const GetCloudConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    EndpointConfig: EndpointConfig,
-    Description: S.optional(S.String),
-    EndpointType: S.optional(EndpointType),
-    Id: S.optional(S.String),
-    Type: S.optional(CloudConnectorType),
-  }),
-).annotate({
-  identifier: "GetCloudConnectorResponse",
-}) as any as S.Schema<GetCloudConnectorResponse>;
-export interface UpdateCloudConnectorRequest {
-  Identifier: string;
-  Name?: string;
-  Description?: string;
-}
-export const UpdateCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    Name: S.optional(S.String),
-    Description: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/cloud-connectors/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateCloudConnectorRequest",
-}) as any as S.Schema<UpdateCloudConnectorRequest>;
-export interface UpdateCloudConnectorResponse {}
-export const UpdateCloudConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateCloudConnectorResponse",
-}) as any as S.Schema<UpdateCloudConnectorResponse>;
-export interface DeleteCloudConnectorRequest {
-  Identifier: string;
-}
-export const DeleteCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/cloud-connectors/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteCloudConnectorRequest",
-}) as any as S.Schema<DeleteCloudConnectorRequest>;
-export interface DeleteCloudConnectorResponse {}
-export const DeleteCloudConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCloudConnectorResponse",
-}) as any as S.Schema<DeleteCloudConnectorResponse>;
-export interface ListCloudConnectorsRequest {
-  Type?: CloudConnectorType;
-  LambdaArn?: string;
-  MaxResults?: number;
-  NextToken?: string;
-}
-export const ListCloudConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: S.optional(CloudConnectorType).pipe(T.HttpQuery("Type")),
-    LambdaArn: S.optional(S.String).pipe(T.HttpQuery("LambdaArn")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/cloud-connectors" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListCloudConnectorsRequest",
-}) as any as S.Schema<ListCloudConnectorsRequest>;
-export interface ConnectorItem {
-  Name: string;
-  EndpointConfig: EndpointConfig;
-  Description?: string;
-  EndpointType?: EndpointType;
-  Id?: string;
-  Type?: CloudConnectorType;
-}
-export const ConnectorItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    EndpointConfig: EndpointConfig,
-    Description: S.optional(S.String),
-    EndpointType: S.optional(EndpointType),
-    Id: S.optional(S.String),
-    Type: S.optional(CloudConnectorType),
-  }),
-).annotate({ identifier: "ConnectorItem" }) as any as S.Schema<ConnectorItem>;
-export type ConnectorList = ConnectorItem[];
-export const ConnectorList = /*@__PURE__*/ S.Array(ConnectorItem);
-export interface ListCloudConnectorsResponse {
-  Items?: ConnectorItem[];
-  NextToken?: string;
-}
-export const ListCloudConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Items: S.optional(ConnectorList),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCloudConnectorsResponse",
-}) as any as S.Schema<ListCloudConnectorsResponse>;
+export type ConnectorDestinationName = string;
+export type ConnectorDestinationDescription = string;
 export type AuthType = "OAUTH" | (string & {});
 export const AuthType = /*@__PURE__*/ S.String;
+
+export type AuthUrl = string;
+export type TokenUrl = string;
 export type TokenEndpointAuthenticationScheme =
   | "HTTP_BASIC"
   | "REQUEST_BODY_CREDENTIALS"
   | (string & {});
 export const TokenEndpointAuthenticationScheme = /*@__PURE__*/ S.String;
+
 export interface ProactiveRefreshTokenRenewal {
   enabled?: boolean;
   DaysBeforeRenewal?: number;
@@ -1094,6 +292,8 @@ export const OAuthConfig = /*@__PURE__*/ S.suspend(() =>
     proactiveRefreshTokenRenewal: S.optional(ProactiveRefreshTokenRenewal),
   }),
 ).annotate({ identifier: "OAuthConfig" }) as any as S.Schema<OAuthConfig>;
+export type SecretsManagerArn = string;
+export type SecretsManagerVersionId = string;
 export interface SecretsManager {
   arn: string;
   versionId: string;
@@ -1159,6 +359,1131 @@ export const CreateConnectorDestinationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectorDestinationResponse",
 }) as any as S.Schema<CreateConnectorDestinationResponse>;
+export type CredentialLockerName = string | redacted.Redacted<string>;
+export interface CreateCredentialLockerRequest {
+  Name?: string | redacted.Redacted<string>;
+  ClientToken?: string;
+  Tags?: { [key: string]: string | undefined };
+}
+export const CreateCredentialLockerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.optional(SensitiveString),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    Tags: S.optional(TagsMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/credential-lockers" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateCredentialLockerRequest",
+}) as any as S.Schema<CreateCredentialLockerRequest>;
+export type CredentialLockerId = string;
+export type CredentialLockerArn = string;
+export type CredentialLockerCreatedAt = Date;
+export interface CreateCredentialLockerResponse {
+  Id?: string;
+  Arn?: string;
+  CreatedAt?: Date;
+}
+export const CreateCredentialLockerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Arn: S.optional(S.String),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "CreateCredentialLockerResponse",
+}) as any as S.Schema<CreateCredentialLockerResponse>;
+export type DeliveryDestinationArn = string;
+export type DeliveryDestinationType = "KINESIS" | (string & {});
+export const DeliveryDestinationType = /*@__PURE__*/ S.String;
+
+export type DestinationName = string;
+export type DeliveryDestinationRoleArn = string;
+export type DestinationDescription = string;
+export interface CreateDestinationRequest {
+  DeliveryDestinationArn: string;
+  DeliveryDestinationType: DeliveryDestinationType;
+  Name: string;
+  RoleArn: string;
+  ClientToken?: string;
+  Description?: string;
+  Tags?: { [key: string]: string | undefined };
+}
+export const CreateDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DeliveryDestinationArn: S.String,
+    DeliveryDestinationType: DeliveryDestinationType,
+    Name: S.String,
+    RoleArn: S.String,
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    Description: S.optional(S.String),
+    Tags: S.optional(TagsMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/destinations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateDestinationRequest",
+}) as any as S.Schema<CreateDestinationRequest>;
+export interface CreateDestinationResponse {
+  Name?: string;
+}
+export const CreateDestinationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateDestinationResponse",
+}) as any as S.Schema<CreateDestinationResponse>;
+export type SmartHomeResourceType = string;
+export type SmartHomeResourceId = string;
+export type LogLevel = "DEBUG" | "ERROR" | "INFO" | "WARN" | (string & {});
+export const LogLevel = /*@__PURE__*/ S.String;
+
+export interface CreateEventLogConfigurationRequest {
+  ResourceType: string;
+  ResourceId?: string;
+  EventLogLevel: LogLevel;
+  ClientToken?: string;
+}
+export const CreateEventLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceType: S.String,
+    ResourceId: S.optional(S.String),
+    EventLogLevel: LogLevel,
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/event-log-configurations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateEventLogConfigurationRequest",
+}) as any as S.Schema<CreateEventLogConfigurationRequest>;
+export type LogConfigurationId = string;
+export interface CreateEventLogConfigurationResponse {
+  Id?: string;
+}
+export const CreateEventLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateEventLogConfigurationResponse",
+}) as any as S.Schema<CreateEventLogConfigurationResponse>;
+export type Role = "CONTROLLER" | "DEVICE" | (string & {});
+export const Role = /*@__PURE__*/ S.String;
+
+export type Owner = string | redacted.Redacted<string>;
+export type AuthMaterialString = string | redacted.Redacted<string>;
+export type AuthMaterialType =
+  | "CUSTOM_PROTOCOL_QR_BAR_CODE"
+  | "WIFI_SETUP_QR_BAR_CODE"
+  | "ZWAVE_QR_BAR_CODE"
+  | "ZIGBEE_QR_BAR_CODE"
+  | "DISCOVERED_DEVICE"
+  | "PRE_ONBOARDED_CLOUD"
+  | (string & {});
+export const AuthMaterialType = /*@__PURE__*/ S.String;
+
+export type EnableAsProvisioner = boolean;
+export type EnableAsProvisionee = boolean;
+export type TimeoutInMinutes = number;
+export interface WiFiSimpleSetupConfiguration {
+  EnableAsProvisioner?: boolean;
+  EnableAsProvisionee?: boolean;
+  TimeoutInMinutes?: number;
+}
+export const WiFiSimpleSetupConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EnableAsProvisioner: S.optional(S.Boolean),
+    EnableAsProvisionee: S.optional(S.Boolean),
+    TimeoutInMinutes: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "WiFiSimpleSetupConfiguration",
+}) as any as S.Schema<WiFiSimpleSetupConfiguration>;
+export type SerialNumber = string | redacted.Redacted<string>;
+export type Brand = string | redacted.Redacted<string>;
+export type Model = string | redacted.Redacted<string>;
+export type Name = string;
+export type CapabilityReportVersion = string;
+export type NodeId = string;
+export type EndpointId = string;
+export type DeviceType = string;
+export type DeviceTypes = string[];
+export const DeviceTypes = /*@__PURE__*/ S.Array(S.String);
+export type SchemaVersionedId = string;
+export type CapabilityName = string;
+export type CapabilityVersion = string;
+export type PropertyName = string;
+export type CapabilityReportProperties = string[];
+export const CapabilityReportProperties = /*@__PURE__*/ S.Array(S.String);
+export type ActionName = string;
+export type CapabilityReportActions = string[];
+export const CapabilityReportActions = /*@__PURE__*/ S.Array(S.String);
+export type EventName = string;
+export type CapabilityReportEvents = string[];
+export const CapabilityReportEvents = /*@__PURE__*/ S.Array(S.String);
+export interface CapabilityReportCapability {
+  id: string;
+  name: string;
+  version: string;
+  properties: string[];
+  actions: string[];
+  events: string[];
+}
+export const CapabilityReportCapability = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    version: S.String,
+    properties: CapabilityReportProperties,
+    actions: CapabilityReportActions,
+    events: CapabilityReportEvents,
+  }),
+).annotate({
+  identifier: "CapabilityReportCapability",
+}) as any as S.Schema<CapabilityReportCapability>;
+export type CapabilityReportCapabilities = CapabilityReportCapability[];
+export const CapabilityReportCapabilities = /*@__PURE__*/ S.Array(
+  CapabilityReportCapability,
+);
+export interface CapabilityReportEndpoint {
+  id: string;
+  deviceTypes: string[];
+  capabilities: CapabilityReportCapability[];
+}
+export const CapabilityReportEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    deviceTypes: DeviceTypes,
+    capabilities: CapabilityReportCapabilities,
+  }),
+).annotate({
+  identifier: "CapabilityReportEndpoint",
+}) as any as S.Schema<CapabilityReportEndpoint>;
+export type CapabilityReportEndpoints = CapabilityReportEndpoint[];
+export const CapabilityReportEndpoints = /*@__PURE__*/ S.Array(
+  CapabilityReportEndpoint,
+);
+export interface CapabilityReport {
+  version: string;
+  nodeId?: string;
+  endpoints: CapabilityReportEndpoint[];
+}
+export const CapabilityReport = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.String,
+    nodeId: S.optional(S.String),
+    endpoints: CapabilityReportEndpoints,
+  }),
+).annotate({
+  identifier: "CapabilityReport",
+}) as any as S.Schema<CapabilityReport>;
+export type SchemaVersionFormat = "AWS" | "ZCL" | "CONNECTOR" | (string & {});
+export const SchemaVersionFormat = /*@__PURE__*/ S.String;
+
+export type ExtrinsicSchemaId = string;
+export type MatterCapabilityReportClusterRevisionId = number;
+export type ValidationSchema = unknown;
+export interface CapabilitySchemaItem {
+  Format: SchemaVersionFormat;
+  CapabilityId: string;
+  ExtrinsicId: string;
+  ExtrinsicVersion: number;
+  Schema: any;
+}
+export const CapabilitySchemaItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Format: SchemaVersionFormat,
+    CapabilityId: S.String,
+    ExtrinsicId: S.String,
+    ExtrinsicVersion: S.Number,
+    Schema: S.Any,
+  }),
+).annotate({
+  identifier: "CapabilitySchemaItem",
+}) as any as S.Schema<CapabilitySchemaItem>;
+export type CapabilitySchemas = CapabilitySchemaItem[];
+export const CapabilitySchemas = /*@__PURE__*/ S.Array(CapabilitySchemaItem);
+export type Capabilities = string;
+export type Classification = string | redacted.Redacted<string>;
+export type AttributeName = string;
+export type AttributeValue = string;
+export type MetaData = { [key: string]: string | undefined };
+export const MetaData = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface CreateManagedThingRequest {
+  Role: Role;
+  Owner?: string | redacted.Redacted<string>;
+  CredentialLockerId?: string;
+  AuthenticationMaterial: string | redacted.Redacted<string>;
+  AuthenticationMaterialType: AuthMaterialType;
+  WiFiSimpleSetupConfiguration?: WiFiSimpleSetupConfiguration;
+  SerialNumber?: string | redacted.Redacted<string>;
+  Brand?: string | redacted.Redacted<string>;
+  Model?: string | redacted.Redacted<string>;
+  Name?: string;
+  CapabilityReport?: CapabilityReport;
+  CapabilitySchemas?: CapabilitySchemaItem[];
+  Capabilities?: string;
+  ClientToken?: string;
+  Classification?: string | redacted.Redacted<string>;
+  Tags?: { [key: string]: string | undefined };
+  MetaData?: { [key: string]: string | undefined };
+}
+export const CreateManagedThingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Role: Role,
+    Owner: S.optional(SensitiveString),
+    CredentialLockerId: S.optional(S.String),
+    AuthenticationMaterial: SensitiveString,
+    AuthenticationMaterialType: AuthMaterialType,
+    WiFiSimpleSetupConfiguration: S.optional(WiFiSimpleSetupConfiguration),
+    SerialNumber: S.optional(SensitiveString),
+    Brand: S.optional(SensitiveString),
+    Model: S.optional(SensitiveString),
+    Name: S.optional(S.String),
+    CapabilityReport: S.optional(CapabilityReport),
+    CapabilitySchemas: S.optional(CapabilitySchemas),
+    Capabilities: S.optional(S.String),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    Classification: S.optional(SensitiveString),
+    Tags: S.optional(TagsMap),
+    MetaData: S.optional(MetaData),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/managed-things" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateManagedThingRequest",
+}) as any as S.Schema<CreateManagedThingRequest>;
+export type ManagedThingId = string;
+export type ManagedThingArn = string;
+export type CreatedAt = Date;
+export interface CreateManagedThingResponse {
+  Id?: string;
+  Arn?: string;
+  CreatedAt?: Date;
+}
+export const CreateManagedThingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Arn: S.optional(S.String),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "CreateManagedThingResponse",
+}) as any as S.Schema<CreateManagedThingResponse>;
+export type EventType =
+  | "DEVICE_COMMAND"
+  | "DEVICE_COMMAND_REQUEST"
+  | "DEVICE_DISCOVERY_STATUS"
+  | "DEVICE_EVENT"
+  | "DEVICE_LIFE_CYCLE"
+  | "DEVICE_STATE"
+  | "DEVICE_OTA"
+  | "DEVICE_WSS"
+  | "CONNECTOR_ASSOCIATION"
+  | "ACCOUNT_ASSOCIATION"
+  | "CONNECTOR_ERROR_REPORT"
+  | (string & {});
+export const EventType = /*@__PURE__*/ S.String;
+
+export interface CreateNotificationConfigurationRequest {
+  EventType: EventType;
+  DestinationName: string;
+  ClientToken?: string;
+  Tags?: { [key: string]: string | undefined };
+}
+export const CreateNotificationConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      EventType: EventType,
+      DestinationName: S.String,
+      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+      Tags: S.optional(TagsMap),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/notification-configurations" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "CreateNotificationConfigurationRequest",
+}) as any as S.Schema<CreateNotificationConfigurationRequest>;
+export interface CreateNotificationConfigurationResponse {
+  EventType?: EventType;
+}
+export const CreateNotificationConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ EventType: S.optional(EventType) }),
+).annotate({
+  identifier: "CreateNotificationConfigurationResponse",
+}) as any as S.Schema<CreateNotificationConfigurationResponse>;
+export type OtaDescription = string;
+export type S3Url = string;
+export type OtaProtocol = "HTTP" | (string & {});
+export const OtaProtocol = /*@__PURE__*/ S.String;
+
+export type Target = string[];
+export const Target = /*@__PURE__*/ S.Array(S.String);
+export type OtaTaskConfigurationId = string;
+export type OtaMechanism = "PUSH" | (string & {});
+export const OtaMechanism = /*@__PURE__*/ S.String;
+
+export type OtaType = "ONE_TIME" | "CONTINUOUS" | (string & {});
+export const OtaType = /*@__PURE__*/ S.String;
+
+export type OtaTargetQueryString = string;
+export type SchedulingConfigEndBehavior =
+  | "STOP_ROLLOUT"
+  | "CANCEL"
+  | "FORCE_CANCEL"
+  | (string & {});
+export const SchedulingConfigEndBehavior = /*@__PURE__*/ S.String;
+
+export type EndTime = string;
+export type DurationInMinutes = number;
+export type StartTime = string;
+export interface ScheduleMaintenanceWindow {
+  DurationInMinutes?: number;
+  StartTime?: string;
+}
+export const ScheduleMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DurationInMinutes: S.optional(S.Number),
+    StartTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ScheduleMaintenanceWindow",
+}) as any as S.Schema<ScheduleMaintenanceWindow>;
+export type ScheduleMaintenanceWindowList = ScheduleMaintenanceWindow[];
+export const ScheduleMaintenanceWindowList = /*@__PURE__*/ S.Array(
+  ScheduleMaintenanceWindow,
+);
+export type ScheduleStartTime = string;
+export interface OtaTaskSchedulingConfig {
+  EndBehavior?: SchedulingConfigEndBehavior;
+  EndTime?: string;
+  MaintenanceWindows?: ScheduleMaintenanceWindow[];
+  StartTime?: string;
+}
+export const OtaTaskSchedulingConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EndBehavior: S.optional(SchedulingConfigEndBehavior),
+    EndTime: S.optional(S.String),
+    MaintenanceWindows: S.optional(ScheduleMaintenanceWindowList),
+    StartTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OtaTaskSchedulingConfig",
+}) as any as S.Schema<OtaTaskSchedulingConfig>;
+export type RetryCriteriaFailureType =
+  | "FAILED"
+  | "TIMED_OUT"
+  | "ALL"
+  | (string & {});
+export const RetryCriteriaFailureType = /*@__PURE__*/ S.String;
+
+export type MinNumberOfRetries = number;
+export interface RetryConfigCriteria {
+  FailureType?: RetryCriteriaFailureType;
+  MinNumberOfRetries?: number;
+}
+export const RetryConfigCriteria = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FailureType: S.optional(RetryCriteriaFailureType),
+    MinNumberOfRetries: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RetryConfigCriteria",
+}) as any as S.Schema<RetryConfigCriteria>;
+export type RetryConfigCriteriaList = RetryConfigCriteria[];
+export const RetryConfigCriteriaList =
+  /*@__PURE__*/ S.Array(RetryConfigCriteria);
+export interface OtaTaskExecutionRetryConfig {
+  RetryConfigCriteria?: RetryConfigCriteria[];
+}
+export const OtaTaskExecutionRetryConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RetryConfigCriteria: S.optional(RetryConfigCriteriaList) }),
+).annotate({
+  identifier: "OtaTaskExecutionRetryConfig",
+}) as any as S.Schema<OtaTaskExecutionRetryConfig>;
+export interface CreateOtaTaskRequest {
+  Description?: string;
+  S3Url: string;
+  Protocol?: OtaProtocol;
+  Target?: string[];
+  TaskConfigurationId?: string;
+  OtaMechanism?: OtaMechanism;
+  OtaType: OtaType;
+  OtaTargetQueryString?: string;
+  ClientToken?: string;
+  OtaSchedulingConfig?: OtaTaskSchedulingConfig;
+  OtaTaskExecutionRetryConfig?: OtaTaskExecutionRetryConfig;
+  Tags?: { [key: string]: string | undefined };
+}
+export const CreateOtaTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Description: S.optional(S.String),
+    S3Url: S.String,
+    Protocol: S.optional(OtaProtocol),
+    Target: S.optional(Target),
+    TaskConfigurationId: S.optional(S.String),
+    OtaMechanism: S.optional(OtaMechanism),
+    OtaType: OtaType,
+    OtaTargetQueryString: S.optional(S.String),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    OtaSchedulingConfig: S.optional(OtaTaskSchedulingConfig),
+    OtaTaskExecutionRetryConfig: S.optional(OtaTaskExecutionRetryConfig),
+    Tags: S.optional(TagsMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ota-tasks" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateOtaTaskRequest",
+}) as any as S.Schema<CreateOtaTaskRequest>;
+export type OtaTaskId = string;
+export type OtaTaskArn = string;
+export interface CreateOtaTaskResponse {
+  TaskId?: string;
+  TaskArn?: string;
+  Description?: string;
+}
+export const CreateOtaTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TaskId: S.optional(S.String),
+    TaskArn: S.optional(S.String),
+    Description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateOtaTaskResponse",
+}) as any as S.Schema<CreateOtaTaskResponse>;
+export type OtaTaskConfigurationName = string | redacted.Redacted<string>;
+export type AbortCriteriaAction = "CANCEL" | (string & {});
+export const AbortCriteriaAction = /*@__PURE__*/ S.String;
+
+export type AbortCriteriaFailureType =
+  | "FAILED"
+  | "REJECTED"
+  | "TIMED_OUT"
+  | "ALL"
+  | (string & {});
+export const AbortCriteriaFailureType = /*@__PURE__*/ S.String;
+
+export type MinNumberOfExecutedThings = number;
+export type ThresholdPercentage = number;
+export interface AbortConfigCriteria {
+  Action?: AbortCriteriaAction;
+  FailureType?: AbortCriteriaFailureType;
+  MinNumberOfExecutedThings?: number;
+  ThresholdPercentage?: number;
+}
+export const AbortConfigCriteria = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Action: S.optional(AbortCriteriaAction),
+    FailureType: S.optional(AbortCriteriaFailureType),
+    MinNumberOfExecutedThings: S.optional(S.Number),
+    ThresholdPercentage: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AbortConfigCriteria",
+}) as any as S.Schema<AbortConfigCriteria>;
+export type AbortConfigCriteriaList = AbortConfigCriteria[];
+export const AbortConfigCriteriaList =
+  /*@__PURE__*/ S.Array(AbortConfigCriteria);
+export interface OtaTaskAbortConfig {
+  AbortConfigCriteriaList?: AbortConfigCriteria[];
+}
+export const OtaTaskAbortConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AbortConfigCriteriaList: S.optional(AbortConfigCriteriaList) }),
+).annotate({
+  identifier: "OtaTaskAbortConfig",
+}) as any as S.Schema<OtaTaskAbortConfig>;
+export type BaseRatePerMinute = number;
+export type IncrementFactor = number;
+export type NumberOfNotifiedThings = number;
+export type NumberOfSucceededThings = number;
+export interface RolloutRateIncreaseCriteria {
+  numberOfNotifiedThings?: number;
+  numberOfSucceededThings?: number;
+}
+export const RolloutRateIncreaseCriteria = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    numberOfNotifiedThings: S.optional(S.Number),
+    numberOfSucceededThings: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RolloutRateIncreaseCriteria",
+}) as any as S.Schema<RolloutRateIncreaseCriteria>;
+export interface ExponentialRolloutRate {
+  BaseRatePerMinute?: number;
+  IncrementFactor?: number;
+  RateIncreaseCriteria?: RolloutRateIncreaseCriteria;
+}
+export const ExponentialRolloutRate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BaseRatePerMinute: S.optional(S.Number),
+    IncrementFactor: S.optional(S.Number),
+    RateIncreaseCriteria: S.optional(RolloutRateIncreaseCriteria),
+  }),
+).annotate({
+  identifier: "ExponentialRolloutRate",
+}) as any as S.Schema<ExponentialRolloutRate>;
+export type MaximumPerMinute = number;
+export interface OtaTaskExecutionRolloutConfig {
+  ExponentialRolloutRate?: ExponentialRolloutRate;
+  MaximumPerMinute?: number;
+}
+export const OtaTaskExecutionRolloutConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExponentialRolloutRate: S.optional(ExponentialRolloutRate),
+    MaximumPerMinute: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "OtaTaskExecutionRolloutConfig",
+}) as any as S.Schema<OtaTaskExecutionRolloutConfig>;
+export type InProgressTimeoutInMinutes = number;
+export interface OtaTaskTimeoutConfig {
+  InProgressTimeoutInMinutes?: number;
+}
+export const OtaTaskTimeoutConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ InProgressTimeoutInMinutes: S.optional(S.Number) }),
+).annotate({
+  identifier: "OtaTaskTimeoutConfig",
+}) as any as S.Schema<OtaTaskTimeoutConfig>;
+export interface PushConfig {
+  AbortConfig?: OtaTaskAbortConfig;
+  RolloutConfig?: OtaTaskExecutionRolloutConfig;
+  TimeoutConfig?: OtaTaskTimeoutConfig;
+}
+export const PushConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AbortConfig: S.optional(OtaTaskAbortConfig),
+    RolloutConfig: S.optional(OtaTaskExecutionRolloutConfig),
+    TimeoutConfig: S.optional(OtaTaskTimeoutConfig),
+  }),
+).annotate({ identifier: "PushConfig" }) as any as S.Schema<PushConfig>;
+export interface CreateOtaTaskConfigurationRequest {
+  Description?: string;
+  Name?: string | redacted.Redacted<string>;
+  PushConfig?: PushConfig;
+  ClientToken?: string;
+}
+export const CreateOtaTaskConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Description: S.optional(S.String),
+    Name: S.optional(SensitiveString),
+    PushConfig: S.optional(PushConfig),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/ota-task-configurations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateOtaTaskConfigurationRequest",
+}) as any as S.Schema<CreateOtaTaskConfigurationRequest>;
+export interface CreateOtaTaskConfigurationResponse {
+  TaskConfigurationId?: string;
+}
+export const CreateOtaTaskConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TaskConfigurationId: S.optional(S.String) }),
+).annotate({
+  identifier: "CreateOtaTaskConfigurationResponse",
+}) as any as S.Schema<CreateOtaTaskConfigurationResponse>;
+export type ProvisioningType = "FLEET_PROVISIONING" | "JITR" | (string & {});
+export const ProvisioningType = /*@__PURE__*/ S.String;
+
+export type CaCertificate = string | redacted.Redacted<string>;
+export type ClaimCertificate = string | redacted.Redacted<string>;
+export type ProvisioningProfileName = string;
+export interface CreateProvisioningProfileRequest {
+  ProvisioningType: ProvisioningType;
+  CaCertificate?: string | redacted.Redacted<string>;
+  ClaimCertificate?: string | redacted.Redacted<string>;
+  Name?: string;
+  ClientToken?: string;
+  Tags?: { [key: string]: string | undefined };
+}
+export const CreateProvisioningProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ProvisioningType: ProvisioningType,
+    CaCertificate: S.optional(SensitiveString),
+    ClaimCertificate: S.optional(SensitiveString),
+    Name: S.optional(S.String),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    Tags: S.optional(TagsMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/provisioning-profiles" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateProvisioningProfileRequest",
+}) as any as S.Schema<CreateProvisioningProfileRequest>;
+export type ProvisioningProfileArn = string;
+export type ProvisioningProfileId = string;
+export type ProvisioningProfileStatus =
+  | "CREATE_IN_PROGRESS"
+  | "CREATE_FAILED"
+  | "CREATED"
+  | "DELETE_IN_PROGRESS"
+  | "DELETE_FAILED"
+  | (string & {});
+export const ProvisioningProfileStatus = /*@__PURE__*/ S.String;
+
+export type ClaimCertificatePrivateKey = string | redacted.Redacted<string>;
+export interface CreateProvisioningProfileResponse {
+  Arn?: string;
+  Name?: string;
+  ProvisioningType?: ProvisioningType;
+  Id?: string;
+  Status?: ProvisioningProfileStatus;
+  ClaimCertificate?: string | redacted.Redacted<string>;
+  ClaimCertificatePrivateKey?: string | redacted.Redacted<string>;
+}
+export const CreateProvisioningProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    Name: S.optional(S.String),
+    ProvisioningType: S.optional(ProvisioningType),
+    Id: S.optional(S.String),
+    Status: S.optional(ProvisioningProfileStatus),
+    ClaimCertificate: S.optional(SensitiveString),
+    ClaimCertificatePrivateKey: S.optional(SensitiveString),
+  }),
+).annotate({
+  identifier: "CreateProvisioningProfileResponse",
+}) as any as S.Schema<CreateProvisioningProfileResponse>;
+export interface DeleteAccountAssociationRequest {
+  AccountAssociationId: string;
+}
+export const DeleteAccountAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountAssociationId: S.String.pipe(T.HttpLabel("AccountAssociationId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/account-associations/{AccountAssociationId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteAccountAssociationRequest",
+}) as any as S.Schema<DeleteAccountAssociationRequest>;
+export interface DeleteAccountAssociationResponse {}
+export const DeleteAccountAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAccountAssociationResponse",
+}) as any as S.Schema<DeleteAccountAssociationResponse>;
+export interface DeleteCloudConnectorRequest {
+  Identifier: string;
+}
+export const DeleteCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/cloud-connectors/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteCloudConnectorRequest",
+}) as any as S.Schema<DeleteCloudConnectorRequest>;
+export interface DeleteCloudConnectorResponse {}
+export const DeleteCloudConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteCloudConnectorResponse",
+}) as any as S.Schema<DeleteCloudConnectorResponse>;
+export interface DeleteConnectorDestinationRequest {
+  Identifier: string;
+}
+export const DeleteConnectorDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/connector-destinations/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteConnectorDestinationRequest",
+}) as any as S.Schema<DeleteConnectorDestinationRequest>;
+export interface DeleteConnectorDestinationResponse {}
+export const DeleteConnectorDestinationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteConnectorDestinationResponse",
+}) as any as S.Schema<DeleteConnectorDestinationResponse>;
+export interface DeleteCredentialLockerRequest {
+  Identifier: string;
+}
+export const DeleteCredentialLockerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/credential-lockers/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteCredentialLockerRequest",
+}) as any as S.Schema<DeleteCredentialLockerRequest>;
+export interface DeleteCredentialLockerResponse {}
+export const DeleteCredentialLockerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteCredentialLockerResponse",
+}) as any as S.Schema<DeleteCredentialLockerResponse>;
+export interface DeleteDestinationRequest {
+  Name: string;
+}
+export const DeleteDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/destinations/{Name}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteDestinationRequest",
+}) as any as S.Schema<DeleteDestinationRequest>;
+export interface DeleteDestinationResponse {}
+export const DeleteDestinationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteDestinationResponse",
+}) as any as S.Schema<DeleteDestinationResponse>;
+export interface DeleteEventLogConfigurationRequest {
+  Id: string;
+}
+export const DeleteEventLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/event-log-configurations/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteEventLogConfigurationRequest",
+}) as any as S.Schema<DeleteEventLogConfigurationRequest>;
+export interface DeleteEventLogConfigurationResponse {}
+export const DeleteEventLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteEventLogConfigurationResponse",
+}) as any as S.Schema<DeleteEventLogConfigurationResponse>;
+export interface DeleteManagedThingRequest {
+  Identifier: string;
+  Force?: boolean;
+}
+export const DeleteManagedThingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+    Force: S.optional(S.Boolean).pipe(T.HttpQuery("Force")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/managed-things/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteManagedThingRequest",
+}) as any as S.Schema<DeleteManagedThingRequest>;
+export interface DeleteManagedThingResponse {}
+export const DeleteManagedThingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteManagedThingResponse",
+}) as any as S.Schema<DeleteManagedThingResponse>;
+export interface DeleteNotificationConfigurationRequest {
+  EventType: EventType;
+}
+export const DeleteNotificationConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ EventType: EventType.pipe(T.HttpLabel("EventType")) }).pipe(
+      T.all(
+        T.Http({
+          method: "DELETE",
+          uri: "/notification-configurations/{EventType}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteNotificationConfigurationRequest",
+}) as any as S.Schema<DeleteNotificationConfigurationRequest>;
+export interface DeleteNotificationConfigurationResponse {}
+export const DeleteNotificationConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteNotificationConfigurationResponse",
+}) as any as S.Schema<DeleteNotificationConfigurationResponse>;
+export interface DeleteOtaTaskRequest {
+  Identifier: string;
+}
+export const DeleteOtaTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/ota-tasks/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteOtaTaskRequest",
+}) as any as S.Schema<DeleteOtaTaskRequest>;
+export interface DeleteOtaTaskResponse {}
+export const DeleteOtaTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteOtaTaskResponse",
+}) as any as S.Schema<DeleteOtaTaskResponse>;
+export interface DeleteOtaTaskConfigurationRequest {
+  Identifier: string;
+}
+export const DeleteOtaTaskConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/ota-task-configurations/{Identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteOtaTaskConfigurationRequest",
+}) as any as S.Schema<DeleteOtaTaskConfigurationRequest>;
+export interface DeleteOtaTaskConfigurationResponse {}
+export const DeleteOtaTaskConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteOtaTaskConfigurationResponse",
+}) as any as S.Schema<DeleteOtaTaskConfigurationResponse>;
+export interface DeleteProvisioningProfileRequest {
+  Identifier: string;
+}
+export const DeleteProvisioningProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/provisioning-profiles/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteProvisioningProfileRequest",
+}) as any as S.Schema<DeleteProvisioningProfileRequest>;
+export interface DeleteProvisioningProfileResponse {}
+export const DeleteProvisioningProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteProvisioningProfileResponse",
+}) as any as S.Schema<DeleteProvisioningProfileResponse>;
+export interface DeregisterAccountAssociationRequest {
+  ManagedThingId: string;
+  AccountAssociationId: string;
+}
+export const DeregisterAccountAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ManagedThingId: S.String, AccountAssociationId: S.String }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/managed-thing-associations/deregister" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeregisterAccountAssociationRequest",
+}) as any as S.Schema<DeregisterAccountAssociationRequest>;
+export interface DeregisterAccountAssociationResponse {}
+export const DeregisterAccountAssociationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeregisterAccountAssociationResponse",
+}) as any as S.Schema<DeregisterAccountAssociationResponse>;
+export interface GetAccountAssociationRequest {
+  AccountAssociationId: string;
+}
+export const GetAccountAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountAssociationId: S.String.pipe(T.HttpLabel("AccountAssociationId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/account-associations/{AccountAssociationId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetAccountAssociationRequest",
+}) as any as S.Schema<GetAccountAssociationRequest>;
+export type AccountAssociationErrorMessage = string;
+export interface GetAccountAssociationResponse {
+  AccountAssociationId: string;
+  AssociationState: AssociationState;
+  ErrorMessage?: string;
+  ConnectorDestinationId?: string;
+  Name?: string;
+  Description?: string;
+  Arn?: string;
+  OAuthAuthorizationUrl: string | redacted.Redacted<string>;
+  Tags?: { [key: string]: string | undefined };
+  GeneralAuthorization?: GeneralAuthorizationName;
+}
+export const GetAccountAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountAssociationId: S.String,
+    AssociationState: AssociationState,
+    ErrorMessage: S.optional(S.String),
+    ConnectorDestinationId: S.optional(S.String),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    Arn: S.optional(S.String),
+    OAuthAuthorizationUrl: SensitiveString,
+    Tags: S.optional(TagsMap),
+    GeneralAuthorization: S.optional(GeneralAuthorizationName),
+  }),
+).annotate({
+  identifier: "GetAccountAssociationResponse",
+}) as any as S.Schema<GetAccountAssociationResponse>;
+export interface GetCloudConnectorRequest {
+  Identifier: string;
+}
+export const GetCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/cloud-connectors/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetCloudConnectorRequest",
+}) as any as S.Schema<GetCloudConnectorRequest>;
+export type CloudConnectorType = "LISTED" | "UNLISTED" | (string & {});
+export const CloudConnectorType = /*@__PURE__*/ S.String;
+
+export interface GetCloudConnectorResponse {
+  Name: string;
+  EndpointConfig: EndpointConfig;
+  Description?: string;
+  EndpointType?: EndpointType;
+  Id?: string;
+  Type?: CloudConnectorType;
+}
+export const GetCloudConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    EndpointConfig: EndpointConfig,
+    Description: S.optional(S.String),
+    EndpointType: S.optional(EndpointType),
+    Id: S.optional(S.String),
+    Type: S.optional(CloudConnectorType),
+  }),
+).annotate({
+  identifier: "GetCloudConnectorResponse",
+}) as any as S.Schema<GetCloudConnectorResponse>;
 export interface GetConnectorDestinationRequest {
   Identifier: string;
 }
@@ -1176,6 +1501,7 @@ export const GetConnectorDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConnectorDestinationRequest",
 }) as any as S.Schema<GetConnectorDestinationRequest>;
+export type OAuthCompleteRedirectUrl = string;
 export interface GetConnectorDestinationResponse {
   Name?: string;
   Description?: string;
@@ -1200,82 +1526,13 @@ export const GetConnectorDestinationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConnectorDestinationResponse",
 }) as any as S.Schema<GetConnectorDestinationResponse>;
-export interface OAuthUpdate {
-  oAuthCompleteRedirectUrl?: string;
-  proactiveRefreshTokenRenewal?: ProactiveRefreshTokenRenewal;
-}
-export const OAuthUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oAuthCompleteRedirectUrl: S.optional(S.String),
-    proactiveRefreshTokenRenewal: S.optional(ProactiveRefreshTokenRenewal),
-  }),
-).annotate({ identifier: "OAuthUpdate" }) as any as S.Schema<OAuthUpdate>;
-export interface GeneralAuthorizationUpdate {
-  AuthMaterialsToAdd?: AuthMaterial[];
-  AuthMaterialsToUpdate?: AuthMaterial[];
-}
-export const GeneralAuthorizationUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AuthMaterialsToAdd: S.optional(AuthMaterials),
-    AuthMaterialsToUpdate: S.optional(AuthMaterials),
-  }),
-).annotate({
-  identifier: "GeneralAuthorizationUpdate",
-}) as any as S.Schema<GeneralAuthorizationUpdate>;
-export interface AuthConfigUpdate {
-  oAuthUpdate?: OAuthUpdate;
-  GeneralAuthorizationUpdate?: GeneralAuthorizationUpdate;
-}
-export const AuthConfigUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oAuthUpdate: S.optional(OAuthUpdate),
-    GeneralAuthorizationUpdate: S.optional(GeneralAuthorizationUpdate),
-  }),
-).annotate({
-  identifier: "AuthConfigUpdate",
-}) as any as S.Schema<AuthConfigUpdate>;
-export interface UpdateConnectorDestinationRequest {
-  Identifier: string;
-  Description?: string;
-  Name?: string;
-  AuthType?: AuthType;
-  AuthConfig?: AuthConfigUpdate;
-  SecretsManager?: SecretsManager;
-}
-export const UpdateConnectorDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    Description: S.optional(S.String),
-    Name: S.optional(S.String),
-    AuthType: S.optional(AuthType),
-    AuthConfig: S.optional(AuthConfigUpdate),
-    SecretsManager: S.optional(SecretsManager),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/connector-destinations/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateConnectorDestinationRequest",
-}) as any as S.Schema<UpdateConnectorDestinationRequest>;
-export interface UpdateConnectorDestinationResponse {}
-export const UpdateConnectorDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateConnectorDestinationResponse",
-}) as any as S.Schema<UpdateConnectorDestinationResponse>;
-export interface DeleteConnectorDestinationRequest {
+export interface GetCredentialLockerRequest {
   Identifier: string;
 }
-export const DeleteConnectorDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetCredentialLockerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
     T.all(
-      T.Http({ method: "DELETE", uri: "/connector-destinations/{Identifier}" }),
+      T.Http({ method: "GET", uri: "/credential-lockers/{Identifier}" }),
       svc,
       auth,
       proto,
@@ -1284,14 +1541,1061 @@ export const DeleteConnectorDestinationRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "DeleteConnectorDestinationRequest",
-}) as any as S.Schema<DeleteConnectorDestinationRequest>;
-export interface DeleteConnectorDestinationResponse {}
-export const DeleteConnectorDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  identifier: "GetCredentialLockerRequest",
+}) as any as S.Schema<GetCredentialLockerRequest>;
+export interface GetCredentialLockerResponse {
+  Id?: string;
+  Arn?: string;
+  Name?: string | redacted.Redacted<string>;
+  CreatedAt?: Date;
+  Tags?: { [key: string]: string | undefined };
+}
+export const GetCredentialLockerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Arn: S.optional(S.String),
+    Name: S.optional(SensitiveString),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Tags: S.optional(TagsMap),
+  }),
 ).annotate({
-  identifier: "DeleteConnectorDestinationResponse",
-}) as any as S.Schema<DeleteConnectorDestinationResponse>;
+  identifier: "GetCredentialLockerResponse",
+}) as any as S.Schema<GetCredentialLockerResponse>;
+export interface GetCustomEndpointRequest {}
+export const GetCustomEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/custom-endpoint" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetCustomEndpointRequest",
+}) as any as S.Schema<GetCustomEndpointRequest>;
+export type EndpointAddress = string;
+export interface GetCustomEndpointResponse {
+  EndpointAddress: string;
+}
+export const GetCustomEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EndpointAddress: S.String }),
+).annotate({
+  identifier: "GetCustomEndpointResponse",
+}) as any as S.Schema<GetCustomEndpointResponse>;
+export interface GetDefaultEncryptionConfigurationRequest {}
+export const GetDefaultEncryptionConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({}).pipe(
+      T.all(
+        T.Http({ method: "GET", uri: "/configuration/account/encryption" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetDefaultEncryptionConfigurationRequest",
+}) as any as S.Schema<GetDefaultEncryptionConfigurationRequest>;
+export type ConfigurationErrorCode = string;
+export type ConfigurationErrorMessage = string;
+export interface ConfigurationError {
+  code?: string;
+  message?: string;
+}
+export const ConfigurationError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
+).annotate({
+  identifier: "ConfigurationError",
+}) as any as S.Schema<ConfigurationError>;
+export type ConfigurationState =
+  | "ENABLED"
+  | "UPDATE_IN_PROGRESS"
+  | "UPDATE_FAILED"
+  | (string & {});
+export const ConfigurationState = /*@__PURE__*/ S.String;
+
+export interface ConfigurationStatus {
+  error?: ConfigurationError;
+  state: ConfigurationState;
+}
+export const ConfigurationStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    error: S.optional(ConfigurationError),
+    state: ConfigurationState,
+  }),
+).annotate({
+  identifier: "ConfigurationStatus",
+}) as any as S.Schema<ConfigurationStatus>;
+export type EncryptionType =
+  | "MANAGED_INTEGRATIONS_DEFAULT_ENCRYPTION"
+  | "CUSTOMER_KEY_ENCRYPTION"
+  | (string & {});
+export const EncryptionType = /*@__PURE__*/ S.String;
+
+export type KmsKeyArn = string;
+export interface GetDefaultEncryptionConfigurationResponse {
+  configurationStatus: ConfigurationStatus;
+  encryptionType: EncryptionType;
+  kmsKeyArn?: string;
+}
+export const GetDefaultEncryptionConfigurationResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      configurationStatus: ConfigurationStatus,
+      encryptionType: EncryptionType,
+      kmsKeyArn: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GetDefaultEncryptionConfigurationResponse",
+  }) as any as S.Schema<GetDefaultEncryptionConfigurationResponse>;
+export interface GetDestinationRequest {
+  Name: string;
+}
+export const GetDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/destinations/{Name}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetDestinationRequest",
+}) as any as S.Schema<GetDestinationRequest>;
+export type DestinationCreatedAt = Date;
+export type DestinationUpdatedAt = Date;
+export interface GetDestinationResponse {
+  Description?: string;
+  DeliveryDestinationArn?: string;
+  DeliveryDestinationType?: DeliveryDestinationType;
+  Name?: string;
+  RoleArn?: string;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+  Tags?: { [key: string]: string | undefined };
+}
+export const GetDestinationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Description: S.optional(S.String),
+    DeliveryDestinationArn: S.optional(S.String),
+    DeliveryDestinationType: S.optional(DeliveryDestinationType),
+    Name: S.optional(S.String),
+    RoleArn: S.optional(S.String),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Tags: S.optional(TagsMap),
+  }),
+).annotate({
+  identifier: "GetDestinationResponse",
+}) as any as S.Schema<GetDestinationResponse>;
+export type DeviceDiscoveryId = string;
+export interface GetDeviceDiscoveryRequest {
+  Identifier: string;
+}
+export const GetDeviceDiscoveryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/device-discoveries/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetDeviceDiscoveryRequest",
+}) as any as S.Schema<GetDeviceDiscoveryRequest>;
+export type DeviceDiscoveryArn = string;
+export type DiscoveryType =
+  | "ZWAVE"
+  | "ZIGBEE"
+  | "CLOUD"
+  | "CUSTOM"
+  | "CONTROLLER_CAPABILITY_REDISCOVERY"
+  | (string & {});
+export const DiscoveryType = /*@__PURE__*/ S.String;
+
+export type DeviceDiscoveryStatus =
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "TIMED_OUT"
+  | (string & {});
+export const DeviceDiscoveryStatus = /*@__PURE__*/ S.String;
+
+export type DiscoveryStartedAt = Date;
+export type ConnectorAssociationId = string;
+export type DiscoveryFinishedAt = Date;
+export interface GetDeviceDiscoveryResponse {
+  Id: string;
+  Arn: string;
+  DiscoveryType: DiscoveryType;
+  Status: DeviceDiscoveryStatus;
+  StartedAt: Date;
+  ControllerId?: string;
+  ConnectorAssociationId?: string;
+  AccountAssociationId?: string;
+  FinishedAt?: Date;
+  Tags?: { [key: string]: string | undefined };
+}
+export const GetDeviceDiscoveryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.String,
+    Arn: S.String,
+    DiscoveryType: DiscoveryType,
+    Status: DeviceDiscoveryStatus,
+    StartedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ControllerId: S.optional(S.String),
+    ConnectorAssociationId: S.optional(S.String),
+    AccountAssociationId: S.optional(S.String),
+    FinishedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Tags: S.optional(TagsMap),
+  }),
+).annotate({
+  identifier: "GetDeviceDiscoveryResponse",
+}) as any as S.Schema<GetDeviceDiscoveryResponse>;
+export interface GetEventLogConfigurationRequest {
+  Id: string;
+}
+export const GetEventLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/event-log-configurations/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetEventLogConfigurationRequest",
+}) as any as S.Schema<GetEventLogConfigurationRequest>;
+export interface GetEventLogConfigurationResponse {
+  Id?: string;
+  ResourceType?: string;
+  ResourceId?: string;
+  EventLogLevel?: LogLevel;
+}
+export const GetEventLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    ResourceId: S.optional(S.String),
+    EventLogLevel: S.optional(LogLevel),
+  }),
+).annotate({
+  identifier: "GetEventLogConfigurationResponse",
+}) as any as S.Schema<GetEventLogConfigurationResponse>;
+export interface GetHubConfigurationRequest {}
+export const GetHubConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/hub-configuration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetHubConfigurationRequest",
+}) as any as S.Schema<GetHubConfigurationRequest>;
+export type HubTokenTimerExpirySettingInSeconds = number;
+export type HubConfigurationUpdatedAt = Date;
+export interface GetHubConfigurationResponse {
+  HubTokenTimerExpirySettingInSeconds?: number;
+  UpdatedAt?: Date;
+}
+export const GetHubConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    HubTokenTimerExpirySettingInSeconds: S.optional(S.Number),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "GetHubConfigurationResponse",
+}) as any as S.Schema<GetHubConfigurationResponse>;
+export interface GetManagedThingRequest {
+  Identifier: string;
+}
+export const GetManagedThingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/managed-things/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetManagedThingRequest",
+}) as any as S.Schema<GetManagedThingRequest>;
+export type AdvertisedProductId = string;
+export type ProvisioningStatus =
+  | "UNASSOCIATED"
+  | "PRE_ASSOCIATED"
+  | "DISCOVERED"
+  | "ACTIVATED"
+  | "DELETION_FAILED"
+  | "DELETE_IN_PROGRESS"
+  | "ISOLATED"
+  | "DELETED"
+  | (string & {});
+export const ProvisioningStatus = /*@__PURE__*/ S.String;
+
+export type UniversalProductCode = string | redacted.Redacted<string>;
+export type InternationalArticleNumber = string | redacted.Redacted<string>;
+export type ConnectorPolicyId = string;
+export type ConnectorDeviceId = string | redacted.Redacted<string>;
+export type DeviceSpecificKey = string | redacted.Redacted<string>;
+export type MacAddress = string | redacted.Redacted<string>;
+export type ParentControllerId = string;
+export type UpdatedAt = Date;
+export type SetupAt = Date;
+export type HubNetworkMode =
+  | "STANDARD"
+  | "NETWORK_WIDE_EXCLUSION"
+  | (string & {});
+export const HubNetworkMode = /*@__PURE__*/ S.String;
+
+export interface GetManagedThingResponse {
+  Id?: string;
+  Arn?: string;
+  Owner?: string | redacted.Redacted<string>;
+  CredentialLockerId?: string;
+  AdvertisedProductId?: string;
+  Role?: Role;
+  ProvisioningStatus?: ProvisioningStatus;
+  Name?: string;
+  Model?: string | redacted.Redacted<string>;
+  Brand?: string | redacted.Redacted<string>;
+  SerialNumber?: string | redacted.Redacted<string>;
+  UniversalProductCode?: string | redacted.Redacted<string>;
+  InternationalArticleNumber?: string | redacted.Redacted<string>;
+  ConnectorPolicyId?: string;
+  ConnectorDestinationId?: string;
+  ConnectorDeviceId?: string | redacted.Redacted<string>;
+  DeviceSpecificKey?: string | redacted.Redacted<string>;
+  MacAddress?: string | redacted.Redacted<string>;
+  ParentControllerId?: string;
+  Classification?: string | redacted.Redacted<string>;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+  ActivatedAt?: Date;
+  HubNetworkMode?: HubNetworkMode;
+  MetaData?: { [key: string]: string | undefined };
+  Tags?: { [key: string]: string | undefined };
+  WiFiSimpleSetupConfiguration?: WiFiSimpleSetupConfiguration;
+}
+export const GetManagedThingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    Arn: S.optional(S.String),
+    Owner: S.optional(SensitiveString),
+    CredentialLockerId: S.optional(S.String),
+    AdvertisedProductId: S.optional(S.String),
+    Role: S.optional(Role),
+    ProvisioningStatus: S.optional(ProvisioningStatus),
+    Name: S.optional(S.String),
+    Model: S.optional(SensitiveString),
+    Brand: S.optional(SensitiveString),
+    SerialNumber: S.optional(SensitiveString),
+    UniversalProductCode: S.optional(SensitiveString),
+    InternationalArticleNumber: S.optional(SensitiveString),
+    ConnectorPolicyId: S.optional(S.String),
+    ConnectorDestinationId: S.optional(S.String),
+    ConnectorDeviceId: S.optional(SensitiveString),
+    DeviceSpecificKey: S.optional(SensitiveString),
+    MacAddress: S.optional(SensitiveString),
+    ParentControllerId: S.optional(S.String),
+    Classification: S.optional(SensitiveString),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    ActivatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    HubNetworkMode: S.optional(HubNetworkMode),
+    MetaData: S.optional(MetaData),
+    Tags: S.optional(TagsMap),
+    WiFiSimpleSetupConfiguration: S.optional(WiFiSimpleSetupConfiguration),
+  }),
+).annotate({
+  identifier: "GetManagedThingResponse",
+}) as any as S.Schema<GetManagedThingResponse>;
+export interface GetManagedThingCapabilitiesRequest {
+  Identifier: string;
+}
+export const GetManagedThingCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/managed-things-capabilities/{Identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetManagedThingCapabilitiesRequest",
+}) as any as S.Schema<GetManagedThingCapabilitiesRequest>;
+export interface GetManagedThingCapabilitiesResponse {
+  ManagedThingId?: string;
+  Capabilities?: string;
+  CapabilityReport?: CapabilityReport;
+}
+export const GetManagedThingCapabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ManagedThingId: S.optional(S.String),
+    Capabilities: S.optional(S.String),
+    CapabilityReport: S.optional(CapabilityReport),
+  }),
+).annotate({
+  identifier: "GetManagedThingCapabilitiesResponse",
+}) as any as S.Schema<GetManagedThingCapabilitiesResponse>;
+export interface GetManagedThingCertificateRequest {
+  Identifier: string;
+}
+export const GetManagedThingCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/managed-things-certificate/{Identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetManagedThingCertificateRequest",
+}) as any as S.Schema<GetManagedThingCertificateRequest>;
+export type CertificatePem = string;
+export interface GetManagedThingCertificateResponse {
+  ManagedThingId?: string;
+  CertificatePem?: string;
+}
+export const GetManagedThingCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ManagedThingId: S.optional(S.String),
+    CertificatePem: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetManagedThingCertificateResponse",
+}) as any as S.Schema<GetManagedThingCertificateResponse>;
+export interface GetManagedThingConnectivityDataRequest {
+  Identifier: string;
+}
+export const GetManagedThingConnectivityDataRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/managed-things-connectivity-data/{Identifier}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetManagedThingConnectivityDataRequest",
+}) as any as S.Schema<GetManagedThingConnectivityDataRequest>;
+export type ConnectivityStatus = boolean;
+export type ConnectivityTimestamp = Date;
+export type DisconnectReasonValue =
+  | "AUTH_ERROR"
+  | "CLIENT_INITIATED_DISCONNECT"
+  | "CLIENT_ERROR"
+  | "CONNECTION_LOST"
+  | "DUPLICATE_CLIENTID"
+  | "FORBIDDEN_ACCESS"
+  | "MQTT_KEEP_ALIVE_TIMEOUT"
+  | "SERVER_ERROR"
+  | "SERVER_INITIATED_DISCONNECT"
+  | "THROTTLED"
+  | "WEBSOCKET_TTL_EXPIRATION"
+  | "CUSTOMAUTH_TTL_EXPIRATION"
+  | "UNKNOWN"
+  | "NONE"
+  | (string & {});
+export const DisconnectReasonValue = /*@__PURE__*/ S.String;
+
+export interface GetManagedThingConnectivityDataResponse {
+  ManagedThingId?: string;
+  Connected?: boolean;
+  Timestamp?: Date;
+  DisconnectReason?: DisconnectReasonValue;
+}
+export const GetManagedThingConnectivityDataResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ManagedThingId: S.optional(S.String),
+      Connected: S.optional(S.Boolean),
+      Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      DisconnectReason: S.optional(DisconnectReasonValue),
+    }),
+).annotate({
+  identifier: "GetManagedThingConnectivityDataResponse",
+}) as any as S.Schema<GetManagedThingConnectivityDataResponse>;
+export interface GetManagedThingMetaDataRequest {
+  Identifier: string;
+}
+export const GetManagedThingMetaDataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/managed-things-metadata/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetManagedThingMetaDataRequest",
+}) as any as S.Schema<GetManagedThingMetaDataRequest>;
+export interface GetManagedThingMetaDataResponse {
+  ManagedThingId?: string;
+  MetaData?: { [key: string]: string | undefined };
+}
+export const GetManagedThingMetaDataResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ManagedThingId: S.optional(S.String),
+    MetaData: S.optional(MetaData),
+  }),
+).annotate({
+  identifier: "GetManagedThingMetaDataResponse",
+}) as any as S.Schema<GetManagedThingMetaDataResponse>;
+export interface GetManagedThingStateRequest {
+  ManagedThingId: string;
+}
+export const GetManagedThingStateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ManagedThingId: S.String.pipe(T.HttpLabel("ManagedThingId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/managed-thing-states/{ManagedThingId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetManagedThingStateRequest",
+}) as any as S.Schema<GetManagedThingStateRequest>;
+export type CapabilityProperties = unknown;
+export interface StateCapability {
+  id: string;
+  name: string;
+  version: string;
+  properties?: any;
+}
+export const StateCapability = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    version: S.String,
+    properties: S.optional(S.Any),
+  }),
+).annotate({
+  identifier: "StateCapability",
+}) as any as S.Schema<StateCapability>;
+export type StateCapabilities = StateCapability[];
+export const StateCapabilities = /*@__PURE__*/ S.Array(StateCapability);
+export interface StateEndpoint {
+  endpointId: string;
+  capabilities: StateCapability[];
+}
+export const StateEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ endpointId: S.String, capabilities: StateCapabilities }),
+).annotate({ identifier: "StateEndpoint" }) as any as S.Schema<StateEndpoint>;
+export type StateEndpoints = StateEndpoint[];
+export const StateEndpoints = /*@__PURE__*/ S.Array(StateEndpoint);
+export interface GetManagedThingStateResponse {
+  Endpoints: StateEndpoint[];
+}
+export const GetManagedThingStateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Endpoints: StateEndpoints }),
+).annotate({
+  identifier: "GetManagedThingStateResponse",
+}) as any as S.Schema<GetManagedThingStateResponse>;
+export interface GetNotificationConfigurationRequest {
+  EventType: EventType;
+}
+export const GetNotificationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EventType: EventType.pipe(T.HttpLabel("EventType")) }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/notification-configurations/{EventType}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetNotificationConfigurationRequest",
+}) as any as S.Schema<GetNotificationConfigurationRequest>;
+export type NotificationConfigurationCreatedAt = Date;
+export type NotificationConfigurationUpdatedAt = Date;
+export interface GetNotificationConfigurationResponse {
+  EventType?: EventType;
+  DestinationName?: string;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+  Tags?: { [key: string]: string | undefined };
+}
+export const GetNotificationConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      EventType: S.optional(EventType),
+      DestinationName: S.optional(S.String),
+      CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+      Tags: S.optional(TagsMap),
+    }),
+).annotate({
+  identifier: "GetNotificationConfigurationResponse",
+}) as any as S.Schema<GetNotificationConfigurationResponse>;
+export interface GetOtaTaskRequest {
+  Identifier: string;
+}
+export const GetOtaTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/ota-tasks/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetOtaTaskRequest",
+}) as any as S.Schema<GetOtaTaskRequest>;
+export type LastUpdatedAt = Date;
+export interface TaskProcessingDetails {
+  NumberOfCanceledThings?: number;
+  NumberOfFailedThings?: number;
+  NumberOfInProgressThings?: number;
+  numberOfQueuedThings?: number;
+  numberOfRejectedThings?: number;
+  numberOfRemovedThings?: number;
+  numberOfSucceededThings?: number;
+  numberOfTimedOutThings?: number;
+  processingTargets?: string[];
+}
+export const TaskProcessingDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NumberOfCanceledThings: S.optional(S.Number),
+    NumberOfFailedThings: S.optional(S.Number),
+    NumberOfInProgressThings: S.optional(S.Number),
+    numberOfQueuedThings: S.optional(S.Number),
+    numberOfRejectedThings: S.optional(S.Number),
+    numberOfRemovedThings: S.optional(S.Number),
+    numberOfSucceededThings: S.optional(S.Number),
+    numberOfTimedOutThings: S.optional(S.Number),
+    processingTargets: S.optional(Target),
+  }),
+).annotate({
+  identifier: "TaskProcessingDetails",
+}) as any as S.Schema<TaskProcessingDetails>;
+export type OtaStatus =
+  | "IN_PROGRESS"
+  | "CANCELED"
+  | "COMPLETED"
+  | "DELETION_IN_PROGRESS"
+  | "SCHEDULED"
+  | (string & {});
+export const OtaStatus = /*@__PURE__*/ S.String;
+
+export interface GetOtaTaskResponse {
+  TaskId?: string;
+  TaskArn?: string;
+  Description?: string;
+  S3Url?: string;
+  Protocol?: OtaProtocol;
+  OtaType?: OtaType;
+  OtaTargetQueryString?: string;
+  OtaMechanism?: OtaMechanism;
+  Target?: string[];
+  CreatedAt?: Date;
+  LastUpdatedAt?: Date;
+  TaskConfigurationId?: string;
+  TaskProcessingDetails?: TaskProcessingDetails;
+  OtaSchedulingConfig?: OtaTaskSchedulingConfig;
+  OtaTaskExecutionRetryConfig?: OtaTaskExecutionRetryConfig;
+  Status?: OtaStatus;
+  Tags?: { [key: string]: string | undefined };
+}
+export const GetOtaTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TaskId: S.optional(S.String),
+    TaskArn: S.optional(S.String),
+    Description: S.optional(S.String),
+    S3Url: S.optional(S.String),
+    Protocol: S.optional(OtaProtocol),
+    OtaType: S.optional(OtaType),
+    OtaTargetQueryString: S.optional(S.String),
+    OtaMechanism: S.optional(OtaMechanism),
+    Target: S.optional(Target),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    TaskConfigurationId: S.optional(S.String),
+    TaskProcessingDetails: S.optional(TaskProcessingDetails),
+    OtaSchedulingConfig: S.optional(OtaTaskSchedulingConfig),
+    OtaTaskExecutionRetryConfig: S.optional(OtaTaskExecutionRetryConfig),
+    Status: S.optional(OtaStatus),
+    Tags: S.optional(TagsMap),
+  }),
+).annotate({
+  identifier: "GetOtaTaskResponse",
+}) as any as S.Schema<GetOtaTaskResponse>;
+export interface GetOtaTaskConfigurationRequest {
+  Identifier: string;
+}
+export const GetOtaTaskConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/ota-task-configurations/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetOtaTaskConfigurationRequest",
+}) as any as S.Schema<GetOtaTaskConfigurationRequest>;
+export interface GetOtaTaskConfigurationResponse {
+  TaskConfigurationId?: string;
+  Name?: string | redacted.Redacted<string>;
+  PushConfig?: PushConfig;
+  Description?: string;
+  CreatedAt?: Date;
+}
+export const GetOtaTaskConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TaskConfigurationId: S.optional(S.String),
+    Name: S.optional(SensitiveString),
+    PushConfig: S.optional(PushConfig),
+    Description: S.optional(S.String),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "GetOtaTaskConfigurationResponse",
+}) as any as S.Schema<GetOtaTaskConfigurationResponse>;
+export interface GetProvisioningProfileRequest {
+  Identifier: string;
+}
+export const GetProvisioningProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/provisioning-profiles/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetProvisioningProfileRequest",
+}) as any as S.Schema<GetProvisioningProfileRequest>;
+export interface GetProvisioningProfileResponse {
+  Arn?: string;
+  Name?: string;
+  ProvisioningType?: ProvisioningType;
+  Id?: string;
+  Status?: ProvisioningProfileStatus;
+  ClaimCertificate?: string | redacted.Redacted<string>;
+  Tags?: { [key: string]: string | undefined };
+}
+export const GetProvisioningProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    Name: S.optional(S.String),
+    ProvisioningType: S.optional(ProvisioningType),
+    Id: S.optional(S.String),
+    Status: S.optional(ProvisioningProfileStatus),
+    ClaimCertificate: S.optional(SensitiveString),
+    Tags: S.optional(TagsMap),
+  }),
+).annotate({
+  identifier: "GetProvisioningProfileResponse",
+}) as any as S.Schema<GetProvisioningProfileResponse>;
+export interface GetRuntimeLogConfigurationRequest {
+  ManagedThingId: string;
+}
+export const GetRuntimeLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ManagedThingId: S.String.pipe(T.HttpLabel("ManagedThingId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/runtime-log-configurations/{ManagedThingId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetRuntimeLogConfigurationRequest",
+}) as any as S.Schema<GetRuntimeLogConfigurationRequest>;
+export type LocalStoreLocation = string;
+export type LocalStoreFileRotationMaxFiles = number;
+export type LocalStoreFileRotationMaxBytes = number;
+export type UploadLog = boolean;
+export type UploadPeriodMinutes = number;
+export type DeleteLocalStoreAfterUpload = boolean;
+export interface RuntimeLogConfigurations {
+  LogLevel?: LogLevel;
+  LogFlushLevel?: LogLevel;
+  LocalStoreLocation?: string;
+  LocalStoreFileRotationMaxFiles?: number;
+  LocalStoreFileRotationMaxBytes?: number;
+  UploadLog?: boolean;
+  UploadPeriodMinutes?: number;
+  DeleteLocalStoreAfterUpload?: boolean;
+}
+export const RuntimeLogConfigurations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LogLevel: S.optional(LogLevel),
+    LogFlushLevel: S.optional(LogLevel),
+    LocalStoreLocation: S.optional(S.String),
+    LocalStoreFileRotationMaxFiles: S.optional(S.Number),
+    LocalStoreFileRotationMaxBytes: S.optional(S.Number),
+    UploadLog: S.optional(S.Boolean),
+    UploadPeriodMinutes: S.optional(S.Number),
+    DeleteLocalStoreAfterUpload: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RuntimeLogConfigurations",
+}) as any as S.Schema<RuntimeLogConfigurations>;
+export interface GetRuntimeLogConfigurationResponse {
+  ManagedThingId?: string;
+  RuntimeLogConfigurations?: RuntimeLogConfigurations;
+}
+export const GetRuntimeLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ManagedThingId: S.optional(S.String),
+    RuntimeLogConfigurations: S.optional(RuntimeLogConfigurations),
+  }),
+).annotate({
+  identifier: "GetRuntimeLogConfigurationResponse",
+}) as any as S.Schema<GetRuntimeLogConfigurationResponse>;
+export type SchemaVersionType = "capability" | "definition" | (string & {});
+export const SchemaVersionType = /*@__PURE__*/ S.String;
+
+export interface GetSchemaVersionRequest {
+  Type: SchemaVersionType;
+  SchemaVersionedId: string;
+  Format?: SchemaVersionFormat;
+}
+export const GetSchemaVersionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Type: SchemaVersionType.pipe(T.HttpLabel("Type")),
+    SchemaVersionedId: S.String.pipe(T.HttpLabel("SchemaVersionedId")),
+    Format: S.optional(SchemaVersionFormat).pipe(T.HttpQuery("Format")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/schema-versions/{Type}/{SchemaVersionedId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetSchemaVersionRequest",
+}) as any as S.Schema<GetSchemaVersionRequest>;
+export type SchemaId = string;
+export type SchemaVersionDescription = string;
+export type SchemaVersionNamespaceName = string;
+export type SchemaVersionVersion = string;
+export type SchemaVersionVisibility = "PUBLIC" | "PRIVATE" | (string & {});
+export const SchemaVersionVisibility = /*@__PURE__*/ S.String;
+
+export type SchemaVersionSchema = unknown;
+export interface GetSchemaVersionResponse {
+  SchemaId?: string;
+  Type?: SchemaVersionType;
+  Description?: string;
+  Namespace?: string;
+  SemanticVersion?: string;
+  Visibility?: SchemaVersionVisibility;
+  Schema?: any;
+}
+export const GetSchemaVersionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SchemaId: S.optional(S.String),
+    Type: S.optional(SchemaVersionType),
+    Description: S.optional(S.String),
+    Namespace: S.optional(S.String),
+    SemanticVersion: S.optional(S.String),
+    Visibility: S.optional(SchemaVersionVisibility),
+    Schema: S.optional(S.Any),
+  }),
+).annotate({
+  identifier: "GetSchemaVersionResponse",
+}) as any as S.Schema<GetSchemaVersionResponse>;
+export type MaxResults = number;
+export type NextToken = string;
+export interface ListAccountAssociationsRequest {
+  ConnectorDestinationId?: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListAccountAssociationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConnectorDestinationId: S.optional(S.String).pipe(
+      T.HttpQuery("ConnectorDestinationId"),
+    ),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/account-associations" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListAccountAssociationsRequest",
+}) as any as S.Schema<ListAccountAssociationsRequest>;
+export interface AccountAssociationItem {
+  AccountAssociationId: string;
+  AssociationState: AssociationState;
+  ErrorMessage?: string;
+  ConnectorDestinationId?: string;
+  Name?: string;
+  Description?: string;
+  Arn?: string;
+}
+export const AccountAssociationItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountAssociationId: S.String,
+    AssociationState: AssociationState,
+    ErrorMessage: S.optional(S.String),
+    ConnectorDestinationId: S.optional(S.String),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+    Arn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AccountAssociationItem",
+}) as any as S.Schema<AccountAssociationItem>;
+export type AccountAssociationListDefinition = AccountAssociationItem[];
+export const AccountAssociationListDefinition = /*@__PURE__*/ S.Array(
+  AccountAssociationItem,
+);
+export interface ListAccountAssociationsResponse {
+  Items?: AccountAssociationItem[];
+  NextToken?: string;
+}
+export const ListAccountAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Items: S.optional(AccountAssociationListDefinition),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAccountAssociationsResponse",
+}) as any as S.Schema<ListAccountAssociationsResponse>;
+export interface ListCloudConnectorsRequest {
+  Type?: CloudConnectorType;
+  LambdaArn?: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListCloudConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Type: S.optional(CloudConnectorType).pipe(T.HttpQuery("Type")),
+    LambdaArn: S.optional(S.String).pipe(T.HttpQuery("LambdaArn")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/cloud-connectors" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListCloudConnectorsRequest",
+}) as any as S.Schema<ListCloudConnectorsRequest>;
+export interface ConnectorItem {
+  Name: string;
+  EndpointConfig: EndpointConfig;
+  Description?: string;
+  EndpointType?: EndpointType;
+  Id?: string;
+  Type?: CloudConnectorType;
+}
+export const ConnectorItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    EndpointConfig: EndpointConfig,
+    Description: S.optional(S.String),
+    EndpointType: S.optional(EndpointType),
+    Id: S.optional(S.String),
+    Type: S.optional(CloudConnectorType),
+  }),
+).annotate({ identifier: "ConnectorItem" }) as any as S.Schema<ConnectorItem>;
+export type ConnectorList = ConnectorItem[];
+export const ConnectorList = /*@__PURE__*/ S.Array(ConnectorItem);
+export interface ListCloudConnectorsResponse {
+  Items?: ConnectorItem[];
+  NextToken?: string;
+}
+export const ListCloudConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Items: S.optional(ConnectorList),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCloudConnectorsResponse",
+}) as any as S.Schema<ListCloudConnectorsResponse>;
 export interface ListConnectorDestinationsRequest {
   CloudConnectorId?: string;
   NextToken?: string;
@@ -1349,101 +2653,6 @@ export const ListConnectorDestinationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListConnectorDestinationsResponse",
 }) as any as S.Schema<ListConnectorDestinationsResponse>;
-export interface CreateCredentialLockerRequest {
-  Name?: string | redacted.Redacted<string>;
-  ClientToken?: string;
-  Tags?: { [key: string]: string | undefined };
-}
-export const CreateCredentialLockerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.optional(SensitiveString),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    Tags: S.optional(TagsMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/credential-lockers" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateCredentialLockerRequest",
-}) as any as S.Schema<CreateCredentialLockerRequest>;
-export interface CreateCredentialLockerResponse {
-  Id?: string;
-  Arn?: string;
-  CreatedAt?: Date;
-}
-export const CreateCredentialLockerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Arn: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "CreateCredentialLockerResponse",
-}) as any as S.Schema<CreateCredentialLockerResponse>;
-export interface GetCredentialLockerRequest {
-  Identifier: string;
-}
-export const GetCredentialLockerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/credential-lockers/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCredentialLockerRequest",
-}) as any as S.Schema<GetCredentialLockerRequest>;
-export interface GetCredentialLockerResponse {
-  Id?: string;
-  Arn?: string;
-  Name?: string | redacted.Redacted<string>;
-  CreatedAt?: Date;
-  Tags?: { [key: string]: string | undefined };
-}
-export const GetCredentialLockerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Arn: S.optional(S.String),
-    Name: S.optional(SensitiveString),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Tags: S.optional(TagsMap),
-  }),
-).annotate({
-  identifier: "GetCredentialLockerResponse",
-}) as any as S.Schema<GetCredentialLockerResponse>;
-export interface DeleteCredentialLockerRequest {
-  Identifier: string;
-}
-export const DeleteCredentialLockerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/credential-lockers/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteCredentialLockerRequest",
-}) as any as S.Schema<DeleteCredentialLockerRequest>;
-export interface DeleteCredentialLockerResponse {}
-export const DeleteCredentialLockerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteCredentialLockerResponse",
-}) as any as S.Schema<DeleteCredentialLockerResponse>;
 export interface ListCredentialLockersRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -1497,111 +2706,6 @@ export const ListCredentialLockersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCredentialLockersResponse",
 }) as any as S.Schema<ListCredentialLockersResponse>;
-export type DeliveryDestinationType = "KINESIS" | (string & {});
-export const DeliveryDestinationType = /*@__PURE__*/ S.String;
-export interface CreateDestinationRequest {
-  DeliveryDestinationArn: string;
-  DeliveryDestinationType: DeliveryDestinationType;
-  Name: string;
-  RoleArn: string;
-  ClientToken?: string;
-  Description?: string;
-  Tags?: { [key: string]: string | undefined };
-}
-export const CreateDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DeliveryDestinationArn: S.String,
-    DeliveryDestinationType: DeliveryDestinationType,
-    Name: S.String,
-    RoleArn: S.String,
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    Description: S.optional(S.String),
-    Tags: S.optional(TagsMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/destinations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateDestinationRequest",
-}) as any as S.Schema<CreateDestinationRequest>;
-export interface CreateDestinationResponse {
-  Name?: string;
-}
-export const CreateDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateDestinationResponse",
-}) as any as S.Schema<CreateDestinationResponse>;
-export interface DeleteDestinationRequest {
-  Name: string;
-}
-export const DeleteDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/destinations/{Name}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteDestinationRequest",
-}) as any as S.Schema<DeleteDestinationRequest>;
-export interface DeleteDestinationResponse {}
-export const DeleteDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteDestinationResponse",
-}) as any as S.Schema<DeleteDestinationResponse>;
-export interface GetDestinationRequest {
-  Name: string;
-}
-export const GetDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/destinations/{Name}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetDestinationRequest",
-}) as any as S.Schema<GetDestinationRequest>;
-export interface GetDestinationResponse {
-  Description?: string;
-  DeliveryDestinationArn?: string;
-  DeliveryDestinationType?: DeliveryDestinationType;
-  Name?: string;
-  RoleArn?: string;
-  CreatedAt?: Date;
-  UpdatedAt?: Date;
-  Tags?: { [key: string]: string | undefined };
-}
-export const GetDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.optional(S.String),
-    DeliveryDestinationArn: S.optional(S.String),
-    DeliveryDestinationType: S.optional(DeliveryDestinationType),
-    Name: S.optional(S.String),
-    RoleArn: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Tags: S.optional(TagsMap),
-  }),
-).annotate({
-  identifier: "GetDestinationResponse",
-}) as any as S.Schema<GetDestinationResponse>;
 export interface ListDestinationsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -1656,163 +2760,6 @@ export const ListDestinationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDestinationsResponse",
 }) as any as S.Schema<ListDestinationsResponse>;
-export interface UpdateDestinationRequest {
-  Name: string;
-  DeliveryDestinationArn?: string;
-  DeliveryDestinationType?: DeliveryDestinationType;
-  RoleArn?: string;
-  Description?: string;
-}
-export const UpdateDestinationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String.pipe(T.HttpLabel("Name")),
-    DeliveryDestinationArn: S.optional(S.String),
-    DeliveryDestinationType: S.optional(DeliveryDestinationType),
-    RoleArn: S.optional(S.String),
-    Description: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/destinations/{Name}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateDestinationRequest",
-}) as any as S.Schema<UpdateDestinationRequest>;
-export interface UpdateDestinationResponse {}
-export const UpdateDestinationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateDestinationResponse",
-}) as any as S.Schema<UpdateDestinationResponse>;
-export type DiscoveryType =
-  | "ZWAVE"
-  | "ZIGBEE"
-  | "CLOUD"
-  | "CUSTOM"
-  | "CONTROLLER_CAPABILITY_REDISCOVERY"
-  | (string & {});
-export const DiscoveryType = /*@__PURE__*/ S.String;
-export type CustomProtocolDetail = { [key: string]: string | undefined };
-export const CustomProtocolDetail = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
-export type DiscoveryAuthMaterialType = "ZWAVE_INSTALL_CODE" | (string & {});
-export const DiscoveryAuthMaterialType = /*@__PURE__*/ S.String;
-export type ConnectorDeviceIdList = (string | redacted.Redacted<string>)[];
-export const ConnectorDeviceIdList = /*@__PURE__*/ S.Array(SensitiveString);
-export type ProtocolType = "ZWAVE" | "ZIGBEE" | "CUSTOM" | (string & {});
-export const ProtocolType = /*@__PURE__*/ S.String;
-export interface StartDeviceDiscoveryRequest {
-  DiscoveryType: DiscoveryType;
-  CustomProtocolDetail?: { [key: string]: string | undefined };
-  ControllerIdentifier?: string;
-  ConnectorAssociationIdentifier?: string;
-  AccountAssociationId?: string;
-  AuthenticationMaterial?: string | redacted.Redacted<string>;
-  AuthenticationMaterialType?: DiscoveryAuthMaterialType;
-  ClientToken?: string;
-  Tags?: { [key: string]: string | undefined };
-  ConnectorDeviceIdList?: (string | redacted.Redacted<string>)[];
-  Protocol?: ProtocolType;
-  EndDeviceIdentifier?: string;
-}
-export const StartDeviceDiscoveryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DiscoveryType: DiscoveryType,
-    CustomProtocolDetail: S.optional(CustomProtocolDetail),
-    ControllerIdentifier: S.optional(S.String),
-    ConnectorAssociationIdentifier: S.optional(S.String),
-    AccountAssociationId: S.optional(S.String),
-    AuthenticationMaterial: S.optional(SensitiveString),
-    AuthenticationMaterialType: S.optional(DiscoveryAuthMaterialType),
-    ClientToken: S.optional(S.String),
-    Tags: S.optional(TagsMap),
-    ConnectorDeviceIdList: S.optional(ConnectorDeviceIdList),
-    Protocol: S.optional(ProtocolType),
-    EndDeviceIdentifier: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/device-discoveries" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartDeviceDiscoveryRequest",
-}) as any as S.Schema<StartDeviceDiscoveryRequest>;
-export interface StartDeviceDiscoveryResponse {
-  Id?: string;
-  StartedAt?: Date;
-}
-export const StartDeviceDiscoveryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "StartDeviceDiscoveryResponse",
-}) as any as S.Schema<StartDeviceDiscoveryResponse>;
-export interface GetDeviceDiscoveryRequest {
-  Identifier: string;
-}
-export const GetDeviceDiscoveryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/device-discoveries/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetDeviceDiscoveryRequest",
-}) as any as S.Schema<GetDeviceDiscoveryRequest>;
-export type DeviceDiscoveryStatus =
-  | "RUNNING"
-  | "SUCCEEDED"
-  | "FAILED"
-  | "TIMED_OUT"
-  | (string & {});
-export const DeviceDiscoveryStatus = /*@__PURE__*/ S.String;
-export interface GetDeviceDiscoveryResponse {
-  Id: string;
-  Arn: string;
-  DiscoveryType: DiscoveryType;
-  Status: DeviceDiscoveryStatus;
-  StartedAt: Date;
-  ControllerId?: string;
-  ConnectorAssociationId?: string;
-  AccountAssociationId?: string;
-  FinishedAt?: Date;
-  Tags?: { [key: string]: string | undefined };
-}
-export const GetDeviceDiscoveryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String,
-    Arn: S.String,
-    DiscoveryType: DiscoveryType,
-    Status: DeviceDiscoveryStatus,
-    StartedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ControllerId: S.optional(S.String),
-    ConnectorAssociationId: S.optional(S.String),
-    AccountAssociationId: S.optional(S.String),
-    FinishedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Tags: S.optional(TagsMap),
-  }),
-).annotate({
-  identifier: "GetDeviceDiscoveryResponse",
-}) as any as S.Schema<GetDeviceDiscoveryResponse>;
 export interface ListDeviceDiscoveriesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -1896,6 +2843,7 @@ export const ListDiscoveredDevicesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDiscoveredDevicesRequest",
 }) as any as S.Schema<ListDiscoveredDevicesRequest>;
+export type ConnectorDeviceName = string;
 export type DeviceTypeList = string[];
 export const DeviceTypeList = /*@__PURE__*/ S.Array(S.String);
 export type DiscoveryModification =
@@ -1904,6 +2852,8 @@ export type DiscoveryModification =
   | "NO_CHANGE"
   | (string & {});
 export const DiscoveryModification = /*@__PURE__*/ S.String;
+
+export type DiscoveredAt = Date;
 export interface DiscoveredDeviceSummary {
   ConnectorDeviceId?: string | redacted.Redacted<string>;
   ConnectorDeviceName?: string;
@@ -1946,97 +2896,6 @@ export const ListDiscoveredDevicesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDiscoveredDevicesResponse",
 }) as any as S.Schema<ListDiscoveredDevicesResponse>;
-export type LogLevel = "DEBUG" | "ERROR" | "INFO" | "WARN" | (string & {});
-export const LogLevel = /*@__PURE__*/ S.String;
-export interface CreateEventLogConfigurationRequest {
-  ResourceType: string;
-  ResourceId?: string;
-  EventLogLevel: LogLevel;
-  ClientToken?: string;
-}
-export const CreateEventLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceType: S.String,
-    ResourceId: S.optional(S.String),
-    EventLogLevel: LogLevel,
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/event-log-configurations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateEventLogConfigurationRequest",
-}) as any as S.Schema<CreateEventLogConfigurationRequest>;
-export interface CreateEventLogConfigurationResponse {
-  Id?: string;
-}
-export const CreateEventLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateEventLogConfigurationResponse",
-}) as any as S.Schema<CreateEventLogConfigurationResponse>;
-export interface DeleteEventLogConfigurationRequest {
-  Id: string;
-}
-export const DeleteEventLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/event-log-configurations/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteEventLogConfigurationRequest",
-}) as any as S.Schema<DeleteEventLogConfigurationRequest>;
-export interface DeleteEventLogConfigurationResponse {}
-export const DeleteEventLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteEventLogConfigurationResponse",
-}) as any as S.Schema<DeleteEventLogConfigurationResponse>;
-export interface GetEventLogConfigurationRequest {
-  Id: string;
-}
-export const GetEventLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/event-log-configurations/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetEventLogConfigurationRequest",
-}) as any as S.Schema<GetEventLogConfigurationRequest>;
-export interface GetEventLogConfigurationResponse {
-  Id?: string;
-  ResourceType?: string;
-  ResourceId?: string;
-  EventLogLevel?: LogLevel;
-}
-export const GetEventLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    EventLogLevel: S.optional(LogLevel),
-  }),
-).annotate({
-  identifier: "GetEventLogConfigurationResponse",
-}) as any as S.Schema<GetEventLogConfigurationResponse>;
 export interface ListEventLogConfigurationsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2091,209 +2950,6 @@ export const ListEventLogConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEventLogConfigurationsResponse",
 }) as any as S.Schema<ListEventLogConfigurationsResponse>;
-export interface UpdateEventLogConfigurationRequest {
-  Id: string;
-  EventLogLevel: LogLevel;
-}
-export const UpdateEventLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.String.pipe(T.HttpLabel("Id")),
-    EventLogLevel: LogLevel,
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/event-log-configurations/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateEventLogConfigurationRequest",
-}) as any as S.Schema<UpdateEventLogConfigurationRequest>;
-export interface UpdateEventLogConfigurationResponse {}
-export const UpdateEventLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateEventLogConfigurationResponse",
-}) as any as S.Schema<UpdateEventLogConfigurationResponse>;
-export interface GetHubConfigurationRequest {}
-export const GetHubConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/hub-configuration" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetHubConfigurationRequest",
-}) as any as S.Schema<GetHubConfigurationRequest>;
-export interface GetHubConfigurationResponse {
-  HubTokenTimerExpirySettingInSeconds?: number;
-  UpdatedAt?: Date;
-}
-export const GetHubConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    HubTokenTimerExpirySettingInSeconds: S.optional(S.Number),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "GetHubConfigurationResponse",
-}) as any as S.Schema<GetHubConfigurationResponse>;
-export interface PutHubConfigurationRequest {
-  HubTokenTimerExpirySettingInSeconds: number;
-}
-export const PutHubConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HubTokenTimerExpirySettingInSeconds: S.Number }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/hub-configuration" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutHubConfigurationRequest",
-}) as any as S.Schema<PutHubConfigurationRequest>;
-export interface PutHubConfigurationResponse {
-  HubTokenTimerExpirySettingInSeconds?: number;
-}
-export const PutHubConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ HubTokenTimerExpirySettingInSeconds: S.optional(S.Number) }),
-).annotate({
-  identifier: "PutHubConfigurationResponse",
-}) as any as S.Schema<PutHubConfigurationResponse>;
-export interface GetDefaultEncryptionConfigurationRequest {}
-export const GetDefaultEncryptionConfigurationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.all(
-        T.Http({ method: "GET", uri: "/configuration/account/encryption" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "GetDefaultEncryptionConfigurationRequest",
-}) as any as S.Schema<GetDefaultEncryptionConfigurationRequest>;
-export interface ConfigurationError {
-  code?: string;
-  message?: string;
-}
-export const ConfigurationError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
-).annotate({
-  identifier: "ConfigurationError",
-}) as any as S.Schema<ConfigurationError>;
-export type ConfigurationState =
-  | "ENABLED"
-  | "UPDATE_IN_PROGRESS"
-  | "UPDATE_FAILED"
-  | (string & {});
-export const ConfigurationState = /*@__PURE__*/ S.String;
-export interface ConfigurationStatus {
-  error?: ConfigurationError;
-  state: ConfigurationState;
-}
-export const ConfigurationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(ConfigurationError),
-    state: ConfigurationState,
-  }),
-).annotate({
-  identifier: "ConfigurationStatus",
-}) as any as S.Schema<ConfigurationStatus>;
-export type EncryptionType =
-  | "MANAGED_INTEGRATIONS_DEFAULT_ENCRYPTION"
-  | "CUSTOMER_KEY_ENCRYPTION"
-  | (string & {});
-export const EncryptionType = /*@__PURE__*/ S.String;
-export interface GetDefaultEncryptionConfigurationResponse {
-  configurationStatus: ConfigurationStatus;
-  encryptionType: EncryptionType;
-  kmsKeyArn?: string;
-}
-export const GetDefaultEncryptionConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      configurationStatus: ConfigurationStatus,
-      encryptionType: EncryptionType,
-      kmsKeyArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GetDefaultEncryptionConfigurationResponse",
-  }) as any as S.Schema<GetDefaultEncryptionConfigurationResponse>;
-export interface PutDefaultEncryptionConfigurationRequest {
-  encryptionType: EncryptionType;
-  kmsKeyArn?: string;
-}
-export const PutDefaultEncryptionConfigurationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      encryptionType: EncryptionType,
-      kmsKeyArn: S.optional(S.String),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/configuration/account/encryption" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "PutDefaultEncryptionConfigurationRequest",
-}) as any as S.Schema<PutDefaultEncryptionConfigurationRequest>;
-export interface PutDefaultEncryptionConfigurationResponse {
-  configurationStatus: ConfigurationStatus;
-  encryptionType: EncryptionType;
-  kmsKeyArn?: string;
-}
-export const PutDefaultEncryptionConfigurationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      configurationStatus: ConfigurationStatus,
-      encryptionType: EncryptionType,
-      kmsKeyArn: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PutDefaultEncryptionConfigurationResponse",
-  }) as any as S.Schema<PutDefaultEncryptionConfigurationResponse>;
-export interface DeregisterAccountAssociationRequest {
-  ManagedThingId: string;
-  AccountAssociationId: string;
-}
-export const DeregisterAccountAssociationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ManagedThingId: S.String, AccountAssociationId: S.String }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/managed-thing-associations/deregister" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeregisterAccountAssociationRequest",
-}) as any as S.Schema<DeregisterAccountAssociationRequest>;
-export interface DeregisterAccountAssociationResponse {}
-export const DeregisterAccountAssociationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeregisterAccountAssociationResponse",
-}) as any as S.Schema<DeregisterAccountAssociationResponse>;
 export interface ListManagedThingAccountAssociationsRequest {
   ManagedThingId?: string;
   AccountAssociationId?: string;
@@ -2327,6 +2983,7 @@ export type ManagedThingAssociationStatus =
   | "ASSOCIATED"
   | (string & {});
 export const ManagedThingAssociationStatus = /*@__PURE__*/ S.String;
+
 export interface ManagedThingAssociation {
   ManagedThingId?: string;
   AccountAssociationId?: string;
@@ -2358,456 +3015,6 @@ export const ListManagedThingAccountAssociationsResponse =
   ).annotate({
     identifier: "ListManagedThingAccountAssociationsResponse",
   }) as any as S.Schema<ListManagedThingAccountAssociationsResponse>;
-export interface RegisterAccountAssociationRequest {
-  ManagedThingId: string;
-  AccountAssociationId: string;
-  DeviceDiscoveryId: string;
-}
-export const RegisterAccountAssociationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManagedThingId: S.String,
-    AccountAssociationId: S.String,
-    DeviceDiscoveryId: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/managed-thing-associations/register" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RegisterAccountAssociationRequest",
-}) as any as S.Schema<RegisterAccountAssociationRequest>;
-export interface RegisterAccountAssociationResponse {
-  AccountAssociationId?: string;
-  DeviceDiscoveryId?: string;
-  ManagedThingId?: string;
-}
-export const RegisterAccountAssociationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccountAssociationId: S.optional(S.String),
-    DeviceDiscoveryId: S.optional(S.String),
-    ManagedThingId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegisterAccountAssociationResponse",
-}) as any as S.Schema<RegisterAccountAssociationResponse>;
-export interface CapabilityAction {
-  name: string;
-  ref?: string;
-  actionTraceId?: string;
-  parameters?: any;
-}
-export const CapabilityAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    ref: S.optional(S.String),
-    actionTraceId: S.optional(S.String),
-    parameters: S.optional(S.Any),
-  }),
-).annotate({
-  identifier: "CapabilityAction",
-}) as any as S.Schema<CapabilityAction>;
-export type CapabilityActions = CapabilityAction[];
-export const CapabilityActions = /*@__PURE__*/ S.Array(CapabilityAction);
-export interface CommandCapability {
-  id: string;
-  name: string;
-  version: string;
-  actions: CapabilityAction[];
-}
-export const CommandCapability = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    version: S.String,
-    actions: CapabilityActions,
-  }),
-).annotate({
-  identifier: "CommandCapability",
-}) as any as S.Schema<CommandCapability>;
-export type CommandCapabilities = CommandCapability[];
-export const CommandCapabilities = /*@__PURE__*/ S.Array(CommandCapability);
-export interface CommandEndpoint {
-  endpointId: string;
-  capabilities: CommandCapability[];
-}
-export const CommandEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ endpointId: S.String, capabilities: CommandCapabilities }),
-).annotate({
-  identifier: "CommandEndpoint",
-}) as any as S.Schema<CommandEndpoint>;
-export type CommandEndpoints = CommandEndpoint[];
-export const CommandEndpoints = /*@__PURE__*/ S.Array(CommandEndpoint);
-export interface SendManagedThingCommandRequest {
-  ManagedThingId: string;
-  Endpoints: CommandEndpoint[];
-  ConnectorAssociationId?: string;
-  AccountAssociationId?: string;
-}
-export const SendManagedThingCommandRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManagedThingId: S.String.pipe(T.HttpLabel("ManagedThingId")),
-    Endpoints: CommandEndpoints,
-    ConnectorAssociationId: S.optional(S.String),
-    AccountAssociationId: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/managed-things-command/{ManagedThingId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "SendManagedThingCommandRequest",
-}) as any as S.Schema<SendManagedThingCommandRequest>;
-export interface SendManagedThingCommandResponse {
-  TraceId?: string;
-}
-export const SendManagedThingCommandResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TraceId: S.optional(S.String) }),
-).annotate({
-  identifier: "SendManagedThingCommandResponse",
-}) as any as S.Schema<SendManagedThingCommandResponse>;
-export type Role = "CONTROLLER" | "DEVICE" | (string & {});
-export const Role = /*@__PURE__*/ S.String;
-export type AuthMaterialType =
-  | "CUSTOM_PROTOCOL_QR_BAR_CODE"
-  | "WIFI_SETUP_QR_BAR_CODE"
-  | "ZWAVE_QR_BAR_CODE"
-  | "ZIGBEE_QR_BAR_CODE"
-  | "DISCOVERED_DEVICE"
-  | "PRE_ONBOARDED_CLOUD"
-  | (string & {});
-export const AuthMaterialType = /*@__PURE__*/ S.String;
-export interface WiFiSimpleSetupConfiguration {
-  EnableAsProvisioner?: boolean;
-  EnableAsProvisionee?: boolean;
-  TimeoutInMinutes?: number;
-}
-export const WiFiSimpleSetupConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EnableAsProvisioner: S.optional(S.Boolean),
-    EnableAsProvisionee: S.optional(S.Boolean),
-    TimeoutInMinutes: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WiFiSimpleSetupConfiguration",
-}) as any as S.Schema<WiFiSimpleSetupConfiguration>;
-export type CapabilityReportProperties = string[];
-export const CapabilityReportProperties = /*@__PURE__*/ S.Array(S.String);
-export type CapabilityReportActions = string[];
-export const CapabilityReportActions = /*@__PURE__*/ S.Array(S.String);
-export type CapabilityReportEvents = string[];
-export const CapabilityReportEvents = /*@__PURE__*/ S.Array(S.String);
-export interface CapabilityReportCapability {
-  id: string;
-  name: string;
-  version: string;
-  properties: string[];
-  actions: string[];
-  events: string[];
-}
-export const CapabilityReportCapability = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    version: S.String,
-    properties: CapabilityReportProperties,
-    actions: CapabilityReportActions,
-    events: CapabilityReportEvents,
-  }),
-).annotate({
-  identifier: "CapabilityReportCapability",
-}) as any as S.Schema<CapabilityReportCapability>;
-export type CapabilityReportCapabilities = CapabilityReportCapability[];
-export const CapabilityReportCapabilities = /*@__PURE__*/ S.Array(
-  CapabilityReportCapability,
-);
-export interface CapabilityReportEndpoint {
-  id: string;
-  deviceTypes: string[];
-  capabilities: CapabilityReportCapability[];
-}
-export const CapabilityReportEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    deviceTypes: DeviceTypes,
-    capabilities: CapabilityReportCapabilities,
-  }),
-).annotate({
-  identifier: "CapabilityReportEndpoint",
-}) as any as S.Schema<CapabilityReportEndpoint>;
-export type CapabilityReportEndpoints = CapabilityReportEndpoint[];
-export const CapabilityReportEndpoints = /*@__PURE__*/ S.Array(
-  CapabilityReportEndpoint,
-);
-export interface CapabilityReport {
-  version: string;
-  nodeId?: string;
-  endpoints: CapabilityReportEndpoint[];
-}
-export const CapabilityReport = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.String,
-    nodeId: S.optional(S.String),
-    endpoints: CapabilityReportEndpoints,
-  }),
-).annotate({
-  identifier: "CapabilityReport",
-}) as any as S.Schema<CapabilityReport>;
-export type MetaData = { [key: string]: string | undefined };
-export const MetaData = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
-export interface CreateManagedThingRequest {
-  Role: Role;
-  Owner?: string | redacted.Redacted<string>;
-  CredentialLockerId?: string;
-  AuthenticationMaterial: string | redacted.Redacted<string>;
-  AuthenticationMaterialType: AuthMaterialType;
-  WiFiSimpleSetupConfiguration?: WiFiSimpleSetupConfiguration;
-  SerialNumber?: string | redacted.Redacted<string>;
-  Brand?: string | redacted.Redacted<string>;
-  Model?: string | redacted.Redacted<string>;
-  Name?: string;
-  CapabilityReport?: CapabilityReport;
-  CapabilitySchemas?: CapabilitySchemaItem[];
-  Capabilities?: string;
-  ClientToken?: string;
-  Classification?: string | redacted.Redacted<string>;
-  Tags?: { [key: string]: string | undefined };
-  MetaData?: { [key: string]: string | undefined };
-}
-export const CreateManagedThingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Role: Role,
-    Owner: S.optional(SensitiveString),
-    CredentialLockerId: S.optional(S.String),
-    AuthenticationMaterial: SensitiveString,
-    AuthenticationMaterialType: AuthMaterialType,
-    WiFiSimpleSetupConfiguration: S.optional(WiFiSimpleSetupConfiguration),
-    SerialNumber: S.optional(SensitiveString),
-    Brand: S.optional(SensitiveString),
-    Model: S.optional(SensitiveString),
-    Name: S.optional(S.String),
-    CapabilityReport: S.optional(CapabilityReport),
-    CapabilitySchemas: S.optional(CapabilitySchemas),
-    Capabilities: S.optional(S.String),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    Classification: S.optional(SensitiveString),
-    Tags: S.optional(TagsMap),
-    MetaData: S.optional(MetaData),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/managed-things" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateManagedThingRequest",
-}) as any as S.Schema<CreateManagedThingRequest>;
-export interface CreateManagedThingResponse {
-  Id?: string;
-  Arn?: string;
-  CreatedAt?: Date;
-}
-export const CreateManagedThingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Arn: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "CreateManagedThingResponse",
-}) as any as S.Schema<CreateManagedThingResponse>;
-export interface GetManagedThingRequest {
-  Identifier: string;
-}
-export const GetManagedThingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/managed-things/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetManagedThingRequest",
-}) as any as S.Schema<GetManagedThingRequest>;
-export type ProvisioningStatus =
-  | "UNASSOCIATED"
-  | "PRE_ASSOCIATED"
-  | "DISCOVERED"
-  | "ACTIVATED"
-  | "DELETION_FAILED"
-  | "DELETE_IN_PROGRESS"
-  | "ISOLATED"
-  | "DELETED"
-  | (string & {});
-export const ProvisioningStatus = /*@__PURE__*/ S.String;
-export type HubNetworkMode =
-  | "STANDARD"
-  | "NETWORK_WIDE_EXCLUSION"
-  | (string & {});
-export const HubNetworkMode = /*@__PURE__*/ S.String;
-export interface GetManagedThingResponse {
-  Id?: string;
-  Arn?: string;
-  Owner?: string | redacted.Redacted<string>;
-  CredentialLockerId?: string;
-  AdvertisedProductId?: string;
-  Role?: Role;
-  ProvisioningStatus?: ProvisioningStatus;
-  Name?: string;
-  Model?: string | redacted.Redacted<string>;
-  Brand?: string | redacted.Redacted<string>;
-  SerialNumber?: string | redacted.Redacted<string>;
-  UniversalProductCode?: string | redacted.Redacted<string>;
-  InternationalArticleNumber?: string | redacted.Redacted<string>;
-  ConnectorPolicyId?: string;
-  ConnectorDestinationId?: string;
-  ConnectorDeviceId?: string | redacted.Redacted<string>;
-  DeviceSpecificKey?: string | redacted.Redacted<string>;
-  MacAddress?: string | redacted.Redacted<string>;
-  ParentControllerId?: string;
-  Classification?: string | redacted.Redacted<string>;
-  CreatedAt?: Date;
-  UpdatedAt?: Date;
-  ActivatedAt?: Date;
-  HubNetworkMode?: HubNetworkMode;
-  MetaData?: { [key: string]: string | undefined };
-  Tags?: { [key: string]: string | undefined };
-  WiFiSimpleSetupConfiguration?: WiFiSimpleSetupConfiguration;
-}
-export const GetManagedThingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Id: S.optional(S.String),
-    Arn: S.optional(S.String),
-    Owner: S.optional(SensitiveString),
-    CredentialLockerId: S.optional(S.String),
-    AdvertisedProductId: S.optional(S.String),
-    Role: S.optional(Role),
-    ProvisioningStatus: S.optional(ProvisioningStatus),
-    Name: S.optional(S.String),
-    Model: S.optional(SensitiveString),
-    Brand: S.optional(SensitiveString),
-    SerialNumber: S.optional(SensitiveString),
-    UniversalProductCode: S.optional(SensitiveString),
-    InternationalArticleNumber: S.optional(SensitiveString),
-    ConnectorPolicyId: S.optional(S.String),
-    ConnectorDestinationId: S.optional(S.String),
-    ConnectorDeviceId: S.optional(SensitiveString),
-    DeviceSpecificKey: S.optional(SensitiveString),
-    MacAddress: S.optional(SensitiveString),
-    ParentControllerId: S.optional(S.String),
-    Classification: S.optional(SensitiveString),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    ActivatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    HubNetworkMode: S.optional(HubNetworkMode),
-    MetaData: S.optional(MetaData),
-    Tags: S.optional(TagsMap),
-    WiFiSimpleSetupConfiguration: S.optional(WiFiSimpleSetupConfiguration),
-  }),
-).annotate({
-  identifier: "GetManagedThingResponse",
-}) as any as S.Schema<GetManagedThingResponse>;
-export interface UpdateManagedThingRequest {
-  Identifier: string;
-  Owner?: string | redacted.Redacted<string>;
-  CredentialLockerId?: string;
-  SerialNumber?: string | redacted.Redacted<string>;
-  WiFiSimpleSetupConfiguration?: WiFiSimpleSetupConfiguration;
-  Brand?: string | redacted.Redacted<string>;
-  Model?: string | redacted.Redacted<string>;
-  Name?: string;
-  CapabilityReport?: CapabilityReport;
-  CapabilitySchemas?: CapabilitySchemaItem[];
-  Capabilities?: string;
-  Classification?: string | redacted.Redacted<string>;
-  HubNetworkMode?: HubNetworkMode;
-  MetaData?: { [key: string]: string | undefined };
-}
-export const UpdateManagedThingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    Owner: S.optional(SensitiveString),
-    CredentialLockerId: S.optional(S.String),
-    SerialNumber: S.optional(SensitiveString),
-    WiFiSimpleSetupConfiguration: S.optional(WiFiSimpleSetupConfiguration),
-    Brand: S.optional(SensitiveString),
-    Model: S.optional(SensitiveString),
-    Name: S.optional(S.String),
-    CapabilityReport: S.optional(CapabilityReport),
-    CapabilitySchemas: S.optional(CapabilitySchemas),
-    Capabilities: S.optional(S.String),
-    Classification: S.optional(SensitiveString),
-    HubNetworkMode: S.optional(HubNetworkMode),
-    MetaData: S.optional(MetaData),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/managed-things/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateManagedThingRequest",
-}) as any as S.Schema<UpdateManagedThingRequest>;
-export interface UpdateManagedThingResponse {}
-export const UpdateManagedThingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateManagedThingResponse",
-}) as any as S.Schema<UpdateManagedThingResponse>;
-export interface DeleteManagedThingRequest {
-  Identifier: string;
-  Force?: boolean;
-}
-export const DeleteManagedThingRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    Force: S.optional(S.Boolean).pipe(T.HttpQuery("Force")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/managed-things/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteManagedThingRequest",
-}) as any as S.Schema<DeleteManagedThingRequest>;
-export interface DeleteManagedThingResponse {}
-export const DeleteManagedThingResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteManagedThingResponse",
-}) as any as S.Schema<DeleteManagedThingResponse>;
 export interface ListManagedThingsRequest {
   OwnerFilter?: string | redacted.Redacted<string>;
   CredentialLockerFilter?: string;
@@ -2922,156 +3129,7 @@ export const ListManagedThingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListManagedThingsResponse",
 }) as any as S.Schema<ListManagedThingsResponse>;
-export interface GetManagedThingCapabilitiesRequest {
-  Identifier: string;
-}
-export const GetManagedThingCapabilitiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/managed-things-capabilities/{Identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetManagedThingCapabilitiesRequest",
-}) as any as S.Schema<GetManagedThingCapabilitiesRequest>;
-export interface GetManagedThingCapabilitiesResponse {
-  ManagedThingId?: string;
-  Capabilities?: string;
-  CapabilityReport?: CapabilityReport;
-}
-export const GetManagedThingCapabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManagedThingId: S.optional(S.String),
-    Capabilities: S.optional(S.String),
-    CapabilityReport: S.optional(CapabilityReport),
-  }),
-).annotate({
-  identifier: "GetManagedThingCapabilitiesResponse",
-}) as any as S.Schema<GetManagedThingCapabilitiesResponse>;
-export interface GetManagedThingCertificateRequest {
-  Identifier: string;
-}
-export const GetManagedThingCertificateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/managed-things-certificate/{Identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetManagedThingCertificateRequest",
-}) as any as S.Schema<GetManagedThingCertificateRequest>;
-export interface GetManagedThingCertificateResponse {
-  ManagedThingId?: string;
-  CertificatePem?: string;
-}
-export const GetManagedThingCertificateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManagedThingId: S.optional(S.String),
-    CertificatePem: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetManagedThingCertificateResponse",
-}) as any as S.Schema<GetManagedThingCertificateResponse>;
-export interface GetManagedThingConnectivityDataRequest {
-  Identifier: string;
-}
-export const GetManagedThingConnectivityDataRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/managed-things-connectivity-data/{Identifier}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "GetManagedThingConnectivityDataRequest",
-}) as any as S.Schema<GetManagedThingConnectivityDataRequest>;
-export type DisconnectReasonValue =
-  | "AUTH_ERROR"
-  | "CLIENT_INITIATED_DISCONNECT"
-  | "CLIENT_ERROR"
-  | "CONNECTION_LOST"
-  | "DUPLICATE_CLIENTID"
-  | "FORBIDDEN_ACCESS"
-  | "MQTT_KEEP_ALIVE_TIMEOUT"
-  | "SERVER_ERROR"
-  | "SERVER_INITIATED_DISCONNECT"
-  | "THROTTLED"
-  | "WEBSOCKET_TTL_EXPIRATION"
-  | "CUSTOMAUTH_TTL_EXPIRATION"
-  | "UNKNOWN"
-  | "NONE"
-  | (string & {});
-export const DisconnectReasonValue = /*@__PURE__*/ S.String;
-export interface GetManagedThingConnectivityDataResponse {
-  ManagedThingId?: string;
-  Connected?: boolean;
-  Timestamp?: Date;
-  DisconnectReason?: DisconnectReasonValue;
-}
-export const GetManagedThingConnectivityDataResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ManagedThingId: S.optional(S.String),
-      Connected: S.optional(S.Boolean),
-      Timestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      DisconnectReason: S.optional(DisconnectReasonValue),
-    }),
-).annotate({
-  identifier: "GetManagedThingConnectivityDataResponse",
-}) as any as S.Schema<GetManagedThingConnectivityDataResponse>;
-export interface GetManagedThingMetaDataRequest {
-  Identifier: string;
-}
-export const GetManagedThingMetaDataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/managed-things-metadata/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetManagedThingMetaDataRequest",
-}) as any as S.Schema<GetManagedThingMetaDataRequest>;
-export interface GetManagedThingMetaDataResponse {
-  ManagedThingId?: string;
-  MetaData?: { [key: string]: string | undefined };
-}
-export const GetManagedThingMetaDataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManagedThingId: S.optional(S.String),
-    MetaData: S.optional(MetaData),
-  }),
-).annotate({
-  identifier: "GetManagedThingMetaDataResponse",
-}) as any as S.Schema<GetManagedThingMetaDataResponse>;
+export type CapabilityId = string;
 export interface ListManagedThingSchemasRequest {
   Identifier: string;
   EndpointIdFilter?: string;
@@ -3133,174 +3191,6 @@ export const ListManagedThingSchemasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListManagedThingSchemasResponse",
 }) as any as S.Schema<ListManagedThingSchemasResponse>;
-export interface GetManagedThingStateRequest {
-  ManagedThingId: string;
-}
-export const GetManagedThingStateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManagedThingId: S.String.pipe(T.HttpLabel("ManagedThingId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/managed-thing-states/{ManagedThingId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetManagedThingStateRequest",
-}) as any as S.Schema<GetManagedThingStateRequest>;
-export interface StateCapability {
-  id: string;
-  name: string;
-  version: string;
-  properties?: any;
-}
-export const StateCapability = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    version: S.String,
-    properties: S.optional(S.Any),
-  }),
-).annotate({
-  identifier: "StateCapability",
-}) as any as S.Schema<StateCapability>;
-export type StateCapabilities = StateCapability[];
-export const StateCapabilities = /*@__PURE__*/ S.Array(StateCapability);
-export interface StateEndpoint {
-  endpointId: string;
-  capabilities: StateCapability[];
-}
-export const StateEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ endpointId: S.String, capabilities: StateCapabilities }),
-).annotate({ identifier: "StateEndpoint" }) as any as S.Schema<StateEndpoint>;
-export type StateEndpoints = StateEndpoint[];
-export const StateEndpoints = /*@__PURE__*/ S.Array(StateEndpoint);
-export interface GetManagedThingStateResponse {
-  Endpoints: StateEndpoint[];
-}
-export const GetManagedThingStateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Endpoints: StateEndpoints }),
-).annotate({
-  identifier: "GetManagedThingStateResponse",
-}) as any as S.Schema<GetManagedThingStateResponse>;
-export type EventType =
-  | "DEVICE_COMMAND"
-  | "DEVICE_COMMAND_REQUEST"
-  | "DEVICE_DISCOVERY_STATUS"
-  | "DEVICE_EVENT"
-  | "DEVICE_LIFE_CYCLE"
-  | "DEVICE_STATE"
-  | "DEVICE_OTA"
-  | "DEVICE_WSS"
-  | "CONNECTOR_ASSOCIATION"
-  | "ACCOUNT_ASSOCIATION"
-  | "CONNECTOR_ERROR_REPORT"
-  | (string & {});
-export const EventType = /*@__PURE__*/ S.String;
-export interface CreateNotificationConfigurationRequest {
-  EventType: EventType;
-  DestinationName: string;
-  ClientToken?: string;
-  Tags?: { [key: string]: string | undefined };
-}
-export const CreateNotificationConfigurationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      EventType: EventType,
-      DestinationName: S.String,
-      ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-      Tags: S.optional(TagsMap),
-    }).pipe(
-      T.all(
-        T.Http({ method: "POST", uri: "/notification-configurations" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "CreateNotificationConfigurationRequest",
-}) as any as S.Schema<CreateNotificationConfigurationRequest>;
-export interface CreateNotificationConfigurationResponse {
-  EventType?: EventType;
-}
-export const CreateNotificationConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({ EventType: S.optional(EventType) }),
-).annotate({
-  identifier: "CreateNotificationConfigurationResponse",
-}) as any as S.Schema<CreateNotificationConfigurationResponse>;
-export interface DeleteNotificationConfigurationRequest {
-  EventType: EventType;
-}
-export const DeleteNotificationConfigurationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ EventType: EventType.pipe(T.HttpLabel("EventType")) }).pipe(
-      T.all(
-        T.Http({
-          method: "DELETE",
-          uri: "/notification-configurations/{EventType}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "DeleteNotificationConfigurationRequest",
-}) as any as S.Schema<DeleteNotificationConfigurationRequest>;
-export interface DeleteNotificationConfigurationResponse {}
-export const DeleteNotificationConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteNotificationConfigurationResponse",
-}) as any as S.Schema<DeleteNotificationConfigurationResponse>;
-export interface GetNotificationConfigurationRequest {
-  EventType: EventType;
-}
-export const GetNotificationConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ EventType: EventType.pipe(T.HttpLabel("EventType")) }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/notification-configurations/{EventType}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetNotificationConfigurationRequest",
-}) as any as S.Schema<GetNotificationConfigurationRequest>;
-export interface GetNotificationConfigurationResponse {
-  EventType?: EventType;
-  DestinationName?: string;
-  CreatedAt?: Date;
-  UpdatedAt?: Date;
-  Tags?: { [key: string]: string | undefined };
-}
-export const GetNotificationConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      EventType: S.optional(EventType),
-      DestinationName: S.optional(S.String),
-      CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-      Tags: S.optional(TagsMap),
-    }),
-).annotate({
-  identifier: "GetNotificationConfigurationResponse",
-}) as any as S.Schema<GetNotificationConfigurationResponse>;
 export interface ListNotificationConfigurationsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -3355,225 +3245,6 @@ export const ListNotificationConfigurationsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListNotificationConfigurationsResponse",
 }) as any as S.Schema<ListNotificationConfigurationsResponse>;
-export interface UpdateNotificationConfigurationRequest {
-  EventType: EventType;
-  DestinationName: string;
-}
-export const UpdateNotificationConfigurationRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      EventType: EventType.pipe(T.HttpLabel("EventType")),
-      DestinationName: S.String,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "PUT",
-          uri: "/notification-configurations/{EventType}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "UpdateNotificationConfigurationRequest",
-}) as any as S.Schema<UpdateNotificationConfigurationRequest>;
-export interface UpdateNotificationConfigurationResponse {}
-export const UpdateNotificationConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "UpdateNotificationConfigurationResponse",
-}) as any as S.Schema<UpdateNotificationConfigurationResponse>;
-export type AbortCriteriaAction = "CANCEL" | (string & {});
-export const AbortCriteriaAction = /*@__PURE__*/ S.String;
-export type AbortCriteriaFailureType =
-  | "FAILED"
-  | "REJECTED"
-  | "TIMED_OUT"
-  | "ALL"
-  | (string & {});
-export const AbortCriteriaFailureType = /*@__PURE__*/ S.String;
-export interface AbortConfigCriteria {
-  Action?: AbortCriteriaAction;
-  FailureType?: AbortCriteriaFailureType;
-  MinNumberOfExecutedThings?: number;
-  ThresholdPercentage?: number;
-}
-export const AbortConfigCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Action: S.optional(AbortCriteriaAction),
-    FailureType: S.optional(AbortCriteriaFailureType),
-    MinNumberOfExecutedThings: S.optional(S.Number),
-    ThresholdPercentage: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AbortConfigCriteria",
-}) as any as S.Schema<AbortConfigCriteria>;
-export type AbortConfigCriteriaList = AbortConfigCriteria[];
-export const AbortConfigCriteriaList =
-  /*@__PURE__*/ S.Array(AbortConfigCriteria);
-export interface OtaTaskAbortConfig {
-  AbortConfigCriteriaList?: AbortConfigCriteria[];
-}
-export const OtaTaskAbortConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AbortConfigCriteriaList: S.optional(AbortConfigCriteriaList) }),
-).annotate({
-  identifier: "OtaTaskAbortConfig",
-}) as any as S.Schema<OtaTaskAbortConfig>;
-export interface RolloutRateIncreaseCriteria {
-  numberOfNotifiedThings?: number;
-  numberOfSucceededThings?: number;
-}
-export const RolloutRateIncreaseCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    numberOfNotifiedThings: S.optional(S.Number),
-    numberOfSucceededThings: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RolloutRateIncreaseCriteria",
-}) as any as S.Schema<RolloutRateIncreaseCriteria>;
-export interface ExponentialRolloutRate {
-  BaseRatePerMinute?: number;
-  IncrementFactor?: number;
-  RateIncreaseCriteria?: RolloutRateIncreaseCriteria;
-}
-export const ExponentialRolloutRate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    BaseRatePerMinute: S.optional(S.Number),
-    IncrementFactor: S.optional(S.Number),
-    RateIncreaseCriteria: S.optional(RolloutRateIncreaseCriteria),
-  }),
-).annotate({
-  identifier: "ExponentialRolloutRate",
-}) as any as S.Schema<ExponentialRolloutRate>;
-export interface OtaTaskExecutionRolloutConfig {
-  ExponentialRolloutRate?: ExponentialRolloutRate;
-  MaximumPerMinute?: number;
-}
-export const OtaTaskExecutionRolloutConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ExponentialRolloutRate: S.optional(ExponentialRolloutRate),
-    MaximumPerMinute: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "OtaTaskExecutionRolloutConfig",
-}) as any as S.Schema<OtaTaskExecutionRolloutConfig>;
-export interface OtaTaskTimeoutConfig {
-  InProgressTimeoutInMinutes?: number;
-}
-export const OtaTaskTimeoutConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ InProgressTimeoutInMinutes: S.optional(S.Number) }),
-).annotate({
-  identifier: "OtaTaskTimeoutConfig",
-}) as any as S.Schema<OtaTaskTimeoutConfig>;
-export interface PushConfig {
-  AbortConfig?: OtaTaskAbortConfig;
-  RolloutConfig?: OtaTaskExecutionRolloutConfig;
-  TimeoutConfig?: OtaTaskTimeoutConfig;
-}
-export const PushConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AbortConfig: S.optional(OtaTaskAbortConfig),
-    RolloutConfig: S.optional(OtaTaskExecutionRolloutConfig),
-    TimeoutConfig: S.optional(OtaTaskTimeoutConfig),
-  }),
-).annotate({ identifier: "PushConfig" }) as any as S.Schema<PushConfig>;
-export interface CreateOtaTaskConfigurationRequest {
-  Description?: string;
-  Name?: string | redacted.Redacted<string>;
-  PushConfig?: PushConfig;
-  ClientToken?: string;
-}
-export const CreateOtaTaskConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.optional(S.String),
-    Name: S.optional(SensitiveString),
-    PushConfig: S.optional(PushConfig),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/ota-task-configurations" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateOtaTaskConfigurationRequest",
-}) as any as S.Schema<CreateOtaTaskConfigurationRequest>;
-export interface CreateOtaTaskConfigurationResponse {
-  TaskConfigurationId?: string;
-}
-export const CreateOtaTaskConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ TaskConfigurationId: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateOtaTaskConfigurationResponse",
-}) as any as S.Schema<CreateOtaTaskConfigurationResponse>;
-export interface DeleteOtaTaskConfigurationRequest {
-  Identifier: string;
-}
-export const DeleteOtaTaskConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/ota-task-configurations/{Identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteOtaTaskConfigurationRequest",
-}) as any as S.Schema<DeleteOtaTaskConfigurationRequest>;
-export interface DeleteOtaTaskConfigurationResponse {}
-export const DeleteOtaTaskConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteOtaTaskConfigurationResponse",
-}) as any as S.Schema<DeleteOtaTaskConfigurationResponse>;
-export interface GetOtaTaskConfigurationRequest {
-  Identifier: string;
-}
-export const GetOtaTaskConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/ota-task-configurations/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetOtaTaskConfigurationRequest",
-}) as any as S.Schema<GetOtaTaskConfigurationRequest>;
-export interface GetOtaTaskConfigurationResponse {
-  TaskConfigurationId?: string;
-  Name?: string | redacted.Redacted<string>;
-  PushConfig?: PushConfig;
-  Description?: string;
-  CreatedAt?: Date;
-}
-export const GetOtaTaskConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TaskConfigurationId: S.optional(S.String),
-    Name: S.optional(SensitiveString),
-    PushConfig: S.optional(PushConfig),
-    Description: S.optional(S.String),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "GetOtaTaskConfigurationResponse",
-}) as any as S.Schema<GetOtaTaskConfigurationResponse>;
 export interface ListOtaTaskConfigurationsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -3625,242 +3296,20 @@ export const ListOtaTaskConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOtaTaskConfigurationsResponse",
 }) as any as S.Schema<ListOtaTaskConfigurationsResponse>;
-export type OtaProtocol = "HTTP" | (string & {});
-export const OtaProtocol = /*@__PURE__*/ S.String;
-export type Target = string[];
-export const Target = /*@__PURE__*/ S.Array(S.String);
-export type OtaMechanism = "PUSH" | (string & {});
-export const OtaMechanism = /*@__PURE__*/ S.String;
-export type OtaType = "ONE_TIME" | "CONTINUOUS" | (string & {});
-export const OtaType = /*@__PURE__*/ S.String;
-export type SchedulingConfigEndBehavior =
-  | "STOP_ROLLOUT"
-  | "CANCEL"
-  | "FORCE_CANCEL"
-  | (string & {});
-export const SchedulingConfigEndBehavior = /*@__PURE__*/ S.String;
-export interface ScheduleMaintenanceWindow {
-  DurationInMinutes?: number;
-  StartTime?: string;
-}
-export const ScheduleMaintenanceWindow = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DurationInMinutes: S.optional(S.Number),
-    StartTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ScheduleMaintenanceWindow",
-}) as any as S.Schema<ScheduleMaintenanceWindow>;
-export type ScheduleMaintenanceWindowList = ScheduleMaintenanceWindow[];
-export const ScheduleMaintenanceWindowList = /*@__PURE__*/ S.Array(
-  ScheduleMaintenanceWindow,
-);
-export interface OtaTaskSchedulingConfig {
-  EndBehavior?: SchedulingConfigEndBehavior;
-  EndTime?: string;
-  MaintenanceWindows?: ScheduleMaintenanceWindow[];
-  StartTime?: string;
-}
-export const OtaTaskSchedulingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    EndBehavior: S.optional(SchedulingConfigEndBehavior),
-    EndTime: S.optional(S.String),
-    MaintenanceWindows: S.optional(ScheduleMaintenanceWindowList),
-    StartTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OtaTaskSchedulingConfig",
-}) as any as S.Schema<OtaTaskSchedulingConfig>;
-export type RetryCriteriaFailureType =
-  | "FAILED"
-  | "TIMED_OUT"
-  | "ALL"
-  | (string & {});
-export const RetryCriteriaFailureType = /*@__PURE__*/ S.String;
-export interface RetryConfigCriteria {
-  FailureType?: RetryCriteriaFailureType;
-  MinNumberOfRetries?: number;
-}
-export const RetryConfigCriteria = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FailureType: S.optional(RetryCriteriaFailureType),
-    MinNumberOfRetries: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RetryConfigCriteria",
-}) as any as S.Schema<RetryConfigCriteria>;
-export type RetryConfigCriteriaList = RetryConfigCriteria[];
-export const RetryConfigCriteriaList =
-  /*@__PURE__*/ S.Array(RetryConfigCriteria);
-export interface OtaTaskExecutionRetryConfig {
-  RetryConfigCriteria?: RetryConfigCriteria[];
-}
-export const OtaTaskExecutionRetryConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RetryConfigCriteria: S.optional(RetryConfigCriteriaList) }),
-).annotate({
-  identifier: "OtaTaskExecutionRetryConfig",
-}) as any as S.Schema<OtaTaskExecutionRetryConfig>;
-export interface CreateOtaTaskRequest {
-  Description?: string;
-  S3Url: string;
-  Protocol?: OtaProtocol;
-  Target?: string[];
-  TaskConfigurationId?: string;
-  OtaMechanism?: OtaMechanism;
-  OtaType: OtaType;
-  OtaTargetQueryString?: string;
-  ClientToken?: string;
-  OtaSchedulingConfig?: OtaTaskSchedulingConfig;
-  OtaTaskExecutionRetryConfig?: OtaTaskExecutionRetryConfig;
-  Tags?: { [key: string]: string | undefined };
-}
-export const CreateOtaTaskRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Description: S.optional(S.String),
-    S3Url: S.String,
-    Protocol: S.optional(OtaProtocol),
-    Target: S.optional(Target),
-    TaskConfigurationId: S.optional(S.String),
-    OtaMechanism: S.optional(OtaMechanism),
-    OtaType: OtaType,
-    OtaTargetQueryString: S.optional(S.String),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    OtaSchedulingConfig: S.optional(OtaTaskSchedulingConfig),
-    OtaTaskExecutionRetryConfig: S.optional(OtaTaskExecutionRetryConfig),
-    Tags: S.optional(TagsMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/ota-tasks" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateOtaTaskRequest",
-}) as any as S.Schema<CreateOtaTaskRequest>;
-export interface CreateOtaTaskResponse {
-  TaskId?: string;
-  TaskArn?: string;
-  Description?: string;
-}
-export const CreateOtaTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TaskId: S.optional(S.String),
-    TaskArn: S.optional(S.String),
-    Description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateOtaTaskResponse",
-}) as any as S.Schema<CreateOtaTaskResponse>;
-export interface GetOtaTaskRequest {
+export type OtaNextToken = string;
+export interface ListOtaTaskExecutionsRequest {
   Identifier: string;
+  NextToken?: string;
+  MaxResults?: number;
 }
-export const GetOtaTaskRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/ota-tasks/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetOtaTaskRequest",
-}) as any as S.Schema<GetOtaTaskRequest>;
-export interface TaskProcessingDetails {
-  NumberOfCanceledThings?: number;
-  NumberOfFailedThings?: number;
-  NumberOfInProgressThings?: number;
-  numberOfQueuedThings?: number;
-  numberOfRejectedThings?: number;
-  numberOfRemovedThings?: number;
-  numberOfSucceededThings?: number;
-  numberOfTimedOutThings?: number;
-  processingTargets?: string[];
-}
-export const TaskProcessingDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NumberOfCanceledThings: S.optional(S.Number),
-    NumberOfFailedThings: S.optional(S.Number),
-    NumberOfInProgressThings: S.optional(S.Number),
-    numberOfQueuedThings: S.optional(S.Number),
-    numberOfRejectedThings: S.optional(S.Number),
-    numberOfRemovedThings: S.optional(S.Number),
-    numberOfSucceededThings: S.optional(S.Number),
-    numberOfTimedOutThings: S.optional(S.Number),
-    processingTargets: S.optional(Target),
-  }),
-).annotate({
-  identifier: "TaskProcessingDetails",
-}) as any as S.Schema<TaskProcessingDetails>;
-export type OtaStatus =
-  | "IN_PROGRESS"
-  | "CANCELED"
-  | "COMPLETED"
-  | "DELETION_IN_PROGRESS"
-  | "SCHEDULED"
-  | (string & {});
-export const OtaStatus = /*@__PURE__*/ S.String;
-export interface GetOtaTaskResponse {
-  TaskId?: string;
-  TaskArn?: string;
-  Description?: string;
-  S3Url?: string;
-  Protocol?: OtaProtocol;
-  OtaType?: OtaType;
-  OtaTargetQueryString?: string;
-  OtaMechanism?: OtaMechanism;
-  Target?: string[];
-  CreatedAt?: Date;
-  LastUpdatedAt?: Date;
-  TaskConfigurationId?: string;
-  TaskProcessingDetails?: TaskProcessingDetails;
-  OtaSchedulingConfig?: OtaTaskSchedulingConfig;
-  OtaTaskExecutionRetryConfig?: OtaTaskExecutionRetryConfig;
-  Status?: OtaStatus;
-  Tags?: { [key: string]: string | undefined };
-}
-export const GetOtaTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TaskId: S.optional(S.String),
-    TaskArn: S.optional(S.String),
-    Description: S.optional(S.String),
-    S3Url: S.optional(S.String),
-    Protocol: S.optional(OtaProtocol),
-    OtaType: S.optional(OtaType),
-    OtaTargetQueryString: S.optional(S.String),
-    OtaMechanism: S.optional(OtaMechanism),
-    Target: S.optional(Target),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    TaskConfigurationId: S.optional(S.String),
-    TaskProcessingDetails: S.optional(TaskProcessingDetails),
-    OtaSchedulingConfig: S.optional(OtaTaskSchedulingConfig),
-    OtaTaskExecutionRetryConfig: S.optional(OtaTaskExecutionRetryConfig),
-    Status: S.optional(OtaStatus),
-    Tags: S.optional(TagsMap),
-  }),
-).annotate({
-  identifier: "GetOtaTaskResponse",
-}) as any as S.Schema<GetOtaTaskResponse>;
-export interface UpdateOtaTaskRequest {
-  Identifier: string;
-  Description?: string;
-  TaskConfigurationId?: string;
-}
-export const UpdateOtaTaskRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListOtaTaskExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    Description: S.optional(S.String),
-    TaskConfigurationId: S.optional(S.String),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
   }).pipe(
     T.all(
-      T.Http({ method: "PUT", uri: "/ota-tasks/{Identifier}" }),
+      T.Http({ method: "GET", uri: "/ota-tasks/{Identifier}/devices" }),
       svc,
       auth,
       proto,
@@ -3869,37 +3318,73 @@ export const UpdateOtaTaskRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "UpdateOtaTaskRequest",
-}) as any as S.Schema<UpdateOtaTaskRequest>;
-export interface UpdateOtaTaskResponse {}
-export const UpdateOtaTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateOtaTaskResponse",
-}) as any as S.Schema<UpdateOtaTaskResponse>;
-export interface DeleteOtaTaskRequest {
-  Identifier: string;
+  identifier: "ListOtaTaskExecutionsRequest",
+}) as any as S.Schema<ListOtaTaskExecutionsRequest>;
+export type ExecutionNumber = number;
+export type QueuedAt = Date;
+export type RetryAttempt = number;
+export type StartedAt = Date;
+export type OtaTaskExecutionStatus =
+  | "QUEUED"
+  | "IN_PROGRESS"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "TIMED_OUT"
+  | "REJECTED"
+  | "REMOVED"
+  | "CANCELED"
+  | (string & {});
+export const OtaTaskExecutionStatus = /*@__PURE__*/ S.String;
+
+export interface OtaTaskExecutionSummary {
+  ExecutionNumber?: number;
+  LastUpdatedAt?: Date;
+  QueuedAt?: Date;
+  RetryAttempt?: number;
+  StartedAt?: Date;
+  Status?: OtaTaskExecutionStatus;
 }
-export const DeleteOtaTaskRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/ota-tasks/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
+export const OtaTaskExecutionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExecutionNumber: S.optional(S.Number),
+    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    QueuedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    RetryAttempt: S.optional(S.Number),
+    StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Status: S.optional(OtaTaskExecutionStatus),
+  }),
 ).annotate({
-  identifier: "DeleteOtaTaskRequest",
-}) as any as S.Schema<DeleteOtaTaskRequest>;
-export interface DeleteOtaTaskResponse {}
-export const DeleteOtaTaskResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  identifier: "OtaTaskExecutionSummary",
+}) as any as S.Schema<OtaTaskExecutionSummary>;
+export interface OtaTaskExecutionSummaries {
+  TaskExecutionSummary?: OtaTaskExecutionSummary;
+  ManagedThingId?: string;
+}
+export const OtaTaskExecutionSummaries = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TaskExecutionSummary: S.optional(OtaTaskExecutionSummary),
+    ManagedThingId: S.optional(S.String),
+  }),
 ).annotate({
-  identifier: "DeleteOtaTaskResponse",
-}) as any as S.Schema<DeleteOtaTaskResponse>;
+  identifier: "OtaTaskExecutionSummaries",
+}) as any as S.Schema<OtaTaskExecutionSummaries>;
+export type OtaTaskExecutionSummariesListDefinition =
+  OtaTaskExecutionSummaries[];
+export const OtaTaskExecutionSummariesListDefinition = /*@__PURE__*/ S.Array(
+  OtaTaskExecutionSummaries,
+);
+export interface ListOtaTaskExecutionsResponse {
+  ExecutionSummaries?: OtaTaskExecutionSummaries[];
+  NextToken?: string;
+}
+export const ListOtaTaskExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ExecutionSummaries: S.optional(OtaTaskExecutionSummariesListDefinition),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOtaTaskExecutionsResponse",
+}) as any as S.Schema<ListOtaTaskExecutionsResponse>;
 export interface ListOtaTasksRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -3953,212 +3438,6 @@ export const ListOtaTasksResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOtaTasksResponse",
 }) as any as S.Schema<ListOtaTasksResponse>;
-export interface ListOtaTaskExecutionsRequest {
-  Identifier: string;
-  NextToken?: string;
-  MaxResults?: number;
-}
-export const ListOtaTaskExecutionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/ota-tasks/{Identifier}/devices" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListOtaTaskExecutionsRequest",
-}) as any as S.Schema<ListOtaTaskExecutionsRequest>;
-export type OtaTaskExecutionStatus =
-  | "QUEUED"
-  | "IN_PROGRESS"
-  | "SUCCEEDED"
-  | "FAILED"
-  | "TIMED_OUT"
-  | "REJECTED"
-  | "REMOVED"
-  | "CANCELED"
-  | (string & {});
-export const OtaTaskExecutionStatus = /*@__PURE__*/ S.String;
-export interface OtaTaskExecutionSummary {
-  ExecutionNumber?: number;
-  LastUpdatedAt?: Date;
-  QueuedAt?: Date;
-  RetryAttempt?: number;
-  StartedAt?: Date;
-  Status?: OtaTaskExecutionStatus;
-}
-export const OtaTaskExecutionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ExecutionNumber: S.optional(S.Number),
-    LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    QueuedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    RetryAttempt: S.optional(S.Number),
-    StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Status: S.optional(OtaTaskExecutionStatus),
-  }),
-).annotate({
-  identifier: "OtaTaskExecutionSummary",
-}) as any as S.Schema<OtaTaskExecutionSummary>;
-export interface OtaTaskExecutionSummaries {
-  TaskExecutionSummary?: OtaTaskExecutionSummary;
-  ManagedThingId?: string;
-}
-export const OtaTaskExecutionSummaries = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TaskExecutionSummary: S.optional(OtaTaskExecutionSummary),
-    ManagedThingId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OtaTaskExecutionSummaries",
-}) as any as S.Schema<OtaTaskExecutionSummaries>;
-export type OtaTaskExecutionSummariesListDefinition =
-  OtaTaskExecutionSummaries[];
-export const OtaTaskExecutionSummariesListDefinition = /*@__PURE__*/ S.Array(
-  OtaTaskExecutionSummaries,
-);
-export interface ListOtaTaskExecutionsResponse {
-  ExecutionSummaries?: OtaTaskExecutionSummaries[];
-  NextToken?: string;
-}
-export const ListOtaTaskExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ExecutionSummaries: S.optional(OtaTaskExecutionSummariesListDefinition),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOtaTaskExecutionsResponse",
-}) as any as S.Schema<ListOtaTaskExecutionsResponse>;
-export type ProvisioningType = "FLEET_PROVISIONING" | "JITR" | (string & {});
-export const ProvisioningType = /*@__PURE__*/ S.String;
-export interface CreateProvisioningProfileRequest {
-  ProvisioningType: ProvisioningType;
-  CaCertificate?: string | redacted.Redacted<string>;
-  ClaimCertificate?: string | redacted.Redacted<string>;
-  Name?: string;
-  ClientToken?: string;
-  Tags?: { [key: string]: string | undefined };
-}
-export const CreateProvisioningProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ProvisioningType: ProvisioningType,
-    CaCertificate: S.optional(SensitiveString),
-    ClaimCertificate: S.optional(SensitiveString),
-    Name: S.optional(S.String),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    Tags: S.optional(TagsMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/provisioning-profiles" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateProvisioningProfileRequest",
-}) as any as S.Schema<CreateProvisioningProfileRequest>;
-export type ProvisioningProfileStatus =
-  | "CREATE_IN_PROGRESS"
-  | "CREATE_FAILED"
-  | "CREATED"
-  | "DELETE_IN_PROGRESS"
-  | "DELETE_FAILED"
-  | (string & {});
-export const ProvisioningProfileStatus = /*@__PURE__*/ S.String;
-export interface CreateProvisioningProfileResponse {
-  Arn?: string;
-  Name?: string;
-  ProvisioningType?: ProvisioningType;
-  Id?: string;
-  Status?: ProvisioningProfileStatus;
-  ClaimCertificate?: string | redacted.Redacted<string>;
-  ClaimCertificatePrivateKey?: string | redacted.Redacted<string>;
-}
-export const CreateProvisioningProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Name: S.optional(S.String),
-    ProvisioningType: S.optional(ProvisioningType),
-    Id: S.optional(S.String),
-    Status: S.optional(ProvisioningProfileStatus),
-    ClaimCertificate: S.optional(SensitiveString),
-    ClaimCertificatePrivateKey: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "CreateProvisioningProfileResponse",
-}) as any as S.Schema<CreateProvisioningProfileResponse>;
-export interface GetProvisioningProfileRequest {
-  Identifier: string;
-}
-export const GetProvisioningProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/provisioning-profiles/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetProvisioningProfileRequest",
-}) as any as S.Schema<GetProvisioningProfileRequest>;
-export interface GetProvisioningProfileResponse {
-  Arn?: string;
-  Name?: string;
-  ProvisioningType?: ProvisioningType;
-  Id?: string;
-  Status?: ProvisioningProfileStatus;
-  ClaimCertificate?: string | redacted.Redacted<string>;
-  Tags?: { [key: string]: string | undefined };
-}
-export const GetProvisioningProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Name: S.optional(S.String),
-    ProvisioningType: S.optional(ProvisioningType),
-    Id: S.optional(S.String),
-    Status: S.optional(ProvisioningProfileStatus),
-    ClaimCertificate: S.optional(SensitiveString),
-    Tags: S.optional(TagsMap),
-  }),
-).annotate({
-  identifier: "GetProvisioningProfileResponse",
-}) as any as S.Schema<GetProvisioningProfileResponse>;
-export interface DeleteProvisioningProfileRequest {
-  Identifier: string;
-}
-export const DeleteProvisioningProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/provisioning-profiles/{Identifier}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteProvisioningProfileRequest",
-}) as any as S.Schema<DeleteProvisioningProfileRequest>;
-export interface DeleteProvisioningProfileResponse {}
-export const DeleteProvisioningProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteProvisioningProfileResponse",
-}) as any as S.Schema<DeleteProvisioningProfileResponse>;
 export interface ListProvisioningProfilesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -4214,174 +3493,6 @@ export const ListProvisioningProfilesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProvisioningProfilesResponse",
 }) as any as S.Schema<ListProvisioningProfilesResponse>;
-export interface GetRuntimeLogConfigurationRequest {
-  ManagedThingId: string;
-}
-export const GetRuntimeLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManagedThingId: S.String.pipe(T.HttpLabel("ManagedThingId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/runtime-log-configurations/{ManagedThingId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetRuntimeLogConfigurationRequest",
-}) as any as S.Schema<GetRuntimeLogConfigurationRequest>;
-export interface RuntimeLogConfigurations {
-  LogLevel?: LogLevel;
-  LogFlushLevel?: LogLevel;
-  LocalStoreLocation?: string;
-  LocalStoreFileRotationMaxFiles?: number;
-  LocalStoreFileRotationMaxBytes?: number;
-  UploadLog?: boolean;
-  UploadPeriodMinutes?: number;
-  DeleteLocalStoreAfterUpload?: boolean;
-}
-export const RuntimeLogConfigurations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LogLevel: S.optional(LogLevel),
-    LogFlushLevel: S.optional(LogLevel),
-    LocalStoreLocation: S.optional(S.String),
-    LocalStoreFileRotationMaxFiles: S.optional(S.Number),
-    LocalStoreFileRotationMaxBytes: S.optional(S.Number),
-    UploadLog: S.optional(S.Boolean),
-    UploadPeriodMinutes: S.optional(S.Number),
-    DeleteLocalStoreAfterUpload: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RuntimeLogConfigurations",
-}) as any as S.Schema<RuntimeLogConfigurations>;
-export interface GetRuntimeLogConfigurationResponse {
-  ManagedThingId?: string;
-  RuntimeLogConfigurations?: RuntimeLogConfigurations;
-}
-export const GetRuntimeLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManagedThingId: S.optional(S.String),
-    RuntimeLogConfigurations: S.optional(RuntimeLogConfigurations),
-  }),
-).annotate({
-  identifier: "GetRuntimeLogConfigurationResponse",
-}) as any as S.Schema<GetRuntimeLogConfigurationResponse>;
-export interface PutRuntimeLogConfigurationRequest {
-  ManagedThingId: string;
-  RuntimeLogConfigurations: RuntimeLogConfigurations;
-}
-export const PutRuntimeLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManagedThingId: S.String.pipe(T.HttpLabel("ManagedThingId")),
-    RuntimeLogConfigurations: RuntimeLogConfigurations,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/runtime-log-configurations/{ManagedThingId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutRuntimeLogConfigurationRequest",
-}) as any as S.Schema<PutRuntimeLogConfigurationRequest>;
-export interface PutRuntimeLogConfigurationResponse {}
-export const PutRuntimeLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutRuntimeLogConfigurationResponse",
-}) as any as S.Schema<PutRuntimeLogConfigurationResponse>;
-export interface ResetRuntimeLogConfigurationRequest {
-  ManagedThingId: string;
-}
-export const ResetRuntimeLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ManagedThingId: S.String.pipe(T.HttpLabel("ManagedThingId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/runtime-log-configurations/{ManagedThingId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ResetRuntimeLogConfigurationRequest",
-}) as any as S.Schema<ResetRuntimeLogConfigurationRequest>;
-export interface ResetRuntimeLogConfigurationResponse {}
-export const ResetRuntimeLogConfigurationResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ResetRuntimeLogConfigurationResponse",
-}) as any as S.Schema<ResetRuntimeLogConfigurationResponse>;
-export type SchemaVersionType = "capability" | "definition" | (string & {});
-export const SchemaVersionType = /*@__PURE__*/ S.String;
-export interface GetSchemaVersionRequest {
-  Type: SchemaVersionType;
-  SchemaVersionedId: string;
-  Format?: SchemaVersionFormat;
-}
-export const GetSchemaVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Type: SchemaVersionType.pipe(T.HttpLabel("Type")),
-    SchemaVersionedId: S.String.pipe(T.HttpLabel("SchemaVersionedId")),
-    Format: S.optional(SchemaVersionFormat).pipe(T.HttpQuery("Format")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/schema-versions/{Type}/{SchemaVersionedId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetSchemaVersionRequest",
-}) as any as S.Schema<GetSchemaVersionRequest>;
-export type SchemaVersionVisibility = "PUBLIC" | "PRIVATE" | (string & {});
-export const SchemaVersionVisibility = /*@__PURE__*/ S.String;
-export interface GetSchemaVersionResponse {
-  SchemaId?: string;
-  Type?: SchemaVersionType;
-  Description?: string;
-  Namespace?: string;
-  SemanticVersion?: string;
-  Visibility?: SchemaVersionVisibility;
-  Schema?: any;
-}
-export const GetSchemaVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SchemaId: S.optional(S.String),
-    Type: S.optional(SchemaVersionType),
-    Description: S.optional(S.String),
-    Namespace: S.optional(S.String),
-    SemanticVersion: S.optional(S.String),
-    Visibility: S.optional(SchemaVersionVisibility),
-    Schema: S.optional(S.Any),
-  }),
-).annotate({
-  identifier: "GetSchemaVersionResponse",
-}) as any as S.Schema<GetSchemaVersionResponse>;
 export interface ListSchemaVersionsRequest {
   Type: SchemaVersionType;
   MaxResults?: number;
@@ -4451,256 +3562,992 @@ export const ListSchemaVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSchemaVersionsResponse",
 }) as any as S.Schema<ListSchemaVersionsResponse>;
+export type IoTManagedIntegrationsResourceARN = string;
+export interface ListTagsForResourceRequest {
+  ResourceArn: string;
+}
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListTagsForResourceRequest",
+}) as any as S.Schema<ListTagsForResourceRequest>;
+export interface ListTagsForResourceResponse {
+  tags?: { [key: string]: string | undefined };
+}
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagsMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
+export interface PutDefaultEncryptionConfigurationRequest {
+  encryptionType: EncryptionType;
+  kmsKeyArn?: string;
+}
+export const PutDefaultEncryptionConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      encryptionType: EncryptionType,
+      kmsKeyArn: S.optional(S.String),
+    }).pipe(
+      T.all(
+        T.Http({ method: "POST", uri: "/configuration/account/encryption" }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "PutDefaultEncryptionConfigurationRequest",
+}) as any as S.Schema<PutDefaultEncryptionConfigurationRequest>;
+export interface PutDefaultEncryptionConfigurationResponse {
+  configurationStatus: ConfigurationStatus;
+  encryptionType: EncryptionType;
+  kmsKeyArn?: string;
+}
+export const PutDefaultEncryptionConfigurationResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      configurationStatus: ConfigurationStatus,
+      encryptionType: EncryptionType,
+      kmsKeyArn: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PutDefaultEncryptionConfigurationResponse",
+  }) as any as S.Schema<PutDefaultEncryptionConfigurationResponse>;
+export interface PutHubConfigurationRequest {
+  HubTokenTimerExpirySettingInSeconds: number;
+}
+export const PutHubConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HubTokenTimerExpirySettingInSeconds: S.Number }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/hub-configuration" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutHubConfigurationRequest",
+}) as any as S.Schema<PutHubConfigurationRequest>;
+export interface PutHubConfigurationResponse {
+  HubTokenTimerExpirySettingInSeconds?: number;
+}
+export const PutHubConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ HubTokenTimerExpirySettingInSeconds: S.optional(S.Number) }),
+).annotate({
+  identifier: "PutHubConfigurationResponse",
+}) as any as S.Schema<PutHubConfigurationResponse>;
+export interface PutRuntimeLogConfigurationRequest {
+  ManagedThingId: string;
+  RuntimeLogConfigurations: RuntimeLogConfigurations;
+}
+export const PutRuntimeLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ManagedThingId: S.String.pipe(T.HttpLabel("ManagedThingId")),
+    RuntimeLogConfigurations: RuntimeLogConfigurations,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/runtime-log-configurations/{ManagedThingId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutRuntimeLogConfigurationRequest",
+}) as any as S.Schema<PutRuntimeLogConfigurationRequest>;
+export interface PutRuntimeLogConfigurationResponse {}
+export const PutRuntimeLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutRuntimeLogConfigurationResponse",
+}) as any as S.Schema<PutRuntimeLogConfigurationResponse>;
+export interface RegisterAccountAssociationRequest {
+  ManagedThingId: string;
+  AccountAssociationId: string;
+  DeviceDiscoveryId: string;
+}
+export const RegisterAccountAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ManagedThingId: S.String,
+    AccountAssociationId: S.String,
+    DeviceDiscoveryId: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/managed-thing-associations/register" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "RegisterAccountAssociationRequest",
+}) as any as S.Schema<RegisterAccountAssociationRequest>;
+export interface RegisterAccountAssociationResponse {
+  AccountAssociationId?: string;
+  DeviceDiscoveryId?: string;
+  ManagedThingId?: string;
+}
+export const RegisterAccountAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountAssociationId: S.optional(S.String),
+    DeviceDiscoveryId: S.optional(S.String),
+    ManagedThingId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RegisterAccountAssociationResponse",
+}) as any as S.Schema<RegisterAccountAssociationResponse>;
+export interface RegisterCustomEndpointRequest {}
+export const RegisterCustomEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/custom-endpoint" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "RegisterCustomEndpointRequest",
+}) as any as S.Schema<RegisterCustomEndpointRequest>;
+export interface RegisterCustomEndpointResponse {
+  EndpointAddress: string;
+}
+export const RegisterCustomEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EndpointAddress: S.String }),
+).annotate({
+  identifier: "RegisterCustomEndpointResponse",
+}) as any as S.Schema<RegisterCustomEndpointResponse>;
+export interface ResetRuntimeLogConfigurationRequest {
+  ManagedThingId: string;
+}
+export const ResetRuntimeLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ManagedThingId: S.String.pipe(T.HttpLabel("ManagedThingId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/runtime-log-configurations/{ManagedThingId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ResetRuntimeLogConfigurationRequest",
+}) as any as S.Schema<ResetRuntimeLogConfigurationRequest>;
+export interface ResetRuntimeLogConfigurationResponse {}
+export const ResetRuntimeLogConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "ResetRuntimeLogConfigurationResponse",
+}) as any as S.Schema<ResetRuntimeLogConfigurationResponse>;
+export type ConnectorId = string;
+export type ThirdPartyUserId = string | redacted.Redacted<string>;
+export type ConnectorEventOperation =
+  | "DEVICE_COMMAND_RESPONSE"
+  | "DEVICE_DISCOVERY"
+  | "DEVICE_EVENT"
+  | "DEVICE_COMMAND_REQUEST"
+  | (string & {});
+export const ConnectorEventOperation = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(410),
-).pipe(C.withBadRequestError) {}
+export type ConnectorEventOperationVersion = string;
+export type ConnectorEventStatusCode = number;
+export type ConnectorEventMessage = string | redacted.Redacted<string>;
+export type TraceId = string;
+export type ClusterId = string;
+export type SpecVersion = string;
+export type MatterAttributeId = string;
+export type MatterCapabilityReportAttributeValue = unknown;
+export interface MatterCapabilityReportAttribute {
+  id?: string;
+  name?: string;
+  value?: any;
+}
+export const MatterCapabilityReportAttribute = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    value: S.optional(S.Any),
+  }),
+).annotate({
+  identifier: "MatterCapabilityReportAttribute",
+}) as any as S.Schema<MatterCapabilityReportAttribute>;
+export type MatterCapabilityReportAttributes =
+  MatterCapabilityReportAttribute[];
+export const MatterCapabilityReportAttributes = /*@__PURE__*/ S.Array(
+  MatterCapabilityReportAttribute,
+);
+export type MatterCommandId = string;
+export type MatterCapabilityReportCommands = string[];
+export const MatterCapabilityReportCommands = /*@__PURE__*/ S.Array(S.String);
+export type MatterEventId = string;
+export type MatterCapabilityReportEvents = string[];
+export const MatterCapabilityReportEvents = /*@__PURE__*/ S.Array(S.String);
+export type MatterCapabilityReportFeatureMap = number;
+export type MatterCapabilityReportGeneratedCommands = string[];
+export const MatterCapabilityReportGeneratedCommands = /*@__PURE__*/ S.Array(
+  S.String,
+);
+export type MatterCapabilityReportFabricIndex = number;
+export interface MatterCapabilityReportCluster {
+  id: string;
+  revision: number;
+  publicId?: string;
+  name?: string;
+  specVersion?: string;
+  attributes?: MatterCapabilityReportAttribute[];
+  commands?: string[];
+  events?: string[];
+  featureMap?: number;
+  generatedCommands?: string[];
+  fabricIndex?: number;
+}
+export const MatterCapabilityReportCluster = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    revision: S.Number,
+    publicId: S.optional(S.String),
+    name: S.optional(S.String),
+    specVersion: S.optional(S.String),
+    attributes: S.optional(MatterCapabilityReportAttributes),
+    commands: S.optional(MatterCapabilityReportCommands),
+    events: S.optional(MatterCapabilityReportEvents),
+    featureMap: S.optional(S.Number),
+    generatedCommands: S.optional(MatterCapabilityReportGeneratedCommands),
+    fabricIndex: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MatterCapabilityReportCluster",
+}) as any as S.Schema<MatterCapabilityReportCluster>;
+export type MatterCapabilityReportClusters = MatterCapabilityReportCluster[];
+export const MatterCapabilityReportClusters = /*@__PURE__*/ S.Array(
+  MatterCapabilityReportCluster,
+);
+export type MatterCapabilityReportEndpointParts = string[];
+export const MatterCapabilityReportEndpointParts = /*@__PURE__*/ S.Array(
+  S.String,
+);
+export type EndpointSemanticTag = string;
+export type MatterCapabilityReportEndpointSemanticTags = string[];
+export const MatterCapabilityReportEndpointSemanticTags = /*@__PURE__*/ S.Array(
+  S.String,
+);
+export type MatterCapabilityReportEndpointClientClusters = string[];
+export const MatterCapabilityReportEndpointClientClusters =
+  /*@__PURE__*/ S.Array(S.String);
+export interface MatterCapabilityReportEndpoint {
+  id: string;
+  deviceTypes: string[];
+  clusters: MatterCapabilityReportCluster[];
+  parts?: string[];
+  semanticTags?: string[];
+  clientClusters?: string[];
+}
+export const MatterCapabilityReportEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    deviceTypes: DeviceTypes,
+    clusters: MatterCapabilityReportClusters,
+    parts: S.optional(MatterCapabilityReportEndpointParts),
+    semanticTags: S.optional(MatterCapabilityReportEndpointSemanticTags),
+    clientClusters: S.optional(MatterCapabilityReportEndpointClientClusters),
+  }),
+).annotate({
+  identifier: "MatterCapabilityReportEndpoint",
+}) as any as S.Schema<MatterCapabilityReportEndpoint>;
+export type MatterCapabilityReportEndpoints = MatterCapabilityReportEndpoint[];
+export const MatterCapabilityReportEndpoints = /*@__PURE__*/ S.Array(
+  MatterCapabilityReportEndpoint,
+);
+export interface MatterCapabilityReport {
+  version: string;
+  nodeId?: string;
+  endpoints: MatterCapabilityReportEndpoint[];
+}
+export const MatterCapabilityReport = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.String,
+    nodeId: S.optional(S.String),
+    endpoints: MatterCapabilityReportEndpoints,
+  }),
+).annotate({
+  identifier: "MatterCapabilityReport",
+}) as any as S.Schema<MatterCapabilityReport>;
+export type DeviceMetadata = unknown;
+export interface Device {
+  ConnectorDeviceId: string | redacted.Redacted<string>;
+  ConnectorDeviceName?: string;
+  CapabilityReport: MatterCapabilityReport;
+  CapabilitySchemas?: CapabilitySchemaItem[];
+  DeviceMetadata?: any;
+}
+export const Device = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConnectorDeviceId: SensitiveString,
+    ConnectorDeviceName: S.optional(S.String),
+    CapabilityReport: MatterCapabilityReport,
+    CapabilitySchemas: S.optional(CapabilitySchemas),
+    DeviceMetadata: S.optional(S.Any),
+  }),
+).annotate({ identifier: "Device" }) as any as S.Schema<Device>;
+export type Devices = Device[];
+export const Devices = /*@__PURE__*/ S.Array(Device);
+export type MatterAttributes = unknown;
+export type MatterFields = unknown;
+export type MatterCommands = { [key: string]: any | undefined };
+export const MatterCommands = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Any.pipe(S.optional),
+);
+export type MatterEvents = { [key: string]: any | undefined };
+export const MatterEvents = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Any.pipe(S.optional),
+);
+export interface MatterCluster {
+  id?: string;
+  attributes?: any;
+  commands?: { [key: string]: any | undefined };
+  events?: { [key: string]: any | undefined };
+}
+export const MatterCluster = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    attributes: S.optional(S.Any),
+    commands: S.optional(MatterCommands),
+    events: S.optional(MatterEvents),
+  }),
+).annotate({ identifier: "MatterCluster" }) as any as S.Schema<MatterCluster>;
+export type MatterClusters = MatterCluster[];
+export const MatterClusters = /*@__PURE__*/ S.Array(MatterCluster);
+export interface MatterEndpoint {
+  id?: string;
+  clusters?: MatterCluster[];
+}
+export const MatterEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ id: S.optional(S.String), clusters: S.optional(MatterClusters) }),
+).annotate({ identifier: "MatterEndpoint" }) as any as S.Schema<MatterEndpoint>;
+export interface SendConnectorEventRequest {
+  ConnectorId: string;
+  UserId?: string | redacted.Redacted<string>;
+  Operation: ConnectorEventOperation;
+  OperationVersion?: string;
+  StatusCode?: number;
+  Message?: string | redacted.Redacted<string>;
+  DeviceDiscoveryId?: string;
+  ConnectorDeviceId?: string | redacted.Redacted<string>;
+  TraceId?: string;
+  Devices?: Device[];
+  MatterEndpoint?: MatterEndpoint;
+}
+export const SendConnectorEventRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConnectorId: S.String.pipe(T.HttpLabel("ConnectorId")),
+    UserId: S.optional(SensitiveString),
+    Operation: ConnectorEventOperation,
+    OperationVersion: S.optional(S.String),
+    StatusCode: S.optional(S.Number),
+    Message: S.optional(SensitiveString),
+    DeviceDiscoveryId: S.optional(S.String),
+    ConnectorDeviceId: S.optional(SensitiveString),
+    TraceId: S.optional(S.String),
+    Devices: S.optional(Devices),
+    MatterEndpoint: S.optional(MatterEndpoint),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/connector-event/{ConnectorId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "SendConnectorEventRequest",
+}) as any as S.Schema<SendConnectorEventRequest>;
+export interface SendConnectorEventResponse {
+  ConnectorId: string;
+}
+export const SendConnectorEventResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ConnectorId: S.String }),
+).annotate({
+  identifier: "SendConnectorEventResponse",
+}) as any as S.Schema<SendConnectorEventResponse>;
+export type CapabilityActionName = string;
+export type ActionReference = string;
+export type ActionTraceId = string;
+export interface CapabilityAction {
+  name: string;
+  ref?: string;
+  actionTraceId?: string;
+  parameters?: any;
+}
+export const CapabilityAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    ref: S.optional(S.String),
+    actionTraceId: S.optional(S.String),
+    parameters: S.optional(S.Any),
+  }),
+).annotate({
+  identifier: "CapabilityAction",
+}) as any as S.Schema<CapabilityAction>;
+export type CapabilityActions = CapabilityAction[];
+export const CapabilityActions = /*@__PURE__*/ S.Array(CapabilityAction);
+export interface CommandCapability {
+  id: string;
+  name: string;
+  version: string;
+  actions: CapabilityAction[];
+}
+export const CommandCapability = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    version: S.String,
+    actions: CapabilityActions,
+  }),
+).annotate({
+  identifier: "CommandCapability",
+}) as any as S.Schema<CommandCapability>;
+export type CommandCapabilities = CommandCapability[];
+export const CommandCapabilities = /*@__PURE__*/ S.Array(CommandCapability);
+export interface CommandEndpoint {
+  endpointId: string;
+  capabilities: CommandCapability[];
+}
+export const CommandEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ endpointId: S.String, capabilities: CommandCapabilities }),
+).annotate({
+  identifier: "CommandEndpoint",
+}) as any as S.Schema<CommandEndpoint>;
+export type CommandEndpoints = CommandEndpoint[];
+export const CommandEndpoints = /*@__PURE__*/ S.Array(CommandEndpoint);
+export interface SendManagedThingCommandRequest {
+  ManagedThingId: string;
+  Endpoints: CommandEndpoint[];
+  ConnectorAssociationId?: string;
+  AccountAssociationId?: string;
+}
+export const SendManagedThingCommandRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ManagedThingId: S.String.pipe(T.HttpLabel("ManagedThingId")),
+    Endpoints: CommandEndpoints,
+    ConnectorAssociationId: S.optional(S.String),
+    AccountAssociationId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/managed-things-command/{ManagedThingId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "SendManagedThingCommandRequest",
+}) as any as S.Schema<SendManagedThingCommandRequest>;
+export interface SendManagedThingCommandResponse {
+  TraceId?: string;
+}
+export const SendManagedThingCommandResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ TraceId: S.optional(S.String) }),
+).annotate({
+  identifier: "SendManagedThingCommandResponse",
+}) as any as S.Schema<SendManagedThingCommandResponse>;
+export interface StartAccountAssociationRefreshRequest {
+  AccountAssociationId: string;
+}
+export const StartAccountAssociationRefreshRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      AccountAssociationId: S.String.pipe(T.HttpLabel("AccountAssociationId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/account-associations/{AccountAssociationId}/refresh",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "StartAccountAssociationRefreshRequest",
+}) as any as S.Schema<StartAccountAssociationRefreshRequest>;
+export interface StartAccountAssociationRefreshResponse {
+  OAuthAuthorizationUrl: string | redacted.Redacted<string>;
+}
+export const StartAccountAssociationRefreshResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ OAuthAuthorizationUrl: SensitiveString }),
+).annotate({
+  identifier: "StartAccountAssociationRefreshResponse",
+}) as any as S.Schema<StartAccountAssociationRefreshResponse>;
+export type CustomProtocolDetailKey = string;
+export type CustomProtocolDetailValue = string;
+export type CustomProtocolDetail = { [key: string]: string | undefined };
+export const CustomProtocolDetail = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export type DiscoveryAuthMaterialString = string | redacted.Redacted<string>;
+export type DiscoveryAuthMaterialType = "ZWAVE_INSTALL_CODE" | (string & {});
+export const DiscoveryAuthMaterialType = /*@__PURE__*/ S.String;
 
-//# Operations
-export type GetCustomEndpointError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns the IoT managed integrations custom endpoint.
- */
-export const getCustomEndpoint: API.OperationMethod<
-  GetCustomEndpointRequest,
-  GetCustomEndpointResponse,
-  GetCustomEndpointError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomEndpointRequest,
-  output: GetCustomEndpointResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetCustomEndpoint",
-}));
-export type ListTagsForResourceError =
-  | InvalidRequestException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | CommonErrors;
-/**
- * Lists the tags for a specified resource.
- */
-export const listTagsForResource: API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResponse,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
-  errors: [
-    InvalidRequestException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListTagsForResource",
-}));
-export type RegisterCustomEndpointError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Customers can request IoT managed integrations to manage the server trust for them or bring their own external server trusts for the custom domain. Returns an IoT managed integrations endpoint.
- */
-export const registerCustomEndpoint: API.OperationMethod<
-  RegisterCustomEndpointRequest,
-  RegisterCustomEndpointResponse,
-  RegisterCustomEndpointError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: RegisterCustomEndpointRequest,
-  output: RegisterCustomEndpointResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "RegisterCustomEndpoint",
-}));
-export type SendConnectorEventError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Relays third-party device events for a connector such as a new device or a device state change event.
- */
-export const sendConnectorEvent: API.OperationMethod<
-  SendConnectorEventRequest,
-  SendConnectorEventResponse,
-  SendConnectorEventError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: SendConnectorEventRequest,
-  output: SendConnectorEventResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "SendConnectorEvent",
-}));
-export type TagResourceError =
-  | ConflictException
-  | InvalidRequestException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | CommonErrors;
-/**
- * Adds tags to a specified resource.
- */
-export const tagResource: API.OperationMethod<
-  TagResourceRequest,
-  TagResourceResponse,
-  TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
-  errors: [
-    ConflictException,
-    InvalidRequestException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "TagResource",
-}));
-export type UntagResourceError =
-  | ConflictException
-  | InvalidRequestException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | CommonErrors;
-/**
- * Removes tags from a specified resource.
- */
-export const untagResource: API.OperationMethod<
-  UntagResourceRequest,
-  UntagResourceResponse,
-  UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
-  errors: [
-    ConflictException,
-    InvalidRequestException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UntagResource",
-}));
+export type ConnectorDeviceIdList = (string | redacted.Redacted<string>)[];
+export const ConnectorDeviceIdList = /*@__PURE__*/ S.Array(SensitiveString);
+export type ProtocolType = "ZWAVE" | "ZIGBEE" | "CUSTOM" | (string & {});
+export const ProtocolType = /*@__PURE__*/ S.String;
+
+export interface StartDeviceDiscoveryRequest {
+  DiscoveryType: DiscoveryType;
+  CustomProtocolDetail?: { [key: string]: string | undefined };
+  ControllerIdentifier?: string;
+  ConnectorAssociationIdentifier?: string;
+  AccountAssociationId?: string;
+  AuthenticationMaterial?: string | redacted.Redacted<string>;
+  AuthenticationMaterialType?: DiscoveryAuthMaterialType;
+  ClientToken?: string;
+  Tags?: { [key: string]: string | undefined };
+  ConnectorDeviceIdList?: (string | redacted.Redacted<string>)[];
+  Protocol?: ProtocolType;
+  EndDeviceIdentifier?: string;
+}
+export const StartDeviceDiscoveryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DiscoveryType: DiscoveryType,
+    CustomProtocolDetail: S.optional(CustomProtocolDetail),
+    ControllerIdentifier: S.optional(S.String),
+    ConnectorAssociationIdentifier: S.optional(S.String),
+    AccountAssociationId: S.optional(S.String),
+    AuthenticationMaterial: S.optional(SensitiveString),
+    AuthenticationMaterialType: S.optional(DiscoveryAuthMaterialType),
+    ClientToken: S.optional(S.String),
+    Tags: S.optional(TagsMap),
+    ConnectorDeviceIdList: S.optional(ConnectorDeviceIdList),
+    Protocol: S.optional(ProtocolType),
+    EndDeviceIdentifier: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/device-discoveries" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StartDeviceDiscoveryRequest",
+}) as any as S.Schema<StartDeviceDiscoveryRequest>;
+export interface StartDeviceDiscoveryResponse {
+  Id?: string;
+  StartedAt?: Date;
+}
+export const StartDeviceDiscoveryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.optional(S.String),
+    StartedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "StartDeviceDiscoveryResponse",
+}) as any as S.Schema<StartDeviceDiscoveryResponse>;
+export interface TagResourceRequest {
+  ResourceArn: string;
+  Tags: { [key: string]: string | undefined };
+}
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+    Tags: TagsMap,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "TagResourceRequest",
+}) as any as S.Schema<TagResourceRequest>;
+export interface TagResourceResponse {}
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "TagResourceResponse",
+}) as any as S.Schema<TagResourceResponse>;
+export type TagKeyList = string[];
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export interface UntagResourceRequest {
+  ResourceArn: string;
+  TagKeys: string[];
+}
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+    TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UntagResourceRequest",
+}) as any as S.Schema<UntagResourceRequest>;
+export interface UntagResourceResponse {}
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UntagResourceResponse",
+}) as any as S.Schema<UntagResourceResponse>;
+export interface UpdateAccountAssociationRequest {
+  AccountAssociationId: string;
+  Name?: string;
+  Description?: string;
+}
+export const UpdateAccountAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccountAssociationId: S.String.pipe(T.HttpLabel("AccountAssociationId")),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/account-associations/{AccountAssociationId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateAccountAssociationRequest",
+}) as any as S.Schema<UpdateAccountAssociationRequest>;
+export interface UpdateAccountAssociationResponse {}
+export const UpdateAccountAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateAccountAssociationResponse",
+}) as any as S.Schema<UpdateAccountAssociationResponse>;
+export interface UpdateCloudConnectorRequest {
+  Identifier: string;
+  Name?: string;
+  Description?: string;
+}
+export const UpdateCloudConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+    Name: S.optional(S.String),
+    Description: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/cloud-connectors/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateCloudConnectorRequest",
+}) as any as S.Schema<UpdateCloudConnectorRequest>;
+export interface UpdateCloudConnectorResponse {}
+export const UpdateCloudConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateCloudConnectorResponse",
+}) as any as S.Schema<UpdateCloudConnectorResponse>;
+export interface OAuthUpdate {
+  oAuthCompleteRedirectUrl?: string;
+  proactiveRefreshTokenRenewal?: ProactiveRefreshTokenRenewal;
+}
+export const OAuthUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    oAuthCompleteRedirectUrl: S.optional(S.String),
+    proactiveRefreshTokenRenewal: S.optional(ProactiveRefreshTokenRenewal),
+  }),
+).annotate({ identifier: "OAuthUpdate" }) as any as S.Schema<OAuthUpdate>;
+export interface GeneralAuthorizationUpdate {
+  AuthMaterialsToAdd?: AuthMaterial[];
+  AuthMaterialsToUpdate?: AuthMaterial[];
+}
+export const GeneralAuthorizationUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthMaterialsToAdd: S.optional(AuthMaterials),
+    AuthMaterialsToUpdate: S.optional(AuthMaterials),
+  }),
+).annotate({
+  identifier: "GeneralAuthorizationUpdate",
+}) as any as S.Schema<GeneralAuthorizationUpdate>;
+export interface AuthConfigUpdate {
+  oAuthUpdate?: OAuthUpdate;
+  GeneralAuthorizationUpdate?: GeneralAuthorizationUpdate;
+}
+export const AuthConfigUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    oAuthUpdate: S.optional(OAuthUpdate),
+    GeneralAuthorizationUpdate: S.optional(GeneralAuthorizationUpdate),
+  }),
+).annotate({
+  identifier: "AuthConfigUpdate",
+}) as any as S.Schema<AuthConfigUpdate>;
+export interface UpdateConnectorDestinationRequest {
+  Identifier: string;
+  Description?: string;
+  Name?: string;
+  AuthType?: AuthType;
+  AuthConfig?: AuthConfigUpdate;
+  SecretsManager?: SecretsManager;
+}
+export const UpdateConnectorDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+    Description: S.optional(S.String),
+    Name: S.optional(S.String),
+    AuthType: S.optional(AuthType),
+    AuthConfig: S.optional(AuthConfigUpdate),
+    SecretsManager: S.optional(SecretsManager),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/connector-destinations/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateConnectorDestinationRequest",
+}) as any as S.Schema<UpdateConnectorDestinationRequest>;
+export interface UpdateConnectorDestinationResponse {}
+export const UpdateConnectorDestinationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateConnectorDestinationResponse",
+}) as any as S.Schema<UpdateConnectorDestinationResponse>;
+export interface UpdateDestinationRequest {
+  Name: string;
+  DeliveryDestinationArn?: string;
+  DeliveryDestinationType?: DeliveryDestinationType;
+  RoleArn?: string;
+  Description?: string;
+}
+export const UpdateDestinationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String.pipe(T.HttpLabel("Name")),
+    DeliveryDestinationArn: S.optional(S.String),
+    DeliveryDestinationType: S.optional(DeliveryDestinationType),
+    RoleArn: S.optional(S.String),
+    Description: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/destinations/{Name}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateDestinationRequest",
+}) as any as S.Schema<UpdateDestinationRequest>;
+export interface UpdateDestinationResponse {}
+export const UpdateDestinationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateDestinationResponse",
+}) as any as S.Schema<UpdateDestinationResponse>;
+export interface UpdateEventLogConfigurationRequest {
+  Id: string;
+  EventLogLevel: LogLevel;
+}
+export const UpdateEventLogConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Id: S.String.pipe(T.HttpLabel("Id")),
+    EventLogLevel: LogLevel,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/event-log-configurations/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateEventLogConfigurationRequest",
+}) as any as S.Schema<UpdateEventLogConfigurationRequest>;
+export interface UpdateEventLogConfigurationResponse {}
+export const UpdateEventLogConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateEventLogConfigurationResponse",
+}) as any as S.Schema<UpdateEventLogConfigurationResponse>;
+export interface UpdateManagedThingRequest {
+  Identifier: string;
+  Owner?: string | redacted.Redacted<string>;
+  CredentialLockerId?: string;
+  SerialNumber?: string | redacted.Redacted<string>;
+  WiFiSimpleSetupConfiguration?: WiFiSimpleSetupConfiguration;
+  Brand?: string | redacted.Redacted<string>;
+  Model?: string | redacted.Redacted<string>;
+  Name?: string;
+  CapabilityReport?: CapabilityReport;
+  CapabilitySchemas?: CapabilitySchemaItem[];
+  Capabilities?: string;
+  Classification?: string | redacted.Redacted<string>;
+  HubNetworkMode?: HubNetworkMode;
+  MetaData?: { [key: string]: string | undefined };
+}
+export const UpdateManagedThingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+    Owner: S.optional(SensitiveString),
+    CredentialLockerId: S.optional(S.String),
+    SerialNumber: S.optional(SensitiveString),
+    WiFiSimpleSetupConfiguration: S.optional(WiFiSimpleSetupConfiguration),
+    Brand: S.optional(SensitiveString),
+    Model: S.optional(SensitiveString),
+    Name: S.optional(S.String),
+    CapabilityReport: S.optional(CapabilityReport),
+    CapabilitySchemas: S.optional(CapabilitySchemas),
+    Capabilities: S.optional(S.String),
+    Classification: S.optional(SensitiveString),
+    HubNetworkMode: S.optional(HubNetworkMode),
+    MetaData: S.optional(MetaData),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/managed-things/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateManagedThingRequest",
+}) as any as S.Schema<UpdateManagedThingRequest>;
+export interface UpdateManagedThingResponse {}
+export const UpdateManagedThingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateManagedThingResponse",
+}) as any as S.Schema<UpdateManagedThingResponse>;
+export interface UpdateNotificationConfigurationRequest {
+  EventType: EventType;
+  DestinationName: string;
+}
+export const UpdateNotificationConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      EventType: EventType.pipe(T.HttpLabel("EventType")),
+      DestinationName: S.String,
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "PUT",
+          uri: "/notification-configurations/{EventType}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "UpdateNotificationConfigurationRequest",
+}) as any as S.Schema<UpdateNotificationConfigurationRequest>;
+export interface UpdateNotificationConfigurationResponse {}
+export const UpdateNotificationConfigurationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "UpdateNotificationConfigurationResponse",
+}) as any as S.Schema<UpdateNotificationConfigurationResponse>;
+export interface UpdateOtaTaskRequest {
+  Identifier: string;
+  Description?: string;
+  TaskConfigurationId?: string;
+}
+export const UpdateOtaTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Identifier: S.String.pipe(T.HttpLabel("Identifier")),
+    Description: S.optional(S.String),
+    TaskConfigurationId: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/ota-tasks/{Identifier}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateOtaTaskRequest",
+}) as any as S.Schema<UpdateOtaTaskRequest>;
+export interface UpdateOtaTaskResponse {}
+export const UpdateOtaTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateOtaTaskResponse",
+}) as any as S.Schema<UpdateOtaTaskResponse>;
+export type ErrorMessage = string;
+export type ErrorResourceId = string;
+export type ErrorResourceType = string;
 export type CreateAccountAssociationError =
   | AccessDeniedException
   | ConflictException
@@ -4736,57 +4583,190 @@ export const createAccountAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAccountAssociation",
 }));
-export type GetAccountAssociationError =
+
+export type CreateCloudConnectorError =
   | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a C2C (cloud-to-cloud) connector.
+ */
+export const createCloudConnector: API.OperationMethod<
+  CreateCloudConnectorRequest,
+  CreateCloudConnectorResponse,
+  CreateCloudConnectorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCloudConnectorRequest,
+  output: CreateCloudConnectorResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateCloudConnector",
+}));
+
+export type CreateConnectorDestinationError =
+  | AccessDeniedException
+  | ConflictException
   | InternalServerException
   | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Create a connector destination for connecting a cloud-to-cloud (C2C) connector to the customer's Amazon Web Services account.
+ */
+export const createConnectorDestination: API.OperationMethod<
+  CreateConnectorDestinationRequest,
+  CreateConnectorDestinationResponse,
+  CreateConnectorDestinationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateConnectorDestinationRequest,
+  output: CreateConnectorDestinationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateConnectorDestination",
+}));
+
+export type CreateCredentialLockerError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
   | ServiceUnavailableException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Get an account association for an Amazon Web Services account linked to a customer-managed destination.
+ * Create a credential locker.
+ *
+ * This operation will not trigger the creation of all the manufacturing resources.
  */
-export const getAccountAssociation: API.OperationMethod<
-  GetAccountAssociationRequest,
-  GetAccountAssociationResponse,
-  GetAccountAssociationError,
+export const createCredentialLocker: API.OperationMethod<
+  CreateCredentialLockerRequest,
+  CreateCredentialLockerResponse,
+  CreateCredentialLockerError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountAssociationRequest,
-  output: GetAccountAssociationResponse,
+  input: CreateCredentialLockerRequest,
+  output: CreateCredentialLockerResponse,
   errors: [
     AccessDeniedException,
+    ConflictException,
     InternalServerException,
-    ResourceNotFoundException,
+    ServiceQuotaExceededException,
     ServiceUnavailableException,
     ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "GetAccountAssociation",
+  operationName: "CreateCredentialLocker",
 }));
-export type UpdateAccountAssociationError =
+
+export type CreateDestinationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Create a notification destination such as Kinesis Data Streams that receive events and notifications from Managed integrations. Managed integrations uses the destination to determine where to deliver notifications.
+ */
+export const createDestination: API.OperationMethod<
+  CreateDestinationRequest,
+  CreateDestinationResponse,
+  CreateDestinationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateDestinationRequest,
+  output: CreateDestinationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateDestination",
+}));
+
+export type CreateEventLogConfigurationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Set the event log configuration for the account, resource type, or specific resource.
+ */
+export const createEventLogConfiguration: API.OperationMethod<
+  CreateEventLogConfigurationRequest,
+  CreateEventLogConfigurationResponse,
+  CreateEventLogConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateEventLogConfigurationRequest,
+  output: CreateEventLogConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateEventLogConfiguration",
+}));
+
+export type CreateManagedThingError =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
   | ResourceNotFoundException
   | ServiceUnavailableException
   | ThrottlingException
+  | UnauthorizedException
   | ValidationException
   | CommonErrors;
 /**
- * Updates the properties of an existing account association.
+ * Creates a managed thing. A managed thing contains the device identifier, protocol supported, and capabilities of the device in a data model format defined by Managed integrations.
  */
-export const updateAccountAssociation: API.OperationMethod<
-  UpdateAccountAssociationRequest,
-  UpdateAccountAssociationResponse,
-  UpdateAccountAssociationError,
+export const createManagedThing: API.OperationMethod<
+  CreateManagedThingRequest,
+  CreateManagedThingResponse,
+  CreateManagedThingError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountAssociationRequest,
-  output: UpdateAccountAssociationResponse,
+  input: CreateManagedThingRequest,
+  output: CreateManagedThingResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4794,12 +4774,144 @@ export const updateAccountAssociation: API.OperationMethod<
     ResourceNotFoundException,
     ServiceUnavailableException,
     ThrottlingException,
+    UnauthorizedException,
     ValidationException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "UpdateAccountAssociation",
+  operationName: "CreateManagedThing",
 }));
+
+export type CreateNotificationConfigurationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a notification configuration. A configuration is a connection between an event type and a destination that you have already created.
+ */
+export const createNotificationConfiguration: API.OperationMethod<
+  CreateNotificationConfigurationRequest,
+  CreateNotificationConfigurationResponse,
+  CreateNotificationConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateNotificationConfigurationRequest,
+  output: CreateNotificationConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateNotificationConfiguration",
+}));
+
+export type CreateOtaTaskError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Create an over-the-air (OTA) task to target a device.
+ */
+export const createOtaTask: API.OperationMethod<
+  CreateOtaTaskRequest,
+  CreateOtaTaskResponse,
+  CreateOtaTaskError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateOtaTaskRequest,
+  output: CreateOtaTaskResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateOtaTask",
+}));
+
+export type CreateOtaTaskConfigurationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Create a configuraiton for the over-the-air (OTA) task.
+ */
+export const createOtaTaskConfiguration: API.OperationMethod<
+  CreateOtaTaskConfigurationRequest,
+  CreateOtaTaskConfigurationResponse,
+  CreateOtaTaskConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateOtaTaskConfigurationRequest,
+  output: CreateOtaTaskConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateOtaTaskConfiguration",
+}));
+
+export type CreateProvisioningProfileError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Create a provisioning profile for executing device provisioning flows. The provisioning profile is a document that defines the set of resources and policies applied to a device during the provisioning process.
+ */
+export const createProvisioningProfile: API.OperationMethod<
+  CreateProvisioningProfileRequest,
+  CreateProvisioningProfileResponse,
+  CreateProvisioningProfileError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateProvisioningProfileRequest,
+  output: CreateProvisioningProfileResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateProvisioningProfile",
+}));
+
 export type DeleteAccountAssociationError =
   | AccessDeniedException
   | InternalServerException
@@ -4833,6 +4945,1073 @@ export const deleteAccountAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccountAssociation",
 }));
+
+export type DeleteCloudConnectorError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Delete a cloud connector.
+ */
+export const deleteCloudConnector: API.OperationMethod<
+  DeleteCloudConnectorRequest,
+  DeleteCloudConnectorResponse,
+  DeleteCloudConnectorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCloudConnectorRequest,
+  output: DeleteCloudConnectorResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteCloudConnector",
+}));
+
+export type DeleteConnectorDestinationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Delete a connector destination linked to a cloud-to-cloud (C2C) connector.
+ *
+ * Deletion can't be done if the account association has used this connector destination.
+ */
+export const deleteConnectorDestination: API.OperationMethod<
+  DeleteConnectorDestinationRequest,
+  DeleteConnectorDestinationResponse,
+  DeleteConnectorDestinationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConnectorDestinationRequest,
+  output: DeleteConnectorDestinationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteConnectorDestination",
+}));
+
+export type DeleteCredentialLockerError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Delete a credential locker.
+ *
+ * This operation can't be undone and any existing device won't be able to use IoT managed integrations.
+ */
+export const deleteCredentialLocker: API.OperationMethod<
+  DeleteCredentialLockerRequest,
+  DeleteCredentialLockerResponse,
+  DeleteCredentialLockerError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCredentialLockerRequest,
+  output: DeleteCredentialLockerResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteCredentialLocker",
+}));
+
+export type DeleteDestinationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a notification destination specified by name.
+ */
+export const deleteDestination: API.OperationMethod<
+  DeleteDestinationRequest,
+  DeleteDestinationResponse,
+  DeleteDestinationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDestinationRequest,
+  output: DeleteDestinationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteDestination",
+}));
+
+export type DeleteEventLogConfigurationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Delete an event log configuration.
+ */
+export const deleteEventLogConfiguration: API.OperationMethod<
+  DeleteEventLogConfigurationRequest,
+  DeleteEventLogConfigurationResponse,
+  DeleteEventLogConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteEventLogConfigurationRequest,
+  output: DeleteEventLogConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteEventLogConfiguration",
+}));
+
+export type DeleteManagedThingError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Delete a managed thing. For direct-connected and hub-connected devices connecting with Managed integrations via a controller, all of the devices connected to it will have their status changed to `PENDING`. It is not possible to remove a cloud-to-cloud device.
+ */
+export const deleteManagedThing: API.OperationMethod<
+  DeleteManagedThingRequest,
+  DeleteManagedThingResponse,
+  DeleteManagedThingError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteManagedThingRequest,
+  output: DeleteManagedThingResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteManagedThing",
+}));
+
+export type DeleteNotificationConfigurationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a notification configuration.
+ */
+export const deleteNotificationConfiguration: API.OperationMethod<
+  DeleteNotificationConfigurationRequest,
+  DeleteNotificationConfigurationResponse,
+  DeleteNotificationConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteNotificationConfigurationRequest,
+  output: DeleteNotificationConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteNotificationConfiguration",
+}));
+
+export type DeleteOtaTaskError =
+  | AccessDeniedException
+  | InternalServerException
+  | LimitExceededException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Delete the over-the-air (OTA) task.
+ */
+export const deleteOtaTask: API.OperationMethod<
+  DeleteOtaTaskRequest,
+  DeleteOtaTaskResponse,
+  DeleteOtaTaskError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteOtaTaskRequest,
+  output: DeleteOtaTaskResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    LimitExceededException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteOtaTask",
+}));
+
+export type DeleteOtaTaskConfigurationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Delete the over-the-air (OTA) task configuration.
+ */
+export const deleteOtaTaskConfiguration: API.OperationMethod<
+  DeleteOtaTaskConfigurationRequest,
+  DeleteOtaTaskConfigurationResponse,
+  DeleteOtaTaskConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteOtaTaskConfigurationRequest,
+  output: DeleteOtaTaskConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteOtaTaskConfiguration",
+}));
+
+export type DeleteProvisioningProfileError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Delete a provisioning profile.
+ */
+export const deleteProvisioningProfile: API.OperationMethod<
+  DeleteProvisioningProfileRequest,
+  DeleteProvisioningProfileResponse,
+  DeleteProvisioningProfileError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteProvisioningProfileRequest,
+  output: DeleteProvisioningProfileResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteProvisioningProfile",
+}));
+
+export type DeregisterAccountAssociationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deregister an account association from a managed thing.
+ */
+export const deregisterAccountAssociation: API.OperationMethod<
+  DeregisterAccountAssociationRequest,
+  DeregisterAccountAssociationResponse,
+  DeregisterAccountAssociationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeregisterAccountAssociationRequest,
+  output: DeregisterAccountAssociationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeregisterAccountAssociation",
+}));
+
+export type GetAccountAssociationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get an account association for an Amazon Web Services account linked to a customer-managed destination.
+ */
+export const getAccountAssociation: API.OperationMethod<
+  GetAccountAssociationRequest,
+  GetAccountAssociationResponse,
+  GetAccountAssociationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAccountAssociationRequest,
+  output: GetAccountAssociationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetAccountAssociation",
+}));
+
+export type GetCloudConnectorError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get configuration details for a cloud connector.
+ */
+export const getCloudConnector: API.OperationMethod<
+  GetCloudConnectorRequest,
+  GetCloudConnectorResponse,
+  GetCloudConnectorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCloudConnectorRequest,
+  output: GetCloudConnectorResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetCloudConnector",
+}));
+
+export type GetConnectorDestinationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get connector destination details linked to a cloud-to-cloud (C2C) connector.
+ */
+export const getConnectorDestination: API.OperationMethod<
+  GetConnectorDestinationRequest,
+  GetConnectorDestinationResponse,
+  GetConnectorDestinationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConnectorDestinationRequest,
+  output: GetConnectorDestinationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetConnectorDestination",
+}));
+
+export type GetCredentialLockerError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get information on an existing credential locker
+ */
+export const getCredentialLocker: API.OperationMethod<
+  GetCredentialLockerRequest,
+  GetCredentialLockerResponse,
+  GetCredentialLockerError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCredentialLockerRequest,
+  output: GetCredentialLockerResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetCredentialLocker",
+}));
+
+export type GetCustomEndpointError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns the IoT managed integrations custom endpoint.
+ */
+export const getCustomEndpoint: API.OperationMethod<
+  GetCustomEndpointRequest,
+  GetCustomEndpointResponse,
+  GetCustomEndpointError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCustomEndpointRequest,
+  output: GetCustomEndpointResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetCustomEndpoint",
+}));
+
+export type GetDefaultEncryptionConfigurationError =
+  | AccessDeniedException
+  | InternalFailureException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about the default encryption configuration for the Amazon Web Services account in the default or specified region. For more information, see Key management in the *AWS IoT SiteWise User Guide*.
+ */
+export const getDefaultEncryptionConfiguration: API.OperationMethod<
+  GetDefaultEncryptionConfigurationRequest,
+  GetDefaultEncryptionConfigurationResponse,
+  GetDefaultEncryptionConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDefaultEncryptionConfigurationRequest,
+  output: GetDefaultEncryptionConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetDefaultEncryptionConfiguration",
+}));
+
+export type GetDestinationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets a destination by name.
+ */
+export const getDestination: API.OperationMethod<
+  GetDestinationRequest,
+  GetDestinationResponse,
+  GetDestinationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDestinationRequest,
+  output: GetDestinationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetDestination",
+}));
+
+export type GetDeviceDiscoveryError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get the current state of a device discovery.
+ */
+export const getDeviceDiscovery: API.OperationMethod<
+  GetDeviceDiscoveryRequest,
+  GetDeviceDiscoveryResponse,
+  GetDeviceDiscoveryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDeviceDiscoveryRequest,
+  output: GetDeviceDiscoveryResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetDeviceDiscovery",
+}));
+
+export type GetEventLogConfigurationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get an event log configuration.
+ */
+export const getEventLogConfiguration: API.OperationMethod<
+  GetEventLogConfigurationRequest,
+  GetEventLogConfigurationResponse,
+  GetEventLogConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetEventLogConfigurationRequest,
+  output: GetEventLogConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetEventLogConfiguration",
+}));
+
+export type GetHubConfigurationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get a hub configuration.
+ */
+export const getHubConfiguration: API.OperationMethod<
+  GetHubConfigurationRequest,
+  GetHubConfigurationResponse,
+  GetHubConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetHubConfigurationRequest,
+  output: GetHubConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetHubConfiguration",
+}));
+
+export type GetManagedThingError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get details of a managed thing including its attributes and capabilities.
+ */
+export const getManagedThing: API.OperationMethod<
+  GetManagedThingRequest,
+  GetManagedThingResponse,
+  GetManagedThingError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetManagedThingRequest,
+  output: GetManagedThingResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetManagedThing",
+}));
+
+export type GetManagedThingCapabilitiesError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get the capabilities for a managed thing using the device ID.
+ */
+export const getManagedThingCapabilities: API.OperationMethod<
+  GetManagedThingCapabilitiesRequest,
+  GetManagedThingCapabilitiesResponse,
+  GetManagedThingCapabilitiesError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetManagedThingCapabilitiesRequest,
+  output: GetManagedThingCapabilitiesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetManagedThingCapabilities",
+}));
+
+export type GetManagedThingCertificateError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the certificate PEM for a managed IoT thing.
+ */
+export const getManagedThingCertificate: API.OperationMethod<
+  GetManagedThingCertificateRequest,
+  GetManagedThingCertificateResponse,
+  GetManagedThingCertificateError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetManagedThingCertificateRequest,
+  output: GetManagedThingCertificateResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetManagedThingCertificate",
+}));
+
+export type GetManagedThingConnectivityDataError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get the connectivity status of a managed thing.
+ */
+export const getManagedThingConnectivityData: API.OperationMethod<
+  GetManagedThingConnectivityDataRequest,
+  GetManagedThingConnectivityDataResponse,
+  GetManagedThingConnectivityDataError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetManagedThingConnectivityDataRequest,
+  output: GetManagedThingConnectivityDataResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetManagedThingConnectivityData",
+}));
+
+export type GetManagedThingMetaDataError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get the metadata information for a managed thing.
+ *
+ * The `managedThing` `metadata` parameter is used for associating attributes with a `managedThing` that can be used for grouping over-the-air (OTA) tasks. Name value pairs in `metadata` can be used in the `OtaTargetQueryString` parameter for the `CreateOtaTask` API operation.
+ */
+export const getManagedThingMetaData: API.OperationMethod<
+  GetManagedThingMetaDataRequest,
+  GetManagedThingMetaDataResponse,
+  GetManagedThingMetaDataError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetManagedThingMetaDataRequest,
+  output: GetManagedThingMetaDataResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetManagedThingMetaData",
+}));
+
+export type GetManagedThingStateError =
+  | AccessDeniedException
+  | InternalFailureException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns the managed thing state for the given device Id.
+ */
+export const getManagedThingState: API.OperationMethod<
+  GetManagedThingStateRequest,
+  GetManagedThingStateResponse,
+  GetManagedThingStateError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetManagedThingStateRequest,
+  output: GetManagedThingStateResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetManagedThingState",
+}));
+
+export type GetNotificationConfigurationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get a notification configuration for a specified event type.
+ */
+export const getNotificationConfiguration: API.OperationMethod<
+  GetNotificationConfigurationRequest,
+  GetNotificationConfigurationResponse,
+  GetNotificationConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetNotificationConfigurationRequest,
+  output: GetNotificationConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetNotificationConfiguration",
+}));
+
+export type GetOtaTaskError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get details of the over-the-air (OTA) task by its task id.
+ */
+export const getOtaTask: API.OperationMethod<
+  GetOtaTaskRequest,
+  GetOtaTaskResponse,
+  GetOtaTaskError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOtaTaskRequest,
+  output: GetOtaTaskResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetOtaTask",
+}));
+
+export type GetOtaTaskConfigurationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get a configuraiton for the over-the-air (OTA) task.
+ */
+export const getOtaTaskConfiguration: API.OperationMethod<
+  GetOtaTaskConfigurationRequest,
+  GetOtaTaskConfigurationResponse,
+  GetOtaTaskConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOtaTaskConfigurationRequest,
+  output: GetOtaTaskConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetOtaTaskConfiguration",
+}));
+
+export type GetProvisioningProfileError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get details of a provisioning profile.
+ */
+export const getProvisioningProfile: API.OperationMethod<
+  GetProvisioningProfileRequest,
+  GetProvisioningProfileResponse,
+  GetProvisioningProfileError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetProvisioningProfileRequest,
+  output: GetProvisioningProfileResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetProvisioningProfile",
+}));
+
+export type GetRuntimeLogConfigurationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get the runtime log configuration for a specific managed thing.
+ */
+export const getRuntimeLogConfiguration: API.OperationMethod<
+  GetRuntimeLogConfigurationRequest,
+  GetRuntimeLogConfigurationResponse,
+  GetRuntimeLogConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRuntimeLogConfigurationRequest,
+  output: GetRuntimeLogConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetRuntimeLogConfiguration",
+}));
+
+export type GetSchemaVersionError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets a schema version with the provided information.
+ */
+export const getSchemaVersion: API.OperationMethod<
+  GetSchemaVersionRequest,
+  GetSchemaVersionResponse,
+  GetSchemaVersionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSchemaVersionRequest,
+  output: GetSchemaVersionResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetSchemaVersion",
+}));
+
 export type ListAccountAssociationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4883,159 +6062,7 @@ export const listAccountAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type StartAccountAssociationRefreshError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Initiates a refresh of an existing account association to update its authorization and connection status.
- */
-export const startAccountAssociationRefresh: API.OperationMethod<
-  StartAccountAssociationRefreshRequest,
-  StartAccountAssociationRefreshResponse,
-  StartAccountAssociationRefreshError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: StartAccountAssociationRefreshRequest,
-  output: StartAccountAssociationRefreshResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "StartAccountAssociationRefresh",
-}));
-export type CreateCloudConnectorError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a C2C (cloud-to-cloud) connector.
- */
-export const createCloudConnector: API.OperationMethod<
-  CreateCloudConnectorRequest,
-  CreateCloudConnectorResponse,
-  CreateCloudConnectorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateCloudConnectorRequest,
-  output: CreateCloudConnectorResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateCloudConnector",
-}));
-export type GetCloudConnectorError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get configuration details for a cloud connector.
- */
-export const getCloudConnector: API.OperationMethod<
-  GetCloudConnectorRequest,
-  GetCloudConnectorResponse,
-  GetCloudConnectorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetCloudConnectorRequest,
-  output: GetCloudConnectorResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetCloudConnector",
-}));
-export type UpdateCloudConnectorError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Update an existing cloud connector.
- */
-export const updateCloudConnector: API.OperationMethod<
-  UpdateCloudConnectorRequest,
-  UpdateCloudConnectorResponse,
-  UpdateCloudConnectorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCloudConnectorRequest,
-  output: UpdateCloudConnectorResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateCloudConnector",
-}));
-export type DeleteCloudConnectorError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Delete a cloud connector.
- */
-export const deleteCloudConnector: API.OperationMethod<
-  DeleteCloudConnectorRequest,
-  DeleteCloudConnectorResponse,
-  DeleteCloudConnectorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCloudConnectorRequest,
-  output: DeleteCloudConnectorResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteCloudConnector",
-}));
+
 export type ListCloudConnectorsError =
   | AccessDeniedException
   | InternalServerException
@@ -5084,128 +6111,7 @@ export const listCloudConnectors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type CreateConnectorDestinationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Create a connector destination for connecting a cloud-to-cloud (C2C) connector to the customer's Amazon Web Services account.
- */
-export const createConnectorDestination: API.OperationMethod<
-  CreateConnectorDestinationRequest,
-  CreateConnectorDestinationResponse,
-  CreateConnectorDestinationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateConnectorDestinationRequest,
-  output: CreateConnectorDestinationResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateConnectorDestination",
-}));
-export type GetConnectorDestinationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get connector destination details linked to a cloud-to-cloud (C2C) connector.
- */
-export const getConnectorDestination: API.OperationMethod<
-  GetConnectorDestinationRequest,
-  GetConnectorDestinationResponse,
-  GetConnectorDestinationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectorDestinationRequest,
-  output: GetConnectorDestinationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetConnectorDestination",
-}));
-export type UpdateConnectorDestinationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates the properties of an existing connector destination.
- */
-export const updateConnectorDestination: API.OperationMethod<
-  UpdateConnectorDestinationRequest,
-  UpdateConnectorDestinationResponse,
-  UpdateConnectorDestinationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConnectorDestinationRequest,
-  output: UpdateConnectorDestinationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateConnectorDestination",
-}));
-export type DeleteConnectorDestinationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Delete a connector destination linked to a cloud-to-cloud (C2C) connector.
- *
- * Deletion can't be done if the account association has used this connector destination.
- */
-export const deleteConnectorDestination: API.OperationMethod<
-  DeleteConnectorDestinationRequest,
-  DeleteConnectorDestinationResponse,
-  DeleteConnectorDestinationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConnectorDestinationRequest,
-  output: DeleteConnectorDestinationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteConnectorDestination",
-}));
+
 export type ListConnectorDestinationsError =
   | AccessDeniedException
   | InternalServerException
@@ -5254,105 +6160,7 @@ export const listConnectorDestinations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type CreateCredentialLockerError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Create a credential locker.
- *
- * This operation will not trigger the creation of all the manufacturing resources.
- */
-export const createCredentialLocker: API.OperationMethod<
-  CreateCredentialLockerRequest,
-  CreateCredentialLockerResponse,
-  CreateCredentialLockerError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateCredentialLockerRequest,
-  output: CreateCredentialLockerResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateCredentialLocker",
-}));
-export type GetCredentialLockerError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get information on an existing credential locker
- */
-export const getCredentialLocker: API.OperationMethod<
-  GetCredentialLockerRequest,
-  GetCredentialLockerResponse,
-  GetCredentialLockerError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetCredentialLockerRequest,
-  output: GetCredentialLockerResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetCredentialLocker",
-}));
-export type DeleteCredentialLockerError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Delete a credential locker.
- *
- * This operation can't be undone and any existing device won't be able to use IoT managed integrations.
- */
-export const deleteCredentialLocker: API.OperationMethod<
-  DeleteCredentialLockerRequest,
-  DeleteCredentialLockerResponse,
-  DeleteCredentialLockerError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCredentialLockerRequest,
-  output: DeleteCredentialLockerResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteCredentialLocker",
-}));
+
 export type ListCredentialLockersError =
   | AccessDeniedException
   | InternalServerException
@@ -5403,93 +6211,7 @@ export const listCredentialLockers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type CreateDestinationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Create a notification destination such as Kinesis Data Streams that receive events and notifications from Managed integrations. Managed integrations uses the destination to determine where to deliver notifications.
- */
-export const createDestination: API.OperationMethod<
-  CreateDestinationRequest,
-  CreateDestinationResponse,
-  CreateDestinationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateDestinationRequest,
-  output: CreateDestinationResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateDestination",
-}));
-export type DeleteDestinationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a notification destination specified by name.
- */
-export const deleteDestination: API.OperationMethod<
-  DeleteDestinationRequest,
-  DeleteDestinationResponse,
-  DeleteDestinationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDestinationRequest,
-  output: DeleteDestinationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteDestination",
-}));
-export type GetDestinationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Gets a destination by name.
- */
-export const getDestination: API.OperationMethod<
-  GetDestinationRequest,
-  GetDestinationResponse,
-  GetDestinationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDestinationRequest,
-  output: GetDestinationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetDestination",
-}));
+
 export type ListDestinationsError =
   | AccessDeniedException
   | InternalServerException
@@ -5538,103 +6260,7 @@ export const listDestinations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type UpdateDestinationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Update a destination specified by name.
- */
-export const updateDestination: API.OperationMethod<
-  UpdateDestinationRequest,
-  UpdateDestinationResponse,
-  UpdateDestinationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDestinationRequest,
-  output: UpdateDestinationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateDestination",
-}));
-export type StartDeviceDiscoveryError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * This API is used to start device discovery for hub-connected and third-party-connected devices. The authentication material (install code) is delivered as a message to the controller instructing it to start the discovery.
- */
-export const startDeviceDiscovery: API.OperationMethod<
-  StartDeviceDiscoveryRequest,
-  StartDeviceDiscoveryResponse,
-  StartDeviceDiscoveryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: StartDeviceDiscoveryRequest,
-  output: StartDeviceDiscoveryResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "StartDeviceDiscovery",
-}));
-export type GetDeviceDiscoveryError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get the current state of a device discovery.
- */
-export const getDeviceDiscovery: API.OperationMethod<
-  GetDeviceDiscoveryRequest,
-  GetDeviceDiscoveryResponse,
-  GetDeviceDiscoveryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDeviceDiscoveryRequest,
-  output: GetDeviceDiscoveryResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetDeviceDiscovery",
-}));
+
 export type ListDeviceDiscoveriesError =
   | AccessDeniedException
   | InternalServerException
@@ -5687,6 +6313,7 @@ export const listDeviceDiscoveries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDiscoveredDevicesError =
   | AccessDeniedException
   | InternalServerException
@@ -5741,95 +6368,7 @@ export const listDiscoveredDevices: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type CreateEventLogConfigurationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Set the event log configuration for the account, resource type, or specific resource.
- */
-export const createEventLogConfiguration: API.OperationMethod<
-  CreateEventLogConfigurationRequest,
-  CreateEventLogConfigurationResponse,
-  CreateEventLogConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateEventLogConfigurationRequest,
-  output: CreateEventLogConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateEventLogConfiguration",
-}));
-export type DeleteEventLogConfigurationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Delete an event log configuration.
- */
-export const deleteEventLogConfiguration: API.OperationMethod<
-  DeleteEventLogConfigurationRequest,
-  DeleteEventLogConfigurationResponse,
-  DeleteEventLogConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEventLogConfigurationRequest,
-  output: DeleteEventLogConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteEventLogConfiguration",
-}));
-export type GetEventLogConfigurationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get an event log configuration.
- */
-export const getEventLogConfiguration: API.OperationMethod<
-  GetEventLogConfigurationRequest,
-  GetEventLogConfigurationResponse,
-  GetEventLogConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetEventLogConfigurationRequest,
-  output: GetEventLogConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetEventLogConfiguration",
-}));
+
 export type ListEventLogConfigurationsError =
   | AccessDeniedException
   | InternalServerException
@@ -5878,194 +6417,7 @@ export const listEventLogConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type UpdateEventLogConfigurationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Update an event log configuration by log configuration ID.
- */
-export const updateEventLogConfiguration: API.OperationMethod<
-  UpdateEventLogConfigurationRequest,
-  UpdateEventLogConfigurationResponse,
-  UpdateEventLogConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEventLogConfigurationRequest,
-  output: UpdateEventLogConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateEventLogConfiguration",
-}));
-export type GetHubConfigurationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get a hub configuration.
- */
-export const getHubConfiguration: API.OperationMethod<
-  GetHubConfigurationRequest,
-  GetHubConfigurationResponse,
-  GetHubConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetHubConfigurationRequest,
-  output: GetHubConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetHubConfiguration",
-}));
-export type PutHubConfigurationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Update a hub configuration.
- */
-export const putHubConfiguration: API.OperationMethod<
-  PutHubConfigurationRequest,
-  PutHubConfigurationResponse,
-  PutHubConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutHubConfigurationRequest,
-  output: PutHubConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "PutHubConfiguration",
-}));
-export type GetDefaultEncryptionConfigurationError =
-  | AccessDeniedException
-  | InternalFailureException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about the default encryption configuration for the Amazon Web Services account in the default or specified region. For more information, see Key management in the *AWS IoT SiteWise User Guide*.
- */
-export const getDefaultEncryptionConfiguration: API.OperationMethod<
-  GetDefaultEncryptionConfigurationRequest,
-  GetDefaultEncryptionConfigurationResponse,
-  GetDefaultEncryptionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDefaultEncryptionConfigurationRequest,
-  output: GetDefaultEncryptionConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalFailureException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetDefaultEncryptionConfiguration",
-}));
-export type PutDefaultEncryptionConfigurationError =
-  | AccessDeniedException
-  | InternalFailureException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Sets the default encryption configuration for the Amazon Web Services account. For more information, see Key management in the AWS IoT SiteWise User Guide.
- */
-export const putDefaultEncryptionConfiguration: API.OperationMethod<
-  PutDefaultEncryptionConfigurationRequest,
-  PutDefaultEncryptionConfigurationResponse,
-  PutDefaultEncryptionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutDefaultEncryptionConfigurationRequest,
-  output: PutDefaultEncryptionConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalFailureException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "PutDefaultEncryptionConfiguration",
-}));
-export type DeregisterAccountAssociationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deregister an account association from a managed thing.
- */
-export const deregisterAccountAssociation: API.OperationMethod<
-  DeregisterAccountAssociationRequest,
-  DeregisterAccountAssociationResponse,
-  DeregisterAccountAssociationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeregisterAccountAssociationRequest,
-  output: DeregisterAccountAssociationResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeregisterAccountAssociation",
-}));
+
 export type ListManagedThingAccountAssociationsError =
   | AccessDeniedException
   | InternalServerException
@@ -6114,208 +6466,7 @@ export const listManagedThingAccountAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type RegisterAccountAssociationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Registers an account association with a managed thing, establishing a connection between a device and a third-party account.
- */
-export const registerAccountAssociation: API.OperationMethod<
-  RegisterAccountAssociationRequest,
-  RegisterAccountAssociationResponse,
-  RegisterAccountAssociationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: RegisterAccountAssociationRequest,
-  output: RegisterAccountAssociationResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "RegisterAccountAssociation",
-}));
-export type SendManagedThingCommandError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Send the command to the device represented by the managed thing.
- */
-export const sendManagedThingCommand: API.OperationMethod<
-  SendManagedThingCommandRequest,
-  SendManagedThingCommandResponse,
-  SendManagedThingCommandError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: SendManagedThingCommandRequest,
-  output: SendManagedThingCommandResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "SendManagedThingCommand",
-}));
-export type CreateManagedThingError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a managed thing. A managed thing contains the device identifier, protocol supported, and capabilities of the device in a data model format defined by Managed integrations.
- */
-export const createManagedThing: API.OperationMethod<
-  CreateManagedThingRequest,
-  CreateManagedThingResponse,
-  CreateManagedThingError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateManagedThingRequest,
-  output: CreateManagedThingResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateManagedThing",
-}));
-export type GetManagedThingError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get details of a managed thing including its attributes and capabilities.
- */
-export const getManagedThing: API.OperationMethod<
-  GetManagedThingRequest,
-  GetManagedThingResponse,
-  GetManagedThingError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedThingRequest,
-  output: GetManagedThingResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetManagedThing",
-}));
-export type UpdateManagedThingError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Update the attributes and capabilities associated with a managed thing.
- */
-export const updateManagedThing: API.OperationMethod<
-  UpdateManagedThingRequest,
-  UpdateManagedThingResponse,
-  UpdateManagedThingError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateManagedThingRequest,
-  output: UpdateManagedThingResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateManagedThing",
-}));
-export type DeleteManagedThingError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Delete a managed thing. For direct-connected and hub-connected devices connecting with Managed integrations via a controller, all of the devices connected to it will have their status changed to `PENDING`. It is not possible to remove a cloud-to-cloud device.
- */
-export const deleteManagedThing: API.OperationMethod<
-  DeleteManagedThingRequest,
-  DeleteManagedThingResponse,
-  DeleteManagedThingError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteManagedThingRequest,
-  output: DeleteManagedThingResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteManagedThing",
-}));
+
 export type ListManagedThingsError =
   | AccessDeniedException
   | InternalServerException
@@ -6368,140 +6519,7 @@ export const listManagedThings: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type GetManagedThingCapabilitiesError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get the capabilities for a managed thing using the device ID.
- */
-export const getManagedThingCapabilities: API.OperationMethod<
-  GetManagedThingCapabilitiesRequest,
-  GetManagedThingCapabilitiesResponse,
-  GetManagedThingCapabilitiesError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedThingCapabilitiesRequest,
-  output: GetManagedThingCapabilitiesResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetManagedThingCapabilities",
-}));
-export type GetManagedThingCertificateError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves the certificate PEM for a managed IoT thing.
- */
-export const getManagedThingCertificate: API.OperationMethod<
-  GetManagedThingCertificateRequest,
-  GetManagedThingCertificateResponse,
-  GetManagedThingCertificateError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedThingCertificateRequest,
-  output: GetManagedThingCertificateResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetManagedThingCertificate",
-}));
-export type GetManagedThingConnectivityDataError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get the connectivity status of a managed thing.
- */
-export const getManagedThingConnectivityData: API.OperationMethod<
-  GetManagedThingConnectivityDataRequest,
-  GetManagedThingConnectivityDataResponse,
-  GetManagedThingConnectivityDataError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedThingConnectivityDataRequest,
-  output: GetManagedThingConnectivityDataResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetManagedThingConnectivityData",
-}));
-export type GetManagedThingMetaDataError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get the metadata information for a managed thing.
- *
- * The `managedThing` `metadata` parameter is used for associating attributes with a `managedThing` that can be used for grouping over-the-air (OTA) tasks. Name value pairs in `metadata` can be used in the `OtaTargetQueryString` parameter for the `CreateOtaTask` API operation.
- */
-export const getManagedThingMetaData: API.OperationMethod<
-  GetManagedThingMetaDataRequest,
-  GetManagedThingMetaDataResponse,
-  GetManagedThingMetaDataError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedThingMetaDataRequest,
-  output: GetManagedThingMetaDataResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetManagedThingMetaData",
-}));
+
 export type ListManagedThingSchemasError =
   | AccessDeniedException
   | InternalServerException
@@ -6556,126 +6574,7 @@ export const listManagedThingSchemas: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type GetManagedThingStateError =
-  | AccessDeniedException
-  | InternalFailureException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns the managed thing state for the given device Id.
- */
-export const getManagedThingState: API.OperationMethod<
-  GetManagedThingStateRequest,
-  GetManagedThingStateResponse,
-  GetManagedThingStateError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedThingStateRequest,
-  output: GetManagedThingStateResponse,
-  errors: [
-    AccessDeniedException,
-    InternalFailureException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetManagedThingState",
-}));
-export type CreateNotificationConfigurationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a notification configuration. A configuration is a connection between an event type and a destination that you have already created.
- */
-export const createNotificationConfiguration: API.OperationMethod<
-  CreateNotificationConfigurationRequest,
-  CreateNotificationConfigurationResponse,
-  CreateNotificationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateNotificationConfigurationRequest,
-  output: CreateNotificationConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateNotificationConfiguration",
-}));
-export type DeleteNotificationConfigurationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a notification configuration.
- */
-export const deleteNotificationConfiguration: API.OperationMethod<
-  DeleteNotificationConfigurationRequest,
-  DeleteNotificationConfigurationResponse,
-  DeleteNotificationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNotificationConfigurationRequest,
-  output: DeleteNotificationConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteNotificationConfiguration",
-}));
-export type GetNotificationConfigurationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get a notification configuration for a specified event type.
- */
-export const getNotificationConfiguration: API.OperationMethod<
-  GetNotificationConfigurationRequest,
-  GetNotificationConfigurationResponse,
-  GetNotificationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetNotificationConfigurationRequest,
-  output: GetNotificationConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetNotificationConfiguration",
-}));
+
 export type ListNotificationConfigurationsError =
   | AccessDeniedException
   | InternalServerException
@@ -6724,122 +6623,7 @@ export const listNotificationConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type UpdateNotificationConfigurationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Update a notification configuration.
- */
-export const updateNotificationConfiguration: API.OperationMethod<
-  UpdateNotificationConfigurationRequest,
-  UpdateNotificationConfigurationResponse,
-  UpdateNotificationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNotificationConfigurationRequest,
-  output: UpdateNotificationConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateNotificationConfiguration",
-}));
-export type CreateOtaTaskConfigurationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Create a configuraiton for the over-the-air (OTA) task.
- */
-export const createOtaTaskConfiguration: API.OperationMethod<
-  CreateOtaTaskConfigurationRequest,
-  CreateOtaTaskConfigurationResponse,
-  CreateOtaTaskConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateOtaTaskConfigurationRequest,
-  output: CreateOtaTaskConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateOtaTaskConfiguration",
-}));
-export type DeleteOtaTaskConfigurationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Delete the over-the-air (OTA) task configuration.
- */
-export const deleteOtaTaskConfiguration: API.OperationMethod<
-  DeleteOtaTaskConfigurationRequest,
-  DeleteOtaTaskConfigurationResponse,
-  DeleteOtaTaskConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOtaTaskConfigurationRequest,
-  output: DeleteOtaTaskConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteOtaTaskConfiguration",
-}));
-export type GetOtaTaskConfigurationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get a configuraiton for the over-the-air (OTA) task.
- */
-export const getOtaTaskConfiguration: API.OperationMethod<
-  GetOtaTaskConfigurationRequest,
-  GetOtaTaskConfigurationResponse,
-  GetOtaTaskConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetOtaTaskConfigurationRequest,
-  output: GetOtaTaskConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetOtaTaskConfiguration",
-}));
+
 export type ListOtaTaskConfigurationsError =
   | AccessDeniedException
   | InternalServerException
@@ -6888,178 +6672,7 @@ export const listOtaTaskConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type CreateOtaTaskError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Create an over-the-air (OTA) task to target a device.
- */
-export const createOtaTask: API.OperationMethod<
-  CreateOtaTaskRequest,
-  CreateOtaTaskResponse,
-  CreateOtaTaskError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateOtaTaskRequest,
-  output: CreateOtaTaskResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateOtaTask",
-}));
-export type GetOtaTaskError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get details of the over-the-air (OTA) task by its task id.
- */
-export const getOtaTask: API.OperationMethod<
-  GetOtaTaskRequest,
-  GetOtaTaskResponse,
-  GetOtaTaskError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetOtaTaskRequest,
-  output: GetOtaTaskResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetOtaTask",
-}));
-export type UpdateOtaTaskError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Update an over-the-air (OTA) task.
- */
-export const updateOtaTask: API.OperationMethod<
-  UpdateOtaTaskRequest,
-  UpdateOtaTaskResponse,
-  UpdateOtaTaskError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOtaTaskRequest,
-  output: UpdateOtaTaskResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateOtaTask",
-}));
-export type DeleteOtaTaskError =
-  | AccessDeniedException
-  | InternalServerException
-  | LimitExceededException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Delete the over-the-air (OTA) task.
- */
-export const deleteOtaTask: API.OperationMethod<
-  DeleteOtaTaskRequest,
-  DeleteOtaTaskResponse,
-  DeleteOtaTaskError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOtaTaskRequest,
-  output: DeleteOtaTaskResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    LimitExceededException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteOtaTask",
-}));
-export type ListOtaTasksError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * List all of the over-the-air (OTA) tasks.
- */
-export const listOtaTasks: API.OperationMethod<
-  ListOtaTasksRequest,
-  ListOtaTasksResponse,
-  ListOtaTasksError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListOtaTasksRequest,
-  ) => stream.Stream<
-    ListOtaTasksResponse,
-    ListOtaTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListOtaTasksRequest,
-  ) => stream.Stream<
-    OtaTaskSummary,
-    ListOtaTasksError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOtaTasksRequest,
-  output: ListOtaTasksResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListOtaTasks",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "Tasks",
-    pageSize: "MaxResults",
-  } as const,
-}));
+
 export type ListOtaTaskExecutionsError =
   | AccessDeniedException
   | InternalServerException
@@ -7110,109 +6723,58 @@ export const listOtaTaskExecutions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type CreateProvisioningProfileError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Create a provisioning profile for executing device provisioning flows. The provisioning profile is a document that defines the set of resources and policies applied to a device during the provisioning process.
- */
-export const createProvisioningProfile: API.OperationMethod<
-  CreateProvisioningProfileRequest,
-  CreateProvisioningProfileResponse,
-  CreateProvisioningProfileError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateProvisioningProfileRequest,
-  output: CreateProvisioningProfileResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateProvisioningProfile",
-}));
-export type GetProvisioningProfileError =
+
+export type ListOtaTasksError =
   | AccessDeniedException
   | InternalServerException
   | ResourceNotFoundException
-  | ServiceUnavailableException
   | ThrottlingException
-  | UnauthorizedException
   | ValidationException
   | CommonErrors;
 /**
- * Get details of a provisioning profile.
+ * List all of the over-the-air (OTA) tasks.
  */
-export const getProvisioningProfile: API.OperationMethod<
-  GetProvisioningProfileRequest,
-  GetProvisioningProfileResponse,
-  GetProvisioningProfileError,
+export const listOtaTasks: API.OperationMethod<
+  ListOtaTasksRequest,
+  ListOtaTasksResponse,
+  ListOtaTasksError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetProvisioningProfileRequest,
-  output: GetProvisioningProfileResponse,
+> & {
+  pages: (
+    input: ListOtaTasksRequest,
+  ) => stream.Stream<
+    ListOtaTasksResponse,
+    ListOtaTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListOtaTasksRequest,
+  ) => stream.Stream<
+    OtaTaskSummary,
+    ListOtaTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListOtaTasksRequest,
+  output: ListOtaTasksResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
     ResourceNotFoundException,
-    ServiceUnavailableException,
     ThrottlingException,
-    UnauthorizedException,
     ValidationException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "GetProvisioningProfile",
+  operationName: "ListOtaTasks",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Tasks",
+    pageSize: "MaxResults",
+  } as const,
 }));
-export type DeleteProvisioningProfileError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Delete a provisioning profile.
- */
-export const deleteProvisioningProfile: API.OperationMethod<
-  DeleteProvisioningProfileRequest,
-  DeleteProvisioningProfileResponse,
-  DeleteProvisioningProfileError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProvisioningProfileRequest,
-  output: DeleteProvisioningProfileResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteProvisioningProfile",
-}));
+
 export type ListProvisioningProfilesError =
   | AccessDeniedException
   | InternalServerException
@@ -7265,126 +6827,7 @@ export const listProvisioningProfiles: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type GetRuntimeLogConfigurationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get the runtime log configuration for a specific managed thing.
- */
-export const getRuntimeLogConfiguration: API.OperationMethod<
-  GetRuntimeLogConfigurationRequest,
-  GetRuntimeLogConfigurationResponse,
-  GetRuntimeLogConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetRuntimeLogConfigurationRequest,
-  output: GetRuntimeLogConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetRuntimeLogConfiguration",
-}));
-export type PutRuntimeLogConfigurationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Set the runtime log configuration for a specific managed thing.
- */
-export const putRuntimeLogConfiguration: API.OperationMethod<
-  PutRuntimeLogConfigurationRequest,
-  PutRuntimeLogConfigurationResponse,
-  PutRuntimeLogConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutRuntimeLogConfigurationRequest,
-  output: PutRuntimeLogConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "PutRuntimeLogConfiguration",
-}));
-export type ResetRuntimeLogConfigurationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Reset a runtime log configuration for a specific managed thing.
- */
-export const resetRuntimeLogConfiguration: API.OperationMethod<
-  ResetRuntimeLogConfigurationRequest,
-  ResetRuntimeLogConfigurationResponse,
-  ResetRuntimeLogConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ResetRuntimeLogConfigurationRequest,
-  output: ResetRuntimeLogConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ResetRuntimeLogConfiguration",
-}));
-export type GetSchemaVersionError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceUnavailableException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Gets a schema version with the provided information.
- */
-export const getSchemaVersion: API.OperationMethod<
-  GetSchemaVersionRequest,
-  GetSchemaVersionResponse,
-  GetSchemaVersionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetSchemaVersionRequest,
-  output: GetSchemaVersionResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceUnavailableException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetSchemaVersion",
-}));
+
 export type ListSchemaVersionsError =
   | AccessDeniedException
   | ConflictException
@@ -7436,4 +6879,672 @@ export const listSchemaVersions: API.OperationMethod<
     items: "Items",
     pageSize: "MaxResults",
   } as const,
+}));
+
+export type ListTagsForResourceError =
+  | InvalidRequestException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | CommonErrors;
+/**
+ * Lists the tags for a specified resource.
+ */
+export const listTagsForResource: API.OperationMethod<
+  ListTagsForResourceRequest,
+  ListTagsForResourceResponse,
+  ListTagsForResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
+  errors: [
+    InvalidRequestException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTagsForResource",
+}));
+
+export type PutDefaultEncryptionConfigurationError =
+  | AccessDeniedException
+  | InternalFailureException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Sets the default encryption configuration for the Amazon Web Services account. For more information, see Key management in the AWS IoT SiteWise User Guide.
+ */
+export const putDefaultEncryptionConfiguration: API.OperationMethod<
+  PutDefaultEncryptionConfigurationRequest,
+  PutDefaultEncryptionConfigurationResponse,
+  PutDefaultEncryptionConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutDefaultEncryptionConfigurationRequest,
+  output: PutDefaultEncryptionConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalFailureException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutDefaultEncryptionConfiguration",
+}));
+
+export type PutHubConfigurationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Update a hub configuration.
+ */
+export const putHubConfiguration: API.OperationMethod<
+  PutHubConfigurationRequest,
+  PutHubConfigurationResponse,
+  PutHubConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutHubConfigurationRequest,
+  output: PutHubConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutHubConfiguration",
+}));
+
+export type PutRuntimeLogConfigurationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Set the runtime log configuration for a specific managed thing.
+ */
+export const putRuntimeLogConfiguration: API.OperationMethod<
+  PutRuntimeLogConfigurationRequest,
+  PutRuntimeLogConfigurationResponse,
+  PutRuntimeLogConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutRuntimeLogConfigurationRequest,
+  output: PutRuntimeLogConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutRuntimeLogConfiguration",
+}));
+
+export type RegisterAccountAssociationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Registers an account association with a managed thing, establishing a connection between a device and a third-party account.
+ */
+export const registerAccountAssociation: API.OperationMethod<
+  RegisterAccountAssociationRequest,
+  RegisterAccountAssociationResponse,
+  RegisterAccountAssociationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: RegisterAccountAssociationRequest,
+  output: RegisterAccountAssociationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "RegisterAccountAssociation",
+}));
+
+export type RegisterCustomEndpointError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Customers can request IoT managed integrations to manage the server trust for them or bring their own external server trusts for the custom domain. Returns an IoT managed integrations endpoint.
+ */
+export const registerCustomEndpoint: API.OperationMethod<
+  RegisterCustomEndpointRequest,
+  RegisterCustomEndpointResponse,
+  RegisterCustomEndpointError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: RegisterCustomEndpointRequest,
+  output: RegisterCustomEndpointResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "RegisterCustomEndpoint",
+}));
+
+export type ResetRuntimeLogConfigurationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Reset a runtime log configuration for a specific managed thing.
+ */
+export const resetRuntimeLogConfiguration: API.OperationMethod<
+  ResetRuntimeLogConfigurationRequest,
+  ResetRuntimeLogConfigurationResponse,
+  ResetRuntimeLogConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ResetRuntimeLogConfigurationRequest,
+  output: ResetRuntimeLogConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ResetRuntimeLogConfiguration",
+}));
+
+export type SendConnectorEventError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Relays third-party device events for a connector such as a new device or a device state change event.
+ */
+export const sendConnectorEvent: API.OperationMethod<
+  SendConnectorEventRequest,
+  SendConnectorEventResponse,
+  SendConnectorEventError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: SendConnectorEventRequest,
+  output: SendConnectorEventResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SendConnectorEvent",
+}));
+
+export type SendManagedThingCommandError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Send the command to the device represented by the managed thing.
+ */
+export const sendManagedThingCommand: API.OperationMethod<
+  SendManagedThingCommandRequest,
+  SendManagedThingCommandResponse,
+  SendManagedThingCommandError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: SendManagedThingCommandRequest,
+  output: SendManagedThingCommandResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SendManagedThingCommand",
+}));
+
+export type StartAccountAssociationRefreshError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Initiates a refresh of an existing account association to update its authorization and connection status.
+ */
+export const startAccountAssociationRefresh: API.OperationMethod<
+  StartAccountAssociationRefreshRequest,
+  StartAccountAssociationRefreshResponse,
+  StartAccountAssociationRefreshError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartAccountAssociationRefreshRequest,
+  output: StartAccountAssociationRefreshResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "StartAccountAssociationRefresh",
+}));
+
+export type StartDeviceDiscoveryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * This API is used to start device discovery for hub-connected and third-party-connected devices. The authentication material (install code) is delivered as a message to the controller instructing it to start the discovery.
+ */
+export const startDeviceDiscovery: API.OperationMethod<
+  StartDeviceDiscoveryRequest,
+  StartDeviceDiscoveryResponse,
+  StartDeviceDiscoveryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartDeviceDiscoveryRequest,
+  output: StartDeviceDiscoveryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "StartDeviceDiscovery",
+}));
+
+export type TagResourceError =
+  | ConflictException
+  | InvalidRequestException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | CommonErrors;
+/**
+ * Adds tags to a specified resource.
+ */
+export const tagResource: API.OperationMethod<
+  TagResourceRequest,
+  TagResourceResponse,
+  TagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: TagResourceRequest,
+  output: TagResourceResponse,
+  errors: [
+    ConflictException,
+    InvalidRequestException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TagResource",
+}));
+
+export type UntagResourceError =
+  | ConflictException
+  | InvalidRequestException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | CommonErrors;
+/**
+ * Removes tags from a specified resource.
+ */
+export const untagResource: API.OperationMethod<
+  UntagResourceRequest,
+  UntagResourceResponse,
+  UntagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
+  errors: [
+    ConflictException,
+    InvalidRequestException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UntagResource",
+}));
+
+export type UpdateAccountAssociationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the properties of an existing account association.
+ */
+export const updateAccountAssociation: API.OperationMethod<
+  UpdateAccountAssociationRequest,
+  UpdateAccountAssociationResponse,
+  UpdateAccountAssociationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateAccountAssociationRequest,
+  output: UpdateAccountAssociationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateAccountAssociation",
+}));
+
+export type UpdateCloudConnectorError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Update an existing cloud connector.
+ */
+export const updateCloudConnector: API.OperationMethod<
+  UpdateCloudConnectorRequest,
+  UpdateCloudConnectorResponse,
+  UpdateCloudConnectorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateCloudConnectorRequest,
+  output: UpdateCloudConnectorResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateCloudConnector",
+}));
+
+export type UpdateConnectorDestinationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the properties of an existing connector destination.
+ */
+export const updateConnectorDestination: API.OperationMethod<
+  UpdateConnectorDestinationRequest,
+  UpdateConnectorDestinationResponse,
+  UpdateConnectorDestinationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateConnectorDestinationRequest,
+  output: UpdateConnectorDestinationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateConnectorDestination",
+}));
+
+export type UpdateDestinationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Update a destination specified by name.
+ */
+export const updateDestination: API.OperationMethod<
+  UpdateDestinationRequest,
+  UpdateDestinationResponse,
+  UpdateDestinationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateDestinationRequest,
+  output: UpdateDestinationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateDestination",
+}));
+
+export type UpdateEventLogConfigurationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Update an event log configuration by log configuration ID.
+ */
+export const updateEventLogConfiguration: API.OperationMethod<
+  UpdateEventLogConfigurationRequest,
+  UpdateEventLogConfigurationResponse,
+  UpdateEventLogConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateEventLogConfigurationRequest,
+  output: UpdateEventLogConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateEventLogConfiguration",
+}));
+
+export type UpdateManagedThingError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceUnavailableException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Update the attributes and capabilities associated with a managed thing.
+ */
+export const updateManagedThing: API.OperationMethod<
+  UpdateManagedThingRequest,
+  UpdateManagedThingResponse,
+  UpdateManagedThingError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateManagedThingRequest,
+  output: UpdateManagedThingResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceUnavailableException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateManagedThing",
+}));
+
+export type UpdateNotificationConfigurationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Update a notification configuration.
+ */
+export const updateNotificationConfiguration: API.OperationMethod<
+  UpdateNotificationConfigurationRequest,
+  UpdateNotificationConfigurationResponse,
+  UpdateNotificationConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateNotificationConfigurationRequest,
+  output: UpdateNotificationConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateNotificationConfiguration",
+}));
+
+export type UpdateOtaTaskError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Update an over-the-air (OTA) task.
+ */
+export const updateOtaTask: API.OperationMethod<
+  UpdateOtaTaskRequest,
+  UpdateOtaTaskResponse,
+  UpdateOtaTaskError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateOtaTaskRequest,
+  output: UpdateOtaTaskResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateOtaTask",
 }));

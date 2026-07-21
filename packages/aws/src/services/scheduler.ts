@@ -85,10 +85,36 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type TagResourceArn = string;
-export type TagKey = string;
-export type TagValue = string;
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Name = string;
 export type ScheduleGroupName = string;
 export type ScheduleExpression = string;
@@ -101,139 +127,6 @@ export type KmsKeyArn = string;
 export type TargetArn = string;
 export type RoleArn = string;
 export type ResourceArn = string;
-export type MaximumEventAgeInSeconds = number;
-export type MaximumRetryAttempts = number;
-export type TargetInput = string;
-export type TaskDefinitionArn = string;
-export type TaskCount = number;
-export type LaunchType = string;
-export type Subnet = string;
-export type SecurityGroup = string;
-export type AssignPublicIp = string;
-export type PlatformVersion = string;
-export type Group = string;
-export type CapacityProvider = string;
-export type CapacityProviderStrategyItemWeight = number;
-export type CapacityProviderStrategyItemBase = number;
-export type EnableECSManagedTags = boolean;
-export type EnableExecuteCommand = boolean;
-export type PlacementConstraintType = string;
-export type PlacementConstraintExpression = string;
-export type PlacementStrategyType = string;
-export type PlacementStrategyField = string;
-export type PropagateTags = string;
-export type ReferenceId = string;
-export type DetailType = string;
-export type Source = string;
-export type TargetPartitionKey = string;
-export type SageMakerPipelineParameterName = string;
-export type SageMakerPipelineParameterValue = string;
-export type MessageGroupId = string;
-export type FlexibleTimeWindowMode = string;
-export type MaximumWindowInMinutes = number;
-export type ClientToken = string;
-export type ActionAfterCompletion = string;
-export type ScheduleArn = string;
-export type CreationDate = Date;
-export type LastModificationDate = Date;
-export type NamePrefix = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type ScheduleGroupArn = string;
-export type ScheduleGroupState = string;
-export type ScheduleGroupNamePrefix = string;
-
-//# Schemas
-export interface ListTagsForResourceInput {
-  ResourceArn: string;
-}
-export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceInput",
-}) as any as S.Schema<ListTagsForResourceInput>;
-export interface Tag {
-  Key: string;
-  Value: string;
-}
-export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Key: S.String, Value: S.String }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
-export type TagList = Tag[];
-export const TagList = /*@__PURE__*/ S.Array(Tag);
-export interface ListTagsForResourceOutput {
-  Tags?: Tag[];
-}
-export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Tags: S.optional(TagList) }),
-).annotate({
-  identifier: "ListTagsForResourceOutput",
-}) as any as S.Schema<ListTagsForResourceOutput>;
-export interface TagResourceInput {
-  ResourceArn: string;
-  Tags: Tag[];
-}
-export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    Tags: TagList,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "TagResourceInput",
-}) as any as S.Schema<TagResourceInput>;
-export interface TagResourceOutput {}
-export const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TagResourceOutput",
-}) as any as S.Schema<TagResourceOutput>;
-export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
-export interface UntagResourceInput {
-  ResourceArn: string;
-  TagKeys: string[];
-}
-export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-    TagKeys: TagKeyList.pipe(T.HttpQuery("TagKeys")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UntagResourceInput",
-}) as any as S.Schema<UntagResourceInput>;
-export interface UntagResourceOutput {}
-export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UntagResourceOutput",
-}) as any as S.Schema<UntagResourceOutput>;
 export interface DeadLetterConfig {
   Arn?: string;
 }
@@ -242,6 +135,8 @@ export const DeadLetterConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeadLetterConfig",
 }) as any as S.Schema<DeadLetterConfig>;
+export type MaximumEventAgeInSeconds = number;
+export type MaximumRetryAttempts = number;
 export interface RetryPolicy {
   MaximumEventAgeInSeconds?: number;
   MaximumRetryAttempts?: number;
@@ -252,10 +147,17 @@ export const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
     MaximumRetryAttempts: S.optional(S.Number),
   }),
 ).annotate({ identifier: "RetryPolicy" }) as any as S.Schema<RetryPolicy>;
+export type TargetInput = string;
+export type TaskDefinitionArn = string;
+export type TaskCount = number;
+export type LaunchType = string;
+export type Subnet = string;
 export type Subnets = string[];
 export const Subnets = /*@__PURE__*/ S.Array(S.String);
+export type SecurityGroup = string;
 export type SecurityGroups = string[];
 export const SecurityGroups = /*@__PURE__*/ S.Array(S.String);
+export type AssignPublicIp = string;
 export interface AwsVpcConfiguration {
   Subnets: string[];
   SecurityGroups?: string[];
@@ -278,6 +180,11 @@ export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkConfiguration",
 }) as any as S.Schema<NetworkConfiguration>;
+export type PlatformVersion = string;
+export type Group = string;
+export type CapacityProvider = string;
+export type CapacityProviderStrategyItemWeight = number;
+export type CapacityProviderStrategyItemBase = number;
 export interface CapacityProviderStrategyItem {
   capacityProvider: string;
   weight?: number;
@@ -296,6 +203,10 @@ export type CapacityProviderStrategy = CapacityProviderStrategyItem[];
 export const CapacityProviderStrategy = /*@__PURE__*/ S.Array(
   CapacityProviderStrategyItem,
 );
+export type EnableECSManagedTags = boolean;
+export type EnableExecuteCommand = boolean;
+export type PlacementConstraintType = string;
+export type PlacementConstraintExpression = string;
 export interface PlacementConstraint {
   type?: string;
   expression?: string;
@@ -307,6 +218,8 @@ export const PlacementConstraint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementConstraint>;
 export type PlacementConstraints = PlacementConstraint[];
 export const PlacementConstraints = /*@__PURE__*/ S.Array(PlacementConstraint);
+export type PlacementStrategyType = string;
+export type PlacementStrategyField = string;
 export interface PlacementStrategy {
   type?: string;
   field?: string;
@@ -318,6 +231,10 @@ export const PlacementStrategy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlacementStrategy>;
 export type PlacementStrategies = PlacementStrategy[];
 export const PlacementStrategies = /*@__PURE__*/ S.Array(PlacementStrategy);
+export type PropagateTags = string;
+export type ReferenceId = string;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -359,6 +276,8 @@ export const EcsParameters = /*@__PURE__*/ S.suspend(() =>
     Tags: S.optional(Tags),
   }),
 ).annotate({ identifier: "EcsParameters" }) as any as S.Schema<EcsParameters>;
+export type DetailType = string;
+export type Source = string;
 export interface EventBridgeParameters {
   DetailType: string;
   Source: string;
@@ -368,6 +287,7 @@ export const EventBridgeParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EventBridgeParameters",
 }) as any as S.Schema<EventBridgeParameters>;
+export type TargetPartitionKey = string;
 export interface KinesisParameters {
   PartitionKey: string;
 }
@@ -376,6 +296,8 @@ export const KinesisParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KinesisParameters",
 }) as any as S.Schema<KinesisParameters>;
+export type SageMakerPipelineParameterName = string;
+export type SageMakerPipelineParameterValue = string;
 export interface SageMakerPipelineParameter {
   Name: string;
   Value: string;
@@ -399,6 +321,7 @@ export const SageMakerPipelineParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SageMakerPipelineParameters",
 }) as any as S.Schema<SageMakerPipelineParameters>;
+export type MessageGroupId = string;
 export interface SqsParameters {
   MessageGroupId?: string;
 }
@@ -431,6 +354,8 @@ export const Target = /*@__PURE__*/ S.suspend(() =>
     SqsParameters: S.optional(SqsParameters),
   }),
 ).annotate({ identifier: "Target" }) as any as S.Schema<Target>;
+export type FlexibleTimeWindowMode = string;
+export type MaximumWindowInMinutes = number;
 export interface FlexibleTimeWindow {
   Mode: string;
   MaximumWindowInMinutes?: number;
@@ -440,6 +365,8 @@ export const FlexibleTimeWindow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FlexibleTimeWindow",
 }) as any as S.Schema<FlexibleTimeWindow>;
+export type ClientToken = string;
+export type ActionAfterCompletion = string;
 export interface CreateScheduleInput {
   Name: string;
   GroupName?: string;
@@ -483,6 +410,7 @@ export const CreateScheduleInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateScheduleInput",
 }) as any as S.Schema<CreateScheduleInput>;
+export type ScheduleArn = string;
 export interface CreateScheduleOutput {
   ScheduleArn: string;
 }
@@ -491,6 +419,109 @@ export const CreateScheduleOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateScheduleOutput",
 }) as any as S.Schema<CreateScheduleOutput>;
+export interface Tag {
+  Key: string;
+  Value: string;
+}
+export const Tag = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Key: S.String, Value: S.String }),
+).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+export type TagList = Tag[];
+export const TagList = /*@__PURE__*/ S.Array(Tag);
+export interface CreateScheduleGroupInput {
+  Name: string;
+  Tags?: Tag[];
+  ClientToken?: string;
+}
+export const CreateScheduleGroupInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String.pipe(T.HttpLabel("Name")),
+    Tags: S.optional(TagList),
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/schedule-groups/{Name}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateScheduleGroupInput",
+}) as any as S.Schema<CreateScheduleGroupInput>;
+export type ScheduleGroupArn = string;
+export interface CreateScheduleGroupOutput {
+  ScheduleGroupArn: string;
+}
+export const CreateScheduleGroupOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ScheduleGroupArn: S.String }),
+).annotate({
+  identifier: "CreateScheduleGroupOutput",
+}) as any as S.Schema<CreateScheduleGroupOutput>;
+export interface DeleteScheduleInput {
+  Name: string;
+  GroupName?: string;
+  ClientToken?: string;
+}
+export const DeleteScheduleInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String.pipe(T.HttpLabel("Name")),
+    GroupName: S.optional(S.String).pipe(T.HttpQuery("groupName")),
+    ClientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/schedules/{Name}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteScheduleInput",
+}) as any as S.Schema<DeleteScheduleInput>;
+export interface DeleteScheduleOutput {}
+export const DeleteScheduleOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteScheduleOutput",
+}) as any as S.Schema<DeleteScheduleOutput>;
+export interface DeleteScheduleGroupInput {
+  Name: string;
+  ClientToken?: string;
+}
+export const DeleteScheduleGroupInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String.pipe(T.HttpLabel("Name")),
+    ClientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/schedule-groups/{Name}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteScheduleGroupInput",
+}) as any as S.Schema<DeleteScheduleGroupInput>;
+export interface DeleteScheduleGroupOutput {}
+export const DeleteScheduleGroupOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteScheduleGroupOutput",
+}) as any as S.Schema<DeleteScheduleGroupOutput>;
 export interface GetScheduleInput {
   Name: string;
   GroupName?: string;
@@ -512,6 +543,8 @@ export const GetScheduleInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetScheduleInput",
 }) as any as S.Schema<GetScheduleInput>;
+export type CreationDate = Date;
+export type LastModificationDate = Date;
 export interface GetScheduleOutput {
   Arn?: string;
   GroupName?: string;
@@ -552,73 +585,60 @@ export const GetScheduleOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetScheduleOutput",
 }) as any as S.Schema<GetScheduleOutput>;
-export interface UpdateScheduleInput {
+export interface GetScheduleGroupInput {
   Name: string;
-  GroupName?: string;
-  ScheduleExpression: string;
-  StartDate?: Date;
-  EndDate?: Date;
-  Description?: string;
-  ScheduleExpressionTimezone?: string;
+}
+export const GetScheduleGroupInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/schedule-groups/{Name}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetScheduleGroupInput",
+}) as any as S.Schema<GetScheduleGroupInput>;
+export type ScheduleGroupState = string;
+export interface GetScheduleGroupOutput {
+  Arn?: string;
+  Name?: string;
   State?: string;
-  KmsKeyArn?: string;
-  Target: Target;
-  FlexibleTimeWindow: FlexibleTimeWindow;
-  ClientToken?: string;
-  ActionAfterCompletion?: string;
+  CreationDate?: Date;
+  LastModificationDate?: Date;
 }
-export const UpdateScheduleInput = /*@__PURE__*/ S.suspend(() =>
+export const GetScheduleGroupOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Name: S.String.pipe(T.HttpLabel("Name")),
-    GroupName: S.optional(S.String),
-    ScheduleExpression: S.String,
-    StartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    Description: S.optional(S.String),
-    ScheduleExpressionTimezone: S.optional(S.String),
+    Arn: S.optional(S.String),
+    Name: S.optional(S.String),
     State: S.optional(S.String),
-    KmsKeyArn: S.optional(S.String),
-    Target: Target,
-    FlexibleTimeWindow: FlexibleTimeWindow,
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    ActionAfterCompletion: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/schedules/{Name}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
+    CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModificationDate: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     ),
-  ),
+  }),
 ).annotate({
-  identifier: "UpdateScheduleInput",
-}) as any as S.Schema<UpdateScheduleInput>;
-export interface UpdateScheduleOutput {
-  ScheduleArn: string;
+  identifier: "GetScheduleGroupOutput",
+}) as any as S.Schema<GetScheduleGroupOutput>;
+export type ScheduleGroupNamePrefix = string;
+export type NextToken = string;
+export type MaxResults = number;
+export interface ListScheduleGroupsInput {
+  NamePrefix?: string;
+  NextToken?: string;
+  MaxResults?: number;
 }
-export const UpdateScheduleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ScheduleArn: S.String }),
-).annotate({
-  identifier: "UpdateScheduleOutput",
-}) as any as S.Schema<UpdateScheduleOutput>;
-export interface DeleteScheduleInput {
-  Name: string;
-  GroupName?: string;
-  ClientToken?: string;
-}
-export const DeleteScheduleInput = /*@__PURE__*/ S.suspend(() =>
+export const ListScheduleGroupsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Name: S.String.pipe(T.HttpLabel("Name")),
-    GroupName: S.optional(S.String).pipe(T.HttpQuery("groupName")),
-    ClientToken: S.optional(S.String).pipe(
-      T.HttpQuery("clientToken"),
-      T.IdempotencyToken(),
-    ),
+    NamePrefix: S.optional(S.String).pipe(T.HttpQuery("NamePrefix")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
   }).pipe(
     T.all(
-      T.Http({ method: "DELETE", uri: "/schedules/{Name}" }),
+      T.Http({ method: "GET", uri: "/schedule-groups" }),
       svc,
       auth,
       proto,
@@ -627,14 +647,43 @@ export const DeleteScheduleInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "DeleteScheduleInput",
-}) as any as S.Schema<DeleteScheduleInput>;
-export interface DeleteScheduleOutput {}
-export const DeleteScheduleOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  identifier: "ListScheduleGroupsInput",
+}) as any as S.Schema<ListScheduleGroupsInput>;
+export interface ScheduleGroupSummary {
+  Arn?: string;
+  Name?: string;
+  State?: string;
+  CreationDate?: Date;
+  LastModificationDate?: Date;
+}
+export const ScheduleGroupSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.optional(S.String),
+    Name: S.optional(S.String),
+    State: S.optional(S.String),
+    CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    LastModificationDate: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+  }),
 ).annotate({
-  identifier: "DeleteScheduleOutput",
-}) as any as S.Schema<DeleteScheduleOutput>;
+  identifier: "ScheduleGroupSummary",
+}) as any as S.Schema<ScheduleGroupSummary>;
+export type ScheduleGroupList = ScheduleGroupSummary[];
+export const ScheduleGroupList = /*@__PURE__*/ S.Array(ScheduleGroupSummary);
+export interface ListScheduleGroupsOutput {
+  NextToken?: string;
+  ScheduleGroups: ScheduleGroupSummary[];
+}
+export const ListScheduleGroupsOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    ScheduleGroups: ScheduleGroupList,
+  }),
+).annotate({
+  identifier: "ListScheduleGroupsOutput",
+}) as any as S.Schema<ListScheduleGroupsOutput>;
+export type NamePrefix = string;
 export interface ListSchedulesInput {
   GroupName?: string;
   NamePrefix?: string;
@@ -703,19 +752,43 @@ export const ListSchedulesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSchedulesOutput",
 }) as any as S.Schema<ListSchedulesOutput>;
-export interface CreateScheduleGroupInput {
-  Name: string;
+export type TagResourceArn = string;
+export interface ListTagsForResourceInput {
+  ResourceArn: string;
+}
+export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{ResourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListTagsForResourceInput",
+}) as any as S.Schema<ListTagsForResourceInput>;
+export interface ListTagsForResourceOutput {
   Tags?: Tag[];
-  ClientToken?: string;
 }
-export const CreateScheduleGroupInput = /*@__PURE__*/ S.suspend(() =>
+export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Tags: S.optional(TagList) }),
+).annotate({
+  identifier: "ListTagsForResourceOutput",
+}) as any as S.Schema<ListTagsForResourceOutput>;
+export interface TagResourceInput {
+  ResourceArn: string;
+  Tags: Tag[];
+}
+export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Name: S.String.pipe(T.HttpLabel("Name")),
-    Tags: S.optional(TagList),
-    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+    Tags: TagList,
   }).pipe(
     T.all(
-      T.Http({ method: "POST", uri: "/schedule-groups/{Name}" }),
+      T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
       svc,
       auth,
       proto,
@@ -724,96 +797,27 @@ export const CreateScheduleGroupInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "CreateScheduleGroupInput",
-}) as any as S.Schema<CreateScheduleGroupInput>;
-export interface CreateScheduleGroupOutput {
-  ScheduleGroupArn: string;
-}
-export const CreateScheduleGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ScheduleGroupArn: S.String }),
-).annotate({
-  identifier: "CreateScheduleGroupOutput",
-}) as any as S.Schema<CreateScheduleGroupOutput>;
-export interface GetScheduleGroupInput {
-  Name: string;
-}
-export const GetScheduleGroupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String.pipe(T.HttpLabel("Name")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/schedule-groups/{Name}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetScheduleGroupInput",
-}) as any as S.Schema<GetScheduleGroupInput>;
-export interface GetScheduleGroupOutput {
-  Arn?: string;
-  Name?: string;
-  State?: string;
-  CreationDate?: Date;
-  LastModificationDate?: Date;
-}
-export const GetScheduleGroupOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.optional(S.String),
-    Name: S.optional(S.String),
-    State: S.optional(S.String),
-    CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModificationDate: S.optional(
-      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ),
-  }),
-).annotate({
-  identifier: "GetScheduleGroupOutput",
-}) as any as S.Schema<GetScheduleGroupOutput>;
-export interface DeleteScheduleGroupInput {
-  Name: string;
-  ClientToken?: string;
-}
-export const DeleteScheduleGroupInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String.pipe(T.HttpLabel("Name")),
-    ClientToken: S.optional(S.String).pipe(
-      T.HttpQuery("clientToken"),
-      T.IdempotencyToken(),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/schedule-groups/{Name}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteScheduleGroupInput",
-}) as any as S.Schema<DeleteScheduleGroupInput>;
-export interface DeleteScheduleGroupOutput {}
-export const DeleteScheduleGroupOutput = /*@__PURE__*/ S.suspend(() =>
+  identifier: "TagResourceInput",
+}) as any as S.Schema<TagResourceInput>;
+export interface TagResourceOutput {}
+export const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "DeleteScheduleGroupOutput",
-}) as any as S.Schema<DeleteScheduleGroupOutput>;
-export interface ListScheduleGroupsInput {
-  NamePrefix?: string;
-  NextToken?: string;
-  MaxResults?: number;
+  identifier: "TagResourceOutput",
+}) as any as S.Schema<TagResourceOutput>;
+export type TagKeyList = string[];
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export interface UntagResourceInput {
+  ResourceArn: string;
+  TagKeys: string[];
 }
-export const ListScheduleGroupsInput = /*@__PURE__*/ S.suspend(() =>
+export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    NamePrefix: S.optional(S.String).pipe(T.HttpQuery("NamePrefix")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
+    TagKeys: TagKeyList.pipe(T.HttpQuery("TagKeys")),
   }).pipe(
     T.all(
-      T.Http({ method: "GET", uri: "/schedule-groups" }),
+      T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
       svc,
       auth,
       proto,
@@ -822,161 +826,65 @@ export const ListScheduleGroupsInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "ListScheduleGroupsInput",
-}) as any as S.Schema<ListScheduleGroupsInput>;
-export interface ScheduleGroupSummary {
-  Arn?: string;
-  Name?: string;
+  identifier: "UntagResourceInput",
+}) as any as S.Schema<UntagResourceInput>;
+export interface UntagResourceOutput {}
+export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UntagResourceOutput",
+}) as any as S.Schema<UntagResourceOutput>;
+export interface UpdateScheduleInput {
+  Name: string;
+  GroupName?: string;
+  ScheduleExpression: string;
+  StartDate?: Date;
+  EndDate?: Date;
+  Description?: string;
+  ScheduleExpressionTimezone?: string;
   State?: string;
-  CreationDate?: Date;
-  LastModificationDate?: Date;
+  KmsKeyArn?: string;
+  Target: Target;
+  FlexibleTimeWindow: FlexibleTimeWindow;
+  ClientToken?: string;
+  ActionAfterCompletion?: string;
 }
-export const ScheduleGroupSummary = /*@__PURE__*/ S.suspend(() =>
+export const UpdateScheduleInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    Arn: S.optional(S.String),
-    Name: S.optional(S.String),
+    Name: S.String.pipe(T.HttpLabel("Name")),
+    GroupName: S.optional(S.String),
+    ScheduleExpression: S.String,
+    StartDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EndDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    Description: S.optional(S.String),
+    ScheduleExpressionTimezone: S.optional(S.String),
     State: S.optional(S.String),
-    CreationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    LastModificationDate: S.optional(
-      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    KmsKeyArn: S.optional(S.String),
+    Target: Target,
+    FlexibleTimeWindow: FlexibleTimeWindow,
+    ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    ActionAfterCompletion: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/schedules/{Name}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  }),
+  ),
 ).annotate({
-  identifier: "ScheduleGroupSummary",
-}) as any as S.Schema<ScheduleGroupSummary>;
-export type ScheduleGroupList = ScheduleGroupSummary[];
-export const ScheduleGroupList = /*@__PURE__*/ S.Array(ScheduleGroupSummary);
-export interface ListScheduleGroupsOutput {
-  NextToken?: string;
-  ScheduleGroups: ScheduleGroupSummary[];
+  identifier: "UpdateScheduleInput",
+}) as any as S.Schema<UpdateScheduleInput>;
+export interface UpdateScheduleOutput {
+  ScheduleArn: string;
 }
-export const ListScheduleGroupsOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NextToken: S.optional(S.String),
-    ScheduleGroups: ScheduleGroupList,
-  }),
+export const UpdateScheduleOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ScheduleArn: S.String }),
 ).annotate({
-  identifier: "ListScheduleGroupsOutput",
-}) as any as S.Schema<ListScheduleGroupsOutput>;
-
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
-export type ListTagsForResourceError =
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Lists the tags associated with the Scheduler resource.
- */
-export const listTagsForResource: API.OperationMethod<
-  ListTagsForResourceInput,
-  ListTagsForResourceOutput,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceInput,
-  output: ListTagsForResourceOutput,
-  errors: [
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListTagsForResource",
-}));
-export type TagResourceError =
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Assigns one or more tags (key-value pairs) to the specified EventBridge Scheduler resource. You can only assign tags to schedule groups.
- */
-export const tagResource: API.OperationMethod<
-  TagResourceInput,
-  TagResourceOutput,
-  TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceInput,
-  output: TagResourceOutput,
-  errors: [
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "TagResource",
-}));
-export type UntagResourceError =
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Removes one or more tags from the specified EventBridge Scheduler schedule group.
- */
-export const untagResource: API.OperationMethod<
-  UntagResourceInput,
-  UntagResourceOutput,
-  UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceInput,
-  output: UntagResourceOutput,
-  errors: [
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UntagResource",
-}));
+  identifier: "UpdateScheduleOutput",
+}) as any as S.Schema<UpdateScheduleOutput>;
 export type CreateScheduleError =
   | ConflictException
   | InternalServerException
@@ -1008,67 +916,37 @@ export const createSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSchedule",
 }));
-export type GetScheduleError =
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves the specified schedule.
- */
-export const getSchedule: API.OperationMethod<
-  GetScheduleInput,
-  GetScheduleOutput,
-  GetScheduleError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetScheduleInput,
-  output: GetScheduleOutput,
-  errors: [
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetSchedule",
-}));
-export type UpdateScheduleError =
+
+export type CreateScheduleGroupError =
   | ConflictException
   | InternalServerException
-  | ResourceNotFoundException
+  | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Updates the specified schedule. When you call `UpdateSchedule`, EventBridge Scheduler uses all values, including empty values, specified in the request and
- * overrides the existing schedule. This is by design. This means that if you do not set an optional field in your request, that field will be set to
- * its system-default value after the update.
- *
- * Before calling this operation, we recommend that you call the `GetSchedule` API operation and make a note of all optional parameters
- * for your `UpdateSchedule` call.
+ * Creates the specified schedule group.
  */
-export const updateSchedule: API.OperationMethod<
-  UpdateScheduleInput,
-  UpdateScheduleOutput,
-  UpdateScheduleError,
+export const createScheduleGroup: API.OperationMethod<
+  CreateScheduleGroupInput,
+  CreateScheduleGroupOutput,
+  CreateScheduleGroupError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateScheduleInput,
-  output: UpdateScheduleOutput,
+  input: CreateScheduleGroupInput,
+  output: CreateScheduleGroupOutput,
   errors: [
     ConflictException,
     InternalServerException,
-    ResourceNotFoundException,
+    ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "UpdateSchedule",
+  operationName: "CreateScheduleGroup",
 }));
+
 export type DeleteScheduleError =
   | ConflictException
   | InternalServerException
@@ -1098,6 +976,141 @@ export const deleteSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSchedule",
 }));
+
+export type DeleteScheduleGroupError =
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the specified schedule group. Deleting a schedule group results in EventBridge Scheduler deleting all schedules associated with the group.
+ * When you delete a group, it remains in a `DELETING` state until all of its associated schedules are deleted.
+ * Schedules associated with the group that are set to run while the schedule group is in the process of being deleted might continue to invoke their targets
+ * until the schedule group and its associated schedules are deleted.
+ *
+ * This operation is eventually consistent.
+ */
+export const deleteScheduleGroup: API.OperationMethod<
+  DeleteScheduleGroupInput,
+  DeleteScheduleGroupOutput,
+  DeleteScheduleGroupError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteScheduleGroupInput,
+  output: DeleteScheduleGroupOutput,
+  errors: [
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteScheduleGroup",
+}));
+
+export type GetScheduleError =
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the specified schedule.
+ */
+export const getSchedule: API.OperationMethod<
+  GetScheduleInput,
+  GetScheduleOutput,
+  GetScheduleError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetScheduleInput,
+  output: GetScheduleOutput,
+  errors: [
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetSchedule",
+}));
+
+export type GetScheduleGroupError =
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the specified schedule group.
+ */
+export const getScheduleGroup: API.OperationMethod<
+  GetScheduleGroupInput,
+  GetScheduleGroupOutput,
+  GetScheduleGroupError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetScheduleGroupInput,
+  output: GetScheduleGroupOutput,
+  errors: [
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetScheduleGroup",
+}));
+
+export type ListScheduleGroupsError =
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a paginated list of your schedule groups.
+ */
+export const listScheduleGroups: API.OperationMethod<
+  ListScheduleGroupsInput,
+  ListScheduleGroupsOutput,
+  ListScheduleGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListScheduleGroupsInput,
+  ) => stream.Stream<
+    ListScheduleGroupsOutput,
+    ListScheduleGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListScheduleGroupsInput,
+  ) => stream.Stream<
+    ScheduleGroupSummary,
+    ListScheduleGroupsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListScheduleGroupsInput,
+  output: ListScheduleGroupsOutput,
+  errors: [InternalServerException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListScheduleGroups",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "ScheduleGroups",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
 export type ListSchedulesError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1146,52 +1159,24 @@ export const listSchedules: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type CreateScheduleGroupError =
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates the specified schedule group.
- */
-export const createScheduleGroup: API.OperationMethod<
-  CreateScheduleGroupInput,
-  CreateScheduleGroupOutput,
-  CreateScheduleGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateScheduleGroupInput,
-  output: CreateScheduleGroupOutput,
-  errors: [
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateScheduleGroup",
-}));
-export type GetScheduleGroupError =
+
+export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Retrieves the specified schedule group.
+ * Lists the tags associated with the Scheduler resource.
  */
-export const getScheduleGroup: API.OperationMethod<
-  GetScheduleGroupInput,
-  GetScheduleGroupOutput,
-  GetScheduleGroupError,
+export const listTagsForResource: API.OperationMethod<
+  ListTagsForResourceInput,
+  ListTagsForResourceOutput,
+  ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetScheduleGroupInput,
-  output: GetScheduleGroupOutput,
+  input: ListTagsForResourceInput,
+  output: ListTagsForResourceOutput,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1200,9 +1185,10 @@ export const getScheduleGroup: API.OperationMethod<
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "GetScheduleGroup",
+  operationName: "ListTagsForResource",
 }));
-export type DeleteScheduleGroupError =
+
+export type TagResourceError =
   | ConflictException
   | InternalServerException
   | ResourceNotFoundException
@@ -1210,21 +1196,81 @@ export type DeleteScheduleGroupError =
   | ValidationException
   | CommonErrors;
 /**
- * Deletes the specified schedule group. Deleting a schedule group results in EventBridge Scheduler deleting all schedules associated with the group.
- * When you delete a group, it remains in a `DELETING` state until all of its associated schedules are deleted.
- * Schedules associated with the group that are set to run while the schedule group is in the process of being deleted might continue to invoke their targets
- * until the schedule group and its associated schedules are deleted.
+ * Assigns one or more tags (key-value pairs) to the specified EventBridge Scheduler resource. You can only assign tags to schedule groups.
+ */
+export const tagResource: API.OperationMethod<
+  TagResourceInput,
+  TagResourceOutput,
+  TagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: TagResourceInput,
+  output: TagResourceOutput,
+  errors: [
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TagResource",
+}));
+
+export type UntagResourceError =
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Removes one or more tags from the specified EventBridge Scheduler schedule group.
+ */
+export const untagResource: API.OperationMethod<
+  UntagResourceInput,
+  UntagResourceOutput,
+  UntagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UntagResourceInput,
+  output: UntagResourceOutput,
+  errors: [
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UntagResource",
+}));
+
+export type UpdateScheduleError =
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the specified schedule. When you call `UpdateSchedule`, EventBridge Scheduler uses all values, including empty values, specified in the request and
+ * overrides the existing schedule. This is by design. This means that if you do not set an optional field in your request, that field will be set to
+ * its system-default value after the update.
  *
- * This operation is eventually consistent.
+ * Before calling this operation, we recommend that you call the `GetSchedule` API operation and make a note of all optional parameters
+ * for your `UpdateSchedule` call.
  */
-export const deleteScheduleGroup: API.OperationMethod<
-  DeleteScheduleGroupInput,
-  DeleteScheduleGroupOutput,
-  DeleteScheduleGroupError,
+export const updateSchedule: API.OperationMethod<
+  UpdateScheduleInput,
+  UpdateScheduleOutput,
+  UpdateScheduleError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteScheduleGroupInput,
-  output: DeleteScheduleGroupOutput,
+  input: UpdateScheduleInput,
+  output: UpdateScheduleOutput,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1234,47 +1280,5 @@ export const deleteScheduleGroup: API.OperationMethod<
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "DeleteScheduleGroup",
-}));
-export type ListScheduleGroupsError =
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns a paginated list of your schedule groups.
- */
-export const listScheduleGroups: API.OperationMethod<
-  ListScheduleGroupsInput,
-  ListScheduleGroupsOutput,
-  ListScheduleGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListScheduleGroupsInput,
-  ) => stream.Stream<
-    ListScheduleGroupsOutput,
-    ListScheduleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListScheduleGroupsInput,
-  ) => stream.Stream<
-    ScheduleGroupSummary,
-    ListScheduleGroupsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListScheduleGroupsInput,
-  output: ListScheduleGroupsOutput,
-  errors: [InternalServerException, ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListScheduleGroups",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "ScheduleGroups",
-    pageSize: "MaxResults",
-  } as const,
+  operationName: "UpdateSchedule",
 }));

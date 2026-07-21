@@ -87,55 +87,105 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
+  "AlreadyExistsException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    CreatorRequestId: S.optional(S.String),
+    Arn: S.optional(S.String),
+    Type: S.optional(S.String),
+    Context: S.optional(S.String),
+  },
+).pipe(C.withAlreadyExistsError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    Type: S.optional(S.String),
+    Context: S.optional(S.String),
+  },
+  T.all(
+    T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class DependencyFailureException extends S.TaggedErrorClass<DependencyFailureException>()(
+  "DependencyFailureException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    Type: S.optional(S.String),
+    Context: S.optional(S.String),
+  },
+) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    Type: S.optional(S.String),
+    Context: S.optional(S.String),
+  },
+) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    Type: S.optional(S.String),
+    Context: S.optional(S.String),
+  },
+) {}
+export class InvalidResourceStateException extends S.TaggedErrorClass<InvalidResourceStateException>()(
+  "InvalidResourceStateException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    Type: S.optional(S.String),
+    Context: S.optional(S.String),
+  },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    Type: S.optional(S.String),
+    Context: S.optional(S.String),
+  },
+) {}
+export class MissingParameterValueException extends S.TaggedErrorClass<MissingParameterValueException>()(
+  "MissingParameterValueException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    Type: S.optional(S.String),
+    Context: S.optional(S.String),
+  },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    Type: S.optional(S.String),
+    Context: S.optional(S.String),
+  },
+) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    Type: S.optional(S.String),
+    Context: S.optional(S.String),
+  },
+).pipe(C.withServerError) {}
 export type BackupVaultName = string;
 export type ARN = string;
 export type RequesterComment = string | redacted.Redacted<string>;
-export type BackupPlanName = string;
-export type BackupRuleName = string;
-export type CronExpression = string;
-export type WindowMinutes = number;
-export type TagKey = string;
-export type TagValue = string;
-export type Timezone = string;
-export type ResourceType = string;
-export type BackupOptionKey = string;
-export type BackupOptionValue = string;
-export type IAMRoleArn = string;
-export type BackupSelectionName = string;
-export type ConditionKey = string;
-export type ConditionValue = string;
-export type FrameworkName = string;
-export type FrameworkDescription = string;
-export type ControlName = string;
-export type ParameterName = string;
-export type ParameterValue = string;
-export type ReportPlanName = string;
-export type ReportPlanDescription = string;
-export type TieringConfigurationName = string;
-export type BackupVaultNameOrWildcard = string;
-export type TieringDownSettingsInDays = number;
-export type CreatorRequestId = string;
-export type AccountId = string;
-export type Long2 = number;
-export type GlobalSettingsName = string;
-export type GlobalSettingsValue = string;
-export type IsEnabled = boolean;
-export type ReportJobId = string;
-export type RestoreJobId = string;
-export type MaxScheduledRunsPreview = number;
-export type IAMPolicy = string;
-export type MetadataKey = string;
-export type MetadataValue = string;
-export type MaxResults = number;
-export type MessageCategory = string;
-export type Region = string;
-export type MaxFrameworkInputs = number;
-export type ListRestoreTestingPlansInputMaxResultsInteger = number;
-export type ListRestoreTestingSelectionsInputMaxResultsInteger = number;
-export type ListScanJobsInputMaxResultsInteger = number;
-
-//# Schemas
 export interface AssociateBackupVaultMpaApprovalTeamInput {
   BackupVaultName: string;
   MpaApprovalTeamArn: string;
@@ -199,8 +249,13 @@ export const CancelLegalHoldOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelLegalHoldOutput",
 }) as any as S.Schema<CancelLegalHoldOutput>;
+export type BackupPlanName = string;
+export type BackupRuleName = string;
+export type CronExpression = string;
+export type WindowMinutes = number;
 export type LifecycleDeleteAfterEvent = "DELETE_AFTER_COPY" | (string & {});
 export const LifecycleDeleteAfterEvent = /*@__PURE__*/ S.String;
+
 export interface Lifecycle {
   MoveToColdStorageAfterDays?: number;
   DeleteAfterDays?: number;
@@ -215,6 +270,8 @@ export const Lifecycle = /*@__PURE__*/ S.suspend(() =>
     DeleteAfterEvent: S.optional(LifecycleDeleteAfterEvent),
   }),
 ).annotate({ identifier: "Lifecycle" }) as any as S.Schema<Lifecycle>;
+export type TagKey = string;
+export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CopyAction {
@@ -229,6 +286,8 @@ export const CopyAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CopyAction" }) as any as S.Schema<CopyAction>;
 export type CopyActions = CopyAction[];
 export const CopyActions = /*@__PURE__*/ S.Array(CopyAction);
+export type Timezone = string;
+export type ResourceType = string;
 export type ResourceTypes = string[];
 export const ResourceTypes = /*@__PURE__*/ S.Array(S.String);
 export interface IndexAction {
@@ -241,8 +300,10 @@ export type IndexActions = IndexAction[];
 export const IndexActions = /*@__PURE__*/ S.Array(IndexAction);
 export type MalwareScanner = "GUARDDUTY" | (string & {});
 export const MalwareScanner = /*@__PURE__*/ S.String;
+
 export type ScanMode = "FULL_SCAN" | "INCREMENTAL_SCAN" | (string & {});
 export const ScanMode = /*@__PURE__*/ S.String;
+
 export interface ScanAction {
   MalwareScanner?: MalwareScanner;
   ScanMode?: ScanMode;
@@ -291,6 +352,8 @@ export const BackupRuleInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackupRuleInput>;
 export type BackupRulesInput = BackupRuleInput[];
 export const BackupRulesInput = /*@__PURE__*/ S.Array(BackupRuleInput);
+export type BackupOptionKey = string;
+export type BackupOptionValue = string;
 export type BackupOptions = { [key: string]: string | undefined };
 export const BackupOptions = /*@__PURE__*/ S.Record(
   S.String,
@@ -312,6 +375,7 @@ export type AdvancedBackupSettings = AdvancedBackupSetting[];
 export const AdvancedBackupSettings = /*@__PURE__*/ S.Array(
   AdvancedBackupSetting,
 );
+export type IAMRoleArn = string;
 export interface ScanSetting {
   MalwareScanner?: MalwareScanner;
   ResourceTypes?: string[];
@@ -383,10 +447,14 @@ export const CreateBackupPlanOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBackupPlanOutput",
 }) as any as S.Schema<CreateBackupPlanOutput>;
+export type BackupSelectionName = string;
 export type ResourceArns = string[];
 export const ResourceArns = /*@__PURE__*/ S.Array(S.String);
 export type ConditionType = "STRINGEQUALS" | (string & {});
 export const ConditionType = /*@__PURE__*/ S.String;
+
+export type ConditionKey = string;
+export type ConditionValue = string;
 export interface Condition {
   ConditionType: ConditionType;
   ConditionKey: string;
@@ -525,6 +593,11 @@ export const CreateBackupVaultOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBackupVaultOutput",
 }) as any as S.Schema<CreateBackupVaultOutput>;
+export type FrameworkName = string;
+export type FrameworkDescription = string;
+export type ControlName = string;
+export type ParameterName = string;
+export type ParameterValue = string;
 export interface ControlInputParameter {
   ParameterName?: string;
   ParameterValue?: string;
@@ -679,6 +752,7 @@ export type LegalHoldStatus =
   | "CANCELED"
   | (string & {});
 export const LegalHoldStatus = /*@__PURE__*/ S.String;
+
 export interface CreateLegalHoldOutput {
   Title?: string;
   Status?: LegalHoldStatus;
@@ -736,6 +810,7 @@ export const CreateLogicallyAirGappedBackupVaultInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateLogicallyAirGappedBackupVaultInput>;
 export type VaultState = "CREATING" | "AVAILABLE" | "FAILED" | (string & {});
 export const VaultState = /*@__PURE__*/ S.String;
+
 export interface CreateLogicallyAirGappedBackupVaultOutput {
   BackupVaultName?: string;
   BackupVaultArn?: string;
@@ -753,6 +828,8 @@ export const CreateLogicallyAirGappedBackupVaultOutput =
   ).annotate({
     identifier: "CreateLogicallyAirGappedBackupVaultOutput",
   }) as any as S.Schema<CreateLogicallyAirGappedBackupVaultOutput>;
+export type ReportPlanName = string;
+export type ReportPlanDescription = string;
 export type FormatList = string[];
 export const FormatList = /*@__PURE__*/ S.Array(S.String);
 export interface ReportDeliveryChannel {
@@ -882,11 +959,13 @@ export type RestoreTestingRecoveryPointSelectionAlgorithm =
   | (string & {});
 export const RestoreTestingRecoveryPointSelectionAlgorithm =
   /*@__PURE__*/ S.String;
+
 export type RestoreTestingRecoveryPointType =
   | "CONTINUOUS"
   | "SNAPSHOT"
   | (string & {});
 export const RestoreTestingRecoveryPointType = /*@__PURE__*/ S.String;
+
 export type RestoreTestingRecoveryPointTypeList =
   RestoreTestingRecoveryPointType[];
 export const RestoreTestingRecoveryPointTypeList = /*@__PURE__*/ S.Array(
@@ -1058,6 +1137,9 @@ export const CreateRestoreTestingSelectionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRestoreTestingSelectionOutput",
 }) as any as S.Schema<CreateRestoreTestingSelectionOutput>;
+export type TieringConfigurationName = string;
+export type BackupVaultNameOrWildcard = string;
+export type TieringDownSettingsInDays = number;
 export interface ResourceSelection {
   Resources: string[];
   TieringDownSettingsInDays: number;
@@ -1088,6 +1170,7 @@ export const TieringConfigurationInputForCreate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TieringConfigurationInputForCreate",
 }) as any as S.Schema<TieringConfigurationInputForCreate>;
+export type CreatorRequestId = string;
 export interface CreateTieringConfigurationInput {
   TieringConfiguration: TieringConfigurationInputForCreate;
   TieringConfigurationTags?: { [key: string]: string | undefined };
@@ -1486,6 +1569,7 @@ export const DescribeBackupJobInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeBackupJobInput",
 }) as any as S.Schema<DescribeBackupJobInput>;
+export type AccountId = string;
 export type BackupJobState =
   | "CREATED"
   | "PENDING"
@@ -1498,6 +1582,7 @@ export type BackupJobState =
   | "PARTIAL"
   | (string & {});
 export const BackupJobState = /*@__PURE__*/ S.String;
+
 export interface RecoveryPointCreator {
   BackupPlanId?: string;
   BackupPlanArn?: string;
@@ -1630,12 +1715,15 @@ export type VaultType =
   | "RESTORE_ACCESS_BACKUP_VAULT"
   | (string & {});
 export const VaultType = /*@__PURE__*/ S.String;
+
+export type Long2 = number;
 export type MpaSessionStatus =
   | "PENDING"
   | "APPROVED"
   | "FAILED"
   | (string & {});
 export const MpaSessionStatus = /*@__PURE__*/ S.String;
+
 export interface LatestMpaApprovalTeamUpdate {
   MpaSessionArn?: string;
   Status?: MpaSessionStatus;
@@ -1659,6 +1747,7 @@ export type EncryptionKeyType =
   | "CUSTOMER_MANAGED_KMS_KEY"
   | (string & {});
 export const EncryptionKeyType = /*@__PURE__*/ S.String;
+
 export interface DescribeBackupVaultOutput {
   BackupVaultName?: string;
   BackupVaultArn?: string;
@@ -1726,6 +1815,7 @@ export type CopyJobState =
   | "PARTIAL"
   | (string & {});
 export const CopyJobState = /*@__PURE__*/ S.String;
+
 export type CopyJobChildJobsInState = { [key in CopyJobState]?: number };
 export const CopyJobChildJobsInState = /*@__PURE__*/ S.Record(
   CopyJobState,
@@ -1855,6 +1945,8 @@ export const DescribeGlobalSettingsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeGlobalSettingsInput",
 }) as any as S.Schema<DescribeGlobalSettingsInput>;
+export type GlobalSettingsName = string;
+export type GlobalSettingsValue = string;
 export type GlobalSettings = { [key: string]: string | undefined };
 export const GlobalSettings = /*@__PURE__*/ S.Record(
   S.String,
@@ -1957,6 +2049,7 @@ export type RecoveryPointStatus =
   | "CREATING"
   | (string & {});
 export const RecoveryPointStatus = /*@__PURE__*/ S.String;
+
 export interface CalculatedLifecycle {
   MoveToColdStorageAt?: Date;
   DeleteAt?: Date;
@@ -1973,6 +2066,7 @@ export const CalculatedLifecycle = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CalculatedLifecycle>;
 export type StorageClass = "WARM" | "COLD" | "DELETED" | (string & {});
 export const StorageClass = /*@__PURE__*/ S.String;
+
 export type IndexStatus =
   | "PENDING"
   | "ACTIVE"
@@ -1980,6 +2074,7 @@ export type IndexStatus =
   | "DELETING"
   | (string & {});
 export const IndexStatus = /*@__PURE__*/ S.String;
+
 export type ScanJobState =
   | "COMPLETED"
   | "COMPLETED_WITH_ISSUES"
@@ -1987,8 +2082,10 @@ export type ScanJobState =
   | "CANCELED"
   | (string & {});
 export const ScanJobState = /*@__PURE__*/ S.String;
+
 export type ScanFinding = "MALWARE" | (string & {});
 export const ScanFinding = /*@__PURE__*/ S.String;
+
 export type ScanFindings = ScanFinding[];
 export const ScanFindings = /*@__PURE__*/ S.Array(ScanFinding);
 export interface ScanResult {
@@ -2092,6 +2189,7 @@ export const DescribeRegionSettingsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRegionSettingsInput",
 }) as any as S.Schema<DescribeRegionSettingsInput>;
+export type IsEnabled = boolean;
 export type ResourceTypeOptInPreference = {
   [key: string]: boolean | undefined;
 };
@@ -2120,6 +2218,7 @@ export const DescribeRegionSettingsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRegionSettingsOutput",
 }) as any as S.Schema<DescribeRegionSettingsOutput>;
+export type ReportJobId = string;
 export interface DescribeReportJobInput {
   ReportJobId: string;
 }
@@ -2234,6 +2333,7 @@ export const DescribeReportPlanOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeReportPlanOutput",
 }) as any as S.Schema<DescribeReportPlanOutput>;
+export type RestoreJobId = string;
 export interface DescribeRestoreJobInput {
   RestoreJobId: string;
 }
@@ -2259,6 +2359,7 @@ export type RestoreJobStatus =
   | "FAILED"
   | (string & {});
 export const RestoreJobStatus = /*@__PURE__*/ S.String;
+
 export interface RestoreJobCreator {
   RestoreTestingPlanArn?: string;
 }
@@ -2274,12 +2375,14 @@ export type RestoreValidationStatus =
   | "VALIDATING"
   | (string & {});
 export const RestoreValidationStatus = /*@__PURE__*/ S.String;
+
 export type RestoreDeletionStatus =
   | "DELETING"
   | "FAILED"
   | "SUCCESSFUL"
   | (string & {});
 export const RestoreDeletionStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeRestoreJobOutput {
   AccountId?: string;
   RestoreJobId?: string;
@@ -2369,12 +2472,14 @@ export const ScanJobCreator = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ScanJobCreator" }) as any as S.Schema<ScanJobCreator>;
 export type ScanResourceType = "EBS" | "EC2" | "S3" | (string & {});
 export const ScanResourceType = /*@__PURE__*/ S.String;
+
 export type ScanResultStatus =
   | "NO_THREATS_FOUND"
   | "THREATS_FOUND"
   | "UNKNOWN"
   | (string & {});
 export const ScanResultStatus = /*@__PURE__*/ S.String;
+
 export interface ScanResultInfo {
   ScanResultStatus: ScanResultStatus;
 }
@@ -2390,6 +2495,7 @@ export type ScanState =
   | "RUNNING"
   | (string & {});
 export const ScanState = /*@__PURE__*/ S.String;
+
 export interface DescribeScanJobOutput {
   AccountId: string;
   BackupVaultArn: string;
@@ -2561,6 +2667,7 @@ export const ExportBackupPlanTemplateOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExportBackupPlanTemplateOutput",
 }) as any as S.Schema<ExportBackupPlanTemplateOutput>;
+export type MaxScheduledRunsPreview = number;
 export interface GetBackupPlanInput {
   BackupPlanId: string;
   VersionId?: string;
@@ -2642,6 +2749,7 @@ export type RuleExecutionType =
   | "CONTINUOUS_AND_SNAPSHOTS"
   | (string & {});
 export const RuleExecutionType = /*@__PURE__*/ S.String;
+
 export interface ScheduledPlanExecutionMember {
   ExecutionTime?: Date;
   RuleId?: string;
@@ -2809,6 +2917,7 @@ export const GetBackupVaultAccessPolicyInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBackupVaultAccessPolicyInput",
 }) as any as S.Schema<GetBackupVaultAccessPolicyInput>;
+export type IAMPolicy = string;
 export interface GetBackupVaultAccessPolicyOutput {
   BackupVaultName?: string;
   BackupVaultArn?: string;
@@ -2872,6 +2981,7 @@ export type BackupVaultEvent =
   | "EKS_BACKUP_OBJECT_FAILED"
   | (string & {});
 export const BackupVaultEvent = /*@__PURE__*/ S.String;
+
 export type BackupVaultEvents = BackupVaultEvent[];
 export const BackupVaultEvents = /*@__PURE__*/ S.Array(BackupVaultEvent);
 export interface GetBackupVaultNotificationsOutput {
@@ -3071,6 +3181,8 @@ export const GetRecoveryPointRestoreMetadataInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetRecoveryPointRestoreMetadataInput",
 }) as any as S.Schema<GetRecoveryPointRestoreMetadataInput>;
+export type MetadataKey = string;
+export type MetadataValue = string;
 export type Metadata = { [key: string]: string | undefined };
 export const Metadata = /*@__PURE__*/ S.Record(
   S.String,
@@ -3361,6 +3473,7 @@ export const GetTieringConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTieringConfigurationOutput",
 }) as any as S.Schema<GetTieringConfigurationOutput>;
+export type MaxResults = number;
 export interface ListBackupJobsInput {
   NextToken?: string;
   MaxResults?: number;
@@ -3512,12 +3625,15 @@ export type BackupJobStatus =
   | "ANY"
   | (string & {});
 export const BackupJobStatus = /*@__PURE__*/ S.String;
+
+export type MessageCategory = string;
 export type AggregationPeriod =
   | "ONE_DAY"
   | "SEVEN_DAYS"
   | "FOURTEEN_DAYS"
   | (string & {});
 export const AggregationPeriod = /*@__PURE__*/ S.String;
+
 export interface ListBackupJobSummariesInput {
   AccountId?: string;
   State?: BackupJobStatus;
@@ -3551,6 +3667,7 @@ export const ListBackupJobSummariesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListBackupJobSummariesInput",
 }) as any as S.Schema<ListBackupJobSummariesInput>;
+export type Region = string;
 export interface BackupJobSummary {
   Region?: string;
   AccountId?: string;
@@ -3963,6 +4080,7 @@ export type CopyJobStatus =
   | "ANY"
   | (string & {});
 export const CopyJobStatus = /*@__PURE__*/ S.String;
+
 export interface ListCopyJobSummariesInput {
   AccountId?: string;
   State?: CopyJobStatus;
@@ -4034,6 +4152,7 @@ export const ListCopyJobSummariesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCopyJobSummariesOutput",
 }) as any as S.Schema<ListCopyJobSummariesOutput>;
+export type MaxFrameworkInputs = number;
 export interface ListFrameworksInput {
   MaxResults?: number;
   NextToken?: string;
@@ -4721,6 +4840,7 @@ export const ListRestoreAccessBackupVaultsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListRestoreAccessBackupVaultsInput>;
 export type MpaRevokeSessionStatus = "PENDING" | "FAILED" | (string & {});
 export const MpaRevokeSessionStatus = /*@__PURE__*/ S.String;
+
 export interface LatestRevokeRequest {
   MpaSessionArn?: string;
   Status?: MpaRevokeSessionStatus;
@@ -4950,6 +5070,7 @@ export type RestoreJobState =
   | "ANY"
   | (string & {});
 export const RestoreJobState = /*@__PURE__*/ S.String;
+
 export interface ListRestoreJobSummariesInput {
   AccountId?: string;
   State?: RestoreJobState;
@@ -5019,6 +5140,7 @@ export const ListRestoreJobSummariesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRestoreJobSummariesOutput",
 }) as any as S.Schema<ListRestoreJobSummariesOutput>;
+export type ListRestoreTestingPlansInputMaxResultsInteger = number;
 export interface ListRestoreTestingPlansInput {
   MaxResults?: number;
   NextToken?: string;
@@ -5082,6 +5204,7 @@ export const ListRestoreTestingPlansOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRestoreTestingPlansOutput",
 }) as any as S.Schema<ListRestoreTestingPlansOutput>;
+export type ListRestoreTestingSelectionsInputMaxResultsInteger = number;
 export interface ListRestoreTestingSelectionsInput {
   MaxResults?: number;
   NextToken?: string;
@@ -5146,6 +5269,7 @@ export const ListRestoreTestingSelectionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRestoreTestingSelectionsOutput",
 }) as any as S.Schema<ListRestoreTestingSelectionsOutput>;
+export type ListScanJobsInputMaxResultsInteger = number;
 export interface ListScanJobsInput {
   ByAccountId?: string;
   ByBackupVaultName?: string;
@@ -5277,6 +5401,7 @@ export type ScanJobStatus =
   | "ANY"
   | (string & {});
 export const ScanJobStatus = /*@__PURE__*/ S.String;
+
 export interface ListScanJobSummariesInput {
   AccountId?: string;
   ResourceType?: string;
@@ -5608,6 +5733,7 @@ export const RevokeRestoreAccessBackupVaultResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RevokeRestoreAccessBackupVaultResponse>;
 export type Index = "ENABLED" | "DISABLED" | (string & {});
 export const Index = /*@__PURE__*/ S.String;
+
 export interface StartBackupJobInput {
   BackupVaultName: string;
   LogicallyAirGappedBackupVaultArn?: string;
@@ -6341,106 +6467,6 @@ export const UpdateTieringConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTieringConfigurationOutput",
 }) as any as S.Schema<UpdateTieringConfigurationOutput>;
-
-//# Errors
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-) {}
-export class MissingParameterValueException extends S.TaggedErrorClass<MissingParameterValueException>()(
-  "MissingParameterValueException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-).pipe(C.withServerError) {}
-export class InvalidResourceStateException extends S.TaggedErrorClass<InvalidResourceStateException>()(
-  "InvalidResourceStateException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-) {}
-export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
-  "AlreadyExistsException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    CreatorRequestId: S.optional(S.String),
-    Arn: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-).pipe(C.withAlreadyExistsError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class DependencyFailureException extends S.TaggedErrorClass<DependencyFailureException>()(
-  "DependencyFailureException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Context: S.optional(S.String),
-  },
-) {}
-
-//# Operations
 export type AssociateBackupVaultMpaApprovalTeamError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -6470,6 +6496,7 @@ export const associateBackupVaultMpaApprovalTeam: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateBackupVaultMpaApprovalTeam",
 }));
+
 export type CancelLegalHoldError =
   | InvalidParameterValueException
   | InvalidResourceStateException
@@ -6500,6 +6527,7 @@ export const cancelLegalHold: API.OperationMethod<
   retry: Retry,
   operationName: "CancelLegalHold",
 }));
+
 export type CreateBackupPlanError =
   | AlreadyExistsException
   | InvalidParameterValueException
@@ -6534,6 +6562,7 @@ export const createBackupPlan: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBackupPlan",
 }));
+
 export type CreateBackupSelectionError =
   | AlreadyExistsException
   | InvalidParameterValueException
@@ -6564,6 +6593,7 @@ export const createBackupSelection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBackupSelection",
 }));
+
 export type CreateBackupVaultError =
   | AlreadyExistsException
   | InvalidParameterValueException
@@ -6598,6 +6628,7 @@ export const createBackupVault: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBackupVault",
 }));
+
 export type CreateFrameworkError =
   | AlreadyExistsException
   | InvalidParameterValueException
@@ -6630,6 +6661,7 @@ export const createFramework: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFramework",
 }));
+
 export type CreateLegalHoldError =
   | InvalidParameterValueException
   | LimitExceededException
@@ -6660,6 +6692,7 @@ export const createLegalHold: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLegalHold",
 }));
+
 export type CreateLogicallyAirGappedBackupVaultError =
   | AlreadyExistsException
   | InvalidParameterValueException
@@ -6698,6 +6731,7 @@ export const createLogicallyAirGappedBackupVault: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLogicallyAirGappedBackupVault",
 }));
+
 export type CreateReportPlanError =
   | AlreadyExistsException
   | InvalidParameterValueException
@@ -6731,6 +6765,7 @@ export const createReportPlan: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReportPlan",
 }));
+
 export type CreateRestoreAccessBackupVaultError =
   | AlreadyExistsException
   | InvalidParameterValueException
@@ -6764,6 +6799,7 @@ export const createRestoreAccessBackupVault: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRestoreAccessBackupVault",
 }));
+
 export type CreateRestoreTestingPlanError =
   | AlreadyExistsException
   | ConflictException
@@ -6799,6 +6835,7 @@ export const createRestoreTestingPlan: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRestoreTestingPlan",
 }));
+
 export type CreateRestoreTestingSelectionError =
   | AlreadyExistsException
   | InvalidParameterValueException
@@ -6849,6 +6886,7 @@ export const createRestoreTestingSelection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRestoreTestingSelection",
 }));
+
 export type CreateTieringConfigurationError =
   | AlreadyExistsException
   | ConflictException
@@ -6884,6 +6922,7 @@ export const createTieringConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTieringConfiguration",
 }));
+
 export type DeleteBackupPlanError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -6915,6 +6954,7 @@ export const deleteBackupPlan: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBackupPlan",
 }));
+
 export type DeleteBackupSelectionError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -6943,6 +6983,7 @@ export const deleteBackupSelection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBackupSelection",
 }));
+
 export type DeleteBackupVaultError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -6973,6 +7014,7 @@ export const deleteBackupVault: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBackupVault",
 }));
+
 export type DeleteBackupVaultAccessPolicyError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7000,6 +7042,7 @@ export const deleteBackupVaultAccessPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBackupVaultAccessPolicy",
 }));
+
 export type DeleteBackupVaultLockConfigurationError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -7035,6 +7078,7 @@ export const deleteBackupVaultLockConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBackupVaultLockConfiguration",
 }));
+
 export type DeleteBackupVaultNotificationsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7062,6 +7106,7 @@ export const deleteBackupVaultNotifications: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBackupVaultNotifications",
 }));
+
 export type DeleteFrameworkError =
   | ConflictException
   | InvalidParameterValueException
@@ -7091,6 +7136,7 @@ export const deleteFramework: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFramework",
 }));
+
 export type DeleteRecoveryPointError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -7137,6 +7183,7 @@ export const deleteRecoveryPoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRecoveryPoint",
 }));
+
 export type DeleteReportPlanError =
   | ConflictException
   | InvalidParameterValueException
@@ -7166,6 +7213,7 @@ export const deleteReportPlan: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReportPlan",
 }));
+
 export type DeleteRestoreTestingPlanError =
   | InvalidRequestException
   | ServiceUnavailableException
@@ -7189,6 +7237,7 @@ export const deleteRestoreTestingPlan: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRestoreTestingPlan",
 }));
+
 export type DeleteRestoreTestingSelectionError =
   | ResourceNotFoundException
   | ServiceUnavailableException
@@ -7213,6 +7262,7 @@ export const deleteRestoreTestingSelection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRestoreTestingSelection",
 }));
+
 export type DeleteTieringConfigurationError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7240,6 +7290,7 @@ export const deleteTieringConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTieringConfiguration",
 }));
+
 export type DescribeBackupJobError =
   | DependencyFailureException
   | InvalidParameterValueException
@@ -7269,6 +7320,7 @@ export const describeBackupJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBackupJob",
 }));
+
 export type DescribeBackupVaultError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7296,6 +7348,7 @@ export const describeBackupVault: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBackupVault",
 }));
+
 export type DescribeCopyJobError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7323,6 +7376,7 @@ export const describeCopyJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCopyJob",
 }));
+
 export type DescribeFrameworkError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7350,6 +7404,7 @@ export const describeFramework: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFramework",
 }));
+
 export type DescribeGlobalSettingsError =
   | InvalidRequestException
   | ServiceUnavailableException
@@ -7370,6 +7425,7 @@ export const describeGlobalSettings: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeGlobalSettings",
 }));
+
 export type DescribeProtectedResourceError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7399,6 +7455,7 @@ export const describeProtectedResource: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeProtectedResource",
 }));
+
 export type DescribeRecoveryPointError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7427,6 +7484,7 @@ export const describeRecoveryPoint: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRecoveryPoint",
 }));
+
 export type DescribeRegionSettingsError =
   | ServiceUnavailableException
   | CommonErrors;
@@ -7450,6 +7508,7 @@ export const describeRegionSettings: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRegionSettings",
 }));
+
 export type DescribeReportJobError =
   | MissingParameterValueException
   | ResourceNotFoundException
@@ -7476,6 +7535,7 @@ export const describeReportJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeReportJob",
 }));
+
 export type DescribeReportPlanError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7503,6 +7563,7 @@ export const describeReportPlan: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeReportPlan",
 }));
+
 export type DescribeRestoreJobError =
   | DependencyFailureException
   | InvalidParameterValueException
@@ -7532,6 +7593,7 @@ export const describeRestoreJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRestoreJob",
 }));
+
 export type DescribeScanJobError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7559,6 +7621,7 @@ export const describeScanJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeScanJob",
 }));
+
 export type DisassociateBackupVaultMpaApprovalTeamError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -7588,6 +7651,7 @@ export const disassociateBackupVaultMpaApprovalTeam: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateBackupVaultMpaApprovalTeam",
 }));
+
 export type DisassociateRecoveryPointError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -7623,6 +7687,7 @@ export const disassociateRecoveryPoint: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateRecoveryPoint",
 }));
+
 export type DisassociateRecoveryPointFromParentError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -7653,6 +7718,7 @@ export const disassociateRecoveryPointFromParent: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateRecoveryPointFromParent",
 }));
+
 export type ExportBackupPlanTemplateError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7680,6 +7746,7 @@ export const exportBackupPlanTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "ExportBackupPlanTemplate",
 }));
+
 export type GetBackupPlanError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7708,6 +7775,7 @@ export const getBackupPlan: API.OperationMethod<
   retry: Retry,
   operationName: "GetBackupPlan",
 }));
+
 export type GetBackupPlanFromJSONError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -7737,6 +7805,7 @@ export const getBackupPlanFromJSON: API.OperationMethod<
   retry: Retry,
   operationName: "GetBackupPlanFromJSON",
 }));
+
 export type GetBackupPlanFromTemplateError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7764,6 +7833,7 @@ export const getBackupPlanFromTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetBackupPlanFromTemplate",
 }));
+
 export type GetBackupSelectionError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7792,6 +7862,7 @@ export const getBackupSelection: API.OperationMethod<
   retry: Retry,
   operationName: "GetBackupSelection",
 }));
+
 export type GetBackupVaultAccessPolicyError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7820,6 +7891,7 @@ export const getBackupVaultAccessPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetBackupVaultAccessPolicy",
 }));
+
 export type GetBackupVaultNotificationsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7847,6 +7919,7 @@ export const getBackupVaultNotifications: API.OperationMethod<
   retry: Retry,
   operationName: "GetBackupVaultNotifications",
 }));
+
 export type GetLegalHoldError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7875,6 +7948,7 @@ export const getLegalHold: API.OperationMethod<
   retry: Retry,
   operationName: "GetLegalHold",
 }));
+
 export type GetPITRMalwareScanResultsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7902,6 +7976,7 @@ export const getPITRMalwareScanResults: API.OperationMethod<
   retry: Retry,
   operationName: "GetPITRMalwareScanResults",
 }));
+
 export type GetRecoveryPointIndexDetailsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7930,6 +8005,7 @@ export const getRecoveryPointIndexDetails: API.OperationMethod<
   retry: Retry,
   operationName: "GetRecoveryPointIndexDetails",
 }));
+
 export type GetRecoveryPointRestoreMetadataError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7957,6 +8033,7 @@ export const getRecoveryPointRestoreMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "GetRecoveryPointRestoreMetadata",
 }));
+
 export type GetRestoreJobMetadataError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -7984,6 +8061,7 @@ export const getRestoreJobMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "GetRestoreJobMetadata",
 }));
+
 export type GetRestoreTestingInferredMetadataError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -8014,6 +8092,7 @@ export const getRestoreTestingInferredMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "GetRestoreTestingInferredMetadata",
 }));
+
 export type GetRestoreTestingPlanError =
   | ResourceNotFoundException
   | ServiceUnavailableException
@@ -8036,6 +8115,7 @@ export const getRestoreTestingPlan: API.OperationMethod<
   retry: Retry,
   operationName: "GetRestoreTestingPlan",
 }));
+
 export type GetRestoreTestingSelectionError =
   | ResourceNotFoundException
   | ServiceUnavailableException
@@ -8057,6 +8137,7 @@ export const getRestoreTestingSelection: API.OperationMethod<
   retry: Retry,
   operationName: "GetRestoreTestingSelection",
 }));
+
 export type GetSupportedResourceTypesError =
   | ServiceUnavailableException
   | CommonErrors;
@@ -8076,6 +8157,7 @@ export const getSupportedResourceTypes: API.OperationMethod<
   retry: Retry,
   operationName: "GetSupportedResourceTypes",
 }));
+
 export type GetTieringConfigurationError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -8105,6 +8187,7 @@ export const getTieringConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetTieringConfiguration",
 }));
+
 export type ListBackupJobsError =
   | InvalidParameterValueException
   | ServiceUnavailableException
@@ -8147,6 +8230,7 @@ export const listBackupJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListBackupJobSummariesError =
   | InvalidParameterValueException
   | ServiceUnavailableException
@@ -8195,6 +8279,7 @@ export const listBackupJobSummaries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListBackupPlansError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -8243,6 +8328,7 @@ export const listBackupPlans: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListBackupPlanTemplatesError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -8291,6 +8377,7 @@ export const listBackupPlanTemplates: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListBackupPlanVersionsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -8340,6 +8427,7 @@ export const listBackupPlanVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListBackupSelectionsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -8389,6 +8477,7 @@ export const listBackupSelections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListBackupVaultsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -8438,6 +8527,7 @@ export const listBackupVaults: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCopyJobsError =
   | InvalidParameterValueException
   | ServiceUnavailableException
@@ -8479,6 +8569,7 @@ export const listCopyJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCopyJobSummariesError =
   | InvalidParameterValueException
   | ServiceUnavailableException
@@ -8527,6 +8618,7 @@ export const listCopyJobSummaries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFrameworksError =
   | InvalidParameterValueException
   | ServiceUnavailableException
@@ -8567,6 +8659,7 @@ export const listFrameworks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListIndexedRecoveryPointsError =
   | InvalidParameterValueException
   | ResourceNotFoundException
@@ -8618,6 +8711,7 @@ export const listIndexedRecoveryPoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLegalHoldsError =
   | InvalidParameterValueException
   | ServiceUnavailableException
@@ -8659,6 +8753,7 @@ export const listLegalHolds: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProtectedResourcesError =
   | InvalidParameterValueException
   | ServiceUnavailableException
@@ -8702,6 +8797,7 @@ export const listProtectedResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProtectedResourcesByBackupVaultError =
   | InvalidParameterValueException
   | ResourceNotFoundException
@@ -8748,6 +8844,7 @@ export const listProtectedResourcesByBackupVault: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRecoveryPointsByBackupVaultError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -8796,6 +8893,7 @@ export const listRecoveryPointsByBackupVault: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRecoveryPointsByLegalHoldError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -8843,6 +8941,7 @@ export const listRecoveryPointsByLegalHold: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRecoveryPointsByResourceError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -8895,6 +8994,7 @@ export const listRecoveryPointsByResource: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListReportJobsError =
   | InvalidParameterValueException
   | ResourceNotFoundException
@@ -8940,6 +9040,7 @@ export const listReportJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListReportPlansError =
   | InvalidParameterValueException
   | ServiceUnavailableException
@@ -8981,6 +9082,7 @@ export const listReportPlans: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRestoreAccessBackupVaultsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -9029,6 +9131,7 @@ export const listRestoreAccessBackupVaults: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRestoreJobsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -9078,6 +9181,7 @@ export const listRestoreJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRestoreJobsByProtectedResourceError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -9131,6 +9235,7 @@ export const listRestoreJobsByProtectedResource: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRestoreJobSummariesError =
   | InvalidParameterValueException
   | ServiceUnavailableException
@@ -9179,6 +9284,7 @@ export const listRestoreJobSummaries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRestoreTestingPlansError =
   | InvalidParameterValueException
   | ServiceUnavailableException
@@ -9220,6 +9326,7 @@ export const listRestoreTestingPlans: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRestoreTestingSelectionsError =
   | InvalidParameterValueException
   | ResourceNotFoundException
@@ -9267,6 +9374,7 @@ export const listRestoreTestingSelections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListScanJobsError =
   | InvalidParameterValueException
   | ServiceUnavailableException
@@ -9308,6 +9416,7 @@ export const listScanJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListScanJobSummariesError =
   | InvalidParameterValueException
   | ServiceUnavailableException
@@ -9349,6 +9458,7 @@ export const listScanJobSummaries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -9410,6 +9520,7 @@ export const listTags: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTieringConfigurationsError =
   | InvalidParameterValueException
   | ServiceUnavailableException
@@ -9451,6 +9562,7 @@ export const listTieringConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutBackupVaultAccessPolicyError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -9480,6 +9592,7 @@ export const putBackupVaultAccessPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutBackupVaultAccessPolicy",
 }));
+
 export type PutBackupVaultLockConfigurationError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -9521,6 +9634,7 @@ export const putBackupVaultLockConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutBackupVaultLockConfiguration",
 }));
+
 export type PutBackupVaultNotificationsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -9548,6 +9662,7 @@ export const putBackupVaultNotifications: API.OperationMethod<
   retry: Retry,
   operationName: "PutBackupVaultNotifications",
 }));
+
 export type PutRestoreValidationResultError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -9581,6 +9696,7 @@ export const putRestoreValidationResult: API.OperationMethod<
   retry: Retry,
   operationName: "PutRestoreValidationResult",
 }));
+
 export type RevokeRestoreAccessBackupVaultError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -9610,6 +9726,7 @@ export const revokeRestoreAccessBackupVault: API.OperationMethod<
   retry: Retry,
   operationName: "RevokeRestoreAccessBackupVault",
 }));
+
 export type StartBackupJobError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -9641,6 +9758,7 @@ export const startBackupJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartBackupJob",
 }));
+
 export type StartCopyJobError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -9678,6 +9796,7 @@ export const startCopyJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartCopyJob",
 }));
+
 export type StartReportJobError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -9705,6 +9824,7 @@ export const startReportJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartReportJob",
 }));
+
 export type StartRestoreJobError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -9734,6 +9854,7 @@ export const startRestoreJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartRestoreJob",
 }));
+
 export type StartScanJobError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -9765,6 +9886,7 @@ export const startScanJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartScanJob",
 }));
+
 export type StopBackupJobError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -9814,6 +9936,7 @@ export const stopBackupJob: API.OperationMethod<
   retry: Retry,
   operationName: "StopBackupJob",
 }));
+
 export type TagResourceError =
   | InvalidParameterValueException
   | LimitExceededException
@@ -9843,6 +9966,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -9875,6 +9999,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateBackupPlanError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -9902,6 +10027,7 @@ export const updateBackupPlan: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBackupPlan",
 }));
+
 export type UpdateFrameworkError =
   | AlreadyExistsException
   | ConflictException
@@ -9935,6 +10061,7 @@ export const updateFramework: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFramework",
 }));
+
 export type UpdateGlobalSettingsError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -9962,6 +10089,7 @@ export const updateGlobalSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGlobalSettings",
 }));
+
 export type UpdateRecoveryPointIndexSettingsError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -9993,6 +10121,7 @@ export const updateRecoveryPointIndexSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRecoveryPointIndexSettings",
 }));
+
 export type UpdateRecoveryPointLifecycleError =
   | InvalidParameterValueException
   | InvalidRequestException
@@ -10040,6 +10169,7 @@ export const updateRecoveryPointLifecycle: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRecoveryPointLifecycle",
 }));
+
 export type UpdateRegionSettingsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -10069,6 +10199,7 @@ export const updateRegionSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRegionSettings",
 }));
+
 export type UpdateReportPlanError =
   | ConflictException
   | InvalidParameterValueException
@@ -10098,6 +10229,7 @@ export const updateReportPlan: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateReportPlan",
 }));
+
 export type UpdateRestoreTestingPlanError =
   | ConflictException
   | InvalidParameterValueException
@@ -10141,6 +10273,7 @@ export const updateRestoreTestingPlan: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRestoreTestingPlan",
 }));
+
 export type UpdateRestoreTestingSelectionError =
   | ConflictException
   | InvalidParameterValueException
@@ -10175,6 +10308,7 @@ export const updateRestoreTestingSelection: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRestoreTestingSelection",
 }));
+
 export type UpdateTieringConfigurationError =
   | AlreadyExistsException
   | ConflictException

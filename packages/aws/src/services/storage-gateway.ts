@@ -88,7 +88,42 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  {
+    message: S.optional(S.String),
+    error: S.optional(
+      S.suspend(() => StorageGatewayError).annotate({
+        identifier: "StorageGatewayError",
+      }),
+    ),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidGatewayRequestException extends S.TaggedErrorClass<InvalidGatewayRequestException>()(
+  "InvalidGatewayRequestException",
+  {
+    message: S.optional(S.String),
+    error: S.optional(
+      S.suspend(() => StorageGatewayError).annotate({
+        identifier: "StorageGatewayError",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableError extends S.TaggedErrorClass<ServiceUnavailableError>()(
+  "ServiceUnavailableError",
+  {
+    message: S.optional(S.String),
+    error: S.optional(
+      S.suspend(() => StorageGatewayError).annotate({
+        identifier: "StorageGatewayError",
+      }),
+    ),
+  },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
 export type ActivationKey = string;
 export type GatewayName = string;
 export type GatewayTimezone = string;
@@ -98,112 +133,6 @@ export type TapeDriveType = string;
 export type MediumChangerType = string;
 export type TagKey = string;
 export type TagValue = string;
-export type GatewayARN = string;
-export type DiskId = string;
-export type ResourceARN = string;
-export type TapeARN = string;
-export type PoolId = string;
-export type DomainUserName = string;
-export type DomainUserPassword = string | redacted.Redacted<string>;
-export type ClientToken = string;
-export type FileSystemLocationARN = string;
-export type AuditDestinationARN = string;
-export type CacheStaleTimeoutInSeconds = number;
-export type IPV4Address = string;
-export type FileSystemAssociationARN = string;
-export type TargetName = string;
-export type VolumeARN = string;
-export type NetworkInterfaceId = string;
-export type TargetARN = string;
-export type CacheReportARN = string;
-export type SnapshotId = string;
-export type KMSKey = string;
-export type PermissionMode = string;
-export type PermissionId = number;
-export type Role = string;
-export type LocationARN = string;
-export type StorageClass = string;
-export type Ipv4OrIpv6AddressCIDR = string;
-export type Squash = string;
-export type FileShareName = string;
-export type NotificationPolicy = string;
-export type DNSHostName = string;
-export type FileShareARN = string;
-export type UserListUser = string;
-export type Authentication = string;
-export type SnapshotDescription = string;
-export type PoolName = string;
-export type RetentionLockTimeInDays = number;
-export type PoolARN = string;
-export type TapeSize = number;
-export type NumTapesToCreate = number;
-export type TapeBarcodePrefix = string;
-export type TapeBarcode = string;
-export type BandwidthType = string;
-export type IqnName = string;
-export type BandwidthUploadRateLimit = number;
-export type BandwidthDownloadRateLimit = number;
-export type HourOfDay = number;
-export type MinuteOfHour = number;
-export type DayOfWeek = number;
-export type VolumeId = string;
-export type VolumeType = string;
-export type VolumeStatus = string;
-export type VolumeAttachmentStatus = string;
-export type DoubleObject = number;
-export type PositiveIntObject = number;
-export type CreatedDate = Date;
-export type VolumeUsedInBytes = number;
-export type ReportCompletionPercent = number;
-export type CacheReportFilterValue = string;
-export type CacheReportName = string;
-export type ChapSecret = string | redacted.Redacted<string>;
-export type FileSystemAssociationStatus = string;
-export type FileSystemAssociationSyncErrorCode = string;
-export type GatewayId = string;
-export type GatewayState = string;
-export type NextUpdateAvailabilityDate = string;
-export type LastSoftwareUpdate = string;
-export type Ec2InstanceId = string;
-export type Ec2InstanceRegion = string;
-export type CloudWatchLogGroupARN = string;
-export type EndpointType = string;
-export type SoftwareUpdatesEndDate = string;
-export type DeprecationDate = string;
-export type HostEnvironmentId = string;
-export type SoftwareVersion = string;
-export type DayOfMonth = number;
-export type FileShareId = string;
-export type FileShareStatus = string;
-export type Path = string;
-export type DomainName = string;
-export type RecurrenceInHours = number;
-export type Description = string;
-export type Marker = string;
-export type TapeArchiveStatus = string;
-export type TapeUsage = number;
-export type TapeRecoveryPointStatus = string;
-export type TapeStatus = string;
-export type VTLDeviceARN = string;
-export type VTLDeviceType = string;
-export type VTLDeviceVendor = string;
-export type VTLDeviceProductIdentifier = string;
-export type OrganizationalUnit = string;
-export type Host = string;
-export type TimeoutInSeconds = number;
-export type MinimumNumTapes = number;
-export type FileSystemAssociationId = string;
-export type GatewayOperationalState = string;
-export type DiskAllocationType = string;
-export type DiskAttribute = string;
-export type Initiator = string;
-export type NotificationId = string;
-export type Folder = string;
-export type LocalConsolePassword = string | redacted.Redacted<string>;
-export type SMBGuestPassword = string | redacted.Redacted<string>;
-export type DeviceType = string;
-
-//# Schemas
 export interface Tag {
   Key: string;
   Value: string;
@@ -247,6 +176,7 @@ export const ActivateGatewayInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivateGatewayInput",
 }) as any as S.Schema<ActivateGatewayInput>;
+export type GatewayARN = string;
 export interface ActivateGatewayOutput {
   GatewayARN?: string;
 }
@@ -255,88 +185,7 @@ export const ActivateGatewayOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivateGatewayOutput",
 }) as any as S.Schema<ActivateGatewayOutput>;
-export type ErrorCode =
-  | "ActivationKeyExpired"
-  | "ActivationKeyInvalid"
-  | "ActivationKeyNotFound"
-  | "GatewayInternalError"
-  | "GatewayNotConnected"
-  | "GatewayNotFound"
-  | "GatewayProxyNetworkConnectionBusy"
-  | "AuthenticationFailure"
-  | "BandwidthThrottleScheduleNotFound"
-  | "Blocked"
-  | "CannotExportSnapshot"
-  | "ChapCredentialNotFound"
-  | "DiskAlreadyAllocated"
-  | "DiskDoesNotExist"
-  | "DiskSizeGreaterThanVolumeMaxSize"
-  | "DiskSizeLessThanVolumeSize"
-  | "DiskSizeNotGigAligned"
-  | "DuplicateCertificateInfo"
-  | "DuplicateSchedule"
-  | "EndpointNotFound"
-  | "IAMNotSupported"
-  | "InitiatorInvalid"
-  | "InitiatorNotFound"
-  | "InternalError"
-  | "InvalidGateway"
-  | "InvalidEndpoint"
-  | "InvalidParameters"
-  | "InvalidSchedule"
-  | "LocalStorageLimitExceeded"
-  | "LunAlreadyAllocated "
-  | "LunInvalid"
-  | "JoinDomainInProgress"
-  | "MaximumContentLengthExceeded"
-  | "MaximumTapeCartridgeCountExceeded"
-  | "MaximumVolumeCountExceeded"
-  | "NetworkConfigurationChanged"
-  | "NoDisksAvailable"
-  | "NotImplemented"
-  | "NotSupported"
-  | "OperationAborted"
-  | "OutdatedGateway"
-  | "ParametersNotImplemented"
-  | "RegionInvalid"
-  | "RequestTimeout"
-  | "ServiceUnavailable"
-  | "SnapshotDeleted"
-  | "SnapshotIdInvalid"
-  | "SnapshotInProgress"
-  | "SnapshotNotFound"
-  | "SnapshotScheduleNotFound"
-  | "StagingAreaFull"
-  | "StorageFailure"
-  | "TapeCartridgeNotFound"
-  | "TargetAlreadyExists"
-  | "TargetInvalid"
-  | "TargetNotFound"
-  | "UnauthorizedOperation"
-  | "VolumeAlreadyExists"
-  | "VolumeIdInvalid"
-  | "VolumeInUse"
-  | "VolumeNotFound"
-  | "VolumeNotReady"
-  | (string & {});
-export const ErrorCode = /*@__PURE__*/ S.String;
-export type ErrorDetails = { [key: string]: string | undefined };
-export const ErrorDetails = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
-export interface StorageGatewayError {
-  errorCode?: ErrorCode;
-  errorDetails?: { [key: string]: string | undefined };
-}
-export const StorageGatewayError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorCode: S.optional(ErrorCode),
-    errorDetails: S.optional(ErrorDetails),
-  }),
-).annotate({
-  identifier: "StorageGatewayError",
-}) as any as S.Schema<StorageGatewayError>;
+export type DiskId = string;
 export type DiskIds = string[];
 export const DiskIds = /*@__PURE__*/ S.Array(S.String);
 export interface AddCacheInput {
@@ -362,6 +211,7 @@ export interface AddCacheOutput {
 export const AddCacheOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GatewayARN: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "AddCacheOutput" }) as any as S.Schema<AddCacheOutput>;
+export type ResourceARN = string;
 export interface AddTagsToResourceInput {
   ResourceARN: string;
   Tags: Tag[];
@@ -443,6 +293,8 @@ export const AddWorkingStorageOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddWorkingStorageOutput",
 }) as any as S.Schema<AddWorkingStorageOutput>;
+export type TapeARN = string;
+export type PoolId = string;
 export interface AssignTapePoolInput {
   TapeARN: string;
   PoolId: string;
@@ -475,6 +327,12 @@ export const AssignTapePoolOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssignTapePoolOutput",
 }) as any as S.Schema<AssignTapePoolOutput>;
+export type DomainUserName = string;
+export type DomainUserPassword = string | redacted.Redacted<string>;
+export type ClientToken = string;
+export type FileSystemLocationARN = string;
+export type AuditDestinationARN = string;
+export type CacheStaleTimeoutInSeconds = number;
 export interface CacheAttributes {
   CacheStaleTimeoutInSeconds?: number;
 }
@@ -483,6 +341,7 @@ export const CacheAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CacheAttributes",
 }) as any as S.Schema<CacheAttributes>;
+export type IPV4Address = string;
 export type IpAddressList = string[];
 export const IpAddressList = /*@__PURE__*/ S.Array(S.String);
 export interface EndpointNetworkConfiguration {
@@ -529,6 +388,7 @@ export const AssociateFileSystemInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateFileSystemInput",
 }) as any as S.Schema<AssociateFileSystemInput>;
+export type FileSystemAssociationARN = string;
 export interface AssociateFileSystemOutput {
   FileSystemAssociationARN?: string;
 }
@@ -537,6 +397,9 @@ export const AssociateFileSystemOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateFileSystemOutput",
 }) as any as S.Schema<AssociateFileSystemOutput>;
+export type TargetName = string;
+export type VolumeARN = string;
+export type NetworkInterfaceId = string;
 export interface AttachVolumeInput {
   GatewayARN: string;
   TargetName?: string;
@@ -565,6 +428,7 @@ export const AttachVolumeInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachVolumeInput",
 }) as any as S.Schema<AttachVolumeInput>;
+export type TargetARN = string;
 export interface AttachVolumeOutput {
   VolumeARN?: string;
   TargetARN?: string;
@@ -604,6 +468,7 @@ export const CancelArchivalOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelArchivalOutput",
 }) as any as S.Schema<CancelArchivalOutput>;
+export type CacheReportARN = string;
 export interface CancelCacheReportInput {
   CacheReportARN: string;
 }
@@ -657,6 +522,8 @@ export const CancelRetrievalOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelRetrievalOutput",
 }) as any as S.Schema<CancelRetrievalOutput>;
+export type SnapshotId = string;
+export type KMSKey = string;
 export interface CreateCachediSCSIVolumeInput {
   GatewayARN: string;
   VolumeSizeInBytes: number;
@@ -707,6 +574,8 @@ export const CreateCachediSCSIVolumeOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCachediSCSIVolumeOutput",
 }) as any as S.Schema<CreateCachediSCSIVolumeOutput>;
+export type PermissionMode = string;
+export type PermissionId = number;
 export interface NFSFileShareDefaults {
   FileMode?: string;
   DirectoryMode?: string;
@@ -725,6 +594,10 @@ export const NFSFileShareDefaults = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NFSFileShareDefaults>;
 export type EncryptionType = "SseS3" | "SseKms" | "DsseKms" | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
+
+export type Role = string;
+export type LocationARN = string;
+export type StorageClass = string;
 export type ObjectACL =
   | "private"
   | "public-read"
@@ -735,8 +608,14 @@ export type ObjectACL =
   | "aws-exec-read"
   | (string & {});
 export const ObjectACL = /*@__PURE__*/ S.String;
+
+export type Ipv4OrIpv6AddressCIDR = string;
 export type FileShareClientList = string[];
 export const FileShareClientList = /*@__PURE__*/ S.Array(S.String);
+export type Squash = string;
+export type FileShareName = string;
+export type NotificationPolicy = string;
+export type DNSHostName = string;
 export interface CreateNFSFileShareInput {
   ClientToken: string;
   NFSFileShareDefaults?: NFSFileShareDefaults;
@@ -799,6 +678,7 @@ export const CreateNFSFileShareInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNFSFileShareInput",
 }) as any as S.Schema<CreateNFSFileShareInput>;
+export type FileShareARN = string;
 export interface CreateNFSFileShareOutput {
   FileShareARN?: string;
 }
@@ -807,13 +687,16 @@ export const CreateNFSFileShareOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNFSFileShareOutput",
 }) as any as S.Schema<CreateNFSFileShareOutput>;
+export type UserListUser = string;
 export type UserList = string[];
 export const UserList = /*@__PURE__*/ S.Array(S.String);
+export type Authentication = string;
 export type CaseSensitivity =
   | "ClientSpecified"
   | "CaseSensitive"
   | (string & {});
 export const CaseSensitivity = /*@__PURE__*/ S.String;
+
 export interface CreateSMBFileShareInput {
   ClientToken: string;
   GatewayARN: string;
@@ -894,6 +777,7 @@ export const CreateSMBFileShareOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSMBFileShareOutput",
 }) as any as S.Schema<CreateSMBFileShareOutput>;
+export type SnapshotDescription = string;
 export interface CreateSnapshotInput {
   VolumeARN: string;
   SnapshotDescription: string;
@@ -1020,14 +904,18 @@ export const CreateStorediSCSIVolumeOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStorediSCSIVolumeOutput",
 }) as any as S.Schema<CreateStorediSCSIVolumeOutput>;
+export type PoolName = string;
 export type TapeStorageClass = "DEEP_ARCHIVE" | "GLACIER" | (string & {});
 export const TapeStorageClass = /*@__PURE__*/ S.String;
+
 export type RetentionLockType =
   | "COMPLIANCE"
   | "GOVERNANCE"
   | "NONE"
   | (string & {});
 export const RetentionLockType = /*@__PURE__*/ S.String;
+
+export type RetentionLockTimeInDays = number;
 export interface CreateTapePoolInput {
   PoolName: string;
   StorageClass: TapeStorageClass;
@@ -1056,6 +944,7 @@ export const CreateTapePoolInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTapePoolInput",
 }) as any as S.Schema<CreateTapePoolInput>;
+export type PoolARN = string;
 export interface CreateTapePoolOutput {
   PoolARN?: string;
 }
@@ -1064,6 +953,9 @@ export const CreateTapePoolOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTapePoolOutput",
 }) as any as S.Schema<CreateTapePoolOutput>;
+export type TapeSize = number;
+export type NumTapesToCreate = number;
+export type TapeBarcodePrefix = string;
 export interface CreateTapesInput {
   GatewayARN: string;
   TapeSizeInBytes: number;
@@ -1112,6 +1004,7 @@ export const CreateTapesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTapesOutput",
 }) as any as S.Schema<CreateTapesOutput>;
+export type TapeBarcode = string;
 export interface CreateTapeWithBarcodeInput {
   GatewayARN: string;
   TapeSizeInBytes: number;
@@ -1181,6 +1074,7 @@ export const DeleteAutomaticTapeCreationPolicyOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteAutomaticTapeCreationPolicyOutput",
 }) as any as S.Schema<DeleteAutomaticTapeCreationPolicyOutput>;
+export type BandwidthType = string;
 export interface DeleteBandwidthRateLimitInput {
   GatewayARN: string;
   BandwidthType: string;
@@ -1234,6 +1128,7 @@ export const DeleteCacheReportOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteCacheReportOutput",
 }) as any as S.Schema<DeleteCacheReportOutput>;
+export type IqnName = string;
 export interface DeleteChapCredentialsInput {
   TargetARN: string;
   InitiatorName: string;
@@ -1483,6 +1378,7 @@ export type AvailabilityMonitorTestStatus =
   | "PENDING"
   | (string & {});
 export const AvailabilityMonitorTestStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeAvailabilityMonitorTestOutput {
   GatewayARN?: string;
   Status?: AvailabilityMonitorTestStatus;
@@ -1516,6 +1412,8 @@ export const DescribeBandwidthRateLimitInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeBandwidthRateLimitInput",
 }) as any as S.Schema<DescribeBandwidthRateLimitInput>;
+export type BandwidthUploadRateLimit = number;
+export type BandwidthDownloadRateLimit = number;
 export interface DescribeBandwidthRateLimitOutput {
   GatewayARN?: string;
   AverageUploadRateLimitInBitsPerSec?: number;
@@ -1549,6 +1447,9 @@ export const DescribeBandwidthRateLimitScheduleInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeBandwidthRateLimitScheduleInput",
 }) as any as S.Schema<DescribeBandwidthRateLimitScheduleInput>;
+export type HourOfDay = number;
+export type MinuteOfHour = number;
+export type DayOfWeek = number;
 export type DaysOfWeek = number[];
 export const DaysOfWeek = /*@__PURE__*/ S.Array(S.Number);
 export interface BandwidthRateLimitInterval {
@@ -1650,6 +1551,12 @@ export const DescribeCachediSCSIVolumesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCachediSCSIVolumesInput",
 }) as any as S.Schema<DescribeCachediSCSIVolumesInput>;
+export type VolumeId = string;
+export type VolumeType = string;
+export type VolumeStatus = string;
+export type VolumeAttachmentStatus = string;
+export type DoubleObject = number;
+export type PositiveIntObject = number;
 export interface VolumeiSCSIAttributes {
   TargetARN?: string;
   NetworkInterfaceId?: string;
@@ -1668,6 +1575,8 @@ export const VolumeiSCSIAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VolumeiSCSIAttributes",
 }) as any as S.Schema<VolumeiSCSIAttributes>;
+export type CreatedDate = Date;
+export type VolumeUsedInBytes = number;
 export interface CachediSCSIVolume {
   VolumeARN?: string;
   VolumeId?: string;
@@ -1738,11 +1647,15 @@ export type CacheReportStatus =
   | "ERROR"
   | (string & {});
 export const CacheReportStatus = /*@__PURE__*/ S.String;
+
+export type ReportCompletionPercent = number;
 export type CacheReportFilterName =
   | "UploadState"
   | "UploadFailureReason"
   | (string & {});
 export const CacheReportFilterName = /*@__PURE__*/ S.String;
+
+export type CacheReportFilterValue = string;
 export type CacheReportFilterValues = string[];
 export const CacheReportFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface CacheReportFilter {
@@ -1756,6 +1669,7 @@ export const CacheReportFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CacheReportFilter>;
 export type CacheReportFilterList = CacheReportFilter[];
 export const CacheReportFilterList = /*@__PURE__*/ S.Array(CacheReportFilter);
+export type CacheReportName = string;
 export interface CacheReportInfo {
   CacheReportARN?: string;
   CacheReportStatus?: CacheReportStatus;
@@ -1814,6 +1728,7 @@ export const DescribeChapCredentialsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeChapCredentialsInput",
 }) as any as S.Schema<DescribeChapCredentialsInput>;
+export type ChapSecret = string | redacted.Redacted<string>;
 export interface ChapInfo {
   TargetARN?: string;
   SecretToAuthenticateInitiator?: string | redacted.Redacted<string>;
@@ -1858,6 +1773,8 @@ export const DescribeFileSystemAssociationsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFileSystemAssociationsInput",
 }) as any as S.Schema<DescribeFileSystemAssociationsInput>;
+export type FileSystemAssociationStatus = string;
+export type FileSystemAssociationSyncErrorCode = string;
 export interface FileSystemAssociationStatusDetail {
   ErrorCode?: string;
 }
@@ -1932,6 +1849,8 @@ export const DescribeGatewayInformationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeGatewayInformationInput",
 }) as any as S.Schema<DescribeGatewayInformationInput>;
+export type GatewayId = string;
+export type GatewayState = string;
 export interface NetworkInterface {
   Ipv4Address?: string;
   MacAddress?: string;
@@ -1948,6 +1867,11 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterface>;
 export type GatewayNetworkInterfaces = NetworkInterface[];
 export const GatewayNetworkInterfaces = /*@__PURE__*/ S.Array(NetworkInterface);
+export type NextUpdateAvailabilityDate = string;
+export type LastSoftwareUpdate = string;
+export type Ec2InstanceId = string;
+export type Ec2InstanceRegion = string;
+export type CloudWatchLogGroupARN = string;
 export type HostEnvironment =
   | "VMWARE"
   | "HYPER-V"
@@ -1957,11 +1881,18 @@ export type HostEnvironment =
   | "SNOWBALL"
   | (string & {});
 export const HostEnvironment = /*@__PURE__*/ S.String;
+
+export type EndpointType = string;
+export type SoftwareUpdatesEndDate = string;
+export type DeprecationDate = string;
 export type GatewayCapacity = "Small" | "Medium" | "Large" | (string & {});
 export const GatewayCapacity = /*@__PURE__*/ S.String;
+
 export type SupportedGatewayCapacities = GatewayCapacity[];
 export const SupportedGatewayCapacities =
   /*@__PURE__*/ S.Array(GatewayCapacity);
+export type HostEnvironmentId = string;
+export type SoftwareVersion = string;
 export interface DescribeGatewayInformationOutput {
   GatewayARN?: string;
   GatewayId?: string;
@@ -2032,11 +1963,13 @@ export const DescribeMaintenanceStartTimeInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeMaintenanceStartTimeInput",
 }) as any as S.Schema<DescribeMaintenanceStartTimeInput>;
+export type DayOfMonth = number;
 export type AutomaticUpdatePolicy =
   | "ALL_VERSIONS"
   | "EMERGENCY_VERSIONS_ONLY"
   | (string & {});
 export const AutomaticUpdatePolicy = /*@__PURE__*/ S.String;
+
 export interface SoftwareUpdatePreferences {
   AutomaticUpdatePolicy?: AutomaticUpdatePolicy;
 }
@@ -2087,6 +2020,9 @@ export const DescribeNFSFileSharesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeNFSFileSharesInput",
 }) as any as S.Schema<DescribeNFSFileSharesInput>;
+export type FileShareId = string;
+export type FileShareStatus = string;
+export type Path = string;
 export interface NFSFileShareInfo {
   NFSFileShareDefaults?: NFSFileShareDefaults;
   FileShareARN?: string;
@@ -2269,6 +2205,7 @@ export const DescribeSMBSettingsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSMBSettingsInput",
 }) as any as S.Schema<DescribeSMBSettingsInput>;
+export type DomainName = string;
 export type ActiveDirectoryStatus =
   | "ACCESS_DENIED"
   | "DETACHED"
@@ -2280,6 +2217,7 @@ export type ActiveDirectoryStatus =
   | "INSUFFICIENT_PERMISSIONS"
   | (string & {});
 export const ActiveDirectoryStatus = /*@__PURE__*/ S.String;
+
 export type SMBSecurityStrategy =
   | "ClientSpecified"
   | "MandatorySigning"
@@ -2287,6 +2225,7 @@ export type SMBSecurityStrategy =
   | "MandatoryEncryptionNoAes128"
   | (string & {});
 export const SMBSecurityStrategy = /*@__PURE__*/ S.String;
+
 export interface SMBLocalGroups {
   GatewayAdmins?: string[];
 }
@@ -2333,6 +2272,8 @@ export const DescribeSnapshotScheduleInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSnapshotScheduleInput",
 }) as any as S.Schema<DescribeSnapshotScheduleInput>;
+export type RecurrenceInHours = number;
+export type Description = string;
 export interface DescribeSnapshotScheduleOutput {
   VolumeARN?: string;
   StartAt?: number;
@@ -2419,6 +2360,7 @@ export const DescribeStorediSCSIVolumesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeStorediSCSIVolumesOutput",
 }) as any as S.Schema<DescribeStorediSCSIVolumesOutput>;
+export type Marker = string;
 export interface DescribeTapeArchivesInput {
   TapeARNs?: string[];
   Marker?: string;
@@ -2443,6 +2385,8 @@ export const DescribeTapeArchivesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTapeArchivesInput",
 }) as any as S.Schema<DescribeTapeArchivesInput>;
+export type TapeArchiveStatus = string;
+export type TapeUsage = number;
 export interface TapeArchive {
   TapeARN?: string;
   TapeBarcode?: string;
@@ -2517,6 +2461,7 @@ export const DescribeTapeRecoveryPointsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTapeRecoveryPointsInput",
 }) as any as S.Schema<DescribeTapeRecoveryPointsInput>;
+export type TapeRecoveryPointStatus = string;
 export interface TapeRecoveryPointInfo {
   TapeARN?: string;
   TapeRecoveryPointTime?: Date;
@@ -2579,6 +2524,8 @@ export const DescribeTapesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTapesInput",
 }) as any as S.Schema<DescribeTapesInput>;
+export type TapeStatus = string;
+export type VTLDeviceARN = string;
 export interface Tape {
   TapeARN?: string;
   TapeBarcode?: string;
@@ -2688,6 +2635,9 @@ export const DescribeVTLDevicesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeVTLDevicesInput",
 }) as any as S.Schema<DescribeVTLDevicesInput>;
+export type VTLDeviceType = string;
+export type VTLDeviceVendor = string;
+export type VTLDeviceProductIdentifier = string;
 export interface DeviceiSCSIAttributes {
   TargetARN?: string;
   NetworkInterfaceId?: string;
@@ -2880,8 +2830,11 @@ export const EvictFilesFailingUploadOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EvictFilesFailingUploadOutput",
 }) as any as S.Schema<EvictFilesFailingUploadOutput>;
+export type OrganizationalUnit = string;
+export type Host = string;
 export type Hosts = string[];
 export const Hosts = /*@__PURE__*/ S.Array(S.String);
+export type TimeoutInSeconds = number;
 export interface JoinDomainInput {
   GatewayARN: string;
   DomainName: string;
@@ -2945,6 +2898,7 @@ export const ListAutomaticTapeCreationPoliciesInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListAutomaticTapeCreationPoliciesInput",
 }) as any as S.Schema<ListAutomaticTapeCreationPoliciesInput>;
+export type MinimumNumTapes = number;
 export interface AutomaticTapeCreationRule {
   TapeBarcodePrefix: string;
   PoolId: string;
@@ -3055,6 +3009,7 @@ export const ListFileSharesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFileSharesInput>;
 export type FileShareType = "NFS" | "SMB" | (string & {});
 export const FileShareType = /*@__PURE__*/ S.String;
+
 export interface FileShareInfo {
   FileShareType?: FileShareType;
   FileShareARN?: string;
@@ -3111,6 +3066,7 @@ export const ListFileSystemAssociationsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFileSystemAssociationsInput",
 }) as any as S.Schema<ListFileSystemAssociationsInput>;
+export type FileSystemAssociationId = string;
 export interface FileSystemAssociationSummary {
   FileSystemAssociationId?: string;
   FileSystemAssociationARN?: string;
@@ -3166,6 +3122,7 @@ export const ListGatewaysInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGatewaysInput",
 }) as any as S.Schema<ListGatewaysInput>;
+export type GatewayOperationalState = string;
 export interface GatewayInfo {
   GatewayId?: string;
   GatewayARN?: string;
@@ -3226,6 +3183,8 @@ export const ListLocalDisksInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListLocalDisksInput",
 }) as any as S.Schema<ListLocalDisksInput>;
+export type DiskAllocationType = string;
+export type DiskAttribute = string;
 export type DiskAttributeList = string[];
 export const DiskAttributeList = /*@__PURE__*/ S.Array(S.String);
 export interface Disk {
@@ -3329,6 +3288,7 @@ export const ListTapePoolsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTapePoolsInput>;
 export type PoolStatus = "ACTIVE" | "DELETED" | (string & {});
 export const PoolStatus = /*@__PURE__*/ S.String;
+
 export interface PoolInfo {
   PoolARN?: string;
   PoolName?: string;
@@ -3439,6 +3399,7 @@ export const ListVolumeInitiatorsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListVolumeInitiatorsInput",
 }) as any as S.Schema<ListVolumeInitiatorsInput>;
+export type Initiator = string;
 export type Initiators = string[];
 export const Initiators = /*@__PURE__*/ S.Array(S.String);
 export interface ListVolumeInitiatorsOutput {
@@ -3577,6 +3538,7 @@ export const NotifyWhenUploadedInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotifyWhenUploadedInput",
 }) as any as S.Schema<NotifyWhenUploadedInput>;
+export type NotificationId = string;
 export interface NotifyWhenUploadedOutput {
   FileShareARN?: string;
   NotificationId?: string;
@@ -3589,6 +3551,7 @@ export const NotifyWhenUploadedOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotifyWhenUploadedOutput",
 }) as any as S.Schema<NotifyWhenUploadedOutput>;
+export type Folder = string;
 export type FolderList = string[];
 export const FolderList = /*@__PURE__*/ S.Array(S.String);
 export interface RefreshCacheInput {
@@ -3736,6 +3699,7 @@ export const RetrieveTapeRecoveryPointOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RetrieveTapeRecoveryPointOutput",
 }) as any as S.Schema<RetrieveTapeRecoveryPointOutput>;
+export type LocalConsolePassword = string | redacted.Redacted<string>;
 export interface SetLocalConsolePasswordInput {
   GatewayARN: string;
   LocalConsolePassword: string | redacted.Redacted<string>;
@@ -3766,6 +3730,7 @@ export const SetLocalConsolePasswordOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SetLocalConsolePasswordOutput",
 }) as any as S.Schema<SetLocalConsolePasswordOutput>;
+export type SMBGuestPassword = string | redacted.Redacted<string>;
 export interface SetSMBGuestPasswordInput {
   GatewayARN: string;
   Password: string | redacted.Redacted<string>;
@@ -4431,6 +4396,7 @@ export const UpdateSnapshotScheduleOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSnapshotScheduleOutput",
 }) as any as S.Schema<UpdateSnapshotScheduleOutput>;
+export type DeviceType = string;
 export interface UpdateVTLDeviceTypeInput {
   VTLDeviceARN: string;
   DeviceType: string;
@@ -4458,25 +4424,89 @@ export const UpdateVTLDeviceTypeOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateVTLDeviceTypeOutput",
 }) as any as S.Schema<UpdateVTLDeviceTypeOutput>;
+export type ErrorCode =
+  | "ActivationKeyExpired"
+  | "ActivationKeyInvalid"
+  | "ActivationKeyNotFound"
+  | "GatewayInternalError"
+  | "GatewayNotConnected"
+  | "GatewayNotFound"
+  | "GatewayProxyNetworkConnectionBusy"
+  | "AuthenticationFailure"
+  | "BandwidthThrottleScheduleNotFound"
+  | "Blocked"
+  | "CannotExportSnapshot"
+  | "ChapCredentialNotFound"
+  | "DiskAlreadyAllocated"
+  | "DiskDoesNotExist"
+  | "DiskSizeGreaterThanVolumeMaxSize"
+  | "DiskSizeLessThanVolumeSize"
+  | "DiskSizeNotGigAligned"
+  | "DuplicateCertificateInfo"
+  | "DuplicateSchedule"
+  | "EndpointNotFound"
+  | "IAMNotSupported"
+  | "InitiatorInvalid"
+  | "InitiatorNotFound"
+  | "InternalError"
+  | "InvalidGateway"
+  | "InvalidEndpoint"
+  | "InvalidParameters"
+  | "InvalidSchedule"
+  | "LocalStorageLimitExceeded"
+  | "LunAlreadyAllocated "
+  | "LunInvalid"
+  | "JoinDomainInProgress"
+  | "MaximumContentLengthExceeded"
+  | "MaximumTapeCartridgeCountExceeded"
+  | "MaximumVolumeCountExceeded"
+  | "NetworkConfigurationChanged"
+  | "NoDisksAvailable"
+  | "NotImplemented"
+  | "NotSupported"
+  | "OperationAborted"
+  | "OutdatedGateway"
+  | "ParametersNotImplemented"
+  | "RegionInvalid"
+  | "RequestTimeout"
+  | "ServiceUnavailable"
+  | "SnapshotDeleted"
+  | "SnapshotIdInvalid"
+  | "SnapshotInProgress"
+  | "SnapshotNotFound"
+  | "SnapshotScheduleNotFound"
+  | "StagingAreaFull"
+  | "StorageFailure"
+  | "TapeCartridgeNotFound"
+  | "TargetAlreadyExists"
+  | "TargetInvalid"
+  | "TargetNotFound"
+  | "UnauthorizedOperation"
+  | "VolumeAlreadyExists"
+  | "VolumeIdInvalid"
+  | "VolumeInUse"
+  | "VolumeNotFound"
+  | "VolumeNotReady"
+  | (string & {});
+export const ErrorCode = /*@__PURE__*/ S.String;
 
-//# Errors
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { message: S.optional(S.String), error: S.optional(StorageGatewayError) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidGatewayRequestException extends S.TaggedErrorClass<InvalidGatewayRequestException>()(
-  "InvalidGatewayRequestException",
-  { message: S.optional(S.String), error: S.optional(StorageGatewayError) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableError extends S.TaggedErrorClass<ServiceUnavailableError>()(
-  "ServiceUnavailableError",
-  { message: S.optional(S.String), error: S.optional(StorageGatewayError) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-
-//# Operations
+export type ErrorDetails = { [key: string]: string | undefined };
+export const ErrorDetails = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface StorageGatewayError {
+  errorCode?: ErrorCode;
+  errorDetails?: { [key: string]: string | undefined };
+}
+export const StorageGatewayError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    errorCode: S.optional(ErrorCode),
+    errorDetails: S.optional(ErrorDetails),
+  }),
+).annotate({
+  identifier: "StorageGatewayError",
+}) as any as S.Schema<StorageGatewayError>;
 export type ActivateGatewayError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4503,6 +4533,7 @@ export const activateGateway: API.OperationMethod<
   retry: Retry,
   operationName: "ActivateGateway",
 }));
+
 export type AddCacheError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4527,6 +4558,7 @@ export const addCache: API.OperationMethod<
   retry: Retry,
   operationName: "AddCache",
 }));
+
 export type AddTagsToResourceError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4563,6 +4595,7 @@ export const addTagsToResource: API.OperationMethod<
   retry: Retry,
   operationName: "AddTagsToResource",
 }));
+
 export type AddUploadBufferError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4589,6 +4622,7 @@ export const addUploadBuffer: API.OperationMethod<
   retry: Retry,
   operationName: "AddUploadBuffer",
 }));
+
 export type AddWorkingStorageError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4619,6 +4653,7 @@ export const addWorkingStorage: API.OperationMethod<
   retry: Retry,
   operationName: "AddWorkingStorage",
 }));
+
 export type AssignTapePoolError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4642,6 +4677,7 @@ export const assignTapePool: API.OperationMethod<
   retry: Retry,
   operationName: "AssignTapePool",
 }));
+
 export type AssociateFileSystemError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4665,6 +4701,7 @@ export const associateFileSystem: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateFileSystem",
 }));
+
 export type AttachVolumeError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4688,6 +4725,7 @@ export const attachVolume: API.OperationMethod<
   retry: Retry,
   operationName: "AttachVolume",
 }));
+
 export type CancelArchivalError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4709,6 +4747,7 @@ export const cancelArchival: API.OperationMethod<
   retry: Retry,
   operationName: "CancelArchival",
 }));
+
 export type CancelCacheReportError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4733,6 +4772,7 @@ export const cancelCacheReport: API.OperationMethod<
   retry: Retry,
   operationName: "CancelCacheReport",
 }));
+
 export type CancelRetrievalError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4755,6 +4795,7 @@ export const cancelRetrieval: API.OperationMethod<
   retry: Retry,
   operationName: "CancelRetrieval",
 }));
+
 export type CreateCachediSCSIVolumeError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4790,6 +4831,7 @@ export const createCachediSCSIVolume: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCachediSCSIVolume",
 }));
+
 export type CreateNFSFileShareError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4824,6 +4866,7 @@ export const createNFSFileShare: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNFSFileShare",
 }));
+
 export type CreateSMBFileShareError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4858,6 +4901,7 @@ export const createSMBFileShare: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSMBFileShare",
 }));
+
 export type CreateSnapshotError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4906,6 +4950,7 @@ export const createSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSnapshot",
 }));
+
 export type CreateSnapshotFromVolumeRecoveryPointError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4949,6 +4994,7 @@ export const createSnapshotFromVolumeRecoveryPoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSnapshotFromVolumeRecoveryPoint",
 }));
+
 export type CreateStorediSCSIVolumeError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -4980,6 +5026,7 @@ export const createStorediSCSIVolume: API.OperationMethod<
   retry: Retry,
   operationName: "CreateStorediSCSIVolume",
 }));
+
 export type CreateTapePoolError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5001,6 +5048,7 @@ export const createTapePool: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTapePool",
 }));
+
 export type CreateTapesError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5025,6 +5073,7 @@ export const createTapes: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTapes",
 }));
+
 export type CreateTapeWithBarcodeError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5051,6 +5100,7 @@ export const createTapeWithBarcode: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTapeWithBarcode",
 }));
+
 export type DeleteAutomaticTapeCreationPolicyError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5073,6 +5123,7 @@ export const deleteAutomaticTapeCreationPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAutomaticTapeCreationPolicy",
 }));
+
 export type DeleteBandwidthRateLimitError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5097,6 +5148,7 @@ export const deleteBandwidthRateLimit: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBandwidthRateLimit",
 }));
+
 export type DeleteCacheReportError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5121,6 +5173,7 @@ export const deleteCacheReport: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCacheReport",
 }));
+
 export type DeleteChapCredentialsError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5143,6 +5196,7 @@ export const deleteChapCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteChapCredentials",
 }));
+
 export type DeleteFileShareError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5164,6 +5218,7 @@ export const deleteFileShare: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFileShare",
 }));
+
 export type DeleteGatewayError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5199,6 +5254,7 @@ export const deleteGateway: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGateway",
 }));
+
 export type DeleteSnapshotScheduleError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5230,6 +5286,7 @@ export const deleteSnapshotSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSnapshotSchedule",
 }));
+
 export type DeleteTapeError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5251,6 +5308,7 @@ export const deleteTape: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTape",
 }));
+
 export type DeleteTapeArchiveError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5272,6 +5330,7 @@ export const deleteTapeArchive: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTapeArchive",
 }));
+
 export type DeleteTapePoolError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5294,6 +5353,7 @@ export const deleteTapePool: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTapePool",
 }));
+
 export type DeleteVolumeError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5326,6 +5386,7 @@ export const deleteVolume: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVolume",
 }));
+
 export type DescribeAvailabilityMonitorTestError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5348,6 +5409,7 @@ export const describeAvailabilityMonitorTest: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAvailabilityMonitorTest",
 }));
+
 export type DescribeBandwidthRateLimitError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5376,6 +5438,7 @@ export const describeBandwidthRateLimit: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBandwidthRateLimit",
 }));
+
 export type DescribeBandwidthRateLimitScheduleError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5412,6 +5475,7 @@ export const describeBandwidthRateLimitSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBandwidthRateLimitSchedule",
 }));
+
 export type DescribeCacheError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5436,6 +5500,7 @@ export const describeCache: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCache",
 }));
+
 export type DescribeCachediSCSIVolumesError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5461,6 +5526,7 @@ export const describeCachediSCSIVolumes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCachediSCSIVolumes",
 }));
+
 export type DescribeCacheReportError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5482,6 +5548,7 @@ export const describeCacheReport: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCacheReport",
 }));
+
 export type DescribeChapCredentialsError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5504,6 +5571,7 @@ export const describeChapCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeChapCredentials",
 }));
+
 export type DescribeFileSystemAssociationsError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5525,6 +5593,7 @@ export const describeFileSystemAssociations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFileSystemAssociations",
 }));
+
 export type DescribeGatewayInformationError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5547,6 +5616,7 @@ export const describeGatewayInformation: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeGatewayInformation",
 }));
+
 export type DescribeMaintenanceStartTimeError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5569,6 +5639,7 @@ export const describeMaintenanceStartTime: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeMaintenanceStartTime",
 }));
+
 export type DescribeNFSFileSharesError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5590,6 +5661,7 @@ export const describeNFSFileShares: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeNFSFileShares",
 }));
+
 export type DescribeSMBFileSharesError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5611,6 +5683,7 @@ export const describeSMBFileShares: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSMBFileShares",
 }));
+
 export type DescribeSMBSettingsError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5632,6 +5705,7 @@ export const describeSMBSettings: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSMBSettings",
 }));
+
 export type DescribeSnapshotScheduleError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5655,6 +5729,7 @@ export const describeSnapshotSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSnapshotSchedule",
 }));
+
 export type DescribeStorediSCSIVolumesError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5677,6 +5752,7 @@ export const describeStorediSCSIVolumes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeStorediSCSIVolumes",
 }));
+
 export type DescribeTapeArchivesError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5722,6 +5798,7 @@ export const describeTapeArchives: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeTapeRecoveryPointsError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5769,6 +5846,7 @@ export const describeTapeRecoveryPoints: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeTapesError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5820,6 +5898,7 @@ export const describeTapes: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeUploadBufferError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5844,6 +5923,7 @@ export const describeUploadBuffer: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeUploadBuffer",
 }));
+
 export type DescribeVTLDevicesError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5888,6 +5968,7 @@ export const describeVTLDevices: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeWorkingStorageError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5916,6 +5997,7 @@ export const describeWorkingStorage: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeWorkingStorage",
 }));
+
 export type DetachVolumeError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5940,6 +6022,7 @@ export const detachVolume: API.OperationMethod<
   retry: Retry,
   operationName: "DetachVolume",
 }));
+
 export type DisableGatewayError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5966,6 +6049,7 @@ export const disableGateway: API.OperationMethod<
   retry: Retry,
   operationName: "DisableGateway",
 }));
+
 export type DisassociateFileSystemError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -5988,6 +6072,7 @@ export const disassociateFileSystem: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateFileSystem",
 }));
+
 export type EvictFilesFailingUploadError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6019,6 +6104,7 @@ export const evictFilesFailingUpload: API.OperationMethod<
   retry: Retry,
   operationName: "EvictFilesFailingUpload",
 }));
+
 export type JoinDomainError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6049,6 +6135,7 @@ export const joinDomain: API.OperationMethod<
   retry: Retry,
   operationName: "JoinDomain",
 }));
+
 export type ListAutomaticTapeCreationPoliciesError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6072,6 +6159,7 @@ export const listAutomaticTapeCreationPolicies: API.OperationMethod<
   retry: Retry,
   operationName: "ListAutomaticTapeCreationPolicies",
 }));
+
 export type ListCacheReportsError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6115,6 +6203,7 @@ export const listCacheReports: API.OperationMethod<
     items: "CacheReportList",
   } as const,
 }));
+
 export type ListFileSharesError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6158,6 +6247,7 @@ export const listFileShares: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListFileSystemAssociationsError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6201,6 +6291,7 @@ export const listFileSystemAssociations: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListGatewaysError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6252,6 +6343,7 @@ export const listGateways: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListLocalDisksError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6280,6 +6372,7 @@ export const listLocalDisks: API.OperationMethod<
   retry: Retry,
   operationName: "ListLocalDisks",
 }));
+
 export type ListTagsForResourceError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6322,6 +6415,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListTapePoolsError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6371,6 +6465,7 @@ export const listTapePools: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListTapesError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6422,6 +6517,7 @@ export const listTapes: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListVolumeInitiatorsError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6444,6 +6540,7 @@ export const listVolumeInitiators: API.OperationMethod<
   retry: Retry,
   operationName: "ListVolumeInitiators",
 }));
+
 export type ListVolumeRecoveryPointsError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6470,6 +6567,7 @@ export const listVolumeRecoveryPoints: API.OperationMethod<
   retry: Retry,
   operationName: "ListVolumeRecoveryPoints",
 }));
+
 export type ListVolumesError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6520,6 +6618,7 @@ export const listVolumes: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type NotifyWhenUploadedError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6552,6 +6651,7 @@ export const notifyWhenUploaded: API.OperationMethod<
   retry: Retry,
   operationName: "NotifyWhenUploaded",
 }));
+
 export type RefreshCacheError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6609,6 +6709,7 @@ export const refreshCache: API.OperationMethod<
   retry: Retry,
   operationName: "RefreshCache",
 }));
+
 export type RemoveTagsFromResourceError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6630,6 +6731,7 @@ export const removeTagsFromResource: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveTagsFromResource",
 }));
+
 export type ResetCacheError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6660,6 +6762,7 @@ export const resetCache: API.OperationMethod<
   retry: Retry,
   operationName: "ResetCache",
 }));
+
 export type RetrieveTapeArchiveError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6687,6 +6790,7 @@ export const retrieveTapeArchive: API.OperationMethod<
   retry: Retry,
   operationName: "RetrieveTapeArchive",
 }));
+
 export type RetrieveTapeRecoveryPointError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6716,6 +6820,7 @@ export const retrieveTapeRecoveryPoint: API.OperationMethod<
   retry: Retry,
   operationName: "RetrieveTapeRecoveryPoint",
 }));
+
 export type SetLocalConsolePasswordError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6739,6 +6844,7 @@ export const setLocalConsolePassword: API.OperationMethod<
   retry: Retry,
   operationName: "SetLocalConsolePassword",
 }));
+
 export type SetSMBGuestPasswordError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6761,6 +6867,7 @@ export const setSMBGuestPassword: API.OperationMethod<
   retry: Retry,
   operationName: "SetSMBGuestPassword",
 }));
+
 export type ShutdownGatewayError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6803,6 +6910,7 @@ export const shutdownGateway: API.OperationMethod<
   retry: Retry,
   operationName: "ShutdownGateway",
 }));
+
 export type StartAvailabilityMonitorTestError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6829,6 +6937,7 @@ export const startAvailabilityMonitorTest: API.OperationMethod<
   retry: Retry,
   operationName: "StartAvailabilityMonitorTest",
 }));
+
 export type StartCacheReportError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6876,6 +6985,7 @@ export const startCacheReport: API.OperationMethod<
   retry: Retry,
   operationName: "StartCacheReport",
 }));
+
 export type StartGatewayError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6906,6 +7016,7 @@ export const startGateway: API.OperationMethod<
   retry: Retry,
   operationName: "StartGateway",
 }));
+
 export type UpdateAutomaticTapeCreationPolicyError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6932,6 +7043,7 @@ export const updateAutomaticTapeCreationPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAutomaticTapeCreationPolicy",
 }));
+
 export type UpdateBandwidthRateLimitError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6963,6 +7075,7 @@ export const updateBandwidthRateLimit: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBandwidthRateLimit",
 }));
+
 export type UpdateBandwidthRateLimitScheduleError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -6988,6 +7101,7 @@ export const updateBandwidthRateLimitSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBandwidthRateLimitSchedule",
 }));
+
 export type UpdateChapCredentialsError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -7014,6 +7128,7 @@ export const updateChapCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateChapCredentials",
 }));
+
 export type UpdateFileSystemAssociationError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -7035,6 +7150,7 @@ export const updateFileSystemAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFileSystemAssociation",
 }));
+
 export type UpdateGatewayInformationError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -7061,6 +7177,7 @@ export const updateGatewayInformation: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGatewayInformation",
 }));
+
 export type UpdateGatewaySoftwareNowError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -7092,6 +7209,7 @@ export const updateGatewaySoftwareNow: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGatewaySoftwareNow",
 }));
+
 export type UpdateMaintenanceStartTimeError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -7127,6 +7245,7 @@ export const updateMaintenanceStartTime: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMaintenanceStartTime",
 }));
+
 export type UpdateNFSFileShareError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -7163,6 +7282,7 @@ export const updateNFSFileShare: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNFSFileShare",
 }));
+
 export type UpdateSMBFileShareError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -7198,6 +7318,7 @@ export const updateSMBFileShare: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSMBFileShare",
 }));
+
 export type UpdateSMBFileShareVisibilityError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -7219,6 +7340,7 @@ export const updateSMBFileShareVisibility: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSMBFileShareVisibility",
 }));
+
 export type UpdateSMBLocalGroupsError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -7240,6 +7362,7 @@ export const updateSMBLocalGroups: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSMBLocalGroups",
 }));
+
 export type UpdateSMBSecurityStrategyError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -7267,6 +7390,7 @@ export const updateSMBSecurityStrategy: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSMBSecurityStrategy",
 }));
+
 export type UpdateSnapshotScheduleError =
   | InternalServerError
   | InvalidGatewayRequestException
@@ -7296,6 +7420,7 @@ export const updateSnapshotSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSnapshotSchedule",
 }));
+
 export type UpdateVTLDeviceTypeError =
   | InternalServerError
   | InvalidGatewayRequestException

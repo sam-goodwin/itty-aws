@@ -87,54 +87,44 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String), reason: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String), reason: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {},
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String), reason: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type PermissionGroupId = string;
 export type UserId = string;
 export type ClientToken = string;
-export type StatusCode = number;
-export type ErrorMessage2 = string;
-export type DatasetId = string;
-export type StringMapKey = string;
-export type StringMapValue = string;
-export type ChangesetId = string;
-export type DatasetTitle = string;
-export type DatasetDescription = string;
-export type OwnerName = string;
-export type PhoneNumber = string;
-export type Email = string | redacted.Redacted<string>;
-export type StringValueLength1to250 = string;
-export type AliasString = string;
-export type ColumnName = string;
-export type ColumnDescription = string;
-export type StringValueLength1to255 = string;
-export type TimestampEpoch = number;
-export type DataViewDestinationType = string;
-export type DataViewId = string;
-export type PermissionGroupName = string | redacted.Redacted<string>;
-export type PermissionGroupDescription = string | redacted.Redacted<string>;
-export type FirstName = string | redacted.Redacted<string>;
-export type LastName = string | redacted.Redacted<string>;
-export type RoleArn = string;
-export type ChangesetArn = string;
-export type ErrorMessage = string;
-export type DatasetArn = string;
-export type DataViewArn = string;
-export type AccessKeyId = string;
-export type SecretAccessKey = string | redacted.Redacted<string>;
-export type SessionToken = string | redacted.Redacted<string>;
-export type S3BucketName = string;
-export type S3Key = string;
-export type SessionDuration = number;
-export type IdType = string;
-export type StringValueLength1to2552 = string;
-export type StringValueMaxLength1000 = string;
-export type StringValueLength1to1024 = string;
-export type StringValueLength1to63 = string;
-export type ResultLimit = number;
-export type PaginationToken = string;
-export type Password = string | redacted.Redacted<string>;
-
-//# Schemas
 export interface AssociateUserToPermissionGroupRequest {
   permissionGroupId: string;
   userId: string;
@@ -162,6 +152,7 @@ export const AssociateUserToPermissionGroupRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociateUserToPermissionGroupRequest",
 }) as any as S.Schema<AssociateUserToPermissionGroupRequest>;
+export type StatusCode = number;
 export interface AssociateUserToPermissionGroupResponse {
   statusCode?: number;
 }
@@ -171,8 +162,12 @@ export const AssociateUserToPermissionGroupResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociateUserToPermissionGroupResponse",
 }) as any as S.Schema<AssociateUserToPermissionGroupResponse>;
+export type DatasetId = string;
 export type ChangeType = "REPLACE" | "APPEND" | "MODIFY" | (string & {});
 export const ChangeType = /*@__PURE__*/ S.String;
+
+export type StringMapKey = string;
+export type StringMapValue = string;
 export type SourceParams = { [key: string]: string | undefined };
 export const SourceParams = /*@__PURE__*/ S.Record(
   S.String,
@@ -210,6 +205,7 @@ export const CreateChangesetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateChangesetRequest",
 }) as any as S.Schema<CreateChangesetRequest>;
+export type ChangesetId = string;
 export interface CreateChangesetResponse {
   datasetId?: string;
   changesetId?: string;
@@ -222,8 +218,14 @@ export const CreateChangesetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateChangesetResponse",
 }) as any as S.Schema<CreateChangesetResponse>;
+export type DatasetTitle = string;
 export type DatasetKind = "TABULAR" | "NON_TABULAR" | (string & {});
 export const DatasetKind = /*@__PURE__*/ S.String;
+
+export type DatasetDescription = string;
+export type OwnerName = string;
+export type PhoneNumber = string;
+export type Email = string | redacted.Redacted<string>;
 export interface DatasetOwnerInfo {
   name?: string;
   phoneNumber?: string;
@@ -238,6 +240,7 @@ export const DatasetOwnerInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatasetOwnerInfo",
 }) as any as S.Schema<DatasetOwnerInfo>;
+export type StringValueLength1to250 = string;
 export interface ResourcePermission {
   permission?: string;
 }
@@ -261,6 +264,7 @@ export const PermissionGroupParams = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PermissionGroupParams",
 }) as any as S.Schema<PermissionGroupParams>;
+export type AliasString = string;
 export type ColumnDataType =
   | "STRING"
   | "CHAR"
@@ -276,6 +280,9 @@ export type ColumnDataType =
   | "BINARY"
   | (string & {});
 export const ColumnDataType = /*@__PURE__*/ S.String;
+
+export type ColumnName = string;
+export type ColumnDescription = string;
 export interface ColumnDefinition {
   dataType?: ColumnDataType;
   columnName?: string;
@@ -353,12 +360,16 @@ export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetResponse",
 }) as any as S.Schema<CreateDatasetResponse>;
+export type StringValueLength1to255 = string;
 export type SortColumnList = string[];
 export const SortColumnList = /*@__PURE__*/ S.Array(S.String);
 export type PartitionColumnList = string[];
 export const PartitionColumnList = /*@__PURE__*/ S.Array(S.String);
+export type TimestampEpoch = number;
+export type DataViewDestinationType = string;
 export type ExportFileFormat = "PARQUET" | "DELIMITED_TEXT" | (string & {});
 export const ExportFileFormat = /*@__PURE__*/ S.String;
+
 export type S3DestinationFormatOptions = { [key: string]: string | undefined };
 export const S3DestinationFormatOptions = /*@__PURE__*/ S.Record(
   S.String,
@@ -411,6 +422,7 @@ export const CreateDataViewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDataViewRequest",
 }) as any as S.Schema<CreateDataViewRequest>;
+export type DataViewId = string;
 export interface CreateDataViewResponse {
   datasetId?: string;
   dataViewId?: string;
@@ -423,6 +435,8 @@ export const CreateDataViewResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDataViewResponse",
 }) as any as S.Schema<CreateDataViewResponse>;
+export type PermissionGroupName = string | redacted.Redacted<string>;
+export type PermissionGroupDescription = string | redacted.Redacted<string>;
 export type ApplicationPermission =
   | "CreateDataset"
   | "ManageClusters"
@@ -433,6 +447,7 @@ export type ApplicationPermission =
   | "GetTemporaryCredentials"
   | (string & {});
 export const ApplicationPermission = /*@__PURE__*/ S.String;
+
 export type ApplicationPermissionList = ApplicationPermission[];
 export const ApplicationPermissionList = /*@__PURE__*/ S.Array(
   ApplicationPermission,
@@ -472,8 +487,13 @@ export const CreatePermissionGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePermissionGroupResponse>;
 export type UserType = "SUPER_USER" | "APP_USER" | (string & {});
 export const UserType = /*@__PURE__*/ S.String;
+
+export type FirstName = string | redacted.Redacted<string>;
+export type LastName = string | redacted.Redacted<string>;
 export type ApiAccess = "ENABLED" | "DISABLED" | (string & {});
 export const ApiAccess = /*@__PURE__*/ S.String;
+
+export type RoleArn = string;
 export interface CreateUserRequest {
   emailAddress: string | redacted.Redacted<string>;
   type: UserType;
@@ -701,6 +721,7 @@ export const GetChangesetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetChangesetRequest",
 }) as any as S.Schema<GetChangesetRequest>;
+export type ChangesetArn = string;
 export type IngestionStatus =
   | "PENDING"
   | "FAILED"
@@ -709,6 +730,8 @@ export type IngestionStatus =
   | "STOP_REQUESTED"
   | (string & {});
 export const IngestionStatus = /*@__PURE__*/ S.String;
+
+export type ErrorMessage = string;
 export type ErrorCategory =
   | "VALIDATION"
   | "SERVICE_QUOTA_EXCEEDED"
@@ -720,6 +743,7 @@ export type ErrorCategory =
   | "USER_RECOVERABLE"
   | (string & {});
 export const ErrorCategory = /*@__PURE__*/ S.String;
+
 export interface ChangesetErrorInfo {
   errorMessage?: string;
   errorCategory?: ErrorCategory;
@@ -783,6 +807,7 @@ export const GetDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDatasetRequest",
 }) as any as S.Schema<GetDatasetRequest>;
+export type DatasetArn = string;
 export type DatasetStatus =
   | "PENDING"
   | "FAILED"
@@ -790,6 +815,7 @@ export type DatasetStatus =
   | "RUNNING"
   | (string & {});
 export const DatasetStatus = /*@__PURE__*/ S.String;
+
 export interface GetDatasetResponse {
   datasetId?: string;
   datasetArn?: string;
@@ -854,6 +880,7 @@ export const DataViewErrorInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataViewErrorInfo",
 }) as any as S.Schema<DataViewErrorInfo>;
+export type DataViewArn = string;
 export type DataViewStatus =
   | "RUNNING"
   | "STARTING"
@@ -865,6 +892,7 @@ export type DataViewStatus =
   | "FAILED_CLEANUP_FAILED"
   | (string & {});
 export const DataViewStatus = /*@__PURE__*/ S.String;
+
 export interface GetDataViewResponse {
   autoUpdate?: boolean;
   partitionColumns?: string[];
@@ -922,6 +950,9 @@ export const GetExternalDataViewAccessDetailsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetExternalDataViewAccessDetailsRequest",
 }) as any as S.Schema<GetExternalDataViewAccessDetailsRequest>;
+export type AccessKeyId = string;
+export type SecretAccessKey = string | redacted.Redacted<string>;
+export type SessionToken = string | redacted.Redacted<string>;
 export interface AwsCredentials {
   accessKeyId?: string;
   secretAccessKey?: string | redacted.Redacted<string>;
@@ -936,6 +967,8 @@ export const AwsCredentials = /*@__PURE__*/ S.suspend(() =>
     expiration: S.optional(S.Number),
   }),
 ).annotate({ identifier: "AwsCredentials" }) as any as S.Schema<AwsCredentials>;
+export type S3BucketName = string;
+export type S3Key = string;
 export interface S3Location {
   bucket: string;
   key: string;
@@ -981,6 +1014,7 @@ export type PermissionGroupMembershipStatus =
   | "REMOVAL_IN_PROGRESS"
   | (string & {});
 export const PermissionGroupMembershipStatus = /*@__PURE__*/ S.String;
+
 export interface PermissionGroup {
   permissionGroupId?: string;
   name?: string | redacted.Redacted<string>;
@@ -1011,6 +1045,8 @@ export const GetPermissionGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPermissionGroupResponse",
 }) as any as S.Schema<GetPermissionGroupResponse>;
+export type SessionDuration = number;
+export type IdType = string;
 export interface GetProgrammaticAccessCredentialsRequest {
   durationInMinutes?: number;
   environmentId: string;
@@ -1035,6 +1071,8 @@ export const GetProgrammaticAccessCredentialsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetProgrammaticAccessCredentialsRequest",
 }) as any as S.Schema<GetProgrammaticAccessCredentialsRequest>;
+export type StringValueLength1to2552 = string;
+export type StringValueMaxLength1000 = string;
 export interface Credentials {
   accessKeyId?: string;
   secretAccessKey?: string;
@@ -1077,6 +1115,7 @@ export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
 export type UserStatus = "CREATING" | "ENABLED" | "DISABLED" | (string & {});
 export const UserStatus = /*@__PURE__*/ S.String;
+
 export interface GetUserResponse {
   userId?: string;
   status?: UserStatus;
@@ -1113,6 +1152,7 @@ export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUserResponse>;
 export type LocationType = "INGESTION" | "SAGEMAKER" | (string & {});
 export const LocationType = /*@__PURE__*/ S.String;
+
 export interface GetWorkingLocationRequest {
   locationType?: LocationType;
 }
@@ -1130,6 +1170,8 @@ export const GetWorkingLocationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWorkingLocationRequest",
 }) as any as S.Schema<GetWorkingLocationRequest>;
+export type StringValueLength1to1024 = string;
+export type StringValueLength1to63 = string;
 export interface GetWorkingLocationResponse {
   s3Uri?: string;
   s3Path?: string;
@@ -1144,6 +1186,8 @@ export const GetWorkingLocationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWorkingLocationResponse",
 }) as any as S.Schema<GetWorkingLocationResponse>;
+export type ResultLimit = number;
+export type PaginationToken = string;
 export interface ListChangesetsRequest {
   datasetId: string;
   maxResults?: number;
@@ -1586,6 +1630,7 @@ export const ResetUserPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResetUserPasswordRequest",
 }) as any as S.Schema<ResetUserPasswordRequest>;
+export type Password = string | redacted.Redacted<string>;
 export interface ResetUserPasswordResponse {
   userId?: string;
   temporaryPassword?: string | redacted.Redacted<string>;
@@ -1753,45 +1798,7 @@ export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateUserResponse",
 }) as any as S.Schema<UpdateUserResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String), reason: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String), reason: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {},
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String), reason: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage2 = string;
 export type AssociateUserToPermissionGroupError =
   | AccessDeniedException
   | ConflictException
@@ -1823,6 +1830,7 @@ export const associateUserToPermissionGroup: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateUserToPermissionGroup",
 }));
+
 export type CreateChangesetError =
   | AccessDeniedException
   | ConflictException
@@ -1856,6 +1864,7 @@ export const createChangeset: API.OperationMethod<
   retry: Retry,
   operationName: "CreateChangeset",
 }));
+
 export type CreateDatasetError =
   | AccessDeniedException
   | ConflictException
@@ -1889,6 +1898,7 @@ export const createDataset: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataset",
 }));
+
 export type CreateDataViewError =
   | ConflictException
   | InternalServerException
@@ -1920,6 +1930,7 @@ export const createDataView: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataView",
 }));
+
 export type CreatePermissionGroupError =
   | AccessDeniedException
   | ConflictException
@@ -1951,6 +1962,7 @@ export const createPermissionGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePermissionGroup",
 }));
+
 export type CreateUserError =
   | AccessDeniedException
   | ConflictException
@@ -1982,6 +1994,7 @@ export const createUser: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUser",
 }));
+
 export type DeleteDatasetError =
   | AccessDeniedException
   | ConflictException
@@ -2015,6 +2028,7 @@ export const deleteDataset: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataset",
 }));
+
 export type DeletePermissionGroupError =
   | AccessDeniedException
   | ConflictException
@@ -2048,6 +2062,7 @@ export const deletePermissionGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePermissionGroup",
 }));
+
 export type DisableUserError =
   | AccessDeniedException
   | ConflictException
@@ -2079,6 +2094,7 @@ export const disableUser: API.OperationMethod<
   retry: Retry,
   operationName: "DisableUser",
 }));
+
 export type DisassociateUserFromPermissionGroupError =
   | AccessDeniedException
   | ConflictException
@@ -2110,6 +2126,7 @@ export const disassociateUserFromPermissionGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateUserFromPermissionGroup",
 }));
+
 export type EnableUserError =
   | AccessDeniedException
   | ConflictException
@@ -2143,6 +2160,7 @@ export const enableUser: API.OperationMethod<
   retry: Retry,
   operationName: "EnableUser",
 }));
+
 export type GetChangesetError =
   | AccessDeniedException
   | ConflictException
@@ -2174,6 +2192,7 @@ export const getChangeset: API.OperationMethod<
   retry: Retry,
   operationName: "GetChangeset",
 }));
+
 export type GetDatasetError =
   | AccessDeniedException
   | ConflictException
@@ -2205,6 +2224,7 @@ export const getDataset: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataset",
 }));
+
 export type GetDataViewError =
   | ConflictException
   | InternalServerException
@@ -2234,6 +2254,7 @@ export const getDataView: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataView",
 }));
+
 export type GetExternalDataViewAccessDetailsError =
   | AccessDeniedException
   | InternalServerException
@@ -2267,6 +2288,7 @@ export const getExternalDataViewAccessDetails: API.OperationMethod<
   retry: Retry,
   operationName: "GetExternalDataViewAccessDetails",
 }));
+
 export type GetPermissionGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -2296,6 +2318,7 @@ export const getPermissionGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetPermissionGroup",
 }));
+
 export type GetProgrammaticAccessCredentialsError =
   | AccessDeniedException
   | InternalServerException
@@ -2323,6 +2346,7 @@ export const getProgrammaticAccessCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "GetProgrammaticAccessCredentials",
 }));
+
 export type GetUserError =
   | AccessDeniedException
   | InternalServerException
@@ -2352,6 +2376,7 @@ export const getUser: API.OperationMethod<
   retry: Retry,
   operationName: "GetUser",
 }));
+
 export type GetWorkingLocationError =
   | AccessDeniedException
   | InternalServerException
@@ -2380,6 +2405,7 @@ export const getWorkingLocation: API.OperationMethod<
   retry: Retry,
   operationName: "GetWorkingLocation",
 }));
+
 export type ListChangesetsError =
   | AccessDeniedException
   | ConflictException
@@ -2432,6 +2458,7 @@ export const listChangesets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDatasetsError =
   | ConflictException
   | InternalServerException
@@ -2482,6 +2509,7 @@ export const listDatasets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDataViewsError =
   | ConflictException
   | InternalServerException
@@ -2532,6 +2560,7 @@ export const listDataViews: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPermissionGroupsError =
   | AccessDeniedException
   | InternalServerException
@@ -2580,6 +2609,7 @@ export const listPermissionGroups: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPermissionGroupsByUserError =
   | AccessDeniedException
   | InternalServerException
@@ -2609,6 +2639,7 @@ export const listPermissionGroupsByUser: API.OperationMethod<
   retry: Retry,
   operationName: "ListPermissionGroupsByUser",
 }));
+
 export type ListUsersError =
   | AccessDeniedException
   | InternalServerException
@@ -2657,6 +2688,7 @@ export const listUsers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListUsersByPermissionGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -2686,6 +2718,7 @@ export const listUsersByPermissionGroup: API.OperationMethod<
   retry: Retry,
   operationName: "ListUsersByPermissionGroup",
 }));
+
 export type ResetUserPasswordError =
   | AccessDeniedException
   | ConflictException
@@ -2717,6 +2750,7 @@ export const resetUserPassword: API.OperationMethod<
   retry: Retry,
   operationName: "ResetUserPassword",
 }));
+
 export type UpdateChangesetError =
   | AccessDeniedException
   | ConflictException
@@ -2748,6 +2782,7 @@ export const updateChangeset: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateChangeset",
 }));
+
 export type UpdateDatasetError =
   | AccessDeniedException
   | ConflictException
@@ -2779,6 +2814,7 @@ export const updateDataset: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDataset",
 }));
+
 export type UpdatePermissionGroupError =
   | AccessDeniedException
   | ConflictException
@@ -2810,6 +2846,7 @@ export const updatePermissionGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePermissionGroup",
 }));
+
 export type UpdateUserError =
   | AccessDeniedException
   | ConflictException

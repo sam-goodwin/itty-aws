@@ -88,39 +88,44 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
+  "InternalFailureException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(410),
+).pipe(C.withBadRequestError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { message: S.optional(S.String) },
+  T.HttpError(412),
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type ThingName = string;
 export type Urn = string;
 export type Version = number;
-export type ErrorMessage = string;
-export type DefinitionText = string;
-export type Arn = string;
-export type TagKey = string;
-export type TagValue = string;
-export type GroupName = string;
-export type S3BucketName = string;
-export type Enabled = boolean;
-export type RoleArn = string;
-export type GreengrassGroupId = string;
-export type GreengrassGroupVersionId = string;
-export type NamespaceName = string;
-export type GreengrassDeploymentId = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type UploadId = string;
-export type FlowExecutionId = string;
-export type FlowExecutionMessageId = string;
-export type FlowExecutionMessagePayload = string;
-export type ResourceArn = string;
-export type EntityFilterValue = string;
-export type FlowTemplateFilterValue = string;
-export type SystemInstanceFilterValue = string;
-export type SystemTemplateFilterValue = string;
-export type ThingArn = string;
-export type SyncWithPublicNamespace = boolean;
-export type DeprecateExistingEntities = boolean;
-
-//# Schemas
 export interface AssociateEntityToThingRequest {
   thingName: string;
   entityId: string;
@@ -145,6 +150,8 @@ export const AssociateEntityToThingResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociateEntityToThingResponse>;
 export type DefinitionLanguage = "GRAPHQL" | (string & {});
 export const DefinitionLanguage = /*@__PURE__*/ S.String;
+
+export type DefinitionText = string;
 export interface DefinitionDocument {
   language: DefinitionLanguage;
   text: string;
@@ -168,6 +175,7 @@ export const CreateFlowTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFlowTemplateRequest",
 }) as any as S.Schema<CreateFlowTemplateRequest>;
+export type Arn = string;
 export interface FlowTemplateSummary {
   id?: string;
   arn?: string;
@@ -192,6 +200,8 @@ export const CreateFlowTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFlowTemplateResponse",
 }) as any as S.Schema<CreateFlowTemplateResponse>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
@@ -203,6 +213,11 @@ export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type DeploymentTarget = "GREENGRASS" | "CLOUD" | (string & {});
 export const DeploymentTarget = /*@__PURE__*/ S.String;
+
+export type GroupName = string;
+export type S3BucketName = string;
+export type Enabled = boolean;
+export type RoleArn = string;
 export interface MetricsConfiguration {
   cloudMetricEnabled?: boolean;
   metricRuleRoleArn?: string;
@@ -250,6 +265,9 @@ export type SystemInstanceDeploymentStatus =
   | "DELETED_IN_TARGET"
   | (string & {});
 export const SystemInstanceDeploymentStatus = /*@__PURE__*/ S.String;
+
+export type GreengrassGroupId = string;
+export type GreengrassGroupVersionId = string;
 export interface SystemInstanceSummary {
   id?: string;
   arn?: string;
@@ -346,6 +364,7 @@ export const DeleteNamespaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteNamespaceRequest",
 }) as any as S.Schema<DeleteNamespaceRequest>;
+export type NamespaceName = string;
 export interface DeleteNamespaceResponse {
   namespaceArn?: string;
   namespaceName?: string;
@@ -400,6 +419,7 @@ export const DeploySystemInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeploySystemInstanceRequest",
 }) as any as S.Schema<DeploySystemInstanceRequest>;
+export type GreengrassDeploymentId = string;
 export interface DeploySystemInstanceResponse {
   summary: SystemInstanceSummary;
   greengrassDeploymentId?: string;
@@ -485,6 +505,7 @@ export type EntityType =
   | "ENUM"
   | (string & {});
 export const EntityType = /*@__PURE__*/ S.String;
+
 export interface DissociateEntityFromThingRequest {
   thingName: string;
   entityType: EntityType;
@@ -576,6 +597,8 @@ export const GetFlowTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetFlowTemplateResponse",
 }) as any as S.Schema<GetFlowTemplateResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface GetFlowTemplateRevisionsRequest {
   id: string;
   nextToken?: string;
@@ -620,10 +643,12 @@ export type NamespaceDeletionStatus =
   | "FAILED"
   | (string & {});
 export const NamespaceDeletionStatus = /*@__PURE__*/ S.String;
+
 export type NamespaceDeletionStatusErrorCodes =
   | "VALIDATION_FAILED"
   | (string & {});
 export const NamespaceDeletionStatusErrorCodes = /*@__PURE__*/ S.String;
+
 export interface GetNamespaceDeletionStatusResponse {
   namespaceArn?: string;
   namespaceName?: string;
@@ -758,6 +783,7 @@ export const GetSystemTemplateRevisionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSystemTemplateRevisionsResponse",
 }) as any as S.Schema<GetSystemTemplateRevisionsResponse>;
+export type UploadId = string;
 export interface GetUploadStatusRequest {
   uploadId: string;
 }
@@ -774,6 +800,7 @@ export type UploadStatus =
   | "FAILED"
   | (string & {});
 export const UploadStatus = /*@__PURE__*/ S.String;
+
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface GetUploadStatusResponse {
@@ -798,6 +825,7 @@ export const GetUploadStatusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetUploadStatusResponse",
 }) as any as S.Schema<GetUploadStatusResponse>;
+export type FlowExecutionId = string;
 export interface ListFlowExecutionMessagesRequest {
   flowExecutionId: string;
   nextToken?: string;
@@ -814,6 +842,7 @@ export const ListFlowExecutionMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFlowExecutionMessagesRequest",
 }) as any as S.Schema<ListFlowExecutionMessagesRequest>;
+export type FlowExecutionMessageId = string;
 export type FlowExecutionEventType =
   | "EXECUTION_STARTED"
   | "EXECUTION_FAILED"
@@ -834,6 +863,8 @@ export type FlowExecutionEventType =
   | "ACKNOWLEDGE_TASK_MESSAGE"
   | (string & {});
 export const FlowExecutionEventType = /*@__PURE__*/ S.String;
+
+export type FlowExecutionMessagePayload = string;
 export interface FlowExecutionMessage {
   messageId?: string;
   eventType?: FlowExecutionEventType;
@@ -865,6 +896,7 @@ export const ListFlowExecutionMessagesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFlowExecutionMessagesResponse",
 }) as any as S.Schema<ListFlowExecutionMessagesResponse>;
+export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   maxResults?: number;
   resourceArn: string;
@@ -899,6 +931,8 @@ export type EntityFilterName =
   | "REFERENCED_ENTITY_ID"
   | (string & {});
 export const EntityFilterName = /*@__PURE__*/ S.String;
+
+export type EntityFilterValue = string;
 export type EntityFilterValues = string[];
 export const EntityFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface EntityFilter {
@@ -974,6 +1008,7 @@ export type FlowExecutionStatus =
   | "FAILED"
   | (string & {});
 export const FlowExecutionStatus = /*@__PURE__*/ S.String;
+
 export interface FlowExecutionSummary {
   flowExecutionId?: string;
   status?: FlowExecutionStatus;
@@ -1011,6 +1046,8 @@ export const SearchFlowExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchFlowExecutionsResponse>;
 export type FlowTemplateFilterName = "DEVICE_MODEL_ID" | (string & {});
 export const FlowTemplateFilterName = /*@__PURE__*/ S.String;
+
+export type FlowTemplateFilterValue = string;
 export type FlowTemplateFilterValues = string[];
 export const FlowTemplateFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface FlowTemplateFilter {
@@ -1058,6 +1095,8 @@ export type SystemInstanceFilterName =
   | "GREENGRASS_GROUP_NAME"
   | (string & {});
 export const SystemInstanceFilterName = /*@__PURE__*/ S.String;
+
+export type SystemInstanceFilterValue = string;
 export type SystemInstanceFilterValues = string[];
 export const SystemInstanceFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface SystemInstanceFilter {
@@ -1109,6 +1148,8 @@ export const SearchSystemInstancesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchSystemInstancesResponse>;
 export type SystemTemplateFilterName = "FLOW_TEMPLATE_ID" | (string & {});
 export const SystemTemplateFilterName = /*@__PURE__*/ S.String;
+
+export type SystemTemplateFilterValue = string;
 export type SystemTemplateFilterValues = string[];
 export const SystemTemplateFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface SystemTemplateFilter {
@@ -1172,6 +1213,7 @@ export const SearchThingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchThingsRequest",
 }) as any as S.Schema<SearchThingsRequest>;
+export type ThingArn = string;
 export interface Thing {
   thingArn?: string;
   thingName?: string;
@@ -1292,6 +1334,8 @@ export const UpdateSystemTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSystemTemplateResponse",
 }) as any as S.Schema<UpdateSystemTemplateResponse>;
+export type SyncWithPublicNamespace = boolean;
+export type DeprecateExistingEntities = boolean;
 export interface UploadEntityDefinitionsRequest {
   document?: DefinitionDocument;
   syncWithPublicNamespace?: boolean;
@@ -1316,45 +1360,7 @@ export const UploadEntityDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UploadEntityDefinitionsResponse",
 }) as any as S.Schema<UploadEntityDefinitionsResponse>;
-
-//# Errors
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(410),
-).pipe(C.withBadRequestError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { message: S.optional(S.String) },
-  T.HttpError(412),
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type AssociateEntityToThingError =
   | InternalFailureException
   | InvalidRequestException
@@ -1384,6 +1390,7 @@ export const associateEntityToThing: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateEntityToThing",
 }));
+
 export type CreateFlowTemplateError =
   | InternalFailureException
   | InvalidRequestException
@@ -1415,6 +1422,7 @@ export const createFlowTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFlowTemplate",
 }));
+
 export type CreateSystemInstanceError =
   | InternalFailureException
   | InvalidRequestException
@@ -1456,6 +1464,7 @@ export const createSystemInstance: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSystemInstance",
 }));
+
 export type CreateSystemTemplateError =
   | InternalFailureException
   | InvalidRequestException
@@ -1484,6 +1493,7 @@ export const createSystemTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSystemTemplate",
 }));
+
 export type DeleteFlowTemplateError =
   | InternalFailureException
   | InvalidRequestException
@@ -1512,6 +1522,7 @@ export const deleteFlowTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFlowTemplate",
 }));
+
 export type DeleteNamespaceError =
   | InternalFailureException
   | ThrottlingException
@@ -1533,6 +1544,7 @@ export const deleteNamespace: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNamespace",
 }));
+
 export type DeleteSystemInstanceError =
   | InternalFailureException
   | InvalidRequestException
@@ -1563,6 +1575,7 @@ export const deleteSystemInstance: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSystemInstance",
 }));
+
 export type DeleteSystemTemplateError =
   | InternalFailureException
   | InvalidRequestException
@@ -1591,6 +1604,7 @@ export const deleteSystemTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSystemTemplate",
 }));
+
 export type DeploySystemInstanceError =
   | InternalFailureException
   | InvalidRequestException
@@ -1632,6 +1646,7 @@ export const deploySystemInstance: API.OperationMethod<
   retry: Retry,
   operationName: "DeploySystemInstance",
 }));
+
 export type DeprecateFlowTemplateError =
   | InternalFailureException
   | InvalidRequestException
@@ -1659,6 +1674,7 @@ export const deprecateFlowTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeprecateFlowTemplate",
 }));
+
 export type DeprecateSystemTemplateError =
   | InternalFailureException
   | InvalidRequestException
@@ -1686,6 +1702,7 @@ export const deprecateSystemTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeprecateSystemTemplate",
 }));
+
 export type DescribeNamespaceError =
   | InternalFailureException
   | InvalidRequestException
@@ -1713,6 +1730,7 @@ export const describeNamespace: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeNamespace",
 }));
+
 export type DissociateEntityFromThingError =
   | InternalFailureException
   | InvalidRequestException
@@ -1741,6 +1759,7 @@ export const dissociateEntityFromThing: API.OperationMethod<
   retry: Retry,
   operationName: "DissociateEntityFromThing",
 }));
+
 export type GetEntitiesError =
   | InternalFailureException
   | InvalidRequestException
@@ -1789,6 +1808,7 @@ export const getEntities: API.OperationMethod<
   retry: Retry,
   operationName: "GetEntities",
 }));
+
 export type GetFlowTemplateError =
   | InternalFailureException
   | InvalidRequestException
@@ -1816,6 +1836,7 @@ export const getFlowTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetFlowTemplate",
 }));
+
 export type GetFlowTemplateRevisionsError =
   | InternalFailureException
   | InvalidRequestException
@@ -1865,6 +1886,7 @@ export const getFlowTemplateRevisions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetNamespaceDeletionStatusError =
   | InternalFailureException
   | InvalidRequestException
@@ -1890,6 +1912,7 @@ export const getNamespaceDeletionStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetNamespaceDeletionStatus",
 }));
+
 export type GetSystemInstanceError =
   | InternalFailureException
   | InvalidRequestException
@@ -1917,6 +1940,7 @@ export const getSystemInstance: API.OperationMethod<
   retry: Retry,
   operationName: "GetSystemInstance",
 }));
+
 export type GetSystemTemplateError =
   | InternalFailureException
   | InvalidRequestException
@@ -1944,6 +1968,7 @@ export const getSystemTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetSystemTemplate",
 }));
+
 export type GetSystemTemplateRevisionsError =
   | InternalFailureException
   | InvalidRequestException
@@ -1993,6 +2018,7 @@ export const getSystemTemplateRevisions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetUploadStatusError =
   | InternalFailureException
   | InvalidRequestException
@@ -2020,6 +2046,7 @@ export const getUploadStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetUploadStatus",
 }));
+
 export type ListFlowExecutionMessagesError =
   | InternalFailureException
   | InvalidRequestException
@@ -2068,6 +2095,7 @@ export const listFlowExecutionMessages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalFailureException
   | InvalidRequestException
@@ -2116,6 +2144,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type SearchEntitiesError =
   | InternalFailureException
   | InvalidRequestException
@@ -2162,6 +2191,7 @@ export const searchEntities: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type SearchFlowExecutionsError =
   | InternalFailureException
   | InvalidRequestException
@@ -2210,6 +2240,7 @@ export const searchFlowExecutions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type SearchFlowTemplatesError =
   | InternalFailureException
   | InvalidRequestException
@@ -2256,6 +2287,7 @@ export const searchFlowTemplates: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type SearchSystemInstancesError =
   | InternalFailureException
   | InvalidRequestException
@@ -2302,6 +2334,7 @@ export const searchSystemInstances: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type SearchSystemTemplatesError =
   | InternalFailureException
   | InvalidRequestException
@@ -2348,6 +2381,7 @@ export const searchSystemTemplates: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type SearchThingsError =
   | InternalFailureException
   | InvalidRequestException
@@ -2401,6 +2435,7 @@ export const searchThings: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type TagResourceError =
   | InternalFailureException
   | InvalidRequestException
@@ -2428,6 +2463,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UndeploySystemInstanceError =
   | InternalFailureException
   | InvalidRequestException
@@ -2457,6 +2493,7 @@ export const undeploySystemInstance: API.OperationMethod<
   retry: Retry,
   operationName: "UndeploySystemInstance",
 }));
+
 export type UntagResourceError =
   | InternalFailureException
   | InvalidRequestException
@@ -2484,6 +2521,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateFlowTemplateError =
   | InternalFailureException
   | InvalidRequestException
@@ -2512,6 +2550,7 @@ export const updateFlowTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFlowTemplate",
 }));
+
 export type UpdateSystemTemplateError =
   | InternalFailureException
   | InvalidRequestException
@@ -2539,6 +2578,7 @@ export const updateSystemTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSystemTemplate",
 }));
+
 export type UploadEntityDefinitionsError =
   | InternalFailureException
   | InvalidRequestException

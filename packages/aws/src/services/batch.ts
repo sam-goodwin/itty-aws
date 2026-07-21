@@ -92,17 +92,72 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ImageType = string;
-export type ImageIdOverride = string;
-export type KubernetesVersion = string;
-export type TagKey = string;
-export type TagValue = string;
-export type JobExecutionTimeoutMinutes = number;
-export type Quantity = string;
-export type ClientRequestToken = string;
-
-//# Schemas
+export class ClientException extends S.TaggedErrorClass<ClientException>()(
+  "ClientException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ComputeEnvironmentBeingModified extends S.TaggedErrorClass<ComputeEnvironmentBeingModified>()(
+  "ComputeEnvironmentBeingModified",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { includes: "is being modified" },
+  }),
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class ComputeEnvironmentInUse extends S.TaggedErrorClass<ComputeEnvironmentInUse>()(
+  "ComputeEnvironmentInUse",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { includes: "found existing JobQueue relationship" },
+  }),
+).pipe(C.withDependencyViolationError, C.withRetryableError) {}
+export class ComputeEnvironmentNotFound extends S.TaggedErrorClass<ComputeEnvironmentNotFound>()(
+  "ComputeEnvironmentNotFound",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { matches: "compute-environment/.* does not exist" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class ComputeEnvironmentNotValid extends S.TaggedErrorClass<ComputeEnvironmentNotValid>()(
+  "ComputeEnvironmentNotValid",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { matches: "must be (created and )?valid before attaching" },
+  }),
+).pipe(C.withDependencyViolationError, C.withRetryableError) {}
+export class JobQueueAlreadyExists extends S.TaggedErrorClass<JobQueueAlreadyExists>()(
+  "JobQueueAlreadyExists",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { includes: "already exists" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class JobQueueBeingModified extends S.TaggedErrorClass<JobQueueBeingModified>()(
+  "JobQueueBeingModified",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { includes: "is being modified" },
+  }),
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class JobQueueNotFound extends S.TaggedErrorClass<JobQueueNotFound>()(
+  "JobQueueNotFound",
+  { message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ClientException",
+    message: { matches: "job-queue/.* does not exist" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class ServerException extends S.TaggedErrorClass<ServerException>()(
+  "ServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
 export interface CancelJobRequest {
   jobId?: string;
   reason?: string;
@@ -130,8 +185,10 @@ export const CancelJobResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelJobResponse>;
 export type CEType = "MANAGED" | "UNMANAGED" | (string & {});
 export const CEType = /*@__PURE__*/ S.String;
+
 export type CEState = "ENABLED" | "DISABLED" | (string & {});
 export const CEState = /*@__PURE__*/ S.String;
+
 export type CRType =
   | "EC2"
   | "SPOT"
@@ -139,6 +196,7 @@ export type CRType =
   | "FARGATE_SPOT"
   | (string & {});
 export const CRType = /*@__PURE__*/ S.String;
+
 export type CRAllocationStrategy =
   | "BEST_FIT"
   | "BEST_FIT_PROGRESSIVE"
@@ -148,6 +206,7 @@ export type CRAllocationStrategy =
   | "SPOT_CAPACITY_OPTIMIZED_PRIORITIZED"
   | (string & {});
 export const CRAllocationStrategy = /*@__PURE__*/ S.String;
+
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export type TagsMap = { [key: string]: string | undefined };
@@ -157,6 +216,7 @@ export const TagsMap = /*@__PURE__*/ S.Record(
 );
 export type UserdataType = "EKS_BOOTSTRAP_SH" | "EKS_NODEADM" | (string & {});
 export const UserdataType = /*@__PURE__*/ S.String;
+
 export interface LaunchTemplateSpecificationOverride {
   launchTemplateId?: string;
   launchTemplateName?: string;
@@ -198,6 +258,9 @@ export const LaunchTemplateSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LaunchTemplateSpecification",
 }) as any as S.Schema<LaunchTemplateSpecification>;
+export type ImageType = string;
+export type ImageIdOverride = string;
+export type KubernetesVersion = string;
 export interface Ec2Configuration {
   imageType?: string;
   imageIdOverride?: string;
@@ -268,6 +331,8 @@ export const ComputeResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ComputeResource",
 }) as any as S.Schema<ComputeResource>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagrisTagsMap = { [key: string]: string | undefined };
 export const TagrisTagsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -373,6 +438,7 @@ export const CreateConsumableResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateConsumableResourceResponse>;
 export type JQState = "ENABLED" | "DISABLED" | (string & {});
 export const JQState = /*@__PURE__*/ S.String;
+
 export interface ComputeEnvironmentOrder {
   order?: number;
   computeEnvironment?: string;
@@ -412,13 +478,16 @@ export type JobQueueType =
   | "SAGEMAKER_TRAINING"
   | (string & {});
 export const JobQueueType = /*@__PURE__*/ S.String;
+
 export type JobStateTimeLimitActionsState = "RUNNABLE" | (string & {});
 export const JobStateTimeLimitActionsState = /*@__PURE__*/ S.String;
+
 export type JobStateTimeLimitActionsAction =
   | "CANCEL"
   | "TERMINATE"
   | (string & {});
 export const JobStateTimeLimitActionsAction = /*@__PURE__*/ S.String;
+
 export interface JobStateTimeLimitAction {
   reason?: string;
   state?: JobStateTimeLimitActionsState;
@@ -509,6 +578,7 @@ export type QuotaShareResourceSharingStrategy =
   | "LEND_AND_BORROW"
   | (string & {});
 export const QuotaShareResourceSharingStrategy = /*@__PURE__*/ S.String;
+
 export interface QuotaShareResourceSharingConfiguration {
   strategy?: QuotaShareResourceSharingStrategy;
   borrowLimit?: number;
@@ -527,6 +597,7 @@ export type QuotaShareInSharePreemptionState =
   | "DISABLED"
   | (string & {});
 export const QuotaShareInSharePreemptionState = /*@__PURE__*/ S.String;
+
 export interface QuotaSharePreemptionConfiguration {
   inSharePreemption?: QuotaShareInSharePreemptionState;
 }
@@ -537,6 +608,7 @@ export const QuotaSharePreemptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuotaSharePreemptionConfiguration>;
 export type QuotaShareState = "ENABLED" | "DISABLED" | (string & {});
 export const QuotaShareState = /*@__PURE__*/ S.String;
+
 export interface CreateQuotaShareRequest {
   quotaShareName?: string;
   jobQueue?: string;
@@ -585,6 +657,7 @@ export const CreateQuotaShareResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateQuotaShareResponse>;
 export type QuotaShareIdleResourceAssignmentStrategy = "FIFO" | (string & {});
 export const QuotaShareIdleResourceAssignmentStrategy = /*@__PURE__*/ S.String;
+
 export interface QuotaSharePolicy {
   idleResourceAssignmentStrategy?: QuotaShareIdleResourceAssignmentStrategy;
 }
@@ -662,8 +735,10 @@ export const CreateSchedulingPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSchedulingPolicyResponse>;
 export type ServiceEnvironmentType = "SAGEMAKER_TRAINING" | (string & {});
 export const ServiceEnvironmentType = /*@__PURE__*/ S.String;
+
 export type ServiceEnvironmentState = "ENABLED" | "DISABLED" | (string & {});
 export const ServiceEnvironmentState = /*@__PURE__*/ S.String;
+
 export interface CapacityLimit {
   maxCapacity?: number;
   capacityUnit?: string;
@@ -917,6 +992,8 @@ export type CEStatus =
   | "INVALID"
   | (string & {});
 export const CEStatus = /*@__PURE__*/ S.String;
+
+export type JobExecutionTimeoutMinutes = number;
 export interface UpdatePolicy {
   terminateJobsOnUpdate?: boolean;
   jobExecutionTimeoutMinutes?: number;
@@ -929,6 +1006,7 @@ export const UpdatePolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UpdatePolicy" }) as any as S.Schema<UpdatePolicy>;
 export type OrchestrationType = "ECS" | "EKS" | (string & {});
 export const OrchestrationType = /*@__PURE__*/ S.String;
+
 export interface ComputeEnvironmentDetail {
   computeEnvironmentName?: string;
   computeEnvironmentArn?: string;
@@ -1074,6 +1152,7 @@ export const ParametersMap = /*@__PURE__*/ S.Record(
 );
 export type RetryAction = "RETRY" | "EXIT" | (string & {});
 export const RetryAction = /*@__PURE__*/ S.String;
+
 export interface EvaluateOnExit {
   onStatusReason?: string;
   onReason?: string;
@@ -1108,8 +1187,10 @@ export const Host = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Host" }) as any as S.Schema<Host>;
 export type EFSTransitEncryption = "ENABLED" | "DISABLED" | (string & {});
 export const EFSTransitEncryption = /*@__PURE__*/ S.String;
+
 export type EFSAuthorizationConfigIAM = "ENABLED" | "DISABLED" | (string & {});
 export const EFSAuthorizationConfigIAM = /*@__PURE__*/ S.String;
+
 export interface EFSAuthorizationConfig {
   accessPointId?: string;
   iam?: EFSAuthorizationConfigIAM;
@@ -1211,6 +1292,7 @@ export type Ulimits = Ulimit[];
 export const Ulimits = /*@__PURE__*/ S.Array(Ulimit);
 export type ResourceType = "GPU" | "VCPU" | "MEMORY" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export interface ResourceRequirement {
   value?: string;
   type?: ResourceType;
@@ -1224,6 +1306,7 @@ export type ResourceRequirements = ResourceRequirement[];
 export const ResourceRequirements = /*@__PURE__*/ S.Array(ResourceRequirement);
 export type DeviceCgroupPermission = "READ" | "WRITE" | "MKNOD" | (string & {});
 export const DeviceCgroupPermission = /*@__PURE__*/ S.String;
+
 export type DeviceCgroupPermissions = DeviceCgroupPermission[];
 export const DeviceCgroupPermissions = /*@__PURE__*/ S.Array(
   DeviceCgroupPermission,
@@ -1287,6 +1370,7 @@ export type LogDriver =
   | "awsfirelens"
   | (string & {});
 export const LogDriver = /*@__PURE__*/ S.String;
+
 export type LogConfigurationOptionsMap = { [key: string]: string | undefined };
 export const LogConfigurationOptionsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1317,6 +1401,7 @@ export const LogConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LogConfiguration>;
 export type AssignPublicIp = "ENABLED" | "DISABLED" | (string & {});
 export const AssignPublicIp = /*@__PURE__*/ S.String;
+
 export interface NetworkConfiguration {
   assignPublicIp?: AssignPublicIp;
 }
@@ -1441,6 +1526,7 @@ export const TaskContainerDependencyList = /*@__PURE__*/ S.Array(
 );
 export type FirelensConfigurationType = "fluentd" | "fluentbit" | (string & {});
 export const FirelensConfigurationType = /*@__PURE__*/ S.String;
+
 export type FirelensConfigurationOptionsMap = {
   [key: string]: string | undefined;
 };
@@ -1572,6 +1658,7 @@ export type EksContainerEnvironmentVariables =
 export const EksContainerEnvironmentVariables = /*@__PURE__*/ S.Array(
   EksContainerEnvironmentVariable,
 );
+export type Quantity = string;
 export type EksLimits = { [key: string]: string | undefined };
 export const EksLimits = /*@__PURE__*/ S.Record(
   S.String,
@@ -1827,6 +1914,7 @@ export const NodeProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NodeProperties" }) as any as S.Schema<NodeProperties>;
 export type PlatformCapability = "EC2" | "FARGATE" | (string & {});
 export const PlatformCapability = /*@__PURE__*/ S.String;
+
 export type PlatformCapabilityList = PlatformCapability[];
 export const PlatformCapabilityList = /*@__PURE__*/ S.Array(PlatformCapability);
 export interface JobDefinition {
@@ -2117,6 +2205,7 @@ export type JQStatus =
   | "INVALID"
   | (string & {});
 export const JQStatus = /*@__PURE__*/ S.String;
+
 export interface JobQueueDetail {
   jobQueueName?: string;
   jobQueueArn?: string;
@@ -2208,6 +2297,7 @@ export type JobStatus =
   | "FAILED"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
 export interface NetworkInterface {
   attachmentId?: string;
   ipv6Address?: string;
@@ -2304,6 +2394,7 @@ export type AttemptDetails = AttemptDetail[];
 export const AttemptDetails = /*@__PURE__*/ S.Array(AttemptDetail);
 export type ArrayJobDependency = "N_TO_N" | "SEQUENTIAL" | (string & {});
 export const ArrayJobDependency = /*@__PURE__*/ S.String;
+
 export interface JobDependency {
   jobId?: string;
   type?: ArrayJobDependency;
@@ -2932,6 +3023,7 @@ export type QuotaShareStatus =
   | "DELETING"
   | (string & {});
 export const QuotaShareStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeQuotaShareResponse {
   quotaShareName?: string;
   quotaShareArn?: string;
@@ -3059,6 +3151,7 @@ export type ServiceEnvironmentStatus =
   | "INVALID"
   | (string & {});
 export const ServiceEnvironmentStatus = /*@__PURE__*/ S.String;
+
 export interface ServiceEnvironmentDetail {
   serviceEnvironmentName?: string;
   serviceEnvironmentArn?: string;
@@ -3122,6 +3215,7 @@ export const DescribeServiceJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeServiceJobRequest>;
 export type ServiceResourceIdName = "TrainingJobArn" | (string & {});
 export const ServiceResourceIdName = /*@__PURE__*/ S.String;
+
 export interface ServiceResourceId {
   name?: ServiceResourceIdName;
   value?: string;
@@ -3180,6 +3274,7 @@ export const LatestServiceJobAttempt = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LatestServiceJobAttempt>;
 export type ServiceJobRetryAction = "RETRY" | "EXIT" | (string & {});
 export const ServiceJobRetryAction = /*@__PURE__*/ S.String;
+
 export interface ServiceJobEvaluateOnExit {
   action?: ServiceJobRetryAction;
   onStatusReason?: string;
@@ -3210,6 +3305,7 @@ export const ServiceJobRetryStrategy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceJobRetryStrategy>;
 export type ServiceJobType = "SAGEMAKER_TRAINING" | (string & {});
 export const ServiceJobType = /*@__PURE__*/ S.String;
+
 export interface ServiceJobPreemptionConfiguration {
   preemptionRetriesBeforeTermination?: number;
 }
@@ -3261,6 +3357,7 @@ export type ServiceJobStatus =
   | "FAILED"
   | (string & {});
 export const ServiceJobStatus = /*@__PURE__*/ S.String;
+
 export interface ServiceJobTimeout {
   attemptDurationSeconds?: number;
 }
@@ -4104,6 +4201,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type JobDefinitionType = "container" | "multinode" | (string & {});
 export const JobDefinitionType = /*@__PURE__*/ S.String;
+
 export interface RegisterJobDefinitionRequest {
   jobDefinitionName?: string;
   type?: JobDefinitionType;
@@ -4380,6 +4478,7 @@ export const SubmitJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SubmitJobResponse",
 }) as any as S.Schema<SubmitJobResponse>;
+export type ClientRequestToken = string;
 export interface SubmitServiceJobRequest {
   jobName?: string;
   jobQueue?: string;
@@ -4552,6 +4651,7 @@ export type CRUpdateAllocationStrategy =
   | "SPOT_CAPACITY_OPTIMIZED_PRIORITIZED"
   | (string & {});
 export const CRUpdateAllocationStrategy = /*@__PURE__*/ S.String;
+
 export interface ComputeResourceUpdate {
   minvCpus?: number;
   maxvCpus?: number;
@@ -4868,76 +4968,6 @@ export const UpdateServiceJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateServiceJobResponse",
 }) as any as S.Schema<UpdateServiceJobResponse>;
-
-//# Errors
-export class ClientException extends S.TaggedErrorClass<ClientException>()(
-  "ClientException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServerException extends S.TaggedErrorClass<ServerException>()(
-  "ServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ComputeEnvironmentNotValid extends S.TaggedErrorClass<ComputeEnvironmentNotValid>()(
-  "ComputeEnvironmentNotValid",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ClientException",
-    message: { matches: "must be (created and )?valid before attaching" },
-  }),
-).pipe(C.withDependencyViolationError, C.withRetryableError) {}
-export class JobQueueAlreadyExists extends S.TaggedErrorClass<JobQueueAlreadyExists>()(
-  "JobQueueAlreadyExists",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ClientException",
-    message: { includes: "already exists" },
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class ComputeEnvironmentNotFound extends S.TaggedErrorClass<ComputeEnvironmentNotFound>()(
-  "ComputeEnvironmentNotFound",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ClientException",
-    message: { matches: "compute-environment/.* does not exist" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class ComputeEnvironmentInUse extends S.TaggedErrorClass<ComputeEnvironmentInUse>()(
-  "ComputeEnvironmentInUse",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ClientException",
-    message: { includes: "found existing JobQueue relationship" },
-  }),
-).pipe(C.withDependencyViolationError, C.withRetryableError) {}
-export class ComputeEnvironmentBeingModified extends S.TaggedErrorClass<ComputeEnvironmentBeingModified>()(
-  "ComputeEnvironmentBeingModified",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ClientException",
-    message: { includes: "is being modified" },
-  }),
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class JobQueueNotFound extends S.TaggedErrorClass<JobQueueNotFound>()(
-  "JobQueueNotFound",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ClientException",
-    message: { matches: "job-queue/.* does not exist" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class JobQueueBeingModified extends S.TaggedErrorClass<JobQueueBeingModified>()(
-  "JobQueueBeingModified",
-  { message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ClientException",
-    message: { includes: "is being modified" },
-  }),
-).pipe(C.withConflictError, C.withRetryableError) {}
-
-//# Operations
 export type CancelJobError = ClientException | ServerException | CommonErrors;
 /**
  * Cancels a job in an Batch job queue. Jobs that are in a `SUBMITTED`, `PENDING`, or `RUNNABLE` state are cancelled and the job status is updated to `FAILED`.
@@ -4968,6 +4998,7 @@ export const cancelJob: API.OperationMethod<
   retry: Retry,
   operationName: "CancelJob",
 }));
+
 export type CreateComputeEnvironmentError =
   | ClientException
   | ServerException
@@ -5013,6 +5044,7 @@ export const createComputeEnvironment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateComputeEnvironment",
 }));
+
 export type CreateConsumableResourceError =
   | ClientException
   | ServerException
@@ -5033,6 +5065,7 @@ export const createConsumableResource: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConsumableResource",
 }));
+
 export type CreateJobQueueError =
   | ClientException
   | ServerException
@@ -5067,6 +5100,7 @@ export const createJobQueue: API.OperationMethod<
   retry: Retry,
   operationName: "CreateJobQueue",
 }));
+
 export type CreateQuotaShareError =
   | ClientException
   | ServerException
@@ -5087,6 +5121,7 @@ export const createQuotaShare: API.OperationMethod<
   retry: Retry,
   operationName: "CreateQuotaShare",
 }));
+
 export type CreateSchedulingPolicyError =
   | ClientException
   | ServerException
@@ -5107,6 +5142,7 @@ export const createSchedulingPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSchedulingPolicy",
 }));
+
 export type CreateServiceEnvironmentError =
   | ClientException
   | ServerException
@@ -5127,6 +5163,7 @@ export const createServiceEnvironment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateServiceEnvironment",
 }));
+
 export type DeleteComputeEnvironmentError =
   | ClientException
   | ServerException
@@ -5163,6 +5200,7 @@ export const deleteComputeEnvironment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteComputeEnvironment",
 }));
+
 export type DeleteConsumableResourceError =
   | ClientException
   | ServerException
@@ -5183,6 +5221,7 @@ export const deleteConsumableResource: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConsumableResource",
 }));
+
 export type DeleteJobQueueError =
   | ClientException
   | ServerException
@@ -5215,6 +5254,7 @@ export const deleteJobQueue: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteJobQueue",
 }));
+
 export type DeleteQuotaShareError =
   | ClientException
   | ServerException
@@ -5237,6 +5277,7 @@ export const deleteQuotaShare: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteQuotaShare",
 }));
+
 export type DeleteSchedulingPolicyError =
   | ClientException
   | ServerException
@@ -5259,6 +5300,7 @@ export const deleteSchedulingPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSchedulingPolicy",
 }));
+
 export type DeleteServiceEnvironmentError =
   | ClientException
   | ServerException
@@ -5279,6 +5321,7 @@ export const deleteServiceEnvironment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteServiceEnvironment",
 }));
+
 export type DeregisterJobDefinitionError =
   | ClientException
   | ServerException
@@ -5300,6 +5343,7 @@ export const deregisterJobDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterJobDefinition",
 }));
+
 export type DescribeComputeEnvironmentsError =
   | ClientException
   | ServerException
@@ -5345,6 +5389,7 @@ export const describeComputeEnvironments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeConsumableResourceError =
   | ClientException
   | ServerException
@@ -5365,6 +5410,7 @@ export const describeConsumableResource: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConsumableResource",
 }));
+
 export type DescribeJobDefinitionsError =
   | ClientException
   | ServerException
@@ -5407,6 +5453,7 @@ export const describeJobDefinitions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeJobQueuesError =
   | ClientException
   | ServerException
@@ -5448,6 +5495,7 @@ export const describeJobQueues: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeJobsError =
   | ClientException
   | ServerException
@@ -5468,6 +5516,7 @@ export const describeJobs: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeJobs",
 }));
+
 export type DescribeQuotaShareError =
   | ClientException
   | ServerException
@@ -5488,6 +5537,7 @@ export const describeQuotaShare: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeQuotaShare",
 }));
+
 export type DescribeSchedulingPoliciesError =
   | ClientException
   | ServerException
@@ -5508,6 +5558,7 @@ export const describeSchedulingPolicies: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSchedulingPolicies",
 }));
+
 export type DescribeServiceEnvironmentsError =
   | ClientException
   | ServerException
@@ -5549,6 +5600,7 @@ export const describeServiceEnvironments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeServiceJobError =
   | ClientException
   | ServerException
@@ -5569,6 +5621,7 @@ export const describeServiceJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeServiceJob",
 }));
+
 export type GetJobQueueSnapshotError =
   | ClientException
   | ServerException
@@ -5592,6 +5645,7 @@ export const getJobQueueSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "GetJobQueueSnapshot",
 }));
+
 export type ListConsumableResourcesError =
   | ClientException
   | ServerException
@@ -5633,6 +5687,7 @@ export const listConsumableResources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListJobsError = ClientException | ServerException | CommonErrors;
 /**
  * Returns a list of Batch jobs.
@@ -5679,6 +5734,7 @@ export const listJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListJobsByConsumableResourceError =
   | ClientException
   | ServerException
@@ -5720,6 +5776,7 @@ export const listJobsByConsumableResource: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListQuotaSharesError =
   | ClientException
   | ServerException
@@ -5761,6 +5818,7 @@ export const listQuotaShares: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSchedulingPoliciesError =
   | ClientException
   | ServerException
@@ -5802,6 +5860,7 @@ export const listSchedulingPolicies: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListServiceJobsError =
   | ClientException
   | ServerException
@@ -5843,6 +5902,7 @@ export const listServiceJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | ClientException
   | ServerException
@@ -5864,6 +5924,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RegisterJobDefinitionError =
   | ClientException
   | ServerException
@@ -5884,6 +5945,7 @@ export const registerJobDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterJobDefinition",
 }));
+
 export type SubmitJobError = ClientException | ServerException | CommonErrors;
 /**
  * Submits an Batch job from a job definition. Parameters that are specified during SubmitJob override parameters defined in the job definition. vCPU and memory
@@ -5913,6 +5975,7 @@ export const submitJob: API.OperationMethod<
   retry: Retry,
   operationName: "SubmitJob",
 }));
+
 export type SubmitServiceJobError =
   | ClientException
   | ServerException
@@ -5933,6 +5996,7 @@ export const submitServiceJob: API.OperationMethod<
   retry: Retry,
   operationName: "SubmitServiceJob",
 }));
+
 export type TagResourceError = ClientException | ServerException | CommonErrors;
 /**
  * Associates the specified tags to a resource with the specified `resourceArn`.
@@ -5954,6 +6018,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TerminateJobError =
   | ClientException
   | ServerException
@@ -5977,6 +6042,7 @@ export const terminateJob: API.OperationMethod<
   retry: Retry,
   operationName: "TerminateJob",
 }));
+
 export type TerminateServiceJobError =
   | ClientException
   | ServerException
@@ -5997,6 +6063,7 @@ export const terminateServiceJob: API.OperationMethod<
   retry: Retry,
   operationName: "TerminateServiceJob",
 }));
+
 export type UntagResourceError =
   | ClientException
   | ServerException
@@ -6017,6 +6084,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateComputeEnvironmentError =
   | ClientException
   | ServerException
@@ -6044,6 +6112,7 @@ export const updateComputeEnvironment: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateComputeEnvironment",
 }));
+
 export type UpdateConsumableResourceError =
   | ClientException
   | ServerException
@@ -6064,6 +6133,7 @@ export const updateConsumableResource: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConsumableResource",
 }));
+
 export type UpdateJobQueueError =
   | ClientException
   | ServerException
@@ -6091,6 +6161,7 @@ export const updateJobQueue: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateJobQueue",
 }));
+
 export type UpdateQuotaShareError =
   | ClientException
   | ServerException
@@ -6111,6 +6182,7 @@ export const updateQuotaShare: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateQuotaShare",
 }));
+
 export type UpdateSchedulingPolicyError =
   | ClientException
   | ServerException
@@ -6131,6 +6203,7 @@ export const updateSchedulingPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSchedulingPolicy",
 }));
+
 export type UpdateServiceEnvironmentError =
   | ClientException
   | ServerException
@@ -6151,6 +6224,7 @@ export const updateServiceEnvironment: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateServiceEnvironment",
 }));
+
 export type UpdateServiceJobError =
   | ClientException
   | ServerException

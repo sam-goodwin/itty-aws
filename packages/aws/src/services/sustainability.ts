@@ -112,13 +112,26 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type Month = number;
-export type MaxResults = number;
-export type NextToken = string;
-export type ModelVersion = string;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.String },
+  T.all(T.HttpError(429), T.Retryable()),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export interface TimePeriod {
   Start: Date;
   End: Date;
@@ -135,6 +148,7 @@ export type Dimension =
   | "SERVICE"
   | (string & {});
 export const Dimension = /*@__PURE__*/ S.String;
+
 export type DimensionList = Dimension[];
 export const DimensionList = /*@__PURE__*/ S.Array(Dimension);
 export type DimensionValueList = string[];
@@ -162,6 +176,7 @@ export type EmissionsType =
   | "TOTAL_SCOPE_3_MBM_CARBON_EMISSIONS"
   | (string & {});
 export const EmissionsType = /*@__PURE__*/ S.String;
+
 export type EmissionsTypeList = EmissionsType[];
 export const EmissionsTypeList = /*@__PURE__*/ S.Array(EmissionsType);
 export type TimeGranularity =
@@ -172,6 +187,8 @@ export type TimeGranularity =
   | "MONTHLY"
   | (string & {});
 export const TimeGranularity = /*@__PURE__*/ S.String;
+
+export type Month = number;
 export interface GranularityConfiguration {
   FiscalYearStartMonth?: number;
 }
@@ -180,6 +197,8 @@ export const GranularityConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GranularityConfiguration",
 }) as any as S.Schema<GranularityConfiguration>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface GetEstimatedCarbonEmissionsRequest {
   TimePeriod: TimePeriod;
   GroupBy?: Dimension[];
@@ -218,8 +237,10 @@ export const DimensionsMap = /*@__PURE__*/ S.Record(
   Dimension,
   S.String.pipe(S.optional),
 );
+export type ModelVersion = string;
 export type EmissionsUnit = "MTCO2e" | (string & {});
 export const EmissionsUnit = /*@__PURE__*/ S.String;
+
 export interface Emissions {
   Value: number;
   Unit: EmissionsUnit;
@@ -315,30 +336,6 @@ export const GetEstimatedCarbonEmissionsDimensionValuesResponse =
   ).annotate({
     identifier: "GetEstimatedCarbonEmissionsDimensionValuesResponse",
   }) as any as S.Schema<GetEstimatedCarbonEmissionsDimensionValuesResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.String },
-  T.all(T.HttpError(429), T.Retryable()),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type GetEstimatedCarbonEmissionsError =
   | AccessDeniedException
   | InternalServerException
@@ -387,6 +384,7 @@ export const getEstimatedCarbonEmissions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetEstimatedCarbonEmissionsDimensionValuesError =
   | AccessDeniedException
   | InternalServerException

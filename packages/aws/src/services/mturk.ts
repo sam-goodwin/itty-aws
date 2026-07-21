@@ -89,18 +89,22 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ExceptionMessage = string;
-export type TurkErrorCode = string;
-export type EntityId = string;
-export type CustomerId = string;
-export type IdempotencyToken = string;
-export type CurrencyAmount = string;
-export type CountryParameters = string;
-export type PaginationToken = string;
-export type ResultSize = number;
-
-//# Schemas
+export class RequestError extends S.TaggedErrorClass<RequestError>()(
+  "RequestError",
+  { Message: S.optional(S.String), TurkErrorCode: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "RequestError", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ServiceFault extends S.TaggedErrorClass<ServiceFault>()(
+  "ServiceFault",
+  { Message: S.optional(S.String), TurkErrorCode: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ServiceFault", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
 export interface AcceptQualificationRequestRequest {
   QualificationRequestId: string;
   IntegerValue?: number;
@@ -129,6 +133,7 @@ export const AcceptQualificationRequestResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptQualificationRequestResponse",
 }) as any as S.Schema<AcceptQualificationRequestResponse>;
+export type EntityId = string;
 export interface ApproveAssignmentRequest {
   AssignmentId: string;
   RequesterFeedback?: string;
@@ -159,6 +164,7 @@ export const ApproveAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApproveAssignmentResponse",
 }) as any as S.Schema<ApproveAssignmentResponse>;
+export type CustomerId = string;
 export interface AssociateQualificationWithWorkerRequest {
   QualificationTypeId: string;
   WorkerId: string;
@@ -192,6 +198,7 @@ export const AssociateQualificationWithWorkerResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociateQualificationWithWorkerResponse",
 }) as any as S.Schema<AssociateQualificationWithWorkerResponse>;
+export type IdempotencyToken = string;
 export interface CreateAdditionalAssignmentsForHITRequest {
   HITId: string;
   NumberOfAdditionalAssignments: number;
@@ -222,6 +229,7 @@ export const CreateAdditionalAssignmentsForHITResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "CreateAdditionalAssignmentsForHITResponse",
   }) as any as S.Schema<CreateAdditionalAssignmentsForHITResponse>;
+export type CurrencyAmount = string;
 export type Comparator =
   | "LessThan"
   | "LessThanOrEqualTo"
@@ -235,8 +243,10 @@ export type Comparator =
   | "NotIn"
   | (string & {});
 export const Comparator = /*@__PURE__*/ S.String;
+
 export type IntegerList = number[];
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
+export type CountryParameters = string;
 export interface Locale {
   Country: string;
   Subdivision?: string;
@@ -252,6 +262,7 @@ export type HITAccessActions =
   | "DiscoverPreviewAndAccept"
   | (string & {});
 export const HITAccessActions = /*@__PURE__*/ S.String;
+
 export interface QualificationRequirement {
   QualificationTypeId: string;
   Comparator: Comparator;
@@ -384,6 +395,7 @@ export type HITStatus =
   | "Disposed"
   | (string & {});
 export const HITStatus = /*@__PURE__*/ S.String;
+
 export type HITReviewStatus =
   | "NotReviewed"
   | "MarkedForReview"
@@ -391,6 +403,7 @@ export type HITReviewStatus =
   | "ReviewedInappropriate"
   | (string & {});
 export const HITReviewStatus = /*@__PURE__*/ S.String;
+
 export interface HIT {
   HITId?: string;
   HITTypeId?: string;
@@ -535,6 +548,7 @@ export const CreateHITWithHITTypeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateHITWithHITTypeResponse>;
 export type QualificationTypeStatus = "Active" | "Inactive" | (string & {});
 export const QualificationTypeStatus = /*@__PURE__*/ S.String;
+
 export interface CreateQualificationTypeRequest {
   Name: string;
   Keywords?: string;
@@ -795,6 +809,7 @@ export type AssignmentStatus =
   | "Rejected"
   | (string & {});
 export const AssignmentStatus = /*@__PURE__*/ S.String;
+
 export interface Assignment {
   AssignmentId?: string;
   WorkerId?: string;
@@ -908,6 +923,7 @@ export const GetQualificationScoreRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetQualificationScoreRequest>;
 export type QualificationStatus = "Granted" | "Revoked" | (string & {});
 export const QualificationStatus = /*@__PURE__*/ S.String;
+
 export interface Qualification {
   QualificationTypeId?: string;
   WorkerId?: string;
@@ -960,6 +976,8 @@ export const GetQualificationTypeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetQualificationTypeResponse",
 }) as any as S.Schema<GetQualificationTypeResponse>;
+export type PaginationToken = string;
+export type ResultSize = number;
 export type AssignmentStatusList = AssignmentStatus[];
 export const AssignmentStatusList = /*@__PURE__*/ S.Array(AssignmentStatus);
 export interface ListAssignmentsForHITRequest {
@@ -1246,6 +1264,7 @@ export const ListQualificationTypesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListQualificationTypesResponse>;
 export type ReviewableHITStatus = "Reviewable" | "Reviewing" | (string & {});
 export const ReviewableHITStatus = /*@__PURE__*/ S.String;
+
 export interface ListReviewableHITsRequest {
   HITTypeId?: string;
   Status?: ReviewableHITStatus;
@@ -1288,6 +1307,7 @@ export const ListReviewableHITsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListReviewableHITsResponse>;
 export type ReviewPolicyLevel = "Assignment" | "HIT" | (string & {});
 export const ReviewPolicyLevel = /*@__PURE__*/ S.String;
+
 export type ReviewPolicyLevelList = ReviewPolicyLevel[];
 export const ReviewPolicyLevelList = /*@__PURE__*/ S.Array(ReviewPolicyLevel);
 export interface ListReviewPolicyResultsForHITRequest {
@@ -1350,6 +1370,7 @@ export type ReviewActionStatus =
   | "Cancelled"
   | (string & {});
 export const ReviewActionStatus = /*@__PURE__*/ S.String;
+
 export interface ReviewActionDetail {
   ActionId?: string;
   ActionName?: string;
@@ -1527,6 +1548,7 @@ export type NotifyWorkersFailureCode =
   | "HardFailure"
   | (string & {});
 export const NotifyWorkersFailureCode = /*@__PURE__*/ S.String;
+
 export interface NotifyWorkersFailureStatus {
   NotifyWorkersFailureCode?: NotifyWorkersFailureCode;
   NotifyWorkersFailureMessage?: string;
@@ -1644,6 +1666,7 @@ export const SendBonusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SendBonusResponse>;
 export type NotificationTransport = "Email" | "SQS" | "SNS" | (string & {});
 export const NotificationTransport = /*@__PURE__*/ S.String;
+
 export type EventType =
   | "AssignmentAccepted"
   | "AssignmentAbandoned"
@@ -1659,6 +1682,7 @@ export type EventType =
   | "Ping"
   | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
+
 export type EventTypeList = EventType[];
 export const EventTypeList = /*@__PURE__*/ S.Array(EventType);
 export interface NotificationSpecification {
@@ -1857,26 +1881,8 @@ export const UpdateQualificationTypeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateQualificationTypeResponse",
 }) as any as S.Schema<UpdateQualificationTypeResponse>;
-
-//# Errors
-export class RequestError extends S.TaggedErrorClass<RequestError>()(
-  "RequestError",
-  { Message: S.optional(S.String), TurkErrorCode: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "RequestError", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ServiceFault extends S.TaggedErrorClass<ServiceFault>()(
-  "ServiceFault",
-  { Message: S.optional(S.String), TurkErrorCode: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ServiceFault", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-
-//# Operations
+export type ExceptionMessage = string;
+export type TurkErrorCode = string;
 export type AcceptQualificationRequestError =
   | RequestError
   | ServiceFault
@@ -1902,6 +1908,7 @@ export const acceptQualificationRequest: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptQualificationRequest",
 }));
+
 export type ApproveAssignmentError = RequestError | ServiceFault | CommonErrors;
 /**
  * The `ApproveAssignment` operation approves the results of a completed assignment.
@@ -1935,6 +1942,7 @@ export const approveAssignment: API.OperationMethod<
   retry: Retry,
   operationName: "ApproveAssignment",
 }));
+
 export type AssociateQualificationWithWorkerError =
   | RequestError
   | ServiceFault
@@ -1967,6 +1975,7 @@ export const associateQualificationWithWorker: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateQualificationWithWorker",
 }));
+
 export type CreateAdditionalAssignmentsForHITError =
   | RequestError
   | ServiceFault
@@ -2000,6 +2009,7 @@ export const createAdditionalAssignmentsForHIT: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAdditionalAssignmentsForHIT",
 }));
+
 export type CreateHITError = RequestError | ServiceFault | CommonErrors;
 /**
  * The `CreateHIT` operation creates a new Human Intelligence Task (HIT).
@@ -2030,6 +2040,7 @@ export const createHIT: API.OperationMethod<
   retry: Retry,
   operationName: "CreateHIT",
 }));
+
 export type CreateHITTypeError = RequestError | ServiceFault | CommonErrors;
 /**
  * The `CreateHITType` operation creates a new HIT type. This operation
@@ -2050,6 +2061,7 @@ export const createHITType: API.OperationMethod<
   retry: Retry,
   operationName: "CreateHITType",
 }));
+
 export type CreateHITWithHITTypeError =
   | RequestError
   | ServiceFault
@@ -2081,6 +2093,7 @@ export const createHITWithHITType: API.OperationMethod<
   retry: Retry,
   operationName: "CreateHITWithHITType",
 }));
+
 export type CreateQualificationTypeError =
   | RequestError
   | ServiceFault
@@ -2105,6 +2118,7 @@ export const createQualificationType: API.OperationMethod<
   retry: Retry,
   operationName: "CreateQualificationType",
 }));
+
 export type CreateWorkerBlockError = RequestError | ServiceFault | CommonErrors;
 /**
  * The `CreateWorkerBlock` operation allows you to prevent a Worker from working on your HITs. For example, you can block a Worker who is producing poor quality work. You can block up to 100,000 Workers.
@@ -2122,6 +2136,7 @@ export const createWorkerBlock: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWorkerBlock",
 }));
+
 export type DeleteHITError = RequestError | ServiceFault | CommonErrors;
 /**
  * The `DeleteHIT` operation is used to delete HIT that is no longer needed.
@@ -2155,6 +2170,7 @@ export const deleteHIT: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteHIT",
 }));
+
 export type DeleteQualificationTypeError =
   | RequestError
   | ServiceFault
@@ -2191,6 +2207,7 @@ export const deleteQualificationType: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteQualificationType",
 }));
+
 export type DeleteWorkerBlockError = RequestError | ServiceFault | CommonErrors;
 /**
  * The `DeleteWorkerBlock` operation allows you to reinstate a blocked Worker to work on your HITs. This operation reverses the effects of the CreateWorkerBlock operation. You need the Worker ID to use this operation. If the Worker ID is missing or invalid, this operation fails and returns the message “WorkerId is invalid.” If the specified Worker is not blocked, this operation returns successfully.
@@ -2208,6 +2225,7 @@ export const deleteWorkerBlock: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWorkerBlock",
 }));
+
 export type DisassociateQualificationFromWorkerError =
   | RequestError
   | ServiceFault
@@ -2232,6 +2250,7 @@ export const disassociateQualificationFromWorker: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateQualificationFromWorker",
 }));
+
 export type GetAccountBalanceError = RequestError | ServiceFault | CommonErrors;
 /**
  * The `GetAccountBalance` operation retrieves the Prepaid HITs balance in your Amazon Mechanical Turk account if you are a Prepaid Requester.
@@ -2251,6 +2270,7 @@ export const getAccountBalance: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountBalance",
 }));
+
 export type GetAssignmentError = RequestError | ServiceFault | CommonErrors;
 /**
  * The `GetAssignment` operation retrieves the details of the specified Assignment.
@@ -2268,6 +2288,7 @@ export const getAssignment: API.OperationMethod<
   retry: Retry,
   operationName: "GetAssignment",
 }));
+
 export type GetFileUploadURLError = RequestError | ServiceFault | CommonErrors;
 /**
  * The
@@ -2299,6 +2320,7 @@ export const getFileUploadURL: API.OperationMethod<
   retry: Retry,
   operationName: "GetFileUploadURL",
 }));
+
 export type GetHITError = RequestError | ServiceFault | CommonErrors;
 /**
  * The `GetHIT` operation retrieves the details of the specified HIT.
@@ -2316,6 +2338,7 @@ export const getHIT: API.OperationMethod<
   retry: Retry,
   operationName: "GetHIT",
 }));
+
 export type GetQualificationScoreError =
   | RequestError
   | ServiceFault
@@ -2347,6 +2370,7 @@ export const getQualificationScore: API.OperationMethod<
   retry: Retry,
   operationName: "GetQualificationScore",
 }));
+
 export type GetQualificationTypeError =
   | RequestError
   | ServiceFault
@@ -2367,6 +2391,7 @@ export const getQualificationType: API.OperationMethod<
   retry: Retry,
   operationName: "GetQualificationType",
 }));
+
 export type ListAssignmentsForHITError =
   | RequestError
   | ServiceFault
@@ -2431,6 +2456,7 @@ export const listAssignmentsForHIT: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListBonusPaymentsError = RequestError | ServiceFault | CommonErrors;
 /**
  * The
@@ -2471,6 +2497,7 @@ export const listBonusPayments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListHITsError = RequestError | ServiceFault | CommonErrors;
 /**
  * The
@@ -2512,6 +2539,7 @@ export const listHITs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListHITsForQualificationTypeError =
   | RequestError
   | ServiceFault
@@ -2555,6 +2583,7 @@ export const listHITsForQualificationType: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListQualificationRequestsError =
   | RequestError
   | ServiceFault
@@ -2600,6 +2629,7 @@ export const listQualificationRequests: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListQualificationTypesError =
   | RequestError
   | ServiceFault
@@ -2643,6 +2673,7 @@ export const listQualificationTypes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListReviewableHITsError =
   | RequestError
   | ServiceFault
@@ -2684,6 +2715,7 @@ export const listReviewableHITs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListReviewPolicyResultsForHITError =
   | RequestError
   | ServiceFault
@@ -2728,6 +2760,7 @@ export const listReviewPolicyResultsForHIT: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListWorkerBlocksError = RequestError | ServiceFault | CommonErrors;
 /**
  * The `ListWorkersBlocks` operation retrieves a list of Workers who are blocked from working on your HITs.
@@ -2765,6 +2798,7 @@ export const listWorkerBlocks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListWorkersWithQualificationTypeError =
   | RequestError
   | ServiceFault
@@ -2806,6 +2840,7 @@ export const listWorkersWithQualificationType: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type NotifyWorkersError = RequestError | ServiceFault | CommonErrors;
 /**
  * The
@@ -2830,6 +2865,7 @@ export const notifyWorkers: API.OperationMethod<
   retry: Retry,
   operationName: "NotifyWorkers",
 }));
+
 export type RejectAssignmentError = RequestError | ServiceFault | CommonErrors;
 /**
  * The `RejectAssignment` operation rejects the results of a completed assignment.
@@ -2855,6 +2891,7 @@ export const rejectAssignment: API.OperationMethod<
   retry: Retry,
   operationName: "RejectAssignment",
 }));
+
 export type RejectQualificationRequestError =
   | RequestError
   | ServiceFault
@@ -2880,6 +2917,7 @@ export const rejectQualificationRequest: API.OperationMethod<
   retry: Retry,
   operationName: "RejectQualificationRequest",
 }));
+
 export type SendBonusError = RequestError | ServiceFault | CommonErrors;
 /**
  * The
@@ -2908,6 +2946,7 @@ export const sendBonus: API.OperationMethod<
   retry: Retry,
   operationName: "SendBonus",
 }));
+
 export type SendTestEventNotificationError =
   | RequestError
   | ServiceFault
@@ -2932,6 +2971,7 @@ export const sendTestEventNotification: API.OperationMethod<
   retry: Retry,
   operationName: "SendTestEventNotification",
 }));
+
 export type UpdateExpirationForHITError =
   | RequestError
   | ServiceFault
@@ -2953,6 +2993,7 @@ export const updateExpirationForHIT: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateExpirationForHIT",
 }));
+
 export type UpdateHITReviewStatusError =
   | RequestError
   | ServiceFault
@@ -2975,6 +3016,7 @@ export const updateHITReviewStatus: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateHITReviewStatus",
 }));
+
 export type UpdateHITTypeOfHITError =
   | RequestError
   | ServiceFault
@@ -3000,6 +3042,7 @@ export const updateHITTypeOfHIT: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateHITTypeOfHIT",
 }));
+
 export type UpdateNotificationSettingsError =
   | RequestError
   | ServiceFault
@@ -3029,6 +3072,7 @@ export const updateNotificationSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNotificationSettings",
 }));
+
 export type UpdateQualificationTypeError =
   | RequestError
   | ServiceFault

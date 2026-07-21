@@ -82,23 +82,69 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Message: S.optional(S.String),
+    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServiceFault extends S.TaggedErrorClass<InternalServiceFault>()(
+  "InternalServiceFault",
+  {
+    Message: S.optional(S.String),
+    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  {
+    message: S.optional(S.String),
+    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class MissingRequiredParameterException extends S.TaggedErrorClass<MissingRequiredParameterException>()(
+  "MissingRequiredParameterException",
+  {
+    message: S.optional(S.String),
+    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.optional(S.String),
+    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.optional(S.String),
+    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  {},
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type LabelTemplate = string;
-export type ResourceIdentifier = string;
-export type TagKey = string;
-export type TagValue = string;
-export type LogsFilter = string;
-export type MetricsFilter = string;
-export type SinkName = string;
-export type IncludeTags = boolean;
-export type ListAttachedLinksMaxResults = number;
-export type NextToken = string;
-export type ListLinksMaxResults = number;
-export type ListSinksMaxResults = number;
-export type Arn = string;
-export type SinkPolicy = string;
-
-//# Schemas
 export type ResourceType =
   | "AWS::CloudWatch::Metric"
   | "AWS::Logs::LogGroup"
@@ -109,13 +155,18 @@ export type ResourceType =
   | "AWS::ApplicationSignals::ServiceLevelObjective"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export type ResourceTypesInput = ResourceType[];
 export const ResourceTypesInput = /*@__PURE__*/ S.Array(ResourceType);
+export type ResourceIdentifier = string;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMapInput = { [key: string]: string | undefined };
 export const TagMapInput = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type LogsFilter = string;
 export interface LogGroupConfiguration {
   Filter: string;
 }
@@ -124,6 +175,7 @@ export const LogGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LogGroupConfiguration",
 }) as any as S.Schema<LogGroupConfiguration>;
+export type MetricsFilter = string;
 export interface MetricConfiguration {
   Filter: string;
 }
@@ -202,6 +254,7 @@ export const CreateLinkOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLinkOutput",
 }) as any as S.Schema<CreateLinkOutput>;
+export type SinkName = string;
 export interface CreateSinkInput {
   Name: string;
   Tags?: { [key: string]: string | undefined };
@@ -282,6 +335,7 @@ export const DeleteSinkOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSinkOutput",
 }) as any as S.Schema<DeleteSinkOutput>;
+export type IncludeTags = boolean;
 export interface GetLinkInput {
   Identifier: string;
   IncludeTags?: boolean;
@@ -381,6 +435,8 @@ export const GetSinkPolicyOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSinkPolicyOutput",
 }) as any as S.Schema<GetSinkPolicyOutput>;
+export type ListAttachedLinksMaxResults = number;
+export type NextToken = string;
 export interface ListAttachedLinksInput {
   MaxResults?: number;
   NextToken?: string;
@@ -431,6 +487,7 @@ export const ListAttachedLinksOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAttachedLinksOutput",
 }) as any as S.Schema<ListAttachedLinksOutput>;
+export type ListLinksMaxResults = number;
 export interface ListLinksInput {
   MaxResults?: number;
   NextToken?: string;
@@ -477,6 +534,7 @@ export const ListLinksOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListLinksOutput",
 }) as any as S.Schema<ListLinksOutput>;
+export type ListSinksMaxResults = number;
 export interface ListSinksInput {
   MaxResults?: number;
   NextToken?: string;
@@ -519,6 +577,7 @@ export const ListSinksOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSinksOutput",
 }) as any as S.Schema<ListSinksOutput>;
+export type Arn = string;
 export interface ListTagsForResourceInput {
   ResourceArn: string;
 }
@@ -544,6 +603,7 @@ export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
+export type SinkPolicy = string;
 export interface PutSinkPolicyInput {
   SinkIdentifier: string;
   Policy: string;
@@ -681,72 +741,6 @@ export const UpdateLinkOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateLinkOutput",
 }) as any as S.Schema<UpdateLinkOutput>;
-
-//# Errors
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Message: S.optional(S.String),
-    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServiceFault extends S.TaggedErrorClass<InternalServiceFault>()(
-  "InternalServiceFault",
-  {
-    Message: S.optional(S.String),
-    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  {
-    message: S.optional(S.String),
-    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class MissingRequiredParameterException extends S.TaggedErrorClass<MissingRequiredParameterException>()(
-  "MissingRequiredParameterException",
-  {
-    message: S.optional(S.String),
-    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.optional(S.String),
-    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  {},
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    amznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateLinkError =
   | ConflictException
   | InternalServiceFault
@@ -786,6 +780,7 @@ export const createLink: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLink",
 }));
+
 export type CreateSinkError =
   | ConflictException
   | InternalServiceFault
@@ -821,6 +816,7 @@ export const createSink: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSink",
 }));
+
 export type DeleteLinkError =
   | InternalServiceFault
   | InvalidParameterException
@@ -850,6 +846,7 @@ export const deleteLink: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLink",
 }));
+
 export type DeleteSinkError =
   | ConflictException
   | InternalServiceFault
@@ -881,6 +878,7 @@ export const deleteSink: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSink",
 }));
+
 export type GetLinkError =
   | InternalServiceFault
   | InvalidParameterException
@@ -912,6 +910,7 @@ export const getLink: API.OperationMethod<
   retry: Retry,
   operationName: "GetLink",
 }));
+
 export type GetSinkError =
   | InternalServiceFault
   | InvalidParameterException
@@ -943,6 +942,7 @@ export const getSink: API.OperationMethod<
   retry: Retry,
   operationName: "GetSink",
 }));
+
 export type GetSinkPolicyError =
   | InternalServiceFault
   | InvalidParameterException
@@ -972,6 +972,7 @@ export const getSinkPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetSinkPolicy",
 }));
+
 export type ListAttachedLinksError =
   | InternalServiceFault
   | InvalidParameterException
@@ -1026,6 +1027,7 @@ export const listAttachedLinks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLinksError =
   | InternalServiceFault
   | InvalidParameterException
@@ -1076,6 +1078,7 @@ export const listLinks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSinksError =
   | InternalServiceFault
   | InvalidParameterException
@@ -1124,6 +1127,7 @@ export const listSinks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | ResourceNotFoundException
   | ValidationException
@@ -1149,6 +1153,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutSinkPolicyError =
   | InternalServiceFault
   | InvalidParameterException
@@ -1194,6 +1199,7 @@ export const putSinkPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutSinkPolicy",
 }));
+
 export type TagResourceError =
   | ResourceNotFoundException
   | TooManyTagsException
@@ -1231,6 +1237,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | ResourceNotFoundException
   | ValidationException
@@ -1258,6 +1265,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateLinkError =
   | InternalServiceFault
   | InvalidParameterException

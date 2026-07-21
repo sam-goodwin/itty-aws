@@ -84,10 +84,26 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type __integerMin1Max25 = number;
-
-//# Schemas
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class GatewayTimeoutException extends S.TaggedErrorClass<GatewayTimeoutException>()(
+  "GatewayTimeoutException",
+  { Message: S.optional(S.String) },
+  T.HttpError(504),
+).pipe(C.withTimeoutError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { LimitType: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export interface CloneBackendRequest {
   AppId: string;
   BackendEnvironmentName: string;
@@ -224,6 +240,7 @@ export type Mode =
   | "OPENID_CONNECT"
   | (string & {});
 export const Mode = /*@__PURE__*/ S.String;
+
 export interface BackendAPIAppSyncAuthSettings {
   CognitoUserPoolId?: string;
   Description?: string;
@@ -281,6 +298,7 @@ export type ResolutionStrategy =
   | "NONE"
   | (string & {});
 export const ResolutionStrategy = /*@__PURE__*/ S.String;
+
 export interface BackendAPIConflictResolution {
   ResolutionStrategy?: ResolutionStrategy;
 }
@@ -387,6 +405,7 @@ export type AuthResources =
   | "IDENTITY_POOL_AND_USER_POOL"
   | (string & {});
 export const AuthResources = /*@__PURE__*/ S.String;
+
 export interface CreateBackendAuthIdentityPoolConfig {
   IdentityPoolName?: string;
   UnauthenticatedLogin?: boolean;
@@ -406,8 +425,10 @@ export const CreateBackendAuthIdentityPoolConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBackendAuthIdentityPoolConfig>;
 export type Service = "COGNITO" | (string & {});
 export const Service = /*@__PURE__*/ S.String;
+
 export type DeliveryMethod = "EMAIL" | "SMS" | (string & {});
 export const DeliveryMethod = /*@__PURE__*/ S.String;
+
 export interface EmailSettings {
   EmailMessage?: string;
   EmailSubject?: string;
@@ -454,8 +475,10 @@ export const CreateBackendAuthForgotPasswordConfig = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateBackendAuthForgotPasswordConfig>;
 export type MFAMode = "ON" | "OFF" | "OPTIONAL" | (string & {});
 export const MFAMode = /*@__PURE__*/ S.String;
+
 export type MfaTypesElement = "SMS" | "TOTP" | (string & {});
 export const MfaTypesElement = /*@__PURE__*/ S.String;
+
 export type ListOfMfaTypesElement = MfaTypesElement[];
 export const ListOfMfaTypesElement = /*@__PURE__*/ S.Array(MfaTypesElement);
 export interface Settings {
@@ -482,6 +505,7 @@ export const CreateBackendAuthMFAConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBackendAuthMFAConfig>;
 export type OAuthGrantType = "CODE" | "IMPLICIT" | (string & {});
 export const OAuthGrantType = /*@__PURE__*/ S.String;
+
 export type OAuthScopesElement =
   | "PHONE"
   | "EMAIL"
@@ -490,6 +514,7 @@ export type OAuthScopesElement =
   | "AWS_COGNITO_SIGNIN_USER_ADMIN"
   | (string & {});
 export const OAuthScopesElement = /*@__PURE__*/ S.String;
+
 export type ListOfOAuthScopesElement = OAuthScopesElement[];
 export const ListOfOAuthScopesElement =
   /*@__PURE__*/ S.Array(OAuthScopesElement);
@@ -584,6 +609,7 @@ export type AdditionalConstraintsElement =
   | "REQUIRE_UPPERCASE"
   | (string & {});
 export const AdditionalConstraintsElement = /*@__PURE__*/ S.String;
+
 export type ListOfAdditionalConstraintsElement = AdditionalConstraintsElement[];
 export const ListOfAdditionalConstraintsElement = /*@__PURE__*/ S.Array(
   AdditionalConstraintsElement,
@@ -626,6 +652,7 @@ export type RequiredSignUpAttributesElement =
   | "ZONE_INFO"
   | (string & {});
 export const RequiredSignUpAttributesElement = /*@__PURE__*/ S.String;
+
 export type ListOfRequiredSignUpAttributesElement =
   RequiredSignUpAttributesElement[];
 export const ListOfRequiredSignUpAttributesElement = /*@__PURE__*/ S.Array(
@@ -638,6 +665,7 @@ export type SignInMethod =
   | "USERNAME"
   | (string & {});
 export const SignInMethod = /*@__PURE__*/ S.String;
+
 export interface CreateBackendAuthVerificationMessageConfig {
   DeliveryMethod?: DeliveryMethod;
   EmailSettings?: EmailSettings;
@@ -831,6 +859,7 @@ export type AuthenticatedElement =
   | "DELETE"
   | (string & {});
 export const AuthenticatedElement = /*@__PURE__*/ S.String;
+
 export type ListOfAuthenticatedElement = AuthenticatedElement[];
 export const ListOfAuthenticatedElement =
   /*@__PURE__*/ S.Array(AuthenticatedElement);
@@ -840,6 +869,7 @@ export type UnAuthenticatedElement =
   | "DELETE"
   | (string & {});
 export const UnAuthenticatedElement = /*@__PURE__*/ S.String;
+
 export type ListOfUnAuthenticatedElement = UnAuthenticatedElement[];
 export const ListOfUnAuthenticatedElement = /*@__PURE__*/ S.Array(
   UnAuthenticatedElement,
@@ -863,6 +893,7 @@ export const BackendStoragePermissions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BackendStoragePermissions>;
 export type ServiceName = "S3" | (string & {});
 export const ServiceName = /*@__PURE__*/ S.String;
+
 export interface CreateBackendStorageResourceConfig {
   BucketName?: string;
   Permissions?: BackendStoragePermissions;
@@ -1462,6 +1493,7 @@ export const GetBackendAPIModelsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBackendAPIModelsRequest>;
 export type Status = "LATEST" | "STALE" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface GetBackendAPIModelsResponse {
   Models?: string;
   Status?: Status;
@@ -1884,6 +1916,7 @@ export const ImportBackendStorageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportBackendStorageResponse",
 }) as any as S.Schema<ImportBackendStorageResponse>;
+export type __integerMin1Max25 = number;
 export interface ListBackendJobsRequest {
   AppId: string;
   BackendEnvironmentName: string;
@@ -2605,30 +2638,6 @@ export const UpdateBackendStorageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateBackendStorageResponse",
 }) as any as S.Schema<UpdateBackendStorageResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class GatewayTimeoutException extends S.TaggedErrorClass<GatewayTimeoutException>()(
-  "GatewayTimeoutException",
-  { Message: S.optional(S.String) },
-  T.HttpError(504),
-).pipe(C.withTimeoutError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { LimitType: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-
-//# Operations
 export type CloneBackendError =
   | BadRequestException
   | GatewayTimeoutException
@@ -2656,6 +2665,7 @@ export const cloneBackend: API.OperationMethod<
   retry: Retry,
   operationName: "CloneBackend",
 }));
+
 export type CreateBackendError =
   | BadRequestException
   | GatewayTimeoutException
@@ -2683,6 +2693,7 @@ export const createBackend: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBackend",
 }));
+
 export type CreateBackendAPIError =
   | BadRequestException
   | GatewayTimeoutException
@@ -2710,6 +2721,7 @@ export const createBackendAPI: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBackendAPI",
 }));
+
 export type CreateBackendAuthError =
   | BadRequestException
   | GatewayTimeoutException
@@ -2737,6 +2749,7 @@ export const createBackendAuth: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBackendAuth",
 }));
+
 export type CreateBackendConfigError =
   | BadRequestException
   | GatewayTimeoutException
@@ -2764,6 +2777,7 @@ export const createBackendConfig: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBackendConfig",
 }));
+
 export type CreateBackendStorageError =
   | BadRequestException
   | GatewayTimeoutException
@@ -2791,6 +2805,7 @@ export const createBackendStorage: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBackendStorage",
 }));
+
 export type CreateTokenError =
   | BadRequestException
   | GatewayTimeoutException
@@ -2818,6 +2833,7 @@ export const createToken: API.OperationMethod<
   retry: Retry,
   operationName: "CreateToken",
 }));
+
 export type DeleteBackendError =
   | BadRequestException
   | GatewayTimeoutException
@@ -2845,6 +2861,7 @@ export const deleteBackend: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBackend",
 }));
+
 export type DeleteBackendAPIError =
   | BadRequestException
   | GatewayTimeoutException
@@ -2872,6 +2889,7 @@ export const deleteBackendAPI: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBackendAPI",
 }));
+
 export type DeleteBackendAuthError =
   | BadRequestException
   | GatewayTimeoutException
@@ -2899,6 +2917,7 @@ export const deleteBackendAuth: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBackendAuth",
 }));
+
 export type DeleteBackendStorageError =
   | BadRequestException
   | GatewayTimeoutException
@@ -2926,6 +2945,7 @@ export const deleteBackendStorage: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBackendStorage",
 }));
+
 export type DeleteTokenError =
   | BadRequestException
   | GatewayTimeoutException
@@ -2953,6 +2973,7 @@ export const deleteToken: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteToken",
 }));
+
 export type GenerateBackendAPIModelsError =
   | BadRequestException
   | GatewayTimeoutException
@@ -2980,6 +3001,7 @@ export const generateBackendAPIModels: API.OperationMethod<
   retry: Retry,
   operationName: "GenerateBackendAPIModels",
 }));
+
 export type GetBackendError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3007,6 +3029,7 @@ export const getBackend: API.OperationMethod<
   retry: Retry,
   operationName: "GetBackend",
 }));
+
 export type GetBackendAPIError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3034,6 +3057,7 @@ export const getBackendAPI: API.OperationMethod<
   retry: Retry,
   operationName: "GetBackendAPI",
 }));
+
 export type GetBackendAPIModelsError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3061,6 +3085,7 @@ export const getBackendAPIModels: API.OperationMethod<
   retry: Retry,
   operationName: "GetBackendAPIModels",
 }));
+
 export type GetBackendAuthError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3088,6 +3113,7 @@ export const getBackendAuth: API.OperationMethod<
   retry: Retry,
   operationName: "GetBackendAuth",
 }));
+
 export type GetBackendJobError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3115,6 +3141,7 @@ export const getBackendJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetBackendJob",
 }));
+
 export type GetBackendStorageError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3142,6 +3169,7 @@ export const getBackendStorage: API.OperationMethod<
   retry: Retry,
   operationName: "GetBackendStorage",
 }));
+
 export type GetTokenError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3169,6 +3197,7 @@ export const getToken: API.OperationMethod<
   retry: Retry,
   operationName: "GetToken",
 }));
+
 export type ImportBackendAuthError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3196,6 +3225,7 @@ export const importBackendAuth: API.OperationMethod<
   retry: Retry,
   operationName: "ImportBackendAuth",
 }));
+
 export type ImportBackendStorageError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3223,6 +3253,7 @@ export const importBackendStorage: API.OperationMethod<
   retry: Retry,
   operationName: "ImportBackendStorage",
 }));
+
 export type ListBackendJobsError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3250,6 +3281,7 @@ export const listBackendJobs: API.OperationMethod<
   retry: Retry,
   operationName: "ListBackendJobs",
 }));
+
 export type ListS3BucketsError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3277,6 +3309,7 @@ export const listS3Buckets: API.OperationMethod<
   retry: Retry,
   operationName: "ListS3Buckets",
 }));
+
 export type RemoveAllBackendsError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3304,6 +3337,7 @@ export const removeAllBackends: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveAllBackends",
 }));
+
 export type RemoveBackendConfigError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3331,6 +3365,7 @@ export const removeBackendConfig: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveBackendConfig",
 }));
+
 export type UpdateBackendAPIError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3358,6 +3393,7 @@ export const updateBackendAPI: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBackendAPI",
 }));
+
 export type UpdateBackendAuthError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3385,6 +3421,7 @@ export const updateBackendAuth: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBackendAuth",
 }));
+
 export type UpdateBackendConfigError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3412,6 +3449,7 @@ export const updateBackendConfig: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBackendConfig",
 }));
+
 export type UpdateBackendJobError =
   | BadRequestException
   | GatewayTimeoutException
@@ -3439,6 +3477,7 @@ export const updateBackendJob: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBackendJob",
 }));
+
 export type UpdateBackendStorageError =
   | BadRequestException
   | GatewayTimeoutException

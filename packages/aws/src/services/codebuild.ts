@@ -87,25 +87,31 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccountLimitExceededException extends S.TaggedErrorClass<AccountLimitExceededException>()(
+  "AccountLimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class AccountSuspendedException extends S.TaggedErrorClass<AccountSuspendedException>()(
+  "AccountSuspendedException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  { message: S.optional(S.String) },
+) {}
+export class OAuthProviderException extends S.TaggedErrorClass<OAuthProviderException>()(
+  "OAuthProviderException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+) {}
 export type NonEmptyString = string;
-export type GitCloneDepth = number;
-export type SensitiveNonEmptyString = string | redacted.Redacted<string>;
-export type FleetName = string;
-export type FleetCapacity = number;
-export type KeyInput = string;
-export type ValueInput = string;
-export type ProjectName = string;
-export type ProjectDescription = string;
-export type BuildTimeOut = number;
-export type TimeOut = number;
-export type ReportGroupName = string;
-export type Percentage = number;
-export type NonNegativeInt = number;
-export type PageSize = number;
-export type SensitiveString = string | redacted.Redacted<string>;
-
-//# Schemas
 export type BuildIds = string[];
 export const BuildIds = /*@__PURE__*/ S.Array(S.String);
 export interface BatchDeleteBuildsInput {
@@ -162,6 +168,7 @@ export type StatusType =
   | "STOPPED"
   | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
+
 export type BuildBatchPhaseType =
   | "SUBMITTED"
   | "DOWNLOAD_BATCHSPEC"
@@ -172,6 +179,7 @@ export type BuildBatchPhaseType =
   | "STOPPED"
   | (string & {});
 export const BuildBatchPhaseType = /*@__PURE__*/ S.String;
+
 export interface PhaseContext {
   statusCode?: string;
   message?: string;
@@ -215,6 +223,8 @@ export type SourceType =
   | "NO_SOURCE"
   | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
+
+export type GitCloneDepth = number;
 export interface GitSubmodulesConfig {
   fetchSubmodules: boolean;
 }
@@ -229,6 +239,7 @@ export type SourceAuthType =
   | "SECRETS_MANAGER"
   | (string & {});
 export const SourceAuthType = /*@__PURE__*/ S.String;
+
 export interface SourceAuth {
   type: SourceAuthType;
   resource?: string;
@@ -287,6 +298,7 @@ export const ProjectSecondarySourceVersions =
   /*@__PURE__*/ S.Array(ProjectSourceVersion);
 export type BucketOwnerAccess = "NONE" | "READ_ONLY" | "FULL" | (string & {});
 export const BucketOwnerAccess = /*@__PURE__*/ S.String;
+
 export interface BuildArtifacts {
   location?: string;
   sha256sum?: string;
@@ -311,12 +323,14 @@ export type BuildArtifactsList = BuildArtifacts[];
 export const BuildArtifactsList = /*@__PURE__*/ S.Array(BuildArtifacts);
 export type CacheType = "NO_CACHE" | "S3" | "LOCAL" | (string & {});
 export const CacheType = /*@__PURE__*/ S.String;
+
 export type CacheMode =
   | "LOCAL_DOCKER_LAYER_CACHE"
   | "LOCAL_SOURCE_CACHE"
   | "LOCAL_CUSTOM_CACHE"
   | (string & {});
 export const CacheMode = /*@__PURE__*/ S.String;
+
 export type ProjectCacheModes = CacheMode[];
 export const ProjectCacheModes = /*@__PURE__*/ S.Array(CacheMode);
 export interface ProjectCache {
@@ -348,6 +362,7 @@ export type EnvironmentType =
   | "MAC_ARM"
   | (string & {});
 export const EnvironmentType = /*@__PURE__*/ S.String;
+
 export type ComputeType =
   | "BUILD_GENERAL1_SMALL"
   | "BUILD_GENERAL1_MEDIUM"
@@ -363,8 +378,10 @@ export type ComputeType =
   | "CUSTOM_INSTANCE_TYPE"
   | (string & {});
 export const ComputeType = /*@__PURE__*/ S.String;
+
 export type MachineType = "GENERAL" | "NVME" | (string & {});
 export const MachineType = /*@__PURE__*/ S.String;
+
 export interface ComputeConfiguration {
   vCpu?: number;
   memory?: number;
@@ -395,6 +412,7 @@ export type EnvironmentVariableType =
   | "SECRETS_MANAGER"
   | (string & {});
 export const EnvironmentVariableType = /*@__PURE__*/ S.String;
+
 export interface EnvironmentVariable {
   name: string;
   value: string;
@@ -413,6 +431,7 @@ export type EnvironmentVariables = EnvironmentVariable[];
 export const EnvironmentVariables = /*@__PURE__*/ S.Array(EnvironmentVariable);
 export type CredentialProviderType = "SECRETS_MANAGER" | (string & {});
 export const CredentialProviderType = /*@__PURE__*/ S.String;
+
 export interface RegistryCredential {
   credential: string;
   credentialProvider: CredentialProviderType;
@@ -430,6 +449,7 @@ export type ImagePullCredentialsType =
   | "SERVICE_ROLE"
   | (string & {});
 export const ImagePullCredentialsType = /*@__PURE__*/ S.String;
+
 export type SecurityGroupIds = string[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export interface DockerServerStatus {
@@ -485,6 +505,7 @@ export const ProjectEnvironment = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectEnvironment>;
 export type LogsConfigStatusType = "ENABLED" | "DISABLED" | (string & {});
 export const LogsConfigStatusType = /*@__PURE__*/ S.String;
+
 export interface CloudWatchLogsConfig {
   status: LogsConfigStatusType;
   groupName?: string;
@@ -539,6 +560,7 @@ export const VpcConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
 export type FileSystemType = "EFS" | (string & {});
 export const FileSystemType = /*@__PURE__*/ S.String;
+
 export interface ProjectFileSystemLocation {
   type?: FileSystemType;
   location?: string;
@@ -584,6 +606,7 @@ export type BatchReportModeType =
   | "REPORT_AGGREGATED_BATCH"
   | (string & {});
 export const BatchReportModeType = /*@__PURE__*/ S.String;
+
 export interface ProjectBuildBatchConfig {
   serviceRole?: string;
   combineArtifacts?: boolean;
@@ -610,6 +633,7 @@ export type ArtifactsType =
   | "NO_ARTIFACTS"
   | (string & {});
 export const ArtifactsType = /*@__PURE__*/ S.String;
+
 export interface ResolvedArtifact {
   type?: ArtifactsType;
   location?: string;
@@ -771,6 +795,7 @@ export type BuildPhaseType =
   | "COMPLETED"
   | (string & {});
 export const BuildPhaseType = /*@__PURE__*/ S.String;
+
 export interface BuildPhase {
   phaseType?: BuildPhaseType;
   phaseStatus?: StatusType;
@@ -966,8 +991,10 @@ export const BatchGetCommandExecutionsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetCommandExecutionsInput",
 }) as any as S.Schema<BatchGetCommandExecutionsInput>;
+export type SensitiveNonEmptyString = string | redacted.Redacted<string>;
 export type CommandType = "SHELL" | (string & {});
 export const CommandType = /*@__PURE__*/ S.String;
+
 export interface CommandExecution {
   id?: string;
   sandboxId?: string;
@@ -1028,6 +1055,7 @@ export const BatchGetFleetsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetFleetsInput",
 }) as any as S.Schema<BatchGetFleetsInput>;
+export type FleetName = string;
 export type FleetStatusCode =
   | "CREATING"
   | "UPDATING"
@@ -1039,6 +1067,7 @@ export type FleetStatusCode =
   | "ACTIVE"
   | (string & {});
 export const FleetStatusCode = /*@__PURE__*/ S.String;
+
 export type FleetContextCode =
   | "CREATE_FAILED"
   | "UPDATE_FAILED"
@@ -1047,6 +1076,7 @@ export type FleetContextCode =
   | "INSUFFICIENT_CAPACITY"
   | (string & {});
 export const FleetContextCode = /*@__PURE__*/ S.String;
+
 export interface FleetStatus {
   statusCode?: FleetStatusCode;
   context?: FleetContextCode;
@@ -1059,10 +1089,13 @@ export const FleetStatus = /*@__PURE__*/ S.suspend(() =>
     message: S.optional(S.String),
   }),
 ).annotate({ identifier: "FleetStatus" }) as any as S.Schema<FleetStatus>;
+export type FleetCapacity = number;
 export type FleetScalingType = "TARGET_TRACKING_SCALING" | (string & {});
 export const FleetScalingType = /*@__PURE__*/ S.String;
+
 export type FleetScalingMetricType = "FLEET_UTILIZATION_RATE" | (string & {});
 export const FleetScalingMetricType = /*@__PURE__*/ S.String;
+
 export interface TargetTrackingScalingConfiguration {
   metricType?: FleetScalingMetricType;
   targetValue?: number;
@@ -1100,12 +1133,16 @@ export const ScalingConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ScalingConfigurationOutput>;
 export type FleetOverflowBehavior = "QUEUE" | "ON_DEMAND" | (string & {});
 export const FleetOverflowBehavior = /*@__PURE__*/ S.String;
+
 export type FleetProxyRuleBehavior = "ALLOW_ALL" | "DENY_ALL" | (string & {});
 export const FleetProxyRuleBehavior = /*@__PURE__*/ S.String;
+
 export type FleetProxyRuleType = "DOMAIN" | "IP" | (string & {});
 export const FleetProxyRuleType = /*@__PURE__*/ S.String;
+
 export type FleetProxyRuleEffectType = "ALLOW" | "DENY" | (string & {});
 export const FleetProxyRuleEffectType = /*@__PURE__*/ S.String;
+
 export type FleetProxyRuleEntities = string[];
 export const FleetProxyRuleEntities = /*@__PURE__*/ S.Array(S.String);
 export interface FleetProxyRule {
@@ -1134,6 +1171,8 @@ export const ProxyConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProxyConfiguration",
 }) as any as S.Schema<ProxyConfiguration>;
+export type KeyInput = string;
+export type ValueInput = string;
 export interface Tag {
   key?: string;
   value?: string;
@@ -1209,10 +1248,14 @@ export const BatchGetProjectsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetProjectsInput",
 }) as any as S.Schema<BatchGetProjectsInput>;
+export type ProjectName = string;
+export type ProjectDescription = string;
 export type ArtifactNamespace = "NONE" | "BUILD_ID" | (string & {});
 export const ArtifactNamespace = /*@__PURE__*/ S.String;
+
 export type ArtifactPackaging = "NONE" | "ZIP" | (string & {});
 export const ArtifactPackaging = /*@__PURE__*/ S.String;
+
 export interface ProjectArtifacts {
   type: ArtifactsType;
   location?: string;
@@ -1243,6 +1286,8 @@ export const ProjectArtifacts = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProjectArtifacts>;
 export type ProjectArtifactsList = ProjectArtifacts[];
 export const ProjectArtifactsList = /*@__PURE__*/ S.Array(ProjectArtifacts);
+export type BuildTimeOut = number;
+export type TimeOut = number;
 export type WebhookFilterType =
   | "EVENT"
   | "BASE_REF"
@@ -1257,6 +1302,7 @@ export type WebhookFilterType =
   | "ORGANIZATION_NAME"
   | (string & {});
 export const WebhookFilterType = /*@__PURE__*/ S.String;
+
 export interface WebhookFilter {
   type: WebhookFilterType;
   pattern: string;
@@ -1279,12 +1325,14 @@ export type WebhookBuildType =
   | "RUNNER_BUILDKITE_BUILD"
   | (string & {});
 export const WebhookBuildType = /*@__PURE__*/ S.String;
+
 export type WebhookScopeType =
   | "GITHUB_ORGANIZATION"
   | "GITHUB_GLOBAL"
   | "GITLAB_GROUP"
   | (string & {});
 export const WebhookScopeType = /*@__PURE__*/ S.String;
+
 export interface ScopeConfiguration {
   name: string;
   domain?: string;
@@ -1306,12 +1354,14 @@ export type WebhookStatus =
   | "DELETING"
   | (string & {});
 export const WebhookStatus = /*@__PURE__*/ S.String;
+
 export type PullRequestBuildCommentApproval =
   | "DISABLED"
   | "ALL_PULL_REQUESTS"
   | "FORK_PULL_REQUESTS"
   | (string & {});
 export const PullRequestBuildCommentApproval = /*@__PURE__*/ S.String;
+
 export type PullRequestBuildApproverRole =
   | "GITHUB_READ"
   | "GITHUB_TRIAGE"
@@ -1329,6 +1379,7 @@ export type PullRequestBuildApproverRole =
   | "BITBUCKET_ADMIN"
   | (string & {});
 export const PullRequestBuildApproverRole = /*@__PURE__*/ S.String;
+
 export type PullRequestBuildApproverRoles = PullRequestBuildApproverRole[];
 export const PullRequestBuildApproverRoles = /*@__PURE__*/ S.Array(
   PullRequestBuildApproverRole,
@@ -1389,6 +1440,7 @@ export const ProjectBadge = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ProjectBadge" }) as any as S.Schema<ProjectBadge>;
 export type ProjectVisibilityType = "PUBLIC_READ" | "PRIVATE" | (string & {});
 export const ProjectVisibilityType = /*@__PURE__*/ S.String;
+
 export interface Project {
   name?: string;
   arn?: string;
@@ -1479,12 +1531,16 @@ export const BatchGetReportGroupsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetReportGroupsInput",
 }) as any as S.Schema<BatchGetReportGroupsInput>;
+export type ReportGroupName = string;
 export type ReportType = "TEST" | "CODE_COVERAGE" | (string & {});
 export const ReportType = /*@__PURE__*/ S.String;
+
 export type ReportExportConfigType = "S3" | "NO_EXPORT" | (string & {});
 export const ReportExportConfigType = /*@__PURE__*/ S.String;
+
 export type ReportPackagingType = "ZIP" | "NONE" | (string & {});
 export const ReportPackagingType = /*@__PURE__*/ S.String;
+
 export interface S3ReportExportConfig {
   bucket?: string;
   bucketOwner?: string;
@@ -1519,6 +1575,7 @@ export const ReportExportConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportExportConfig>;
 export type ReportGroupStatusType = "ACTIVE" | "DELETING" | (string & {});
 export const ReportGroupStatusType = /*@__PURE__*/ S.String;
+
 export interface ReportGroup {
   arn?: string;
   name?: string;
@@ -1575,6 +1632,7 @@ export type ReportStatusType =
   | "DELETING"
   | (string & {});
 export const ReportStatusType = /*@__PURE__*/ S.String;
+
 export type ReportStatusCounts = { [key: string]: number | undefined };
 export const ReportStatusCounts = /*@__PURE__*/ S.Record(
   S.String,
@@ -1594,6 +1652,8 @@ export const TestReportSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TestReportSummary",
 }) as any as S.Schema<TestReportSummary>;
+export type Percentage = number;
+export type NonNegativeInt = number;
 export interface CodeCoverageReportSummary {
   lineCoveragePercentage?: number;
   linesCovered?: number;
@@ -2093,13 +2153,16 @@ export const DeleteWebhookOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteWebhookOutput",
 }) as any as S.Schema<DeleteWebhookOutput>;
+export type PageSize = number;
 export type SortOrderType = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrderType = /*@__PURE__*/ S.String;
+
 export type ReportCodeCoverageSortByType =
   | "LINE_COVERAGE_PERCENTAGE"
   | "FILE_PATH"
   | (string & {});
 export const ReportCodeCoverageSortByType = /*@__PURE__*/ S.String;
+
 export interface DescribeCodeCoveragesInput {
   reportArn: string;
   nextToken?: string;
@@ -2239,6 +2302,7 @@ export type ReportGroupTrendFieldType =
   | "BRANCHES_MISSED"
   | (string & {});
 export const ReportGroupTrendFieldType = /*@__PURE__*/ S.String;
+
 export interface GetReportGroupTrendInput {
   reportGroupArn: string;
   numOfReports?: number;
@@ -2319,6 +2383,7 @@ export type ServerType =
   | "GITLAB_SELF_MANAGED"
   | (string & {});
 export const ServerType = /*@__PURE__*/ S.String;
+
 export type AuthType =
   | "OAUTH"
   | "BASIC_AUTH"
@@ -2327,6 +2392,7 @@ export type AuthType =
   | "SECRETS_MANAGER"
   | (string & {});
 export const AuthType = /*@__PURE__*/ S.String;
+
 export interface ImportSourceCredentialsInput {
   username?: string;
   token: string | redacted.Redacted<string>;
@@ -2483,6 +2549,7 @@ export const ListBuildsForProjectOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListBuildsForProjectOutput",
 }) as any as S.Schema<ListBuildsForProjectOutput>;
+export type SensitiveString = string | redacted.Redacted<string>;
 export interface ListCommandExecutionsForSandboxInput {
   sandboxId: string;
   maxResults?: number;
@@ -2530,6 +2597,7 @@ export type PlatformType =
   | "WINDOWS_SERVER"
   | (string & {});
 export const PlatformType = /*@__PURE__*/ S.String;
+
 export type LanguageType =
   | "JAVA"
   | "PYTHON"
@@ -2543,6 +2611,7 @@ export type LanguageType =
   | "PHP"
   | (string & {});
 export const LanguageType = /*@__PURE__*/ S.String;
+
 export type ImageVersions = string[];
 export const ImageVersions = /*@__PURE__*/ S.Array(S.String);
 export interface EnvironmentImage {
@@ -2603,6 +2672,7 @@ export type FleetSortByType =
   | "LAST_MODIFIED_TIME"
   | (string & {});
 export const FleetSortByType = /*@__PURE__*/ S.String;
+
 export interface ListFleetsInput {
   nextToken?: string | redacted.Redacted<string>;
   maxResults?: number;
@@ -2638,6 +2708,7 @@ export type ProjectSortByType =
   | "LAST_MODIFIED_TIME"
   | (string & {});
 export const ProjectSortByType = /*@__PURE__*/ S.String;
+
 export interface ListProjectsInput {
   sortBy?: ProjectSortByType;
   sortOrder?: SortOrderType;
@@ -2672,6 +2743,7 @@ export type ReportGroupSortByType =
   | "LAST_MODIFIED_TIME"
   | (string & {});
 export const ReportGroupSortByType = /*@__PURE__*/ S.String;
+
 export interface ListReportGroupsInput {
   sortOrder?: SortOrderType;
   sortBy?: ReportGroupSortByType;
@@ -2824,6 +2896,7 @@ export const ListSandboxesForProjectOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSandboxesForProjectOutput>;
 export type SharedResourceSortByType = "ARN" | "MODIFIED_TIME" | (string & {});
 export const SharedResourceSortByType = /*@__PURE__*/ S.String;
+
 export interface ListSharedProjectsInput {
   sortBy?: SharedResourceSortByType;
   sortOrder?: SortOrderType;
@@ -2968,6 +3041,7 @@ export type RetryBuildBatchType =
   | "RETRY_FAILED_BUILDS"
   | (string & {});
 export const RetryBuildBatchType = /*@__PURE__*/ S.String;
+
 export interface RetryBuildBatchInput {
   id?: string;
   idempotencyToken?: string;
@@ -3472,34 +3546,6 @@ export const UpdateWebhookOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateWebhookOutput",
 }) as any as S.Schema<UpdateWebhookOutput>;
-
-//# Errors
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { message: S.optional(S.String) },
-) {}
-export class AccountLimitExceededException extends S.TaggedErrorClass<AccountLimitExceededException>()(
-  "AccountLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class OAuthProviderException extends S.TaggedErrorClass<OAuthProviderException>()(
-  "OAuthProviderException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class AccountSuspendedException extends S.TaggedErrorClass<AccountSuspendedException>()(
-  "AccountSuspendedException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
 export type BatchDeleteBuildsError = InvalidInputException | CommonErrors;
 /**
  * Deletes one or more builds.
@@ -3517,6 +3563,7 @@ export const batchDeleteBuilds: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteBuilds",
 }));
+
 export type BatchGetBuildBatchesError = InvalidInputException | CommonErrors;
 /**
  * Retrieves information about one or more batch builds.
@@ -3534,6 +3581,7 @@ export const batchGetBuildBatches: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetBuildBatches",
 }));
+
 export type BatchGetBuildsError = InvalidInputException | CommonErrors;
 /**
  * Gets information about one or more builds.
@@ -3551,6 +3599,7 @@ export const batchGetBuilds: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetBuilds",
 }));
+
 export type BatchGetCommandExecutionsError =
   | InvalidInputException
   | CommonErrors;
@@ -3570,6 +3619,7 @@ export const batchGetCommandExecutions: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetCommandExecutions",
 }));
+
 export type BatchGetFleetsError = InvalidInputException | CommonErrors;
 /**
  * Gets information about one or more compute fleets.
@@ -3587,6 +3637,7 @@ export const batchGetFleets: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetFleets",
 }));
+
 export type BatchGetProjectsError = InvalidInputException | CommonErrors;
 /**
  * Gets information about one or more build projects.
@@ -3604,6 +3655,7 @@ export const batchGetProjects: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetProjects",
 }));
+
 export type BatchGetReportGroupsError = InvalidInputException | CommonErrors;
 /**
  * Returns an array of report groups.
@@ -3621,6 +3673,7 @@ export const batchGetReportGroups: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetReportGroups",
 }));
+
 export type BatchGetReportsError = InvalidInputException | CommonErrors;
 /**
  * Returns an array of reports.
@@ -3638,6 +3691,7 @@ export const batchGetReports: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetReports",
 }));
+
 export type BatchGetSandboxesError = InvalidInputException | CommonErrors;
 /**
  * Gets information about the sandbox status.
@@ -3655,6 +3709,7 @@ export const batchGetSandboxes: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetSandboxes",
 }));
+
 export type CreateFleetError =
   | AccountLimitExceededException
   | InvalidInputException
@@ -3680,6 +3735,7 @@ export const createFleet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFleet",
 }));
+
 export type CreateProjectError =
   | AccountLimitExceededException
   | InvalidInputException
@@ -3705,6 +3761,7 @@ export const createProject: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProject",
 }));
+
 export type CreateReportGroupError =
   | AccountLimitExceededException
   | InvalidInputException
@@ -3730,6 +3787,7 @@ export const createReportGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReportGroup",
 }));
+
 export type CreateWebhookError =
   | InvalidInputException
   | OAuthProviderException
@@ -3766,6 +3824,7 @@ export const createWebhook: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWebhook",
 }));
+
 export type DeleteBuildBatchError = InvalidInputException | CommonErrors;
 /**
  * Deletes a batch build.
@@ -3783,6 +3842,7 @@ export const deleteBuildBatch: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBuildBatch",
 }));
+
 export type DeleteFleetError = InvalidInputException | CommonErrors;
 /**
  * Deletes a compute fleet. When you delete a compute fleet, its builds are not deleted.
@@ -3800,6 +3860,7 @@ export const deleteFleet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFleet",
 }));
+
 export type DeleteProjectError = InvalidInputException | CommonErrors;
 /**
  * Deletes a build project. When you delete a project, its builds are not deleted.
@@ -3817,6 +3878,7 @@ export const deleteProject: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProject",
 }));
+
 export type DeleteReportError = InvalidInputException | CommonErrors;
 /**
  * Deletes a report.
@@ -3834,6 +3896,7 @@ export const deleteReport: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReport",
 }));
+
 export type DeleteReportGroupError = InvalidInputException | CommonErrors;
 /**
  * Deletes a report group. Before you delete a report group, you must delete its reports.
@@ -3851,6 +3914,7 @@ export const deleteReportGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReportGroup",
 }));
+
 export type DeleteResourcePolicyError = InvalidInputException | CommonErrors;
 /**
  * Deletes a resource policy that is identified by its resource ARN.
@@ -3868,6 +3932,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteSourceCredentialsError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -3888,6 +3953,7 @@ export const deleteSourceCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSourceCredentials",
 }));
+
 export type DeleteWebhookError =
   | InvalidInputException
   | OAuthProviderException
@@ -3915,6 +3981,7 @@ export const deleteWebhook: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWebhook",
 }));
+
 export type DescribeCodeCoveragesError = InvalidInputException | CommonErrors;
 /**
  * Retrieves one or more code coverage reports.
@@ -3953,6 +4020,7 @@ export const describeCodeCoverages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeTestCasesError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -3994,6 +4062,7 @@ export const describeTestCases: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetReportGroupTrendError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4014,6 +4083,7 @@ export const getReportGroupTrend: API.OperationMethod<
   retry: Retry,
   operationName: "GetReportGroupTrend",
 }));
+
 export type GetResourcePolicyError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4034,6 +4104,7 @@ export const getResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type ImportSourceCredentialsError =
   | AccountLimitExceededException
   | InvalidInputException
@@ -4060,6 +4131,7 @@ export const importSourceCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "ImportSourceCredentials",
 }));
+
 export type InvalidateProjectCacheError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4080,6 +4152,7 @@ export const invalidateProjectCache: API.OperationMethod<
   retry: Retry,
   operationName: "InvalidateProjectCache",
 }));
+
 export type ListBuildBatchesError = InvalidInputException | CommonErrors;
 /**
  * Retrieves the identifiers of your build batches in the current region.
@@ -4118,6 +4191,7 @@ export const listBuildBatches: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBuildBatchesForProjectError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4159,6 +4233,7 @@ export const listBuildBatchesForProject: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBuildsError = InvalidInputException | CommonErrors;
 /**
  * Gets a list of build IDs, with each build ID representing a single build.
@@ -4196,6 +4271,7 @@ export const listBuilds: API.OperationMethod<
     items: "ids",
   } as const,
 }));
+
 export type ListBuildsForProjectError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4237,6 +4313,7 @@ export const listBuildsForProject: API.OperationMethod<
     items: "ids",
   } as const,
 }));
+
 export type ListCommandExecutionsForSandboxError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4278,6 +4355,7 @@ export const listCommandExecutionsForSandbox: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListCuratedEnvironmentImagesError = CommonErrors;
 /**
  * Gets information about Docker images that are managed by CodeBuild.
@@ -4295,6 +4373,7 @@ export const listCuratedEnvironmentImages: API.OperationMethod<
   retry: Retry,
   operationName: "ListCuratedEnvironmentImages",
 }));
+
 export type ListFleetsError = InvalidInputException | CommonErrors;
 /**
  * Gets a list of compute fleet names with each compute fleet name representing a single compute fleet.
@@ -4332,6 +4411,7 @@ export const listFleets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListProjectsError = InvalidInputException | CommonErrors;
 /**
  * Gets a list of build project names, with each build project name representing a single
@@ -4370,6 +4450,7 @@ export const listProjects: API.OperationMethod<
     items: "projects",
   } as const,
 }));
+
 export type ListReportGroupsError = InvalidInputException | CommonErrors;
 /**
  * Gets a list ARNs for the report groups in the current Amazon Web Services account.
@@ -4408,6 +4489,7 @@ export const listReportGroups: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListReportsError = InvalidInputException | CommonErrors;
 /**
  * Returns a list of ARNs for the reports in the current Amazon Web Services account.
@@ -4446,6 +4528,7 @@ export const listReports: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListReportsForReportGroupError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4487,6 +4570,7 @@ export const listReportsForReportGroup: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSandboxesError = InvalidInputException | CommonErrors;
 /**
  * Gets a list of sandboxes.
@@ -4525,6 +4609,7 @@ export const listSandboxes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSandboxesForProjectError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4566,6 +4651,7 @@ export const listSandboxesForProject: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSharedProjectsError = InvalidInputException | CommonErrors;
 /**
  * Gets a list of projects that are shared with other Amazon Web Services accounts or users.
@@ -4604,6 +4690,7 @@ export const listSharedProjects: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSharedReportGroupsError = InvalidInputException | CommonErrors;
 /**
  * Gets a list of report groups that are shared with other Amazon Web Services accounts or users.
@@ -4642,6 +4729,7 @@ export const listSharedReportGroups: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSourceCredentialsError = InvalidInputException | CommonErrors;
 /**
  * Returns a list of `SourceCredentialsInfo` objects.
@@ -4659,6 +4747,7 @@ export const listSourceCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "ListSourceCredentials",
 }));
+
 export type PutResourcePolicyError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4680,6 +4769,7 @@ export const putResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type RetryBuildError =
   | AccountLimitExceededException
   | InvalidInputException
@@ -4705,6 +4795,7 @@ export const retryBuild: API.OperationMethod<
   retry: Retry,
   operationName: "RetryBuild",
 }));
+
 export type RetryBuildBatchError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4725,6 +4816,7 @@ export const retryBuildBatch: API.OperationMethod<
   retry: Retry,
   operationName: "RetryBuildBatch",
 }));
+
 export type StartBuildError =
   | AccountLimitExceededException
   | InvalidInputException
@@ -4754,6 +4846,7 @@ export const startBuild: API.OperationMethod<
   retry: Retry,
   operationName: "StartBuild",
 }));
+
 export type StartBuildBatchError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4774,6 +4867,7 @@ export const startBuildBatch: API.OperationMethod<
   retry: Retry,
   operationName: "StartBuildBatch",
 }));
+
 export type StartCommandExecutionError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4794,6 +4888,7 @@ export const startCommandExecution: API.OperationMethod<
   retry: Retry,
   operationName: "StartCommandExecution",
 }));
+
 export type StartSandboxError =
   | AccountSuspendedException
   | InvalidInputException
@@ -4819,6 +4914,7 @@ export const startSandbox: API.OperationMethod<
   retry: Retry,
   operationName: "StartSandbox",
 }));
+
 export type StartSandboxConnectionError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4839,6 +4935,7 @@ export const startSandboxConnection: API.OperationMethod<
   retry: Retry,
   operationName: "StartSandboxConnection",
 }));
+
 export type StopBuildError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4859,6 +4956,7 @@ export const stopBuild: API.OperationMethod<
   retry: Retry,
   operationName: "StopBuild",
 }));
+
 export type StopBuildBatchError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4879,6 +4977,7 @@ export const stopBuildBatch: API.OperationMethod<
   retry: Retry,
   operationName: "StopBuildBatch",
 }));
+
 export type StopSandboxError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4899,6 +4998,7 @@ export const stopSandbox: API.OperationMethod<
   retry: Retry,
   operationName: "StopSandbox",
 }));
+
 export type UpdateFleetError =
   | AccountLimitExceededException
   | InvalidInputException
@@ -4924,6 +5024,7 @@ export const updateFleet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFleet",
 }));
+
 export type UpdateProjectError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4944,6 +5045,7 @@ export const updateProject: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProject",
 }));
+
 export type UpdateProjectVisibilityError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4990,6 +5092,7 @@ export const updateProjectVisibility: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProjectVisibility",
 }));
+
 export type UpdateReportGroupError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -5010,6 +5113,7 @@ export const updateReportGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateReportGroup",
 }));
+
 export type UpdateWebhookError =
   | InvalidInputException
   | OAuthProviderException

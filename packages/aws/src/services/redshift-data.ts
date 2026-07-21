@@ -85,29 +85,59 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ActiveSessionsExceededException extends S.TaggedErrorClass<ActiveSessionsExceededException>()(
+  "ActiveSessionsExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ActiveStatementsExceededException extends S.TaggedErrorClass<ActiveStatementsExceededException>()(
+  "ActiveStatementsExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class BatchExecuteStatementException extends S.TaggedErrorClass<BatchExecuteStatementException>()(
+  "BatchExecuteStatementException",
+  { Message: S.String, StatementId: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class DatabaseConnectionException extends S.TaggedErrorClass<DatabaseConnectionException>()(
+  "DatabaseConnectionException",
+  { Message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ExecuteStatementException extends S.TaggedErrorClass<ExecuteStatementException>()(
+  "ExecuteStatementException",
+  { Message: S.String, StatementId: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class QueryTimeoutException extends S.TaggedErrorClass<QueryTimeoutException>()(
+  "QueryTimeoutException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String, ResourceId: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type StatementString = string;
+export type SqlList = string[];
+export const SqlList = /*@__PURE__*/ S.Array(S.String);
 export type ClusterIdentifierString = string;
 export type SecretArn = string;
 export type StatementNameString = string;
 export type ParameterName = string;
 export type ParameterValue = string;
-export type WorkgroupNameString = string;
-export type ClientToken = string;
-export type ResultFormatString = string;
-export type SessionAliveSeconds = number;
-export type UUID = string;
-export type StatusString = string;
-export type StatementStatusString = string;
-export type PageSize = number;
-export type BoxedBoolean = boolean;
-export type BoxedLong = number;
-export type BoxedDouble = number;
-export type ListStatementsLimit = number;
-
-//# Schemas
-export type SqlList = string[];
-export const SqlList = /*@__PURE__*/ S.Array(S.String);
 export interface SqlParameter {
   name: string;
   value: string;
@@ -117,6 +147,11 @@ export const SqlParameter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SqlParameter" }) as any as S.Schema<SqlParameter>;
 export type SqlParametersList = SqlParameter[];
 export const SqlParametersList = /*@__PURE__*/ S.Array(SqlParameter);
+export type WorkgroupNameString = string;
+export type ClientToken = string;
+export type ResultFormatString = string;
+export type SessionAliveSeconds = number;
+export type UUID = string;
 export interface BatchExecuteStatementInput {
   Sqls: string[];
   ClusterIdentifier?: string;
@@ -209,6 +244,8 @@ export const DescribeStatementRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeStatementRequest",
 }) as any as S.Schema<DescribeStatementRequest>;
+export type StatusString = string;
+export type StatementStatusString = string;
 export interface SubStatementData {
   Id: string;
   Duration?: number;
@@ -291,6 +328,7 @@ export const DescribeStatementResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeStatementResponse",
 }) as any as S.Schema<DescribeStatementResponse>;
+export type PageSize = number;
 export interface DescribeTableRequest {
   ClusterIdentifier?: string;
   SecretArn?: string;
@@ -442,6 +480,9 @@ export const GetStatementResultRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetStatementResultRequest",
 }) as any as S.Schema<GetStatementResultRequest>;
+export type BoxedBoolean = boolean;
+export type BoxedLong = number;
+export type BoxedDouble = number;
 export type Field =
   | {
       isNull: boolean;
@@ -636,6 +677,7 @@ export const ListSchemasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSchemasResponse",
 }) as any as S.Schema<ListSchemasResponse>;
+export type ListStatementsLimit = number;
 export interface ListStatementsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -758,55 +800,6 @@ export const ListTablesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTablesResponse",
 }) as any as S.Schema<ListTablesResponse>;
-
-//# Errors
-export class ActiveSessionsExceededException extends S.TaggedErrorClass<ActiveSessionsExceededException>()(
-  "ActiveSessionsExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ActiveStatementsExceededException extends S.TaggedErrorClass<ActiveStatementsExceededException>()(
-  "ActiveStatementsExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class BatchExecuteStatementException extends S.TaggedErrorClass<BatchExecuteStatementException>()(
-  "BatchExecuteStatementException",
-  { Message: S.String, StatementId: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String, ResourceId: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class DatabaseConnectionException extends S.TaggedErrorClass<DatabaseConnectionException>()(
-  "DatabaseConnectionException",
-  { Message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class QueryTimeoutException extends S.TaggedErrorClass<QueryTimeoutException>()(
-  "QueryTimeoutException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ExecuteStatementException extends S.TaggedErrorClass<ExecuteStatementException>()(
-  "ExecuteStatementException",
-  { Message: S.String, StatementId: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-
-//# Operations
 export type BatchExecuteStatementError =
   | ActiveSessionsExceededException
   | ActiveStatementsExceededException
@@ -850,6 +843,7 @@ export const batchExecuteStatement: API.OperationMethod<
   retry: Retry,
   operationName: "BatchExecuteStatement",
 }));
+
 export type CancelStatementError =
   | DatabaseConnectionException
   | InternalServerException
@@ -881,6 +875,7 @@ export const cancelStatement: API.OperationMethod<
   retry: Retry,
   operationName: "CancelStatement",
 }));
+
 export type DescribeStatementError =
   | InternalServerException
   | ResourceNotFoundException
@@ -908,6 +903,7 @@ export const describeStatement: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeStatement",
 }));
+
 export type DescribeTableError =
   | DatabaseConnectionException
   | InternalServerException
@@ -970,6 +966,7 @@ export const describeTable: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ExecuteStatementError =
   | ActiveSessionsExceededException
   | ActiveStatementsExceededException
@@ -1013,6 +1010,7 @@ export const executeStatement: API.OperationMethod<
   retry: Retry,
   operationName: "ExecuteStatement",
 }));
+
 export type GetStatementResultError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1060,6 +1058,7 @@ export const getStatementResult: API.OperationMethod<
     items: "Records",
   } as const,
 }));
+
 export type GetStatementResultV2Error =
   | InternalServerException
   | ResourceNotFoundException
@@ -1107,6 +1106,7 @@ export const getStatementResultV2: API.OperationMethod<
     items: "Records",
   } as const,
 }));
+
 export type ListDatabasesError =
   | DatabaseConnectionException
   | InternalServerException
@@ -1169,6 +1169,7 @@ export const listDatabases: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSchemasError =
   | DatabaseConnectionException
   | InternalServerException
@@ -1231,6 +1232,7 @@ export const listSchemas: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStatementsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1281,6 +1283,7 @@ export const listStatements: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTablesError =
   | DatabaseConnectionException
   | InternalServerException

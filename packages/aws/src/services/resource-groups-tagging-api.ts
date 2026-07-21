@@ -84,34 +84,30 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type Status = string;
-export type S3Location = string;
-export type StartDate = string;
-export type ErrorMessage = string;
-export type ExceptionMessage = string;
-export type TargetId = string;
-export type Region = string;
-export type AmazonResourceType = string;
-export type TagKey = string;
-export type MaxResultsGetComplianceSummary = number;
-export type PaginationToken = string;
-export type LastUpdated = string;
-export type NonCompliantResources = number;
-export type TagValue = string;
-export type ResourcesPerPage = number;
-export type TagsPerPage = number;
-export type IncludeComplianceDetails = boolean;
-export type ExcludeCompliantResources = boolean;
-export type ResourceARN = string;
-export type ComplianceStatus = boolean;
-export type MaxResultsForListRequiredTags = number;
-export type ResourceType = string;
-export type CloudFormationResourceType = string;
-export type S3Bucket = string;
-export type StatusCode = number;
-
-//# Schemas
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { Message: S.optional(S.String) },
+) {}
+export class ConstraintViolationException extends S.TaggedErrorClass<ConstraintViolationException>()(
+  "ConstraintViolationException",
+  { Message: S.optional(S.String) },
+) {}
+export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
+  "InternalServiceException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { Message: S.optional(S.String) },
+) {}
+export class PaginationTokenExpiredException extends S.TaggedErrorClass<PaginationTokenExpiredException>()(
+  "PaginationTokenExpiredException",
+  { Message: S.optional(S.String) },
+) {}
+export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
+  "ThrottledException",
+  { Message: S.optional(S.String) },
+) {}
 export interface DescribeReportCreationInput {}
 export const DescribeReportCreationInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -127,6 +123,10 @@ export const DescribeReportCreationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeReportCreationInput",
 }) as any as S.Schema<DescribeReportCreationInput>;
+export type Status = string;
+export type S3Location = string;
+export type StartDate = string;
+export type ErrorMessage = string;
 export interface DescribeReportCreationOutput {
   Status?: string;
   S3Location?: string;
@@ -143,12 +143,16 @@ export const DescribeReportCreationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeReportCreationOutput",
 }) as any as S.Schema<DescribeReportCreationOutput>;
+export type TargetId = string;
 export type TargetIdFilterList = string[];
 export const TargetIdFilterList = /*@__PURE__*/ S.Array(S.String);
+export type Region = string;
 export type RegionFilterList = string[];
 export const RegionFilterList = /*@__PURE__*/ S.Array(S.String);
+export type AmazonResourceType = string;
 export type ResourceTypeFilterList = string[];
 export const ResourceTypeFilterList = /*@__PURE__*/ S.Array(S.String);
+export type TagKey = string;
 export type TagKeyFilterList = string[];
 export const TagKeyFilterList = /*@__PURE__*/ S.Array(S.String);
 export type GroupByAttribute =
@@ -157,8 +161,11 @@ export type GroupByAttribute =
   | "RESOURCE_TYPE"
   | (string & {});
 export const GroupByAttribute = /*@__PURE__*/ S.String;
+
 export type GroupBy = GroupByAttribute[];
 export const GroupBy = /*@__PURE__*/ S.Array(GroupByAttribute);
+export type MaxResultsGetComplianceSummary = number;
+export type PaginationToken = string;
 export interface GetComplianceSummaryInput {
   TargetIdFilters?: string[];
   RegionFilters?: string[];
@@ -190,8 +197,11 @@ export const GetComplianceSummaryInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetComplianceSummaryInput",
 }) as any as S.Schema<GetComplianceSummaryInput>;
+export type LastUpdated = string;
 export type TargetIdType = "ACCOUNT" | "OU" | "ROOT" | (string & {});
 export const TargetIdType = /*@__PURE__*/ S.String;
+
+export type NonCompliantResources = number;
 export interface Summary {
   LastUpdated?: string;
   TargetId?: string;
@@ -224,6 +234,7 @@ export const GetComplianceSummaryOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetComplianceSummaryOutput",
 }) as any as S.Schema<GetComplianceSummaryOutput>;
+export type TagValue = string;
 export type TagValueList = string[];
 export const TagValueList = /*@__PURE__*/ S.Array(S.String);
 export interface TagFilter {
@@ -235,6 +246,11 @@ export const TagFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagFilter" }) as any as S.Schema<TagFilter>;
 export type TagFilterList = TagFilter[];
 export const TagFilterList = /*@__PURE__*/ S.Array(TagFilter);
+export type ResourcesPerPage = number;
+export type TagsPerPage = number;
+export type IncludeComplianceDetails = boolean;
+export type ExcludeCompliantResources = boolean;
+export type ResourceARN = string;
 export type ResourceARNListForGet = string[];
 export const ResourceARNListForGet = /*@__PURE__*/ S.Array(S.String);
 export interface GetResourcesInput {
@@ -281,6 +297,7 @@ export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export type ComplianceStatus = boolean;
 export interface ComplianceDetails {
   NoncompliantKeys?: string[];
   KeysWithNoncompliantValues?: string[];
@@ -386,6 +403,7 @@ export const GetTagValuesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTagValuesOutput",
 }) as any as S.Schema<GetTagValuesOutput>;
+export type MaxResultsForListRequiredTags = number;
 export interface ListRequiredTagsInput {
   NextToken?: string;
   MaxResults?: number;
@@ -407,6 +425,8 @@ export const ListRequiredTagsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRequiredTagsInput",
 }) as any as S.Schema<ListRequiredTagsInput>;
+export type ResourceType = string;
+export type CloudFormationResourceType = string;
 export type CloudFormationResourceTypes = string[];
 export const CloudFormationResourceTypes = /*@__PURE__*/ S.Array(S.String);
 export type ReportingTagKeys = string[];
@@ -438,6 +458,7 @@ export const ListRequiredTagsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRequiredTagsOutput",
 }) as any as S.Schema<ListRequiredTagsOutput>;
+export type S3Bucket = string;
 export interface StartReportCreationInput {
   S3Bucket: string;
 }
@@ -486,11 +507,13 @@ export const TagResourcesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TagResourcesInput",
 }) as any as S.Schema<TagResourcesInput>;
+export type StatusCode = number;
 export type ErrorCode =
   | "InternalServiceException"
   | "InvalidParameterException"
   | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
+
 export interface FailureInfo {
   StatusCode?: number;
   ErrorCode?: ErrorCode;
@@ -547,34 +570,7 @@ export const UntagResourcesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourcesOutput",
 }) as any as S.Schema<UntagResourcesOutput>;
-
-//# Errors
-export class ConstraintViolationException extends S.TaggedErrorClass<ConstraintViolationException>()(
-  "ConstraintViolationException",
-  { Message: S.optional(S.String) },
-) {}
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { Message: S.optional(S.String) },
-) {}
-export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
-  "ThrottledException",
-  { Message: S.optional(S.String) },
-) {}
-export class PaginationTokenExpiredException extends S.TaggedErrorClass<PaginationTokenExpiredException>()(
-  "PaginationTokenExpiredException",
-  { Message: S.optional(S.String) },
-) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type DescribeReportCreationError =
   | ConstraintViolationException
   | InternalServiceException
@@ -605,6 +601,7 @@ export const describeReportCreation: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeReportCreation",
 }));
+
 export type GetComplianceSummaryError =
   | ConstraintViolationException
   | InternalServiceException
@@ -667,6 +664,7 @@ export const getComplianceSummary: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetResourcesError =
   | InternalServiceException
   | InvalidParameterException
@@ -739,6 +737,7 @@ export const getResources: API.OperationMethod<
     pageSize: "ResourcesPerPage",
   } as const,
 }));
+
 export type GetTagKeysError =
   | InternalServiceException
   | InvalidParameterException
@@ -794,6 +793,7 @@ export const getTagKeys: API.OperationMethod<
     items: "TagKeys",
   } as const,
 }));
+
 export type GetTagValuesError =
   | InternalServiceException
   | InvalidParameterException
@@ -849,6 +849,7 @@ export const getTagValues: API.OperationMethod<
     items: "TagValues",
   } as const,
 }));
+
 export type ListRequiredTagsError =
   | InternalServiceException
   | InvalidParameterException
@@ -897,6 +898,7 @@ export const listRequiredTags: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type StartReportCreationError =
   | ConcurrentModificationException
   | ConstraintViolationException
@@ -946,6 +948,7 @@ export const startReportCreation: API.OperationMethod<
   retry: Retry,
   operationName: "StartReportCreation",
 }));
+
 export type TagResourcesError =
   | InternalServiceException
   | InvalidParameterException
@@ -1020,6 +1023,7 @@ export const tagResources: API.OperationMethod<
   retry: Retry,
   operationName: "TagResources",
 }));
+
 export type UntagResourcesError =
   | InternalServiceException
   | InvalidParameterException

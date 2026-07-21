@@ -85,27 +85,106 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ErrorMessage = string;
-export type EndpointWeight = number;
-export type IpAddress = string;
-export type PortNumber = number;
-export type IdempotencyToken = string;
-export type TagKey = string;
-export type TagValue = string;
-export type AttachmentName = string;
-export type Principal = string;
-export type TrafficDialPercentage = number;
-export type HealthCheckPort = number;
-export type HealthCheckPath = string;
-export type HealthCheckIntervalSeconds = number;
-export type ThresholdCount = number;
-export type MaxResults = number;
-export type AwsAccountId = string;
-export type PortMappingsMaxResults = number;
-export type ResourceArn = string;
-
-//# Schemas
+export class AcceleratorNotDisabledException extends S.TaggedErrorClass<AcceleratorNotDisabledException>()(
+  "AcceleratorNotDisabledException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class AcceleratorNotFoundException extends S.TaggedErrorClass<AcceleratorNotFoundException>()(
+  "AcceleratorNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class AssociatedEndpointGroupFoundException extends S.TaggedErrorClass<AssociatedEndpointGroupFoundException>()(
+  "AssociatedEndpointGroupFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class AssociatedListenerFoundException extends S.TaggedErrorClass<AssociatedListenerFoundException>()(
+  "AssociatedListenerFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class AttachmentNotFoundException extends S.TaggedErrorClass<AttachmentNotFoundException>()(
+  "AttachmentNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ByoipCidrNotFoundException extends S.TaggedErrorClass<ByoipCidrNotFoundException>()(
+  "ByoipCidrNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class EndpointAlreadyExistsException extends S.TaggedErrorClass<EndpointAlreadyExistsException>()(
+  "EndpointAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class EndpointGroupAlreadyExistsException extends S.TaggedErrorClass<EndpointGroupAlreadyExistsException>()(
+  "EndpointGroupAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class EndpointGroupNotFoundException extends S.TaggedErrorClass<EndpointGroupNotFoundException>()(
+  "EndpointGroupNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class EndpointNotFoundException extends S.TaggedErrorClass<EndpointNotFoundException>()(
+  "EndpointNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class IncorrectCidrStateException extends S.TaggedErrorClass<IncorrectCidrStateException>()(
+  "IncorrectCidrStateException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
+  "InternalServiceErrorException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
+  "InvalidArgumentException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidPortRangeException extends S.TaggedErrorClass<InvalidPortRangeException>()(
+  "InvalidPortRangeException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ListenerNotFoundException extends S.TaggedErrorClass<ListenerNotFoundException>()(
+  "ListenerNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class TransactionInProgressException extends S.TaggedErrorClass<TransactionInProgressException>()(
+  "TransactionInProgressException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
 export interface CustomRoutingEndpointConfiguration {
   EndpointId?: string;
   AttachmentArn?: string;
@@ -162,6 +241,7 @@ export const AddCustomRoutingEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddCustomRoutingEndpointsResponse",
 }) as any as S.Schema<AddCustomRoutingEndpointsResponse>;
+export type EndpointWeight = number;
 export interface EndpointConfiguration {
   EndpointId?: string;
   Weight?: number;
@@ -198,6 +278,7 @@ export const AddEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddEndpointsRequest>;
 export type HealthState = "INITIAL" | "HEALTHY" | "UNHEALTHY" | (string & {});
 export const HealthState = /*@__PURE__*/ S.String;
+
 export interface EndpointDescription {
   EndpointId?: string;
   Weight?: number;
@@ -254,6 +335,7 @@ export type ByoipCidrState =
   | "FAILED_DEPROVISION"
   | (string & {});
 export const ByoipCidrState = /*@__PURE__*/ S.String;
+
 export interface ByoipCidrEvent {
   Message?: string;
   Timestamp?: Date;
@@ -286,8 +368,10 @@ export const AdvertiseByoipCidrResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdvertiseByoipCidrResponse",
 }) as any as S.Schema<AdvertiseByoipCidrResponse>;
+export type IpAddress = string;
 export type DestinationAddresses = string[];
 export const DestinationAddresses = /*@__PURE__*/ S.Array(S.String);
+export type PortNumber = number;
 export type DestinationPorts = number[];
 export const DestinationPorts = /*@__PURE__*/ S.Array(S.Number);
 export interface AllowCustomRoutingTrafficRequest {
@@ -318,8 +402,12 @@ export const AllowCustomRoutingTrafficResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AllowCustomRoutingTrafficResponse>;
 export type IpAddressType = "IPV4" | "DUAL_STACK" | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
+
 export type IpAddresses = string[];
 export const IpAddresses = /*@__PURE__*/ S.Array(S.String);
+export type IdempotencyToken = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -353,6 +441,7 @@ export const CreateAcceleratorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAcceleratorRequest>;
 export type IpAddressFamily = "IPv4" | "IPv6" | (string & {});
 export const IpAddressFamily = /*@__PURE__*/ S.String;
+
 export interface IpSet {
   IpFamily?: string;
   IpAddresses?: string[];
@@ -369,6 +458,7 @@ export type IpSets = IpSet[];
 export const IpSets = /*@__PURE__*/ S.Array(IpSet);
 export type AcceleratorStatus = "DEPLOYED" | "IN_PROGRESS" | (string & {});
 export const AcceleratorStatus = /*@__PURE__*/ S.String;
+
 export interface AcceleratorEvent {
   Message?: string;
   Timestamp?: Date;
@@ -421,6 +511,8 @@ export const CreateAcceleratorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAcceleratorResponse",
 }) as any as S.Schema<CreateAcceleratorResponse>;
+export type AttachmentName = string;
+export type Principal = string;
 export type Principals = string[];
 export const Principals = /*@__PURE__*/ S.Array(S.String);
 export interface Resource {
@@ -513,6 +605,7 @@ export type CustomRoutingAcceleratorStatus =
   | "IN_PROGRESS"
   | (string & {});
 export const CustomRoutingAcceleratorStatus = /*@__PURE__*/ S.String;
+
 export interface CustomRoutingAccelerator {
   AcceleratorArn?: string;
   Name?: string;
@@ -551,6 +644,7 @@ export const CreateCustomRoutingAcceleratorResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateCustomRoutingAcceleratorResponse>;
 export type CustomRoutingProtocol = "TCP" | "UDP" | (string & {});
 export const CustomRoutingProtocol = /*@__PURE__*/ S.String;
+
 export type CustomRoutingProtocols = CustomRoutingProtocol[];
 export const CustomRoutingProtocols = /*@__PURE__*/ S.Array(
   CustomRoutingProtocol,
@@ -596,6 +690,7 @@ export const CreateCustomRoutingEndpointGroupRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateCustomRoutingEndpointGroupRequest>;
 export type Protocol = "TCP" | "UDP" | (string & {});
 export const Protocol = /*@__PURE__*/ S.String;
+
 export type Protocols = Protocol[];
 export const Protocols = /*@__PURE__*/ S.Array(Protocol);
 export interface CustomRoutingDestinationDescription {
@@ -686,8 +781,14 @@ export const CreateCustomRoutingListenerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCustomRoutingListenerResponse",
 }) as any as S.Schema<CreateCustomRoutingListenerResponse>;
+export type TrafficDialPercentage = number;
+export type HealthCheckPort = number;
 export type HealthCheckProtocol = "TCP" | "HTTP" | "HTTPS" | (string & {});
 export const HealthCheckProtocol = /*@__PURE__*/ S.String;
+
+export type HealthCheckPath = string;
+export type HealthCheckIntervalSeconds = number;
+export type ThresholdCount = number;
 export interface PortOverride {
   ListenerPort?: number;
   EndpointPort?: number;
@@ -768,6 +869,7 @@ export const CreateEndpointGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEndpointGroupResponse>;
 export type ClientAffinity = "NONE" | "SOURCE_IP" | (string & {});
 export const ClientAffinity = /*@__PURE__*/ S.String;
+
 export interface CreateListenerRequest {
   AcceleratorArn: string;
   PortRanges: PortRange[];
@@ -1168,6 +1270,7 @@ export const DescribeListenerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeListenerResponse",
 }) as any as S.Schema<DescribeListenerResponse>;
+export type MaxResults = number;
 export interface ListAcceleratorsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -1261,6 +1364,7 @@ export const ListCrossAccountResourceAccountsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListCrossAccountResourceAccountsRequest",
 }) as any as S.Schema<ListCrossAccountResourceAccountsRequest>;
+export type AwsAccountId = string;
 export type AwsAccountIds = string[];
 export const AwsAccountIds = /*@__PURE__*/ S.Array(S.String);
 export interface ListCrossAccountResourceAccountsResponse {
@@ -1416,6 +1520,7 @@ export const ListCustomRoutingListenersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCustomRoutingListenersResponse",
 }) as any as S.Schema<ListCustomRoutingListenersResponse>;
+export type PortMappingsMaxResults = number;
 export interface ListCustomRoutingPortMappingsRequest {
   AcceleratorArn: string;
   EndpointGroupArn?: string;
@@ -1447,6 +1552,7 @@ export type CustomRoutingDestinationTrafficState =
   | "DENY"
   | (string & {});
 export const CustomRoutingDestinationTrafficState = /*@__PURE__*/ S.String;
+
 export interface PortMapping {
   AcceleratorPort?: number;
   EndpointGroupArn?: string;
@@ -1602,6 +1708,7 @@ export const ListListenersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListListenersResponse",
 }) as any as S.Schema<ListListenersResponse>;
+export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -1982,110 +2089,7 @@ export const WithdrawByoipCidrResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WithdrawByoipCidrResponse",
 }) as any as S.Schema<WithdrawByoipCidrResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class EndpointAlreadyExistsException extends S.TaggedErrorClass<EndpointAlreadyExistsException>()(
-  "EndpointAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class EndpointGroupNotFoundException extends S.TaggedErrorClass<EndpointGroupNotFoundException>()(
-  "EndpointGroupNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
-  "InternalServiceErrorException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
-  "InvalidArgumentException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class TransactionInProgressException extends S.TaggedErrorClass<TransactionInProgressException>()(
-  "TransactionInProgressException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ByoipCidrNotFoundException extends S.TaggedErrorClass<ByoipCidrNotFoundException>()(
-  "ByoipCidrNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class IncorrectCidrStateException extends S.TaggedErrorClass<IncorrectCidrStateException>()(
-  "IncorrectCidrStateException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class AcceleratorNotFoundException extends S.TaggedErrorClass<AcceleratorNotFoundException>()(
-  "AcceleratorNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class EndpointGroupAlreadyExistsException extends S.TaggedErrorClass<EndpointGroupAlreadyExistsException>()(
-  "EndpointGroupAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class InvalidPortRangeException extends S.TaggedErrorClass<InvalidPortRangeException>()(
-  "InvalidPortRangeException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ListenerNotFoundException extends S.TaggedErrorClass<ListenerNotFoundException>()(
-  "ListenerNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class AcceleratorNotDisabledException extends S.TaggedErrorClass<AcceleratorNotDisabledException>()(
-  "AcceleratorNotDisabledException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AssociatedListenerFoundException extends S.TaggedErrorClass<AssociatedListenerFoundException>()(
-  "AssociatedListenerFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AttachmentNotFoundException extends S.TaggedErrorClass<AttachmentNotFoundException>()(
-  "AttachmentNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class AssociatedEndpointGroupFoundException extends S.TaggedErrorClass<AssociatedEndpointGroupFoundException>()(
-  "AssociatedEndpointGroupFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class EndpointNotFoundException extends S.TaggedErrorClass<EndpointNotFoundException>()(
-  "EndpointNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type AddCustomRoutingEndpointsError =
   | AccessDeniedException
   | ConflictException
@@ -2132,6 +2136,7 @@ export const addCustomRoutingEndpoints: API.OperationMethod<
   retry: Retry,
   operationName: "AddCustomRoutingEndpoints",
 }));
+
 export type AddEndpointsError =
   | AccessDeniedException
   | EndpointGroupNotFoundException
@@ -2180,6 +2185,7 @@ export const addEndpoints: API.OperationMethod<
   retry: Retry,
   operationName: "AddEndpoints",
 }));
+
 export type AdvertiseByoipCidrError =
   | AccessDeniedException
   | ByoipCidrNotFoundException
@@ -2217,6 +2223,7 @@ export const advertiseByoipCidr: API.OperationMethod<
   retry: Retry,
   operationName: "AdvertiseByoipCidr",
 }));
+
 export type AllowCustomRoutingTrafficError =
   | EndpointGroupNotFoundException
   | InternalServiceErrorException
@@ -2248,6 +2255,7 @@ export const allowCustomRoutingTraffic: API.OperationMethod<
   retry: Retry,
   operationName: "AllowCustomRoutingTraffic",
 }));
+
 export type CreateAcceleratorError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2282,6 +2290,7 @@ export const createAccelerator: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAccelerator",
 }));
+
 export type CreateCrossAccountAttachmentError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2330,6 +2339,7 @@ export const createCrossAccountAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCrossAccountAttachment",
 }));
+
 export type CreateCustomRoutingAcceleratorError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2369,6 +2379,7 @@ export const createCustomRoutingAccelerator: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCustomRoutingAccelerator",
 }));
+
 export type CreateCustomRoutingEndpointGroupError =
   | AcceleratorNotFoundException
   | AccessDeniedException
@@ -2406,6 +2417,7 @@ export const createCustomRoutingEndpointGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCustomRoutingEndpointGroup",
 }));
+
 export type CreateCustomRoutingListenerError =
   | AcceleratorNotFoundException
   | InternalServiceErrorException
@@ -2436,6 +2448,7 @@ export const createCustomRoutingListener: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCustomRoutingListener",
 }));
+
 export type CreateEndpointGroupError =
   | AcceleratorNotFoundException
   | AccessDeniedException
@@ -2474,6 +2487,7 @@ export const createEndpointGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEndpointGroup",
 }));
+
 export type CreateListenerError =
   | AcceleratorNotFoundException
   | InternalServiceErrorException
@@ -2504,6 +2518,7 @@ export const createListener: API.OperationMethod<
   retry: Retry,
   operationName: "CreateListener",
 }));
+
 export type DeleteAcceleratorError =
   | AcceleratorNotDisabledException
   | AcceleratorNotFoundException
@@ -2547,6 +2562,7 @@ export const deleteAccelerator: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccelerator",
 }));
+
 export type DeleteCrossAccountAttachmentError =
   | AccessDeniedException
   | AttachmentNotFoundException
@@ -2582,6 +2598,7 @@ export const deleteCrossAccountAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCrossAccountAttachment",
 }));
+
 export type DeleteCustomRoutingAcceleratorError =
   | AcceleratorNotDisabledException
   | AcceleratorNotFoundException
@@ -2625,6 +2642,7 @@ export const deleteCustomRoutingAccelerator: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCustomRoutingAccelerator",
 }));
+
 export type DeleteCustomRoutingEndpointGroupError =
   | EndpointGroupNotFoundException
   | InternalServiceErrorException
@@ -2650,6 +2668,7 @@ export const deleteCustomRoutingEndpointGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCustomRoutingEndpointGroup",
 }));
+
 export type DeleteCustomRoutingListenerError =
   | AssociatedEndpointGroupFoundException
   | InternalServiceErrorException
@@ -2677,6 +2696,7 @@ export const deleteCustomRoutingListener: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCustomRoutingListener",
 }));
+
 export type DeleteEndpointGroupError =
   | EndpointGroupNotFoundException
   | InternalServiceErrorException
@@ -2702,6 +2722,7 @@ export const deleteEndpointGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEndpointGroup",
 }));
+
 export type DeleteListenerError =
   | AssociatedEndpointGroupFoundException
   | InternalServiceErrorException
@@ -2729,6 +2750,7 @@ export const deleteListener: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteListener",
 }));
+
 export type DenyCustomRoutingTrafficError =
   | EndpointGroupNotFoundException
   | InternalServiceErrorException
@@ -2760,6 +2782,7 @@ export const denyCustomRoutingTraffic: API.OperationMethod<
   retry: Retry,
   operationName: "DenyCustomRoutingTraffic",
 }));
+
 export type DeprovisionByoipCidrError =
   | AccessDeniedException
   | ByoipCidrNotFoundException
@@ -2796,6 +2819,7 @@ export const deprovisionByoipCidr: API.OperationMethod<
   retry: Retry,
   operationName: "DeprovisionByoipCidr",
 }));
+
 export type DescribeAcceleratorError =
   | AcceleratorNotFoundException
   | InternalServiceErrorException
@@ -2821,6 +2845,7 @@ export const describeAccelerator: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccelerator",
 }));
+
 export type DescribeAcceleratorAttributesError =
   | AcceleratorNotFoundException
   | InternalServiceErrorException
@@ -2846,6 +2871,7 @@ export const describeAcceleratorAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAcceleratorAttributes",
 }));
+
 export type DescribeCrossAccountAttachmentError =
   | AccessDeniedException
   | AttachmentNotFoundException
@@ -2873,6 +2899,7 @@ export const describeCrossAccountAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCrossAccountAttachment",
 }));
+
 export type DescribeCustomRoutingAcceleratorError =
   | AcceleratorNotFoundException
   | InternalServiceErrorException
@@ -2898,6 +2925,7 @@ export const describeCustomRoutingAccelerator: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCustomRoutingAccelerator",
 }));
+
 export type DescribeCustomRoutingAcceleratorAttributesError =
   | AcceleratorNotFoundException
   | InternalServiceErrorException
@@ -2923,6 +2951,7 @@ export const describeCustomRoutingAcceleratorAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCustomRoutingAcceleratorAttributes",
 }));
+
 export type DescribeCustomRoutingEndpointGroupError =
   | EndpointGroupNotFoundException
   | InternalServiceErrorException
@@ -2948,6 +2977,7 @@ export const describeCustomRoutingEndpointGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCustomRoutingEndpointGroup",
 }));
+
 export type DescribeCustomRoutingListenerError =
   | InternalServiceErrorException
   | InvalidArgumentException
@@ -2973,6 +3003,7 @@ export const describeCustomRoutingListener: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCustomRoutingListener",
 }));
+
 export type DescribeEndpointGroupError =
   | EndpointGroupNotFoundException
   | InternalServiceErrorException
@@ -2998,6 +3029,7 @@ export const describeEndpointGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEndpointGroup",
 }));
+
 export type DescribeListenerError =
   | InternalServiceErrorException
   | InvalidArgumentException
@@ -3023,6 +3055,7 @@ export const describeListener: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeListener",
 }));
+
 export type ListAcceleratorsError =
   | InternalServiceErrorException
   | InvalidArgumentException
@@ -3069,6 +3102,7 @@ export const listAccelerators: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListByoipCidrsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3118,6 +3152,7 @@ export const listByoipCidrs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCrossAccountAttachmentsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3166,6 +3201,7 @@ export const listCrossAccountAttachments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCrossAccountResourceAccountsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3190,6 +3226,7 @@ export const listCrossAccountResourceAccounts: API.OperationMethod<
   retry: Retry,
   operationName: "ListCrossAccountResourceAccounts",
 }));
+
 export type ListCrossAccountResourcesError =
   | AcceleratorNotFoundException
   | AccessDeniedException
@@ -3240,6 +3277,7 @@ export const listCrossAccountResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCustomRoutingAcceleratorsError =
   | InternalServiceErrorException
   | InvalidArgumentException
@@ -3286,6 +3324,7 @@ export const listCustomRoutingAccelerators: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCustomRoutingEndpointGroupsError =
   | InternalServiceErrorException
   | InvalidArgumentException
@@ -3334,6 +3373,7 @@ export const listCustomRoutingEndpointGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCustomRoutingListenersError =
   | AcceleratorNotFoundException
   | InternalServiceErrorException
@@ -3382,6 +3422,7 @@ export const listCustomRoutingListeners: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCustomRoutingPortMappingsError =
   | AcceleratorNotFoundException
   | EndpointGroupNotFoundException
@@ -3442,6 +3483,7 @@ export const listCustomRoutingPortMappings: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCustomRoutingPortMappingsByDestinationError =
   | EndpointNotFoundException
   | InternalServiceErrorException
@@ -3493,6 +3535,7 @@ export const listCustomRoutingPortMappingsByDestination: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEndpointGroupsError =
   | InternalServiceErrorException
   | InvalidArgumentException
@@ -3541,6 +3584,7 @@ export const listEndpointGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListListenersError =
   | AcceleratorNotFoundException
   | InternalServiceErrorException
@@ -3589,6 +3633,7 @@ export const listListeners: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AcceleratorNotFoundException
   | AttachmentNotFoundException
@@ -3623,6 +3668,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ProvisionByoipCidrError =
   | AccessDeniedException
   | IncorrectCidrStateException
@@ -3658,6 +3704,7 @@ export const provisionByoipCidr: API.OperationMethod<
   retry: Retry,
   operationName: "ProvisionByoipCidr",
 }));
+
 export type RemoveCustomRoutingEndpointsError =
   | AccessDeniedException
   | ConflictException
@@ -3689,6 +3736,7 @@ export const removeCustomRoutingEndpoints: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveCustomRoutingEndpoints",
 }));
+
 export type RemoveEndpointsError =
   | AccessDeniedException
   | EndpointGroupNotFoundException
@@ -3731,6 +3779,7 @@ export const removeEndpoints: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveEndpoints",
 }));
+
 export type TagResourceError =
   | AcceleratorNotFoundException
   | InternalServiceErrorException
@@ -3759,6 +3808,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AcceleratorNotFoundException
   | InternalServiceErrorException
@@ -3788,6 +3838,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAcceleratorError =
   | AcceleratorNotFoundException
   | AccessDeniedException
@@ -3835,6 +3886,7 @@ export const updateAccelerator: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAccelerator",
 }));
+
 export type UpdateAcceleratorAttributesError =
   | AcceleratorNotFoundException
   | AccessDeniedException
@@ -3864,6 +3916,7 @@ export const updateAcceleratorAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAcceleratorAttributes",
 }));
+
 export type UpdateCrossAccountAttachmentError =
   | AccessDeniedException
   | AttachmentNotFoundException
@@ -3901,6 +3954,7 @@ export const updateCrossAccountAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCrossAccountAttachment",
 }));
+
 export type UpdateCustomRoutingAcceleratorError =
   | AcceleratorNotFoundException
   | ConflictException
@@ -3930,6 +3984,7 @@ export const updateCustomRoutingAccelerator: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCustomRoutingAccelerator",
 }));
+
 export type UpdateCustomRoutingAcceleratorAttributesError =
   | AcceleratorNotFoundException
   | AccessDeniedException
@@ -3959,6 +4014,7 @@ export const updateCustomRoutingAcceleratorAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCustomRoutingAcceleratorAttributes",
 }));
+
 export type UpdateCustomRoutingListenerError =
   | InternalServiceErrorException
   | InvalidArgumentException
@@ -3988,6 +4044,7 @@ export const updateCustomRoutingListener: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCustomRoutingListener",
 }));
+
 export type UpdateEndpointGroupError =
   | AccessDeniedException
   | EndpointGroupNotFoundException
@@ -4017,6 +4074,7 @@ export const updateEndpointGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEndpointGroup",
 }));
+
 export type UpdateListenerError =
   | InternalServiceErrorException
   | InvalidArgumentException
@@ -4046,6 +4104,7 @@ export const updateListener: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateListener",
 }));
+
 export type WithdrawByoipCidrError =
   | AccessDeniedException
   | ByoipCidrNotFoundException

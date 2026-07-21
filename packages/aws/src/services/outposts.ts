@@ -90,89 +90,44 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Message: S.optional(S.String),
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(
+      S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+    ),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type CapacityTaskId = string;
 export type OutpostIdentifier = string;
-export type ErrorMessage = string;
-export type OrderId = string;
-export type QuoteIdentifier = string;
-export type QuoteOptionIdentifier = string;
-export type SkuCode = string;
-export type LineItemQuantity = number;
-export type OutpostIdOnly = string;
-export type LineItemId = string;
-export type TrackingId = string;
-export type AssetId = string;
-export type MacAddress = string;
-export type ISO8601Timestamp = Date;
-export type OutpostName = string;
-export type OutpostDescription = string;
-export type SiteId = string;
-export type AvailabilityZone = string;
-export type AvailabilityZoneId = string;
-export type TagKey = string;
-export type TagValue = string;
-export type OutpostId = string;
-export type OwnerId = string;
-export type OutpostArn = string;
-export type LifeCycleStatus = string;
-export type SiteArn = string;
-export type CountryCode = string;
-export type ConstraintValue = string;
-export type QuoteDescription = string | redacted.Redacted<string>;
-export type QuoteId = string;
-export type AccountId = string;
-export type StatusMessage = string;
-export type RackId = string;
-export type Family = string;
-export type MaxSize = string;
-export type Quantity = string;
-export type OrderIdentifier = string;
-export type AutoFillIdempotencyToken = string;
-export type SiteName = string;
-export type SiteDescription = string;
-export type SiteNotes = string;
-export type ContactName = string;
-export type ContactPhoneNumber = string;
-export type AddressLine1 = string;
-export type AddressLine2 = string;
-export type AddressLine3 = string;
-export type City = string;
-export type StateOrRegion = string;
-export type DistrictOrCounty = string;
-export type PostalCode = string;
-export type Municipality = string;
-export type InstanceTypeName = string;
-export type InstanceTypeCount = number;
-export type InstanceId = string;
-export type DryRun = boolean;
-export type CapacityTaskStatusReason = string;
-export type CatalogItemPowerKva = number;
-export type CatalogItemWeightLbs = number;
-export type SupportedUplinkGbps = number;
-export type ConnectionId = string;
-export type WireGuardPublicKey = string;
-export type ServerEndpoint = string;
-export type CIDR = string;
-export type Token = string;
-export type MaxResults1000 = number;
-export type InstanceType = string;
-export type VCPUCount = number;
-export type AssetIdInput = string;
-export type OutpostInstanceType = string;
-export type HostId = string;
-export type InstanceFamilyName = string;
-export type RackElevation = number;
-export type MemoryInMib = number;
-export type NetworkPerformance = string;
-export type Arn = string;
-export type DeviceSerialNumber = string;
-export type NetworkInterfaceDeviceIndex = number;
-export type UnderlayIpAddress = string;
-export type ValidateOnly = boolean;
-export type OutpostIdentifierOrEmpty = string;
-
-//# Schemas
 export interface CancelCapacityTaskInput {
   CapacityTaskId: string;
   OutpostIdentifier: string;
@@ -203,8 +158,7 @@ export const CancelCapacityTaskOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelCapacityTaskOutput",
 }) as any as S.Schema<CancelCapacityTaskOutput>;
-export type ResourceType = "OUTPOST" | "ORDER" | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
+export type OrderId = string;
 export interface CancelOrderInput {
   OrderId: string;
 }
@@ -228,6 +182,10 @@ export const CancelOrderOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelOrderOutput",
 }) as any as S.Schema<CancelOrderOutput>;
+export type QuoteIdentifier = string;
+export type QuoteOptionIdentifier = string;
+export type SkuCode = string;
+export type LineItemQuantity = number;
 export interface LineItemRequest {
   CatalogItemId?: string;
   Quantity?: number;
@@ -249,12 +207,14 @@ export type PaymentOption =
   | "PARTIAL_UPFRONT"
   | (string & {});
 export const PaymentOption = /*@__PURE__*/ S.String;
+
 export type PaymentTerm =
   | "THREE_YEARS"
   | "ONE_YEAR"
   | "FIVE_YEARS"
   | (string & {});
 export const PaymentTerm = /*@__PURE__*/ S.String;
+
 export interface CreateOrderInput {
   OutpostIdentifier: string;
   QuoteIdentifier?: string;
@@ -284,6 +244,7 @@ export const CreateOrderInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOrderInput",
 }) as any as S.Schema<CreateOrderInput>;
+export type OutpostIdOnly = string;
 export type OrderStatus =
   | "RECEIVED"
   | "PENDING"
@@ -298,6 +259,8 @@ export type OrderStatus =
   | "ERROR"
   | (string & {});
 export const OrderStatus = /*@__PURE__*/ S.String;
+
+export type LineItemId = string;
 export type LineItemStatus =
   | "PREPARING"
   | "BUILDING"
@@ -310,6 +273,8 @@ export type LineItemStatus =
   | "REPLACED"
   | (string & {});
 export const LineItemStatus = /*@__PURE__*/ S.String;
+
+export type TrackingId = string;
 export type ShipmentCarrier =
   | "DHL"
   | "DBS"
@@ -318,6 +283,7 @@ export type ShipmentCarrier =
   | "EXPEDITORS"
   | (string & {});
 export const ShipmentCarrier = /*@__PURE__*/ S.String;
+
 export interface ShipmentInformation {
   ShipmentTrackingNumber?: string;
   ShipmentCarrier?: ShipmentCarrier;
@@ -330,6 +296,8 @@ export const ShipmentInformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ShipmentInformation",
 }) as any as S.Schema<ShipmentInformation>;
+export type AssetId = string;
+export type MacAddress = string;
 export type MacAddressList = string[];
 export const MacAddressList = /*@__PURE__*/ S.Array(S.String);
 export interface LineItemAssetInformation {
@@ -372,8 +340,10 @@ export const LineItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LineItem" }) as any as S.Schema<LineItem>;
 export type LineItemListDefinition = LineItem[];
 export const LineItemListDefinition = /*@__PURE__*/ S.Array(LineItem);
+export type ISO8601Timestamp = Date;
 export type OrderType = "OUTPOST" | "REPLACEMENT" | (string & {});
 export const OrderType = /*@__PURE__*/ S.String;
+
 export interface Order {
   OutpostId?: string;
   QuoteIdentifier?: string;
@@ -414,6 +384,13 @@ export const CreateOrderOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOrderOutput",
 }) as any as S.Schema<CreateOrderOutput>;
+export type OutpostName = string;
+export type OutpostDescription = string;
+export type SiteId = string;
+export type AvailabilityZone = string;
+export type AvailabilityZoneId = string;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -421,6 +398,7 @@ export const TagMap = /*@__PURE__*/ S.Record(
 );
 export type SupportedHardwareType = "RACK" | "SERVER" | (string & {});
 export const SupportedHardwareType = /*@__PURE__*/ S.String;
+
 export interface CreateOutpostInput {
   Name: string;
   Description?: string;
@@ -452,6 +430,11 @@ export const CreateOutpostInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOutpostInput",
 }) as any as S.Schema<CreateOutpostInput>;
+export type OutpostId = string;
+export type OwnerId = string;
+export type OutpostArn = string;
+export type LifeCycleStatus = string;
+export type SiteArn = string;
 export interface Outpost {
   OutpostId?: string;
   OwnerId?: string;
@@ -490,8 +473,10 @@ export const CreateOutpostOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOutpostOutput",
 }) as any as S.Schema<CreateOutpostOutput>;
+export type CountryCode = string;
 export type QuoteCapacityType = "EC2" | "EBS" | "S3" | (string & {});
 export const QuoteCapacityType = /*@__PURE__*/ S.String;
+
 export interface QuoteCapacity {
   QuoteCapacityType?: QuoteCapacityType;
   Unit?: string;
@@ -512,6 +497,8 @@ export type QuoteConstraintType =
   | "RACK_MAX_WEIGHT_LBS"
   | (string & {});
 export const QuoteConstraintType = /*@__PURE__*/ S.String;
+
+export type ConstraintValue = string;
 export interface QuoteConstraint {
   QuoteConstraintType?: QuoteConstraintType;
   Value?: string;
@@ -530,6 +517,7 @@ export type PaymentOptionList = PaymentOption[];
 export const PaymentOptionList = /*@__PURE__*/ S.Array(PaymentOption);
 export type PaymentTermList = PaymentTerm[];
 export const PaymentTermList = /*@__PURE__*/ S.Array(PaymentTerm);
+export type QuoteDescription = string | redacted.Redacted<string>;
 export interface CreateQuoteInput {
   OutpostIdentifier?: string;
   CountryCode: string;
@@ -561,12 +549,16 @@ export const CreateQuoteInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateQuoteInput",
 }) as any as S.Schema<CreateQuoteInput>;
+export type QuoteId = string;
+export type AccountId = string;
 export type QuoteStatus =
   | "CREATED"
   | "ORDER_SUBMITTED"
   | "EXPIRED"
   | (string & {});
 export const QuoteStatus = /*@__PURE__*/ S.String;
+
+export type StatusMessage = string;
 export interface CapacitySummary {
   ExistingCapacities?: QuoteCapacity[];
   FinalCapacities?: QuoteCapacity[];
@@ -588,14 +580,21 @@ export type QuoteSpecificationType =
   | "SERVER"
   | (string & {});
 export const QuoteSpecificationType = /*@__PURE__*/ S.String;
+
+export type RackId = string;
 export type QuoteRackUseType = "NETWORKING" | "COMPUTE" | (string & {});
 export const QuoteRackUseType = /*@__PURE__*/ S.String;
+
 export type RackUnitHeight =
   | "HEIGHT_42U"
   | "HEIGHT_2U"
   | "HEIGHT_1U"
   | (string & {});
 export const RackUnitHeight = /*@__PURE__*/ S.String;
+
+export type Family = string;
+export type MaxSize = string;
+export type Quantity = string;
 export interface EC2Capacity {
   Family?: string;
   MaxSize?: string;
@@ -678,8 +677,10 @@ export type QuoteSpecificationList = QuoteSpecification[];
 export const QuoteSpecificationList = /*@__PURE__*/ S.Array(QuoteSpecification);
 export type QuotePricingType = "SUBSCRIPTION" | (string & {});
 export const QuotePricingType = /*@__PURE__*/ S.String;
+
 export type CurrencyCode = "USD" | (string & {});
 export const CurrencyCode = /*@__PURE__*/ S.String;
+
 export interface SubscriptionPricingDetails {
   PaymentOption?: PaymentOption;
   PaymentTerm?: PaymentTerm;
@@ -748,12 +749,14 @@ export type OrderingRequirementType =
   | "OUTPOST_RENEWAL_REQUIRED_ERROR"
   | (string & {});
 export const OrderingRequirementType = /*@__PURE__*/ S.String;
+
 export type OrderingRequirementStatus =
   | "PASS"
   | "FAIL"
   | "EXEMPT"
   | (string & {});
 export const OrderingRequirementStatus = /*@__PURE__*/ S.String;
+
 export interface OrderingRequirement {
   StatusMessage?: string;
   OrderingRequirementType?: OrderingRequirementType;
@@ -771,6 +774,7 @@ export const OrderingRequirement = /*@__PURE__*/ S.suspend(() =>
 export type OrderingRequirementList = OrderingRequirement[];
 export const OrderingRequirementList =
   /*@__PURE__*/ S.Array(OrderingRequirement);
+export type OrderIdentifier = string;
 export interface Quote {
   QuoteId?: string;
   AccountId?: string;
@@ -817,6 +821,7 @@ export const CreateQuoteOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateQuoteOutput",
 }) as any as S.Schema<CreateQuoteOutput>;
+export type AutoFillIdempotencyToken = string;
 export interface CreateRenewalInput {
   PaymentOption: PaymentOption;
   PaymentTerm: PaymentTerm;
@@ -862,6 +867,19 @@ export const CreateRenewalOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRenewalOutput",
 }) as any as S.Schema<CreateRenewalOutput>;
+export type SiteName = string;
+export type SiteDescription = string;
+export type SiteNotes = string;
+export type ContactName = string;
+export type ContactPhoneNumber = string;
+export type AddressLine1 = string;
+export type AddressLine2 = string;
+export type AddressLine3 = string;
+export type City = string;
+export type StateOrRegion = string;
+export type DistrictOrCounty = string;
+export type PostalCode = string;
+export type Municipality = string;
 export interface Address {
   ContactName: string;
   ContactPhoneNumber: string;
@@ -897,8 +915,10 @@ export type PowerDrawKva =
   | "POWER_30_KVA"
   | (string & {});
 export const PowerDrawKva = /*@__PURE__*/ S.String;
+
 export type PowerPhase = "SINGLE_PHASE" | "THREE_PHASE" | (string & {});
 export const PowerPhase = /*@__PURE__*/ S.String;
+
 export type PowerConnector =
   | "L6_30P"
   | "IEC309"
@@ -907,8 +927,10 @@ export type PowerConnector =
   | "CS8365C"
   | (string & {});
 export const PowerConnector = /*@__PURE__*/ S.String;
+
 export type PowerFeedDrop = "ABOVE_RACK" | "BELOW_RACK" | (string & {});
 export const PowerFeedDrop = /*@__PURE__*/ S.String;
+
 export type UplinkGbps =
   | "UPLINK_1G"
   | "UPLINK_10G"
@@ -916,6 +938,7 @@ export type UplinkGbps =
   | "UPLINK_100G"
   | (string & {});
 export const UplinkGbps = /*@__PURE__*/ S.String;
+
 export type UplinkCount =
   | "UPLINK_COUNT_1"
   | "UPLINK_COUNT_2"
@@ -929,8 +952,10 @@ export type UplinkCount =
   | "UPLINK_COUNT_16"
   | (string & {});
 export const UplinkCount = /*@__PURE__*/ S.String;
+
 export type FiberOpticCableType = "SINGLE_MODE" | "MULTI_MODE" | (string & {});
 export const FiberOpticCableType = /*@__PURE__*/ S.String;
+
 export type OpticalStandard =
   | "OPTIC_10GBASE_SR"
   | "OPTIC_10GBASE_IR"
@@ -947,6 +972,7 @@ export type OpticalStandard =
   | "OPTIC_1000BASE_SX"
   | (string & {});
 export const OpticalStandard = /*@__PURE__*/ S.String;
+
 export type MaximumSupportedWeightLbs =
   | "NO_LIMIT"
   | "MAX_1400_LBS"
@@ -955,6 +981,7 @@ export type MaximumSupportedWeightLbs =
   | "MAX_2000_LBS"
   | (string & {});
 export const MaximumSupportedWeightLbs = /*@__PURE__*/ S.String;
+
 export interface RackPhysicalProperties {
   PowerDrawKva?: PowerDrawKva;
   PowerPhase?: PowerPhase;
@@ -1143,6 +1170,8 @@ export const GetCapacityTaskInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCapacityTaskInput",
 }) as any as S.Schema<GetCapacityTaskInput>;
+export type InstanceTypeName = string;
+export type InstanceTypeCount = number;
 export interface InstanceTypeCapacity {
   InstanceType: string;
   Count: number;
@@ -1155,6 +1184,7 @@ export const InstanceTypeCapacity = /*@__PURE__*/ S.suspend(() =>
 export type RequestedInstancePools = InstanceTypeCapacity[];
 export const RequestedInstancePools =
   /*@__PURE__*/ S.Array(InstanceTypeCapacity);
+export type InstanceId = string;
 export type InstanceIdList = string[];
 export const InstanceIdList = /*@__PURE__*/ S.Array(S.String);
 export type AccountIdList = string[];
@@ -1168,6 +1198,7 @@ export type AWSServiceName =
   | "ROUTE53"
   | (string & {});
 export const AWSServiceName = /*@__PURE__*/ S.String;
+
 export type AWSServiceNameList = AWSServiceName[];
 export const AWSServiceNameList = /*@__PURE__*/ S.Array(AWSServiceName);
 export interface InstancesToExclude {
@@ -1184,6 +1215,7 @@ export const InstancesToExclude = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstancesToExclude",
 }) as any as S.Schema<InstancesToExclude>;
+export type DryRun = boolean;
 export type CapacityTaskStatus =
   | "REQUESTED"
   | "IN_PROGRESS"
@@ -1194,6 +1226,8 @@ export type CapacityTaskStatus =
   | "CANCELLED"
   | (string & {});
 export const CapacityTaskStatus = /*@__PURE__*/ S.String;
+
+export type CapacityTaskStatusReason = string;
 export type CapacityTaskFailureType =
   | "UNSUPPORTED_CAPACITY_CONFIGURATION"
   | "UNEXPECTED_ASSET_STATE"
@@ -1202,6 +1236,7 @@ export type CapacityTaskFailureType =
   | "RESOURCE_NOT_FOUND"
   | (string & {});
 export const CapacityTaskFailureType = /*@__PURE__*/ S.String;
+
 export interface CapacityTaskFailure {
   Reason: string;
   Type?: CapacityTaskFailureType;
@@ -1216,6 +1251,7 @@ export type TaskActionOnBlockingInstances =
   | "FAIL_TASK"
   | (string & {});
 export const TaskActionOnBlockingInstances = /*@__PURE__*/ S.String;
+
 export interface GetCapacityTaskOutput {
   CapacityTaskId?: string;
   OutpostId?: string;
@@ -1271,12 +1307,17 @@ export const GetCatalogItemInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCatalogItemInput>;
 export type CatalogItemStatus = "AVAILABLE" | "DISCONTINUED" | (string & {});
 export const CatalogItemStatus = /*@__PURE__*/ S.String;
+
+export type CatalogItemPowerKva = number;
+export type CatalogItemWeightLbs = number;
+export type SupportedUplinkGbps = number;
 export type SupportedUplinkGbpsListDefinition = number[];
 export const SupportedUplinkGbpsListDefinition = /*@__PURE__*/ S.Array(
   S.Number,
 );
 export type SupportedStorageEnum = "EBS" | "S3" | (string & {});
 export const SupportedStorageEnum = /*@__PURE__*/ S.String;
+
 export type SupportedStorageList = SupportedStorageEnum[];
 export const SupportedStorageList = /*@__PURE__*/ S.Array(SupportedStorageEnum);
 export interface CatalogItem {
@@ -1307,6 +1348,7 @@ export const GetCatalogItemOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCatalogItemOutput",
 }) as any as S.Schema<GetCatalogItemOutput>;
+export type ConnectionId = string;
 export interface GetConnectionRequest {
   ConnectionId: string;
 }
@@ -1324,6 +1366,9 @@ export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConnectionRequest",
 }) as any as S.Schema<GetConnectionRequest>;
+export type WireGuardPublicKey = string;
+export type ServerEndpoint = string;
+export type CIDR = string;
 export type CIDRList = string[];
 export const CIDRList = /*@__PURE__*/ S.Array(S.String);
 export interface ConnectionDetails {
@@ -1404,6 +1449,8 @@ export const GetOutpostOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOutpostOutput",
 }) as any as S.Schema<GetOutpostOutput>;
+export type Token = string;
+export type MaxResults1000 = number;
 export interface GetOutpostBillingInformationInput {
   NextToken?: string;
   MaxResults?: number;
@@ -1436,6 +1483,7 @@ export type SubscriptionType =
   | "CAPACITY_INCREASE"
   | (string & {});
 export const SubscriptionType = /*@__PURE__*/ S.String;
+
 export type SubscriptionStatus =
   | "ACTIVE"
   | "PENDING"
@@ -1443,6 +1491,7 @@ export type SubscriptionStatus =
   | "CANCELLED"
   | (string & {});
 export const SubscriptionStatus = /*@__PURE__*/ S.String;
+
 export type OrderIdList = string[];
 export const OrderIdList = /*@__PURE__*/ S.Array(S.String);
 export interface Subscription {
@@ -1512,6 +1561,8 @@ export const GetOutpostInstanceTypesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOutpostInstanceTypesInput",
 }) as any as S.Schema<GetOutpostInstanceTypesInput>;
+export type InstanceType = string;
+export type VCPUCount = number;
 export interface InstanceTypeItem {
   InstanceType?: string;
   VCPUs?: number;
@@ -1540,6 +1591,7 @@ export const GetOutpostInstanceTypesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOutpostInstanceTypesOutput",
 }) as any as S.Schema<GetOutpostInstanceTypesOutput>;
+export type AssetIdInput = string;
 export interface GetOutpostSupportedInstanceTypesInput {
   OutpostIdentifier: string;
   OrderId?: string;
@@ -1631,6 +1683,7 @@ export const GetRenewalPricingInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRenewalPricingInput>;
 export type PricingResult = "PRICED" | "UNABLE_TO_PRICE" | (string & {});
 export const PricingResult = /*@__PURE__*/ S.String;
+
 export interface GetRenewalPricingOutput {
   PricingResult?: PricingResult;
   PricingOptions?: PricingOption[];
@@ -1669,6 +1722,7 @@ export type AddressType =
   | "OPERATING_ADDRESS"
   | (string & {});
 export const AddressType = /*@__PURE__*/ S.String;
+
 export interface GetSiteAddressInput {
   SiteId: string;
   AddressType: AddressType;
@@ -1706,6 +1760,7 @@ export const GetSiteAddressOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSiteAddressOutput>;
 export type AssetIdList = string[];
 export const AssetIdList = /*@__PURE__*/ S.Array(S.String);
+export type OutpostInstanceType = string;
 export type OutpostInstanceTypeList = string[];
 export const OutpostInstanceTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface ListAssetInstancesInput {
@@ -1778,6 +1833,7 @@ export const ListAssetInstancesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAssetInstancesOutput",
 }) as any as S.Schema<ListAssetInstancesOutput>;
+export type HostId = string;
 export type HostIdList = string[];
 export const HostIdList = /*@__PURE__*/ S.Array(S.String);
 export type AssetState =
@@ -1787,6 +1843,7 @@ export type AssetState =
   | "INSTALLING"
   | (string & {});
 export const AssetState = /*@__PURE__*/ S.String;
+
 export type StatusList = AssetState[];
 export const StatusList = /*@__PURE__*/ S.Array(AssetState);
 export type AssetType =
@@ -1797,6 +1854,7 @@ export type AssetType =
   | "NETWORKING"
   | (string & {});
 export const AssetType = /*@__PURE__*/ S.String;
+
 export type AssetTypeList = AssetType[];
 export const AssetTypeList = /*@__PURE__*/ S.Array(AssetType);
 export interface ListAssetsInput {
@@ -1837,6 +1895,8 @@ export type ComputeAssetState =
   | "INSTALLING"
   | (string & {});
 export const ComputeAssetState = /*@__PURE__*/ S.String;
+
+export type InstanceFamilyName = string;
 export type InstanceFamilies = string[];
 export const InstanceFamilies = /*@__PURE__*/ S.Array(S.String);
 export interface AssetInstanceTypeCapacity {
@@ -1870,6 +1930,7 @@ export const ComputeAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ComputeAttributes",
 }) as any as S.Schema<ComputeAttributes>;
+export type RackElevation = number;
 export interface AssetLocation {
   RackElevation?: number;
 }
@@ -2037,6 +2098,7 @@ export const ListCapacityTasksOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCapacityTasksOutput>;
 export type CatalogItemClass = "RACK" | "SERVER" | (string & {});
 export const CatalogItemClass = /*@__PURE__*/ S.String;
+
 export type CatalogItemClassList = CatalogItemClass[];
 export const CatalogItemClassList = /*@__PURE__*/ S.Array(CatalogItemClass);
 export type EC2FamilyList = string[];
@@ -2090,6 +2152,7 @@ export const ListCatalogItemsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCatalogItemsOutput>;
 export type OutpostGeneration = "GENERATION_2" | "GENERATION_1" | (string & {});
 export const OutpostGeneration = /*@__PURE__*/ S.String;
+
 export interface ListOrderableInstanceTypesInput {
   OutpostGenerationFilter?: OutpostGeneration;
   MaxResults?: number;
@@ -2115,8 +2178,11 @@ export const ListOrderableInstanceTypesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOrderableInstanceTypesInput",
 }) as any as S.Schema<ListOrderableInstanceTypesInput>;
+export type MemoryInMib = number;
+export type NetworkPerformance = string;
 export type FormFactor = "RACK" | "SERVER" | (string & {});
 export const FormFactor = /*@__PURE__*/ S.String;
+
 export interface FormFactorConfig {
   FormFactor?: FormFactor;
   OutpostGeneration?: OutpostGeneration;
@@ -2408,6 +2474,7 @@ export const ListSitesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSitesOutput",
 }) as any as S.Schema<ListSitesOutput>;
+export type Arn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -2500,6 +2567,8 @@ export const StartCapacityTaskOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartCapacityTaskOutput",
 }) as any as S.Schema<StartCapacityTaskOutput>;
+export type DeviceSerialNumber = string;
+export type NetworkInterfaceDeviceIndex = number;
 export interface StartConnectionRequest {
   DeviceSerialNumber?: string;
   AssetId: string;
@@ -2525,6 +2594,7 @@ export const StartConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartConnectionRequest",
 }) as any as S.Schema<StartConnectionRequest>;
+export type UnderlayIpAddress = string;
 export interface StartConnectionResponse {
   ConnectionId?: string;
   UnderlayIpAddress?: string;
@@ -2537,6 +2607,7 @@ export const StartConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartConnectionResponse",
 }) as any as S.Schema<StartConnectionResponse>;
+export type ValidateOnly = boolean;
 export interface StartOutpostDecommissionInput {
   OutpostIdentifier: string;
   ValidateOnly?: boolean;
@@ -2567,6 +2638,7 @@ export type DecommissionRequestStatus =
   | "REQUESTED"
   | (string & {});
 export const DecommissionRequestStatus = /*@__PURE__*/ S.String;
+
 export type BlockingResourceType =
   | "EC2_INSTANCE"
   | "OUTPOST_RAM_SHARE"
@@ -2577,6 +2649,7 @@ export type BlockingResourceType =
   | "OUTPOST_ORDER_INTERVENTION_REQUIRED"
   | (string & {});
 export const BlockingResourceType = /*@__PURE__*/ S.String;
+
 export type BlockingResourceTypeList = BlockingResourceType[];
 export const BlockingResourceTypeList =
   /*@__PURE__*/ S.Array(BlockingResourceType);
@@ -2681,6 +2754,7 @@ export const UpdateOutpostOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateOutpostOutput",
 }) as any as S.Schema<UpdateOutpostOutput>;
+export type OutpostIdentifierOrEmpty = string;
 export interface UpdateQuoteInput {
   QuoteIdentifier: string;
   OutpostIdentifier?: string;
@@ -2839,44 +2913,10 @@ export const UpdateSiteRackPhysicalPropertiesOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateSiteRackPhysicalPropertiesOutput",
 }) as any as S.Schema<UpdateSiteRackPhysicalPropertiesOutput>;
+export type ErrorMessage = string;
+export type ResourceType = "OUTPOST" | "ORDER" | (string & {});
+export const ResourceType = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Message: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(ResourceType),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
 export type CancelCapacityTaskError =
   | AccessDeniedException
   | ConflictException
@@ -2906,6 +2946,7 @@ export const cancelCapacityTask: API.OperationMethod<
   retry: Retry,
   operationName: "CancelCapacityTask",
 }));
+
 export type CancelOrderError =
   | AccessDeniedException
   | ConflictException
@@ -2935,6 +2976,7 @@ export const cancelOrder: API.OperationMethod<
   retry: Retry,
   operationName: "CancelOrder",
 }));
+
 export type CreateOrderError =
   | AccessDeniedException
   | ConflictException
@@ -2966,6 +3008,7 @@ export const createOrder: API.OperationMethod<
   retry: Retry,
   operationName: "CreateOrder",
 }));
+
 export type CreateOutpostError =
   | AccessDeniedException
   | ConflictException
@@ -2999,6 +3042,7 @@ export const createOutpost: API.OperationMethod<
   retry: Retry,
   operationName: "CreateOutpost",
 }));
+
 export type CreateQuoteError =
   | AccessDeniedException
   | InternalServerException
@@ -3028,6 +3072,7 @@ export const createQuote: API.OperationMethod<
   retry: Retry,
   operationName: "CreateQuote",
 }));
+
 export type CreateRenewalError =
   | AccessDeniedException
   | InternalServerException
@@ -3055,6 +3100,7 @@ export const createRenewal: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRenewal",
 }));
+
 export type CreateSiteError =
   | AccessDeniedException
   | ConflictException
@@ -3084,6 +3130,7 @@ export const createSite: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSite",
 }));
+
 export type DeleteOutpostError =
   | AccessDeniedException
   | ConflictException
@@ -3113,6 +3160,7 @@ export const deleteOutpost: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteOutpost",
 }));
+
 export type DeleteQuoteError =
   | AccessDeniedException
   | InternalServerException
@@ -3140,6 +3188,7 @@ export const deleteQuote: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteQuote",
 }));
+
 export type DeleteSiteError =
   | AccessDeniedException
   | ConflictException
@@ -3169,6 +3218,7 @@ export const deleteSite: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSite",
 }));
+
 export type GetCapacityTaskError =
   | AccessDeniedException
   | InternalServerException
@@ -3196,6 +3246,7 @@ export const getCapacityTask: API.OperationMethod<
   retry: Retry,
   operationName: "GetCapacityTask",
 }));
+
 export type GetCatalogItemError =
   | AccessDeniedException
   | InternalServerException
@@ -3223,6 +3274,7 @@ export const getCatalogItem: API.OperationMethod<
   retry: Retry,
   operationName: "GetCatalogItem",
 }));
+
 export type GetConnectionError =
   | AccessDeniedException
   | InternalServerException
@@ -3257,6 +3309,7 @@ export const getConnection: API.OperationMethod<
   retry: Retry,
   operationName: "GetConnection",
 }));
+
 export type GetOrderError =
   | InternalServerException
   | NotFoundException
@@ -3278,6 +3331,7 @@ export const getOrder: API.OperationMethod<
   retry: Retry,
   operationName: "GetOrder",
 }));
+
 export type GetOutpostError =
   | AccessDeniedException
   | InternalServerException
@@ -3305,6 +3359,7 @@ export const getOutpost: API.OperationMethod<
   retry: Retry,
   operationName: "GetOutpost",
 }));
+
 export type GetOutpostBillingInformationError =
   | AccessDeniedException
   | InternalServerException
@@ -3347,6 +3402,7 @@ export const getOutpostBillingInformation: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetOutpostInstanceTypesError =
   | AccessDeniedException
   | InternalServerException
@@ -3395,6 +3451,7 @@ export const getOutpostInstanceTypes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetOutpostSupportedInstanceTypesError =
   | AccessDeniedException
   | InternalServerException
@@ -3445,6 +3502,7 @@ export const getOutpostSupportedInstanceTypes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetQuoteError =
   | AccessDeniedException
   | InternalServerException
@@ -3472,6 +3530,7 @@ export const getQuote: API.OperationMethod<
   retry: Retry,
   operationName: "GetQuote",
 }));
+
 export type GetRenewalPricingError =
   | AccessDeniedException
   | InternalServerException
@@ -3499,6 +3558,7 @@ export const getRenewalPricing: API.OperationMethod<
   retry: Retry,
   operationName: "GetRenewalPricing",
 }));
+
 export type GetSiteError =
   | AccessDeniedException
   | InternalServerException
@@ -3526,6 +3586,7 @@ export const getSite: API.OperationMethod<
   retry: Retry,
   operationName: "GetSite",
 }));
+
 export type GetSiteAddressError =
   | AccessDeniedException
   | InternalServerException
@@ -3553,6 +3614,7 @@ export const getSiteAddress: API.OperationMethod<
   retry: Retry,
   operationName: "GetSiteAddress",
 }));
+
 export type ListAssetInstancesError =
   | AccessDeniedException
   | InternalServerException
@@ -3602,6 +3664,7 @@ export const listAssetInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAssetsError =
   | AccessDeniedException
   | InternalServerException
@@ -3654,6 +3717,7 @@ export const listAssets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListBlockingInstancesForCapacityTaskError =
   | AccessDeniedException
   | InternalServerException
@@ -3704,6 +3768,7 @@ export const listBlockingInstancesForCapacityTask: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCapacityTasksError =
   | AccessDeniedException
   | InternalServerException
@@ -3756,6 +3821,7 @@ export const listCapacityTasks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCatalogItemsError =
   | AccessDeniedException
   | InternalServerException
@@ -3808,6 +3874,7 @@ export const listCatalogItems: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOrderableInstanceTypesError =
   | AccessDeniedException
   | InternalServerException
@@ -3857,6 +3924,7 @@ export const listOrderableInstanceTypes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOrdersError =
   | AccessDeniedException
   | InternalServerException
@@ -3905,6 +3973,7 @@ export const listOrders: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOutpostsError =
   | AccessDeniedException
   | InternalServerException
@@ -3951,6 +4020,7 @@ export const listOutposts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListQuotesError =
   | AccessDeniedException
   | InternalServerException
@@ -3992,6 +4062,7 @@ export const listQuotes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSitesError =
   | AccessDeniedException
   | InternalServerException
@@ -4039,6 +4110,7 @@ export const listSites: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | NotFoundException
@@ -4060,6 +4132,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type StartCapacityTaskError =
   | AccessDeniedException
   | ConflictException
@@ -4090,6 +4163,7 @@ export const startCapacityTask: API.OperationMethod<
   retry: Retry,
   operationName: "StartCapacityTask",
 }));
+
 export type StartConnectionError =
   | AccessDeniedException
   | InternalServerException
@@ -4124,6 +4198,7 @@ export const startConnection: API.OperationMethod<
   retry: Retry,
   operationName: "StartConnection",
 }));
+
 export type StartOutpostDecommissionError =
   | AccessDeniedException
   | ConflictException
@@ -4153,6 +4228,7 @@ export const startOutpostDecommission: API.OperationMethod<
   retry: Retry,
   operationName: "StartOutpostDecommission",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | NotFoundException
@@ -4174,6 +4250,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | NotFoundException
@@ -4195,6 +4272,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateOutpostError =
   | AccessDeniedException
   | ConflictException
@@ -4224,6 +4302,7 @@ export const updateOutpost: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateOutpost",
 }));
+
 export type UpdateQuoteError =
   | AccessDeniedException
   | InternalServerException
@@ -4252,6 +4331,7 @@ export const updateQuote: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateQuote",
 }));
+
 export type UpdateSiteError =
   | AccessDeniedException
   | ConflictException
@@ -4281,6 +4361,7 @@ export const updateSite: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSite",
 }));
+
 export type UpdateSiteAddressError =
   | AccessDeniedException
   | ConflictException
@@ -4316,6 +4397,7 @@ export const updateSiteAddress: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSiteAddress",
 }));
+
 export type UpdateSiteRackPhysicalPropertiesError =
   | AccessDeniedException
   | ConflictException

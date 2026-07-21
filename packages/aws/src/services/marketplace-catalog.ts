@@ -94,75 +94,48 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
+  "InternalServiceException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { Message: S.optional(S.String) },
+  T.HttpError(423),
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotSupportedException extends S.TaggedErrorClass<ResourceNotSupportedException>()(
+  "ResourceNotSupportedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(415),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(422),
+).pipe(C.withBadRequestError) {}
 export type Catalog = string;
 export type EntityId = string;
-export type EntityType = string;
-export type ARN = string;
-export type Identifier = string;
-export type DateTimeISO8601 = string;
-export type JsonDocumentType = unknown;
-export type BatchDescribeErrorCodeString = string;
-export type BatchDescribeErrorMessageContent = string;
-export type ExceptionMessageContent = string;
-export type ResourceId = string;
-export type ResourceARN = string;
-export type ChangeSetName = string;
-export type ChangeType = string;
-export type Json = string;
-export type ErrorCodeString = string;
-export type ChangeName = string;
-export type ResourcePolicyJson = string;
-export type FilterName = string;
-export type FilterValueContent = string;
-export type SortBy = string;
-export type ListChangeSetsMaxResultInteger = number;
-export type NextToken = string;
-export type ListEntitiesMaxResultInteger = number;
-export type DataProductEntityIdString = string;
-export type DataProductTitleString = string;
-export type SaaSProductEntityIdString = string;
-export type SaaSProductTitleString = string;
-export type AmiProductEntityIdString = string;
-export type AmiProductTitleString = string;
-export type OfferEntityIdString = string;
-export type OfferNameString = string;
-export type OfferProductIdString = string;
-export type OfferResaleAuthorizationIdString = string;
-export type OfferBuyerAccountsFilterWildcard = string;
-export type OfferSetIdString = string;
-export type ContainerProductEntityIdString = string;
-export type ContainerProductTitleString = string;
-export type ResaleAuthorizationEntityIdString = string;
-export type ResaleAuthorizationNameString = string;
-export type ResaleAuthorizationNameFilterWildcard = string;
-export type ResaleAuthorizationProductIdString = string;
-export type ResaleAuthorizationProductIdFilterWildcard = string;
-export type ResaleAuthorizationManufacturerAccountIdString = string;
-export type ResaleAuthorizationManufacturerAccountIdFilterWildcard = string;
-export type ResaleAuthorizationProductNameString = string;
-export type ResaleAuthorizationProductNameFilterWildcard = string;
-export type ResaleAuthorizationManufacturerLegalNameString = string;
-export type ResaleAuthorizationManufacturerLegalNameFilterWildcard = string;
-export type ResaleAuthorizationResellerAccountIDString = string;
-export type ResaleAuthorizationResellerAccountIDFilterWildcard = string;
-export type ResaleAuthorizationResellerLegalNameString = string;
-export type ResaleAuthorizationResellerLegalNameFilterWildcard = string;
-export type ResaleAuthorizationOfferExtendedStatusString = string;
-export type MachineLearningProductEntityIdString = string;
-export type MachineLearningProductTitleString = string;
-export type OfferSetEntityIdString = string;
-export type OfferSetNameString = string;
-export type OfferSetAssociatedOfferIdsString = string;
-export type OfferSetSolutionIdString = string;
-export type EntityNameString = string;
-export type VisibilityValue = string;
-export type OfferBuyerAccountsString = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ClientRequestToken = string;
-
-//# Schemas
 export interface EntityRequest {
   Catalog: string;
   EntityId: string;
@@ -189,6 +162,11 @@ export const BatchDescribeEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDescribeEntitiesRequest",
 }) as any as S.Schema<BatchDescribeEntitiesRequest>;
+export type EntityType = string;
+export type ARN = string;
+export type Identifier = string;
+export type DateTimeISO8601 = string;
+export type JsonDocumentType = unknown;
 export interface EntityDetail {
   EntityType?: string;
   EntityArn?: string;
@@ -210,6 +188,8 @@ export const EntityDetails = /*@__PURE__*/ S.Record(
   S.String,
   EntityDetail.pipe(S.optional),
 );
+export type BatchDescribeErrorCodeString = string;
+export type BatchDescribeErrorMessageContent = string;
 export interface BatchDescribeErrorDetail {
   ErrorCode?: string;
   ErrorMessage?: string;
@@ -239,6 +219,7 @@ export const BatchDescribeEntitiesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDescribeEntitiesResponse",
 }) as any as S.Schema<BatchDescribeEntitiesResponse>;
+export type ResourceId = string;
 export interface CancelChangeSetRequest {
   Catalog: string;
   ChangeSetId: string;
@@ -272,6 +253,7 @@ export const CancelChangeSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelChangeSetResponse",
 }) as any as S.Schema<CancelChangeSetResponse>;
+export type ResourceARN = string;
 export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
 }
@@ -316,8 +298,10 @@ export const DescribeChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeChangeSetRequest",
 }) as any as S.Schema<DescribeChangeSetRequest>;
+export type ChangeSetName = string;
 export type Intent = "VALIDATE" | "APPLY" | (string & {});
 export const Intent = /*@__PURE__*/ S.String;
+
 export type ChangeStatus =
   | "PREPARING"
   | "APPLYING"
@@ -326,8 +310,12 @@ export type ChangeStatus =
   | "FAILED"
   | (string & {});
 export const ChangeStatus = /*@__PURE__*/ S.String;
+
 export type FailureCode = "CLIENT_ERROR" | "SERVER_FAULT" | (string & {});
 export const FailureCode = /*@__PURE__*/ S.String;
+
+export type ExceptionMessageContent = string;
+export type ChangeType = string;
 export interface Entity {
   Type: string;
   Identifier?: string;
@@ -335,6 +323,8 @@ export interface Entity {
 export const Entity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: S.String, Identifier: S.optional(S.String) }),
 ).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
+export type Json = string;
+export type ErrorCodeString = string;
 export interface ErrorDetail {
   ErrorCode?: string;
   ErrorMessage?: string;
@@ -347,6 +337,7 @@ export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
 export type ErrorDetailList = ErrorDetail[];
 export const ErrorDetailList = /*@__PURE__*/ S.Array(ErrorDetail);
+export type ChangeName = string;
 export interface ChangeSummary {
   ChangeType?: string;
   Entity?: Entity;
@@ -453,6 +444,7 @@ export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyRequest",
 }) as any as S.Schema<GetResourcePolicyRequest>;
+export type ResourcePolicyJson = string;
 export interface GetResourcePolicyResponse {
   Policy?: string;
 }
@@ -461,6 +453,8 @@ export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyResponse",
 }) as any as S.Schema<GetResourcePolicyResponse>;
+export type FilterName = string;
+export type FilterValueContent = string;
 export type ValueList = string[];
 export const ValueList = /*@__PURE__*/ S.Array(S.String);
 export interface Filter {
@@ -472,8 +466,10 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
 export const FilterList = /*@__PURE__*/ S.Array(Filter);
+export type SortBy = string;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface Sort {
   SortBy?: string;
   SortOrder?: SortOrder;
@@ -481,6 +477,8 @@ export interface Sort {
 export const Sort = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SortBy: S.optional(S.String), SortOrder: S.optional(SortOrder) }),
 ).annotate({ identifier: "Sort" }) as any as S.Schema<Sort>;
+export type ListChangeSetsMaxResultInteger = number;
+export type NextToken = string;
 export interface ListChangeSetsRequest {
   Catalog: string;
   FilterList?: Filter[];
@@ -550,8 +548,11 @@ export const ListChangeSetsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListChangeSetsResponse",
 }) as any as S.Schema<ListChangeSetsResponse>;
+export type ListEntitiesMaxResultInteger = number;
 export type OwnershipType = "SELF" | "SHARED" | (string & {});
 export const OwnershipType = /*@__PURE__*/ S.String;
+
+export type DataProductEntityIdString = string;
 export type DataProductEntityIdFilterValueList = string[];
 export const DataProductEntityIdFilterValueList = /*@__PURE__*/ S.Array(
   S.String,
@@ -564,6 +565,7 @@ export const DataProductEntityIdFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataProductEntityIdFilter",
 }) as any as S.Schema<DataProductEntityIdFilter>;
+export type DataProductTitleString = string;
 export type DataProductTitleFilterValueList = string[];
 export const DataProductTitleFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface DataProductTitleFilter {
@@ -586,6 +588,7 @@ export type DataProductVisibilityString =
   | "Draft"
   | (string & {});
 export const DataProductVisibilityString = /*@__PURE__*/ S.String;
+
 export type DataProductVisibilityFilterValueList =
   DataProductVisibilityString[];
 export const DataProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
@@ -638,6 +641,7 @@ export const DataProductFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataProductFilters",
 }) as any as S.Schema<DataProductFilters>;
+export type SaaSProductEntityIdString = string;
 export type SaaSProductEntityIdFilterValueList = string[];
 export const SaaSProductEntityIdFilterValueList = /*@__PURE__*/ S.Array(
   S.String,
@@ -650,6 +654,7 @@ export const SaaSProductEntityIdFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SaaSProductEntityIdFilter",
 }) as any as S.Schema<SaaSProductEntityIdFilter>;
+export type SaaSProductTitleString = string;
 export type SaaSProductTitleFilterValueList = string[];
 export const SaaSProductTitleFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface SaaSProductTitleFilter {
@@ -671,6 +676,7 @@ export type SaaSProductVisibilityString =
   | "Draft"
   | (string & {});
 export const SaaSProductVisibilityString = /*@__PURE__*/ S.String;
+
 export type SaaSProductVisibilityFilterValueList =
   SaaSProductVisibilityString[];
 export const SaaSProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
@@ -723,6 +729,7 @@ export const SaaSProductFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SaaSProductFilters",
 }) as any as S.Schema<SaaSProductFilters>;
+export type AmiProductEntityIdString = string;
 export type AmiProductEntityIdFilterValueList = string[];
 export const AmiProductEntityIdFilterValueList = /*@__PURE__*/ S.Array(
   S.String,
@@ -758,6 +765,7 @@ export const AmiProductLastModifiedDateFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AmiProductLastModifiedDateFilter",
 }) as any as S.Schema<AmiProductLastModifiedDateFilter>;
+export type AmiProductTitleString = string;
 export type AmiProductTitleFilterValueList = string[];
 export const AmiProductTitleFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface AmiProductTitleFilter {
@@ -779,6 +787,7 @@ export type AmiProductVisibilityString =
   | "Draft"
   | (string & {});
 export const AmiProductVisibilityString = /*@__PURE__*/ S.String;
+
 export type AmiProductVisibilityFilterValueList = AmiProductVisibilityString[];
 export const AmiProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
   AmiProductVisibilityString,
@@ -807,6 +816,7 @@ export const AmiProductFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AmiProductFilters",
 }) as any as S.Schema<AmiProductFilters>;
+export type OfferEntityIdString = string;
 export type OfferEntityIdFilterValueList = string[];
 export const OfferEntityIdFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface OfferEntityIdFilter {
@@ -817,6 +827,7 @@ export const OfferEntityIdFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OfferEntityIdFilter",
 }) as any as S.Schema<OfferEntityIdFilter>;
+export type OfferNameString = string;
 export type OfferNameFilterValueList = string[];
 export const OfferNameFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface OfferNameFilter {
@@ -831,6 +842,7 @@ export const OfferNameFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OfferNameFilter",
 }) as any as S.Schema<OfferNameFilter>;
+export type OfferProductIdString = string;
 export type OfferProductIdFilterValueList = string[];
 export const OfferProductIdFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface OfferProductIdFilter {
@@ -841,6 +853,7 @@ export const OfferProductIdFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OfferProductIdFilter",
 }) as any as S.Schema<OfferProductIdFilter>;
+export type OfferResaleAuthorizationIdString = string;
 export type OfferResaleAuthorizationIdFilterValueList = string[];
 export const OfferResaleAuthorizationIdFilterValueList = /*@__PURE__*/ S.Array(
   S.String,
@@ -896,6 +909,7 @@ export const OfferAvailabilityEndDateFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OfferAvailabilityEndDateFilter",
 }) as any as S.Schema<OfferAvailabilityEndDateFilter>;
+export type OfferBuyerAccountsFilterWildcard = string;
 export interface OfferBuyerAccountsFilter {
   WildCardValue?: string;
 }
@@ -906,6 +920,7 @@ export const OfferBuyerAccountsFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OfferBuyerAccountsFilter>;
 export type OfferStateString = "Draft" | "Released" | (string & {});
 export const OfferStateString = /*@__PURE__*/ S.String;
+
 export type OfferStateFilterValueList = OfferStateString[];
 export const OfferStateFilterValueList =
   /*@__PURE__*/ S.Array(OfferStateString);
@@ -924,6 +939,7 @@ export type OfferTargetingString =
   | "None"
   | (string & {});
 export const OfferTargetingString = /*@__PURE__*/ S.String;
+
 export type OfferTargetingFilterValueList = OfferTargetingString[];
 export const OfferTargetingFilterValueList =
   /*@__PURE__*/ S.Array(OfferTargetingString);
@@ -956,6 +972,7 @@ export const OfferLastModifiedDateFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OfferLastModifiedDateFilter",
 }) as any as S.Schema<OfferLastModifiedDateFilter>;
+export type OfferSetIdString = string;
 export type OfferSetIdFilterValueList = string[];
 export const OfferSetIdFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface OfferSetIdFilter {
@@ -994,6 +1011,7 @@ export const OfferFilters = /*@__PURE__*/ S.suspend(() =>
     OfferSetId: S.optional(OfferSetIdFilter),
   }),
 ).annotate({ identifier: "OfferFilters" }) as any as S.Schema<OfferFilters>;
+export type ContainerProductEntityIdString = string;
 export type ContainerProductEntityIdFilterValueList = string[];
 export const ContainerProductEntityIdFilterValueList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1030,6 +1048,7 @@ export const ContainerProductLastModifiedDateFilter = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ContainerProductLastModifiedDateFilter",
 }) as any as S.Schema<ContainerProductLastModifiedDateFilter>;
+export type ContainerProductTitleString = string;
 export type ContainerProductTitleFilterValueList = string[];
 export const ContainerProductTitleFilterValueList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1053,6 +1072,7 @@ export type ContainerProductVisibilityString =
   | "Draft"
   | (string & {});
 export const ContainerProductVisibilityString = /*@__PURE__*/ S.String;
+
 export type ContainerProductVisibilityFilterValueList =
   ContainerProductVisibilityString[];
 export const ContainerProductVisibilityFilterValueList = /*@__PURE__*/ S.Array(
@@ -1084,6 +1104,7 @@ export const ContainerProductFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContainerProductFilters",
 }) as any as S.Schema<ContainerProductFilters>;
+export type ResaleAuthorizationEntityIdString = string;
 export type ResaleAuthorizationEntityIdFilterValueList = string[];
 export const ResaleAuthorizationEntityIdFilterValueList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1098,10 +1119,12 @@ export const ResaleAuthorizationEntityIdFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResaleAuthorizationEntityIdFilter",
 }) as any as S.Schema<ResaleAuthorizationEntityIdFilter>;
+export type ResaleAuthorizationNameString = string;
 export type ResaleAuthorizationNameFilterValueList = string[];
 export const ResaleAuthorizationNameFilterValueList = /*@__PURE__*/ S.Array(
   S.String,
 );
+export type ResaleAuthorizationNameFilterWildcard = string;
 export interface ResaleAuthorizationNameFilter {
   ValueList?: string[];
   WildCardValue?: string;
@@ -1114,9 +1137,11 @@ export const ResaleAuthorizationNameFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResaleAuthorizationNameFilter",
 }) as any as S.Schema<ResaleAuthorizationNameFilter>;
+export type ResaleAuthorizationProductIdString = string;
 export type ResaleAuthorizationProductIdFilterValueList = string[];
 export const ResaleAuthorizationProductIdFilterValueList =
   /*@__PURE__*/ S.Array(S.String);
+export type ResaleAuthorizationProductIdFilterWildcard = string;
 export interface ResaleAuthorizationProductIdFilter {
   ValueList?: string[];
   WildCardValue?: string;
@@ -1191,9 +1216,11 @@ export const ResaleAuthorizationAvailabilityEndDateFilter =
   ).annotate({
     identifier: "ResaleAuthorizationAvailabilityEndDateFilter",
   }) as any as S.Schema<ResaleAuthorizationAvailabilityEndDateFilter>;
+export type ResaleAuthorizationManufacturerAccountIdString = string;
 export type ResaleAuthorizationManufacturerAccountIdFilterValueList = string[];
 export const ResaleAuthorizationManufacturerAccountIdFilterValueList =
   /*@__PURE__*/ S.Array(S.String);
+export type ResaleAuthorizationManufacturerAccountIdFilterWildcard = string;
 export interface ResaleAuthorizationManufacturerAccountIdFilter {
   ValueList?: string[];
   WildCardValue?: string;
@@ -1209,9 +1236,11 @@ export const ResaleAuthorizationManufacturerAccountIdFilter =
   ).annotate({
     identifier: "ResaleAuthorizationManufacturerAccountIdFilter",
   }) as any as S.Schema<ResaleAuthorizationManufacturerAccountIdFilter>;
+export type ResaleAuthorizationProductNameString = string;
 export type ResaleAuthorizationProductNameFilterValueList = string[];
 export const ResaleAuthorizationProductNameFilterValueList =
   /*@__PURE__*/ S.Array(S.String);
+export type ResaleAuthorizationProductNameFilterWildcard = string;
 export interface ResaleAuthorizationProductNameFilter {
   ValueList?: string[];
   WildCardValue?: string;
@@ -1225,9 +1254,11 @@ export const ResaleAuthorizationProductNameFilter = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ResaleAuthorizationProductNameFilter",
 }) as any as S.Schema<ResaleAuthorizationProductNameFilter>;
+export type ResaleAuthorizationManufacturerLegalNameString = string;
 export type ResaleAuthorizationManufacturerLegalNameFilterValueList = string[];
 export const ResaleAuthorizationManufacturerLegalNameFilterValueList =
   /*@__PURE__*/ S.Array(S.String);
+export type ResaleAuthorizationManufacturerLegalNameFilterWildcard = string;
 export interface ResaleAuthorizationManufacturerLegalNameFilter {
   ValueList?: string[];
   WildCardValue?: string;
@@ -1243,9 +1274,11 @@ export const ResaleAuthorizationManufacturerLegalNameFilter =
   ).annotate({
     identifier: "ResaleAuthorizationManufacturerLegalNameFilter",
   }) as any as S.Schema<ResaleAuthorizationManufacturerLegalNameFilter>;
+export type ResaleAuthorizationResellerAccountIDString = string;
 export type ResaleAuthorizationResellerAccountIDFilterValueList = string[];
 export const ResaleAuthorizationResellerAccountIDFilterValueList =
   /*@__PURE__*/ S.Array(S.String);
+export type ResaleAuthorizationResellerAccountIDFilterWildcard = string;
 export interface ResaleAuthorizationResellerAccountIDFilter {
   ValueList?: string[];
   WildCardValue?: string;
@@ -1261,9 +1294,11 @@ export const ResaleAuthorizationResellerAccountIDFilter =
   ).annotate({
     identifier: "ResaleAuthorizationResellerAccountIDFilter",
   }) as any as S.Schema<ResaleAuthorizationResellerAccountIDFilter>;
+export type ResaleAuthorizationResellerLegalNameString = string;
 export type ResaleAuthorizationResellerLegalNameFilterValueList = string[];
 export const ResaleAuthorizationResellerLegalNameFilterValueList =
   /*@__PURE__*/ S.Array(S.String);
+export type ResaleAuthorizationResellerLegalNameFilterWildcard = string;
 export interface ResaleAuthorizationResellerLegalNameFilter {
   ValueList?: string[];
   WildCardValue?: string;
@@ -1285,6 +1320,7 @@ export type ResaleAuthorizationStatusString =
   | "Restricted"
   | (string & {});
 export const ResaleAuthorizationStatusString = /*@__PURE__*/ S.String;
+
 export type ResaleAuthorizationStatusFilterValueList =
   ResaleAuthorizationStatusString[];
 export const ResaleAuthorizationStatusFilterValueList = /*@__PURE__*/ S.Array(
@@ -1298,6 +1334,7 @@ export const ResaleAuthorizationStatusFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResaleAuthorizationStatusFilter",
 }) as any as S.Schema<ResaleAuthorizationStatusFilter>;
+export type ResaleAuthorizationOfferExtendedStatusString = string;
 export type ResaleAuthorizationOfferExtendedStatusFilterValueList = string[];
 export const ResaleAuthorizationOfferExtendedStatusFilterValueList =
   /*@__PURE__*/ S.Array(S.String);
@@ -1380,6 +1417,7 @@ export const ResaleAuthorizationFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResaleAuthorizationFilters",
 }) as any as S.Schema<ResaleAuthorizationFilters>;
+export type MachineLearningProductEntityIdString = string;
 export type MachineLearningProductEntityIdFilterValueList = string[];
 export const MachineLearningProductEntityIdFilterValueList =
   /*@__PURE__*/ S.Array(S.String);
@@ -1420,6 +1458,7 @@ export const MachineLearningProductLastModifiedDateFilter =
   ).annotate({
     identifier: "MachineLearningProductLastModifiedDateFilter",
   }) as any as S.Schema<MachineLearningProductLastModifiedDateFilter>;
+export type MachineLearningProductTitleString = string;
 export type MachineLearningProductTitleFilterValueList = string[];
 export const MachineLearningProductTitleFilterValueList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1443,6 +1482,7 @@ export type MachineLearningProductVisibilityString =
   | "Draft"
   | (string & {});
 export const MachineLearningProductVisibilityString = /*@__PURE__*/ S.String;
+
 export type MachineLearningProductVisibilityFilterValueList =
   MachineLearningProductVisibilityString[];
 export const MachineLearningProductVisibilityFilterValueList =
@@ -1474,6 +1514,7 @@ export const MachineLearningProductFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MachineLearningProductFilters",
 }) as any as S.Schema<MachineLearningProductFilters>;
+export type OfferSetEntityIdString = string;
 export type OfferSetEntityIdFilterValueList = string[];
 export const OfferSetEntityIdFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface OfferSetEntityIdFilter {
@@ -1484,6 +1525,7 @@ export const OfferSetEntityIdFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OfferSetEntityIdFilter",
 }) as any as S.Schema<OfferSetEntityIdFilter>;
+export type OfferSetNameString = string;
 export type OfferSetNameFilterValueList = string[];
 export const OfferSetNameFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface OfferSetNameFilter {
@@ -1496,6 +1538,7 @@ export const OfferSetNameFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OfferSetNameFilter>;
 export type OfferSetStateString = "Draft" | "Released" | (string & {});
 export const OfferSetStateString = /*@__PURE__*/ S.String;
+
 export type OfferSetStateFilterValueList = OfferSetStateString[];
 export const OfferSetStateFilterValueList =
   /*@__PURE__*/ S.Array(OfferSetStateString);
@@ -1527,6 +1570,7 @@ export const OfferSetReleaseDateFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OfferSetReleaseDateFilter",
 }) as any as S.Schema<OfferSetReleaseDateFilter>;
+export type OfferSetAssociatedOfferIdsString = string;
 export type OfferSetAssociatedOfferIdsFilterValueList = string[];
 export const OfferSetAssociatedOfferIdsFilterValueList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1541,6 +1585,7 @@ export const OfferSetAssociatedOfferIdsFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OfferSetAssociatedOfferIdsFilter",
 }) as any as S.Schema<OfferSetAssociatedOfferIdsFilter>;
+export type OfferSetSolutionIdString = string;
 export type OfferSetSolutionIdFilterValueList = string[];
 export const OfferSetSolutionIdFilterValueList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1694,6 +1739,7 @@ export type DataProductSortBy =
   | "LastModifiedDate"
   | (string & {});
 export const DataProductSortBy = /*@__PURE__*/ S.String;
+
 export interface DataProductSort {
   SortBy?: DataProductSortBy;
   SortOrder?: SortOrder;
@@ -1714,6 +1760,7 @@ export type SaaSProductSortBy =
   | "DeliveryOptionTypes"
   | (string & {});
 export const SaaSProductSortBy = /*@__PURE__*/ S.String;
+
 export interface SaaSProductSort {
   SortBy?: SaaSProductSortBy;
   SortOrder?: SortOrder;
@@ -1733,6 +1780,7 @@ export type AmiProductSortBy =
   | "Visibility"
   | (string & {});
 export const AmiProductSortBy = /*@__PURE__*/ S.String;
+
 export interface AmiProductSort {
   SortBy?: AmiProductSortBy;
   SortOrder?: SortOrder;
@@ -1757,6 +1805,7 @@ export type OfferSortBy =
   | "OfferSetId"
   | (string & {});
 export const OfferSortBy = /*@__PURE__*/ S.String;
+
 export interface OfferSort {
   SortBy?: OfferSortBy;
   SortOrder?: SortOrder;
@@ -1775,6 +1824,7 @@ export type ContainerProductSortBy =
   | "CompatibleAWSServices"
   | (string & {});
 export const ContainerProductSortBy = /*@__PURE__*/ S.String;
+
 export interface ContainerProductSort {
   SortBy?: ContainerProductSortBy;
   SortOrder?: SortOrder;
@@ -1803,6 +1853,7 @@ export type ResaleAuthorizationSortBy =
   | "LastModifiedDate"
   | (string & {});
 export const ResaleAuthorizationSortBy = /*@__PURE__*/ S.String;
+
 export interface ResaleAuthorizationSort {
   SortBy?: ResaleAuthorizationSortBy;
   SortOrder?: SortOrder;
@@ -1822,6 +1873,7 @@ export type MachineLearningProductSortBy =
   | "Visibility"
   | (string & {});
 export const MachineLearningProductSortBy = /*@__PURE__*/ S.String;
+
 export interface MachineLearningProductSort {
   SortBy?: MachineLearningProductSortBy;
   SortOrder?: SortOrder;
@@ -1843,6 +1895,7 @@ export type OfferSetSortBy =
   | "LastModifiedDate"
   | (string & {});
 export const OfferSetSortBy = /*@__PURE__*/ S.String;
+
 export interface OfferSetSort {
   SortBy?: OfferSetSortBy;
   SortOrder?: SortOrder;
@@ -1979,6 +2032,8 @@ export const ListEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEntitiesRequest",
 }) as any as S.Schema<ListEntitiesRequest>;
+export type EntityNameString = string;
+export type VisibilityValue = string;
 export interface AmiProductSummary {
   ProductTitle?: string;
   Visibility?: AmiProductVisibilityString;
@@ -2027,6 +2082,7 @@ export const SaaSProductSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SaaSProductSummary",
 }) as any as S.Schema<SaaSProductSummary>;
+export type OfferBuyerAccountsString = string;
 export type OfferBuyerAccountsList = string[];
 export const OfferBuyerAccountsList = /*@__PURE__*/ S.Array(S.String);
 export type OfferTargetingList = OfferTargetingString[];
@@ -2182,6 +2238,8 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -2244,6 +2302,7 @@ export const Change = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
 export type RequestedChangeList = Change[];
 export const RequestedChangeList = /*@__PURE__*/ S.Array(Change);
+export type ClientRequestToken = string;
 export interface StartChangeSetRequest {
   Catalog: string;
   ChangeSet: Change[];
@@ -2335,50 +2394,6 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(422),
-).pipe(C.withBadRequestError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { Message: S.optional(S.String) },
-  T.HttpError(423),
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotSupportedException extends S.TaggedErrorClass<ResourceNotSupportedException>()(
-  "ResourceNotSupportedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(415),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
 export type BatchDescribeEntitiesError =
   | AccessDeniedException
   | InternalServiceException
@@ -2406,6 +2421,7 @@ export const batchDescribeEntities: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDescribeEntities",
 }));
+
 export type CancelChangeSetError =
   | AccessDeniedException
   | InternalServiceException
@@ -2440,6 +2456,7 @@ export const cancelChangeSet: API.OperationMethod<
   retry: Retry,
   operationName: "CancelChangeSet",
 }));
+
 export type DeleteResourcePolicyError =
   | AccessDeniedException
   | InternalServiceException
@@ -2470,6 +2487,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DescribeChangeSetError =
   | AccessDeniedException
   | InternalServiceException
@@ -2499,6 +2517,7 @@ export const describeChangeSet: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeChangeSet",
 }));
+
 export type DescribeEntityError =
   | AccessDeniedException
   | InternalServiceException
@@ -2530,6 +2549,7 @@ export const describeEntity: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEntity",
 }));
+
 export type GetResourcePolicyError =
   | AccessDeniedException
   | InternalServiceException
@@ -2560,6 +2580,7 @@ export const getResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type ListChangeSetsError =
   | AccessDeniedException
   | InternalServiceException
@@ -2614,6 +2635,7 @@ export const listChangeSets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEntitiesError =
   | AccessDeniedException
   | InternalServiceException
@@ -2664,6 +2686,7 @@ export const listEntities: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServiceException
@@ -2693,6 +2716,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutResourcePolicyError =
   | AccessDeniedException
   | InternalServiceException
@@ -2723,6 +2747,7 @@ export const putResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type StartChangeSetError =
   | AccessDeniedException
   | InternalServiceException
@@ -2773,6 +2798,7 @@ export const startChangeSet: API.OperationMethod<
   retry: Retry,
   operationName: "StartChangeSet",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServiceException
@@ -2802,6 +2828,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServiceException

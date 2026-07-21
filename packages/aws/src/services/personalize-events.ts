@@ -86,31 +86,30 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type StringType = string;
 export type ActionId = string | redacted.Redacted<string>;
 export type UserId = string | redacted.Redacted<string>;
 export type RecommendationId = string;
+export type ActionImpression = (string | redacted.Redacted<string>)[];
+export const ActionImpression = /*@__PURE__*/ S.Array(SensitiveString);
 export type SynthesizedJsonActionInteractionProperties =
   | string
   | redacted.Redacted<string>;
-export type ErrorMessage = string;
-export type Arn = string;
-export type SynthesizedJsonActionProperties =
-  | string
-  | redacted.Redacted<string>;
-export type FloatType = number;
-export type ItemId = string | redacted.Redacted<string>;
-export type SynthesizedJsonEventPropertiesJSON =
-  | string
-  | redacted.Redacted<string>;
-export type EventAttributionSource = string;
-export type SynthesizedJsonItemProperties = string | redacted.Redacted<string>;
-export type SynthesizedJsonUserProperties = string | redacted.Redacted<string>;
-
-//# Schemas
-export type ActionImpression = (string | redacted.Redacted<string>)[];
-export const ActionImpression = /*@__PURE__*/ S.Array(SensitiveString);
 export interface ActionInteraction {
   actionId: string | redacted.Redacted<string>;
   userId?: string | redacted.Redacted<string>;
@@ -166,6 +165,10 @@ export const PutActionInteractionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutActionInteractionsResponse",
 }) as any as S.Schema<PutActionInteractionsResponse>;
+export type Arn = string;
+export type SynthesizedJsonActionProperties =
+  | string
+  | redacted.Redacted<string>;
 export interface Action {
   actionId: string;
   properties?: string | redacted.Redacted<string>;
@@ -199,8 +202,14 @@ export const PutActionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutActionsResponse",
 }) as any as S.Schema<PutActionsResponse>;
+export type FloatType = number;
+export type ItemId = string | redacted.Redacted<string>;
+export type SynthesizedJsonEventPropertiesJSON =
+  | string
+  | redacted.Redacted<string>;
 export type Impression = (string | redacted.Redacted<string>)[];
 export const Impression = /*@__PURE__*/ S.Array(SensitiveString);
+export type EventAttributionSource = string;
 export interface MetricAttribution {
   eventAttributionSource: string;
 }
@@ -266,6 +275,7 @@ export const PutEventsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutEventsResponse",
 }) as any as S.Schema<PutEventsResponse>;
+export type SynthesizedJsonItemProperties = string | redacted.Redacted<string>;
 export interface Item {
   itemId: string;
   properties?: string | redacted.Redacted<string>;
@@ -299,6 +309,7 @@ export const PutItemsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutItemsResponse",
 }) as any as S.Schema<PutItemsResponse>;
+export type SynthesizedJsonUserProperties = string | redacted.Redacted<string>;
 export interface User {
   userId: string;
   properties?: string | redacted.Redacted<string>;
@@ -332,25 +343,7 @@ export const PutUsersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutUsersResponse",
 }) as any as S.Schema<PutUsersResponse>;
-
-//# Errors
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type PutActionInteractionsError =
   | InvalidInputException
   | ResourceInUseException
@@ -380,6 +373,7 @@ export const putActionInteractions: API.OperationMethod<
   retry: Retry,
   operationName: "PutActionInteractions",
 }));
+
 export type PutActionsError =
   | InvalidInputException
   | ResourceInUseException
@@ -406,6 +400,7 @@ export const putActions: API.OperationMethod<
   retry: Retry,
   operationName: "PutActions",
 }));
+
 export type PutEventsError = InvalidInputException | CommonErrors;
 /**
  * Records item interaction event data. For more information see
@@ -424,6 +419,7 @@ export const putEvents: API.OperationMethod<
   retry: Retry,
   operationName: "PutEvents",
 }));
+
 export type PutItemsError =
   | InvalidInputException
   | ResourceInUseException
@@ -450,6 +446,7 @@ export const putItems: API.OperationMethod<
   retry: Retry,
   operationName: "PutItems",
 }));
+
 export type PutUsersError =
   | InvalidInputException
   | ResourceInUseException

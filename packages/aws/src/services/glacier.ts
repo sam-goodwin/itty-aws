@@ -86,13 +86,87 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type TagKey = string;
-export type TagValue = string;
-export type Size = number;
-export type Httpstatus = number;
-
-//# Schemas
+export class InsufficientCapacityException extends S.TaggedErrorClass<InsufficientCapacityException>()(
+  "InsufficientCapacityException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class MissingParameterValueException extends S.TaggedErrorClass<MissingParameterValueException>()(
+  "MissingParameterValueException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NoLongerSupportedException extends S.TaggedErrorClass<NoLongerSupportedException>()(
+  "NoLongerSupportedException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class PolicyEnforcedException extends S.TaggedErrorClass<PolicyEnforcedException>()(
+  "PolicyEnforcedException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class RequestTimeoutException extends S.TaggedErrorClass<RequestTimeoutException>()(
+  "RequestTimeoutException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(408),
+).pipe(C.withTimeoutError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  {
+    type: S.optional(S.String),
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
 export interface AbortMultipartUploadInput {
   accountId: string;
   vaultName: string;
@@ -157,6 +231,8 @@ export const AbortVaultLockResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AbortVaultLockResponse",
 }) as any as S.Schema<AbortVaultLockResponse>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -461,8 +537,11 @@ export type ActionCode =
   | "Select"
   | (string & {});
 export const ActionCode = /*@__PURE__*/ S.String;
+
 export type StatusCode = "InProgress" | "Succeeded" | "Failed" | (string & {});
 export const StatusCode = /*@__PURE__*/ S.String;
+
+export type Size = number;
 export interface InventoryRetrievalJobDescription {
   Format?: string;
   StartDate?: string;
@@ -483,6 +562,7 @@ export const InventoryRetrievalJobDescription = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InventoryRetrievalJobDescription>;
 export type FileHeaderInfo = "USE" | "IGNORE" | "NONE" | (string & {});
 export const FileHeaderInfo = /*@__PURE__*/ S.String;
+
 export interface CSVInput {
   FileHeaderInfo?: FileHeaderInfo;
   Comments?: string;
@@ -511,8 +591,10 @@ export const InputSerialization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InputSerialization>;
 export type ExpressionType = "SQL" | (string & {});
 export const ExpressionType = /*@__PURE__*/ S.String;
+
 export type QuoteFields = "ALWAYS" | "ASNEEDED" | (string & {});
 export const QuoteFields = /*@__PURE__*/ S.String;
+
 export interface CSVOutput {
   QuoteFields?: QuoteFields;
   QuoteEscapeCharacter?: string;
@@ -555,6 +637,7 @@ export const SelectParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SelectParameters>;
 export type EncryptionType = "aws:kms" | "AES256" | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
+
 export interface Encryption {
   EncryptionType?: EncryptionType;
   KMSKeyId?: string;
@@ -577,12 +660,14 @@ export type CannedACL =
   | "bucket-owner-full-control"
   | (string & {});
 export const CannedACL = /*@__PURE__*/ S.String;
+
 export type Type =
   | "AmazonCustomerByEmail"
   | "CanonicalUser"
   | "Group"
   | (string & {});
 export const Type = /*@__PURE__*/ S.String;
+
 export interface Grantee {
   Type: Type;
   DisplayName?: string;
@@ -607,6 +692,7 @@ export type Permission =
   | "READ_ACP"
   | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
+
 export interface Grant {
   Grantee?: Grantee;
   Permission?: Permission;
@@ -630,6 +716,7 @@ export type StorageClass =
   | "STANDARD_IA"
   | (string & {});
 export const StorageClass = /*@__PURE__*/ S.String;
+
 export interface S3Location {
   BucketName?: string;
   Prefix?: string;
@@ -827,6 +914,7 @@ export const GetJobOutputInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetJobOutputInput",
 }) as any as S.Schema<GetJobOutputInput>;
+export type Httpstatus = number;
 export interface GetJobOutputOutput {
   body?: T.StreamingOutputBody;
   checksum?: string;
@@ -1680,91 +1768,6 @@ export const UploadMultipartPartOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UploadMultipartPartOutput",
 }) as any as S.Schema<UploadMultipartPartOutput>;
-
-//# Errors
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class MissingParameterValueException extends S.TaggedErrorClass<MissingParameterValueException>()(
-  "MissingParameterValueException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NoLongerSupportedException extends S.TaggedErrorClass<NoLongerSupportedException>()(
-  "NoLongerSupportedException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InsufficientCapacityException extends S.TaggedErrorClass<InsufficientCapacityException>()(
-  "InsufficientCapacityException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class PolicyEnforcedException extends S.TaggedErrorClass<PolicyEnforcedException>()(
-  "PolicyEnforcedException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class RequestTimeoutException extends S.TaggedErrorClass<RequestTimeoutException>()(
-  "RequestTimeoutException",
-  {
-    type: S.optional(S.String),
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(408),
-).pipe(C.withTimeoutError) {}
-
-//# Operations
 export type AbortMultipartUploadError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -1811,6 +1814,7 @@ export const abortMultipartUpload: API.OperationMethod<
   retry: Retry,
   operationName: "AbortMultipartUpload",
 }));
+
 export type AbortVaultLockError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -1855,6 +1859,7 @@ export const abortVaultLock: API.OperationMethod<
   retry: Retry,
   operationName: "AbortVaultLock",
 }));
+
 export type AddTagsToVaultError =
   | InvalidParameterValueException
   | LimitExceededException
@@ -1890,6 +1895,7 @@ export const addTagsToVault: API.OperationMethod<
   retry: Retry,
   operationName: "AddTagsToVault",
 }));
+
 export type CompleteMultipartUploadError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -1957,6 +1963,7 @@ export const completeMultipartUpload: API.OperationMethod<
   retry: Retry,
   operationName: "CompleteMultipartUpload",
 }));
+
 export type CompleteVaultLockError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2001,6 +2008,7 @@ export const completeVaultLock: API.OperationMethod<
   retry: Retry,
   operationName: "CompleteVaultLock",
 }));
+
 export type CreateVaultError =
   | InvalidParameterValueException
   | LimitExceededException
@@ -2051,6 +2059,7 @@ export const createVault: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVault",
 }));
+
 export type DeleteArchiveError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2103,6 +2112,7 @@ export const deleteArchive: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteArchive",
 }));
+
 export type DeleteVaultError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2152,6 +2162,7 @@ export const deleteVault: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVault",
 }));
+
 export type DeleteVaultAccessPolicyError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2188,6 +2199,7 @@ export const deleteVaultAccessPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVaultAccessPolicy",
 }));
+
 export type DeleteVaultNotificationsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2230,6 +2242,7 @@ export const deleteVaultNotifications: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVaultNotifications",
 }));
+
 export type DescribeJobError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2280,6 +2293,7 @@ export const describeJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeJob",
 }));
+
 export type DescribeVaultError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2327,6 +2341,7 @@ export const describeVault: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVault",
 }));
+
 export type GetDataRetrievalPolicyError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2356,6 +2371,7 @@ export const getDataRetrievalPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataRetrievalPolicy",
 }));
+
 export type GetJobOutputError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2424,6 +2440,7 @@ export const getJobOutput: API.OperationMethod<
   retry: Retry,
   operationName: "GetJobOutput",
 }));
+
 export type GetVaultAccessPolicyError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2458,6 +2475,7 @@ export const getVaultAccessPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetVaultAccessPolicy",
 }));
+
 export type GetVaultLockError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2509,6 +2527,7 @@ export const getVaultLock: API.OperationMethod<
   retry: Retry,
   operationName: "GetVaultLock",
 }));
+
 export type GetVaultNotificationsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2554,6 +2573,7 @@ export const getVaultNotifications: API.OperationMethod<
   retry: Retry,
   operationName: "GetVaultNotifications",
 }));
+
 export type InitiateJobError =
   | InsufficientCapacityException
   | InvalidParameterValueException
@@ -2590,6 +2610,7 @@ export const initiateJob: API.OperationMethod<
   retry: Retry,
   operationName: "InitiateJob",
 }));
+
 export type InitiateMultipartUploadError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2651,6 +2672,7 @@ export const initiateMultipartUpload: API.OperationMethod<
   retry: Retry,
   operationName: "InitiateMultipartUpload",
 }));
+
 export type InitiateVaultLockError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2711,6 +2733,7 @@ export const initiateVaultLock: API.OperationMethod<
   retry: Retry,
   operationName: "InitiateVaultLock",
 }));
+
 export type ListJobsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2794,6 +2817,7 @@ export const listJobs: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type ListMultipartUploadsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2869,6 +2893,7 @@ export const listMultipartUploads: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type ListPartsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2941,6 +2966,7 @@ export const listParts: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type ListProvisionedCapacityError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -2969,6 +2995,7 @@ export const listProvisionedCapacity: API.OperationMethod<
   retry: Retry,
   operationName: "ListProvisionedCapacity",
 }));
+
 export type ListTagsForVaultError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -3000,6 +3027,7 @@ export const listTagsForVault: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForVault",
 }));
+
 export type ListVaultsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -3069,6 +3097,7 @@ export const listVaults: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type PurchaseProvisionedCapacityError =
   | InvalidParameterValueException
   | LimitExceededException
@@ -3098,6 +3127,7 @@ export const purchaseProvisionedCapacity: API.OperationMethod<
   retry: Retry,
   operationName: "PurchaseProvisionedCapacity",
 }));
+
 export type RemoveTagsFromVaultError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -3130,6 +3160,7 @@ export const removeTagsFromVault: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveTagsFromVault",
 }));
+
 export type SetDataRetrievalPolicyError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -3163,6 +3194,7 @@ export const setDataRetrievalPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "SetDataRetrievalPolicy",
 }));
+
 export type SetVaultAccessPolicyError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -3197,6 +3229,7 @@ export const setVaultAccessPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "SetVaultAccessPolicy",
 }));
+
 export type SetVaultNotificationsError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -3256,6 +3289,7 @@ export const setVaultNotifications: API.OperationMethod<
   retry: Retry,
   operationName: "SetVaultNotifications",
 }));
+
 export type UploadArchiveError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -3319,6 +3353,7 @@ export const uploadArchive: API.OperationMethod<
   retry: Retry,
   operationName: "UploadArchive",
 }));
+
 export type UploadMultipartPartError =
   | InvalidParameterValueException
   | MissingParameterValueException

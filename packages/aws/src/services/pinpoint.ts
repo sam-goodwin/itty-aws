@@ -99,11 +99,46 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type __timestampIso8601 = Date;
-export type __blob = Uint8Array;
-
-//# Schemas
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
+  "MethodNotAllowedException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(405),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class PayloadTooLargeException extends S.TaggedErrorClass<PayloadTooLargeException>()(
+  "PayloadTooLargeException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(413),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type MapOf__string = { [key: string]: string | undefined };
 export const MapOf__string = /*@__PURE__*/ S.Record(
   S.String,
@@ -189,6 +224,7 @@ export type __EndpointTypesElement =
   | "IN_APP"
   | (string & {});
 export const __EndpointTypesElement = /*@__PURE__*/ S.String;
+
 export type ListOf__EndpointTypesElement = __EndpointTypesElement[];
 export const ListOf__EndpointTypesElement = /*@__PURE__*/ S.Array(
   __EndpointTypesElement,
@@ -207,6 +243,7 @@ export const CustomDeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomDeliveryConfiguration>;
 export type Action = "OPEN_APP" | "DEEP_LINK" | "URL" | (string & {});
 export const Action = /*@__PURE__*/ S.String;
+
 export interface Message {
   Action?: Action;
   Body?: string;
@@ -274,6 +311,7 @@ export const CampaignEmailMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CampaignEmailMessage>;
 export type MessageType = "TRANSACTIONAL" | "PROMOTIONAL" | (string & {});
 export const MessageType = /*@__PURE__*/ S.String;
+
 export interface CampaignSmsMessage {
   Body?: string;
   MessageType?: MessageType;
@@ -296,6 +334,7 @@ export const CampaignSmsMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CampaignSmsMessage>;
 export type Alignment = "LEFT" | "CENTER" | "RIGHT" | (string & {});
 export const Alignment = /*@__PURE__*/ S.String;
+
 export interface InAppMessageBodyConfig {
   Alignment?: Alignment;
   Body?: string;
@@ -326,6 +365,7 @@ export const InAppMessageHeaderConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InAppMessageHeaderConfig>;
 export type ButtonAction = "LINK" | "DEEP_LINK" | "CLOSE" | (string & {});
 export const ButtonAction = /*@__PURE__*/ S.String;
+
 export interface OverrideButtonConfiguration {
   ButtonAction?: ButtonAction;
   Link?: string;
@@ -406,6 +446,7 @@ export type Layout =
   | "CAROUSEL"
   | (string & {});
 export const Layout = /*@__PURE__*/ S.String;
+
 export interface CampaignInAppMessage {
   Body?: string;
   Content?: InAppMessageContent[];
@@ -458,6 +499,7 @@ export type AttributeType =
   | "BETWEEN"
   | (string & {});
 export const AttributeType = /*@__PURE__*/ S.String;
+
 export type ListOf__string = string[];
 export const ListOf__string = /*@__PURE__*/ S.Array(S.String);
 export interface AttributeDimension {
@@ -481,6 +523,7 @@ export const MapOfAttributeDimension = /*@__PURE__*/ S.Record(
 );
 export type DimensionType = "INCLUSIVE" | "EXCLUSIVE" | (string & {});
 export const DimensionType = /*@__PURE__*/ S.String;
+
 export interface SetDimension {
   DimensionType?: DimensionType;
   Values?: string[];
@@ -526,6 +569,7 @@ export const EventDimensions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventDimensions>;
 export type FilterType = "SYSTEM" | "ENDPOINT" | (string & {});
 export const FilterType = /*@__PURE__*/ S.String;
+
 export interface CampaignEventFilter {
   Dimensions?: EventDimensions;
   FilterType?: FilterType;
@@ -548,6 +592,7 @@ export type Frequency =
   | "IN_APP_EVENT"
   | (string & {});
 export const Frequency = /*@__PURE__*/ S.String;
+
 export interface QuietTime {
   End?: string;
   Start?: string;
@@ -628,6 +673,7 @@ export const ListOfWriteTreatmentResource = /*@__PURE__*/ S.Array(
 );
 export type Mode = "DELIVERY" | "FILTER" | (string & {});
 export const Mode = /*@__PURE__*/ S.String;
+
 export interface CampaignHook {
   LambdaFunctionName?: string;
   Mode?: Mode;
@@ -731,6 +777,7 @@ export type CampaignStatus =
   | "INVALID"
   | (string & {});
 export const CampaignStatus = /*@__PURE__*/ S.String;
+
 export interface CampaignState {
   CampaignStatus?: CampaignStatus;
 }
@@ -1113,6 +1160,7 @@ export type JobStatus =
   | "FAILED"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
 export interface ExportJobResponse {
   ApplicationId?: string;
   CompletedPieces?: number;
@@ -1168,6 +1216,7 @@ export const CreateExportJobResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateExportJobResponse>;
 export type Format = "CSV" | "JSON" | (string & {});
 export const Format = /*@__PURE__*/ S.String;
+
 export interface ImportJobRequest {
   DefineSegment?: boolean;
   ExternalId?: string;
@@ -1411,8 +1460,10 @@ export const SegmentCondition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SegmentCondition>;
 export type Duration = "HR_24" | "DAY_7" | "DAY_14" | "DAY_30" | (string & {});
 export const Duration = /*@__PURE__*/ S.String;
+
 export type RecencyType = "ACTIVE" | "INACTIVE" | (string & {});
 export const RecencyType = /*@__PURE__*/ S.String;
+
 export interface RecencyDimension {
   Duration?: Duration;
   RecencyType?: RecencyType;
@@ -1522,6 +1573,7 @@ export type ListOfSimpleCondition = SimpleCondition[];
 export const ListOfSimpleCondition = /*@__PURE__*/ S.Array(SimpleCondition);
 export type Operator = "ALL" | "ANY" | (string & {});
 export const Operator = /*@__PURE__*/ S.String;
+
 export interface Condition {
   Conditions?: SimpleCondition[];
   Operator?: Operator;
@@ -1779,6 +1831,7 @@ export const JourneyLimits = /*@__PURE__*/ S.suspend(() =>
     TotalCap: S.optional(S.Number),
   }),
 ).annotate({ identifier: "JourneyLimits" }) as any as S.Schema<JourneyLimits>;
+export type __timestampIso8601 = Date;
 export interface JourneySchedule {
   EndTime?: Date;
   StartTime?: Date;
@@ -1838,6 +1891,7 @@ export type State =
   | "PAUSED"
   | (string & {});
 export const State = /*@__PURE__*/ S.String;
+
 export interface JourneyChannelSettings {
   ConnectCampaignArn?: string;
   ConnectCampaignExecutionRoleArn?: string;
@@ -1860,6 +1914,7 @@ export type DayOfWeek =
   | "SUNDAY"
   | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
+
 export interface OpenHoursRule {
   StartTime?: string;
   EndTime?: string;
@@ -1927,6 +1982,7 @@ export type __TimezoneEstimationMethodsElement =
   | "POSTAL_CODE"
   | (string & {});
 export const __TimezoneEstimationMethodsElement = /*@__PURE__*/ S.String;
+
 export type ListOf__TimezoneEstimationMethodsElement =
   __TimezoneEstimationMethodsElement[];
 export const ListOf__TimezoneEstimationMethodsElement = /*@__PURE__*/ S.Array(
@@ -2485,8 +2541,10 @@ export type ListOfSegmentReference = SegmentReference[];
 export const ListOfSegmentReference = /*@__PURE__*/ S.Array(SegmentReference);
 export type SourceType = "ALL" | "ANY" | "NONE" | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
+
 export type Type = "ALL" | "ANY" | "NONE" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
+
 export interface SegmentGroup {
   Dimensions?: SegmentDimensions[];
   SourceSegments?: SegmentReference[];
@@ -2505,6 +2563,7 @@ export type ListOfSegmentGroup = SegmentGroup[];
 export const ListOfSegmentGroup = /*@__PURE__*/ S.Array(SegmentGroup);
 export type Include = "ALL" | "ANY" | "NONE" | (string & {});
 export const Include = /*@__PURE__*/ S.String;
+
 export interface SegmentGroupList {
   Groups?: SegmentGroup[];
   Include?: Include;
@@ -2583,6 +2642,7 @@ export const SegmentImportResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SegmentImportResource>;
 export type SegmentType = "DIMENSIONAL" | "IMPORT" | (string & {});
 export const SegmentType = /*@__PURE__*/ S.String;
+
 export interface SegmentResponse {
   ApplicationId?: string;
   Arn?: string;
@@ -3581,6 +3641,7 @@ export type ChannelType =
   | "IN_APP"
   | (string & {});
 export const ChannelType = /*@__PURE__*/ S.String;
+
 export interface EndpointDemographic {
   AppVersion?: string;
   Locale?: string;
@@ -5999,6 +6060,7 @@ export type TemplateType =
   | "INAPP"
   | (string & {});
 export const TemplateType = /*@__PURE__*/ S.String;
+
 export interface EmailTemplateResponse {
   Arn?: string;
   CreationDate?: string;
@@ -7235,6 +7297,7 @@ export type JourneyRunStatus =
   | "CANCELLED"
   | (string & {});
 export const JourneyRunStatus = /*@__PURE__*/ S.String;
+
 export interface JourneyRunResponse {
   CreationTime?: string;
   LastUpdateTime?: string;
@@ -9358,6 +9421,7 @@ export const DefaultPushNotificationMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DefaultPushNotificationMessage",
 }) as any as S.Schema<DefaultPushNotificationMessage>;
+export type __blob = Uint8Array;
 export interface RawEmail {
   Data?: Uint8Array;
 }
@@ -9566,6 +9630,7 @@ export type DeliveryStatus =
   | "DUPLICATE"
   | (string & {});
 export const DeliveryStatus = /*@__PURE__*/ S.String;
+
 export interface EndpointMessageResult {
   Address?: string;
   DeliveryStatus?: DeliveryStatus;
@@ -11778,50 +11843,6 @@ export const VerifyOTPMessageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VerifyOTPMessageResponse",
 }) as any as S.Schema<VerifyOTPMessageResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
-  "MethodNotAllowedException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-  T.HttpError(405),
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class PayloadTooLargeException extends S.TaggedErrorClass<PayloadTooLargeException>()(
-  "PayloadTooLargeException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-  T.HttpError(413),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String), RequestID: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-
-//# Operations
 export type CreateAppError =
   | BadRequestException
   | ForbiddenException
@@ -11855,6 +11876,7 @@ export const createApp: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApp",
 }));
+
 export type CreateCampaignError =
   | BadRequestException
   | ForbiddenException
@@ -11888,6 +11910,7 @@ export const createCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCampaign",
 }));
+
 export type CreateEmailTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -11917,6 +11940,7 @@ export const createEmailTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEmailTemplate",
 }));
+
 export type CreateExportJobError =
   | BadRequestException
   | ForbiddenException
@@ -11950,6 +11974,7 @@ export const createExportJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateExportJob",
 }));
+
 export type CreateImportJobError =
   | BadRequestException
   | ForbiddenException
@@ -11983,6 +12008,7 @@ export const createImportJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateImportJob",
 }));
+
 export type CreateInAppTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12012,6 +12038,7 @@ export const createInAppTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInAppTemplate",
 }));
+
 export type CreateJourneyError =
   | BadRequestException
   | ForbiddenException
@@ -12045,6 +12072,7 @@ export const createJourney: API.OperationMethod<
   retry: Retry,
   operationName: "CreateJourney",
 }));
+
 export type CreatePushTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12074,6 +12102,7 @@ export const createPushTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePushTemplate",
 }));
+
 export type CreateRecommenderConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -12107,6 +12136,7 @@ export const createRecommenderConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRecommenderConfiguration",
 }));
+
 export type CreateSegmentError =
   | BadRequestException
   | ForbiddenException
@@ -12140,6 +12170,7 @@ export const createSegment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSegment",
 }));
+
 export type CreateSmsTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12169,6 +12200,7 @@ export const createSmsTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSmsTemplate",
 }));
+
 export type CreateVoiceTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12198,6 +12230,7 @@ export const createVoiceTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVoiceTemplate",
 }));
+
 export type DeleteAdmChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12231,6 +12264,7 @@ export const deleteAdmChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAdmChannel",
 }));
+
 export type DeleteApnsChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12264,6 +12298,7 @@ export const deleteApnsChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApnsChannel",
 }));
+
 export type DeleteApnsSandboxChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12297,6 +12332,7 @@ export const deleteApnsSandboxChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApnsSandboxChannel",
 }));
+
 export type DeleteApnsVoipChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12330,6 +12366,7 @@ export const deleteApnsVoipChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApnsVoipChannel",
 }));
+
 export type DeleteApnsVoipSandboxChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12363,6 +12400,7 @@ export const deleteApnsVoipSandboxChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApnsVoipSandboxChannel",
 }));
+
 export type DeleteAppError =
   | BadRequestException
   | ForbiddenException
@@ -12396,6 +12434,7 @@ export const deleteApp: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApp",
 }));
+
 export type DeleteBaiduChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12429,6 +12468,7 @@ export const deleteBaiduChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBaiduChannel",
 }));
+
 export type DeleteCampaignError =
   | BadRequestException
   | ForbiddenException
@@ -12462,6 +12502,7 @@ export const deleteCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCampaign",
 }));
+
 export type DeleteEmailChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12495,6 +12536,7 @@ export const deleteEmailChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEmailChannel",
 }));
+
 export type DeleteEmailTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12528,6 +12570,7 @@ export const deleteEmailTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEmailTemplate",
 }));
+
 export type DeleteEndpointError =
   | BadRequestException
   | ForbiddenException
@@ -12561,6 +12604,7 @@ export const deleteEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEndpoint",
 }));
+
 export type DeleteEventStreamError =
   | BadRequestException
   | ForbiddenException
@@ -12594,6 +12638,7 @@ export const deleteEventStream: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEventStream",
 }));
+
 export type DeleteGcmChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12627,6 +12672,7 @@ export const deleteGcmChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGcmChannel",
 }));
+
 export type DeleteInAppTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12660,6 +12706,7 @@ export const deleteInAppTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInAppTemplate",
 }));
+
 export type DeleteJourneyError =
   | BadRequestException
   | ForbiddenException
@@ -12693,6 +12740,7 @@ export const deleteJourney: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteJourney",
 }));
+
 export type DeletePushTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12726,6 +12774,7 @@ export const deletePushTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePushTemplate",
 }));
+
 export type DeleteRecommenderConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -12759,6 +12808,7 @@ export const deleteRecommenderConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRecommenderConfiguration",
 }));
+
 export type DeleteSegmentError =
   | BadRequestException
   | ForbiddenException
@@ -12792,6 +12842,7 @@ export const deleteSegment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSegment",
 }));
+
 export type DeleteSmsChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12825,6 +12876,7 @@ export const deleteSmsChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSmsChannel",
 }));
+
 export type DeleteSmsTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12858,6 +12910,7 @@ export const deleteSmsTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSmsTemplate",
 }));
+
 export type DeleteUserEndpointsError =
   | BadRequestException
   | ForbiddenException
@@ -12891,6 +12944,7 @@ export const deleteUserEndpoints: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUserEndpoints",
 }));
+
 export type DeleteVoiceChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12924,6 +12978,7 @@ export const deleteVoiceChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVoiceChannel",
 }));
+
 export type DeleteVoiceTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -12957,6 +13012,7 @@ export const deleteVoiceTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVoiceTemplate",
 }));
+
 export type GetAdmChannelError =
   | BadRequestException
   | ForbiddenException
@@ -12990,6 +13046,7 @@ export const getAdmChannel: API.OperationMethod<
   retry: Retry,
   operationName: "GetAdmChannel",
 }));
+
 export type GetApnsChannelError =
   | BadRequestException
   | ForbiddenException
@@ -13023,6 +13080,7 @@ export const getApnsChannel: API.OperationMethod<
   retry: Retry,
   operationName: "GetApnsChannel",
 }));
+
 export type GetApnsSandboxChannelError =
   | BadRequestException
   | ForbiddenException
@@ -13056,6 +13114,7 @@ export const getApnsSandboxChannel: API.OperationMethod<
   retry: Retry,
   operationName: "GetApnsSandboxChannel",
 }));
+
 export type GetApnsVoipChannelError =
   | BadRequestException
   | ForbiddenException
@@ -13089,6 +13148,7 @@ export const getApnsVoipChannel: API.OperationMethod<
   retry: Retry,
   operationName: "GetApnsVoipChannel",
 }));
+
 export type GetApnsVoipSandboxChannelError =
   | BadRequestException
   | ForbiddenException
@@ -13122,6 +13182,7 @@ export const getApnsVoipSandboxChannel: API.OperationMethod<
   retry: Retry,
   operationName: "GetApnsVoipSandboxChannel",
 }));
+
 export type GetAppError =
   | BadRequestException
   | ForbiddenException
@@ -13155,6 +13216,7 @@ export const getApp: API.OperationMethod<
   retry: Retry,
   operationName: "GetApp",
 }));
+
 export type GetApplicationDateRangeKpiError =
   | BadRequestException
   | ForbiddenException
@@ -13188,6 +13250,7 @@ export const getApplicationDateRangeKpi: API.OperationMethod<
   retry: Retry,
   operationName: "GetApplicationDateRangeKpi",
 }));
+
 export type GetApplicationSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -13221,6 +13284,7 @@ export const getApplicationSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetApplicationSettings",
 }));
+
 export type GetAppsError =
   | BadRequestException
   | ForbiddenException
@@ -13254,6 +13318,7 @@ export const getApps: API.OperationMethod<
   retry: Retry,
   operationName: "GetApps",
 }));
+
 export type GetBaiduChannelError =
   | BadRequestException
   | ForbiddenException
@@ -13287,6 +13352,7 @@ export const getBaiduChannel: API.OperationMethod<
   retry: Retry,
   operationName: "GetBaiduChannel",
 }));
+
 export type GetCampaignError =
   | BadRequestException
   | ForbiddenException
@@ -13320,6 +13386,7 @@ export const getCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "GetCampaign",
 }));
+
 export type GetCampaignActivitiesError =
   | BadRequestException
   | ForbiddenException
@@ -13353,6 +13420,7 @@ export const getCampaignActivities: API.OperationMethod<
   retry: Retry,
   operationName: "GetCampaignActivities",
 }));
+
 export type GetCampaignDateRangeKpiError =
   | BadRequestException
   | ForbiddenException
@@ -13386,6 +13454,7 @@ export const getCampaignDateRangeKpi: API.OperationMethod<
   retry: Retry,
   operationName: "GetCampaignDateRangeKpi",
 }));
+
 export type GetCampaignsError =
   | BadRequestException
   | ForbiddenException
@@ -13419,6 +13488,7 @@ export const getCampaigns: API.OperationMethod<
   retry: Retry,
   operationName: "GetCampaigns",
 }));
+
 export type GetCampaignVersionError =
   | BadRequestException
   | ForbiddenException
@@ -13452,6 +13522,7 @@ export const getCampaignVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetCampaignVersion",
 }));
+
 export type GetCampaignVersionsError =
   | BadRequestException
   | ForbiddenException
@@ -13485,6 +13556,7 @@ export const getCampaignVersions: API.OperationMethod<
   retry: Retry,
   operationName: "GetCampaignVersions",
 }));
+
 export type GetChannelsError =
   | BadRequestException
   | ForbiddenException
@@ -13518,6 +13590,7 @@ export const getChannels: API.OperationMethod<
   retry: Retry,
   operationName: "GetChannels",
 }));
+
 export type GetEmailChannelError =
   | BadRequestException
   | ForbiddenException
@@ -13551,6 +13624,7 @@ export const getEmailChannel: API.OperationMethod<
   retry: Retry,
   operationName: "GetEmailChannel",
 }));
+
 export type GetEmailTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -13584,6 +13658,7 @@ export const getEmailTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetEmailTemplate",
 }));
+
 export type GetEndpointError =
   | BadRequestException
   | ForbiddenException
@@ -13617,6 +13692,7 @@ export const getEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "GetEndpoint",
 }));
+
 export type GetEventStreamError =
   | BadRequestException
   | ForbiddenException
@@ -13650,6 +13726,7 @@ export const getEventStream: API.OperationMethod<
   retry: Retry,
   operationName: "GetEventStream",
 }));
+
 export type GetExportJobError =
   | BadRequestException
   | ForbiddenException
@@ -13683,6 +13760,7 @@ export const getExportJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetExportJob",
 }));
+
 export type GetExportJobsError =
   | BadRequestException
   | ForbiddenException
@@ -13716,6 +13794,7 @@ export const getExportJobs: API.OperationMethod<
   retry: Retry,
   operationName: "GetExportJobs",
 }));
+
 export type GetGcmChannelError =
   | BadRequestException
   | ForbiddenException
@@ -13749,6 +13828,7 @@ export const getGcmChannel: API.OperationMethod<
   retry: Retry,
   operationName: "GetGcmChannel",
 }));
+
 export type GetImportJobError =
   | BadRequestException
   | ForbiddenException
@@ -13782,6 +13862,7 @@ export const getImportJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetImportJob",
 }));
+
 export type GetImportJobsError =
   | BadRequestException
   | ForbiddenException
@@ -13815,6 +13896,7 @@ export const getImportJobs: API.OperationMethod<
   retry: Retry,
   operationName: "GetImportJobs",
 }));
+
 export type GetInAppMessagesError =
   | BadRequestException
   | ForbiddenException
@@ -13848,6 +13930,7 @@ export const getInAppMessages: API.OperationMethod<
   retry: Retry,
   operationName: "GetInAppMessages",
 }));
+
 export type GetInAppTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -13881,6 +13964,7 @@ export const getInAppTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetInAppTemplate",
 }));
+
 export type GetJourneyError =
   | BadRequestException
   | ForbiddenException
@@ -13914,6 +13998,7 @@ export const getJourney: API.OperationMethod<
   retry: Retry,
   operationName: "GetJourney",
 }));
+
 export type GetJourneyDateRangeKpiError =
   | BadRequestException
   | ForbiddenException
@@ -13947,6 +14032,7 @@ export const getJourneyDateRangeKpi: API.OperationMethod<
   retry: Retry,
   operationName: "GetJourneyDateRangeKpi",
 }));
+
 export type GetJourneyExecutionActivityMetricsError =
   | BadRequestException
   | ForbiddenException
@@ -13980,6 +14066,7 @@ export const getJourneyExecutionActivityMetrics: API.OperationMethod<
   retry: Retry,
   operationName: "GetJourneyExecutionActivityMetrics",
 }));
+
 export type GetJourneyExecutionMetricsError =
   | BadRequestException
   | ForbiddenException
@@ -14013,6 +14100,7 @@ export const getJourneyExecutionMetrics: API.OperationMethod<
   retry: Retry,
   operationName: "GetJourneyExecutionMetrics",
 }));
+
 export type GetJourneyRunExecutionActivityMetricsError =
   | BadRequestException
   | ForbiddenException
@@ -14046,6 +14134,7 @@ export const getJourneyRunExecutionActivityMetrics: API.OperationMethod<
   retry: Retry,
   operationName: "GetJourneyRunExecutionActivityMetrics",
 }));
+
 export type GetJourneyRunExecutionMetricsError =
   | BadRequestException
   | ForbiddenException
@@ -14079,6 +14168,7 @@ export const getJourneyRunExecutionMetrics: API.OperationMethod<
   retry: Retry,
   operationName: "GetJourneyRunExecutionMetrics",
 }));
+
 export type GetJourneyRunsError =
   | BadRequestException
   | ForbiddenException
@@ -14112,6 +14202,7 @@ export const getJourneyRuns: API.OperationMethod<
   retry: Retry,
   operationName: "GetJourneyRuns",
 }));
+
 export type GetPushTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -14145,6 +14236,7 @@ export const getPushTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetPushTemplate",
 }));
+
 export type GetRecommenderConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -14178,6 +14270,7 @@ export const getRecommenderConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetRecommenderConfiguration",
 }));
+
 export type GetRecommenderConfigurationsError =
   | BadRequestException
   | ForbiddenException
@@ -14211,6 +14304,7 @@ export const getRecommenderConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "GetRecommenderConfigurations",
 }));
+
 export type GetSegmentError =
   | BadRequestException
   | ForbiddenException
@@ -14244,6 +14338,7 @@ export const getSegment: API.OperationMethod<
   retry: Retry,
   operationName: "GetSegment",
 }));
+
 export type GetSegmentExportJobsError =
   | BadRequestException
   | ForbiddenException
@@ -14277,6 +14372,7 @@ export const getSegmentExportJobs: API.OperationMethod<
   retry: Retry,
   operationName: "GetSegmentExportJobs",
 }));
+
 export type GetSegmentImportJobsError =
   | BadRequestException
   | ForbiddenException
@@ -14310,6 +14406,7 @@ export const getSegmentImportJobs: API.OperationMethod<
   retry: Retry,
   operationName: "GetSegmentImportJobs",
 }));
+
 export type GetSegmentsError =
   | BadRequestException
   | ForbiddenException
@@ -14343,6 +14440,7 @@ export const getSegments: API.OperationMethod<
   retry: Retry,
   operationName: "GetSegments",
 }));
+
 export type GetSegmentVersionError =
   | BadRequestException
   | ForbiddenException
@@ -14376,6 +14474,7 @@ export const getSegmentVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetSegmentVersion",
 }));
+
 export type GetSegmentVersionsError =
   | BadRequestException
   | ForbiddenException
@@ -14409,6 +14508,7 @@ export const getSegmentVersions: API.OperationMethod<
   retry: Retry,
   operationName: "GetSegmentVersions",
 }));
+
 export type GetSmsChannelError =
   | BadRequestException
   | ForbiddenException
@@ -14442,6 +14542,7 @@ export const getSmsChannel: API.OperationMethod<
   retry: Retry,
   operationName: "GetSmsChannel",
 }));
+
 export type GetSmsTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -14475,6 +14576,7 @@ export const getSmsTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetSmsTemplate",
 }));
+
 export type GetUserEndpointsError =
   | BadRequestException
   | ForbiddenException
@@ -14508,6 +14610,7 @@ export const getUserEndpoints: API.OperationMethod<
   retry: Retry,
   operationName: "GetUserEndpoints",
 }));
+
 export type GetVoiceChannelError =
   | BadRequestException
   | ForbiddenException
@@ -14541,6 +14644,7 @@ export const getVoiceChannel: API.OperationMethod<
   retry: Retry,
   operationName: "GetVoiceChannel",
 }));
+
 export type GetVoiceTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -14574,6 +14678,7 @@ export const getVoiceTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetVoiceTemplate",
 }));
+
 export type ListJourneysError =
   | BadRequestException
   | ForbiddenException
@@ -14607,6 +14712,7 @@ export const listJourneys: API.OperationMethod<
   retry: Retry,
   operationName: "ListJourneys",
 }));
+
 export type ListTagsForResourceError = CommonErrors;
 /**
  * Retrieves all the tags (keys and values) that are associated with an application, campaign, message template, or segment.
@@ -14624,6 +14730,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTemplatesError =
   | BadRequestException
   | ForbiddenException
@@ -14653,6 +14760,7 @@ export const listTemplates: API.OperationMethod<
   retry: Retry,
   operationName: "ListTemplates",
 }));
+
 export type ListTemplateVersionsError =
   | BadRequestException
   | ForbiddenException
@@ -14686,6 +14794,7 @@ export const listTemplateVersions: API.OperationMethod<
   retry: Retry,
   operationName: "ListTemplateVersions",
 }));
+
 export type PhoneNumberValidateError =
   | BadRequestException
   | ForbiddenException
@@ -14719,6 +14828,7 @@ export const phoneNumberValidate: API.OperationMethod<
   retry: Retry,
   operationName: "PhoneNumberValidate",
 }));
+
 export type PutEventsError =
   | BadRequestException
   | ForbiddenException
@@ -14752,6 +14862,7 @@ export const putEvents: API.OperationMethod<
   retry: Retry,
   operationName: "PutEvents",
 }));
+
 export type PutEventStreamError =
   | BadRequestException
   | ForbiddenException
@@ -14785,6 +14896,7 @@ export const putEventStream: API.OperationMethod<
   retry: Retry,
   operationName: "PutEventStream",
 }));
+
 export type RemoveAttributesError =
   | BadRequestException
   | ForbiddenException
@@ -14818,6 +14930,7 @@ export const removeAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveAttributes",
 }));
+
 export type SendMessagesError =
   | BadRequestException
   | ForbiddenException
@@ -14851,6 +14964,7 @@ export const sendMessages: API.OperationMethod<
   retry: Retry,
   operationName: "SendMessages",
 }));
+
 export type SendOTPMessageError =
   | BadRequestException
   | ForbiddenException
@@ -14884,6 +14998,7 @@ export const sendOTPMessage: API.OperationMethod<
   retry: Retry,
   operationName: "SendOTPMessage",
 }));
+
 export type SendUsersMessagesError =
   | BadRequestException
   | ForbiddenException
@@ -14917,6 +15032,7 @@ export const sendUsersMessages: API.OperationMethod<
   retry: Retry,
   operationName: "SendUsersMessages",
 }));
+
 export type TagResourceError = CommonErrors;
 /**
  * Adds one or more tags (keys and values) to an application, campaign, message template, or segment.
@@ -14934,6 +15050,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError = CommonErrors;
 /**
  * Removes one or more tags (keys and values) from an application, campaign, message template, or segment.
@@ -14951,6 +15068,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAdmChannelError =
   | BadRequestException
   | ForbiddenException
@@ -14984,6 +15102,7 @@ export const updateAdmChannel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAdmChannel",
 }));
+
 export type UpdateApnsChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15017,6 +15136,7 @@ export const updateApnsChannel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApnsChannel",
 }));
+
 export type UpdateApnsSandboxChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15050,6 +15170,7 @@ export const updateApnsSandboxChannel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApnsSandboxChannel",
 }));
+
 export type UpdateApnsVoipChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15083,6 +15204,7 @@ export const updateApnsVoipChannel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApnsVoipChannel",
 }));
+
 export type UpdateApnsVoipSandboxChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15116,6 +15238,7 @@ export const updateApnsVoipSandboxChannel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApnsVoipSandboxChannel",
 }));
+
 export type UpdateApplicationSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -15149,6 +15272,7 @@ export const updateApplicationSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApplicationSettings",
 }));
+
 export type UpdateBaiduChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15182,6 +15306,7 @@ export const updateBaiduChannel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBaiduChannel",
 }));
+
 export type UpdateCampaignError =
   | BadRequestException
   | ForbiddenException
@@ -15215,6 +15340,7 @@ export const updateCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCampaign",
 }));
+
 export type UpdateEmailChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15248,6 +15374,7 @@ export const updateEmailChannel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEmailChannel",
 }));
+
 export type UpdateEmailTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -15281,6 +15408,7 @@ export const updateEmailTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEmailTemplate",
 }));
+
 export type UpdateEndpointError =
   | BadRequestException
   | ForbiddenException
@@ -15314,6 +15442,7 @@ export const updateEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEndpoint",
 }));
+
 export type UpdateEndpointsBatchError =
   | BadRequestException
   | ForbiddenException
@@ -15347,6 +15476,7 @@ export const updateEndpointsBatch: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEndpointsBatch",
 }));
+
 export type UpdateGcmChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15380,6 +15510,7 @@ export const updateGcmChannel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGcmChannel",
 }));
+
 export type UpdateInAppTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -15413,6 +15544,7 @@ export const updateInAppTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateInAppTemplate",
 }));
+
 export type UpdateJourneyError =
   | BadRequestException
   | ConflictException
@@ -15448,6 +15580,7 @@ export const updateJourney: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateJourney",
 }));
+
 export type UpdateJourneyStateError =
   | BadRequestException
   | ForbiddenException
@@ -15481,6 +15614,7 @@ export const updateJourneyState: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateJourneyState",
 }));
+
 export type UpdatePushTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -15514,6 +15648,7 @@ export const updatePushTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePushTemplate",
 }));
+
 export type UpdateRecommenderConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -15547,6 +15682,7 @@ export const updateRecommenderConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRecommenderConfiguration",
 }));
+
 export type UpdateSegmentError =
   | BadRequestException
   | ForbiddenException
@@ -15580,6 +15716,7 @@ export const updateSegment: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSegment",
 }));
+
 export type UpdateSmsChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15613,6 +15750,7 @@ export const updateSmsChannel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSmsChannel",
 }));
+
 export type UpdateSmsTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -15646,6 +15784,7 @@ export const updateSmsTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSmsTemplate",
 }));
+
 export type UpdateTemplateActiveVersionError =
   | BadRequestException
   | ForbiddenException
@@ -15679,6 +15818,7 @@ export const updateTemplateActiveVersion: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTemplateActiveVersion",
 }));
+
 export type UpdateVoiceChannelError =
   | BadRequestException
   | ForbiddenException
@@ -15712,6 +15852,7 @@ export const updateVoiceChannel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateVoiceChannel",
 }));
+
 export type UpdateVoiceTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -15745,6 +15886,7 @@ export const updateVoiceTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateVoiceTemplate",
 }));
+
 export type VerifyOTPMessageError =
   | BadRequestException
   | ForbiddenException

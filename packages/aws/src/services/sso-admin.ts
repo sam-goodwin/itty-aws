@@ -88,65 +88,71 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => AccessDeniedExceptionReason).annotate({
+        identifier: "AccessDeniedExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ResourceNotFoundExceptionReason).annotate({
+        identifier: "ResourceNotFoundExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ThrottlingExceptionReason).annotate({
+        identifier: "ThrottlingExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type InstanceArn = string;
 export type RegionName = string;
-export type AccessDeniedExceptionMessage = string;
-export type ConflictExceptionMessage = string;
-export type InternalFailureMessage = string;
-export type ServiceQuotaExceededMessage = string;
-export type ThrottlingExceptionMessage = string;
-export type ValidationExceptionMessage = string;
-export type PermissionSetArn = string;
-export type ManagedPolicyName = string;
-export type ManagedPolicyPath = string;
-export type ResourceNotFoundMessage = string;
-export type ManagedPolicyArn = string;
-export type TargetId = string;
-export type PrincipalId = string;
-export type UUId = string;
-export type Reason = string;
-export type ApplicationProviderArn = string;
-export type ApplicationNameType = string;
-export type Description = string;
-export type ApplicationUrl = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ClientToken = string;
-export type ApplicationArn = string;
-export type IdentityStoreArn = string;
-export type NameType = string;
-export type AccessControlAttributeKey = string;
-export type AccessControlAttributeValueSource = string;
-export type PermissionSetName = string;
-export type PermissionSetDescription = string;
-export type Duration = string;
-export type RelayState = string;
-export type TrustedTokenIssuerName = string;
-export type TrustedTokenIssuerUrl = string;
-export type ClaimAttributePath = string;
-export type JMESPath = string;
-export type TrustedTokenIssuerArn = string;
-export type AccountId = string;
-export type Name = string;
-export type IconUrl = string;
-export type ResourceServerScope = string;
-export type Id = string;
-export type KmsKeyArn = string;
-export type InstanceAccessControlAttributeConfigurationStatusReason = string;
-export type IsPrimaryRegion = boolean;
-export type AssignmentRequired = boolean;
-export type PermissionSetPolicyDocument = string;
-export type MaxResults = number;
-export type Token = string;
-export type TaggableResourceArn = string;
-export type Scope = string;
-export type ScopeTarget = string;
-export type ActorPolicyDocument = unknown;
-export type URI = string;
-export type TokenIssuerAudience = string;
-
-//# Schemas
 export interface AddRegionRequest {
   InstanceArn: string;
   RegionName: string;
@@ -160,6 +166,7 @@ export const AddRegionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddRegionRequest>;
 export type RegionStatus = "ACTIVE" | "ADDING" | "REMOVING" | (string & {});
 export const RegionStatus = /*@__PURE__*/ S.String;
+
 export interface AddRegionResponse {
   Status?: RegionStatus;
 }
@@ -168,20 +175,9 @@ export const AddRegionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddRegionResponse",
 }) as any as S.Schema<AddRegionResponse>;
-export type AccessDeniedExceptionReason =
-  | "KMS_AccessDeniedException"
-  | (string & {});
-export const AccessDeniedExceptionReason = /*@__PURE__*/ S.String;
-export type ThrottlingExceptionReason =
-  | "KMS_ThrottlingException"
-  | (string & {});
-export const ThrottlingExceptionReason = /*@__PURE__*/ S.String;
-export type ValidationExceptionReason =
-  | "KMS_InvalidKeyUsageException"
-  | "KMS_InvalidStateException"
-  | "KMS_DisabledException"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export type PermissionSetArn = string;
+export type ManagedPolicyName = string;
+export type ManagedPolicyPath = string;
 export interface CustomerManagedPolicyReference {
   Name: string;
   Path?: string;
@@ -213,10 +209,7 @@ export const AttachCustomerManagedPolicyReferenceToPermissionSetResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AttachCustomerManagedPolicyReferenceToPermissionSetResponse",
   }) as any as S.Schema<AttachCustomerManagedPolicyReferenceToPermissionSetResponse>;
-export type ResourceNotFoundExceptionReason =
-  | "KMS_NotFoundException"
-  | (string & {});
-export const ResourceNotFoundExceptionReason = /*@__PURE__*/ S.String;
+export type ManagedPolicyArn = string;
 export interface AttachManagedPolicyToPermissionSetRequest {
   InstanceArn: string;
   PermissionSetArn: string;
@@ -239,10 +232,14 @@ export const AttachManagedPolicyToPermissionSetResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AttachManagedPolicyToPermissionSetResponse",
   }) as any as S.Schema<AttachManagedPolicyToPermissionSetResponse>;
+export type TargetId = string;
 export type TargetType = "AWS_ACCOUNT" | (string & {});
 export const TargetType = /*@__PURE__*/ S.String;
+
 export type PrincipalType = "USER" | "GROUP" | (string & {});
 export const PrincipalType = /*@__PURE__*/ S.String;
+
+export type PrincipalId = string;
 export interface CreateAccountAssignmentRequest {
   InstanceArn: string;
   TargetId: string;
@@ -271,6 +268,9 @@ export type StatusValues =
   | "SUCCEEDED"
   | (string & {});
 export const StatusValues = /*@__PURE__*/ S.String;
+
+export type UUId = string;
+export type Reason = string;
 export interface AccountAssignmentOperationStatus {
   Status?: StatusValues;
   RequestId?: string;
@@ -309,8 +309,13 @@ export const CreateAccountAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccountAssignmentResponse",
 }) as any as S.Schema<CreateAccountAssignmentResponse>;
+export type ApplicationProviderArn = string;
+export type ApplicationNameType = string;
+export type Description = string;
 export type SignInOrigin = "IDENTITY_CENTER" | "APPLICATION" | (string & {});
 export const SignInOrigin = /*@__PURE__*/ S.String;
+
+export type ApplicationUrl = string;
 export interface SignInOptions {
   Origin: SignInOrigin;
   ApplicationUrl?: string;
@@ -320,6 +325,7 @@ export const SignInOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SignInOptions" }) as any as S.Schema<SignInOptions>;
 export type ApplicationVisibility = "ENABLED" | "DISABLED" | (string & {});
 export const ApplicationVisibility = /*@__PURE__*/ S.String;
+
 export interface PortalOptions {
   SignInOptions?: SignInOptions;
   Visibility?: ApplicationVisibility;
@@ -330,6 +336,8 @@ export const PortalOptions = /*@__PURE__*/ S.suspend(() =>
     Visibility: S.optional(ApplicationVisibility),
   }),
 ).annotate({ identifier: "PortalOptions" }) as any as S.Schema<PortalOptions>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -341,6 +349,8 @@ export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type ApplicationStatus = "ENABLED" | "DISABLED" | (string & {});
 export const ApplicationStatus = /*@__PURE__*/ S.String;
+
+export type ClientToken = string;
 export interface CreateApplicationRequest {
   InstanceArn: string;
   ApplicationProviderArn: string;
@@ -367,6 +377,8 @@ export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationRequest",
 }) as any as S.Schema<CreateApplicationRequest>;
+export type ApplicationArn = string;
+export type IdentityStoreArn = string;
 export interface CreateApplicationResponse {
   ApplicationArn?: string;
   InstanceArn?: string;
@@ -403,6 +415,7 @@ export const CreateApplicationAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationAssignmentResponse",
 }) as any as S.Schema<CreateApplicationAssignmentResponse>;
+export type NameType = string;
 export interface CreateInstanceRequest {
   Name?: string;
   ClientToken?: string;
@@ -427,6 +440,8 @@ export const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInstanceResponse",
 }) as any as S.Schema<CreateInstanceResponse>;
+export type AccessControlAttributeKey = string;
+export type AccessControlAttributeValueSource = string;
 export type AccessControlAttributeValueSourceList = string[];
 export const AccessControlAttributeValueSourceList = /*@__PURE__*/ S.Array(
   S.String,
@@ -482,6 +497,10 @@ export const CreateInstanceAccessControlAttributeConfigurationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "CreateInstanceAccessControlAttributeConfigurationResponse",
   }) as any as S.Schema<CreateInstanceAccessControlAttributeConfigurationResponse>;
+export type PermissionSetName = string;
+export type PermissionSetDescription = string;
+export type Duration = string;
+export type RelayState = string;
 export interface CreatePermissionSetRequest {
   Name: string;
   Description?: string;
@@ -530,10 +549,16 @@ export const CreatePermissionSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePermissionSetResponse",
 }) as any as S.Schema<CreatePermissionSetResponse>;
+export type TrustedTokenIssuerName = string;
 export type TrustedTokenIssuerType = "OIDC_JWT" | (string & {});
 export const TrustedTokenIssuerType = /*@__PURE__*/ S.String;
+
+export type TrustedTokenIssuerUrl = string;
+export type ClaimAttributePath = string;
+export type JMESPath = string;
 export type JwksRetrievalOption = "OPEN_ID_DISCOVERY" | (string & {});
 export const JwksRetrievalOption = /*@__PURE__*/ S.String;
+
 export interface OidcJwtConfiguration {
   IssuerUrl: string;
   ClaimAttributePath: string;
@@ -578,6 +603,7 @@ export const CreateTrustedTokenIssuerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTrustedTokenIssuerRequest",
 }) as any as S.Schema<CreateTrustedTokenIssuerRequest>;
+export type TrustedTokenIssuerArn = string;
 export interface CreateTrustedTokenIssuerResponse {
   TrustedTokenIssuerArn?: string;
 }
@@ -636,6 +662,24 @@ export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteApplicationResponse",
 }) as any as S.Schema<DeleteApplicationResponse>;
+export type Scope = string;
+export interface DeleteApplicationAccessScopeRequest {
+  ApplicationArn: string;
+  Scope: string;
+}
+export const DeleteApplicationAccessScopeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ApplicationArn: S.String, Scope: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteApplicationAccessScopeRequest",
+}) as any as S.Schema<DeleteApplicationAccessScopeRequest>;
+export interface DeleteApplicationAccessScopeResponse {}
+export const DeleteApplicationAccessScopeResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteApplicationAccessScopeResponse",
+}) as any as S.Schema<DeleteApplicationAccessScopeResponse>;
 export interface DeleteApplicationAssignmentRequest {
   ApplicationArn: string;
   PrincipalId: string;
@@ -658,6 +702,54 @@ export const DeleteApplicationAssignmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteApplicationAssignmentResponse",
 }) as any as S.Schema<DeleteApplicationAssignmentResponse>;
+export type AuthenticationMethodType = "IAM" | (string & {});
+export const AuthenticationMethodType = /*@__PURE__*/ S.String;
+
+export interface DeleteApplicationAuthenticationMethodRequest {
+  ApplicationArn: string;
+  AuthenticationMethodType: AuthenticationMethodType;
+}
+export const DeleteApplicationAuthenticationMethodRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ApplicationArn: S.String,
+      AuthenticationMethodType: AuthenticationMethodType,
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "DeleteApplicationAuthenticationMethodRequest",
+  }) as any as S.Schema<DeleteApplicationAuthenticationMethodRequest>;
+export interface DeleteApplicationAuthenticationMethodResponse {}
+export const DeleteApplicationAuthenticationMethodResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteApplicationAuthenticationMethodResponse",
+  }) as any as S.Schema<DeleteApplicationAuthenticationMethodResponse>;
+export type GrantType =
+  | "authorization_code"
+  | "refresh_token"
+  | "urn:ietf:params:oauth:grant-type:jwt-bearer"
+  | "urn:ietf:params:oauth:grant-type:token-exchange"
+  | (string & {});
+export const GrantType = /*@__PURE__*/ S.String;
+
+export interface DeleteApplicationGrantRequest {
+  ApplicationArn: string;
+  GrantType: GrantType;
+}
+export const DeleteApplicationGrantRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ApplicationArn: S.String, GrantType: GrantType }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteApplicationGrantRequest",
+}) as any as S.Schema<DeleteApplicationGrantRequest>;
+export interface DeleteApplicationGrantResponse {}
+export const DeleteApplicationGrantResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteApplicationGrantResponse",
+}) as any as S.Schema<DeleteApplicationGrantResponse>;
 export interface DeleteInlinePolicyFromPermissionSetRequest {
   InstanceArn: string;
   PermissionSetArn: string;
@@ -823,6 +915,7 @@ export const DescribeApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeApplicationRequest",
 }) as any as S.Schema<DescribeApplicationRequest>;
+export type AccountId = string;
 export interface DescribeApplicationResponse {
   ApplicationArn?: string;
   ApplicationProviderArn?: string;
@@ -897,6 +990,9 @@ export const DescribeApplicationProviderRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeApplicationProviderRequest>;
 export type FederationProtocol = "SAML" | "OAUTH" | (string & {});
 export const FederationProtocol = /*@__PURE__*/ S.String;
+
+export type Name = string;
+export type IconUrl = string;
 export interface DisplayData {
   DisplayName?: string;
   IconUrl?: string;
@@ -909,6 +1005,7 @@ export const DisplayData = /*@__PURE__*/ S.suspend(() =>
     Description: S.optional(S.String),
   }),
 ).annotate({ identifier: "DisplayData" }) as any as S.Schema<DisplayData>;
+export type ResourceServerScope = string;
 export interface ResourceServerScopeDetails {
   LongDescription?: string;
   DetailedTitle?: string;
@@ -962,6 +1059,7 @@ export const DescribeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInstanceRequest",
 }) as any as S.Schema<DescribeInstanceRequest>;
+export type Id = string;
 export type InstanceStatus =
   | "CREATE_IN_PROGRESS"
   | "CREATE_FAILED"
@@ -969,17 +1067,21 @@ export type InstanceStatus =
   | "ACTIVE"
   | (string & {});
 export const InstanceStatus = /*@__PURE__*/ S.String;
+
 export type KmsKeyType =
   | "AWS_OWNED_KMS_KEY"
   | "CUSTOMER_MANAGED_KEY"
   | (string & {});
 export const KmsKeyType = /*@__PURE__*/ S.String;
+
+export type KmsKeyArn = string;
 export type KmsKeyStatus =
   | "UPDATING"
   | "ENABLED"
   | "UPDATE_FAILED"
   | (string & {});
 export const KmsKeyStatus = /*@__PURE__*/ S.String;
+
 export interface EncryptionConfigurationDetails {
   KeyType?: KmsKeyType;
   KmsKeyArn?: string;
@@ -1038,6 +1140,8 @@ export type InstanceAccessControlAttributeConfigurationStatus =
   | (string & {});
 export const InstanceAccessControlAttributeConfigurationStatus =
   /*@__PURE__*/ S.String;
+
+export type InstanceAccessControlAttributeConfigurationStatusReason = string;
 export interface DescribeInstanceAccessControlAttributeConfigurationResponse {
   Status?: InstanceAccessControlAttributeConfigurationStatus;
   StatusReason?: string;
@@ -1133,6 +1237,7 @@ export const DescribeRegionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRegionRequest",
 }) as any as S.Schema<DescribeRegionRequest>;
+export type IsPrimaryRegion = boolean;
 export interface DescribeRegionResponse {
   RegionName?: string;
   Status?: RegionStatus;
@@ -1221,6 +1326,29 @@ export const DetachManagedPolicyFromPermissionSetResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DetachManagedPolicyFromPermissionSetResponse",
   }) as any as S.Schema<DetachManagedPolicyFromPermissionSetResponse>;
+export interface GetApplicationAccessScopeRequest {
+  ApplicationArn: string;
+  Scope: string;
+}
+export const GetApplicationAccessScopeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ApplicationArn: S.String, Scope: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetApplicationAccessScopeRequest",
+}) as any as S.Schema<GetApplicationAccessScopeRequest>;
+export type ScopeTarget = string;
+export type ScopeTargets = string[];
+export const ScopeTargets = /*@__PURE__*/ S.Array(S.String);
+export interface GetApplicationAccessScopeResponse {
+  Scope: string;
+  AuthorizedTargets?: string[];
+}
+export const GetApplicationAccessScopeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Scope: S.String, AuthorizedTargets: S.optional(ScopeTargets) }),
+).annotate({
+  identifier: "GetApplicationAccessScopeResponse",
+}) as any as S.Schema<GetApplicationAccessScopeResponse>;
 export interface GetApplicationAssignmentConfigurationRequest {
   ApplicationArn: string;
 }
@@ -1232,6 +1360,7 @@ export const GetApplicationAssignmentConfigurationRequest =
   ).annotate({
     identifier: "GetApplicationAssignmentConfigurationRequest",
   }) as any as S.Schema<GetApplicationAssignmentConfigurationRequest>;
+export type AssignmentRequired = boolean;
 export interface GetApplicationAssignmentConfigurationResponse {
   AssignmentRequired: boolean;
 }
@@ -1241,6 +1370,141 @@ export const GetApplicationAssignmentConfigurationResponse =
   ).annotate({
     identifier: "GetApplicationAssignmentConfigurationResponse",
   }) as any as S.Schema<GetApplicationAssignmentConfigurationResponse>;
+export interface GetApplicationAuthenticationMethodRequest {
+  ApplicationArn: string;
+  AuthenticationMethodType: AuthenticationMethodType;
+}
+export const GetApplicationAuthenticationMethodRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ApplicationArn: S.String,
+      AuthenticationMethodType: AuthenticationMethodType,
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "GetApplicationAuthenticationMethodRequest",
+  }) as any as S.Schema<GetApplicationAuthenticationMethodRequest>;
+export type ActorPolicyDocument = unknown;
+export interface IamAuthenticationMethod {
+  ActorPolicy: any;
+}
+export const IamAuthenticationMethod = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ActorPolicy: S.Any }),
+).annotate({
+  identifier: "IamAuthenticationMethod",
+}) as any as S.Schema<IamAuthenticationMethod>;
+export type AuthenticationMethod = { Iam: IamAuthenticationMethod };
+export const AuthenticationMethod = /*@__PURE__*/ S.Union([
+  S.Struct({ Iam: IamAuthenticationMethod }),
+]);
+export interface GetApplicationAuthenticationMethodResponse {
+  AuthenticationMethod?: AuthenticationMethod;
+}
+export const GetApplicationAuthenticationMethodResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({ AuthenticationMethod: S.optional(AuthenticationMethod) }),
+  ).annotate({
+    identifier: "GetApplicationAuthenticationMethodResponse",
+  }) as any as S.Schema<GetApplicationAuthenticationMethodResponse>;
+export interface GetApplicationGrantRequest {
+  ApplicationArn: string;
+  GrantType: GrantType;
+}
+export const GetApplicationGrantRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ApplicationArn: S.String, GrantType: GrantType }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetApplicationGrantRequest",
+}) as any as S.Schema<GetApplicationGrantRequest>;
+export type URI = string;
+export type RedirectUris = string[];
+export const RedirectUris = /*@__PURE__*/ S.Array(S.String);
+export interface AuthorizationCodeGrant {
+  RedirectUris?: string[];
+}
+export const AuthorizationCodeGrant = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RedirectUris: S.optional(RedirectUris) }),
+).annotate({
+  identifier: "AuthorizationCodeGrant",
+}) as any as S.Schema<AuthorizationCodeGrant>;
+export type TokenIssuerAudience = string;
+export type TokenIssuerAudiences = string[];
+export const TokenIssuerAudiences = /*@__PURE__*/ S.Array(S.String);
+export interface AuthorizedTokenIssuer {
+  TrustedTokenIssuerArn?: string;
+  AuthorizedAudiences?: string[];
+}
+export const AuthorizedTokenIssuer = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TrustedTokenIssuerArn: S.optional(S.String),
+    AuthorizedAudiences: S.optional(TokenIssuerAudiences),
+  }),
+).annotate({
+  identifier: "AuthorizedTokenIssuer",
+}) as any as S.Schema<AuthorizedTokenIssuer>;
+export type AuthorizedTokenIssuers = AuthorizedTokenIssuer[];
+export const AuthorizedTokenIssuers = /*@__PURE__*/ S.Array(
+  AuthorizedTokenIssuer,
+);
+export interface JwtBearerGrant {
+  AuthorizedTokenIssuers?: AuthorizedTokenIssuer[];
+}
+export const JwtBearerGrant = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AuthorizedTokenIssuers: S.optional(AuthorizedTokenIssuers) }),
+).annotate({ identifier: "JwtBearerGrant" }) as any as S.Schema<JwtBearerGrant>;
+export interface RefreshTokenGrant {}
+export const RefreshTokenGrant = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "RefreshTokenGrant",
+}) as any as S.Schema<RefreshTokenGrant>;
+export interface TokenExchangeGrant {}
+export const TokenExchangeGrant = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "TokenExchangeGrant",
+}) as any as S.Schema<TokenExchangeGrant>;
+export type Grant =
+  | {
+      AuthorizationCode: AuthorizationCodeGrant;
+      JwtBearer?: never;
+      RefreshToken?: never;
+      TokenExchange?: never;
+    }
+  | {
+      AuthorizationCode?: never;
+      JwtBearer: JwtBearerGrant;
+      RefreshToken?: never;
+      TokenExchange?: never;
+    }
+  | {
+      AuthorizationCode?: never;
+      JwtBearer?: never;
+      RefreshToken: RefreshTokenGrant;
+      TokenExchange?: never;
+    }
+  | {
+      AuthorizationCode?: never;
+      JwtBearer?: never;
+      RefreshToken?: never;
+      TokenExchange: TokenExchangeGrant;
+    };
+export const Grant = /*@__PURE__*/ S.Union([
+  S.Struct({ AuthorizationCode: AuthorizationCodeGrant }),
+  S.Struct({ JwtBearer: JwtBearerGrant }),
+  S.Struct({ RefreshToken: RefreshTokenGrant }),
+  S.Struct({ TokenExchange: TokenExchangeGrant }),
+]);
+export interface GetApplicationGrantResponse {
+  Grant: Grant;
+}
+export const GetApplicationGrantResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Grant: Grant }),
+).annotate({
+  identifier: "GetApplicationGrantResponse",
+}) as any as S.Schema<GetApplicationGrantResponse>;
 export interface GetApplicationSessionConfigurationRequest {
   ApplicationArn: string;
 }
@@ -1257,6 +1521,7 @@ export type UserBackgroundSessionApplicationStatus =
   | "DISABLED"
   | (string & {});
 export const UserBackgroundSessionApplicationStatus = /*@__PURE__*/ S.String;
+
 export interface GetApplicationSessionConfigurationResponse {
   UserBackgroundSessionApplicationStatus?: UserBackgroundSessionApplicationStatus;
 }
@@ -1282,6 +1547,7 @@ export const GetInlinePolicyForPermissionSetRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetInlinePolicyForPermissionSetRequest",
 }) as any as S.Schema<GetInlinePolicyForPermissionSetRequest>;
+export type PermissionSetPolicyDocument = string;
 export interface GetInlinePolicyForPermissionSetResponse {
   InlinePolicy?: string;
 }
@@ -1323,6 +1589,8 @@ export const GetPermissionsBoundaryForPermissionSetResponse =
   ).annotate({
     identifier: "GetPermissionsBoundaryForPermissionSetResponse",
   }) as any as S.Schema<GetPermissionsBoundaryForPermissionSetResponse>;
+export type MaxResults = number;
+export type Token = string;
 export interface OperationStatusFilter {
   Status?: StatusValues;
 }
@@ -1538,6 +1806,7 @@ export type ProvisioningStatus =
   | "LATEST_PERMISSION_SET_NOT_PROVISIONED"
   | (string & {});
 export const ProvisioningStatus = /*@__PURE__*/ S.String;
+
 export interface ListAccountsForProvisionedPermissionSetRequest {
   InstanceArn: string;
   PermissionSetArn: string;
@@ -1574,6 +1843,40 @@ export const ListAccountsForProvisionedPermissionSetResponse =
   ).annotate({
     identifier: "ListAccountsForProvisionedPermissionSetResponse",
   }) as any as S.Schema<ListAccountsForProvisionedPermissionSetResponse>;
+export interface ListApplicationAccessScopesRequest {
+  ApplicationArn: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListApplicationAccessScopesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationArn: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListApplicationAccessScopesRequest",
+}) as any as S.Schema<ListApplicationAccessScopesRequest>;
+export interface ScopeDetails {
+  Scope: string;
+  AuthorizedTargets?: string[];
+}
+export const ScopeDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Scope: S.String, AuthorizedTargets: S.optional(ScopeTargets) }),
+).annotate({ identifier: "ScopeDetails" }) as any as S.Schema<ScopeDetails>;
+export type Scopes = ScopeDetails[];
+export const Scopes = /*@__PURE__*/ S.Array(ScopeDetails);
+export interface ListApplicationAccessScopesResponse {
+  Scopes: ScopeDetails[];
+  NextToken?: string;
+}
+export const ListApplicationAccessScopesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Scopes: Scopes, NextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListApplicationAccessScopesResponse",
+}) as any as S.Schema<ListApplicationAccessScopesResponse>;
 export interface ListApplicationAssignmentsRequest {
   ApplicationArn: string;
   MaxResults?: number;
@@ -1683,6 +1986,79 @@ export const ListApplicationAssignmentsForPrincipalResponse =
   ).annotate({
     identifier: "ListApplicationAssignmentsForPrincipalResponse",
   }) as any as S.Schema<ListApplicationAssignmentsForPrincipalResponse>;
+export interface ListApplicationAuthenticationMethodsRequest {
+  ApplicationArn: string;
+  NextToken?: string;
+}
+export const ListApplicationAuthenticationMethodsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ApplicationArn: S.String,
+      NextToken: S.optional(S.String),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "ListApplicationAuthenticationMethodsRequest",
+  }) as any as S.Schema<ListApplicationAuthenticationMethodsRequest>;
+export interface AuthenticationMethodItem {
+  AuthenticationMethodType?: AuthenticationMethodType;
+  AuthenticationMethod?: AuthenticationMethod;
+}
+export const AuthenticationMethodItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AuthenticationMethodType: S.optional(AuthenticationMethodType),
+    AuthenticationMethod: S.optional(AuthenticationMethod),
+  }),
+).annotate({
+  identifier: "AuthenticationMethodItem",
+}) as any as S.Schema<AuthenticationMethodItem>;
+export type AuthenticationMethods = AuthenticationMethodItem[];
+export const AuthenticationMethods = /*@__PURE__*/ S.Array(
+  AuthenticationMethodItem,
+);
+export interface ListApplicationAuthenticationMethodsResponse {
+  AuthenticationMethods?: AuthenticationMethodItem[];
+  NextToken?: string;
+}
+export const ListApplicationAuthenticationMethodsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      AuthenticationMethods: S.optional(AuthenticationMethods),
+      NextToken: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListApplicationAuthenticationMethodsResponse",
+  }) as any as S.Schema<ListApplicationAuthenticationMethodsResponse>;
+export interface ListApplicationGrantsRequest {
+  ApplicationArn: string;
+  NextToken?: string;
+}
+export const ListApplicationGrantsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ApplicationArn: S.String, NextToken: S.optional(S.String) }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListApplicationGrantsRequest",
+}) as any as S.Schema<ListApplicationGrantsRequest>;
+export interface GrantItem {
+  GrantType: GrantType;
+  Grant: Grant;
+}
+export const GrantItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ GrantType: GrantType, Grant: Grant }),
+).annotate({ identifier: "GrantItem" }) as any as S.Schema<GrantItem>;
+export type Grants = GrantItem[];
+export const Grants = /*@__PURE__*/ S.Array(GrantItem);
+export interface ListApplicationGrantsResponse {
+  Grants: GrantItem[];
+  NextToken?: string;
+}
+export const ListApplicationGrantsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Grants: Grants, NextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListApplicationGrantsResponse",
+}) as any as S.Schema<ListApplicationGrantsResponse>;
 export interface ListApplicationProvidersRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -2096,6 +2472,7 @@ export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRegionsResponse",
 }) as any as S.Schema<ListRegionsResponse>;
+export type TaggableResourceArn = string;
 export interface ListTagsForResourceRequest {
   InstanceArn?: string;
   ResourceArn: string;
@@ -2172,6 +2549,7 @@ export type ProvisionTargetType =
   | "ALL_PROVISIONED_ACCOUNTS"
   | (string & {});
 export const ProvisionTargetType = /*@__PURE__*/ S.String;
+
 export interface ProvisionPermissionSetRequest {
   InstanceArn: string;
   PermissionSetArn: string;
@@ -2202,6 +2580,28 @@ export const ProvisionPermissionSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProvisionPermissionSetResponse",
 }) as any as S.Schema<ProvisionPermissionSetResponse>;
+export interface PutApplicationAccessScopeRequest {
+  Scope: string;
+  AuthorizedTargets?: string[];
+  ApplicationArn: string;
+}
+export const PutApplicationAccessScopeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Scope: S.String,
+    AuthorizedTargets: S.optional(ScopeTargets),
+    ApplicationArn: S.String,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "PutApplicationAccessScopeRequest",
+}) as any as S.Schema<PutApplicationAccessScopeRequest>;
+export interface PutApplicationAccessScopeResponse {}
+export const PutApplicationAccessScopeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutApplicationAccessScopeResponse",
+}) as any as S.Schema<PutApplicationAccessScopeResponse>;
 export interface PutApplicationAssignmentConfigurationRequest {
   ApplicationArn: string;
   AssignmentRequired: boolean;
@@ -2219,6 +2619,50 @@ export const PutApplicationAssignmentConfigurationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "PutApplicationAssignmentConfigurationResponse",
   }) as any as S.Schema<PutApplicationAssignmentConfigurationResponse>;
+export interface PutApplicationAuthenticationMethodRequest {
+  ApplicationArn: string;
+  AuthenticationMethodType: AuthenticationMethodType;
+  AuthenticationMethod: AuthenticationMethod;
+}
+export const PutApplicationAuthenticationMethodRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ApplicationArn: S.String,
+      AuthenticationMethodType: AuthenticationMethodType,
+      AuthenticationMethod: AuthenticationMethod,
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+  ).annotate({
+    identifier: "PutApplicationAuthenticationMethodRequest",
+  }) as any as S.Schema<PutApplicationAuthenticationMethodRequest>;
+export interface PutApplicationAuthenticationMethodResponse {}
+export const PutApplicationAuthenticationMethodResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "PutApplicationAuthenticationMethodResponse",
+  }) as any as S.Schema<PutApplicationAuthenticationMethodResponse>;
+export interface PutApplicationGrantRequest {
+  ApplicationArn: string;
+  GrantType: GrantType;
+  Grant: Grant;
+}
+export const PutApplicationGrantRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ApplicationArn: S.String,
+    GrantType: GrantType,
+    Grant: Grant,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "PutApplicationGrantRequest",
+}) as any as S.Schema<PutApplicationGrantRequest>;
+export interface PutApplicationGrantResponse {}
+export const PutApplicationGrantResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutApplicationGrantResponse",
+}) as any as S.Schema<PutApplicationGrantResponse>;
 export interface PutApplicationSessionConfigurationRequest {
   ApplicationArn: string;
   UserBackgroundSessionApplicationStatus?: UserBackgroundSessionApplicationStatus;
@@ -2507,447 +2951,35 @@ export const UpdateTrustedTokenIssuerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTrustedTokenIssuerResponse",
 }) as any as S.Schema<UpdateTrustedTokenIssuerResponse>;
-export type ScopeTargets = string[];
-export const ScopeTargets = /*@__PURE__*/ S.Array(S.String);
-export interface PutApplicationAccessScopeRequest {
-  Scope: string;
-  AuthorizedTargets?: string[];
-  ApplicationArn: string;
-}
-export const PutApplicationAccessScopeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Scope: S.String,
-    AuthorizedTargets: S.optional(ScopeTargets),
-    ApplicationArn: S.String,
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "PutApplicationAccessScopeRequest",
-}) as any as S.Schema<PutApplicationAccessScopeRequest>;
-export interface PutApplicationAccessScopeResponse {}
-export const PutApplicationAccessScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutApplicationAccessScopeResponse",
-}) as any as S.Schema<PutApplicationAccessScopeResponse>;
-export interface GetApplicationAccessScopeRequest {
-  ApplicationArn: string;
-  Scope: string;
-}
-export const GetApplicationAccessScopeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationArn: S.String, Scope: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetApplicationAccessScopeRequest",
-}) as any as S.Schema<GetApplicationAccessScopeRequest>;
-export interface GetApplicationAccessScopeResponse {
-  Scope: string;
-  AuthorizedTargets?: string[];
-}
-export const GetApplicationAccessScopeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Scope: S.String, AuthorizedTargets: S.optional(ScopeTargets) }),
-).annotate({
-  identifier: "GetApplicationAccessScopeResponse",
-}) as any as S.Schema<GetApplicationAccessScopeResponse>;
-export interface DeleteApplicationAccessScopeRequest {
-  ApplicationArn: string;
-  Scope: string;
-}
-export const DeleteApplicationAccessScopeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationArn: S.String, Scope: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteApplicationAccessScopeRequest",
-}) as any as S.Schema<DeleteApplicationAccessScopeRequest>;
-export interface DeleteApplicationAccessScopeResponse {}
-export const DeleteApplicationAccessScopeResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteApplicationAccessScopeResponse",
-}) as any as S.Schema<DeleteApplicationAccessScopeResponse>;
-export interface ListApplicationAccessScopesRequest {
-  ApplicationArn: string;
-  MaxResults?: number;
-  NextToken?: string;
-}
-export const ListApplicationAccessScopesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationArn: S.String,
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListApplicationAccessScopesRequest",
-}) as any as S.Schema<ListApplicationAccessScopesRequest>;
-export interface ScopeDetails {
-  Scope: string;
-  AuthorizedTargets?: string[];
-}
-export const ScopeDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Scope: S.String, AuthorizedTargets: S.optional(ScopeTargets) }),
-).annotate({ identifier: "ScopeDetails" }) as any as S.Schema<ScopeDetails>;
-export type Scopes = ScopeDetails[];
-export const Scopes = /*@__PURE__*/ S.Array(ScopeDetails);
-export interface ListApplicationAccessScopesResponse {
-  Scopes: ScopeDetails[];
-  NextToken?: string;
-}
-export const ListApplicationAccessScopesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Scopes: Scopes, NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListApplicationAccessScopesResponse",
-}) as any as S.Schema<ListApplicationAccessScopesResponse>;
-export type AuthenticationMethodType = "IAM" | (string & {});
-export const AuthenticationMethodType = /*@__PURE__*/ S.String;
-export interface IamAuthenticationMethod {
-  ActorPolicy: any;
-}
-export const IamAuthenticationMethod = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ActorPolicy: S.Any }),
-).annotate({
-  identifier: "IamAuthenticationMethod",
-}) as any as S.Schema<IamAuthenticationMethod>;
-export type AuthenticationMethod = { Iam: IamAuthenticationMethod };
-export const AuthenticationMethod = /*@__PURE__*/ S.Union([
-  S.Struct({ Iam: IamAuthenticationMethod }),
-]);
-export interface PutApplicationAuthenticationMethodRequest {
-  ApplicationArn: string;
-  AuthenticationMethodType: AuthenticationMethodType;
-  AuthenticationMethod: AuthenticationMethod;
-}
-export const PutApplicationAuthenticationMethodRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationArn: S.String,
-      AuthenticationMethodType: AuthenticationMethodType,
-      AuthenticationMethod: AuthenticationMethod,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "PutApplicationAuthenticationMethodRequest",
-  }) as any as S.Schema<PutApplicationAuthenticationMethodRequest>;
-export interface PutApplicationAuthenticationMethodResponse {}
-export const PutApplicationAuthenticationMethodResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "PutApplicationAuthenticationMethodResponse",
-  }) as any as S.Schema<PutApplicationAuthenticationMethodResponse>;
-export interface GetApplicationAuthenticationMethodRequest {
-  ApplicationArn: string;
-  AuthenticationMethodType: AuthenticationMethodType;
-}
-export const GetApplicationAuthenticationMethodRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationArn: S.String,
-      AuthenticationMethodType: AuthenticationMethodType,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "GetApplicationAuthenticationMethodRequest",
-  }) as any as S.Schema<GetApplicationAuthenticationMethodRequest>;
-export interface GetApplicationAuthenticationMethodResponse {
-  AuthenticationMethod?: AuthenticationMethod;
-}
-export const GetApplicationAuthenticationMethodResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ AuthenticationMethod: S.optional(AuthenticationMethod) }),
-  ).annotate({
-    identifier: "GetApplicationAuthenticationMethodResponse",
-  }) as any as S.Schema<GetApplicationAuthenticationMethodResponse>;
-export interface DeleteApplicationAuthenticationMethodRequest {
-  ApplicationArn: string;
-  AuthenticationMethodType: AuthenticationMethodType;
-}
-export const DeleteApplicationAuthenticationMethodRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationArn: S.String,
-      AuthenticationMethodType: AuthenticationMethodType,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "DeleteApplicationAuthenticationMethodRequest",
-  }) as any as S.Schema<DeleteApplicationAuthenticationMethodRequest>;
-export interface DeleteApplicationAuthenticationMethodResponse {}
-export const DeleteApplicationAuthenticationMethodResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DeleteApplicationAuthenticationMethodResponse",
-  }) as any as S.Schema<DeleteApplicationAuthenticationMethodResponse>;
-export interface ListApplicationAuthenticationMethodsRequest {
-  ApplicationArn: string;
-  NextToken?: string;
-}
-export const ListApplicationAuthenticationMethodsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ApplicationArn: S.String,
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-  ).annotate({
-    identifier: "ListApplicationAuthenticationMethodsRequest",
-  }) as any as S.Schema<ListApplicationAuthenticationMethodsRequest>;
-export interface AuthenticationMethodItem {
-  AuthenticationMethodType?: AuthenticationMethodType;
-  AuthenticationMethod?: AuthenticationMethod;
-}
-export const AuthenticationMethodItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AuthenticationMethodType: S.optional(AuthenticationMethodType),
-    AuthenticationMethod: S.optional(AuthenticationMethod),
-  }),
-).annotate({
-  identifier: "AuthenticationMethodItem",
-}) as any as S.Schema<AuthenticationMethodItem>;
-export type AuthenticationMethods = AuthenticationMethodItem[];
-export const AuthenticationMethods = /*@__PURE__*/ S.Array(
-  AuthenticationMethodItem,
-);
-export interface ListApplicationAuthenticationMethodsResponse {
-  AuthenticationMethods?: AuthenticationMethodItem[];
-  NextToken?: string;
-}
-export const ListApplicationAuthenticationMethodsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      AuthenticationMethods: S.optional(AuthenticationMethods),
-      NextToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ListApplicationAuthenticationMethodsResponse",
-  }) as any as S.Schema<ListApplicationAuthenticationMethodsResponse>;
-export type GrantType =
-  | "authorization_code"
-  | "refresh_token"
-  | "urn:ietf:params:oauth:grant-type:jwt-bearer"
-  | "urn:ietf:params:oauth:grant-type:token-exchange"
+export type AccessDeniedExceptionMessage = string;
+export type AccessDeniedExceptionReason =
+  | "KMS_AccessDeniedException"
   | (string & {});
-export const GrantType = /*@__PURE__*/ S.String;
-export type RedirectUris = string[];
-export const RedirectUris = /*@__PURE__*/ S.Array(S.String);
-export interface AuthorizationCodeGrant {
-  RedirectUris?: string[];
-}
-export const AuthorizationCodeGrant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RedirectUris: S.optional(RedirectUris) }),
-).annotate({
-  identifier: "AuthorizationCodeGrant",
-}) as any as S.Schema<AuthorizationCodeGrant>;
-export type TokenIssuerAudiences = string[];
-export const TokenIssuerAudiences = /*@__PURE__*/ S.Array(S.String);
-export interface AuthorizedTokenIssuer {
-  TrustedTokenIssuerArn?: string;
-  AuthorizedAudiences?: string[];
-}
-export const AuthorizedTokenIssuer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    TrustedTokenIssuerArn: S.optional(S.String),
-    AuthorizedAudiences: S.optional(TokenIssuerAudiences),
-  }),
-).annotate({
-  identifier: "AuthorizedTokenIssuer",
-}) as any as S.Schema<AuthorizedTokenIssuer>;
-export type AuthorizedTokenIssuers = AuthorizedTokenIssuer[];
-export const AuthorizedTokenIssuers = /*@__PURE__*/ S.Array(
-  AuthorizedTokenIssuer,
-);
-export interface JwtBearerGrant {
-  AuthorizedTokenIssuers?: AuthorizedTokenIssuer[];
-}
-export const JwtBearerGrant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AuthorizedTokenIssuers: S.optional(AuthorizedTokenIssuers) }),
-).annotate({ identifier: "JwtBearerGrant" }) as any as S.Schema<JwtBearerGrant>;
-export interface RefreshTokenGrant {}
-export const RefreshTokenGrant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RefreshTokenGrant",
-}) as any as S.Schema<RefreshTokenGrant>;
-export interface TokenExchangeGrant {}
-export const TokenExchangeGrant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TokenExchangeGrant",
-}) as any as S.Schema<TokenExchangeGrant>;
-export type Grant =
-  | {
-      AuthorizationCode: AuthorizationCodeGrant;
-      JwtBearer?: never;
-      RefreshToken?: never;
-      TokenExchange?: never;
-    }
-  | {
-      AuthorizationCode?: never;
-      JwtBearer: JwtBearerGrant;
-      RefreshToken?: never;
-      TokenExchange?: never;
-    }
-  | {
-      AuthorizationCode?: never;
-      JwtBearer?: never;
-      RefreshToken: RefreshTokenGrant;
-      TokenExchange?: never;
-    }
-  | {
-      AuthorizationCode?: never;
-      JwtBearer?: never;
-      RefreshToken?: never;
-      TokenExchange: TokenExchangeGrant;
-    };
-export const Grant = /*@__PURE__*/ S.Union([
-  S.Struct({ AuthorizationCode: AuthorizationCodeGrant }),
-  S.Struct({ JwtBearer: JwtBearerGrant }),
-  S.Struct({ RefreshToken: RefreshTokenGrant }),
-  S.Struct({ TokenExchange: TokenExchangeGrant }),
-]);
-export interface PutApplicationGrantRequest {
-  ApplicationArn: string;
-  GrantType: GrantType;
-  Grant: Grant;
-}
-export const PutApplicationGrantRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ApplicationArn: S.String,
-    GrantType: GrantType,
-    Grant: Grant,
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "PutApplicationGrantRequest",
-}) as any as S.Schema<PutApplicationGrantRequest>;
-export interface PutApplicationGrantResponse {}
-export const PutApplicationGrantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutApplicationGrantResponse",
-}) as any as S.Schema<PutApplicationGrantResponse>;
-export interface GetApplicationGrantRequest {
-  ApplicationArn: string;
-  GrantType: GrantType;
-}
-export const GetApplicationGrantRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationArn: S.String, GrantType: GrantType }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetApplicationGrantRequest",
-}) as any as S.Schema<GetApplicationGrantRequest>;
-export interface GetApplicationGrantResponse {
-  Grant: Grant;
-}
-export const GetApplicationGrantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Grant: Grant }),
-).annotate({
-  identifier: "GetApplicationGrantResponse",
-}) as any as S.Schema<GetApplicationGrantResponse>;
-export interface DeleteApplicationGrantRequest {
-  ApplicationArn: string;
-  GrantType: GrantType;
-}
-export const DeleteApplicationGrantRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationArn: S.String, GrantType: GrantType }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteApplicationGrantRequest",
-}) as any as S.Schema<DeleteApplicationGrantRequest>;
-export interface DeleteApplicationGrantResponse {}
-export const DeleteApplicationGrantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteApplicationGrantResponse",
-}) as any as S.Schema<DeleteApplicationGrantResponse>;
-export interface ListApplicationGrantsRequest {
-  ApplicationArn: string;
-  NextToken?: string;
-}
-export const ListApplicationGrantsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ApplicationArn: S.String, NextToken: S.optional(S.String) }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListApplicationGrantsRequest",
-}) as any as S.Schema<ListApplicationGrantsRequest>;
-export interface GrantItem {
-  GrantType: GrantType;
-  Grant: Grant;
-}
-export const GrantItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GrantType: GrantType, Grant: Grant }),
-).annotate({ identifier: "GrantItem" }) as any as S.Schema<GrantItem>;
-export type Grants = GrantItem[];
-export const Grants = /*@__PURE__*/ S.Array(GrantItem);
-export interface ListApplicationGrantsResponse {
-  Grants: GrantItem[];
-  NextToken?: string;
-}
-export const ListApplicationGrantsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Grants: Grants, NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListApplicationGrantsResponse",
-}) as any as S.Schema<ListApplicationGrantsResponse>;
+export const AccessDeniedExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(AccessDeniedExceptionReason),
-  },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(ThrottlingExceptionReason),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(ValidationExceptionReason),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(ResourceNotFoundExceptionReason),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
+export type ConflictExceptionMessage = string;
+export type InternalFailureMessage = string;
+export type ServiceQuotaExceededMessage = string;
+export type ThrottlingExceptionMessage = string;
+export type ThrottlingExceptionReason =
+  | "KMS_ThrottlingException"
+  | (string & {});
+export const ThrottlingExceptionReason = /*@__PURE__*/ S.String;
 
-//# Operations
+export type ValidationExceptionMessage = string;
+export type ValidationExceptionReason =
+  | "KMS_InvalidKeyUsageException"
+  | "KMS_InvalidStateException"
+  | "KMS_DisabledException"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+
+export type ResourceNotFoundMessage = string;
+export type ResourceNotFoundExceptionReason =
+  | "KMS_NotFoundException"
+  | (string & {});
+export const ResourceNotFoundExceptionReason = /*@__PURE__*/ S.String;
+
 export type AddRegionError =
   | AccessDeniedException
   | ConflictException
@@ -2989,6 +3021,7 @@ export const addRegion: API.OperationMethod<
   retry: Retry,
   operationName: "AddRegion",
 }));
+
 export type AttachCustomerManagedPolicyReferenceToPermissionSetError =
   | AccessDeniedException
   | ConflictException
@@ -3022,6 +3055,7 @@ export const attachCustomerManagedPolicyReferenceToPermissionSet: API.OperationM
   retry: Retry,
   operationName: "AttachCustomerManagedPolicyReferenceToPermissionSet",
 }));
+
 export type AttachManagedPolicyToPermissionSetError =
   | AccessDeniedException
   | ConflictException
@@ -3057,6 +3091,7 @@ export const attachManagedPolicyToPermissionSet: API.OperationMethod<
   retry: Retry,
   operationName: "AttachManagedPolicyToPermissionSet",
 }));
+
 export type CreateAccountAssignmentError =
   | AccessDeniedException
   | ConflictException
@@ -3096,6 +3131,7 @@ export const createAccountAssignment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAccountAssignment",
 }));
+
 export type CreateApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -3131,6 +3167,7 @@ export const createApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApplication",
 }));
+
 export type CreateApplicationAssignmentError =
   | AccessDeniedException
   | ConflictException
@@ -3164,6 +3201,7 @@ export const createApplicationAssignment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApplicationAssignment",
 }));
+
 export type CreateInstanceError =
   | AccessDeniedException
   | ConflictException
@@ -3201,6 +3239,7 @@ export const createInstance: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInstance",
 }));
+
 export type CreateInstanceAccessControlAttributeConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -3234,6 +3273,7 @@ export const createInstanceAccessControlAttributeConfiguration: API.OperationMet
   retry: Retry,
   operationName: "CreateInstanceAccessControlAttributeConfiguration",
 }));
+
 export type CreatePermissionSetError =
   | AccessDeniedException
   | ConflictException
@@ -3269,6 +3309,7 @@ export const createPermissionSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePermissionSet",
 }));
+
 export type CreateTrustedTokenIssuerError =
   | AccessDeniedException
   | ConflictException
@@ -3302,6 +3343,7 @@ export const createTrustedTokenIssuer: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTrustedTokenIssuer",
 }));
+
 export type DeleteAccountAssignmentError =
   | AccessDeniedException
   | ConflictException
@@ -3335,6 +3377,7 @@ export const deleteAccountAssignment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccountAssignment",
 }));
+
 export type DeleteApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -3366,6 +3409,39 @@ export const deleteApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplication",
 }));
+
+export type DeleteApplicationAccessScopeError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an IAM Identity Center access scope from an application.
+ */
+export const deleteApplicationAccessScope: API.OperationMethod<
+  DeleteApplicationAccessScopeRequest,
+  DeleteApplicationAccessScopeResponse,
+  DeleteApplicationAccessScopeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteApplicationAccessScopeRequest,
+  output: DeleteApplicationAccessScopeResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteApplicationAccessScope",
+}));
+
 export type DeleteApplicationAssignmentError =
   | AccessDeniedException
   | ConflictException
@@ -3397,6 +3473,71 @@ export const deleteApplicationAssignment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplicationAssignment",
 }));
+
+export type DeleteApplicationAuthenticationMethodError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an authentication method from an application.
+ */
+export const deleteApplicationAuthenticationMethod: API.OperationMethod<
+  DeleteApplicationAuthenticationMethodRequest,
+  DeleteApplicationAuthenticationMethodResponse,
+  DeleteApplicationAuthenticationMethodError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteApplicationAuthenticationMethodRequest,
+  output: DeleteApplicationAuthenticationMethodResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteApplicationAuthenticationMethod",
+}));
+
+export type DeleteApplicationGrantError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a grant from an application.
+ */
+export const deleteApplicationGrant: API.OperationMethod<
+  DeleteApplicationGrantRequest,
+  DeleteApplicationGrantResponse,
+  DeleteApplicationGrantError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteApplicationGrantRequest,
+  output: DeleteApplicationGrantResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteApplicationGrant",
+}));
+
 export type DeleteInlinePolicyFromPermissionSetError =
   | AccessDeniedException
   | ConflictException
@@ -3428,6 +3569,7 @@ export const deleteInlinePolicyFromPermissionSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInlinePolicyFromPermissionSet",
 }));
+
 export type DeleteInstanceError =
   | AccessDeniedException
   | ConflictException
@@ -3457,6 +3599,7 @@ export const deleteInstance: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInstance",
 }));
+
 export type DeleteInstanceAccessControlAttributeConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -3488,6 +3631,7 @@ export const deleteInstanceAccessControlAttributeConfiguration: API.OperationMet
   retry: Retry,
   operationName: "DeleteInstanceAccessControlAttributeConfiguration",
 }));
+
 export type DeletePermissionsBoundaryFromPermissionSetError =
   | AccessDeniedException
   | ConflictException
@@ -3519,6 +3663,7 @@ export const deletePermissionsBoundaryFromPermissionSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePermissionsBoundaryFromPermissionSet",
 }));
+
 export type DeletePermissionSetError =
   | AccessDeniedException
   | ConflictException
@@ -3550,6 +3695,7 @@ export const deletePermissionSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePermissionSet",
 }));
+
 export type DeleteTrustedTokenIssuerError =
   | AccessDeniedException
   | ConflictException
@@ -3583,6 +3729,7 @@ export const deleteTrustedTokenIssuer: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTrustedTokenIssuer",
 }));
+
 export type DescribeAccountAssignmentCreationStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -3612,6 +3759,7 @@ export const describeAccountAssignmentCreationStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccountAssignmentCreationStatus",
 }));
+
 export type DescribeAccountAssignmentDeletionStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -3641,6 +3789,7 @@ export const describeAccountAssignmentDeletionStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccountAssignmentDeletionStatus",
 }));
+
 export type DescribeApplicationError =
   | AccessDeniedException
   | InternalServerException
@@ -3670,6 +3819,7 @@ export const describeApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeApplication",
 }));
+
 export type DescribeApplicationAssignmentError =
   | AccessDeniedException
   | InternalServerException
@@ -3699,6 +3849,7 @@ export const describeApplicationAssignment: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeApplicationAssignment",
 }));
+
 export type DescribeApplicationProviderError =
   | AccessDeniedException
   | InternalServerException
@@ -3728,6 +3879,7 @@ export const describeApplicationProvider: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeApplicationProvider",
 }));
+
 export type DescribeInstanceError =
   | AccessDeniedException
   | InternalServerException
@@ -3761,6 +3913,7 @@ export const describeInstance: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInstance",
 }));
+
 export type DescribeInstanceAccessControlAttributeConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -3790,6 +3943,7 @@ export const describeInstanceAccessControlAttributeConfiguration: API.OperationM
   retry: Retry,
   operationName: "DescribeInstanceAccessControlAttributeConfiguration",
 }));
+
 export type DescribePermissionSetError =
   | AccessDeniedException
   | InternalServerException
@@ -3819,6 +3973,7 @@ export const describePermissionSet: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePermissionSet",
 }));
+
 export type DescribePermissionSetProvisioningStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -3848,6 +4003,7 @@ export const describePermissionSetProvisioningStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePermissionSetProvisioningStatus",
 }));
+
 export type DescribeRegionError =
   | AccessDeniedException
   | InternalServerException
@@ -3885,6 +4041,7 @@ export const describeRegion: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRegion",
 }));
+
 export type DescribeTrustedTokenIssuerError =
   | AccessDeniedException
   | InternalServerException
@@ -3914,6 +4071,7 @@ export const describeTrustedTokenIssuer: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTrustedTokenIssuer",
 }));
+
 export type DetachCustomerManagedPolicyReferenceFromPermissionSetError =
   | AccessDeniedException
   | ConflictException
@@ -3945,6 +4103,7 @@ export const detachCustomerManagedPolicyReferenceFromPermissionSet: API.Operatio
   retry: Retry,
   operationName: "DetachCustomerManagedPolicyReferenceFromPermissionSet",
 }));
+
 export type DetachManagedPolicyFromPermissionSetError =
   | AccessDeniedException
   | ConflictException
@@ -3976,6 +4135,37 @@ export const detachManagedPolicyFromPermissionSet: API.OperationMethod<
   retry: Retry,
   operationName: "DetachManagedPolicyFromPermissionSet",
 }));
+
+export type GetApplicationAccessScopeError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the authorized targets for an IAM Identity Center access scope for an application.
+ */
+export const getApplicationAccessScope: API.OperationMethod<
+  GetApplicationAccessScopeRequest,
+  GetApplicationAccessScopeResponse,
+  GetApplicationAccessScopeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetApplicationAccessScopeRequest,
+  output: GetApplicationAccessScopeResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetApplicationAccessScope",
+}));
+
 export type GetApplicationAssignmentConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -4005,6 +4195,67 @@ export const getApplicationAssignmentConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetApplicationAssignmentConfiguration",
 }));
+
+export type GetApplicationAuthenticationMethodError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves details about an authentication method used by an application.
+ */
+export const getApplicationAuthenticationMethod: API.OperationMethod<
+  GetApplicationAuthenticationMethodRequest,
+  GetApplicationAuthenticationMethodResponse,
+  GetApplicationAuthenticationMethodError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetApplicationAuthenticationMethodRequest,
+  output: GetApplicationAuthenticationMethodResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetApplicationAuthenticationMethod",
+}));
+
+export type GetApplicationGrantError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves details about an application grant.
+ */
+export const getApplicationGrant: API.OperationMethod<
+  GetApplicationGrantRequest,
+  GetApplicationGrantResponse,
+  GetApplicationGrantError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetApplicationGrantRequest,
+  output: GetApplicationGrantResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetApplicationGrant",
+}));
+
 export type GetApplicationSessionConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -4036,6 +4287,7 @@ export const getApplicationSessionConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetApplicationSessionConfiguration",
 }));
+
 export type GetInlinePolicyForPermissionSetError =
   | AccessDeniedException
   | InternalServerException
@@ -4065,6 +4317,7 @@ export const getInlinePolicyForPermissionSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetInlinePolicyForPermissionSet",
 }));
+
 export type GetPermissionsBoundaryForPermissionSetError =
   | AccessDeniedException
   | InternalServerException
@@ -4094,6 +4347,7 @@ export const getPermissionsBoundaryForPermissionSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetPermissionsBoundaryForPermissionSet",
 }));
+
 export type ListAccountAssignmentCreationStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -4144,6 +4398,7 @@ export const listAccountAssignmentCreationStatus: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAccountAssignmentDeletionStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -4194,6 +4449,7 @@ export const listAccountAssignmentDeletionStatus: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAccountAssignmentsError =
   | AccessDeniedException
   | InternalServerException
@@ -4244,6 +4500,7 @@ export const listAccountAssignments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAccountAssignmentsForPrincipalError =
   | AccessDeniedException
   | InternalServerException
@@ -4294,6 +4551,7 @@ export const listAccountAssignmentsForPrincipal: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAccountsForProvisionedPermissionSetError =
   | AccessDeniedException
   | InternalServerException
@@ -4344,6 +4602,58 @@ export const listAccountsForProvisionedPermissionSet: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
+export type ListApplicationAccessScopesError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists the access scopes and authorized targets associated with an application.
+ */
+export const listApplicationAccessScopes: API.OperationMethod<
+  ListApplicationAccessScopesRequest,
+  ListApplicationAccessScopesResponse,
+  ListApplicationAccessScopesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListApplicationAccessScopesRequest,
+  ) => stream.Stream<
+    ListApplicationAccessScopesResponse,
+    ListApplicationAccessScopesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListApplicationAccessScopesRequest,
+  ) => stream.Stream<
+    ScopeDetails,
+    ListApplicationAccessScopesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListApplicationAccessScopesRequest,
+  output: ListApplicationAccessScopesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListApplicationAccessScopes",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Scopes",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
 export type ListApplicationAssignmentsError =
   | AccessDeniedException
   | InternalServerException
@@ -4394,6 +4704,7 @@ export const listApplicationAssignments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListApplicationAssignmentsForPrincipalError =
   | AccessDeniedException
   | InternalServerException
@@ -4444,6 +4755,107 @@ export const listApplicationAssignmentsForPrincipal: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
+export type ListApplicationAuthenticationMethodsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists all of the authentication methods supported by the specified application.
+ */
+export const listApplicationAuthenticationMethods: API.OperationMethod<
+  ListApplicationAuthenticationMethodsRequest,
+  ListApplicationAuthenticationMethodsResponse,
+  ListApplicationAuthenticationMethodsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListApplicationAuthenticationMethodsRequest,
+  ) => stream.Stream<
+    ListApplicationAuthenticationMethodsResponse,
+    ListApplicationAuthenticationMethodsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListApplicationAuthenticationMethodsRequest,
+  ) => stream.Stream<
+    AuthenticationMethodItem,
+    ListApplicationAuthenticationMethodsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListApplicationAuthenticationMethodsRequest,
+  output: ListApplicationAuthenticationMethodsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListApplicationAuthenticationMethods",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "AuthenticationMethods",
+  } as const,
+}));
+
+export type ListApplicationGrantsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * List the grants associated with an application.
+ */
+export const listApplicationGrants: API.OperationMethod<
+  ListApplicationGrantsRequest,
+  ListApplicationGrantsResponse,
+  ListApplicationGrantsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListApplicationGrantsRequest,
+  ) => stream.Stream<
+    ListApplicationGrantsResponse,
+    ListApplicationGrantsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListApplicationGrantsRequest,
+  ) => stream.Stream<
+    GrantItem,
+    ListApplicationGrantsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListApplicationGrantsRequest,
+  output: ListApplicationGrantsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListApplicationGrants",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Grants",
+  } as const,
+}));
+
 export type ListApplicationProvidersError =
   | AccessDeniedException
   | InternalServerException
@@ -4492,6 +4904,7 @@ export const listApplicationProviders: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListApplicationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4540,6 +4953,7 @@ export const listApplications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCustomerManagedPolicyReferencesInPermissionSetError =
   | AccessDeniedException
   | InternalServerException
@@ -4590,6 +5004,7 @@ export const listCustomerManagedPolicyReferencesInPermissionSet: API.OperationMe
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInstancesError =
   | AccessDeniedException
   | InternalServerException
@@ -4638,6 +5053,7 @@ export const listInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListManagedPoliciesInPermissionSetError =
   | AccessDeniedException
   | InternalServerException
@@ -4688,6 +5104,7 @@ export const listManagedPoliciesInPermissionSet: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPermissionSetProvisioningStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -4738,6 +5155,7 @@ export const listPermissionSetProvisioningStatus: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPermissionSetsError =
   | AccessDeniedException
   | InternalServerException
@@ -4788,6 +5206,7 @@ export const listPermissionSets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPermissionSetsProvisionedToAccountError =
   | AccessDeniedException
   | InternalServerException
@@ -4838,6 +5257,7 @@ export const listPermissionSetsProvisionedToAccount: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRegionsError =
   | AccessDeniedException
   | InternalServerException
@@ -4894,6 +5314,7 @@ export const listRegions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -4943,6 +5364,7 @@ export const listTagsForResource: API.OperationMethod<
     items: "Tags",
   } as const,
 }));
+
 export type ListTrustedTokenIssuersError =
   | AccessDeniedException
   | InternalServerException
@@ -4991,6 +5413,7 @@ export const listTrustedTokenIssuers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ProvisionPermissionSetError =
   | AccessDeniedException
   | ConflictException
@@ -5022,396 +5445,7 @@ export const provisionPermissionSet: API.OperationMethod<
   retry: Retry,
   operationName: "ProvisionPermissionSet",
 }));
-export type PutApplicationAssignmentConfigurationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Configure how users gain access to an application. If `AssignmentsRequired` is `true` (default value), users don’t have access to the application unless an assignment is created using the CreateApplicationAssignment API. If `false`, all users have access to the application. If an assignment is created using CreateApplicationAssignment., the user retains access if `AssignmentsRequired` is set to `true`.
- */
-export const putApplicationAssignmentConfiguration: API.OperationMethod<
-  PutApplicationAssignmentConfigurationRequest,
-  PutApplicationAssignmentConfigurationResponse,
-  PutApplicationAssignmentConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutApplicationAssignmentConfigurationRequest,
-  output: PutApplicationAssignmentConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "PutApplicationAssignmentConfiguration",
-}));
-export type PutApplicationSessionConfigurationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates the session configuration for an application in IAM Identity Center.
- *
- * The session configuration determines how users can access an application. This includes whether user background sessions are enabled. User background sessions allow users to start a job on a supported Amazon Web Services managed application without having to remain signed in to an active session while the job runs.
- */
-export const putApplicationSessionConfiguration: API.OperationMethod<
-  PutApplicationSessionConfigurationRequest,
-  PutApplicationSessionConfigurationResponse,
-  PutApplicationSessionConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutApplicationSessionConfigurationRequest,
-  output: PutApplicationSessionConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "PutApplicationSessionConfiguration",
-}));
-export type PutInlinePolicyToPermissionSetError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Attaches an inline policy to a permission set.
- *
- * If the permission set is already referenced by one or more account assignments, you will need to call ` ProvisionPermissionSet ` after this action to apply the corresponding IAM policy updates to all assigned accounts.
- */
-export const putInlinePolicyToPermissionSet: API.OperationMethod<
-  PutInlinePolicyToPermissionSetRequest,
-  PutInlinePolicyToPermissionSetResponse,
-  PutInlinePolicyToPermissionSetError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutInlinePolicyToPermissionSetRequest,
-  output: PutInlinePolicyToPermissionSetResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "PutInlinePolicyToPermissionSet",
-}));
-export type PutPermissionsBoundaryToPermissionSetError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Attaches an Amazon Web Services managed or customer managed policy to the specified PermissionSet as a permissions boundary.
- */
-export const putPermissionsBoundaryToPermissionSet: API.OperationMethod<
-  PutPermissionsBoundaryToPermissionSetRequest,
-  PutPermissionsBoundaryToPermissionSetResponse,
-  PutPermissionsBoundaryToPermissionSetError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutPermissionsBoundaryToPermissionSetRequest,
-  output: PutPermissionsBoundaryToPermissionSetResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "PutPermissionsBoundaryToPermissionSet",
-}));
-export type RemoveRegionError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Removes an additional Region from an IAM Identity Center instance. This operation initiates an asynchronous workflow to clean up IAM Identity Center resources in the specified additional Region. The Region status is set to REMOVING and the Region record is deleted when the workflow completes. The request must be made from the primary Region. The target Region cannot be the primary Region, and no other add or remove Region workflows can be in progress.
- *
- * The following actions are related to `RemoveRegion`:
- *
- * - AddRegion
- *
- * - DescribeRegion
- *
- * - ListRegions
- */
-export const removeRegion: API.OperationMethod<
-  RemoveRegionRequest,
-  RemoveRegionResponse,
-  RemoveRegionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: RemoveRegionRequest,
-  output: RemoveRegionResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "RemoveRegion",
-}));
-export type TagResourceError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Associates a set of tags with a specified resource.
- */
-export const tagResource: API.OperationMethod<
-  TagResourceRequest,
-  TagResourceResponse,
-  TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "TagResource",
-}));
-export type UntagResourceError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Disassociates a set of tags from a specified resource.
- */
-export const untagResource: API.OperationMethod<
-  UntagResourceRequest,
-  UntagResourceResponse,
-  UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UntagResource",
-}));
-export type UpdateApplicationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates application properties.
- */
-export const updateApplication: API.OperationMethod<
-  UpdateApplicationRequest,
-  UpdateApplicationResponse,
-  UpdateApplicationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationRequest,
-  output: UpdateApplicationResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateApplication",
-}));
-export type UpdateInstanceError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Update the details for the instance of IAM Identity Center that is owned by the Amazon Web Services account.
- */
-export const updateInstance: API.OperationMethod<
-  UpdateInstanceRequest,
-  UpdateInstanceResponse,
-  UpdateInstanceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInstanceRequest,
-  output: UpdateInstanceResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateInstance",
-}));
-export type UpdateInstanceAccessControlAttributeConfigurationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates the IAM Identity Center identity store attributes that you can use with the IAM Identity Center instance for attributes-based access control (ABAC). When using an external identity provider as an identity source, you can pass attributes through the SAML assertion as an alternative to configuring attributes from the IAM Identity Center identity store. If a SAML assertion passes any of these attributes, IAM Identity Center replaces the attribute value with the value from the IAM Identity Center identity store. For more information about ABAC, see Attribute-Based Access Control in the *IAM Identity Center User Guide*.
- */
-export const updateInstanceAccessControlAttributeConfiguration: API.OperationMethod<
-  UpdateInstanceAccessControlAttributeConfigurationRequest,
-  UpdateInstanceAccessControlAttributeConfigurationResponse,
-  UpdateInstanceAccessControlAttributeConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInstanceAccessControlAttributeConfigurationRequest,
-  output: UpdateInstanceAccessControlAttributeConfigurationResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateInstanceAccessControlAttributeConfiguration",
-}));
-export type UpdatePermissionSetError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing permission set.
- */
-export const updatePermissionSet: API.OperationMethod<
-  UpdatePermissionSetRequest,
-  UpdatePermissionSetResponse,
-  UpdatePermissionSetError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePermissionSetRequest,
-  output: UpdatePermissionSetResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdatePermissionSet",
-}));
-export type UpdateTrustedTokenIssuerError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates the name of the trusted token issuer, or the path of a source attribute or destination attribute for a trusted token issuer configuration.
- *
- * Updating this trusted token issuer configuration might cause users to lose access to any applications that are configured to use the trusted token issuer.
- */
-export const updateTrustedTokenIssuer: API.OperationMethod<
-  UpdateTrustedTokenIssuerRequest,
-  UpdateTrustedTokenIssuerResponse,
-  UpdateTrustedTokenIssuerError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTrustedTokenIssuerRequest,
-  output: UpdateTrustedTokenIssuerResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateTrustedTokenIssuer",
-}));
+
 export type PutApplicationAccessScopeError =
   | AccessDeniedException
   | ConflictException
@@ -5443,36 +5477,8 @@ export const putApplicationAccessScope: API.OperationMethod<
   retry: Retry,
   operationName: "PutApplicationAccessScope",
 }));
-export type GetApplicationAccessScopeError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves the authorized targets for an IAM Identity Center access scope for an application.
- */
-export const getApplicationAccessScope: API.OperationMethod<
-  GetApplicationAccessScopeRequest,
-  GetApplicationAccessScopeResponse,
-  GetApplicationAccessScopeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationAccessScopeRequest,
-  output: GetApplicationAccessScopeResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetApplicationAccessScope",
-}));
-export type DeleteApplicationAccessScopeError =
+
+export type PutApplicationAssignmentConfigurationError =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
@@ -5481,16 +5487,16 @@ export type DeleteApplicationAccessScopeError =
   | ValidationException
   | CommonErrors;
 /**
- * Deletes an IAM Identity Center access scope from an application.
+ * Configure how users gain access to an application. If `AssignmentsRequired` is `true` (default value), users don’t have access to the application unless an assignment is created using the CreateApplicationAssignment API. If `false`, all users have access to the application. If an assignment is created using CreateApplicationAssignment., the user retains access if `AssignmentsRequired` is set to `true`.
  */
-export const deleteApplicationAccessScope: API.OperationMethod<
-  DeleteApplicationAccessScopeRequest,
-  DeleteApplicationAccessScopeResponse,
-  DeleteApplicationAccessScopeError,
+export const putApplicationAssignmentConfiguration: API.OperationMethod<
+  PutApplicationAssignmentConfigurationRequest,
+  PutApplicationAssignmentConfigurationResponse,
+  PutApplicationAssignmentConfigurationError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationAccessScopeRequest,
-  output: DeleteApplicationAccessScopeResponse,
+  input: PutApplicationAssignmentConfigurationRequest,
+  output: PutApplicationAssignmentConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5501,58 +5507,9 @@ export const deleteApplicationAccessScope: API.OperationMethod<
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "DeleteApplicationAccessScope",
+  operationName: "PutApplicationAssignmentConfiguration",
 }));
-export type ListApplicationAccessScopesError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Lists the access scopes and authorized targets associated with an application.
- */
-export const listApplicationAccessScopes: API.OperationMethod<
-  ListApplicationAccessScopesRequest,
-  ListApplicationAccessScopesResponse,
-  ListApplicationAccessScopesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationAccessScopesRequest,
-  ) => stream.Stream<
-    ListApplicationAccessScopesResponse,
-    ListApplicationAccessScopesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationAccessScopesRequest,
-  ) => stream.Stream<
-    ScopeDetails,
-    ListApplicationAccessScopesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListApplicationAccessScopesRequest,
-  output: ListApplicationAccessScopesResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListApplicationAccessScopes",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "Scopes",
-    pageSize: "MaxResults",
-  } as const,
-}));
+
 export type PutApplicationAuthenticationMethodError =
   | AccessDeniedException
   | ConflictException
@@ -5584,115 +5541,7 @@ export const putApplicationAuthenticationMethod: API.OperationMethod<
   retry: Retry,
   operationName: "PutApplicationAuthenticationMethod",
 }));
-export type GetApplicationAuthenticationMethodError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves details about an authentication method used by an application.
- */
-export const getApplicationAuthenticationMethod: API.OperationMethod<
-  GetApplicationAuthenticationMethodRequest,
-  GetApplicationAuthenticationMethodResponse,
-  GetApplicationAuthenticationMethodError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationAuthenticationMethodRequest,
-  output: GetApplicationAuthenticationMethodResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetApplicationAuthenticationMethod",
-}));
-export type DeleteApplicationAuthenticationMethodError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes an authentication method from an application.
- */
-export const deleteApplicationAuthenticationMethod: API.OperationMethod<
-  DeleteApplicationAuthenticationMethodRequest,
-  DeleteApplicationAuthenticationMethodResponse,
-  DeleteApplicationAuthenticationMethodError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationAuthenticationMethodRequest,
-  output: DeleteApplicationAuthenticationMethodResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteApplicationAuthenticationMethod",
-}));
-export type ListApplicationAuthenticationMethodsError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Lists all of the authentication methods supported by the specified application.
- */
-export const listApplicationAuthenticationMethods: API.OperationMethod<
-  ListApplicationAuthenticationMethodsRequest,
-  ListApplicationAuthenticationMethodsResponse,
-  ListApplicationAuthenticationMethodsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationAuthenticationMethodsRequest,
-  ) => stream.Stream<
-    ListApplicationAuthenticationMethodsResponse,
-    ListApplicationAuthenticationMethodsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationAuthenticationMethodsRequest,
-  ) => stream.Stream<
-    AuthenticationMethodItem,
-    ListApplicationAuthenticationMethodsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListApplicationAuthenticationMethodsRequest,
-  output: ListApplicationAuthenticationMethodsResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListApplicationAuthenticationMethods",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "AuthenticationMethods",
-  } as const,
-}));
+
 export type PutApplicationGrantError =
   | AccessDeniedException
   | ConflictException
@@ -5749,36 +5598,8 @@ export const putApplicationGrant: API.OperationMethod<
   retry: Retry,
   operationName: "PutApplicationGrant",
 }));
-export type GetApplicationGrantError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves details about an application grant.
- */
-export const getApplicationGrant: API.OperationMethod<
-  GetApplicationGrantRequest,
-  GetApplicationGrantResponse,
-  GetApplicationGrantError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationGrantRequest,
-  output: GetApplicationGrantResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetApplicationGrant",
-}));
-export type DeleteApplicationGrantError =
+
+export type PutApplicationSessionConfigurationError =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
@@ -5787,16 +5608,18 @@ export type DeleteApplicationGrantError =
   | ValidationException
   | CommonErrors;
 /**
- * Deletes a grant from an application.
+ * Updates the session configuration for an application in IAM Identity Center.
+ *
+ * The session configuration determines how users can access an application. This includes whether user background sessions are enabled. User background sessions allow users to start a job on a supported Amazon Web Services managed application without having to remain signed in to an active session while the job runs.
  */
-export const deleteApplicationGrant: API.OperationMethod<
-  DeleteApplicationGrantRequest,
-  DeleteApplicationGrantResponse,
-  DeleteApplicationGrantError,
+export const putApplicationSessionConfiguration: API.OperationMethod<
+  PutApplicationSessionConfigurationRequest,
+  PutApplicationSessionConfigurationResponse,
+  PutApplicationSessionConfigurationError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationGrantRequest,
-  output: DeleteApplicationGrantResponse,
+  input: PutApplicationSessionConfigurationRequest,
+  output: PutApplicationSessionConfigurationResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5807,43 +5630,67 @@ export const deleteApplicationGrant: API.OperationMethod<
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "DeleteApplicationGrant",
+  operationName: "PutApplicationSessionConfiguration",
 }));
-export type ListApplicationGrantsError =
+
+export type PutInlinePolicyToPermissionSetError =
   | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Attaches an inline policy to a permission set.
+ *
+ * If the permission set is already referenced by one or more account assignments, you will need to call ` ProvisionPermissionSet ` after this action to apply the corresponding IAM policy updates to all assigned accounts.
+ */
+export const putInlinePolicyToPermissionSet: API.OperationMethod<
+  PutInlinePolicyToPermissionSetRequest,
+  PutInlinePolicyToPermissionSetResponse,
+  PutInlinePolicyToPermissionSetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutInlinePolicyToPermissionSetRequest,
+  output: PutInlinePolicyToPermissionSetResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutInlinePolicyToPermissionSet",
+}));
+
+export type PutPermissionsBoundaryToPermissionSetError =
+  | AccessDeniedException
+  | ConflictException
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * List the grants associated with an application.
+ * Attaches an Amazon Web Services managed or customer managed policy to the specified PermissionSet as a permissions boundary.
  */
-export const listApplicationGrants: API.OperationMethod<
-  ListApplicationGrantsRequest,
-  ListApplicationGrantsResponse,
-  ListApplicationGrantsError,
+export const putPermissionsBoundaryToPermissionSet: API.OperationMethod<
+  PutPermissionsBoundaryToPermissionSetRequest,
+  PutPermissionsBoundaryToPermissionSetResponse,
+  PutPermissionsBoundaryToPermissionSetError,
   Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListApplicationGrantsRequest,
-  ) => stream.Stream<
-    ListApplicationGrantsResponse,
-    ListApplicationGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListApplicationGrantsRequest,
-  ) => stream.Stream<
-    GrantItem,
-    ListApplicationGrantsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListApplicationGrantsRequest,
-  output: ListApplicationGrantsResponse,
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutPermissionsBoundaryToPermissionSetRequest,
+  output: PutPermissionsBoundaryToPermissionSetResponse,
   errors: [
     AccessDeniedException,
+    ConflictException,
     InternalServerException,
     ResourceNotFoundException,
     ThrottlingException,
@@ -5851,10 +5698,273 @@ export const listApplicationGrants: API.OperationMethod<
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "ListApplicationGrants",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "Grants",
-  } as const,
+  operationName: "PutPermissionsBoundaryToPermissionSet",
+}));
+
+export type RemoveRegionError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Removes an additional Region from an IAM Identity Center instance. This operation initiates an asynchronous workflow to clean up IAM Identity Center resources in the specified additional Region. The Region status is set to REMOVING and the Region record is deleted when the workflow completes. The request must be made from the primary Region. The target Region cannot be the primary Region, and no other add or remove Region workflows can be in progress.
+ *
+ * The following actions are related to `RemoveRegion`:
+ *
+ * - AddRegion
+ *
+ * - DescribeRegion
+ *
+ * - ListRegions
+ */
+export const removeRegion: API.OperationMethod<
+  RemoveRegionRequest,
+  RemoveRegionResponse,
+  RemoveRegionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: RemoveRegionRequest,
+  output: RemoveRegionResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "RemoveRegion",
+}));
+
+export type TagResourceError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Associates a set of tags with a specified resource.
+ */
+export const tagResource: API.OperationMethod<
+  TagResourceRequest,
+  TagResourceResponse,
+  TagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: TagResourceRequest,
+  output: TagResourceResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TagResource",
+}));
+
+export type UntagResourceError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Disassociates a set of tags from a specified resource.
+ */
+export const untagResource: API.OperationMethod<
+  UntagResourceRequest,
+  UntagResourceResponse,
+  UntagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UntagResource",
+}));
+
+export type UpdateApplicationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates application properties.
+ */
+export const updateApplication: API.OperationMethod<
+  UpdateApplicationRequest,
+  UpdateApplicationResponse,
+  UpdateApplicationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateApplicationRequest,
+  output: UpdateApplicationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateApplication",
+}));
+
+export type UpdateInstanceError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Update the details for the instance of IAM Identity Center that is owned by the Amazon Web Services account.
+ */
+export const updateInstance: API.OperationMethod<
+  UpdateInstanceRequest,
+  UpdateInstanceResponse,
+  UpdateInstanceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateInstanceRequest,
+  output: UpdateInstanceResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateInstance",
+}));
+
+export type UpdateInstanceAccessControlAttributeConfigurationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the IAM Identity Center identity store attributes that you can use with the IAM Identity Center instance for attributes-based access control (ABAC). When using an external identity provider as an identity source, you can pass attributes through the SAML assertion as an alternative to configuring attributes from the IAM Identity Center identity store. If a SAML assertion passes any of these attributes, IAM Identity Center replaces the attribute value with the value from the IAM Identity Center identity store. For more information about ABAC, see Attribute-Based Access Control in the *IAM Identity Center User Guide*.
+ */
+export const updateInstanceAccessControlAttributeConfiguration: API.OperationMethod<
+  UpdateInstanceAccessControlAttributeConfigurationRequest,
+  UpdateInstanceAccessControlAttributeConfigurationResponse,
+  UpdateInstanceAccessControlAttributeConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateInstanceAccessControlAttributeConfigurationRequest,
+  output: UpdateInstanceAccessControlAttributeConfigurationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateInstanceAccessControlAttributeConfiguration",
+}));
+
+export type UpdatePermissionSetError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing permission set.
+ */
+export const updatePermissionSet: API.OperationMethod<
+  UpdatePermissionSetRequest,
+  UpdatePermissionSetResponse,
+  UpdatePermissionSetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePermissionSetRequest,
+  output: UpdatePermissionSetResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdatePermissionSet",
+}));
+
+export type UpdateTrustedTokenIssuerError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the name of the trusted token issuer, or the path of a source attribute or destination attribute for a trusted token issuer configuration.
+ *
+ * Updating this trusted token issuer configuration might cause users to lose access to any applications that are configured to use the trusted token issuer.
+ */
+export const updateTrustedTokenIssuer: API.OperationMethod<
+  UpdateTrustedTokenIssuerRequest,
+  UpdateTrustedTokenIssuerResponse,
+  UpdateTrustedTokenIssuerError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateTrustedTokenIssuerRequest,
+  output: UpdateTrustedTokenIssuerResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateTrustedTokenIssuer",
 }));

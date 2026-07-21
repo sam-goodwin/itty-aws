@@ -147,26 +147,32 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ExpiredIteratorException extends S.TaggedErrorClass<ExpiredIteratorException>()(
+  "ExpiredIteratorException",
+  { message: S.optional(S.String) },
+) {}
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  { message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class TrimmedDataAccessException extends S.TaggedErrorClass<TrimmedDataAccessException>()(
+  "TrimmedDataAccessException",
+  { message: S.optional(S.String) },
+) {}
 export type StreamArn = string;
 export type PositiveIntegerObject = number;
 export type ShardId = string;
-export type TableName = string;
-export type KeySchemaAttributeName = string;
-export type SequenceNumber = string;
-export type ErrorMessage = string;
-export type ShardIterator = string;
-export type AttributeName = string;
-export type StringAttributeValue = string;
-export type NumberAttributeValue = string;
-export type BinaryAttributeValue = Uint8Array;
-export type NullAttributeValue = boolean;
-export type BooleanAttributeValue = boolean;
-export type PositiveLongObject = number;
-
-//# Schemas
 export type ShardFilterType = "CHILD_SHARDS" | (string & {});
 export const ShardFilterType = /*@__PURE__*/ S.String;
+
 export interface ShardFilter {
   Type?: ShardFilterType;
   ShardId?: string;
@@ -210,6 +216,7 @@ export type StreamStatus =
   | "DISABLED"
   | (string & {});
 export const StreamStatus = /*@__PURE__*/ S.String;
+
 export type StreamViewType =
   | "NEW_IMAGE"
   | "OLD_IMAGE"
@@ -217,8 +224,12 @@ export type StreamViewType =
   | "KEYS_ONLY"
   | (string & {});
 export const StreamViewType = /*@__PURE__*/ S.String;
+
+export type TableName = string;
+export type KeySchemaAttributeName = string;
 export type KeyType = "HASH" | "RANGE" | (string & {});
 export const KeyType = /*@__PURE__*/ S.String;
+
 export interface KeySchemaElement {
   AttributeName: string;
   KeyType: KeyType;
@@ -230,6 +241,7 @@ export const KeySchemaElement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeySchemaElement>;
 export type KeySchema = KeySchemaElement[];
 export const KeySchema = /*@__PURE__*/ S.Array(KeySchemaElement);
+export type SequenceNumber = string;
 export interface SequenceNumberRange {
   StartingSequenceNumber?: string;
   EndingSequenceNumber?: string;
@@ -292,6 +304,7 @@ export const DescribeStreamOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeStreamOutput",
 }) as any as S.Schema<DescribeStreamOutput>;
+export type ShardIterator = string;
 export interface GetRecordsInput {
   ShardIterator: string;
   Limit?: number;
@@ -313,6 +326,11 @@ export const GetRecordsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRecordsInput>;
 export type OperationType = "INSERT" | "MODIFY" | "REMOVE" | (string & {});
 export const OperationType = /*@__PURE__*/ S.String;
+
+export type AttributeName = string;
+export type StringAttributeValue = string;
+export type NumberAttributeValue = string;
+export type BinaryAttributeValue = Uint8Array;
 export type StringSetAttributeValue = string[];
 export const StringSetAttributeValue = /*@__PURE__*/ S.Array(S.String);
 export type NumberSetAttributeValue = string[];
@@ -330,6 +348,8 @@ export type ListAttributeValue = AttributeValue[];
 export const ListAttributeValue = /*@__PURE__*/ S.Array(
   S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
 ) as any as S.Schema<ListAttributeValue>;
+export type NullAttributeValue = boolean;
+export type BooleanAttributeValue = boolean;
 export type AttributeValue =
   | {
       S: string;
@@ -478,6 +498,7 @@ export const AttributeMap = /*@__PURE__*/ S.Record(
     .annotate({ identifier: "AttributeValue" })
     .pipe(S.optional),
 );
+export type PositiveLongObject = number;
 export interface StreamRecord {
   ApproximateCreationDateTime?: Date;
   Keys?: { [key: string]: AttributeValue | undefined };
@@ -548,6 +569,7 @@ export type ShardIteratorType =
   | "AFTER_SEQUENCE_NUMBER"
   | (string & {});
 export const ShardIteratorType = /*@__PURE__*/ S.String;
+
 export interface GetShardIteratorInput {
   StreamArn: string;
   ShardId: string;
@@ -632,30 +654,7 @@ export const ListStreamsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListStreamsOutput",
 }) as any as S.Schema<ListStreamsOutput>;
-
-//# Errors
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class ExpiredIteratorException extends S.TaggedErrorClass<ExpiredIteratorException>()(
-  "ExpiredIteratorException",
-  { message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class TrimmedDataAccessException extends S.TaggedErrorClass<TrimmedDataAccessException>()(
-  "TrimmedDataAccessException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type DescribeStreamError =
   | InternalServerError
   | ResourceNotFoundException
@@ -684,6 +683,7 @@ export const describeStream: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeStream",
 }));
+
 export type GetRecordsError =
   | ExpiredIteratorException
   | InternalServerError
@@ -722,6 +722,7 @@ export const getRecords: API.OperationMethod<
   retry: Retry,
   operationName: "GetRecords",
 }));
+
 export type GetShardIteratorError =
   | InternalServerError
   | ResourceNotFoundException
@@ -753,6 +754,7 @@ export const getShardIterator: API.OperationMethod<
   retry: Retry,
   operationName: "GetShardIterator",
 }));
+
 export type ListStreamsError =
   | InternalServerError
   | ResourceNotFoundException

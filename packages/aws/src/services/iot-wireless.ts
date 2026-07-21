@@ -87,243 +87,51 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Message: S.optional(S.String),
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.optional(S.String),
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type AmazonId = string;
 export type AppServerPrivateKey = string | redacted.Redacted<string>;
-export type ClientRequestToken = string;
-export type TagKey = string;
-export type TagValue = string;
-export type PartnerAccountArn = string;
-export type Message = string;
-export type ResourceId = string;
-export type ResourceType = string;
-export type FuotaTaskId = string;
-export type MulticastGroupId = string;
-export type WirelessDeviceId = string;
-export type ThingArn = string;
-export type WirelessGatewayId = string;
-export type IotCertificateId = string;
-export type DestinationName = string;
-export type Expression = string;
-export type Description = string;
-export type RoleArn = string;
-export type DestinationArn = string;
-export type DeviceProfileName = string;
-export type SupportsClassB = boolean;
-export type ClassBTimeout = number;
-export type PingSlotPeriod = number;
-export type PingSlotDr = number;
-export type PingSlotFreq = number;
-export type SupportsClassC = boolean;
-export type ClassCTimeout = number;
-export type MacVersion = string;
-export type RegParamsRevision = string;
-export type RxDelay1 = number;
-export type RxDrOffset1 = number;
-export type RxDataRate2 = number;
-export type RxFreq2 = number;
-export type PresetFreq = number;
-export type MaxEirp = number;
-export type MaxDutyCycle = number;
-export type RfRegion = string;
-export type SupportsJoin = boolean;
-export type Supports32BitFCnt = boolean;
-export type DeviceProfileArn = string;
-export type DeviceProfileId = string;
-export type FuotaTaskName = string;
-export type FirmwareUpdateImage = string;
-export type FirmwareUpdateRole = string;
-export type RedundancyPercent = number;
-export type FragmentSizeBytes = number;
-export type FragmentIntervalMS = number;
-export type FileDescriptor = string;
-export type FuotaTaskArn = string;
-export type MulticastGroupName = string;
-export type TransmissionIntervalMulticast = number;
-export type MulticastGroupArn = string;
-export type NetworkAnalyzerConfigurationName = string;
-export type NetworkAnalyzerConfigurationArn = string;
-export type ServiceProfileName = string;
-export type AddGwMetadata = boolean;
-export type DrMinBox = number;
-export type DrMaxBox = number;
-export type PrAllowed = boolean;
-export type RaAllowed = boolean;
-export type TxPowerIndexMin = number;
-export type TxPowerIndexMax = number;
-export type NbTransMin = number;
-export type NbTransMax = number;
-export type ServiceProfileArn = string;
-export type ServiceProfileId = string;
-export type WirelessDeviceName = string;
-export type DevEui = string;
-export type AppKey = string;
-export type NwkKey = string;
-export type JoinEui = string;
-export type AppEui = string;
-export type GenAppKey = string;
-export type DevAddr = string;
-export type FNwkSIntKey = string;
-export type SNwkSIntKey = string;
-export type NwkSEncKey = string;
-export type AppSKey = string;
-export type FCntStart = number;
-export type NwkSKey = string;
-export type FPort = number;
-export type SidewalkManufacturingSn = string;
-export type WirelessDeviceArn = string;
-export type WirelessGatewayName = string;
-export type GatewayEui = string;
-export type NetId = string;
-export type SubBand = number;
-export type BeaconingDataRate = number;
-export type BeaconingFrequency = number;
-export type GatewayMaxEirp = number;
-export type WirelessGatewayArn = string;
-export type WirelessGatewayTaskDefinitionId = string;
-export type AutoCreateTasks = boolean;
-export type WirelessGatewayTaskName = string;
-export type UpdateDataSource = string;
-export type UpdateSignature = string;
-export type Crc = number;
-export type PackageVersion = string;
-export type Model = string;
-export type Station = string;
-export type WirelessGatewayTaskDefinitionArn = string;
-export type MessageId = string;
-export type ImportTaskId = string;
-export type Identifier = string;
-export type PartnerAccountId = string;
-export type ApplicationServerPublicKey = string | redacted.Redacted<string>;
-export type QualificationStatus = boolean;
-export type DakCertificateId = string;
-export type MaxAllowedSignature = number;
-export type FactorySupport = boolean;
-export type ApId = string;
-export type DeviceTypeId = string;
-export type StartTime = Date;
-export type CreatedAt = Date;
-export type MetricQueryId = string;
-export type DimensionValue = string;
-export type MetricQueryStartTimestamp = Date;
-export type MetricQueryEndTimestamp = Date;
-export type MetricQueryError = string;
-export type MetricQueryTimestamp = Date;
-export type Min = number;
-export type Max = number;
-export type Sum = number;
-export type Avg = number;
-export type Std = number;
-export type P90 = number;
-export type MetricUnit = string;
-export type MulticastGroupStatus = string;
-export type NumberOfDevicesRequested = number;
-export type NumberOfDevicesInGroup = number;
-export type DlDr = number;
-export type DlFreq = number;
-export type SessionStartTimeTimestamp = Date;
-export type SessionTimeout = number;
-export type Fingerprint = string | redacted.Redacted<string>;
-export type AccountLinked = boolean;
-export type PositionResourceIdentifier = string;
-export type PositionCoordinateValue = number;
-export type HorizontalAccuracy = number;
-export type VerticalAccuracy = number;
-export type PositionSolverVersion = string;
-export type ISODateTimeString = string;
-export type MacAddress = string;
-export type RSS = number;
-export type MCC = number;
-export type MNC = number;
-export type LAC = number;
-export type GeranCid = number;
-export type BSIC = number;
-export type BCCH = number;
-export type GsmTimingAdvance = number;
-export type RxLevel = number;
-export type UtranCid = number;
-export type UARFCNDL = number;
-export type PSC = number;
-export type RSCP = number;
-export type PathLoss = number;
-export type UARFCN = number;
-export type CellParams = number;
-export type TdscdmaTimingAdvance = number;
-export type EutranCid = number;
-export type TAC = number;
-export type PCI = number;
-export type EARFCN = number;
-export type LteTimingAdvance = number;
-export type RSRP = number;
-export type RSRQ = number;
-export type NRCapable = boolean;
-export type SystemId = number;
-export type NetworkId = number;
-export type BaseStationId = number;
-export type RegistrationZone = number;
-export type PnOffset = number;
-export type CdmaChannel = number;
-export type PilotPower = number;
-export type BaseLat = number;
-export type BaseLng = number;
-export type IPAddress = string;
-export type GnssNav = string;
-export type GPST = number;
-export type CaptureTimeAccuracy = number;
-export type Coordinate = number;
-export type Use2DSolver = boolean;
-export type CreationDate = Date;
-export type ConfidencePercent = number;
-export type ResourceIdentifier = string;
-export type EndPoint = string;
-export type CertificatePEM = string;
-export type UlRate = number;
-export type UlBucketSize = number;
-export type UlRatePolicy = string;
-export type DlRate = number;
-export type DlBucketSize = number;
-export type DlRatePolicy = string;
-export type DevStatusReqFreq = number;
-export type ReportDevStatusBattery = boolean;
-export type ReportDevStatusMargin = boolean;
-export type DrMin = number;
-export type DrMax = number;
-export type ChannelMask = string;
-export type HrAllowed = boolean;
-export type NwkGeoLoc = boolean;
-export type TargetPer = number;
-export type MinGwDiversity = number;
-export type ThingName = string;
-export type SidewalkId = string;
-export type CertificateValue = string;
-export type ImportTaskArn = string;
-export type DeviceCreationFile = string;
-export type Role = string;
-export type CreationTime = Date;
-export type StatusReason = string;
-export type ImportedWirelessDeviceCount = number;
-export type ProviderNetId = string;
-export type Id = string;
-export type DlAllowed = boolean;
-export type MaxResults = number;
-export type NextToken = string;
-export type OnboardStatusReason = string;
-export type LastUpdateTime = Date;
-export type TransmitMode = number;
-export type DownlinkFrequency = number;
-export type TransmissionInterval = number;
-export type AmazonResourceName = string;
-export type MulticastDeviceStatus = string;
-export type McGroupId = number;
-export type PayloadData = string;
-export type MulticastGroupMessageId = string;
-export type Seq = number;
-export type AckModeRetryDurationSecs = number;
-export type QueryString = string;
-export type DeviceName = string;
-export type Result = string;
-
-//# Schemas
 export interface SidewalkAccountInfo {
   AmazonId?: string;
   AppServerPrivateKey?: string | redacted.Redacted<string>;
@@ -336,6 +144,9 @@ export const SidewalkAccountInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SidewalkAccountInfo",
 }) as any as S.Schema<SidewalkAccountInfo>;
+export type ClientRequestToken = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -369,6 +180,7 @@ export const AssociateAwsAccountWithPartnerAccountRequest =
   ).annotate({
     identifier: "AssociateAwsAccountWithPartnerAccountRequest",
   }) as any as S.Schema<AssociateAwsAccountWithPartnerAccountRequest>;
+export type PartnerAccountArn = string;
 export interface AssociateAwsAccountWithPartnerAccountResponse {
   Sidewalk?: SidewalkAccountInfo;
   Arn?: string;
@@ -382,6 +194,8 @@ export const AssociateAwsAccountWithPartnerAccountResponse =
   ).annotate({
     identifier: "AssociateAwsAccountWithPartnerAccountResponse",
   }) as any as S.Schema<AssociateAwsAccountWithPartnerAccountResponse>;
+export type FuotaTaskId = string;
+export type MulticastGroupId = string;
 export interface AssociateMulticastGroupWithFuotaTaskRequest {
   Id: string;
   MulticastGroupId: string;
@@ -409,6 +223,7 @@ export const AssociateMulticastGroupWithFuotaTaskResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateMulticastGroupWithFuotaTaskResponse",
   }) as any as S.Schema<AssociateMulticastGroupWithFuotaTaskResponse>;
+export type WirelessDeviceId = string;
 export interface AssociateWirelessDeviceWithFuotaTaskRequest {
   Id: string;
   WirelessDeviceId: string;
@@ -466,6 +281,7 @@ export const AssociateWirelessDeviceWithMulticastGroupResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateWirelessDeviceWithMulticastGroupResponse",
   }) as any as S.Schema<AssociateWirelessDeviceWithMulticastGroupResponse>;
+export type ThingArn = string;
 export interface AssociateWirelessDeviceWithThingRequest {
   Id: string;
   ThingArn: string;
@@ -491,6 +307,8 @@ export const AssociateWirelessDeviceWithThingResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociateWirelessDeviceWithThingResponse",
 }) as any as S.Schema<AssociateWirelessDeviceWithThingResponse>;
+export type WirelessGatewayId = string;
+export type IotCertificateId = string;
 export interface AssociateWirelessGatewayWithCertificateRequest {
   Id: string;
   IotCertificateId: string;
@@ -569,8 +387,13 @@ export const CancelMulticastGroupSessionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelMulticastGroupSessionResponse",
 }) as any as S.Schema<CancelMulticastGroupSessionResponse>;
+export type DestinationName = string;
 export type ExpressionType = "RuleName" | "MqttTopic" | (string & {});
 export const ExpressionType = /*@__PURE__*/ S.String;
+
+export type Expression = string;
+export type Description = string;
+export type RoleArn = string;
 export interface CreateDestinationRequest {
   Name: string;
   ExpressionType: ExpressionType;
@@ -602,6 +425,7 @@ export const CreateDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDestinationRequest",
 }) as any as S.Schema<CreateDestinationRequest>;
+export type DestinationArn = string;
 export interface CreateDestinationResponse {
   Arn?: string;
   Name?: string;
@@ -611,8 +435,28 @@ export const CreateDestinationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDestinationResponse",
 }) as any as S.Schema<CreateDestinationResponse>;
+export type DeviceProfileName = string;
+export type SupportsClassB = boolean;
+export type ClassBTimeout = number;
+export type PingSlotPeriod = number;
+export type PingSlotDr = number;
+export type PingSlotFreq = number;
+export type SupportsClassC = boolean;
+export type ClassCTimeout = number;
+export type MacVersion = string;
+export type RegParamsRevision = string;
+export type RxDelay1 = number;
+export type RxDrOffset1 = number;
+export type RxDataRate2 = number;
+export type RxFreq2 = number;
+export type PresetFreq = number;
 export type FactoryPresetFreqsList = number[];
 export const FactoryPresetFreqsList = /*@__PURE__*/ S.Array(S.Number);
+export type MaxEirp = number;
+export type MaxDutyCycle = number;
+export type RfRegion = string;
+export type SupportsJoin = boolean;
+export type Supports32BitFCnt = boolean;
 export interface LoRaWANDeviceProfile {
   SupportsClassB?: boolean;
   ClassBTimeout?: number;
@@ -692,6 +536,8 @@ export const CreateDeviceProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDeviceProfileRequest",
 }) as any as S.Schema<CreateDeviceProfileRequest>;
+export type DeviceProfileArn = string;
+export type DeviceProfileId = string;
 export interface CreateDeviceProfileResponse {
   Arn?: string;
   Id?: string;
@@ -701,6 +547,7 @@ export const CreateDeviceProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDeviceProfileResponse",
 }) as any as S.Schema<CreateDeviceProfileResponse>;
+export type FuotaTaskName = string;
 export type SupportedRfRegion =
   | "EU868"
   | "US915"
@@ -717,6 +564,7 @@ export type SupportedRfRegion =
   | "IN865"
   | (string & {});
 export const SupportedRfRegion = /*@__PURE__*/ S.String;
+
 export interface LoRaWANFuotaTask {
   RfRegion?: SupportedRfRegion;
 }
@@ -725,6 +573,12 @@ export const LoRaWANFuotaTask = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LoRaWANFuotaTask",
 }) as any as S.Schema<LoRaWANFuotaTask>;
+export type FirmwareUpdateImage = string;
+export type FirmwareUpdateRole = string;
+export type RedundancyPercent = number;
+export type FragmentSizeBytes = number;
+export type FragmentIntervalMS = number;
+export type FileDescriptor = string;
 export interface CreateFuotaTaskRequest {
   Name?: string;
   Description?: string;
@@ -764,6 +618,7 @@ export const CreateFuotaTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFuotaTaskRequest",
 }) as any as S.Schema<CreateFuotaTaskRequest>;
+export type FuotaTaskArn = string;
 export interface CreateFuotaTaskResponse {
   Arn?: string;
   Id?: string;
@@ -773,10 +628,13 @@ export const CreateFuotaTaskResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFuotaTaskResponse",
 }) as any as S.Schema<CreateFuotaTaskResponse>;
+export type MulticastGroupName = string;
 export type DlClass = "ClassB" | "ClassC" | (string & {});
 export const DlClass = /*@__PURE__*/ S.String;
+
 export type GatewayListMulticast = string[];
 export const GatewayListMulticast = /*@__PURE__*/ S.Array(S.String);
+export type TransmissionIntervalMulticast = number;
 export interface ParticipatingGatewaysMulticast {
   GatewayList?: string[];
   TransmissionInterval?: number;
@@ -830,6 +688,7 @@ export const CreateMulticastGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMulticastGroupRequest",
 }) as any as S.Schema<CreateMulticastGroupRequest>;
+export type MulticastGroupArn = string;
 export interface CreateMulticastGroupResponse {
   Arn?: string;
   Id?: string;
@@ -839,12 +698,16 @@ export const CreateMulticastGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMulticastGroupResponse",
 }) as any as S.Schema<CreateMulticastGroupResponse>;
+export type NetworkAnalyzerConfigurationName = string;
 export type WirelessDeviceFrameInfo = "ENABLED" | "DISABLED" | (string & {});
 export const WirelessDeviceFrameInfo = /*@__PURE__*/ S.String;
+
 export type LogLevel = "INFO" | "ERROR" | "DISABLED" | (string & {});
 export const LogLevel = /*@__PURE__*/ S.String;
+
 export type MulticastFrameInfo = "ENABLED" | "DISABLED" | (string & {});
 export const MulticastFrameInfo = /*@__PURE__*/ S.String;
+
 export interface TraceContent {
   WirelessDeviceFrameInfo?: WirelessDeviceFrameInfo;
   LogLevel?: LogLevel;
@@ -899,6 +762,7 @@ export const CreateNetworkAnalyzerConfigurationRequest =
   ).annotate({
     identifier: "CreateNetworkAnalyzerConfigurationRequest",
   }) as any as S.Schema<CreateNetworkAnalyzerConfigurationRequest>;
+export type NetworkAnalyzerConfigurationArn = string;
 export interface CreateNetworkAnalyzerConfigurationResponse {
   Arn?: string;
   Name?: string;
@@ -909,6 +773,16 @@ export const CreateNetworkAnalyzerConfigurationResponse =
   ).annotate({
     identifier: "CreateNetworkAnalyzerConfigurationResponse",
   }) as any as S.Schema<CreateNetworkAnalyzerConfigurationResponse>;
+export type ServiceProfileName = string;
+export type AddGwMetadata = boolean;
+export type DrMinBox = number;
+export type DrMaxBox = number;
+export type PrAllowed = boolean;
+export type RaAllowed = boolean;
+export type TxPowerIndexMin = number;
+export type TxPowerIndexMax = number;
+export type NbTransMin = number;
+export type NbTransMax = number;
 export interface LoRaWANServiceProfile {
   AddGwMetadata?: boolean;
   DrMin?: number;
@@ -960,6 +834,8 @@ export const CreateServiceProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateServiceProfileRequest",
 }) as any as S.Schema<CreateServiceProfileRequest>;
+export type ServiceProfileArn = string;
+export type ServiceProfileId = string;
 export interface CreateServiceProfileResponse {
   Arn?: string;
   Id?: string;
@@ -971,6 +847,12 @@ export const CreateServiceProfileResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateServiceProfileResponse>;
 export type WirelessDeviceType = "Sidewalk" | "LoRaWAN" | (string & {});
 export const WirelessDeviceType = /*@__PURE__*/ S.String;
+
+export type WirelessDeviceName = string;
+export type DevEui = string;
+export type AppKey = string;
+export type NwkKey = string;
+export type JoinEui = string;
 export interface OtaaV1_1 {
   AppKey?: string | redacted.Redacted<string>;
   NwkKey?: string | redacted.Redacted<string>;
@@ -983,6 +865,8 @@ export const OtaaV1_1 = /*@__PURE__*/ S.suspend(() =>
     JoinEui: S.optional(S.String),
   }),
 ).annotate({ identifier: "OtaaV1_1" }) as any as S.Schema<OtaaV1_1>;
+export type AppEui = string;
+export type GenAppKey = string;
 export interface OtaaV1_0_x {
   AppKey?: string | redacted.Redacted<string>;
   AppEui?: string;
@@ -997,6 +881,11 @@ export const OtaaV1_0_x = /*@__PURE__*/ S.suspend(() =>
     GenAppKey: S.optional(SensitiveString),
   }),
 ).annotate({ identifier: "OtaaV1_0_x" }) as any as S.Schema<OtaaV1_0_x>;
+export type DevAddr = string;
+export type FNwkSIntKey = string;
+export type SNwkSIntKey = string;
+export type NwkSEncKey = string;
+export type AppSKey = string;
 export interface SessionKeysAbpV1_1 {
   FNwkSIntKey?: string | redacted.Redacted<string>;
   SNwkSIntKey?: string | redacted.Redacted<string>;
@@ -1013,6 +902,7 @@ export const SessionKeysAbpV1_1 = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SessionKeysAbpV1_1",
 }) as any as S.Schema<SessionKeysAbpV1_1>;
+export type FCntStart = number;
 export interface AbpV1_1 {
   DevAddr?: string;
   SessionKeys?: SessionKeysAbpV1_1;
@@ -1025,6 +915,7 @@ export const AbpV1_1 = /*@__PURE__*/ S.suspend(() =>
     FCntStart: S.optional(S.Number),
   }),
 ).annotate({ identifier: "AbpV1_1" }) as any as S.Schema<AbpV1_1>;
+export type NwkSKey = string;
 export interface SessionKeysAbpV1_0_x {
   NwkSKey?: string | redacted.Redacted<string>;
   AppSKey?: string | redacted.Redacted<string>;
@@ -1049,6 +940,7 @@ export const AbpV1_0_x = /*@__PURE__*/ S.suspend(() =>
     FCntStart: S.optional(S.Number),
   }),
 ).annotate({ identifier: "AbpV1_0_x" }) as any as S.Schema<AbpV1_0_x>;
+export type FPort = number;
 export interface Positioning {
   ClockSync?: number;
   Stream?: number;
@@ -1063,6 +955,7 @@ export const Positioning = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Positioning" }) as any as S.Schema<Positioning>;
 export type ApplicationConfigType = "SemtechGeolocation" | (string & {});
 export const ApplicationConfigType = /*@__PURE__*/ S.String;
+
 export interface ApplicationConfig {
   FPort?: number;
   Type?: ApplicationConfigType;
@@ -1119,6 +1012,7 @@ export const LoRaWANDevice = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LoRaWANDevice" }) as any as S.Schema<LoRaWANDevice>;
 export type PositioningConfigStatus = "Enabled" | "Disabled" | (string & {});
 export const PositioningConfigStatus = /*@__PURE__*/ S.String;
+
 export interface SidewalkPositioning {
   DestinationName?: string;
 }
@@ -1127,6 +1021,7 @@ export const SidewalkPositioning = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SidewalkPositioning",
 }) as any as S.Schema<SidewalkPositioning>;
+export type SidewalkManufacturingSn = string;
 export interface SidewalkCreateWirelessDevice {
   DeviceProfileId?: string;
   Positioning?: SidewalkPositioning;
@@ -1176,6 +1071,7 @@ export const CreateWirelessDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWirelessDeviceRequest",
 }) as any as S.Schema<CreateWirelessDeviceRequest>;
+export type WirelessDeviceArn = string;
 export interface CreateWirelessDeviceResponse {
   Arn?: string;
   Id?: string;
@@ -1185,14 +1081,20 @@ export const CreateWirelessDeviceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWirelessDeviceResponse",
 }) as any as S.Schema<CreateWirelessDeviceResponse>;
+export type WirelessGatewayName = string;
+export type GatewayEui = string;
 export type JoinEuiRange = string[];
 export const JoinEuiRange = /*@__PURE__*/ S.Array(S.String);
 export type JoinEuiFilters = string[][];
 export const JoinEuiFilters = /*@__PURE__*/ S.Array(JoinEuiRange);
+export type NetId = string;
 export type NetIdFilters = string[];
 export const NetIdFilters = /*@__PURE__*/ S.Array(S.String);
+export type SubBand = number;
 export type SubBands = number[];
 export const SubBands = /*@__PURE__*/ S.Array(S.Number);
+export type BeaconingDataRate = number;
+export type BeaconingFrequency = number;
 export type BeaconingFrequencies = number[];
 export const BeaconingFrequencies = /*@__PURE__*/ S.Array(S.Number);
 export interface Beaconing {
@@ -1205,6 +1107,7 @@ export const Beaconing = /*@__PURE__*/ S.suspend(() =>
     Frequencies: S.optional(BeaconingFrequencies),
   }),
 ).annotate({ identifier: "Beaconing" }) as any as S.Schema<Beaconing>;
+export type GatewayMaxEirp = number;
 export interface LoRaWANGateway {
   GatewayEui?: string;
   RfRegion?: string;
@@ -1252,6 +1155,7 @@ export const CreateWirelessGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWirelessGatewayRequest",
 }) as any as S.Schema<CreateWirelessGatewayRequest>;
+export type WirelessGatewayArn = string;
 export interface CreateWirelessGatewayResponse {
   Arn?: string;
   Id?: string;
@@ -1261,6 +1165,7 @@ export const CreateWirelessGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWirelessGatewayResponse",
 }) as any as S.Schema<CreateWirelessGatewayResponse>;
+export type WirelessGatewayTaskDefinitionId = string;
 export interface CreateWirelessGatewayTaskRequest {
   Id: string;
   WirelessGatewayTaskDefinitionId: string;
@@ -1291,6 +1196,7 @@ export type WirelessGatewayTaskStatus =
   | "FAILED"
   | (string & {});
 export const WirelessGatewayTaskStatus = /*@__PURE__*/ S.String;
+
 export interface CreateWirelessGatewayTaskResponse {
   WirelessGatewayTaskDefinitionId?: string;
   Status?: WirelessGatewayTaskStatus;
@@ -1303,6 +1209,14 @@ export const CreateWirelessGatewayTaskResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWirelessGatewayTaskResponse",
 }) as any as S.Schema<CreateWirelessGatewayTaskResponse>;
+export type AutoCreateTasks = boolean;
+export type WirelessGatewayTaskName = string;
+export type UpdateDataSource = string;
+export type UpdateSignature = string;
+export type Crc = number;
+export type PackageVersion = string;
+export type Model = string;
+export type Station = string;
 export interface LoRaWANGatewayVersion {
   PackageVersion?: string;
   Model?: string;
@@ -1375,6 +1289,7 @@ export const CreateWirelessGatewayTaskDefinitionRequest =
   ).annotate({
     identifier: "CreateWirelessGatewayTaskDefinitionRequest",
   }) as any as S.Schema<CreateWirelessGatewayTaskDefinitionRequest>;
+export type WirelessGatewayTaskDefinitionArn = string;
 export interface CreateWirelessGatewayTaskDefinitionResponse {
   Id?: string;
   Arn?: string;
@@ -1505,6 +1420,7 @@ export const DeleteNetworkAnalyzerConfigurationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteNetworkAnalyzerConfigurationResponse",
   }) as any as S.Schema<DeleteNetworkAnalyzerConfigurationResponse>;
+export type MessageId = string;
 export interface DeleteQueuedMessagesRequest {
   Id: string;
   MessageId: string;
@@ -1582,6 +1498,7 @@ export const DeleteWirelessDeviceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteWirelessDeviceResponse",
 }) as any as S.Schema<DeleteWirelessDeviceResponse>;
+export type ImportTaskId = string;
 export interface DeleteWirelessDeviceImportTaskRequest {
   Id: string;
 }
@@ -1678,6 +1595,7 @@ export const DeleteWirelessGatewayTaskDefinitionResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "DeleteWirelessGatewayTaskDefinitionResponse",
   }) as any as S.Schema<DeleteWirelessGatewayTaskDefinitionResponse>;
+export type Identifier = string;
 export interface DeregisterWirelessDeviceRequest {
   Identifier: string;
   WirelessDeviceType?: WirelessDeviceType;
@@ -1710,8 +1628,10 @@ export const DeregisterWirelessDeviceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeregisterWirelessDeviceResponse",
 }) as any as S.Schema<DeregisterWirelessDeviceResponse>;
+export type PartnerAccountId = string;
 export type PartnerType = "Sidewalk" | (string & {});
 export const PartnerType = /*@__PURE__*/ S.String;
+
 export interface DisassociateAwsAccountFromPartnerAccountRequest {
   PartnerAccountId: string;
   PartnerType: PartnerType;
@@ -1958,6 +1878,13 @@ export const GetDeviceProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDeviceProfileRequest",
 }) as any as S.Schema<GetDeviceProfileRequest>;
+export type ApplicationServerPublicKey = string | redacted.Redacted<string>;
+export type QualificationStatus = boolean;
+export type DakCertificateId = string;
+export type MaxAllowedSignature = number;
+export type FactorySupport = boolean;
+export type ApId = string;
+export type DeviceTypeId = string;
 export interface DakCertificateMetadata {
   CertificateId: string;
   MaxAllowedSignature?: number;
@@ -2033,6 +1960,7 @@ export type EventNotificationTopicStatus =
   | "Disabled"
   | (string & {});
 export const EventNotificationTopicStatus = /*@__PURE__*/ S.String;
+
 export interface SidewalkResourceTypeEventConfiguration {
   WirelessDeviceEventTopic?: EventNotificationTopicStatus;
 }
@@ -2164,6 +2092,8 @@ export type FuotaTaskStatus =
   | "Delete_Waiting"
   | (string & {});
 export const FuotaTaskStatus = /*@__PURE__*/ S.String;
+
+export type StartTime = Date;
 export interface LoRaWANFuotaTaskGetInfo {
   RfRegion?: string;
   StartTime?: Date;
@@ -2178,6 +2108,7 @@ export const LoRaWANFuotaTaskGetInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LoRaWANFuotaTaskGetInfo",
 }) as any as S.Schema<LoRaWANFuotaTaskGetInfo>;
+export type CreatedAt = Date;
 export interface GetFuotaTaskResponse {
   Arn?: string;
   Id?: string;
@@ -2229,11 +2160,13 @@ export const GetLogLevelsByResourceTypesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLogLevelsByResourceTypesRequest>;
 export type WirelessGatewayType = "LoRaWAN" | (string & {});
 export const WirelessGatewayType = /*@__PURE__*/ S.String;
+
 export type WirelessGatewayEvent =
   | "CUPS_Request"
   | "Certificate"
   | (string & {});
 export const WirelessGatewayEvent = /*@__PURE__*/ S.String;
+
 export interface WirelessGatewayEventLogOption {
   Event: WirelessGatewayEvent;
   LogLevel: LogLevel;
@@ -2273,6 +2206,7 @@ export type WirelessDeviceEvent =
   | "Registration"
   | (string & {});
 export const WirelessDeviceEvent = /*@__PURE__*/ S.String;
+
 export interface WirelessDeviceEventLogOption {
   Event: WirelessDeviceEvent;
   LogLevel: LogLevel;
@@ -2306,8 +2240,10 @@ export const WirelessDeviceLogOptionList = /*@__PURE__*/ S.Array(
 );
 export type FuotaTaskType = "LoRaWAN" | (string & {});
 export const FuotaTaskType = /*@__PURE__*/ S.String;
+
 export type FuotaTaskEvent = "Fuota" | (string & {});
 export const FuotaTaskEvent = /*@__PURE__*/ S.String;
+
 export interface FuotaTaskEventLogOption {
   Event: FuotaTaskEvent;
   LogLevel: LogLevel;
@@ -2373,6 +2309,7 @@ export type SummaryMetricConfigurationStatus =
   | "Disabled"
   | (string & {});
 export const SummaryMetricConfigurationStatus = /*@__PURE__*/ S.String;
+
 export interface SummaryMetricConfiguration {
   Status?: SummaryMetricConfigurationStatus;
 }
@@ -2389,6 +2326,7 @@ export const GetMetricConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMetricConfigurationResponse",
 }) as any as S.Schema<GetMetricConfigurationResponse>;
+export type MetricQueryId = string;
 export type MetricName =
   | "DeviceRSSI"
   | "DeviceSNR"
@@ -2424,8 +2362,11 @@ export type MetricName =
   | "AwsAccountActiveGatewayCount"
   | (string & {});
 export const MetricName = /*@__PURE__*/ S.String;
+
 export type DimensionName = "DeviceId" | "GatewayId" | (string & {});
 export const DimensionName = /*@__PURE__*/ S.String;
+
+export type DimensionValue = string;
 export interface Dimension {
   name?: DimensionName;
   value?: string;
@@ -2441,6 +2382,9 @@ export type AggregationPeriod =
   | "OneWeek"
   | (string & {});
 export const AggregationPeriod = /*@__PURE__*/ S.String;
+
+export type MetricQueryStartTimestamp = Date;
+export type MetricQueryEndTimestamp = Date;
 export interface SummaryMetricQuery {
   QueryId?: string;
   MetricName?: MetricName;
@@ -2482,10 +2426,19 @@ export const GetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMetricsRequest>;
 export type MetricQueryStatus = "Succeeded" | "Failed" | (string & {});
 export const MetricQueryStatus = /*@__PURE__*/ S.String;
+
+export type MetricQueryError = string;
+export type MetricQueryTimestamp = Date;
 export type MetricQueryTimestamps = Date[];
 export const MetricQueryTimestamps = /*@__PURE__*/ S.Array(
   S.Date.pipe(T.TimestampFormat("epoch-seconds")),
 );
+export type Min = number;
+export type Max = number;
+export type Sum = number;
+export type Avg = number;
+export type Std = number;
+export type P90 = number;
 export interface MetricQueryValue {
   Min?: number;
   Max?: number;
@@ -2508,6 +2461,7 @@ export const MetricQueryValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MetricQueryValue>;
 export type MetricQueryValues = MetricQueryValue[];
 export const MetricQueryValues = /*@__PURE__*/ S.Array(MetricQueryValue);
+export type MetricUnit = string;
 export interface SummaryMetricQueryResult {
   QueryId?: string;
   QueryStatus?: MetricQueryStatus;
@@ -2569,6 +2523,9 @@ export const GetMulticastGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMulticastGroupRequest",
 }) as any as S.Schema<GetMulticastGroupRequest>;
+export type MulticastGroupStatus = string;
+export type NumberOfDevicesRequested = number;
+export type NumberOfDevicesInGroup = number;
 export interface LoRaWANMulticastGet {
   RfRegion?: SupportedRfRegion;
   DlClass?: DlClass;
@@ -2626,6 +2583,10 @@ export const GetMulticastGroupSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMulticastGroupSessionRequest",
 }) as any as S.Schema<GetMulticastGroupSessionRequest>;
+export type DlDr = number;
+export type DlFreq = number;
+export type SessionStartTimeTimestamp = Date;
+export type SessionTimeout = number;
 export interface LoRaWANMulticastSession {
   DlDr?: number;
   DlFreq?: number;
@@ -2721,6 +2682,7 @@ export const GetPartnerAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPartnerAccountRequest",
 }) as any as S.Schema<GetPartnerAccountRequest>;
+export type Fingerprint = string | redacted.Redacted<string>;
 export interface SidewalkAccountInfoWithFingerprint {
   AmazonId?: string;
   Fingerprint?: string | redacted.Redacted<string>;
@@ -2735,6 +2697,7 @@ export const SidewalkAccountInfoWithFingerprint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SidewalkAccountInfoWithFingerprint",
 }) as any as S.Schema<SidewalkAccountInfoWithFingerprint>;
+export type AccountLinked = boolean;
 export interface GetPartnerAccountResponse {
   Sidewalk?: SidewalkAccountInfoWithFingerprint;
   AccountLinked?: boolean;
@@ -2747,11 +2710,13 @@ export const GetPartnerAccountResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPartnerAccountResponse",
 }) as any as S.Schema<GetPartnerAccountResponse>;
+export type PositionResourceIdentifier = string;
 export type PositionResourceType =
   | "WirelessDevice"
   | "WirelessGateway"
   | (string & {});
 export const PositionResourceType = /*@__PURE__*/ S.String;
+
 export interface GetPositionRequest {
   ResourceIdentifier: string;
   ResourceType: PositionResourceType;
@@ -2773,8 +2738,11 @@ export const GetPositionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPositionRequest",
 }) as any as S.Schema<GetPositionRequest>;
+export type PositionCoordinateValue = number;
 export type PositionCoordinate = number[];
 export const PositionCoordinate = /*@__PURE__*/ S.Array(S.Number);
+export type HorizontalAccuracy = number;
+export type VerticalAccuracy = number;
 export interface Accuracy {
   HorizontalAccuracy?: number;
   VerticalAccuracy?: number;
@@ -2787,8 +2755,12 @@ export const Accuracy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Accuracy" }) as any as S.Schema<Accuracy>;
 export type PositionSolverType = "GNSS" | (string & {});
 export const PositionSolverType = /*@__PURE__*/ S.String;
+
 export type PositionSolverProvider = "Semtech" | (string & {});
 export const PositionSolverProvider = /*@__PURE__*/ S.String;
+
+export type PositionSolverVersion = string;
+export type ISODateTimeString = string;
 export interface GetPositionResponse {
   Position?: number[];
   Accuracy?: Accuracy;
@@ -2838,8 +2810,10 @@ export type PositionConfigurationStatus =
   | "Disabled"
   | (string & {});
 export const PositionConfigurationStatus = /*@__PURE__*/ S.String;
+
 export type PositionConfigurationFec = "ROSE" | "NONE" | (string & {});
 export const PositionConfigurationFec = /*@__PURE__*/ S.String;
+
 export interface SemtechGnssDetail {
   Provider?: PositionSolverProvider;
   Type?: PositionSolverType;
@@ -2876,6 +2850,8 @@ export const GetPositionConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPositionConfigurationResponse",
 }) as any as S.Schema<GetPositionConfigurationResponse>;
+export type MacAddress = string;
+export type RSS = number;
 export interface WiFiAccessPoint {
   MacAddress: string;
   Rss: number;
@@ -2887,6 +2863,12 @@ export const WiFiAccessPoint = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WiFiAccessPoint>;
 export type WiFiAccessPoints = WiFiAccessPoint[];
 export const WiFiAccessPoints = /*@__PURE__*/ S.Array(WiFiAccessPoint);
+export type MCC = number;
+export type MNC = number;
+export type LAC = number;
+export type GeranCid = number;
+export type BSIC = number;
+export type BCCH = number;
 export interface GsmLocalId {
   Bsic: number;
   Bcch: number;
@@ -2894,6 +2876,8 @@ export interface GsmLocalId {
 export const GsmLocalId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Bsic: S.Number, Bcch: S.Number }),
 ).annotate({ identifier: "GsmLocalId" }) as any as S.Schema<GsmLocalId>;
+export type GsmTimingAdvance = number;
+export type RxLevel = number;
 export interface GlobalIdentity {
   Lac: number;
   GeranCid: number;
@@ -2941,6 +2925,9 @@ export const GsmObj = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GsmObj" }) as any as S.Schema<GsmObj>;
 export type GsmList = GsmObj[];
 export const GsmList = /*@__PURE__*/ S.Array(GsmObj);
+export type UtranCid = number;
+export type UARFCNDL = number;
+export type PSC = number;
 export interface WcdmaLocalId {
   Uarfcndl: number;
   Psc: number;
@@ -2948,6 +2935,8 @@ export interface WcdmaLocalId {
 export const WcdmaLocalId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Uarfcndl: S.Number, Psc: S.Number }),
 ).annotate({ identifier: "WcdmaLocalId" }) as any as S.Schema<WcdmaLocalId>;
+export type RSCP = number;
+export type PathLoss = number;
 export interface WcdmaNmrObj {
   Uarfcndl: number;
   Psc: number;
@@ -2990,6 +2979,8 @@ export const WcdmaObj = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WcdmaObj" }) as any as S.Schema<WcdmaObj>;
 export type WcdmaList = WcdmaObj[];
 export const WcdmaList = /*@__PURE__*/ S.Array(WcdmaObj);
+export type UARFCN = number;
+export type CellParams = number;
 export interface TdscdmaLocalId {
   Uarfcn: number;
   CellParams: number;
@@ -2997,6 +2988,7 @@ export interface TdscdmaLocalId {
 export const TdscdmaLocalId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Uarfcn: S.Number, CellParams: S.Number }),
 ).annotate({ identifier: "TdscdmaLocalId" }) as any as S.Schema<TdscdmaLocalId>;
+export type TdscdmaTimingAdvance = number;
 export interface TdscdmaNmrObj {
   Uarfcn: number;
   CellParams: number;
@@ -3041,6 +3033,10 @@ export const TdscdmaObj = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TdscdmaObj" }) as any as S.Schema<TdscdmaObj>;
 export type TdscdmaList = TdscdmaObj[];
 export const TdscdmaList = /*@__PURE__*/ S.Array(TdscdmaObj);
+export type EutranCid = number;
+export type TAC = number;
+export type PCI = number;
+export type EARFCN = number;
 export interface LteLocalId {
   Pci: number;
   Earfcn: number;
@@ -3048,6 +3044,10 @@ export interface LteLocalId {
 export const LteLocalId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Pci: S.Number, Earfcn: S.Number }),
 ).annotate({ identifier: "LteLocalId" }) as any as S.Schema<LteLocalId>;
+export type LteTimingAdvance = number;
+export type RSRP = number;
+export type RSRQ = number;
+export type NRCapable = boolean;
 export interface LteNmrObj {
   Pci: number;
   Earfcn: number;
@@ -3094,6 +3094,12 @@ export const LteObj = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LteObj" }) as any as S.Schema<LteObj>;
 export type LteList = LteObj[];
 export const LteList = /*@__PURE__*/ S.Array(LteObj);
+export type SystemId = number;
+export type NetworkId = number;
+export type BaseStationId = number;
+export type RegistrationZone = number;
+export type PnOffset = number;
+export type CdmaChannel = number;
 export interface CdmaLocalId {
   PnOffset: number;
   CdmaChannel: number;
@@ -3101,6 +3107,9 @@ export interface CdmaLocalId {
 export const CdmaLocalId = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ PnOffset: S.Number, CdmaChannel: S.Number }),
 ).annotate({ identifier: "CdmaLocalId" }) as any as S.Schema<CdmaLocalId>;
+export type PilotPower = number;
+export type BaseLat = number;
+export type BaseLng = number;
 export interface CdmaNmrObj {
   PnOffset: number;
   CdmaChannel: number;
@@ -3159,14 +3168,20 @@ export const CellTowers = /*@__PURE__*/ S.suspend(() =>
     Cdma: S.optional(CdmaList),
   }),
 ).annotate({ identifier: "CellTowers" }) as any as S.Schema<CellTowers>;
+export type IPAddress = string;
 export interface Ip {
   IpAddress: string;
 }
 export const Ip = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IpAddress: S.String }),
 ).annotate({ identifier: "Ip" }) as any as S.Schema<Ip>;
+export type GnssNav = string;
+export type GPST = number;
+export type CaptureTimeAccuracy = number;
+export type Coordinate = number;
 export type AssistPosition = number[];
 export const AssistPosition = /*@__PURE__*/ S.Array(S.Number);
+export type Use2DSolver = boolean;
 export interface Gnss {
   Payload: string;
   CaptureTime?: number;
@@ -3185,6 +3200,8 @@ export const Gnss = /*@__PURE__*/ S.suspend(() =>
     Use2DSolver: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Gnss" }) as any as S.Schema<Gnss>;
+export type CreationDate = Date;
+export type ConfidencePercent = number;
 export interface WiFiCellular {
   ConfidencePercent?: number;
 }
@@ -3246,8 +3263,10 @@ export type IdentifierType =
   | "WirelessGatewayId"
   | (string & {});
 export const IdentifierType = /*@__PURE__*/ S.String;
+
 export type EventNotificationPartnerType = "Sidewalk" | (string & {});
 export const EventNotificationPartnerType = /*@__PURE__*/ S.String;
+
 export interface GetResourceEventConfigurationRequest {
   Identifier: string;
   IdentifierType: IdentifierType;
@@ -3388,6 +3407,8 @@ export const GetResourceEventConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetResourceEventConfigurationResponse",
 }) as any as S.Schema<GetResourceEventConfigurationResponse>;
+export type ResourceIdentifier = string;
+export type ResourceType = string;
 export interface GetResourceLogLevelRequest {
   ResourceIdentifier: string;
   ResourceType: string;
@@ -3453,6 +3474,7 @@ export const GetResourcePositionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResourcePositionResponse>;
 export type WirelessGatewayServiceType = "CUPS" | "LNS" | (string & {});
 export const WirelessGatewayServiceType = /*@__PURE__*/ S.String;
+
 export interface GetServiceEndpointRequest {
   ServiceType?: WirelessGatewayServiceType;
 }
@@ -3474,6 +3496,8 @@ export const GetServiceEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetServiceEndpointRequest",
 }) as any as S.Schema<GetServiceEndpointRequest>;
+export type EndPoint = string;
+export type CertificatePEM = string;
 export interface GetServiceEndpointResponse {
   ServiceType?: WirelessGatewayServiceType;
   ServiceEndpoint?: string;
@@ -3505,6 +3529,22 @@ export const GetServiceProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetServiceProfileRequest",
 }) as any as S.Schema<GetServiceProfileRequest>;
+export type UlRate = number;
+export type UlBucketSize = number;
+export type UlRatePolicy = string;
+export type DlRate = number;
+export type DlBucketSize = number;
+export type DlRatePolicy = string;
+export type DevStatusReqFreq = number;
+export type ReportDevStatusBattery = boolean;
+export type ReportDevStatusMargin = boolean;
+export type DrMin = number;
+export type DrMax = number;
+export type ChannelMask = string;
+export type HrAllowed = boolean;
+export type NwkGeoLoc = boolean;
+export type TargetPer = number;
+export type MinGwDiversity = number;
 export interface LoRaWANGetServiceProfileInfo {
   UlRate?: number;
   UlBucketSize?: number;
@@ -3582,6 +3622,7 @@ export type WirelessDeviceIdType =
   | "SidewalkManufacturingSn"
   | (string & {});
 export const WirelessDeviceIdType = /*@__PURE__*/ S.String;
+
 export interface GetWirelessDeviceRequest {
   Identifier: string;
   IdentifierType: WirelessDeviceIdType;
@@ -3603,8 +3644,12 @@ export const GetWirelessDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWirelessDeviceRequest",
 }) as any as S.Schema<GetWirelessDeviceRequest>;
+export type ThingName = string;
+export type SidewalkId = string;
 export type SigningAlg = "Ed25519" | "P256r1" | (string & {});
 export const SigningAlg = /*@__PURE__*/ S.String;
+
+export type CertificateValue = string;
 export interface CertificateList {
   SigningAlg: SigningAlg;
   Value: string;
@@ -3625,6 +3670,7 @@ export type WirelessDeviceSidewalkStatus =
   | "UNKNOWN"
   | (string & {});
 export const WirelessDeviceSidewalkStatus = /*@__PURE__*/ S.String;
+
 export interface SidewalkDevice {
   AmazonId?: string;
   SidewalkId?: string;
@@ -3696,8 +3742,11 @@ export const GetWirelessDeviceImportTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWirelessDeviceImportTaskRequest",
 }) as any as S.Schema<GetWirelessDeviceImportTaskRequest>;
+export type ImportTaskArn = string;
+export type DeviceCreationFile = string;
 export type DeviceCreationFileList = string[];
 export const DeviceCreationFileList = /*@__PURE__*/ S.Array(S.String);
+export type Role = string;
 export interface SidewalkGetStartImportInfo {
   DeviceCreationFileList?: string[];
   Role?: string;
@@ -3712,6 +3761,7 @@ export const SidewalkGetStartImportInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SidewalkGetStartImportInfo",
 }) as any as S.Schema<SidewalkGetStartImportInfo>;
+export type CreationTime = Date;
 export type ImportTaskStatus =
   | "INITIALIZING"
   | "INITIALIZED"
@@ -3721,6 +3771,9 @@ export type ImportTaskStatus =
   | "DELETING"
   | (string & {});
 export const ImportTaskStatus = /*@__PURE__*/ S.String;
+
+export type StatusReason = string;
+export type ImportedWirelessDeviceCount = number;
 export interface GetWirelessDeviceImportTaskResponse {
   Id?: string;
   Arn?: string;
@@ -3795,6 +3848,9 @@ export type LoRaWANGatewayMetadataList = LoRaWANGatewayMetadata[];
 export const LoRaWANGatewayMetadataList = /*@__PURE__*/ S.Array(
   LoRaWANGatewayMetadata,
 );
+export type ProviderNetId = string;
+export type Id = string;
+export type DlAllowed = boolean;
 export interface LoRaWANPublicGatewayMetadata {
   ProviderNetId?: string;
   Id?: string;
@@ -3843,6 +3899,7 @@ export const LoRaWANDeviceMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LoRaWANDeviceMetadata>;
 export type BatteryLevel = "normal" | "low" | "critical" | (string & {});
 export const BatteryLevel = /*@__PURE__*/ S.String;
+
 export type Event =
   | "discovered"
   | "lost"
@@ -3851,6 +3908,7 @@ export type Event =
   | "passthrough"
   | (string & {});
 export const Event = /*@__PURE__*/ S.String;
+
 export type DeviceState =
   | "Provisioned"
   | "RegisteredNotSeen"
@@ -3858,6 +3916,7 @@ export type DeviceState =
   | "RegisteredUnreachable"
   | (string & {});
 export const DeviceState = /*@__PURE__*/ S.String;
+
 export interface SidewalkDeviceMetadata {
   Rssi?: number;
   BatteryLevel?: BatteryLevel;
@@ -3896,6 +3955,7 @@ export type WirelessGatewayIdType =
   | "ThingName"
   | (string & {});
 export const WirelessGatewayIdType = /*@__PURE__*/ S.String;
+
 export interface GetWirelessGatewayRequest {
   Identifier: string;
   IdentifierType: WirelessGatewayIdType;
@@ -4032,6 +4092,7 @@ export const GetWirelessGatewayStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWirelessGatewayStatisticsRequest>;
 export type ConnectionStatus = "Connected" | "Disconnected" | (string & {});
 export const ConnectionStatus = /*@__PURE__*/ S.String;
+
 export interface GetWirelessGatewayStatisticsResponse {
   WirelessGatewayId?: string;
   LastUplinkReceivedAt?: string;
@@ -4120,6 +4181,8 @@ export const GetWirelessGatewayTaskDefinitionResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetWirelessGatewayTaskDefinitionResponse",
 }) as any as S.Schema<GetWirelessGatewayTaskDefinitionResponse>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface ListDestinationsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -4175,6 +4238,7 @@ export const ListDestinationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDestinationsResponse>;
 export type DeviceProfileType = "Sidewalk" | "LoRaWAN" | (string & {});
 export const DeviceProfileType = /*@__PURE__*/ S.String;
+
 export interface ListDeviceProfilesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -4233,6 +4297,7 @@ export type OnboardStatus =
   | "FAILED"
   | (string & {});
 export const OnboardStatus = /*@__PURE__*/ S.String;
+
 export interface ListDevicesForWirelessDeviceImportTaskRequest {
   Id: string;
   MaxResults?: number;
@@ -4267,6 +4332,8 @@ export const SidewalkListDevicesForImportInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SidewalkListDevicesForImportInfo",
 }) as any as S.Schema<SidewalkListDevicesForImportInfo>;
+export type OnboardStatusReason = string;
+export type LastUpdateTime = Date;
 export interface ImportedSidewalkDevice {
   SidewalkManufacturingSn?: string;
   OnboardingStatus?: OnboardStatus;
@@ -4322,6 +4389,7 @@ export type EventNotificationResourceType =
   | "WirelessGateway"
   | (string & {});
 export const EventNotificationResourceType = /*@__PURE__*/ S.String;
+
 export interface ListEventConfigurationsRequest {
   ResourceType: EventNotificationResourceType;
   MaxResults?: number;
@@ -4713,12 +4781,15 @@ export const ListQueuedMessagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListQueuedMessagesRequest",
 }) as any as S.Schema<ListQueuedMessagesRequest>;
+export type TransmitMode = number;
 export type DownlinkMode =
   | "SEQUENTIAL"
   | "CONCURRENT"
   | "USING_UPLINK_GATEWAY"
   | (string & {});
 export const DownlinkMode = /*@__PURE__*/ S.String;
+
+export type DownlinkFrequency = number;
 export interface GatewayListItem {
   GatewayId: string;
   DownlinkFrequency: number;
@@ -4730,6 +4801,7 @@ export const GatewayListItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GatewayListItem>;
 export type GatewayList = GatewayListItem[];
 export const GatewayList = /*@__PURE__*/ S.Array(GatewayListItem);
+export type TransmissionInterval = number;
 export interface ParticipatingGateways {
   DownlinkMode: DownlinkMode;
   GatewayList: GatewayListItem[];
@@ -4834,6 +4906,7 @@ export const ListServiceProfilesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListServiceProfilesResponse",
 }) as any as S.Schema<ListServiceProfilesResponse>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -5016,6 +5089,9 @@ export type FuotaDeviceStatus =
   | "Device_exist_in_conflict_fuota_task"
   | (string & {});
 export const FuotaDeviceStatus = /*@__PURE__*/ S.String;
+
+export type MulticastDeviceStatus = string;
+export type McGroupId = number;
 export interface WirelessDeviceStatistics {
   Arn?: string;
   Id?: string;
@@ -5123,6 +5199,7 @@ export const ListWirelessGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListWirelessGatewaysResponse>;
 export type WirelessGatewayTaskDefinitionType = "UPDATE" | (string & {});
 export const WirelessGatewayTaskDefinitionType = /*@__PURE__*/ S.String;
+
 export interface ListWirelessGatewayTaskDefinitionsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -5324,6 +5401,7 @@ export const ResetResourceLogLevelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResetResourceLogLevelResponse",
 }) as any as S.Schema<ResetResourceLogLevelResponse>;
+export type PayloadData = string;
 export interface LoRaWANMulticastMetadata {
   FPort?: number;
 }
@@ -5363,6 +5441,7 @@ export const SendDataToMulticastGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendDataToMulticastGroupRequest",
 }) as any as S.Schema<SendDataToMulticastGroupRequest>;
+export type MulticastGroupMessageId = string;
 export interface SendDataToMulticastGroupResponse {
   MessageId?: string;
 }
@@ -5371,6 +5450,7 @@ export const SendDataToMulticastGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendDataToMulticastGroupResponse",
 }) as any as S.Schema<SendDataToMulticastGroupResponse>;
+export type Seq = number;
 export type MessageType =
   | "CUSTOM_COMMAND_ID_NOTIFY"
   | "CUSTOM_COMMAND_ID_GET"
@@ -5378,6 +5458,8 @@ export type MessageType =
   | "CUSTOM_COMMAND_ID_RESP"
   | (string & {});
 export const MessageType = /*@__PURE__*/ S.String;
+
+export type AckModeRetryDurationSecs = number;
 export interface SidewalkSendDataToDevice {
   Seq?: number;
   MessageType?: MessageType;
@@ -5437,6 +5519,7 @@ export const SendDataToWirelessDeviceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendDataToWirelessDeviceResponse",
 }) as any as S.Schema<SendDataToWirelessDeviceResponse>;
+export type QueryString = string;
 export interface StartBulkAssociateWirelessDeviceWithMulticastGroupRequest {
   Id: string;
   QueryString?: string;
@@ -5561,6 +5644,7 @@ export const StartMulticastGroupSessionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartMulticastGroupSessionResponse",
 }) as any as S.Schema<StartMulticastGroupSessionResponse>;
+export type DeviceName = string;
 export interface SidewalkSingleStartImportInfo {
   SidewalkManufacturingSn?: string;
   Positioning?: SidewalkPositioning;
@@ -5708,6 +5792,7 @@ export const TestWirelessDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TestWirelessDeviceRequest",
 }) as any as S.Schema<TestWirelessDeviceRequest>;
+export type Result = string;
 export interface TestWirelessDeviceResponse {
   Result?: string;
 }
@@ -6295,53 +6380,8 @@ export const UpdateWirelessGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateWirelessGatewayResponse",
 }) as any as S.Schema<UpdateWirelessGatewayResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Message: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type Message = string;
+export type ResourceId = string;
 export type AssociateAwsAccountWithPartnerAccountError =
   | AccessDeniedException
   | ConflictException
@@ -6373,6 +6413,7 @@ export const associateAwsAccountWithPartnerAccount: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateAwsAccountWithPartnerAccount",
 }));
+
 export type AssociateMulticastGroupWithFuotaTaskError =
   | AccessDeniedException
   | ConflictException
@@ -6404,6 +6445,7 @@ export const associateMulticastGroupWithFuotaTask: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateMulticastGroupWithFuotaTask",
 }));
+
 export type AssociateWirelessDeviceWithFuotaTaskError =
   | AccessDeniedException
   | ConflictException
@@ -6435,6 +6477,7 @@ export const associateWirelessDeviceWithFuotaTask: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateWirelessDeviceWithFuotaTask",
 }));
+
 export type AssociateWirelessDeviceWithMulticastGroupError =
   | AccessDeniedException
   | ConflictException
@@ -6466,6 +6509,7 @@ export const associateWirelessDeviceWithMulticastGroup: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateWirelessDeviceWithMulticastGroup",
 }));
+
 export type AssociateWirelessDeviceWithThingError =
   | AccessDeniedException
   | ConflictException
@@ -6497,6 +6541,7 @@ export const associateWirelessDeviceWithThing: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateWirelessDeviceWithThing",
 }));
+
 export type AssociateWirelessGatewayWithCertificateError =
   | AccessDeniedException
   | ConflictException
@@ -6528,6 +6573,7 @@ export const associateWirelessGatewayWithCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateWirelessGatewayWithCertificate",
 }));
+
 export type AssociateWirelessGatewayWithThingError =
   | AccessDeniedException
   | ConflictException
@@ -6559,6 +6605,7 @@ export const associateWirelessGatewayWithThing: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateWirelessGatewayWithThing",
 }));
+
 export type CancelMulticastGroupSessionError =
   | AccessDeniedException
   | ConflictException
@@ -6590,6 +6637,7 @@ export const cancelMulticastGroupSession: API.OperationMethod<
   retry: Retry,
   operationName: "CancelMulticastGroupSession",
 }));
+
 export type CreateDestinationError =
   | AccessDeniedException
   | ConflictException
@@ -6621,6 +6669,7 @@ export const createDestination: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDestination",
 }));
+
 export type CreateDeviceProfileError =
   | AccessDeniedException
   | ConflictException
@@ -6650,6 +6699,7 @@ export const createDeviceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDeviceProfile",
 }));
+
 export type CreateFuotaTaskError =
   | AccessDeniedException
   | ConflictException
@@ -6681,6 +6731,7 @@ export const createFuotaTask: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFuotaTask",
 }));
+
 export type CreateMulticastGroupError =
   | AccessDeniedException
   | ConflictException
@@ -6712,6 +6763,7 @@ export const createMulticastGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMulticastGroup",
 }));
+
 export type CreateNetworkAnalyzerConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -6743,6 +6795,7 @@ export const createNetworkAnalyzerConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNetworkAnalyzerConfiguration",
 }));
+
 export type CreateServiceProfileError =
   | AccessDeniedException
   | ConflictException
@@ -6772,6 +6825,7 @@ export const createServiceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "CreateServiceProfile",
 }));
+
 export type CreateWirelessDeviceError =
   | AccessDeniedException
   | ConflictException
@@ -6803,6 +6857,7 @@ export const createWirelessDevice: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWirelessDevice",
 }));
+
 export type CreateWirelessGatewayError =
   | AccessDeniedException
   | ConflictException
@@ -6843,6 +6898,7 @@ export const createWirelessGateway: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWirelessGateway",
 }));
+
 export type CreateWirelessGatewayTaskError =
   | AccessDeniedException
   | ConflictException
@@ -6874,6 +6930,7 @@ export const createWirelessGatewayTask: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWirelessGatewayTask",
 }));
+
 export type CreateWirelessGatewayTaskDefinitionError =
   | AccessDeniedException
   | ConflictException
@@ -6905,6 +6962,7 @@ export const createWirelessGatewayTaskDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWirelessGatewayTaskDefinition",
 }));
+
 export type DeleteDestinationError =
   | AccessDeniedException
   | ConflictException
@@ -6936,6 +6994,7 @@ export const deleteDestination: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDestination",
 }));
+
 export type DeleteDeviceProfileError =
   | AccessDeniedException
   | ConflictException
@@ -6967,6 +7026,7 @@ export const deleteDeviceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDeviceProfile",
 }));
+
 export type DeleteFuotaTaskError =
   | AccessDeniedException
   | InternalServerException
@@ -6996,6 +7056,7 @@ export const deleteFuotaTask: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFuotaTask",
 }));
+
 export type DeleteMulticastGroupError =
   | AccessDeniedException
   | ConflictException
@@ -7027,6 +7088,7 @@ export const deleteMulticastGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMulticastGroup",
 }));
+
 export type DeleteNetworkAnalyzerConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -7058,6 +7120,7 @@ export const deleteNetworkAnalyzerConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNetworkAnalyzerConfiguration",
 }));
+
 export type DeleteQueuedMessagesError =
   | AccessDeniedException
   | InternalServerException
@@ -7087,6 +7150,7 @@ export const deleteQueuedMessages: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteQueuedMessages",
 }));
+
 export type DeleteServiceProfileError =
   | AccessDeniedException
   | ConflictException
@@ -7118,6 +7182,7 @@ export const deleteServiceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteServiceProfile",
 }));
+
 export type DeleteWirelessDeviceError =
   | AccessDeniedException
   | InternalServerException
@@ -7147,6 +7212,7 @@ export const deleteWirelessDevice: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWirelessDevice",
 }));
+
 export type DeleteWirelessDeviceImportTaskError =
   | AccessDeniedException
   | ConflictException
@@ -7178,6 +7244,7 @@ export const deleteWirelessDeviceImportTask: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWirelessDeviceImportTask",
 }));
+
 export type DeleteWirelessGatewayError =
   | AccessDeniedException
   | InternalServerException
@@ -7218,6 +7285,7 @@ export const deleteWirelessGateway: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWirelessGateway",
 }));
+
 export type DeleteWirelessGatewayTaskError =
   | AccessDeniedException
   | InternalServerException
@@ -7247,6 +7315,7 @@ export const deleteWirelessGatewayTask: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWirelessGatewayTask",
 }));
+
 export type DeleteWirelessGatewayTaskDefinitionError =
   | AccessDeniedException
   | InternalServerException
@@ -7277,6 +7346,7 @@ export const deleteWirelessGatewayTaskDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWirelessGatewayTaskDefinition",
 }));
+
 export type DeregisterWirelessDeviceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -7304,6 +7374,7 @@ export const deregisterWirelessDevice: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterWirelessDevice",
 }));
+
 export type DisassociateAwsAccountFromPartnerAccountError =
   | InternalServerException
   | ResourceNotFoundException
@@ -7333,6 +7404,7 @@ export const disassociateAwsAccountFromPartnerAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateAwsAccountFromPartnerAccount",
 }));
+
 export type DisassociateMulticastGroupFromFuotaTaskError =
   | AccessDeniedException
   | ConflictException
@@ -7362,6 +7434,7 @@ export const disassociateMulticastGroupFromFuotaTask: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateMulticastGroupFromFuotaTask",
 }));
+
 export type DisassociateWirelessDeviceFromFuotaTaskError =
   | AccessDeniedException
   | ConflictException
@@ -7393,6 +7466,7 @@ export const disassociateWirelessDeviceFromFuotaTask: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateWirelessDeviceFromFuotaTask",
 }));
+
 export type DisassociateWirelessDeviceFromMulticastGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -7422,6 +7496,7 @@ export const disassociateWirelessDeviceFromMulticastGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateWirelessDeviceFromMulticastGroup",
 }));
+
 export type DisassociateWirelessDeviceFromThingError =
   | AccessDeniedException
   | ConflictException
@@ -7453,6 +7528,7 @@ export const disassociateWirelessDeviceFromThing: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateWirelessDeviceFromThing",
 }));
+
 export type DisassociateWirelessGatewayFromCertificateError =
   | AccessDeniedException
   | InternalServerException
@@ -7482,6 +7558,7 @@ export const disassociateWirelessGatewayFromCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateWirelessGatewayFromCertificate",
 }));
+
 export type DisassociateWirelessGatewayFromThingError =
   | AccessDeniedException
   | ConflictException
@@ -7513,6 +7590,7 @@ export const disassociateWirelessGatewayFromThing: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateWirelessGatewayFromThing",
 }));
+
 export type GetDestinationError =
   | AccessDeniedException
   | InternalServerException
@@ -7542,6 +7620,7 @@ export const getDestination: API.OperationMethod<
   retry: Retry,
   operationName: "GetDestination",
 }));
+
 export type GetDeviceProfileError =
   | AccessDeniedException
   | InternalServerException
@@ -7571,6 +7650,7 @@ export const getDeviceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeviceProfile",
 }));
+
 export type GetEventConfigurationByResourceTypesError =
   | AccessDeniedException
   | InternalServerException
@@ -7592,6 +7672,7 @@ export const getEventConfigurationByResourceTypes: API.OperationMethod<
   retry: Retry,
   operationName: "GetEventConfigurationByResourceTypes",
 }));
+
 export type GetFuotaTaskError =
   | AccessDeniedException
   | InternalServerException
@@ -7621,6 +7702,7 @@ export const getFuotaTask: API.OperationMethod<
   retry: Retry,
   operationName: "GetFuotaTask",
 }));
+
 export type GetLogLevelsByResourceTypesError =
   | AccessDeniedException
   | InternalServerException
@@ -7652,6 +7734,7 @@ export const getLogLevelsByResourceTypes: API.OperationMethod<
   retry: Retry,
   operationName: "GetLogLevelsByResourceTypes",
 }));
+
 export type GetMetricConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -7683,6 +7766,7 @@ export const getMetricConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetMetricConfiguration",
 }));
+
 export type GetMetricsError =
   | AccessDeniedException
   | ConflictException
@@ -7714,6 +7798,7 @@ export const getMetrics: API.OperationMethod<
   retry: Retry,
   operationName: "GetMetrics",
 }));
+
 export type GetMulticastGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -7743,6 +7828,7 @@ export const getMulticastGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetMulticastGroup",
 }));
+
 export type GetMulticastGroupSessionError =
   | AccessDeniedException
   | InternalServerException
@@ -7772,6 +7858,7 @@ export const getMulticastGroupSession: API.OperationMethod<
   retry: Retry,
   operationName: "GetMulticastGroupSession",
 }));
+
 export type GetNetworkAnalyzerConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -7801,6 +7888,7 @@ export const getNetworkAnalyzerConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetNetworkAnalyzerConfiguration",
 }));
+
 export type GetPartnerAccountError =
   | InternalServerException
   | ResourceNotFoundException
@@ -7829,6 +7917,7 @@ export const getPartnerAccount: API.OperationMethod<
   retry: Retry,
   operationName: "GetPartnerAccount",
 }));
+
 export type GetPositionError =
   | AccessDeniedException
   | InternalServerException
@@ -7861,6 +7950,7 @@ export const getPosition: API.OperationMethod<
   retry: Retry,
   operationName: "GetPosition",
 }));
+
 export type GetPositionConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -7893,6 +7983,7 @@ export const getPositionConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetPositionConfiguration",
 }));
+
 export type GetPositionEstimateError =
   | AccessDeniedException
   | InternalServerException
@@ -7924,6 +8015,7 @@ export const getPositionEstimate: API.OperationMethod<
   retry: Retry,
   operationName: "GetPositionEstimate",
 }));
+
 export type GetResourceEventConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -7953,6 +8045,7 @@ export const getResourceEventConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourceEventConfiguration",
 }));
+
 export type GetResourceLogLevelError =
   | AccessDeniedException
   | InternalServerException
@@ -7983,6 +8076,7 @@ export const getResourceLogLevel: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourceLogLevel",
 }));
+
 export type GetResourcePositionError =
   | AccessDeniedException
   | InternalServerException
@@ -8014,6 +8108,7 @@ export const getResourcePosition: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePosition",
 }));
+
 export type GetServiceEndpointError =
   | AccessDeniedException
   | InternalServerException
@@ -8042,6 +8137,7 @@ export const getServiceEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "GetServiceEndpoint",
 }));
+
 export type GetServiceProfileError =
   | AccessDeniedException
   | InternalServerException
@@ -8071,6 +8167,7 @@ export const getServiceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "GetServiceProfile",
 }));
+
 export type GetWirelessDeviceError =
   | AccessDeniedException
   | InternalServerException
@@ -8100,6 +8197,7 @@ export const getWirelessDevice: API.OperationMethod<
   retry: Retry,
   operationName: "GetWirelessDevice",
 }));
+
 export type GetWirelessDeviceImportTaskError =
   | AccessDeniedException
   | ConflictException
@@ -8132,6 +8230,7 @@ export const getWirelessDeviceImportTask: API.OperationMethod<
   retry: Retry,
   operationName: "GetWirelessDeviceImportTask",
 }));
+
 export type GetWirelessDeviceStatisticsError =
   | AccessDeniedException
   | InternalServerException
@@ -8161,6 +8260,7 @@ export const getWirelessDeviceStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "GetWirelessDeviceStatistics",
 }));
+
 export type GetWirelessGatewayError =
   | AccessDeniedException
   | InternalServerException
@@ -8190,6 +8290,7 @@ export const getWirelessGateway: API.OperationMethod<
   retry: Retry,
   operationName: "GetWirelessGateway",
 }));
+
 export type GetWirelessGatewayCertificateError =
   | AccessDeniedException
   | InternalServerException
@@ -8220,6 +8321,7 @@ export const getWirelessGatewayCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "GetWirelessGatewayCertificate",
 }));
+
 export type GetWirelessGatewayFirmwareInformationError =
   | AccessDeniedException
   | InternalServerException
@@ -8249,6 +8351,7 @@ export const getWirelessGatewayFirmwareInformation: API.OperationMethod<
   retry: Retry,
   operationName: "GetWirelessGatewayFirmwareInformation",
 }));
+
 export type GetWirelessGatewayStatisticsError =
   | AccessDeniedException
   | InternalServerException
@@ -8278,6 +8381,7 @@ export const getWirelessGatewayStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "GetWirelessGatewayStatistics",
 }));
+
 export type GetWirelessGatewayTaskError =
   | AccessDeniedException
   | InternalServerException
@@ -8307,6 +8411,7 @@ export const getWirelessGatewayTask: API.OperationMethod<
   retry: Retry,
   operationName: "GetWirelessGatewayTask",
 }));
+
 export type GetWirelessGatewayTaskDefinitionError =
   | AccessDeniedException
   | InternalServerException
@@ -8336,6 +8441,7 @@ export const getWirelessGatewayTaskDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "GetWirelessGatewayTaskDefinition",
 }));
+
 export type ListDestinationsError =
   | AccessDeniedException
   | InternalServerException
@@ -8383,6 +8489,7 @@ export const listDestinations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDeviceProfilesError =
   | AccessDeniedException
   | InternalServerException
@@ -8430,6 +8537,7 @@ export const listDeviceProfiles: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDevicesForWirelessDeviceImportTaskError =
   | AccessDeniedException
   | ConflictException
@@ -8461,6 +8569,7 @@ export const listDevicesForWirelessDeviceImportTask: API.OperationMethod<
   retry: Retry,
   operationName: "ListDevicesForWirelessDeviceImportTask",
 }));
+
 export type ListEventConfigurationsError =
   | AccessDeniedException
   | InternalServerException
@@ -8488,6 +8597,7 @@ export const listEventConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "ListEventConfigurations",
 }));
+
 export type ListFuotaTasksError =
   | AccessDeniedException
   | InternalServerException
@@ -8535,6 +8645,7 @@ export const listFuotaTasks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMulticastGroupsError =
   | AccessDeniedException
   | InternalServerException
@@ -8582,6 +8693,7 @@ export const listMulticastGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMulticastGroupsByFuotaTaskError =
   | AccessDeniedException
   | InternalServerException
@@ -8631,6 +8743,7 @@ export const listMulticastGroupsByFuotaTask: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNetworkAnalyzerConfigurationsError =
   | AccessDeniedException
   | InternalServerException
@@ -8678,6 +8791,7 @@ export const listNetworkAnalyzerConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPartnerAccountsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -8705,6 +8819,7 @@ export const listPartnerAccounts: API.OperationMethod<
   retry: Retry,
   operationName: "ListPartnerAccounts",
 }));
+
 export type ListPositionConfigurationsError =
   | AccessDeniedException
   | InternalServerException
@@ -8755,6 +8870,7 @@ export const listPositionConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListQueuedMessagesError =
   | AccessDeniedException
   | InternalServerException
@@ -8804,6 +8920,7 @@ export const listQueuedMessages: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListServiceProfilesError =
   | AccessDeniedException
   | InternalServerException
@@ -8851,6 +8968,7 @@ export const listServiceProfiles: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | ConflictException
   | InternalServerException
@@ -8880,6 +8998,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListWirelessDeviceImportTasksError =
   | AccessDeniedException
   | ConflictException
@@ -8912,6 +9031,7 @@ export const listWirelessDeviceImportTasks: API.OperationMethod<
   retry: Retry,
   operationName: "ListWirelessDeviceImportTasks",
 }));
+
 export type ListWirelessDevicesError =
   | AccessDeniedException
   | InternalServerException
@@ -8959,6 +9079,7 @@ export const listWirelessDevices: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListWirelessGatewaysError =
   | AccessDeniedException
   | InternalServerException
@@ -9006,6 +9127,7 @@ export const listWirelessGateways: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListWirelessGatewayTaskDefinitionsError =
   | AccessDeniedException
   | InternalServerException
@@ -9033,6 +9155,7 @@ export const listWirelessGatewayTaskDefinitions: API.OperationMethod<
   retry: Retry,
   operationName: "ListWirelessGatewayTaskDefinitions",
 }));
+
 export type PutPositionConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -9065,6 +9188,7 @@ export const putPositionConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutPositionConfiguration",
 }));
+
 export type PutResourceLogLevelError =
   | AccessDeniedException
   | InternalServerException
@@ -9095,6 +9219,7 @@ export const putResourceLogLevel: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourceLogLevel",
 }));
+
 export type ResetAllResourceLogLevelsError =
   | AccessDeniedException
   | InternalServerException
@@ -9125,6 +9250,7 @@ export const resetAllResourceLogLevels: API.OperationMethod<
   retry: Retry,
   operationName: "ResetAllResourceLogLevels",
 }));
+
 export type ResetResourceLogLevelError =
   | AccessDeniedException
   | InternalServerException
@@ -9155,6 +9281,7 @@ export const resetResourceLogLevel: API.OperationMethod<
   retry: Retry,
   operationName: "ResetResourceLogLevel",
 }));
+
 export type SendDataToMulticastGroupError =
   | AccessDeniedException
   | ConflictException
@@ -9186,6 +9313,7 @@ export const sendDataToMulticastGroup: API.OperationMethod<
   retry: Retry,
   operationName: "SendDataToMulticastGroup",
 }));
+
 export type SendDataToWirelessDeviceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -9213,6 +9341,7 @@ export const sendDataToWirelessDevice: API.OperationMethod<
   retry: Retry,
   operationName: "SendDataToWirelessDevice",
 }));
+
 export type StartBulkAssociateWirelessDeviceWithMulticastGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -9243,6 +9372,7 @@ export const startBulkAssociateWirelessDeviceWithMulticastGroup: API.OperationMe
   retry: Retry,
   operationName: "StartBulkAssociateWirelessDeviceWithMulticastGroup",
 }));
+
 export type StartBulkDisassociateWirelessDeviceFromMulticastGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -9273,6 +9403,7 @@ export const startBulkDisassociateWirelessDeviceFromMulticastGroup: API.Operatio
   retry: Retry,
   operationName: "StartBulkDisassociateWirelessDeviceFromMulticastGroup",
 }));
+
 export type StartFuotaTaskError =
   | AccessDeniedException
   | ConflictException
@@ -9304,6 +9435,7 @@ export const startFuotaTask: API.OperationMethod<
   retry: Retry,
   operationName: "StartFuotaTask",
 }));
+
 export type StartMulticastGroupSessionError =
   | AccessDeniedException
   | ConflictException
@@ -9335,6 +9467,7 @@ export const startMulticastGroupSession: API.OperationMethod<
   retry: Retry,
   operationName: "StartMulticastGroupSession",
 }));
+
 export type StartSingleWirelessDeviceImportTaskError =
   | AccessDeniedException
   | ConflictException
@@ -9366,6 +9499,7 @@ export const startSingleWirelessDeviceImportTask: API.OperationMethod<
   retry: Retry,
   operationName: "StartSingleWirelessDeviceImportTask",
 }));
+
 export type StartWirelessDeviceImportTaskError =
   | AccessDeniedException
   | ConflictException
@@ -9398,6 +9532,7 @@ export const startWirelessDeviceImportTask: API.OperationMethod<
   retry: Retry,
   operationName: "StartWirelessDeviceImportTask",
 }));
+
 export type TagResourceError =
   | ConflictException
   | InternalServerException
@@ -9429,6 +9564,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TestWirelessDeviceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -9457,6 +9593,7 @@ export const testWirelessDevice: API.OperationMethod<
   retry: Retry,
   operationName: "TestWirelessDevice",
 }));
+
 export type UntagResourceError =
   | ConflictException
   | InternalServerException
@@ -9486,6 +9623,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDestinationError =
   | AccessDeniedException
   | InternalServerException
@@ -9515,6 +9653,7 @@ export const updateDestination: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDestination",
 }));
+
 export type UpdateEventConfigurationByResourceTypesError =
   | AccessDeniedException
   | InternalServerException
@@ -9542,6 +9681,7 @@ export const updateEventConfigurationByResourceTypes: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEventConfigurationByResourceTypes",
 }));
+
 export type UpdateFuotaTaskError =
   | AccessDeniedException
   | ConflictException
@@ -9573,6 +9713,7 @@ export const updateFuotaTask: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFuotaTask",
 }));
+
 export type UpdateLogLevelsByResourceTypesError =
   | AccessDeniedException
   | ConflictException
@@ -9606,6 +9747,7 @@ export const updateLogLevelsByResourceTypes: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLogLevelsByResourceTypes",
 }));
+
 export type UpdateMetricConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -9637,6 +9779,7 @@ export const updateMetricConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMetricConfiguration",
 }));
+
 export type UpdateMulticastGroupError =
   | AccessDeniedException
   | ConflictException
@@ -9668,6 +9811,7 @@ export const updateMulticastGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMulticastGroup",
 }));
+
 export type UpdateNetworkAnalyzerConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -9697,6 +9841,7 @@ export const updateNetworkAnalyzerConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNetworkAnalyzerConfiguration",
 }));
+
 export type UpdatePartnerAccountError =
   | InternalServerException
   | ResourceNotFoundException
@@ -9724,6 +9869,7 @@ export const updatePartnerAccount: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePartnerAccount",
 }));
+
 export type UpdatePositionError =
   | AccessDeniedException
   | InternalServerException
@@ -9756,6 +9902,7 @@ export const updatePosition: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePosition",
 }));
+
 export type UpdateResourceEventConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -9787,6 +9934,7 @@ export const updateResourceEventConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateResourceEventConfiguration",
 }));
+
 export type UpdateResourcePositionError =
   | AccessDeniedException
   | InternalServerException
@@ -9818,6 +9966,7 @@ export const updateResourcePosition: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateResourcePosition",
 }));
+
 export type UpdateWirelessDeviceError =
   | AccessDeniedException
   | InternalServerException
@@ -9847,6 +9996,7 @@ export const updateWirelessDevice: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateWirelessDevice",
 }));
+
 export type UpdateWirelessDeviceImportTaskError =
   | AccessDeniedException
   | ConflictException
@@ -9878,6 +10028,7 @@ export const updateWirelessDeviceImportTask: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateWirelessDeviceImportTask",
 }));
+
 export type UpdateWirelessGatewayError =
   | AccessDeniedException
   | InternalServerException

@@ -85,100 +85,62 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    Message: S.String,
+    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    Message: S.String,
+    QuotaCode: S.optional(S.String),
+    ServiceCode: S.optional(S.String),
+    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.String,
+    Reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    Fields: S.optional(
+      S.suspend(() => ValidationExceptionFields).annotate({
+        identifier: "ValidationExceptionFields",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type TopicArn = string;
-export type NotificationChannelId = string;
-export type ErrorMessageString = string;
-export type ResourceIdString = string;
-export type ResourceIdType = string;
-export type RetryAfterSeconds = number;
-export type ErrorQuotaCodeString = string;
-export type ErrorServiceCodeString = string;
-export type ErrorNameString = string;
-export type InsightId = string;
-export type NumOpenReactiveInsights = number;
-export type NumOpenProactiveInsights = number;
-export type NumMetricsAnalyzed = number;
-export type ResourceHours = number;
-export type AnalyzedResourceCount = number;
-export type NumReactiveInsights = number;
-export type NumProactiveInsights = number;
-export type MeanTimeToRecoverInMilliseconds = number;
-export type AnomalyId = string;
-export type AwsAccountId = string;
-export type CloudWatchMetricsMetricName = string;
-export type CloudWatchMetricsNamespace = string;
-export type CloudWatchMetricsDimensionName = string;
-export type CloudWatchMetricsDimensionValue = string;
-export type CloudWatchMetricsUnit = string;
-export type CloudWatchMetricsPeriod = number;
-export type MetricValue = number;
-export type PerformanceInsightsMetricDisplayName = string;
-export type PerformanceInsightsMetricUnit = string;
-export type PerformanceInsightsMetricName = string;
-export type PerformanceInsightsMetricGroup = string;
-export type PerformanceInsightsMetricDimension = string;
-export type PerformanceInsightsMetricLimitInteger = number;
-export type PerformanceInsightsMetricFilterKey = string;
-export type PerformanceInsightsMetricFilterValue = string;
-export type PerformanceInsightsReferenceName = string;
-export type PerformanceInsightsValueDouble = number;
-export type PerformanceInsightsStatType = string;
-export type StackName = string;
-export type AppBoundaryKey = string;
-export type TagValue = string;
-export type AnomalyLimit = number;
-export type AnomalySource = string;
-export type ResourceName = string;
-export type ResourceType = string;
-export type AnomalyDescription = string;
-export type AnomalyName = string;
-export type InsightName = string;
-export type SsmOpsItemId = string;
-export type InsightDescription = string;
-export type OrganizationalUnitId = string;
-export type UuidNextToken = string;
-export type OrganizationResourceCollectionMaxResults = number;
-export type KMSKeyId = string;
-export type CostEstimationServiceResourceCount = number;
-export type Cost = number;
-export type ListAnomaliesForInsightMaxResults = number;
-export type ListAnomalousLogGroupsMaxResults = number;
-export type LogGroupName = string;
-export type NumberOfLogLinesScanned = number;
-export type LogStreamName = string;
-export type LogAnomalyToken = string;
-export type LogEventId = string;
-export type Explanation = string;
-export type NumberOfLogLinesOccurrences = number;
-export type EventSource = string;
-export type ListEventsMaxResults = number;
-export type EventId = string;
-export type EventName = string;
-export type EventResourceType = string;
-export type EventResourceName = string;
-export type EventResourceArn = string;
-export type ListInsightsMaxResults = number;
-export type ResourceArn = string;
-export type ListMonitoredResourcesMaxResults = number;
-export type MonitoredResourceName = string;
-export type RecommendationDescription = string;
-export type RecommendationLink = string;
-export type RecommendationName = string;
-export type RecommendationReason = string;
-export type RecommendationRelatedEventName = string;
-export type RecommendationRelatedEventResourceName = string;
-export type RecommendationRelatedEventResourceType = string;
-export type RecommendationRelatedAnomalyResourceName = string;
-export type RecommendationRelatedAnomalyResourceType = string;
-export type RecommendationRelatedCloudWatchMetricsSourceMetricName = string;
-export type RecommendationRelatedCloudWatchMetricsSourceNamespace = string;
-export type RecommendationCategory = string;
-export type SearchInsightsMaxResults = number;
-export type SearchOrganizationInsightsMaxResults = number;
-export type ClientToken = string;
-
-//# Schemas
 export interface SnsChannelConfig {
   TopicArn?: string;
 }
@@ -189,6 +151,7 @@ export const SnsChannelConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnsChannelConfig>;
 export type InsightSeverity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
 export const InsightSeverity = /*@__PURE__*/ S.String;
+
 export type InsightSeverities = InsightSeverity[];
 export const InsightSeverities = /*@__PURE__*/ S.Array(InsightSeverity);
 export type NotificationMessageType =
@@ -199,6 +162,7 @@ export type NotificationMessageType =
   | "NEW_RECOMMENDATION"
   | (string & {});
 export const NotificationMessageType = /*@__PURE__*/ S.String;
+
 export type NotificationMessageTypes = NotificationMessageType[];
 export const NotificationMessageTypes = /*@__PURE__*/ S.Array(
   NotificationMessageType,
@@ -244,6 +208,7 @@ export const AddNotificationChannelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddNotificationChannelRequest",
 }) as any as S.Schema<AddNotificationChannelRequest>;
+export type NotificationChannelId = string;
 export interface AddNotificationChannelResponse {
   Id: string;
 }
@@ -252,28 +217,7 @@ export const AddNotificationChannelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddNotificationChannelResponse",
 }) as any as S.Schema<AddNotificationChannelResponse>;
-export type ValidationExceptionReason =
-  | "UNKNOWN_OPERATION"
-  | "CANNOT_PARSE"
-  | "FIELD_VALIDATION_FAILED"
-  | "OTHER"
-  | "INVALID_PARAMETER_COMBINATION"
-  | "PARAMETER_INCONSISTENT_WITH_SERVICE_STATE"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  Name: string;
-  Message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFields = ValidationExceptionField[];
-export const ValidationExceptionFields = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type InsightId = string;
 export interface DeleteInsightRequest {
   Id: string;
 }
@@ -312,6 +256,11 @@ export const DescribeAccountHealthRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAccountHealthRequest",
 }) as any as S.Schema<DescribeAccountHealthRequest>;
+export type NumOpenReactiveInsights = number;
+export type NumOpenProactiveInsights = number;
+export type NumMetricsAnalyzed = number;
+export type ResourceHours = number;
+export type AnalyzedResourceCount = number;
 export interface DescribeAccountHealthResponse {
   OpenReactiveInsights: number;
   OpenProactiveInsights: number;
@@ -351,6 +300,9 @@ export const DescribeAccountOverviewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAccountOverviewRequest",
 }) as any as S.Schema<DescribeAccountOverviewRequest>;
+export type NumReactiveInsights = number;
+export type NumProactiveInsights = number;
+export type MeanTimeToRecoverInMilliseconds = number;
 export interface DescribeAccountOverviewResponse {
   ReactiveInsights: number;
   ProactiveInsights: number;
@@ -365,6 +317,8 @@ export const DescribeAccountOverviewResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAccountOverviewResponse",
 }) as any as S.Schema<DescribeAccountOverviewResponse>;
+export type AnomalyId = string;
+export type AwsAccountId = string;
 export interface DescribeAnomalyRequest {
   Id: string;
   AccountId?: string;
@@ -388,8 +342,10 @@ export const DescribeAnomalyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeAnomalyRequest>;
 export type AnomalySeverity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
 export const AnomalySeverity = /*@__PURE__*/ S.String;
+
 export type AnomalyStatus = "ONGOING" | "CLOSED" | (string & {});
 export const AnomalyStatus = /*@__PURE__*/ S.String;
+
 export interface AnomalyTimeRange {
   StartTime: Date;
   EndTime?: Date;
@@ -426,6 +382,10 @@ export const PredictionTimeRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PredictionTimeRange",
 }) as any as S.Schema<PredictionTimeRange>;
+export type CloudWatchMetricsMetricName = string;
+export type CloudWatchMetricsNamespace = string;
+export type CloudWatchMetricsDimensionName = string;
+export type CloudWatchMetricsDimensionValue = string;
 export interface CloudWatchMetricsDimension {
   Name?: string;
   Value?: string;
@@ -450,6 +410,10 @@ export type CloudWatchMetricsStat =
   | "p50"
   | (string & {});
 export const CloudWatchMetricsStat = /*@__PURE__*/ S.String;
+
+export type CloudWatchMetricsUnit = string;
+export type CloudWatchMetricsPeriod = number;
+export type MetricValue = number;
 export interface TimestampMetricValuePair {
   Timestamp?: Date;
   MetricValue?: number;
@@ -472,6 +436,7 @@ export type CloudWatchMetricDataStatusCode =
   | "PartialData"
   | (string & {});
 export const CloudWatchMetricDataStatusCode = /*@__PURE__*/ S.String;
+
 export interface CloudWatchMetricsDataSummary {
   TimestampMetricValuePairList?: TimestampMetricValuePair[];
   StatusCode?: CloudWatchMetricDataStatusCode;
@@ -510,10 +475,16 @@ export type CloudWatchMetricsDetails = CloudWatchMetricsDetail[];
 export const CloudWatchMetricsDetails = /*@__PURE__*/ S.Array(
   CloudWatchMetricsDetail,
 );
+export type PerformanceInsightsMetricDisplayName = string;
+export type PerformanceInsightsMetricUnit = string;
+export type PerformanceInsightsMetricName = string;
+export type PerformanceInsightsMetricGroup = string;
+export type PerformanceInsightsMetricDimension = string;
 export type PerformanceInsightsMetricDimensions = string[];
 export const PerformanceInsightsMetricDimensions = /*@__PURE__*/ S.Array(
   S.String,
 );
+export type PerformanceInsightsMetricLimitInteger = number;
 export interface PerformanceInsightsMetricDimensionGroup {
   Group?: string;
   Dimensions?: string[];
@@ -529,6 +500,8 @@ export const PerformanceInsightsMetricDimensionGroup = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "PerformanceInsightsMetricDimensionGroup",
 }) as any as S.Schema<PerformanceInsightsMetricDimensionGroup>;
+export type PerformanceInsightsMetricFilterKey = string;
+export type PerformanceInsightsMetricFilterValue = string;
 export type PerformanceInsightsMetricFilterMap = {
   [key: string]: string | undefined;
 };
@@ -550,6 +523,8 @@ export const PerformanceInsightsMetricQuery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PerformanceInsightsMetricQuery",
 }) as any as S.Schema<PerformanceInsightsMetricQuery>;
+export type PerformanceInsightsReferenceName = string;
+export type PerformanceInsightsValueDouble = number;
 export interface PerformanceInsightsReferenceScalar {
   Value?: number;
 }
@@ -596,6 +571,7 @@ export type PerformanceInsightsReferenceDataList =
 export const PerformanceInsightsReferenceDataList = /*@__PURE__*/ S.Array(
   PerformanceInsightsReferenceData,
 );
+export type PerformanceInsightsStatType = string;
 export interface PerformanceInsightsStat {
   Type?: string;
   Value?: number;
@@ -646,6 +622,7 @@ export const AnomalySourceDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AnomalySourceDetails",
 }) as any as S.Schema<AnomalySourceDetails>;
+export type StackName = string;
 export type StackNames = string[];
 export const StackNames = /*@__PURE__*/ S.Array(S.String);
 export interface CloudFormationCollection {
@@ -656,6 +633,8 @@ export const CloudFormationCollection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CloudFormationCollection",
 }) as any as S.Schema<CloudFormationCollection>;
+export type AppBoundaryKey = string;
+export type TagValue = string;
 export type TagValues = string[];
 export const TagValues = /*@__PURE__*/ S.Array(S.String);
 export interface TagCollection {
@@ -679,6 +658,10 @@ export const ResourceCollection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResourceCollection",
 }) as any as S.Schema<ResourceCollection>;
+export type AnomalyLimit = number;
+export type AnomalySource = string;
+export type ResourceName = string;
+export type ResourceType = string;
 export interface AnomalySourceMetadata {
   Source?: string;
   SourceResourceName?: string;
@@ -704,6 +687,7 @@ export const AnomalyResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnomalyResource>;
 export type AnomalyResources = AnomalyResource[];
 export const AnomalyResources = /*@__PURE__*/ S.Array(AnomalyResource);
+export type AnomalyDescription = string;
 export interface ProactiveAnomaly {
   Id?: string;
   Severity?: AnomalySeverity;
@@ -742,6 +726,8 @@ export const ProactiveAnomaly = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProactiveAnomaly>;
 export type AnomalyType = "CAUSAL" | "CONTEXTUAL" | (string & {});
 export const AnomalyType = /*@__PURE__*/ S.String;
+
+export type AnomalyName = string;
 export interface ReactiveAnomaly {
   Id?: string;
   Severity?: AnomalySeverity;
@@ -805,6 +791,7 @@ export const DescribeEventSourcesConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeEventSourcesConfigRequest>;
 export type EventSourceOptInStatus = "ENABLED" | "DISABLED" | (string & {});
 export const EventSourceOptInStatus = /*@__PURE__*/ S.String;
+
 export interface AmazonCodeGuruProfilerIntegration {
   Status?: EventSourceOptInStatus;
 }
@@ -856,6 +843,7 @@ export type InsightFeedbackOption =
   | "DATA_INCORRECT"
   | (string & {});
 export const InsightFeedbackOption = /*@__PURE__*/ S.String;
+
 export interface InsightFeedback {
   Id?: string;
   Feedback?: InsightFeedbackOption;
@@ -897,8 +885,10 @@ export const DescribeInsightRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInsightRequest",
 }) as any as S.Schema<DescribeInsightRequest>;
+export type InsightName = string;
 export type InsightStatus = "ONGOING" | "CLOSED" | (string & {});
 export const InsightStatus = /*@__PURE__*/ S.String;
+
 export interface InsightTimeRange {
   StartTime: Date;
   EndTime?: Date;
@@ -911,6 +901,8 @@ export const InsightTimeRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InsightTimeRange",
 }) as any as S.Schema<InsightTimeRange>;
+export type SsmOpsItemId = string;
+export type InsightDescription = string;
 export interface ProactiveInsight {
   Id?: string;
   Name?: string;
@@ -975,6 +967,7 @@ export const DescribeInsightResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeInsightResponse>;
 export type AccountIdList = string[];
 export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
+export type OrganizationalUnitId = string;
 export type OrganizationalUnitIdList = string[];
 export const OrganizationalUnitIdList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeOrganizationHealthRequest {
@@ -1055,6 +1048,9 @@ export type OrganizationResourceCollectionType =
   | "AWS_TAGS"
   | (string & {});
 export const OrganizationResourceCollectionType = /*@__PURE__*/ S.String;
+
+export type UuidNextToken = string;
+export type OrganizationResourceCollectionMaxResults = number;
 export interface DescribeOrganizationResourceCollectionHealthRequest {
   OrganizationResourceCollectionType: OrganizationResourceCollectionType;
   AccountIds?: string[];
@@ -1143,6 +1139,7 @@ export type ServiceName =
   | "SWF"
   | (string & {});
 export const ServiceName = /*@__PURE__*/ S.String;
+
 export interface ServiceInsightHealth {
   OpenProactiveInsights?: number;
   OpenReactiveInsights?: number;
@@ -1234,6 +1231,7 @@ export type ResourceCollectionType =
   | "AWS_TAGS"
   | (string & {});
 export const ResourceCollectionType = /*@__PURE__*/ S.String;
+
 export interface DescribeResourceCollectionHealthRequest {
   ResourceCollectionType: ResourceCollectionType;
   NextToken?: string;
@@ -1295,6 +1293,7 @@ export const DescribeServiceIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeServiceIntegrationRequest>;
 export type OptInStatus = "ENABLED" | "DISABLED" | (string & {});
 export const OptInStatus = /*@__PURE__*/ S.String;
+
 export interface OpsCenterIntegration {
   OptInStatus?: OptInStatus;
 }
@@ -1311,11 +1310,13 @@ export const LogsAnomalyDetectionIntegration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LogsAnomalyDetectionIntegration",
 }) as any as S.Schema<LogsAnomalyDetectionIntegration>;
+export type KMSKeyId = string;
 export type ServerSideEncryptionType =
   | "CUSTOMER_MANAGED_KEY"
   | "AWS_OWNED_KMS_KEY"
   | (string & {});
 export const ServerSideEncryptionType = /*@__PURE__*/ S.String;
+
 export interface KMSServerSideEncryptionIntegration {
   KMSKeyId?: string;
   OptInStatus?: OptInStatus;
@@ -1416,11 +1417,15 @@ export const CostEstimationResourceCollectionFilter = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CostEstimationResourceCollectionFilter>;
 export type CostEstimationStatus = "ONGOING" | "COMPLETED" | (string & {});
 export const CostEstimationStatus = /*@__PURE__*/ S.String;
+
 export type CostEstimationServiceResourceState =
   | "ACTIVE"
   | "INACTIVE"
   | (string & {});
 export const CostEstimationServiceResourceState = /*@__PURE__*/ S.String;
+
+export type CostEstimationServiceResourceCount = number;
+export type Cost = number;
 export interface ServiceResourceCost {
   Type?: string;
   State?: CostEstimationServiceResourceState;
@@ -1552,6 +1557,7 @@ export const StartTimeRange = /*@__PURE__*/ S.suspend(() =>
     ToTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "StartTimeRange" }) as any as S.Schema<StartTimeRange>;
+export type ListAnomaliesForInsightMaxResults = number;
 export type ServiceNames = ServiceName[];
 export const ServiceNames = /*@__PURE__*/ S.Array(ServiceName);
 export interface ServiceCollection {
@@ -1689,6 +1695,7 @@ export const ListAnomaliesForInsightResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAnomaliesForInsightResponse",
 }) as any as S.Schema<ListAnomaliesForInsightResponse>;
+export type ListAnomalousLogGroupsMaxResults = number;
 export interface ListAnomalousLogGroupsRequest {
   InsightId: string;
   MaxResults?: number;
@@ -1712,6 +1719,9 @@ export const ListAnomalousLogGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAnomalousLogGroupsRequest",
 }) as any as S.Schema<ListAnomalousLogGroupsRequest>;
+export type LogGroupName = string;
+export type NumberOfLogLinesScanned = number;
+export type LogStreamName = string;
 export type LogAnomalyType =
   | "KEYWORD"
   | "KEYWORD_TOKEN"
@@ -1723,6 +1733,11 @@ export type LogAnomalyType =
   | "NEW_FIELD_NAME"
   | (string & {});
 export const LogAnomalyType = /*@__PURE__*/ S.String;
+
+export type LogAnomalyToken = string;
+export type LogEventId = string;
+export type Explanation = string;
+export type NumberOfLogLinesOccurrences = number;
 export interface LogAnomalyClass {
   LogStreamName?: string;
   LogAnomalyType?: LogAnomalyType;
@@ -1813,11 +1828,14 @@ export type EventClass =
   | "SCHEMA_CHANGE"
   | (string & {});
 export const EventClass = /*@__PURE__*/ S.String;
+
+export type EventSource = string;
 export type EventDataSource =
   | "AWS_CLOUD_TRAIL"
   | "AWS_CODE_DEPLOY"
   | (string & {});
 export const EventDataSource = /*@__PURE__*/ S.String;
+
 export interface ListEventsFilters {
   InsightId?: string;
   EventTimeRange?: EventTimeRange;
@@ -1838,6 +1856,7 @@ export const ListEventsFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEventsFilters",
 }) as any as S.Schema<ListEventsFilters>;
+export type ListEventsMaxResults = number;
 export interface ListEventsRequest {
   Filters: ListEventsFilters;
   MaxResults?: number;
@@ -1863,6 +1882,11 @@ export const ListEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEventsRequest",
 }) as any as S.Schema<ListEventsRequest>;
+export type EventId = string;
+export type EventName = string;
+export type EventResourceType = string;
+export type EventResourceName = string;
+export type EventResourceArn = string;
 export interface EventResource {
   Type?: string;
   Name?: string;
@@ -1912,6 +1936,7 @@ export const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEventsResponse>;
 export type InsightType = "REACTIVE" | "PROACTIVE" | (string & {});
 export const InsightType = /*@__PURE__*/ S.String;
+
 export interface ListInsightsOngoingStatusFilter {
   Type: InsightType;
 }
@@ -1962,6 +1987,7 @@ export const ListInsightsStatusFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInsightsStatusFilter",
 }) as any as S.Schema<ListInsightsStatusFilter>;
+export type ListInsightsMaxResults = number;
 export interface ListInsightsRequest {
   StatusFilter: ListInsightsStatusFilter;
   MaxResults?: number;
@@ -1985,6 +2011,7 @@ export const ListInsightsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInsightsRequest",
 }) as any as S.Schema<ListInsightsRequest>;
+export type ResourceArn = string;
 export type AssociatedResourceArns = string[];
 export const AssociatedResourceArns = /*@__PURE__*/ S.Array(S.String);
 export interface ProactiveInsightSummary {
@@ -2060,6 +2087,7 @@ export type ResourcePermission =
   | "MISSING_PERMISSION"
   | (string & {});
 export const ResourcePermission = /*@__PURE__*/ S.String;
+
 export type ResourceTypeFilter =
   | "LOG_GROUPS"
   | "CLOUDFRONT_DISTRIBUTION"
@@ -2090,6 +2118,7 @@ export type ResourceTypeFilter =
   | "STEP_FUNCTIONS_STATE_MACHINE"
   | (string & {});
 export const ResourceTypeFilter = /*@__PURE__*/ S.String;
+
 export type ResourceTypeFilters = ResourceTypeFilter[];
 export const ResourceTypeFilters = /*@__PURE__*/ S.Array(ResourceTypeFilter);
 export interface ListMonitoredResourcesFilters {
@@ -2104,6 +2133,7 @@ export const ListMonitoredResourcesFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMonitoredResourcesFilters",
 }) as any as S.Schema<ListMonitoredResourcesFilters>;
+export type ListMonitoredResourcesMaxResults = number;
 export interface ListMonitoredResourcesRequest {
   Filters?: ListMonitoredResourcesFilters;
   MaxResults?: number;
@@ -2127,6 +2157,7 @@ export const ListMonitoredResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMonitoredResourcesRequest",
 }) as any as S.Schema<ListMonitoredResourcesRequest>;
+export type MonitoredResourceName = string;
 export interface MonitoredResourceIdentifier {
   MonitoredResourceName?: string;
   Type?: string;
@@ -2325,6 +2356,7 @@ export type Locale =
   | "ZH_TW"
   | (string & {});
 export const Locale = /*@__PURE__*/ S.String;
+
 export interface ListRecommendationsRequest {
   InsightId: string;
   NextToken?: string;
@@ -2350,6 +2382,13 @@ export const ListRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecommendationsRequest",
 }) as any as S.Schema<ListRecommendationsRequest>;
+export type RecommendationDescription = string;
+export type RecommendationLink = string;
+export type RecommendationName = string;
+export type RecommendationReason = string;
+export type RecommendationRelatedEventName = string;
+export type RecommendationRelatedEventResourceName = string;
+export type RecommendationRelatedEventResourceType = string;
 export interface RecommendationRelatedEventResource {
   Name?: string;
   Type?: string;
@@ -2380,6 +2419,8 @@ export type RecommendationRelatedEvents = RecommendationRelatedEvent[];
 export const RecommendationRelatedEvents = /*@__PURE__*/ S.Array(
   RecommendationRelatedEvent,
 );
+export type RecommendationRelatedAnomalyResourceName = string;
+export type RecommendationRelatedAnomalyResourceType = string;
 export interface RecommendationRelatedAnomalyResource {
   Name?: string;
   Type?: string;
@@ -2394,6 +2435,8 @@ export type RecommendationRelatedAnomalyResources =
 export const RecommendationRelatedAnomalyResources = /*@__PURE__*/ S.Array(
   RecommendationRelatedAnomalyResource,
 );
+export type RecommendationRelatedCloudWatchMetricsSourceMetricName = string;
+export type RecommendationRelatedCloudWatchMetricsSourceNamespace = string;
 export interface RecommendationRelatedCloudWatchMetricsSourceDetail {
   MetricName?: string;
   Namespace?: string;
@@ -2447,6 +2490,7 @@ export type RecommendationRelatedAnomalies = RecommendationRelatedAnomaly[];
 export const RecommendationRelatedAnomalies = /*@__PURE__*/ S.Array(
   RecommendationRelatedAnomaly,
 );
+export type RecommendationCategory = string;
 export interface Recommendation {
   Description?: string;
   Link?: string;
@@ -2545,6 +2589,7 @@ export const SearchInsightsFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchInsightsFilters",
 }) as any as S.Schema<SearchInsightsFilters>;
+export type SearchInsightsMaxResults = number;
 export interface SearchInsightsRequest {
   StartTimeRange: StartTimeRange;
   Filters?: SearchInsightsFilters;
@@ -2604,6 +2649,7 @@ export const SearchOrganizationInsightsFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchOrganizationInsightsFilters",
 }) as any as S.Schema<SearchOrganizationInsightsFilters>;
+export type SearchOrganizationInsightsMaxResults = number;
 export interface SearchOrganizationInsightsRequest {
   AccountIds: string[];
   StartTimeRange: StartTimeRange;
@@ -2647,6 +2693,7 @@ export const SearchOrganizationInsightsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchOrganizationInsightsResponse",
 }) as any as S.Schema<SearchOrganizationInsightsResponse>;
+export type ClientToken = string;
 export interface StartCostEstimationRequest {
   ResourceCollection: CostEstimationResourceCollectionFilter;
   ClientToken?: string;
@@ -2699,6 +2746,7 @@ export const UpdateEventSourcesConfigResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateEventSourcesConfigResponse>;
 export type UpdateResourceCollectionAction = "ADD" | "REMOVE" | (string & {});
 export const UpdateResourceCollectionAction = /*@__PURE__*/ S.String;
+
 export type UpdateStackNames = string[];
 export const UpdateStackNames = /*@__PURE__*/ S.Array(S.String);
 export interface UpdateCloudFormationCollectionFilter {
@@ -2833,57 +2881,36 @@ export const UpdateServiceIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateServiceIntegrationResponse",
 }) as any as S.Schema<UpdateServiceIntegrationResponse>;
+export type ErrorMessageString = string;
+export type ResourceIdString = string;
+export type ResourceIdType = string;
+export type RetryAfterSeconds = number;
+export type ErrorQuotaCodeString = string;
+export type ErrorServiceCodeString = string;
+export type ValidationExceptionReason =
+  | "UNKNOWN_OPERATION"
+  | "CANNOT_PARSE"
+  | "FIELD_VALIDATION_FAILED"
+  | "OTHER"
+  | "INVALID_PARAMETER_COMBINATION"
+  | "PARAMETER_INCONSISTENT_WITH_SERVICE_STATE"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    Message: S.String,
-    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    Message: S.String,
-    QuotaCode: S.optional(S.String),
-    ServiceCode: S.optional(S.String),
-    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.String,
-    Reason: S.optional(ValidationExceptionReason),
-    Fields: S.optional(ValidationExceptionFields),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorNameString = string;
+export interface ValidationExceptionField {
+  Name: string;
+  Message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFields = ValidationExceptionField[];
+export const ValidationExceptionFields = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type AddNotificationChannelError =
   | AccessDeniedException
   | ConflictException
@@ -2927,6 +2954,7 @@ export const addNotificationChannel: API.OperationMethod<
   retry: Retry,
   operationName: "AddNotificationChannel",
 }));
+
 export type DeleteInsightError =
   | AccessDeniedException
   | ConflictException
@@ -2958,6 +2986,7 @@ export const deleteInsight: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInsight",
 }));
+
 export type DescribeAccountHealthError =
   | AccessDeniedException
   | InternalServerException
@@ -2987,6 +3016,7 @@ export const describeAccountHealth: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccountHealth",
 }));
+
 export type DescribeAccountOverviewError =
   | AccessDeniedException
   | InternalServerException
@@ -3016,6 +3046,7 @@ export const describeAccountOverview: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccountOverview",
 }));
+
 export type DescribeAnomalyError =
   | AccessDeniedException
   | InternalServerException
@@ -3045,6 +3076,7 @@ export const describeAnomaly: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAnomaly",
 }));
+
 export type DescribeEventSourcesConfigError =
   | AccessDeniedException
   | InternalServerException
@@ -3075,6 +3107,7 @@ export const describeEventSourcesConfig: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEventSourcesConfig",
 }));
+
 export type DescribeFeedbackError =
   | AccessDeniedException
   | InternalServerException
@@ -3104,6 +3137,7 @@ export const describeFeedback: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFeedback",
 }));
+
 export type DescribeInsightError =
   | AccessDeniedException
   | InternalServerException
@@ -3133,6 +3167,7 @@ export const describeInsight: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInsight",
 }));
+
 export type DescribeOrganizationHealthError =
   | AccessDeniedException
   | InternalServerException
@@ -3161,6 +3196,7 @@ export const describeOrganizationHealth: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeOrganizationHealth",
 }));
+
 export type DescribeOrganizationOverviewError =
   | AccessDeniedException
   | InternalServerException
@@ -3189,6 +3225,7 @@ export const describeOrganizationOverview: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeOrganizationOverview",
 }));
+
 export type DescribeOrganizationResourceCollectionHealthError =
   | AccessDeniedException
   | InternalServerException
@@ -3234,6 +3271,7 @@ export const describeOrganizationResourceCollectionHealth: API.OperationMethod<
   operationName: "DescribeOrganizationResourceCollectionHealth",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
+
 export type DescribeResourceCollectionHealthError =
   | AccessDeniedException
   | InternalServerException
@@ -3281,6 +3319,7 @@ export const describeResourceCollectionHealth: API.OperationMethod<
   operationName: "DescribeResourceCollectionHealth",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
+
 export type DescribeServiceIntegrationError =
   | AccessDeniedException
   | InternalServerException
@@ -3312,6 +3351,7 @@ export const describeServiceIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeServiceIntegration",
 }));
+
 export type GetCostEstimationError =
   | AccessDeniedException
   | InternalServerException
@@ -3361,6 +3401,7 @@ export const getCostEstimation: API.OperationMethod<
   operationName: "GetCostEstimation",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
+
 export type GetResourceCollectionError =
   | AccessDeniedException
   | InternalServerException
@@ -3409,6 +3450,7 @@ export const getResourceCollection: API.OperationMethod<
   operationName: "GetResourceCollection",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
+
 export type ListAnomaliesForInsightError =
   | AccessDeniedException
   | InternalServerException
@@ -3459,6 +3501,7 @@ export const listAnomaliesForInsight: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAnomalousLogGroupsError =
   | AccessDeniedException
   | InternalServerException
@@ -3508,6 +3551,7 @@ export const listAnomalousLogGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEventsError =
   | AccessDeniedException
   | InternalServerException
@@ -3559,6 +3603,7 @@ export const listEvents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInsightsError =
   | AccessDeniedException
   | InternalServerException
@@ -3608,6 +3653,7 @@ export const listInsights: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMonitoredResourcesError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3655,6 +3701,7 @@ export const listMonitoredResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNotificationChannelsError =
   | AccessDeniedException
   | InternalServerException
@@ -3705,6 +3752,7 @@ export const listNotificationChannels: API.OperationMethod<
     items: "Channels",
   } as const,
 }));
+
 export type ListOrganizationInsightsError =
   | AccessDeniedException
   | InternalServerException
@@ -3752,6 +3800,7 @@ export const listOrganizationInsights: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -3802,6 +3851,7 @@ export const listRecommendations: API.OperationMethod<
     items: "Recommendations",
   } as const,
 }));
+
 export type PutFeedbackError =
   | AccessDeniedException
   | ConflictException
@@ -3833,6 +3883,7 @@ export const putFeedback: API.OperationMethod<
   retry: Retry,
   operationName: "PutFeedback",
 }));
+
 export type RemoveNotificationChannelError =
   | AccessDeniedException
   | ConflictException
@@ -3866,6 +3917,7 @@ export const removeNotificationChannel: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveNotificationChannel",
 }));
+
 export type SearchInsightsError =
   | AccessDeniedException
   | InternalServerException
@@ -3920,6 +3972,7 @@ export const searchInsights: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchOrganizationInsightsError =
   | AccessDeniedException
   | InternalServerException
@@ -3975,6 +4028,7 @@ export const searchOrganizationInsights: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type StartCostEstimationError =
   | AccessDeniedException
   | ConflictException
@@ -4007,6 +4061,7 @@ export const startCostEstimation: API.OperationMethod<
   retry: Retry,
   operationName: "StartCostEstimation",
 }));
+
 export type UpdateEventSourcesConfigError =
   | AccessDeniedException
   | InternalServerException
@@ -4036,6 +4091,7 @@ export const updateEventSourcesConfig: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEventSourcesConfig",
 }));
+
 export type UpdateResourceCollectionError =
   | AccessDeniedException
   | ConflictException
@@ -4069,6 +4125,7 @@ export const updateResourceCollection: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateResourceCollection",
 }));
+
 export type UpdateServiceIntegrationError =
   | AccessDeniedException
   | ConflictException

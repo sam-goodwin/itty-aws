@@ -104,49 +104,52 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class DefaultUndefinedFault extends S.TaggedErrorClass<DefaultUndefinedFault>()(
+  "DefaultUndefinedFault",
+  { message: S.optional(S.String) },
+) {}
+export class DomainAlreadyExistsFault extends S.TaggedErrorClass<DomainAlreadyExistsFault>()(
+  "DomainAlreadyExistsFault",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class DomainDeprecatedFault extends S.TaggedErrorClass<DomainDeprecatedFault>()(
+  "DomainDeprecatedFault",
+  { message: S.optional(S.String) },
+) {}
+export class LimitExceededFault extends S.TaggedErrorClass<LimitExceededFault>()(
+  "LimitExceededFault",
+  { message: S.optional(S.String) },
+) {}
+export class OperationNotPermittedFault extends S.TaggedErrorClass<OperationNotPermittedFault>()(
+  "OperationNotPermittedFault",
+  { message: S.optional(S.String) },
+) {}
+export class TooManyTagsFault extends S.TaggedErrorClass<TooManyTagsFault>()(
+  "TooManyTagsFault",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TypeAlreadyExistsFault extends S.TaggedErrorClass<TypeAlreadyExistsFault>()(
+  "TypeAlreadyExistsFault",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class TypeDeprecatedFault extends S.TaggedErrorClass<TypeDeprecatedFault>()(
+  "TypeDeprecatedFault",
+  { message: S.optional(S.String) },
+) {}
+export class TypeNotDeprecatedFault extends S.TaggedErrorClass<TypeNotDeprecatedFault>()(
+  "TypeNotDeprecatedFault",
+  { message: S.optional(S.String) },
+) {}
+export class UnknownResourceFault extends S.TaggedErrorClass<UnknownResourceFault>()(
+  "UnknownResourceFault",
+  { message: S.optional(S.String) },
+) {}
+export class WorkflowExecutionAlreadyStartedFault extends S.TaggedErrorClass<WorkflowExecutionAlreadyStartedFault>()(
+  "WorkflowExecutionAlreadyStartedFault",
+  { message: S.optional(S.String) },
+) {}
 export type DomainName = string;
-export type WorkflowId = string;
-export type Name = string;
-export type VersionOptional = string;
-export type Tag = string;
-export type Count = number;
-export type Truncated = boolean;
-export type ErrorMessage = string;
-export type Version = string;
-export type Description = string;
-export type DurationInSecondsOptional = string;
-export type TaskPriority = string;
-export type Arn = string;
-export type DurationInDays = string;
-export type WorkflowRunId = string;
-export type Canceled = boolean;
-export type DurationInSeconds = string;
-export type OpenDecisionTasksCount = number;
-export type Data = string;
-export type PageToken = string;
-export type PageSize = number;
-export type ReverseOrder = boolean;
-export type EventId = number;
-export type WorkflowRunIdOptional = string;
-export type FailureReason = string;
-export type TerminateReason = string;
-export type Identity = string;
-export type ActivityId = string;
-export type LimitedData = string;
-export type SignalName = string;
-export type MarkerName = string;
-export type TimerId = string;
-export type FunctionId = string;
-export type FunctionName = string;
-export type FunctionInput = string;
-export type CauseMessage = string;
-export type ResourceTagKey = string;
-export type ResourceTagValue = string;
-export type TaskToken = string;
-export type StartAtPreviousStartedEvent = boolean;
-
-//# Schemas
 export interface ExecutionTimeFilter {
   oldestDate: Date;
   latestDate?: Date;
@@ -159,6 +162,7 @@ export const ExecutionTimeFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecutionTimeFilter",
 }) as any as S.Schema<ExecutionTimeFilter>;
+export type WorkflowId = string;
 export interface WorkflowExecutionFilter {
   workflowId: string;
 }
@@ -167,6 +171,8 @@ export const WorkflowExecutionFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkflowExecutionFilter",
 }) as any as S.Schema<WorkflowExecutionFilter>;
+export type Name = string;
+export type VersionOptional = string;
 export interface WorkflowTypeFilter {
   name: string;
   version?: string;
@@ -176,6 +182,7 @@ export const WorkflowTypeFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkflowTypeFilter",
 }) as any as S.Schema<WorkflowTypeFilter>;
+export type Tag = string;
 export interface TagFilter {
   tag: string;
 }
@@ -191,6 +198,7 @@ export type CloseStatus =
   | "TIMED_OUT"
   | (string & {});
 export const CloseStatus = /*@__PURE__*/ S.String;
+
 export interface CloseStatusFilter {
   status: CloseStatus;
 }
@@ -231,6 +239,8 @@ export const CountClosedWorkflowExecutionsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CountClosedWorkflowExecutionsInput",
 }) as any as S.Schema<CountClosedWorkflowExecutionsInput>;
+export type Count = number;
+export type Truncated = boolean;
 export interface WorkflowExecutionCount {
   count: number;
   truncated?: boolean;
@@ -321,6 +331,7 @@ export const CountPendingDecisionTasksInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CountPendingDecisionTasksInput",
 }) as any as S.Schema<CountPendingDecisionTasksInput>;
+export type Version = string;
 export interface ActivityType {
   name: string;
   version: string;
@@ -480,6 +491,8 @@ export const DescribeActivityTypeInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeActivityTypeInput>;
 export type RegistrationStatus = "REGISTERED" | "DEPRECATED" | (string & {});
 export const RegistrationStatus = /*@__PURE__*/ S.String;
+
+export type Description = string;
 export interface ActivityTypeInfo {
   activityType: ActivityType;
   status: RegistrationStatus;
@@ -500,6 +513,8 @@ export const ActivityTypeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivityTypeInfo",
 }) as any as S.Schema<ActivityTypeInfo>;
+export type DurationInSecondsOptional = string;
+export type TaskPriority = string;
 export interface ActivityTypeConfiguration {
   defaultTaskStartToCloseTimeout?: string;
   defaultTaskHeartbeatTimeout?: string;
@@ -550,6 +565,7 @@ export const DescribeDomainInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDomainInput",
 }) as any as S.Schema<DescribeDomainInput>;
+export type Arn = string;
 export interface DomainInfo {
   name: string;
   status: RegistrationStatus;
@@ -564,6 +580,7 @@ export const DomainInfo = /*@__PURE__*/ S.suspend(() =>
     arn: S.optional(S.String),
   }),
 ).annotate({ identifier: "DomainInfo" }) as any as S.Schema<DomainInfo>;
+export type DurationInDays = string;
 export interface DomainConfiguration {
   workflowExecutionRetentionPeriodInDays: string;
 }
@@ -581,6 +598,7 @@ export const DomainDetail = /*@__PURE__*/ S.suspend(() =>
     ns,
   ),
 ).annotate({ identifier: "DomainDetail" }) as any as S.Schema<DomainDetail>;
+export type WorkflowRunId = string;
 export interface WorkflowExecution {
   workflowId: string;
   runId: string;
@@ -611,8 +629,10 @@ export const DescribeWorkflowExecutionInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeWorkflowExecutionInput>;
 export type ExecutionStatus = "OPEN" | "CLOSED" | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
+
 export type TagList = string[];
 export const TagList = /*@__PURE__*/ S.Array(S.String);
+export type Canceled = boolean;
 export interface WorkflowExecutionInfo {
   execution: WorkflowExecution;
   workflowType: WorkflowType;
@@ -639,12 +659,14 @@ export const WorkflowExecutionInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkflowExecutionInfo",
 }) as any as S.Schema<WorkflowExecutionInfo>;
+export type DurationInSeconds = string;
 export type ChildPolicy =
   | "TERMINATE"
   | "REQUEST_CANCEL"
   | "ABANDON"
   | (string & {});
 export const ChildPolicy = /*@__PURE__*/ S.String;
+
 export interface WorkflowExecutionConfiguration {
   taskStartToCloseTimeout: string;
   executionStartToCloseTimeout: string;
@@ -665,6 +687,7 @@ export const WorkflowExecutionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkflowExecutionConfiguration",
 }) as any as S.Schema<WorkflowExecutionConfiguration>;
+export type OpenDecisionTasksCount = number;
 export interface WorkflowExecutionOpenCounts {
   openActivityTasks: number;
   openDecisionTasks: number;
@@ -683,6 +706,7 @@ export const WorkflowExecutionOpenCounts = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkflowExecutionOpenCounts",
 }) as any as S.Schema<WorkflowExecutionOpenCounts>;
+export type Data = string;
 export interface WorkflowExecutionDetail {
   executionInfo: WorkflowExecutionInfo;
   executionConfiguration: WorkflowExecutionConfiguration;
@@ -774,6 +798,9 @@ export const WorkflowTypeDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkflowTypeDetail",
 }) as any as S.Schema<WorkflowTypeDetail>;
+export type PageToken = string;
+export type PageSize = number;
+export type ReverseOrder = boolean;
 export interface GetWorkflowExecutionHistoryInput {
   domain: string;
   execution: WorkflowExecution;
@@ -859,6 +886,9 @@ export type EventType =
   | "StartLambdaFunctionFailed"
   | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
+
+export type EventId = number;
+export type WorkflowRunIdOptional = string;
 export interface WorkflowExecutionStartedEventAttributes {
   input?: string;
   executionStartToCloseTimeout?: string;
@@ -910,6 +940,7 @@ export type CompleteWorkflowExecutionFailedCause =
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
 export const CompleteWorkflowExecutionFailedCause = /*@__PURE__*/ S.String;
+
 export interface CompleteWorkflowExecutionFailedEventAttributes {
   cause: CompleteWorkflowExecutionFailedCause;
   decisionTaskCompletedEventId: number;
@@ -923,6 +954,7 @@ export const CompleteWorkflowExecutionFailedEventAttributes =
   ).annotate({
     identifier: "CompleteWorkflowExecutionFailedEventAttributes",
   }) as any as S.Schema<CompleteWorkflowExecutionFailedEventAttributes>;
+export type FailureReason = string;
 export interface WorkflowExecutionFailedEventAttributes {
   reason?: string;
   details?: string;
@@ -943,6 +975,7 @@ export type FailWorkflowExecutionFailedCause =
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
 export const FailWorkflowExecutionFailedCause = /*@__PURE__*/ S.String;
+
 export interface FailWorkflowExecutionFailedEventAttributes {
   cause: FailWorkflowExecutionFailedCause;
   decisionTaskCompletedEventId: number;
@@ -958,6 +991,7 @@ export const FailWorkflowExecutionFailedEventAttributes =
   }) as any as S.Schema<FailWorkflowExecutionFailedEventAttributes>;
 export type WorkflowExecutionTimeoutType = "START_TO_CLOSE" | (string & {});
 export const WorkflowExecutionTimeoutType = /*@__PURE__*/ S.String;
+
 export interface WorkflowExecutionTimedOutEventAttributes {
   timeoutType: WorkflowExecutionTimeoutType;
   childPolicy: ChildPolicy;
@@ -989,6 +1023,7 @@ export type CancelWorkflowExecutionFailedCause =
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
 export const CancelWorkflowExecutionFailedCause = /*@__PURE__*/ S.String;
+
 export interface CancelWorkflowExecutionFailedEventAttributes {
   cause: CancelWorkflowExecutionFailedCause;
   decisionTaskCompletedEventId: number;
@@ -1045,6 +1080,7 @@ export type ContinueAsNewWorkflowExecutionFailedCause =
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
 export const ContinueAsNewWorkflowExecutionFailedCause = /*@__PURE__*/ S.String;
+
 export interface ContinueAsNewWorkflowExecutionFailedEventAttributes {
   cause: ContinueAsNewWorkflowExecutionFailedCause;
   decisionTaskCompletedEventId: number;
@@ -1058,12 +1094,14 @@ export const ContinueAsNewWorkflowExecutionFailedEventAttributes =
   ).annotate({
     identifier: "ContinueAsNewWorkflowExecutionFailedEventAttributes",
   }) as any as S.Schema<ContinueAsNewWorkflowExecutionFailedEventAttributes>;
+export type TerminateReason = string;
 export type WorkflowExecutionTerminatedCause =
   | "CHILD_POLICY_APPLIED"
   | "EVENT_LIMIT_EXCEEDED"
   | "OPERATOR_INITIATED"
   | (string & {});
 export const WorkflowExecutionTerminatedCause = /*@__PURE__*/ S.String;
+
 export interface WorkflowExecutionTerminatedEventAttributes {
   reason?: string;
   details?: string;
@@ -1085,6 +1123,7 @@ export type WorkflowExecutionCancelRequestedCause =
   | "CHILD_POLICY_APPLIED"
   | (string & {});
 export const WorkflowExecutionCancelRequestedCause = /*@__PURE__*/ S.String;
+
 export interface WorkflowExecutionCancelRequestedEventAttributes {
   externalWorkflowExecution?: WorkflowExecution;
   externalInitiatedEventId?: number;
@@ -1117,6 +1156,7 @@ export const DecisionTaskScheduledEventAttributes = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DecisionTaskScheduledEventAttributes",
 }) as any as S.Schema<DecisionTaskScheduledEventAttributes>;
+export type Identity = string;
 export interface DecisionTaskStartedEventAttributes {
   identity?: string;
   scheduledEventId: number;
@@ -1150,6 +1190,7 @@ export type DecisionTaskTimeoutType =
   | "SCHEDULE_TO_START"
   | (string & {});
 export const DecisionTaskTimeoutType = /*@__PURE__*/ S.String;
+
 export interface DecisionTaskTimedOutEventAttributes {
   timeoutType: DecisionTaskTimeoutType;
   scheduledEventId: number;
@@ -1164,6 +1205,7 @@ export const DecisionTaskTimedOutEventAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DecisionTaskTimedOutEventAttributes",
 }) as any as S.Schema<DecisionTaskTimedOutEventAttributes>;
+export type ActivityId = string;
 export interface ActivityTaskScheduledEventAttributes {
   activityType: ActivityType;
   activityId: string;
@@ -1242,6 +1284,8 @@ export type ActivityTaskTimeoutType =
   | "HEARTBEAT"
   | (string & {});
 export const ActivityTaskTimeoutType = /*@__PURE__*/ S.String;
+
+export type LimitedData = string;
 export interface ActivityTaskTimedOutEventAttributes {
   timeoutType: ActivityTaskTimeoutType;
   scheduledEventId: number;
@@ -1284,6 +1328,7 @@ export const ActivityTaskCancelRequestedEventAttributes =
   ).annotate({
     identifier: "ActivityTaskCancelRequestedEventAttributes",
   }) as any as S.Schema<ActivityTaskCancelRequestedEventAttributes>;
+export type SignalName = string;
 export interface WorkflowExecutionSignaledEventAttributes {
   signalName: string;
   input?: string;
@@ -1301,6 +1346,7 @@ export const WorkflowExecutionSignaledEventAttributes = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "WorkflowExecutionSignaledEventAttributes",
 }) as any as S.Schema<WorkflowExecutionSignaledEventAttributes>;
+export type MarkerName = string;
 export interface MarkerRecordedEventAttributes {
   markerName: string;
   details?: string;
@@ -1317,6 +1363,7 @@ export const MarkerRecordedEventAttributes = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MarkerRecordedEventAttributes>;
 export type RecordMarkerFailedCause = "OPERATION_NOT_PERMITTED" | (string & {});
 export const RecordMarkerFailedCause = /*@__PURE__*/ S.String;
+
 export interface RecordMarkerFailedEventAttributes {
   markerName: string;
   cause: RecordMarkerFailedCause;
@@ -1331,6 +1378,7 @@ export const RecordMarkerFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecordMarkerFailedEventAttributes",
 }) as any as S.Schema<RecordMarkerFailedEventAttributes>;
+export type TimerId = string;
 export interface TimerStartedEventAttributes {
   timerId: string;
   control?: string;
@@ -1554,6 +1602,7 @@ export type SignalExternalWorkflowExecutionFailedCause =
   | (string & {});
 export const SignalExternalWorkflowExecutionFailedCause =
   /*@__PURE__*/ S.String;
+
 export interface SignalExternalWorkflowExecutionFailedEventAttributes {
   workflowId: string;
   runId?: string;
@@ -1613,6 +1662,7 @@ export type RequestCancelExternalWorkflowExecutionFailedCause =
   | (string & {});
 export const RequestCancelExternalWorkflowExecutionFailedCause =
   /*@__PURE__*/ S.String;
+
 export interface RequestCancelExternalWorkflowExecutionFailedEventAttributes {
   workflowId: string;
   runId?: string;
@@ -1648,6 +1698,7 @@ export type ScheduleActivityTaskFailedCause =
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
 export const ScheduleActivityTaskFailedCause = /*@__PURE__*/ S.String;
+
 export interface ScheduleActivityTaskFailedEventAttributes {
   activityType: ActivityType;
   activityId: string;
@@ -1670,6 +1721,7 @@ export type RequestCancelActivityTaskFailedCause =
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
 export const RequestCancelActivityTaskFailedCause = /*@__PURE__*/ S.String;
+
 export interface RequestCancelActivityTaskFailedEventAttributes {
   activityId: string;
   cause: RequestCancelActivityTaskFailedCause;
@@ -1692,6 +1744,7 @@ export type StartTimerFailedCause =
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
 export const StartTimerFailedCause = /*@__PURE__*/ S.String;
+
 export interface StartTimerFailedEventAttributes {
   timerId: string;
   cause: StartTimerFailedCause;
@@ -1711,6 +1764,7 @@ export type CancelTimerFailedCause =
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
 export const CancelTimerFailedCause = /*@__PURE__*/ S.String;
+
 export interface CancelTimerFailedEventAttributes {
   timerId: string;
   cause: CancelTimerFailedCause;
@@ -1739,6 +1793,7 @@ export type StartChildWorkflowExecutionFailedCause =
   | "OPERATION_NOT_PERMITTED"
   | (string & {});
 export const StartChildWorkflowExecutionFailedCause = /*@__PURE__*/ S.String;
+
 export interface StartChildWorkflowExecutionFailedEventAttributes {
   workflowType: WorkflowType;
   cause: StartChildWorkflowExecutionFailedCause;
@@ -1760,6 +1815,9 @@ export const StartChildWorkflowExecutionFailedEventAttributes =
   ).annotate({
     identifier: "StartChildWorkflowExecutionFailedEventAttributes",
   }) as any as S.Schema<StartChildWorkflowExecutionFailedEventAttributes>;
+export type FunctionId = string;
+export type FunctionName = string;
+export type FunctionInput = string;
 export interface LambdaFunctionScheduledEventAttributes {
   id: string;
   name: string;
@@ -1822,6 +1880,7 @@ export const LambdaFunctionFailedEventAttributes = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LambdaFunctionFailedEventAttributes>;
 export type LambdaFunctionTimeoutType = "START_TO_CLOSE" | (string & {});
 export const LambdaFunctionTimeoutType = /*@__PURE__*/ S.String;
+
 export interface LambdaFunctionTimedOutEventAttributes {
   scheduledEventId: number;
   startedEventId: number;
@@ -1844,6 +1903,7 @@ export type ScheduleLambdaFunctionFailedCause =
   | "LAMBDA_SERVICE_NOT_AVAILABLE_IN_REGION"
   | (string & {});
 export const ScheduleLambdaFunctionFailedCause = /*@__PURE__*/ S.String;
+
 export interface ScheduleLambdaFunctionFailedEventAttributes {
   id: string;
   name: string;
@@ -1865,6 +1925,8 @@ export type StartLambdaFunctionFailedCause =
   | "ASSUME_ROLE_FAILED"
   | (string & {});
 export const StartLambdaFunctionFailedCause = /*@__PURE__*/ S.String;
+
+export type CauseMessage = string;
 export interface StartLambdaFunctionFailedEventAttributes {
   scheduledEventId?: number;
   cause?: StartLambdaFunctionFailedCause;
@@ -2300,6 +2362,8 @@ export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceInput",
 }) as any as S.Schema<ListTagsForResourceInput>;
+export type ResourceTagKey = string;
+export type ResourceTagValue = string;
 export interface ResourceTag {
   key: string;
   value?: string;
@@ -2385,6 +2449,7 @@ export const PollForActivityTaskInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PollForActivityTaskInput",
 }) as any as S.Schema<PollForActivityTaskInput>;
+export type TaskToken = string;
 export interface ActivityTask {
   taskToken: string;
   activityId: string;
@@ -2403,6 +2468,7 @@ export const ActivityTask = /*@__PURE__*/ S.suspend(() =>
     input: S.optional(S.String),
   }).pipe(ns),
 ).annotate({ identifier: "ActivityTask" }) as any as S.Schema<ActivityTask>;
+export type StartAtPreviousStartedEvent = boolean;
 export interface PollForDecisionTaskInput {
   domain: string;
   taskList: TaskList;
@@ -2728,6 +2794,7 @@ export type DecisionType =
   | "ScheduleLambdaFunction"
   | (string & {});
 export const DecisionType = /*@__PURE__*/ S.String;
+
 export interface ScheduleActivityTaskDecisionAttributes {
   activityType: ActivityType;
   activityId: string;
@@ -3266,55 +3333,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-
-//# Errors
-export class OperationNotPermittedFault extends S.TaggedErrorClass<OperationNotPermittedFault>()(
-  "OperationNotPermittedFault",
-  { message: S.optional(S.String) },
-) {}
-export class UnknownResourceFault extends S.TaggedErrorClass<UnknownResourceFault>()(
-  "UnknownResourceFault",
-  { message: S.optional(S.String) },
-) {}
-export class TypeNotDeprecatedFault extends S.TaggedErrorClass<TypeNotDeprecatedFault>()(
-  "TypeNotDeprecatedFault",
-  { message: S.optional(S.String) },
-) {}
-export class TypeDeprecatedFault extends S.TaggedErrorClass<TypeDeprecatedFault>()(
-  "TypeDeprecatedFault",
-  { message: S.optional(S.String) },
-) {}
-export class DomainDeprecatedFault extends S.TaggedErrorClass<DomainDeprecatedFault>()(
-  "DomainDeprecatedFault",
-  { message: S.optional(S.String) },
-) {}
-export class LimitExceededFault extends S.TaggedErrorClass<LimitExceededFault>()(
-  "LimitExceededFault",
-  { message: S.optional(S.String) },
-) {}
-export class TypeAlreadyExistsFault extends S.TaggedErrorClass<TypeAlreadyExistsFault>()(
-  "TypeAlreadyExistsFault",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class DomainAlreadyExistsFault extends S.TaggedErrorClass<DomainAlreadyExistsFault>()(
-  "DomainAlreadyExistsFault",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class TooManyTagsFault extends S.TaggedErrorClass<TooManyTagsFault>()(
-  "TooManyTagsFault",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class DefaultUndefinedFault extends S.TaggedErrorClass<DefaultUndefinedFault>()(
-  "DefaultUndefinedFault",
-  { message: S.optional(S.String) },
-) {}
-export class WorkflowExecutionAlreadyStartedFault extends S.TaggedErrorClass<WorkflowExecutionAlreadyStartedFault>()(
-  "WorkflowExecutionAlreadyStartedFault",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CountClosedWorkflowExecutionsError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -3368,6 +3387,7 @@ export const countClosedWorkflowExecutions: API.OperationMethod<
   retry: Retry,
   operationName: "CountClosedWorkflowExecutions",
 }));
+
 export type CountOpenWorkflowExecutionsError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -3421,6 +3441,7 @@ export const countOpenWorkflowExecutions: API.OperationMethod<
   retry: Retry,
   operationName: "CountOpenWorkflowExecutions",
 }));
+
 export type CountPendingActivityTasksError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -3464,6 +3485,7 @@ export const countPendingActivityTasks: API.OperationMethod<
   retry: Retry,
   operationName: "CountPendingActivityTasks",
 }));
+
 export type CountPendingDecisionTasksError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -3507,6 +3529,7 @@ export const countPendingDecisionTasks: API.OperationMethod<
   retry: Retry,
   operationName: "CountPendingDecisionTasks",
 }));
+
 export type DeleteActivityTypeError =
   | OperationNotPermittedFault
   | TypeNotDeprecatedFault
@@ -3561,6 +3584,7 @@ export const deleteActivityType: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteActivityType",
 }));
+
 export type DeleteWorkflowTypeError =
   | OperationNotPermittedFault
   | TypeNotDeprecatedFault
@@ -3616,6 +3640,7 @@ export const deleteWorkflowType: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWorkflowType",
 }));
+
 export type DeprecateActivityTypeError =
   | OperationNotPermittedFault
   | TypeDeprecatedFault
@@ -3669,6 +3694,7 @@ export const deprecateActivityType: API.OperationMethod<
   retry: Retry,
   operationName: "DeprecateActivityType",
 }));
+
 export type DeprecateDomainError =
   | DomainDeprecatedFault
   | OperationNotPermittedFault
@@ -3720,6 +3746,7 @@ export const deprecateDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DeprecateDomain",
 }));
+
 export type DeprecateWorkflowTypeError =
   | OperationNotPermittedFault
   | TypeDeprecatedFault
@@ -3777,6 +3804,7 @@ export const deprecateWorkflowType: API.OperationMethod<
   retry: Retry,
   operationName: "DeprecateWorkflowType",
 }));
+
 export type DescribeActivityTypeError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -3825,6 +3853,7 @@ export const describeActivityType: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeActivityType",
 }));
+
 export type DescribeDomainError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -3865,6 +3894,7 @@ export const describeDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDomain",
 }));
+
 export type DescribeWorkflowExecutionError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -3908,6 +3938,7 @@ export const describeWorkflowExecution: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeWorkflowExecution",
 }));
+
 export type DescribeWorkflowTypeError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -3956,6 +3987,7 @@ export const describeWorkflowType: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeWorkflowType",
 }));
+
 export type GetWorkflowExecutionHistoryError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -4021,6 +4053,7 @@ export const getWorkflowExecutionHistory: API.OperationMethod<
     pageSize: "maximumPageSize",
   } as const,
 }));
+
 export type ListActivityTypesError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -4085,6 +4118,7 @@ export const listActivityTypes: API.OperationMethod<
     pageSize: "maximumPageSize",
   } as const,
 }));
+
 export type ListClosedWorkflowExecutionsError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -4160,6 +4194,7 @@ export const listClosedWorkflowExecutions: API.OperationMethod<
     pageSize: "maximumPageSize",
   } as const,
 }));
+
 export type ListDomainsError = OperationNotPermittedFault | CommonErrors;
 /**
  * Returns the list of domains registered in the account. The results may be split into
@@ -4224,6 +4259,7 @@ export const listDomains: API.OperationMethod<
     pageSize: "maximumPageSize",
   } as const,
 }));
+
 export type ListOpenWorkflowExecutionsError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -4299,6 +4335,7 @@ export const listOpenWorkflowExecutions: API.OperationMethod<
     pageSize: "maximumPageSize",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | LimitExceededFault
   | OperationNotPermittedFault
@@ -4324,6 +4361,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListWorkflowTypesError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -4385,6 +4423,7 @@ export const listWorkflowTypes: API.OperationMethod<
     pageSize: "maximumPageSize",
   } as const,
 }));
+
 export type PollForActivityTaskError =
   | LimitExceededFault
   | OperationNotPermittedFault
@@ -4440,6 +4479,7 @@ export const pollForActivityTask: API.OperationMethod<
   retry: Retry,
   operationName: "PollForActivityTask",
 }));
+
 export type PollForDecisionTaskError =
   | LimitExceededFault
   | OperationNotPermittedFault
@@ -4528,6 +4568,7 @@ export const pollForDecisionTask: API.OperationMethod<
     pageSize: "maximumPageSize",
   } as const,
 }));
+
 export type RecordActivityTaskHeartbeatError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -4590,6 +4631,7 @@ export const recordActivityTaskHeartbeat: API.OperationMethod<
   retry: Retry,
   operationName: "RecordActivityTaskHeartbeat",
 }));
+
 export type RegisterActivityTypeError =
   | LimitExceededFault
   | OperationNotPermittedFault
@@ -4650,6 +4692,7 @@ export const registerActivityType: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterActivityType",
 }));
+
 export type RegisterDomainError =
   | DomainAlreadyExistsFault
   | LimitExceededFault
@@ -4696,6 +4739,7 @@ export const registerDomain: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterDomain",
 }));
+
 export type RegisterWorkflowTypeError =
   | LimitExceededFault
   | OperationNotPermittedFault
@@ -4758,6 +4802,7 @@ export const registerWorkflowType: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterWorkflowType",
 }));
+
 export type RequestCancelWorkflowExecutionError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -4808,6 +4853,7 @@ export const requestCancelWorkflowExecution: API.OperationMethod<
   retry: Retry,
   operationName: "RequestCancelWorkflowExecution",
 }));
+
 export type RespondActivityTaskCanceledError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -4862,6 +4908,7 @@ export const respondActivityTaskCanceled: API.OperationMethod<
   retry: Retry,
   operationName: "RespondActivityTaskCanceled",
 }));
+
 export type RespondActivityTaskCompletedError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -4914,6 +4961,7 @@ export const respondActivityTaskCompleted: API.OperationMethod<
   retry: Retry,
   operationName: "RespondActivityTaskCompleted",
 }));
+
 export type RespondActivityTaskFailedError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -4961,6 +5009,7 @@ export const respondActivityTaskFailed: API.OperationMethod<
   retry: Retry,
   operationName: "RespondActivityTaskFailed",
 }));
+
 export type RespondDecisionTaskCompletedError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -4998,6 +5047,7 @@ export const respondDecisionTaskCompleted: API.OperationMethod<
   retry: Retry,
   operationName: "RespondDecisionTaskCompleted",
 }));
+
 export type SignalWorkflowExecutionError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -5047,6 +5097,7 @@ export const signalWorkflowExecution: API.OperationMethod<
   retry: Retry,
   operationName: "SignalWorkflowExecution",
 }));
+
 export type StartWorkflowExecutionError =
   | DefaultUndefinedFault
   | LimitExceededFault
@@ -5120,6 +5171,7 @@ export const startWorkflowExecution: API.OperationMethod<
   retry: Retry,
   operationName: "StartWorkflowExecution",
 }));
+
 export type TagResourceError =
   | LimitExceededFault
   | OperationNotPermittedFault
@@ -5149,6 +5201,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TerminateWorkflowExecutionError =
   | OperationNotPermittedFault
   | UnknownResourceFault
@@ -5201,6 +5254,7 @@ export const terminateWorkflowExecution: API.OperationMethod<
   retry: Retry,
   operationName: "TerminateWorkflowExecution",
 }));
+
 export type UndeprecateActivityTypeError =
   | OperationNotPermittedFault
   | TypeAlreadyExistsFault
@@ -5256,6 +5310,7 @@ export const undeprecateActivityType: API.OperationMethod<
   retry: Retry,
   operationName: "UndeprecateActivityType",
 }));
+
 export type UndeprecateDomainError =
   | DomainAlreadyExistsFault
   | OperationNotPermittedFault
@@ -5304,6 +5359,7 @@ export const undeprecateDomain: API.OperationMethod<
   retry: Retry,
   operationName: "UndeprecateDomain",
 }));
+
 export type UndeprecateWorkflowTypeError =
   | OperationNotPermittedFault
   | TypeAlreadyExistsFault
@@ -5359,6 +5415,7 @@ export const undeprecateWorkflowType: API.OperationMethod<
   retry: Retry,
   operationName: "UndeprecateWorkflowType",
 }));
+
 export type UntagResourceError =
   | LimitExceededFault
   | OperationNotPermittedFault

@@ -90,91 +90,50 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class DataBrewRoleNotAssumable extends S.TaggedErrorClass<DataBrewRoleNotAssumable>()(
+  "DataBrewRoleNotAssumable",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "is not a trusted entity for the data access role" },
+  }),
+).pipe(C.withBadRequestError, C.withRetryableError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  {},
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type RecipeName = string;
 export type RecipeVersion = string;
-export type ErrorCode = string;
-export type RecipeErrorMessage = string;
-export type Message = string;
-export type DatasetName = string;
-export type MultiLine = boolean;
-export type SheetName = string;
-export type SheetIndex = number;
-export type HeaderRow = boolean;
-export type Delimiter = string;
-export type Bucket = string;
-export type Key = string;
-export type BucketOwner = string;
-export type CatalogId = string;
-export type DatabaseName = string;
-export type TableName = string;
-export type GlueConnectionName = string;
-export type DatabaseTableName = string;
-export type QueryString = string;
-export type Arn = string;
-export type Expression = string;
-export type ValueReference = string;
-export type ConditionValue = string;
-export type MaxFiles = number;
-export type PathParameterName = string;
-export type DatetimeFormat = string;
-export type TimezoneOffset = string;
-export type LocaleCode = string;
-export type CreateColumn = boolean;
-export type TagKey = string;
-export type TagValue = string;
-export type EncryptionKeyArn = string;
-export type JobName = string;
-export type MaxCapacity = number;
-export type MaxRetries = number;
-export type Statistic = string;
-export type ParameterName = string;
-export type ParameterValue = string;
-export type ColumnName = string;
-export type EntityType = string;
-export type Timeout = number;
-export type JobSize = number;
-export type ProjectName = string;
-export type SampleSize = number;
-export type RecipeDescription = string;
-export type Operation = string;
-export type Condition = string;
-export type TargetColumn = string;
-export type OverwriteOutput = boolean;
-export type MaxOutputFiles = number;
-export type RulesetName = string;
-export type RulesetDescription = string;
-export type RuleName = string;
-export type Disabled = boolean;
-export type ThresholdValue = number;
-export type CronExpression = string;
-export type ScheduleName = string;
-export type CreatedBy = string;
-export type LastModifiedBy = string;
-export type JobRunId = string;
-export type Attempt = number;
-export type JobRunErrorMessage = string;
-export type ExecutionTime = number;
-export type LogGroupName = string;
-export type StartedBy = string;
-export type OpenedBy = string;
-export type PublishedBy = string;
-export type MaxResults100 = number;
-export type NextToken = string;
-export type AccountId = string;
-export type RuleCount = number;
-export type Preview = boolean;
-export type StepIndex = number;
-export type ClientSessionId = string | redacted.Redacted<string>;
-export type StartColumnIndex = number;
-export type ColumnRange = number;
-export type StartRowIndex = number;
-export type RowRange = number;
-export type Result = string;
-export type ActionId = number;
-export type AssumeControl = boolean;
-
-//# Schemas
 export type RecipeVersionList = string[];
 export const RecipeVersionList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchDeleteRecipeVersionRequest {
@@ -201,6 +160,8 @@ export const BatchDeleteRecipeVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDeleteRecipeVersionRequest",
 }) as any as S.Schema<BatchDeleteRecipeVersionRequest>;
+export type ErrorCode = string;
+export type RecipeErrorMessage = string;
 export interface RecipeVersionErrorDetail {
   ErrorCode?: string;
   ErrorMessage?: string;
@@ -226,6 +187,7 @@ export const BatchDeleteRecipeVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDeleteRecipeVersionResponse",
 }) as any as S.Schema<BatchDeleteRecipeVersionResponse>;
+export type DatasetName = string;
 export type InputFormat =
   | "CSV"
   | "JSON"
@@ -234,16 +196,21 @@ export type InputFormat =
   | "ORC"
   | (string & {});
 export const InputFormat = /*@__PURE__*/ S.String;
+
+export type MultiLine = boolean;
 export interface JsonOptions {
   MultiLine?: boolean;
 }
 export const JsonOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MultiLine: S.optional(S.Boolean) }),
 ).annotate({ identifier: "JsonOptions" }) as any as S.Schema<JsonOptions>;
+export type SheetName = string;
 export type SheetNameList = string[];
 export const SheetNameList = /*@__PURE__*/ S.Array(S.String);
+export type SheetIndex = number;
 export type SheetIndexList = number[];
 export const SheetIndexList = /*@__PURE__*/ S.Array(S.Number);
+export type HeaderRow = boolean;
 export interface ExcelOptions {
   SheetNames?: string[];
   SheetIndexes?: number[];
@@ -256,6 +223,7 @@ export const ExcelOptions = /*@__PURE__*/ S.suspend(() =>
     HeaderRow: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "ExcelOptions" }) as any as S.Schema<ExcelOptions>;
+export type Delimiter = string;
 export interface CsvOptions {
   Delimiter?: string;
   HeaderRow?: boolean;
@@ -278,6 +246,9 @@ export const FormatOptions = /*@__PURE__*/ S.suspend(() =>
     Csv: S.optional(CsvOptions),
   }),
 ).annotate({ identifier: "FormatOptions" }) as any as S.Schema<FormatOptions>;
+export type Bucket = string;
+export type Key = string;
+export type BucketOwner = string;
 export interface S3Location {
   Bucket: string;
   Key?: string;
@@ -290,6 +261,9 @@ export const S3Location = /*@__PURE__*/ S.suspend(() =>
     BucketOwner: S.optional(S.String),
   }),
 ).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
+export type CatalogId = string;
+export type DatabaseName = string;
+export type TableName = string;
 export interface DataCatalogInputDefinition {
   CatalogId?: string;
   DatabaseName: string;
@@ -306,6 +280,9 @@ export const DataCatalogInputDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataCatalogInputDefinition",
 }) as any as S.Schema<DataCatalogInputDefinition>;
+export type GlueConnectionName = string;
+export type DatabaseTableName = string;
+export type QueryString = string;
 export interface DatabaseInputDefinition {
   GlueConnectionName: string;
   DatabaseTableName?: string;
@@ -322,6 +299,7 @@ export const DatabaseInputDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatabaseInputDefinition",
 }) as any as S.Schema<DatabaseInputDefinition>;
+export type Arn = string;
 export interface Metadata {
   SourceArn?: string;
 }
@@ -342,6 +320,9 @@ export const Input = /*@__PURE__*/ S.suspend(() =>
     Metadata: S.optional(Metadata),
   }),
 ).annotate({ identifier: "Input" }) as any as S.Schema<Input>;
+export type Expression = string;
+export type ValueReference = string;
+export type ConditionValue = string;
 export type ValuesMap = { [key: string]: string | undefined };
 export const ValuesMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -356,10 +337,13 @@ export const FilterExpression = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FilterExpression",
 }) as any as S.Schema<FilterExpression>;
+export type MaxFiles = number;
 export type OrderedBy = "LAST_MODIFIED_DATE" | (string & {});
 export const OrderedBy = /*@__PURE__*/ S.String;
+
 export type Order = "DESCENDING" | "ASCENDING" | (string & {});
 export const Order = /*@__PURE__*/ S.String;
+
 export interface FilesLimit {
   MaxFiles: number;
   OrderedBy?: OrderedBy;
@@ -372,8 +356,13 @@ export const FilesLimit = /*@__PURE__*/ S.suspend(() =>
     Order: S.optional(Order),
   }),
 ).annotate({ identifier: "FilesLimit" }) as any as S.Schema<FilesLimit>;
+export type PathParameterName = string;
 export type ParameterType = "Datetime" | "Number" | "String" | (string & {});
 export const ParameterType = /*@__PURE__*/ S.String;
+
+export type DatetimeFormat = string;
+export type TimezoneOffset = string;
+export type LocaleCode = string;
 export interface DatetimeOptions {
   Format: string;
   TimezoneOffset?: string;
@@ -388,6 +377,7 @@ export const DatetimeOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatetimeOptions",
 }) as any as S.Schema<DatetimeOptions>;
+export type CreateColumn = boolean;
 export interface DatasetParameter {
   Name: string;
   Type: ParameterType;
@@ -423,6 +413,8 @@ export const PathOptions = /*@__PURE__*/ S.suspend(() =>
     Parameters: S.optional(PathParametersMap),
   }),
 ).annotate({ identifier: "PathOptions" }) as any as S.Schema<PathOptions>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -465,12 +457,21 @@ export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetResponse",
 }) as any as S.Schema<CreateDatasetResponse>;
+export type EncryptionKeyArn = string;
 export type EncryptionMode = "SSE-KMS" | "SSE-S3" | (string & {});
 export const EncryptionMode = /*@__PURE__*/ S.String;
+
+export type JobName = string;
 export type LogSubscription = "ENABLE" | "DISABLE" | (string & {});
 export const LogSubscription = /*@__PURE__*/ S.String;
+
+export type MaxCapacity = number;
+export type MaxRetries = number;
+export type Statistic = string;
 export type StatisticList = string[];
 export const StatisticList = /*@__PURE__*/ S.Array(S.String);
+export type ParameterName = string;
+export type ParameterValue = string;
 export type ParameterMap = { [key: string]: string | undefined };
 export const ParameterMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -499,6 +500,7 @@ export const StatisticsConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StatisticsConfiguration",
 }) as any as S.Schema<StatisticsConfiguration>;
+export type ColumnName = string;
 export interface ColumnSelector {
   Regex?: string;
   Name?: string;
@@ -524,6 +526,7 @@ export type ColumnStatisticsConfigurationList = ColumnStatisticsConfiguration[];
 export const ColumnStatisticsConfigurationList = /*@__PURE__*/ S.Array(
   ColumnStatisticsConfiguration,
 );
+export type EntityType = string;
 export type EntityTypeList = string[];
 export const EntityTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface AllowedStatistics {
@@ -568,6 +571,7 @@ export const ProfileConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProfileConfiguration>;
 export type ValidationMode = "CHECK_ALL" | (string & {});
 export const ValidationMode = /*@__PURE__*/ S.String;
+
 export interface ValidationConfiguration {
   RulesetArn: string;
   ValidationMode?: ValidationMode;
@@ -584,8 +588,11 @@ export type ValidationConfigurationList = ValidationConfiguration[];
 export const ValidationConfigurationList = /*@__PURE__*/ S.Array(
   ValidationConfiguration,
 );
+export type Timeout = number;
 export type SampleMode = "FULL_DATASET" | "CUSTOM_ROWS" | (string & {});
 export const SampleMode = /*@__PURE__*/ S.String;
+
+export type JobSize = number;
 export interface JobSample {
   Mode?: SampleMode;
   Size?: number;
@@ -646,8 +653,11 @@ export const CreateProfileJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProfileJobResponse",
 }) as any as S.Schema<CreateProfileJobResponse>;
+export type ProjectName = string;
+export type SampleSize = number;
 export type SampleType = "FIRST_N" | "LAST_N" | "RANDOM" | (string & {});
 export const SampleType = /*@__PURE__*/ S.String;
+
 export interface Sample {
   Size?: number;
   Type: SampleType;
@@ -692,6 +702,8 @@ export const CreateProjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProjectResponse",
 }) as any as S.Schema<CreateProjectResponse>;
+export type RecipeDescription = string;
+export type Operation = string;
 export interface RecipeAction {
   Operation: string;
   Parameters?: { [key: string]: string | undefined };
@@ -699,6 +711,8 @@ export interface RecipeAction {
 export const RecipeAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Operation: S.String, Parameters: S.optional(ParameterMap) }),
 ).annotate({ identifier: "RecipeAction" }) as any as S.Schema<RecipeAction>;
+export type Condition = string;
+export type TargetColumn = string;
 export interface ConditionExpression {
   Condition: string;
   Value?: string;
@@ -773,6 +787,7 @@ export type CompressionFormat =
   | "ZLIB"
   | (string & {});
 export const CompressionFormat = /*@__PURE__*/ S.String;
+
 export type OutputFormat =
   | "CSV"
   | "JSON"
@@ -784,8 +799,10 @@ export type OutputFormat =
   | "TABLEAUHYPER"
   | (string & {});
 export const OutputFormat = /*@__PURE__*/ S.String;
+
 export type ColumnNameList = string[];
 export const ColumnNameList = /*@__PURE__*/ S.Array(S.String);
+export type OverwriteOutput = boolean;
 export interface CsvOutputOptions {
   Delimiter?: string;
 }
@@ -802,6 +819,7 @@ export const OutputFormatOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OutputFormatOptions",
 }) as any as S.Schema<OutputFormatOptions>;
+export type MaxOutputFiles = number;
 export interface Output {
   CompressionFormat?: CompressionFormat;
   Format?: OutputFormat;
@@ -865,6 +883,7 @@ export type DataCatalogOutputList = DataCatalogOutput[];
 export const DataCatalogOutputList = /*@__PURE__*/ S.Array(DataCatalogOutput);
 export type DatabaseOutputMode = "NEW_TABLE" | (string & {});
 export const DatabaseOutputMode = /*@__PURE__*/ S.String;
+
 export interface DatabaseOutput {
   GlueConnectionName: string;
   DatabaseOptions: DatabaseTableOutputOptions;
@@ -943,6 +962,11 @@ export const CreateRecipeJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRecipeJobResponse",
 }) as any as S.Schema<CreateRecipeJobResponse>;
+export type RulesetName = string;
+export type RulesetDescription = string;
+export type RuleName = string;
+export type Disabled = boolean;
+export type ThresholdValue = number;
 export type ThresholdType =
   | "GREATER_THAN_OR_EQUAL"
   | "LESS_THAN_OR_EQUAL"
@@ -950,8 +974,10 @@ export type ThresholdType =
   | "LESS_THAN"
   | (string & {});
 export const ThresholdType = /*@__PURE__*/ S.String;
+
 export type ThresholdUnit = "COUNT" | "PERCENTAGE" | (string & {});
 export const ThresholdUnit = /*@__PURE__*/ S.String;
+
 export interface Threshold {
   Value: number;
   Type?: ThresholdType;
@@ -1021,6 +1047,8 @@ export const CreateRulesetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRulesetResponse>;
 export type JobNameList = string[];
 export const JobNameList = /*@__PURE__*/ S.Array(S.String);
+export type CronExpression = string;
+export type ScheduleName = string;
 export interface CreateScheduleRequest {
   JobNames?: string[];
   CronExpression: string;
@@ -1229,8 +1257,11 @@ export const DescribeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDatasetRequest",
 }) as any as S.Schema<DescribeDatasetRequest>;
+export type CreatedBy = string;
+export type LastModifiedBy = string;
 export type Source = "S3" | "DATA-CATALOG" | "DATABASE" | (string & {});
 export const Source = /*@__PURE__*/ S.String;
+
 export interface DescribeDatasetResponse {
   CreatedBy?: string;
   CreateDate?: Date;
@@ -1284,6 +1315,7 @@ export const DescribeJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeJobRequest>;
 export type JobType = "PROFILE" | "RECIPE" | (string & {});
 export const JobType = /*@__PURE__*/ S.String;
+
 export interface DescribeJobResponse {
   CreateDate?: Date;
   CreatedBy?: string;
@@ -1342,6 +1374,7 @@ export const DescribeJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeJobResponse",
 }) as any as S.Schema<DescribeJobResponse>;
+export type JobRunId = string;
 export interface DescribeJobRunRequest {
   Name: string;
   RunId: string;
@@ -1363,6 +1396,9 @@ export const DescribeJobRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeJobRunRequest",
 }) as any as S.Schema<DescribeJobRunRequest>;
+export type Attempt = number;
+export type JobRunErrorMessage = string;
+export type ExecutionTime = number;
 export type JobRunState =
   | "STARTING"
   | "RUNNING"
@@ -1373,6 +1409,9 @@ export type JobRunState =
   | "TIMEOUT"
   | (string & {});
 export const JobRunState = /*@__PURE__*/ S.String;
+
+export type LogGroupName = string;
+export type StartedBy = string;
 export interface DescribeJobRunResponse {
   Attempt?: number;
   CompletedOn?: Date;
@@ -1449,6 +1488,8 @@ export type SessionStatus =
   | "UPDATING"
   | (string & {});
 export const SessionStatus = /*@__PURE__*/ S.String;
+
+export type OpenedBy = string;
 export interface DescribeProjectResponse {
   CreateDate?: Date;
   CreatedBy?: string;
@@ -1508,6 +1549,7 @@ export const DescribeRecipeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRecipeRequest",
 }) as any as S.Schema<DescribeRecipeRequest>;
+export type PublishedBy = string;
 export interface DescribeRecipeResponse {
   CreatedBy?: string;
   CreateDate?: Date;
@@ -1636,6 +1678,8 @@ export const DescribeScheduleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeScheduleResponse",
 }) as any as S.Schema<DescribeScheduleResponse>;
+export type MaxResults100 = number;
+export type NextToken = string;
 export interface ListDatasetsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -1657,6 +1701,7 @@ export const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDatasetsRequest",
 }) as any as S.Schema<ListDatasetsRequest>;
+export type AccountId = string;
 export interface Dataset {
   AccountId?: string;
   CreatedBy?: string;
@@ -2061,6 +2106,7 @@ export const ListRulesetsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRulesetsRequest",
 }) as any as S.Schema<ListRulesetsRequest>;
+export type RuleCount = number;
 export interface RulesetItem {
   AccountId?: string;
   CreatedBy?: string;
@@ -2218,10 +2264,18 @@ export const PublishRecipeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PublishRecipeResponse",
 }) as any as S.Schema<PublishRecipeResponse>;
+export type Preview = boolean;
+export type StepIndex = number;
+export type ClientSessionId = string | redacted.Redacted<string>;
+export type StartColumnIndex = number;
+export type ColumnRange = number;
 export type HiddenColumnList = string[];
 export const HiddenColumnList = /*@__PURE__*/ S.Array(S.String);
+export type StartRowIndex = number;
+export type RowRange = number;
 export type AnalyticsMode = "ENABLE" | "DISABLE" | (string & {});
 export const AnalyticsMode = /*@__PURE__*/ S.String;
+
 export interface ViewFrame {
   StartColumnIndex: number;
   ColumnRange?: number;
@@ -2272,6 +2326,8 @@ export const SendProjectSessionActionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendProjectSessionActionRequest",
 }) as any as S.Schema<SendProjectSessionActionRequest>;
+export type Result = string;
+export type ActionId = number;
 export interface SendProjectSessionActionResponse {
   Result?: string;
   Name: string;
@@ -2311,6 +2367,7 @@ export const StartJobRunResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartJobRunResponse",
 }) as any as S.Schema<StartJobRunResponse>;
+export type AssumeControl = boolean;
 export interface StartProjectSessionRequest {
   Name: string;
   AssumeControl?: boolean;
@@ -2687,52 +2744,7 @@ export const UpdateScheduleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateScheduleResponse",
 }) as any as S.Schema<UpdateScheduleResponse>;
-
-//# Errors
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  {},
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class DataBrewRoleNotAssumable extends S.TaggedErrorClass<DataBrewRoleNotAssumable>()(
-  "DataBrewRoleNotAssumable",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "is not a trusted entity for the data access role" },
-  }),
-).pipe(C.withBadRequestError, C.withRetryableError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-
-//# Operations
+export type Message = string;
 export type BatchDeleteRecipeVersionError =
   | ConflictException
   | ResourceNotFoundException
@@ -2788,6 +2800,7 @@ export const batchDeleteRecipeVersion: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteRecipeVersion",
 }));
+
 export type CreateDatasetError =
   | AccessDeniedException
   | ConflictException
@@ -2817,6 +2830,7 @@ export const createDataset: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataset",
 }));
+
 export type CreateProfileJobError =
   | AccessDeniedException
   | ConflictException
@@ -2850,6 +2864,7 @@ export const createProfileJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProfileJob",
 }));
+
 export type CreateProjectError =
   | ConflictException
   | InternalServerException
@@ -2881,6 +2896,7 @@ export const createProject: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProject",
 }));
+
 export type CreateRecipeError =
   | ConflictException
   | ServiceQuotaExceededException
@@ -2908,6 +2924,7 @@ export const createRecipe: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRecipe",
 }));
+
 export type CreateRecipeJobError =
   | AccessDeniedException
   | ConflictException
@@ -2941,6 +2958,7 @@ export const createRecipeJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRecipeJob",
 }));
+
 export type CreateRulesetError =
   | ConflictException
   | ServiceQuotaExceededException
@@ -2969,6 +2987,7 @@ export const createRuleset: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRuleset",
 }));
+
 export type CreateScheduleError =
   | ConflictException
   | ServiceQuotaExceededException
@@ -2997,6 +3016,7 @@ export const createSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSchedule",
 }));
+
 export type DeleteDatasetError =
   | ConflictException
   | ResourceNotFoundException
@@ -3024,6 +3044,7 @@ export const deleteDataset: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataset",
 }));
+
 export type DeleteJobError =
   | ConflictException
   | ResourceNotFoundException
@@ -3051,6 +3072,7 @@ export const deleteJob: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteJob",
 }));
+
 export type DeleteProjectError =
   | ConflictException
   | ResourceNotFoundException
@@ -3078,6 +3100,7 @@ export const deleteProject: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProject",
 }));
+
 export type DeleteRecipeVersionError =
   | ConflictException
   | ResourceNotFoundException
@@ -3105,6 +3128,7 @@ export const deleteRecipeVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRecipeVersion",
 }));
+
 export type DeleteRulesetError =
   | ConflictException
   | ResourceNotFoundException
@@ -3132,6 +3156,7 @@ export const deleteRuleset: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRuleset",
 }));
+
 export type DeleteScheduleError =
   | ResourceNotFoundException
   | ValidationException
@@ -3157,6 +3182,7 @@ export const deleteSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSchedule",
 }));
+
 export type DescribeDatasetError =
   | ResourceNotFoundException
   | ValidationException
@@ -3182,6 +3208,7 @@ export const describeDataset: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDataset",
 }));
+
 export type DescribeJobError =
   | ResourceNotFoundException
   | ValidationException
@@ -3207,6 +3234,7 @@ export const describeJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeJob",
 }));
+
 export type DescribeJobRunError =
   | ResourceNotFoundException
   | ValidationException
@@ -3232,6 +3260,7 @@ export const describeJobRun: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeJobRun",
 }));
+
 export type DescribeProjectError =
   | ResourceNotFoundException
   | ValidationException
@@ -3257,6 +3286,7 @@ export const describeProject: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeProject",
 }));
+
 export type DescribeRecipeError =
   | ResourceNotFoundException
   | ValidationException
@@ -3283,6 +3313,7 @@ export const describeRecipe: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRecipe",
 }));
+
 export type DescribeRulesetError =
   | ResourceNotFoundException
   | ValidationException
@@ -3308,6 +3339,7 @@ export const describeRuleset: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRuleset",
 }));
+
 export type DescribeScheduleError =
   | ResourceNotFoundException
   | ValidationException
@@ -3333,6 +3365,7 @@ export const describeSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSchedule",
 }));
+
 export type ListDatasetsError =
   | ValidationException
   | TooManyRequestsException
@@ -3374,6 +3407,7 @@ export const listDatasets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListJobRunsError =
   | ResourceNotFoundException
   | ValidationException
@@ -3420,6 +3454,7 @@ export const listJobRuns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListJobsError =
   | ValidationException
   | TooManyRequestsException
@@ -3461,6 +3496,7 @@ export const listJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProjectsError =
   | ValidationException
   | TooManyRequestsException
@@ -3502,6 +3538,7 @@ export const listProjects: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRecipesError =
   | ValidationException
   | TooManyRequestsException
@@ -3543,6 +3580,7 @@ export const listRecipes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRecipeVersionsError =
   | ValidationException
   | TooManyRequestsException
@@ -3590,6 +3628,7 @@ export const listRecipeVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRulesetsError =
   | ResourceNotFoundException
   | ValidationException
@@ -3637,6 +3676,7 @@ export const listRulesets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSchedulesError =
   | ValidationException
   | TooManyRequestsException
@@ -3678,6 +3718,7 @@ export const listSchedules: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3705,6 +3746,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PublishRecipeError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
@@ -3732,6 +3774,7 @@ export const publishRecipe: API.OperationMethod<
   retry: Retry,
   operationName: "PublishRecipe",
 }));
+
 export type SendProjectSessionActionError =
   | ConflictException
   | ResourceNotFoundException
@@ -3754,6 +3797,7 @@ export const sendProjectSessionAction: API.OperationMethod<
   retry: Retry,
   operationName: "SendProjectSessionAction",
 }));
+
 export type StartJobRunError =
   | ConflictException
   | ResourceNotFoundException
@@ -3783,6 +3827,7 @@ export const startJobRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartJobRun",
 }));
+
 export type StartProjectSessionError =
   | ConflictException
   | ResourceNotFoundException
@@ -3811,6 +3856,7 @@ export const startProjectSession: API.OperationMethod<
   retry: Retry,
   operationName: "StartProjectSession",
 }));
+
 export type StopJobRunError =
   | ResourceNotFoundException
   | ValidationException
@@ -3836,6 +3882,7 @@ export const stopJobRun: API.OperationMethod<
   retry: Retry,
   operationName: "StopJobRun",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3864,6 +3911,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3891,6 +3939,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDatasetError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -3918,6 +3967,7 @@ export const updateDataset: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDataset",
 }));
+
 export type UpdateProfileJobError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -3947,6 +3997,7 @@ export const updateProfileJob: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProfileJob",
 }));
+
 export type UpdateProjectError =
   | ResourceNotFoundException
   | ValidationException
@@ -3974,6 +4025,7 @@ export const updateProject: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProject",
 }));
+
 export type UpdateRecipeError =
   | ResourceNotFoundException
   | ValidationException
@@ -4000,6 +4052,7 @@ export const updateRecipe: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRecipe",
 }));
+
 export type UpdateRecipeJobError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -4029,6 +4082,7 @@ export const updateRecipeJob: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRecipeJob",
 }));
+
 export type UpdateRulesetError =
   | ResourceNotFoundException
   | ValidationException
@@ -4054,6 +4108,7 @@ export const updateRuleset: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRuleset",
 }));
+
 export type UpdateScheduleError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException

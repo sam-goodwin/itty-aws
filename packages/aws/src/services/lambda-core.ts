@@ -85,31 +85,58 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NetworkConnectorLimitExceededException extends S.TaggedErrorClass<NetworkConnectorLimitExceededException>()(
+  "NetworkConnectorLimitExceededException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
+  "ResourceConflictException",
+  { Type: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
+  "ServiceException",
+  { Type: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  {
+    retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
+    Type: S.optional(S.String),
+    message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ThrottleReason).annotate({
+        identifier: "ThrottleReason",
+      }),
+    ),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type NetworkConnectorName = string;
 export type NetworkConnectorSubnetId = string;
-export type NetworkConnectorSecurityGroupId = string;
-export type NetworkConnectorRoleArn = string;
-export type ClientTokenString = string;
-export type NetworkConnectorTagKey = string;
-export type NetworkConnectorTagValue = string;
-export type NetworkConnectorArn = string;
-export type NetworkConnectorId = string;
-export type NetworkConnectorIdentifier = string;
-export type NetworkConnectorVersion = number;
-export type NetworkConnectorLastUpdateStatusReason = string;
-export type CoreTimestamp = Date;
-export type MaxHundredListItems = number;
-
-//# Schemas
 export type NetworkConnectorSubnetIds = string[];
 export const NetworkConnectorSubnetIds = /*@__PURE__*/ S.Array(S.String);
+export type NetworkConnectorSecurityGroupId = string;
 export type NetworkConnectorSecurityGroupIds = string[];
 export const NetworkConnectorSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export type NetworkProtocol = "IPv4" | "DualStack" | (string & {});
 export const NetworkProtocol = /*@__PURE__*/ S.String;
+
 export type ComputeResourceType = "MicroVm" | (string & {});
 export const ComputeResourceType = /*@__PURE__*/ S.String;
+
 export type AssociatedComputeResourceTypesList = ComputeResourceType[];
 export const AssociatedComputeResourceTypesList =
   /*@__PURE__*/ S.Array(ComputeResourceType);
@@ -138,6 +165,10 @@ export type NetworkConnectorConfiguration = {
 export const NetworkConnectorConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ VpcEgressConfiguration: NetworkConnectorVpcEgressConfiguration }),
 ]);
+export type NetworkConnectorRoleArn = string;
+export type ClientTokenString = string;
+export type NetworkConnectorTagKey = string;
+export type NetworkConnectorTagValue = string;
 export type NetworkConnectorTags = { [key: string]: string | undefined };
 export const NetworkConnectorTags = /*@__PURE__*/ S.Record(
   S.String,
@@ -170,6 +201,8 @@ export const CreateNetworkConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNetworkConnectorRequest",
 }) as any as S.Schema<CreateNetworkConnectorRequest>;
+export type NetworkConnectorArn = string;
+export type NetworkConnectorId = string;
 export type NetworkConnectorState =
   | "PENDING"
   | "ACTIVE"
@@ -179,6 +212,7 @@ export type NetworkConnectorState =
   | "DELETE_FAILED"
   | (string & {});
 export const NetworkConnectorState = /*@__PURE__*/ S.String;
+
 export interface CreateNetworkConnectorResponse {
   Arn: string;
   Name: string;
@@ -199,15 +233,47 @@ export const CreateNetworkConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNetworkConnectorResponse",
 }) as any as S.Schema<CreateNetworkConnectorResponse>;
-export type ThrottleReason =
-  | "ConcurrentInvocationLimitExceeded"
-  | "FunctionInvocationRateLimitExceeded"
-  | "ReservedFunctionConcurrentInvocationLimitExceeded"
-  | "ReservedFunctionInvocationRateLimitExceeded"
-  | "CallerRateLimitExceeded"
-  | "ConcurrentSnapshotCreateLimitExceeded"
-  | (string & {});
-export const ThrottleReason = /*@__PURE__*/ S.String;
+export type NetworkConnectorIdentifier = string;
+export interface DeleteNetworkConnectorRequest {
+  Identifier: string;
+}
+export const DeleteNetworkConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/2026-04-04/network-connectors/{Identifier}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteNetworkConnectorRequest",
+}) as any as S.Schema<DeleteNetworkConnectorRequest>;
+export interface DeleteNetworkConnectorResponse {
+  Arn: string;
+  Name: string;
+  Id: string;
+  Configuration?: NetworkConnectorConfiguration;
+  OperatorRole?: string;
+  State?: NetworkConnectorState;
+}
+export const DeleteNetworkConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    Name: S.String,
+    Id: S.String,
+    Configuration: S.optional(NetworkConnectorConfiguration),
+    OperatorRole: S.optional(S.String),
+    State: S.optional(NetworkConnectorState),
+  }),
+).annotate({
+  identifier: "DeleteNetworkConnectorResponse",
+}) as any as S.Schema<DeleteNetworkConnectorResponse>;
 export interface GetNetworkConnectorRequest {
   Identifier: string;
 }
@@ -228,6 +294,7 @@ export const GetNetworkConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetNetworkConnectorRequest",
 }) as any as S.Schema<GetNetworkConnectorRequest>;
+export type NetworkConnectorVersion = number;
 export type NetworkConnectorStateReasonCode =
   | "DisallowedByVpcEncryptionControl"
   | "Ec2RequestLimitExceeded"
@@ -238,12 +305,15 @@ export type NetworkConnectorStateReasonCode =
   | "SubnetOutOfIPAddresses"
   | (string & {});
 export const NetworkConnectorStateReasonCode = /*@__PURE__*/ S.String;
+
 export type NetworkConnectorLastUpdateStatus =
   | "Successful"
   | "Failed"
   | "InProgress"
   | (string & {});
 export const NetworkConnectorLastUpdateStatus = /*@__PURE__*/ S.String;
+
+export type NetworkConnectorLastUpdateStatusReason = string;
 export type NetworkConnectorLastUpdateStatusReasonCode =
   | "DisallowedByVpcEncryptionControl"
   | "Ec2RequestLimitExceeded"
@@ -255,6 +325,8 @@ export type NetworkConnectorLastUpdateStatusReasonCode =
   | (string & {});
 export const NetworkConnectorLastUpdateStatusReasonCode =
   /*@__PURE__*/ S.String;
+
+export type CoreTimestamp = Date;
 export interface GetNetworkConnectorResponse {
   Arn: string;
   Name: string;
@@ -293,6 +365,71 @@ export const GetNetworkConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetNetworkConnectorResponse",
 }) as any as S.Schema<GetNetworkConnectorResponse>;
+export type MaxHundredListItems = number;
+export interface ListNetworkConnectorsRequest {
+  State?: NetworkConnectorState;
+  Marker?: string;
+  MaxItems?: number;
+}
+export const ListNetworkConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    State: S.optional(NetworkConnectorState).pipe(T.HttpQuery("State")),
+    Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
+    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/2026-04-04/network-connectors" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListNetworkConnectorsRequest",
+}) as any as S.Schema<ListNetworkConnectorsRequest>;
+export type NetworkConnectorType = "VPC_EGRESS" | (string & {});
+export const NetworkConnectorType = /*@__PURE__*/ S.String;
+
+export interface NetworkConnectorSummary {
+  Arn: string;
+  Name: string;
+  Id: string;
+  Type: NetworkConnectorType;
+  State?: NetworkConnectorState;
+  LastModified?: Date;
+}
+export const NetworkConnectorSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    Name: S.String,
+    Id: S.String,
+    Type: NetworkConnectorType,
+    State: S.optional(NetworkConnectorState),
+    LastModified: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "NetworkConnectorSummary",
+}) as any as S.Schema<NetworkConnectorSummary>;
+export type NetworkConnectorsList = NetworkConnectorSummary[];
+export const NetworkConnectorsList = /*@__PURE__*/ S.Array(
+  NetworkConnectorSummary,
+);
+export interface ListNetworkConnectorsResponse {
+  NetworkConnectors: NetworkConnectorSummary[];
+  NextMarker?: string;
+}
+export const ListNetworkConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NetworkConnectors: NetworkConnectorsList,
+    NextMarker: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListNetworkConnectorsResponse",
+}) as any as S.Schema<ListNetworkConnectorsResponse>;
 export interface UpdateNetworkConnectorRequest {
   Identifier: string;
   Configuration?: NetworkConnectorConfiguration;
@@ -349,148 +486,16 @@ export const UpdateNetworkConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateNetworkConnectorResponse",
 }) as any as S.Schema<UpdateNetworkConnectorResponse>;
-export interface DeleteNetworkConnectorRequest {
-  Identifier: string;
-}
-export const DeleteNetworkConnectorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Identifier: S.String.pipe(T.HttpLabel("Identifier")) }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/2026-04-04/network-connectors/{Identifier}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteNetworkConnectorRequest",
-}) as any as S.Schema<DeleteNetworkConnectorRequest>;
-export interface DeleteNetworkConnectorResponse {
-  Arn: string;
-  Name: string;
-  Id: string;
-  Configuration?: NetworkConnectorConfiguration;
-  OperatorRole?: string;
-  State?: NetworkConnectorState;
-}
-export const DeleteNetworkConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Name: S.String,
-    Id: S.String,
-    Configuration: S.optional(NetworkConnectorConfiguration),
-    OperatorRole: S.optional(S.String),
-    State: S.optional(NetworkConnectorState),
-  }),
-).annotate({
-  identifier: "DeleteNetworkConnectorResponse",
-}) as any as S.Schema<DeleteNetworkConnectorResponse>;
-export interface ListNetworkConnectorsRequest {
-  State?: NetworkConnectorState;
-  Marker?: string;
-  MaxItems?: number;
-}
-export const ListNetworkConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    State: S.optional(NetworkConnectorState).pipe(T.HttpQuery("State")),
-    Marker: S.optional(S.String).pipe(T.HttpQuery("Marker")),
-    MaxItems: S.optional(S.Number).pipe(T.HttpQuery("MaxItems")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/2026-04-04/network-connectors" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListNetworkConnectorsRequest",
-}) as any as S.Schema<ListNetworkConnectorsRequest>;
-export type NetworkConnectorType = "VPC_EGRESS" | (string & {});
-export const NetworkConnectorType = /*@__PURE__*/ S.String;
-export interface NetworkConnectorSummary {
-  Arn: string;
-  Name: string;
-  Id: string;
-  Type: NetworkConnectorType;
-  State?: NetworkConnectorState;
-  LastModified?: Date;
-}
-export const NetworkConnectorSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Name: S.String,
-    Id: S.String,
-    Type: NetworkConnectorType,
-    State: S.optional(NetworkConnectorState),
-    LastModified: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({
-  identifier: "NetworkConnectorSummary",
-}) as any as S.Schema<NetworkConnectorSummary>;
-export type NetworkConnectorsList = NetworkConnectorSummary[];
-export const NetworkConnectorsList = /*@__PURE__*/ S.Array(
-  NetworkConnectorSummary,
-);
-export interface ListNetworkConnectorsResponse {
-  NetworkConnectors: NetworkConnectorSummary[];
-  NextMarker?: string;
-}
-export const ListNetworkConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    NetworkConnectors: NetworkConnectorsList,
-    NextMarker: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListNetworkConnectorsResponse",
-}) as any as S.Schema<ListNetworkConnectorsResponse>;
+export type ThrottleReason =
+  | "ConcurrentInvocationLimitExceeded"
+  | "FunctionInvocationRateLimitExceeded"
+  | "ReservedFunctionConcurrentInvocationLimitExceeded"
+  | "ReservedFunctionInvocationRateLimitExceeded"
+  | "CallerRateLimitExceeded"
+  | "ConcurrentSnapshotCreateLimitExceeded"
+  | (string & {});
+export const ThrottleReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NetworkConnectorLimitExceededException extends S.TaggedErrorClass<NetworkConnectorLimitExceededException>()(
-  "NetworkConnectorLimitExceededException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
-  "ResourceConflictException",
-  { Type: S.optional(S.String), message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
-  "ServiceException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  {
-    retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-    Type: S.optional(S.String),
-    message: S.optional(S.String),
-    Reason: S.optional(ThrottleReason),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Type: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateNetworkConnectorError =
   | InvalidParameterValueException
   | NetworkConnectorLimitExceededException
@@ -524,66 +529,7 @@ export const createNetworkConnector: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNetworkConnector",
 }));
-export type GetNetworkConnectorError =
-  | InvalidParameterValueException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Retrieves the current configuration, state, and metadata of a network connector. The `Identifier` parameter accepts the connector ID, name, or full ARN. Use this operation to poll connector state after creation or update, or to inspect the current VPC configuration and any failure reasons.
- *
- * The response includes the full connector configuration, current state, and — if the connector has been updated — the `LastUpdateStatus` and `LastUpdateStatusReasonCode` fields that indicate whether the most recent update succeeded or failed.
- */
-export const getNetworkConnector: API.OperationMethod<
-  GetNetworkConnectorRequest,
-  GetNetworkConnectorResponse,
-  GetNetworkConnectorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkConnectorRequest,
-  output: GetNetworkConnectorResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetNetworkConnector",
-}));
-export type UpdateNetworkConnectorError =
-  | InvalidParameterValueException
-  | ResourceConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | TooManyRequestsException
-  | CommonErrors;
-/**
- * Updates the VPC configuration or operator role of an existing network connector. You can modify the subnet IDs, security group IDs, network protocol, or operator role. The connector must be in `ACTIVE` state to accept updates.
- *
- * This operation is asynchronous. The connector remains in `ACTIVE` state during the update — existing workloads that reference this connector are not disrupted. Use `GetNetworkConnector` to monitor the `LastUpdateStatus` field, which transitions through `InProgress` to `Successful` or `Failed`. If the update fails, the `LastUpdateStatusReasonCode` field provides a specific error code for troubleshooting. This operation is idempotent when you provide a `ClientToken`.
- */
-export const updateNetworkConnector: API.OperationMethod<
-  UpdateNetworkConnectorRequest,
-  UpdateNetworkConnectorResponse,
-  UpdateNetworkConnectorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkConnectorRequest,
-  output: UpdateNetworkConnectorResponse,
-  errors: [
-    InvalidParameterValueException,
-    ResourceConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    TooManyRequestsException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateNetworkConnector",
-}));
+
 export type DeleteNetworkConnectorError =
   | InvalidParameterValueException
   | ResourceConflictException
@@ -615,6 +561,37 @@ export const deleteNetworkConnector: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNetworkConnector",
 }));
+
+export type GetNetworkConnectorError =
+  | InvalidParameterValueException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Retrieves the current configuration, state, and metadata of a network connector. The `Identifier` parameter accepts the connector ID, name, or full ARN. Use this operation to poll connector state after creation or update, or to inspect the current VPC configuration and any failure reasons.
+ *
+ * The response includes the full connector configuration, current state, and — if the connector has been updated — the `LastUpdateStatus` and `LastUpdateStatusReasonCode` fields that indicate whether the most recent update succeeded or failed.
+ */
+export const getNetworkConnector: API.OperationMethod<
+  GetNetworkConnectorRequest,
+  GetNetworkConnectorResponse,
+  GetNetworkConnectorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetNetworkConnectorRequest,
+  output: GetNetworkConnectorResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetNetworkConnector",
+}));
+
 export type ListNetworkConnectorsError =
   | InvalidParameterValueException
   | ServiceException
@@ -662,4 +639,36 @@ export const listNetworkConnectors: API.OperationMethod<
     items: "NetworkConnectors",
     pageSize: "MaxItems",
   } as const,
+}));
+
+export type UpdateNetworkConnectorError =
+  | InvalidParameterValueException
+  | ResourceConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | TooManyRequestsException
+  | CommonErrors;
+/**
+ * Updates the VPC configuration or operator role of an existing network connector. You can modify the subnet IDs, security group IDs, network protocol, or operator role. The connector must be in `ACTIVE` state to accept updates.
+ *
+ * This operation is asynchronous. The connector remains in `ACTIVE` state during the update — existing workloads that reference this connector are not disrupted. Use `GetNetworkConnector` to monitor the `LastUpdateStatus` field, which transitions through `InProgress` to `Successful` or `Failed`. If the update fails, the `LastUpdateStatusReasonCode` field provides a specific error code for troubleshooting. This operation is idempotent when you provide a `ClientToken`.
+ */
+export const updateNetworkConnector: API.OperationMethod<
+  UpdateNetworkConnectorRequest,
+  UpdateNetworkConnectorResponse,
+  UpdateNetworkConnectorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateNetworkConnectorRequest,
+  output: UpdateNetworkConnectorResponse,
+  errors: [
+    InvalidParameterValueException,
+    ResourceConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    TooManyRequestsException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateNetworkConnector",
 }));

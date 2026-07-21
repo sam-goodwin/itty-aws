@@ -85,16 +85,62 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DependentServiceFailureException extends S.TaggedErrorClass<DependentServiceFailureException>()(
+  "DependentServiceFailureException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
+  "InternalFailureException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { code: S.String, message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class TimeoutException extends S.TaggedErrorClass<TimeoutException>()(
+  "TimeoutException",
+  { message: S.optional(S.String) },
+) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
 export type Name = string;
 export type Description = string;
 export type Repository = string;
+export type Platform = "WEB" | "WEB_DYNAMIC" | "WEB_COMPUTE" | (string & {});
+export const Platform = /*@__PURE__*/ S.String;
+
 export type ComputeRoleArn = string;
 export type ServiceRoleArn = string;
 export type OauthToken = string | redacted.Redacted<string>;
 export type AccessToken = string | redacted.Redacted<string>;
 export type EnvKey = string;
 export type EnvValue = string;
+export type EnvironmentVariables = { [key: string]: string | undefined };
+export const EnvironmentVariables = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export type EnableBranchAutoBuild = boolean;
 export type EnableBranchAutoDeletion = boolean;
 export type EnableBasicAuth = boolean;
@@ -103,92 +149,6 @@ export type Source = string;
 export type Target = string;
 export type Status = string;
 export type Condition = string;
-export type TagKey = string;
-export type TagValue = string;
-export type BuildSpec = string | redacted.Redacted<string>;
-export type CustomHeaders = string;
-export type EnableAutoBranchCreation = boolean;
-export type AutoBranchCreationPattern = string;
-export type Framework = string;
-export type EnableAutoBuild = boolean;
-export type EnablePerformanceMode = boolean;
-export type EnablePullRequestPreview = boolean;
-export type PullRequestEnvironmentName = string;
-export type AppId = string;
-export type AppArn = string;
-export type CreateTime = Date;
-export type UpdateTime = Date;
-export type DefaultDomain = string;
-export type LastDeployTime = Date;
-export type ThumbnailUrl = string;
-export type BranchName = string;
-export type WebhookCreateTime = Date;
-export type WebAclArn = string;
-export type StatusReason = string;
-export type ErrorMessage = string;
-export type EnvironmentName = string;
-export type StackName = string;
-export type DeploymentArtifacts = string;
-export type BackendEnvironmentArn = string;
-export type EnableNotification = boolean;
-export type EnableSkewProtection = boolean;
-export type TTL = string;
-export type DisplayName = string;
-export type StackArn = string;
-export type BranchArn = string;
-export type CustomDomain = string;
-export type ActiveJobId = string;
-export type TotalNumberOfJobs = string;
-export type AssociatedResource = string;
-export type FileName = string;
-export type MD5Hash = string;
-export type JobId = string;
-export type UploadUrl = string;
-export type DomainName = string;
-export type EnableAutoSubDomain = boolean;
-export type DomainPrefix = string;
-export type AutoSubDomainCreationPattern = string;
-export type AutoSubDomainIAMRole = string;
-export type CertificateArn = string;
-export type DomainAssociationArn = string;
-export type CertificateVerificationDNSRecord = string;
-export type Verified = boolean;
-export type DNSRecord = string;
-export type WebhookArn = string;
-export type WebhookId = string;
-export type WebhookUrl = string;
-export type JobArn = string;
-export type CommitId = string;
-export type CommitMessage = string;
-export type CommitTime = Date;
-export type StartTime = Date;
-export type EndTime = Date;
-export type SourceUrl = string;
-export type LogUrl = string;
-export type ArtifactId = string;
-export type ArtifactUrl = string;
-export type StepName = string;
-export type ArtifactsUrl = string;
-export type TestArtifactsUrl = string;
-export type TestConfigUrl = string;
-export type ThumbnailName = string;
-export type Context = string;
-export type NextToken = string;
-export type MaxResultsForListApps = number;
-export type MaxResults = number;
-export type ArtifactFileName = string;
-export type ResourceArn = string;
-export type Code = string;
-export type JobReason = string;
-
-//# Schemas
-export type Platform = "WEB" | "WEB_DYNAMIC" | "WEB_COMPUTE" | (string & {});
-export const Platform = /*@__PURE__*/ S.String;
-export type EnvironmentVariables = { [key: string]: string | undefined };
-export const EnvironmentVariables = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
 export interface CustomRule {
   source: string;
   target: string;
@@ -205,11 +165,17 @@ export const CustomRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CustomRule" }) as any as S.Schema<CustomRule>;
 export type CustomRules = CustomRule[];
 export const CustomRules = /*@__PURE__*/ S.Array(CustomRule);
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type BuildSpec = string | redacted.Redacted<string>;
+export type CustomHeaders = string;
+export type EnableAutoBranchCreation = boolean;
+export type AutoBranchCreationPattern = string;
 export type AutoBranchCreationPatterns = string[];
 export const AutoBranchCreationPatterns = /*@__PURE__*/ S.Array(S.String);
 export type Stage =
@@ -220,6 +186,12 @@ export type Stage =
   | "PULL_REQUEST"
   | (string & {});
 export const Stage = /*@__PURE__*/ S.String;
+
+export type Framework = string;
+export type EnableAutoBuild = boolean;
+export type EnablePerformanceMode = boolean;
+export type EnablePullRequestPreview = boolean;
+export type PullRequestEnvironmentName = string;
 export interface AutoBranchCreationConfig {
   stage?: Stage;
   framework?: string;
@@ -254,6 +226,7 @@ export type BuildComputeType =
   | "XLARGE_72GB"
   | (string & {});
 export const BuildComputeType = /*@__PURE__*/ S.String;
+
 export interface JobConfig {
   buildComputeType: BuildComputeType;
 }
@@ -265,6 +238,7 @@ export type CacheConfigType =
   | "AMPLIFY_MANAGED_NO_COOKIES"
   | (string & {});
 export const CacheConfigType = /*@__PURE__*/ S.String;
+
 export interface CacheConfig {
   type: CacheConfigType;
 }
@@ -333,6 +307,14 @@ export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppRequest",
 }) as any as S.Schema<CreateAppRequest>;
+export type AppId = string;
+export type AppArn = string;
+export type CreateTime = Date;
+export type UpdateTime = Date;
+export type DefaultDomain = string;
+export type LastDeployTime = Date;
+export type ThumbnailUrl = string;
+export type BranchName = string;
 export interface ProductionBranch {
   lastDeployTime?: Date;
   status?: string;
@@ -351,6 +333,9 @@ export const ProductionBranch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProductionBranch>;
 export type RepositoryCloneMethod = "SSH" | "TOKEN" | "SIGV4" | (string & {});
 export const RepositoryCloneMethod = /*@__PURE__*/ S.String;
+
+export type WebhookCreateTime = Date;
+export type WebAclArn = string;
 export type WafStatus =
   | "ASSOCIATING"
   | "ASSOCIATION_FAILED"
@@ -359,6 +344,8 @@ export type WafStatus =
   | "DISASSOCIATION_FAILED"
   | (string & {});
 export const WafStatus = /*@__PURE__*/ S.String;
+
+export type StatusReason = string;
 export interface WafConfiguration {
   webAclArn?: string;
   wafStatus?: WafStatus;
@@ -447,6 +434,9 @@ export const CreateAppResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppResult",
 }) as any as S.Schema<CreateAppResult>;
+export type EnvironmentName = string;
+export type StackName = string;
+export type DeploymentArtifacts = string;
 export interface CreateBackendEnvironmentRequest {
   appId: string;
   environmentName: string;
@@ -473,6 +463,7 @@ export const CreateBackendEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBackendEnvironmentRequest",
 }) as any as S.Schema<CreateBackendEnvironmentRequest>;
+export type BackendEnvironmentArn = string;
 export interface BackendEnvironment {
   backendEnvironmentArn: string;
   environmentName: string;
@@ -501,6 +492,11 @@ export const CreateBackendEnvironmentResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBackendEnvironmentResult",
 }) as any as S.Schema<CreateBackendEnvironmentResult>;
+export type EnableNotification = boolean;
+export type EnableSkewProtection = boolean;
+export type TTL = string;
+export type DisplayName = string;
+export type StackArn = string;
 export interface Backend {
   stackArn?: string;
 }
@@ -567,8 +563,13 @@ export const CreateBranchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBranchRequest",
 }) as any as S.Schema<CreateBranchRequest>;
+export type BranchArn = string;
+export type CustomDomain = string;
 export type CustomDomains = string[];
 export const CustomDomains = /*@__PURE__*/ S.Array(S.String);
+export type ActiveJobId = string;
+export type TotalNumberOfJobs = string;
+export type AssociatedResource = string;
 export type AssociatedResources = string[];
 export const AssociatedResources = /*@__PURE__*/ S.Array(S.String);
 export interface Branch {
@@ -645,6 +646,8 @@ export const CreateBranchResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBranchResult",
 }) as any as S.Schema<CreateBranchResult>;
+export type FileName = string;
+export type MD5Hash = string;
 export type FileMap = { [key: string]: string | undefined };
 export const FileMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -677,6 +680,8 @@ export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDeploymentRequest",
 }) as any as S.Schema<CreateDeploymentRequest>;
+export type JobId = string;
+export type UploadUrl = string;
 export type FileUploadUrls = { [key: string]: string | undefined };
 export const FileUploadUrls = /*@__PURE__*/ S.Record(
   S.String,
@@ -696,6 +701,9 @@ export const CreateDeploymentResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDeploymentResult",
 }) as any as S.Schema<CreateDeploymentResult>;
+export type DomainName = string;
+export type EnableAutoSubDomain = boolean;
+export type DomainPrefix = string;
 export interface SubDomainSetting {
   prefix: string;
   branchName: string;
@@ -707,10 +715,14 @@ export const SubDomainSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubDomainSetting>;
 export type SubDomainSettings = SubDomainSetting[];
 export const SubDomainSettings = /*@__PURE__*/ S.Array(SubDomainSetting);
+export type AutoSubDomainCreationPattern = string;
 export type AutoSubDomainCreationPatterns = string[];
 export const AutoSubDomainCreationPatterns = /*@__PURE__*/ S.Array(S.String);
+export type AutoSubDomainIAMRole = string;
 export type CertificateType = "AMPLIFY_MANAGED" | "CUSTOM" | (string & {});
 export const CertificateType = /*@__PURE__*/ S.String;
+
+export type CertificateArn = string;
 export interface CertificateSettings {
   type: CertificateType;
   customCertificateArn?: string;
@@ -755,6 +767,7 @@ export const CreateDomainAssociationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDomainAssociationRequest",
 }) as any as S.Schema<CreateDomainAssociationRequest>;
+export type DomainAssociationArn = string;
 export type DomainStatus =
   | "PENDING_VERIFICATION"
   | "IN_PROGRESS"
@@ -768,6 +781,7 @@ export type DomainStatus =
   | "UPDATING"
   | (string & {});
 export const DomainStatus = /*@__PURE__*/ S.String;
+
 export type UpdateStatus =
   | "REQUESTING_CERTIFICATE"
   | "PENDING_VERIFICATION"
@@ -778,6 +792,10 @@ export type UpdateStatus =
   | "UPDATE_FAILED"
   | (string & {});
 export const UpdateStatus = /*@__PURE__*/ S.String;
+
+export type CertificateVerificationDNSRecord = string;
+export type Verified = boolean;
+export type DNSRecord = string;
 export interface SubDomain {
   subDomainSetting: SubDomainSetting;
   verified: boolean;
@@ -866,6 +884,9 @@ export const CreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWebhookRequest",
 }) as any as S.Schema<CreateWebhookRequest>;
+export type WebhookArn = string;
+export type WebhookId = string;
+export type WebhookUrl = string;
 export interface Webhook {
   webhookArn: string;
   webhookId: string;
@@ -1042,6 +1063,11 @@ export const DeleteJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteJobRequest",
 }) as any as S.Schema<DeleteJobRequest>;
+export type JobArn = string;
+export type CommitId = string;
+export type CommitMessage = string;
+export type CommitTime = Date;
+export type StartTime = Date;
 export type JobStatus =
   | "CREATED"
   | "PENDING"
@@ -1053,6 +1079,8 @@ export type JobStatus =
   | "CANCELLED"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
+export type EndTime = Date;
 export type JobType =
   | "RELEASE"
   | "RETRY"
@@ -1060,8 +1088,11 @@ export type JobType =
   | "WEB_HOOK"
   | (string & {});
 export const JobType = /*@__PURE__*/ S.String;
+
+export type SourceUrl = string;
 export type SourceUrlType = "ZIP" | "BUCKET_PREFIX" | (string & {});
 export const SourceUrlType = /*@__PURE__*/ S.String;
+
 export interface JobSummary {
   jobArn: string;
   jobId: string;
@@ -1150,6 +1181,7 @@ export const GenerateAccessLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GenerateAccessLogsRequest",
 }) as any as S.Schema<GenerateAccessLogsRequest>;
+export type LogUrl = string;
 export interface GenerateAccessLogsResult {
   logUrl?: string;
 }
@@ -1180,6 +1212,7 @@ export interface GetAppResult {
 export const GetAppResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ app: App }).pipe(ns),
 ).annotate({ identifier: "GetAppResult" }) as any as S.Schema<GetAppResult>;
+export type ArtifactId = string;
 export interface GetArtifactUrlRequest {
   artifactId: string;
 }
@@ -1198,6 +1231,7 @@ export const GetArtifactUrlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetArtifactUrlRequest",
 }) as any as S.Schema<GetArtifactUrlRequest>;
+export type ArtifactUrl = string;
 export interface GetArtifactUrlResult {
   artifactId: string;
   artifactUrl: string;
@@ -1325,11 +1359,17 @@ export const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetJobRequest" }) as any as S.Schema<GetJobRequest>;
+export type StepName = string;
+export type ArtifactsUrl = string;
+export type TestArtifactsUrl = string;
+export type TestConfigUrl = string;
+export type ThumbnailName = string;
 export type Screenshots = { [key: string]: string | undefined };
 export const Screenshots = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type Context = string;
 export interface Step {
   stepName: string;
   startTime: Date;
@@ -1399,6 +1439,8 @@ export const GetWebhookResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWebhookResult",
 }) as any as S.Schema<GetWebhookResult>;
+export type NextToken = string;
+export type MaxResultsForListApps = number;
 export interface ListAppsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1430,6 +1472,7 @@ export interface ListAppsResult {
 export const ListAppsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apps: Apps, nextToken: S.optional(S.String) }).pipe(ns),
 ).annotate({ identifier: "ListAppsResult" }) as any as S.Schema<ListAppsResult>;
+export type MaxResults = number;
 export interface ListArtifactsRequest {
   appId: string;
   branchName: string;
@@ -1461,6 +1504,7 @@ export const ListArtifactsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListArtifactsRequest",
 }) as any as S.Schema<ListArtifactsRequest>;
+export type ArtifactFileName = string;
 export interface Artifact {
   artifactFileName: string;
   artifactId: string;
@@ -1633,6 +1677,7 @@ export const ListJobsResult = /*@__PURE__*/ S.suspend(() =>
     nextToken: S.optional(S.String),
   }).pipe(ns),
 ).annotate({ identifier: "ListJobsResult" }) as any as S.Schema<ListJobsResult>;
+export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -1733,6 +1778,7 @@ export const StartDeploymentResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartDeploymentResult",
 }) as any as S.Schema<StartDeploymentResult>;
+export type JobReason = string;
 export interface StartJobRequest {
   appId: string;
   branchName: string;
@@ -2073,49 +2119,8 @@ export const UpdateWebhookResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateWebhookResult",
 }) as any as S.Schema<UpdateWebhookResult>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class DependentServiceFailureException extends S.TaggedErrorClass<DependentServiceFailureException>()(
-  "DependentServiceFailureException",
-  { message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class TimeoutException extends S.TaggedErrorClass<TimeoutException>()(
-  "TimeoutException",
-  { message: S.optional(S.String) },
-) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { code: S.String, message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
+export type Code = string;
 export type CreateAppError =
   | BadRequestException
   | DependentServiceFailureException
@@ -2147,6 +2152,7 @@ export const createApp: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApp",
 }));
+
 export type CreateBackendEnvironmentError =
   | BadRequestException
   | InternalFailureException
@@ -2184,6 +2190,7 @@ export const createBackendEnvironment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBackendEnvironment",
 }));
+
 export type CreateBranchError =
   | BadRequestException
   | DependentServiceFailureException
@@ -2217,6 +2224,7 @@ export const createBranch: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBranch",
 }));
+
 export type CreateDeploymentError =
   | BadRequestException
   | InternalFailureException
@@ -2252,6 +2260,7 @@ export const createDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDeployment",
 }));
+
 export type CreateDomainAssociationError =
   | BadRequestException
   | DependentServiceFailureException
@@ -2286,6 +2295,7 @@ export const createDomainAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDomainAssociation",
 }));
+
 export type CreateWebhookError =
   | BadRequestException
   | DependentServiceFailureException
@@ -2319,6 +2329,7 @@ export const createWebhook: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWebhook",
 }));
+
 export type DeleteAppError =
   | BadRequestException
   | DependentServiceFailureException
@@ -2350,6 +2361,7 @@ export const deleteApp: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApp",
 }));
+
 export type DeleteBackendEnvironmentError =
   | BadRequestException
   | DependentServiceFailureException
@@ -2387,6 +2399,7 @@ export const deleteBackendEnvironment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBackendEnvironment",
 }));
+
 export type DeleteBranchError =
   | BadRequestException
   | DependentServiceFailureException
@@ -2418,6 +2431,7 @@ export const deleteBranch: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBranch",
 }));
+
 export type DeleteDomainAssociationError =
   | BadRequestException
   | DependentServiceFailureException
@@ -2449,6 +2463,7 @@ export const deleteDomainAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDomainAssociation",
 }));
+
 export type DeleteJobError =
   | BadRequestException
   | InternalFailureException
@@ -2480,6 +2495,7 @@ export const deleteJob: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteJob",
 }));
+
 export type DeleteWebhookError =
   | BadRequestException
   | InternalFailureException
@@ -2511,6 +2527,7 @@ export const deleteWebhook: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWebhook",
 }));
+
 export type GenerateAccessLogsError =
   | BadRequestException
   | InternalFailureException
@@ -2540,6 +2557,7 @@ export const generateAccessLogs: API.OperationMethod<
   retry: Retry,
   operationName: "GenerateAccessLogs",
 }));
+
 export type GetAppError =
   | BadRequestException
   | InternalFailureException
@@ -2569,6 +2587,7 @@ export const getApp: API.OperationMethod<
   retry: Retry,
   operationName: "GetApp",
 }));
+
 export type GetArtifactUrlError =
   | BadRequestException
   | InternalFailureException
@@ -2600,6 +2619,7 @@ export const getArtifactUrl: API.OperationMethod<
   retry: Retry,
   operationName: "GetArtifactUrl",
 }));
+
 export type GetBackendEnvironmentError =
   | BadRequestException
   | InternalFailureException
@@ -2635,6 +2655,7 @@ export const getBackendEnvironment: API.OperationMethod<
   retry: Retry,
   operationName: "GetBackendEnvironment",
 }));
+
 export type GetBranchError =
   | BadRequestException
   | InternalFailureException
@@ -2664,6 +2685,7 @@ export const getBranch: API.OperationMethod<
   retry: Retry,
   operationName: "GetBranch",
 }));
+
 export type GetDomainAssociationError =
   | BadRequestException
   | InternalFailureException
@@ -2693,6 +2715,7 @@ export const getDomainAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "GetDomainAssociation",
 }));
+
 export type GetJobError =
   | BadRequestException
   | InternalFailureException
@@ -2724,6 +2747,7 @@ export const getJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetJob",
 }));
+
 export type GetWebhookError =
   | BadRequestException
   | InternalFailureException
@@ -2755,6 +2779,7 @@ export const getWebhook: API.OperationMethod<
   retry: Retry,
   operationName: "GetWebhook",
 }));
+
 export type ListAppsError =
   | BadRequestException
   | InternalFailureException
@@ -2803,6 +2828,7 @@ export const listApps: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListArtifactsError =
   | BadRequestException
   | InternalFailureException
@@ -2839,6 +2865,7 @@ export const listArtifacts: API.OperationMethod<
   retry: Retry,
   operationName: "ListArtifacts",
 }));
+
 export type ListBackendEnvironmentsError =
   | BadRequestException
   | InternalFailureException
@@ -2872,6 +2899,7 @@ export const listBackendEnvironments: API.OperationMethod<
   retry: Retry,
   operationName: "ListBackendEnvironments",
 }));
+
 export type ListBranchesError =
   | BadRequestException
   | InternalFailureException
@@ -2920,6 +2948,7 @@ export const listBranches: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDomainAssociationsError =
   | BadRequestException
   | InternalFailureException
@@ -2968,6 +2997,7 @@ export const listDomainAssociations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListJobsError =
   | BadRequestException
   | InternalFailureException
@@ -3018,6 +3048,7 @@ export const listJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | InternalFailureException
@@ -3045,6 +3076,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListWebhooksError =
   | BadRequestException
   | InternalFailureException
@@ -3074,6 +3106,7 @@ export const listWebhooks: API.OperationMethod<
   retry: Retry,
   operationName: "ListWebhooks",
 }));
+
 export type StartDeploymentError =
   | BadRequestException
   | InternalFailureException
@@ -3111,6 +3144,7 @@ export const startDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "StartDeployment",
 }));
+
 export type StartJobError =
   | BadRequestException
   | InternalFailureException
@@ -3142,6 +3176,7 @@ export const startJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartJob",
 }));
+
 export type StopJobError =
   | BadRequestException
   | InternalFailureException
@@ -3173,6 +3208,7 @@ export const stopJob: API.OperationMethod<
   retry: Retry,
   operationName: "StopJob",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | InternalFailureException
@@ -3200,6 +3236,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | InternalFailureException
@@ -3227,6 +3264,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAppError =
   | BadRequestException
   | InternalFailureException
@@ -3256,6 +3294,7 @@ export const updateApp: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApp",
 }));
+
 export type UpdateBranchError =
   | BadRequestException
   | DependentServiceFailureException
@@ -3287,6 +3326,7 @@ export const updateBranch: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBranch",
 }));
+
 export type UpdateDomainAssociationError =
   | BadRequestException
   | DependentServiceFailureException
@@ -3318,6 +3358,7 @@ export const updateDomainAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDomainAssociation",
 }));
+
 export type UpdateWebhookError =
   | BadRequestException
   | DependentServiceFailureException

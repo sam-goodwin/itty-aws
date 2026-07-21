@@ -87,62 +87,85 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    requestId: S.optional(S.String),
+    message: S.optional(S.String),
+    reason: S.optional(
+      S.suspend(() => AccessDeniedExceptionReason).annotate({
+        identifier: "AccessDeniedExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    requestId: S.optional(S.String),
+    message: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(
+      S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+    ),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { requestId: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    requestId: S.optional(S.String),
+    message: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(
+      S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+    ),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    requestId: S.optional(S.String),
+    message: S.optional(S.String),
+    quotaCode: S.optional(S.String),
+    serviceCode: S.optional(S.String),
+    resourceType: S.optional(S.String),
+    resourceId: S.optional(S.String),
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { requestId: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    requestId: S.optional(S.String),
+    message: S.optional(S.String),
+    reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    fields: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type AgreementId = string;
 export type AgreementCancellationRequestId = string;
-export type AgreementCancellationRequestDescription =
-  | string
-  | redacted.Redacted<string>;
-export type RequestId = string;
-export type ExceptionMessage = string;
-export type ResourceId = string;
-export type BoundedString = string;
-export type PaymentRequestId = string;
-export type PurchaseOrderReference = string;
-export type PaymentRequestName = string;
-export type PaymentRequestDescription = string | redacted.Redacted<string>;
-export type PositiveAmountUpto8Decimals = string;
-export type CurrencyCode = string;
-export type AgreementRequestId = string;
-export type ChargeRevision = number;
-export type InvoiceId = string;
-export type BillingAdjustmentDescription = string | redacted.Redacted<string>;
-export type ClientToken = string;
-export type BillingAdjustmentRequestId = string;
-export type AgreementCancellationRequestCancellationReason =
-  | string
-  | redacted.Redacted<string>;
-export type AgreementCancellationRequestStatusMessage = string;
-export type TermId = string;
-export type ZeroValueInteger = number;
-export type ISO8601Duration = string;
-export type AgreementProposalId = string;
-export type AWSAccountId = string;
-export type AgreementType = string;
-export type AgreementResourceType = string;
-export type OfferId = string;
-export type OfferSetId = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type EntitlementType = string;
-export type RegistrationToken = string;
-export type AwsArn = string;
-export type PaymentRequestStatusMessage = string;
-export type ChargeId = string;
-export type UnversionedTermType = string;
-export type PositiveIntegerWithDefaultValueOne = number;
-export type BillingAdjustmentStatusMessage = string;
-export type PartyType = string;
-export type Catalog = string;
-export type AgreementCancellationRequestRejectionReason =
-  | string
-  | redacted.Redacted<string>;
-export type PaymentRequestRejectionReason = string;
-export type FilterName = string;
-export type FilterValue = string;
-export type SortBy = string;
-
-//# Schemas
 export interface AcceptAgreementCancellationRequestInput {
   agreementId: string;
   agreementCancellationRequestId: string;
@@ -166,6 +189,7 @@ export type AgreementCancellationRequestStatus =
   | "VALIDATION_FAILED"
   | (string & {});
 export const AgreementCancellationRequestStatus = /*@__PURE__*/ S.String;
+
 export type AgreementCancellationRequestReasonCode =
   | "INCORRECT_TERMS_ACCEPTED"
   | "REPLACING_AGREEMENT"
@@ -177,6 +201,10 @@ export type AgreementCancellationRequestReasonCode =
   | "OTHER"
   | (string & {});
 export const AgreementCancellationRequestReasonCode = /*@__PURE__*/ S.String;
+
+export type AgreementCancellationRequestDescription =
+  | string
+  | redacted.Redacted<string>;
 export interface AcceptAgreementCancellationRequestOutput {
   agreementId?: string;
   agreementCancellationRequestId?: string;
@@ -200,123 +228,8 @@ export const AcceptAgreementCancellationRequestOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AcceptAgreementCancellationRequestOutput",
 }) as any as S.Schema<AcceptAgreementCancellationRequestOutput>;
-export type AccessDeniedExceptionReason =
-  | "INVALID_ACCOUNT_STATE"
-  | "DENIED_BY_PRIVATE_MARKETPLACE_POLICY"
-  | "FAILED_KYC_COMPLIANCE"
-  | "MISSING_MFA"
-  | "INVALID_ACCESS"
-  | (string & {});
-export const AccessDeniedExceptionReason = /*@__PURE__*/ S.String;
-export type ResourceType =
-  | "Agreement"
-  | "AgreementRequest"
-  | "AgreementProposal"
-  | "Charge"
-  | "PaymentRequest"
-  | "Invoice"
-  | "AgreementCancellationRequest"
-  | "BillingAdjustmentRequest"
-  | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
-export type ValidationExceptionReason =
-  | "MISSING_BILLING_ADJUSTMENTS"
-  | "BILLING_ADJUSTMENTS_LIMIT_EXCEEDED"
-  | "MISSING_INVOICE_ID"
-  | "INVALID_ADJUSTMENT_AMOUNT"
-  | "MISSING_ADJUSTMENT_AMOUNT"
-  | "INVALID_REASON_CODE"
-  | "MISSING_REASON_CODE"
-  | "MISSING_DESCRIPTION"
-  | "INVALID_INVOICE_ADJUSTMENT_PERIOD"
-  | "INVALID_CURRENCY_CODE"
-  | "MISSING_CURRENCY_CODE"
-  | "EXCEEDED_MAXIMUM_ADJUSTMENT_AMOUNT"
-  | "MISSING_BILLING_ADJUSTMENT_REQUEST_ENTRY"
-  | "MULTIPLE_AGREEMENT_IDS"
-  | "INVALID_AGREEMENT_CANCELLATION_REQUEST_ID"
-  | "MISSING_AGREEMENT_CANCELLATION_REQUEST_ID"
-  | "MISSING_REASON"
-  | "INVALID_REASON"
-  | "INVALID_STATUS"
-  | "INVALID_AGREEMENT_ID"
-  | "MISSING_AGREEMENT_ID"
-  | "INVALID_CATALOG"
-  | "INVALID_FILTERS"
-  | "INVALID_FILTER_NAME"
-  | "MISSING_FILTER_NAME"
-  | "INVALID_FILTER_VALUES"
-  | "MISSING_FILTER_VALUES"
-  | "INVALID_SORT_BY"
-  | "INVALID_SORT_ORDER"
-  | "INVALID_NEXT_TOKEN"
-  | "INVALID_MAX_RESULTS"
-  | "INVALID_TERM_ID"
-  | "MISSING_TERM_ID"
-  | "MISSING_NAME"
-  | "INVALID_NAME"
-  | "INVALID_DESCRIPTION"
-  | "MISSING_CHARGE_AMOUNT"
-  | "INVALID_CHARGE_AMOUNT"
-  | "MISSING_PAYMENT_REQUEST_ID"
-  | "INVALID_PAYMENT_REQUEST_ID"
-  | "MISSING_PARTY_TYPE"
-  | "INVALID_PARTY_TYPE"
-  | "UNSUPPORTED_FILTERS"
-  | "INVALID_CLIENT_TOKEN"
-  | "INVALID_INTENT"
-  | "MISSING_INTENT"
-  | "INVALID_SOURCE_AGREEMENT_IDENTIFIER"
-  | "MISSING_SOURCE_AGREEMENT_IDENTIFIER"
-  | "INVALID_AGREEMENT_PROPOSAL_IDENTIFIER"
-  | "MISSING_AGREEMENT_PROPOSAL_IDENTIFIER"
-  | "INVALID_REQUESTED_TERMS"
-  | "MISSING_REQUESTED_TERMS"
-  | "INVALID_REQUESTED_TERM_ID"
-  | "MISSING_REQUESTED_TERM_ID"
-  | "INVALID_REQUESTED_TERM_CONFIGURATION"
-  | "MISSING_REQUESTED_TERM_CONFIGURATION"
-  | "INVALID_AGREEMENT_REQUEST_ID"
-  | "MISSING_AGREEMENT_REQUEST_ID"
-  | "INVALID_PURCHASE_ORDERS"
-  | "MISSING_PURCHASE_ORDERS"
-  | "INVALID_CHARGE_ID"
-  | "MISSING_CHARGE_ID"
-  | "INVALID_CHARGE_REVISION"
-  | "MISSING_CHARGE_REVISION"
-  | "INVALID_AGREEMENT_TYPE"
-  | "INVALID_PURCHASE_ORDER_REFERENCE"
-  | "INACTIVE_AGREEMENT"
-  | "SUPERSEDED_AGREEMENT_PROPOSAL"
-  | "EXPIRED_AGREEMENT_PROPOSAL"
-  | "MISSING_MANDATORY_TERMS"
-  | "INCOMPATIBLE_TERMS"
-  | "MISSING_USAGE_AGREEMENT"
-  | "INVALID_INCREMENTAL_CHARGE"
-  | "MISSING_ACCOUNT_ADDRESS"
-  | "UNSUPPORTED_ACTION"
-  | "INVALID_REJECTION_REASON"
-  | "INVALID_PAYMENT_REQUEST_STATUS"
-  | "OTHER"
-  | "DUPLICATE_CHARGES"
-  | "UNSUPPORTED_ACCOUNT_PLAN"
-  | "DUPLICATE_AGREEMENT_IN_ORGANIZATION"
-  | "MISSING_PURCHASE_ORDER_REFERENCE"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type PaymentRequestId = string;
+export type PurchaseOrderReference = string;
 export interface AcceptAgreementPaymentRequestInput {
   paymentRequestId: string;
   agreementId: string;
@@ -342,6 +255,11 @@ export type PaymentRequestStatus =
   | "CANCELLED"
   | (string & {});
 export const PaymentRequestStatus = /*@__PURE__*/ S.String;
+
+export type PaymentRequestName = string;
+export type PaymentRequestDescription = string | redacted.Redacted<string>;
+export type PositiveAmountUpto8Decimals = string;
+export type CurrencyCode = string;
 export interface AcceptAgreementPaymentRequestOutput {
   paymentRequestId?: string;
   agreementId?: string;
@@ -368,6 +286,9 @@ export const AcceptAgreementPaymentRequestOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptAgreementPaymentRequestOutput",
 }) as any as S.Schema<AcceptAgreementPaymentRequestOutput>;
+export type AgreementRequestId = string;
+export type ResourceId = string;
+export type ChargeRevision = number;
 export interface PurchaseOrder {
   chargeId: string;
   chargeRevision?: number;
@@ -406,6 +327,7 @@ export const AcceptAgreementRequestOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptAgreementRequestOutput",
 }) as any as S.Schema<AcceptAgreementRequestOutput>;
+export type InvoiceId = string;
 export type BillingAdjustmentReasonCode =
   | "INCORRECT_TERMS_ACCEPTED"
   | "INCORRECT_METERING"
@@ -416,6 +338,9 @@ export type BillingAdjustmentReasonCode =
   | "OTHER"
   | (string & {});
 export const BillingAdjustmentReasonCode = /*@__PURE__*/ S.String;
+
+export type BillingAdjustmentDescription = string | redacted.Redacted<string>;
+export type ClientToken = string;
 export interface BatchCreateBillingAdjustmentRequestEntry {
   agreementId: string;
   originalInvoiceId: string;
@@ -457,6 +382,7 @@ export const BatchCreateBillingAdjustmentRequestInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchCreateBillingAdjustmentRequestInput",
 }) as any as S.Schema<BatchCreateBillingAdjustmentRequestInput>;
+export type BillingAdjustmentRequestId = string;
 export interface BatchCreateBillingAdjustmentItem {
   billingAdjustmentRequestId: string;
   clientToken: string;
@@ -478,6 +404,7 @@ export type BillingAdjustmentErrorCode =
   | "INTERNAL_FAILURE"
   | (string & {});
 export const BillingAdjustmentErrorCode = /*@__PURE__*/ S.String;
+
 export interface BatchCreateBillingAdjustmentError {
   code: BillingAdjustmentErrorCode;
   message: string;
@@ -526,6 +453,9 @@ export const CancelAgreementOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelAgreementOutput",
 }) as any as S.Schema<CancelAgreementOutput>;
+export type AgreementCancellationRequestCancellationReason =
+  | string
+  | redacted.Redacted<string>;
 export interface CancelAgreementCancellationRequestInput {
   agreementId: string;
   agreementCancellationRequestId: string;
@@ -543,6 +473,7 @@ export const CancelAgreementCancellationRequestInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CancelAgreementCancellationRequestInput",
 }) as any as S.Schema<CancelAgreementCancellationRequestInput>;
+export type AgreementCancellationRequestStatusMessage = string;
 export interface CancelAgreementCancellationRequestOutput {
   agreementCancellationRequestId?: string;
   agreementId?: string;
@@ -607,6 +538,10 @@ export const CancelAgreementPaymentRequestOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelAgreementPaymentRequestOutput>;
 export type Intent = "NEW" | "AMEND" | "REPLACE" | (string & {});
 export const Intent = /*@__PURE__*/ S.String;
+
+export type TermId = string;
+export type BoundedString = string;
+export type ZeroValueInteger = number;
 export interface Dimension {
   dimensionKey: string;
   dimensionValue: number;
@@ -639,6 +574,8 @@ export type PaymentRequestApprovalStrategy =
   | "WAIT_FOR_APPROVAL"
   | (string & {});
 export const PaymentRequestApprovalStrategy = /*@__PURE__*/ S.String;
+
+export type ISO8601Duration = string;
 export interface VariablePaymentTermConfiguration {
   paymentRequestApprovalStrategy: PaymentRequestApprovalStrategy;
   expirationDuration?: string;
@@ -689,8 +626,10 @@ export const RequestedTerm = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RequestedTerm" }) as any as S.Schema<RequestedTerm>;
 export type RequestedTermList = RequestedTerm[];
 export const RequestedTermList = /*@__PURE__*/ S.Array(RequestedTerm);
+export type AgreementProposalId = string;
 export type TaxEstimation = "DISABLED" | "ENABLED" | (string & {});
 export const TaxEstimation = /*@__PURE__*/ S.String;
+
 export interface TaxConfiguration {
   taxEstimation?: TaxEstimation;
 }
@@ -727,6 +666,7 @@ export type Timing =
   | "BILLING_PERIOD"
   | (string & {});
 export const Timing = /*@__PURE__*/ S.String;
+
 export interface TaxBreakdownItem {
   amount?: string;
   rate?: string;
@@ -845,6 +785,7 @@ export const DescribeAgreementInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAgreementInput",
 }) as any as S.Schema<DescribeAgreementInput>;
+export type AWSAccountId = string;
 export interface Acceptor {
   accountId?: string;
 }
@@ -857,6 +798,7 @@ export interface Proposer {
 export const Proposer = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ accountId: S.optional(S.String) }),
 ).annotate({ identifier: "Proposer" }) as any as S.Schema<Proposer>;
+export type AgreementType = string;
 export interface EstimatedCharges {
   currencyCode?: string;
   agreementValue?: string;
@@ -869,6 +811,7 @@ export const EstimatedCharges = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EstimatedCharges",
 }) as any as S.Schema<EstimatedCharges>;
+export type AgreementResourceType = string;
 export interface Resource {
   id?: string;
   type?: string;
@@ -878,6 +821,8 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 export type Resources = Resource[];
 export const Resources = /*@__PURE__*/ S.Array(Resource);
+export type OfferId = string;
+export type OfferSetId = string;
 export interface ProposalSummary {
   resources?: Resource[];
   offerId?: string;
@@ -904,6 +849,7 @@ export type AgreementStatus =
   | "TERMINATED"
   | (string & {});
 export const AgreementStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeAgreementOutput {
   agreementId?: string;
   acceptor?: Acceptor;
@@ -972,6 +918,8 @@ export const GetAgreementCancellationRequestOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetAgreementCancellationRequestOutput",
 }) as any as S.Schema<GetAgreementCancellationRequestOutput>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface GetAgreementEntitlementsInput {
   agreementId: string;
   maxResults?: number;
@@ -988,6 +936,8 @@ export const GetAgreementEntitlementsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAgreementEntitlementsInput",
 }) as any as S.Schema<GetAgreementEntitlementsInput>;
+export type EntitlementType = string;
+export type RegistrationToken = string;
 export type AgreementEntitlementStatus =
   | "PROVISIONED"
   | "SCHEDULED"
@@ -996,6 +946,7 @@ export type AgreementEntitlementStatus =
   | "DEPROVISIONED"
   | (string & {});
 export const AgreementEntitlementStatus = /*@__PURE__*/ S.String;
+
 export type AgreementEntitlementStatusReasonCode =
   | "PROVISIONING_IN_PROGRESS"
   | "FUTURE_START_DATE"
@@ -1008,6 +959,8 @@ export type AgreementEntitlementStatusReasonCode =
   | "PRODUCT_RESTRICTED"
   | (string & {});
 export const AgreementEntitlementStatusReasonCode = /*@__PURE__*/ S.String;
+
+export type AwsArn = string;
 export interface AgreementEntitlement {
   resource?: Resource;
   type?: string;
@@ -1054,6 +1007,8 @@ export const GetAgreementPaymentRequestInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAgreementPaymentRequestInput",
 }) as any as S.Schema<GetAgreementPaymentRequestInput>;
+export type PaymentRequestStatusMessage = string;
+export type ChargeId = string;
 export interface GetAgreementPaymentRequestOutput {
   paymentRequestId?: string;
   agreementId?: string;
@@ -1100,6 +1055,7 @@ export const GetAgreementTermsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAgreementTermsInput",
 }) as any as S.Schema<GetAgreementTermsInput>;
+export type UnversionedTermType = string;
 export interface DocumentItem {
   type?: string;
   url?: string;
@@ -1315,6 +1271,7 @@ export const PaymentScheduleTerm = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PaymentScheduleTerm",
 }) as any as S.Schema<PaymentScheduleTerm>;
+export type PositiveIntegerWithDefaultValueOne = number;
 export interface GrantItem {
   dimensionKey?: string;
   maxQuantity?: number;
@@ -1598,6 +1555,8 @@ export type BillingAdjustmentStatus =
   | "COMPLETED"
   | (string & {});
 export const BillingAdjustmentStatus = /*@__PURE__*/ S.String;
+
+export type BillingAdjustmentStatusMessage = string;
 export interface GetBillingAdjustmentRequestOutput {
   billingAdjustmentRequestId: string;
   agreementId: string;
@@ -1628,6 +1587,8 @@ export const GetBillingAdjustmentRequestOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBillingAdjustmentRequestOutput",
 }) as any as S.Schema<GetBillingAdjustmentRequestOutput>;
+export type PartyType = string;
+export type Catalog = string;
 export interface ListAgreementCancellationRequestsInput {
   partyType: string;
   agreementId?: string;
@@ -1750,8 +1711,10 @@ export const ListAgreementChargesOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAgreementChargesOutput>;
 export type LineItemGroupBy = "INVOICE_ID" | (string & {});
 export const LineItemGroupBy = /*@__PURE__*/ S.String;
+
 export type InvoiceType = "INVOICE" | "CREDIT_MEMO" | (string & {});
 export const InvoiceType = /*@__PURE__*/ S.String;
+
 export interface InvoiceBillingPeriod {
   month: number;
   year: number;
@@ -1985,6 +1948,9 @@ export const ListBillingAdjustmentRequestsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListBillingAdjustmentRequestsOutput",
 }) as any as S.Schema<ListBillingAdjustmentRequestsOutput>;
+export type AgreementCancellationRequestRejectionReason =
+  | string
+  | redacted.Redacted<string>;
 export interface RejectAgreementCancellationRequestInput {
   agreementId: string;
   agreementCancellationRequestId: string;
@@ -2027,6 +1993,7 @@ export const RejectAgreementCancellationRequestOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "RejectAgreementCancellationRequestOutput",
 }) as any as S.Schema<RejectAgreementCancellationRequestOutput>;
+export type PaymentRequestRejectionReason = string;
 export interface RejectAgreementPaymentRequestInput {
   paymentRequestId: string;
   agreementId: string;
@@ -2071,6 +2038,8 @@ export const RejectAgreementPaymentRequestOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RejectAgreementPaymentRequestOutput",
 }) as any as S.Schema<RejectAgreementPaymentRequestOutput>;
+export type FilterName = string;
+export type FilterValue = string;
 export type FilterValueList = string[];
 export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface Filter {
@@ -2082,8 +2051,10 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
 export const FilterList = /*@__PURE__*/ S.Array(Filter);
+export type SortBy = string;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface Sort {
   sortBy?: string;
   sortOrder?: SortOrder;
@@ -2266,71 +2237,128 @@ export const UpdatePurchaseOrdersOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdatePurchaseOrdersOutput",
 }) as any as S.Schema<UpdatePurchaseOrdersOutput>;
+export type RequestId = string;
+export type ExceptionMessage = string;
+export type AccessDeniedExceptionReason =
+  | "INVALID_ACCOUNT_STATE"
+  | "DENIED_BY_PRIVATE_MARKETPLACE_POLICY"
+  | "FAILED_KYC_COMPLIANCE"
+  | "MISSING_MFA"
+  | "INVALID_ACCESS"
+  | (string & {});
+export const AccessDeniedExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  {
-    requestId: S.optional(S.String),
-    message: S.optional(S.String),
-    reason: S.optional(AccessDeniedExceptionReason),
-  },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    requestId: S.optional(S.String),
-    message: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(ResourceType),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { requestId: S.optional(S.String), message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    requestId: S.optional(S.String),
-    message: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(ResourceType),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { requestId: S.optional(S.String), message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    requestId: S.optional(S.String),
-    message: S.optional(S.String),
-    reason: S.optional(ValidationExceptionReason),
-    fields: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    requestId: S.optional(S.String),
-    message: S.optional(S.String),
-    quotaCode: S.optional(S.String),
-    serviceCode: S.optional(S.String),
-    resourceType: S.optional(S.String),
-    resourceId: S.optional(S.String),
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
+export type ResourceType =
+  | "Agreement"
+  | "AgreementRequest"
+  | "AgreementProposal"
+  | "Charge"
+  | "PaymentRequest"
+  | "Invoice"
+  | "AgreementCancellationRequest"
+  | "BillingAdjustmentRequest"
+  | (string & {});
+export const ResourceType = /*@__PURE__*/ S.String;
 
-//# Operations
+export type ValidationExceptionReason =
+  | "MISSING_BILLING_ADJUSTMENTS"
+  | "BILLING_ADJUSTMENTS_LIMIT_EXCEEDED"
+  | "MISSING_INVOICE_ID"
+  | "INVALID_ADJUSTMENT_AMOUNT"
+  | "MISSING_ADJUSTMENT_AMOUNT"
+  | "INVALID_REASON_CODE"
+  | "MISSING_REASON_CODE"
+  | "MISSING_DESCRIPTION"
+  | "INVALID_INVOICE_ADJUSTMENT_PERIOD"
+  | "INVALID_CURRENCY_CODE"
+  | "MISSING_CURRENCY_CODE"
+  | "EXCEEDED_MAXIMUM_ADJUSTMENT_AMOUNT"
+  | "MISSING_BILLING_ADJUSTMENT_REQUEST_ENTRY"
+  | "MULTIPLE_AGREEMENT_IDS"
+  | "INVALID_AGREEMENT_CANCELLATION_REQUEST_ID"
+  | "MISSING_AGREEMENT_CANCELLATION_REQUEST_ID"
+  | "MISSING_REASON"
+  | "INVALID_REASON"
+  | "INVALID_STATUS"
+  | "INVALID_AGREEMENT_ID"
+  | "MISSING_AGREEMENT_ID"
+  | "INVALID_CATALOG"
+  | "INVALID_FILTERS"
+  | "INVALID_FILTER_NAME"
+  | "MISSING_FILTER_NAME"
+  | "INVALID_FILTER_VALUES"
+  | "MISSING_FILTER_VALUES"
+  | "INVALID_SORT_BY"
+  | "INVALID_SORT_ORDER"
+  | "INVALID_NEXT_TOKEN"
+  | "INVALID_MAX_RESULTS"
+  | "INVALID_TERM_ID"
+  | "MISSING_TERM_ID"
+  | "MISSING_NAME"
+  | "INVALID_NAME"
+  | "INVALID_DESCRIPTION"
+  | "MISSING_CHARGE_AMOUNT"
+  | "INVALID_CHARGE_AMOUNT"
+  | "MISSING_PAYMENT_REQUEST_ID"
+  | "INVALID_PAYMENT_REQUEST_ID"
+  | "MISSING_PARTY_TYPE"
+  | "INVALID_PARTY_TYPE"
+  | "UNSUPPORTED_FILTERS"
+  | "INVALID_CLIENT_TOKEN"
+  | "INVALID_INTENT"
+  | "MISSING_INTENT"
+  | "INVALID_SOURCE_AGREEMENT_IDENTIFIER"
+  | "MISSING_SOURCE_AGREEMENT_IDENTIFIER"
+  | "INVALID_AGREEMENT_PROPOSAL_IDENTIFIER"
+  | "MISSING_AGREEMENT_PROPOSAL_IDENTIFIER"
+  | "INVALID_REQUESTED_TERMS"
+  | "MISSING_REQUESTED_TERMS"
+  | "INVALID_REQUESTED_TERM_ID"
+  | "MISSING_REQUESTED_TERM_ID"
+  | "INVALID_REQUESTED_TERM_CONFIGURATION"
+  | "MISSING_REQUESTED_TERM_CONFIGURATION"
+  | "INVALID_AGREEMENT_REQUEST_ID"
+  | "MISSING_AGREEMENT_REQUEST_ID"
+  | "INVALID_PURCHASE_ORDERS"
+  | "MISSING_PURCHASE_ORDERS"
+  | "INVALID_CHARGE_ID"
+  | "MISSING_CHARGE_ID"
+  | "INVALID_CHARGE_REVISION"
+  | "MISSING_CHARGE_REVISION"
+  | "INVALID_AGREEMENT_TYPE"
+  | "INVALID_PURCHASE_ORDER_REFERENCE"
+  | "INACTIVE_AGREEMENT"
+  | "SUPERSEDED_AGREEMENT_PROPOSAL"
+  | "EXPIRED_AGREEMENT_PROPOSAL"
+  | "MISSING_MANDATORY_TERMS"
+  | "INCOMPATIBLE_TERMS"
+  | "MISSING_USAGE_AGREEMENT"
+  | "INVALID_INCREMENTAL_CHARGE"
+  | "MISSING_ACCOUNT_ADDRESS"
+  | "UNSUPPORTED_ACTION"
+  | "INVALID_REJECTION_REASON"
+  | "INVALID_PAYMENT_REQUEST_STATUS"
+  | "OTHER"
+  | "DUPLICATE_CHARGES"
+  | "UNSUPPORTED_ACCOUNT_PLAN"
+  | "DUPLICATE_AGREEMENT_IN_ORGANIZATION"
+  | "MISSING_PURCHASE_ORDER_REFERENCE"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type AcceptAgreementCancellationRequestError =
   | AccessDeniedException
   | ConflictException
@@ -2364,6 +2392,7 @@ export const acceptAgreementCancellationRequest: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptAgreementCancellationRequest",
 }));
+
 export type AcceptAgreementPaymentRequestError =
   | AccessDeniedException
   | ConflictException
@@ -2397,6 +2426,7 @@ export const acceptAgreementPaymentRequest: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptAgreementPaymentRequest",
 }));
+
 export type AcceptAgreementRequestError =
   | AccessDeniedException
   | ConflictException
@@ -2428,6 +2458,7 @@ export const acceptAgreementRequest: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptAgreementRequest",
 }));
+
 export type BatchCreateBillingAdjustmentRequestError =
   | AccessDeniedException
   | ConflictException
@@ -2459,6 +2490,7 @@ export const batchCreateBillingAdjustmentRequest: API.OperationMethod<
   retry: Retry,
   operationName: "BatchCreateBillingAdjustmentRequest",
 }));
+
 export type CancelAgreementError =
   | AccessDeniedException
   | ConflictException
@@ -2490,6 +2522,7 @@ export const cancelAgreement: API.OperationMethod<
   retry: Retry,
   operationName: "CancelAgreement",
 }));
+
 export type CancelAgreementCancellationRequestError =
   | AccessDeniedException
   | ConflictException
@@ -2523,6 +2556,7 @@ export const cancelAgreementCancellationRequest: API.OperationMethod<
   retry: Retry,
   operationName: "CancelAgreementCancellationRequest",
 }));
+
 export type CancelAgreementPaymentRequestError =
   | AccessDeniedException
   | ConflictException
@@ -2556,6 +2590,7 @@ export const cancelAgreementPaymentRequest: API.OperationMethod<
   retry: Retry,
   operationName: "CancelAgreementPaymentRequest",
 }));
+
 export type CreateAgreementRequestError =
   | AccessDeniedException
   | ConflictException
@@ -2589,6 +2624,7 @@ export const createAgreementRequest: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAgreementRequest",
 }));
+
 export type DescribeAgreementError =
   | AccessDeniedException
   | InternalServerException
@@ -2618,6 +2654,7 @@ export const describeAgreement: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAgreement",
 }));
+
 export type GetAgreementCancellationRequestError =
   | AccessDeniedException
   | InternalServerException
@@ -2647,6 +2684,7 @@ export const getAgreementCancellationRequest: API.OperationMethod<
   retry: Retry,
   operationName: "GetAgreementCancellationRequest",
 }));
+
 export type GetAgreementEntitlementsError =
   | AccessDeniedException
   | InternalServerException
@@ -2697,6 +2735,7 @@ export const getAgreementEntitlements: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetAgreementPaymentRequestError =
   | AccessDeniedException
   | InternalServerException
@@ -2728,6 +2767,7 @@ export const getAgreementPaymentRequest: API.OperationMethod<
   retry: Retry,
   operationName: "GetAgreementPaymentRequest",
 }));
+
 export type GetAgreementTermsError =
   | AccessDeniedException
   | InternalServerException
@@ -2788,6 +2828,7 @@ export const getAgreementTerms: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetBillingAdjustmentRequestError =
   | AccessDeniedException
   | InternalServerException
@@ -2817,6 +2858,7 @@ export const getBillingAdjustmentRequest: API.OperationMethod<
   retry: Retry,
   operationName: "GetBillingAdjustmentRequest",
 }));
+
 export type ListAgreementCancellationRequestsError =
   | AccessDeniedException
   | InternalServerException
@@ -2867,6 +2909,7 @@ export const listAgreementCancellationRequests: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAgreementChargesError =
   | AccessDeniedException
   | InternalServerException
@@ -2915,6 +2958,7 @@ export const listAgreementCharges: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAgreementInvoiceLineItemsError =
   | AccessDeniedException
   | InternalServerException
@@ -2967,6 +3011,7 @@ export const listAgreementInvoiceLineItems: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAgreementPaymentRequestsError =
   | AccessDeniedException
   | InternalServerException
@@ -3017,6 +3062,7 @@ export const listAgreementPaymentRequests: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBillingAdjustmentRequestsError =
   | AccessDeniedException
   | InternalServerException
@@ -3065,6 +3111,7 @@ export const listBillingAdjustmentRequests: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type RejectAgreementCancellationRequestError =
   | AccessDeniedException
   | ConflictException
@@ -3098,6 +3145,7 @@ export const rejectAgreementCancellationRequest: API.OperationMethod<
   retry: Retry,
   operationName: "RejectAgreementCancellationRequest",
 }));
+
 export type RejectAgreementPaymentRequestError =
   | AccessDeniedException
   | ConflictException
@@ -3131,6 +3179,7 @@ export const rejectAgreementPaymentRequest: API.OperationMethod<
   retry: Retry,
   operationName: "RejectAgreementPaymentRequest",
 }));
+
 export type SearchAgreementsError =
   | AccessDeniedException
   | InternalServerException
@@ -3293,6 +3342,7 @@ export const searchAgreements: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type SendAgreementCancellationRequestError =
   | AccessDeniedException
   | ConflictException
@@ -3324,6 +3374,7 @@ export const sendAgreementCancellationRequest: API.OperationMethod<
   retry: Retry,
   operationName: "SendAgreementCancellationRequest",
 }));
+
 export type SendAgreementPaymentRequestError =
   | AccessDeniedException
   | ConflictException
@@ -3357,6 +3408,7 @@ export const sendAgreementPaymentRequest: API.OperationMethod<
   retry: Retry,
   operationName: "SendAgreementPaymentRequest",
 }));
+
 export type UpdatePurchaseOrdersError =
   | AccessDeniedException
   | ConflictException

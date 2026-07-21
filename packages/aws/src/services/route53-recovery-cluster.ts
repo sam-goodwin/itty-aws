@@ -85,16 +85,71 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class EndpointTemporarilyUnavailableException extends S.TaggedErrorClass<EndpointTemporarilyUnavailableException>()(
+  "EndpointTemporarilyUnavailableException",
+  { message: S.String },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceLimitExceededException extends S.TaggedErrorClass<ServiceLimitExceededException>()(
+  "ServiceLimitExceededException",
+  {
+    message: S.String,
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(S.String),
+    limitCode: S.String,
+    serviceCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    fields: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Arn = string;
-export type RoutingControlName = string;
-export type RetryAfterSeconds = number;
-export type PageToken = string;
-export type MaxResults = number;
-export type ControlPanelName = string;
-export type Owner = string;
-
-//# Schemas
 export interface GetRoutingControlStateRequest {
   RoutingControlArn: string;
 }
@@ -107,6 +162,8 @@ export const GetRoutingControlStateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetRoutingControlStateRequest>;
 export type RoutingControlState = "On" | "Off" | (string & {});
 export const RoutingControlState = /*@__PURE__*/ S.String;
+
+export type RoutingControlName = string;
 export interface GetRoutingControlStateResponse {
   RoutingControlArn: string;
   RoutingControlState: RoutingControlState;
@@ -121,26 +178,8 @@ export const GetRoutingControlStateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRoutingControlStateResponse",
 }) as any as S.Schema<GetRoutingControlStateResponse>;
-export type ValidationExceptionReason =
-  | "unknownOperation"
-  | "cannotParse"
-  | "fieldValidationFailed"
-  | "other"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type PageToken = string;
+export type MaxResults = number;
 export interface ListRoutingControlsRequest {
   ControlPanelArn?: string;
   NextToken?: string;
@@ -157,6 +196,8 @@ export const ListRoutingControlsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRoutingControlsRequest",
 }) as any as S.Schema<ListRoutingControlsRequest>;
+export type ControlPanelName = string;
+export type Owner = string;
 export interface RoutingControl {
   ControlPanelArn?: string;
   ControlPanelName?: string;
@@ -249,66 +290,28 @@ export const UpdateRoutingControlStatesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRoutingControlStatesResponse",
 }) as any as S.Schema<UpdateRoutingControlStatesResponse>;
+export type RetryAfterSeconds = number;
+export type ValidationExceptionReason =
+  | "unknownOperation"
+  | "cannotParse"
+  | "fieldValidationFailed"
+  | "other"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class EndpointTemporarilyUnavailableException extends S.TaggedErrorClass<EndpointTemporarilyUnavailableException>()(
-  "EndpointTemporarilyUnavailableException",
-  { message: S.String },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: S.optional(ValidationExceptionReason),
-    fields: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceLimitExceededException extends S.TaggedErrorClass<ServiceLimitExceededException>()(
-  "ServiceLimitExceededException",
-  {
-    message: S.String,
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-    limitCode: S.String,
-    serviceCode: S.String,
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type GetRoutingControlStateError =
   | AccessDeniedException
   | EndpointTemporarilyUnavailableException
@@ -364,6 +367,7 @@ export const getRoutingControlState: API.OperationMethod<
   retry: Retry,
   operationName: "GetRoutingControlState",
 }));
+
 export type ListRoutingControlsError =
   | AccessDeniedException
   | EndpointTemporarilyUnavailableException
@@ -441,6 +445,7 @@ export const listRoutingControls: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type UpdateRoutingControlStateError =
   | AccessDeniedException
   | ConflictException
@@ -501,6 +506,7 @@ export const updateRoutingControlState: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRoutingControlState",
 }));
+
 export type UpdateRoutingControlStatesError =
   | AccessDeniedException
   | ConflictException

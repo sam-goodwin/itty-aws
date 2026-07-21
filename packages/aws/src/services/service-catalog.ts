@@ -84,146 +84,55 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class DuplicateResourceException extends S.TaggedErrorClass<DuplicateResourceException>()(
+  "DuplicateResourceException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidParametersException extends S.TaggedErrorClass<InvalidParametersException>()(
+  "InvalidParametersException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
+  "InvalidStateException",
+  { Message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class OperationNotSupportedException extends S.TaggedErrorClass<OperationNotSupportedException>()(
+  "OperationNotSupportedException",
+  { Message: S.optional(S.String) },
+) {}
+export class ProvisionedProductNotFound extends S.TaggedErrorClass<ProvisionedProductNotFound>()(
+  "ProvisionedProductNotFound",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "Provisioned product not found" },
+  }),
+) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { Message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+) {}
+export class TagOptionNotMigratedException extends S.TaggedErrorClass<TagOptionNotMigratedException>()(
+  "TagOptionNotMigratedException",
+  { Message: S.optional(S.String) },
+) {}
 export type AcceptLanguage = string;
 export type Id = string;
-export type ErrorMessage = string;
-export type BudgetName = string;
-export type PrincipalARN = string;
-export type IdempotencyToken = string;
-export type ResourceId = string;
-export type TagOptionId = string;
-export type ServiceActionAssociationErrorMessage = string;
-export type ProductArn = string;
-export type ProductViewName = string;
-export type ProvisioningArtifactPropertyValue = string;
-export type ConstraintParameters = string;
-export type ConstraintType = string;
-export type ConstraintDescription = string;
-export type AccountId = string;
-export type PortfolioDisplayName = string;
-export type PortfolioDescription = string;
-export type ProviderName = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ResourceARN = string;
-export type CreationTime = Date;
-export type OrganizationNodeValue = string;
-export type ProductViewOwner = string;
-export type ProductViewShortDescription = string;
-export type SupportDescription = string;
-export type SupportEmail = string;
-export type SupportUrl = string;
-export type ProvisioningArtifactName = string;
-export type ProvisioningArtifactDescription = string;
-export type ProvisioningArtifactInfoKey = string;
-export type ProvisioningArtifactInfoValue = string;
-export type DisableTemplateValidation = boolean;
-export type CodeStarConnectionArn = string;
-export type Repository = string;
-export type RepositoryBranch = string;
-export type RepositoryArtifactPath = string;
-export type ProductViewDistributor = string;
-export type HasDefaultPath = boolean;
-export type CreatedTime = Date;
-export type LastSyncTime = Date;
-export type LastSyncStatusMessage = string;
-export type LastSuccessfulSyncTime = Date;
-export type ProvisioningArtifactActive = boolean;
-export type SourceRevision = string;
-export type ProvisionedProductPlanName = string;
-export type NotificationArn = string;
-export type ProvisionedProductName = string;
-export type ParameterKey = string;
-export type ParameterValue = string;
-export type UsePreviousValue = boolean;
-export type ServiceActionName = string;
-export type ServiceActionDefinitionValue = string;
-export type ServiceActionDescription = string;
-export type TagOptionKey = string;
-export type TagOptionValue = string;
-export type TagOptionActive = boolean;
-export type Owner = string;
-export type IgnoreErrors = boolean;
-export type StatusDetail = string;
-export type PageToken = string;
-export type PageSizeMax100 = number;
-export type Message = string;
-export type ProvisioningArtifactCreatedTime = Date;
-export type PortfolioName = string;
-export type ProvisionedProductNameOrArn = string;
-export type ProvisionedProductType = string;
-export type ProvisionedProductId = string;
-export type ProvisionedProductStatusMessage = string;
-export type LastRequestId = string;
-export type RoleArn = string;
-export type CloudWatchDashboardName = string;
-export type PageSize = number;
-export type UpdatedTime = Date;
-export type StatusMessage = string;
-export type LogicalResourceId = string;
-export type PhysicalResourceId = string;
-export type PlanResourceType = string;
-export type PropertyName = string;
-export type CausingEntity = string;
-export type Verbose = boolean;
-export type DefaultValue = string;
-export type ParameterType = string;
-export type NoEcho = boolean;
-export type Description = string;
-export type InstructionType = string;
-export type InstructionValue = string;
-export type Region = string;
-export type ProvisioningArtifactOutputKey = string;
-export type OutputDescription = string;
-export type RecordType = string;
-export type ErrorCode = string;
-export type ErrorDescription = string;
-export type RecordTagKey = string;
-export type RecordTagValue = string;
-export type OutputKey = string;
-export type OutputValue = string;
-export type ExecutionParameterKey = string;
-export type ExecutionParameterType = string;
-export type ExecutionParameterValue = string;
-export type PhysicalId = string;
-export type AccessLevelFilterValue = string;
-export type SearchFilterKey = string;
-export type SearchFilterValue = string;
-export type ResourceType = string;
-export type ResourceDetailId = string;
-export type ResourceDetailARN = string;
-export type ResourceDetailName = string;
-export type ResourceDetailDescription = string;
-export type ResourceDetailCreatedTime = Date;
-export type EngineWorkflowToken = string;
-export type EngineWorkflowFailureReason = string;
-export type UniqueTagKey = string;
-export type UniqueTagValue = string;
-export type StackSetFailureToleranceCount = number;
-export type StackSetFailureTolerancePercentage = number;
-export type StackSetMaxConcurrencyCount = number;
-export type StackSetMaxConcurrencyPercentage = number;
-export type ProductViewFilterValue = string;
-export type ProductViewAggregationType = string;
-export type AttributeValue = string;
-export type ApproximateCount = number;
-export type ProvisionedProductViewFilterValue = string;
-export type SortField = string;
-export type SearchProvisionedProductsPageSize = number;
-export type UserArn = string;
-export type UserArnSession = string;
-export type TotalResultsCount = number;
-export type RetainPhysicalResources = boolean;
-export type PropertyValue = string;
-
-//# Schemas
 export type PortfolioShareType =
   | "IMPORTED"
   | "AWS_SERVICECATALOG"
   | "AWS_ORGANIZATIONS"
   | (string & {});
 export const PortfolioShareType = /*@__PURE__*/ S.String;
+
 export interface AcceptPortfolioShareInput {
   AcceptLanguage?: string;
   PortfolioId: string;
@@ -246,6 +155,7 @@ export const AcceptPortfolioShareOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptPortfolioShareOutput",
 }) as any as S.Schema<AcceptPortfolioShareOutput>;
+export type BudgetName = string;
 export interface AssociateBudgetWithResourceInput {
   BudgetName: string;
   ResourceId: string;
@@ -263,8 +173,10 @@ export const AssociateBudgetWithResourceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateBudgetWithResourceOutput",
 }) as any as S.Schema<AssociateBudgetWithResourceOutput>;
+export type PrincipalARN = string;
 export type PrincipalType = "IAM" | "IAM_PATTERN" | (string & {});
 export const PrincipalType = /*@__PURE__*/ S.String;
+
 export interface AssociatePrincipalWithPortfolioInput {
   AcceptLanguage?: string;
   PortfolioId: string;
@@ -314,6 +226,7 @@ export const AssociateProductWithPortfolioOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateProductWithPortfolioOutput",
 }) as any as S.Schema<AssociateProductWithPortfolioOutput>;
+export type IdempotencyToken = string;
 export interface AssociateServiceActionWithProvisioningArtifactInput {
   ProductId: string;
   ProvisioningArtifactId: string;
@@ -340,6 +253,8 @@ export const AssociateServiceActionWithProvisioningArtifactOutput =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateServiceActionWithProvisioningArtifactOutput",
   }) as any as S.Schema<AssociateServiceActionWithProvisioningArtifactOutput>;
+export type ResourceId = string;
+export type TagOptionId = string;
 export interface AssociateTagOptionWithResourceInput {
   ResourceId: string;
   TagOptionId: string;
@@ -399,6 +314,8 @@ export type ServiceActionAssociationErrorCode =
   | "INVALID_PARAMETER"
   | (string & {});
 export const ServiceActionAssociationErrorCode = /*@__PURE__*/ S.String;
+
+export type ServiceActionAssociationErrorMessage = string;
 export interface FailedServiceActionAssociation {
   ServiceActionId?: string;
   ProductId?: string;
@@ -462,8 +379,12 @@ export const BatchDisassociateServiceActionFromProvisioningArtifactOutput =
   ).annotate({
     identifier: "BatchDisassociateServiceActionFromProvisioningArtifactOutput",
   }) as any as S.Schema<BatchDisassociateServiceActionFromProvisioningArtifactOutput>;
+export type ProductArn = string;
+export type ProductViewName = string;
 export type ProvisioningArtifactPropertyName = "Id" | (string & {});
 export const ProvisioningArtifactPropertyName = /*@__PURE__*/ S.String;
+
+export type ProvisioningArtifactPropertyValue = string;
 export type SourceProvisioningArtifactPropertiesMap = {
   [key in ProvisioningArtifactPropertyName]?: string;
 };
@@ -479,6 +400,7 @@ export const SourceProvisioningArtifactProperties = /*@__PURE__*/ S.Array(
 );
 export type CopyOption = "CopyTags" | (string & {});
 export const CopyOption = /*@__PURE__*/ S.String;
+
 export type CopyOptions = CopyOption[];
 export const CopyOptions = /*@__PURE__*/ S.Array(CopyOption);
 export interface CopyProductInput {
@@ -517,6 +439,9 @@ export const CopyProductOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyProductOutput",
 }) as any as S.Schema<CopyProductOutput>;
+export type ConstraintParameters = string;
+export type ConstraintType = string;
+export type ConstraintDescription = string;
 export interface CreateConstraintInput {
   AcceptLanguage?: string;
   PortfolioId: string;
@@ -541,6 +466,7 @@ export const CreateConstraintInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConstraintInput",
 }) as any as S.Schema<CreateConstraintInput>;
+export type AccountId = string;
 export interface ConstraintDetail {
   ConstraintId?: string;
   Type?: string;
@@ -563,6 +489,7 @@ export const ConstraintDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConstraintDetail>;
 export type Status = "AVAILABLE" | "CREATING" | "FAILED" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface CreateConstraintOutput {
   ConstraintDetail?: ConstraintDetail;
   ConstraintParameters?: string;
@@ -577,6 +504,11 @@ export const CreateConstraintOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConstraintOutput",
 }) as any as S.Schema<CreateConstraintOutput>;
+export type PortfolioDisplayName = string;
+export type PortfolioDescription = string;
+export type ProviderName = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -608,6 +540,8 @@ export const CreatePortfolioInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePortfolioInput",
 }) as any as S.Schema<CreatePortfolioInput>;
+export type ResourceARN = string;
+export type CreationTime = Date;
 export interface PortfolioDetail {
   Id?: string;
   ARN?: string;
@@ -648,6 +582,8 @@ export type OrganizationNodeType =
   | "ACCOUNT"
   | (string & {});
 export const OrganizationNodeType = /*@__PURE__*/ S.String;
+
+export type OrganizationNodeValue = string;
 export interface OrganizationNode {
   Type?: OrganizationNodeType;
   Value?: string;
@@ -690,6 +626,11 @@ export const CreatePortfolioShareOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePortfolioShareOutput",
 }) as any as S.Schema<CreatePortfolioShareOutput>;
+export type ProductViewOwner = string;
+export type ProductViewShortDescription = string;
+export type SupportDescription = string;
+export type SupportEmail = string;
+export type SupportUrl = string;
 export type ProductType =
   | "CLOUD_FORMATION_TEMPLATE"
   | "MARKETPLACE"
@@ -698,6 +639,11 @@ export type ProductType =
   | "EXTERNAL"
   | (string & {});
 export const ProductType = /*@__PURE__*/ S.String;
+
+export type ProvisioningArtifactName = string;
+export type ProvisioningArtifactDescription = string;
+export type ProvisioningArtifactInfoKey = string;
+export type ProvisioningArtifactInfoValue = string;
 export type ProvisioningArtifactInfo = { [key: string]: string | undefined };
 export const ProvisioningArtifactInfo = /*@__PURE__*/ S.Record(
   S.String,
@@ -712,6 +658,8 @@ export type ProvisioningArtifactType =
   | "EXTERNAL"
   | (string & {});
 export const ProvisioningArtifactType = /*@__PURE__*/ S.String;
+
+export type DisableTemplateValidation = boolean;
 export interface ProvisioningArtifactProperties {
   Name?: string;
   Description?: string;
@@ -732,6 +680,11 @@ export const ProvisioningArtifactProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProvisioningArtifactProperties>;
 export type SourceType = "CODESTAR" | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
+
+export type CodeStarConnectionArn = string;
+export type Repository = string;
+export type RepositoryBranch = string;
+export type RepositoryArtifactPath = string;
 export interface CodeStarParameters {
   ConnectionArn: string;
   Repository: string;
@@ -804,6 +757,8 @@ export const CreateProductInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProductInput",
 }) as any as S.Schema<CreateProductInput>;
+export type ProductViewDistributor = string;
+export type HasDefaultPath = boolean;
 export interface ProductViewSummary {
   Id?: string;
   ProductId?: string;
@@ -834,8 +789,13 @@ export const ProductViewSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProductViewSummary",
 }) as any as S.Schema<ProductViewSummary>;
+export type CreatedTime = Date;
+export type LastSyncTime = Date;
 export type LastSyncStatus = "SUCCEEDED" | "FAILED" | (string & {});
 export const LastSyncStatus = /*@__PURE__*/ S.String;
+
+export type LastSyncStatusMessage = string;
+export type LastSuccessfulSyncTime = Date;
 export interface LastSync {
   LastSyncTime?: Date;
   LastSyncStatus?: LastSyncStatus;
@@ -886,11 +846,14 @@ export const ProductViewDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProductViewDetail",
 }) as any as S.Schema<ProductViewDetail>;
+export type ProvisioningArtifactActive = boolean;
 export type ProvisioningArtifactGuidance =
   | "DEFAULT"
   | "DEPRECATED"
   | (string & {});
 export const ProvisioningArtifactGuidance = /*@__PURE__*/ S.String;
+
+export type SourceRevision = string;
 export interface ProvisioningArtifactDetail {
   Id?: string;
   Name?: string;
@@ -929,10 +892,17 @@ export const CreateProductOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProductOutput",
 }) as any as S.Schema<CreateProductOutput>;
+export type ProvisionedProductPlanName = string;
 export type ProvisionedProductPlanType = "CLOUDFORMATION" | (string & {});
 export const ProvisionedProductPlanType = /*@__PURE__*/ S.String;
+
+export type NotificationArn = string;
 export type NotificationArns = string[];
 export const NotificationArns = /*@__PURE__*/ S.Array(S.String);
+export type ProvisionedProductName = string;
+export type ParameterKey = string;
+export type ParameterValue = string;
+export type UsePreviousValue = boolean;
 export interface UpdateProvisioningParameter {
   Key?: string;
   Value?: string;
@@ -1033,8 +1003,10 @@ export const CreateProvisioningArtifactOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProvisioningArtifactOutput",
 }) as any as S.Schema<CreateProvisioningArtifactOutput>;
+export type ServiceActionName = string;
 export type ServiceActionDefinitionType = "SSM_AUTOMATION" | (string & {});
 export const ServiceActionDefinitionType = /*@__PURE__*/ S.String;
+
 export type ServiceActionDefinitionKey =
   | "Name"
   | "Version"
@@ -1042,6 +1014,8 @@ export type ServiceActionDefinitionKey =
   | "Parameters"
   | (string & {});
 export const ServiceActionDefinitionKey = /*@__PURE__*/ S.String;
+
+export type ServiceActionDefinitionValue = string;
 export type ServiceActionDefinitionMap = {
   [key in ServiceActionDefinitionKey]?: string;
 };
@@ -1049,6 +1023,7 @@ export const ServiceActionDefinitionMap = /*@__PURE__*/ S.Record(
   ServiceActionDefinitionKey,
   S.String.pipe(S.optional),
 );
+export type ServiceActionDescription = string;
 export interface CreateServiceActionInput {
   Name: string;
   DefinitionType: ServiceActionDefinitionType;
@@ -1107,6 +1082,8 @@ export const CreateServiceActionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateServiceActionOutput",
 }) as any as S.Schema<CreateServiceActionOutput>;
+export type TagOptionKey = string;
+export type TagOptionValue = string;
 export interface CreateTagOptionInput {
   Key: string;
   Value: string;
@@ -1118,6 +1095,8 @@ export const CreateTagOptionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTagOptionInput",
 }) as any as S.Schema<CreateTagOptionInput>;
+export type TagOptionActive = boolean;
+export type Owner = string;
 export interface TagOptionDetail {
   Key?: string;
   Value?: string;
@@ -1221,6 +1200,7 @@ export const DeleteProductOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteProductOutput",
 }) as any as S.Schema<DeleteProductOutput>;
+export type IgnoreErrors = boolean;
 export interface DeleteProvisionedProductPlanInput {
   AcceptLanguage?: string;
   PlanId: string;
@@ -1348,6 +1328,8 @@ export type CopyProductStatus =
   | "FAILED"
   | (string & {});
 export const CopyProductStatus = /*@__PURE__*/ S.String;
+
+export type StatusDetail = string;
 export interface DescribeCopyProductStatusOutput {
   CopyProductStatus?: CopyProductStatus;
   TargetProductId?: string;
@@ -1406,6 +1388,9 @@ export type DescribePortfolioShareType =
   | "ORGANIZATION_MEMBER_ACCOUNT"
   | (string & {});
 export const DescribePortfolioShareType = /*@__PURE__*/ S.String;
+
+export type PageToken = string;
+export type PageSizeMax100 = number;
 export interface DescribePortfolioSharesInput {
   PortfolioId: string;
   Type: DescribePortfolioShareType;
@@ -1475,10 +1460,12 @@ export type ShareStatus =
   | "ERROR"
   | (string & {});
 export const ShareStatus = /*@__PURE__*/ S.String;
+
 export type SuccessfulShares = string[];
 export const SuccessfulShares = /*@__PURE__*/ S.Array(S.String);
 export type Namespaces = string[];
 export const Namespaces = /*@__PURE__*/ S.Array(S.String);
+export type Message = string;
 export interface ShareError {
   Accounts?: string[];
   Message?: string;
@@ -1537,6 +1524,7 @@ export const DescribeProductInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeProductInput",
 }) as any as S.Schema<DescribeProductInput>;
+export type ProvisioningArtifactCreatedTime = Date;
 export interface ProvisioningArtifact {
   Id?: string;
   Name?: string;
@@ -1558,6 +1546,7 @@ export const ProvisioningArtifact = /*@__PURE__*/ S.suspend(() =>
 export type ProvisioningArtifacts = ProvisioningArtifact[];
 export const ProvisioningArtifacts =
   /*@__PURE__*/ S.Array(ProvisioningArtifact);
+export type PortfolioName = string;
 export interface LaunchPath {
   Id?: string;
   Name?: string;
@@ -1680,6 +1669,9 @@ export const DescribeProvisionedProductInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeProvisionedProductInput",
 }) as any as S.Schema<DescribeProvisionedProductInput>;
+export type ProvisionedProductNameOrArn = string;
+export type ProvisionedProductType = string;
+export type ProvisionedProductId = string;
 export type ProvisionedProductStatus =
   | "AVAILABLE"
   | "UNDER_CHANGE"
@@ -1688,6 +1680,10 @@ export type ProvisionedProductStatus =
   | "PLAN_IN_PROGRESS"
   | (string & {});
 export const ProvisionedProductStatus = /*@__PURE__*/ S.String;
+
+export type ProvisionedProductStatusMessage = string;
+export type LastRequestId = string;
+export type RoleArn = string;
 export interface ProvisionedProductDetail {
   Name?: string;
   Arn?: string;
@@ -1724,6 +1720,7 @@ export const ProvisionedProductDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProvisionedProductDetail",
 }) as any as S.Schema<ProvisionedProductDetail>;
+export type CloudWatchDashboardName = string;
 export interface CloudWatchDashboard {
   Name?: string;
 }
@@ -1746,6 +1743,7 @@ export const DescribeProvisionedProductOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeProvisionedProductOutput",
 }) as any as S.Schema<DescribeProvisionedProductOutput>;
+export type PageSize = number;
 export interface DescribeProvisionedProductPlanInput {
   AcceptLanguage?: string;
   PlanId: string;
@@ -1773,6 +1771,9 @@ export type ProvisionedProductPlanStatus =
   | "EXECUTE_FAILED"
   | (string & {});
 export const ProvisionedProductPlanStatus = /*@__PURE__*/ S.String;
+
+export type UpdatedTime = Date;
+export type StatusMessage = string;
 export interface ProvisionedProductPlanDetails {
   CreatedTime?: Date;
   PathId?: string;
@@ -1813,8 +1814,13 @@ export const ProvisionedProductPlanDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProvisionedProductPlanDetails>;
 export type ChangeAction = "ADD" | "MODIFY" | "REMOVE" | (string & {});
 export const ChangeAction = /*@__PURE__*/ S.String;
+
+export type LogicalResourceId = string;
+export type PhysicalResourceId = string;
+export type PlanResourceType = string;
 export type Replacement = "TRUE" | "FALSE" | "CONDITIONAL" | (string & {});
 export const Replacement = /*@__PURE__*/ S.String;
+
 export type ResourceAttribute =
   | "PROPERTIES"
   | "METADATA"
@@ -1824,14 +1830,17 @@ export type ResourceAttribute =
   | "TAGS"
   | (string & {});
 export const ResourceAttribute = /*@__PURE__*/ S.String;
+
 export type Scope = ResourceAttribute[];
 export const Scope = /*@__PURE__*/ S.Array(ResourceAttribute);
+export type PropertyName = string;
 export type RequiresRecreation =
   | "NEVER"
   | "CONDITIONALLY"
   | "ALWAYS"
   | (string & {});
 export const RequiresRecreation = /*@__PURE__*/ S.String;
+
 export interface ResourceTargetDefinition {
   Attribute?: ResourceAttribute;
   Name?: string;
@@ -1848,6 +1857,8 @@ export const ResourceTargetDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceTargetDefinition>;
 export type EvaluationType = "STATIC" | "DYNAMIC" | (string & {});
 export const EvaluationType = /*@__PURE__*/ S.String;
+
+export type CausingEntity = string;
 export interface ResourceChangeDetail {
   Target?: ResourceTargetDefinition;
   Evaluation?: EvaluationType;
@@ -1902,6 +1913,7 @@ export const DescribeProvisionedProductPlanOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeProvisionedProductPlanOutput",
 }) as any as S.Schema<DescribeProvisionedProductPlanOutput>;
+export type Verbose = boolean;
 export interface DescribeProvisioningArtifactInput {
   AcceptLanguage?: string;
   ProvisioningArtifactId?: string;
@@ -1926,6 +1938,10 @@ export const DescribeProvisioningArtifactInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeProvisioningArtifactInput",
 }) as any as S.Schema<DescribeProvisioningArtifactInput>;
+export type DefaultValue = string;
+export type ParameterType = string;
+export type NoEcho = boolean;
+export type Description = string;
 export type AllowedValues = string[];
 export const AllowedValues = /*@__PURE__*/ S.Array(S.String);
 export interface ParameterConstraints {
@@ -2025,6 +2041,8 @@ export const ConstraintSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConstraintSummary>;
 export type ConstraintSummaries = ConstraintSummary[];
 export const ConstraintSummaries = /*@__PURE__*/ S.Array(ConstraintSummary);
+export type InstructionType = string;
+export type InstructionValue = string;
 export interface UsageInstruction {
   Type?: string;
   Value?: string;
@@ -2051,6 +2069,7 @@ export type TagOptionSummaries = TagOptionSummary[];
 export const TagOptionSummaries = /*@__PURE__*/ S.Array(TagOptionSummary);
 export type StackSetAccounts = string[];
 export const StackSetAccounts = /*@__PURE__*/ S.Array(S.String);
+export type Region = string;
 export type StackSetRegions = string[];
 export const StackSetRegions = /*@__PURE__*/ S.Array(S.String);
 export interface ProvisioningArtifactPreferences {
@@ -2065,6 +2084,8 @@ export const ProvisioningArtifactPreferences = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProvisioningArtifactPreferences",
 }) as any as S.Schema<ProvisioningArtifactPreferences>;
+export type ProvisioningArtifactOutputKey = string;
+export type OutputDescription = string;
 export interface ProvisioningArtifactOutput {
   Key?: string;
   Description?: string;
@@ -2131,6 +2152,10 @@ export type RecordStatus =
   | "FAILED"
   | (string & {});
 export const RecordStatus = /*@__PURE__*/ S.String;
+
+export type RecordType = string;
+export type ErrorCode = string;
+export type ErrorDescription = string;
 export interface RecordError {
   Code?: string;
   Description?: string;
@@ -2140,6 +2165,8 @@ export const RecordError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecordError" }) as any as S.Schema<RecordError>;
 export type RecordErrors = RecordError[];
 export const RecordErrors = /*@__PURE__*/ S.Array(RecordError);
+export type RecordTagKey = string;
+export type RecordTagValue = string;
 export interface RecordTag {
   Key?: string;
   Value?: string;
@@ -2183,6 +2210,8 @@ export const RecordDetail = /*@__PURE__*/ S.suspend(() =>
     LaunchRoleArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "RecordDetail" }) as any as S.Schema<RecordDetail>;
+export type OutputKey = string;
+export type OutputValue = string;
 export interface RecordOutput {
   OutputKey?: string;
   OutputValue?: string;
@@ -2247,6 +2276,9 @@ export const DescribeServiceActionExecutionParametersInput =
   ).annotate({
     identifier: "DescribeServiceActionExecutionParametersInput",
   }) as any as S.Schema<DescribeServiceActionExecutionParametersInput>;
+export type ExecutionParameterKey = string;
+export type ExecutionParameterType = string;
+export type ExecutionParameterValue = string;
 export type ExecutionParameterValueList = string[];
 export const ExecutionParameterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface ExecutionParameter {
@@ -2506,6 +2538,7 @@ export type AccessStatus =
   | "DISABLED"
   | (string & {});
 export const AccessStatus = /*@__PURE__*/ S.String;
+
 export interface GetAWSOrganizationsAccessStatusOutput {
   AccessStatus?: AccessStatus;
 }
@@ -2550,6 +2583,7 @@ export const GetProvisionedProductOutputsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetProvisionedProductOutputsOutput",
 }) as any as S.Schema<GetProvisionedProductOutputsOutput>;
+export type PhysicalId = string;
 export interface ImportAsProvisionedProductInput {
   AcceptLanguage?: string;
   ProductId: string;
@@ -2896,6 +2930,8 @@ export const ListPrincipalsForPortfolioOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPrincipalsForPortfolioOutput>;
 export type AccessLevelFilterKey = "Account" | "Role" | "User" | (string & {});
 export const AccessLevelFilterKey = /*@__PURE__*/ S.String;
+
+export type AccessLevelFilterValue = string;
 export interface AccessLevelFilter {
   Key?: AccessLevelFilterKey;
   Value?: string;
@@ -3039,6 +3075,8 @@ export const ListProvisioningArtifactsForServiceActionOutput =
   ).annotate({
     identifier: "ListProvisioningArtifactsForServiceActionOutput",
   }) as any as S.Schema<ListProvisioningArtifactsForServiceActionOutput>;
+export type SearchFilterKey = string;
+export type SearchFilterValue = string;
 export interface ListRecordHistorySearchFilter {
   Key?: string;
   Value?: string;
@@ -3082,6 +3120,7 @@ export const ListRecordHistoryOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecordHistoryOutput",
 }) as any as S.Schema<ListRecordHistoryOutput>;
+export type ResourceType = string;
 export interface ListResourcesForTagOptionInput {
   TagOptionId: string;
   ResourceType?: string;
@@ -3100,6 +3139,11 @@ export const ListResourcesForTagOptionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListResourcesForTagOptionInput",
 }) as any as S.Schema<ListResourcesForTagOptionInput>;
+export type ResourceDetailId = string;
+export type ResourceDetailARN = string;
+export type ResourceDetailName = string;
+export type ResourceDetailDescription = string;
+export type ResourceDetailCreatedTime = Date;
 export interface ResourceDetail {
   Id?: string;
   ARN?: string;
@@ -3220,6 +3264,7 @@ export type StackInstanceStatus =
   | "INOPERABLE"
   | (string & {});
 export const StackInstanceStatus = /*@__PURE__*/ S.String;
+
 export interface StackInstance {
   Account?: string;
   Region?: string;
@@ -3289,8 +3334,13 @@ export const ListTagOptionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagOptionsOutput",
 }) as any as S.Schema<ListTagOptionsOutput>;
+export type EngineWorkflowToken = string;
 export type EngineWorkflowStatus = "SUCCEEDED" | "FAILED" | (string & {});
 export const EngineWorkflowStatus = /*@__PURE__*/ S.String;
+
+export type EngineWorkflowFailureReason = string;
+export type UniqueTagKey = string;
+export type UniqueTagValue = string;
 export interface UniqueTagResourceIdentifier {
   Key?: string;
   Value?: string;
@@ -3405,6 +3455,10 @@ export type ProvisioningParameters = ProvisioningParameter[];
 export const ProvisioningParameters = /*@__PURE__*/ S.Array(
   ProvisioningParameter,
 );
+export type StackSetFailureToleranceCount = number;
+export type StackSetFailureTolerancePercentage = number;
+export type StackSetMaxConcurrencyCount = number;
+export type StackSetMaxConcurrencyPercentage = number;
 export interface ProvisioningPreferences {
   StackSetAccounts?: string[];
   StackSetRegions?: string[];
@@ -3532,6 +3586,8 @@ export type ProductViewFilterBy =
   | "SourceProductId"
   | (string & {});
 export const ProductViewFilterBy = /*@__PURE__*/ S.String;
+
+export type ProductViewFilterValue = string;
 export type ProductViewFilterValues = string[];
 export const ProductViewFilterValues = /*@__PURE__*/ S.Array(S.String);
 export type ProductViewFilters = { [key in ProductViewFilterBy]?: string[] };
@@ -3545,8 +3601,10 @@ export type ProductViewSortBy =
   | "CreationDate"
   | (string & {});
 export const ProductViewSortBy = /*@__PURE__*/ S.String;
+
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface SearchProductsInput {
   AcceptLanguage?: string;
   Filters?: { [key: string]: string[] | undefined };
@@ -3571,6 +3629,9 @@ export const SearchProductsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchProductsInput>;
 export type ProductViewSummaries = ProductViewSummary[];
 export const ProductViewSummaries = /*@__PURE__*/ S.Array(ProductViewSummary);
+export type ProductViewAggregationType = string;
+export type AttributeValue = string;
+export type ApproximateCount = number;
 export interface ProductViewAggregationValue {
   Value?: string;
   ApproximateCount?: number;
@@ -3612,6 +3673,7 @@ export const SearchProductsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchProductsOutput>;
 export type ProductSource = "ACCOUNT" | (string & {});
 export const ProductSource = /*@__PURE__*/ S.String;
+
 export interface SearchProductsAsAdminInput {
   AcceptLanguage?: string;
   PortfolioId?: string;
@@ -3654,6 +3716,8 @@ export const SearchProductsAsAdminOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchProductsAsAdminOutput>;
 export type ProvisionedProductViewFilterBy = "SearchQuery" | (string & {});
 export const ProvisionedProductViewFilterBy = /*@__PURE__*/ S.String;
+
+export type ProvisionedProductViewFilterValue = string;
 export type ProvisionedProductViewFilterValues = string[];
 export const ProvisionedProductViewFilterValues = /*@__PURE__*/ S.Array(
   S.String,
@@ -3665,6 +3729,8 @@ export const ProvisionedProductFilters = /*@__PURE__*/ S.Record(
   ProvisionedProductViewFilterBy,
   ProvisionedProductViewFilterValues.pipe(S.optional),
 );
+export type SortField = string;
+export type SearchProvisionedProductsPageSize = number;
 export interface SearchProvisionedProductsInput {
   AcceptLanguage?: string;
   AccessLevelFilter?: AccessLevelFilter;
@@ -3689,6 +3755,8 @@ export const SearchProvisionedProductsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchProvisionedProductsInput",
 }) as any as S.Schema<SearchProvisionedProductsInput>;
+export type UserArn = string;
+export type UserArnSession = string;
 export interface ProvisionedProductAttribute {
   Name?: string;
   Arn?: string;
@@ -3739,6 +3807,7 @@ export type ProvisionedProductAttributes = ProvisionedProductAttribute[];
 export const ProvisionedProductAttributes = /*@__PURE__*/ S.Array(
   ProvisionedProductAttribute,
 );
+export type TotalResultsCount = number;
 export interface SearchProvisionedProductsOutput {
   ProvisionedProducts?: ProvisionedProductAttribute[];
   TotalResultsCount?: number;
@@ -3753,6 +3822,7 @@ export const SearchProvisionedProductsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchProvisionedProductsOutput",
 }) as any as S.Schema<SearchProvisionedProductsOutput>;
+export type RetainPhysicalResources = boolean;
 export interface TerminateProvisionedProductInput {
   ProvisionedProductName?: string;
   ProvisionedProductId?: string;
@@ -3939,6 +4009,7 @@ export type StackSetOperationType =
   | "DELETE"
   | (string & {});
 export const StackSetOperationType = /*@__PURE__*/ S.String;
+
 export interface UpdateProvisioningPreferences {
   StackSetAccounts?: string[];
   StackSetRegions?: string[];
@@ -4007,6 +4078,8 @@ export const UpdateProvisionedProductOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateProvisionedProductOutput>;
 export type PropertyKey = "OWNER" | "LAUNCH_ROLE" | (string & {});
 export const PropertyKey = /*@__PURE__*/ S.String;
+
+export type PropertyValue = string;
 export type ProvisionedProductProperties = { [key in PropertyKey]?: string };
 export const ProvisionedProductProperties = /*@__PURE__*/ S.Record(
   PropertyKey,
@@ -4138,50 +4211,7 @@ export const UpdateTagOptionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTagOptionOutput",
 }) as any as S.Schema<UpdateTagOptionOutput>;
-
-//# Errors
-export class InvalidParametersException extends S.TaggedErrorClass<InvalidParametersException>()(
-  "InvalidParametersException",
-  { Message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class DuplicateResourceException extends S.TaggedErrorClass<DuplicateResourceException>()(
-  "DuplicateResourceException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
-  "InvalidStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class TagOptionNotMigratedException extends S.TaggedErrorClass<TagOptionNotMigratedException>()(
-  "TagOptionNotMigratedException",
-  { Message: S.optional(S.String) },
-) {}
-export class OperationNotSupportedException extends S.TaggedErrorClass<OperationNotSupportedException>()(
-  "OperationNotSupportedException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { Message: S.optional(S.String) },
-) {}
-export class ProvisionedProductNotFound extends S.TaggedErrorClass<ProvisionedProductNotFound>()(
-  "ProvisionedProductNotFound",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "Provisioned product not found" },
-  }),
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type AcceptPortfolioShareError =
   | InvalidParametersException
   | LimitExceededException
@@ -4207,6 +4237,7 @@ export const acceptPortfolioShare: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptPortfolioShare",
 }));
+
 export type AssociateBudgetWithResourceError =
   | DuplicateResourceException
   | InvalidParametersException
@@ -4234,6 +4265,7 @@ export const associateBudgetWithResource: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateBudgetWithResource",
 }));
+
 export type AssociatePrincipalWithPortfolioError =
   | InvalidParametersException
   | LimitExceededException
@@ -4275,6 +4307,7 @@ export const associatePrincipalWithPortfolio: API.OperationMethod<
   retry: Retry,
   operationName: "AssociatePrincipalWithPortfolio",
 }));
+
 export type AssociateProductWithPortfolioError =
   | InvalidParametersException
   | LimitExceededException
@@ -4302,6 +4335,7 @@ export const associateProductWithPortfolio: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateProductWithPortfolio",
 }));
+
 export type AssociateServiceActionWithProvisioningArtifactError =
   | DuplicateResourceException
   | InvalidParametersException
@@ -4329,6 +4363,7 @@ export const associateServiceActionWithProvisioningArtifact: API.OperationMethod
   retry: Retry,
   operationName: "AssociateServiceActionWithProvisioningArtifact",
 }));
+
 export type AssociateTagOptionWithResourceError =
   | DuplicateResourceException
   | InvalidParametersException
@@ -4360,6 +4395,7 @@ export const associateTagOptionWithResource: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateTagOptionWithResource",
 }));
+
 export type BatchAssociateServiceActionWithProvisioningArtifactError =
   | InvalidParametersException
   | CommonErrors;
@@ -4379,6 +4415,7 @@ export const batchAssociateServiceActionWithProvisioningArtifact: API.OperationM
   retry: Retry,
   operationName: "BatchAssociateServiceActionWithProvisioningArtifact",
 }));
+
 export type BatchDisassociateServiceActionFromProvisioningArtifactError =
   | InvalidParametersException
   | CommonErrors;
@@ -4398,6 +4435,7 @@ export const batchDisassociateServiceActionFromProvisioningArtifact: API.Operati
   retry: Retry,
   operationName: "BatchDisassociateServiceActionFromProvisioningArtifact",
 }));
+
 export type CopyProductError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -4426,6 +4464,7 @@ export const copyProduct: API.OperationMethod<
   retry: Retry,
   operationName: "CopyProduct",
 }));
+
 export type CreateConstraintError =
   | DuplicateResourceException
   | InvalidParametersException
@@ -4455,6 +4494,7 @@ export const createConstraint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConstraint",
 }));
+
 export type CreatePortfolioError =
   | InvalidParametersException
   | LimitExceededException
@@ -4482,6 +4522,7 @@ export const createPortfolio: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePortfolio",
 }));
+
 export type CreatePortfolioShareError =
   | InvalidParametersException
   | InvalidStateException
@@ -4531,6 +4572,7 @@ export const createPortfolioShare: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePortfolioShare",
 }));
+
 export type CreateProductError =
   | InvalidParametersException
   | LimitExceededException
@@ -4563,6 +4605,7 @@ export const createProduct: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProduct",
 }));
+
 export type CreateProvisionedProductPlanError =
   | InvalidParametersException
   | InvalidStateException
@@ -4598,6 +4641,7 @@ export const createProvisionedProductPlan: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProvisionedProductPlan",
 }));
+
 export type CreateProvisioningArtifactError =
   | InvalidParametersException
   | LimitExceededException
@@ -4629,6 +4673,7 @@ export const createProvisioningArtifact: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProvisioningArtifact",
 }));
+
 export type CreateServiceActionError =
   | InvalidParametersException
   | LimitExceededException
@@ -4649,6 +4694,7 @@ export const createServiceAction: API.OperationMethod<
   retry: Retry,
   operationName: "CreateServiceAction",
 }));
+
 export type CreateTagOptionError =
   | DuplicateResourceException
   | LimitExceededException
@@ -4674,6 +4720,7 @@ export const createTagOption: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTagOption",
 }));
+
 export type DeleteConstraintError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -4696,6 +4743,7 @@ export const deleteConstraint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConstraint",
 }));
+
 export type DeletePortfolioError =
   | InvalidParametersException
   | ResourceInUseException
@@ -4728,6 +4776,7 @@ export const deletePortfolio: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePortfolio",
 }));
+
 export type DeletePortfolioShareError =
   | InvalidParametersException
   | InvalidStateException
@@ -4759,6 +4808,7 @@ export const deletePortfolioShare: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePortfolioShare",
 }));
+
 export type DeleteProductError =
   | InvalidParametersException
   | ResourceInUseException
@@ -4790,6 +4840,7 @@ export const deleteProduct: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProduct",
 }));
+
 export type DeleteProvisionedProductPlanError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -4810,6 +4861,7 @@ export const deleteProvisionedProductPlan: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProvisionedProductPlan",
 }));
+
 export type DeleteProvisioningArtifactError =
   | InvalidParametersException
   | ResourceInUseException
@@ -4839,6 +4891,7 @@ export const deleteProvisioningArtifact: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProvisioningArtifact",
 }));
+
 export type DeleteServiceActionError =
   | InvalidParametersException
   | ResourceInUseException
@@ -4864,6 +4917,7 @@ export const deleteServiceAction: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteServiceAction",
 }));
+
 export type DeleteTagOptionError =
   | ResourceInUseException
   | ResourceNotFoundException
@@ -4891,6 +4945,7 @@ export const deleteTagOption: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTagOption",
 }));
+
 export type DescribeConstraintError = ResourceNotFoundException | CommonErrors;
 /**
  * Gets information about the specified constraint.
@@ -4908,6 +4963,7 @@ export const describeConstraint: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConstraint",
 }));
+
 export type DescribeCopyProductStatusError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -4927,6 +4983,7 @@ export const describeCopyProductStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCopyProductStatus",
 }));
+
 export type DescribePortfolioError = ResourceNotFoundException | CommonErrors;
 /**
  * Gets information about the specified portfolio.
@@ -4946,6 +5003,7 @@ export const describePortfolio: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePortfolio",
 }));
+
 export type DescribePortfolioSharesError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -4992,6 +5050,7 @@ export const describePortfolioShares: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type DescribePortfolioShareStatusError =
   | InvalidParametersException
   | OperationNotSupportedException
@@ -5018,6 +5077,7 @@ export const describePortfolioShareStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePortfolioShareStatus",
 }));
+
 export type DescribeProductError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5044,6 +5104,7 @@ export const describeProduct: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeProduct",
 }));
+
 export type DescribeProductAsAdminError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5064,6 +5125,7 @@ export const describeProductAsAdmin: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeProductAsAdmin",
 }));
+
 export type DescribeProductViewError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5084,6 +5146,7 @@ export const describeProductView: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeProductView",
 }));
+
 export type DescribeProvisionedProductError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5104,6 +5167,7 @@ export const describeProvisionedProduct: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeProvisionedProduct",
 }));
+
 export type DescribeProvisionedProductPlanError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5124,6 +5188,7 @@ export const describeProvisionedProductPlan: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeProvisionedProductPlan",
 }));
+
 export type DescribeProvisioningArtifactError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5144,6 +5209,7 @@ export const describeProvisioningArtifact: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeProvisioningArtifact",
 }));
+
 export type DescribeProvisioningParametersError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5172,6 +5238,7 @@ export const describeProvisioningParameters: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeProvisioningParameters",
 }));
+
 export type DescribeRecordError = ResourceNotFoundException | CommonErrors;
 /**
  * Gets information about the specified request operation.
@@ -5196,6 +5263,7 @@ export const describeRecord: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRecord",
 }));
+
 export type DescribeServiceActionError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -5215,6 +5283,7 @@ export const describeServiceAction: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeServiceAction",
 }));
+
 export type DescribeServiceActionExecutionParametersError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5235,6 +5304,7 @@ export const describeServiceActionExecutionParameters: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeServiceActionExecutionParameters",
 }));
+
 export type DescribeTagOptionError =
   | ResourceNotFoundException
   | TagOptionNotMigratedException
@@ -5255,6 +5325,7 @@ export const describeTagOption: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTagOption",
 }));
+
 export type DisableAWSOrganizationsAccessError =
   | InvalidStateException
   | OperationNotSupportedException
@@ -5293,6 +5364,7 @@ export const disableAWSOrganizationsAccess: API.OperationMethod<
   retry: Retry,
   operationName: "DisableAWSOrganizationsAccess",
 }));
+
 export type DisassociateBudgetFromResourceError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -5312,6 +5384,7 @@ export const disassociateBudgetFromResource: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateBudgetFromResource",
 }));
+
 export type DisassociatePrincipalFromPortfolioError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5351,6 +5424,7 @@ export const disassociatePrincipalFromPortfolio: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociatePrincipalFromPortfolio",
 }));
+
 export type DisassociateProductFromPortfolioError =
   | InvalidParametersException
   | ResourceInUseException
@@ -5378,6 +5452,7 @@ export const disassociateProductFromPortfolio: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateProductFromPortfolio",
 }));
+
 export type DisassociateServiceActionFromProvisioningArtifactError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5398,6 +5473,7 @@ export const disassociateServiceActionFromProvisioningArtifact: API.OperationMet
   retry: Retry,
   operationName: "DisassociateServiceActionFromProvisioningArtifact",
 }));
+
 export type DisassociateTagOptionFromResourceError =
   | ResourceNotFoundException
   | TagOptionNotMigratedException
@@ -5418,6 +5494,7 @@ export const disassociateTagOptionFromResource: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateTagOptionFromResource",
 }));
+
 export type EnableAWSOrganizationsAccessError =
   | InvalidStateException
   | OperationNotSupportedException
@@ -5456,6 +5533,7 @@ export const enableAWSOrganizationsAccess: API.OperationMethod<
   retry: Retry,
   operationName: "EnableAWSOrganizationsAccess",
 }));
+
 export type ExecuteProvisionedProductPlanError =
   | InvalidParametersException
   | InvalidStateException
@@ -5481,6 +5559,7 @@ export const executeProvisionedProductPlan: API.OperationMethod<
   retry: Retry,
   operationName: "ExecuteProvisionedProductPlan",
 }));
+
 export type ExecuteProvisionedProductServiceActionError =
   | InvalidParametersException
   | InvalidStateException
@@ -5508,6 +5587,7 @@ export const executeProvisionedProductServiceAction: API.OperationMethod<
   retry: Retry,
   operationName: "ExecuteProvisionedProductServiceAction",
 }));
+
 export type GetAWSOrganizationsAccessStatusError =
   | OperationNotSupportedException
   | ResourceNotFoundException
@@ -5529,6 +5609,7 @@ export const getAWSOrganizationsAccessStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetAWSOrganizationsAccessStatus",
 }));
+
 export type GetProvisionedProductOutputsError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5569,6 +5650,7 @@ export const getProvisionedProductOutputs: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ImportAsProvisionedProductError =
   | DuplicateResourceException
   | InvalidParametersException
@@ -5621,6 +5703,7 @@ export const importAsProvisionedProduct: API.OperationMethod<
   retry: Retry,
   operationName: "ImportAsProvisionedProduct",
 }));
+
 export type ListAcceptedPortfolioSharesError =
   | InvalidParametersException
   | OperationNotSupportedException
@@ -5663,6 +5746,7 @@ export const listAcceptedPortfolioShares: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListBudgetsForResourceError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5703,6 +5787,7 @@ export const listBudgetsForResource: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListConstraintsForPortfolioError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5743,6 +5828,7 @@ export const listConstraintsForPortfolio: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListLaunchPathsError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5803,6 +5889,7 @@ export const listLaunchPaths: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListOrganizationPortfolioAccessError =
   | InvalidParametersException
   | OperationNotSupportedException
@@ -5852,6 +5939,7 @@ export const listOrganizationPortfolioAccess: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListPortfolioAccessError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5894,6 +5982,7 @@ export const listPortfolioAccess: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListPortfoliosError = InvalidParametersException | CommonErrors;
 /**
  * Lists all portfolios in the catalog.
@@ -5931,6 +6020,7 @@ export const listPortfolios: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListPortfoliosForProductError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -5971,6 +6061,7 @@ export const listPortfoliosForProduct: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListPrincipalsForPortfolioError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6011,6 +6102,7 @@ export const listPrincipalsForPortfolio: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListProvisionedProductPlansError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6031,6 +6123,7 @@ export const listProvisionedProductPlans: API.OperationMethod<
   retry: Retry,
   operationName: "ListProvisionedProductPlans",
 }));
+
 export type ListProvisioningArtifactsError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6051,6 +6144,7 @@ export const listProvisioningArtifacts: API.OperationMethod<
   retry: Retry,
   operationName: "ListProvisioningArtifacts",
 }));
+
 export type ListProvisioningArtifactsForServiceActionError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6091,6 +6185,7 @@ export const listProvisioningArtifactsForServiceAction: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListRecordHistoryError = InvalidParametersException | CommonErrors;
 /**
  * Lists the specified requests or all performed requests.
@@ -6108,6 +6203,7 @@ export const listRecordHistory: API.OperationMethod<
   retry: Retry,
   operationName: "ListRecordHistory",
 }));
+
 export type ListResourcesForTagOptionError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6153,6 +6249,7 @@ export const listResourcesForTagOption: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListServiceActionsError = InvalidParametersException | CommonErrors;
 /**
  * Lists all self-service actions.
@@ -6190,6 +6287,7 @@ export const listServiceActions: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListServiceActionsForProvisioningArtifactError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6230,6 +6328,7 @@ export const listServiceActionsForProvisioningArtifact: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListStackInstancesForProvisionedProductError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6250,6 +6349,7 @@ export const listStackInstancesForProvisionedProduct: API.OperationMethod<
   retry: Retry,
   operationName: "ListStackInstancesForProvisionedProduct",
 }));
+
 export type ListTagOptionsError =
   | InvalidParametersException
   | TagOptionNotMigratedException
@@ -6290,6 +6390,7 @@ export const listTagOptions: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type NotifyProvisionProductEngineWorkflowResultError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6311,6 +6412,7 @@ export const notifyProvisionProductEngineWorkflowResult: API.OperationMethod<
   retry: Retry,
   operationName: "NotifyProvisionProductEngineWorkflowResult",
 }));
+
 export type NotifyTerminateProvisionedProductEngineWorkflowResultError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6332,6 +6434,7 @@ export const notifyTerminateProvisionedProductEngineWorkflowResult: API.Operatio
   retry: Retry,
   operationName: "NotifyTerminateProvisionedProductEngineWorkflowResult",
 }));
+
 export type NotifyUpdateProvisionedProductEngineWorkflowResultError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6353,6 +6456,7 @@ export const notifyUpdateProvisionedProductEngineWorkflowResult: API.OperationMe
   retry: Retry,
   operationName: "NotifyUpdateProvisionedProductEngineWorkflowResult",
 }));
+
 export type ProvisionProductError =
   | DuplicateResourceException
   | InvalidParametersException
@@ -6407,6 +6511,7 @@ export const provisionProduct: API.OperationMethod<
   retry: Retry,
   operationName: "ProvisionProduct",
 }));
+
 export type RejectPortfolioShareError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -6426,6 +6531,7 @@ export const rejectPortfolioShare: API.OperationMethod<
   retry: Retry,
   operationName: "RejectPortfolioShare",
 }));
+
 export type ScanProvisionedProductsError =
   | InvalidParametersException
   | CommonErrors;
@@ -6447,6 +6553,7 @@ export const scanProvisionedProducts: API.OperationMethod<
   retry: Retry,
   operationName: "ScanProvisionedProducts",
 }));
+
 export type SearchProductsError = InvalidParametersException | CommonErrors;
 /**
  * Gets information about the products to which the caller has access.
@@ -6484,6 +6591,7 @@ export const searchProducts: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type SearchProductsAsAdminError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6524,6 +6632,7 @@ export const searchProductsAsAdmin: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type SearchProvisionedProductsError =
   | InvalidParametersException
   | CommonErrors;
@@ -6563,6 +6672,7 @@ export const searchProvisionedProducts: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type TerminateProvisionedProductError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -6586,6 +6696,7 @@ export const terminateProvisionedProduct: API.OperationMethod<
   retry: Retry,
   operationName: "TerminateProvisionedProduct",
 }));
+
 export type UpdateConstraintError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6606,6 +6717,7 @@ export const updateConstraint: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConstraint",
 }));
+
 export type UpdatePortfolioError =
   | InvalidParametersException
   | LimitExceededException
@@ -6635,6 +6747,7 @@ export const updatePortfolio: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePortfolio",
 }));
+
 export type UpdatePortfolioShareError =
   | InvalidParametersException
   | InvalidStateException
@@ -6680,6 +6793,7 @@ export const updatePortfolioShare: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePortfolioShare",
 }));
+
 export type UpdateProductError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6705,6 +6819,7 @@ export const updateProduct: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProduct",
 }));
+
 export type UpdateProvisionedProductError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6731,6 +6846,7 @@ export const updateProvisionedProduct: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProvisionedProduct",
 }));
+
 export type UpdateProvisionedProductPropertiesError =
   | InvalidParametersException
   | InvalidStateException
@@ -6756,6 +6872,7 @@ export const updateProvisionedProductProperties: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProvisionedProductProperties",
 }));
+
 export type UpdateProvisioningArtifactError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6778,6 +6895,7 @@ export const updateProvisioningArtifact: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProvisioningArtifact",
 }));
+
 export type UpdateServiceActionError =
   | InvalidParametersException
   | ResourceNotFoundException
@@ -6798,6 +6916,7 @@ export const updateServiceAction: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateServiceAction",
 }));
+
 export type UpdateTagOptionError =
   | DuplicateResourceException
   | InvalidParametersException

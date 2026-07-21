@@ -89,30 +89,145 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ServiceAccessDenied", httpResponseCode: 401 }),
+    T.HttpError(401),
+  ),
+).pipe(C.withAuthError) {}
+export class AuthorizationException extends S.TaggedErrorClass<AuthorizationException>()(
+  "AuthorizationException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AuthorizationFailure", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class EntitlementNotAllowedException extends S.TaggedErrorClass<EntitlementNotAllowedException>()(
+  "EntitlementNotAllowedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class FailedDependencyException extends S.TaggedErrorClass<FailedDependencyException>()(
+  "FailedDependencyException",
+  { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "FailedDependency", httpResponseCode: 424 }),
+    T.HttpError(424),
+  ),
+) {}
+export class FilterLimitExceededException extends S.TaggedErrorClass<FilterLimitExceededException>()(
+  "FilterLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "FilterLimitExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidParameterValueProvided",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidResourceStateException extends S.TaggedErrorClass<InvalidResourceStateException>()(
+  "InvalidResourceStateException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidResourceState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class LicenseConfigurationNotFound extends S.TaggedErrorClass<LicenseConfigurationNotFound>()(
+  "LicenseConfigurationNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidParameterValueException",
+    message: { includes: "Invalid license configuration ARN" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class LicenseUsageException extends S.TaggedErrorClass<LicenseUsageException>()(
+  "LicenseUsageException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "LicenseUsageFailure", httpResponseCode: 412 }),
+    T.HttpError(412),
+  ),
+) {}
+export class NoEntitlementsAllowedException extends S.TaggedErrorClass<NoEntitlementsAllowedException>()(
+  "NoEntitlementsAllowedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class RateLimitExceededException extends S.TaggedErrorClass<RateLimitExceededException>()(
+  "RateLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "RateLimitExceeded", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
+export class RedirectException extends S.TaggedErrorClass<RedirectException>()(
+  "RedirectException",
+  {
+    Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(308),
+) {}
+export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
+  "ResourceLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceLimitExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidResource.NotFound",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ServerInternalException extends S.TaggedErrorClass<ServerInternalException>()(
+  "ServerInternalException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class UnsupportedDigitalSignatureMethodException extends S.TaggedErrorClass<UnsupportedDigitalSignatureMethodException>()(
+  "UnsupportedDigitalSignatureMethodException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Arn = string;
-export type Message = string;
-export type ClientToken = string;
-export type SignedToken = string;
-export type ISO8601DateTime = string;
-export type Location = string;
-export type StatusReasonMessage = string;
-export type BoxBoolean = boolean;
-export type BoxInteger = number;
-export type LicenseAssetResourceName = string;
-export type LicenseAssetResourceDescription = string;
-export type BoxLong = number;
-export type UsageOperation = string;
-export type ProductCodeId = string;
-export type LicenseConversionTaskId = string;
-export type ReportGeneratorName = string;
-export type ClientRequestToken = string;
-export type TokenString = string;
-export type FilterName = string;
-export type FilterValue = string;
-export type MaxSize100 = number;
-
-//# Schemas
 export interface AcceptGrantRequest {
   GrantArn: string;
 }
@@ -143,6 +258,7 @@ export type GrantStatus =
   | "WORKFLOW_COMPLETED"
   | (string & {});
 export const GrantStatus = /*@__PURE__*/ S.String;
+
 export interface AcceptGrantResponse {
   GrantArn?: string;
   Status?: GrantStatus;
@@ -215,6 +331,7 @@ export type EntitlementDataUnit =
   | "Count/Second"
   | (string & {});
 export const EntitlementDataUnit = /*@__PURE__*/ S.String;
+
 export interface EntitlementData {
   Name: string;
   Value?: string;
@@ -233,6 +350,7 @@ export type EntitlementDataList = EntitlementData[];
 export const EntitlementDataList = /*@__PURE__*/ S.Array(EntitlementData);
 export type DigitalSignatureMethod = "JWT_PS384" | (string & {});
 export const DigitalSignatureMethod = /*@__PURE__*/ S.String;
+
 export interface Metadata {
   Name?: string;
   Value?: string;
@@ -242,6 +360,7 @@ export const Metadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Metadata" }) as any as S.Schema<Metadata>;
 export type MetadataList = Metadata[];
 export const MetadataList = /*@__PURE__*/ S.Array(Metadata);
+export type ClientToken = string;
 export interface CheckoutBorrowLicenseRequest {
   LicenseArn: string;
   Entitlements: EntitlementData[];
@@ -272,6 +391,8 @@ export const CheckoutBorrowLicenseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CheckoutBorrowLicenseRequest",
 }) as any as S.Schema<CheckoutBorrowLicenseRequest>;
+export type SignedToken = string;
+export type ISO8601DateTime = string;
 export interface CheckoutBorrowLicenseResponse {
   LicenseArn?: string;
   LicenseConsumptionToken?: string;
@@ -298,6 +419,7 @@ export const CheckoutBorrowLicenseResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CheckoutBorrowLicenseResponse>;
 export type CheckoutType = "PROVISIONAL" | "PERPETUAL" | (string & {});
 export const CheckoutType = /*@__PURE__*/ S.String;
+
 export interface CheckoutLicenseRequest {
   ProductSKU: string;
   CheckoutType: CheckoutType;
@@ -366,6 +488,7 @@ export type AllowedOperation =
   | "CreateToken"
   | (string & {});
 export const AllowedOperation = /*@__PURE__*/ S.String;
+
 export type AllowedOperationList = AllowedOperation[];
 export const AllowedOperationList = /*@__PURE__*/ S.Array(AllowedOperation);
 export interface Tag {
@@ -423,11 +546,13 @@ export const CreateGrantResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGrantResponse",
 }) as any as S.Schema<CreateGrantResponse>;
+export type StatusReasonMessage = string;
 export type ActivationOverrideBehavior =
   | "DISTRIBUTED_GRANTS_ONLY"
   | "ALL_GRANTS_PERMITTED_BY_ISSUER"
   | (string & {});
 export const ActivationOverrideBehavior = /*@__PURE__*/ S.String;
+
 export interface Options {
   ActivationOverrideBehavior?: ActivationOverrideBehavior;
 }
@@ -498,6 +623,7 @@ export interface DatetimeRange {
 export const DatetimeRange = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Begin: S.String, End: S.optional(S.String) }),
 ).annotate({ identifier: "DatetimeRange" }) as any as S.Schema<DatetimeRange>;
+export type BoxBoolean = boolean;
 export type EntitlementUnit =
   | "Count"
   | "None"
@@ -528,6 +654,7 @@ export type EntitlementUnit =
   | "Count/Second"
   | (string & {});
 export const EntitlementUnit = /*@__PURE__*/ S.String;
+
 export interface Entitlement {
   Name: string;
   Value?: string;
@@ -550,6 +677,8 @@ export type EntitlementList = Entitlement[];
 export const EntitlementList = /*@__PURE__*/ S.Array(Entitlement);
 export type RenewType = "None" | "Weekly" | "Monthly" | (string & {});
 export const RenewType = /*@__PURE__*/ S.String;
+
+export type BoxInteger = number;
 export interface ProvisionalConfiguration {
   MaxTimeToLiveInMinutes: number;
 }
@@ -633,6 +762,7 @@ export type LicenseStatus =
   | "DELETED"
   | (string & {});
 export const LicenseStatus = /*@__PURE__*/ S.String;
+
 export interface CreateLicenseResponse {
   LicenseArn?: string;
   Status?: LicenseStatus;
@@ -647,6 +777,8 @@ export const CreateLicenseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLicenseResponse",
 }) as any as S.Schema<CreateLicenseResponse>;
+export type LicenseAssetResourceName = string;
+export type LicenseAssetResourceDescription = string;
 export interface LicenseAssetGroupConfiguration {
   UsageDimension?: string;
 }
@@ -883,6 +1015,8 @@ export type LicenseCountingType =
   | "Socket"
   | (string & {});
 export const LicenseCountingType = /*@__PURE__*/ S.String;
+
+export type BoxLong = number;
 export interface ProductInformationFilter {
   ProductInformationFilterName: string;
   ProductInformationFilterValue?: string[];
@@ -961,8 +1095,11 @@ export const CreateLicenseConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLicenseConfigurationResponse",
 }) as any as S.Schema<CreateLicenseConfigurationResponse>;
+export type UsageOperation = string;
+export type ProductCodeId = string;
 export type ProductCodeType = "marketplace" | (string & {});
 export const ProductCodeType = /*@__PURE__*/ S.String;
+
 export interface ProductCodeListItem {
   ProductCodeId: string;
   ProductCodeType: ProductCodeType;
@@ -1011,6 +1148,7 @@ export const CreateLicenseConversionTaskForResourceRequest =
   ).annotate({
     identifier: "CreateLicenseConversionTaskForResourceRequest",
   }) as any as S.Schema<CreateLicenseConversionTaskForResourceRequest>;
+export type LicenseConversionTaskId = string;
 export interface CreateLicenseConversionTaskForResourceResponse {
   LicenseConversionTaskId?: string;
 }
@@ -1020,12 +1158,14 @@ export const CreateLicenseConversionTaskForResourceResponse =
   ).annotate({
     identifier: "CreateLicenseConversionTaskForResourceResponse",
   }) as any as S.Schema<CreateLicenseConversionTaskForResourceResponse>;
+export type ReportGeneratorName = string;
 export type ReportType =
   | "LicenseConfigurationSummaryReport"
   | "LicenseConfigurationUsageReport"
   | "LicenseAssetGroupUsageReport"
   | (string & {});
 export const ReportType = /*@__PURE__*/ S.String;
+
 export type ReportTypeList = ReportType[];
 export const ReportTypeList = /*@__PURE__*/ S.Array(ReportType);
 export type ArnList = string[];
@@ -1053,6 +1193,7 @@ export type ReportFrequencyType =
   | "ONE_TIME"
   | (string & {});
 export const ReportFrequencyType = /*@__PURE__*/ S.String;
+
 export interface ReportFrequency {
   value?: number;
   period?: ReportFrequencyType;
@@ -1065,6 +1206,7 @@ export const ReportFrequency = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReportFrequency",
 }) as any as S.Schema<ReportFrequency>;
+export type ClientRequestToken = string;
 export interface CreateLicenseManagerReportGeneratorRequest {
   ReportGeneratorName: string;
   Type: ReportType[];
@@ -1197,6 +1339,8 @@ export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTokenRequest>;
 export type TokenType = "REFRESH_TOKEN" | (string & {});
 export const TokenType = /*@__PURE__*/ S.String;
+
+export type TokenString = string;
 export interface CreateTokenResponse {
   TokenId?: string;
   TokenType?: TokenType;
@@ -1273,6 +1417,7 @@ export type LicenseDeletionStatus =
   | "DELETED"
   | (string & {});
 export const LicenseDeletionStatus = /*@__PURE__*/ S.String;
+
 export interface DeleteLicenseResponse {
   Status?: LicenseDeletionStatus;
   DeletionDate?: string;
@@ -1309,6 +1454,7 @@ export type LicenseAssetGroupStatus =
   | "DELETED"
   | (string & {});
 export const LicenseAssetGroupStatus = /*@__PURE__*/ S.String;
+
 export interface DeleteLicenseAssetGroupResponse {
   Status: LicenseAssetGroupStatus;
 }
@@ -1733,6 +1879,7 @@ export type ResourceType =
   | "SYSTEMS_MANAGER_MANAGED_INSTANCE"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export interface ConsumedLicenseSummary {
   ResourceType?: ResourceType;
   ConsumedLicenses?: number;
@@ -1843,6 +1990,7 @@ export type LicenseConversionTaskStatus =
   | "FAILED"
   | (string & {});
 export const LicenseConversionTaskStatus = /*@__PURE__*/ S.String;
+
 export interface GetLicenseConversionTaskResponse {
   LicenseConversionTaskId?: string;
   ResourceArn?: string;
@@ -2193,6 +2341,8 @@ export const ListAssociationsForLicenseConfigurationResponse =
   ).annotate({
     identifier: "ListAssociationsForLicenseConfigurationResponse",
   }) as any as S.Schema<ListAssociationsForLicenseConfigurationResponse>;
+export type FilterName = string;
+export type FilterValue = string;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -2206,6 +2356,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
 export const FilterList = /*@__PURE__*/ S.Array(Filter);
+export type MaxSize100 = number;
 export interface ListDistributedGrantsRequest {
   GrantArns?: string[];
   Filters?: Filter[];
@@ -2870,6 +3021,7 @@ export type ReceivedStatus =
   | "WORKFLOW_COMPLETED"
   | (string & {});
 export const ReceivedStatus = /*@__PURE__*/ S.String;
+
 export interface ReceivedMetadata {
   ReceivedStatus?: ReceivedStatus;
   ReceivedStatusReason?: string;
@@ -2979,6 +3131,7 @@ export type InventoryFilterCondition =
   | "CONTAINS"
   | (string & {});
 export const InventoryFilterCondition = /*@__PURE__*/ S.String;
+
 export interface InventoryFilter {
   Name: string;
   Condition: InventoryFilterCondition;
@@ -3387,6 +3540,7 @@ export type LicenseConfigurationStatus =
   | "DISABLED"
   | (string & {});
 export const LicenseConfigurationStatus = /*@__PURE__*/ S.String;
+
 export interface UpdateLicenseConfigurationRequest {
   LicenseConfigurationArn: string;
   LicenseConfigurationStatus?: LicenseConfigurationStatus;
@@ -3533,148 +3687,8 @@ export const UpdateServiceSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateServiceSettingsResponse",
 }) as any as S.Schema<UpdateServiceSettingsResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ServiceAccessDenied", httpResponseCode: 401 }),
-    T.HttpError(401),
-  ),
-).pipe(C.withAuthError) {}
-export class AuthorizationException extends S.TaggedErrorClass<AuthorizationException>()(
-  "AuthorizationException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AuthorizationFailure", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidParameterValueProvided",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class RateLimitExceededException extends S.TaggedErrorClass<RateLimitExceededException>()(
-  "RateLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "RateLimitExceeded", httpResponseCode: 429 }),
-    T.HttpError(429),
-  ),
-).pipe(C.withThrottlingError) {}
-export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
-  "ResourceLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceLimitExceeded", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ServerInternalException extends S.TaggedErrorClass<ServerInternalException>()(
-  "ServerInternalException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidResource.NotFound",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class EntitlementNotAllowedException extends S.TaggedErrorClass<EntitlementNotAllowedException>()(
-  "EntitlementNotAllowedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NoEntitlementsAllowedException extends S.TaggedErrorClass<NoEntitlementsAllowedException>()(
-  "NoEntitlementsAllowedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class RedirectException extends S.TaggedErrorClass<RedirectException>()(
-  "RedirectException",
-  {
-    Location: S.optional(S.String).pipe(T.HttpHeader("Location")),
-    Message: S.optional(S.String),
-  },
-  T.HttpError(308),
-) {}
-export class UnsupportedDigitalSignatureMethodException extends S.TaggedErrorClass<UnsupportedDigitalSignatureMethodException>()(
-  "UnsupportedDigitalSignatureMethodException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LicenseConfigurationNotFound extends S.TaggedErrorClass<LicenseConfigurationNotFound>()(
-  "LicenseConfigurationNotFound",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidParameterValueException",
-    message: { includes: "Invalid license configuration ARN" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class FilterLimitExceededException extends S.TaggedErrorClass<FilterLimitExceededException>()(
-  "FilterLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "FilterLimitExceeded", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class FailedDependencyException extends S.TaggedErrorClass<FailedDependencyException>()(
-  "FailedDependencyException",
-  { Message: S.optional(S.String), ErrorCode: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "FailedDependency", httpResponseCode: 424 }),
-    T.HttpError(424),
-  ),
-) {}
-export class InvalidResourceStateException extends S.TaggedErrorClass<InvalidResourceStateException>()(
-  "InvalidResourceStateException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidResourceState", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class LicenseUsageException extends S.TaggedErrorClass<LicenseUsageException>()(
-  "LicenseUsageException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "LicenseUsageFailure", httpResponseCode: 412 }),
-    T.HttpError(412),
-  ),
-) {}
-
-//# Operations
+export type Message = string;
+export type Location = string;
 export type AcceptGrantError =
   | AccessDeniedException
   | AuthorizationException
@@ -3708,6 +3722,7 @@ export const acceptGrant: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptGrant",
 }));
+
 export type CheckInLicenseError =
   | AccessDeniedException
   | AuthorizationException
@@ -3743,6 +3758,7 @@ export const checkInLicense: API.OperationMethod<
   retry: Retry,
   operationName: "CheckInLicense",
 }));
+
 export type CheckoutBorrowLicenseError =
   | AccessDeniedException
   | AuthorizationException
@@ -3784,6 +3800,7 @@ export const checkoutBorrowLicense: API.OperationMethod<
   retry: Retry,
   operationName: "CheckoutBorrowLicense",
 }));
+
 export type CheckoutLicenseError =
   | AccessDeniedException
   | AuthorizationException
@@ -3826,6 +3843,7 @@ export const checkoutLicense: API.OperationMethod<
   retry: Retry,
   operationName: "CheckoutLicense",
 }));
+
 export type CreateGrantError =
   | AccessDeniedException
   | AuthorizationException
@@ -3861,6 +3879,7 @@ export const createGrant: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGrant",
 }));
+
 export type CreateGrantVersionError =
   | AccessDeniedException
   | AuthorizationException
@@ -3895,6 +3914,7 @@ export const createGrantVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGrantVersion",
 }));
+
 export type CreateLicenseError =
   | AccessDeniedException
   | AuthorizationException
@@ -3928,6 +3948,7 @@ export const createLicense: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLicense",
 }));
+
 export type CreateLicenseAssetGroupError =
   | AccessDeniedException
   | AuthorizationException
@@ -3959,6 +3980,7 @@ export const createLicenseAssetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLicenseAssetGroup",
 }));
+
 export type CreateLicenseAssetRulesetError =
   | AccessDeniedException
   | AuthorizationException
@@ -3990,6 +4012,7 @@ export const createLicenseAssetRuleset: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLicenseAssetRuleset",
 }));
+
 export type CreateLicenseConfigurationError =
   | AccessDeniedException
   | AuthorizationException
@@ -4027,6 +4050,7 @@ export const createLicenseConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLicenseConfiguration",
 }));
+
 export type CreateLicenseConversionTaskForResourceError =
   | AccessDeniedException
   | AuthorizationException
@@ -4058,6 +4082,7 @@ export const createLicenseConversionTaskForResource: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLicenseConversionTaskForResource",
 }));
+
 export type CreateLicenseManagerReportGeneratorError =
   | AccessDeniedException
   | AuthorizationException
@@ -4093,6 +4118,7 @@ export const createLicenseManagerReportGenerator: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLicenseManagerReportGenerator",
 }));
+
 export type CreateLicenseVersionError =
   | AccessDeniedException
   | AuthorizationException
@@ -4128,6 +4154,7 @@ export const createLicenseVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLicenseVersion",
 }));
+
 export type CreateTokenError =
   | AccessDeniedException
   | AuthorizationException
@@ -4167,6 +4194,7 @@ export const createToken: API.OperationMethod<
   retry: Retry,
   operationName: "CreateToken",
 }));
+
 export type DeleteGrantError =
   | AccessDeniedException
   | AuthorizationException
@@ -4200,6 +4228,7 @@ export const deleteGrant: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGrant",
 }));
+
 export type DeleteLicenseError =
   | AccessDeniedException
   | AuthorizationException
@@ -4235,6 +4264,7 @@ export const deleteLicense: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLicense",
 }));
+
 export type DeleteLicenseAssetGroupError =
   | AccessDeniedException
   | AuthorizationException
@@ -4266,6 +4296,7 @@ export const deleteLicenseAssetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLicenseAssetGroup",
 }));
+
 export type DeleteLicenseAssetRulesetError =
   | AccessDeniedException
   | AuthorizationException
@@ -4297,6 +4328,7 @@ export const deleteLicenseAssetRuleset: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLicenseAssetRuleset",
 }));
+
 export type DeleteLicenseConfigurationError =
   | AccessDeniedException
   | AuthorizationException
@@ -4330,6 +4362,7 @@ export const deleteLicenseConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLicenseConfiguration",
 }));
+
 export type DeleteLicenseManagerReportGeneratorError =
   | AccessDeniedException
   | AuthorizationException
@@ -4368,6 +4401,7 @@ export const deleteLicenseManagerReportGenerator: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLicenseManagerReportGenerator",
 }));
+
 export type DeleteTokenError =
   | AccessDeniedException
   | AuthorizationException
@@ -4401,6 +4435,7 @@ export const deleteToken: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteToken",
 }));
+
 export type ExtendLicenseConsumptionError =
   | AccessDeniedException
   | AuthorizationException
@@ -4434,6 +4469,7 @@ export const extendLicenseConsumption: API.OperationMethod<
   retry: Retry,
   operationName: "ExtendLicenseConsumption",
 }));
+
 export type GetAccessTokenError =
   | AccessDeniedException
   | AuthorizationException
@@ -4466,6 +4502,7 @@ export const getAccessToken: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccessToken",
 }));
+
 export type GetGrantError =
   | AccessDeniedException
   | AuthorizationException
@@ -4501,6 +4538,7 @@ export const getGrant: API.OperationMethod<
   retry: Retry,
   operationName: "GetGrant",
 }));
+
 export type GetLicenseError =
   | AccessDeniedException
   | AuthorizationException
@@ -4534,6 +4572,7 @@ export const getLicense: API.OperationMethod<
   retry: Retry,
   operationName: "GetLicense",
 }));
+
 export type GetLicenseAssetGroupError =
   | AccessDeniedException
   | AuthorizationException
@@ -4565,6 +4604,7 @@ export const getLicenseAssetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetLicenseAssetGroup",
 }));
+
 export type GetLicenseAssetRulesetError =
   | AccessDeniedException
   | AuthorizationException
@@ -4596,6 +4636,7 @@ export const getLicenseAssetRuleset: API.OperationMethod<
   retry: Retry,
   operationName: "GetLicenseAssetRuleset",
 }));
+
 export type GetLicenseConfigurationError =
   | AccessDeniedException
   | AuthorizationException
@@ -4627,6 +4668,7 @@ export const getLicenseConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetLicenseConfiguration",
 }));
+
 export type GetLicenseConversionTaskError =
   | AccessDeniedException
   | AuthorizationException
@@ -4656,6 +4698,7 @@ export const getLicenseConversionTask: API.OperationMethod<
   retry: Retry,
   operationName: "GetLicenseConversionTask",
 }));
+
 export type GetLicenseManagerReportGeneratorError =
   | AccessDeniedException
   | AuthorizationException
@@ -4691,6 +4734,7 @@ export const getLicenseManagerReportGenerator: API.OperationMethod<
   retry: Retry,
   operationName: "GetLicenseManagerReportGenerator",
 }));
+
 export type GetLicenseUsageError =
   | AccessDeniedException
   | AuthorizationException
@@ -4722,6 +4766,7 @@ export const getLicenseUsage: API.OperationMethod<
   retry: Retry,
   operationName: "GetLicenseUsage",
 }));
+
 export type GetServiceSettingsError =
   | AccessDeniedException
   | AuthorizationException
@@ -4749,6 +4794,7 @@ export const getServiceSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetServiceSettings",
 }));
+
 export type ListAssetsForLicenseAssetGroupError =
   | AccessDeniedException
   | AuthorizationException
@@ -4780,6 +4826,7 @@ export const listAssetsForLicenseAssetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "ListAssetsForLicenseAssetGroup",
 }));
+
 export type ListAssociationsForLicenseConfigurationError =
   | AccessDeniedException
   | AuthorizationException
@@ -4815,6 +4862,7 @@ export const listAssociationsForLicenseConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "ListAssociationsForLicenseConfiguration",
 }));
+
 export type ListDistributedGrantsError =
   | AccessDeniedException
   | AuthorizationException
@@ -4848,6 +4896,7 @@ export const listDistributedGrants: API.OperationMethod<
   retry: Retry,
   operationName: "ListDistributedGrants",
 }));
+
 export type ListFailuresForLicenseConfigurationOperationsError =
   | AccessDeniedException
   | AuthorizationException
@@ -4877,6 +4926,7 @@ export const listFailuresForLicenseConfigurationOperations: API.OperationMethod<
   retry: Retry,
   operationName: "ListFailuresForLicenseConfigurationOperations",
 }));
+
 export type ListLicenseAssetGroupsError =
   | AccessDeniedException
   | AuthorizationException
@@ -4908,6 +4958,7 @@ export const listLicenseAssetGroups: API.OperationMethod<
   retry: Retry,
   operationName: "ListLicenseAssetGroups",
 }));
+
 export type ListLicenseAssetRulesetsError =
   | AccessDeniedException
   | AuthorizationException
@@ -4939,6 +4990,7 @@ export const listLicenseAssetRulesets: API.OperationMethod<
   retry: Retry,
   operationName: "ListLicenseAssetRulesets",
 }));
+
 export type ListLicenseConfigurationsError =
   | AccessDeniedException
   | AuthorizationException
@@ -4970,6 +5022,7 @@ export const listLicenseConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "ListLicenseConfigurations",
 }));
+
 export type ListLicenseConfigurationsForOrganizationError =
   | AccessDeniedException
   | AuthorizationException
@@ -5001,6 +5054,7 @@ export const listLicenseConfigurationsForOrganization: API.OperationMethod<
   retry: Retry,
   operationName: "ListLicenseConfigurationsForOrganization",
 }));
+
 export type ListLicenseConversionTasksError =
   | AccessDeniedException
   | AuthorizationException
@@ -5030,6 +5084,7 @@ export const listLicenseConversionTasks: API.OperationMethod<
   retry: Retry,
   operationName: "ListLicenseConversionTasks",
 }));
+
 export type ListLicenseManagerReportGeneratorsError =
   | AccessDeniedException
   | AuthorizationException
@@ -5065,6 +5120,7 @@ export const listLicenseManagerReportGenerators: API.OperationMethod<
   retry: Retry,
   operationName: "ListLicenseManagerReportGenerators",
 }));
+
 export type ListLicensesError =
   | AccessDeniedException
   | AuthorizationException
@@ -5096,6 +5152,7 @@ export const listLicenses: API.OperationMethod<
   retry: Retry,
   operationName: "ListLicenses",
 }));
+
 export type ListLicenseSpecificationsForResourceError =
   | AccessDeniedException
   | AuthorizationException
@@ -5125,6 +5182,7 @@ export const listLicenseSpecificationsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListLicenseSpecificationsForResource",
 }));
+
 export type ListLicenseVersionsError =
   | AccessDeniedException
   | AuthorizationException
@@ -5154,6 +5212,7 @@ export const listLicenseVersions: API.OperationMethod<
   retry: Retry,
   operationName: "ListLicenseVersions",
 }));
+
 export type ListReceivedGrantsError =
   | AccessDeniedException
   | AuthorizationException
@@ -5189,6 +5248,7 @@ export const listReceivedGrants: API.OperationMethod<
   retry: Retry,
   operationName: "ListReceivedGrants",
 }));
+
 export type ListReceivedGrantsForOrganizationError =
   | AccessDeniedException
   | AuthorizationException
@@ -5222,6 +5282,7 @@ export const listReceivedGrantsForOrganization: API.OperationMethod<
   retry: Retry,
   operationName: "ListReceivedGrantsForOrganization",
 }));
+
 export type ListReceivedLicensesError =
   | AccessDeniedException
   | AuthorizationException
@@ -5255,6 +5316,7 @@ export const listReceivedLicenses: API.OperationMethod<
   retry: Retry,
   operationName: "ListReceivedLicenses",
 }));
+
 export type ListReceivedLicensesForOrganizationError =
   | AccessDeniedException
   | AuthorizationException
@@ -5288,6 +5350,7 @@ export const listReceivedLicensesForOrganization: API.OperationMethod<
   retry: Retry,
   operationName: "ListReceivedLicensesForOrganization",
 }));
+
 export type ListResourceInventoryError =
   | AccessDeniedException
   | AuthorizationException
@@ -5321,6 +5384,7 @@ export const listResourceInventory: API.OperationMethod<
   retry: Retry,
   operationName: "ListResourceInventory",
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | AuthorizationException
@@ -5353,6 +5417,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTokensError =
   | AccessDeniedException
   | AuthorizationException
@@ -5382,6 +5447,7 @@ export const listTokens: API.OperationMethod<
   retry: Retry,
   operationName: "ListTokens",
 }));
+
 export type ListUsageForLicenseConfigurationError =
   | AccessDeniedException
   | AuthorizationException
@@ -5415,6 +5481,7 @@ export const listUsageForLicenseConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "ListUsageForLicenseConfiguration",
 }));
+
 export type RejectGrantError =
   | AccessDeniedException
   | AuthorizationException
@@ -5448,6 +5515,7 @@ export const rejectGrant: API.OperationMethod<
   retry: Retry,
   operationName: "RejectGrant",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | AuthorizationException
@@ -5488,6 +5556,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | AuthorizationException
@@ -5519,6 +5588,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateLicenseAssetGroupError =
   | AccessDeniedException
   | AuthorizationException
@@ -5550,6 +5620,7 @@ export const updateLicenseAssetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLicenseAssetGroup",
 }));
+
 export type UpdateLicenseAssetRulesetError =
   | AccessDeniedException
   | AuthorizationException
@@ -5581,6 +5652,7 @@ export const updateLicenseAssetRuleset: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLicenseAssetRuleset",
 }));
+
 export type UpdateLicenseConfigurationError =
   | AccessDeniedException
   | AuthorizationException
@@ -5616,6 +5688,7 @@ export const updateLicenseConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLicenseConfiguration",
 }));
+
 export type UpdateLicenseManagerReportGeneratorError =
   | AccessDeniedException
   | AuthorizationException
@@ -5653,6 +5726,7 @@ export const updateLicenseManagerReportGenerator: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLicenseManagerReportGenerator",
 }));
+
 export type UpdateLicenseSpecificationsForResourceError =
   | AccessDeniedException
   | AuthorizationException
@@ -5692,6 +5766,7 @@ export const updateLicenseSpecificationsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLicenseSpecificationsForResource",
 }));
+
 export type UpdateServiceSettingsError =
   | AccessDeniedException
   | AuthorizationException

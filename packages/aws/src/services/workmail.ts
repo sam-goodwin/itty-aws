@@ -87,81 +87,98 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class DirectoryInUseException extends S.TaggedErrorClass<DirectoryInUseException>()(
+  "DirectoryInUseException",
+  { Message: S.optional(S.String) },
+) {}
+export class DirectoryServiceAuthenticationFailedException extends S.TaggedErrorClass<DirectoryServiceAuthenticationFailedException>()(
+  "DirectoryServiceAuthenticationFailedException",
+  { Message: S.optional(S.String) },
+) {}
+export class DirectoryUnavailableException extends S.TaggedErrorClass<DirectoryUnavailableException>()(
+  "DirectoryUnavailableException",
+  { Message: S.optional(S.String) },
+) {}
+export class EmailAddressInUseException extends S.TaggedErrorClass<EmailAddressInUseException>()(
+  "EmailAddressInUseException",
+  { Message: S.optional(S.String) },
+) {}
+export class EntityAlreadyRegisteredException extends S.TaggedErrorClass<EntityAlreadyRegisteredException>()(
+  "EntityAlreadyRegisteredException",
+  { Message: S.optional(S.String) },
+) {}
+export class EntityNotFoundException extends S.TaggedErrorClass<EntityNotFoundException>()(
+  "EntityNotFoundException",
+  { Message: S.optional(S.String) },
+) {}
+export class EntityStateException extends S.TaggedErrorClass<EntityStateException>()(
+  "EntityStateException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidConfigurationException extends S.TaggedErrorClass<InvalidConfigurationException>()(
+  "InvalidConfigurationException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidCustomSesConfigurationException extends S.TaggedErrorClass<InvalidCustomSesConfigurationException>()(
+  "InvalidCustomSesConfigurationException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidPasswordException extends S.TaggedErrorClass<InvalidPasswordException>()(
+  "InvalidPasswordException",
+  { Message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class MailDomainInUseException extends S.TaggedErrorClass<MailDomainInUseException>()(
+  "MailDomainInUseException",
+  { Message: S.optional(S.String) },
+) {}
+export class MailDomainNotFoundException extends S.TaggedErrorClass<MailDomainNotFoundException>()(
+  "MailDomainNotFoundException",
+  { Message: S.optional(S.String) },
+) {}
+export class MailDomainStateException extends S.TaggedErrorClass<MailDomainStateException>()(
+  "MailDomainStateException",
+  { Message: S.optional(S.String) },
+) {}
+export class NameAvailabilityException extends S.TaggedErrorClass<NameAvailabilityException>()(
+  "NameAvailabilityException",
+  { Message: S.optional(S.String) },
+) {}
+export class OrganizationNotFoundException extends S.TaggedErrorClass<OrganizationNotFoundException>()(
+  "OrganizationNotFoundException",
+  { Message: S.optional(S.String) },
+) {}
+export class OrganizationStateException extends S.TaggedErrorClass<OrganizationStateException>()(
+  "OrganizationStateException",
+  { Message: S.optional(S.String) },
+) {}
+export class ReservedNameException extends S.TaggedErrorClass<ReservedNameException>()(
+  "ReservedNameException",
+  { Message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
+  "UnsupportedOperationException",
+  { Message: S.optional(S.String) },
+) {}
 export type OrganizationId = string;
 export type EntityIdentifier = string;
-export type ImpersonationRoleId = string;
-export type ImpersonationToken = string;
-export type ExpiresIn = number;
-export type IdempotencyClientToken = string;
-export type MailboxExportJobId = string;
-export type WorkMailIdentifier = string;
-export type EmailAddress = string;
-export type DomainName = string;
-export type Url = string;
-export type ExternalUserName = string;
-export type Password = string | redacted.Redacted<string>;
-export type LambdaArn = string;
-export type GroupName = string;
-export type IdentityCenterApplicationName = string;
-export type InstanceArn = string;
-export type ApplicationArn = string;
-export type ImpersonationRoleName = string;
-export type ImpersonationRoleDescription = string;
-export type ImpersonationRuleId = string;
-export type ImpersonationRuleName = string;
-export type ImpersonationRuleDescription = string;
-export type MobileDeviceAccessRuleName = string;
-export type MobileDeviceAccessRuleDescription = string;
-export type DeviceType = string;
-export type DeviceModel = string;
-export type DeviceOperatingSystem = string;
-export type DeviceUserAgent = string;
-export type MobileDeviceAccessRuleId = string;
-export type DirectoryId = string;
-export type OrganizationName = string;
-export type HostedZoneId = string;
-export type KmsKeyArn = string;
-export type ResourceName = string;
-export type ResourceDescription = string | redacted.Redacted<string>;
-export type ResourceId = string;
-export type UserName = string;
-export type UserAttribute = string | redacted.Redacted<string>;
-export type IdentityProviderUserId = string;
-export type AccessControlRuleName = string;
-export type DeviceId = string;
-export type PersonalAccessTokenId = string;
-export type ShortString = string;
-export type WorkMailDomainName = string;
-export type RoleArn = string;
-export type LogGroupArn = string;
-export type PersonalAccessTokenLifetimeInDays = number;
-export type Description = string;
-export type S3BucketName = string;
-export type S3ObjectKey = string;
-export type Percentage = number;
-export type MailboxExportErrorInfo = string;
-export type AmazonResourceName = string;
-export type IdentityProviderIdentityStoreId = string;
-export type IpAddress = string;
-export type AccessControlRuleAction = string;
-export type RetentionPeriod = number;
-export type MailboxQuota = number;
-export type MailboxSize = number;
-export type PersonalAccessTokenName = string;
-export type PersonalAccessTokenScope = string;
-export type AccessControlRuleDescription = string;
-export type IpRange = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type TagKey = string;
-export type TagValue = string;
-export type IdentityProviderUserIdPrefix = string;
-export type PolicyDescription = string | redacted.Redacted<string>;
-export type NewResourceDescription = string | redacted.Redacted<string>;
-export type IdentityProviderUserIdForUpdate = string;
-
-//# Schemas
 export interface AssociateDelegateToResourceRequest {
   OrganizationId: string;
   ResourceId: string;
@@ -206,6 +223,7 @@ export const AssociateMemberToGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateMemberToGroupResponse",
 }) as any as S.Schema<AssociateMemberToGroupResponse>;
+export type ImpersonationRoleId = string;
 export interface AssumeImpersonationRoleRequest {
   OrganizationId: string;
   ImpersonationRoleId: string;
@@ -217,6 +235,8 @@ export const AssumeImpersonationRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssumeImpersonationRoleRequest",
 }) as any as S.Schema<AssumeImpersonationRoleRequest>;
+export type ImpersonationToken = string;
+export type ExpiresIn = number;
 export interface AssumeImpersonationRoleResponse {
   Token?: string;
   ExpiresIn?: number;
@@ -226,6 +246,8 @@ export const AssumeImpersonationRoleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssumeImpersonationRoleResponse",
 }) as any as S.Schema<AssumeImpersonationRoleResponse>;
+export type IdempotencyClientToken = string;
+export type MailboxExportJobId = string;
 export interface CancelMailboxExportJobRequest {
   ClientToken: string;
   JobId: string;
@@ -248,6 +270,8 @@ export const CancelMailboxExportJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelMailboxExportJobResponse",
 }) as any as S.Schema<CancelMailboxExportJobResponse>;
+export type WorkMailIdentifier = string;
+export type EmailAddress = string;
 export interface CreateAliasRequest {
   OrganizationId: string;
   EntityId: string;
@@ -270,6 +294,10 @@ export const CreateAliasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAliasResponse",
 }) as any as S.Schema<CreateAliasResponse>;
+export type DomainName = string;
+export type Url = string;
+export type ExternalUserName = string;
+export type Password = string | redacted.Redacted<string>;
 export interface EwsAvailabilityProvider {
   EwsEndpoint: string;
   EwsUsername: string;
@@ -284,6 +312,7 @@ export const EwsAvailabilityProvider = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EwsAvailabilityProvider",
 }) as any as S.Schema<EwsAvailabilityProvider>;
+export type LambdaArn = string;
 export interface LambdaAvailabilityProvider {
   LambdaArn: string;
 }
@@ -319,6 +348,7 @@ export const CreateAvailabilityConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateAvailabilityConfigurationResponse",
 }) as any as S.Schema<CreateAvailabilityConfigurationResponse>;
+export type GroupName = string;
 export interface CreateGroupRequest {
   OrganizationId: string;
   Name: string;
@@ -343,6 +373,8 @@ export const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGroupResponse",
 }) as any as S.Schema<CreateGroupResponse>;
+export type IdentityCenterApplicationName = string;
+export type InstanceArn = string;
 export interface CreateIdentityCenterApplicationRequest {
   Name: string;
   InstanceArn: string;
@@ -360,6 +392,7 @@ export const CreateIdentityCenterApplicationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateIdentityCenterApplicationRequest",
 }) as any as S.Schema<CreateIdentityCenterApplicationRequest>;
+export type ApplicationArn = string;
 export interface CreateIdentityCenterApplicationResponse {
   ApplicationArn?: string;
 }
@@ -368,10 +401,17 @@ export const CreateIdentityCenterApplicationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateIdentityCenterApplicationResponse",
 }) as any as S.Schema<CreateIdentityCenterApplicationResponse>;
+export type ImpersonationRoleName = string;
 export type ImpersonationRoleType = "FULL_ACCESS" | "READ_ONLY" | (string & {});
 export const ImpersonationRoleType = /*@__PURE__*/ S.String;
+
+export type ImpersonationRoleDescription = string;
+export type ImpersonationRuleId = string;
+export type ImpersonationRuleName = string;
+export type ImpersonationRuleDescription = string;
 export type AccessEffect = "ALLOW" | "DENY" | (string & {});
 export const AccessEffect = /*@__PURE__*/ S.String;
+
 export type TargetUsers = string[];
 export const TargetUsers = /*@__PURE__*/ S.Array(S.String);
 export interface ImpersonationRule {
@@ -426,14 +466,21 @@ export const CreateImpersonationRoleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateImpersonationRoleResponse",
 }) as any as S.Schema<CreateImpersonationRoleResponse>;
+export type MobileDeviceAccessRuleName = string;
+export type MobileDeviceAccessRuleDescription = string;
 export type MobileDeviceAccessRuleEffect = "ALLOW" | "DENY" | (string & {});
 export const MobileDeviceAccessRuleEffect = /*@__PURE__*/ S.String;
+
+export type DeviceType = string;
 export type DeviceTypeList = string[];
 export const DeviceTypeList = /*@__PURE__*/ S.Array(S.String);
+export type DeviceModel = string;
 export type DeviceModelList = string[];
 export const DeviceModelList = /*@__PURE__*/ S.Array(S.String);
+export type DeviceOperatingSystem = string;
 export type DeviceOperatingSystemList = string[];
 export const DeviceOperatingSystemList = /*@__PURE__*/ S.Array(S.String);
+export type DeviceUserAgent = string;
 export type DeviceUserAgentList = string[];
 export const DeviceUserAgentList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateMobileDeviceAccessRuleRequest {
@@ -472,6 +519,7 @@ export const CreateMobileDeviceAccessRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMobileDeviceAccessRuleRequest",
 }) as any as S.Schema<CreateMobileDeviceAccessRuleRequest>;
+export type MobileDeviceAccessRuleId = string;
 export interface CreateMobileDeviceAccessRuleResponse {
   MobileDeviceAccessRuleId?: string;
 }
@@ -480,6 +528,9 @@ export const CreateMobileDeviceAccessRuleResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateMobileDeviceAccessRuleResponse",
 }) as any as S.Schema<CreateMobileDeviceAccessRuleResponse>;
+export type DirectoryId = string;
+export type OrganizationName = string;
+export type HostedZoneId = string;
 export interface Domain {
   DomainName: string;
   HostedZoneId?: string;
@@ -489,6 +540,7 @@ export const Domain = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Domain" }) as any as S.Schema<Domain>;
 export type Domains = Domain[];
 export const Domains = /*@__PURE__*/ S.Array(Domain);
+export type KmsKeyArn = string;
 export interface CreateOrganizationRequest {
   DirectoryId?: string;
   Alias: string;
@@ -519,8 +571,11 @@ export const CreateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOrganizationResponse",
 }) as any as S.Schema<CreateOrganizationResponse>;
+export type ResourceName = string;
 export type ResourceType = "ROOM" | "EQUIPMENT" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
+export type ResourceDescription = string | redacted.Redacted<string>;
 export interface CreateResourceRequest {
   OrganizationId: string;
   Name: string;
@@ -541,6 +596,7 @@ export const CreateResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateResourceRequest",
 }) as any as S.Schema<CreateResourceRequest>;
+export type ResourceId = string;
 export interface CreateResourceResponse {
   ResourceId?: string;
 }
@@ -549,6 +605,8 @@ export const CreateResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateResourceResponse",
 }) as any as S.Schema<CreateResourceResponse>;
+export type UserName = string;
+export type UserAttribute = string | redacted.Redacted<string>;
 export type UserRole =
   | "USER"
   | "RESOURCE"
@@ -556,6 +614,8 @@ export type UserRole =
   | "REMOTE_USER"
   | (string & {});
 export const UserRole = /*@__PURE__*/ S.String;
+
+export type IdentityProviderUserId = string;
 export interface CreateUserRequest {
   OrganizationId: string;
   Name: string;
@@ -592,6 +652,7 @@ export const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUserResponse",
 }) as any as S.Schema<CreateUserResponse>;
+export type AccessControlRuleName = string;
 export interface DeleteAccessControlRuleRequest {
   OrganizationId: string;
   Name: string;
@@ -754,6 +815,7 @@ export const DeleteMailboxPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteMailboxPermissionsResponse",
 }) as any as S.Schema<DeleteMailboxPermissionsResponse>;
+export type DeviceId = string;
 export interface DeleteMobileDeviceAccessOverrideRequest {
   OrganizationId: string;
   UserId: string;
@@ -829,6 +891,7 @@ export const DeleteOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteOrganizationResponse",
 }) as any as S.Schema<DeleteOrganizationResponse>;
+export type PersonalAccessTokenId = string;
 export interface DeletePersonalAccessTokenRequest {
   OrganizationId: string;
   PersonalAccessTokenId: string;
@@ -863,6 +926,7 @@ export const DeleteResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteResourceResponse",
 }) as any as S.Schema<DeleteResourceResponse>;
+export type ShortString = string;
 export interface DeleteRetentionPolicyRequest {
   OrganizationId: string;
   Id: string;
@@ -914,6 +978,7 @@ export const DeregisterFromWorkMailResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeregisterFromWorkMailResponse",
 }) as any as S.Schema<DeregisterFromWorkMailResponse>;
+export type WorkMailDomainName = string;
 export interface DeregisterMailDomainRequest {
   OrganizationId: string;
   DomainName: string;
@@ -942,6 +1007,8 @@ export const DescribeEmailMonitoringConfigurationRequest =
   ).annotate({
     identifier: "DescribeEmailMonitoringConfigurationRequest",
   }) as any as S.Schema<DescribeEmailMonitoringConfigurationRequest>;
+export type RoleArn = string;
+export type LogGroupArn = string;
 export interface DescribeEmailMonitoringConfigurationResponse {
   RoleArn?: string;
   LogGroupArn?: string;
@@ -968,6 +1035,7 @@ export const DescribeEntityRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeEntityRequest>;
 export type EntityType = "GROUP" | "USER" | "RESOURCE" | (string & {});
 export const EntityType = /*@__PURE__*/ S.String;
+
 export interface DescribeEntityResponse {
   EntityId?: string;
   Name?: string;
@@ -995,6 +1063,7 @@ export const DescribeGroupRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeGroupRequest>;
 export type EntityState = "ENABLED" | "DISABLED" | "DELETED" | (string & {});
 export const EntityState = /*@__PURE__*/ S.String;
+
 export interface DescribeGroupResponse {
   GroupId?: string;
   Name?: string;
@@ -1033,6 +1102,7 @@ export type IdentityProviderAuthenticationMode =
   | "IDENTITY_PROVIDER_AND_DIRECTORY"
   | (string & {});
 export const IdentityProviderAuthenticationMode = /*@__PURE__*/ S.String;
+
 export interface IdentityCenterConfiguration {
   InstanceArn: string;
   ApplicationArn: string;
@@ -1047,6 +1117,8 @@ export type PersonalAccessTokenConfigurationStatus =
   | "INACTIVE"
   | (string & {});
 export const PersonalAccessTokenConfigurationStatus = /*@__PURE__*/ S.String;
+
+export type PersonalAccessTokenLifetimeInDays = number;
 export interface PersonalAccessTokenConfiguration {
   Status: PersonalAccessTokenConfigurationStatus;
   LifetimeInDays?: number;
@@ -1105,6 +1177,10 @@ export const DescribeMailboxExportJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeMailboxExportJobRequest",
 }) as any as S.Schema<DescribeMailboxExportJobRequest>;
+export type Description = string;
+export type S3BucketName = string;
+export type S3ObjectKey = string;
+export type Percentage = number;
 export type MailboxExportJobState =
   | "RUNNING"
   | "COMPLETED"
@@ -1112,6 +1188,8 @@ export type MailboxExportJobState =
   | "CANCELLED"
   | (string & {});
 export const MailboxExportJobState = /*@__PURE__*/ S.String;
+
+export type MailboxExportErrorInfo = string;
 export interface DescribeMailboxExportJobResponse {
   EntityId?: string;
   Description?: string;
@@ -1154,6 +1232,7 @@ export const DescribeOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeOrganizationRequest",
 }) as any as S.Schema<DescribeOrganizationRequest>;
+export type AmazonResourceName = string;
 export interface DescribeOrganizationResponse {
   OrganizationId?: string;
   Alias?: string;
@@ -1246,6 +1325,7 @@ export const DescribeUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeUserRequest",
 }) as any as S.Schema<DescribeUserRequest>;
+export type IdentityProviderIdentityStoreId = string;
 export interface DescribeUserResponse {
   UserId?: string;
   Name?: string;
@@ -1353,6 +1433,8 @@ export const DisassociateMemberFromGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisassociateMemberFromGroupResponse",
 }) as any as S.Schema<DisassociateMemberFromGroupResponse>;
+export type IpAddress = string;
+export type AccessControlRuleAction = string;
 export interface GetAccessControlEffectRequest {
   OrganizationId: string;
   IpAddress: string;
@@ -1375,6 +1457,7 @@ export const GetAccessControlEffectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAccessControlEffectRequest>;
 export type AccessControlRuleEffect = "ALLOW" | "DENY" | (string & {});
 export const AccessControlRuleEffect = /*@__PURE__*/ S.String;
+
 export type AccessControlRuleNameList = string[];
 export const AccessControlRuleNameList = /*@__PURE__*/ S.Array(S.String);
 export interface GetAccessControlEffectResponse {
@@ -1407,12 +1490,15 @@ export type FolderName =
   | "JUNK_EMAIL"
   | (string & {});
 export const FolderName = /*@__PURE__*/ S.String;
+
 export type RetentionAction =
   | "NONE"
   | "DELETE"
   | "PERMANENTLY_DELETE"
   | (string & {});
 export const RetentionAction = /*@__PURE__*/ S.String;
+
+export type RetentionPeriod = number;
 export interface FolderConfiguration {
   Name: FolderName;
   Action: RetentionAction;
@@ -1535,6 +1621,8 @@ export const GetMailboxDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMailboxDetailsRequest",
 }) as any as S.Schema<GetMailboxDetailsRequest>;
+export type MailboxQuota = number;
+export type MailboxSize = number;
 export interface GetMailboxDetailsResponse {
   MailboxQuota?: number;
   MailboxSize?: number;
@@ -1578,6 +1666,7 @@ export type DnsRecordVerificationStatus =
   | "FAILED"
   | (string & {});
 export const DnsRecordVerificationStatus = /*@__PURE__*/ S.String;
+
 export interface GetMailDomainResponse {
   Records?: DnsRecord[];
   IsTestDomain?: boolean;
@@ -1697,6 +1786,8 @@ export const GetPersonalAccessTokenMetadataRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetPersonalAccessTokenMetadataRequest",
 }) as any as S.Schema<GetPersonalAccessTokenMetadataRequest>;
+export type PersonalAccessTokenName = string;
+export type PersonalAccessTokenScope = string;
 export type PersonalAccessTokenScopeList = string[];
 export const PersonalAccessTokenScopeList = /*@__PURE__*/ S.Array(S.String);
 export interface GetPersonalAccessTokenMetadataResponse {
@@ -1732,6 +1823,8 @@ export const ListAccessControlRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAccessControlRulesRequest",
 }) as any as S.Schema<ListAccessControlRulesRequest>;
+export type AccessControlRuleDescription = string;
+export type IpRange = string;
 export type IpRangeList = string[];
 export const IpRangeList = /*@__PURE__*/ S.Array(S.String);
 export type ActionsList = string[];
@@ -1784,6 +1877,8 @@ export const ListAccessControlRulesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAccessControlRulesResponse",
 }) as any as S.Schema<ListAccessControlRulesResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListAliasesRequest {
   OrganizationId: string;
   EntityId: string;
@@ -1832,6 +1927,7 @@ export const ListAvailabilityConfigurationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListAvailabilityConfigurationsRequest>;
 export type AvailabilityProviderType = "EWS" | "LAMBDA" | (string & {});
 export const AvailabilityProviderType = /*@__PURE__*/ S.String;
+
 export interface RedactedEwsAvailabilityProvider {
   EwsEndpoint?: string;
   EwsUsername?: string;
@@ -1901,6 +1997,7 @@ export const ListGroupMembersRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGroupMembersRequest>;
 export type MemberType = "GROUP" | "USER" | (string & {});
 export const MemberType = /*@__PURE__*/ S.String;
+
 export interface Member {
   Id?: string;
   Name?: string;
@@ -2167,6 +2264,7 @@ export type PermissionType =
   | "SEND_ON_BEHALF"
   | (string & {});
 export const PermissionType = /*@__PURE__*/ S.String;
+
 export type PermissionValues = PermissionType[];
 export const PermissionValues = /*@__PURE__*/ S.Array(PermissionType);
 export interface Permission {
@@ -2572,6 +2670,8 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -2589,6 +2689,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
+export type IdentityProviderUserIdPrefix = string;
 export interface ListUsersFilters {
   UsernamePrefix?: string;
   DisplayNamePrefix?: string | redacted.Redacted<string>;
@@ -2818,6 +2919,7 @@ export const PutMobileDeviceAccessOverrideResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "PutMobileDeviceAccessOverrideResponse",
 }) as any as S.Schema<PutMobileDeviceAccessOverrideResponse>;
+export type PolicyDescription = string | redacted.Redacted<string>;
 export interface PutRetentionPolicyRequest {
   OrganizationId: string;
   Id?: string;
@@ -3190,6 +3292,7 @@ export const UpdatePrimaryEmailAddressResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdatePrimaryEmailAddressResponse",
 }) as any as S.Schema<UpdatePrimaryEmailAddressResponse>;
+export type NewResourceDescription = string | redacted.Redacted<string>;
 export interface UpdateResourceRequest {
   OrganizationId: string;
   ResourceId: string;
@@ -3220,6 +3323,7 @@ export const UpdateResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateResourceResponse",
 }) as any as S.Schema<UpdateResourceResponse>;
+export type IdentityProviderUserIdForUpdate = string;
 export interface UpdateUserRequest {
   OrganizationId: string;
   UserId: string;
@@ -3272,100 +3376,6 @@ export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateUserResponse",
 }) as any as S.Schema<UpdateUserResponse>;
-
-//# Errors
-export class EntityNotFoundException extends S.TaggedErrorClass<EntityNotFoundException>()(
-  "EntityNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class EntityStateException extends S.TaggedErrorClass<EntityStateException>()(
-  "EntityStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { Message: S.optional(S.String) },
-) {}
-export class OrganizationNotFoundException extends S.TaggedErrorClass<OrganizationNotFoundException>()(
-  "OrganizationNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class OrganizationStateException extends S.TaggedErrorClass<OrganizationStateException>()(
-  "OrganizationStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { Message: S.optional(S.String) },
-) {}
-export class DirectoryServiceAuthenticationFailedException extends S.TaggedErrorClass<DirectoryServiceAuthenticationFailedException>()(
-  "DirectoryServiceAuthenticationFailedException",
-  { Message: S.optional(S.String) },
-) {}
-export class DirectoryUnavailableException extends S.TaggedErrorClass<DirectoryUnavailableException>()(
-  "DirectoryUnavailableException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class EmailAddressInUseException extends S.TaggedErrorClass<EmailAddressInUseException>()(
-  "EmailAddressInUseException",
-  { Message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class MailDomainNotFoundException extends S.TaggedErrorClass<MailDomainNotFoundException>()(
-  "MailDomainNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class MailDomainStateException extends S.TaggedErrorClass<MailDomainStateException>()(
-  "MailDomainStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class NameAvailabilityException extends S.TaggedErrorClass<NameAvailabilityException>()(
-  "NameAvailabilityException",
-  { Message: S.optional(S.String) },
-) {}
-export class ReservedNameException extends S.TaggedErrorClass<ReservedNameException>()(
-  "ReservedNameException",
-  { Message: S.optional(S.String) },
-) {}
-export class DirectoryInUseException extends S.TaggedErrorClass<DirectoryInUseException>()(
-  "DirectoryInUseException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidPasswordException extends S.TaggedErrorClass<InvalidPasswordException>()(
-  "InvalidPasswordException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidCustomSesConfigurationException extends S.TaggedErrorClass<InvalidCustomSesConfigurationException>()(
-  "InvalidCustomSesConfigurationException",
-  { Message: S.optional(S.String) },
-) {}
-export class MailDomainInUseException extends S.TaggedErrorClass<MailDomainInUseException>()(
-  "MailDomainInUseException",
-  { Message: S.optional(S.String) },
-) {}
-export class EntityAlreadyRegisteredException extends S.TaggedErrorClass<EntityAlreadyRegisteredException>()(
-  "EntityAlreadyRegisteredException",
-  { Message: S.optional(S.String) },
-) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidConfigurationException extends S.TaggedErrorClass<InvalidConfigurationException>()(
-  "InvalidConfigurationException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
 export type AssociateDelegateToResourceError =
   | EntityNotFoundException
   | EntityStateException
@@ -3397,6 +3407,7 @@ export const associateDelegateToResource: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateDelegateToResource",
 }));
+
 export type AssociateMemberToGroupError =
   | DirectoryServiceAuthenticationFailedException
   | DirectoryUnavailableException
@@ -3432,6 +3443,7 @@ export const associateMemberToGroup: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateMemberToGroup",
 }));
+
 export type AssumeImpersonationRoleError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -3460,6 +3472,7 @@ export const assumeImpersonationRole: API.OperationMethod<
   retry: Retry,
   operationName: "AssumeImpersonationRole",
 }));
+
 export type CancelMailboxExportJobError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -3490,6 +3503,7 @@ export const cancelMailboxExportJob: API.OperationMethod<
   retry: Retry,
   operationName: "CancelMailboxExportJob",
 }));
+
 export type CreateAliasError =
   | EmailAddressInUseException
   | EntityNotFoundException
@@ -3527,6 +3541,7 @@ export const createAlias: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAlias",
 }));
+
 export type CreateAvailabilityConfigurationError =
   | InvalidParameterException
   | LimitExceededException
@@ -3556,6 +3571,7 @@ export const createAvailabilityConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAvailabilityConfiguration",
 }));
+
 export type CreateGroupError =
   | DirectoryServiceAuthenticationFailedException
   | DirectoryUnavailableException
@@ -3591,6 +3607,7 @@ export const createGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGroup",
 }));
+
 export type CreateIdentityCenterApplicationError =
   | InvalidParameterException
   | CommonErrors;
@@ -3610,6 +3627,7 @@ export const createIdentityCenterApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIdentityCenterApplication",
 }));
+
 export type CreateImpersonationRoleError =
   | EntityNotFoundException
   | EntityStateException
@@ -3646,6 +3664,7 @@ export const createImpersonationRole: API.OperationMethod<
   retry: Retry,
   operationName: "CreateImpersonationRole",
 }));
+
 export type CreateMobileDeviceAccessRuleError =
   | InvalidParameterException
   | LimitExceededException
@@ -3673,6 +3692,7 @@ export const createMobileDeviceAccessRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMobileDeviceAccessRule",
 }));
+
 export type CreateOrganizationError =
   | DirectoryInUseException
   | DirectoryUnavailableException
@@ -3712,6 +3732,7 @@ export const createOrganization: API.OperationMethod<
   retry: Retry,
   operationName: "CreateOrganization",
 }));
+
 export type CreateResourceError =
   | DirectoryServiceAuthenticationFailedException
   | DirectoryUnavailableException
@@ -3747,6 +3768,7 @@ export const createResource: API.OperationMethod<
   retry: Retry,
   operationName: "CreateResource",
 }));
+
 export type CreateUserError =
   | DirectoryServiceAuthenticationFailedException
   | DirectoryUnavailableException
@@ -3784,6 +3806,7 @@ export const createUser: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUser",
 }));
+
 export type DeleteAccessControlRuleError =
   | OrganizationNotFoundException
   | OrganizationStateException
@@ -3806,6 +3829,7 @@ export const deleteAccessControlRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccessControlRule",
 }));
+
 export type DeleteAliasError =
   | EntityNotFoundException
   | EntityStateException
@@ -3836,6 +3860,7 @@ export const deleteAlias: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAlias",
 }));
+
 export type DeleteAvailabilityConfigurationError =
   | OrganizationNotFoundException
   | OrganizationStateException
@@ -3856,6 +3881,7 @@ export const deleteAvailabilityConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAvailabilityConfiguration",
 }));
+
 export type DeleteEmailMonitoringConfigurationError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -3881,6 +3907,7 @@ export const deleteEmailMonitoringConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEmailMonitoringConfiguration",
 }));
+
 export type DeleteGroupError =
   | DirectoryServiceAuthenticationFailedException
   | DirectoryUnavailableException
@@ -3914,6 +3941,7 @@ export const deleteGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGroup",
 }));
+
 export type DeleteIdentityCenterApplicationError =
   | InvalidParameterException
   | OrganizationStateException
@@ -3934,6 +3962,7 @@ export const deleteIdentityCenterApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIdentityCenterApplication",
 }));
+
 export type DeleteIdentityProviderConfigurationError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -3959,6 +3988,7 @@ export const deleteIdentityProviderConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIdentityProviderConfiguration",
 }));
+
 export type DeleteImpersonationRoleError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -3984,6 +4014,7 @@ export const deleteImpersonationRole: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteImpersonationRole",
 }));
+
 export type DeleteMailboxPermissionsError =
   | EntityNotFoundException
   | EntityStateException
@@ -4013,6 +4044,7 @@ export const deleteMailboxPermissions: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMailboxPermissions",
 }));
+
 export type DeleteMobileDeviceAccessOverrideError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -4042,6 +4074,7 @@ export const deleteMobileDeviceAccessOverride: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMobileDeviceAccessOverride",
 }));
+
 export type DeleteMobileDeviceAccessRuleError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -4069,6 +4102,7 @@ export const deleteMobileDeviceAccessRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMobileDeviceAccessRule",
 }));
+
 export type DeleteOrganizationError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -4094,6 +4128,7 @@ export const deleteOrganization: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteOrganization",
 }));
+
 export type DeletePersonalAccessTokenError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -4119,6 +4154,7 @@ export const deletePersonalAccessToken: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePersonalAccessToken",
 }));
+
 export type DeleteResourceError =
   | EntityStateException
   | InvalidParameterException
@@ -4148,6 +4184,7 @@ export const deleteResource: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResource",
 }));
+
 export type DeleteRetentionPolicyError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -4173,6 +4210,7 @@ export const deleteRetentionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRetentionPolicy",
 }));
+
 export type DeleteUserError =
   | DirectoryServiceAuthenticationFailedException
   | DirectoryUnavailableException
@@ -4211,6 +4249,7 @@ export const deleteUser: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUser",
 }));
+
 export type DeregisterFromWorkMailError =
   | EntityNotFoundException
   | EntityStateException
@@ -4243,6 +4282,7 @@ export const deregisterFromWorkMail: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterFromWorkMail",
 }));
+
 export type DeregisterMailDomainError =
   | InvalidCustomSesConfigurationException
   | InvalidParameterException
@@ -4273,6 +4313,7 @@ export const deregisterMailDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterMailDomain",
 }));
+
 export type DescribeEmailMonitoringConfigurationError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -4300,6 +4341,7 @@ export const describeEmailMonitoringConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEmailMonitoringConfiguration",
 }));
+
 export type DescribeEntityError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -4327,6 +4369,7 @@ export const describeEntity: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEntity",
 }));
+
 export type DescribeGroupError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -4354,6 +4397,7 @@ export const describeGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeGroup",
 }));
+
 export type DescribeIdentityProviderConfigurationError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -4381,6 +4425,7 @@ export const describeIdentityProviderConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeIdentityProviderConfiguration",
 }));
+
 export type DescribeInboundDmarcSettingsError =
   | OrganizationNotFoundException
   | OrganizationStateException
@@ -4401,6 +4446,7 @@ export const describeInboundDmarcSettings: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInboundDmarcSettings",
 }));
+
 export type DescribeMailboxExportJobError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -4428,6 +4474,7 @@ export const describeMailboxExportJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeMailboxExportJob",
 }));
+
 export type DescribeOrganizationError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -4449,6 +4496,7 @@ export const describeOrganization: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeOrganization",
 }));
+
 export type DescribeResourceError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -4478,6 +4526,7 @@ export const describeResource: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeResource",
 }));
+
 export type DescribeUserError =
   | DirectoryServiceAuthenticationFailedException
   | DirectoryUnavailableException
@@ -4509,6 +4558,7 @@ export const describeUser: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeUser",
 }));
+
 export type DisassociateDelegateFromResourceError =
   | EntityNotFoundException
   | EntityStateException
@@ -4540,6 +4590,7 @@ export const disassociateDelegateFromResource: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateDelegateFromResource",
 }));
+
 export type DisassociateMemberFromGroupError =
   | DirectoryServiceAuthenticationFailedException
   | DirectoryUnavailableException
@@ -4575,6 +4626,7 @@ export const disassociateMemberFromGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateMemberFromGroup",
 }));
+
 export type GetAccessControlEffectError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -4605,6 +4657,7 @@ export const getAccessControlEffect: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccessControlEffect",
 }));
+
 export type GetDefaultRetentionPolicyError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -4632,6 +4685,7 @@ export const getDefaultRetentionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetDefaultRetentionPolicy",
 }));
+
 export type GetImpersonationRoleError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -4659,6 +4713,7 @@ export const getImpersonationRole: API.OperationMethod<
   retry: Retry,
   operationName: "GetImpersonationRole",
 }));
+
 export type GetImpersonationRoleEffectError =
   | EntityNotFoundException
   | EntityStateException
@@ -4690,6 +4745,7 @@ export const getImpersonationRoleEffect: API.OperationMethod<
   retry: Retry,
   operationName: "GetImpersonationRoleEffect",
 }));
+
 export type GetMailboxDetailsError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -4717,6 +4773,7 @@ export const getMailboxDetails: API.OperationMethod<
   retry: Retry,
   operationName: "GetMailboxDetails",
 }));
+
 export type GetMailDomainError =
   | InvalidParameterException
   | MailDomainNotFoundException
@@ -4744,6 +4801,7 @@ export const getMailDomain: API.OperationMethod<
   retry: Retry,
   operationName: "GetMailDomain",
 }));
+
 export type GetMobileDeviceAccessEffectError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -4770,6 +4828,7 @@ export const getMobileDeviceAccessEffect: API.OperationMethod<
   retry: Retry,
   operationName: "GetMobileDeviceAccessEffect",
 }));
+
 export type GetMobileDeviceAccessOverrideError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -4799,6 +4858,7 @@ export const getMobileDeviceAccessOverride: API.OperationMethod<
   retry: Retry,
   operationName: "GetMobileDeviceAccessOverride",
 }));
+
 export type GetPersonalAccessTokenMetadataError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -4826,6 +4886,7 @@ export const getPersonalAccessTokenMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "GetPersonalAccessTokenMetadata",
 }));
+
 export type ListAccessControlRulesError =
   | OrganizationNotFoundException
   | OrganizationStateException
@@ -4846,6 +4907,7 @@ export const listAccessControlRules: API.OperationMethod<
   retry: Retry,
   operationName: "ListAccessControlRules",
 }));
+
 export type ListAliasesError =
   | EntityNotFoundException
   | EntityStateException
@@ -4896,6 +4958,7 @@ export const listAliases: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAvailabilityConfigurationsError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -4942,6 +5005,7 @@ export const listAvailabilityConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGroupMembersError =
   | EntityNotFoundException
   | EntityStateException
@@ -4992,6 +5056,7 @@ export const listGroupMembers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGroupsError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -5039,6 +5104,7 @@ export const listGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGroupsForEntityError =
   | EntityNotFoundException
   | EntityStateException
@@ -5088,6 +5154,7 @@ export const listGroupsForEntity: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListImpersonationRolesError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -5133,6 +5200,7 @@ export const listImpersonationRoles: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMailboxExportJobsError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -5179,6 +5247,7 @@ export const listMailboxExportJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMailboxPermissionsError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -5227,6 +5296,7 @@ export const listMailboxPermissions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMailDomainsError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -5272,6 +5342,7 @@ export const listMailDomains: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMobileDeviceAccessOverridesError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -5319,6 +5390,7 @@ export const listMobileDeviceAccessOverrides: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMobileDeviceAccessRulesError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -5344,6 +5416,7 @@ export const listMobileDeviceAccessRules: API.OperationMethod<
   retry: Retry,
   operationName: "ListMobileDeviceAccessRules",
 }));
+
 export type ListOrganizationsError = InvalidParameterException | CommonErrors;
 /**
  * Returns summaries of the customer's organizations.
@@ -5381,6 +5454,7 @@ export const listOrganizations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPersonalAccessTokensError =
   | EntityNotFoundException
   | EntityStateException
@@ -5431,6 +5505,7 @@ export const listPersonalAccessTokens: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourceDelegatesError =
   | EntityNotFoundException
   | EntityStateException
@@ -5483,6 +5558,7 @@ export const listResourceDelegates: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourcesError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -5530,6 +5606,7 @@ export const listResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
 /**
  * Lists the tags applied to an WorkMail organization resource.
@@ -5547,6 +5624,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListUsersError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -5592,6 +5670,7 @@ export const listUsers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutAccessControlRuleError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -5626,6 +5705,7 @@ export const putAccessControlRule: API.OperationMethod<
   retry: Retry,
   operationName: "PutAccessControlRule",
 }));
+
 export type PutEmailMonitoringConfigurationError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -5653,6 +5733,7 @@ export const putEmailMonitoringConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutEmailMonitoringConfiguration",
 }));
+
 export type PutIdentityProviderConfigurationError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -5681,6 +5762,7 @@ export const putIdentityProviderConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutIdentityProviderConfiguration",
 }));
+
 export type PutInboundDmarcSettingsError =
   | OrganizationNotFoundException
   | OrganizationStateException
@@ -5701,6 +5783,7 @@ export const putInboundDmarcSettings: API.OperationMethod<
   retry: Retry,
   operationName: "PutInboundDmarcSettings",
 }));
+
 export type PutMailboxPermissionsError =
   | EntityNotFoundException
   | EntityStateException
@@ -5731,6 +5814,7 @@ export const putMailboxPermissions: API.OperationMethod<
   retry: Retry,
   operationName: "PutMailboxPermissions",
 }));
+
 export type PutMobileDeviceAccessOverrideError =
   | EntityNotFoundException
   | EntityStateException
@@ -5760,6 +5844,7 @@ export const putMobileDeviceAccessOverride: API.OperationMethod<
   retry: Retry,
   operationName: "PutMobileDeviceAccessOverride",
 }));
+
 export type PutRetentionPolicyError =
   | InvalidParameterException
   | LimitExceededException
@@ -5787,6 +5872,7 @@ export const putRetentionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutRetentionPolicy",
 }));
+
 export type RegisterMailDomainError =
   | InvalidParameterException
   | LimitExceededException
@@ -5817,6 +5903,7 @@ export const registerMailDomain: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterMailDomain",
 }));
+
 export type RegisterToWorkMailError =
   | DirectoryServiceAuthenticationFailedException
   | DirectoryUnavailableException
@@ -5867,6 +5954,7 @@ export const registerToWorkMail: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterToWorkMail",
 }));
+
 export type ResetPasswordError =
   | DirectoryServiceAuthenticationFailedException
   | DirectoryUnavailableException
@@ -5904,6 +5992,7 @@ export const resetPassword: API.OperationMethod<
   retry: Retry,
   operationName: "ResetPassword",
 }));
+
 export type StartMailboxExportJobError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -5936,6 +6025,7 @@ export const startMailboxExportJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartMailboxExportJob",
 }));
+
 export type TagResourceError =
   | InvalidParameterException
   | OrganizationStateException
@@ -5964,6 +6054,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TestAvailabilityConfigurationError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -5997,6 +6088,7 @@ export const testAvailabilityConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "TestAvailabilityConfiguration",
 }));
+
 export type UntagResourceError = ResourceNotFoundException | CommonErrors;
 /**
  * Untags the specified tags from the specified WorkMail organization
@@ -6015,6 +6107,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAvailabilityConfigurationError =
   | InvalidParameterException
   | OrganizationNotFoundException
@@ -6043,6 +6136,7 @@ export const updateAvailabilityConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAvailabilityConfiguration",
 }));
+
 export type UpdateDefaultMailDomainError =
   | InvalidParameterException
   | MailDomainNotFoundException
@@ -6072,6 +6166,7 @@ export const updateDefaultMailDomain: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDefaultMailDomain",
 }));
+
 export type UpdateGroupError =
   | EntityNotFoundException
   | EntityStateException
@@ -6103,6 +6198,7 @@ export const updateGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGroup",
 }));
+
 export type UpdateImpersonationRoleError =
   | EntityNotFoundException
   | EntityStateException
@@ -6136,6 +6232,7 @@ export const updateImpersonationRole: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateImpersonationRole",
 }));
+
 export type UpdateMailboxQuotaError =
   | EntityNotFoundException
   | EntityStateException
@@ -6166,6 +6263,7 @@ export const updateMailboxQuota: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMailboxQuota",
 }));
+
 export type UpdateMobileDeviceAccessRuleError =
   | EntityNotFoundException
   | InvalidParameterException
@@ -6193,6 +6291,7 @@ export const updateMobileDeviceAccessRule: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMobileDeviceAccessRule",
 }));
+
 export type UpdatePrimaryEmailAddressError =
   | DirectoryServiceAuthenticationFailedException
   | DirectoryUnavailableException
@@ -6236,6 +6335,7 @@ export const updatePrimaryEmailAddress: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePrimaryEmailAddress",
 }));
+
 export type UpdateResourceError =
   | DirectoryUnavailableException
   | EmailAddressInUseException
@@ -6281,6 +6381,7 @@ export const updateResource: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateResource",
 }));
+
 export type UpdateUserError =
   | DirectoryServiceAuthenticationFailedException
   | DirectoryUnavailableException

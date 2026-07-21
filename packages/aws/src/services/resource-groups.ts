@@ -88,41 +88,50 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class GroupAlreadyExists extends S.TaggedErrorClass<GroupAlreadyExists>()(
+  "GroupAlreadyExists",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "BadRequestException",
+    message: { includes: "group already exists" },
+  }),
+).pipe(C.withAlreadyExistsError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
+  "MethodNotAllowedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(405),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
 export type TagSyncTaskArn = string;
-export type ErrorMessage = string;
-export type CreateGroupName = string;
-export type Description = string;
-export type Query = string;
-export type TagKey = string;
-export type TagValue = string;
-export type GroupConfigurationType = string;
-export type GroupConfigurationParameterName = string;
-export type GroupConfigurationParameterValue = string;
-export type Criticality = number;
-export type Owner = string;
-export type DisplayName = string;
-export type GroupArnV2 = string;
-export type GroupName = string;
-export type ApplicationTagKey = string;
-export type ApplicationArn = string;
-export type GroupConfigurationFailureReason = string;
-export type GroupStringV2 = string;
-export type GroupLifecycleEventsStatusMessage = string;
-export type GroupString = string;
-export type RoleArn = string;
-export type ResourceArn = string;
-export type ErrorCode = string;
-export type MaxResults = number;
-export type ListGroupingStatusesFilterValue = string;
-export type NextToken = string;
-export type ResourceFilterValue = string;
-export type ResourceType = string;
-export type QueryErrorMessage = string;
-export type GroupFilterValue = string;
-export type GroupArn = string;
-
-//# Schemas
 export interface CancelTagSyncTaskInput {
   TaskArn: string;
 }
@@ -146,11 +155,15 @@ export const CancelTagSyncTaskResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelTagSyncTaskResponse",
 }) as any as S.Schema<CancelTagSyncTaskResponse>;
+export type CreateGroupName = string;
+export type Description = string;
 export type QueryType =
   | "TAG_FILTERS_1_0"
   | "CLOUDFORMATION_STACK_1_0"
   | (string & {});
 export const QueryType = /*@__PURE__*/ S.String;
+
+export type Query = string;
 export interface ResourceQuery {
   Type: QueryType;
   Query: string;
@@ -158,8 +171,13 @@ export interface ResourceQuery {
 export const ResourceQuery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: QueryType, Query: S.String }),
 ).annotate({ identifier: "ResourceQuery" }) as any as S.Schema<ResourceQuery>;
+export type TagKey = string;
+export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export type GroupConfigurationType = string;
+export type GroupConfigurationParameterName = string;
+export type GroupConfigurationParameterValue = string;
 export type GroupConfigurationParameterValueList = string[];
 export const GroupConfigurationParameterValueList = /*@__PURE__*/ S.Array(
   S.String,
@@ -193,6 +211,9 @@ export type GroupConfigurationList = GroupConfigurationItem[];
 export const GroupConfigurationList = /*@__PURE__*/ S.Array(
   GroupConfigurationItem,
 );
+export type Criticality = number;
+export type Owner = string;
+export type DisplayName = string;
 export interface CreateGroupInput {
   Name: string;
   Description?: string;
@@ -226,6 +247,10 @@ export const CreateGroupInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGroupInput",
 }) as any as S.Schema<CreateGroupInput>;
+export type GroupArnV2 = string;
+export type GroupName = string;
+export type ApplicationTagKey = string;
+export type ApplicationArn = string;
 export type ApplicationTag = { [key: string]: string | undefined };
 export const ApplicationTag = /*@__PURE__*/ S.Record(
   S.String,
@@ -257,6 +282,8 @@ export type GroupConfigurationStatus =
   | "UPDATE_FAILED"
   | (string & {});
 export const GroupConfigurationStatus = /*@__PURE__*/ S.String;
+
+export type GroupConfigurationFailureReason = string;
 export interface GroupConfiguration {
   Configuration?: GroupConfigurationItem[];
   ProposedConfiguration?: GroupConfigurationItem[];
@@ -289,6 +316,7 @@ export const CreateGroupOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGroupOutput",
 }) as any as S.Schema<CreateGroupOutput>;
+export type GroupStringV2 = string;
 export interface DeleteGroupInput {
   GroupName?: string;
   Group?: string;
@@ -338,6 +366,7 @@ export type GroupLifecycleEventsDesiredStatus =
   | "INACTIVE"
   | (string & {});
 export const GroupLifecycleEventsDesiredStatus = /*@__PURE__*/ S.String;
+
 export type GroupLifecycleEventsStatus =
   | "ACTIVE"
   | "INACTIVE"
@@ -345,6 +374,8 @@ export type GroupLifecycleEventsStatus =
   | "ERROR"
   | (string & {});
 export const GroupLifecycleEventsStatus = /*@__PURE__*/ S.String;
+
+export type GroupLifecycleEventsStatusMessage = string;
 export interface AccountSettings {
   GroupLifecycleEventsDesiredStatus?: GroupLifecycleEventsDesiredStatus;
   GroupLifecycleEventsStatus?: GroupLifecycleEventsStatus;
@@ -394,6 +425,7 @@ export interface GetGroupOutput {
 export const GetGroupOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Group: Group }),
 ).annotate({ identifier: "GetGroupOutput" }) as any as S.Schema<GetGroupOutput>;
+export type GroupString = string;
 export interface GetGroupConfigurationInput {
   Group?: string;
 }
@@ -494,8 +526,11 @@ export const GetTagSyncTaskInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTagSyncTaskInput",
 }) as any as S.Schema<GetTagSyncTaskInput>;
+export type RoleArn = string;
 export type TagSyncTaskStatus = "ACTIVE" | "ERROR" | (string & {});
 export const TagSyncTaskStatus = /*@__PURE__*/ S.String;
+
+export type ErrorMessage = string;
 export interface GetTagSyncTaskOutput {
   GroupArn?: string;
   GroupName?: string;
@@ -524,6 +559,7 @@ export const GetTagSyncTaskOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTagSyncTaskOutput",
 }) as any as S.Schema<GetTagSyncTaskOutput>;
+export type ResourceArn = string;
 export type ResourceArnList = string[];
 export const ResourceArnList = /*@__PURE__*/ S.Array(S.String);
 export interface GroupResourcesInput {
@@ -544,6 +580,7 @@ export const GroupResourcesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GroupResourcesInput",
 }) as any as S.Schema<GroupResourcesInput>;
+export type ErrorCode = string;
 export interface FailedResource {
   ResourceArn?: string;
   ErrorMessage?: string;
@@ -582,11 +619,14 @@ export const GroupResourcesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GroupResourcesOutput",
 }) as any as S.Schema<GroupResourcesOutput>;
+export type MaxResults = number;
 export type ListGroupingStatusesFilterName =
   | "status"
   | "resource-arn"
   | (string & {});
 export const ListGroupingStatusesFilterName = /*@__PURE__*/ S.String;
+
+export type ListGroupingStatusesFilterValue = string;
 export type ListGroupingStatusesFilterValues = string[];
 export const ListGroupingStatusesFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface ListGroupingStatusesFilter {
@@ -605,6 +645,7 @@ export type ListGroupingStatusesFilterList = ListGroupingStatusesFilter[];
 export const ListGroupingStatusesFilterList = /*@__PURE__*/ S.Array(
   ListGroupingStatusesFilter,
 );
+export type NextToken = string;
 export interface ListGroupingStatusesInput {
   Group: string;
   MaxResults?: number;
@@ -632,6 +673,7 @@ export const ListGroupingStatusesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGroupingStatusesInput>;
 export type GroupingType = "GROUP" | "UNGROUP" | (string & {});
 export const GroupingType = /*@__PURE__*/ S.String;
+
 export type GroupingStatus =
   | "SUCCESS"
   | "FAILED"
@@ -639,6 +681,7 @@ export type GroupingStatus =
   | "SKIPPED"
   | (string & {});
 export const GroupingStatus = /*@__PURE__*/ S.String;
+
 export interface GroupingStatusesItem {
   ResourceArn?: string;
   Action?: GroupingType;
@@ -677,6 +720,8 @@ export const ListGroupingStatusesOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGroupingStatusesOutput>;
 export type ResourceFilterName = "resource-type" | (string & {});
 export const ResourceFilterName = /*@__PURE__*/ S.String;
+
+export type ResourceFilterValue = string;
 export type ResourceFilterValues = string[];
 export const ResourceFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface ResourceFilter {
@@ -715,6 +760,7 @@ export const ListGroupResourcesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGroupResourcesInput",
 }) as any as S.Schema<ListGroupResourcesInput>;
+export type ResourceType = string;
 export interface ResourceIdentifier {
   ResourceArn?: string;
   ResourceType?: string;
@@ -729,6 +775,7 @@ export const ResourceIdentifier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceIdentifier>;
 export type ResourceStatusValue = "PENDING" | (string & {});
 export const ResourceStatusValue = /*@__PURE__*/ S.String;
+
 export interface ResourceStatus {
   Name?: ResourceStatusValue;
 }
@@ -760,6 +807,8 @@ export type QueryErrorCode =
   | "RESOURCE_TYPE_NOT_SUPPORTED"
   | (string & {});
 export const QueryErrorCode = /*@__PURE__*/ S.String;
+
+export type QueryErrorMessage = string;
 export interface QueryError {
   ErrorCode?: QueryErrorCode;
   Message?: string;
@@ -796,6 +845,8 @@ export type GroupFilterName =
   | "criticality"
   | (string & {});
 export const GroupFilterName = /*@__PURE__*/ S.String;
+
+export type GroupFilterValue = string;
 export type GroupFilterValues = string[];
 export const GroupFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface GroupFilter {
@@ -830,6 +881,7 @@ export const ListGroupsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGroupsInput",
 }) as any as S.Schema<ListGroupsInput>;
+export type GroupArn = string;
 export interface GroupIdentifier {
   GroupName?: string;
   GroupArn?: string;
@@ -1236,53 +1288,6 @@ export const UpdateGroupQueryOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateGroupQueryOutput",
 }) as any as S.Schema<UpdateGroupQueryOutput>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class MethodNotAllowedException extends S.TaggedErrorClass<MethodNotAllowedException>()(
-  "MethodNotAllowedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(405),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class GroupAlreadyExists extends S.TaggedErrorClass<GroupAlreadyExists>()(
-  "GroupAlreadyExists",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "BadRequestException",
-    message: { includes: "group already exists" },
-  }),
-).pipe(C.withAlreadyExistsError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CancelTagSyncTaskError =
   | BadRequestException
   | ForbiddenException
@@ -1322,6 +1327,7 @@ export const cancelTagSyncTask: API.OperationMethod<
   retry: Retry,
   operationName: "CancelTagSyncTask",
 }));
+
 export type CreateGroupError =
   | BadRequestException
   | ForbiddenException
@@ -1363,6 +1369,7 @@ export const createGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGroup",
 }));
+
 export type DeleteGroupError =
   | BadRequestException
   | ForbiddenException
@@ -1401,6 +1408,7 @@ export const deleteGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGroup",
 }));
+
 export type GetAccountSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -1430,6 +1438,7 @@ export const getAccountSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountSettings",
 }));
+
 export type GetGroupError =
   | BadRequestException
   | ForbiddenException
@@ -1467,6 +1476,7 @@ export const getGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetGroup",
 }));
+
 export type GetGroupConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -1505,6 +1515,7 @@ export const getGroupConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetGroupConfiguration",
 }));
+
 export type GetGroupQueryError =
   | BadRequestException
   | ForbiddenException
@@ -1544,6 +1555,7 @@ export const getGroupQuery: API.OperationMethod<
   retry: Retry,
   operationName: "GetGroupQuery",
 }));
+
 export type GetTagsError =
   | BadRequestException
   | ForbiddenException
@@ -1582,6 +1594,7 @@ export const getTags: API.OperationMethod<
   retry: Retry,
   operationName: "GetTags",
 }));
+
 export type GetTagSyncTaskError =
   | BadRequestException
   | ForbiddenException
@@ -1621,6 +1634,7 @@ export const getTagSyncTask: API.OperationMethod<
   retry: Retry,
   operationName: "GetTagSyncTask",
 }));
+
 export type GroupResourcesError =
   | BadRequestException
   | ForbiddenException
@@ -1669,6 +1683,7 @@ export const groupResources: API.OperationMethod<
   retry: Retry,
   operationName: "GroupResources",
 }));
+
 export type ListGroupingStatusesError =
   | BadRequestException
   | ForbiddenException
@@ -1722,6 +1737,7 @@ export const listGroupingStatuses: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGroupResourcesError =
   | BadRequestException
   | ForbiddenException
@@ -1789,6 +1805,7 @@ export const listGroupResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGroupsError =
   | BadRequestException
   | ForbiddenException
@@ -1845,6 +1862,7 @@ export const listGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagSyncTasksError =
   | BadRequestException
   | ForbiddenException
@@ -1904,6 +1922,7 @@ export const listTagSyncTasks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutGroupConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -1943,6 +1962,7 @@ export const putGroupConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutGroupConfiguration",
 }));
+
 export type SearchResourcesError =
   | BadRequestException
   | ForbiddenException
@@ -2009,6 +2029,7 @@ export const searchResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type StartTagSyncTaskError =
   | BadRequestException
   | ForbiddenException
@@ -2058,6 +2079,7 @@ export const startTagSyncTask: API.OperationMethod<
   retry: Retry,
   operationName: "StartTagSyncTask",
 }));
+
 export type TagError =
   | BadRequestException
   | ForbiddenException
@@ -2101,6 +2123,7 @@ export const tag: API.OperationMethod<
   retry: Retry,
   operationName: "Tag",
 }));
+
 export type UngroupResourcesError =
   | BadRequestException
   | ForbiddenException
@@ -2141,6 +2164,7 @@ export const ungroupResources: API.OperationMethod<
   retry: Retry,
   operationName: "UngroupResources",
 }));
+
 export type UntagError =
   | BadRequestException
   | ForbiddenException
@@ -2178,6 +2202,7 @@ export const untag: API.OperationMethod<
   retry: Retry,
   operationName: "Untag",
 }));
+
 export type UpdateAccountSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -2212,6 +2237,7 @@ export const updateAccountSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAccountSettings",
 }));
+
 export type UpdateGroupError =
   | BadRequestException
   | ForbiddenException
@@ -2250,6 +2276,7 @@ export const updateGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGroup",
 }));
+
 export type UpdateGroupQueryError =
   | BadRequestException
   | ForbiddenException

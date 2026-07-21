@@ -97,40 +97,33 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
+  "InternalFailureException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type CategoryName = string;
 export type TimestampMilliseconds = number;
-export type Percentage = number;
-export type NonEmptyString = string;
-export type TagKey = string;
-export type TagValue = string;
-export type FailureReason = string;
-export type ModelName = string;
-export type Uri = string;
-export type DataAccessRoleArn = string;
-export type VocabularyName = string;
-export type Phrase = string;
-export type VocabularyFilterName = string;
-export type Word = string;
-export type CallAnalyticsJobName = string;
-export type TranscriptionJobName = string;
-export type MediaSampleRateHertz = number;
-export type IdentifiedLanguageScore = number;
-export type ChannelId = number;
-export type MaxSpeakers = number;
-export type MedicalScribeChannelId = number;
-export type MedicalMediaSampleRateHertz = number;
-export type MaxAlternatives = number;
-export type DurationInSeconds = number;
-export type SubtitleOutputStartIndex = number;
-export type NextToken = string;
-export type MaxResults = number;
-export type TranscribeArn = string;
-export type KMSKeyId = string;
-export type OutputBucketName = string;
-export type OutputKey = string;
-
-//# Schemas
 export interface AbsoluteTimeRange {
   StartTime?: number;
   EndTime?: number;
@@ -147,6 +140,7 @@ export const AbsoluteTimeRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AbsoluteTimeRange",
 }) as any as S.Schema<AbsoluteTimeRange>;
+export type Percentage = number;
 export interface RelativeTimeRange {
   StartPercentage?: number;
   EndPercentage?: number;
@@ -181,6 +175,7 @@ export const NonTalkTimeFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NonTalkTimeFilter>;
 export type ParticipantRole = "AGENT" | "CUSTOMER" | (string & {});
 export const ParticipantRole = /*@__PURE__*/ S.String;
+
 export interface InterruptionFilter {
   Threshold?: number;
   ParticipantRole?: ParticipantRole;
@@ -201,6 +196,8 @@ export const InterruptionFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InterruptionFilter>;
 export type TranscriptFilterType = "EXACT" | (string & {});
 export const TranscriptFilterType = /*@__PURE__*/ S.String;
+
+export type NonEmptyString = string;
 export type StringTargetList = string[];
 export const StringTargetList = /*@__PURE__*/ S.Array(S.String);
 export interface TranscriptFilter {
@@ -230,6 +227,7 @@ export type SentimentValue =
   | "MIXED"
   | (string & {});
 export const SentimentValue = /*@__PURE__*/ S.String;
+
 export type SentimentValueList = SentimentValue[];
 export const SentimentValueList = /*@__PURE__*/ S.Array(SentimentValue);
 export interface SentimentFilter {
@@ -283,6 +281,8 @@ export const Rule = /*@__PURE__*/ S.Union([
 ]);
 export type RuleList = Rule[];
 export const RuleList = /*@__PURE__*/ S.Array(Rule);
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -294,6 +294,7 @@ export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type InputType = "REAL_TIME" | "POST_CALL" | (string & {});
 export const InputType = /*@__PURE__*/ S.String;
+
 export interface CreateCallAnalyticsCategoryRequest {
   CategoryName: string;
   Rules: Rule[];
@@ -357,8 +358,13 @@ export type CLMLanguageCode =
   | "ja-JP"
   | (string & {});
 export const CLMLanguageCode = /*@__PURE__*/ S.String;
+
 export type BaseModelName = "NarrowBand" | "WideBand" | (string & {});
 export const BaseModelName = /*@__PURE__*/ S.String;
+
+export type ModelName = string;
+export type Uri = string;
+export type DataAccessRoleArn = string;
 export interface InputDataConfig {
   S3Uri: string;
   TuningDataS3Uri?: string;
@@ -406,6 +412,7 @@ export type ModelStatus =
   | "COMPLETED"
   | (string & {});
 export const ModelStatus = /*@__PURE__*/ S.String;
+
 export interface CreateLanguageModelResponse {
   LanguageCode?: CLMLanguageCode;
   BaseModelName?: BaseModelName;
@@ -424,6 +431,7 @@ export const CreateLanguageModelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLanguageModelResponse",
 }) as any as S.Schema<CreateLanguageModelResponse>;
+export type VocabularyName = string;
 export type LanguageCode =
   | "af-ZA"
   | "ar-AE"
@@ -544,6 +552,7 @@ export type LanguageCode =
   | "zu-ZA"
   | (string & {});
 export const LanguageCode = /*@__PURE__*/ S.String;
+
 export interface CreateMedicalVocabularyRequest {
   VocabularyName: string;
   LanguageCode: LanguageCode;
@@ -571,6 +580,8 @@ export const CreateMedicalVocabularyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMedicalVocabularyRequest>;
 export type VocabularyState = "PENDING" | "READY" | "FAILED" | (string & {});
 export const VocabularyState = /*@__PURE__*/ S.String;
+
+export type FailureReason = string;
 export interface CreateMedicalVocabularyResponse {
   VocabularyName?: string;
   LanguageCode?: LanguageCode;
@@ -591,6 +602,7 @@ export const CreateMedicalVocabularyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMedicalVocabularyResponse",
 }) as any as S.Schema<CreateMedicalVocabularyResponse>;
+export type Phrase = string;
 export type Phrases = string[];
 export const Phrases = /*@__PURE__*/ S.Array(S.String);
 export interface CreateVocabularyRequest {
@@ -642,6 +654,8 @@ export const CreateVocabularyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVocabularyResponse",
 }) as any as S.Schema<CreateVocabularyResponse>;
+export type VocabularyFilterName = string;
+export type Word = string;
 export type Words = string[];
 export const Words = /*@__PURE__*/ S.Array(S.String);
 export interface CreateVocabularyFilterRequest {
@@ -718,6 +732,7 @@ export const DeleteCallAnalyticsCategoryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteCallAnalyticsCategoryResponse",
 }) as any as S.Schema<DeleteCallAnalyticsCategoryResponse>;
+export type CallAnalyticsJobName = string;
 export interface DeleteCallAnalyticsJobRequest {
   CallAnalyticsJobName: string;
 }
@@ -769,6 +784,7 @@ export const DeleteLanguageModelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteLanguageModelResponse",
 }) as any as S.Schema<DeleteLanguageModelResponse>;
+export type TranscriptionJobName = string;
 export interface DeleteMedicalScribeJobRequest {
   MedicalScribeJobName: string;
 }
@@ -1042,13 +1058,16 @@ export type CallAnalyticsJobStatus =
   | "COMPLETED"
   | (string & {});
 export const CallAnalyticsJobStatus = /*@__PURE__*/ S.String;
+
 export type CallAnalyticsFeature = "GENERATIVE_SUMMARIZATION" | (string & {});
 export const CallAnalyticsFeature = /*@__PURE__*/ S.String;
+
 export type CallAnalyticsSkippedReasonCode =
   | "INSUFFICIENT_CONVERSATION_CONTENT"
   | "FAILED_SAFETY_GUIDELINES"
   | (string & {});
 export const CallAnalyticsSkippedReasonCode = /*@__PURE__*/ S.String;
+
 export interface CallAnalyticsSkippedFeature {
   Feature?: CallAnalyticsFeature;
   ReasonCode?: CallAnalyticsSkippedReasonCode;
@@ -1075,6 +1094,7 @@ export const CallAnalyticsJobDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CallAnalyticsJobDetails",
 }) as any as S.Schema<CallAnalyticsJobDetails>;
+export type MediaSampleRateHertz = number;
 export type MediaFormat =
   | "mp3"
   | "mp4"
@@ -1086,6 +1106,7 @@ export type MediaFormat =
   | "m4a"
   | (string & {});
 export const MediaFormat = /*@__PURE__*/ S.String;
+
 export interface Media {
   MediaFileUri?: string;
   RedactedMediaFileUri?: string;
@@ -1106,15 +1127,19 @@ export const Transcript = /*@__PURE__*/ S.suspend(() =>
     RedactedTranscriptFileUri: S.optional(S.String),
   }),
 ).annotate({ identifier: "Transcript" }) as any as S.Schema<Transcript>;
+export type IdentifiedLanguageScore = number;
 export type VocabularyFilterMethod = "remove" | "mask" | "tag" | (string & {});
 export const VocabularyFilterMethod = /*@__PURE__*/ S.String;
+
 export type RedactionType = "PII" | (string & {});
 export const RedactionType = /*@__PURE__*/ S.String;
+
 export type RedactionOutput =
   | "redacted"
   | "redacted_and_unredacted"
   | (string & {});
 export const RedactionOutput = /*@__PURE__*/ S.String;
+
 export type PiiEntityType =
   | "BANK_ACCOUNT_NUMBER"
   | "BANK_ROUTING"
@@ -1130,6 +1155,7 @@ export type PiiEntityType =
   | "ALL"
   | (string & {});
 export const PiiEntityType = /*@__PURE__*/ S.String;
+
 export type PiiEntityTypes = PiiEntityType[];
 export const PiiEntityTypes = /*@__PURE__*/ S.Array(PiiEntityType);
 export interface ContentRedaction {
@@ -1199,6 +1225,7 @@ export const CallAnalyticsJobSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CallAnalyticsJobSettings",
 }) as any as S.Schema<CallAnalyticsJobSettings>;
+export type ChannelId = number;
 export interface ChannelDefinition {
   ChannelId?: number;
   ParticipantRole?: ParticipantRole;
@@ -1292,8 +1319,10 @@ export type MedicalScribeJobStatus =
   | "COMPLETED"
   | (string & {});
 export const MedicalScribeJobStatus = /*@__PURE__*/ S.String;
+
 export type MedicalScribeLanguageCode = "en-US" | (string & {});
 export const MedicalScribeLanguageCode = /*@__PURE__*/ S.String;
+
 export interface MedicalScribeOutput {
   TranscriptFileUri: string;
   ClinicalDocumentUri: string;
@@ -1303,6 +1332,7 @@ export const MedicalScribeOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MedicalScribeOutput",
 }) as any as S.Schema<MedicalScribeOutput>;
+export type MaxSpeakers = number;
 export type MedicalScribeNoteTemplate =
   | "HISTORY_AND_PHYSICAL"
   | "GIRPP"
@@ -1313,6 +1343,7 @@ export type MedicalScribeNoteTemplate =
   | "PHYSICAL_SOAP"
   | (string & {});
 export const MedicalScribeNoteTemplate = /*@__PURE__*/ S.String;
+
 export interface ClinicalNoteGenerationSettings {
   NoteTemplate?: MedicalScribeNoteTemplate;
 }
@@ -1343,11 +1374,13 @@ export const MedicalScribeSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MedicalScribeSettings",
 }) as any as S.Schema<MedicalScribeSettings>;
+export type MedicalScribeChannelId = number;
 export type MedicalScribeParticipantRole =
   | "PATIENT"
   | "CLINICIAN"
   | (string & {});
 export const MedicalScribeParticipantRole = /*@__PURE__*/ S.String;
+
 export interface MedicalScribeChannelDefinition {
   ChannelId: number;
   ParticipantRole: MedicalScribeParticipantRole;
@@ -1439,6 +1472,8 @@ export type TranscriptionJobStatus =
   | "COMPLETED"
   | (string & {});
 export const TranscriptionJobStatus = /*@__PURE__*/ S.String;
+
+export type MedicalMediaSampleRateHertz = number;
 export interface MedicalTranscript {
   TranscriptFileUri?: string;
 }
@@ -1447,6 +1482,7 @@ export const MedicalTranscript = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MedicalTranscript",
 }) as any as S.Schema<MedicalTranscript>;
+export type MaxAlternatives = number;
 export interface MedicalTranscriptionSetting {
   ShowSpeakerLabels?: boolean;
   MaxSpeakerLabels?: number;
@@ -1469,10 +1505,13 @@ export const MedicalTranscriptionSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MedicalTranscriptionSetting>;
 export type MedicalContentIdentificationType = "PHI" | (string & {});
 export const MedicalContentIdentificationType = /*@__PURE__*/ S.String;
+
 export type Specialty = "PRIMARYCARE" | (string & {});
 export const Specialty = /*@__PURE__*/ S.String;
+
 export type Type = "CONVERSATION" | "DICTATION" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
+
 export interface MedicalTranscriptionJob {
   MedicalTranscriptionJobName?: string;
   TranscriptionJobStatus?: TranscriptionJobStatus;
@@ -1624,6 +1663,7 @@ export const JobExecutionSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JobExecutionSettings",
 }) as any as S.Schema<JobExecutionSettings>;
+export type DurationInSeconds = number;
 export interface LanguageCodeItem {
   LanguageCode?: LanguageCode;
   DurationInSeconds?: number;
@@ -1640,10 +1680,12 @@ export type LanguageCodeList = LanguageCodeItem[];
 export const LanguageCodeList = /*@__PURE__*/ S.Array(LanguageCodeItem);
 export type SubtitleFormat = "vtt" | "srt" | (string & {});
 export const SubtitleFormat = /*@__PURE__*/ S.String;
+
 export type SubtitleFormats = SubtitleFormat[];
 export const SubtitleFormats = /*@__PURE__*/ S.Array(SubtitleFormat);
 export type SubtitleFileUris = string[];
 export const SubtitleFileUris = /*@__PURE__*/ S.Array(S.String);
+export type SubtitleOutputStartIndex = number;
 export interface SubtitlesOutput {
   Formats?: SubtitleFormat[];
   SubtitleFileUris?: string[];
@@ -1660,6 +1702,7 @@ export const SubtitlesOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubtitlesOutput>;
 export type ToxicityCategory = "ALL" | (string & {});
 export const ToxicityCategory = /*@__PURE__*/ S.String;
+
 export type ToxicityCategories = ToxicityCategory[];
 export const ToxicityCategories = /*@__PURE__*/ S.Array(ToxicityCategory);
 export interface ToxicityDetectionSettings {
@@ -1819,6 +1862,8 @@ export const GetVocabularyFilterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetVocabularyFilterResponse",
 }) as any as S.Schema<GetVocabularyFilterResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListCallAnalyticsCategoriesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2054,6 +2099,7 @@ export type OutputLocationType =
   | "SERVICE_BUCKET"
   | (string & {});
 export const OutputLocationType = /*@__PURE__*/ S.String;
+
 export interface MedicalTranscriptionJobSummary {
   MedicalTranscriptionJobName?: string;
   CreationTime?: Date;
@@ -2162,6 +2208,7 @@ export const ListMedicalVocabulariesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMedicalVocabulariesResponse",
 }) as any as S.Schema<ListMedicalVocabulariesResponse>;
+export type TranscribeArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -2361,6 +2408,7 @@ export const ListVocabularyFiltersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListVocabularyFiltersResponse",
 }) as any as S.Schema<ListVocabularyFiltersResponse>;
+export type KMSKeyId = string;
 export interface StartCallAnalyticsJobRequest {
   CallAnalyticsJobName: string;
   Media: Media;
@@ -2405,6 +2453,7 @@ export const StartCallAnalyticsJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartCallAnalyticsJobResponse",
 }) as any as S.Schema<StartCallAnalyticsJobResponse>;
+export type OutputBucketName = string;
 export type KMSEncryptionContextMap = { [key: string]: string | undefined };
 export const KMSEncryptionContextMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2412,6 +2461,7 @@ export const KMSEncryptionContextMap = /*@__PURE__*/ S.Record(
 );
 export type Pronouns = "HE_HIM" | "SHE_HER" | "THEY_THEM" | (string & {});
 export const Pronouns = /*@__PURE__*/ S.String;
+
 export interface MedicalScribePatientContext {
   Pronouns?: Pronouns;
 }
@@ -2476,6 +2526,7 @@ export const StartMedicalScribeJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartMedicalScribeJobResponse",
 }) as any as S.Schema<StartMedicalScribeJobResponse>;
+export type OutputKey = string;
 export interface StartMedicalTranscriptionJobRequest {
   MedicalTranscriptionJobName: string;
   LanguageCode: LanguageCode;
@@ -2833,35 +2884,6 @@ export const UpdateVocabularyFilterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateVocabularyFilterResponse",
 }) as any as S.Schema<UpdateVocabularyFilterResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateCallAnalyticsCategoryError =
   | BadRequestException
   | ConflictException
@@ -2909,6 +2931,7 @@ export const createCallAnalyticsCategory: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCallAnalyticsCategory",
 }));
+
 export type CreateLanguageModelError =
   | BadRequestException
   | ConflictException
@@ -2947,6 +2970,7 @@ export const createLanguageModel: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLanguageModel",
 }));
+
 export type CreateMedicalVocabularyError =
   | BadRequestException
   | ConflictException
@@ -2989,6 +3013,7 @@ export const createMedicalVocabulary: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMedicalVocabulary",
 }));
+
 export type CreateVocabularyError =
   | BadRequestException
   | ConflictException
@@ -3029,6 +3054,7 @@ export const createVocabulary: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVocabulary",
 }));
+
 export type CreateVocabularyFilterError =
   | BadRequestException
   | ConflictException
@@ -3068,6 +3094,7 @@ export const createVocabularyFilter: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVocabularyFilter",
 }));
+
 export type DeleteCallAnalyticsCategoryError =
   | BadRequestException
   | InternalFailureException
@@ -3097,6 +3124,7 @@ export const deleteCallAnalyticsCategory: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCallAnalyticsCategory",
 }));
+
 export type DeleteCallAnalyticsJobError =
   | BadRequestException
   | InternalFailureException
@@ -3124,6 +3152,7 @@ export const deleteCallAnalyticsJob: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCallAnalyticsJob",
 }));
+
 export type DeleteLanguageModelError =
   | BadRequestException
   | InternalFailureException
@@ -3151,6 +3180,7 @@ export const deleteLanguageModel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLanguageModel",
 }));
+
 export type DeleteMedicalScribeJobError =
   | BadRequestException
   | InternalFailureException
@@ -3178,6 +3208,7 @@ export const deleteMedicalScribeJob: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMedicalScribeJob",
 }));
+
 export type DeleteMedicalTranscriptionJobError =
   | BadRequestException
   | InternalFailureException
@@ -3205,6 +3236,7 @@ export const deleteMedicalTranscriptionJob: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMedicalTranscriptionJob",
 }));
+
 export type DeleteMedicalVocabularyError =
   | BadRequestException
   | InternalFailureException
@@ -3234,6 +3266,7 @@ export const deleteMedicalVocabulary: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMedicalVocabulary",
 }));
+
 export type DeleteTranscriptionJobError =
   | BadRequestException
   | InternalFailureException
@@ -3261,6 +3294,7 @@ export const deleteTranscriptionJob: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTranscriptionJob",
 }));
+
 export type DeleteVocabularyError =
   | BadRequestException
   | InternalFailureException
@@ -3290,6 +3324,7 @@ export const deleteVocabulary: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVocabulary",
 }));
+
 export type DeleteVocabularyFilterError =
   | BadRequestException
   | InternalFailureException
@@ -3319,6 +3354,7 @@ export const deleteVocabularyFilter: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVocabularyFilter",
 }));
+
 export type DescribeLanguageModelError =
   | BadRequestException
   | InternalFailureException
@@ -3354,6 +3390,7 @@ export const describeLanguageModel: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLanguageModel",
 }));
+
 export type GetCallAnalyticsCategoryError =
   | BadRequestException
   | InternalFailureException
@@ -3383,6 +3420,7 @@ export const getCallAnalyticsCategory: API.OperationMethod<
   retry: Retry,
   operationName: "GetCallAnalyticsCategory",
 }));
+
 export type GetCallAnalyticsJobError =
   | BadRequestException
   | InternalFailureException
@@ -3425,6 +3463,7 @@ export const getCallAnalyticsJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetCallAnalyticsJob",
 }));
+
 export type GetMedicalScribeJobError =
   | BadRequestException
   | InternalFailureException
@@ -3461,6 +3500,7 @@ export const getMedicalScribeJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetMedicalScribeJob",
 }));
+
 export type GetMedicalTranscriptionJobError =
   | BadRequestException
   | InternalFailureException
@@ -3497,6 +3537,7 @@ export const getMedicalTranscriptionJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetMedicalTranscriptionJob",
 }));
+
 export type GetMedicalVocabularyError =
   | BadRequestException
   | InternalFailureException
@@ -3531,6 +3572,7 @@ export const getMedicalVocabulary: API.OperationMethod<
   retry: Retry,
   operationName: "GetMedicalVocabulary",
 }));
+
 export type GetTranscriptionJobError =
   | BadRequestException
   | InternalFailureException
@@ -3570,6 +3612,7 @@ export const getTranscriptionJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetTranscriptionJob",
 }));
+
 export type GetVocabularyError =
   | BadRequestException
   | InternalFailureException
@@ -3605,6 +3648,7 @@ export const getVocabulary: API.OperationMethod<
   retry: Retry,
   operationName: "GetVocabulary",
 }));
+
 export type GetVocabularyFilterError =
   | BadRequestException
   | InternalFailureException
@@ -3634,6 +3678,7 @@ export const getVocabularyFilter: API.OperationMethod<
   retry: Retry,
   operationName: "GetVocabularyFilter",
 }));
+
 export type ListCallAnalyticsCategoriesError =
   | BadRequestException
   | InternalFailureException
@@ -3682,6 +3727,7 @@ export const listCallAnalyticsCategories: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCallAnalyticsJobsError =
   | BadRequestException
   | InternalFailureException
@@ -3730,6 +3776,7 @@ export const listCallAnalyticsJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLanguageModelsError =
   | BadRequestException
   | InternalFailureException
@@ -3778,6 +3825,7 @@ export const listLanguageModels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMedicalScribeJobsError =
   | BadRequestException
   | InternalFailureException
@@ -3826,6 +3874,7 @@ export const listMedicalScribeJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMedicalTranscriptionJobsError =
   | BadRequestException
   | InternalFailureException
@@ -3874,6 +3923,7 @@ export const listMedicalTranscriptionJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMedicalVocabulariesError =
   | BadRequestException
   | InternalFailureException
@@ -3922,6 +3972,7 @@ export const listMedicalVocabularies: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | InternalFailureException
@@ -3953,6 +4004,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTranscriptionJobsError =
   | BadRequestException
   | InternalFailureException
@@ -4001,6 +4053,7 @@ export const listTranscriptionJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListVocabulariesError =
   | BadRequestException
   | InternalFailureException
@@ -4049,6 +4102,7 @@ export const listVocabularies: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListVocabularyFiltersError =
   | BadRequestException
   | InternalFailureException
@@ -4097,6 +4151,7 @@ export const listVocabularyFilters: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type StartCallAnalyticsJobError =
   | BadRequestException
   | ConflictException
@@ -4166,6 +4221,7 @@ export const startCallAnalyticsJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartCallAnalyticsJob",
 }));
+
 export type StartMedicalScribeJobError =
   | BadRequestException
   | ConflictException
@@ -4224,6 +4280,7 @@ export const startMedicalScribeJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartMedicalScribeJob",
 }));
+
 export type StartMedicalTranscriptionJobError =
   | BadRequestException
   | ConflictException
@@ -4286,6 +4343,7 @@ export const startMedicalTranscriptionJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartMedicalTranscriptionJob",
 }));
+
 export type StartTranscriptionJobError =
   | BadRequestException
   | ConflictException
@@ -4340,6 +4398,7 @@ export const startTranscriptionJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartTranscriptionJob",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | ConflictException
@@ -4373,6 +4432,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | ConflictException
@@ -4405,6 +4465,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateCallAnalyticsCategoryError =
   | BadRequestException
   | ConflictException
@@ -4439,6 +4500,7 @@ export const updateCallAnalyticsCategory: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCallAnalyticsCategory",
 }));
+
 export type UpdateMedicalVocabularyError =
   | BadRequestException
   | ConflictException
@@ -4470,6 +4532,7 @@ export const updateMedicalVocabulary: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMedicalVocabulary",
 }));
+
 export type UpdateVocabularyError =
   | BadRequestException
   | ConflictException
@@ -4501,6 +4564,7 @@ export const updateVocabulary: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateVocabulary",
 }));
+
 export type UpdateVocabularyFilterError =
   | BadRequestException
   | InternalFailureException

@@ -85,32 +85,37 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
+  "InternalFailureException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
 export type SessionId = string;
-export type MedicalScribeMediaSampleRateHertz = number;
-export type VocabularyName = string;
-export type VocabularyFilterName = string;
-export type IamRoleArn = string;
-export type MedicalScribeChannelId = number;
-export type NonEmptyString = string;
-export type KMSKeyId = string;
-export type BucketName = string;
-export type Uri = string;
-export type MediaSampleRateHertz = number;
-export type AudioChunk = Uint8Array;
-export type ChannelId = number;
-export type ModelName = string;
-export type LanguageOptions = string;
-export type VocabularyNames = string;
-export type VocabularyFilterNames = string;
-export type PiiEntityTypes = string;
-export type RequestId = string;
-export type Confidence = number;
-export type Stable = boolean;
-export type NumberOfChannels = number;
-export type SessionResumeWindow = number;
-
-//# Schemas
 export interface GetMedicalScribeStreamRequest {
   SessionId: string;
 }
@@ -130,23 +135,32 @@ export const GetMedicalScribeStreamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMedicalScribeStreamRequest>;
 export type MedicalScribeLanguageCode = "en-US" | (string & {});
 export const MedicalScribeLanguageCode = /*@__PURE__*/ S.String;
+
+export type MedicalScribeMediaSampleRateHertz = number;
 export type MedicalScribeMediaEncoding =
   | "pcm"
   | "ogg-opus"
   | "flac"
   | (string & {});
 export const MedicalScribeMediaEncoding = /*@__PURE__*/ S.String;
+
+export type VocabularyName = string;
+export type VocabularyFilterName = string;
 export type MedicalScribeVocabularyFilterMethod =
   | "remove"
   | "mask"
   | "tag"
   | (string & {});
 export const MedicalScribeVocabularyFilterMethod = /*@__PURE__*/ S.String;
+
+export type IamRoleArn = string;
+export type MedicalScribeChannelId = number;
 export type MedicalScribeParticipantRole =
   | "PATIENT"
   | "CLINICIAN"
   | (string & {});
 export const MedicalScribeParticipantRole = /*@__PURE__*/ S.String;
+
 export interface MedicalScribeChannelDefinition {
   ChannelId: number;
   ParticipantRole: MedicalScribeParticipantRole;
@@ -163,11 +177,13 @@ export type MedicalScribeChannelDefinitions = MedicalScribeChannelDefinition[];
 export const MedicalScribeChannelDefinitions = /*@__PURE__*/ S.Array(
   MedicalScribeChannelDefinition,
 );
+export type NonEmptyString = string;
 export type KMSEncryptionContextMap = { [key: string]: string | undefined };
 export const KMSEncryptionContextMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type KMSKeyId = string;
 export interface MedicalScribeEncryptionSettings {
   KmsEncryptionContext?: { [key: string]: string | undefined };
   KmsKeyId: string;
@@ -187,6 +203,8 @@ export type MedicalScribeStreamStatus =
   | "COMPLETED"
   | (string & {});
 export const MedicalScribeStreamStatus = /*@__PURE__*/ S.String;
+
+export type BucketName = string;
 export type MedicalScribeNoteTemplate =
   | "HISTORY_AND_PHYSICAL"
   | "GIRPP"
@@ -197,6 +215,7 @@ export type MedicalScribeNoteTemplate =
   | "PHYSICAL_SOAP"
   | (string & {});
 export const MedicalScribeNoteTemplate = /*@__PURE__*/ S.String;
+
 export interface ClinicalNoteGenerationSettings {
   OutputBucketName: string;
   NoteTemplate?: MedicalScribeNoteTemplate;
@@ -220,12 +239,14 @@ export const MedicalScribePostStreamAnalyticsSettings = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "MedicalScribePostStreamAnalyticsSettings",
 }) as any as S.Schema<MedicalScribePostStreamAnalyticsSettings>;
+export type Uri = string;
 export type ClinicalNoteGenerationStatus =
   | "IN_PROGRESS"
   | "FAILED"
   | "COMPLETED"
   | (string & {});
 export const ClinicalNoteGenerationStatus = /*@__PURE__*/ S.String;
+
 export interface ClinicalNoteGenerationResult {
   ClinicalNoteOutputLocation?: string;
   TranscriptOutputLocation?: string;
@@ -321,16 +342,22 @@ export type CallAnalyticsLanguageCode =
   | "pt-BR"
   | (string & {});
 export const CallAnalyticsLanguageCode = /*@__PURE__*/ S.String;
+
+export type MediaSampleRateHertz = number;
 export type MediaEncoding = "pcm" | "ogg-opus" | "flac" | (string & {});
 export const MediaEncoding = /*@__PURE__*/ S.String;
+
+export type AudioChunk = Uint8Array;
 export interface AudioEvent {
   AudioChunk?: Uint8Array;
 }
 export const AudioEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AudioChunk: S.optional(T.Blob).pipe(T.EventPayload()) }),
 ).annotate({ identifier: "AudioEvent" }) as any as S.Schema<AudioEvent>;
+export type ChannelId = number;
 export type ParticipantRole = "AGENT" | "CUSTOMER" | (string & {});
 export const ParticipantRole = /*@__PURE__*/ S.String;
+
 export interface ChannelDefinition {
   ChannelId: number;
   ParticipantRole: ParticipantRole;
@@ -347,6 +374,7 @@ export type ContentRedactionOutput =
   | "redacted_and_unredacted"
   | (string & {});
 export const ContentRedactionOutput = /*@__PURE__*/ S.String;
+
 export interface PostCallAnalyticsSettings {
   OutputLocation: string;
   DataAccessRoleArn: string;
@@ -386,12 +414,21 @@ export const AudioStream = /*@__PURE__*/ T.InputEventStream(
 ) as any as S.Schema<stream.Stream<AudioStream, Error, never>>;
 export type VocabularyFilterMethod = "remove" | "mask" | "tag" | (string & {});
 export const VocabularyFilterMethod = /*@__PURE__*/ S.String;
+
+export type ModelName = string;
+export type LanguageOptions = string;
+export type VocabularyNames = string;
+export type VocabularyFilterNames = string;
 export type PartialResultsStability = "high" | "medium" | "low" | (string & {});
 export const PartialResultsStability = /*@__PURE__*/ S.String;
+
 export type ContentIdentificationType = "PII" | (string & {});
 export const ContentIdentificationType = /*@__PURE__*/ S.String;
+
 export type ContentRedactionType = "PII" | (string & {});
 export const ContentRedactionType = /*@__PURE__*/ S.String;
+
+export type PiiEntityTypes = string;
 export interface StartCallAnalyticsStreamTranscriptionRequest {
   LanguageCode?: CallAnalyticsLanguageCode;
   MediaSampleRateHertz: number;
@@ -484,8 +521,12 @@ export const StartCallAnalyticsStreamTranscriptionRequest =
   ).annotate({
     identifier: "StartCallAnalyticsStreamTranscriptionRequest",
   }) as any as S.Schema<StartCallAnalyticsStreamTranscriptionRequest>;
+export type RequestId = string;
 export type ItemType = "pronunciation" | "punctuation" | (string & {});
 export const ItemType = /*@__PURE__*/ S.String;
+
+export type Confidence = number;
+export type Stable = boolean;
 export interface CallAnalyticsItem {
   BeginOffsetMillis?: number;
   EndOffsetMillis?: number;
@@ -540,6 +581,7 @@ export type Sentiment =
   | "NEUTRAL"
   | (string & {});
 export const Sentiment = /*@__PURE__*/ S.String;
+
 export interface CharacterOffsets {
   Begin?: number;
   End?: number;
@@ -843,6 +885,7 @@ export type MedicalScribeSessionControlEventType =
   | "END_OF_SESSION"
   | (string & {});
 export const MedicalScribeSessionControlEventType = /*@__PURE__*/ S.String;
+
 export interface MedicalScribeSessionControlEvent {
   Type: MedicalScribeSessionControlEventType;
 }
@@ -853,6 +896,7 @@ export const MedicalScribeSessionControlEvent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MedicalScribeSessionControlEvent>;
 export type Pronouns = "HE_HIM" | "SHE_HER" | "THEY_THEM" | (string & {});
 export const Pronouns = /*@__PURE__*/ S.String;
+
 export interface MedicalScribePatientContext {
   Pronouns?: Pronouns;
 }
@@ -956,6 +1000,7 @@ export type MedicalScribeTranscriptItemType =
   | "punctuation"
   | (string & {});
 export const MedicalScribeTranscriptItemType = /*@__PURE__*/ S.String;
+
 export interface MedicalScribeTranscriptItem {
   BeginAudioTime?: number;
   EndAudioTime?: number;
@@ -1219,6 +1264,7 @@ export type LanguageCode =
   | "uz-UZ"
   | (string & {});
 export const LanguageCode = /*@__PURE__*/ S.String;
+
 export type Specialty =
   | "PRIMARYCARE"
   | "CARDIOLOGY"
@@ -1228,10 +1274,14 @@ export type Specialty =
   | "UROLOGY"
   | (string & {});
 export const Specialty = /*@__PURE__*/ S.String;
+
 export type Type = "CONVERSATION" | "DICTATION" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
+
+export type NumberOfChannels = number;
 export type MedicalContentIdentificationType = "PHI" | (string & {});
 export const MedicalContentIdentificationType = /*@__PURE__*/ S.String;
+
 export interface StartMedicalStreamTranscriptionRequest {
   LanguageCode: LanguageCode;
   MediaSampleRateHertz: number;
@@ -1524,6 +1574,7 @@ export const StartMedicalStreamTranscriptionResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "StartMedicalStreamTranscriptionResponse",
 }) as any as S.Schema<StartMedicalStreamTranscriptionResponse>;
+export type SessionResumeWindow = number;
 export interface StartStreamTranscriptionRequest {
   LanguageCode?: LanguageCode;
   MediaSampleRateHertz: number;
@@ -1930,40 +1981,6 @@ export const StartStreamTranscriptionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartStreamTranscriptionResponse",
 }) as any as S.Schema<StartStreamTranscriptionResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-
-//# Operations
 export type GetMedicalScribeStreamError =
   | BadRequestException
   | InternalFailureException
@@ -1993,6 +2010,7 @@ export const getMedicalScribeStream: API.OperationMethod<
   retry: Retry,
   operationName: "GetMedicalScribeStream",
 }));
+
 export type StartCallAnalyticsStreamTranscriptionError =
   | BadRequestException
   | ConflictException
@@ -2034,6 +2052,7 @@ export const startCallAnalyticsStreamTranscription: API.OperationMethod<
   retry: Retry,
   operationName: "StartCallAnalyticsStreamTranscription",
 }));
+
 export type StartMedicalScribeStreamError =
   | BadRequestException
   | ConflictException
@@ -2091,6 +2110,7 @@ export const startMedicalScribeStream: API.OperationMethod<
   retry: Retry,
   operationName: "StartMedicalScribeStream",
 }));
+
 export type StartMedicalStreamTranscriptionError =
   | BadRequestException
   | ConflictException
@@ -2134,6 +2154,7 @@ export const startMedicalStreamTranscription: API.OperationMethod<
   retry: Retry,
   operationName: "StartMedicalStreamTranscription",
 }));
+
 export type StartStreamTranscriptionError =
   | BadRequestException
   | ConflictException

@@ -204,85 +204,102 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AnalysisNotFoundException extends S.TaggedErrorClass<AnalysisNotFoundException>()(
+  "AnalysisNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class AnomalyMonitorAlreadyExists extends S.TaggedErrorClass<AnomalyMonitorAlreadyExists>()(
+  "AnomalyMonitorAlreadyExists",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "same monitor name as an existing monitor" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class AnomalySubscriptionAlreadyExists extends S.TaggedErrorClass<AnomalySubscriptionAlreadyExists>()(
+  "AnomalySubscriptionAlreadyExists",
+  {},
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "same subscription name as an existing subscription" },
+  }),
+).pipe(C.withAlreadyExistsError, C.withConflictError) {}
+export class BackfillLimitExceededException extends S.TaggedErrorClass<BackfillLimitExceededException>()(
+  "BackfillLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class BillExpirationException extends S.TaggedErrorClass<BillExpirationException>()(
+  "BillExpirationException",
+  { Message: S.optional(S.String) },
+) {}
+export class BillingViewHealthStatusException extends S.TaggedErrorClass<BillingViewHealthStatusException>()(
+  "BillingViewHealthStatusException",
+  { Message: S.optional(S.String) },
+) {}
+export class DataUnavailableException extends S.TaggedErrorClass<DataUnavailableException>()(
+  "DataUnavailableException",
+  { Message: S.optional(S.String) },
+) {}
+export class GenerationExistsException extends S.TaggedErrorClass<GenerationExistsException>()(
+  "GenerationExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class RequestChangedException extends S.TaggedErrorClass<RequestChangedException>()(
+  "RequestChangedException",
+  { Message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class RightsizingRecommendationNotEnabled extends S.TaggedErrorClass<RightsizingRecommendationNotEnabled>()(
+  "RightsizingRecommendationNotEnabled",
+  {},
+  T.SyntheticError({
+    from: "AccessDeniedException",
+    message: { includes: "opt-in only feature" },
+  }),
+) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnknownMonitorException extends S.TaggedErrorClass<UnknownMonitorException>()(
+  "UnknownMonitorException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class UnknownSubscriptionException extends S.TaggedErrorClass<UnknownSubscriptionException>()(
+  "UnknownSubscriptionException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class UnresolvableUsageUnitException extends S.TaggedErrorClass<UnresolvableUsageUnitException>()(
+  "UnresolvableUsageUnitException",
+  { Message: S.optional(S.String) },
+) {}
 export type YearMonthDay = string;
-export type Value = string;
-export type TagKey = string;
-export type CostCategoryName = string;
-export type NonNegativeInteger = number;
-export type ResourceTagKey = string;
-export type ResourceTagValue = string;
-export type ErrorMessage = string;
-export type Arn = string;
-export type SubscriberAddress = string;
-export type NullableNonNegativeDouble = number;
-export type ZonedDateTime = string;
-export type CostCategoryValue = string;
-export type NextPageToken = string;
-export type PageSize = number;
-export type NonNegativeLong = number;
-export type AnalysisId = string;
-export type AccountId = string;
-export type SavingsPlansCommitment = number;
-export type SavingsPlansId = string;
-export type SavingsPlansTargetCoverage = number;
-export type MetricName = string;
-export type GroupDefinitionKey = string;
-export type BillingViewArn = string;
-export type MetricAmount = string;
-export type MetricUnit = string;
-export type Key = string;
-export type Estimated = boolean;
-export type AttributeType = string;
-export type AttributeValue = string;
-export type CostAndUsageComparisonsMaxResults = number;
-export type SearchString = string;
-export type SortDefinitionKey = string;
-export type MaxResults = number;
-export type CostComparisonDriversMaxResults = number;
-export type PredictionIntervalLevel = number;
-export type OnDemandHours = string;
-export type ReservedHours = string;
-export type TotalRunningHours = string;
-export type CoverageHoursPercentage = string;
-export type OnDemandNormalizedUnits = string;
-export type ReservedNormalizedUnits = string;
-export type TotalRunningNormalizedUnits = string;
-export type CoverageNormalizedUnitsPercentage = string;
-export type OnDemandCost = string;
-export type RecommendationsPageSize = number;
-export type ReservationGroupKey = string;
-export type ReservationGroupValue = string;
-export type UtilizationPercentage = string;
-export type UtilizationPercentageInUnits = string;
-export type PurchasedHours = string;
-export type PurchasedUnits = string;
-export type TotalActualHours = string;
-export type TotalActualUnits = string;
-export type UnusedHours = string;
-export type UnusedUnits = string;
-export type OnDemandCostOfRIHoursUsed = string;
-export type NetRISavings = string;
-export type TotalPotentialRISavings = string;
-export type AmortizedUpfrontFee = string;
-export type AmortizedRecurringFee = string;
-export type TotalAmortizedFee = string;
-export type RICostForUnusedHours = string;
-export type RealizedSavings = string;
-export type UnrealizedSavings = string;
-export type RecommendationDetailId = string;
-export type SavingsPlanArn = string;
-export type Entity = string;
-export type AnalysesPageSize = number;
-export type CostAllocationTagsMaxResults = number;
-export type CostCategoryMaxResults = number;
-export type ResourceType = string;
-export type GenericArn = string;
-export type RecommendationId = string;
-
-//# Schemas
 export type MonitorType = "DIMENSIONAL" | "CUSTOM" | (string & {});
 export const MonitorType = /*@__PURE__*/ S.String;
+
 export type MonitorDimension =
   | "SERVICE"
   | "LINKED_ACCOUNT"
@@ -290,6 +307,7 @@ export type MonitorDimension =
   | "COST_CATEGORY"
   | (string & {});
 export const MonitorDimension = /*@__PURE__*/ S.String;
+
 export type Expressions = Expression[];
 export const Expressions = /*@__PURE__*/ S.Array(
   S.suspend((): S.Schema<Expression> => Expression).annotate({
@@ -334,6 +352,8 @@ export type Dimension =
   | "ANOMALY_TOTAL_IMPACT_PERCENTAGE"
   | (string & {});
 export const Dimension = /*@__PURE__*/ S.String;
+
+export type Value = string;
 export type Values = string[];
 export const Values = /*@__PURE__*/ S.Array(S.String);
 export type MatchOption =
@@ -347,6 +367,7 @@ export type MatchOption =
   | "GREATER_THAN_OR_EQUAL"
   | (string & {});
 export const MatchOption = /*@__PURE__*/ S.String;
+
 export type MatchOptions = MatchOption[];
 export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface DimensionValues {
@@ -363,6 +384,7 @@ export const DimensionValues = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DimensionValues",
 }) as any as S.Schema<DimensionValues>;
+export type TagKey = string;
 export interface TagValues {
   Key?: string;
   Values?: string[];
@@ -375,6 +397,7 @@ export const TagValues = /*@__PURE__*/ S.suspend(() =>
     MatchOptions: S.optional(MatchOptions),
   }),
 ).annotate({ identifier: "TagValues" }) as any as S.Schema<TagValues>;
+export type CostCategoryName = string;
 export interface CostCategoryValues {
   Key?: string;
   Values?: string[];
@@ -415,6 +438,7 @@ export const Expression = /*@__PURE__*/ S.suspend(() =>
     CostCategories: S.optional(CostCategoryValues),
   }),
 ).annotate({ identifier: "Expression" }) as any as S.Schema<Expression>;
+export type NonNegativeInteger = number;
 export interface AnomalyMonitor {
   MonitorArn?: string;
   MonitorName: string;
@@ -439,6 +463,8 @@ export const AnomalyMonitor = /*@__PURE__*/ S.suspend(() =>
     DimensionalValueCount: S.optional(S.Number),
   }),
 ).annotate({ identifier: "AnomalyMonitor" }) as any as S.Schema<AnomalyMonitor>;
+export type ResourceTagKey = string;
+export type ResourceTagValue = string;
 export interface ResourceTag {
   Key: string;
   Value: string;
@@ -470,12 +496,16 @@ export const CreateAnomalyMonitorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAnomalyMonitorResponse",
 }) as any as S.Schema<CreateAnomalyMonitorResponse>;
+export type Arn = string;
 export type MonitorArnList = string[];
 export const MonitorArnList = /*@__PURE__*/ S.Array(S.String);
+export type SubscriberAddress = string;
 export type SubscriberType = "EMAIL" | "SNS" | (string & {});
 export const SubscriberType = /*@__PURE__*/ S.String;
+
 export type SubscriberStatus = "CONFIRMED" | "DECLINED" | (string & {});
 export const SubscriberStatus = /*@__PURE__*/ S.String;
+
 export interface Subscriber {
   Address?: string;
   Type?: SubscriberType;
@@ -490,12 +520,14 @@ export const Subscriber = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Subscriber" }) as any as S.Schema<Subscriber>;
 export type Subscribers = Subscriber[];
 export const Subscribers = /*@__PURE__*/ S.Array(Subscriber);
+export type NullableNonNegativeDouble = number;
 export type AnomalySubscriptionFrequency =
   | "DAILY"
   | "IMMEDIATE"
   | "WEEKLY"
   | (string & {});
 export const AnomalySubscriptionFrequency = /*@__PURE__*/ S.String;
+
 export interface AnomalySubscription {
   SubscriptionArn?: string;
   AccountId?: string;
@@ -542,15 +574,19 @@ export const CreateAnomalySubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAnomalySubscriptionResponse",
 }) as any as S.Schema<CreateAnomalySubscriptionResponse>;
+export type ZonedDateTime = string;
 export type CostCategoryRuleVersion =
   | "CostCategoryExpression.v1"
   | (string & {});
 export const CostCategoryRuleVersion = /*@__PURE__*/ S.String;
+
+export type CostCategoryValue = string;
 export type CostCategoryInheritedValueDimensionName =
   | "LINKED_ACCOUNT_NAME"
   | "TAG"
   | (string & {});
 export const CostCategoryInheritedValueDimensionName = /*@__PURE__*/ S.String;
+
 export interface CostCategoryInheritedValueDimension {
   DimensionName?: CostCategoryInheritedValueDimensionName;
   DimensionKey?: string;
@@ -568,6 +604,7 @@ export type CostCategoryRuleType =
   | "INHERITED_VALUE"
   | (string & {});
 export const CostCategoryRuleType = /*@__PURE__*/ S.String;
+
 export interface CostCategoryRule {
   Value?: string;
   Rule?: Expression;
@@ -596,10 +633,12 @@ export type CostCategorySplitChargeMethod =
   | "EVEN"
   | (string & {});
 export const CostCategorySplitChargeMethod = /*@__PURE__*/ S.String;
+
 export type CostCategorySplitChargeRuleParameterType =
   | "ALLOCATION_PERCENTAGES"
   | (string & {});
 export const CostCategorySplitChargeRuleParameterType = /*@__PURE__*/ S.String;
+
 export type CostCategorySplitChargeRuleParameterValuesList = string[];
 export const CostCategorySplitChargeRuleParameterValuesList =
   /*@__PURE__*/ S.Array(S.String);
@@ -750,8 +789,10 @@ export const DescribeCostCategoryDefinitionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeCostCategoryDefinitionRequest>;
 export type CostCategoryStatusComponent = "COST_EXPLORER" | (string & {});
 export const CostCategoryStatusComponent = /*@__PURE__*/ S.String;
+
 export type CostCategoryStatus = "PROCESSING" | "APPLIED" | (string & {});
 export const CostCategoryStatus = /*@__PURE__*/ S.String;
+
 export interface CostCategoryProcessingStatus {
   Component?: CostCategoryStatusComponent;
   Status?: CostCategoryStatus;
@@ -815,6 +856,7 @@ export type AnomalyFeedbackType =
   | "PLANNED_ACTIVITY"
   | (string & {});
 export const AnomalyFeedbackType = /*@__PURE__*/ S.String;
+
 export type NumericOperator =
   | "EQUAL"
   | "GREATER_THAN_OR_EQUAL"
@@ -824,6 +866,7 @@ export type NumericOperator =
   | "BETWEEN"
   | (string & {});
 export const NumericOperator = /*@__PURE__*/ S.String;
+
 export interface TotalImpactFilter {
   NumericOperator: NumericOperator;
   StartValue: number;
@@ -838,6 +881,8 @@ export const TotalImpactFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TotalImpactFilter",
 }) as any as S.Schema<TotalImpactFilter>;
+export type NextPageToken = string;
+export type PageSize = number;
 export interface GetAnomaliesRequest {
   MonitorArn?: string;
   DateInterval: AnomalyDateInterval;
@@ -1010,10 +1055,12 @@ export const GetAnomalySubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAnomalySubscriptionsResponse>;
 export type Granularity = "DAILY" | "MONTHLY" | "HOURLY" | (string & {});
 export const Granularity = /*@__PURE__*/ S.String;
+
 export type UsageServices = string[];
 export const UsageServices = /*@__PURE__*/ S.Array(S.String);
 export type ApproximationDimension = "SERVICE" | "RESOURCE" | (string & {});
 export const ApproximationDimension = /*@__PURE__*/ S.String;
+
 export interface GetApproximateUsageRecordsRequest {
   Granularity: Granularity;
   Services?: string[];
@@ -1030,6 +1077,7 @@ export const GetApproximateUsageRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetApproximateUsageRecordsRequest",
 }) as any as S.Schema<GetApproximateUsageRecordsRequest>;
+export type NonNegativeLong = number;
 export type ApproximateUsageRecordsPerService = {
   [key: string]: number | undefined;
 };
@@ -1058,6 +1106,7 @@ export const GetApproximateUsageRecordsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetApproximateUsageRecordsResponse",
 }) as any as S.Schema<GetApproximateUsageRecordsResponse>;
+export type AnalysisId = string;
 export interface GetCommitmentPurchaseAnalysisRequest {
   AnalysisId: string;
 }
@@ -1075,6 +1124,7 @@ export type AnalysisStatus =
   | "FAILED"
   | (string & {});
 export const AnalysisStatus = /*@__PURE__*/ S.String;
+
 export type ErrorCode =
   | "NO_USAGE_FOUND"
   | "INTERNAL_FAILURE"
@@ -1083,6 +1133,7 @@ export type ErrorCode =
   | "INVALID_ACCOUNT_ID"
   | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
+
 export interface RecommendationDetailHourlyMetrics {
   StartTime?: string;
   EstimatedOnDemandCost?: string;
@@ -1171,12 +1222,15 @@ export const AnalysisDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalysisDetails>;
 export type AccountScope = "PAYER" | "LINKED" | (string & {});
 export const AccountScope = /*@__PURE__*/ S.String;
+
+export type AccountId = string;
 export type AnalysisType =
   | "MAX_SAVINGS"
   | "CUSTOM_COMMITMENT"
   | "TARGET_AVERAGE_COVERAGE"
   | (string & {});
 export const AnalysisType = /*@__PURE__*/ S.String;
+
 export type PaymentOption =
   | "NO_UPFRONT"
   | "PARTIAL_UPFRONT"
@@ -1186,6 +1240,7 @@ export type PaymentOption =
   | "HEAVY_UTILIZATION"
   | (string & {});
 export const PaymentOption = /*@__PURE__*/ S.String;
+
 export type SupportedSavingsPlansType =
   | "COMPUTE_SP"
   | "EC2_INSTANCE_SP"
@@ -1193,8 +1248,11 @@ export type SupportedSavingsPlansType =
   | "DATABASE_SP"
   | (string & {});
 export const SupportedSavingsPlansType = /*@__PURE__*/ S.String;
+
 export type TermInYears = "ONE_YEAR" | "THREE_YEARS" | (string & {});
 export const TermInYears = /*@__PURE__*/ S.String;
+
+export type SavingsPlansCommitment = number;
 export interface SavingsPlans {
   PaymentOption?: PaymentOption;
   SavingsPlansType?: SupportedSavingsPlansType;
@@ -1217,8 +1275,10 @@ export const SavingsPlans = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SavingsPlans" }) as any as S.Schema<SavingsPlans>;
 export type SavingsPlansToAdd = SavingsPlans[];
 export const SavingsPlansToAdd = /*@__PURE__*/ S.Array(SavingsPlans);
+export type SavingsPlansId = string;
 export type SavingsPlansToExclude = string[];
 export const SavingsPlansToExclude = /*@__PURE__*/ S.Array(S.String);
+export type SavingsPlansTargetCoverage = number;
 export interface SavingsPlansPurchaseAnalysisConfiguration {
   AccountScope?: AccountScope;
   AccountId?: string;
@@ -1281,6 +1341,7 @@ export const GetCommitmentPurchaseAnalysisResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetCommitmentPurchaseAnalysisResponse",
 }) as any as S.Schema<GetCommitmentPurchaseAnalysisResponse>;
+export type MetricName = string;
 export type MetricNames = string[];
 export const MetricNames = /*@__PURE__*/ S.Array(S.String);
 export type GroupDefinitionType =
@@ -1289,6 +1350,8 @@ export type GroupDefinitionType =
   | "COST_CATEGORY"
   | (string & {});
 export const GroupDefinitionType = /*@__PURE__*/ S.String;
+
+export type GroupDefinitionKey = string;
 export interface GroupDefinition {
   Type?: GroupDefinitionType;
   Key?: string;
@@ -1303,6 +1366,7 @@ export const GroupDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GroupDefinition>;
 export type GroupDefinitions = GroupDefinition[];
 export const GroupDefinitions = /*@__PURE__*/ S.Array(GroupDefinition);
+export type BillingViewArn = string;
 export interface GetCostAndUsageRequest {
   TimePeriod: DateInterval;
   Granularity: Granularity;
@@ -1327,6 +1391,8 @@ export const GetCostAndUsageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCostAndUsageRequest",
 }) as any as S.Schema<GetCostAndUsageRequest>;
+export type MetricAmount = string;
+export type MetricUnit = string;
 export interface MetricValue {
   Amount?: string;
   Unit?: string;
@@ -1339,6 +1405,7 @@ export const Metrics = /*@__PURE__*/ S.Record(
   S.String,
   MetricValue.pipe(S.optional),
 );
+export type Key = string;
 export type Keys = string[];
 export const Keys = /*@__PURE__*/ S.Array(S.String);
 export interface Group {
@@ -1350,6 +1417,7 @@ export const Group = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
 export type Groups = Group[];
 export const Groups = /*@__PURE__*/ S.Array(Group);
+export type Estimated = boolean;
 export interface ResultByTime {
   TimePeriod?: DateInterval;
   Total?: { [key: string]: MetricValue | undefined };
@@ -1366,6 +1434,8 @@ export const ResultByTime = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResultByTime" }) as any as S.Schema<ResultByTime>;
 export type ResultsByTime = ResultByTime[];
 export const ResultsByTime = /*@__PURE__*/ S.Array(ResultByTime);
+export type AttributeType = string;
+export type AttributeValue = string;
 export type Attributes = { [key: string]: string | undefined };
 export const Attributes = /*@__PURE__*/ S.Record(
   S.String,
@@ -1400,6 +1470,7 @@ export const GetCostAndUsageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCostAndUsageResponse",
 }) as any as S.Schema<GetCostAndUsageResponse>;
+export type CostAndUsageComparisonsMaxResults = number;
 export interface GetCostAndUsageComparisonsRequest {
   BillingViewArn?: string;
   BaselineTimePeriod: DateInterval;
@@ -1520,8 +1591,11 @@ export const GetCostAndUsageWithResourcesResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetCostAndUsageWithResourcesResponse",
 }) as any as S.Schema<GetCostAndUsageWithResourcesResponse>;
+export type SearchString = string;
+export type SortDefinitionKey = string;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface SortDefinition {
   Key: string;
   SortOrder?: SortOrder;
@@ -1531,6 +1605,7 @@ export const SortDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SortDefinition" }) as any as S.Schema<SortDefinition>;
 export type SortDefinitions = SortDefinition[];
 export const SortDefinitions = /*@__PURE__*/ S.Array(SortDefinition);
+export type MaxResults = number;
 export interface GetCostCategoriesRequest {
   SearchString?: string;
   TimePeriod: DateInterval;
@@ -1579,6 +1654,7 @@ export const GetCostCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCostCategoriesResponse",
 }) as any as S.Schema<GetCostCategoriesResponse>;
+export type CostComparisonDriversMaxResults = number;
 export interface GetCostComparisonDriversRequest {
   BillingViewArn?: string;
   BaselineTimePeriod: DateInterval;
@@ -1658,6 +1734,8 @@ export type Metric =
   | "NORMALIZED_USAGE_AMOUNT"
   | (string & {});
 export const Metric = /*@__PURE__*/ S.String;
+
+export type PredictionIntervalLevel = number;
 export interface GetCostForecastRequest {
   TimePeriod: DateInterval;
   Metric: Metric;
@@ -1714,6 +1792,7 @@ export type Context =
   | "SAVINGS_PLANS"
   | (string & {});
 export const Context = /*@__PURE__*/ S.String;
+
 export interface GetDimensionValuesRequest {
   SearchString?: string;
   TimePeriod: DateInterval;
@@ -1784,6 +1863,10 @@ export const GetReservationCoverageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetReservationCoverageRequest",
 }) as any as S.Schema<GetReservationCoverageRequest>;
+export type OnDemandHours = string;
+export type ReservedHours = string;
+export type TotalRunningHours = string;
+export type CoverageHoursPercentage = string;
 export interface CoverageHours {
   OnDemandHours?: string;
   ReservedHours?: string;
@@ -1798,6 +1881,10 @@ export const CoverageHours = /*@__PURE__*/ S.suspend(() =>
     CoverageHoursPercentage: S.optional(S.String),
   }),
 ).annotate({ identifier: "CoverageHours" }) as any as S.Schema<CoverageHours>;
+export type OnDemandNormalizedUnits = string;
+export type ReservedNormalizedUnits = string;
+export type TotalRunningNormalizedUnits = string;
+export type CoverageNormalizedUnitsPercentage = string;
 export interface CoverageNormalizedUnits {
   OnDemandNormalizedUnits?: string;
   ReservedNormalizedUnits?: string;
@@ -1814,6 +1901,7 @@ export const CoverageNormalizedUnits = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CoverageNormalizedUnits",
 }) as any as S.Schema<CoverageNormalizedUnits>;
+export type OnDemandCost = string;
 export interface CoverageCost {
   OnDemandCost?: string;
 }
@@ -1882,8 +1970,10 @@ export type LookbackPeriodInDays =
   | "SIXTY_DAYS"
   | (string & {});
 export const LookbackPeriodInDays = /*@__PURE__*/ S.String;
+
 export type OfferingClass = "STANDARD" | "CONVERTIBLE" | (string & {});
 export const OfferingClass = /*@__PURE__*/ S.String;
+
 export interface EC2Specification {
   OfferingClass?: OfferingClass;
 }
@@ -1900,6 +1990,7 @@ export const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServiceSpecification",
 }) as any as S.Schema<ServiceSpecification>;
+export type RecommendationsPageSize = number;
 export interface GetReservationPurchaseRecommendationRequest {
   AccountId?: string;
   Service: string;
@@ -2255,6 +2346,25 @@ export const GetReservationUtilizationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetReservationUtilizationRequest",
 }) as any as S.Schema<GetReservationUtilizationRequest>;
+export type ReservationGroupKey = string;
+export type ReservationGroupValue = string;
+export type UtilizationPercentage = string;
+export type UtilizationPercentageInUnits = string;
+export type PurchasedHours = string;
+export type PurchasedUnits = string;
+export type TotalActualHours = string;
+export type TotalActualUnits = string;
+export type UnusedHours = string;
+export type UnusedUnits = string;
+export type OnDemandCostOfRIHoursUsed = string;
+export type NetRISavings = string;
+export type TotalPotentialRISavings = string;
+export type AmortizedUpfrontFee = string;
+export type AmortizedRecurringFee = string;
+export type TotalAmortizedFee = string;
+export type RICostForUnusedHours = string;
+export type RealizedSavings = string;
+export type UnrealizedSavings = string;
 export interface ReservationAggregates {
   UtilizationPercentage?: string;
   UtilizationPercentageInUnits?: string;
@@ -2352,6 +2462,7 @@ export type RecommendationTarget =
   | "CROSS_INSTANCE_FAMILY"
   | (string & {});
 export const RecommendationTarget = /*@__PURE__*/ S.String;
+
 export interface RightsizingRecommendationConfiguration {
   RecommendationTarget: RecommendationTarget;
   BenefitsConsidered: boolean;
@@ -2561,6 +2672,7 @@ export const CurrentInstance = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CurrentInstance>;
 export type RightsizingType = "TERMINATE" | "MODIFY" | (string & {});
 export const RightsizingType = /*@__PURE__*/ S.String;
+
 export type PlatformDifference =
   | "HYPERVISOR"
   | "NETWORK_INTERFACE"
@@ -2569,6 +2681,7 @@ export type PlatformDifference =
   | "VIRTUALIZATION_TYPE"
   | (string & {});
 export const PlatformDifference = /*@__PURE__*/ S.String;
+
 export type PlatformDifferences = PlatformDifference[];
 export const PlatformDifferences = /*@__PURE__*/ S.Array(PlatformDifference);
 export interface TargetInstance {
@@ -2632,6 +2745,7 @@ export type FindingReasonCode =
   | "DISK_THROUGHPUT_UNDER_PROVISIONED"
   | (string & {});
 export const FindingReasonCode = /*@__PURE__*/ S.String;
+
 export type FindingReasonCodes = FindingReasonCode[];
 export const FindingReasonCodes = /*@__PURE__*/ S.Array(FindingReasonCode);
 export interface RightsizingRecommendation {
@@ -2677,6 +2791,7 @@ export const GetRightsizingRecommendationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetRightsizingRecommendationResponse",
 }) as any as S.Schema<GetRightsizingRecommendationResponse>;
+export type RecommendationDetailId = string;
 export interface GetSavingsPlanPurchaseRecommendationDetailsRequest {
   RecommendationDetailId: string;
 }
@@ -3128,6 +3243,7 @@ export type SavingsPlansDataType =
   | "SAVINGS"
   | (string & {});
 export const SavingsPlansDataType = /*@__PURE__*/ S.String;
+
 export type SavingsPlansDataTypes = SavingsPlansDataType[];
 export const SavingsPlansDataTypes =
   /*@__PURE__*/ S.Array(SavingsPlansDataType);
@@ -3154,6 +3270,7 @@ export const GetSavingsPlansUtilizationDetailsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetSavingsPlansUtilizationDetailsRequest",
 }) as any as S.Schema<GetSavingsPlansUtilizationDetailsRequest>;
+export type SavingsPlanArn = string;
 export interface SavingsPlansUtilizationDetail {
   SavingsPlanArn?: string;
   Attributes?: { [key: string]: string | undefined };
@@ -3217,6 +3334,7 @@ export const GetTagsRequest = /*@__PURE__*/ S.suspend(() =>
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "GetTagsRequest" }) as any as S.Schema<GetTagsRequest>;
+export type Entity = string;
 export type TagList = string[];
 export const TagList = /*@__PURE__*/ S.Array(S.String);
 export interface GetTagsResponse {
@@ -3269,6 +3387,7 @@ export const GetUsageForecastResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetUsageForecastResponse",
 }) as any as S.Schema<GetUsageForecastResponse>;
+export type AnalysesPageSize = number;
 export type AnalysisIds = string[];
 export const AnalysisIds = /*@__PURE__*/ S.Array(S.String);
 export interface ListCommitmentPurchaseAnalysesRequest {
@@ -3329,6 +3448,7 @@ export const ListCommitmentPurchaseAnalysesResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListCommitmentPurchaseAnalysesResponse",
 }) as any as S.Schema<ListCommitmentPurchaseAnalysesResponse>;
+export type CostAllocationTagsMaxResults = number;
 export interface ListCostAllocationTagBackfillHistoryRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -3350,6 +3470,7 @@ export type CostAllocationTagBackfillStatus =
   | "FAILED"
   | (string & {});
 export const CostAllocationTagBackfillStatus = /*@__PURE__*/ S.String;
+
 export interface CostAllocationTagBackfillRequest {
   BackfillFrom?: string;
   RequestedAt?: string;
@@ -3388,6 +3509,7 @@ export const ListCostAllocationTagBackfillHistoryResponse =
   }) as any as S.Schema<ListCostAllocationTagBackfillHistoryResponse>;
 export type CostAllocationTagStatus = "Active" | "Inactive" | (string & {});
 export const CostAllocationTagStatus = /*@__PURE__*/ S.String;
+
 export type CostAllocationTagKeyList = string[];
 export const CostAllocationTagKeyList = /*@__PURE__*/ S.Array(S.String);
 export type CostAllocationTagType =
@@ -3395,6 +3517,7 @@ export type CostAllocationTagType =
   | "UserDefined"
   | (string & {});
 export const CostAllocationTagType = /*@__PURE__*/ S.String;
+
 export interface ListCostAllocationTagsRequest {
   Status?: CostAllocationTagStatus;
   TagKeys?: string[];
@@ -3447,6 +3570,8 @@ export const ListCostAllocationTagsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCostAllocationTagsResponse",
 }) as any as S.Schema<ListCostAllocationTagsResponse>;
+export type CostCategoryMaxResults = number;
+export type ResourceType = string;
 export type ResourceTypesFilterInput = string[];
 export const ResourceTypesFilterInput = /*@__PURE__*/ S.Array(S.String);
 export interface ListCostCategoryDefinitionsRequest {
@@ -3528,6 +3653,7 @@ export const ListCostCategoryResourceAssociationsRequest =
   ).annotate({
     identifier: "ListCostCategoryResourceAssociationsRequest",
   }) as any as S.Schema<ListCostCategoryResourceAssociationsRequest>;
+export type GenericArn = string;
 export interface CostCategoryResourceAssociation {
   ResourceArn?: string;
   CostCategoryName?: string;
@@ -3568,6 +3694,8 @@ export type GenerationStatus =
   | "FAILED"
   | (string & {});
 export const GenerationStatus = /*@__PURE__*/ S.String;
+
+export type RecommendationId = string;
 export type RecommendationIdList = string[];
 export const RecommendationIdList = /*@__PURE__*/ S.Array(S.String);
 export interface ListSavingsPlansPurchaseRecommendationGenerationRequest {
@@ -3843,6 +3971,7 @@ export const UpdateCostAllocationTagsStatusRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateCostAllocationTagsStatusRequest",
 }) as any as S.Schema<UpdateCostAllocationTagsStatusRequest>;
+export type ErrorMessage = string;
 export interface UpdateCostAllocationTagsStatusError_ {
   TagKey?: string;
   Code?: string;
@@ -3906,102 +4035,6 @@ export const UpdateCostCategoryDefinitionResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateCostCategoryDefinitionResponse",
 }) as any as S.Schema<UpdateCostCategoryDefinitionResponse>;
-
-//# Errors
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class AnomalyMonitorAlreadyExists extends S.TaggedErrorClass<AnomalyMonitorAlreadyExists>()(
-  "AnomalyMonitorAlreadyExists",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "same monitor name as an existing monitor" },
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class UnknownMonitorException extends S.TaggedErrorClass<UnknownMonitorException>()(
-  "UnknownMonitorException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class AnomalySubscriptionAlreadyExists extends S.TaggedErrorClass<AnomalySubscriptionAlreadyExists>()(
-  "AnomalySubscriptionAlreadyExists",
-  {},
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "same subscription name as an existing subscription" },
-  }),
-).pipe(C.withAlreadyExistsError, C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class UnknownSubscriptionException extends S.TaggedErrorClass<UnknownSubscriptionException>()(
-  "UnknownSubscriptionException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-) {}
-export class DataUnavailableException extends S.TaggedErrorClass<DataUnavailableException>()(
-  "DataUnavailableException",
-  { Message: S.optional(S.String) },
-) {}
-export class AnalysisNotFoundException extends S.TaggedErrorClass<AnalysisNotFoundException>()(
-  "AnalysisNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class BillExpirationException extends S.TaggedErrorClass<BillExpirationException>()(
-  "BillExpirationException",
-  { Message: S.optional(S.String) },
-) {}
-export class BillingViewHealthStatusException extends S.TaggedErrorClass<BillingViewHealthStatusException>()(
-  "BillingViewHealthStatusException",
-  { Message: S.optional(S.String) },
-) {}
-export class RequestChangedException extends S.TaggedErrorClass<RequestChangedException>()(
-  "RequestChangedException",
-  { Message: S.optional(S.String) },
-) {}
-export class RightsizingRecommendationNotEnabled extends S.TaggedErrorClass<RightsizingRecommendationNotEnabled>()(
-  "RightsizingRecommendationNotEnabled",
-  {},
-  T.SyntheticError({
-    from: "AccessDeniedException",
-    message: { includes: "opt-in only feature" },
-  }),
-) {}
-export class UnresolvableUsageUnitException extends S.TaggedErrorClass<UnresolvableUsageUnitException>()(
-  "UnresolvableUsageUnitException",
-  { Message: S.optional(S.String) },
-) {}
-export class GenerationExistsException extends S.TaggedErrorClass<GenerationExistsException>()(
-  "GenerationExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class BackfillLimitExceededException extends S.TaggedErrorClass<BackfillLimitExceededException>()(
-  "BackfillLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateAnomalyMonitorError =
   | LimitExceededException
   | AnomalyMonitorAlreadyExists
@@ -4023,6 +4056,7 @@ export const createAnomalyMonitor: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAnomalyMonitor",
 }));
+
 export type CreateAnomalySubscriptionError =
   | LimitExceededException
   | UnknownMonitorException
@@ -4050,6 +4084,7 @@ export const createAnomalySubscription: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAnomalySubscription",
 }));
+
 export type CreateCostCategoryDefinitionError =
   | LimitExceededException
   | ServiceQuotaExceededException
@@ -4070,6 +4105,7 @@ export const createCostCategoryDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCostCategoryDefinition",
 }));
+
 export type DeleteAnomalyMonitorError =
   | LimitExceededException
   | UnknownMonitorException
@@ -4090,6 +4126,7 @@ export const deleteAnomalyMonitor: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAnomalyMonitor",
 }));
+
 export type DeleteAnomalySubscriptionError =
   | LimitExceededException
   | UnknownSubscriptionException
@@ -4110,6 +4147,7 @@ export const deleteAnomalySubscription: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAnomalySubscription",
 }));
+
 export type DeleteCostCategoryDefinitionError =
   | LimitExceededException
   | ResourceNotFoundException
@@ -4131,6 +4169,7 @@ export const deleteCostCategoryDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCostCategoryDefinition",
 }));
+
 export type DescribeCostCategoryDefinitionError =
   | LimitExceededException
   | ResourceNotFoundException
@@ -4157,6 +4196,7 @@ export const describeCostCategoryDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCostCategoryDefinition",
 }));
+
 export type GetAnomaliesError =
   | InvalidNextTokenException
   | LimitExceededException
@@ -4200,6 +4240,7 @@ export const getAnomalies: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetAnomalyMonitorsError =
   | InvalidNextTokenException
   | LimitExceededException
@@ -4247,6 +4288,7 @@ export const getAnomalyMonitors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetAnomalySubscriptionsError =
   | InvalidNextTokenException
   | LimitExceededException
@@ -4294,6 +4336,7 @@ export const getAnomalySubscriptions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetApproximateUsageRecordsError =
   | DataUnavailableException
   | LimitExceededException
@@ -4315,6 +4358,7 @@ export const getApproximateUsageRecords: API.OperationMethod<
   retry: Retry,
   operationName: "GetApproximateUsageRecords",
 }));
+
 export type GetCommitmentPurchaseAnalysisError =
   | AnalysisNotFoundException
   | DataUnavailableException
@@ -4341,6 +4385,7 @@ export const getCommitmentPurchaseAnalysis: API.OperationMethod<
   retry: Retry,
   operationName: "GetCommitmentPurchaseAnalysis",
 }));
+
 export type GetCostAndUsageError =
   | BillExpirationException
   | BillingViewHealthStatusException
@@ -4381,6 +4426,7 @@ export const getCostAndUsage: API.OperationMethod<
   retry: Retry,
   operationName: "GetCostAndUsage",
 }));
+
 export type GetCostAndUsageComparisonsError =
   | BillingViewHealthStatusException
   | DataUnavailableException
@@ -4433,6 +4479,7 @@ export const getCostAndUsageComparisons: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetCostAndUsageWithResourcesError =
   | BillExpirationException
   | BillingViewHealthStatusException
@@ -4479,6 +4526,7 @@ export const getCostAndUsageWithResources: API.OperationMethod<
   retry: Retry,
   operationName: "GetCostAndUsageWithResources",
 }));
+
 export type GetCostCategoriesError =
   | BillExpirationException
   | BillingViewHealthStatusException
@@ -4515,6 +4563,7 @@ export const getCostCategories: API.OperationMethod<
   retry: Retry,
   operationName: "GetCostCategories",
 }));
+
 export type GetCostComparisonDriversError =
   | BillingViewHealthStatusException
   | DataUnavailableException
@@ -4567,6 +4616,7 @@ export const getCostComparisonDrivers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetCostForecastError =
   | BillingViewHealthStatusException
   | DataUnavailableException
@@ -4595,6 +4645,7 @@ export const getCostForecast: API.OperationMethod<
   retry: Retry,
   operationName: "GetCostForecast",
 }));
+
 export type GetDimensionValuesError =
   | BillExpirationException
   | BillingViewHealthStatusException
@@ -4629,6 +4680,7 @@ export const getDimensionValues: API.OperationMethod<
   retry: Retry,
   operationName: "GetDimensionValues",
 }));
+
 export type GetReservationCoverageError =
   | DataUnavailableException
   | InvalidNextTokenException
@@ -4686,6 +4738,7 @@ export const getReservationCoverage: API.OperationMethod<
   retry: Retry,
   operationName: "GetReservationCoverage",
 }));
+
 export type GetReservationPurchaseRecommendationError =
   | DataUnavailableException
   | InvalidNextTokenException
@@ -4749,6 +4802,7 @@ export const getReservationPurchaseRecommendation: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type GetReservationUtilizationError =
   | DataUnavailableException
   | InvalidNextTokenException
@@ -4777,6 +4831,7 @@ export const getReservationUtilization: API.OperationMethod<
   retry: Retry,
   operationName: "GetReservationUtilization",
 }));
+
 export type GetRightsizingRecommendationError =
   | InvalidNextTokenException
   | LimitExceededException
@@ -4828,6 +4883,7 @@ export const getRightsizingRecommendation: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type GetSavingsPlanPurchaseRecommendationDetailsError =
   | DataUnavailableException
   | LimitExceededException
@@ -4849,6 +4905,7 @@ export const getSavingsPlanPurchaseRecommendationDetails: API.OperationMethod<
   retry: Retry,
   operationName: "GetSavingsPlanPurchaseRecommendationDetails",
 }));
+
 export type GetSavingsPlansCoverageError =
   | DataUnavailableException
   | InvalidNextTokenException
@@ -4909,6 +4966,7 @@ export const getSavingsPlansCoverage: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetSavingsPlansPurchaseRecommendationError =
   | InvalidNextTokenException
   | LimitExceededException
@@ -4932,6 +4990,7 @@ export const getSavingsPlansPurchaseRecommendation: API.OperationMethod<
   retry: Retry,
   operationName: "GetSavingsPlansPurchaseRecommendation",
 }));
+
 export type GetSavingsPlansUtilizationError =
   | DataUnavailableException
   | LimitExceededException
@@ -4958,6 +5017,7 @@ export const getSavingsPlansUtilization: API.OperationMethod<
   retry: Retry,
   operationName: "GetSavingsPlansUtilization",
 }));
+
 export type GetSavingsPlansUtilizationDetailsError =
   | DataUnavailableException
   | InvalidNextTokenException
@@ -5012,6 +5072,7 @@ export const getSavingsPlansUtilizationDetails: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetTagsError =
   | BillExpirationException
   | BillingViewHealthStatusException
@@ -5046,6 +5107,7 @@ export const getTags: API.OperationMethod<
   retry: Retry,
   operationName: "GetTags",
 }));
+
 export type GetUsageForecastError =
   | BillingViewHealthStatusException
   | DataUnavailableException
@@ -5076,6 +5138,7 @@ export const getUsageForecast: API.OperationMethod<
   retry: Retry,
   operationName: "GetUsageForecast",
 }));
+
 export type ListCommitmentPurchaseAnalysesError =
   | DataUnavailableException
   | InvalidNextTokenException
@@ -5122,6 +5185,7 @@ export const listCommitmentPurchaseAnalyses: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListCostAllocationTagBackfillHistoryError =
   | InvalidNextTokenException
   | LimitExceededException
@@ -5163,6 +5227,7 @@ export const listCostAllocationTagBackfillHistory: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCostAllocationTagsError =
   | InvalidNextTokenException
   | LimitExceededException
@@ -5205,6 +5270,7 @@ export const listCostAllocationTags: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCostCategoryDefinitionsError =
   | LimitExceededException
   | CommonErrors;
@@ -5251,6 +5317,7 @@ export const listCostCategoryDefinitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCostCategoryResourceAssociationsError =
   | LimitExceededException
   | ResourceNotFoundException
@@ -5292,6 +5359,7 @@ export const listCostCategoryResourceAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSavingsPlansPurchaseRecommendationGenerationError =
   | DataUnavailableException
   | InvalidNextTokenException
@@ -5339,6 +5407,7 @@ export const listSavingsPlansPurchaseRecommendationGeneration: API.OperationMeth
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | LimitExceededException
   | ResourceNotFoundException
@@ -5360,6 +5429,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ProvideAnomalyFeedbackError = LimitExceededException | CommonErrors;
 /**
  * Modifies the feedback property of a given cost anomaly.
@@ -5377,6 +5447,7 @@ export const provideAnomalyFeedback: API.OperationMethod<
   retry: Retry,
   operationName: "ProvideAnomalyFeedback",
 }));
+
 export type StartCommitmentPurchaseAnalysisError =
   | DataUnavailableException
   | GenerationExistsException
@@ -5406,6 +5477,7 @@ export const startCommitmentPurchaseAnalysis: API.OperationMethod<
   retry: Retry,
   operationName: "StartCommitmentPurchaseAnalysis",
 }));
+
 export type StartCostAllocationTagBackfillError =
   | BackfillLimitExceededException
   | LimitExceededException
@@ -5428,6 +5500,7 @@ export const startCostAllocationTagBackfill: API.OperationMethod<
   retry: Retry,
   operationName: "StartCostAllocationTagBackfill",
 }));
+
 export type StartSavingsPlansPurchaseRecommendationGenerationError =
   | DataUnavailableException
   | GenerationExistsException
@@ -5461,6 +5534,7 @@ export const startSavingsPlansPurchaseRecommendationGeneration: API.OperationMet
   retry: Retry,
   operationName: "StartSavingsPlansPurchaseRecommendationGeneration",
 }));
+
 export type TagResourceError =
   | LimitExceededException
   | ResourceNotFoundException
@@ -5494,6 +5568,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | LimitExceededException
   | ResourceNotFoundException
@@ -5515,6 +5590,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAnomalyMonitorError =
   | LimitExceededException
   | UnknownMonitorException
@@ -5536,6 +5612,7 @@ export const updateAnomalyMonitor: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAnomalyMonitor",
 }));
+
 export type UpdateAnomalySubscriptionError =
   | LimitExceededException
   | UnknownMonitorException
@@ -5565,6 +5642,7 @@ export const updateAnomalySubscription: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAnomalySubscription",
 }));
+
 export type UpdateCostAllocationTagsStatusError =
   | LimitExceededException
   | CommonErrors;
@@ -5587,6 +5665,7 @@ export const updateCostAllocationTagsStatus: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCostAllocationTagsStatus",
 }));
+
 export type UpdateCostCategoryDefinitionError =
   | LimitExceededException
   | ResourceNotFoundException

@@ -85,106 +85,51 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ScopeValue = string;
-export type ErrorMessage = string;
-export type JobId = string;
-export type FilterValue = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type DestinationBucket = string;
-export type DestinationKey = string;
-export type MetadataKey = string;
-export type CreationTimestamp = Date;
-export type LastUpdatedTimestamp = Date;
-export type FailureReason = string;
-export type AccountId = string;
-export type DestinationKeyPrefix = string;
-export type IncludeMemberAccounts = boolean;
-export type AutoScalingGroupArn = string;
-export type AutoScalingGroupName = string;
-export type MetricValue = number;
-export type LookBackPeriodInDays = number;
-export type DesiredCapacity = number;
-export type MinSize = number;
-export type MaxSize = number;
-export type NullableInstanceType = string;
-export type NullableEstimatedInstanceHourReductionPercentage = number;
-export type MixedInstanceType = string;
-export type GpuCount = number;
-export type GpuMemorySizeInMiB = number;
-export type PerformanceRisk = number;
-export type Rank = number;
-export type SavingsOpportunityPercentage = number;
-export type Value = number;
-export type LastRefreshTimestamp = Date;
-export type PreferredResourceValue = string;
-export type Identifier = string;
-export type Code = string;
-export type Message = string;
-export type VolumeArn = string;
-export type VolumeType = string;
-export type VolumeSize = number;
-export type VolumeBaselineIOPS = number;
-export type VolumeBurstIOPS = number;
-export type VolumeBaselineThroughput = number;
-export type VolumeBurstThroughput = number;
-export type RootVolume = boolean;
-export type TagKey = string;
-export type TagValue = string;
-export type InstanceArn = string;
-export type InstanceName = string;
-export type CurrentInstanceType = string;
-export type InstanceType = string;
-export type RecommendationSourceArn = string;
-export type ExternalMetricStatusReason = string;
-export type Period = number;
-export type RecommendedInstanceType = string;
-export type ServiceArn = string;
-export type CpuSize = number;
-export type MemorySize = number;
-export type NullableMemory = number;
-export type NullableCpu = number;
-export type ContainerName = string;
-export type NullableMemoryReservation = number;
-export type TaskDefinitionArn = string;
-export type LowerBoundValue = number;
-export type UpperBoundValue = number;
-export type ResourceArn = string;
-export type StatusReason = string;
-export type MemberAccountsEnrolled = boolean;
-export type NumberOfMemberAccountsOptedIn = number;
-export type IdleMaxResults = number;
-export type ResourceId = string;
-export type IdleFindingDescription = string;
-export type IdleDimensionKey = string;
-export type IdleDimensionValue = string;
-export type FunctionArn = string;
-export type FunctionVersion = string;
-export type NumberOfInvocations = number;
-export type NumberOfCores = number;
-export type OperatingSystem = string;
-export type LicenseVersion = string;
-export type MetricProviderArn = string;
-export type RecommendedDBInstanceClass = string;
-export type Engine = string;
-export type EngineVersion = string;
-export type PromotionTier = number;
-export type CurrentDBInstanceClass = string;
-export type StorageType = string;
-export type AllocatedStorage = number;
-export type NullableIOPS = number;
-export type NullableMaxAllocatedStorage = number;
-export type NullableStorageThroughput = number;
-export type DBClusterIdentifier = string;
-export type DBInstanceClass = string;
-export type SummaryValue = number;
-export type High = number;
-export type Medium = number;
-export type Low = number;
-export type VeryLow = number;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class MissingAuthenticationToken extends S.TaggedErrorClass<MissingAuthenticationToken>()(
+  "MissingAuthenticationToken",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class OptInRequiredException extends S.TaggedErrorClass<OptInRequiredException>()(
+  "OptInRequiredException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type ResourceType =
   | "Ec2Instance"
   | "AutoScalingGroup"
@@ -198,12 +143,15 @@ export type ResourceType =
   | "Idle"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export type ScopeName =
   | "Organization"
   | "AccountId"
   | "ResourceArn"
   | (string & {});
 export const ScopeName = /*@__PURE__*/ S.String;
+
+export type ScopeValue = string;
 export interface Scope {
   name?: ScopeName;
   value?: string;
@@ -220,6 +168,7 @@ export type RecommendationPreferenceName =
   | "UtilizationPreferences"
   | (string & {});
 export const RecommendationPreferenceName = /*@__PURE__*/ S.String;
+
 export type RecommendationPreferenceNames = RecommendationPreferenceName[];
 export const RecommendationPreferenceNames = /*@__PURE__*/ S.Array(
   RecommendationPreferenceName,
@@ -247,10 +196,13 @@ export const DeleteRecommendationPreferencesResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteRecommendationPreferencesResponse",
 }) as any as S.Schema<DeleteRecommendationPreferencesResponse>;
+export type JobId = string;
 export type JobIds = string[];
 export const JobIds = /*@__PURE__*/ S.Array(S.String);
 export type JobFilterName = "ResourceType" | "JobStatus" | (string & {});
 export const JobFilterName = /*@__PURE__*/ S.String;
+
+export type FilterValue = string;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface JobFilter {
@@ -265,6 +217,8 @@ export const JobFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobFilter" }) as any as S.Schema<JobFilter>;
 export type JobFilters = JobFilter[];
 export const JobFilters = /*@__PURE__*/ S.Array(JobFilter);
+export type NextToken = string;
+export type MaxResults = number;
 export interface DescribeRecommendationExportJobsRequest {
   jobIds?: string[];
   filters?: JobFilter[];
@@ -284,6 +238,9 @@ export const DescribeRecommendationExportJobsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeRecommendationExportJobsRequest",
 }) as any as S.Schema<DescribeRecommendationExportJobsRequest>;
+export type DestinationBucket = string;
+export type DestinationKey = string;
+export type MetadataKey = string;
 export interface S3Destination {
   bucket?: string;
   key?: string;
@@ -311,6 +268,10 @@ export type JobStatus =
   | "Failed"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
+export type CreationTimestamp = Date;
+export type LastUpdatedTimestamp = Date;
+export type FailureReason = string;
 export interface RecommendationExportJob {
   jobId?: string;
   destination?: ExportDestination;
@@ -354,6 +315,7 @@ export const DescribeRecommendationExportJobsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeRecommendationExportJobsResponse",
 }) as any as S.Schema<DescribeRecommendationExportJobsResponse>;
+export type AccountId = string;
 export type AccountIds = string[];
 export const AccountIds = /*@__PURE__*/ S.Array(S.String);
 export type FilterName =
@@ -363,6 +325,7 @@ export type FilterName =
   | "InferredWorkloadTypes"
   | (string & {});
 export const FilterName = /*@__PURE__*/ S.String;
+
 export interface Filter {
   name?: FilterName;
   values?: string[];
@@ -448,11 +411,13 @@ export type ExportableAutoScalingGroupField =
   | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
   | (string & {});
 export const ExportableAutoScalingGroupField = /*@__PURE__*/ S.String;
+
 export type ExportableAutoScalingGroupFields =
   ExportableAutoScalingGroupField[];
 export const ExportableAutoScalingGroupFields = /*@__PURE__*/ S.Array(
   ExportableAutoScalingGroupField,
 );
+export type DestinationKeyPrefix = string;
 export interface S3DestinationConfig {
   bucket?: string;
   keyPrefix?: string;
@@ -464,8 +429,11 @@ export const S3DestinationConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<S3DestinationConfig>;
 export type FileFormat = "Csv" | (string & {});
 export const FileFormat = /*@__PURE__*/ S.String;
+
+export type IncludeMemberAccounts = boolean;
 export type CpuVendorArchitecture = "AWS_ARM64" | "CURRENT" | (string & {});
 export const CpuVendorArchitecture = /*@__PURE__*/ S.String;
+
 export type CpuVendorArchitectures = CpuVendorArchitecture[];
 export const CpuVendorArchitectures = /*@__PURE__*/ S.Array(
   CpuVendorArchitecture,
@@ -518,6 +486,7 @@ export const ExportAutoScalingGroupRecommendationsResponse =
   }) as any as S.Schema<ExportAutoScalingGroupRecommendationsResponse>;
 export type EBSFilterName = "Finding" | (string & {});
 export const EBSFilterName = /*@__PURE__*/ S.String;
+
 export interface EBSFilter {
   name?: EBSFilterName;
   values?: string[];
@@ -571,6 +540,7 @@ export type ExportableVolumeField =
   | "EffectiveRecommendationPreferencesLookBackPeriod"
   | (string & {});
 export const ExportableVolumeField = /*@__PURE__*/ S.String;
+
 export type ExportableVolumeFields = ExportableVolumeField[];
 export const ExportableVolumeFields = /*@__PURE__*/ S.Array(
   ExportableVolumeField,
@@ -685,6 +655,7 @@ export type ExportableInstanceField =
   | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
   | (string & {});
 export const ExportableInstanceField = /*@__PURE__*/ S.String;
+
 export type ExportableInstanceFields = ExportableInstanceField[];
 export const ExportableInstanceFields = /*@__PURE__*/ S.Array(
   ExportableInstanceField,
@@ -732,6 +703,7 @@ export type ECSServiceRecommendationFilterName =
   | "FindingReasonCode"
   | (string & {});
 export const ECSServiceRecommendationFilterName = /*@__PURE__*/ S.String;
+
 export interface ECSServiceRecommendationFilter {
   name?: ECSServiceRecommendationFilterName;
   values?: string[];
@@ -780,6 +752,7 @@ export type ExportableECSServiceField =
   | "EffectiveRecommendationPreferencesLookBackPeriod"
   | (string & {});
 export const ExportableECSServiceField = /*@__PURE__*/ S.String;
+
 export type ExportableECSServiceFields = ExportableECSServiceField[];
 export const ExportableECSServiceFields = /*@__PURE__*/ S.Array(
   ExportableECSServiceField,
@@ -825,6 +798,7 @@ export type IdleRecommendationFilterName =
   | "ResourceType"
   | (string & {});
 export const IdleRecommendationFilterName = /*@__PURE__*/ S.String;
+
 export interface IdleRecommendationFilter {
   name?: IdleRecommendationFilterName;
   values?: string[];
@@ -883,6 +857,7 @@ export type ExportableIdleField =
   | "Tags"
   | (string & {});
 export const ExportableIdleField = /*@__PURE__*/ S.String;
+
 export type ExportableIdleFields = ExportableIdleField[];
 export const ExportableIdleFields = /*@__PURE__*/ S.Array(ExportableIdleField);
 export interface ExportIdleRecommendationsRequest {
@@ -924,6 +899,7 @@ export type LambdaFunctionRecommendationFilterName =
   | "FindingReasonCode"
   | (string & {});
 export const LambdaFunctionRecommendationFilterName = /*@__PURE__*/ S.String;
+
 export interface LambdaFunctionRecommendationFilter {
   name?: LambdaFunctionRecommendationFilterName;
   values?: string[];
@@ -975,6 +951,7 @@ export type ExportableLambdaFunctionField =
   | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
   | (string & {});
 export const ExportableLambdaFunctionField = /*@__PURE__*/ S.String;
+
 export type ExportableLambdaFunctionFields = ExportableLambdaFunctionField[];
 export const ExportableLambdaFunctionFields = /*@__PURE__*/ S.Array(
   ExportableLambdaFunctionField,
@@ -1021,6 +998,7 @@ export type LicenseRecommendationFilterName =
   | "LicenseName"
   | (string & {});
 export const LicenseRecommendationFilterName = /*@__PURE__*/ S.String;
+
 export interface LicenseRecommendationFilter {
   name?: LicenseRecommendationFilterName;
   values?: string[];
@@ -1061,6 +1039,7 @@ export type ExportableLicenseField =
   | "Tags"
   | (string & {});
 export const ExportableLicenseField = /*@__PURE__*/ S.String;
+
 export type ExportableLicenseFields = ExportableLicenseField[];
 export const ExportableLicenseFields = /*@__PURE__*/ S.Array(
   ExportableLicenseField,
@@ -1108,6 +1087,7 @@ export type RDSDBRecommendationFilterName =
   | "Idle"
   | (string & {});
 export const RDSDBRecommendationFilterName = /*@__PURE__*/ S.String;
+
 export interface RDSDBRecommendationFilter {
   name?: RDSDBRecommendationFilterName;
   values?: string[];
@@ -1209,6 +1189,7 @@ export type ExportableRDSDBField =
   | "PromotionTier"
   | (string & {});
 export const ExportableRDSDBField = /*@__PURE__*/ S.String;
+
 export type ExportableRDSDBFields = ExportableRDSDBField[];
 export const ExportableRDSDBFields =
   /*@__PURE__*/ S.Array(ExportableRDSDBField);
@@ -1250,6 +1231,7 @@ export const ExportRDSDatabaseRecommendationsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ExportRDSDatabaseRecommendationsResponse",
 }) as any as S.Schema<ExportRDSDatabaseRecommendationsResponse>;
+export type AutoScalingGroupArn = string;
 export type AutoScalingGroupArns = string[];
 export const AutoScalingGroupArns = /*@__PURE__*/ S.Array(S.String);
 export interface GetAutoScalingGroupRecommendationsRequest {
@@ -1275,6 +1257,7 @@ export const GetAutoScalingGroupRecommendationsRequest =
   ).annotate({
     identifier: "GetAutoScalingGroupRecommendationsRequest",
   }) as any as S.Schema<GetAutoScalingGroupRecommendationsRequest>;
+export type AutoScalingGroupName = string;
 export type Finding =
   | "Underprovisioned"
   | "Overprovisioned"
@@ -1282,6 +1265,7 @@ export type Finding =
   | "NotOptimized"
   | (string & {});
 export const Finding = /*@__PURE__*/ S.String;
+
 export type MetricName =
   | "Cpu"
   | "Memory"
@@ -1301,8 +1285,11 @@ export type MetricName =
   | "GPU_MEMORY_PERCENTAGE"
   | (string & {});
 export const MetricName = /*@__PURE__*/ S.String;
+
 export type MetricStatistic = "Maximum" | "Average" | (string & {});
 export const MetricStatistic = /*@__PURE__*/ S.String;
+
+export type MetricValue = number;
 export interface UtilizationMetric {
   name?: MetricName;
   statistic?: MetricStatistic;
@@ -1319,13 +1306,22 @@ export const UtilizationMetric = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UtilizationMetric>;
 export type UtilizationMetrics = UtilizationMetric[];
 export const UtilizationMetrics = /*@__PURE__*/ S.Array(UtilizationMetric);
+export type LookBackPeriodInDays = number;
+export type DesiredCapacity = number;
+export type MinSize = number;
+export type MaxSize = number;
+export type NullableInstanceType = string;
 export type AllocationStrategy = "Prioritized" | "LowestPrice" | (string & {});
 export const AllocationStrategy = /*@__PURE__*/ S.String;
+
+export type NullableEstimatedInstanceHourReductionPercentage = number;
 export type AsgType =
   | "SingleInstanceType"
   | "MixedInstanceTypes"
   | (string & {});
 export const AsgType = /*@__PURE__*/ S.String;
+
+export type MixedInstanceType = string;
 export type MixedInstanceTypes = string[];
 export const MixedInstanceTypes = /*@__PURE__*/ S.Array(S.String);
 export interface AutoScalingGroupConfiguration {
@@ -1352,6 +1348,8 @@ export const AutoScalingGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutoScalingGroupConfiguration",
 }) as any as S.Schema<AutoScalingGroupConfiguration>;
+export type GpuCount = number;
+export type GpuMemorySizeInMiB = number;
 export interface Gpu {
   gpuCount?: number;
   gpuMemorySizeInMiB?: number;
@@ -1373,8 +1371,13 @@ export const GpuInfo = /*@__PURE__*/ S.suspend(() =>
 export type ProjectedUtilizationMetrics = UtilizationMetric[];
 export const ProjectedUtilizationMetrics =
   /*@__PURE__*/ S.Array(UtilizationMetric);
+export type PerformanceRisk = number;
+export type Rank = number;
+export type SavingsOpportunityPercentage = number;
 export type Currency = "USD" | "CNY" | (string & {});
 export const Currency = /*@__PURE__*/ S.String;
+
+export type Value = number;
 export interface EstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
@@ -1428,6 +1431,7 @@ export type MigrationEffort =
   | "High"
   | (string & {});
 export const MigrationEffort = /*@__PURE__*/ S.String;
+
 export interface AutoScalingGroupRecommendationOption {
   configuration?: AutoScalingGroupConfiguration;
   instanceGpuInfo?: GpuInfo;
@@ -1460,6 +1464,7 @@ export type AutoScalingGroupRecommendationOptions =
 export const AutoScalingGroupRecommendationOptions = /*@__PURE__*/ S.Array(
   AutoScalingGroupRecommendationOption,
 );
+export type LastRefreshTimestamp = Date;
 export type CurrentPerformanceRisk =
   | "VeryLow"
   | "Low"
@@ -1467,16 +1472,19 @@ export type CurrentPerformanceRisk =
   | "High"
   | (string & {});
 export const CurrentPerformanceRisk = /*@__PURE__*/ S.String;
+
 export type EnhancedInfrastructureMetrics =
   | "Active"
   | "Inactive"
   | (string & {});
 export const EnhancedInfrastructureMetrics = /*@__PURE__*/ S.String;
+
 export type InferredWorkloadTypesPreference =
   | "Active"
   | "Inactive"
   | (string & {});
 export const InferredWorkloadTypesPreference = /*@__PURE__*/ S.String;
+
 export type ExternalMetricsSource =
   | "Datadog"
   | "Dynatrace"
@@ -1484,6 +1492,7 @@ export type ExternalMetricsSource =
   | "Instana"
   | (string & {});
 export const ExternalMetricsSource = /*@__PURE__*/ S.String;
+
 export interface ExternalMetricsPreference {
   source?: ExternalMetricsSource;
 }
@@ -1498,17 +1507,20 @@ export type LookBackPeriodPreference =
   | "DAYS_93"
   | (string & {});
 export const LookBackPeriodPreference = /*@__PURE__*/ S.String;
+
 export type CustomizableMetricName =
   | "CpuUtilization"
   | "MemoryUtilization"
   | (string & {});
 export const CustomizableMetricName = /*@__PURE__*/ S.String;
+
 export type CustomizableMetricThreshold =
   | "P90"
   | "P95"
   | "P99_5"
   | (string & {});
 export const CustomizableMetricThreshold = /*@__PURE__*/ S.String;
+
 export type CustomizableMetricHeadroom =
   | "PERCENT_30"
   | "PERCENT_20"
@@ -1516,6 +1528,7 @@ export type CustomizableMetricHeadroom =
   | "PERCENT_0"
   | (string & {});
 export const CustomizableMetricHeadroom = /*@__PURE__*/ S.String;
+
 export interface CustomizableMetricParameters {
   threshold?: CustomizableMetricThreshold;
   headroom?: CustomizableMetricHeadroom;
@@ -1546,6 +1559,8 @@ export const UtilizationPreferences = /*@__PURE__*/ S.Array(
 );
 export type PreferredResourceName = "Ec2InstanceTypes" | (string & {});
 export const PreferredResourceName = /*@__PURE__*/ S.String;
+
+export type PreferredResourceValue = string;
 export type PreferredResourceValues = string[];
 export const PreferredResourceValues = /*@__PURE__*/ S.Array(S.String);
 export interface EffectivePreferredResource {
@@ -1574,6 +1589,7 @@ export type InstanceSavingsEstimationModeSource =
   | "CostOptimizationHub"
   | (string & {});
 export const InstanceSavingsEstimationModeSource = /*@__PURE__*/ S.String;
+
 export interface InstanceSavingsEstimationMode {
   source?: InstanceSavingsEstimationModeSource;
 }
@@ -1618,6 +1634,7 @@ export type InferredWorkloadType =
   | "SQLServer"
   | (string & {});
 export const InferredWorkloadType = /*@__PURE__*/ S.String;
+
 export type InferredWorkloadTypes = InferredWorkloadType[];
 export const InferredWorkloadTypes =
   /*@__PURE__*/ S.Array(InferredWorkloadType);
@@ -1663,6 +1680,9 @@ export type AutoScalingGroupRecommendations = AutoScalingGroupRecommendation[];
 export const AutoScalingGroupRecommendations = /*@__PURE__*/ S.Array(
   AutoScalingGroupRecommendation,
 );
+export type Identifier = string;
+export type Code = string;
+export type Message = string;
 export interface GetRecommendationError {
   identifier?: string;
   code?: string;
@@ -1698,6 +1718,7 @@ export const GetAutoScalingGroupRecommendationsResponse =
   ).annotate({
     identifier: "GetAutoScalingGroupRecommendationsResponse",
   }) as any as S.Schema<GetAutoScalingGroupRecommendationsResponse>;
+export type VolumeArn = string;
 export type VolumeArns = string[];
 export const VolumeArns = /*@__PURE__*/ S.Array(S.String);
 export interface GetEBSVolumeRecommendationsRequest {
@@ -1720,6 +1741,13 @@ export const GetEBSVolumeRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEBSVolumeRecommendationsRequest",
 }) as any as S.Schema<GetEBSVolumeRecommendationsRequest>;
+export type VolumeType = string;
+export type VolumeSize = number;
+export type VolumeBaselineIOPS = number;
+export type VolumeBurstIOPS = number;
+export type VolumeBaselineThroughput = number;
+export type VolumeBurstThroughput = number;
+export type RootVolume = boolean;
 export interface VolumeConfiguration {
   volumeType?: string;
   volumeSize?: number;
@@ -1744,6 +1772,7 @@ export const VolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VolumeConfiguration>;
 export type EBSFinding = "Optimized" | "NotOptimized" | (string & {});
 export const EBSFinding = /*@__PURE__*/ S.String;
+
 export type EBSMetricName =
   | "VolumeReadOpsPerSecond"
   | "VolumeWriteOpsPerSecond"
@@ -1753,6 +1782,7 @@ export type EBSMetricName =
   | "VolumeThroughputExceeded"
   | (string & {});
 export const EBSMetricName = /*@__PURE__*/ S.String;
+
 export interface EBSUtilizationMetric {
   name?: EBSMetricName;
   statistic?: MetricStatistic;
@@ -1821,6 +1851,7 @@ export type EBSSavingsEstimationModeSource =
   | "CostOptimizationHub"
   | (string & {});
 export const EBSSavingsEstimationModeSource = /*@__PURE__*/ S.String;
+
 export interface EBSSavingsEstimationMode {
   source?: EBSSavingsEstimationModeSource;
 }
@@ -1842,6 +1873,8 @@ export const EBSEffectiveRecommendationPreferences = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "EBSEffectiveRecommendationPreferences",
 }) as any as S.Schema<EBSEffectiveRecommendationPreferences>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key?: string;
   value?: string;
@@ -1902,6 +1935,7 @@ export const GetEBSVolumeRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEBSVolumeRecommendationsResponse",
 }) as any as S.Schema<GetEBSVolumeRecommendationsResponse>;
+export type InstanceArn = string;
 export type InstanceArns = string[];
 export const InstanceArns = /*@__PURE__*/ S.Array(S.String);
 export interface GetEC2InstanceRecommendationsRequest {
@@ -1927,6 +1961,8 @@ export const GetEC2InstanceRecommendationsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetEC2InstanceRecommendationsRequest",
 }) as any as S.Schema<GetEC2InstanceRecommendationsRequest>;
+export type InstanceName = string;
+export type CurrentInstanceType = string;
 export type InstanceRecommendationFindingReasonCode =
   | "CPUOverprovisioned"
   | "CPUUnderprovisioned"
@@ -1950,11 +1986,13 @@ export type InstanceRecommendationFindingReasonCode =
   | "GPUMemoryOverprovisioned"
   | (string & {});
 export const InstanceRecommendationFindingReasonCode = /*@__PURE__*/ S.String;
+
 export type InstanceRecommendationFindingReasonCodes =
   InstanceRecommendationFindingReasonCode[];
 export const InstanceRecommendationFindingReasonCodes = /*@__PURE__*/ S.Array(
   InstanceRecommendationFindingReasonCode,
 );
+export type InstanceType = string;
 export type PlatformDifference =
   | "Hypervisor"
   | "NetworkInterface"
@@ -1964,6 +2002,7 @@ export type PlatformDifference =
   | "Architecture"
   | (string & {});
 export const PlatformDifference = /*@__PURE__*/ S.String;
+
 export type PlatformDifferences = PlatformDifference[];
 export const PlatformDifferences = /*@__PURE__*/ S.Array(PlatformDifference);
 export interface InstanceEstimatedMonthlySavings {
@@ -2020,6 +2059,7 @@ export type RecommendationOptions = InstanceRecommendationOption[];
 export const RecommendationOptions = /*@__PURE__*/ S.Array(
   InstanceRecommendationOption,
 );
+export type RecommendationSourceArn = string;
 export type RecommendationSourceType =
   | "Ec2Instance"
   | "AutoScalingGroup"
@@ -2039,6 +2079,7 @@ export type RecommendationSourceType =
   | "SageMakerEndpoint"
   | (string & {});
 export const RecommendationSourceType = /*@__PURE__*/ S.String;
+
 export interface RecommendationSource {
   recommendationSourceArn?: string;
   recommendationSourceType?: RecommendationSourceType;
@@ -2063,6 +2104,7 @@ export type InstanceState =
   | "stopped"
   | (string & {});
 export const InstanceState = /*@__PURE__*/ S.String;
+
 export type ExternalMetricStatusCode =
   | "NO_EXTERNAL_METRIC_SET"
   | "INTEGRATION_SUCCESS"
@@ -2076,6 +2118,8 @@ export type ExternalMetricStatusCode =
   | "INSUFFICIENT_INSTANA_METRICS"
   | (string & {});
 export const ExternalMetricStatusCode = /*@__PURE__*/ S.String;
+
+export type ExternalMetricStatusReason = string;
 export interface ExternalMetricStatus {
   statusCode?: ExternalMetricStatusCode;
   statusReason?: string;
@@ -2090,6 +2134,7 @@ export const ExternalMetricStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExternalMetricStatus>;
 export type InstanceIdle = "True" | "False" | (string & {});
 export const InstanceIdle = /*@__PURE__*/ S.String;
+
 export interface InstanceRecommendation {
   instanceArn?: string;
   accountId?: string;
@@ -2159,6 +2204,7 @@ export const GetEC2InstanceRecommendationsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetEC2InstanceRecommendationsResponse",
 }) as any as S.Schema<GetEC2InstanceRecommendationsResponse>;
+export type Period = number;
 export interface GetEC2RecommendationProjectedMetricsRequest {
   instanceArn: string;
   stat: MetricStatistic;
@@ -2182,6 +2228,7 @@ export const GetEC2RecommendationProjectedMetricsRequest =
   ).annotate({
     identifier: "GetEC2RecommendationProjectedMetricsRequest",
   }) as any as S.Schema<GetEC2RecommendationProjectedMetricsRequest>;
+export type RecommendedInstanceType = string;
 export type Timestamps = Date[];
 export const Timestamps = /*@__PURE__*/ S.Array(
   S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -2236,6 +2283,7 @@ export const GetEC2RecommendationProjectedMetricsResponse =
   ).annotate({
     identifier: "GetEC2RecommendationProjectedMetricsResponse",
   }) as any as S.Schema<GetEC2RecommendationProjectedMetricsResponse>;
+export type ServiceArn = string;
 export interface GetECSServiceRecommendationProjectedMetricsRequest {
   serviceArn: string;
   stat: MetricStatistic;
@@ -2257,8 +2305,11 @@ export const GetECSServiceRecommendationProjectedMetricsRequest =
   ).annotate({
     identifier: "GetECSServiceRecommendationProjectedMetricsRequest",
   }) as any as S.Schema<GetECSServiceRecommendationProjectedMetricsRequest>;
+export type CpuSize = number;
+export type MemorySize = number;
 export type ECSServiceMetricName = "Cpu" | "Memory" | (string & {});
 export const ECSServiceMetricName = /*@__PURE__*/ S.String;
+
 export interface ECSServiceProjectedMetric {
   name?: ECSServiceMetricName;
   timestamps?: Date[];
@@ -2333,6 +2384,10 @@ export const GetECSServiceRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetECSServiceRecommendationsRequest",
 }) as any as S.Schema<GetECSServiceRecommendationsRequest>;
+export type NullableMemory = number;
+export type NullableCpu = number;
+export type ContainerName = string;
+export type NullableMemoryReservation = number;
 export interface MemorySizeConfiguration {
   memory?: number;
   memoryReservation?: number;
@@ -2368,6 +2423,8 @@ export type AutoScalingConfiguration =
   | "TargetTrackingScalingMemory"
   | (string & {});
 export const AutoScalingConfiguration = /*@__PURE__*/ S.String;
+
+export type TaskDefinitionArn = string;
 export interface ServiceConfiguration {
   memory?: number;
   cpu?: number;
@@ -2388,6 +2445,7 @@ export const ServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServiceConfiguration>;
 export type ECSServiceMetricStatistic = "Maximum" | "Average" | (string & {});
 export const ECSServiceMetricStatistic = /*@__PURE__*/ S.String;
+
 export interface ECSServiceUtilizationMetric {
   name?: ECSServiceMetricName;
   statistic?: ECSServiceMetricStatistic;
@@ -2408,12 +2466,14 @@ export const ECSServiceUtilizationMetrics = /*@__PURE__*/ S.Array(
 );
 export type ECSServiceLaunchType = "EC2" | "Fargate" | (string & {});
 export const ECSServiceLaunchType = /*@__PURE__*/ S.String;
+
 export type ECSServiceRecommendationFinding =
   | "Optimized"
   | "Underprovisioned"
   | "Overprovisioned"
   | (string & {});
 export const ECSServiceRecommendationFinding = /*@__PURE__*/ S.String;
+
 export type ECSServiceRecommendationFindingReasonCode =
   | "MemoryOverprovisioned"
   | "MemoryUnderprovisioned"
@@ -2421,6 +2481,7 @@ export type ECSServiceRecommendationFindingReasonCode =
   | "CPUUnderprovisioned"
   | (string & {});
 export const ECSServiceRecommendationFindingReasonCode = /*@__PURE__*/ S.String;
+
 export type ECSServiceRecommendationFindingReasonCodes =
   ECSServiceRecommendationFindingReasonCode[];
 export const ECSServiceRecommendationFindingReasonCodes = /*@__PURE__*/ S.Array(
@@ -2447,6 +2508,8 @@ export const ECSSavingsOpportunityAfterDiscounts = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ECSSavingsOpportunityAfterDiscounts",
 }) as any as S.Schema<ECSSavingsOpportunityAfterDiscounts>;
+export type LowerBoundValue = number;
+export type UpperBoundValue = number;
 export interface ECSServiceProjectedUtilizationMetric {
   name?: ECSServiceMetricName;
   statistic?: ECSServiceMetricStatistic;
@@ -2521,6 +2584,7 @@ export type ECSSavingsEstimationModeSource =
   | "CostOptimizationHub"
   | (string & {});
 export const ECSSavingsEstimationModeSource = /*@__PURE__*/ S.String;
+
 export interface ECSSavingsEstimationMode {
   source?: ECSSavingsEstimationModeSource;
 }
@@ -2599,6 +2663,7 @@ export const GetECSServiceRecommendationsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetECSServiceRecommendationsResponse",
 }) as any as S.Schema<GetECSServiceRecommendationsResponse>;
+export type ResourceArn = string;
 export interface GetEffectiveRecommendationPreferencesRequest {
   resourceArn: string;
 }
@@ -2644,6 +2709,10 @@ export type Status =
   | "Failed"
   | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
+export type StatusReason = string;
+export type MemberAccountsEnrolled = boolean;
+export type NumberOfMemberAccountsOptedIn = number;
 export interface GetEnrollmentStatusResponse {
   status?: Status;
   statusReason?: string;
@@ -2666,6 +2735,7 @@ export const GetEnrollmentStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEnrollmentStatusResponse>;
 export type EnrollmentFilterName = "Status" | (string & {});
 export const EnrollmentFilterName = /*@__PURE__*/ S.String;
+
 export interface EnrollmentFilter {
   name?: EnrollmentFilterName;
   values?: string[];
@@ -2734,13 +2804,16 @@ export const GetEnrollmentStatusesForOrganizationResponse =
   }) as any as S.Schema<GetEnrollmentStatusesForOrganizationResponse>;
 export type ResourceArns = string[];
 export const ResourceArns = /*@__PURE__*/ S.Array(S.String);
+export type IdleMaxResults = number;
 export type Dimension =
   | "SavingsValue"
   | "SavingsValueAfterDiscount"
   | (string & {});
 export const Dimension = /*@__PURE__*/ S.String;
+
 export type Order = "Asc" | "Desc" | (string & {});
 export const Order = /*@__PURE__*/ S.String;
+
 export interface OrderBy {
   dimension?: Dimension;
   order?: Order;
@@ -2770,6 +2843,7 @@ export const GetIdleRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIdleRecommendationsRequest",
 }) as any as S.Schema<GetIdleRecommendationsRequest>;
+export type ResourceId = string;
 export type IdleRecommendationResourceType =
   | "EC2Instance"
   | "AutoScalingGroup"
@@ -2785,8 +2859,11 @@ export type IdleRecommendationResourceType =
   | "SageMakerEndpoint"
   | (string & {});
 export const IdleRecommendationResourceType = /*@__PURE__*/ S.String;
+
 export type IdleFinding = "Idle" | "Unattached" | "Unused" | (string & {});
 export const IdleFinding = /*@__PURE__*/ S.String;
+
+export type IdleFindingDescription = string;
 export interface IdleEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
@@ -2852,6 +2929,9 @@ export type IdleMetricName =
   | "CurrConnections"
   | (string & {});
 export const IdleMetricName = /*@__PURE__*/ S.String;
+
+export type IdleDimensionKey = string;
+export type IdleDimensionValue = string;
 export type IdleDimensionValues = string[];
 export const IdleDimensionValues = /*@__PURE__*/ S.Array(S.String);
 export interface IdleDimension {
@@ -2958,6 +3038,7 @@ export const GetIdleRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIdleRecommendationsResponse",
 }) as any as S.Schema<GetIdleRecommendationsResponse>;
+export type FunctionArn = string;
 export type FunctionArns = string[];
 export const FunctionArns = /*@__PURE__*/ S.Array(S.String);
 export interface GetLambdaFunctionRecommendationsRequest {
@@ -2981,13 +3062,17 @@ export const GetLambdaFunctionRecommendationsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetLambdaFunctionRecommendationsRequest",
 }) as any as S.Schema<GetLambdaFunctionRecommendationsRequest>;
+export type FunctionVersion = string;
+export type NumberOfInvocations = number;
 export type LambdaFunctionMetricName = "Duration" | "Memory" | (string & {});
 export const LambdaFunctionMetricName = /*@__PURE__*/ S.String;
+
 export type LambdaFunctionMetricStatistic =
   | "Maximum"
   | "Average"
   | (string & {});
 export const LambdaFunctionMetricStatistic = /*@__PURE__*/ S.String;
+
 export interface LambdaFunctionUtilizationMetric {
   name?: LambdaFunctionMetricName;
   statistic?: LambdaFunctionMetricStatistic;
@@ -3013,6 +3098,7 @@ export type LambdaFunctionRecommendationFinding =
   | "Unavailable"
   | (string & {});
 export const LambdaFunctionRecommendationFinding = /*@__PURE__*/ S.String;
+
 export type LambdaFunctionRecommendationFindingReasonCode =
   | "MemoryOverprovisioned"
   | "MemoryUnderprovisioned"
@@ -3021,18 +3107,21 @@ export type LambdaFunctionRecommendationFindingReasonCode =
   | (string & {});
 export const LambdaFunctionRecommendationFindingReasonCode =
   /*@__PURE__*/ S.String;
+
 export type LambdaFunctionRecommendationFindingReasonCodes =
   LambdaFunctionRecommendationFindingReasonCode[];
 export const LambdaFunctionRecommendationFindingReasonCodes =
   /*@__PURE__*/ S.Array(LambdaFunctionRecommendationFindingReasonCode);
 export type LambdaFunctionMemoryMetricName = "Duration" | (string & {});
 export const LambdaFunctionMemoryMetricName = /*@__PURE__*/ S.String;
+
 export type LambdaFunctionMemoryMetricStatistic =
   | "LowerBound"
   | "UpperBound"
   | "Expected"
   | (string & {});
 export const LambdaFunctionMemoryMetricStatistic = /*@__PURE__*/ S.String;
+
 export interface LambdaFunctionMemoryProjectedMetric {
   name?: LambdaFunctionMemoryMetricName;
   statistic?: LambdaFunctionMemoryMetricStatistic;
@@ -3108,6 +3197,7 @@ export type LambdaSavingsEstimationModeSource =
   | "CostOptimizationHub"
   | (string & {});
 export const LambdaSavingsEstimationModeSource = /*@__PURE__*/ S.String;
+
 export interface LambdaSavingsEstimationMode {
   source?: LambdaSavingsEstimationModeSource;
 }
@@ -3208,6 +3298,8 @@ export const GetLicenseRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLicenseRecommendationsRequest",
 }) as any as S.Schema<GetLicenseRecommendationsRequest>;
+export type NumberOfCores = number;
+export type OperatingSystem = string;
 export type LicenseEdition =
   | "Enterprise"
   | "Standard"
@@ -3215,17 +3307,23 @@ export type LicenseEdition =
   | "NoLicenseEditionFound"
   | (string & {});
 export const LicenseEdition = /*@__PURE__*/ S.String;
+
 export type LicenseName = "SQLServer" | (string & {});
 export const LicenseName = /*@__PURE__*/ S.String;
+
 export type LicenseModel =
   | "LicenseIncluded"
   | "BringYourOwnLicense"
   | (string & {});
 export const LicenseModel = /*@__PURE__*/ S.String;
+
+export type LicenseVersion = string;
 export type MetricSourceProvider =
   | "CloudWatchApplicationInsights"
   | (string & {});
 export const MetricSourceProvider = /*@__PURE__*/ S.String;
+
+export type MetricProviderArn = string;
 export interface MetricSource {
   provider?: MetricSourceProvider;
   providerArn?: string;
@@ -3268,6 +3366,7 @@ export type LicenseFinding =
   | "NotOptimized"
   | (string & {});
 export const LicenseFinding = /*@__PURE__*/ S.String;
+
 export type LicenseFindingReasonCode =
   | "InvalidCloudWatchApplicationInsightsSetup"
   | "CloudWatchApplicationInsightsError"
@@ -3275,6 +3374,7 @@ export type LicenseFindingReasonCode =
   | "Optimized"
   | (string & {});
 export const LicenseFindingReasonCode = /*@__PURE__*/ S.String;
+
 export type LicenseFindingReasonCodes = LicenseFindingReasonCode[];
 export const LicenseFindingReasonCodes = /*@__PURE__*/ S.Array(
   LicenseFindingReasonCode,
@@ -3370,6 +3470,7 @@ export const GetRDSDatabaseRecommendationProjectedMetricsRequest =
   ).annotate({
     identifier: "GetRDSDatabaseRecommendationProjectedMetricsRequest",
   }) as any as S.Schema<GetRDSDatabaseRecommendationProjectedMetricsRequest>;
+export type RecommendedDBInstanceClass = string;
 export type RDSDBMetricName =
   | "CPU"
   | "Memory"
@@ -3394,6 +3495,7 @@ export type RDSDBMetricName =
   | "VolumeWriteIOPs"
   | (string & {});
 export const RDSDBMetricName = /*@__PURE__*/ S.String;
+
 export interface RDSDatabaseProjectedMetric {
   name?: RDSDBMetricName;
   timestamps?: Date[];
@@ -3467,6 +3569,15 @@ export const GetRDSDatabaseRecommendationsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetRDSDatabaseRecommendationsRequest",
 }) as any as S.Schema<GetRDSDatabaseRecommendationsRequest>;
+export type Engine = string;
+export type EngineVersion = string;
+export type PromotionTier = number;
+export type CurrentDBInstanceClass = string;
+export type StorageType = string;
+export type AllocatedStorage = number;
+export type NullableIOPS = number;
+export type NullableMaxAllocatedStorage = number;
+export type NullableStorageThroughput = number;
 export interface DBStorageConfiguration {
   storageType?: string;
   allocatedStorage?: number;
@@ -3485,14 +3596,17 @@ export const DBStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DBStorageConfiguration",
 }) as any as S.Schema<DBStorageConfiguration>;
+export type DBClusterIdentifier = string;
 export type Idle = "True" | "False" | (string & {});
 export const Idle = /*@__PURE__*/ S.String;
+
 export type RDSInstanceFinding =
   | "Optimized"
   | "Underprovisioned"
   | "Overprovisioned"
   | (string & {});
 export const RDSInstanceFinding = /*@__PURE__*/ S.String;
+
 export type RDSStorageFinding =
   | "Optimized"
   | "Underprovisioned"
@@ -3500,6 +3614,7 @@ export type RDSStorageFinding =
   | "NotOptimized"
   | (string & {});
 export const RDSStorageFinding = /*@__PURE__*/ S.String;
+
 export type RDSInstanceFindingReasonCode =
   | "CPUOverprovisioned"
   | "NetworkBandwidthOverprovisioned"
@@ -3517,6 +3632,7 @@ export type RDSInstanceFindingReasonCode =
   | "InstanceStorageWriteIOPSUnderprovisioned"
   | (string & {});
 export const RDSInstanceFindingReasonCode = /*@__PURE__*/ S.String;
+
 export type RDSInstanceFindingReasonCodes = RDSInstanceFindingReasonCode[];
 export const RDSInstanceFindingReasonCodes = /*@__PURE__*/ S.Array(
   RDSInstanceFindingReasonCode,
@@ -3528,6 +3644,7 @@ export type RDSCurrentInstancePerformanceRisk =
   | "High"
   | (string & {});
 export const RDSCurrentInstancePerformanceRisk = /*@__PURE__*/ S.String;
+
 export type RDSEstimatedMonthlyVolumeIOPsCostVariation =
   | "None"
   | "Low"
@@ -3536,6 +3653,7 @@ export type RDSEstimatedMonthlyVolumeIOPsCostVariation =
   | (string & {});
 export const RDSEstimatedMonthlyVolumeIOPsCostVariation =
   /*@__PURE__*/ S.String;
+
 export type RDSStorageFindingReasonCode =
   | "EBSVolumeAllocatedStorageUnderprovisioned"
   | "EBSVolumeThroughputUnderprovisioned"
@@ -3546,16 +3664,19 @@ export type RDSStorageFindingReasonCode =
   | "DBClusterStorageSavingsAvailable"
   | (string & {});
 export const RDSStorageFindingReasonCode = /*@__PURE__*/ S.String;
+
 export type RDSStorageFindingReasonCodes = RDSStorageFindingReasonCode[];
 export const RDSStorageFindingReasonCodes = /*@__PURE__*/ S.Array(
   RDSStorageFindingReasonCode,
 );
+export type DBInstanceClass = string;
 export type RDSDBMetricStatistic =
   | "Maximum"
   | "Minimum"
   | "Average"
   | (string & {});
 export const RDSDBMetricStatistic = /*@__PURE__*/ S.String;
+
 export interface RDSDBUtilizationMetric {
   name?: RDSDBMetricName;
   statistic?: RDSDBMetricStatistic;
@@ -3682,6 +3803,7 @@ export type RDSSavingsEstimationModeSource =
   | "CostOptimizationHub"
   | (string & {});
 export const RDSSavingsEstimationModeSource = /*@__PURE__*/ S.String;
+
 export interface RDSSavingsEstimationMode {
   source?: RDSSavingsEstimationModeSource;
 }
@@ -3809,6 +3931,7 @@ export type SavingsEstimationMode =
   | "BeforeDiscounts"
   | (string & {});
 export const SavingsEstimationMode = /*@__PURE__*/ S.String;
+
 export interface RecommendationPreferencesDetail {
   scope?: Scope;
   resourceType?: ResourceType;
@@ -3871,11 +3994,13 @@ export const GetRecommendationSummariesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRecommendationSummariesRequest",
 }) as any as S.Schema<GetRecommendationSummariesRequest>;
+export type SummaryValue = number;
 export type FindingReasonCode =
   | "MemoryOverprovisioned"
   | "MemoryUnderprovisioned"
   | (string & {});
 export const FindingReasonCode = /*@__PURE__*/ S.String;
+
 export interface ReasonCodeSummary {
   name?: FindingReasonCode;
   value?: number;
@@ -3913,6 +4038,10 @@ export const IdleSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IdleSummary" }) as any as S.Schema<IdleSummary>;
 export type IdleSummaries = IdleSummary[];
 export const IdleSummaries = /*@__PURE__*/ S.Array(IdleSummary);
+export type High = number;
+export type Medium = number;
+export type Low = number;
+export type VeryLow = number;
 export interface CurrentPerformanceRiskRatings {
   high?: number;
   medium?: number;
@@ -4060,55 +4189,7 @@ export const UpdateEnrollmentStatusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateEnrollmentStatusResponse",
 }) as any as S.Schema<UpdateEnrollmentStatusResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class MissingAuthenticationToken extends S.TaggedErrorClass<MissingAuthenticationToken>()(
-  "MissingAuthenticationToken",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class OptInRequiredException extends S.TaggedErrorClass<OptInRequiredException>()(
-  "OptInRequiredException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type DeleteRecommendationPreferencesError =
   | AccessDeniedException
   | InternalServerException
@@ -4148,6 +4229,7 @@ export const deleteRecommendationPreferences: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRecommendationPreferences",
 }));
+
 export type DescribeRecommendationExportJobsError =
   | AccessDeniedException
   | InternalServerException
@@ -4208,6 +4290,7 @@ export const describeRecommendationExportJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ExportAutoScalingGroupRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4250,6 +4333,7 @@ export const exportAutoScalingGroupRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "ExportAutoScalingGroupRecommendations",
 }));
+
 export type ExportEBSVolumeRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4292,6 +4376,7 @@ export const exportEBSVolumeRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "ExportEBSVolumeRecommendations",
 }));
+
 export type ExportEC2InstanceRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4334,6 +4419,7 @@ export const exportEC2InstanceRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "ExportEC2InstanceRecommendations",
 }));
+
 export type ExportECSServiceRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4376,6 +4462,7 @@ export const exportECSServiceRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "ExportECSServiceRecommendations",
 }));
+
 export type ExportIdleRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4418,6 +4505,7 @@ export const exportIdleRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "ExportIdleRecommendations",
 }));
+
 export type ExportLambdaFunctionRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4460,6 +4548,7 @@ export const exportLambdaFunctionRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "ExportLambdaFunctionRecommendations",
 }));
+
 export type ExportLicenseRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4502,6 +4591,7 @@ export const exportLicenseRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "ExportLicenseRecommendations",
 }));
+
 export type ExportRDSDatabaseRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4544,6 +4634,7 @@ export const exportRDSDatabaseRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "ExportRDSDatabaseRecommendations",
 }));
+
 export type GetAutoScalingGroupRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4584,6 +4675,7 @@ export const getAutoScalingGroupRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "GetAutoScalingGroupRecommendations",
 }));
+
 export type GetEBSVolumeRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4624,6 +4716,7 @@ export const getEBSVolumeRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "GetEBSVolumeRecommendations",
 }));
+
 export type GetEC2InstanceRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4664,6 +4757,7 @@ export const getEC2InstanceRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "GetEC2InstanceRecommendations",
 }));
+
 export type GetEC2RecommendationProjectedMetricsError =
   | AccessDeniedException
   | InternalServerException
@@ -4705,6 +4799,7 @@ export const getEC2RecommendationProjectedMetrics: API.OperationMethod<
   retry: Retry,
   operationName: "GetEC2RecommendationProjectedMetrics",
 }));
+
 export type GetECSServiceRecommendationProjectedMetricsError =
   | AccessDeniedException
   | InternalServerException
@@ -4740,6 +4835,7 @@ export const getECSServiceRecommendationProjectedMetrics: API.OperationMethod<
   retry: Retry,
   operationName: "GetECSServiceRecommendationProjectedMetrics",
 }));
+
 export type GetECSServiceRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4781,6 +4877,7 @@ export const getECSServiceRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "GetECSServiceRecommendations",
 }));
+
 export type GetEffectiveRecommendationPreferencesError =
   | AccessDeniedException
   | InternalServerException
@@ -4822,6 +4919,7 @@ export const getEffectiveRecommendationPreferences: API.OperationMethod<
   retry: Retry,
   operationName: "GetEffectiveRecommendationPreferences",
 }));
+
 export type GetEnrollmentStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -4858,6 +4956,7 @@ export const getEnrollmentStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetEnrollmentStatus",
 }));
+
 export type GetEnrollmentStatusesForOrganizationError =
   | AccessDeniedException
   | InternalServerException
@@ -4913,6 +5012,7 @@ export const getEnrollmentStatusesForOrganization: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetIdleRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4951,6 +5051,7 @@ export const getIdleRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "GetIdleRecommendations",
 }));
+
 export type GetLambdaFunctionRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -5012,6 +5113,7 @@ export const getLambdaFunctionRecommendations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetLicenseRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -5052,6 +5154,7 @@ export const getLicenseRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "GetLicenseRecommendations",
 }));
+
 export type GetRDSDatabaseRecommendationProjectedMetricsError =
   | AccessDeniedException
   | InternalServerException
@@ -5087,6 +5190,7 @@ export const getRDSDatabaseRecommendationProjectedMetrics: API.OperationMethod<
   retry: Retry,
   operationName: "GetRDSDatabaseRecommendationProjectedMetrics",
 }));
+
 export type GetRDSDatabaseRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -5128,6 +5232,7 @@ export const getRDSDatabaseRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "GetRDSDatabaseRecommendations",
 }));
+
 export type GetRecommendationPreferencesError =
   | AccessDeniedException
   | InternalServerException
@@ -5193,6 +5298,7 @@ export const getRecommendationPreferences: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetRecommendationSummariesError =
   | AccessDeniedException
   | InternalServerException
@@ -5271,6 +5377,7 @@ export const getRecommendationSummaries: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type PutRecommendationPreferencesError =
   | AccessDeniedException
   | InternalServerException
@@ -5311,6 +5418,7 @@ export const putRecommendationPreferences: API.OperationMethod<
   retry: Retry,
   operationName: "PutRecommendationPreferences",
 }));
+
 export type UpdateEnrollmentStatusError =
   | AccessDeniedException
   | InternalServerException

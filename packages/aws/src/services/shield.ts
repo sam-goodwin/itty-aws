@@ -105,30 +105,83 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class AccessDeniedForDependencyException extends S.TaggedErrorClass<AccessDeniedForDependencyException>()(
+  "AccessDeniedForDependencyException",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
+  "InternalErrorException",
+  { message: S.optional(S.String) },
+).pipe(C.withServerError) {}
+export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
+  "InvalidOperationException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidPaginationTokenException extends S.TaggedErrorClass<InvalidPaginationTokenException>()(
+  "InvalidPaginationTokenException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  {
+    message: S.optional(S.String),
+    reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    fields: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+) {}
+export class InvalidResourceException extends S.TaggedErrorClass<InvalidResourceException>()(
+  "InvalidResourceException",
+  { message: S.optional(S.String) },
+) {}
+export class LimitsExceededException extends S.TaggedErrorClass<LimitsExceededException>()(
+  "LimitsExceededException",
+  {
+    message: S.optional(S.String),
+    Type: S.optional(S.String),
+    Limit: S.optional(S.Number),
+  },
+) {}
+export class LockedSubscriptionException extends S.TaggedErrorClass<LockedSubscriptionException>()(
+  "LockedSubscriptionException",
+  { message: S.optional(S.String) },
+) {}
+export class NoAssociatedRoleException extends S.TaggedErrorClass<NoAssociatedRoleException>()(
+  "NoAssociatedRoleException",
+  { message: S.optional(S.String) },
+) {}
+export class OptimisticLockException extends S.TaggedErrorClass<OptimisticLockException>()(
+  "OptimisticLockException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { message: S.optional(S.String), resourceType: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String), resourceType: S.optional(S.String) },
+) {}
+export class SubscriptionNotFound extends S.TaggedErrorClass<SubscriptionNotFound>()(
+  "SubscriptionNotFound",
+  { message: S.optional(S.String), resourceType: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ResourceNotFoundException",
+    message: "The subscription does not exist.",
+  }),
+).pipe(C.withNotFoundError) {}
 export type LogBucket = string;
-export type ErrorMessage = string;
-export type LimitType = string;
-export type LimitNumber = number;
-export type RoleArn = string;
-export type ProtectionId = string;
-export type HealthCheckArn = string;
-export type EmailAddress = string;
-export type PhoneNumber = string;
-export type ContactNotes = string;
-export type ProtectionName = string;
-export type ResourceArn = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ProtectionGroupId = string;
-export type AttackId = string;
-export type AttackTimestamp = Date;
-export type HealthCheckId = string;
-export type DurationInSeconds = number;
-export type Token = string;
-export type MaxResults = number;
-
-//# Schemas
 export interface AssociateDRTLogBucketRequest {
   LogBucket: string;
 }
@@ -153,24 +206,7 @@ export const AssociateDRTLogBucketResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateDRTLogBucketResponse",
 }) as any as S.Schema<AssociateDRTLogBucketResponse>;
-export type ValidationExceptionReason =
-  | "FIELD_VALIDATION_FAILED"
-  | "OTHER"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type RoleArn = string;
 export interface AssociateDRTRoleRequest {
   RoleArn: string;
 }
@@ -195,6 +231,8 @@ export const AssociateDRTRoleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateDRTRoleResponse",
 }) as any as S.Schema<AssociateDRTRoleResponse>;
+export type ProtectionId = string;
+export type HealthCheckArn = string;
 export interface AssociateHealthCheckRequest {
   ProtectionId: string;
   HealthCheckArn: string;
@@ -220,6 +258,9 @@ export const AssociateHealthCheckResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateHealthCheckResponse",
 }) as any as S.Schema<AssociateHealthCheckResponse>;
+export type EmailAddress = string;
+export type PhoneNumber = string;
+export type ContactNotes = string;
 export interface EmergencyContact {
   EmailAddress: string;
   PhoneNumber?: string;
@@ -260,6 +301,10 @@ export const AssociateProactiveEngagementDetailsResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "AssociateProactiveEngagementDetailsResponse",
   }) as any as S.Schema<AssociateProactiveEngagementDetailsResponse>;
+export type ProtectionName = string;
+export type ResourceArn = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -301,14 +346,17 @@ export const CreateProtectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProtectionResponse",
 }) as any as S.Schema<CreateProtectionResponse>;
+export type ProtectionGroupId = string;
 export type ProtectionGroupAggregation = "SUM" | "MEAN" | "MAX" | (string & {});
 export const ProtectionGroupAggregation = /*@__PURE__*/ S.String;
+
 export type ProtectionGroupPattern =
   | "ALL"
   | "ARBITRARY"
   | "BY_RESOURCE_TYPE"
   | (string & {});
 export const ProtectionGroupPattern = /*@__PURE__*/ S.String;
+
 export type ProtectedResourceType =
   | "CLOUDFRONT_DISTRIBUTION"
   | "ROUTE_53_HOSTED_ZONE"
@@ -318,6 +366,7 @@ export type ProtectedResourceType =
   | "GLOBAL_ACCELERATOR"
   | (string & {});
 export const ProtectedResourceType = /*@__PURE__*/ S.String;
+
 export type ProtectionGroupMembers = string[];
 export const ProtectionGroupMembers = /*@__PURE__*/ S.Array(S.String);
 export interface CreateProtectionGroupRequest {
@@ -448,6 +497,7 @@ export const DeleteSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSubscriptionResponse",
 }) as any as S.Schema<DeleteSubscriptionResponse>;
+export type AttackId = string;
 export interface DescribeAttackRequest {
   AttackId: string;
 }
@@ -468,6 +518,7 @@ export const DescribeAttackRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeAttackRequest>;
 export type SubResourceType = "IP" | "URL" | (string & {});
 export const SubResourceType = /*@__PURE__*/ S.String;
+
 export interface SummarizedCounter {
   Name?: string;
   Max?: number;
@@ -524,8 +575,10 @@ export const SubResourceSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubResourceSummary>;
 export type SubResourceSummaryList = SubResourceSummary[];
 export const SubResourceSummaryList = /*@__PURE__*/ S.Array(SubResourceSummary);
+export type AttackTimestamp = Date;
 export type AttackLayer = "NETWORK" | "APPLICATION" | (string & {});
 export const AttackLayer = /*@__PURE__*/ S.String;
+
 export type AttackPropertyIdentifier =
   | "DESTINATION_URL"
   | "REFERRER"
@@ -537,6 +590,7 @@ export type AttackPropertyIdentifier =
   | "WORDPRESS_PINGBACK_SOURCE"
   | (string & {});
 export const AttackPropertyIdentifier = /*@__PURE__*/ S.String;
+
 export interface Contributor {
   Name?: string;
   Value?: number;
@@ -548,6 +602,7 @@ export type TopContributors = Contributor[];
 export const TopContributors = /*@__PURE__*/ S.Array(Contributor);
 export type Unit = "BITS" | "BYTES" | "PACKETS" | "REQUESTS" | (string & {});
 export const Unit = /*@__PURE__*/ S.String;
+
 export interface AttackProperty {
   AttackLayer?: AttackLayer;
   AttackPropertyIdentifier?: AttackPropertyIdentifier;
@@ -754,6 +809,7 @@ export const DescribeProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeProtectionRequest",
 }) as any as S.Schema<DescribeProtectionRequest>;
+export type HealthCheckId = string;
 export type HealthCheckIds = string[];
 export const HealthCheckIds = /*@__PURE__*/ S.Array(S.String);
 export type ApplicationLayerAutomaticResponseStatus =
@@ -761,6 +817,7 @@ export type ApplicationLayerAutomaticResponseStatus =
   | "DISABLED"
   | (string & {});
 export const ApplicationLayerAutomaticResponseStatus = /*@__PURE__*/ S.String;
+
 export interface BlockAction {}
 export const BlockAction = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
   { identifier: "BlockAction" },
@@ -879,8 +936,10 @@ export const DescribeSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSubscriptionRequest",
 }) as any as S.Schema<DescribeSubscriptionRequest>;
+export type DurationInSeconds = number;
 export type AutoRenew = "ENABLED" | "DISABLED" | (string & {});
 export const AutoRenew = /*@__PURE__*/ S.String;
+
 export interface Limit {
   Type?: string;
   Max?: number;
@@ -896,6 +955,7 @@ export type ProactiveEngagementStatus =
   | "PENDING"
   | (string & {});
 export const ProactiveEngagementStatus = /*@__PURE__*/ S.String;
+
 export interface ProtectionLimits {
   ProtectedResourceTypeLimits: Limit[];
 }
@@ -1156,6 +1216,7 @@ export const GetSubscriptionStateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSubscriptionStateRequest>;
 export type SubscriptionState = "ACTIVE" | "INACTIVE" | (string & {});
 export const SubscriptionState = /*@__PURE__*/ S.String;
+
 export interface GetSubscriptionStateResponse {
   SubscriptionState: SubscriptionState;
 }
@@ -1166,6 +1227,8 @@ export const GetSubscriptionStateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSubscriptionStateResponse>;
 export type ResourceArnFilterList = string[];
 export const ResourceArnFilterList = /*@__PURE__*/ S.Array(S.String);
+export type Token = string;
+export type MaxResults = number;
 export interface ListAttacksRequest {
   ResourceArns?: string[];
   StartTime?: TimeRange;
@@ -1586,78 +1649,28 @@ export const UpdateSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSubscriptionResponse",
 }) as any as S.Schema<UpdateSubscriptionResponse>;
+export type ErrorMessage = string;
+export type ValidationExceptionReason =
+  | "FIELD_VALIDATION_FAILED"
+  | "OTHER"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedForDependencyException extends S.TaggedErrorClass<AccessDeniedForDependencyException>()(
-  "AccessDeniedForDependencyException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
-  "InternalErrorException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
-  "InvalidOperationException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  {
-    message: S.optional(S.String),
-    reason: S.optional(ValidationExceptionReason),
-    fields: S.optional(ValidationExceptionFieldList),
-  },
-) {}
-export class LimitsExceededException extends S.TaggedErrorClass<LimitsExceededException>()(
-  "LimitsExceededException",
-  {
-    message: S.optional(S.String),
-    Type: S.optional(S.String),
-    Limit: S.optional(S.Number),
-  },
-) {}
-export class NoAssociatedRoleException extends S.TaggedErrorClass<NoAssociatedRoleException>()(
-  "NoAssociatedRoleException",
-  { message: S.optional(S.String) },
-) {}
-export class OptimisticLockException extends S.TaggedErrorClass<OptimisticLockException>()(
-  "OptimisticLockException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String), resourceType: S.optional(S.String) },
-) {}
-export class InvalidResourceException extends S.TaggedErrorClass<InvalidResourceException>()(
-  "InvalidResourceException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { message: S.optional(S.String), resourceType: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class SubscriptionNotFound extends S.TaggedErrorClass<SubscriptionNotFound>()(
-  "SubscriptionNotFound",
-  { message: S.optional(S.String), resourceType: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ResourceNotFoundException",
-    message: "The subscription does not exist.",
-  }),
-).pipe(C.withNotFoundError) {}
-export class LockedSubscriptionException extends S.TaggedErrorClass<LockedSubscriptionException>()(
-  "LockedSubscriptionException",
-  { message: S.optional(S.String) },
-) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class InvalidPaginationTokenException extends S.TaggedErrorClass<InvalidPaginationTokenException>()(
-  "InvalidPaginationTokenException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
+export type LimitType = string;
+export type LimitNumber = number;
 export type AssociateDRTLogBucketError =
   | AccessDeniedForDependencyException
   | InternalErrorException
@@ -1695,6 +1708,7 @@ export const associateDRTLogBucket: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateDRTLogBucket",
 }));
+
 export type AssociateDRTRoleError =
   | AccessDeniedForDependencyException
   | InternalErrorException
@@ -1737,6 +1751,7 @@ export const associateDRTRole: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateDRTRole",
 }));
+
 export type AssociateHealthCheckError =
   | InternalErrorException
   | InvalidParameterException
@@ -1770,6 +1785,7 @@ export const associateHealthCheck: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateHealthCheck",
 }));
+
 export type AssociateProactiveEngagementDetailsError =
   | InternalErrorException
   | InvalidOperationException
@@ -1805,6 +1821,7 @@ export const associateProactiveEngagementDetails: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateProactiveEngagementDetails",
 }));
+
 export type CreateProtectionError =
   | InternalErrorException
   | InvalidOperationException
@@ -1848,6 +1865,7 @@ export const createProtection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProtection",
 }));
+
 export type CreateProtectionGroupError =
   | InternalErrorException
   | InvalidParameterException
@@ -1881,6 +1899,7 @@ export const createProtectionGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProtectionGroup",
 }));
+
 export type CreateSubscriptionError =
   | InternalErrorException
   | ResourceAlreadyExistsException
@@ -1906,6 +1925,7 @@ export const createSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSubscription",
 }));
+
 export type DeleteProtectionError =
   | InternalErrorException
   | OptimisticLockException
@@ -1933,6 +1953,7 @@ export const deleteProtection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProtection",
 }));
+
 export type DeleteProtectionGroupError =
   | InternalErrorException
   | OptimisticLockException
@@ -1960,6 +1981,7 @@ export const deleteProtectionGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProtectionGroup",
 }));
+
 export type DeleteSubscriptionError =
   | InternalErrorException
   | LockedSubscriptionException
@@ -1987,6 +2009,7 @@ export const deleteSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSubscription",
 }));
+
 export type DescribeAttackError =
   | AccessDeniedException
   | InternalErrorException
@@ -2007,6 +2030,7 @@ export const describeAttack: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAttack",
 }));
+
 export type DescribeAttackStatisticsError =
   | InternalErrorException
   | CommonErrors;
@@ -2030,6 +2054,7 @@ export const describeAttackStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAttackStatistics",
 }));
+
 export type DescribeDRTAccessError =
   | InternalErrorException
   | ResourceNotFoundException
@@ -2050,6 +2075,7 @@ export const describeDRTAccess: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDRTAccess",
 }));
+
 export type DescribeEmergencyContactSettingsError =
   | InternalErrorException
   | ResourceNotFoundException
@@ -2070,6 +2096,7 @@ export const describeEmergencyContactSettings: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEmergencyContactSettings",
 }));
+
 export type DescribeProtectionError =
   | InternalErrorException
   | InvalidParameterException
@@ -2097,6 +2124,7 @@ export const describeProtection: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeProtection",
 }));
+
 export type DescribeProtectionGroupError =
   | InternalErrorException
   | ResourceNotFoundException
@@ -2122,6 +2150,7 @@ export const describeProtectionGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeProtectionGroup",
 }));
+
 export type DescribeSubscriptionError =
   | InternalErrorException
   | ResourceNotFoundException
@@ -2147,6 +2176,7 @@ export const describeSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSubscription",
 }));
+
 export type DisableApplicationLayerAutomaticResponseError =
   | InternalErrorException
   | InvalidOperationException
@@ -2177,6 +2207,7 @@ export const disableApplicationLayerAutomaticResponse: API.OperationMethod<
   retry: Retry,
   operationName: "DisableApplicationLayerAutomaticResponse",
 }));
+
 export type DisableProactiveEngagementError =
   | InternalErrorException
   | InvalidOperationException
@@ -2206,6 +2237,7 @@ export const disableProactiveEngagement: API.OperationMethod<
   retry: Retry,
   operationName: "DisableProactiveEngagement",
 }));
+
 export type DisassociateDRTLogBucketError =
   | AccessDeniedForDependencyException
   | InternalErrorException
@@ -2237,6 +2269,7 @@ export const disassociateDRTLogBucket: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateDRTLogBucket",
 }));
+
 export type DisassociateDRTRoleError =
   | InternalErrorException
   | InvalidOperationException
@@ -2264,6 +2297,7 @@ export const disassociateDRTRole: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateDRTRole",
 }));
+
 export type DisassociateHealthCheckError =
   | InternalErrorException
   | InvalidParameterException
@@ -2295,6 +2329,7 @@ export const disassociateHealthCheck: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateHealthCheck",
 }));
+
 export type EnableApplicationLayerAutomaticResponseError =
   | InternalErrorException
   | InvalidOperationException
@@ -2340,6 +2375,7 @@ export const enableApplicationLayerAutomaticResponse: API.OperationMethod<
   retry: Retry,
   operationName: "EnableApplicationLayerAutomaticResponse",
 }));
+
 export type EnableProactiveEngagementError =
   | InternalErrorException
   | InvalidOperationException
@@ -2369,6 +2405,7 @@ export const enableProactiveEngagement: API.OperationMethod<
   retry: Retry,
   operationName: "EnableProactiveEngagement",
 }));
+
 export type GetSubscriptionStateError = InternalErrorException | CommonErrors;
 /**
  * Returns the `SubscriptionState`, either `Active` or `Inactive`.
@@ -2386,6 +2423,7 @@ export const getSubscriptionState: API.OperationMethod<
   retry: Retry,
   operationName: "GetSubscriptionState",
 }));
+
 export type ListAttacksError =
   | InternalErrorException
   | InvalidOperationException
@@ -2433,6 +2471,7 @@ export const listAttacks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProtectionGroupsError =
   | InternalErrorException
   | InvalidPaginationTokenException
@@ -2481,6 +2520,7 @@ export const listProtectionGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProtectionsError =
   | InternalErrorException
   | InvalidPaginationTokenException
@@ -2530,6 +2570,7 @@ export const listProtections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourcesInProtectionGroupError =
   | InternalErrorException
   | InvalidPaginationTokenException
@@ -2575,6 +2616,7 @@ export const listResourcesInProtectionGroup: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalErrorException
   | InvalidResourceException
@@ -2602,6 +2644,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError =
   | InternalErrorException
   | InvalidParameterException
@@ -2631,6 +2674,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalErrorException
   | InvalidParameterException
@@ -2660,6 +2704,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateApplicationLayerAutomaticResponseError =
   | InternalErrorException
   | InvalidOperationException
@@ -2689,6 +2734,7 @@ export const updateApplicationLayerAutomaticResponse: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApplicationLayerAutomaticResponse",
 }));
+
 export type UpdateEmergencyContactSettingsError =
   | InternalErrorException
   | InvalidParameterException
@@ -2716,6 +2762,7 @@ export const updateEmergencyContactSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEmergencyContactSettings",
 }));
+
 export type UpdateProtectionGroupError =
   | InternalErrorException
   | InvalidParameterException
@@ -2745,6 +2792,7 @@ export const updateProtectionGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProtectionGroup",
 }));
+
 export type UpdateSubscriptionError =
   | InternalErrorException
   | InvalidParameterException

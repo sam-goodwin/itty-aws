@@ -52,13 +52,32 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type Service = string;
-export type Region = string;
-export type NextToken = string;
-export type MaxResults = number;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+) {}
 export interface GetAccountCustomizationsInput {}
 export const GetAccountCustomizationsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -87,8 +106,11 @@ export type AccountColor =
   | "red"
   | (string & {});
 export const AccountColor = /*@__PURE__*/ S.String;
+
+export type Service = string;
 export type ServiceList = string[];
 export const ServiceList = /*@__PURE__*/ S.Array(S.String);
+export type Region = string;
 export type RegionsList = string[];
 export const RegionsList = /*@__PURE__*/ S.Array(S.String);
 export interface GetAccountCustomizationsOutput {
@@ -105,19 +127,8 @@ export const GetAccountCustomizationsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountCustomizationsOutput",
 }) as any as S.Schema<GetAccountCustomizationsOutput>;
-export interface ValidationExceptionField {
-  path: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ path: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListServicesInput {
   nextToken?: string;
   maxResults?: number;
@@ -188,29 +199,19 @@ export const UpdateAccountCustomizationsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateAccountCustomizationsOutput",
 }) as any as S.Schema<UpdateAccountCustomizationsOutput>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.String, fieldList: S.optional(ValidationExceptionFieldList) },
-) {}
-
-//# Operations
+export interface ValidationExceptionField {
+  path: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ path: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type GetAccountCustomizationsError =
   | AccessDeniedException
   | InternalServerException
@@ -240,6 +241,7 @@ export const getAccountCustomizations: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountCustomizations",
 }));
+
 export type ListServicesError =
   | AccessDeniedException
   | InternalServerException
@@ -289,6 +291,7 @@ export const listServices: API.OperationMethod<
     items: "services",
   } as const,
 }));
+
 export type UpdateAccountCustomizationsError =
   | AccessDeniedException
   | InternalServerException

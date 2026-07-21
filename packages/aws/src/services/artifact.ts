@@ -101,20 +101,63 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ValidationExceptionReason = string;
-export type MaxResultsAttribute = number;
-export type NextTokenAttribute = string;
-export type LongStringAttribute = string;
-export type CustomerAgreementIdAttribute = string;
-export type ShortStringAttribute = string;
-export type TimestampAttribute = Date;
-export type ReportId = string;
-export type VersionAttribute = number;
-export type SequenceNumberAttribute = number;
-export type StatusMessage = string;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    resourceId: S.String,
+    resourceType: S.String,
+    serviceCode: S.String,
+    quotaCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    serviceCode: S.optional(S.String),
+    quotaCode: S.optional(S.String),
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.String,
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export interface GetAccountSettingsRequest {}
 export const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -135,6 +178,7 @@ export type NotificationSubscriptionStatus =
   | "NOT_SUBSCRIBED"
   | (string & {});
 export const NotificationSubscriptionStatus = /*@__PURE__*/ S.String;
+
 export interface AccountSettings {
   notificationSubscriptionStatus?: NotificationSubscriptionStatus;
 }
@@ -153,28 +197,22 @@ export const GetAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountSettingsResponse",
 }) as any as S.Schema<GetAccountSettingsResponse>;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
+export type ReportId = string;
+export type VersionAttribute = number;
+export type ShortStringAttribute = string;
+export interface GetReportRequest {
+  reportId: string;
+  reportVersion?: number;
+  termToken: string;
 }
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
-export interface PutAccountSettingsRequest {
-  notificationSubscriptionStatus?: NotificationSubscriptionStatus;
-}
-export const PutAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    notificationSubscriptionStatus: S.optional(NotificationSubscriptionStatus),
+    reportId: S.String.pipe(T.HttpQuery("reportId")),
+    reportVersion: S.optional(S.Number).pipe(T.HttpQuery("reportVersion")),
+    termToken: S.String.pipe(T.HttpQuery("termToken")),
   }).pipe(
     T.all(
-      T.Http({ method: "PUT", uri: "/v1/account-settings/put" }),
+      T.Http({ method: "GET", uri: "/v1/report/get" }),
       svc,
       auth,
       proto,
@@ -183,101 +221,16 @@ export const PutAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "PutAccountSettingsRequest",
-}) as any as S.Schema<PutAccountSettingsRequest>;
-export interface PutAccountSettingsResponse {
-  accountSettings?: AccountSettings;
+  identifier: "GetReportRequest",
+}) as any as S.Schema<GetReportRequest>;
+export interface GetReportResponse {
+  documentPresignedUrl?: string;
 }
-export const PutAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accountSettings: S.optional(AccountSettings) }),
+export const GetReportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ documentPresignedUrl: S.optional(S.String) }),
 ).annotate({
-  identifier: "PutAccountSettingsResponse",
-}) as any as S.Schema<PutAccountSettingsResponse>;
-export interface ListCustomerAgreementsRequest {
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListCustomerAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/customer-agreement/list" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListCustomerAgreementsRequest",
-}) as any as S.Schema<ListCustomerAgreementsRequest>;
-export type CustomerAgreementState =
-  | "ACTIVE"
-  | "CUSTOMER_TERMINATED"
-  | "AWS_TERMINATED"
-  | (string & {});
-export const CustomerAgreementState = /*@__PURE__*/ S.String;
-export type AgreementTerms = string[];
-export const AgreementTerms = /*@__PURE__*/ S.Array(S.String);
-export type AgreementType = "CUSTOM" | "DEFAULT" | "MODIFIED" | (string & {});
-export const AgreementType = /*@__PURE__*/ S.String;
-export interface CustomerAgreementSummary {
-  name?: string;
-  arn?: string;
-  id?: string;
-  agreementArn?: string;
-  awsAccountId?: string;
-  organizationArn?: string;
-  effectiveStart?: Date;
-  effectiveEnd?: Date;
-  state?: CustomerAgreementState;
-  description?: string;
-  acceptanceTerms?: string[];
-  terminateTerms?: string[];
-  type?: AgreementType;
-}
-export const CustomerAgreementSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    arn: S.optional(S.String),
-    id: S.optional(S.String),
-    agreementArn: S.optional(S.String),
-    awsAccountId: S.optional(S.String),
-    organizationArn: S.optional(S.String),
-    effectiveStart: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    effectiveEnd: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    state: S.optional(CustomerAgreementState),
-    description: S.optional(S.String),
-    acceptanceTerms: S.optional(AgreementTerms),
-    terminateTerms: S.optional(AgreementTerms),
-    type: S.optional(AgreementType),
-  }),
-).annotate({
-  identifier: "CustomerAgreementSummary",
-}) as any as S.Schema<CustomerAgreementSummary>;
-export type CustomerAgreementList = CustomerAgreementSummary[];
-export const CustomerAgreementList = /*@__PURE__*/ S.Array(
-  CustomerAgreementSummary,
-);
-export interface ListCustomerAgreementsResponse {
-  customerAgreements: CustomerAgreementSummary[];
-  nextToken?: string;
-}
-export const ListCustomerAgreementsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAgreements: CustomerAgreementList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCustomerAgreementsResponse",
-}) as any as S.Schema<ListCustomerAgreementsResponse>;
+  identifier: "GetReportResponse",
+}) as any as S.Schema<GetReportResponse>;
 export interface GetReportMetadataRequest {
   reportId: string;
   reportVersion?: number;
@@ -299,10 +252,15 @@ export const GetReportMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetReportMetadataRequest",
 }) as any as S.Schema<GetReportMetadataRequest>;
+export type LongStringAttribute = string;
+export type TimestampAttribute = Date;
 export type PublishedState = "PUBLISHED" | "UNPUBLISHED" | (string & {});
 export const PublishedState = /*@__PURE__*/ S.String;
+
 export type AcceptanceType = "PASSTHROUGH" | "EXPLICIT" | (string & {});
 export const AcceptanceType = /*@__PURE__*/ S.String;
+
+export type SequenceNumberAttribute = number;
 export type UploadState =
   | "PROCESSING"
   | "COMPLETE"
@@ -310,6 +268,8 @@ export type UploadState =
   | "FAULT"
   | (string & {});
 export const UploadState = /*@__PURE__*/ S.String;
+
+export type StatusMessage = string;
 export interface ReportDetail {
   id?: string;
   name?: string;
@@ -374,6 +334,129 @@ export const GetReportMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetReportMetadataResponse",
 }) as any as S.Schema<GetReportMetadataResponse>;
+export interface GetTermForReportRequest {
+  reportId: string;
+  reportVersion?: number;
+}
+export const GetTermForReportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reportId: S.String.pipe(T.HttpQuery("reportId")),
+    reportVersion: S.optional(S.Number).pipe(T.HttpQuery("reportVersion")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/report/getTermForReport" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetTermForReportRequest",
+}) as any as S.Schema<GetTermForReportRequest>;
+export interface GetTermForReportResponse {
+  documentPresignedUrl?: string;
+  termToken?: string;
+}
+export const GetTermForReportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    documentPresignedUrl: S.optional(S.String),
+    termToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetTermForReportResponse",
+}) as any as S.Schema<GetTermForReportResponse>;
+export type MaxResultsAttribute = number;
+export type NextTokenAttribute = string;
+export interface ListCustomerAgreementsRequest {
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListCustomerAgreementsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/v1/customer-agreement/list" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListCustomerAgreementsRequest",
+}) as any as S.Schema<ListCustomerAgreementsRequest>;
+export type CustomerAgreementIdAttribute = string;
+export type CustomerAgreementState =
+  | "ACTIVE"
+  | "CUSTOMER_TERMINATED"
+  | "AWS_TERMINATED"
+  | (string & {});
+export const CustomerAgreementState = /*@__PURE__*/ S.String;
+
+export type AgreementTerms = string[];
+export const AgreementTerms = /*@__PURE__*/ S.Array(S.String);
+export type AgreementType = "CUSTOM" | "DEFAULT" | "MODIFIED" | (string & {});
+export const AgreementType = /*@__PURE__*/ S.String;
+
+export interface CustomerAgreementSummary {
+  name?: string;
+  arn?: string;
+  id?: string;
+  agreementArn?: string;
+  awsAccountId?: string;
+  organizationArn?: string;
+  effectiveStart?: Date;
+  effectiveEnd?: Date;
+  state?: CustomerAgreementState;
+  description?: string;
+  acceptanceTerms?: string[];
+  terminateTerms?: string[];
+  type?: AgreementType;
+}
+export const CustomerAgreementSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    arn: S.optional(S.String),
+    id: S.optional(S.String),
+    agreementArn: S.optional(S.String),
+    awsAccountId: S.optional(S.String),
+    organizationArn: S.optional(S.String),
+    effectiveStart: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    effectiveEnd: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    state: S.optional(CustomerAgreementState),
+    description: S.optional(S.String),
+    acceptanceTerms: S.optional(AgreementTerms),
+    terminateTerms: S.optional(AgreementTerms),
+    type: S.optional(AgreementType),
+  }),
+).annotate({
+  identifier: "CustomerAgreementSummary",
+}) as any as S.Schema<CustomerAgreementSummary>;
+export type CustomerAgreementList = CustomerAgreementSummary[];
+export const CustomerAgreementList = /*@__PURE__*/ S.Array(
+  CustomerAgreementSummary,
+);
+export interface ListCustomerAgreementsResponse {
+  customerAgreements: CustomerAgreementSummary[];
+  nextToken?: string;
+}
+export const ListCustomerAgreementsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerAgreements: CustomerAgreementList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCustomerAgreementsResponse",
+}) as any as S.Schema<ListCustomerAgreementsResponse>;
 export interface ListReportsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -449,70 +532,6 @@ export const ListReportsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListReportsResponse",
 }) as any as S.Schema<ListReportsResponse>;
-export interface GetReportRequest {
-  reportId: string;
-  reportVersion?: number;
-  termToken: string;
-}
-export const GetReportRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reportId: S.String.pipe(T.HttpQuery("reportId")),
-    reportVersion: S.optional(S.Number).pipe(T.HttpQuery("reportVersion")),
-    termToken: S.String.pipe(T.HttpQuery("termToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/report/get" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetReportRequest",
-}) as any as S.Schema<GetReportRequest>;
-export interface GetReportResponse {
-  documentPresignedUrl?: string;
-}
-export const GetReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ documentPresignedUrl: S.optional(S.String) }),
-).annotate({
-  identifier: "GetReportResponse",
-}) as any as S.Schema<GetReportResponse>;
-export interface GetTermForReportRequest {
-  reportId: string;
-  reportVersion?: number;
-}
-export const GetTermForReportRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reportId: S.String.pipe(T.HttpQuery("reportId")),
-    reportVersion: S.optional(S.Number).pipe(T.HttpQuery("reportVersion")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/v1/report/getTermForReport" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetTermForReportRequest",
-}) as any as S.Schema<GetTermForReportRequest>;
-export interface GetTermForReportResponse {
-  documentPresignedUrl?: string;
-  termToken?: string;
-}
-export const GetTermForReportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    documentPresignedUrl: S.optional(S.String),
-    termToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTermForReportResponse",
-}) as any as S.Schema<GetTermForReportResponse>;
 export interface ListReportVersionsRequest {
   reportId: string;
   maxResults?: number;
@@ -545,63 +564,47 @@ export const ListReportVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListReportVersionsResponse",
 }) as any as S.Schema<ListReportVersionsResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    resourceId: S.String,
-    resourceType: S.String,
-    serviceCode: S.String,
-    quotaCode: S.String,
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    serviceCode: S.optional(S.String),
-    quotaCode: S.optional(S.String),
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: S.String,
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export interface PutAccountSettingsRequest {
+  notificationSubscriptionStatus?: NotificationSubscriptionStatus;
+}
+export const PutAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    notificationSubscriptionStatus: S.optional(NotificationSubscriptionStatus),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/v1/account-settings/put" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutAccountSettingsRequest",
+}) as any as S.Schema<PutAccountSettingsRequest>;
+export interface PutAccountSettingsResponse {
+  accountSettings?: AccountSettings;
+}
+export const PutAccountSettingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ accountSettings: S.optional(AccountSettings) }),
+).annotate({
+  identifier: "PutAccountSettingsResponse",
+}) as any as S.Schema<PutAccountSettingsResponse>;
+export type ValidationExceptionReason = string;
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type GetAccountSettingsError =
   | AccessDeniedException
   | ConflictException
@@ -635,7 +638,8 @@ export const getAccountSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountSettings",
 }));
-export type PutAccountSettingsError =
+
+export type GetReportError =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
@@ -645,16 +649,16 @@ export type PutAccountSettingsError =
   | ValidationException
   | CommonErrors;
 /**
- * Put the account settings for Artifact.
+ * Get the content for a single report.
  */
-export const putAccountSettings: API.OperationMethod<
-  PutAccountSettingsRequest,
-  PutAccountSettingsResponse,
-  PutAccountSettingsError,
+export const getReport: API.OperationMethod<
+  GetReportRequest,
+  GetReportResponse,
+  GetReportError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAccountSettingsRequest,
-  output: PutAccountSettingsResponse,
+  input: GetReportRequest,
+  output: GetReportResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -666,8 +670,75 @@ export const putAccountSettings: API.OperationMethod<
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "PutAccountSettings",
+  operationName: "GetReport",
 }));
+
+export type GetReportMetadataError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get the metadata for a single report.
+ */
+export const getReportMetadata: API.OperationMethod<
+  GetReportMetadataRequest,
+  GetReportMetadataResponse,
+  GetReportMetadataError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetReportMetadataRequest,
+  output: GetReportMetadataResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetReportMetadata",
+}));
+
+export type GetTermForReportError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Get the Term content associated with a single report.
+ */
+export const getTermForReport: API.OperationMethod<
+  GetTermForReportRequest,
+  GetTermForReportResponse,
+  GetTermForReportError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetTermForReportRequest,
+  output: GetTermForReportResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetTermForReport",
+}));
+
 export type ListCustomerAgreementsError =
   | AccessDeniedException
   | InternalServerException
@@ -716,37 +787,7 @@ export const listCustomerAgreements: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type GetReportMetadataError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get the metadata for a single report.
- */
-export const getReportMetadata: API.OperationMethod<
-  GetReportMetadataRequest,
-  GetReportMetadataResponse,
-  GetReportMetadataError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetReportMetadataRequest,
-  output: GetReportMetadataResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetReportMetadata",
-}));
+
 export type ListReportsError =
   | AccessDeniedException
   | InternalServerException
@@ -799,72 +840,7 @@ export const listReports: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type GetReportError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get the content for a single report.
- */
-export const getReport: API.OperationMethod<
-  GetReportRequest,
-  GetReportResponse,
-  GetReportError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetReportRequest,
-  output: GetReportResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetReport",
-}));
-export type GetTermForReportError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Get the Term content associated with a single report.
- */
-export const getTermForReport: API.OperationMethod<
-  GetTermForReportRequest,
-  GetTermForReportResponse,
-  GetTermForReportError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetTermForReportRequest,
-  output: GetTermForReportResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetTermForReport",
-}));
+
 export type ListReportVersionsError =
   | AccessDeniedException
   | InternalServerException
@@ -916,4 +892,38 @@ export const listReportVersions: API.OperationMethod<
     items: "reports",
     pageSize: "maxResults",
   } as const,
+}));
+
+export type PutAccountSettingsError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Put the account settings for Artifact.
+ */
+export const putAccountSettings: API.OperationMethod<
+  PutAccountSettingsRequest,
+  PutAccountSettingsResponse,
+  PutAccountSettingsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutAccountSettingsRequest,
+  output: PutAccountSettingsResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutAccountSettings",
 }));

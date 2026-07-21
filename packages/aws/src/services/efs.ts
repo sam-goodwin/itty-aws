@@ -139,53 +139,177 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessPointAlreadyExists extends S.TaggedErrorClass<AccessPointAlreadyExists>()(
+  "AccessPointAlreadyExists",
+  {
+    ErrorCode: S.String,
+    Message: S.optional(S.String),
+    AccessPointId: S.String,
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class AccessPointLimitExceeded extends S.TaggedErrorClass<AccessPointLimitExceeded>()(
+  "AccessPointLimitExceeded",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError, C.withThrottlingError) {}
+export class AccessPointNotFound extends S.TaggedErrorClass<AccessPointNotFound>()(
+  "AccessPointNotFound",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class AvailabilityZonesMismatch extends S.TaggedErrorClass<AvailabilityZonesMismatch>()(
+  "AvailabilityZonesMismatch",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class BadRequest extends S.TaggedErrorClass<BadRequest>()(
+  "BadRequest",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class DependencyTimeout extends S.TaggedErrorClass<DependencyTimeout>()(
+  "DependencyTimeout",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(504),
+).pipe(C.withTimeoutError) {}
+export class FileSystemAlreadyExists extends S.TaggedErrorClass<FileSystemAlreadyExists>()(
+  "FileSystemAlreadyExists",
+  {
+    ErrorCode: S.String,
+    Message: S.optional(S.String),
+    FileSystemId: S.String,
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class FileSystemInUse extends S.TaggedErrorClass<FileSystemInUse>()(
+  "FileSystemInUse",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withDependencyViolationError) {}
+export class FileSystemLimitExceeded extends S.TaggedErrorClass<FileSystemLimitExceeded>()(
+  "FileSystemLimitExceeded",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError, C.withThrottlingError) {}
+export class FileSystemNotFound extends S.TaggedErrorClass<FileSystemNotFound>()(
+  "FileSystemNotFound",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class IncorrectFileSystemLifeCycleState extends S.TaggedErrorClass<IncorrectFileSystemLifeCycleState>()(
+  "IncorrectFileSystemLifeCycleState",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class IncorrectMountTargetState extends S.TaggedErrorClass<IncorrectMountTargetState>()(
+  "IncorrectMountTargetState",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InsufficientThroughputCapacity extends S.TaggedErrorClass<InsufficientThroughputCapacity>()(
+  "InsufficientThroughputCapacity",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidPolicyException extends S.TaggedErrorClass<InvalidPolicyException>()(
+  "InvalidPolicyException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class IpAddressInUse extends S.TaggedErrorClass<IpAddressInUse>()(
+  "IpAddressInUse",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withDependencyViolationError) {}
+export class MountTargetConflict extends S.TaggedErrorClass<MountTargetConflict>()(
+  "MountTargetConflict",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class MountTargetNotFound extends S.TaggedErrorClass<MountTargetNotFound>()(
+  "MountTargetNotFound",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NetworkInterfaceLimitExceeded extends S.TaggedErrorClass<NetworkInterfaceLimitExceeded>()(
+  "NetworkInterfaceLimitExceeded",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withThrottlingError) {}
+export class NoFreeAddressesInSubnet extends S.TaggedErrorClass<NoFreeAddressesInSubnet>()(
+  "NoFreeAddressesInSubnet",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class PolicyNotFound extends S.TaggedErrorClass<PolicyNotFound>()(
+  "PolicyNotFound",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ReplicationAlreadyExists extends S.TaggedErrorClass<ReplicationAlreadyExists>()(
+  "ReplicationAlreadyExists",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ReplicationNotFound extends S.TaggedErrorClass<ReplicationNotFound>()(
+  "ReplicationNotFound",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class SecurityGroupLimitExceeded extends S.TaggedErrorClass<SecurityGroupLimitExceeded>()(
+  "SecurityGroupLimitExceeded",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withThrottlingError) {}
+export class SecurityGroupNotFound extends S.TaggedErrorClass<SecurityGroupNotFound>()(
+  "SecurityGroupNotFound",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class SubnetNotFound extends S.TaggedErrorClass<SubnetNotFound>()(
+  "SubnetNotFound",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ThroughputLimitExceeded extends S.TaggedErrorClass<ThroughputLimitExceeded>()(
+  "ThroughputLimitExceeded",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withThrottlingError) {}
+export class TooManyRequests extends S.TaggedErrorClass<TooManyRequests>()(
+  "TooManyRequests",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnsupportedAvailabilityZone extends S.TaggedErrorClass<UnsupportedAvailabilityZone>()(
+  "UnsupportedAvailabilityZone",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { ErrorCode: S.String, Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ClientToken = string;
 export type TagKey = string;
 export type TagValue = string;
-export type FileSystemId = string;
-export type Uid = number;
-export type Gid = number;
-export type Path = string;
-export type OwnerUid = number;
-export type OwnerGid = number;
-export type Permissions = string;
-export type Name = string;
-export type AccessPointId = string;
-export type AccessPointArn = string;
-export type AwsAccountId = string;
-export type ErrorCode = string;
-export type ErrorMessage = string;
-export type CreationToken = string;
-export type Encrypted = boolean;
-export type KmsKeyId = string;
-export type ProvisionedThroughputInMibps = number;
-export type AvailabilityZoneName = string;
-export type Backup = boolean;
-export type FileSystemArn = string;
-export type MountTargetCount = number;
-export type FileSystemSizeValue = number;
-export type FileSystemNullableSizeValue = number;
-export type AvailabilityZoneId = string;
-export type SubnetId = string;
-export type IpAddress = string;
-export type Ipv6Address = string;
-export type SecurityGroup = string;
-export type MountTargetId = string;
-export type NetworkInterfaceId = string;
-export type VpcId = string;
-export type RegionName = string;
-export type RoleArn = string;
-export type StatusMessage = string;
-export type MaxResults = number;
-export type Token = string;
-export type Policy = string;
-export type MaxItems = number;
-export type Marker = string;
-export type ResourceId = string;
-export type BypassPolicyLockoutSafetyCheck = boolean;
-
-//# Schemas
 export interface Tag {
   Key: string;
   Value: string;
@@ -195,6 +319,9 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type Tags = Tag[];
 export const Tags = /*@__PURE__*/ S.Array(Tag);
+export type FileSystemId = string;
+export type Uid = number;
+export type Gid = number;
 export type SecondaryGids = number[];
 export const SecondaryGids = /*@__PURE__*/ S.Array(S.Number);
 export interface PosixUser {
@@ -209,6 +336,10 @@ export const PosixUser = /*@__PURE__*/ S.suspend(() =>
     SecondaryGids: S.optional(SecondaryGids),
   }),
 ).annotate({ identifier: "PosixUser" }) as any as S.Schema<PosixUser>;
+export type Path = string;
+export type OwnerUid = number;
+export type OwnerGid = number;
+export type Permissions = string;
 export interface CreationInfo {
   OwnerUid: number;
   OwnerGid: number;
@@ -254,6 +385,10 @@ export const CreateAccessPointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessPointRequest",
 }) as any as S.Schema<CreateAccessPointRequest>;
+export type Name = string;
+export type AccessPointId = string;
+export type AccessPointArn = string;
+export type AwsAccountId = string;
 export type LifeCycleState =
   | "creating"
   | "available"
@@ -263,6 +398,7 @@ export type LifeCycleState =
   | "error"
   | (string & {});
 export const LifeCycleState = /*@__PURE__*/ S.String;
+
 export interface AccessPointDescription {
   ClientToken?: string;
   Name?: string;
@@ -291,14 +427,22 @@ export const AccessPointDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AccessPointDescription",
 }) as any as S.Schema<AccessPointDescription>;
+export type CreationToken = string;
 export type PerformanceMode = "generalPurpose" | "maxIO" | (string & {});
 export const PerformanceMode = /*@__PURE__*/ S.String;
+
+export type Encrypted = boolean;
+export type KmsKeyId = string;
 export type ThroughputMode =
   | "bursting"
   | "provisioned"
   | "elastic"
   | (string & {});
 export const ThroughputMode = /*@__PURE__*/ S.String;
+
+export type ProvisionedThroughputInMibps = number;
+export type AvailabilityZoneName = string;
+export type Backup = boolean;
 export interface CreateFileSystemRequest {
   CreationToken: string;
   PerformanceMode?: PerformanceMode;
@@ -334,6 +478,10 @@ export const CreateFileSystemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFileSystemRequest",
 }) as any as S.Schema<CreateFileSystemRequest>;
+export type FileSystemArn = string;
+export type MountTargetCount = number;
+export type FileSystemSizeValue = number;
+export type FileSystemNullableSizeValue = number;
 export interface FileSystemSize {
   Value: number;
   Timestamp?: Date;
@@ -350,12 +498,14 @@ export const FileSystemSize = /*@__PURE__*/ S.suspend(() =>
     ValueInArchive: S.optional(S.Number),
   }),
 ).annotate({ identifier: "FileSystemSize" }) as any as S.Schema<FileSystemSize>;
+export type AvailabilityZoneId = string;
 export type ReplicationOverwriteProtection =
   | "ENABLED"
   | "DISABLED"
   | "REPLICATING"
   | (string & {});
 export const ReplicationOverwriteProtection = /*@__PURE__*/ S.String;
+
 export interface FileSystemProtectionDescription {
   ReplicationOverwriteProtection?: ReplicationOverwriteProtection;
 }
@@ -410,12 +560,17 @@ export const FileSystemDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FileSystemDescription",
 }) as any as S.Schema<FileSystemDescription>;
+export type SubnetId = string;
+export type IpAddress = string;
+export type Ipv6Address = string;
 export type IpAddressType =
   | "IPV4_ONLY"
   | "IPV6_ONLY"
   | "DUAL_STACK"
   | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
+
+export type SecurityGroup = string;
 export type SecurityGroups = string[];
 export const SecurityGroups = /*@__PURE__*/ S.Array(S.String);
 export interface CreateMountTargetRequest {
@@ -447,6 +602,9 @@ export const CreateMountTargetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMountTargetRequest",
 }) as any as S.Schema<CreateMountTargetRequest>;
+export type MountTargetId = string;
+export type NetworkInterfaceId = string;
+export type VpcId = string;
 export interface MountTargetDescription {
   OwnerId?: string;
   MountTargetId: string;
@@ -477,6 +635,8 @@ export const MountTargetDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MountTargetDescription",
 }) as any as S.Schema<MountTargetDescription>;
+export type RegionName = string;
+export type RoleArn = string;
 export interface DestinationToCreate {
   Region?: string;
   AvailabilityZoneName?: string;
@@ -531,6 +691,8 @@ export type ReplicationStatus =
   | "PAUSING"
   | (string & {});
 export const ReplicationStatus = /*@__PURE__*/ S.String;
+
+export type StatusMessage = string;
 export interface Destination {
   Status: ReplicationStatus;
   FileSystemId: string;
@@ -713,6 +875,7 @@ export type DeletionMode =
   | "LOCAL_CONFIGURATION_ONLY"
   | (string & {});
 export const DeletionMode = /*@__PURE__*/ S.String;
+
 export interface DeleteReplicationConfigurationRequest {
   SourceFileSystemId: string;
   DeletionMode?: DeletionMode;
@@ -773,6 +936,8 @@ export const DeleteTagsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteTagsResponse",
 }) as any as S.Schema<DeleteTagsResponse>;
+export type MaxResults = number;
+export type Token = string;
 export interface DescribeAccessPointsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -837,8 +1002,10 @@ export const DescribeAccountPreferencesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeAccountPreferencesRequest>;
 export type ResourceIdType = "LONG_ID" | "SHORT_ID" | (string & {});
 export const ResourceIdType = /*@__PURE__*/ S.String;
+
 export type Resource = "FILE_SYSTEM" | "MOUNT_TARGET" | (string & {});
 export const Resource = /*@__PURE__*/ S.String;
+
 export type Resources = Resource[];
 export const Resources = /*@__PURE__*/ S.Array(Resource);
 export interface ResourceIdPreference {
@@ -892,6 +1059,7 @@ export type Status =
   | "DISABLING"
   | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface BackupPolicy {
   Status: Status;
 }
@@ -926,6 +1094,7 @@ export const DescribeFileSystemPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFileSystemPolicyRequest",
 }) as any as S.Schema<DescribeFileSystemPolicyRequest>;
+export type Policy = string;
 export interface FileSystemPolicyDescription {
   FileSystemId?: string;
   Policy?: string;
@@ -938,6 +1107,8 @@ export const FileSystemPolicyDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FileSystemPolicyDescription",
 }) as any as S.Schema<FileSystemPolicyDescription>;
+export type MaxItems = number;
+export type Marker = string;
 export interface DescribeFileSystemsRequest {
   MaxItems?: number;
   Marker?: string;
@@ -1014,10 +1185,12 @@ export type TransitionToIARules =
   | "AFTER_365_DAYS"
   | (string & {});
 export const TransitionToIARules = /*@__PURE__*/ S.String;
+
 export type TransitionToPrimaryStorageClassRules =
   | "AFTER_1_ACCESS"
   | (string & {});
 export const TransitionToPrimaryStorageClassRules = /*@__PURE__*/ S.String;
+
 export type TransitionToArchiveRules =
   | "AFTER_1_DAY"
   | "AFTER_7_DAYS"
@@ -1030,6 +1203,7 @@ export type TransitionToArchiveRules =
   | "AFTER_365_DAYS"
   | (string & {});
 export const TransitionToArchiveRules = /*@__PURE__*/ S.String;
+
 export interface LifecyclePolicy {
   TransitionToIA?: TransitionToIARules;
   TransitionToPrimaryStorageClass?: TransitionToPrimaryStorageClassRules;
@@ -1215,6 +1389,7 @@ export const DescribeTagsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTagsResponse",
 }) as any as S.Schema<DescribeTagsResponse>;
+export type ResourceId = string;
 export interface ListTagsForResourceRequest {
   ResourceId: string;
   MaxResults?: number;
@@ -1327,6 +1502,7 @@ export const PutBackupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutBackupPolicyRequest",
 }) as any as S.Schema<PutBackupPolicyRequest>;
+export type BypassPolicyLockoutSafetyCheck = boolean;
 export interface PutFileSystemPolicyRequest {
   FileSystemId: string;
   Policy: string;
@@ -1481,178 +1657,8 @@ export const UpdateFileSystemProtectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateFileSystemProtectionRequest",
 }) as any as S.Schema<UpdateFileSystemProtectionRequest>;
-
-//# Errors
-export class AccessPointAlreadyExists extends S.TaggedErrorClass<AccessPointAlreadyExists>()(
-  "AccessPointAlreadyExists",
-  {
-    ErrorCode: S.String,
-    Message: S.optional(S.String),
-    AccessPointId: S.String,
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class AccessPointLimitExceeded extends S.TaggedErrorClass<AccessPointLimitExceeded>()(
-  "AccessPointLimitExceeded",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError, C.withThrottlingError) {}
-export class BadRequest extends S.TaggedErrorClass<BadRequest>()(
-  "BadRequest",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class FileSystemNotFound extends S.TaggedErrorClass<FileSystemNotFound>()(
-  "FileSystemNotFound",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class IncorrectFileSystemLifeCycleState extends S.TaggedErrorClass<IncorrectFileSystemLifeCycleState>()(
-  "IncorrectFileSystemLifeCycleState",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class FileSystemAlreadyExists extends S.TaggedErrorClass<FileSystemAlreadyExists>()(
-  "FileSystemAlreadyExists",
-  {
-    ErrorCode: S.String,
-    Message: S.optional(S.String),
-    FileSystemId: S.String,
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class FileSystemLimitExceeded extends S.TaggedErrorClass<FileSystemLimitExceeded>()(
-  "FileSystemLimitExceeded",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError, C.withThrottlingError) {}
-export class InsufficientThroughputCapacity extends S.TaggedErrorClass<InsufficientThroughputCapacity>()(
-  "InsufficientThroughputCapacity",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ThroughputLimitExceeded extends S.TaggedErrorClass<ThroughputLimitExceeded>()(
-  "ThroughputLimitExceeded",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withThrottlingError) {}
-export class UnsupportedAvailabilityZone extends S.TaggedErrorClass<UnsupportedAvailabilityZone>()(
-  "UnsupportedAvailabilityZone",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AvailabilityZonesMismatch extends S.TaggedErrorClass<AvailabilityZonesMismatch>()(
-  "AvailabilityZonesMismatch",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class IpAddressInUse extends S.TaggedErrorClass<IpAddressInUse>()(
-  "IpAddressInUse",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withDependencyViolationError) {}
-export class MountTargetConflict extends S.TaggedErrorClass<MountTargetConflict>()(
-  "MountTargetConflict",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class NetworkInterfaceLimitExceeded extends S.TaggedErrorClass<NetworkInterfaceLimitExceeded>()(
-  "NetworkInterfaceLimitExceeded",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withThrottlingError) {}
-export class NoFreeAddressesInSubnet extends S.TaggedErrorClass<NoFreeAddressesInSubnet>()(
-  "NoFreeAddressesInSubnet",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class SecurityGroupLimitExceeded extends S.TaggedErrorClass<SecurityGroupLimitExceeded>()(
-  "SecurityGroupLimitExceeded",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withThrottlingError) {}
-export class SecurityGroupNotFound extends S.TaggedErrorClass<SecurityGroupNotFound>()(
-  "SecurityGroupNotFound",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class SubnetNotFound extends S.TaggedErrorClass<SubnetNotFound>()(
-  "SubnetNotFound",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ReplicationNotFound extends S.TaggedErrorClass<ReplicationNotFound>()(
-  "ReplicationNotFound",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AccessPointNotFound extends S.TaggedErrorClass<AccessPointNotFound>()(
-  "AccessPointNotFound",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class FileSystemInUse extends S.TaggedErrorClass<FileSystemInUse>()(
-  "FileSystemInUse",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withDependencyViolationError) {}
-export class DependencyTimeout extends S.TaggedErrorClass<DependencyTimeout>()(
-  "DependencyTimeout",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(504),
-).pipe(C.withTimeoutError) {}
-export class MountTargetNotFound extends S.TaggedErrorClass<MountTargetNotFound>()(
-  "MountTargetNotFound",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class PolicyNotFound extends S.TaggedErrorClass<PolicyNotFound>()(
-  "PolicyNotFound",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class IncorrectMountTargetState extends S.TaggedErrorClass<IncorrectMountTargetState>()(
-  "IncorrectMountTargetState",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InvalidPolicyException extends S.TaggedErrorClass<InvalidPolicyException>()(
-  "InvalidPolicyException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequests extends S.TaggedErrorClass<TooManyRequests>()(
-  "TooManyRequests",
-  { ErrorCode: S.String, Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ReplicationAlreadyExists extends S.TaggedErrorClass<ReplicationAlreadyExists>()(
-  "ReplicationAlreadyExists",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-
-//# Operations
+export type ErrorCode = string;
+export type ErrorMessage = string;
 export type CreateAccessPointError =
   | AccessPointAlreadyExists
   | AccessPointLimitExceeded
@@ -1708,6 +1714,7 @@ export const createAccessPoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAccessPoint",
 }));
+
 export type CreateFileSystemError =
   | BadRequest
   | FileSystemAlreadyExists
@@ -1801,6 +1808,7 @@ export const createFileSystem: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFileSystem",
 }));
+
 export type CreateMountTargetError =
   | AvailabilityZonesMismatch
   | BadRequest
@@ -1957,6 +1965,7 @@ export const createMountTarget: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMountTarget",
 }));
+
 export type CreateReplicationConfigurationError =
   | BadRequest
   | ConflictException
@@ -2019,6 +2028,7 @@ export const createReplicationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReplicationConfiguration",
 }));
+
 export type CreateTagsError =
   | BadRequest
   | FileSystemNotFound
@@ -2049,6 +2059,7 @@ export const createTags: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTags",
 }));
+
 export type DeleteAccessPointError =
   | AccessPointNotFound
   | BadRequest
@@ -2074,6 +2085,7 @@ export const deleteAccessPoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccessPoint",
 }));
+
 export type DeleteFileSystemError =
   | BadRequest
   | FileSystemInUse
@@ -2121,6 +2133,7 @@ export const deleteFileSystem: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFileSystem",
 }));
+
 export type DeleteFileSystemPolicyError =
   | BadRequest
   | FileSystemNotFound
@@ -2152,6 +2165,7 @@ export const deleteFileSystemPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFileSystemPolicy",
 }));
+
 export type DeleteMountTargetError =
   | BadRequest
   | DependencyTimeout
@@ -2201,6 +2215,7 @@ export const deleteMountTarget: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMountTarget",
 }));
+
 export type DeleteReplicationConfigurationError =
   | BadRequest
   | FileSystemNotFound
@@ -2234,6 +2249,7 @@ export const deleteReplicationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReplicationConfiguration",
 }));
+
 export type DeleteTagsError =
   | BadRequest
   | FileSystemNotFound
@@ -2264,6 +2280,7 @@ export const deleteTags: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTags",
 }));
+
 export type DescribeAccessPointsError =
   | AccessPointNotFound
   | BadRequest
@@ -2318,6 +2335,7 @@ export const describeAccessPoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeAccountPreferencesError =
   | InternalServerError
   | CommonErrors;
@@ -2337,6 +2355,7 @@ export const describeAccountPreferences: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccountPreferences",
 }));
+
 export type DescribeBackupPolicyError =
   | BadRequest
   | FileSystemNotFound
@@ -2366,6 +2385,7 @@ export const describeBackupPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBackupPolicy",
 }));
+
 export type DescribeFileSystemPolicyError =
   | BadRequest
   | FileSystemNotFound
@@ -2391,6 +2411,7 @@ export const describeFileSystemPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFileSystemPolicy",
 }));
+
 export type DescribeFileSystemsError =
   | BadRequest
   | FileSystemNotFound
@@ -2456,6 +2477,7 @@ export const describeFileSystems: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type DescribeLifecycleConfigurationError =
   | BadRequest
   | FileSystemNotFound
@@ -2484,6 +2506,7 @@ export const describeLifecycleConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLifecycleConfiguration",
 }));
+
 export type DescribeMountTargetsError =
   | AccessPointNotFound
   | BadRequest
@@ -2541,6 +2564,7 @@ export const describeMountTargets: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type DescribeMountTargetSecurityGroupsError =
   | BadRequest
   | IncorrectMountTargetState
@@ -2578,6 +2602,7 @@ export const describeMountTargetSecurityGroups: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeMountTargetSecurityGroups",
 }));
+
 export type DescribeReplicationConfigurationsError =
   | BadRequest
   | FileSystemNotFound
@@ -2630,6 +2655,7 @@ export const describeReplicationConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTagsError =
   | BadRequest
   | FileSystemNotFound
@@ -2681,6 +2707,7 @@ export const describeTags: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessPointNotFound
   | BadRequest
@@ -2731,6 +2758,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ModifyMountTargetSecurityGroupsError =
   | BadRequest
   | IncorrectMountTargetState
@@ -2777,6 +2805,7 @@ export const modifyMountTargetSecurityGroups: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyMountTargetSecurityGroups",
 }));
+
 export type PutAccountPreferencesError =
   | BadRequest
   | InternalServerError
@@ -2805,6 +2834,7 @@ export const putAccountPreferences: API.OperationMethod<
   retry: Retry,
   operationName: "PutAccountPreferences",
 }));
+
 export type PutBackupPolicyError =
   | BadRequest
   | FileSystemNotFound
@@ -2834,6 +2864,7 @@ export const putBackupPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutBackupPolicy",
 }));
+
 export type PutFileSystemPolicyError =
   | BadRequest
   | FileSystemNotFound
@@ -2874,6 +2905,7 @@ export const putFileSystemPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutFileSystemPolicy",
 }));
+
 export type PutLifecycleConfigurationError =
   | BadRequest
   | FileSystemNotFound
@@ -2953,6 +2985,7 @@ export const putLifecycleConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutLifecycleConfiguration",
 }));
+
 export type TagResourceError =
   | AccessPointNotFound
   | BadRequest
@@ -2983,6 +3016,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessPointNotFound
   | BadRequest
@@ -3013,6 +3047,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateFileSystemError =
   | BadRequest
   | FileSystemNotFound
@@ -3047,6 +3082,7 @@ export const updateFileSystem: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFileSystem",
 }));
+
 export type UpdateFileSystemProtectionError =
   | BadRequest
   | FileSystemNotFound

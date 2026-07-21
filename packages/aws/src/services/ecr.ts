@@ -376,112 +376,204 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BlockedByOrganizationPolicyException extends S.TaggedErrorClass<BlockedByOrganizationPolicyException>()(
+  "BlockedByOrganizationPolicyException",
+  { message: S.optional(S.String) },
+) {}
+export class EmptyUploadException extends S.TaggedErrorClass<EmptyUploadException>()(
+  "EmptyUploadException",
+  { message: S.optional(S.String) },
+) {}
+export class ExclusionAlreadyExistsException extends S.TaggedErrorClass<ExclusionAlreadyExistsException>()(
+  "ExclusionAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class ExclusionNotFoundException extends S.TaggedErrorClass<ExclusionNotFoundException>()(
+  "ExclusionNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class ImageAlreadyExistsException extends S.TaggedErrorClass<ImageAlreadyExistsException>()(
+  "ImageAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class ImageArchivedException extends S.TaggedErrorClass<ImageArchivedException>()(
+  "ImageArchivedException",
+  { message: S.optional(S.String) },
+) {}
+export class ImageDigestDoesNotMatchException extends S.TaggedErrorClass<ImageDigestDoesNotMatchException>()(
+  "ImageDigestDoesNotMatchException",
+  { message: S.optional(S.String) },
+) {}
+export class ImageNotFoundException extends S.TaggedErrorClass<ImageNotFoundException>()(
+  "ImageNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class ImageStorageClassUpdateNotSupportedException extends S.TaggedErrorClass<ImageStorageClassUpdateNotSupportedException>()(
+  "ImageStorageClassUpdateNotSupportedException",
+  { message: S.optional(S.String) },
+) {}
+export class ImageTagAlreadyExistsException extends S.TaggedErrorClass<ImageTagAlreadyExistsException>()(
+  "ImageTagAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class InvalidLayerException extends S.TaggedErrorClass<InvalidLayerException>()(
+  "InvalidLayerException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidLayerPartException extends S.TaggedErrorClass<InvalidLayerPartException>()(
+  "InvalidLayerPartException",
+  {
+    registryId: S.optional(S.String),
+    repositoryName: S.optional(S.String),
+    uploadId: S.optional(S.String),
+    lastValidByteReceived: S.optional(S.Number),
+    message: S.optional(S.String),
+  },
+) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class InvalidTagParameterException extends S.TaggedErrorClass<InvalidTagParameterException>()(
+  "InvalidTagParameterException",
+  { message: S.optional(S.String) },
+) {}
+export class KmsException extends S.TaggedErrorClass<KmsException>()(
+  "KmsException",
+  { message: S.optional(S.String), kmsError: S.optional(S.String) },
+) {}
+export class LayerAlreadyExistsException extends S.TaggedErrorClass<LayerAlreadyExistsException>()(
+  "LayerAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class LayerInaccessibleException extends S.TaggedErrorClass<LayerInaccessibleException>()(
+  "LayerInaccessibleException",
+  { message: S.optional(S.String) },
+) {}
+export class LayerPartTooSmallException extends S.TaggedErrorClass<LayerPartTooSmallException>()(
+  "LayerPartTooSmallException",
+  { message: S.optional(S.String) },
+) {}
+export class LayersNotFoundException extends S.TaggedErrorClass<LayersNotFoundException>()(
+  "LayersNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class LifecyclePolicyNotFoundException extends S.TaggedErrorClass<LifecyclePolicyNotFoundException>()(
+  "LifecyclePolicyNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class LifecyclePolicyPreviewInProgressException extends S.TaggedErrorClass<LifecyclePolicyPreviewInProgressException>()(
+  "LifecyclePolicyPreviewInProgressException",
+  { message: S.optional(S.String) },
+) {}
+export class LifecyclePolicyPreviewNotFoundException extends S.TaggedErrorClass<LifecyclePolicyPreviewNotFoundException>()(
+  "LifecyclePolicyPreviewNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+).pipe(C.withQuotaError) {}
+export class PullThroughCacheRuleAlreadyExistsException extends S.TaggedErrorClass<PullThroughCacheRuleAlreadyExistsException>()(
+  "PullThroughCacheRuleAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class PullThroughCacheRuleNotFoundException extends S.TaggedErrorClass<PullThroughCacheRuleNotFoundException>()(
+  "PullThroughCacheRuleNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class ReferencedImagesNotFoundException extends S.TaggedErrorClass<ReferencedImagesNotFoundException>()(
+  "ReferencedImagesNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class RegistryPolicyNotFoundException extends S.TaggedErrorClass<RegistryPolicyNotFoundException>()(
+  "RegistryPolicyNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class RepositoryAlreadyExistsException extends S.TaggedErrorClass<RepositoryAlreadyExistsException>()(
+  "RepositoryAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class RepositoryNotEmptyException extends S.TaggedErrorClass<RepositoryNotEmptyException>()(
+  "RepositoryNotEmptyException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError, C.withDependencyViolationError) {}
+export class RepositoryNotFoundException extends S.TaggedErrorClass<RepositoryNotFoundException>()(
+  "RepositoryNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class RepositoryPolicyNotFoundException extends S.TaggedErrorClass<RepositoryPolicyNotFoundException>()(
+  "RepositoryPolicyNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class ScanNotFoundException extends S.TaggedErrorClass<ScanNotFoundException>()(
+  "ScanNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class SecretNotFoundException extends S.TaggedErrorClass<SecretNotFoundException>()(
+  "SecretNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class ServerException extends S.TaggedErrorClass<ServerException>()(
+  "ServerException",
+  { message: S.optional(S.String) },
+).pipe(C.withServerError, C.withRetryableError) {}
+export class SigningConfigurationNotFoundException extends S.TaggedErrorClass<SigningConfigurationNotFoundException>()(
+  "SigningConfigurationNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class TemplateAlreadyExistsException extends S.TaggedErrorClass<TemplateAlreadyExistsException>()(
+  "TemplateAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class TemplateNotFoundException extends S.TaggedErrorClass<TemplateNotFoundException>()(
+  "TemplateNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { message: S.optional(S.String) },
+).pipe(C.withQuotaError, C.withBadRequestError) {}
+export class UnableToAccessSecretException extends S.TaggedErrorClass<UnableToAccessSecretException>()(
+  "UnableToAccessSecretException",
+  { message: S.optional(S.String) },
+) {}
+export class UnableToDecryptSecretValueException extends S.TaggedErrorClass<UnableToDecryptSecretValueException>()(
+  "UnableToDecryptSecretValueException",
+  { message: S.optional(S.String) },
+) {}
+export class UnableToGetUpstreamImageException extends S.TaggedErrorClass<UnableToGetUpstreamImageException>()(
+  "UnableToGetUpstreamImageException",
+  { message: S.optional(S.String) },
+) {}
+export class UnableToGetUpstreamLayerException extends S.TaggedErrorClass<UnableToGetUpstreamLayerException>()(
+  "UnableToGetUpstreamLayerException",
+  { message: S.optional(S.String) },
+) {}
+export class UnableToListUpstreamImageReferrersException extends S.TaggedErrorClass<UnableToListUpstreamImageReferrersException>()(
+  "UnableToListUpstreamImageReferrersException",
+  { message: S.optional(S.String) },
+) {}
+export class UnsupportedImageTypeException extends S.TaggedErrorClass<UnsupportedImageTypeException>()(
+  "UnsupportedImageTypeException",
+  { message: S.optional(S.String) },
+) {}
+export class UnsupportedUpstreamRegistryException extends S.TaggedErrorClass<UnsupportedUpstreamRegistryException>()(
+  "UnsupportedUpstreamRegistryException",
+  { message: S.optional(S.String) },
+) {}
+export class UploadNotFoundException extends S.TaggedErrorClass<UploadNotFoundException>()(
+  "UploadNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type RegistryId = string;
 export type RepositoryName = string;
 export type BatchedOperationLayerDigest = string;
-export type LayerDigest = string;
-export type LayerSizeInBytes = number;
-export type MediaType = string;
-export type LayerFailureReason = string;
-export type ExceptionMessage = string;
-export type ImageDigest = string;
-export type ImageTag = string;
-export type ImageFailureReason = string;
-export type ImageManifest = string;
-export type Arn = string;
-export type ScanOnPushFlag = boolean;
-export type ScanningRepositoryFilterValue = string;
-export type ScanningConfigurationFailureReason = string;
-export type UploadId = string;
-export type KmsError = string;
-export type PullThroughCacheRuleRepositoryPrefix = string;
-export type Url = string;
-export type CredentialArn = string;
-export type CustomRoleArn = string;
-export type CreationTimestamp = Date;
-export type TagKey = string;
-export type TagValue = string;
-export type ImageTagMutabilityExclusionFilterValue = string;
-export type KmsKey = string;
-export type Prefix = string;
-export type RepositoryTemplateDescription = string;
-export type KmsKeyForRepositoryCreationTemplate = string;
-export type RepositoryPolicyText = string;
-export type LifecyclePolicyTextForRepositoryCreationTemplate = string;
-export type LifecyclePolicyText = string;
-export type EvaluationTimestamp = Date;
-export type RegistryPolicyText = string;
-export type ForceFlag = boolean;
-export type SigningProfileArn = string;
-export type SigningRepositoryFilterValue = string;
-export type PrincipalArn = string;
-export type Region = string;
-export type ReplicationError = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type ImageSizeInBytes = number;
-export type PushTimestamp = Date;
-export type ScanStatusDescription = string;
-export type ScanTimestamp = Date;
-export type VulnerabilitySourceUpdateTimestamp = Date;
-export type SeverityCount = number;
-export type RecordedPullTimestamp = Date;
-export type LastArchivedAtTimestamp = Date;
-export type LastActivatedAtTimestamp = Date;
-export type FindingName = string;
-export type FindingDescription = string;
-export type AttributeKey = string;
-export type AttributeValue = string;
-export type FindingArn = string;
-export type BaseScore = number;
-export type ScoringVector = string;
-export type Source = string;
-export type Version = string;
-export type RelatedVulnerability = string;
-export type Severity = string;
-export type VulnerabilityId = string;
-export type Arch = string;
-export type Epoch = number;
-export type FilePath = string;
-export type VulnerablePackageName = string;
-export type PackageManager = string;
-export type Release = string;
-export type SourceLayerHash = string;
-export type FixedInVersion = string;
-export type RecommendationText = string;
-export type Author = string;
-export type Platform = string;
-export type InUseCount = number;
-export type ResourceId = string;
-export type Type = string;
-export type Score = number;
-export type Metric = string;
-export type Reason = string;
-export type Status = string;
-export type Title = string;
-export type FixAvailable = string;
-export type ExploitAvailable = string;
-export type SigningStatusFailureCode = string;
-export type SigningStatusFailureReason = string;
-export type UpdatedTimestamp = Date;
-export type RepositoryFilterValue = string;
-export type AccountSettingName = string;
-export type Base64 = string;
-export type ExpirationTimestamp = Date;
-export type ProxyEndpoint = string;
-export type LifecyclePreviewMaxResults = number;
-export type LifecyclePolicyRulePriority = number;
-export type ImageCount = number;
-export type PartSize = number;
-export type ArtifactType = string;
-export type FiftyMaxResults = number;
-export type AccountSettingValue = string;
-export type LayerPartBlob = Uint8Array;
-export type IsPTCRuleValid = boolean;
-export type PTCValidateFailure = string;
-
-//# Schemas
 export type BatchedOperationLayerDigestList = string[];
 export const BatchedOperationLayerDigestList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchCheckLayerAvailabilityRequest {
@@ -508,12 +600,16 @@ export const BatchCheckLayerAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchCheckLayerAvailabilityRequest",
 }) as any as S.Schema<BatchCheckLayerAvailabilityRequest>;
+export type LayerDigest = string;
 export type LayerAvailability =
   | "AVAILABLE"
   | "UNAVAILABLE"
   | "ARCHIVED"
   | (string & {});
 export const LayerAvailability = /*@__PURE__*/ S.String;
+
+export type LayerSizeInBytes = number;
+export type MediaType = string;
 export interface Layer {
   layerDigest?: string;
   layerAvailability?: LayerAvailability;
@@ -535,6 +631,8 @@ export type LayerFailureCode =
   | "MissingLayerDigest"
   | (string & {});
 export const LayerFailureCode = /*@__PURE__*/ S.String;
+
+export type LayerFailureReason = string;
 export interface LayerFailure {
   layerDigest?: string;
   failureCode?: LayerFailureCode;
@@ -561,6 +659,8 @@ export const BatchCheckLayerAvailabilityResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchCheckLayerAvailabilityResponse",
 }) as any as S.Schema<BatchCheckLayerAvailabilityResponse>;
+export type ImageDigest = string;
+export type ImageTag = string;
 export interface ImageIdentifier {
   imageDigest?: string;
   imageTag?: string;
@@ -613,6 +713,8 @@ export type ImageFailureCode =
   | "ImageInaccessible"
   | (string & {});
 export const ImageFailureCode = /*@__PURE__*/ S.String;
+
+export type ImageFailureReason = string;
 export interface ImageFailure {
   imageId?: ImageIdentifier;
   failureCode?: ImageFailureCode;
@@ -667,6 +769,7 @@ export const BatchGetImageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetImageRequest",
 }) as any as S.Schema<BatchGetImageRequest>;
+export type ImageManifest = string;
 export interface Image {
   registryId?: string;
   repositoryName?: string;
@@ -720,14 +823,19 @@ export const BatchGetRepositoryScanningConfigurationRequest =
   ).annotate({
     identifier: "BatchGetRepositoryScanningConfigurationRequest",
   }) as any as S.Schema<BatchGetRepositoryScanningConfigurationRequest>;
+export type Arn = string;
+export type ScanOnPushFlag = boolean;
 export type ScanFrequency =
   | "SCAN_ON_PUSH"
   | "CONTINUOUS_SCAN"
   | "MANUAL"
   | (string & {});
 export const ScanFrequency = /*@__PURE__*/ S.String;
+
+export type ScanningRepositoryFilterValue = string;
 export type ScanningRepositoryFilterType = "WILDCARD" | (string & {});
 export const ScanningRepositoryFilterType = /*@__PURE__*/ S.String;
+
 export interface ScanningRepositoryFilter {
   filter: string;
   filterType: ScanningRepositoryFilterType;
@@ -768,6 +876,8 @@ export type ScanningConfigurationFailureCode =
   | "REPOSITORY_NOT_FOUND"
   | (string & {});
 export const ScanningConfigurationFailureCode = /*@__PURE__*/ S.String;
+
+export type ScanningConfigurationFailureReason = string;
 export interface RepositoryScanningConfigurationFailure {
   repositoryName?: string;
   failureCode?: ScanningConfigurationFailureCode;
@@ -801,6 +911,7 @@ export const BatchGetRepositoryScanningConfigurationResponse =
   ).annotate({
     identifier: "BatchGetRepositoryScanningConfigurationResponse",
   }) as any as S.Schema<BatchGetRepositoryScanningConfigurationResponse>;
+export type UploadId = string;
 export type LayerDigestList = string[];
 export const LayerDigestList = /*@__PURE__*/ S.Array(S.String);
 export interface CompleteLayerUploadRequest {
@@ -845,6 +956,8 @@ export const CompleteLayerUploadResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CompleteLayerUploadResponse",
 }) as any as S.Schema<CompleteLayerUploadResponse>;
+export type PullThroughCacheRuleRepositoryPrefix = string;
+export type Url = string;
 export type UpstreamRegistry =
   | "ecr"
   | "ecr-public"
@@ -857,6 +970,9 @@ export type UpstreamRegistry =
   | "chainguard"
   | (string & {});
 export const UpstreamRegistry = /*@__PURE__*/ S.String;
+
+export type CredentialArn = string;
+export type CustomRoleArn = string;
 export interface CreatePullThroughCacheRuleRequest {
   ecrRepositoryPrefix: string;
   upstreamRegistryUrl: string;
@@ -889,6 +1005,7 @@ export const CreatePullThroughCacheRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePullThroughCacheRuleRequest",
 }) as any as S.Schema<CreatePullThroughCacheRuleRequest>;
+export type CreationTimestamp = Date;
 export interface CreatePullThroughCacheRuleResponse {
   ecrRepositoryPrefix?: string;
   upstreamRegistryUrl?: string;
@@ -913,6 +1030,8 @@ export const CreatePullThroughCacheRuleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePullThroughCacheRuleResponse",
 }) as any as S.Schema<CreatePullThroughCacheRuleResponse>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -929,8 +1048,11 @@ export type ImageTagMutability =
   | "MUTABLE_WITH_EXCLUSION"
   | (string & {});
 export const ImageTagMutability = /*@__PURE__*/ S.String;
+
 export type ImageTagMutabilityExclusionFilterType = "WILDCARD" | (string & {});
 export const ImageTagMutabilityExclusionFilterType = /*@__PURE__*/ S.String;
+
+export type ImageTagMutabilityExclusionFilterValue = string;
 export interface ImageTagMutabilityExclusionFilter {
   filterType: ImageTagMutabilityExclusionFilterType;
   filter: string;
@@ -958,6 +1080,8 @@ export const ImageScanningConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageScanningConfiguration>;
 export type EncryptionType = "AES256" | "KMS" | "KMS_DSSE" | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
+
+export type KmsKey = string;
 export interface EncryptionConfiguration {
   encryptionType: EncryptionType;
   kmsKey?: string;
@@ -1035,6 +1159,9 @@ export const CreateRepositoryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRepositoryResponse",
 }) as any as S.Schema<CreateRepositoryResponse>;
+export type Prefix = string;
+export type RepositoryTemplateDescription = string;
+export type KmsKeyForRepositoryCreationTemplate = string;
 export interface EncryptionConfigurationForRepositoryCreationTemplate {
   encryptionType: EncryptionType;
   kmsKey?: string;
@@ -1045,12 +1172,15 @@ export const EncryptionConfigurationForRepositoryCreationTemplate =
   ).annotate({
     identifier: "EncryptionConfigurationForRepositoryCreationTemplate",
   }) as any as S.Schema<EncryptionConfigurationForRepositoryCreationTemplate>;
+export type RepositoryPolicyText = string;
+export type LifecyclePolicyTextForRepositoryCreationTemplate = string;
 export type RCTAppliedFor =
   | "REPLICATION"
   | "PULL_THROUGH_CACHE"
   | "CREATE_ON_PUSH"
   | (string & {});
 export const RCTAppliedFor = /*@__PURE__*/ S.String;
+
 export type RCTAppliedForList = RCTAppliedFor[];
 export const RCTAppliedForList = /*@__PURE__*/ S.Array(RCTAppliedFor);
 export interface CreateRepositoryCreationTemplateRequest {
@@ -1164,6 +1294,8 @@ export const DeleteLifecyclePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteLifecyclePolicyRequest",
 }) as any as S.Schema<DeleteLifecyclePolicyRequest>;
+export type LifecyclePolicyText = string;
+export type EvaluationTimestamp = Date;
 export interface DeleteLifecyclePolicyResponse {
   registryId?: string;
   repositoryName?: string;
@@ -1242,6 +1374,7 @@ export const DeleteRegistryPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteRegistryPolicyRequest",
 }) as any as S.Schema<DeleteRegistryPolicyRequest>;
+export type RegistryPolicyText = string;
 export interface DeleteRegistryPolicyResponse {
   registryId?: string;
   policyText?: string;
@@ -1254,6 +1387,7 @@ export const DeleteRegistryPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteRegistryPolicyResponse",
 }) as any as S.Schema<DeleteRegistryPolicyResponse>;
+export type ForceFlag = boolean;
 export interface DeleteRepositoryRequest {
   registryId?: string;
   repositoryName: string;
@@ -1367,8 +1501,11 @@ export const DeleteSigningConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSigningConfigurationRequest",
 }) as any as S.Schema<DeleteSigningConfigurationRequest>;
+export type SigningProfileArn = string;
+export type SigningRepositoryFilterValue = string;
 export type SigningRepositoryFilterType = "WILDCARD_MATCH" | (string & {});
 export const SigningRepositoryFilterType = /*@__PURE__*/ S.String;
+
 export interface SigningRepositoryFilter {
   filter: string;
   filterType: SigningRepositoryFilterType;
@@ -1414,6 +1551,7 @@ export const DeleteSigningConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSigningConfigurationResponse",
 }) as any as S.Schema<DeleteSigningConfigurationResponse>;
+export type PrincipalArn = string;
 export interface DeregisterPullTimeUpdateExclusionRequest {
   principalArn: string;
 }
@@ -1467,12 +1605,15 @@ export const DescribeImageReplicationStatusRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeImageReplicationStatusRequest",
 }) as any as S.Schema<DescribeImageReplicationStatusRequest>;
+export type Region = string;
 export type ReplicationStatus =
   | "IN_PROGRESS"
   | "COMPLETE"
   | "FAILED"
   | (string & {});
 export const ReplicationStatus = /*@__PURE__*/ S.String;
+
+export type ReplicationError = string;
 export interface ImageReplicationStatus {
   region?: string;
   registryId?: string;
@@ -1508,8 +1649,11 @@ export const DescribeImageReplicationStatusResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeImageReplicationStatusResponse",
 }) as any as S.Schema<DescribeImageReplicationStatusResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export type TagStatus = "TAGGED" | "UNTAGGED" | "ANY" | (string & {});
 export const TagStatus = /*@__PURE__*/ S.String;
+
 export type ImageStatusFilter =
   | "ACTIVE"
   | "ARCHIVED"
@@ -1517,6 +1661,7 @@ export type ImageStatusFilter =
   | "ANY"
   | (string & {});
 export const ImageStatusFilter = /*@__PURE__*/ S.String;
+
 export interface DescribeImagesFilter {
   tagStatus?: TagStatus;
   imageStatus?: ImageStatusFilter;
@@ -1561,6 +1706,8 @@ export const DescribeImagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeImagesRequest>;
 export type ImageTagList = string[];
 export const ImageTagList = /*@__PURE__*/ S.Array(S.String);
+export type ImageSizeInBytes = number;
+export type PushTimestamp = Date;
 export type ScanStatus =
   | "IN_PROGRESS"
   | "COMPLETE"
@@ -1574,6 +1721,8 @@ export type ScanStatus =
   | "IMAGE_ARCHIVED"
   | (string & {});
 export const ScanStatus = /*@__PURE__*/ S.String;
+
+export type ScanStatusDescription = string;
 export interface ImageScanStatus {
   status?: ScanStatus;
   description?: string;
@@ -1586,6 +1735,8 @@ export const ImageScanStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImageScanStatus",
 }) as any as S.Schema<ImageScanStatus>;
+export type ScanTimestamp = Date;
+export type VulnerabilitySourceUpdateTimestamp = Date;
 export type FindingSeverity =
   | "INFORMATIONAL"
   | "LOW"
@@ -1595,6 +1746,8 @@ export type FindingSeverity =
   | "UNDEFINED"
   | (string & {});
 export const FindingSeverity = /*@__PURE__*/ S.String;
+
+export type SeverityCount = number;
 export type FindingSeverityCounts = { [key in FindingSeverity]?: number };
 export const FindingSeverityCounts = /*@__PURE__*/ S.Record(
   FindingSeverity,
@@ -1618,8 +1771,12 @@ export const ImageScanFindingsSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImageScanFindingsSummary",
 }) as any as S.Schema<ImageScanFindingsSummary>;
+export type RecordedPullTimestamp = Date;
 export type ImageStatus = "ACTIVE" | "ARCHIVED" | "ACTIVATING" | (string & {});
 export const ImageStatus = /*@__PURE__*/ S.String;
+
+export type LastArchivedAtTimestamp = Date;
+export type LastActivatedAtTimestamp = Date;
 export interface ImageDetail {
   registryId?: string;
   repositoryName?: string;
@@ -1702,6 +1859,10 @@ export const DescribeImageScanFindingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeImageScanFindingsRequest",
 }) as any as S.Schema<DescribeImageScanFindingsRequest>;
+export type FindingName = string;
+export type FindingDescription = string;
+export type AttributeKey = string;
+export type AttributeValue = string;
 export interface Attribute {
   key: string;
   value?: string;
@@ -1731,6 +1892,11 @@ export const ImageScanFinding = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageScanFinding>;
 export type ImageScanFindingList = ImageScanFinding[];
 export const ImageScanFindingList = /*@__PURE__*/ S.Array(ImageScanFinding);
+export type FindingArn = string;
+export type BaseScore = number;
+export type ScoringVector = string;
+export type Source = string;
+export type Version = string;
 export interface CvssScore {
   baseScore?: number;
   scoringVector?: string;
@@ -1749,8 +1915,19 @@ export type CvssScoreList = CvssScore[];
 export const CvssScoreList = /*@__PURE__*/ S.Array(CvssScore);
 export type ReferenceUrlsList = string[];
 export const ReferenceUrlsList = /*@__PURE__*/ S.Array(S.String);
+export type RelatedVulnerability = string;
 export type RelatedVulnerabilitiesList = string[];
 export const RelatedVulnerabilitiesList = /*@__PURE__*/ S.Array(S.String);
+export type Severity = string;
+export type VulnerabilityId = string;
+export type Arch = string;
+export type Epoch = number;
+export type FilePath = string;
+export type VulnerablePackageName = string;
+export type PackageManager = string;
+export type Release = string;
+export type SourceLayerHash = string;
+export type FixedInVersion = string;
 export interface VulnerablePackage {
   arch?: string;
   epoch?: number;
@@ -1811,6 +1988,7 @@ export const PackageVulnerabilityDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PackageVulnerabilityDetails",
 }) as any as S.Schema<PackageVulnerabilityDetails>;
+export type RecommendationText = string;
 export interface Recommendation {
   url?: string;
   text?: string;
@@ -1824,8 +2002,11 @@ export interface Remediation {
 export const Remediation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ recommendation: S.optional(Recommendation) }),
 ).annotate({ identifier: "Remediation" }) as any as S.Schema<Remediation>;
+export type Author = string;
 export type ImageTagsList = string[];
 export const ImageTagsList = /*@__PURE__*/ S.Array(S.String);
+export type Platform = string;
+export type InUseCount = number;
 export interface AwsEcrContainerImageDetails {
   architecture?: string;
   author?: string;
@@ -1862,8 +2043,10 @@ export const ResourceDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResourceDetails",
 }) as any as S.Schema<ResourceDetails>;
+export type ResourceId = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export type Type = string;
 export interface Resource {
   details?: ResourceDetails;
   id?: string;
@@ -1880,6 +2063,9 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 export type ResourceList = Resource[];
 export const ResourceList = /*@__PURE__*/ S.Array(Resource);
+export type Score = number;
+export type Metric = string;
+export type Reason = string;
 export interface CvssScoreAdjustment {
   metric?: string;
   reason?: string;
@@ -1916,6 +2102,10 @@ export interface ScoreDetails {
 export const ScoreDetails = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ cvss: S.optional(CvssScoreDetails) }),
 ).annotate({ identifier: "ScoreDetails" }) as any as S.Schema<ScoreDetails>;
+export type Status = string;
+export type Title = string;
+export type FixAvailable = string;
+export type ExploitAvailable = string;
 export interface EnhancedImageScanFinding {
   awsAccountId?: string;
   description?: string;
@@ -2030,12 +2220,15 @@ export const DescribeImageSigningStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeImageSigningStatusRequest",
 }) as any as S.Schema<DescribeImageSigningStatusRequest>;
+export type SigningStatusFailureCode = string;
+export type SigningStatusFailureReason = string;
 export type SigningStatus =
   | "IN_PROGRESS"
   | "COMPLETE"
   | "FAILED"
   | (string & {});
 export const SigningStatus = /*@__PURE__*/ S.String;
+
 export interface ImageSigningStatus {
   signingProfileArn?: string;
   failureCode?: string;
@@ -2103,6 +2296,7 @@ export const DescribePullThroughCacheRulesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribePullThroughCacheRulesRequest",
 }) as any as S.Schema<DescribePullThroughCacheRulesRequest>;
+export type UpdatedTimestamp = Date;
 export interface PullThroughCacheRule {
   ecrRepositoryPrefix?: string;
   upstreamRegistryUrl?: string;
@@ -2174,8 +2368,10 @@ export type ReplicationDestinationList = ReplicationDestination[];
 export const ReplicationDestinationList = /*@__PURE__*/ S.Array(
   ReplicationDestination,
 );
+export type RepositoryFilterValue = string;
 export type RepositoryFilterType = "PREFIX_MATCH" | (string & {});
 export const RepositoryFilterType = /*@__PURE__*/ S.String;
+
 export interface RepositoryFilter {
   filter: string;
   filterType: RepositoryFilterType;
@@ -2309,6 +2505,7 @@ export const DescribeRepositoryCreationTemplatesResponse =
   ).annotate({
     identifier: "DescribeRepositoryCreationTemplatesResponse",
   }) as any as S.Schema<DescribeRepositoryCreationTemplatesResponse>;
+export type AccountSettingName = string;
 export interface GetAccountSettingRequest {
   name: string;
 }
@@ -2362,6 +2559,9 @@ export const GetAuthorizationTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAuthorizationTokenRequest",
 }) as any as S.Schema<GetAuthorizationTokenRequest>;
+export type Base64 = string;
+export type ExpirationTimestamp = Date;
+export type ProxyEndpoint = string;
 export interface AuthorizationData {
   authorizationToken?: string | redacted.Redacted<string>;
   expiresAt?: Date;
@@ -2459,6 +2659,7 @@ export const GetLifecyclePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLifecyclePolicyResponse",
 }) as any as S.Schema<GetLifecyclePolicyResponse>;
+export type LifecyclePreviewMaxResults = number;
 export interface LifecyclePolicyPreviewFilter {
   tagStatus?: TagStatus;
 }
@@ -2504,10 +2705,13 @@ export type LifecyclePolicyPreviewStatus =
   | "FAILED"
   | (string & {});
 export const LifecyclePolicyPreviewStatus = /*@__PURE__*/ S.String;
+
 export type ImageActionType = "EXPIRE" | "TRANSITION" | (string & {});
 export const ImageActionType = /*@__PURE__*/ S.String;
+
 export type LifecyclePolicyTargetStorageClass = "ARCHIVE" | (string & {});
 export const LifecyclePolicyTargetStorageClass = /*@__PURE__*/ S.String;
+
 export interface LifecyclePolicyRuleAction {
   type?: ImageActionType;
   targetStorageClass?: LifecyclePolicyTargetStorageClass;
@@ -2520,11 +2724,13 @@ export const LifecyclePolicyRuleAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LifecyclePolicyRuleAction",
 }) as any as S.Schema<LifecyclePolicyRuleAction>;
+export type LifecyclePolicyRulePriority = number;
 export type LifecyclePolicyStorageClass =
   | "ARCHIVE"
   | "STANDARD"
   | (string & {});
 export const LifecyclePolicyStorageClass = /*@__PURE__*/ S.String;
+
 export interface LifecyclePolicyPreviewResult {
   imageTags?: string[];
   imageDigest?: string;
@@ -2549,6 +2755,7 @@ export type LifecyclePolicyPreviewResultList = LifecyclePolicyPreviewResult[];
 export const LifecyclePolicyPreviewResultList = /*@__PURE__*/ S.Array(
   LifecyclePolicyPreviewResult,
 );
+export type ImageCount = number;
 export interface TransitioningImageTotalCount {
   targetStorageClass?: LifecyclePolicyTargetStorageClass;
   imageTotalCount?: number;
@@ -2646,6 +2853,7 @@ export const GetRegistryScanningConfigurationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetRegistryScanningConfigurationRequest>;
 export type ScanType = "BASIC" | "ENHANCED" | (string & {});
 export const ScanType = /*@__PURE__*/ S.String;
+
 export interface RegistryScanningRule {
   scanFrequency: ScanFrequency;
   repositoryFilters: ScanningRepositoryFilter[];
@@ -2766,6 +2974,7 @@ export const InitiateLayerUploadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InitiateLayerUploadRequest",
 }) as any as S.Schema<InitiateLayerUploadRequest>;
+export type PartSize = number;
 export interface InitiateLayerUploadResponse {
   uploadId?: string;
   partSize?: number;
@@ -2786,6 +2995,7 @@ export const SubjectIdentifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SubjectIdentifier",
 }) as any as S.Schema<SubjectIdentifier>;
+export type ArtifactType = string;
 export type ArtifactTypeList = string[];
 export const ArtifactTypeList = /*@__PURE__*/ S.Array(S.String);
 export type ArtifactStatusFilter =
@@ -2795,6 +3005,7 @@ export type ArtifactStatusFilter =
   | "ANY"
   | (string & {});
 export const ArtifactStatusFilter = /*@__PURE__*/ S.String;
+
 export interface ListImageReferrersFilter {
   artifactTypes?: string[];
   artifactStatus?: ArtifactStatusFilter;
@@ -2807,6 +3018,7 @@ export const ListImageReferrersFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListImageReferrersFilter",
 }) as any as S.Schema<ListImageReferrersFilter>;
+export type FiftyMaxResults = number;
 export interface ListImageReferrersRequest {
   registryId?: string;
   repositoryName: string;
@@ -2848,6 +3060,7 @@ export type ArtifactStatus =
   | "ACTIVATING"
   | (string & {});
 export const ArtifactStatus = /*@__PURE__*/ S.String;
+
 export interface ImageReferrer {
   digest: string;
   mediaType: string;
@@ -2995,6 +3208,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
+export type AccountSettingValue = string;
 export interface PutAccountSettingRequest {
   name: string;
   value: string;
@@ -3511,6 +3725,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceResponse>;
 export type TargetStorageClass = "STANDARD" | "ARCHIVE" | (string & {});
 export const TargetStorageClass = /*@__PURE__*/ S.String;
+
 export interface UpdateImageStorageClassRequest {
   registryId?: string;
   repositoryName: string;
@@ -3655,6 +3870,7 @@ export const UpdateRepositoryCreationTemplateResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateRepositoryCreationTemplateResponse",
 }) as any as S.Schema<UpdateRepositoryCreationTemplateResponse>;
+export type LayerPartBlob = Uint8Array;
 export interface UploadLayerPartRequest {
   registryId?: string;
   repositoryName: string;
@@ -3723,6 +3939,8 @@ export const ValidatePullThroughCacheRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ValidatePullThroughCacheRuleRequest",
 }) as any as S.Schema<ValidatePullThroughCacheRuleRequest>;
+export type IsPTCRuleValid = boolean;
+export type PTCValidateFailure = string;
 export interface ValidatePullThroughCacheRuleResponse {
   ecrRepositoryPrefix?: string;
   registryId?: string;
@@ -3748,205 +3966,8 @@ export const ValidatePullThroughCacheRuleResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ValidatePullThroughCacheRuleResponse",
 }) as any as S.Schema<ValidatePullThroughCacheRuleResponse>;
-
-//# Errors
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class RepositoryNotFoundException extends S.TaggedErrorClass<RepositoryNotFoundException>()(
-  "RepositoryNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
-export class ServerException extends S.TaggedErrorClass<ServerException>()(
-  "ServerException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError, C.withRetryableError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-).pipe(C.withQuotaError) {}
-export class UnableToGetUpstreamImageException extends S.TaggedErrorClass<UnableToGetUpstreamImageException>()(
-  "UnableToGetUpstreamImageException",
-  { message: S.optional(S.String) },
-) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class EmptyUploadException extends S.TaggedErrorClass<EmptyUploadException>()(
-  "EmptyUploadException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidLayerException extends S.TaggedErrorClass<InvalidLayerException>()(
-  "InvalidLayerException",
-  { message: S.optional(S.String) },
-) {}
-export class KmsException extends S.TaggedErrorClass<KmsException>()(
-  "KmsException",
-  { message: S.optional(S.String), kmsError: S.optional(S.String) },
-) {}
-export class LayerAlreadyExistsException extends S.TaggedErrorClass<LayerAlreadyExistsException>()(
-  "LayerAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class LayerPartTooSmallException extends S.TaggedErrorClass<LayerPartTooSmallException>()(
-  "LayerPartTooSmallException",
-  { message: S.optional(S.String) },
-) {}
-export class UploadNotFoundException extends S.TaggedErrorClass<UploadNotFoundException>()(
-  "UploadNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class PullThroughCacheRuleAlreadyExistsException extends S.TaggedErrorClass<PullThroughCacheRuleAlreadyExistsException>()(
-  "PullThroughCacheRuleAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class SecretNotFoundException extends S.TaggedErrorClass<SecretNotFoundException>()(
-  "SecretNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class UnableToAccessSecretException extends S.TaggedErrorClass<UnableToAccessSecretException>()(
-  "UnableToAccessSecretException",
-  { message: S.optional(S.String) },
-) {}
-export class UnableToDecryptSecretValueException extends S.TaggedErrorClass<UnableToDecryptSecretValueException>()(
-  "UnableToDecryptSecretValueException",
-  { message: S.optional(S.String) },
-) {}
-export class UnsupportedUpstreamRegistryException extends S.TaggedErrorClass<UnsupportedUpstreamRegistryException>()(
-  "UnsupportedUpstreamRegistryException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTagParameterException extends S.TaggedErrorClass<InvalidTagParameterException>()(
-  "InvalidTagParameterException",
-  { message: S.optional(S.String) },
-) {}
-export class RepositoryAlreadyExistsException extends S.TaggedErrorClass<RepositoryAlreadyExistsException>()(
-  "RepositoryAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String) },
-).pipe(C.withQuotaError, C.withBadRequestError) {}
-export class TemplateAlreadyExistsException extends S.TaggedErrorClass<TemplateAlreadyExistsException>()(
-  "TemplateAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class LifecyclePolicyNotFoundException extends S.TaggedErrorClass<LifecyclePolicyNotFoundException>()(
-  "LifecyclePolicyNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
-export class PullThroughCacheRuleNotFoundException extends S.TaggedErrorClass<PullThroughCacheRuleNotFoundException>()(
-  "PullThroughCacheRuleNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class RegistryPolicyNotFoundException extends S.TaggedErrorClass<RegistryPolicyNotFoundException>()(
-  "RegistryPolicyNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class RepositoryNotEmptyException extends S.TaggedErrorClass<RepositoryNotEmptyException>()(
-  "RepositoryNotEmptyException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withDependencyViolationError) {}
-export class TemplateNotFoundException extends S.TaggedErrorClass<TemplateNotFoundException>()(
-  "TemplateNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class RepositoryPolicyNotFoundException extends S.TaggedErrorClass<RepositoryPolicyNotFoundException>()(
-  "RepositoryPolicyNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
-export class SigningConfigurationNotFoundException extends S.TaggedErrorClass<SigningConfigurationNotFoundException>()(
-  "SigningConfigurationNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class ExclusionNotFoundException extends S.TaggedErrorClass<ExclusionNotFoundException>()(
-  "ExclusionNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class ImageNotFoundException extends S.TaggedErrorClass<ImageNotFoundException>()(
-  "ImageNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class ScanNotFoundException extends S.TaggedErrorClass<ScanNotFoundException>()(
-  "ScanNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class LayerInaccessibleException extends S.TaggedErrorClass<LayerInaccessibleException>()(
-  "LayerInaccessibleException",
-  { message: S.optional(S.String) },
-) {}
-export class LayersNotFoundException extends S.TaggedErrorClass<LayersNotFoundException>()(
-  "LayersNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class UnableToGetUpstreamLayerException extends S.TaggedErrorClass<UnableToGetUpstreamLayerException>()(
-  "UnableToGetUpstreamLayerException",
-  { message: S.optional(S.String) },
-) {}
-export class LifecyclePolicyPreviewNotFoundException extends S.TaggedErrorClass<LifecyclePolicyPreviewNotFoundException>()(
-  "LifecyclePolicyPreviewNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class UnableToListUpstreamImageReferrersException extends S.TaggedErrorClass<UnableToListUpstreamImageReferrersException>()(
-  "UnableToListUpstreamImageReferrersException",
-  { message: S.optional(S.String) },
-) {}
-export class ImageAlreadyExistsException extends S.TaggedErrorClass<ImageAlreadyExistsException>()(
-  "ImageAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class ImageDigestDoesNotMatchException extends S.TaggedErrorClass<ImageDigestDoesNotMatchException>()(
-  "ImageDigestDoesNotMatchException",
-  { message: S.optional(S.String) },
-) {}
-export class ImageTagAlreadyExistsException extends S.TaggedErrorClass<ImageTagAlreadyExistsException>()(
-  "ImageTagAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class ReferencedImagesNotFoundException extends S.TaggedErrorClass<ReferencedImagesNotFoundException>()(
-  "ReferencedImagesNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class BlockedByOrganizationPolicyException extends S.TaggedErrorClass<BlockedByOrganizationPolicyException>()(
-  "BlockedByOrganizationPolicyException",
-  { message: S.optional(S.String) },
-) {}
-export class ExclusionAlreadyExistsException extends S.TaggedErrorClass<ExclusionAlreadyExistsException>()(
-  "ExclusionAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class ImageArchivedException extends S.TaggedErrorClass<ImageArchivedException>()(
-  "ImageArchivedException",
-  { message: S.optional(S.String) },
-) {}
-export class UnsupportedImageTypeException extends S.TaggedErrorClass<UnsupportedImageTypeException>()(
-  "UnsupportedImageTypeException",
-  { message: S.optional(S.String) },
-) {}
-export class LifecyclePolicyPreviewInProgressException extends S.TaggedErrorClass<LifecyclePolicyPreviewInProgressException>()(
-  "LifecyclePolicyPreviewInProgressException",
-  { message: S.optional(S.String) },
-) {}
-export class ImageStorageClassUpdateNotSupportedException extends S.TaggedErrorClass<ImageStorageClassUpdateNotSupportedException>()(
-  "ImageStorageClassUpdateNotSupportedException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidLayerPartException extends S.TaggedErrorClass<InvalidLayerPartException>()(
-  "InvalidLayerPartException",
-  {
-    registryId: S.optional(S.String),
-    repositoryName: S.optional(S.String),
-    uploadId: S.optional(S.String),
-    lastValidByteReceived: S.optional(S.Number),
-    message: S.optional(S.String),
-  },
-) {}
-
-//# Operations
+export type ExceptionMessage = string;
+export type KmsError = string;
 export type BatchCheckLayerAvailabilityError =
   | InvalidParameterException
   | RepositoryNotFoundException
@@ -3979,6 +4000,7 @@ export const batchCheckLayerAvailability: API.OperationMethod<
   retry: Retry,
   operationName: "BatchCheckLayerAvailability",
 }));
+
 export type BatchDeleteImageError =
   | InvalidParameterException
   | RepositoryNotFoundException
@@ -4011,6 +4033,7 @@ export const batchDeleteImage: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteImage",
 }));
+
 export type BatchGetImageError =
   | InvalidParameterException
   | LimitExceededException
@@ -4044,6 +4067,7 @@ export const batchGetImage: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetImage",
 }));
+
 export type BatchGetRepositoryScanningConfigurationError =
   | InvalidParameterException
   | RepositoryNotFoundException
@@ -4071,6 +4095,7 @@ export const batchGetRepositoryScanningConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetRepositoryScanningConfiguration",
 }));
+
 export type CompleteLayerUploadError =
   | EmptyUploadException
   | InvalidLayerException
@@ -4116,6 +4141,7 @@ export const completeLayerUpload: API.OperationMethod<
   retry: Retry,
   operationName: "CompleteLayerUpload",
 }));
+
 export type CreatePullThroughCacheRuleError =
   | InvalidParameterException
   | LimitExceededException
@@ -4156,6 +4182,7 @@ export const createPullThroughCacheRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePullThroughCacheRule",
 }));
+
 export type CreateRepositoryError =
   | InvalidParameterException
   | InvalidTagParameterException
@@ -4190,6 +4217,7 @@ export const createRepository: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRepository",
 }));
+
 export type CreateRepositoryCreationTemplateError =
   | InvalidParameterException
   | LimitExceededException
@@ -4223,6 +4251,7 @@ export const createRepositoryCreationTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRepositoryCreationTemplate",
 }));
+
 export type DeleteLifecyclePolicyError =
   | InvalidParameterException
   | LifecyclePolicyNotFoundException
@@ -4252,6 +4281,7 @@ export const deleteLifecyclePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLifecyclePolicy",
 }));
+
 export type DeletePullThroughCacheRuleError =
   | InvalidParameterException
   | PullThroughCacheRuleNotFoundException
@@ -4279,6 +4309,7 @@ export const deletePullThroughCacheRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePullThroughCacheRule",
 }));
+
 export type DeleteRegistryPolicyError =
   | InvalidParameterException
   | RegistryPolicyNotFoundException
@@ -4306,6 +4337,7 @@ export const deleteRegistryPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRegistryPolicy",
 }));
+
 export type DeleteRepositoryError =
   | InvalidParameterException
   | KmsException
@@ -4337,6 +4369,7 @@ export const deleteRepository: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRepository",
 }));
+
 export type DeleteRepositoryCreationTemplateError =
   | InvalidParameterException
   | ServerException
@@ -4364,6 +4397,7 @@ export const deleteRepositoryCreationTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRepositoryCreationTemplate",
 }));
+
 export type DeleteRepositoryPolicyError =
   | InvalidParameterException
   | RepositoryNotFoundException
@@ -4391,6 +4425,7 @@ export const deleteRepositoryPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRepositoryPolicy",
 }));
+
 export type DeleteSigningConfigurationError =
   | ServerException
   | SigningConfigurationNotFoundException
@@ -4422,6 +4457,7 @@ export const deleteSigningConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSigningConfiguration",
 }));
+
 export type DeregisterPullTimeUpdateExclusionError =
   | ExclusionNotFoundException
   | InvalidParameterException
@@ -4451,6 +4487,7 @@ export const deregisterPullTimeUpdateExclusion: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterPullTimeUpdateExclusion",
 }));
+
 export type DescribeImageReplicationStatusError =
   | ImageNotFoundException
   | InvalidParameterException
@@ -4480,6 +4517,7 @@ export const describeImageReplicationStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeImageReplicationStatus",
 }));
+
 export type DescribeImagesError =
   | ImageNotFoundException
   | InvalidParameterException
@@ -4539,6 +4577,7 @@ export const describeImages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeImageScanFindingsError =
   | ImageNotFoundException
   | InvalidParameterException
@@ -4590,6 +4629,7 @@ export const describeImageScanFindings: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeImageSigningStatusError =
   | ImageNotFoundException
   | InvalidParameterException
@@ -4624,6 +4664,7 @@ export const describeImageSigningStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeImageSigningStatus",
 }));
+
 export type DescribePullThroughCacheRulesError =
   | InvalidParameterException
   | PullThroughCacheRuleNotFoundException
@@ -4672,6 +4713,7 @@ export const describePullThroughCacheRules: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeRegistryError =
   | InvalidParameterException
   | ServerException
@@ -4695,6 +4737,7 @@ export const describeRegistry: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRegistry",
 }));
+
 export type DescribeRepositoriesError =
   | InvalidParameterException
   | RepositoryNotFoundException
@@ -4741,6 +4784,7 @@ export const describeRepositories: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeRepositoryCreationTemplatesError =
   | InvalidParameterException
   | ServerException
@@ -4785,6 +4829,7 @@ export const describeRepositoryCreationTemplates: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetAccountSettingError =
   | InvalidParameterException
   | ServerException
@@ -4806,6 +4851,7 @@ export const getAccountSetting: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountSetting",
 }));
+
 export type GetAuthorizationTokenError =
   | InvalidParameterException
   | ServerException
@@ -4834,6 +4880,7 @@ export const getAuthorizationToken: API.OperationMethod<
   retry: Retry,
   operationName: "GetAuthorizationToken",
 }));
+
 export type GetDownloadUrlForLayerError =
   | InvalidParameterException
   | LayerInaccessibleException
@@ -4872,6 +4919,7 @@ export const getDownloadUrlForLayer: API.OperationMethod<
   retry: Retry,
   operationName: "GetDownloadUrlForLayer",
 }));
+
 export type GetLifecyclePolicyError =
   | InvalidParameterException
   | LifecyclePolicyNotFoundException
@@ -4901,6 +4949,7 @@ export const getLifecyclePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetLifecyclePolicy",
 }));
+
 export type GetLifecyclePolicyPreviewError =
   | InvalidParameterException
   | LifecyclePolicyPreviewNotFoundException
@@ -4952,6 +5001,7 @@ export const getLifecyclePolicyPreview: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetRegistryPolicyError =
   | InvalidParameterException
   | RegistryPolicyNotFoundException
@@ -4979,6 +5029,7 @@ export const getRegistryPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetRegistryPolicy",
 }));
+
 export type GetRegistryScanningConfigurationError =
   | InvalidParameterException
   | ServerException
@@ -5000,6 +5051,7 @@ export const getRegistryScanningConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetRegistryScanningConfiguration",
 }));
+
 export type GetRepositoryPolicyError =
   | InvalidParameterException
   | RepositoryNotFoundException
@@ -5027,6 +5079,7 @@ export const getRepositoryPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetRepositoryPolicy",
 }));
+
 export type GetSigningConfigurationError =
   | InvalidParameterException
   | ServerException
@@ -5058,6 +5111,7 @@ export const getSigningConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetSigningConfiguration",
 }));
+
 export type InitiateLayerUploadError =
   | InvalidParameterException
   | KmsException
@@ -5092,6 +5146,7 @@ export const initiateLayerUpload: API.OperationMethod<
   retry: Retry,
   operationName: "InitiateLayerUpload",
 }));
+
 export type ListImageReferrersError =
   | InvalidParameterException
   | RepositoryNotFoundException
@@ -5123,6 +5178,7 @@ export const listImageReferrers: API.OperationMethod<
   retry: Retry,
   operationName: "ListImageReferrers",
 }));
+
 export type ListImagesError =
   | InvalidParameterException
   | RepositoryNotFoundException
@@ -5176,6 +5232,7 @@ export const listImages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPullTimeUpdateExclusionsError =
   | InvalidParameterException
   | LimitExceededException
@@ -5203,6 +5260,7 @@ export const listPullTimeUpdateExclusions: API.OperationMethod<
   retry: Retry,
   operationName: "ListPullTimeUpdateExclusions",
 }));
+
 export type ListTagsForResourceError =
   | InvalidParameterException
   | RepositoryNotFoundException
@@ -5228,6 +5286,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutAccountSettingError =
   | InvalidParameterException
   | LimitExceededException
@@ -5255,6 +5314,7 @@ export const putAccountSetting: API.OperationMethod<
   retry: Retry,
   operationName: "PutAccountSetting",
 }));
+
 export type PutImageError =
   | ImageAlreadyExistsException
   | ImageDigestDoesNotMatchException
@@ -5301,6 +5361,7 @@ export const putImage: API.OperationMethod<
   retry: Retry,
   operationName: "PutImage",
 }));
+
 export type PutImageScanningConfigurationError =
   | InvalidParameterException
   | RepositoryNotFoundException
@@ -5332,6 +5393,7 @@ export const putImageScanningConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutImageScanningConfiguration",
 }));
+
 export type PutImageTagMutabilityError =
   | InvalidParameterException
   | RepositoryNotFoundException
@@ -5359,6 +5421,7 @@ export const putImageTagMutability: API.OperationMethod<
   retry: Retry,
   operationName: "PutImageTagMutability",
 }));
+
 export type PutLifecyclePolicyError =
   | InvalidParameterException
   | RepositoryNotFoundException
@@ -5388,6 +5451,7 @@ export const putLifecyclePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutLifecyclePolicy",
 }));
+
 export type PutRegistryPolicyError =
   | InvalidParameterException
   | ServerException
@@ -5412,6 +5476,7 @@ export const putRegistryPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutRegistryPolicy",
 }));
+
 export type PutRegistryScanningConfigurationError =
   | BlockedByOrganizationPolicyException
   | InvalidParameterException
@@ -5439,6 +5504,7 @@ export const putRegistryScanningConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutRegistryScanningConfiguration",
 }));
+
 export type PutReplicationConfigurationError =
   | InvalidParameterException
   | ServerException
@@ -5469,6 +5535,7 @@ export const putReplicationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutReplicationConfiguration",
 }));
+
 export type PutSigningConfigurationError =
   | InvalidParameterException
   | ServerException
@@ -5498,6 +5565,7 @@ export const putSigningConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutSigningConfiguration",
 }));
+
 export type RegisterPullTimeUpdateExclusionError =
   | ExclusionAlreadyExistsException
   | InvalidParameterException
@@ -5527,6 +5595,7 @@ export const registerPullTimeUpdateExclusion: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterPullTimeUpdateExclusion",
 }));
+
 export type SetRepositoryPolicyError =
   | InvalidParameterException
   | RepositoryNotFoundException
@@ -5554,6 +5623,7 @@ export const setRepositoryPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "SetRepositoryPolicy",
 }));
+
 export type StartImageScanError =
   | ImageArchivedException
   | ImageNotFoundException
@@ -5594,6 +5664,7 @@ export const startImageScan: API.OperationMethod<
   retry: Retry,
   operationName: "StartImageScan",
 }));
+
 export type StartLifecyclePolicyPreviewError =
   | InvalidParameterException
   | LifecyclePolicyNotFoundException
@@ -5626,6 +5697,7 @@ export const startLifecyclePolicyPreview: API.OperationMethod<
   retry: Retry,
   operationName: "StartLifecyclePolicyPreview",
 }));
+
 export type TagResourceError =
   | InvalidParameterException
   | InvalidTagParameterException
@@ -5656,6 +5728,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InvalidParameterException
   | InvalidTagParameterException
@@ -5685,6 +5758,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateImageStorageClassError =
   | ImageNotFoundException
   | ImageStorageClassUpdateNotSupportedException
@@ -5716,6 +5790,7 @@ export const updateImageStorageClass: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateImageStorageClass",
 }));
+
 export type UpdatePullThroughCacheRuleError =
   | InvalidParameterException
   | PullThroughCacheRuleNotFoundException
@@ -5749,6 +5824,7 @@ export const updatePullThroughCacheRule: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePullThroughCacheRule",
 }));
+
 export type UpdateRepositoryCreationTemplateError =
   | InvalidParameterException
   | ServerException
@@ -5776,6 +5852,7 @@ export const updateRepositoryCreationTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRepositoryCreationTemplate",
 }));
+
 export type UploadLayerPartError =
   | InvalidLayerPartException
   | InvalidParameterException
@@ -5816,6 +5893,7 @@ export const uploadLayerPart: API.OperationMethod<
   retry: Retry,
   operationName: "UploadLayerPart",
 }));
+
 export type ValidatePullThroughCacheRuleError =
   | InvalidParameterException
   | PullThroughCacheRuleNotFoundException

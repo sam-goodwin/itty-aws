@@ -87,39 +87,83 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class InvalidCampaignStateException extends S.TaggedErrorClass<InvalidCampaignStateException>()(
+  "InvalidCampaignStateException",
+  {
+    state: S.String,
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
+  "InvalidStateException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.all(T.HttpError(429), T.Retryable()),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type CampaignName = string;
 export type InstanceId = string;
 export type BandwidthAllocation = number;
 export type DialingCapacity = number;
-export type ContactFlowId = string;
-export type SourcePhoneNumber = string;
-export type QueueId = string;
-export type TagKey = string;
-export type TagValue = string;
-export type CampaignId = string;
-export type CampaignArn = string;
-export type XAmazonErrorType = string;
-export type CampaignState = string;
-export type GetCampaignStateBatchFailureCode = string;
-export type ServiceLinkedRoleArn = string;
-export type Enabled = boolean;
-export type EncryptionType = string;
-export type EncryptionKey = string;
-export type InstanceOnboardingJobStatusCode = string;
-export type InstanceOnboardingJobFailureCode = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type InstanceIdFilterOperator = string;
-export type Arn = string;
-export type ClientToken = string;
-export type DestinationPhoneNumber = string | redacted.Redacted<string>;
-export type AttributeName = string;
-export type AttributeValue = string;
-export type DialRequestId = string;
-export type FailureCode = string;
-
-//# Schemas
 export interface ProgressiveDialerConfig {
   bandwidthAllocation: number;
   dialingCapacity?: number;
@@ -173,6 +217,9 @@ export const DialerConfig = /*@__PURE__*/ S.Union([
   S.Struct({ predictiveDialerConfig: PredictiveDialerConfig }),
   S.Struct({ agentlessDialerConfig: AgentlessDialerConfig }),
 ]);
+export type ContactFlowId = string;
+export type SourcePhoneNumber = string;
+export type QueueId = string;
 export interface AnswerMachineDetectionConfig {
   enableAnswerMachineDetection: boolean;
   awaitAnswerMachinePrompt?: boolean;
@@ -201,6 +248,8 @@ export const OutboundCallConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OutboundCallConfig",
 }) as any as S.Schema<OutboundCallConfig>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -233,6 +282,8 @@ export const CreateCampaignRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCampaignRequest",
 }) as any as S.Schema<CreateCampaignRequest>;
+export type CampaignId = string;
+export type CampaignArn = string;
 export interface CreateCampaignResponse {
   id?: string;
   arn?: string;
@@ -388,6 +439,7 @@ export const GetCampaignStateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCampaignStateRequest",
 }) as any as S.Schema<GetCampaignStateRequest>;
+export type CampaignState = string;
 export interface GetCampaignStateResponse {
   state?: string;
 }
@@ -429,6 +481,7 @@ export type SuccessfulCampaignStateResponseList =
 export const SuccessfulCampaignStateResponseList = /*@__PURE__*/ S.Array(
   SuccessfulCampaignStateResponse,
 );
+export type GetCampaignStateBatchFailureCode = string;
 export interface FailedCampaignStateResponse {
   campaignId?: string;
   failureCode?: string;
@@ -479,6 +532,10 @@ export const GetConnectInstanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConnectInstanceConfigRequest",
 }) as any as S.Schema<GetConnectInstanceConfigRequest>;
+export type ServiceLinkedRoleArn = string;
+export type Enabled = boolean;
+export type EncryptionType = string;
+export type EncryptionKey = string;
 export interface EncryptionConfig {
   enabled: boolean;
   encryptionType?: string;
@@ -536,6 +593,8 @@ export const GetInstanceOnboardingJobStatusRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetInstanceOnboardingJobStatusRequest",
 }) as any as S.Schema<GetInstanceOnboardingJobStatusRequest>;
+export type InstanceOnboardingJobStatusCode = string;
+export type InstanceOnboardingJobFailureCode = string;
 export interface InstanceOnboardingJobStatus {
   connectInstanceId: string;
   status: string;
@@ -563,6 +622,9 @@ export const GetInstanceOnboardingJobStatusResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetInstanceOnboardingJobStatusResponse",
 }) as any as S.Schema<GetInstanceOnboardingJobStatusResponse>;
+export type MaxResults = number;
+export type NextToken = string;
+export type InstanceIdFilterOperator = string;
 export interface InstanceIdFilter {
   value: string;
   operator: string;
@@ -633,6 +695,7 @@ export const ListCampaignsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCampaignsResponse",
 }) as any as S.Schema<ListCampaignsResponse>;
+export type Arn = string;
 export interface ListTagsForResourceRequest {
   arn: string;
 }
@@ -681,6 +744,10 @@ export const PauseCampaignResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PauseCampaignResponse",
 }) as any as S.Schema<PauseCampaignResponse>;
+export type ClientToken = string;
+export type DestinationPhoneNumber = string | redacted.Redacted<string>;
+export type AttributeName = string;
+export type AttributeValue = string;
 export type Attributes = { [key: string]: string | undefined };
 export const Attributes = /*@__PURE__*/ S.Record(
   S.String,
@@ -723,6 +790,7 @@ export const PutDialRequestBatchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutDialRequestBatchRequest",
 }) as any as S.Schema<PutDialRequestBatchRequest>;
+export type DialRequestId = string;
 export interface SuccessfulRequest {
   clientToken?: string;
   id?: string;
@@ -734,6 +802,7 @@ export const SuccessfulRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SuccessfulRequest>;
 export type SuccessfulRequestList = SuccessfulRequest[];
 export const SuccessfulRequestList = /*@__PURE__*/ S.Array(SuccessfulRequest);
+export type FailureCode = string;
 export interface FailedRequest {
   clientToken?: string;
   id?: string;
@@ -999,83 +1068,7 @@ export const UpdateCampaignOutboundCallConfigResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateCampaignOutboundCallConfigResponse",
 }) as any as S.Schema<UpdateCampaignOutboundCallConfigResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.all(T.HttpError(429), T.Retryable()),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
-  "InvalidStateException",
-  {
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InvalidCampaignStateException extends S.TaggedErrorClass<InvalidCampaignStateException>()(
-  "InvalidCampaignStateException",
-  {
-    state: S.String,
-    message: S.String,
-    xAmzErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-
-//# Operations
+export type XAmazonErrorType = string;
 export type CreateCampaignError =
   | AccessDeniedException
   | ConflictException
@@ -1109,6 +1102,7 @@ export const createCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCampaign",
 }));
+
 export type DeleteCampaignError =
   | AccessDeniedException
   | InternalServerException
@@ -1136,6 +1130,7 @@ export const deleteCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCampaign",
 }));
+
 export type DeleteConnectInstanceConfigError =
   | AccessDeniedException
   | InternalServerException
@@ -1167,6 +1162,7 @@ export const deleteConnectInstanceConfig: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConnectInstanceConfig",
 }));
+
 export type DeleteInstanceOnboardingJobError =
   | AccessDeniedException
   | InternalServerException
@@ -1196,6 +1192,7 @@ export const deleteInstanceOnboardingJob: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInstanceOnboardingJob",
 }));
+
 export type DescribeCampaignError =
   | AccessDeniedException
   | InternalServerException
@@ -1223,6 +1220,7 @@ export const describeCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCampaign",
 }));
+
 export type GetCampaignStateError =
   | AccessDeniedException
   | InternalServerException
@@ -1252,6 +1250,7 @@ export const getCampaignState: API.OperationMethod<
   retry: Retry,
   operationName: "GetCampaignState",
 }));
+
 export type GetCampaignStateBatchError =
   | AccessDeniedException
   | InternalServerException
@@ -1279,6 +1278,7 @@ export const getCampaignStateBatch: API.OperationMethod<
   retry: Retry,
   operationName: "GetCampaignStateBatch",
 }));
+
 export type GetConnectInstanceConfigError =
   | AccessDeniedException
   | InternalServerException
@@ -1306,6 +1306,7 @@ export const getConnectInstanceConfig: API.OperationMethod<
   retry: Retry,
   operationName: "GetConnectInstanceConfig",
 }));
+
 export type GetInstanceOnboardingJobStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -1333,6 +1334,7 @@ export const getInstanceOnboardingJobStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetInstanceOnboardingJobStatus",
 }));
+
 export type ListCampaignsError =
   | AccessDeniedException
   | InternalServerException
@@ -1375,6 +1377,7 @@ export const listCampaigns: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1404,6 +1407,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PauseCampaignError =
   | AccessDeniedException
   | ConflictException
@@ -1437,6 +1441,7 @@ export const pauseCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "PauseCampaign",
 }));
+
 export type PutDialRequestBatchError =
   | AccessDeniedException
   | ConflictException
@@ -1470,6 +1475,7 @@ export const putDialRequestBatch: API.OperationMethod<
   retry: Retry,
   operationName: "PutDialRequestBatch",
 }));
+
 export type ResumeCampaignError =
   | AccessDeniedException
   | ConflictException
@@ -1503,6 +1509,7 @@ export const resumeCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "ResumeCampaign",
 }));
+
 export type StartCampaignError =
   | AccessDeniedException
   | ConflictException
@@ -1536,6 +1543,7 @@ export const startCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "StartCampaign",
 }));
+
 export type StartInstanceOnboardingJobError =
   | AccessDeniedException
   | ConflictException
@@ -1567,6 +1575,7 @@ export const startInstanceOnboardingJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartInstanceOnboardingJob",
 }));
+
 export type StopCampaignError =
   | AccessDeniedException
   | ConflictException
@@ -1600,6 +1609,7 @@ export const stopCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "StopCampaign",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1629,6 +1639,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1658,6 +1669,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateCampaignDialerConfigError =
   | AccessDeniedException
   | ConflictException
@@ -1687,6 +1699,7 @@ export const updateCampaignDialerConfig: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCampaignDialerConfig",
 }));
+
 export type UpdateCampaignNameError =
   | AccessDeniedException
   | ConflictException
@@ -1716,6 +1729,7 @@ export const updateCampaignName: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCampaignName",
 }));
+
 export type UpdateCampaignOutboundCallConfigError =
   | AccessDeniedException
   | ConflictException

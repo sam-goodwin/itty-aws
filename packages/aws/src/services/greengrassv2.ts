@@ -121,63 +121,72 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type RetryAfterSeconds = number;
-export type IoTThingName = string;
-export type NonEmptyString = string;
-export type RecipeBlob = Uint8Array;
-export type ComponentNameString = string;
-export type ComponentVersionString = string;
-export type TopicString = string;
-export type OptionalInteger = number;
-export type OptionalBoolean = boolean;
-export type LambdaExecArg = string;
-export type FileSystemPath = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ClientTokenString = string;
-export type ComponentVersionARN = string;
-export type TargetARN = string;
-export type DeploymentNameString = string;
-export type ComponentConfigurationString = string;
-export type ComponentConfigurationPath = string;
-export type Memory = number;
-export type CPU = number;
-export type IoTJobRolloutBaseRatePerMinute = number;
-export type IoTJobRolloutIncrementFactor = number;
-export type IoTJobNumberOfThings = number;
-export type IoTJobMaxExecutionsPerMin = number;
-export type IoTJobAbortThresholdPercentage = number;
-export type IoTJobMinimumNumberOfExecutedThings = number;
-export type IoTJobInProgressTimeoutInMinutes = number;
-export type ThingGroupARN = string;
-export type IoTJobARN = string;
-export type CoreDeviceThingName = string;
-export type PublisherString = string;
-export type DescriptionString = string;
-export type PortNumberInt = number;
-export type GGCVersion = string;
-export type CoreDevicePlatformString = string;
-export type CoreDeviceArchitectureString = string;
-export type CoreDeviceRuntimeString = string;
-export type NullableString = string;
-export type IsLatestForTarget = boolean;
-export type DefaultMaxResults = number;
-export type NextTokenString = string;
-export type ComponentARN = string;
-export type DeploymentID = string;
-export type DeploymentName = string;
-export type IoTJobId = string;
-export type Description = string;
-export type Reason = string;
-export type EffectiveDeploymentErrorCode = string;
-export type EffectiveDeploymentErrorType = string;
-export type LifecycleStateDetails = string;
-export type IsRoot = boolean;
-export type InstalledComponentLifecycleStatusCode = string;
-export type GenericV2ARN = string;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class RequestAlreadyInProgressException extends S.TaggedErrorClass<RequestAlreadyInProgressException>()(
+  "RequestAlreadyInProgressException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(S.String),
+    quotaCode: S.String,
+    serviceCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    quotaCode: S.optional(S.String),
+    serviceCode: S.optional(S.String),
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    fields: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export interface AssociateServiceRoleToAccountRequest {
   roleArn: string;
 }
@@ -209,26 +218,7 @@ export const AssociateServiceRoleToAccountResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociateServiceRoleToAccountResponse",
 }) as any as S.Schema<AssociateServiceRoleToAccountResponse>;
-export type ValidationExceptionReason =
-  | "UNKNOWN_OPERATION"
-  | "CANNOT_PARSE"
-  | "FIELD_VALIDATION_FAILED"
-  | "OTHER"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type IoTThingName = string;
 export interface AssociateClientDeviceWithCoreDeviceEntry {
   thingName: string;
 }
@@ -266,6 +256,7 @@ export const BatchAssociateClientDeviceWithCoreDeviceRequest =
   ).annotate({
     identifier: "BatchAssociateClientDeviceWithCoreDeviceRequest",
   }) as any as S.Schema<BatchAssociateClientDeviceWithCoreDeviceRequest>;
+export type NonEmptyString = string;
 export interface AssociateClientDeviceWithCoreDeviceErrorEntry {
   thingName?: string;
   code?: string;
@@ -390,6 +381,9 @@ export const CancelDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelDeploymentResponse",
 }) as any as S.Schema<CancelDeploymentResponse>;
+export type RecipeBlob = Uint8Array;
+export type ComponentNameString = string;
+export type ComponentVersionString = string;
 export type PlatformAttributesMap = { [key: string]: string | undefined };
 export const PlatformAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -411,6 +405,7 @@ export type ComponentPlatformList = ComponentPlatform[];
 export const ComponentPlatformList = /*@__PURE__*/ S.Array(ComponentPlatform);
 export type ComponentDependencyType = "HARD" | "SOFT" | (string & {});
 export const ComponentDependencyType = /*@__PURE__*/ S.String;
+
 export interface ComponentDependencyRequirement {
   versionRequirement?: string;
   dependencyType?: ComponentDependencyType;
@@ -430,8 +425,10 @@ export const ComponentDependencyMap = /*@__PURE__*/ S.Record(
   S.String,
   ComponentDependencyRequirement.pipe(S.optional),
 );
+export type TopicString = string;
 export type LambdaEventSourceType = "PUB_SUB" | "IOT_CORE" | (string & {});
 export const LambdaEventSourceType = /*@__PURE__*/ S.String;
+
 export interface LambdaEventSource {
   topic: string;
   type: LambdaEventSourceType;
@@ -443,8 +440,12 @@ export const LambdaEventSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LambdaEventSource>;
 export type LambdaEventSourceList = LambdaEventSource[];
 export const LambdaEventSourceList = /*@__PURE__*/ S.Array(LambdaEventSource);
+export type OptionalInteger = number;
+export type OptionalBoolean = boolean;
 export type LambdaInputPayloadEncodingType = "json" | "binary" | (string & {});
 export const LambdaInputPayloadEncodingType = /*@__PURE__*/ S.String;
+
+export type LambdaExecArg = string;
 export type LambdaExecArgsList = string[];
 export const LambdaExecArgsList = /*@__PURE__*/ S.Array(S.String);
 export type LambdaEnvironmentVariables = { [key: string]: string | undefined };
@@ -457,8 +458,11 @@ export type LambdaIsolationMode =
   | "NoContainer"
   | (string & {});
 export const LambdaIsolationMode = /*@__PURE__*/ S.String;
+
+export type FileSystemPath = string;
 export type LambdaFilesystemPermission = "ro" | "rw" | (string & {});
 export const LambdaFilesystemPermission = /*@__PURE__*/ S.String;
+
 export interface LambdaVolumeMount {
   sourcePath: string;
   destinationPath: string;
@@ -573,11 +577,14 @@ export const LambdaFunctionRecipeSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LambdaFunctionRecipeSource",
 }) as any as S.Schema<LambdaFunctionRecipeSource>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ClientTokenString = string;
 export interface CreateComponentVersionRequest {
   inlineRecipe?: Uint8Array;
   lambdaFunction?: LambdaFunctionRecipeSource;
@@ -603,6 +610,7 @@ export const CreateComponentVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateComponentVersionRequest",
 }) as any as S.Schema<CreateComponentVersionRequest>;
+export type ComponentVersionARN = string;
 export type CloudComponentState =
   | "REQUESTED"
   | "INITIATED"
@@ -611,6 +619,7 @@ export type CloudComponentState =
   | "DEPRECATED"
   | (string & {});
 export const CloudComponentState = /*@__PURE__*/ S.String;
+
 export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -622,6 +631,7 @@ export type VendorGuidance =
   | "DELETED"
   | (string & {});
 export const VendorGuidance = /*@__PURE__*/ S.String;
+
 export interface CloudComponentStatus {
   componentState?: CloudComponentState;
   message?: string;
@@ -658,6 +668,10 @@ export const CreateComponentVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateComponentVersionResponse",
 }) as any as S.Schema<CreateComponentVersionResponse>;
+export type TargetARN = string;
+export type DeploymentNameString = string;
+export type ComponentConfigurationString = string;
+export type ComponentConfigurationPath = string;
 export type ComponentConfigurationPathList = string[];
 export const ComponentConfigurationPathList = /*@__PURE__*/ S.Array(S.String);
 export interface ComponentConfigurationUpdate {
@@ -672,6 +686,8 @@ export const ComponentConfigurationUpdate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ComponentConfigurationUpdate",
 }) as any as S.Schema<ComponentConfigurationUpdate>;
+export type Memory = number;
+export type CPU = number;
 export interface SystemResourceLimits {
   memory?: number;
   cpus?: number;
@@ -716,6 +732,9 @@ export const ComponentDeploymentSpecifications = /*@__PURE__*/ S.Record(
   S.String,
   ComponentDeploymentSpecification.pipe(S.optional),
 );
+export type IoTJobRolloutBaseRatePerMinute = number;
+export type IoTJobRolloutIncrementFactor = number;
+export type IoTJobNumberOfThings = number;
 export interface IoTJobRateIncreaseCriteria {
   numberOfNotifiedThings?: number;
   numberOfSucceededThings?: number;
@@ -742,6 +761,7 @@ export const IoTJobExponentialRolloutRate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IoTJobExponentialRolloutRate",
 }) as any as S.Schema<IoTJobExponentialRolloutRate>;
+export type IoTJobMaxExecutionsPerMin = number;
 export interface IoTJobExecutionsRolloutConfig {
   exponentialRate?: IoTJobExponentialRolloutRate;
   maximumPerMinute?: number;
@@ -761,8 +781,12 @@ export type IoTJobExecutionFailureType =
   | "ALL"
   | (string & {});
 export const IoTJobExecutionFailureType = /*@__PURE__*/ S.String;
+
 export type IoTJobAbortAction = "CANCEL" | (string & {});
 export const IoTJobAbortAction = /*@__PURE__*/ S.String;
+
+export type IoTJobAbortThresholdPercentage = number;
+export type IoTJobMinimumNumberOfExecutedThings = number;
 export interface IoTJobAbortCriteria {
   failureType: IoTJobExecutionFailureType;
   action: IoTJobAbortAction;
@@ -790,6 +814,7 @@ export const IoTJobAbortConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IoTJobAbortConfig",
 }) as any as S.Schema<IoTJobAbortConfig>;
+export type IoTJobInProgressTimeoutInMinutes = number;
 export interface IoTJobTimeoutConfig {
   inProgressTimeoutInMinutes?: number;
 }
@@ -817,11 +842,13 @@ export type DeploymentFailureHandlingPolicy =
   | "DO_NOTHING"
   | (string & {});
 export const DeploymentFailureHandlingPolicy = /*@__PURE__*/ S.String;
+
 export type DeploymentComponentUpdatePolicyAction =
   | "NOTIFY_COMPONENTS"
   | "SKIP_NOTIFY_COMPONENTS"
   | (string & {});
 export const DeploymentComponentUpdatePolicyAction = /*@__PURE__*/ S.String;
+
 export interface DeploymentComponentUpdatePolicy {
   timeoutInSeconds?: number;
   action?: DeploymentComponentUpdatePolicyAction;
@@ -858,6 +885,7 @@ export const DeploymentPolicies = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeploymentPolicies",
 }) as any as S.Schema<DeploymentPolicies>;
+export type ThingGroupARN = string;
 export interface CreateDeploymentRequest {
   targetArn: string;
   deploymentName?: string;
@@ -891,6 +919,7 @@ export const CreateDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDeploymentRequest",
 }) as any as S.Schema<CreateDeploymentRequest>;
+export type IoTJobARN = string;
 export interface CreateDeploymentResponse {
   deploymentId?: string;
   iotJobId?: string;
@@ -928,6 +957,7 @@ export const DeleteComponentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteComponentResponse",
 }) as any as S.Schema<DeleteComponentResponse>;
+export type CoreDeviceThingName = string;
 export interface DeleteCoreDeviceRequest {
   coreDeviceThingName: string;
 }
@@ -1002,6 +1032,8 @@ export const DescribeComponentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeComponentRequest",
 }) as any as S.Schema<DescribeComponentRequest>;
+export type PublisherString = string;
+export type DescriptionString = string;
 export interface DescribeComponentResponse {
   arn?: string;
   componentName?: string;
@@ -1059,6 +1091,7 @@ export const DisassociateServiceRoleFromAccountResponse =
   }) as any as S.Schema<DisassociateServiceRoleFromAccountResponse>;
 export type RecipeOutputFormat = "JSON" | "YAML" | (string & {});
 export const RecipeOutputFormat = /*@__PURE__*/ S.String;
+
 export interface GetComponentRequest {
   recipeOutputFormat?: RecipeOutputFormat;
   arn: string;
@@ -1098,8 +1131,10 @@ export const GetComponentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetComponentResponse>;
 export type S3EndpointType = "REGIONAL" | "GLOBAL" | (string & {});
 export const S3EndpointType = /*@__PURE__*/ S.String;
+
 export type IotEndpointType = "fips" | "standard" | (string & {});
 export const IotEndpointType = /*@__PURE__*/ S.String;
+
 export interface GetComponentVersionArtifactRequest {
   arn: string;
   artifactName: string;
@@ -1160,6 +1195,7 @@ export const GetConnectivityInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConnectivityInfoRequest",
 }) as any as S.Schema<GetConnectivityInfoRequest>;
+export type PortNumberInt = number;
 export interface ConnectivityInfo {
   id?: string;
   hostAddress?: string;
@@ -1221,8 +1257,13 @@ export const GetCoreDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCoreDeviceRequest",
 }) as any as S.Schema<GetCoreDeviceRequest>;
+export type GGCVersion = string;
+export type CoreDevicePlatformString = string;
+export type CoreDeviceArchitectureString = string;
+export type CoreDeviceRuntimeString = string;
 export type CoreDeviceStatus = "HEALTHY" | "UNHEALTHY" | (string & {});
 export const CoreDeviceStatus = /*@__PURE__*/ S.String;
+
 export interface GetCoreDeviceResponse {
   coreDeviceThingName?: string;
   coreVersion?: string;
@@ -1269,6 +1310,7 @@ export const GetDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDeploymentRequest",
 }) as any as S.Schema<GetDeploymentRequest>;
+export type NullableString = string;
 export type DeploymentStatus =
   | "ACTIVE"
   | "COMPLETED"
@@ -1277,6 +1319,8 @@ export type DeploymentStatus =
   | "INACTIVE"
   | (string & {});
 export const DeploymentStatus = /*@__PURE__*/ S.String;
+
+export type IsLatestForTarget = boolean;
 export interface GetDeploymentResponse {
   targetArn?: string;
   revisionId?: string;
@@ -1342,6 +1386,8 @@ export const GetServiceRoleForAccountResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetServiceRoleForAccountResponse",
 }) as any as S.Schema<GetServiceRoleForAccountResponse>;
+export type DefaultMaxResults = number;
+export type NextTokenString = string;
 export interface ListClientDevicesAssociatedWithCoreDeviceRequest {
   coreDeviceThingName: string;
   maxResults?: number;
@@ -1402,6 +1448,7 @@ export const ListClientDevicesAssociatedWithCoreDeviceResponse =
   }) as any as S.Schema<ListClientDevicesAssociatedWithCoreDeviceResponse>;
 export type ComponentVisibilityScope = "PRIVATE" | "PUBLIC" | (string & {});
 export const ComponentVisibilityScope = /*@__PURE__*/ S.String;
+
 export interface ListComponentsRequest {
   scope?: ComponentVisibilityScope;
   maxResults?: number;
@@ -1425,6 +1472,7 @@ export const ListComponentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListComponentsRequest",
 }) as any as S.Schema<ListComponentsRequest>;
+export type ComponentARN = string;
 export interface ComponentLatestVersion {
   arn?: string;
   componentVersion?: string;
@@ -1592,6 +1640,7 @@ export const ListCoreDevicesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCoreDevicesResponse>;
 export type DeploymentHistoryFilter = "ALL" | "LATEST_ONLY" | (string & {});
 export const DeploymentHistoryFilter = /*@__PURE__*/ S.String;
+
 export interface ListDeploymentsRequest {
   targetArn?: string;
   historyFilter?: DeploymentHistoryFilter;
@@ -1685,6 +1734,10 @@ export const ListEffectiveDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEffectiveDeploymentsRequest",
 }) as any as S.Schema<ListEffectiveDeploymentsRequest>;
+export type DeploymentID = string;
+export type DeploymentName = string;
+export type IoTJobId = string;
+export type Description = string;
 export type EffectiveDeploymentExecutionStatus =
   | "IN_PROGRESS"
   | "QUEUED"
@@ -1696,8 +1749,12 @@ export type EffectiveDeploymentExecutionStatus =
   | "SUCCEEDED"
   | (string & {});
 export const EffectiveDeploymentExecutionStatus = /*@__PURE__*/ S.String;
+
+export type Reason = string;
+export type EffectiveDeploymentErrorCode = string;
 export type EffectiveDeploymentErrorStack = string[];
 export const EffectiveDeploymentErrorStack = /*@__PURE__*/ S.Array(S.String);
+export type EffectiveDeploymentErrorType = string;
 export type EffectiveDeploymentErrorTypeList = string[];
 export const EffectiveDeploymentErrorTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface EffectiveDeploymentStatusDetails {
@@ -1759,6 +1816,7 @@ export const ListEffectiveDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEffectiveDeploymentsResponse>;
 export type InstalledComponentTopologyFilter = "ALL" | "ROOT" | (string & {});
 export const InstalledComponentTopologyFilter = /*@__PURE__*/ S.String;
+
 export interface ListInstalledComponentsRequest {
   coreDeviceThingName: string;
   maxResults?: number;
@@ -1800,6 +1858,10 @@ export type InstalledComponentLifecycleState =
   | "FINISHED"
   | (string & {});
 export const InstalledComponentLifecycleState = /*@__PURE__*/ S.String;
+
+export type LifecycleStateDetails = string;
+export type IsRoot = boolean;
+export type InstalledComponentLifecycleStatusCode = string;
 export type InstalledComponentLifecycleStatusCodeList = string[];
 export const InstalledComponentLifecycleStatusCodeList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1848,6 +1910,7 @@ export const ListInstalledComponentsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInstalledComponentsResponse",
 }) as any as S.Schema<ListInstalledComponentsResponse>;
+export type GenericV2ARN = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -2053,68 +2116,28 @@ export const UpdateConnectivityInfoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateConnectivityInfoResponse",
 }) as any as S.Schema<UpdateConnectivityInfoResponse>;
+export type RetryAfterSeconds = number;
+export type ValidationExceptionReason =
+  | "UNKNOWN_OPERATION"
+  | "CANNOT_PARSE"
+  | "FIELD_VALIDATION_FAILED"
+  | "OTHER"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: S.optional(ValidationExceptionReason),
-    fields: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    quotaCode: S.optional(S.String),
-    serviceCode: S.optional(S.String),
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class RequestAlreadyInProgressException extends S.TaggedErrorClass<RequestAlreadyInProgressException>()(
-  "RequestAlreadyInProgressException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-    quotaCode: S.String,
-    serviceCode: S.String,
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type AssociateServiceRoleToAccountError =
   | InternalServerException
   | ValidationException
@@ -2139,6 +2162,7 @@ export const associateServiceRoleToAccount: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateServiceRoleToAccount",
 }));
+
 export type BatchAssociateClientDeviceWithCoreDeviceError =
   | AccessDeniedException
   | InternalServerException
@@ -2178,6 +2202,7 @@ export const batchAssociateClientDeviceWithCoreDevice: API.OperationMethod<
   retry: Retry,
   operationName: "BatchAssociateClientDeviceWithCoreDevice",
 }));
+
 export type BatchDisassociateClientDeviceFromCoreDeviceError =
   | AccessDeniedException
   | InternalServerException
@@ -2209,6 +2234,7 @@ export const batchDisassociateClientDeviceFromCoreDevice: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDisassociateClientDeviceFromCoreDevice",
 }));
+
 export type CancelDeploymentError =
   | AccessDeniedException
   | ConflictException
@@ -2242,6 +2268,7 @@ export const cancelDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "CancelDeployment",
 }));
+
 export type CreateComponentVersionError =
   | AccessDeniedException
   | ConflictException
@@ -2304,6 +2331,7 @@ export const createComponentVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateComponentVersion",
 }));
+
 export type CreateDeploymentError =
   | AccessDeniedException
   | ConflictException
@@ -2350,6 +2378,7 @@ export const createDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDeployment",
 }));
+
 export type DeleteComponentError =
   | AccessDeniedException
   | ConflictException
@@ -2386,6 +2415,7 @@ export const deleteComponent: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteComponent",
 }));
+
 export type DeleteCoreDeviceError =
   | AccessDeniedException
   | ConflictException
@@ -2420,6 +2450,7 @@ export const deleteCoreDevice: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCoreDevice",
 }));
+
 export type DeleteDeploymentError =
   | AccessDeniedException
   | ConflictException
@@ -2456,6 +2487,7 @@ export const deleteDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDeployment",
 }));
+
 export type DescribeComponentError =
   | AccessDeniedException
   | InternalServerException
@@ -2485,6 +2517,7 @@ export const describeComponent: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeComponent",
 }));
+
 export type DisassociateServiceRoleFromAccountError =
   | InternalServerException
   | CommonErrors;
@@ -2507,6 +2540,7 @@ export const disassociateServiceRoleFromAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateServiceRoleFromAccount",
 }));
+
 export type GetComponentError =
   | AccessDeniedException
   | InternalServerException
@@ -2536,6 +2570,7 @@ export const getComponent: API.OperationMethod<
   retry: Retry,
   operationName: "GetComponent",
 }));
+
 export type GetComponentVersionArtifactError =
   | AccessDeniedException
   | InternalServerException
@@ -2567,6 +2602,7 @@ export const getComponentVersionArtifact: API.OperationMethod<
   retry: Retry,
   operationName: "GetComponentVersionArtifact",
 }));
+
 export type GetConnectivityInfoError =
   | InternalServerException
   | ValidationException
@@ -2594,6 +2630,7 @@ export const getConnectivityInfo: API.OperationMethod<
   retry: Retry,
   operationName: "GetConnectivityInfo",
 }));
+
 export type GetCoreDeviceError =
   | AccessDeniedException
   | InternalServerException
@@ -2642,6 +2679,7 @@ export const getCoreDevice: API.OperationMethod<
   retry: Retry,
   operationName: "GetCoreDevice",
 }));
+
 export type GetDeploymentError =
   | AccessDeniedException
   | InternalServerException
@@ -2671,6 +2709,7 @@ export const getDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeployment",
 }));
+
 export type GetServiceRoleForAccountError =
   | InternalServerException
   | CommonErrors;
@@ -2693,6 +2732,7 @@ export const getServiceRoleForAccount: API.OperationMethod<
   retry: Retry,
   operationName: "GetServiceRoleForAccount",
 }));
+
 export type ListClientDevicesAssociatedWithCoreDeviceError =
   | AccessDeniedException
   | InternalServerException
@@ -2744,6 +2784,7 @@ export const listClientDevicesAssociatedWithCoreDevice: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListComponentsError =
   | AccessDeniedException
   | InternalServerException
@@ -2795,6 +2836,7 @@ export const listComponents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListComponentVersionsError =
   | AccessDeniedException
   | InternalServerException
@@ -2846,6 +2888,7 @@ export const listComponentVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListCoreDevicesError =
   | AccessDeniedException
   | InternalServerException
@@ -2918,6 +2961,7 @@ export const listCoreDevices: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDeploymentsError =
   | AccessDeniedException
   | InternalServerException
@@ -2966,6 +3010,7 @@ export const listDeployments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListEffectiveDeploymentsError =
   | AccessDeniedException
   | InternalServerException
@@ -3016,6 +3061,7 @@ export const listEffectiveDeployments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListInstalledComponentsError =
   | AccessDeniedException
   | InternalServerException
@@ -3088,6 +3134,7 @@ export const listInstalledComponents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3113,6 +3160,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ResolveComponentCandidatesError =
   | AccessDeniedException
   | ConflictException
@@ -3159,6 +3207,7 @@ export const resolveComponentCandidates: API.OperationMethod<
   retry: Retry,
   operationName: "ResolveComponentCandidates",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3185,6 +3234,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3210,6 +3260,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateConnectivityInfoError =
   | InternalServerException
   | ValidationException

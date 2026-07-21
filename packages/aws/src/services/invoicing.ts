@@ -66,34 +66,89 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String), resourceName: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvoicingAccessDenied", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    message: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(S.String),
+  },
+  T.all(
+    T.AwsQueryError({ code: "InvoicingConflict", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+    message: S.optional(S.String),
+  },
+  T.all(
+    T.AwsQueryError({ code: "InvoicingInternalServer", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String), resourceName: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvoicingResourceNotFound",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.String },
+  T.all(
+    T.AwsQueryError({
+      code: "InvoicingServiceQuotaExceeded",
+      httpResponseCode: 402,
+    }),
+    T.HttpError(402),
+  ),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvoicingThrottling", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.optional(S.String),
+    resourceName: S.optional(S.String),
+    reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.all(
+    T.AwsQueryError({ code: "InvoicingValidation", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type AccountIdString = string;
-export type BasicStringWithoutSpace = string;
-export type BasicString = string;
-export type SensitiveBasicStringWithoutSpace =
-  | string
-  | redacted.Redacted<string>;
-export type InvoiceUnitArnString = string;
-export type InvoiceUnitName = string;
-export type DescriptionString = string;
-export type TaxInheritanceDisabledFlag = boolean;
-export type ResourceTagKey = string;
-export type ResourceTagValue = string;
-export type EmailString = string;
-export type ProcurementPortalPreferenceArnString = string;
-export type StringWithoutNewLine = string;
-export type AsOfTimestamp = Date;
-export type LastModifiedTimestamp = Date;
-export type Month = number;
-export type Year = number;
-export type NextTokenString = string;
-export type InvoiceSummariesMaxResults = number;
-export type CurrencyCode = string;
-export type MaxResultsInteger = number;
-export type MaxResults = number;
-export type TagrisArn = string;
-
-//# Schemas
 export type AccountIdList = string[];
 export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetInvoiceProfileRequest {
@@ -106,6 +161,8 @@ export const BatchGetInvoiceProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetInvoiceProfileRequest",
 }) as any as S.Schema<BatchGetInvoiceProfileRequest>;
+export type BasicStringWithoutSpace = string;
+export type BasicString = string;
 export interface ReceiverAddress {
   AddressLine1?: string;
   AddressLine2?: string;
@@ -132,6 +189,9 @@ export const ReceiverAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReceiverAddress",
 }) as any as S.Schema<ReceiverAddress>;
+export type SensitiveBasicStringWithoutSpace =
+  | string
+  | redacted.Redacted<string>;
 export interface InvoiceProfile {
   AccountId?: string;
   ReceiverName?: string;
@@ -160,36 +220,9 @@ export const BatchGetInvoiceProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetInvoiceProfileResponse",
 }) as any as S.Schema<BatchGetInvoiceProfileResponse>;
-export type ValidationExceptionReason =
-  | "nonMemberPresent"
-  | "maxAccountsExceeded"
-  | "maxInvoiceUnitsExceeded"
-  | "duplicateInvoiceUnit"
-  | "mutualExclusionError"
-  | "accountMembershipError"
-  | "taxSettingsError"
-  | "expiredNextToken"
-  | "invalidNextToken"
-  | "invalidInput"
-  | "fieldValidationFailed"
-  | "cannotParse"
-  | "unknownOperation"
-  | "other"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type InvoiceUnitName = string;
+export type DescriptionString = string;
+export type TaxInheritanceDisabledFlag = boolean;
 export type RuleAccountIdList = string[];
 export const RuleAccountIdList = /*@__PURE__*/ S.Array(S.String);
 export interface InvoiceUnitRule {
@@ -204,6 +237,8 @@ export const InvoiceUnitRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvoiceUnitRule",
 }) as any as S.Schema<InvoiceUnitRule>;
+export type ResourceTagKey = string;
+export type ResourceTagValue = string;
 export interface ResourceTag {
   Key: string;
   Value: string;
@@ -237,6 +272,7 @@ export const CreateInvoiceUnitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInvoiceUnitRequest",
 }) as any as S.Schema<CreateInvoiceUnitRequest>;
+export type InvoiceUnitArnString = string;
 export interface CreateInvoiceUnitResponse {
   InvoiceUnitArn?: string;
 }
@@ -250,10 +286,13 @@ export type ProcurementPortalName =
   | "COUPA"
   | (string & {});
 export const ProcurementPortalName = /*@__PURE__*/ S.String;
+
 export type BuyerDomain = "NetworkID" | (string & {});
 export const BuyerDomain = /*@__PURE__*/ S.String;
+
 export type SupplierDomain = "NetworkID" | (string & {});
 export const SupplierDomain = /*@__PURE__*/ S.String;
+
 export type InvoiceUnitArns = string[];
 export const InvoiceUnitArns = /*@__PURE__*/ S.Array(S.String);
 export type SellerOfRecords = string[];
@@ -298,6 +337,7 @@ export type EinvoiceDeliveryDocumentType =
   | "AWS_REQUEST_FOR_PAYMENT"
   | (string & {});
 export const EinvoiceDeliveryDocumentType = /*@__PURE__*/ S.String;
+
 export type EinvoiceDeliveryDocumentTypes = EinvoiceDeliveryDocumentType[];
 export const EinvoiceDeliveryDocumentTypes = /*@__PURE__*/ S.Array(
   EinvoiceDeliveryDocumentType,
@@ -307,17 +347,20 @@ export type EinvoiceDeliveryAttachmentType =
   | "RFP_PDF"
   | (string & {});
 export const EinvoiceDeliveryAttachmentType = /*@__PURE__*/ S.String;
+
 export type EinvoiceDeliveryAttachmentTypes = EinvoiceDeliveryAttachmentType[];
 export const EinvoiceDeliveryAttachmentTypes = /*@__PURE__*/ S.Array(
   EinvoiceDeliveryAttachmentType,
 );
 export type Protocol = "CXML" | (string & {});
 export const Protocol = /*@__PURE__*/ S.String;
+
 export type PurchaseOrderDataSourceType =
   | "ASSOCIATED_PURCHASE_ORDER_REQUIRED"
   | "PURCHASE_ORDER_NOT_REQUIRED"
   | (string & {});
 export const PurchaseOrderDataSourceType = /*@__PURE__*/ S.String;
+
 export interface PurchaseOrderDataSource {
   EinvoiceDeliveryDocumentType?: EinvoiceDeliveryDocumentType;
   PurchaseOrderDataSourceType?: PurchaseOrderDataSourceType;
@@ -339,6 +382,7 @@ export type ConnectionTestingMethod =
   | "TEST_ENV_REPLAY_TEST"
   | (string & {});
 export const ConnectionTestingMethod = /*@__PURE__*/ S.String;
+
 export interface EinvoiceDeliveryPreference {
   EinvoiceDeliveryDocumentTypes: EinvoiceDeliveryDocumentType[];
   EinvoiceDeliveryAttachmentTypes?: EinvoiceDeliveryAttachmentType[];
@@ -363,6 +407,7 @@ export const EinvoiceDeliveryPreference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EinvoiceDeliveryPreference",
 }) as any as S.Schema<EinvoiceDeliveryPreference>;
+export type EmailString = string;
 export interface Contact {
   Name?: string;
   Email?: string;
@@ -413,6 +458,7 @@ export const CreateProcurementPortalPreferenceRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateProcurementPortalPreferenceRequest",
 }) as any as S.Schema<CreateProcurementPortalPreferenceRequest>;
+export type ProcurementPortalPreferenceArnString = string;
 export interface CreateProcurementPortalPreferenceResponse {
   ProcurementPortalPreferenceArn: string;
 }
@@ -468,6 +514,7 @@ export const DeleteProcurementPortalPreferenceResponse =
   ).annotate({
     identifier: "DeleteProcurementPortalPreferenceResponse",
   }) as any as S.Schema<DeleteProcurementPortalPreferenceResponse>;
+export type StringWithoutNewLine = string;
 export interface GetInvoicePDFRequest {
   InvoiceId: string;
 }
@@ -485,6 +532,7 @@ export type SupplementalDocumentType =
   | "SUPPLEMENT"
   | (string & {});
 export const SupplementalDocumentType = /*@__PURE__*/ S.String;
+
 export interface SupplementalDocument {
   DocumentType?: SupplementalDocumentType;
   DocumentId?: string;
@@ -530,6 +578,7 @@ export const GetInvoicePDFResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInvoicePDFResponse",
 }) as any as S.Schema<GetInvoicePDFResponse>;
+export type AsOfTimestamp = Date;
 export interface GetInvoiceUnitRequest {
   InvoiceUnitArn: string;
   AsOf?: Date;
@@ -544,6 +593,7 @@ export const GetInvoiceUnitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInvoiceUnitRequest",
 }) as any as S.Schema<GetInvoiceUnitRequest>;
+export type LastModifiedTimestamp = Date;
 export interface GetInvoiceUnitResponse {
   InvoiceUnitArn?: string;
   InvoiceReceiver?: string;
@@ -608,6 +658,7 @@ export type ProcurementPortalPreferenceStatus =
   | "SUSPENDED"
   | (string & {});
 export const ProcurementPortalPreferenceStatus = /*@__PURE__*/ S.String;
+
 export interface ProcurementPortalPreference {
   AwsAccountId: string;
   ProcurementPortalPreferenceArn: string;
@@ -679,6 +730,7 @@ export type ListInvoiceSummariesResourceType =
   | "INVOICE_ID"
   | (string & {});
 export const ListInvoiceSummariesResourceType = /*@__PURE__*/ S.String;
+
 export interface InvoiceSummariesSelector {
   ResourceType: ListInvoiceSummariesResourceType;
   Value: string;
@@ -698,6 +750,8 @@ export const DateInterval = /*@__PURE__*/ S.suspend(() =>
     EndDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
   }),
 ).annotate({ identifier: "DateInterval" }) as any as S.Schema<DateInterval>;
+export type Month = number;
+export type Year = number;
 export interface BillingPeriod {
   Month: number;
   Year: number;
@@ -707,6 +761,7 @@ export const BillingPeriod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BillingPeriod" }) as any as S.Schema<BillingPeriod>;
 export type ReceiverRole = "SELLER" | "RESELLER" | "BUYER" | (string & {});
 export const ReceiverRole = /*@__PURE__*/ S.String;
+
 export interface InvoiceSummariesFilter {
   TimeInterval?: DateInterval;
   BillingPeriod?: BillingPeriod;
@@ -723,6 +778,8 @@ export const InvoiceSummariesFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvoiceSummariesFilter",
 }) as any as S.Schema<InvoiceSummariesFilter>;
+export type NextTokenString = string;
+export type InvoiceSummariesMaxResults = number;
 export interface ListInvoiceSummariesRequest {
   Selector: InvoiceSummariesSelector;
   Filter?: InvoiceSummariesFilter;
@@ -745,6 +802,7 @@ export type BillSourceAccountList = string[];
 export const BillSourceAccountList = /*@__PURE__*/ S.Array(S.String);
 export type BillingEntity = "AWS" | "AWS_MARKETPLACE" | (string & {});
 export const BillingEntity = /*@__PURE__*/ S.String;
+
 export interface Entity {
   InvoicingEntity?: string;
   BillingEntity?: BillingEntity;
@@ -757,21 +815,27 @@ export const Entity = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Entity" }) as any as S.Schema<Entity>;
 export type InvoiceFrequency = "ONE_TIME" | "RECURRING" | (string & {});
 export const InvoiceFrequency = /*@__PURE__*/ S.String;
+
 export type BillType = "ANNIVERSARY" | "PURCHASE" | "REFUND" | (string & {});
 export const BillType = /*@__PURE__*/ S.String;
+
 export type InvoiceType =
   | "INVOICE"
   | "CREDIT_MEMO"
   | "PAYMENT_RECEIPT"
   | (string & {});
 export const InvoiceType = /*@__PURE__*/ S.String;
+
 export type EinvoiceDeliveryStatus =
   | "DELIVERED"
   | "NOT_DELIVERED"
   | (string & {});
 export const EinvoiceDeliveryStatus = /*@__PURE__*/ S.String;
+
 export type TaxAuthorityStatus = "ISSUED" | "CANCELLED" | (string & {});
 export const TaxAuthorityStatus = /*@__PURE__*/ S.String;
+
+export type CurrencyCode = string;
 export interface DiscountsBreakdownAmount {
   Description?: string;
   Amount?: string;
@@ -980,6 +1044,7 @@ export const Filters = /*@__PURE__*/ S.suspend(() =>
     BillSourceAccounts: S.optional(AccountIdList),
   }),
 ).annotate({ identifier: "Filters" }) as any as S.Schema<Filters>;
+export type MaxResultsInteger = number;
 export interface ListInvoiceUnitsRequest {
   Filters?: Filters;
   NextToken?: string;
@@ -1032,6 +1097,7 @@ export const ListInvoiceUnitsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInvoiceUnitsResponse",
 }) as any as S.Schema<ListInvoiceUnitsResponse>;
+export type MaxResults = number;
 export interface ListProcurementPortalPreferencesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -1113,6 +1179,7 @@ export const ListProcurementPortalPreferencesResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListProcurementPortalPreferencesResponse",
 }) as any as S.Schema<ListProcurementPortalPreferencesResponse>;
+export type TagrisArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -1270,84 +1337,37 @@ export const UpdateProcurementPortalPreferenceStatusResponse =
   ).annotate({
     identifier: "UpdateProcurementPortalPreferenceStatusResponse",
   }) as any as S.Schema<UpdateProcurementPortalPreferenceStatusResponse>;
+export type ValidationExceptionReason =
+  | "nonMemberPresent"
+  | "maxAccountsExceeded"
+  | "maxInvoiceUnitsExceeded"
+  | "duplicateInvoiceUnit"
+  | "mutualExclusionError"
+  | "accountMembershipError"
+  | "taxSettingsError"
+  | "expiredNextToken"
+  | "invalidNextToken"
+  | "invalidInput"
+  | "fieldValidationFailed"
+  | "cannotParse"
+  | "unknownOperation"
+  | "other"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String), resourceName: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvoicingAccessDenied", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-    message: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({ code: "InvoicingInternalServer", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String), resourceName: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvoicingResourceNotFound",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvoicingThrottling", httpResponseCode: 429 }),
-    T.HttpError(429),
-  ),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.optional(S.String),
-    resourceName: S.optional(S.String),
-    reason: S.optional(ValidationExceptionReason),
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-  T.all(
-    T.AwsQueryError({ code: "InvoicingValidation", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    message: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({ code: "InvoicingConflict", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.String },
-  T.all(
-    T.AwsQueryError({
-      code: "InvoicingServiceQuotaExceeded",
-      httpResponseCode: 402,
-    }),
-    T.HttpError(402),
-  ),
-).pipe(C.withQuotaError) {}
-
-//# Operations
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type BatchGetInvoiceProfileError =
   | AccessDeniedException
   | InternalServerException
@@ -1377,6 +1397,7 @@ export const batchGetInvoiceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetInvoiceProfile",
 }));
+
 export type CreateInvoiceUnitError =
   | AccessDeniedException
   | InternalServerException
@@ -1404,6 +1425,7 @@ export const createInvoiceUnit: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInvoiceUnit",
 }));
+
 export type CreateProcurementPortalPreferenceError =
   | AccessDeniedException
   | ConflictException
@@ -1437,6 +1459,7 @@ export const createProcurementPortalPreference: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProcurementPortalPreference",
 }));
+
 export type DeleteInvoiceUnitError =
   | AccessDeniedException
   | InternalServerException
@@ -1466,6 +1489,7 @@ export const deleteInvoiceUnit: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInvoiceUnit",
 }));
+
 export type DeleteProcurementPortalPreferenceError =
   | AccessDeniedException
   | InternalServerException
@@ -1499,6 +1523,7 @@ export const deleteProcurementPortalPreference: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProcurementPortalPreference",
 }));
+
 export type GetInvoicePDFError =
   | AccessDeniedException
   | InternalServerException
@@ -1528,6 +1553,7 @@ export const getInvoicePDF: API.OperationMethod<
   retry: Retry,
   operationName: "GetInvoicePDF",
 }));
+
 export type GetInvoiceUnitError =
   | AccessDeniedException
   | InternalServerException
@@ -1557,6 +1583,7 @@ export const getInvoiceUnit: API.OperationMethod<
   retry: Retry,
   operationName: "GetInvoiceUnit",
 }));
+
 export type GetProcurementPortalPreferenceError =
   | AccessDeniedException
   | ConflictException
@@ -1592,6 +1619,7 @@ export const getProcurementPortalPreference: API.OperationMethod<
   retry: Retry,
   operationName: "GetProcurementPortalPreference",
 }));
+
 export type ListInvoiceSummariesError =
   | AccessDeniedException
   | InternalServerException
@@ -1642,6 +1670,7 @@ export const listInvoiceSummaries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInvoiceUnitsError =
   | AccessDeniedException
   | InternalServerException
@@ -1690,6 +1719,7 @@ export const listInvoiceUnits: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProcurementPortalPreferencesError =
   | AccessDeniedException
   | ConflictException
@@ -1744,6 +1774,7 @@ export const listProcurementPortalPreferences: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1773,6 +1804,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutProcurementPortalPreferenceError =
   | AccessDeniedException
   | ConflictException
@@ -1808,6 +1840,7 @@ export const putProcurementPortalPreference: API.OperationMethod<
   retry: Retry,
   operationName: "PutProcurementPortalPreference",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1839,6 +1872,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1868,6 +1902,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateInvoiceUnitError =
   | AccessDeniedException
   | InternalServerException
@@ -1897,6 +1932,7 @@ export const updateInvoiceUnit: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateInvoiceUnit",
 }));
+
 export type UpdateProcurementPortalPreferenceStatusError =
   | AccessDeniedException
   | ConflictException

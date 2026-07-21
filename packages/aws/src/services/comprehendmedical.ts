@@ -84,22 +84,47 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidEncodingException extends S.TaggedErrorClass<InvalidEncodingException>()(
+  "InvalidEncodingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class TextSizeLimitExceededException extends S.TaggedErrorClass<TextSizeLimitExceededException>()(
+  "TextSizeLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type JobId = string;
-export type JobName = string;
-export type AnyLengthString = string;
-export type S3Bucket = string;
-export type S3Key = string;
-export type IamRoleArn = string;
-export type ManifestFilePath = string;
-export type KMSKey = string;
-export type ModelVersion = string;
-export type BoundedLengthString = string;
-export type OntologyLinkingBoundedLengthString = string;
-export type MaxResultsInteger = number;
-export type ClientRequestTokenString = string;
-
-//# Schemas
 export interface DescribeEntitiesDetectionV2JobRequest {
   JobId: string;
 }
@@ -111,6 +136,7 @@ export const DescribeEntitiesDetectionV2JobRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeEntitiesDetectionV2JobRequest",
 }) as any as S.Schema<DescribeEntitiesDetectionV2JobRequest>;
+export type JobName = string;
 export type JobStatus =
   | "SUBMITTED"
   | "IN_PROGRESS"
@@ -121,6 +147,10 @@ export type JobStatus =
   | "STOPPED"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
+export type AnyLengthString = string;
+export type S3Bucket = string;
+export type S3Key = string;
 export interface InputDataConfig {
   S3Bucket: string;
   S3Key?: string;
@@ -141,6 +171,11 @@ export const OutputDataConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OutputDataConfig>;
 export type LanguageCode = "en" | (string & {});
 export const LanguageCode = /*@__PURE__*/ S.String;
+
+export type IamRoleArn = string;
+export type ManifestFilePath = string;
+export type KMSKey = string;
+export type ModelVersion = string;
 export interface ComprehendMedicalAsyncJobProperties {
   JobId?: string;
   JobName?: string;
@@ -279,6 +314,7 @@ export const DescribeSNOMEDCTInferenceJobResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeSNOMEDCTInferenceJobResponse",
 }) as any as S.Schema<DescribeSNOMEDCTInferenceJobResponse>;
+export type BoundedLengthString = string;
 export interface DetectEntitiesRequest {
   Text: string;
 }
@@ -299,6 +335,7 @@ export type EntityType =
   | "BEHAVIORAL_ENVIRONMENTAL_SOCIAL"
   | (string & {});
 export const EntityType = /*@__PURE__*/ S.String;
+
 export type EntitySubType =
   | "NAME"
   | "DX_NAME"
@@ -347,6 +384,7 @@ export type EntitySubType =
   | "REC_DRUG_USE"
   | (string & {});
 export const EntitySubType = /*@__PURE__*/ S.String;
+
 export type AttributeName =
   | "SIGN"
   | "SYMPTOM"
@@ -359,6 +397,7 @@ export type AttributeName =
   | "FUTURE"
   | (string & {});
 export const AttributeName = /*@__PURE__*/ S.String;
+
 export interface Trait {
   Name?: AttributeName;
   Score?: number;
@@ -393,6 +432,7 @@ export type RelationshipType =
   | "QUALITY"
   | (string & {});
 export const RelationshipType = /*@__PURE__*/ S.String;
+
 export interface Attribute {
   Type?: EntitySubType;
   Score?: number;
@@ -524,6 +564,7 @@ export const DetectPHIResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DetectPHIResponse",
 }) as any as S.Schema<DetectPHIResponse>;
+export type OntologyLinkingBoundedLengthString = string;
 export interface InferICD10CMRequest {
   Text: string;
 }
@@ -536,8 +577,10 @@ export const InferICD10CMRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InferICD10CMRequest>;
 export type ICD10CMEntityCategory = "MEDICAL_CONDITION" | (string & {});
 export const ICD10CMEntityCategory = /*@__PURE__*/ S.String;
+
 export type ICD10CMEntityType = "DX_NAME" | "TIME_EXPRESSION" | (string & {});
 export const ICD10CMEntityType = /*@__PURE__*/ S.String;
+
 export type ICD10CMAttributeType =
   | "ACUITY"
   | "DIRECTION"
@@ -548,6 +591,7 @@ export type ICD10CMAttributeType =
   | "TIME_EXPRESSION"
   | (string & {});
 export const ICD10CMAttributeType = /*@__PURE__*/ S.String;
+
 export type ICD10CMTraitName =
   | "NEGATION"
   | "DIAGNOSIS"
@@ -558,6 +602,7 @@ export type ICD10CMTraitName =
   | "LOW_CONFIDENCE"
   | (string & {});
 export const ICD10CMTraitName = /*@__PURE__*/ S.String;
+
 export interface ICD10CMTrait {
   Name?: ICD10CMTraitName;
   Score?: number;
@@ -573,6 +618,7 @@ export type ICD10CMRelationshipType =
   | "QUALITY"
   | (string & {});
 export const ICD10CMRelationshipType = /*@__PURE__*/ S.String;
+
 export interface ICD10CMAttribute {
   Type?: ICD10CMAttributeType;
   Score?: number;
@@ -671,8 +717,10 @@ export const InferRxNormRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InferRxNormRequest>;
 export type RxNormEntityCategory = "MEDICATION" | (string & {});
 export const RxNormEntityCategory = /*@__PURE__*/ S.String;
+
 export type RxNormEntityType = "BRAND_NAME" | "GENERIC_NAME" | (string & {});
 export const RxNormEntityType = /*@__PURE__*/ S.String;
+
 export type RxNormAttributeType =
   | "DOSAGE"
   | "DURATION"
@@ -683,8 +731,10 @@ export type RxNormAttributeType =
   | "STRENGTH"
   | (string & {});
 export const RxNormAttributeType = /*@__PURE__*/ S.String;
+
 export type RxNormTraitName = "NEGATION" | "PAST_HISTORY" | (string & {});
 export const RxNormTraitName = /*@__PURE__*/ S.String;
+
 export interface RxNormTrait {
   Name?: RxNormTraitName;
   Score?: number;
@@ -792,6 +842,7 @@ export type SNOMEDCTEntityCategory =
   | "TEST_TREATMENT_PROCEDURE"
   | (string & {});
 export const SNOMEDCTEntityCategory = /*@__PURE__*/ S.String;
+
 export type SNOMEDCTEntityType =
   | "DX_NAME"
   | "TEST_NAME"
@@ -799,6 +850,7 @@ export type SNOMEDCTEntityType =
   | "TREATMENT_NAME"
   | (string & {});
 export const SNOMEDCTEntityType = /*@__PURE__*/ S.String;
+
 export type SNOMEDCTAttributeType =
   | "ACUITY"
   | "QUALITY"
@@ -808,6 +860,7 @@ export type SNOMEDCTAttributeType =
   | "TEST_UNIT"
   | (string & {});
 export const SNOMEDCTAttributeType = /*@__PURE__*/ S.String;
+
 export type SNOMEDCTRelationshipType =
   | "ACUITY"
   | "QUALITY"
@@ -818,6 +871,7 @@ export type SNOMEDCTRelationshipType =
   | "TEST_UNIT"
   | (string & {});
 export const SNOMEDCTRelationshipType = /*@__PURE__*/ S.String;
+
 export type SNOMEDCTTraitName =
   | "NEGATION"
   | "DIAGNOSIS"
@@ -830,6 +884,7 @@ export type SNOMEDCTTraitName =
   | "FUTURE"
   | (string & {});
 export const SNOMEDCTTraitName = /*@__PURE__*/ S.String;
+
 export interface SNOMEDCTTrait {
   Name?: SNOMEDCTTraitName;
   Score?: number;
@@ -976,6 +1031,7 @@ export const ComprehendMedicalAsyncJobFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ComprehendMedicalAsyncJobFilter",
 }) as any as S.Schema<ComprehendMedicalAsyncJobFilter>;
+export type MaxResultsInteger = number;
 export interface ListEntitiesDetectionV2JobsRequest {
   Filter?: ComprehendMedicalAsyncJobFilter;
   NextToken?: string;
@@ -1131,6 +1187,7 @@ export const ListSNOMEDCTInferenceJobsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSNOMEDCTInferenceJobsResponse",
 }) as any as S.Schema<ListSNOMEDCTInferenceJobsResponse>;
+export type ClientRequestTokenString = string;
 export interface StartEntitiesDetectionV2JobRequest {
   InputDataConfig: InputDataConfig;
   OutputDataConfig: OutputDataConfig;
@@ -1381,50 +1438,6 @@ export const StopSNOMEDCTInferenceJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StopSNOMEDCTInferenceJobResponse",
 }) as any as S.Schema<StopSNOMEDCTInferenceJobResponse>;
-
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class InvalidEncodingException extends S.TaggedErrorClass<InvalidEncodingException>()(
-  "InvalidEncodingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class TextSizeLimitExceededException extends S.TaggedErrorClass<TextSizeLimitExceededException>()(
-  "TextSizeLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type DescribeEntitiesDetectionV2JobError =
   | InternalServerException
   | InvalidRequestException
@@ -1453,6 +1466,7 @@ export const describeEntitiesDetectionV2Job: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEntitiesDetectionV2Job",
 }));
+
 export type DescribeICD10CMInferenceJobError =
   | InternalServerException
   | InvalidRequestException
@@ -1481,6 +1495,7 @@ export const describeICD10CMInferenceJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeICD10CMInferenceJob",
 }));
+
 export type DescribePHIDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -1509,6 +1524,7 @@ export const describePHIDetectionJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePHIDetectionJob",
 }));
+
 export type DescribeRxNormInferenceJobError =
   | InternalServerException
   | InvalidRequestException
@@ -1537,6 +1553,7 @@ export const describeRxNormInferenceJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRxNormInferenceJob",
 }));
+
 export type DescribeSNOMEDCTInferenceJobError =
   | InternalServerException
   | InvalidRequestException
@@ -1564,6 +1581,7 @@ export const describeSNOMEDCTInferenceJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSNOMEDCTInferenceJob",
 }));
+
 export type DetectEntitiesError =
   | InternalServerException
   | InvalidEncodingException
@@ -1599,6 +1617,7 @@ export const detectEntities: API.OperationMethod<
   retry: Retry,
   operationName: "DetectEntities",
 }));
+
 export type DetectEntitiesV2Error =
   | InternalServerException
   | InvalidEncodingException
@@ -1641,6 +1660,7 @@ export const detectEntitiesV2: API.OperationMethod<
   retry: Retry,
   operationName: "DetectEntitiesV2",
 }));
+
 export type DetectPHIError =
   | InternalServerException
   | InvalidEncodingException
@@ -1674,6 +1694,7 @@ export const detectPHI: API.OperationMethod<
   retry: Retry,
   operationName: "DetectPHI",
 }));
+
 export type InferICD10CMError =
   | InternalServerException
   | InvalidEncodingException
@@ -1708,6 +1729,7 @@ export const inferICD10CM: API.OperationMethod<
   retry: Retry,
   operationName: "InferICD10CM",
 }));
+
 export type InferRxNormError =
   | InternalServerException
   | InvalidEncodingException
@@ -1741,6 +1763,7 @@ export const inferRxNorm: API.OperationMethod<
   retry: Retry,
   operationName: "InferRxNorm",
 }));
+
 export type InferSNOMEDCTError =
   | InternalServerException
   | InvalidEncodingException
@@ -1772,6 +1795,7 @@ export const inferSNOMEDCT: API.OperationMethod<
   retry: Retry,
   operationName: "InferSNOMEDCT",
 }));
+
 export type ListEntitiesDetectionV2JobsError =
   | InternalServerException
   | InvalidRequestException
@@ -1799,6 +1823,7 @@ export const listEntitiesDetectionV2Jobs: API.OperationMethod<
   retry: Retry,
   operationName: "ListEntitiesDetectionV2Jobs",
 }));
+
 export type ListICD10CMInferenceJobsError =
   | InternalServerException
   | InvalidRequestException
@@ -1826,6 +1851,7 @@ export const listICD10CMInferenceJobs: API.OperationMethod<
   retry: Retry,
   operationName: "ListICD10CMInferenceJobs",
 }));
+
 export type ListPHIDetectionJobsError =
   | InternalServerException
   | InvalidRequestException
@@ -1854,6 +1880,7 @@ export const listPHIDetectionJobs: API.OperationMethod<
   retry: Retry,
   operationName: "ListPHIDetectionJobs",
 }));
+
 export type ListRxNormInferenceJobsError =
   | InternalServerException
   | InvalidRequestException
@@ -1881,6 +1908,7 @@ export const listRxNormInferenceJobs: API.OperationMethod<
   retry: Retry,
   operationName: "ListRxNormInferenceJobs",
 }));
+
 export type ListSNOMEDCTInferenceJobsError =
   | InternalServerException
   | InvalidRequestException
@@ -1908,6 +1936,7 @@ export const listSNOMEDCTInferenceJobs: API.OperationMethod<
   retry: Retry,
   operationName: "ListSNOMEDCTInferenceJobs",
 }));
+
 export type StartEntitiesDetectionV2JobError =
   | InternalServerException
   | InvalidRequestException
@@ -1936,6 +1965,7 @@ export const startEntitiesDetectionV2Job: API.OperationMethod<
   retry: Retry,
   operationName: "StartEntitiesDetectionV2Job",
 }));
+
 export type StartICD10CMInferenceJobError =
   | InternalServerException
   | InvalidRequestException
@@ -1965,6 +1995,7 @@ export const startICD10CMInferenceJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartICD10CMInferenceJob",
 }));
+
 export type StartPHIDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -1993,6 +2024,7 @@ export const startPHIDetectionJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartPHIDetectionJob",
 }));
+
 export type StartRxNormInferenceJobError =
   | InternalServerException
   | InvalidRequestException
@@ -2022,6 +2054,7 @@ export const startRxNormInferenceJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartRxNormInferenceJob",
 }));
+
 export type StartSNOMEDCTInferenceJobError =
   | InternalServerException
   | InvalidRequestException
@@ -2049,6 +2082,7 @@ export const startSNOMEDCTInferenceJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartSNOMEDCTInferenceJob",
 }));
+
 export type StopEntitiesDetectionV2JobError =
   | InternalServerException
   | InvalidRequestException
@@ -2074,6 +2108,7 @@ export const stopEntitiesDetectionV2Job: API.OperationMethod<
   retry: Retry,
   operationName: "StopEntitiesDetectionV2Job",
 }));
+
 export type StopICD10CMInferenceJobError =
   | InternalServerException
   | InvalidRequestException
@@ -2099,6 +2134,7 @@ export const stopICD10CMInferenceJob: API.OperationMethod<
   retry: Retry,
   operationName: "StopICD10CMInferenceJob",
 }));
+
 export type StopPHIDetectionJobError =
   | InternalServerException
   | InvalidRequestException
@@ -2124,6 +2160,7 @@ export const stopPHIDetectionJob: API.OperationMethod<
   retry: Retry,
   operationName: "StopPHIDetectionJob",
 }));
+
 export type StopRxNormInferenceJobError =
   | InternalServerException
   | InvalidRequestException
@@ -2149,6 +2186,7 @@ export const stopRxNormInferenceJob: API.OperationMethod<
   retry: Retry,
   operationName: "StopRxNormInferenceJob",
 }));
+
 export type StopSNOMEDCTInferenceJobError =
   | InternalServerException
   | InvalidRequestException

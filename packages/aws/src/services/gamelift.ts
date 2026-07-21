@@ -88,135 +88,77 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+) {}
+export class FleetCapacityExceededException extends S.TaggedErrorClass<FleetCapacityExceededException>()(
+  "FleetCapacityExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class GameSessionFullException extends S.TaggedErrorClass<GameSessionFullException>()(
+  "GameSessionFullException",
+  { Message: S.optional(S.String) },
+) {}
+export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
+  "IdempotentParameterMismatchException",
+  { Message: S.optional(S.String) },
+) {}
+export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
+  "InternalServiceException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidFleetStatusException extends S.TaggedErrorClass<InvalidFleetStatusException>()(
+  "InvalidFleetStatusException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidGameSessionStatusException extends S.TaggedErrorClass<InvalidGameSessionStatusException>()(
+  "InvalidGameSessionStatusException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String) },
+) {}
+export class NotReadyException extends S.TaggedErrorClass<NotReadyException>()(
+  "NotReadyException",
+  { Message: S.optional(S.String) },
+) {}
+export class OutOfCapacityException extends S.TaggedErrorClass<OutOfCapacityException>()(
+  "OutOfCapacityException",
+  { Message: S.optional(S.String) },
+) {}
+export class TaggingFailedException extends S.TaggedErrorClass<TaggingFailedException>()(
+  "TaggingFailedException",
+  { Message: S.optional(S.String) },
+) {}
+export class TerminalRoutingStrategyException extends S.TaggedErrorClass<TerminalRoutingStrategyException>()(
+  "TerminalRoutingStrategyException",
+  { Message: S.optional(S.String) },
+) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { Message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class UnsupportedRegionException extends S.TaggedErrorClass<UnsupportedRegionException>()(
+  "UnsupportedRegionException",
+  { Message: S.optional(S.String) },
+) {}
 export type MatchmakingIdStringModel = string;
 export type PlayerId = string | redacted.Redacted<string>;
-export type NonEmptyString = string;
-export type GameServerGroupNameOrArn = string;
-export type GameServerId = string;
-export type GameServerData = string;
-export type GameServerGroupName = string;
-export type GameServerGroupArn = string;
-export type GameServerInstanceId = string;
-export type GameServerConnectionInfo = string;
-export type NonBlankAndLengthConstraintString = string;
-export type NonZeroAndMaxString = string;
-export type FleetId = string;
-export type FreeText = string;
-export type TagKey = string;
-export type TagValue = string;
-export type AliasId = string;
-export type AliasArn = string;
-export type ServerSdkVersion = string;
-export type BuildId = string;
-export type BuildArn = string;
-export type WholeNumberLong = number;
-export type IamRoleArn = string;
-export type ContainerGroupDefinitionNameOrArn = string;
-export type PortNumber = number;
-export type IpRange = string | redacted.Redacted<string>;
-export type GameServerContainerGroupsPerInstance = number;
-export type LocationStringModel = string;
-export type MetricGroup = string;
-export type WholeNumber = number;
-export type LogGroupArnStringModel = string;
-export type FleetArn = string;
-export type ContainerGroupDefinitionName = string;
-export type ContainerGroupDefinitionArn = string;
-export type MaximumGameServerContainerGroupsPerInstance = number;
-export type DeploymentId = string;
-export type ContainerTotalMemoryLimit = number;
-export type ContainerTotalVcpuLimit = number;
-export type NonZeroAnd128MaxAsciiString = string;
-export type InstancePathString = string;
-export type ContainerPathString = string;
-export type NonZeroAnd255MaxString = string;
-export type ImageUriString = string;
-export type BooleanModel = boolean;
-export type ContainerHealthCheckInterval = number;
-export type ContainerHealthCheckRetries = number;
-export type ContainerHealthCheckStartPeriod = number;
-export type ContainerHealthCheckTimeout = number;
-export type ContainerMemoryLimit = number;
-export type ContainerVcpu = number;
-export type Sha256 = string;
-export type PositiveInteger = number;
-export type BuildIdOrArn = string;
-export type ScriptIdOrArn = string;
-export type LaunchPathStringModel = string;
-export type LaunchParametersStringModel = string;
-export type MaxConcurrentGameSessionActivations = number;
-export type GameSessionActivationTimeoutSeconds = number;
-export type NonNegativeLimitedLengthDouble = string;
-export type ScriptId = string;
-export type ScriptArn = string;
-export type FleetIdOrArn = string;
-export type LaunchTemplateId = string;
-export type LaunchTemplateName = string;
-export type LaunchTemplateVersion = string;
-export type WeightedCapacity = string;
-export type NonNegativeDouble = number;
-export type VpcSubnet = string;
-export type AutoScalingGroupArn = string;
-export type AliasIdOrArn = string;
-export type GamePropertyKey = string;
-export type GamePropertyValue = string;
-export type IdStringModel = string;
-export type LargeGameSessionData = string;
-export type IpAddress = string | redacted.Redacted<string>;
-export type DnsName = string;
-export type MatchmakerData = string;
-export type ComputeName = string;
-export type GameSessionQueueName = string;
-export type ArnStringModel = string;
-export type QueueCustomEventData = string;
-export type QueueSnsArnStringModel = string;
-export type GameSessionQueueArn = string;
-export type CustomInputLocationStringModel = string;
-export type LocationArnModel = string;
-export type MatchmakingRequestTimeoutInteger = number;
-export type MatchmakingAcceptanceTimeoutInteger = number;
-export type MatchmakingRuleSetName = string;
-export type SnsArnStringModel = string;
-export type CustomEventData = string;
-export type GameSessionData = string;
-export type MatchmakingConfigurationArn = string;
-export type MatchmakingRuleSetArn = string;
-export type RuleSetBody = string;
-export type PlayerData = string;
-export type PlayerSessionId = string;
-export type ZipBlob = Uint8Array;
-export type NodeJsVersion = string;
-export type GameSessionQueueNameOrArn = string;
-export type CustomLocationNameOrArnModel = string;
-export type MatchmakingConfigurationName = string;
-export type ComputeNameOrArn = string;
-export type ComputeArn = string;
-export type GameLiftServiceSdkEndpointOutput = string;
-export type GameLiftAgentEndpointOutput = string;
-export type InstanceId = string;
-export type ScaleInAfterInactivityMinutes = number;
-export type FleetBinaryArn = string;
-export type MinimumHealthyPercentage = number;
-export type EventCount = number;
-export type StringModel = string;
-export type PlayerAttributeString = string;
-export type DoubleObject = number;
-export type RuleSetLimit = number;
-export type SessionTarget = string;
-export type ComputeAuthToken = string;
-export type MaxString = string;
-export type ListContainerGroupDefinitionsLimit = number;
-export type ListContainerGroupDefinitionVersionsLimit = number;
-export type ListLocationsLimit = number;
-export type AmazonResourceName = string;
-export type DnsNameInput = string;
-
-//# Schemas
 export type PlayerIdsForAcceptMatch = (string | redacted.Redacted<string>)[];
 export const PlayerIdsForAcceptMatch = /*@__PURE__*/ S.Array(SensitiveString);
 export type AcceptanceType = "ACCEPT" | "REJECT" | (string & {});
 export const AcceptanceType = /*@__PURE__*/ S.String;
+
 export interface AcceptMatchInput {
   TicketId?: string;
   PlayerIds?: (string | redacted.Redacted<string>)[];
@@ -247,8 +189,12 @@ export const AcceptMatchOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptMatchOutput",
 }) as any as S.Schema<AcceptMatchOutput>;
+export type GameServerGroupNameOrArn = string;
+export type GameServerId = string;
+export type GameServerData = string;
 export type FilterInstanceStatus = "ACTIVE" | "DRAINING" | (string & {});
 export const FilterInstanceStatus = /*@__PURE__*/ S.String;
+
 export type FilterInstanceStatuses = FilterInstanceStatus[];
 export const FilterInstanceStatuses =
   /*@__PURE__*/ S.Array(FilterInstanceStatus);
@@ -286,13 +232,19 @@ export const ClaimGameServerInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClaimGameServerInput",
 }) as any as S.Schema<ClaimGameServerInput>;
+export type GameServerGroupName = string;
+export type GameServerGroupArn = string;
+export type GameServerInstanceId = string;
+export type GameServerConnectionInfo = string;
 export type GameServerClaimStatus = "CLAIMED" | (string & {});
 export const GameServerClaimStatus = /*@__PURE__*/ S.String;
+
 export type GameServerUtilizationStatus =
   | "AVAILABLE"
   | "UTILIZED"
   | (string & {});
 export const GameServerUtilizationStatus = /*@__PURE__*/ S.String;
+
 export interface GameServer {
   GameServerGroupName?: string;
   GameServerGroupArn?: string;
@@ -333,8 +285,13 @@ export const ClaimGameServerOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ClaimGameServerOutput",
 }) as any as S.Schema<ClaimGameServerOutput>;
+export type NonBlankAndLengthConstraintString = string;
+export type NonZeroAndMaxString = string;
 export type RoutingStrategyType = "SIMPLE" | "TERMINAL" | (string & {});
 export const RoutingStrategyType = /*@__PURE__*/ S.String;
+
+export type FleetId = string;
+export type FreeText = string;
 export interface RoutingStrategy {
   Type?: RoutingStrategyType;
   FleetId?: string;
@@ -349,6 +306,8 @@ export const RoutingStrategy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RoutingStrategy",
 }) as any as S.Schema<RoutingStrategy>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -384,6 +343,8 @@ export const CreateAliasInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAliasInput",
 }) as any as S.Schema<CreateAliasInput>;
+export type AliasId = string;
+export type AliasArn = string;
 export interface Alias {
   AliasId?: string;
   Name?: string;
@@ -414,6 +375,7 @@ export const CreateAliasOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAliasOutput",
 }) as any as S.Schema<CreateAliasOutput>;
+export type NonEmptyString = string;
 export interface S3Location {
   Bucket?: string;
   Key?: string;
@@ -437,6 +399,8 @@ export type OperatingSystem =
   | "WINDOWS_2022"
   | (string & {});
 export const OperatingSystem = /*@__PURE__*/ S.String;
+
+export type ServerSdkVersion = string;
 export interface CreateBuildInput {
   Name?: string;
   Version?: string;
@@ -467,8 +431,12 @@ export const CreateBuildInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBuildInput",
 }) as any as S.Schema<CreateBuildInput>;
+export type BuildId = string;
+export type BuildArn = string;
 export type BuildStatus = "INITIALIZED" | "READY" | "FAILED" | (string & {});
 export const BuildStatus = /*@__PURE__*/ S.String;
+
+export type WholeNumberLong = number;
 export interface Build {
   BuildId?: string;
   BuildArn?: string;
@@ -519,6 +487,9 @@ export const CreateBuildOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBuildOutput",
 }) as any as S.Schema<CreateBuildOutput>;
+export type IamRoleArn = string;
+export type ContainerGroupDefinitionNameOrArn = string;
+export type PortNumber = number;
 export interface ConnectionPortRange {
   FromPort?: number;
   ToPort?: number;
@@ -528,8 +499,10 @@ export const ConnectionPortRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectionPortRange",
 }) as any as S.Schema<ConnectionPortRange>;
+export type IpRange = string | redacted.Redacted<string>;
 export type IpProtocol = "TCP" | "UDP" | (string & {});
 export const IpProtocol = /*@__PURE__*/ S.String;
+
 export interface IpPermission {
   FromPort?: number;
   ToPort?: number;
@@ -546,8 +519,11 @@ export const IpPermission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IpPermission" }) as any as S.Schema<IpPermission>;
 export type IpPermissionsList = IpPermission[];
 export const IpPermissionsList = /*@__PURE__*/ S.Array(IpPermission);
+export type GameServerContainerGroupsPerInstance = number;
 export type ContainerFleetBillingType = "ON_DEMAND" | "SPOT" | (string & {});
 export const ContainerFleetBillingType = /*@__PURE__*/ S.String;
+
+export type LocationStringModel = string;
 export interface LocationConfiguration {
   Location?: string;
 }
@@ -560,6 +536,7 @@ export type LocationConfigurationList = LocationConfiguration[];
 export const LocationConfigurationList = /*@__PURE__*/ S.Array(
   LocationConfiguration,
 );
+export type MetricGroup = string;
 export type MetricGroupList = string[];
 export const MetricGroupList = /*@__PURE__*/ S.Array(S.String);
 export type ProtectionPolicy =
@@ -567,6 +544,8 @@ export type ProtectionPolicy =
   | "FullProtection"
   | (string & {});
 export const ProtectionPolicy = /*@__PURE__*/ S.String;
+
+export type WholeNumber = number;
 export interface GameSessionCreationLimitPolicy {
   NewGameSessionsPerCreator?: number;
   PolicyPeriodInMinutes?: number;
@@ -581,6 +560,8 @@ export const GameSessionCreationLimitPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GameSessionCreationLimitPolicy>;
 export type LogDestination = "NONE" | "CLOUDWATCH" | "S3" | (string & {});
 export const LogDestination = /*@__PURE__*/ S.String;
+
+export type LogGroupArnStringModel = string;
 export interface LogConfiguration {
   LogDestination?: LogDestination;
   S3BucketName?: string;
@@ -601,6 +582,7 @@ export type PlayerGatewayMode =
   | "REQUIRED"
   | (string & {});
 export const PlayerGatewayMode = /*@__PURE__*/ S.String;
+
 export interface CreateContainerFleetInput {
   FleetRoleArn?: string;
   Description?: string;
@@ -651,6 +633,10 @@ export const CreateContainerFleetInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateContainerFleetInput",
 }) as any as S.Schema<CreateContainerFleetInput>;
+export type FleetArn = string;
+export type ContainerGroupDefinitionName = string;
+export type ContainerGroupDefinitionArn = string;
+export type MaximumGameServerContainerGroupsPerInstance = number;
 export type ContainerFleetStatus =
   | "PENDING"
   | "CREATING"
@@ -661,6 +647,8 @@ export type ContainerFleetStatus =
   | "DELETING"
   | (string & {});
 export const ContainerFleetStatus = /*@__PURE__*/ S.String;
+
+export type DeploymentId = string;
 export interface DeploymentDetails {
   LatestDeploymentId?: string;
 }
@@ -679,8 +667,10 @@ export type ContainerFleetLocationStatus =
   | "DELETING"
   | (string & {});
 export const ContainerFleetLocationStatus = /*@__PURE__*/ S.String;
+
 export type PlayerGatewayStatus = "DISABLED" | "ENABLED" | (string & {});
 export const PlayerGatewayStatus = /*@__PURE__*/ S.String;
+
 export interface ContainerFleetLocationAttributes {
   Location?: string;
   Status?: ContainerFleetLocationStatus;
@@ -773,6 +763,10 @@ export const CreateContainerFleetOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateContainerFleetOutput>;
 export type ContainerGroupType = "GAME_SERVER" | "PER_INSTANCE" | (string & {});
 export const ContainerGroupType = /*@__PURE__*/ S.String;
+
+export type ContainerTotalMemoryLimit = number;
+export type ContainerTotalVcpuLimit = number;
+export type NonZeroAnd128MaxAsciiString = string;
 export type ContainerDependencyCondition =
   | "START"
   | "COMPLETE"
@@ -780,6 +774,7 @@ export type ContainerDependencyCondition =
   | "HEALTHY"
   | (string & {});
 export const ContainerDependencyCondition = /*@__PURE__*/ S.String;
+
 export interface ContainerDependency {
   ContainerName?: string;
   Condition?: ContainerDependencyCondition;
@@ -795,11 +790,14 @@ export const ContainerDependency = /*@__PURE__*/ S.suspend(() =>
 export type ContainerDependencyList = ContainerDependency[];
 export const ContainerDependencyList =
   /*@__PURE__*/ S.Array(ContainerDependency);
+export type InstancePathString = string;
+export type ContainerPathString = string;
 export type ContainerMountPointAccessLevel =
   | "READ_ONLY"
   | "READ_AND_WRITE"
   | (string & {});
 export const ContainerMountPointAccessLevel = /*@__PURE__*/ S.String;
+
 export interface ContainerMountPoint {
   InstancePath?: string;
   ContainerPath?: string;
@@ -817,6 +815,7 @@ export const ContainerMountPoint = /*@__PURE__*/ S.suspend(() =>
 export type ContainerMountPointList = ContainerMountPoint[];
 export const ContainerMountPointList =
   /*@__PURE__*/ S.Array(ContainerMountPoint);
+export type NonZeroAnd255MaxString = string;
 export interface ContainerEnvironment {
   Name?: string;
   Value?: string;
@@ -829,6 +828,7 @@ export const ContainerEnvironment = /*@__PURE__*/ S.suspend(() =>
 export type ContainerEnvironmentList = ContainerEnvironment[];
 export const ContainerEnvironmentList =
   /*@__PURE__*/ S.Array(ContainerEnvironment);
+export type ImageUriString = string;
 export interface ContainerPortRange {
   FromPort?: number;
   ToPort?: number;
@@ -893,6 +893,7 @@ export type LinuxCapability =
   | "WAKE_ALARM"
   | (string & {});
 export const LinuxCapability = /*@__PURE__*/ S.String;
+
 export type LinuxCapabilityList = LinuxCapability[];
 export const LinuxCapabilityList = /*@__PURE__*/ S.Array(LinuxCapability);
 export interface LinuxCapabilities {
@@ -927,8 +928,13 @@ export const GameServerContainerDefinitionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GameServerContainerDefinitionInput",
 }) as any as S.Schema<GameServerContainerDefinitionInput>;
+export type BooleanModel = boolean;
 export type ContainerCommandStringList = string[];
 export const ContainerCommandStringList = /*@__PURE__*/ S.Array(S.String);
+export type ContainerHealthCheckInterval = number;
+export type ContainerHealthCheckRetries = number;
+export type ContainerHealthCheckStartPeriod = number;
+export type ContainerHealthCheckTimeout = number;
 export interface ContainerHealthCheck {
   Command?: string[];
   Interval?: number;
@@ -947,6 +953,8 @@ export const ContainerHealthCheck = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContainerHealthCheck",
 }) as any as S.Schema<ContainerHealthCheck>;
+export type ContainerMemoryLimit = number;
+export type ContainerVcpu = number;
 export interface SupportContainerDefinitionInput {
   ContainerName?: string;
   DependsOn?: ContainerDependency[];
@@ -984,6 +992,7 @@ export const SupportContainerDefinitionInputList = /*@__PURE__*/ S.Array(
 );
 export type ContainerOperatingSystem = "AMAZON_LINUX_2023" | (string & {});
 export const ContainerOperatingSystem = /*@__PURE__*/ S.String;
+
 export interface CreateContainerGroupDefinitionInput {
   Name?: string;
   ContainerGroupType?: ContainerGroupType;
@@ -1024,6 +1033,7 @@ export const CreateContainerGroupDefinitionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateContainerGroupDefinitionInput",
 }) as any as S.Schema<CreateContainerGroupDefinitionInput>;
+export type Sha256 = string;
 export interface GameServerContainerDefinition {
   ContainerName?: string;
   DependsOn?: ContainerDependency[];
@@ -1086,12 +1096,14 @@ export type SupportContainerDefinitionList = SupportContainerDefinition[];
 export const SupportContainerDefinitionList = /*@__PURE__*/ S.Array(
   SupportContainerDefinition,
 );
+export type PositiveInteger = number;
 export type ContainerGroupDefinitionStatus =
   | "READY"
   | "COPYING"
   | "FAILED"
   | (string & {});
 export const ContainerGroupDefinitionStatus = /*@__PURE__*/ S.String;
+
 export interface ContainerGroupDefinition {
   ContainerGroupDefinitionArn?: string;
   CreationTime?: Date;
@@ -1182,6 +1194,10 @@ export const CreateContainerGroupDefinitionOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateContainerGroupDefinitionOutput",
 }) as any as S.Schema<CreateContainerGroupDefinitionOutput>;
+export type BuildIdOrArn = string;
+export type ScriptIdOrArn = string;
+export type LaunchPathStringModel = string;
+export type LaunchParametersStringModel = string;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export type EC2InstanceType =
@@ -1692,6 +1708,7 @@ export type EC2InstanceType =
   | "r7a.48xlarge"
   | (string & {});
 export const EC2InstanceType = /*@__PURE__*/ S.String;
+
 export interface ServerProcess {
   LaunchPath?: string;
   Parameters?: string;
@@ -1706,6 +1723,8 @@ export const ServerProcess = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServerProcess" }) as any as S.Schema<ServerProcess>;
 export type ServerProcessList = ServerProcess[];
 export const ServerProcessList = /*@__PURE__*/ S.Array(ServerProcess);
+export type MaxConcurrentGameSessionActivations = number;
+export type GameSessionActivationTimeoutSeconds = number;
 export interface RuntimeConfiguration {
   ServerProcesses?: ServerProcess[];
   MaxConcurrentGameSessionActivations?: number;
@@ -1734,8 +1753,10 @@ export const ResourceCreationLimitPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceCreationLimitPolicy>;
 export type FleetType = "ON_DEMAND" | "SPOT" | (string & {});
 export const FleetType = /*@__PURE__*/ S.String;
+
 export type CertificateType = "DISABLED" | "GENERATED" | (string & {});
 export const CertificateType = /*@__PURE__*/ S.String;
+
 export interface CertificateConfiguration {
   CertificateType?: CertificateType;
 }
@@ -1746,6 +1767,8 @@ export const CertificateConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CertificateConfiguration>;
 export type ComputeType = "EC2" | "ANYWHERE" | (string & {});
 export const ComputeType = /*@__PURE__*/ S.String;
+
+export type NonNegativeLimitedLengthDouble = string;
 export interface AnywhereConfiguration {
   Cost?: string;
 }
@@ -1758,11 +1781,13 @@ export type InstanceRoleCredentialsProvider =
   | "SHARED_CREDENTIAL_FILE"
   | (string & {});
 export const InstanceRoleCredentialsProvider = /*@__PURE__*/ S.String;
+
 export type GameServerIpProtocolSupported =
   | "IPv4"
   | "DUAL_STACK"
   | (string & {});
 export const GameServerIpProtocolSupported = /*@__PURE__*/ S.String;
+
 export interface PlayerGatewayConfiguration {
   GameServerIpProtocolSupported?: GameServerIpProtocolSupported;
 }
@@ -1856,8 +1881,12 @@ export type FleetStatus =
   | "NOT_FOUND"
   | (string & {});
 export const FleetStatus = /*@__PURE__*/ S.String;
+
+export type ScriptId = string;
+export type ScriptArn = string;
 export type FleetAction = "AUTO_SCALING" | (string & {});
 export const FleetAction = /*@__PURE__*/ S.String;
+
 export type FleetActionList = FleetAction[];
 export const FleetActionList = /*@__PURE__*/ S.Array(FleetAction);
 export interface FleetAttributes {
@@ -1961,6 +1990,7 @@ export const CreateFleetOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFleetOutput",
 }) as any as S.Schema<CreateFleetOutput>;
+export type FleetIdOrArn = string;
 export interface CreateFleetLocationsInput {
   FleetId?: string;
   Locations?: LocationConfiguration[];
@@ -1997,6 +2027,9 @@ export const CreateFleetLocationsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFleetLocationsOutput",
 }) as any as S.Schema<CreateFleetLocationsOutput>;
+export type LaunchTemplateId = string;
+export type LaunchTemplateName = string;
+export type LaunchTemplateVersion = string;
 export interface LaunchTemplateSpecification {
   LaunchTemplateId?: string;
   LaunchTemplateName?: string;
@@ -2102,6 +2135,8 @@ export type GameServerGroupInstanceType =
   | "m6g.16xlarge"
   | (string & {});
 export const GameServerGroupInstanceType = /*@__PURE__*/ S.String;
+
+export type WeightedCapacity = string;
 export interface InstanceDefinition {
   InstanceType?: GameServerGroupInstanceType;
   WeightedCapacity?: string;
@@ -2116,6 +2151,7 @@ export const InstanceDefinition = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceDefinition>;
 export type InstanceDefinitions = InstanceDefinition[];
 export const InstanceDefinitions = /*@__PURE__*/ S.Array(InstanceDefinition);
+export type NonNegativeDouble = number;
 export interface TargetTrackingConfiguration {
   TargetValue?: number;
 }
@@ -2142,11 +2178,14 @@ export type BalancingStrategy =
   | "ON_DEMAND_ONLY"
   | (string & {});
 export const BalancingStrategy = /*@__PURE__*/ S.String;
+
 export type GameServerProtectionPolicy =
   | "NO_PROTECTION"
   | "FULL_PROTECTION"
   | (string & {});
 export const GameServerProtectionPolicy = /*@__PURE__*/ S.String;
+
+export type VpcSubnet = string;
 export type VpcSubnets = string[];
 export const VpcSubnets = /*@__PURE__*/ S.Array(S.String);
 export interface CreateGameServerGroupInput {
@@ -2189,6 +2228,7 @@ export const CreateGameServerGroupInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGameServerGroupInput",
 }) as any as S.Schema<CreateGameServerGroupInput>;
+export type AutoScalingGroupArn = string;
 export type GameServerGroupStatus =
   | "NEW"
   | "ACTIVATING"
@@ -2199,8 +2239,10 @@ export type GameServerGroupStatus =
   | "ERROR"
   | (string & {});
 export const GameServerGroupStatus = /*@__PURE__*/ S.String;
+
 export type GameServerGroupAction = "REPLACE_INSTANCE_TYPES" | (string & {});
 export const GameServerGroupAction = /*@__PURE__*/ S.String;
+
 export type GameServerGroupActions = GameServerGroupAction[];
 export const GameServerGroupActions = /*@__PURE__*/ S.Array(
   GameServerGroupAction,
@@ -2251,6 +2293,9 @@ export const CreateGameServerGroupOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGameServerGroupOutput",
 }) as any as S.Schema<CreateGameServerGroupOutput>;
+export type AliasIdOrArn = string;
+export type GamePropertyKey = string;
+export type GamePropertyValue = string;
 export interface GameProperty {
   Key?: string;
   Value?: string;
@@ -2260,6 +2305,8 @@ export const GameProperty = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GameProperty" }) as any as S.Schema<GameProperty>;
 export type GamePropertyList = GameProperty[];
 export const GamePropertyList = /*@__PURE__*/ S.Array(GameProperty);
+export type IdStringModel = string;
+export type LargeGameSessionData = string;
 export interface CreateGameSessionInput {
   FleetId?: string;
   AliasId?: string;
@@ -2306,17 +2353,24 @@ export type GameSessionStatus =
   | "ERROR"
   | (string & {});
 export const GameSessionStatus = /*@__PURE__*/ S.String;
+
 export type GameSessionStatusReason =
   | "INTERRUPTED"
   | "TRIGGERED_ON_PROCESS_TERMINATE"
   | "FORCE_TERMINATED"
   | (string & {});
 export const GameSessionStatusReason = /*@__PURE__*/ S.String;
+
+export type IpAddress = string | redacted.Redacted<string>;
+export type DnsName = string;
 export type PlayerSessionCreationPolicy =
   | "ACCEPT_ALL"
   | "DENY_ALL"
   | (string & {});
 export const PlayerSessionCreationPolicy = /*@__PURE__*/ S.String;
+
+export type MatchmakerData = string;
+export type ComputeName = string;
 export interface GameSession {
   GameSessionId?: string;
   Name?: string;
@@ -2380,6 +2434,7 @@ export const CreateGameSessionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGameSessionOutput",
 }) as any as S.Schema<CreateGameSessionOutput>;
+export type GameSessionQueueName = string;
 export interface PlayerLatencyPolicy {
   MaximumIndividualPlayerLatencyMilliseconds?: number;
   PolicyDurationSeconds?: number;
@@ -2395,6 +2450,7 @@ export const PlayerLatencyPolicy = /*@__PURE__*/ S.suspend(() =>
 export type PlayerLatencyPolicyList = PlayerLatencyPolicy[];
 export const PlayerLatencyPolicyList =
   /*@__PURE__*/ S.Array(PlayerLatencyPolicy);
+export type ArnStringModel = string;
 export interface GameSessionQueueDestination {
   DestinationArn?: string;
 }
@@ -2424,6 +2480,7 @@ export type PriorityType =
   | "LOCATION"
   | (string & {});
 export const PriorityType = /*@__PURE__*/ S.String;
+
 export type PriorityTypeList = PriorityType[];
 export const PriorityTypeList = /*@__PURE__*/ S.Array(PriorityType);
 export interface PriorityConfiguration {
@@ -2438,6 +2495,8 @@ export const PriorityConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PriorityConfiguration",
 }) as any as S.Schema<PriorityConfiguration>;
+export type QueueCustomEventData = string;
+export type QueueSnsArnStringModel = string;
 export interface CreateGameSessionQueueInput {
   Name?: string;
   TimeoutInSeconds?: number;
@@ -2474,6 +2533,7 @@ export const CreateGameSessionQueueInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGameSessionQueueInput",
 }) as any as S.Schema<CreateGameSessionQueueInput>;
+export type GameSessionQueueArn = string;
 export interface GameSessionQueue {
   Name?: string;
   GameSessionQueueArn?: string;
@@ -2508,6 +2568,7 @@ export const CreateGameSessionQueueOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGameSessionQueueOutput",
 }) as any as S.Schema<CreateGameSessionQueueOutput>;
+export type CustomInputLocationStringModel = string;
 export interface CreateLocationInput {
   LocationName?: string;
   Tags?: Tag[];
@@ -2530,6 +2591,7 @@ export const CreateLocationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLocationInput",
 }) as any as S.Schema<CreateLocationInput>;
+export type LocationArnModel = string;
 export interface UDPEndpoint {
   Domain?: string;
   Port?: number;
@@ -2565,10 +2627,18 @@ export const CreateLocationOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateLocationOutput>;
 export type QueueArnsList = string[];
 export const QueueArnsList = /*@__PURE__*/ S.Array(S.String);
+export type MatchmakingRequestTimeoutInteger = number;
+export type MatchmakingAcceptanceTimeoutInteger = number;
+export type MatchmakingRuleSetName = string;
+export type SnsArnStringModel = string;
+export type CustomEventData = string;
+export type GameSessionData = string;
 export type BackfillMode = "AUTOMATIC" | "MANUAL" | (string & {});
 export const BackfillMode = /*@__PURE__*/ S.String;
+
 export type FlexMatchMode = "STANDALONE" | "WITH_QUEUE" | (string & {});
 export const FlexMatchMode = /*@__PURE__*/ S.String;
+
 export interface CreateMatchmakingConfigurationInput {
   Name?: string;
   Description?: string;
@@ -2617,6 +2687,8 @@ export const CreateMatchmakingConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMatchmakingConfigurationInput",
 }) as any as S.Schema<CreateMatchmakingConfigurationInput>;
+export type MatchmakingConfigurationArn = string;
+export type MatchmakingRuleSetArn = string;
 export interface MatchmakingConfiguration {
   Name?: string;
   ConfigurationArn?: string;
@@ -2673,6 +2745,7 @@ export const CreateMatchmakingConfigurationOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateMatchmakingConfigurationOutput",
 }) as any as S.Schema<CreateMatchmakingConfigurationOutput>;
+export type RuleSetBody = string;
 export interface CreateMatchmakingRuleSetInput {
   Name?: string;
   RuleSetBody?: string;
@@ -2721,6 +2794,7 @@ export const CreateMatchmakingRuleSetOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMatchmakingRuleSetOutput",
 }) as any as S.Schema<CreateMatchmakingRuleSetOutput>;
+export type PlayerData = string;
 export interface CreatePlayerSessionInput {
   GameSessionId?: string;
   PlayerId?: string | redacted.Redacted<string>;
@@ -2745,6 +2819,7 @@ export const CreatePlayerSessionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePlayerSessionInput",
 }) as any as S.Schema<CreatePlayerSessionInput>;
+export type PlayerSessionId = string;
 export type PlayerSessionStatus =
   | "RESERVED"
   | "ACTIVE"
@@ -2752,6 +2827,7 @@ export type PlayerSessionStatus =
   | "TIMEDOUT"
   | (string & {});
 export const PlayerSessionStatus = /*@__PURE__*/ S.String;
+
 export interface PlayerSession {
   PlayerSessionId?: string;
   PlayerId?: string | redacted.Redacted<string>;
@@ -2833,6 +2909,8 @@ export const CreatePlayerSessionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePlayerSessionsOutput",
 }) as any as S.Schema<CreatePlayerSessionsOutput>;
+export type ZipBlob = Uint8Array;
+export type NodeJsVersion = string;
 export interface CreateScriptInput {
   Name?: string;
   Version?: string;
@@ -3141,6 +3219,7 @@ export type GameServerGroupDeleteOption =
   | "RETAIN"
   | (string & {});
 export const GameServerGroupDeleteOption = /*@__PURE__*/ S.String;
+
 export interface DeleteGameServerGroupInput {
   GameServerGroupName?: string;
   DeleteOption?: GameServerGroupDeleteOption;
@@ -3175,6 +3254,7 @@ export const DeleteGameServerGroupOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteGameServerGroupOutput",
 }) as any as S.Schema<DeleteGameServerGroupOutput>;
+export type GameSessionQueueNameOrArn = string;
 export interface DeleteGameSessionQueueInput {
   Name?: string;
 }
@@ -3199,6 +3279,7 @@ export const DeleteGameSessionQueueOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteGameSessionQueueOutput",
 }) as any as S.Schema<DeleteGameSessionQueueOutput>;
+export type CustomLocationNameOrArnModel = string;
 export interface DeleteLocationInput {
   LocationName?: string;
 }
@@ -3223,6 +3304,7 @@ export const DeleteLocationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteLocationOutput",
 }) as any as S.Schema<DeleteLocationOutput>;
+export type MatchmakingConfigurationName = string;
 export interface DeleteMatchmakingConfigurationInput {
   Name?: string;
 }
@@ -3376,6 +3458,7 @@ export const DeleteVpcPeeringConnectionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteVpcPeeringConnectionOutput",
 }) as any as S.Schema<DeleteVpcPeeringConnectionOutput>;
+export type ComputeNameOrArn = string;
 export interface DeregisterComputeInput {
   FleetId?: string;
   ComputeName?: string;
@@ -3506,6 +3589,7 @@ export const DescribeComputeInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeComputeInput",
 }) as any as S.Schema<DescribeComputeInput>;
+export type ComputeArn = string;
 export type ComputeStatus =
   | "PENDING"
   | "ACTIVE"
@@ -3513,6 +3597,10 @@ export type ComputeStatus =
   | "IMPAIRED"
   | (string & {});
 export const ComputeStatus = /*@__PURE__*/ S.String;
+
+export type GameLiftServiceSdkEndpointOutput = string;
+export type GameLiftAgentEndpointOutput = string;
+export type InstanceId = string;
 export interface ContainerAttribute {
   ContainerName?: string;
   ContainerRuntimeId?: string;
@@ -3940,6 +4028,8 @@ export type ZeroCapacityStrategy =
   | "SCALE_TO_AND_FROM_ZERO"
   | (string & {});
 export const ZeroCapacityStrategy = /*@__PURE__*/ S.String;
+
+export type ScaleInAfterInactivityMinutes = number;
 export interface ManagedCapacityConfiguration {
   ZeroCapacityStrategy?: ZeroCapacityStrategy;
   ScaleInAfterInactivityMinutes?: number;
@@ -4008,6 +4098,7 @@ export const DescribeFleetDeploymentInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFleetDeploymentInput",
 }) as any as S.Schema<DescribeFleetDeploymentInput>;
+export type FleetBinaryArn = string;
 export type DeploymentStatus =
   | "IN_PROGRESS"
   | "IMPAIRED"
@@ -4018,16 +4109,20 @@ export type DeploymentStatus =
   | "PENDING"
   | (string & {});
 export const DeploymentStatus = /*@__PURE__*/ S.String;
+
 export type DeploymentProtectionStrategy =
   | "WITH_PROTECTION"
   | "IGNORE_PROTECTION"
   | (string & {});
 export const DeploymentProtectionStrategy = /*@__PURE__*/ S.String;
+
+export type MinimumHealthyPercentage = number;
 export type DeploymentImpairmentStrategy =
   | "MAINTAIN"
   | "ROLLBACK"
   | (string & {});
 export const DeploymentImpairmentStrategy = /*@__PURE__*/ S.String;
+
 export interface DeploymentConfiguration {
   ProtectionStrategy?: DeploymentProtectionStrategy;
   MinimumHealthyPercentage?: number;
@@ -4182,6 +4277,8 @@ export type EventCode =
   | "LOCATION_STATE_DELETED"
   | (string & {});
 export const EventCode = /*@__PURE__*/ S.String;
+
+export type EventCount = number;
 export interface Event {
   EventId?: string;
   ResourceId?: string;
@@ -4245,6 +4342,7 @@ export const DescribeFleetLocationAttributesInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeFleetLocationAttributesInput>;
 export type LocationUpdateStatus = "PENDING_UPDATE" | (string & {});
 export const LocationUpdateStatus = /*@__PURE__*/ S.String;
+
 export interface LocationAttributes {
   LocationState?: LocationState;
   StoppedActions?: FleetAction[];
@@ -4538,6 +4636,7 @@ export type GameServerInstanceStatus =
   | "SPOT_TERMINATING"
   | (string & {});
 export const GameServerInstanceStatus = /*@__PURE__*/ S.String;
+
 export interface GameServerInstance {
   GameServerGroupName?: string;
   GameServerGroupArn?: string;
@@ -4659,6 +4758,7 @@ export type GameSessionPlacementState =
   | "FAILED"
   | (string & {});
 export const GameSessionPlacementState = /*@__PURE__*/ S.String;
+
 export interface PlayerLatency {
   PlayerId?: string | redacted.Redacted<string>;
   RegionIdentifier?: string;
@@ -4693,6 +4793,7 @@ export type PlacementFallbackStrategy =
   | "NONE"
   | (string & {});
 export const PlacementFallbackStrategy = /*@__PURE__*/ S.String;
+
 export type LocationOrderOverrideList = string[];
 export const LocationOrderOverrideList = /*@__PURE__*/ S.Array(S.String);
 export interface PriorityConfigurationOverride {
@@ -4896,6 +4997,7 @@ export type InstanceStatus =
   | "TERMINATING"
   | (string & {});
 export const InstanceStatus = /*@__PURE__*/ S.String;
+
 export interface Instance {
   FleetId?: string;
   FleetArn?: string;
@@ -4967,6 +5069,10 @@ export type MatchmakingConfigurationStatus =
   | "TIMED_OUT"
   | (string & {});
 export const MatchmakingConfigurationStatus = /*@__PURE__*/ S.String;
+
+export type StringModel = string;
+export type PlayerAttributeString = string;
+export type DoubleObject = number;
 export type PlayerAttributeStringList = string[];
 export const PlayerAttributeStringList = /*@__PURE__*/ S.Array(S.String);
 export type PlayerAttributeStringDoubleMap = {
@@ -5144,6 +5250,7 @@ export const DescribeMatchmakingConfigurationsOutput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeMatchmakingConfigurationsOutput>;
 export type MatchmakingRuleSetNameList = string[];
 export const MatchmakingRuleSetNameList = /*@__PURE__*/ S.Array(S.String);
+export type RuleSetLimit = number;
 export interface DescribeMatchmakingRuleSetsInput {
   Names?: string[];
   Limit?: number;
@@ -5265,6 +5372,7 @@ export type ScalingStatusType =
   | "ERROR"
   | (string & {});
 export const ScalingStatusType = /*@__PURE__*/ S.String;
+
 export interface DescribeScalingPoliciesInput {
   FleetId?: string;
   StatusFilter?: ScalingStatusType;
@@ -5299,6 +5407,7 @@ export type ScalingAdjustmentType =
   | "PercentChangeInCapacity"
   | (string & {});
 export const ScalingAdjustmentType = /*@__PURE__*/ S.String;
+
 export type ComparisonOperatorType =
   | "GreaterThanOrEqualToThreshold"
   | "GreaterThanThreshold"
@@ -5306,6 +5415,7 @@ export type ComparisonOperatorType =
   | "LessThanOrEqualToThreshold"
   | (string & {});
 export const ComparisonOperatorType = /*@__PURE__*/ S.String;
+
 export type MetricName =
   | "ActivatingGameSessions"
   | "ActiveGameSessions"
@@ -5321,8 +5431,10 @@ export type MetricName =
   | "ConcurrentActivatableGameSessions"
   | (string & {});
 export const MetricName = /*@__PURE__*/ S.String;
+
 export type PolicyType = "RuleBased" | "TargetBased" | (string & {});
 export const PolicyType = /*@__PURE__*/ S.String;
+
 export interface TargetConfiguration {
   TargetValue?: number;
 }
@@ -5523,6 +5635,7 @@ export const GetComputeAccessInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetComputeAccessInput",
 }) as any as S.Schema<GetComputeAccessInput>;
+export type SessionTarget = string;
 export interface ContainerIdentifier {
   ContainerName?: string;
   ContainerRuntimeId?: string;
@@ -5582,6 +5695,7 @@ export const GetComputeAuthTokenInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetComputeAuthTokenInput",
 }) as any as S.Schema<GetComputeAuthTokenInput>;
+export type ComputeAuthToken = string;
 export interface GetComputeAuthTokenOutput {
   FleetId?: string;
   FleetArn?: string;
@@ -5723,6 +5837,7 @@ export type PlayerConnectionEndpointList = PlayerConnectionEndpoint[];
 export const PlayerConnectionEndpointList = /*@__PURE__*/ S.Array(
   PlayerConnectionEndpoint,
 );
+export type MaxString = string;
 export interface PlayerConnectionDetail {
   PlayerId?: string | redacted.Redacted<string>;
   Endpoints?: PlayerConnectionEndpoint[];
@@ -5835,6 +5950,7 @@ export const ListBuildsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBuildsOutput>;
 export type ListComputeInputStatus = "ACTIVE" | "IMPAIRED" | (string & {});
 export const ListComputeInputStatus = /*@__PURE__*/ S.String;
+
 export interface ListComputeInput {
   FleetId?: string;
   Location?: string;
@@ -5928,6 +6044,7 @@ export const ListContainerFleetsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListContainerFleetsOutput",
 }) as any as S.Schema<ListContainerFleetsOutput>;
+export type ListContainerGroupDefinitionsLimit = number;
 export interface ListContainerGroupDefinitionsInput {
   ContainerGroupType?: ContainerGroupType;
   Limit?: number;
@@ -6013,6 +6130,7 @@ export const ListContainerGroupDefinitionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListContainerGroupDefinitionsOutput",
 }) as any as S.Schema<ListContainerGroupDefinitionsOutput>;
+export type ListContainerGroupDefinitionVersionsLimit = number;
 export interface ListContainerGroupDefinitionVersionsInput {
   Name?: string;
   Limit?: number;
@@ -6216,6 +6334,7 @@ export const ListGameServerGroupsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGameServerGroupsOutput>;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface ListGameServersInput {
   GameServerGroupName?: string;
   SortOrder?: SortOrder;
@@ -6258,8 +6377,10 @@ export const ListGameServersOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGameServersOutput>;
 export type LocationFilter = "AWS" | "CUSTOM" | (string & {});
 export const LocationFilter = /*@__PURE__*/ S.String;
+
 export type LocationFilterList = LocationFilter[];
 export const LocationFilterList = /*@__PURE__*/ S.Array(LocationFilter);
+export type ListLocationsLimit = number;
 export interface ListLocationsInput {
   Filters?: LocationFilter[];
   Limit?: number;
@@ -6334,6 +6455,7 @@ export const ListScriptsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListScriptsOutput",
 }) as any as S.Schema<ListScriptsOutput>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN?: string;
 }
@@ -6406,6 +6528,7 @@ export const PutScalingPolicyOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutScalingPolicyOutput",
 }) as any as S.Schema<PutScalingPolicyOutput>;
+export type DnsNameInput = string;
 export interface RegisterComputeInput {
   FleetId?: string;
   ComputeName?: string;
@@ -6953,6 +7076,7 @@ export type TerminationMode =
   | "FORCE_TERMINATE"
   | (string & {});
 export const TerminationMode = /*@__PURE__*/ S.String;
+
 export interface TerminateGameSessionInput {
   GameSessionId?: string;
   TerminationMode?: TerminationMode;
@@ -7088,6 +7212,7 @@ export type ContainerFleetRemoveAttribute =
   | "PER_INSTANCE_CONTAINER_GROUP_DEFINITION"
   | (string & {});
 export const ContainerFleetRemoveAttribute = /*@__PURE__*/ S.String;
+
 export type ContainerFleetRemoveAttributeList = ContainerFleetRemoveAttribute[];
 export const ContainerFleetRemoveAttributeList = /*@__PURE__*/ S.Array(
   ContainerFleetRemoveAttribute,
@@ -7379,6 +7504,7 @@ export const UpdateFleetPortSettingsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateFleetPortSettingsOutput>;
 export type GameServerHealthCheck = "HEALTHY" | (string & {});
 export const GameServerHealthCheck = /*@__PURE__*/ S.String;
+
 export interface UpdateGameServerInput {
   GameServerGroupName?: string;
   GameServerId?: string;
@@ -7697,74 +7823,6 @@ export const ValidateMatchmakingRuleSetOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ValidateMatchmakingRuleSetOutput",
 }) as any as S.Schema<ValidateMatchmakingRuleSetOutput>;
-
-//# Errors
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class UnsupportedRegionException extends S.TaggedErrorClass<UnsupportedRegionException>()(
-  "UnsupportedRegionException",
-  { Message: S.optional(S.String) },
-) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-) {}
-export class OutOfCapacityException extends S.TaggedErrorClass<OutOfCapacityException>()(
-  "OutOfCapacityException",
-  { Message: S.optional(S.String) },
-) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class TaggingFailedException extends S.TaggedErrorClass<TaggingFailedException>()(
-  "TaggingFailedException",
-  { Message: S.optional(S.String) },
-) {}
-export class NotReadyException extends S.TaggedErrorClass<NotReadyException>()(
-  "NotReadyException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidFleetStatusException extends S.TaggedErrorClass<InvalidFleetStatusException>()(
-  "InvalidFleetStatusException",
-  { Message: S.optional(S.String) },
-) {}
-export class FleetCapacityExceededException extends S.TaggedErrorClass<FleetCapacityExceededException>()(
-  "FleetCapacityExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
-  "IdempotentParameterMismatchException",
-  { Message: S.optional(S.String) },
-) {}
-export class TerminalRoutingStrategyException extends S.TaggedErrorClass<TerminalRoutingStrategyException>()(
-  "TerminalRoutingStrategyException",
-  { Message: S.optional(S.String) },
-) {}
-export class GameSessionFullException extends S.TaggedErrorClass<GameSessionFullException>()(
-  "GameSessionFullException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidGameSessionStatusException extends S.TaggedErrorClass<InvalidGameSessionStatusException>()(
-  "InvalidGameSessionStatusException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
 export type AcceptMatchError =
   | InternalServiceException
   | InvalidRequestException
@@ -7823,6 +7881,7 @@ export const acceptMatch: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptMatch",
 }));
+
 export type ClaimGameServerError =
   | ConflictException
   | InternalServiceException
@@ -7891,6 +7950,7 @@ export const claimGameServer: API.OperationMethod<
   retry: Retry,
   operationName: "ClaimGameServer",
 }));
+
 export type CreateAliasError =
   | ConflictException
   | InternalServiceException
@@ -7943,6 +8003,7 @@ export const createAlias: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAlias",
 }));
+
 export type CreateBuildError =
   | ConflictException
   | InternalServiceException
@@ -8009,6 +8070,7 @@ export const createBuild: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBuild",
 }));
+
 export type CreateContainerFleetError =
   | ConflictException
   | InternalServiceException
@@ -8116,6 +8178,7 @@ export const createContainerFleet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateContainerFleet",
 }));
+
 export type CreateContainerGroupDefinitionError =
   | ConflictException
   | InternalServiceException
@@ -8241,6 +8304,7 @@ export const createContainerGroupDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "CreateContainerGroupDefinition",
 }));
+
 export type CreateFleetError =
   | ConflictException
   | InternalServiceException
@@ -8351,6 +8415,7 @@ export const createFleet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFleet",
 }));
+
 export type CreateFleetLocationsError =
   | ConflictException
   | InternalServiceException
@@ -8413,6 +8478,7 @@ export const createFleetLocations: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFleetLocations",
 }));
+
 export type CreateGameServerGroupError =
   | ConflictException
   | InternalServiceException
@@ -8479,6 +8545,7 @@ export const createGameServerGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGameServerGroup",
 }));
+
 export type CreateGameSessionError =
   | ConflictException
   | FleetCapacityExceededException
@@ -8560,6 +8627,7 @@ export const createGameSession: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGameSession",
 }));
+
 export type CreateGameSessionQueueError =
   | InternalServiceException
   | InvalidRequestException
@@ -8665,6 +8733,7 @@ export const createGameSessionQueue: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGameSessionQueue",
 }));
+
 export type CreateLocationError =
   | ConflictException
   | InternalServiceException
@@ -8698,6 +8767,7 @@ export const createLocation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocation",
 }));
+
 export type CreateMatchmakingConfigurationError =
   | InternalServiceException
   | InvalidRequestException
@@ -8755,6 +8825,7 @@ export const createMatchmakingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMatchmakingConfiguration",
 }));
+
 export type CreateMatchmakingRuleSetError =
   | InternalServiceException
   | InvalidRequestException
@@ -8806,6 +8877,7 @@ export const createMatchmakingRuleSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMatchmakingRuleSet",
 }));
+
 export type CreatePlayerSessionError =
   | GameSessionFullException
   | InternalServiceException
@@ -8859,6 +8931,7 @@ export const createPlayerSession: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePlayerSession",
 }));
+
 export type CreatePlayerSessionsError =
   | GameSessionFullException
   | InternalServiceException
@@ -8912,6 +8985,7 @@ export const createPlayerSessions: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePlayerSessions",
 }));
+
 export type CreateScriptError =
   | ConflictException
   | InternalServiceException
@@ -8974,6 +9048,7 @@ export const createScript: API.OperationMethod<
   retry: Retry,
   operationName: "CreateScript",
 }));
+
 export type CreateVpcPeeringAuthorizationError =
   | InternalServiceException
   | InvalidRequestException
@@ -9046,6 +9121,7 @@ export const createVpcPeeringAuthorization: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpcPeeringAuthorization",
 }));
+
 export type CreateVpcPeeringConnectionError =
   | InternalServiceException
   | InvalidRequestException
@@ -9113,6 +9189,7 @@ export const createVpcPeeringConnection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpcPeeringConnection",
 }));
+
 export type DeleteAliasError =
   | InternalServiceException
   | InvalidRequestException
@@ -9150,6 +9227,7 @@ export const deleteAlias: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAlias",
 }));
+
 export type DeleteBuildError =
   | InternalServiceException
   | InvalidRequestException
@@ -9192,6 +9270,7 @@ export const deleteBuild: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBuild",
 }));
+
 export type DeleteContainerFleetError =
   | InternalServiceException
   | InvalidRequestException
@@ -9235,6 +9314,7 @@ export const deleteContainerFleet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteContainerFleet",
 }));
+
 export type DeleteContainerGroupDefinitionError =
   | InternalServiceException
   | InvalidRequestException
@@ -9296,6 +9376,7 @@ export const deleteContainerGroupDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteContainerGroupDefinition",
 }));
+
 export type DeleteFleetError =
   | InternalServiceException
   | InvalidFleetStatusException
@@ -9344,6 +9425,7 @@ export const deleteFleet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFleet",
 }));
+
 export type DeleteFleetLocationsError =
   | InternalServiceException
   | InvalidRequestException
@@ -9388,6 +9470,7 @@ export const deleteFleetLocations: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFleetLocations",
 }));
+
 export type DeleteGameServerGroupError =
   | InternalServiceException
   | InvalidRequestException
@@ -9444,6 +9527,7 @@ export const deleteGameServerGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGameServerGroup",
 }));
+
 export type DeleteGameSessionQueueError =
   | InternalServiceException
   | InvalidRequestException
@@ -9476,6 +9560,7 @@ export const deleteGameSessionQueue: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGameSessionQueue",
 }));
+
 export type DeleteLocationError =
   | InternalServiceException
   | InvalidRequestException
@@ -9508,6 +9593,7 @@ export const deleteLocation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLocation",
 }));
+
 export type DeleteMatchmakingConfigurationError =
   | InternalServiceException
   | InvalidRequestException
@@ -9541,6 +9627,7 @@ export const deleteMatchmakingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMatchmakingConfiguration",
 }));
+
 export type DeleteMatchmakingRuleSetError =
   | InternalServiceException
   | InvalidRequestException
@@ -9579,6 +9666,7 @@ export const deleteMatchmakingRuleSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMatchmakingRuleSet",
 }));
+
 export type DeleteScalingPolicyError =
   | InternalServiceException
   | InvalidRequestException
@@ -9615,6 +9703,7 @@ export const deleteScalingPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteScalingPolicy",
 }));
+
 export type DeleteScriptError =
   | InternalServiceException
   | InvalidRequestException
@@ -9661,6 +9750,7 @@ export const deleteScript: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteScript",
 }));
+
 export type DeleteVpcPeeringAuthorizationError =
   | InternalServiceException
   | InvalidRequestException
@@ -9695,6 +9785,7 @@ export const deleteVpcPeeringAuthorization: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpcPeeringAuthorization",
 }));
+
 export type DeleteVpcPeeringConnectionError =
   | InternalServiceException
   | InvalidRequestException
@@ -9733,6 +9824,7 @@ export const deleteVpcPeeringConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpcPeeringConnection",
 }));
+
 export type DeregisterComputeError =
   | InternalServiceException
   | InvalidRequestException
@@ -9768,6 +9860,7 @@ export const deregisterCompute: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterCompute",
 }));
+
 export type DeregisterGameServerError =
   | InternalServiceException
   | InvalidRequestException
@@ -9808,6 +9901,7 @@ export const deregisterGameServer: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterGameServer",
 }));
+
 export type DescribeAliasError =
   | InternalServiceException
   | InvalidRequestException
@@ -9845,6 +9939,7 @@ export const describeAlias: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAlias",
 }));
+
 export type DescribeBuildError =
   | InternalServiceException
   | InvalidRequestException
@@ -9882,6 +9977,7 @@ export const describeBuild: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBuild",
 }));
+
 export type DescribeComputeError =
   | InternalServiceException
   | InvalidRequestException
@@ -9941,6 +10037,7 @@ export const describeCompute: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCompute",
 }));
+
 export type DescribeContainerFleetError =
   | InternalServiceException
   | InvalidRequestException
@@ -9987,6 +10084,7 @@ export const describeContainerFleet: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeContainerFleet",
 }));
+
 export type DescribeContainerGroupDefinitionError =
   | InternalServiceException
   | InvalidRequestException
@@ -10036,6 +10134,7 @@ export const describeContainerGroupDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeContainerGroupDefinition",
 }));
+
 export type DescribeContainerGroupPortMappingsError =
   | InternalServiceException
   | InvalidRequestException
@@ -10101,6 +10200,7 @@ export const describeContainerGroupPortMappings: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeContainerGroupPortMappings",
 }));
+
 export type DescribeEC2InstanceLimitsError =
   | InternalServiceException
   | InvalidRequestException
@@ -10179,6 +10279,7 @@ export const describeEC2InstanceLimits: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEC2InstanceLimits",
 }));
+
 export type DescribeFleetAttributesError =
   | InternalServiceException
   | InvalidRequestException
@@ -10251,6 +10352,7 @@ export const describeFleetAttributes: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeFleetCapacityError =
   | InternalServiceException
   | InvalidRequestException
@@ -10334,6 +10436,7 @@ export const describeFleetCapacity: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeFleetDeploymentError =
   | InternalServiceException
   | InvalidRequestException
@@ -10377,6 +10480,7 @@ export const describeFleetDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFleetDeployment",
 }));
+
 export type DescribeFleetEventsError =
   | InternalServiceException
   | InvalidRequestException
@@ -10442,6 +10546,7 @@ export const describeFleetEvents: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeFleetLocationAttributesError =
   | InternalServiceException
   | InvalidRequestException
@@ -10515,6 +10620,7 @@ export const describeFleetLocationAttributes: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeFleetLocationCapacityError =
   | InternalServiceException
   | InvalidRequestException
@@ -10567,6 +10673,7 @@ export const describeFleetLocationCapacity: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFleetLocationCapacity",
 }));
+
 export type DescribeFleetLocationUtilizationError =
   | InternalServiceException
   | InvalidRequestException
@@ -10616,6 +10723,7 @@ export const describeFleetLocationUtilization: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFleetLocationUtilization",
 }));
+
 export type DescribeFleetPortSettingsError =
   | InternalServiceException
   | InvalidRequestException
@@ -10668,6 +10776,7 @@ export const describeFleetPortSettings: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFleetPortSettings",
 }));
+
 export type DescribeFleetUtilizationError =
   | InternalServiceException
   | InvalidRequestException
@@ -10747,6 +10856,7 @@ export const describeFleetUtilization: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeGameServerError =
   | InternalServiceException
   | InvalidRequestException
@@ -10786,6 +10896,7 @@ export const describeGameServer: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeGameServer",
 }));
+
 export type DescribeGameServerGroupError =
   | InternalServiceException
   | InvalidRequestException
@@ -10827,6 +10938,7 @@ export const describeGameServerGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeGameServerGroup",
 }));
+
 export type DescribeGameServerInstancesError =
   | InternalServiceException
   | InvalidRequestException
@@ -10896,6 +11008,7 @@ export const describeGameServerInstances: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeGameSessionDetailsError =
   | InternalServiceException
   | InvalidRequestException
@@ -10979,6 +11092,7 @@ export const describeGameSessionDetails: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeGameSessionPlacementError =
   | InternalServiceException
   | InvalidRequestException
@@ -11019,6 +11133,7 @@ export const describeGameSessionPlacement: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeGameSessionPlacement",
 }));
+
 export type DescribeGameSessionQueuesError =
   | InternalServiceException
   | InvalidRequestException
@@ -11076,6 +11191,7 @@ export const describeGameSessionQueues: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeGameSessionsError =
   | InternalServiceException
   | InvalidRequestException
@@ -11166,6 +11282,7 @@ export const describeGameSessions: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeInstancesError =
   | InternalServiceException
   | InvalidRequestException
@@ -11251,6 +11368,7 @@ export const describeInstances: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeMatchmakingError =
   | InternalServiceException
   | InvalidRequestException
@@ -11296,6 +11414,7 @@ export const describeMatchmaking: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeMatchmaking",
 }));
+
 export type DescribeMatchmakingConfigurationsError =
   | InternalServiceException
   | InvalidRequestException
@@ -11356,6 +11475,7 @@ export const describeMatchmakingConfigurations: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeMatchmakingRuleSetsError =
   | InternalServiceException
   | InvalidRequestException
@@ -11414,6 +11534,7 @@ export const describeMatchmakingRuleSets: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribePlayerSessionsError =
   | InternalServiceException
   | InvalidRequestException
@@ -11487,6 +11608,7 @@ export const describePlayerSessions: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeRuntimeConfigurationError =
   | InternalServiceException
   | InvalidRequestException
@@ -11534,6 +11656,7 @@ export const describeRuntimeConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRuntimeConfiguration",
 }));
+
 export type DescribeScalingPoliciesError =
   | InternalServiceException
   | InvalidRequestException
@@ -11594,6 +11717,7 @@ export const describeScalingPolicies: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeScriptError =
   | InternalServiceException
   | InvalidRequestException
@@ -11634,6 +11758,7 @@ export const describeScript: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeScript",
 }));
+
 export type DescribeVpcPeeringAuthorizationsError =
   | InternalServiceException
   | InvalidRequestException
@@ -11667,6 +11792,7 @@ export const describeVpcPeeringAuthorizations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpcPeeringAuthorizations",
 }));
+
 export type DescribeVpcPeeringConnectionsError =
   | InternalServiceException
   | InvalidRequestException
@@ -11707,6 +11833,7 @@ export const describeVpcPeeringConnections: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpcPeeringConnections",
 }));
+
 export type GetComputeAccessError =
   | InternalServiceException
   | InvalidRequestException
@@ -11761,6 +11888,7 @@ export const getComputeAccess: API.OperationMethod<
   retry: Retry,
   operationName: "GetComputeAccess",
 }));
+
 export type GetComputeAuthTokenError =
   | InternalServiceException
   | InvalidRequestException
@@ -11819,6 +11947,7 @@ export const getComputeAuthToken: API.OperationMethod<
   retry: Retry,
   operationName: "GetComputeAuthToken",
 }));
+
 export type GetGameSessionLogUrlError =
   | InternalServiceException
   | InvalidRequestException
@@ -11856,6 +11985,7 @@ export const getGameSessionLogUrl: API.OperationMethod<
   retry: Retry,
   operationName: "GetGameSessionLogUrl",
 }));
+
 export type GetInstanceAccessError =
   | InternalServiceException
   | InvalidRequestException
@@ -11914,6 +12044,7 @@ export const getInstanceAccess: API.OperationMethod<
   retry: Retry,
   operationName: "GetInstanceAccess",
 }));
+
 export type GetPlayerConnectionDetailsError =
   | InternalServiceException
   | InvalidGameSessionStatusException
@@ -11959,6 +12090,7 @@ export const getPlayerConnectionDetails: API.OperationMethod<
   retry: Retry,
   operationName: "GetPlayerConnectionDetails",
 }));
+
 export type ListAliasesError =
   | InternalServiceException
   | InvalidRequestException
@@ -12015,6 +12147,7 @@ export const listAliases: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListBuildsError =
   | InternalServiceException
   | InvalidRequestException
@@ -12074,6 +12207,7 @@ export const listBuilds: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListComputeError =
   | InternalServiceException
   | InvalidRequestException
@@ -12147,6 +12281,7 @@ export const listCompute: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListContainerFleetsError =
   | InternalServiceException
   | InvalidRequestException
@@ -12218,6 +12353,7 @@ export const listContainerFleets: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListContainerGroupDefinitionsError =
   | InternalServiceException
   | InvalidRequestException
@@ -12286,6 +12422,7 @@ export const listContainerGroupDefinitions: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListContainerGroupDefinitionVersionsError =
   | InternalServiceException
   | InvalidRequestException
@@ -12357,6 +12494,7 @@ export const listContainerGroupDefinitionVersions: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListFleetDeploymentsError =
   | InternalServiceException
   | InvalidRequestException
@@ -12424,6 +12562,7 @@ export const listFleetDeployments: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListFleetsError =
   | InternalServiceException
   | InvalidRequestException
@@ -12496,6 +12635,7 @@ export const listFleets: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListGameServerGroupsError =
   | InternalServiceException
   | InvalidRequestException
@@ -12544,6 +12684,7 @@ export const listGameServerGroups: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListGameServersError =
   | InternalServiceException
   | InvalidRequestException
@@ -12600,6 +12741,7 @@ export const listGameServers: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListLocationsError =
   | InternalServiceException
   | InvalidRequestException
@@ -12655,6 +12797,7 @@ export const listLocations: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListScriptsError =
   | InternalServiceException
   | InvalidRequestException
@@ -12712,6 +12855,7 @@ export const listScripts: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServiceException
   | InvalidRequestException
@@ -12758,6 +12902,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutScalingPolicyError =
   | InternalServiceException
   | InvalidRequestException
@@ -12856,6 +13001,7 @@ export const putScalingPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutScalingPolicy",
 }));
+
 export type RegisterComputeError =
   | ConflictException
   | InternalServiceException
@@ -12916,6 +13062,7 @@ export const registerCompute: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterCompute",
 }));
+
 export type RegisterGameServerError =
   | ConflictException
   | InternalServiceException
@@ -12966,6 +13113,7 @@ export const registerGameServer: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterGameServer",
 }));
+
 export type RequestUploadCredentialsError =
   | InternalServiceException
   | InvalidRequestException
@@ -13007,6 +13155,7 @@ export const requestUploadCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "RequestUploadCredentials",
 }));
+
 export type ResolveAliasError =
   | InternalServiceException
   | InvalidRequestException
@@ -13047,6 +13196,7 @@ export const resolveAlias: API.OperationMethod<
   retry: Retry,
   operationName: "ResolveAlias",
 }));
+
 export type ResumeGameServerGroupError =
   | InternalServiceException
   | InvalidRequestException
@@ -13091,6 +13241,7 @@ export const resumeGameServerGroup: API.OperationMethod<
   retry: Retry,
   operationName: "ResumeGameServerGroup",
 }));
+
 export type SearchGameSessionsError =
   | InternalServiceException
   | InvalidRequestException
@@ -13213,6 +13364,7 @@ export const searchGameSessions: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type StartFleetActionsError =
   | InternalServiceException
   | InvalidRequestException
@@ -13263,6 +13415,7 @@ export const startFleetActions: API.OperationMethod<
   retry: Retry,
   operationName: "StartFleetActions",
 }));
+
 export type StartGameSessionPlacementError =
   | InternalServiceException
   | InvalidRequestException
@@ -13369,6 +13522,7 @@ export const startGameSessionPlacement: API.OperationMethod<
   retry: Retry,
   operationName: "StartGameSessionPlacement",
 }));
+
 export type StartMatchBackfillError =
   | InternalServiceException
   | InvalidRequestException
@@ -13433,6 +13587,7 @@ export const startMatchBackfill: API.OperationMethod<
   retry: Retry,
   operationName: "StartMatchBackfill",
 }));
+
 export type StartMatchmakingError =
   | InternalServiceException
   | InvalidRequestException
@@ -13487,6 +13642,7 @@ export const startMatchmaking: API.OperationMethod<
   retry: Retry,
   operationName: "StartMatchmaking",
 }));
+
 export type StopFleetActionsError =
   | InternalServiceException
   | InvalidRequestException
@@ -13542,6 +13698,7 @@ export const stopFleetActions: API.OperationMethod<
   retry: Retry,
   operationName: "StopFleetActions",
 }));
+
 export type StopGameSessionPlacementError =
   | InternalServiceException
   | InvalidRequestException
@@ -13581,6 +13738,7 @@ export const stopGameSessionPlacement: API.OperationMethod<
   retry: Retry,
   operationName: "StopGameSessionPlacement",
 }));
+
 export type StopMatchmakingError =
   | InternalServiceException
   | InvalidRequestException
@@ -13625,6 +13783,7 @@ export const stopMatchmaking: API.OperationMethod<
   retry: Retry,
   operationName: "StopMatchmaking",
 }));
+
 export type SuspendGameServerGroupError =
   | InternalServiceException
   | InvalidRequestException
@@ -13675,6 +13834,7 @@ export const suspendGameServerGroup: API.OperationMethod<
   retry: Retry,
   operationName: "SuspendGameServerGroup",
 }));
+
 export type TagResourceError =
   | InternalServiceException
   | InvalidRequestException
@@ -13724,6 +13884,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TerminateGameSessionError =
   | InternalServiceException
   | InvalidGameSessionStatusException
@@ -13799,6 +13960,7 @@ export const terminateGameSession: API.OperationMethod<
   retry: Retry,
   operationName: "TerminateGameSession",
 }));
+
 export type UntagResourceError =
   | InternalServiceException
   | InvalidRequestException
@@ -13847,6 +14009,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAliasError =
   | InternalServiceException
   | InvalidRequestException
@@ -13884,6 +14047,7 @@ export const updateAlias: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAlias",
 }));
+
 export type UpdateBuildError =
   | InternalServiceException
   | InvalidRequestException
@@ -13922,6 +14086,7 @@ export const updateBuild: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBuild",
 }));
+
 export type UpdateContainerFleetError =
   | InternalServiceException
   | InvalidRequestException
@@ -14004,6 +14169,7 @@ export const updateContainerFleet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateContainerFleet",
 }));
+
 export type UpdateContainerGroupDefinitionError =
   | InternalServiceException
   | InvalidRequestException
@@ -14072,6 +14238,7 @@ export const updateContainerGroupDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateContainerGroupDefinition",
 }));
+
 export type UpdateFleetAttributesError =
   | ConflictException
   | InternalServiceException
@@ -14123,6 +14290,7 @@ export const updateFleetAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFleetAttributes",
 }));
+
 export type UpdateFleetCapacityError =
   | ConflictException
   | InternalServiceException
@@ -14208,6 +14376,7 @@ export const updateFleetCapacity: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFleetCapacity",
 }));
+
 export type UpdateFleetPortSettingsError =
   | ConflictException
   | InternalServiceException
@@ -14260,6 +14429,7 @@ export const updateFleetPortSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFleetPortSettings",
 }));
+
 export type UpdateGameServerError =
   | InternalServiceException
   | InvalidRequestException
@@ -14317,6 +14487,7 @@ export const updateGameServer: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGameServer",
 }));
+
 export type UpdateGameServerGroupError =
   | InternalServiceException
   | InvalidRequestException
@@ -14365,6 +14536,7 @@ export const updateGameServerGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGameServerGroup",
 }));
+
 export type UpdateGameSessionError =
   | ConflictException
   | InternalServiceException
@@ -14407,6 +14579,7 @@ export const updateGameSession: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGameSession",
 }));
+
 export type UpdateGameSessionQueueError =
   | InternalServiceException
   | InvalidRequestException
@@ -14443,6 +14616,7 @@ export const updateGameSessionQueue: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGameSessionQueue",
 }));
+
 export type UpdateMatchmakingConfigurationError =
   | InternalServiceException
   | InvalidRequestException
@@ -14479,6 +14653,7 @@ export const updateMatchmakingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMatchmakingConfiguration",
 }));
+
 export type UpdateRuntimeConfigurationError =
   | InternalServiceException
   | InvalidFleetStatusException
@@ -14531,6 +14706,7 @@ export const updateRuntimeConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRuntimeConfiguration",
 }));
+
 export type UpdateScriptError =
   | InternalServiceException
   | InvalidRequestException
@@ -14580,6 +14756,7 @@ export const updateScript: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateScript",
 }));
+
 export type ValidateMatchmakingRuleSetError =
   | InternalServiceException
   | InvalidRequestException

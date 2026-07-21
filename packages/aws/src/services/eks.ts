@@ -91,44 +91,133 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type RequiredClaimsKey = string;
-export type RequiredClaimsValue = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ClusterName = string;
-export type RoleArn = string;
-export type Namespace = string;
-export type BoxedBoolean = boolean;
-export type EksAnywhereSubscriptionName = string;
-export type ZeroCapacity = number;
-export type Capacity = number;
-export type BoxedInteger = number;
-export type LabelKey = string;
-export type LabelValue = string;
-export type TaintKey = string;
-export type TaintValue = string;
-export type NonZeroInteger = number;
-export type PercentCapacity = number;
-export type DescribeAddonVersionsRequestMaxResults = number;
-export type DescribeClusterVersionMaxResults = number;
-export type ListAccessEntriesRequestMaxResults = number;
-export type ListAccessPoliciesRequestMaxResults = number;
-export type ListAddonsRequestMaxResults = number;
-export type ListAssociatedAccessPoliciesRequestMaxResults = number;
-export type ListCapabilitiesRequestMaxResults = number;
-export type ListClustersRequestMaxResults = number;
-export type ListEksAnywhereSubscriptionsRequestMaxResults = number;
-export type FargateProfilesRequestMaxResults = number;
-export type ListIdentityProviderConfigsRequestMaxResults = number;
-export type ListInsightsMaxResults = number;
-export type ListNodegroupsRequestMaxResults = number;
-export type ListPodIdentityAssociationsMaxResults = number;
-export type ListUpdatesRequestMaxResults = number;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ClientException extends S.TaggedErrorClass<ClientException>()(
+  "ClientException",
+  {
+    clusterName: S.optional(S.String),
+    nodegroupName: S.optional(S.String),
+    addonName: S.optional(S.String),
+    subscriptionId: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  {
+    clusterName: S.optional(S.String),
+    nodegroupName: S.optional(S.String),
+    fargateProfileName: S.optional(S.String),
+    addonName: S.optional(S.String),
+    subscriptionId: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  {
+    clusterName: S.optional(S.String),
+    nodegroupName: S.optional(S.String),
+    addonName: S.optional(S.String),
+    subscriptionId: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
+  "InvalidStateException",
+  { clusterName: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  {
+    clusterName: S.optional(S.String),
+    nodegroupName: S.optional(S.String),
+    addonName: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
+  "ResourceLimitExceededException",
+  {
+    clusterName: S.optional(S.String),
+    nodegroupName: S.optional(S.String),
+    subscriptionId: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    clusterName: S.optional(S.String),
+    nodegroupName: S.optional(S.String),
+    fargateProfileName: S.optional(S.String),
+    addonName: S.optional(S.String),
+    subscriptionId: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourcePropagationDelayException extends S.TaggedErrorClass<ResourcePropagationDelayException>()(
+  "ResourcePropagationDelayException",
+  { message: S.optional(S.String) },
+  T.HttpError(428),
+) {}
+export class ServerException extends S.TaggedErrorClass<ServerException>()(
+  "ServerException",
+  {
+    clusterName: S.optional(S.String),
+    nodegroupName: S.optional(S.String),
+    addonName: S.optional(S.String),
+    subscriptionId: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { clusterName: S.optional(S.String), message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnsupportedAvailabilityZoneException extends S.TaggedErrorClass<UnsupportedAvailabilityZoneException>()(
+  "UnsupportedAvailabilityZoneException",
+  {
+    message: S.optional(S.String),
+    clusterName: S.optional(S.String),
+    nodegroupName: S.optional(S.String),
+    validZones: S.optional(
+      S.suspend(() => StringList).annotate({ identifier: "StringList" }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type AccessScopeType = "cluster" | "namespace" | (string & {});
 export const AccessScopeType = /*@__PURE__*/ S.String;
+
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface AccessScope {
@@ -252,6 +341,7 @@ export type UpdateStatus =
   | "Successful"
   | (string & {});
 export const UpdateStatus = /*@__PURE__*/ S.String;
+
 export type UpdateType =
   | "VersionUpdate"
   | "EndpointAccessUpdate"
@@ -274,6 +364,7 @@ export type UpdateType =
   | "ControlPlaneEgressUpdate"
   | (string & {});
 export const UpdateType = /*@__PURE__*/ S.String;
+
 export type UpdateParamType =
   | "Version"
   | "PlatformVersion"
@@ -328,6 +419,7 @@ export type UpdateParamType =
   | "ControlPlaneEgressMode"
   | (string & {});
 export const UpdateParamType = /*@__PURE__*/ S.String;
+
 export interface UpdateParam {
   type?: UpdateParamType;
   value?: string;
@@ -357,6 +449,7 @@ export type ErrorCode =
   | "K8sResourceNotFound"
   | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
+
 export interface ErrorDetail {
   errorCode?: ErrorCode;
   errorMessage?: string;
@@ -397,6 +490,8 @@ export const AssociateEncryptionConfigResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateEncryptionConfigResponse",
 }) as any as S.Schema<AssociateEncryptionConfigResponse>;
+export type RequiredClaimsKey = string;
+export type RequiredClaimsValue = string;
 export type RequiredClaimsMap = { [key: string]: string | undefined };
 export const RequiredClaimsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -426,6 +521,8 @@ export const OidcIdentityProviderConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OidcIdentityProviderConfigRequest",
 }) as any as S.Schema<OidcIdentityProviderConfigRequest>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -532,12 +629,15 @@ export const CreateAccessEntryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessEntryResponse",
 }) as any as S.Schema<CreateAccessEntryResponse>;
+export type ClusterName = string;
+export type RoleArn = string;
 export type ResolveConflicts =
   | "OVERWRITE"
   | "NONE"
   | "PRESERVE"
   | (string & {});
 export const ResolveConflicts = /*@__PURE__*/ S.String;
+
 export interface AddonPodIdentityAssociations {
   serviceAccount: string;
   roleArn: string;
@@ -551,6 +651,7 @@ export type AddonPodIdentityAssociationsList = AddonPodIdentityAssociations[];
 export const AddonPodIdentityAssociationsList = /*@__PURE__*/ S.Array(
   AddonPodIdentityAssociations,
 );
+export type Namespace = string;
 export interface AddonNamespaceConfigRequest {
   namespace?: string;
 }
@@ -607,6 +708,7 @@ export type AddonStatus =
   | "UPDATE_FAILED"
   | (string & {});
 export const AddonStatus = /*@__PURE__*/ S.String;
+
 export type AddonIssueCode =
   | "AccessDenied"
   | "InternalFailure"
@@ -620,6 +722,7 @@ export type AddonIssueCode =
   | "AddonPermissionFailure"
   | (string & {});
 export const AddonIssueCode = /*@__PURE__*/ S.String;
+
 export interface AddonIssue {
   code?: AddonIssueCode;
   message?: string;
@@ -708,6 +811,7 @@ export const CreateAddonResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAddonResponse>;
 export type CapabilityType = "ACK" | "KRO" | "ARGOCD" | (string & {});
 export const CapabilityType = /*@__PURE__*/ S.String;
+
 export interface ArgoCdAwsIdcConfigRequest {
   idcInstanceArn: string;
   idcRegion?: string;
@@ -719,8 +823,10 @@ export const ArgoCdAwsIdcConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ArgoCdAwsIdcConfigRequest>;
 export type ArgoCdRole = "ADMIN" | "EDITOR" | "VIEWER" | (string & {});
 export const ArgoCdRole = /*@__PURE__*/ S.String;
+
 export type SsoIdentityType = "SSO_USER" | "SSO_GROUP" | (string & {});
 export const SsoIdentityType = /*@__PURE__*/ S.String;
+
 export interface SsoIdentity {
   id: string;
   type: SsoIdentityType;
@@ -775,6 +881,7 @@ export const CapabilityConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapabilityConfigurationRequest>;
 export type CapabilityDeletePropagationPolicy = "RETAIN" | (string & {});
 export const CapabilityDeletePropagationPolicy = /*@__PURE__*/ S.String;
+
 export interface CreateCapabilityRequest {
   capabilityName: string;
   clusterName: string;
@@ -818,6 +925,7 @@ export type CapabilityStatus =
   | "DEGRADED"
   | (string & {});
 export const CapabilityStatus = /*@__PURE__*/ S.String;
+
 export interface ArgoCdAwsIdcConfigResponse {
   idcInstanceArn?: string;
   idcRegion?: string;
@@ -871,6 +979,7 @@ export type CapabilityIssueCode =
   | "ClusterUnreachable"
   | (string & {});
 export const CapabilityIssueCode = /*@__PURE__*/ S.String;
+
 export interface CapabilityIssue {
   code?: CapabilityIssueCode;
   message?: string;
@@ -933,12 +1042,14 @@ export const CreateCapabilityResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCapabilityResponse",
 }) as any as S.Schema<CreateCapabilityResponse>;
+export type BoxedBoolean = boolean;
 export type ControlPlaneEgressModeType =
   | "AWS_MANAGED"
   | "CUSTOMER_ROUTED"
   | "CUSTOMER_ISOLATED"
   | (string & {});
 export const ControlPlaneEgressModeType = /*@__PURE__*/ S.String;
+
 export interface VpcConfigRequest {
   subnetIds?: string[];
   securityGroupIds?: string[];
@@ -961,6 +1072,7 @@ export const VpcConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpcConfigRequest>;
 export type IpFamily = "ipv4" | "ipv6" | (string & {});
 export const IpFamily = /*@__PURE__*/ S.String;
+
 export interface ElasticLoadBalancing {
   enabled?: boolean;
 }
@@ -991,6 +1103,7 @@ export type LogType =
   | "scheduler"
   | (string & {});
 export const LogType = /*@__PURE__*/ S.String;
+
 export type LogTypes = LogType[];
 export const LogTypes = /*@__PURE__*/ S.Array(LogType);
 export interface LogSetup {
@@ -1010,6 +1123,7 @@ export const Logging = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Logging" }) as any as S.Schema<Logging>;
 export type SpreadLevel = "host" | "rack" | (string & {});
 export const SpreadLevel = /*@__PURE__*/ S.String;
+
 export interface ControlPlanePlacementRequest {
   groupName?: string;
   spreadLevel?: SpreadLevel;
@@ -1054,6 +1168,7 @@ export type AuthenticationMode =
   | "CONFIG_MAP"
   | (string & {});
 export const AuthenticationMode = /*@__PURE__*/ S.String;
+
 export interface CreateAccessConfigRequest {
   bootstrapClusterCreatorAdminPermissions?: boolean;
   authenticationMode?: AuthenticationMode;
@@ -1068,6 +1183,7 @@ export const CreateAccessConfigRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAccessConfigRequest>;
 export type SupportType = "STANDARD" | "EXTENDED" | (string & {});
 export const SupportType = /*@__PURE__*/ S.String;
+
 export interface UpgradePolicyRequest {
   supportType?: SupportType;
 }
@@ -1152,6 +1268,7 @@ export type ProvisionedControlPlaneTier =
   | "tier-8xl"
   | (string & {});
 export const ProvisionedControlPlaneTier = /*@__PURE__*/ S.String;
+
 export interface ControlPlaneScalingConfig {
   tier?: ProvisionedControlPlaneTier;
 }
@@ -1276,6 +1393,7 @@ export type ClusterStatus =
   | "PENDING"
   | (string & {});
 export const ClusterStatus = /*@__PURE__*/ S.String;
+
 export interface Certificate {
   data?: string;
 }
@@ -1324,6 +1442,7 @@ export type ClusterIssueCode =
   | "Other"
   | (string & {});
 export const ClusterIssueCode = /*@__PURE__*/ S.String;
+
 export interface ClusterIssue {
   code?: ClusterIssueCode;
   message?: string;
@@ -1514,8 +1633,10 @@ export const CreateClusterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateClusterResponse",
 }) as any as S.Schema<CreateClusterResponse>;
+export type EksAnywhereSubscriptionName = string;
 export type EksAnywhereSubscriptionTermUnit = "MONTHS" | (string & {});
 export const EksAnywhereSubscriptionTermUnit = /*@__PURE__*/ S.String;
+
 export interface EksAnywhereSubscriptionTerm {
   duration?: number;
   unit?: EksAnywhereSubscriptionTermUnit;
@@ -1530,6 +1651,7 @@ export const EksAnywhereSubscriptionTerm = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EksAnywhereSubscriptionTerm>;
 export type EksAnywhereSubscriptionLicenseType = "Cluster" | (string & {});
 export const EksAnywhereSubscriptionLicenseType = /*@__PURE__*/ S.String;
+
 export interface CreateEksAnywhereSubscriptionRequest {
   name: string;
   term: EksAnywhereSubscriptionTerm;
@@ -1676,6 +1798,7 @@ export type FargateProfileStatus =
   | "DELETE_FAILED"
   | (string & {});
 export const FargateProfileStatus = /*@__PURE__*/ S.String;
+
 export type FargateProfileIssueCode =
   | "PodExecutionRoleAlreadyInUse"
   | "AccessDenied"
@@ -1683,6 +1806,7 @@ export type FargateProfileIssueCode =
   | "InternalFailure"
   | (string & {});
 export const FargateProfileIssueCode = /*@__PURE__*/ S.String;
+
 export interface FargateProfileIssue {
   code?: FargateProfileIssueCode;
   message?: string;
@@ -1742,6 +1866,8 @@ export const CreateFargateProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFargateProfileResponse",
 }) as any as S.Schema<CreateFargateProfileResponse>;
+export type ZeroCapacity = number;
+export type Capacity = number;
 export interface NodegroupScalingConfig {
   minSize?: number;
   maxSize?: number;
@@ -1756,6 +1882,7 @@ export const NodegroupScalingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NodegroupScalingConfig",
 }) as any as S.Schema<NodegroupScalingConfig>;
+export type BoxedInteger = number;
 export type AMITypes =
   | "AL2_x86_64"
   | "AL2_x86_64_GPU"
@@ -1782,6 +1909,7 @@ export type AMITypes =
   | "AL2023_ARM_64_NVIDIA"
   | (string & {});
 export const AMITypes = /*@__PURE__*/ S.String;
+
 export interface RemoteAccessConfig {
   ec2SshKey?: string;
   sourceSecurityGroups?: string[];
@@ -1794,17 +1922,22 @@ export const RemoteAccessConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RemoteAccessConfig",
 }) as any as S.Schema<RemoteAccessConfig>;
+export type LabelKey = string;
+export type LabelValue = string;
 export type LabelsMap = { [key: string]: string | undefined };
 export const LabelsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type TaintKey = string;
+export type TaintValue = string;
 export type TaintEffect =
   | "NO_SCHEDULE"
   | "NO_EXECUTE"
   | "PREFER_NO_SCHEDULE"
   | (string & {});
 export const TaintEffect = /*@__PURE__*/ S.String;
+
 export interface Taint {
   key?: string;
   value?: string;
@@ -1833,8 +1966,11 @@ export const LaunchTemplateSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LaunchTemplateSpecification",
 }) as any as S.Schema<LaunchTemplateSpecification>;
+export type NonZeroInteger = number;
+export type PercentCapacity = number;
 export type NodegroupUpdateStrategies = "DEFAULT" | "MINIMAL" | (string & {});
 export const NodegroupUpdateStrategies = /*@__PURE__*/ S.String;
+
 export interface NodegroupUpdateConfig {
   maxUnavailable?: number;
   maxUnavailablePercentage?: number;
@@ -1851,6 +1987,7 @@ export const NodegroupUpdateConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodegroupUpdateConfig>;
 export type RepairAction = "Replace" | "Reboot" | "NoAction" | (string & {});
 export const RepairAction = /*@__PURE__*/ S.String;
+
 export interface NodeRepairConfigOverrides {
   nodeMonitoringCondition?: string;
   nodeUnhealthyReason?: string;
@@ -1897,12 +2034,14 @@ export type CapacityTypes =
   | "CAPACITY_BLOCK"
   | (string & {});
 export const CapacityTypes = /*@__PURE__*/ S.String;
+
 export type WarmPoolState =
   | "STOPPED"
   | "RUNNING"
   | "HIBERNATED"
   | (string & {});
 export const WarmPoolState = /*@__PURE__*/ S.String;
+
 export interface WarmPoolConfig {
   enabled?: boolean;
   minSize?: number;
@@ -1986,6 +2125,7 @@ export type NodegroupStatus =
   | "DEGRADED"
   | (string & {});
 export const NodegroupStatus = /*@__PURE__*/ S.String;
+
 export interface AutoScalingGroup {
   name?: string;
 }
@@ -2047,6 +2187,7 @@ export type NodegroupIssueCode =
   | "Ec2InstanceTypeDoesNotExist"
   | (string & {});
 export const NodegroupIssueCode = /*@__PURE__*/ S.String;
+
 export interface Issue {
   code?: NodegroupIssueCode;
   message?: string;
@@ -2600,6 +2741,7 @@ export const DescribeAddonConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAddonConfigurationResponse",
 }) as any as S.Schema<DescribeAddonConfigurationResponse>;
+export type DescribeAddonVersionsRequestMaxResults = number;
 export interface DescribeAddonVersionsRequest {
   kubernetesVersion?: string;
   maxResults?: number;
@@ -2757,18 +2899,21 @@ export const DescribeClusterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeClusterResponse",
 }) as any as S.Schema<DescribeClusterResponse>;
+export type DescribeClusterVersionMaxResults = number;
 export type ClusterVersionStatus =
   | "unsupported"
   | "standard-support"
   | "extended-support"
   | (string & {});
 export const ClusterVersionStatus = /*@__PURE__*/ S.String;
+
 export type VersionStatus =
   | "UNSUPPORTED"
   | "STANDARD_SUPPORT"
   | "EXTENDED_SUPPORT"
   | (string & {});
 export const VersionStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeClusterVersionsRequest {
   clusterType?: string;
   maxResults?: number;
@@ -2946,6 +3091,7 @@ export const DescribeIdentityProviderConfigRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeIdentityProviderConfigRequest>;
 export type ConfigStatus = "CREATING" | "DELETING" | "ACTIVE" | (string & {});
 export const ConfigStatus = /*@__PURE__*/ S.String;
+
 export interface OidcIdentityProviderConfig {
   identityProviderConfigName?: string;
   identityProviderConfigArn?: string;
@@ -3020,6 +3166,7 @@ export const DescribeInsightRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeInsightRequest>;
 export type Category = "UPGRADE_READINESS" | "MISCONFIGURATION" | (string & {});
 export const Category = /*@__PURE__*/ S.String;
+
 export type InsightStatusValue =
   | "PASSING"
   | "WARNING"
@@ -3027,6 +3174,7 @@ export type InsightStatusValue =
   | "UNKNOWN"
   | (string & {});
 export const InsightStatusValue = /*@__PURE__*/ S.String;
+
 export interface InsightStatus {
   status?: InsightStatusValue;
   reason?: string;
@@ -3192,6 +3340,7 @@ export type InsightsRefreshStatus =
   | "COMPLETED"
   | (string & {});
 export const InsightsRefreshStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeInsightsRefreshResponse {
   message?: string;
   status?: InsightsRefreshStatus;
@@ -3376,6 +3525,7 @@ export const DisassociateIdentityProviderConfigResponse =
   ).annotate({
     identifier: "DisassociateIdentityProviderConfigResponse",
   }) as any as S.Schema<DisassociateIdentityProviderConfigResponse>;
+export type ListAccessEntriesRequestMaxResults = number;
 export interface ListAccessEntriesRequest {
   clusterName: string;
   associatedPolicyArn?: string;
@@ -3415,6 +3565,7 @@ export const ListAccessEntriesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAccessEntriesResponse",
 }) as any as S.Schema<ListAccessEntriesResponse>;
+export type ListAccessPoliciesRequestMaxResults = number;
 export interface ListAccessPoliciesRequest {
   maxResults?: number;
   nextToken?: string;
@@ -3457,6 +3608,7 @@ export const ListAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAccessPoliciesResponse",
 }) as any as S.Schema<ListAccessPoliciesResponse>;
+export type ListAddonsRequestMaxResults = number;
 export interface ListAddonsRequest {
   clusterName: string;
   maxResults?: number;
@@ -3489,6 +3641,7 @@ export const ListAddonsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAddonsResponse",
 }) as any as S.Schema<ListAddonsResponse>;
+export type ListAssociatedAccessPoliciesRequestMaxResults = number;
 export interface ListAssociatedAccessPoliciesRequest {
   clusterName: string;
   principalArn: string;
@@ -3538,6 +3691,7 @@ export const ListAssociatedAccessPoliciesResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListAssociatedAccessPoliciesResponse",
 }) as any as S.Schema<ListAssociatedAccessPoliciesResponse>;
+export type ListCapabilitiesRequestMaxResults = number;
 export interface ListCapabilitiesRequest {
   clusterName: string;
   nextToken?: string;
@@ -3597,6 +3751,7 @@ export const ListCapabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCapabilitiesResponse",
 }) as any as S.Schema<ListCapabilitiesResponse>;
+export type ListClustersRequestMaxResults = number;
 export type IncludeClustersList = string[];
 export const IncludeClustersList = /*@__PURE__*/ S.Array(S.String);
 export interface ListClustersRequest {
@@ -3634,6 +3789,7 @@ export const ListClustersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListClustersResponse",
 }) as any as S.Schema<ListClustersResponse>;
+export type ListEksAnywhereSubscriptionsRequestMaxResults = number;
 export type EksAnywhereSubscriptionStatus =
   | "CREATING"
   | "ACTIVE"
@@ -3643,6 +3799,7 @@ export type EksAnywhereSubscriptionStatus =
   | "DELETING"
   | (string & {});
 export const EksAnywhereSubscriptionStatus = /*@__PURE__*/ S.String;
+
 export type EksAnywhereSubscriptionStatusValues =
   EksAnywhereSubscriptionStatus[];
 export const EksAnywhereSubscriptionStatusValues = /*@__PURE__*/ S.Array(
@@ -3690,6 +3847,7 @@ export const ListEksAnywhereSubscriptionsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListEksAnywhereSubscriptionsResponse",
 }) as any as S.Schema<ListEksAnywhereSubscriptionsResponse>;
+export type FargateProfilesRequestMaxResults = number;
 export interface ListFargateProfilesRequest {
   clusterName: string;
   maxResults?: number;
@@ -3728,6 +3886,7 @@ export const ListFargateProfilesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFargateProfilesResponse",
 }) as any as S.Schema<ListFargateProfilesResponse>;
+export type ListIdentityProviderConfigsRequestMaxResults = number;
 export interface ListIdentityProviderConfigsRequest {
   clusterName: string;
   maxResults?: number;
@@ -3786,6 +3945,7 @@ export const InsightsFilter = /*@__PURE__*/ S.suspend(() =>
     statuses: S.optional(InsightStatusValueList),
   }),
 ).annotate({ identifier: "InsightsFilter" }) as any as S.Schema<InsightsFilter>;
+export type ListInsightsMaxResults = number;
 export interface ListInsightsRequest {
   clusterName: string;
   filter?: InsightsFilter;
@@ -3851,6 +4011,7 @@ export const ListInsightsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInsightsResponse",
 }) as any as S.Schema<ListInsightsResponse>;
+export type ListNodegroupsRequestMaxResults = number;
 export interface ListNodegroupsRequest {
   clusterName: string;
   maxResults?: number;
@@ -3886,6 +4047,7 @@ export const ListNodegroupsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListNodegroupsResponse",
 }) as any as S.Schema<ListNodegroupsResponse>;
+export type ListPodIdentityAssociationsMaxResults = number;
 export interface ListPodIdentityAssociationsRequest {
   clusterName: string;
   namespace?: string;
@@ -3977,6 +4139,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
+export type ListUpdatesRequestMaxResults = number;
 export interface ListUpdatesRequest {
   name: string;
   nodegroupName?: string;
@@ -4030,6 +4193,7 @@ export type ConnectorConfigProvider =
   | "OTHER"
   | (string & {});
 export const ConnectorConfigProvider = /*@__PURE__*/ S.String;
+
 export interface ConnectorConfigRequest {
   roleArn: string;
   provider: ConnectorConfigProvider;
@@ -4594,132 +4758,6 @@ export const UpdatePodIdentityAssociationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdatePodIdentityAssociationResponse",
 }) as any as S.Schema<UpdatePodIdentityAssociationResponse>;
-
-//# Errors
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  {
-    clusterName: S.optional(S.String),
-    nodegroupName: S.optional(S.String),
-    fargateProfileName: S.optional(S.String),
-    addonName: S.optional(S.String),
-    subscriptionId: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  {
-    clusterName: S.optional(S.String),
-    nodegroupName: S.optional(S.String),
-    addonName: S.optional(S.String),
-    subscriptionId: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    clusterName: S.optional(S.String),
-    nodegroupName: S.optional(S.String),
-    fargateProfileName: S.optional(S.String),
-    addonName: S.optional(S.String),
-    subscriptionId: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServerException extends S.TaggedErrorClass<ServerException>()(
-  "ServerException",
-  {
-    clusterName: S.optional(S.String),
-    nodegroupName: S.optional(S.String),
-    addonName: S.optional(S.String),
-    subscriptionId: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ClientException extends S.TaggedErrorClass<ClientException>()(
-  "ClientException",
-  {
-    clusterName: S.optional(S.String),
-    nodegroupName: S.optional(S.String),
-    addonName: S.optional(S.String),
-    subscriptionId: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  {
-    clusterName: S.optional(S.String),
-    nodegroupName: S.optional(S.String),
-    addonName: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { clusterName: S.optional(S.String), message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
-  "ResourceLimitExceededException",
-  {
-    clusterName: S.optional(S.String),
-    nodegroupName: S.optional(S.String),
-    subscriptionId: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class UnsupportedAvailabilityZoneException extends S.TaggedErrorClass<UnsupportedAvailabilityZoneException>()(
-  "UnsupportedAvailabilityZoneException",
-  {
-    message: S.optional(S.String),
-    clusterName: S.optional(S.String),
-    nodegroupName: S.optional(S.String),
-    validZones: S.optional(StringList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ResourcePropagationDelayException extends S.TaggedErrorClass<ResourcePropagationDelayException>()(
-  "ResourcePropagationDelayException",
-  { message: S.optional(S.String) },
-  T.HttpError(428),
-) {}
-export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
-  "InvalidStateException",
-  { clusterName: S.optional(S.String), message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type AssociateAccessPolicyError =
   | InvalidParameterException
   | InvalidRequestException
@@ -4749,6 +4787,7 @@ export const associateAccessPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateAccessPolicy",
 }));
+
 export type AssociateEncryptionConfigError =
   | ClientException
   | InvalidParameterException
@@ -4786,6 +4825,7 @@ export const associateEncryptionConfig: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateEncryptionConfig",
 }));
+
 export type AssociateIdentityProviderConfigError =
   | ClientException
   | InvalidParameterException
@@ -4827,6 +4867,7 @@ export const associateIdentityProviderConfig: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateIdentityProviderConfig",
 }));
+
 export type CreateAccessEntryError =
   | InvalidParameterException
   | InvalidRequestException
@@ -4872,6 +4913,7 @@ export const createAccessEntry: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAccessEntry",
 }));
+
 export type CreateAddonError =
   | ClientException
   | InvalidParameterException
@@ -4907,6 +4949,7 @@ export const createAddon: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAddon",
 }));
+
 export type CreateCapabilityError =
   | AccessDeniedException
   | InvalidParameterException
@@ -4946,6 +4989,7 @@ export const createCapability: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCapability",
 }));
+
 export type CreateClusterError =
   | ClientException
   | InvalidParameterException
@@ -5022,6 +5066,7 @@ export const createCluster: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCluster",
 }));
+
 export type CreateEksAnywhereSubscriptionError =
   | ClientException
   | InvalidParameterException
@@ -5054,6 +5099,7 @@ export const createEksAnywhereSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEksAnywhereSubscription",
 }));
+
 export type CreateFargateProfileError =
   | ClientException
   | InvalidParameterException
@@ -5116,6 +5162,7 @@ export const createFargateProfile: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFargateProfile",
 }));
+
 export type CreateNodegroupError =
   | ClientException
   | InvalidParameterException
@@ -5168,6 +5215,7 @@ export const createNodegroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNodegroup",
 }));
+
 export type CreatePodIdentityAssociationError =
   | InvalidParameterException
   | InvalidRequestException
@@ -5226,6 +5274,7 @@ export const createPodIdentityAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePodIdentityAssociation",
 }));
+
 export type DeleteAccessEntryError =
   | InvalidRequestException
   | ResourceNotFoundException
@@ -5251,6 +5300,7 @@ export const deleteAccessEntry: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccessEntry",
 }));
+
 export type DeleteAddonError =
   | ClientException
   | InvalidParameterException
@@ -5283,6 +5333,7 @@ export const deleteAddon: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAddon",
 }));
+
 export type DeleteCapabilityError =
   | AccessDeniedException
   | InvalidParameterException
@@ -5314,6 +5365,7 @@ export const deleteCapability: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCapability",
 }));
+
 export type DeleteClusterError =
   | ClientException
   | InvalidRequestException
@@ -5355,6 +5407,7 @@ export const deleteCluster: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCluster",
 }));
+
 export type DeleteEksAnywhereSubscriptionError =
   | ClientException
   | InvalidRequestException
@@ -5385,6 +5438,7 @@ export const deleteEksAnywhereSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEksAnywhereSubscription",
 }));
+
 export type DeleteFargateProfileError =
   | ClientException
   | InvalidParameterException
@@ -5424,6 +5478,7 @@ export const deleteFargateProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFargateProfile",
 }));
+
 export type DeleteNodegroupError =
   | ClientException
   | InvalidParameterException
@@ -5455,6 +5510,7 @@ export const deleteNodegroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNodegroup",
 }));
+
 export type DeletePodIdentityAssociationError =
   | InvalidParameterException
   | InvalidRequestException
@@ -5484,6 +5540,7 @@ export const deletePodIdentityAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePodIdentityAssociation",
 }));
+
 export type DeregisterClusterError =
   | AccessDeniedException
   | ClientException
@@ -5518,6 +5575,7 @@ export const deregisterCluster: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterCluster",
 }));
+
 export type DescribeAccessEntryError =
   | InvalidRequestException
   | ResourceNotFoundException
@@ -5539,6 +5597,7 @@ export const describeAccessEntry: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccessEntry",
 }));
+
 export type DescribeAddonError =
   | ClientException
   | InvalidParameterException
@@ -5568,6 +5627,7 @@ export const describeAddon: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAddon",
 }));
+
 export type DescribeAddonConfigurationError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -5593,6 +5653,7 @@ export const describeAddonConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAddonConfiguration",
 }));
+
 export type DescribeAddonVersionsError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -5643,6 +5704,7 @@ export const describeAddonVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeCapabilityError =
   | AccessDeniedException
   | InvalidParameterException
@@ -5670,6 +5732,7 @@ export const describeCapability: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCapability",
 }));
+
 export type DescribeClusterError =
   | ClientException
   | ResourceNotFoundException
@@ -5705,6 +5768,7 @@ export const describeCluster: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCluster",
 }));
+
 export type DescribeClusterVersionsError =
   | InvalidParameterException
   | InvalidRequestException
@@ -5747,6 +5811,7 @@ export const describeClusterVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeEksAnywhereSubscriptionError =
   | ClientException
   | ResourceNotFoundException
@@ -5774,6 +5839,7 @@ export const describeEksAnywhereSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEksAnywhereSubscription",
 }));
+
 export type DescribeFargateProfileError =
   | ClientException
   | InvalidParameterException
@@ -5801,6 +5867,7 @@ export const describeFargateProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFargateProfile",
 }));
+
 export type DescribeIdentityProviderConfigError =
   | ClientException
   | InvalidParameterException
@@ -5830,6 +5897,7 @@ export const describeIdentityProviderConfig: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeIdentityProviderConfig",
 }));
+
 export type DescribeInsightError =
   | InvalidParameterException
   | InvalidRequestException
@@ -5857,6 +5925,7 @@ export const describeInsight: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInsight",
 }));
+
 export type DescribeInsightsRefreshError =
   | InvalidParameterException
   | InvalidRequestException
@@ -5884,6 +5953,7 @@ export const describeInsightsRefresh: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInsightsRefresh",
 }));
+
 export type DescribeNodegroupError =
   | ClientException
   | InvalidParameterException
@@ -5913,6 +5983,7 @@ export const describeNodegroup: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeNodegroup",
 }));
+
 export type DescribePodIdentityAssociationError =
   | InvalidParameterException
   | InvalidRequestException
@@ -5945,6 +6016,7 @@ export const describePodIdentityAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePodIdentityAssociation",
 }));
+
 export type DescribeUpdateError =
   | ClientException
   | InvalidParameterException
@@ -5976,6 +6048,7 @@ export const describeUpdate: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeUpdate",
 }));
+
 export type DisassociateAccessPolicyError =
   | InvalidRequestException
   | ResourceNotFoundException
@@ -5997,6 +6070,7 @@ export const disassociateAccessPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateAccessPolicy",
 }));
+
 export type DisassociateIdentityProviderConfigError =
   | ClientException
   | InvalidParameterException
@@ -6034,6 +6108,7 @@ export const disassociateIdentityProviderConfig: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateIdentityProviderConfig",
 }));
+
 export type ListAccessEntriesError =
   | InvalidParameterException
   | InvalidRequestException
@@ -6082,6 +6157,7 @@ export const listAccessEntries: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAccessPoliciesError = ServerException | CommonErrors;
 /**
  * Lists the available access policies.
@@ -6120,6 +6196,7 @@ export const listAccessPolicies: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAddonsError =
   | ClientException
   | InvalidParameterException
@@ -6170,6 +6247,7 @@ export const listAddons: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssociatedAccessPoliciesError =
   | InvalidRequestException
   | ResourceNotFoundException
@@ -6212,6 +6290,7 @@ export const listAssociatedAccessPolicies: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListCapabilitiesError =
   | InvalidParameterException
   | ServerException
@@ -6253,6 +6332,7 @@ export const listCapabilities: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListClustersError =
   | ClientException
   | InvalidParameterException
@@ -6301,6 +6381,7 @@ export const listClusters: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListEksAnywhereSubscriptionsError =
   | ClientException
   | InvalidParameterException
@@ -6349,6 +6430,7 @@ export const listEksAnywhereSubscriptions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFargateProfilesError =
   | ClientException
   | InvalidParameterException
@@ -6398,6 +6480,7 @@ export const listFargateProfiles: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListIdentityProviderConfigsError =
   | ClientException
   | InvalidParameterException
@@ -6448,6 +6531,7 @@ export const listIdentityProviderConfigs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListInsightsError =
   | InvalidParameterException
   | InvalidRequestException
@@ -6507,6 +6591,7 @@ export const listInsights: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListNodegroupsError =
   | ClientException
   | InvalidParameterException
@@ -6558,6 +6643,7 @@ export const listNodegroups: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPodIdentityAssociationsError =
   | InvalidParameterException
   | InvalidRequestException
@@ -6607,6 +6693,7 @@ export const listPodIdentityAssociations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | NotFoundException
@@ -6627,6 +6714,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListUpdatesError =
   | ClientException
   | InvalidParameterException
@@ -6676,6 +6764,7 @@ export const listUpdates: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type RegisterClusterError =
   | AccessDeniedException
   | ClientException
@@ -6728,6 +6817,7 @@ export const registerCluster: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterCluster",
 }));
+
 export type StartInsightsRefreshError =
   | InvalidParameterException
   | InvalidRequestException
@@ -6755,6 +6845,7 @@ export const startInsightsRefresh: API.OperationMethod<
   retry: Retry,
   operationName: "StartInsightsRefresh",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | NotFoundException
@@ -6781,6 +6872,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | NotFoundException
@@ -6801,6 +6893,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAccessEntryError =
   | InvalidParameterException
   | InvalidRequestException
@@ -6828,6 +6921,7 @@ export const updateAccessEntry: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAccessEntry",
 }));
+
 export type UpdateAddonError =
   | ClientException
   | InvalidParameterException
@@ -6859,6 +6953,7 @@ export const updateAddon: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAddon",
 }));
+
 export type UpdateCapabilityError =
   | AccessDeniedException
   | InvalidParameterException
@@ -6890,6 +6985,7 @@ export const updateCapability: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCapability",
 }));
+
 export type UpdateClusterConfigError =
   | ClientException
   | InvalidParameterException
@@ -6969,6 +7065,7 @@ export const updateClusterConfig: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateClusterConfig",
 }));
+
 export type UpdateClusterVersionError =
   | ClientException
   | InvalidParameterException
@@ -7017,6 +7114,7 @@ export const updateClusterVersion: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateClusterVersion",
 }));
+
 export type UpdateEksAnywhereSubscriptionError =
   | ClientException
   | InvalidParameterException
@@ -7047,6 +7145,7 @@ export const updateEksAnywhereSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEksAnywhereSubscription",
 }));
+
 export type UpdateNodegroupConfigError =
   | ClientException
   | InvalidParameterException
@@ -7083,6 +7182,7 @@ export const updateNodegroupConfig: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNodegroupConfig",
 }));
+
 export type UpdateNodegroupVersionError =
   | ClientException
   | InvalidParameterException
@@ -7140,6 +7240,7 @@ export const updateNodegroupVersion: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNodegroupVersion",
 }));
+
 export type UpdatePodIdentityAssociationError =
   | InvalidParameterException
   | InvalidRequestException

@@ -87,15 +87,41 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(S.String),
+    Details: S.optional(
+      S.suspend(() => BadRequestDetails).annotate({
+        identifier: "BadRequestDetails",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    ReferencedBy: S.optional(
+      S.suspend(() => StringMap).annotate({ identifier: "StringMap" }),
+    ),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type Token = string;
-export type BadRequestReason = string;
-export type InvalidParameterProblem = string;
-export type ResourceType = string;
-export type Identifier = string;
-export type OptionalPollSeconds = number;
-
-//# Schemas
 export interface GetLatestConfigurationRequest {
   ConfigurationToken: string;
 }
@@ -137,32 +163,8 @@ export const GetLatestConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLatestConfigurationResponse",
 }) as any as S.Schema<GetLatestConfigurationResponse>;
-export interface InvalidParameterDetail {
-  Problem?: string;
-}
-export const InvalidParameterDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Problem: S.optional(S.String) }),
-).annotate({
-  identifier: "InvalidParameterDetail",
-}) as any as S.Schema<InvalidParameterDetail>;
-export type InvalidParameterMap = {
-  [key: string]: InvalidParameterDetail | undefined;
-};
-export const InvalidParameterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  InvalidParameterDetail.pipe(S.optional),
-);
-export type BadRequestDetails = {
-  InvalidParameters: { [key: string]: InvalidParameterDetail | undefined };
-};
-export const BadRequestDetails = /*@__PURE__*/ S.Union([
-  S.Struct({ InvalidParameters: InvalidParameterMap }),
-]);
-export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
+export type Identifier = string;
+export type OptionalPollSeconds = number;
 export interface StartConfigurationSessionRequest {
   ApplicationIdentifier: string;
   EnvironmentIdentifier: string;
@@ -196,38 +198,35 @@ export const StartConfigurationSessionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartConfigurationSessionResponse",
 }) as any as S.Schema<StartConfigurationSessionResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(S.String),
-    Details: S.optional(BadRequestDetails),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    ReferencedBy: S.optional(StringMap),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-
-//# Operations
+export type BadRequestReason = string;
+export type InvalidParameterProblem = string;
+export interface InvalidParameterDetail {
+  Problem?: string;
+}
+export const InvalidParameterDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Problem: S.optional(S.String) }),
+).annotate({
+  identifier: "InvalidParameterDetail",
+}) as any as S.Schema<InvalidParameterDetail>;
+export type InvalidParameterMap = {
+  [key: string]: InvalidParameterDetail | undefined;
+};
+export const InvalidParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  InvalidParameterDetail.pipe(S.optional),
+);
+export type BadRequestDetails = {
+  InvalidParameters: { [key: string]: InvalidParameterDetail | undefined };
+};
+export const BadRequestDetails = /*@__PURE__*/ S.Union([
+  S.Struct({ InvalidParameters: InvalidParameterMap }),
+]);
+export type ResourceType = string;
+export type StringMap = { [key: string]: string | undefined };
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export type GetLatestConfigurationError =
   | BadRequestException
   | InternalServerException
@@ -269,6 +268,7 @@ export const getLatestConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetLatestConfiguration",
 }));
+
 export type StartConfigurationSessionError =
   | BadRequestException
   | InternalServerException

@@ -84,21 +84,40 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type AttributeName = string;
 export type AttributeValue = string;
-export type NextToken = string;
-export type Statistic = string;
-export type ErrorMessage = string;
-export type LongArn = string;
-
-//# Schemas
 export type Filters = { [key: string]: string | undefined };
 export const Filters = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type NextToken = string;
 export interface QueryForecastRequest {
   ForecastArn: string;
   StartDate?: string;
@@ -119,6 +138,7 @@ export const QueryForecastRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "QueryForecastRequest",
 }) as any as S.Schema<QueryForecastRequest>;
+export type Statistic = string;
 export interface DataPoint {
   Timestamp?: string;
   Value?: number;
@@ -147,6 +167,7 @@ export const QueryForecastResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "QueryForecastResponse",
 }) as any as S.Schema<QueryForecastResponse>;
+export type LongArn = string;
 export interface QueryWhatIfForecastRequest {
   WhatIfForecastArn: string;
   StartDate?: string;
@@ -175,35 +196,7 @@ export const QueryWhatIfForecastResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "QueryWhatIfForecastResponse",
 }) as any as S.Schema<QueryWhatIfForecastResponse>;
-
-//# Errors
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type QueryForecastError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -246,6 +239,7 @@ export const queryForecast: API.OperationMethod<
   retry: Retry,
   operationName: "QueryForecast",
 }));
+
 export type QueryWhatIfForecastError =
   | InvalidInputException
   | InvalidNextTokenException

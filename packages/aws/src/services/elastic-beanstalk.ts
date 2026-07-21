@@ -91,106 +91,194 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class CodeBuildNotInServiceRegionException extends S.TaggedErrorClass<CodeBuildNotInServiceRegionException>()(
+  "CodeBuildNotInServiceRegionException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CodeBuildNotInServiceRegionException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ElasticBeanstalkServiceException extends S.TaggedErrorClass<ElasticBeanstalkServiceException>()(
+  "ElasticBeanstalkServiceException",
+  { message: S.optional(S.String) },
+) {}
+export class InsufficientPrivilegesException extends S.TaggedErrorClass<InsufficientPrivilegesException>()(
+  "InsufficientPrivilegesException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InsufficientPrivilegesException",
+      httpResponseCode: 403,
+    }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidRequestException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ManagedActionInvalidStateException extends S.TaggedErrorClass<ManagedActionInvalidStateException>()(
+  "ManagedActionInvalidStateException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ManagedActionInvalidStateException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class OperationInProgressException extends S.TaggedErrorClass<OperationInProgressException>()(
+  "OperationInProgressException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "OperationInProgressFailure",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class PlatformVersionStillReferencedException extends S.TaggedErrorClass<PlatformVersionStillReferencedException>()(
+  "PlatformVersionStillReferencedException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "PlatformVersionStillReferencedException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ResourceNotFoundException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceTypeNotSupportedException extends S.TaggedErrorClass<ResourceTypeNotSupportedException>()(
+  "ResourceTypeNotSupportedException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ResourceTypeNotSupportedException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class S3LocationNotInServiceRegionException extends S.TaggedErrorClass<S3LocationNotInServiceRegionException>()(
+  "S3LocationNotInServiceRegionException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "S3LocationNotInServiceRegionException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class S3SubscriptionRequiredException extends S.TaggedErrorClass<S3SubscriptionRequiredException>()(
+  "S3SubscriptionRequiredException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "S3SubscriptionRequiredException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SourceBundleDeletionException extends S.TaggedErrorClass<SourceBundleDeletionException>()(
+  "SourceBundleDeletionException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SourceBundleDeletionFailure",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyApplicationsException extends S.TaggedErrorClass<TooManyApplicationsException>()(
+  "TooManyApplicationsException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TooManyApplicationsException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyApplicationVersionsException extends S.TaggedErrorClass<TooManyApplicationVersionsException>()(
+  "TooManyApplicationVersionsException",
+  { message: S.optional(S.String) },
+) {}
+export class TooManyBucketsException extends S.TaggedErrorClass<TooManyBucketsException>()(
+  "TooManyBucketsException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TooManyBucketsException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyConfigurationTemplatesException extends S.TaggedErrorClass<TooManyConfigurationTemplatesException>()(
+  "TooManyConfigurationTemplatesException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TooManyConfigurationTemplatesException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyEnvironmentsException extends S.TaggedErrorClass<TooManyEnvironmentsException>()(
+  "TooManyEnvironmentsException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TooManyEnvironmentsException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyPlatformsException extends S.TaggedErrorClass<TooManyPlatformsException>()(
+  "TooManyPlatformsException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TooManyPlatformsException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TooManyTagsException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type EnvironmentId = string;
 export type EnvironmentName = string;
-export type ExceptionMessage = string;
-export type OperationsRole = string;
-export type DNSCnamePrefix = string;
-export type CnameAvailability = boolean;
-export type DNSCname = string;
-export type ApplicationName = string;
-export type GroupName = string;
-export type VersionLabel = string;
-export type SolutionStackName = string;
-export type PlatformArn = string;
-export type ConfigurationTemplateName = string;
-export type Description = string;
-export type EndpointURL = string;
-export type CreationDate = Date;
-export type UpdateDate = Date;
-export type AbortableOperationInProgress = boolean;
-export type EnvironmentArn = string;
-export type Token = string;
-export type BoxedBoolean = boolean;
-export type BoxedInt = number;
-export type TagKey = string;
-export type TagValue = string;
-export type ApplicationArn = string;
-export type SourceLocation = string;
-export type S3Bucket = string;
-export type S3Key = string;
-export type NonEmptyString = string;
-export type AutoCreateApplication = boolean;
-export type ApplicationVersionProccess = boolean;
-export type ApplicationVersionArn = string;
-export type ResourceName = string;
-export type OptionNamespace = string;
-export type ConfigurationOptionName = string;
-export type ConfigurationOptionValue = string;
-export type PlatformName = string;
-export type PlatformVersion = string;
-export type PlatformOwner = string;
-export type PlatformCategory = string;
-export type OperatingSystemName = string;
-export type OperatingSystemVersion = string;
-export type SupportedTier = string;
-export type SupportedAddon = string;
-export type PlatformLifecycleState = string;
-export type BranchName = string;
-export type PlatformBranchLifecycleState = string;
-export type ARN = string;
-export type TerminateEnvForce = boolean;
-export type DeleteSourceBundle = boolean;
-export type MaxRecords = number;
-export type ConfigurationOptionDefaultValue = string;
-export type ConfigurationOptionSeverity = string;
-export type UserDefinedOption = boolean;
-export type ConfigurationOptionPossibleValue = string;
-export type OptionRestrictionMinValue = number;
-export type OptionRestrictionMaxValue = number;
-export type OptionRestrictionMaxLength = number;
-export type RegexPattern = string;
-export type RegexLabel = string;
-export type Cause = string;
-export type RequestCount = number;
-export type RefreshedAt = Date;
-export type ManagedActionHistoryMaxItems = number;
-export type ResourceId = string;
-export type IncludeDeleted = boolean;
-export type IncludeDeletedBackTo = Date;
-export type RequestId = string;
-export type TimeFilterStart = Date;
-export type TimeFilterEnd = Date;
-export type EventDate = Date;
-export type EventMessage = string;
-export type NextToken = string;
-export type InstanceId = string;
-export type LaunchedAt = Date;
-export type LoadAverageValue = number;
-export type DeploymentTimestamp = Date;
-export type Maintainer = string;
-export type VirtualizationType = string;
-export type ImageId = string;
-export type FileTypeExtension = string;
-export type SearchFilterAttribute = string;
-export type SearchFilterOperator = string;
-export type SearchFilterValue = string;
-export type PlatformBranchMaxRecords = number;
-export type BranchOrder = number;
-export type PlatformFilterType = string;
-export type PlatformFilterOperator = string;
-export type PlatformFilterValue = string;
-export type PlatformMaxRecords = number;
-export type ResourceArn = string;
-export type Ec2InstanceId = string;
-export type SampleTimestamp = Date;
-export type Message = string;
-export type TerminateEnvironmentResources = boolean;
-export type ForceTerminate = boolean;
-export type ValidationMessageString = string;
-
-//# Schemas
 export interface AbortEnvironmentUpdateMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
@@ -250,6 +338,7 @@ export type ActionType =
   | "Unknown"
   | (string & {});
 export const ActionType = /*@__PURE__*/ S.String;
+
 export interface ApplyEnvironmentManagedActionResult {
   ActionId?: string;
   ActionDescription?: string;
@@ -266,6 +355,7 @@ export const ApplyEnvironmentManagedActionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplyEnvironmentManagedActionResult",
 }) as any as S.Schema<ApplyEnvironmentManagedActionResult>;
+export type OperationsRole = string;
 export interface AssociateEnvironmentOperationsRoleMessage {
   EnvironmentName: string;
   OperationsRole: string;
@@ -291,6 +381,7 @@ export const AssociateEnvironmentOperationsRoleResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "AssociateEnvironmentOperationsRoleResponse",
   }) as any as S.Schema<AssociateEnvironmentOperationsRoleResponse>;
+export type DNSCnamePrefix = string;
 export interface CheckDNSAvailabilityMessage {
   CNAMEPrefix: string;
 }
@@ -309,6 +400,8 @@ export const CheckDNSAvailabilityMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CheckDNSAvailabilityMessage",
 }) as any as S.Schema<CheckDNSAvailabilityMessage>;
+export type CnameAvailability = boolean;
+export type DNSCname = string;
 export interface CheckDNSAvailabilityResultMessage {
   Available?: boolean;
   FullyQualifiedCNAME?: string;
@@ -321,6 +414,9 @@ export const CheckDNSAvailabilityResultMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CheckDNSAvailabilityResultMessage",
 }) as any as S.Schema<CheckDNSAvailabilityResultMessage>;
+export type ApplicationName = string;
+export type GroupName = string;
+export type VersionLabel = string;
 export type VersionLabels = string[];
 export const VersionLabels = /*@__PURE__*/ S.Array(S.String);
 export interface ComposeEnvironmentsMessage {
@@ -347,6 +443,13 @@ export const ComposeEnvironmentsMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ComposeEnvironmentsMessage",
 }) as any as S.Schema<ComposeEnvironmentsMessage>;
+export type SolutionStackName = string;
+export type PlatformArn = string;
+export type ConfigurationTemplateName = string;
+export type Description = string;
+export type EndpointURL = string;
+export type CreationDate = Date;
+export type UpdateDate = Date;
 export type EnvironmentStatus =
   | "Aborting"
   | "Launching"
@@ -358,6 +461,8 @@ export type EnvironmentStatus =
   | "Terminated"
   | (string & {});
 export const EnvironmentStatus = /*@__PURE__*/ S.String;
+
+export type AbortableOperationInProgress = boolean;
 export type EnvironmentHealth =
   | "Green"
   | "Yellow"
@@ -365,6 +470,7 @@ export type EnvironmentHealth =
   | "Grey"
   | (string & {});
 export const EnvironmentHealth = /*@__PURE__*/ S.String;
+
 export type EnvironmentHealthStatus =
   | "NoData"
   | "Unknown"
@@ -377,6 +483,7 @@ export type EnvironmentHealthStatus =
   | "Suspended"
   | (string & {});
 export const EnvironmentHealthStatus = /*@__PURE__*/ S.String;
+
 export interface Listener {
   Protocol?: string;
   Port?: number;
@@ -436,6 +543,7 @@ export const EnvironmentLink = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentLink>;
 export type EnvironmentLinks = EnvironmentLink[];
 export const EnvironmentLinks = /*@__PURE__*/ S.Array(EnvironmentLink);
+export type EnvironmentArn = string;
 export interface EnvironmentDescription {
   EnvironmentName?: string;
   EnvironmentId?: string;
@@ -494,6 +602,7 @@ export type EnvironmentDescriptionsList = EnvironmentDescription[];
 export const EnvironmentDescriptionsList = /*@__PURE__*/ S.Array(
   EnvironmentDescription,
 );
+export type Token = string;
 export interface EnvironmentDescriptionsMessage {
   Environments?: EnvironmentDescription[];
   NextToken?: string;
@@ -506,6 +615,8 @@ export const EnvironmentDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnvironmentDescriptionsMessage",
 }) as any as S.Schema<EnvironmentDescriptionsMessage>;
+export type BoxedBoolean = boolean;
+export type BoxedInt = number;
 export interface MaxCountRule {
   Enabled: boolean;
   MaxCount?: number;
@@ -554,6 +665,8 @@ export const ApplicationResourceLifecycleConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplicationResourceLifecycleConfig",
 }) as any as S.Schema<ApplicationResourceLifecycleConfig>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -589,6 +702,7 @@ export const CreateApplicationMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationMessage",
 }) as any as S.Schema<CreateApplicationMessage>;
+export type ApplicationArn = string;
 export type VersionLabelsList = string[];
 export const VersionLabelsList = /*@__PURE__*/ S.Array(S.String);
 export type ConfigurationTemplateNamesList = string[];
@@ -631,8 +745,11 @@ export const ApplicationDescriptionMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ApplicationDescriptionMessage>;
 export type SourceType = "Git" | "Zip" | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
+
 export type SourceRepository = "CodeCommit" | "S3" | (string & {});
 export const SourceRepository = /*@__PURE__*/ S.String;
+
+export type SourceLocation = string;
 export interface SourceBuildInformation {
   SourceType: SourceType;
   SourceRepository: SourceRepository;
@@ -647,6 +764,8 @@ export const SourceBuildInformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SourceBuildInformation",
 }) as any as S.Schema<SourceBuildInformation>;
+export type S3Bucket = string;
+export type S3Key = string;
 export interface S3Location {
   S3Bucket?: string;
   S3Key?: string;
@@ -654,12 +773,14 @@ export interface S3Location {
 export const S3Location = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Bucket: S.optional(S.String), S3Key: S.optional(S.String) }),
 ).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
+export type NonEmptyString = string;
 export type ComputeType =
   | "BUILD_GENERAL1_SMALL"
   | "BUILD_GENERAL1_MEDIUM"
   | "BUILD_GENERAL1_LARGE"
   | (string & {});
 export const ComputeType = /*@__PURE__*/ S.String;
+
 export interface BuildConfiguration {
   ArtifactName?: string;
   CodeBuildServiceRole: string;
@@ -678,6 +799,8 @@ export const BuildConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BuildConfiguration",
 }) as any as S.Schema<BuildConfiguration>;
+export type AutoCreateApplication = boolean;
+export type ApplicationVersionProccess = boolean;
 export interface CreateApplicationVersionMessage {
   ApplicationName: string;
   VersionLabel: string;
@@ -714,6 +837,7 @@ export const CreateApplicationVersionMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationVersionMessage",
 }) as any as S.Schema<CreateApplicationVersionMessage>;
+export type ApplicationVersionArn = string;
 export type ApplicationVersionStatus =
   | "Processed"
   | "Unprocessed"
@@ -722,6 +846,7 @@ export type ApplicationVersionStatus =
   | "Building"
   | (string & {});
 export const ApplicationVersionStatus = /*@__PURE__*/ S.String;
+
 export interface ApplicationVersionDescription {
   ApplicationVersionArn?: string;
   ApplicationName?: string;
@@ -777,6 +902,10 @@ export const SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SourceConfiguration",
 }) as any as S.Schema<SourceConfiguration>;
+export type ResourceName = string;
+export type OptionNamespace = string;
+export type ConfigurationOptionName = string;
+export type ConfigurationOptionValue = string;
 export interface ConfigurationOptionSetting {
   ResourceName?: string;
   Namespace?: string;
@@ -839,6 +968,7 @@ export type ConfigurationDeploymentStatus =
   | "failed"
   | (string & {});
 export const ConfigurationDeploymentStatus = /*@__PURE__*/ S.String;
+
 export interface ConfigurationSettingsDescription {
   SolutionStackName?: string;
   PlatformArn?: string;
@@ -933,6 +1063,8 @@ export const CreateEnvironmentMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEnvironmentMessage",
 }) as any as S.Schema<CreateEnvironmentMessage>;
+export type PlatformName = string;
+export type PlatformVersion = string;
 export interface CreatePlatformVersionRequest {
   PlatformName: string;
   PlatformVersion: string;
@@ -963,6 +1095,7 @@ export const CreatePlatformVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePlatformVersionRequest",
 }) as any as S.Schema<CreatePlatformVersionRequest>;
+export type PlatformOwner = string;
 export type PlatformStatus =
   | "Creating"
   | "Failed"
@@ -971,10 +1104,19 @@ export type PlatformStatus =
   | "Deleted"
   | (string & {});
 export const PlatformStatus = /*@__PURE__*/ S.String;
+
+export type PlatformCategory = string;
+export type OperatingSystemName = string;
+export type OperatingSystemVersion = string;
+export type SupportedTier = string;
 export type SupportedTierList = string[];
 export const SupportedTierList = /*@__PURE__*/ S.Array(S.String);
+export type SupportedAddon = string;
 export type SupportedAddonList = string[];
 export const SupportedAddonList = /*@__PURE__*/ S.Array(S.String);
+export type PlatformLifecycleState = string;
+export type BranchName = string;
+export type PlatformBranchLifecycleState = string;
 export interface PlatformSummary {
   PlatformArn?: string;
   PlatformOwner?: string;
@@ -1007,6 +1149,7 @@ export const PlatformSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PlatformSummary",
 }) as any as S.Schema<PlatformSummary>;
+export type ARN = string;
 export interface Builder {
   ARN?: string;
 }
@@ -1049,6 +1192,7 @@ export const CreateStorageLocationResultMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStorageLocationResultMessage",
 }) as any as S.Schema<CreateStorageLocationResultMessage>;
+export type TerminateEnvForce = boolean;
 export interface DeleteApplicationMessage {
   ApplicationName: string;
   TerminateEnvByForce?: boolean;
@@ -1077,6 +1221,7 @@ export const DeleteApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteApplicationResponse",
 }) as any as S.Schema<DeleteApplicationResponse>;
+export type DeleteSourceBundle = boolean;
 export interface DeleteApplicationVersionMessage {
   ApplicationName: string;
   VersionLabel: string;
@@ -1262,6 +1407,7 @@ export const ApplicationDescriptionsMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplicationDescriptionsMessage",
 }) as any as S.Schema<ApplicationDescriptionsMessage>;
+export type MaxRecords = number;
 export interface DescribeApplicationVersionsMessage {
   ApplicationName?: string;
   VersionLabels?: string[];
@@ -1335,12 +1481,22 @@ export const DescribeConfigurationOptionsMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeConfigurationOptionsMessage",
 }) as any as S.Schema<DescribeConfigurationOptionsMessage>;
+export type ConfigurationOptionDefaultValue = string;
+export type ConfigurationOptionSeverity = string;
+export type UserDefinedOption = boolean;
 export type ConfigurationOptionValueType = "Scalar" | "List" | (string & {});
 export const ConfigurationOptionValueType = /*@__PURE__*/ S.String;
+
+export type ConfigurationOptionPossibleValue = string;
 export type ConfigurationOptionPossibleValues = string[];
 export const ConfigurationOptionPossibleValues = /*@__PURE__*/ S.Array(
   S.String,
 );
+export type OptionRestrictionMinValue = number;
+export type OptionRestrictionMaxValue = number;
+export type OptionRestrictionMaxLength = number;
+export type RegexPattern = string;
+export type RegexLabel = string;
 export interface OptionRestrictionRegex {
   Pattern?: string;
   Label?: string;
@@ -1450,6 +1606,7 @@ export type EnvironmentHealthAttribute =
   | "RefreshedAt"
   | (string & {});
 export const EnvironmentHealthAttribute = /*@__PURE__*/ S.String;
+
 export type EnvironmentHealthAttributes = EnvironmentHealthAttribute[];
 export const EnvironmentHealthAttributes = /*@__PURE__*/ S.Array(
   EnvironmentHealthAttribute,
@@ -1478,8 +1635,10 @@ export const DescribeEnvironmentHealthRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEnvironmentHealthRequest",
 }) as any as S.Schema<DescribeEnvironmentHealthRequest>;
+export type Cause = string;
 export type Causes = string[];
 export const Causes = /*@__PURE__*/ S.Array(S.String);
+export type RequestCount = number;
 export interface StatusCodes {
   Status2xx?: number;
   Status3xx?: number;
@@ -1556,6 +1715,7 @@ export const InstanceHealthSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstanceHealthSummary",
 }) as any as S.Schema<InstanceHealthSummary>;
+export type RefreshedAt = Date;
 export interface DescribeEnvironmentHealthResult {
   EnvironmentName?: string;
   HealthStatus?: string;
@@ -1582,6 +1742,7 @@ export const DescribeEnvironmentHealthResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEnvironmentHealthResult",
 }) as any as S.Schema<DescribeEnvironmentHealthResult>;
+export type ManagedActionHistoryMaxItems = number;
 export interface DescribeEnvironmentManagedActionHistoryRequest {
   EnvironmentId?: string;
   EnvironmentName?: string;
@@ -1619,12 +1780,14 @@ export type FailureType =
   | "PermissionsError"
   | (string & {});
 export const FailureType = /*@__PURE__*/ S.String;
+
 export type ActionHistoryStatus =
   | "Completed"
   | "Failed"
   | "Unknown"
   | (string & {});
 export const ActionHistoryStatus = /*@__PURE__*/ S.String;
+
 export interface ManagedActionHistoryItem {
   ActionId?: string;
   ActionType?: ActionType;
@@ -1677,6 +1840,7 @@ export type ActionStatus =
   | "Unknown"
   | (string & {});
 export const ActionStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeEnvironmentManagedActionsRequest {
   EnvironmentName?: string;
   EnvironmentId?: string;
@@ -1752,6 +1916,7 @@ export const DescribeEnvironmentResourcesMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEnvironmentResourcesMessage",
 }) as any as S.Schema<DescribeEnvironmentResourcesMessage>;
+export type ResourceId = string;
 export interface AutoScalingGroup {
   Name?: string;
 }
@@ -1853,6 +2018,8 @@ export type EnvironmentIdList = string[];
 export const EnvironmentIdList = /*@__PURE__*/ S.Array(S.String);
 export type EnvironmentNamesList = string[];
 export const EnvironmentNamesList = /*@__PURE__*/ S.Array(S.String);
+export type IncludeDeleted = boolean;
+export type IncludeDeletedBackTo = Date;
 export interface DescribeEnvironmentsMessage {
   ApplicationName?: string;
   VersionLabel?: string;
@@ -1889,6 +2056,7 @@ export const DescribeEnvironmentsMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEnvironmentsMessage",
 }) as any as S.Schema<DescribeEnvironmentsMessage>;
+export type RequestId = string;
 export type EventSeverity =
   | "TRACE"
   | "DEBUG"
@@ -1898,6 +2066,9 @@ export type EventSeverity =
   | "FATAL"
   | (string & {});
 export const EventSeverity = /*@__PURE__*/ S.String;
+
+export type TimeFilterStart = Date;
+export type TimeFilterEnd = Date;
 export interface DescribeEventsMessage {
   ApplicationName?: string;
   VersionLabel?: string;
@@ -1942,6 +2113,8 @@ export const DescribeEventsMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEventsMessage",
 }) as any as S.Schema<DescribeEventsMessage>;
+export type EventDate = Date;
+export type EventMessage = string;
 export interface EventDescription {
   EventDate?: Date;
   Message?: string;
@@ -1998,10 +2171,12 @@ export type InstancesHealthAttribute =
   | "All"
   | (string & {});
 export const InstancesHealthAttribute = /*@__PURE__*/ S.String;
+
 export type InstancesHealthAttributes = InstancesHealthAttribute[];
 export const InstancesHealthAttributes = /*@__PURE__*/ S.Array(
   InstancesHealthAttribute,
 );
+export type NextToken = string;
 export interface DescribeInstancesHealthRequest {
   EnvironmentName?: string;
   EnvironmentId?: string;
@@ -2028,6 +2203,8 @@ export const DescribeInstancesHealthRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInstancesHealthRequest",
 }) as any as S.Schema<DescribeInstancesHealthRequest>;
+export type InstanceId = string;
+export type LaunchedAt = Date;
 export interface CPUUtilization {
   User?: number;
   Nice?: number;
@@ -2050,6 +2227,7 @@ export const CPUUtilization = /*@__PURE__*/ S.suspend(() =>
     Privileged: S.optional(S.Number),
   }),
 ).annotate({ identifier: "CPUUtilization" }) as any as S.Schema<CPUUtilization>;
+export type LoadAverageValue = number;
 export type LoadAverage = number[];
 export const LoadAverage = /*@__PURE__*/ S.Array(S.Number);
 export interface SystemStatus {
@@ -2062,6 +2240,7 @@ export const SystemStatus = /*@__PURE__*/ S.suspend(() =>
     LoadAverage: S.optional(LoadAverage),
   }),
 ).annotate({ identifier: "SystemStatus" }) as any as S.Schema<SystemStatus>;
+export type DeploymentTimestamp = Date;
 export interface Deployment {
   VersionLabel?: string;
   DeploymentId?: number;
@@ -2144,6 +2323,7 @@ export const DescribePlatformVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePlatformVersionRequest",
 }) as any as S.Schema<DescribePlatformVersionRequest>;
+export type Maintainer = string;
 export interface PlatformProgrammingLanguage {
   Name?: string;
   Version?: string;
@@ -2168,6 +2348,8 @@ export const PlatformFramework = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PlatformFramework>;
 export type PlatformFrameworks = PlatformFramework[];
 export const PlatformFrameworks = /*@__PURE__*/ S.Array(PlatformFramework);
+export type VirtualizationType = string;
+export type ImageId = string;
 export interface CustomAmi {
   VirtualizationType?: string;
   ImageId?: string;
@@ -2284,6 +2466,7 @@ export const ListAvailableSolutionStacksRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAvailableSolutionStacksRequest>;
 export type AvailableSolutionStackNamesList = string[];
 export const AvailableSolutionStackNamesList = /*@__PURE__*/ S.Array(S.String);
+export type FileTypeExtension = string;
 export type SolutionStackFileTypeList = string[];
 export const SolutionStackFileTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface SolutionStackDescription {
@@ -2315,6 +2498,9 @@ export const ListAvailableSolutionStacksResultMessage = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListAvailableSolutionStacksResultMessage",
 }) as any as S.Schema<ListAvailableSolutionStacksResultMessage>;
+export type SearchFilterAttribute = string;
+export type SearchFilterOperator = string;
+export type SearchFilterValue = string;
 export type SearchFilterValues = string[];
 export const SearchFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface SearchFilter {
@@ -2331,6 +2517,7 @@ export const SearchFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SearchFilter" }) as any as S.Schema<SearchFilter>;
 export type SearchFilters = SearchFilter[];
 export const SearchFilters = /*@__PURE__*/ S.Array(SearchFilter);
+export type PlatformBranchMaxRecords = number;
 export interface ListPlatformBranchesRequest {
   Filters?: SearchFilter[];
   MaxRecords?: number;
@@ -2355,6 +2542,7 @@ export const ListPlatformBranchesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPlatformBranchesRequest",
 }) as any as S.Schema<ListPlatformBranchesRequest>;
+export type BranchOrder = number;
 export interface PlatformBranchSummary {
   PlatformName?: string;
   BranchName?: string;
@@ -2389,6 +2577,9 @@ export const ListPlatformBranchesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPlatformBranchesResult",
 }) as any as S.Schema<ListPlatformBranchesResult>;
+export type PlatformFilterType = string;
+export type PlatformFilterOperator = string;
+export type PlatformFilterValue = string;
 export type PlatformFilterValueList = string[];
 export const PlatformFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface PlatformFilter {
@@ -2405,6 +2596,7 @@ export const PlatformFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PlatformFilter" }) as any as S.Schema<PlatformFilter>;
 export type PlatformFilters = PlatformFilter[];
 export const PlatformFilters = /*@__PURE__*/ S.Array(PlatformFilter);
+export type PlatformMaxRecords = number;
 export interface ListPlatformVersionsRequest {
   Filters?: PlatformFilter[];
   MaxRecords?: number;
@@ -2443,6 +2635,7 @@ export const ListPlatformVersionsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPlatformVersionsResult",
 }) as any as S.Schema<ListPlatformVersionsResult>;
+export type ResourceArn = string;
 export interface ListTagsForResourceMessage {
   ResourceArn: string;
 }
@@ -2505,6 +2698,7 @@ export const RebuildEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RebuildEnvironmentResponse>;
 export type EnvironmentInfoType = "tail" | "bundle" | "analyze" | (string & {});
 export const EnvironmentInfoType = /*@__PURE__*/ S.String;
+
 export interface RequestEnvironmentInfoMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
@@ -2587,6 +2781,9 @@ export const RetrieveEnvironmentInfoMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RetrieveEnvironmentInfoMessage",
 }) as any as S.Schema<RetrieveEnvironmentInfoMessage>;
+export type Ec2InstanceId = string;
+export type SampleTimestamp = Date;
+export type Message = string;
 export interface EnvironmentInfoDescription {
   InfoType?: EnvironmentInfoType;
   Ec2InstanceId?: string;
@@ -2652,6 +2849,8 @@ export const SwapEnvironmentCNAMEsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SwapEnvironmentCNAMEsResponse",
 }) as any as S.Schema<SwapEnvironmentCNAMEsResponse>;
+export type TerminateEnvironmentResources = boolean;
+export type ForceTerminate = boolean;
 export interface TerminateEnvironmentMessage {
   EnvironmentId?: string;
   EnvironmentName?: string;
@@ -2889,8 +3088,10 @@ export const ValidateConfigurationSettingsMessage = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ValidateConfigurationSettingsMessage",
 }) as any as S.Schema<ValidateConfigurationSettingsMessage>;
+export type ValidationMessageString = string;
 export type ValidationSeverity = "error" | "warning" | (string & {});
 export const ValidationSeverity = /*@__PURE__*/ S.String;
+
 export interface ValidationMessage {
   Message?: string;
   Severity?: ValidationSeverity;
@@ -2917,196 +3118,7 @@ export const ConfigurationSettingsValidationMessages = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ConfigurationSettingsValidationMessages",
 }) as any as S.Schema<ConfigurationSettingsValidationMessages>;
-
-//# Errors
-export class InsufficientPrivilegesException extends S.TaggedErrorClass<InsufficientPrivilegesException>()(
-  "InsufficientPrivilegesException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InsufficientPrivilegesException",
-      httpResponseCode: 403,
-    }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class ElasticBeanstalkServiceException extends S.TaggedErrorClass<ElasticBeanstalkServiceException>()(
-  "ElasticBeanstalkServiceException",
-  { message: S.optional(S.String) },
-) {}
-export class ManagedActionInvalidStateException extends S.TaggedErrorClass<ManagedActionInvalidStateException>()(
-  "ManagedActionInvalidStateException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ManagedActionInvalidStateException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyEnvironmentsException extends S.TaggedErrorClass<TooManyEnvironmentsException>()(
-  "TooManyEnvironmentsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TooManyEnvironmentsException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyApplicationsException extends S.TaggedErrorClass<TooManyApplicationsException>()(
-  "TooManyApplicationsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TooManyApplicationsException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CodeBuildNotInServiceRegionException extends S.TaggedErrorClass<CodeBuildNotInServiceRegionException>()(
-  "CodeBuildNotInServiceRegionException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "CodeBuildNotInServiceRegionException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class S3LocationNotInServiceRegionException extends S.TaggedErrorClass<S3LocationNotInServiceRegionException>()(
-  "S3LocationNotInServiceRegionException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "S3LocationNotInServiceRegionException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyApplicationVersionsException extends S.TaggedErrorClass<TooManyApplicationVersionsException>()(
-  "TooManyApplicationVersionsException",
-  { message: S.optional(S.String) },
-) {}
-export class TooManyBucketsException extends S.TaggedErrorClass<TooManyBucketsException>()(
-  "TooManyBucketsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyBucketsException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyConfigurationTemplatesException extends S.TaggedErrorClass<TooManyConfigurationTemplatesException>()(
-  "TooManyConfigurationTemplatesException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TooManyConfigurationTemplatesException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyPlatformsException extends S.TaggedErrorClass<TooManyPlatformsException>()(
-  "TooManyPlatformsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TooManyPlatformsException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class S3SubscriptionRequiredException extends S.TaggedErrorClass<S3SubscriptionRequiredException>()(
-  "S3SubscriptionRequiredException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "S3SubscriptionRequiredException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class OperationInProgressException extends S.TaggedErrorClass<OperationInProgressException>()(
-  "OperationInProgressException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "OperationInProgressFailure",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SourceBundleDeletionException extends S.TaggedErrorClass<SourceBundleDeletionException>()(
-  "SourceBundleDeletionException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SourceBundleDeletionFailure",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class PlatformVersionStillReferencedException extends S.TaggedErrorClass<PlatformVersionStillReferencedException>()(
-  "PlatformVersionStillReferencedException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "PlatformVersionStillReferencedException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidRequestException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ResourceNotFoundException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceTypeNotSupportedException extends S.TaggedErrorClass<ResourceTypeNotSupportedException>()(
-  "ResourceTypeNotSupportedException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ResourceTypeNotSupportedException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyTagsException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type AbortEnvironmentUpdateError =
   | InsufficientPrivilegesException
   | CommonErrors;
@@ -3127,6 +3139,7 @@ export const abortEnvironmentUpdate: API.OperationMethod<
   retry: Retry,
   operationName: "AbortEnvironmentUpdate",
 }));
+
 export type ApplyEnvironmentManagedActionError =
   | ElasticBeanstalkServiceException
   | ManagedActionInvalidStateException
@@ -3152,6 +3165,7 @@ export const applyEnvironmentManagedAction: API.OperationMethod<
   retry: Retry,
   operationName: "ApplyEnvironmentManagedAction",
 }));
+
 export type AssociateEnvironmentOperationsRoleError =
   | InsufficientPrivilegesException
   | CommonErrors;
@@ -3174,6 +3188,7 @@ export const associateEnvironmentOperationsRole: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateEnvironmentOperationsRole",
 }));
+
 export type CheckDNSAvailabilityError = CommonErrors;
 /**
  * Checks if the specified CNAME is available.
@@ -3191,6 +3206,7 @@ export const checkDNSAvailability: API.OperationMethod<
   retry: Retry,
   operationName: "CheckDNSAvailability",
 }));
+
 export type ComposeEnvironmentsError =
   | InsufficientPrivilegesException
   | TooManyEnvironmentsException
@@ -3216,6 +3232,7 @@ export const composeEnvironments: API.OperationMethod<
   retry: Retry,
   operationName: "ComposeEnvironments",
 }));
+
 export type CreateApplicationError =
   | TooManyApplicationsException
   | CommonErrors;
@@ -3236,6 +3253,7 @@ export const createApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApplication",
 }));
+
 export type CreateApplicationVersionError =
   | CodeBuildNotInServiceRegionException
   | InsufficientPrivilegesException
@@ -3283,6 +3301,7 @@ export const createApplicationVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApplicationVersion",
 }));
+
 export type CreateConfigurationTemplateError =
   | InsufficientPrivilegesException
   | TooManyBucketsException
@@ -3322,6 +3341,7 @@ export const createConfigurationTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConfigurationTemplate",
 }));
+
 export type CreateEnvironmentError =
   | InsufficientPrivilegesException
   | TooManyEnvironmentsException
@@ -3343,6 +3363,7 @@ export const createEnvironment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEnvironment",
 }));
+
 export type CreatePlatformVersionError =
   | ElasticBeanstalkServiceException
   | InsufficientPrivilegesException
@@ -3368,6 +3389,7 @@ export const createPlatformVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePlatformVersion",
 }));
+
 export type CreateStorageLocationError =
   | InsufficientPrivilegesException
   | S3SubscriptionRequiredException
@@ -3397,6 +3419,7 @@ export const createStorageLocation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateStorageLocation",
 }));
+
 export type DeleteApplicationError =
   | OperationInProgressException
   | CommonErrors;
@@ -3420,6 +3443,7 @@ export const deleteApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplication",
 }));
+
 export type DeleteApplicationVersionError =
   | InsufficientPrivilegesException
   | OperationInProgressException
@@ -3450,6 +3474,7 @@ export const deleteApplicationVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplicationVersion",
 }));
+
 export type DeleteConfigurationTemplateError =
   | OperationInProgressException
   | CommonErrors;
@@ -3473,6 +3498,7 @@ export const deleteConfigurationTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfigurationTemplate",
 }));
+
 export type DeleteEnvironmentConfigurationError = CommonErrors;
 /**
  * Deletes the draft configuration associated with the running environment.
@@ -3496,6 +3522,7 @@ export const deleteEnvironmentConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEnvironmentConfiguration",
 }));
+
 export type DeletePlatformVersionError =
   | ElasticBeanstalkServiceException
   | InsufficientPrivilegesException
@@ -3523,6 +3550,7 @@ export const deletePlatformVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePlatformVersion",
 }));
+
 export type DescribeAccountAttributesError =
   | InsufficientPrivilegesException
   | CommonErrors;
@@ -3545,6 +3573,7 @@ export const describeAccountAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccountAttributes",
 }));
+
 export type DescribeApplicationsError = CommonErrors;
 /**
  * Returns the descriptions of existing applications.
@@ -3562,6 +3591,7 @@ export const describeApplications: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeApplications",
 }));
+
 export type DescribeApplicationVersionsError = CommonErrors;
 /**
  * Retrieve a list of application versions.
@@ -3579,6 +3609,7 @@ export const describeApplicationVersions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeApplicationVersions",
 }));
+
 export type DescribeConfigurationOptionsError =
   | TooManyBucketsException
   | CommonErrors;
@@ -3601,6 +3632,7 @@ export const describeConfigurationOptions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConfigurationOptions",
 }));
+
 export type DescribeConfigurationSettingsError =
   | TooManyBucketsException
   | CommonErrors;
@@ -3631,6 +3663,7 @@ export const describeConfigurationSettings: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConfigurationSettings",
 }));
+
 export type DescribeEnvironmentHealthError =
   | ElasticBeanstalkServiceException
   | InvalidRequestException
@@ -3653,6 +3686,7 @@ export const describeEnvironmentHealth: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEnvironmentHealth",
 }));
+
 export type DescribeEnvironmentManagedActionHistoryError =
   | ElasticBeanstalkServiceException
   | CommonErrors;
@@ -3693,6 +3727,7 @@ export const describeEnvironmentManagedActionHistory: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type DescribeEnvironmentManagedActionsError =
   | ElasticBeanstalkServiceException
   | CommonErrors;
@@ -3712,6 +3747,7 @@ export const describeEnvironmentManagedActions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEnvironmentManagedActions",
 }));
+
 export type DescribeEnvironmentResourcesError =
   | InsufficientPrivilegesException
   | CommonErrors;
@@ -3731,6 +3767,7 @@ export const describeEnvironmentResources: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEnvironmentResources",
 }));
+
 export type DescribeEnvironmentsError = CommonErrors;
 /**
  * Returns descriptions for existing environments.
@@ -3748,6 +3785,7 @@ export const describeEnvironments: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEnvironments",
 }));
+
 export type DescribeEventsError = CommonErrors;
 /**
  * Returns list of event descriptions matching criteria up to the last 6 weeks.
@@ -3789,6 +3827,7 @@ export const describeEvents: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeInstancesHealthError =
   | ElasticBeanstalkServiceException
   | InvalidRequestException
@@ -3811,6 +3850,7 @@ export const describeInstancesHealth: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInstancesHealth",
 }));
+
 export type DescribePlatformVersionError =
   | ElasticBeanstalkServiceException
   | InsufficientPrivilegesException
@@ -3835,6 +3875,7 @@ export const describePlatformVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePlatformVersion",
 }));
+
 export type DisassociateEnvironmentOperationsRoleError =
   | InsufficientPrivilegesException
   | CommonErrors;
@@ -3857,6 +3898,7 @@ export const disassociateEnvironmentOperationsRole: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateEnvironmentOperationsRole",
 }));
+
 export type ListAvailableSolutionStacksError = CommonErrors;
 /**
  * Returns a list of the available solution stack names, with the public version first and
@@ -3875,6 +3917,7 @@ export const listAvailableSolutionStacks: API.OperationMethod<
   retry: Retry,
   operationName: "ListAvailableSolutionStacks",
 }));
+
 export type ListPlatformBranchesError = CommonErrors;
 /**
  * Lists the platform branches available for your account in an AWS Region. Provides
@@ -3916,6 +3959,7 @@ export const listPlatformBranches: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type ListPlatformVersionsError =
   | ElasticBeanstalkServiceException
   | InsufficientPrivilegesException
@@ -3962,6 +4006,7 @@ export const listPlatformVersions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InsufficientPrivilegesException
   | ResourceNotFoundException
@@ -3991,6 +4036,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RebuildEnvironmentError =
   | InsufficientPrivilegesException
   | CommonErrors;
@@ -4011,6 +4057,7 @@ export const rebuildEnvironment: API.OperationMethod<
   retry: Retry,
   operationName: "RebuildEnvironment",
 }));
+
 export type RequestEnvironmentInfoError = CommonErrors;
 /**
  * Initiates a request to compile the specified type of information of the deployed
@@ -4046,6 +4093,7 @@ export const requestEnvironmentInfo: API.OperationMethod<
   retry: Retry,
   operationName: "RequestEnvironmentInfo",
 }));
+
 export type RestartAppServerError = CommonErrors;
 /**
  * Causes the environment to restart the application container server running on each
@@ -4064,6 +4112,7 @@ export const restartAppServer: API.OperationMethod<
   retry: Retry,
   operationName: "RestartAppServer",
 }));
+
 export type RetrieveEnvironmentInfoError = CommonErrors;
 /**
  * Retrieves the compiled information from a RequestEnvironmentInfo
@@ -4086,6 +4135,7 @@ export const retrieveEnvironmentInfo: API.OperationMethod<
   retry: Retry,
   operationName: "RetrieveEnvironmentInfo",
 }));
+
 export type SwapEnvironmentCNAMEsError = CommonErrors;
 /**
  * Swaps the CNAMEs of two environments.
@@ -4103,6 +4153,7 @@ export const swapEnvironmentCNAMEs: API.OperationMethod<
   retry: Retry,
   operationName: "SwapEnvironmentCNAMEs",
 }));
+
 export type TerminateEnvironmentError =
   | InsufficientPrivilegesException
   | CommonErrors;
@@ -4122,6 +4173,7 @@ export const terminateEnvironment: API.OperationMethod<
   retry: Retry,
   operationName: "TerminateEnvironment",
 }));
+
 export type UpdateApplicationError = CommonErrors;
 /**
  * Updates the specified application to have the specified properties.
@@ -4142,6 +4194,7 @@ export const updateApplication: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApplication",
 }));
+
 export type UpdateApplicationResourceLifecycleError =
   | InsufficientPrivilegesException
   | CommonErrors;
@@ -4161,6 +4214,7 @@ export const updateApplicationResourceLifecycle: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApplicationResourceLifecycle",
 }));
+
 export type UpdateApplicationVersionError = CommonErrors;
 /**
  * Updates the specified application version to have the specified properties.
@@ -4181,6 +4235,7 @@ export const updateApplicationVersion: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApplicationVersion",
 }));
+
 export type UpdateConfigurationTemplateError =
   | InsufficientPrivilegesException
   | TooManyBucketsException
@@ -4209,6 +4264,7 @@ export const updateConfigurationTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConfigurationTemplate",
 }));
+
 export type UpdateEnvironmentError =
   | InsufficientPrivilegesException
   | TooManyBucketsException
@@ -4239,6 +4295,7 @@ export const updateEnvironment: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEnvironment",
 }));
+
 export type UpdateTagsForResourceError =
   | InsufficientPrivilegesException
   | OperationInProgressException
@@ -4288,6 +4345,7 @@ export const updateTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTagsForResource",
 }));
+
 export type ValidateConfigurationSettingsError =
   | InsufficientPrivilegesException
   | TooManyBucketsException

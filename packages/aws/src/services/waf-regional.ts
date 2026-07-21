@@ -85,45 +85,108 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class WAFBadRequestException extends S.TaggedErrorClass<WAFBadRequestException>()(
+  "WAFBadRequestException",
+  { message: S.optional(S.String) },
+) {}
+export class WAFDisallowedNameException extends S.TaggedErrorClass<WAFDisallowedNameException>()(
+  "WAFDisallowedNameException",
+  { message: S.optional(S.String) },
+) {}
+export class WAFEntityMigrationException extends S.TaggedErrorClass<WAFEntityMigrationException>()(
+  "WAFEntityMigrationException",
+  {
+    message: S.optional(S.String),
+    MigrationErrorType: S.optional(
+      S.suspend(() => MigrationErrorType).annotate({
+        identifier: "MigrationErrorType",
+      }),
+    ),
+    MigrationErrorReason: S.optional(S.String),
+  },
+) {}
+export class WAFInternalErrorException extends S.TaggedErrorClass<WAFInternalErrorException>()(
+  "WAFInternalErrorException",
+  { message: S.optional(S.String) },
+).pipe(C.withServerError) {}
+export class WAFInvalidAccountException extends S.TaggedErrorClass<WAFInvalidAccountException>()(
+  "WAFInvalidAccountException",
+  {},
+) {}
+export class WAFInvalidOperationException extends S.TaggedErrorClass<WAFInvalidOperationException>()(
+  "WAFInvalidOperationException",
+  { message: S.optional(S.String) },
+) {}
+export class WAFInvalidParameterException extends S.TaggedErrorClass<WAFInvalidParameterException>()(
+  "WAFInvalidParameterException",
+  {
+    field: S.optional(
+      S.suspend(() => ParameterExceptionField).annotate({
+        identifier: "ParameterExceptionField",
+      }),
+    ),
+    parameter: S.optional(S.String),
+    reason: S.optional(
+      S.suspend(() => ParameterExceptionReason).annotate({
+        identifier: "ParameterExceptionReason",
+      }),
+    ),
+  },
+) {}
+export class WAFInvalidPermissionPolicyException extends S.TaggedErrorClass<WAFInvalidPermissionPolicyException>()(
+  "WAFInvalidPermissionPolicyException",
+  { message: S.optional(S.String) },
+) {}
+export class WAFInvalidRegexPatternException extends S.TaggedErrorClass<WAFInvalidRegexPatternException>()(
+  "WAFInvalidRegexPatternException",
+  { message: S.optional(S.String) },
+) {}
+export class WAFLimitsExceededException extends S.TaggedErrorClass<WAFLimitsExceededException>()(
+  "WAFLimitsExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class WAFNonEmptyEntityException extends S.TaggedErrorClass<WAFNonEmptyEntityException>()(
+  "WAFNonEmptyEntityException",
+  { message: S.optional(S.String) },
+) {}
+export class WAFNonexistentContainerException extends S.TaggedErrorClass<WAFNonexistentContainerException>()(
+  "WAFNonexistentContainerException",
+  { message: S.optional(S.String) },
+) {}
+export class WAFNonexistentItemException extends S.TaggedErrorClass<WAFNonexistentItemException>()(
+  "WAFNonexistentItemException",
+  { message: S.optional(S.String) },
+) {}
+export class WAFReferencedItemException extends S.TaggedErrorClass<WAFReferencedItemException>()(
+  "WAFReferencedItemException",
+  { message: S.optional(S.String) },
+) {}
+export class WAFServiceLinkedRoleErrorException extends S.TaggedErrorClass<WAFServiceLinkedRoleErrorException>()(
+  "WAFServiceLinkedRoleErrorException",
+  { message: S.optional(S.String) },
+) {}
+export class WAFStaleDataException extends S.TaggedErrorClass<WAFStaleDataException>()(
+  "WAFStaleDataException",
+  { message: S.optional(S.String) },
+) {}
+export class WAFSubscriptionNotFoundException extends S.TaggedErrorClass<WAFSubscriptionNotFoundException>()(
+  "WAFSubscriptionNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class WAFTagOperationException extends S.TaggedErrorClass<WAFTagOperationException>()(
+  "WAFTagOperationException",
+  { message: S.optional(S.String) },
+) {}
+export class WAFTagOperationInternalErrorException extends S.TaggedErrorClass<WAFTagOperationInternalErrorException>()(
+  "WAFTagOperationInternalErrorException",
+  { message: S.optional(S.String) },
+).pipe(C.withServerError) {}
+export class WAFUnavailableEntityException extends S.TaggedErrorClass<WAFUnavailableEntityException>()(
+  "WAFUnavailableEntityException",
+  { message: S.optional(S.String) },
+) {}
 export type ResourceId = string;
 export type ResourceArn = string;
-export type ErrorMessage = string;
-export type ParameterExceptionParameter = string;
-export type ResourceName = string;
-export type ChangeToken = string;
-export type MatchFieldData = string;
-export type ByteMatchTargetString = Uint8Array;
-export type IPSetDescriptorValue = string;
-export type MetricName = string;
-export type RateLimit = number;
-export type TagKey = string;
-export type TagValue = string;
-export type Negated = boolean;
-export type RegexPatternString = string;
-export type Size = number;
-export type RulePriority = number;
-export type S3BucketName = string;
-export type IgnoreUnsupportedType = boolean;
-export type S3ObjectUrl = string;
-export type ErrorReason = string;
-export type PolicyString = string;
-export type NextMarker = string;
-export type ManagedKey = string;
-export type GetSampledRequestsMaxItems = number;
-export type IPString = string;
-export type Country = string;
-export type URIString = string;
-export type HTTPMethod = string;
-export type HTTPVersion = string;
-export type HeaderName = string;
-export type HeaderValue = string;
-export type SampleWeight = number;
-export type Action = string;
-export type PopulationSize = number;
-export type PaginationLimit = number;
-
-//# Schemas
 export interface AssociateWebACLRequest {
   WebACLId: string;
   ResourceArn: string;
@@ -149,34 +212,8 @@ export const AssociateWebACLResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateWebACLResponse",
 }) as any as S.Schema<AssociateWebACLResponse>;
-export type ParameterExceptionField =
-  | "CHANGE_ACTION"
-  | "WAF_ACTION"
-  | "WAF_OVERRIDE_ACTION"
-  | "PREDICATE_TYPE"
-  | "IPSET_TYPE"
-  | "BYTE_MATCH_FIELD_TYPE"
-  | "SQL_INJECTION_MATCH_FIELD_TYPE"
-  | "BYTE_MATCH_TEXT_TRANSFORMATION"
-  | "BYTE_MATCH_POSITIONAL_CONSTRAINT"
-  | "SIZE_CONSTRAINT_COMPARISON_OPERATOR"
-  | "GEO_MATCH_LOCATION_TYPE"
-  | "GEO_MATCH_LOCATION_VALUE"
-  | "RATE_KEY"
-  | "RULE_TYPE"
-  | "NEXT_MARKER"
-  | "RESOURCE_ARN"
-  | "TAGS"
-  | "TAG_KEYS"
-  | (string & {});
-export const ParameterExceptionField = /*@__PURE__*/ S.String;
-export type ParameterExceptionReason =
-  | "INVALID_OPTION"
-  | "ILLEGAL_COMBINATION"
-  | "ILLEGAL_ARGUMENT"
-  | "INVALID_TAG_KEY"
-  | (string & {});
-export const ParameterExceptionReason = /*@__PURE__*/ S.String;
+export type ResourceName = string;
+export type ChangeToken = string;
 export interface CreateByteMatchSetRequest {
   Name: string;
   ChangeToken: string;
@@ -206,6 +243,8 @@ export type MatchFieldType =
   | "ALL_QUERY_ARGS"
   | (string & {});
 export const MatchFieldType = /*@__PURE__*/ S.String;
+
+export type MatchFieldData = string;
 export interface FieldToMatch {
   Type: MatchFieldType;
   Data?: string;
@@ -213,6 +252,7 @@ export interface FieldToMatch {
 export const FieldToMatch = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: MatchFieldType, Data: S.optional(S.String) }),
 ).annotate({ identifier: "FieldToMatch" }) as any as S.Schema<FieldToMatch>;
+export type ByteMatchTargetString = Uint8Array;
 export type TextTransformation =
   | "NONE"
   | "COMPRESS_WHITE_SPACE"
@@ -222,6 +262,7 @@ export type TextTransformation =
   | "URL_DECODE"
   | (string & {});
 export const TextTransformation = /*@__PURE__*/ S.String;
+
 export type PositionalConstraint =
   | "EXACTLY"
   | "STARTS_WITH"
@@ -230,6 +271,7 @@ export type PositionalConstraint =
   | "CONTAINS_WORD"
   | (string & {});
 export const PositionalConstraint = /*@__PURE__*/ S.String;
+
 export interface ByteMatchTuple {
   FieldToMatch: FieldToMatch;
   TargetString: Uint8Array;
@@ -291,6 +333,7 @@ export const CreateGeoMatchSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateGeoMatchSetRequest>;
 export type GeoMatchConstraintType = "Country" | (string & {});
 export const GeoMatchConstraintType = /*@__PURE__*/ S.String;
+
 export type GeoMatchConstraintValue =
   | "AF"
   | "AX"
@@ -543,6 +586,7 @@ export type GeoMatchConstraintValue =
   | "ZW"
   | (string & {});
 export const GeoMatchConstraintValue = /*@__PURE__*/ S.String;
+
 export interface GeoMatchConstraint {
   Type: GeoMatchConstraintType;
   Value: GeoMatchConstraintValue;
@@ -599,6 +643,8 @@ export const CreateIPSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIPSetRequest>;
 export type IPSetDescriptorType = "IPV4" | "IPV6" | (string & {});
 export const IPSetDescriptorType = /*@__PURE__*/ S.String;
+
+export type IPSetDescriptorValue = string;
 export interface IPSetDescriptor {
   Type: IPSetDescriptorType;
   Value: string;
@@ -634,8 +680,13 @@ export const CreateIPSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIPSetResponse",
 }) as any as S.Schema<CreateIPSetResponse>;
+export type MetricName = string;
 export type RateKey = "IP" | (string & {});
 export const RateKey = /*@__PURE__*/ S.String;
+
+export type RateLimit = number;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -675,6 +726,7 @@ export const CreateRateBasedRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRateBasedRuleRequest",
 }) as any as S.Schema<CreateRateBasedRuleRequest>;
+export type Negated = boolean;
 export type PredicateType =
   | "IPMatch"
   | "ByteMatch"
@@ -685,6 +737,7 @@ export type PredicateType =
   | "RegexMatch"
   | (string & {});
 export const PredicateType = /*@__PURE__*/ S.String;
+
 export interface Predicate {
   Negated: boolean;
   Type: PredicateType;
@@ -803,6 +856,7 @@ export const CreateRegexPatternSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRegexPatternSetRequest",
 }) as any as S.Schema<CreateRegexPatternSetRequest>;
+export type RegexPatternString = string;
 export type RegexPatternStrings = string[];
 export const RegexPatternStrings = /*@__PURE__*/ S.Array(S.String);
 export interface RegexPatternSet {
@@ -960,6 +1014,8 @@ export type ComparisonOperator =
   | "GT"
   | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
+export type Size = number;
 export interface SizeConstraint {
   FieldToMatch: FieldToMatch;
   TextTransformation: TextTransformation;
@@ -1065,6 +1121,7 @@ export const CreateSqlInjectionMatchSetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSqlInjectionMatchSetResponse>;
 export type WafActionType = "BLOCK" | "ALLOW" | "COUNT" | (string & {});
 export const WafActionType = /*@__PURE__*/ S.String;
+
 export interface WafAction {
   Type: WafActionType;
 }
@@ -1099,8 +1156,10 @@ export const CreateWebACLRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWebACLRequest",
 }) as any as S.Schema<CreateWebACLRequest>;
+export type RulePriority = number;
 export type WafOverrideActionType = "NONE" | "COUNT" | (string & {});
 export const WafOverrideActionType = /*@__PURE__*/ S.String;
+
 export interface WafOverrideAction {
   Type: WafOverrideActionType;
 }
@@ -1111,6 +1170,7 @@ export const WafOverrideAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WafOverrideAction>;
 export type WafRuleType = "REGULAR" | "RATE_BASED" | "GROUP" | (string & {});
 export const WafRuleType = /*@__PURE__*/ S.String;
+
 export interface ExcludedRule {
   RuleId: string;
 }
@@ -1169,6 +1229,8 @@ export const CreateWebACLResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWebACLResponse",
 }) as any as S.Schema<CreateWebACLResponse>;
+export type S3BucketName = string;
+export type IgnoreUnsupportedType = boolean;
 export interface CreateWebACLMigrationStackRequest {
   WebACLId: string;
   S3BucketName: string;
@@ -1193,6 +1255,7 @@ export const CreateWebACLMigrationStackRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWebACLMigrationStackRequest",
 }) as any as S.Schema<CreateWebACLMigrationStackRequest>;
+export type S3ObjectUrl = string;
 export interface CreateWebACLMigrationStackResponse {
   S3ObjectUrl: string;
 }
@@ -1201,16 +1264,6 @@ export const CreateWebACLMigrationStackResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWebACLMigrationStackResponse",
 }) as any as S.Schema<CreateWebACLMigrationStackResponse>;
-export type MigrationErrorType =
-  | "ENTITY_NOT_SUPPORTED"
-  | "ENTITY_NOT_FOUND"
-  | "S3_BUCKET_NO_PERMISSION"
-  | "S3_BUCKET_NOT_ACCESSIBLE"
-  | "S3_BUCKET_NOT_FOUND"
-  | "S3_BUCKET_INVALID_REGION"
-  | "S3_INTERNAL_ERROR"
-  | (string & {});
-export const MigrationErrorType = /*@__PURE__*/ S.String;
 export interface CreateXssMatchSetRequest {
   Name: string;
   ChangeToken: string;
@@ -1736,6 +1789,7 @@ export type ChangeTokenStatus =
   | "INSYNC"
   | (string & {});
 export const ChangeTokenStatus = /*@__PURE__*/ S.String;
+
 export interface GetChangeTokenStatusResponse {
   ChangeTokenStatus?: ChangeTokenStatus;
 }
@@ -1858,6 +1912,7 @@ export const GetPermissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPermissionPolicyRequest",
 }) as any as S.Schema<GetPermissionPolicyRequest>;
+export type PolicyString = string;
 export interface GetPermissionPolicyResponse {
   Policy?: string;
 }
@@ -1892,6 +1947,7 @@ export const GetRateBasedRuleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRateBasedRuleResponse",
 }) as any as S.Schema<GetRateBasedRuleResponse>;
+export type NextMarker = string;
 export interface GetRateBasedRuleManagedKeysRequest {
   RuleId: string;
   NextMarker?: string;
@@ -1911,6 +1967,7 @@ export const GetRateBasedRuleManagedKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRateBasedRuleManagedKeysRequest",
 }) as any as S.Schema<GetRateBasedRuleManagedKeysRequest>;
+export type ManagedKey = string;
 export type ManagedKeys = string[];
 export const ManagedKeys = /*@__PURE__*/ S.Array(S.String);
 export interface GetRateBasedRuleManagedKeysResponse {
@@ -2037,6 +2094,7 @@ export const TimeWindow = /*@__PURE__*/ S.suspend(() =>
     EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
   }),
 ).annotate({ identifier: "TimeWindow" }) as any as S.Schema<TimeWindow>;
+export type GetSampledRequestsMaxItems = number;
 export interface GetSampledRequestsRequest {
   WebAclId: string;
   RuleId: string;
@@ -2063,6 +2121,13 @@ export const GetSampledRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSampledRequestsRequest",
 }) as any as S.Schema<GetSampledRequestsRequest>;
+export type IPString = string;
+export type Country = string;
+export type URIString = string;
+export type HTTPMethod = string;
+export type HTTPVersion = string;
+export type HeaderName = string;
+export type HeaderValue = string;
 export interface HTTPHeader {
   Name?: string;
   Value?: string;
@@ -2090,6 +2155,8 @@ export const HTTPRequest = /*@__PURE__*/ S.suspend(() =>
     Headers: S.optional(HTTPHeaders),
   }),
 ).annotate({ identifier: "HTTPRequest" }) as any as S.Schema<HTTPRequest>;
+export type SampleWeight = number;
+export type Action = string;
 export interface SampledHTTPRequest {
   Request: HTTPRequest;
   Weight: number;
@@ -2110,6 +2177,7 @@ export const SampledHTTPRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SampledHTTPRequest>;
 export type SampledHTTPRequests = SampledHTTPRequest[];
 export const SampledHTTPRequests = /*@__PURE__*/ S.Array(SampledHTTPRequest);
+export type PopulationSize = number;
 export interface GetSampledRequestsResponse {
   SampledRequests?: SampledHTTPRequest[];
   PopulationSize?: number;
@@ -2261,6 +2329,7 @@ export const GetXssMatchSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetXssMatchSetResponse",
 }) as any as S.Schema<GetXssMatchSetResponse>;
+export type PaginationLimit = number;
 export interface ListActivatedRulesInRuleGroupRequest {
   RuleGroupId?: string;
   NextMarker?: string;
@@ -2610,6 +2679,7 @@ export type ResourceType =
   | "API_GATEWAY"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export interface ListResourcesForWebACLRequest {
   WebACLId: string;
   ResourceType?: ResourceType;
@@ -3091,6 +3161,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceResponse>;
 export type ChangeAction = "INSERT" | "DELETE" | (string & {});
 export const ChangeAction = /*@__PURE__*/ S.String;
+
 export interface ByteMatchSetUpdate {
   Action: ChangeAction;
   ByteMatchTuple: ByteMatchTuple;
@@ -3603,98 +3674,50 @@ export const UpdateXssMatchSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateXssMatchSetResponse",
 }) as any as S.Schema<UpdateXssMatchSetResponse>;
+export type ErrorMessage = string;
+export type ParameterExceptionField =
+  | "CHANGE_ACTION"
+  | "WAF_ACTION"
+  | "WAF_OVERRIDE_ACTION"
+  | "PREDICATE_TYPE"
+  | "IPSET_TYPE"
+  | "BYTE_MATCH_FIELD_TYPE"
+  | "SQL_INJECTION_MATCH_FIELD_TYPE"
+  | "BYTE_MATCH_TEXT_TRANSFORMATION"
+  | "BYTE_MATCH_POSITIONAL_CONSTRAINT"
+  | "SIZE_CONSTRAINT_COMPARISON_OPERATOR"
+  | "GEO_MATCH_LOCATION_TYPE"
+  | "GEO_MATCH_LOCATION_VALUE"
+  | "RATE_KEY"
+  | "RULE_TYPE"
+  | "NEXT_MARKER"
+  | "RESOURCE_ARN"
+  | "TAGS"
+  | "TAG_KEYS"
+  | (string & {});
+export const ParameterExceptionField = /*@__PURE__*/ S.String;
 
-//# Errors
-export class WAFInternalErrorException extends S.TaggedErrorClass<WAFInternalErrorException>()(
-  "WAFInternalErrorException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class WAFInvalidAccountException extends S.TaggedErrorClass<WAFInvalidAccountException>()(
-  "WAFInvalidAccountException",
-  {},
-) {}
-export class WAFInvalidParameterException extends S.TaggedErrorClass<WAFInvalidParameterException>()(
-  "WAFInvalidParameterException",
-  {
-    field: S.optional(ParameterExceptionField),
-    parameter: S.optional(S.String),
-    reason: S.optional(ParameterExceptionReason),
-  },
-) {}
-export class WAFNonexistentItemException extends S.TaggedErrorClass<WAFNonexistentItemException>()(
-  "WAFNonexistentItemException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFUnavailableEntityException extends S.TaggedErrorClass<WAFUnavailableEntityException>()(
-  "WAFUnavailableEntityException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFDisallowedNameException extends S.TaggedErrorClass<WAFDisallowedNameException>()(
-  "WAFDisallowedNameException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFLimitsExceededException extends S.TaggedErrorClass<WAFLimitsExceededException>()(
-  "WAFLimitsExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFStaleDataException extends S.TaggedErrorClass<WAFStaleDataException>()(
-  "WAFStaleDataException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFBadRequestException extends S.TaggedErrorClass<WAFBadRequestException>()(
-  "WAFBadRequestException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFTagOperationException extends S.TaggedErrorClass<WAFTagOperationException>()(
-  "WAFTagOperationException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFTagOperationInternalErrorException extends S.TaggedErrorClass<WAFTagOperationInternalErrorException>()(
-  "WAFTagOperationInternalErrorException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class WAFEntityMigrationException extends S.TaggedErrorClass<WAFEntityMigrationException>()(
-  "WAFEntityMigrationException",
-  {
-    message: S.optional(S.String),
-    MigrationErrorType: S.optional(MigrationErrorType),
-    MigrationErrorReason: S.optional(S.String),
-  },
-) {}
-export class WAFInvalidOperationException extends S.TaggedErrorClass<WAFInvalidOperationException>()(
-  "WAFInvalidOperationException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFNonEmptyEntityException extends S.TaggedErrorClass<WAFNonEmptyEntityException>()(
-  "WAFNonEmptyEntityException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFReferencedItemException extends S.TaggedErrorClass<WAFReferencedItemException>()(
-  "WAFReferencedItemException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFServiceLinkedRoleErrorException extends S.TaggedErrorClass<WAFServiceLinkedRoleErrorException>()(
-  "WAFServiceLinkedRoleErrorException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFInvalidPermissionPolicyException extends S.TaggedErrorClass<WAFInvalidPermissionPolicyException>()(
-  "WAFInvalidPermissionPolicyException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFNonexistentContainerException extends S.TaggedErrorClass<WAFNonexistentContainerException>()(
-  "WAFNonexistentContainerException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFInvalidRegexPatternException extends S.TaggedErrorClass<WAFInvalidRegexPatternException>()(
-  "WAFInvalidRegexPatternException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFSubscriptionNotFoundException extends S.TaggedErrorClass<WAFSubscriptionNotFoundException>()(
-  "WAFSubscriptionNotFoundException",
-  { message: S.optional(S.String) },
-) {}
+export type ParameterExceptionParameter = string;
+export type ParameterExceptionReason =
+  | "INVALID_OPTION"
+  | "ILLEGAL_COMBINATION"
+  | "ILLEGAL_ARGUMENT"
+  | "INVALID_TAG_KEY"
+  | (string & {});
+export const ParameterExceptionReason = /*@__PURE__*/ S.String;
 
-//# Operations
+export type MigrationErrorType =
+  | "ENTITY_NOT_SUPPORTED"
+  | "ENTITY_NOT_FOUND"
+  | "S3_BUCKET_NO_PERMISSION"
+  | "S3_BUCKET_NOT_ACCESSIBLE"
+  | "S3_BUCKET_NOT_FOUND"
+  | "S3_BUCKET_INVALID_REGION"
+  | "S3_INTERNAL_ERROR"
+  | (string & {});
+export const MigrationErrorType = /*@__PURE__*/ S.String;
+
+export type ErrorReason = string;
 export type AssociateWebACLError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -3731,6 +3754,7 @@ export const associateWebACL: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateWebACL",
 }));
+
 export type CreateByteMatchSetError =
   | WAFDisallowedNameException
   | WAFInternalErrorException
@@ -3788,6 +3812,7 @@ export const createByteMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateByteMatchSet",
 }));
+
 export type CreateGeoMatchSetError =
   | WAFDisallowedNameException
   | WAFInternalErrorException
@@ -3842,6 +3867,7 @@ export const createGeoMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGeoMatchSet",
 }));
+
 export type CreateIPSetError =
   | WAFDisallowedNameException
   | WAFInternalErrorException
@@ -3901,6 +3927,7 @@ export const createIPSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIPSet",
 }));
+
 export type CreateRateBasedRuleError =
   | WAFBadRequestException
   | WAFDisallowedNameException
@@ -4010,6 +4037,7 @@ export const createRateBasedRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRateBasedRule",
 }));
+
 export type CreateRegexMatchSetError =
   | WAFDisallowedNameException
   | WAFInternalErrorException
@@ -4063,6 +4091,7 @@ export const createRegexMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRegexMatchSet",
 }));
+
 export type CreateRegexPatternSetError =
   | WAFDisallowedNameException
   | WAFInternalErrorException
@@ -4112,6 +4141,7 @@ export const createRegexPatternSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRegexPatternSet",
 }));
+
 export type CreateRuleError =
   | WAFBadRequestException
   | WAFDisallowedNameException
@@ -4187,6 +4217,7 @@ export const createRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRule",
 }));
+
 export type CreateRuleGroupError =
   | WAFBadRequestException
   | WAFDisallowedNameException
@@ -4238,6 +4269,7 @@ export const createRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRuleGroup",
 }));
+
 export type CreateSizeConstraintSetError =
   | WAFDisallowedNameException
   | WAFInternalErrorException
@@ -4295,6 +4327,7 @@ export const createSizeConstraintSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSizeConstraintSet",
 }));
+
 export type CreateSqlInjectionMatchSetError =
   | WAFDisallowedNameException
   | WAFInternalErrorException
@@ -4350,6 +4383,7 @@ export const createSqlInjectionMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSqlInjectionMatchSet",
 }));
+
 export type CreateWebACLError =
   | WAFBadRequestException
   | WAFDisallowedNameException
@@ -4420,6 +4454,7 @@ export const createWebACL: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWebACL",
 }));
+
 export type CreateWebACLMigrationStackError =
   | WAFEntityMigrationException
   | WAFInternalErrorException
@@ -4457,6 +4492,7 @@ export const createWebACLMigrationStack: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWebACLMigrationStack",
 }));
+
 export type CreateXssMatchSetError =
   | WAFDisallowedNameException
   | WAFInternalErrorException
@@ -4512,6 +4548,7 @@ export const createXssMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateXssMatchSet",
 }));
+
 export type DeleteByteMatchSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -4562,6 +4599,7 @@ export const deleteByteMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteByteMatchSet",
 }));
+
 export type DeleteGeoMatchSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -4612,6 +4650,7 @@ export const deleteGeoMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGeoMatchSet",
 }));
+
 export type DeleteIPSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -4662,6 +4701,7 @@ export const deleteIPSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIPSet",
 }));
+
 export type DeleteLoggingConfigurationError =
   | WAFInternalErrorException
   | WAFNonexistentItemException
@@ -4695,6 +4735,7 @@ export const deleteLoggingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLoggingConfiguration",
 }));
+
 export type DeletePermissionPolicyError =
   | WAFInternalErrorException
   | WAFNonexistentItemException
@@ -4729,6 +4770,7 @@ export const deletePermissionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePermissionPolicy",
 }));
+
 export type DeleteRateBasedRuleError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -4787,6 +4829,7 @@ export const deleteRateBasedRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRateBasedRule",
 }));
+
 export type DeleteRegexMatchSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -4837,6 +4880,7 @@ export const deleteRegexMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRegexMatchSet",
 }));
+
 export type DeleteRegexPatternSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -4876,6 +4920,7 @@ export const deleteRegexPatternSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRegexPatternSet",
 }));
+
 export type DeleteRuleError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -4930,6 +4975,7 @@ export const deleteRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRule",
 }));
+
 export type DeleteRuleGroupError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -4984,6 +5030,7 @@ export const deleteRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRuleGroup",
 }));
+
 export type DeleteSizeConstraintSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5034,6 +5081,7 @@ export const deleteSizeConstraintSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSizeConstraintSet",
 }));
+
 export type DeleteSqlInjectionMatchSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5085,6 +5133,7 @@ export const deleteSqlInjectionMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSqlInjectionMatchSet",
 }));
+
 export type DeleteWebACLError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5136,6 +5185,7 @@ export const deleteWebACL: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWebACL",
 }));
+
 export type DeleteXssMatchSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5187,6 +5237,7 @@ export const deleteXssMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteXssMatchSet",
 }));
+
 export type DisassociateWebACLError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5221,6 +5272,7 @@ export const disassociateWebACL: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateWebACL",
 }));
+
 export type GetByteMatchSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5253,6 +5305,7 @@ export const getByteMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetByteMatchSet",
 }));
+
 export type GetChangeTokenError = WAFInternalErrorException | CommonErrors;
 /**
  * This is **AWS WAF Classic** documentation. For
@@ -5285,6 +5338,7 @@ export const getChangeToken: API.OperationMethod<
   retry: Retry,
   operationName: "GetChangeToken",
 }));
+
 export type GetChangeTokenStatusError =
   | WAFInternalErrorException
   | WAFNonexistentItemException
@@ -5320,6 +5374,7 @@ export const getChangeTokenStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetChangeTokenStatus",
 }));
+
 export type GetGeoMatchSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5352,6 +5407,7 @@ export const getGeoMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetGeoMatchSet",
 }));
+
 export type GetIPSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5384,6 +5440,7 @@ export const getIPSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetIPSet",
 }));
+
 export type GetLoggingConfigurationError =
   | WAFInternalErrorException
   | WAFNonexistentItemException
@@ -5411,6 +5468,7 @@ export const getLoggingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetLoggingConfiguration",
 }));
+
 export type GetPermissionPolicyError =
   | WAFInternalErrorException
   | WAFNonexistentItemException
@@ -5438,6 +5496,7 @@ export const getPermissionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetPermissionPolicy",
 }));
+
 export type GetRateBasedRuleError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5472,6 +5531,7 @@ export const getRateBasedRule: API.OperationMethod<
   retry: Retry,
   operationName: "GetRateBasedRule",
 }));
+
 export type GetRateBasedRuleManagedKeysError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5508,6 +5568,7 @@ export const getRateBasedRuleManagedKeys: API.OperationMethod<
   retry: Retry,
   operationName: "GetRateBasedRuleManagedKeys",
 }));
+
 export type GetRegexMatchSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5540,6 +5601,7 @@ export const getRegexMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetRegexMatchSet",
 }));
+
 export type GetRegexPatternSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5572,6 +5634,7 @@ export const getRegexPatternSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetRegexPatternSet",
 }));
+
 export type GetRuleError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5604,6 +5667,7 @@ export const getRule: API.OperationMethod<
   retry: Retry,
   operationName: "GetRule",
 }));
+
 export type GetRuleGroupError =
   | WAFInternalErrorException
   | WAFNonexistentItemException
@@ -5633,6 +5697,7 @@ export const getRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetRuleGroup",
 }));
+
 export type GetSampledRequestsError =
   | WAFInternalErrorException
   | WAFNonexistentItemException
@@ -5664,6 +5729,7 @@ export const getSampledRequests: API.OperationMethod<
   retry: Retry,
   operationName: "GetSampledRequests",
 }));
+
 export type GetSizeConstraintSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5696,6 +5762,7 @@ export const getSizeConstraintSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetSizeConstraintSet",
 }));
+
 export type GetSqlInjectionMatchSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5728,6 +5795,7 @@ export const getSqlInjectionMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetSqlInjectionMatchSet",
 }));
+
 export type GetWebACLError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5760,6 +5828,7 @@ export const getWebACL: API.OperationMethod<
   retry: Retry,
   operationName: "GetWebACL",
 }));
+
 export type GetWebACLForResourceError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5796,6 +5865,7 @@ export const getWebACLForResource: API.OperationMethod<
   retry: Retry,
   operationName: "GetWebACLForResource",
 }));
+
 export type GetXssMatchSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5828,6 +5898,7 @@ export const getXssMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetXssMatchSet",
 }));
+
 export type ListActivatedRulesInRuleGroupError =
   | WAFInternalErrorException
   | WAFInvalidParameterException
@@ -5860,6 +5931,7 @@ export const listActivatedRulesInRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "ListActivatedRulesInRuleGroup",
 }));
+
 export type ListByteMatchSetsError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5887,6 +5959,7 @@ export const listByteMatchSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListByteMatchSets",
 }));
+
 export type ListGeoMatchSetsError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5914,6 +5987,7 @@ export const listGeoMatchSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListGeoMatchSets",
 }));
+
 export type ListIPSetsError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -5941,6 +6015,7 @@ export const listIPSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListIPSets",
 }));
+
 export type ListLoggingConfigurationsError =
   | WAFInternalErrorException
   | WAFInvalidParameterException
@@ -5973,6 +6048,7 @@ export const listLoggingConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "ListLoggingConfigurations",
 }));
+
 export type ListRateBasedRulesError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -6000,6 +6076,7 @@ export const listRateBasedRules: API.OperationMethod<
   retry: Retry,
   operationName: "ListRateBasedRules",
 }));
+
 export type ListRegexMatchSetsError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -6027,6 +6104,7 @@ export const listRegexMatchSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListRegexMatchSets",
 }));
+
 export type ListRegexPatternSetsError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -6054,6 +6132,7 @@ export const listRegexPatternSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListRegexPatternSets",
 }));
+
 export type ListResourcesForWebACLError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -6088,6 +6167,7 @@ export const listResourcesForWebACL: API.OperationMethod<
   retry: Retry,
   operationName: "ListResourcesForWebACL",
 }));
+
 export type ListRuleGroupsError = WAFInternalErrorException | CommonErrors;
 /**
  * This is **AWS WAF Classic** documentation. For
@@ -6112,6 +6192,7 @@ export const listRuleGroups: API.OperationMethod<
   retry: Retry,
   operationName: "ListRuleGroups",
 }));
+
 export type ListRulesError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -6139,6 +6220,7 @@ export const listRules: API.OperationMethod<
   retry: Retry,
   operationName: "ListRules",
 }));
+
 export type ListSizeConstraintSetsError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -6166,6 +6248,7 @@ export const listSizeConstraintSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListSizeConstraintSets",
 }));
+
 export type ListSqlInjectionMatchSetsError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -6193,6 +6276,7 @@ export const listSqlInjectionMatchSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListSqlInjectionMatchSets",
 }));
+
 export type ListSubscribedRuleGroupsError =
   | WAFInternalErrorException
   | WAFNonexistentItemException
@@ -6220,6 +6304,7 @@ export const listSubscribedRuleGroups: API.OperationMethod<
   retry: Retry,
   operationName: "ListSubscribedRuleGroups",
 }));
+
 export type ListTagsForResourceError =
   | WAFBadRequestException
   | WAFInternalErrorException
@@ -6260,6 +6345,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListWebACLsError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -6287,6 +6373,7 @@ export const listWebACLs: API.OperationMethod<
   retry: Retry,
   operationName: "ListWebACLs",
 }));
+
 export type ListXssMatchSetsError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -6314,6 +6401,7 @@ export const listXssMatchSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListXssMatchSets",
 }));
+
 export type PutLoggingConfigurationError =
   | WAFInternalErrorException
   | WAFNonexistentItemException
@@ -6362,6 +6450,7 @@ export const putLoggingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutLoggingConfiguration",
 }));
+
 export type PutPermissionPolicyError =
   | WAFInternalErrorException
   | WAFInvalidPermissionPolicyException
@@ -6418,6 +6507,7 @@ export const putPermissionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutPermissionPolicy",
 }));
+
 export type TagResourceError =
   | WAFBadRequestException
   | WAFInternalErrorException
@@ -6460,6 +6550,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | WAFBadRequestException
   | WAFInternalErrorException
@@ -6496,6 +6587,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateByteMatchSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -6567,6 +6659,7 @@ export const updateByteMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateByteMatchSet",
 }));
+
 export type UpdateGeoMatchSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -6633,6 +6726,7 @@ export const updateGeoMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGeoMatchSet",
 }));
+
 export type UpdateIPSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -6733,6 +6827,7 @@ export const updateIPSet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateIPSet",
 }));
+
 export type UpdateRateBasedRuleError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -6814,6 +6909,7 @@ export const updateRateBasedRule: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRateBasedRule",
 }));
+
 export type UpdateRegexMatchSetError =
   | WAFDisallowedNameException
   | WAFInternalErrorException
@@ -6882,6 +6978,7 @@ export const updateRegexMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRegexMatchSet",
 }));
+
 export type UpdateRegexPatternSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -6951,6 +7048,7 @@ export const updateRegexPatternSet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRegexPatternSet",
 }));
+
 export type UpdateRuleError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -7028,6 +7126,7 @@ export const updateRule: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRule",
 }));
+
 export type UpdateRuleGroupError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -7089,6 +7188,7 @@ export const updateRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRuleGroup",
 }));
+
 export type UpdateSizeConstraintSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -7167,6 +7267,7 @@ export const updateSizeConstraintSet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSizeConstraintSet",
 }));
+
 export type UpdateSqlInjectionMatchSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -7241,6 +7342,7 @@ export const updateSqlInjectionMatchSet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSqlInjectionMatchSet",
 }));
+
 export type UpdateWebACLError =
   | WAFInternalErrorException
   | WAFInvalidAccountException
@@ -7348,6 +7450,7 @@ export const updateWebACL: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateWebACL",
 }));
+
 export type UpdateXssMatchSetError =
   | WAFInternalErrorException
   | WAFInvalidAccountException

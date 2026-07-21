@@ -84,14 +84,24 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InvalidContentLocation extends S.TaggedErrorClass<InvalidContentLocation>()(
+  "InvalidContentLocation",
+  { message: S.optional(S.String) },
+) {}
+export class MessageFrozen extends S.TaggedErrorClass<MessageFrozen>()(
+  "MessageFrozen",
+  { message: S.optional(S.String) },
+) {}
+export class MessageRejected extends S.TaggedErrorClass<MessageRejected>()(
+  "MessageRejected",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type MessageIdType = string;
-export type ErrorMessage = string;
-export type S3BucketIdType = string;
-export type S3KeyIdType = string;
-export type S3VersionType = string;
-
-//# Schemas
 export interface GetRawMessageContentRequest {
   messageId: string;
 }
@@ -117,6 +127,9 @@ export const GetRawMessageContentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRawMessageContentResponse",
 }) as any as S.Schema<GetRawMessageContentResponse>;
+export type S3BucketIdType = string;
+export type S3KeyIdType = string;
+export type S3VersionType = string;
 export interface S3Reference {
   bucket: string;
   key: string;
@@ -164,27 +177,7 @@ export const PutRawMessageContentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutRawMessageContentResponse",
 }) as any as S.Schema<PutRawMessageContentResponse>;
-
-//# Errors
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InvalidContentLocation extends S.TaggedErrorClass<InvalidContentLocation>()(
-  "InvalidContentLocation",
-  { message: S.optional(S.String) },
-) {}
-export class MessageFrozen extends S.TaggedErrorClass<MessageFrozen>()(
-  "MessageFrozen",
-  { message: S.optional(S.String) },
-) {}
-export class MessageRejected extends S.TaggedErrorClass<MessageRejected>()(
-  "MessageRejected",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type GetRawMessageContentError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -204,6 +197,7 @@ export const getRawMessageContent: API.OperationMethod<
   retry: Retry,
   operationName: "GetRawMessageContent",
 }));
+
 export type PutRawMessageContentError =
   | InvalidContentLocation
   | MessageFrozen

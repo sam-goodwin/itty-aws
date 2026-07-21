@@ -54,35 +54,43 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type DomainId = string;
 export type SubscriptionId = string;
-export type SubscriptionArn = string;
-export type DomainName = string;
-export type KmsKeyArn = string;
-export type TagKey = string;
-export type TagValue = string;
-export type DomainArn = string;
-export type WebAppUrl = string;
-export type ScribeSessionId = string;
-export type MedicalScribeMediaSampleRateHertz = number;
-export type MedicalScribeChannelId = number;
-export type S3Uri = string;
-export type Uri = string;
-export type ErrorMessage = string;
-export type NonNullBoolean = boolean;
-export type JobId = string;
-export type JobArn = string;
-export type NonEmptyString = string;
-export type SensitiveNonEmptyString = string | redacted.Redacted<string>;
-export type SensitiveIsoDateString = string | redacted.Redacted<string>;
-export type AudioChunk = Uint8Array;
-export type SensitiveAlphanumericString = string | redacted.Redacted<string>;
-export type SensitiveMarkdownString = string | redacted.Redacted<string>;
-export type RequestId = string;
-export type AudioOffset = number;
-
-//# Schemas
 export interface ActivateSubscriptionInput {
   domainId: string;
   subscriptionId: string;
@@ -107,12 +115,14 @@ export const ActivateSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivateSubscriptionInput",
 }) as any as S.Schema<ActivateSubscriptionInput>;
+export type SubscriptionArn = string;
 export type SubscriptionStatus =
   | "ACTIVE"
   | "INACTIVE"
   | "DELETED"
   | (string & {});
 export const SubscriptionStatus = /*@__PURE__*/ S.String;
+
 export interface SubscriptionDescription {
   domainId: string;
   subscriptionId: string;
@@ -145,6 +155,8 @@ export const ActivateSubscriptionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivateSubscriptionOutput",
 }) as any as S.Schema<ActivateSubscriptionOutput>;
+export type DomainName = string;
+export type KmsKeyArn = string;
 export interface CreateWebAppConfiguration {
   ehrRole: string;
   idcInstanceId: string;
@@ -155,6 +167,8 @@ export const CreateWebAppConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWebAppConfiguration",
 }) as any as S.Schema<CreateWebAppConfiguration>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -185,11 +199,13 @@ export const CreateDomainInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDomainInput",
 }) as any as S.Schema<CreateDomainInput>;
+export type DomainArn = string;
 export type EncryptionType =
   | "AWS_OWNED_KEY"
   | "CUSTOMER_MANAGED_KEY"
   | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
+
 export interface EncryptionContext {
   encryptionType: EncryptionType;
   kmsKeyArn?: string;
@@ -201,6 +217,8 @@ export const EncryptionContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionContext>;
 export type DomainStatus = "ACTIVE" | "DELETING" | "DELETED" | (string & {});
 export const DomainStatus = /*@__PURE__*/ S.String;
+
+export type WebAppUrl = string;
 export interface WebAppConfiguration {
   ehrRole: string;
   idcApplicationId: string;
@@ -384,6 +402,7 @@ export const GetDomainOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDomainOutput",
 }) as any as S.Schema<GetDomainOutput>;
+export type ScribeSessionId = string;
 export interface GetMedicalScribeListeningSessionInput {
   sessionId: string;
   domainId: string;
@@ -413,13 +432,18 @@ export const GetMedicalScribeListeningSessionInput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetMedicalScribeListeningSessionInput>;
 export type MedicalScribeLanguageCode = "en-US" | (string & {});
 export const MedicalScribeLanguageCode = /*@__PURE__*/ S.String;
+
+export type MedicalScribeMediaSampleRateHertz = number;
 export type MedicalScribeMediaEncoding = "pcm" | "flac" | (string & {});
 export const MedicalScribeMediaEncoding = /*@__PURE__*/ S.String;
+
+export type MedicalScribeChannelId = number;
 export type MedicalScribeParticipantRole =
   | "PATIENT"
   | "CLINICIAN"
   | (string & {});
 export const MedicalScribeParticipantRole = /*@__PURE__*/ S.String;
+
 export interface MedicalScribeChannelDefinition {
   channelId: number;
   participantRole: MedicalScribeParticipantRole;
@@ -436,6 +460,7 @@ export type MedicalScribeChannelDefinitions = MedicalScribeChannelDefinition[];
 export const MedicalScribeChannelDefinitions = /*@__PURE__*/ S.Array(
   MedicalScribeChannelDefinition,
 );
+export type S3Uri = string;
 export type ManagedNoteTemplate =
   | "HISTORY_AND_PHYSICAL"
   | "GIRPP"
@@ -446,6 +471,7 @@ export type ManagedNoteTemplate =
   | "PHYSICAL_SOAP"
   | (string & {});
 export const ManagedNoteTemplate = /*@__PURE__*/ S.String;
+
 export interface ManagedTemplateResponse {
   templateType?: ManagedNoteTemplate;
 }
@@ -463,6 +489,7 @@ export type CustomTemplateBase =
   | "BEHAVIORAL_SOAP"
   | (string & {});
 export const CustomTemplateBase = /*@__PURE__*/ S.String;
+
 export interface CustomTemplateResponse {
   templateType?: CustomTemplateBase;
 }
@@ -502,12 +529,15 @@ export const MedicalScribePostStreamActionSettingsResponse =
   ).annotate({
     identifier: "MedicalScribePostStreamActionSettingsResponse",
   }) as any as S.Schema<MedicalScribePostStreamActionSettingsResponse>;
+export type Uri = string;
 export type PostStreamArtifactGenerationStatus =
   | "IN_PROGRESS"
   | "FAILED"
   | "COMPLETED"
   | (string & {});
 export const PostStreamArtifactGenerationStatus = /*@__PURE__*/ S.String;
+
+export type ErrorMessage = string;
 export interface ArtifactDetails {
   outputLocation?: string;
   status?: PostStreamArtifactGenerationStatus;
@@ -547,6 +577,7 @@ export const MedicalScribePostStreamActionsResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "MedicalScribePostStreamActionsResult",
 }) as any as S.Schema<MedicalScribePostStreamActionsResult>;
+export type NonNullBoolean = boolean;
 export type MedicalScribeStreamStatus =
   | "IN_PROGRESS"
   | "PAUSED"
@@ -554,6 +585,7 @@ export type MedicalScribeStreamStatus =
   | "COMPLETED"
   | (string & {});
 export const MedicalScribeStreamStatus = /*@__PURE__*/ S.String;
+
 export interface MedicalScribeListeningSessionDetails {
   sessionId?: string;
   domainId?: string;
@@ -608,6 +640,7 @@ export const GetMedicalScribeListeningSessionOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetMedicalScribeListeningSessionOutput",
 }) as any as S.Schema<GetMedicalScribeListeningSessionOutput>;
+export type JobId = string;
 export interface GetPatientInsightsJobRequest {
   domainId: string;
   jobId: string;
@@ -632,6 +665,7 @@ export const GetPatientInsightsJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPatientInsightsJobRequest",
 }) as any as S.Schema<GetPatientInsightsJobRequest>;
+export type JobArn = string;
 export type JobStatus =
   | "SUBMITTED"
   | "IN_PROGRESS"
@@ -639,14 +673,19 @@ export type JobStatus =
   | "SUCCEEDED"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
 export interface InsightsOutput {
   uri: string;
 }
 export const InsightsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ uri: S.String }),
 ).annotate({ identifier: "InsightsOutput" }) as any as S.Schema<InsightsOutput>;
+export type NonEmptyString = string;
+export type SensitiveNonEmptyString = string | redacted.Redacted<string>;
+export type SensitiveIsoDateString = string | redacted.Redacted<string>;
 export type Pronouns = "HE_HIM" | "SHE_HER" | "THEY_THEM" | (string & {});
 export const Pronouns = /*@__PURE__*/ S.String;
+
 export interface PatientInsightsPatientContext {
   patientId: string | redacted.Redacted<string>;
   dateOfBirth?: string | redacted.Redacted<string>;
@@ -663,6 +702,7 @@ export const PatientInsightsPatientContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatientInsightsPatientContext>;
 export type InsightsType = "PRE_VISIT" | (string & {});
 export const InsightsType = /*@__PURE__*/ S.String;
+
 export interface InsightsContext {
   insightsType: InsightsType;
 }
@@ -681,8 +721,10 @@ export const PatientInsightsEncounterContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PatientInsightsEncounterContext>;
 export type ProviderRole = "CLINICIAN" | (string & {});
 export const ProviderRole = /*@__PURE__*/ S.String;
+
 export type Specialty = "PRIMARY_CARE" | (string & {});
 export const Specialty = /*@__PURE__*/ S.String;
+
 export interface UserContext {
   role: ProviderRole;
   userId: string | redacted.Redacted<string>;
@@ -912,6 +954,7 @@ export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
+export type AudioChunk = Uint8Array;
 export interface MedicalScribeAudioEvent {
   audioChunk: Uint8Array;
 }
@@ -932,6 +975,7 @@ export type MedicalScribeSessionControlEventType =
   | "END_OF_SESSION"
   | (string & {});
 export const MedicalScribeSessionControlEventType = /*@__PURE__*/ S.String;
+
 export interface MedicalScribeSessionControlEvent {
   type?: MedicalScribeSessionControlEventType;
 }
@@ -948,6 +992,8 @@ export const ManagedTemplate = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ManagedTemplate",
 }) as any as S.Schema<ManagedTemplate>;
+export type SensitiveAlphanumericString = string | redacted.Redacted<string>;
+export type SensitiveMarkdownString = string | redacted.Redacted<string>;
 export interface TemplateSectionInstruction {
   sectionHeader: string | redacted.Redacted<string>;
   sectionInstruction: string | redacted.Redacted<string>;
@@ -1097,6 +1143,8 @@ export const StartMedicalScribeListeningSessionInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "StartMedicalScribeListeningSessionInput",
 }) as any as S.Schema<StartMedicalScribeListeningSessionInput>;
+export type RequestId = string;
+export type AudioOffset = number;
 export interface MedicalScribeTranscriptSegment {
   segmentId?: string;
   audioBeginOffset?: number;
@@ -1303,45 +1351,6 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-
-//# Operations
 export type ActivateSubscriptionError =
   | AccessDeniedException
   | InternalServerException
@@ -1369,6 +1378,7 @@ export const activateSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "ActivateSubscription",
 }));
+
 export type CreateDomainError = ServiceQuotaExceededException | CommonErrors;
 /**
  * Creates a new Domain for managing HealthAgent resources.
@@ -1386,6 +1396,7 @@ export const createDomain: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDomain",
 }));
+
 export type CreateSubscriptionError =
   | AccessDeniedException
   | InternalServerException
@@ -1415,6 +1426,7 @@ export const createSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSubscription",
 }));
+
 export type DeactivateSubscriptionError =
   | AccessDeniedException
   | InternalServerException
@@ -1442,6 +1454,7 @@ export const deactivateSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "DeactivateSubscription",
 }));
+
 export type DeleteDomainError = ResourceNotFoundException | CommonErrors;
 /**
  * Deletes a Domain and all associated resources.
@@ -1459,6 +1472,7 @@ export const deleteDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDomain",
 }));
+
 export type GetDomainError = ResourceNotFoundException | CommonErrors;
 /**
  * Retrieves information about a Domain.
@@ -1476,6 +1490,7 @@ export const getDomain: API.OperationMethod<
   retry: Retry,
   operationName: "GetDomain",
 }));
+
 export type GetMedicalScribeListeningSessionError =
   | AccessDeniedException
   | InternalServerException
@@ -1506,6 +1521,7 @@ export const getMedicalScribeListeningSession: API.OperationMethod<
   operationName: "GetMedicalScribeListeningSession",
   endpointHostPrefix: "streaming.",
 }));
+
 export type GetPatientInsightsJobError =
   | AccessDeniedException
   | InternalServerException
@@ -1536,6 +1552,7 @@ export const getPatientInsightsJob: API.OperationMethod<
   operationName: "GetPatientInsightsJob",
   endpointHostPrefix: "runtime.",
 }));
+
 export type GetSubscriptionError =
   | AccessDeniedException
   | InternalServerException
@@ -1563,6 +1580,7 @@ export const getSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "GetSubscription",
 }));
+
 export type ListDomainsError = CommonErrors;
 /**
  * Lists Domains for a given account.
@@ -1601,6 +1619,7 @@ export const listDomains: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSubscriptionsError =
   | AccessDeniedException
   | InternalServerException
@@ -1649,6 +1668,7 @@ export const listSubscriptions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError = CommonErrors;
 /**
  * Lists the tags associated with the specified resource
@@ -1666,6 +1686,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type StartMedicalScribeListeningSessionError =
   | AccessDeniedException
   | InternalServerException
@@ -1698,6 +1719,7 @@ export const startMedicalScribeListeningSession: API.OperationMethod<
   operationName: "StartMedicalScribeListeningSession",
   endpointHostPrefix: "streaming.",
 }));
+
 export type StartPatientInsightsJobError =
   | AccessDeniedException
   | ConflictException
@@ -1730,6 +1752,7 @@ export const startPatientInsightsJob: API.OperationMethod<
   operationName: "StartPatientInsightsJob",
   endpointHostPrefix: "runtime.",
 }));
+
 export type TagResourceError = CommonErrors;
 /**
  * Associates the specified tags with the specified resource
@@ -1747,6 +1770,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError = CommonErrors;
 /**
  * Removes the specified tags from the specified resource

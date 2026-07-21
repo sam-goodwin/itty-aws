@@ -85,16 +85,37 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type HumanLoopName = string;
-export type FailureReason = string;
-export type HumanLoopArn = string;
-export type FlowDefinitionArn = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type InputContent = string;
-
-//# Schemas
 export interface DeleteHumanLoopRequest {
   HumanLoopName: string;
 }
@@ -143,6 +164,9 @@ export type HumanLoopStatus =
   | "Stopping"
   | (string & {});
 export const HumanLoopStatus = /*@__PURE__*/ S.String;
+
+export type HumanLoopArn = string;
+export type FlowDefinitionArn = string;
 export interface HumanLoopOutput {
   OutputS3Uri?: string;
 }
@@ -179,6 +203,9 @@ export const DescribeHumanLoopResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeHumanLoopResponse>;
 export type SortOrder = "Ascending" | "Descending" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListHumanLoopsRequest {
   CreationTimeAfter?: Date;
   CreationTimeBefore?: Date;
@@ -214,6 +241,7 @@ export const ListHumanLoopsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListHumanLoopsRequest",
 }) as any as S.Schema<ListHumanLoopsRequest>;
+export type FailureReason = string;
 export interface HumanLoopSummary {
   HumanLoopName?: string;
   HumanLoopStatus?: HumanLoopStatus;
@@ -248,6 +276,7 @@ export const ListHumanLoopsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListHumanLoopsResponse",
 }) as any as S.Schema<ListHumanLoopsResponse>;
+export type InputContent = string;
 export interface HumanLoopInput {
   InputContent?: string;
 }
@@ -259,6 +288,7 @@ export type ContentClassifier =
   | "FreeOfAdultContent"
   | (string & {});
 export const ContentClassifier = /*@__PURE__*/ S.String;
+
 export type ContentClassifiers = ContentClassifier[];
 export const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
 export interface HumanLoopDataAttributes {
@@ -325,40 +355,6 @@ export const StopHumanLoopResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StopHumanLoopResponse",
 }) as any as S.Schema<StopHumanLoopResponse>;
-
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
 export type DeleteHumanLoopError =
   | InternalServerException
   | ResourceNotFoundException
@@ -389,6 +385,7 @@ export const deleteHumanLoop: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteHumanLoop",
 }));
+
 export type DescribeHumanLoopError =
   | InternalServerException
   | ResourceNotFoundException
@@ -417,6 +414,7 @@ export const describeHumanLoop: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeHumanLoop",
 }));
+
 export type ListHumanLoopsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -465,6 +463,7 @@ export const listHumanLoops: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type StartHumanLoopError =
   | ConflictException
   | InternalServerException
@@ -494,6 +493,7 @@ export const startHumanLoop: API.OperationMethod<
   retry: Retry,
   operationName: "StartHumanLoop",
 }));
+
 export type StopHumanLoopError =
   | InternalServerException
   | ResourceNotFoundException

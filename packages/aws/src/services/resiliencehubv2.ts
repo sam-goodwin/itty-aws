@@ -85,36 +85,60 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    message: S.String,
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String, retryAfterSeconds: S.optional(S.Number) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type AssertionText = string;
 export type ClientToken = string;
-export type Uuid = string;
-export type TagKey = string;
-export type TagValue = string;
-export type S3Url = string;
-export type EksNamespace = string;
-export type InputSourceId = string;
-export type EntityName = string;
-export type LongDescription = string;
-export type KmsKeyId = string;
-export type UserJourneyId = string;
-export type AwsRegion = string;
-export type IamRoleName = string;
-export type IamRoleArn = string;
-export type S3BucketPath = string;
-export type AwsAccountId = string;
-export type OrganizationId = string;
-export type OuId = string;
-export type AccountId = string;
-export type EntityLabel = string;
-export type EntityDescription = string;
-export type EntityId = string;
-export type SystemId = string;
-export type MaxResults = number;
-export type NextToken = string;
-
-//# Schemas
 export interface CreateAssertionRequest {
   serviceArn: string;
   text: string;
@@ -138,8 +162,10 @@ export const CreateAssertionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAssertionRequest",
 }) as any as S.Schema<CreateAssertionRequest>;
+export type Uuid = string;
 export type AssertionSource = "AI_GENERATED" | "USER" | (string & {});
 export const AssertionSource = /*@__PURE__*/ S.String;
+
 export interface Assertion {
   serviceArn: string;
   assertionId: string;
@@ -166,26 +192,8 @@ export const CreateAssertionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAssertionResponse",
 }) as any as S.Schema<CreateAssertionResponse>;
-export type ValidationExceptionReason =
-  | "INVALID_FIELD_VALUE"
-  | "DUPLICATE_VALUE"
-  | "MISSING_REQUIRED_FIELD"
-  | "OTHER"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type TagKey = string;
+export type TagValue = string;
 export type TagValueList = string[];
 export const TagValueList = /*@__PURE__*/ S.Array(S.String);
 export interface ResourceTag {
@@ -197,6 +205,8 @@ export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceTag" }) as any as S.Schema<ResourceTag>;
 export type ResourceTagList = ResourceTag[];
 export const ResourceTagList = /*@__PURE__*/ S.Array(ResourceTag);
+export type S3Url = string;
+export type EksNamespace = string;
 export type EksNamespaceList = string[];
 export const EksNamespaceList = /*@__PURE__*/ S.Array(S.String);
 export interface EksSource {
@@ -272,6 +282,7 @@ export const CreateInputSourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInputSourceRequest",
 }) as any as S.Schema<CreateInputSourceRequest>;
+export type InputSourceId = string;
 export interface CreateInputSourceResponse {
   serviceArn: string;
   inputSourceId: string;
@@ -281,6 +292,8 @@ export const CreateInputSourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInputSourceResponse",
 }) as any as S.Schema<CreateInputSourceResponse>;
+export type EntityName = string;
+export type LongDescription = string;
 export interface AvailabilitySlo {
   target?: number;
 }
@@ -297,6 +310,7 @@ export type MultiAzDisasterRecoveryApproach =
   | "BACKUP_AND_RESTORE"
   | (string & {});
 export const MultiAzDisasterRecoveryApproach = /*@__PURE__*/ S.String;
+
 export interface MultiAzTargets {
   rtoInMinutes?: number;
   rpoInMinutes?: number;
@@ -317,6 +331,7 @@ export type MultiRegionDisasterRecoveryApproach =
   | "BACKUP_AND_RESTORE"
   | (string & {});
 export const MultiRegionDisasterRecoveryApproach = /*@__PURE__*/ S.String;
+
 export interface MultiRegionTargets {
   rtoInMinutes?: number;
   rpoInMinutes?: number;
@@ -339,6 +354,7 @@ export const DataRecoveryTargets = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataRecoveryTargets",
 }) as any as S.Schema<DataRecoveryTargets>;
+export type KmsKeyId = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -419,6 +435,7 @@ export const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreatePolicyResponse>;
 export type ReportType = "FAILURE_MODE" | (string & {});
 export const ReportType = /*@__PURE__*/ S.String;
+
 export interface CreateReportRequest {
   serviceArn: string;
   reportType: ReportType;
@@ -448,6 +465,7 @@ export type ReportGenerationStatus =
   | "FAILED"
   | (string & {});
 export const ReportGenerationStatus = /*@__PURE__*/ S.String;
+
 export interface S3ReportOutput {
   s3ObjectKey: string;
 }
@@ -460,6 +478,7 @@ export type ReportGenerationErrorCode =
   | "INTERNAL_ERROR"
   | (string & {});
 export const ReportGenerationErrorCode = /*@__PURE__*/ S.String;
+
 export interface FailedReportOutput {
   errorCode: ReportGenerationErrorCode;
   errorMessage?: string;
@@ -507,6 +526,7 @@ export const CreateReportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateReportResponse",
 }) as any as S.Schema<CreateReportResponse>;
+export type UserJourneyId = string;
 export type UserJourneyIdList = string[];
 export const UserJourneyIdList = /*@__PURE__*/ S.Array(S.String);
 export interface AssociatedSystem {
@@ -525,8 +545,11 @@ export const AssociatedSystem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociatedSystem>;
 export type AssociatedSystemList = AssociatedSystem[];
 export const AssociatedSystemList = /*@__PURE__*/ S.Array(AssociatedSystem);
+export type AwsRegion = string;
 export type RegionList = string[];
 export const RegionList = /*@__PURE__*/ S.Array(S.String);
+export type IamRoleName = string;
+export type IamRoleArn = string;
 export interface CrossAccountRole {
   crossAccountRoleArn: string;
   externalId?: string;
@@ -552,6 +575,9 @@ export const PermissionModel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PermissionModel>;
 export type DependencyDiscoveryInput = "ENABLED" | "DISABLED" | (string & {});
 export const DependencyDiscoveryInput = /*@__PURE__*/ S.String;
+
+export type S3BucketPath = string;
+export type AwsAccountId = string;
 export interface S3ReportOutputConfiguration {
   bucketPath: string;
   bucketOwner: string;
@@ -622,6 +648,7 @@ export type DependencyDiscoveryStatus =
   | "DISABLED"
   | (string & {});
 export const DependencyDiscoveryStatus = /*@__PURE__*/ S.String;
+
 export interface DependencyDiscoveryConfig {
   status: DependencyDiscoveryStatus;
   updatedAt?: Date;
@@ -636,6 +663,7 @@ export const DependencyDiscoveryConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DependencyDiscoveryConfig>;
 export type PolicyValueSource = "SELF" | "CROSS_ACCOUNT" | (string & {});
 export const PolicyValueSource = /*@__PURE__*/ S.String;
+
 export interface SloSource {
   value?: number;
   policyName?: string;
@@ -703,6 +731,7 @@ export type AchievabilityStatus =
   | "NOT_ACHIEVABLE"
   | (string & {});
 export const AchievabilityStatus = /*@__PURE__*/ S.String;
+
 export interface Achievability {
   availabilitySlo?: AchievabilityStatus;
   multiAzRtoRpo?: AchievabilityStatus;
@@ -717,6 +746,7 @@ export const Achievability = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Achievability" }) as any as S.Schema<Achievability>;
 export type CostCurrency = "USD" | (string & {});
 export const CostCurrency = /*@__PURE__*/ S.String;
+
 export interface AssessmentCost {
   amount?: number;
   currency?: CostCurrency;
@@ -735,6 +765,7 @@ export type ResourceDiscoveryRunStatus =
   | "NOT_STARTED"
   | (string & {});
 export const ResourceDiscoveryRunStatus = /*@__PURE__*/ S.String;
+
 export type ResourceDiscoveryErrorCode =
   | "INVALID_PERMISSIONS"
   | "STACK_NOT_FOUND"
@@ -745,6 +776,7 @@ export type ResourceDiscoveryErrorCode =
   | "INTERNAL_ERROR"
   | (string & {});
 export const ResourceDiscoveryErrorCode = /*@__PURE__*/ S.String;
+
 export interface ResourceDiscoveryStatus {
   status?: ResourceDiscoveryRunStatus;
   lastRunAt?: Date;
@@ -769,6 +801,10 @@ export type AssessmentStatus =
   | "SUCCESS"
   | (string & {});
 export const AssessmentStatus = /*@__PURE__*/ S.String;
+
+export type OrganizationId = string;
+export type OuId = string;
+export type AccountId = string;
 export interface Service {
   serviceArn: string;
   name: string;
@@ -831,11 +867,14 @@ export const CreateServiceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateServiceResponse",
 }) as any as S.Schema<CreateServiceResponse>;
+export type EntityLabel = string;
+export type EntityDescription = string;
 export type ServiceFunctionCriticality =
   | "PRIMARY"
   | "SUPPLEMENTAL"
   | (string & {});
 export const ServiceFunctionCriticality = /*@__PURE__*/ S.String;
+
 export interface CreateServiceFunctionRequest {
   name: string;
   serviceArn: string;
@@ -863,8 +902,10 @@ export const CreateServiceFunctionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateServiceFunctionRequest",
 }) as any as S.Schema<CreateServiceFunctionRequest>;
+export type EntityId = string;
 export type ServiceFunctionSource = "AI_GENERATED" | "USER" | (string & {});
 export const ServiceFunctionSource = /*@__PURE__*/ S.String;
+
 export interface ServiceFunction {
   serviceArn: string;
   serviceFunctionId: string;
@@ -972,6 +1013,7 @@ export const CreateSystemRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSystemRequest",
 }) as any as S.Schema<CreateSystemRequest>;
+export type SystemId = string;
 export interface System {
   systemArn: string;
   systemId: string;
@@ -1312,10 +1354,13 @@ export type FailureCategory =
   | "SINGLE_POINT_OF_FAILURE"
   | (string & {});
 export const FailureCategory = /*@__PURE__*/ S.String;
+
 export type FindingStatus = "OPEN" | "RESOLVED" | "IRRELEVANT" | (string & {});
 export const FindingStatus = /*@__PURE__*/ S.String;
+
 export type FindingSeverity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
 export const FindingSeverity = /*@__PURE__*/ S.String;
+
 export type FunctionsList = string[];
 export const FunctionsList = /*@__PURE__*/ S.Array(S.String);
 export type PolicyComponent =
@@ -1325,6 +1370,7 @@ export type PolicyComponent =
   | "DATA_RECOVERY"
   | (string & {});
 export const PolicyComponent = /*@__PURE__*/ S.String;
+
 export type SuggestedChangesList = string[];
 export const SuggestedChangesList = /*@__PURE__*/ S.Array(S.String);
 export interface InfrastructureAndCodeRecommendation {
@@ -1594,6 +1640,8 @@ export const ImportPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportPolicyResponse",
 }) as any as S.Schema<ImportPolicyResponse>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface ListAssertionsRequest {
   serviceArn: string;
   source?: AssertionSource;
@@ -1632,6 +1680,7 @@ export const ListAssertionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAssertionsResponse>;
 export type QueryGranularity = "HOURLY" | "DAILY" | (string & {});
 export const QueryGranularity = /*@__PURE__*/ S.String;
+
 export interface ListDependenciesRequest {
   serviceArn?: string;
   queryRangeStartTime?: Date;
@@ -1695,6 +1744,7 @@ export const QueryRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "QueryRange" }) as any as S.Schema<QueryRange>;
 export type DependencyCriticality = "HARD" | "SOFT" | "UNKNOWN" | (string & {});
 export const DependencyCriticality = /*@__PURE__*/ S.String;
+
 export interface DependencySummary {
   dependencyId: string;
   serviceArn: string;
@@ -1768,6 +1818,7 @@ export type AssessmentStep =
   | "RESILIENCE_ASSESSMENT"
   | (string & {});
 export const AssessmentStep = /*@__PURE__*/ S.String;
+
 export type AssessmentErrorCode =
   | "INVALID_PERMISSIONS"
   | "CMK_ACCESS_DENIED"
@@ -1776,6 +1827,7 @@ export type AssessmentErrorCode =
   | "DESIGN_FILE_ACCESS_DENIED"
   | (string & {});
 export const AssessmentErrorCode = /*@__PURE__*/ S.String;
+
 export interface AssessmentSummary {
   assessmentId: string;
   serviceArn: string;
@@ -1897,6 +1949,7 @@ export type InputSourceType =
   | "MONITORING"
   | (string & {});
 export const InputSourceType = /*@__PURE__*/ S.String;
+
 export interface ListInputSourcesRequest {
   serviceArn: string;
   type?: InputSourceType;
@@ -2162,6 +2215,7 @@ export type ServiceEventType =
   | "ASSERTION_DELETED"
   | (string & {});
 export const ServiceEventType = /*@__PURE__*/ S.String;
+
 export type ServiceEventTypeList = ServiceEventType[];
 export const ServiceEventTypeList = /*@__PURE__*/ S.Array(ServiceEventType);
 export interface ListServiceEventsRequest {
@@ -2201,6 +2255,7 @@ export const ListServiceEventsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListServiceEventsRequest>;
 export type ActorType = "USER" | "SYSTEM" | (string & {});
 export const ActorType = /*@__PURE__*/ S.String;
+
 export interface EventActor {
   type: ActorType;
   principalId: string;
@@ -3070,6 +3125,7 @@ export type TopologyType =
   | "PERMISSIONS"
   | (string & {});
 export const TopologyType = /*@__PURE__*/ S.String;
+
 export interface EdgePropertySummary {
   topologyType?: TopologyType;
   label?: string;
@@ -3126,6 +3182,7 @@ export type SystemEventType =
   | "SYSTEM_POLICY_DISASSOCIATED"
   | (string & {});
 export const SystemEventType = /*@__PURE__*/ S.String;
+
 export type SystemEventTypeList = SystemEventType[];
 export const SystemEventTypeList = /*@__PURE__*/ S.Array(SystemEventType);
 export interface ListSystemEventsRequest {
@@ -3986,53 +4043,27 @@ export const UpdateUserJourneyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateUserJourneyResponse",
 }) as any as S.Schema<UpdateUserJourneyResponse>;
+export type ValidationExceptionReason =
+  | "INVALID_FIELD_VALUE"
+  | "DUPLICATE_VALUE"
+  | "MISSING_REQUIRED_FIELD"
+  | "OTHER"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    message: S.String,
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: S.optional(ValidationExceptionReason),
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String, retryAfterSeconds: S.optional(S.Number) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-
-//# Operations
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type CreateAssertionError =
   | AccessDeniedException
   | ConflictException
@@ -4064,6 +4095,7 @@ export const createAssertion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAssertion",
 }));
+
 export type CreateInputSourceError =
   | AccessDeniedException
   | ConflictException
@@ -4095,6 +4127,7 @@ export const createInputSource: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInputSource",
 }));
+
 export type CreatePolicyError =
   | AccessDeniedException
   | ConflictException
@@ -4126,6 +4159,7 @@ export const createPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePolicy",
 }));
+
 export type CreateReportError =
   | AccessDeniedException
   | ConflictException
@@ -4157,6 +4191,7 @@ export const createReport: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReport",
 }));
+
 export type CreateServiceError =
   | AccessDeniedException
   | ConflictException
@@ -4188,6 +4223,7 @@ export const createService: API.OperationMethod<
   retry: Retry,
   operationName: "CreateService",
 }));
+
 export type CreateServiceFunctionError =
   | AccessDeniedException
   | ConflictException
@@ -4219,6 +4255,7 @@ export const createServiceFunction: API.OperationMethod<
   retry: Retry,
   operationName: "CreateServiceFunction",
 }));
+
 export type CreateServiceFunctionResourcesError =
   | AccessDeniedException
   | ConflictException
@@ -4248,6 +4285,7 @@ export const createServiceFunctionResources: API.OperationMethod<
   retry: Retry,
   operationName: "CreateServiceFunctionResources",
 }));
+
 export type CreateSystemError =
   | AccessDeniedException
   | ConflictException
@@ -4279,6 +4317,7 @@ export const createSystem: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSystem",
 }));
+
 export type CreateUserJourneyError =
   | AccessDeniedException
   | ConflictException
@@ -4310,6 +4349,7 @@ export const createUserJourney: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUserJourney",
 }));
+
 export type DeleteAssertionError =
   | AccessDeniedException
   | InternalServerException
@@ -4337,6 +4377,7 @@ export const deleteAssertion: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAssertion",
 }));
+
 export type DeleteInputSourceError =
   | AccessDeniedException
   | InternalServerException
@@ -4364,6 +4405,7 @@ export const deleteInputSource: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInputSource",
 }));
+
 export type DeletePolicyError =
   | AccessDeniedException
   | ConflictException
@@ -4393,6 +4435,7 @@ export const deletePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePolicy",
 }));
+
 export type DeleteServiceError =
   | AccessDeniedException
   | ConflictException
@@ -4422,6 +4465,7 @@ export const deleteService: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteService",
 }));
+
 export type DeleteServiceFunctionError =
   | AccessDeniedException
   | ConflictException
@@ -4451,6 +4495,7 @@ export const deleteServiceFunction: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteServiceFunction",
 }));
+
 export type DeleteServiceFunctionResourcesError =
   | AccessDeniedException
   | ConflictException
@@ -4480,6 +4525,7 @@ export const deleteServiceFunctionResources: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteServiceFunctionResources",
 }));
+
 export type DeleteSystemError =
   | AccessDeniedException
   | ConflictException
@@ -4509,6 +4555,7 @@ export const deleteSystem: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSystem",
 }));
+
 export type DeleteUserJourneyError =
   | AccessDeniedException
   | ConflictException
@@ -4538,6 +4585,7 @@ export const deleteUserJourney: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUserJourney",
 }));
+
 export type GetFailureModeFindingError =
   | AccessDeniedException
   | InternalServerException
@@ -4565,6 +4613,7 @@ export const getFailureModeFinding: API.OperationMethod<
   retry: Retry,
   operationName: "GetFailureModeFinding",
 }));
+
 export type GetPolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -4592,6 +4641,7 @@ export const getPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetPolicy",
 }));
+
 export type GetServiceError =
   | AccessDeniedException
   | InternalServerException
@@ -4619,6 +4669,7 @@ export const getService: API.OperationMethod<
   retry: Retry,
   operationName: "GetService",
 }));
+
 export type GetSystemError =
   | AccessDeniedException
   | InternalServerException
@@ -4646,6 +4697,7 @@ export const getSystem: API.OperationMethod<
   retry: Retry,
   operationName: "GetSystem",
 }));
+
 export type GetUserJourneyError =
   | AccessDeniedException
   | InternalServerException
@@ -4673,6 +4725,7 @@ export const getUserJourney: API.OperationMethod<
   retry: Retry,
   operationName: "GetUserJourney",
 }));
+
 export type ImportAppError =
   | AccessDeniedException
   | ConflictException
@@ -4702,6 +4755,7 @@ export const importApp: API.OperationMethod<
   retry: Retry,
   operationName: "ImportApp",
 }));
+
 export type ImportPolicyError =
   | AccessDeniedException
   | ConflictException
@@ -4731,6 +4785,7 @@ export const importPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "ImportPolicy",
 }));
+
 export type ListAssertionsError =
   | AccessDeniedException
   | InternalServerException
@@ -4779,6 +4834,7 @@ export const listAssertions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDependenciesError =
   | AccessDeniedException
   | InternalServerException
@@ -4827,6 +4883,7 @@ export const listDependencies: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFailureModeAssessmentsError =
   | AccessDeniedException
   | InternalServerException
@@ -4875,6 +4932,7 @@ export const listFailureModeAssessments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFailureModeFindingsError =
   | AccessDeniedException
   | InternalServerException
@@ -4923,6 +4981,7 @@ export const listFailureModeFindings: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListInputSourcesError =
   | AccessDeniedException
   | InternalServerException
@@ -4971,6 +5030,7 @@ export const listInputSources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPoliciesError =
   | AccessDeniedException
   | InternalServerException
@@ -5013,6 +5073,7 @@ export const listPolicies: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListReportsError =
   | AccessDeniedException
   | InternalServerException
@@ -5063,6 +5124,7 @@ export const listReports: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListResourcesError =
   | AccessDeniedException
   | InternalServerException
@@ -5111,6 +5173,7 @@ export const listResources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListServiceEventsError =
   | AccessDeniedException
   | InternalServerException
@@ -5159,6 +5222,7 @@ export const listServiceEvents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListServiceFunctionsError =
   | AccessDeniedException
   | InternalServerException
@@ -5207,6 +5271,7 @@ export const listServiceFunctions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListServicesError =
   | AccessDeniedException
   | InternalServerException
@@ -5249,6 +5314,7 @@ export const listServices: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListServiceTopologyEdgesError =
   | AccessDeniedException
   | InternalServerException
@@ -5291,6 +5357,7 @@ export const listServiceTopologyEdges: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSystemEventsError =
   | AccessDeniedException
   | InternalServerException
@@ -5339,6 +5406,7 @@ export const listSystemEvents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSystemsError =
   | AccessDeniedException
   | InternalServerException
@@ -5381,6 +5449,7 @@ export const listSystems: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -5410,6 +5479,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListUserJourneysError =
   | AccessDeniedException
   | InternalServerException
@@ -5458,6 +5528,7 @@ export const listUserJourneys: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type StartFailureModeAssessmentError =
   | AccessDeniedException
   | ConflictException
@@ -5489,6 +5560,7 @@ export const startFailureModeAssessment: API.OperationMethod<
   retry: Retry,
   operationName: "StartFailureModeAssessment",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -5518,6 +5590,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -5547,6 +5620,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAssertionError =
   | AccessDeniedException
   | ConflictException
@@ -5576,6 +5650,7 @@ export const updateAssertion: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAssertion",
 }));
+
 export type UpdateDependencyError =
   | AccessDeniedException
   | ConflictException
@@ -5605,6 +5680,7 @@ export const updateDependency: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDependency",
 }));
+
 export type UpdateFailureModeFindingError =
   | AccessDeniedException
   | ConflictException
@@ -5634,6 +5710,7 @@ export const updateFailureModeFinding: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFailureModeFinding",
 }));
+
 export type UpdatePolicyError =
   | AccessDeniedException
   | ConflictException
@@ -5663,6 +5740,7 @@ export const updatePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePolicy",
 }));
+
 export type UpdateServiceError =
   | AccessDeniedException
   | ConflictException
@@ -5694,6 +5772,7 @@ export const updateService: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateService",
 }));
+
 export type UpdateServiceFunctionError =
   | AccessDeniedException
   | ConflictException
@@ -5723,6 +5802,7 @@ export const updateServiceFunction: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateServiceFunction",
 }));
+
 export type UpdateSystemError =
   | AccessDeniedException
   | ConflictException
@@ -5752,6 +5832,7 @@ export const updateSystem: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSystem",
 }));
+
 export type UpdateUserJourneyError =
   | AccessDeniedException
   | ConflictException

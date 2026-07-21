@@ -54,31 +54,58 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.String,
+    ResourceId: S.String,
+    ResourceType: S.String,
+    QuotaCode: S.String,
+  },
+  T.all(T.HttpError(402), T.Retryable()),
+).pipe(C.withQuotaError, C.withRetryableError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.String,
+    Reason: S.suspend(() => ValidationExceptionReason).annotate({
+      identifier: "ValidationExceptionReason",
+    }),
+    FieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type CatalogName = string;
 export type BenefitApplicationIdentifier = string;
-export type Arn = string;
-export type BenefitApplicationId = string;
-export type BenefitApplicationName = string;
-export type BenefitApplicationDescription = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ContactEmail = string | redacted.Redacted<string>;
-export type ContactFirstName = string | redacted.Redacted<string>;
-export type ContactLastName = string | redacted.Redacted<string>;
-export type ContactPhone = string | redacted.Redacted<string>;
-export type FileURI = string;
-export type Program = string;
-export type BenefitAllocationIdentifier = string;
-export type BenefitAllocationId = string;
-export type BenefitAllocationArn = string;
-export type BenefitId = string;
-export type BenefitApplicationStage = string;
-export type StatusReasonCode = string;
-export type BenefitAllocationName = string;
-export type TaggableResourceArn = string;
-
-//# Schemas
 export interface Amendment {
   FieldPath: string;
   NewValue: string;
@@ -123,45 +150,7 @@ export const AmendBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AmendBenefitApplicationOutput",
 }) as any as S.Schema<AmendBenefitApplicationOutput>;
-export type ValidationExceptionReason =
-  | "unknownOperation"
-  | "cannotParse"
-  | "fieldValidationFailed"
-  | "other"
-  | "BUSINESS_VALIDATION_FAILED"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export type ValidationExceptionErrorCode =
-  | "REQUIRED_FIELD_MISSING"
-  | "INVALID_ENUM_VALUE"
-  | "INVALID_STRING_FORMAT"
-  | "INVALID_VALUE"
-  | "NOT_ENOUGH_VALUES"
-  | "TOO_MANY_VALUES"
-  | "INVALID_RESOURCE_STATE"
-  | "DUPLICATE_KEY_VALUE"
-  | "VALUE_OUT_OF_RANGE"
-  | "ACTION_NOT_PERMITTED"
-  | (string & {});
-export const ValidationExceptionErrorCode = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  Name: string;
-  Message: string;
-  Code?: ValidationExceptionErrorCode;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    Message: S.String,
-    Code: S.optional(ValidationExceptionErrorCode),
-  }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type Arn = string;
 export interface AssociateBenefitApplicationResourceInput {
   Catalog: string;
   BenefitApplicationIdentifier: string;
@@ -186,6 +175,7 @@ export const AssociateBenefitApplicationResourceInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociateBenefitApplicationResourceInput",
 }) as any as S.Schema<AssociateBenefitApplicationResourceInput>;
+export type BenefitApplicationId = string;
 export interface AssociateBenefitApplicationResourceOutput {
   Id?: string;
   Arn?: string;
@@ -232,10 +222,15 @@ export const CancelBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelBenefitApplicationOutput",
 }) as any as S.Schema<CancelBenefitApplicationOutput>;
+export type BenefitApplicationName = string;
+export type BenefitApplicationDescription = string;
 export type FulfillmentType = "CREDITS" | "CASH" | "ACCESS" | (string & {});
 export const FulfillmentType = /*@__PURE__*/ S.String;
+
 export type FulfillmentTypes = FulfillmentType[];
 export const FulfillmentTypes = /*@__PURE__*/ S.Array(FulfillmentType);
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -247,6 +242,10 @@ export type Tags = Tag[];
 export const Tags = /*@__PURE__*/ S.Array(Tag);
 export type Arns = string[];
 export const Arns = /*@__PURE__*/ S.Array(S.String);
+export type ContactEmail = string | redacted.Redacted<string>;
+export type ContactFirstName = string | redacted.Redacted<string>;
+export type ContactLastName = string | redacted.Redacted<string>;
+export type ContactPhone = string | redacted.Redacted<string>;
 export interface Contact {
   Email?: string | redacted.Redacted<string>;
   FirstName?: string | redacted.Redacted<string>;
@@ -265,6 +264,7 @@ export const Contact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Contact" }) as any as S.Schema<Contact>;
 export type Contacts = Contact[];
 export const Contacts = /*@__PURE__*/ S.Array(Contact);
+export type FileURI = string;
 export interface FileInput {
   FileURI: string;
   BusinessUseCase?: string;
@@ -387,10 +387,12 @@ export const GetBenefitInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBenefitInput",
 }) as any as S.Schema<GetBenefitInput>;
+export type Program = string;
 export type Programs = string[];
 export const Programs = /*@__PURE__*/ S.Array(S.String);
 export type BenefitStatus = "ACTIVE" | "INACTIVE" | (string & {});
 export const BenefitStatus = /*@__PURE__*/ S.String;
+
 export interface GetBenefitOutput {
   Id?: string;
   Catalog?: string;
@@ -417,6 +419,7 @@ export const GetBenefitOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBenefitOutput",
 }) as any as S.Schema<GetBenefitOutput>;
+export type BenefitAllocationIdentifier = string;
 export interface GetBenefitAllocationInput {
   Catalog: string;
   Identifier: string;
@@ -435,12 +438,16 @@ export const GetBenefitAllocationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBenefitAllocationInput",
 }) as any as S.Schema<GetBenefitAllocationInput>;
+export type BenefitAllocationId = string;
+export type BenefitAllocationArn = string;
 export type BenefitAllocationStatus =
   | "ACTIVE"
   | "INACTIVE"
   | "FULFILLED"
   | (string & {});
 export const BenefitAllocationStatus = /*@__PURE__*/ S.String;
+
+export type BenefitId = string;
 export type BenefitIdentifiers = string[];
 export const BenefitIdentifiers = /*@__PURE__*/ S.Array(S.String);
 export type CurrencyCode =
@@ -541,6 +548,7 @@ export type CurrencyCode =
   | "ZAR"
   | (string & {});
 export const CurrencyCode = /*@__PURE__*/ S.String;
+
 export interface MonetaryValue {
   Amount: string;
   CurrencyCode: CurrencyCode;
@@ -730,6 +738,9 @@ export type BenefitApplicationStatus =
   | "CANCELED"
   | (string & {});
 export const BenefitApplicationStatus = /*@__PURE__*/ S.String;
+
+export type BenefitApplicationStage = string;
+export type StatusReasonCode = string;
 export type StatusReasonCodes = string[];
 export const StatusReasonCodes = /*@__PURE__*/ S.Array(S.String);
 export type FileType =
@@ -744,6 +755,7 @@ export type FileType =
   | "text/csv"
   | (string & {});
 export const FileType = /*@__PURE__*/ S.String;
+
 export interface FileDetail {
   FileURI: string;
   BusinessUseCase?: string;
@@ -859,6 +871,7 @@ export const ListBenefitAllocationsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListBenefitAllocationsInput",
 }) as any as S.Schema<ListBenefitAllocationsInput>;
+export type BenefitAllocationName = string;
 export type BenefitIds = string[];
 export const BenefitIds = /*@__PURE__*/ S.Array(S.String);
 export interface BenefitAllocationSummary {
@@ -919,6 +932,7 @@ export type Stages = string[];
 export const Stages = /*@__PURE__*/ S.Array(S.String);
 export type ResourceType = "OPPORTUNITY" | "BENEFIT_ALLOCATION" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export interface AssociatedResource {
   ResourceType?: ResourceType;
   ResourceIdentifier?: string;
@@ -1098,6 +1112,7 @@ export const ListBenefitsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListBenefitsOutput",
 }) as any as S.Schema<ListBenefitsOutput>;
+export type TaggableResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -1277,54 +1292,47 @@ export const UpdateBenefitApplicationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateBenefitApplicationOutput",
 }) as any as S.Schema<UpdateBenefitApplicationOutput>;
+export type ValidationExceptionReason =
+  | "unknownOperation"
+  | "cannotParse"
+  | "fieldValidationFailed"
+  | "other"
+  | "BUSINESS_VALIDATION_FAILED"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.String,
-    Reason: ValidationExceptionReason,
-    FieldList: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.String,
-    ResourceId: S.String,
-    ResourceType: S.String,
-    QuotaCode: S.String,
-  },
-  T.all(T.HttpError(402), T.Retryable()),
-).pipe(C.withQuotaError, C.withRetryableError) {}
+export type ValidationExceptionErrorCode =
+  | "REQUIRED_FIELD_MISSING"
+  | "INVALID_ENUM_VALUE"
+  | "INVALID_STRING_FORMAT"
+  | "INVALID_VALUE"
+  | "NOT_ENOUGH_VALUES"
+  | "TOO_MANY_VALUES"
+  | "INVALID_RESOURCE_STATE"
+  | "DUPLICATE_KEY_VALUE"
+  | "VALUE_OUT_OF_RANGE"
+  | "ACTION_NOT_PERMITTED"
+  | (string & {});
+export const ValidationExceptionErrorCode = /*@__PURE__*/ S.String;
 
-//# Operations
+export interface ValidationExceptionField {
+  Name: string;
+  Message: string;
+  Code?: ValidationExceptionErrorCode;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Message: S.String,
+    Code: S.optional(ValidationExceptionErrorCode),
+  }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type AmendBenefitApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -1356,6 +1364,7 @@ export const amendBenefitApplication: API.OperationMethod<
   retry: Retry,
   operationName: "AmendBenefitApplication",
 }));
+
 export type AssociateBenefitApplicationResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1387,6 +1396,7 @@ export const associateBenefitApplicationResource: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateBenefitApplicationResource",
 }));
+
 export type CancelBenefitApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -1418,6 +1428,7 @@ export const cancelBenefitApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CancelBenefitApplication",
 }));
+
 export type CreateBenefitApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -1449,6 +1460,7 @@ export const createBenefitApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBenefitApplication",
 }));
+
 export type DisassociateBenefitApplicationResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1480,6 +1492,7 @@ export const disassociateBenefitApplicationResource: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateBenefitApplicationResource",
 }));
+
 export type GetBenefitError =
   | AccessDeniedException
   | InternalServerException
@@ -1509,6 +1522,7 @@ export const getBenefit: API.OperationMethod<
   retry: Retry,
   operationName: "GetBenefit",
 }));
+
 export type GetBenefitAllocationError =
   | AccessDeniedException
   | InternalServerException
@@ -1538,6 +1552,7 @@ export const getBenefitAllocation: API.OperationMethod<
   retry: Retry,
   operationName: "GetBenefitAllocation",
 }));
+
 export type GetBenefitApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -1569,6 +1584,7 @@ export const getBenefitApplication: API.OperationMethod<
   retry: Retry,
   operationName: "GetBenefitApplication",
 }));
+
 export type ListBenefitAllocationsError =
   | AccessDeniedException
   | InternalServerException
@@ -1619,6 +1635,7 @@ export const listBenefitAllocations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListBenefitApplicationsError =
   | AccessDeniedException
   | InternalServerException
@@ -1669,6 +1686,7 @@ export const listBenefitApplications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListBenefitsError =
   | AccessDeniedException
   | InternalServerException
@@ -1719,6 +1737,7 @@ export const listBenefits: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -1748,6 +1767,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RecallBenefitApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -1779,6 +1799,7 @@ export const recallBenefitApplication: API.OperationMethod<
   retry: Retry,
   operationName: "RecallBenefitApplication",
 }));
+
 export type SubmitBenefitApplicationError =
   | AccessDeniedException
   | ConflictException
@@ -1810,6 +1831,7 @@ export const submitBenefitApplication: API.OperationMethod<
   retry: Retry,
   operationName: "SubmitBenefitApplication",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1843,6 +1865,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1876,6 +1899,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateBenefitApplicationError =
   | AccessDeniedException
   | ConflictException

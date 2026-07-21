@@ -89,106 +89,232 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+) {}
+export class ConformancePackTemplateValidationException extends S.TaggedErrorClass<ConformancePackTemplateValidationException>()(
+  "ConformancePackTemplateValidationException",
+  { message: S.optional(S.String) },
+) {}
+export class IdempotentParameterMismatch extends S.TaggedErrorClass<IdempotentParameterMismatch>()(
+  "IdempotentParameterMismatch",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withConflictError) {}
+export class InsufficientDeliveryPolicyException extends S.TaggedErrorClass<InsufficientDeliveryPolicyException>()(
+  "InsufficientDeliveryPolicyException",
+  { message: S.optional(S.String) },
+) {}
+export class InsufficientPermissionsException extends S.TaggedErrorClass<InsufficientPermissionsException>()(
+  "InsufficientPermissionsException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidConfigurationRecorderNameException extends S.TaggedErrorClass<InvalidConfigurationRecorderNameException>()(
+  "InvalidConfigurationRecorderNameException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidDeliveryChannelNameException extends S.TaggedErrorClass<InvalidDeliveryChannelNameException>()(
+  "InvalidDeliveryChannelNameException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidExpressionException extends S.TaggedErrorClass<InvalidExpressionException>()(
+  "InvalidExpressionException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidLimitException extends S.TaggedErrorClass<InvalidLimitException>()(
+  "InvalidLimitException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidRecordingGroupException extends S.TaggedErrorClass<InvalidRecordingGroupException>()(
+  "InvalidRecordingGroupException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidResultTokenException extends S.TaggedErrorClass<InvalidResultTokenException>()(
+  "InvalidResultTokenException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidRoleException extends S.TaggedErrorClass<InvalidRoleException>()(
+  "InvalidRoleException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidS3KeyPrefixException extends S.TaggedErrorClass<InvalidS3KeyPrefixException>()(
+  "InvalidS3KeyPrefixException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidS3KmsKeyArnException extends S.TaggedErrorClass<InvalidS3KmsKeyArnException>()(
+  "InvalidS3KmsKeyArnException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidSNSTopicARNException extends S.TaggedErrorClass<InvalidSNSTopicARNException>()(
+  "InvalidSNSTopicARNException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidTimeRangeException extends S.TaggedErrorClass<InvalidTimeRangeException>()(
+  "InvalidTimeRangeException",
+  { message: S.optional(S.String) },
+) {}
+export class LastDeliveryChannelDeleteFailedException extends S.TaggedErrorClass<LastDeliveryChannelDeleteFailedException>()(
+  "LastDeliveryChannelDeleteFailedException",
+  { message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class MaxActiveResourcesExceededException extends S.TaggedErrorClass<MaxActiveResourcesExceededException>()(
+  "MaxActiveResourcesExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class MaxNumberOfConfigRulesExceededException extends S.TaggedErrorClass<MaxNumberOfConfigRulesExceededException>()(
+  "MaxNumberOfConfigRulesExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class MaxNumberOfConfigurationRecordersExceededException extends S.TaggedErrorClass<MaxNumberOfConfigurationRecordersExceededException>()(
+  "MaxNumberOfConfigurationRecordersExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class MaxNumberOfConformancePacksExceededException extends S.TaggedErrorClass<MaxNumberOfConformancePacksExceededException>()(
+  "MaxNumberOfConformancePacksExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class MaxNumberOfDeliveryChannelsExceededException extends S.TaggedErrorClass<MaxNumberOfDeliveryChannelsExceededException>()(
+  "MaxNumberOfDeliveryChannelsExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class MaxNumberOfOrganizationConfigRulesExceededException extends S.TaggedErrorClass<MaxNumberOfOrganizationConfigRulesExceededException>()(
+  "MaxNumberOfOrganizationConfigRulesExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class MaxNumberOfOrganizationConformancePacksExceededException extends S.TaggedErrorClass<MaxNumberOfOrganizationConformancePacksExceededException>()(
+  "MaxNumberOfOrganizationConformancePacksExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class MaxNumberOfRetentionConfigurationsExceededException extends S.TaggedErrorClass<MaxNumberOfRetentionConfigurationsExceededException>()(
+  "MaxNumberOfRetentionConfigurationsExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class NoAvailableConfigurationRecorderException extends S.TaggedErrorClass<NoAvailableConfigurationRecorderException>()(
+  "NoAvailableConfigurationRecorderException",
+  { message: S.optional(S.String) },
+) {}
+export class NoAvailableDeliveryChannelException extends S.TaggedErrorClass<NoAvailableDeliveryChannelException>()(
+  "NoAvailableDeliveryChannelException",
+  { message: S.optional(S.String) },
+) {}
+export class NoAvailableOrganizationException extends S.TaggedErrorClass<NoAvailableOrganizationException>()(
+  "NoAvailableOrganizationException",
+  { message: S.optional(S.String) },
+) {}
+export class NoRunningConfigurationRecorderException extends S.TaggedErrorClass<NoRunningConfigurationRecorderException>()(
+  "NoRunningConfigurationRecorderException",
+  { message: S.optional(S.String) },
+) {}
+export class NoSuchBucketException extends S.TaggedErrorClass<NoSuchBucketException>()(
+  "NoSuchBucketException",
+  { message: S.optional(S.String) },
+) {}
+export class NoSuchConfigRuleException extends S.TaggedErrorClass<NoSuchConfigRuleException>()(
+  "NoSuchConfigRuleException",
+  { message: S.optional(S.String) },
+) {}
+export class NoSuchConfigRuleInConformancePackException extends S.TaggedErrorClass<NoSuchConfigRuleInConformancePackException>()(
+  "NoSuchConfigRuleInConformancePackException",
+  { message: S.optional(S.String) },
+) {}
+export class NoSuchConfigurationAggregatorException extends S.TaggedErrorClass<NoSuchConfigurationAggregatorException>()(
+  "NoSuchConfigurationAggregatorException",
+  { message: S.optional(S.String) },
+) {}
+export class NoSuchConfigurationRecorderException extends S.TaggedErrorClass<NoSuchConfigurationRecorderException>()(
+  "NoSuchConfigurationRecorderException",
+  { message: S.optional(S.String) },
+) {}
+export class NoSuchConformancePackException extends S.TaggedErrorClass<NoSuchConformancePackException>()(
+  "NoSuchConformancePackException",
+  { message: S.optional(S.String) },
+) {}
+export class NoSuchDeliveryChannelException extends S.TaggedErrorClass<NoSuchDeliveryChannelException>()(
+  "NoSuchDeliveryChannelException",
+  { message: S.optional(S.String) },
+) {}
+export class NoSuchOrganizationConfigRuleException extends S.TaggedErrorClass<NoSuchOrganizationConfigRuleException>()(
+  "NoSuchOrganizationConfigRuleException",
+  { message: S.optional(S.String) },
+) {}
+export class NoSuchOrganizationConformancePackException extends S.TaggedErrorClass<NoSuchOrganizationConformancePackException>()(
+  "NoSuchOrganizationConformancePackException",
+  { message: S.optional(S.String) },
+) {}
+export class NoSuchRemediationConfigurationException extends S.TaggedErrorClass<NoSuchRemediationConfigurationException>()(
+  "NoSuchRemediationConfigurationException",
+  { message: S.optional(S.String) },
+) {}
+export class NoSuchRemediationExceptionException extends S.TaggedErrorClass<NoSuchRemediationExceptionException>()(
+  "NoSuchRemediationExceptionException",
+  { message: S.optional(S.String) },
+) {}
+export class NoSuchRetentionConfigurationException extends S.TaggedErrorClass<NoSuchRetentionConfigurationException>()(
+  "NoSuchRetentionConfigurationException",
+  { message: S.optional(S.String) },
+) {}
+export class OrganizationAccessDeniedException extends S.TaggedErrorClass<OrganizationAccessDeniedException>()(
+  "OrganizationAccessDeniedException",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class OrganizationAllFeaturesNotEnabledException extends S.TaggedErrorClass<OrganizationAllFeaturesNotEnabledException>()(
+  "OrganizationAllFeaturesNotEnabledException",
+  { message: S.optional(S.String) },
+) {}
+export class OrganizationConformancePackTemplateValidationException extends S.TaggedErrorClass<OrganizationConformancePackTemplateValidationException>()(
+  "OrganizationConformancePackTemplateValidationException",
+  { message: S.optional(S.String) },
+) {}
+export class OversizedConfigurationItemException extends S.TaggedErrorClass<OversizedConfigurationItemException>()(
+  "OversizedConfigurationItemException",
+  { message: S.optional(S.String) },
+) {}
+export class RemediationInProgressException extends S.TaggedErrorClass<RemediationInProgressException>()(
+  "RemediationInProgressException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceConcurrentModificationException extends S.TaggedErrorClass<ResourceConcurrentModificationException>()(
+  "ResourceConcurrentModificationException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceNotDiscoveredException extends S.TaggedErrorClass<ResourceNotDiscoveredException>()(
+  "ResourceNotDiscoveredException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { message: S.optional(S.String) },
+) {}
+export class UnmodifiableEntityException extends S.TaggedErrorClass<UnmodifiableEntityException>()(
+  "UnmodifiableEntityException",
+  { message: S.optional(S.String) },
+) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+) {}
 export type AmazonResourceName = string;
-export type RecorderName = string;
-export type AllSupported = boolean;
-export type IncludeGlobalResourceTypes = boolean;
-export type Description = string;
-export type ServicePrincipal = string;
-export type ErrorMessage = string;
-export type ConfigurationAggregatorName = string;
-export type AccountId = string;
-export type AwsRegion = string;
-export type ResourceId = string;
-export type ResourceName = string;
-export type Version = string;
-export type ConfigurationItemCaptureTime = Date;
-export type ConfigurationStateId = string;
-export type ARN = string;
-export type AvailabilityZone = string;
-export type ResourceCreationTime = Date;
-export type Configuration = string;
-export type SupplementaryConfigurationName = string;
-export type SupplementaryConfigurationValue = string;
-export type ConfigurationItemDeliveryTime = Date;
-export type ConfigRuleName = string;
-export type ConformancePackName = string;
-export type ChannelName = string;
-export type StringWithCharLimit64 = string;
-export type OrganizationConfigRuleName = string;
-export type OrganizationConformancePackName = string;
-export type StringWithCharLimit256 = string;
-export type StringWithCharLimit1024 = string;
-export type ResourceTypeString = string;
-export type RetentionConfigurationName = string;
-export type QueryName = string;
-export type GroupByAPILimit = number;
-export type NextToken = string;
-export type Limit = number;
-export type BaseResourceId = string;
-export type RuleLimit = number;
-export type EmptiableStringWithCharLimit256 = string;
-export type StringWithCharLimit128 = string;
-export type PolicyRuntime = string;
-export type PolicyText = string;
-export type ConfigurationAggregatorArn = string;
-export type ResourceTypeValue = string;
-export type ServicePrincipalValue = string;
-export type DescribeConformancePackComplianceLimit = number;
-export type PageSizeLimit = number;
-export type ConformancePackArn = string;
-export type ConformancePackId = string;
-export type DeliveryS3Bucket = string;
-export type DeliveryS3KeyPrefix = string;
-export type ParameterName = string;
-export type ParameterValue = string;
-export type SSMDocumentName = string;
-export type SSMDocumentVersion = string;
-export type StackArn = string;
-export type ConformancePackStatusReason = string;
-export type CosmosPageLimit = number;
-export type StringWithCharLimit256Min0 = string;
-export type StringWithCharLimit768 = string;
-export type DescribePendingAggregationRequestsLimit = number;
-export type Percentage = number;
-export type AutoRemediationAttempts = number;
-export type AutoRemediationAttemptSeconds = number;
-export type RetentionPeriodInDays = number;
-export type ResourceEvaluationId = string;
-export type ConfigurationItemMD5Hash = string;
-export type Name = string;
-export type Value = string;
-export type RelatedEvent = string;
-export type RelationshipName = string;
-export type GetConformancePackComplianceDetailsLimit = number;
-export type Annotation = string;
-export type LaterTime = Date;
-export type EarlierTime = Date;
-export type EvaluationContextIdentifier = string;
-export type ResourceConfiguration = string;
-export type QueryId = string;
-export type QueryArn = string;
-export type QueryDescription = string;
-export type QueryExpression = string;
-export type ConfigurationRecorderFilterValue = string;
-export type MaxResults = number;
-export type ComplianceScore = string;
-export type LastUpdatedTime = Date;
-export type ResourceDeletionTime = Date;
-export type ListResourceEvaluationsPageItemLimit = number;
-export type TagKey = string;
-export type TagValue = string;
-export type TemplateS3Uri = string;
-export type TemplateBody = string;
-export type OrderingTimestamp = Date;
-export type SchemaVersionId = string;
-export type Expression = string;
-export type FieldName = string;
-export type EvaluationTimeout = number;
-export type ClientToken = string;
-
-//# Schemas
 export type ResourceType =
   | "AWS::EC2::CustomerGateway"
   | "AWS::EC2::EIP"
@@ -725,6 +851,7 @@ export type ResourceType =
   | "AWS::ApiGateway::Method"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export type ResourceTypeList = ResourceType[];
 export const ResourceTypeList = /*@__PURE__*/ S.Array(ResourceType);
 export interface AssociateResourceTypesRequest {
@@ -749,6 +876,9 @@ export const AssociateResourceTypesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateResourceTypesRequest",
 }) as any as S.Schema<AssociateResourceTypesRequest>;
+export type RecorderName = string;
+export type AllSupported = boolean;
+export type IncludeGlobalResourceTypes = boolean;
 export interface ExclusionByResourceTypes {
   resourceTypes?: ResourceType[];
 }
@@ -763,6 +893,7 @@ export type RecordingStrategyType =
   | "EXCLUSION_BY_RESOURCE_TYPES"
   | (string & {});
 export const RecordingStrategyType = /*@__PURE__*/ S.String;
+
 export interface RecordingStrategy {
   useOnly?: RecordingStrategyType;
 }
@@ -789,6 +920,8 @@ export const RecordingGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecordingGroup" }) as any as S.Schema<RecordingGroup>;
 export type RecordingFrequency = "CONTINUOUS" | "DAILY" | (string & {});
 export const RecordingFrequency = /*@__PURE__*/ S.String;
+
+export type Description = string;
 export type RecordingModeResourceTypesList = ResourceType[];
 export const RecordingModeResourceTypesList =
   /*@__PURE__*/ S.Array(ResourceType);
@@ -822,6 +955,8 @@ export const RecordingMode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecordingMode" }) as any as S.Schema<RecordingMode>;
 export type RecordingScope = "INTERNAL" | "PAID" | (string & {});
 export const RecordingScope = /*@__PURE__*/ S.String;
+
+export type ServicePrincipal = string;
 export interface ConfigurationRecorder {
   arn?: string;
   name?: string;
@@ -852,6 +987,11 @@ export const AssociateResourceTypesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateResourceTypesResponse",
 }) as any as S.Schema<AssociateResourceTypesResponse>;
+export type ConfigurationAggregatorName = string;
+export type AccountId = string;
+export type AwsRegion = string;
+export type ResourceId = string;
+export type ResourceName = string;
 export interface AggregateResourceIdentifier {
   SourceAccountId: string;
   SourceRegion: string;
@@ -897,6 +1037,8 @@ export const BatchGetAggregateResourceConfigRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchGetAggregateResourceConfigRequest",
 }) as any as S.Schema<BatchGetAggregateResourceConfigRequest>;
+export type Version = string;
+export type ConfigurationItemCaptureTime = Date;
 export type ConfigurationItemStatus =
   | "OK"
   | "ResourceDiscovered"
@@ -905,11 +1047,20 @@ export type ConfigurationItemStatus =
   | "ResourceDeletedNotRecorded"
   | (string & {});
 export const ConfigurationItemStatus = /*@__PURE__*/ S.String;
+
+export type ConfigurationStateId = string;
+export type ARN = string;
+export type AvailabilityZone = string;
+export type ResourceCreationTime = Date;
+export type Configuration = string;
+export type SupplementaryConfigurationName = string;
+export type SupplementaryConfigurationValue = string;
 export type SupplementaryConfiguration = { [key: string]: string | undefined };
 export const SupplementaryConfiguration = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ConfigurationItemDeliveryTime = Date;
 export interface BaseConfigurationItem {
   version?: string;
   accountId?: string;
@@ -1047,6 +1198,7 @@ export const DeleteAggregationAuthorizationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteAggregationAuthorizationResponse",
 }) as any as S.Schema<DeleteAggregationAuthorizationResponse>;
+export type ConfigRuleName = string;
 export interface DeleteConfigRuleRequest {
   ConfigRuleName: string;
 }
@@ -1120,6 +1272,7 @@ export const DeleteConfigurationRecorderResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteConfigurationRecorderResponse",
 }) as any as S.Schema<DeleteConfigurationRecorderResponse>;
+export type ConformancePackName = string;
 export interface DeleteConformancePackRequest {
   ConformancePackName: string;
 }
@@ -1144,6 +1297,7 @@ export const DeleteConformancePackResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteConformancePackResponse",
 }) as any as S.Schema<DeleteConformancePackResponse>;
+export type ChannelName = string;
 export interface DeleteDeliveryChannelRequest {
   DeliveryChannelName: string;
 }
@@ -1168,6 +1322,7 @@ export const DeleteDeliveryChannelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteDeliveryChannelResponse",
 }) as any as S.Schema<DeleteDeliveryChannelResponse>;
+export type StringWithCharLimit64 = string;
 export interface DeleteEvaluationResultsRequest {
   ConfigRuleName: string;
 }
@@ -1192,6 +1347,7 @@ export const DeleteEvaluationResultsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteEvaluationResultsResponse",
 }) as any as S.Schema<DeleteEvaluationResultsResponse>;
+export type OrganizationConfigRuleName = string;
 export interface DeleteOrganizationConfigRuleRequest {
   OrganizationConfigRuleName: string;
 }
@@ -1216,6 +1372,7 @@ export const DeleteOrganizationConfigRuleResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteOrganizationConfigRuleResponse",
 }) as any as S.Schema<DeleteOrganizationConfigRuleResponse>;
+export type OrganizationConformancePackName = string;
 export interface DeleteOrganizationConformancePackRequest {
   OrganizationConformancePackName: string;
 }
@@ -1298,6 +1455,8 @@ export const DeleteRemediationConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteRemediationConfigurationResponse",
 }) as any as S.Schema<DeleteRemediationConfigurationResponse>;
+export type StringWithCharLimit256 = string;
+export type StringWithCharLimit1024 = string;
 export interface RemediationExceptionResourceKey {
   ResourceType?: string;
   ResourceId?: string;
@@ -1365,6 +1524,7 @@ export const DeleteRemediationExceptionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteRemediationExceptionsResponse",
 }) as any as S.Schema<DeleteRemediationExceptionsResponse>;
+export type ResourceTypeString = string;
 export interface DeleteResourceConfigRequest {
   ResourceType: string;
   ResourceId: string;
@@ -1390,6 +1550,7 @@ export const DeleteResourceConfigResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteResourceConfigResponse",
 }) as any as S.Schema<DeleteResourceConfigResponse>;
+export type RetentionConfigurationName = string;
 export interface DeleteRetentionConfigurationRequest {
   RetentionConfigurationName: string;
 }
@@ -1443,6 +1604,7 @@ export const DeleteServiceLinkedConfigurationRecorderResponse =
   ).annotate({
     identifier: "DeleteServiceLinkedConfigurationRecorderResponse",
   }) as any as S.Schema<DeleteServiceLinkedConfigurationRecorderResponse>;
+export type QueryName = string;
 export interface DeleteStoredQueryRequest {
   QueryName: string;
 }
@@ -1500,6 +1662,7 @@ export type ComplianceType =
   | "INSUFFICIENT_DATA"
   | (string & {});
 export const ComplianceType = /*@__PURE__*/ S.String;
+
 export interface ConfigRuleComplianceFilters {
   ConfigRuleName?: string;
   ComplianceType?: ComplianceType;
@@ -1516,6 +1679,8 @@ export const ConfigRuleComplianceFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfigRuleComplianceFilters",
 }) as any as S.Schema<ConfigRuleComplianceFilters>;
+export type GroupByAPILimit = number;
+export type NextToken = string;
 export interface DescribeAggregateComplianceByConfigRulesRequest {
   ConfigurationAggregatorName: string;
   Filters?: ConfigRuleComplianceFilters;
@@ -1607,6 +1772,7 @@ export type ConformancePackComplianceType =
   | "INSUFFICIENT_DATA"
   | (string & {});
 export const ConformancePackComplianceType = /*@__PURE__*/ S.String;
+
 export interface AggregateConformancePackComplianceFilters {
   ConformancePackName?: string;
   ComplianceType?: ConformancePackComplianceType;
@@ -1624,6 +1790,7 @@ export const AggregateConformancePackComplianceFilters =
   ).annotate({
     identifier: "AggregateConformancePackComplianceFilters",
   }) as any as S.Schema<AggregateConformancePackComplianceFilters>;
+export type Limit = number;
 export interface DescribeAggregateComplianceByConformancePacksRequest {
   ConfigurationAggregatorName: string;
   Filters?: AggregateConformancePackComplianceFilters;
@@ -1818,6 +1985,7 @@ export const DescribeComplianceByConfigRuleResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeComplianceByConfigRuleResponse",
 }) as any as S.Schema<DescribeComplianceByConfigRuleResponse>;
+export type BaseResourceId = string;
 export interface DescribeComplianceByResourceRequest {
   ResourceType?: string;
   ResourceId?: string;
@@ -1876,6 +2044,7 @@ export const DescribeComplianceByResourceResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeComplianceByResourceResponse",
 }) as any as S.Schema<DescribeComplianceByResourceResponse>;
+export type RuleLimit = number;
 export interface DescribeConfigRuleEvaluationStatusRequest {
   ConfigRuleNames?: string[];
   NextToken?: string;
@@ -1972,8 +2141,10 @@ export const DescribeConfigRuleEvaluationStatusResponse =
   }) as any as S.Schema<DescribeConfigRuleEvaluationStatusResponse>;
 export type EvaluationMode = "DETECTIVE" | "PROACTIVE" | (string & {});
 export const EvaluationMode = /*@__PURE__*/ S.String;
+
 export type RuleEvaluationVisibility = "EXTERNAL" | "INTERNAL" | (string & {});
 export const RuleEvaluationVisibility = /*@__PURE__*/ S.String;
+
 export interface DescribeConfigRulesFilters {
   EvaluationMode?: EvaluationMode;
   RuleEvaluationVisibility?: RuleEvaluationVisibility;
@@ -2010,8 +2181,10 @@ export const DescribeConfigRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeConfigRulesRequest",
 }) as any as S.Schema<DescribeConfigRulesRequest>;
+export type EmptiableStringWithCharLimit256 = string;
 export type ComplianceResourceTypes = string[];
 export const ComplianceResourceTypes = /*@__PURE__*/ S.Array(S.String);
+export type StringWithCharLimit128 = string;
 export type ServicePrincipals = string[];
 export const ServicePrincipals = /*@__PURE__*/ S.Array(S.String);
 export interface Scope {
@@ -2032,8 +2205,10 @@ export const Scope = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Scope" }) as any as S.Schema<Scope>;
 export type Owner = "CUSTOM_LAMBDA" | "AWS" | "CUSTOM_POLICY" | (string & {});
 export const Owner = /*@__PURE__*/ S.String;
+
 export type EventSource = "aws.config" | (string & {});
 export const EventSource = /*@__PURE__*/ S.String;
+
 export type MessageType =
   | "ConfigurationItemChangeNotification"
   | "ConfigurationSnapshotDeliveryCompleted"
@@ -2041,6 +2216,7 @@ export type MessageType =
   | "OversizedConfigurationItemChangeNotification"
   | (string & {});
 export const MessageType = /*@__PURE__*/ S.String;
+
 export type MaximumExecutionFrequency =
   | "One_Hour"
   | "Three_Hours"
@@ -2049,6 +2225,7 @@ export type MaximumExecutionFrequency =
   | "TwentyFour_Hours"
   | (string & {});
 export const MaximumExecutionFrequency = /*@__PURE__*/ S.String;
+
 export interface SourceDetail {
   EventSource?: EventSource;
   MessageType?: MessageType;
@@ -2063,6 +2240,8 @@ export const SourceDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceDetail" }) as any as S.Schema<SourceDetail>;
 export type SourceDetails = SourceDetail[];
 export const SourceDetails = /*@__PURE__*/ S.Array(SourceDetail);
+export type PolicyRuntime = string;
+export type PolicyText = string;
 export interface CustomPolicyDetails {
   PolicyRuntime: string;
   PolicyText: string;
@@ -2098,6 +2277,7 @@ export type ConfigRuleState =
   | "EVALUATING"
   | (string & {});
 export const ConfigRuleState = /*@__PURE__*/ S.String;
+
 export interface EvaluationModeConfiguration {
   Mode?: EvaluationMode;
 }
@@ -2181,6 +2361,7 @@ export const DescribeConfigurationAggregatorsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeConfigurationAggregatorsRequest",
 }) as any as S.Schema<DescribeConfigurationAggregatorsRequest>;
+export type ConfigurationAggregatorArn = string;
 export type AccountAggregationSourceAccountList = string[];
 export const AccountAggregationSourceAccountList = /*@__PURE__*/ S.Array(
   S.String,
@@ -2221,6 +2402,8 @@ export const OrganizationAggregationSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrganizationAggregationSource>;
 export type AggregatorFilterType = "INCLUDE" | (string & {});
 export const AggregatorFilterType = /*@__PURE__*/ S.String;
+
+export type ResourceTypeValue = string;
 export type ResourceTypeValueList = string[];
 export const ResourceTypeValueList = /*@__PURE__*/ S.Array(S.String);
 export interface AggregatorFilterResourceType {
@@ -2235,6 +2418,7 @@ export const AggregatorFilterResourceType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AggregatorFilterResourceType",
 }) as any as S.Schema<AggregatorFilterResourceType>;
+export type ServicePrincipalValue = string;
 export type ServicePrincipalValueList = string[];
 export const ServicePrincipalValueList = /*@__PURE__*/ S.Array(S.String);
 export interface AggregatorFilterServicePrincipal {
@@ -2310,6 +2494,7 @@ export type AggregatedSourceStatusType =
   | "OUTDATED"
   | (string & {});
 export const AggregatedSourceStatusType = /*@__PURE__*/ S.String;
+
 export type AggregatedSourceStatusTypeList = AggregatedSourceStatusType[];
 export const AggregatedSourceStatusTypeList = /*@__PURE__*/ S.Array(
   AggregatedSourceStatusType,
@@ -2343,6 +2528,7 @@ export const DescribeConfigurationAggregatorSourcesStatusRequest =
   }) as any as S.Schema<DescribeConfigurationAggregatorSourcesStatusRequest>;
 export type AggregatedSourceType = "ACCOUNT" | "ORGANIZATION" | (string & {});
 export const AggregatedSourceType = /*@__PURE__*/ S.String;
+
 export interface AggregatedSourceStatus {
   SourceId?: string;
   SourceType?: AggregatedSourceType;
@@ -2456,6 +2642,7 @@ export type RecorderStatus =
   | "NotApplicable"
   | (string & {});
 export const RecorderStatus = /*@__PURE__*/ S.String;
+
 export interface ConfigurationRecorderStatus {
   arn?: string;
   name?: string;
@@ -2515,6 +2702,7 @@ export const ConformancePackComplianceFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConformancePackComplianceFilters",
 }) as any as S.Schema<ConformancePackComplianceFilters>;
+export type DescribeConformancePackComplianceLimit = number;
 export interface DescribeConformancePackComplianceRequest {
   ConformancePackName: string;
   Filters?: ConformancePackComplianceFilters;
@@ -2579,6 +2767,7 @@ export const DescribeConformancePackComplianceResponse =
   }) as any as S.Schema<DescribeConformancePackComplianceResponse>;
 export type ConformancePackNamesList = string[];
 export const ConformancePackNamesList = /*@__PURE__*/ S.Array(S.String);
+export type PageSizeLimit = number;
 export interface DescribeConformancePacksRequest {
   ConformancePackNames?: string[];
   Limit?: number;
@@ -2603,6 +2792,12 @@ export const DescribeConformancePacksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeConformancePacksRequest",
 }) as any as S.Schema<DescribeConformancePacksRequest>;
+export type ConformancePackArn = string;
+export type ConformancePackId = string;
+export type DeliveryS3Bucket = string;
+export type DeliveryS3KeyPrefix = string;
+export type ParameterName = string;
+export type ParameterValue = string;
 export interface ConformancePackInputParameter {
   ParameterName: string;
   ParameterValue: string;
@@ -2616,6 +2811,8 @@ export type ConformancePackInputParameters = ConformancePackInputParameter[];
 export const ConformancePackInputParameters = /*@__PURE__*/ S.Array(
   ConformancePackInputParameter,
 );
+export type SSMDocumentName = string;
+export type SSMDocumentVersion = string;
 export interface TemplateSSMDocumentDetails {
   DocumentName: string;
   DocumentVersion?: string;
@@ -2702,6 +2899,9 @@ export type ConformancePackState =
   | "DELETE_FAILED"
   | (string & {});
 export const ConformancePackState = /*@__PURE__*/ S.String;
+
+export type StackArn = string;
+export type ConformancePackStatusReason = string;
 export interface ConformancePackStatusDetail {
   ConformancePackName: string;
   ConformancePackId: string;
@@ -2834,6 +3034,7 @@ export type DeliveryStatus =
   | "Not_Applicable"
   | (string & {});
 export const DeliveryStatus = /*@__PURE__*/ S.String;
+
 export interface ConfigExportDeliveryInfo {
   lastStatus?: DeliveryStatus;
   lastErrorCode?: string;
@@ -2911,6 +3112,7 @@ export const DescribeDeliveryChannelStatusResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeDeliveryChannelStatusResponse>;
 export type OrganizationConfigRuleNames = string[];
 export const OrganizationConfigRuleNames = /*@__PURE__*/ S.Array(S.String);
+export type CosmosPageLimit = number;
 export interface DescribeOrganizationConfigRulesRequest {
   OrganizationConfigRuleNames?: string[];
   Limit?: number;
@@ -2936,8 +3138,10 @@ export const DescribeOrganizationConfigRulesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeOrganizationConfigRulesRequest",
 }) as any as S.Schema<DescribeOrganizationConfigRulesRequest>;
+export type StringWithCharLimit256Min0 = string;
 export type ResourceTypesScope = string[];
 export const ResourceTypesScope = /*@__PURE__*/ S.Array(S.String);
+export type StringWithCharLimit768 = string;
 export interface OrganizationManagedRuleMetadata {
   Description?: string;
   RuleIdentifier: string;
@@ -2968,6 +3172,7 @@ export type OrganizationConfigRuleTriggerType =
   | "ScheduledNotification"
   | (string & {});
 export const OrganizationConfigRuleTriggerType = /*@__PURE__*/ S.String;
+
 export type OrganizationConfigRuleTriggerTypes =
   OrganizationConfigRuleTriggerType[];
 export const OrganizationConfigRuleTriggerTypes = /*@__PURE__*/ S.Array(
@@ -3006,6 +3211,7 @@ export type OrganizationConfigRuleTriggerTypeNoSN =
   | "OversizedConfigurationItemChangeNotification"
   | (string & {});
 export const OrganizationConfigRuleTriggerTypeNoSN = /*@__PURE__*/ S.String;
+
 export type OrganizationConfigRuleTriggerTypeNoSNs =
   OrganizationConfigRuleTriggerTypeNoSN[];
 export const OrganizationConfigRuleTriggerTypeNoSNs = /*@__PURE__*/ S.Array(
@@ -3124,6 +3330,7 @@ export type OrganizationRuleStatus =
   | "UPDATE_FAILED"
   | (string & {});
 export const OrganizationRuleStatus = /*@__PURE__*/ S.String;
+
 export interface OrganizationConfigRuleStatus {
   OrganizationConfigRuleName: string;
   OrganizationRuleStatus: OrganizationRuleStatus;
@@ -3268,6 +3475,7 @@ export type OrganizationResourceStatus =
   | "UPDATE_FAILED"
   | (string & {});
 export const OrganizationResourceStatus = /*@__PURE__*/ S.String;
+
 export interface OrganizationConformancePackStatus {
   OrganizationConformancePackName: string;
   Status: OrganizationResourceStatus;
@@ -3306,6 +3514,7 @@ export const DescribeOrganizationConformancePackStatusesResponse =
   ).annotate({
     identifier: "DescribeOrganizationConformancePackStatusesResponse",
   }) as any as S.Schema<DescribeOrganizationConformancePackStatusesResponse>;
+export type DescribePendingAggregationRequestsLimit = number;
 export interface DescribePendingAggregationRequestsRequest {
   Limit?: number;
   NextToken?: string;
@@ -3379,8 +3588,10 @@ export const DescribeRemediationConfigurationsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeRemediationConfigurationsRequest>;
 export type RemediationTargetType = "SSM_DOCUMENT" | (string & {});
 export const RemediationTargetType = /*@__PURE__*/ S.String;
+
 export type ResourceValueType = "RESOURCE_ID" | (string & {});
 export const ResourceValueType = /*@__PURE__*/ S.String;
+
 export interface ResourceValue {
   Value: ResourceValueType;
 }
@@ -3414,6 +3625,7 @@ export const RemediationParameters = /*@__PURE__*/ S.Record(
   S.String,
   RemediationParameterValue.pipe(S.optional),
 );
+export type Percentage = number;
 export interface SsmControls {
   ConcurrentExecutionRatePercentage?: number;
   ErrorPercentage?: number;
@@ -3432,6 +3644,8 @@ export const ExecutionControls = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecutionControls",
 }) as any as S.Schema<ExecutionControls>;
+export type AutoRemediationAttempts = number;
+export type AutoRemediationAttemptSeconds = number;
 export interface RemediationConfiguration {
   ConfigRuleName: string;
   TargetType: RemediationTargetType;
@@ -3575,6 +3789,7 @@ export type RemediationExecutionState =
   | "UNKNOWN"
   | (string & {});
 export const RemediationExecutionState = /*@__PURE__*/ S.String;
+
 export type RemediationExecutionStepState =
   | "SUCCEEDED"
   | "PENDING"
@@ -3584,6 +3799,7 @@ export type RemediationExecutionStepState =
   | "UNKNOWN"
   | (string & {});
 export const RemediationExecutionStepState = /*@__PURE__*/ S.String;
+
 export interface RemediationExecutionStep {
   Name?: string;
   State?: RemediationExecutionStepState;
@@ -3668,6 +3884,7 @@ export const DescribeRetentionConfigurationsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeRetentionConfigurationsRequest",
 }) as any as S.Schema<DescribeRetentionConfigurationsRequest>;
+export type RetentionPeriodInDays = number;
 export interface RetentionConfiguration {
   Name: string;
   RetentionPeriodInDays: number;
@@ -3773,6 +3990,7 @@ export const EvaluationResultQualifier = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EvaluationResultQualifier",
 }) as any as S.Schema<EvaluationResultQualifier>;
+export type ResourceEvaluationId = string;
 export interface EvaluationResultIdentifier {
   EvaluationResultQualifier?: EvaluationResultQualifier;
   OrderingTimestamp?: Date;
@@ -3849,6 +4067,7 @@ export type ConfigRuleComplianceSummaryGroupKey =
   | "AWS_REGION"
   | (string & {});
 export const ConfigRuleComplianceSummaryGroupKey = /*@__PURE__*/ S.String;
+
 export interface GetAggregateConfigRuleComplianceSummaryRequest {
   ConfigurationAggregatorName: string;
   Filters?: ConfigRuleComplianceSummaryFilters;
@@ -3944,6 +4163,7 @@ export type AggregateConformancePackComplianceSummaryGroupKey =
   | (string & {});
 export const AggregateConformancePackComplianceSummaryGroupKey =
   /*@__PURE__*/ S.String;
+
 export interface GetAggregateConformancePackComplianceSummaryRequest {
   ConfigurationAggregatorName: string;
   Filters?: AggregateConformancePackComplianceSummaryFilters;
@@ -4040,6 +4260,7 @@ export type ResourceCountGroupKey =
   | "AWS_REGION"
   | (string & {});
 export const ResourceCountGroupKey = /*@__PURE__*/ S.String;
+
 export interface GetAggregateDiscoveredResourceCountsRequest {
   ConfigurationAggregatorName: string;
   Filters?: ResourceCountFilters;
@@ -4120,10 +4341,15 @@ export const GetAggregateResourceConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAggregateResourceConfigRequest",
 }) as any as S.Schema<GetAggregateResourceConfigRequest>;
+export type ConfigurationItemMD5Hash = string;
+export type Name = string;
+export type Value = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export type RelatedEvent = string;
 export type RelatedEventList = string[];
 export const RelatedEventList = /*@__PURE__*/ S.Array(S.String);
+export type RelationshipName = string;
 export interface Relationship {
   resourceType?: ResourceType;
   resourceId?: string;
@@ -4406,6 +4632,7 @@ export const ConformancePackEvaluationFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConformancePackEvaluationFilters",
 }) as any as S.Schema<ConformancePackEvaluationFilters>;
+export type GetConformancePackComplianceDetailsLimit = number;
 export interface GetConformancePackComplianceDetailsRequest {
   ConformancePackName: string;
   Filters?: ConformancePackEvaluationFilters;
@@ -4433,6 +4660,7 @@ export const GetConformancePackComplianceDetailsRequest =
   ).annotate({
     identifier: "GetConformancePackComplianceDetailsRequest",
   }) as any as S.Schema<GetConformancePackComplianceDetailsRequest>;
+export type Annotation = string;
 export interface ConformancePackEvaluationResult {
   ComplianceType: ConformancePackComplianceType;
   EvaluationResultIdentifier: EvaluationResultIdentifier;
@@ -4622,6 +4850,7 @@ export type MemberAccountRuleStatus =
   | "UPDATE_FAILED"
   | (string & {});
 export const MemberAccountRuleStatus = /*@__PURE__*/ S.String;
+
 export interface StatusDetailFilters {
   AccountId?: string;
   MemberAccountRuleStatus?: MemberAccountRuleStatus;
@@ -4711,6 +4940,7 @@ export type OrganizationResourceDetailedStatus =
   | "UPDATE_FAILED"
   | (string & {});
 export const OrganizationResourceDetailedStatus = /*@__PURE__*/ S.String;
+
 export interface OrganizationResourceDetailedStatusFilters {
   AccountId?: string;
   Status?: OrganizationResourceDetailedStatus;
@@ -4820,8 +5050,11 @@ export const GetOrganizationCustomRulePolicyResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetOrganizationCustomRulePolicyResponse",
 }) as any as S.Schema<GetOrganizationCustomRulePolicyResponse>;
+export type LaterTime = Date;
+export type EarlierTime = Date;
 export type ChronologicalOrder = "Reverse" | "Forward" | (string & {});
 export const ChronologicalOrder = /*@__PURE__*/ S.String;
+
 export interface GetResourceConfigHistoryRequest {
   resourceType: ResourceType;
   resourceId: string;
@@ -4892,6 +5125,7 @@ export type ResourceEvaluationStatus =
   | "SUCCEEDED"
   | (string & {});
 export const ResourceEvaluationStatus = /*@__PURE__*/ S.String;
+
 export interface EvaluationStatus {
   Status: ResourceEvaluationStatus;
   FailureReason?: string;
@@ -4904,6 +5138,7 @@ export const EvaluationStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EvaluationStatus",
 }) as any as S.Schema<EvaluationStatus>;
+export type EvaluationContextIdentifier = string;
 export interface EvaluationContext {
   EvaluationContextIdentifier?: string;
 }
@@ -4912,10 +5147,12 @@ export const EvaluationContext = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EvaluationContext",
 }) as any as S.Schema<EvaluationContext>;
+export type ResourceConfiguration = string;
 export type ResourceConfigurationSchemaType =
   | "CFN_RESOURCE_SCHEMA"
   | (string & {});
 export const ResourceConfigurationSchemaType = /*@__PURE__*/ S.String;
+
 export interface ResourceDetails {
   ResourceId: string;
   ResourceType: string;
@@ -4977,6 +5214,10 @@ export const GetStoredQueryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetStoredQueryRequest",
 }) as any as S.Schema<GetStoredQueryRequest>;
+export type QueryId = string;
+export type QueryArn = string;
+export type QueryDescription = string;
+export type QueryExpression = string;
 export interface StoredQuery {
   QueryId?: string;
   QueryArn?: string;
@@ -5065,6 +5306,8 @@ export const ListAggregateDiscoveredResourcesResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListAggregateDiscoveredResourcesResponse>;
 export type ConfigurationRecorderFilterName = "recordingScope" | (string & {});
 export const ConfigurationRecorderFilterName = /*@__PURE__*/ S.String;
+
+export type ConfigurationRecorderFilterValue = string;
 export type ConfigurationRecorderFilterValues = string[];
 export const ConfigurationRecorderFilterValues = /*@__PURE__*/ S.Array(
   S.String,
@@ -5085,6 +5328,7 @@ export type ConfigurationRecorderFilterList = ConfigurationRecorderFilter[];
 export const ConfigurationRecorderFilterList = /*@__PURE__*/ S.Array(
   ConfigurationRecorderFilter,
 );
+export type MaxResults = number;
 export interface ListConfigurationRecordersRequest {
   Filters?: ConfigurationRecorderFilter[];
   MaxResults?: number;
@@ -5153,8 +5397,10 @@ export const ConformancePackComplianceScoresFilters = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ConformancePackComplianceScoresFilters>;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export type SortBy = "SCORE" | (string & {});
 export const SortBy = /*@__PURE__*/ S.String;
+
 export interface ListConformancePackComplianceScoresRequest {
   Filters?: ConformancePackComplianceScoresFilters;
   SortOrder?: SortOrder;
@@ -5184,6 +5430,8 @@ export const ListConformancePackComplianceScoresRequest =
   ).annotate({
     identifier: "ListConformancePackComplianceScoresRequest",
   }) as any as S.Schema<ListConformancePackComplianceScoresRequest>;
+export type ComplianceScore = string;
+export type LastUpdatedTime = Date;
 export interface ConformancePackComplianceScore {
   Score?: string;
   ConformancePackName?: string;
@@ -5249,6 +5497,7 @@ export const ListDiscoveredResourcesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDiscoveredResourcesRequest",
 }) as any as S.Schema<ListDiscoveredResourcesRequest>;
+export type ResourceDeletionTime = Date;
 export interface ResourceIdentifier {
   resourceType?: ResourceType;
   resourceId?: string;
@@ -5305,6 +5554,7 @@ export const ResourceEvaluationFilters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResourceEvaluationFilters",
 }) as any as S.Schema<ResourceEvaluationFilters>;
+export type ListResourceEvaluationsPageItemLimit = number;
 export interface ListResourceEvaluationsRequest {
   Filters?: ResourceEvaluationFilters;
   Limit?: number;
@@ -5436,6 +5686,8 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -5583,6 +5835,8 @@ export const PutConfigurationRecorderResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutConfigurationRecorderResponse",
 }) as any as S.Schema<PutConfigurationRecorderResponse>;
+export type TemplateS3Uri = string;
+export type TemplateBody = string;
 export interface PutConformancePackRequest {
   ConformancePackName: string;
   TemplateS3Uri?: string;
@@ -5649,6 +5903,7 @@ export const PutDeliveryChannelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutDeliveryChannelResponse",
 }) as any as S.Schema<PutDeliveryChannelResponse>;
+export type OrderingTimestamp = Date;
 export interface Evaluation {
   ComplianceResourceType: string;
   ComplianceResourceId: string;
@@ -5958,6 +6213,7 @@ export const PutRemediationExceptionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutRemediationExceptionsResponse",
 }) as any as S.Schema<PutRemediationExceptionsResponse>;
+export type SchemaVersionId = string;
 export interface PutResourceConfigRequest {
   ResourceType: string;
   SchemaVersionId: string;
@@ -6081,6 +6337,7 @@ export const PutStoredQueryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutStoredQueryResponse",
 }) as any as S.Schema<PutStoredQueryResponse>;
+export type Expression = string;
 export interface SelectAggregateResourceConfigRequest {
   Expression: string;
   ConfigurationAggregatorName: string;
@@ -6112,6 +6369,7 @@ export const SelectAggregateResourceConfigRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SelectAggregateResourceConfigRequest>;
 export type Results = string[];
 export const Results = /*@__PURE__*/ S.Array(S.String);
+export type FieldName = string;
 export interface FieldInfo {
   Name?: string;
 }
@@ -6260,6 +6518,8 @@ export const StartRemediationExecutionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartRemediationExecutionResponse",
 }) as any as S.Schema<StartRemediationExecutionResponse>;
+export type EvaluationTimeout = number;
+export type ClientToken = string;
 export interface StartResourceEvaluationRequest {
   ResourceDetails: ResourceDetails;
   EvaluationContext?: EvaluationContext;
@@ -6372,235 +6632,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-
-//# Errors
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-) {}
-export class NoSuchConfigurationRecorderException extends S.TaggedErrorClass<NoSuchConfigurationRecorderException>()(
-  "NoSuchConfigurationRecorderException",
-  { message: S.optional(S.String) },
-) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-) {}
-export class NoSuchConfigurationAggregatorException extends S.TaggedErrorClass<NoSuchConfigurationAggregatorException>()(
-  "NoSuchConfigurationAggregatorException",
-  { message: S.optional(S.String) },
-) {}
-export class NoAvailableConfigurationRecorderException extends S.TaggedErrorClass<NoAvailableConfigurationRecorderException>()(
-  "NoAvailableConfigurationRecorderException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { message: S.optional(S.String) },
-) {}
-export class NoSuchConfigRuleException extends S.TaggedErrorClass<NoSuchConfigRuleException>()(
-  "NoSuchConfigRuleException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { message: S.optional(S.String) },
-) {}
-export class UnmodifiableEntityException extends S.TaggedErrorClass<UnmodifiableEntityException>()(
-  "UnmodifiableEntityException",
-  { message: S.optional(S.String) },
-) {}
-export class NoSuchConformancePackException extends S.TaggedErrorClass<NoSuchConformancePackException>()(
-  "NoSuchConformancePackException",
-  { message: S.optional(S.String) },
-) {}
-export class LastDeliveryChannelDeleteFailedException extends S.TaggedErrorClass<LastDeliveryChannelDeleteFailedException>()(
-  "LastDeliveryChannelDeleteFailedException",
-  { message: S.optional(S.String) },
-) {}
-export class NoSuchDeliveryChannelException extends S.TaggedErrorClass<NoSuchDeliveryChannelException>()(
-  "NoSuchDeliveryChannelException",
-  { message: S.optional(S.String) },
-) {}
-export class NoSuchOrganizationConfigRuleException extends S.TaggedErrorClass<NoSuchOrganizationConfigRuleException>()(
-  "NoSuchOrganizationConfigRuleException",
-  { message: S.optional(S.String) },
-) {}
-export class OrganizationAccessDeniedException extends S.TaggedErrorClass<OrganizationAccessDeniedException>()(
-  "OrganizationAccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class NoSuchOrganizationConformancePackException extends S.TaggedErrorClass<NoSuchOrganizationConformancePackException>()(
-  "NoSuchOrganizationConformancePackException",
-  { message: S.optional(S.String) },
-) {}
-export class InsufficientPermissionsException extends S.TaggedErrorClass<InsufficientPermissionsException>()(
-  "InsufficientPermissionsException",
-  { message: S.optional(S.String) },
-) {}
-export class NoSuchRemediationConfigurationException extends S.TaggedErrorClass<NoSuchRemediationConfigurationException>()(
-  "NoSuchRemediationConfigurationException",
-  { message: S.optional(S.String) },
-) {}
-export class RemediationInProgressException extends S.TaggedErrorClass<RemediationInProgressException>()(
-  "RemediationInProgressException",
-  { message: S.optional(S.String) },
-) {}
-export class NoSuchRemediationExceptionException extends S.TaggedErrorClass<NoSuchRemediationExceptionException>()(
-  "NoSuchRemediationExceptionException",
-  { message: S.optional(S.String) },
-) {}
-export class NoRunningConfigurationRecorderException extends S.TaggedErrorClass<NoRunningConfigurationRecorderException>()(
-  "NoRunningConfigurationRecorderException",
-  { message: S.optional(S.String) },
-) {}
-export class NoSuchRetentionConfigurationException extends S.TaggedErrorClass<NoSuchRetentionConfigurationException>()(
-  "NoSuchRetentionConfigurationException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidLimitException extends S.TaggedErrorClass<InvalidLimitException>()(
-  "InvalidLimitException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { message: S.optional(S.String) },
-) {}
-export class NoSuchConfigRuleInConformancePackException extends S.TaggedErrorClass<NoSuchConfigRuleInConformancePackException>()(
-  "NoSuchConfigRuleInConformancePackException",
-  { message: S.optional(S.String) },
-) {}
-export class OversizedConfigurationItemException extends S.TaggedErrorClass<OversizedConfigurationItemException>()(
-  "OversizedConfigurationItemException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotDiscoveredException extends S.TaggedErrorClass<ResourceNotDiscoveredException>()(
-  "ResourceNotDiscoveredException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTimeRangeException extends S.TaggedErrorClass<InvalidTimeRangeException>()(
-  "InvalidTimeRangeException",
-  { message: S.optional(S.String) },
-) {}
-export class MaxNumberOfConfigRulesExceededException extends S.TaggedErrorClass<MaxNumberOfConfigRulesExceededException>()(
-  "MaxNumberOfConfigRulesExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidRoleException extends S.TaggedErrorClass<InvalidRoleException>()(
-  "InvalidRoleException",
-  { message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class NoAvailableOrganizationException extends S.TaggedErrorClass<NoAvailableOrganizationException>()(
-  "NoAvailableOrganizationException",
-  { message: S.optional(S.String) },
-) {}
-export class OrganizationAllFeaturesNotEnabledException extends S.TaggedErrorClass<OrganizationAllFeaturesNotEnabledException>()(
-  "OrganizationAllFeaturesNotEnabledException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidConfigurationRecorderNameException extends S.TaggedErrorClass<InvalidConfigurationRecorderNameException>()(
-  "InvalidConfigurationRecorderNameException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidRecordingGroupException extends S.TaggedErrorClass<InvalidRecordingGroupException>()(
-  "InvalidRecordingGroupException",
-  { message: S.optional(S.String) },
-) {}
-export class MaxNumberOfConfigurationRecordersExceededException extends S.TaggedErrorClass<MaxNumberOfConfigurationRecordersExceededException>()(
-  "MaxNumberOfConfigurationRecordersExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class ConformancePackTemplateValidationException extends S.TaggedErrorClass<ConformancePackTemplateValidationException>()(
-  "ConformancePackTemplateValidationException",
-  { message: S.optional(S.String) },
-) {}
-export class MaxNumberOfConformancePacksExceededException extends S.TaggedErrorClass<MaxNumberOfConformancePacksExceededException>()(
-  "MaxNumberOfConformancePacksExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class InsufficientDeliveryPolicyException extends S.TaggedErrorClass<InsufficientDeliveryPolicyException>()(
-  "InsufficientDeliveryPolicyException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidDeliveryChannelNameException extends S.TaggedErrorClass<InvalidDeliveryChannelNameException>()(
-  "InvalidDeliveryChannelNameException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidS3KeyPrefixException extends S.TaggedErrorClass<InvalidS3KeyPrefixException>()(
-  "InvalidS3KeyPrefixException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidS3KmsKeyArnException extends S.TaggedErrorClass<InvalidS3KmsKeyArnException>()(
-  "InvalidS3KmsKeyArnException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidSNSTopicARNException extends S.TaggedErrorClass<InvalidSNSTopicARNException>()(
-  "InvalidSNSTopicARNException",
-  { message: S.optional(S.String) },
-) {}
-export class MaxNumberOfDeliveryChannelsExceededException extends S.TaggedErrorClass<MaxNumberOfDeliveryChannelsExceededException>()(
-  "MaxNumberOfDeliveryChannelsExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class NoSuchBucketException extends S.TaggedErrorClass<NoSuchBucketException>()(
-  "NoSuchBucketException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidResultTokenException extends S.TaggedErrorClass<InvalidResultTokenException>()(
-  "InvalidResultTokenException",
-  { message: S.optional(S.String) },
-) {}
-export class MaxNumberOfOrganizationConfigRulesExceededException extends S.TaggedErrorClass<MaxNumberOfOrganizationConfigRulesExceededException>()(
-  "MaxNumberOfOrganizationConfigRulesExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class MaxNumberOfOrganizationConformancePacksExceededException extends S.TaggedErrorClass<MaxNumberOfOrganizationConformancePacksExceededException>()(
-  "MaxNumberOfOrganizationConformancePacksExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class OrganizationConformancePackTemplateValidationException extends S.TaggedErrorClass<OrganizationConformancePackTemplateValidationException>()(
-  "OrganizationConformancePackTemplateValidationException",
-  { message: S.optional(S.String) },
-) {}
-export class MaxActiveResourcesExceededException extends S.TaggedErrorClass<MaxActiveResourcesExceededException>()(
-  "MaxActiveResourcesExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class MaxNumberOfRetentionConfigurationsExceededException extends S.TaggedErrorClass<MaxNumberOfRetentionConfigurationsExceededException>()(
-  "MaxNumberOfRetentionConfigurationsExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceConcurrentModificationException extends S.TaggedErrorClass<ResourceConcurrentModificationException>()(
-  "ResourceConcurrentModificationException",
-  { message: S.optional(S.String) },
-) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidExpressionException extends S.TaggedErrorClass<InvalidExpressionException>()(
-  "InvalidExpressionException",
-  { message: S.optional(S.String) },
-) {}
-export class NoAvailableDeliveryChannelException extends S.TaggedErrorClass<NoAvailableDeliveryChannelException>()(
-  "NoAvailableDeliveryChannelException",
-  { message: S.optional(S.String) },
-) {}
-export class IdempotentParameterMismatch extends S.TaggedErrorClass<IdempotentParameterMismatch>()(
-  "IdempotentParameterMismatch",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withConflictError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type AssociateResourceTypesError =
   | ConflictException
   | NoSuchConfigurationRecorderException
@@ -6628,6 +6660,7 @@ export const associateResourceTypes: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateResourceTypes",
 }));
+
 export type BatchGetAggregateResourceConfigError =
   | NoSuchConfigurationAggregatorException
   | ValidationException
@@ -6653,6 +6686,7 @@ export const batchGetAggregateResourceConfig: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetAggregateResourceConfig",
 }));
+
 export type BatchGetResourceConfigError =
   | NoAvailableConfigurationRecorderException
   | ValidationException
@@ -6685,6 +6719,7 @@ export const batchGetResourceConfig: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetResourceConfig",
 }));
+
 export type DeleteAggregationAuthorizationError =
   | InvalidParameterValueException
   | CommonErrors;
@@ -6705,6 +6740,7 @@ export const deleteAggregationAuthorization: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAggregationAuthorization",
 }));
+
 export type DeleteConfigRuleError =
   | NoSuchConfigRuleException
   | ResourceInUseException
@@ -6747,6 +6783,7 @@ export const deleteConfigRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfigRule",
 }));
+
 export type DeleteConfigurationAggregatorError =
   | NoSuchConfigurationAggregatorException
   | CommonErrors;
@@ -6767,6 +6804,7 @@ export const deleteConfigurationAggregator: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfigurationAggregator",
 }));
+
 export type DeleteConfigurationRecorderError =
   | NoSuchConfigurationRecorderException
   | UnmodifiableEntityException
@@ -6794,6 +6832,7 @@ export const deleteConfigurationRecorder: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfigurationRecorder",
 }));
+
 export type DeleteConformancePackError =
   | NoSuchConformancePackException
   | ResourceInUseException
@@ -6830,6 +6869,7 @@ export const deleteConformancePack: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConformancePack",
 }));
+
 export type DeleteDeliveryChannelError =
   | LastDeliveryChannelDeleteFailedException
   | NoSuchDeliveryChannelException
@@ -6855,6 +6895,7 @@ export const deleteDeliveryChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDeliveryChannel",
 }));
+
 export type DeleteEvaluationResultsError =
   | NoSuchConfigRuleException
   | ResourceInUseException
@@ -6878,6 +6919,7 @@ export const deleteEvaluationResults: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEvaluationResults",
 }));
+
 export type DeleteOrganizationConfigRuleError =
   | NoSuchOrganizationConfigRuleException
   | OrganizationAccessDeniedException
@@ -6922,6 +6964,7 @@ export const deleteOrganizationConfigRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteOrganizationConfigRule",
 }));
+
 export type DeleteOrganizationConformancePackError =
   | NoSuchOrganizationConformancePackException
   | OrganizationAccessDeniedException
@@ -6967,6 +7010,7 @@ export const deleteOrganizationConformancePack: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteOrganizationConformancePack",
 }));
+
 export type DeletePendingAggregationRequestError =
   | InvalidParameterValueException
   | CommonErrors;
@@ -6987,6 +7031,7 @@ export const deletePendingAggregationRequest: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePendingAggregationRequest",
 }));
+
 export type DeleteRemediationConfigurationError =
   | InsufficientPermissionsException
   | InvalidParameterValueException
@@ -7014,6 +7059,7 @@ export const deleteRemediationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRemediationConfiguration",
 }));
+
 export type DeleteRemediationExceptionsError =
   | NoSuchRemediationExceptionException
   | CommonErrors;
@@ -7036,6 +7082,7 @@ export const deleteRemediationExceptions: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRemediationExceptions",
 }));
+
 export type DeleteResourceConfigError =
   | NoRunningConfigurationRecorderException
   | ValidationException
@@ -7056,6 +7103,7 @@ export const deleteResourceConfig: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourceConfig",
 }));
+
 export type DeleteRetentionConfigurationError =
   | InvalidParameterValueException
   | NoSuchRetentionConfigurationException
@@ -7079,6 +7127,7 @@ export const deleteRetentionConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRetentionConfiguration",
 }));
+
 export type DeleteServiceLinkedConfigurationRecorderError =
   | ConflictException
   | NoSuchConfigurationRecorderException
@@ -7114,6 +7163,7 @@ export const deleteServiceLinkedConfigurationRecorder: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteServiceLinkedConfigurationRecorder",
 }));
+
 export type DeleteStoredQueryError =
   | ResourceNotFoundException
   | ValidationException
@@ -7134,6 +7184,7 @@ export const deleteStoredQuery: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteStoredQuery",
 }));
+
 export type DeliverConfigSnapshotError =
   | NoAvailableConfigurationRecorderException
   | NoRunningConfigurationRecorderException
@@ -7170,6 +7221,7 @@ export const deliverConfigSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "DeliverConfigSnapshot",
 }));
+
 export type DescribeAggregateComplianceByConfigRulesError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -7222,6 +7274,7 @@ export const describeAggregateComplianceByConfigRules: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeAggregateComplianceByConformancePacksError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -7273,6 +7326,7 @@ export const describeAggregateComplianceByConformancePacks: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeAggregationAuthorizationsError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -7320,6 +7374,7 @@ export const describeAggregationAuthorizations: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeComplianceByConfigRuleError =
   | InvalidNextTokenException
   | InvalidParameterValueException
@@ -7394,6 +7449,7 @@ export const describeComplianceByConfigRule: API.OperationMethod<
     items: "ComplianceByConfigRules",
   } as const,
 }));
+
 export type DescribeComplianceByResourceError =
   | InvalidNextTokenException
   | InvalidParameterValueException
@@ -7464,6 +7520,7 @@ export const describeComplianceByResource: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeConfigRuleEvaluationStatusError =
   | InvalidNextTokenException
   | InvalidParameterValueException
@@ -7511,6 +7568,7 @@ export const describeConfigRuleEvaluationStatus: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeConfigRulesError =
   | InvalidNextTokenException
   | InvalidParameterValueException
@@ -7556,6 +7614,7 @@ export const describeConfigRules: API.OperationMethod<
     items: "ConfigRules",
   } as const,
 }));
+
 export type DescribeConfigurationAggregatorsError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -7607,6 +7666,7 @@ export const describeConfigurationAggregators: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeConfigurationAggregatorSourcesStatusError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -7656,6 +7716,7 @@ export const describeConfigurationAggregatorSourcesStatus: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeConfigurationRecordersError =
   | NoSuchConfigurationRecorderException
   | ValidationException
@@ -7681,6 +7742,7 @@ export const describeConfigurationRecorders: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConfigurationRecorders",
 }));
+
 export type DescribeConfigurationRecorderStatusError =
   | NoSuchConfigurationRecorderException
   | ValidationException
@@ -7709,6 +7771,7 @@ export const describeConfigurationRecorderStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConfigurationRecorderStatus",
 }));
+
 export type DescribeConformancePackComplianceError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -7761,6 +7824,7 @@ export const describeConformancePackCompliance: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeConformancePacksError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -7809,6 +7873,7 @@ export const describeConformancePacks: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeConformancePackStatusError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -7857,6 +7922,7 @@ export const describeConformancePackStatus: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeDeliveryChannelsError =
   | NoSuchDeliveryChannelException
   | CommonErrors;
@@ -7881,6 +7947,7 @@ export const describeDeliveryChannels: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDeliveryChannels",
 }));
+
 export type DescribeDeliveryChannelStatusError =
   | NoSuchDeliveryChannelException
   | CommonErrors;
@@ -7906,6 +7973,7 @@ export const describeDeliveryChannelStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDeliveryChannelStatus",
 }));
+
 export type DescribeOrganizationConfigRulesError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -7972,6 +8040,7 @@ export const describeOrganizationConfigRules: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeOrganizationConfigRuleStatusesError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -8027,6 +8096,7 @@ export const describeOrganizationConfigRuleStatuses: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeOrganizationConformancePacksError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -8093,6 +8163,7 @@ export const describeOrganizationConformancePacks: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeOrganizationConformancePackStatusesError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -8148,6 +8219,7 @@ export const describeOrganizationConformancePackStatuses: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribePendingAggregationRequestsError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -8194,6 +8266,7 @@ export const describePendingAggregationRequests: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeRemediationConfigurationsError = CommonErrors;
 /**
  * Returns the details of one or more remediation configurations.
@@ -8211,6 +8284,7 @@ export const describeRemediationConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRemediationConfigurations",
 }));
+
 export type DescribeRemediationExceptionsError =
   | InvalidNextTokenException
   | InvalidParameterValueException
@@ -8259,6 +8333,7 @@ export const describeRemediationExceptions: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeRemediationExecutionStatusError =
   | InvalidNextTokenException
   | InvalidParameterValueException
@@ -8306,6 +8381,7 @@ export const describeRemediationExecutionStatus: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeRetentionConfigurationsError =
   | InvalidNextTokenException
   | InvalidParameterValueException
@@ -8357,6 +8433,7 @@ export const describeRetentionConfigurations: API.OperationMethod<
     items: "RetentionConfigurations",
   } as const,
 }));
+
 export type DisassociateResourceTypesError =
   | ConflictException
   | NoSuchConfigurationRecorderException
@@ -8384,6 +8461,7 @@ export const disassociateResourceTypes: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateResourceTypes",
 }));
+
 export type GetAggregateComplianceDetailsByConfigRuleError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -8439,6 +8517,7 @@ export const getAggregateComplianceDetailsByConfigRule: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type GetAggregateConfigRuleComplianceSummaryError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -8491,6 +8570,7 @@ export const getAggregateConfigRuleComplianceSummary: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type GetAggregateConformancePackComplianceSummaryError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -8540,6 +8620,7 @@ export const getAggregateConformancePackComplianceSummary: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type GetAggregateDiscoveredResourceCountsError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -8590,6 +8671,7 @@ export const getAggregateDiscoveredResourceCounts: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type GetAggregateResourceConfigError =
   | NoSuchConfigurationAggregatorException
   | OversizedConfigurationItemException
@@ -8619,6 +8701,7 @@ export const getAggregateResourceConfig: API.OperationMethod<
   retry: Retry,
   operationName: "GetAggregateResourceConfig",
 }));
+
 export type GetComplianceDetailsByConfigRuleError =
   | InvalidNextTokenException
   | InvalidParameterValueException
@@ -8668,6 +8751,7 @@ export const getComplianceDetailsByConfigRule: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type GetComplianceDetailsByResourceError =
   | InvalidParameterValueException
   | CommonErrors;
@@ -8710,6 +8794,7 @@ export const getComplianceDetailsByResource: API.OperationMethod<
     items: "EvaluationResults",
   } as const,
 }));
+
 export type GetComplianceSummaryByConfigRuleError = CommonErrors;
 /**
  * Returns the number of Config rules that are compliant and
@@ -8728,6 +8813,7 @@ export const getComplianceSummaryByConfigRule: API.OperationMethod<
   retry: Retry,
   operationName: "GetComplianceSummaryByConfigRule",
 }));
+
 export type GetComplianceSummaryByResourceTypeError =
   | InvalidParameterValueException
   | CommonErrors;
@@ -8750,6 +8836,7 @@ export const getComplianceSummaryByResourceType: API.OperationMethod<
   retry: Retry,
   operationName: "GetComplianceSummaryByResourceType",
 }));
+
 export type GetConformancePackComplianceDetailsError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -8799,6 +8886,7 @@ export const getConformancePackComplianceDetails: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type GetConformancePackComplianceSummaryError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -8845,6 +8933,7 @@ export const getConformancePackComplianceSummary: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type GetCustomRulePolicyError = NoSuchConfigRuleException | CommonErrors;
 /**
  * Returns the policy definition containing the logic for your Config Custom Policy rule.
@@ -8862,6 +8951,7 @@ export const getCustomRulePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetCustomRulePolicy",
 }));
+
 export type GetDiscoveredResourceCountsError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -8949,6 +9039,7 @@ export const getDiscoveredResourceCounts: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type GetOrganizationConfigRuleDetailedStatusError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -8997,6 +9088,7 @@ export const getOrganizationConfigRuleDetailedStatus: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type GetOrganizationConformancePackDetailedStatusError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -9045,6 +9137,7 @@ export const getOrganizationConformancePackDetailedStatus: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type GetOrganizationCustomRulePolicyError =
   | NoSuchOrganizationConfigRuleException
   | OrganizationAccessDeniedException
@@ -9068,6 +9161,7 @@ export const getOrganizationCustomRulePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetOrganizationCustomRulePolicy",
 }));
+
 export type GetResourceConfigHistoryError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -9148,6 +9242,7 @@ export const getResourceConfigHistory: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type GetResourceEvaluationSummaryError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -9172,6 +9267,7 @@ export const getResourceEvaluationSummary: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourceEvaluationSummary",
 }));
+
 export type GetStoredQueryError =
   | ResourceNotFoundException
   | ValidationException
@@ -9192,6 +9288,7 @@ export const getStoredQuery: API.OperationMethod<
   retry: Retry,
   operationName: "GetStoredQuery",
 }));
+
 export type ListAggregateDiscoveredResourcesError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -9244,6 +9341,7 @@ export const listAggregateDiscoveredResources: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListConfigurationRecordersError =
   | ValidationException
   | CommonErrors;
@@ -9284,6 +9382,7 @@ export const listConfigurationRecorders: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListConformancePackComplianceScoresError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -9334,6 +9433,7 @@ export const listConformancePackComplianceScores: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListDiscoveredResourcesError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -9415,6 +9515,7 @@ export const listDiscoveredResources: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type ListResourceEvaluationsError =
   | InvalidNextTokenException
   | InvalidParameterValueException
@@ -9461,6 +9562,7 @@ export const listResourceEvaluations: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListStoredQueriesError =
   | InvalidNextTokenException
   | ValidationException
@@ -9501,6 +9603,7 @@ export const listStoredQueries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InvalidLimitException
   | InvalidNextTokenException
@@ -9549,6 +9652,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type PutAggregationAuthorizationError =
   | InvalidParameterValueException
   | CommonErrors;
@@ -9576,6 +9680,7 @@ export const putAggregationAuthorization: API.OperationMethod<
   retry: Retry,
   operationName: "PutAggregationAuthorization",
 }));
+
 export type PutConfigRuleError =
   | InsufficientPermissionsException
   | InvalidParameterValueException
@@ -9656,6 +9761,7 @@ export const putConfigRule: API.OperationMethod<
   retry: Retry,
   operationName: "PutConfigRule",
 }));
+
 export type PutConfigurationAggregatorError =
   | InvalidParameterValueException
   | InvalidRoleException
@@ -9708,6 +9814,7 @@ export const putConfigurationAggregator: API.OperationMethod<
   retry: Retry,
   operationName: "PutConfigurationAggregator",
 }));
+
 export type PutConfigurationRecorderError =
   | InvalidConfigurationRecorderNameException
   | InvalidRecordingGroupException
@@ -9764,6 +9871,7 @@ export const putConfigurationRecorder: API.OperationMethod<
   retry: Retry,
   operationName: "PutConfigurationRecorder",
 }));
+
 export type PutConformancePackError =
   | ConformancePackTemplateValidationException
   | InsufficientPermissionsException
@@ -9820,6 +9928,7 @@ export const putConformancePack: API.OperationMethod<
   retry: Retry,
   operationName: "PutConformancePack",
 }));
+
 export type PutDeliveryChannelError =
   | InsufficientDeliveryPolicyException
   | InvalidDeliveryChannelNameException
@@ -9867,6 +9976,7 @@ export const putDeliveryChannel: API.OperationMethod<
   retry: Retry,
   operationName: "PutDeliveryChannel",
 }));
+
 export type PutEvaluationsError =
   | InvalidParameterValueException
   | InvalidResultTokenException
@@ -9894,6 +10004,7 @@ export const putEvaluations: API.OperationMethod<
   retry: Retry,
   operationName: "PutEvaluations",
 }));
+
 export type PutExternalEvaluationError =
   | InvalidParameterValueException
   | NoSuchConfigRuleException
@@ -9915,6 +10026,7 @@ export const putExternalEvaluation: API.OperationMethod<
   retry: Retry,
   operationName: "PutExternalEvaluation",
 }));
+
 export type PutOrganizationConfigRuleError =
   | InsufficientPermissionsException
   | InvalidParameterValueException
@@ -9991,6 +10103,7 @@ export const putOrganizationConfigRule: API.OperationMethod<
   retry: Retry,
   operationName: "PutOrganizationConfigRule",
 }));
+
 export type PutOrganizationConformancePackError =
   | InsufficientPermissionsException
   | MaxNumberOfOrganizationConformancePacksExceededException
@@ -10060,6 +10173,7 @@ export const putOrganizationConformancePack: API.OperationMethod<
   retry: Retry,
   operationName: "PutOrganizationConformancePack",
 }));
+
 export type PutRemediationConfigurationsError =
   | InsufficientPermissionsException
   | InvalidParameterValueException
@@ -10107,6 +10221,7 @@ export const putRemediationConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "PutRemediationConfigurations",
 }));
+
 export type PutRemediationExceptionsError =
   | InsufficientPermissionsException
   | InvalidParameterValueException
@@ -10160,6 +10275,7 @@ export const putRemediationExceptions: API.OperationMethod<
   retry: Retry,
   operationName: "PutRemediationExceptions",
 }));
+
 export type PutResourceConfigError =
   | InsufficientPermissionsException
   | MaxActiveResourcesExceededException
@@ -10196,6 +10312,7 @@ export const putResourceConfig: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourceConfig",
 }));
+
 export type PutRetentionConfigurationError =
   | InvalidParameterValueException
   | MaxNumberOfRetentionConfigurationsExceededException
@@ -10228,6 +10345,7 @@ export const putRetentionConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutRetentionConfiguration",
 }));
+
 export type PutServiceLinkedConfigurationRecorderError =
   | ConflictException
   | InsufficientPermissionsException
@@ -10271,6 +10389,7 @@ export const putServiceLinkedConfigurationRecorder: API.OperationMethod<
   retry: Retry,
   operationName: "PutServiceLinkedConfigurationRecorder",
 }));
+
 export type PutStoredQueryError =
   | ResourceConcurrentModificationException
   | TooManyTagsException
@@ -10302,6 +10421,7 @@ export const putStoredQuery: API.OperationMethod<
   retry: Retry,
   operationName: "PutStoredQuery",
 }));
+
 export type SelectAggregateResourceConfigError =
   | InvalidExpressionException
   | InvalidLimitException
@@ -10362,6 +10482,7 @@ export const selectAggregateResourceConfig: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type SelectResourceConfigError =
   | InvalidExpressionException
   | InvalidLimitException
@@ -10413,6 +10534,7 @@ export const selectResourceConfig: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type StartConfigRulesEvaluationError =
   | InvalidParameterValueException
   | LimitExceededException
@@ -10479,6 +10601,7 @@ export const startConfigRulesEvaluation: API.OperationMethod<
   retry: Retry,
   operationName: "StartConfigRulesEvaluation",
 }));
+
 export type StartConfigurationRecorderError =
   | NoAvailableDeliveryChannelException
   | NoSuchConfigurationRecorderException
@@ -10507,6 +10630,7 @@ export const startConfigurationRecorder: API.OperationMethod<
   retry: Retry,
   operationName: "StartConfigurationRecorder",
 }));
+
 export type StartRemediationExecutionError =
   | InsufficientPermissionsException
   | InvalidParameterValueException
@@ -10534,6 +10658,7 @@ export const startRemediationExecution: API.OperationMethod<
   retry: Retry,
   operationName: "StartRemediationExecution",
 }));
+
 export type StartResourceEvaluationError =
   | IdempotentParameterMismatch
   | InvalidParameterValueException
@@ -10565,6 +10690,7 @@ export const startResourceEvaluation: API.OperationMethod<
   retry: Retry,
   operationName: "StartResourceEvaluation",
 }));
+
 export type StopConfigurationRecorderError =
   | NoSuchConfigurationRecorderException
   | UnmodifiableEntityException
@@ -10585,6 +10711,7 @@ export const stopConfigurationRecorder: API.OperationMethod<
   retry: Retry,
   operationName: "StopConfigurationRecorder",
 }));
+
 export type TagResourceError =
   | ResourceNotFoundException
   | TooManyTagsException
@@ -10611,6 +10738,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | ResourceNotFoundException
   | ValidationException

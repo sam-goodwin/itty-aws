@@ -87,24 +87,67 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    resourceId: S.String,
+    resourceType: S.String,
+    serviceCode: S.String,
+    quotaCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    serviceCode: S.optional(S.String),
+    quotaCode: S.optional(S.String),
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.suspend(() => ValidationExceptionReason).annotate({
+      identifier: "ValidationExceptionReason",
+    }),
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Identifier = string;
 export type UUID = string;
-export type String255 = string;
-export type TenantIdentifier = string;
-export type String2048 = string;
-export type Email = string | redacted.Redacted<string>;
-export type SensitiveString2048 = string | redacted.Redacted<string>;
-export type RedirectUri = string;
-export type Arn = string;
-export type TagKey = string;
-export type TagValue = string;
-export type String63 = string;
-export type String120 = string;
-export type String64 = string;
-export type MaxResults = number;
-
-//# Schemas
 export type TaskIdList = string[];
 export const TaskIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetUserAccessTasksRequest {
@@ -125,6 +168,9 @@ export const BatchGetUserAccessTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetUserAccessTasksRequest",
 }) as any as S.Schema<BatchGetUserAccessTasksRequest>;
+export type String255 = string;
+export type TenantIdentifier = string;
+export type String2048 = string;
 export type ResultStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
@@ -132,6 +178,9 @@ export type ResultStatus =
   | "EXPIRED"
   | (string & {});
 export const ResultStatus = /*@__PURE__*/ S.String;
+
+export type Email = string | redacted.Redacted<string>;
+export type SensitiveString2048 = string | redacted.Redacted<string>;
 export interface TaskError {
   errorCode?: string;
   errorMessage?: string;
@@ -185,26 +234,7 @@ export const BatchGetUserAccessTasksResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetUserAccessTasksResponse",
 }) as any as S.Schema<BatchGetUserAccessTasksResponse>;
-export type ValidationExceptionReason =
-  | "unknownOperation"
-  | "cannotParse"
-  | "fieldValidationFailed"
-  | "other"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type RedirectUri = string;
 export interface AuthRequest {
   redirectUri: string;
   code: string | redacted.Redacted<string>;
@@ -240,6 +270,7 @@ export const ConnectAppAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectAppAuthorizationRequest",
 }) as any as S.Schema<ConnectAppAuthorizationRequest>;
+export type Arn = string;
 export interface Tenant {
   tenantIdentifier: string;
   tenantDisplayName: string;
@@ -254,6 +285,7 @@ export type AppAuthorizationStatus =
   | "TokenAutoRotationFailed"
   | (string & {});
 export const AppAuthorizationStatus = /*@__PURE__*/ S.String;
+
 export interface AppAuthorizationSummary {
   appAuthorizationArn: string;
   appBundleArn: string;
@@ -308,6 +340,9 @@ export const Credential = /*@__PURE__*/ S.Union([
 ]);
 export type AuthType = "oauth2" | "apiKey" | (string & {});
 export const AuthType = /*@__PURE__*/ S.String;
+
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
@@ -353,6 +388,7 @@ export const CreateAppAuthorizationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAppAuthorizationRequest>;
 export type Persona = "admin" | "endUser" | (string & {});
 export const Persona = /*@__PURE__*/ S.String;
+
 export interface AppAuthorization {
   appAuthorizationArn: string;
   appBundleArn: string;
@@ -429,6 +465,7 @@ export const CreateAppBundleResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAppBundleResponse>;
 export type IngestionType = "auditLog" | (string & {});
 export const IngestionType = /*@__PURE__*/ S.String;
+
 export interface CreateIngestionRequest {
   appBundleIdentifier: string;
   app: string;
@@ -463,6 +500,7 @@ export const CreateIngestionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIngestionRequest>;
 export type IngestionState = "enabled" | "disabled" | (string & {});
 export const IngestionState = /*@__PURE__*/ S.String;
+
 export interface Ingestion {
   arn: string;
   appBundleArn: string;
@@ -495,8 +533,10 @@ export const CreateIngestionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIngestionResponse>;
 export type Schema = "ocsf" | "raw" | (string & {});
 export const Schema = /*@__PURE__*/ S.String;
+
 export type Format = "json" | "parquet" | (string & {});
 export const Format = /*@__PURE__*/ S.String;
+
 export interface AuditLogProcessingConfiguration {
   schema: Schema;
   format: Format;
@@ -512,6 +552,8 @@ export type ProcessingConfiguration = {
 export const ProcessingConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ auditLog: AuditLogProcessingConfiguration }),
 ]);
+export type String63 = string;
+export type String120 = string;
 export interface S3Bucket {
   bucketName: string;
   prefix?: string;
@@ -519,6 +561,7 @@ export interface S3Bucket {
 export const S3Bucket = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ bucketName: S.String, prefix: S.optional(S.String) }),
 ).annotate({ identifier: "S3Bucket" }) as any as S.Schema<S3Bucket>;
+export type String64 = string;
 export interface FirehoseStream {
   streamName: string;
 }
@@ -580,6 +623,7 @@ export const CreateIngestionDestinationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIngestionDestinationRequest>;
 export type IngestionDestinationStatus = "Active" | "Failed" | (string & {});
 export const IngestionDestinationStatus = /*@__PURE__*/ S.String;
+
 export interface IngestionDestination {
   arn: string;
   ingestionArn: string;
@@ -866,6 +910,7 @@ export const GetIngestionDestinationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIngestionDestinationResponse",
 }) as any as S.Schema<GetIngestionDestinationResponse>;
+export type MaxResults = number;
 export interface ListAppAuthorizationsRequest {
   appBundleIdentifier: string;
   maxResults?: number;
@@ -1317,63 +1362,27 @@ export const UpdateIngestionDestinationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateIngestionDestinationResponse",
 }) as any as S.Schema<UpdateIngestionDestinationResponse>;
+export type ValidationExceptionReason =
+  | "unknownOperation"
+  | "cannotParse"
+  | "fieldValidationFailed"
+  | "other"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    serviceCode: S.optional(S.String),
-    quotaCode: S.optional(S.String),
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: ValidationExceptionReason,
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    resourceId: S.String,
-    resourceType: S.String,
-    serviceCode: S.String,
-    quotaCode: S.String,
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type BatchGetUserAccessTasksError =
   | AccessDeniedException
   | InternalServerException
@@ -1406,6 +1415,7 @@ export const batchGetUserAccessTasks: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetUserAccessTasks",
 }));
+
 export type ConnectAppAuthorizationError =
   | AccessDeniedException
   | InternalServerException
@@ -1436,6 +1446,7 @@ export const connectAppAuthorization: API.OperationMethod<
   retry: Retry,
   operationName: "ConnectAppAuthorization",
 }));
+
 export type CreateAppAuthorizationError =
   | AccessDeniedException
   | ConflictException
@@ -1470,6 +1481,7 @@ export const createAppAuthorization: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAppAuthorization",
 }));
+
 export type CreateAppBundleError =
   | AccessDeniedException
   | ConflictException
@@ -1501,6 +1513,7 @@ export const createAppBundle: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAppBundle",
 }));
+
 export type CreateIngestionError =
   | AccessDeniedException
   | ConflictException
@@ -1532,6 +1545,7 @@ export const createIngestion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIngestion",
 }));
+
 export type CreateIngestionDestinationError =
   | AccessDeniedException
   | ConflictException
@@ -1564,6 +1578,7 @@ export const createIngestionDestination: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIngestionDestination",
 }));
+
 export type DeleteAppAuthorizationError =
   | AccessDeniedException
   | InternalServerException
@@ -1594,6 +1609,7 @@ export const deleteAppAuthorization: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAppAuthorization",
 }));
+
 export type DeleteAppBundleError =
   | AccessDeniedException
   | ConflictException
@@ -1624,6 +1640,7 @@ export const deleteAppBundle: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAppBundle",
 }));
+
 export type DeleteIngestionError =
   | AccessDeniedException
   | InternalServerException
@@ -1654,6 +1671,7 @@ export const deleteIngestion: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIngestion",
 }));
+
 export type DeleteIngestionDestinationError =
   | AccessDeniedException
   | InternalServerException
@@ -1688,6 +1706,7 @@ export const deleteIngestionDestination: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIngestionDestination",
 }));
+
 export type GetAppAuthorizationError =
   | AccessDeniedException
   | InternalServerException
@@ -1717,6 +1736,7 @@ export const getAppAuthorization: API.OperationMethod<
   retry: Retry,
   operationName: "GetAppAuthorization",
 }));
+
 export type GetAppBundleError =
   | AccessDeniedException
   | InternalServerException
@@ -1746,6 +1766,7 @@ export const getAppBundle: API.OperationMethod<
   retry: Retry,
   operationName: "GetAppBundle",
 }));
+
 export type GetIngestionError =
   | AccessDeniedException
   | InternalServerException
@@ -1775,6 +1796,7 @@ export const getIngestion: API.OperationMethod<
   retry: Retry,
   operationName: "GetIngestion",
 }));
+
 export type GetIngestionDestinationError =
   | AccessDeniedException
   | InternalServerException
@@ -1804,6 +1826,7 @@ export const getIngestionDestination: API.OperationMethod<
   retry: Retry,
   operationName: "GetIngestionDestination",
 }));
+
 export type ListAppAuthorizationsError =
   | AccessDeniedException
   | InternalServerException
@@ -1854,6 +1877,7 @@ export const listAppAuthorizations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAppBundlesError =
   | AccessDeniedException
   | InternalServerException
@@ -1902,6 +1926,7 @@ export const listAppBundles: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListIngestionDestinationsError =
   | AccessDeniedException
   | InternalServerException
@@ -1952,6 +1977,7 @@ export const listIngestionDestinations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListIngestionsError =
   | AccessDeniedException
   | InternalServerException
@@ -2002,6 +2028,7 @@ export const listIngestions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2031,6 +2058,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type StartIngestionError =
   | AccessDeniedException
   | ConflictException
@@ -2062,6 +2090,7 @@ export const startIngestion: API.OperationMethod<
   retry: Retry,
   operationName: "StartIngestion",
 }));
+
 export type StartUserAccessTasksError =
   | AccessDeniedException
   | InternalServerException
@@ -2094,6 +2123,7 @@ export const startUserAccessTasks: API.OperationMethod<
   retry: Retry,
   operationName: "StartUserAccessTasks",
 }));
+
 export type StopIngestionError =
   | AccessDeniedException
   | ConflictException
@@ -2125,6 +2155,7 @@ export const stopIngestion: API.OperationMethod<
   retry: Retry,
   operationName: "StopIngestion",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2154,6 +2185,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2183,6 +2215,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAppAuthorizationError =
   | AccessDeniedException
   | InternalServerException
@@ -2216,6 +2249,7 @@ export const updateAppAuthorization: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAppAuthorization",
 }));
+
 export type UpdateIngestionDestinationError =
   | AccessDeniedException
   | ConflictException

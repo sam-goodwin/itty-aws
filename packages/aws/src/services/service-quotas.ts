@@ -88,50 +88,91 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ExceptionMessage = string;
-export type RequestId = string;
-export type ServiceCode = string;
-export type QuotaCode = string;
-export type AwsRegion = string;
-export type AmazonResourceName = string;
-export type ExcludedService = string;
-export type QuotaName = string;
-export type ServiceName = string;
-export type QuotaArn = string;
-export type QuotaValue = number;
-export type QuotaUnit = string;
-export type QuotaAdjustable = boolean;
-export type GlobalQuota = boolean;
-export type QuotaMetricNamespace = string;
-export type QuotaMetricName = string;
-export type MetricDimensionName = string;
-export type MetricDimensionValue = string;
-export type Statistic = string;
-export type PeriodValue = number;
-export type ErrorMessage = string;
-export type QuotaContextScopeType = string;
-export type QuotaContextId = string;
-export type QuotaDescription = string;
-export type ReportId = string;
-export type NextToken = string;
-export type MaxResultsUtilization = number;
-export type TotalCount = number;
-export type UtilizationPct = number;
-export type DefaultValue = number;
-export type AppliedValue = number;
-export type ReportErrorCode = string;
-export type ReportErrorMessage = string;
-export type CustomerServiceEngagementId = string;
-export type Requester = string;
-export type MaxResults = number;
-export type TagKey = string;
-export type TagValue = string;
-export type SupportCaseAllowed = boolean;
-export type ExcludedLimit = string;
-export type ReportMessage = string;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class AWSServiceAccessNotEnabledException extends S.TaggedErrorClass<AWSServiceAccessNotEnabledException>()(
+  "AWSServiceAccessNotEnabledException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class DependencyAccessDeniedException extends S.TaggedErrorClass<DependencyAccessDeniedException>()(
+  "DependencyAccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class IllegalArgumentException extends S.TaggedErrorClass<IllegalArgumentException>()(
+  "IllegalArgumentException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidPaginationTokenException extends S.TaggedErrorClass<InvalidPaginationTokenException>()(
+  "InvalidPaginationTokenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidResourceStateException extends S.TaggedErrorClass<InvalidResourceStateException>()(
+  "InvalidResourceStateException",
+  { Message: S.optional(S.String) },
+  T.HttpError(405),
+).pipe(C.withBadRequestError) {}
+export class NoAvailableOrganizationException extends S.TaggedErrorClass<NoAvailableOrganizationException>()(
+  "NoAvailableOrganizationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class NoSuchResourceException extends S.TaggedErrorClass<NoSuchResourceException>()(
+  "NoSuchResourceException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class OrganizationNotInAllFeaturesModeException extends S.TaggedErrorClass<OrganizationNotInAllFeaturesModeException>()(
+  "OrganizationNotInAllFeaturesModeException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class QuotaExceededException extends S.TaggedErrorClass<QuotaExceededException>()(
+  "QuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
+  "ServiceException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ServiceQuotaTemplateNotInUseException extends S.TaggedErrorClass<ServiceQuotaTemplateNotInUseException>()(
+  "ServiceQuotaTemplateNotInUseException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TagPolicyViolationException extends S.TaggedErrorClass<TagPolicyViolationException>()(
+  "TagPolicyViolationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class TemplatesNotAvailableInRegionException extends S.TaggedErrorClass<TemplatesNotAvailableInRegionException>()(
+  "TemplatesNotAvailableInRegionException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export interface AssociateServiceQuotaTemplateRequest {}
 export const AssociateServiceQuotaTemplateRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -147,6 +188,7 @@ export const AssociateServiceQuotaTemplateResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociateServiceQuotaTemplateResponse",
 }) as any as S.Schema<AssociateServiceQuotaTemplateResponse>;
+export type RequestId = string;
 export interface CreateSupportCaseRequest {
   RequestId: string;
 }
@@ -163,6 +205,9 @@ export const CreateSupportCaseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSupportCaseResponse",
 }) as any as S.Schema<CreateSupportCaseResponse>;
+export type ServiceCode = string;
+export type QuotaCode = string;
+export type AwsRegion = string;
 export interface DeleteServiceQuotaIncreaseRequestFromTemplateRequest {
   ServiceCode: string;
   QuotaCode: string;
@@ -214,6 +259,7 @@ export type ServiceQuotaTemplateAssociationStatus =
   | "DISASSOCIATED"
   | (string & {});
 export const ServiceQuotaTemplateAssociationStatus = /*@__PURE__*/ S.String;
+
 export interface GetAssociationForServiceQuotaTemplateResponse {
   ServiceQuotaTemplateAssociationStatus?: ServiceQuotaTemplateAssociationStatus;
 }
@@ -238,10 +284,16 @@ export const GetAutoManagementConfigurationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetAutoManagementConfigurationRequest>;
 export type OptInLevel = "ACCOUNT" | (string & {});
 export const OptInLevel = /*@__PURE__*/ S.String;
+
 export type OptInType = "NotifyOnly" | "NotifyAndAdjust" | (string & {});
 export const OptInType = /*@__PURE__*/ S.String;
+
+export type AmazonResourceName = string;
 export type OptInStatus = "ENABLED" | "DISABLED" | (string & {});
 export const OptInStatus = /*@__PURE__*/ S.String;
+
+export type ExcludedService = string;
+export type QuotaName = string;
 export interface QuotaInfo {
   QuotaCode?: string;
   QuotaName?: string;
@@ -289,6 +341,16 @@ export const GetAWSDefaultServiceQuotaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAWSDefaultServiceQuotaRequest",
 }) as any as S.Schema<GetAWSDefaultServiceQuotaRequest>;
+export type ServiceName = string;
+export type QuotaArn = string;
+export type QuotaValue = number;
+export type QuotaUnit = string;
+export type QuotaAdjustable = boolean;
+export type GlobalQuota = boolean;
+export type QuotaMetricNamespace = string;
+export type QuotaMetricName = string;
+export type MetricDimensionName = string;
+export type MetricDimensionValue = string;
 export type MetricDimensionsMapDefinition = {
   [key: string]: string | undefined;
 };
@@ -296,6 +358,7 @@ export const MetricDimensionsMapDefinition = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type Statistic = string;
 export interface MetricInfo {
   MetricNamespace?: string;
   MetricName?: string;
@@ -310,6 +373,7 @@ export const MetricInfo = /*@__PURE__*/ S.suspend(() =>
     MetricStatisticRecommendation: S.optional(S.String),
   }),
 ).annotate({ identifier: "MetricInfo" }) as any as S.Schema<MetricInfo>;
+export type PeriodValue = number;
 export type PeriodUnit =
   | "MICROSECOND"
   | "MILLISECOND"
@@ -320,6 +384,7 @@ export type PeriodUnit =
   | "WEEK"
   | (string & {});
 export const PeriodUnit = /*@__PURE__*/ S.String;
+
 export interface QuotaPeriod {
   PeriodValue?: number;
   PeriodUnit?: PeriodUnit;
@@ -337,6 +402,8 @@ export type ErrorCode =
   | "SERVICE_QUOTA_NOT_AVAILABLE_ERROR"
   | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
+
+export type ErrorMessage = string;
 export interface ErrorReason {
   ErrorCode?: ErrorCode;
   ErrorMessage?: string;
@@ -349,8 +416,12 @@ export const ErrorReason = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ErrorReason" }) as any as S.Schema<ErrorReason>;
 export type AppliedLevelEnum = "ACCOUNT" | "RESOURCE" | "ALL" | (string & {});
 export const AppliedLevelEnum = /*@__PURE__*/ S.String;
+
 export type QuotaContextScope = "RESOURCE" | "ACCOUNT" | (string & {});
 export const QuotaContextScope = /*@__PURE__*/ S.String;
+
+export type QuotaContextScopeType = string;
+export type QuotaContextId = string;
 export interface QuotaContextInfo {
   ContextScope?: QuotaContextScope;
   ContextScopeType?: string;
@@ -365,6 +436,7 @@ export const QuotaContextInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "QuotaContextInfo",
 }) as any as S.Schema<QuotaContextInfo>;
+export type QuotaDescription = string;
 export interface ServiceQuota {
   ServiceCode?: string;
   ServiceName?: string;
@@ -409,6 +481,9 @@ export const GetAWSDefaultServiceQuotaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAWSDefaultServiceQuotaResponse",
 }) as any as S.Schema<GetAWSDefaultServiceQuotaResponse>;
+export type ReportId = string;
+export type NextToken = string;
+export type MaxResultsUtilization = number;
 export interface GetQuotaUtilizationReportRequest {
   ReportId: string;
   NextToken?: string;
@@ -432,6 +507,11 @@ export type ReportStatus =
   | "FAILED"
   | (string & {});
 export const ReportStatus = /*@__PURE__*/ S.String;
+
+export type TotalCount = number;
+export type UtilizationPct = number;
+export type DefaultValue = number;
+export type AppliedValue = number;
 export interface QuotaUtilizationInfo {
   QuotaCode?: string;
   ServiceCode?: string;
@@ -461,6 +541,8 @@ export const QuotaUtilizationInfo = /*@__PURE__*/ S.suspend(() =>
 export type QuotaUtilizationInfoList = QuotaUtilizationInfo[];
 export const QuotaUtilizationInfoList =
   /*@__PURE__*/ S.Array(QuotaUtilizationInfo);
+export type ReportErrorCode = string;
+export type ReportErrorMessage = string;
 export interface GetQuotaUtilizationReportResponse {
   ReportId?: string;
   Status?: ReportStatus;
@@ -498,6 +580,8 @@ export const GetRequestedServiceQuotaChangeRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetRequestedServiceQuotaChangeRequest>;
 export type RequestType = "AutomaticManagement" | (string & {});
 export const RequestType = /*@__PURE__*/ S.String;
+
+export type CustomerServiceEngagementId = string;
 export type RequestStatus =
   | "PENDING"
   | "CASE_OPENED"
@@ -508,6 +592,8 @@ export type RequestStatus =
   | "INVALID_REQUEST"
   | (string & {});
 export const RequestStatus = /*@__PURE__*/ S.String;
+
+export type Requester = string;
 export interface RequestedServiceQuotaChange {
   Id?: string;
   RequestType?: RequestType;
@@ -637,6 +723,7 @@ export const GetServiceQuotaIncreaseRequestFromTemplateResponse =
   ).annotate({
     identifier: "GetServiceQuotaIncreaseRequestFromTemplateResponse",
   }) as any as S.Schema<GetServiceQuotaIncreaseRequestFromTemplateResponse>;
+export type MaxResults = number;
 export interface ListAWSDefaultServiceQuotasRequest {
   ServiceCode: string;
   NextToken?: string;
@@ -864,6 +951,8 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -913,6 +1002,7 @@ export const PutServiceQuotaIncreaseRequestIntoTemplateResponse =
   ).annotate({
     identifier: "PutServiceQuotaIncreaseRequestIntoTemplateResponse",
   }) as any as S.Schema<PutServiceQuotaIncreaseRequestIntoTemplateResponse>;
+export type SupportCaseAllowed = boolean;
 export interface RequestServiceQuotaIncreaseRequest {
   ServiceCode: string;
   QuotaCode: string;
@@ -941,6 +1031,7 @@ export const RequestServiceQuotaIncreaseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RequestServiceQuotaIncreaseResponse",
 }) as any as S.Schema<RequestServiceQuotaIncreaseResponse>;
+export type ExcludedLimit = string;
 export type ExcludedQuotaList = string[];
 export const ExcludedQuotaList = /*@__PURE__*/ S.Array(S.String);
 export type ExclusionList = { [key: string]: string[] | undefined };
@@ -980,6 +1071,7 @@ export const StartQuotaUtilizationReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartQuotaUtilizationReportRequest",
 }) as any as S.Schema<StartQuotaUtilizationReportRequest>;
+export type ReportMessage = string;
 export interface StartQuotaUtilizationReportResponse {
   ReportId?: string;
   Status?: ReportStatus;
@@ -1068,95 +1160,7 @@ export const UpdateAutoManagementResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateAutoManagementResponse",
 }) as any as S.Schema<UpdateAutoManagementResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class AWSServiceAccessNotEnabledException extends S.TaggedErrorClass<AWSServiceAccessNotEnabledException>()(
-  "AWSServiceAccessNotEnabledException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class DependencyAccessDeniedException extends S.TaggedErrorClass<DependencyAccessDeniedException>()(
-  "DependencyAccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class NoAvailableOrganizationException extends S.TaggedErrorClass<NoAvailableOrganizationException>()(
-  "NoAvailableOrganizationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class OrganizationNotInAllFeaturesModeException extends S.TaggedErrorClass<OrganizationNotInAllFeaturesModeException>()(
-  "OrganizationNotInAllFeaturesModeException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
-  "ServiceException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class TemplatesNotAvailableInRegionException extends S.TaggedErrorClass<TemplatesNotAvailableInRegionException>()(
-  "TemplatesNotAvailableInRegionException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class IllegalArgumentException extends S.TaggedErrorClass<IllegalArgumentException>()(
-  "IllegalArgumentException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidResourceStateException extends S.TaggedErrorClass<InvalidResourceStateException>()(
-  "InvalidResourceStateException",
-  { Message: S.optional(S.String) },
-  T.HttpError(405),
-).pipe(C.withBadRequestError) {}
-export class NoSuchResourceException extends S.TaggedErrorClass<NoSuchResourceException>()(
-  "NoSuchResourceException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class ServiceQuotaTemplateNotInUseException extends S.TaggedErrorClass<ServiceQuotaTemplateNotInUseException>()(
-  "ServiceQuotaTemplateNotInUseException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidPaginationTokenException extends S.TaggedErrorClass<InvalidPaginationTokenException>()(
-  "InvalidPaginationTokenException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class QuotaExceededException extends S.TaggedErrorClass<QuotaExceededException>()(
-  "QuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class TagPolicyViolationException extends S.TaggedErrorClass<TagPolicyViolationException>()(
-  "TagPolicyViolationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type AssociateServiceQuotaTemplateError =
   | AccessDeniedException
   | AWSServiceAccessNotEnabledException
@@ -1195,6 +1199,7 @@ export const associateServiceQuotaTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateServiceQuotaTemplate",
 }));
+
 export type CreateSupportCaseError =
   | AccessDeniedException
   | DependencyAccessDeniedException
@@ -1231,6 +1236,7 @@ export const createSupportCase: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSupportCase",
 }));
+
 export type DeleteServiceQuotaIncreaseRequestFromTemplateError =
   | AccessDeniedException
   | AWSServiceAccessNotEnabledException
@@ -1269,6 +1275,7 @@ export const deleteServiceQuotaIncreaseRequestFromTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteServiceQuotaIncreaseRequestFromTemplate",
 }));
+
 export type DisassociateServiceQuotaTemplateError =
   | AccessDeniedException
   | AWSServiceAccessNotEnabledException
@@ -1306,6 +1313,7 @@ export const disassociateServiceQuotaTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateServiceQuotaTemplate",
 }));
+
 export type GetAssociationForServiceQuotaTemplateError =
   | AccessDeniedException
   | AWSServiceAccessNotEnabledException
@@ -1341,6 +1349,7 @@ export const getAssociationForServiceQuotaTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetAssociationForServiceQuotaTemplate",
 }));
+
 export type GetAutoManagementConfigurationError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -1371,6 +1380,7 @@ export const getAutoManagementConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetAutoManagementConfiguration",
 }));
+
 export type GetAWSDefaultServiceQuotaError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -1401,6 +1411,7 @@ export const getAWSDefaultServiceQuota: API.OperationMethod<
   retry: Retry,
   operationName: "GetAWSDefaultServiceQuota",
 }));
+
 export type GetQuotaUtilizationReportError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -1441,6 +1452,7 @@ export const getQuotaUtilizationReport: API.OperationMethod<
   retry: Retry,
   operationName: "GetQuotaUtilizationReport",
 }));
+
 export type GetRequestedServiceQuotaChangeError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -1470,6 +1482,7 @@ export const getRequestedServiceQuotaChange: API.OperationMethod<
   retry: Retry,
   operationName: "GetRequestedServiceQuotaChange",
 }));
+
 export type GetServiceQuotaError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -1501,6 +1514,7 @@ export const getServiceQuota: API.OperationMethod<
   retry: Retry,
   operationName: "GetServiceQuota",
 }));
+
 export type GetServiceQuotaIncreaseRequestFromTemplateError =
   | AccessDeniedException
   | AWSServiceAccessNotEnabledException
@@ -1539,6 +1553,7 @@ export const getServiceQuotaIncreaseRequestFromTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetServiceQuotaIncreaseRequestFromTemplate",
 }));
+
 export type ListAWSDefaultServiceQuotasError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -1592,6 +1607,7 @@ export const listAWSDefaultServiceQuotas: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRequestedServiceQuotaChangeHistoryError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -1646,6 +1662,7 @@ export const listRequestedServiceQuotaChangeHistory: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRequestedServiceQuotaChangeHistoryByQuotaError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -1699,6 +1716,7 @@ export const listRequestedServiceQuotaChangeHistoryByQuota: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListServiceQuotaIncreaseRequestsInTemplateError =
   | AccessDeniedException
   | AWSServiceAccessNotEnabledException
@@ -1755,6 +1773,7 @@ export const listServiceQuotaIncreaseRequestsInTemplate: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListServiceQuotasError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -1810,6 +1829,7 @@ export const listServiceQuotas: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListServicesError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -1860,6 +1880,7 @@ export const listServices: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -1889,6 +1910,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutServiceQuotaIncreaseRequestIntoTemplateError =
   | AccessDeniedException
   | AWSServiceAccessNotEnabledException
@@ -1928,6 +1950,7 @@ export const putServiceQuotaIncreaseRequestIntoTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "PutServiceQuotaIncreaseRequestIntoTemplate",
 }));
+
 export type RequestServiceQuotaIncreaseError =
   | AccessDeniedException
   | DependencyAccessDeniedException
@@ -1966,6 +1989,7 @@ export const requestServiceQuotaIncrease: API.OperationMethod<
   retry: Retry,
   operationName: "RequestServiceQuotaIncrease",
 }));
+
 export type StartAutoManagementError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -1997,6 +2021,7 @@ export const startAutoManagement: API.OperationMethod<
   retry: Retry,
   operationName: "StartAutoManagement",
 }));
+
 export type StartQuotaUtilizationReportError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -2034,6 +2059,7 @@ export const startQuotaUtilizationReport: API.OperationMethod<
   retry: Retry,
   operationName: "StartQuotaUtilizationReport",
 }));
+
 export type StopAutoManagementError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -2065,6 +2091,7 @@ export const stopAutoManagement: API.OperationMethod<
   retry: Retry,
   operationName: "StopAutoManagement",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -2099,6 +2126,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | IllegalArgumentException
@@ -2129,6 +2157,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAutoManagementError =
   | AccessDeniedException
   | IllegalArgumentException

@@ -85,171 +85,57 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String), Reason: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    ResourceId: S.optional(S.String),
+  },
+) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.Retryable(),
+).pipe(C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    ResourceId: S.optional(S.String),
+  },
+) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String), Reason: S.optional(S.String) },
+) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.Retryable({ throttling: true }),
+).pipe(C.withRetryableError, C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(S.String),
+    Fields: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+) {}
 export type PoolIdOrArn = string;
 export type PhoneOrSenderIdOrArn = string;
 export type IsoCountryCode = string;
 export type ClientToken = string;
-export type AccessDeniedExceptionReason = string;
-export type ConflictExceptionReason = string;
-export type ResourceType = string;
-export type ServiceQuotaExceededExceptionReason = string;
-export type ValidationExceptionReason = string;
-export type ProtectConfigurationIdOrArn = string;
-export type ConfigurationSetNameOrArn = string;
-export type ConfigurationSetName = string;
-export type ProtectConfigurationArn = string;
-export type ProtectConfigurationId = string;
-export type CarrierLookupInputPhoneNumberType = string;
-export type E164PhoneNumberType = string;
-export type DialingCountryCodeType = string;
-export type MCCType = string;
-export type MNCType = string;
-export type PhoneNumberType = string;
-export type TagKey = string;
-export type TagValue = string;
-export type EventDestinationName = string;
-export type EventType = string;
-export type IamRoleArn = string;
-export type LogGroupArn = string;
-export type DeliveryStreamArn = string;
-export type SnsTopicArn = string;
-export type NotifyConfigurationDisplayName = string;
-export type NotifyConfigurationUseCase = string;
-export type NotifyTemplateId = string;
-export type NumberCapability = string;
-export type NotifyConfigurationArn = string;
-export type NotifyConfigurationId = string;
-export type NotifyConfigurationTier = string;
-export type TierUpgradeStatus = string;
-export type NotifyConfigurationStatus = string;
-export type OptOutListName = string;
-export type MessageType = string;
-export type PoolStatus = string;
-export type TwoWayChannelArn = string;
-export type OptOutListNameOrArn = string;
-export type RcsAgentStatus = string;
-export type TwoWayMediaS3BucketName = string;
-export type TwoWayMediaS3KeyPrefix = string;
-export type RcsEventType = string;
-export type RegistrationType = string;
-export type RegistrationStatus = string;
-export type RegistrationVersionNumber = number;
-export type RegistrationIdOrArn = string;
-export type ResourceIdOrArn = string;
-export type PhoneNumber = string;
-export type AttachmentBody = Uint8Array;
-export type AttachmentUrl = string;
-export type AttachmentStatus = string;
-export type RegistrationVersionStatus = string;
-export type RcsAgentIdOrArn = string;
-export type VerificationStatus = string;
-export type SenderId = string;
-export type PhoneOrPoolIdOrArn = string;
-export type Keyword = string;
-export type KeywordMessage = string;
-export type KeywordAction = string;
-export type MonthlyLimit = number;
-export type NotifyConfigurationIdOrArn = string;
-export type ProtectConfigurationRuleOverrideAction = string;
-export type RegistrationAttachmentIdOrArn = string;
-export type AttachmentUploadErrorReason = string;
-export type FieldPath = string;
-export type SelectChoice = string;
-export type TextValue = string;
-export type AmazonResourceName = string;
-export type ResourcePolicy = string;
-export type VerifiedDestinationNumberIdOrArn = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type AccountAttributeName = string;
-export type AccountLimitName = string;
-export type ConfigurationSetFilterName = string;
-export type FilterValue = string;
-export type KeywordFilterName = string;
-export type NotifyConfigurationFilterName = string;
-export type NotifyTemplateFilterName = string;
-export type NotifyTemplateVersion = number;
-export type NotifyTemplateType = string;
-export type NotifyTemplateStatus = string;
-export type NotifyLanguageCode = string;
-export type TemplateContent = string;
-export type TemplateVariableType = string;
-export type TemplateVariableSource = string;
-export type VoiceId = string;
-export type OptedOutFilterName = string;
-export type Owner = string;
-export type PhoneNumberIdOrArn = string;
-export type PhoneNumberFilterName = string;
-export type NumberStatus = string;
-export type NumberType = string;
-export type PoolFilterName = string;
-export type ProtectConfigurationFilterName = string;
-export type CountryLaunchStatusFilterName = string;
-export type CountryLaunchStatus = string;
-export type CarrierStatus = string;
-export type RcsAgentFilterName = string;
-export type TestingAgentStatus = string;
-export type RegistrationAttachmentFilterName = string;
-export type SectionPath = string;
-export type FieldType = string;
-export type FieldRequirement = string;
-export type RegistrationFilterName = string;
-export type RegistrationTypeFilterName = string;
-export type RegistrationAssociationBehavior = string;
-export type RegistrationDisassociationBehavior = string;
-export type RegistrationVersionFilterName = string;
-export type SenderIdOrArn = string;
-export type SenderIdFilterName = string;
-export type SpendLimitName = string;
-export type VerifiedDestinationNumberFilterName = string;
-export type ProtectStatus = string;
-export type PoolOriginationIdentitiesFilterName = string;
-export type ProtectConfigurationRuleSetNumberOverrideFilterName = string;
-export type RegistrationAssociationFilterName = string;
-export type MessageId = string;
-export type MessageFeedbackStatus = string;
-export type RequestableNumberType = string;
-export type VerificationChannel = string;
-export type LanguageCode = string;
-export type VerificationMessageOriginationIdentity = string;
-export type ContextKey = string;
-export type ContextValue = string;
-export type DestinationCountryParameterKey = string;
-export type DestinationCountryParameterValue = string;
-export type MediaMessageOriginationIdentity = string;
-export type TextMessageBody = string;
-export type MediaUrlValue = string;
-export type MaxPrice = string;
-export type TimeToLive = number;
-export type TemplateVariableName = string;
-export type TemplateVariableValue = string;
-export type RcsMessageOriginationIdentity = string;
-export type RcsTextBody = string;
-export type RcsMediaUrl = string;
-export type RcsCardTitle = string;
-export type RcsCardDescription = string;
-export type RcsSuggestedActionText = string;
-export type RcsPostbackData = string;
-export type RcsOpenUrlValue = string;
-export type RcsLocationLabel = string;
-export type RcsCalendarEventTitle = string;
-export type RcsCalendarEventDescription = string;
-export type RcsTimeToLive = number;
-export type RcsMessageTrafficType = string;
-export type RcsFallbackChannel = string;
-export type RcsFallbackMessageBody = string;
-export type RcsFallbackOriginationIdentity = string;
-export type TextMessageOriginationIdentity = string;
-export type VoiceMessageOriginationIdentity = string;
-export type VoiceMessageBody = string;
-export type VoiceMessageBodyTextType = string;
-export type NotifyPoolIdOrUnset = string;
-export type TwoWayMediaS3BucketNameOrUnset = string;
-export type IamRoleArnOrUnset = string;
-export type VerificationCode = string;
-
-//# Schemas
 export interface AssociateOriginationIdentityRequest {
   PoolId: string;
   OriginationIdentity: string;
@@ -286,19 +172,8 @@ export const AssociateOriginationIdentityResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateOriginationIdentityResult",
 }) as any as S.Schema<AssociateOriginationIdentityResult>;
-export interface ValidationExceptionField {
-  Name: string;
-  Message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type ProtectConfigurationIdOrArn = string;
+export type ConfigurationSetNameOrArn = string;
 export interface AssociateProtectConfigurationRequest {
   ProtectConfigurationId: string;
   ConfigurationSetName: string;
@@ -314,6 +189,9 @@ export const AssociateProtectConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociateProtectConfigurationRequest",
 }) as any as S.Schema<AssociateProtectConfigurationRequest>;
+export type ConfigurationSetName = string;
+export type ProtectConfigurationArn = string;
+export type ProtectConfigurationId = string;
 export interface AssociateProtectConfigurationResult {
   ConfigurationSetArn: string;
   ConfigurationSetName: string;
@@ -330,6 +208,7 @@ export const AssociateProtectConfigurationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateProtectConfigurationResult",
 }) as any as S.Schema<AssociateProtectConfigurationResult>;
+export type CarrierLookupInputPhoneNumberType = string;
 export interface CarrierLookupRequest {
   PhoneNumber: string;
 }
@@ -340,6 +219,11 @@ export const CarrierLookupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CarrierLookupRequest",
 }) as any as S.Schema<CarrierLookupRequest>;
+export type E164PhoneNumberType = string;
+export type DialingCountryCodeType = string;
+export type MCCType = string;
+export type MNCType = string;
+export type PhoneNumberType = string;
 export interface CarrierLookupResult {
   E164PhoneNumber: string;
   DialingCountryCode?: string;
@@ -364,6 +248,8 @@ export const CarrierLookupResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CarrierLookupResult",
 }) as any as S.Schema<CarrierLookupResult>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -407,8 +293,12 @@ export const CreateConfigurationSetResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConfigurationSetResult",
 }) as any as S.Schema<CreateConfigurationSetResult>;
+export type EventDestinationName = string;
+export type EventType = string;
 export type EventTypeList = string[];
 export const EventTypeList = /*@__PURE__*/ S.Array(S.String);
+export type IamRoleArn = string;
+export type LogGroupArn = string;
 export interface CloudWatchLogsDestination {
   IamRoleArn: string;
   LogGroupArn: string;
@@ -418,6 +308,7 @@ export const CloudWatchLogsDestination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CloudWatchLogsDestination",
 }) as any as S.Schema<CloudWatchLogsDestination>;
+export type DeliveryStreamArn = string;
 export interface KinesisFirehoseDestination {
   IamRoleArn: string;
   DeliveryStreamArn: string;
@@ -427,6 +318,7 @@ export const KinesisFirehoseDestination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KinesisFirehoseDestination",
 }) as any as S.Schema<KinesisFirehoseDestination>;
+export type SnsTopicArn = string;
 export interface SnsDestination {
   TopicArn: string;
 }
@@ -491,8 +383,12 @@ export const CreateEventDestinationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEventDestinationResult",
 }) as any as S.Schema<CreateEventDestinationResult>;
+export type NotifyConfigurationDisplayName = string;
+export type NotifyConfigurationUseCase = string;
+export type NotifyTemplateId = string;
 export type IsoCountryCodeList = string[];
 export const IsoCountryCodeList = /*@__PURE__*/ S.Array(S.String);
+export type NumberCapability = string;
 export type NotifyEnabledChannelsList = string[];
 export const NotifyEnabledChannelsList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateNotifyConfigurationRequest {
@@ -523,6 +419,11 @@ export const CreateNotifyConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNotifyConfigurationRequest",
 }) as any as S.Schema<CreateNotifyConfigurationRequest>;
+export type NotifyConfigurationArn = string;
+export type NotifyConfigurationId = string;
+export type NotifyConfigurationTier = string;
+export type TierUpgradeStatus = string;
+export type NotifyConfigurationStatus = string;
 export interface CreateNotifyConfigurationResult {
   NotifyConfigurationArn: string;
   NotifyConfigurationId: string;
@@ -561,6 +462,7 @@ export const CreateNotifyConfigurationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNotifyConfigurationResult",
 }) as any as S.Schema<CreateNotifyConfigurationResult>;
+export type OptOutListName = string;
 export interface CreateOptOutListRequest {
   OptOutListName: string;
   Tags?: Tag[];
@@ -595,6 +497,7 @@ export const CreateOptOutListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOptOutListResult",
 }) as any as S.Schema<CreateOptOutListResult>;
+export type MessageType = string;
 export interface CreatePoolRequest {
   OriginationIdentity: string;
   IsoCountryCode?: string;
@@ -617,6 +520,8 @@ export const CreatePoolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePoolRequest",
 }) as any as S.Schema<CreatePoolRequest>;
+export type PoolStatus = string;
+export type TwoWayChannelArn = string;
 export interface CreatePoolResult {
   PoolArn?: string;
   PoolId?: string;
@@ -689,6 +594,7 @@ export const CreateProtectConfigurationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProtectConfigurationResult",
 }) as any as S.Schema<CreateProtectConfigurationResult>;
+export type OptOutListNameOrArn = string;
 export interface CreateRcsAgentRequest {
   DeletionProtectionEnabled?: boolean;
   OptOutListName?: string;
@@ -707,6 +613,10 @@ export const CreateRcsAgentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRcsAgentRequest",
 }) as any as S.Schema<CreateRcsAgentRequest>;
+export type RcsAgentStatus = string;
+export type TwoWayMediaS3BucketName = string;
+export type TwoWayMediaS3KeyPrefix = string;
+export type RcsEventType = string;
 export type RcsEventTypeList = string[];
 export const RcsEventTypeList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateRcsAgentResult {
@@ -747,6 +657,7 @@ export const CreateRcsAgentResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRcsAgentResult",
 }) as any as S.Schema<CreateRcsAgentResult>;
+export type RegistrationType = string;
 export interface CreateRegistrationRequest {
   RegistrationType: string;
   Tags?: Tag[];
@@ -763,6 +674,8 @@ export const CreateRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRegistrationRequest",
 }) as any as S.Schema<CreateRegistrationRequest>;
+export type RegistrationStatus = string;
+export type RegistrationVersionNumber = number;
 export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -792,6 +705,8 @@ export const CreateRegistrationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRegistrationResult",
 }) as any as S.Schema<CreateRegistrationResult>;
+export type RegistrationIdOrArn = string;
+export type ResourceIdOrArn = string;
 export interface CreateRegistrationAssociationRequest {
   RegistrationId: string;
   ResourceId: string;
@@ -804,6 +719,7 @@ export const CreateRegistrationAssociationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateRegistrationAssociationRequest",
 }) as any as S.Schema<CreateRegistrationAssociationRequest>;
+export type PhoneNumber = string;
 export interface CreateRegistrationAssociationResult {
   RegistrationArn: string;
   RegistrationId: string;
@@ -828,6 +744,8 @@ export const CreateRegistrationAssociationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRegistrationAssociationResult",
 }) as any as S.Schema<CreateRegistrationAssociationResult>;
+export type AttachmentBody = Uint8Array;
+export type AttachmentUrl = string;
 export interface CreateRegistrationAttachmentRequest {
   AttachmentBody?: Uint8Array;
   AttachmentUrl?: string;
@@ -846,6 +764,7 @@ export const CreateRegistrationAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRegistrationAttachmentRequest",
 }) as any as S.Schema<CreateRegistrationAttachmentRequest>;
+export type AttachmentStatus = string;
 export interface CreateRegistrationAttachmentResult {
   RegistrationAttachmentArn: string;
   RegistrationAttachmentId: string;
@@ -874,6 +793,7 @@ export const CreateRegistrationVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRegistrationVersionRequest",
 }) as any as S.Schema<CreateRegistrationVersionRequest>;
+export type RegistrationVersionStatus = string;
 export interface RegistrationVersionStatusHistory {
   DraftTimestamp: Date;
   SubmittedTimestamp?: Date;
@@ -938,6 +858,7 @@ export const CreateRegistrationVersionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRegistrationVersionResult",
 }) as any as S.Schema<CreateRegistrationVersionResult>;
+export type RcsAgentIdOrArn = string;
 export interface CreateVerifiedDestinationNumberRequest {
   DestinationPhoneNumber: string;
   RcsAgentId?: string;
@@ -957,6 +878,7 @@ export const CreateVerifiedDestinationNumberRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateVerifiedDestinationNumberRequest",
 }) as any as S.Schema<CreateVerifiedDestinationNumberRequest>;
+export type VerificationStatus = string;
 export interface CreateVerifiedDestinationNumberResult {
   VerifiedDestinationNumberArn: string;
   VerifiedDestinationNumberId: string;
@@ -1014,6 +936,7 @@ export const DeleteConfigurationSetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteConfigurationSetRequest>;
 export type EventDestinationList = EventDestination[];
 export const EventDestinationList = /*@__PURE__*/ S.Array(EventDestination);
+export type SenderId = string;
 export interface DeleteConfigurationSetResult {
   ConfigurationSetArn?: string;
   ConfigurationSetName?: string;
@@ -1114,6 +1037,8 @@ export const DeleteEventDestinationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteEventDestinationResult",
 }) as any as S.Schema<DeleteEventDestinationResult>;
+export type PhoneOrPoolIdOrArn = string;
+export type Keyword = string;
 export interface DeleteKeywordRequest {
   OriginationIdentity: string;
   Keyword: string;
@@ -1125,6 +1050,8 @@ export const DeleteKeywordRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteKeywordRequest",
 }) as any as S.Schema<DeleteKeywordRequest>;
+export type KeywordMessage = string;
+export type KeywordAction = string;
 export interface DeleteKeywordResult {
   OriginationIdentityArn?: string;
   OriginationIdentity?: string;
@@ -1152,6 +1079,7 @@ export const DeleteMediaMessageSpendLimitOverrideRequest =
   ).annotate({
     identifier: "DeleteMediaMessageSpendLimitOverrideRequest",
   }) as any as S.Schema<DeleteMediaMessageSpendLimitOverrideRequest>;
+export type MonthlyLimit = number;
 export interface DeleteMediaMessageSpendLimitOverrideResult {
   MonthlyLimit?: number;
 }
@@ -1161,6 +1089,7 @@ export const DeleteMediaMessageSpendLimitOverrideResult =
   ).annotate({
     identifier: "DeleteMediaMessageSpendLimitOverrideResult",
   }) as any as S.Schema<DeleteMediaMessageSpendLimitOverrideResult>;
+export type NotifyConfigurationIdOrArn = string;
 export interface DeleteNotifyConfigurationRequest {
   NotifyConfigurationId: string;
 }
@@ -1367,6 +1296,7 @@ export const DeleteProtectConfigurationRuleSetNumberOverrideRequest =
   ).annotate({
     identifier: "DeleteProtectConfigurationRuleSetNumberOverrideRequest",
   }) as any as S.Schema<DeleteProtectConfigurationRuleSetNumberOverrideRequest>;
+export type ProtectConfigurationRuleOverrideAction = string;
 export interface DeleteProtectConfigurationRuleSetNumberOverrideResult {
   ProtectConfigurationArn: string;
   ProtectConfigurationId: string;
@@ -1485,6 +1415,7 @@ export const DeleteRegistrationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteRegistrationResult",
 }) as any as S.Schema<DeleteRegistrationResult>;
+export type RegistrationAttachmentIdOrArn = string;
 export interface DeleteRegistrationAttachmentRequest {
   RegistrationAttachmentId: string;
 }
@@ -1495,6 +1426,7 @@ export const DeleteRegistrationAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteRegistrationAttachmentRequest",
 }) as any as S.Schema<DeleteRegistrationAttachmentRequest>;
+export type AttachmentUploadErrorReason = string;
 export interface DeleteRegistrationAttachmentResult {
   RegistrationAttachmentArn: string;
   RegistrationAttachmentId: string;
@@ -1513,6 +1445,7 @@ export const DeleteRegistrationAttachmentResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteRegistrationAttachmentResult",
 }) as any as S.Schema<DeleteRegistrationAttachmentResult>;
+export type FieldPath = string;
 export interface DeleteRegistrationFieldValueRequest {
   RegistrationId: string;
   FieldPath: string;
@@ -1524,8 +1457,10 @@ export const DeleteRegistrationFieldValueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteRegistrationFieldValueRequest",
 }) as any as S.Schema<DeleteRegistrationFieldValueRequest>;
+export type SelectChoice = string;
 export type SelectChoiceList = string[];
 export const SelectChoiceList = /*@__PURE__*/ S.Array(S.String);
+export type TextValue = string;
 export interface DeleteRegistrationFieldValueResult {
   RegistrationArn: string;
   RegistrationId: string;
@@ -1548,6 +1483,7 @@ export const DeleteRegistrationFieldValueResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteRegistrationFieldValueResult",
 }) as any as S.Schema<DeleteRegistrationFieldValueResult>;
+export type AmazonResourceName = string;
 export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
 }
@@ -1558,6 +1494,7 @@ export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteResourcePolicyRequest",
 }) as any as S.Schema<DeleteResourcePolicyRequest>;
+export type ResourcePolicy = string;
 export interface DeleteResourcePolicyResult {
   ResourceArn?: string;
   Policy?: string;
@@ -1592,6 +1529,7 @@ export const DeleteTextMessageSpendLimitOverrideResult =
   ).annotate({
     identifier: "DeleteTextMessageSpendLimitOverrideResult",
   }) as any as S.Schema<DeleteTextMessageSpendLimitOverrideResult>;
+export type VerifiedDestinationNumberIdOrArn = string;
 export interface DeleteVerifiedDestinationNumberRequest {
   VerifiedDestinationNumberId: string;
 }
@@ -1638,6 +1576,8 @@ export const DeleteVoiceMessageSpendLimitOverrideResult =
   ).annotate({
     identifier: "DeleteVoiceMessageSpendLimitOverrideResult",
   }) as any as S.Schema<DeleteVoiceMessageSpendLimitOverrideResult>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface DescribeAccountAttributesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -1652,6 +1592,7 @@ export const DescribeAccountAttributesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAccountAttributesRequest",
 }) as any as S.Schema<DescribeAccountAttributesRequest>;
+export type AccountAttributeName = string;
 export interface AccountAttribute {
   Name: string;
   Value: string;
@@ -1689,6 +1630,7 @@ export const DescribeAccountLimitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAccountLimitsRequest",
 }) as any as S.Schema<DescribeAccountLimitsRequest>;
+export type AccountLimitName = string;
 export interface AccountLimit {
   Name: string;
   Used: number;
@@ -1713,6 +1655,8 @@ export const DescribeAccountLimitsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeAccountLimitsResult>;
 export type ConfigurationSetNameList = string[];
 export const ConfigurationSetNameList = /*@__PURE__*/ S.Array(S.String);
+export type ConfigurationSetFilterName = string;
+export type FilterValue = string;
 export type FilterValueList = string[];
 export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface ConfigurationSetFilter {
@@ -1788,6 +1732,7 @@ export const DescribeConfigurationSetsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeConfigurationSetsResult>;
 export type KeywordList = string[];
 export const KeywordList = /*@__PURE__*/ S.Array(S.String);
+export type KeywordFilterName = string;
 export interface KeywordFilter {
   Name: string;
   Values: string[];
@@ -1851,6 +1796,7 @@ export const DescribeKeywordsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeKeywordsResult>;
 export type NotifyConfigurationIdList = string[];
 export const NotifyConfigurationIdList = /*@__PURE__*/ S.Array(S.String);
+export type NotifyConfigurationFilterName = string;
 export interface NotifyConfigurationFilter {
   Name: string;
   Values: string[];
@@ -1937,6 +1883,7 @@ export const DescribeNotifyConfigurationsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeNotifyConfigurationsResult>;
 export type NotifyTemplateIdList = string[];
 export const NotifyTemplateIdList = /*@__PURE__*/ S.Array(S.String);
+export type NotifyTemplateFilterName = string;
 export interface NotifyTemplateFilter {
   Name: string;
   Values: string[];
@@ -1967,10 +1914,17 @@ export const DescribeNotifyTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeNotifyTemplatesRequest",
 }) as any as S.Schema<DescribeNotifyTemplatesRequest>;
+export type NotifyTemplateVersion = number;
+export type NotifyTemplateType = string;
 export type NumberCapabilityList = string[];
 export const NumberCapabilityList = /*@__PURE__*/ S.Array(S.String);
 export type NotifyConfigurationTierList = string[];
 export const NotifyConfigurationTierList = /*@__PURE__*/ S.Array(S.String);
+export type NotifyTemplateStatus = string;
+export type NotifyLanguageCode = string;
+export type TemplateContent = string;
+export type TemplateVariableType = string;
+export type TemplateVariableSource = string;
 export interface TemplateVariableMetadata {
   Type: string;
   Required: boolean;
@@ -2006,6 +1960,7 @@ export const TemplateVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
   TemplateVariableMetadata.pipe(S.optional),
 );
+export type VoiceId = string;
 export type VoiceIdList = string[];
 export const VoiceIdList = /*@__PURE__*/ S.Array(S.String);
 export interface NotifyTemplateInformation {
@@ -2058,6 +2013,7 @@ export const DescribeNotifyTemplatesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeNotifyTemplatesResult>;
 export type OptedOutNumberList = string[];
 export const OptedOutNumberList = /*@__PURE__*/ S.Array(S.String);
+export type OptedOutFilterName = string;
 export interface OptedOutFilter {
   Name: string;
   Values: string[];
@@ -2123,6 +2079,7 @@ export const DescribeOptedOutNumbersResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeOptedOutNumbersResult>;
 export type OptOutListNameList = string[];
 export const OptOutListNameList = /*@__PURE__*/ S.Array(S.String);
+export type Owner = string;
 export interface DescribeOptOutListsRequest {
   OptOutListNames?: string[];
   NextToken?: string;
@@ -2171,8 +2128,10 @@ export const DescribeOptOutListsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeOptOutListsResult",
 }) as any as S.Schema<DescribeOptOutListsResult>;
+export type PhoneNumberIdOrArn = string;
 export type PhoneNumberIdList = string[];
 export const PhoneNumberIdList = /*@__PURE__*/ S.Array(S.String);
+export type PhoneNumberFilterName = string;
 export interface PhoneNumberFilter {
   Name: string;
   Values: string[];
@@ -2204,6 +2163,8 @@ export const DescribePhoneNumbersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePhoneNumbersRequest",
 }) as any as S.Schema<DescribePhoneNumbersRequest>;
+export type NumberStatus = string;
+export type NumberType = string;
 export interface PhoneNumberInformation {
   PhoneNumberArn: string;
   PhoneNumberId?: string;
@@ -2268,6 +2229,7 @@ export const DescribePhoneNumbersResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribePhoneNumbersResult>;
 export type PoolIdList = string[];
 export const PoolIdList = /*@__PURE__*/ S.Array(S.String);
+export type PoolFilterName = string;
 export interface PoolFilter {
   Name: string;
   Values: string[];
@@ -2345,6 +2307,7 @@ export const DescribePoolsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribePoolsResult>;
 export type ProtectConfigurationIdList = string[];
 export const ProtectConfigurationIdList = /*@__PURE__*/ S.Array(S.String);
+export type ProtectConfigurationFilterName = string;
 export interface ProtectConfigurationFilter {
   Name: string;
   Values: string[];
@@ -2412,6 +2375,7 @@ export const DescribeProtectConfigurationsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeProtectConfigurationsResult",
 }) as any as S.Schema<DescribeProtectConfigurationsResult>;
+export type CountryLaunchStatusFilterName = string;
 export interface CountryLaunchStatusFilter {
   Name: string;
   Values: string[];
@@ -2446,6 +2410,8 @@ export const DescribeRcsAgentCountryLaunchStatusRequest =
   ).annotate({
     identifier: "DescribeRcsAgentCountryLaunchStatusRequest",
   }) as any as S.Schema<DescribeRcsAgentCountryLaunchStatusRequest>;
+export type CountryLaunchStatus = string;
+export type CarrierStatus = string;
 export interface CarrierStatusInformation {
   CarrierName: string;
   Status: string;
@@ -2501,6 +2467,7 @@ export const DescribeRcsAgentCountryLaunchStatusResult =
   }) as any as S.Schema<DescribeRcsAgentCountryLaunchStatusResult>;
 export type RcsAgentIdList = string[];
 export const RcsAgentIdList = /*@__PURE__*/ S.Array(S.String);
+export type RcsAgentFilterName = string;
 export interface RcsAgentFilter {
   Name: string;
   Values: string[];
@@ -2530,6 +2497,7 @@ export const DescribeRcsAgentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRcsAgentsRequest",
 }) as any as S.Schema<DescribeRcsAgentsRequest>;
+export type TestingAgentStatus = string;
 export interface TestingAgentInformation {
   Status: string;
   TestingAgentId?: string;
@@ -2601,6 +2569,7 @@ export const DescribeRcsAgentsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeRcsAgentsResult>;
 export type RegistrationAttachmentIdList = string[];
 export const RegistrationAttachmentIdList = /*@__PURE__*/ S.Array(S.String);
+export type RegistrationAttachmentFilterName = string;
 export interface RegistrationAttachmentFilter {
   Name: string;
   Values: string[];
@@ -2671,6 +2640,7 @@ export const DescribeRegistrationAttachmentsResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeRegistrationAttachmentsResult",
 }) as any as S.Schema<DescribeRegistrationAttachmentsResult>;
+export type SectionPath = string;
 export type FieldPathList = string[];
 export const FieldPathList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeRegistrationFieldDefinitionsRequest {
@@ -2694,6 +2664,8 @@ export const DescribeRegistrationFieldDefinitionsRequest =
   ).annotate({
     identifier: "DescribeRegistrationFieldDefinitionsRequest",
   }) as any as S.Schema<DescribeRegistrationFieldDefinitionsRequest>;
+export type FieldType = string;
+export type FieldRequirement = string;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface SelectValidation {
@@ -2866,6 +2838,7 @@ export const DescribeRegistrationFieldValuesResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeRegistrationFieldValuesResult>;
 export type RegistrationIdList = string[];
 export const RegistrationIdList = /*@__PURE__*/ S.Array(S.String);
+export type RegistrationFilterName = string;
 export interface RegistrationFilter {
   Name: string;
   Values: string[];
@@ -3009,6 +2982,7 @@ export const DescribeRegistrationSectionDefinitionsResult =
   }) as any as S.Schema<DescribeRegistrationSectionDefinitionsResult>;
 export type RegistrationTypeList = string[];
 export const RegistrationTypeList = /*@__PURE__*/ S.Array(S.String);
+export type RegistrationTypeFilterName = string;
 export interface RegistrationTypeFilter {
   Name: string;
   Values: string[];
@@ -3041,6 +3015,8 @@ export const DescribeRegistrationTypeDefinitionsRequest =
   ).annotate({
     identifier: "DescribeRegistrationTypeDefinitionsRequest",
   }) as any as S.Schema<DescribeRegistrationTypeDefinitionsRequest>;
+export type RegistrationAssociationBehavior = string;
+export type RegistrationDisassociationBehavior = string;
 export interface SupportedAssociation {
   ResourceType: string;
   IsoCountryCode?: string;
@@ -3111,6 +3087,7 @@ export const DescribeRegistrationTypeDefinitionsResult =
   }) as any as S.Schema<DescribeRegistrationTypeDefinitionsResult>;
 export type RegistrationVersionNumberList = number[];
 export const RegistrationVersionNumberList = /*@__PURE__*/ S.Array(S.Number);
+export type RegistrationVersionFilterName = string;
 export interface RegistrationVersionFilter {
   Name: string;
   Values: string[];
@@ -3206,6 +3183,7 @@ export const DescribeRegistrationVersionsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRegistrationVersionsResult",
 }) as any as S.Schema<DescribeRegistrationVersionsResult>;
+export type SenderIdOrArn = string;
 export interface SenderIdAndCountry {
   SenderId: string;
   IsoCountryCode: string;
@@ -3217,6 +3195,7 @@ export const SenderIdAndCountry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SenderIdAndCountry>;
 export type SenderIdList = SenderIdAndCountry[];
 export const SenderIdList = /*@__PURE__*/ S.Array(SenderIdAndCountry);
+export type SenderIdFilterName = string;
 export interface SenderIdFilter {
   Name: string;
   Values: string[];
@@ -3301,6 +3280,7 @@ export const DescribeSpendLimitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSpendLimitsRequest",
 }) as any as S.Schema<DescribeSpendLimitsRequest>;
+export type SpendLimitName = string;
 export interface SpendLimit {
   Name: string;
   EnforcedLimit: number;
@@ -3333,6 +3313,7 @@ export type VerifiedDestinationNumberIdList = string[];
 export const VerifiedDestinationNumberIdList = /*@__PURE__*/ S.Array(S.String);
 export type DestinationPhoneNumberList = string[];
 export const DestinationPhoneNumberList = /*@__PURE__*/ S.Array(S.String);
+export type VerifiedDestinationNumberFilterName = string;
 export interface VerifiedDestinationNumberFilter {
   Name: string;
   Values: string[];
@@ -3520,6 +3501,7 @@ export const GetProtectConfigurationCountryRuleSetRequest =
   ).annotate({
     identifier: "GetProtectConfigurationCountryRuleSetRequest",
   }) as any as S.Schema<GetProtectConfigurationCountryRuleSetRequest>;
+export type ProtectStatus = string;
 export interface ProtectConfigurationCountryRuleSetInformation {
   ProtectStatus: string;
 }
@@ -3639,6 +3621,7 @@ export const ListNotifyCountriesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListNotifyCountriesResult",
 }) as any as S.Schema<ListNotifyCountriesResult>;
+export type PoolOriginationIdentitiesFilterName = string;
 export interface PoolOriginationIdentitiesFilter {
   Name: string;
   Values: string[];
@@ -3710,6 +3693,7 @@ export const ListPoolOriginationIdentitiesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPoolOriginationIdentitiesResult",
 }) as any as S.Schema<ListPoolOriginationIdentitiesResult>;
+export type ProtectConfigurationRuleSetNumberOverrideFilterName = string;
 export interface ProtectConfigurationRuleSetNumberOverrideFilterItem {
   Name: string;
   Values: string[];
@@ -3787,6 +3771,7 @@ export const ListProtectConfigurationRuleSetNumberOverridesResult =
   ).annotate({
     identifier: "ListProtectConfigurationRuleSetNumberOverridesResult",
   }) as any as S.Schema<ListProtectConfigurationRuleSetNumberOverridesResult>;
+export type RegistrationAssociationFilterName = string;
 export interface RegistrationAssociationFilter {
   Name: string;
   Values: string[];
@@ -3914,6 +3899,8 @@ export const PutKeywordResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutKeywordResult",
 }) as any as S.Schema<PutKeywordResult>;
+export type MessageId = string;
+export type MessageFeedbackStatus = string;
 export interface PutMessageFeedbackRequest {
   MessageId: string;
   MessageFeedbackStatus: string;
@@ -4167,6 +4154,7 @@ export const ReleaseSenderIdResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReleaseSenderIdResult",
 }) as any as S.Schema<ReleaseSenderIdResult>;
+export type RequestableNumberType = string;
 export interface RequestPhoneNumberRequest {
   IsoCountryCode: string;
   MessageType: string;
@@ -4295,11 +4283,18 @@ export const RequestSenderIdResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RequestSenderIdResult",
 }) as any as S.Schema<RequestSenderIdResult>;
+export type VerificationChannel = string;
+export type LanguageCode = string;
+export type VerificationMessageOriginationIdentity = string;
+export type ContextKey = string;
+export type ContextValue = string;
 export type ContextMap = { [key: string]: string | undefined };
 export const ContextMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type DestinationCountryParameterKey = string;
+export type DestinationCountryParameterValue = string;
 export type DestinationCountryParameters = {
   [key: string]: string | undefined;
 };
@@ -4339,8 +4334,13 @@ export const SendDestinationNumberVerificationCodeResult =
   /*@__PURE__*/ S.suspend(() => S.Struct({ MessageId: S.String })).annotate({
     identifier: "SendDestinationNumberVerificationCodeResult",
   }) as any as S.Schema<SendDestinationNumberVerificationCodeResult>;
+export type MediaMessageOriginationIdentity = string;
+export type TextMessageBody = string;
+export type MediaUrlValue = string;
 export type MediaUrlList = string[];
 export const MediaUrlList = /*@__PURE__*/ S.Array(S.String);
+export type MaxPrice = string;
+export type TimeToLive = number;
 export interface SendMediaMessageRequest {
   DestinationPhoneNumber: string;
   OriginationIdentity: string;
@@ -4381,6 +4381,8 @@ export const SendMediaMessageResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendMediaMessageResult",
 }) as any as S.Schema<SendMediaMessageResult>;
+export type TemplateVariableName = string;
+export type TemplateVariableValue = string;
 export type TemplateVariableSubstitutionMap = {
   [key: string]: string | undefined;
 };
@@ -4474,12 +4476,15 @@ export const SendNotifyVoiceMessageResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendNotifyVoiceMessageResult",
 }) as any as S.Schema<SendNotifyVoiceMessageResult>;
+export type RcsMessageOriginationIdentity = string;
+export type RcsTextBody = string;
 export interface RcsTextMessage {
   Body: string;
 }
 export const RcsTextMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Body: S.String }),
 ).annotate({ identifier: "RcsTextMessage" }) as any as S.Schema<RcsTextMessage>;
+export type RcsMediaUrl = string;
 export interface RcsFileMessage {
   FileUrl: string;
   ThumbnailUrl?: string;
@@ -4487,6 +4492,8 @@ export interface RcsFileMessage {
 export const RcsFileMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ FileUrl: S.String, ThumbnailUrl: S.optional(S.String) }),
 ).annotate({ identifier: "RcsFileMessage" }) as any as S.Schema<RcsFileMessage>;
+export type RcsCardTitle = string;
+export type RcsCardDescription = string;
 export interface RcsCardMedia {
   FileUrl: string;
   ThumbnailUrl?: string;
@@ -4499,6 +4506,8 @@ export const RcsCardMedia = /*@__PURE__*/ S.suspend(() =>
     Height: S.optional(S.String),
   }),
 ).annotate({ identifier: "RcsCardMedia" }) as any as S.Schema<RcsCardMedia>;
+export type RcsSuggestedActionText = string;
+export type RcsPostbackData = string;
 export interface RcsReplyAction {
   Text: string;
   PostbackData: string;
@@ -4506,6 +4515,7 @@ export interface RcsReplyAction {
 export const RcsReplyAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Text: S.String, PostbackData: S.String }),
 ).annotate({ identifier: "RcsReplyAction" }) as any as S.Schema<RcsReplyAction>;
+export type RcsOpenUrlValue = string;
 export interface RcsOpenUrlAction {
   Text: string;
   PostbackData: string;
@@ -4534,6 +4544,7 @@ export const RcsDialPhoneAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RcsDialPhoneAction",
 }) as any as S.Schema<RcsDialPhoneAction>;
+export type RcsLocationLabel = string;
 export interface RcsShowLocationAction {
   Text: string;
   PostbackData: string;
@@ -4561,6 +4572,8 @@ export const RcsRequestLocationAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RcsRequestLocationAction",
 }) as any as S.Schema<RcsRequestLocationAction>;
+export type RcsCalendarEventTitle = string;
+export type RcsCalendarEventDescription = string;
 export interface RcsCreateCalendarEventAction {
   Text: string;
   PostbackData: string;
@@ -4755,6 +4768,11 @@ export const RcsMessageContent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RcsMessageContent",
 }) as any as S.Schema<RcsMessageContent>;
+export type RcsTimeToLive = number;
+export type RcsMessageTrafficType = string;
+export type RcsFallbackChannel = string;
+export type RcsFallbackMessageBody = string;
+export type RcsFallbackOriginationIdentity = string;
 export interface RcsFallbackConfiguration {
   Channel: string;
   MessageBody?: string;
@@ -4813,6 +4831,7 @@ export const SendRcsMessageResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendRcsMessageResult",
 }) as any as S.Schema<SendRcsMessageResult>;
+export type TextMessageOriginationIdentity = string;
 export interface SendTextMessageRequest {
   DestinationPhoneNumber: string;
   OriginationIdentity?: string;
@@ -4857,6 +4876,9 @@ export const SendTextMessageResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendTextMessageResult",
 }) as any as S.Schema<SendTextMessageResult>;
+export type VoiceMessageOriginationIdentity = string;
+export type VoiceMessageBody = string;
+export type VoiceMessageBodyTextType = string;
 export interface SendVoiceMessageRequest {
   DestinationPhoneNumber: string;
   OriginationIdentity: string;
@@ -5205,6 +5227,7 @@ export const UpdateEventDestinationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateEventDestinationResult",
 }) as any as S.Schema<UpdateEventDestinationResult>;
+export type NotifyPoolIdOrUnset = string;
 export interface UpdateNotifyConfigurationRequest {
   NotifyConfigurationId: string;
   DefaultTemplateId?: string;
@@ -5465,6 +5488,8 @@ export const UpdateProtectConfigurationCountryRuleSetResult =
   ).annotate({
     identifier: "UpdateProtectConfigurationCountryRuleSetResult",
   }) as any as S.Schema<UpdateProtectConfigurationCountryRuleSetResult>;
+export type TwoWayMediaS3BucketNameOrUnset = string;
+export type IamRoleArnOrUnset = string;
 export interface UpdateRcsAgentRequest {
   RcsAgentId: string;
   DeletionProtectionEnabled?: boolean;
@@ -5573,6 +5598,7 @@ export const UpdateSenderIdResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSenderIdResult",
 }) as any as S.Schema<UpdateSenderIdResult>;
+export type VerificationCode = string;
 export interface VerifyDestinationNumberRequest {
   VerifiedDestinationNumberId: string;
   VerificationCode: string;
@@ -5605,53 +5631,24 @@ export const VerifyDestinationNumberResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VerifyDestinationNumberResult",
 }) as any as S.Schema<VerifyDestinationNumberResult>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String), Reason: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-  },
-) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.Retryable(),
-).pipe(C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-  },
-) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String), Reason: S.optional(S.String) },
-) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.Retryable({ throttling: true }),
-).pipe(C.withRetryableError, C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(S.String),
-    Fields: S.optional(ValidationExceptionFieldList),
-  },
-) {}
-
-//# Operations
+export type AccessDeniedExceptionReason = string;
+export type ConflictExceptionReason = string;
+export type ResourceType = string;
+export type ServiceQuotaExceededExceptionReason = string;
+export type ValidationExceptionReason = string;
+export interface ValidationExceptionField {
+  Name: string;
+  Message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type AssociateOriginationIdentityError =
   | AccessDeniedException
   | ConflictException
@@ -5689,6 +5686,7 @@ export const associateOriginationIdentity: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateOriginationIdentity",
 }));
+
 export type AssociateProtectConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -5720,6 +5718,7 @@ export const associateProtectConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateProtectConfiguration",
 }));
+
 export type CarrierLookupError =
   | AccessDeniedException
   | InternalServerException
@@ -5749,6 +5748,7 @@ export const carrierLookup: API.OperationMethod<
   retry: Retry,
   operationName: "CarrierLookup",
 }));
+
 export type CreateConfigurationSetError =
   | AccessDeniedException
   | ConflictException
@@ -5784,6 +5784,7 @@ export const createConfigurationSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConfigurationSet",
 }));
+
 export type CreateEventDestinationError =
   | AccessDeniedException
   | ConflictException
@@ -5823,6 +5824,7 @@ export const createEventDestination: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEventDestination",
 }));
+
 export type CreateNotifyConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -5856,6 +5858,7 @@ export const createNotifyConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNotifyConfiguration",
 }));
+
 export type CreateOptOutListError =
   | AccessDeniedException
   | ConflictException
@@ -5891,6 +5894,7 @@ export const createOptOutList: API.OperationMethod<
   retry: Retry,
   operationName: "CreateOptOutList",
 }));
+
 export type CreatePoolError =
   | AccessDeniedException
   | ConflictException
@@ -5928,6 +5932,7 @@ export const createPool: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePool",
 }));
+
 export type CreateProtectConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -5959,6 +5964,7 @@ export const createProtectConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProtectConfiguration",
 }));
+
 export type CreateRcsAgentError =
   | AccessDeniedException
   | ConflictException
@@ -5992,6 +5998,7 @@ export const createRcsAgent: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRcsAgent",
 }));
+
 export type CreateRegistrationError =
   | AccessDeniedException
   | ConflictException
@@ -6023,6 +6030,7 @@ export const createRegistration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRegistration",
 }));
+
 export type CreateRegistrationAssociationError =
   | AccessDeniedException
   | ConflictException
@@ -6056,6 +6064,7 @@ export const createRegistrationAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRegistrationAssociation",
 }));
+
 export type CreateRegistrationAttachmentError =
   | AccessDeniedException
   | ConflictException
@@ -6089,6 +6098,7 @@ export const createRegistrationAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRegistrationAttachment",
 }));
+
 export type CreateRegistrationVersionError =
   | AccessDeniedException
   | ConflictException
@@ -6122,6 +6132,7 @@ export const createRegistrationVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRegistrationVersion",
 }));
+
 export type CreateVerifiedDestinationNumberError =
   | AccessDeniedException
   | ConflictException
@@ -6155,6 +6166,7 @@ export const createVerifiedDestinationNumber: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVerifiedDestinationNumber",
 }));
+
 export type DeleteAccountDefaultProtectConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -6184,6 +6196,7 @@ export const deleteAccountDefaultProtectConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccountDefaultProtectConfiguration",
 }));
+
 export type DeleteConfigurationSetError =
   | AccessDeniedException
   | InternalServerException
@@ -6215,6 +6228,7 @@ export const deleteConfigurationSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfigurationSet",
 }));
+
 export type DeleteDefaultMessageTypeError =
   | AccessDeniedException
   | InternalServerException
@@ -6246,6 +6260,7 @@ export const deleteDefaultMessageType: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDefaultMessageType",
 }));
+
 export type DeleteDefaultSenderIdError =
   | AccessDeniedException
   | InternalServerException
@@ -6277,6 +6292,7 @@ export const deleteDefaultSenderId: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDefaultSenderId",
 }));
+
 export type DeleteEventDestinationError =
   | AccessDeniedException
   | InternalServerException
@@ -6308,6 +6324,7 @@ export const deleteEventDestination: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEventDestination",
 }));
+
 export type DeleteKeywordError =
   | AccessDeniedException
   | ConflictException
@@ -6343,6 +6360,7 @@ export const deleteKeyword: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteKeyword",
 }));
+
 export type DeleteMediaMessageSpendLimitOverrideError =
   | AccessDeniedException
   | InternalServerException
@@ -6370,6 +6388,7 @@ export const deleteMediaMessageSpendLimitOverride: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMediaMessageSpendLimitOverride",
 }));
+
 export type DeleteNotifyConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -6403,6 +6422,7 @@ export const deleteNotifyConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNotifyConfiguration",
 }));
+
 export type DeleteNotifyMessageSpendLimitOverrideError =
   | AccessDeniedException
   | InternalServerException
@@ -6430,6 +6450,7 @@ export const deleteNotifyMessageSpendLimitOverride: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNotifyMessageSpendLimitOverride",
 }));
+
 export type DeleteOptedOutNumberError =
   | AccessDeniedException
   | ConflictException
@@ -6465,6 +6486,7 @@ export const deleteOptedOutNumber: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteOptedOutNumber",
 }));
+
 export type DeleteOptOutListError =
   | AccessDeniedException
   | ConflictException
@@ -6498,6 +6520,7 @@ export const deleteOptOutList: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteOptOutList",
 }));
+
 export type DeletePoolError =
   | AccessDeniedException
   | ConflictException
@@ -6533,6 +6556,7 @@ export const deletePool: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePool",
 }));
+
 export type DeleteProtectConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -6564,6 +6588,7 @@ export const deleteProtectConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProtectConfiguration",
 }));
+
 export type DeleteProtectConfigurationRuleSetNumberOverrideError =
   | AccessDeniedException
   | InternalServerException
@@ -6593,6 +6618,7 @@ export const deleteProtectConfigurationRuleSetNumberOverride: API.OperationMetho
   retry: Retry,
   operationName: "DeleteProtectConfigurationRuleSetNumberOverride",
 }));
+
 export type DeleteRcsAgentError =
   | AccessDeniedException
   | ConflictException
@@ -6624,6 +6650,7 @@ export const deleteRcsAgent: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRcsAgent",
 }));
+
 export type DeleteRcsMessageSpendLimitOverrideError =
   | AccessDeniedException
   | InternalServerException
@@ -6651,6 +6678,7 @@ export const deleteRcsMessageSpendLimitOverride: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRcsMessageSpendLimitOverride",
 }));
+
 export type DeleteRegistrationError =
   | AccessDeniedException
   | ConflictException
@@ -6682,6 +6710,7 @@ export const deleteRegistration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRegistration",
 }));
+
 export type DeleteRegistrationAttachmentError =
   | AccessDeniedException
   | ConflictException
@@ -6713,6 +6742,7 @@ export const deleteRegistrationAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRegistrationAttachment",
 }));
+
 export type DeleteRegistrationFieldValueError =
   | AccessDeniedException
   | ConflictException
@@ -6744,6 +6774,7 @@ export const deleteRegistrationFieldValue: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRegistrationFieldValue",
 }));
+
 export type DeleteResourcePolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -6773,6 +6804,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteTextMessageSpendLimitOverrideError =
   | AccessDeniedException
   | InternalServerException
@@ -6800,6 +6832,7 @@ export const deleteTextMessageSpendLimitOverride: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTextMessageSpendLimitOverride",
 }));
+
 export type DeleteVerifiedDestinationNumberError =
   | AccessDeniedException
   | ConflictException
@@ -6831,6 +6864,7 @@ export const deleteVerifiedDestinationNumber: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVerifiedDestinationNumber",
 }));
+
 export type DeleteVoiceMessageSpendLimitOverrideError =
   | AccessDeniedException
   | InternalServerException
@@ -6858,6 +6892,7 @@ export const deleteVoiceMessageSpendLimitOverride: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVoiceMessageSpendLimitOverride",
 }));
+
 export type DescribeAccountAttributesError =
   | AccessDeniedException
   | InternalServerException
@@ -6908,6 +6943,7 @@ export const describeAccountAttributes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeAccountLimitsError =
   | AccessDeniedException
   | InternalServerException
@@ -6958,6 +6994,7 @@ export const describeAccountLimits: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeConfigurationSetsError =
   | AccessDeniedException
   | InternalServerException
@@ -7012,6 +7049,7 @@ export const describeConfigurationSets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeKeywordsError =
   | AccessDeniedException
   | InternalServerException
@@ -7066,6 +7104,7 @@ export const describeKeywords: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeNotifyConfigurationsError =
   | AccessDeniedException
   | InternalServerException
@@ -7120,6 +7159,7 @@ export const describeNotifyConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeNotifyTemplatesError =
   | AccessDeniedException
   | InternalServerException
@@ -7174,6 +7214,7 @@ export const describeNotifyTemplates: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeOptedOutNumbersError =
   | AccessDeniedException
   | InternalServerException
@@ -7228,6 +7269,7 @@ export const describeOptedOutNumbers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeOptOutListsError =
   | AccessDeniedException
   | InternalServerException
@@ -7282,6 +7324,7 @@ export const describeOptOutLists: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribePhoneNumbersError =
   | AccessDeniedException
   | InternalServerException
@@ -7336,6 +7379,7 @@ export const describePhoneNumbers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribePoolsError =
   | AccessDeniedException
   | InternalServerException
@@ -7392,6 +7436,7 @@ export const describePools: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeProtectConfigurationsError =
   | AccessDeniedException
   | InternalServerException
@@ -7442,6 +7487,7 @@ export const describeProtectConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeRcsAgentCountryLaunchStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -7492,6 +7538,7 @@ export const describeRcsAgentCountryLaunchStatus: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeRcsAgentsError =
   | AccessDeniedException
   | InternalServerException
@@ -7544,6 +7591,7 @@ export const describeRcsAgents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeRegistrationAttachmentsError =
   | AccessDeniedException
   | InternalServerException
@@ -7594,6 +7642,7 @@ export const describeRegistrationAttachments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeRegistrationFieldDefinitionsError =
   | AccessDeniedException
   | InternalServerException
@@ -7642,6 +7691,7 @@ export const describeRegistrationFieldDefinitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeRegistrationFieldValuesError =
   | AccessDeniedException
   | InternalServerException
@@ -7692,6 +7742,7 @@ export const describeRegistrationFieldValues: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeRegistrationsError =
   | AccessDeniedException
   | InternalServerException
@@ -7742,6 +7793,7 @@ export const describeRegistrations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeRegistrationSectionDefinitionsError =
   | AccessDeniedException
   | InternalServerException
@@ -7790,6 +7842,7 @@ export const describeRegistrationSectionDefinitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeRegistrationTypeDefinitionsError =
   | AccessDeniedException
   | InternalServerException
@@ -7838,6 +7891,7 @@ export const describeRegistrationTypeDefinitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeRegistrationVersionsError =
   | AccessDeniedException
   | InternalServerException
@@ -7888,6 +7942,7 @@ export const describeRegistrationVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSenderIdsError =
   | AccessDeniedException
   | InternalServerException
@@ -7942,6 +7997,7 @@ export const describeSenderIds: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSpendLimitsError =
   | AccessDeniedException
   | InternalServerException
@@ -7992,6 +8048,7 @@ export const describeSpendLimits: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVerifiedDestinationNumbersError =
   | AccessDeniedException
   | InternalServerException
@@ -8042,6 +8099,7 @@ export const describeVerifiedDestinationNumbers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DisassociateOriginationIdentityError =
   | AccessDeniedException
   | ConflictException
@@ -8075,6 +8133,7 @@ export const disassociateOriginationIdentity: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateOriginationIdentity",
 }));
+
 export type DisassociateProtectConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -8106,6 +8165,7 @@ export const disassociateProtectConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateProtectConfiguration",
 }));
+
 export type DiscardRegistrationVersionError =
   | AccessDeniedException
   | ConflictException
@@ -8137,6 +8197,7 @@ export const discardRegistrationVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DiscardRegistrationVersion",
 }));
+
 export type GetProtectConfigurationCountryRuleSetError =
   | AccessDeniedException
   | InternalServerException
@@ -8166,6 +8227,7 @@ export const getProtectConfigurationCountryRuleSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetProtectConfigurationCountryRuleSet",
 }));
+
 export type GetResourcePolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -8195,6 +8257,7 @@ export const getResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type ListNotifyCountriesError =
   | AccessDeniedException
   | InternalServerException
@@ -8243,6 +8306,7 @@ export const listNotifyCountries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPoolOriginationIdentitiesError =
   | AccessDeniedException
   | InternalServerException
@@ -8295,6 +8359,7 @@ export const listPoolOriginationIdentities: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProtectConfigurationRuleSetNumberOverridesError =
   | AccessDeniedException
   | InternalServerException
@@ -8345,6 +8410,7 @@ export const listProtectConfigurationRuleSetNumberOverrides: API.OperationMethod
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRegistrationAssociationsError =
   | AccessDeniedException
   | InternalServerException
@@ -8395,6 +8461,7 @@ export const listRegistrationAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -8424,6 +8491,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutKeywordError =
   | AccessDeniedException
   | ConflictException
@@ -8461,6 +8529,7 @@ export const putKeyword: API.OperationMethod<
   retry: Retry,
   operationName: "PutKeyword",
 }));
+
 export type PutMessageFeedbackError =
   | AccessDeniedException
   | InternalServerException
@@ -8492,6 +8561,7 @@ export const putMessageFeedback: API.OperationMethod<
   retry: Retry,
   operationName: "PutMessageFeedback",
 }));
+
 export type PutOptedOutNumberError =
   | AccessDeniedException
   | InternalServerException
@@ -8523,6 +8593,7 @@ export const putOptedOutNumber: API.OperationMethod<
   retry: Retry,
   operationName: "PutOptedOutNumber",
 }));
+
 export type PutProtectConfigurationRuleSetNumberOverrideError =
   | AccessDeniedException
   | ConflictException
@@ -8556,6 +8627,7 @@ export const putProtectConfigurationRuleSetNumberOverride: API.OperationMethod<
   retry: Retry,
   operationName: "PutProtectConfigurationRuleSetNumberOverride",
 }));
+
 export type PutRegistrationFieldValueError =
   | AccessDeniedException
   | ConflictException
@@ -8587,6 +8659,7 @@ export const putRegistrationFieldValue: API.OperationMethod<
   retry: Retry,
   operationName: "PutRegistrationFieldValue",
 }));
+
 export type PutResourcePolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -8616,6 +8689,7 @@ export const putResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type ReleasePhoneNumberError =
   | AccessDeniedException
   | ConflictException
@@ -8649,6 +8723,7 @@ export const releasePhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "ReleasePhoneNumber",
 }));
+
 export type ReleaseSenderIdError =
   | AccessDeniedException
   | ConflictException
@@ -8680,6 +8755,7 @@ export const releaseSenderId: API.OperationMethod<
   retry: Retry,
   operationName: "ReleaseSenderId",
 }));
+
 export type RequestPhoneNumberError =
   | AccessDeniedException
   | ConflictException
@@ -8713,6 +8789,7 @@ export const requestPhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "RequestPhoneNumber",
 }));
+
 export type RequestSenderIdError =
   | AccessDeniedException
   | ConflictException
@@ -8744,6 +8821,7 @@ export const requestSenderId: API.OperationMethod<
   retry: Retry,
   operationName: "RequestSenderId",
 }));
+
 export type SendDestinationNumberVerificationCodeError =
   | AccessDeniedException
   | ConflictException
@@ -8777,6 +8855,7 @@ export const sendDestinationNumberVerificationCode: API.OperationMethod<
   retry: Retry,
   operationName: "SendDestinationNumberVerificationCode",
 }));
+
 export type SendMediaMessageError =
   | AccessDeniedException
   | ConflictException
@@ -8810,6 +8889,7 @@ export const sendMediaMessage: API.OperationMethod<
   retry: Retry,
   operationName: "SendMediaMessage",
 }));
+
 export type SendNotifyTextMessageError =
   | AccessDeniedException
   | ConflictException
@@ -8843,6 +8923,7 @@ export const sendNotifyTextMessage: API.OperationMethod<
   retry: Retry,
   operationName: "SendNotifyTextMessage",
 }));
+
 export type SendNotifyVoiceMessageError =
   | AccessDeniedException
   | ConflictException
@@ -8876,6 +8957,7 @@ export const sendNotifyVoiceMessage: API.OperationMethod<
   retry: Retry,
   operationName: "SendNotifyVoiceMessage",
 }));
+
 export type SendRcsMessageError =
   | AccessDeniedException
   | ConflictException
@@ -8909,6 +8991,7 @@ export const sendRcsMessage: API.OperationMethod<
   retry: Retry,
   operationName: "SendRcsMessage",
 }));
+
 export type SendTextMessageError =
   | AccessDeniedException
   | ConflictException
@@ -8944,6 +9027,7 @@ export const sendTextMessage: API.OperationMethod<
   retry: Retry,
   operationName: "SendTextMessage",
 }));
+
 export type SendVoiceMessageError =
   | AccessDeniedException
   | ConflictException
@@ -8977,6 +9061,7 @@ export const sendVoiceMessage: API.OperationMethod<
   retry: Retry,
   operationName: "SendVoiceMessage",
 }));
+
 export type SetAccountDefaultProtectConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -9006,6 +9091,7 @@ export const setAccountDefaultProtectConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "SetAccountDefaultProtectConfiguration",
 }));
+
 export type SetDefaultMessageFeedbackEnabledError =
   | AccessDeniedException
   | InternalServerException
@@ -9035,6 +9121,7 @@ export const setDefaultMessageFeedbackEnabled: API.OperationMethod<
   retry: Retry,
   operationName: "SetDefaultMessageFeedbackEnabled",
 }));
+
 export type SetDefaultMessageTypeError =
   | AccessDeniedException
   | InternalServerException
@@ -9066,6 +9153,7 @@ export const setDefaultMessageType: API.OperationMethod<
   retry: Retry,
   operationName: "SetDefaultMessageType",
 }));
+
 export type SetDefaultSenderIdError =
   | AccessDeniedException
   | InternalServerException
@@ -9097,6 +9185,7 @@ export const setDefaultSenderId: API.OperationMethod<
   retry: Retry,
   operationName: "SetDefaultSenderId",
 }));
+
 export type SetMediaMessageSpendLimitOverrideError =
   | AccessDeniedException
   | InternalServerException
@@ -9124,6 +9213,7 @@ export const setMediaMessageSpendLimitOverride: API.OperationMethod<
   retry: Retry,
   operationName: "SetMediaMessageSpendLimitOverride",
 }));
+
 export type SetNotifyMessageSpendLimitOverrideError =
   | AccessDeniedException
   | InternalServerException
@@ -9151,6 +9241,7 @@ export const setNotifyMessageSpendLimitOverride: API.OperationMethod<
   retry: Retry,
   operationName: "SetNotifyMessageSpendLimitOverride",
 }));
+
 export type SetRcsMessageSpendLimitOverrideError =
   | AccessDeniedException
   | InternalServerException
@@ -9178,6 +9269,7 @@ export const setRcsMessageSpendLimitOverride: API.OperationMethod<
   retry: Retry,
   operationName: "SetRcsMessageSpendLimitOverride",
 }));
+
 export type SetTextMessageSpendLimitOverrideError =
   | AccessDeniedException
   | InternalServerException
@@ -9205,6 +9297,7 @@ export const setTextMessageSpendLimitOverride: API.OperationMethod<
   retry: Retry,
   operationName: "SetTextMessageSpendLimitOverride",
 }));
+
 export type SetVoiceMessageSpendLimitOverrideError =
   | AccessDeniedException
   | InternalServerException
@@ -9232,6 +9325,7 @@ export const setVoiceMessageSpendLimitOverride: API.OperationMethod<
   retry: Retry,
   operationName: "SetVoiceMessageSpendLimitOverride",
 }));
+
 export type SubmitRegistrationVersionError =
   | AccessDeniedException
   | ConflictException
@@ -9263,6 +9357,7 @@ export const submitRegistrationVersion: API.OperationMethod<
   retry: Retry,
   operationName: "SubmitRegistrationVersion",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -9294,6 +9389,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -9323,6 +9419,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateEventDestinationError =
   | AccessDeniedException
   | ConflictException
@@ -9356,6 +9453,7 @@ export const updateEventDestination: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEventDestination",
 }));
+
 export type UpdateNotifyConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -9387,6 +9485,7 @@ export const updateNotifyConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNotifyConfiguration",
 }));
+
 export type UpdatePhoneNumberError =
   | AccessDeniedException
   | ConflictException
@@ -9420,6 +9519,7 @@ export const updatePhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePhoneNumber",
 }));
+
 export type UpdatePoolError =
   | AccessDeniedException
   | ConflictException
@@ -9451,6 +9551,7 @@ export const updatePool: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePool",
 }));
+
 export type UpdateProtectConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -9480,6 +9581,7 @@ export const updateProtectConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProtectConfiguration",
 }));
+
 export type UpdateProtectConfigurationCountryRuleSetError =
   | AccessDeniedException
   | InternalServerException
@@ -9509,6 +9611,7 @@ export const updateProtectConfigurationCountryRuleSet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProtectConfigurationCountryRuleSet",
 }));
+
 export type UpdateRcsAgentError =
   | AccessDeniedException
   | ConflictException
@@ -9540,6 +9643,7 @@ export const updateRcsAgent: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRcsAgent",
 }));
+
 export type UpdateSenderIdError =
   | AccessDeniedException
   | InternalServerException
@@ -9569,6 +9673,7 @@ export const updateSenderId: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSenderId",
 }));
+
 export type VerifyDestinationNumberError =
   | AccessDeniedException
   | ConflictException

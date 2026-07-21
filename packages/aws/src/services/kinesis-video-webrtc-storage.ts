@@ -84,11 +84,27 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ClientLimitExceededException extends S.TaggedErrorClass<ClientLimitExceededException>()(
+  "ClientLimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
+  "InvalidArgumentException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type ChannelArn = string;
-export type ClientId = string;
-
-//# Schemas
 export interface JoinStorageSessionInput {
   channelArn: string;
 }
@@ -112,6 +128,7 @@ export const JoinStorageSessionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JoinStorageSessionResponse",
 }) as any as S.Schema<JoinStorageSessionResponse>;
+export type ClientId = string;
 export interface JoinStorageSessionAsViewerInput {
   channelArn: string;
   clientId: string;
@@ -136,30 +153,6 @@ export const JoinStorageSessionAsViewerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JoinStorageSessionAsViewerResponse",
 }) as any as S.Schema<JoinStorageSessionAsViewerResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ClientLimitExceededException extends S.TaggedErrorClass<ClientLimitExceededException>()(
-  "ClientLimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
-  "InvalidArgumentException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type JoinStorageSessionError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -229,6 +222,7 @@ export const joinStorageSession: API.OperationMethod<
   retry: Retry,
   operationName: "JoinStorageSession",
 }));
+
 export type JoinStorageSessionAsViewerError =
   | AccessDeniedException
   | ClientLimitExceededException

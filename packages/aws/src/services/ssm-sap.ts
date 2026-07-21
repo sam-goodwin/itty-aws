@@ -84,37 +84,35 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type Arn = string;
-export type ApplicationId = string;
-export type SsmSapArn = string;
-export type AppRegistryArn = string;
-export type ComponentId = string;
-export type TagKey = string;
-export type TagValue = string;
-export type SID = string;
-export type SAPInstanceNumber = string;
-export type DatabaseId = string;
-export type OperationId = string;
-export type DatabaseName = string;
-export type SecretId = string | redacted.Redacted<string>;
-export type OperationType = string;
-export type ResourceType = string;
-export type ResourceId = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type FilterName = string;
-export type FilterValue = string;
-export type OperationEventResourceType = string;
-export type SubCheckResultId = string;
-export type RuleResultId = string;
-export type RuleResultMetadataKey = string;
-export type RuleResultMetadataValue = string;
-export type InstanceId = string;
-
-//# Schemas
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type PermissionActionType = "RESTORE" | (string & {});
 export const PermissionActionType = /*@__PURE__*/ S.String;
+
+export type Arn = string;
 export interface DeleteResourcePermissionInput {
   ActionType?: PermissionActionType;
   SourceResourceArn?: string;
@@ -146,6 +144,7 @@ export const DeleteResourcePermissionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteResourcePermissionOutput",
 }) as any as S.Schema<DeleteResourcePermissionOutput>;
+export type ApplicationId = string;
 export interface DeregisterApplicationInput {
   ApplicationId: string;
 }
@@ -169,6 +168,8 @@ export const DeregisterApplicationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeregisterApplicationOutput",
 }) as any as S.Schema<DeregisterApplicationOutput>;
+export type SsmSapArn = string;
+export type AppRegistryArn = string;
 export interface GetApplicationInput {
   ApplicationId?: string;
   ApplicationArn?: string;
@@ -194,6 +195,7 @@ export const GetApplicationInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetApplicationInput>;
 export type ApplicationType = "HANA" | "SAP_ABAP" | (string & {});
 export const ApplicationType = /*@__PURE__*/ S.String;
+
 export type ApplicationStatus =
   | "ACTIVATED"
   | "STARTING"
@@ -205,6 +207,7 @@ export type ApplicationStatus =
   | "UNKNOWN"
   | (string & {});
 export const ApplicationStatus = /*@__PURE__*/ S.String;
+
 export type ApplicationDiscoveryStatus =
   | "SUCCESS"
   | "REGISTRATION_FAILED"
@@ -213,6 +216,8 @@ export type ApplicationDiscoveryStatus =
   | "DELETING"
   | (string & {});
 export const ApplicationDiscoveryStatus = /*@__PURE__*/ S.String;
+
+export type ComponentId = string;
 export type ComponentIdList = string[];
 export const ComponentIdList = /*@__PURE__*/ S.Array(S.String);
 export type ApplicationArnList = string[];
@@ -243,6 +248,8 @@ export const Application = /*@__PURE__*/ S.suspend(() =>
     AssociatedApplicationArns: S.optional(ApplicationArnList),
   }),
 ).annotate({ identifier: "Application" }) as any as S.Schema<Application>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -275,6 +282,8 @@ export const GetComponentInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetComponentInput",
 }) as any as S.Schema<GetComponentInput>;
+export type SID = string;
+export type SAPInstanceNumber = string;
 export type ComponentType =
   | "HANA"
   | "HANA_NODE"
@@ -286,6 +295,7 @@ export type ComponentType =
   | "ERS"
   | (string & {});
 export const ComponentType = /*@__PURE__*/ S.String;
+
 export type ComponentStatus =
   | "ACTIVATED"
   | "STARTING"
@@ -296,6 +306,7 @@ export type ComponentStatus =
   | "UNDEFINED"
   | (string & {});
 export const ComponentStatus = /*@__PURE__*/ S.String;
+
 export type ReplicationMode =
   | "PRIMARY"
   | "NONE"
@@ -304,6 +315,7 @@ export type ReplicationMode =
   | "ASYNC"
   | (string & {});
 export const ReplicationMode = /*@__PURE__*/ S.String;
+
 export type OperationMode =
   | "PRIMARY"
   | "LOGREPLAY"
@@ -312,6 +324,7 @@ export type OperationMode =
   | "NONE"
   | (string & {});
 export const OperationMode = /*@__PURE__*/ S.String;
+
 export type ClusterStatus =
   | "ONLINE"
   | "STANDBY"
@@ -320,6 +333,7 @@ export type ClusterStatus =
   | "NONE"
   | (string & {});
 export const ClusterStatus = /*@__PURE__*/ S.String;
+
 export interface Resilience {
   HsrTier?: string;
   HsrReplicationMode?: ReplicationMode;
@@ -343,6 +357,7 @@ export type AllocationType =
   | "UNKNOWN"
   | (string & {});
 export const AllocationType = /*@__PURE__*/ S.String;
+
 export interface IpAddressMember {
   IpAddress?: string;
   Primary?: boolean;
@@ -373,6 +388,7 @@ export const AssociatedHost = /*@__PURE__*/ S.suspend(() =>
     OsVersion: S.optional(S.String),
   }),
 ).annotate({ identifier: "AssociatedHost" }) as any as S.Schema<AssociatedHost>;
+export type DatabaseId = string;
 export type DatabaseIdList = string[];
 export const DatabaseIdList = /*@__PURE__*/ S.Array(S.String);
 export type HostRole =
@@ -382,6 +398,7 @@ export type HostRole =
   | "UNKNOWN"
   | (string & {});
 export const HostRole = /*@__PURE__*/ S.String;
+
 export interface Host {
   HostName?: string;
   HostIp?: string;
@@ -404,6 +421,7 @@ export type HostList = Host[];
 export const HostList = /*@__PURE__*/ S.Array(Host);
 export type DatabaseConnectionMethod = "DIRECT" | "OVERLAY" | (string & {});
 export const DatabaseConnectionMethod = /*@__PURE__*/ S.String;
+
 export interface DatabaseConnection {
   DatabaseConnectionMethod?: DatabaseConnectionMethod;
   DatabaseArn?: string;
@@ -473,6 +491,7 @@ export const GetComponentOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetComponentOutput",
 }) as any as S.Schema<GetComponentOutput>;
+export type OperationId = string;
 export interface GetConfigurationCheckOperationInput {
   OperationId: string;
 }
@@ -496,12 +515,14 @@ export type OperationStatus =
   | "ERROR"
   | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
+
 export type ConfigurationCheckType =
   | "SAP_CHECK_01"
   | "SAP_CHECK_02"
   | "SAP_CHECK_03"
   | (string & {});
 export const ConfigurationCheckType = /*@__PURE__*/ S.String;
+
 export interface RuleStatusCounts {
   Failed?: number;
   Warning?: number;
@@ -584,8 +605,11 @@ export const GetDatabaseInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDatabaseInput",
 }) as any as S.Schema<GetDatabaseInput>;
+export type DatabaseName = string;
 export type CredentialType = "ADMIN" | (string & {});
 export const CredentialType = /*@__PURE__*/ S.String;
+
+export type SecretId = string | redacted.Redacted<string>;
 export interface ApplicationCredential {
   DatabaseName: string;
   CredentialType: CredentialType;
@@ -606,6 +630,7 @@ export const ApplicationCredentialList = /*@__PURE__*/ S.Array(
 );
 export type DatabaseType = "SYSTEM" | "TENANT" | (string & {});
 export const DatabaseType = /*@__PURE__*/ S.String;
+
 export type DatabaseStatus =
   | "RUNNING"
   | "STARTING"
@@ -616,6 +641,7 @@ export type DatabaseStatus =
   | "STOPPING"
   | (string & {});
 export const DatabaseStatus = /*@__PURE__*/ S.String;
+
 export type ComponentArnList = string[];
 export const ComponentArnList = /*@__PURE__*/ S.Array(S.String);
 export interface Database {
@@ -674,11 +700,14 @@ export const GetOperationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOperationInput",
 }) as any as S.Schema<GetOperationInput>;
+export type OperationType = string;
 export type OperationProperties = { [key: string]: string | undefined };
 export const OperationProperties = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 ).pipe(T.Sparse());
+export type ResourceType = string;
+export type ResourceId = string;
 export interface Operation {
   Id?: string;
   Type?: string;
@@ -746,12 +775,17 @@ export const GetResourcePermissionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePermissionOutput",
 }) as any as S.Schema<GetResourcePermissionOutput>;
+export type NextToken = string;
+export type MaxResults = number;
+export type FilterName = string;
+export type FilterValue = string;
 export type FilterOperator =
   | "Equals"
   | "GreaterThanOrEquals"
   | "LessThanOrEquals"
   | (string & {});
 export const FilterOperator = /*@__PURE__*/ S.String;
+
 export interface Filter {
   Name: string;
   Value: string;
@@ -937,6 +971,7 @@ export type ConfigurationCheckOperationListingMode =
   | "LATEST_PER_CHECK"
   | (string & {});
 export const ConfigurationCheckOperationListingMode = /*@__PURE__*/ S.String;
+
 export interface ListConfigurationCheckOperationsInput {
   ApplicationId: string;
   ListMode?: ConfigurationCheckOperationListingMode;
@@ -1066,6 +1101,7 @@ export const ListOperationEventsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOperationEventsInput",
 }) as any as S.Schema<ListOperationEventsInput>;
+export type OperationEventResourceType = string;
 export interface Resource {
   ResourceArn?: string;
   ResourceType?: string;
@@ -1082,6 +1118,7 @@ export type OperationEventStatus =
   | "FAILED"
   | (string & {});
 export const OperationEventStatus = /*@__PURE__*/ S.String;
+
 export interface OperationEvent {
   Description?: string;
   Resource?: Resource;
@@ -1174,6 +1211,7 @@ export const ListSubCheckResultsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSubCheckResultsInput",
 }) as any as S.Schema<ListSubCheckResultsInput>;
+export type SubCheckResultId = string;
 export type SubCheckReferencesList = string[];
 export const SubCheckReferencesList = /*@__PURE__*/ S.Array(S.String);
 export interface SubCheckResult {
@@ -1227,6 +1265,7 @@ export const ListSubCheckRuleResultsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSubCheckRuleResultsInput",
 }) as any as S.Schema<ListSubCheckRuleResultsInput>;
+export type RuleResultId = string;
 export type RuleResultStatus =
   | "PASSED"
   | "FAILED"
@@ -1235,6 +1274,9 @@ export type RuleResultStatus =
   | "UNKNOWN"
   | (string & {});
 export const RuleResultStatus = /*@__PURE__*/ S.String;
+
+export type RuleResultMetadataKey = string;
+export type RuleResultMetadataValue = string;
 export type RuleResultMetadata = { [key: string]: string | undefined };
 export const RuleResultMetadata = /*@__PURE__*/ S.Record(
   S.String,
@@ -1326,6 +1368,7 @@ export const PutResourcePermissionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutResourcePermissionOutput",
 }) as any as S.Schema<PutResourcePermissionOutput>;
+export type InstanceId = string;
 export type InstanceList = string[];
 export const InstanceList = /*@__PURE__*/ S.Array(S.String);
 export interface ComponentInfo {
@@ -1476,6 +1519,7 @@ export const StartConfigurationChecksOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartConfigurationChecksOutput>;
 export type ConnectedEntityType = "DBMS" | (string & {});
 export const ConnectedEntityType = /*@__PURE__*/ S.String;
+
 export interface StopApplicationInput {
   ApplicationId: string;
   StopConnectedEntity?: ConnectedEntityType;
@@ -1565,6 +1609,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceResponse>;
 export type BackintMode = "AWSBackup" | (string & {});
 export const BackintMode = /*@__PURE__*/ S.String;
+
 export interface BackintConfig {
   BackintMode: BackintMode;
   EnsureNoBackupInProcess: boolean;
@@ -1613,35 +1658,6 @@ export const UpdateApplicationSettingsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateApplicationSettingsOutput",
 }) as any as S.Schema<UpdateApplicationSettingsOutput>;
-
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-
-//# Operations
 export type DeleteResourcePermissionError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1667,6 +1683,7 @@ export const deleteResourcePermission: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePermission",
 }));
+
 export type DeregisterApplicationError =
   | InternalServerException
   | UnauthorizedException
@@ -1688,6 +1705,7 @@ export const deregisterApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterApplication",
 }));
+
 export type GetApplicationError =
   | InternalServerException
   | ValidationException
@@ -1708,6 +1726,7 @@ export const getApplication: API.OperationMethod<
   retry: Retry,
   operationName: "GetApplication",
 }));
+
 export type GetComponentError =
   | InternalServerException
   | UnauthorizedException
@@ -1729,6 +1748,7 @@ export const getComponent: API.OperationMethod<
   retry: Retry,
   operationName: "GetComponent",
 }));
+
 export type GetConfigurationCheckOperationError =
   | InternalServerException
   | ValidationException
@@ -1749,6 +1769,7 @@ export const getConfigurationCheckOperation: API.OperationMethod<
   retry: Retry,
   operationName: "GetConfigurationCheckOperation",
 }));
+
 export type GetDatabaseError =
   | InternalServerException
   | ValidationException
@@ -1769,6 +1790,7 @@ export const getDatabase: API.OperationMethod<
   retry: Retry,
   operationName: "GetDatabase",
 }));
+
 export type GetOperationError =
   | InternalServerException
   | ValidationException
@@ -1789,6 +1811,7 @@ export const getOperation: API.OperationMethod<
   retry: Retry,
   operationName: "GetOperation",
 }));
+
 export type GetResourcePermissionError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1814,6 +1837,7 @@ export const getResourcePermission: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePermission",
 }));
+
 export type ListApplicationsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1860,6 +1884,7 @@ export const listApplications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListComponentsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1908,6 +1933,7 @@ export const listComponents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListConfigurationCheckDefinitionsError =
   | InternalServerException
   | ValidationException
@@ -1949,6 +1975,7 @@ export const listConfigurationCheckDefinitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListConfigurationCheckOperationsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1995,6 +2022,7 @@ export const listConfigurationCheckOperations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDatabasesError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2041,6 +2069,7 @@ export const listDatabases: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOperationEventsError =
   | InternalServerException
   | ValidationException
@@ -2084,6 +2113,7 @@ export const listOperationEvents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOperationsError =
   | InternalServerException
   | ValidationException
@@ -2125,6 +2155,7 @@ export const listOperations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSubCheckResultsError =
   | InternalServerException
   | ValidationException
@@ -2166,6 +2197,7 @@ export const listSubCheckResults: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSubCheckRuleResultsError =
   | InternalServerException
   | ValidationException
@@ -2207,6 +2239,7 @@ export const listSubCheckRuleResults: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | ConflictException
   | ResourceNotFoundException
@@ -2228,6 +2261,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutResourcePermissionError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2253,6 +2287,7 @@ export const putResourcePermission: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourcePermission",
 }));
+
 export type RegisterApplicationError =
   | ConflictException
   | InternalServerException
@@ -2286,6 +2321,7 @@ export const registerApplication: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterApplication",
 }));
+
 export type StartApplicationError =
   | ConflictException
   | InternalServerException
@@ -2315,6 +2351,7 @@ export const startApplication: API.OperationMethod<
   retry: Retry,
   operationName: "StartApplication",
 }));
+
 export type StartApplicationRefreshError =
   | ConflictException
   | InternalServerException
@@ -2344,6 +2381,7 @@ export const startApplicationRefresh: API.OperationMethod<
   retry: Retry,
   operationName: "StartApplicationRefresh",
 }));
+
 export type StartConfigurationChecksError =
   | ConflictException
   | InternalServerException
@@ -2371,6 +2409,7 @@ export const startConfigurationChecks: API.OperationMethod<
   retry: Retry,
   operationName: "StartConfigurationChecks",
 }));
+
 export type StopApplicationError =
   | ConflictException
   | InternalServerException
@@ -2400,6 +2439,7 @@ export const stopApplication: API.OperationMethod<
   retry: Retry,
   operationName: "StopApplication",
 }));
+
 export type TagResourceError =
   | ConflictException
   | ResourceNotFoundException
@@ -2421,6 +2461,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | ConflictException
   | ResourceNotFoundException
@@ -2442,6 +2483,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateApplicationSettingsError =
   | ConflictException
   | InternalServerException

@@ -84,97 +84,55 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InsufficientCapacityException extends S.TaggedErrorClass<InsufficientCapacityException>()(
+  "InsufficientCapacityException",
+  { Message: S.optional(S.String) },
+) {}
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
+  "InvalidOperationException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidResourcePolicyException extends S.TaggedErrorClass<InvalidResourcePolicyException>()(
+  "InvalidResourcePolicyException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidTokenException extends S.TaggedErrorClass<InvalidTokenException>()(
+  "InvalidTokenException",
+  { Message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class LogDestinationPermissionException extends S.TaggedErrorClass<LogDestinationPermissionException>()(
+  "LogDestinationPermissionException",
+  { Message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+) {}
+export class ResourceOwnerCheckException extends S.TaggedErrorClass<ResourceOwnerCheckException>()(
+  "ResourceOwnerCheckException",
+  { Message: S.optional(S.String) },
+) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+) {}
+export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
+  "UnsupportedOperationException",
+  { Message: S.optional(S.String) },
+) {}
 export type TransitGatewayAttachmentId = string;
-export type ErrorMessage = string;
-export type UpdateToken = string;
-export type ResourceArn = string;
-export type ResourceName = string;
-export type AvailabilityZoneMappingString = string;
-export type CollectionMember_String = string;
-export type InsertPosition = number;
-export type Description = string;
-export type CreateTime = Date;
-export type DeleteTime = Date;
-export type ProxyConfigRuleGroupType = string;
-export type ProxyConfigRuleGroupPriority = number;
-export type TagKey = string;
-export type TagValue = string;
-export type VpcId = string;
-export type KeyId = string;
-export type TransitGatewayId = string;
-export type ResourceId = string;
-export type NumberOfAssociations = number;
-export type AWSAccountId = string;
-export type AvailabilityZone = string;
-export type AzSubnet = string;
-export type EndpointId = string;
-export type StatusMessage = string;
-export type CIDRCount = number;
-export type IPSetArn = string;
-export type AttachmentId = string;
-export type TransitGatewayAttachmentSyncStateMessage = string;
-export type Priority = number;
-export type ActionName = string;
-export type DimensionValue = string;
-export type DeepThreatInspection = boolean;
-export type TcpIdleTimeoutRangeBound = number;
-export type RuleVariableName = string;
-export type VariableDefinition = string;
-export type EnableTLSSessionHolding = boolean;
-export type RuleCapacity = number;
-export type LastUpdateTime = Date;
-export type NatGatewayId = string;
-export type NatGatewayPort = number;
-export type UpdateTime = Date;
-export type FailureCode = string;
-export type FailureMessage = string;
-export type ConditionOperator = string;
-export type ConditionKey = string;
-export type ProxyConditionValue = string;
-export type IPSetReferenceName = string;
-export type RulesString = string;
-export type Source = string;
-export type Port = string;
-export type Destination = string;
-export type Keyword = string;
-export type Setting = string;
-export type AddressDefinition = string;
-export type PortRangeBound = number;
-export type ProtocolNumber = number;
-export type StatusReason = string;
-export type VpcEndpointId = string;
-export type FlowOperationId = string;
-export type FlowRequestTimestamp = Date;
-export type Age = number;
-export type ProtocolString = string;
-export type HashMapKey = string;
-export type HashMapValue = string;
-export type EnableMonitoringDashboard = boolean;
-export type VpcEndpointServiceName = string;
-export type PrivateDNSName = string;
-export type PolicyString = string;
-export type VendorName = string;
-export type ProductId = string;
-export type ListingName = string;
-export type AnalysisReportId = string;
-export type AnalysisReportNextToken = string;
-export type PaginationMaxResults = number;
-export type Status = string;
-export type StartTime = Date;
-export type EndTime = Date;
-export type ReportTime = Date;
-export type FirstAccessed = Date;
-export type LastAccessed = Date;
-export type Domain = string;
-export type Count = number;
-export type PaginationToken = string;
-export type PacketCount = number;
-export type ByteCount = number;
-export type TagsPaginationMaxResults = number;
-export type ProxyRuleGroupPriorityResultPriority = number;
-
-//# Schemas
 export interface AcceptNetworkFirewallTransitGatewayAttachmentRequest {
   TransitGatewayAttachmentId: string;
 }
@@ -198,6 +156,7 @@ export type TransitGatewayAttachmentStatus =
   | "REJECTED"
   | (string & {});
 export const TransitGatewayAttachmentStatus = /*@__PURE__*/ S.String;
+
 export interface AcceptNetworkFirewallTransitGatewayAttachmentResponse {
   TransitGatewayAttachmentId: string;
   TransitGatewayAttachmentStatus: TransitGatewayAttachmentStatus;
@@ -211,6 +170,10 @@ export const AcceptNetworkFirewallTransitGatewayAttachmentResponse =
   ).annotate({
     identifier: "AcceptNetworkFirewallTransitGatewayAttachmentResponse",
   }) as any as S.Schema<AcceptNetworkFirewallTransitGatewayAttachmentResponse>;
+export type UpdateToken = string;
+export type ResourceArn = string;
+export type ResourceName = string;
+export type AvailabilityZoneMappingString = string;
 export interface AvailabilityZoneMapping {
   AvailabilityZone: string;
 }
@@ -291,8 +254,10 @@ export const AssociateFirewallPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateFirewallPolicyResponse",
 }) as any as S.Schema<AssociateFirewallPolicyResponse>;
+export type CollectionMember_String = string;
 export type IPAddressType = "DUALSTACK" | "IPV4" | "IPV6" | (string & {});
 export const IPAddressType = /*@__PURE__*/ S.String;
+
 export interface SubnetMapping {
   SubnetId: string;
   IPAddressType?: IPAddressType;
@@ -336,6 +301,7 @@ export const AssociateSubnetsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateSubnetsResponse",
 }) as any as S.Schema<AssociateSubnetsResponse>;
+export type InsertPosition = number;
 export interface ProxyRuleGroupAttachment {
   ProxyRuleGroupName?: string;
   InsertPosition?: number;
@@ -371,6 +337,11 @@ export const AttachRuleGroupsToProxyConfigurationRequest =
   ).annotate({
     identifier: "AttachRuleGroupsToProxyConfigurationRequest",
   }) as any as S.Schema<AttachRuleGroupsToProxyConfigurationRequest>;
+export type Description = string;
+export type CreateTime = Date;
+export type DeleteTime = Date;
+export type ProxyConfigRuleGroupType = string;
+export type ProxyConfigRuleGroupPriority = number;
 export interface ProxyConfigRuleGroup {
   ProxyRuleGroupName?: string;
   ProxyRuleGroupArn?: string;
@@ -392,6 +363,7 @@ export const ProxyConfigRuleGroupSet =
   /*@__PURE__*/ S.Array(ProxyConfigRuleGroup);
 export type ProxyRulePhaseAction = "ALLOW" | "DENY" | "ALERT" | (string & {});
 export const ProxyRulePhaseAction = /*@__PURE__*/ S.String;
+
 export interface ProxyConfigDefaultRulePhaseActionsRequest {
   PreDNS?: ProxyRulePhaseAction;
   PreREQUEST?: ProxyRulePhaseAction;
@@ -407,6 +379,8 @@ export const ProxyConfigDefaultRulePhaseActionsRequest =
   ).annotate({
     identifier: "ProxyConfigDefaultRulePhaseActionsRequest",
   }) as any as S.Schema<ProxyConfigDefaultRulePhaseActionsRequest>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -455,11 +429,14 @@ export const AttachRuleGroupsToProxyConfigurationResponse =
   ).annotate({
     identifier: "AttachRuleGroupsToProxyConfigurationResponse",
   }) as any as S.Schema<AttachRuleGroupsToProxyConfigurationResponse>;
+export type VpcId = string;
+export type KeyId = string;
 export type EncryptionType =
   | "CUSTOMER_KMS"
   | "AWS_OWNED_KMS_KEY"
   | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
+
 export interface EncryptionConfiguration {
   KeyId?: string;
   Type: EncryptionType;
@@ -471,8 +448,10 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionConfiguration>;
 export type EnabledAnalysisType = "TLS_SNI" | "HTTP_HOST" | (string & {});
 export const EnabledAnalysisType = /*@__PURE__*/ S.String;
+
 export type EnabledAnalysisTypes = EnabledAnalysisType[];
 export const EnabledAnalysisTypes = /*@__PURE__*/ S.Array(EnabledAnalysisType);
+export type TransitGatewayId = string;
 export interface CreateFirewallRequest {
   FirewallName: string;
   FirewallPolicyArn: string;
@@ -511,6 +490,9 @@ export const CreateFirewallRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFirewallRequest",
 }) as any as S.Schema<CreateFirewallRequest>;
+export type ResourceId = string;
+export type NumberOfAssociations = number;
+export type AWSAccountId = string;
 export interface Firewall {
   FirewallName?: string;
   FirewallArn?: string;
@@ -559,12 +541,17 @@ export type FirewallStatusValue =
   | "READY"
   | (string & {});
 export const FirewallStatusValue = /*@__PURE__*/ S.String;
+
 export type ConfigurationSyncState =
   | "PENDING"
   | "IN_SYNC"
   | "CAPACITY_CONSTRAINED"
   | (string & {});
 export const ConfigurationSyncState = /*@__PURE__*/ S.String;
+
+export type AvailabilityZone = string;
+export type AzSubnet = string;
+export type EndpointId = string;
 export type AttachmentStatus =
   | "CREATING"
   | "DELETING"
@@ -574,6 +561,8 @@ export type AttachmentStatus =
   | "READY"
   | (string & {});
 export const AttachmentStatus = /*@__PURE__*/ S.String;
+
+export type StatusMessage = string;
 export interface Attachment {
   SubnetId?: string;
   EndpointId?: string;
@@ -596,6 +585,7 @@ export type PerObjectSyncStatus =
   | "DEPRECATED"
   | (string & {});
 export const PerObjectSyncStatus = /*@__PURE__*/ S.String;
+
 export interface PerObjectStatus {
   SyncStatus?: PerObjectSyncStatus;
   UpdateToken?: string;
@@ -628,6 +618,8 @@ export const SyncStates = /*@__PURE__*/ S.Record(
   S.String,
   SyncState.pipe(S.optional),
 );
+export type CIDRCount = number;
+export type IPSetArn = string;
 export interface IPSetMetadata {
   ResolvedCIDRCount?: number;
 }
@@ -659,6 +651,8 @@ export const CapacityUsageSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CapacityUsageSummary",
 }) as any as S.Schema<CapacityUsageSummary>;
+export type AttachmentId = string;
+export type TransitGatewayAttachmentSyncStateMessage = string;
 export interface TransitGatewayAttachmentSyncState {
   AttachmentId?: string;
   TransitGatewayAttachmentStatus?: TransitGatewayAttachmentStatus;
@@ -703,6 +697,7 @@ export const CreateFirewallResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFirewallResponse",
 }) as any as S.Schema<CreateFirewallResponse>;
+export type Priority = number;
 export interface StatelessRuleGroupReference {
   ResourceArn: string;
   Priority: number;
@@ -718,6 +713,8 @@ export const StatelessRuleGroupReferences = /*@__PURE__*/ S.Array(
 );
 export type StatelessActions = string[];
 export const StatelessActions = /*@__PURE__*/ S.Array(S.String);
+export type ActionName = string;
+export type DimensionValue = string;
 export interface Dimension {
   Value: string;
 }
@@ -753,6 +750,7 @@ export type CustomActions = CustomAction[];
 export const CustomActions = /*@__PURE__*/ S.Array(CustomAction);
 export type OverrideAction = "DROP_TO_ALERT" | (string & {});
 export const OverrideAction = /*@__PURE__*/ S.String;
+
 export interface StatefulRuleGroupOverride {
   Action?: OverrideAction;
 }
@@ -761,6 +759,7 @@ export const StatefulRuleGroupOverride = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StatefulRuleGroupOverride",
 }) as any as S.Schema<StatefulRuleGroupOverride>;
+export type DeepThreatInspection = boolean;
 export interface StatefulRuleGroupReference {
   ResourceArn: string;
   Priority?: number;
@@ -785,12 +784,15 @@ export type StatefulActions = string[];
 export const StatefulActions = /*@__PURE__*/ S.Array(S.String);
 export type RuleOrder = "DEFAULT_ACTION_ORDER" | "STRICT_ORDER" | (string & {});
 export const RuleOrder = /*@__PURE__*/ S.String;
+
 export type StreamExceptionPolicy =
   | "DROP"
   | "CONTINUE"
   | "REJECT"
   | (string & {});
 export const StreamExceptionPolicy = /*@__PURE__*/ S.String;
+
+export type TcpIdleTimeoutRangeBound = number;
 export interface FlowTimeouts {
   TcpIdleTimeoutSeconds?: number;
 }
@@ -811,6 +813,8 @@ export const StatefulEngineOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StatefulEngineOptions",
 }) as any as S.Schema<StatefulEngineOptions>;
+export type RuleVariableName = string;
+export type VariableDefinition = string;
 export type VariableDefinitionList = string[];
 export const VariableDefinitionList = /*@__PURE__*/ S.Array(S.String);
 export interface IPSet {
@@ -829,6 +833,7 @@ export const PolicyVariables = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PolicyVariables",
 }) as any as S.Schema<PolicyVariables>;
+export type EnableTLSSessionHolding = boolean;
 export interface FirewallPolicy {
   StatelessRuleGroupReferences?: StatelessRuleGroupReference[];
   StatelessDefaultActions: string[];
@@ -879,6 +884,9 @@ export const CreateFirewallPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateFirewallPolicyRequest>;
 export type ResourceStatus = "ACTIVE" | "DELETING" | "ERROR" | (string & {});
 export const ResourceStatus = /*@__PURE__*/ S.String;
+
+export type RuleCapacity = number;
+export type LastUpdateTime = Date;
 export interface FirewallPolicyResponse {
   FirewallPolicyName: string;
   FirewallPolicyArn: string;
@@ -925,8 +933,11 @@ export const CreateFirewallPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFirewallPolicyResponse",
 }) as any as S.Schema<CreateFirewallPolicyResponse>;
+export type NatGatewayId = string;
+export type NatGatewayPort = number;
 export type ListenerPropertyType = "HTTP" | "HTTPS" | (string & {});
 export const ListenerPropertyType = /*@__PURE__*/ S.String;
+
 export interface ListenerPropertyRequest {
   Port: number;
   Type: ListenerPropertyType;
@@ -942,6 +953,7 @@ export const ListenerPropertiesRequest = /*@__PURE__*/ S.Array(
 );
 export type TlsInterceptMode = "ENABLED" | "DISABLED" | (string & {});
 export const TlsInterceptMode = /*@__PURE__*/ S.String;
+
 export interface TlsInterceptPropertiesRequest {
   PcaArn?: string;
   TlsInterceptMode?: TlsInterceptMode;
@@ -978,6 +990,9 @@ export const CreateProxyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProxyRequest",
 }) as any as S.Schema<CreateProxyRequest>;
+export type UpdateTime = Date;
+export type FailureCode = string;
+export type FailureMessage = string;
 export type ProxyState =
   | "ATTACHING"
   | "ATTACHED"
@@ -987,12 +1002,14 @@ export type ProxyState =
   | "DETACH_FAILED"
   | (string & {});
 export const ProxyState = /*@__PURE__*/ S.String;
+
 export type ProxyModifyState =
   | "MODIFYING"
   | "COMPLETED"
   | "FAILED"
   | (string & {});
 export const ProxyModifyState = /*@__PURE__*/ S.String;
+
 export interface ListenerProperty {
   Port?: number;
   Type?: ListenerPropertyType;
@@ -1102,6 +1119,9 @@ export const CreateProxyConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProxyConfigurationResponse",
 }) as any as S.Schema<CreateProxyConfigurationResponse>;
+export type ConditionOperator = string;
+export type ConditionKey = string;
+export type ProxyConditionValue = string;
 export type ProxyConditionValueList = string[];
 export const ProxyConditionValueList = /*@__PURE__*/ S.Array(S.String);
 export interface ProxyRuleCondition {
@@ -1280,6 +1300,7 @@ export interface RuleVariables {
 export const RuleVariables = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IPSets: S.optional(IPSets), PortSets: S.optional(PortSets) }),
 ).annotate({ identifier: "RuleVariables" }) as any as S.Schema<RuleVariables>;
+export type IPSetReferenceName = string;
 export interface IPSetReference {
   ReferenceArn?: string;
 }
@@ -1297,10 +1318,12 @@ export interface ReferenceSets {
 export const ReferenceSets = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ IPSetReferences: S.optional(IPSetReferenceMap) }),
 ).annotate({ identifier: "ReferenceSets" }) as any as S.Schema<ReferenceSets>;
+export type RulesString = string;
 export type RuleTargets = string[];
 export const RuleTargets = /*@__PURE__*/ S.Array(S.String);
 export type TargetType = "TLS_SNI" | "HTTP_HOST" | (string & {});
 export const TargetType = /*@__PURE__*/ S.String;
+
 export type TargetTypes = TargetType[];
 export const TargetTypes = /*@__PURE__*/ S.Array(TargetType);
 export type GeneratedRulesType =
@@ -1310,6 +1333,7 @@ export type GeneratedRulesType =
   | "ALERTLIST"
   | (string & {});
 export const GeneratedRulesType = /*@__PURE__*/ S.String;
+
 export interface RulesSourceList {
   Targets: string[];
   TargetTypes: TargetType[];
@@ -1331,6 +1355,7 @@ export type StatefulAction =
   | "REJECT"
   | (string & {});
 export const StatefulAction = /*@__PURE__*/ S.String;
+
 export type StatefulRuleProtocol =
   | "IP"
   | "TCP"
@@ -1355,8 +1380,13 @@ export type StatefulRuleProtocol =
   | "QUIC"
   | (string & {});
 export const StatefulRuleProtocol = /*@__PURE__*/ S.String;
+
+export type Source = string;
+export type Port = string;
 export type StatefulRuleDirection = "FORWARD" | "ANY" | (string & {});
 export const StatefulRuleDirection = /*@__PURE__*/ S.String;
+
+export type Destination = string;
 export interface Header {
   Protocol: StatefulRuleProtocol;
   Source: string;
@@ -1375,6 +1405,8 @@ export const Header = /*@__PURE__*/ S.suspend(() =>
     DestinationPort: S.String,
   }),
 ).annotate({ identifier: "Header" }) as any as S.Schema<Header>;
+export type Keyword = string;
+export type Setting = string;
 export type Settings = string[];
 export const Settings = /*@__PURE__*/ S.Array(S.String);
 export interface RuleOption {
@@ -1400,6 +1432,7 @@ export const StatefulRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StatefulRule" }) as any as S.Schema<StatefulRule>;
 export type StatefulRules = StatefulRule[];
 export const StatefulRules = /*@__PURE__*/ S.Array(StatefulRule);
+export type AddressDefinition = string;
 export interface Address {
   AddressDefinition: string;
 }
@@ -1408,6 +1441,7 @@ export const Address = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Address" }) as any as S.Schema<Address>;
 export type Addresses = Address[];
 export const Addresses = /*@__PURE__*/ S.Array(Address);
+export type PortRangeBound = number;
 export interface PortRange {
   FromPort: number;
   ToPort: number;
@@ -1417,6 +1451,7 @@ export const PortRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PortRange" }) as any as S.Schema<PortRange>;
 export type PortRanges = PortRange[];
 export const PortRanges = /*@__PURE__*/ S.Array(PortRange);
+export type ProtocolNumber = number;
 export type ProtocolNumbers = number[];
 export const ProtocolNumbers = /*@__PURE__*/ S.Array(S.Number);
 export type TCPFlag =
@@ -1430,6 +1465,7 @@ export type TCPFlag =
   | "CWR"
   | (string & {});
 export const TCPFlag = /*@__PURE__*/ S.String;
+
 export type Flags = TCPFlag[];
 export const Flags = /*@__PURE__*/ S.Array(TCPFlag);
 export interface TCPFlagField {
@@ -1531,6 +1567,7 @@ export type RuleGroupType =
   | "STATEFUL_DOMAIN"
   | (string & {});
 export const RuleGroupType = /*@__PURE__*/ S.String;
+
 export interface SourceMetadata {
   SourceArn?: string;
   SourceUpdateToken?: string;
@@ -1543,6 +1580,7 @@ export const SourceMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceMetadata" }) as any as S.Schema<SourceMetadata>;
 export type SummaryRuleOption = "SID" | "MSG" | "METADATA" | (string & {});
 export const SummaryRuleOption = /*@__PURE__*/ S.String;
+
 export type SummaryRuleOptions = SummaryRuleOption[];
 export const SummaryRuleOptions = /*@__PURE__*/ S.Array(SummaryRuleOption);
 export interface SummaryConfiguration {
@@ -1594,6 +1632,7 @@ export type IdentifiedType =
   | "STATELESS_RULE_CONTAINS_TCP_FLAGS"
   | (string & {});
 export const IdentifiedType = /*@__PURE__*/ S.String;
+
 export interface AnalysisResult {
   IdentifiedRuleIds?: string[];
   IdentifiedType?: IdentifiedType;
@@ -1693,6 +1732,7 @@ export const ServerCertificateScopes = /*@__PURE__*/ S.Array(
 );
 export type RevocationCheckAction = "PASS" | "DROP" | "REJECT" | (string & {});
 export const RevocationCheckAction = /*@__PURE__*/ S.String;
+
 export interface CheckCertificateRevocationStatusActions {
   RevokedStatusAction?: RevocationCheckAction;
   UnknownStatusAction?: RevocationCheckAction;
@@ -1761,6 +1801,7 @@ export const CreateTLSInspectionConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateTLSInspectionConfigurationRequest",
 }) as any as S.Schema<CreateTLSInspectionConfigurationRequest>;
+export type StatusReason = string;
 export interface TlsCertificateData {
   CertificateArn?: string;
   CertificateSerial?: string;
@@ -2272,6 +2313,8 @@ export const DescribeFirewallPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFirewallPolicyResponse",
 }) as any as S.Schema<DescribeFirewallPolicyResponse>;
+export type VpcEndpointId = string;
+export type FlowOperationId = string;
 export interface DescribeFlowOperationRequest {
   FirewallArn: string;
   AvailabilityZone?: string;
@@ -2294,6 +2337,7 @@ export const DescribeFlowOperationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeFlowOperationRequest>;
 export type FlowOperationType = "FLOW_FLUSH" | "FLOW_CAPTURE" | (string & {});
 export const FlowOperationType = /*@__PURE__*/ S.String;
+
 export type FlowOperationStatus =
   | "COMPLETED"
   | "IN_PROGRESS"
@@ -2301,6 +2345,10 @@ export type FlowOperationStatus =
   | "COMPLETED_WITH_ERRORS"
   | (string & {});
 export const FlowOperationStatus = /*@__PURE__*/ S.String;
+
+export type FlowRequestTimestamp = Date;
+export type Age = number;
+export type ProtocolString = string;
 export type ProtocolStrings = string[];
 export const ProtocolStrings = /*@__PURE__*/ S.Array(S.String);
 export interface FlowFilter {
@@ -2377,12 +2425,16 @@ export const DescribeLoggingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeLoggingConfigurationRequest>;
 export type LogType = "ALERT" | "FLOW" | "TLS" | (string & {});
 export const LogType = /*@__PURE__*/ S.String;
+
 export type LogDestinationType =
   | "S3"
   | "CloudWatchLogs"
   | "KinesisDataFirehose"
   | (string & {});
 export const LogDestinationType = /*@__PURE__*/ S.String;
+
+export type HashMapKey = string;
+export type HashMapValue = string;
 export type LogDestinationMap = { [key: string]: string | undefined };
 export const LogDestinationMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2413,6 +2465,7 @@ export const LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LoggingConfiguration",
 }) as any as S.Schema<LoggingConfiguration>;
+export type EnableMonitoringDashboard = boolean;
 export interface DescribeLoggingConfigurationResponse {
   FirewallArn?: string;
   LoggingConfiguration?: LoggingConfiguration;
@@ -2442,6 +2495,8 @@ export const DescribeProxyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeProxyRequest",
 }) as any as S.Schema<DescribeProxyRequest>;
+export type VpcEndpointServiceName = string;
+export type PrivateDNSName = string;
 export interface DescribeProxyResource {
   ProxyName?: string;
   ProxyArn?: string;
@@ -2586,6 +2641,7 @@ export const DescribeResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeResourcePolicyRequest",
 }) as any as S.Schema<DescribeResourcePolicyRequest>;
+export type PolicyString = string;
 export interface DescribeResourcePolicyResponse {
   Policy?: string;
 }
@@ -2642,6 +2698,9 @@ export const DescribeRuleGroupMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRuleGroupMetadataRequest",
 }) as any as S.Schema<DescribeRuleGroupMetadataRequest>;
+export type VendorName = string;
+export type ProductId = string;
+export type ListingName = string;
 export interface DescribeRuleGroupMetadataResponse {
   RuleGroupArn: string;
   RuleGroupName: string;
@@ -2882,6 +2941,9 @@ export const DisassociateSubnetsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisassociateSubnetsResponse",
 }) as any as S.Schema<DisassociateSubnetsResponse>;
+export type AnalysisReportId = string;
+export type AnalysisReportNextToken = string;
+export type PaginationMaxResults = number;
 export interface GetAnalysisReportResultsRequest {
   FirewallName?: string;
   AnalysisReportId: string;
@@ -2902,6 +2964,14 @@ export const GetAnalysisReportResultsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAnalysisReportResultsRequest",
 }) as any as S.Schema<GetAnalysisReportResultsRequest>;
+export type Status = string;
+export type StartTime = Date;
+export type EndTime = Date;
+export type ReportTime = Date;
+export type FirstAccessed = Date;
+export type LastAccessed = Date;
+export type Domain = string;
+export type Count = number;
 export interface Hits {
   Count?: number;
 }
@@ -2960,6 +3030,7 @@ export const GetAnalysisReportResultsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAnalysisReportResultsResponse",
 }) as any as S.Schema<GetAnalysisReportResultsResponse>;
+export type PaginationToken = string;
 export interface ListAnalysisReportsRequest {
   FirewallName?: string;
   FirewallArn?: string;
@@ -3113,6 +3184,8 @@ export const ListFlowOperationResultsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFlowOperationResultsRequest",
 }) as any as S.Schema<ListFlowOperationResultsRequest>;
+export type PacketCount = number;
+export type ByteCount = number;
 export interface Flow {
   SourceAddress?: Address;
   DestinationAddress?: Address;
@@ -3333,6 +3406,7 @@ export const ListProxyRuleGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProxyRuleGroupsResponse>;
 export type ResourceManagedStatus = "MANAGED" | "ACCOUNT" | (string & {});
 export const ResourceManagedStatus = /*@__PURE__*/ S.String;
+
 export type ResourceManagedType =
   | "AWS_MANAGED_THREAT_SIGNATURES"
   | "AWS_MANAGED_DOMAIN_LISTS"
@@ -3340,11 +3414,13 @@ export type ResourceManagedType =
   | "PARTNER_MANAGED"
   | (string & {});
 export const ResourceManagedType = /*@__PURE__*/ S.String;
+
 export type SubscriptionStatus =
   | "NOT_SUBSCRIBED"
   | "SUBSCRIBED"
   | (string & {});
 export const SubscriptionStatus = /*@__PURE__*/ S.String;
+
 export interface ListRuleGroupsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -3395,6 +3471,7 @@ export const ListRuleGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRuleGroupsResponse",
 }) as any as S.Schema<ListRuleGroupsResponse>;
+export type TagsPaginationMaxResults = number;
 export interface ListTagsForResourceRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -4096,6 +4173,7 @@ export const UpdateProxyRuleGroupPrioritiesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateProxyRuleGroupPrioritiesRequest",
 }) as any as S.Schema<UpdateProxyRuleGroupPrioritiesRequest>;
+export type ProxyRuleGroupPriorityResultPriority = number;
 export interface ProxyRuleGroupPriorityResult {
   ProxyRuleGroupName?: string;
   Priority?: number;
@@ -4131,6 +4209,7 @@ export type RuleGroupRequestPhase =
   | "POST_RES"
   | (string & {});
 export const RuleGroupRequestPhase = /*@__PURE__*/ S.String;
+
 export interface ProxyRulePriority {
   ProxyRuleName?: string;
   NewPosition?: number;
@@ -4297,58 +4376,7 @@ export const UpdateTLSInspectionConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateTLSInspectionConfigurationResponse",
 }) as any as S.Schema<UpdateTLSInspectionConfigurationResponse>;
-
-//# Errors
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-) {}
-export class InsufficientCapacityException extends S.TaggedErrorClass<InsufficientCapacityException>()(
-  "InsufficientCapacityException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
-  "InvalidOperationException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidTokenException extends S.TaggedErrorClass<InvalidTokenException>()(
-  "InvalidTokenException",
-  { Message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidResourcePolicyException extends S.TaggedErrorClass<InvalidResourcePolicyException>()(
-  "InvalidResourcePolicyException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceOwnerCheckException extends S.TaggedErrorClass<ResourceOwnerCheckException>()(
-  "ResourceOwnerCheckException",
-  { Message: S.optional(S.String) },
-) {}
-export class LogDestinationPermissionException extends S.TaggedErrorClass<LogDestinationPermissionException>()(
-  "LogDestinationPermissionException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type AcceptNetworkFirewallTransitGatewayAttachmentError =
   | InternalServerError
   | InvalidRequestException
@@ -4382,6 +4410,7 @@ export const acceptNetworkFirewallTransitGatewayAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptNetworkFirewallTransitGatewayAttachment",
 }));
+
 export type AssociateAvailabilityZonesError =
   | InsufficientCapacityException
   | InternalServerError
@@ -4417,6 +4446,7 @@ export const associateAvailabilityZones: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateAvailabilityZones",
 }));
+
 export type AssociateFirewallPolicyError =
   | InternalServerError
   | InvalidOperationException
@@ -4453,6 +4483,7 @@ export const associateFirewallPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateFirewallPolicy",
 }));
+
 export type AssociateSubnetsError =
   | InsufficientCapacityException
   | InternalServerError
@@ -4492,6 +4523,7 @@ export const associateSubnets: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateSubnets",
 }));
+
 export type AttachRuleGroupsToProxyConfigurationError =
   | InternalServerError
   | InvalidRequestException
@@ -4521,6 +4553,7 @@ export const attachRuleGroupsToProxyConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "AttachRuleGroupsToProxyConfiguration",
 }));
+
 export type CreateFirewallError =
   | InsufficientCapacityException
   | InternalServerError
@@ -4565,6 +4598,7 @@ export const createFirewall: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFirewall",
 }));
+
 export type CreateFirewallPolicyError =
   | InsufficientCapacityException
   | InternalServerError
@@ -4598,6 +4632,7 @@ export const createFirewallPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFirewallPolicy",
 }));
+
 export type CreateProxyError =
   | InternalServerError
   | InvalidRequestException
@@ -4635,6 +4670,7 @@ export const createProxy: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProxy",
 }));
+
 export type CreateProxyConfigurationError =
   | InternalServerError
   | InvalidRequestException
@@ -4670,6 +4706,7 @@ export const createProxyConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProxyConfiguration",
 }));
+
 export type CreateProxyRuleGroupError =
   | InternalServerError
   | InvalidRequestException
@@ -4705,6 +4742,7 @@ export const createProxyRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProxyRuleGroup",
 }));
+
 export type CreateProxyRulesError =
   | InternalServerError
   | InvalidRequestException
@@ -4730,6 +4768,7 @@ export const createProxyRules: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProxyRules",
 }));
+
 export type CreateRuleGroupError =
   | InsufficientCapacityException
   | InternalServerError
@@ -4763,6 +4802,7 @@ export const createRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRuleGroup",
 }));
+
 export type CreateTLSInspectionConfigurationError =
   | InsufficientCapacityException
   | InternalServerError
@@ -4801,6 +4841,7 @@ export const createTLSInspectionConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTLSInspectionConfiguration",
 }));
+
 export type CreateVpcEndpointAssociationError =
   | InsufficientCapacityException
   | InternalServerError
@@ -4834,6 +4875,7 @@ export const createVpcEndpointAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpcEndpointAssociation",
 }));
+
 export type DeleteFirewallError =
   | InternalServerError
   | InvalidOperationException
@@ -4877,6 +4919,7 @@ export const deleteFirewall: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFirewall",
 }));
+
 export type DeleteFirewallPolicyError =
   | InternalServerError
   | InvalidOperationException
@@ -4908,6 +4951,7 @@ export const deleteFirewallPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFirewallPolicy",
 }));
+
 export type DeleteNetworkFirewallTransitGatewayAttachmentError =
   | InternalServerError
   | InvalidRequestException
@@ -4939,6 +4983,7 @@ export const deleteNetworkFirewallTransitGatewayAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNetworkFirewallTransitGatewayAttachment",
 }));
+
 export type DeleteProxyError =
   | InternalServerError
   | InvalidRequestException
@@ -4970,6 +5015,7 @@ export const deleteProxy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProxy",
 }));
+
 export type DeleteProxyConfigurationError =
   | InternalServerError
   | InvalidRequestException
@@ -4997,6 +5043,7 @@ export const deleteProxyConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProxyConfiguration",
 }));
+
 export type DeleteProxyRuleGroupError =
   | InternalServerError
   | InvalidRequestException
@@ -5024,6 +5071,7 @@ export const deleteProxyRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProxyRuleGroup",
 }));
+
 export type DeleteProxyRulesError =
   | InternalServerError
   | InvalidRequestException
@@ -5051,6 +5099,7 @@ export const deleteProxyRules: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProxyRules",
 }));
+
 export type DeleteResourcePolicyError =
   | InternalServerError
   | InvalidRequestException
@@ -5080,6 +5129,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteRuleGroupError =
   | InternalServerError
   | InvalidOperationException
@@ -5111,6 +5161,7 @@ export const deleteRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRuleGroup",
 }));
+
 export type DeleteTLSInspectionConfigurationError =
   | InternalServerError
   | InvalidOperationException
@@ -5140,6 +5191,7 @@ export const deleteTLSInspectionConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTLSInspectionConfiguration",
 }));
+
 export type DeleteVpcEndpointAssociationError =
   | InternalServerError
   | InvalidOperationException
@@ -5176,6 +5228,7 @@ export const deleteVpcEndpointAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpcEndpointAssociation",
 }));
+
 export type DescribeFirewallError =
   | InternalServerError
   | InvalidRequestException
@@ -5203,6 +5256,7 @@ export const describeFirewall: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFirewall",
 }));
+
 export type DescribeFirewallMetadataError =
   | InternalServerError
   | InvalidRequestException
@@ -5231,6 +5285,7 @@ export const describeFirewallMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFirewallMetadata",
 }));
+
 export type DescribeFirewallPolicyError =
   | InternalServerError
   | InvalidRequestException
@@ -5258,6 +5313,7 @@ export const describeFirewallPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFirewallPolicy",
 }));
+
 export type DescribeFlowOperationError =
   | InternalServerError
   | InvalidRequestException
@@ -5285,6 +5341,7 @@ export const describeFlowOperation: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFlowOperation",
 }));
+
 export type DescribeLoggingConfigurationError =
   | InternalServerError
   | InvalidRequestException
@@ -5312,6 +5369,7 @@ export const describeLoggingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLoggingConfiguration",
 }));
+
 export type DescribeProxyError =
   | InternalServerError
   | InvalidRequestException
@@ -5339,6 +5397,7 @@ export const describeProxy: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeProxy",
 }));
+
 export type DescribeProxyConfigurationError =
   | InternalServerError
   | InvalidRequestException
@@ -5366,6 +5425,7 @@ export const describeProxyConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeProxyConfiguration",
 }));
+
 export type DescribeProxyRuleError =
   | InternalServerError
   | InvalidRequestException
@@ -5393,6 +5453,7 @@ export const describeProxyRule: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeProxyRule",
 }));
+
 export type DescribeProxyRuleGroupError =
   | InternalServerError
   | InvalidRequestException
@@ -5420,6 +5481,7 @@ export const describeProxyRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeProxyRuleGroup",
 }));
+
 export type DescribeResourcePolicyError =
   | InternalServerError
   | InvalidRequestException
@@ -5447,6 +5509,7 @@ export const describeResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeResourcePolicy",
 }));
+
 export type DescribeRuleGroupError =
   | InternalServerError
   | InvalidRequestException
@@ -5474,6 +5537,7 @@ export const describeRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRuleGroup",
 }));
+
 export type DescribeRuleGroupMetadataError =
   | InternalServerError
   | InvalidRequestException
@@ -5503,6 +5567,7 @@ export const describeRuleGroupMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRuleGroupMetadata",
 }));
+
 export type DescribeRuleGroupSummaryError =
   | InternalServerError
   | InvalidRequestException
@@ -5534,6 +5599,7 @@ export const describeRuleGroupSummary: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRuleGroupSummary",
 }));
+
 export type DescribeTLSInspectionConfigurationError =
   | InternalServerError
   | InvalidRequestException
@@ -5561,6 +5627,7 @@ export const describeTLSInspectionConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTLSInspectionConfiguration",
 }));
+
 export type DescribeVpcEndpointAssociationError =
   | InternalServerError
   | InvalidRequestException
@@ -5588,6 +5655,7 @@ export const describeVpcEndpointAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpcEndpointAssociation",
 }));
+
 export type DetachRuleGroupsFromProxyConfigurationError =
   | InternalServerError
   | InvalidRequestException
@@ -5617,6 +5685,7 @@ export const detachRuleGroupsFromProxyConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DetachRuleGroupsFromProxyConfiguration",
 }));
+
 export type DisassociateAvailabilityZonesError =
   | InternalServerError
   | InvalidOperationException
@@ -5652,6 +5721,7 @@ export const disassociateAvailabilityZones: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateAvailabilityZones",
 }));
+
 export type DisassociateSubnetsError =
   | InternalServerError
   | InvalidOperationException
@@ -5685,6 +5755,7 @@ export const disassociateSubnets: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateSubnets",
 }));
+
 export type GetAnalysisReportResultsError =
   | InternalServerError
   | InvalidRequestException
@@ -5735,6 +5806,7 @@ export const getAnalysisReportResults: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAnalysisReportsError =
   | InternalServerError
   | InvalidRequestException
@@ -5783,6 +5855,7 @@ export const listAnalysisReports: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFirewallPoliciesError =
   | InternalServerError
   | InvalidRequestException
@@ -5827,6 +5900,7 @@ export const listFirewallPolicies: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFirewallsError =
   | InternalServerError
   | InvalidRequestException
@@ -5873,6 +5947,7 @@ export const listFirewalls: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFlowOperationResultsError =
   | InternalServerError
   | InvalidRequestException
@@ -5926,6 +6001,7 @@ export const listFlowOperationResults: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFlowOperationsError =
   | InternalServerError
   | InvalidRequestException
@@ -5980,6 +6056,7 @@ export const listFlowOperations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProxiesError =
   | InternalServerError
   | InvalidRequestException
@@ -6024,6 +6101,7 @@ export const listProxies: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProxyConfigurationsError =
   | InternalServerError
   | InvalidRequestException
@@ -6074,6 +6152,7 @@ export const listProxyConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProxyRuleGroupsError =
   | InternalServerError
   | InvalidRequestException
@@ -6124,6 +6203,7 @@ export const listProxyRuleGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRuleGroupsError =
   | InternalServerError
   | InvalidRequestException
@@ -6168,6 +6248,7 @@ export const listRuleGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerError
   | InvalidRequestException
@@ -6223,6 +6304,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTLSInspectionConfigurationsError =
   | InternalServerError
   | InvalidRequestException
@@ -6265,6 +6347,7 @@ export const listTLSInspectionConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListVpcEndpointAssociationsError =
   | InternalServerError
   | InvalidRequestException
@@ -6311,6 +6394,7 @@ export const listVpcEndpointAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutResourcePolicyError =
   | InternalServerError
   | InvalidRequestException
@@ -6353,6 +6437,7 @@ export const putResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type RejectNetworkFirewallTransitGatewayAttachmentError =
   | InternalServerError
   | InvalidRequestException
@@ -6386,6 +6471,7 @@ export const rejectNetworkFirewallTransitGatewayAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "RejectNetworkFirewallTransitGatewayAttachment",
 }));
+
 export type StartAnalysisReportError =
   | InternalServerError
   | InvalidRequestException
@@ -6415,6 +6501,7 @@ export const startAnalysisReport: API.OperationMethod<
   retry: Retry,
   operationName: "StartAnalysisReport",
 }));
+
 export type StartFlowCaptureError =
   | InternalServerError
   | InvalidRequestException
@@ -6450,6 +6537,7 @@ export const startFlowCapture: API.OperationMethod<
   retry: Retry,
   operationName: "StartFlowCapture",
 }));
+
 export type StartFlowFlushError =
   | InternalServerError
   | InvalidRequestException
@@ -6483,6 +6571,7 @@ export const startFlowFlush: API.OperationMethod<
   retry: Retry,
   operationName: "StartFlowFlush",
 }));
+
 export type TagResourceError =
   | InternalServerError
   | InvalidRequestException
@@ -6516,6 +6605,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerError
   | InvalidRequestException
@@ -6550,6 +6640,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAvailabilityZoneChangeProtectionError =
   | InternalServerError
   | InvalidRequestException
@@ -6583,6 +6674,7 @@ export const updateAvailabilityZoneChangeProtection: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAvailabilityZoneChangeProtection",
 }));
+
 export type UpdateFirewallAnalysisSettingsError =
   | InternalServerError
   | InvalidRequestException
@@ -6612,6 +6704,7 @@ export const updateFirewallAnalysisSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFirewallAnalysisSettings",
 }));
+
 export type UpdateFirewallDeleteProtectionError =
   | InternalServerError
   | InvalidRequestException
@@ -6646,6 +6739,7 @@ export const updateFirewallDeleteProtection: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFirewallDeleteProtection",
 }));
+
 export type UpdateFirewallDescriptionError =
   | InternalServerError
   | InvalidRequestException
@@ -6676,6 +6770,7 @@ export const updateFirewallDescription: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFirewallDescription",
 }));
+
 export type UpdateFirewallEncryptionConfigurationError =
   | InternalServerError
   | InvalidRequestException
@@ -6707,6 +6802,7 @@ export const updateFirewallEncryptionConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFirewallEncryptionConfiguration",
 }));
+
 export type UpdateFirewallPolicyError =
   | InternalServerError
   | InvalidRequestException
@@ -6736,6 +6832,7 @@ export const updateFirewallPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFirewallPolicy",
 }));
+
 export type UpdateFirewallPolicyChangeProtectionError =
   | InternalServerError
   | InvalidRequestException
@@ -6769,6 +6866,7 @@ export const updateFirewallPolicyChangeProtection: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFirewallPolicyChangeProtection",
 }));
+
 export type UpdateLoggingConfigurationError =
   | InternalServerError
   | InvalidRequestException
@@ -6823,6 +6921,7 @@ export const updateLoggingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLoggingConfiguration",
 }));
+
 export type UpdateProxyError =
   | InternalServerError
   | InvalidRequestException
@@ -6852,6 +6951,7 @@ export const updateProxy: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProxy",
 }));
+
 export type UpdateProxyConfigurationError =
   | InternalServerError
   | InvalidRequestException
@@ -6879,6 +6979,7 @@ export const updateProxyConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProxyConfiguration",
 }));
+
 export type UpdateProxyRuleError =
   | InternalServerError
   | InvalidRequestException
@@ -6906,6 +7007,7 @@ export const updateProxyRule: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProxyRule",
 }));
+
 export type UpdateProxyRuleGroupPrioritiesError =
   | InternalServerError
   | InvalidRequestException
@@ -6933,6 +7035,7 @@ export const updateProxyRuleGroupPriorities: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProxyRuleGroupPriorities",
 }));
+
 export type UpdateProxyRulePrioritiesError =
   | InternalServerError
   | InvalidRequestException
@@ -6960,6 +7063,7 @@ export const updateProxyRulePriorities: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProxyRulePriorities",
 }));
+
 export type UpdateRuleGroupError =
   | InternalServerError
   | InvalidRequestException
@@ -6995,6 +7099,7 @@ export const updateRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRuleGroup",
 }));
+
 export type UpdateSubnetChangeProtectionError =
   | InternalServerError
   | InvalidRequestException
@@ -7026,6 +7131,7 @@ export const updateSubnetChangeProtection: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSubnetChangeProtection",
 }));
+
 export type UpdateTLSInspectionConfigurationError =
   | InternalServerError
   | InvalidRequestException

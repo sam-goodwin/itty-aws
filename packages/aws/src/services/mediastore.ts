@@ -85,25 +85,33 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ContainerInUseException extends S.TaggedErrorClass<ContainerInUseException>()(
+  "ContainerInUseException",
+  { Message: S.optional(S.String) },
+) {}
+export class ContainerNotFoundException extends S.TaggedErrorClass<ContainerNotFoundException>()(
+  "ContainerNotFoundException",
+  { Message: S.optional(S.String) },
+) {}
+export class CorsPolicyNotFoundException extends S.TaggedErrorClass<CorsPolicyNotFoundException>()(
+  "CorsPolicyNotFoundException",
+  { Message: S.optional(S.String) },
+) {}
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  { Message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class PolicyNotFoundException extends S.TaggedErrorClass<PolicyNotFoundException>()(
+  "PolicyNotFoundException",
+  { Message: S.optional(S.String) },
+) {}
 export type ContainerName = string;
 export type TagKey = string;
 export type TagValue = string;
-export type Endpoint = string;
-export type ContainerARN = string;
-export type ContainerAccessLoggingEnabled = boolean;
-export type ErrorMessage = string;
-export type ContainerPolicy = string;
-export type Origin = string;
-export type Header = string;
-export type MaxAgeSeconds = number;
-export type LifecyclePolicy = string;
-export type ObjectGroup = string;
-export type ObjectGroupName = string;
-export type PaginationToken = string;
-export type ContainerListLimit = number;
-
-//# Schemas
 export interface Tag {
   Key: string;
   Value?: string;
@@ -132,12 +140,16 @@ export const CreateContainerInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateContainerInput",
 }) as any as S.Schema<CreateContainerInput>;
+export type Endpoint = string;
+export type ContainerARN = string;
 export type ContainerStatus =
   | "ACTIVE"
   | "CREATING"
   | "DELETING"
   | (string & {});
 export const ContainerStatus = /*@__PURE__*/ S.String;
+
+export type ContainerAccessLoggingEnabled = boolean;
 export interface Container {
   Endpoint?: string;
   CreationTime?: Date;
@@ -328,6 +340,7 @@ export const GetContainerPolicyInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetContainerPolicyInput",
 }) as any as S.Schema<GetContainerPolicyInput>;
+export type ContainerPolicy = string;
 export interface GetContainerPolicyOutput {
   Policy: string;
 }
@@ -354,14 +367,18 @@ export const GetCorsPolicyInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCorsPolicyInput",
 }) as any as S.Schema<GetCorsPolicyInput>;
+export type Origin = string;
 export type AllowedOrigins = string[];
 export const AllowedOrigins = /*@__PURE__*/ S.Array(S.String);
 export type MethodName = "PUT" | "GET" | "DELETE" | "HEAD" | (string & {});
 export const MethodName = /*@__PURE__*/ S.String;
+
 export type AllowedMethods = MethodName[];
 export const AllowedMethods = /*@__PURE__*/ S.Array(MethodName);
+export type Header = string;
 export type AllowedHeaders = string[];
 export const AllowedHeaders = /*@__PURE__*/ S.Array(S.String);
+export type MaxAgeSeconds = number;
 export type ExposeHeaders = string[];
 export const ExposeHeaders = /*@__PURE__*/ S.Array(S.String);
 export interface CorsRule {
@@ -408,6 +425,7 @@ export const GetLifecyclePolicyInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLifecyclePolicyInput",
 }) as any as S.Schema<GetLifecyclePolicyInput>;
+export type LifecyclePolicy = string;
 export interface GetLifecyclePolicyOutput {
   LifecyclePolicy: string;
 }
@@ -436,6 +454,9 @@ export const GetMetricPolicyInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMetricPolicyInput>;
 export type ContainerLevelMetrics = "ENABLED" | "DISABLED" | (string & {});
 export const ContainerLevelMetrics = /*@__PURE__*/ S.String;
+
+export type ObjectGroup = string;
+export type ObjectGroupName = string;
 export interface MetricPolicyRule {
   ObjectGroup: string;
   ObjectGroupName: string;
@@ -465,6 +486,8 @@ export const GetMetricPolicyOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMetricPolicyOutput",
 }) as any as S.Schema<GetMetricPolicyOutput>;
+export type PaginationToken = string;
+export type ContainerListLimit = number;
 export interface ListContainersInput {
   NextToken?: string;
   MaxResults?: number;
@@ -726,34 +749,7 @@ export const UntagResourceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceOutput",
 }) as any as S.Schema<UntagResourceOutput>;
-
-//# Errors
-export class ContainerInUseException extends S.TaggedErrorClass<ContainerInUseException>()(
-  "ContainerInUseException",
-  { Message: S.optional(S.String) },
-) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { Message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class ContainerNotFoundException extends S.TaggedErrorClass<ContainerNotFoundException>()(
-  "ContainerNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class PolicyNotFoundException extends S.TaggedErrorClass<PolicyNotFoundException>()(
-  "PolicyNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class CorsPolicyNotFoundException extends S.TaggedErrorClass<CorsPolicyNotFoundException>()(
-  "CorsPolicyNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CreateContainerError =
   | ContainerInUseException
   | InternalServerError
@@ -780,6 +776,7 @@ export const createContainer: API.OperationMethod<
   retry: Retry,
   operationName: "CreateContainer",
 }));
+
 export type DeleteContainerError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -807,6 +804,7 @@ export const deleteContainer: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteContainer",
 }));
+
 export type DeleteContainerPolicyError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -834,6 +832,7 @@ export const deleteContainerPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteContainerPolicy",
 }));
+
 export type DeleteCorsPolicyError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -866,6 +865,7 @@ export const deleteCorsPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCorsPolicy",
 }));
+
 export type DeleteLifecyclePolicyError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -893,6 +893,7 @@ export const deleteLifecyclePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLifecyclePolicy",
 }));
+
 export type DeleteMetricPolicyError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -920,6 +921,7 @@ export const deleteMetricPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMetricPolicy",
 }));
+
 export type DescribeContainerError =
   | ContainerNotFoundException
   | InternalServerError
@@ -946,6 +948,7 @@ export const describeContainer: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeContainer",
 }));
+
 export type GetContainerPolicyError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -975,6 +978,7 @@ export const getContainerPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetContainerPolicy",
 }));
+
 export type GetCorsPolicyError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -1007,6 +1011,7 @@ export const getCorsPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetCorsPolicy",
 }));
+
 export type GetLifecyclePolicyError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -1034,6 +1039,7 @@ export const getLifecyclePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetLifecyclePolicy",
 }));
+
 export type GetMetricPolicyError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -1061,6 +1067,7 @@ export const getMetricPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetMetricPolicy",
 }));
+
 export type ListContainersError = InternalServerError | CommonErrors;
 /**
  * Lists the properties of all containers in AWS Elemental MediaStore.
@@ -1108,6 +1115,7 @@ export const listContainers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -1133,6 +1141,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutContainerPolicyError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -1165,6 +1174,7 @@ export const putContainerPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutContainerPolicy",
 }));
+
 export type PutCorsPolicyError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -1202,6 +1212,7 @@ export const putCorsPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutCorsPolicy",
 }));
+
 export type PutLifecyclePolicyError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -1229,6 +1240,7 @@ export const putLifecyclePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutLifecyclePolicy",
 }));
+
 export type PutMetricPolicyError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -1254,6 +1266,7 @@ export const putMetricPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutMetricPolicy",
 }));
+
 export type StartAccessLoggingError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -1279,6 +1292,7 @@ export const startAccessLogging: API.OperationMethod<
   retry: Retry,
   operationName: "StartAccessLogging",
 }));
+
 export type StopAccessLoggingError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -1304,6 +1318,7 @@ export const stopAccessLogging: API.OperationMethod<
   retry: Retry,
   operationName: "StopAccessLogging",
 }));
+
 export type TagResourceError =
   | ContainerInUseException
   | ContainerNotFoundException
@@ -1331,6 +1346,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | ContainerInUseException
   | ContainerNotFoundException

@@ -88,46 +88,94 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class AccountChannelLimitExceededException extends S.TaggedErrorClass<AccountChannelLimitExceededException>()(
+  "AccountChannelLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class AccountStreamLimitExceededException extends S.TaggedErrorClass<AccountStreamLimitExceededException>()(
+  "AccountStreamLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ClientLimitExceededException extends S.TaggedErrorClass<ClientLimitExceededException>()(
+  "ClientLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DeviceStreamLimitExceededException extends S.TaggedErrorClass<DeviceStreamLimitExceededException>()(
+  "DeviceStreamLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
+  "InvalidArgumentException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidDeviceException extends S.TaggedErrorClass<InvalidDeviceException>()(
+  "InvalidDeviceException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidResourceFormatException extends S.TaggedErrorClass<InvalidResourceFormatException>()(
+  "InvalidResourceFormatException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NoDataRetentionException extends S.TaggedErrorClass<NoDataRetentionException>()(
+  "NoDataRetentionException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
+  "NotAuthorizedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class StreamEdgeConfigurationNotFoundException extends S.TaggedErrorClass<StreamEdgeConfigurationNotFoundException>()(
+  "StreamEdgeConfigurationNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class StreamNotActive extends S.TaggedErrorClass<StreamNotActive>()(
+  "StreamNotActive",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ResourceNotFoundException",
+    message: { includes: "not active" },
+  }),
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class TagsPerResourceExceededLimitException extends S.TaggedErrorClass<TagsPerResourceExceededLimitException>()(
+  "TagsPerResourceExceededLimitException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class VersionMismatchException extends S.TaggedErrorClass<VersionMismatchException>()(
+  "VersionMismatchException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ChannelName = string;
-export type MessageTtlSeconds = number;
-export type TagKey = string;
-export type TagValue = string;
-export type ResourceARN = string;
-export type ErrorMessage = string;
-export type DeviceName = string;
-export type StreamName = string;
-export type MediaType = string;
-export type KmsKeyId = string;
-export type DataRetentionInHours = number;
-export type Version = string;
-export type FailedStatusDetails = string;
-export type HubDeviceArn = string;
-export type MediaUriSecretArn = string | redacted.Redacted<string>;
-export type ScheduleExpression = string;
-export type DurationInSeconds = number;
-export type EdgeRetentionInHours = number;
-export type MaxLocalMediaSizeInMB = number;
-export type DeleteAfterUpload = boolean;
-export type JobStatusDetails = string;
-export type DestinationUri = string;
-export type DestinationRegion = string;
-export type SamplingInterval = number;
-export type FormatConfigValue = string;
-export type WidthPixels = number;
-export type HeightPixels = number;
-export type MappedResourceConfigurationListLimit = number;
-export type NextToken = string;
-export type Type = string;
-export type DataEndpoint = string;
-export type ResourceEndpoint = string;
-export type ListEdgeAgentConfigurationsInputLimit = number;
-export type ListStreamsInputLimit = number;
-export type DataRetentionChangeInHours = number;
-
-//# Schemas
 export type ChannelType = "SINGLE_MASTER" | "FULL_MESH" | (string & {});
 export const ChannelType = /*@__PURE__*/ S.String;
+
+export type MessageTtlSeconds = number;
 export interface SingleMasterConfiguration {
   MessageTtlSeconds?: number;
 }
@@ -136,6 +184,8 @@ export const SingleMasterConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SingleMasterConfiguration",
 }) as any as S.Schema<SingleMasterConfiguration>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -171,6 +221,7 @@ export const CreateSignalingChannelInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSignalingChannelInput",
 }) as any as S.Schema<CreateSignalingChannelInput>;
+export type ResourceARN = string;
 export interface CreateSignalingChannelOutput {
   ChannelARN?: string;
 }
@@ -179,6 +230,11 @@ export const CreateSignalingChannelOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSignalingChannelOutput",
 }) as any as S.Schema<CreateSignalingChannelOutput>;
+export type DeviceName = string;
+export type StreamName = string;
+export type MediaType = string;
+export type KmsKeyId = string;
+export type DataRetentionInHours = number;
 export type ResourceTags = { [key: string]: string | undefined };
 export const ResourceTags = /*@__PURE__*/ S.Record(
   S.String,
@@ -186,6 +242,7 @@ export const ResourceTags = /*@__PURE__*/ S.Record(
 );
 export type DefaultStorageTier = "HOT" | "WARM" | (string & {});
 export const DefaultStorageTier = /*@__PURE__*/ S.String;
+
 export interface StreamStorageConfiguration {
   DefaultStorageTier: DefaultStorageTier;
 }
@@ -262,6 +319,7 @@ export const DeleteEdgeConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteEdgeConfigurationOutput",
 }) as any as S.Schema<DeleteEdgeConfigurationOutput>;
+export type Version = string;
 export interface DeleteSignalingChannelInput {
   ChannelARN: string;
   CurrentVersion?: string;
@@ -344,8 +402,13 @@ export type SyncStatus =
   | "DELETING_ACKNOWLEDGED"
   | (string & {});
 export const SyncStatus = /*@__PURE__*/ S.String;
+
+export type FailedStatusDetails = string;
+export type HubDeviceArn = string;
+export type MediaUriSecretArn = string | redacted.Redacted<string>;
 export type MediaUriType = "RTSP_URI" | "FILE_URI" | (string & {});
 export const MediaUriType = /*@__PURE__*/ S.String;
+
 export interface MediaSourceConfig {
   MediaUriSecretArn: string | redacted.Redacted<string>;
   MediaUriType: MediaUriType;
@@ -355,6 +418,8 @@ export const MediaSourceConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MediaSourceConfig",
 }) as any as S.Schema<MediaSourceConfig>;
+export type ScheduleExpression = string;
+export type DurationInSeconds = number;
 export interface ScheduleConfig {
   ScheduleExpression: string;
   DurationInSeconds: number;
@@ -378,11 +443,14 @@ export interface UploaderConfig {
 export const UploaderConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ ScheduleConfig: ScheduleConfig }),
 ).annotate({ identifier: "UploaderConfig" }) as any as S.Schema<UploaderConfig>;
+export type EdgeRetentionInHours = number;
+export type MaxLocalMediaSizeInMB = number;
 export type StrategyOnFullSize =
   | "DELETE_OLDEST_MEDIA"
   | "DENY_NEW_MEDIA"
   | (string & {});
 export const StrategyOnFullSize = /*@__PURE__*/ S.String;
+
 export interface LocalSizeConfig {
   MaxLocalMediaSizeInMB?: number;
   StrategyOnFullSize?: StrategyOnFullSize;
@@ -395,6 +463,7 @@ export const LocalSizeConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LocalSizeConfig",
 }) as any as S.Schema<LocalSizeConfig>;
+export type DeleteAfterUpload = boolean;
 export interface DeletionConfig {
   EdgeRetentionInHours?: number;
   LocalSizeConfig?: LocalSizeConfig;
@@ -421,12 +490,14 @@ export const EdgeConfig = /*@__PURE__*/ S.suspend(() =>
     DeletionConfig: S.optional(DeletionConfig),
   }),
 ).annotate({ identifier: "EdgeConfig" }) as any as S.Schema<EdgeConfig>;
+export type JobStatusDetails = string;
 export type RecorderStatus =
   | "SUCCESS"
   | "USER_ERROR"
   | "SYSTEM_ERROR"
   | (string & {});
 export const RecorderStatus = /*@__PURE__*/ S.String;
+
 export interface LastRecorderStatus {
   JobStatusDetails?: string;
   LastCollectedTime?: Date;
@@ -453,6 +524,7 @@ export type UploaderStatus =
   | "SYSTEM_ERROR"
   | (string & {});
 export const UploaderStatus = /*@__PURE__*/ S.String;
+
 export interface LastUploaderStatus {
   JobStatusDetails?: string;
   LastCollectedTime?: Date;
@@ -539,11 +611,15 @@ export const DescribeImageGenerationConfigurationInput =
   }) as any as S.Schema<DescribeImageGenerationConfigurationInput>;
 export type ConfigurationStatus = "ENABLED" | "DISABLED" | (string & {});
 export const ConfigurationStatus = /*@__PURE__*/ S.String;
+
 export type ImageSelectorType =
   | "SERVER_TIMESTAMP"
   | "PRODUCER_TIMESTAMP"
   | (string & {});
 export const ImageSelectorType = /*@__PURE__*/ S.String;
+
+export type DestinationUri = string;
+export type DestinationRegion = string;
 export interface ImageGenerationDestinationConfig {
   Uri: string;
   DestinationRegion: string;
@@ -553,15 +629,21 @@ export const ImageGenerationDestinationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImageGenerationDestinationConfig",
 }) as any as S.Schema<ImageGenerationDestinationConfig>;
+export type SamplingInterval = number;
 export type Format = "JPEG" | "PNG" | (string & {});
 export const Format = /*@__PURE__*/ S.String;
+
 export type FormatConfigKey = "JPEGQuality" | (string & {});
 export const FormatConfigKey = /*@__PURE__*/ S.String;
+
+export type FormatConfigValue = string;
 export type FormatConfig = { [key in FormatConfigKey]?: string };
 export const FormatConfig = /*@__PURE__*/ S.Record(
   FormatConfigKey,
   S.String.pipe(S.optional),
 );
+export type WidthPixels = number;
+export type HeightPixels = number;
 export interface ImageGenerationConfiguration {
   Status: ConfigurationStatus;
   ImageSelectorType: ImageSelectorType;
@@ -597,6 +679,8 @@ export const DescribeImageGenerationConfigurationOutput =
   ).annotate({
     identifier: "DescribeImageGenerationConfigurationOutput",
   }) as any as S.Schema<DescribeImageGenerationConfigurationOutput>;
+export type MappedResourceConfigurationListLimit = number;
+export type NextToken = string;
 export interface DescribeMappedResourceConfigurationInput {
   StreamName?: string;
   StreamARN?: string;
@@ -624,6 +708,7 @@ export const DescribeMappedResourceConfigurationInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeMappedResourceConfigurationInput",
 }) as any as S.Schema<DescribeMappedResourceConfigurationInput>;
+export type Type = string;
 export interface MappedResourceConfigurationListItem {
   Type?: string;
   ARN?: string;
@@ -681,6 +766,7 @@ export type MediaStorageConfigurationStatus =
   | "DISABLED"
   | (string & {});
 export const MediaStorageConfigurationStatus = /*@__PURE__*/ S.String;
+
 export interface MediaStorageConfiguration {
   StreamARN?: string;
   Status: MediaStorageConfigurationStatus;
@@ -787,6 +873,7 @@ export type Status =
   | "DELETING"
   | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface ChannelInfo {
   ChannelName?: string;
   ChannelARN?: string;
@@ -918,6 +1005,7 @@ export type APIName =
   | "GET_IMAGES"
   | (string & {});
 export const APIName = /*@__PURE__*/ S.String;
+
 export interface GetDataEndpointInput {
   StreamName?: string;
   StreamARN?: string;
@@ -942,6 +1030,7 @@ export const GetDataEndpointInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDataEndpointInput",
 }) as any as S.Schema<GetDataEndpointInput>;
+export type DataEndpoint = string;
 export interface GetDataEndpointOutput {
   DataEndpoint?: string;
 }
@@ -952,10 +1041,12 @@ export const GetDataEndpointOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDataEndpointOutput>;
 export type ChannelProtocol = "WSS" | "HTTPS" | "WEBRTC" | (string & {});
 export const ChannelProtocol = /*@__PURE__*/ S.String;
+
 export type ListOfProtocols = ChannelProtocol[];
 export const ListOfProtocols = /*@__PURE__*/ S.Array(ChannelProtocol);
 export type ChannelRole = "MASTER" | "VIEWER" | (string & {});
 export const ChannelRole = /*@__PURE__*/ S.String;
+
 export interface SingleMasterChannelEndpointConfiguration {
   Protocols?: ChannelProtocol[];
   Role?: ChannelRole;
@@ -993,6 +1084,7 @@ export const GetSignalingChannelEndpointInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSignalingChannelEndpointInput",
 }) as any as S.Schema<GetSignalingChannelEndpointInput>;
+export type ResourceEndpoint = string;
 export interface ResourceEndpointListItem {
   Protocol?: ChannelProtocol;
   ResourceEndpoint?: string;
@@ -1017,6 +1109,7 @@ export const GetSignalingChannelEndpointOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSignalingChannelEndpointOutput",
 }) as any as S.Schema<GetSignalingChannelEndpointOutput>;
+export type ListEdgeAgentConfigurationsInputLimit = number;
 export interface ListEdgeAgentConfigurationsInput {
   HubDeviceArn: string;
   MaxResults?: number;
@@ -1083,8 +1176,10 @@ export const ListEdgeAgentConfigurationsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEdgeAgentConfigurationsOutput",
 }) as any as S.Schema<ListEdgeAgentConfigurationsOutput>;
+export type ListStreamsInputLimit = number;
 export type ComparisonOperator = "BEGINS_WITH" | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
 export interface ChannelNameCondition {
   ComparisonOperator?: ComparisonOperator;
   ComparisonValue?: string;
@@ -1417,6 +1512,8 @@ export type UpdateDataRetentionOperation =
   | "DECREASE_DATA_RETENTION"
   | (string & {});
 export const UpdateDataRetentionOperation = /*@__PURE__*/ S.String;
+
+export type DataRetentionChangeInHours = number;
 export interface UpdateDataRetentionInput {
   StreamName?: string;
   StreamARN?: string;
@@ -1639,93 +1736,7 @@ export const UpdateStreamStorageConfigurationOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateStreamStorageConfigurationOutput",
 }) as any as S.Schema<UpdateStreamStorageConfigurationOutput>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class AccountChannelLimitExceededException extends S.TaggedErrorClass<AccountChannelLimitExceededException>()(
-  "AccountChannelLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ClientLimitExceededException extends S.TaggedErrorClass<ClientLimitExceededException>()(
-  "ClientLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
-  "InvalidArgumentException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TagsPerResourceExceededLimitException extends S.TaggedErrorClass<TagsPerResourceExceededLimitException>()(
-  "TagsPerResourceExceededLimitException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AccountStreamLimitExceededException extends S.TaggedErrorClass<AccountStreamLimitExceededException>()(
-  "AccountStreamLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class DeviceStreamLimitExceededException extends S.TaggedErrorClass<DeviceStreamLimitExceededException>()(
-  "DeviceStreamLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidDeviceException extends S.TaggedErrorClass<InvalidDeviceException>()(
-  "InvalidDeviceException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class StreamEdgeConfigurationNotFoundException extends S.TaggedErrorClass<StreamEdgeConfigurationNotFoundException>()(
-  "StreamEdgeConfigurationNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class VersionMismatchException extends S.TaggedErrorClass<VersionMismatchException>()(
-  "VersionMismatchException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
-  "NotAuthorizedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class InvalidResourceFormatException extends S.TaggedErrorClass<InvalidResourceFormatException>()(
-  "InvalidResourceFormatException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NoDataRetentionException extends S.TaggedErrorClass<NoDataRetentionException>()(
-  "NoDataRetentionException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class StreamNotActive extends S.TaggedErrorClass<StreamNotActive>()(
-  "StreamNotActive",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ResourceNotFoundException",
-    message: { includes: "not active" },
-  }),
-).pipe(C.withConflictError, C.withRetryableError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CreateSignalingChannelError =
   | AccessDeniedException
   | AccountChannelLimitExceededException
@@ -1759,6 +1770,7 @@ export const createSignalingChannel: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSignalingChannel",
 }));
+
 export type CreateStreamError =
   | AccountStreamLimitExceededException
   | ClientLimitExceededException
@@ -1802,6 +1814,7 @@ export const createStream: API.OperationMethod<
   retry: Retry,
   operationName: "CreateStream",
 }));
+
 export type DeleteEdgeConfigurationError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -1835,6 +1848,7 @@ export const deleteEdgeConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEdgeConfiguration",
 }));
+
 export type DeleteSignalingChannelError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -1868,6 +1882,7 @@ export const deleteSignalingChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSignalingChannel",
 }));
+
 export type DeleteStreamError =
   | ClientLimitExceededException
   | InvalidArgumentException
@@ -1910,6 +1925,7 @@ export const deleteStream: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteStream",
 }));
+
 export type DescribeEdgeConfigurationError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -1943,6 +1959,7 @@ export const describeEdgeConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEdgeConfiguration",
 }));
+
 export type DescribeImageGenerationConfigurationError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -1970,6 +1987,7 @@ export const describeImageGenerationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeImageGenerationConfiguration",
 }));
+
 export type DescribeMappedResourceConfigurationError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -2019,6 +2037,7 @@ export const describeMappedResourceConfiguration: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeMediaStorageConfigurationError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -2047,6 +2066,7 @@ export const describeMediaStorageConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeMediaStorageConfiguration",
 }));
+
 export type DescribeNotificationConfigurationError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -2074,6 +2094,7 @@ export const describeNotificationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeNotificationConfiguration",
 }));
+
 export type DescribeSignalingChannelError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -2103,6 +2124,7 @@ export const describeSignalingChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSignalingChannel",
 }));
+
 export type DescribeStreamError =
   | ClientLimitExceededException
   | InvalidArgumentException
@@ -2131,6 +2153,7 @@ export const describeStream: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeStream",
 }));
+
 export type DescribeStreamStorageConfigurationError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -2162,6 +2185,7 @@ export const describeStreamStorageConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeStreamStorageConfiguration",
 }));
+
 export type GetDataEndpointError =
   | ClientLimitExceededException
   | InvalidArgumentException
@@ -2198,6 +2222,7 @@ export const getDataEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataEndpoint",
 }));
+
 export type GetSignalingChannelEndpointError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -2241,6 +2266,7 @@ export const getSignalingChannelEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "GetSignalingChannelEndpoint",
 }));
+
 export type ListEdgeAgentConfigurationsError =
   | ClientLimitExceededException
   | InvalidArgumentException
@@ -2289,6 +2315,7 @@ export const listEdgeAgentConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSignalingChannelsError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -2337,6 +2364,7 @@ export const listSignalingChannels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStreamsError =
   | ClientLimitExceededException
   | InvalidArgumentException
@@ -2380,6 +2408,7 @@ export const listStreams: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -2407,6 +2436,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTagsForStreamError =
   | ClientLimitExceededException
   | InvalidArgumentException
@@ -2439,6 +2469,7 @@ export const listTagsForStream: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForStream",
 }));
+
 export type StartEdgeConfigurationUpdateError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -2485,6 +2516,7 @@ export const startEdgeConfigurationUpdate: API.OperationMethod<
   retry: Retry,
   operationName: "StartEdgeConfigurationUpdate",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -2521,6 +2553,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TagStreamError =
   | ClientLimitExceededException
   | InvalidArgumentException
@@ -2566,6 +2599,7 @@ export const tagStream: API.OperationMethod<
   retry: Retry,
   operationName: "TagStream",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -2597,6 +2631,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UntagStreamError =
   | ClientLimitExceededException
   | InvalidArgumentException
@@ -2633,6 +2668,7 @@ export const untagStream: API.OperationMethod<
   retry: Retry,
   operationName: "UntagStream",
 }));
+
 export type UpdateDataRetentionError =
   | ClientLimitExceededException
   | InvalidArgumentException
@@ -2685,6 +2721,7 @@ export const updateDataRetention: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDataRetention",
 }));
+
 export type UpdateImageGenerationConfigurationError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -2716,6 +2753,7 @@ export const updateImageGenerationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateImageGenerationConfiguration",
 }));
+
 export type UpdateMediaStorageConfigurationError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -2760,6 +2798,7 @@ export const updateMediaStorageConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMediaStorageConfiguration",
 }));
+
 export type UpdateNotificationConfigurationError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -2791,6 +2830,7 @@ export const updateNotificationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNotificationConfiguration",
 }));
+
 export type UpdateSignalingChannelError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -2830,6 +2870,7 @@ export const updateSignalingChannel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSignalingChannel",
 }));
+
 export type UpdateStreamError =
   | ClientLimitExceededException
   | InvalidArgumentException
@@ -2874,6 +2915,7 @@ export const updateStream: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateStream",
 }));
+
 export type UpdateStreamStorageConfigurationError =
   | AccessDeniedException
   | ClientLimitExceededException

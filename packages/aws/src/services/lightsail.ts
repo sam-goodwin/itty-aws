@@ -86,50 +86,87 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class AccountSetupInProgressException extends S.TaggedErrorClass<AccountSetupInProgressException>()(
+  "AccountSetupInProgressException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(428),
+) {}
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class OperationFailureException extends S.TaggedErrorClass<OperationFailureException>()(
+  "OperationFailureException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class RegionSetupInProgressException extends S.TaggedErrorClass<RegionSetupInProgressException>()(
+  "RegionSetupInProgressException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(428),
+) {}
+export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
+  "ServiceException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class UnauthenticatedException extends S.TaggedErrorClass<UnauthenticatedException>()(
+  "UnauthenticatedException",
+  {
+    code: S.optional(S.String),
+    docs: S.optional(S.String),
+    message: S.optional(S.String),
+    tip: S.optional(S.String),
+  },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
 export type ResourceName = string;
-export type NonEmptyString = string;
-export type IsoDate = Date;
-export type Port = number;
-export type BucketName = string;
-export type TagKey = string;
-export type TagValue = string;
-export type BucketAccessLogPrefix = string;
-export type BucketCorsRuleId = string;
-export type BucketCorsAllowedMethod = string;
-export type IAMAccessKeyId = string | redacted.Redacted<string>;
-export type CertificateName = string;
-export type DomainName = string;
-export type SerialNumber = string;
-export type RequestFailureReason = string;
-export type InUseResourceCount = number;
-export type KeyAlgorithm = string;
-export type IssuerCA = string;
-export type EligibleToRenew = string;
-export type RenewalStatusReason = string;
-export type RevocationReason = string;
-export type StringMax256 = string;
-export type ContainerServiceName = string;
-export type ContainerServiceScale = number;
-export type ContainerName = string;
-export type TimeOfDay = string;
-export type DomainEntryType = string;
-export type DomainEntryOptionsKeys = string;
-export type SensitiveNonEmptyString = string | redacted.Redacted<string>;
-export type Base64 = string;
-export type SensitiveString = string | redacted.Redacted<string>;
-export type AutoSnapshotDate = string;
-export type ResourceArn = string;
-export type MetricPeriod = number;
-export type IncludeCertificateDetails = boolean;
-export type IpAddress = string;
-export type Ipv6Address = string;
-export type SetupHistoryPageToken = string;
-export type SetupDomainName = string;
-export type ContainerLabel = string;
-export type EmailAddress = string | redacted.Redacted<string>;
-
-//# Schemas
 export interface AllocateStaticIpRequest {
   staticIpName: string;
 }
@@ -147,6 +184,7 @@ export const AllocateStaticIpRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AllocateStaticIpRequest",
 }) as any as S.Schema<AllocateStaticIpRequest>;
+export type NonEmptyString = string;
 export type ResourceType =
   | "ContainerService"
   | "Instance"
@@ -170,6 +208,8 @@ export type ResourceType =
   | "Bucket"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
+export type IsoDate = Date;
 export type RegionName =
   | "us-east-1"
   | "us-east-2"
@@ -193,6 +233,7 @@ export type RegionName =
   | "sa-east-1"
   | (string & {});
 export const RegionName = /*@__PURE__*/ S.String;
+
 export interface ResourceLocation {
   availabilityZone?: string;
   regionName?: RegionName;
@@ -291,6 +332,7 @@ export type OperationType =
   | "SetupInstanceHttps"
   | (string & {});
 export const OperationType = /*@__PURE__*/ S.String;
+
 export type OperationStatus =
   | "NotStarted"
   | "Started"
@@ -299,6 +341,7 @@ export type OperationStatus =
   | "Succeeded"
   | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
+
 export interface Operation {
   id?: string;
   resourceName?: string;
@@ -495,6 +538,7 @@ export const AttachStaticIpResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachStaticIpResult",
 }) as any as S.Schema<AttachStaticIpResult>;
+export type Port = number;
 export type NetworkProtocol =
   | "tcp"
   | "all"
@@ -503,6 +547,7 @@ export type NetworkProtocol =
   | "icmpv6"
   | (string & {});
 export const NetworkProtocol = /*@__PURE__*/ S.String;
+
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface PortInfo {
@@ -589,6 +634,9 @@ export const CopySnapshotResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopySnapshotResult",
 }) as any as S.Schema<CopySnapshotResult>;
+export type BucketName = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key?: string;
   value?: string;
@@ -625,6 +673,7 @@ export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateBucketRequest>;
 export type AccessType = "public" | "private" | (string & {});
 export const AccessType = /*@__PURE__*/ S.String;
+
 export interface AccessRules {
   getObject?: AccessType;
   allowPublicOverrides?: boolean;
@@ -657,6 +706,7 @@ export interface BucketState {
 export const BucketState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ code: S.optional(S.String), message: S.optional(S.String) }),
 ).annotate({ identifier: "BucketState" }) as any as S.Schema<BucketState>;
+export type BucketAccessLogPrefix = string;
 export interface BucketAccessLogConfig {
   enabled: boolean;
   destination?: string;
@@ -671,6 +721,8 @@ export const BucketAccessLogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BucketAccessLogConfig",
 }) as any as S.Schema<BucketAccessLogConfig>;
+export type BucketCorsRuleId = string;
+export type BucketCorsAllowedMethod = string;
 export type BucketCorsAllowedMethods = string[];
 export const BucketCorsAllowedMethods = /*@__PURE__*/ S.Array(S.String);
 export type BucketCorsAllowedOrigins = string[];
@@ -779,8 +831,10 @@ export const CreateBucketAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBucketAccessKeyRequest",
 }) as any as S.Schema<CreateBucketAccessKeyRequest>;
+export type IAMAccessKeyId = string | redacted.Redacted<string>;
 export type StatusType = "Active" | "Inactive" | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
+
 export interface AccessKeyLastUsed {
   lastUsedDate?: Date;
   region?: string;
@@ -823,6 +877,8 @@ export const CreateBucketAccessKeyResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBucketAccessKeyResult",
 }) as any as S.Schema<CreateBucketAccessKeyResult>;
+export type CertificateName = string;
+export type DomainName = string;
 export type SubjectAlternativeNameList = string[];
 export const SubjectAlternativeNameList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateCertificateRequest {
@@ -860,6 +916,8 @@ export type CertificateStatus =
   | "FAILED"
   | (string & {});
 export const CertificateStatus = /*@__PURE__*/ S.String;
+
+export type SerialNumber = string;
 export interface ResourceRecord {
   name?: string;
   type?: string;
@@ -878,6 +936,7 @@ export type DnsRecordCreationStateCode =
   | "FAILED"
   | (string & {});
 export const DnsRecordCreationStateCode = /*@__PURE__*/ S.String;
+
 export interface DnsRecordCreationState {
   code?: DnsRecordCreationStateCode;
   message?: string;
@@ -896,6 +955,7 @@ export type CertificateDomainValidationStatus =
   | "SUCCESS"
   | (string & {});
 export const CertificateDomainValidationStatus = /*@__PURE__*/ S.String;
+
 export interface DomainValidationRecord {
   domainName?: string;
   resourceRecord?: ResourceRecord;
@@ -916,6 +976,11 @@ export type DomainValidationRecordList = DomainValidationRecord[];
 export const DomainValidationRecordList = /*@__PURE__*/ S.Array(
   DomainValidationRecord,
 );
+export type RequestFailureReason = string;
+export type InUseResourceCount = number;
+export type KeyAlgorithm = string;
+export type IssuerCA = string;
+export type EligibleToRenew = string;
 export type RenewalStatus =
   | "PendingAutoRenewal"
   | "PendingValidation"
@@ -923,6 +988,8 @@ export type RenewalStatus =
   | "Failed"
   | (string & {});
 export const RenewalStatus = /*@__PURE__*/ S.String;
+
+export type RenewalStatusReason = string;
 export interface RenewalSummary {
   domainValidationRecords?: DomainValidationRecord[];
   renewalStatus?: RenewalStatus;
@@ -937,6 +1004,7 @@ export const RenewalSummary = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "RenewalSummary" }) as any as S.Schema<RenewalSummary>;
+export type RevocationReason = string;
 export interface Certificate {
   arn?: string;
   name?: string;
@@ -1022,6 +1090,7 @@ export type PortInfoSourceType =
   | "CLOSED"
   | (string & {});
 export const PortInfoSourceType = /*@__PURE__*/ S.String;
+
 export interface InstanceEntry {
   sourceName: string;
   instanceType: string;
@@ -1070,6 +1139,8 @@ export const CreateCloudFormationStackResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCloudFormationStackResult>;
 export type ContactProtocol = "Email" | "SMS" | (string & {});
 export const ContactProtocol = /*@__PURE__*/ S.String;
+
+export type StringMax256 = string;
 export interface CreateContactMethodRequest {
   protocol: ContactProtocol;
   contactEndpoint: string;
@@ -1101,6 +1172,7 @@ export const CreateContactMethodResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateContactMethodResult",
 }) as any as S.Schema<CreateContactMethodResult>;
+export type ContainerServiceName = string;
 export type ContainerServicePowerName =
   | "nano"
   | "micro"
@@ -1110,6 +1182,8 @@ export type ContainerServicePowerName =
   | "xlarge"
   | (string & {});
 export const ContainerServicePowerName = /*@__PURE__*/ S.String;
+
+export type ContainerServiceScale = number;
 export type ContainerServicePublicDomainsList = string[];
 export const ContainerServicePublicDomainsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1121,6 +1195,7 @@ export const ContainerServicePublicDomains = /*@__PURE__*/ S.Record(
   S.String,
   ContainerServicePublicDomainsList.pipe(S.optional),
 );
+export type ContainerName = string;
 export type Environment = { [key: string]: string | undefined };
 export const Environment = /*@__PURE__*/ S.Record(
   S.String,
@@ -1133,6 +1208,7 @@ export type ContainerServiceProtocol =
   | "UDP"
   | (string & {});
 export const ContainerServiceProtocol = /*@__PURE__*/ S.String;
+
 export type PortMap = { [key: string]: ContainerServiceProtocol | undefined };
 export const PortMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1263,6 +1339,7 @@ export type ContainerServiceState =
   | "DEPLOYING"
   | (string & {});
 export const ContainerServiceState = /*@__PURE__*/ S.String;
+
 export type ContainerServiceStateDetailCode =
   | "CREATING_SYSTEM_RESOURCES"
   | "CREATING_NETWORK_INFRASTRUCTURE"
@@ -1275,6 +1352,7 @@ export type ContainerServiceStateDetailCode =
   | "UNKNOWN_ERROR"
   | (string & {});
 export const ContainerServiceStateDetailCode = /*@__PURE__*/ S.String;
+
 export interface ContainerServiceStateDetail {
   code?: ContainerServiceStateDetailCode;
   message?: string;
@@ -1294,6 +1372,7 @@ export type ContainerServiceDeploymentState =
   | "FAILED"
   | (string & {});
 export const ContainerServiceDeploymentState = /*@__PURE__*/ S.String;
+
 export interface ContainerServiceEndpoint {
   containerName?: string;
   containerPort?: number;
@@ -1483,6 +1562,8 @@ export const CreateContainerServiceRegistryLoginResult =
   }) as any as S.Schema<CreateContainerServiceRegistryLoginResult>;
 export type AddOnType = "AutoSnapshot" | "StopInstanceOnIdle" | (string & {});
 export const AddOnType = /*@__PURE__*/ S.String;
+
+export type TimeOfDay = string;
 export interface AutoSnapshotAddOnRequest {
   snapshotTimeOfDay?: string;
 }
@@ -1633,12 +1714,14 @@ export type OriginProtocolPolicyEnum =
   | "https-only"
   | (string & {});
 export const OriginProtocolPolicyEnum = /*@__PURE__*/ S.String;
+
 export type OriginIpAddressTypeEnum =
   | "ipv4"
   | "ipv6"
   | "dualstack"
   | (string & {});
 export const OriginIpAddressTypeEnum = /*@__PURE__*/ S.String;
+
 export interface InputOrigin {
   name?: string;
   regionName?: RegionName;
@@ -1657,6 +1740,7 @@ export const InputOrigin = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InputOrigin" }) as any as S.Schema<InputOrigin>;
 export type BehaviorEnum = "dont-cache" | "cache" | (string & {});
 export const BehaviorEnum = /*@__PURE__*/ S.String;
+
 export interface CacheBehavior {
   behavior?: BehaviorEnum;
 }
@@ -1665,6 +1749,7 @@ export const CacheBehavior = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CacheBehavior" }) as any as S.Schema<CacheBehavior>;
 export type ForwardValues = "none" | "allow-list" | "all" | (string & {});
 export const ForwardValues = /*@__PURE__*/ S.String;
+
 export interface CookieObject {
   option?: ForwardValues;
   cookiesAllowList?: string[];
@@ -1693,6 +1778,7 @@ export type HeaderEnum =
   | "Referer"
   | (string & {});
 export const HeaderEnum = /*@__PURE__*/ S.String;
+
 export type HeaderForwardList = HeaderEnum[];
 export const HeaderForwardList = /*@__PURE__*/ S.Array(HeaderEnum);
 export interface HeaderObject {
@@ -1752,6 +1838,7 @@ export type CacheBehaviorList = CacheBehaviorPerPath[];
 export const CacheBehaviorList = /*@__PURE__*/ S.Array(CacheBehaviorPerPath);
 export type IpAddressType = "dualstack" | "ipv4" | "ipv6" | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
+
 export type ViewerMinimumTlsProtocolVersionEnum =
   | "TLSv1.1_2016"
   | "TLSv1.2_2018"
@@ -1759,6 +1846,7 @@ export type ViewerMinimumTlsProtocolVersionEnum =
   | "TLSv1.2_2021"
   | (string & {});
 export const ViewerMinimumTlsProtocolVersionEnum = /*@__PURE__*/ S.String;
+
 export interface CreateDistributionRequest {
   distributionName: string;
   origin: InputOrigin;
@@ -1904,6 +1992,8 @@ export const CreateDomainResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDomainResult",
 }) as any as S.Schema<CreateDomainResult>;
+export type DomainEntryType = string;
+export type DomainEntryOptionsKeys = string;
 export type DomainEntryOptions = { [key: string]: string | undefined };
 export const DomainEntryOptions = /*@__PURE__*/ S.Record(
   S.String,
@@ -1987,6 +2077,8 @@ export type Status =
   | "failedStoppingGUISession"
   | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
+export type SensitiveNonEmptyString = string | redacted.Redacted<string>;
 export interface Session {
   name?: string;
   url?: string | redacted.Redacted<string>;
@@ -2187,6 +2279,7 @@ export const CreateKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKeyPairRequest",
 }) as any as S.Schema<CreateKeyPairRequest>;
+export type Base64 = string;
 export interface KeyPair {
   name?: string;
   arn?: string;
@@ -2309,6 +2402,7 @@ export const CreateLoadBalancerTlsCertificateResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateLoadBalancerTlsCertificateResult",
 }) as any as S.Schema<CreateLoadBalancerTlsCertificateResult>;
+export type SensitiveString = string | redacted.Redacted<string>;
 export interface CreateRelationalDatabaseRequest {
   relationalDatabaseName: string;
   availabilityZone?: string;
@@ -2470,6 +2564,7 @@ export const DeleteAlarmResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteAlarmResult",
 }) as any as S.Schema<DeleteAlarmResult>;
+export type AutoSnapshotDate = string;
 export interface DeleteAutoSnapshotRequest {
   resourceName: string;
   date: string;
@@ -3296,6 +3391,7 @@ export const GetAlarmsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAlarmsRequest",
 }) as any as S.Schema<GetAlarmsRequest>;
+export type ResourceArn = string;
 export interface MonitoredResourceInfo {
   arn?: string;
   name?: string;
@@ -3317,6 +3413,8 @@ export type ComparisonOperator =
   | "LessThanOrEqualToThreshold"
   | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
+export type MetricPeriod = number;
 export type TreatMissingData =
   | "breaching"
   | "notBreaching"
@@ -3324,6 +3422,7 @@ export type TreatMissingData =
   | "missing"
   | (string & {});
 export const TreatMissingData = /*@__PURE__*/ S.String;
+
 export type MetricStatistic =
   | "Minimum"
   | "Maximum"
@@ -3332,6 +3431,7 @@ export type MetricStatistic =
   | "SampleCount"
   | (string & {});
 export const MetricStatistic = /*@__PURE__*/ S.String;
+
 export type MetricName =
   | "CPUUtilization"
   | "NetworkIn"
@@ -3360,8 +3460,10 @@ export type MetricName =
   | "BurstCapacityPercentage"
   | (string & {});
 export const MetricName = /*@__PURE__*/ S.String;
+
 export type AlarmState = "OK" | "ALARM" | "INSUFFICIENT_DATA" | (string & {});
 export const AlarmState = /*@__PURE__*/ S.String;
+
 export type MetricUnit =
   | "Seconds"
   | "Microseconds"
@@ -3392,6 +3494,7 @@ export type MetricUnit =
   | "None"
   | (string & {});
 export const MetricUnit = /*@__PURE__*/ S.String;
+
 export type ContactProtocolsList = ContactProtocol[];
 export const ContactProtocolsList = /*@__PURE__*/ S.Array(ContactProtocol);
 export type NotificationTriggerList = AlarmState[];
@@ -3482,6 +3585,7 @@ export type AutoSnapshotStatus =
   | "NotFound"
   | (string & {});
 export const AutoSnapshotStatus = /*@__PURE__*/ S.String;
+
 export interface AttachedDisk {
   path?: string;
   sizeInGb?: number;
@@ -3526,6 +3630,7 @@ export const GetAutoSnapshotsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAutoSnapshotsResult>;
 export type AppCategory = "LfR" | (string & {});
 export const AppCategory = /*@__PURE__*/ S.String;
+
 export interface GetBlueprintsRequest {
   includeInactive?: boolean;
   pageToken?: string;
@@ -3551,8 +3656,10 @@ export const GetBlueprintsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBlueprintsRequest>;
 export type BlueprintType = "os" | "app" | (string & {});
 export const BlueprintType = /*@__PURE__*/ S.String;
+
 export type InstancePlatform = "LINUX_UNIX" | "WINDOWS" | (string & {});
 export const InstancePlatform = /*@__PURE__*/ S.String;
+
 export interface Blueprint {
   blueprintId?: string;
   name?: string;
@@ -3676,6 +3783,7 @@ export type BucketMetricName =
   | "NumberOfObjects"
   | (string & {});
 export const BucketMetricName = /*@__PURE__*/ S.String;
+
 export type MetricStatisticList = MetricStatistic[];
 export const MetricStatisticList = /*@__PURE__*/ S.Array(MetricStatistic);
 export interface GetBucketMetricDataRequest {
@@ -3779,6 +3887,7 @@ export type AccountLevelBpaSyncStatus =
   | "Defaulted"
   | (string & {});
 export const AccountLevelBpaSyncStatus = /*@__PURE__*/ S.String;
+
 export type BPAStatusMessage =
   | "DEFAULTED_FOR_SLR_MISSING"
   | "SYNC_ON_HOLD"
@@ -3786,6 +3895,7 @@ export type BPAStatusMessage =
   | "Unknown"
   | (string & {});
 export const BPAStatusMessage = /*@__PURE__*/ S.String;
+
 export interface AccountLevelBpaSync {
   status?: AccountLevelBpaSyncStatus;
   lastSyncedAt?: Date;
@@ -3891,6 +4001,7 @@ export const GetBundlesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBundlesResult>;
 export type CertificateStatusList = CertificateStatus[];
 export const CertificateStatusList = /*@__PURE__*/ S.Array(CertificateStatus);
+export type IncludeCertificateDetails = boolean;
 export interface GetCertificatesRequest {
   certificateStatuses?: CertificateStatus[];
   includeCertificateDetails?: boolean;
@@ -3953,10 +4064,12 @@ export const GetCloudFormationStackRecordsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetCloudFormationStackRecordsRequest>;
 export type RecordState = "Started" | "Succeeded" | "Failed" | (string & {});
 export const RecordState = /*@__PURE__*/ S.String;
+
 export type CloudFormationStackRecordSourceType =
   | "ExportSnapshotRecord"
   | (string & {});
 export const CloudFormationStackRecordSourceType = /*@__PURE__*/ S.String;
+
 export interface CloudFormationStackRecordSourceInfo {
   resourceType?: CloudFormationStackRecordSourceType;
   name?: string;
@@ -4050,6 +4163,7 @@ export type ContactMethodStatus =
   | "Invalid"
   | (string & {});
 export const ContactMethodStatus = /*@__PURE__*/ S.String;
+
 export interface ContactMethod {
   contactEndpoint?: string;
   status?: ContactMethodStatus;
@@ -4269,6 +4383,7 @@ export type ContainerServiceMetricName =
   | "MemoryUtilization"
   | (string & {});
 export const ContainerServiceMetricName = /*@__PURE__*/ S.String;
+
 export interface GetContainerServiceMetricDataRequest {
   serviceName: string;
   metricName: ContainerServiceMetricName;
@@ -4428,8 +4543,10 @@ export type PricingUnit =
   | "Queries"
   | (string & {});
 export const PricingUnit = /*@__PURE__*/ S.String;
+
 export type Currency = "USD" | (string & {});
 export const Currency = /*@__PURE__*/ S.String;
+
 export interface TimePeriod {
   start?: Date;
   end?: Date;
@@ -4543,6 +4660,7 @@ export type DiskState =
   | "unknown"
   | (string & {});
 export const DiskState = /*@__PURE__*/ S.String;
+
 export type AutoMountStatus =
   | "Failed"
   | "Pending"
@@ -4550,6 +4668,7 @@ export type AutoMountStatus =
   | "NotMounted"
   | (string & {});
 export const AutoMountStatus = /*@__PURE__*/ S.String;
+
 export interface Disk {
   name?: string;
   arn?: string;
@@ -4651,6 +4770,7 @@ export type DiskSnapshotState =
   | "unknown"
   | (string & {});
 export const DiskSnapshotState = /*@__PURE__*/ S.String;
+
 export interface DiskSnapshot {
   name?: string;
   arn?: string;
@@ -4815,6 +4935,7 @@ export type DistributionMetricName =
   | "Http5xxErrorRate"
   | (string & {});
 export const DistributionMetricName = /*@__PURE__*/ S.String;
+
 export interface GetDistributionMetricDataRequest {
   distributionName: string;
   metricName: DistributionMetricName;
@@ -4922,6 +5043,7 @@ export type NameServersUpdateStateCode =
   | "STARTED"
   | (string & {});
 export const NameServersUpdateStateCode = /*@__PURE__*/ S.String;
+
 export interface NameServersUpdateState {
   code?: NameServersUpdateStateCode;
   message?: string;
@@ -4941,6 +5063,7 @@ export type R53HostedZoneDeletionStateCode =
   | "STARTED"
   | (string & {});
 export const R53HostedZoneDeletionStateCode = /*@__PURE__*/ S.String;
+
 export interface R53HostedZoneDeletionState {
   code?: R53HostedZoneDeletionStateCode;
   message?: string;
@@ -5053,6 +5176,7 @@ export type ExportSnapshotRecordSourceType =
   | "DiskSnapshot"
   | (string & {});
 export const ExportSnapshotRecordSourceType = /*@__PURE__*/ S.String;
+
 export interface DiskInfo {
   name?: string;
   path?: string;
@@ -5171,6 +5295,8 @@ export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInstanceRequest",
 }) as any as S.Schema<GetInstanceRequest>;
+export type IpAddress = string;
+export type Ipv6Address = string;
 export type Ipv6AddressList = string[];
 export const Ipv6AddressList = /*@__PURE__*/ S.Array(S.String);
 export interface InstanceHardware {
@@ -5197,8 +5323,10 @@ export const MonthlyTransfer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonthlyTransfer>;
 export type PortAccessType = "Public" | "Private" | (string & {});
 export const PortAccessType = /*@__PURE__*/ S.String;
+
 export type AccessDirection = "inbound" | "outbound" | (string & {});
 export const AccessDirection = /*@__PURE__*/ S.String;
+
 export interface InstancePortInfo {
   fromPort?: number;
   toPort?: number;
@@ -5250,12 +5378,16 @@ export const InstanceState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InstanceState" }) as any as S.Schema<InstanceState>;
 export type InstanceMetadataState = "pending" | "applied" | (string & {});
 export const InstanceMetadataState = /*@__PURE__*/ S.String;
+
 export type HttpTokens = "optional" | "required" | (string & {});
 export const HttpTokens = /*@__PURE__*/ S.String;
+
 export type HttpEndpoint = "disabled" | "enabled" | (string & {});
 export const HttpEndpoint = /*@__PURE__*/ S.String;
+
 export type HttpProtocolIpv6 = "disabled" | "enabled" | (string & {});
 export const HttpProtocolIpv6 = /*@__PURE__*/ S.String;
+
 export interface InstanceMetadataOptions {
   state?: InstanceMetadataState;
   httpTokens?: HttpTokens;
@@ -5334,6 +5466,7 @@ export const GetInstanceResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInstanceResult>;
 export type InstanceAccessProtocol = "ssh" | "rdp" | (string & {});
 export const InstanceAccessProtocol = /*@__PURE__*/ S.String;
+
 export interface GetInstanceAccessDetailsRequest {
   instanceName: string;
   protocol?: InstanceAccessProtocol;
@@ -5442,6 +5575,7 @@ export type InstanceMetricName =
   | "MetadataNoToken"
   | (string & {});
 export const InstanceMetricName = /*@__PURE__*/ S.String;
+
 export interface GetInstanceMetricDataRequest {
   instanceName: string;
   metricName: InstanceMetricName;
@@ -5510,6 +5644,7 @@ export const GetInstancePortStatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInstancePortStatesRequest>;
 export type PortState = "open" | "closed" | (string & {});
 export const PortState = /*@__PURE__*/ S.String;
+
 export interface InstancePortState {
   fromPort?: number;
   toPort?: number;
@@ -5596,6 +5731,7 @@ export type InstanceSnapshotState =
   | "available"
   | (string & {});
 export const InstanceSnapshotState = /*@__PURE__*/ S.String;
+
 export interface InstanceSnapshot {
   name?: string;
   arn?: string;
@@ -5788,8 +5924,10 @@ export type LoadBalancerState =
   | "unknown"
   | (string & {});
 export const LoadBalancerState = /*@__PURE__*/ S.String;
+
 export type LoadBalancerProtocol = "HTTP_HTTPS" | "HTTP" | (string & {});
 export const LoadBalancerProtocol = /*@__PURE__*/ S.String;
+
 export type PortList = number[];
 export const PortList = /*@__PURE__*/ S.Array(S.Number);
 export type InstanceHealthState =
@@ -5801,6 +5939,7 @@ export type InstanceHealthState =
   | "unavailable"
   | (string & {});
 export const InstanceHealthState = /*@__PURE__*/ S.String;
+
 export type InstanceHealthReason =
   | "Lb.RegistrationInProgress"
   | "Lb.InitialHealthChecking"
@@ -5815,6 +5954,7 @@ export type InstanceHealthReason =
   | "Instance.IpUnusable"
   | (string & {});
 export const InstanceHealthReason = /*@__PURE__*/ S.String;
+
 export interface InstanceHealthSummary {
   instanceName?: string;
   instanceHealth?: InstanceHealthState;
@@ -5855,6 +5995,7 @@ export type LoadBalancerAttributeName =
   | "TlsPolicyName"
   | (string & {});
 export const LoadBalancerAttributeName = /*@__PURE__*/ S.String;
+
 export type LoadBalancerConfigurationOptions = {
   [key in LoadBalancerAttributeName]?: string;
 };
@@ -5929,6 +6070,7 @@ export type LoadBalancerMetricName =
   | "RequestCount"
   | (string & {});
 export const LoadBalancerMetricName = /*@__PURE__*/ S.String;
+
 export interface GetLoadBalancerMetricDataRequest {
   loadBalancerName: string;
   metricName: LoadBalancerMetricName;
@@ -6038,12 +6180,14 @@ export type LoadBalancerTlsCertificateStatus =
   | "UNKNOWN"
   | (string & {});
 export const LoadBalancerTlsCertificateStatus = /*@__PURE__*/ S.String;
+
 export type LoadBalancerTlsCertificateDomainStatus =
   | "PENDING_VALIDATION"
   | "FAILED"
   | "SUCCESS"
   | (string & {});
 export const LoadBalancerTlsCertificateDomainStatus = /*@__PURE__*/ S.String;
+
 export type LoadBalancerTlsCertificateDnsRecordCreationStateCode =
   | "SUCCEEDED"
   | "STARTED"
@@ -6051,6 +6195,7 @@ export type LoadBalancerTlsCertificateDnsRecordCreationStateCode =
   | (string & {});
 export const LoadBalancerTlsCertificateDnsRecordCreationStateCode =
   /*@__PURE__*/ S.String;
+
 export interface LoadBalancerTlsCertificateDnsRecordCreationState {
   code?: LoadBalancerTlsCertificateDnsRecordCreationStateCode;
   message?: string;
@@ -6099,6 +6244,7 @@ export type LoadBalancerTlsCertificateFailureReason =
   | "OTHER"
   | (string & {});
 export const LoadBalancerTlsCertificateFailureReason = /*@__PURE__*/ S.String;
+
 export type LoadBalancerTlsCertificateRenewalStatus =
   | "PENDING_AUTO_RENEWAL"
   | "PENDING_VALIDATION"
@@ -6106,6 +6252,7 @@ export type LoadBalancerTlsCertificateRenewalStatus =
   | "FAILED"
   | (string & {});
 export const LoadBalancerTlsCertificateRenewalStatus = /*@__PURE__*/ S.String;
+
 export interface LoadBalancerTlsCertificateDomainValidationOption {
   domainName?: string;
   validationStatus?: LoadBalancerTlsCertificateDomainStatus;
@@ -6152,6 +6299,7 @@ export type LoadBalancerTlsCertificateRevocationReason =
   | (string & {});
 export const LoadBalancerTlsCertificateRevocationReason =
   /*@__PURE__*/ S.String;
+
 export interface LoadBalancerTlsCertificate {
   name?: string;
   arn?: string;
@@ -6599,6 +6747,7 @@ export const GetRelationalDatabaseBlueprintsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetRelationalDatabaseBlueprintsRequest>;
 export type RelationalDatabaseEngine = "mysql" | (string & {});
 export const RelationalDatabaseEngine = /*@__PURE__*/ S.String;
+
 export interface RelationalDatabaseBlueprint {
   blueprintId?: string;
   engine?: RelationalDatabaseEngine;
@@ -6855,6 +7004,7 @@ export type RelationalDatabasePasswordVersion =
   | "PENDING"
   | (string & {});
 export const RelationalDatabasePasswordVersion = /*@__PURE__*/ S.String;
+
 export interface GetRelationalDatabaseMasterUserPasswordRequest {
   relationalDatabaseName: string;
   passwordVersion?: RelationalDatabasePasswordVersion;
@@ -6902,6 +7052,7 @@ export type RelationalDatabaseMetricName =
   | "NetworkTransmitThroughput"
   | (string & {});
 export const RelationalDatabaseMetricName = /*@__PURE__*/ S.String;
+
 export interface GetRelationalDatabaseMetricDataRequest {
   relationalDatabaseName: string;
   metricName: RelationalDatabaseMetricName;
@@ -7157,6 +7308,7 @@ export const GetRelationalDatabaseSnapshotsResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetRelationalDatabaseSnapshotsResult",
 }) as any as S.Schema<GetRelationalDatabaseSnapshotsResult>;
+export type SetupHistoryPageToken = string;
 export interface GetSetupHistoryRequest {
   resourceName: string;
   pageToken?: string;
@@ -7175,10 +7327,12 @@ export const GetSetupHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSetupHistoryRequest",
 }) as any as S.Schema<GetSetupHistoryRequest>;
+export type SetupDomainName = string;
 export type SetupDomainNameList = string[];
 export const SetupDomainNameList = /*@__PURE__*/ S.Array(S.String);
 export type CertificateProvider = "LetsEncrypt" | (string & {});
 export const CertificateProvider = /*@__PURE__*/ S.String;
+
 export interface SetupRequest {
   instanceName?: string;
   domainNames?: string[];
@@ -7211,6 +7365,7 @@ export const SetupHistoryResource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetupHistoryResource>;
 export type SetupStatus = "succeeded" | "failed" | "inProgress" | (string & {});
 export const SetupStatus = /*@__PURE__*/ S.String;
+
 export interface SetupExecutionDetails {
   command?: string;
   dateTime?: Date;
@@ -7575,6 +7730,7 @@ export const RebootRelationalDatabaseResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RebootRelationalDatabaseResult",
 }) as any as S.Schema<RebootRelationalDatabaseResult>;
+export type ContainerLabel = string;
 export interface RegisterContainerImageRequest {
   serviceName: string;
   label: string;
@@ -7670,6 +7826,7 @@ export const ResetDistributionCacheResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetDistributionCacheResult>;
 export type ContactMethodVerificationProtocol = "Email" | (string & {});
 export const ContactMethodVerificationProtocol = /*@__PURE__*/ S.String;
+
 export interface SendContactMethodVerificationRequest {
   protocol: ContactMethodVerificationProtocol;
 }
@@ -7734,6 +7891,7 @@ export const SetIpAddressTypeResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetIpAddressTypeResult>;
 export type ResourceBucketAccess = "allow" | "deny" | (string & {});
 export const ResourceBucketAccess = /*@__PURE__*/ S.String;
+
 export interface SetResourceAccessForBucketRequest {
   resourceName: string;
   bucketName: string;
@@ -7768,6 +7926,7 @@ export const SetResourceAccessForBucketResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SetResourceAccessForBucketResult",
 }) as any as S.Schema<SetResourceAccessForBucketResult>;
+export type EmailAddress = string | redacted.Redacted<string>;
 export interface SetupInstanceHttpsRequest {
   instanceName: string;
   emailAddress: string | redacted.Redacted<string>;
@@ -8450,90 +8609,6 @@ export const UpdateRelationalDatabaseParametersResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateRelationalDatabaseParametersResult",
 }) as any as S.Schema<UpdateRelationalDatabaseParametersResult>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class AccountSetupInProgressException extends S.TaggedErrorClass<AccountSetupInProgressException>()(
-  "AccountSetupInProgressException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(428),
-) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class OperationFailureException extends S.TaggedErrorClass<OperationFailureException>()(
-  "OperationFailureException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class RegionSetupInProgressException extends S.TaggedErrorClass<RegionSetupInProgressException>()(
-  "RegionSetupInProgressException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(428),
-) {}
-export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
-  "ServiceException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class UnauthenticatedException extends S.TaggedErrorClass<UnauthenticatedException>()(
-  "UnauthenticatedException",
-  {
-    code: S.optional(S.String),
-    docs: S.optional(S.String),
-    message: S.optional(S.String),
-    tip: S.optional(S.String),
-  },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-
-//# Operations
 export type AllocateStaticIpError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -8569,6 +8644,7 @@ export const allocateStaticIp: API.OperationMethod<
   retry: Retry,
   operationName: "AllocateStaticIp",
 }));
+
 export type AttachCertificateToDistributionError =
   | AccessDeniedException
   | InvalidInputException
@@ -8613,6 +8689,7 @@ export const attachCertificateToDistribution: API.OperationMethod<
   retry: Retry,
   operationName: "AttachCertificateToDistribution",
 }));
+
 export type AttachDiskError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -8653,6 +8730,7 @@ export const attachDisk: API.OperationMethod<
   retry: Retry,
   operationName: "AttachDisk",
 }));
+
 export type AttachInstancesToLoadBalancerError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -8695,6 +8773,7 @@ export const attachInstancesToLoadBalancer: API.OperationMethod<
   retry: Retry,
   operationName: "AttachInstancesToLoadBalancer",
 }));
+
 export type AttachLoadBalancerTlsCertificateError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -8740,6 +8819,7 @@ export const attachLoadBalancerTlsCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "AttachLoadBalancerTlsCertificate",
 }));
+
 export type AttachStaticIpError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -8775,6 +8855,7 @@ export const attachStaticIp: API.OperationMethod<
   retry: Retry,
   operationName: "AttachStaticIp",
 }));
+
 export type CloseInstancePublicPortsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -8814,6 +8895,7 @@ export const closeInstancePublicPorts: API.OperationMethod<
   retry: Retry,
   operationName: "CloseInstancePublicPorts",
 }));
+
 export type CopySnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -8860,6 +8942,7 @@ export const copySnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CopySnapshot",
 }));
+
 export type CreateBucketError =
   | AccessDeniedException
   | InvalidInputException
@@ -8894,6 +8977,7 @@ export const createBucket: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBucket",
 }));
+
 export type CreateBucketAccessKeyError =
   | AccessDeniedException
   | InvalidInputException
@@ -8936,6 +9020,7 @@ export const createBucketAccessKey: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBucketAccessKey",
 }));
+
 export type CreateCertificateError =
   | AccessDeniedException
   | InvalidInputException
@@ -8979,6 +9064,7 @@ export const createCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCertificate",
 }));
+
 export type CreateCloudFormationStackError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9020,6 +9106,7 @@ export const createCloudFormationStack: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCloudFormationStack",
 }));
+
 export type CreateContactMethodError =
   | AccessDeniedException
   | InvalidInputException
@@ -9061,6 +9148,7 @@ export const createContactMethod: API.OperationMethod<
   retry: Retry,
   operationName: "CreateContactMethod",
 }));
+
 export type CreateContainerServiceError =
   | AccessDeniedException
   | InvalidInputException
@@ -9096,6 +9184,7 @@ export const createContainerService: API.OperationMethod<
   retry: Retry,
   operationName: "CreateContainerService",
 }));
+
 export type CreateContainerServiceDeploymentError =
   | AccessDeniedException
   | InvalidInputException
@@ -9138,6 +9227,7 @@ export const createContainerServiceDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateContainerServiceDeployment",
 }));
+
 export type CreateContainerServiceRegistryLoginError =
   | AccessDeniedException
   | InvalidInputException
@@ -9187,6 +9277,7 @@ export const createContainerServiceRegistryLogin: API.OperationMethod<
   retry: Retry,
   operationName: "CreateContainerServiceRegistryLogin",
 }));
+
 export type CreateDiskError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9226,6 +9317,7 @@ export const createDisk: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDisk",
 }));
+
 export type CreateDiskFromSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9267,6 +9359,7 @@ export const createDiskFromSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDiskFromSnapshot",
 }));
+
 export type CreateDiskSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9323,6 +9416,7 @@ export const createDiskSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDiskSnapshot",
 }));
+
 export type CreateDistributionError =
   | AccessDeniedException
   | InvalidInputException
@@ -9358,6 +9452,7 @@ export const createDistribution: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDistribution",
 }));
+
 export type CreateDomainError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9396,6 +9491,7 @@ export const createDomain: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDomain",
 }));
+
 export type CreateDomainEntryError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9437,6 +9533,7 @@ export const createDomainEntry: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDomainEntry",
 }));
+
 export type CreateGUISessionAccessDetailsError =
   | AccessDeniedException
   | InvalidInputException
@@ -9473,6 +9570,7 @@ export const createGUISessionAccessDetails: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGUISessionAccessDetails",
 }));
+
 export type CreateInstancesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9511,6 +9609,7 @@ export const createInstances: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInstances",
 }));
+
 export type CreateInstancesFromSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9551,6 +9650,7 @@ export const createInstancesFromSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInstancesFromSnapshot",
 }));
+
 export type CreateInstanceSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9590,6 +9690,7 @@ export const createInstanceSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInstanceSnapshot",
 }));
+
 export type CreateKeyPairError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9633,6 +9734,7 @@ export const createKeyPair: API.OperationMethod<
   retry: Retry,
   operationName: "CreateKeyPair",
 }));
+
 export type CreateLoadBalancerError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9677,6 +9779,7 @@ export const createLoadBalancer: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLoadBalancer",
 }));
+
 export type CreateLoadBalancerTlsCertificateError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9718,6 +9821,7 @@ export const createLoadBalancerTlsCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLoadBalancerTlsCertificate",
 }));
+
 export type CreateRelationalDatabaseError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9756,6 +9860,7 @@ export const createRelationalDatabase: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRelationalDatabase",
 }));
+
 export type CreateRelationalDatabaseFromSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9799,6 +9904,7 @@ export const createRelationalDatabaseFromSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRelationalDatabaseFromSnapshot",
 }));
+
 export type CreateRelationalDatabaseSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -9838,6 +9944,7 @@ export const createRelationalDatabaseSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRelationalDatabaseSnapshot",
 }));
+
 export type DeleteAlarmError =
   | AccessDeniedException
   | InvalidInputException
@@ -9876,6 +9983,7 @@ export const deleteAlarm: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAlarm",
 }));
+
 export type DeleteAutoSnapshotError =
   | AccessDeniedException
   | InvalidInputException
@@ -9909,6 +10017,7 @@ export const deleteAutoSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAutoSnapshot",
 }));
+
 export type DeleteBucketError =
   | AccessDeniedException
   | InvalidInputException
@@ -9943,6 +10052,7 @@ export const deleteBucket: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucket",
 }));
+
 export type DeleteBucketAccessKeyError =
   | AccessDeniedException
   | InvalidInputException
@@ -9979,6 +10089,7 @@ export const deleteBucketAccessKey: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucketAccessKey",
 }));
+
 export type DeleteCertificateError =
   | AccessDeniedException
   | InvalidInputException
@@ -10015,6 +10126,7 @@ export const deleteCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCertificate",
 }));
+
 export type DeleteContactMethodError =
   | AccessDeniedException
   | InvalidInputException
@@ -10053,6 +10165,7 @@ export const deleteContactMethod: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteContactMethod",
 }));
+
 export type DeleteContainerImageError =
   | AccessDeniedException
   | InvalidInputException
@@ -10085,6 +10198,7 @@ export const deleteContainerImage: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteContainerImage",
 }));
+
 export type DeleteContainerServiceError =
   | AccessDeniedException
   | InvalidInputException
@@ -10116,6 +10230,7 @@ export const deleteContainerService: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteContainerService",
 }));
+
 export type DeleteDiskError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10158,6 +10273,7 @@ export const deleteDisk: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDisk",
 }));
+
 export type DeleteDiskSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10203,6 +10319,7 @@ export const deleteDiskSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDiskSnapshot",
 }));
+
 export type DeleteDistributionError =
   | AccessDeniedException
   | InvalidInputException
@@ -10234,6 +10351,7 @@ export const deleteDistribution: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDistribution",
 }));
+
 export type DeleteDomainError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10273,6 +10391,7 @@ export const deleteDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDomain",
 }));
+
 export type DeleteDomainEntryError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10312,6 +10431,7 @@ export const deleteDomainEntry: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDomainEntry",
 }));
+
 export type DeleteInstanceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10351,6 +10471,7 @@ export const deleteInstance: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInstance",
 }));
+
 export type DeleteInstanceSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10391,6 +10512,7 @@ export const deleteInstanceSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInstanceSnapshot",
 }));
+
 export type DeleteKeyPairError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10435,6 +10557,7 @@ export const deleteKeyPair: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteKeyPair",
 }));
+
 export type DeleteKnownHostKeysError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10477,6 +10600,7 @@ export const deleteKnownHostKeys: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteKnownHostKeys",
 }));
+
 export type DeleteLoadBalancerError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10518,6 +10642,7 @@ export const deleteLoadBalancer: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLoadBalancer",
 }));
+
 export type DeleteLoadBalancerTlsCertificateError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10557,6 +10682,7 @@ export const deleteLoadBalancerTlsCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLoadBalancerTlsCertificate",
 }));
+
 export type DeleteRelationalDatabaseError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10596,6 +10722,7 @@ export const deleteRelationalDatabase: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRelationalDatabase",
 }));
+
 export type DeleteRelationalDatabaseSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10635,6 +10762,7 @@ export const deleteRelationalDatabaseSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRelationalDatabaseSnapshot",
 }));
+
 export type DetachCertificateFromDistributionError =
   | AccessDeniedException
   | InvalidInputException
@@ -10670,6 +10798,7 @@ export const detachCertificateFromDistribution: API.OperationMethod<
   retry: Retry,
   operationName: "DetachCertificateFromDistribution",
 }));
+
 export type DetachDiskError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10711,6 +10840,7 @@ export const detachDisk: API.OperationMethod<
   retry: Retry,
   operationName: "DetachDisk",
 }));
+
 export type DetachInstancesFromLoadBalancerError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10753,6 +10883,7 @@ export const detachInstancesFromLoadBalancer: API.OperationMethod<
   retry: Retry,
   operationName: "DetachInstancesFromLoadBalancer",
 }));
+
 export type DetachStaticIpError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10788,6 +10919,7 @@ export const detachStaticIp: API.OperationMethod<
   retry: Retry,
   operationName: "DetachStaticIp",
 }));
+
 export type DisableAddOnError =
   | AccessDeniedException
   | InvalidInputException
@@ -10821,6 +10953,7 @@ export const disableAddOn: API.OperationMethod<
   retry: Retry,
   operationName: "DisableAddOn",
 }));
+
 export type DownloadDefaultKeyPairError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10859,6 +10992,7 @@ export const downloadDefaultKeyPair: API.OperationMethod<
   retry: Retry,
   operationName: "DownloadDefaultKeyPair",
 }));
+
 export type EnableAddOnError =
   | AccessDeniedException
   | InvalidInputException
@@ -10893,6 +11027,7 @@ export const enableAddOn: API.OperationMethod<
   retry: Retry,
   operationName: "EnableAddOn",
 }));
+
 export type ExportSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10942,6 +11077,7 @@ export const exportSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "ExportSnapshot",
 }));
+
 export type GetActiveNamesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -10977,6 +11113,7 @@ export const getActiveNames: API.OperationMethod<
   retry: Retry,
   operationName: "GetActiveNames",
 }));
+
 export type GetAlarmsError =
   | AccessDeniedException
   | InvalidInputException
@@ -11017,6 +11154,7 @@ export const getAlarms: API.OperationMethod<
   retry: Retry,
   operationName: "GetAlarms",
 }));
+
 export type GetAutoSnapshotsError =
   | AccessDeniedException
   | InvalidInputException
@@ -11051,6 +11189,7 @@ export const getAutoSnapshots: API.OperationMethod<
   retry: Retry,
   operationName: "GetAutoSnapshots",
 }));
+
 export type GetBlueprintsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11094,6 +11233,7 @@ export const getBlueprints: API.OperationMethod<
   retry: Retry,
   operationName: "GetBlueprints",
 }));
+
 export type GetBucketAccessKeysError =
   | AccessDeniedException
   | InvalidInputException
@@ -11129,6 +11269,7 @@ export const getBucketAccessKeys: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketAccessKeys",
 }));
+
 export type GetBucketBundlesError =
   | AccessDeniedException
   | InvalidInputException
@@ -11164,6 +11305,7 @@ export const getBucketBundles: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketBundles",
 }));
+
 export type GetBucketMetricDataError =
   | AccessDeniedException
   | InvalidInputException
@@ -11199,6 +11341,7 @@ export const getBucketMetricData: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketMetricData",
 }));
+
 export type GetBucketsError =
   | AccessDeniedException
   | InvalidInputException
@@ -11235,6 +11378,7 @@ export const getBuckets: API.OperationMethod<
   retry: Retry,
   operationName: "GetBuckets",
 }));
+
 export type GetBundlesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11278,6 +11422,7 @@ export const getBundles: API.OperationMethod<
   retry: Retry,
   operationName: "GetBundles",
 }));
+
 export type GetCertificatesError =
   | AccessDeniedException
   | InvalidInputException
@@ -11313,6 +11458,7 @@ export const getCertificates: API.OperationMethod<
   retry: Retry,
   operationName: "GetCertificates",
 }));
+
 export type GetCloudFormationStackRecordsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11352,6 +11498,7 @@ export const getCloudFormationStackRecords: API.OperationMethod<
   retry: Retry,
   operationName: "GetCloudFormationStackRecords",
 }));
+
 export type GetContactMethodsError =
   | AccessDeniedException
   | InvalidInputException
@@ -11391,6 +11538,7 @@ export const getContactMethods: API.OperationMethod<
   retry: Retry,
   operationName: "GetContactMethods",
 }));
+
 export type GetContainerAPIMetadataError =
   | AccessDeniedException
   | RegionSetupInProgressException
@@ -11419,6 +11567,7 @@ export const getContainerAPIMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "GetContainerAPIMetadata",
 }));
+
 export type GetContainerImagesError =
   | AccessDeniedException
   | InvalidInputException
@@ -11455,6 +11604,7 @@ export const getContainerImages: API.OperationMethod<
   retry: Retry,
   operationName: "GetContainerImages",
 }));
+
 export type GetContainerLogError =
   | AccessDeniedException
   | InvalidInputException
@@ -11495,6 +11645,7 @@ export const getContainerLog: API.OperationMethod<
   retry: Retry,
   operationName: "GetContainerLog",
 }));
+
 export type GetContainerServiceDeploymentsError =
   | AccessDeniedException
   | InvalidInputException
@@ -11537,6 +11688,7 @@ export const getContainerServiceDeployments: API.OperationMethod<
   retry: Retry,
   operationName: "GetContainerServiceDeployments",
 }));
+
 export type GetContainerServiceMetricDataError =
   | AccessDeniedException
   | InvalidInputException
@@ -11572,6 +11724,7 @@ export const getContainerServiceMetricData: API.OperationMethod<
   retry: Retry,
   operationName: "GetContainerServiceMetricData",
 }));
+
 export type GetContainerServicePowersError =
   | AccessDeniedException
   | InvalidInputException
@@ -11607,6 +11760,7 @@ export const getContainerServicePowers: API.OperationMethod<
   retry: Retry,
   operationName: "GetContainerServicePowers",
 }));
+
 export type GetContainerServicesError =
   | AccessDeniedException
   | InvalidInputException
@@ -11638,6 +11792,7 @@ export const getContainerServices: API.OperationMethod<
   retry: Retry,
   operationName: "GetContainerServices",
 }));
+
 export type GetCostEstimateError =
   | AccessDeniedException
   | InvalidInputException
@@ -11670,6 +11825,7 @@ export const getCostEstimate: API.OperationMethod<
   retry: Retry,
   operationName: "GetCostEstimate",
 }));
+
 export type GetDiskError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11705,6 +11861,7 @@ export const getDisk: API.OperationMethod<
   retry: Retry,
   operationName: "GetDisk",
 }));
+
 export type GetDisksError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11740,6 +11897,7 @@ export const getDisks: API.OperationMethod<
   retry: Retry,
   operationName: "GetDisks",
 }));
+
 export type GetDiskSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11775,6 +11933,7 @@ export const getDiskSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "GetDiskSnapshot",
 }));
+
 export type GetDiskSnapshotsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11811,6 +11970,7 @@ export const getDiskSnapshots: API.OperationMethod<
   retry: Retry,
   operationName: "GetDiskSnapshots",
 }));
+
 export type GetDistributionBundlesError =
   | AccessDeniedException
   | InvalidInputException
@@ -11846,6 +12006,7 @@ export const getDistributionBundles: API.OperationMethod<
   retry: Retry,
   operationName: "GetDistributionBundles",
 }));
+
 export type GetDistributionLatestCacheResetError =
   | AccessDeniedException
   | InvalidInputException
@@ -11878,6 +12039,7 @@ export const getDistributionLatestCacheReset: API.OperationMethod<
   retry: Retry,
   operationName: "GetDistributionLatestCacheReset",
 }));
+
 export type GetDistributionMetricDataError =
   | AccessDeniedException
   | InvalidInputException
@@ -11914,6 +12076,7 @@ export const getDistributionMetricData: API.OperationMethod<
   retry: Retry,
   operationName: "GetDistributionMetricData",
 }));
+
 export type GetDistributionsError =
   | AccessDeniedException
   | InvalidInputException
@@ -11946,6 +12109,7 @@ export const getDistributions: API.OperationMethod<
   retry: Retry,
   operationName: "GetDistributions",
 }));
+
 export type GetDomainError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -11981,6 +12145,7 @@ export const getDomain: API.OperationMethod<
   retry: Retry,
   operationName: "GetDomain",
 }));
+
 export type GetDomainsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12016,6 +12181,7 @@ export const getDomains: API.OperationMethod<
   retry: Retry,
   operationName: "GetDomains",
 }));
+
 export type GetExportSnapshotRecordsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12056,6 +12222,7 @@ export const getExportSnapshotRecords: API.OperationMethod<
   retry: Retry,
   operationName: "GetExportSnapshotRecords",
 }));
+
 export type GetInstanceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12092,6 +12259,7 @@ export const getInstance: API.OperationMethod<
   retry: Retry,
   operationName: "GetInstance",
 }));
+
 export type GetInstanceAccessDetailsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12132,6 +12300,7 @@ export const getInstanceAccessDetails: API.OperationMethod<
   retry: Retry,
   operationName: "GetInstanceAccessDetails",
 }));
+
 export type GetInstanceMetricDataError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12172,6 +12341,7 @@ export const getInstanceMetricData: API.OperationMethod<
   retry: Retry,
   operationName: "GetInstanceMetricData",
 }));
+
 export type GetInstancePortStatesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12208,6 +12378,7 @@ export const getInstancePortStates: API.OperationMethod<
   retry: Retry,
   operationName: "GetInstancePortStates",
 }));
+
 export type GetInstancesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12244,6 +12415,7 @@ export const getInstances: API.OperationMethod<
   retry: Retry,
   operationName: "GetInstances",
 }));
+
 export type GetInstanceSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12279,6 +12451,7 @@ export const getInstanceSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "GetInstanceSnapshot",
 }));
+
 export type GetInstanceSnapshotsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12314,6 +12487,7 @@ export const getInstanceSnapshots: API.OperationMethod<
   retry: Retry,
   operationName: "GetInstanceSnapshots",
 }));
+
 export type GetInstanceStateError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12349,6 +12523,7 @@ export const getInstanceState: API.OperationMethod<
   retry: Retry,
   operationName: "GetInstanceState",
 }));
+
 export type GetKeyPairError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12384,6 +12559,7 @@ export const getKeyPair: API.OperationMethod<
   retry: Retry,
   operationName: "GetKeyPair",
 }));
+
 export type GetKeyPairsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12419,6 +12595,7 @@ export const getKeyPairs: API.OperationMethod<
   retry: Retry,
   operationName: "GetKeyPairs",
 }));
+
 export type GetLoadBalancerError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12454,6 +12631,7 @@ export const getLoadBalancer: API.OperationMethod<
   retry: Retry,
   operationName: "GetLoadBalancer",
 }));
+
 export type GetLoadBalancerMetricDataError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12493,6 +12671,7 @@ export const getLoadBalancerMetricData: API.OperationMethod<
   retry: Retry,
   operationName: "GetLoadBalancerMetricData",
 }));
+
 export type GetLoadBalancersError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12528,6 +12707,7 @@ export const getLoadBalancers: API.OperationMethod<
   retry: Retry,
   operationName: "GetLoadBalancers",
 }));
+
 export type GetLoadBalancerTlsCertificatesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12569,6 +12749,7 @@ export const getLoadBalancerTlsCertificates: API.OperationMethod<
   retry: Retry,
   operationName: "GetLoadBalancerTlsCertificates",
 }));
+
 export type GetLoadBalancerTlsPoliciesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12604,6 +12785,7 @@ export const getLoadBalancerTlsPolicies: API.OperationMethod<
   retry: Retry,
   operationName: "GetLoadBalancerTlsPolicies",
 }));
+
 export type GetOperationError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12640,6 +12822,7 @@ export const getOperation: API.OperationMethod<
   retry: Retry,
   operationName: "GetOperation",
 }));
+
 export type GetOperationsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12679,6 +12862,7 @@ export const getOperations: API.OperationMethod<
   retry: Retry,
   operationName: "GetOperations",
 }));
+
 export type GetOperationsForResourceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12714,6 +12898,7 @@ export const getOperationsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "GetOperationsForResource",
 }));
+
 export type GetRegionsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12751,6 +12936,7 @@ export const getRegions: API.OperationMethod<
   retry: Retry,
   operationName: "GetRegions",
 }));
+
 export type GetRelationalDatabaseError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12786,6 +12972,7 @@ export const getRelationalDatabase: API.OperationMethod<
   retry: Retry,
   operationName: "GetRelationalDatabase",
 }));
+
 export type GetRelationalDatabaseBlueprintsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12825,6 +13012,7 @@ export const getRelationalDatabaseBlueprints: API.OperationMethod<
   retry: Retry,
   operationName: "GetRelationalDatabaseBlueprints",
 }));
+
 export type GetRelationalDatabaseBundlesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12864,6 +13052,7 @@ export const getRelationalDatabaseBundles: API.OperationMethod<
   retry: Retry,
   operationName: "GetRelationalDatabaseBundles",
 }));
+
 export type GetRelationalDatabaseEventsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12899,6 +13088,7 @@ export const getRelationalDatabaseEvents: API.OperationMethod<
   retry: Retry,
   operationName: "GetRelationalDatabaseEvents",
 }));
+
 export type GetRelationalDatabaseLogEventsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12934,6 +13124,7 @@ export const getRelationalDatabaseLogEvents: API.OperationMethod<
   retry: Retry,
   operationName: "GetRelationalDatabaseLogEvents",
 }));
+
 export type GetRelationalDatabaseLogStreamsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -12969,6 +13160,7 @@ export const getRelationalDatabaseLogStreams: API.OperationMethod<
   retry: Retry,
   operationName: "GetRelationalDatabaseLogStreams",
 }));
+
 export type GetRelationalDatabaseMasterUserPasswordError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13009,6 +13201,7 @@ export const getRelationalDatabaseMasterUserPassword: API.OperationMethod<
   retry: Retry,
   operationName: "GetRelationalDatabaseMasterUserPassword",
 }));
+
 export type GetRelationalDatabaseMetricDataError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13048,6 +13241,7 @@ export const getRelationalDatabaseMetricData: API.OperationMethod<
   retry: Retry,
   operationName: "GetRelationalDatabaseMetricData",
 }));
+
 export type GetRelationalDatabaseParametersError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13088,6 +13282,7 @@ export const getRelationalDatabaseParameters: API.OperationMethod<
   retry: Retry,
   operationName: "GetRelationalDatabaseParameters",
 }));
+
 export type GetRelationalDatabasesError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13123,6 +13318,7 @@ export const getRelationalDatabases: API.OperationMethod<
   retry: Retry,
   operationName: "GetRelationalDatabases",
 }));
+
 export type GetRelationalDatabaseSnapshotError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13158,6 +13354,7 @@ export const getRelationalDatabaseSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "GetRelationalDatabaseSnapshot",
 }));
+
 export type GetRelationalDatabaseSnapshotsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13193,6 +13390,7 @@ export const getRelationalDatabaseSnapshots: API.OperationMethod<
   retry: Retry,
   operationName: "GetRelationalDatabaseSnapshots",
 }));
+
 export type GetSetupHistoryError =
   | AccessDeniedException
   | InvalidInputException
@@ -13225,6 +13423,7 @@ export const getSetupHistory: API.OperationMethod<
   retry: Retry,
   operationName: "GetSetupHistory",
 }));
+
 export type GetStaticIpError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13260,6 +13459,7 @@ export const getStaticIp: API.OperationMethod<
   retry: Retry,
   operationName: "GetStaticIp",
 }));
+
 export type GetStaticIpsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13295,6 +13495,7 @@ export const getStaticIps: API.OperationMethod<
   retry: Retry,
   operationName: "GetStaticIps",
 }));
+
 export type ImportKeyPairError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13330,6 +13531,7 @@ export const importKeyPair: API.OperationMethod<
   retry: Retry,
   operationName: "ImportKeyPair",
 }));
+
 export type IsVpcPeeredError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13365,6 +13567,7 @@ export const isVpcPeered: API.OperationMethod<
   retry: Retry,
   operationName: "IsVpcPeered",
 }));
+
 export type OpenInstancePublicPortsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13405,6 +13608,7 @@ export const openInstancePublicPorts: API.OperationMethod<
   retry: Retry,
   operationName: "OpenInstancePublicPorts",
 }));
+
 export type PeerVpcError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13440,6 +13644,7 @@ export const peerVpc: API.OperationMethod<
   retry: Retry,
   operationName: "PeerVpc",
 }));
+
 export type PutAlarmError =
   | AccessDeniedException
   | InvalidInputException
@@ -13489,6 +13694,7 @@ export const putAlarm: API.OperationMethod<
   retry: Retry,
   operationName: "PutAlarm",
 }));
+
 export type PutInstancePublicPortsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13533,6 +13739,7 @@ export const putInstancePublicPorts: API.OperationMethod<
   retry: Retry,
   operationName: "PutInstancePublicPorts",
 }));
+
 export type RebootInstanceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13572,6 +13779,7 @@ export const rebootInstance: API.OperationMethod<
   retry: Retry,
   operationName: "RebootInstance",
 }));
+
 export type RebootRelationalDatabaseError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13611,6 +13819,7 @@ export const rebootRelationalDatabase: API.OperationMethod<
   retry: Retry,
   operationName: "RebootRelationalDatabase",
 }));
+
 export type RegisterContainerImageError =
   | AccessDeniedException
   | InvalidInputException
@@ -13647,6 +13856,7 @@ export const registerContainerImage: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterContainerImage",
 }));
+
 export type ReleaseStaticIpError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13682,6 +13892,7 @@ export const releaseStaticIp: API.OperationMethod<
   retry: Retry,
   operationName: "ReleaseStaticIp",
 }));
+
 export type ResetDistributionCacheError =
   | AccessDeniedException
   | InvalidInputException
@@ -13717,6 +13928,7 @@ export const resetDistributionCache: API.OperationMethod<
   retry: Retry,
   operationName: "ResetDistributionCache",
 }));
+
 export type SendContactMethodVerificationError =
   | AccessDeniedException
   | InvalidInputException
@@ -13763,6 +13975,7 @@ export const sendContactMethodVerification: API.OperationMethod<
   retry: Retry,
   operationName: "SendContactMethodVerification",
 }));
+
 export type SetIpAddressTypeError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13802,6 +14015,7 @@ export const setIpAddressType: API.OperationMethod<
   retry: Retry,
   operationName: "SetIpAddressType",
 }));
+
 export type SetResourceAccessForBucketError =
   | AccessDeniedException
   | InvalidInputException
@@ -13837,6 +14051,7 @@ export const setResourceAccessForBucket: API.OperationMethod<
   retry: Retry,
   operationName: "SetResourceAccessForBucket",
 }));
+
 export type SetupInstanceHttpsError =
   | AccessDeniedException
   | InvalidInputException
@@ -13872,6 +14087,7 @@ export const setupInstanceHttps: API.OperationMethod<
   retry: Retry,
   operationName: "SetupInstanceHttps",
 }));
+
 export type StartGUISessionError =
   | AccessDeniedException
   | InvalidInputException
@@ -13905,6 +14121,7 @@ export const startGUISession: API.OperationMethod<
   retry: Retry,
   operationName: "StartGUISession",
 }));
+
 export type StartInstanceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13949,6 +14166,7 @@ export const startInstance: API.OperationMethod<
   retry: Retry,
   operationName: "StartInstance",
 }));
+
 export type StartRelationalDatabaseError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -13989,6 +14207,7 @@ export const startRelationalDatabase: API.OperationMethod<
   retry: Retry,
   operationName: "StartRelationalDatabase",
 }));
+
 export type StopGUISessionError =
   | AccessDeniedException
   | InvalidInputException
@@ -14022,6 +14241,7 @@ export const stopGUISession: API.OperationMethod<
   retry: Retry,
   operationName: "StopGUISession",
 }));
+
 export type StopInstanceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14065,6 +14285,7 @@ export const stopInstance: API.OperationMethod<
   retry: Retry,
   operationName: "StopInstance",
 }));
+
 export type StopRelationalDatabaseError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14108,6 +14329,7 @@ export const stopRelationalDatabase: API.OperationMethod<
   retry: Retry,
   operationName: "StopRelationalDatabase",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14149,6 +14371,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TestAlarmError =
   | AccessDeniedException
   | InvalidInputException
@@ -14190,6 +14413,7 @@ export const testAlarm: API.OperationMethod<
   retry: Retry,
   operationName: "TestAlarm",
 }));
+
 export type UnpeerVpcError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14225,6 +14449,7 @@ export const unpeerVpc: API.OperationMethod<
   retry: Retry,
   operationName: "UnpeerVpc",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14265,6 +14490,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateBucketError =
   | AccessDeniedException
   | InvalidInputException
@@ -14299,6 +14525,7 @@ export const updateBucket: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBucket",
 }));
+
 export type UpdateBucketBundleError =
   | AccessDeniedException
   | InvalidInputException
@@ -14344,6 +14571,7 @@ export const updateBucketBundle: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBucketBundle",
 }));
+
 export type UpdateContainerServiceError =
   | AccessDeniedException
   | InvalidInputException
@@ -14376,6 +14604,7 @@ export const updateContainerService: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateContainerService",
 }));
+
 export type UpdateDistributionError =
   | AccessDeniedException
   | InvalidInputException
@@ -14409,6 +14638,7 @@ export const updateDistribution: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDistribution",
 }));
+
 export type UpdateDistributionBundleError =
   | AccessDeniedException
   | InvalidInputException
@@ -14451,6 +14681,7 @@ export const updateDistributionBundle: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDistributionBundle",
 }));
+
 export type UpdateDomainEntryError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14490,6 +14721,7 @@ export const updateDomainEntry: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDomainEntry",
 }));
+
 export type UpdateInstanceMetadataOptionsError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14530,6 +14762,7 @@ export const updateInstanceMetadataOptions: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateInstanceMetadataOptions",
 }));
+
 export type UpdateLoadBalancerAttributeError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14570,6 +14803,7 @@ export const updateLoadBalancerAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLoadBalancerAttribute",
 }));
+
 export type UpdateRelationalDatabaseError =
   | AccessDeniedException
   | AccountSetupInProgressException
@@ -14612,6 +14846,7 @@ export const updateRelationalDatabase: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRelationalDatabase",
 }));
+
 export type UpdateRelationalDatabaseParametersError =
   | AccessDeniedException
   | AccountSetupInProgressException

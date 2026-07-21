@@ -157,63 +157,87 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class CoreNetworkPolicyException extends S.TaggedErrorClass<CoreNetworkPolicyException>()(
+  "CoreNetworkPolicyException",
+  {
+    Message: S.String,
+    Errors: S.optional(
+      S.suspend(() => CoreNetworkPolicyErrorList).annotate({
+        identifier: "CoreNetworkPolicyErrorList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    Message: S.String,
+    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.String,
+    ResourceId: S.String,
+    ResourceType: S.String,
+    Context: S.optional(
+      S.suspend(() => ExceptionContextMap).annotate({
+        identifier: "ExceptionContextMap",
+      }),
+    ),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.String,
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    LimitCode: S.String,
+    ServiceCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    Message: S.String,
+    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.String,
+    Reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    Fields: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type AttachmentId = string;
-export type CoreNetworkId = string;
-export type CoreNetworkArn = string;
-export type AWSAccountId = string;
-export type ExternalRegionCode = string;
-export type ResourceArn = string;
-export type ConstrainedString = string;
-export type NetworkFunctionGroupName = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ServerSideString = string;
-export type RetryAfterSeconds = number;
-export type ExceptionContextKey = string;
-export type ExceptionContextValue = string;
-export type GlobalNetworkId = string;
-export type ConnectPeerId = string;
-export type DeviceId = string;
-export type LinkId = string;
-export type CustomerGatewayArn = string;
-export type TransitGatewayConnectPeerArn = string;
-export type ClientToken = string;
-export type ConnectionId = string;
-export type ConnectionArn = string;
-export type IPAddress = string;
-export type SubnetArn = string;
-export type CoreNetworkPolicyDocument = string;
-export type PrefixListArn = string;
-export type SiteId = string;
-export type DeviceArn = string;
-export type DirectConnectGatewayArn = string;
-export type GlobalNetworkArn = string;
-export type LinkArn = string;
-export type SiteArn = string;
-export type VpnConnectionArn = string;
-export type TransitGatewayArn = string;
-export type PeeringId = string;
-export type TransitGatewayPeeringAttachmentId = string;
-export type TransitGatewayRouteTableArn = string;
-export type VpcArn = string;
-export type SynthesizedJsonCoreNetworkPolicyDocument = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type FilterName = string;
-export type FilterValue = string;
-export type TransitGatewayAttachmentId = string;
-export type SynthesizedJsonResourcePolicyDocument = string;
-export type TransitGatewayAttachmentArn = string;
-export type ReasonContextKey = string;
-export type ReasonContextValue = string;
-export type OrganizationId = string;
-export type OrganizationAwsServiceAccessStatus = string;
-export type SLRDeploymentStatus = string;
-export type AccountId = string;
-export type Action = string;
-
-//# Schemas
 export interface AcceptAttachmentRequest {
   AttachmentId: string;
 }
@@ -231,6 +255,9 @@ export const AcceptAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptAttachmentRequest",
 }) as any as S.Schema<AcceptAttachmentRequest>;
+export type CoreNetworkId = string;
+export type CoreNetworkArn = string;
+export type AWSAccountId = string;
 export type AttachmentType =
   | "CONNECT"
   | "SITE_TO_SITE_VPN"
@@ -239,6 +266,7 @@ export type AttachmentType =
   | "TRANSIT_GATEWAY_ROUTE_TABLE"
   | (string & {});
 export const AttachmentType = /*@__PURE__*/ S.String;
+
 export type AttachmentState =
   | "REJECTED"
   | "PENDING_ATTACHMENT_ACCEPTANCE"
@@ -251,8 +279,15 @@ export type AttachmentState =
   | "DELETING"
   | (string & {});
 export const AttachmentState = /*@__PURE__*/ S.String;
+
+export type ExternalRegionCode = string;
 export type ExternalRegionCodeList = string[];
 export const ExternalRegionCodeList = /*@__PURE__*/ S.Array(S.String);
+export type ResourceArn = string;
+export type ConstrainedString = string;
+export type NetworkFunctionGroupName = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -306,6 +341,8 @@ export type AttachmentErrorCode =
   | "VPC_UNSUPPORTED_FEATURES"
   | (string & {});
 export const AttachmentErrorCode = /*@__PURE__*/ S.String;
+
+export type ServerSideString = string;
 export interface AttachmentError {
   Code?: AttachmentErrorCode;
   Message?: string;
@@ -376,31 +413,10 @@ export const AcceptAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptAttachmentResponse",
 }) as any as S.Schema<AcceptAttachmentResponse>;
-export type ExceptionContextMap = { [key: string]: string | undefined };
-export const ExceptionContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
-export type ValidationExceptionReason =
-  | "UnknownOperation"
-  | "CannotParse"
-  | "FieldValidationFailed"
-  | "Other"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  Name: string;
-  Message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type GlobalNetworkId = string;
+export type ConnectPeerId = string;
+export type DeviceId = string;
+export type LinkId = string;
 export interface AssociateConnectPeerRequest {
   GlobalNetworkId: string;
   ConnectPeerId: string;
@@ -436,6 +452,7 @@ export type ConnectPeerAssociationState =
   | "DELETED"
   | (string & {});
 export const ConnectPeerAssociationState = /*@__PURE__*/ S.String;
+
 export interface ConnectPeerAssociation {
   ConnectPeerId?: string;
   GlobalNetworkId?: string;
@@ -462,6 +479,7 @@ export const AssociateConnectPeerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateConnectPeerResponse",
 }) as any as S.Schema<AssociateConnectPeerResponse>;
+export type CustomerGatewayArn = string;
 export interface AssociateCustomerGatewayRequest {
   CustomerGatewayArn: string;
   GlobalNetworkId: string;
@@ -497,6 +515,7 @@ export type CustomerGatewayAssociationState =
   | "DELETED"
   | (string & {});
 export const CustomerGatewayAssociationState = /*@__PURE__*/ S.String;
+
 export interface CustomerGatewayAssociation {
   CustomerGatewayArn?: string;
   GlobalNetworkId?: string;
@@ -558,6 +577,7 @@ export type LinkAssociationState =
   | "DELETED"
   | (string & {});
 export const LinkAssociationState = /*@__PURE__*/ S.String;
+
 export interface LinkAssociation {
   GlobalNetworkId?: string;
   DeviceId?: string;
@@ -582,6 +602,7 @@ export const AssociateLinkResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateLinkResponse",
 }) as any as S.Schema<AssociateLinkResponse>;
+export type TransitGatewayConnectPeerArn = string;
 export interface AssociateTransitGatewayConnectPeerRequest {
   GlobalNetworkId: string;
   TransitGatewayConnectPeerArn: string;
@@ -618,6 +639,7 @@ export type TransitGatewayConnectPeerAssociationState =
   | "DELETED"
   | (string & {});
 export const TransitGatewayConnectPeerAssociationState = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayConnectPeerAssociation {
   TransitGatewayConnectPeerArn?: string;
   GlobalNetworkId?: string;
@@ -652,6 +674,7 @@ export const AssociateTransitGatewayConnectPeerResponse =
   }) as any as S.Schema<AssociateTransitGatewayConnectPeerResponse>;
 export type TunnelProtocol = "GRE" | "NO_ENCAP" | (string & {});
 export const TunnelProtocol = /*@__PURE__*/ S.String;
+
 export interface ConnectAttachmentOptions {
   Protocol?: TunnelProtocol;
 }
@@ -660,6 +683,7 @@ export const ConnectAttachmentOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectAttachmentOptions",
 }) as any as S.Schema<ConnectAttachmentOptions>;
+export type ClientToken = string;
 export interface CreateConnectAttachmentRequest {
   CoreNetworkId: string;
   EdgeLocation: string;
@@ -747,6 +771,8 @@ export const CreateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectionRequest",
 }) as any as S.Schema<CreateConnectionRequest>;
+export type ConnectionId = string;
+export type ConnectionArn = string;
 export type ConnectionState =
   | "PENDING"
   | "AVAILABLE"
@@ -754,6 +780,7 @@ export type ConnectionState =
   | "UPDATING"
   | (string & {});
 export const ConnectionState = /*@__PURE__*/ S.String;
+
 export interface Connection {
   ConnectionId?: string;
   ConnectionArn?: string;
@@ -790,6 +817,7 @@ export const CreateConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectionResponse",
 }) as any as S.Schema<CreateConnectionResponse>;
+export type IPAddress = string;
 export interface BgpOptions {
   PeerAsn?: number;
 }
@@ -798,6 +826,7 @@ export const BgpOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BgpOptions" }) as any as S.Schema<BgpOptions>;
 export type ConstrainedStringList = string[];
 export const ConstrainedStringList = /*@__PURE__*/ S.Array(S.String);
+export type SubnetArn = string;
 export interface CreateConnectPeerRequest {
   ConnectAttachmentId: string;
   CoreNetworkAddress?: string;
@@ -838,6 +867,7 @@ export type ConnectPeerState =
   | "DELETING"
   | (string & {});
 export const ConnectPeerState = /*@__PURE__*/ S.String;
+
 export interface ConnectPeerBgpConfiguration {
   CoreNetworkAsn?: number;
   PeerAsn?: number;
@@ -885,6 +915,7 @@ export type ConnectPeerErrorCode =
   | "NO_ASSOCIATED_CIDR_BLOCK"
   | (string & {});
 export const ConnectPeerErrorCode = /*@__PURE__*/ S.String;
+
 export interface ConnectPeerError {
   Code?: ConnectPeerErrorCode;
   Message?: string;
@@ -937,6 +968,7 @@ export const CreateConnectPeerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectPeerResponse",
 }) as any as S.Schema<CreateConnectPeerResponse>;
+export type CoreNetworkPolicyDocument = string;
 export interface CreateCoreNetworkRequest {
   GlobalNetworkId: string;
   Description?: string;
@@ -971,6 +1003,7 @@ export type CoreNetworkState =
   | "DELETING"
   | (string & {});
 export const CoreNetworkState = /*@__PURE__*/ S.String;
+
 export interface CoreNetworkSegment {
   Name?: string;
   EdgeLocations?: string[];
@@ -1068,24 +1101,7 @@ export const CreateCoreNetworkResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCoreNetworkResponse",
 }) as any as S.Schema<CreateCoreNetworkResponse>;
-export interface CoreNetworkPolicyError {
-  ErrorCode: string;
-  Message: string;
-  Path?: string;
-}
-export const CoreNetworkPolicyError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ErrorCode: S.String,
-    Message: S.String,
-    Path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CoreNetworkPolicyError",
-}) as any as S.Schema<CoreNetworkPolicyError>;
-export type CoreNetworkPolicyErrorList = CoreNetworkPolicyError[];
-export const CoreNetworkPolicyErrorList = /*@__PURE__*/ S.Array(
-  CoreNetworkPolicyError,
-);
+export type PrefixListArn = string;
 export interface CreateCoreNetworkPrefixListAssociationRequest {
   CoreNetworkId: string;
   PrefixListArn: string;
@@ -1146,6 +1162,7 @@ export const Location = /*@__PURE__*/ S.suspend(() =>
     Longitude: S.optional(S.String),
   }),
 ).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
+export type SiteId = string;
 export interface CreateDeviceRequest {
   GlobalNetworkId: string;
   AWSLocation?: AWSLocation;
@@ -1186,6 +1203,7 @@ export const CreateDeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDeviceRequest",
 }) as any as S.Schema<CreateDeviceRequest>;
+export type DeviceArn = string;
 export type DeviceState =
   | "PENDING"
   | "AVAILABLE"
@@ -1193,6 +1211,7 @@ export type DeviceState =
   | "UPDATING"
   | (string & {});
 export const DeviceState = /*@__PURE__*/ S.String;
+
 export interface Device {
   DeviceId?: string;
   DeviceArn?: string;
@@ -1235,6 +1254,7 @@ export const CreateDeviceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDeviceResponse",
 }) as any as S.Schema<CreateDeviceResponse>;
+export type DirectConnectGatewayArn = string;
 export interface CreateDirectConnectGatewayAttachmentRequest {
   CoreNetworkId: string;
   DirectConnectGatewayArn: string;
@@ -1311,6 +1331,7 @@ export const CreateGlobalNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGlobalNetworkRequest",
 }) as any as S.Schema<CreateGlobalNetworkRequest>;
+export type GlobalNetworkArn = string;
 export type GlobalNetworkState =
   | "PENDING"
   | "AVAILABLE"
@@ -1318,6 +1339,7 @@ export type GlobalNetworkState =
   | "UPDATING"
   | (string & {});
 export const GlobalNetworkState = /*@__PURE__*/ S.String;
+
 export interface GlobalNetwork {
   GlobalNetworkId?: string;
   GlobalNetworkArn?: string;
@@ -1388,6 +1410,7 @@ export const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLinkRequest",
 }) as any as S.Schema<CreateLinkRequest>;
+export type LinkArn = string;
 export type LinkState =
   | "PENDING"
   | "AVAILABLE"
@@ -1395,6 +1418,7 @@ export type LinkState =
   | "UPDATING"
   | (string & {});
 export const LinkState = /*@__PURE__*/ S.String;
+
 export interface Link {
   LinkId?: string;
   LinkArn?: string;
@@ -1459,6 +1483,7 @@ export const CreateSiteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSiteRequest",
 }) as any as S.Schema<CreateSiteRequest>;
+export type SiteArn = string;
 export type SiteState =
   | "PENDING"
   | "AVAILABLE"
@@ -1466,6 +1491,7 @@ export type SiteState =
   | "UPDATING"
   | (string & {});
 export const SiteState = /*@__PURE__*/ S.String;
+
 export interface Site {
   SiteId?: string;
   SiteArn?: string;
@@ -1496,6 +1522,7 @@ export const CreateSiteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSiteResponse",
 }) as any as S.Schema<CreateSiteResponse>;
+export type VpnConnectionArn = string;
 export interface CreateSiteToSiteVpnAttachmentRequest {
   CoreNetworkId: string;
   VpnConnectionArn: string;
@@ -1545,6 +1572,7 @@ export const CreateSiteToSiteVpnAttachmentResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateSiteToSiteVpnAttachmentResponse",
 }) as any as S.Schema<CreateSiteToSiteVpnAttachmentResponse>;
+export type TransitGatewayArn = string;
 export interface CreateTransitGatewayPeeringRequest {
   CoreNetworkId: string;
   TransitGatewayArn: string;
@@ -1570,8 +1598,10 @@ export const CreateTransitGatewayPeeringRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTransitGatewayPeeringRequest",
 }) as any as S.Schema<CreateTransitGatewayPeeringRequest>;
+export type PeeringId = string;
 export type PeeringType = "TRANSIT_GATEWAY" | (string & {});
 export const PeeringType = /*@__PURE__*/ S.String;
+
 export type PeeringState =
   | "CREATING"
   | "FAILED"
@@ -1579,6 +1609,7 @@ export type PeeringState =
   | "DELETING"
   | (string & {});
 export const PeeringState = /*@__PURE__*/ S.String;
+
 export type PeeringErrorCode =
   | "TRANSIT_GATEWAY_NOT_FOUND"
   | "TRANSIT_GATEWAY_PEERS_LIMIT_EXCEEDED"
@@ -1588,6 +1619,7 @@ export type PeeringErrorCode =
   | "INVALID_TRANSIT_GATEWAY_STATE"
   | (string & {});
 export const PeeringErrorCode = /*@__PURE__*/ S.String;
+
 export interface PermissionsErrorContext {
   MissingPermission?: string;
 }
@@ -1642,6 +1674,7 @@ export const Peering = /*@__PURE__*/ S.suspend(() =>
     LastModificationErrors: S.optional(PeeringErrorList),
   }),
 ).annotate({ identifier: "Peering" }) as any as S.Schema<Peering>;
+export type TransitGatewayPeeringAttachmentId = string;
 export interface TransitGatewayPeering {
   Peering?: Peering;
   TransitGatewayArn?: string;
@@ -1664,6 +1697,7 @@ export const CreateTransitGatewayPeeringResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTransitGatewayPeeringResponse",
 }) as any as S.Schema<CreateTransitGatewayPeeringResponse>;
+export type TransitGatewayRouteTableArn = string;
 export interface CreateTransitGatewayRouteTableAttachmentRequest {
   PeeringId: string;
   TransitGatewayRouteTableArn: string;
@@ -1722,6 +1756,7 @@ export const CreateTransitGatewayRouteTableAttachmentResponse =
   ).annotate({
     identifier: "CreateTransitGatewayRouteTableAttachmentResponse",
   }) as any as S.Schema<CreateTransitGatewayRouteTableAttachmentResponse>;
+export type VpcArn = string;
 export type SubnetArnList = string[];
 export const SubnetArnList = /*@__PURE__*/ S.Array(S.String);
 export interface VpcOptions {
@@ -1923,6 +1958,7 @@ export const DeleteCoreNetworkPolicyVersionRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DeleteCoreNetworkPolicyVersionRequest>;
 export type CoreNetworkPolicyAlias = "LIVE" | "LATEST" | (string & {});
 export const CoreNetworkPolicyAlias = /*@__PURE__*/ S.String;
+
 export type ChangeSetState =
   | "PENDING_GENERATION"
   | "FAILED_GENERATION"
@@ -1932,6 +1968,26 @@ export type ChangeSetState =
   | "OUT_OF_DATE"
   | (string & {});
 export const ChangeSetState = /*@__PURE__*/ S.String;
+
+export interface CoreNetworkPolicyError {
+  ErrorCode: string;
+  Message: string;
+  Path?: string;
+}
+export const CoreNetworkPolicyError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ErrorCode: S.String,
+    Message: S.String,
+    Path: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CoreNetworkPolicyError",
+}) as any as S.Schema<CoreNetworkPolicyError>;
+export type CoreNetworkPolicyErrorList = CoreNetworkPolicyError[];
+export const CoreNetworkPolicyErrorList = /*@__PURE__*/ S.Array(
+  CoreNetworkPolicyError,
+);
+export type SynthesizedJsonCoreNetworkPolicyDocument = string;
 export interface CoreNetworkPolicy {
   CoreNetworkId?: string;
   PolicyVersionId?: number;
@@ -2205,6 +2261,7 @@ export type TransitGatewayRegistrationState =
   | "FAILED"
   | (string & {});
 export const TransitGatewayRegistrationState = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayRegistrationStateReason {
   Code?: TransitGatewayRegistrationState;
   Message?: string;
@@ -2244,6 +2301,8 @@ export const DeregisterTransitGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeregisterTransitGatewayResponse>;
 export type GlobalNetworkIdList = string[];
 export const GlobalNetworkIdList = /*@__PURE__*/ S.Array(S.String);
+export type MaxResults = number;
+export type NextToken = string;
 export interface DescribeGlobalNetworksRequest {
   GlobalNetworkIds?: string[];
   MaxResults?: number;
@@ -2669,8 +2728,10 @@ export type ChangeType =
   | "ATTACHMENT_POLICIES_CONFIGURATION"
   | (string & {});
 export const ChangeType = /*@__PURE__*/ S.String;
+
 export type ChangeAction = "ADD" | "MODIFY" | "REMOVE" | (string & {});
 export const ChangeAction = /*@__PURE__*/ S.String;
+
 export type ChangeStatus =
   | "NOT_STARTED"
   | "IN_PROGRESS"
@@ -2678,8 +2739,10 @@ export type ChangeStatus =
   | "FAILED"
   | (string & {});
 export const ChangeStatus = /*@__PURE__*/ S.String;
+
 export type RoutingPolicyDirection = "inbound" | "outbound" | (string & {});
 export const RoutingPolicyDirection = /*@__PURE__*/ S.String;
+
 export interface RoutingPolicyAssociationDetail {
   RoutingPolicyNames?: string[];
   SharedSegments?: string[];
@@ -2792,8 +2855,10 @@ export type SegmentActionServiceInsertion =
   | "send-to"
   | (string & {});
 export const SegmentActionServiceInsertion = /*@__PURE__*/ S.String;
+
 export type SendViaMode = "dual-hop" | "single-hop" | (string & {});
 export const SendViaMode = /*@__PURE__*/ S.String;
+
 export type WhenSentToSegmentsList = string[];
 export const WhenSentToSegmentsList = /*@__PURE__*/ S.Array(S.String);
 export interface WhenSentTo {
@@ -3445,12 +3510,16 @@ export const RouteTableIdentifier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteTableIdentifier>;
 export type RouteState = "ACTIVE" | "BLACKHOLE" | (string & {});
 export const RouteState = /*@__PURE__*/ S.String;
+
 export type RouteStateList = RouteState[];
 export const RouteStateList = /*@__PURE__*/ S.Array(RouteState);
 export type RouteType = "PROPAGATED" | "STATIC" | (string & {});
 export const RouteType = /*@__PURE__*/ S.String;
+
 export type RouteTypeList = RouteType[];
 export const RouteTypeList = /*@__PURE__*/ S.Array(RouteType);
+export type FilterName = string;
+export type FilterValue = string;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(S.String);
 export type FilterMap = { [key: string]: string[] | undefined };
@@ -3504,6 +3573,8 @@ export type RouteTableType =
   | "NETWORK_FUNCTION_GROUP"
   | (string & {});
 export const RouteTableType = /*@__PURE__*/ S.String;
+
+export type TransitGatewayAttachmentId = string;
 export interface NetworkRouteDestination {
   CoreNetworkAttachmentId?: string;
   TransitGatewayAttachmentId?: string;
@@ -3610,8 +3681,10 @@ export const GetNetworkTelemetryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetNetworkTelemetryRequest>;
 export type ConnectionType = "BGP" | "IPSEC" | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
+
 export type ConnectionStatus = "UP" | "DOWN" | (string & {});
 export const ConnectionStatus = /*@__PURE__*/ S.String;
+
 export interface ConnectionHealth {
   Type?: ConnectionType;
   Status?: ConnectionStatus;
@@ -3683,6 +3756,7 @@ export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyRequest",
 }) as any as S.Schema<GetResourcePolicyRequest>;
+export type SynthesizedJsonResourcePolicyDocument = string;
 export interface GetResourcePolicyResponse {
   PolicyDocument?: string;
 }
@@ -3721,6 +3795,8 @@ export type RouteAnalysisStatus =
   | "FAILED"
   | (string & {});
 export const RouteAnalysisStatus = /*@__PURE__*/ S.String;
+
+export type TransitGatewayAttachmentArn = string;
 export interface RouteAnalysisEndpointOptions {
   TransitGatewayAttachmentArn?: string;
   TransitGatewayArn?: string;
@@ -3740,6 +3816,7 @@ export type RouteAnalysisCompletionResultCode =
   | "NOT_CONNECTED"
   | (string & {});
 export const RouteAnalysisCompletionResultCode = /*@__PURE__*/ S.String;
+
 export type RouteAnalysisCompletionReasonCode =
   | "TRANSIT_GATEWAY_ATTACHMENT_NOT_FOUND"
   | "TRANSIT_GATEWAY_ATTACHMENT_NOT_IN_TRANSIT_GATEWAY"
@@ -3754,6 +3831,9 @@ export type RouteAnalysisCompletionReasonCode =
   | "NO_DESTINATION_ARN_PROVIDED"
   | (string & {});
 export const RouteAnalysisCompletionReasonCode = /*@__PURE__*/ S.String;
+
+export type ReasonContextKey = string;
+export type ReasonContextValue = string;
 export type ReasonContextMap = { [key: string]: string | undefined };
 export const ReasonContextMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -4590,6 +4670,10 @@ export const ListOrganizationServiceAccessStatusRequest =
   ).annotate({
     identifier: "ListOrganizationServiceAccessStatusRequest",
   }) as any as S.Schema<ListOrganizationServiceAccessStatusRequest>;
+export type OrganizationId = string;
+export type OrganizationAwsServiceAccessStatus = string;
+export type SLRDeploymentStatus = string;
+export type AccountId = string;
 export interface AccountStatus {
   AccountId?: string;
   SLRDeploymentStatus?: string;
@@ -4939,6 +5023,7 @@ export const RestoreCoreNetworkPolicyVersionResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "RestoreCoreNetworkPolicyVersionResponse",
 }) as any as S.Schema<RestoreCoreNetworkPolicyVersionResponse>;
+export type Action = string;
 export interface StartOrganizationServiceAccessUpdateRequest {
   Action: string;
 }
@@ -5404,71 +5489,35 @@ export const UpdateVpcAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateVpcAttachmentResponse",
 }) as any as S.Schema<UpdateVpcAttachmentResponse>;
+export type RetryAfterSeconds = number;
+export type ExceptionContextKey = string;
+export type ExceptionContextValue = string;
+export type ExceptionContextMap = { [key: string]: string | undefined };
+export const ExceptionContextMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export type ValidationExceptionReason =
+  | "UnknownOperation"
+  | "CannotParse"
+  | "FieldValidationFailed"
+  | "Other"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.String, ResourceId: S.String, ResourceType: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    Message: S.String,
-    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.String,
-    ResourceId: S.String,
-    ResourceType: S.String,
-    Context: S.optional(ExceptionContextMap),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    Message: S.String,
-    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.String,
-    Reason: S.optional(ValidationExceptionReason),
-    Fields: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.String,
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    LimitCode: S.String,
-    ServiceCode: S.String,
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class CoreNetworkPolicyException extends S.TaggedErrorClass<CoreNetworkPolicyException>()(
-  "CoreNetworkPolicyException",
-  { Message: S.String, Errors: S.optional(CoreNetworkPolicyErrorList) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export interface ValidationExceptionField {
+  Name: string;
+  Message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type AcceptAttachmentError =
   | AccessDeniedException
   | ConflictException
@@ -5503,6 +5552,7 @@ export const acceptAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptAttachment",
 }));
+
 export type AssociateConnectPeerError =
   | AccessDeniedException
   | ConflictException
@@ -5540,6 +5590,7 @@ export const associateConnectPeer: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateConnectPeer",
 }));
+
 export type AssociateCustomerGatewayError =
   | AccessDeniedException
   | ConflictException
@@ -5583,6 +5634,7 @@ export const associateCustomerGateway: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateCustomerGateway",
 }));
+
 export type AssociateLinkError =
   | AccessDeniedException
   | ConflictException
@@ -5616,6 +5668,7 @@ export const associateLink: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateLink",
 }));
+
 export type AssociateTransitGatewayConnectPeerError =
   | AccessDeniedException
   | ConflictException
@@ -5655,6 +5708,7 @@ export const associateTransitGatewayConnectPeer: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateTransitGatewayConnectPeer",
 }));
+
 export type CreateConnectAttachmentError =
   | AccessDeniedException
   | ConflictException
@@ -5690,6 +5744,7 @@ export const createConnectAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConnectAttachment",
 }));
+
 export type CreateConnectionError =
   | AccessDeniedException
   | ConflictException
@@ -5721,6 +5776,7 @@ export const createConnection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConnection",
 }));
+
 export type CreateConnectPeerError =
   | AccessDeniedException
   | ConflictException
@@ -5753,6 +5809,7 @@ export const createConnectPeer: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConnectPeer",
 }));
+
 export type CreateCoreNetworkError =
   | AccessDeniedException
   | ConflictException
@@ -5786,6 +5843,7 @@ export const createCoreNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCoreNetwork",
 }));
+
 export type CreateCoreNetworkPrefixListAssociationError =
   | AccessDeniedException
   | ConflictException
@@ -5819,6 +5877,7 @@ export const createCoreNetworkPrefixListAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCoreNetworkPrefixListAssociation",
 }));
+
 export type CreateDeviceError =
   | AccessDeniedException
   | ConflictException
@@ -5853,6 +5912,7 @@ export const createDevice: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDevice",
 }));
+
 export type CreateDirectConnectGatewayAttachmentError =
   | AccessDeniedException
   | ConflictException
@@ -5884,6 +5944,7 @@ export const createDirectConnectGatewayAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDirectConnectGatewayAttachment",
 }));
+
 export type CreateGlobalNetworkError =
   | AccessDeniedException
   | ConflictException
@@ -5915,6 +5976,7 @@ export const createGlobalNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGlobalNetwork",
 }));
+
 export type CreateLinkError =
   | AccessDeniedException
   | ConflictException
@@ -5948,6 +6010,7 @@ export const createLink: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLink",
 }));
+
 export type CreateSiteError =
   | AccessDeniedException
   | ConflictException
@@ -5981,6 +6044,7 @@ export const createSite: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSite",
 }));
+
 export type CreateSiteToSiteVpnAttachmentError =
   | AccessDeniedException
   | ConflictException
@@ -6012,6 +6076,7 @@ export const createSiteToSiteVpnAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSiteToSiteVpnAttachment",
 }));
+
 export type CreateTransitGatewayPeeringError =
   | AccessDeniedException
   | ConflictException
@@ -6043,6 +6108,7 @@ export const createTransitGatewayPeering: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitGatewayPeering",
 }));
+
 export type CreateTransitGatewayRouteTableAttachmentError =
   | AccessDeniedException
   | ConflictException
@@ -6074,6 +6140,7 @@ export const createTransitGatewayRouteTableAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitGatewayRouteTableAttachment",
 }));
+
 export type CreateVpcAttachmentError =
   | AccessDeniedException
   | ConflictException
@@ -6105,6 +6172,7 @@ export const createVpcAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpcAttachment",
 }));
+
 export type DeleteAttachmentError =
   | AccessDeniedException
   | ConflictException
@@ -6136,6 +6204,7 @@ export const deleteAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAttachment",
 }));
+
 export type DeleteConnectionError =
   | AccessDeniedException
   | ConflictException
@@ -6167,6 +6236,7 @@ export const deleteConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConnection",
 }));
+
 export type DeleteConnectPeerError =
   | AccessDeniedException
   | ConflictException
@@ -6198,6 +6268,7 @@ export const deleteConnectPeer: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConnectPeer",
 }));
+
 export type DeleteCoreNetworkError =
   | AccessDeniedException
   | ConflictException
@@ -6229,6 +6300,7 @@ export const deleteCoreNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCoreNetwork",
 }));
+
 export type DeleteCoreNetworkPolicyVersionError =
   | AccessDeniedException
   | ConflictException
@@ -6260,6 +6332,7 @@ export const deleteCoreNetworkPolicyVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCoreNetworkPolicyVersion",
 }));
+
 export type DeleteCoreNetworkPrefixListAssociationError =
   | AccessDeniedException
   | ConflictException
@@ -6293,6 +6366,7 @@ export const deleteCoreNetworkPrefixListAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCoreNetworkPrefixListAssociation",
 }));
+
 export type DeleteDeviceError =
   | AccessDeniedException
   | ConflictException
@@ -6325,6 +6399,7 @@ export const deleteDevice: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDevice",
 }));
+
 export type DeleteGlobalNetworkError =
   | AccessDeniedException
   | ConflictException
@@ -6357,6 +6432,7 @@ export const deleteGlobalNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGlobalNetwork",
 }));
+
 export type DeleteLinkError =
   | AccessDeniedException
   | ConflictException
@@ -6389,6 +6465,7 @@ export const deleteLink: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLink",
 }));
+
 export type DeletePeeringError =
   | AccessDeniedException
   | ConflictException
@@ -6420,6 +6497,7 @@ export const deletePeering: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePeering",
 }));
+
 export type DeleteResourcePolicyError =
   | AccessDeniedException
   | ConflictException
@@ -6449,6 +6527,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteSiteError =
   | AccessDeniedException
   | ConflictException
@@ -6480,6 +6559,7 @@ export const deleteSite: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSite",
 }));
+
 export type DeregisterTransitGatewayError =
   | AccessDeniedException
   | ConflictException
@@ -6512,6 +6592,7 @@ export const deregisterTransitGateway: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterTransitGateway",
 }));
+
 export type DescribeGlobalNetworksError =
   | AccessDeniedException
   | InternalServerException
@@ -6565,6 +6646,7 @@ export const describeGlobalNetworks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DisassociateConnectPeerError =
   | AccessDeniedException
   | ConflictException
@@ -6596,6 +6678,7 @@ export const disassociateConnectPeer: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateConnectPeer",
 }));
+
 export type DisassociateCustomerGatewayError =
   | AccessDeniedException
   | ConflictException
@@ -6627,6 +6710,7 @@ export const disassociateCustomerGateway: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateCustomerGateway",
 }));
+
 export type DisassociateLinkError =
   | AccessDeniedException
   | ConflictException
@@ -6659,6 +6743,7 @@ export const disassociateLink: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateLink",
 }));
+
 export type DisassociateTransitGatewayConnectPeerError =
   | AccessDeniedException
   | ConflictException
@@ -6690,6 +6775,7 @@ export const disassociateTransitGatewayConnectPeer: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateTransitGatewayConnectPeer",
 }));
+
 export type ExecuteCoreNetworkChangeSetError =
   | AccessDeniedException
   | ConflictException
@@ -6721,6 +6807,7 @@ export const executeCoreNetworkChangeSet: API.OperationMethod<
   retry: Retry,
   operationName: "ExecuteCoreNetworkChangeSet",
 }));
+
 export type GetConnectAttachmentError =
   | AccessDeniedException
   | InternalServerException
@@ -6750,6 +6837,7 @@ export const getConnectAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "GetConnectAttachment",
 }));
+
 export type GetConnectionsError =
   | AccessDeniedException
   | InternalServerException
@@ -6800,6 +6888,7 @@ export const getConnections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetConnectPeerError =
   | AccessDeniedException
   | InternalServerException
@@ -6829,6 +6918,7 @@ export const getConnectPeer: API.OperationMethod<
   retry: Retry,
   operationName: "GetConnectPeer",
 }));
+
 export type GetConnectPeerAssociationsError =
   | AccessDeniedException
   | ConflictException
@@ -6881,6 +6971,7 @@ export const getConnectPeerAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetCoreNetworkError =
   | AccessDeniedException
   | InternalServerException
@@ -6910,6 +7001,7 @@ export const getCoreNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "GetCoreNetwork",
 }));
+
 export type GetCoreNetworkChangeEventsError =
   | AccessDeniedException
   | InternalServerException
@@ -6960,6 +7052,7 @@ export const getCoreNetworkChangeEvents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetCoreNetworkChangeSetError =
   | AccessDeniedException
   | InternalServerException
@@ -7010,6 +7103,7 @@ export const getCoreNetworkChangeSet: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetCoreNetworkPolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -7039,6 +7133,7 @@ export const getCoreNetworkPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetCoreNetworkPolicy",
 }));
+
 export type GetCustomerGatewayAssociationsError =
   | AccessDeniedException
   | ConflictException
@@ -7092,6 +7187,7 @@ export const getCustomerGatewayAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetDevicesError =
   | AccessDeniedException
   | InternalServerException
@@ -7142,6 +7238,7 @@ export const getDevices: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetDirectConnectGatewayAttachmentError =
   | AccessDeniedException
   | InternalServerException
@@ -7171,6 +7268,7 @@ export const getDirectConnectGatewayAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "GetDirectConnectGatewayAttachment",
 }));
+
 export type GetLinkAssociationsError =
   | AccessDeniedException
   | InternalServerException
@@ -7222,6 +7320,7 @@ export const getLinkAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetLinksError =
   | AccessDeniedException
   | InternalServerException
@@ -7274,6 +7373,7 @@ export const getLinks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetNetworkResourceCountsError =
   | AccessDeniedException
   | InternalServerException
@@ -7322,6 +7422,7 @@ export const getNetworkResourceCounts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetNetworkResourceRelationshipsError =
   | AccessDeniedException
   | InternalServerException
@@ -7372,6 +7473,7 @@ export const getNetworkResourceRelationships: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetNetworkResourcesError =
   | AccessDeniedException
   | InternalServerException
@@ -7424,6 +7526,7 @@ export const getNetworkResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetNetworkRoutesError =
   | AccessDeniedException
   | InternalServerException
@@ -7453,6 +7556,7 @@ export const getNetworkRoutes: API.OperationMethod<
   retry: Retry,
   operationName: "GetNetworkRoutes",
 }));
+
 export type GetNetworkTelemetryError =
   | AccessDeniedException
   | InternalServerException
@@ -7503,6 +7607,7 @@ export const getNetworkTelemetry: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetResourcePolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -7530,6 +7635,7 @@ export const getResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type GetRouteAnalysisError =
   | AccessDeniedException
   | InternalServerException
@@ -7559,6 +7665,7 @@ export const getRouteAnalysis: API.OperationMethod<
   retry: Retry,
   operationName: "GetRouteAnalysis",
 }));
+
 export type GetSitesError =
   | AccessDeniedException
   | InternalServerException
@@ -7609,6 +7716,7 @@ export const getSites: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetSiteToSiteVpnAttachmentError =
   | AccessDeniedException
   | InternalServerException
@@ -7638,6 +7746,7 @@ export const getSiteToSiteVpnAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "GetSiteToSiteVpnAttachment",
 }));
+
 export type GetTransitGatewayConnectPeerAssociationsError =
   | AccessDeniedException
   | ConflictException
@@ -7690,6 +7799,7 @@ export const getTransitGatewayConnectPeerAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetTransitGatewayPeeringError =
   | AccessDeniedException
   | InternalServerException
@@ -7719,6 +7829,7 @@ export const getTransitGatewayPeering: API.OperationMethod<
   retry: Retry,
   operationName: "GetTransitGatewayPeering",
 }));
+
 export type GetTransitGatewayRegistrationsError =
   | AccessDeniedException
   | InternalServerException
@@ -7770,6 +7881,7 @@ export const getTransitGatewayRegistrations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetTransitGatewayRouteTableAttachmentError =
   | AccessDeniedException
   | InternalServerException
@@ -7799,6 +7911,7 @@ export const getTransitGatewayRouteTableAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "GetTransitGatewayRouteTableAttachment",
 }));
+
 export type GetVpcAttachmentError =
   | AccessDeniedException
   | InternalServerException
@@ -7828,6 +7941,7 @@ export const getVpcAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "GetVpcAttachment",
 }));
+
 export type ListAttachmentRoutingPolicyAssociationsError =
   | AccessDeniedException
   | InternalServerException
@@ -7878,6 +7992,7 @@ export const listAttachmentRoutingPolicyAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAttachmentsError =
   | AccessDeniedException
   | InternalServerException
@@ -7926,6 +8041,7 @@ export const listAttachments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListConnectPeersError =
   | AccessDeniedException
   | InternalServerException
@@ -7974,6 +8090,7 @@ export const listConnectPeers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCoreNetworkPolicyVersionsError =
   | AccessDeniedException
   | InternalServerException
@@ -8024,6 +8141,7 @@ export const listCoreNetworkPolicyVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCoreNetworkPrefixListAssociationsError =
   | AccessDeniedException
   | InternalServerException
@@ -8074,6 +8192,7 @@ export const listCoreNetworkPrefixListAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCoreNetworkRoutingInformationError =
   | AccessDeniedException
   | InternalServerException
@@ -8124,6 +8243,7 @@ export const listCoreNetworkRoutingInformation: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCoreNetworksError =
   | AccessDeniedException
   | InternalServerException
@@ -8172,6 +8292,7 @@ export const listCoreNetworks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOrganizationServiceAccessStatusError = CommonErrors;
 /**
  * Gets the status of the Service Linked Role (SLR) deployment for the accounts in a given Amazon Web Services Organization.
@@ -8189,6 +8310,7 @@ export const listOrganizationServiceAccessStatus: API.OperationMethod<
   retry: Retry,
   operationName: "ListOrganizationServiceAccessStatus",
 }));
+
 export type ListPeeringsError =
   | AccessDeniedException
   | InternalServerException
@@ -8237,6 +8359,7 @@ export const listPeerings: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -8266,6 +8389,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutAttachmentRoutingPolicyLabelError =
   | AccessDeniedException
   | ConflictException
@@ -8299,6 +8423,7 @@ export const putAttachmentRoutingPolicyLabel: API.OperationMethod<
   retry: Retry,
   operationName: "PutAttachmentRoutingPolicyLabel",
 }));
+
 export type PutCoreNetworkPolicyError =
   | AccessDeniedException
   | ConflictException
@@ -8332,6 +8457,7 @@ export const putCoreNetworkPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutCoreNetworkPolicy",
 }));
+
 export type PutResourcePolicyError =
   | AccessDeniedException
   | ConflictException
@@ -8363,6 +8489,7 @@ export const putResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type RegisterTransitGatewayError =
   | AccessDeniedException
   | ConflictException
@@ -8398,6 +8525,7 @@ export const registerTransitGateway: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterTransitGateway",
 }));
+
 export type RejectAttachmentError =
   | AccessDeniedException
   | ConflictException
@@ -8429,6 +8557,7 @@ export const rejectAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "RejectAttachment",
 }));
+
 export type RemoveAttachmentRoutingPolicyLabelError =
   | AccessDeniedException
   | ConflictException
@@ -8462,6 +8591,7 @@ export const removeAttachmentRoutingPolicyLabel: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveAttachmentRoutingPolicyLabel",
 }));
+
 export type RestoreCoreNetworkPolicyVersionError =
   | AccessDeniedException
   | ConflictException
@@ -8493,6 +8623,7 @@ export const restoreCoreNetworkPolicyVersion: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreCoreNetworkPolicyVersion",
 }));
+
 export type StartOrganizationServiceAccessUpdateError =
   | AccessDeniedException
   | ConflictException
@@ -8524,6 +8655,7 @@ export const startOrganizationServiceAccessUpdate: API.OperationMethod<
   retry: Retry,
   operationName: "StartOrganizationServiceAccessUpdate",
 }));
+
 export type StartRouteAnalysisError =
   | AccessDeniedException
   | ConflictException
@@ -8556,6 +8688,7 @@ export const startRouteAnalysis: API.OperationMethod<
   retry: Retry,
   operationName: "StartRouteAnalysis",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -8589,6 +8722,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -8620,6 +8754,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateConnectionError =
   | AccessDeniedException
   | ConflictException
@@ -8652,6 +8787,7 @@ export const updateConnection: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConnection",
 }));
+
 export type UpdateCoreNetworkError =
   | AccessDeniedException
   | ConflictException
@@ -8683,6 +8819,7 @@ export const updateCoreNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCoreNetwork",
 }));
+
 export type UpdateDeviceError =
   | AccessDeniedException
   | ConflictException
@@ -8715,6 +8852,7 @@ export const updateDevice: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDevice",
 }));
+
 export type UpdateDirectConnectGatewayAttachmentError =
   | AccessDeniedException
   | ConflictException
@@ -8746,6 +8884,7 @@ export const updateDirectConnectGatewayAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDirectConnectGatewayAttachment",
 }));
+
 export type UpdateGlobalNetworkError =
   | AccessDeniedException
   | ConflictException
@@ -8778,6 +8917,7 @@ export const updateGlobalNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGlobalNetwork",
 }));
+
 export type UpdateLinkError =
   | AccessDeniedException
   | ConflictException
@@ -8812,6 +8952,7 @@ export const updateLink: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLink",
 }));
+
 export type UpdateNetworkResourceMetadataError =
   | AccessDeniedException
   | ConflictException
@@ -8843,6 +8984,7 @@ export const updateNetworkResourceMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNetworkResourceMetadata",
 }));
+
 export type UpdateSiteError =
   | AccessDeniedException
   | ConflictException
@@ -8875,6 +9017,7 @@ export const updateSite: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSite",
 }));
+
 export type UpdateVpcAttachmentError =
   | AccessDeniedException
   | ConflictException

@@ -85,34 +85,28 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type SuiteDefinitionName = string;
 export type AmazonResourceName = string;
-export type IntendedForQualificationBoolean = boolean;
-export type IsLongDurationTestBoolean = boolean;
-export type RootGroup = string;
-export type String128 = string;
-export type String256 = string;
-export type ClientToken = string;
-export type UUID = string;
-export type Message = string;
-export type Endpoint = string;
-export type SuiteDefinitionVersion = string;
-export type ParallelRun = boolean;
-export type GroupName = string;
-export type TestCaseDefinitionName = string;
-export type LogUrl = string;
-export type Warnings = string;
-export type Failure = string;
-export type TestCaseScenarioId = string;
-export type SystemMessage = string;
-export type ErrorReason = string;
-export type QualificationReportDownloadUrl = string;
-export type MaxResults = number;
-export type Token = string;
-export type SuiteRunResultCount = number;
-
-//# Schemas
 export interface DeviceUnderTest {
   thingArn?: string;
   certificateArn?: string;
@@ -129,6 +123,9 @@ export const DeviceUnderTest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeviceUnderTest>;
 export type DeviceUnderTestList = DeviceUnderTest[];
 export const DeviceUnderTestList = /*@__PURE__*/ S.Array(DeviceUnderTest);
+export type IntendedForQualificationBoolean = boolean;
+export type IsLongDurationTestBoolean = boolean;
+export type RootGroup = string;
 export type Protocol =
   | "MqttV3_1_1"
   | "MqttV5"
@@ -136,6 +133,7 @@ export type Protocol =
   | "MqttV5_OverWebSocket"
   | (string & {});
 export const Protocol = /*@__PURE__*/ S.String;
+
 export interface SuiteDefinitionConfiguration {
   suiteDefinitionName?: string;
   devices?: DeviceUnderTest[];
@@ -158,11 +156,14 @@ export const SuiteDefinitionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SuiteDefinitionConfiguration",
 }) as any as S.Schema<SuiteDefinitionConfiguration>;
+export type String128 = string;
+export type String256 = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ClientToken = string;
 export interface CreateSuiteDefinitionRequest {
   suiteDefinitionConfiguration?: SuiteDefinitionConfiguration;
   tags?: { [key: string]: string | undefined };
@@ -186,6 +187,7 @@ export const CreateSuiteDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSuiteDefinitionRequest",
 }) as any as S.Schema<CreateSuiteDefinitionRequest>;
+export type UUID = string;
 export interface CreateSuiteDefinitionResponse {
   suiteDefinitionId?: string;
   suiteDefinitionArn?: string;
@@ -235,6 +237,7 @@ export type AuthenticationMethod =
   | "SignatureVersion4"
   | (string & {});
 export const AuthenticationMethod = /*@__PURE__*/ S.String;
+
 export interface GetEndpointRequest {
   thingArn?: string;
   certificateArn?: string;
@@ -262,6 +265,7 @@ export const GetEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEndpointRequest",
 }) as any as S.Schema<GetEndpointRequest>;
+export type Endpoint = string;
 export interface GetEndpointResponse {
   endpoint?: string;
 }
@@ -270,6 +274,7 @@ export const GetEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEndpointResponse",
 }) as any as S.Schema<GetEndpointResponse>;
+export type SuiteDefinitionVersion = string;
 export interface GetSuiteDefinitionRequest {
   suiteDefinitionId: string;
   suiteDefinitionVersion?: string;
@@ -347,6 +352,7 @@ export const GetSuiteRunRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSuiteRunRequest>;
 export type SelectedTestList = string[];
 export const SelectedTestList = /*@__PURE__*/ S.Array(S.String);
+export type ParallelRun = boolean;
 export interface SuiteRunConfiguration {
   primaryDevice?: DeviceUnderTest;
   selectedTestList?: string[];
@@ -361,6 +367,8 @@ export const SuiteRunConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SuiteRunConfiguration",
 }) as any as S.Schema<SuiteRunConfiguration>;
+export type GroupName = string;
+export type TestCaseDefinitionName = string;
 export type Status =
   | "PASS"
   | "FAIL"
@@ -373,8 +381,14 @@ export type Status =
   | "ERROR"
   | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
+export type LogUrl = string;
+export type Warnings = string;
+export type Failure = string;
+export type TestCaseScenarioId = string;
 export type TestCaseScenarioType = "Advanced" | "Basic" | (string & {});
 export const TestCaseScenarioType = /*@__PURE__*/ S.String;
+
 export type TestCaseScenarioStatus =
   | "PASS"
   | "FAIL"
@@ -387,6 +401,8 @@ export type TestCaseScenarioStatus =
   | "ERROR"
   | (string & {});
 export const TestCaseScenarioStatus = /*@__PURE__*/ S.String;
+
+export type SystemMessage = string;
 export interface TestCaseScenario {
   testCaseScenarioId?: string;
   testCaseScenarioType?: TestCaseScenarioType;
@@ -467,6 +483,8 @@ export type SuiteRunStatus =
   | "ERROR"
   | (string & {});
 export const SuiteRunStatus = /*@__PURE__*/ S.String;
+
+export type ErrorReason = string;
 export interface GetSuiteRunResponse {
   suiteDefinitionId?: string;
   suiteDefinitionVersion?: string;
@@ -523,6 +541,7 @@ export const GetSuiteRunReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSuiteRunReportRequest",
 }) as any as S.Schema<GetSuiteRunReportRequest>;
+export type QualificationReportDownloadUrl = string;
 export interface GetSuiteRunReportResponse {
   qualificationReportDownloadUrl?: string;
 }
@@ -531,6 +550,8 @@ export const GetSuiteRunReportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSuiteRunReportResponse",
 }) as any as S.Schema<GetSuiteRunReportResponse>;
+export type MaxResults = number;
+export type Token = string;
 export interface ListSuiteDefinitionsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -619,6 +640,7 @@ export const ListSuiteRunsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSuiteRunsRequest",
 }) as any as S.Schema<ListSuiteRunsRequest>;
+export type SuiteRunResultCount = number;
 export interface SuiteRunInformation {
   suiteDefinitionId?: string;
   suiteDefinitionVersion?: string;
@@ -857,30 +879,7 @@ export const UpdateSuiteDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSuiteDefinitionResponse",
 }) as any as S.Schema<UpdateSuiteDefinitionResponse>;
-
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type Message = string;
 export type CreateSuiteDefinitionError =
   | InternalServerException
   | ValidationException
@@ -903,6 +902,7 @@ export const createSuiteDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSuiteDefinition",
 }));
+
 export type DeleteSuiteDefinitionError =
   | InternalServerException
   | ValidationException
@@ -925,6 +925,7 @@ export const deleteSuiteDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSuiteDefinition",
 }));
+
 export type GetEndpointError =
   | InternalServerException
   | ResourceNotFoundException
@@ -950,6 +951,7 @@ export const getEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "GetEndpoint",
 }));
+
 export type GetSuiteDefinitionError =
   | InternalServerException
   | ResourceNotFoundException
@@ -977,6 +979,7 @@ export const getSuiteDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "GetSuiteDefinition",
 }));
+
 export type GetSuiteRunError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1004,6 +1007,7 @@ export const getSuiteRun: API.OperationMethod<
   retry: Retry,
   operationName: "GetSuiteRun",
 }));
+
 export type GetSuiteRunReportError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1031,6 +1035,7 @@ export const getSuiteRunReport: API.OperationMethod<
   retry: Retry,
   operationName: "GetSuiteRunReport",
 }));
+
 export type ListSuiteDefinitionsError =
   | InternalServerException
   | ValidationException
@@ -1073,6 +1078,7 @@ export const listSuiteDefinitions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSuiteRunsError =
   | InternalServerException
   | ValidationException
@@ -1116,6 +1122,7 @@ export const listSuiteRuns: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1143,6 +1150,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type StartSuiteRunError =
   | ConflictException
   | InternalServerException
@@ -1166,6 +1174,7 @@ export const startSuiteRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartSuiteRun",
 }));
+
 export type StopSuiteRunError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1193,6 +1202,7 @@ export const stopSuiteRun: API.OperationMethod<
   retry: Retry,
   operationName: "StopSuiteRun",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1220,6 +1230,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1247,6 +1258,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateSuiteDefinitionError =
   | InternalServerException
   | ValidationException

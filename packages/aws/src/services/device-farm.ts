@@ -88,50 +88,62 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ArgumentException extends S.TaggedErrorClass<ArgumentException>()(
+  "ArgumentException",
+  { message: S.optional(S.String) },
+) {}
+export class CannotDeleteException extends S.TaggedErrorClass<CannotDeleteException>()(
+  "CannotDeleteException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class IdempotencyException extends S.TaggedErrorClass<IdempotencyException>()(
+  "IdempotencyException",
+  { message: S.optional(S.String) },
+) {}
+export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
+  "InternalServiceException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
+  "InvalidOperationException",
+  { message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class NotEligibleException extends S.TaggedErrorClass<NotEligibleException>()(
+  "NotEligibleException",
+  { message: S.optional(S.String) },
+) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class ServiceAccountException extends S.TaggedErrorClass<ServiceAccountException>()(
+  "ServiceAccountException",
+  { message: S.optional(S.String) },
+) {}
+export class TagOperationException extends S.TaggedErrorClass<TagOperationException>()(
+  "TagOperationException",
+  { message: S.optional(S.String), resourceName: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TagPolicyException extends S.TaggedErrorClass<TagPolicyException>()(
+  "TagPolicyException",
+  { message: S.optional(S.String), resourceName: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { message: S.optional(S.String), resourceName: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type AmazonResourceName = string;
 export type Name = string;
 export type Message = string;
-export type PercentInteger = number;
-export type JobTimeoutMinutes = number;
-export type SecurityGroupId = string;
-export type SubnetId = string;
-export type NonEmptyString = string;
-export type EnvironmentVariableName = string;
-export type EnvironmentVariableValue = string;
-export type AmazonRoleResourceName = string;
-export type ExceptionMessage = string;
-export type DeviceProxyHost = string;
-export type DeviceProxyPort = number;
-export type SkipAppResign = boolean;
-export type SensitiveURL = string | redacted.Redacted<string>;
-export type ResourceName = string;
-export type ResourceDescription = string;
-export type DeviceFarmArn = string;
-export type TestGridUrlExpiresInSecondsInput = number;
-export type SensitiveString = string | redacted.Redacted<string>;
-export type ContentType = string;
-export type Metadata = string;
-export type VPCEConfigurationName = string;
-export type VPCEServiceName = string;
-export type ServiceDnsName = string;
-export type VPCEConfigurationDescription = string;
-export type AWSAccountNumber = string;
-export type Filter = string;
-export type VideoCapture = boolean;
-export type PaginationToken = string;
-export type OfferingIdentifier = string;
-export type ResourceId = string;
-export type URL = string;
-export type OfferingPromotionIdentifier = string;
-export type TransactionIdentifier = string;
-export type TagKey = string;
-export type TagValue = string;
-export type MaxPageSize = number;
-export type AccountsCleanup = boolean;
-export type AppPackagesCleanup = boolean;
-
-//# Schemas
 export type DeviceAttribute =
   | "ARN"
   | "PLATFORM"
@@ -148,6 +160,7 @@ export type DeviceAttribute =
   | "AVAILABILITY"
   | (string & {});
 export const DeviceAttribute = /*@__PURE__*/ S.String;
+
 export type RuleOperator =
   | "EQUALS"
   | "LESS_THAN"
@@ -159,6 +172,7 @@ export type RuleOperator =
   | "CONTAINS"
   | (string & {});
 export const RuleOperator = /*@__PURE__*/ S.String;
+
 export interface Rule {
   attribute?: DeviceAttribute;
   operator?: RuleOperator;
@@ -203,6 +217,7 @@ export const CreateDevicePoolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDevicePoolRequest>;
 export type DevicePoolType = "CURATED" | "PRIVATE" | (string & {});
 export const DevicePoolType = /*@__PURE__*/ S.String;
+
 export interface DevicePool {
   arn?: string;
   name?: string;
@@ -289,6 +304,8 @@ export const CreateInstanceProfileResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateInstanceProfileResult>;
 export type NetworkProfileType = "CURATED" | "PRIVATE" | (string & {});
 export const NetworkProfileType = /*@__PURE__*/ S.String;
+
+export type PercentInteger = number;
 export interface CreateNetworkProfileRequest {
   projectArn: string;
   name: string;
@@ -369,10 +386,14 @@ export const CreateNetworkProfileResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNetworkProfileResult",
 }) as any as S.Schema<CreateNetworkProfileResult>;
+export type JobTimeoutMinutes = number;
+export type SecurityGroupId = string;
 export type VpcSecurityGroupIds = string[];
 export const VpcSecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export type SubnetId = string;
 export type VpcSubnetIds = string[];
 export const VpcSubnetIds = /*@__PURE__*/ S.Array(S.String);
+export type NonEmptyString = string;
 export interface VpcConfig {
   securityGroupIds: string[];
   subnetIds: string[];
@@ -385,6 +406,8 @@ export const VpcConfig = /*@__PURE__*/ S.suspend(() =>
     vpcId: S.String,
   }),
 ).annotate({ identifier: "VpcConfig" }) as any as S.Schema<VpcConfig>;
+export type EnvironmentVariableName = string;
+export type EnvironmentVariableValue = string;
 export interface EnvironmentVariable {
   name: string;
   value: string;
@@ -396,6 +419,7 @@ export const EnvironmentVariable = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentVariable>;
 export type EnvironmentVariables = EnvironmentVariable[];
 export const EnvironmentVariables = /*@__PURE__*/ S.Array(EnvironmentVariable);
+export type AmazonRoleResourceName = string;
 export interface CreateProjectRequest {
   name: string;
   defaultJobTimeoutMinutes?: number;
@@ -456,8 +480,11 @@ export type AuxiliaryAppArnList = string[];
 export const AuxiliaryAppArnList = /*@__PURE__*/ S.Array(S.String);
 export type BillingMethod = "METERED" | "UNMETERED" | (string & {});
 export const BillingMethod = /*@__PURE__*/ S.String;
+
 export type AmazonResourceNames = string[];
 export const AmazonResourceNames = /*@__PURE__*/ S.Array(S.String);
+export type DeviceProxyHost = string;
+export type DeviceProxyPort = number;
 export interface DeviceProxy {
   host: string;
   port: number;
@@ -488,6 +515,7 @@ export type InteractionMode =
   | "VIDEO_ONLY"
   | (string & {});
 export const InteractionMode = /*@__PURE__*/ S.String;
+
 export interface CreateRemoteAccessSessionRequest {
   projectArn: string;
   deviceArn: string;
@@ -534,6 +562,7 @@ export type ExecutionStatus =
   | "STOPPING"
   | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
+
 export type ExecutionResult =
   | "PENDING"
   | "PASSED"
@@ -544,10 +573,13 @@ export type ExecutionResult =
   | "STOPPED"
   | (string & {});
 export const ExecutionResult = /*@__PURE__*/ S.String;
+
 export type DeviceFormFactor = "PHONE" | "TABLET" | (string & {});
 export const DeviceFormFactor = /*@__PURE__*/ S.String;
+
 export type DevicePlatform = "ANDROID" | "IOS" | (string & {});
 export const DevicePlatform = /*@__PURE__*/ S.String;
+
 export interface CPU {
   frequency?: string;
   architecture?: string;
@@ -576,6 +608,7 @@ export type InstanceStatus =
   | "NOT_AVAILABLE"
   | (string & {});
 export const InstanceStatus = /*@__PURE__*/ S.String;
+
 export interface DeviceInstance {
   arn?: string;
   deviceArn?: string;
@@ -603,6 +636,7 @@ export type DeviceAvailability =
   | "HIGHLY_AVAILABLE"
   | (string & {});
 export const DeviceAvailability = /*@__PURE__*/ S.String;
+
 export interface Device {
   arn?: string;
   name?: string;
@@ -663,6 +697,8 @@ export const DeviceMinutes = /*@__PURE__*/ S.suspend(() =>
     unmetered: S.optional(S.Number),
   }),
 ).annotate({ identifier: "DeviceMinutes" }) as any as S.Schema<DeviceMinutes>;
+export type SkipAppResign = boolean;
+export type SensitiveURL = string | redacted.Redacted<string>;
 export interface RemoteAccessEndpoints {
   remoteDriverEndpoint?: string | redacted.Redacted<string>;
   interactiveEndpoint?: string | redacted.Redacted<string>;
@@ -731,6 +767,8 @@ export const CreateRemoteAccessSessionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRemoteAccessSessionResult",
 }) as any as S.Schema<CreateRemoteAccessSessionResult>;
+export type ResourceName = string;
+export type ResourceDescription = string;
 export type SecurityGroupIds = string[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export type SubnetIds = string[];
@@ -773,6 +811,7 @@ export const CreateTestGridProjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTestGridProjectRequest",
 }) as any as S.Schema<CreateTestGridProjectRequest>;
+export type DeviceFarmArn = string;
 export interface TestGridProject {
   arn?: string;
   name?: string;
@@ -799,6 +838,7 @@ export const CreateTestGridProjectResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTestGridProjectResult",
 }) as any as S.Schema<CreateTestGridProjectResult>;
+export type TestGridUrlExpiresInSecondsInput = number;
 export interface CreateTestGridUrlRequest {
   projectArn: string;
   expiresInSeconds: number;
@@ -818,6 +858,7 @@ export const CreateTestGridUrlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTestGridUrlRequest",
 }) as any as S.Schema<CreateTestGridUrlRequest>;
+export type SensitiveString = string | redacted.Redacted<string>;
 export interface CreateTestGridUrlResult {
   url?: string | redacted.Redacted<string>;
   expires?: Date;
@@ -865,6 +906,8 @@ export type UploadType =
   | "XCTEST_UI_TEST_SPEC"
   | (string & {});
 export const UploadType = /*@__PURE__*/ S.String;
+
+export type ContentType = string;
 export interface CreateUploadRequest {
   projectArn: string;
   name: string;
@@ -898,8 +941,11 @@ export type UploadStatus =
   | "FAILED"
   | (string & {});
 export const UploadStatus = /*@__PURE__*/ S.String;
+
+export type Metadata = string;
 export type UploadCategory = "CURATED" | "PRIVATE" | (string & {});
 export const UploadCategory = /*@__PURE__*/ S.String;
+
 export interface Upload {
   arn?: string;
   name?: string;
@@ -934,6 +980,10 @@ export const CreateUploadResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUploadResult",
 }) as any as S.Schema<CreateUploadResult>;
+export type VPCEConfigurationName = string;
+export type VPCEServiceName = string;
+export type ServiceDnsName = string;
+export type VPCEConfigurationDescription = string;
 export interface CreateVPCEConfigurationRequest {
   vpceConfigurationName: string;
   vpceServiceName: string;
@@ -1218,6 +1268,7 @@ export const GetAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountSettingsRequest",
 }) as any as S.Schema<GetAccountSettingsRequest>;
+export type AWSAccountNumber = string;
 export type PurchasedDevicesMap = { [key in DevicePlatform]?: number };
 export const PurchasedDevicesMap = /*@__PURE__*/ S.Record(
   DevicePlatform,
@@ -1362,6 +1413,8 @@ export type TestType =
   | "XCTEST_UI"
   | (string & {});
 export const TestType = /*@__PURE__*/ S.String;
+
+export type Filter = string;
 export type TestParameters = { [key: string]: string | undefined };
 export const TestParameters = /*@__PURE__*/ S.Record(
   S.String,
@@ -1596,6 +1649,7 @@ export const Counters = /*@__PURE__*/ S.suspend(() =>
     skipped: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Counters" }) as any as S.Schema<Counters>;
+export type VideoCapture = boolean;
 export interface Job {
   arn?: string;
   name?: string;
@@ -1664,6 +1718,7 @@ export const GetNetworkProfileResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetNetworkProfileResult",
 }) as any as S.Schema<GetNetworkProfileResult>;
+export type PaginationToken = string;
 export interface GetOfferingStatusRequest {
   nextToken?: string;
 }
@@ -1682,16 +1737,20 @@ export const GetOfferingStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOfferingStatusRequest",
 }) as any as S.Schema<GetOfferingStatusRequest>;
+export type OfferingIdentifier = string;
 export type OfferingTransactionType =
   | "PURCHASE"
   | "RENEW"
   | "SYSTEM"
   | (string & {});
 export const OfferingTransactionType = /*@__PURE__*/ S.String;
+
 export type OfferingType = "RECURRING" | (string & {});
 export const OfferingType = /*@__PURE__*/ S.String;
+
 export type CurrencyCode = "USD" | (string & {});
 export const CurrencyCode = /*@__PURE__*/ S.String;
+
 export interface MonetaryAmount {
   amount?: number;
   currencyCode?: CurrencyCode;
@@ -1704,6 +1763,7 @@ export const MonetaryAmount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MonetaryAmount" }) as any as S.Schema<MonetaryAmount>;
 export type RecurringChargeFrequency = "MONTHLY" | (string & {});
 export const RecurringChargeFrequency = /*@__PURE__*/ S.String;
+
 export interface RecurringCharge {
   cost?: MonetaryAmount;
   frequency?: RecurringChargeFrequency;
@@ -1840,6 +1900,7 @@ export type ExecutionResultCode =
   | "VPC_ENDPOINT_SETUP_FAILED"
   | (string & {});
 export const ExecutionResultCode = /*@__PURE__*/ S.String;
+
 export type DeviceFilterAttribute =
   | "ARN"
   | "PLATFORM"
@@ -1855,6 +1916,7 @@ export type DeviceFilterAttribute =
   | "FLEET_TYPE"
   | (string & {});
 export const DeviceFilterAttribute = /*@__PURE__*/ S.String;
+
 export type DeviceFilterValues = string[];
 export const DeviceFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface DeviceFilter {
@@ -2095,6 +2157,7 @@ export const GetTestGridProjectResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTestGridProjectResult",
 }) as any as S.Schema<GetTestGridProjectResult>;
+export type ResourceId = string;
 export interface GetTestGridSessionRequest {
   projectArn?: string;
   sessionId?: string;
@@ -2125,6 +2188,7 @@ export type TestGridSessionStatus =
   | "ERRORED"
   | (string & {});
 export const TestGridSessionStatus = /*@__PURE__*/ S.String;
+
 export interface TestGridSession {
   arn?: string;
   status?: TestGridSessionStatus;
@@ -2234,6 +2298,7 @@ export const InstallToRemoteAccessSessionResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstallToRemoteAccessSessionResult>;
 export type ArtifactCategory = "SCREENSHOT" | "FILE" | "LOG" | (string & {});
 export const ArtifactCategory = /*@__PURE__*/ S.String;
+
 export interface ListArtifactsRequest {
   arn: string;
   type: ArtifactCategory;
@@ -2289,6 +2354,8 @@ export type ArtifactType =
   | "TESTSPEC_OUTPUT"
   | (string & {});
 export const ArtifactType = /*@__PURE__*/ S.String;
+
+export type URL = string;
 export interface Artifact {
   arn?: string;
   name?: string;
@@ -2551,6 +2618,7 @@ export const ListOfferingPromotionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOfferingPromotionsRequest",
 }) as any as S.Schema<ListOfferingPromotionsRequest>;
+export type OfferingPromotionIdentifier = string;
 export interface OfferingPromotion {
   id?: string;
   description?: string;
@@ -2624,6 +2692,7 @@ export const ListOfferingTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOfferingTransactionsRequest",
 }) as any as S.Schema<ListOfferingTransactionsRequest>;
+export type TransactionIdentifier = string;
 export interface OfferingTransaction {
   offeringStatus?: OfferingStatus;
   transactionId?: string;
@@ -2791,6 +2860,7 @@ export type SampleType =
   | "OPENGL_MAX_DRAWTIME"
   | (string & {});
 export const SampleType = /*@__PURE__*/ S.String;
+
 export interface Sample {
   arn?: string;
   type?: SampleType;
@@ -2868,6 +2938,8 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -2885,6 +2957,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
+export type MaxPageSize = number;
 export interface ListTestGridProjectsRequest {
   maxResult?: number;
   nextToken?: string;
@@ -2981,6 +3054,7 @@ export const ListTestGridSessionActionsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTestGridSessionActionsResult>;
 export type TestGridSessionArtifactCategory = "VIDEO" | "LOG" | (string & {});
 export const TestGridSessionArtifactCategory = /*@__PURE__*/ S.String;
+
 export interface ListTestGridSessionArtifactsRequest {
   sessionArn: string;
   type?: TestGridSessionArtifactCategory;
@@ -3013,6 +3087,7 @@ export type TestGridSessionArtifactType =
   | "SELENIUM_LOG"
   | (string & {});
 export const TestGridSessionArtifactType = /*@__PURE__*/ S.String;
+
 export interface TestGridSessionArtifact {
   filename?: string;
   type?: TestGridSessionArtifactType;
@@ -3345,6 +3420,8 @@ export const DeviceSelectionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeviceSelectionConfiguration",
 }) as any as S.Schema<DeviceSelectionConfiguration>;
+export type AccountsCleanup = boolean;
+export type AppPackagesCleanup = boolean;
 export interface ExecutionConfiguration {
   jobTimeoutMinutes?: number;
   accountsCleanup?: boolean;
@@ -3827,63 +3904,7 @@ export const UpdateVPCEConfigurationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateVPCEConfigurationResult",
 }) as any as S.Schema<UpdateVPCEConfigurationResult>;
-
-//# Errors
-export class ArgumentException extends S.TaggedErrorClass<ArgumentException>()(
-  "ArgumentException",
-  { message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class ServiceAccountException extends S.TaggedErrorClass<ServiceAccountException>()(
-  "ServiceAccountException",
-  { message: S.optional(S.String) },
-) {}
-export class TagOperationException extends S.TaggedErrorClass<TagOperationException>()(
-  "TagOperationException",
-  { message: S.optional(S.String), resourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class CannotDeleteException extends S.TaggedErrorClass<CannotDeleteException>()(
-  "CannotDeleteException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
-  "InvalidOperationException",
-  { message: S.optional(S.String) },
-) {}
-export class NotEligibleException extends S.TaggedErrorClass<NotEligibleException>()(
-  "NotEligibleException",
-  { message: S.optional(S.String) },
-) {}
-export class IdempotencyException extends S.TaggedErrorClass<IdempotencyException>()(
-  "IdempotencyException",
-  { message: S.optional(S.String) },
-) {}
-export class TagPolicyException extends S.TaggedErrorClass<TagPolicyException>()(
-  "TagPolicyException",
-  { message: S.optional(S.String), resourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String), resourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type CreateDevicePoolError =
   | ArgumentException
   | LimitExceededException
@@ -3911,6 +3932,7 @@ export const createDevicePool: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDevicePool",
 }));
+
 export type CreateInstanceProfileError =
   | ArgumentException
   | LimitExceededException
@@ -3939,6 +3961,7 @@ export const createInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInstanceProfile",
 }));
+
 export type CreateNetworkProfileError =
   | ArgumentException
   | LimitExceededException
@@ -3966,6 +3989,7 @@ export const createNetworkProfile: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNetworkProfile",
 }));
+
 export type CreateProjectError =
   | ArgumentException
   | LimitExceededException
@@ -3995,6 +4019,7 @@ export const createProject: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProject",
 }));
+
 export type CreateRemoteAccessSessionError =
   | ArgumentException
   | LimitExceededException
@@ -4022,6 +4047,7 @@ export const createRemoteAccessSession: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRemoteAccessSession",
 }));
+
 export type CreateTestGridProjectError =
   | ArgumentException
   | InternalServiceException
@@ -4044,6 +4070,7 @@ export const createTestGridProject: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTestGridProject",
 }));
+
 export type CreateTestGridUrlError =
   | ArgumentException
   | InternalServiceException
@@ -4066,6 +4093,7 @@ export const createTestGridUrl: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTestGridUrl",
 }));
+
 export type CreateUploadError =
   | ArgumentException
   | LimitExceededException
@@ -4093,6 +4121,7 @@ export const createUpload: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUpload",
 }));
+
 export type CreateVPCEConfigurationError =
   | ArgumentException
   | LimitExceededException
@@ -4115,6 +4144,7 @@ export const createVPCEConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVPCEConfiguration",
 }));
+
 export type DeleteDevicePoolError =
   | ArgumentException
   | LimitExceededException
@@ -4143,6 +4173,7 @@ export const deleteDevicePool: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDevicePool",
 }));
+
 export type DeleteInstanceProfileError =
   | ArgumentException
   | LimitExceededException
@@ -4170,6 +4201,7 @@ export const deleteInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInstanceProfile",
 }));
+
 export type DeleteNetworkProfileError =
   | ArgumentException
   | LimitExceededException
@@ -4197,6 +4229,7 @@ export const deleteNetworkProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNetworkProfile",
 }));
+
 export type DeleteProjectError =
   | ArgumentException
   | LimitExceededException
@@ -4226,6 +4259,7 @@ export const deleteProject: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProject",
 }));
+
 export type DeleteRemoteAccessSessionError =
   | ArgumentException
   | LimitExceededException
@@ -4255,6 +4289,7 @@ export const deleteRemoteAccessSession: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRemoteAccessSession",
 }));
+
 export type DeleteRunError =
   | ArgumentException
   | LimitExceededException
@@ -4284,6 +4319,7 @@ export const deleteRun: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRun",
 }));
+
 export type DeleteTestGridProjectError =
   | ArgumentException
   | CannotDeleteException
@@ -4313,6 +4349,7 @@ export const deleteTestGridProject: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTestGridProject",
 }));
+
 export type DeleteUploadError =
   | ArgumentException
   | LimitExceededException
@@ -4340,6 +4377,7 @@ export const deleteUpload: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUpload",
 }));
+
 export type DeleteVPCEConfigurationError =
   | ArgumentException
   | InvalidOperationException
@@ -4367,6 +4405,7 @@ export const deleteVPCEConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVPCEConfiguration",
 }));
+
 export type GetAccountSettingsError =
   | ArgumentException
   | LimitExceededException
@@ -4395,6 +4434,7 @@ export const getAccountSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountSettings",
 }));
+
 export type GetDeviceError =
   | ArgumentException
   | LimitExceededException
@@ -4422,6 +4462,7 @@ export const getDevice: API.OperationMethod<
   retry: Retry,
   operationName: "GetDevice",
 }));
+
 export type GetDeviceInstanceError =
   | ArgumentException
   | LimitExceededException
@@ -4449,6 +4490,7 @@ export const getDeviceInstance: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeviceInstance",
 }));
+
 export type GetDevicePoolError =
   | ArgumentException
   | LimitExceededException
@@ -4476,6 +4518,7 @@ export const getDevicePool: API.OperationMethod<
   retry: Retry,
   operationName: "GetDevicePool",
 }));
+
 export type GetDevicePoolCompatibilityError =
   | ArgumentException
   | LimitExceededException
@@ -4503,6 +4546,7 @@ export const getDevicePoolCompatibility: API.OperationMethod<
   retry: Retry,
   operationName: "GetDevicePoolCompatibility",
 }));
+
 export type GetInstanceProfileError =
   | ArgumentException
   | LimitExceededException
@@ -4530,6 +4574,7 @@ export const getInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "GetInstanceProfile",
 }));
+
 export type GetJobError =
   | ArgumentException
   | LimitExceededException
@@ -4557,6 +4602,7 @@ export const getJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetJob",
 }));
+
 export type GetNetworkProfileError =
   | ArgumentException
   | LimitExceededException
@@ -4584,6 +4630,7 @@ export const getNetworkProfile: API.OperationMethod<
   retry: Retry,
   operationName: "GetNetworkProfile",
 }));
+
 export type GetOfferingStatusError =
   | ArgumentException
   | LimitExceededException
@@ -4632,6 +4679,7 @@ export const getOfferingStatus: API.OperationMethod<
   operationName: "GetOfferingStatus",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
+
 export type GetProjectError =
   | ArgumentException
   | LimitExceededException
@@ -4659,6 +4707,7 @@ export const getProject: API.OperationMethod<
   retry: Retry,
   operationName: "GetProject",
 }));
+
 export type GetRemoteAccessSessionError =
   | ArgumentException
   | LimitExceededException
@@ -4686,6 +4735,7 @@ export const getRemoteAccessSession: API.OperationMethod<
   retry: Retry,
   operationName: "GetRemoteAccessSession",
 }));
+
 export type GetRunError =
   | ArgumentException
   | LimitExceededException
@@ -4713,6 +4763,7 @@ export const getRun: API.OperationMethod<
   retry: Retry,
   operationName: "GetRun",
 }));
+
 export type GetSuiteError =
   | ArgumentException
   | LimitExceededException
@@ -4740,6 +4791,7 @@ export const getSuite: API.OperationMethod<
   retry: Retry,
   operationName: "GetSuite",
 }));
+
 export type GetTestError =
   | ArgumentException
   | LimitExceededException
@@ -4767,6 +4819,7 @@ export const getTest: API.OperationMethod<
   retry: Retry,
   operationName: "GetTest",
 }));
+
 export type GetTestGridProjectError =
   | ArgumentException
   | InternalServiceException
@@ -4788,6 +4841,7 @@ export const getTestGridProject: API.OperationMethod<
   retry: Retry,
   operationName: "GetTestGridProject",
 }));
+
 export type GetTestGridSessionError =
   | ArgumentException
   | InternalServiceException
@@ -4813,6 +4867,7 @@ export const getTestGridSession: API.OperationMethod<
   retry: Retry,
   operationName: "GetTestGridSession",
 }));
+
 export type GetUploadError =
   | ArgumentException
   | LimitExceededException
@@ -4840,6 +4895,7 @@ export const getUpload: API.OperationMethod<
   retry: Retry,
   operationName: "GetUpload",
 }));
+
 export type GetVPCEConfigurationError =
   | ArgumentException
   | NotFoundException
@@ -4862,6 +4918,7 @@ export const getVPCEConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetVPCEConfiguration",
 }));
+
 export type InstallToRemoteAccessSessionError =
   | ArgumentException
   | LimitExceededException
@@ -4891,6 +4948,7 @@ export const installToRemoteAccessSession: API.OperationMethod<
   retry: Retry,
   operationName: "InstallToRemoteAccessSession",
 }));
+
 export type ListArtifactsError =
   | ArgumentException
   | LimitExceededException
@@ -4938,6 +4996,7 @@ export const listArtifacts: API.OperationMethod<
     items: "artifacts",
   } as const,
 }));
+
 export type ListDeviceInstancesError =
   | ArgumentException
   | LimitExceededException
@@ -4966,6 +5025,7 @@ export const listDeviceInstances: API.OperationMethod<
   retry: Retry,
   operationName: "ListDeviceInstances",
 }));
+
 export type ListDevicePoolsError =
   | ArgumentException
   | LimitExceededException
@@ -5013,6 +5073,7 @@ export const listDevicePools: API.OperationMethod<
     items: "devicePools",
   } as const,
 }));
+
 export type ListDevicesError =
   | ArgumentException
   | LimitExceededException
@@ -5060,6 +5121,7 @@ export const listDevices: API.OperationMethod<
     items: "devices",
   } as const,
 }));
+
 export type ListInstanceProfilesError =
   | ArgumentException
   | LimitExceededException
@@ -5087,6 +5149,7 @@ export const listInstanceProfiles: API.OperationMethod<
   retry: Retry,
   operationName: "ListInstanceProfiles",
 }));
+
 export type ListJobsError =
   | ArgumentException
   | LimitExceededException
@@ -5134,6 +5197,7 @@ export const listJobs: API.OperationMethod<
     items: "jobs",
   } as const,
 }));
+
 export type ListNetworkProfilesError =
   | ArgumentException
   | LimitExceededException
@@ -5161,6 +5225,7 @@ export const listNetworkProfiles: API.OperationMethod<
   retry: Retry,
   operationName: "ListNetworkProfiles",
 }));
+
 export type ListOfferingPromotionsError =
   | ArgumentException
   | LimitExceededException
@@ -5192,6 +5257,7 @@ export const listOfferingPromotions: API.OperationMethod<
   retry: Retry,
   operationName: "ListOfferingPromotions",
 }));
+
 export type ListOfferingsError =
   | ArgumentException
   | LimitExceededException
@@ -5244,6 +5310,7 @@ export const listOfferings: API.OperationMethod<
     items: "offerings",
   } as const,
 }));
+
 export type ListOfferingTransactionsError =
   | ArgumentException
   | LimitExceededException
@@ -5296,6 +5363,7 @@ export const listOfferingTransactions: API.OperationMethod<
     items: "offeringTransactions",
   } as const,
 }));
+
 export type ListProjectsError =
   | ArgumentException
   | LimitExceededException
@@ -5343,6 +5411,7 @@ export const listProjects: API.OperationMethod<
     items: "projects",
   } as const,
 }));
+
 export type ListRemoteAccessSessionsError =
   | ArgumentException
   | LimitExceededException
@@ -5370,6 +5439,7 @@ export const listRemoteAccessSessions: API.OperationMethod<
   retry: Retry,
   operationName: "ListRemoteAccessSessions",
 }));
+
 export type ListRunsError =
   | ArgumentException
   | LimitExceededException
@@ -5417,6 +5487,7 @@ export const listRuns: API.OperationMethod<
     items: "runs",
   } as const,
 }));
+
 export type ListSamplesError =
   | ArgumentException
   | LimitExceededException
@@ -5464,6 +5535,7 @@ export const listSamples: API.OperationMethod<
     items: "samples",
   } as const,
 }));
+
 export type ListSuitesError =
   | ArgumentException
   | LimitExceededException
@@ -5511,6 +5583,7 @@ export const listSuites: API.OperationMethod<
     items: "suites",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | ArgumentException
   | NotFoundException
@@ -5532,6 +5605,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTestGridProjectsError =
   | ArgumentException
   | InternalServiceException
@@ -5572,6 +5646,7 @@ export const listTestGridProjects: API.OperationMethod<
     pageSize: "maxResult",
   } as const,
 }));
+
 export type ListTestGridSessionActionsError =
   | ArgumentException
   | InternalServiceException
@@ -5613,6 +5688,7 @@ export const listTestGridSessionActions: API.OperationMethod<
     pageSize: "maxResult",
   } as const,
 }));
+
 export type ListTestGridSessionArtifactsError =
   | ArgumentException
   | InternalServiceException
@@ -5654,6 +5730,7 @@ export const listTestGridSessionArtifacts: API.OperationMethod<
     pageSize: "maxResult",
   } as const,
 }));
+
 export type ListTestGridSessionsError =
   | ArgumentException
   | InternalServiceException
@@ -5695,6 +5772,7 @@ export const listTestGridSessions: API.OperationMethod<
     pageSize: "maxResult",
   } as const,
 }));
+
 export type ListTestsError =
   | ArgumentException
   | LimitExceededException
@@ -5742,6 +5820,7 @@ export const listTests: API.OperationMethod<
     items: "tests",
   } as const,
 }));
+
 export type ListUniqueProblemsError =
   | ArgumentException
   | LimitExceededException
@@ -5794,6 +5873,7 @@ export const listUniqueProblems: API.OperationMethod<
     items: "uniqueProblems",
   } as const,
 }));
+
 export type ListUploadsError =
   | ArgumentException
   | LimitExceededException
@@ -5841,6 +5921,7 @@ export const listUploads: API.OperationMethod<
     items: "uploads",
   } as const,
 }));
+
 export type ListVPCEConfigurationsError =
   | ArgumentException
   | ServiceAccountException
@@ -5862,6 +5943,7 @@ export const listVPCEConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "ListVPCEConfigurations",
 }));
+
 export type PurchaseOfferingError =
   | ArgumentException
   | LimitExceededException
@@ -5894,6 +5976,7 @@ export const purchaseOffering: API.OperationMethod<
   retry: Retry,
   operationName: "PurchaseOffering",
 }));
+
 export type RenewOfferingError =
   | ArgumentException
   | LimitExceededException
@@ -5925,6 +6008,7 @@ export const renewOffering: API.OperationMethod<
   retry: Retry,
   operationName: "RenewOffering",
 }));
+
 export type ScheduleRunError =
   | ArgumentException
   | IdempotencyException
@@ -5954,6 +6038,7 @@ export const scheduleRun: API.OperationMethod<
   retry: Retry,
   operationName: "ScheduleRun",
 }));
+
 export type StopJobError =
   | ArgumentException
   | LimitExceededException
@@ -5984,6 +6069,7 @@ export const stopJob: API.OperationMethod<
   retry: Retry,
   operationName: "StopJob",
 }));
+
 export type StopRemoteAccessSessionError =
   | ArgumentException
   | LimitExceededException
@@ -6011,6 +6097,7 @@ export const stopRemoteAccessSession: API.OperationMethod<
   retry: Retry,
   operationName: "StopRemoteAccessSession",
 }));
+
 export type StopRunError =
   | ArgumentException
   | LimitExceededException
@@ -6041,6 +6128,7 @@ export const stopRun: API.OperationMethod<
   retry: Retry,
   operationName: "StopRun",
 }));
+
 export type TagResourceError =
   | ArgumentException
   | NotFoundException
@@ -6072,6 +6160,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | ArgumentException
   | NotFoundException
@@ -6093,6 +6182,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDeviceInstanceError =
   | ArgumentException
   | LimitExceededException
@@ -6120,6 +6210,7 @@ export const updateDeviceInstance: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDeviceInstance",
 }));
+
 export type UpdateDevicePoolError =
   | ArgumentException
   | LimitExceededException
@@ -6149,6 +6240,7 @@ export const updateDevicePool: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDevicePool",
 }));
+
 export type UpdateInstanceProfileError =
   | ArgumentException
   | LimitExceededException
@@ -6176,6 +6268,7 @@ export const updateInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateInstanceProfile",
 }));
+
 export type UpdateNetworkProfileError =
   | ArgumentException
   | LimitExceededException
@@ -6203,6 +6296,7 @@ export const updateNetworkProfile: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNetworkProfile",
 }));
+
 export type UpdateProjectError =
   | ArgumentException
   | LimitExceededException
@@ -6231,6 +6325,7 @@ export const updateProject: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProject",
 }));
+
 export type UpdateTestGridProjectError =
   | ArgumentException
   | InternalServiceException
@@ -6258,6 +6353,7 @@ export const updateTestGridProject: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTestGridProject",
 }));
+
 export type UpdateUploadError =
   | ArgumentException
   | LimitExceededException
@@ -6285,6 +6381,7 @@ export const updateUpload: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateUpload",
 }));
+
 export type UpdateVPCEConfigurationError =
   | ArgumentException
   | InvalidOperationException

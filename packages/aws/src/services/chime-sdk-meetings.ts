@@ -87,28 +87,119 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    RequestId: S.optional(S.String),
+    ResourceName: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceFailureException extends S.TaggedErrorClass<ServiceFailureException>()(
+  "ServiceFailureException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    RequestId: S.optional(S.String),
+    RetryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    RequestId: S.optional(S.String),
+    ResourceName: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
+  "UnprocessableEntityException",
+  {
+    Code: S.optional(S.String),
+    Message: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  },
+  T.HttpError(422),
+).pipe(C.withBadRequestError) {}
 export type GuidString = string;
 export type ExternalUserId = string | redacted.Redacted<string>;
-export type JoinTokenString = string | redacted.Redacted<string>;
-export type RetryAfterSeconds = string;
-export type ClientRequestToken = string | redacted.Redacted<string>;
-export type MediaRegion = string;
-export type ExternalMeetingId = string | redacted.Redacted<string>;
-export type Arn = string | redacted.Redacted<string>;
-export type AttendeeMax = number;
-export type PrimaryMeetingId = string;
-export type TenantId = string;
-export type TagKey = string;
-export type TagValue = string;
-export type AmazonResourceName = string;
-export type ResultMax = number;
-export type TranscribePiiEntityTypes = string;
-export type TranscribeLanguageModelName = string;
-export type TranscribeLanguageOptions = string;
-export type TranscribeVocabularyNamesOrFilterNamesString = string;
-
-//# Schemas
 export type MediaCapabilities =
   | "SendReceive"
   | "Send"
@@ -116,6 +207,7 @@ export type MediaCapabilities =
   | "None"
   | (string & {});
 export const MediaCapabilities = /*@__PURE__*/ S.String;
+
 export interface AttendeeCapabilities {
   Audio: MediaCapabilities;
   Video: MediaCapabilities;
@@ -170,6 +262,7 @@ export const BatchCreateAttendeeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchCreateAttendeeRequest",
 }) as any as S.Schema<BatchCreateAttendeeRequest>;
+export type JoinTokenString = string | redacted.Redacted<string>;
 export interface Attendee {
   ExternalUserId?: string | redacted.Redacted<string>;
   AttendeeId?: string;
@@ -286,6 +379,10 @@ export const CreateAttendeeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAttendeeResponse",
 }) as any as S.Schema<CreateAttendeeResponse>;
+export type ClientRequestToken = string | redacted.Redacted<string>;
+export type MediaRegion = string;
+export type ExternalMeetingId = string | redacted.Redacted<string>;
+export type Arn = string | redacted.Redacted<string>;
 export interface NotificationsConfiguration {
   LambdaFunctionArn?: string | redacted.Redacted<string>;
   SnsTopicArn?: string | redacted.Redacted<string>;
@@ -302,6 +399,7 @@ export const NotificationsConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NotificationsConfiguration>;
 export type MeetingFeatureStatus = "AVAILABLE" | "UNAVAILABLE" | (string & {});
 export const MeetingFeatureStatus = /*@__PURE__*/ S.String;
+
 export interface AudioFeatures {
   EchoReduction?: MeetingFeatureStatus;
 }
@@ -310,6 +408,7 @@ export const AudioFeatures = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AudioFeatures" }) as any as S.Schema<AudioFeatures>;
 export type VideoResolution = "None" | "HD" | "FHD" | (string & {});
 export const VideoResolution = /*@__PURE__*/ S.String;
+
 export interface VideoFeatures {
   MaxResolution?: VideoResolution;
 }
@@ -318,6 +417,7 @@ export const VideoFeatures = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VideoFeatures" }) as any as S.Schema<VideoFeatures>;
 export type ContentResolution = "None" | "FHD" | "UHD" | (string & {});
 export const ContentResolution = /*@__PURE__*/ S.String;
+
 export interface ContentFeatures {
   MaxResolution?: ContentResolution;
 }
@@ -326,6 +426,7 @@ export const ContentFeatures = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContentFeatures",
 }) as any as S.Schema<ContentFeatures>;
+export type AttendeeMax = number;
 export interface AttendeeFeatures {
   MaxCount?: number;
 }
@@ -350,8 +451,12 @@ export const MeetingFeaturesConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MeetingFeaturesConfiguration",
 }) as any as S.Schema<MeetingFeaturesConfiguration>;
+export type PrimaryMeetingId = string;
+export type TenantId = string;
 export type TenantIdList = string[];
 export const TenantIdList = /*@__PURE__*/ S.Array(S.String);
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -366,6 +471,7 @@ export type MediaPlacementNetworkType =
   | "DualStack"
   | (string & {});
 export const MediaPlacementNetworkType = /*@__PURE__*/ S.String;
+
 export interface CreateMeetingRequest {
   ClientRequestToken: string | redacted.Redacted<string>;
   MediaRegion: string;
@@ -425,6 +531,7 @@ export const MediaPlacement = /*@__PURE__*/ S.suspend(() =>
     EventIngestionUrl: S.optional(S.String),
   }),
 ).annotate({ identifier: "MediaPlacement" }) as any as S.Schema<MediaPlacement>;
+export type AmazonResourceName = string;
 export interface Meeting {
   MeetingId?: string;
   MeetingHostId?: string | redacted.Redacted<string>;
@@ -625,6 +732,7 @@ export const GetMeetingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMeetingResponse",
 }) as any as S.Schema<GetMeetingResponse>;
+export type ResultMax = number;
 export interface ListAttendeesRequest {
   MeetingId: string;
   NextToken?: string;
@@ -702,12 +810,14 @@ export type TranscribeLanguageCode =
   | "hi-IN"
   | (string & {});
 export const TranscribeLanguageCode = /*@__PURE__*/ S.String;
+
 export type TranscribeVocabularyFilterMethod =
   | "remove"
   | "mask"
   | "tag"
   | (string & {});
 export const TranscribeVocabularyFilterMethod = /*@__PURE__*/ S.String;
+
 export type TranscribeRegion =
   | "us-east-2"
   | "us-east-1"
@@ -724,16 +834,24 @@ export type TranscribeRegion =
   | "us-gov-west-1"
   | (string & {});
 export const TranscribeRegion = /*@__PURE__*/ S.String;
+
 export type TranscribePartialResultsStability =
   | "low"
   | "medium"
   | "high"
   | (string & {});
 export const TranscribePartialResultsStability = /*@__PURE__*/ S.String;
+
 export type TranscribeContentIdentificationType = "PII" | (string & {});
 export const TranscribeContentIdentificationType = /*@__PURE__*/ S.String;
+
 export type TranscribeContentRedactionType = "PII" | (string & {});
 export const TranscribeContentRedactionType = /*@__PURE__*/ S.String;
+
+export type TranscribePiiEntityTypes = string;
+export type TranscribeLanguageModelName = string;
+export type TranscribeLanguageOptions = string;
+export type TranscribeVocabularyNamesOrFilterNamesString = string;
 export interface EngineTranscribeSettings {
   LanguageCode?: TranscribeLanguageCode;
   VocabularyFilterMethod?: TranscribeVocabularyFilterMethod;
@@ -776,6 +894,7 @@ export const EngineTranscribeSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EngineTranscribeSettings>;
 export type TranscribeMedicalLanguageCode = "en-US" | (string & {});
 export const TranscribeMedicalLanguageCode = /*@__PURE__*/ S.String;
+
 export type TranscribeMedicalSpecialty =
   | "PRIMARYCARE"
   | "CARDIOLOGY"
@@ -785,11 +904,13 @@ export type TranscribeMedicalSpecialty =
   | "UROLOGY"
   | (string & {});
 export const TranscribeMedicalSpecialty = /*@__PURE__*/ S.String;
+
 export type TranscribeMedicalType =
   | "CONVERSATION"
   | "DICTATION"
   | (string & {});
 export const TranscribeMedicalType = /*@__PURE__*/ S.String;
+
 export type TranscribeMedicalRegion =
   | "us-east-1"
   | "us-east-2"
@@ -800,9 +921,11 @@ export type TranscribeMedicalRegion =
   | "auto"
   | (string & {});
 export const TranscribeMedicalRegion = /*@__PURE__*/ S.String;
+
 export type TranscribeMedicalContentIdentificationType = "PHI" | (string & {});
 export const TranscribeMedicalContentIdentificationType =
   /*@__PURE__*/ S.String;
+
 export interface EngineTranscribeMedicalSettings {
   LanguageCode: TranscribeMedicalLanguageCode;
   Specialty: TranscribeMedicalSpecialty;
@@ -979,121 +1102,7 @@ export const UpdateAttendeeCapabilitiesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateAttendeeCapabilitiesResponse",
 }) as any as S.Schema<UpdateAttendeeCapabilitiesResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceFailureException extends S.TaggedErrorClass<ServiceFailureException>()(
-  "ServiceFailureException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    RequestId: S.optional(S.String),
-    RetryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
-  "UnprocessableEntityException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(422),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    RequestId: S.optional(S.String),
-    ResourceName: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  {
-    Code: S.optional(S.String),
-    Message: S.optional(S.String),
-    RequestId: S.optional(S.String),
-    ResourceName: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type RetryAfterSeconds = string;
 export type BatchCreateAttendeeError =
   | BadRequestException
   | ForbiddenException
@@ -1132,6 +1141,7 @@ export const batchCreateAttendee: API.OperationMethod<
   retry: Retry,
   operationName: "BatchCreateAttendee",
 }));
+
 export type BatchUpdateAttendeeCapabilitiesExceptError =
   | BadRequestException
   | ConflictException
@@ -1196,6 +1206,7 @@ export const batchUpdateAttendeeCapabilitiesExcept: API.OperationMethod<
   retry: Retry,
   operationName: "BatchUpdateAttendeeCapabilitiesExcept",
 }));
+
 export type CreateAttendeeError =
   | BadRequestException
   | ForbiddenException
@@ -1236,6 +1247,7 @@ export const createAttendee: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAttendee",
 }));
+
 export type CreateMeetingError =
   | BadRequestException
   | ConflictException
@@ -1284,6 +1296,7 @@ export const createMeeting: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMeeting",
 }));
+
 export type CreateMeetingWithAttendeesError =
   | BadRequestException
   | ConflictException
@@ -1332,6 +1345,7 @@ export const createMeetingWithAttendees: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMeetingWithAttendees",
 }));
+
 export type DeleteAttendeeError =
   | BadRequestException
   | ForbiddenException
@@ -1368,6 +1382,7 @@ export const deleteAttendee: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAttendee",
 }));
+
 export type DeleteMeetingError =
   | BadRequestException
   | ForbiddenException
@@ -1404,6 +1419,7 @@ export const deleteMeeting: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMeeting",
 }));
+
 export type GetAttendeeError =
   | BadRequestException
   | ForbiddenException
@@ -1439,6 +1455,7 @@ export const getAttendee: API.OperationMethod<
   retry: Retry,
   operationName: "GetAttendee",
 }));
+
 export type GetMeetingError =
   | BadRequestException
   | ForbiddenException
@@ -1474,6 +1491,7 @@ export const getMeeting: API.OperationMethod<
   retry: Retry,
   operationName: "GetMeeting",
 }));
+
 export type ListAttendeesError =
   | BadRequestException
   | ForbiddenException
@@ -1529,6 +1547,7 @@ export const listAttendees: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | ForbiddenException
@@ -1564,6 +1583,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type StartMeetingTranscriptionError =
   | BadRequestException
   | ForbiddenException
@@ -1615,6 +1635,7 @@ export const startMeetingTranscription: API.OperationMethod<
   retry: Retry,
   operationName: "StartMeetingTranscription",
 }));
+
 export type StopMeetingTranscriptionError =
   | BadRequestException
   | ForbiddenException
@@ -1659,6 +1680,7 @@ export const stopMeetingTranscription: API.OperationMethod<
   retry: Retry,
   operationName: "StopMeetingTranscription",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | ForbiddenException
@@ -1696,6 +1718,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | ForbiddenException
@@ -1746,6 +1769,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAttendeeCapabilitiesError =
   | BadRequestException
   | ConflictException

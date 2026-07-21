@@ -85,43 +85,63 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
+  "InternalFailureException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class RequestEntityTooLargeException extends S.TaggedErrorClass<RequestEntityTooLargeException>()(
+  "RequestEntityTooLargeException",
+  { Message: S.optional(S.String) },
+  T.HttpError(413),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type GroupIdentifier = string;
 export type CanaryArn = string;
-export type ErrorMessage = string;
-export type CanaryName = string;
-export type CodeHandler = string;
-export type BlueprintType = string;
-export type RoleArn = string;
-export type MaxOneYearInSeconds = number;
-export type MaxRetries = number;
-export type MaxFifteenMinutesInSeconds = number;
-export type MaxSize3008 = number;
-export type EnvironmentVariableName = string;
-export type EnvironmentVariableValue = string;
-export type EphemeralStorageSize = number;
-export type MaxSize1024 = number;
-export type SubnetId = string;
-export type SecurityGroupId = string;
-export type Location = string;
-export type TagKey = string;
-export type TagValue = string;
-export type KmsKeyArn = string;
-export type UUID = string;
-export type FunctionArn = string;
-export type VpcId = string;
-export type BaseScreenshotConfigIgnoreCoordinate = string;
-export type GroupName = string;
-export type GroupArn = string;
-export type Token = string;
-export type MaxCanaryResults = number;
-export type MaxSize100 = number;
-export type RetryAttempt = number;
-export type PaginationToken = string;
-export type MaxGroupResults = number;
-export type ResourceArn = string;
-
-//# Schemas
 export interface AssociateResourceRequest {
   GroupIdentifier: string;
   ResourceArn: string;
@@ -149,10 +169,14 @@ export const AssociateResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateResourceResponse",
 }) as any as S.Schema<AssociateResourceResponse>;
+export type CanaryName = string;
+export type CodeHandler = string;
+export type BlueprintType = string;
 export type BlueprintTypes = string[];
 export const BlueprintTypes = /*@__PURE__*/ S.Array(S.String);
 export type DependencyType = "LambdaLayer" | (string & {});
 export const DependencyType = /*@__PURE__*/ S.String;
+
 export interface Dependency {
   Type?: DependencyType;
   Reference: string;
@@ -184,6 +208,9 @@ export const CanaryCodeInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CanaryCodeInput",
 }) as any as S.Schema<CanaryCodeInput>;
+export type RoleArn = string;
+export type MaxOneYearInSeconds = number;
+export type MaxRetries = number;
 export interface RetryConfigInput {
   MaxRetries: number;
 }
@@ -206,11 +233,16 @@ export const CanaryScheduleInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CanaryScheduleInput",
 }) as any as S.Schema<CanaryScheduleInput>;
+export type MaxFifteenMinutesInSeconds = number;
+export type MaxSize3008 = number;
+export type EnvironmentVariableName = string;
+export type EnvironmentVariableValue = string;
 export type EnvironmentVariablesMap = { [key: string]: string | undefined };
 export const EnvironmentVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type EphemeralStorageSize = number;
 export interface CanaryRunConfigInput {
   TimeoutInSeconds?: number;
   MemoryInMB?: number;
@@ -229,8 +261,11 @@ export const CanaryRunConfigInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CanaryRunConfigInput",
 }) as any as S.Schema<CanaryRunConfigInput>;
+export type MaxSize1024 = number;
+export type SubnetId = string;
 export type SubnetIds = string[];
 export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
 export interface VpcConfigInput {
@@ -247,6 +282,7 @@ export const VpcConfigInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpcConfigInput" }) as any as S.Schema<VpcConfigInput>;
 export type ResourceToTag = "lambda-function" | (string & {});
 export const ResourceToTag = /*@__PURE__*/ S.String;
+
 export type ResourceList = ResourceToTag[];
 export const ResourceList = /*@__PURE__*/ S.Array(ResourceToTag);
 export type ProvisionedResourceCleanupSetting =
@@ -254,8 +290,10 @@ export type ProvisionedResourceCleanupSetting =
   | "OFF"
   | (string & {});
 export const ProvisionedResourceCleanupSetting = /*@__PURE__*/ S.String;
+
 export type BrowserType = "CHROME" | "FIREFOX" | (string & {});
 export const BrowserType = /*@__PURE__*/ S.String;
+
 export interface BrowserConfig {
   BrowserType?: BrowserType;
 }
@@ -264,6 +302,7 @@ export const BrowserConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BrowserConfig" }) as any as S.Schema<BrowserConfig>;
 export type BrowserConfigs = BrowserConfig[];
 export const BrowserConfigs = /*@__PURE__*/ S.Array(BrowserConfig);
+export type Location = string;
 export interface AddReplicaLocationInput {
   Location: string;
   VpcConfig?: VpcConfigInput;
@@ -277,6 +316,8 @@ export type AddReplicaLocations = AddReplicaLocationInput[];
 export const AddReplicaLocations = /*@__PURE__*/ S.Array(
   AddReplicaLocationInput,
 );
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -284,6 +325,8 @@ export const TagMap = /*@__PURE__*/ S.Record(
 );
 export type EncryptionMode = "SSE_S3" | "SSE_KMS" | (string & {});
 export const EncryptionMode = /*@__PURE__*/ S.String;
+
+export type KmsKeyArn = string;
 export interface S3EncryptionConfig {
   EncryptionMode?: EncryptionMode;
   KmsKeyArn?: string;
@@ -353,6 +396,7 @@ export const CreateCanaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCanaryRequest",
 }) as any as S.Schema<CreateCanaryRequest>;
+export type UUID = string;
 export interface CanaryCodeOutput {
   SourceLocationArn?: string;
   Handler?: string;
@@ -419,6 +463,7 @@ export type CanaryState =
   | "DELETING"
   | (string & {});
 export const CanaryState = /*@__PURE__*/ S.String;
+
 export type CanaryStateReasonCode =
   | "INVALID_PERMISSIONS"
   | "CREATE_PENDING"
@@ -434,6 +479,7 @@ export type CanaryStateReasonCode =
   | "SYNC_DELETE_IN_PROGRESS"
   | (string & {});
 export const CanaryStateReasonCode = /*@__PURE__*/ S.String;
+
 export interface CanaryStatus {
   State?: CanaryState;
   StateReason?: string;
@@ -460,6 +506,8 @@ export const CanaryTimeline = /*@__PURE__*/ S.suspend(() =>
     LastStopped: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "CanaryTimeline" }) as any as S.Schema<CanaryTimeline>;
+export type FunctionArn = string;
+export type VpcId = string;
 export interface VpcConfigOutput {
   VpcId?: string;
   SubnetIds?: string[];
@@ -476,6 +524,7 @@ export const VpcConfigOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcConfigOutput",
 }) as any as S.Schema<VpcConfigOutput>;
+export type BaseScreenshotConfigIgnoreCoordinate = string;
 export type BaseScreenshotIgnoreCoordinates = string[];
 export const BaseScreenshotIgnoreCoordinates = /*@__PURE__*/ S.Array(S.String);
 export interface BaseScreenshot {
@@ -522,12 +571,14 @@ export const VisualReferencesOutput = /*@__PURE__*/ S.Array(
 );
 export type LocationType = "Primary" | "Replica" | (string & {});
 export const LocationType = /*@__PURE__*/ S.String;
+
 export type ReplicationState =
   | "InProgress"
   | "InSync"
   | "Inconsistent"
   | (string & {});
 export const ReplicationState = /*@__PURE__*/ S.String;
+
 export interface ReplicationStatus {
   State?: ReplicationState;
   StateReason?: string;
@@ -656,6 +707,7 @@ export const CreateCanaryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCanaryResponse",
 }) as any as S.Schema<CreateCanaryResponse>;
+export type GroupName = string;
 export interface CreateGroupRequest {
   Name: string;
   Tags?: { [key: string]: string | undefined };
@@ -674,6 +726,7 @@ export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGroupRequest",
 }) as any as S.Schema<CreateGroupRequest>;
+export type GroupArn = string;
 export interface Group {
   Id?: string;
   Name?: string;
@@ -754,6 +807,8 @@ export const DeleteGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteGroupResponse",
 }) as any as S.Schema<DeleteGroupResponse>;
+export type Token = string;
+export type MaxCanaryResults = number;
 export type DescribeCanariesNameFilter = string[];
 export const DescribeCanariesNameFilter = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeCanariesRequest {
@@ -790,6 +845,7 @@ export const DescribeCanariesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCanariesResponse",
 }) as any as S.Schema<DescribeCanariesResponse>;
+export type MaxSize100 = number;
 export type DescribeCanariesLastRunNameFilter = string[];
 export const DescribeCanariesLastRunNameFilter = /*@__PURE__*/ S.Array(
   S.String,
@@ -819,19 +875,23 @@ export const DescribeCanariesLastRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCanariesLastRunRequest",
 }) as any as S.Schema<DescribeCanariesLastRunRequest>;
+export type RetryAttempt = number;
 export type CanaryRunState = "RUNNING" | "PASSED" | "FAILED" | (string & {});
 export const CanaryRunState = /*@__PURE__*/ S.String;
+
 export type CanaryRunStateReasonCode =
   | "CANARY_FAILURE"
   | "EXECUTION_FAILURE"
   | (string & {});
 export const CanaryRunStateReasonCode = /*@__PURE__*/ S.String;
+
 export type CanaryRunTestResult =
   | "PASSED"
   | "FAILED"
   | "UNKNOWN"
   | (string & {});
 export const CanaryRunTestResult = /*@__PURE__*/ S.String;
+
 export interface CanaryRunStatus {
   State?: CanaryRunState;
   StateReason?: string;
@@ -1031,6 +1091,7 @@ export const GetCanaryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCanaryResponse>;
 export type RunType = "CANARY_RUN" | "DRY_RUN" | (string & {});
 export const RunType = /*@__PURE__*/ S.String;
+
 export interface GetCanaryRunsRequest {
   Name: string;
   NextToken?: string;
@@ -1099,6 +1160,8 @@ export const GetGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetGroupResponse",
 }) as any as S.Schema<GetGroupResponse>;
+export type PaginationToken = string;
+export type MaxGroupResults = number;
 export interface ListAssociatedGroupsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -1218,6 +1281,7 @@ export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGroupsResponse",
 }) as any as S.Schema<ListGroupsResponse>;
+export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -1475,65 +1539,7 @@ export const UpdateCanaryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateCanaryResponse",
 }) as any as S.Schema<UpdateCanaryResponse>;
-
-//# Errors
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class RequestEntityTooLargeException extends S.TaggedErrorClass<RequestEntityTooLargeException>()(
-  "RequestEntityTooLargeException",
-  { Message: S.optional(S.String) },
-  T.HttpError(413),
-).pipe(C.withBadRequestError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type AssociateResourceError =
   | ConflictException
   | InternalServerException
@@ -1567,6 +1573,7 @@ export const associateResource: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateResource",
 }));
+
 export type CreateCanaryError =
   | InternalServerException
   | RequestEntityTooLargeException
@@ -1608,6 +1615,7 @@ export const createCanary: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCanary",
 }));
+
 export type CreateGroupError =
   | ConflictException
   | InternalServerException
@@ -1650,6 +1658,7 @@ export const createGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGroup",
 }));
+
 export type DeleteCanaryError =
   | ConflictException
   | InternalServerException
@@ -1702,6 +1711,7 @@ export const deleteCanary: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCanary",
 }));
+
 export type DeleteGroupError =
   | ConflictException
   | InternalServerException
@@ -1733,6 +1743,7 @@ export const deleteGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGroup",
 }));
+
 export type DescribeCanariesError =
   | InternalServerException
   | ValidationException
@@ -1784,6 +1795,7 @@ export const describeCanaries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeCanariesLastRunError =
   | InternalServerException
   | ValidationException
@@ -1834,6 +1846,7 @@ export const describeCanariesLastRun: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeRuntimeVersionsError =
   | InternalServerException
   | ValidationException
@@ -1876,6 +1889,7 @@ export const describeRuntimeVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DisassociateResourceError =
   | ConflictException
   | InternalServerException
@@ -1903,6 +1917,7 @@ export const disassociateResource: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateResource",
 }));
+
 export type GetCanaryError =
   | InternalServerException
   | ValidationException
@@ -1930,6 +1945,7 @@ export const getCanary: API.OperationMethod<
   retry: Retry,
   operationName: "GetCanary",
 }));
+
 export type GetCanaryRunsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1975,6 +1991,7 @@ export const getCanaryRuns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetGroupError =
   | ConflictException
   | InternalServerException
@@ -2003,6 +2020,7 @@ export const getGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetGroup",
 }));
+
 export type ListAssociatedGroupsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2049,6 +2067,7 @@ export const listAssociatedGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGroupResourcesError =
   | ConflictException
   | InternalServerException
@@ -2096,6 +2115,7 @@ export const listGroupResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGroupsError =
   | InternalServerException
   | ValidationException
@@ -2137,6 +2157,7 @@ export const listGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | ConflictException
@@ -2166,6 +2187,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type StartCanaryError =
   | ConflictException
   | InternalServerException
@@ -2195,6 +2217,7 @@ export const startCanary: API.OperationMethod<
   retry: Retry,
   operationName: "StartCanary",
 }));
+
 export type StartCanaryDryRunError =
   | AccessDeniedException
   | ConflictException
@@ -2224,6 +2247,7 @@ export const startCanaryDryRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartCanaryDryRun",
 }));
+
 export type StopCanaryError =
   | ConflictException
   | InternalServerException
@@ -2256,6 +2280,7 @@ export const stopCanary: API.OperationMethod<
   retry: Retry,
   operationName: "StopCanary",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | ConflictException
@@ -2300,6 +2325,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | ConflictException
@@ -2329,6 +2355,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateCanaryError =
   | AccessDeniedException
   | ConflictException

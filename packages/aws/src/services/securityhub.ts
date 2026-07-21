@@ -85,30 +85,82 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalException extends S.TaggedErrorClass<InternalException>()(
+  "InternalException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidAccessException extends S.TaggedErrorClass<InvalidAccessException>()(
+  "InvalidAccessException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class OrganizationalUnitNotFoundException extends S.TaggedErrorClass<OrganizationalUnitNotFoundException>()(
+  "OrganizationalUnitNotFoundException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class OrganizationNotFoundException extends S.TaggedErrorClass<OrganizationNotFoundException>()(
+  "OrganizationNotFoundException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
+  "ResourceConflictException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type NonEmptyString = string;
-export type RuleOrderValue = number;
-export type RatioScale = number;
-export type AlphaNumericNonEmptyString = string;
-export type SizeBytes = number;
-export type AwsIamRoleAssumeRolePolicyDocument = string;
-export type AwsLambdaLayerVersionNumber = number;
-export type TagKey = string;
-export type TagValue = string;
-export type ClientToken = string;
-export type RuleOrderValueV2 = number;
-export type AccountId = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type MaxStatisticResults = number;
-export type TrendsValueCount = number;
-export type OcsfFinding = unknown;
-export type ResourceConfig = unknown;
-export type CrossAccountMaxResults = number;
-export type AdminsMaxResults = number;
-export type ResourceArn = string;
-
-//# Schemas
 export interface AcceptAdministratorInvitationRequest {
   AdministratorId?: string;
   InvitationId?: string;
@@ -247,17 +299,20 @@ export type StandardsStatus =
   | "INCOMPLETE"
   | (string & {});
 export const StandardsStatus = /*@__PURE__*/ S.String;
+
 export type StandardsControlsUpdatable =
   | "READY_FOR_UPDATES"
   | "NOT_READY_FOR_UPDATES"
   | (string & {});
 export const StandardsControlsUpdatable = /*@__PURE__*/ S.String;
+
 export type StatusReasonCode =
   | "NO_AVAILABLE_CONFIGURATION_RECORDER"
   | "MAXIMUM_NUMBER_OF_CONFIG_RULES_EXCEEDED"
   | "INTERNAL_ERROR"
   | (string & {});
 export const StatusReasonCode = /*@__PURE__*/ S.String;
+
 export interface StandardsStatusReason {
   StatusReasonCode?: StatusReasonCode;
 }
@@ -376,6 +431,8 @@ export const BatchGetAutomationRulesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetAutomationRulesRequest>;
 export type RuleStatus = "ENABLED" | "DISABLED" | (string & {});
 export const RuleStatus = /*@__PURE__*/ S.String;
+
+export type RuleOrderValue = number;
 export type StringFilterComparison =
   | "EQUALS"
   | "PREFIX"
@@ -386,6 +443,7 @@ export type StringFilterComparison =
   | "CONTAINS_WORD"
   | (string & {});
 export const StringFilterComparison = /*@__PURE__*/ S.String;
+
 export interface StringFilter {
   Value?: string;
   Comparison?: StringFilterComparison;
@@ -400,8 +458,10 @@ export type StringFilterList = StringFilter[];
 export const StringFilterList = /*@__PURE__*/ S.Array(StringFilter);
 export type DateRangeUnit = "DAYS" | (string & {});
 export const DateRangeUnit = /*@__PURE__*/ S.String;
+
 export type DateRangeComparison = "WITHIN" | "OLDER_THAN" | (string & {});
 export const DateRangeComparison = /*@__PURE__*/ S.String;
+
 export interface DateRange {
   Value?: number;
   Unit?: DateRangeUnit;
@@ -453,6 +513,7 @@ export type MapFilterComparison =
   | "NOT_CONTAINS"
   | (string & {});
 export const MapFilterComparison = /*@__PURE__*/ S.String;
+
 export interface MapFilter {
   Key?: string;
   Value?: string;
@@ -553,6 +614,7 @@ export const AutomationRulesFindingFilters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutomationRulesFindingFilters>;
 export type AutomationRulesActionType = "FINDING_FIELDS_UPDATE" | (string & {});
 export const AutomationRulesActionType = /*@__PURE__*/ S.String;
+
 export interface NoteUpdate {
   Text?: string;
   UpdatedBy?: string;
@@ -560,6 +622,7 @@ export interface NoteUpdate {
 export const NoteUpdate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Text: S.optional(S.String), UpdatedBy: S.optional(S.String) }),
 ).annotate({ identifier: "NoteUpdate" }) as any as S.Schema<NoteUpdate>;
+export type RatioScale = number;
 export type SeverityLabel =
   | "INFORMATIONAL"
   | "LOW"
@@ -568,6 +631,7 @@ export type SeverityLabel =
   | "CRITICAL"
   | (string & {});
 export const SeverityLabel = /*@__PURE__*/ S.String;
+
 export interface SeverityUpdate {
   Normalized?: number;
   Product?: number;
@@ -587,6 +651,7 @@ export type VerificationState =
   | "BENIGN_POSITIVE"
   | (string & {});
 export const VerificationState = /*@__PURE__*/ S.String;
+
 export type TypeList = string[];
 export const TypeList = /*@__PURE__*/ S.Array(S.String);
 export type FieldMap = { [key: string]: string | undefined };
@@ -601,6 +666,7 @@ export type WorkflowStatus =
   | "SUPPRESSED"
   | (string & {});
 export const WorkflowStatus = /*@__PURE__*/ S.String;
+
 export interface WorkflowUpdate {
   Status?: WorkflowStatus;
 }
@@ -769,14 +835,17 @@ export type TargetType =
   | "ROOT"
   | (string & {});
 export const TargetType = /*@__PURE__*/ S.String;
+
 export type AssociationType = "INHERITED" | "APPLIED" | (string & {});
 export const AssociationType = /*@__PURE__*/ S.String;
+
 export type ConfigurationPolicyAssociationStatus =
   | "PENDING"
   | "SUCCESS"
   | "FAILED"
   | (string & {});
 export const ConfigurationPolicyAssociationStatus = /*@__PURE__*/ S.String;
+
 export interface ConfigurationPolicyAssociationSummary {
   ConfigurationPolicyId?: string;
   TargetId?: string;
@@ -871,12 +940,16 @@ export type SeverityRating =
   | "CRITICAL"
   | (string & {});
 export const SeverityRating = /*@__PURE__*/ S.String;
+
 export type ControlStatus = "ENABLED" | "DISABLED" | (string & {});
 export const ControlStatus = /*@__PURE__*/ S.String;
+
 export type UpdateStatus = "READY" | "UPDATING" | (string & {});
 export const UpdateStatus = /*@__PURE__*/ S.String;
+
 export type ParameterValueType = "DEFAULT" | "CUSTOM" | (string & {});
 export const ParameterValueType = /*@__PURE__*/ S.String;
+
 export type IntegerList = number[];
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
 export type ParameterValue =
@@ -987,6 +1060,7 @@ export const Parameters = /*@__PURE__*/ S.Record(
   S.String,
   ParameterConfiguration.pipe(S.optional),
 );
+export type AlphaNumericNonEmptyString = string;
 export interface SecurityControl {
   SecurityControlId?: string;
   SecurityControlArn?: string;
@@ -1025,6 +1099,7 @@ export type UnprocessedErrorCode =
   | "LIMIT_EXCEEDED"
   | (string & {});
 export const UnprocessedErrorCode = /*@__PURE__*/ S.String;
+
 export interface UnprocessedSecurityControl {
   SecurityControlId?: string;
   ErrorCode?: UnprocessedErrorCode;
@@ -1111,6 +1186,7 @@ export const BatchGetStandardsControlAssociationsRequest =
   }) as any as S.Schema<BatchGetStandardsControlAssociationsRequest>;
 export type AssociationStatus = "ENABLED" | "DISABLED" | (string & {});
 export const AssociationStatus = /*@__PURE__*/ S.String;
+
 export type RelatedRequirementsList = string[];
 export const RelatedRequirementsList = /*@__PURE__*/ S.Array(S.String);
 export type StandardsControlArnList = string[];
@@ -1243,12 +1319,14 @@ export type MalwareType =
   | "WORM"
   | (string & {});
 export const MalwareType = /*@__PURE__*/ S.String;
+
 export type MalwareState =
   | "OBSERVED"
   | "REMOVAL_FAILED"
   | "REMOVED"
   | (string & {});
 export const MalwareState = /*@__PURE__*/ S.String;
+
 export interface Malware {
   Name?: string;
   Type?: MalwareType;
@@ -1267,6 +1345,7 @@ export type MalwareList = Malware[];
 export const MalwareList = /*@__PURE__*/ S.Array(Malware);
 export type NetworkDirection = "IN" | "OUT" | (string & {});
 export const NetworkDirection = /*@__PURE__*/ S.String;
+
 export interface PortRange {
   Begin?: number;
   End?: number;
@@ -1412,6 +1491,7 @@ export type ThreatIntelIndicatorType =
   | "URL"
   | (string & {});
 export const ThreatIntelIndicatorType = /*@__PURE__*/ S.String;
+
 export type ThreatIntelIndicatorCategory =
   | "BACKDOOR"
   | "CARD_STEALER"
@@ -1421,6 +1501,7 @@ export type ThreatIntelIndicatorCategory =
   | "KEYLOGGER"
   | (string & {});
 export const ThreatIntelIndicatorCategory = /*@__PURE__*/ S.String;
+
 export interface ThreatIntelIndicator {
   Type?: ThreatIntelIndicatorType;
   Value?: string;
@@ -1446,6 +1527,7 @@ export const ThreatIntelIndicatorList =
   /*@__PURE__*/ S.Array(ThreatIntelIndicator);
 export type Partition = "aws" | "aws-cn" | "aws-us-gov" | (string & {});
 export const Partition = /*@__PURE__*/ S.String;
+
 export interface ClassificationStatus {
   Code?: string;
   Reason?: string;
@@ -3433,6 +3515,7 @@ export type AwsS3BucketNotificationConfigurationS3KeyFilterRuleName =
   | (string & {});
 export const AwsS3BucketNotificationConfigurationS3KeyFilterRuleName =
   /*@__PURE__*/ S.String;
+
 export interface AwsS3BucketNotificationConfigurationS3KeyFilterRule {
   Name?: AwsS3BucketNotificationConfigurationS3KeyFilterRuleName;
   Value?: string;
@@ -3659,6 +3742,7 @@ export const AwsSecretsManagerSecretDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AwsSecretsManagerSecretDetails>;
 export type AwsIamAccessKeyStatus = "Active" | "Inactive" | (string & {});
 export const AwsIamAccessKeyStatus = /*@__PURE__*/ S.String;
+
 export interface AwsIamAccessKeySessionContextAttributes {
   MfaAuthenticated?: boolean;
   CreationDate?: string;
@@ -3979,6 +4063,7 @@ export const AwsDynamoDbTableBillingModeSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AwsDynamoDbTableBillingModeSummary",
 }) as any as S.Schema<AwsDynamoDbTableBillingModeSummary>;
+export type SizeBytes = number;
 export interface AwsDynamoDbTableKeySchema {
   AttributeName?: string;
   KeyType?: string;
@@ -5267,6 +5352,7 @@ export const AwsIamGroupDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AwsIamGroupDetails",
 }) as any as S.Schema<AwsIamGroupDetails>;
+export type AwsIamRoleAssumeRolePolicyDocument = string;
 export interface AwsIamInstanceProfileRole {
   Arn?: string;
   AssumeRolePolicyDocument?: string;
@@ -5505,6 +5591,7 @@ export const AwsLambdaFunctionDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AwsLambdaFunctionDetails",
 }) as any as S.Schema<AwsLambdaFunctionDetails>;
+export type AwsLambdaLayerVersionNumber = number;
 export interface AwsLambdaLayerVersionDetails {
   Version?: number;
   CompatibleRuntimes?: string[];
@@ -12075,6 +12162,7 @@ export type ComplianceStatus =
   | "NOT_AVAILABLE"
   | (string & {});
 export const ComplianceStatus = /*@__PURE__*/ S.String;
+
 export interface StatusReason {
   ReasonCode?: string;
   Description?: string;
@@ -12137,6 +12225,7 @@ export type WorkflowState =
   | "RESOLVED"
   | (string & {});
 export const WorkflowState = /*@__PURE__*/ S.String;
+
 export interface Workflow {
   Status?: WorkflowStatus;
 }
@@ -12145,6 +12234,7 @@ export const Workflow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Workflow" }) as any as S.Schema<Workflow>;
 export type RecordState = "ACTIVE" | "ARCHIVED" | (string & {});
 export const RecordState = /*@__PURE__*/ S.String;
+
 export interface Note {
   Text?: string;
   UpdatedBy?: string;
@@ -12240,8 +12330,10 @@ export type VulnerabilityFixAvailable =
   | "PARTIAL"
   | (string & {});
 export const VulnerabilityFixAvailable = /*@__PURE__*/ S.String;
+
 export type VulnerabilityExploitAvailable = "YES" | "NO" | (string & {});
 export const VulnerabilityExploitAvailable = /*@__PURE__*/ S.String;
+
 export interface CodeVulnerabilitiesFilePath {
   EndLine?: number;
   FileName?: string;
@@ -12597,6 +12689,7 @@ export const ActorUser = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActorUser" }) as any as S.Schema<ActorUser>;
 export type ActorSessionMfaStatus = "ENABLED" | "DISABLED" | (string & {});
 export const ActorSessionMfaStatus = /*@__PURE__*/ S.String;
+
 export interface ActorSession {
   Uid?: string;
   MfaStatus?: ActorSessionMfaStatus;
@@ -12652,6 +12745,7 @@ export const NetworkAutonomousSystem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkAutonomousSystem>;
 export type ConnectionDirection = "INBOUND" | "OUTBOUND" | (string & {});
 export const ConnectionDirection = /*@__PURE__*/ S.String;
+
 export interface NetworkConnection {
   Direction?: ConnectionDirection;
 }
@@ -13142,6 +13236,7 @@ export type BatchUpdateFindingsV2UnprocessedFindingErrorCode =
   | (string & {});
 export const BatchUpdateFindingsV2UnprocessedFindingErrorCode =
   /*@__PURE__*/ S.String;
+
 export interface BatchUpdateFindingsV2UnprocessedFinding {
   FindingIdentifier?: OcsfFindingIdentifier;
   MetadataUid?: string;
@@ -13304,11 +13399,14 @@ export const CreateActionTargetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateActionTargetResponse",
 }) as any as S.Schema<CreateActionTargetResponse>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ClientToken = string;
 export interface CreateAggregatorV2Request {
   RegionLinkingMode?: string;
   LinkedRegions?: string[];
@@ -13393,6 +13491,8 @@ export const CreateAutomationRuleResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAutomationRuleResponse>;
 export type RuleStatusV2 = "ENABLED" | "DISABLED" | (string & {});
 export const RuleStatusV2 = /*@__PURE__*/ S.String;
+
+export type RuleOrderValueV2 = number;
 export type OcsfStringField =
   | "metadata.uid"
   | "activity_name"
@@ -13467,6 +13567,7 @@ export type OcsfStringField =
   | "vendor_attributes.severity"
   | (string & {});
 export const OcsfStringField = /*@__PURE__*/ S.String;
+
 export interface OcsfStringFilter {
   FieldName?: OcsfStringField;
   Filter?: StringFilter;
@@ -13491,6 +13592,7 @@ export type OcsfDateField =
   | "resources.modified_time_dt"
   | (string & {});
 export const OcsfDateField = /*@__PURE__*/ S.String;
+
 export interface OcsfDateFilter {
   FieldName?: OcsfDateField;
   Filter?: DateFilter;
@@ -13509,6 +13611,7 @@ export type OcsfBooleanField =
   | "vulnerabilities.is_fix_available"
   | (string & {});
 export const OcsfBooleanField = /*@__PURE__*/ S.String;
+
 export interface BooleanFilter {
   Value?: boolean;
 }
@@ -13546,6 +13649,7 @@ export type OcsfNumberField =
   | "vendor_attributes.severity_id"
   | (string & {});
 export const OcsfNumberField = /*@__PURE__*/ S.String;
+
 export interface OcsfNumberFilter {
   FieldName?: OcsfNumberField;
   Filter?: NumberFilter;
@@ -13567,6 +13671,7 @@ export type OcsfMapField =
   | "finding_info.tags"
   | (string & {});
 export const OcsfMapField = /*@__PURE__*/ S.String;
+
 export interface OcsfMapFilter {
   FieldName?: OcsfMapField;
   Filter?: MapFilter;
@@ -13584,6 +13689,7 @@ export type OcsfIpField =
   | "evidences.src_endpoint.ip"
   | (string & {});
 export const OcsfIpField = /*@__PURE__*/ S.String;
+
 export interface IpFilter {
   Cidr?: string;
 }
@@ -13604,6 +13710,7 @@ export type OcsfIpFilterList = OcsfIpFilter[];
 export const OcsfIpFilterList = /*@__PURE__*/ S.Array(OcsfIpFilter);
 export type AllowedOperators = "AND" | "OR" | (string & {});
 export const AllowedOperators = /*@__PURE__*/ S.String;
+
 export interface CompositeFilter {
   StringFilters?: OcsfStringFilter[];
   DateFilters?: OcsfDateFilter[];
@@ -13659,6 +13766,7 @@ export type AutomationRulesActionTypeV2 =
   | "EXTERNAL_INTEGRATION"
   | (string & {});
 export const AutomationRulesActionTypeV2 = /*@__PURE__*/ S.String;
+
 export interface AutomationRulesFindingFieldsUpdateV2 {
   SeverityId?: number;
   Comment?: string;
@@ -13923,6 +14031,7 @@ export type ConnectorStatus =
   | "PENDING_AUTHORIZATION"
   | (string & {});
 export const ConnectorStatus = /*@__PURE__*/ S.String;
+
 export interface CreateConnectorV2Response {
   ConnectorArn: string;
   ConnectorId: string;
@@ -14236,6 +14345,7 @@ export const CreateInsightResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInsightResponse",
 }) as any as S.Schema<CreateInsightResponse>;
+export type AccountId = string;
 export interface AccountDetails {
   AccountId?: string;
   Email?: string;
@@ -14284,6 +14394,7 @@ export const CreateMembersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMembersResponse>;
 export type TicketCreationMode = "DRYRUN" | (string & {});
 export const TicketCreationMode = /*@__PURE__*/ S.String;
+
 export interface CreateTicketV2Request {
   ConnectorId?: string;
   FindingMetadataUid?: string;
@@ -14577,6 +14688,8 @@ export const DeleteMembersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteMembersResponse>;
 export type ArnList = string[];
 export const ArnList = /*@__PURE__*/ S.Array(S.String);
+export type NextToken = string;
+export type MaxResults = number;
 export interface DescribeActionTargetsRequest {
   ActionTargetArns?: string[];
   NextToken?: string;
@@ -14652,6 +14765,7 @@ export type ControlFindingGenerator =
   | "SECURITY_CONTROL"
   | (string & {});
 export const ControlFindingGenerator = /*@__PURE__*/ S.String;
+
 export interface DescribeHubResponse {
   HubArn?: string;
   SubscribedAt?: string;
@@ -14686,18 +14800,21 @@ export const DescribeOrganizationConfigurationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeOrganizationConfigurationRequest>;
 export type AutoEnableStandards = "NONE" | "DEFAULT" | (string & {});
 export const AutoEnableStandards = /*@__PURE__*/ S.String;
+
 export type OrganizationConfigurationConfigurationType =
   | "CENTRAL"
   | "LOCAL"
   | (string & {});
 export const OrganizationConfigurationConfigurationType =
   /*@__PURE__*/ S.String;
+
 export type OrganizationConfigurationStatus =
   | "PENDING"
   | "ENABLED"
   | "FAILED"
   | (string & {});
 export const OrganizationConfigurationStatus = /*@__PURE__*/ S.String;
+
 export interface OrganizationConfiguration {
   ConfigurationType?: OrganizationConfigurationConfigurationType;
   Status?: OrganizationConfigurationStatus;
@@ -14760,6 +14877,7 @@ export type IntegrationType =
   | "UPDATE_FINDINGS_IN_SECURITY_HUB"
   | (string & {});
 export const IntegrationType = /*@__PURE__*/ S.String;
+
 export type IntegrationTypeList = IntegrationType[];
 export const IntegrationTypeList = /*@__PURE__*/ S.Array(IntegrationType);
 export interface Product {
@@ -14828,6 +14946,7 @@ export type IntegrationV2Type =
   | "EXTENDED_PLAN"
   | (string & {});
 export const IntegrationV2Type = /*@__PURE__*/ S.String;
+
 export type IntegrationV2TypeList = IntegrationV2Type[];
 export const IntegrationV2TypeList = /*@__PURE__*/ S.Array(IntegrationV2Type);
 export interface ProductV2 {
@@ -15061,6 +15180,7 @@ export type SecurityHubFeature =
   | "SecurityHubV2"
   | (string & {});
 export const SecurityHubFeature = /*@__PURE__*/ S.String;
+
 export interface DisableOrganizationAdminAccountRequest {
   AdminAccountId?: string;
   Feature?: SecurityHubFeature;
@@ -15577,6 +15697,7 @@ export const HealthCheck = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HealthCheck" }) as any as S.Schema<HealthCheck>;
 export type ConnectorAuthStatus = "ACTIVE" | "FAILED" | (string & {});
 export const ConnectorAuthStatus = /*@__PURE__*/ S.String;
+
 export interface JiraCloudDetail {
   CloudId?: string;
   ProjectKey?: string;
@@ -15764,6 +15885,7 @@ export type FindingHistoryUpdateSourceType =
   | "BATCH_IMPORT_FINDINGS"
   | (string & {});
 export const FindingHistoryUpdateSourceType = /*@__PURE__*/ S.String;
+
 export interface FindingHistoryUpdateSource {
   Type?: FindingHistoryUpdateSourceType;
   Identity?: string;
@@ -15837,6 +15959,7 @@ export const GetFindingHistoryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFindingHistoryResponse>;
 export type SortOrder = "asc" | "desc" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface SortCriterion {
   Field?: string;
   SortOrder?: SortOrder;
@@ -15947,6 +16070,7 @@ export type GroupByField =
   | "metadata.product.vendor_name"
   | (string & {});
 export const GroupByField = /*@__PURE__*/ S.String;
+
 export interface GroupByRule {
   Filters?: OcsfFindingFilters;
   GroupByField?: GroupByField;
@@ -15980,6 +16104,7 @@ export interface FindingScopes {
 export const FindingScopes = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AwsOrganizations: S.optional(AwsOrganizationScopeList) }),
 ).annotate({ identifier: "FindingScopes" }) as any as S.Schema<FindingScopes>;
+export type MaxStatisticResults = number;
 export interface GetFindingStatisticsV2Request {
   GroupByRules?: GroupByRule[];
   Scopes?: FindingScopes;
@@ -16047,6 +16172,7 @@ export type FindingsTrendsStringField =
   | "finding_activity_name"
   | (string & {});
 export const FindingsTrendsStringField = /*@__PURE__*/ S.String;
+
 export interface FindingsTrendsStringFilter {
   FieldName?: FindingsTrendsStringField;
   Filter?: StringFilter;
@@ -16131,6 +16257,8 @@ export const GetFindingsTrendsV2Request = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFindingsTrendsV2Request>;
 export type GranularityField = "Daily" | "Weekly" | "Monthly" | (string & {});
 export const GranularityField = /*@__PURE__*/ S.String;
+
+export type TrendsValueCount = number;
 export interface SeverityTrendsCount {
   Unknown?: number;
   Informational?: number;
@@ -16232,6 +16360,7 @@ export const GetFindingsV2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetFindingsV2Request",
 }) as any as S.Schema<GetFindingsV2Request>;
+export type OcsfFinding = unknown;
 export type OcsfFindingsList = any[];
 export const OcsfFindingsList = /*@__PURE__*/ S.Array(S.Any);
 export interface GetFindingsV2Response {
@@ -16488,6 +16617,7 @@ export type RecommendationType =
   | "UNUSED_PERMISSION_RECOMMENDATION"
   | (string & {});
 export const RecommendationType = /*@__PURE__*/ S.String;
+
 export interface UnusedPermissionsRecommendationStep {
   RecommendedAction?: string;
   ExistingPolicy?: string;
@@ -16531,6 +16661,7 @@ export type RecommendationStatus =
   | "FAILED"
   | (string & {});
 export const RecommendationStatus = /*@__PURE__*/ S.String;
+
 export interface GetRecommendedPolicyV2Response {
   NextToken?: string;
   RecommendationType?: RecommendationType;
@@ -16560,6 +16691,7 @@ export type ResourceGroupByField =
   | "FindingsSummary.FindingType"
   | (string & {});
 export const ResourceGroupByField = /*@__PURE__*/ S.String;
+
 export type ResourcesStringField =
   | "ResourceGuid"
   | "ResourceId"
@@ -16572,6 +16704,7 @@ export type ResourcesStringField =
   | "FindingsSummary.ProductName"
   | (string & {});
 export const ResourcesStringField = /*@__PURE__*/ S.String;
+
 export interface ResourcesStringFilter {
   FieldName?: ResourcesStringField;
   Filter?: StringFilter;
@@ -16593,6 +16726,7 @@ export type ResourcesDateField =
   | "ResourceCreationTime"
   | (string & {});
 export const ResourcesDateField = /*@__PURE__*/ S.String;
+
 export interface ResourcesDateFilter {
   FieldName?: ResourcesDateField;
   Filter?: DateFilter;
@@ -16620,6 +16754,7 @@ export type ResourcesNumberField =
   | "FindingsSummary.Severities.Unknown"
   | (string & {});
 export const ResourcesNumberField = /*@__PURE__*/ S.String;
+
 export interface ResourcesNumberFilter {
   FieldName?: ResourcesNumberField;
   Filter?: NumberFilter;
@@ -16638,6 +16773,7 @@ export const ResourcesNumberFilterList = /*@__PURE__*/ S.Array(
 );
 export type ResourcesMapField = "ResourceTags" | (string & {});
 export const ResourcesMapField = /*@__PURE__*/ S.String;
+
 export interface ResourcesMapFilter {
   FieldName?: ResourcesMapField;
   Filter?: MapFilter;
@@ -16754,6 +16890,7 @@ export type ResourcesTrendsStringField =
   | "resource_category"
   | (string & {});
 export const ResourcesTrendsStringField = /*@__PURE__*/ S.String;
+
 export interface ResourcesTrendsStringFilter {
   FieldName?: ResourcesTrendsStringField;
   Filter?: StringFilter;
@@ -16926,6 +17063,7 @@ export type ResourceCategory =
   | "Other"
   | (string & {});
 export const ResourceCategory = /*@__PURE__*/ S.String;
+
 export interface ResourceSeverityBreakdown {
   Other?: number;
   Fatal?: number;
@@ -16979,6 +17117,7 @@ export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceTag" }) as any as S.Schema<ResourceTag>;
 export type ResourceTagList = ResourceTag[];
 export const ResourceTagList = /*@__PURE__*/ S.Array(ResourceTag);
+export type ResourceConfig = unknown;
 export interface ResourceResult {
   ResourceGuid?: string;
   ResourceId?: string;
@@ -17064,8 +17203,10 @@ export type RegionAvailabilityStatus =
   | "UNAVAILABLE"
   | (string & {});
 export const RegionAvailabilityStatus = /*@__PURE__*/ S.String;
+
 export type SecurityControlProperty = "Parameters" | (string & {});
 export const SecurityControlProperty = /*@__PURE__*/ S.String;
+
 export type CustomizableProperties = SecurityControlProperty[];
 export const CustomizableProperties = /*@__PURE__*/ S.Array(
   SecurityControlProperty,
@@ -17670,6 +17811,7 @@ export const ListConfigurationPolicyAssociationsResponse =
   }) as any as S.Schema<ListConfigurationPolicyAssociationsResponse>;
 export type ConnectorProviderName = "JIRA_CLOUD" | "SERVICENOW" | (string & {});
 export const ConnectorProviderName = /*@__PURE__*/ S.String;
+
 export interface ListConnectorsV2Request {
   NextToken?: string;
   MaxResults?: number;
@@ -17831,6 +17973,7 @@ export const ListFindingAggregatorsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFindingAggregatorsResponse",
 }) as any as S.Schema<ListFindingAggregatorsResponse>;
+export type CrossAccountMaxResults = number;
 export interface ListInvitationsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -17901,6 +18044,7 @@ export const ListMembersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMembersResponse",
 }) as any as S.Schema<ListMembersResponse>;
+export type AdminsMaxResults = number;
 export interface ListOrganizationAdminAccountsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -17927,6 +18071,7 @@ export const ListOrganizationAdminAccountsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListOrganizationAdminAccountsRequest>;
 export type AdminStatus = "ENABLED" | "DISABLE_IN_PROGRESS" | (string & {});
 export const AdminStatus = /*@__PURE__*/ S.String;
+
 export interface AdminAccount {
   AccountId?: string;
   Status?: AdminStatus;
@@ -18089,6 +18234,7 @@ export const ListStandardsControlAssociationsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListStandardsControlAssociationsResponse",
 }) as any as S.Schema<ListStandardsControlAssociationsResponse>;
+export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -18714,85 +18860,6 @@ export const UpdateStandardsControlResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateStandardsControlResponse",
 }) as any as S.Schema<UpdateStandardsControlResponse>;
-
-//# Errors
-export class InternalException extends S.TaggedErrorClass<InternalException>()(
-  "InternalException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidAccessException extends S.TaggedErrorClass<InvalidAccessException>()(
-  "InvalidAccessException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
-  "ResourceConflictException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class OrganizationalUnitNotFoundException extends S.TaggedErrorClass<OrganizationalUnitNotFoundException>()(
-  "OrganizationalUnitNotFoundException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class OrganizationNotFoundException extends S.TaggedErrorClass<OrganizationNotFoundException>()(
-  "OrganizationNotFoundException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type AcceptAdministratorInvitationError =
   | InternalException
   | InvalidAccessException
@@ -18833,6 +18900,7 @@ export const acceptAdministratorInvitation: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptAdministratorInvitation",
 }));
+
 export type AcceptInvitationError =
   | InternalException
   | InvalidAccessException
@@ -18873,6 +18941,7 @@ export const acceptInvitation: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptInvitation",
 }));
+
 export type BatchDeleteAutomationRulesError =
   | InternalException
   | InvalidAccessException
@@ -18902,6 +18971,7 @@ export const batchDeleteAutomationRules: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteAutomationRules",
 }));
+
 export type BatchDisableStandardsError =
   | AccessDeniedException
   | InternalException
@@ -18935,6 +19005,7 @@ export const batchDisableStandards: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDisableStandards",
 }));
+
 export type BatchEnableStandardsError =
   | AccessDeniedException
   | InternalException
@@ -18969,6 +19040,7 @@ export const batchEnableStandards: API.OperationMethod<
   retry: Retry,
   operationName: "BatchEnableStandards",
 }));
+
 export type BatchGetAutomationRulesError =
   | AccessDeniedException
   | InternalException
@@ -19001,6 +19073,7 @@ export const batchGetAutomationRules: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetAutomationRules",
 }));
+
 export type BatchGetConfigurationPolicyAssociationsError =
   | AccessDeniedException
   | InternalException
@@ -19034,6 +19107,7 @@ export const batchGetConfigurationPolicyAssociations: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetConfigurationPolicyAssociations",
 }));
+
 export type BatchGetSecurityControlsError =
   | InternalException
   | InvalidAccessException
@@ -19061,6 +19135,7 @@ export const batchGetSecurityControls: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetSecurityControls",
 }));
+
 export type BatchGetStandardsControlAssociationsError =
   | InternalException
   | InvalidAccessException
@@ -19090,6 +19165,7 @@ export const batchGetStandardsControlAssociations: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetStandardsControlAssociations",
 }));
+
 export type BatchImportFindingsError =
   | InternalException
   | InvalidAccessException
@@ -19160,6 +19236,7 @@ export const batchImportFindings: API.OperationMethod<
   retry: Retry,
   operationName: "BatchImportFindings",
 }));
+
 export type BatchUpdateAutomationRulesError =
   | InternalException
   | InvalidAccessException
@@ -19190,6 +19267,7 @@ export const batchUpdateAutomationRules: API.OperationMethod<
   retry: Retry,
   operationName: "BatchUpdateAutomationRules",
 }));
+
 export type BatchUpdateFindingsError =
   | InternalException
   | InvalidAccessException
@@ -19246,6 +19324,7 @@ export const batchUpdateFindings: API.OperationMethod<
   retry: Retry,
   operationName: "BatchUpdateFindings",
 }));
+
 export type BatchUpdateFindingsV2Error =
   | AccessDeniedException
   | ConflictException
@@ -19284,6 +19363,7 @@ export const batchUpdateFindingsV2: API.OperationMethod<
   retry: Retry,
   operationName: "BatchUpdateFindingsV2",
 }));
+
 export type BatchUpdateStandardsControlAssociationsError =
   | AccessDeniedException
   | InternalException
@@ -19313,6 +19393,7 @@ export const batchUpdateStandardsControlAssociations: API.OperationMethod<
   retry: Retry,
   operationName: "BatchUpdateStandardsControlAssociations",
 }));
+
 export type CreateActionTargetError =
   | InternalException
   | InvalidAccessException
@@ -19345,6 +19426,7 @@ export const createActionTarget: API.OperationMethod<
   retry: Retry,
   operationName: "CreateActionTarget",
 }));
+
 export type CreateAggregatorV2Error =
   | AccessDeniedException
   | ConflictException
@@ -19378,6 +19460,7 @@ export const createAggregatorV2: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAggregatorV2",
 }));
+
 export type CreateAutomationRuleError =
   | AccessDeniedException
   | InternalException
@@ -19407,6 +19490,7 @@ export const createAutomationRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAutomationRule",
 }));
+
 export type CreateAutomationRuleV2Error =
   | AccessDeniedException
   | ConflictException
@@ -19438,6 +19522,7 @@ export const createAutomationRuleV2: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAutomationRuleV2",
 }));
+
 export type CreateConfigurationPolicyError =
   | AccessDeniedException
   | InternalException
@@ -19470,6 +19555,7 @@ export const createConfigurationPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConfigurationPolicy",
 }));
+
 export type CreateConnectorV2Error =
   | AccessDeniedException
   | ConflictException
@@ -19503,6 +19589,7 @@ export const createConnectorV2: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConnectorV2",
 }));
+
 export type CreateFindingAggregatorError =
   | AccessDeniedException
   | InternalException
@@ -19536,6 +19623,7 @@ export const createFindingAggregator: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFindingAggregator",
 }));
+
 export type CreateInsightError =
   | InternalException
   | InvalidAccessException
@@ -19569,6 +19657,7 @@ export const createInsight: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInsight",
 }));
+
 export type CreateMembersError =
   | AccessDeniedException
   | InternalException
@@ -19632,6 +19721,7 @@ export const createMembers: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMembers",
 }));
+
 export type CreateTicketV2Error =
   | AccessDeniedException
   | ConflictException
@@ -19663,6 +19753,7 @@ export const createTicketV2: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTicketV2",
 }));
+
 export type DeclineInvitationsError =
   | InternalException
   | InvalidAccessException
@@ -19699,6 +19790,7 @@ export const declineInvitations: API.OperationMethod<
   retry: Retry,
   operationName: "DeclineInvitations",
 }));
+
 export type DeleteActionTargetError =
   | InternalException
   | InvalidAccessException
@@ -19729,6 +19821,7 @@ export const deleteActionTarget: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteActionTarget",
 }));
+
 export type DeleteAggregatorV2Error =
   | AccessDeniedException
   | ConflictException
@@ -19760,6 +19853,7 @@ export const deleteAggregatorV2: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAggregatorV2",
 }));
+
 export type DeleteAutomationRuleV2Error =
   | AccessDeniedException
   | ConflictException
@@ -19791,6 +19885,7 @@ export const deleteAutomationRuleV2: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAutomationRuleV2",
 }));
+
 export type DeleteConfigurationPolicyError =
   | AccessDeniedException
   | InternalException
@@ -19826,6 +19921,7 @@ export const deleteConfigurationPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfigurationPolicy",
 }));
+
 export type DeleteConnectorV2Error =
   | AccessDeniedException
   | ConflictException
@@ -19857,6 +19953,7 @@ export const deleteConnectorV2: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConnectorV2",
 }));
+
 export type DeleteFindingAggregatorError =
   | AccessDeniedException
   | InternalException
@@ -19894,6 +19991,7 @@ export const deleteFindingAggregator: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFindingAggregator",
 }));
+
 export type DeleteInsightError =
   | InternalException
   | InvalidAccessException
@@ -19923,6 +20021,7 @@ export const deleteInsight: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInsight",
 }));
+
 export type DeleteInvitationsError =
   | InternalException
   | InvalidAccessException
@@ -19961,6 +20060,7 @@ export const deleteInvitations: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInvitations",
 }));
+
 export type DeleteMembersError =
   | InternalException
   | InvalidAccessException
@@ -19993,6 +20093,7 @@ export const deleteMembers: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMembers",
 }));
+
 export type DescribeActionTargetsError =
   | InternalException
   | InvalidAccessException
@@ -20041,6 +20142,7 @@ export const describeActionTargets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeHubError =
   | InternalException
   | InvalidAccessException
@@ -20071,6 +20173,7 @@ export const describeHub: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeHub",
 }));
+
 export type DescribeOrganizationConfigurationError =
   | InternalException
   | InvalidAccessException
@@ -20099,6 +20202,7 @@ export const describeOrganizationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeOrganizationConfiguration",
 }));
+
 export type DescribeProductsError =
   | InternalException
   | InvalidAccessException
@@ -20153,6 +20257,7 @@ export const describeProducts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeProductsV2Error =
   | AccessDeniedException
   | ConflictException
@@ -20203,6 +20308,7 @@ export const describeProductsV2: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSecurityHubV2Error =
   | InternalServerException
   | ResourceNotFoundException
@@ -20230,6 +20336,7 @@ export const describeSecurityHubV2: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSecurityHubV2",
 }));
+
 export type DescribeStandardsError =
   | InternalException
   | InvalidAccessException
@@ -20274,6 +20381,7 @@ export const describeStandards: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeStandardsControlsError =
   | InternalException
   | InvalidAccessException
@@ -20327,6 +20435,7 @@ export const describeStandardsControls: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DisableImportFindingsForProductError =
   | InternalException
   | InvalidAccessException
@@ -20357,6 +20466,7 @@ export const disableImportFindingsForProduct: API.OperationMethod<
   retry: Retry,
   operationName: "DisableImportFindingsForProduct",
 }));
+
 export type DisableOrganizationAdminAccountError =
   | AccessDeniedException
   | InternalException
@@ -20387,6 +20497,7 @@ export const disableOrganizationAdminAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DisableOrganizationAdminAccount",
 }));
+
 export type DisableSecurityHubError =
   | AccessDeniedException
   | InternalException
@@ -20426,6 +20537,7 @@ export const disableSecurityHub: API.OperationMethod<
   retry: Retry,
   operationName: "DisableSecurityHub",
 }));
+
 export type DisableSecurityHubV2Error =
   | AccessDeniedException
   | InternalServerException
@@ -20453,6 +20565,7 @@ export const disableSecurityHubV2: API.OperationMethod<
   retry: Retry,
   operationName: "DisableSecurityHubV2",
 }));
+
 export type DisassociateFromAdministratorAccountError =
   | InternalException
   | InvalidAccessException
@@ -20487,6 +20600,7 @@ export const disassociateFromAdministratorAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateFromAdministratorAccount",
 }));
+
 export type DisassociateFromMasterAccountError =
   | InternalException
   | InvalidAccessException
@@ -20525,6 +20639,7 @@ export const disassociateFromMasterAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateFromMasterAccount",
 }));
+
 export type DisassociateMembersError =
   | AccessDeniedException
   | InternalException
@@ -20559,6 +20674,7 @@ export const disassociateMembers: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateMembers",
 }));
+
 export type EnableImportFindingsForProductError =
   | InternalException
   | InvalidAccessException
@@ -20592,6 +20708,7 @@ export const enableImportFindingsForProduct: API.OperationMethod<
   retry: Retry,
   operationName: "EnableImportFindingsForProduct",
 }));
+
 export type EnableOrganizationAdminAccountError =
   | AccessDeniedException
   | InternalException
@@ -20622,6 +20739,7 @@ export const enableOrganizationAdminAccount: API.OperationMethod<
   retry: Retry,
   operationName: "EnableOrganizationAdminAccount",
 }));
+
 export type EnableSecurityHubError =
   | AccessDeniedException
   | InternalException
@@ -20672,6 +20790,7 @@ export const enableSecurityHub: API.OperationMethod<
   retry: Retry,
   operationName: "EnableSecurityHub",
 }));
+
 export type EnableSecurityHubV2Error =
   | AccessDeniedException
   | InternalServerException
@@ -20699,6 +20818,7 @@ export const enableSecurityHubV2: API.OperationMethod<
   retry: Retry,
   operationName: "EnableSecurityHubV2",
 }));
+
 export type GenerateRecommendedPolicyV2Error =
   | AccessDeniedException
   | InternalServerException
@@ -20731,6 +20851,7 @@ export const generateRecommendedPolicyV2: API.OperationMethod<
   retry: Retry,
   operationName: "GenerateRecommendedPolicyV2",
 }));
+
 export type GetAdministratorAccountError =
   | InternalException
   | InvalidAccessException
@@ -20763,6 +20884,7 @@ export const getAdministratorAccount: API.OperationMethod<
   retry: Retry,
   operationName: "GetAdministratorAccount",
 }));
+
 export type GetAggregatorV2Error =
   | AccessDeniedException
   | ConflictException
@@ -20794,6 +20916,7 @@ export const getAggregatorV2: API.OperationMethod<
   retry: Retry,
   operationName: "GetAggregatorV2",
 }));
+
 export type GetAutomationRuleV2Error =
   | AccessDeniedException
   | ConflictException
@@ -20825,6 +20948,7 @@ export const getAutomationRuleV2: API.OperationMethod<
   retry: Retry,
   operationName: "GetAutomationRuleV2",
 }));
+
 export type GetConfigurationPolicyError =
   | AccessDeniedException
   | InternalException
@@ -20857,6 +20981,7 @@ export const getConfigurationPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetConfigurationPolicy",
 }));
+
 export type GetConfigurationPolicyAssociationError =
   | AccessDeniedException
   | InternalException
@@ -20890,6 +21015,7 @@ export const getConfigurationPolicyAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "GetConfigurationPolicyAssociation",
 }));
+
 export type GetConnectorV2Error =
   | AccessDeniedException
   | ConflictException
@@ -20921,6 +21047,7 @@ export const getConnectorV2: API.OperationMethod<
   retry: Retry,
   operationName: "GetConnectorV2",
 }));
+
 export type GetEnabledStandardsError =
   | InternalException
   | InvalidAccessException
@@ -20969,6 +21096,7 @@ export const getEnabledStandards: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetFindingAggregatorError =
   | AccessDeniedException
   | InternalException
@@ -21003,6 +21131,7 @@ export const getFindingAggregator: API.OperationMethod<
   retry: Retry,
   operationName: "GetFindingAggregator",
 }));
+
 export type GetFindingHistoryError =
   | InternalException
   | InvalidAccessException
@@ -21059,6 +21188,7 @@ export const getFindingHistory: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetFindingsError =
   | InternalException
   | InvalidAccessException
@@ -21109,6 +21239,7 @@ export const getFindings: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetFindingStatisticsV2Error =
   | AccessDeniedException
   | ConflictException
@@ -21147,6 +21278,7 @@ export const getFindingStatisticsV2: API.OperationMethod<
   retry: Retry,
   operationName: "GetFindingStatisticsV2",
 }));
+
 export type GetFindingsTrendsV2Error =
   | AccessDeniedException
   | InternalServerException
@@ -21195,6 +21327,7 @@ export const getFindingsTrendsV2: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetFindingsV2Error =
   | AccessDeniedException
   | ConflictException
@@ -21256,6 +21389,7 @@ export const getFindingsV2: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetInsightResultsError =
   | InternalException
   | InvalidAccessException
@@ -21285,6 +21419,7 @@ export const getInsightResults: API.OperationMethod<
   retry: Retry,
   operationName: "GetInsightResults",
 }));
+
 export type GetInsightsError =
   | InternalException
   | InvalidAccessException
@@ -21335,6 +21470,7 @@ export const getInsights: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetInvitationsCountError =
   | InternalException
   | InvalidAccessException
@@ -21367,6 +21503,7 @@ export const getInvitationsCount: API.OperationMethod<
   retry: Retry,
   operationName: "GetInvitationsCount",
 }));
+
 export type GetMasterAccountError =
   | InternalException
   | InvalidAccessException
@@ -21403,6 +21540,7 @@ export const getMasterAccount: API.OperationMethod<
   retry: Retry,
   operationName: "GetMasterAccount",
 }));
+
 export type GetMembersError =
   | InternalException
   | InvalidAccessException
@@ -21438,6 +21576,7 @@ export const getMembers: API.OperationMethod<
   retry: Retry,
   operationName: "GetMembers",
 }));
+
 export type GetRecommendedPolicyV2Error =
   | AccessDeniedException
   | InternalServerException
@@ -21491,6 +21630,7 @@ export const getRecommendedPolicyV2: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetResourcesStatisticsV2Error =
   | AccessDeniedException
   | ConflictException
@@ -21528,6 +21668,7 @@ export const getResourcesStatisticsV2: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcesStatisticsV2",
 }));
+
 export type GetResourcesTrendsV2Error =
   | AccessDeniedException
   | InternalServerException
@@ -21576,6 +21717,7 @@ export const getResourcesTrendsV2: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetResourcesV2Error =
   | AccessDeniedException
   | ConflictException
@@ -21636,6 +21778,7 @@ export const getResourcesV2: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetSecurityControlDefinitionError =
   | InternalException
   | InvalidAccessException
@@ -21665,6 +21808,7 @@ export const getSecurityControlDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "GetSecurityControlDefinition",
 }));
+
 export type InviteMembersError =
   | InternalException
   | InvalidAccessException
@@ -21707,6 +21851,7 @@ export const inviteMembers: API.OperationMethod<
   retry: Retry,
   operationName: "InviteMembers",
 }));
+
 export type ListAggregatorsV2Error =
   | AccessDeniedException
   | ConflictException
@@ -21759,6 +21904,7 @@ export const listAggregatorsV2: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAutomationRulesError =
   | AccessDeniedException
   | InternalException
@@ -21788,6 +21934,7 @@ export const listAutomationRules: API.OperationMethod<
   retry: Retry,
   operationName: "ListAutomationRules",
 }));
+
 export type ListAutomationRulesV2Error =
   | AccessDeniedException
   | ConflictException
@@ -21817,6 +21964,7 @@ export const listAutomationRulesV2: API.OperationMethod<
   retry: Retry,
   operationName: "ListAutomationRulesV2",
 }));
+
 export type ListConfigurationPoliciesError =
   | AccessDeniedException
   | InternalException
@@ -21868,6 +22016,7 @@ export const listConfigurationPolicies: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListConfigurationPolicyAssociationsError =
   | AccessDeniedException
   | InternalException
@@ -21919,6 +22068,7 @@ export const listConfigurationPolicyAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListConnectorsV2Error =
   | AccessDeniedException
   | ConflictException
@@ -21950,6 +22100,7 @@ export const listConnectorsV2: API.OperationMethod<
   retry: Retry,
   operationName: "ListConnectorsV2",
 }));
+
 export type ListEnabledProductsForImportError =
   | InternalException
   | InvalidAccessException
@@ -21993,6 +22144,7 @@ export const listEnabledProductsForImport: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFindingAggregatorsError =
   | AccessDeniedException
   | InternalException
@@ -22044,6 +22196,7 @@ export const listFindingAggregators: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInvitationsError =
   | InternalException
   | InvalidAccessException
@@ -22099,6 +22252,7 @@ export const listInvitations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMembersError =
   | InternalException
   | InvalidAccessException
@@ -22151,6 +22305,7 @@ export const listMembers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOrganizationAdminAccountsError =
   | InternalException
   | InvalidAccessException
@@ -22200,6 +22355,7 @@ export const listOrganizationAdminAccounts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSecurityControlDefinitionsError =
   | InternalException
   | InvalidAccessException
@@ -22248,6 +22404,7 @@ export const listSecurityControlDefinitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStandardsControlAssociationsError =
   | InternalException
   | InvalidAccessException
@@ -22298,6 +22455,7 @@ export const listStandardsControlAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalException
   | InvalidInputException
@@ -22319,6 +22477,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RegisterConnectorV2Error =
   | AccessDeniedException
   | ConflictException
@@ -22350,6 +22509,7 @@ export const registerConnectorV2: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterConnectorV2",
 }));
+
 export type StartConfigurationPolicyAssociationError =
   | AccessDeniedException
   | InternalException
@@ -22383,6 +22543,7 @@ export const startConfigurationPolicyAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "StartConfigurationPolicyAssociation",
 }));
+
 export type StartConfigurationPolicyDisassociationError =
   | AccessDeniedException
   | InternalException
@@ -22418,6 +22579,7 @@ export const startConfigurationPolicyDisassociation: API.OperationMethod<
   retry: Retry,
   operationName: "StartConfigurationPolicyDisassociation",
 }));
+
 export type TagResourceError =
   | InternalException
   | InvalidInputException
@@ -22439,6 +22601,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalException
   | InvalidInputException
@@ -22460,6 +22623,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateActionTargetError =
   | InternalException
   | InvalidAccessException
@@ -22487,6 +22651,7 @@ export const updateActionTarget: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateActionTarget",
 }));
+
 export type UpdateAggregatorV2Error =
   | AccessDeniedException
   | ConflictException
@@ -22518,6 +22683,7 @@ export const updateAggregatorV2: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAggregatorV2",
 }));
+
 export type UpdateAutomationRuleV2Error =
   | AccessDeniedException
   | ConflictException
@@ -22549,6 +22715,7 @@ export const updateAutomationRuleV2: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAutomationRuleV2",
 }));
+
 export type UpdateConfigurationPolicyError =
   | AccessDeniedException
   | InternalException
@@ -22583,6 +22750,7 @@ export const updateConfigurationPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConfigurationPolicy",
 }));
+
 export type UpdateConnectorV2Error =
   | AccessDeniedException
   | ConflictException
@@ -22614,6 +22782,7 @@ export const updateConnectorV2: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConnectorV2",
 }));
+
 export type UpdateFindingAggregatorError =
   | AccessDeniedException
   | InternalException
@@ -22650,6 +22819,7 @@ export const updateFindingAggregator: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFindingAggregator",
 }));
+
 export type UpdateFindingsError =
   | InternalException
   | InvalidAccessException
@@ -22688,6 +22858,7 @@ export const updateFindings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFindings",
 }));
+
 export type UpdateInsightError =
   | InternalException
   | InvalidAccessException
@@ -22717,6 +22888,7 @@ export const updateInsight: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateInsight",
 }));
+
 export type UpdateOrganizationConfigurationError =
   | AccessDeniedException
   | InternalException
@@ -22751,6 +22923,7 @@ export const updateOrganizationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateOrganizationConfiguration",
 }));
+
 export type UpdateSecurityControlError =
   | AccessDeniedException
   | InternalException
@@ -22784,6 +22957,7 @@ export const updateSecurityControl: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSecurityControl",
 }));
+
 export type UpdateSecurityHubConfigurationError =
   | AccessDeniedException
   | InternalException
@@ -22815,6 +22989,7 @@ export const updateSecurityHubConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSecurityHubConfiguration",
 }));
+
 export type UpdateStandardsControlError =
   | AccessDeniedException
   | InternalException

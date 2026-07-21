@@ -85,41 +85,51 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    message: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    message: S.optional(S.String),
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String), retryAfterSeconds: S.optional(S.Number) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type String255 = string;
-export type ErrorMessage = string;
-export type String500 = string;
-export type ResourceId = string;
-export type ResourceType = string;
-export type RetryAfterSeconds = number;
-export type EntityName = string;
-export type AwsRegion = string;
-export type CustomerId = string;
-export type EntityVersion = string;
-export type SpecReferenceId = string;
-export type EntityName255 = string;
-export type EntityDescription = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ClientToken = string;
-export type IamRoleName = string;
-export type IamRoleArn = string;
-export type String128WithoutWhitespace = string;
-export type String1024 = string;
-export type String2048 = string;
-export type Uuid = string;
-export type Seconds = number;
-export type S3Url = string;
-export type EksNamespace = string;
-export type CurrencyCode = string;
-export type AppTemplateBody = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type EntityId = string;
-export type DocumentName = string;
-
-//# Schemas
 export interface AcceptGroupingRecommendationEntry {
   groupingRecommendationId: string;
 }
@@ -158,6 +168,7 @@ export const AcceptResourceGroupingRecommendationsRequest =
   ).annotate({
     identifier: "AcceptResourceGroupingRecommendationsRequest",
   }) as any as S.Schema<AcceptResourceGroupingRecommendationsRequest>;
+export type ErrorMessage = string;
 export interface FailedGroupingRecommendationEntry {
   groupingRecommendationId: string;
   errorMessage: string;
@@ -185,6 +196,7 @@ export const AcceptResourceGroupingRecommendationsResponse =
   ).annotate({
     identifier: "AcceptResourceGroupingRecommendationsResponse",
   }) as any as S.Schema<AcceptResourceGroupingRecommendationsResponse>;
+export type EntityName = string;
 export type ResourceMappingType =
   | "CfnStack"
   | "Resource"
@@ -194,8 +206,12 @@ export type ResourceMappingType =
   | "EKS"
   | (string & {});
 export const ResourceMappingType = /*@__PURE__*/ S.String;
+
 export type PhysicalIdentifierType = "Arn" | "Native" | (string & {});
 export const PhysicalIdentifierType = /*@__PURE__*/ S.String;
+
+export type AwsRegion = string;
+export type CustomerId = string;
 export interface PhysicalResourceId {
   identifier: string;
   type: PhysicalIdentifierType;
@@ -260,6 +276,7 @@ export const AddDraftAppVersionResourceMappingsRequest =
   ).annotate({
     identifier: "AddDraftAppVersionResourceMappingsRequest",
   }) as any as S.Schema<AddDraftAppVersionResourceMappingsRequest>;
+export type EntityVersion = string;
 export interface AddDraftAppVersionResourceMappingsResponse {
   appArn: string;
   appVersion: string;
@@ -275,6 +292,8 @@ export const AddDraftAppVersionResourceMappingsResponse =
   ).annotate({
     identifier: "AddDraftAppVersionResourceMappingsResponse",
   }) as any as S.Schema<AddDraftAppVersionResourceMappingsResponse>;
+export type SpecReferenceId = string;
+export type String500 = string;
 export interface UpdateRecommendationStatusItem {
   resourceId?: string;
   targetAccountId?: string;
@@ -289,12 +308,14 @@ export const UpdateRecommendationStatusItem = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRecommendationStatusItem",
 }) as any as S.Schema<UpdateRecommendationStatusItem>;
+export type EntityName255 = string;
 export type ExcludeRecommendationReason =
   | "AlreadyImplemented"
   | "NotRelevant"
   | "ComplexityOfImplementation"
   | (string & {});
 export const ExcludeRecommendationReason = /*@__PURE__*/ S.String;
+
 export interface UpdateRecommendationStatusRequestEntry {
   entryId: string;
   referenceId: string;
@@ -397,15 +418,23 @@ export const BatchUpdateRecommendationStatusResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchUpdateRecommendationStatusResponse",
 }) as any as S.Schema<BatchUpdateRecommendationStatusResponse>;
+export type EntityDescription = string;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ClientToken = string;
 export type AppAssessmentScheduleType = "Disabled" | "Daily" | (string & {});
 export const AppAssessmentScheduleType = /*@__PURE__*/ S.String;
+
 export type PermissionModelType = "LegacyIAMUser" | "RoleBased" | (string & {});
 export const PermissionModelType = /*@__PURE__*/ S.String;
+
+export type IamRoleName = string;
+export type IamRoleArn = string;
 export type IamRoleArnList = string[];
 export const IamRoleArnList = /*@__PURE__*/ S.Array(S.String);
 export interface PermissionModel {
@@ -427,6 +456,7 @@ export type EventType =
   | "DriftDetected"
   | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
+
 export interface EventSubscription {
   name: string;
   eventType: EventType;
@@ -480,6 +510,7 @@ export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAppRequest>;
 export type AppStatusType = "Active" | "Deleting" | (string & {});
 export const AppStatusType = /*@__PURE__*/ S.String;
+
 export type AppComplianceStatusType =
   | "PolicyBreached"
   | "PolicyMet"
@@ -489,12 +520,14 @@ export type AppComplianceStatusType =
   | "MissingPolicy"
   | (string & {});
 export const AppComplianceStatusType = /*@__PURE__*/ S.String;
+
 export type AppDriftStatusType =
   | "NotChecked"
   | "NotDetected"
   | "Detected"
   | (string & {});
 export const AppDriftStatusType = /*@__PURE__*/ S.String;
+
 export interface App {
   appArn: string;
   name: string;
@@ -553,6 +586,8 @@ export const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppResponse",
 }) as any as S.Schema<CreateAppResponse>;
+export type String128WithoutWhitespace = string;
+export type String1024 = string;
 export type AdditionalInfoValueList = string[];
 export const AdditionalInfoValueList = /*@__PURE__*/ S.Array(S.String);
 export type AdditionalInfoMap = { [key: string]: string[] | undefined };
@@ -636,6 +671,7 @@ export const LogicalResourceId = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LogicalResourceId",
 }) as any as S.Schema<LogicalResourceId>;
+export type String2048 = string;
 export type AppComponentNameList = string[];
 export const AppComponentNameList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateAppVersionResourceRequest {
@@ -679,6 +715,7 @@ export type AppComponentList = AppComponent[];
 export const AppComponentList = /*@__PURE__*/ S.Array(AppComponent);
 export type ResourceSourceType = "AppTemplate" | "Discovered" | (string & {});
 export const ResourceSourceType = /*@__PURE__*/ S.String;
+
 export interface PhysicalResource {
   resourceName?: string;
   logicalResourceId: LogicalResourceId;
@@ -719,12 +756,15 @@ export const CreateAppVersionResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAppVersionResourceResponse",
 }) as any as S.Schema<CreateAppVersionResourceResponse>;
+export type Uuid = string;
 export type RecommendationIdList = string[];
 export const RecommendationIdList = /*@__PURE__*/ S.Array(S.String);
 export type TemplateFormat = "CfnYaml" | "CfnJson" | (string & {});
 export const TemplateFormat = /*@__PURE__*/ S.String;
+
 export type RenderRecommendationType = "Alarm" | "Sop" | "Test" | (string & {});
 export const RenderRecommendationType = /*@__PURE__*/ S.String;
+
 export type RenderRecommendationTypeList = RenderRecommendationType[];
 export const RenderRecommendationTypeList = /*@__PURE__*/ S.Array(
   RenderRecommendationType,
@@ -776,6 +816,7 @@ export type RecommendationTemplateStatus =
   | "Success"
   | (string & {});
 export const RecommendationTemplateStatus = /*@__PURE__*/ S.String;
+
 export interface RecommendationTemplate {
   templatesLocation?: S3Location;
   assessmentArn: string;
@@ -827,6 +868,7 @@ export type DataLocationConstraint =
   | "SameCountry"
   | (string & {});
 export const DataLocationConstraint = /*@__PURE__*/ S.String;
+
 export type ResiliencyPolicyTier =
   | "MissionCritical"
   | "Critical"
@@ -836,6 +878,7 @@ export type ResiliencyPolicyTier =
   | "NotApplicable"
   | (string & {});
 export const ResiliencyPolicyTier = /*@__PURE__*/ S.String;
+
 export type DisruptionType =
   | "Software"
   | "Hardware"
@@ -843,6 +886,8 @@ export type DisruptionType =
   | "Region"
   | (string & {});
 export const DisruptionType = /*@__PURE__*/ S.String;
+
+export type Seconds = number;
 export interface FailurePolicy {
   rtoInSecs: number;
   rpoInSecs: number;
@@ -888,6 +933,7 @@ export const CreateResiliencyPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResiliencyPolicyRequest>;
 export type EstimatedCostTier = "L1" | "L2" | "L3" | "L4" | (string & {});
 export const EstimatedCostTier = /*@__PURE__*/ S.String;
+
 export interface ResiliencyPolicy {
   policyArn?: string;
   policyName?: string;
@@ -981,6 +1027,7 @@ export type AssessmentStatus =
   | "Success"
   | (string & {});
 export const AssessmentStatus = /*@__PURE__*/ S.String;
+
 export interface DeleteAppAssessmentResponse {
   assessmentArn: string;
   assessmentStatus: AssessmentStatus;
@@ -990,6 +1037,7 @@ export const DeleteAppAssessmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteAppAssessmentResponse",
 }) as any as S.Schema<DeleteAppAssessmentResponse>;
+export type S3Url = string;
 export interface TerraformSource {
   s3StateFileUrl: string;
 }
@@ -998,6 +1046,7 @@ export const TerraformSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TerraformSource",
 }) as any as S.Schema<TerraformSource>;
+export type EksNamespace = string;
 export interface EksSourceClusterNamespace {
   eksClusterArn: string;
   namespace: string;
@@ -1254,6 +1303,8 @@ export const DescribeAppAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeAppAssessmentRequest>;
 export type AssessmentInvoker = "User" | "System" | (string & {});
 export const AssessmentInvoker = /*@__PURE__*/ S.String;
+
+export type CurrencyCode = string;
 export type CostFrequency =
   | "Hourly"
   | "Daily"
@@ -1261,6 +1312,7 @@ export type CostFrequency =
   | "Yearly"
   | (string & {});
 export const CostFrequency = /*@__PURE__*/ S.String;
+
 export interface Cost {
   amount: number;
   currency: string;
@@ -1281,6 +1333,7 @@ export type ResiliencyScoreType =
   | "Sop"
   | (string & {});
 export const ResiliencyScoreType = /*@__PURE__*/ S.String;
+
 export interface ScoringComponentResiliencyScore {
   score?: number;
   possibleScore?: number;
@@ -1327,6 +1380,7 @@ export type ComplianceStatus =
   | "MissingPolicy"
   | (string & {});
 export const ComplianceStatus = /*@__PURE__*/ S.String;
+
 export interface DisruptionCompliance {
   achievableRtoInSecs?: number;
   currentRtoInSecs?: number;
@@ -1394,6 +1448,7 @@ export type DriftStatus =
   | "Detected"
   | (string & {});
 export const DriftStatus = /*@__PURE__*/ S.String;
+
 export interface AssessmentRiskRecommendation {
   risk?: string;
   recommendation?: string;
@@ -1622,6 +1677,7 @@ export type ResourceResolutionStatusType =
   | "Success"
   | (string & {});
 export const ResourceResolutionStatusType = /*@__PURE__*/ S.String;
+
 export interface DescribeAppVersionResourcesResolutionStatusResponse {
   appArn: string;
   appVersion: string;
@@ -1659,6 +1715,7 @@ export const DescribeAppVersionTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAppVersionTemplateRequest",
 }) as any as S.Schema<DescribeAppVersionTemplateRequest>;
+export type AppTemplateBody = string;
 export interface DescribeAppVersionTemplateResponse {
   appArn: string;
   appVersion: string;
@@ -1701,6 +1758,7 @@ export type ResourceImportStatusType =
   | "Success"
   | (string & {});
 export const ResourceImportStatusType = /*@__PURE__*/ S.String;
+
 export interface ErrorDetail {
   errorMessage?: string;
 }
@@ -1754,6 +1812,7 @@ export type MetricsExportStatusType =
   | "Success"
   | (string & {});
 export const MetricsExportStatusType = /*@__PURE__*/ S.String;
+
 export interface DescribeMetricsExportResponse {
   metricsExportId: string;
   status: MetricsExportStatusType;
@@ -1824,6 +1883,7 @@ export type ResourcesGroupingRecGenStatusType =
   | "Success"
   | (string & {});
 export const ResourcesGroupingRecGenStatusType = /*@__PURE__*/ S.String;
+
 export interface DescribeResourceGroupingRecommendationTaskResponse {
   groupingId: string;
   status: ResourcesGroupingRecGenStatusType;
@@ -1848,6 +1908,7 @@ export type ResourceImportStrategyType =
   | "ReplaceAll"
   | (string & {});
 export const ResourceImportStrategyType = /*@__PURE__*/ S.String;
+
 export type EksNamespaceList = string[];
 export const EksNamespaceList = /*@__PURE__*/ S.Array(S.String);
 export interface EksSource {
@@ -1911,6 +1972,8 @@ export const ImportResourcesToDraftAppVersionResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ImportResourcesToDraftAppVersionResponse",
 }) as any as S.Schema<ImportResourcesToDraftAppVersionResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListAlarmRecommendationsRequest {
   assessmentArn: string;
   nextToken?: string;
@@ -1942,6 +2005,8 @@ export type AlarmType =
   | "Event"
   | (string & {});
 export const AlarmType = /*@__PURE__*/ S.String;
+
+export type EntityId = string;
 export interface Experiment {
   experimentArn?: string;
   experimentTemplateId?: string;
@@ -1992,6 +2057,7 @@ export type RecommendationStatus =
   | "Excluded"
   | (string & {});
 export const RecommendationStatus = /*@__PURE__*/ S.String;
+
 export interface AlarmRecommendation {
   recommendationId: string;
   referenceId: string;
@@ -2067,8 +2133,10 @@ export type DriftType =
   | "AppComponentResiliencyComplianceStatus"
   | (string & {});
 export const DriftType = /*@__PURE__*/ S.String;
+
 export type DifferenceType = "NotEqual" | "Added" | "Removed" | (string & {});
 export const DifferenceType = /*@__PURE__*/ S.String;
+
 export interface ComplianceDrift {
   entityId?: string;
   entityType?: string;
@@ -2359,6 +2427,7 @@ export type RecommendationComplianceStatus =
   | "MissingPolicy"
   | (string & {});
 export const RecommendationComplianceStatus = /*@__PURE__*/ S.String;
+
 export interface RecommendationDisruptionCompliance {
   expectedComplianceStatus: ComplianceStatus;
   expectedRtoInSecs?: number;
@@ -2393,6 +2462,7 @@ export type ConfigRecommendationOptimizationType =
   | "BestRegionRecovery"
   | (string & {});
 export const ConfigRecommendationOptimizationType = /*@__PURE__*/ S.String;
+
 export type SuggestedChangesList = string[];
 export const SuggestedChangesList = /*@__PURE__*/ S.Array(S.String);
 export type HaArchitecture =
@@ -2403,6 +2473,7 @@ export type HaArchitecture =
   | "NoRecoveryPlan"
   | (string & {});
 export const HaArchitecture = /*@__PURE__*/ S.String;
+
 export interface ConfigRecommendation {
   cost?: Cost;
   appComponentName?: string;
@@ -2775,6 +2846,7 @@ export type FieldAggregationType =
   | "Count"
   | (string & {});
 export const FieldAggregationType = /*@__PURE__*/ S.String;
+
 export interface Field {
   name: string;
   aggregation?: FieldAggregationType;
@@ -2793,6 +2865,7 @@ export type ConditionOperatorType =
   | "LessOrEquals"
   | (string & {});
 export const ConditionOperatorType = /*@__PURE__*/ S.String;
+
 export interface Condition {
   field: string;
   operator: ConditionOperatorType;
@@ -3019,11 +3092,13 @@ export type GroupingRecommendationStatusType =
   | "PendingDecision"
   | (string & {});
 export const GroupingRecommendationStatusType = /*@__PURE__*/ S.String;
+
 export type GroupingRecommendationConfidenceLevel =
   | "High"
   | "Medium"
   | (string & {});
 export const GroupingRecommendationConfidenceLevel = /*@__PURE__*/ S.String;
+
 export type GroupingRecommendationRejectionReason =
   | "DistinctBusinessPurpose"
   | "SeparateDataConcern"
@@ -3031,6 +3106,7 @@ export type GroupingRecommendationRejectionReason =
   | "Other"
   | (string & {});
 export const GroupingRecommendationRejectionReason = /*@__PURE__*/ S.String;
+
 export interface GroupingRecommendation {
   groupingRecommendationId: string;
   groupingAppComponent: GroupingAppComponent;
@@ -3099,6 +3175,8 @@ export const ListSopRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSopRecommendationsRequest>;
 export type SopServiceType = "SSM" | (string & {});
 export const SopServiceType = /*@__PURE__*/ S.String;
+
+export type DocumentName = string;
 export interface SopRecommendation {
   serviceType: SopServiceType;
   appComponentName?: string;
@@ -3224,6 +3302,7 @@ export const ListTestRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTestRecommendationsRequest>;
 export type TestRisk = "Small" | "Medium" | "High" | (string & {});
 export const TestRisk = /*@__PURE__*/ S.String;
+
 export type TestType =
   | "Software"
   | "Hardware"
@@ -3231,6 +3310,7 @@ export type TestType =
   | "Region"
   | (string & {});
 export const TestType = /*@__PURE__*/ S.String;
+
 export type AlarmReferenceIdList = string[];
 export const AlarmReferenceIdList = /*@__PURE__*/ S.Array(S.String);
 export interface TestRecommendation {
@@ -3909,53 +3989,9 @@ export const UpdateResiliencyPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateResiliencyPolicyResponse",
 }) as any as S.Schema<UpdateResiliencyPolicyResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    message: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String), retryAfterSeconds: S.optional(S.Number) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    message: S.optional(S.String),
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
+export type ResourceId = string;
+export type ResourceType = string;
+export type RetryAfterSeconds = number;
 export type AcceptResourceGroupingRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -3985,6 +4021,7 @@ export const acceptResourceGroupingRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptResourceGroupingRecommendations",
 }));
+
 export type AddDraftAppVersionResourceMappingsError =
   | AccessDeniedException
   | ConflictException
@@ -4023,6 +4060,7 @@ export const addDraftAppVersionResourceMappings: API.OperationMethod<
   retry: Retry,
   operationName: "AddDraftAppVersionResourceMappings",
 }));
+
 export type BatchUpdateRecommendationStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -4052,6 +4090,7 @@ export const batchUpdateRecommendationStatus: API.OperationMethod<
   retry: Retry,
   operationName: "BatchUpdateRecommendationStatus",
 }));
+
 export type CreateAppError =
   | AccessDeniedException
   | ConflictException
@@ -4096,6 +4135,7 @@ export const createApp: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApp",
 }));
+
 export type CreateAppVersionAppComponentError =
   | AccessDeniedException
   | ConflictException
@@ -4133,6 +4173,7 @@ export const createAppVersionAppComponent: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAppVersionAppComponent",
 }));
+
 export type CreateAppVersionResourceError =
   | AccessDeniedException
   | ConflictException
@@ -4177,6 +4218,7 @@ export const createAppVersionResource: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAppVersionResource",
 }));
+
 export type CreateRecommendationTemplateError =
   | AccessDeniedException
   | ConflictException
@@ -4210,6 +4252,7 @@ export const createRecommendationTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRecommendationTemplate",
 }));
+
 export type CreateResiliencyPolicyError =
   | AccessDeniedException
   | ConflictException
@@ -4249,6 +4292,7 @@ export const createResiliencyPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "CreateResiliencyPolicy",
 }));
+
 export type DeleteAppError =
   | ConflictException
   | InternalServerException
@@ -4279,6 +4323,7 @@ export const deleteApp: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApp",
 }));
+
 export type DeleteAppAssessmentError =
   | AccessDeniedException
   | ConflictException
@@ -4311,6 +4356,7 @@ export const deleteAppAssessment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAppAssessment",
 }));
+
 export type DeleteAppInputSourceError =
   | AccessDeniedException
   | ConflictException
@@ -4343,6 +4389,7 @@ export const deleteAppInputSource: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAppInputSource",
 }));
+
 export type DeleteAppVersionAppComponentError =
   | AccessDeniedException
   | ConflictException
@@ -4381,6 +4428,7 @@ export const deleteAppVersionAppComponent: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAppVersionAppComponent",
 }));
+
 export type DeleteAppVersionResourceError =
   | AccessDeniedException
   | ConflictException
@@ -4421,6 +4469,7 @@ export const deleteAppVersionResource: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAppVersionResource",
 }));
+
 export type DeleteRecommendationTemplateError =
   | AccessDeniedException
   | InternalServerException
@@ -4451,6 +4500,7 @@ export const deleteRecommendationTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRecommendationTemplate",
 }));
+
 export type DeleteResiliencyPolicyError =
   | AccessDeniedException
   | ConflictException
@@ -4482,6 +4532,7 @@ export const deleteResiliencyPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResiliencyPolicy",
 }));
+
 export type DescribeAppError =
   | AccessDeniedException
   | InternalServerException
@@ -4511,6 +4562,7 @@ export const describeApp: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeApp",
 }));
+
 export type DescribeAppAssessmentError =
   | AccessDeniedException
   | InternalServerException
@@ -4540,6 +4592,7 @@ export const describeAppAssessment: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAppAssessment",
 }));
+
 export type DescribeAppVersionError =
   | AccessDeniedException
   | InternalServerException
@@ -4569,6 +4622,7 @@ export const describeAppVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAppVersion",
 }));
+
 export type DescribeAppVersionAppComponentError =
   | AccessDeniedException
   | ConflictException
@@ -4600,6 +4654,7 @@ export const describeAppVersionAppComponent: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAppVersionAppComponent",
 }));
+
 export type DescribeAppVersionResourceError =
   | AccessDeniedException
   | ConflictException
@@ -4640,6 +4695,7 @@ export const describeAppVersionResource: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAppVersionResource",
 }));
+
 export type DescribeAppVersionResourcesResolutionStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -4671,6 +4727,7 @@ export const describeAppVersionResourcesResolutionStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAppVersionResourcesResolutionStatus",
 }));
+
 export type DescribeAppVersionTemplateError =
   | AccessDeniedException
   | InternalServerException
@@ -4700,6 +4757,7 @@ export const describeAppVersionTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAppVersionTemplate",
 }));
+
 export type DescribeDraftAppVersionResourcesImportStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -4735,6 +4793,7 @@ export const describeDraftAppVersionResourcesImportStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDraftAppVersionResourcesImportStatus",
 }));
+
 export type DescribeMetricsExportError =
   | AccessDeniedException
   | InternalServerException
@@ -4764,6 +4823,7 @@ export const describeMetricsExport: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeMetricsExport",
 }));
+
 export type DescribeResiliencyPolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -4795,6 +4855,7 @@ export const describeResiliencyPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeResiliencyPolicy",
 }));
+
 export type DescribeResourceGroupingRecommendationTaskError =
   | AccessDeniedException
   | InternalServerException
@@ -4824,6 +4885,7 @@ export const describeResourceGroupingRecommendationTask: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeResourceGroupingRecommendationTask",
 }));
+
 export type ImportResourcesToDraftAppVersionError =
   | AccessDeniedException
   | ConflictException
@@ -4859,6 +4921,7 @@ export const importResourcesToDraftAppVersion: API.OperationMethod<
   retry: Retry,
   operationName: "ImportResourcesToDraftAppVersion",
 }));
+
 export type ListAlarmRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4908,6 +4971,7 @@ export const listAlarmRecommendations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAppAssessmentComplianceDriftsError =
   | AccessDeniedException
   | InternalServerException
@@ -4956,6 +5020,7 @@ export const listAppAssessmentComplianceDrifts: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAppAssessmentResourceDriftsError =
   | AccessDeniedException
   | InternalServerException
@@ -5005,6 +5070,7 @@ export const listAppAssessmentResourceDrifts: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAppAssessmentsError =
   | AccessDeniedException
   | InternalServerException
@@ -5055,6 +5121,7 @@ export const listAppAssessments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAppComponentCompliancesError =
   | AccessDeniedException
   | InternalServerException
@@ -5104,6 +5171,7 @@ export const listAppComponentCompliances: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAppComponentRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -5153,6 +5221,7 @@ export const listAppComponentRecommendations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAppInputSourcesError =
   | AccessDeniedException
   | InternalServerException
@@ -5204,6 +5273,7 @@ export const listAppInputSources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAppsError =
   | AccessDeniedException
   | InternalServerException
@@ -5258,6 +5328,7 @@ export const listApps: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAppVersionAppComponentsError =
   | AccessDeniedException
   | ConflictException
@@ -5309,6 +5380,7 @@ export const listAppVersionAppComponents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAppVersionResourceMappingsError =
   | AccessDeniedException
   | InternalServerException
@@ -5360,6 +5432,7 @@ export const listAppVersionResourceMappings: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAppVersionResourcesError =
   | AccessDeniedException
   | ConflictException
@@ -5411,6 +5484,7 @@ export const listAppVersionResources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAppVersionsError =
   | AccessDeniedException
   | InternalServerException
@@ -5458,6 +5532,7 @@ export const listAppVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListMetricsError =
   | AccessDeniedException
   | InternalServerException
@@ -5506,6 +5581,7 @@ export const listMetrics: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListRecommendationTemplatesError =
   | AccessDeniedException
   | InternalServerException
@@ -5553,6 +5629,7 @@ export const listRecommendationTemplates: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListResiliencyPoliciesError =
   | AccessDeniedException
   | InternalServerException
@@ -5602,6 +5679,7 @@ export const listResiliencyPolicies: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListResourceGroupingRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -5652,6 +5730,7 @@ export const listResourceGroupingRecommendations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSopRecommendationsError =
   | AccessDeniedException
   | ConflictException
@@ -5703,6 +5782,7 @@ export const listSopRecommendations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSuggestedResiliencyPoliciesError =
   | AccessDeniedException
   | InternalServerException
@@ -5753,6 +5833,7 @@ export const listSuggestedResiliencyPolicies: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -5782,6 +5863,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTestRecommendationsError =
   | AccessDeniedException
   | ConflictException
@@ -5833,6 +5915,7 @@ export const listTestRecommendations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListUnsupportedAppVersionResourcesError =
   | AccessDeniedException
   | ConflictException
@@ -5886,6 +5969,7 @@ export const listUnsupportedAppVersionResources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type PublishAppVersionError =
   | AccessDeniedException
   | ConflictException
@@ -5917,6 +6001,7 @@ export const publishAppVersion: API.OperationMethod<
   retry: Retry,
   operationName: "PublishAppVersion",
 }));
+
 export type PutDraftAppVersionTemplateError =
   | AccessDeniedException
   | ConflictException
@@ -5949,6 +6034,7 @@ export const putDraftAppVersionTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "PutDraftAppVersionTemplate",
 }));
+
 export type RejectResourceGroupingRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -5978,6 +6064,7 @@ export const rejectResourceGroupingRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "RejectResourceGroupingRecommendations",
 }));
+
 export type RemoveDraftAppVersionResourceMappingsError =
   | AccessDeniedException
   | ConflictException
@@ -6009,6 +6096,7 @@ export const removeDraftAppVersionResourceMappings: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveDraftAppVersionResourceMappings",
 }));
+
 export type ResolveAppVersionResourcesError =
   | AccessDeniedException
   | ConflictException
@@ -6040,6 +6128,7 @@ export const resolveAppVersionResources: API.OperationMethod<
   retry: Retry,
   operationName: "ResolveAppVersionResources",
 }));
+
 export type StartAppAssessmentError =
   | AccessDeniedException
   | ConflictException
@@ -6073,6 +6162,7 @@ export const startAppAssessment: API.OperationMethod<
   retry: Retry,
   operationName: "StartAppAssessment",
 }));
+
 export type StartMetricsExportError =
   | AccessDeniedException
   | ConflictException
@@ -6104,6 +6194,7 @@ export const startMetricsExport: API.OperationMethod<
   retry: Retry,
   operationName: "StartMetricsExport",
 }));
+
 export type StartResourceGroupingRecommendationTaskError =
   | AccessDeniedException
   | ConflictException
@@ -6135,6 +6226,7 @@ export const startResourceGroupingRecommendationTask: API.OperationMethod<
   retry: Retry,
   operationName: "StartResourceGroupingRecommendationTask",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -6164,6 +6256,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -6193,6 +6286,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAppError =
   | AccessDeniedException
   | ConflictException
@@ -6224,6 +6318,7 @@ export const updateApp: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApp",
 }));
+
 export type UpdateAppVersionError =
   | AccessDeniedException
   | ConflictException
@@ -6259,6 +6354,7 @@ export const updateAppVersion: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAppVersion",
 }));
+
 export type UpdateAppVersionAppComponentError =
   | AccessDeniedException
   | ConflictException
@@ -6294,6 +6390,7 @@ export const updateAppVersionAppComponent: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAppVersionAppComponent",
 }));
+
 export type UpdateAppVersionResourceError =
   | AccessDeniedException
   | ConflictException
@@ -6336,6 +6433,7 @@ export const updateAppVersionResource: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAppVersionResource",
 }));
+
 export type UpdateResiliencyPolicyError =
   | AccessDeniedException
   | ConflictException

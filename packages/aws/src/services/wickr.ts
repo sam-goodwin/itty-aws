@@ -87,16 +87,51 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestError extends S.TaggedErrorClass<BadRequestError>()(
+  "BadRequestError",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ForbiddenError extends S.TaggedErrorClass<ForbiddenError>()(
+  "ForbiddenError",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class RateLimitError extends S.TaggedErrorClass<RateLimitError>()(
+  "RateLimitError",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ResourceNotFoundError extends S.TaggedErrorClass<ResourceNotFoundError>()(
+  "ResourceNotFoundError",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class UnauthorizedError extends S.TaggedErrorClass<UnauthorizedError>()(
+  "UnauthorizedError",
+  { message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
+  "ValidationError",
+  {
+    reasons: S.optional(
+      S.suspend(() => ErrorDetailList).annotate({
+        identifier: "ErrorDetailList",
+      }),
+    ),
+    message: S.optional(S.String),
+  },
+  T.HttpError(422),
+).pipe(C.withBadRequestError) {}
 export type NetworkId = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type SecurityGroupId = string;
-export type ClientToken = string;
-export type UserId = string;
-export type Uname = string;
-export type BotId = string;
-
-//# Schemas
 export type SecurityGroupIdList = string[];
 export const SecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchCreateUserRequestItem {
@@ -125,6 +160,7 @@ export type BatchCreateUserRequestItems = BatchCreateUserRequestItem[];
 export const BatchCreateUserRequestItems = /*@__PURE__*/ S.Array(
   BatchCreateUserRequestItem,
 );
+export type ClientToken = string;
 export interface BatchCreateUserRequest {
   networkId: string;
   users: BatchCreateUserRequestItem[];
@@ -151,6 +187,7 @@ export const BatchCreateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchCreateUserRequest",
 }) as any as S.Schema<BatchCreateUserRequest>;
+export type UserId = string;
 export interface User {
   userId?: string;
   firstName?: string | redacted.Redacted<string>;
@@ -229,15 +266,6 @@ export const BatchCreateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchCreateUserResponse",
 }) as any as S.Schema<BatchCreateUserResponse>;
-export interface ErrorDetail {
-  field?: string;
-  reason?: string;
-}
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ field: S.optional(S.String), reason: S.optional(S.String) }),
-).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
-export type ErrorDetailList = ErrorDetail[];
-export const ErrorDetailList = /*@__PURE__*/ S.Array(ErrorDetail);
 export type UserIds = string[];
 export const UserIds = /*@__PURE__*/ S.Array(S.String);
 export interface BatchDeleteUserRequest {
@@ -326,6 +354,7 @@ export const BatchLookupUserUnameRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchLookupUserUnameRequest",
 }) as any as S.Schema<BatchLookupUserUnameRequest>;
+export type Uname = string;
 export interface BatchUnameSuccessResponseItem {
   uname: string;
   username: string;
@@ -561,6 +590,7 @@ export const CreateBotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBotRequest",
 }) as any as S.Schema<CreateBotRequest>;
+export type BotId = string;
 export interface CreateBotResponse {
   message?: string;
   botId: string;
@@ -640,6 +670,7 @@ export const CreateDataRetentionBotChallengeResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateDataRetentionBotChallengeResponse>;
 export type AccessLevel = "STANDARD" | "PREMIUM" | (string & {});
 export const AccessLevel = /*@__PURE__*/ S.String;
+
 export interface CreateNetworkRequest {
   networkName: string;
   accessLevel: AccessLevel;
@@ -1533,6 +1564,7 @@ export const GetUsersCountResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetUsersCountResponse>;
 export type SortDirection = "ASC" | "DESC" | (string & {});
 export const SortDirection = /*@__PURE__*/ S.String;
+
 export interface ListBlockedGuestUsersRequest {
   networkId: string;
   maxResults?: number;
@@ -2196,6 +2228,7 @@ export type DataRetentionActionType =
   | "PUBKEY_MSG_ACK"
   | (string & {});
 export const DataRetentionActionType = /*@__PURE__*/ S.String;
+
 export interface UpdateDataRetentionRequest {
   networkId: string;
   actionType: DataRetentionActionType;
@@ -2300,6 +2333,7 @@ export const UpdateNetworkResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateNetworkResponse>;
 export type Status = "DISABLED" | "ENABLED" | "FORCE_ENABLED" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface ReadReceiptConfig {
   status?: Status;
 }
@@ -2484,45 +2518,15 @@ export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateUserResponse",
 }) as any as S.Schema<UpdateUserResponse>;
-
-//# Errors
-export class BadRequestError extends S.TaggedErrorClass<BadRequestError>()(
-  "BadRequestError",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ForbiddenError extends S.TaggedErrorClass<ForbiddenError>()(
-  "ForbiddenError",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class RateLimitError extends S.TaggedErrorClass<RateLimitError>()(
-  "RateLimitError",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ResourceNotFoundError extends S.TaggedErrorClass<ResourceNotFoundError>()(
-  "ResourceNotFoundError",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class UnauthorizedError extends S.TaggedErrorClass<UnauthorizedError>()(
-  "UnauthorizedError",
-  { message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class ValidationError extends S.TaggedErrorClass<ValidationError>()(
-  "ValidationError",
-  { reasons: S.optional(ErrorDetailList), message: S.optional(S.String) },
-  T.HttpError(422),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export interface ErrorDetail {
+  field?: string;
+  reason?: string;
+}
+export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ field: S.optional(S.String), reason: S.optional(S.String) }),
+).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
+export type ErrorDetailList = ErrorDetail[];
+export const ErrorDetailList = /*@__PURE__*/ S.Array(ErrorDetail);
 export type BatchCreateUserError =
   | BadRequestError
   | ForbiddenError
@@ -2558,6 +2562,7 @@ export const batchCreateUser: API.OperationMethod<
   retry: Retry,
   operationName: "BatchCreateUser",
 }));
+
 export type BatchDeleteUserError =
   | BadRequestError
   | ForbiddenError
@@ -2591,6 +2596,7 @@ export const batchDeleteUser: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteUser",
 }));
+
 export type BatchLookupUserUnameError =
   | BadRequestError
   | ForbiddenError
@@ -2624,6 +2630,7 @@ export const batchLookupUserUname: API.OperationMethod<
   retry: Retry,
   operationName: "BatchLookupUserUname",
 }));
+
 export type BatchReinviteUserError =
   | BadRequestError
   | ForbiddenError
@@ -2657,6 +2664,7 @@ export const batchReinviteUser: API.OperationMethod<
   retry: Retry,
   operationName: "BatchReinviteUser",
 }));
+
 export type BatchResetDevicesForUserError =
   | BadRequestError
   | ForbiddenError
@@ -2690,6 +2698,7 @@ export const batchResetDevicesForUser: API.OperationMethod<
   retry: Retry,
   operationName: "BatchResetDevicesForUser",
 }));
+
 export type BatchToggleUserSuspendStatusError =
   | BadRequestError
   | ForbiddenError
@@ -2723,6 +2732,7 @@ export const batchToggleUserSuspendStatus: API.OperationMethod<
   retry: Retry,
   operationName: "BatchToggleUserSuspendStatus",
 }));
+
 export type CreateBotError =
   | BadRequestError
   | ForbiddenError
@@ -2756,6 +2766,7 @@ export const createBot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBot",
 }));
+
 export type CreateDataRetentionBotError =
   | BadRequestError
   | ForbiddenError
@@ -2789,6 +2800,7 @@ export const createDataRetentionBot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataRetentionBot",
 }));
+
 export type CreateDataRetentionBotChallengeError =
   | BadRequestError
   | ForbiddenError
@@ -2822,6 +2834,7 @@ export const createDataRetentionBotChallenge: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataRetentionBotChallenge",
 }));
+
 export type CreateNetworkError =
   | BadRequestError
   | ForbiddenError
@@ -2855,6 +2868,7 @@ export const createNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNetwork",
 }));
+
 export type CreateSecurityGroupError =
   | BadRequestError
   | ForbiddenError
@@ -2888,6 +2902,7 @@ export const createSecurityGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSecurityGroup",
 }));
+
 export type DeleteBotError =
   | BadRequestError
   | ForbiddenError
@@ -2921,6 +2936,7 @@ export const deleteBot: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBot",
 }));
+
 export type DeleteDataRetentionBotError =
   | BadRequestError
   | ForbiddenError
@@ -2954,6 +2970,7 @@ export const deleteDataRetentionBot: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataRetentionBot",
 }));
+
 export type DeleteNetworkError =
   | BadRequestError
   | ForbiddenError
@@ -2987,6 +3004,7 @@ export const deleteNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNetwork",
 }));
+
 export type DeleteSecurityGroupError =
   | BadRequestError
   | ForbiddenError
@@ -3020,6 +3038,7 @@ export const deleteSecurityGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSecurityGroup",
 }));
+
 export type GetBotError =
   | BadRequestError
   | ForbiddenError
@@ -3053,6 +3072,7 @@ export const getBot: API.OperationMethod<
   retry: Retry,
   operationName: "GetBot",
 }));
+
 export type GetBotsCountError =
   | BadRequestError
   | ForbiddenError
@@ -3086,6 +3106,7 @@ export const getBotsCount: API.OperationMethod<
   retry: Retry,
   operationName: "GetBotsCount",
 }));
+
 export type GetDataRetentionBotError =
   | BadRequestError
   | ForbiddenError
@@ -3119,6 +3140,7 @@ export const getDataRetentionBot: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataRetentionBot",
 }));
+
 export type GetGuestUserHistoryCountError =
   | BadRequestError
   | ForbiddenError
@@ -3152,6 +3174,7 @@ export const getGuestUserHistoryCount: API.OperationMethod<
   retry: Retry,
   operationName: "GetGuestUserHistoryCount",
 }));
+
 export type GetNetworkError =
   | BadRequestError
   | ForbiddenError
@@ -3185,6 +3208,7 @@ export const getNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "GetNetwork",
 }));
+
 export type GetNetworkSettingsError =
   | BadRequestError
   | ForbiddenError
@@ -3218,6 +3242,7 @@ export const getNetworkSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetNetworkSettings",
 }));
+
 export type GetOidcInfoError =
   | BadRequestError
   | ForbiddenError
@@ -3251,6 +3276,7 @@ export const getOidcInfo: API.OperationMethod<
   retry: Retry,
   operationName: "GetOidcInfo",
 }));
+
 export type GetOpentdfConfigError =
   | BadRequestError
   | ForbiddenError
@@ -3284,6 +3310,7 @@ export const getOpentdfConfig: API.OperationMethod<
   retry: Retry,
   operationName: "GetOpentdfConfig",
 }));
+
 export type GetSecurityGroupError =
   | BadRequestError
   | ForbiddenError
@@ -3317,6 +3344,7 @@ export const getSecurityGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetSecurityGroup",
 }));
+
 export type GetUserError =
   | BadRequestError
   | ForbiddenError
@@ -3350,6 +3378,7 @@ export const getUser: API.OperationMethod<
   retry: Retry,
   operationName: "GetUser",
 }));
+
 export type GetUsersCountError =
   | BadRequestError
   | ForbiddenError
@@ -3383,6 +3412,7 @@ export const getUsersCount: API.OperationMethod<
   retry: Retry,
   operationName: "GetUsersCount",
 }));
+
 export type ListBlockedGuestUsersError =
   | BadRequestError
   | ForbiddenError
@@ -3437,6 +3467,7 @@ export const listBlockedGuestUsers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBotsError =
   | BadRequestError
   | ForbiddenError
@@ -3491,6 +3522,7 @@ export const listBots: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDevicesForUserError =
   | BadRequestError
   | ForbiddenError
@@ -3545,6 +3577,7 @@ export const listDevicesForUser: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListGuestUsersError =
   | BadRequestError
   | ForbiddenError
@@ -3599,6 +3632,7 @@ export const listGuestUsers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListNetworksError =
   | BadRequestError
   | ForbiddenError
@@ -3651,6 +3685,7 @@ export const listNetworks: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSecurityGroupsError =
   | BadRequestError
   | ForbiddenError
@@ -3705,6 +3740,7 @@ export const listSecurityGroups: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSecurityGroupUsersError =
   | BadRequestError
   | ForbiddenError
@@ -3759,6 +3795,7 @@ export const listSecurityGroupUsers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListUsersError =
   | BadRequestError
   | ForbiddenError
@@ -3813,6 +3850,7 @@ export const listUsers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type RegisterOidcConfigError =
   | BadRequestError
   | ForbiddenError
@@ -3846,6 +3884,7 @@ export const registerOidcConfig: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterOidcConfig",
 }));
+
 export type RegisterOidcConfigTestError =
   | BadRequestError
   | ForbiddenError
@@ -3879,6 +3918,7 @@ export const registerOidcConfigTest: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterOidcConfigTest",
 }));
+
 export type RegisterOpentdfConfigError =
   | BadRequestError
   | ForbiddenError
@@ -3912,6 +3952,7 @@ export const registerOpentdfConfig: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterOpentdfConfig",
 }));
+
 export type UpdateBotError =
   | BadRequestError
   | ForbiddenError
@@ -3945,6 +3986,7 @@ export const updateBot: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBot",
 }));
+
 export type UpdateDataRetentionError =
   | BadRequestError
   | ForbiddenError
@@ -3978,6 +4020,7 @@ export const updateDataRetention: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDataRetention",
 }));
+
 export type UpdateGuestUserError =
   | BadRequestError
   | ForbiddenError
@@ -4011,6 +4054,7 @@ export const updateGuestUser: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGuestUser",
 }));
+
 export type UpdateNetworkError =
   | BadRequestError
   | ForbiddenError
@@ -4044,6 +4088,7 @@ export const updateNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNetwork",
 }));
+
 export type UpdateNetworkSettingsError =
   | BadRequestError
   | ForbiddenError
@@ -4077,6 +4122,7 @@ export const updateNetworkSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNetworkSettings",
 }));
+
 export type UpdateSecurityGroupError =
   | BadRequestError
   | ForbiddenError
@@ -4110,6 +4156,7 @@ export const updateSecurityGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSecurityGroup",
 }));
+
 export type UpdateUserError =
   | BadRequestError
   | ForbiddenError

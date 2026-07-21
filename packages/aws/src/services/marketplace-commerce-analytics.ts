@@ -83,19 +83,10 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type DataSetPublicationDate = Date;
-export type RoleNameArn = string;
-export type DestinationS3BucketName = string;
-export type DestinationS3Prefix = string;
-export type SnsTopicArn = string;
-export type OptionalKey = string;
-export type OptionalValue = string;
-export type DataSetRequestId = string;
-export type ExceptionMessage = string;
-export type FromDate = Date;
-
-//# Schemas
+export class MarketplaceCommerceAnalyticsException extends S.TaggedErrorClass<MarketplaceCommerceAnalyticsException>()(
+  "MarketplaceCommerceAnalyticsException",
+  { message: S.optional(S.String) },
+) {}
 export type DataSetType =
   | "customer_subscriber_hourly_monthly_subscriptions"
   | "customer_subscriber_annual_subscriptions"
@@ -124,6 +115,14 @@ export type DataSetType =
   | "us_sales_and_use_tax_records"
   | (string & {});
 export const DataSetType = /*@__PURE__*/ S.String;
+
+export type DataSetPublicationDate = Date;
+export type RoleNameArn = string;
+export type DestinationS3BucketName = string;
+export type DestinationS3Prefix = string;
+export type SnsTopicArn = string;
+export type OptionalKey = string;
+export type OptionalValue = string;
 export type CustomerDefinedValues = { [key: string]: string | undefined };
 export const CustomerDefinedValues = /*@__PURE__*/ S.Record(
   S.String,
@@ -153,6 +152,7 @@ export const GenerateDataSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GenerateDataSetRequest",
 }) as any as S.Schema<GenerateDataSetRequest>;
+export type DataSetRequestId = string;
 export interface GenerateDataSetResult {
   dataSetRequestId?: string;
 }
@@ -166,6 +166,8 @@ export type SupportDataSetType =
   | "test_customer_support_contacts_data"
   | (string & {});
 export const SupportDataSetType = /*@__PURE__*/ S.String;
+
+export type FromDate = Date;
 export interface StartSupportDataExportRequest {
   dataSetType: SupportDataSetType;
   fromDate: Date;
@@ -198,14 +200,7 @@ export const StartSupportDataExportResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartSupportDataExportResult",
 }) as any as S.Schema<StartSupportDataExportResult>;
-
-//# Errors
-export class MarketplaceCommerceAnalyticsException extends S.TaggedErrorClass<MarketplaceCommerceAnalyticsException>()(
-  "MarketplaceCommerceAnalyticsException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type GenerateDataSetError =
   | MarketplaceCommerceAnalyticsException
   | CommonErrors;
@@ -232,6 +227,7 @@ export const generateDataSet: API.OperationMethod<
   retry: Retry,
   operationName: "GenerateDataSet",
 }));
+
 export type StartSupportDataExportError =
   | MarketplaceCommerceAnalyticsException
   | CommonErrors;

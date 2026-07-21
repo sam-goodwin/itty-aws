@@ -85,27 +85,267 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type PaginationToken = string;
-export type MaxListControlMappingsResults = number;
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ControlArn = string;
-export type CommonControlArn = string;
-export type FrameworkName = string;
-export type FrameworkItem = string;
-export type MaxListCommonControlsResults = number;
-export type ObjectiveArn = string;
-export type DomainArn = string;
+export interface GetControlRequest {
+  ControlArn: string;
+}
+export const GetControlRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ControlArn: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/get-control" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetControlRequest",
+}) as any as S.Schema<GetControlRequest>;
 export type ControlAlias = string;
+export type ControlAliases = string[];
+export const ControlAliases = /*@__PURE__*/ S.Array(S.String);
+export type ControlBehavior =
+  | "PREVENTIVE"
+  | "PROACTIVE"
+  | "DETECTIVE"
+  | (string & {});
+export const ControlBehavior = /*@__PURE__*/ S.String;
+
+export type ControlSeverity =
+  | "LOW"
+  | "MEDIUM"
+  | "HIGH"
+  | "CRITICAL"
+  | (string & {});
+export const ControlSeverity = /*@__PURE__*/ S.String;
+
+export type ControlScope = "GLOBAL" | "REGIONAL" | (string & {});
+export const ControlScope = /*@__PURE__*/ S.String;
+
 export type RegionCode = string;
+export type DeployableRegions = string[];
+export const DeployableRegions = /*@__PURE__*/ S.Array(S.String);
+export interface RegionConfiguration {
+  Scope: ControlScope;
+  DeployableRegions?: string[];
+}
+export const RegionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Scope: ControlScope,
+    DeployableRegions: S.optional(DeployableRegions),
+  }),
+).annotate({
+  identifier: "RegionConfiguration",
+}) as any as S.Schema<RegionConfiguration>;
 export type ImplementationType = string;
 export type ImplementationIdentifier = string;
-export type GovernedResource = string;
-export type GovernedProvider = string;
-export type MaxListControlsResults = number;
-export type MaxListDomainsResults = number;
-export type MaxListObjectivesResults = number;
+export interface ImplementationDetails {
+  Type: string;
+  Identifier?: string;
+}
+export const ImplementationDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Type: S.String, Identifier: S.optional(S.String) }),
+).annotate({
+  identifier: "ImplementationDetails",
+}) as any as S.Schema<ImplementationDetails>;
+export type ParameterRequirementSummary =
+  | "REQUIRED"
+  | "OPTIONAL"
+  | "NONE"
+  | (string & {});
+export const ParameterRequirementSummary = /*@__PURE__*/ S.String;
 
-//# Schemas
+export type ControlParameterRequirement =
+  | "REQUIRED"
+  | "OPTIONAL"
+  | (string & {});
+export const ControlParameterRequirement = /*@__PURE__*/ S.String;
+
+export interface ControlParameter {
+  Name: string;
+  Requirement?: ControlParameterRequirement;
+}
+export const ControlParameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Requirement: S.optional(ControlParameterRequirement),
+  }),
+).annotate({
+  identifier: "ControlParameter",
+}) as any as S.Schema<ControlParameter>;
+export type ControlParameters = ControlParameter[];
+export const ControlParameters = /*@__PURE__*/ S.Array(ControlParameter);
+export type GovernedResource = string;
+export type GovernedResources = string[];
+export const GovernedResources = /*@__PURE__*/ S.Array(S.String);
+export type GovernedProvider = string;
+export type GovernedProviders = string[];
+export const GovernedProviders = /*@__PURE__*/ S.Array(S.String);
+export interface GetControlResponse {
+  Arn: string;
+  Aliases?: string[];
+  Name: string;
+  Description: string;
+  Behavior: ControlBehavior;
+  Severity?: ControlSeverity;
+  RegionConfiguration: RegionConfiguration;
+  Implementation?: ImplementationDetails;
+  ParameterRequirementSummary?: ParameterRequirementSummary;
+  Parameters?: ControlParameter[];
+  CreateTime?: Date;
+  GovernedResources?: string[];
+  GovernedProviders?: string[];
+}
+export const GetControlResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    Aliases: S.optional(ControlAliases),
+    Name: S.String,
+    Description: S.String,
+    Behavior: ControlBehavior,
+    Severity: S.optional(ControlSeverity),
+    RegionConfiguration: RegionConfiguration,
+    Implementation: S.optional(ImplementationDetails),
+    ParameterRequirementSummary: S.optional(ParameterRequirementSummary),
+    Parameters: S.optional(ControlParameters),
+    CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    GovernedResources: S.optional(GovernedResources),
+    GovernedProviders: S.optional(GovernedProviders),
+  }),
+).annotate({
+  identifier: "GetControlResponse",
+}) as any as S.Schema<GetControlResponse>;
+export type MaxListCommonControlsResults = number;
+export type PaginationToken = string;
+export type ObjectiveArn = string;
+export interface ObjectiveResourceFilter {
+  Arn?: string;
+}
+export const ObjectiveResourceFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.optional(S.String) }),
+).annotate({
+  identifier: "ObjectiveResourceFilter",
+}) as any as S.Schema<ObjectiveResourceFilter>;
+export type ObjectiveResourceFilterList = ObjectiveResourceFilter[];
+export const ObjectiveResourceFilterList = /*@__PURE__*/ S.Array(
+  ObjectiveResourceFilter,
+);
+export interface CommonControlFilter {
+  Objectives?: ObjectiveResourceFilter[];
+}
+export const CommonControlFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Objectives: S.optional(ObjectiveResourceFilterList) }),
+).annotate({
+  identifier: "CommonControlFilter",
+}) as any as S.Schema<CommonControlFilter>;
+export interface ListCommonControlsRequest {
+  MaxResults?: number;
+  NextToken?: string;
+  CommonControlFilter?: CommonControlFilter;
+}
+export const ListCommonControlsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    CommonControlFilter: S.optional(CommonControlFilter),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/common-controls" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListCommonControlsRequest",
+}) as any as S.Schema<ListCommonControlsRequest>;
+export type CommonControlArn = string;
+export type DomainArn = string;
+export interface AssociatedDomainSummary {
+  Arn?: string;
+  Name?: string;
+}
+export const AssociatedDomainSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
+).annotate({
+  identifier: "AssociatedDomainSummary",
+}) as any as S.Schema<AssociatedDomainSummary>;
+export interface AssociatedObjectiveSummary {
+  Arn?: string;
+  Name?: string;
+}
+export const AssociatedObjectiveSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
+).annotate({
+  identifier: "AssociatedObjectiveSummary",
+}) as any as S.Schema<AssociatedObjectiveSummary>;
+export interface CommonControlSummary {
+  Arn: string;
+  Name: string;
+  Description: string;
+  Domain: AssociatedDomainSummary;
+  Objective: AssociatedObjectiveSummary;
+  CreateTime: Date;
+  LastUpdateTime: Date;
+}
+export const CommonControlSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    Name: S.String,
+    Description: S.String,
+    Domain: AssociatedDomainSummary,
+    Objective: AssociatedObjectiveSummary,
+    CreateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    LastUpdateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "CommonControlSummary",
+}) as any as S.Schema<CommonControlSummary>;
+export type CommonControlSummaryList = CommonControlSummary[];
+export const CommonControlSummaryList =
+  /*@__PURE__*/ S.Array(CommonControlSummary);
+export interface ListCommonControlsResponse {
+  CommonControls: CommonControlSummary[];
+  NextToken?: string;
+}
+export const ListCommonControlsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CommonControls: CommonControlSummaryList,
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCommonControlsResponse",
+}) as any as S.Schema<ListCommonControlsResponse>;
+export type MaxListControlMappingsResults = number;
 export type ControlArnFilterList = string[];
 export const ControlArnFilterList = /*@__PURE__*/ S.Array(S.String);
 export type CommonControlArnFilterList = string[];
@@ -116,6 +356,7 @@ export type MappingType =
   | "RELATED_CONTROL"
   | (string & {});
 export const MappingType = /*@__PURE__*/ S.String;
+
 export type MappingTypeFilterList = MappingType[];
 export const MappingTypeFilterList = /*@__PURE__*/ S.Array(MappingType);
 export interface ControlMappingFilter {
@@ -155,6 +396,8 @@ export const ListControlMappingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListControlMappingsRequest",
 }) as any as S.Schema<ListControlMappingsRequest>;
+export type FrameworkName = string;
+export type FrameworkItem = string;
 export interface FrameworkMappingDetails {
   Name: string;
   Item: string;
@@ -178,6 +421,7 @@ export type ControlRelationType =
   | "MUTUALLY_EXCLUSIVE"
   | (string & {});
 export const ControlRelationType = /*@__PURE__*/ S.String;
+
 export interface RelatedControlMappingDetails {
   ControlArn?: string;
   RelationType: ControlRelationType;
@@ -237,224 +481,7 @@ export const ListControlMappingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListControlMappingsResponse",
 }) as any as S.Schema<ListControlMappingsResponse>;
-export interface ObjectiveResourceFilter {
-  Arn?: string;
-}
-export const ObjectiveResourceFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String) }),
-).annotate({
-  identifier: "ObjectiveResourceFilter",
-}) as any as S.Schema<ObjectiveResourceFilter>;
-export type ObjectiveResourceFilterList = ObjectiveResourceFilter[];
-export const ObjectiveResourceFilterList = /*@__PURE__*/ S.Array(
-  ObjectiveResourceFilter,
-);
-export interface CommonControlFilter {
-  Objectives?: ObjectiveResourceFilter[];
-}
-export const CommonControlFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Objectives: S.optional(ObjectiveResourceFilterList) }),
-).annotate({
-  identifier: "CommonControlFilter",
-}) as any as S.Schema<CommonControlFilter>;
-export interface ListCommonControlsRequest {
-  MaxResults?: number;
-  NextToken?: string;
-  CommonControlFilter?: CommonControlFilter;
-}
-export const ListCommonControlsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    CommonControlFilter: S.optional(CommonControlFilter),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/common-controls" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListCommonControlsRequest",
-}) as any as S.Schema<ListCommonControlsRequest>;
-export interface AssociatedDomainSummary {
-  Arn?: string;
-  Name?: string;
-}
-export const AssociatedDomainSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
-).annotate({
-  identifier: "AssociatedDomainSummary",
-}) as any as S.Schema<AssociatedDomainSummary>;
-export interface AssociatedObjectiveSummary {
-  Arn?: string;
-  Name?: string;
-}
-export const AssociatedObjectiveSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Arn: S.optional(S.String), Name: S.optional(S.String) }),
-).annotate({
-  identifier: "AssociatedObjectiveSummary",
-}) as any as S.Schema<AssociatedObjectiveSummary>;
-export interface CommonControlSummary {
-  Arn: string;
-  Name: string;
-  Description: string;
-  Domain: AssociatedDomainSummary;
-  Objective: AssociatedObjectiveSummary;
-  CreateTime: Date;
-  LastUpdateTime: Date;
-}
-export const CommonControlSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Name: S.String,
-    Description: S.String,
-    Domain: AssociatedDomainSummary,
-    Objective: AssociatedObjectiveSummary,
-    CreateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    LastUpdateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "CommonControlSummary",
-}) as any as S.Schema<CommonControlSummary>;
-export type CommonControlSummaryList = CommonControlSummary[];
-export const CommonControlSummaryList =
-  /*@__PURE__*/ S.Array(CommonControlSummary);
-export interface ListCommonControlsResponse {
-  CommonControls: CommonControlSummary[];
-  NextToken?: string;
-}
-export const ListCommonControlsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CommonControls: CommonControlSummaryList,
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCommonControlsResponse",
-}) as any as S.Schema<ListCommonControlsResponse>;
-export interface GetControlRequest {
-  ControlArn: string;
-}
-export const GetControlRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ControlArn: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/get-control" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetControlRequest",
-}) as any as S.Schema<GetControlRequest>;
-export type ControlAliases = string[];
-export const ControlAliases = /*@__PURE__*/ S.Array(S.String);
-export type ControlBehavior =
-  | "PREVENTIVE"
-  | "PROACTIVE"
-  | "DETECTIVE"
-  | (string & {});
-export const ControlBehavior = /*@__PURE__*/ S.String;
-export type ControlSeverity =
-  | "LOW"
-  | "MEDIUM"
-  | "HIGH"
-  | "CRITICAL"
-  | (string & {});
-export const ControlSeverity = /*@__PURE__*/ S.String;
-export type ControlScope = "GLOBAL" | "REGIONAL" | (string & {});
-export const ControlScope = /*@__PURE__*/ S.String;
-export type DeployableRegions = string[];
-export const DeployableRegions = /*@__PURE__*/ S.Array(S.String);
-export interface RegionConfiguration {
-  Scope: ControlScope;
-  DeployableRegions?: string[];
-}
-export const RegionConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Scope: ControlScope,
-    DeployableRegions: S.optional(DeployableRegions),
-  }),
-).annotate({
-  identifier: "RegionConfiguration",
-}) as any as S.Schema<RegionConfiguration>;
-export interface ImplementationDetails {
-  Type: string;
-  Identifier?: string;
-}
-export const ImplementationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Type: S.String, Identifier: S.optional(S.String) }),
-).annotate({
-  identifier: "ImplementationDetails",
-}) as any as S.Schema<ImplementationDetails>;
-export type ParameterRequirementSummary =
-  | "REQUIRED"
-  | "OPTIONAL"
-  | "NONE"
-  | (string & {});
-export const ParameterRequirementSummary = /*@__PURE__*/ S.String;
-export type ControlParameterRequirement =
-  | "REQUIRED"
-  | "OPTIONAL"
-  | (string & {});
-export const ControlParameterRequirement = /*@__PURE__*/ S.String;
-export interface ControlParameter {
-  Name: string;
-  Requirement?: ControlParameterRequirement;
-}
-export const ControlParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    Requirement: S.optional(ControlParameterRequirement),
-  }),
-).annotate({
-  identifier: "ControlParameter",
-}) as any as S.Schema<ControlParameter>;
-export type ControlParameters = ControlParameter[];
-export const ControlParameters = /*@__PURE__*/ S.Array(ControlParameter);
-export type GovernedResources = string[];
-export const GovernedResources = /*@__PURE__*/ S.Array(S.String);
-export type GovernedProviders = string[];
-export const GovernedProviders = /*@__PURE__*/ S.Array(S.String);
-export interface GetControlResponse {
-  Arn: string;
-  Aliases?: string[];
-  Name: string;
-  Description: string;
-  Behavior: ControlBehavior;
-  Severity?: ControlSeverity;
-  RegionConfiguration: RegionConfiguration;
-  Implementation?: ImplementationDetails;
-  ParameterRequirementSummary?: ParameterRequirementSummary;
-  Parameters?: ControlParameter[];
-  CreateTime?: Date;
-  GovernedResources?: string[];
-  GovernedProviders?: string[];
-}
-export const GetControlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Aliases: S.optional(ControlAliases),
-    Name: S.String,
-    Description: S.String,
-    Behavior: ControlBehavior,
-    Severity: S.optional(ControlSeverity),
-    RegionConfiguration: RegionConfiguration,
-    Implementation: S.optional(ImplementationDetails),
-    ParameterRequirementSummary: S.optional(ParameterRequirementSummary),
-    Parameters: S.optional(ControlParameters),
-    CreateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    GovernedResources: S.optional(GovernedResources),
-    GovernedProviders: S.optional(GovernedProviders),
-  }),
-).annotate({
-  identifier: "GetControlResponse",
-}) as any as S.Schema<GetControlResponse>;
+export type MaxListControlsResults = number;
 export type ImplementationTypeFilterList = string[];
 export const ImplementationTypeFilterList = /*@__PURE__*/ S.Array(S.String);
 export type ImplementationIdentifierFilterList = string[];
@@ -556,6 +583,7 @@ export const ListControlsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListControlsResponse",
 }) as any as S.Schema<ListControlsResponse>;
+export type MaxListDomainsResults = number;
 export interface ListDomainsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -604,6 +632,7 @@ export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDomainsResponse",
 }) as any as S.Schema<ListDomainsResponse>;
+export type MaxListObjectivesResults = number;
 export interface DomainResourceFilter {
   Arn?: string;
 }
@@ -680,83 +709,38 @@ export const ListObjectivesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListObjectivesResponse",
 }) as any as S.Schema<ListObjectivesResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
-export type ListControlMappingsError =
+export type GetControlError =
   | AccessDeniedException
   | InternalServerException
+  | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Returns a paginated list of control mappings from the Control Catalog. Control mappings show relationships between controls and other entities, such as common controls or compliance frameworks.
+ * Returns details about a specific control, most notably a list of Amazon Web Services Regions where this control is supported. Input a value for the *ControlArn* parameter, in ARN form. `GetControl` accepts *controltower* or *controlcatalog* control ARNs as input. Returns a *controlcatalog* ARN format.
+ *
+ * In the API response, controls that have the value `GLOBAL` in the `Scope` field do not show the `DeployableRegions` field, because it does not apply. Controls that have the value `REGIONAL` in the `Scope` field return a value for the `DeployableRegions` field, as shown in the example.
  */
-export const listControlMappings: API.OperationMethod<
-  ListControlMappingsRequest,
-  ListControlMappingsResponse,
-  ListControlMappingsError,
+export const getControl: API.OperationMethod<
+  GetControlRequest,
+  GetControlResponse,
+  GetControlError,
   Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListControlMappingsRequest,
-  ) => stream.Stream<
-    ListControlMappingsResponse,
-    ListControlMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListControlMappingsRequest,
-  ) => stream.Stream<
-    ControlMapping,
-    ListControlMappingsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListControlMappingsRequest,
-  output: ListControlMappingsResponse,
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetControlRequest,
+  output: GetControlResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
+    ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "ListControlMappings",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "ControlMappings",
-    pageSize: "MaxResults",
-  } as const,
+  operationName: "GetControl",
 }));
+
 export type ListCommonControlsError =
   | AccessDeniedException
   | InternalServerException
@@ -807,37 +791,56 @@ export const listCommonControls: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type GetControlError =
+
+export type ListControlMappingsError =
   | AccessDeniedException
   | InternalServerException
-  | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Returns details about a specific control, most notably a list of Amazon Web Services Regions where this control is supported. Input a value for the *ControlArn* parameter, in ARN form. `GetControl` accepts *controltower* or *controlcatalog* control ARNs as input. Returns a *controlcatalog* ARN format.
- *
- * In the API response, controls that have the value `GLOBAL` in the `Scope` field do not show the `DeployableRegions` field, because it does not apply. Controls that have the value `REGIONAL` in the `Scope` field return a value for the `DeployableRegions` field, as shown in the example.
+ * Returns a paginated list of control mappings from the Control Catalog. Control mappings show relationships between controls and other entities, such as common controls or compliance frameworks.
  */
-export const getControl: API.OperationMethod<
-  GetControlRequest,
-  GetControlResponse,
-  GetControlError,
+export const listControlMappings: API.OperationMethod<
+  ListControlMappingsRequest,
+  ListControlMappingsResponse,
+  ListControlMappingsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetControlRequest,
-  output: GetControlResponse,
+> & {
+  pages: (
+    input: ListControlMappingsRequest,
+  ) => stream.Stream<
+    ListControlMappingsResponse,
+    ListControlMappingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListControlMappingsRequest,
+  ) => stream.Stream<
+    ControlMapping,
+    ListControlMappingsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListControlMappingsRequest,
+  output: ListControlMappingsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
-    ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "GetControl",
+  operationName: "ListControlMappings",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "ControlMappings",
+    pageSize: "MaxResults",
+  } as const,
 }));
+
 export type ListControlsError =
   | AccessDeniedException
   | InternalServerException
@@ -886,6 +889,7 @@ export const listControls: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDomainsError =
   | AccessDeniedException
   | InternalServerException
@@ -934,6 +938,7 @@ export const listDomains: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListObjectivesError =
   | AccessDeniedException
   | InternalServerException

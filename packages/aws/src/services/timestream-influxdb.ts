@@ -87,10 +87,49 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type Arn = string;
-export type TagKey = string;
-export type TagValue = string;
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(429), T.Retryable()),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.suspend(() => ValidationExceptionReason).annotate({
+      identifier: "ValidationExceptionReason",
+    }),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type DbClusterName = string;
 export type Username = string | redacted.Redacted<string>;
 export type Password = string | redacted.Redacted<string>;
@@ -98,88 +137,6 @@ export type Organization = string;
 export type Bucket = string;
 export type Port = number;
 export type DbParameterGroupIdentifier = string;
-export type AllocatedStorage = number;
-export type VpcSubnetId = string;
-export type VpcSecurityGroupId = string;
-export type IanaTimezone = string;
-export type MaintenanceWindow = string;
-export type DbClusterId = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type DbInstanceId = string;
-export type DbInstanceName = string;
-export type DbInstanceIdentifier = string;
-export type DbParameterGroupName = string;
-export type DbParameterGroupId = string;
-
-//# Schemas
-export interface ListTagsForResourceRequest {
-  resourceArn: string;
-}
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
-export type ResponseTagMap = { [key: string]: string | undefined };
-export const ResponseTagMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
-export interface ListTagsForResourceResponse {
-  tags?: { [key: string]: string | undefined };
-}
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(ResponseTagMap) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
-export type RequestTagMap = { [key: string]: string | undefined };
-export const RequestTagMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
-export interface TagResourceRequest {
-  resourceArn: string;
-  tags: { [key: string]: string | undefined };
-}
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String, tags: RequestTagMap }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "TagResourceRequest",
-}) as any as S.Schema<TagResourceRequest>;
-export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
-export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
-export interface UntagResourceRequest {
-  resourceArn: string;
-  tagKeys: string[];
-}
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tagKeys: TagKeys,
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UntagResourceRequest",
-}) as any as S.Schema<UntagResourceRequest>;
-export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
 export type DbInstanceType =
   | "db.influx.medium"
   | "db.influx.large"
@@ -192,22 +149,30 @@ export type DbInstanceType =
   | "db.influx.24xlarge"
   | (string & {});
 export const DbInstanceType = /*@__PURE__*/ S.String;
+
 export type DbStorageType =
   | "InfluxIOIncludedT1"
   | "InfluxIOIncludedT2"
   | "InfluxIOIncludedT3"
   | (string & {});
 export const DbStorageType = /*@__PURE__*/ S.String;
+
+export type AllocatedStorage = number;
 export type NetworkType = "IPV4" | "DUAL" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
+
+export type VpcSubnetId = string;
 export type VpcSubnetIdList = string[];
 export const VpcSubnetIdList = /*@__PURE__*/ S.Array(S.String);
+export type VpcSecurityGroupId = string;
 export type VpcSecurityGroupIdList = string[];
 export const VpcSecurityGroupIdList = /*@__PURE__*/ S.Array(S.String);
 export type ClusterDeploymentType = "MULTI_NODE_READ_REPLICAS" | (string & {});
 export const ClusterDeploymentType = /*@__PURE__*/ S.String;
+
 export type FailoverMode = "AUTOMATIC" | "NO_FAILOVER" | (string & {});
 export const FailoverMode = /*@__PURE__*/ S.String;
+
 export interface S3Configuration {
   bucketName: string;
   enabled: boolean;
@@ -225,6 +190,8 @@ export const LogDeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LogDeliveryConfiguration",
 }) as any as S.Schema<LogDeliveryConfiguration>;
+export type IanaTimezone = string;
+export type MaintenanceWindow = string;
 export interface MaintenanceSchedule {
   timezone: string;
   preferredMaintenanceWindow: string;
@@ -234,6 +201,13 @@ export const MaintenanceSchedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MaintenanceSchedule",
 }) as any as S.Schema<MaintenanceSchedule>;
+export type TagKey = string;
+export type TagValue = string;
+export type RequestTagMap = { [key: string]: string | undefined };
+export const RequestTagMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
 export interface CreateDbClusterInput {
   name: string;
   username?: string | redacted.Redacted<string>;
@@ -282,6 +256,7 @@ export const CreateDbClusterInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDbClusterInput",
 }) as any as S.Schema<CreateDbClusterInput>;
+export type DbClusterId = string;
 export type ClusterStatus =
   | "CREATING"
   | "UPDATING"
@@ -296,6 +271,7 @@ export type ClusterStatus =
   | "PARTIALLY_AVAILABLE"
   | (string & {});
 export const ClusterStatus = /*@__PURE__*/ S.String;
+
 export interface CreateDbClusterOutput {
   dbClusterId?: string;
   dbClusterStatus?: ClusterStatus;
@@ -308,332 +284,13 @@ export const CreateDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDbClusterOutput",
 }) as any as S.Schema<CreateDbClusterOutput>;
-export type ValidationExceptionReason =
-  | "FIELD_VALIDATION_FAILED"
-  | "OTHER"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface GetDbClusterInput {
-  dbClusterId: string;
-}
-export const GetDbClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dbClusterId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetDbClusterInput",
-}) as any as S.Schema<GetDbClusterInput>;
-export type EngineType =
-  | "INFLUXDB_V2"
-  | "INFLUXDB_V3_CORE"
-  | "INFLUXDB_V3_ENTERPRISE"
-  | (string & {});
-export const EngineType = /*@__PURE__*/ S.String;
-export interface ClusterConfiguration {
-  ingestQueryInstances?: number;
-  queryOnlyInstances?: number;
-  dedicatedCompactor?: boolean;
-}
-export const ClusterConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ingestQueryInstances: S.optional(S.Number),
-    queryOnlyInstances: S.optional(S.Number),
-    dedicatedCompactor: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ClusterConfiguration",
-}) as any as S.Schema<ClusterConfiguration>;
-export interface GetDbClusterOutput {
-  id: string;
-  name: string;
-  arn: string;
-  status?: ClusterStatus;
-  endpoint?: string;
-  readerEndpoint?: string;
-  port?: number;
-  deploymentType?: ClusterDeploymentType;
-  dbInstanceType?: DbInstanceType;
-  networkType?: NetworkType;
-  dbStorageType?: DbStorageType;
-  allocatedStorage?: number;
-  engineType?: EngineType;
-  publiclyAccessible?: boolean;
-  dbParameterGroupIdentifier?: string;
-  logDeliveryConfiguration?: LogDeliveryConfiguration;
-  maintenanceSchedule?: MaintenanceSchedule;
-  lastMaintenanceTime?: Date;
-  nextMaintenanceTime?: Date;
-  influxAuthParametersSecretArn?: string;
-  vpcSubnetIds?: string[];
-  vpcSecurityGroupIds?: string[];
-  failoverMode?: FailoverMode;
-  clusterConfiguration?: ClusterConfiguration;
-}
-export const GetDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(ClusterStatus),
-    endpoint: S.optional(S.String),
-    readerEndpoint: S.optional(S.String),
-    port: S.optional(S.Number),
-    deploymentType: S.optional(ClusterDeploymentType),
-    dbInstanceType: S.optional(DbInstanceType),
-    networkType: S.optional(NetworkType),
-    dbStorageType: S.optional(DbStorageType),
-    allocatedStorage: S.optional(S.Number),
-    engineType: S.optional(EngineType),
-    publiclyAccessible: S.optional(S.Boolean),
-    dbParameterGroupIdentifier: S.optional(S.String),
-    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-    maintenanceSchedule: S.optional(MaintenanceSchedule),
-    lastMaintenanceTime: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    nextMaintenanceTime: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    influxAuthParametersSecretArn: S.optional(S.String),
-    vpcSubnetIds: S.optional(VpcSubnetIdList),
-    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-    failoverMode: S.optional(FailoverMode),
-    clusterConfiguration: S.optional(ClusterConfiguration),
-  }),
-).annotate({
-  identifier: "GetDbClusterOutput",
-}) as any as S.Schema<GetDbClusterOutput>;
-export interface UpdateDbClusterInput {
-  dbClusterId: string;
-  logDeliveryConfiguration?: LogDeliveryConfiguration;
-  dbParameterGroupIdentifier?: string;
-  port?: number;
-  dbInstanceType?: DbInstanceType;
-  failoverMode?: FailoverMode;
-  maintenanceSchedule?: MaintenanceSchedule;
-}
-export const UpdateDbClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dbClusterId: S.String,
-    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-    dbParameterGroupIdentifier: S.optional(S.String),
-    port: S.optional(S.Number),
-    dbInstanceType: S.optional(DbInstanceType),
-    failoverMode: S.optional(FailoverMode),
-    maintenanceSchedule: S.optional(MaintenanceSchedule),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateDbClusterInput",
-}) as any as S.Schema<UpdateDbClusterInput>;
-export interface UpdateDbClusterOutput {
-  dbClusterStatus?: ClusterStatus;
-}
-export const UpdateDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dbClusterStatus: S.optional(ClusterStatus) }),
-).annotate({
-  identifier: "UpdateDbClusterOutput",
-}) as any as S.Schema<UpdateDbClusterOutput>;
-export interface DeleteDbClusterInput {
-  dbClusterId: string;
-}
-export const DeleteDbClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dbClusterId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteDbClusterInput",
-}) as any as S.Schema<DeleteDbClusterInput>;
-export interface DeleteDbClusterOutput {
-  dbClusterStatus?: ClusterStatus;
-}
-export const DeleteDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dbClusterStatus: S.optional(ClusterStatus) }),
-).annotate({
-  identifier: "DeleteDbClusterOutput",
-}) as any as S.Schema<DeleteDbClusterOutput>;
-export interface ListDbClustersInput {
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListDbClustersInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListDbClustersInput",
-}) as any as S.Schema<ListDbClustersInput>;
-export interface DbClusterSummary {
-  id: string;
-  name: string;
-  arn: string;
-  status?: ClusterStatus;
-  endpoint?: string;
-  readerEndpoint?: string;
-  port?: number;
-  deploymentType?: ClusterDeploymentType;
-  dbInstanceType?: DbInstanceType;
-  networkType?: NetworkType;
-  dbStorageType?: DbStorageType;
-  allocatedStorage?: number;
-  engineType?: EngineType;
-}
-export const DbClusterSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(ClusterStatus),
-    endpoint: S.optional(S.String),
-    readerEndpoint: S.optional(S.String),
-    port: S.optional(S.Number),
-    deploymentType: S.optional(ClusterDeploymentType),
-    dbInstanceType: S.optional(DbInstanceType),
-    networkType: S.optional(NetworkType),
-    dbStorageType: S.optional(DbStorageType),
-    allocatedStorage: S.optional(S.Number),
-    engineType: S.optional(EngineType),
-  }),
-).annotate({
-  identifier: "DbClusterSummary",
-}) as any as S.Schema<DbClusterSummary>;
-export type DbClusterSummaryList = DbClusterSummary[];
-export const DbClusterSummaryList = /*@__PURE__*/ S.Array(DbClusterSummary);
-export interface ListDbClustersOutput {
-  items: DbClusterSummary[];
-  nextToken?: string;
-}
-export const ListDbClustersOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: DbClusterSummaryList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListDbClustersOutput",
-}) as any as S.Schema<ListDbClustersOutput>;
-export interface ListDbInstancesForClusterInput {
-  dbClusterId: string;
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListDbInstancesForClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dbClusterId: S.String,
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListDbInstancesForClusterInput",
-}) as any as S.Schema<ListDbInstancesForClusterInput>;
-export type Status =
-  | "CREATING"
-  | "AVAILABLE"
-  | "DELETING"
-  | "MODIFYING"
-  | "UPDATING"
-  | "DELETED"
-  | "FAILED"
-  | "UPDATING_DEPLOYMENT_TYPE"
-  | "UPDATING_INSTANCE_TYPE"
-  | "MAINTENANCE"
-  | "REBOOTING"
-  | "REBOOT_FAILED"
-  | (string & {});
-export const Status = /*@__PURE__*/ S.String;
+export type DbInstanceName = string;
 export type DeploymentType =
   | "SINGLE_AZ"
   | "WITH_MULTIAZ_STANDBY"
   | (string & {});
 export const DeploymentType = /*@__PURE__*/ S.String;
-export type InstanceMode =
-  | "PRIMARY"
-  | "STANDBY"
-  | "REPLICA"
-  | "INGEST"
-  | "QUERY"
-  | "COMPACT"
-  | "PROCESS"
-  | (string & {});
-export const InstanceMode = /*@__PURE__*/ S.String;
-export type InstanceModeList = InstanceMode[];
-export const InstanceModeList = /*@__PURE__*/ S.Array(InstanceMode);
-export interface DbInstanceForClusterSummary {
-  id: string;
-  name: string;
-  arn: string;
-  status?: Status;
-  endpoint?: string;
-  port?: number;
-  networkType?: NetworkType;
-  dbInstanceType?: DbInstanceType;
-  dbStorageType?: DbStorageType;
-  allocatedStorage?: number;
-  deploymentType?: DeploymentType;
-  instanceMode?: InstanceMode;
-  instanceModes?: InstanceMode[];
-}
-export const DbInstanceForClusterSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(Status),
-    endpoint: S.optional(S.String),
-    port: S.optional(S.Number),
-    networkType: S.optional(NetworkType),
-    dbInstanceType: S.optional(DbInstanceType),
-    dbStorageType: S.optional(DbStorageType),
-    allocatedStorage: S.optional(S.Number),
-    deploymentType: S.optional(DeploymentType),
-    instanceMode: S.optional(InstanceMode),
-    instanceModes: S.optional(InstanceModeList),
-  }),
-).annotate({
-  identifier: "DbInstanceForClusterSummary",
-}) as any as S.Schema<DbInstanceForClusterSummary>;
-export type DbInstanceForClusterSummaryList = DbInstanceForClusterSummary[];
-export const DbInstanceForClusterSummaryList = /*@__PURE__*/ S.Array(
-  DbInstanceForClusterSummary,
-);
-export interface ListDbInstancesForClusterOutput {
-  items: DbInstanceForClusterSummary[];
-  nextToken?: string;
-}
-export const ListDbInstancesForClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: DbInstanceForClusterSummaryList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDbInstancesForClusterOutput",
-}) as any as S.Schema<ListDbInstancesForClusterOutput>;
-export type DbInstanceIdList = string[];
-export const DbInstanceIdList = /*@__PURE__*/ S.Array(S.String);
-export interface RebootDbClusterInput {
-  dbClusterId: string;
-  instanceIds?: string[];
-}
-export const RebootDbClusterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dbClusterId: S.String,
-    instanceIds: S.optional(DbInstanceIdList),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "RebootDbClusterInput",
-}) as any as S.Schema<RebootDbClusterInput>;
-export interface RebootDbClusterOutput {
-  dbClusterStatus?: ClusterStatus;
-}
-export const RebootDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ dbClusterStatus: S.optional(ClusterStatus) }),
-).annotate({
-  identifier: "RebootDbClusterOutput",
-}) as any as S.Schema<RebootDbClusterOutput>;
+
 export interface CreateDbInstanceInput {
   name: string;
   username?: string | redacted.Redacted<string>;
@@ -680,6 +337,37 @@ export const CreateDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDbInstanceInput",
 }) as any as S.Schema<CreateDbInstanceInput>;
+export type DbInstanceId = string;
+export type Arn = string;
+export type Status =
+  | "CREATING"
+  | "AVAILABLE"
+  | "DELETING"
+  | "MODIFYING"
+  | "UPDATING"
+  | "DELETED"
+  | "FAILED"
+  | "UPDATING_DEPLOYMENT_TYPE"
+  | "UPDATING_INSTANCE_TYPE"
+  | "MAINTENANCE"
+  | "REBOOTING"
+  | "REBOOT_FAILED"
+  | (string & {});
+export const Status = /*@__PURE__*/ S.String;
+
+export type InstanceMode =
+  | "PRIMARY"
+  | "STANDBY"
+  | "REPLICA"
+  | "INGEST"
+  | "QUERY"
+  | "COMPACT"
+  | "PROCESS"
+  | (string & {});
+export const InstanceMode = /*@__PURE__*/ S.String;
+
+export type InstanceModeList = InstanceMode[];
+export const InstanceModeList = /*@__PURE__*/ S.Array(InstanceMode);
 export interface CreateDbInstanceOutput {
   id: string;
   name: string;
@@ -742,371 +430,13 @@ export const CreateDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDbInstanceOutput",
 }) as any as S.Schema<CreateDbInstanceOutput>;
-export interface GetDbInstanceInput {
-  identifier: string;
-}
-export const GetDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identifier: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetDbInstanceInput",
-}) as any as S.Schema<GetDbInstanceInput>;
-export interface GetDbInstanceOutput {
-  id: string;
-  name: string;
-  arn: string;
-  status?: Status;
-  endpoint?: string;
-  port?: number;
-  networkType?: NetworkType;
-  dbInstanceType?: DbInstanceType;
-  dbStorageType?: DbStorageType;
-  allocatedStorage?: number;
-  deploymentType?: DeploymentType;
-  vpcSubnetIds: string[];
-  publiclyAccessible?: boolean;
-  vpcSecurityGroupIds?: string[];
-  dbParameterGroupIdentifier?: string;
-  availabilityZone?: string;
-  secondaryAvailabilityZone?: string;
-  logDeliveryConfiguration?: LogDeliveryConfiguration;
-  influxAuthParametersSecretArn?: string;
-  dbClusterId?: string;
-  instanceMode?: InstanceMode;
-  instanceModes?: InstanceMode[];
-  maintenanceSchedule?: MaintenanceSchedule;
-  lastMaintenanceTime?: Date;
-  nextMaintenanceTime?: Date;
-}
-export const GetDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(Status),
-    endpoint: S.optional(S.String),
-    port: S.optional(S.Number),
-    networkType: S.optional(NetworkType),
-    dbInstanceType: S.optional(DbInstanceType),
-    dbStorageType: S.optional(DbStorageType),
-    allocatedStorage: S.optional(S.Number),
-    deploymentType: S.optional(DeploymentType),
-    vpcSubnetIds: VpcSubnetIdList,
-    publiclyAccessible: S.optional(S.Boolean),
-    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-    dbParameterGroupIdentifier: S.optional(S.String),
-    availabilityZone: S.optional(S.String),
-    secondaryAvailabilityZone: S.optional(S.String),
-    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-    influxAuthParametersSecretArn: S.optional(S.String),
-    dbClusterId: S.optional(S.String),
-    instanceMode: S.optional(InstanceMode),
-    instanceModes: S.optional(InstanceModeList),
-    maintenanceSchedule: S.optional(MaintenanceSchedule),
-    lastMaintenanceTime: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    nextMaintenanceTime: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({
-  identifier: "GetDbInstanceOutput",
-}) as any as S.Schema<GetDbInstanceOutput>;
-export interface UpdateDbInstanceInput {
-  identifier: string;
-  logDeliveryConfiguration?: LogDeliveryConfiguration;
-  dbParameterGroupIdentifier?: string;
-  port?: number;
-  dbInstanceType?: DbInstanceType;
-  deploymentType?: DeploymentType;
-  dbStorageType?: DbStorageType;
-  allocatedStorage?: number;
-  maintenanceSchedule?: MaintenanceSchedule;
-}
-export const UpdateDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String,
-    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-    dbParameterGroupIdentifier: S.optional(S.String),
-    port: S.optional(S.Number),
-    dbInstanceType: S.optional(DbInstanceType),
-    deploymentType: S.optional(DeploymentType),
-    dbStorageType: S.optional(DbStorageType),
-    allocatedStorage: S.optional(S.Number),
-    maintenanceSchedule: S.optional(MaintenanceSchedule),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateDbInstanceInput",
-}) as any as S.Schema<UpdateDbInstanceInput>;
-export interface UpdateDbInstanceOutput {
-  id: string;
-  name: string;
-  arn: string;
-  status?: Status;
-  endpoint?: string;
-  port?: number;
-  networkType?: NetworkType;
-  dbInstanceType?: DbInstanceType;
-  dbStorageType?: DbStorageType;
-  allocatedStorage?: number;
-  deploymentType?: DeploymentType;
-  vpcSubnetIds: string[];
-  publiclyAccessible?: boolean;
-  vpcSecurityGroupIds?: string[];
-  dbParameterGroupIdentifier?: string;
-  availabilityZone?: string;
-  secondaryAvailabilityZone?: string;
-  logDeliveryConfiguration?: LogDeliveryConfiguration;
-  influxAuthParametersSecretArn?: string;
-  dbClusterId?: string;
-  instanceMode?: InstanceMode;
-  instanceModes?: InstanceMode[];
-  maintenanceSchedule?: MaintenanceSchedule;
-  lastMaintenanceTime?: Date;
-  nextMaintenanceTime?: Date;
-}
-export const UpdateDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(Status),
-    endpoint: S.optional(S.String),
-    port: S.optional(S.Number),
-    networkType: S.optional(NetworkType),
-    dbInstanceType: S.optional(DbInstanceType),
-    dbStorageType: S.optional(DbStorageType),
-    allocatedStorage: S.optional(S.Number),
-    deploymentType: S.optional(DeploymentType),
-    vpcSubnetIds: VpcSubnetIdList,
-    publiclyAccessible: S.optional(S.Boolean),
-    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-    dbParameterGroupIdentifier: S.optional(S.String),
-    availabilityZone: S.optional(S.String),
-    secondaryAvailabilityZone: S.optional(S.String),
-    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-    influxAuthParametersSecretArn: S.optional(S.String),
-    dbClusterId: S.optional(S.String),
-    instanceMode: S.optional(InstanceMode),
-    instanceModes: S.optional(InstanceModeList),
-    maintenanceSchedule: S.optional(MaintenanceSchedule),
-    lastMaintenanceTime: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    nextMaintenanceTime: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateDbInstanceOutput",
-}) as any as S.Schema<UpdateDbInstanceOutput>;
-export interface DeleteDbInstanceInput {
-  identifier: string;
-}
-export const DeleteDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identifier: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteDbInstanceInput",
-}) as any as S.Schema<DeleteDbInstanceInput>;
-export interface DeleteDbInstanceOutput {
-  id: string;
-  name: string;
-  arn: string;
-  status?: Status;
-  endpoint?: string;
-  port?: number;
-  networkType?: NetworkType;
-  dbInstanceType?: DbInstanceType;
-  dbStorageType?: DbStorageType;
-  allocatedStorage?: number;
-  deploymentType?: DeploymentType;
-  vpcSubnetIds: string[];
-  publiclyAccessible?: boolean;
-  vpcSecurityGroupIds?: string[];
-  dbParameterGroupIdentifier?: string;
-  availabilityZone?: string;
-  secondaryAvailabilityZone?: string;
-  logDeliveryConfiguration?: LogDeliveryConfiguration;
-  influxAuthParametersSecretArn?: string;
-  dbClusterId?: string;
-  instanceMode?: InstanceMode;
-  instanceModes?: InstanceMode[];
-  maintenanceSchedule?: MaintenanceSchedule;
-  lastMaintenanceTime?: Date;
-  nextMaintenanceTime?: Date;
-}
-export const DeleteDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(Status),
-    endpoint: S.optional(S.String),
-    port: S.optional(S.Number),
-    networkType: S.optional(NetworkType),
-    dbInstanceType: S.optional(DbInstanceType),
-    dbStorageType: S.optional(DbStorageType),
-    allocatedStorage: S.optional(S.Number),
-    deploymentType: S.optional(DeploymentType),
-    vpcSubnetIds: VpcSubnetIdList,
-    publiclyAccessible: S.optional(S.Boolean),
-    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-    dbParameterGroupIdentifier: S.optional(S.String),
-    availabilityZone: S.optional(S.String),
-    secondaryAvailabilityZone: S.optional(S.String),
-    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-    influxAuthParametersSecretArn: S.optional(S.String),
-    dbClusterId: S.optional(S.String),
-    instanceMode: S.optional(InstanceMode),
-    instanceModes: S.optional(InstanceModeList),
-    maintenanceSchedule: S.optional(MaintenanceSchedule),
-    lastMaintenanceTime: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    nextMaintenanceTime: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({
-  identifier: "DeleteDbInstanceOutput",
-}) as any as S.Schema<DeleteDbInstanceOutput>;
-export interface ListDbInstancesInput {
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListDbInstancesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListDbInstancesInput",
-}) as any as S.Schema<ListDbInstancesInput>;
-export interface DbInstanceSummary {
-  id: string;
-  name: string;
-  arn: string;
-  status?: Status;
-  endpoint?: string;
-  port?: number;
-  networkType?: NetworkType;
-  dbInstanceType?: DbInstanceType;
-  dbStorageType?: DbStorageType;
-  allocatedStorage?: number;
-  deploymentType?: DeploymentType;
-}
-export const DbInstanceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(Status),
-    endpoint: S.optional(S.String),
-    port: S.optional(S.Number),
-    networkType: S.optional(NetworkType),
-    dbInstanceType: S.optional(DbInstanceType),
-    dbStorageType: S.optional(DbStorageType),
-    allocatedStorage: S.optional(S.Number),
-    deploymentType: S.optional(DeploymentType),
-  }),
-).annotate({
-  identifier: "DbInstanceSummary",
-}) as any as S.Schema<DbInstanceSummary>;
-export type DbInstanceSummaryList = DbInstanceSummary[];
-export const DbInstanceSummaryList = /*@__PURE__*/ S.Array(DbInstanceSummary);
-export interface ListDbInstancesOutput {
-  items: DbInstanceSummary[];
-  nextToken?: string;
-}
-export const ListDbInstancesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: DbInstanceSummaryList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListDbInstancesOutput",
-}) as any as S.Schema<ListDbInstancesOutput>;
-export interface RebootDbInstanceInput {
-  identifier: string;
-}
-export const RebootDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ identifier: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "RebootDbInstanceInput",
-}) as any as S.Schema<RebootDbInstanceInput>;
-export interface RebootDbInstanceOutput {
-  id: string;
-  name: string;
-  arn: string;
-  status?: Status;
-  endpoint?: string;
-  port?: number;
-  networkType?: NetworkType;
-  dbInstanceType?: DbInstanceType;
-  dbStorageType?: DbStorageType;
-  allocatedStorage?: number;
-  deploymentType?: DeploymentType;
-  vpcSubnetIds: string[];
-  publiclyAccessible?: boolean;
-  vpcSecurityGroupIds?: string[];
-  dbParameterGroupIdentifier?: string;
-  availabilityZone?: string;
-  secondaryAvailabilityZone?: string;
-  logDeliveryConfiguration?: LogDeliveryConfiguration;
-  influxAuthParametersSecretArn?: string;
-  dbClusterId?: string;
-  instanceMode?: InstanceMode;
-  instanceModes?: InstanceMode[];
-  maintenanceSchedule?: MaintenanceSchedule;
-  lastMaintenanceTime?: Date;
-  nextMaintenanceTime?: Date;
-}
-export const RebootDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    arn: S.String,
-    status: S.optional(Status),
-    endpoint: S.optional(S.String),
-    port: S.optional(S.Number),
-    networkType: S.optional(NetworkType),
-    dbInstanceType: S.optional(DbInstanceType),
-    dbStorageType: S.optional(DbStorageType),
-    allocatedStorage: S.optional(S.Number),
-    deploymentType: S.optional(DeploymentType),
-    vpcSubnetIds: VpcSubnetIdList,
-    publiclyAccessible: S.optional(S.Boolean),
-    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
-    dbParameterGroupIdentifier: S.optional(S.String),
-    availabilityZone: S.optional(S.String),
-    secondaryAvailabilityZone: S.optional(S.String),
-    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
-    influxAuthParametersSecretArn: S.optional(S.String),
-    dbClusterId: S.optional(S.String),
-    instanceMode: S.optional(InstanceMode),
-    instanceModes: S.optional(InstanceModeList),
-    maintenanceSchedule: S.optional(MaintenanceSchedule),
-    lastMaintenanceTime: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    nextMaintenanceTime: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({
-  identifier: "RebootDbInstanceOutput",
-}) as any as S.Schema<RebootDbInstanceOutput>;
+export type DbParameterGroupName = string;
 export type LogLevel = "debug" | "info" | "error" | (string & {});
 export const LogLevel = /*@__PURE__*/ S.String;
+
 export type TracingType = "log" | "jaeger" | "disabled" | (string & {});
 export const TracingType = /*@__PURE__*/ S.String;
+
 export type DurationType =
   | "hours"
   | "minutes"
@@ -1115,6 +445,7 @@ export type DurationType =
   | "days"
   | (string & {});
 export const DurationType = /*@__PURE__*/ S.String;
+
 export interface Duration {
   durationType: DurationType;
   value: number;
@@ -1200,11 +531,13 @@ export const InfluxDBv2Parameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InfluxDBv2Parameters>;
 export type LogFormats = "full" | (string & {});
 export const LogFormats = /*@__PURE__*/ S.String;
+
 export type DataFusionRuntimeType =
   | "multi-thread"
   | "multi-thread-alt"
   | (string & {});
 export const DataFusionRuntimeType = /*@__PURE__*/ S.String;
+
 export type PercentOrAbsoluteLong =
   | { percent: string; absolute?: never }
   | { percent?: never; absolute: number };
@@ -1449,6 +782,7 @@ export const CreateDbParameterGroupInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDbParameterGroupInput",
 }) as any as S.Schema<CreateDbParameterGroupInput>;
+export type DbParameterGroupId = string;
 export interface CreateDbParameterGroupOutput {
   id: string;
   name: string;
@@ -1467,6 +801,260 @@ export const CreateDbParameterGroupOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDbParameterGroupOutput",
 }) as any as S.Schema<CreateDbParameterGroupOutput>;
+export interface DeleteDbClusterInput {
+  dbClusterId: string;
+}
+export const DeleteDbClusterInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ dbClusterId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteDbClusterInput",
+}) as any as S.Schema<DeleteDbClusterInput>;
+export interface DeleteDbClusterOutput {
+  dbClusterStatus?: ClusterStatus;
+}
+export const DeleteDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ dbClusterStatus: S.optional(ClusterStatus) }),
+).annotate({
+  identifier: "DeleteDbClusterOutput",
+}) as any as S.Schema<DeleteDbClusterOutput>;
+export type DbInstanceIdentifier = string;
+export interface DeleteDbInstanceInput {
+  identifier: string;
+}
+export const DeleteDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ identifier: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteDbInstanceInput",
+}) as any as S.Schema<DeleteDbInstanceInput>;
+export interface DeleteDbInstanceOutput {
+  id: string;
+  name: string;
+  arn: string;
+  status?: Status;
+  endpoint?: string;
+  port?: number;
+  networkType?: NetworkType;
+  dbInstanceType?: DbInstanceType;
+  dbStorageType?: DbStorageType;
+  allocatedStorage?: number;
+  deploymentType?: DeploymentType;
+  vpcSubnetIds: string[];
+  publiclyAccessible?: boolean;
+  vpcSecurityGroupIds?: string[];
+  dbParameterGroupIdentifier?: string;
+  availabilityZone?: string;
+  secondaryAvailabilityZone?: string;
+  logDeliveryConfiguration?: LogDeliveryConfiguration;
+  influxAuthParametersSecretArn?: string;
+  dbClusterId?: string;
+  instanceMode?: InstanceMode;
+  instanceModes?: InstanceMode[];
+  maintenanceSchedule?: MaintenanceSchedule;
+  lastMaintenanceTime?: Date;
+  nextMaintenanceTime?: Date;
+}
+export const DeleteDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    status: S.optional(Status),
+    endpoint: S.optional(S.String),
+    port: S.optional(S.Number),
+    networkType: S.optional(NetworkType),
+    dbInstanceType: S.optional(DbInstanceType),
+    dbStorageType: S.optional(DbStorageType),
+    allocatedStorage: S.optional(S.Number),
+    deploymentType: S.optional(DeploymentType),
+    vpcSubnetIds: VpcSubnetIdList,
+    publiclyAccessible: S.optional(S.Boolean),
+    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+    dbParameterGroupIdentifier: S.optional(S.String),
+    availabilityZone: S.optional(S.String),
+    secondaryAvailabilityZone: S.optional(S.String),
+    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+    influxAuthParametersSecretArn: S.optional(S.String),
+    dbClusterId: S.optional(S.String),
+    instanceMode: S.optional(InstanceMode),
+    instanceModes: S.optional(InstanceModeList),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+    lastMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    nextMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "DeleteDbInstanceOutput",
+}) as any as S.Schema<DeleteDbInstanceOutput>;
+export interface GetDbClusterInput {
+  dbClusterId: string;
+}
+export const GetDbClusterInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ dbClusterId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetDbClusterInput",
+}) as any as S.Schema<GetDbClusterInput>;
+export type EngineType =
+  | "INFLUXDB_V2"
+  | "INFLUXDB_V3_CORE"
+  | "INFLUXDB_V3_ENTERPRISE"
+  | (string & {});
+export const EngineType = /*@__PURE__*/ S.String;
+
+export interface ClusterConfiguration {
+  ingestQueryInstances?: number;
+  queryOnlyInstances?: number;
+  dedicatedCompactor?: boolean;
+}
+export const ClusterConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ingestQueryInstances: S.optional(S.Number),
+    queryOnlyInstances: S.optional(S.Number),
+    dedicatedCompactor: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ClusterConfiguration",
+}) as any as S.Schema<ClusterConfiguration>;
+export interface GetDbClusterOutput {
+  id: string;
+  name: string;
+  arn: string;
+  status?: ClusterStatus;
+  endpoint?: string;
+  readerEndpoint?: string;
+  port?: number;
+  deploymentType?: ClusterDeploymentType;
+  dbInstanceType?: DbInstanceType;
+  networkType?: NetworkType;
+  dbStorageType?: DbStorageType;
+  allocatedStorage?: number;
+  engineType?: EngineType;
+  publiclyAccessible?: boolean;
+  dbParameterGroupIdentifier?: string;
+  logDeliveryConfiguration?: LogDeliveryConfiguration;
+  maintenanceSchedule?: MaintenanceSchedule;
+  lastMaintenanceTime?: Date;
+  nextMaintenanceTime?: Date;
+  influxAuthParametersSecretArn?: string;
+  vpcSubnetIds?: string[];
+  vpcSecurityGroupIds?: string[];
+  failoverMode?: FailoverMode;
+  clusterConfiguration?: ClusterConfiguration;
+}
+export const GetDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    status: S.optional(ClusterStatus),
+    endpoint: S.optional(S.String),
+    readerEndpoint: S.optional(S.String),
+    port: S.optional(S.Number),
+    deploymentType: S.optional(ClusterDeploymentType),
+    dbInstanceType: S.optional(DbInstanceType),
+    networkType: S.optional(NetworkType),
+    dbStorageType: S.optional(DbStorageType),
+    allocatedStorage: S.optional(S.Number),
+    engineType: S.optional(EngineType),
+    publiclyAccessible: S.optional(S.Boolean),
+    dbParameterGroupIdentifier: S.optional(S.String),
+    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+    lastMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    nextMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    influxAuthParametersSecretArn: S.optional(S.String),
+    vpcSubnetIds: S.optional(VpcSubnetIdList),
+    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+    failoverMode: S.optional(FailoverMode),
+    clusterConfiguration: S.optional(ClusterConfiguration),
+  }),
+).annotate({
+  identifier: "GetDbClusterOutput",
+}) as any as S.Schema<GetDbClusterOutput>;
+export interface GetDbInstanceInput {
+  identifier: string;
+}
+export const GetDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ identifier: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetDbInstanceInput",
+}) as any as S.Schema<GetDbInstanceInput>;
+export interface GetDbInstanceOutput {
+  id: string;
+  name: string;
+  arn: string;
+  status?: Status;
+  endpoint?: string;
+  port?: number;
+  networkType?: NetworkType;
+  dbInstanceType?: DbInstanceType;
+  dbStorageType?: DbStorageType;
+  allocatedStorage?: number;
+  deploymentType?: DeploymentType;
+  vpcSubnetIds: string[];
+  publiclyAccessible?: boolean;
+  vpcSecurityGroupIds?: string[];
+  dbParameterGroupIdentifier?: string;
+  availabilityZone?: string;
+  secondaryAvailabilityZone?: string;
+  logDeliveryConfiguration?: LogDeliveryConfiguration;
+  influxAuthParametersSecretArn?: string;
+  dbClusterId?: string;
+  instanceMode?: InstanceMode;
+  instanceModes?: InstanceMode[];
+  maintenanceSchedule?: MaintenanceSchedule;
+  lastMaintenanceTime?: Date;
+  nextMaintenanceTime?: Date;
+}
+export const GetDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    status: S.optional(Status),
+    endpoint: S.optional(S.String),
+    port: S.optional(S.Number),
+    networkType: S.optional(NetworkType),
+    dbInstanceType: S.optional(DbInstanceType),
+    dbStorageType: S.optional(DbStorageType),
+    allocatedStorage: S.optional(S.Number),
+    deploymentType: S.optional(DeploymentType),
+    vpcSubnetIds: VpcSubnetIdList,
+    publiclyAccessible: S.optional(S.Boolean),
+    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+    dbParameterGroupIdentifier: S.optional(S.String),
+    availabilityZone: S.optional(S.String),
+    secondaryAvailabilityZone: S.optional(S.String),
+    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+    influxAuthParametersSecretArn: S.optional(S.String),
+    dbClusterId: S.optional(S.String),
+    instanceMode: S.optional(InstanceMode),
+    instanceModes: S.optional(InstanceModeList),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+    lastMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    nextMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "GetDbInstanceOutput",
+}) as any as S.Schema<GetDbInstanceOutput>;
 export interface GetDbParameterGroupInput {
   identifier: string;
 }
@@ -1495,6 +1083,188 @@ export const GetDbParameterGroupOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDbParameterGroupOutput",
 }) as any as S.Schema<GetDbParameterGroupOutput>;
+export type NextToken = string;
+export type MaxResults = number;
+export interface ListDbClustersInput {
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListDbClustersInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListDbClustersInput",
+}) as any as S.Schema<ListDbClustersInput>;
+export interface DbClusterSummary {
+  id: string;
+  name: string;
+  arn: string;
+  status?: ClusterStatus;
+  endpoint?: string;
+  readerEndpoint?: string;
+  port?: number;
+  deploymentType?: ClusterDeploymentType;
+  dbInstanceType?: DbInstanceType;
+  networkType?: NetworkType;
+  dbStorageType?: DbStorageType;
+  allocatedStorage?: number;
+  engineType?: EngineType;
+}
+export const DbClusterSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    status: S.optional(ClusterStatus),
+    endpoint: S.optional(S.String),
+    readerEndpoint: S.optional(S.String),
+    port: S.optional(S.Number),
+    deploymentType: S.optional(ClusterDeploymentType),
+    dbInstanceType: S.optional(DbInstanceType),
+    networkType: S.optional(NetworkType),
+    dbStorageType: S.optional(DbStorageType),
+    allocatedStorage: S.optional(S.Number),
+    engineType: S.optional(EngineType),
+  }),
+).annotate({
+  identifier: "DbClusterSummary",
+}) as any as S.Schema<DbClusterSummary>;
+export type DbClusterSummaryList = DbClusterSummary[];
+export const DbClusterSummaryList = /*@__PURE__*/ S.Array(DbClusterSummary);
+export interface ListDbClustersOutput {
+  items: DbClusterSummary[];
+  nextToken?: string;
+}
+export const ListDbClustersOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ items: DbClusterSummaryList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListDbClustersOutput",
+}) as any as S.Schema<ListDbClustersOutput>;
+export interface ListDbInstancesInput {
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListDbInstancesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListDbInstancesInput",
+}) as any as S.Schema<ListDbInstancesInput>;
+export interface DbInstanceSummary {
+  id: string;
+  name: string;
+  arn: string;
+  status?: Status;
+  endpoint?: string;
+  port?: number;
+  networkType?: NetworkType;
+  dbInstanceType?: DbInstanceType;
+  dbStorageType?: DbStorageType;
+  allocatedStorage?: number;
+  deploymentType?: DeploymentType;
+}
+export const DbInstanceSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    status: S.optional(Status),
+    endpoint: S.optional(S.String),
+    port: S.optional(S.Number),
+    networkType: S.optional(NetworkType),
+    dbInstanceType: S.optional(DbInstanceType),
+    dbStorageType: S.optional(DbStorageType),
+    allocatedStorage: S.optional(S.Number),
+    deploymentType: S.optional(DeploymentType),
+  }),
+).annotate({
+  identifier: "DbInstanceSummary",
+}) as any as S.Schema<DbInstanceSummary>;
+export type DbInstanceSummaryList = DbInstanceSummary[];
+export const DbInstanceSummaryList = /*@__PURE__*/ S.Array(DbInstanceSummary);
+export interface ListDbInstancesOutput {
+  items: DbInstanceSummary[];
+  nextToken?: string;
+}
+export const ListDbInstancesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ items: DbInstanceSummaryList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListDbInstancesOutput",
+}) as any as S.Schema<ListDbInstancesOutput>;
+export interface ListDbInstancesForClusterInput {
+  dbClusterId: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListDbInstancesForClusterInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dbClusterId: S.String,
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListDbInstancesForClusterInput",
+}) as any as S.Schema<ListDbInstancesForClusterInput>;
+export interface DbInstanceForClusterSummary {
+  id: string;
+  name: string;
+  arn: string;
+  status?: Status;
+  endpoint?: string;
+  port?: number;
+  networkType?: NetworkType;
+  dbInstanceType?: DbInstanceType;
+  dbStorageType?: DbStorageType;
+  allocatedStorage?: number;
+  deploymentType?: DeploymentType;
+  instanceMode?: InstanceMode;
+  instanceModes?: InstanceMode[];
+}
+export const DbInstanceForClusterSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    status: S.optional(Status),
+    endpoint: S.optional(S.String),
+    port: S.optional(S.Number),
+    networkType: S.optional(NetworkType),
+    dbInstanceType: S.optional(DbInstanceType),
+    dbStorageType: S.optional(DbStorageType),
+    allocatedStorage: S.optional(S.Number),
+    deploymentType: S.optional(DeploymentType),
+    instanceMode: S.optional(InstanceMode),
+    instanceModes: S.optional(InstanceModeList),
+  }),
+).annotate({
+  identifier: "DbInstanceForClusterSummary",
+}) as any as S.Schema<DbInstanceForClusterSummary>;
+export type DbInstanceForClusterSummaryList = DbInstanceForClusterSummary[];
+export const DbInstanceForClusterSummaryList = /*@__PURE__*/ S.Array(
+  DbInstanceForClusterSummary,
+);
+export interface ListDbInstancesForClusterOutput {
+  items: DbInstanceForClusterSummary[];
+  nextToken?: string;
+}
+export const ListDbInstancesForClusterOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: DbInstanceForClusterSummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDbInstancesForClusterOutput",
+}) as any as S.Schema<ListDbInstancesForClusterOutput>;
 export interface ListDbParameterGroupsInput {
   nextToken?: string;
   maxResults?: number;
@@ -1541,102 +1311,292 @@ export const ListDbParameterGroupsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDbParameterGroupsOutput",
 }) as any as S.Schema<ListDbParameterGroupsOutput>;
+export interface ListTagsForResourceRequest {
+  resourceArn: string;
+}
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListTagsForResourceRequest",
+}) as any as S.Schema<ListTagsForResourceRequest>;
+export type ResponseTagMap = { [key: string]: string | undefined };
+export const ResponseTagMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface ListTagsForResourceResponse {
+  tags?: { [key: string]: string | undefined };
+}
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(ResponseTagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
+export type DbInstanceIdList = string[];
+export const DbInstanceIdList = /*@__PURE__*/ S.Array(S.String);
+export interface RebootDbClusterInput {
+  dbClusterId: string;
+  instanceIds?: string[];
+}
+export const RebootDbClusterInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dbClusterId: S.String,
+    instanceIds: S.optional(DbInstanceIdList),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "RebootDbClusterInput",
+}) as any as S.Schema<RebootDbClusterInput>;
+export interface RebootDbClusterOutput {
+  dbClusterStatus?: ClusterStatus;
+}
+export const RebootDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ dbClusterStatus: S.optional(ClusterStatus) }),
+).annotate({
+  identifier: "RebootDbClusterOutput",
+}) as any as S.Schema<RebootDbClusterOutput>;
+export interface RebootDbInstanceInput {
+  identifier: string;
+}
+export const RebootDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ identifier: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "RebootDbInstanceInput",
+}) as any as S.Schema<RebootDbInstanceInput>;
+export interface RebootDbInstanceOutput {
+  id: string;
+  name: string;
+  arn: string;
+  status?: Status;
+  endpoint?: string;
+  port?: number;
+  networkType?: NetworkType;
+  dbInstanceType?: DbInstanceType;
+  dbStorageType?: DbStorageType;
+  allocatedStorage?: number;
+  deploymentType?: DeploymentType;
+  vpcSubnetIds: string[];
+  publiclyAccessible?: boolean;
+  vpcSecurityGroupIds?: string[];
+  dbParameterGroupIdentifier?: string;
+  availabilityZone?: string;
+  secondaryAvailabilityZone?: string;
+  logDeliveryConfiguration?: LogDeliveryConfiguration;
+  influxAuthParametersSecretArn?: string;
+  dbClusterId?: string;
+  instanceMode?: InstanceMode;
+  instanceModes?: InstanceMode[];
+  maintenanceSchedule?: MaintenanceSchedule;
+  lastMaintenanceTime?: Date;
+  nextMaintenanceTime?: Date;
+}
+export const RebootDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    status: S.optional(Status),
+    endpoint: S.optional(S.String),
+    port: S.optional(S.Number),
+    networkType: S.optional(NetworkType),
+    dbInstanceType: S.optional(DbInstanceType),
+    dbStorageType: S.optional(DbStorageType),
+    allocatedStorage: S.optional(S.Number),
+    deploymentType: S.optional(DeploymentType),
+    vpcSubnetIds: VpcSubnetIdList,
+    publiclyAccessible: S.optional(S.Boolean),
+    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+    dbParameterGroupIdentifier: S.optional(S.String),
+    availabilityZone: S.optional(S.String),
+    secondaryAvailabilityZone: S.optional(S.String),
+    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+    influxAuthParametersSecretArn: S.optional(S.String),
+    dbClusterId: S.optional(S.String),
+    instanceMode: S.optional(InstanceMode),
+    instanceModes: S.optional(InstanceModeList),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+    lastMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    nextMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "RebootDbInstanceOutput",
+}) as any as S.Schema<RebootDbInstanceOutput>;
+export interface TagResourceRequest {
+  resourceArn: string;
+  tags: { [key: string]: string | undefined };
+}
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String, tags: RequestTagMap }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "TagResourceRequest",
+}) as any as S.Schema<TagResourceRequest>;
+export interface TagResourceResponse {}
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "TagResourceResponse",
+}) as any as S.Schema<TagResourceResponse>;
+export type TagKeys = string[];
+export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export interface UntagResourceRequest {
+  resourceArn: string;
+  tagKeys: string[];
+}
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+    tagKeys: TagKeys,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UntagResourceRequest",
+}) as any as S.Schema<UntagResourceRequest>;
+export interface UntagResourceResponse {}
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UntagResourceResponse",
+}) as any as S.Schema<UntagResourceResponse>;
+export interface UpdateDbClusterInput {
+  dbClusterId: string;
+  logDeliveryConfiguration?: LogDeliveryConfiguration;
+  dbParameterGroupIdentifier?: string;
+  port?: number;
+  dbInstanceType?: DbInstanceType;
+  failoverMode?: FailoverMode;
+  maintenanceSchedule?: MaintenanceSchedule;
+}
+export const UpdateDbClusterInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dbClusterId: S.String,
+    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+    dbParameterGroupIdentifier: S.optional(S.String),
+    port: S.optional(S.Number),
+    dbInstanceType: S.optional(DbInstanceType),
+    failoverMode: S.optional(FailoverMode),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateDbClusterInput",
+}) as any as S.Schema<UpdateDbClusterInput>;
+export interface UpdateDbClusterOutput {
+  dbClusterStatus?: ClusterStatus;
+}
+export const UpdateDbClusterOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ dbClusterStatus: S.optional(ClusterStatus) }),
+).annotate({
+  identifier: "UpdateDbClusterOutput",
+}) as any as S.Schema<UpdateDbClusterOutput>;
+export interface UpdateDbInstanceInput {
+  identifier: string;
+  logDeliveryConfiguration?: LogDeliveryConfiguration;
+  dbParameterGroupIdentifier?: string;
+  port?: number;
+  dbInstanceType?: DbInstanceType;
+  deploymentType?: DeploymentType;
+  dbStorageType?: DbStorageType;
+  allocatedStorage?: number;
+  maintenanceSchedule?: MaintenanceSchedule;
+}
+export const UpdateDbInstanceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identifier: S.String,
+    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+    dbParameterGroupIdentifier: S.optional(S.String),
+    port: S.optional(S.Number),
+    dbInstanceType: S.optional(DbInstanceType),
+    deploymentType: S.optional(DeploymentType),
+    dbStorageType: S.optional(DbStorageType),
+    allocatedStorage: S.optional(S.Number),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateDbInstanceInput",
+}) as any as S.Schema<UpdateDbInstanceInput>;
+export interface UpdateDbInstanceOutput {
+  id: string;
+  name: string;
+  arn: string;
+  status?: Status;
+  endpoint?: string;
+  port?: number;
+  networkType?: NetworkType;
+  dbInstanceType?: DbInstanceType;
+  dbStorageType?: DbStorageType;
+  allocatedStorage?: number;
+  deploymentType?: DeploymentType;
+  vpcSubnetIds: string[];
+  publiclyAccessible?: boolean;
+  vpcSecurityGroupIds?: string[];
+  dbParameterGroupIdentifier?: string;
+  availabilityZone?: string;
+  secondaryAvailabilityZone?: string;
+  logDeliveryConfiguration?: LogDeliveryConfiguration;
+  influxAuthParametersSecretArn?: string;
+  dbClusterId?: string;
+  instanceMode?: InstanceMode;
+  instanceModes?: InstanceMode[];
+  maintenanceSchedule?: MaintenanceSchedule;
+  lastMaintenanceTime?: Date;
+  nextMaintenanceTime?: Date;
+}
+export const UpdateDbInstanceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    arn: S.String,
+    status: S.optional(Status),
+    endpoint: S.optional(S.String),
+    port: S.optional(S.Number),
+    networkType: S.optional(NetworkType),
+    dbInstanceType: S.optional(DbInstanceType),
+    dbStorageType: S.optional(DbStorageType),
+    allocatedStorage: S.optional(S.Number),
+    deploymentType: S.optional(DeploymentType),
+    vpcSubnetIds: VpcSubnetIdList,
+    publiclyAccessible: S.optional(S.Boolean),
+    vpcSecurityGroupIds: S.optional(VpcSecurityGroupIdList),
+    dbParameterGroupIdentifier: S.optional(S.String),
+    availabilityZone: S.optional(S.String),
+    secondaryAvailabilityZone: S.optional(S.String),
+    logDeliveryConfiguration: S.optional(LogDeliveryConfiguration),
+    influxAuthParametersSecretArn: S.optional(S.String),
+    dbClusterId: S.optional(S.String),
+    instanceMode: S.optional(InstanceMode),
+    instanceModes: S.optional(InstanceModeList),
+    maintenanceSchedule: S.optional(MaintenanceSchedule),
+    lastMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    nextMaintenanceTime: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateDbInstanceOutput",
+}) as any as S.Schema<UpdateDbInstanceOutput>;
+export type ValidationExceptionReason =
+  | "FIELD_VALIDATION_FAILED"
+  | "OTHER"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.all(T.HttpError(429), T.Retryable()),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.String, reason: ValidationExceptionReason },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
-export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
-/**
- * A list of tags applied to the resource.
- */
-export const listTagsForResource: API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResponse,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
-  errors: [ResourceNotFoundException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListTagsForResource",
-}));
-export type TagResourceError =
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | CommonErrors;
-/**
- * Tags are composed of a Key/Value pairs. You can use tags to categorize and track your Timestream for InfluxDB resources.
- */
-export const tagResource: API.OperationMethod<
-  TagResourceRequest,
-  TagResourceResponse,
-  TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
-  errors: [ResourceNotFoundException, ServiceQuotaExceededException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "TagResource",
-}));
-export type UntagResourceError = ResourceNotFoundException | CommonErrors;
-/**
- * Removes the tag from the specified resource.
- */
-export const untagResource: API.OperationMethod<
-  UntagResourceRequest,
-  UntagResourceResponse,
-  UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
-  errors: [ResourceNotFoundException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UntagResource",
-}));
 export type CreateDbClusterError =
   | AccessDeniedException
   | ConflictException
@@ -1670,66 +1630,75 @@ export const createDbCluster: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDbCluster",
 }));
-export type GetDbClusterError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about a Timestream for InfluxDB cluster.
- */
-export const getDbCluster: API.OperationMethod<
-  GetDbClusterInput,
-  GetDbClusterOutput,
-  GetDbClusterError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDbClusterInput,
-  output: GetDbClusterOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetDbCluster",
-}));
-export type UpdateDbClusterError =
+
+export type CreateDbInstanceError =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
   | ResourceNotFoundException
+  | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Updates a Timestream for InfluxDB cluster.
+ * Creates a new Timestream for InfluxDB DB instance.
  */
-export const updateDbCluster: API.OperationMethod<
-  UpdateDbClusterInput,
-  UpdateDbClusterOutput,
-  UpdateDbClusterError,
+export const createDbInstance: API.OperationMethod<
+  CreateDbInstanceInput,
+  CreateDbInstanceOutput,
+  CreateDbInstanceError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDbClusterInput,
-  output: UpdateDbClusterOutput,
+  input: CreateDbInstanceInput,
+  output: CreateDbInstanceOutput,
   errors: [
     AccessDeniedException,
     ConflictException,
     InternalServerException,
     ResourceNotFoundException,
+    ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "UpdateDbCluster",
+  operationName: "CreateDbInstance",
 }));
+
+export type CreateDbParameterGroupError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new Timestream for InfluxDB DB parameter group to associate with DB instances.
+ */
+export const createDbParameterGroup: API.OperationMethod<
+  CreateDbParameterGroupInput,
+  CreateDbParameterGroupOutput,
+  CreateDbParameterGroupError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateDbParameterGroupInput,
+  output: CreateDbParameterGroupOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateDbParameterGroup",
+}));
+
 export type DeleteDbClusterError =
   | AccessDeniedException
   | ConflictException
@@ -1761,6 +1730,129 @@ export const deleteDbCluster: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDbCluster",
 }));
+
+export type DeleteDbInstanceError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a Timestream for InfluxDB DB instance.
+ */
+export const deleteDbInstance: API.OperationMethod<
+  DeleteDbInstanceInput,
+  DeleteDbInstanceOutput,
+  DeleteDbInstanceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDbInstanceInput,
+  output: DeleteDbInstanceOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteDbInstance",
+}));
+
+export type GetDbClusterError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a Timestream for InfluxDB cluster.
+ */
+export const getDbCluster: API.OperationMethod<
+  GetDbClusterInput,
+  GetDbClusterOutput,
+  GetDbClusterError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDbClusterInput,
+  output: GetDbClusterOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetDbCluster",
+}));
+
+export type GetDbInstanceError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a Timestream for InfluxDB DB instance.
+ */
+export const getDbInstance: API.OperationMethod<
+  GetDbInstanceInput,
+  GetDbInstanceOutput,
+  GetDbInstanceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDbInstanceInput,
+  output: GetDbInstanceOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetDbInstance",
+}));
+
+export type GetDbParameterGroupError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a Timestream for InfluxDB DB parameter group.
+ */
+export const getDbParameterGroup: API.OperationMethod<
+  GetDbParameterGroupInput,
+  GetDbParameterGroupOutput,
+  GetDbParameterGroupError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDbParameterGroupInput,
+  output: GetDbParameterGroupOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetDbParameterGroup",
+}));
+
 export type ListDbClustersError =
   | AccessDeniedException
   | InternalServerException
@@ -1811,211 +1903,7 @@ export const listDbClusters: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type ListDbInstancesForClusterError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns a list of Timestream for InfluxDB clusters.
- */
-export const listDbInstancesForCluster: API.OperationMethod<
-  ListDbInstancesForClusterInput,
-  ListDbInstancesForClusterOutput,
-  ListDbInstancesForClusterError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDbInstancesForClusterInput,
-  ) => stream.Stream<
-    ListDbInstancesForClusterOutput,
-    ListDbInstancesForClusterError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDbInstancesForClusterInput,
-  ) => stream.Stream<
-    DbInstanceForClusterSummary,
-    ListDbInstancesForClusterError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDbInstancesForClusterInput,
-  output: ListDbInstancesForClusterOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListDbInstancesForCluster",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "items",
-    pageSize: "maxResults",
-  } as const,
-}));
-export type RebootDbClusterError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Reboots a Timestream for InfluxDB cluster.
- */
-export const rebootDbCluster: API.OperationMethod<
-  RebootDbClusterInput,
-  RebootDbClusterOutput,
-  RebootDbClusterError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: RebootDbClusterInput,
-  output: RebootDbClusterOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "RebootDbCluster",
-}));
-export type CreateDbInstanceError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a new Timestream for InfluxDB DB instance.
- */
-export const createDbInstance: API.OperationMethod<
-  CreateDbInstanceInput,
-  CreateDbInstanceOutput,
-  CreateDbInstanceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateDbInstanceInput,
-  output: CreateDbInstanceOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateDbInstance",
-}));
-export type GetDbInstanceError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns a Timestream for InfluxDB DB instance.
- */
-export const getDbInstance: API.OperationMethod<
-  GetDbInstanceInput,
-  GetDbInstanceOutput,
-  GetDbInstanceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDbInstanceInput,
-  output: GetDbInstanceOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetDbInstance",
-}));
-export type UpdateDbInstanceError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates a Timestream for InfluxDB DB instance.
- */
-export const updateDbInstance: API.OperationMethod<
-  UpdateDbInstanceInput,
-  UpdateDbInstanceOutput,
-  UpdateDbInstanceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDbInstanceInput,
-  output: UpdateDbInstanceOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateDbInstance",
-}));
-export type DeleteDbInstanceError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a Timestream for InfluxDB DB instance.
- */
-export const deleteDbInstance: API.OperationMethod<
-  DeleteDbInstanceInput,
-  DeleteDbInstanceOutput,
-  DeleteDbInstanceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDbInstanceInput,
-  output: DeleteDbInstanceOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteDbInstance",
-}));
+
 export type ListDbInstancesError =
   | AccessDeniedException
   | InternalServerException
@@ -2066,71 +1954,8 @@ export const listDbInstances: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type RebootDbInstanceError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Reboots a Timestream for InfluxDB instance.
- */
-export const rebootDbInstance: API.OperationMethod<
-  RebootDbInstanceInput,
-  RebootDbInstanceOutput,
-  RebootDbInstanceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: RebootDbInstanceInput,
-  output: RebootDbInstanceOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "RebootDbInstance",
-}));
-export type CreateDbParameterGroupError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a new Timestream for InfluxDB DB parameter group to associate with DB instances.
- */
-export const createDbParameterGroup: API.OperationMethod<
-  CreateDbParameterGroupInput,
-  CreateDbParameterGroupOutput,
-  CreateDbParameterGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateDbParameterGroupInput,
-  output: CreateDbParameterGroupOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateDbParameterGroup",
-}));
-export type GetDbParameterGroupError =
+
+export type ListDbInstancesForClusterError =
   | AccessDeniedException
   | InternalServerException
   | ResourceNotFoundException
@@ -2138,16 +1963,31 @@ export type GetDbParameterGroupError =
   | ValidationException
   | CommonErrors;
 /**
- * Returns a Timestream for InfluxDB DB parameter group.
+ * Returns a list of Timestream for InfluxDB clusters.
  */
-export const getDbParameterGroup: API.OperationMethod<
-  GetDbParameterGroupInput,
-  GetDbParameterGroupOutput,
-  GetDbParameterGroupError,
+export const listDbInstancesForCluster: API.OperationMethod<
+  ListDbInstancesForClusterInput,
+  ListDbInstancesForClusterOutput,
+  ListDbInstancesForClusterError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDbParameterGroupInput,
-  output: GetDbParameterGroupOutput,
+> & {
+  pages: (
+    input: ListDbInstancesForClusterInput,
+  ) => stream.Stream<
+    ListDbInstancesForClusterOutput,
+    ListDbInstancesForClusterError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDbInstancesForClusterInput,
+  ) => stream.Stream<
+    DbInstanceForClusterSummary,
+    ListDbInstancesForClusterError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListDbInstancesForClusterInput,
+  output: ListDbInstancesForClusterOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2157,8 +1997,15 @@ export const getDbParameterGroup: API.OperationMethod<
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "GetDbParameterGroup",
+  operationName: "ListDbInstancesForCluster",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
 }));
+
 export type ListDbParameterGroupsError =
   | AccessDeniedException
   | InternalServerException
@@ -2208,4 +2055,189 @@ export const listDbParameterGroups: API.OperationMethod<
     items: "items",
     pageSize: "maxResults",
   } as const,
+}));
+
+export type ListTagsForResourceError = ResourceNotFoundException | CommonErrors;
+/**
+ * A list of tags applied to the resource.
+ */
+export const listTagsForResource: API.OperationMethod<
+  ListTagsForResourceRequest,
+  ListTagsForResourceResponse,
+  ListTagsForResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
+  errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTagsForResource",
+}));
+
+export type RebootDbClusterError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Reboots a Timestream for InfluxDB cluster.
+ */
+export const rebootDbCluster: API.OperationMethod<
+  RebootDbClusterInput,
+  RebootDbClusterOutput,
+  RebootDbClusterError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: RebootDbClusterInput,
+  output: RebootDbClusterOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "RebootDbCluster",
+}));
+
+export type RebootDbInstanceError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Reboots a Timestream for InfluxDB instance.
+ */
+export const rebootDbInstance: API.OperationMethod<
+  RebootDbInstanceInput,
+  RebootDbInstanceOutput,
+  RebootDbInstanceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: RebootDbInstanceInput,
+  output: RebootDbInstanceOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "RebootDbInstance",
+}));
+
+export type TagResourceError =
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | CommonErrors;
+/**
+ * Tags are composed of a Key/Value pairs. You can use tags to categorize and track your Timestream for InfluxDB resources.
+ */
+export const tagResource: API.OperationMethod<
+  TagResourceRequest,
+  TagResourceResponse,
+  TagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: TagResourceRequest,
+  output: TagResourceResponse,
+  errors: [ResourceNotFoundException, ServiceQuotaExceededException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TagResource",
+}));
+
+export type UntagResourceError = ResourceNotFoundException | CommonErrors;
+/**
+ * Removes the tag from the specified resource.
+ */
+export const untagResource: API.OperationMethod<
+  UntagResourceRequest,
+  UntagResourceResponse,
+  UntagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
+  errors: [ResourceNotFoundException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UntagResource",
+}));
+
+export type UpdateDbClusterError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates a Timestream for InfluxDB cluster.
+ */
+export const updateDbCluster: API.OperationMethod<
+  UpdateDbClusterInput,
+  UpdateDbClusterOutput,
+  UpdateDbClusterError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateDbClusterInput,
+  output: UpdateDbClusterOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateDbCluster",
+}));
+
+export type UpdateDbInstanceError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates a Timestream for InfluxDB DB instance.
+ */
+export const updateDbInstance: API.OperationMethod<
+  UpdateDbInstanceInput,
+  UpdateDbInstanceOutput,
+  UpdateDbInstanceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateDbInstanceInput,
+  output: UpdateDbInstanceOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateDbInstance",
 }));

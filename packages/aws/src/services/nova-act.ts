@@ -87,29 +87,76 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+    reason: S.optional(
+      S.suspend(() => InternalServerExceptionReason).annotate({
+        identifier: "InternalServerExceptionReason",
+      }),
+    ),
+  },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    message: S.String,
+    resourceId: S.String,
+    resourceType: S.String,
+    serviceCode: S.String,
+    quotaCode: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    serviceCode: S.optional(S.String),
+    quotaCode: S.optional(S.String),
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.suspend(() => ValidationExceptionReason).annotate({
+      identifier: "ValidationExceptionReason",
+    }),
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type WorkflowDefinitionName = string;
 export type UuidString = string;
 export type Task = string | redacted.Redacted<string>;
 export type ToolName = string;
 export type ToolDescription = string | redacted.Redacted<string>;
 export type ToolInputSchemaDocument = unknown;
-export type ClientToken = string;
-export type NonBlankString = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type CallId = string;
-export type SensitiveDocument = unknown;
-export type SensitiveString = string | redacted.Redacted<string>;
-export type ModelId = string;
-export type WorkflowDescription = string | redacted.Redacted<string>;
-export type S3BucketName = string;
-export type S3KeyPrefix = string;
-export type WorkflowDefinitionArn = string;
-export type CloudWatchLogGroupName = string;
-export type WorkflowRunArn = string;
-
-//# Schemas
 export type ToolInputSchema = { json: any };
 export const ToolInputSchema = /*@__PURE__*/ S.Union([
   S.Struct({ json: S.Any }),
@@ -128,6 +175,7 @@ export const ToolSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ToolSpec" }) as any as S.Schema<ToolSpec>;
 export type ToolSpecs = ToolSpec[];
 export const ToolSpecs = /*@__PURE__*/ S.Array(ToolSpec);
+export type ClientToken = string;
 export interface CreateActRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
@@ -171,6 +219,7 @@ export type ActStatus =
   | "TIMED_OUT"
   | (string & {});
 export const ActStatus = /*@__PURE__*/ S.String;
+
 export interface CreateActResponse {
   actId: string;
   status: ActStatus;
@@ -180,55 +229,23 @@ export const CreateActResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateActResponse",
 }) as any as S.Schema<CreateActResponse>;
-export type InternalServerExceptionReason =
-  | "InvalidModelGeneration"
-  | "RequestTokenLimitExceeded"
-  | (string & {});
-export const InternalServerExceptionReason = /*@__PURE__*/ S.String;
-export type ValidationExceptionReason =
-  | "FieldValidationFailed"
-  | "InvalidStatus"
-  | "GuardrailIntervened"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
-export type SortOrder = "Ascending" | "Descending" | (string & {});
-export const SortOrder = /*@__PURE__*/ S.String;
-export interface ListActsRequest {
+export interface CreateSessionRequest {
   workflowDefinitionName: string;
-  workflowRunId?: string;
-  sessionId?: string;
-  maxResults?: number;
-  nextToken?: string;
-  sortOrder?: SortOrder;
+  workflowRunId: string;
+  clientToken?: string;
 }
-export const ListActsRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowDefinitionName: S.String.pipe(
       T.HttpLabel("workflowDefinitionName"),
     ),
-    workflowRunId: S.optional(S.String).pipe(T.HttpQuery("workflowRunId")),
-    sessionId: S.optional(S.String).pipe(T.HttpQuery("sessionId")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    sortOrder: S.optional(SortOrder),
+    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
   }).pipe(
     T.all(
       T.Http({
-        method: "POST",
-        uri: "/workflow-definitions/{workflowDefinitionName}/acts",
+        method: "PUT",
+        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}/sessions",
       }),
       svc,
       auth,
@@ -238,48 +255,288 @@ export const ListActsRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "ListActsRequest",
-}) as any as S.Schema<ListActsRequest>;
-export type TraceLocationType = "S3" | (string & {});
-export const TraceLocationType = /*@__PURE__*/ S.String;
-export interface TraceLocation {
-  locationType: TraceLocationType;
-  location: string;
-}
-export const TraceLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ locationType: TraceLocationType, location: S.String }),
-).annotate({ identifier: "TraceLocation" }) as any as S.Schema<TraceLocation>;
-export interface ActSummary {
-  workflowRunId: string;
+  identifier: "CreateSessionRequest",
+}) as any as S.Schema<CreateSessionRequest>;
+export interface CreateSessionResponse {
   sessionId: string;
-  actId: string;
-  status: ActStatus;
+}
+export const CreateSessionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ sessionId: S.String }),
+).annotate({
+  identifier: "CreateSessionResponse",
+}) as any as S.Schema<CreateSessionResponse>;
+export type WorkflowDescription = string | redacted.Redacted<string>;
+export type S3BucketName = string;
+export type S3KeyPrefix = string;
+export interface WorkflowExportConfig {
+  s3BucketName: string;
+  s3KeyPrefix?: string;
+}
+export const WorkflowExportConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ s3BucketName: S.String, s3KeyPrefix: S.optional(S.String) }),
+).annotate({
+  identifier: "WorkflowExportConfig",
+}) as any as S.Schema<WorkflowExportConfig>;
+export interface CreateWorkflowDefinitionRequest {
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  exportConfig?: WorkflowExportConfig;
+  clientToken?: string;
+}
+export const CreateWorkflowDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(SensitiveString),
+    exportConfig: S.optional(WorkflowExportConfig),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/workflow-definitions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateWorkflowDefinitionRequest",
+}) as any as S.Schema<CreateWorkflowDefinitionRequest>;
+export type WorkflowDefinitionStatus = "ACTIVE" | "DELETING" | (string & {});
+export const WorkflowDefinitionStatus = /*@__PURE__*/ S.String;
+
+export interface CreateWorkflowDefinitionResponse {
+  status: WorkflowDefinitionStatus;
+}
+export const CreateWorkflowDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ status: WorkflowDefinitionStatus }),
+).annotate({
+  identifier: "CreateWorkflowDefinitionResponse",
+}) as any as S.Schema<CreateWorkflowDefinitionResponse>;
+export type ModelId = string;
+export type CloudWatchLogGroupName = string;
+export type NonBlankString = string;
+export interface ClientInfo {
+  compatibilityVersion: number;
+  sdkVersion?: string;
+}
+export const ClientInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    compatibilityVersion: S.Number,
+    sdkVersion: S.optional(S.String),
+  }),
+).annotate({ identifier: "ClientInfo" }) as any as S.Schema<ClientInfo>;
+export interface CreateWorkflowRunRequest {
+  workflowDefinitionName: string;
+  modelId: string;
+  clientToken?: string;
+  logGroupName?: string;
+  clientInfo: ClientInfo;
+}
+export const CreateWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowDefinitionName: S.String.pipe(
+      T.HttpLabel("workflowDefinitionName"),
+    ),
+    modelId: S.String,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    logGroupName: S.optional(S.String),
+    clientInfo: ClientInfo,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateWorkflowRunRequest",
+}) as any as S.Schema<CreateWorkflowRunRequest>;
+export type WorkflowRunStatus =
+  | "RUNNING"
+  | "SUCCEEDED"
+  | "FAILED"
+  | "TIMED_OUT"
+  | "DELETING"
+  | (string & {});
+export const WorkflowRunStatus = /*@__PURE__*/ S.String;
+
+export interface CreateWorkflowRunResponse {
+  workflowRunId: string;
+  status: WorkflowRunStatus;
+}
+export const CreateWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ workflowRunId: S.String, status: WorkflowRunStatus }),
+).annotate({
+  identifier: "CreateWorkflowRunResponse",
+}) as any as S.Schema<CreateWorkflowRunResponse>;
+export interface DeleteWorkflowDefinitionRequest {
+  workflowDefinitionName: string;
+}
+export const DeleteWorkflowDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowDefinitionName: S.String.pipe(
+      T.HttpLabel("workflowDefinitionName"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/workflow-definitions/{workflowDefinitionName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteWorkflowDefinitionRequest",
+}) as any as S.Schema<DeleteWorkflowDefinitionRequest>;
+export interface DeleteWorkflowDefinitionResponse {
+  status: WorkflowDefinitionStatus;
+}
+export const DeleteWorkflowDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ status: WorkflowDefinitionStatus }),
+).annotate({
+  identifier: "DeleteWorkflowDefinitionResponse",
+}) as any as S.Schema<DeleteWorkflowDefinitionResponse>;
+export interface DeleteWorkflowRunRequest {
+  workflowDefinitionName: string;
+  workflowRunId: string;
+}
+export const DeleteWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowDefinitionName: S.String.pipe(
+      T.HttpLabel("workflowDefinitionName"),
+    ),
+    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteWorkflowRunRequest",
+}) as any as S.Schema<DeleteWorkflowRunRequest>;
+export interface DeleteWorkflowRunResponse {
+  status: WorkflowRunStatus;
+}
+export const DeleteWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ status: WorkflowRunStatus }),
+).annotate({
+  identifier: "DeleteWorkflowRunResponse",
+}) as any as S.Schema<DeleteWorkflowRunResponse>;
+export interface GetWorkflowDefinitionRequest {
+  workflowDefinitionName: string;
+}
+export const GetWorkflowDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowDefinitionName: S.String.pipe(
+      T.HttpLabel("workflowDefinitionName"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/workflow-definitions/{workflowDefinitionName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetWorkflowDefinitionRequest",
+}) as any as S.Schema<GetWorkflowDefinitionRequest>;
+export type WorkflowDefinitionArn = string;
+export interface GetWorkflowDefinitionResponse {
+  name: string;
+  arn: string;
+  createdAt: Date;
+  description?: string | redacted.Redacted<string>;
+  exportConfig?: WorkflowExportConfig;
+  status: WorkflowDefinitionStatus;
+}
+export const GetWorkflowDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    arn: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    description: S.optional(SensitiveString),
+    exportConfig: S.optional(WorkflowExportConfig),
+    status: WorkflowDefinitionStatus,
+  }),
+).annotate({
+  identifier: "GetWorkflowDefinitionResponse",
+}) as any as S.Schema<GetWorkflowDefinitionResponse>;
+export interface GetWorkflowRunRequest {
+  workflowDefinitionName: string;
+  workflowRunId: string;
+}
+export const GetWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowDefinitionName: S.String.pipe(
+      T.HttpLabel("workflowDefinitionName"),
+    ),
+    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetWorkflowRunRequest",
+}) as any as S.Schema<GetWorkflowRunRequest>;
+export type WorkflowRunArn = string;
+export interface GetWorkflowRunResponse {
+  workflowRunArn: string;
+  workflowRunId: string;
+  status: WorkflowRunStatus;
   startedAt: Date;
   endedAt?: Date;
-  traceLocation?: TraceLocation;
+  modelId: string;
+  logGroupName?: string;
 }
-export const ActSummary = /*@__PURE__*/ S.suspend(() =>
+export const GetWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    workflowRunArn: S.String,
     workflowRunId: S.String,
-    sessionId: S.String,
-    actId: S.String,
-    status: ActStatus,
+    status: WorkflowRunStatus,
     startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    traceLocation: S.optional(TraceLocation),
+    modelId: S.String,
+    logGroupName: S.optional(S.String),
   }),
-).annotate({ identifier: "ActSummary" }) as any as S.Schema<ActSummary>;
-export type ActSummaries = ActSummary[];
-export const ActSummaries = /*@__PURE__*/ S.Array(ActSummary);
-export interface ListActsResponse {
-  actSummaries: ActSummary[];
-  nextToken?: string;
-}
-export const ListActsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ actSummaries: ActSummaries, nextToken: S.optional(S.String) }),
 ).annotate({
-  identifier: "ListActsResponse",
-}) as any as S.Schema<ListActsResponse>;
+  identifier: "GetWorkflowRunResponse",
+}) as any as S.Schema<GetWorkflowRunResponse>;
+export type CallId = string;
 export type CallResultContent = { text: string };
 export const CallResultContent = /*@__PURE__*/ S.Union([
   S.Struct({ text: S.String }),
@@ -329,6 +586,7 @@ export const InvokeActStepRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvokeActStepRequest",
 }) as any as S.Schema<InvokeActStepRequest>;
+export type SensitiveDocument = unknown;
 export interface Call {
   callId: string;
   input: any;
@@ -348,36 +606,34 @@ export const InvokeActStepResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvokeActStepResponse",
 }) as any as S.Schema<InvokeActStepResponse>;
-export interface ActError {
-  message: string | redacted.Redacted<string>;
-  type?: string;
-}
-export const ActError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ message: SensitiveString, type: S.optional(S.String) }),
-).annotate({ identifier: "ActError" }) as any as S.Schema<ActError>;
-export interface UpdateActRequest {
+export type MaxResults = number;
+export type NextToken = string;
+export type SortOrder = "Ascending" | "Descending" | (string & {});
+export const SortOrder = /*@__PURE__*/ S.String;
+
+export interface ListActsRequest {
   workflowDefinitionName: string;
-  workflowRunId: string;
-  sessionId: string;
-  actId: string;
-  status: ActStatus;
-  error?: ActError;
+  workflowRunId?: string;
+  sessionId?: string;
+  maxResults?: number;
+  nextToken?: string;
+  sortOrder?: SortOrder;
 }
-export const UpdateActRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListActsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     workflowDefinitionName: S.String.pipe(
       T.HttpLabel("workflowDefinitionName"),
     ),
-    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
-    sessionId: S.String.pipe(T.HttpLabel("sessionId")),
-    actId: S.String.pipe(T.HttpLabel("actId")),
-    status: ActStatus,
-    error: S.optional(ActError),
+    workflowRunId: S.optional(S.String).pipe(T.HttpQuery("workflowRunId")),
+    sessionId: S.optional(S.String).pipe(T.HttpQuery("sessionId")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    sortOrder: S.optional(SortOrder),
   }).pipe(
     T.all(
       T.Http({
-        method: "PUT",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}/sessions/{sessionId}/acts/{actId}",
+        method: "POST",
+        uri: "/workflow-definitions/{workflowDefinitionName}/acts",
       }),
       svc,
       auth,
@@ -387,14 +643,49 @@ export const UpdateActRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "UpdateActRequest",
-}) as any as S.Schema<UpdateActRequest>;
-export interface UpdateActResponse {}
-export const UpdateActResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  identifier: "ListActsRequest",
+}) as any as S.Schema<ListActsRequest>;
+export type TraceLocationType = "S3" | (string & {});
+export const TraceLocationType = /*@__PURE__*/ S.String;
+
+export interface TraceLocation {
+  locationType: TraceLocationType;
+  location: string;
+}
+export const TraceLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ locationType: TraceLocationType, location: S.String }),
+).annotate({ identifier: "TraceLocation" }) as any as S.Schema<TraceLocation>;
+export interface ActSummary {
+  workflowRunId: string;
+  sessionId: string;
+  actId: string;
+  status: ActStatus;
+  startedAt: Date;
+  endedAt?: Date;
+  traceLocation?: TraceLocation;
+}
+export const ActSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowRunId: S.String,
+    sessionId: S.String,
+    actId: S.String,
+    status: ActStatus,
+    startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
+    traceLocation: S.optional(TraceLocation),
+  }),
+).annotate({ identifier: "ActSummary" }) as any as S.Schema<ActSummary>;
+export type ActSummaries = ActSummary[];
+export const ActSummaries = /*@__PURE__*/ S.Array(ActSummary);
+export interface ListActsResponse {
+  actSummaries: ActSummary[];
+  nextToken?: string;
+}
+export const ListActsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ actSummaries: ActSummaries, nextToken: S.optional(S.String) }),
 ).annotate({
-  identifier: "UpdateActResponse",
-}) as any as S.Schema<UpdateActResponse>;
+  identifier: "ListActsResponse",
+}) as any as S.Schema<ListActsResponse>;
 export interface ListModelsRequest {
   clientCompatibilityVersion: number;
 }
@@ -423,6 +714,7 @@ export type ModelStatus =
   | "PREVIEW"
   | (string & {});
 export const ModelStatus = /*@__PURE__*/ S.String;
+
 export interface ModelLifecycle {
   status: ModelStatus;
 }
@@ -487,42 +779,6 @@ export const ListModelsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListModelsResponse",
 }) as any as S.Schema<ListModelsResponse>;
-export interface CreateSessionRequest {
-  workflowDefinitionName: string;
-  workflowRunId: string;
-  clientToken?: string;
-}
-export const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(
-      T.HttpLabel("workflowDefinitionName"),
-    ),
-    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}/sessions",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateSessionRequest",
-}) as any as S.Schema<CreateSessionRequest>;
-export interface CreateSessionResponse {
-  sessionId: string;
-}
-export const CreateSessionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sessionId: S.String }),
-).annotate({
-  identifier: "CreateSessionResponse",
-}) as any as S.Schema<CreateSessionResponse>;
 export interface ListSessionsRequest {
   workflowDefinitionName: string;
   workflowRunId: string;
@@ -575,126 +831,6 @@ export const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSessionsResponse",
 }) as any as S.Schema<ListSessionsResponse>;
-export interface WorkflowExportConfig {
-  s3BucketName: string;
-  s3KeyPrefix?: string;
-}
-export const WorkflowExportConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3BucketName: S.String, s3KeyPrefix: S.optional(S.String) }),
-).annotate({
-  identifier: "WorkflowExportConfig",
-}) as any as S.Schema<WorkflowExportConfig>;
-export interface CreateWorkflowDefinitionRequest {
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  exportConfig?: WorkflowExportConfig;
-  clientToken?: string;
-}
-export const CreateWorkflowDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    exportConfig: S.optional(WorkflowExportConfig),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/workflow-definitions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateWorkflowDefinitionRequest",
-}) as any as S.Schema<CreateWorkflowDefinitionRequest>;
-export type WorkflowDefinitionStatus = "ACTIVE" | "DELETING" | (string & {});
-export const WorkflowDefinitionStatus = /*@__PURE__*/ S.String;
-export interface CreateWorkflowDefinitionResponse {
-  status: WorkflowDefinitionStatus;
-}
-export const CreateWorkflowDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: WorkflowDefinitionStatus }),
-).annotate({
-  identifier: "CreateWorkflowDefinitionResponse",
-}) as any as S.Schema<CreateWorkflowDefinitionResponse>;
-export interface GetWorkflowDefinitionRequest {
-  workflowDefinitionName: string;
-}
-export const GetWorkflowDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(
-      T.HttpLabel("workflowDefinitionName"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/workflow-definitions/{workflowDefinitionName}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetWorkflowDefinitionRequest",
-}) as any as S.Schema<GetWorkflowDefinitionRequest>;
-export interface GetWorkflowDefinitionResponse {
-  name: string;
-  arn: string;
-  createdAt: Date;
-  description?: string | redacted.Redacted<string>;
-  exportConfig?: WorkflowExportConfig;
-  status: WorkflowDefinitionStatus;
-}
-export const GetWorkflowDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    arn: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    description: S.optional(SensitiveString),
-    exportConfig: S.optional(WorkflowExportConfig),
-    status: WorkflowDefinitionStatus,
-  }),
-).annotate({
-  identifier: "GetWorkflowDefinitionResponse",
-}) as any as S.Schema<GetWorkflowDefinitionResponse>;
-export interface DeleteWorkflowDefinitionRequest {
-  workflowDefinitionName: string;
-}
-export const DeleteWorkflowDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(
-      T.HttpLabel("workflowDefinitionName"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/workflow-definitions/{workflowDefinitionName}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteWorkflowDefinitionRequest",
-}) as any as S.Schema<DeleteWorkflowDefinitionRequest>;
-export interface DeleteWorkflowDefinitionResponse {
-  status: WorkflowDefinitionStatus;
-}
-export const DeleteWorkflowDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: WorkflowDefinitionStatus }),
-).annotate({
-  identifier: "DeleteWorkflowDefinitionResponse",
-}) as any as S.Schema<DeleteWorkflowDefinitionResponse>;
 export interface ListWorkflowDefinitionsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -750,181 +886,6 @@ export const ListWorkflowDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListWorkflowDefinitionsResponse",
 }) as any as S.Schema<ListWorkflowDefinitionsResponse>;
-export interface ClientInfo {
-  compatibilityVersion: number;
-  sdkVersion?: string;
-}
-export const ClientInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    compatibilityVersion: S.Number,
-    sdkVersion: S.optional(S.String),
-  }),
-).annotate({ identifier: "ClientInfo" }) as any as S.Schema<ClientInfo>;
-export interface CreateWorkflowRunRequest {
-  workflowDefinitionName: string;
-  modelId: string;
-  clientToken?: string;
-  logGroupName?: string;
-  clientInfo: ClientInfo;
-}
-export const CreateWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(
-      T.HttpLabel("workflowDefinitionName"),
-    ),
-    modelId: S.String,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    logGroupName: S.optional(S.String),
-    clientInfo: ClientInfo,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateWorkflowRunRequest",
-}) as any as S.Schema<CreateWorkflowRunRequest>;
-export type WorkflowRunStatus =
-  | "RUNNING"
-  | "SUCCEEDED"
-  | "FAILED"
-  | "TIMED_OUT"
-  | "DELETING"
-  | (string & {});
-export const WorkflowRunStatus = /*@__PURE__*/ S.String;
-export interface CreateWorkflowRunResponse {
-  workflowRunId: string;
-  status: WorkflowRunStatus;
-}
-export const CreateWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ workflowRunId: S.String, status: WorkflowRunStatus }),
-).annotate({
-  identifier: "CreateWorkflowRunResponse",
-}) as any as S.Schema<CreateWorkflowRunResponse>;
-export interface GetWorkflowRunRequest {
-  workflowDefinitionName: string;
-  workflowRunId: string;
-}
-export const GetWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(
-      T.HttpLabel("workflowDefinitionName"),
-    ),
-    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetWorkflowRunRequest",
-}) as any as S.Schema<GetWorkflowRunRequest>;
-export interface GetWorkflowRunResponse {
-  workflowRunArn: string;
-  workflowRunId: string;
-  status: WorkflowRunStatus;
-  startedAt: Date;
-  endedAt?: Date;
-  modelId: string;
-  logGroupName?: string;
-}
-export const GetWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowRunArn: S.String,
-    workflowRunId: S.String,
-    status: WorkflowRunStatus,
-    startedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    endedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-    modelId: S.String,
-    logGroupName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetWorkflowRunResponse",
-}) as any as S.Schema<GetWorkflowRunResponse>;
-export interface UpdateWorkflowRunRequest {
-  workflowDefinitionName: string;
-  workflowRunId: string;
-  status: WorkflowRunStatus;
-}
-export const UpdateWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(
-      T.HttpLabel("workflowDefinitionName"),
-    ),
-    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
-    status: WorkflowRunStatus,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateWorkflowRunRequest",
-}) as any as S.Schema<UpdateWorkflowRunRequest>;
-export interface UpdateWorkflowRunResponse {}
-export const UpdateWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateWorkflowRunResponse",
-}) as any as S.Schema<UpdateWorkflowRunResponse>;
-export interface DeleteWorkflowRunRequest {
-  workflowDefinitionName: string;
-  workflowRunId: string;
-}
-export const DeleteWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowDefinitionName: S.String.pipe(
-      T.HttpLabel("workflowDefinitionName"),
-    ),
-    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteWorkflowRunRequest",
-}) as any as S.Schema<DeleteWorkflowRunRequest>;
-export interface DeleteWorkflowRunResponse {
-  status: WorkflowRunStatus;
-}
-export const DeleteWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: WorkflowRunStatus }),
-).annotate({
-  identifier: "DeleteWorkflowRunResponse",
-}) as any as S.Schema<DeleteWorkflowRunResponse>;
 export interface ListWorkflowRunsRequest {
   workflowDefinitionName: string;
   maxResults?: number;
@@ -989,64 +950,114 @@ export const ListWorkflowRunsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListWorkflowRunsResponse",
 }) as any as S.Schema<ListWorkflowRunsResponse>;
+export type SensitiveString = string | redacted.Redacted<string>;
+export interface ActError {
+  message: string | redacted.Redacted<string>;
+  type?: string;
+}
+export const ActError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ message: SensitiveString, type: S.optional(S.String) }),
+).annotate({ identifier: "ActError" }) as any as S.Schema<ActError>;
+export interface UpdateActRequest {
+  workflowDefinitionName: string;
+  workflowRunId: string;
+  sessionId: string;
+  actId: string;
+  status: ActStatus;
+  error?: ActError;
+}
+export const UpdateActRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowDefinitionName: S.String.pipe(
+      T.HttpLabel("workflowDefinitionName"),
+    ),
+    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
+    sessionId: S.String.pipe(T.HttpLabel("sessionId")),
+    actId: S.String.pipe(T.HttpLabel("actId")),
+    status: ActStatus,
+    error: S.optional(ActError),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}/sessions/{sessionId}/acts/{actId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateActRequest",
+}) as any as S.Schema<UpdateActRequest>;
+export interface UpdateActResponse {}
+export const UpdateActResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateActResponse",
+}) as any as S.Schema<UpdateActResponse>;
+export interface UpdateWorkflowRunRequest {
+  workflowDefinitionName: string;
+  workflowRunId: string;
+  status: WorkflowRunStatus;
+}
+export const UpdateWorkflowRunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowDefinitionName: S.String.pipe(
+      T.HttpLabel("workflowDefinitionName"),
+    ),
+    workflowRunId: S.String.pipe(T.HttpLabel("workflowRunId")),
+    status: WorkflowRunStatus,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/workflow-definitions/{workflowDefinitionName}/workflow-runs/{workflowRunId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateWorkflowRunRequest",
+}) as any as S.Schema<UpdateWorkflowRunRequest>;
+export interface UpdateWorkflowRunResponse {}
+export const UpdateWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateWorkflowRunResponse",
+}) as any as S.Schema<UpdateWorkflowRunResponse>;
+export type InternalServerExceptionReason =
+  | "InvalidModelGeneration"
+  | "RequestTokenLimitExceeded"
+  | (string & {});
+export const InternalServerExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-    reason: S.optional(InternalServerExceptionReason),
-  },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    message: S.String,
-    resourceId: S.String,
-    resourceType: S.String,
-    serviceCode: S.String,
-    quotaCode: S.String,
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    serviceCode: S.optional(S.String),
-    quotaCode: S.optional(S.String),
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: ValidationExceptionReason,
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
+export type ValidationExceptionReason =
+  | "FieldValidationFailed"
+  | "InvalidStatus"
+  | "GuardrailIntervened"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Operations
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type CreateActError =
   | AccessDeniedException
   | ConflictException
@@ -1080,6 +1091,265 @@ export const createAct: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAct",
 }));
+
+export type CreateSessionError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new session context within a workflow run to manage conversation state and acts.
+ */
+export const createSession: API.OperationMethod<
+  CreateSessionRequest,
+  CreateSessionResponse,
+  CreateSessionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSessionRequest,
+  output: CreateSessionResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateSession",
+}));
+
+export type CreateWorkflowDefinitionError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new workflow definition template that can be used to execute multiple workflow runs.
+ */
+export const createWorkflowDefinition: API.OperationMethod<
+  CreateWorkflowDefinitionRequest,
+  CreateWorkflowDefinitionResponse,
+  CreateWorkflowDefinitionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateWorkflowDefinitionRequest,
+  output: CreateWorkflowDefinitionResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateWorkflowDefinition",
+}));
+
+export type CreateWorkflowRunError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new execution instance of a workflow definition with specified parameters.
+ */
+export const createWorkflowRun: API.OperationMethod<
+  CreateWorkflowRunRequest,
+  CreateWorkflowRunResponse,
+  CreateWorkflowRunError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateWorkflowRunRequest,
+  output: CreateWorkflowRunResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateWorkflowRun",
+}));
+
+export type DeleteWorkflowDefinitionError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a workflow definition and all associated resources. This operation cannot be undone.
+ */
+export const deleteWorkflowDefinition: API.OperationMethod<
+  DeleteWorkflowDefinitionRequest,
+  DeleteWorkflowDefinitionResponse,
+  DeleteWorkflowDefinitionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteWorkflowDefinitionRequest,
+  output: DeleteWorkflowDefinitionResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteWorkflowDefinition",
+}));
+
+export type DeleteWorkflowRunError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Terminates and cleans up a workflow run, stopping all associated acts and sessions.
+ */
+export const deleteWorkflowRun: API.OperationMethod<
+  DeleteWorkflowRunRequest,
+  DeleteWorkflowRunResponse,
+  DeleteWorkflowRunError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteWorkflowRunRequest,
+  output: DeleteWorkflowRunResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteWorkflowRun",
+}));
+
+export type GetWorkflowDefinitionError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the details and configuration of a specific workflow definition.
+ */
+export const getWorkflowDefinition: API.OperationMethod<
+  GetWorkflowDefinitionRequest,
+  GetWorkflowDefinitionResponse,
+  GetWorkflowDefinitionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetWorkflowDefinitionRequest,
+  output: GetWorkflowDefinitionResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetWorkflowDefinition",
+}));
+
+export type GetWorkflowRunError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the current state, configuration, and execution details of a workflow run.
+ */
+export const getWorkflowRun: API.OperationMethod<
+  GetWorkflowRunRequest,
+  GetWorkflowRunResponse,
+  GetWorkflowRunError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetWorkflowRunRequest,
+  output: GetWorkflowRunResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetWorkflowRun",
+}));
+
+export type InvokeActStepError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Executes the next step of an act, processing tool call results and returning new tool calls if needed.
+ */
+export const invokeActStep: API.OperationMethod<
+  InvokeActStepRequest,
+  InvokeActStepResponse,
+  InvokeActStepError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: InvokeActStepRequest,
+  output: InvokeActStepResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "InvokeActStep",
+}));
+
 export type ListActsError =
   | AccessDeniedException
   | ConflictException
@@ -1132,70 +1402,7 @@ export const listActs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type InvokeActStepError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Executes the next step of an act, processing tool call results and returning new tool calls if needed.
- */
-export const invokeActStep: API.OperationMethod<
-  InvokeActStepRequest,
-  InvokeActStepResponse,
-  InvokeActStepError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvokeActStepRequest,
-  output: InvokeActStepResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "InvokeActStep",
-}));
-export type UpdateActError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing act's configuration, status, or error information.
- */
-export const updateAct: API.OperationMethod<
-  UpdateActRequest,
-  UpdateActResponse,
-  UpdateActError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateActRequest,
-  output: UpdateActResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateAct",
-}));
+
 export type ListModelsError =
   | AccessDeniedException
   | InternalServerException
@@ -1217,39 +1424,7 @@ export const listModels: API.OperationMethod<
   retry: Retry,
   operationName: "ListModels",
 }));
-export type CreateSessionError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a new session context within a workflow run to manage conversation state and acts.
- */
-export const createSession: API.OperationMethod<
-  CreateSessionRequest,
-  CreateSessionResponse,
-  CreateSessionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateSessionRequest,
-  output: CreateSessionResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateSession",
-}));
+
 export type ListSessionsError =
   | AccessDeniedException
   | ConflictException
@@ -1302,97 +1477,7 @@ export const listSessions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateWorkflowDefinitionError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a new workflow definition template that can be used to execute multiple workflow runs.
- */
-export const createWorkflowDefinition: API.OperationMethod<
-  CreateWorkflowDefinitionRequest,
-  CreateWorkflowDefinitionResponse,
-  CreateWorkflowDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateWorkflowDefinitionRequest,
-  output: CreateWorkflowDefinitionResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateWorkflowDefinition",
-}));
-export type GetWorkflowDefinitionError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves the details and configuration of a specific workflow definition.
- */
-export const getWorkflowDefinition: API.OperationMethod<
-  GetWorkflowDefinitionRequest,
-  GetWorkflowDefinitionResponse,
-  GetWorkflowDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkflowDefinitionRequest,
-  output: GetWorkflowDefinitionResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetWorkflowDefinition",
-}));
-export type DeleteWorkflowDefinitionError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a workflow definition and all associated resources. This operation cannot be undone.
- */
-export const deleteWorkflowDefinition: API.OperationMethod<
-  DeleteWorkflowDefinitionRequest,
-  DeleteWorkflowDefinitionResponse,
-  DeleteWorkflowDefinitionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWorkflowDefinitionRequest,
-  output: DeleteWorkflowDefinitionResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteWorkflowDefinition",
-}));
+
 export type ListWorkflowDefinitionsError =
   | AccessDeniedException
   | InternalServerException
@@ -1441,130 +1526,7 @@ export const listWorkflowDefinitions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateWorkflowRunError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a new execution instance of a workflow definition with specified parameters.
- */
-export const createWorkflowRun: API.OperationMethod<
-  CreateWorkflowRunRequest,
-  CreateWorkflowRunResponse,
-  CreateWorkflowRunError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateWorkflowRunRequest,
-  output: CreateWorkflowRunResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateWorkflowRun",
-}));
-export type GetWorkflowRunError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves the current state, configuration, and execution details of a workflow run.
- */
-export const getWorkflowRun: API.OperationMethod<
-  GetWorkflowRunRequest,
-  GetWorkflowRunResponse,
-  GetWorkflowRunError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkflowRunRequest,
-  output: GetWorkflowRunResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetWorkflowRun",
-}));
-export type UpdateWorkflowRunError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates the configuration or state of an active workflow run.
- */
-export const updateWorkflowRun: API.OperationMethod<
-  UpdateWorkflowRunRequest,
-  UpdateWorkflowRunResponse,
-  UpdateWorkflowRunError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWorkflowRunRequest,
-  output: UpdateWorkflowRunResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateWorkflowRun",
-}));
-export type DeleteWorkflowRunError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Terminates and cleans up a workflow run, stopping all associated acts and sessions.
- */
-export const deleteWorkflowRun: API.OperationMethod<
-  DeleteWorkflowRunRequest,
-  DeleteWorkflowRunResponse,
-  DeleteWorkflowRunError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWorkflowRunRequest,
-  output: DeleteWorkflowRunResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteWorkflowRun",
-}));
+
 export type ListWorkflowRunsError =
   | AccessDeniedException
   | ConflictException
@@ -1616,4 +1578,68 @@ export const listWorkflowRuns: API.OperationMethod<
     items: "workflowRunSummaries",
     pageSize: "maxResults",
   } as const,
+}));
+
+export type UpdateActError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing act's configuration, status, or error information.
+ */
+export const updateAct: API.OperationMethod<
+  UpdateActRequest,
+  UpdateActResponse,
+  UpdateActError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateActRequest,
+  output: UpdateActResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateAct",
+}));
+
+export type UpdateWorkflowRunError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the configuration or state of an active workflow run.
+ */
+export const updateWorkflowRun: API.OperationMethod<
+  UpdateWorkflowRunRequest,
+  UpdateWorkflowRunResponse,
+  UpdateWorkflowRunError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateWorkflowRunRequest,
+  output: UpdateWorkflowRunResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateWorkflowRun",
 }));

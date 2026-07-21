@@ -52,78 +52,45 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ValidationExceptionMessage = string;
-export type ServiceLevelObjectiveArn = string;
-export type ServiceLevelObjectiveName = string;
-export type Attainment = number;
-export type TotalBudgetSeconds = number;
-export type BudgetSecondsRemaining = number;
-export type TotalBudgetRequests = number;
-export type BudgetRequestsRemaining = number;
-export type KeyAttributeName = string;
-export type KeyAttributeValue = string;
-export type OperationName = string;
-export type MetricId = string;
-export type Namespace = string;
-export type MetricName = string;
-export type DimensionName = string;
-export type DimensionValue = string;
-export type Period = number;
-export type Stat = string;
-export type MetricExpression = string;
-export type MetricLabel = string;
-export type ReturnData = boolean;
-export type AccountId = string;
-export type SelectionPattern = string;
-export type ServiceLevelIndicatorMetricThreshold = number;
-export type RollingIntervalDuration = number;
-export type CalendarIntervalDuration = number;
-export type AttainmentGoal = number;
-export type WarningThreshold = number;
-export type ServiceLevelObjectiveBudgetReportErrorCode = string;
-export type ServiceLevelObjectiveBudgetReportErrorMessage = string;
-export type ExclusionDuration = number;
-export type Expression = string;
-export type ExclusionReason = string;
-export type ServiceLevelObjectiveId = string;
-export type ExclusionWindowErrorCode = string;
-export type ExclusionWindowErrorMessage = string;
-export type ResourceType = string;
-export type ResourceId = string;
-export type FaultDescription = string;
-export type TagKey = string;
-export type TagValue = string;
-export type InstrumentationConfigurationArn = string;
-export type ServiceErrorMessage = string;
-export type NextToken = string;
-export type GroupName = string;
-export type GroupValue = string;
-export type GroupSource = string;
-export type GroupIdentifier = string;
-export type MetricType = string;
-export type AwsAccountId = string;
-export type ListAuditFindingMaxResults = number;
-export type ListEntityEventsMaxResults = number;
-export type GroupingString = string;
-export type ListServiceDependenciesMaxResults = number;
-export type ListServiceDependentsMaxResults = number;
-export type ListServiceLevelObjectiveExclusionWindowsMaxResults = number;
-export type ListServiceOperationMaxResults = number;
-export type ListServicesMaxResults = number;
-export type ListServiceStatesMaxResults = number;
-export type AttributeFilterName = string;
-export type AttributeFilterValue = string;
-export type AmazonResourceName = string;
-export type ServiceLevelObjectiveDescription = string;
-export type ServiceLevelIndicatorStatistic = string;
-export type SLIPeriodSeconds = number;
-export type BurnRateLookBackWindowMinutes = number;
-export type ListServiceLevelObjectivesMaxResults = number;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { ResourceType: S.String, ResourceId: S.String, Message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ValidationError", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type InstrumentationType = "BREAKPOINT" | "PROBE" | (string & {});
 export const InstrumentationType = /*@__PURE__*/ S.String;
+
 export interface BatchDeleteScope {
   Service: string;
   Environment: string;
@@ -204,6 +171,7 @@ export type BatchDeleteErrorCode =
   | "InternalServiceException"
   | (string & {});
 export const BatchDeleteErrorCode = /*@__PURE__*/ S.String;
+
 export interface BatchDeleteError {
   ResourceArn: string;
   Code: BatchDeleteErrorCode;
@@ -259,8 +227,11 @@ export const BatchGetServiceLevelObjectiveBudgetReportInput =
   ).annotate({
     identifier: "BatchGetServiceLevelObjectiveBudgetReportInput",
   }) as any as S.Schema<BatchGetServiceLevelObjectiveBudgetReportInput>;
+export type ServiceLevelObjectiveArn = string;
+export type ServiceLevelObjectiveName = string;
 export type EvaluationType = "PeriodBased" | "RequestBased" | (string & {});
 export const EvaluationType = /*@__PURE__*/ S.String;
+
 export type ServiceLevelObjectiveBudgetStatus =
   | "OK"
   | "WARNING"
@@ -268,16 +239,31 @@ export type ServiceLevelObjectiveBudgetStatus =
   | "INSUFFICIENT_DATA"
   | (string & {});
 export const ServiceLevelObjectiveBudgetStatus = /*@__PURE__*/ S.String;
+
+export type Attainment = number;
+export type TotalBudgetSeconds = number;
+export type BudgetSecondsRemaining = number;
+export type TotalBudgetRequests = number;
+export type BudgetRequestsRemaining = number;
+export type KeyAttributeName = string;
+export type KeyAttributeValue = string;
 export type Attributes = { [key: string]: string | undefined };
 export const Attributes = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type OperationName = string;
 export type ServiceLevelIndicatorMetricType =
   | "LATENCY"
   | "AVAILABILITY"
   | (string & {});
 export const ServiceLevelIndicatorMetricType = /*@__PURE__*/ S.String;
+
+export type MetricId = string;
+export type Namespace = string;
+export type MetricName = string;
+export type DimensionName = string;
+export type DimensionValue = string;
 export interface Dimension {
   Name: string;
   Value: string;
@@ -299,6 +285,8 @@ export const Metric = /*@__PURE__*/ S.suspend(() =>
     Dimensions: S.optional(Dimensions),
   }),
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
+export type Period = number;
+export type Stat = string;
 export type StandardUnit =
   | "Microseconds"
   | "Milliseconds"
@@ -329,6 +317,7 @@ export type StandardUnit =
   | "None"
   | (string & {});
 export const StandardUnit = /*@__PURE__*/ S.String;
+
 export interface MetricStat {
   Metric: Metric;
   Period: number;
@@ -343,6 +332,10 @@ export const MetricStat = /*@__PURE__*/ S.suspend(() =>
     Unit: S.optional(StandardUnit),
   }),
 ).annotate({ identifier: "MetricStat" }) as any as S.Schema<MetricStat>;
+export type MetricExpression = string;
+export type MetricLabel = string;
+export type ReturnData = boolean;
+export type AccountId = string;
 export interface MetricDataQuery {
   Id: string;
   MetricStat?: MetricStat;
@@ -391,6 +384,8 @@ export const MetricSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MetricSource" }) as any as S.Schema<MetricSource>;
 export type SelectionType = "EXPLICIT" | "PREFIX" | "REGEX" | (string & {});
 export const SelectionType = /*@__PURE__*/ S.String;
+
+export type SelectionPattern = string;
 export interface SelectionConfig {
   Type: SelectionType;
   Pattern?: string;
@@ -442,6 +437,7 @@ export const ServiceLevelIndicatorMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServiceLevelIndicatorMetric",
 }) as any as S.Schema<ServiceLevelIndicatorMetric>;
+export type ServiceLevelIndicatorMetricThreshold = number;
 export type ServiceLevelIndicatorComparisonOperator =
   | "GreaterThanOrEqualTo"
   | "GreaterThan"
@@ -449,6 +445,7 @@ export type ServiceLevelIndicatorComparisonOperator =
   | "LessThanOrEqualTo"
   | (string & {});
 export const ServiceLevelIndicatorComparisonOperator = /*@__PURE__*/ S.String;
+
 export interface ServiceLevelIndicator {
   SliMetric: ServiceLevelIndicatorMetric;
   MetricThreshold: number;
@@ -511,6 +508,8 @@ export const RequestBasedServiceLevelIndicator = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RequestBasedServiceLevelIndicator>;
 export type DurationUnit = "MINUTE" | "HOUR" | "DAY" | "MONTH" | (string & {});
 export const DurationUnit = /*@__PURE__*/ S.String;
+
+export type RollingIntervalDuration = number;
 export interface RollingInterval {
   DurationUnit: DurationUnit;
   Duration: number;
@@ -520,6 +519,7 @@ export const RollingInterval = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RollingInterval",
 }) as any as S.Schema<RollingInterval>;
+export type CalendarIntervalDuration = number;
 export interface CalendarInterval {
   StartTime: Date;
   DurationUnit: DurationUnit;
@@ -541,6 +541,8 @@ export const Interval = /*@__PURE__*/ S.Union([
   S.Struct({ RollingInterval: RollingInterval }),
   S.Struct({ CalendarInterval: CalendarInterval }),
 ]);
+export type AttainmentGoal = number;
+export type WarningThreshold = number;
 export interface Goal {
   Interval?: Interval;
   AttainmentGoal?: number;
@@ -590,6 +592,8 @@ export type ServiceLevelObjectiveBudgetReports =
 export const ServiceLevelObjectiveBudgetReports = /*@__PURE__*/ S.Array(
   ServiceLevelObjectiveBudgetReport,
 );
+export type ServiceLevelObjectiveBudgetReportErrorCode = string;
+export type ServiceLevelObjectiveBudgetReportErrorMessage = string;
 export interface ServiceLevelObjectiveBudgetReportError {
   Name?: string;
   Arn: string;
@@ -627,6 +631,7 @@ export const BatchGetServiceLevelObjectiveBudgetReportOutput =
   ).annotate({
     identifier: "BatchGetServiceLevelObjectiveBudgetReportOutput",
   }) as any as S.Schema<BatchGetServiceLevelObjectiveBudgetReportOutput>;
+export type ExclusionDuration = number;
 export interface Window {
   DurationUnit: DurationUnit;
   Duration: number;
@@ -634,12 +639,14 @@ export interface Window {
 export const Window = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DurationUnit: DurationUnit, Duration: S.Number }),
 ).annotate({ identifier: "Window" }) as any as S.Schema<Window>;
+export type Expression = string;
 export interface RecurrenceRule {
   Expression?: string;
 }
 export const RecurrenceRule = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Expression: S.optional(S.String) }),
 ).annotate({ identifier: "RecurrenceRule" }) as any as S.Schema<RecurrenceRule>;
+export type ExclusionReason = string;
 export interface ExclusionWindow {
   Window: Window;
   StartTime?: Date;
@@ -681,6 +688,9 @@ export const BatchUpdateExclusionWindowsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchUpdateExclusionWindowsInput",
 }) as any as S.Schema<BatchUpdateExclusionWindowsInput>;
+export type ServiceLevelObjectiveId = string;
+export type ExclusionWindowErrorCode = string;
+export type ExclusionWindowErrorMessage = string;
 export interface BatchUpdateExclusionWindowsError_ {
   SloId: string;
   ErrorCode: string;
@@ -710,12 +720,14 @@ export const BatchUpdateExclusionWindowsOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchUpdateExclusionWindowsOutput>;
 export type DynamicInstrumentationSignalType = "SNAPSHOT" | (string & {});
 export const DynamicInstrumentationSignalType = /*@__PURE__*/ S.String;
+
 export type ProgrammingLanguage =
   | "Java"
   | "Python"
   | "Javascript"
   | (string & {});
 export const ProgrammingLanguage = /*@__PURE__*/ S.String;
+
 export interface CodeLocation {
   Language: ProgrammingLanguage;
   CodeUnit?: string;
@@ -797,6 +809,8 @@ export type CaptureConfiguration = { CodeCapture: CodeCaptureConfiguration };
 export const CaptureConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ CodeCapture: CodeCaptureConfiguration }),
 ]);
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -847,6 +861,7 @@ export const CreateInstrumentationConfigurationRequest =
   ).annotate({
     identifier: "CreateInstrumentationConfigurationRequest",
   }) as any as S.Schema<CreateInstrumentationConfigurationRequest>;
+export type InstrumentationConfigurationArn = string;
 export interface CreateInstrumentationConfigurationResponse {
   InstrumentationType: InstrumentationType;
   Service: string;
@@ -880,6 +895,194 @@ export const CreateInstrumentationConfigurationResponse =
   ).annotate({
     identifier: "CreateInstrumentationConfigurationResponse",
   }) as any as S.Schema<CreateInstrumentationConfigurationResponse>;
+export type ServiceLevelObjectiveDescription = string;
+export type ServiceLevelIndicatorStatistic = string;
+export type SLIPeriodSeconds = number;
+export interface ServiceLevelIndicatorMetricConfig {
+  KeyAttributes?: { [key: string]: string | undefined };
+  OperationName?: string;
+  MetricType?: ServiceLevelIndicatorMetricType;
+  MetricName?: string;
+  Statistic?: string;
+  PeriodSeconds?: number;
+  MetricSource?: MetricSource;
+  MetricDataQueries?: MetricDataQuery[];
+  DependencyConfig?: DependencyConfig;
+  CompositeSliConfig?: CompositeSliConfig;
+}
+export const ServiceLevelIndicatorMetricConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KeyAttributes: S.optional(Attributes),
+    OperationName: S.optional(S.String),
+    MetricType: S.optional(ServiceLevelIndicatorMetricType),
+    MetricName: S.optional(S.String),
+    Statistic: S.optional(S.String),
+    PeriodSeconds: S.optional(S.Number),
+    MetricSource: S.optional(MetricSource),
+    MetricDataQueries: S.optional(MetricDataQueries),
+    DependencyConfig: S.optional(DependencyConfig),
+    CompositeSliConfig: S.optional(CompositeSliConfig),
+  }),
+).annotate({
+  identifier: "ServiceLevelIndicatorMetricConfig",
+}) as any as S.Schema<ServiceLevelIndicatorMetricConfig>;
+export interface ServiceLevelIndicatorConfig {
+  SliMetricConfig: ServiceLevelIndicatorMetricConfig;
+  MetricThreshold?: number;
+  ComparisonOperator?: ServiceLevelIndicatorComparisonOperator;
+}
+export const ServiceLevelIndicatorConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SliMetricConfig: ServiceLevelIndicatorMetricConfig,
+    MetricThreshold: S.optional(S.Number),
+    ComparisonOperator: S.optional(ServiceLevelIndicatorComparisonOperator),
+  }),
+).annotate({
+  identifier: "ServiceLevelIndicatorConfig",
+}) as any as S.Schema<ServiceLevelIndicatorConfig>;
+export interface RequestBasedServiceLevelIndicatorMetricConfig {
+  KeyAttributes?: { [key: string]: string | undefined };
+  OperationName?: string;
+  MetricType?: ServiceLevelIndicatorMetricType;
+  TotalRequestCountMetric?: MetricDataQuery[];
+  MonitoredRequestCountMetric?: MonitoredRequestCountMetricDataQueries;
+  DependencyConfig?: DependencyConfig;
+  MetricSource?: MetricSource;
+  MetricName?: string;
+  CompositeSliConfig?: CompositeSliConfig;
+}
+export const RequestBasedServiceLevelIndicatorMetricConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      KeyAttributes: S.optional(Attributes),
+      OperationName: S.optional(S.String),
+      MetricType: S.optional(ServiceLevelIndicatorMetricType),
+      TotalRequestCountMetric: S.optional(MetricDataQueries),
+      MonitoredRequestCountMetric: S.optional(
+        MonitoredRequestCountMetricDataQueries,
+      ),
+      DependencyConfig: S.optional(DependencyConfig),
+      MetricSource: S.optional(MetricSource),
+      MetricName: S.optional(S.String),
+      CompositeSliConfig: S.optional(CompositeSliConfig),
+    }),
+  ).annotate({
+    identifier: "RequestBasedServiceLevelIndicatorMetricConfig",
+  }) as any as S.Schema<RequestBasedServiceLevelIndicatorMetricConfig>;
+export interface RequestBasedServiceLevelIndicatorConfig {
+  RequestBasedSliMetricConfig: RequestBasedServiceLevelIndicatorMetricConfig;
+  MetricThreshold?: number;
+  ComparisonOperator?: ServiceLevelIndicatorComparisonOperator;
+}
+export const RequestBasedServiceLevelIndicatorConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      RequestBasedSliMetricConfig:
+        RequestBasedServiceLevelIndicatorMetricConfig,
+      MetricThreshold: S.optional(S.Number),
+      ComparisonOperator: S.optional(ServiceLevelIndicatorComparisonOperator),
+    }),
+).annotate({
+  identifier: "RequestBasedServiceLevelIndicatorConfig",
+}) as any as S.Schema<RequestBasedServiceLevelIndicatorConfig>;
+export type BurnRateLookBackWindowMinutes = number;
+export interface BurnRateConfiguration {
+  LookBackWindowMinutes: number;
+}
+export const BurnRateConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ LookBackWindowMinutes: S.Number }),
+).annotate({
+  identifier: "BurnRateConfiguration",
+}) as any as S.Schema<BurnRateConfiguration>;
+export type BurnRateConfigurations = BurnRateConfiguration[];
+export const BurnRateConfigurations = /*@__PURE__*/ S.Array(
+  BurnRateConfiguration,
+);
+export interface CreateServiceLevelObjectiveInput {
+  Name: string;
+  Description?: string;
+  SliConfig?: ServiceLevelIndicatorConfig;
+  RequestBasedSliConfig?: RequestBasedServiceLevelIndicatorConfig;
+  Goal?: Goal;
+  Tags?: Tag[];
+  BurnRateConfigurations?: BurnRateConfiguration[];
+  CreateRecommendedSlo?: boolean;
+  AutoInvestigationEnabled?: boolean;
+}
+export const CreateServiceLevelObjectiveInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Name: S.String,
+    Description: S.optional(S.String),
+    SliConfig: S.optional(ServiceLevelIndicatorConfig),
+    RequestBasedSliConfig: S.optional(RequestBasedServiceLevelIndicatorConfig),
+    Goal: S.optional(Goal),
+    Tags: S.optional(TagList),
+    BurnRateConfigurations: S.optional(BurnRateConfigurations),
+    CreateRecommendedSlo: S.optional(S.Boolean),
+    AutoInvestigationEnabled: S.optional(S.Boolean),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/slo" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateServiceLevelObjectiveInput",
+}) as any as S.Schema<CreateServiceLevelObjectiveInput>;
+export type MetricSourceType =
+  | "ServiceOperation"
+  | "CloudWatchMetric"
+  | "ServiceDependency"
+  | "AppMonitor"
+  | "Canary"
+  | "Service"
+  | (string & {});
+export const MetricSourceType = /*@__PURE__*/ S.String;
+
+export interface ServiceLevelObjective {
+  Arn: string;
+  Name: string;
+  Description?: string;
+  CreatedTime: Date;
+  LastUpdatedTime: Date;
+  Sli?: ServiceLevelIndicator;
+  RequestBasedSli?: RequestBasedServiceLevelIndicator;
+  EvaluationType?: EvaluationType;
+  Goal: Goal;
+  BurnRateConfigurations?: BurnRateConfiguration[];
+  MetricSourceType?: MetricSourceType;
+  AutoInvestigationEnabled?: boolean;
+}
+export const ServiceLevelObjective = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    Name: S.String,
+    Description: S.optional(S.String),
+    CreatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    LastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    Sli: S.optional(ServiceLevelIndicator),
+    RequestBasedSli: S.optional(RequestBasedServiceLevelIndicator),
+    EvaluationType: S.optional(EvaluationType),
+    Goal: Goal,
+    BurnRateConfigurations: S.optional(BurnRateConfigurations),
+    MetricSourceType: S.optional(MetricSourceType),
+    AutoInvestigationEnabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ServiceLevelObjective",
+}) as any as S.Schema<ServiceLevelObjective>;
+export interface CreateServiceLevelObjectiveOutput {
+  Slo: ServiceLevelObjective;
+}
+export const CreateServiceLevelObjectiveOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Slo: ServiceLevelObjective }),
+).annotate({
+  identifier: "CreateServiceLevelObjectiveOutput",
+}) as any as S.Schema<CreateServiceLevelObjectiveOutput>;
 export interface DeleteGroupingConfigurationRequest {}
 export const DeleteGroupingConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -941,6 +1144,7 @@ export const DeleteInstrumentationConfigurationRequest =
   }) as any as S.Schema<DeleteInstrumentationConfigurationRequest>;
 export type DynamicInstrumentationDeletionStatus = "DELETED" | (string & {});
 export const DynamicInstrumentationDeletionStatus = /*@__PURE__*/ S.String;
+
 export interface DeleteInstrumentationConfigurationResponse {
   DeletionStatus: DynamicInstrumentationDeletionStatus;
 }
@@ -950,6 +1154,29 @@ export const DeleteInstrumentationConfigurationResponse =
   ).annotate({
     identifier: "DeleteInstrumentationConfigurationResponse",
   }) as any as S.Schema<DeleteInstrumentationConfigurationResponse>;
+export interface DeleteServiceLevelObjectiveInput {
+  Id: string;
+}
+export const DeleteServiceLevelObjectiveInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/slo/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteServiceLevelObjectiveInput",
+}) as any as S.Schema<DeleteServiceLevelObjectiveInput>;
+export interface DeleteServiceLevelObjectiveOutput {}
+export const DeleteServiceLevelObjectiveOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteServiceLevelObjectiveOutput",
+}) as any as S.Schema<DeleteServiceLevelObjectiveOutput>;
 export interface GetInstrumentationConfigurationRequest {
   InstrumentationType: InstrumentationType;
   Service: string;
@@ -1025,6 +1252,8 @@ export type InstrumentationConfigurationStatus =
   | "DISABLED"
   | (string & {});
 export const InstrumentationConfigurationStatus = /*@__PURE__*/ S.String;
+
+export type NextToken = string;
 export interface GetInstrumentationConfigurationStatusRequest {
   InstrumentationType: InstrumentationType;
   Service: string;
@@ -1075,6 +1304,7 @@ export type InstrumentationErrorCause =
   | "RUNTIME_ERROR"
   | (string & {});
 export const InstrumentationErrorCause = /*@__PURE__*/ S.String;
+
 export interface InstrumentationStatusEvent {
   Time: Date;
   ErrorCause?: InstrumentationErrorCause;
@@ -1148,6 +1378,10 @@ export const AttributeMap = /*@__PURE__*/ S.Record(
 );
 export type AttributeMaps = { [key: string]: string | undefined }[];
 export const AttributeMaps = /*@__PURE__*/ S.Array(AttributeMap);
+export type GroupName = string;
+export type GroupValue = string;
+export type GroupSource = string;
+export type GroupIdentifier = string;
 export interface ServiceGroup {
   GroupName: string;
   GroupValue: string;
@@ -1164,6 +1398,8 @@ export const ServiceGroup = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ServiceGroup" }) as any as S.Schema<ServiceGroup>;
 export type ServiceGroups = ServiceGroup[];
 export const ServiceGroups = /*@__PURE__*/ S.Array(ServiceGroup);
+export type MetricType = string;
+export type AwsAccountId = string;
 export interface MetricReference {
   Namespace: string;
   MetricType: string;
@@ -1218,6 +1454,31 @@ export const GetServiceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetServiceOutput",
 }) as any as S.Schema<GetServiceOutput>;
+export interface GetServiceLevelObjectiveInput {
+  Id: string;
+}
+export const GetServiceLevelObjectiveInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/slo/{Id}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetServiceLevelObjectiveInput",
+}) as any as S.Schema<GetServiceLevelObjectiveInput>;
+export interface GetServiceLevelObjectiveOutput {
+  Slo: ServiceLevelObjective;
+}
+export const GetServiceLevelObjectiveOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Slo: ServiceLevelObjective }),
+).annotate({
+  identifier: "GetServiceLevelObjectiveOutput",
+}) as any as S.Schema<GetServiceLevelObjectiveOutput>;
 export type Auditors = string[];
 export const Auditors = /*@__PURE__*/ S.Array(S.String);
 export interface ServiceEntity {
@@ -1305,6 +1566,8 @@ export type AuditTargets = AuditTarget[];
 export const AuditTargets = /*@__PURE__*/ S.Array(AuditTarget);
 export type DetailLevel = "BRIEF" | "DETAILED" | (string & {});
 export const DetailLevel = /*@__PURE__*/ S.String;
+
+export type ListAuditFindingMaxResults = number;
 export interface ListAuditFindingsInput {
   StartTime: Date;
   EndTime: Date;
@@ -1353,6 +1616,7 @@ export type Severity =
   | "NONE"
   | (string & {});
 export const Severity = /*@__PURE__*/ S.String;
+
 export interface AuditorResult {
   Auditor?: string;
   Description?: string;
@@ -1405,6 +1669,7 @@ export type Nodes = Node[];
 export const Nodes = /*@__PURE__*/ S.Array(Node);
 export type ConnectionType = "INDIRECT" | "DIRECT" | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
+
 export interface Edge {
   SourceNodeId?: string;
   DestinationNodeId?: string;
@@ -1466,6 +1731,7 @@ export const ListAuditFindingsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAuditFindingsOutput",
 }) as any as S.Schema<ListAuditFindingsOutput>;
+export type ListEntityEventsMaxResults = number;
 export interface ListEntityEventsInput {
   Entity: { [key: string]: string | undefined };
   StartTime: Date;
@@ -1495,6 +1761,7 @@ export const ListEntityEventsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListEntityEventsInput>;
 export type ChangeEventType = "DEPLOYMENT" | "CONFIGURATION" | (string & {});
 export const ChangeEventType = /*@__PURE__*/ S.String;
+
 export interface ChangeEvent {
   Timestamp: Date;
   AccountId: string;
@@ -1561,6 +1828,7 @@ export const ListGroupingAttributeDefinitionsInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListGroupingAttributeDefinitionsInput",
 }) as any as S.Schema<ListGroupingAttributeDefinitionsInput>;
+export type GroupingString = string;
 export type GroupingSourceKeyStringList = string[];
 export const GroupingSourceKeyStringList = /*@__PURE__*/ S.Array(S.String);
 export interface GroupingAttributeDefinition {
@@ -1683,6 +1951,7 @@ export const InstrumentationConfigurationsPage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstrumentationConfigurationsPage",
 }) as any as S.Schema<InstrumentationConfigurationsPage>;
+export type ListServiceDependenciesMaxResults = number;
 export interface ListServiceDependenciesInput {
   StartTime: Date;
   EndTime: Date;
@@ -1748,6 +2017,7 @@ export const ListServiceDependenciesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListServiceDependenciesOutput",
 }) as any as S.Schema<ListServiceDependenciesOutput>;
+export type ListServiceDependentsMaxResults = number;
 export interface ListServiceDependentsInput {
   StartTime: Date;
   EndTime: Date;
@@ -1813,6 +2083,7 @@ export const ListServiceDependentsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListServiceDependentsOutput",
 }) as any as S.Schema<ListServiceDependentsOutput>;
+export type ListServiceLevelObjectiveExclusionWindowsMaxResults = number;
 export interface ListServiceLevelObjectiveExclusionWindowsInput {
   Id: string;
   MaxResults?: number;
@@ -1850,6 +2121,93 @@ export const ListServiceLevelObjectiveExclusionWindowsOutput =
   ).annotate({
     identifier: "ListServiceLevelObjectiveExclusionWindowsOutput",
   }) as any as S.Schema<ListServiceLevelObjectiveExclusionWindowsOutput>;
+export type ListServiceLevelObjectivesMaxResults = number;
+export type MetricSourceTypes = MetricSourceType[];
+export const MetricSourceTypes = /*@__PURE__*/ S.Array(MetricSourceType);
+export interface ListServiceLevelObjectivesInput {
+  KeyAttributes?: { [key: string]: string | undefined };
+  OperationName?: string;
+  DependencyConfig?: DependencyConfig;
+  MaxResults?: number;
+  NextToken?: string;
+  MetricSourceTypes?: MetricSourceType[];
+  IncludeLinkedAccounts?: boolean;
+  SloOwnerAwsAccountId?: string;
+  MetricSource?: MetricSource;
+}
+export const ListServiceLevelObjectivesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    KeyAttributes: S.optional(Attributes),
+    OperationName: S.optional(S.String).pipe(T.HttpQuery("OperationName")),
+    DependencyConfig: S.optional(DependencyConfig),
+    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
+    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
+    MetricSourceTypes: S.optional(MetricSourceTypes),
+    IncludeLinkedAccounts: S.optional(S.Boolean).pipe(
+      T.HttpQuery("IncludeLinkedAccounts"),
+    ),
+    SloOwnerAwsAccountId: S.optional(S.String).pipe(
+      T.HttpQuery("SloOwnerAwsAccountId"),
+    ),
+    MetricSource: S.optional(MetricSource),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/slos" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListServiceLevelObjectivesInput",
+}) as any as S.Schema<ListServiceLevelObjectivesInput>;
+export interface ServiceLevelObjectiveSummary {
+  Arn: string;
+  Name: string;
+  KeyAttributes?: { [key: string]: string | undefined };
+  OperationName?: string;
+  DependencyConfig?: DependencyConfig;
+  CreatedTime?: Date;
+  EvaluationType?: EvaluationType;
+  MetricSourceType?: MetricSourceType;
+  MetricSource?: MetricSource;
+  CompositeSliConfig?: CompositeSliConfig;
+}
+export const ServiceLevelObjectiveSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Arn: S.String,
+    Name: S.String,
+    KeyAttributes: S.optional(Attributes),
+    OperationName: S.optional(S.String),
+    DependencyConfig: S.optional(DependencyConfig),
+    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    EvaluationType: S.optional(EvaluationType),
+    MetricSourceType: S.optional(MetricSourceType),
+    MetricSource: S.optional(MetricSource),
+    CompositeSliConfig: S.optional(CompositeSliConfig),
+  }),
+).annotate({
+  identifier: "ServiceLevelObjectiveSummary",
+}) as any as S.Schema<ServiceLevelObjectiveSummary>;
+export type ServiceLevelObjectiveSummaries = ServiceLevelObjectiveSummary[];
+export const ServiceLevelObjectiveSummaries = /*@__PURE__*/ S.Array(
+  ServiceLevelObjectiveSummary,
+);
+export interface ListServiceLevelObjectivesOutput {
+  SloSummaries?: ServiceLevelObjectiveSummary[];
+  NextToken?: string;
+}
+export const ListServiceLevelObjectivesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SloSummaries: S.optional(ServiceLevelObjectiveSummaries),
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListServiceLevelObjectivesOutput",
+}) as any as S.Schema<ListServiceLevelObjectivesOutput>;
+export type ListServiceOperationMaxResults = number;
 export interface ListServiceOperationsInput {
   StartTime: Date;
   EndTime: Date;
@@ -1908,6 +2266,7 @@ export const ListServiceOperationsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListServiceOperationsOutput",
 }) as any as S.Schema<ListServiceOperationsOutput>;
+export type ListServicesMaxResults = number;
 export interface ListServicesInput {
   StartTime: Date;
   EndTime: Date;
@@ -1975,6 +2334,9 @@ export const ListServicesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListServicesOutput",
 }) as any as S.Schema<ListServicesOutput>;
+export type ListServiceStatesMaxResults = number;
+export type AttributeFilterName = string;
+export type AttributeFilterValue = string;
 export type AttributeFilterValues = string[];
 export const AttributeFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface AttributeFilter {
@@ -2054,6 +2416,7 @@ export const ListServiceStatesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListServiceStatesOutput",
 }) as any as S.Schema<ListServiceStatesOutput>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -2175,6 +2538,7 @@ export type UnprocessedStatusEventFailureReason =
   | "VALIDATION_ERROR"
   | (string & {});
 export const UnprocessedStatusEventFailureReason = /*@__PURE__*/ S.String;
+
 export interface UnprocessedStatusEvent {
   InstrumentationType: InstrumentationType;
   SignalType: DynamicInstrumentationSignalType;
@@ -2285,214 +2649,6 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-export interface ServiceLevelIndicatorMetricConfig {
-  KeyAttributes?: { [key: string]: string | undefined };
-  OperationName?: string;
-  MetricType?: ServiceLevelIndicatorMetricType;
-  MetricName?: string;
-  Statistic?: string;
-  PeriodSeconds?: number;
-  MetricSource?: MetricSource;
-  MetricDataQueries?: MetricDataQuery[];
-  DependencyConfig?: DependencyConfig;
-  CompositeSliConfig?: CompositeSliConfig;
-}
-export const ServiceLevelIndicatorMetricConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    KeyAttributes: S.optional(Attributes),
-    OperationName: S.optional(S.String),
-    MetricType: S.optional(ServiceLevelIndicatorMetricType),
-    MetricName: S.optional(S.String),
-    Statistic: S.optional(S.String),
-    PeriodSeconds: S.optional(S.Number),
-    MetricSource: S.optional(MetricSource),
-    MetricDataQueries: S.optional(MetricDataQueries),
-    DependencyConfig: S.optional(DependencyConfig),
-    CompositeSliConfig: S.optional(CompositeSliConfig),
-  }),
-).annotate({
-  identifier: "ServiceLevelIndicatorMetricConfig",
-}) as any as S.Schema<ServiceLevelIndicatorMetricConfig>;
-export interface ServiceLevelIndicatorConfig {
-  SliMetricConfig: ServiceLevelIndicatorMetricConfig;
-  MetricThreshold?: number;
-  ComparisonOperator?: ServiceLevelIndicatorComparisonOperator;
-}
-export const ServiceLevelIndicatorConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SliMetricConfig: ServiceLevelIndicatorMetricConfig,
-    MetricThreshold: S.optional(S.Number),
-    ComparisonOperator: S.optional(ServiceLevelIndicatorComparisonOperator),
-  }),
-).annotate({
-  identifier: "ServiceLevelIndicatorConfig",
-}) as any as S.Schema<ServiceLevelIndicatorConfig>;
-export interface RequestBasedServiceLevelIndicatorMetricConfig {
-  KeyAttributes?: { [key: string]: string | undefined };
-  OperationName?: string;
-  MetricType?: ServiceLevelIndicatorMetricType;
-  TotalRequestCountMetric?: MetricDataQuery[];
-  MonitoredRequestCountMetric?: MonitoredRequestCountMetricDataQueries;
-  DependencyConfig?: DependencyConfig;
-  MetricSource?: MetricSource;
-  MetricName?: string;
-  CompositeSliConfig?: CompositeSliConfig;
-}
-export const RequestBasedServiceLevelIndicatorMetricConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      KeyAttributes: S.optional(Attributes),
-      OperationName: S.optional(S.String),
-      MetricType: S.optional(ServiceLevelIndicatorMetricType),
-      TotalRequestCountMetric: S.optional(MetricDataQueries),
-      MonitoredRequestCountMetric: S.optional(
-        MonitoredRequestCountMetricDataQueries,
-      ),
-      DependencyConfig: S.optional(DependencyConfig),
-      MetricSource: S.optional(MetricSource),
-      MetricName: S.optional(S.String),
-      CompositeSliConfig: S.optional(CompositeSliConfig),
-    }),
-  ).annotate({
-    identifier: "RequestBasedServiceLevelIndicatorMetricConfig",
-  }) as any as S.Schema<RequestBasedServiceLevelIndicatorMetricConfig>;
-export interface RequestBasedServiceLevelIndicatorConfig {
-  RequestBasedSliMetricConfig: RequestBasedServiceLevelIndicatorMetricConfig;
-  MetricThreshold?: number;
-  ComparisonOperator?: ServiceLevelIndicatorComparisonOperator;
-}
-export const RequestBasedServiceLevelIndicatorConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      RequestBasedSliMetricConfig:
-        RequestBasedServiceLevelIndicatorMetricConfig,
-      MetricThreshold: S.optional(S.Number),
-      ComparisonOperator: S.optional(ServiceLevelIndicatorComparisonOperator),
-    }),
-).annotate({
-  identifier: "RequestBasedServiceLevelIndicatorConfig",
-}) as any as S.Schema<RequestBasedServiceLevelIndicatorConfig>;
-export interface BurnRateConfiguration {
-  LookBackWindowMinutes: number;
-}
-export const BurnRateConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ LookBackWindowMinutes: S.Number }),
-).annotate({
-  identifier: "BurnRateConfiguration",
-}) as any as S.Schema<BurnRateConfiguration>;
-export type BurnRateConfigurations = BurnRateConfiguration[];
-export const BurnRateConfigurations = /*@__PURE__*/ S.Array(
-  BurnRateConfiguration,
-);
-export interface CreateServiceLevelObjectiveInput {
-  Name: string;
-  Description?: string;
-  SliConfig?: ServiceLevelIndicatorConfig;
-  RequestBasedSliConfig?: RequestBasedServiceLevelIndicatorConfig;
-  Goal?: Goal;
-  Tags?: Tag[];
-  BurnRateConfigurations?: BurnRateConfiguration[];
-  CreateRecommendedSlo?: boolean;
-  AutoInvestigationEnabled?: boolean;
-}
-export const CreateServiceLevelObjectiveInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Name: S.String,
-    Description: S.optional(S.String),
-    SliConfig: S.optional(ServiceLevelIndicatorConfig),
-    RequestBasedSliConfig: S.optional(RequestBasedServiceLevelIndicatorConfig),
-    Goal: S.optional(Goal),
-    Tags: S.optional(TagList),
-    BurnRateConfigurations: S.optional(BurnRateConfigurations),
-    CreateRecommendedSlo: S.optional(S.Boolean),
-    AutoInvestigationEnabled: S.optional(S.Boolean),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/slo" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateServiceLevelObjectiveInput",
-}) as any as S.Schema<CreateServiceLevelObjectiveInput>;
-export type MetricSourceType =
-  | "ServiceOperation"
-  | "CloudWatchMetric"
-  | "ServiceDependency"
-  | "AppMonitor"
-  | "Canary"
-  | "Service"
-  | (string & {});
-export const MetricSourceType = /*@__PURE__*/ S.String;
-export interface ServiceLevelObjective {
-  Arn: string;
-  Name: string;
-  Description?: string;
-  CreatedTime: Date;
-  LastUpdatedTime: Date;
-  Sli?: ServiceLevelIndicator;
-  RequestBasedSli?: RequestBasedServiceLevelIndicator;
-  EvaluationType?: EvaluationType;
-  Goal: Goal;
-  BurnRateConfigurations?: BurnRateConfiguration[];
-  MetricSourceType?: MetricSourceType;
-  AutoInvestigationEnabled?: boolean;
-}
-export const ServiceLevelObjective = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Name: S.String,
-    Description: S.optional(S.String),
-    CreatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    LastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    Sli: S.optional(ServiceLevelIndicator),
-    RequestBasedSli: S.optional(RequestBasedServiceLevelIndicator),
-    EvaluationType: S.optional(EvaluationType),
-    Goal: Goal,
-    BurnRateConfigurations: S.optional(BurnRateConfigurations),
-    MetricSourceType: S.optional(MetricSourceType),
-    AutoInvestigationEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ServiceLevelObjective",
-}) as any as S.Schema<ServiceLevelObjective>;
-export interface CreateServiceLevelObjectiveOutput {
-  Slo: ServiceLevelObjective;
-}
-export const CreateServiceLevelObjectiveOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Slo: ServiceLevelObjective }),
-).annotate({
-  identifier: "CreateServiceLevelObjectiveOutput",
-}) as any as S.Schema<CreateServiceLevelObjectiveOutput>;
-export interface GetServiceLevelObjectiveInput {
-  Id: string;
-}
-export const GetServiceLevelObjectiveInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/slo/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetServiceLevelObjectiveInput",
-}) as any as S.Schema<GetServiceLevelObjectiveInput>;
-export interface GetServiceLevelObjectiveOutput {
-  Slo: ServiceLevelObjective;
-}
-export const GetServiceLevelObjectiveOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Slo: ServiceLevelObjective }),
-).annotate({
-  identifier: "GetServiceLevelObjectiveOutput",
-}) as any as S.Schema<GetServiceLevelObjectiveOutput>;
 export interface UpdateServiceLevelObjectiveInput {
   Id: string;
   Description?: string;
@@ -2532,154 +2688,11 @@ export const UpdateServiceLevelObjectiveOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateServiceLevelObjectiveOutput",
 }) as any as S.Schema<UpdateServiceLevelObjectiveOutput>;
-export interface DeleteServiceLevelObjectiveInput {
-  Id: string;
-}
-export const DeleteServiceLevelObjectiveInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Id: S.String.pipe(T.HttpLabel("Id")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/slo/{Id}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteServiceLevelObjectiveInput",
-}) as any as S.Schema<DeleteServiceLevelObjectiveInput>;
-export interface DeleteServiceLevelObjectiveOutput {}
-export const DeleteServiceLevelObjectiveOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteServiceLevelObjectiveOutput",
-}) as any as S.Schema<DeleteServiceLevelObjectiveOutput>;
-export type MetricSourceTypes = MetricSourceType[];
-export const MetricSourceTypes = /*@__PURE__*/ S.Array(MetricSourceType);
-export interface ListServiceLevelObjectivesInput {
-  KeyAttributes?: { [key: string]: string | undefined };
-  OperationName?: string;
-  DependencyConfig?: DependencyConfig;
-  MaxResults?: number;
-  NextToken?: string;
-  MetricSourceTypes?: MetricSourceType[];
-  IncludeLinkedAccounts?: boolean;
-  SloOwnerAwsAccountId?: string;
-  MetricSource?: MetricSource;
-}
-export const ListServiceLevelObjectivesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    KeyAttributes: S.optional(Attributes),
-    OperationName: S.optional(S.String).pipe(T.HttpQuery("OperationName")),
-    DependencyConfig: S.optional(DependencyConfig),
-    MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-    NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-    MetricSourceTypes: S.optional(MetricSourceTypes),
-    IncludeLinkedAccounts: S.optional(S.Boolean).pipe(
-      T.HttpQuery("IncludeLinkedAccounts"),
-    ),
-    SloOwnerAwsAccountId: S.optional(S.String).pipe(
-      T.HttpQuery("SloOwnerAwsAccountId"),
-    ),
-    MetricSource: S.optional(MetricSource),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/slos" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListServiceLevelObjectivesInput",
-}) as any as S.Schema<ListServiceLevelObjectivesInput>;
-export interface ServiceLevelObjectiveSummary {
-  Arn: string;
-  Name: string;
-  KeyAttributes?: { [key: string]: string | undefined };
-  OperationName?: string;
-  DependencyConfig?: DependencyConfig;
-  CreatedTime?: Date;
-  EvaluationType?: EvaluationType;
-  MetricSourceType?: MetricSourceType;
-  MetricSource?: MetricSource;
-  CompositeSliConfig?: CompositeSliConfig;
-}
-export const ServiceLevelObjectiveSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Arn: S.String,
-    Name: S.String,
-    KeyAttributes: S.optional(Attributes),
-    OperationName: S.optional(S.String),
-    DependencyConfig: S.optional(DependencyConfig),
-    CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    EvaluationType: S.optional(EvaluationType),
-    MetricSourceType: S.optional(MetricSourceType),
-    MetricSource: S.optional(MetricSource),
-    CompositeSliConfig: S.optional(CompositeSliConfig),
-  }),
-).annotate({
-  identifier: "ServiceLevelObjectiveSummary",
-}) as any as S.Schema<ServiceLevelObjectiveSummary>;
-export type ServiceLevelObjectiveSummaries = ServiceLevelObjectiveSummary[];
-export const ServiceLevelObjectiveSummaries = /*@__PURE__*/ S.Array(
-  ServiceLevelObjectiveSummary,
-);
-export interface ListServiceLevelObjectivesOutput {
-  SloSummaries?: ServiceLevelObjectiveSummary[];
-  NextToken?: string;
-}
-export const ListServiceLevelObjectivesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SloSummaries: S.optional(ServiceLevelObjectiveSummaries),
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListServiceLevelObjectivesOutput",
-}) as any as S.Schema<ListServiceLevelObjectivesOutput>;
-
-//# Errors
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ValidationError", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { ResourceType: S.String, ResourceId: S.String, Message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-
-//# Operations
+export type ValidationExceptionMessage = string;
+export type ResourceType = string;
+export type ResourceId = string;
+export type FaultDescription = string;
+export type ServiceErrorMessage = string;
 export type BatchDeleteInstrumentationConfigurationsError =
   | ThrottlingException
   | ValidationException
@@ -2703,6 +2716,7 @@ export const batchDeleteInstrumentationConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteInstrumentationConfigurations",
 }));
+
 export type BatchGetServiceLevelObjectiveBudgetReportError =
   | ThrottlingException
   | ValidationException
@@ -2729,6 +2743,7 @@ export const batchGetServiceLevelObjectiveBudgetReport: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetServiceLevelObjectiveBudgetReport",
 }));
+
 export type BatchUpdateExclusionWindowsError =
   | ResourceNotFoundException
   | ThrottlingException
@@ -2750,6 +2765,7 @@ export const batchUpdateExclusionWindows: API.OperationMethod<
   retry: Retry,
   operationName: "BatchUpdateExclusionWindows",
 }));
+
 export type CreateInstrumentationConfigurationError =
   | ConflictException
   | ServiceQuotaExceededException
@@ -2781,661 +2797,7 @@ export const createInstrumentationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInstrumentationConfiguration",
 }));
-export type DeleteGroupingConfigurationError =
-  | AccessDeniedException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes the grouping configuration for this account. This removes all custom grouping attribute definitions that were previously configured.
- */
-export const deleteGroupingConfiguration: API.OperationMethod<
-  DeleteGroupingConfigurationRequest,
-  DeleteGroupingConfigurationOutput,
-  DeleteGroupingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGroupingConfigurationRequest,
-  output: DeleteGroupingConfigurationOutput,
-  errors: [AccessDeniedException, ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteGroupingConfiguration",
-}));
-export type DeleteInstrumentationConfigurationError =
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes the specified instrumentation configuration. SDKs remove the instrumentation during their next sync after the configuration is deleted or expires.
- */
-export const deleteInstrumentationConfiguration: API.OperationMethod<
-  DeleteInstrumentationConfigurationRequest,
-  DeleteInstrumentationConfigurationResponse,
-  DeleteInstrumentationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInstrumentationConfigurationRequest,
-  output: DeleteInstrumentationConfigurationResponse,
-  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteInstrumentationConfiguration",
-}));
-export type GetInstrumentationConfigurationError =
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns the details of a single instrumentation configuration identified by service, environment, signal type, and location. Use this to audit or display configuration details.
- */
-export const getInstrumentationConfiguration: API.OperationMethod<
-  GetInstrumentationConfigurationRequest,
-  GetInstrumentationConfigurationResponse,
-  GetInstrumentationConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetInstrumentationConfigurationRequest,
-  output: GetInstrumentationConfigurationResponse,
-  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetInstrumentationConfiguration",
-}));
-export type GetInstrumentationConfigurationStatusError =
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves the status history for a single instrumentation configuration during a specified time range. The response lists when the configuration was ACTIVE, READY, ERROR, or DISABLED.
- *
- * If no status or time window is provided, the operation defaults to ACTIVE events from the last hour.
- */
-export const getInstrumentationConfigurationStatus: API.OperationMethod<
-  GetInstrumentationConfigurationStatusRequest,
-  GetInstrumentationConfigurationStatusResponse,
-  GetInstrumentationConfigurationStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: GetInstrumentationConfigurationStatusRequest,
-  ) => stream.Stream<
-    GetInstrumentationConfigurationStatusResponse,
-    GetInstrumentationConfigurationStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: GetInstrumentationConfigurationStatusRequest,
-  ) => stream.Stream<
-    InstrumentationStatusEvent,
-    GetInstrumentationConfigurationStatusError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetInstrumentationConfigurationStatusRequest,
-  output: GetInstrumentationConfigurationStatusResponse,
-  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetInstrumentationConfigurationStatus",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "Events",
-    pageSize: "MaxResults",
-  } as const,
-}));
-export type GetServiceError =
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns information about a service discovered by Application Signals.
- */
-export const getService: API.OperationMethod<
-  GetServiceInput,
-  GetServiceOutput,
-  GetServiceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceInput,
-  output: GetServiceOutput,
-  errors: [ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetService",
-}));
-export type ListAuditFindingsError =
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns a list of audit findings that provide automated analysis of service behavior and root cause analysis. These findings help identify the most significant observations about your services, including performance issues, anomalies, and potential problems. The findings are generated using heuristic algorithms based on established troubleshooting patterns.
- */
-export const listAuditFindings: API.OperationMethod<
-  ListAuditFindingsInput,
-  ListAuditFindingsOutput,
-  ListAuditFindingsError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListAuditFindingsInput,
-  output: ListAuditFindingsOutput,
-  errors: [ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListAuditFindings",
-}));
-export type ListEntityEventsError =
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns a list of change events for a specific entity, such as deployments, configuration changes, or other state-changing activities. This operation helps track the history of changes that may have affected service performance.
- */
-export const listEntityEvents: API.OperationMethod<
-  ListEntityEventsInput,
-  ListEntityEventsOutput,
-  ListEntityEventsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListEntityEventsInput,
-  ) => stream.Stream<
-    ListEntityEventsOutput,
-    ListEntityEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListEntityEventsInput,
-  ) => stream.Stream<
-    ChangeEvent,
-    ListEntityEventsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEntityEventsInput,
-  output: ListEntityEventsOutput,
-  errors: [ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListEntityEvents",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "ChangeEvents",
-    pageSize: "MaxResults",
-  } as const,
-}));
-export type ListGroupingAttributeDefinitionsError =
-  | AccessDeniedException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns the current grouping configuration for this account, including all custom grouping attribute definitions that have been configured. These definitions determine how services are logically grouped based on telemetry attributes, Amazon Web Services tags, or predefined mappings.
- */
-export const listGroupingAttributeDefinitions: API.OperationMethod<
-  ListGroupingAttributeDefinitionsInput,
-  ListGroupingAttributeDefinitionsOutput,
-  ListGroupingAttributeDefinitionsError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListGroupingAttributeDefinitionsInput,
-  output: ListGroupingAttributeDefinitionsOutput,
-  errors: [AccessDeniedException, ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListGroupingAttributeDefinitions",
-}));
-export type ListInstrumentationConfigurationsError =
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns all active instrumentation configurations for a service and environment. SDKs use this operation to sync configurations and apply client-side filters locally.
- *
- * Include the previous `SyncedAt` value to perform incremental syncs. When no changes are detected, the response sets `Changed` to `false` and omits configuration details.
- */
-export const listInstrumentationConfigurations: API.OperationMethod<
-  ListInstrumentationConfigurationsRequest,
-  InstrumentationConfigurationsPage,
-  ListInstrumentationConfigurationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListInstrumentationConfigurationsRequest,
-  ) => stream.Stream<
-    InstrumentationConfigurationsPage,
-    ListInstrumentationConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListInstrumentationConfigurationsRequest,
-  ) => stream.Stream<
-    InstrumentationConfigurationWithoutServiceEnv,
-    ListInstrumentationConfigurationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListInstrumentationConfigurationsRequest,
-  output: InstrumentationConfigurationsPage,
-  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListInstrumentationConfigurations",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "LatestConfigurations",
-    pageSize: "MaxResults",
-  } as const,
-}));
-export type ListServiceDependenciesError =
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns a list of service dependencies of the service that you specify. A dependency is an infrastructure component that an operation of this service connects with. Dependencies can include Amazon Web Services services, Amazon Web Services resources, and third-party services.
- */
-export const listServiceDependencies: API.OperationMethod<
-  ListServiceDependenciesInput,
-  ListServiceDependenciesOutput,
-  ListServiceDependenciesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceDependenciesInput,
-  ) => stream.Stream<
-    ListServiceDependenciesOutput,
-    ListServiceDependenciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceDependenciesInput,
-  ) => stream.Stream<
-    ServiceDependency,
-    ListServiceDependenciesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServiceDependenciesInput,
-  output: ListServiceDependenciesOutput,
-  errors: [ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListServiceDependencies",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "ServiceDependencies",
-    pageSize: "MaxResults",
-  } as const,
-}));
-export type ListServiceDependentsError =
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns the list of dependents that invoked the specified service during the provided time range. Dependents include other services, CloudWatch Synthetics canaries, and clients that are instrumented with CloudWatch RUM app monitors.
- */
-export const listServiceDependents: API.OperationMethod<
-  ListServiceDependentsInput,
-  ListServiceDependentsOutput,
-  ListServiceDependentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceDependentsInput,
-  ) => stream.Stream<
-    ListServiceDependentsOutput,
-    ListServiceDependentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceDependentsInput,
-  ) => stream.Stream<
-    ServiceDependent,
-    ListServiceDependentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServiceDependentsInput,
-  output: ListServiceDependentsOutput,
-  errors: [ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListServiceDependents",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "ServiceDependents",
-    pageSize: "MaxResults",
-  } as const,
-}));
-export type ListServiceLevelObjectiveExclusionWindowsError =
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves all exclusion windows configured for a specific SLO.
- */
-export const listServiceLevelObjectiveExclusionWindows: API.OperationMethod<
-  ListServiceLevelObjectiveExclusionWindowsInput,
-  ListServiceLevelObjectiveExclusionWindowsOutput,
-  ListServiceLevelObjectiveExclusionWindowsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceLevelObjectiveExclusionWindowsInput,
-  ) => stream.Stream<
-    ListServiceLevelObjectiveExclusionWindowsOutput,
-    ListServiceLevelObjectiveExclusionWindowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceLevelObjectiveExclusionWindowsInput,
-  ) => stream.Stream<
-    ExclusionWindow,
-    ListServiceLevelObjectiveExclusionWindowsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServiceLevelObjectiveExclusionWindowsInput,
-  output: ListServiceLevelObjectiveExclusionWindowsOutput,
-  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListServiceLevelObjectiveExclusionWindows",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "ExclusionWindows",
-    pageSize: "MaxResults",
-  } as const,
-}));
-export type ListServiceOperationsError =
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns a list of the *operations* of this service that have been discovered by Application Signals. Only the operations that were invoked during the specified time range are returned.
- */
-export const listServiceOperations: API.OperationMethod<
-  ListServiceOperationsInput,
-  ListServiceOperationsOutput,
-  ListServiceOperationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceOperationsInput,
-  ) => stream.Stream<
-    ListServiceOperationsOutput,
-    ListServiceOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceOperationsInput,
-  ) => stream.Stream<
-    ServiceOperation,
-    ListServiceOperationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServiceOperationsInput,
-  output: ListServiceOperationsOutput,
-  errors: [ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListServiceOperations",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "ServiceOperations",
-    pageSize: "MaxResults",
-  } as const,
-}));
-export type ListServicesError =
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns a list of services that have been discovered by Application Signals. A service represents a minimum logical and transactional unit that completes a business function. Services are discovered through Application Signals instrumentation.
- */
-export const listServices: API.OperationMethod<
-  ListServicesInput,
-  ListServicesOutput,
-  ListServicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServicesInput,
-  ) => stream.Stream<
-    ListServicesOutput,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServicesInput,
-  ) => stream.Stream<
-    ServiceSummary,
-    ListServicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServicesInput,
-  output: ListServicesOutput,
-  errors: [ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListServices",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "ServiceSummaries",
-    pageSize: "MaxResults",
-  } as const,
-}));
-export type ListServiceStatesError =
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns information about the last deployment and other change states of services. This API provides visibility into recent changes that may have affected service performance, helping with troubleshooting and change correlation.
- */
-export const listServiceStates: API.OperationMethod<
-  ListServiceStatesInput,
-  ListServiceStatesOutput,
-  ListServiceStatesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListServiceStatesInput,
-  ) => stream.Stream<
-    ListServiceStatesOutput,
-    ListServiceStatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListServiceStatesInput,
-  ) => stream.Stream<
-    ServiceState,
-    ListServiceStatesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServiceStatesInput,
-  output: ListServiceStatesOutput,
-  errors: [ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListServiceStates",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "ServiceStates",
-    pageSize: "MaxResults",
-  } as const,
-}));
-export type ListTagsForResourceError =
-  | ResourceNotFoundException
-  | ThrottlingException
-  | CommonErrors;
-/**
- * Displays the tags associated with a CloudWatch resource. Tags can be assigned to service level objectives.
- */
-export const listTagsForResource: API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResponse,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
-  errors: [ResourceNotFoundException, ThrottlingException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListTagsForResource",
-}));
-export type PutGroupingConfigurationError =
-  | AccessDeniedException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates or updates the grouping configuration for this account. This operation allows you to define custom grouping attributes that determine how services are logically grouped based on telemetry attributes, Amazon Web Services tags, or predefined mappings. These grouping attributes can then be used to organize and filter services in the Application Signals console and APIs.
- */
-export const putGroupingConfiguration: API.OperationMethod<
-  PutGroupingConfigurationInput,
-  PutGroupingConfigurationOutput,
-  PutGroupingConfigurationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutGroupingConfigurationInput,
-  output: PutGroupingConfigurationOutput,
-  errors: [AccessDeniedException, ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "PutGroupingConfiguration",
-}));
-export type ReportInstrumentationConfigurationStatusError =
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Reports the status of one or more instrumentation configurations from SDK instances. Use this to record when configurations become ready, hit errors, become active, or are disabled by limits.
- *
- * Report `READY`, `ERROR`, and `DISABLED` when the status changes. Report `ACTIVE` periodically (for example, every minute) while instrumentation is running.
- */
-export const reportInstrumentationConfigurationStatus: API.OperationMethod<
-  ReportInstrumentationConfigurationStatusRequest,
-  ReportInstrumentationConfigurationStatusResponse,
-  ReportInstrumentationConfigurationStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReportInstrumentationConfigurationStatusRequest,
-  output: ReportInstrumentationConfigurationStatusResponse,
-  errors: [ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ReportInstrumentationConfigurationStatus",
-}));
-export type StartDiscoveryError =
-  | AccessDeniedException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Enables this Amazon Web Services account to be able to use CloudWatch Application Signals by creating the *AWSServiceRoleForCloudWatchApplicationSignals* service-linked role. This service- linked role has the following permissions:
- *
- * - `xray:GetServiceGraph`
- *
- * - `logs:StartQuery`
- *
- * - `logs:GetQueryResults`
- *
- * - `cloudwatch:GetMetricData`
- *
- * - `cloudwatch:ListMetrics`
- *
- * - `tag:GetResources`
- *
- * - `autoscaling:DescribeAutoScalingGroups`
- *
- * A service-linked CloudTrail event channel is created to process CloudTrail events and return change event information. This includes last deployment time, userName, eventName, and other event metadata.
- *
- * After completing this step, you still need to instrument your Java and Python applications to send data to Application Signals. For more information, see Enabling Application Signals.
- */
-export const startDiscovery: API.OperationMethod<
-  StartDiscoveryInput,
-  StartDiscoveryOutput,
-  StartDiscoveryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: StartDiscoveryInput,
-  output: StartDiscoveryOutput,
-  errors: [AccessDeniedException, ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "StartDiscovery",
-}));
-export type TagResourceError =
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | CommonErrors;
-/**
- * Assigns one or more tags (key-value pairs) to the specified CloudWatch resource, such as a service level objective.
- *
- * Tags can help you organize and categorize your resources. You can also use them to scope user permissions by granting a user permission to access or change only resources with certain tag values.
- *
- * Tags don't have any semantic meaning to Amazon Web Services and are interpreted strictly as strings of characters.
- *
- * You can use the `TagResource` action with an alarm that already has tags. If you specify a new tag key for the alarm, this tag is appended to the list of tags associated with the alarm. If you specify a tag key that is already associated with the alarm, the new tag value that you specify replaces the previous value for that tag.
- *
- * You can associate as many as 50 tags with a CloudWatch resource.
- */
-export const tagResource: API.OperationMethod<
-  TagResourceRequest,
-  TagResourceResponse,
-  TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
-  errors: [
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "TagResource",
-}));
-export type UntagResourceError =
-  | ResourceNotFoundException
-  | ThrottlingException
-  | CommonErrors;
-/**
- * Removes one or more tags from the specified resource.
- */
-export const untagResource: API.OperationMethod<
-  UntagResourceRequest,
-  UntagResourceResponse,
-  UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
-  errors: [ResourceNotFoundException, ThrottlingException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UntagResource",
-}));
+
 export type CreateServiceLevelObjectiveError =
   | AccessDeniedException
   | ConflictException
@@ -3507,50 +2869,51 @@ export const createServiceLevelObjective: API.OperationMethod<
   retry: Retry,
   operationName: "CreateServiceLevelObjective",
 }));
-export type GetServiceLevelObjectiveError =
+
+export type DeleteGroupingConfigurationError =
+  | AccessDeniedException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the grouping configuration for this account. This removes all custom grouping attribute definitions that were previously configured.
+ */
+export const deleteGroupingConfiguration: API.OperationMethod<
+  DeleteGroupingConfigurationRequest,
+  DeleteGroupingConfigurationOutput,
+  DeleteGroupingConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteGroupingConfigurationRequest,
+  output: DeleteGroupingConfigurationOutput,
+  errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteGroupingConfiguration",
+}));
+
+export type DeleteInstrumentationConfigurationError =
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Returns information about one SLO created in the account.
+ * Deletes the specified instrumentation configuration. SDKs remove the instrumentation during their next sync after the configuration is deleted or expires.
  */
-export const getServiceLevelObjective: API.OperationMethod<
-  GetServiceLevelObjectiveInput,
-  GetServiceLevelObjectiveOutput,
-  GetServiceLevelObjectiveError,
+export const deleteInstrumentationConfiguration: API.OperationMethod<
+  DeleteInstrumentationConfigurationRequest,
+  DeleteInstrumentationConfigurationResponse,
+  DeleteInstrumentationConfigurationError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceLevelObjectiveInput,
-  output: GetServiceLevelObjectiveOutput,
+  input: DeleteInstrumentationConfigurationRequest,
+  output: DeleteInstrumentationConfigurationResponse,
   errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "GetServiceLevelObjective",
+  operationName: "DeleteInstrumentationConfiguration",
 }));
-export type UpdateServiceLevelObjectiveError =
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing service level objective (SLO). If you omit parameters, the previous values of those parameters are retained.
- *
- * You cannot change from a period-based SLO to a request-based SLO, or change from a request-based SLO to a period-based SLO.
- */
-export const updateServiceLevelObjective: API.OperationMethod<
-  UpdateServiceLevelObjectiveInput,
-  UpdateServiceLevelObjectiveOutput,
-  UpdateServiceLevelObjectiveError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceLevelObjectiveInput,
-  output: UpdateServiceLevelObjectiveOutput,
-  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateServiceLevelObjective",
-}));
+
 export type DeleteServiceLevelObjectiveError =
   | ResourceNotFoundException
   | ThrottlingException
@@ -3572,6 +2935,374 @@ export const deleteServiceLevelObjective: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteServiceLevelObjective",
 }));
+
+export type GetInstrumentationConfigurationError =
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns the details of a single instrumentation configuration identified by service, environment, signal type, and location. Use this to audit or display configuration details.
+ */
+export const getInstrumentationConfiguration: API.OperationMethod<
+  GetInstrumentationConfigurationRequest,
+  GetInstrumentationConfigurationResponse,
+  GetInstrumentationConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetInstrumentationConfigurationRequest,
+  output: GetInstrumentationConfigurationResponse,
+  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetInstrumentationConfiguration",
+}));
+
+export type GetInstrumentationConfigurationStatusError =
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the status history for a single instrumentation configuration during a specified time range. The response lists when the configuration was ACTIVE, READY, ERROR, or DISABLED.
+ *
+ * If no status or time window is provided, the operation defaults to ACTIVE events from the last hour.
+ */
+export const getInstrumentationConfigurationStatus: API.OperationMethod<
+  GetInstrumentationConfigurationStatusRequest,
+  GetInstrumentationConfigurationStatusResponse,
+  GetInstrumentationConfigurationStatusError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: GetInstrumentationConfigurationStatusRequest,
+  ) => stream.Stream<
+    GetInstrumentationConfigurationStatusResponse,
+    GetInstrumentationConfigurationStatusError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: GetInstrumentationConfigurationStatusRequest,
+  ) => stream.Stream<
+    InstrumentationStatusEvent,
+    GetInstrumentationConfigurationStatusError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: GetInstrumentationConfigurationStatusRequest,
+  output: GetInstrumentationConfigurationStatusResponse,
+  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetInstrumentationConfigurationStatus",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "Events",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
+export type GetServiceError =
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns information about a service discovered by Application Signals.
+ */
+export const getService: API.OperationMethod<
+  GetServiceInput,
+  GetServiceOutput,
+  GetServiceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServiceInput,
+  output: GetServiceOutput,
+  errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetService",
+}));
+
+export type GetServiceLevelObjectiveError =
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns information about one SLO created in the account.
+ */
+export const getServiceLevelObjective: API.OperationMethod<
+  GetServiceLevelObjectiveInput,
+  GetServiceLevelObjectiveOutput,
+  GetServiceLevelObjectiveError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServiceLevelObjectiveInput,
+  output: GetServiceLevelObjectiveOutput,
+  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetServiceLevelObjective",
+}));
+
+export type ListAuditFindingsError =
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a list of audit findings that provide automated analysis of service behavior and root cause analysis. These findings help identify the most significant observations about your services, including performance issues, anomalies, and potential problems. The findings are generated using heuristic algorithms based on established troubleshooting patterns.
+ */
+export const listAuditFindings: API.OperationMethod<
+  ListAuditFindingsInput,
+  ListAuditFindingsOutput,
+  ListAuditFindingsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAuditFindingsInput,
+  output: ListAuditFindingsOutput,
+  errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListAuditFindings",
+}));
+
+export type ListEntityEventsError =
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a list of change events for a specific entity, such as deployments, configuration changes, or other state-changing activities. This operation helps track the history of changes that may have affected service performance.
+ */
+export const listEntityEvents: API.OperationMethod<
+  ListEntityEventsInput,
+  ListEntityEventsOutput,
+  ListEntityEventsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListEntityEventsInput,
+  ) => stream.Stream<
+    ListEntityEventsOutput,
+    ListEntityEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListEntityEventsInput,
+  ) => stream.Stream<
+    ChangeEvent,
+    ListEntityEventsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListEntityEventsInput,
+  output: ListEntityEventsOutput,
+  errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListEntityEvents",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "ChangeEvents",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
+export type ListGroupingAttributeDefinitionsError =
+  | AccessDeniedException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns the current grouping configuration for this account, including all custom grouping attribute definitions that have been configured. These definitions determine how services are logically grouped based on telemetry attributes, Amazon Web Services tags, or predefined mappings.
+ */
+export const listGroupingAttributeDefinitions: API.OperationMethod<
+  ListGroupingAttributeDefinitionsInput,
+  ListGroupingAttributeDefinitionsOutput,
+  ListGroupingAttributeDefinitionsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListGroupingAttributeDefinitionsInput,
+  output: ListGroupingAttributeDefinitionsOutput,
+  errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListGroupingAttributeDefinitions",
+}));
+
+export type ListInstrumentationConfigurationsError =
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns all active instrumentation configurations for a service and environment. SDKs use this operation to sync configurations and apply client-side filters locally.
+ *
+ * Include the previous `SyncedAt` value to perform incremental syncs. When no changes are detected, the response sets `Changed` to `false` and omits configuration details.
+ */
+export const listInstrumentationConfigurations: API.OperationMethod<
+  ListInstrumentationConfigurationsRequest,
+  InstrumentationConfigurationsPage,
+  ListInstrumentationConfigurationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListInstrumentationConfigurationsRequest,
+  ) => stream.Stream<
+    InstrumentationConfigurationsPage,
+    ListInstrumentationConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListInstrumentationConfigurationsRequest,
+  ) => stream.Stream<
+    InstrumentationConfigurationWithoutServiceEnv,
+    ListInstrumentationConfigurationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListInstrumentationConfigurationsRequest,
+  output: InstrumentationConfigurationsPage,
+  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListInstrumentationConfigurations",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "LatestConfigurations",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
+export type ListServiceDependenciesError =
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a list of service dependencies of the service that you specify. A dependency is an infrastructure component that an operation of this service connects with. Dependencies can include Amazon Web Services services, Amazon Web Services resources, and third-party services.
+ */
+export const listServiceDependencies: API.OperationMethod<
+  ListServiceDependenciesInput,
+  ListServiceDependenciesOutput,
+  ListServiceDependenciesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceDependenciesInput,
+  ) => stream.Stream<
+    ListServiceDependenciesOutput,
+    ListServiceDependenciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceDependenciesInput,
+  ) => stream.Stream<
+    ServiceDependency,
+    ListServiceDependenciesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListServiceDependenciesInput,
+  output: ListServiceDependenciesOutput,
+  errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListServiceDependencies",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "ServiceDependencies",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
+export type ListServiceDependentsError =
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns the list of dependents that invoked the specified service during the provided time range. Dependents include other services, CloudWatch Synthetics canaries, and clients that are instrumented with CloudWatch RUM app monitors.
+ */
+export const listServiceDependents: API.OperationMethod<
+  ListServiceDependentsInput,
+  ListServiceDependentsOutput,
+  ListServiceDependentsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceDependentsInput,
+  ) => stream.Stream<
+    ListServiceDependentsOutput,
+    ListServiceDependentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceDependentsInput,
+  ) => stream.Stream<
+    ServiceDependent,
+    ListServiceDependentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListServiceDependentsInput,
+  output: ListServiceDependentsOutput,
+  errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListServiceDependents",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "ServiceDependents",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
+export type ListServiceLevelObjectiveExclusionWindowsError =
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves all exclusion windows configured for a specific SLO.
+ */
+export const listServiceLevelObjectiveExclusionWindows: API.OperationMethod<
+  ListServiceLevelObjectiveExclusionWindowsInput,
+  ListServiceLevelObjectiveExclusionWindowsOutput,
+  ListServiceLevelObjectiveExclusionWindowsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceLevelObjectiveExclusionWindowsInput,
+  ) => stream.Stream<
+    ListServiceLevelObjectiveExclusionWindowsOutput,
+    ListServiceLevelObjectiveExclusionWindowsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceLevelObjectiveExclusionWindowsInput,
+  ) => stream.Stream<
+    ExclusionWindow,
+    ListServiceLevelObjectiveExclusionWindowsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListServiceLevelObjectiveExclusionWindowsInput,
+  output: ListServiceLevelObjectiveExclusionWindowsOutput,
+  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListServiceLevelObjectiveExclusionWindows",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "ExclusionWindows",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
 export type ListServiceLevelObjectivesError =
   | ThrottlingException
   | ValidationException
@@ -3612,4 +3343,315 @@ export const listServiceLevelObjectives: API.OperationMethod<
     items: "SloSummaries",
     pageSize: "MaxResults",
   } as const,
+}));
+
+export type ListServiceOperationsError =
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a list of the *operations* of this service that have been discovered by Application Signals. Only the operations that were invoked during the specified time range are returned.
+ */
+export const listServiceOperations: API.OperationMethod<
+  ListServiceOperationsInput,
+  ListServiceOperationsOutput,
+  ListServiceOperationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceOperationsInput,
+  ) => stream.Stream<
+    ListServiceOperationsOutput,
+    ListServiceOperationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceOperationsInput,
+  ) => stream.Stream<
+    ServiceOperation,
+    ListServiceOperationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListServiceOperationsInput,
+  output: ListServiceOperationsOutput,
+  errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListServiceOperations",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "ServiceOperations",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
+export type ListServicesError =
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a list of services that have been discovered by Application Signals. A service represents a minimum logical and transactional unit that completes a business function. Services are discovered through Application Signals instrumentation.
+ */
+export const listServices: API.OperationMethod<
+  ListServicesInput,
+  ListServicesOutput,
+  ListServicesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServicesInput,
+  ) => stream.Stream<
+    ListServicesOutput,
+    ListServicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServicesInput,
+  ) => stream.Stream<
+    ServiceSummary,
+    ListServicesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListServicesInput,
+  output: ListServicesOutput,
+  errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListServices",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "ServiceSummaries",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
+export type ListServiceStatesError =
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns information about the last deployment and other change states of services. This API provides visibility into recent changes that may have affected service performance, helping with troubleshooting and change correlation.
+ */
+export const listServiceStates: API.OperationMethod<
+  ListServiceStatesInput,
+  ListServiceStatesOutput,
+  ListServiceStatesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListServiceStatesInput,
+  ) => stream.Stream<
+    ListServiceStatesOutput,
+    ListServiceStatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListServiceStatesInput,
+  ) => stream.Stream<
+    ServiceState,
+    ListServiceStatesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListServiceStatesInput,
+  output: ListServiceStatesOutput,
+  errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListServiceStates",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "ServiceStates",
+    pageSize: "MaxResults",
+  } as const,
+}));
+
+export type ListTagsForResourceError =
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Displays the tags associated with a CloudWatch resource. Tags can be assigned to service level objectives.
+ */
+export const listTagsForResource: API.OperationMethod<
+  ListTagsForResourceRequest,
+  ListTagsForResourceResponse,
+  ListTagsForResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
+  errors: [ResourceNotFoundException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTagsForResource",
+}));
+
+export type PutGroupingConfigurationError =
+  | AccessDeniedException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates or updates the grouping configuration for this account. This operation allows you to define custom grouping attributes that determine how services are logically grouped based on telemetry attributes, Amazon Web Services tags, or predefined mappings. These grouping attributes can then be used to organize and filter services in the Application Signals console and APIs.
+ */
+export const putGroupingConfiguration: API.OperationMethod<
+  PutGroupingConfigurationInput,
+  PutGroupingConfigurationOutput,
+  PutGroupingConfigurationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutGroupingConfigurationInput,
+  output: PutGroupingConfigurationOutput,
+  errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutGroupingConfiguration",
+}));
+
+export type ReportInstrumentationConfigurationStatusError =
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Reports the status of one or more instrumentation configurations from SDK instances. Use this to record when configurations become ready, hit errors, become active, or are disabled by limits.
+ *
+ * Report `READY`, `ERROR`, and `DISABLED` when the status changes. Report `ACTIVE` periodically (for example, every minute) while instrumentation is running.
+ */
+export const reportInstrumentationConfigurationStatus: API.OperationMethod<
+  ReportInstrumentationConfigurationStatusRequest,
+  ReportInstrumentationConfigurationStatusResponse,
+  ReportInstrumentationConfigurationStatusError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ReportInstrumentationConfigurationStatusRequest,
+  output: ReportInstrumentationConfigurationStatusResponse,
+  errors: [ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ReportInstrumentationConfigurationStatus",
+}));
+
+export type StartDiscoveryError =
+  | AccessDeniedException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Enables this Amazon Web Services account to be able to use CloudWatch Application Signals by creating the *AWSServiceRoleForCloudWatchApplicationSignals* service-linked role. This service- linked role has the following permissions:
+ *
+ * - `xray:GetServiceGraph`
+ *
+ * - `logs:StartQuery`
+ *
+ * - `logs:GetQueryResults`
+ *
+ * - `cloudwatch:GetMetricData`
+ *
+ * - `cloudwatch:ListMetrics`
+ *
+ * - `tag:GetResources`
+ *
+ * - `autoscaling:DescribeAutoScalingGroups`
+ *
+ * A service-linked CloudTrail event channel is created to process CloudTrail events and return change event information. This includes last deployment time, userName, eventName, and other event metadata.
+ *
+ * After completing this step, you still need to instrument your Java and Python applications to send data to Application Signals. For more information, see Enabling Application Signals.
+ */
+export const startDiscovery: API.OperationMethod<
+  StartDiscoveryInput,
+  StartDiscoveryOutput,
+  StartDiscoveryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartDiscoveryInput,
+  output: StartDiscoveryOutput,
+  errors: [AccessDeniedException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "StartDiscovery",
+}));
+
+export type TagResourceError =
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Assigns one or more tags (key-value pairs) to the specified CloudWatch resource, such as a service level objective.
+ *
+ * Tags can help you organize and categorize your resources. You can also use them to scope user permissions by granting a user permission to access or change only resources with certain tag values.
+ *
+ * Tags don't have any semantic meaning to Amazon Web Services and are interpreted strictly as strings of characters.
+ *
+ * You can use the `TagResource` action with an alarm that already has tags. If you specify a new tag key for the alarm, this tag is appended to the list of tags associated with the alarm. If you specify a tag key that is already associated with the alarm, the new tag value that you specify replaces the previous value for that tag.
+ *
+ * You can associate as many as 50 tags with a CloudWatch resource.
+ */
+export const tagResource: API.OperationMethod<
+  TagResourceRequest,
+  TagResourceResponse,
+  TagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: TagResourceRequest,
+  output: TagResourceResponse,
+  errors: [
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TagResource",
+}));
+
+export type UntagResourceError =
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Removes one or more tags from the specified resource.
+ */
+export const untagResource: API.OperationMethod<
+  UntagResourceRequest,
+  UntagResourceResponse,
+  UntagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
+  errors: [ResourceNotFoundException, ThrottlingException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UntagResource",
+}));
+
+export type UpdateServiceLevelObjectiveError =
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing service level objective (SLO). If you omit parameters, the previous values of those parameters are retained.
+ *
+ * You cannot change from a period-based SLO to a request-based SLO, or change from a request-based SLO to a period-based SLO.
+ */
+export const updateServiceLevelObjective: API.OperationMethod<
+  UpdateServiceLevelObjectiveInput,
+  UpdateServiceLevelObjectiveOutput,
+  UpdateServiceLevelObjectiveError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateServiceLevelObjectiveInput,
+  output: UpdateServiceLevelObjectiveOutput,
+  errors: [ResourceNotFoundException, ThrottlingException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateServiceLevelObjective",
 }));

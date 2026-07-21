@@ -85,101 +85,73 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Message: S.optional(S.String),
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.optional(S.String),
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.optional(S.String),
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+    QuotaCode: S.optional(S.String),
+    ServiceCode: S.optional(S.String),
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    Message: S.optional(S.String),
+    QuotaCode: S.optional(S.String),
+    ServiceCode: S.optional(S.String),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    Fields: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type WorkloadId = string;
 export type LensAlias = string;
-export type ExceptionMessage = string;
-export type ExceptionResourceId = string;
-export type ExceptionResourceType = string;
-export type QuotaCode = string;
-export type ServiceCode = string;
-export type ValidationExceptionFieldName = string;
-export type ProfileArn = string;
-export type SharedWith = string;
-export type ClientRequestToken = string;
-export type ShareId = string;
-export type LensVersion = string;
-export type IsMajorVersion = boolean;
-export type LensArn = string;
-export type MilestoneName = string;
-export type MilestoneNumber = number;
-export type ProfileName = string;
-export type ProfileDescription = string;
-export type QuestionId = string;
-export type ChoiceId = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ProfileVersion = string;
-export type TemplateName = string;
-export type TemplateDescription = string;
-export type Notes = string;
-export type TemplateArn = string;
-export type WorkloadName = string;
-export type WorkloadDescription = string;
-export type AwsAccountId = string;
-export type AwsRegion = string;
-export type WorkloadNonAwsRegion = string;
-export type PillarId = string;
-export type WorkloadArchitecturalDesign = string;
-export type WorkloadReviewOwner = string;
-export type WorkloadIndustryType = string;
-export type WorkloadIndustry = string;
-export type ApplicationArn = string;
-export type JiraProjectKey = string;
-export type WorkloadArn = string;
-export type LensJSON = string;
-export type QuestionTitle = string;
-export type QuestionDescription = string;
-export type ImprovementPlanUrl = string;
-export type HelpfulResourceUrl = string;
-export type DisplayText = string;
-export type ChoiceTitle = string;
-export type ChoiceDescription = string;
-export type ChoiceContentDisplayText = string;
-export type ChoiceContentUrl = string;
-export type ChoiceNotes = string;
-export type IsApplicable = boolean;
-export type JiraIssueUrl = string;
-export type IncludeSharedResources = boolean;
-export type NextToken = string;
-export type GetConsolidatedReportMaxResults = number;
-export type Count = number;
-export type LensesAppliedCount = number;
-export type Base64String = string;
-export type Subdomain = string;
-export type StatusMessage = string;
-export type LensName = string;
-export type LensDescription = string;
-export type LensOwner = string;
-export type ShareInvitationId = string;
-export type PillarName = string;
-export type SelectedQuestionId = string;
-export type IsReviewOwnerUpdateAcknowledged = boolean;
-export type MinSelectedProfileChoices = number;
-export type MaxSelectedProfileChoices = number;
-export type ListAnswersMaxResults = number;
-export type MaxResults = number;
-export type CheckId = string;
-export type CheckName = string;
-export type CheckDescription = string;
-export type FlaggedResources = number;
-export type CheckStatusCount = number;
-export type ListLensReviewImprovementsMaxResults = number;
-export type SharedWithPrefix = string;
-export type ListWorkloadSharesMaxResults = number;
-export type ListNotificationsMaxResults = number;
-export type ResourceArn = string;
-export type ProfileNamePrefix = string;
-export type ListProfileSharesMaxResults = number;
-export type ListReviewTemplateAnswersMaxResults = number;
-export type WorkloadNamePrefix = string;
-export type LensNamePrefix = string;
-export type ListShareInvitationsMaxResults = number;
-export type TemplateNamePrefix = string;
-export type ListTemplateSharesMaxResults = number;
-export type ListWorkloadsMaxResults = number;
-
-//# Schemas
 export type LensAliases = string[];
 export const LensAliases = /*@__PURE__*/ S.Array(S.String);
 export interface AssociateLensesInput {
@@ -212,26 +184,7 @@ export const AssociateLensesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateLensesResponse",
 }) as any as S.Schema<AssociateLensesResponse>;
-export type ValidationExceptionReason =
-  | "UNKNOWN_OPERATION"
-  | "CANNOT_PARSE"
-  | "FIELD_VALIDATION_FAILED"
-  | "OTHER"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  Name?: string;
-  Message?: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.optional(S.String), Message: S.optional(S.String) }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type ProfileArn = string;
 export type ProfileArns = string[];
 export const ProfileArns = /*@__PURE__*/ S.Array(S.String);
 export interface AssociateProfilesInput {
@@ -264,6 +217,8 @@ export const AssociateProfilesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateProfilesResponse",
 }) as any as S.Schema<AssociateProfilesResponse>;
+export type SharedWith = string;
+export type ClientRequestToken = string;
 export interface CreateLensShareInput {
   LensAlias: string;
   SharedWith?: string;
@@ -287,6 +242,7 @@ export const CreateLensShareInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLensShareInput",
 }) as any as S.Schema<CreateLensShareInput>;
+export type ShareId = string;
 export interface CreateLensShareOutput {
   ShareId?: string;
 }
@@ -295,6 +251,8 @@ export const CreateLensShareOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLensShareOutput",
 }) as any as S.Schema<CreateLensShareOutput>;
+export type LensVersion = string;
+export type IsMajorVersion = boolean;
 export interface CreateLensVersionInput {
   LensAlias: string;
   LensVersion?: string;
@@ -320,6 +278,7 @@ export const CreateLensVersionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLensVersionInput",
 }) as any as S.Schema<CreateLensVersionInput>;
+export type LensArn = string;
 export interface CreateLensVersionOutput {
   LensArn?: string;
   LensVersion?: string;
@@ -332,6 +291,7 @@ export const CreateLensVersionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLensVersionOutput",
 }) as any as S.Schema<CreateLensVersionOutput>;
+export type MilestoneName = string;
 export interface CreateMilestoneInput {
   WorkloadId: string;
   MilestoneName?: string;
@@ -355,6 +315,7 @@ export const CreateMilestoneInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMilestoneInput",
 }) as any as S.Schema<CreateMilestoneInput>;
+export type MilestoneNumber = number;
 export interface CreateMilestoneOutput {
   WorkloadId?: string;
   MilestoneNumber?: number;
@@ -367,6 +328,10 @@ export const CreateMilestoneOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMilestoneOutput",
 }) as any as S.Schema<CreateMilestoneOutput>;
+export type ProfileName = string;
+export type ProfileDescription = string;
+export type QuestionId = string;
+export type ChoiceId = string;
 export type SelectedProfileChoiceIds = string[];
 export const SelectedProfileChoiceIds = /*@__PURE__*/ S.Array(S.String);
 export interface ProfileQuestionUpdate {
@@ -385,6 +350,8 @@ export type ProfileQuestionUpdates = ProfileQuestionUpdate[];
 export const ProfileQuestionUpdates = /*@__PURE__*/ S.Array(
   ProfileQuestionUpdate,
 );
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -417,6 +384,7 @@ export const CreateProfileInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProfileInput",
 }) as any as S.Schema<CreateProfileInput>;
+export type ProfileVersion = string;
 export interface CreateProfileOutput {
   ProfileArn?: string;
   ProfileVersion?: string;
@@ -461,8 +429,11 @@ export const CreateProfileShareOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProfileShareOutput",
 }) as any as S.Schema<CreateProfileShareOutput>;
+export type TemplateName = string;
+export type TemplateDescription = string;
 export type ReviewTemplateLenses = string[];
 export const ReviewTemplateLenses = /*@__PURE__*/ S.Array(S.String);
+export type Notes = string;
 export interface CreateReviewTemplateInput {
   TemplateName?: string;
   Description?: string;
@@ -492,6 +463,7 @@ export const CreateReviewTemplateInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateReviewTemplateInput",
 }) as any as S.Schema<CreateReviewTemplateInput>;
+export type TemplateArn = string;
 export interface CreateReviewTemplateOutput {
   TemplateArn?: string;
 }
@@ -535,19 +507,30 @@ export const CreateTemplateShareOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTemplateShareOutput",
 }) as any as S.Schema<CreateTemplateShareOutput>;
+export type WorkloadName = string;
+export type WorkloadDescription = string;
 export type WorkloadEnvironment =
   | "PRODUCTION"
   | "PREPRODUCTION"
   | (string & {});
 export const WorkloadEnvironment = /*@__PURE__*/ S.String;
+
+export type AwsAccountId = string;
 export type WorkloadAccountIds = string[];
 export const WorkloadAccountIds = /*@__PURE__*/ S.Array(S.String);
+export type AwsRegion = string;
 export type WorkloadAwsRegions = string[];
 export const WorkloadAwsRegions = /*@__PURE__*/ S.Array(S.String);
+export type WorkloadNonAwsRegion = string;
 export type WorkloadNonAwsRegions = string[];
 export const WorkloadNonAwsRegions = /*@__PURE__*/ S.Array(S.String);
+export type PillarId = string;
 export type WorkloadPillarPriorities = string[];
 export const WorkloadPillarPriorities = /*@__PURE__*/ S.Array(S.String);
+export type WorkloadArchitecturalDesign = string;
+export type WorkloadReviewOwner = string;
+export type WorkloadIndustryType = string;
+export type WorkloadIndustry = string;
 export type WorkloadLenses = string[];
 export const WorkloadLenses = /*@__PURE__*/ S.Array(S.String);
 export type TrustedAdvisorIntegrationStatus =
@@ -555,11 +538,13 @@ export type TrustedAdvisorIntegrationStatus =
   | "DISABLED"
   | (string & {});
 export const TrustedAdvisorIntegrationStatus = /*@__PURE__*/ S.String;
+
 export type DefinitionType =
   | "WORKLOAD_METADATA"
   | "APP_REGISTRY"
   | (string & {});
 export const DefinitionType = /*@__PURE__*/ S.String;
+
 export type WorkloadResourceDefinition = DefinitionType[];
 export const WorkloadResourceDefinition = /*@__PURE__*/ S.Array(DefinitionType);
 export interface WorkloadDiscoveryConfig {
@@ -576,6 +561,7 @@ export const WorkloadDiscoveryConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkloadDiscoveryConfig",
 }) as any as S.Schema<WorkloadDiscoveryConfig>;
+export type ApplicationArn = string;
 export type WorkloadApplications = string[];
 export const WorkloadApplications = /*@__PURE__*/ S.Array(S.String);
 export type WorkloadProfileArns = string[];
@@ -588,8 +574,11 @@ export type WorkloadIssueManagementStatus =
   | "INHERIT"
   | (string & {});
 export const WorkloadIssueManagementStatus = /*@__PURE__*/ S.String;
+
 export type IssueManagementType = "AUTO" | "MANUAL" | (string & {});
 export const IssueManagementType = /*@__PURE__*/ S.String;
+
+export type JiraProjectKey = string;
 export interface WorkloadJiraConfigurationInput {
   IssueManagementStatus?: WorkloadIssueManagementStatus;
   IssueManagementType?: IssueManagementType;
@@ -661,6 +650,7 @@ export const CreateWorkloadInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWorkloadInput",
 }) as any as S.Schema<CreateWorkloadInput>;
+export type WorkloadArn = string;
 export interface CreateWorkloadOutput {
   WorkloadId?: string;
   WorkloadArn?: string;
@@ -675,6 +665,7 @@ export const CreateWorkloadOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWorkloadOutput>;
 export type PermissionType = "READONLY" | "CONTRIBUTOR" | (string & {});
 export const PermissionType = /*@__PURE__*/ S.String;
+
 export interface CreateWorkloadShareInput {
   WorkloadId: string;
   SharedWith?: string;
@@ -711,6 +702,7 @@ export const CreateWorkloadShareOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWorkloadShareOutput>;
 export type LensStatusType = "ALL" | "DRAFT" | "PUBLISHED" | (string & {});
 export const LensStatusType = /*@__PURE__*/ S.String;
+
 export interface DeleteLensInput {
   LensAlias: string;
   ClientRequestToken?: string;
@@ -1051,6 +1043,7 @@ export const ExportLensInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExportLensInput",
 }) as any as S.Schema<ExportLensInput>;
+export type LensJSON = string;
 export interface ExportLensOutput {
   LensJSON?: string;
 }
@@ -1085,6 +1078,15 @@ export const GetAnswerInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetAnswerInput" }) as any as S.Schema<GetAnswerInput>;
+export type QuestionTitle = string;
+export type QuestionDescription = string;
+export type ImprovementPlanUrl = string;
+export type HelpfulResourceUrl = string;
+export type DisplayText = string;
+export type ChoiceTitle = string;
+export type ChoiceDescription = string;
+export type ChoiceContentDisplayText = string;
+export type ChoiceContentUrl = string;
 export interface ChoiceContent {
   DisplayText?: string;
   Url?: string;
@@ -1097,6 +1099,7 @@ export type AdditionalResourceType =
   | "IMPROVEMENT_PLAN"
   | (string & {});
 export const AdditionalResourceType = /*@__PURE__*/ S.String;
+
 export type Urls = ChoiceContent[];
 export const Urls = /*@__PURE__*/ S.Array(ChoiceContent);
 export interface AdditionalResources {
@@ -1142,6 +1145,7 @@ export type ChoiceStatus =
   | "UNSELECTED"
   | (string & {});
 export const ChoiceStatus = /*@__PURE__*/ S.String;
+
 export type ChoiceReason =
   | "OUT_OF_SCOPE"
   | "BUSINESS_PRIORITIES"
@@ -1150,6 +1154,8 @@ export type ChoiceReason =
   | "NONE"
   | (string & {});
 export const ChoiceReason = /*@__PURE__*/ S.String;
+
+export type ChoiceNotes = string;
 export interface ChoiceAnswer {
   ChoiceId?: string;
   Status?: ChoiceStatus;
@@ -1166,6 +1172,7 @@ export const ChoiceAnswer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ChoiceAnswer" }) as any as S.Schema<ChoiceAnswer>;
 export type ChoiceAnswers = ChoiceAnswer[];
 export const ChoiceAnswers = /*@__PURE__*/ S.Array(ChoiceAnswer);
+export type IsApplicable = boolean;
 export type Risk =
   | "UNANSWERED"
   | "HIGH"
@@ -1174,6 +1181,7 @@ export type Risk =
   | "NOT_APPLICABLE"
   | (string & {});
 export const Risk = /*@__PURE__*/ S.String;
+
 export type AnswerReason =
   | "OUT_OF_SCOPE"
   | "BUSINESS_PRIORITIES"
@@ -1182,6 +1190,8 @@ export type AnswerReason =
   | "NONE"
   | (string & {});
 export const AnswerReason = /*@__PURE__*/ S.String;
+
+export type JiraIssueUrl = string;
 export interface JiraConfiguration {
   JiraIssueUrl?: string;
   LastSyncedTime?: Date;
@@ -1250,6 +1260,10 @@ export const GetAnswerOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAnswerOutput>;
 export type ReportFormat = "PDF" | "JSON" | (string & {});
 export const ReportFormat = /*@__PURE__*/ S.String;
+
+export type IncludeSharedResources = boolean;
+export type NextToken = string;
+export type GetConsolidatedReportMaxResults = number;
 export interface GetConsolidatedReportInput {
   Format?: ReportFormat;
   IncludeSharedResources?: boolean;
@@ -1279,6 +1293,8 @@ export const GetConsolidatedReportInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetConsolidatedReportInput>;
 export type MetricType = "WORKLOAD" | (string & {});
 export const MetricType = /*@__PURE__*/ S.String;
+
+export type Count = number;
 export type RiskCounts = { [key in Risk]?: number };
 export const RiskCounts = /*@__PURE__*/ S.Record(
   Risk,
@@ -1338,6 +1354,7 @@ export const LensMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LensMetric" }) as any as S.Schema<LensMetric>;
 export type LensMetrics = LensMetric[];
 export const LensMetrics = /*@__PURE__*/ S.Array(LensMetric);
+export type LensesAppliedCount = number;
 export interface ConsolidatedReportMetric {
   MetricType?: MetricType;
   RiskCounts?: { [key: string]: number | undefined };
@@ -1366,6 +1383,7 @@ export type ConsolidatedReportMetrics = ConsolidatedReportMetric[];
 export const ConsolidatedReportMetrics = /*@__PURE__*/ S.Array(
   ConsolidatedReportMetric,
 );
+export type Base64String = string;
 export interface GetConsolidatedReportOutput {
   Metrics?: ConsolidatedReportMetric[];
   NextToken?: string;
@@ -1397,15 +1415,21 @@ export const GetGlobalSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetGlobalSettingsRequest>;
 export type OrganizationSharingStatus = "ENABLED" | "DISABLED" | (string & {});
 export const OrganizationSharingStatus = /*@__PURE__*/ S.String;
+
 export type DiscoveryIntegrationStatus = "ENABLED" | "DISABLED" | (string & {});
 export const DiscoveryIntegrationStatus = /*@__PURE__*/ S.String;
+
 export type IntegrationStatus = "CONFIGURED" | "NOT_CONFIGURED" | (string & {});
 export const IntegrationStatus = /*@__PURE__*/ S.String;
+
 export type AccountJiraIssueManagementStatus =
   | "ENABLED"
   | "DISABLED"
   | (string & {});
 export const AccountJiraIssueManagementStatus = /*@__PURE__*/ S.String;
+
+export type Subdomain = string;
+export type StatusMessage = string;
 export interface AccountJiraConfigurationOutput {
   IntegrationStatus?: IntegrationStatus;
   IssueManagementStatus?: AccountJiraIssueManagementStatus;
@@ -1459,6 +1483,10 @@ export const GetLensInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetLensInput" }) as any as S.Schema<GetLensInput>;
+export type LensName = string;
+export type LensDescription = string;
+export type LensOwner = string;
+export type ShareInvitationId = string;
 export interface Lens {
   LensArn?: string;
   LensVersion?: string;
@@ -1519,6 +1547,8 @@ export type LensStatus =
   | "UNSHARED"
   | (string & {});
 export const LensStatus = /*@__PURE__*/ S.String;
+
+export type PillarName = string;
 export interface PillarReviewSummary {
   PillarId?: string;
   PillarName?: string;
@@ -1539,6 +1569,7 @@ export const PillarReviewSummary = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PillarReviewSummary>;
 export type PillarReviewSummaries = PillarReviewSummary[];
 export const PillarReviewSummaries = /*@__PURE__*/ S.Array(PillarReviewSummary);
+export type SelectedQuestionId = string;
 export type SelectedQuestionIds = string[];
 export const SelectedQuestionIds = /*@__PURE__*/ S.Array(S.String);
 export interface SelectedPillar {
@@ -1702,6 +1733,7 @@ export const GetLensVersionDifferenceInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLensVersionDifferenceInput>;
 export type DifferenceStatus = "UPDATED" | "NEW" | "DELETED" | (string & {});
 export const DifferenceStatus = /*@__PURE__*/ S.String;
+
 export interface QuestionDifference {
   QuestionId?: string;
   QuestionTitle?: string;
@@ -1788,6 +1820,7 @@ export const GetMilestoneInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMilestoneInput",
 }) as any as S.Schema<GetMilestoneInput>;
+export type IsReviewOwnerUpdateAcknowledged = boolean;
 export type WorkloadImprovementStatus =
   | "NOT_APPLICABLE"
   | "NOT_STARTED"
@@ -1796,6 +1829,7 @@ export type WorkloadImprovementStatus =
   | "RISK_ACKNOWLEDGED"
   | (string & {});
 export const WorkloadImprovementStatus = /*@__PURE__*/ S.String;
+
 export interface WorkloadJiraConfigurationOutput {
   IssueManagementStatus?: WorkloadIssueManagementStatus;
   IssueManagementType?: IssueManagementType;
@@ -1939,6 +1973,8 @@ export type ProfileQuestionChoices = ProfileChoice[];
 export const ProfileQuestionChoices = /*@__PURE__*/ S.Array(ProfileChoice);
 export type SelectedChoiceIds = string[];
 export const SelectedChoiceIds = /*@__PURE__*/ S.Array(S.String);
+export type MinSelectedProfileChoices = number;
+export type MaxSelectedProfileChoices = number;
 export interface ProfileQuestion {
   QuestionId?: string;
   QuestionTitle?: string;
@@ -2095,6 +2131,7 @@ export const GetReviewTemplateInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetReviewTemplateInput>;
 export type Question = "UNANSWERED" | "ANSWERED" | (string & {});
 export const Question = /*@__PURE__*/ S.String;
+
 export type QuestionCounts = { [key in Question]?: number };
 export const QuestionCounts = /*@__PURE__*/ S.Record(
   Question,
@@ -2105,6 +2142,7 @@ export type ReviewTemplateUpdateStatus =
   | "LENS_NOT_CURRENT"
   | (string & {});
 export const ReviewTemplateUpdateStatus = /*@__PURE__*/ S.String;
+
 export interface ReviewTemplate {
   Description?: string;
   Lenses?: string[];
@@ -2172,6 +2210,7 @@ export type ReviewTemplateAnswerStatus =
   | "ANSWERED"
   | (string & {});
 export const ReviewTemplateAnswerStatus = /*@__PURE__*/ S.String;
+
 export interface ReviewTemplateAnswer {
   QuestionId?: string;
   PillarId?: string;
@@ -2363,6 +2402,7 @@ export type ImportLensStatus =
   | "ERROR"
   | (string & {});
 export const ImportLensStatus = /*@__PURE__*/ S.String;
+
 export interface ImportLensOutput {
   LensArn?: string;
   Status?: ImportLensStatus;
@@ -2375,8 +2415,10 @@ export const ImportLensOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportLensOutput",
 }) as any as S.Schema<ImportLensOutput>;
+export type ListAnswersMaxResults = number;
 export type QuestionPriority = "PRIORITIZED" | "NONE" | (string & {});
 export const QuestionPriority = /*@__PURE__*/ S.String;
+
 export interface ListAnswersInput {
   WorkloadId: string;
   LensAlias: string;
@@ -2431,6 +2473,7 @@ export type ChoiceAnswerSummaries = ChoiceAnswerSummary[];
 export const ChoiceAnswerSummaries = /*@__PURE__*/ S.Array(ChoiceAnswerSummary);
 export type QuestionType = "PRIORITIZED" | "NON_PRIORITIZED" | (string & {});
 export const QuestionType = /*@__PURE__*/ S.String;
+
 export interface AnswerSummary {
   QuestionId?: string;
   PillarId?: string;
@@ -2481,6 +2524,7 @@ export const ListAnswersOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAnswersOutput",
 }) as any as S.Schema<ListAnswersOutput>;
+export type MaxResults = number;
 export interface ListCheckDetailsInput {
   WorkloadId: string;
   NextToken?: string;
@@ -2512,8 +2556,12 @@ export const ListCheckDetailsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCheckDetailsInput",
 }) as any as S.Schema<ListCheckDetailsInput>;
+export type CheckId = string;
+export type CheckName = string;
+export type CheckDescription = string;
 export type CheckProvider = "TRUSTED_ADVISOR" | (string & {});
 export const CheckProvider = /*@__PURE__*/ S.String;
+
 export type CheckStatus =
   | "OKAY"
   | "WARNING"
@@ -2522,6 +2570,8 @@ export type CheckStatus =
   | "FETCH_FAILED"
   | (string & {});
 export const CheckStatus = /*@__PURE__*/ S.String;
+
+export type FlaggedResources = number;
 export type CheckFailureReason =
   | "ASSUME_ROLE_ERROR"
   | "ACCESS_DENIED"
@@ -2529,6 +2579,7 @@ export type CheckFailureReason =
   | "PREMIUM_SUPPORT_REQUIRED"
   | (string & {});
 export const CheckFailureReason = /*@__PURE__*/ S.String;
+
 export interface CheckDetail {
   Id?: string;
   Name?: string;
@@ -2606,6 +2657,7 @@ export const ListCheckSummariesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCheckSummariesInput",
 }) as any as S.Schema<ListCheckSummariesInput>;
+export type CheckStatusCount = number;
 export type AccountSummary = { [key in CheckStatus]?: number };
 export const AccountSummary = /*@__PURE__*/ S.Record(
   CheckStatus,
@@ -2659,6 +2711,7 @@ export type LensType =
   | "CUSTOM_SELF"
   | (string & {});
 export const LensType = /*@__PURE__*/ S.String;
+
 export interface ListLensesInput {
   NextToken?: string;
   MaxResults?: number;
@@ -2726,6 +2779,7 @@ export const ListLensesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListLensesOutput",
 }) as any as S.Schema<ListLensesOutput>;
+export type ListLensReviewImprovementsMaxResults = number;
 export interface ListLensReviewImprovementsInput {
   WorkloadId: string;
   LensAlias: string;
@@ -2893,6 +2947,8 @@ export const ListLensReviewsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListLensReviewsOutput",
 }) as any as S.Schema<ListLensReviewsOutput>;
+export type SharedWithPrefix = string;
+export type ListWorkloadSharesMaxResults = number;
 export type ShareStatus =
   | "ACCEPTED"
   | "REJECTED"
@@ -2904,6 +2960,7 @@ export type ShareStatus =
   | "FAILED"
   | (string & {});
 export const ShareStatus = /*@__PURE__*/ S.String;
+
 export interface ListLensSharesInput {
   LensAlias: string;
   SharedWithPrefix?: string;
@@ -3049,6 +3106,8 @@ export const ListMilestonesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMilestonesOutput",
 }) as any as S.Schema<ListMilestonesOutput>;
+export type ListNotificationsMaxResults = number;
+export type ResourceArn = string;
 export interface ListNotificationsInput {
   WorkloadId?: string;
   NextToken?: string;
@@ -3079,6 +3138,7 @@ export type NotificationType =
   | "LENS_VERSION_DEPRECATED"
   | (string & {});
 export const NotificationType = /*@__PURE__*/ S.String;
+
 export interface LensUpgradeSummary {
   WorkloadId?: string;
   WorkloadName?: string;
@@ -3157,6 +3217,7 @@ export type ProfileNotificationType =
   | "PROFILE_DELETED"
   | (string & {});
 export const ProfileNotificationType = /*@__PURE__*/ S.String;
+
 export interface ProfileNotificationSummary {
   CurrentProfileVersion?: string;
   LatestProfileVersion?: string;
@@ -3195,8 +3256,10 @@ export const ListProfileNotificationsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProfileNotificationsOutput",
 }) as any as S.Schema<ListProfileNotificationsOutput>;
+export type ProfileNamePrefix = string;
 export type ProfileOwnerType = "SELF" | "SHARED" | (string & {});
 export const ProfileOwnerType = /*@__PURE__*/ S.String;
+
 export interface ListProfilesInput {
   ProfileNamePrefix?: string;
   ProfileOwnerType?: ProfileOwnerType;
@@ -3260,6 +3323,7 @@ export const ListProfilesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProfilesOutput",
 }) as any as S.Schema<ListProfilesOutput>;
+export type ListProfileSharesMaxResults = number;
 export interface ListProfileSharesInput {
   ProfileArn: string;
   SharedWithPrefix?: string;
@@ -3319,6 +3383,7 @@ export const ListProfileSharesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProfileSharesOutput",
 }) as any as S.Schema<ListProfileSharesOutput>;
+export type ListReviewTemplateAnswersMaxResults = number;
 export interface ListReviewTemplateAnswersInput {
   TemplateArn: string;
   LensAlias: string;
@@ -3454,6 +3519,8 @@ export const ListReviewTemplatesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListReviewTemplatesOutput",
 }) as any as S.Schema<ListReviewTemplatesOutput>;
+export type WorkloadNamePrefix = string;
+export type LensNamePrefix = string;
 export type ShareResourceType =
   | "WORKLOAD"
   | "LENS"
@@ -3461,6 +3528,9 @@ export type ShareResourceType =
   | "TEMPLATE"
   | (string & {});
 export const ShareResourceType = /*@__PURE__*/ S.String;
+
+export type ListShareInvitationsMaxResults = number;
+export type TemplateNamePrefix = string;
 export interface ListShareInvitationsInput {
   WorkloadNamePrefix?: string;
   LensNamePrefix?: string;
@@ -3575,6 +3645,7 @@ export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
+export type ListTemplateSharesMaxResults = number;
 export interface ListTemplateSharesInput {
   TemplateArn: string;
   SharedWithPrefix?: string;
@@ -3637,6 +3708,7 @@ export const ListTemplateSharesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTemplateSharesOutput",
 }) as any as S.Schema<ListTemplateSharesOutput>;
+export type ListWorkloadsMaxResults = number;
 export interface ListWorkloadsInput {
   WorkloadNamePrefix?: string;
   NextToken?: string;
@@ -3865,6 +3937,7 @@ export const UpdateAnswerOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateAnswerOutput>;
 export type IntegrationStatusInput = "NOT_CONFIGURED" | (string & {});
 export const IntegrationStatusInput = /*@__PURE__*/ S.String;
+
 export interface AccountJiraConfigurationInput {
   IssueManagementStatus?: AccountJiraIssueManagementStatus;
   IssueManagementType?: IssueManagementType;
@@ -3912,6 +3985,7 @@ export const UpdateGlobalSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateGlobalSettingsResponse>;
 export type IntegratingService = "JIRA" | (string & {});
 export const IntegratingService = /*@__PURE__*/ S.String;
+
 export interface UpdateIntegrationInput {
   WorkloadId: string;
   ClientRequestToken?: string;
@@ -4154,6 +4228,7 @@ export const UpdateReviewTemplateLensReviewOutput = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<UpdateReviewTemplateLensReviewOutput>;
 export type ShareInvitationAction = "ACCEPT" | "REJECT" | (string & {});
 export const ShareInvitationAction = /*@__PURE__*/ S.String;
+
 export interface UpdateShareInvitationInput {
   ShareInvitationId: string;
   ShareInvitationAction?: ShareInvitationAction;
@@ -4425,67 +4500,33 @@ export const UpgradeReviewTemplateLensReviewResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpgradeReviewTemplateLensReviewResponse",
 }) as any as S.Schema<UpgradeReviewTemplateLensReviewResponse>;
+export type ExceptionMessage = string;
+export type ExceptionResourceId = string;
+export type ExceptionResourceType = string;
+export type QuotaCode = string;
+export type ServiceCode = string;
+export type ValidationExceptionReason =
+  | "UNKNOWN_OPERATION"
+  | "CANNOT_PARSE"
+  | "FIELD_VALIDATION_FAILED"
+  | "OTHER"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Message: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    Message: S.optional(S.String),
-    QuotaCode: S.optional(S.String),
-    ServiceCode: S.optional(S.String),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(ValidationExceptionReason),
-    Fields: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-    QuotaCode: S.optional(S.String),
-    ServiceCode: S.optional(S.String),
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
+export type ValidationExceptionFieldName = string;
+export interface ValidationExceptionField {
+  Name?: string;
+  Message?: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.optional(S.String), Message: S.optional(S.String) }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type AssociateLensesError =
   | AccessDeniedException
   | ConflictException
@@ -4526,6 +4567,7 @@ export const associateLenses: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateLenses",
 }));
+
 export type AssociateProfilesError =
   | AccessDeniedException
   | ConflictException
@@ -4557,6 +4599,7 @@ export const associateProfiles: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateProfiles",
 }));
+
 export type CreateLensShareError =
   | AccessDeniedException
   | ConflictException
@@ -4611,6 +4654,7 @@ export const createLensShare: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLensShare",
 }));
+
 export type CreateLensVersionError =
   | AccessDeniedException
   | ConflictException
@@ -4651,6 +4695,7 @@ export const createLensVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLensVersion",
 }));
+
 export type CreateMilestoneError =
   | AccessDeniedException
   | ConflictException
@@ -4684,6 +4729,7 @@ export const createMilestone: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMilestone",
 }));
+
 export type CreateProfileError =
   | AccessDeniedException
   | ConflictException
@@ -4715,6 +4761,7 @@ export const createProfile: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProfile",
 }));
+
 export type CreateProfileShareError =
   | AccessDeniedException
   | ConflictException
@@ -4748,6 +4795,7 @@ export const createProfileShare: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProfileShare",
 }));
+
 export type CreateReviewTemplateError =
   | AccessDeniedException
   | ConflictException
@@ -4790,6 +4838,7 @@ export const createReviewTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReviewTemplate",
 }));
+
 export type CreateTemplateShareError =
   | AccessDeniedException
   | ConflictException
@@ -4838,6 +4887,7 @@ export const createTemplateShare: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTemplateShare",
 }));
+
 export type CreateWorkloadError =
   | AccessDeniedException
   | ConflictException
@@ -4894,6 +4944,7 @@ export const createWorkload: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWorkload",
 }));
+
 export type CreateWorkloadShareError =
   | AccessDeniedException
   | ConflictException
@@ -4937,6 +4988,7 @@ export const createWorkloadShare: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWorkloadShare",
 }));
+
 export type DeleteLensError =
   | AccessDeniedException
   | ConflictException
@@ -4980,6 +5032,7 @@ export const deleteLens: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLens",
 }));
+
 export type DeleteLensShareError =
   | AccessDeniedException
   | ConflictException
@@ -5024,6 +5077,7 @@ export const deleteLensShare: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLensShare",
 }));
+
 export type DeleteProfileError =
   | AccessDeniedException
   | ConflictException
@@ -5064,6 +5118,7 @@ export const deleteProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProfile",
 }));
+
 export type DeleteProfileShareError =
   | AccessDeniedException
   | ConflictException
@@ -5095,6 +5150,7 @@ export const deleteProfileShare: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProfileShare",
 }));
+
 export type DeleteReviewTemplateError =
   | AccessDeniedException
   | ConflictException
@@ -5132,6 +5188,7 @@ export const deleteReviewTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReviewTemplate",
 }));
+
 export type DeleteTemplateShareError =
   | AccessDeniedException
   | ConflictException
@@ -5167,6 +5224,7 @@ export const deleteTemplateShare: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTemplateShare",
 }));
+
 export type DeleteWorkloadError =
   | AccessDeniedException
   | ConflictException
@@ -5198,6 +5256,7 @@ export const deleteWorkload: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWorkload",
 }));
+
 export type DeleteWorkloadShareError =
   | AccessDeniedException
   | ConflictException
@@ -5229,6 +5288,7 @@ export const deleteWorkloadShare: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWorkloadShare",
 }));
+
 export type DisassociateLensesError =
   | AccessDeniedException
   | ConflictException
@@ -5265,6 +5325,7 @@ export const disassociateLenses: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateLenses",
 }));
+
 export type DisassociateProfilesError =
   | AccessDeniedException
   | ConflictException
@@ -5296,6 +5357,7 @@ export const disassociateProfiles: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateProfiles",
 }));
+
 export type ExportLensError =
   | AccessDeniedException
   | InternalServerException
@@ -5340,6 +5402,7 @@ export const exportLens: API.OperationMethod<
   retry: Retry,
   operationName: "ExportLens",
 }));
+
 export type GetAnswerError =
   | AccessDeniedException
   | InternalServerException
@@ -5369,6 +5432,7 @@ export const getAnswer: API.OperationMethod<
   retry: Retry,
   operationName: "GetAnswer",
 }));
+
 export type GetConsolidatedReportError =
   | AccessDeniedException
   | ConflictException
@@ -5420,6 +5484,7 @@ export const getConsolidatedReport: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetGlobalSettingsError =
   | AccessDeniedException
   | InternalServerException
@@ -5447,6 +5512,7 @@ export const getGlobalSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetGlobalSettings",
 }));
+
 export type GetLensError =
   | AccessDeniedException
   | InternalServerException
@@ -5476,6 +5542,7 @@ export const getLens: API.OperationMethod<
   retry: Retry,
   operationName: "GetLens",
 }));
+
 export type GetLensReviewError =
   | AccessDeniedException
   | InternalServerException
@@ -5505,6 +5572,7 @@ export const getLensReview: API.OperationMethod<
   retry: Retry,
   operationName: "GetLensReview",
 }));
+
 export type GetLensReviewReportError =
   | AccessDeniedException
   | InternalServerException
@@ -5534,6 +5602,7 @@ export const getLensReviewReport: API.OperationMethod<
   retry: Retry,
   operationName: "GetLensReviewReport",
 }));
+
 export type GetLensVersionDifferenceError =
   | AccessDeniedException
   | InternalServerException
@@ -5563,6 +5632,7 @@ export const getLensVersionDifference: API.OperationMethod<
   retry: Retry,
   operationName: "GetLensVersionDifference",
 }));
+
 export type GetMilestoneError =
   | AccessDeniedException
   | InternalServerException
@@ -5592,6 +5662,7 @@ export const getMilestone: API.OperationMethod<
   retry: Retry,
   operationName: "GetMilestone",
 }));
+
 export type GetProfileError =
   | AccessDeniedException
   | InternalServerException
@@ -5621,6 +5692,7 @@ export const getProfile: API.OperationMethod<
   retry: Retry,
   operationName: "GetProfile",
 }));
+
 export type GetProfileTemplateError =
   | AccessDeniedException
   | InternalServerException
@@ -5650,6 +5722,7 @@ export const getProfileTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetProfileTemplate",
 }));
+
 export type GetReviewTemplateError =
   | AccessDeniedException
   | InternalServerException
@@ -5679,6 +5752,7 @@ export const getReviewTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetReviewTemplate",
 }));
+
 export type GetReviewTemplateAnswerError =
   | AccessDeniedException
   | InternalServerException
@@ -5708,6 +5782,7 @@ export const getReviewTemplateAnswer: API.OperationMethod<
   retry: Retry,
   operationName: "GetReviewTemplateAnswer",
 }));
+
 export type GetReviewTemplateLensReviewError =
   | AccessDeniedException
   | InternalServerException
@@ -5737,6 +5812,7 @@ export const getReviewTemplateLensReview: API.OperationMethod<
   retry: Retry,
   operationName: "GetReviewTemplateLensReview",
 }));
+
 export type GetWorkloadError =
   | AccessDeniedException
   | InternalServerException
@@ -5766,6 +5842,7 @@ export const getWorkload: API.OperationMethod<
   retry: Retry,
   operationName: "GetWorkload",
 }));
+
 export type ImportLensError =
   | AccessDeniedException
   | ConflictException
@@ -5820,6 +5897,7 @@ export const importLens: API.OperationMethod<
   retry: Retry,
   operationName: "ImportLens",
 }));
+
 export type ListAnswersError =
   | AccessDeniedException
   | InternalServerException
@@ -5869,6 +5947,7 @@ export const listAnswers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCheckDetailsError =
   | AccessDeniedException
   | InternalServerException
@@ -5918,6 +5997,7 @@ export const listCheckDetails: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCheckSummariesError =
   | AccessDeniedException
   | InternalServerException
@@ -5967,6 +6047,7 @@ export const listCheckSummaries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLensesError =
   | AccessDeniedException
   | InternalServerException
@@ -6014,6 +6095,7 @@ export const listLenses: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLensReviewImprovementsError =
   | AccessDeniedException
   | InternalServerException
@@ -6063,6 +6145,7 @@ export const listLensReviewImprovements: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLensReviewsError =
   | AccessDeniedException
   | InternalServerException
@@ -6112,6 +6195,7 @@ export const listLensReviews: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLensSharesError =
   | AccessDeniedException
   | InternalServerException
@@ -6161,6 +6245,7 @@ export const listLensShares: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMilestonesError =
   | AccessDeniedException
   | InternalServerException
@@ -6210,6 +6295,7 @@ export const listMilestones: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNotificationsError =
   | AccessDeniedException
   | InternalServerException
@@ -6257,6 +6343,7 @@ export const listNotifications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProfileNotificationsError =
   | AccessDeniedException
   | InternalServerException
@@ -6304,6 +6391,7 @@ export const listProfileNotifications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProfilesError =
   | AccessDeniedException
   | InternalServerException
@@ -6351,6 +6439,7 @@ export const listProfiles: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProfileSharesError =
   | AccessDeniedException
   | InternalServerException
@@ -6400,6 +6489,7 @@ export const listProfileShares: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListReviewTemplateAnswersError =
   | AccessDeniedException
   | InternalServerException
@@ -6449,6 +6539,7 @@ export const listReviewTemplateAnswers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListReviewTemplatesError =
   | AccessDeniedException
   | InternalServerException
@@ -6496,6 +6587,7 @@ export const listReviewTemplates: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListShareInvitationsError =
   | AccessDeniedException
   | InternalServerException
@@ -6547,6 +6639,7 @@ export const listShareInvitations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -6569,6 +6662,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTemplateSharesError =
   | AccessDeniedException
   | InternalServerException
@@ -6618,6 +6712,7 @@ export const listTemplateShares: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListWorkloadsError =
   | AccessDeniedException
   | InternalServerException
@@ -6665,6 +6760,7 @@ export const listWorkloads: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListWorkloadSharesError =
   | AccessDeniedException
   | InternalServerException
@@ -6714,6 +6810,7 @@ export const listWorkloadShares: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -6736,6 +6833,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -6762,6 +6860,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAnswerError =
   | AccessDeniedException
   | ConflictException
@@ -6793,6 +6892,7 @@ export const updateAnswer: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAnswer",
 }));
+
 export type UpdateGlobalSettingsError =
   | AccessDeniedException
   | ConflictException
@@ -6822,6 +6922,7 @@ export const updateGlobalSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGlobalSettings",
 }));
+
 export type UpdateIntegrationError =
   | AccessDeniedException
   | ConflictException
@@ -6853,6 +6954,7 @@ export const updateIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateIntegration",
 }));
+
 export type UpdateLensReviewError =
   | AccessDeniedException
   | ConflictException
@@ -6884,6 +6986,7 @@ export const updateLensReview: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLensReview",
 }));
+
 export type UpdateProfileError =
   | AccessDeniedException
   | ConflictException
@@ -6915,6 +7018,7 @@ export const updateProfile: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProfile",
 }));
+
 export type UpdateReviewTemplateError =
   | AccessDeniedException
   | ConflictException
@@ -6946,6 +7050,7 @@ export const updateReviewTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateReviewTemplate",
 }));
+
 export type UpdateReviewTemplateAnswerError =
   | AccessDeniedException
   | ConflictException
@@ -6977,6 +7082,7 @@ export const updateReviewTemplateAnswer: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateReviewTemplateAnswer",
 }));
+
 export type UpdateReviewTemplateLensReviewError =
   | AccessDeniedException
   | ConflictException
@@ -7008,6 +7114,7 @@ export const updateReviewTemplateLensReview: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateReviewTemplateLensReview",
 }));
+
 export type UpdateShareInvitationError =
   | AccessDeniedException
   | ConflictException
@@ -7041,6 +7148,7 @@ export const updateShareInvitation: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateShareInvitation",
 }));
+
 export type UpdateWorkloadError =
   | AccessDeniedException
   | ConflictException
@@ -7072,6 +7180,7 @@ export const updateWorkload: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateWorkload",
 }));
+
 export type UpdateWorkloadShareError =
   | AccessDeniedException
   | ConflictException
@@ -7103,6 +7212,7 @@ export const updateWorkloadShare: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateWorkloadShare",
 }));
+
 export type UpgradeLensReviewError =
   | AccessDeniedException
   | ConflictException
@@ -7136,6 +7246,7 @@ export const upgradeLensReview: API.OperationMethod<
   retry: Retry,
   operationName: "UpgradeLensReview",
 }));
+
 export type UpgradeProfileVersionError =
   | AccessDeniedException
   | ConflictException
@@ -7169,6 +7280,7 @@ export const upgradeProfileVersion: API.OperationMethod<
   retry: Retry,
   operationName: "UpgradeProfileVersion",
 }));
+
 export type UpgradeReviewTemplateLensReviewError =
   | AccessDeniedException
   | ConflictException

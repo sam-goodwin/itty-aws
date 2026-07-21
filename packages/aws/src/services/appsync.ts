@@ -86,41 +86,84 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ApiKeyLimitExceededException extends S.TaggedErrorClass<ApiKeyLimitExceededException>()(
+  "ApiKeyLimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ApiKeyValidityOutOfBoundsException extends S.TaggedErrorClass<ApiKeyValidityOutOfBoundsException>()(
+  "ApiKeyValidityOutOfBoundsException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ApiLimitExceededException extends S.TaggedErrorClass<ApiLimitExceededException>()(
+  "ApiLimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  {
+    message: S.optional(S.String),
+    reason: S.optional(
+      S.suspend(() => BadRequestReason).annotate({
+        identifier: "BadRequestReason",
+      }),
+    ),
+    detail: S.optional(
+      S.suspend(() => BadRequestDetail).annotate({
+        identifier: "BadRequestDetail",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class GraphQLSchemaException extends S.TaggedErrorClass<GraphQLSchemaException>()(
+  "GraphQLSchemaException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
+  "InternalFailureException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
 export type DomainName = string;
-export type ErrorMessage = string;
-export type CodeErrorLine = number;
-export type CodeErrorColumn = number;
-export type CodeErrorSpan = number;
-export type ApiName = string;
-export type TagKey = string;
-export type TagValue = string;
-export type TTL = number;
-export type OwnerContact = string;
-export type Namespace = string;
-export type Code = string;
-export type ResourceName = string;
-export type CertificateArn = string;
-export type Description = string;
-export type MappingTemplate = string;
-export type MaxBatchSize = number;
-export type QueryDepthLimit = number;
-export type ResolverCountLimit = number;
-export type Context = string;
-export type EvaluationResult = string;
-export type Stash = string;
-export type OutErrors = string;
-export type Template = string;
-export type PaginationToken = string;
-export type MaxResults = number;
-export type EnvironmentVariableKey = string;
-export type EnvironmentVariableValue = string;
-export type ResourceArn = string;
-export type RdsDataApiConfigResourceArn = string;
-export type RdsDataApiConfigSecretArn = string;
-export type RdsDataApiConfigDatabaseName = string;
-
-//# Schemas
 export interface AssociateApiRequest {
   domainName: string;
   apiId: string;
@@ -152,6 +195,7 @@ export type AssociationStatus =
   | "SUCCESS"
   | (string & {});
 export const AssociationStatus = /*@__PURE__*/ S.String;
+
 export interface ApiAssociation {
   domainName?: string;
   apiId?: string;
@@ -174,46 +218,9 @@ export const AssociateApiResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateApiResponse",
 }) as any as S.Schema<AssociateApiResponse>;
-export type BadRequestReason = "CODE_ERROR" | (string & {});
-export const BadRequestReason = /*@__PURE__*/ S.String;
-export interface CodeErrorLocation {
-  line?: number;
-  column?: number;
-  span?: number;
-}
-export const CodeErrorLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    line: S.optional(S.Number),
-    column: S.optional(S.Number),
-    span: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CodeErrorLocation",
-}) as any as S.Schema<CodeErrorLocation>;
-export interface CodeError {
-  errorType?: string;
-  value?: string;
-  location?: CodeErrorLocation;
-}
-export const CodeError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorType: S.optional(S.String),
-    value: S.optional(S.String),
-    location: S.optional(CodeErrorLocation),
-  }),
-).annotate({ identifier: "CodeError" }) as any as S.Schema<CodeError>;
-export type CodeErrors = CodeError[];
-export const CodeErrors = /*@__PURE__*/ S.Array(CodeError);
-export interface BadRequestDetail {
-  codeErrors?: CodeError[];
-}
-export const BadRequestDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ codeErrors: S.optional(CodeErrors) }),
-).annotate({
-  identifier: "BadRequestDetail",
-}) as any as S.Schema<BadRequestDetail>;
 export type MergeType = "MANUAL_MERGE" | "AUTO_MERGE" | (string & {});
 export const MergeType = /*@__PURE__*/ S.String;
+
 export interface SourceApiAssociationConfig {
   mergeType?: MergeType;
 }
@@ -262,6 +269,7 @@ export type SourceApiAssociationStatus =
   | "DELETION_FAILED"
   | (string & {});
 export const SourceApiAssociationStatus = /*@__PURE__*/ S.String;
+
 export interface SourceApiAssociation {
   associationId?: string;
   associationArn?: string;
@@ -339,6 +347,9 @@ export const AssociateSourceGraphqlApiResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateSourceGraphqlApiResponse",
 }) as any as S.Schema<AssociateSourceGraphqlApiResponse>;
+export type ApiName = string;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -352,6 +363,7 @@ export type AuthenticationType =
   | "AWS_LAMBDA"
   | (string & {});
 export const AuthenticationType = /*@__PURE__*/ S.String;
+
 export interface CognitoConfig {
   userPoolId: string;
   awsRegion: string;
@@ -380,6 +392,7 @@ export const OpenIDConnectConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OpenIDConnectConfig",
 }) as any as S.Schema<OpenIDConnectConfig>;
+export type TTL = number;
 export interface LambdaAuthorizerConfig {
   authorizerResultTtlInSeconds?: number;
   authorizerUri: string;
@@ -426,6 +439,7 @@ export type EventLogLevel =
   | "DEBUG"
   | (string & {});
 export const EventLogLevel = /*@__PURE__*/ S.String;
+
 export interface EventLogConfig {
   logLevel: EventLogLevel;
   cloudWatchLogsRoleArn: string;
@@ -475,6 +489,7 @@ export const CreateApiRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApiRequest",
 }) as any as S.Schema<CreateApiRequest>;
+export type OwnerContact = string;
 export type MapOfStringToString = { [key: string]: string | undefined };
 export const MapOfStringToString = /*@__PURE__*/ S.Record(
   S.String,
@@ -520,6 +535,7 @@ export type ApiCachingBehavior =
   | "OPERATION_LEVEL_CACHING"
   | (string & {});
 export const ApiCachingBehavior = /*@__PURE__*/ S.String;
+
 export type ApiCacheType =
   | "T2_SMALL"
   | "T2_MEDIUM"
@@ -538,8 +554,10 @@ export type ApiCacheType =
   | "LARGE_12X"
   | (string & {});
 export const ApiCacheType = /*@__PURE__*/ S.String;
+
 export type CacheHealthMetricsConfig = "ENABLED" | "DISABLED" | (string & {});
 export const CacheHealthMetricsConfig = /*@__PURE__*/ S.String;
+
 export interface CreateApiCacheRequest {
   apiId: string;
   ttl: number;
@@ -580,6 +598,7 @@ export type ApiCacheStatus =
   | "FAILED"
   | (string & {});
 export const ApiCacheStatus = /*@__PURE__*/ S.String;
+
 export interface ApiCache {
   ttl?: number;
   apiCachingBehavior?: ApiCachingBehavior;
@@ -654,10 +673,14 @@ export const CreateApiKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApiKeyResponse",
 }) as any as S.Schema<CreateApiKeyResponse>;
+export type Namespace = string;
+export type Code = string;
 export type HandlerBehavior = "CODE" | "DIRECT" | (string & {});
 export const HandlerBehavior = /*@__PURE__*/ S.String;
+
 export type InvokeType = "REQUEST_RESPONSE" | "EVENT" | (string & {});
 export const InvokeType = /*@__PURE__*/ S.String;
+
 export interface LambdaConfig {
   invokeType?: InvokeType;
 }
@@ -759,6 +782,7 @@ export const CreateChannelNamespaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateChannelNamespaceResponse",
 }) as any as S.Schema<CreateChannelNamespaceResponse>;
+export type ResourceName = string;
 export type DataSourceType =
   | "AWS_LAMBDA"
   | "AMAZON_DYNAMODB"
@@ -771,6 +795,7 @@ export type DataSourceType =
   | "AMAZON_BEDROCK_RUNTIME"
   | (string & {});
 export const DataSourceType = /*@__PURE__*/ S.String;
+
 export interface DeltaSyncConfig {
   baseTableTTL?: number;
   deltaSyncTableName?: string;
@@ -831,6 +856,7 @@ export const OpenSearchServiceDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpenSearchServiceDataSourceConfig>;
 export type AuthorizationType = "AWS_IAM" | (string & {});
 export const AuthorizationType = /*@__PURE__*/ S.String;
+
 export interface AwsIamConfig {
   signingRegion?: string;
   signingServiceName?: string;
@@ -867,6 +893,7 @@ export const HttpDataSourceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HttpDataSourceConfig>;
 export type RelationalDatabaseSourceType = "RDS_HTTP_ENDPOINT" | (string & {});
 export const RelationalDatabaseSourceType = /*@__PURE__*/ S.String;
+
 export interface RdsHttpEndpointConfig {
   awsRegion?: string;
   dbClusterIdentifier?: string;
@@ -910,6 +937,7 @@ export type DataSourceLevelMetricsConfig =
   | "DISABLED"
   | (string & {});
 export const DataSourceLevelMetricsConfig = /*@__PURE__*/ S.String;
+
 export interface CreateDataSourceRequest {
   apiId: string;
   name: string;
@@ -994,6 +1022,8 @@ export const CreateDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDataSourceResponse",
 }) as any as S.Schema<CreateDataSourceResponse>;
+export type CertificateArn = string;
+export type Description = string;
 export interface CreateDomainNameRequest {
   domainName: string;
   certificateArn: string;
@@ -1050,6 +1080,7 @@ export const CreateDomainNameResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDomainNameResponse",
 }) as any as S.Schema<CreateDomainNameResponse>;
+export type MappingTemplate = string;
 export type ConflictHandlerType =
   | "OPTIMISTIC_CONCURRENCY"
   | "LAMBDA"
@@ -1057,8 +1088,10 @@ export type ConflictHandlerType =
   | "NONE"
   | (string & {});
 export const ConflictHandlerType = /*@__PURE__*/ S.String;
+
 export type ConflictDetectionType = "VERSION" | "NONE" | (string & {});
 export const ConflictDetectionType = /*@__PURE__*/ S.String;
+
 export interface LambdaConflictHandlerConfig {
   lambdaConflictHandlerArn?: string;
 }
@@ -1079,8 +1112,10 @@ export const SyncConfig = /*@__PURE__*/ S.suspend(() =>
     lambdaConflictHandlerConfig: S.optional(LambdaConflictHandlerConfig),
   }),
 ).annotate({ identifier: "SyncConfig" }) as any as S.Schema<SyncConfig>;
+export type MaxBatchSize = number;
 export type RuntimeName = "APPSYNC_JS" | (string & {});
 export const RuntimeName = /*@__PURE__*/ S.String;
+
 export interface AppSyncRuntime {
   name: RuntimeName;
   runtimeVersion: string;
@@ -1178,6 +1213,7 @@ export type FieldLogLevel =
   | "DEBUG"
   | (string & {});
 export const FieldLogLevel = /*@__PURE__*/ S.String;
+
 export interface LogConfig {
   fieldLogLevel: FieldLogLevel;
   cloudWatchLogsRoleArn: string;
@@ -1192,6 +1228,7 @@ export const LogConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogConfig" }) as any as S.Schema<LogConfig>;
 export type DefaultAction = "ALLOW" | "DENY" | (string & {});
 export const DefaultAction = /*@__PURE__*/ S.String;
+
 export interface UserPoolConfig {
   userPoolId: string;
   awsRegion: string;
@@ -1243,28 +1280,36 @@ export const AdditionalAuthenticationProviders = /*@__PURE__*/ S.Array(
 );
 export type GraphQLApiType = "GRAPHQL" | "MERGED" | (string & {});
 export const GraphQLApiType = /*@__PURE__*/ S.String;
+
 export type GraphQLApiVisibility = "GLOBAL" | "PRIVATE" | (string & {});
 export const GraphQLApiVisibility = /*@__PURE__*/ S.String;
+
 export type GraphQLApiIntrospectionConfig =
   | "ENABLED"
   | "DISABLED"
   | (string & {});
 export const GraphQLApiIntrospectionConfig = /*@__PURE__*/ S.String;
+
+export type QueryDepthLimit = number;
+export type ResolverCountLimit = number;
 export type ResolverLevelMetricsBehavior =
   | "FULL_REQUEST_RESOLVER_METRICS"
   | "PER_RESOLVER_METRICS"
   | (string & {});
 export const ResolverLevelMetricsBehavior = /*@__PURE__*/ S.String;
+
 export type DataSourceLevelMetricsBehavior =
   | "FULL_REQUEST_DATA_SOURCE_METRICS"
   | "PER_DATA_SOURCE_METRICS"
   | (string & {});
 export const DataSourceLevelMetricsBehavior = /*@__PURE__*/ S.String;
+
 export type OperationLevelMetricsConfig =
   | "ENABLED"
   | "DISABLED"
   | (string & {});
 export const OperationLevelMetricsConfig = /*@__PURE__*/ S.String;
+
 export interface EnhancedMetricsConfig {
   resolverLevelMetricsBehavior: ResolverLevelMetricsBehavior;
   dataSourceLevelMetricsBehavior: DataSourceLevelMetricsBehavior;
@@ -1397,6 +1442,7 @@ export const CreateGraphqlApiResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateGraphqlApiResponse>;
 export type ResolverKind = "UNIT" | "PIPELINE" | (string & {});
 export const ResolverKind = /*@__PURE__*/ S.String;
+
 export type FunctionsIds = string[];
 export const FunctionsIds = /*@__PURE__*/ S.Array(S.String);
 export interface PipelineConfig {
@@ -1416,6 +1462,7 @@ export const CachingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CachingConfig" }) as any as S.Schema<CachingConfig>;
 export type ResolverLevelMetricsConfig = "ENABLED" | "DISABLED" | (string & {});
 export const ResolverLevelMetricsConfig = /*@__PURE__*/ S.String;
+
 export interface CreateResolverRequest {
   apiId: string;
   typeName: string;
@@ -1509,6 +1556,7 @@ export const CreateResolverResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResolverResponse>;
 export type TypeDefinitionFormat = "SDL" | "JSON" | (string & {});
 export const TypeDefinitionFormat = /*@__PURE__*/ S.String;
+
 export interface CreateTypeRequest {
   apiId: string;
   definition: string;
@@ -1931,6 +1979,7 @@ export const DisassociateSourceGraphqlApiResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DisassociateSourceGraphqlApiResponse",
 }) as any as S.Schema<DisassociateSourceGraphqlApiResponse>;
+export type Context = string;
 export interface EvaluateCodeRequest {
   runtime: AppSyncRuntime;
   code: string;
@@ -1957,6 +2006,39 @@ export const EvaluateCodeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EvaluateCodeRequest",
 }) as any as S.Schema<EvaluateCodeRequest>;
+export type EvaluationResult = string;
+export type ErrorMessage = string;
+export type CodeErrorLine = number;
+export type CodeErrorColumn = number;
+export type CodeErrorSpan = number;
+export interface CodeErrorLocation {
+  line?: number;
+  column?: number;
+  span?: number;
+}
+export const CodeErrorLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    line: S.optional(S.Number),
+    column: S.optional(S.Number),
+    span: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CodeErrorLocation",
+}) as any as S.Schema<CodeErrorLocation>;
+export interface CodeError {
+  errorType?: string;
+  value?: string;
+  location?: CodeErrorLocation;
+}
+export const CodeError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    errorType: S.optional(S.String),
+    value: S.optional(S.String),
+    location: S.optional(CodeErrorLocation),
+  }),
+).annotate({ identifier: "CodeError" }) as any as S.Schema<CodeError>;
+export type CodeErrors = CodeError[];
+export const CodeErrors = /*@__PURE__*/ S.Array(CodeError);
 export interface EvaluateCodeErrorDetail {
   message?: string;
   codeErrors?: CodeError[];
@@ -1971,6 +2053,8 @@ export const EvaluateCodeErrorDetail = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvaluateCodeErrorDetail>;
 export type Logs = string[];
 export const Logs = /*@__PURE__*/ S.Array(S.String);
+export type Stash = string;
+export type OutErrors = string;
 export interface EvaluateCodeResponse {
   evaluationResult?: string;
   error?: EvaluateCodeErrorDetail;
@@ -1989,6 +2073,7 @@ export const EvaluateCodeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EvaluateCodeResponse",
 }) as any as S.Schema<EvaluateCodeResponse>;
+export type Template = string;
 export interface EvaluateMappingTemplateRequest {
   template: string;
   context: string;
@@ -2196,6 +2281,8 @@ export const GetDataSourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDataSourceResponse",
 }) as any as S.Schema<GetDataSourceResponse>;
+export type PaginationToken = string;
+export type MaxResults = number;
 export interface GetDataSourceIntrospectionRequest {
   introspectionId: string;
   includeModelsSDL?: boolean;
@@ -2233,6 +2320,7 @@ export type DataSourceIntrospectionStatus =
   | "SUCCESS"
   | (string & {});
 export const DataSourceIntrospectionStatus = /*@__PURE__*/ S.String;
+
 export type DataSourceIntrospectionModelFieldTypeValues = string[];
 export const DataSourceIntrospectionModelFieldTypeValues =
   /*@__PURE__*/ S.Array(S.String);
@@ -2451,6 +2539,8 @@ export const GetGraphqlApiEnvironmentVariablesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetGraphqlApiEnvironmentVariablesRequest",
 }) as any as S.Schema<GetGraphqlApiEnvironmentVariablesRequest>;
+export type EnvironmentVariableKey = string;
+export type EnvironmentVariableValue = string;
 export type EnvironmentVariableMap = { [key: string]: string | undefined };
 export const EnvironmentVariableMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2469,6 +2559,7 @@ export const GetGraphqlApiEnvironmentVariablesResponse =
   }) as any as S.Schema<GetGraphqlApiEnvironmentVariablesResponse>;
 export type OutputType = "SDL" | "JSON" | (string & {});
 export const OutputType = /*@__PURE__*/ S.String;
+
 export interface GetIntrospectionSchemaRequest {
   apiId: string;
   format: OutputType;
@@ -2567,6 +2658,7 @@ export type SchemaStatus =
   | "NOT_APPLICABLE"
   | (string & {});
 export const SchemaStatus = /*@__PURE__*/ S.String;
+
 export interface GetSchemaCreationStatusResponse {
   status?: SchemaStatus;
   details?: string;
@@ -2867,6 +2959,7 @@ export const ListFunctionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListFunctionsResponse>;
 export type Ownership = "CURRENT_ACCOUNT" | "OTHER_ACCOUNTS" | (string & {});
 export const Ownership = /*@__PURE__*/ S.String;
+
 export interface ListGraphqlApisRequest {
   nextToken?: string;
   maxResults?: number;
@@ -3053,6 +3146,7 @@ export const ListSourceApiAssociationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSourceApiAssociationsResponse",
 }) as any as S.Schema<ListSourceApiAssociationsResponse>;
+export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -3196,6 +3290,9 @@ export const PutGraphqlApiEnvironmentVariablesResponse =
   ).annotate({
     identifier: "PutGraphqlApiEnvironmentVariablesResponse",
   }) as any as S.Schema<PutGraphqlApiEnvironmentVariablesResponse>;
+export type RdsDataApiConfigResourceArn = string;
+export type RdsDataApiConfigSecretArn = string;
+export type RdsDataApiConfigDatabaseName = string;
 export interface RdsDataApiConfig {
   resourceArn: string;
   secretArn: string;
@@ -3834,79 +3931,17 @@ export const UpdateTypeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTypeResponse",
 }) as any as S.Schema<UpdateTypeResponse>;
+export type BadRequestReason = "CODE_ERROR" | (string & {});
+export const BadRequestReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  {
-    message: S.optional(S.String),
-    reason: S.optional(BadRequestReason),
-    detail: S.optional(BadRequestDetail),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ApiKeyLimitExceededException extends S.TaggedErrorClass<ApiKeyLimitExceededException>()(
-  "ApiKeyLimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ApiKeyValidityOutOfBoundsException extends S.TaggedErrorClass<ApiKeyValidityOutOfBoundsException>()(
-  "ApiKeyValidityOutOfBoundsException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ApiLimitExceededException extends S.TaggedErrorClass<ApiLimitExceededException>()(
-  "ApiLimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class GraphQLSchemaException extends S.TaggedErrorClass<GraphQLSchemaException>()(
-  "GraphQLSchemaException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export interface BadRequestDetail {
+  codeErrors?: CodeError[];
+}
+export const BadRequestDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ codeErrors: S.optional(CodeErrors) }),
+).annotate({
+  identifier: "BadRequestDetail",
+}) as any as S.Schema<BadRequestDetail>;
 export type AssociateApiError =
   | AccessDeniedException
   | BadRequestException
@@ -3934,6 +3969,7 @@ export const associateApi: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateApi",
 }));
+
 export type AssociateMergedGraphqlApiError =
   | BadRequestException
   | ConcurrentModificationException
@@ -3966,6 +4002,7 @@ export const associateMergedGraphqlApi: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateMergedGraphqlApi",
 }));
+
 export type AssociateSourceGraphqlApiError =
   | BadRequestException
   | ConcurrentModificationException
@@ -3998,6 +4035,7 @@ export const associateSourceGraphqlApi: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateSourceGraphqlApi",
 }));
+
 export type CreateApiError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4029,6 +4067,7 @@ export const createApi: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApi",
 }));
+
 export type CreateApiCacheError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4058,6 +4097,7 @@ export const createApiCache: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApiCache",
 }));
+
 export type CreateApiKeyError =
   | ApiKeyLimitExceededException
   | ApiKeyValidityOutOfBoundsException
@@ -4091,6 +4131,7 @@ export const createApiKey: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApiKey",
 }));
+
 export type CreateChannelNamespaceError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4124,6 +4165,7 @@ export const createChannelNamespace: API.OperationMethod<
   retry: Retry,
   operationName: "CreateChannelNamespace",
 }));
+
 export type CreateDataSourceError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4153,6 +4195,7 @@ export const createDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataSource",
 }));
+
 export type CreateDomainNameError =
   | AccessDeniedException
   | BadRequestException
@@ -4178,6 +4221,7 @@ export const createDomainName: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDomainName",
 }));
+
 export type CreateFunctionError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4210,6 +4254,7 @@ export const createFunction: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFunction",
 }));
+
 export type CreateGraphqlApiError =
   | ApiLimitExceededException
   | BadRequestException
@@ -4241,6 +4286,7 @@ export const createGraphqlApi: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGraphqlApi",
 }));
+
 export type CreateResolverError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4273,6 +4319,7 @@ export const createResolver: API.OperationMethod<
   retry: Retry,
   operationName: "CreateResolver",
 }));
+
 export type CreateTypeError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4302,6 +4349,7 @@ export const createType: API.OperationMethod<
   retry: Retry,
   operationName: "CreateType",
 }));
+
 export type DeleteApiError =
   | AccessDeniedException
   | BadRequestException
@@ -4333,6 +4381,7 @@ export const deleteApi: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApi",
 }));
+
 export type DeleteApiCacheError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4362,6 +4411,7 @@ export const deleteApiCache: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApiCache",
 }));
+
 export type DeleteApiKeyError =
   | BadRequestException
   | InternalFailureException
@@ -4389,6 +4439,7 @@ export const deleteApiKey: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApiKey",
 }));
+
 export type DeleteChannelNamespaceError =
   | AccessDeniedException
   | BadRequestException
@@ -4420,6 +4471,7 @@ export const deleteChannelNamespace: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteChannelNamespace",
 }));
+
 export type DeleteDataSourceError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4449,6 +4501,7 @@ export const deleteDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataSource",
 }));
+
 export type DeleteDomainNameError =
   | AccessDeniedException
   | BadRequestException
@@ -4478,6 +4531,7 @@ export const deleteDomainName: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDomainName",
 }));
+
 export type DeleteFunctionError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4507,6 +4561,7 @@ export const deleteFunction: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFunction",
 }));
+
 export type DeleteGraphqlApiError =
   | AccessDeniedException
   | BadRequestException
@@ -4538,6 +4593,7 @@ export const deleteGraphqlApi: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGraphqlApi",
 }));
+
 export type DeleteResolverError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4567,6 +4623,7 @@ export const deleteResolver: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResolver",
 }));
+
 export type DeleteTypeError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4596,6 +4653,7 @@ export const deleteType: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteType",
 }));
+
 export type DisassociateApiError =
   | AccessDeniedException
   | BadRequestException
@@ -4625,6 +4683,7 @@ export const disassociateApi: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateApi",
 }));
+
 export type DisassociateMergedGraphqlApiError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4655,6 +4714,7 @@ export const disassociateMergedGraphqlApi: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateMergedGraphqlApi",
 }));
+
 export type DisassociateSourceGraphqlApiError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4685,6 +4745,7 @@ export const disassociateSourceGraphqlApi: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateSourceGraphqlApi",
 }));
+
 export type EvaluateCodeError =
   | AccessDeniedException
   | BadRequestException
@@ -4715,6 +4776,7 @@ export const evaluateCode: API.OperationMethod<
   retry: Retry,
   operationName: "EvaluateCode",
 }));
+
 export type EvaluateMappingTemplateError =
   | AccessDeniedException
   | BadRequestException
@@ -4748,6 +4810,7 @@ export const evaluateMappingTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "EvaluateMappingTemplate",
 }));
+
 export type FlushApiCacheError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4777,6 +4840,7 @@ export const flushApiCache: API.OperationMethod<
   retry: Retry,
   operationName: "FlushApiCache",
 }));
+
 export type GetApiError =
   | AccessDeniedException
   | BadRequestException
@@ -4806,6 +4870,7 @@ export const getApi: API.OperationMethod<
   retry: Retry,
   operationName: "GetApi",
 }));
+
 export type GetApiAssociationError =
   | AccessDeniedException
   | BadRequestException
@@ -4833,6 +4898,7 @@ export const getApiAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "GetApiAssociation",
 }));
+
 export type GetApiCacheError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4862,6 +4928,7 @@ export const getApiCache: API.OperationMethod<
   retry: Retry,
   operationName: "GetApiCache",
 }));
+
 export type GetChannelNamespaceError =
   | AccessDeniedException
   | BadRequestException
@@ -4891,6 +4958,7 @@ export const getChannelNamespace: API.OperationMethod<
   retry: Retry,
   operationName: "GetChannelNamespace",
 }));
+
 export type GetDataSourceError =
   | BadRequestException
   | ConcurrentModificationException
@@ -4920,6 +4988,7 @@ export const getDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataSource",
 }));
+
 export type GetDataSourceIntrospectionError =
   | BadRequestException
   | InternalFailureException
@@ -4943,6 +5012,7 @@ export const getDataSourceIntrospection: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataSourceIntrospection",
 }));
+
 export type GetDomainNameError =
   | AccessDeniedException
   | BadRequestException
@@ -4970,6 +5040,7 @@ export const getDomainName: API.OperationMethod<
   retry: Retry,
   operationName: "GetDomainName",
 }));
+
 export type GetFunctionError =
   | ConcurrentModificationException
   | NotFoundException
@@ -4995,6 +5066,7 @@ export const getFunction: API.OperationMethod<
   retry: Retry,
   operationName: "GetFunction",
 }));
+
 export type GetGraphqlApiError =
   | AccessDeniedException
   | BadRequestException
@@ -5024,6 +5096,7 @@ export const getGraphqlApi: API.OperationMethod<
   retry: Retry,
   operationName: "GetGraphqlApi",
 }));
+
 export type GetGraphqlApiEnvironmentVariablesError =
   | AccessDeniedException
   | BadRequestException
@@ -5054,6 +5127,7 @@ export const getGraphqlApiEnvironmentVariables: API.OperationMethod<
   retry: Retry,
   operationName: "GetGraphqlApiEnvironmentVariables",
 }));
+
 export type GetIntrospectionSchemaError =
   | GraphQLSchemaException
   | InternalFailureException
@@ -5081,6 +5155,7 @@ export const getIntrospectionSchema: API.OperationMethod<
   retry: Retry,
   operationName: "GetIntrospectionSchema",
 }));
+
 export type GetResolverError =
   | ConcurrentModificationException
   | NotFoundException
@@ -5106,6 +5181,7 @@ export const getResolver: API.OperationMethod<
   retry: Retry,
   operationName: "GetResolver",
 }));
+
 export type GetSchemaCreationStatusError =
   | BadRequestException
   | InternalFailureException
@@ -5133,6 +5209,7 @@ export const getSchemaCreationStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetSchemaCreationStatus",
 }));
+
 export type GetSourceApiAssociationError =
   | BadRequestException
   | InternalFailureException
@@ -5160,6 +5237,7 @@ export const getSourceApiAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "GetSourceApiAssociation",
 }));
+
 export type GetTypeError =
   | BadRequestException
   | ConcurrentModificationException
@@ -5189,6 +5267,7 @@ export const getType: API.OperationMethod<
   retry: Retry,
   operationName: "GetType",
 }));
+
 export type ListApiKeysError =
   | BadRequestException
   | InternalFailureException
@@ -5242,6 +5321,7 @@ export const listApiKeys: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListApisError =
   | BadRequestException
   | InternalFailureException
@@ -5291,6 +5371,7 @@ export const listApis: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListChannelNamespacesError =
   | BadRequestException
   | InternalFailureException
@@ -5342,6 +5423,7 @@ export const listChannelNamespaces: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDataSourcesError =
   | BadRequestException
   | InternalFailureException
@@ -5390,6 +5472,7 @@ export const listDataSources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDomainNamesError =
   | AccessDeniedException
   | BadRequestException
@@ -5436,6 +5519,7 @@ export const listDomainNames: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFunctionsError =
   | BadRequestException
   | InternalFailureException
@@ -5484,6 +5568,7 @@ export const listFunctions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListGraphqlApisError =
   | BadRequestException
   | InternalFailureException
@@ -5530,6 +5615,7 @@ export const listGraphqlApis: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListResolversError =
   | BadRequestException
   | InternalFailureException
@@ -5578,6 +5664,7 @@ export const listResolvers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListResolversByFunctionError =
   | BadRequestException
   | InternalFailureException
@@ -5626,6 +5713,7 @@ export const listResolversByFunction: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSourceApiAssociationsError =
   | BadRequestException
   | InternalFailureException
@@ -5674,6 +5762,7 @@ export const listSourceApiAssociations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | BadRequestException
@@ -5705,6 +5794,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTypesError =
   | BadRequestException
   | ConcurrentModificationException
@@ -5755,6 +5845,7 @@ export const listTypes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTypesByAssociationError =
   | BadRequestException
   | ConcurrentModificationException
@@ -5805,6 +5896,7 @@ export const listTypesByAssociation: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type PutGraphqlApiEnvironmentVariablesError =
   | AccessDeniedException
   | BadRequestException
@@ -5872,6 +5964,7 @@ export const putGraphqlApiEnvironmentVariables: API.OperationMethod<
   retry: Retry,
   operationName: "PutGraphqlApiEnvironmentVariables",
 }));
+
 export type StartDataSourceIntrospectionError =
   | BadRequestException
   | InternalFailureException
@@ -5900,6 +5993,7 @@ export const startDataSourceIntrospection: API.OperationMethod<
   retry: Retry,
   operationName: "StartDataSourceIntrospection",
 }));
+
 export type StartSchemaCreationError =
   | BadRequestException
   | ConcurrentModificationException
@@ -5932,6 +6026,7 @@ export const startSchemaCreation: API.OperationMethod<
   retry: Retry,
   operationName: "StartSchemaCreation",
 }));
+
 export type StartSchemaMergeError =
   | BadRequestException
   | ConcurrentModificationException
@@ -5962,6 +6057,7 @@ export const startSchemaMerge: API.OperationMethod<
   retry: Retry,
   operationName: "StartSchemaMerge",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | BadRequestException
@@ -5993,6 +6089,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | BadRequestException
@@ -6024,6 +6121,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateApiError =
   | AccessDeniedException
   | BadRequestException
@@ -6055,6 +6153,7 @@ export const updateApi: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApi",
 }));
+
 export type UpdateApiCacheError =
   | BadRequestException
   | ConcurrentModificationException
@@ -6084,6 +6183,7 @@ export const updateApiCache: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApiCache",
 }));
+
 export type UpdateApiKeyError =
   | ApiKeyValidityOutOfBoundsException
   | BadRequestException
@@ -6115,6 +6215,7 @@ export const updateApiKey: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApiKey",
 }));
+
 export type UpdateChannelNamespaceError =
   | AccessDeniedException
   | BadRequestException
@@ -6146,6 +6247,7 @@ export const updateChannelNamespace: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateChannelNamespace",
 }));
+
 export type UpdateDataSourceError =
   | BadRequestException
   | ConcurrentModificationException
@@ -6175,6 +6277,7 @@ export const updateDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDataSource",
 }));
+
 export type UpdateDomainNameError =
   | AccessDeniedException
   | BadRequestException
@@ -6204,6 +6307,7 @@ export const updateDomainName: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDomainName",
 }));
+
 export type UpdateFunctionError =
   | BadRequestException
   | ConcurrentModificationException
@@ -6233,6 +6337,7 @@ export const updateFunction: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFunction",
 }));
+
 export type UpdateGraphqlApiError =
   | AccessDeniedException
   | BadRequestException
@@ -6264,6 +6369,7 @@ export const updateGraphqlApi: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGraphqlApi",
 }));
+
 export type UpdateResolverError =
   | BadRequestException
   | ConcurrentModificationException
@@ -6293,6 +6399,7 @@ export const updateResolver: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateResolver",
 }));
+
 export type UpdateSourceApiAssociationError =
   | BadRequestException
   | ConcurrentModificationException
@@ -6322,6 +6429,7 @@ export const updateSourceApiAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSourceApiAssociation",
 }));
+
 export type UpdateTypeError =
   | BadRequestException
   | ConcurrentModificationException

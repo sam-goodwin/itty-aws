@@ -84,10 +84,26 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type __timestampIso8601 = Date;
-
-//# Schemas
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  {},
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class GoneException extends S.TaggedErrorClass<GoneException>()(
+  "GoneException",
+  {},
+  T.HttpError(410),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  {},
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class PayloadTooLargeException extends S.TaggedErrorClass<PayloadTooLargeException>()(
+  "PayloadTooLargeException",
+  { Message: S.optional(S.String) },
+  T.HttpError(413),
+).pipe(C.withBadRequestError) {}
 export interface DeleteConnectionRequest {
   ConnectionId: string;
 }
@@ -128,6 +144,7 @@ export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConnectionRequest",
 }) as any as S.Schema<GetConnectionRequest>;
+export type __timestampIso8601 = Date;
 export interface Identity {
   SourceIp?: string;
   UserAgent?: string;
@@ -189,30 +206,6 @@ export const PostToConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PostToConnectionResponse",
 }) as any as S.Schema<PostToConnectionResponse>;
-
-//# Errors
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  {},
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class GoneException extends S.TaggedErrorClass<GoneException>()(
-  "GoneException",
-  {},
-  T.HttpError(410),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {},
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class PayloadTooLargeException extends S.TaggedErrorClass<PayloadTooLargeException>()(
-  "PayloadTooLargeException",
-  { Message: S.optional(S.String) },
-  T.HttpError(413),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type DeleteConnectionError =
   | ForbiddenException
   | GoneException
@@ -234,6 +227,7 @@ export const deleteConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConnection",
 }));
+
 export type GetConnectionError =
   | ForbiddenException
   | GoneException
@@ -255,6 +249,7 @@ export const getConnection: API.OperationMethod<
   retry: Retry,
   operationName: "GetConnection",
 }));
+
 export type PostToConnectionError =
   | ForbiddenException
   | GoneException

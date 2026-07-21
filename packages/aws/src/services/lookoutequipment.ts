@@ -85,65 +85,53 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type DatasetName = string;
 export type SynthesizedJsonInlineDataSchema = string;
-export type NameOrArn = string;
-export type IdempotenceToken = string;
-export type TagKey = string;
-export type TagValue = string;
-export type DatasetArn = string;
-export type BoundedLengthString = string;
-export type ModelName = string;
-export type InferenceSchedulerName = string;
-export type DataDelayOffsetInMinutes = number;
-export type S3Bucket = string;
-export type S3Prefix = string;
-export type TimeZoneOffset = string;
-export type FileNameTimestampFormat = string;
-export type ComponentTimestampDelimiter = string;
-export type IamRoleArn = string;
-export type InferenceSchedulerArn = string;
-export type LabelGroupName = string;
-export type FaultCode = string;
-export type Comments = string;
-export type Equipment = string;
-export type LabelId = string;
-export type LabelGroupArn = string;
-export type DatasetIdentifier = string;
-export type OffCondition = string;
-export type ModelArn = string;
-export type RetrainingFrequency = string;
-export type LookbackWindow = string;
-export type InferenceSchedulerIdentifier = string;
-export type ResourceArn = string;
-export type IngestionJobId = string;
-export type KeyPattern = string;
-export type S3Key = string;
-export type DataSizeInBytes = number;
-export type KmsKeyArn = string;
-export type SynthesizedJsonModelMetrics = string;
-export type ModelVersionArn = string;
-export type ModelVersion = number;
-export type InlineDataSchema = string;
-export type ModelMetrics = string;
-export type AutoPromotionResultReason = string;
-export type PolicyRevisionId = string;
-export type Policy = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type EventDurationInSeconds = number;
-export type ComponentName = string;
-export type SensorName = string;
-export type AmazonResourceArn = string;
-
-//# Schemas
 export interface DatasetSchema {
   InlineDataSchema?: string;
 }
 export const DatasetSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ InlineDataSchema: S.optional(S.String) }),
 ).annotate({ identifier: "DatasetSchema" }) as any as S.Schema<DatasetSchema>;
+export type NameOrArn = string;
+export type IdempotenceToken = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -173,6 +161,7 @@ export const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetRequest",
 }) as any as S.Schema<CreateDatasetRequest>;
+export type DatasetArn = string;
 export type DatasetStatus =
   | "CREATED"
   | "INGESTION_IN_PROGRESS"
@@ -180,6 +169,7 @@ export type DatasetStatus =
   | "IMPORT_IN_PROGRESS"
   | (string & {});
 export const DatasetStatus = /*@__PURE__*/ S.String;
+
 export interface CreateDatasetResponse {
   DatasetName?: string;
   DatasetArn?: string;
@@ -194,6 +184,9 @@ export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetResponse",
 }) as any as S.Schema<CreateDatasetResponse>;
+export type ModelName = string;
+export type InferenceSchedulerName = string;
+export type DataDelayOffsetInMinutes = number;
 export type DataUploadFrequency =
   | "PT5M"
   | "PT10M"
@@ -202,6 +195,9 @@ export type DataUploadFrequency =
   | "PT1H"
   | (string & {});
 export const DataUploadFrequency = /*@__PURE__*/ S.String;
+
+export type S3Bucket = string;
+export type S3Prefix = string;
 export interface InferenceS3InputConfiguration {
   Bucket: string;
   Prefix?: string;
@@ -211,6 +207,9 @@ export const InferenceS3InputConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InferenceS3InputConfiguration",
 }) as any as S.Schema<InferenceS3InputConfiguration>;
+export type TimeZoneOffset = string;
+export type FileNameTimestampFormat = string;
+export type ComponentTimestampDelimiter = string;
 export interface InferenceInputNameConfiguration {
   TimestampFormat?: string;
   ComponentTimestampDelimiter?: string;
@@ -260,6 +259,7 @@ export const InferenceOutputConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InferenceOutputConfiguration",
 }) as any as S.Schema<InferenceOutputConfiguration>;
+export type IamRoleArn = string;
 export interface CreateInferenceSchedulerRequest {
   ModelName: string;
   InferenceSchedulerName: string;
@@ -290,6 +290,7 @@ export const CreateInferenceSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInferenceSchedulerRequest",
 }) as any as S.Schema<CreateInferenceSchedulerRequest>;
+export type InferenceSchedulerArn = string;
 export type InferenceSchedulerStatus =
   | "PENDING"
   | "RUNNING"
@@ -297,12 +298,14 @@ export type InferenceSchedulerStatus =
   | "STOPPED"
   | (string & {});
 export const InferenceSchedulerStatus = /*@__PURE__*/ S.String;
+
 export type ModelQuality =
   | "QUALITY_THRESHOLD_MET"
   | "CANNOT_DETERMINE_QUALITY"
   | "POOR_QUALITY_DETECTED"
   | (string & {});
 export const ModelQuality = /*@__PURE__*/ S.String;
+
 export interface CreateInferenceSchedulerResponse {
   InferenceSchedulerArn?: string;
   InferenceSchedulerName?: string;
@@ -319,8 +322,13 @@ export const CreateInferenceSchedulerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInferenceSchedulerResponse",
 }) as any as S.Schema<CreateInferenceSchedulerResponse>;
+export type LabelGroupName = string;
 export type LabelRating = "ANOMALY" | "NO_ANOMALY" | "NEUTRAL" | (string & {});
 export const LabelRating = /*@__PURE__*/ S.String;
+
+export type FaultCode = string;
+export type Comments = string;
+export type Equipment = string;
 export interface CreateLabelRequest {
   LabelGroupName: string;
   StartTime: Date;
@@ -347,6 +355,7 @@ export const CreateLabelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLabelRequest",
 }) as any as S.Schema<CreateLabelRequest>;
+export type LabelId = string;
 export interface CreateLabelResponse {
   LabelId?: string;
 }
@@ -375,6 +384,7 @@ export const CreateLabelGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLabelGroupRequest",
 }) as any as S.Schema<CreateLabelGroupRequest>;
+export type LabelGroupArn = string;
 export interface CreateLabelGroupResponse {
   LabelGroupName?: string;
   LabelGroupArn?: string;
@@ -387,6 +397,7 @@ export const CreateLabelGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLabelGroupResponse",
 }) as any as S.Schema<CreateLabelGroupResponse>;
+export type DatasetIdentifier = string;
 export interface LabelsS3InputConfiguration {
   Bucket: string;
   Prefix?: string;
@@ -422,6 +433,7 @@ export type TargetSamplingRate =
   | "PT1H"
   | (string & {});
 export const TargetSamplingRate = /*@__PURE__*/ S.String;
+
 export interface DataPreProcessingConfiguration {
   TargetSamplingRate?: TargetSamplingRate;
 }
@@ -430,6 +442,7 @@ export const DataPreProcessingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataPreProcessingConfiguration",
 }) as any as S.Schema<DataPreProcessingConfiguration>;
+export type OffCondition = string;
 export interface ModelDiagnosticsS3OutputConfiguration {
   Bucket: string;
   Prefix?: string;
@@ -501,6 +514,7 @@ export const CreateModelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateModelRequest",
 }) as any as S.Schema<CreateModelRequest>;
+export type ModelArn = string;
 export type ModelStatus =
   | "IN_PROGRESS"
   | "SUCCESS"
@@ -508,6 +522,7 @@ export type ModelStatus =
   | "IMPORT_IN_PROGRESS"
   | (string & {});
 export const ModelStatus = /*@__PURE__*/ S.String;
+
 export interface CreateModelResponse {
   ModelArn?: string;
   Status?: ModelStatus;
@@ -517,8 +532,11 @@ export const CreateModelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateModelResponse",
 }) as any as S.Schema<CreateModelResponse>;
+export type RetrainingFrequency = string;
+export type LookbackWindow = string;
 export type ModelPromoteMode = "MANAGED" | "MANUAL" | (string & {});
 export const ModelPromoteMode = /*@__PURE__*/ S.String;
+
 export interface CreateRetrainingSchedulerRequest {
   ModelName: string;
   RetrainingStartDate?: Date;
@@ -550,6 +568,7 @@ export type RetrainingSchedulerStatus =
   | "STOPPED"
   | (string & {});
 export const RetrainingSchedulerStatus = /*@__PURE__*/ S.String;
+
 export interface CreateRetrainingSchedulerResponse {
   ModelName?: string;
   ModelArn?: string;
@@ -580,6 +599,7 @@ export const DeleteDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteDatasetResponse",
 }) as any as S.Schema<DeleteDatasetResponse>;
+export type InferenceSchedulerIdentifier = string;
 export interface DeleteInferenceSchedulerRequest {
   InferenceSchedulerName: string;
 }
@@ -645,6 +665,7 @@ export const DeleteModelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteModelResponse",
 }) as any as S.Schema<DeleteModelResponse>;
+export type ResourceArn = string;
 export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
 }
@@ -677,6 +698,7 @@ export const DeleteRetrainingSchedulerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteRetrainingSchedulerResponse",
 }) as any as S.Schema<DeleteRetrainingSchedulerResponse>;
+export type IngestionJobId = string;
 export interface DescribeDataIngestionJobRequest {
   JobId: string;
 }
@@ -687,6 +709,7 @@ export const DescribeDataIngestionJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDataIngestionJobRequest",
 }) as any as S.Schema<DescribeDataIngestionJobRequest>;
+export type KeyPattern = string;
 export interface IngestionS3InputConfiguration {
   Bucket: string;
   Prefix?: string;
@@ -716,6 +739,8 @@ export type IngestionJobStatus =
   | "IMPORT_IN_PROGRESS"
   | (string & {});
 export const IngestionJobStatus = /*@__PURE__*/ S.String;
+
+export type BoundedLengthString = string;
 export interface MissingCompleteSensorData {
   AffectedSensorCount: number;
 }
@@ -802,6 +827,7 @@ export const DataQualitySummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataQualitySummary",
 }) as any as S.Schema<DataQualitySummary>;
+export type S3Key = string;
 export interface S3Object {
   Bucket: string;
   Key: string;
@@ -825,6 +851,7 @@ export const IngestedFilesSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IngestedFilesSummary",
 }) as any as S.Schema<IngestedFilesSummary>;
+export type DataSizeInBytes = number;
 export interface DescribeDataIngestionJobResponse {
   JobId?: string;
   DatasetArn?: string;
@@ -871,6 +898,7 @@ export const DescribeDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDatasetRequest",
 }) as any as S.Schema<DescribeDatasetRequest>;
+export type KmsKeyArn = string;
 export interface DescribeDatasetResponse {
   DatasetName?: string;
   DatasetArn?: string;
@@ -919,6 +947,7 @@ export const DescribeInferenceSchedulerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeInferenceSchedulerRequest>;
 export type LatestInferenceResult = "ANOMALOUS" | "NORMAL" | (string & {});
 export const LatestInferenceResult = /*@__PURE__*/ S.String;
+
 export interface DescribeInferenceSchedulerResponse {
   ModelArn?: string;
   ModelName?: string;
@@ -1032,6 +1061,9 @@ export const DescribeModelRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeModelRequest",
 }) as any as S.Schema<DescribeModelRequest>;
+export type SynthesizedJsonModelMetrics = string;
+export type ModelVersionArn = string;
+export type ModelVersion = number;
 export type ModelVersionStatus =
   | "IN_PROGRESS"
   | "SUCCESS"
@@ -1040,6 +1072,7 @@ export type ModelVersionStatus =
   | "CANCELED"
   | (string & {});
 export const ModelVersionStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeModelResponse {
   ModelName?: string;
   ModelArn?: string;
@@ -1181,6 +1214,9 @@ export type ModelVersionSourceType =
   | "IMPORT"
   | (string & {});
 export const ModelVersionSourceType = /*@__PURE__*/ S.String;
+
+export type InlineDataSchema = string;
+export type ModelMetrics = string;
 export type AutoPromotionResult =
   | "MODEL_PROMOTED"
   | "MODEL_NOT_PROMOTED"
@@ -1189,6 +1225,8 @@ export type AutoPromotionResult =
   | "RETRAINING_CANCELLED"
   | (string & {});
 export const AutoPromotionResult = /*@__PURE__*/ S.String;
+
+export type AutoPromotionResultReason = string;
 export interface DescribeModelVersionResponse {
   ModelName?: string;
   ModelArn?: string;
@@ -1297,6 +1335,8 @@ export const DescribeResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeResourcePolicyRequest",
 }) as any as S.Schema<DescribeResourcePolicyRequest>;
+export type PolicyRevisionId = string;
+export type Policy = string;
 export interface DescribeResourcePolicyResponse {
   PolicyRevisionId?: string;
   ResourcePolicy?: string;
@@ -1395,6 +1435,7 @@ export type InferenceDataImportStrategy =
   | "OVERWRITE"
   | (string & {});
 export const InferenceDataImportStrategy = /*@__PURE__*/ S.String;
+
 export interface ImportModelVersionRequest {
   SourceModelVersionArn: string;
   ModelName?: string;
@@ -1441,6 +1482,8 @@ export const ImportModelVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportModelVersionResponse",
 }) as any as S.Schema<ImportModelVersionResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListDataIngestionJobsRequest {
   DatasetName?: string;
   NextToken?: string;
@@ -1557,6 +1600,7 @@ export const ListInferenceEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInferenceEventsRequest",
 }) as any as S.Schema<ListInferenceEventsRequest>;
+export type EventDurationInSeconds = number;
 export interface InferenceEventSummary {
   InferenceSchedulerArn?: string;
   InferenceSchedulerName?: string;
@@ -1599,6 +1643,7 @@ export type InferenceExecutionStatus =
   | "FAILED"
   | (string & {});
 export const InferenceExecutionStatus = /*@__PURE__*/ S.String;
+
 export interface ListInferenceExecutionsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2071,6 +2116,8 @@ export const ListSensorStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSensorStatisticsRequest",
 }) as any as S.Schema<ListSensorStatisticsRequest>;
+export type ComponentName = string;
+export type SensorName = string;
 export interface CountPercent {
   Count: number;
   Percentage: number;
@@ -2083,6 +2130,7 @@ export type StatisticalIssueStatus =
   | "NO_ISSUE_DETECTED"
   | (string & {});
 export const StatisticalIssueStatus = /*@__PURE__*/ S.String;
+
 export interface CategoricalValues {
   Status: StatisticalIssueStatus;
   NumberOfCategory?: number;
@@ -2123,6 +2171,7 @@ export type Monotonicity =
   | "STATIC"
   | (string & {});
 export const Monotonicity = /*@__PURE__*/ S.String;
+
 export interface MonotonicValues {
   Status: StatisticalIssueStatus;
   Monotonicity?: Monotonicity;
@@ -2185,6 +2234,7 @@ export const ListSensorStatisticsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSensorStatisticsResponse",
 }) as any as S.Schema<ListSensorStatisticsResponse>;
+export type AmazonResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -2536,45 +2586,6 @@ export const UpdateRetrainingSchedulerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRetrainingSchedulerResponse",
 }) as any as S.Schema<UpdateRetrainingSchedulerResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateDatasetError =
   | AccessDeniedException
   | ConflictException
@@ -2609,6 +2620,7 @@ export const createDataset: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataset",
 }));
+
 export type CreateInferenceSchedulerError =
   | AccessDeniedException
   | ConflictException
@@ -2646,6 +2658,7 @@ export const createInferenceScheduler: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInferenceScheduler",
 }));
+
 export type CreateLabelError =
   | AccessDeniedException
   | ConflictException
@@ -2679,6 +2692,7 @@ export const createLabel: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLabel",
 }));
+
 export type CreateLabelGroupError =
   | AccessDeniedException
   | ConflictException
@@ -2710,6 +2724,7 @@ export const createLabelGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLabelGroup",
 }));
+
 export type CreateModelError =
   | AccessDeniedException
   | ConflictException
@@ -2753,6 +2768,7 @@ export const createModel: API.OperationMethod<
   retry: Retry,
   operationName: "CreateModel",
 }));
+
 export type CreateRetrainingSchedulerError =
   | AccessDeniedException
   | ConflictException
@@ -2784,6 +2800,7 @@ export const createRetrainingScheduler: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRetrainingScheduler",
 }));
+
 export type DeleteDatasetError =
   | AccessDeniedException
   | ConflictException
@@ -2819,6 +2836,7 @@ export const deleteDataset: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataset",
 }));
+
 export type DeleteInferenceSchedulerError =
   | AccessDeniedException
   | ConflictException
@@ -2851,6 +2869,7 @@ export const deleteInferenceScheduler: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInferenceScheduler",
 }));
+
 export type DeleteLabelError =
   | AccessDeniedException
   | ConflictException
@@ -2882,6 +2901,7 @@ export const deleteLabel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLabel",
 }));
+
 export type DeleteLabelGroupError =
   | AccessDeniedException
   | ConflictException
@@ -2913,6 +2933,7 @@ export const deleteLabelGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLabelGroup",
 }));
+
 export type DeleteModelError =
   | AccessDeniedException
   | ConflictException
@@ -2945,6 +2966,7 @@ export const deleteModel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteModel",
 }));
+
 export type DeleteResourcePolicyError =
   | AccessDeniedException
   | ConflictException
@@ -2976,6 +2998,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteRetrainingSchedulerError =
   | AccessDeniedException
   | ConflictException
@@ -3008,6 +3031,7 @@ export const deleteRetrainingScheduler: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRetrainingScheduler",
 }));
+
 export type DescribeDataIngestionJobError =
   | AccessDeniedException
   | InternalServerException
@@ -3038,6 +3062,7 @@ export const describeDataIngestionJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDataIngestionJob",
 }));
+
 export type DescribeDatasetError =
   | AccessDeniedException
   | InternalServerException
@@ -3068,6 +3093,7 @@ export const describeDataset: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDataset",
 }));
+
 export type DescribeInferenceSchedulerError =
   | AccessDeniedException
   | InternalServerException
@@ -3098,6 +3124,7 @@ export const describeInferenceScheduler: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInferenceScheduler",
 }));
+
 export type DescribeLabelError =
   | AccessDeniedException
   | InternalServerException
@@ -3127,6 +3154,7 @@ export const describeLabel: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLabel",
 }));
+
 export type DescribeLabelGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -3156,6 +3184,7 @@ export const describeLabelGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLabelGroup",
 }));
+
 export type DescribeModelError =
   | AccessDeniedException
   | InternalServerException
@@ -3187,6 +3216,7 @@ export const describeModel: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeModel",
 }));
+
 export type DescribeModelVersionError =
   | AccessDeniedException
   | InternalServerException
@@ -3216,6 +3246,7 @@ export const describeModelVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeModelVersion",
 }));
+
 export type DescribeResourcePolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -3245,6 +3276,7 @@ export const describeResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeResourcePolicy",
 }));
+
 export type DescribeRetrainingSchedulerError =
   | AccessDeniedException
   | InternalServerException
@@ -3275,6 +3307,7 @@ export const describeRetrainingScheduler: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRetrainingScheduler",
 }));
+
 export type ImportDatasetError =
   | AccessDeniedException
   | ConflictException
@@ -3308,6 +3341,7 @@ export const importDataset: API.OperationMethod<
   retry: Retry,
   operationName: "ImportDataset",
 }));
+
 export type ImportModelVersionError =
   | AccessDeniedException
   | ConflictException
@@ -3341,6 +3375,7 @@ export const importModelVersion: API.OperationMethod<
   retry: Retry,
   operationName: "ImportModelVersion",
 }));
+
 export type ListDataIngestionJobsError =
   | AccessDeniedException
   | InternalServerException
@@ -3389,6 +3424,7 @@ export const listDataIngestionJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDatasetsError =
   | AccessDeniedException
   | InternalServerException
@@ -3436,6 +3472,7 @@ export const listDatasets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInferenceEventsError =
   | AccessDeniedException
   | InternalServerException
@@ -3485,6 +3522,7 @@ export const listInferenceEvents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInferenceExecutionsError =
   | AccessDeniedException
   | InternalServerException
@@ -3535,6 +3573,7 @@ export const listInferenceExecutions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInferenceSchedulersError =
   | AccessDeniedException
   | InternalServerException
@@ -3582,6 +3621,7 @@ export const listInferenceSchedulers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLabelGroupsError =
   | AccessDeniedException
   | InternalServerException
@@ -3629,6 +3669,7 @@ export const listLabelGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLabelsError =
   | AccessDeniedException
   | InternalServerException
@@ -3676,6 +3717,7 @@ export const listLabels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListModelsError =
   | AccessDeniedException
   | InternalServerException
@@ -3724,6 +3766,7 @@ export const listModels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListModelVersionsError =
   | AccessDeniedException
   | InternalServerException
@@ -3775,6 +3818,7 @@ export const listModelVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRetrainingSchedulersError =
   | AccessDeniedException
   | InternalServerException
@@ -3823,6 +3867,7 @@ export const listRetrainingSchedulers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSensorStatisticsError =
   | AccessDeniedException
   | InternalServerException
@@ -3874,6 +3919,7 @@ export const listSensorStatistics: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -3903,6 +3949,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutResourcePolicyError =
   | AccessDeniedException
   | ConflictException
@@ -3936,6 +3983,7 @@ export const putResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type StartDataIngestionJobError =
   | AccessDeniedException
   | ConflictException
@@ -3969,6 +4017,7 @@ export const startDataIngestionJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartDataIngestionJob",
 }));
+
 export type StartInferenceSchedulerError =
   | AccessDeniedException
   | ConflictException
@@ -4000,6 +4049,7 @@ export const startInferenceScheduler: API.OperationMethod<
   retry: Retry,
   operationName: "StartInferenceScheduler",
 }));
+
 export type StartRetrainingSchedulerError =
   | AccessDeniedException
   | ConflictException
@@ -4031,6 +4081,7 @@ export const startRetrainingScheduler: API.OperationMethod<
   retry: Retry,
   operationName: "StartRetrainingScheduler",
 }));
+
 export type StopInferenceSchedulerError =
   | AccessDeniedException
   | ConflictException
@@ -4062,6 +4113,7 @@ export const stopInferenceScheduler: API.OperationMethod<
   retry: Retry,
   operationName: "StopInferenceScheduler",
 }));
+
 export type StopRetrainingSchedulerError =
   | AccessDeniedException
   | ConflictException
@@ -4093,6 +4145,7 @@ export const stopRetrainingScheduler: API.OperationMethod<
   retry: Retry,
   operationName: "StopRetrainingScheduler",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -4128,6 +4181,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -4157,6 +4211,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateActiveModelVersionError =
   | AccessDeniedException
   | ConflictException
@@ -4188,6 +4243,7 @@ export const updateActiveModelVersion: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateActiveModelVersion",
 }));
+
 export type UpdateInferenceSchedulerError =
   | AccessDeniedException
   | ConflictException
@@ -4219,6 +4275,7 @@ export const updateInferenceScheduler: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateInferenceScheduler",
 }));
+
 export type UpdateLabelGroupError =
   | AccessDeniedException
   | ConflictException
@@ -4250,6 +4307,7 @@ export const updateLabelGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLabelGroup",
 }));
+
 export type UpdateModelError =
   | AccessDeniedException
   | ConflictException
@@ -4281,6 +4339,7 @@ export const updateModel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateModel",
 }));
+
 export type UpdateRetrainingSchedulerError =
   | AccessDeniedException
   | ConflictException

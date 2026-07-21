@@ -126,19 +126,43 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type __stringMin1Max64PatternS = string;
 export type __stringMin0Max256PatternS = string;
-export type __stringMin1Max256PatternAZaZ09 = string;
-export type __stringMin1Max128PatternAZaZ09 = string;
-export type __stringMin1Max32PatternS = string;
-export type __stringMin12Max12PatternD12 = string;
-export type __policy = string;
-export type MaxResults = number;
-export type __stringMax36PatternS = string;
-export type __stringMin1Max8096PatternS = string;
-
-//# Schemas
 export type __mapOf__stringMin0Max256PatternS = {
   [key: string]: string | undefined;
 };
@@ -148,6 +172,7 @@ export const __mapOf__stringMin0Max256PatternS = /*@__PURE__*/ S.Record(
 );
 export type NetworkType = "IPV4" | "DUALSTACK" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
+
 export interface CreateClusterRequest {
   ClientToken?: string;
   ClusterName?: string;
@@ -173,6 +198,9 @@ export const CreateClusterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateClusterRequest",
 }) as any as S.Schema<CreateClusterRequest>;
+export type __stringMin1Max256PatternAZaZ09 = string;
+export type __stringMin1Max128PatternAZaZ09 = string;
+export type __stringMin1Max32PatternS = string;
 export interface ClusterEndpoint {
   Endpoint?: string;
   Region?: string;
@@ -190,6 +218,8 @@ export type Status =
   | "PENDING_DELETION"
   | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
+export type __stringMin12Max12PatternD12 = string;
 export interface Cluster {
   ClusterArn?: string;
   ClusterEndpoints?: ClusterEndpoint[];
@@ -324,6 +354,7 @@ export const __listOf__stringMin1Max256PatternAZaZ09 = /*@__PURE__*/ S.Array(
 );
 export type RuleType = "ATLEAST" | "AND" | "OR" | (string & {});
 export const RuleType = /*@__PURE__*/ S.String;
+
 export interface RuleConfig {
   Inverted?: boolean;
   Threshold?: number;
@@ -726,6 +757,7 @@ export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyRequest",
 }) as any as S.Schema<GetResourcePolicyRequest>;
+export type __policy = string;
 export interface GetResourcePolicyResponse {
   Policy?: string;
 }
@@ -734,6 +766,7 @@ export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyResponse",
 }) as any as S.Schema<GetResourcePolicyResponse>;
+export type MaxResults = number;
 export interface ListAssociatedRoute53HealthChecksRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -761,8 +794,10 @@ export const ListAssociatedRoute53HealthChecksRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListAssociatedRoute53HealthChecksRequest",
 }) as any as S.Schema<ListAssociatedRoute53HealthChecksRequest>;
+export type __stringMax36PatternS = string;
 export type __listOf__stringMax36PatternS = string[];
 export const __listOf__stringMax36PatternS = /*@__PURE__*/ S.Array(S.String);
+export type __stringMin1Max8096PatternS = string;
 export interface ListAssociatedRoute53HealthChecksResponse {
   HealthCheckIds?: string[];
   NextToken?: string;
@@ -1220,45 +1255,6 @@ export const UpdateSafetyRuleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSafetyRuleResponse",
 }) as any as S.Schema<UpdateSafetyRuleResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateClusterError =
   | AccessDeniedException
   | ConflictException
@@ -1292,6 +1288,7 @@ export const createCluster: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCluster",
 }));
+
 export type CreateControlPanelError =
   | AccessDeniedException
   | ConflictException
@@ -1325,6 +1322,7 @@ export const createControlPanel: API.OperationMethod<
   retry: Retry,
   operationName: "CreateControlPanel",
 }));
+
 export type CreateRoutingControlError =
   | AccessDeniedException
   | ConflictException
@@ -1362,6 +1360,7 @@ export const createRoutingControl: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRoutingControl",
 }));
+
 export type CreateSafetyRuleError =
   | InternalServerException
   | ValidationException
@@ -1390,6 +1389,7 @@ export const createSafetyRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSafetyRule",
 }));
+
 export type DeleteClusterError =
   | AccessDeniedException
   | ConflictException
@@ -1421,6 +1421,7 @@ export const deleteCluster: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCluster",
 }));
+
 export type DeleteControlPanelError =
   | AccessDeniedException
   | ConflictException
@@ -1452,6 +1453,7 @@ export const deleteControlPanel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteControlPanel",
 }));
+
 export type DeleteRoutingControlError =
   | AccessDeniedException
   | ConflictException
@@ -1483,6 +1485,7 @@ export const deleteRoutingControl: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRoutingControl",
 }));
+
 export type DeleteSafetyRuleError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1509,6 +1512,7 @@ export const deleteSafetyRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSafetyRule",
 }));
+
 export type DescribeClusterError =
   | AccessDeniedException
   | ConflictException
@@ -1540,6 +1544,7 @@ export const describeCluster: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCluster",
 }));
+
 export type DescribeControlPanelError =
   | AccessDeniedException
   | ConflictException
@@ -1571,6 +1576,7 @@ export const describeControlPanel: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeControlPanel",
 }));
+
 export type DescribeRoutingControlError =
   | AccessDeniedException
   | ConflictException
@@ -1604,6 +1610,7 @@ export const describeRoutingControl: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRoutingControl",
 }));
+
 export type DescribeSafetyRuleError =
   | ResourceNotFoundException
   | ValidationException
@@ -1624,6 +1631,7 @@ export const describeSafetyRule: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSafetyRule",
 }));
+
 export type GetResourcePolicyError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1644,6 +1652,7 @@ export const getResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type ListAssociatedRoute53HealthChecksError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1690,6 +1699,7 @@ export const listAssociatedRoute53HealthChecks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListClustersError =
   | AccessDeniedException
   | InternalServerException
@@ -1740,6 +1750,7 @@ export const listClusters: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListControlPanelsError =
   | AccessDeniedException
   | InternalServerException
@@ -1790,6 +1801,7 @@ export const listControlPanels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRoutingControlsError =
   | AccessDeniedException
   | InternalServerException
@@ -1840,6 +1852,7 @@ export const listRoutingControls: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSafetyRulesError =
   | AccessDeniedException
   | InternalServerException
@@ -1890,6 +1903,7 @@ export const listSafetyRules: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1915,6 +1929,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1940,6 +1955,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1965,6 +1981,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateClusterError =
   | AccessDeniedException
   | ConflictException
@@ -1996,6 +2013,7 @@ export const updateCluster: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCluster",
 }));
+
 export type UpdateControlPanelError =
   | AccessDeniedException
   | ConflictException
@@ -2027,6 +2045,7 @@ export const updateControlPanel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateControlPanel",
 }));
+
 export type UpdateRoutingControlError =
   | AccessDeniedException
   | ConflictException
@@ -2058,6 +2077,7 @@ export const updateRoutingControl: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRoutingControl",
 }));
+
 export type UpdateSafetyRuleError =
   | InternalServerException
   | ResourceNotFoundException

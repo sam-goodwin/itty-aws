@@ -92,215 +92,96 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError) {}
+export class DataAlreadyAcceptedException extends S.TaggedErrorClass<DataAlreadyAcceptedException>()(
+  "DataAlreadyAcceptedException",
+  {
+    expectedSequenceToken: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
+  "InvalidOperationException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class InvalidSequenceTokenException extends S.TaggedErrorClass<InvalidSequenceTokenException>()(
+  "InvalidSequenceTokenException",
+  {
+    expectedSequenceToken: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+).pipe(C.withQuotaError) {}
+export class MalformedQueryException extends S.TaggedErrorClass<MalformedQueryException>()(
+  "MalformedQueryException",
+  {
+    queryCompileError: S.optional(
+      S.suspend(() => QueryCompileError).annotate({
+        identifier: "QueryCompileError",
+      }),
+    ),
+    message: S.optional(S.String),
+  },
+).pipe(C.withBadRequestError) {}
+export class OperationAbortedException extends S.TaggedErrorClass<OperationAbortedException>()(
+  "OperationAbortedException",
+  { message: S.optional(S.String) },
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+).pipe(C.withQuotaError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { message: S.optional(S.String), resourceName: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnrecognizedClientException extends S.TaggedErrorClass<UnrecognizedClientException>()(
+  "UnrecognizedClientException",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
 export type LogGroupName = string;
 export type KmsKeyId = string;
 export type ResourceIdentifier = string;
-export type Message = string;
-export type Arn = string;
-export type DataSourceName = string;
-export type DataSourceType = string;
-export type S3TableIntegrationSourceIdentifier = string;
-export type ExportTaskId = string;
-export type ImportId = string;
-export type StoredBytes = number;
-export type DeliverySourceName = string;
-export type FieldHeader = string;
-export type FieldDelimiter = string;
-export type DeliverySuffixPath = string;
-export type TagKey = string;
-export type TagValue = string;
-export type DeliveryId = string;
-export type ExportTaskName = string;
-export type LogStreamName = string;
-export type ExportDestinationBucket = string;
-export type ExportDestinationPrefix = string;
-export type RoleArn = string;
-export type LogGroupArn = string;
-export type DetectorName = string;
-export type FilterPattern = string;
-export type DetectorKmsKeyArn = string;
-export type AnomalyVisibilityTime = number;
-export type AnomalyDetectorArn = string;
-export type DeletionProtectionEnabled = boolean;
-export type LookupTableName = string;
-export type LookupTableDescription = string;
-export type TableBody = string;
-export type ScheduledQueryName = string;
-export type ScheduledQueryDescription = string;
-export type QueryString = string;
-export type LogGroupIdentifier = string;
-export type ScheduleExpression = string;
-export type ScheduleTimezone = string;
-export type StartTimeOffset = number;
-export type EndTimeOffset = number;
-export type S3Uri = string;
-export type AccountId = string;
-export type PolicyName = string;
-export type DeliveryDestinationName = string;
-export type DestinationName = string;
-export type IntegrationName = string;
-export type Force = boolean;
-export type FilterName = string;
-export type QueryId = string;
-export type Success = boolean;
-export type ExpectedRevisionId = string;
-export type ScheduledQueryIdentifier = string;
-export type VpcEndpointId = string;
-export type NextToken = string;
-export type AccountPolicyDocument = string;
-export type SelectionCriteria = string;
-export type Service = string;
-export type LogType = string;
-export type ResourceType = string;
-export type DescribeLimit = number;
-export type AllowedActionForAllowVendedLogsDeliveryForResource = string;
-export type DeliverySourceConfigurationSchemaField = string;
-export type DeliverySourceConfigurationNumericValue = number;
-export type S3TablesDatasourceName = string;
-export type S3TablesDatasourceType = string;
-export type DeliverySourceConfigurationKey = string;
-export type DeliverySourceConfigurationValue = string;
-export type TargetArn = string;
-export type AccessPolicy = string;
-export type ExportTaskStatusMessage = string;
-export type FieldIndexName = string;
-export type BatchId = string;
-export type ErrorMessage = string;
-export type PolicyDocument = string;
-export type LogGroupNamePattern = string;
-export type IncludeLinkedAccounts = boolean;
-export type Days = number;
-export type FilterCount = number;
-export type BearerTokenAuthenticationEnabled = boolean;
-export type Descending = boolean;
-export type SequenceToken = string;
-export type DescribeLookupTablesMaxResults = number;
-export type RecordsCount = number;
-export type MetricName = string;
-export type MetricNamespace = string;
-export type MetricValue = string;
-export type DefaultValue = number;
-export type DimensionsKey = string;
-export type DimensionsValue = string;
-export type ApplyOnTransformedLogs = boolean;
-export type FieldSelectionCriteria = string;
-export type SystemField = string;
-export type DescribeQueriesMaxResults = number;
-export type QueryDuration = number;
-export type BytesScannedValue = number;
-export type UserIdentity = string;
-export type QueryDefinitionName = string;
-export type QueryListMaxResults = number;
-export type QueryDefinitionString = string;
-export type QueryParameterName = string;
-export type QueryParameterDefaultValue = string;
-export type QueryParameterDescription = string;
-export type DestinationArn = string;
-export type EventsLimit = number;
-export type StartFromHead = boolean;
-export type Interleaved = boolean;
-export type Unmask = boolean;
-export type EventMessage = string;
-export type EventId = string;
-export type LogStreamSearchedCompletely = boolean;
-export type DataProtectionPolicyDocument = string;
-export type DeliveryDestinationPolicy = string;
-export type OpenSearchDataSourceName = string;
-export type IntegrationStatusMessage = string;
-export type OpenSearchApplicationEndpoint = string;
-export type OpenSearchApplicationId = string;
-export type OpenSearchCollectionEndpoint = string;
-export type OpenSearchWorkspaceId = string;
-export type OpenSearchPolicyName = string;
-export type EpochMillis = number;
-export type LogFieldName = string;
-export type DataType = string;
-export type Field = string;
-export type Percentage = number;
-export type LogObjectPointer = string;
-export type Data = Uint8Array;
-export type LogRecordPointer = string;
-export type Value = string;
-export type GetQueryResultsNextToken = string;
-export type GetQueryResultsMaxItems = number;
-export type StatsValue = number;
-export type EncryptionKey = string;
-export type GetScheduledQueryHistoryMaxResults = number;
-export type Key = string;
-export type AddKeyValue = string;
-export type OverwriteIfExists = boolean;
-export type Source = string;
-export type Target = string;
-export type QuoteCharacter = string;
-export type Delimiter = string;
-export type Column = string;
-export type DestinationField = string;
-export type TargetFormat = string;
-export type MatchPattern = string;
-export type SourceTimezone = string;
-export type TargetTimezone = string;
-export type Locale = string;
-export type WithKey = string;
-export type GrokMatch = string;
-export type ValueKey = string;
-export type Flatten = boolean;
-export type ParserFieldDelimiter = string;
-export type KeyValueDelimiter = string;
-export type KeyPrefix = string;
-export type NonMatchValue = string;
-export type MappingVersion = string;
-export type RenameTo = string;
-export type SplitStringDelimiter = string;
-export type FromKey = string;
-export type ToKey = string;
-export type LogGroupNameRegexPattern = string;
-export type ListLogGroupsRequestLimit = number;
-export type LogGroupCount = number;
-export type GroupingIdentifierKey = string;
-export type GroupingIdentifierValue = string;
-export type ListAnomaliesLimit = number;
-export type AnomalyId = string;
-export type PatternId = string;
-export type PatternString = string;
-export type PatternRegex = string;
-export type Priority = string;
-export type Description = string;
-export type Count = number;
-export type DynamicTokenPosition = number;
-export type TokenString = string;
-export type TokenValue = number;
-export type InferredTokenName = string;
-export type IntegrationNamePrefix = string;
-export type ListLogAnomalyDetectorsLimit = number;
-export type ListLimit = number;
-export type TagFilterKey = string;
-export type TagFilterValue = string;
-export type ListLogGroupsForQueryMaxResults = number;
-export type ListScheduledQueriesMaxResults = number;
-export type ListSourcesForS3TableIntegrationMaxResults = number;
-export type S3TableIntegrationSourceStatusReason = string;
-export type ListSyslogConfigurationsMaxResults = number;
-export type AmazonResourceName = string;
-export type ForceUpdate = boolean;
-export type CollectionRetentionDays = number;
-export type EntityKeyAttributesKey = string;
-export type EntityKeyAttributesValue = string;
-export type EntityAttributesKey = string;
-export type EntityAttributesValue = string;
-export type LogEventIndex = number;
-export type ClientToken = string;
-export type RequestId = string;
-export type SessionId = string;
-export type IsSampled = boolean;
-export type EventsLimitStartQuery = number;
-export type QueryCharOffset = number;
-export type EventNumber = number;
-export type Token = string;
-export type TransformedEventMessage = string;
-export type Baseline = boolean;
-
-//# Schemas
 export interface AssociateKmsKeyRequest {
   logGroupName?: string;
   kmsKeyId: string;
@@ -331,6 +212,9 @@ export const AssociateKmsKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateKmsKeyResponse",
 }) as any as S.Schema<AssociateKmsKeyResponse>;
+export type Arn = string;
+export type DataSourceName = string;
+export type DataSourceType = string;
 export interface DataSource {
   name: string;
   type?: string;
@@ -358,6 +242,7 @@ export const AssociateSourceToS3TableIntegrationRequest =
   ).annotate({
     identifier: "AssociateSourceToS3TableIntegrationRequest",
   }) as any as S.Schema<AssociateSourceToS3TableIntegrationRequest>;
+export type S3TableIntegrationSourceIdentifier = string;
 export interface AssociateSourceToS3TableIntegrationResponse {
   identifier?: string;
 }
@@ -367,6 +252,7 @@ export const AssociateSourceToS3TableIntegrationResponse =
   ).annotate({
     identifier: "AssociateSourceToS3TableIntegrationResponse",
   }) as any as S.Schema<AssociateSourceToS3TableIntegrationResponse>;
+export type ExportTaskId = string;
 export interface CancelExportTaskRequest {
   taskId: string;
 }
@@ -391,6 +277,7 @@ export const CancelExportTaskResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelExportTaskResponse",
 }) as any as S.Schema<CancelExportTaskResponse>;
+export type ImportId = string;
 export interface CancelImportTaskRequest {
   importId: string;
 }
@@ -409,6 +296,7 @@ export const CancelImportTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelImportTaskRequest",
 }) as any as S.Schema<CancelImportTaskRequest>;
+export type StoredBytes = number;
 export interface ImportStatistics {
   bytesImported?: number;
 }
@@ -424,6 +312,7 @@ export type ImportStatus =
   | "FAILED"
   | (string & {});
 export const ImportStatus = /*@__PURE__*/ S.String;
+
 export interface CancelImportTaskResponse {
   importId?: string;
   importStatistics?: ImportStatistics;
@@ -442,8 +331,12 @@ export const CancelImportTaskResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelImportTaskResponse",
 }) as any as S.Schema<CancelImportTaskResponse>;
+export type DeliverySourceName = string;
+export type FieldHeader = string;
 export type RecordFields = string[];
 export const RecordFields = /*@__PURE__*/ S.Array(S.String);
+export type FieldDelimiter = string;
+export type DeliverySuffixPath = string;
 export interface S3DeliveryConfiguration {
   suffixPath?: string;
   enableHiveCompatiblePath?: boolean;
@@ -456,6 +349,8 @@ export const S3DeliveryConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3DeliveryConfiguration",
 }) as any as S.Schema<S3DeliveryConfiguration>;
+export type TagKey = string;
+export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CreateDeliveryRequest {
@@ -488,6 +383,7 @@ export const CreateDeliveryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDeliveryRequest",
 }) as any as S.Schema<CreateDeliveryRequest>;
+export type DeliveryId = string;
 export type DeliveryDestinationType =
   | "S3"
   | "CWL"
@@ -495,6 +391,7 @@ export type DeliveryDestinationType =
   | "XRAY"
   | (string & {});
 export const DeliveryDestinationType = /*@__PURE__*/ S.String;
+
 export interface Delivery {
   id?: string;
   arn?: string;
@@ -527,6 +424,10 @@ export const CreateDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDeliveryResponse",
 }) as any as S.Schema<CreateDeliveryResponse>;
+export type ExportTaskName = string;
+export type LogStreamName = string;
+export type ExportDestinationBucket = string;
+export type ExportDestinationPrefix = string;
 export interface CreateExportTaskRequest {
   taskName?: string;
   logGroupName: string;
@@ -567,6 +468,7 @@ export const CreateExportTaskResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateExportTaskResponse",
 }) as any as S.Schema<CreateExportTaskResponse>;
+export type RoleArn = string;
 export interface ImportFilter {
   startEventTime?: number;
   endEventTime?: number;
@@ -615,8 +517,10 @@ export const CreateImportTaskResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateImportTaskResponse",
 }) as any as S.Schema<CreateImportTaskResponse>;
+export type LogGroupArn = string;
 export type LogGroupArnList = string[];
 export const LogGroupArnList = /*@__PURE__*/ S.Array(S.String);
+export type DetectorName = string;
 export type EvaluationFrequency =
   | "ONE_MIN"
   | "FIVE_MIN"
@@ -626,6 +530,10 @@ export type EvaluationFrequency =
   | "ONE_HOUR"
   | (string & {});
 export const EvaluationFrequency = /*@__PURE__*/ S.String;
+
+export type FilterPattern = string;
+export type DetectorKmsKeyArn = string;
+export type AnomalyVisibilityTime = number;
 export interface CreateLogAnomalyDetectorRequest {
   logGroupArnList: string[];
   detectorName?: string;
@@ -658,6 +566,7 @@ export const CreateLogAnomalyDetectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLogAnomalyDetectorRequest",
 }) as any as S.Schema<CreateLogAnomalyDetectorRequest>;
+export type AnomalyDetectorArn = string;
 export interface CreateLogAnomalyDetectorResponse {
   anomalyDetectorArn?: string;
 }
@@ -672,6 +581,8 @@ export type LogGroupClass =
   | "DELIVERY"
   | (string & {});
 export const LogGroupClass = /*@__PURE__*/ S.String;
+
+export type DeletionProtectionEnabled = boolean;
 export interface CreateLogGroupRequest {
   logGroupName: string;
   kmsKeyId?: string;
@@ -731,6 +642,9 @@ export const CreateLogStreamResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLogStreamResponse",
 }) as any as S.Schema<CreateLogStreamResponse>;
+export type LookupTableName = string;
+export type LookupTableDescription = string;
+export type TableBody = string;
 export interface CreateLookupTableRequest {
   lookupTableName: string;
   description?: string;
@@ -771,12 +685,23 @@ export const CreateLookupTableResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLookupTableResponse",
 }) as any as S.Schema<CreateLookupTableResponse>;
+export type ScheduledQueryName = string;
+export type ScheduledQueryDescription = string;
 export type QueryLanguage = "CWLI" | "SQL" | "PPL" | (string & {});
 export const QueryLanguage = /*@__PURE__*/ S.String;
+
+export type QueryString = string;
+export type LogGroupIdentifier = string;
 export type ScheduledQueryLogGroupIdentifiers = string[];
 export const ScheduledQueryLogGroupIdentifiers = /*@__PURE__*/ S.Array(
   S.String,
 );
+export type ScheduleExpression = string;
+export type ScheduleTimezone = string;
+export type StartTimeOffset = number;
+export type EndTimeOffset = number;
+export type S3Uri = string;
+export type AccountId = string;
 export interface S3Configuration {
   destinationIdentifier: string;
   roleArn: string;
@@ -803,6 +728,7 @@ export const DestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DestinationConfiguration>;
 export type ScheduledQueryState = "ENABLED" | "DISABLED" | (string & {});
 export const ScheduledQueryState = /*@__PURE__*/ S.String;
+
 export interface CreateScheduledQueryRequest {
   name: string;
   description?: string;
@@ -863,6 +789,7 @@ export const CreateScheduledQueryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateScheduledQueryResponse",
 }) as any as S.Schema<CreateScheduledQueryResponse>;
+export type PolicyName = string;
 export type PolicyType =
   | "DATA_PROTECTION_POLICY"
   | "SUBSCRIPTION_FILTER_POLICY"
@@ -871,6 +798,7 @@ export type PolicyType =
   | "METRIC_EXTRACTION_POLICY"
   | (string & {});
 export const PolicyType = /*@__PURE__*/ S.String;
+
 export interface DeleteAccountPolicyRequest {
   policyName: string;
   policyType: PolicyType;
@@ -944,6 +872,7 @@ export const DeleteDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteDeliveryResponse",
 }) as any as S.Schema<DeleteDeliveryResponse>;
+export type DeliveryDestinationName = string;
 export interface DeleteDeliveryDestinationRequest {
   name: string;
 }
@@ -1017,6 +946,7 @@ export const DeleteDeliverySourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteDeliverySourceResponse",
 }) as any as S.Schema<DeleteDeliverySourceResponse>;
+export type DestinationName = string;
 export interface DeleteDestinationRequest {
   destinationName: string;
 }
@@ -1065,6 +995,8 @@ export const DeleteIndexPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteIndexPolicyResponse",
 }) as any as S.Schema<DeleteIndexPolicyResponse>;
+export type IntegrationName = string;
+export type Force = boolean;
 export interface DeleteIntegrationRequest {
   integrationName: string;
   force?: boolean;
@@ -1187,6 +1119,7 @@ export const DeleteLookupTableResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteLookupTableResponse",
 }) as any as S.Schema<DeleteLookupTableResponse>;
+export type FilterName = string;
 export interface DeleteMetricFilterRequest {
   logGroupName: string;
   filterName: string;
@@ -1212,6 +1145,7 @@ export const DeleteMetricFilterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteMetricFilterResponse",
 }) as any as S.Schema<DeleteMetricFilterResponse>;
+export type QueryId = string;
 export interface DeleteQueryDefinitionRequest {
   queryDefinitionId: string;
 }
@@ -1230,6 +1164,7 @@ export const DeleteQueryDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteQueryDefinitionRequest",
 }) as any as S.Schema<DeleteQueryDefinitionRequest>;
+export type Success = boolean;
 export interface DeleteQueryDefinitionResponse {
   success?: boolean;
 }
@@ -1238,6 +1173,7 @@ export const DeleteQueryDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteQueryDefinitionResponse",
 }) as any as S.Schema<DeleteQueryDefinitionResponse>;
+export type ExpectedRevisionId = string;
 export interface DeleteResourcePolicyRequest {
   policyName?: string;
   resourceArn?: string;
@@ -1292,6 +1228,7 @@ export const DeleteRetentionPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteRetentionPolicyResponse",
 }) as any as S.Schema<DeleteRetentionPolicyResponse>;
+export type ScheduledQueryIdentifier = string;
 export interface DeleteScheduledQueryRequest {
   identifier: string;
 }
@@ -1341,6 +1278,7 @@ export const DeleteSubscriptionFilterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSubscriptionFilterResponse",
 }) as any as S.Schema<DeleteSubscriptionFilterResponse>;
+export type VpcEndpointId = string;
 export interface DeleteSyslogConfigurationRequest {
   logGroupIdentifier: string;
   vpcEndpointId?: string;
@@ -1395,6 +1333,7 @@ export const DeleteTransformerResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTransformerResponse>;
 export type AccountIds = string[];
 export const AccountIds = /*@__PURE__*/ S.Array(S.String);
+export type NextToken = string;
 export interface DescribeAccountPoliciesRequest {
   policyType: PolicyType;
   policyName?: string;
@@ -1421,8 +1360,11 @@ export const DescribeAccountPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAccountPoliciesRequest",
 }) as any as S.Schema<DescribeAccountPoliciesRequest>;
+export type AccountPolicyDocument = string;
 export type Scope = "ALL" | (string & {});
 export const Scope = /*@__PURE__*/ S.String;
+
+export type SelectionCriteria = string;
 export interface AccountPolicy {
   policyName?: string;
   policyDocument?: string;
@@ -1457,14 +1399,18 @@ export const DescribeAccountPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAccountPoliciesResponse",
 }) as any as S.Schema<DescribeAccountPoliciesResponse>;
+export type Service = string;
+export type LogType = string;
 export type LogTypes = string[];
 export const LogTypes = /*@__PURE__*/ S.Array(S.String);
+export type ResourceType = string;
 export type ResourceTypes = string[];
 export const ResourceTypes = /*@__PURE__*/ S.Array(S.String);
 export type DeliveryDestinationTypes = DeliveryDestinationType[];
 export const DeliveryDestinationTypes = /*@__PURE__*/ S.Array(
   DeliveryDestinationType,
 );
+export type DescribeLimit = number;
 export interface DescribeConfigurationTemplatesRequest {
   service?: string;
   logTypes?: string[];
@@ -1528,10 +1474,13 @@ export type OutputFormat =
   | "parquet"
   | (string & {});
 export const OutputFormat = /*@__PURE__*/ S.String;
+
 export type OutputFormats = OutputFormat[];
 export const OutputFormats = /*@__PURE__*/ S.Array(OutputFormat);
+export type AllowedActionForAllowVendedLogsDeliveryForResource = string;
 export type AllowedFieldDelimiters = string[];
 export const AllowedFieldDelimiters = /*@__PURE__*/ S.Array(S.String);
+export type DeliverySourceConfigurationSchemaField = string;
 export type DeliverySourceConfigurationSchemaValueType =
   | "string"
   | "boolean"
@@ -1541,10 +1490,12 @@ export type DeliverySourceConfigurationSchemaValueType =
   | (string & {});
 export const DeliverySourceConfigurationSchemaValueType =
   /*@__PURE__*/ S.String;
+
 export type DeliverySourceConfigurationSupportedValues = string[];
 export const DeliverySourceConfigurationSupportedValues = /*@__PURE__*/ S.Array(
   S.String,
 );
+export type DeliverySourceConfigurationNumericValue = number;
 export interface DeliverySourceConfigurationSchema {
   keyName: string;
   valueType: DeliverySourceConfigurationSchemaValueType;
@@ -1570,6 +1521,8 @@ export type DeliverySourceConfigurationSchemas =
 export const DeliverySourceConfigurationSchemas = /*@__PURE__*/ S.Array(
   DeliverySourceConfigurationSchema,
 );
+export type S3TablesDatasourceName = string;
+export type S3TablesDatasourceType = string;
 export interface S3TablesIntegration {
   datasourceName?: string;
   datasourceType?: string;
@@ -1760,6 +1713,8 @@ export const DescribeDeliverySourcesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeDeliverySourcesRequest>;
 export type ResourceArns = string[];
 export const ResourceArns = /*@__PURE__*/ S.Array(S.String);
+export type DeliverySourceConfigurationKey = string;
+export type DeliverySourceConfigurationValue = string;
 export type DeliverySourceConfiguration = { [key: string]: string | undefined };
 export const DeliverySourceConfiguration = /*@__PURE__*/ S.Record(
   S.String,
@@ -1767,8 +1722,10 @@ export const DeliverySourceConfiguration = /*@__PURE__*/ S.Record(
 );
 export type DeliverySourceStatus = "ACTIVE" | "INACTIVE" | (string & {});
 export const DeliverySourceStatus = /*@__PURE__*/ S.String;
+
 export type DeliverySourceStatusReason = "RESOURCE_DELETED" | (string & {});
 export const DeliverySourceStatusReason = /*@__PURE__*/ S.String;
+
 export interface DeliverySource {
   name?: string;
   arn?: string;
@@ -1831,6 +1788,8 @@ export const DescribeDestinationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDestinationsRequest",
 }) as any as S.Schema<DescribeDestinationsRequest>;
+export type TargetArn = string;
+export type AccessPolicy = string;
 export interface Destination {
   destinationName?: string;
   targetArn?: string;
@@ -1872,6 +1831,7 @@ export type ExportTaskStatusCode =
   | "RUNNING"
   | (string & {});
 export const ExportTaskStatusCode = /*@__PURE__*/ S.String;
+
 export interface DescribeExportTasksRequest {
   taskId?: string;
   statusCode?: ExportTaskStatusCode;
@@ -1898,6 +1858,7 @@ export const DescribeExportTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeExportTasksRequest",
 }) as any as S.Schema<DescribeExportTasksRequest>;
+export type ExportTaskStatusMessage = string;
 export interface ExportTaskStatus {
   code?: ExportTaskStatusCode;
   message?: string;
@@ -1986,8 +1947,10 @@ export const DescribeFieldIndexesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFieldIndexesRequest",
 }) as any as S.Schema<DescribeFieldIndexesRequest>;
+export type FieldIndexName = string;
 export type IndexType = "FACET" | "FIELD_INDEX" | (string & {});
 export const IndexType = /*@__PURE__*/ S.String;
+
 export interface FieldIndex {
   logGroupIdentifier?: string;
   fieldIndexName?: string;
@@ -2048,6 +2011,8 @@ export const DescribeImportTaskBatchesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeImportTaskBatchesRequest",
 }) as any as S.Schema<DescribeImportTaskBatchesRequest>;
+export type BatchId = string;
+export type ErrorMessage = string;
 export interface ImportBatch {
   batchId: string;
   status: ImportStatus;
@@ -2170,8 +2135,10 @@ export const DescribeIndexPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeIndexPoliciesRequest",
 }) as any as S.Schema<DescribeIndexPoliciesRequest>;
+export type PolicyDocument = string;
 export type IndexSource = "ACCOUNT" | "LOG_GROUP" | (string & {});
 export const IndexSource = /*@__PURE__*/ S.String;
+
 export interface IndexPolicy {
   logGroupIdentifier?: string;
   lastUpdateTime?: number;
@@ -2202,6 +2169,8 @@ export const DescribeIndexPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeIndexPoliciesResponse",
 }) as any as S.Schema<DescribeIndexPoliciesResponse>;
+export type LogGroupNamePattern = string;
+export type IncludeLinkedAccounts = boolean;
 export type DescribeLogGroupsLogGroupIdentifiers = string[];
 export const DescribeLogGroupsLogGroupIdentifiers = /*@__PURE__*/ S.Array(
   S.String,
@@ -2240,6 +2209,8 @@ export const DescribeLogGroupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLogGroupsRequest",
 }) as any as S.Schema<DescribeLogGroupsRequest>;
+export type Days = number;
+export type FilterCount = number;
 export type DataProtectionStatus =
   | "ACTIVATED"
   | "DELETED"
@@ -2247,10 +2218,13 @@ export type DataProtectionStatus =
   | "DISABLED"
   | (string & {});
 export const DataProtectionStatus = /*@__PURE__*/ S.String;
+
 export type InheritedProperty = "ACCOUNT_DATA_PROTECTION" | (string & {});
 export const InheritedProperty = /*@__PURE__*/ S.String;
+
 export type InheritedProperties = InheritedProperty[];
 export const InheritedProperties = /*@__PURE__*/ S.Array(InheritedProperty);
+export type BearerTokenAuthenticationEnabled = boolean;
 export interface LogGroup {
   logGroupName?: string;
   creationTime?: number;
@@ -2299,6 +2273,8 @@ export const DescribeLogGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeLogGroupsResponse>;
 export type OrderBy = "LogStreamName" | "LastEventTime" | (string & {});
 export const OrderBy = /*@__PURE__*/ S.String;
+
+export type Descending = boolean;
 export interface DescribeLogStreamsRequest {
   logGroupName?: string;
   logGroupIdentifier?: string;
@@ -2331,6 +2307,7 @@ export const DescribeLogStreamsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLogStreamsRequest",
 }) as any as S.Schema<DescribeLogStreamsRequest>;
+export type SequenceToken = string;
 export interface LogStream {
   logStreamName?: string;
   creationTime?: number;
@@ -2367,6 +2344,7 @@ export const DescribeLogStreamsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLogStreamsResponse",
 }) as any as S.Schema<DescribeLogStreamsResponse>;
+export type DescribeLookupTablesMaxResults = number;
 export interface DescribeLookupTablesRequest {
   lookupTableNamePrefix?: string;
   maxResults?: number;
@@ -2393,6 +2371,7 @@ export const DescribeLookupTablesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeLookupTablesRequest>;
 export type TableFields = string[];
 export const TableFields = /*@__PURE__*/ S.Array(S.String);
+export type RecordsCount = number;
 export interface LookupTable {
   lookupTableArn?: string;
   lookupTableName?: string;
@@ -2429,6 +2408,8 @@ export const DescribeLookupTablesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLookupTablesResponse",
 }) as any as S.Schema<DescribeLookupTablesResponse>;
+export type MetricName = string;
+export type MetricNamespace = string;
 export interface DescribeMetricFiltersRequest {
   logGroupName?: string;
   filterNamePrefix?: string;
@@ -2459,6 +2440,10 @@ export const DescribeMetricFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeMetricFiltersRequest",
 }) as any as S.Schema<DescribeMetricFiltersRequest>;
+export type MetricValue = string;
+export type DefaultValue = number;
+export type DimensionsKey = string;
+export type DimensionsValue = string;
 export type Dimensions = { [key: string]: string | undefined };
 export const Dimensions = /*@__PURE__*/ S.Record(
   S.String,
@@ -2494,6 +2479,7 @@ export type StandardUnit =
   | "None"
   | (string & {});
 export const StandardUnit = /*@__PURE__*/ S.String;
+
 export interface MetricTransformation {
   metricName: string;
   metricNamespace: string;
@@ -2517,6 +2503,9 @@ export const MetricTransformation = /*@__PURE__*/ S.suspend(() =>
 export type MetricTransformations = MetricTransformation[];
 export const MetricTransformations =
   /*@__PURE__*/ S.Array(MetricTransformation);
+export type ApplyOnTransformedLogs = boolean;
+export type FieldSelectionCriteria = string;
+export type SystemField = string;
 export type EmitSystemFields = string[];
 export const EmitSystemFields = /*@__PURE__*/ S.Array(S.String);
 export interface MetricFilter {
@@ -2565,6 +2554,8 @@ export type QueryStatus =
   | "Unknown"
   | (string & {});
 export const QueryStatus = /*@__PURE__*/ S.String;
+
+export type DescribeQueriesMaxResults = number;
 export interface DescribeQueriesRequest {
   logGroupName?: string;
   status?: QueryStatus;
@@ -2593,6 +2584,9 @@ export const DescribeQueriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeQueriesRequest",
 }) as any as S.Schema<DescribeQueriesRequest>;
+export type QueryDuration = number;
+export type BytesScannedValue = number;
+export type UserIdentity = string;
 export interface QueryInfo {
   queryLanguage?: QueryLanguage;
   queryId?: string;
@@ -2631,6 +2625,8 @@ export const DescribeQueriesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeQueriesResponse",
 }) as any as S.Schema<DescribeQueriesResponse>;
+export type QueryDefinitionName = string;
+export type QueryListMaxResults = number;
 export interface DescribeQueryDefinitionsRequest {
   queryLanguage?: QueryLanguage;
   queryDefinitionNamePrefix?: string;
@@ -2657,8 +2653,12 @@ export const DescribeQueryDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeQueryDefinitionsRequest",
 }) as any as S.Schema<DescribeQueryDefinitionsRequest>;
+export type QueryDefinitionString = string;
 export type LogGroupNames = string[];
 export const LogGroupNames = /*@__PURE__*/ S.Array(S.String);
+export type QueryParameterName = string;
+export type QueryParameterDefaultValue = string;
+export type QueryParameterDescription = string;
 export interface QueryParameter {
   name: string;
   defaultValue?: string;
@@ -2711,6 +2711,7 @@ export const DescribeQueryDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeQueryDefinitionsResponse>;
 export type PolicyScope = "ACCOUNT" | "RESOURCE" | (string & {});
 export const PolicyScope = /*@__PURE__*/ S.String;
+
 export interface DescribeResourcePoliciesRequest {
   nextToken?: string;
   limit?: number;
@@ -2795,8 +2796,10 @@ export const DescribeSubscriptionFiltersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSubscriptionFiltersRequest",
 }) as any as S.Schema<DescribeSubscriptionFiltersRequest>;
+export type DestinationArn = string;
 export type Distribution = "Random" | "ByLogStream" | (string & {});
 export const Distribution = /*@__PURE__*/ S.String;
+
 export interface SubscriptionFilter {
   filterName?: string;
   logGroupName?: string;
@@ -2897,6 +2900,10 @@ export const DisassociateSourceFromS3TableIntegrationResponse =
   }) as any as S.Schema<DisassociateSourceFromS3TableIntegrationResponse>;
 export type InputLogStreamNames = string[];
 export const InputLogStreamNames = /*@__PURE__*/ S.Array(S.String);
+export type EventsLimit = number;
+export type StartFromHead = boolean;
+export type Interleaved = boolean;
+export type Unmask = boolean;
 export interface FilterLogEventsRequest {
   logGroupName?: string;
   logGroupIdentifier?: string;
@@ -2939,6 +2946,8 @@ export const FilterLogEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FilterLogEventsRequest",
 }) as any as S.Schema<FilterLogEventsRequest>;
+export type EventMessage = string;
+export type EventId = string;
 export interface FilteredLogEvent {
   logStreamName?: string;
   timestamp?: number;
@@ -2959,6 +2968,7 @@ export const FilteredLogEvent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FilteredLogEvent>;
 export type FilteredLogEvents = FilteredLogEvent[];
 export const FilteredLogEvents = /*@__PURE__*/ S.Array(FilteredLogEvent);
+export type LogStreamSearchedCompletely = boolean;
 export interface SearchedLogStream {
   logStreamName?: string;
   searchedCompletely?: boolean;
@@ -3005,6 +3015,7 @@ export const GetDataProtectionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDataProtectionPolicyRequest",
 }) as any as S.Schema<GetDataProtectionPolicyRequest>;
+export type DataProtectionPolicyDocument = string;
 export interface GetDataProtectionPolicyResponse {
   logGroupIdentifier?: string;
   policyDocument?: string;
@@ -3089,6 +3100,7 @@ export const GetDeliveryDestinationPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDeliveryDestinationPolicyRequest",
 }) as any as S.Schema<GetDeliveryDestinationPolicyRequest>;
+export type DeliveryDestinationPolicy = string;
 export interface Policy {
   deliveryDestinationPolicy?: string;
 }
@@ -3149,18 +3161,23 @@ export const GetIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetIntegrationRequest>;
 export type IntegrationType = "OPENSEARCH" | (string & {});
 export const IntegrationType = /*@__PURE__*/ S.String;
+
 export type IntegrationStatus =
   | "PROVISIONING"
   | "ACTIVE"
   | "FAILED"
   | (string & {});
 export const IntegrationStatus = /*@__PURE__*/ S.String;
+
+export type OpenSearchDataSourceName = string;
 export type OpenSearchResourceStatusType =
   | "ACTIVE"
   | "NOT_FOUND"
   | "ERROR"
   | (string & {});
 export const OpenSearchResourceStatusType = /*@__PURE__*/ S.String;
+
+export type IntegrationStatusMessage = string;
 export interface OpenSearchResourceStatus {
   status?: OpenSearchResourceStatusType;
   statusMessage?: string;
@@ -3185,6 +3202,8 @@ export const OpenSearchDataSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OpenSearchDataSource",
 }) as any as S.Schema<OpenSearchDataSource>;
+export type OpenSearchApplicationEndpoint = string;
+export type OpenSearchApplicationId = string;
 export interface OpenSearchApplication {
   applicationEndpoint?: string;
   applicationArn?: string;
@@ -3201,6 +3220,7 @@ export const OpenSearchApplication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OpenSearchApplication",
 }) as any as S.Schema<OpenSearchApplication>;
+export type OpenSearchCollectionEndpoint = string;
 export interface OpenSearchCollection {
   collectionEndpoint?: string;
   collectionArn?: string;
@@ -3215,6 +3235,7 @@ export const OpenSearchCollection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OpenSearchCollection",
 }) as any as S.Schema<OpenSearchCollection>;
+export type OpenSearchWorkspaceId = string;
 export interface OpenSearchWorkspace {
   workspaceId?: string;
   status?: OpenSearchResourceStatus;
@@ -3227,6 +3248,7 @@ export const OpenSearchWorkspace = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OpenSearchWorkspace",
 }) as any as S.Schema<OpenSearchWorkspace>;
+export type OpenSearchPolicyName = string;
 export interface OpenSearchEncryptionPolicy {
   policyName?: string;
   status?: OpenSearchResourceStatus;
@@ -3348,6 +3370,8 @@ export type AnomalyDetectorStatus =
   | "PAUSED"
   | (string & {});
 export const AnomalyDetectorStatus = /*@__PURE__*/ S.String;
+
+export type EpochMillis = number;
 export interface GetLogAnomalyDetectorResponse {
   detectorName?: string;
   logGroupArnList?: string[];
@@ -3457,6 +3481,8 @@ export const GetLogFieldsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLogFieldsRequest",
 }) as any as S.Schema<GetLogFieldsRequest>;
+export type LogFieldName = string;
+export type DataType = string;
 export interface LogFieldType {
   type?: string;
   element?: LogFieldType;
@@ -3529,6 +3555,8 @@ export const GetLogGroupFieldsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLogGroupFieldsRequest",
 }) as any as S.Schema<GetLogGroupFieldsRequest>;
+export type Field = string;
+export type Percentage = number;
 export interface LogGroupField {
   name?: string;
   percent?: number;
@@ -3546,6 +3574,7 @@ export const GetLogGroupFieldsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLogGroupFieldsResponse",
 }) as any as S.Schema<GetLogGroupFieldsResponse>;
+export type LogObjectPointer = string;
 export interface GetLogObjectRequest {
   unmask?: boolean;
   logObjectPointer: string;
@@ -3565,12 +3594,14 @@ export const GetLogObjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLogObjectRequest",
 }) as any as S.Schema<GetLogObjectRequest>;
+export type Data = Uint8Array;
 export interface FieldsData {
   data?: Uint8Array;
 }
 export const FieldsData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ data: S.optional(T.Blob) }),
 ).annotate({ identifier: "FieldsData" }) as any as S.Schema<FieldsData>;
+export type Message = string;
 export interface InternalStreamingException {
   message?: string;
 }
@@ -3596,6 +3627,7 @@ export const GetLogObjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLogObjectResponse",
 }) as any as S.Schema<GetLogObjectResponse>;
+export type LogRecordPointer = string;
 export interface GetLogRecordRequest {
   logRecordPointer: string;
   unmask?: boolean;
@@ -3615,6 +3647,7 @@ export const GetLogRecordRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLogRecordRequest",
 }) as any as S.Schema<GetLogRecordRequest>;
+export type Value = string;
 export type LogRecord = { [key: string]: string | undefined };
 export const LogRecord = /*@__PURE__*/ S.Record(
   S.String,
@@ -3668,6 +3701,8 @@ export const GetLookupTableResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLookupTableResponse",
 }) as any as S.Schema<GetLookupTableResponse>;
+export type GetQueryResultsNextToken = string;
+export type GetQueryResultsMaxItems = number;
 export interface GetQueryResultsRequest {
   queryId: string;
   nextToken?: string;
@@ -3703,6 +3738,7 @@ export type ResultRows = ResultField[];
 export const ResultRows = /*@__PURE__*/ S.Array(ResultField);
 export type QueryResults = ResultField[][];
 export const QueryResults = /*@__PURE__*/ S.Array(ResultRows);
+export type StatsValue = number;
 export interface QueryStatistics {
   recordsMatched?: number;
   recordsScanned?: number;
@@ -3723,6 +3759,7 @@ export const QueryStatistics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "QueryStatistics",
 }) as any as S.Schema<QueryStatistics>;
+export type EncryptionKey = string;
 export interface GetQueryResultsResponse {
   queryLanguage?: QueryLanguage;
   results?: ResultField[][];
@@ -3763,6 +3800,7 @@ export const GetScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetScheduledQueryRequest>;
 export type ScheduleType = "CUSTOMER_MANAGED" | "AWS_MANAGED" | (string & {});
 export const ScheduleType = /*@__PURE__*/ S.String;
+
 export type ExecutionStatus =
   | "Running"
   | "InvalidQuery"
@@ -3771,6 +3809,7 @@ export type ExecutionStatus =
   | "Timeout"
   | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
+
 export interface GetScheduledQueryResponse {
   scheduledQueryArn?: string;
   name?: string;
@@ -3821,6 +3860,7 @@ export const GetScheduledQueryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetScheduledQueryResponse>;
 export type ExecutionStatusList = ExecutionStatus[];
 export const ExecutionStatusList = /*@__PURE__*/ S.Array(ExecutionStatus);
+export type GetScheduledQueryHistoryMaxResults = number;
 export interface GetScheduledQueryHistoryRequest {
   identifier: string;
   startTime: number;
@@ -3853,6 +3893,7 @@ export const GetScheduledQueryHistoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetScheduledQueryHistoryRequest>;
 export type ScheduledQueryDestinationType = "S3" | (string & {});
 export const ScheduledQueryDestinationType = /*@__PURE__*/ S.String;
+
 export type ActionStatus =
   | "IN_PROGRESS"
   | "CLIENT_ERROR"
@@ -3860,6 +3901,7 @@ export type ActionStatus =
   | "COMPLETE"
   | (string & {});
 export const ActionStatus = /*@__PURE__*/ S.String;
+
 export interface ScheduledQueryDestination {
   destinationType?: ScheduledQueryDestinationType;
   destinationIdentifier?: string;
@@ -3937,6 +3979,9 @@ export const GetTransformerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTransformerRequest",
 }) as any as S.Schema<GetTransformerRequest>;
+export type Key = string;
+export type AddKeyValue = string;
+export type OverwriteIfExists = boolean;
 export interface AddKeyEntry {
   key: string;
   value: string;
@@ -3957,6 +4002,8 @@ export interface AddKeys {
 export const AddKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ entries: AddKeyEntries }),
 ).annotate({ identifier: "AddKeys" }) as any as S.Schema<AddKeys>;
+export type Source = string;
+export type Target = string;
 export interface CopyValueEntry {
   source: string;
   target: string;
@@ -3977,8 +4024,12 @@ export interface CopyValue {
 export const CopyValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ entries: CopyValueEntries }),
 ).annotate({ identifier: "CopyValue" }) as any as S.Schema<CopyValue>;
+export type QuoteCharacter = string;
+export type Delimiter = string;
+export type Column = string;
 export type Columns = string[];
 export const Columns = /*@__PURE__*/ S.Array(S.String);
+export type DestinationField = string;
 export interface CSV {
   quoteCharacter?: string;
   delimiter?: string;
@@ -3995,8 +4046,13 @@ export const CSV = /*@__PURE__*/ S.suspend(() =>
     destination: S.optional(S.String),
   }),
 ).annotate({ identifier: "CSV" }) as any as S.Schema<CSV>;
+export type TargetFormat = string;
+export type MatchPattern = string;
 export type MatchPatterns = string[];
 export const MatchPatterns = /*@__PURE__*/ S.Array(S.String);
+export type SourceTimezone = string;
+export type TargetTimezone = string;
+export type Locale = string;
 export interface DateTimeConverter {
   source: string;
   target: string;
@@ -4019,6 +4075,7 @@ export const DateTimeConverter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DateTimeConverter",
 }) as any as S.Schema<DateTimeConverter>;
+export type WithKey = string;
 export type DeleteWithKeys = string[];
 export const DeleteWithKeys = /*@__PURE__*/ S.Array(S.String);
 export interface DeleteKeys {
@@ -4027,6 +4084,7 @@ export interface DeleteKeys {
 export const DeleteKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ withKeys: DeleteWithKeys }),
 ).annotate({ identifier: "DeleteKeys" }) as any as S.Schema<DeleteKeys>;
+export type GrokMatch = string;
 export interface Grok {
   source?: string;
   match: string;
@@ -4034,8 +4092,11 @@ export interface Grok {
 export const Grok = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ source: S.optional(S.String), match: S.String }),
 ).annotate({ identifier: "Grok" }) as any as S.Schema<Grok>;
+export type ValueKey = string;
+export type Flatten = boolean;
 export type FlattenedElement = "first" | "last" | (string & {});
 export const FlattenedElement = /*@__PURE__*/ S.String;
+
 export interface ListToMap {
   source: string;
   key: string;
@@ -4099,6 +4160,10 @@ export interface ParseJSON {
 export const ParseJSON = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ source: S.optional(S.String), destination: S.optional(S.String) }),
 ).annotate({ identifier: "ParseJSON" }) as any as S.Schema<ParseJSON>;
+export type ParserFieldDelimiter = string;
+export type KeyValueDelimiter = string;
+export type KeyPrefix = string;
+export type NonMatchValue = string;
 export interface ParseKeyValue {
   source?: string;
   destination?: string;
@@ -4133,8 +4198,11 @@ export type EventSource =
   | "AWSWAF"
   | (string & {});
 export const EventSource = /*@__PURE__*/ S.String;
+
 export type OCSFVersion = "V1.1" | "V1.5" | (string & {});
 export const OCSFVersion = /*@__PURE__*/ S.String;
+
+export type MappingVersion = string;
 export interface ParseToOCSF {
   source?: string;
   eventSource: EventSource;
@@ -4167,6 +4235,7 @@ export interface ParseWAF {
 export const ParseWAF = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ source: S.optional(S.String) }),
 ).annotate({ identifier: "ParseWAF" }) as any as S.Schema<ParseWAF>;
+export type RenameTo = string;
 export interface RenameKeyEntry {
   key: string;
   renameTo: string;
@@ -4187,6 +4256,7 @@ export interface RenameKeys {
 export const RenameKeys = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ entries: RenameKeyEntries }),
 ).annotate({ identifier: "RenameKeys" }) as any as S.Schema<RenameKeys>;
+export type SplitStringDelimiter = string;
 export interface SplitStringEntry {
   source: string;
   delimiter: string;
@@ -4204,6 +4274,8 @@ export interface SplitString {
 export const SplitString = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ entries: SplitStringEntries }),
 ).annotate({ identifier: "SplitString" }) as any as S.Schema<SplitString>;
+export type FromKey = string;
+export type ToKey = string;
 export interface SubstituteStringEntry {
   source: string;
   from: string;
@@ -4236,6 +4308,7 @@ export const TrimString = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TrimString" }) as any as S.Schema<TrimString>;
 export type Type = "boolean" | "integer" | "double" | "string" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
+
 export interface TypeConverterEntry {
   key: string;
   type: Type;
@@ -4333,6 +4406,7 @@ export const GetTransformerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTransformerResponse",
 }) as any as S.Schema<GetTransformerResponse>;
+export type LogGroupNameRegexPattern = string;
 export interface DataSourceFilter {
   name: string;
   type?: string;
@@ -4349,6 +4423,8 @@ export type ListAggregateLogGroupSummariesGroupBy =
   | "DATA_SOURCE_NAME_AND_TYPE"
   | (string & {});
 export const ListAggregateLogGroupSummariesGroupBy = /*@__PURE__*/ S.String;
+
+export type ListLogGroupsRequestLimit = number;
 export interface ListAggregateLogGroupSummariesRequest {
   accountIdentifiers?: string[];
   includeLinkedAccounts?: boolean;
@@ -4384,6 +4460,9 @@ export const ListAggregateLogGroupSummariesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListAggregateLogGroupSummariesRequest",
 }) as any as S.Schema<ListAggregateLogGroupSummariesRequest>;
+export type LogGroupCount = number;
+export type GroupingIdentifierKey = string;
+export type GroupingIdentifierValue = string;
 export interface GroupingIdentifier {
   key?: string;
   value?: string;
@@ -4426,6 +4505,8 @@ export const ListAggregateLogGroupSummariesResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListAggregateLogGroupSummariesResponse>;
 export type SuppressionState = "SUPPRESSED" | "UNSUPPRESSED" | (string & {});
 export const SuppressionState = /*@__PURE__*/ S.String;
+
+export type ListAnomaliesLimit = number;
 export interface ListAnomaliesRequest {
   anomalyDetectorArn?: string;
   suppressionState?: SuppressionState;
@@ -4452,8 +4533,16 @@ export const ListAnomaliesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAnomaliesRequest",
 }) as any as S.Schema<ListAnomaliesRequest>;
+export type AnomalyId = string;
+export type PatternId = string;
+export type PatternString = string;
+export type PatternRegex = string;
+export type Priority = string;
+export type Description = string;
 export type State = "Active" | "Suppressed" | "Baseline" | (string & {});
 export const State = /*@__PURE__*/ S.String;
+
+export type Count = number;
 export type Histogram = { [key: string]: number | undefined };
 export const Histogram = /*@__PURE__*/ S.Record(
   S.String,
@@ -4468,11 +4557,15 @@ export const LogEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogEvent" }) as any as S.Schema<LogEvent>;
 export type LogSamples = LogEvent[];
 export const LogSamples = /*@__PURE__*/ S.Array(LogEvent);
+export type DynamicTokenPosition = number;
+export type TokenString = string;
+export type TokenValue = number;
 export type Enumerations = { [key: string]: number | undefined };
 export const Enumerations = /*@__PURE__*/ S.Record(
   S.String,
   S.Number.pipe(S.optional),
 );
+export type InferredTokenName = string;
 export interface PatternToken {
   dynamicTokenPosition?: number;
   isDynamic?: boolean;
@@ -4549,6 +4642,7 @@ export const ListAnomaliesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAnomaliesResponse",
 }) as any as S.Schema<ListAnomaliesResponse>;
+export type IntegrationNamePrefix = string;
 export interface ListIntegrationsRequest {
   integrationNamePrefix?: string;
   integrationType?: IntegrationType;
@@ -4597,6 +4691,7 @@ export const ListIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListIntegrationsResponse",
 }) as any as S.Schema<ListIntegrationsResponse>;
+export type ListLogAnomalyDetectorsLimit = number;
 export interface ListLogAnomalyDetectorsRequest {
   filterLogGroupArn?: string;
   limit?: number;
@@ -4663,8 +4758,11 @@ export const ListLogAnomalyDetectorsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListLogAnomalyDetectorsResponse",
 }) as any as S.Schema<ListLogAnomalyDetectorsResponse>;
+export type ListLimit = number;
 export type FieldIndexNames = string[];
 export const FieldIndexNames = /*@__PURE__*/ S.Array(S.String);
+export type TagFilterKey = string;
+export type TagFilterValue = string;
 export type TagFilterValues = string[];
 export const TagFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface TagFilter {
@@ -4740,6 +4838,7 @@ export const ListLogGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListLogGroupsResponse",
 }) as any as S.Schema<ListLogGroupsResponse>;
+export type ListLogGroupsForQueryMaxResults = number;
 export interface ListLogGroupsForQueryRequest {
   queryId: string;
   nextToken?: string;
@@ -4778,6 +4877,7 @@ export const ListLogGroupsForQueryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListLogGroupsForQueryResponse",
 }) as any as S.Schema<ListLogGroupsForQueryResponse>;
+export type ListScheduledQueriesMaxResults = number;
 export interface ListScheduledQueriesRequest {
   maxResults?: number;
   nextToken?: string;
@@ -4850,6 +4950,7 @@ export const ListScheduledQueriesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListScheduledQueriesResponse",
 }) as any as S.Schema<ListScheduledQueriesResponse>;
+export type ListSourcesForS3TableIntegrationMaxResults = number;
 export interface ListSourcesForS3TableIntegrationRequest {
   integrationArn: string;
   maxResults?: number;
@@ -4882,6 +4983,8 @@ export type S3TableIntegrationSourceStatus =
   | "DATA_SOURCE_DELETE_IN_PROGRESS"
   | (string & {});
 export const S3TableIntegrationSourceStatus = /*@__PURE__*/ S.String;
+
+export type S3TableIntegrationSourceStatusReason = string;
 export interface S3TableIntegrationSource {
   identifier?: string;
   dataSource?: DataSource;
@@ -4919,6 +5022,7 @@ export const ListSourcesForS3TableIntegrationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListSourcesForS3TableIntegrationResponse",
 }) as any as S.Schema<ListSourcesForS3TableIntegrationResponse>;
+export type ListSyslogConfigurationsMaxResults = number;
 export interface ListSyslogConfigurationsRequest {
   logGroupIdentifier?: string;
   vpcEndpointId?: string;
@@ -4947,6 +5051,7 @@ export const ListSyslogConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListSyslogConfigurationsRequest>;
 export type SyslogSourceType = "VPCE" | (string & {});
 export const SyslogSourceType = /*@__PURE__*/ S.String;
+
 export interface SyslogConfiguration {
   logGroupArn?: string;
   sourceType?: SyslogSourceType;
@@ -4977,6 +5082,7 @@ export const ListSyslogConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSyslogConfigurationsResponse",
 }) as any as S.Schema<ListSyslogConfigurationsResponse>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -5264,6 +5370,7 @@ export const PutDestinationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutDestinationResponse",
 }) as any as S.Schema<PutDestinationResponse>;
+export type ForceUpdate = boolean;
 export interface PutDestinationPolicyRequest {
   destinationName: string;
   accessPolicy: string;
@@ -5323,6 +5430,7 @@ export const PutIndexPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutIndexPolicyResponse>;
 export type DashboardViewerPrincipals = string[];
 export const DashboardViewerPrincipals = /*@__PURE__*/ S.Array(S.String);
+export type CollectionRetentionDays = number;
 export interface OpenSearchResourceConfig {
   kmsKeyArn?: string;
   dataSourceRoleArn: string;
@@ -5392,11 +5500,15 @@ export const InputLogEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InputLogEvent" }) as any as S.Schema<InputLogEvent>;
 export type InputLogEvents = InputLogEvent[];
 export const InputLogEvents = /*@__PURE__*/ S.Array(InputLogEvent);
+export type EntityKeyAttributesKey = string;
+export type EntityKeyAttributesValue = string;
 export type EntityKeyAttributes = { [key: string]: string | undefined };
 export const EntityKeyAttributes = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type EntityAttributesKey = string;
+export type EntityAttributesValue = string;
 export type EntityAttributes = { [key: string]: string | undefined };
 export const EntityAttributes = /*@__PURE__*/ S.Record(
   S.String,
@@ -5440,6 +5552,7 @@ export const PutLogEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutLogEventsRequest",
 }) as any as S.Schema<PutLogEventsRequest>;
+export type LogEventIndex = number;
 export interface RejectedLogEventsInfo {
   tooNewLogEventStartIndex?: number;
   tooOldLogEventEndIndex?: number;
@@ -5464,6 +5577,7 @@ export type EntityRejectionErrorType =
   | "MissingRequiredFields"
   | (string & {});
 export const EntityRejectionErrorType = /*@__PURE__*/ S.String;
+
 export interface RejectedEntityInfo {
   errorType: EntityRejectionErrorType;
 }
@@ -5553,6 +5667,7 @@ export const PutMetricFilterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutMetricFilterResponse",
 }) as any as S.Schema<PutMetricFilterResponse>;
+export type ClientToken = string;
 export interface PutQueryDefinitionRequest {
   queryLanguage?: QueryLanguage;
   name: string;
@@ -5782,6 +5897,8 @@ export const StartLiveTailRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartLiveTailRequest",
 }) as any as S.Schema<StartLiveTailRequest>;
+export type RequestId = string;
+export type SessionId = string;
 export interface LiveTailSessionStart {
   requestId?: string;
   sessionId?: string;
@@ -5802,6 +5919,7 @@ export const LiveTailSessionStart = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LiveTailSessionStart",
 }) as any as S.Schema<LiveTailSessionStart>;
+export type IsSampled = boolean;
 export interface LiveTailSessionMetadata {
   sampled?: boolean;
 }
@@ -5903,6 +6021,7 @@ export const StartLiveTailResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartLiveTailResponse",
 }) as any as S.Schema<StartLiveTailResponse>;
+export type EventsLimitStartQuery = number;
 export interface StartQueryRequest {
   queryLanguage?: QueryLanguage;
   logGroupName?: string;
@@ -5945,30 +6064,6 @@ export const StartQueryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartQueryResponse",
 }) as any as S.Schema<StartQueryResponse>;
-export interface QueryCompileErrorLocation {
-  startCharOffset?: number;
-  endCharOffset?: number;
-}
-export const QueryCompileErrorLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    startCharOffset: S.optional(S.Number),
-    endCharOffset: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "QueryCompileErrorLocation",
-}) as any as S.Schema<QueryCompileErrorLocation>;
-export interface QueryCompileError {
-  location?: QueryCompileErrorLocation;
-  message?: string;
-}
-export const QueryCompileError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(QueryCompileErrorLocation),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "QueryCompileError",
-}) as any as S.Schema<QueryCompileError>;
 export interface StopQueryRequest {
   queryId: string;
 }
@@ -6069,6 +6164,8 @@ export const TestMetricFilterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TestMetricFilterRequest",
 }) as any as S.Schema<TestMetricFilterRequest>;
+export type EventNumber = number;
+export type Token = string;
 export type ExtractedValues = { [key: string]: string | undefined };
 export const ExtractedValues = /*@__PURE__*/ S.Record(
   S.String,
@@ -6122,6 +6219,7 @@ export const TestTransformerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TestTransformerRequest",
 }) as any as S.Schema<TestTransformerRequest>;
+export type TransformedEventMessage = string;
 export interface TransformedLogRecord {
   eventNumber?: number;
   eventMessage?: string;
@@ -6202,8 +6300,10 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceResponse>;
 export type SuppressionType = "LIMITED" | "INFINITE" | (string & {});
 export const SuppressionType = /*@__PURE__*/ S.String;
+
 export type SuppressionUnit = "SECONDS" | "MINUTES" | "HOURS" | (string & {});
 export const SuppressionUnit = /*@__PURE__*/ S.String;
+
 export interface SuppressionPeriod {
   value?: number;
   suppressionUnit?: SuppressionUnit;
@@ -6216,6 +6316,7 @@ export const SuppressionPeriod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SuppressionPeriod",
 }) as any as S.Schema<SuppressionPeriod>;
+export type Baseline = boolean;
 export interface UpdateAnomalyRequest {
   anomalyId?: string;
   patternId?: string;
@@ -6450,93 +6551,31 @@ export const UpdateScheduledQueryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateScheduledQueryResponse",
 }) as any as S.Schema<UpdateScheduledQueryResponse>;
-
-//# Errors
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class OperationAbortedException extends S.TaggedErrorClass<OperationAbortedException>()(
-  "OperationAbortedException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
-  "InvalidOperationException",
-  { message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-).pipe(C.withQuotaError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-).pipe(C.withQuotaError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class DataAlreadyAcceptedException extends S.TaggedErrorClass<DataAlreadyAcceptedException>()(
-  "DataAlreadyAcceptedException",
-  {
-    expectedSequenceToken: S.optional(S.String),
+export type QueryCharOffset = number;
+export interface QueryCompileErrorLocation {
+  startCharOffset?: number;
+  endCharOffset?: number;
+}
+export const QueryCompileErrorLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    startCharOffset: S.optional(S.Number),
+    endCharOffset: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "QueryCompileErrorLocation",
+}) as any as S.Schema<QueryCompileErrorLocation>;
+export interface QueryCompileError {
+  location?: QueryCompileErrorLocation;
+  message?: string;
+}
+export const QueryCompileError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(QueryCompileErrorLocation),
     message: S.optional(S.String),
-  },
-).pipe(C.withConflictError) {}
-export class InvalidSequenceTokenException extends S.TaggedErrorClass<InvalidSequenceTokenException>()(
-  "InvalidSequenceTokenException",
-  {
-    expectedSequenceToken: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class UnrecognizedClientException extends S.TaggedErrorClass<UnrecognizedClientException>()(
-  "UnrecognizedClientException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class MalformedQueryException extends S.TaggedErrorClass<MalformedQueryException>()(
-  "MalformedQueryException",
-  {
-    queryCompileError: S.optional(QueryCompileError),
-    message: S.optional(S.String),
-  },
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String), resourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+  }),
+).annotate({
+  identifier: "QueryCompileError",
+}) as any as S.Schema<QueryCompileError>;
 export type AssociateKmsKeyError =
   | InvalidParameterException
   | OperationAbortedException
@@ -6609,6 +6648,7 @@ export const associateKmsKey: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateKmsKey",
 }));
+
 export type AssociateSourceToS3TableIntegrationError =
   | AccessDeniedException
   | InternalServerException
@@ -6640,6 +6680,7 @@ export const associateSourceToS3TableIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateSourceToS3TableIntegration",
 }));
+
 export type CancelExportTaskError =
   | InvalidOperationException
   | InvalidParameterException
@@ -6669,6 +6710,7 @@ export const cancelExportTask: API.OperationMethod<
   retry: Retry,
   operationName: "CancelExportTask",
 }));
+
 export type CancelImportTaskError =
   | AccessDeniedException
   | InvalidOperationException
@@ -6698,6 +6740,7 @@ export const cancelImportTask: API.OperationMethod<
   retry: Retry,
   operationName: "CancelImportTask",
 }));
+
 export type CreateDeliveryError =
   | AccessDeniedException
   | ConflictException
@@ -6760,6 +6803,7 @@ export const createDelivery: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDelivery",
 }));
+
 export type CreateExportTaskError =
   | InvalidParameterException
   | LimitExceededException
@@ -6818,6 +6862,7 @@ export const createExportTask: API.OperationMethod<
   retry: Retry,
   operationName: "CreateExportTask",
 }));
+
 export type CreateImportTaskError =
   | AccessDeniedException
   | ConflictException
@@ -6885,6 +6930,7 @@ export const createImportTask: API.OperationMethod<
   retry: Retry,
   operationName: "CreateImportTask",
 }));
+
 export type CreateLogAnomalyDetectorError =
   | InvalidParameterException
   | LimitExceededException
@@ -6941,6 +6987,7 @@ export const createLogAnomalyDetector: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLogAnomalyDetector",
 }));
+
 export type CreateLogGroupError =
   | InvalidParameterException
   | LimitExceededException
@@ -7000,6 +7047,7 @@ export const createLogGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLogGroup",
 }));
+
 export type CreateLogStreamError =
   | InvalidParameterException
   | ResourceAlreadyExistsException
@@ -7041,6 +7089,7 @@ export const createLogStream: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLogStream",
 }));
+
 export type CreateLookupTableError =
   | AccessDeniedException
   | InvalidParameterException
@@ -7077,6 +7126,7 @@ export const createLookupTable: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLookupTable",
 }));
+
 export type CreateScheduledQueryError =
   | AccessDeniedException
   | ConflictException
@@ -7113,6 +7163,7 @@ export const createScheduledQuery: API.OperationMethod<
   retry: Retry,
   operationName: "CreateScheduledQuery",
 }));
+
 export type DeleteAccountPolicyError =
   | InvalidParameterException
   | OperationAbortedException
@@ -7169,6 +7220,7 @@ export const deleteAccountPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccountPolicy",
 }));
+
 export type DeleteDataProtectionPolicyError =
   | InvalidParameterException
   | OperationAbortedException
@@ -7198,6 +7250,7 @@ export const deleteDataProtectionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataProtectionPolicy",
 }));
+
 export type DeleteDeliveryError =
   | ConflictException
   | ResourceNotFoundException
@@ -7233,6 +7286,7 @@ export const deleteDelivery: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDelivery",
 }));
+
 export type DeleteDeliveryDestinationError =
   | ConflictException
   | ResourceNotFoundException
@@ -7270,6 +7324,7 @@ export const deleteDeliveryDestination: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDeliveryDestination",
 }));
+
 export type DeleteDeliveryDestinationPolicyError =
   | ConflictException
   | ResourceNotFoundException
@@ -7298,6 +7353,7 @@ export const deleteDeliveryDestinationPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDeliveryDestinationPolicy",
 }));
+
 export type DeleteDeliverySourceError =
   | ConflictException
   | ResourceNotFoundException
@@ -7335,6 +7391,7 @@ export const deleteDeliverySource: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDeliverySource",
 }));
+
 export type DeleteDestinationError =
   | InvalidParameterException
   | OperationAbortedException
@@ -7364,6 +7421,7 @@ export const deleteDestination: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDestination",
 }));
+
 export type DeleteIndexPolicyError =
   | InvalidParameterException
   | LimitExceededException
@@ -7407,6 +7465,7 @@ export const deleteIndexPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIndexPolicy",
 }));
+
 export type DeleteIntegrationError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -7439,6 +7498,7 @@ export const deleteIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIntegration",
 }));
+
 export type DeleteLogAnomalyDetectorError =
   | InvalidParameterException
   | OperationAbortedException
@@ -7466,6 +7526,7 @@ export const deleteLogAnomalyDetector: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLogAnomalyDetector",
 }));
+
 export type DeleteLogGroupError =
   | InvalidParameterException
   | OperationAbortedException
@@ -7496,6 +7557,7 @@ export const deleteLogGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLogGroup",
 }));
+
 export type DeleteLogStreamError =
   | InvalidParameterException
   | OperationAbortedException
@@ -7526,6 +7588,7 @@ export const deleteLogStream: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLogStream",
 }));
+
 export type DeleteLookupTableError =
   | AccessDeniedException
   | InvalidParameterException
@@ -7556,6 +7619,7 @@ export const deleteLookupTable: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLookupTable",
 }));
+
 export type DeleteMetricFilterError =
   | InvalidParameterException
   | OperationAbortedException
@@ -7583,6 +7647,7 @@ export const deleteMetricFilter: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMetricFilter",
 }));
+
 export type DeleteQueryDefinitionError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -7614,6 +7679,7 @@ export const deleteQueryDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteQueryDefinition",
 }));
+
 export type DeleteResourcePolicyError =
   | InvalidParameterException
   | OperationAbortedException
@@ -7642,6 +7708,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteRetentionPolicyError =
   | InvalidParameterException
   | OperationAbortedException
@@ -7672,6 +7739,7 @@ export const deleteRetentionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRetentionPolicy",
 }));
+
 export type DeleteScheduledQueryError =
   | AccessDeniedException
   | InternalServerException
@@ -7702,6 +7770,7 @@ export const deleteScheduledQuery: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteScheduledQuery",
 }));
+
 export type DeleteSubscriptionFilterError =
   | InvalidParameterException
   | OperationAbortedException
@@ -7729,6 +7798,7 @@ export const deleteSubscriptionFilter: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSubscriptionFilter",
 }));
+
 export type DeleteSyslogConfigurationError =
   | AccessDeniedException
   | InvalidOperationException
@@ -7763,6 +7833,7 @@ export const deleteSyslogConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSyslogConfiguration",
 }));
+
 export type DeleteTransformerError =
   | InvalidOperationException
   | InvalidParameterException
@@ -7798,6 +7869,7 @@ export const deleteTransformer: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTransformer",
 }));
+
 export type DescribeAccountPoliciesError =
   | InvalidParameterException
   | OperationAbortedException
@@ -7842,6 +7914,7 @@ export const describeAccountPolicies: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccountPolicies",
 }));
+
 export type DescribeConfigurationTemplatesError =
   | ResourceNotFoundException
   | ServiceUnavailableException
@@ -7892,6 +7965,7 @@ export const describeConfigurationTemplates: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type DescribeDeliveriesError =
   | ServiceQuotaExceededException
   | ServiceUnavailableException
@@ -7952,6 +8026,7 @@ export const describeDeliveries: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type DescribeDeliveryDestinationsError =
   | ServiceQuotaExceededException
   | ServiceUnavailableException
@@ -8001,6 +8076,7 @@ export const describeDeliveryDestinations: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type DescribeDeliverySourcesError =
   | ServiceQuotaExceededException
   | ServiceUnavailableException
@@ -8049,6 +8125,7 @@ export const describeDeliverySources: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type DescribeDestinationsError =
   | InvalidParameterException
   | ServiceUnavailableException
@@ -8091,6 +8168,7 @@ export const describeDestinations: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type DescribeExportTasksError =
   | InvalidParameterException
   | ServiceUnavailableException
@@ -8112,6 +8190,7 @@ export const describeExportTasks: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeExportTasks",
 }));
+
 export type DescribeFieldIndexesError =
   | InvalidParameterException
   | LimitExceededException
@@ -8142,6 +8221,7 @@ export const describeFieldIndexes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFieldIndexes",
 }));
+
 export type DescribeImportTaskBatchesError =
   | AccessDeniedException
   | InvalidOperationException
@@ -8172,6 +8252,7 @@ export const describeImportTaskBatches: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeImportTaskBatches",
 }));
+
 export type DescribeImportTasksError =
   | AccessDeniedException
   | InvalidOperationException
@@ -8201,6 +8282,7 @@ export const describeImportTasks: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeImportTasks",
 }));
+
 export type DescribeIndexPoliciesError =
   | InvalidParameterException
   | LimitExceededException
@@ -8239,6 +8321,7 @@ export const describeIndexPolicies: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeIndexPolicies",
 }));
+
 export type DescribeLogGroupsError =
   | InvalidParameterException
   | ServiceUnavailableException
@@ -8296,6 +8379,7 @@ export const describeLogGroups: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type DescribeLogStreamsError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -8354,6 +8438,7 @@ export const describeLogStreams: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type DescribeLookupTablesError =
   | AccessDeniedException
   | InvalidParameterException
@@ -8382,6 +8467,7 @@ export const describeLookupTables: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLookupTables",
 }));
+
 export type DescribeMetricFiltersError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -8430,6 +8516,7 @@ export const describeMetricFilters: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type DescribeQueriesError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -8462,6 +8549,7 @@ export const describeQueries: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeQueries",
 }));
+
 export type DescribeQueryDefinitionsError =
   | InvalidParameterException
   | ServiceUnavailableException
@@ -8487,6 +8575,7 @@ export const describeQueryDefinitions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeQueryDefinitions",
 }));
+
 export type DescribeResourcePoliciesError =
   | InvalidParameterException
   | ServiceUnavailableException
@@ -8507,6 +8596,7 @@ export const describeResourcePolicies: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeResourcePolicies",
 }));
+
 export type DescribeSubscriptionFiltersError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -8555,6 +8645,7 @@ export const describeSubscriptionFilters: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type DisassociateKmsKeyError =
   | InvalidParameterException
   | OperationAbortedException
@@ -8602,6 +8693,7 @@ export const disassociateKmsKey: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateKmsKey",
 }));
+
 export type DisassociateSourceFromS3TableIntegrationError =
   | AccessDeniedException
   | InternalServerException
@@ -8632,6 +8724,7 @@ export const disassociateSourceFromS3TableIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateSourceFromS3TableIntegration",
 }));
+
 export type FilterLogEventsError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -8723,6 +8816,7 @@ export const filterLogEvents: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type GetDataProtectionPolicyError =
   | InvalidParameterException
   | OperationAbortedException
@@ -8750,6 +8844,7 @@ export const getDataProtectionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataProtectionPolicy",
 }));
+
 export type GetDeliveryError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
@@ -8793,6 +8888,7 @@ export const getDelivery: API.OperationMethod<
   retry: Retry,
   operationName: "GetDelivery",
 }));
+
 export type GetDeliveryDestinationError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
@@ -8822,6 +8918,7 @@ export const getDeliveryDestination: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeliveryDestination",
 }));
+
 export type GetDeliveryDestinationPolicyError =
   | ResourceNotFoundException
   | ServiceUnavailableException
@@ -8848,6 +8945,7 @@ export const getDeliveryDestinationPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeliveryDestinationPolicy",
 }));
+
 export type GetDeliverySourceError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
@@ -8877,6 +8975,7 @@ export const getDeliverySource: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeliverySource",
 }));
+
 export type GetIntegrationError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -8902,6 +9001,7 @@ export const getIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "GetIntegration",
 }));
+
 export type GetLogAnomalyDetectorError =
   | InvalidParameterException
   | OperationAbortedException
@@ -8929,6 +9029,7 @@ export const getLogAnomalyDetector: API.OperationMethod<
   retry: Retry,
   operationName: "GetLogAnomalyDetector",
 }));
+
 export type GetLogEventsError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -9007,6 +9108,7 @@ export const getLogEvents: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type GetLogFieldsError =
   | InvalidParameterException
   | OperationAbortedException
@@ -9035,6 +9137,7 @@ export const getLogFields: API.OperationMethod<
   retry: Retry,
   operationName: "GetLogFields",
 }));
+
 export type GetLogGroupFieldsError =
   | InvalidParameterException
   | LimitExceededException
@@ -9083,6 +9186,7 @@ export const getLogGroupFields: API.OperationMethod<
   retry: Retry,
   operationName: "GetLogGroupFields",
 }));
+
 export type GetLogObjectError =
   | AccessDeniedException
   | InvalidOperationException
@@ -9128,6 +9232,7 @@ export const getLogObject: API.OperationMethod<
   operationName: "GetLogObject",
   endpointHostPrefix: "stream-",
 }));
+
 export type GetLogRecordError =
   | InvalidParameterException
   | LimitExceededException
@@ -9159,6 +9264,7 @@ export const getLogRecord: API.OperationMethod<
   retry: Retry,
   operationName: "GetLogRecord",
 }));
+
 export type GetLookupTableError =
   | AccessDeniedException
   | InvalidParameterException
@@ -9186,6 +9292,7 @@ export const getLookupTable: API.OperationMethod<
   retry: Retry,
   operationName: "GetLookupTable",
 }));
+
 export type GetQueryResultsError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -9238,6 +9345,7 @@ export const getQueryResults: API.OperationMethod<
   retry: Retry,
   operationName: "GetQueryResults",
 }));
+
 export type GetScheduledQueryError =
   | AccessDeniedException
   | InternalServerException
@@ -9268,6 +9376,7 @@ export const getScheduledQuery: API.OperationMethod<
   retry: Retry,
   operationName: "GetScheduledQuery",
 }));
+
 export type GetScheduledQueryHistoryError =
   | AccessDeniedException
   | InternalServerException
@@ -9319,6 +9428,7 @@ export const getScheduledQueryHistory: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetTransformerError =
   | InvalidOperationException
   | InvalidParameterException
@@ -9349,6 +9459,7 @@ export const getTransformer: API.OperationMethod<
   retry: Retry,
   operationName: "GetTransformer",
 }));
+
 export type ListAggregateLogGroupSummariesError =
   | InvalidParameterException
   | ServiceUnavailableException
@@ -9406,6 +9517,7 @@ export const listAggregateLogGroupSummaries: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type ListAnomaliesError =
   | InvalidParameterException
   | OperationAbortedException
@@ -9456,6 +9568,7 @@ export const listAnomalies: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type ListIntegrationsError =
   | InvalidParameterException
   | ServiceUnavailableException
@@ -9478,6 +9591,7 @@ export const listIntegrations: API.OperationMethod<
   retry: Retry,
   operationName: "ListIntegrations",
 }));
+
 export type ListLogAnomalyDetectorsError =
   | InvalidParameterException
   | OperationAbortedException
@@ -9526,6 +9640,7 @@ export const listLogAnomalyDetectors: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type ListLogGroupsError =
   | InvalidParameterException
   | ServiceUnavailableException
@@ -9557,6 +9672,7 @@ export const listLogGroups: API.OperationMethod<
   retry: Retry,
   operationName: "ListLogGroups",
 }));
+
 export type ListLogGroupsForQueryError =
   | AccessDeniedException
   | InvalidParameterException
@@ -9611,6 +9727,7 @@ export const listLogGroupsForQuery: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListScheduledQueriesError =
   | AccessDeniedException
   | InternalServerException
@@ -9660,6 +9777,7 @@ export const listScheduledQueries: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSourcesForS3TableIntegrationError =
   | AccessDeniedException
   | InternalServerException
@@ -9711,6 +9829,7 @@ export const listSourcesForS3TableIntegration: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSyslogConfigurationsError =
   | AccessDeniedException
   | InvalidOperationException
@@ -9743,6 +9862,7 @@ export const listSyslogConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "ListSyslogConfigurations",
 }));
+
 export type ListTagsForResourceError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -9769,6 +9889,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTagsLogGroupError =
   | ResourceNotFoundException
   | ServiceUnavailableException
@@ -9792,6 +9913,7 @@ export const listTagsLogGroup: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsLogGroup",
 }));
+
 export type PutAccountPolicyError =
   | InvalidParameterException
   | LimitExceededException
@@ -10170,6 +10292,7 @@ export const putAccountPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutAccountPolicy",
 }));
+
 export type PutBearerTokenAuthenticationError =
   | AccessDeniedException
   | InvalidOperationException
@@ -10205,6 +10328,7 @@ export const putBearerTokenAuthentication: API.OperationMethod<
   retry: Retry,
   operationName: "PutBearerTokenAuthentication",
 }));
+
 export type PutDataProtectionPolicyError =
   | InvalidParameterException
   | LimitExceededException
@@ -10257,6 +10381,7 @@ export const putDataProtectionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutDataProtectionPolicy",
 }));
+
 export type PutDeliveryDestinationError =
   | ConflictException
   | ResourceNotFoundException
@@ -10321,6 +10446,7 @@ export const putDeliveryDestination: API.OperationMethod<
   retry: Retry,
   operationName: "PutDeliveryDestination",
 }));
+
 export type PutDeliveryDestinationPolicyError =
   | ConflictException
   | ResourceNotFoundException
@@ -10371,6 +10497,7 @@ export const putDeliveryDestinationPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutDeliveryDestinationPolicy",
 }));
+
 export type PutDeliverySourceError =
   | ConflictException
   | ResourceNotFoundException
@@ -10431,6 +10558,7 @@ export const putDeliverySource: API.OperationMethod<
   retry: Retry,
   operationName: "PutDeliverySource",
 }));
+
 export type PutDestinationError =
   | InvalidParameterException
   | OperationAbortedException
@@ -10469,6 +10597,7 @@ export const putDestination: API.OperationMethod<
   retry: Retry,
   operationName: "PutDestination",
 }));
+
 export type PutDestinationPolicyError =
   | InvalidParameterException
   | OperationAbortedException
@@ -10497,6 +10626,7 @@ export const putDestinationPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutDestinationPolicy",
 }));
+
 export type PutIndexPolicyError =
   | InvalidParameterException
   | LimitExceededException
@@ -10586,6 +10716,7 @@ export const putIndexPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutIndexPolicy",
 }));
+
 export type PutIntegrationError =
   | InvalidParameterException
   | LimitExceededException
@@ -10622,6 +10753,7 @@ export const putIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "PutIntegration",
 }));
+
 export type PutLogEventsError =
   | DataAlreadyAcceptedException
   | InvalidParameterException
@@ -10693,6 +10825,7 @@ export const putLogEvents: API.OperationMethod<
   retry: Retry,
   operationName: "PutLogEvents",
 }));
+
 export type PutLogGroupDeletionProtectionError =
   | AccessDeniedException
   | InvalidOperationException
@@ -10728,6 +10861,7 @@ export const putLogGroupDeletionProtection: API.OperationMethod<
   retry: Retry,
   operationName: "PutLogGroupDeletionProtection",
 }));
+
 export type PutMetricFilterError =
   | InvalidOperationException
   | InvalidParameterException
@@ -10785,6 +10919,7 @@ export const putMetricFilter: API.OperationMethod<
   retry: Retry,
   operationName: "PutMetricFilter",
 }));
+
 export type PutQueryDefinitionError =
   | InvalidParameterException
   | LimitExceededException
@@ -10824,6 +10959,7 @@ export const putQueryDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "PutQueryDefinition",
 }));
+
 export type PutResourcePolicyError =
   | InvalidParameterException
   | LimitExceededException
@@ -10870,6 +11006,7 @@ export const putResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type PutRetentionPolicyError =
   | InvalidParameterException
   | OperationAbortedException
@@ -10917,6 +11054,7 @@ export const putRetentionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutRetentionPolicy",
 }));
+
 export type PutSubscriptionFilterError =
   | InvalidOperationException
   | InvalidParameterException
@@ -10980,6 +11118,7 @@ export const putSubscriptionFilter: API.OperationMethod<
   retry: Retry,
   operationName: "PutSubscriptionFilter",
 }));
+
 export type PutSyslogConfigurationError =
   | AccessDeniedException
   | InvalidOperationException
@@ -11014,6 +11153,7 @@ export const putSyslogConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutSyslogConfiguration",
 }));
+
 export type PutTransformerError =
   | InvalidOperationException
   | InvalidParameterException
@@ -11075,6 +11215,7 @@ export const putTransformer: API.OperationMethod<
   retry: Retry,
   operationName: "PutTransformer",
 }));
+
 export type StartLiveTailError =
   | AccessDeniedException
   | InvalidOperationException
@@ -11147,6 +11288,7 @@ export const startLiveTail: API.OperationMethod<
   operationName: "StartLiveTail",
   endpointHostPrefix: "stream-",
 }));
+
 export type StartQueryError =
   | InvalidParameterException
   | LimitExceededException
@@ -11221,6 +11363,7 @@ export const startQuery: API.OperationMethod<
   retry: Retry,
   operationName: "StartQuery",
 }));
+
 export type StopQueryError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -11253,6 +11396,7 @@ export const stopQuery: API.OperationMethod<
   retry: Retry,
   operationName: "StopQuery",
 }));
+
 export type TagLogGroupError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -11288,6 +11432,7 @@ export const tagLogGroup: API.OperationMethod<
   retry: Retry,
   operationName: "TagLogGroup",
 }));
+
 export type TagResourceError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -11331,6 +11476,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TestMetricFilterError =
   | InvalidParameterException
   | ServiceUnavailableException
@@ -11352,6 +11498,7 @@ export const testMetricFilter: API.OperationMethod<
   retry: Retry,
   operationName: "TestMetricFilter",
 }));
+
 export type TestTransformerError =
   | InvalidOperationException
   | InvalidParameterException
@@ -11379,6 +11526,7 @@ export const testTransformer: API.OperationMethod<
   retry: Retry,
   operationName: "TestTransformer",
 }));
+
 export type UntagLogGroupError = ResourceNotFoundException | CommonErrors;
 /**
  * The UntagLogGroup operation is on the path to deprecation. We recommend that you use
@@ -11405,6 +11553,7 @@ export const untagLogGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UntagLogGroup",
 }));
+
 export type UntagResourceError =
   | InvalidParameterException
   | ResourceNotFoundException
@@ -11430,6 +11579,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAnomalyError =
   | InvalidParameterException
   | OperationAbortedException
@@ -11468,6 +11618,7 @@ export const updateAnomaly: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAnomaly",
 }));
+
 export type UpdateDeliveryConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -11501,6 +11652,7 @@ export const updateDeliveryConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDeliveryConfiguration",
 }));
+
 export type UpdateLogAnomalyDetectorError =
   | InvalidParameterException
   | OperationAbortedException
@@ -11528,6 +11680,7 @@ export const updateLogAnomalyDetector: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLogAnomalyDetector",
 }));
+
 export type UpdateLookupTableError =
   | AccessDeniedException
   | InvalidParameterException
@@ -11561,6 +11714,7 @@ export const updateLookupTable: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLookupTable",
 }));
+
 export type UpdateScheduledQueryError =
   | AccessDeniedException
   | ConflictException

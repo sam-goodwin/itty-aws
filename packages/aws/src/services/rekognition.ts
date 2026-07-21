@@ -87,99 +87,201 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class HumanLoopQuotaExceededException extends S.TaggedErrorClass<HumanLoopQuotaExceededException>()(
+  "HumanLoopQuotaExceededException",
+  {
+    ResourceType: S.optional(S.String),
+    QuotaCode: S.optional(S.String),
+    ServiceCode: S.optional(S.String),
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
+  "IdempotentParameterMismatchException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class ImageTooLargeException extends S.TaggedErrorClass<ImageTooLargeException>()(
+  "ImageTooLargeException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class InvalidImageFormatException extends S.TaggedErrorClass<InvalidImageFormatException>()(
+  "InvalidImageFormatException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class InvalidManifestException extends S.TaggedErrorClass<InvalidManifestException>()(
+  "InvalidManifestException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class InvalidPaginationTokenException extends S.TaggedErrorClass<InvalidPaginationTokenException>()(
+  "InvalidPaginationTokenException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class InvalidPolicyRevisionIdException extends S.TaggedErrorClass<InvalidPolicyRevisionIdException>()(
+  "InvalidPolicyRevisionIdException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class InvalidS3ObjectException extends S.TaggedErrorClass<InvalidS3ObjectException>()(
+  "InvalidS3ObjectException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class MalformedPolicyDocumentException extends S.TaggedErrorClass<MalformedPolicyDocumentException>()(
+  "MalformedPolicyDocumentException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class ProvisionedThroughputExceededException extends S.TaggedErrorClass<ProvisionedThroughputExceededException>()(
+  "ProvisionedThroughputExceededException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+).pipe(C.withAlreadyExistsError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotReadyException>()(
+  "ResourceNotReadyException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class SessionNotFoundException extends S.TaggedErrorClass<SessionNotFoundException>()(
+  "SessionNotFoundException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
+export class VideoTooLargeException extends S.TaggedErrorClass<VideoTooLargeException>()(
+  "VideoTooLargeException",
+  {
+    Message: S.optional(S.String),
+    Code: S.optional(S.String),
+    Logref: S.optional(S.String),
+  },
+) {}
 export type CollectionId = string;
 export type UserId = string;
 export type FaceId = string;
-export type Percent = number;
-export type ClientRequestToken = string;
-export type ImageBlob = Uint8Array;
-export type S3Bucket = string;
-export type S3ObjectName = string;
-export type S3ObjectVersion = string;
-export type Degree = number;
-export type ProjectArn = string;
-export type ProjectVersionArn = string;
-export type VersionName = string;
-export type S3KeyPrefix = string;
-export type TagKey = string;
-export type TagValue = string;
-export type KmsKeyId = string;
-export type UInteger = number;
-export type DatasetArn = string;
-export type LivenessS3KeyPrefix = string;
-export type AuditImagesLimit = number;
-export type Version = string;
-export type LivenessSessionId = string;
-export type ProjectName = string;
-export type VersionDescription = string;
-export type KinesisVideoArn = string;
-export type KinesisDataArn = string;
-export type StreamProcessorName = string;
-export type ConnectedHomeLabel = string;
-export type RoleArn = string;
-export type SNSTopicArn = string;
-export type StreamProcessorArn = string;
-export type ProjectPolicyName = string;
-export type ProjectPolicyRevisionId = string;
-export type ULong = number;
-export type StatusMessage = string;
-export type ExtendedPaginationToken = string;
-export type ProjectsPageSize = number;
-export type ProjectVersionsPageSize = number;
-export type InferenceUnits = number;
-export type GeneralLabelsFilterValue = string;
-export type DetectLabelsMaxDominantColors = number;
-export type HumanLoopName = string;
-export type FlowDefinitionArn = string;
-export type ProjectVersionId = string;
-export type HumanLoopArn = string;
-export type HumanLoopActivationReason = string;
-export type SynthesizedJsonHumanLoopActivationConditionsEvaluationResults =
-  string;
-export type BoundingBoxHeight = number;
-export type BoundingBoxWidth = number;
-export type RekognitionUniqueId = string;
-export type Url = string;
-export type JobId = string;
-export type MaxResults = number;
-export type PaginationToken = string;
-export type JobTag = string;
-export type LivenessImageBlob = Uint8Array | redacted.Redacted<Uint8Array>;
-export type PersonIndex = number;
-export type ImageId = string;
-export type ExternalImageId = string;
-export type IndexFacesModelVersion = string;
-export type MediaAnalysisJobId = string;
-export type MediaAnalysisJobName = string;
-export type MediaAnalysisS3KeyPrefix = string;
-export type Timecode = string;
-export type SegmentConfidence = number;
-export type MaxFacesToIndex = number;
-export type PageSize = number;
-export type DatasetLabel = string;
-export type IsLabeled = boolean;
-export type QueryString = string;
-export type HasErrors = boolean;
-export type ListDatasetEntriesPageSize = number;
-export type DatasetEntry = string;
-export type ListDatasetLabelsPageSize = number;
-export type ListMediaAnalysisJobsPageSize = number;
-export type ListProjectPoliciesPageSize = number;
-export type ProjectPolicyDocument = string;
-export type ResourceArn = string;
-export type MaxUserResults = number;
-export type MaxFaces = number;
-export type MaxPixelThreshold = number;
-export type MinCoveragePercentage = number;
-export type KinesisVideoStreamFragmentNumber = string;
-export type MaxDurationInSecondsULong = number;
-export type StartStreamProcessorSessionId = string;
-export type GroundTruthBlob = Uint8Array;
-
-//# Schemas
 export type UserFaceIdList = string[];
 export const UserFaceIdList = /*@__PURE__*/ S.Array(S.String);
+export type Percent = number;
+export type ClientRequestToken = string;
 export interface AssociateFacesRequest {
   CollectionId: string;
   UserId: string;
@@ -214,6 +316,7 @@ export type UnsuccessfulFaceAssociationReason =
   | "LOW_MATCH_CONFIDENCE"
   | (string & {});
 export const UnsuccessfulFaceAssociationReason = /*@__PURE__*/ S.String;
+
 export type UnsuccessfulFaceAssociationReasons =
   UnsuccessfulFaceAssociationReason[];
 export const UnsuccessfulFaceAssociationReasons = /*@__PURE__*/ S.Array(
@@ -246,6 +349,7 @@ export type UserStatus =
   | "CREATED"
   | (string & {});
 export const UserStatus = /*@__PURE__*/ S.String;
+
 export interface AssociateFacesResponse {
   AssociatedFaces?: AssociatedFace[];
   UnsuccessfulFaceAssociations?: UnsuccessfulFaceAssociation[];
@@ -260,6 +364,10 @@ export const AssociateFacesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateFacesResponse",
 }) as any as S.Schema<AssociateFacesResponse>;
+export type ImageBlob = Uint8Array;
+export type S3Bucket = string;
+export type S3ObjectName = string;
+export type S3ObjectVersion = string;
 export interface S3Object {
   Bucket?: string;
   Name?: string;
@@ -287,6 +395,7 @@ export type QualityFilter =
   | "HIGH"
   | (string & {});
 export const QualityFilter = /*@__PURE__*/ S.String;
+
 export interface CompareFacesRequest {
   SourceImage: Image;
   TargetImage: Image;
@@ -364,6 +473,7 @@ export type LandmarkType =
   | "upperJawlineRight"
   | (string & {});
 export const LandmarkType = /*@__PURE__*/ S.String;
+
 export interface Landmark {
   Type?: LandmarkType;
   X?: number;
@@ -378,6 +488,7 @@ export const Landmark = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Landmark" }) as any as S.Schema<Landmark>;
 export type Landmarks = Landmark[];
 export const Landmarks = /*@__PURE__*/ S.Array(Landmark);
+export type Degree = number;
 export interface Pose {
   Roll?: number;
   Yaw?: number;
@@ -412,6 +523,7 @@ export type EmotionName =
   | "FEAR"
   | (string & {});
 export const EmotionName = /*@__PURE__*/ S.String;
+
 export interface Emotion {
   Type?: EmotionName;
   Confidence?: number;
@@ -471,6 +583,7 @@ export type OrientationCorrection =
   | "ROTATE_270"
   | (string & {});
 export const OrientationCorrection = /*@__PURE__*/ S.String;
+
 export interface CompareFacesResponse {
   SourceImageFace?: ComparedSourceImageFace;
   FaceMatches?: CompareFacesMatch[];
@@ -489,6 +602,10 @@ export const CompareFacesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CompareFacesResponse",
 }) as any as S.Schema<CompareFacesResponse>;
+export type ProjectArn = string;
+export type ProjectVersionArn = string;
+export type VersionName = string;
+export type S3KeyPrefix = string;
 export interface OutputConfig {
   S3Bucket?: string;
   S3KeyPrefix?: string;
@@ -499,11 +616,14 @@ export const OutputConfig = /*@__PURE__*/ S.suspend(() =>
     S3KeyPrefix: S.optional(S.String),
   }),
 ).annotate({ identifier: "OutputConfig" }) as any as S.Schema<OutputConfig>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type KmsKeyId = string;
 export interface CopyProjectVersionRequest {
   SourceProjectArn: string;
   SourceProjectVersionArn: string;
@@ -547,6 +667,7 @@ export const CreateCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCollectionRequest",
 }) as any as S.Schema<CreateCollectionRequest>;
+export type UInteger = number;
 export interface CreateCollectionResponse {
   StatusCode?: number;
   CollectionArn?: string;
@@ -569,6 +690,7 @@ export const GroundTruthManifest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GroundTruthManifest",
 }) as any as S.Schema<GroundTruthManifest>;
+export type DatasetArn = string;
 export interface DatasetSource {
   GroundTruthManifest?: GroundTruthManifest;
   DatasetArn?: string;
@@ -581,6 +703,7 @@ export const DatasetSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DatasetSource" }) as any as S.Schema<DatasetSource>;
 export type DatasetType = "TRAIN" | "TEST" | (string & {});
 export const DatasetType = /*@__PURE__*/ S.String;
+
 export interface CreateDatasetRequest {
   DatasetSource?: DatasetSource;
   DatasetType: DatasetType;
@@ -607,6 +730,7 @@ export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetResponse",
 }) as any as S.Schema<CreateDatasetResponse>;
+export type LivenessS3KeyPrefix = string;
 export interface LivenessOutputConfig {
   S3Bucket: string;
   S3KeyPrefix?: string;
@@ -616,11 +740,14 @@ export const LivenessOutputConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LivenessOutputConfig",
 }) as any as S.Schema<LivenessOutputConfig>;
+export type AuditImagesLimit = number;
 export type ChallengeType =
   | "FaceMovementAndLightChallenge"
   | "FaceMovementChallenge"
   | (string & {});
 export const ChallengeType = /*@__PURE__*/ S.String;
+
+export type Version = string;
 export interface Versions {
   Minimum?: string;
   Maximum?: string;
@@ -670,6 +797,7 @@ export const CreateFaceLivenessSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFaceLivenessSessionRequest",
 }) as any as S.Schema<CreateFaceLivenessSessionRequest>;
+export type LivenessSessionId = string;
 export interface CreateFaceLivenessSessionResponse {
   SessionId: string;
 }
@@ -678,13 +806,16 @@ export const CreateFaceLivenessSessionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFaceLivenessSessionResponse",
 }) as any as S.Schema<CreateFaceLivenessSessionResponse>;
+export type ProjectName = string;
 export type CustomizationFeature =
   | "CONTENT_MODERATION"
   | "CUSTOM_LABELS"
   | (string & {});
 export const CustomizationFeature = /*@__PURE__*/ S.String;
+
 export type ProjectAutoUpdate = "ENABLED" | "DISABLED" | (string & {});
 export const ProjectAutoUpdate = /*@__PURE__*/ S.String;
+
 export interface CreateProjectRequest {
   ProjectName: string;
   Feature?: CustomizationFeature;
@@ -732,6 +863,7 @@ export interface TestingData {
 export const TestingData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Assets: S.optional(Assets), AutoCreate: S.optional(S.Boolean) }),
 ).annotate({ identifier: "TestingData" }) as any as S.Schema<TestingData>;
+export type VersionDescription = string;
 export interface CustomizationFeatureContentModerationConfig {
   ConfidenceThreshold?: number;
 }
@@ -787,6 +919,7 @@ export const CreateProjectVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProjectVersionResponse",
 }) as any as S.Schema<CreateProjectVersionResponse>;
+export type KinesisVideoArn = string;
 export interface KinesisVideoStream {
   Arn?: string;
 }
@@ -803,6 +936,7 @@ export const StreamProcessorInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StreamProcessorInput",
 }) as any as S.Schema<StreamProcessorInput>;
+export type KinesisDataArn = string;
 export interface KinesisDataStream {
   Arn?: string;
 }
@@ -830,6 +964,7 @@ export const StreamProcessorOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StreamProcessorOutput",
 }) as any as S.Schema<StreamProcessorOutput>;
+export type StreamProcessorName = string;
 export interface FaceSearchSettings {
   CollectionId?: string;
   FaceMatchThreshold?: number;
@@ -842,6 +977,7 @@ export const FaceSearchSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FaceSearchSettings",
 }) as any as S.Schema<FaceSearchSettings>;
+export type ConnectedHomeLabel = string;
 export type ConnectedHomeLabels = string[];
 export const ConnectedHomeLabels = /*@__PURE__*/ S.Array(S.String);
 export interface ConnectedHomeSettings {
@@ -868,6 +1004,8 @@ export const StreamProcessorSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StreamProcessorSettings",
 }) as any as S.Schema<StreamProcessorSettings>;
+export type RoleArn = string;
+export type SNSTopicArn = string;
 export interface StreamProcessorNotificationChannel {
   SNSTopicArn: string;
 }
@@ -937,6 +1075,7 @@ export const CreateStreamProcessorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStreamProcessorRequest",
 }) as any as S.Schema<CreateStreamProcessorRequest>;
+export type StreamProcessorArn = string;
 export interface CreateStreamProcessorResponse {
   StreamProcessorArn?: string;
 }
@@ -1019,6 +1158,7 @@ export type UnsuccessfulFaceDeletionReason =
   | "FACE_NOT_FOUND"
   | (string & {});
 export const UnsuccessfulFaceDeletionReason = /*@__PURE__*/ S.String;
+
 export type UnsuccessfulFaceDeletionReasons = UnsuccessfulFaceDeletionReason[];
 export const UnsuccessfulFaceDeletionReasons = /*@__PURE__*/ S.Array(
   UnsuccessfulFaceDeletionReason,
@@ -1065,6 +1205,7 @@ export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteProjectRequest>;
 export type ProjectStatus = "CREATING" | "CREATED" | "DELETING" | (string & {});
 export const ProjectStatus = /*@__PURE__*/ S.String;
+
 export interface DeleteProjectResponse {
   Status?: ProjectStatus;
 }
@@ -1073,6 +1214,8 @@ export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteProjectResponse",
 }) as any as S.Schema<DeleteProjectResponse>;
+export type ProjectPolicyName = string;
+export type ProjectPolicyRevisionId = string;
 export interface DeleteProjectPolicyRequest {
   ProjectArn: string;
   PolicyName: string;
@@ -1122,6 +1265,7 @@ export type ProjectVersionStatus =
   | "EXPIRED"
   | (string & {});
 export const ProjectVersionStatus = /*@__PURE__*/ S.String;
+
 export interface DeleteProjectVersionResponse {
   Status?: ProjectVersionStatus;
 }
@@ -1178,6 +1322,7 @@ export const DescribeCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCollectionRequest",
 }) as any as S.Schema<DescribeCollectionRequest>;
+export type ULong = number;
 export interface DescribeCollectionResponse {
   FaceCount?: number;
   FaceModelVersion?: string;
@@ -1218,12 +1363,15 @@ export type DatasetStatus =
   | "DELETE_IN_PROGRESS"
   | (string & {});
 export const DatasetStatus = /*@__PURE__*/ S.String;
+
+export type StatusMessage = string;
 export type DatasetStatusMessageCode =
   | "SUCCESS"
   | "SERVICE_ERROR"
   | "CLIENT_ERROR"
   | (string & {});
 export const DatasetStatusMessageCode = /*@__PURE__*/ S.String;
+
 export interface DatasetStats {
   LabeledEntries?: number;
   TotalEntries?: number;
@@ -1270,6 +1418,8 @@ export const DescribeDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDatasetResponse",
 }) as any as S.Schema<DescribeDatasetResponse>;
+export type ExtendedPaginationToken = string;
+export type ProjectsPageSize = number;
 export type ProjectNames = string[];
 export const ProjectNames = /*@__PURE__*/ S.Array(S.String);
 export type CustomizationFeatures = CustomizationFeature[];
@@ -1355,6 +1505,7 @@ export const DescribeProjectsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeProjectsResponse>;
 export type VersionNames = string[];
 export const VersionNames = /*@__PURE__*/ S.Array(S.String);
+export type ProjectVersionsPageSize = number;
 export interface DescribeProjectVersionsRequest {
   ProjectArn: string;
   VersionNames?: string[];
@@ -1373,6 +1524,7 @@ export const DescribeProjectVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeProjectVersionsRequest",
 }) as any as S.Schema<DescribeProjectVersionsRequest>;
+export type InferenceUnits = number;
 export interface ValidationData {
   Assets?: Asset[];
 }
@@ -1507,6 +1659,7 @@ export type StreamProcessorStatus =
   | "UPDATING"
   | (string & {});
 export const StreamProcessorStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeStreamProcessorResponse {
   Name?: string;
   StreamProcessorArn?: string;
@@ -1614,6 +1767,7 @@ export type Attribute =
   | "SUNGLASSES"
   | (string & {});
 export const Attribute = /*@__PURE__*/ S.String;
+
 export type Attributes = Attribute[];
 export const Attributes = /*@__PURE__*/ S.Array(Attribute);
 export interface DetectFacesRequest {
@@ -1650,6 +1804,7 @@ export const Sunglasses = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Sunglasses" }) as any as S.Schema<Sunglasses>;
 export type GenderType = "Male" | "Female" | (string & {});
 export const GenderType = /*@__PURE__*/ S.String;
+
 export interface Gender {
   Value?: GenderType;
   Confidence?: number;
@@ -1763,10 +1918,12 @@ export type DetectLabelsFeatureName =
   | "IMAGE_PROPERTIES"
   | (string & {});
 export const DetectLabelsFeatureName = /*@__PURE__*/ S.String;
+
 export type DetectLabelsFeatureList = DetectLabelsFeatureName[];
 export const DetectLabelsFeatureList = /*@__PURE__*/ S.Array(
   DetectLabelsFeatureName,
 );
+export type GeneralLabelsFilterValue = string;
 export type GeneralLabelsFilterList = string[];
 export const GeneralLabelsFilterList = /*@__PURE__*/ S.Array(S.String);
 export interface GeneralLabelsSettings {
@@ -1785,6 +1942,7 @@ export const GeneralLabelsSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GeneralLabelsSettings",
 }) as any as S.Schema<GeneralLabelsSettings>;
+export type DetectLabelsMaxDominantColors = number;
 export interface DetectLabelsImagePropertiesSettings {
   MaxDominantColors?: number;
 }
@@ -1975,11 +2133,14 @@ export const DetectLabelsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DetectLabelsResponse",
 }) as any as S.Schema<DetectLabelsResponse>;
+export type HumanLoopName = string;
+export type FlowDefinitionArn = string;
 export type ContentClassifier =
   | "FreeOfPersonallyIdentifiableInformation"
   | "FreeOfAdultContent"
   | (string & {});
 export const ContentClassifier = /*@__PURE__*/ S.String;
+
 export type ContentClassifiers = ContentClassifier[];
 export const ContentClassifiers = /*@__PURE__*/ S.Array(ContentClassifier);
 export interface HumanLoopDataAttributes {
@@ -2004,6 +2165,7 @@ export const HumanLoopConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HumanLoopConfig",
 }) as any as S.Schema<HumanLoopConfig>;
+export type ProjectVersionId = string;
 export interface DetectModerationLabelsRequest {
   Image: Image;
   MinConfidence?: number;
@@ -2040,8 +2202,12 @@ export const ModerationLabel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModerationLabel>;
 export type ModerationLabels = ModerationLabel[];
 export const ModerationLabels = /*@__PURE__*/ S.Array(ModerationLabel);
+export type HumanLoopArn = string;
+export type HumanLoopActivationReason = string;
 export type HumanLoopActivationReasons = string[];
 export const HumanLoopActivationReasons = /*@__PURE__*/ S.Array(S.String);
+export type SynthesizedJsonHumanLoopActivationConditionsEvaluationResults =
+  string;
 export interface HumanLoopActivationOutput {
   HumanLoopArn?: string;
   HumanLoopActivationReasons?: string[];
@@ -2089,6 +2255,7 @@ export type ProtectiveEquipmentType =
   | "HEAD_COVER"
   | (string & {});
 export const ProtectiveEquipmentType = /*@__PURE__*/ S.String;
+
 export type ProtectiveEquipmentTypes = ProtectiveEquipmentType[];
 export const ProtectiveEquipmentTypes = /*@__PURE__*/ S.Array(
   ProtectiveEquipmentType,
@@ -2129,6 +2296,7 @@ export type BodyPart =
   | "RIGHT_HAND"
   | (string & {});
 export const BodyPart = /*@__PURE__*/ S.String;
+
 export interface CoversBodyPart {
   Confidence?: number;
   Value?: boolean;
@@ -2220,6 +2388,8 @@ export const DetectProtectiveEquipmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DetectProtectiveEquipmentResponse",
 }) as any as S.Schema<DetectProtectiveEquipmentResponse>;
+export type BoundingBoxHeight = number;
+export type BoundingBoxWidth = number;
 export interface DetectionFilter {
   MinConfidence?: number;
   MinBoundingBoxHeight?: number;
@@ -2259,6 +2429,7 @@ export const DetectTextRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DetectTextRequest>;
 export type TextTypes = "LINE" | "WORD" | (string & {});
 export const TextTypes = /*@__PURE__*/ S.String;
+
 export interface TextDetection {
   DetectedText?: string;
   Type?: TextTypes;
@@ -2324,6 +2495,7 @@ export type UnsuccessfulFaceDisassociationReason =
   | "ASSOCIATED_TO_A_DIFFERENT_USER"
   | (string & {});
 export const UnsuccessfulFaceDisassociationReason = /*@__PURE__*/ S.String;
+
 export type UnsuccessfulFaceDisassociationReasons =
   UnsuccessfulFaceDisassociationReason[];
 export const UnsuccessfulFaceDisassociationReasons = /*@__PURE__*/ S.Array(
@@ -2391,6 +2563,7 @@ export const DistributeDatasetEntriesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DistributeDatasetEntriesResponse",
 }) as any as S.Schema<DistributeDatasetEntriesResponse>;
+export type RekognitionUniqueId = string;
 export interface GetCelebrityInfoRequest {
   Id: string;
 }
@@ -2401,6 +2574,7 @@ export const GetCelebrityInfoRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCelebrityInfoRequest",
 }) as any as S.Schema<GetCelebrityInfoRequest>;
+export type Url = string;
 export type Urls = string[];
 export const Urls = /*@__PURE__*/ S.Array(S.String);
 export type KnownGenderType =
@@ -2410,6 +2584,7 @@ export type KnownGenderType =
   | "Unlisted"
   | (string & {});
 export const KnownGenderType = /*@__PURE__*/ S.String;
+
 export interface KnownGender {
   Type?: KnownGenderType;
 }
@@ -2430,8 +2605,12 @@ export const GetCelebrityInfoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCelebrityInfoResponse",
 }) as any as S.Schema<GetCelebrityInfoResponse>;
+export type JobId = string;
+export type MaxResults = number;
+export type PaginationToken = string;
 export type CelebrityRecognitionSortBy = "ID" | "TIMESTAMP" | (string & {});
 export const CelebrityRecognitionSortBy = /*@__PURE__*/ S.String;
+
 export interface GetCelebrityRecognitionRequest {
   JobId: string;
   MaxResults?: number;
@@ -2456,8 +2635,10 @@ export type VideoJobStatus =
   | "FAILED"
   | (string & {});
 export const VideoJobStatus = /*@__PURE__*/ S.String;
+
 export type VideoColorRange = "FULL" | "LIMITED" | (string & {});
 export const VideoColorRange = /*@__PURE__*/ S.String;
+
 export interface VideoMetadata {
   Codec?: string;
   DurationMillis?: number;
@@ -2521,6 +2702,7 @@ export interface Video {
 export const Video = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Object: S.optional(S3Object) }),
 ).annotate({ identifier: "Video" }) as any as S.Schema<Video>;
+export type JobTag = string;
 export interface GetCelebrityRecognitionResponse {
   JobStatus?: VideoJobStatus;
   StatusMessage?: string;
@@ -2547,11 +2729,13 @@ export const GetCelebrityRecognitionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCelebrityRecognitionResponse>;
 export type ContentModerationSortBy = "NAME" | "TIMESTAMP" | (string & {});
 export const ContentModerationSortBy = /*@__PURE__*/ S.String;
+
 export type ContentModerationAggregateBy =
   | "TIMESTAMPS"
   | "SEGMENTS"
   | (string & {});
 export const ContentModerationAggregateBy = /*@__PURE__*/ S.String;
+
 export interface GetContentModerationRequest {
   JobId: string;
   MaxResults?: number;
@@ -2704,6 +2888,8 @@ export type LivenessSessionStatus =
   | "EXPIRED"
   | (string & {});
 export const LivenessSessionStatus = /*@__PURE__*/ S.String;
+
+export type LivenessImageBlob = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface AuditImage {
   Bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
   S3Object?: S3Object;
@@ -2748,6 +2934,7 @@ export const GetFaceLivenessSessionResultsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetFaceLivenessSessionResultsResponse>;
 export type FaceSearchSortBy = "INDEX" | "TIMESTAMP" | (string & {});
 export const FaceSearchSortBy = /*@__PURE__*/ S.String;
+
 export interface GetFaceSearchRequest {
   JobId: string;
   MaxResults?: number;
@@ -2766,6 +2953,7 @@ export const GetFaceSearchRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetFaceSearchRequest",
 }) as any as S.Schema<GetFaceSearchRequest>;
+export type PersonIndex = number;
 export interface PersonDetail {
   Index?: number;
   BoundingBox?: BoundingBox;
@@ -2778,6 +2966,9 @@ export const PersonDetail = /*@__PURE__*/ S.suspend(() =>
     Face: S.optional(FaceDetail),
   }),
 ).annotate({ identifier: "PersonDetail" }) as any as S.Schema<PersonDetail>;
+export type ImageId = string;
+export type ExternalImageId = string;
+export type IndexFacesModelVersion = string;
 export interface Face {
   FaceId?: string;
   BoundingBox?: BoundingBox;
@@ -2847,11 +3038,13 @@ export const GetFaceSearchResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFaceSearchResponse>;
 export type LabelDetectionSortBy = "NAME" | "TIMESTAMP" | (string & {});
 export const LabelDetectionSortBy = /*@__PURE__*/ S.String;
+
 export type LabelDetectionAggregateBy =
   | "TIMESTAMPS"
   | "SEGMENTS"
   | (string & {});
 export const LabelDetectionAggregateBy = /*@__PURE__*/ S.String;
+
 export interface GetLabelDetectionRequest {
   JobId: string;
   MaxResults?: number;
@@ -2930,6 +3123,7 @@ export const GetLabelDetectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLabelDetectionResponse",
 }) as any as S.Schema<GetLabelDetectionResponse>;
+export type MediaAnalysisJobId = string;
 export interface GetMediaAnalysisJobRequest {
   JobId: string;
 }
@@ -2940,6 +3134,7 @@ export const GetMediaAnalysisJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMediaAnalysisJobRequest",
 }) as any as S.Schema<GetMediaAnalysisJobRequest>;
+export type MediaAnalysisJobName = string;
 export interface MediaAnalysisDetectModerationLabelsConfig {
   MinConfidence?: number;
   ProjectVersion?: string;
@@ -2973,6 +3168,7 @@ export type MediaAnalysisJobStatus =
   | "FAILED"
   | (string & {});
 export const MediaAnalysisJobStatus = /*@__PURE__*/ S.String;
+
 export type MediaAnalysisJobFailureCode =
   | "INTERNAL_ERROR"
   | "INVALID_S3_OBJECT"
@@ -2985,6 +3181,7 @@ export type MediaAnalysisJobFailureCode =
   | "THROTTLED"
   | (string & {});
 export const MediaAnalysisJobFailureCode = /*@__PURE__*/ S.String;
+
 export interface MediaAnalysisJobFailureDetails {
   Code?: MediaAnalysisJobFailureCode;
   Message?: string;
@@ -3005,6 +3202,7 @@ export const MediaAnalysisInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MediaAnalysisInput",
 }) as any as S.Schema<MediaAnalysisInput>;
+export type MediaAnalysisS3KeyPrefix = string;
 export interface MediaAnalysisOutputConfig {
   S3Bucket: string;
   S3KeyPrefix?: string;
@@ -3078,6 +3276,7 @@ export const GetMediaAnalysisJobResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetMediaAnalysisJobResponse>;
 export type PersonTrackingSortBy = "INDEX" | "TIMESTAMP" | (string & {});
 export const PersonTrackingSortBy = /*@__PURE__*/ S.String;
+
 export interface GetPersonTrackingRequest {
   JobId: string;
   MaxResults?: number;
@@ -3170,6 +3369,8 @@ export type AudioMetadataList = AudioMetadata[];
 export const AudioMetadataList = /*@__PURE__*/ S.Array(AudioMetadata);
 export type SegmentType = "TECHNICAL_CUE" | "SHOT" | (string & {});
 export const SegmentType = /*@__PURE__*/ S.String;
+
+export type Timecode = string;
 export type TechnicalCueType =
   | "ColorBars"
   | "EndCredits"
@@ -3180,6 +3381,8 @@ export type TechnicalCueType =
   | "Content"
   | (string & {});
 export const TechnicalCueType = /*@__PURE__*/ S.String;
+
+export type SegmentConfidence = number;
 export interface TechnicalCueSegment {
   Type?: TechnicalCueType;
   Confidence?: number;
@@ -3331,6 +3534,7 @@ export const GetTextDetectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTextDetectionResponse",
 }) as any as S.Schema<GetTextDetectionResponse>;
+export type MaxFacesToIndex = number;
 export interface IndexFacesRequest {
   CollectionId: string;
   Image: Image;
@@ -3372,6 +3576,7 @@ export type Reason =
   | "LOW_FACE_QUALITY"
   | (string & {});
 export const Reason = /*@__PURE__*/ S.String;
+
 export type Reasons = Reason[];
 export const Reasons = /*@__PURE__*/ S.Array(Reason);
 export interface UnindexedFace {
@@ -3402,6 +3607,7 @@ export const IndexFacesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IndexFacesResponse",
 }) as any as S.Schema<IndexFacesResponse>;
+export type PageSize = number;
 export interface ListCollectionsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -3434,8 +3640,13 @@ export const ListCollectionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCollectionsResponse",
 }) as any as S.Schema<ListCollectionsResponse>;
+export type DatasetLabel = string;
 export type DatasetLabels = string[];
 export const DatasetLabels = /*@__PURE__*/ S.Array(S.String);
+export type IsLabeled = boolean;
+export type QueryString = string;
+export type HasErrors = boolean;
+export type ListDatasetEntriesPageSize = number;
 export interface ListDatasetEntriesRequest {
   DatasetArn: string;
   ContainsLabels?: string[];
@@ -3460,6 +3671,7 @@ export const ListDatasetEntriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDatasetEntriesRequest",
 }) as any as S.Schema<ListDatasetEntriesRequest>;
+export type DatasetEntry = string;
 export type DatasetEntries = string[];
 export const DatasetEntries = /*@__PURE__*/ S.Array(S.String);
 export interface ListDatasetEntriesResponse {
@@ -3474,6 +3686,7 @@ export const ListDatasetEntriesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDatasetEntriesResponse",
 }) as any as S.Schema<ListDatasetEntriesResponse>;
+export type ListDatasetLabelsPageSize = number;
 export interface ListDatasetLabelsRequest {
   DatasetArn: string;
   NextToken?: string;
@@ -3566,6 +3779,7 @@ export const ListFacesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFacesResponse",
 }) as any as S.Schema<ListFacesResponse>;
+export type ListMediaAnalysisJobsPageSize = number;
 export interface ListMediaAnalysisJobsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -3630,6 +3844,7 @@ export const ListMediaAnalysisJobsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMediaAnalysisJobsResponse",
 }) as any as S.Schema<ListMediaAnalysisJobsResponse>;
+export type ListProjectPoliciesPageSize = number;
 export interface ListProjectPoliciesRequest {
   ProjectArn: string;
   NextToken?: string;
@@ -3646,6 +3861,7 @@ export const ListProjectPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProjectPoliciesRequest",
 }) as any as S.Schema<ListProjectPoliciesRequest>;
+export type ProjectPolicyDocument = string;
 export interface ProjectPolicy {
   ProjectArn?: string;
   PolicyName?: string;
@@ -3722,6 +3938,7 @@ export const ListStreamProcessorsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListStreamProcessorsResponse",
 }) as any as S.Schema<ListStreamProcessorsResponse>;
+export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -3740,6 +3957,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
+export type MaxUserResults = number;
 export interface ListUsersRequest {
   CollectionId: string;
   MaxResults?: number;
@@ -3849,6 +4067,7 @@ export const RecognizeCelebritiesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecognizeCelebritiesResponse",
 }) as any as S.Schema<RecognizeCelebritiesResponse>;
+export type MaxFaces = number;
 export interface SearchFacesRequest {
   CollectionId: string;
   FaceId: string;
@@ -4023,6 +4242,7 @@ export type UnsearchedFaceReason =
   | "LOW_FACE_QUALITY"
   | (string & {});
 export const UnsearchedFaceReason = /*@__PURE__*/ S.String;
+
 export type UnsearchedFaceReasons = UnsearchedFaceReason[];
 export const UnsearchedFaceReasons =
   /*@__PURE__*/ S.Array(UnsearchedFaceReason);
@@ -4119,6 +4339,7 @@ export const StartContentModerationResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartContentModerationResponse>;
 export type FaceAttributes = "DEFAULT" | "ALL" | (string & {});
 export const FaceAttributes = /*@__PURE__*/ S.String;
+
 export interface StartFaceDetectionRequest {
   Video: Video;
   ClientRequestToken?: string;
@@ -4179,6 +4400,7 @@ export const StartFaceSearchResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartFaceSearchResponse>;
 export type LabelDetectionFeatureName = "GENERAL_LABELS" | (string & {});
 export const LabelDetectionFeatureName = /*@__PURE__*/ S.String;
+
 export type LabelDetectionFeatureList = LabelDetectionFeatureName[];
 export const LabelDetectionFeatureList = /*@__PURE__*/ S.Array(
   LabelDetectionFeatureName,
@@ -4303,6 +4525,8 @@ export const StartProjectVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartProjectVersionResponse",
 }) as any as S.Schema<StartProjectVersionResponse>;
+export type MaxPixelThreshold = number;
+export type MinCoveragePercentage = number;
 export interface BlackFrame {
   MaxPixelThreshold?: number;
   MinCoveragePercentage?: number;
@@ -4377,6 +4601,7 @@ export const StartSegmentDetectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartSegmentDetectionResponse",
 }) as any as S.Schema<StartSegmentDetectionResponse>;
+export type KinesisVideoStreamFragmentNumber = string;
 export interface KinesisVideoStreamStartSelector {
   ProducerTimestamp?: number;
   FragmentNumber?: string;
@@ -4399,6 +4624,7 @@ export const StreamProcessingStartSelector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StreamProcessingStartSelector",
 }) as any as S.Schema<StreamProcessingStartSelector>;
+export type MaxDurationInSecondsULong = number;
 export interface StreamProcessingStopSelector {
   MaxDurationInSeconds?: number;
 }
@@ -4423,6 +4649,7 @@ export const StartStreamProcessorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartStreamProcessorRequest",
 }) as any as S.Schema<StartStreamProcessorRequest>;
+export type StartStreamProcessorSessionId = string;
 export interface StartStreamProcessorResponse {
   SessionId?: string;
 }
@@ -4541,6 +4768,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
+export type GroundTruthBlob = Uint8Array;
 export interface DatasetChanges {
   GroundTruth: Uint8Array;
 }
@@ -4591,6 +4819,7 @@ export type StreamProcessorParameterToDelete =
   | "RegionsOfInterest"
   | (string & {});
 export const StreamProcessorParameterToDelete = /*@__PURE__*/ S.String;
+
 export type StreamProcessorParametersToDelete =
   StreamProcessorParameterToDelete[];
 export const StreamProcessorParametersToDelete = /*@__PURE__*/ S.Array(
@@ -4624,198 +4853,6 @@ export const UpdateStreamProcessorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateStreamProcessorResponse",
 }) as any as S.Schema<UpdateStreamProcessorResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
-  "IdempotentParameterMismatchException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class ProvisionedThroughputExceededException extends S.TaggedErrorClass<ProvisionedThroughputExceededException>()(
-  "ProvisionedThroughputExceededException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class ImageTooLargeException extends S.TaggedErrorClass<ImageTooLargeException>()(
-  "ImageTooLargeException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class InvalidImageFormatException extends S.TaggedErrorClass<InvalidImageFormatException>()(
-  "InvalidImageFormatException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class InvalidS3ObjectException extends S.TaggedErrorClass<InvalidS3ObjectException>()(
-  "InvalidS3ObjectException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-).pipe(C.withAlreadyExistsError) {}
-export class InvalidPolicyRevisionIdException extends S.TaggedErrorClass<InvalidPolicyRevisionIdException>()(
-  "InvalidPolicyRevisionIdException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class InvalidPaginationTokenException extends S.TaggedErrorClass<InvalidPaginationTokenException>()(
-  "InvalidPaginationTokenException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotReadyException>()(
-  "ResourceNotReadyException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class HumanLoopQuotaExceededException extends S.TaggedErrorClass<HumanLoopQuotaExceededException>()(
-  "HumanLoopQuotaExceededException",
-  {
-    ResourceType: S.optional(S.String),
-    QuotaCode: S.optional(S.String),
-    ServiceCode: S.optional(S.String),
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class SessionNotFoundException extends S.TaggedErrorClass<SessionNotFoundException>()(
-  "SessionNotFoundException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class MalformedPolicyDocumentException extends S.TaggedErrorClass<MalformedPolicyDocumentException>()(
-  "MalformedPolicyDocumentException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class VideoTooLargeException extends S.TaggedErrorClass<VideoTooLargeException>()(
-  "VideoTooLargeException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-export class InvalidManifestException extends S.TaggedErrorClass<InvalidManifestException>()(
-  "InvalidManifestException",
-  {
-    Message: S.optional(S.String),
-    Code: S.optional(S.String),
-    Logref: S.optional(S.String),
-  },
-) {}
-
-//# Operations
 export type AssociateFacesError =
   | AccessDeniedException
   | ConflictException
@@ -4885,6 +4922,7 @@ export const associateFaces: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateFaces",
 }));
+
 export type CompareFacesError =
   | AccessDeniedException
   | ImageTooLargeException
@@ -4975,6 +5013,7 @@ export const compareFaces: API.OperationMethod<
   retry: Retry,
   operationName: "CompareFaces",
 }));
+
 export type CopyProjectVersionError =
   | AccessDeniedException
   | InternalServerError
@@ -5037,6 +5076,7 @@ export const copyProjectVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CopyProjectVersion",
 }));
+
 export type CreateCollectionError =
   | AccessDeniedException
   | InternalServerError
@@ -5086,6 +5126,7 @@ export const createCollection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCollection",
 }));
+
 export type CreateDatasetError =
   | AccessDeniedException
   | InternalServerError
@@ -5146,6 +5187,7 @@ export const createDataset: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataset",
 }));
+
 export type CreateFaceLivenessSessionError =
   | AccessDeniedException
   | InternalServerError
@@ -5186,6 +5228,7 @@ export const createFaceLivenessSession: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFaceLivenessSession",
 }));
+
 export type CreateProjectError =
   | AccessDeniedException
   | InternalServerError
@@ -5224,6 +5267,7 @@ export const createProject: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProject",
 }));
+
 export type CreateProjectVersionError =
   | AccessDeniedException
   | InternalServerError
@@ -5289,6 +5333,7 @@ export const createProjectVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProjectVersion",
 }));
+
 export type CreateStreamProcessorError =
   | AccessDeniedException
   | InternalServerError
@@ -5352,6 +5397,7 @@ export const createStreamProcessor: API.OperationMethod<
   retry: Retry,
   operationName: "CreateStreamProcessor",
 }));
+
 export type CreateUserError =
   | AccessDeniedException
   | ConflictException
@@ -5397,6 +5443,7 @@ export const createUser: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUser",
 }));
+
 export type DeleteCollectionError =
   | AccessDeniedException
   | InternalServerError
@@ -5433,6 +5480,7 @@ export const deleteCollection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCollection",
 }));
+
 export type DeleteDatasetError =
   | AccessDeniedException
   | InternalServerError
@@ -5479,6 +5527,7 @@ export const deleteDataset: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataset",
 }));
+
 export type DeleteFacesError =
   | AccessDeniedException
   | InternalServerError
@@ -5514,6 +5563,7 @@ export const deleteFaces: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFaces",
 }));
+
 export type DeleteProjectError =
   | AccessDeniedException
   | InternalServerError
@@ -5556,6 +5606,7 @@ export const deleteProject: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProject",
 }));
+
 export type DeleteProjectPolicyError =
   | AccessDeniedException
   | InternalServerError
@@ -5595,6 +5646,7 @@ export const deleteProjectPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProjectPolicy",
 }));
+
 export type DeleteProjectVersionError =
   | AccessDeniedException
   | InternalServerError
@@ -5636,6 +5688,7 @@ export const deleteProjectVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProjectVersion",
 }));
+
 export type DeleteStreamProcessorError =
   | AccessDeniedException
   | InternalServerError
@@ -5670,6 +5723,7 @@ export const deleteStreamProcessor: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteStreamProcessor",
 }));
+
 export type DeleteUserError =
   | AccessDeniedException
   | ConflictException
@@ -5709,6 +5763,7 @@ export const deleteUser: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUser",
 }));
+
 export type DescribeCollectionError =
   | AccessDeniedException
   | InternalServerError
@@ -5745,6 +5800,7 @@ export const describeCollection: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCollection",
 }));
+
 export type DescribeDatasetError =
   | AccessDeniedException
   | InternalServerError
@@ -5781,6 +5837,7 @@ export const describeDataset: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDataset",
 }));
+
 export type DescribeProjectsError =
   | AccessDeniedException
   | InternalServerError
@@ -5835,6 +5892,7 @@ export const describeProjects: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeProjectVersionsError =
   | AccessDeniedException
   | InternalServerError
@@ -5894,6 +5952,7 @@ export const describeProjectVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeStreamProcessorError =
   | AccessDeniedException
   | InternalServerError
@@ -5926,6 +5985,7 @@ export const describeStreamProcessor: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeStreamProcessor",
 }));
+
 export type DetectCustomLabelsError =
   | AccessDeniedException
   | ImageTooLargeException
@@ -6008,6 +6068,7 @@ export const detectCustomLabels: API.OperationMethod<
   retry: Retry,
   operationName: "DetectCustomLabels",
 }));
+
 export type DetectFacesError =
   | AccessDeniedException
   | ImageTooLargeException
@@ -6063,6 +6124,7 @@ export const detectFaces: API.OperationMethod<
   retry: Retry,
   operationName: "DetectFaces",
 }));
+
 export type DetectLabelsError =
   | AccessDeniedException
   | ImageTooLargeException
@@ -6201,6 +6263,7 @@ export const detectLabels: API.OperationMethod<
   retry: Retry,
   operationName: "DetectLabels",
 }));
+
 export type DetectModerationLabelsError =
   | AccessDeniedException
   | HumanLoopQuotaExceededException
@@ -6260,6 +6323,7 @@ export const detectModerationLabels: API.OperationMethod<
   retry: Retry,
   operationName: "DetectModerationLabels",
 }));
+
 export type DetectProtectiveEquipmentError =
   | AccessDeniedException
   | ImageTooLargeException
@@ -6326,6 +6390,7 @@ export const detectProtectiveEquipment: API.OperationMethod<
   retry: Retry,
   operationName: "DetectProtectiveEquipment",
 }));
+
 export type DetectTextError =
   | AccessDeniedException
   | ImageTooLargeException
@@ -6390,6 +6455,7 @@ export const detectText: API.OperationMethod<
   retry: Retry,
   operationName: "DetectText",
 }));
+
 export type DisassociateFacesError =
   | AccessDeniedException
   | ConflictException
@@ -6432,6 +6498,7 @@ export const disassociateFaces: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateFaces",
 }));
+
 export type DistributeDatasetEntriesError =
   | AccessDeniedException
   | InternalServerError
@@ -6479,6 +6546,7 @@ export const distributeDatasetEntries: API.OperationMethod<
   retry: Retry,
   operationName: "DistributeDatasetEntries",
 }));
+
 export type GetCelebrityInfoError =
   | AccessDeniedException
   | InternalServerError
@@ -6518,6 +6586,7 @@ export const getCelebrityInfo: API.OperationMethod<
   retry: Retry,
   operationName: "GetCelebrityInfo",
 }));
+
 export type GetCelebrityRecognitionError =
   | AccessDeniedException
   | InternalServerError
@@ -6614,6 +6683,7 @@ export const getCelebrityRecognition: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetContentModerationError =
   | AccessDeniedException
   | InternalServerError
@@ -6697,6 +6767,7 @@ export const getContentModeration: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetFaceDetectionError =
   | AccessDeniedException
   | InternalServerError
@@ -6767,6 +6838,7 @@ export const getFaceDetection: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetFaceLivenessSessionResultsError =
   | AccessDeniedException
   | InternalServerError
@@ -6807,6 +6879,7 @@ export const getFaceLivenessSessionResults: API.OperationMethod<
   retry: Retry,
   operationName: "GetFaceLivenessSessionResults",
 }));
+
 export type GetFaceSearchError =
   | AccessDeniedException
   | InternalServerError
@@ -6890,6 +6963,7 @@ export const getFaceSearch: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetLabelDetectionError =
   | AccessDeniedException
   | InternalServerError
@@ -7008,6 +7082,7 @@ export const getLabelDetection: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetMediaAnalysisJobError =
   | AccessDeniedException
   | InternalServerError
@@ -7040,6 +7115,7 @@ export const getMediaAnalysisJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetMediaAnalysisJob",
 }));
+
 export type GetPersonTrackingError =
   | AccessDeniedException
   | InternalServerError
@@ -7125,6 +7201,7 @@ export const getPersonTracking: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetSegmentDetectionError =
   | AccessDeniedException
   | InternalServerError
@@ -7203,6 +7280,7 @@ export const getSegmentDetection: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetTextDetectionError =
   | AccessDeniedException
   | InternalServerError
@@ -7277,6 +7355,7 @@ export const getTextDetection: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type IndexFacesError =
   | AccessDeniedException
   | ImageTooLargeException
@@ -7407,6 +7486,7 @@ export const indexFaces: API.OperationMethod<
   retry: Retry,
   operationName: "IndexFaces",
 }));
+
 export type ListCollectionsError =
   | AccessDeniedException
   | InternalServerError
@@ -7469,6 +7549,7 @@ export const listCollections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDatasetEntriesError =
   | AccessDeniedException
   | InternalServerError
@@ -7542,6 +7623,7 @@ export const listDatasetEntries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDatasetLabelsError =
   | AccessDeniedException
   | InternalServerError
@@ -7606,6 +7688,7 @@ export const listDatasetLabels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFacesError =
   | AccessDeniedException
   | InternalServerError
@@ -7666,6 +7749,7 @@ export const listFaces: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMediaAnalysisJobsError =
   | AccessDeniedException
   | InternalServerError
@@ -7717,6 +7801,7 @@ export const listMediaAnalysisJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProjectPoliciesError =
   | AccessDeniedException
   | InternalServerError
@@ -7777,6 +7862,7 @@ export const listProjectPolicies: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStreamProcessorsError =
   | AccessDeniedException
   | InternalServerError
@@ -7828,6 +7914,7 @@ export const listStreamProcessors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerError
@@ -7863,6 +7950,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListUsersError =
   | AccessDeniedException
   | InternalServerError
@@ -7921,6 +8009,7 @@ export const listUsers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutProjectPolicyError =
   | AccessDeniedException
   | InternalServerError
@@ -7982,6 +8071,7 @@ export const putProjectPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutProjectPolicy",
 }));
+
 export type RecognizeCelebritiesError =
   | AccessDeniedException
   | ImageTooLargeException
@@ -8048,6 +8138,7 @@ export const recognizeCelebrities: API.OperationMethod<
   retry: Retry,
   operationName: "RecognizeCelebrities",
 }));
+
 export type SearchFacesError =
   | AccessDeniedException
   | InternalServerError
@@ -8096,6 +8187,7 @@ export const searchFaces: API.OperationMethod<
   retry: Retry,
   operationName: "SearchFaces",
 }));
+
 export type SearchFacesByImageError =
   | AccessDeniedException
   | ImageTooLargeException
@@ -8174,6 +8266,7 @@ export const searchFacesByImage: API.OperationMethod<
   retry: Retry,
   operationName: "SearchFacesByImage",
 }));
+
 export type SearchUsersError =
   | AccessDeniedException
   | InternalServerError
@@ -8210,6 +8303,7 @@ export const searchUsers: API.OperationMethod<
   retry: Retry,
   operationName: "SearchUsers",
 }));
+
 export type SearchUsersByImageError =
   | AccessDeniedException
   | ImageTooLargeException
@@ -8257,6 +8351,7 @@ export const searchUsersByImage: API.OperationMethod<
   retry: Retry,
   operationName: "SearchUsersByImage",
 }));
+
 export type StartCelebrityRecognitionError =
   | AccessDeniedException
   | IdempotentParameterMismatchException
@@ -8306,6 +8401,7 @@ export const startCelebrityRecognition: API.OperationMethod<
   retry: Retry,
   operationName: "StartCelebrityRecognition",
 }));
+
 export type StartContentModerationError =
   | AccessDeniedException
   | IdempotentParameterMismatchException
@@ -8356,6 +8452,7 @@ export const startContentModeration: API.OperationMethod<
   retry: Retry,
   operationName: "StartContentModeration",
 }));
+
 export type StartFaceDetectionError =
   | AccessDeniedException
   | IdempotentParameterMismatchException
@@ -8406,6 +8503,7 @@ export const startFaceDetection: API.OperationMethod<
   retry: Retry,
   operationName: "StartFaceDetection",
 }));
+
 export type StartFaceSearchError =
   | AccessDeniedException
   | IdempotentParameterMismatchException
@@ -8455,6 +8553,7 @@ export const startFaceSearch: API.OperationMethod<
   retry: Retry,
   operationName: "StartFaceSearch",
 }));
+
 export type StartLabelDetectionError =
   | AccessDeniedException
   | IdempotentParameterMismatchException
@@ -8519,6 +8618,7 @@ export const startLabelDetection: API.OperationMethod<
   retry: Retry,
   operationName: "StartLabelDetection",
 }));
+
 export type StartMediaAnalysisJobError =
   | AccessDeniedException
   | IdempotentParameterMismatchException
@@ -8561,6 +8661,7 @@ export const startMediaAnalysisJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartMediaAnalysisJob",
 }));
+
 export type StartPersonTrackingError =
   | AccessDeniedException
   | IdempotentParameterMismatchException
@@ -8613,6 +8714,7 @@ export const startPersonTracking: API.OperationMethod<
   retry: Retry,
   operationName: "StartPersonTracking",
 }));
+
 export type StartProjectVersionError =
   | AccessDeniedException
   | InternalServerError
@@ -8660,6 +8762,7 @@ export const startProjectVersion: API.OperationMethod<
   retry: Retry,
   operationName: "StartProjectVersion",
 }));
+
 export type StartSegmentDetectionError =
   | AccessDeniedException
   | IdempotentParameterMismatchException
@@ -8714,6 +8817,7 @@ export const startSegmentDetection: API.OperationMethod<
   retry: Retry,
   operationName: "StartSegmentDetection",
 }));
+
 export type StartStreamProcessorError =
   | AccessDeniedException
   | InternalServerError
@@ -8751,6 +8855,7 @@ export const startStreamProcessor: API.OperationMethod<
   retry: Retry,
   operationName: "StartStreamProcessor",
 }));
+
 export type StartTextDetectionError =
   | AccessDeniedException
   | IdempotentParameterMismatchException
@@ -8797,6 +8902,7 @@ export const startTextDetection: API.OperationMethod<
   retry: Retry,
   operationName: "StartTextDetection",
 }));
+
 export type StopProjectVersionError =
   | AccessDeniedException
   | InternalServerError
@@ -8836,6 +8942,7 @@ export const stopProjectVersion: API.OperationMethod<
   retry: Retry,
   operationName: "StopProjectVersion",
 }));
+
 export type StopStreamProcessorError =
   | AccessDeniedException
   | InternalServerError
@@ -8869,6 +8976,7 @@ export const stopStreamProcessor: API.OperationMethod<
   retry: Retry,
   operationName: "StopStreamProcessor",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerError
@@ -8907,6 +9015,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerError
@@ -8942,6 +9051,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDatasetEntriesError =
   | AccessDeniedException
   | InternalServerError
@@ -9003,6 +9113,7 @@ export const updateDatasetEntries: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDatasetEntries",
 }));
+
 export type UpdateStreamProcessorError =
   | AccessDeniedException
   | InternalServerError

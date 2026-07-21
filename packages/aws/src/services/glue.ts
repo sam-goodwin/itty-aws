@@ -84,327 +84,253 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
+  "AlreadyExistsException",
+  { Message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class ColumnStatisticsTaskNotRunningException extends S.TaggedErrorClass<ColumnStatisticsTaskNotRunningException>()(
+  "ColumnStatisticsTaskNotRunningException",
+  { Message: S.optional(S.String) },
+) {}
+export class ColumnStatisticsTaskRunningException extends S.TaggedErrorClass<ColumnStatisticsTaskRunningException>()(
+  "ColumnStatisticsTaskRunningException",
+  { Message: S.optional(S.String) },
+) {}
+export class ColumnStatisticsTaskStoppingException extends S.TaggedErrorClass<ColumnStatisticsTaskStoppingException>()(
+  "ColumnStatisticsTaskStoppingException",
+  { Message: S.optional(S.String) },
+) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { Message: S.optional(S.String) },
+) {}
+export class ConcurrentRunsExceededException extends S.TaggedErrorClass<ConcurrentRunsExceededException>()(
+  "ConcurrentRunsExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class ConditionCheckFailureException extends S.TaggedErrorClass<ConditionCheckFailureException>()(
+  "ConditionCheckFailureException",
+  { Message: S.optional(S.String) },
+) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+) {}
+export class CrawlerNotRunningException extends S.TaggedErrorClass<CrawlerNotRunningException>()(
+  "CrawlerNotRunningException",
+  { Message: S.optional(S.String) },
+) {}
+export class CrawlerRunningException extends S.TaggedErrorClass<CrawlerRunningException>()(
+  "CrawlerRunningException",
+  { Message: S.optional(S.String) },
+) {}
+export class CrawlerStoppingException extends S.TaggedErrorClass<CrawlerStoppingException>()(
+  "CrawlerStoppingException",
+  { Message: S.optional(S.String) },
+) {}
+export class EntityNotFoundException extends S.TaggedErrorClass<EntityNotFoundException>()(
+  "EntityNotFoundException",
+  {
+    Message: S.optional(S.String),
+    FromFederationSource: S.optional(S.Boolean),
+  },
+) {}
+export class FederatedResourceAlreadyExistsException extends S.TaggedErrorClass<FederatedResourceAlreadyExistsException>()(
+  "FederatedResourceAlreadyExistsException",
+  {
+    Message: S.optional(S.String),
+    AssociatedGlueResource: S.optional(S.String),
+  },
+).pipe(C.withAlreadyExistsError) {}
+export class FederationSourceException extends S.TaggedErrorClass<FederationSourceException>()(
+  "FederationSourceException",
+  {
+    FederationSourceErrorCode: S.optional(
+      S.suspend(() => FederationSourceErrorCode).annotate({
+        identifier: "FederationSourceErrorCode",
+      }),
+    ),
+    Message: S.optional(S.String),
+  },
+) {}
+export class FederationSourceRetryableException extends S.TaggedErrorClass<FederationSourceRetryableException>()(
+  "FederationSourceRetryableException",
+  { Message: S.optional(S.String) },
+) {}
+export class GlueEncryptionException extends S.TaggedErrorClass<GlueEncryptionException>()(
+  "GlueEncryptionException",
+  { Message: S.optional(S.String) },
+) {}
+export class GlueRoleNotAssumable extends S.TaggedErrorClass<GlueRoleNotAssumable>()(
+  "GlueRoleNotAssumable",
+  {
+    Message: S.optional(S.String),
+    FromFederationSource: S.optional(S.Boolean),
+  },
+  T.SyntheticError({
+    from: "InvalidInputException",
+    message: { includes: "unable to assume" },
+  }),
+).pipe(C.withRetryableError) {}
+export class GlueS3TargetNotReady extends S.TaggedErrorClass<GlueS3TargetNotReady>()(
+  "GlueS3TargetNotReady",
+  {
+    Message: S.optional(S.String),
+    FromFederationSource: S.optional(S.Boolean),
+  },
+  T.SyntheticError({
+    from: "InvalidInputException",
+    message: { includes: "InvalidAccessKeyId" },
+  }),
+).pipe(C.withRetryableError) {}
+export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
+  "IdempotentParameterMismatchException",
+  { Message: S.optional(S.String) },
+) {}
+export class IllegalBlueprintStateException extends S.TaggedErrorClass<IllegalBlueprintStateException>()(
+  "IllegalBlueprintStateException",
+  { Message: S.optional(S.String) },
+) {}
+export class IllegalSessionStateException extends S.TaggedErrorClass<IllegalSessionStateException>()(
+  "IllegalSessionStateException",
+  { Message: S.optional(S.String) },
+) {}
+export class IllegalWorkflowStateException extends S.TaggedErrorClass<IllegalWorkflowStateException>()(
+  "IllegalWorkflowStateException",
+  { Message: S.optional(S.String) },
+) {}
+export class IntegrationConflictOperationFault extends S.TaggedErrorClass<IntegrationConflictOperationFault>()(
+  "IntegrationConflictOperationFault",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class IntegrationNotFoundFault extends S.TaggedErrorClass<IntegrationNotFoundFault>()(
+  "IntegrationNotFoundFault",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class IntegrationQuotaExceededFault extends S.TaggedErrorClass<IntegrationQuotaExceededFault>()(
+  "IntegrationQuotaExceededFault",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
+  "InternalServiceException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  {
+    Message: S.optional(S.String),
+    FromFederationSource: S.optional(S.Boolean),
+  },
+) {}
+export class InvalidIntegrationStateFault extends S.TaggedErrorClass<InvalidIntegrationStateFault>()(
+  "InvalidIntegrationStateFault",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
+  "InvalidStateException",
+  { Message: S.optional(S.String) },
+) {}
+export class KMSKeyNotAccessibleFault extends S.TaggedErrorClass<KMSKeyNotAccessibleFault>()(
+  "KMSKeyNotAccessibleFault",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class MaterializedViewRefreshTaskNotRunningException extends S.TaggedErrorClass<MaterializedViewRefreshTaskNotRunningException>()(
+  "MaterializedViewRefreshTaskNotRunningException",
+  { Message: S.optional(S.String) },
+) {}
+export class MaterializedViewRefreshTaskRunningException extends S.TaggedErrorClass<MaterializedViewRefreshTaskRunningException>()(
+  "MaterializedViewRefreshTaskRunningException",
+  { Message: S.optional(S.String) },
+) {}
+export class MaterializedViewRefreshTaskStoppingException extends S.TaggedErrorClass<MaterializedViewRefreshTaskStoppingException>()(
+  "MaterializedViewRefreshTaskStoppingException",
+  { Message: S.optional(S.String) },
+) {}
+export class MLTransformNotReadyException extends S.TaggedErrorClass<MLTransformNotReadyException>()(
+  "MLTransformNotReadyException",
+  { Message: S.optional(S.String) },
+) {}
+export class NoScheduleException extends S.TaggedErrorClass<NoScheduleException>()(
+  "NoScheduleException",
+  { Message: S.optional(S.String) },
+) {}
+export class OperationNotSupportedException extends S.TaggedErrorClass<OperationNotSupportedException>()(
+  "OperationNotSupportedException",
+  { Message: S.optional(S.String) },
+) {}
+export class OperationTimeoutException extends S.TaggedErrorClass<OperationTimeoutException>()(
+  "OperationTimeoutException",
+  { Message: S.optional(S.String) },
+) {}
+export class PermissionTypeMismatchException extends S.TaggedErrorClass<PermissionTypeMismatchException>()(
+  "PermissionTypeMismatchException",
+  { Message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotReadyException>()(
+  "ResourceNotReadyException",
+  { Message: S.optional(S.String) },
+) {}
+export class ResourceNumberLimitExceededException extends S.TaggedErrorClass<ResourceNumberLimitExceededException>()(
+  "ResourceNumberLimitExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class SchedulerNotRunningException extends S.TaggedErrorClass<SchedulerNotRunningException>()(
+  "SchedulerNotRunningException",
+  { Message: S.optional(S.String) },
+) {}
+export class SchedulerRunningException extends S.TaggedErrorClass<SchedulerRunningException>()(
+  "SchedulerRunningException",
+  { Message: S.optional(S.String) },
+) {}
+export class SchedulerTransitioningException extends S.TaggedErrorClass<SchedulerTransitioningException>()(
+  "SchedulerTransitioningException",
+  { Message: S.optional(S.String) },
+) {}
+export class SessionBusyException extends S.TaggedErrorClass<SessionBusyException>()(
+  "SessionBusyException",
+  { Message: S.optional(S.String) },
+) {}
+export class TargetResourceNotFound extends S.TaggedErrorClass<TargetResourceNotFound>()(
+  "TargetResourceNotFound",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+) {}
+export class VersionMismatchException extends S.TaggedErrorClass<VersionMismatchException>()(
+  "VersionMismatchException",
+  { Message: S.optional(S.String) },
+) {}
 export type AssetId = string;
 export type GlossaryTermId = string;
-export type HashString = string;
-export type MessageString = string;
-export type CatalogIdString = string;
-export type NameString = string;
-export type ValueString = string;
-export type ColumnTypeString = string;
-export type CommentString = string;
-export type KeyString = string;
-export type ParametersMapValue = string;
-export type LocationString = string;
-export type FormatString = string;
-export type IntegerFlag = number;
-export type ColumnValuesString = string;
-export type GlueResourceArn = string;
-export type SchemaRegistryNameString = string;
-export type SchemaVersionIdString = string;
-export type VersionLongNumber = number;
-export type DescriptionString = string;
-export type TransactionIdString = string;
-export type VersionString = string;
-export type OrchestrationNameString = string;
-export type Generic512CharString = string;
-export type TimestampValue = Date;
-export type BlueprintParameterSpec = string;
-export type ErrorString = string;
-export type Role = string;
-export type Path = string;
-export type ConnectionName = string;
-export type EventQueueArn = string;
-export type DatabaseName = string;
-export type TablePrefix = string;
-export type CronExpression = string;
-export type MillisecondsCount = number;
-export type LogGroup = string;
-export type LogStream = string;
-export type MessagePrefix = string;
-export type VersionId = number;
-export type CrawlerConfiguration = string;
-export type CrawlerSecurityConfiguration = string;
-export type AccountId = string;
-export type GenericBoundedDouble = number;
-export type PreProcessingQueryString = string;
-export type DataQualityRuleResultDescription =
-  | string
-  | redacted.Redacted<string>;
-export type DataQualityObservationDescription =
-  | string
-  | redacted.Redacted<string>;
-export type RoleArn = string;
-export type IntegerValue = number;
-export type GlueVersionString = string;
-export type IterableFormName = string;
-export type ItemIdentifier = string;
-export type ItemId = string;
-export type ItemName = string;
-export type AssetFormKey = string;
-export type FormTypeId = string;
-export type FormContent = string;
-export type ItemErrorCode = string;
-export type ItemErrorMessage = string;
-export type UriString = string;
-export type RoleString = string;
-export type MaxConcurrentRuns = number;
-export type ScriptLocationString = string;
-export type PythonVersionString = string;
-export type RuntimeNameString = string;
-export type ConnectionString = string;
-export type MaxRetries = number;
-export type Timeout = number;
-export type NotifyDelayAfter = number;
-export type NodeId = string;
-export type NodeName = string;
-export type EnclosedInStringProperty = string;
-export type EnclosedInStringPropertyWithQuote = string;
-export type GlueStudioColumnNameString = string;
-export type BoxedNonNegativeLong = number;
-export type SqlQuery = string;
-export type BoxedLong = number;
-export type BoxedBoolean = boolean;
-export type BoxedNonNegativeInt = number;
-export type NumberTargetPartitionsString = string;
-export type Topk = number;
-export type Prob = number;
-export type NonNegativeInt = number;
-export type ExtendedString = string;
-export type BoxedPositiveInt = number;
-export type Iso8601DateTime = Date;
-export type PollingTime = number;
-export type PositiveLong = number;
-export type GenericLimitedString = string;
-export type BoxedDoubleFraction = number;
-export type MaskValue = string;
-export type DQDLString = string;
-export type RecipeVersion = string;
-export type Operation = string;
-export type ParameterName = string;
-export type ParameterValue = string;
-export type DatabrewCondition = string;
-export type DatabrewConditionValue = string;
-export type TargetColumn = string;
-export type MaintenanceWindow = string;
-export type AuditContextString = string;
-export type ColumnNameString = string;
-export type NullableString = string;
-export type ContextKey = string;
-export type ContextValue = string;
-export type DatabaseNameString = string;
-export type TableNameString = string;
-export type ArnString = string;
-export type GlueConnectionNameString = string;
-export type TableOptimizerRunTimestamp = Date;
-export type MetricCounts = number;
-export type DpuHours = number;
-export type DpuCounts = number;
-export type DpuDurationInHour = number;
-export type IdString = string;
-export type BatchSize = number;
-export type BatchWindow = number;
-export type AttemptCount = number;
-export type ExecutionTime = number;
-export type OrchestrationMessageString = string;
-export type OrchestrationPolicyJsonString = string;
-export type SchemaDefinitionString = string;
-export type IsVersionValid = boolean;
-export type SchemaValidationError = string;
-export type OrchestrationS3Location = string;
-export type TagKey = string;
-export type TagValue = string;
-export type CatalogNameString = string;
-export type FederationIdentifier = string;
-export type ResourceArnString = string;
-export type IAMRoleArn = string;
-export type DataLakePrincipalString = string;
-export type Classification = string;
-export type GrokPattern = string;
-export type CustomPatterns = string;
-export type RowTag = string;
-export type JsonPath = string;
-export type CsvColumnDelimiter = string;
-export type CsvQuoteSymbol = string;
-export type SampleSizePercentage = number;
-export type PropertyKey = string;
-export type PropertyValue = string;
-export type UserManagedClientApplicationClientId = string;
-export type AWSManagedClientApplicationReference = string;
-export type TokenUrl = string;
-export type TokenUrlParameterKey = string;
-export type TokenUrlParameterValue = string;
-export type AuthorizationCode = string | redacted.Redacted<string>;
-export type RedirectUri = string;
-export type UserManagedClientApplicationClientSecret =
-  | string
-  | redacted.Redacted<string>;
-export type AccessToken = string | redacted.Redacted<string>;
-export type RefreshToken = string | redacted.Redacted<string>;
-export type JwtToken = string | redacted.Redacted<string>;
-export type SecretArn = string;
-export type KmsKeyArn = string;
-export type Username = string;
-export type Password = string | redacted.Redacted<string>;
-export type CredentialKey = string;
-export type CredentialValue = string;
-export type URI = string;
-export type DataQualityRulesetString = string;
-export type GlossaryName = string;
-export type MetadataDescription = string;
-export type GlossaryId = string;
-export type GlossaryTermName = string;
-export type GlossaryShortDescription = string;
-export type GlossaryLongDescription = string;
-export type IdentityCenterInstanceArn = string;
-export type IdentityCenterScope = string;
-export type ApplicationArn = string;
-export type String128 = string;
-export type String512 = string;
-export type IntegrationDescription = string;
-export type String2048 = string;
-export type IntegrationString = string;
-export type ContinuousSync = boolean;
-export type IntegrationTimestamp = Date;
-export type IntegrationErrorMessage = string;
-export type SchemaCheckpointNumber = number;
-export type CodeGenIdentifier = string;
-export type CodeGenNodeType = string;
-export type CodeGenArgName = string;
-export type CodeGenArgValue = string;
-export type PythonScript = string;
-export type ScalaCode = string;
-export type OrchestrationRoleArn = string;
-export type OrchestrationArgumentsValue = string;
-export type DoubleValue = number;
-export type IdleTimeout = number;
-export type NonNegativeInteger = number;
-export type ViewTextString = string;
-export type TableTypeString = string;
-export type ViewDialectVersionString = string;
-export type TableVersionId = number;
-export type RefreshSeconds = number;
-export type IcebergDocument = unknown;
-export type IcebergTransformString = string;
-export type ConfigValueString = string;
-export type WorkflowDescriptionString = string;
-export type AssetTypeId = string;
-export type AttachmentName = string;
-export type VersionsString = string;
-export type ErrorCodeString = string;
-export type ErrorMessageString = string;
-export type Description = string;
-export type PropertyName = string;
-export type PropertyDescriptionString = string;
-export type AllowedValueDescriptionString = string;
-export type AllowedValueValueString = string;
-export type ComputeEnvironmentName = string;
-export type ComputeEnvironmentConfigurationDescriptionString = string;
-export type PathString = string;
-export type ConnectorPropertyKey = string;
-export type JsonPathString = string;
-export type DefaultValue = string;
-export type EntityConfigurationMapKeyString = string;
-export type FieldDefinitionMapKeyString = string;
-export type EntityName = string;
-export type NextToken = string;
-export type ApiVersion = string;
-export type EntityFieldName = string;
-export type FieldLabel = string;
-export type FieldDescription = string;
-export type IntegrationInteger = number;
-export type AssetName = string;
-export type AssetDescription = string;
-export type CreatedAt = Date;
-export type UpdatedAt = Date;
-export type IterableFormKey = string;
-export type AssetTypeName = string;
-export type AssetTypeFormKey = string;
-export type BlueprintParameters = string;
-export type OrchestrationIAMRoleArn = string;
-export type PageSize = number;
-export type Token = string;
-export type TypeString = string;
-export type NonNegativeLong = number;
-export type NonNegativeDouble = number;
-export type TableName = string;
-export type PositiveInteger = number;
-export type LongValueString = string;
-export type ConnectionSchemaVersion = number;
-export type SensitiveUrl = string | redacted.Redacted<string>;
-export type CatalogGetterPageSize = number;
-export type OptionKey = string;
-export type OptionValue = string;
-export type FilterPredicate = string;
-export type Limit = number;
-export type Record = unknown;
-export type FormTypeName = string;
-export type FormTypeSchema = string;
-export type JobName = string;
-export type RunId = string;
-export type JsonValue = string;
-export type OrchestrationPageSize200 = number;
-export type SchemaPathString = string;
-export type FieldType = string;
-export type UUIDv4 = string;
-export type ByteCount = number;
-export type ReplaceBoolean = boolean;
-export type PaginationToken = string;
-export type RecordsCount = number;
-export type LabelCount = number;
-export type PredicateString = string;
-export type TotalSegmentsInteger = number;
-export type BooleanNullable = boolean;
-export type CreatedTimestamp = string;
-export type UpdatedTimestamp = string;
-export type PolicyJsonString = string;
-export type LatestSchemaVersionBoolean = boolean;
-export type SchemaDefinitionDiff = string;
-export type SparkConnectEndpointUrl = string;
-export type SensitiveString = string | redacted.Redacted<string>;
-export type LongValue = number;
-export type TableIdString = string;
-export type FilterString = string;
-export type OrchestrationPageSize25 = number;
-export type MaxResults = number;
-export type DisplayName = string;
-export type Vendor = string;
-export type UrlString = string;
-export type CrawlId = string;
-export type StatisticNameString = string;
-export type EntityLabel = string;
-export type IsParentEntity = boolean;
-export type EntityDescription = string;
-export type Category = string;
-export type String1024 = string;
-export type ItemDescription = string;
-export type MaxResultsNumber = number;
-export type SchemaRegistryTokenString = string;
-export type OrchestrationToken = string;
-export type MaxListTableOptimizerRunsTokenResults = number;
-export type ListTableOptimizerRunsToken = string;
-export type MetadataKeyString = string;
-export type MetadataValueString = string;
-export type QuerySchemaVersionMetadataMaxResults = number;
-export type OrchestrationStatementCodeString = string;
-export type SearchText = string;
-export type SearchMaxResults = number;
-export type SearchNextToken = string;
-export type SearchAttribute = string;
-export type SearchFilterStringValue = string;
-export type SearchFilterLongValue = number;
-export type SearchMapKey = string;
-export type SearchResultName = string;
-export type DescriptionStringRemovable = string;
-export type CommitIdString = string;
-export type AuthTokenString = string;
-export type EncryptionKeyIdString = string;
-export type EncryptedKeyMetadataString = string;
-
-//# Schemas
 export type GlossaryTermIdList = string[];
 export const GlossaryTermIdList = /*@__PURE__*/ S.Array(S.String);
+export type HashString = string;
 export interface AssociateGlossaryTermsRequest {
   AssetIdentifier: string;
   GlossaryTermIdentifiers: string[];
@@ -443,8 +369,15 @@ export const AssociateGlossaryTermsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateGlossaryTermsResponse",
 }) as any as S.Schema<AssociateGlossaryTermsResponse>;
+export type CatalogIdString = string;
+export type NameString = string;
+export type ValueString = string;
 export type ValueStringList = string[];
 export const ValueStringList = /*@__PURE__*/ S.Array(S.String);
+export type ColumnTypeString = string;
+export type CommentString = string;
+export type KeyString = string;
+export type ParametersMapValue = string;
 export type ParametersMap = { [key: string]: string | undefined };
 export const ParametersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -466,8 +399,10 @@ export const Column = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Column" }) as any as S.Schema<Column>;
 export type ColumnList = Column[];
 export const ColumnList = /*@__PURE__*/ S.Array(Column);
+export type LocationString = string;
 export type LocationStringList = string[];
 export const LocationStringList = /*@__PURE__*/ S.Array(S.String);
+export type FormatString = string;
 export interface SerDeInfo {
   Name?: string;
   SerializationLibrary?: string;
@@ -482,6 +417,7 @@ export const SerDeInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SerDeInfo" }) as any as S.Schema<SerDeInfo>;
 export type NameStringList = string[];
 export const NameStringList = /*@__PURE__*/ S.Array(S.String);
+export type IntegerFlag = number;
 export interface Order {
   Column: string;
   SortOrder: number;
@@ -491,6 +427,7 @@ export const Order = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Order" }) as any as S.Schema<Order>;
 export type OrderList = Order[];
 export const OrderList = /*@__PURE__*/ S.Array(Order);
+export type ColumnValuesString = string;
 export type ColumnValueStringList = string[];
 export const ColumnValueStringList = /*@__PURE__*/ S.Array(S.String);
 export type LocationMap = { [key: string]: string | undefined };
@@ -510,6 +447,8 @@ export const SkewedInfo = /*@__PURE__*/ S.suspend(() =>
     SkewedColumnValueLocationMaps: S.optional(LocationMap),
   }),
 ).annotate({ identifier: "SkewedInfo" }) as any as S.Schema<SkewedInfo>;
+export type GlueResourceArn = string;
+export type SchemaRegistryNameString = string;
 export interface SchemaId {
   SchemaArn?: string;
   SchemaName?: string;
@@ -522,6 +461,8 @@ export const SchemaId = /*@__PURE__*/ S.suspend(() =>
     RegistryName: S.optional(S.String),
   }),
 ).annotate({ identifier: "SchemaId" }) as any as S.Schema<SchemaId>;
+export type SchemaVersionIdString = string;
+export type VersionLongNumber = number;
 export interface SchemaReference {
   SchemaId?: SchemaId;
   SchemaVersionId?: string;
@@ -610,6 +551,7 @@ export const BatchCreatePartitionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchCreatePartitionRequest",
 }) as any as S.Schema<BatchCreatePartitionRequest>;
+export type DescriptionString = string;
 export interface ErrorDetail {
   ErrorCode?: string;
   ErrorMessage?: string;
@@ -712,6 +654,7 @@ export const BatchDeletePartitionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchDeletePartitionResponse>;
 export type BatchDeleteTableNameList = string[];
 export const BatchDeleteTableNameList = /*@__PURE__*/ S.Array(S.String);
+export type TransactionIdString = string;
 export interface BatchDeleteTableRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -750,6 +693,7 @@ export const BatchDeleteTableResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDeleteTableResponse",
 }) as any as S.Schema<BatchDeleteTableResponse>;
+export type VersionString = string;
 export type BatchDeleteTableVersionList = string[];
 export const BatchDeleteTableVersionList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchDeleteTableVersionRequest {
@@ -794,6 +738,7 @@ export const BatchDeleteTableVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDeleteTableVersionResponse",
 }) as any as S.Schema<BatchDeleteTableVersionResponse>;
+export type OrchestrationNameString = string;
 export type BatchGetBlueprintNames = string[];
 export const BatchGetBlueprintNames = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetBlueprintsRequest {
@@ -812,6 +757,9 @@ export const BatchGetBlueprintsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetBlueprintsRequest",
 }) as any as S.Schema<BatchGetBlueprintsRequest>;
+export type Generic512CharString = string;
+export type TimestampValue = Date;
+export type BlueprintParameterSpec = string;
 export type BlueprintStatus =
   | "CREATING"
   | "ACTIVE"
@@ -819,6 +767,8 @@ export type BlueprintStatus =
   | "FAILED"
   | (string & {});
 export const BlueprintStatus = /*@__PURE__*/ S.String;
+
+export type ErrorString = string;
 export interface LastActiveDefinition {
   Description?: string;
   LastModifiedOn?: Date;
@@ -891,8 +841,12 @@ export const BatchGetCrawlersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetCrawlersRequest",
 }) as any as S.Schema<BatchGetCrawlersRequest>;
+export type Role = string;
+export type Path = string;
 export type PathList = string[];
 export const PathList = /*@__PURE__*/ S.Array(S.String);
+export type ConnectionName = string;
+export type EventQueueArn = string;
 export interface S3Target {
   Path?: string;
   Exclusions?: string[];
@@ -915,6 +869,7 @@ export type S3TargetList = S3Target[];
 export const S3TargetList = /*@__PURE__*/ S.Array(S3Target);
 export type JdbcMetadataEntry = "COMMENTS" | "RAWTYPES" | (string & {});
 export const JdbcMetadataEntry = /*@__PURE__*/ S.String;
+
 export type EnableAdditionalMetadata = JdbcMetadataEntry[];
 export const EnableAdditionalMetadata =
   /*@__PURE__*/ S.Array(JdbcMetadataEntry);
@@ -1052,6 +1007,7 @@ export const CrawlerTargets = /*@__PURE__*/ S.suspend(() =>
     HudiTargets: S.optional(HudiTargetList),
   }),
 ).annotate({ identifier: "CrawlerTargets" }) as any as S.Schema<CrawlerTargets>;
+export type DatabaseName = string;
 export type ClassifierNameList = string[];
 export const ClassifierNameList = /*@__PURE__*/ S.Array(S.String);
 export type RecrawlBehavior =
@@ -1060,6 +1016,7 @@ export type RecrawlBehavior =
   | "CRAWL_EVENT_MODE"
   | (string & {});
 export const RecrawlBehavior = /*@__PURE__*/ S.String;
+
 export interface RecrawlPolicy {
   RecrawlBehavior?: RecrawlBehavior;
 }
@@ -1068,12 +1025,14 @@ export const RecrawlPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RecrawlPolicy" }) as any as S.Schema<RecrawlPolicy>;
 export type UpdateBehavior = "LOG" | "UPDATE_IN_DATABASE" | (string & {});
 export const UpdateBehavior = /*@__PURE__*/ S.String;
+
 export type DeleteBehavior =
   | "LOG"
   | "DELETE_FROM_DATABASE"
   | "DEPRECATE_IN_DATABASE"
   | (string & {});
 export const DeleteBehavior = /*@__PURE__*/ S.String;
+
 export interface SchemaChangePolicy {
   UpdateBehavior?: UpdateBehavior;
   DeleteBehavior?: DeleteBehavior;
@@ -1088,6 +1047,7 @@ export const SchemaChangePolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SchemaChangePolicy>;
 export type CrawlerLineageSettings = "ENABLE" | "DISABLE" | (string & {});
 export const CrawlerLineageSettings = /*@__PURE__*/ S.String;
+
 export interface LineageConfiguration {
   CrawlerLineageSettings?: CrawlerLineageSettings;
 }
@@ -1098,12 +1058,16 @@ export const LineageConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LineageConfiguration>;
 export type CrawlerState = "READY" | "RUNNING" | "STOPPING" | (string & {});
 export const CrawlerState = /*@__PURE__*/ S.String;
+
+export type TablePrefix = string;
+export type CronExpression = string;
 export type ScheduleState =
   | "SCHEDULED"
   | "NOT_SCHEDULED"
   | "TRANSITIONING"
   | (string & {});
 export const ScheduleState = /*@__PURE__*/ S.String;
+
 export interface Schedule {
   ScheduleExpression?: string;
   State?: ScheduleState;
@@ -1114,12 +1078,17 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
     State: S.optional(ScheduleState),
   }),
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
+export type MillisecondsCount = number;
 export type LastCrawlStatus =
   | "SUCCEEDED"
   | "CANCELLED"
   | "FAILED"
   | (string & {});
 export const LastCrawlStatus = /*@__PURE__*/ S.String;
+
+export type LogGroup = string;
+export type LogStream = string;
+export type MessagePrefix = string;
 export interface LastCrawlInfo {
   Status?: LastCrawlStatus;
   ErrorMessage?: string;
@@ -1138,6 +1107,10 @@ export const LastCrawlInfo = /*@__PURE__*/ S.suspend(() =>
     StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
   }),
 ).annotate({ identifier: "LastCrawlInfo" }) as any as S.Schema<LastCrawlInfo>;
+export type VersionId = number;
+export type CrawlerConfiguration = string;
+export type CrawlerSecurityConfiguration = string;
+export type AccountId = string;
 export interface LakeFormationConfiguration {
   UseLakeFormationCredentials?: boolean;
   AccountId?: string;
@@ -1264,6 +1237,7 @@ export const BatchGetDataQualityResultRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetDataQualityResultRequest",
 }) as any as S.Schema<BatchGetDataQualityResultRequest>;
+export type GenericBoundedDouble = number;
 export type GlueTableAdditionalOptions = { [key: string]: string | undefined };
 export const GlueTableAdditionalOptions = /*@__PURE__*/ S.Record(
   S.String,
@@ -1285,6 +1259,7 @@ export const GlueTable = /*@__PURE__*/ S.suspend(() =>
     AdditionalOptions: S.optional(GlueTableAdditionalOptions),
   }),
 ).annotate({ identifier: "GlueTable" }) as any as S.Schema<GlueTable>;
+export type PreProcessingQueryString = string;
 export interface DataQualityGlueTable {
   DatabaseName: string;
   TableName: string;
@@ -1315,12 +1290,16 @@ export const DataSource = /*@__PURE__*/ S.suspend(() =>
     DataQualityGlueTable: S.optional(DataQualityGlueTable),
   }),
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
+export type DataQualityRuleResultDescription =
+  | string
+  | redacted.Redacted<string>;
 export type DataQualityRuleResultStatus =
   | "PASS"
   | "FAIL"
   | "ERROR"
   | (string & {});
 export const DataQualityRuleResultStatus = /*@__PURE__*/ S.String;
+
 export type EvaluatedMetricsMap = { [key: string]: number | undefined };
 export const EvaluatedMetricsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1384,6 +1363,9 @@ export type DataQualityAnalyzerResults = DataQualityAnalyzerResult[];
 export const DataQualityAnalyzerResults = /*@__PURE__*/ S.Array(
   DataQualityAnalyzerResult,
 );
+export type DataQualityObservationDescription =
+  | string
+  | redacted.Redacted<string>;
 export interface DataQualityMetricValues {
   ActualValue?: number;
   ExpectedValue?: number;
@@ -1518,8 +1500,10 @@ export const BatchGetDevEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetDevEndpointsRequest",
 }) as any as S.Schema<BatchGetDevEndpointsRequest>;
+export type RoleArn = string;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
+export type IntegerValue = number;
 export type WorkerType =
   | "Standard"
   | "G.1X"
@@ -1530,6 +1514,8 @@ export type WorkerType =
   | "Z.2X"
   | (string & {});
 export const WorkerType = /*@__PURE__*/ S.String;
+
+export type GlueVersionString = string;
 export type PublicKeysList = string[];
 export const PublicKeysList = /*@__PURE__*/ S.Array(S.String);
 export type MapValue = { [key: string]: string | undefined };
@@ -1611,6 +1597,8 @@ export const BatchGetDevEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetDevEndpointsResponse",
 }) as any as S.Schema<BatchGetDevEndpointsResponse>;
+export type IterableFormName = string;
+export type ItemIdentifier = string;
 export type ItemIdentifierList = string[];
 export const ItemIdentifierList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetIterableFormsRequest {
@@ -1639,6 +1627,11 @@ export const BatchGetIterableFormsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetIterableFormsRequest",
 }) as any as S.Schema<BatchGetIterableFormsRequest>;
+export type ItemId = string;
+export type ItemName = string;
+export type AssetFormKey = string;
+export type FormTypeId = string;
+export type FormContent = string;
 export interface AssetFormEntry {
   FormTypeId?: string;
   Content?: string;
@@ -1671,6 +1664,8 @@ export const IterableFormItem = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IterableFormItem>;
 export type IterableFormItemList = IterableFormItem[];
 export const IterableFormItemList = /*@__PURE__*/ S.Array(IterableFormItem);
+export type ItemErrorCode = string;
+export type ItemErrorMessage = string;
 export interface ItemError {
   ItemIdentifier?: string;
   Code?: string;
@@ -1711,6 +1706,10 @@ export const BatchGetJobsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetJobsRequest>;
 export type JobMode = "SCRIPT" | "VISUAL" | "NOTEBOOK" | (string & {});
 export const JobMode = /*@__PURE__*/ S.String;
+
+export type UriString = string;
+export type RoleString = string;
+export type MaxConcurrentRuns = number;
 export interface ExecutionProperty {
   MaxConcurrentRuns?: number;
 }
@@ -1719,6 +1718,9 @@ export const ExecutionProperty = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecutionProperty",
 }) as any as S.Schema<ExecutionProperty>;
+export type ScriptLocationString = string;
+export type PythonVersionString = string;
+export type RuntimeNameString = string;
 export interface JobCommand {
   Name?: string;
   ScriptLocation?: string;
@@ -1738,6 +1740,7 @@ export const GenericMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ConnectionString = string;
 export type ConnectionStringList = string[];
 export const ConnectionStringList = /*@__PURE__*/ S.Array(S.String);
 export interface ConnectionsList {
@@ -1748,6 +1751,9 @@ export const ConnectionsList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectionsList",
 }) as any as S.Schema<ConnectionsList>;
+export type MaxRetries = number;
+export type Timeout = number;
+export type NotifyDelayAfter = number;
 export interface NotificationProperty {
   NotifyDelayAfter?: number;
 }
@@ -1756,6 +1762,11 @@ export const NotificationProperty = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotificationProperty",
 }) as any as S.Schema<NotificationProperty>;
+export type NodeId = string;
+export type NodeName = string;
+export type EnclosedInStringProperty = string;
+export type EnclosedInStringPropertyWithQuote = string;
+export type GlueStudioColumnNameString = string;
 export interface GlueStudioSchemaColumn {
   Name: string;
   Type?: string;
@@ -1804,6 +1815,7 @@ export const AthenaConnectorSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AthenaConnectorSource",
 }) as any as S.Schema<AthenaConnectorSource>;
+export type BoxedNonNegativeLong = number;
 export type EnclosedInStringProperties = string[];
 export const EnclosedInStringProperties = /*@__PURE__*/ S.Array(S.String);
 export type JDBCDataType =
@@ -1848,6 +1860,7 @@ export type JDBCDataType =
   | "VARCHAR"
   | (string & {});
 export const JDBCDataType = /*@__PURE__*/ S.String;
+
 export type GlueRecordType =
   | "DATE"
   | "STRING"
@@ -1861,6 +1874,7 @@ export type GlueRecordType =
   | "DOUBLE"
   | (string & {});
 export const GlueRecordType = /*@__PURE__*/ S.String;
+
 export type JDBCDataTypeMapping = { [key in JDBCDataType]?: GlueRecordType };
 export const JDBCDataTypeMapping = /*@__PURE__*/ S.Record(
   JDBCDataType,
@@ -1890,6 +1904,7 @@ export const JDBCConnectorOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JDBCConnectorOptions",
 }) as any as S.Schema<JDBCConnectorOptions>;
+export type SqlQuery = string;
 export interface JDBCConnectorSource {
   Name: string;
   ConnectionName: string;
@@ -1971,6 +1986,7 @@ export const RedshiftSource = /*@__PURE__*/ S.suspend(() =>
     TmpDirIAMRole: S.optional(S.String),
   }),
 ).annotate({ identifier: "RedshiftSource" }) as any as S.Schema<RedshiftSource>;
+export type BoxedLong = number;
 export interface S3SourceAdditionalOptions {
   BoundedSize?: number;
   BoundedFiles?: number;
@@ -2003,6 +2019,9 @@ export const S3CatalogSource = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<S3CatalogSource>;
 export type CompressionType = "gzip" | "bzip2" | (string & {});
 export const CompressionType = /*@__PURE__*/ S.String;
+
+export type BoxedBoolean = boolean;
+export type BoxedNonNegativeInt = number;
 export interface S3DirectSourceAdditionalOptions {
   BoundedSize?: number;
   BoundedFiles?: number;
@@ -2027,6 +2046,7 @@ export type Separator =
   | "tab"
   | (string & {});
 export const Separator = /*@__PURE__*/ S.String;
+
 export type QuoteChar =
   | "quote"
   | "quillemet"
@@ -2034,6 +2054,7 @@ export type QuoteChar =
   | "disabled"
   | (string & {});
 export const QuoteChar = /*@__PURE__*/ S.String;
+
 export interface S3CsvSource {
   Name: string;
   Paths: string[];
@@ -2120,6 +2141,7 @@ export type ParquetCompressionType =
   | "none"
   | (string & {});
 export const ParquetCompressionType = /*@__PURE__*/ S.String;
+
 export interface S3ParquetSource {
   Name: string;
   Paths: string[];
@@ -2301,6 +2323,7 @@ export type UpdateCatalogBehavior =
   | "LOG"
   | (string & {});
 export const UpdateCatalogBehavior = /*@__PURE__*/ S.String;
+
 export interface CatalogSchemaChangePolicy {
   EnableUpdateCatalog?: boolean;
   UpdateBehavior?: UpdateCatalogBehavior;
@@ -2347,6 +2370,7 @@ export const S3CatalogTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3CatalogTarget",
 }) as any as S.Schema<S3CatalogTarget>;
+export type NumberTargetPartitionsString = string;
 export interface DirectSchemaChangePolicy {
   EnableUpdateCatalog?: boolean;
   UpdateBehavior?: UpdateCatalogBehavior;
@@ -2400,6 +2424,7 @@ export type TargetFormat =
   | "xml"
   | (string & {});
 export const TargetFormat = /*@__PURE__*/ S.String;
+
 export interface S3DirectTarget {
   Name: string;
   Inputs: string[];
@@ -2490,6 +2515,8 @@ export const RenameField = /*@__PURE__*/ S.suspend(() =>
     TargetPath: EnclosedInStringProperties,
   }),
 ).annotate({ identifier: "RenameField" }) as any as S.Schema<RenameField>;
+export type Topk = number;
+export type Prob = number;
 export interface Spigot {
   Name: string;
   Inputs: string[];
@@ -2517,6 +2544,7 @@ export type JoinType =
   | "leftanti"
   | (string & {});
 export const JoinType = /*@__PURE__*/ S.String;
+
 export interface JoinColumn {
   From: string;
   Keys: string[][];
@@ -2548,6 +2576,7 @@ export interface SplitFields {
 export const SplitFields = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.String, Inputs: OneInput, Paths: GlueStudioPathList }),
 ).annotate({ identifier: "SplitFields" }) as any as S.Schema<SplitFields>;
+export type NonNegativeInt = number;
 export interface SelectFromCollection {
   Name: string;
   Inputs: string[];
@@ -2576,6 +2605,7 @@ export const FillMissingValues = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FillMissingValues>;
 export type FilterLogicalOperator = "AND" | "OR" | (string & {});
 export const FilterLogicalOperator = /*@__PURE__*/ S.String;
+
 export type FilterOperation =
   | "EQ"
   | "LT"
@@ -2586,8 +2616,10 @@ export type FilterOperation =
   | "ISNULL"
   | (string & {});
 export const FilterOperation = /*@__PURE__*/ S.String;
+
 export type FilterValueType = "COLUMNEXTRACTED" | "CONSTANT" | (string & {});
 export const FilterValueType = /*@__PURE__*/ S.String;
+
 export interface FilterValue {
   Type: FilterValueType;
   Value: string[];
@@ -2629,6 +2661,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type ManyInputs = string[];
 export const ManyInputs = /*@__PURE__*/ S.Array(S.String);
+export type ExtendedString = string;
 export interface CustomCode {
   Name: string;
   Inputs: string[];
@@ -2670,6 +2703,7 @@ export const SparkSQL = /*@__PURE__*/ S.suspend(() =>
     OutputSchemas: S.optional(GlueSchemas),
   }),
 ).annotate({ identifier: "SparkSQL" }) as any as S.Schema<SparkSQL>;
+export type BoxedPositiveInt = number;
 export type StartingPosition =
   | "latest"
   | "trim_horizon"
@@ -2677,6 +2711,8 @@ export type StartingPosition =
   | "timestamp"
   | (string & {});
 export const StartingPosition = /*@__PURE__*/ S.String;
+
+export type Iso8601DateTime = Date;
 export interface KinesisStreamingSourceOptions {
   EndpointUrl?: string;
   StreamName?: string;
@@ -2731,6 +2767,8 @@ export const KinesisStreamingSourceOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KinesisStreamingSourceOptions",
 }) as any as S.Schema<KinesisStreamingSourceOptions>;
+export type PollingTime = number;
+export type PositiveLong = number;
 export interface StreamingDataPreviewOptions {
   PollingTime?: number;
   RecordPollingLimit?: number;
@@ -2885,6 +2923,7 @@ export const NullCheckBoxList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NullCheckBoxList",
 }) as any as S.Schema<NullCheckBoxList>;
+export type GenericLimitedString = string;
 export interface Datatype {
   Id: string;
   Label: string;
@@ -2931,6 +2970,7 @@ export const Merge = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Merge" }) as any as S.Schema<Merge>;
 export type UnionType = "ALL" | "DISTINCT" | (string & {});
 export const UnionType = /*@__PURE__*/ S.String;
+
 export interface Union {
   Name: string;
   Inputs: string[];
@@ -2949,6 +2989,9 @@ export type PiiType =
   | "ColumnMasking"
   | (string & {});
 export const PiiType = /*@__PURE__*/ S.String;
+
+export type BoxedDoubleFraction = number;
+export type MaskValue = string;
 export interface PIIDetection {
   Name: string;
   Inputs: string[];
@@ -3003,6 +3046,7 @@ export type AggFunction =
   | "var_pop"
   | (string & {});
 export const AggFunction = /*@__PURE__*/ S.String;
+
 export interface AggregateOperation {
   Column: string[];
   AggFunc: AggFunction;
@@ -3222,6 +3266,7 @@ export type ParamType =
   | "null"
   | (string & {});
 export const ParamType = /*@__PURE__*/ S.String;
+
 export interface TransformConfigParameter {
   Name: string;
   Type: ParamType;
@@ -3272,11 +3317,13 @@ export const DynamicTransform = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DynamicTransform",
 }) as any as S.Schema<DynamicTransform>;
+export type DQDLString = string;
 export type DQTransformOutput =
   | "PrimaryInput"
   | "EvaluationResults"
   | (string & {});
 export const DQTransformOutput = /*@__PURE__*/ S.String;
+
 export interface DQResultsPublishingOptions {
   EvaluationContext?: string;
   ResultsS3Prefix?: string;
@@ -3298,6 +3345,7 @@ export type DQStopJobOnFailureTiming =
   | "AfterDataLoad"
   | (string & {});
 export const DQStopJobOnFailureTiming = /*@__PURE__*/ S.String;
+
 export interface DQStopJobOnFailureOptions {
   StopJobOnFailureTiming?: DQStopJobOnFailureTiming;
 }
@@ -3411,6 +3459,7 @@ export type HudiTargetCompressionType =
   | "snappy"
   | (string & {});
 export const HudiTargetCompressionType = /*@__PURE__*/ S.String;
+
 export interface S3HudiDirectTarget {
   Name: string;
   Inputs: string[];
@@ -3447,6 +3496,7 @@ export type JDBCConnectionType =
   | "redshift"
   | (string & {});
 export const JDBCConnectionType = /*@__PURE__*/ S.String;
+
 export interface DirectJDBCSource {
   Name: string;
   Database: string;
@@ -3552,6 +3602,7 @@ export type DeltaTargetCompressionType =
   | "snappy"
   | (string & {});
 export const DeltaTargetCompressionType = /*@__PURE__*/ S.String;
+
 export interface S3DeltaDirectTarget {
   Name: string;
   Inputs: string[];
@@ -3704,6 +3755,7 @@ export type AdditionalOptionKeys =
   | "compositeRuleEvaluation.method"
   | (string & {});
 export const AdditionalOptionKeys = /*@__PURE__*/ S.String;
+
 export type DQAdditionalOptions = { [key in AdditionalOptionKeys]?: string };
 export const DQAdditionalOptions = /*@__PURE__*/ S.Record(
   AdditionalOptionKeys,
@@ -3731,6 +3783,7 @@ export const EvaluateDataQualityMultiFrame = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EvaluateDataQualityMultiFrame",
 }) as any as S.Schema<EvaluateDataQualityMultiFrame>;
+export type RecipeVersion = string;
 export interface RecipeReference {
   RecipeArn: string;
   RecipeVersion: string;
@@ -3740,6 +3793,9 @@ export const RecipeReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecipeReference",
 }) as any as S.Schema<RecipeReference>;
+export type Operation = string;
+export type ParameterName = string;
+export type ParameterValue = string;
 export type ParameterMap = { [key: string]: string | undefined };
 export const ParameterMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -3752,6 +3808,9 @@ export interface RecipeAction {
 export const RecipeAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Operation: S.String, Parameters: S.optional(ParameterMap) }),
 ).annotate({ identifier: "RecipeAction" }) as any as S.Schema<RecipeAction>;
+export type DatabrewCondition = string;
+export type DatabrewConditionValue = string;
+export type TargetColumn = string;
 export interface ConditionExpression {
   Condition: string;
   Value?: string;
@@ -3977,6 +4036,7 @@ export type IcebergTargetCompressionType =
   | "snappy"
   | (string & {});
 export const IcebergTargetCompressionType = /*@__PURE__*/ S.String;
+
 export interface S3IcebergDirectTarget {
   Name: string;
   Inputs: string[];
@@ -4041,6 +4101,7 @@ export const S3ExcelSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3ExcelSource" }) as any as S.Schema<S3ExcelSource>;
 export type HyperTargetCompressionType = "uncompressed" | (string & {});
 export const HyperTargetCompressionType = /*@__PURE__*/ S.String;
+
 export interface S3HyperDirectTarget {
   Name: string;
   Inputs: string[];
@@ -4069,6 +4130,7 @@ export const S3HyperDirectTarget = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<S3HyperDirectTarget>;
 export type DdbExportType = "ddb" | "s3" | (string & {});
 export const DdbExportType = /*@__PURE__*/ S.String;
+
 export interface DDBELTConnectionOptions {
   DynamodbExport?: DdbExportType;
   DynamodbUnnestDDBJson?: boolean;
@@ -4284,6 +4346,7 @@ export const CodeGenConfigurationNodes = /*@__PURE__*/ S.Record(
 );
 export type ExecutionClass = "FLEX" | "STANDARD" | (string & {});
 export const ExecutionClass = /*@__PURE__*/ S.String;
+
 export type SourceControlProvider =
   | "GITHUB"
   | "GITLAB"
@@ -4291,11 +4354,13 @@ export type SourceControlProvider =
   | "AWS_CODE_COMMIT"
   | (string & {});
 export const SourceControlProvider = /*@__PURE__*/ S.String;
+
 export type SourceControlAuthStrategy =
   | "PERSONAL_ACCESS_TOKEN"
   | "AWS_SECRETS_MANAGER"
   | (string & {});
 export const SourceControlAuthStrategy = /*@__PURE__*/ S.String;
+
 export interface SourceControlDetails {
   Provider?: SourceControlProvider;
   Repository?: string;
@@ -4320,6 +4385,7 @@ export const SourceControlDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SourceControlDetails",
 }) as any as S.Schema<SourceControlDetails>;
+export type MaintenanceWindow = string;
 export interface Job {
   Name?: string;
   JobMode?: JobMode;
@@ -4399,6 +4465,8 @@ export const BatchGetJobsResponse = /*@__PURE__*/ S.suspend(() =>
 export type BatchGetPartitionValueList = PartitionValueList[];
 export const BatchGetPartitionValueList =
   /*@__PURE__*/ S.Array(PartitionValueList);
+export type AuditContextString = string;
+export type ColumnNameString = string;
 export type AuditColumnNamesList = string[];
 export const AuditColumnNamesList = /*@__PURE__*/ S.Array(S.String);
 export interface AuditContext {
@@ -4413,6 +4481,9 @@ export const AuditContext = /*@__PURE__*/ S.suspend(() =>
     AllColumnsRequested: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "AuditContext" }) as any as S.Schema<AuditContext>;
+export type NullableString = string;
+export type ContextKey = string;
+export type ContextValue = string;
 export type AdditionalContextMap = { [key: string]: string | undefined };
 export const AdditionalContextMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -4498,25 +4569,15 @@ export const BatchGetPartitionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetPartitionResponse",
 }) as any as S.Schema<BatchGetPartitionResponse>;
-export type FederationSourceErrorCode =
-  | "AccessDeniedException"
-  | "EntityNotFoundException"
-  | "InvalidCredentialsException"
-  | "InvalidInputException"
-  | "InvalidResponseException"
-  | "OperationTimeoutException"
-  | "OperationNotSupportedException"
-  | "InternalServiceException"
-  | "PartialFailureException"
-  | "ThrottlingException"
-  | (string & {});
-export const FederationSourceErrorCode = /*@__PURE__*/ S.String;
+export type DatabaseNameString = string;
+export type TableNameString = string;
 export type TableOptimizerType =
   | "compaction"
   | "retention"
   | "orphan_file_deletion"
   | (string & {});
 export const TableOptimizerType = /*@__PURE__*/ S.String;
+
 export interface BatchGetTableOptimizerEntry {
   catalogId?: string;
   databaseName?: string;
@@ -4547,12 +4608,15 @@ export const BatchGetTableOptimizerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetTableOptimizerRequest",
 }) as any as S.Schema<BatchGetTableOptimizerRequest>;
+export type ArnString = string;
+export type GlueConnectionNameString = string;
 export type TableOptimizerVpcConfiguration = { glueConnectionName: string };
 export const TableOptimizerVpcConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ glueConnectionName: S.String }),
 ]);
 export type CompactionStrategy = "binpack" | "sort" | "z-order" | (string & {});
 export const CompactionStrategy = /*@__PURE__*/ S.String;
+
 export interface IcebergCompactionConfiguration {
   strategy?: CompactionStrategy;
   minInputFiles?: number;
@@ -4601,6 +4665,7 @@ export const RetentionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RetentionConfiguration",
 }) as any as S.Schema<RetentionConfiguration>;
+export type MessageString = string;
 export interface IcebergOrphanFileDeletionConfiguration {
   orphanFileRetentionPeriodInDays?: number;
   location?: string;
@@ -4655,6 +4720,8 @@ export type TableOptimizerEventType =
   | "in_progress"
   | (string & {});
 export const TableOptimizerEventType = /*@__PURE__*/ S.String;
+
+export type TableOptimizerRunTimestamp = Date;
 export interface RunMetrics {
   NumberOfBytesCompacted?: string;
   NumberOfFilesCompacted?: string;
@@ -4669,6 +4736,10 @@ export const RunMetrics = /*@__PURE__*/ S.suspend(() =>
     JobDurationInHour: S.optional(S.String),
   }),
 ).annotate({ identifier: "RunMetrics" }) as any as S.Schema<RunMetrics>;
+export type MetricCounts = number;
+export type DpuHours = number;
+export type DpuCounts = number;
+export type DpuDurationInHour = number;
 export interface IcebergCompactionMetrics {
   NumberOfBytesCompacted?: number;
   NumberOfFilesCompacted?: number;
@@ -4775,6 +4846,7 @@ export const TableOptimizerRun = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableOptimizerRun>;
 export type ConfigurationSource = "catalog" | "table" | (string & {});
 export const ConfigurationSource = /*@__PURE__*/ S.String;
+
 export interface TableOptimizer {
   type?: TableOptimizerType;
   configuration?: TableOptimizerConfiguration;
@@ -4853,6 +4925,7 @@ export const BatchGetTriggersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetTriggersRequest",
 }) as any as S.Schema<BatchGetTriggersRequest>;
+export type IdString = string;
 export type TriggerType =
   | "SCHEDULED"
   | "CONDITIONAL"
@@ -4860,6 +4933,7 @@ export type TriggerType =
   | "EVENT"
   | (string & {});
 export const TriggerType = /*@__PURE__*/ S.String;
+
 export type TriggerState =
   | "CREATING"
   | "CREATED"
@@ -4871,6 +4945,7 @@ export type TriggerState =
   | "UPDATING"
   | (string & {});
 export const TriggerState = /*@__PURE__*/ S.String;
+
 export interface Action {
   JobName?: string;
   Arguments?: { [key: string]: string | undefined };
@@ -4893,8 +4968,10 @@ export type ActionList = Action[];
 export const ActionList = /*@__PURE__*/ S.Array(Action);
 export type Logical = "AND" | "ANY" | (string & {});
 export const Logical = /*@__PURE__*/ S.String;
+
 export type LogicalOperator = "EQUALS" | (string & {});
 export const LogicalOperator = /*@__PURE__*/ S.String;
+
 export type JobRunState =
   | "STARTING"
   | "RUNNING"
@@ -4908,6 +4985,7 @@ export type JobRunState =
   | "EXPIRED"
   | (string & {});
 export const JobRunState = /*@__PURE__*/ S.String;
+
 export type CrawlState =
   | "RUNNING"
   | "CANCELLING"
@@ -4917,6 +4995,7 @@ export type CrawlState =
   | "ERROR"
   | (string & {});
 export const CrawlState = /*@__PURE__*/ S.String;
+
 export interface Condition {
   LogicalOperator?: LogicalOperator;
   JobName?: string;
@@ -4945,6 +5024,8 @@ export const Predicate = /*@__PURE__*/ S.suspend(() =>
     Conditions: S.optional(ConditionList),
   }),
 ).annotate({ identifier: "Predicate" }) as any as S.Schema<Predicate>;
+export type BatchSize = number;
+export type BatchWindow = number;
 export interface EventBatchingCondition {
   BatchSize: number;
   BatchWindow?: number;
@@ -5020,6 +5101,7 @@ export type WorkflowRunStatus =
   | "ERROR"
   | (string & {});
 export const WorkflowRunStatus = /*@__PURE__*/ S.String;
+
 export interface WorkflowRunStatistics {
   TotalActions?: number;
   TimeoutActions?: number;
@@ -5046,6 +5128,7 @@ export const WorkflowRunStatistics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkflowRunStatistics>;
 export type NodeType = "CRAWLER" | "JOB" | "TRIGGER" | (string & {});
 export const NodeType = /*@__PURE__*/ S.String;
+
 export interface TriggerNodeDetails {
   Trigger?: Trigger;
 }
@@ -5054,6 +5137,7 @@ export const TriggerNodeDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TriggerNodeDetails",
 }) as any as S.Schema<TriggerNodeDetails>;
+export type AttemptCount = number;
 export interface Predecessor {
   JobName?: string;
   RunId?: string;
@@ -5063,6 +5147,9 @@ export const Predecessor = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Predecessor" }) as any as S.Schema<Predecessor>;
 export type PredecessorList = Predecessor[];
 export const PredecessorList = /*@__PURE__*/ S.Array(Predecessor);
+export type ExecutionTime = number;
+export type OrchestrationMessageString = string;
+export type OrchestrationPolicyJsonString = string;
 export interface JobRun {
   Id?: string;
   Attempt?: number;
@@ -5296,6 +5383,7 @@ export const BatchGetWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetWorkflowsResponse>;
 export type InclusionAnnotationValue = "INCLUDE" | "EXCLUDE" | (string & {});
 export const InclusionAnnotationValue = /*@__PURE__*/ S.String;
+
 export interface DatapointInclusionAnnotation {
   ProfileId?: string;
   StatisticId?: string;
@@ -5526,6 +5614,7 @@ export type TaskStatusType =
   | "TIMEOUT"
   | (string & {});
 export const TaskStatusType = /*@__PURE__*/ S.String;
+
 export interface CancelMLTaskRunResponse {
   TransformId?: string;
   TaskRunId?: string;
@@ -5564,6 +5653,8 @@ export const CancelStatementResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelStatementResponse>;
 export type DataFormat = "AVRO" | "JSON" | "PROTOBUF" | (string & {});
 export const DataFormat = /*@__PURE__*/ S.String;
+
+export type SchemaDefinitionString = string;
 export interface CheckSchemaVersionValidityInput {
   DataFormat: DataFormat;
   SchemaDefinition: string;
@@ -5575,6 +5666,8 @@ export const CheckSchemaVersionValidityInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CheckSchemaVersionValidityInput",
 }) as any as S.Schema<CheckSchemaVersionValidityInput>;
+export type IsVersionValid = boolean;
+export type SchemaValidationError = string;
 export interface CheckSchemaVersionValidityResponse {
   Valid?: boolean;
   Error?: string;
@@ -5584,6 +5677,9 @@ export const CheckSchemaVersionValidityResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CheckSchemaVersionValidityResponse",
 }) as any as S.Schema<CheckSchemaVersionValidityResponse>;
+export type OrchestrationS3Location = string;
+export type TagKey = string;
+export type TagValue = string;
 export type TagsMap = { [key: string]: string | undefined };
 export const TagsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -5615,6 +5711,8 @@ export const CreateBlueprintResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBlueprintResponse",
 }) as any as S.Schema<CreateBlueprintResponse>;
+export type CatalogNameString = string;
+export type FederationIdentifier = string;
 export interface FederatedCatalog {
   Identifier?: string;
   ConnectionName?: string;
@@ -5629,6 +5727,7 @@ export const FederatedCatalog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FederatedCatalog",
 }) as any as S.Schema<FederatedCatalog>;
+export type ResourceArnString = string;
 export interface TargetRedshiftCatalog {
   CatalogArn: string;
 }
@@ -5637,6 +5736,7 @@ export const TargetRedshiftCatalog = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TargetRedshiftCatalog",
 }) as any as S.Schema<TargetRedshiftCatalog>;
+export type IAMRoleArn = string;
 export interface DataLakeAccessProperties {
   DataLakeAccess?: boolean;
   DataTransferRole?: string;
@@ -5683,6 +5783,7 @@ export const CatalogProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CatalogProperties",
 }) as any as S.Schema<CatalogProperties>;
+export type DataLakePrincipalString = string;
 export interface DataLakePrincipal {
   DataLakePrincipalIdentifier?: string;
 }
@@ -5703,6 +5804,7 @@ export type Permission =
   | "DATA_LOCATION_ACCESS"
   | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
+
 export type PermissionList = Permission[];
 export const PermissionList = /*@__PURE__*/ S.Array(Permission);
 export interface PrincipalPermissions {
@@ -5725,12 +5827,14 @@ export type AllowFullTableExternalDataAccessEnum =
   | "False"
   | (string & {});
 export const AllowFullTableExternalDataAccessEnum = /*@__PURE__*/ S.String;
+
 export type OverwriteChildResourcePermissionsWithDefaultEnum =
   | "Accept"
   | "Deny"
   | (string & {});
 export const OverwriteChildResourcePermissionsWithDefaultEnum =
   /*@__PURE__*/ S.String;
+
 export interface CatalogInput {
   Description?: string;
   FederatedCatalog?: FederatedCatalog;
@@ -5781,6 +5885,9 @@ export const CreateCatalogResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCatalogResponse",
 }) as any as S.Schema<CreateCatalogResponse>;
+export type Classification = string;
+export type GrokPattern = string;
+export type CustomPatterns = string;
 export interface CreateGrokClassifierRequest {
   Classification: string;
   Name: string;
@@ -5797,6 +5904,7 @@ export const CreateGrokClassifierRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGrokClassifierRequest",
 }) as any as S.Schema<CreateGrokClassifierRequest>;
+export type RowTag = string;
 export interface CreateXMLClassifierRequest {
   Classification: string;
   Name: string;
@@ -5811,6 +5919,7 @@ export const CreateXMLClassifierRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateXMLClassifierRequest",
 }) as any as S.Schema<CreateXMLClassifierRequest>;
+export type JsonPath = string;
 export interface CreateJsonClassifierRequest {
   Name: string;
   JsonPath: string;
@@ -5820,8 +5929,11 @@ export const CreateJsonClassifierRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateJsonClassifierRequest",
 }) as any as S.Schema<CreateJsonClassifierRequest>;
+export type CsvColumnDelimiter = string;
+export type CsvQuoteSymbol = string;
 export type CsvHeaderOption = "UNKNOWN" | "PRESENT" | "ABSENT" | (string & {});
 export const CsvHeaderOption = /*@__PURE__*/ S.String;
+
 export type CsvHeader = string[];
 export const CsvHeader = /*@__PURE__*/ S.Array(S.String);
 export type CustomDatatypes = string[];
@@ -5832,6 +5944,7 @@ export type CsvSerdeOption =
   | "None"
   | (string & {});
 export const CsvSerdeOption = /*@__PURE__*/ S.String;
+
 export interface CreateCsvClassifierRequest {
   Name: string;
   Delimiter?: string;
@@ -5886,6 +5999,7 @@ export const CreateClassifierResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateClassifierResponse>;
 export type ColumnNameList = string[];
 export const ColumnNameList = /*@__PURE__*/ S.Array(S.String);
+export type SampleSizePercentage = number;
 export interface CreateColumnStatisticsTaskSettingsRequest {
   DatabaseName: string;
   TableName: string;
@@ -6015,6 +6129,7 @@ export type ConnectionType =
   | "VERTICA"
   | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
+
 export type MatchCriteria = string[];
 export const MatchCriteria = /*@__PURE__*/ S.Array(S.String);
 export type ConnectionPropertyKey =
@@ -6069,11 +6184,14 @@ export type ConnectionPropertyKey =
   | "DATABASE"
   | (string & {});
 export const ConnectionPropertyKey = /*@__PURE__*/ S.String;
+
 export type ConnectionProperties = { [key in ConnectionPropertyKey]?: string };
 export const ConnectionProperties = /*@__PURE__*/ S.Record(
   ConnectionPropertyKey,
   S.String.pipe(S.optional),
 );
+export type PropertyKey = string;
+export type PropertyValue = string;
 export type PropertyMap = { [key: string]: string | undefined };
 export const PropertyMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -6102,12 +6220,16 @@ export type AuthenticationType =
   | "IAM"
   | (string & {});
 export const AuthenticationType = /*@__PURE__*/ S.String;
+
 export type OAuth2GrantType =
   | "AUTHORIZATION_CODE"
   | "CLIENT_CREDENTIALS"
   | "JWT_BEARER"
   | (string & {});
 export const OAuth2GrantType = /*@__PURE__*/ S.String;
+
+export type UserManagedClientApplicationClientId = string;
+export type AWSManagedClientApplicationReference = string;
 export interface OAuth2ClientApplication {
   UserManagedClientApplicationClientId?: string;
   AWSManagedClientApplicationReference?: string;
@@ -6120,11 +6242,16 @@ export const OAuth2ClientApplication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OAuth2ClientApplication",
 }) as any as S.Schema<OAuth2ClientApplication>;
+export type TokenUrl = string;
+export type TokenUrlParameterKey = string;
+export type TokenUrlParameterValue = string;
 export type TokenUrlParametersMap = { [key: string]: string | undefined };
 export const TokenUrlParametersMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type AuthorizationCode = string | redacted.Redacted<string>;
+export type RedirectUri = string;
 export interface AuthorizationCodeProperties {
   AuthorizationCode?: string | redacted.Redacted<string>;
   RedirectUri?: string;
@@ -6137,6 +6264,12 @@ export const AuthorizationCodeProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthorizationCodeProperties",
 }) as any as S.Schema<AuthorizationCodeProperties>;
+export type UserManagedClientApplicationClientSecret =
+  | string
+  | redacted.Redacted<string>;
+export type AccessToken = string | redacted.Redacted<string>;
+export type RefreshToken = string | redacted.Redacted<string>;
+export type JwtToken = string | redacted.Redacted<string>;
 export interface OAuth2Credentials {
   UserManagedClientApplicationClientSecret?: string | redacted.Redacted<string>;
   AccessToken?: string | redacted.Redacted<string>;
@@ -6173,6 +6306,10 @@ export const OAuth2PropertiesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OAuth2PropertiesInput",
 }) as any as S.Schema<OAuth2PropertiesInput>;
+export type SecretArn = string;
+export type KmsKeyArn = string;
+export type Username = string;
+export type Password = string | redacted.Redacted<string>;
 export interface BasicAuthenticationCredentials {
   Username?: string;
   Password?: string | redacted.Redacted<string>;
@@ -6185,6 +6322,8 @@ export const BasicAuthenticationCredentials = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BasicAuthenticationCredentials",
 }) as any as S.Schema<BasicAuthenticationCredentials>;
+export type CredentialKey = string;
+export type CredentialValue = string;
 export type CredentialMap = { [key: string]: string | undefined };
 export const CredentialMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -6212,6 +6351,7 @@ export const AuthenticationConfigurationInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AuthenticationConfigurationInput>;
 export type ComputeEnvironment = "SPARK" | "ATHENA" | "PYTHON" | (string & {});
 export const ComputeEnvironment = /*@__PURE__*/ S.String;
+
 export type ComputeEnvironmentList = ComputeEnvironment[];
 export const ComputeEnvironmentList = /*@__PURE__*/ S.Array(ComputeEnvironment);
 export interface ConnectionInput {
@@ -6268,6 +6408,7 @@ export type ConnectionStatus =
   | "FAILED"
   | (string & {});
 export const ConnectionStatus = /*@__PURE__*/ S.String;
+
 export interface CreateConnectionResponse {
   CreateConnectionStatus?: ConnectionStatus;
 }
@@ -6348,6 +6489,7 @@ export const CreateCustomEntityTypeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCustomEntityTypeResponse",
 }) as any as S.Schema<CreateCustomEntityTypeResponse>;
+export type URI = string;
 export interface DatabaseIdentifier {
   CatalogId?: string;
   DatabaseName?: string;
@@ -6418,6 +6560,7 @@ export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatabaseResponse",
 }) as any as S.Schema<CreateDatabaseResponse>;
+export type DataQualityRulesetString = string;
 export interface DataQualityTargetTable {
   TableName: string;
   DatabaseName: string;
@@ -6552,6 +6695,8 @@ export const CreateDevEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDevEndpointResponse",
 }) as any as S.Schema<CreateDevEndpointResponse>;
+export type GlossaryName = string;
+export type MetadataDescription = string;
 export interface CreateGlossaryRequest {
   Name: string;
   Description?: string;
@@ -6575,6 +6720,7 @@ export const CreateGlossaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGlossaryRequest",
 }) as any as S.Schema<CreateGlossaryRequest>;
+export type GlossaryId = string;
 export interface CreateGlossaryResponse {
   Id?: string;
   Name?: string;
@@ -6589,6 +6735,9 @@ export const CreateGlossaryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGlossaryResponse",
 }) as any as S.Schema<CreateGlossaryResponse>;
+export type GlossaryTermName = string;
+export type GlossaryShortDescription = string;
+export type GlossaryLongDescription = string;
 export interface CreateGlossaryTermRequest {
   GlossaryIdentifier: string;
   Name: string;
@@ -6634,6 +6783,8 @@ export const CreateGlossaryTermResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGlossaryTermResponse",
 }) as any as S.Schema<CreateGlossaryTermResponse>;
+export type IdentityCenterInstanceArn = string;
+export type IdentityCenterScope = string;
 export type IdentityCenterScopesList = string[];
 export const IdentityCenterScopesList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateGlueIdentityCenterConfigurationRequest {
@@ -6653,6 +6804,7 @@ export const CreateGlueIdentityCenterConfigurationRequest =
   ).annotate({
     identifier: "CreateGlueIdentityCenterConfigurationRequest",
   }) as any as S.Schema<CreateGlueIdentityCenterConfigurationRequest>;
+export type ApplicationArn = string;
 export interface CreateGlueIdentityCenterConfigurationResponse {
   ApplicationArn?: string;
 }
@@ -6662,6 +6814,11 @@ export const CreateGlueIdentityCenterConfigurationResponse =
   ).annotate({
     identifier: "CreateGlueIdentityCenterConfigurationResponse",
   }) as any as S.Schema<CreateGlueIdentityCenterConfigurationResponse>;
+export type String128 = string;
+export type String512 = string;
+export type IntegrationDescription = string;
+export type String2048 = string;
+export type IntegrationString = string;
 export type IntegrationAdditionalEncryptionContextMap = {
   [key: string]: string | undefined;
 };
@@ -6685,6 +6842,7 @@ export const IntegrationSourcePropertiesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ContinuousSync = boolean;
 export interface IntegrationConfig {
   RefreshInterval?: string;
   SourceProperties?: { [key: string]: string | undefined };
@@ -6739,6 +6897,8 @@ export type IntegrationStatus =
   | "NEEDS_ATTENTION"
   | (string & {});
 export const IntegrationStatus = /*@__PURE__*/ S.String;
+
+export type IntegrationTimestamp = Date;
 export interface IntegrationError {
   ErrorCode?: string;
   ErrorMessage?: string;
@@ -6871,6 +7031,7 @@ export const SourceTableConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourceTableConfig>;
 export type UnnestSpec = "TOPLEVEL" | "FULL" | "NOUNNEST" | (string & {});
 export const UnnestSpec = /*@__PURE__*/ S.String;
+
 export interface IntegrationPartition {
   FieldName?: string;
   FunctionSpec?: string;
@@ -7001,6 +7162,7 @@ export type GlueTables = GlueTable[];
 export const GlueTables = /*@__PURE__*/ S.Array(GlueTable);
 export type TransformType = "FIND_MATCHES" | (string & {});
 export const TransformType = /*@__PURE__*/ S.String;
+
 export interface FindMatchesParameters {
   PrimaryKeyColumnName?: string;
   PrecisionRecallTradeoff?: number;
@@ -7034,6 +7196,7 @@ export type MLUserDataEncryptionModeString =
   | "SSE-KMS"
   | (string & {});
 export const MLUserDataEncryptionModeString = /*@__PURE__*/ S.String;
+
 export interface MLUserDataEncryption {
   MlUserDataEncryptionMode: MLUserDataEncryptionModeString;
   KmsKeyId?: string;
@@ -7212,6 +7375,7 @@ export type Compatibility =
   | "FULL_ALL"
   | (string & {});
 export const Compatibility = /*@__PURE__*/ S.String;
+
 export interface CreateSchemaInput {
   RegistryId?: RegistryId;
   SchemaName: string;
@@ -7236,8 +7400,10 @@ export const CreateSchemaInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSchemaInput",
 }) as any as S.Schema<CreateSchemaInput>;
+export type SchemaCheckpointNumber = number;
 export type SchemaStatus = "AVAILABLE" | "PENDING" | "DELETING" | (string & {});
 export const SchemaStatus = /*@__PURE__*/ S.String;
+
 export type SchemaVersionStatus =
   | "AVAILABLE"
   | "PENDING"
@@ -7245,6 +7411,7 @@ export type SchemaVersionStatus =
   | "DELETING"
   | (string & {});
 export const SchemaVersionStatus = /*@__PURE__*/ S.String;
+
 export interface CreateSchemaResponse {
   RegistryName?: string;
   RegistryArn?: string;
@@ -7281,6 +7448,10 @@ export const CreateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSchemaResponse",
 }) as any as S.Schema<CreateSchemaResponse>;
+export type CodeGenIdentifier = string;
+export type CodeGenNodeType = string;
+export type CodeGenArgName = string;
+export type CodeGenArgValue = string;
 export interface CodeGenNodeArg {
   Name: string;
   Value: string;
@@ -7323,6 +7494,7 @@ export type DagEdges = CodeGenEdge[];
 export const DagEdges = /*@__PURE__*/ S.Array(CodeGenEdge);
 export type Language = "PYTHON" | "SCALA" | (string & {});
 export const Language = /*@__PURE__*/ S.String;
+
 export interface CreateScriptRequest {
   DagNodes?: CodeGenNode[];
   DagEdges?: CodeGenEdge[];
@@ -7339,6 +7511,8 @@ export const CreateScriptRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateScriptRequest",
 }) as any as S.Schema<CreateScriptRequest>;
+export type PythonScript = string;
+export type ScalaCode = string;
 export interface CreateScriptResponse {
   PythonScript?: string;
   ScalaCode?: string;
@@ -7357,6 +7531,7 @@ export type S3EncryptionMode =
   | "SSE-S3"
   | (string & {});
 export const S3EncryptionMode = /*@__PURE__*/ S.String;
+
 export interface S3Encryption {
   S3EncryptionMode?: S3EncryptionMode;
   KmsKeyArn?: string;
@@ -7371,6 +7546,7 @@ export type S3EncryptionList = S3Encryption[];
 export const S3EncryptionList = /*@__PURE__*/ S.Array(S3Encryption);
 export type CloudWatchEncryptionMode = "DISABLED" | "SSE-KMS" | (string & {});
 export const CloudWatchEncryptionMode = /*@__PURE__*/ S.String;
+
 export interface CloudWatchEncryption {
   CloudWatchEncryptionMode?: CloudWatchEncryptionMode;
   KmsKeyArn?: string;
@@ -7385,6 +7561,7 @@ export const CloudWatchEncryption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CloudWatchEncryption>;
 export type JobBookmarksEncryptionMode = "DISABLED" | "CSE-KMS" | (string & {});
 export const JobBookmarksEncryptionMode = /*@__PURE__*/ S.String;
+
 export interface JobBookmarksEncryption {
   JobBookmarksEncryptionMode?: JobBookmarksEncryptionMode;
   KmsKeyArn?: string;
@@ -7399,6 +7576,7 @@ export const JobBookmarksEncryption = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JobBookmarksEncryption>;
 export type DataQualityEncryptionMode = "DISABLED" | "SSE-KMS" | (string & {});
 export const DataQualityEncryptionMode = /*@__PURE__*/ S.String;
+
 export interface DataQualityEncryption {
   DataQualityEncryptionMode?: DataQualityEncryptionMode;
   KmsKeyArn?: string;
@@ -7455,6 +7633,7 @@ export const CreateSecurityConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSecurityConfigurationResponse",
 }) as any as S.Schema<CreateSecurityConfigurationResponse>;
+export type OrchestrationRoleArn = string;
 export interface SessionCommand {
   Name?: string;
   PythonVersion?: string;
@@ -7462,6 +7641,7 @@ export interface SessionCommand {
 export const SessionCommand = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Name: S.optional(S.String), PythonVersion: S.optional(S.String) }),
 ).annotate({ identifier: "SessionCommand" }) as any as S.Schema<SessionCommand>;
+export type OrchestrationArgumentsValue = string;
 export type OrchestrationArgumentsMap = { [key: string]: string | undefined };
 export const OrchestrationArgumentsMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -7469,6 +7649,7 @@ export const OrchestrationArgumentsMap = /*@__PURE__*/ S.Record(
 );
 export type SessionType = "LIVY" | "SPARK_CONNECT" | (string & {});
 export const SessionType = /*@__PURE__*/ S.String;
+
 export interface CreateSessionRequest {
   Id: string;
   Description?: string;
@@ -7520,6 +7701,9 @@ export type SessionStatus =
   | "STOPPED"
   | (string & {});
 export const SessionStatus = /*@__PURE__*/ S.String;
+
+export type DoubleValue = number;
+export type IdleTimeout = number;
 export interface Session {
   Id?: string;
   CreatedOn?: Date;
@@ -7576,6 +7760,9 @@ export const CreateSessionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSessionResponse",
 }) as any as S.Schema<CreateSessionResponse>;
+export type NonNegativeInteger = number;
+export type ViewTextString = string;
+export type TableTypeString = string;
 export interface TableIdentifier {
   CatalogId?: string;
   DatabaseName?: string;
@@ -7594,6 +7781,8 @@ export const TableIdentifier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TableIdentifier>;
 export type ViewDialect = "REDSHIFT" | "ATHENA" | "SPARK" | (string & {});
 export const ViewDialect = /*@__PURE__*/ S.String;
+
+export type ViewDialectVersionString = string;
 export interface ViewRepresentationInput {
   Dialect?: ViewDialect;
   DialectVersion?: string;
@@ -7616,8 +7805,11 @@ export type ViewRepresentationInputList = ViewRepresentationInput[];
 export const ViewRepresentationInputList = /*@__PURE__*/ S.Array(
   ViewRepresentationInput,
 );
+export type TableVersionId = number;
+export type RefreshSeconds = number;
 export type LastRefreshType = "FULL" | "INCREMENTAL" | (string & {});
 export const LastRefreshType = /*@__PURE__*/ S.String;
+
 export type ViewSubObjectsList = string[];
 export const ViewSubObjectsList = /*@__PURE__*/ S.Array(S.String);
 export type ViewSubObjectVersionIdsList = number[];
@@ -7688,10 +7880,13 @@ export type PartitionIndexList = PartitionIndex[];
 export const PartitionIndexList = /*@__PURE__*/ S.Array(PartitionIndex);
 export type MetadataOperation = "CREATE" | (string & {});
 export const MetadataOperation = /*@__PURE__*/ S.String;
+
 export type IntegerList = number[];
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
 export type IcebergStructTypeEnum = "struct" | (string & {});
 export const IcebergStructTypeEnum = /*@__PURE__*/ S.String;
+
+export type IcebergDocument = unknown;
 export interface IcebergStructField {
   Id: number;
   Name: string;
@@ -7730,6 +7925,7 @@ export const IcebergSchema = /*@__PURE__*/ S.suspend(() =>
     Fields: IcebergStructFieldList,
   }),
 ).annotate({ identifier: "IcebergSchema" }) as any as S.Schema<IcebergSchema>;
+export type IcebergTransformString = string;
 export interface IcebergPartitionField {
   SourceId: number;
   Transform: string;
@@ -7764,8 +7960,10 @@ export const IcebergPartitionSpec = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IcebergPartitionSpec>;
 export type IcebergSortDirection = "asc" | "desc" | (string & {});
 export const IcebergSortDirection = /*@__PURE__*/ S.String;
+
 export type IcebergNullOrder = "nulls-first" | "nulls-last" | (string & {});
 export const IcebergNullOrder = /*@__PURE__*/ S.String;
+
 export interface IcebergSortField {
   SourceId: number;
   Transform: string;
@@ -7931,6 +8129,7 @@ export const CreateTriggerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTriggerResponse",
 }) as any as S.Schema<CreateTriggerResponse>;
+export type ConfigValueString = string;
 export type AllowedValuesStringList = string[];
 export const AllowedValuesStringList = /*@__PURE__*/ S.Array(S.String);
 export interface ConfigurationObject {
@@ -8000,10 +8199,13 @@ export type FunctionType =
   | "STORED_PROCEDURE"
   | (string & {});
 export const FunctionType = /*@__PURE__*/ S.String;
+
 export type PrincipalType = "USER" | "ROLE" | "GROUP" | (string & {});
 export const PrincipalType = /*@__PURE__*/ S.String;
+
 export type ResourceType = "JAR" | "FILE" | "ARCHIVE" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export interface ResourceUri {
   ResourceType?: ResourceType;
   Uri?: string;
@@ -8058,6 +8260,7 @@ export const CreateUserDefinedFunctionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUserDefinedFunctionResponse",
 }) as any as S.Schema<CreateUserDefinedFunctionResponse>;
+export type WorkflowDescriptionString = string;
 export interface CreateWorkflowRequest {
   Name: string;
   Description?: string;
@@ -8109,6 +8312,7 @@ export const DeleteAssetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteAssetResponse",
 }) as any as S.Schema<DeleteAssetResponse>;
+export type AssetTypeId = string;
 export interface DeleteAssetTypeRequest {
   Identifier: string;
 }
@@ -8132,6 +8336,7 @@ export const DeleteAssetTypeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteAssetTypeResponse",
 }) as any as S.Schema<DeleteAssetTypeResponse>;
+export type AttachmentName = string;
 export interface DeleteAttachmentRequest {
   AssetIdentifier: string;
   IterableFormName?: string;
@@ -8661,6 +8866,7 @@ export const DeleteRegistryInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteRegistryInput>;
 export type RegistryStatus = "AVAILABLE" | "DELETING" | (string & {});
 export const RegistryStatus = /*@__PURE__*/ S.String;
+
 export interface DeleteRegistryResponse {
   RegistryName?: string;
   RegistryArn?: string;
@@ -8719,6 +8925,7 @@ export const DeleteSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSchemaResponse",
 }) as any as S.Schema<DeleteSchemaResponse>;
+export type VersionsString = string;
 export interface DeleteSchemaVersionsInput {
   SchemaId: SchemaId;
   Versions: string;
@@ -8730,6 +8937,8 @@ export const DeleteSchemaVersionsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSchemaVersionsInput",
 }) as any as S.Schema<DeleteSchemaVersionsInput>;
+export type ErrorCodeString = string;
+export type ErrorMessageString = string;
 export interface ErrorDetails {
   ErrorCode?: string;
   ErrorMessage?: string;
@@ -8955,10 +9164,12 @@ export const DescribeConnectionTypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeConnectionTypeRequest",
 }) as any as S.Schema<DescribeConnectionTypeRequest>;
+export type Description = string;
 export type AuthenticationTypes = AuthenticationType[];
 export const AuthenticationTypes = /*@__PURE__*/ S.Array(AuthenticationType);
 export type DataOperation = "READ" | "WRITE" | (string & {});
 export const DataOperation = /*@__PURE__*/ S.String;
+
 export type DataOperations = DataOperation[];
 export const DataOperations = /*@__PURE__*/ S.Array(DataOperation);
 export type ComputeEnvironments = ComputeEnvironment[];
@@ -8975,6 +9186,8 @@ export const Capabilities = /*@__PURE__*/ S.suspend(() =>
     SupportedComputeEnvironments: ComputeEnvironments,
   }),
 ).annotate({ identifier: "Capabilities" }) as any as S.Schema<Capabilities>;
+export type PropertyName = string;
+export type PropertyDescriptionString = string;
 export type PropertyType =
   | "USER_INPUT"
   | "SECRET"
@@ -8983,8 +9196,11 @@ export type PropertyType =
   | "SECRET_OR_USER_INPUT"
   | (string & {});
 export const PropertyType = /*@__PURE__*/ S.String;
+
 export type PropertyTypes = PropertyType[];
 export const PropertyTypes = /*@__PURE__*/ S.Array(PropertyType);
+export type AllowedValueDescriptionString = string;
+export type AllowedValueValueString = string;
 export interface AllowedValue {
   Description?: string;
   Value: string;
@@ -9001,6 +9217,7 @@ export type PropertyLocation =
   | "PATH"
   | (string & {});
 export const PropertyLocation = /*@__PURE__*/ S.String;
+
 export interface Property {
   Name: string;
   Description: string;
@@ -9048,6 +9265,8 @@ export const AuthConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthConfiguration",
 }) as any as S.Schema<AuthConfiguration>;
+export type ComputeEnvironmentName = string;
+export type ComputeEnvironmentConfigurationDescriptionString = string;
 export type PropertyNameOverrides = { [key: string]: string | undefined };
 export const PropertyNameOverrides = /*@__PURE__*/ S.Record(
   S.String,
@@ -9090,6 +9309,9 @@ export const ComputeEnvironmentConfigurationMap = /*@__PURE__*/ S.Record(
 );
 export type HTTPMethod = "GET" | "POST" | (string & {});
 export const HTTPMethod = /*@__PURE__*/ S.String;
+
+export type PathString = string;
+export type ConnectorPropertyKey = string;
 export interface ConnectorProperty {
   Name: string;
   KeyOverride?: string;
@@ -9114,6 +9336,7 @@ export const ConnectorProperty = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectorProperty>;
 export type ConnectorPropertyList = ConnectorProperty[];
 export const ConnectorPropertyList = /*@__PURE__*/ S.Array(ConnectorProperty);
+export type JsonPathString = string;
 export interface ResponseConfiguration {
   ResultPath: string;
   ErrorPath?: string;
@@ -9123,6 +9346,7 @@ export const ResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResponseConfiguration",
 }) as any as S.Schema<ResponseConfiguration>;
+export type DefaultValue = string;
 export interface ResponseExtractionMapping {
   ContentPath?: string;
   HeaderKey?: string;
@@ -9205,6 +9429,8 @@ export const SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SourceConfiguration",
 }) as any as S.Schema<SourceConfiguration>;
+export type EntityConfigurationMapKeyString = string;
+export type FieldDefinitionMapKeyString = string;
 export type FieldDataType =
   | "INT"
   | "SMALLINT"
@@ -9226,6 +9452,7 @@ export type FieldDataType =
   | "UNION"
   | (string & {});
 export const FieldDataType = /*@__PURE__*/ S.String;
+
 export interface FieldDefinition {
   Name: string;
   FieldDataType: FieldDataType;
@@ -9309,6 +9536,9 @@ export const DescribeConnectionTypeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeConnectionTypeResponse",
 }) as any as S.Schema<DescribeConnectionTypeResponse>;
+export type EntityName = string;
+export type NextToken = string;
+export type ApiVersion = string;
 export interface DescribeEntityRequest {
   ConnectionName: string;
   CatalogId?: string;
@@ -9329,6 +9559,9 @@ export const DescribeEntityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEntityRequest",
 }) as any as S.Schema<DescribeEntityRequest>;
+export type EntityFieldName = string;
+export type FieldLabel = string;
+export type FieldDescription = string;
 export type FieldFilterOperator =
   | "LESS_THAN"
   | "GREATER_THAN"
@@ -9341,6 +9574,7 @@ export type FieldFilterOperator =
   | "ORDER_BY"
   | (string & {});
 export const FieldFilterOperator = /*@__PURE__*/ S.String;
+
 export type FieldFilterOperatorsList = FieldFilterOperator[];
 export const FieldFilterOperatorsList =
   /*@__PURE__*/ S.Array(FieldFilterOperator);
@@ -9402,6 +9636,7 @@ export const DescribeEntityResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEntityResponse",
 }) as any as S.Schema<DescribeEntityResponse>;
+export type IntegrationInteger = number;
 export interface DescribeInboundIntegrationsRequest {
   IntegrationArn?: string;
   Marker?: string;
@@ -9592,6 +9827,11 @@ export const GetAssetInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetAssetInput" }) as any as S.Schema<GetAssetInput>;
+export type AssetName = string;
+export type AssetDescription = string;
+export type CreatedAt = Date;
+export type UpdatedAt = Date;
+export type IterableFormKey = string;
 export interface IterableFormEntry {
   FormTypeId?: string;
 }
@@ -9648,6 +9888,8 @@ export const GetAssetTypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAssetTypeRequest",
 }) as any as S.Schema<GetAssetTypeRequest>;
+export type AssetTypeName = string;
+export type AssetTypeFormKey = string;
 export interface AssetTypeFormReference {
   FormTypeIdentifier: string;
 }
@@ -9719,6 +9961,9 @@ export type BlueprintRunState =
   | "ROLLING_BACK"
   | (string & {});
 export const BlueprintRunState = /*@__PURE__*/ S.String;
+
+export type BlueprintParameters = string;
+export type OrchestrationIAMRoleArn = string;
 export interface BlueprintRun {
   BlueprintName?: string;
   RunId?: string;
@@ -9753,6 +9998,7 @@ export const GetBlueprintRunResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBlueprintRunResponse",
 }) as any as S.Schema<GetBlueprintRunResponse>;
+export type PageSize = number;
 export interface GetBlueprintRunsRequest {
   BlueprintName: string;
   NextToken?: string;
@@ -9927,6 +10173,7 @@ export const GetCatalogImportStatusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCatalogImportStatusResponse",
 }) as any as S.Schema<GetCatalogImportStatusResponse>;
+export type Token = string;
 export interface GetCatalogsRequest {
   ParentCatalogId?: string;
   NextToken?: string;
@@ -10129,6 +10376,7 @@ export const GetColumnStatisticsForPartitionRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetColumnStatisticsForPartitionRequest",
 }) as any as S.Schema<GetColumnStatisticsForPartitionRequest>;
+export type TypeString = string;
 export type ColumnStatisticsType =
   | "BOOLEAN"
   | "DATE"
@@ -10139,6 +10387,8 @@ export type ColumnStatisticsType =
   | "BINARY"
   | (string & {});
 export const ColumnStatisticsType = /*@__PURE__*/ S.String;
+
+export type NonNegativeLong = number;
 export interface BooleanColumnStatisticsData {
   NumberOfTrues: number;
   NumberOfFalses: number;
@@ -10224,6 +10474,7 @@ export const LongColumnStatisticsData = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LongColumnStatisticsData",
 }) as any as S.Schema<LongColumnStatisticsData>;
+export type NonNegativeDouble = number;
 export interface StringColumnStatisticsData {
   MaximumLength: number;
   AverageLength: number;
@@ -10361,8 +10612,11 @@ export const GetColumnStatisticsTaskRunRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetColumnStatisticsTaskRunRequest",
 }) as any as S.Schema<GetColumnStatisticsTaskRunRequest>;
+export type TableName = string;
+export type PositiveInteger = number;
 export type ComputationType = "FULL" | "INCREMENTAL" | (string & {});
 export const ComputationType = /*@__PURE__*/ S.String;
+
 export type ColumnStatisticsState =
   | "STARTING"
   | "RUNNING"
@@ -10371,6 +10625,7 @@ export type ColumnStatisticsState =
   | "STOPPED"
   | (string & {});
 export const ColumnStatisticsState = /*@__PURE__*/ S.String;
+
 export interface ColumnStatisticsTaskRun {
   CustomerId?: string;
   ColumnStatisticsTaskRunId?: string;
@@ -10473,10 +10728,13 @@ export const GetColumnStatisticsTaskSettingsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetColumnStatisticsTaskSettingsRequest>;
 export type ScheduleType = "CRON" | "AUTO" | (string & {});
 export const ScheduleType = /*@__PURE__*/ S.String;
+
 export type SettingSource = "CATALOG" | "TABLE" | (string & {});
 export const SettingSource = /*@__PURE__*/ S.String;
+
 export type ExecutionStatus = "FAILED" | "STARTED" | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
+
 export interface ExecutionAttempt {
   Status?: ExecutionStatus;
   ColumnStatisticsTaskRunId?: string;
@@ -10554,6 +10812,7 @@ export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConnectionRequest",
 }) as any as S.Schema<GetConnectionRequest>;
+export type LongValueString = string;
 export interface OAuth2Properties {
   OAuth2GrantType?: OAuth2GrantType;
   OAuth2ClientApplication?: OAuth2ClientApplication;
@@ -10586,6 +10845,7 @@ export const AuthenticationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthenticationConfiguration",
 }) as any as S.Schema<AuthenticationConfiguration>;
+export type ConnectionSchemaVersion = number;
 export interface Connection {
   Name?: string;
   Description?: string;
@@ -10810,6 +11070,7 @@ export const GetCustomEntityTypeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCustomEntityTypeResponse>;
 export type GlueResourceType = "JOB" | "SESSION" | (string & {});
 export const GlueResourceType = /*@__PURE__*/ S.String;
+
 export interface GetDashboardUrlRequest {
   ResourceId: string;
   ResourceType: GlueResourceType;
@@ -10826,6 +11087,7 @@ export const GetDashboardUrlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDashboardUrlRequest",
 }) as any as S.Schema<GetDashboardUrlRequest>;
+export type SensitiveUrl = string | redacted.Redacted<string>;
 export interface GetDashboardUrlResponse {
   Url: string | redacted.Redacted<string>;
 }
@@ -10877,10 +11139,13 @@ export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDatabaseResponse",
 }) as any as S.Schema<GetDatabaseResponse>;
+export type CatalogGetterPageSize = number;
 export type ResourceShareType = "FOREIGN" | "ALL" | "FEDERATED" | (string & {});
 export const ResourceShareType = /*@__PURE__*/ S.String;
+
 export type DatabaseAttributes = "NAME" | "TARGET_DATABASE" | (string & {});
 export const DatabaseAttributes = /*@__PURE__*/ S.String;
+
 export type DatabaseAttributesList = DatabaseAttributes[];
 export const DatabaseAttributesList = /*@__PURE__*/ S.Array(DatabaseAttributes);
 export interface GetDatabasesRequest {
@@ -10931,6 +11196,7 @@ export type CatalogEncryptionMode =
   | "SSE-KMS-WITH-SERVICE-ROLE"
   | (string & {});
 export const CatalogEncryptionMode = /*@__PURE__*/ S.String;
+
 export interface EncryptionAtRest {
   CatalogEncryptionMode: CatalogEncryptionMode;
   SseAwsKmsKeyId?: string;
@@ -11016,6 +11282,7 @@ export type DataQualityModelStatus =
   | "FAILED"
   | (string & {});
 export const DataQualityModelStatus = /*@__PURE__*/ S.String;
+
 export interface GetDataQualityModelResponse {
   Status?: DataQualityModelStatus;
   StartedOn?: Date;
@@ -11223,6 +11490,7 @@ export const GetDataQualityRulesetEvaluationRunRequest =
   }) as any as S.Schema<GetDataQualityRulesetEvaluationRunRequest>;
 export type DQCompositeRuleEvaluationMethod = "COLUMN" | "ROW" | (string & {});
 export const DQCompositeRuleEvaluationMethod = /*@__PURE__*/ S.String;
+
 export interface DataQualityEvaluationRunAdditionalRunOptions {
   CloudWatchMetricsEnabled?: boolean;
   ResultsS3Prefix?: string;
@@ -11338,11 +11606,15 @@ export const GetDevEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDevEndpointsResponse",
 }) as any as S.Schema<GetDevEndpointsResponse>;
+export type OptionKey = string;
+export type OptionValue = string;
 export type ConnectionOptions = { [key: string]: string | undefined };
 export const ConnectionOptions = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type FilterPredicate = string;
+export type Limit = number;
 export type SelectedFields = string[];
 export const SelectedFields = /*@__PURE__*/ S.Array(S.String);
 export interface GetEntityRecordsRequest {
@@ -11375,6 +11647,7 @@ export const GetEntityRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEntityRecordsRequest",
 }) as any as S.Schema<GetEntityRecordsRequest>;
+export type Record = unknown;
 export type Records = any[];
 export const Records = /*@__PURE__*/ S.Array(S.Any);
 export interface GetEntityRecordsResponse {
@@ -11403,6 +11676,8 @@ export const GetFormTypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetFormTypeRequest",
 }) as any as S.Schema<GetFormTypeRequest>;
+export type FormTypeName = string;
+export type FormTypeSchema = string;
 export interface GetFormTypeResponse {
   Id?: string;
   Name?: string;
@@ -11582,6 +11857,8 @@ export interface GetJobResponse {
 export const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Job: S.optional(Job) }),
 ).annotate({ identifier: "GetJobResponse" }) as any as S.Schema<GetJobResponse>;
+export type JobName = string;
+export type RunId = string;
 export interface GetJobBookmarkRequest {
   JobName: string;
   RunId?: string;
@@ -11593,6 +11870,7 @@ export const GetJobBookmarkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetJobBookmarkRequest",
 }) as any as S.Schema<GetJobBookmarkRequest>;
+export type JsonValue = string;
 export interface JobBookmarkEntry {
   JobName?: string;
   Version?: number;
@@ -11647,6 +11925,7 @@ export const GetJobRunResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetJobRunResponse",
 }) as any as S.Schema<GetJobRunResponse>;
+export type OrchestrationPageSize200 = number;
 export interface GetJobRunsRequest {
   JobName: string;
   NextToken?: string;
@@ -11733,6 +12012,8 @@ export const GetMappingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMappingRequest",
 }) as any as S.Schema<GetMappingRequest>;
+export type SchemaPathString = string;
+export type FieldType = string;
 export interface MappingEntry {
   SourceTable?: string;
   SourcePath?: string;
@@ -11761,6 +12042,7 @@ export const GetMappingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMappingResponse",
 }) as any as S.Schema<GetMappingResponse>;
+export type UUIDv4 = string;
 export interface GetMaterializedViewRefreshTaskRunRequest {
   CatalogId: string;
   MaterializedViewRefreshTaskRunId: string;
@@ -11784,11 +12066,14 @@ export type MaterializedViewRefreshState =
   | "STOPPED"
   | (string & {});
 export const MaterializedViewRefreshState = /*@__PURE__*/ S.String;
+
 export type MaterializedViewRefreshType =
   | "FULL"
   | "INCREMENTAL"
   | (string & {});
 export const MaterializedViewRefreshType = /*@__PURE__*/ S.String;
+
+export type ByteCount = number;
 export interface MaterializedViewRefreshTaskRun {
   CustomerId?: string;
   MaterializedViewRefreshTaskRunId?: string;
@@ -11859,6 +12144,8 @@ export type TaskType =
   | "FIND_MATCHES"
   | (string & {});
 export const TaskType = /*@__PURE__*/ S.String;
+
+export type ReplaceBoolean = boolean;
 export interface ImportLabelsTaskRunProperties {
   InputS3Path?: string;
   Replace?: boolean;
@@ -11949,6 +12236,7 @@ export const GetMLTaskRunResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMLTaskRunResponse",
 }) as any as S.Schema<GetMLTaskRunResponse>;
+export type PaginationToken = string;
 export interface TaskRunFilterCriteria {
   TaskRunType?: TaskType;
   Status?: TaskStatusType;
@@ -11971,8 +12259,10 @@ export type TaskRunSortColumnType =
   | "STARTED"
   | (string & {});
 export const TaskRunSortColumnType = /*@__PURE__*/ S.String;
+
 export type SortDirectionType = "DESCENDING" | "ASCENDING" | (string & {});
 export const SortDirectionType = /*@__PURE__*/ S.String;
+
 export interface TaskRunSortCriteria {
   Column: TaskRunSortColumnType;
   SortDirection: SortDirectionType;
@@ -12058,6 +12348,8 @@ export type TransformStatusType =
   | "DELETING"
   | (string & {});
 export const TransformStatusType = /*@__PURE__*/ S.String;
+
+export type RecordsCount = number;
 export interface ConfusionMatrix {
   NumTruePositives?: number;
   NumFalsePositives?: number;
@@ -12120,6 +12412,7 @@ export const EvaluationMetrics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EvaluationMetrics",
 }) as any as S.Schema<EvaluationMetrics>;
+export type LabelCount = number;
 export interface SchemaColumn {
   Name?: string;
   DataType?: string;
@@ -12213,6 +12506,7 @@ export type TransformSortColumnType =
   | "LAST_MODIFIED"
   | (string & {});
 export const TransformSortColumnType = /*@__PURE__*/ S.String;
+
 export interface TransformSortCriteria {
   Column: TransformSortColumnType;
   SortDirection: SortDirectionType;
@@ -12362,6 +12656,7 @@ export type PartitionIndexStatus =
   | "FAILED"
   | (string & {});
 export const PartitionIndexStatus = /*@__PURE__*/ S.String;
+
 export type BackfillErrorCode =
   | "ENCRYPTED_PARTITION_ERROR"
   | "INTERNAL_ERROR"
@@ -12370,6 +12665,7 @@ export type BackfillErrorCode =
   | "UNSUPPORTED_PARTITION_CHARACTER_ERROR"
   | (string & {});
 export const BackfillErrorCode = /*@__PURE__*/ S.String;
+
 export type BackfillErroredPartitionsList = PartitionValueList[];
 export const BackfillErroredPartitionsList =
   /*@__PURE__*/ S.Array(PartitionValueList);
@@ -12417,6 +12713,8 @@ export const GetPartitionIndexesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPartitionIndexesResponse",
 }) as any as S.Schema<GetPartitionIndexesResponse>;
+export type PredicateString = string;
+export type TotalSegmentsInteger = number;
 export interface Segment {
   SegmentNumber: number;
   TotalSegments: number;
@@ -12424,6 +12722,7 @@ export interface Segment {
 export const Segment = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SegmentNumber: S.Number, TotalSegments: S.Number }),
 ).annotate({ identifier: "Segment" }) as any as S.Schema<Segment>;
+export type BooleanNullable = boolean;
 export interface GetPartitionsRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -12515,6 +12814,8 @@ export const GetRegistryInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRegistryInput",
 }) as any as S.Schema<GetRegistryInput>;
+export type CreatedTimestamp = string;
+export type UpdatedTimestamp = string;
 export interface GetRegistryResponse {
   RegistryName?: string;
   RegistryArn?: string;
@@ -12549,6 +12850,7 @@ export const GetResourcePoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePoliciesRequest",
 }) as any as S.Schema<GetResourcePoliciesRequest>;
+export type PolicyJsonString = string;
 export interface GluePolicy {
   PolicyInJson?: string;
   PolicyHash?: string;
@@ -12677,6 +12979,7 @@ export const GetSchemaByDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSchemaByDefinitionResponse",
 }) as any as S.Schema<GetSchemaByDefinitionResponse>;
+export type LatestSchemaVersionBoolean = boolean;
 export interface SchemaVersionNumber {
   LatestVersion?: boolean;
   VersionNumber?: number;
@@ -12729,6 +13032,7 @@ export const GetSchemaVersionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSchemaVersionResponse>;
 export type SchemaDiffType = "SYNTAX_DIFF" | (string & {});
 export const SchemaDiffType = /*@__PURE__*/ S.String;
+
 export interface GetSchemaVersionsDiffInput {
   SchemaId: SchemaId;
   FirstSchemaVersionNumber: SchemaVersionNumber;
@@ -12747,6 +13051,7 @@ export const GetSchemaVersionsDiffInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSchemaVersionsDiffInput",
 }) as any as S.Schema<GetSchemaVersionsDiffInput>;
+export type SchemaDefinitionDiff = string;
 export interface GetSchemaVersionsDiffResponse {
   Diff?: string;
 }
@@ -12848,6 +13153,8 @@ export const GetSessionEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSessionEndpointRequest",
 }) as any as S.Schema<GetSessionEndpointRequest>;
+export type SparkConnectEndpointUrl = string;
+export type SensitiveString = string | redacted.Redacted<string>;
 export interface SessionEndpoint {
   Url: string;
   AuthToken: string | redacted.Redacted<string>;
@@ -12897,6 +13204,7 @@ export type StatementState =
   | "ERROR"
   | (string & {});
 export const StatementState = /*@__PURE__*/ S.String;
+
 export interface StatementOutputData {
   TextPlain?: string;
 }
@@ -12925,6 +13233,7 @@ export const StatementOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StatementOutput",
 }) as any as S.Schema<StatementOutput>;
+export type LongValue = number;
 export interface Statement {
   Id?: number;
   Code?: string;
@@ -12960,6 +13269,7 @@ export type TableAttributes =
   | "LATEST_ICEBERG_METADATA"
   | (string & {});
 export const TableAttributes = /*@__PURE__*/ S.String;
+
 export type TableAttributesList = TableAttributes[];
 export const TableAttributesList = /*@__PURE__*/ S.Array(TableAttributes);
 export interface GetTableRequest {
@@ -13048,6 +13358,7 @@ export const ViewDefinition = /*@__PURE__*/ S.suspend(() =>
     Representations: S.optional(ViewRepresentationList),
   }),
 ).annotate({ identifier: "ViewDefinition" }) as any as S.Schema<ViewDefinition>;
+export type TableIdString = string;
 export type IcebergSchemaList = IcebergSchema[];
 export const IcebergSchemaList = /*@__PURE__*/ S.Array(IcebergSchema);
 export type IcebergPartitionSpecList = IcebergPartitionSpec[];
@@ -13089,6 +13400,7 @@ export const IcebergTableMetadata = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IcebergTableMetadata>;
 export type ResourceAction = "UPDATE" | "CREATE" | (string & {});
 export const ResourceAction = /*@__PURE__*/ S.String;
+
 export type ResourceState =
   | "QUEUED"
   | "IN_PROGRESS"
@@ -13097,6 +13409,7 @@ export type ResourceState =
   | "FAILED"
   | (string & {});
 export const ResourceState = /*@__PURE__*/ S.String;
+
 export interface ViewValidation {
   Dialect?: ViewDialect;
   DialectVersion?: string;
@@ -13261,6 +13574,7 @@ export const GetTableOptimizerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTableOptimizerResponse",
 }) as any as S.Schema<GetTableOptimizerResponse>;
+export type FilterString = string;
 export interface GetTablesRequest {
   CatalogId?: string;
   DatabaseName: string;
@@ -13447,6 +13761,7 @@ export type PermissionType =
   | "NESTED_CELL_PERMISSION"
   | (string & {});
 export const PermissionType = /*@__PURE__*/ S.String;
+
 export type PermissionTypeList = PermissionType[];
 export const PermissionTypeList = /*@__PURE__*/ S.Array(PermissionType);
 export interface GetUnfilteredPartitionMetadataRequest {
@@ -13906,6 +14221,7 @@ export const ListAssetTypesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAssetTypesResponse",
 }) as any as S.Schema<ListAssetTypesResponse>;
+export type OrchestrationPageSize25 = number;
 export interface ListBlueprintsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -13963,6 +14279,7 @@ export const ListColumnStatisticsTaskRunsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListColumnStatisticsTaskRunsResponse",
 }) as any as S.Schema<ListColumnStatisticsTaskRunsResponse>;
+export type MaxResults = number;
 export interface ListConnectionTypesRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -13977,6 +14294,9 @@ export const ListConnectionTypesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListConnectionTypesRequest",
 }) as any as S.Schema<ListConnectionTypesRequest>;
+export type DisplayName = string;
+export type Vendor = string;
+export type UrlString = string;
 export interface ConnectionTypeVariant {
   ConnectionTypeVariantName?: string;
   DisplayName?: string;
@@ -14071,6 +14391,7 @@ export type FieldName =
   | "DPU_HOUR"
   | (string & {});
 export const FieldName = /*@__PURE__*/ S.String;
+
 export type FilterOperator =
   | "GT"
   | "GE"
@@ -14080,6 +14401,7 @@ export type FilterOperator =
   | "NE"
   | (string & {});
 export const FilterOperator = /*@__PURE__*/ S.String;
+
 export interface CrawlsFilter {
   FieldName?: FieldName;
   FilterOperator?: FilterOperator;
@@ -14112,6 +14434,7 @@ export const ListCrawlsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCrawlsRequest",
 }) as any as S.Schema<ListCrawlsRequest>;
+export type CrawlId = string;
 export type CrawlerHistoryState =
   | "RUNNING"
   | "COMPLETED"
@@ -14119,6 +14442,7 @@ export type CrawlerHistoryState =
   | "STOPPED"
   | (string & {});
 export const CrawlerHistoryState = /*@__PURE__*/ S.String;
+
 export interface CrawlerHistory {
   CrawlId?: string;
   State?: CrawlerHistoryState;
@@ -14582,12 +14906,14 @@ export interface RunIdentifier {
 export const RunIdentifier = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ RunId: S.optional(S.String), JobRunId: S.optional(S.String) }),
 ).annotate({ identifier: "RunIdentifier" }) as any as S.Schema<RunIdentifier>;
+export type StatisticNameString = string;
 export type StatisticEvaluationLevel =
   | "Dataset"
   | "Column"
   | "Multicolumn"
   | (string & {});
 export const StatisticEvaluationLevel = /*@__PURE__*/ S.String;
+
 export type ReferenceDatasetsList = string[];
 export const ReferenceDatasetsList = /*@__PURE__*/ S.Array(S.String);
 export type StatisticPropertiesMap = { [key: string]: string | undefined };
@@ -14689,6 +15015,10 @@ export const ListEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEntitiesRequest",
 }) as any as S.Schema<ListEntitiesRequest>;
+export type EntityLabel = string;
+export type IsParentEntity = boolean;
+export type EntityDescription = string;
+export type Category = string;
 export interface Entity {
   EntityName?: string;
   Label?: string;
@@ -14858,6 +15188,7 @@ export const ListGlossaryTermsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGlossaryTermsResponse",
 }) as any as S.Schema<ListGlossaryTermsResponse>;
+export type String1024 = string;
 export type IntegrationResourcePropertyFilterValues = string[];
 export const IntegrationResourcePropertyFilterValues = /*@__PURE__*/ S.Array(
   S.String,
@@ -14959,6 +15290,7 @@ export const ListIterableFormsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListIterableFormsRequest",
 }) as any as S.Schema<ListIterableFormsRequest>;
+export type ItemDescription = string;
 export interface IterableFormListItem {
   ItemId?: string;
   ItemName?: string;
@@ -15090,6 +15422,8 @@ export const ListMLTransformsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMLTransformsResponse",
 }) as any as S.Schema<ListMLTransformsResponse>;
+export type MaxResultsNumber = number;
+export type SchemaRegistryTokenString = string;
 export interface ListRegistriesInput {
   MaxResults?: number;
   NextToken?: string;
@@ -15236,6 +15570,7 @@ export const ListSchemaVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSchemaVersionsResponse",
 }) as any as S.Schema<ListSchemaVersionsResponse>;
+export type OrchestrationToken = string;
 export interface ListSessionsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -15302,6 +15637,8 @@ export const ListStatementsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListStatementsResponse",
 }) as any as S.Schema<ListStatementsResponse>;
+export type MaxListTableOptimizerRunsTokenResults = number;
+export type ListTableOptimizerRunsToken = string;
 export interface ListTableOptimizerRunsRequest {
   CatalogId: string;
   DatabaseName: string;
@@ -15720,8 +16057,10 @@ export type ExistCondition =
   | "NONE"
   | (string & {});
 export const ExistCondition = /*@__PURE__*/ S.String;
+
 export type EnableHybridValues = "TRUE" | "FALSE" | (string & {});
 export const EnableHybridValues = /*@__PURE__*/ S.String;
+
 export interface PutResourcePolicyRequest {
   PolicyInJson: string;
   ResourceArn?: string;
@@ -15750,6 +16089,8 @@ export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutResourcePolicyResponse",
 }) as any as S.Schema<PutResourcePolicyResponse>;
+export type MetadataKeyString = string;
+export type MetadataValueString = string;
 export interface MetadataKeyValuePair {
   MetadataKey?: string;
   MetadataValue?: string;
@@ -15828,6 +16169,7 @@ export const PutWorkflowRunPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutWorkflowRunPropertiesResponse>;
 export type MetadataList = MetadataKeyValuePair[];
 export const MetadataList = /*@__PURE__*/ S.Array(MetadataKeyValuePair);
+export type QuerySchemaVersionMetadataMaxResults = number;
 export interface QuerySchemaVersionMetadataInput {
   SchemaId?: SchemaId;
   SchemaVersionNumber?: SchemaVersionNumber;
@@ -15899,6 +16241,7 @@ export const QuerySchemaVersionMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QuerySchemaVersionMetadataResponse>;
 export type IntegrationType = "REST" | (string & {});
 export const IntegrationType = /*@__PURE__*/ S.String;
+
 export interface ConnectionPropertiesConfiguration {
   Url?: ConnectorProperty;
   AdditionalRequestParameters?: ConnectorProperty[];
@@ -15917,8 +16260,10 @@ export type ConnectorOAuth2GrantType =
   | "AUTHORIZATION_CODE"
   | (string & {});
 export const ConnectorOAuth2GrantType = /*@__PURE__*/ S.String;
+
 export type ContentType = "APPLICATION_JSON" | "URL_ENCODED" | (string & {});
 export const ContentType = /*@__PURE__*/ S.String;
+
 export interface ClientCredentialsProperties {
   TokenUrl?: ConnectorProperty;
   RequestMethod?: HTTPMethod;
@@ -16188,6 +16533,7 @@ export const ResumeWorkflowRunResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResumeWorkflowRunResponse",
 }) as any as S.Schema<ResumeWorkflowRunResponse>;
+export type OrchestrationStatementCodeString = string;
 export interface RunStatementRequest {
   SessionId: string;
   Code: string;
@@ -16212,8 +16558,13 @@ export const RunStatementResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RunStatementResponse",
 }) as any as S.Schema<RunStatementResponse>;
+export type SearchText = string;
+export type SearchMaxResults = number;
+export type SearchNextToken = string;
+export type SearchAttribute = string;
 export type SearchSortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SearchSortOrder = /*@__PURE__*/ S.String;
+
 export interface SearchSort {
   Attribute: string;
   Order?: SearchSortOrder;
@@ -16236,6 +16587,9 @@ export type SearchFilterOperator =
   | "notExists"
   | (string & {});
 export const SearchFilterOperator = /*@__PURE__*/ S.String;
+
+export type SearchFilterStringValue = string;
+export type SearchFilterLongValue = number;
 export type SearchFilterValue =
   | { StringValue: string; LongValue?: never }
   | { StringValue?: never; LongValue: number };
@@ -16257,6 +16611,7 @@ export const SearchAttributeFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchAttributeFilter",
 }) as any as S.Schema<SearchAttributeFilter>;
+export type SearchMapKey = string;
 export type SearchMapFilterValue = { StringValue: string };
 export const SearchMapFilterValue = /*@__PURE__*/ S.Union([
   S.Struct({ StringValue: S.String }),
@@ -16337,6 +16692,7 @@ export const SearchAssetsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchAssetsInput",
 }) as any as S.Schema<SearchAssetsInput>;
+export type SearchResultName = string;
 export interface SearchResultItem {
   Id?: string;
   AssetName?: string;
@@ -16377,6 +16733,7 @@ export type Comparator =
   | "LESS_THAN_EQUALS"
   | (string & {});
 export const Comparator = /*@__PURE__*/ S.String;
+
 export interface PropertyPredicate {
   Key?: string;
   Value?: string;
@@ -16396,6 +16753,7 @@ export const SearchPropertyPredicates =
   /*@__PURE__*/ S.Array(PropertyPredicate);
 export type Sort = "ASC" | "DESC" | (string & {});
 export const Sort = /*@__PURE__*/ S.String;
+
 export interface SortCriterion {
   FieldName?: string;
   Sort?: Sort;
@@ -17331,6 +17689,7 @@ export const UpdateConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateConnectionResponse",
 }) as any as S.Schema<UpdateConnectionResponse>;
+export type DescriptionStringRemovable = string;
 export interface UpdateCrawlerRequest {
   Name: string;
   Role?: string;
@@ -17724,6 +18083,8 @@ export const UpdateJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateJobResponse",
 }) as any as S.Schema<UpdateJobResponse>;
+export type CommitIdString = string;
+export type AuthTokenString = string;
 export interface UpdateJobFromSourceControlRequest {
   JobName?: string;
   Provider?: SourceControlProvider;
@@ -17924,6 +18285,7 @@ export type ViewUpdateAction =
   | "DROP"
   | (string & {});
 export const ViewUpdateAction = /*@__PURE__*/ S.String;
+
 export type IcebergUpdateAction =
   | "add-schema"
   | "set-current-schema"
@@ -17938,6 +18300,9 @@ export type IcebergUpdateAction =
   | "remove-encryption-key"
   | (string & {});
 export const IcebergUpdateAction = /*@__PURE__*/ S.String;
+
+export type EncryptionKeyIdString = string;
+export type EncryptedKeyMetadataString = string;
 export interface IcebergEncryptedKey {
   KeyId: string;
   EncryptedKeyMetadata: string;
@@ -18177,248 +18542,21 @@ export const UpdateWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateWorkflowResponse",
 }) as any as S.Schema<UpdateWorkflowResponse>;
+export type FederationSourceErrorCode =
+  | "AccessDeniedException"
+  | "EntityNotFoundException"
+  | "InvalidCredentialsException"
+  | "InvalidInputException"
+  | "InvalidResponseException"
+  | "OperationTimeoutException"
+  | "OperationNotSupportedException"
+  | "InternalServiceException"
+  | "PartialFailureException"
+  | "ThrottlingException"
+  | (string & {});
+export const FederationSourceErrorCode = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { Message: S.optional(S.String) },
-) {}
-export class EntityNotFoundException extends S.TaggedErrorClass<EntityNotFoundException>()(
-  "EntityNotFoundException",
-  {
-    Message: S.optional(S.String),
-    FromFederationSource: S.optional(S.Boolean),
-  },
-) {}
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  {
-    Message: S.optional(S.String),
-    FromFederationSource: S.optional(S.Boolean),
-  },
-) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-) {}
-export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
-  "AlreadyExistsException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class GlueEncryptionException extends S.TaggedErrorClass<GlueEncryptionException>()(
-  "GlueEncryptionException",
-  { Message: S.optional(S.String) },
-) {}
-export class OperationTimeoutException extends S.TaggedErrorClass<OperationTimeoutException>()(
-  "OperationTimeoutException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceNumberLimitExceededException extends S.TaggedErrorClass<ResourceNumberLimitExceededException>()(
-  "ResourceNumberLimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotReadyException>()(
-  "ResourceNotReadyException",
-  { Message: S.optional(S.String) },
-) {}
-export class FederationSourceException extends S.TaggedErrorClass<FederationSourceException>()(
-  "FederationSourceException",
-  {
-    FederationSourceErrorCode: S.optional(FederationSourceErrorCode),
-    Message: S.optional(S.String),
-  },
-) {}
-export class FederationSourceRetryableException extends S.TaggedErrorClass<FederationSourceRetryableException>()(
-  "FederationSourceRetryableException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
-  "InvalidStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class IllegalSessionStateException extends S.TaggedErrorClass<IllegalSessionStateException>()(
-  "IllegalSessionStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class FederatedResourceAlreadyExistsException extends S.TaggedErrorClass<FederatedResourceAlreadyExistsException>()(
-  "FederatedResourceAlreadyExistsException",
-  {
-    Message: S.optional(S.String),
-    AssociatedGlueResource: S.optional(S.String),
-  },
-).pipe(C.withAlreadyExistsError) {}
-export class ColumnStatisticsTaskRunningException extends S.TaggedErrorClass<ColumnStatisticsTaskRunningException>()(
-  "ColumnStatisticsTaskRunningException",
-  { Message: S.optional(S.String) },
-) {}
-export class GlueRoleNotAssumable extends S.TaggedErrorClass<GlueRoleNotAssumable>()(
-  "GlueRoleNotAssumable",
-  {
-    Message: S.optional(S.String),
-    FromFederationSource: S.optional(S.Boolean),
-  },
-  T.SyntheticError({
-    from: "InvalidInputException",
-    message: { includes: "unable to assume" },
-  }),
-).pipe(C.withRetryableError) {}
-export class GlueS3TargetNotReady extends S.TaggedErrorClass<GlueS3TargetNotReady>()(
-  "GlueS3TargetNotReady",
-  {
-    Message: S.optional(S.String),
-    FromFederationSource: S.optional(S.Boolean),
-  },
-  T.SyntheticError({
-    from: "InvalidInputException",
-    message: { includes: "InvalidAccessKeyId" },
-  }),
-).pipe(C.withRetryableError) {}
-export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
-  "IdempotentParameterMismatchException",
-  { Message: S.optional(S.String) },
-) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-) {}
-export class IntegrationConflictOperationFault extends S.TaggedErrorClass<IntegrationConflictOperationFault>()(
-  "IntegrationConflictOperationFault",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class IntegrationQuotaExceededFault extends S.TaggedErrorClass<IntegrationQuotaExceededFault>()(
-  "IntegrationQuotaExceededFault",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class KMSKeyNotAccessibleFault extends S.TaggedErrorClass<KMSKeyNotAccessibleFault>()(
-  "KMSKeyNotAccessibleFault",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class OperationNotSupportedException extends S.TaggedErrorClass<OperationNotSupportedException>()(
-  "OperationNotSupportedException",
-  { Message: S.optional(S.String) },
-) {}
-export class CrawlerRunningException extends S.TaggedErrorClass<CrawlerRunningException>()(
-  "CrawlerRunningException",
-  { Message: S.optional(S.String) },
-) {}
-export class SchedulerTransitioningException extends S.TaggedErrorClass<SchedulerTransitioningException>()(
-  "SchedulerTransitioningException",
-  { Message: S.optional(S.String) },
-) {}
-export class IntegrationNotFoundFault extends S.TaggedErrorClass<IntegrationNotFoundFault>()(
-  "IntegrationNotFoundFault",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InvalidIntegrationStateFault extends S.TaggedErrorClass<InvalidIntegrationStateFault>()(
-  "InvalidIntegrationStateFault",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConditionCheckFailureException extends S.TaggedErrorClass<ConditionCheckFailureException>()(
-  "ConditionCheckFailureException",
-  { Message: S.optional(S.String) },
-) {}
-export class TargetResourceNotFound extends S.TaggedErrorClass<TargetResourceNotFound>()(
-  "TargetResourceNotFound",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class PermissionTypeMismatchException extends S.TaggedErrorClass<PermissionTypeMismatchException>()(
-  "PermissionTypeMismatchException",
-  { Message: S.optional(S.String) },
-) {}
-export class ConcurrentRunsExceededException extends S.TaggedErrorClass<ConcurrentRunsExceededException>()(
-  "ConcurrentRunsExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class IllegalWorkflowStateException extends S.TaggedErrorClass<IllegalWorkflowStateException>()(
-  "IllegalWorkflowStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class SessionBusyException extends S.TaggedErrorClass<SessionBusyException>()(
-  "SessionBusyException",
-  { Message: S.optional(S.String) },
-) {}
-export class IllegalBlueprintStateException extends S.TaggedErrorClass<IllegalBlueprintStateException>()(
-  "IllegalBlueprintStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class NoScheduleException extends S.TaggedErrorClass<NoScheduleException>()(
-  "NoScheduleException",
-  { Message: S.optional(S.String) },
-) {}
-export class SchedulerRunningException extends S.TaggedErrorClass<SchedulerRunningException>()(
-  "SchedulerRunningException",
-  { Message: S.optional(S.String) },
-) {}
-export class MaterializedViewRefreshTaskRunningException extends S.TaggedErrorClass<MaterializedViewRefreshTaskRunningException>()(
-  "MaterializedViewRefreshTaskRunningException",
-  { Message: S.optional(S.String) },
-) {}
-export class MLTransformNotReadyException extends S.TaggedErrorClass<MLTransformNotReadyException>()(
-  "MLTransformNotReadyException",
-  { Message: S.optional(S.String) },
-) {}
-export class ColumnStatisticsTaskNotRunningException extends S.TaggedErrorClass<ColumnStatisticsTaskNotRunningException>()(
-  "ColumnStatisticsTaskNotRunningException",
-  { Message: S.optional(S.String) },
-) {}
-export class ColumnStatisticsTaskStoppingException extends S.TaggedErrorClass<ColumnStatisticsTaskStoppingException>()(
-  "ColumnStatisticsTaskStoppingException",
-  { Message: S.optional(S.String) },
-) {}
-export class CrawlerNotRunningException extends S.TaggedErrorClass<CrawlerNotRunningException>()(
-  "CrawlerNotRunningException",
-  { Message: S.optional(S.String) },
-) {}
-export class CrawlerStoppingException extends S.TaggedErrorClass<CrawlerStoppingException>()(
-  "CrawlerStoppingException",
-  { Message: S.optional(S.String) },
-) {}
-export class SchedulerNotRunningException extends S.TaggedErrorClass<SchedulerNotRunningException>()(
-  "SchedulerNotRunningException",
-  { Message: S.optional(S.String) },
-) {}
-export class MaterializedViewRefreshTaskNotRunningException extends S.TaggedErrorClass<MaterializedViewRefreshTaskNotRunningException>()(
-  "MaterializedViewRefreshTaskNotRunningException",
-  { Message: S.optional(S.String) },
-) {}
-export class MaterializedViewRefreshTaskStoppingException extends S.TaggedErrorClass<MaterializedViewRefreshTaskStoppingException>()(
-  "MaterializedViewRefreshTaskStoppingException",
-  { Message: S.optional(S.String) },
-) {}
-export class VersionMismatchException extends S.TaggedErrorClass<VersionMismatchException>()(
-  "VersionMismatchException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type IntegrationErrorMessage = string;
 export type AssociateGlossaryTermsError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -18450,6 +18588,7 @@ export const associateGlossaryTerms: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateGlossaryTerms",
 }));
+
 export type BatchCreatePartitionError =
   | AlreadyExistsException
   | EntityNotFoundException
@@ -18483,6 +18622,7 @@ export const batchCreatePartition: API.OperationMethod<
   retry: Retry,
   operationName: "BatchCreatePartition",
 }));
+
 export type BatchDeleteConnectionError =
   | InternalServiceException
   | OperationTimeoutException
@@ -18503,6 +18643,7 @@ export const batchDeleteConnection: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteConnection",
 }));
+
 export type BatchDeletePartitionError =
   | EntityNotFoundException
   | InternalServiceException
@@ -18530,6 +18671,7 @@ export const batchDeletePartition: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeletePartition",
 }));
+
 export type BatchDeleteTableError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -18571,6 +18713,7 @@ export const batchDeleteTable: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteTable",
 }));
+
 export type BatchDeleteTableVersionError =
   | EntityNotFoundException
   | InternalServiceException
@@ -18598,6 +18741,7 @@ export const batchDeleteTableVersion: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteTableVersion",
 }));
+
 export type BatchGetBlueprintsError =
   | InternalServiceException
   | InvalidInputException
@@ -18623,6 +18767,7 @@ export const batchGetBlueprints: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetBlueprints",
 }));
+
 export type BatchGetCrawlersError =
   | InvalidInputException
   | OperationTimeoutException
@@ -18643,6 +18788,7 @@ export const batchGetCrawlers: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetCrawlers",
 }));
+
 export type BatchGetCustomEntityTypesError =
   | InternalServiceException
   | InvalidInputException
@@ -18668,6 +18814,7 @@ export const batchGetCustomEntityTypes: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetCustomEntityTypes",
 }));
+
 export type BatchGetDataQualityResultError =
   | InternalServiceException
   | InvalidInputException
@@ -18693,6 +18840,7 @@ export const batchGetDataQualityResult: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetDataQualityResult",
 }));
+
 export type BatchGetDevEndpointsError =
   | AccessDeniedException
   | InternalServiceException
@@ -18723,6 +18871,7 @@ export const batchGetDevEndpoints: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetDevEndpoints",
 }));
+
 export type BatchGetIterableFormsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -18752,6 +18901,7 @@ export const batchGetIterableForms: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetIterableForms",
 }));
+
 export type BatchGetJobsError =
   | InternalServiceException
   | InvalidInputException
@@ -18777,6 +18927,7 @@ export const batchGetJobs: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetJobs",
 }));
+
 export type BatchGetPartitionError =
   | EntityNotFoundException
   | FederationSourceException
@@ -18812,6 +18963,7 @@ export const batchGetPartition: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetPartition",
 }));
+
 export type BatchGetTableOptimizerError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -18841,6 +18993,7 @@ export const batchGetTableOptimizer: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetTableOptimizer",
 }));
+
 export type BatchGetTriggersError =
   | InternalServiceException
   | InvalidInputException
@@ -18866,6 +19019,7 @@ export const batchGetTriggers: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetTriggers",
 }));
+
 export type BatchGetWorkflowsError =
   | InternalServiceException
   | InvalidInputException
@@ -18891,6 +19045,7 @@ export const batchGetWorkflows: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetWorkflows",
 }));
+
 export type BatchPutDataQualityStatisticAnnotationError =
   | EntityNotFoundException
   | InternalServiceException
@@ -18920,6 +19075,7 @@ export const batchPutDataQualityStatisticAnnotation: API.OperationMethod<
   retry: Retry,
   operationName: "BatchPutDataQualityStatisticAnnotation",
 }));
+
 export type BatchStopJobRunError =
   | InternalServiceException
   | InvalidInputException
@@ -18945,6 +19101,7 @@ export const batchStopJobRun: API.OperationMethod<
   retry: Retry,
   operationName: "BatchStopJobRun",
 }));
+
 export type BatchUpdatePartitionError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -18974,6 +19131,7 @@ export const batchUpdatePartition: API.OperationMethod<
   retry: Retry,
   operationName: "BatchUpdatePartition",
 }));
+
 export type CancelDataQualityRuleRecommendationRunError =
   | EntityNotFoundException
   | InternalServiceException
@@ -19001,6 +19159,7 @@ export const cancelDataQualityRuleRecommendationRun: API.OperationMethod<
   retry: Retry,
   operationName: "CancelDataQualityRuleRecommendationRun",
 }));
+
 export type CancelDataQualityRulesetEvaluationRunError =
   | EntityNotFoundException
   | InternalServiceException
@@ -19028,6 +19187,7 @@ export const cancelDataQualityRulesetEvaluationRun: API.OperationMethod<
   retry: Retry,
   operationName: "CancelDataQualityRulesetEvaluationRun",
 }));
+
 export type CancelMLTaskRunError =
   | EntityNotFoundException
   | InternalServiceException
@@ -19057,6 +19217,7 @@ export const cancelMLTaskRun: API.OperationMethod<
   retry: Retry,
   operationName: "CancelMLTaskRun",
 }));
+
 export type CancelStatementError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -19088,6 +19249,7 @@ export const cancelStatement: API.OperationMethod<
   retry: Retry,
   operationName: "CancelStatement",
 }));
+
 export type CheckSchemaVersionValidityError =
   | AccessDeniedException
   | InternalServiceException
@@ -19113,6 +19275,7 @@ export const checkSchemaVersionValidity: API.OperationMethod<
   retry: Retry,
   operationName: "CheckSchemaVersionValidity",
 }));
+
 export type CreateBlueprintError =
   | AlreadyExistsException
   | InternalServiceException
@@ -19142,6 +19305,7 @@ export const createBlueprint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBlueprint",
 }));
+
 export type CreateCatalogError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -19183,6 +19347,7 @@ export const createCatalog: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCatalog",
 }));
+
 export type CreateClassifierError =
   | AlreadyExistsException
   | InvalidInputException
@@ -19210,6 +19375,7 @@ export const createClassifier: API.OperationMethod<
   retry: Retry,
   operationName: "CreateClassifier",
 }));
+
 export type CreateColumnStatisticsTaskSettingsError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -19243,6 +19409,7 @@ export const createColumnStatisticsTaskSettings: API.OperationMethod<
   retry: Retry,
   operationName: "CreateColumnStatisticsTaskSettings",
 }));
+
 export type CreateConnectionError =
   | AlreadyExistsException
   | GlueEncryptionException
@@ -19274,6 +19441,7 @@ export const createConnection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConnection",
 }));
+
 export type CreateCrawlerError =
   | AlreadyExistsException
   | InvalidInputException
@@ -19307,6 +19475,7 @@ export const createCrawler: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCrawler",
 }));
+
 export type CreateCustomEntityTypeError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -19342,6 +19511,7 @@ export const createCustomEntityType: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCustomEntityType",
 }));
+
 export type CreateDatabaseError =
   | AlreadyExistsException
   | ConcurrentModificationException
@@ -19381,6 +19551,7 @@ export const createDatabase: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDatabase",
 }));
+
 export type CreateDataQualityRulesetError =
   | AlreadyExistsException
   | InternalServiceException
@@ -19412,6 +19583,7 @@ export const createDataQualityRuleset: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataQualityRuleset",
 }));
+
 export type CreateDevEndpointError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -19447,6 +19619,7 @@ export const createDevEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDevEndpoint",
 }));
+
 export type CreateGlossaryError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -19478,6 +19651,7 @@ export const createGlossary: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGlossary",
 }));
+
 export type CreateGlossaryTermError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -19511,6 +19685,7 @@ export const createGlossaryTerm: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGlossaryTerm",
 }));
+
 export type CreateGlueIdentityCenterConfigurationError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -19543,6 +19718,7 @@ export const createGlueIdentityCenterConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGlueIdentityCenterConfiguration",
 }));
+
 export type CreateIntegrationError =
   | AccessDeniedException
   | ConflictException
@@ -19586,6 +19762,7 @@ export const createIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIntegration",
 }));
+
 export type CreateIntegrationResourcePropertyError =
   | AccessDeniedException
   | ConflictException
@@ -19621,6 +19798,7 @@ export const createIntegrationResourceProperty: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIntegrationResourceProperty",
 }));
+
 export type CreateIntegrationTablePropertiesError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -19654,6 +19832,7 @@ export const createIntegrationTableProperties: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIntegrationTableProperties",
 }));
+
 export type CreateJobError =
   | AlreadyExistsException
   | ConcurrentModificationException
@@ -19689,6 +19868,7 @@ export const createJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateJob",
 }));
+
 export type CreateMLTransformError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -19734,6 +19914,7 @@ export const createMLTransform: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMLTransform",
 }));
+
 export type CreatePartitionError =
   | AlreadyExistsException
   | EntityNotFoundException
@@ -19767,6 +19948,7 @@ export const createPartition: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePartition",
 }));
+
 export type CreatePartitionIndexError =
   | AlreadyExistsException
   | EntityNotFoundException
@@ -19800,6 +19982,7 @@ export const createPartitionIndex: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePartitionIndex",
 }));
+
 export type CreateRegistryError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -19831,6 +20014,7 @@ export const createRegistry: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRegistry",
 }));
+
 export type CreateSchemaError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -19868,6 +20052,7 @@ export const createSchema: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSchema",
 }));
+
 export type CreateScriptError =
   | InternalServiceException
   | InvalidInputException
@@ -19893,6 +20078,7 @@ export const createScript: API.OperationMethod<
   retry: Retry,
   operationName: "CreateScript",
 }));
+
 export type CreateSecurityConfigurationError =
   | AlreadyExistsException
   | InternalServiceException
@@ -19922,6 +20108,7 @@ export const createSecurityConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSecurityConfiguration",
 }));
+
 export type CreateSessionError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -19959,6 +20146,7 @@ export const createSession: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSession",
 }));
+
 export type CreateTableError =
   | AlreadyExistsException
   | ConcurrentModificationException
@@ -20000,6 +20188,7 @@ export const createTable: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTable",
 }));
+
 export type CreateTableOptimizerError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -20033,6 +20222,7 @@ export const createTableOptimizer: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTableOptimizer",
 }));
+
 export type CreateTriggerError =
   | AlreadyExistsException
   | ConcurrentModificationException
@@ -20070,6 +20260,7 @@ export const createTrigger: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTrigger",
 }));
+
 export type CreateUsageProfileError =
   | AlreadyExistsException
   | InternalServiceException
@@ -20101,6 +20292,7 @@ export const createUsageProfile: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUsageProfile",
 }));
+
 export type CreateUserDefinedFunctionError =
   | AlreadyExistsException
   | EntityNotFoundException
@@ -20134,6 +20326,7 @@ export const createUserDefinedFunction: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUserDefinedFunction",
 }));
+
 export type CreateWorkflowError =
   | AlreadyExistsException
   | ConcurrentModificationException
@@ -20165,6 +20358,7 @@ export const createWorkflow: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWorkflow",
 }));
+
 export type DeleteAssetError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -20194,6 +20388,7 @@ export const deleteAsset: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAsset",
 }));
+
 export type DeleteAssetTypeError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -20223,6 +20418,7 @@ export const deleteAssetType: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAssetType",
 }));
+
 export type DeleteAttachmentError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -20254,6 +20450,7 @@ export const deleteAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAttachment",
 }));
+
 export type DeleteBlueprintError =
   | InternalServiceException
   | InvalidInputException
@@ -20279,6 +20476,7 @@ export const deleteBlueprint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBlueprint",
 }));
+
 export type DeleteCatalogError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -20318,6 +20516,7 @@ export const deleteCatalog: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCatalog",
 }));
+
 export type DeleteClassifierError =
   | EntityNotFoundException
   | OperationTimeoutException
@@ -20338,6 +20537,7 @@ export const deleteClassifier: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteClassifier",
 }));
+
 export type DeleteColumnStatisticsForPartitionError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -20369,6 +20569,7 @@ export const deleteColumnStatisticsForPartition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteColumnStatisticsForPartition",
 }));
+
 export type DeleteColumnStatisticsForTableError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -20400,6 +20601,7 @@ export const deleteColumnStatisticsForTable: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteColumnStatisticsForTable",
 }));
+
 export type DeleteColumnStatisticsTaskSettingsError =
   | EntityNotFoundException
   | InvalidInputException
@@ -20425,6 +20627,7 @@ export const deleteColumnStatisticsTaskSettings: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteColumnStatisticsTaskSettings",
 }));
+
 export type DeleteConnectionError =
   | EntityNotFoundException
   | OperationTimeoutException
@@ -20445,6 +20648,7 @@ export const deleteConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConnection",
 }));
+
 export type DeleteConnectionTypeError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -20478,6 +20682,7 @@ export const deleteConnectionType: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConnectionType",
 }));
+
 export type DeleteCrawlerError =
   | CrawlerRunningException
   | EntityNotFoundException
@@ -20506,6 +20711,7 @@ export const deleteCrawler: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCrawler",
 }));
+
 export type DeleteCustomEntityTypeError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -20535,6 +20741,7 @@ export const deleteCustomEntityType: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCustomEntityType",
 }));
+
 export type DeleteDatabaseError =
   | ConcurrentModificationException
   | EntityNotFoundException
@@ -20580,6 +20787,7 @@ export const deleteDatabase: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDatabase",
 }));
+
 export type DeleteDataQualityRulesetError =
   | EntityNotFoundException
   | InternalServiceException
@@ -20607,6 +20815,7 @@ export const deleteDataQualityRuleset: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataQualityRuleset",
 }));
+
 export type DeleteDevEndpointError =
   | EntityNotFoundException
   | InternalServiceException
@@ -20634,6 +20843,7 @@ export const deleteDevEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDevEndpoint",
 }));
+
 export type DeleteFormTypeError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -20665,6 +20875,7 @@ export const deleteFormType: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFormType",
 }));
+
 export type DeleteGlossaryError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -20696,6 +20907,7 @@ export const deleteGlossary: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGlossary",
 }));
+
 export type DeleteGlossaryTermError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -20725,6 +20937,7 @@ export const deleteGlossaryTerm: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGlossaryTerm",
 }));
+
 export type DeleteGlueIdentityCenterConfigurationError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -20757,6 +20970,7 @@ export const deleteGlueIdentityCenterConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGlueIdentityCenterConfiguration",
 }));
+
 export type DeleteIntegrationError =
   | AccessDeniedException
   | ConflictException
@@ -20798,6 +21012,7 @@ export const deleteIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIntegration",
 }));
+
 export type DeleteIntegrationResourcePropertyError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -20831,6 +21046,7 @@ export const deleteIntegrationResourceProperty: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIntegrationResourceProperty",
 }));
+
 export type DeleteIntegrationTablePropertiesError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -20864,6 +21080,7 @@ export const deleteIntegrationTableProperties: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIntegrationTableProperties",
 }));
+
 export type DeleteJobError =
   | InternalServiceException
   | InvalidInputException
@@ -20890,6 +21107,7 @@ export const deleteJob: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteJob",
 }));
+
 export type DeleteMLTransformError =
   | EntityNotFoundException
   | InternalServiceException
@@ -20922,6 +21140,7 @@ export const deleteMLTransform: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMLTransform",
 }));
+
 export type DeletePartitionError =
   | EntityNotFoundException
   | InternalServiceException
@@ -20949,6 +21168,7 @@ export const deletePartition: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePartition",
 }));
+
 export type DeletePartitionIndexError =
   | ConflictException
   | EntityNotFoundException
@@ -20980,6 +21200,7 @@ export const deletePartitionIndex: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePartitionIndex",
 }));
+
 export type DeleteRegistryError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -21007,6 +21228,7 @@ export const deleteRegistry: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRegistry",
 }));
+
 export type DeleteResourcePolicyError =
   | ConditionCheckFailureException
   | EntityNotFoundException
@@ -21036,6 +21258,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteSchemaError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -21063,6 +21286,7 @@ export const deleteSchema: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSchema",
 }));
+
 export type DeleteSchemaVersionsError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -21096,6 +21320,7 @@ export const deleteSchemaVersions: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSchemaVersions",
 }));
+
 export type DeleteSecurityConfigurationError =
   | EntityNotFoundException
   | InternalServiceException
@@ -21123,6 +21348,7 @@ export const deleteSecurityConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSecurityConfiguration",
 }));
+
 export type DeleteSessionError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -21154,6 +21380,7 @@ export const deleteSession: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSession",
 }));
+
 export type DeleteTableError =
   | ConcurrentModificationException
   | EntityNotFoundException
@@ -21199,6 +21426,7 @@ export const deleteTable: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTable",
 }));
+
 export type DeleteTableOptimizerError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -21228,6 +21456,7 @@ export const deleteTableOptimizer: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTableOptimizer",
 }));
+
 export type DeleteTableVersionError =
   | EntityNotFoundException
   | InternalServiceException
@@ -21255,6 +21484,7 @@ export const deleteTableVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTableVersion",
 }));
+
 export type DeleteTriggerError =
   | ConcurrentModificationException
   | InternalServiceException
@@ -21283,6 +21513,7 @@ export const deleteTrigger: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTrigger",
 }));
+
 export type DeleteUsageProfileError =
   | InternalServiceException
   | InvalidInputException
@@ -21310,6 +21541,7 @@ export const deleteUsageProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUsageProfile",
 }));
+
 export type DeleteUserDefinedFunctionError =
   | EntityNotFoundException
   | InternalServiceException
@@ -21337,6 +21569,7 @@ export const deleteUserDefinedFunction: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUserDefinedFunction",
 }));
+
 export type DeleteWorkflowError =
   | ConcurrentModificationException
   | InternalServiceException
@@ -21364,6 +21597,7 @@ export const deleteWorkflow: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWorkflow",
 }));
+
 export type DescribeConnectionTypeError =
   | AccessDeniedException
   | InternalServiceException
@@ -21393,6 +21627,7 @@ export const describeConnectionType: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConnectionType",
 }));
+
 export type DescribeEntityError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -21448,6 +21683,7 @@ export const describeEntity: API.OperationMethod<
     items: "Fields",
   } as const,
 }));
+
 export type DescribeInboundIntegrationsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -21485,6 +21721,7 @@ export const describeInboundIntegrations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInboundIntegrations",
 }));
+
 export type DescribeIntegrationsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -21518,6 +21755,7 @@ export const describeIntegrations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeIntegrations",
 }));
+
 export type DisassociateGlossaryTermsError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -21549,6 +21787,7 @@ export const disassociateGlossaryTerms: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateGlossaryTerms",
 }));
+
 export type GetAssetError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -21578,6 +21817,7 @@ export const getAsset: API.OperationMethod<
   retry: Retry,
   operationName: "GetAsset",
 }));
+
 export type GetAssetTypeError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -21607,6 +21847,7 @@ export const getAssetType: API.OperationMethod<
   retry: Retry,
   operationName: "GetAssetType",
 }));
+
 export type GetBlueprintError =
   | EntityNotFoundException
   | InternalServiceException
@@ -21634,6 +21875,7 @@ export const getBlueprint: API.OperationMethod<
   retry: Retry,
   operationName: "GetBlueprint",
 }));
+
 export type GetBlueprintRunError =
   | EntityNotFoundException
   | InternalServiceException
@@ -21659,6 +21901,7 @@ export const getBlueprintRun: API.OperationMethod<
   retry: Retry,
   operationName: "GetBlueprintRun",
 }));
+
 export type GetBlueprintRunsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -21706,6 +21949,7 @@ export const getBlueprintRuns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetCatalogError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -21741,6 +21985,7 @@ export const getCatalog: API.OperationMethod<
   retry: Retry,
   operationName: "GetCatalog",
 }));
+
 export type GetCatalogImportStatusError =
   | InternalServiceException
   | OperationTimeoutException
@@ -21761,6 +22006,7 @@ export const getCatalogImportStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetCatalogImportStatus",
 }));
+
 export type GetCatalogsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -21796,6 +22042,7 @@ export const getCatalogs: API.OperationMethod<
   retry: Retry,
   operationName: "GetCatalogs",
 }));
+
 export type GetClassifierError =
   | EntityNotFoundException
   | OperationTimeoutException
@@ -21816,6 +22063,7 @@ export const getClassifier: API.OperationMethod<
   retry: Retry,
   operationName: "GetClassifier",
 }));
+
 export type GetClassifiersError = OperationTimeoutException | CommonErrors;
 /**
  * Lists all classifier objects in the Data Catalog.
@@ -21853,6 +22101,7 @@ export const getClassifiers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetColumnStatisticsForPartitionError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -21884,6 +22133,7 @@ export const getColumnStatisticsForPartition: API.OperationMethod<
   retry: Retry,
   operationName: "GetColumnStatisticsForPartition",
 }));
+
 export type GetColumnStatisticsForTableError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -21915,6 +22165,7 @@ export const getColumnStatisticsForTable: API.OperationMethod<
   retry: Retry,
   operationName: "GetColumnStatisticsForTable",
 }));
+
 export type GetColumnStatisticsTaskRunError =
   | EntityNotFoundException
   | InvalidInputException
@@ -21940,6 +22191,7 @@ export const getColumnStatisticsTaskRun: API.OperationMethod<
   retry: Retry,
   operationName: "GetColumnStatisticsTaskRun",
 }));
+
 export type GetColumnStatisticsTaskRunsError =
   | OperationTimeoutException
   | CommonErrors;
@@ -21979,6 +22231,7 @@ export const getColumnStatisticsTaskRuns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetColumnStatisticsTaskSettingsError =
   | EntityNotFoundException
   | InvalidInputException
@@ -22004,6 +22257,7 @@ export const getColumnStatisticsTaskSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetColumnStatisticsTaskSettings",
 }));
+
 export type GetConnectionError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -22031,6 +22285,7 @@ export const getConnection: API.OperationMethod<
   retry: Retry,
   operationName: "GetConnection",
 }));
+
 export type GetConnectionsError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -22078,6 +22333,7 @@ export const getConnections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetCrawlerError =
   | EntityNotFoundException
   | OperationTimeoutException
@@ -22098,6 +22354,7 @@ export const getCrawler: API.OperationMethod<
   retry: Retry,
   operationName: "GetCrawler",
 }));
+
 export type GetCrawlerMetricsError = OperationTimeoutException | CommonErrors;
 /**
  * Retrieves metrics about specified crawlers.
@@ -22135,6 +22392,7 @@ export const getCrawlerMetrics: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetCrawlersError = OperationTimeoutException | CommonErrors;
 /**
  * Retrieves metadata for all crawlers defined in the customer
@@ -22173,6 +22431,7 @@ export const getCrawlers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetCustomEntityTypeError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -22202,6 +22461,7 @@ export const getCustomEntityType: API.OperationMethod<
   retry: Retry,
   operationName: "GetCustomEntityType",
 }));
+
 export type GetDashboardUrlError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -22231,6 +22491,7 @@ export const getDashboardUrl: API.OperationMethod<
   retry: Retry,
   operationName: "GetDashboardUrl",
 }));
+
 export type GetDatabaseError =
   | EntityNotFoundException
   | FederationSourceException
@@ -22264,6 +22525,7 @@ export const getDatabase: API.OperationMethod<
   retry: Retry,
   operationName: "GetDatabase",
 }));
+
 export type GetDatabasesError =
   | EntityNotFoundException
   | FederationSourceException
@@ -22317,6 +22579,7 @@ export const getDatabases: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetDataCatalogEncryptionSettingsError =
   | InternalServiceException
   | InvalidInputException
@@ -22342,6 +22605,7 @@ export const getDataCatalogEncryptionSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataCatalogEncryptionSettings",
 }));
+
 export type GetDataflowGraphError =
   | InternalServiceException
   | InvalidInputException
@@ -22367,6 +22631,7 @@ export const getDataflowGraph: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataflowGraph",
 }));
+
 export type GetDataQualityModelError =
   | EntityNotFoundException
   | InternalServiceException
@@ -22394,6 +22659,7 @@ export const getDataQualityModel: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataQualityModel",
 }));
+
 export type GetDataQualityModelResultError =
   | EntityNotFoundException
   | InternalServiceException
@@ -22421,6 +22687,7 @@ export const getDataQualityModelResult: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataQualityModelResult",
 }));
+
 export type GetDataQualityResultError =
   | EntityNotFoundException
   | InternalServiceException
@@ -22448,6 +22715,7 @@ export const getDataQualityResult: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataQualityResult",
 }));
+
 export type GetDataQualityRuleRecommendationRunError =
   | EntityNotFoundException
   | InternalServiceException
@@ -22475,6 +22743,7 @@ export const getDataQualityRuleRecommendationRun: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataQualityRuleRecommendationRun",
 }));
+
 export type GetDataQualityRulesetError =
   | EntityNotFoundException
   | InternalServiceException
@@ -22502,6 +22771,7 @@ export const getDataQualityRuleset: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataQualityRuleset",
 }));
+
 export type GetDataQualityRulesetEvaluationRunError =
   | EntityNotFoundException
   | InternalServiceException
@@ -22529,6 +22799,7 @@ export const getDataQualityRulesetEvaluationRun: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataQualityRulesetEvaluationRun",
 }));
+
 export type GetDevEndpointError =
   | EntityNotFoundException
   | InternalServiceException
@@ -22560,6 +22831,7 @@ export const getDevEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "GetDevEndpoint",
 }));
+
 export type GetDevEndpointsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -22611,6 +22883,7 @@ export const getDevEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetEntityRecordsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -22648,6 +22921,7 @@ export const getEntityRecords: API.OperationMethod<
   retry: Retry,
   operationName: "GetEntityRecords",
 }));
+
 export type GetFormTypeError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -22677,6 +22951,7 @@ export const getFormType: API.OperationMethod<
   retry: Retry,
   operationName: "GetFormType",
 }));
+
 export type GetGlossaryError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -22704,6 +22979,7 @@ export const getGlossary: API.OperationMethod<
   retry: Retry,
   operationName: "GetGlossary",
 }));
+
 export type GetGlossaryTermError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -22731,6 +23007,7 @@ export const getGlossaryTerm: API.OperationMethod<
   retry: Retry,
   operationName: "GetGlossaryTerm",
 }));
+
 export type GetGlueIdentityCenterConfigurationError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -22763,6 +23040,7 @@ export const getGlueIdentityCenterConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetGlueIdentityCenterConfiguration",
 }));
+
 export type GetIntegrationResourcePropertyError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -22796,6 +23074,7 @@ export const getIntegrationResourceProperty: API.OperationMethod<
   retry: Retry,
   operationName: "GetIntegrationResourceProperty",
 }));
+
 export type GetIntegrationTablePropertiesError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -22829,6 +23108,7 @@ export const getIntegrationTableProperties: API.OperationMethod<
   retry: Retry,
   operationName: "GetIntegrationTableProperties",
 }));
+
 export type GetJobError =
   | EntityNotFoundException
   | InternalServiceException
@@ -22856,6 +23136,7 @@ export const getJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetJob",
 }));
+
 export type GetJobBookmarkError =
   | EntityNotFoundException
   | InternalServiceException
@@ -22893,6 +23174,7 @@ export const getJobBookmark: API.OperationMethod<
   retry: Retry,
   operationName: "GetJobBookmark",
 }));
+
 export type GetJobRunError =
   | EntityNotFoundException
   | InternalServiceException
@@ -22920,6 +23202,7 @@ export const getJobRun: API.OperationMethod<
   retry: Retry,
   operationName: "GetJobRun",
 }));
+
 export type GetJobRunsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -22970,6 +23253,7 @@ export const getJobRuns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetJobsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -23018,6 +23302,7 @@ export const getJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetMappingError =
   | EntityNotFoundException
   | InternalServiceException
@@ -23045,6 +23330,7 @@ export const getMapping: API.OperationMethod<
   retry: Retry,
   operationName: "GetMapping",
 }));
+
 export type GetMaterializedViewRefreshTaskRunError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -23072,6 +23358,7 @@ export const getMaterializedViewRefreshTaskRun: API.OperationMethod<
   retry: Retry,
   operationName: "GetMaterializedViewRefreshTaskRun",
 }));
+
 export type GetMLTaskRunError =
   | EntityNotFoundException
   | InternalServiceException
@@ -23103,6 +23390,7 @@ export const getMLTaskRun: API.OperationMethod<
   retry: Retry,
   operationName: "GetMLTaskRun",
 }));
+
 export type GetMLTaskRunsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -23156,6 +23444,7 @@ export const getMLTaskRuns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetMLTransformError =
   | EntityNotFoundException
   | InternalServiceException
@@ -23187,6 +23476,7 @@ export const getMLTransform: API.OperationMethod<
   retry: Retry,
   operationName: "GetMLTransform",
 }));
+
 export type GetMLTransformsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -23238,6 +23528,7 @@ export const getMLTransforms: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetPartitionError =
   | EntityNotFoundException
   | FederationSourceException
@@ -23271,6 +23562,7 @@ export const getPartition: API.OperationMethod<
   retry: Retry,
   operationName: "GetPartition",
 }));
+
 export type GetPartitionIndexesError =
   | ConflictException
   | EntityNotFoundException
@@ -23320,6 +23612,7 @@ export const getPartitionIndexes: API.OperationMethod<
     items: "PartitionIndexDescriptorList",
   } as const,
 }));
+
 export type GetPartitionsError =
   | EntityNotFoundException
   | FederationSourceException
@@ -23377,6 +23670,7 @@ export const getPartitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetPlanError =
   | InternalServiceException
   | InvalidInputException
@@ -23402,6 +23696,7 @@ export const getPlan: API.OperationMethod<
   retry: Retry,
   operationName: "GetPlan",
 }));
+
 export type GetRegistryError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -23429,6 +23724,7 @@ export const getRegistry: API.OperationMethod<
   retry: Retry,
   operationName: "GetRegistry",
 }));
+
 export type GetResourcePoliciesError =
   | GlueEncryptionException
   | InternalServiceException
@@ -23483,6 +23779,7 @@ export const getResourcePolicies: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetResourcePolicyError =
   | EntityNotFoundException
   | InternalServiceException
@@ -23510,6 +23807,7 @@ export const getResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type GetSchemaError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -23537,6 +23835,7 @@ export const getSchema: API.OperationMethod<
   retry: Retry,
   operationName: "GetSchema",
 }));
+
 export type GetSchemaByDefinitionError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -23564,6 +23863,7 @@ export const getSchemaByDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "GetSchemaByDefinition",
 }));
+
 export type GetSchemaVersionError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -23591,6 +23891,7 @@ export const getSchemaVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetSchemaVersion",
 }));
+
 export type GetSchemaVersionsDiffError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -23620,6 +23921,7 @@ export const getSchemaVersionsDiff: API.OperationMethod<
   retry: Retry,
   operationName: "GetSchemaVersionsDiff",
 }));
+
 export type GetSecurityConfigurationError =
   | EntityNotFoundException
   | InternalServiceException
@@ -23647,6 +23949,7 @@ export const getSecurityConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetSecurityConfiguration",
 }));
+
 export type GetSecurityConfigurationsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -23695,6 +23998,7 @@ export const getSecurityConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetSessionError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -23724,6 +24028,7 @@ export const getSession: API.OperationMethod<
   retry: Retry,
   operationName: "GetSession",
 }));
+
 export type GetSessionEndpointError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -23757,6 +24062,7 @@ export const getSessionEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "GetSessionEndpoint",
 }));
+
 export type GetStatementError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -23788,6 +24094,7 @@ export const getStatement: API.OperationMethod<
   retry: Retry,
   operationName: "GetStatement",
 }));
+
 export type GetTableError =
   | EntityNotFoundException
   | FederationSourceException
@@ -23824,6 +24131,7 @@ export const getTable: API.OperationMethod<
   retry: Retry,
   operationName: "GetTable",
 }));
+
 export type GetTableOptimizerError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -23853,6 +24161,7 @@ export const getTableOptimizer: API.OperationMethod<
   retry: Retry,
   operationName: "GetTableOptimizer",
 }));
+
 export type GetTablesError =
   | EntityNotFoundException
   | FederationSourceException
@@ -23907,6 +24216,7 @@ export const getTables: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetTableVersionError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -23936,6 +24246,7 @@ export const getTableVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetTableVersion",
 }));
+
 export type GetTableVersionsError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -23986,6 +24297,7 @@ export const getTableVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetTagsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -24013,6 +24325,7 @@ export const getTags: API.OperationMethod<
   retry: Retry,
   operationName: "GetTags",
 }));
+
 export type GetTriggerError =
   | EntityNotFoundException
   | InternalServiceException
@@ -24040,6 +24353,7 @@ export const getTrigger: API.OperationMethod<
   retry: Retry,
   operationName: "GetTrigger",
 }));
+
 export type GetTriggersError =
   | EntityNotFoundException
   | InternalServiceException
@@ -24088,6 +24402,7 @@ export const getTriggers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetUnfilteredPartitionMetadataError =
   | EntityNotFoundException
   | FederationSourceException
@@ -24126,6 +24441,7 @@ export const getUnfilteredPartitionMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "GetUnfilteredPartitionMetadata",
 }));
+
 export type GetUnfilteredPartitionsMetadataError =
   | EntityNotFoundException
   | FederationSourceException
@@ -24184,6 +24500,7 @@ export const getUnfilteredPartitionsMetadata: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetUnfilteredTableMetadataError =
   | EntityNotFoundException
   | FederationSourceException
@@ -24221,6 +24538,7 @@ export const getUnfilteredTableMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "GetUnfilteredTableMetadata",
 }));
+
 export type GetUsageProfileError =
   | EntityNotFoundException
   | InternalServiceException
@@ -24250,6 +24568,7 @@ export const getUsageProfile: API.OperationMethod<
   retry: Retry,
   operationName: "GetUsageProfile",
 }));
+
 export type GetUserDefinedFunctionError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -24279,6 +24598,7 @@ export const getUserDefinedFunction: API.OperationMethod<
   retry: Retry,
   operationName: "GetUserDefinedFunction",
 }));
+
 export type GetUserDefinedFunctionsError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -24328,6 +24648,7 @@ export const getUserDefinedFunctions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetWorkflowError =
   | EntityNotFoundException
   | InternalServiceException
@@ -24355,6 +24676,7 @@ export const getWorkflow: API.OperationMethod<
   retry: Retry,
   operationName: "GetWorkflow",
 }));
+
 export type GetWorkflowRunError =
   | EntityNotFoundException
   | InternalServiceException
@@ -24382,6 +24704,7 @@ export const getWorkflowRun: API.OperationMethod<
   retry: Retry,
   operationName: "GetWorkflowRun",
 }));
+
 export type GetWorkflowRunPropertiesError =
   | EntityNotFoundException
   | InternalServiceException
@@ -24409,6 +24732,7 @@ export const getWorkflowRunProperties: API.OperationMethod<
   retry: Retry,
   operationName: "GetWorkflowRunProperties",
 }));
+
 export type GetWorkflowRunsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -24457,6 +24781,7 @@ export const getWorkflowRuns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ImportCatalogToGlueError =
   | InternalServiceException
   | OperationTimeoutException
@@ -24477,6 +24802,7 @@ export const importCatalogToGlue: API.OperationMethod<
   retry: Retry,
   operationName: "ImportCatalogToGlue",
 }));
+
 export type ListAssetTypesError =
   | AccessDeniedException
   | InternalServiceException
@@ -24525,6 +24851,7 @@ export const listAssetTypes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListBlueprintsError =
   | InternalServiceException
   | InvalidInputException
@@ -24571,6 +24898,7 @@ export const listBlueprints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListColumnStatisticsTaskRunsError =
   | OperationTimeoutException
   | CommonErrors;
@@ -24610,6 +24938,7 @@ export const listColumnStatisticsTaskRuns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListConnectionTypesError =
   | AccessDeniedException
   | InternalServiceException
@@ -24653,6 +24982,7 @@ export const listConnectionTypes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCrawlersError = OperationTimeoutException | CommonErrors;
 /**
  * Retrieves the names of all crawler resources in this Amazon Web Services account, or the
@@ -24696,6 +25026,7 @@ export const listCrawlers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCrawlsError =
   | EntityNotFoundException
   | InvalidInputException
@@ -24731,6 +25062,7 @@ export const listCrawls: API.OperationMethod<
   retry: Retry,
   operationName: "ListCrawls",
 }));
+
 export type ListCustomEntityTypesError =
   | InternalServiceException
   | InvalidInputException
@@ -24776,6 +25108,7 @@ export const listCustomEntityTypes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDataQualityResultsError =
   | InternalServiceException
   | InvalidInputException
@@ -24821,6 +25154,7 @@ export const listDataQualityResults: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDataQualityRuleRecommendationRunsError =
   | InternalServiceException
   | InvalidInputException
@@ -24866,6 +25200,7 @@ export const listDataQualityRuleRecommendationRuns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDataQualityRulesetEvaluationRunsError =
   | InternalServiceException
   | InvalidInputException
@@ -24911,6 +25246,7 @@ export const listDataQualityRulesetEvaluationRuns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDataQualityRulesetsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -24958,6 +25294,7 @@ export const listDataQualityRulesets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDataQualityStatisticAnnotationsError =
   | InternalServiceException
   | InvalidInputException
@@ -24978,6 +25315,7 @@ export const listDataQualityStatisticAnnotations: API.OperationMethod<
   retry: Retry,
   operationName: "ListDataQualityStatisticAnnotations",
 }));
+
 export type ListDataQualityStatisticsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -25003,6 +25341,7 @@ export const listDataQualityStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "ListDataQualityStatistics",
 }));
+
 export type ListDevEndpointsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -25056,6 +25395,7 @@ export const listDevEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEntitiesError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -25109,6 +25449,7 @@ export const listEntities: API.OperationMethod<
     items: "Entities",
   } as const,
 }));
+
 export type ListFormTypesError =
   | AccessDeniedException
   | InternalServiceException
@@ -25157,6 +25498,7 @@ export const listFormTypes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGlossariesError =
   | AccessDeniedException
   | InternalServiceException
@@ -25205,6 +25547,7 @@ export const listGlossaries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGlossaryTermsError =
   | AccessDeniedException
   | InternalServiceException
@@ -25253,6 +25596,7 @@ export const listGlossaryTerms: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListIntegrationResourcePropertiesError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -25286,6 +25630,7 @@ export const listIntegrationResourceProperties: API.OperationMethod<
   retry: Retry,
   operationName: "ListIntegrationResourceProperties",
 }));
+
 export type ListIterableFormsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -25336,6 +25681,7 @@ export const listIterableForms: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListJobsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -25388,6 +25734,7 @@ export const listJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMaterializedViewRefreshTaskRunsError =
   | AccessDeniedException
   | InvalidInputException
@@ -25434,6 +25781,7 @@ export const listMaterializedViewRefreshTaskRuns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMLTransformsError =
   | EntityNotFoundException
   | InternalServiceException
@@ -25484,6 +25832,7 @@ export const listMLTransforms: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRegistriesError =
   | AccessDeniedException
   | InternalServiceException
@@ -25530,6 +25879,7 @@ export const listRegistries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSchemasError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -25580,6 +25930,7 @@ export const listSchemas: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSchemaVersionsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -25628,6 +25979,7 @@ export const listSchemaVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSessionsError =
   | AccessDeniedException
   | InternalServiceException
@@ -25675,6 +26027,7 @@ export const listSessions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStatementsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -25706,6 +26059,7 @@ export const listStatements: API.OperationMethod<
   retry: Retry,
   operationName: "ListStatements",
 }));
+
 export type ListTableOptimizerRunsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -25758,6 +26112,7 @@ export const listTableOptimizerRuns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTriggersError =
   | EntityNotFoundException
   | InternalServiceException
@@ -25810,6 +26165,7 @@ export const listTriggers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListUsageProfilesError =
   | InternalServiceException
   | InvalidInputException
@@ -25858,6 +26214,7 @@ export const listUsageProfiles: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListWorkflowsError =
   | InternalServiceException
   | InvalidInputException
@@ -25904,6 +26261,7 @@ export const listWorkflows: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ModifyIntegrationError =
   | AccessDeniedException
   | ConflictException
@@ -25945,6 +26303,7 @@ export const modifyIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyIntegration",
 }));
+
 export type PutAssetError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -25976,6 +26335,7 @@ export const putAsset: API.OperationMethod<
   retry: Retry,
   operationName: "PutAsset",
 }));
+
 export type PutAssetTypeError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -26005,6 +26365,7 @@ export const putAssetType: API.OperationMethod<
   retry: Retry,
   operationName: "PutAssetType",
 }));
+
 export type PutAttachmentError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -26036,6 +26397,7 @@ export const putAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "PutAttachment",
 }));
+
 export type PutDataCatalogEncryptionSettingsError =
   | InternalServiceException
   | InvalidInputException
@@ -26062,6 +26424,7 @@ export const putDataCatalogEncryptionSettings: API.OperationMethod<
   retry: Retry,
   operationName: "PutDataCatalogEncryptionSettings",
 }));
+
 export type PutDataQualityProfileAnnotationError =
   | EntityNotFoundException
   | InternalServiceException
@@ -26087,6 +26450,7 @@ export const putDataQualityProfileAnnotation: API.OperationMethod<
   retry: Retry,
   operationName: "PutDataQualityProfileAnnotation",
 }));
+
 export type PutFormTypeError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -26116,6 +26480,7 @@ export const putFormType: API.OperationMethod<
   retry: Retry,
   operationName: "PutFormType",
 }));
+
 export type PutResourcePolicyError =
   | ConditionCheckFailureException
   | EntityNotFoundException
@@ -26145,6 +26510,7 @@ export const putResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type PutSchemaVersionMetadataError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -26174,6 +26540,7 @@ export const putSchemaVersionMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "PutSchemaVersionMetadata",
 }));
+
 export type PutWorkflowRunPropertiesError =
   | AlreadyExistsException
   | ConcurrentModificationException
@@ -26207,6 +26574,7 @@ export const putWorkflowRunProperties: API.OperationMethod<
   retry: Retry,
   operationName: "PutWorkflowRunProperties",
 }));
+
 export type QuerySchemaVersionMetadataError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -26232,6 +26600,7 @@ export const querySchemaVersionMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "QuerySchemaVersionMetadata",
 }));
+
 export type RegisterConnectionTypeError =
   | AccessDeniedException
   | InternalServiceException
@@ -26267,6 +26636,7 @@ export const registerConnectionType: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterConnectionType",
 }));
+
 export type RegisterSchemaVersionError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -26302,6 +26672,7 @@ export const registerSchemaVersion: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterSchemaVersion",
 }));
+
 export type RemoveSchemaVersionMetadataError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -26327,6 +26698,7 @@ export const removeSchemaVersionMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveSchemaVersionMetadata",
 }));
+
 export type ResetJobBookmarkError =
   | EntityNotFoundException
   | InternalServiceException
@@ -26362,6 +26734,7 @@ export const resetJobBookmark: API.OperationMethod<
   retry: Retry,
   operationName: "ResetJobBookmark",
 }));
+
 export type ResumeWorkflowRunError =
   | ConcurrentRunsExceededException
   | EntityNotFoundException
@@ -26393,6 +26766,7 @@ export const resumeWorkflowRun: API.OperationMethod<
   retry: Retry,
   operationName: "ResumeWorkflowRun",
 }));
+
 export type RunStatementError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -26432,6 +26806,7 @@ export const runStatement: API.OperationMethod<
   retry: Retry,
   operationName: "RunStatement",
 }));
+
 export type SearchAssetsError =
   | AccessDeniedException
   | InternalServiceException
@@ -26480,6 +26855,7 @@ export const searchAssets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchTablesError =
   | InternalServiceException
   | InvalidInputException
@@ -26527,6 +26903,7 @@ export const searchTables: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type StartBlueprintRunError =
   | EntityNotFoundException
   | IllegalBlueprintStateException
@@ -26558,6 +26935,7 @@ export const startBlueprintRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartBlueprintRun",
 }));
+
 export type StartColumnStatisticsTaskRunError =
   | AccessDeniedException
   | ColumnStatisticsTaskRunningException
@@ -26589,6 +26967,7 @@ export const startColumnStatisticsTaskRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartColumnStatisticsTaskRun",
 }));
+
 export type StartColumnStatisticsTaskRunScheduleError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -26616,6 +26995,7 @@ export const startColumnStatisticsTaskRunSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "StartColumnStatisticsTaskRunSchedule",
 }));
+
 export type StartCrawlerError =
   | CrawlerRunningException
   | EntityNotFoundException
@@ -26643,6 +27023,7 @@ export const startCrawler: API.OperationMethod<
   retry: Retry,
   operationName: "StartCrawler",
 }));
+
 export type StartCrawlerScheduleError =
   | EntityNotFoundException
   | NoScheduleException
@@ -26674,6 +27055,7 @@ export const startCrawlerSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "StartCrawlerSchedule",
 }));
+
 export type StartDataQualityRuleRecommendationRunError =
   | ConflictException
   | InternalServiceException
@@ -26703,6 +27085,7 @@ export const startDataQualityRuleRecommendationRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartDataQualityRuleRecommendationRun",
 }));
+
 export type StartDataQualityRulesetEvaluationRunError =
   | ConflictException
   | EntityNotFoundException
@@ -26732,6 +27115,7 @@ export const startDataQualityRulesetEvaluationRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartDataQualityRulesetEvaluationRun",
 }));
+
 export type StartExportLabelsTaskRunError =
   | EntityNotFoundException
   | InternalServiceException
@@ -26767,6 +27151,7 @@ export const startExportLabelsTaskRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartExportLabelsTaskRun",
 }));
+
 export type StartImportLabelsTaskRunError =
   | EntityNotFoundException
   | InternalServiceException
@@ -26820,6 +27205,7 @@ export const startImportLabelsTaskRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartImportLabelsTaskRun",
 }));
+
 export type StartJobRunError =
   | ConcurrentRunsExceededException
   | EntityNotFoundException
@@ -26853,6 +27239,7 @@ export const startJobRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartJobRun",
 }));
+
 export type StartMaterializedViewRefreshTaskRunError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -26884,6 +27271,7 @@ export const startMaterializedViewRefreshTaskRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartMaterializedViewRefreshTaskRun",
 }));
+
 export type StartMLEvaluationTaskRunError =
   | ConcurrentRunsExceededException
   | EntityNotFoundException
@@ -26922,6 +27310,7 @@ export const startMLEvaluationTaskRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartMLEvaluationTaskRun",
 }));
+
 export type StartMLLabelingSetGenerationTaskRunError =
   | ConcurrentRunsExceededException
   | EntityNotFoundException
@@ -26967,6 +27356,7 @@ export const startMLLabelingSetGenerationTaskRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartMLLabelingSetGenerationTaskRun",
 }));
+
 export type StartTriggerError =
   | ConcurrentRunsExceededException
   | EntityNotFoundException
@@ -27000,6 +27390,7 @@ export const startTrigger: API.OperationMethod<
   retry: Retry,
   operationName: "StartTrigger",
 }));
+
 export type StartWorkflowRunError =
   | ConcurrentRunsExceededException
   | EntityNotFoundException
@@ -27031,6 +27422,7 @@ export const startWorkflowRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartWorkflowRun",
 }));
+
 export type StopColumnStatisticsTaskRunError =
   | ColumnStatisticsTaskNotRunningException
   | ColumnStatisticsTaskStoppingException
@@ -27058,6 +27450,7 @@ export const stopColumnStatisticsTaskRun: API.OperationMethod<
   retry: Retry,
   operationName: "StopColumnStatisticsTaskRun",
 }));
+
 export type StopColumnStatisticsTaskRunScheduleError =
   | EntityNotFoundException
   | InvalidInputException
@@ -27083,6 +27476,7 @@ export const stopColumnStatisticsTaskRunSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "StopColumnStatisticsTaskRunSchedule",
 }));
+
 export type StopCrawlerError =
   | CrawlerNotRunningException
   | CrawlerStoppingException
@@ -27110,6 +27504,7 @@ export const stopCrawler: API.OperationMethod<
   retry: Retry,
   operationName: "StopCrawler",
 }));
+
 export type StopCrawlerScheduleError =
   | EntityNotFoundException
   | OperationTimeoutException
@@ -27139,6 +27534,7 @@ export const stopCrawlerSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "StopCrawlerSchedule",
 }));
+
 export type StopMaterializedViewRefreshTaskRunError =
   | AccessDeniedException
   | InvalidInputException
@@ -27168,6 +27564,7 @@ export const stopMaterializedViewRefreshTaskRun: API.OperationMethod<
   retry: Retry,
   operationName: "StopMaterializedViewRefreshTaskRun",
 }));
+
 export type StopSessionError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -27199,6 +27596,7 @@ export const stopSession: API.OperationMethod<
   retry: Retry,
   operationName: "StopSession",
 }));
+
 export type StopTriggerError =
   | ConcurrentModificationException
   | EntityNotFoundException
@@ -27228,6 +27626,7 @@ export const stopTrigger: API.OperationMethod<
   retry: Retry,
   operationName: "StopTrigger",
 }));
+
 export type StopWorkflowRunError =
   | EntityNotFoundException
   | IllegalWorkflowStateException
@@ -27257,6 +27656,7 @@ export const stopWorkflowRun: API.OperationMethod<
   retry: Retry,
   operationName: "StopWorkflowRun",
 }));
+
 export type TagResourceError =
   | EntityNotFoundException
   | InternalServiceException
@@ -27286,6 +27686,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TestConnectionError =
   | AccessDeniedException
   | ConflictException
@@ -27327,6 +27728,7 @@ export const testConnection: API.OperationMethod<
   retry: Retry,
   operationName: "TestConnection",
 }));
+
 export type UntagResourceError =
   | EntityNotFoundException
   | InternalServiceException
@@ -27354,6 +27756,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAssetError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -27385,6 +27788,7 @@ export const updateAsset: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAsset",
 }));
+
 export type UpdateBlueprintError =
   | ConcurrentModificationException
   | EntityNotFoundException
@@ -27416,6 +27820,7 @@ export const updateBlueprint: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBlueprint",
 }));
+
 export type UpdateCatalogError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -27451,6 +27856,7 @@ export const updateCatalog: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCatalog",
 }));
+
 export type UpdateClassifierError =
   | EntityNotFoundException
   | InvalidInputException
@@ -27480,6 +27886,7 @@ export const updateClassifier: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateClassifier",
 }));
+
 export type UpdateColumnStatisticsForPartitionError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -27511,6 +27918,7 @@ export const updateColumnStatisticsForPartition: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateColumnStatisticsForPartition",
 }));
+
 export type UpdateColumnStatisticsForTableError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -27542,6 +27950,7 @@ export const updateColumnStatisticsForTable: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateColumnStatisticsForTable",
 }));
+
 export type UpdateColumnStatisticsTaskSettingsError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -27571,6 +27980,7 @@ export const updateColumnStatisticsTaskSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateColumnStatisticsTaskSettings",
 }));
+
 export type UpdateConnectionError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -27598,6 +28008,7 @@ export const updateConnection: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConnection",
 }));
+
 export type UpdateCrawlerError =
   | CrawlerRunningException
   | EntityNotFoundException
@@ -27633,6 +28044,7 @@ export const updateCrawler: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCrawler",
 }));
+
 export type UpdateCrawlerScheduleError =
   | EntityNotFoundException
   | InvalidInputException
@@ -27662,6 +28074,7 @@ export const updateCrawlerSchedule: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCrawlerSchedule",
 }));
+
 export type UpdateDatabaseError =
   | AlreadyExistsException
   | ConcurrentModificationException
@@ -27699,6 +28112,7 @@ export const updateDatabase: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDatabase",
 }));
+
 export type UpdateDataQualityRulesetError =
   | AlreadyExistsException
   | EntityNotFoundException
@@ -27732,6 +28146,7 @@ export const updateDataQualityRuleset: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDataQualityRuleset",
 }));
+
 export type UpdateDevEndpointError =
   | EntityNotFoundException
   | InternalServiceException
@@ -27761,6 +28176,7 @@ export const updateDevEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDevEndpoint",
 }));
+
 export type UpdateGlossaryError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -27794,6 +28210,7 @@ export const updateGlossary: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGlossary",
 }));
+
 export type UpdateGlossaryTermError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -27827,6 +28244,7 @@ export const updateGlossaryTerm: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGlossaryTerm",
 }));
+
 export type UpdateGlueIdentityCenterConfigurationError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -27858,6 +28276,7 @@ export const updateGlueIdentityCenterConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGlueIdentityCenterConfiguration",
 }));
+
 export type UpdateIntegrationResourcePropertyError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -27891,6 +28310,7 @@ export const updateIntegrationResourceProperty: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateIntegrationResourceProperty",
 }));
+
 export type UpdateIntegrationTablePropertiesError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -27926,6 +28346,7 @@ export const updateIntegrationTableProperties: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateIntegrationTableProperties",
 }));
+
 export type UpdateJobError =
   | ConcurrentModificationException
   | EntityNotFoundException
@@ -27957,6 +28378,7 @@ export const updateJob: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateJob",
 }));
+
 export type UpdateJobFromSourceControlError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -27992,6 +28414,7 @@ export const updateJobFromSourceControl: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateJobFromSourceControl",
 }));
+
 export type UpdateMLTransformError =
   | AccessDeniedException
   | EntityNotFoundException
@@ -28025,6 +28448,7 @@ export const updateMLTransform: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMLTransform",
 }));
+
 export type UpdatePartitionError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -28054,6 +28478,7 @@ export const updatePartition: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePartition",
 }));
+
 export type UpdateRegistryError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -28083,6 +28508,7 @@ export const updateRegistry: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRegistry",
 }));
+
 export type UpdateSchemaError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -28118,6 +28544,7 @@ export const updateSchema: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSchema",
 }));
+
 export type UpdateSourceControlFromJobError =
   | AccessDeniedException
   | AlreadyExistsException
@@ -28153,6 +28580,7 @@ export const updateSourceControlFromJob: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSourceControlFromJob",
 }));
+
 export type UpdateTableError =
   | AlreadyExistsException
   | ConcurrentModificationException
@@ -28194,6 +28622,7 @@ export const updateTable: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTable",
 }));
+
 export type UpdateTableOptimizerError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -28227,6 +28656,7 @@ export const updateTableOptimizer: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTableOptimizer",
 }));
+
 export type UpdateTriggerError =
   | ConcurrentModificationException
   | EntityNotFoundException
@@ -28258,6 +28688,7 @@ export const updateTrigger: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTrigger",
 }));
+
 export type UpdateUsageProfileError =
   | ConcurrentModificationException
   | EntityNotFoundException
@@ -28289,6 +28720,7 @@ export const updateUsageProfile: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateUsageProfile",
 }));
+
 export type UpdateUserDefinedFunctionError =
   | EntityNotFoundException
   | GlueEncryptionException
@@ -28318,6 +28750,7 @@ export const updateUserDefinedFunction: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateUserDefinedFunction",
 }));
+
 export type UpdateWorkflowError =
   | ConcurrentModificationException
   | EntityNotFoundException

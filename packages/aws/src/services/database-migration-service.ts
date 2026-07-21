@@ -97,17 +97,110 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ExceptionMessage = string;
-export type MigrationProjectIdentifier = string;
-export type Iso8601DateTime = Date;
-export type SecretString = string | redacted.Redacted<string>;
-export type ResourceArn = string;
-export type ReplicationInstanceClass = string;
-export type CertificateWallet = Uint8Array;
-export type Marker = string;
-
-//# Schemas
+export class AccessDeniedFault extends S.TaggedErrorClass<AccessDeniedFault>()(
+  "AccessDeniedFault",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class CollectorNotFoundFault extends S.TaggedErrorClass<CollectorNotFoundFault>()(
+  "CollectorNotFoundFault",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class FailedDependencyFault extends S.TaggedErrorClass<FailedDependencyFault>()(
+  "FailedDependencyFault",
+  { message: S.optional(S.String) },
+) {}
+export class InsufficientResourceCapacityFault extends S.TaggedErrorClass<InsufficientResourceCapacityFault>()(
+  "InsufficientResourceCapacityFault",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidCertificateFault extends S.TaggedErrorClass<InvalidCertificateFault>()(
+  "InvalidCertificateFault",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidOperationFault extends S.TaggedErrorClass<InvalidOperationFault>()(
+  "InvalidOperationFault",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidResourceStateFault extends S.TaggedErrorClass<InvalidResourceStateFault>()(
+  "InvalidResourceStateFault",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
+  "InvalidSubnet",
+  { message: S.optional(S.String) },
+) {}
+export class KMSAccessDeniedFault extends S.TaggedErrorClass<KMSAccessDeniedFault>()(
+  "KMSAccessDeniedFault",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class KMSDisabledFault extends S.TaggedErrorClass<KMSDisabledFault>()(
+  "KMSDisabledFault",
+  { message: S.optional(S.String) },
+) {}
+export class KMSFault extends S.TaggedErrorClass<KMSFault>()("KMSFault", {
+  message: S.optional(S.String),
+}) {}
+export class KMSInvalidStateFault extends S.TaggedErrorClass<KMSInvalidStateFault>()(
+  "KMSInvalidStateFault",
+  { message: S.optional(S.String) },
+) {}
+export class KMSKeyNotAccessibleFault extends S.TaggedErrorClass<KMSKeyNotAccessibleFault>()(
+  "KMSKeyNotAccessibleFault",
+  { message: S.optional(S.String) },
+) {}
+export class KMSNotFoundFault extends S.TaggedErrorClass<KMSNotFoundFault>()(
+  "KMSNotFoundFault",
+  { message: S.optional(S.String) },
+) {}
+export class KMSThrottlingFault extends S.TaggedErrorClass<KMSThrottlingFault>()(
+  "KMSThrottlingFault",
+  { message: S.optional(S.String) },
+) {}
+export class ReplicationSubnetGroupDoesNotCoverEnoughAZs extends S.TaggedErrorClass<ReplicationSubnetGroupDoesNotCoverEnoughAZs>()(
+  "ReplicationSubnetGroupDoesNotCoverEnoughAZs",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceAlreadyExistsFault extends S.TaggedErrorClass<ResourceAlreadyExistsFault>()(
+  "ResourceAlreadyExistsFault",
+  { message: S.optional(S.String), resourceArn: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class ResourceNotFoundFault extends S.TaggedErrorClass<ResourceNotFoundFault>()(
+  "ResourceNotFoundFault",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceQuotaExceededFault extends S.TaggedErrorClass<ResourceQuotaExceededFault>()(
+  "ResourceQuotaExceededFault",
+  { message: S.optional(S.String) },
+) {}
+export class S3AccessDeniedFault extends S.TaggedErrorClass<S3AccessDeniedFault>()(
+  "S3AccessDeniedFault",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class S3ResourceNotFoundFault extends S.TaggedErrorClass<S3ResourceNotFoundFault>()(
+  "S3ResourceNotFoundFault",
+  { message: S.optional(S.String) },
+) {}
+export class SNSInvalidTopicFault extends S.TaggedErrorClass<SNSInvalidTopicFault>()(
+  "SNSInvalidTopicFault",
+  { message: S.optional(S.String) },
+) {}
+export class SNSNoAuthorizationFault extends S.TaggedErrorClass<SNSNoAuthorizationFault>()(
+  "SNSNoAuthorizationFault",
+  { message: S.optional(S.String) },
+) {}
+export class StorageQuotaExceededFault extends S.TaggedErrorClass<StorageQuotaExceededFault>()(
+  "StorageQuotaExceededFault",
+  { message: S.optional(S.String) },
+) {}
+export class SubnetAlreadyInUse extends S.TaggedErrorClass<SubnetAlreadyInUse>()(
+  "SubnetAlreadyInUse",
+  { message: S.optional(S.String) },
+).pipe(C.withDependencyViolationError) {}
+export class UpgradeDependencyFailureFault extends S.TaggedErrorClass<UpgradeDependencyFailureFault>()(
+  "UpgradeDependencyFailureFault",
+  { message: S.optional(S.String) },
+) {}
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -303,6 +396,7 @@ export const BatchStartRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchStartRecommendationsResponse",
 }) as any as S.Schema<BatchStartRecommendationsResponse>;
+export type MigrationProjectIdentifier = string;
 export interface CancelMetadataModelConversionMessage {
   MigrationProjectIdentifier: string;
   RequestIdentifier: string;
@@ -544,6 +638,8 @@ export type MigrationTypeValue =
   | "full-load-and-cdc"
   | (string & {});
 export const MigrationTypeValue = /*@__PURE__*/ S.String;
+
+export type Iso8601DateTime = Date;
 export interface SourceDataSetting {
   CDCStartPosition?: string;
   CDCStartTime?: Date;
@@ -572,6 +668,7 @@ export type TablePreparationMode =
   | "drop-tables-on-target"
   | (string & {});
 export const TablePreparationMode = /*@__PURE__*/ S.String;
+
 export interface TargetDataSetting {
   TablePreparationMode?: TablePreparationMode;
 }
@@ -582,6 +679,7 @@ export const TargetDataSetting = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetDataSetting>;
 export type TargetDataSettings = TargetDataSetting[];
 export const TargetDataSettings = /*@__PURE__*/ S.Array(TargetDataSetting);
+export type SecretString = string | redacted.Redacted<string>;
 export interface CreateDataMigrationMessage {
   DataMigrationName?: string;
   MigrationProjectIdentifier: string;
@@ -745,6 +843,7 @@ export type DmsSslModeValue =
   | "verify-full"
   | (string & {});
 export const DmsSslModeValue = /*@__PURE__*/ S.String;
+
 export interface PostgreSqlDataProviderSettings {
   ServerName?: string;
   Port?: number;
@@ -950,12 +1049,14 @@ export const IbmDb2zOsDataProviderSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IbmDb2zOsDataProviderSettings>;
 export type AuthTypeValue = "no" | "password" | (string & {});
 export const AuthTypeValue = /*@__PURE__*/ S.String;
+
 export type AuthMechanismValue =
   | "default"
   | "mongodb_cr"
   | "scram_sha_1"
   | (string & {});
 export const AuthMechanismValue = /*@__PURE__*/ S.String;
+
 export interface MongoDbDataProviderSettings {
   ServerName?: string;
   Port?: number;
@@ -1201,6 +1302,7 @@ export const CreateDataProviderResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDataProviderResponse>;
 export type ReplicationEndpointTypeValue = "source" | "target" | (string & {});
 export const ReplicationEndpointTypeValue = /*@__PURE__*/ S.String;
+
 export interface DynamoDbSettings {
   ServiceAccessRoleArn: string;
 }
@@ -1211,18 +1313,23 @@ export const DynamoDbSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DynamoDbSettings>;
 export type CompressionTypeValue = "none" | "gzip" | (string & {});
 export const CompressionTypeValue = /*@__PURE__*/ S.String;
+
 export type EncryptionModeValue = "sse-s3" | "sse-kms" | (string & {});
 export const EncryptionModeValue = /*@__PURE__*/ S.String;
+
 export type DataFormatValue = "csv" | "parquet" | (string & {});
 export const DataFormatValue = /*@__PURE__*/ S.String;
+
 export type EncodingTypeValue =
   | "plain"
   | "plain-dictionary"
   | "rle-dictionary"
   | (string & {});
 export const EncodingTypeValue = /*@__PURE__*/ S.String;
+
 export type ParquetVersionValue = "parquet-1-0" | "parquet-2-0" | (string & {});
 export const ParquetVersionValue = /*@__PURE__*/ S.String;
+
 export type DatePartitionSequenceValue =
   | "YYYYMMDD"
   | "YYYYMMDDHH"
@@ -1231,6 +1338,7 @@ export type DatePartitionSequenceValue =
   | "DDMMYYYY"
   | (string & {});
 export const DatePartitionSequenceValue = /*@__PURE__*/ S.String;
+
 export type DatePartitionDelimiterValue =
   | "SLASH"
   | "UNDERSCORE"
@@ -1238,6 +1346,7 @@ export type DatePartitionDelimiterValue =
   | "NONE"
   | (string & {});
 export const DatePartitionDelimiterValue = /*@__PURE__*/ S.String;
+
 export type CannedAclForObjectsValue =
   | "none"
   | "private"
@@ -1249,6 +1358,7 @@ export type CannedAclForObjectsValue =
   | "bucket-owner-full-control"
   | (string & {});
 export const CannedAclForObjectsValue = /*@__PURE__*/ S.String;
+
 export interface S3Settings {
   ServiceAccessRoleArn?: string;
   ExternalTableDefinition?: string;
@@ -1351,6 +1461,7 @@ export const DmsTransferSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DmsTransferSettings>;
 export type NestingLevelValue = "none" | "one" | (string & {});
 export const NestingLevelValue = /*@__PURE__*/ S.String;
+
 export interface MongoDbSettings {
   Username?: string;
   Password?: string | redacted.Redacted<string>;
@@ -1393,6 +1504,7 @@ export const MongoDbSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MongoDbSettings>;
 export type MessageFormatValue = "json" | "json-unformatted" | (string & {});
 export const MessageFormatValue = /*@__PURE__*/ S.String;
+
 export interface KinesisSettings {
   StreamArn?: string;
   MessageFormat?: MessageFormatValue;
@@ -1430,13 +1542,16 @@ export type KafkaSecurityProtocol =
   | "sasl-ssl"
   | (string & {});
 export const KafkaSecurityProtocol = /*@__PURE__*/ S.String;
+
 export type KafkaSaslMechanism = "scram-sha-512" | "plain" | (string & {});
 export const KafkaSaslMechanism = /*@__PURE__*/ S.String;
+
 export type KafkaSslEndpointIdentificationAlgorithm =
   | "none"
   | "https"
   | (string & {});
 export const KafkaSslEndpointIdentificationAlgorithm = /*@__PURE__*/ S.String;
+
 export interface KafkaSettings {
   Broker?: string;
   Topic?: string;
@@ -1603,16 +1718,20 @@ export type PluginNameValue =
   | "pglogical"
   | (string & {});
 export const PluginNameValue = /*@__PURE__*/ S.String;
+
 export type LongVarcharMappingType =
   | "wstring"
   | "clob"
   | "nclob"
   | (string & {});
 export const LongVarcharMappingType = /*@__PURE__*/ S.String;
+
 export type DatabaseMode = "default" | "babelfish" | (string & {});
 export const DatabaseMode = /*@__PURE__*/ S.String;
+
 export type PostgreSQLAuthenticationMethod = "password" | "iam" | (string & {});
 export const PostgreSQLAuthenticationMethod = /*@__PURE__*/ S.String;
+
 export interface PostgreSQLSettings {
   AfterConnectScript?: string;
   CaptureDdls?: boolean;
@@ -1680,8 +1799,10 @@ export type TargetDbType =
   | "multiple-databases"
   | (string & {});
 export const TargetDbType = /*@__PURE__*/ S.String;
+
 export type MySQLAuthenticationMethod = "password" | "iam" | (string & {});
 export const MySQLAuthenticationMethod = /*@__PURE__*/ S.String;
+
 export interface MySQLSettings {
   AfterConnectScript?: string;
   CleanSourceMetadataOnMismatch?: boolean;
@@ -1726,11 +1847,13 @@ export type IntegerList = number[];
 export const IntegerList = /*@__PURE__*/ S.Array(S.Number);
 export type CharLengthSemantics = "default" | "char" | "byte" | (string & {});
 export const CharLengthSemantics = /*@__PURE__*/ S.String;
+
 export type OracleAuthenticationMethod =
   | "password"
   | "kerberos"
   | (string & {});
 export const OracleAuthenticationMethod = /*@__PURE__*/ S.String;
+
 export interface OracleSettings {
   AddSupplementalLogging?: boolean;
   ArchivedLogDestId?: number;
@@ -1851,6 +1974,7 @@ export type SafeguardPolicy =
   | "shared-automatic-truncation"
   | (string & {});
 export const SafeguardPolicy = /*@__PURE__*/ S.String;
+
 export type TlogAccessMode =
   | "BackupOnly"
   | "PreferBackup"
@@ -1858,11 +1982,13 @@ export type TlogAccessMode =
   | "TlogOnly"
   | (string & {});
 export const TlogAccessMode = /*@__PURE__*/ S.String;
+
 export type SqlServerAuthenticationMethod =
   | "password"
   | "kerberos"
   | (string & {});
 export const SqlServerAuthenticationMethod = /*@__PURE__*/ S.String;
+
 export interface MicrosoftSQLServerSettings {
   Port?: number;
   BcpPacketSize?: number;
@@ -1978,12 +2104,14 @@ export type SslSecurityProtocolValue =
   | "ssl-encryption"
   | (string & {});
 export const SslSecurityProtocolValue = /*@__PURE__*/ S.String;
+
 export type RedisAuthTypeValue =
   | "none"
   | "auth-role"
   | "auth-token"
   | (string & {});
 export const RedisAuthTypeValue = /*@__PURE__*/ S.String;
+
 export interface RedisSettings {
   ServerName: string;
   Port: number;
@@ -2667,6 +2795,7 @@ export const CreateReplicationConfigResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateReplicationConfigResponse",
 }) as any as S.Schema<CreateReplicationConfigResponse>;
+export type ReplicationInstanceClass = string;
 export type VpcSecurityGroupIdList = string[];
 export const VpcSecurityGroupIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("VpcSecurityGroupId")),
@@ -3102,6 +3231,7 @@ export const DeleteCertificateMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteCertificateMessage",
 }) as any as S.Schema<DeleteCertificateMessage>;
+export type CertificateWallet = Uint8Array;
 export interface Certificate {
   CertificateIdentifier?: string;
   CertificateCreationDate?: Date;
@@ -3750,6 +3880,7 @@ export const DescribeConversionConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeConversionConfigurationResponse",
 }) as any as S.Schema<DescribeConversionConfigurationResponse>;
+export type Marker = string;
 export interface DescribeDataMigrationsMessage {
   Filters?: Filter[];
   MaxRecords?: number;
@@ -3905,6 +4036,7 @@ export type EndpointSettingTypeValue =
   | "enum"
   | (string & {});
 export const EndpointSettingTypeValue = /*@__PURE__*/ S.String;
+
 export type EndpointSettingEnumValues = string[];
 export const EndpointSettingEnumValues = /*@__PURE__*/ S.Array(S.String);
 export interface EndpointSetting {
@@ -4031,6 +4163,7 @@ export const DescribeEngineVersionsMessage = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeEngineVersionsMessage>;
 export type ReleaseStatusValues = "beta" | "prod" | (string & {});
 export const ReleaseStatusValues = /*@__PURE__*/ S.String;
+
 export type AvailableUpgradesList = string[];
 export const AvailableUpgradesList = /*@__PURE__*/ S.Array(S.String);
 export interface EngineVersion {
@@ -4131,6 +4264,7 @@ export const DescribeEventCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeEventCategoriesResponse>;
 export type SourceType = "replication-instance" | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
+
 export interface DescribeEventsMessage {
   SourceIdentifier?: string;
   SourceType?: SourceType;
@@ -4318,8 +4452,10 @@ export type VersionStatus =
   | "UNSUPPORTED"
   | (string & {});
 export const VersionStatus = /*@__PURE__*/ S.String;
+
 export type CollectorStatus = "UNREGISTERED" | "ACTIVE" | (string & {});
 export const CollectorStatus = /*@__PURE__*/ S.String;
+
 export interface CollectorHealthCheck {
   CollectorStatus?: CollectorStatus;
   LocalCollectorS3Access?: boolean;
@@ -4761,6 +4897,7 @@ export const DescribeInstanceProfilesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeInstanceProfilesResponse>;
 export type OriginTypeValue = "SOURCE" | "TARGET" | (string & {});
 export const OriginTypeValue = /*@__PURE__*/ S.String;
+
 export interface DescribeMetadataModelMessage {
   SelectionRules: string;
   MigrationProjectIdentifier: string;
@@ -5466,6 +5603,7 @@ export type RefreshSchemasStatusTypeValue =
   | "refreshing"
   | (string & {});
 export const RefreshSchemasStatusTypeValue = /*@__PURE__*/ S.String;
+
 export interface RefreshSchemasStatus {
   EndpointArn?: string;
   ReplicationInstanceArn?: string;
@@ -6297,6 +6435,7 @@ export const DescribeTableStatisticsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeTableStatisticsResponse>;
 export type AssessmentReportType = "pdf" | "csv" | (string & {});
 export const AssessmentReportType = /*@__PURE__*/ S.String;
+
 export type AssessmentReportTypesList = AssessmentReportType[];
 export const AssessmentReportTypesList =
   /*@__PURE__*/ S.Array(AssessmentReportType);
@@ -7061,6 +7200,7 @@ export type TableListToReload = TableToReload[];
 export const TableListToReload = /*@__PURE__*/ S.Array(TableToReload);
 export type ReloadOptionValue = "data-reload" | "validate-only" | (string & {});
 export const ReloadOptionValue = /*@__PURE__*/ S.String;
+
 export interface ReloadReplicationTablesMessage {
   ReplicationConfigArn: string;
   TablesToReload: TableToReload[];
@@ -7186,6 +7326,7 @@ export type StartReplicationMigrationTypeValue =
   | "start-replication"
   | (string & {});
 export const StartReplicationMigrationTypeValue = /*@__PURE__*/ S.String;
+
 export interface StartDataMigrationMessage {
   DataMigrationIdentifier: string;
   StartType: StartReplicationMigrationTypeValue;
@@ -7522,6 +7663,7 @@ export type StartReplicationTaskTypeValue =
   | "reload-target"
   | (string & {});
 export const StartReplicationTaskTypeValue = /*@__PURE__*/ S.String;
+
 export interface StartReplicationTaskMessage {
   ReplicationTaskArn: string;
   StartReplicationTaskType: StartReplicationTaskTypeValue;
@@ -7771,114 +7913,8 @@ export const UpdateSubscriptionsToEventBridgeResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateSubscriptionsToEventBridgeResponse",
 }) as any as S.Schema<UpdateSubscriptionsToEventBridgeResponse>;
-
-//# Errors
-export class InvalidResourceStateFault extends S.TaggedErrorClass<InvalidResourceStateFault>()(
-  "InvalidResourceStateFault",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundFault extends S.TaggedErrorClass<ResourceNotFoundFault>()(
-  "ResourceNotFoundFault",
-  { message: S.optional(S.String) },
-) {}
-export class AccessDeniedFault extends S.TaggedErrorClass<AccessDeniedFault>()(
-  "AccessDeniedFault",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class FailedDependencyFault extends S.TaggedErrorClass<FailedDependencyFault>()(
-  "FailedDependencyFault",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidOperationFault extends S.TaggedErrorClass<InvalidOperationFault>()(
-  "InvalidOperationFault",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceAlreadyExistsFault extends S.TaggedErrorClass<ResourceAlreadyExistsFault>()(
-  "ResourceAlreadyExistsFault",
-  { message: S.optional(S.String), resourceArn: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class ResourceQuotaExceededFault extends S.TaggedErrorClass<ResourceQuotaExceededFault>()(
-  "ResourceQuotaExceededFault",
-  { message: S.optional(S.String) },
-) {}
-export class KMSKeyNotAccessibleFault extends S.TaggedErrorClass<KMSKeyNotAccessibleFault>()(
-  "KMSKeyNotAccessibleFault",
-  { message: S.optional(S.String) },
-) {}
-export class S3AccessDeniedFault extends S.TaggedErrorClass<S3AccessDeniedFault>()(
-  "S3AccessDeniedFault",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class KMSAccessDeniedFault extends S.TaggedErrorClass<KMSAccessDeniedFault>()(
-  "KMSAccessDeniedFault",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class KMSDisabledFault extends S.TaggedErrorClass<KMSDisabledFault>()(
-  "KMSDisabledFault",
-  { message: S.optional(S.String) },
-) {}
-export class KMSInvalidStateFault extends S.TaggedErrorClass<KMSInvalidStateFault>()(
-  "KMSInvalidStateFault",
-  { message: S.optional(S.String) },
-) {}
-export class KMSNotFoundFault extends S.TaggedErrorClass<KMSNotFoundFault>()(
-  "KMSNotFoundFault",
-  { message: S.optional(S.String) },
-) {}
-export class KMSThrottlingFault extends S.TaggedErrorClass<KMSThrottlingFault>()(
-  "KMSThrottlingFault",
-  { message: S.optional(S.String) },
-) {}
-export class SNSInvalidTopicFault extends S.TaggedErrorClass<SNSInvalidTopicFault>()(
-  "SNSInvalidTopicFault",
-  { message: S.optional(S.String) },
-) {}
-export class SNSNoAuthorizationFault extends S.TaggedErrorClass<SNSNoAuthorizationFault>()(
-  "SNSNoAuthorizationFault",
-  { message: S.optional(S.String) },
-) {}
-export class S3ResourceNotFoundFault extends S.TaggedErrorClass<S3ResourceNotFoundFault>()(
-  "S3ResourceNotFoundFault",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
-  "InvalidSubnet",
-  { message: S.optional(S.String) },
-) {}
-export class ReplicationSubnetGroupDoesNotCoverEnoughAZs extends S.TaggedErrorClass<ReplicationSubnetGroupDoesNotCoverEnoughAZs>()(
-  "ReplicationSubnetGroupDoesNotCoverEnoughAZs",
-  { message: S.optional(S.String) },
-) {}
-export class InsufficientResourceCapacityFault extends S.TaggedErrorClass<InsufficientResourceCapacityFault>()(
-  "InsufficientResourceCapacityFault",
-  { message: S.optional(S.String) },
-) {}
-export class StorageQuotaExceededFault extends S.TaggedErrorClass<StorageQuotaExceededFault>()(
-  "StorageQuotaExceededFault",
-  { message: S.optional(S.String) },
-) {}
-export class CollectorNotFoundFault extends S.TaggedErrorClass<CollectorNotFoundFault>()(
-  "CollectorNotFoundFault",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InvalidCertificateFault extends S.TaggedErrorClass<InvalidCertificateFault>()(
-  "InvalidCertificateFault",
-  { message: S.optional(S.String) },
-) {}
-export class UpgradeDependencyFailureFault extends S.TaggedErrorClass<UpgradeDependencyFailureFault>()(
-  "UpgradeDependencyFailureFault",
-  { message: S.optional(S.String) },
-) {}
-export class SubnetAlreadyInUse extends S.TaggedErrorClass<SubnetAlreadyInUse>()(
-  "SubnetAlreadyInUse",
-  { message: S.optional(S.String) },
-).pipe(C.withDependencyViolationError) {}
-export class KMSFault extends S.TaggedErrorClass<KMSFault>()("KMSFault", {
-  message: S.optional(S.String),
-}) {}
-
-//# Operations
+export type ExceptionMessage = string;
+export type ResourceArn = string;
 export type AddTagsToResourceError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -7905,6 +7941,7 @@ export const addTagsToResource: API.OperationMethod<
   retry: Retry,
   operationName: "AddTagsToResource",
 }));
+
 export type ApplyPendingMaintenanceActionError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -7925,6 +7962,7 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
   retry: Retry,
   operationName: "ApplyPendingMaintenanceAction",
 }));
+
 export type BatchStartRecommendationsError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -7954,6 +7992,7 @@ export const batchStartRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "BatchStartRecommendations",
 }));
+
 export type CancelMetadataModelConversionError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -7975,6 +8014,7 @@ export const cancelMetadataModelConversion: API.OperationMethod<
   retry: Retry,
   operationName: "CancelMetadataModelConversion",
 }));
+
 export type CancelMetadataModelCreationError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -7996,6 +8036,7 @@ export const cancelMetadataModelCreation: API.OperationMethod<
   retry: Retry,
   operationName: "CancelMetadataModelCreation",
 }));
+
 export type CancelReplicationTaskAssessmentRunError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8021,6 +8062,7 @@ export const cancelReplicationTaskAssessmentRun: API.OperationMethod<
   retry: Retry,
   operationName: "CancelReplicationTaskAssessmentRun",
 }));
+
 export type CreateDataMigrationError =
   | FailedDependencyFault
   | InvalidOperationFault
@@ -8050,6 +8092,7 @@ export const createDataMigration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataMigration",
 }));
+
 export type CreateDataProviderError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -8078,6 +8121,7 @@ export const createDataProvider: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataProvider",
 }));
+
 export type CreateEndpointError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8118,6 +8162,7 @@ export const createEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEndpoint",
 }));
+
 export type CreateEventSubscriptionError =
   | KMSAccessDeniedFault
   | KMSDisabledFault
@@ -8172,6 +8217,7 @@ export const createEventSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEventSubscription",
 }));
+
 export type CreateFleetAdvisorCollectorError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8203,6 +8249,7 @@ export const createFleetAdvisorCollector: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFleetAdvisorCollector",
 }));
+
 export type CreateInstanceProfileError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -8240,6 +8287,7 @@ export const createInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInstanceProfile",
 }));
+
 export type CreateMigrationProjectError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -8276,6 +8324,7 @@ export const createMigrationProject: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMigrationProject",
 }));
+
 export type CreateReplicationConfigError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8313,6 +8362,7 @@ export const createReplicationConfig: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReplicationConfig",
 }));
+
 export type CreateReplicationInstanceError =
   | AccessDeniedFault
   | InsufficientResourceCapacityFault
@@ -8361,6 +8411,7 @@ export const createReplicationInstance: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReplicationInstance",
 }));
+
 export type CreateReplicationSubnetGroupError =
   | AccessDeniedFault
   | InvalidSubnet
@@ -8402,6 +8453,7 @@ export const createReplicationSubnetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReplicationSubnetGroup",
 }));
+
 export type CreateReplicationTaskError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8433,6 +8485,7 @@ export const createReplicationTask: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReplicationTask",
 }));
+
 export type DeleteCertificateError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -8453,6 +8506,7 @@ export const deleteCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCertificate",
 }));
+
 export type DeleteConnectionError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8474,6 +8528,7 @@ export const deleteConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConnection",
 }));
+
 export type DeleteDataMigrationError =
   | FailedDependencyFault
   | InvalidResourceStateFault
@@ -8499,6 +8554,7 @@ export const deleteDataMigration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataMigration",
 }));
+
 export type DeleteDataProviderError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -8529,6 +8585,7 @@ export const deleteDataProvider: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataProvider",
 }));
+
 export type DeleteEndpointError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -8552,6 +8609,7 @@ export const deleteEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEndpoint",
 }));
+
 export type DeleteEventSubscriptionError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8573,6 +8631,7 @@ export const deleteEventSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEventSubscription",
 }));
+
 export type DeleteFleetAdvisorCollectorError =
   | AccessDeniedFault
   | CollectorNotFoundFault
@@ -8600,6 +8659,7 @@ export const deleteFleetAdvisorCollector: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFleetAdvisorCollector",
 }));
+
 export type DeleteFleetAdvisorDatabasesError =
   | AccessDeniedFault
   | InvalidOperationFault
@@ -8623,6 +8683,7 @@ export const deleteFleetAdvisorDatabases: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFleetAdvisorDatabases",
 }));
+
 export type DeleteInstanceProfileError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -8653,6 +8714,7 @@ export const deleteInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInstanceProfile",
 }));
+
 export type DeleteMigrationProjectError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -8682,6 +8744,7 @@ export const deleteMigrationProject: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMigrationProject",
 }));
+
 export type DeleteReplicationConfigError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8706,6 +8769,7 @@ export const deleteReplicationConfig: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReplicationConfig",
 }));
+
 export type DeleteReplicationInstanceError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -8729,6 +8793,7 @@ export const deleteReplicationInstance: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReplicationInstance",
 }));
+
 export type DeleteReplicationSubnetGroupError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8750,6 +8815,7 @@ export const deleteReplicationSubnetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReplicationSubnetGroup",
 }));
+
 export type DeleteReplicationTaskError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -8770,6 +8836,7 @@ export const deleteReplicationTask: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReplicationTask",
 }));
+
 export type DeleteReplicationTaskAssessmentRunError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8795,6 +8862,7 @@ export const deleteReplicationTaskAssessmentRun: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReplicationTaskAssessmentRun",
 }));
+
 export type DescribeAccountAttributesError = CommonErrors;
 /**
  * Lists all of the DMS attributes for a customer account. These attributes include DMS
@@ -8819,6 +8887,7 @@ export const describeAccountAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccountAttributes",
 }));
+
 export type DescribeApplicableIndividualAssessmentsError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -8878,6 +8947,7 @@ export const describeApplicableIndividualAssessments: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeCertificatesError = ResourceNotFoundFault | CommonErrors;
 /**
  * Provides a description of the certificate.
@@ -8915,6 +8985,7 @@ export const describeCertificates: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeConnectionsError = ResourceNotFoundFault | CommonErrors;
 /**
  * Describes the status of the connections that have been made between the replication
@@ -8953,6 +9024,7 @@ export const describeConnections: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeConversionConfigurationError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -8972,6 +9044,7 @@ export const describeConversionConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConversionConfiguration",
 }));
+
 export type DescribeDataMigrationsError =
   | FailedDependencyFault
   | InvalidResourceStateFault
@@ -9018,6 +9091,7 @@ export const describeDataMigrations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeDataProvidersError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -9060,6 +9134,7 @@ export const describeDataProviders: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEndpointsError = ResourceNotFoundFault | CommonErrors;
 /**
  * Returns information about the endpoints for your account in the current region.
@@ -9097,6 +9172,7 @@ export const describeEndpoints: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEndpointSettingsError = CommonErrors;
 /**
  * Returns information about the possible endpoint settings available when you create an
@@ -9135,6 +9211,7 @@ export const describeEndpointSettings: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEndpointTypesError = CommonErrors;
 /**
  * Returns information about the type of endpoints available.
@@ -9172,6 +9249,7 @@ export const describeEndpointTypes: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEngineVersionsError = CommonErrors;
 /**
  * Returns information about the replication instance versions used in the project.
@@ -9209,6 +9287,7 @@ export const describeEngineVersions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEventCategoriesError = CommonErrors;
 /**
  * Lists categories for all event source types, or, if specified, for a specified source
@@ -9228,6 +9307,7 @@ export const describeEventCategories: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEventCategories",
 }));
+
 export type DescribeEventsError = CommonErrors;
 /**
  * Lists events for a given source identifier and source type. You can also specify a
@@ -9267,6 +9347,7 @@ export const describeEvents: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeEventSubscriptionsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -9312,6 +9393,7 @@ export const describeEventSubscriptions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeExtensionPackAssociationsError = CommonErrors;
 /**
  * Returns a paginated list of extension pack associations for the specified migration
@@ -9351,6 +9433,7 @@ export const describeExtensionPackAssociations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeFleetAdvisorCollectorsError =
   | InvalidResourceStateFault
   | CommonErrors;
@@ -9392,6 +9475,7 @@ export const describeFleetAdvisorCollectors: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeFleetAdvisorDatabasesError =
   | InvalidResourceStateFault
   | CommonErrors;
@@ -9433,6 +9517,7 @@ export const describeFleetAdvisorDatabases: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeFleetAdvisorLsaAnalysisError =
   | InvalidResourceStateFault
   | CommonErrors;
@@ -9475,6 +9560,7 @@ export const describeFleetAdvisorLsaAnalysis: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeFleetAdvisorSchemaObjectSummaryError =
   | InvalidResourceStateFault
   | CommonErrors;
@@ -9517,6 +9603,7 @@ export const describeFleetAdvisorSchemaObjectSummary: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeFleetAdvisorSchemasError =
   | InvalidResourceStateFault
   | CommonErrors;
@@ -9558,6 +9645,7 @@ export const describeFleetAdvisorSchemas: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeInstanceProfilesError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -9600,6 +9688,7 @@ export const describeInstanceProfiles: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMetadataModelError =
   | AccessDeniedFault
   | ResourceNotFoundFault
@@ -9620,6 +9709,7 @@ export const describeMetadataModel: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeMetadataModel",
 }));
+
 export type DescribeMetadataModelAssessmentsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -9660,6 +9750,7 @@ export const describeMetadataModelAssessments: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMetadataModelChildrenError =
   | AccessDeniedFault
   | ResourceNotFoundFault
@@ -9701,6 +9792,7 @@ export const describeMetadataModelChildren: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMetadataModelConversionsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -9740,6 +9832,7 @@ export const describeMetadataModelConversions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMetadataModelCreationsError =
   | AccessDeniedFault
   | ResourceNotFoundFault
@@ -9781,6 +9874,7 @@ export const describeMetadataModelCreations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMetadataModelExportsAsScriptError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -9820,6 +9914,7 @@ export const describeMetadataModelExportsAsScript: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMetadataModelExportsToTargetError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -9859,6 +9954,7 @@ export const describeMetadataModelExportsToTarget: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMetadataModelImportsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -9898,6 +9994,7 @@ export const describeMetadataModelImports: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMigrationProjectsError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -9940,6 +10037,7 @@ export const describeMigrationProjects: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeOrderableReplicationInstancesError = CommonErrors;
 /**
  * Returns information about the replication instance types that can be created in the
@@ -9978,6 +10076,7 @@ export const describeOrderableReplicationInstances: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribePendingMaintenanceActionsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10018,6 +10117,7 @@ export const describePendingMaintenanceActions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeRecommendationLimitationsError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -10061,6 +10161,7 @@ export const describeRecommendationLimitations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeRecommendationsError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -10104,6 +10205,7 @@ export const describeRecommendations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeRefreshSchemasStatusError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -10124,6 +10226,7 @@ export const describeRefreshSchemasStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRefreshSchemasStatus",
 }));
+
 export type DescribeReplicationConfigsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10164,6 +10267,7 @@ export const describeReplicationConfigs: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationInstancesError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10204,6 +10308,7 @@ export const describeReplicationInstances: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationInstanceTaskLogsError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -10244,6 +10349,7 @@ export const describeReplicationInstanceTaskLogs: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationsError = ResourceNotFoundFault | CommonErrors;
 /**
  * Provides details on replication progress by returning status information for one or more
@@ -10282,6 +10388,7 @@ export const describeReplications: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationSubnetGroupsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10321,6 +10428,7 @@ export const describeReplicationSubnetGroups: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationTableStatisticsError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -10362,6 +10470,7 @@ export const describeReplicationTableStatistics: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationTaskAssessmentResultsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10405,6 +10514,7 @@ export const describeReplicationTaskAssessmentResults: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationTaskAssessmentRunsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10452,6 +10562,7 @@ export const describeReplicationTaskAssessmentRuns: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationTaskIndividualAssessmentsError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10494,6 +10605,7 @@ export const describeReplicationTaskIndividualAssessments: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeReplicationTasksError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10534,6 +10646,7 @@ export const describeReplicationTasks: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeSchemasError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -10574,6 +10687,7 @@ export const describeSchemas: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeTableStatisticsError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -10620,6 +10734,7 @@ export const describeTableStatistics: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type ExportMetadataModelAssessmentError =
   | ResourceNotFoundFault
   | CommonErrors;
@@ -10640,6 +10755,7 @@ export const exportMetadataModelAssessment: API.OperationMethod<
   retry: Retry,
   operationName: "ExportMetadataModelAssessment",
 }));
+
 export type GetTargetSelectionRulesError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -10661,6 +10777,7 @@ export const getTargetSelectionRules: API.OperationMethod<
   retry: Retry,
   operationName: "GetTargetSelectionRules",
 }));
+
 export type ImportCertificateError =
   | InvalidCertificateFault
   | KMSKeyNotAccessibleFault
@@ -10688,6 +10805,7 @@ export const importCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "ImportCertificate",
 }));
+
 export type ListTagsForResourceError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -10712,6 +10830,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ModifyConversionConfigurationError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -10732,6 +10851,7 @@ export const modifyConversionConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyConversionConfiguration",
 }));
+
 export type ModifyDataMigrationError =
   | FailedDependencyFault
   | InvalidResourceStateFault
@@ -10757,6 +10877,7 @@ export const modifyDataMigration: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyDataMigration",
 }));
+
 export type ModifyDataProviderError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -10787,6 +10908,7 @@ export const modifyDataProvider: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyDataProvider",
 }));
+
 export type ModifyEndpointError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -10823,6 +10945,7 @@ export const modifyEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyEndpoint",
 }));
+
 export type ModifyEventSubscriptionError =
   | AccessDeniedFault
   | KMSAccessDeniedFault
@@ -10862,6 +10985,7 @@ export const modifyEventSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyEventSubscription",
 }));
+
 export type ModifyInstanceProfileError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -10898,6 +11022,7 @@ export const modifyInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyInstanceProfile",
 }));
+
 export type ModifyMigrationProjectError =
   | AccessDeniedFault
   | FailedDependencyFault
@@ -10931,6 +11056,7 @@ export const modifyMigrationProject: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyMigrationProject",
 }));
+
 export type ModifyReplicationConfigError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -10970,6 +11096,7 @@ export const modifyReplicationConfig: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyReplicationConfig",
 }));
+
 export type ModifyReplicationInstanceError =
   | AccessDeniedFault
   | InsufficientResourceCapacityFault
@@ -11006,6 +11133,7 @@ export const modifyReplicationInstance: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyReplicationInstance",
 }));
+
 export type ModifyReplicationSubnetGroupError =
   | AccessDeniedFault
   | InvalidSubnet
@@ -11037,6 +11165,7 @@ export const modifyReplicationSubnetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyReplicationSubnetGroup",
 }));
+
 export type ModifyReplicationTaskError =
   | InvalidResourceStateFault
   | KMSKeyNotAccessibleFault
@@ -11069,6 +11198,7 @@ export const modifyReplicationTask: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyReplicationTask",
 }));
+
 export type MoveReplicationTaskError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11100,6 +11230,7 @@ export const moveReplicationTask: API.OperationMethod<
   retry: Retry,
   operationName: "MoveReplicationTask",
 }));
+
 export type RebootReplicationInstanceError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -11121,6 +11252,7 @@ export const rebootReplicationInstance: API.OperationMethod<
   retry: Retry,
   operationName: "RebootReplicationInstance",
 }));
+
 export type RefreshSchemasError =
   | InvalidResourceStateFault
   | KMSKeyNotAccessibleFault
@@ -11150,6 +11282,7 @@ export const refreshSchemas: API.OperationMethod<
   retry: Retry,
   operationName: "RefreshSchemas",
 }));
+
 export type ReloadReplicationTablesError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -11174,6 +11307,7 @@ export const reloadReplicationTables: API.OperationMethod<
   retry: Retry,
   operationName: "ReloadReplicationTables",
 }));
+
 export type ReloadTablesError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -11197,6 +11331,7 @@ export const reloadTables: API.OperationMethod<
   retry: Retry,
   operationName: "ReloadTables",
 }));
+
 export type RemoveTagsFromResourceError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -11221,6 +11356,7 @@ export const removeTagsFromResource: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveTagsFromResource",
 }));
+
 export type RunFleetAdvisorLsaAnalysisError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -11243,6 +11379,7 @@ export const runFleetAdvisorLsaAnalysis: API.OperationMethod<
   retry: Retry,
   operationName: "RunFleetAdvisorLsaAnalysis",
 }));
+
 export type StartDataMigrationError =
   | FailedDependencyFault
   | InvalidOperationFault
@@ -11272,6 +11409,7 @@ export const startDataMigration: API.OperationMethod<
   retry: Retry,
   operationName: "StartDataMigration",
 }));
+
 export type StartExtensionPackAssociationError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11309,6 +11447,7 @@ export const startExtensionPackAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "StartExtensionPackAssociation",
 }));
+
 export type StartMetadataModelAssessmentError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11347,6 +11486,7 @@ export const startMetadataModelAssessment: API.OperationMethod<
   retry: Retry,
   operationName: "StartMetadataModelAssessment",
 }));
+
 export type StartMetadataModelConversionError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11382,6 +11522,7 @@ export const startMetadataModelConversion: API.OperationMethod<
   retry: Retry,
   operationName: "StartMetadataModelConversion",
 }));
+
 export type StartMetadataModelCreationError =
   | AccessDeniedFault
   | ResourceAlreadyExistsFault
@@ -11411,6 +11552,7 @@ export const startMetadataModelCreation: API.OperationMethod<
   retry: Retry,
   operationName: "StartMetadataModelCreation",
 }));
+
 export type StartMetadataModelExportAsScriptError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11447,6 +11589,7 @@ export const startMetadataModelExportAsScript: API.OperationMethod<
   retry: Retry,
   operationName: "StartMetadataModelExportAsScript",
 }));
+
 export type StartMetadataModelExportToTargetError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11482,6 +11625,7 @@ export const startMetadataModelExportToTarget: API.OperationMethod<
   retry: Retry,
   operationName: "StartMetadataModelExportToTarget",
 }));
+
 export type StartMetadataModelImportError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11520,6 +11664,7 @@ export const startMetadataModelImport: API.OperationMethod<
   retry: Retry,
   operationName: "StartMetadataModelImport",
 }));
+
 export type StartRecommendationsError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11546,6 +11691,7 @@ export const startRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "StartRecommendations",
 }));
+
 export type StartReplicationError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11571,6 +11717,7 @@ export const startReplication: API.OperationMethod<
   retry: Retry,
   operationName: "StartReplication",
 }));
+
 export type StartReplicationTaskError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11595,6 +11742,7 @@ export const startReplicationTask: API.OperationMethod<
   retry: Retry,
   operationName: "StartReplicationTask",
 }));
+
 export type StartReplicationTaskAssessmentError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -11628,6 +11776,7 @@ export const startReplicationTaskAssessment: API.OperationMethod<
   retry: Retry,
   operationName: "StartReplicationTaskAssessment",
 }));
+
 export type StartReplicationTaskAssessmentRunError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11678,6 +11827,7 @@ export const startReplicationTaskAssessmentRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartReplicationTaskAssessmentRun",
 }));
+
 export type StopDataMigrationError =
   | FailedDependencyFault
   | InvalidResourceStateFault
@@ -11703,6 +11853,7 @@ export const stopDataMigration: API.OperationMethod<
   retry: Retry,
   operationName: "StopDataMigration",
 }));
+
 export type StopReplicationError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11726,6 +11877,7 @@ export const stopReplication: API.OperationMethod<
   retry: Retry,
   operationName: "StopReplication",
 }));
+
 export type StopReplicationTaskError =
   | InvalidResourceStateFault
   | ResourceNotFoundFault
@@ -11746,6 +11898,7 @@ export const stopReplicationTask: API.OperationMethod<
   retry: Retry,
   operationName: "StopReplicationTask",
 }));
+
 export type TestConnectionError =
   | AccessDeniedFault
   | InvalidResourceStateFault
@@ -11775,6 +11928,7 @@ export const testConnection: API.OperationMethod<
   retry: Retry,
   operationName: "TestConnection",
 }));
+
 export type UpdateSubscriptionsToEventBridgeError =
   | AccessDeniedFault
   | InvalidResourceStateFault

@@ -85,57 +85,58 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccountSuspendedException extends S.TaggedErrorClass<AccountSuspendedException>()(
+  "AccountSuspendedException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
+  "AlreadyExistsException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class MailFromDomainNotVerifiedException extends S.TaggedErrorClass<MailFromDomainNotVerifiedException>()(
+  "MailFromDomainNotVerifiedException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class MessageRejected extends S.TaggedErrorClass<MessageRejected>()(
+  "MessageRejected",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class SendingPausedException extends S.TaggedErrorClass<SendingPausedException>()(
+  "SendingPausedException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type ConfigurationSetName = string;
 export type CustomRedirectDomain = string;
-export type PoolName = string;
-export type Enabled = boolean;
-export type LastFreshStart = Date;
-export type TagKey = string;
-export type TagValue = string;
-export type ErrorMessage = string;
-export type EventDestinationName = string;
-export type AmazonResourceName = string;
-export type DimensionName = string;
-export type DefaultDimensionValue = string;
-export type ReportName = string;
-export type EmailAddress = string;
-export type MessageData = string;
-export type Charset = string;
-export type RawMessageData = Uint8Array;
-export type TemplateArn = string;
-export type TemplateData = string;
-export type ReportId = string;
-export type Identity = string;
-export type DnsToken = string;
-export type Max24HourSend = number;
-export type MaxSendRate = number;
-export type SentLast24Hours = number;
-export type GeneralEnforcementStatus = string;
-export type BlacklistItemName = string;
-export type RblName = string;
-export type BlacklistingDescription = string;
-export type Ip = string;
-export type Percentage100Wrapper = number;
-export type NextToken = string;
-export type MaxItems = number;
-export type Domain = string;
-export type IspName = string;
-export type DeliverabilityTestSubject = string;
-export type Percentage = number;
-export type MessageContent = string;
-export type CampaignId = string;
-export type ImageUrl = string;
-export type Subject = string;
-export type Volume = number;
-export type Esp = string;
-export type MailFromDomainName = string;
-export type SendingPoolName = string;
-export type MessageTagName = string;
-export type MessageTagValue = string;
-export type OutboundMessageId = string;
-
-//# Schemas
 export interface TrackingOptions {
   CustomRedirectDomain: string;
 }
@@ -146,6 +147,8 @@ export const TrackingOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrackingOptions>;
 export type TlsPolicy = "REQUIRE" | "OPTIONAL" | (string & {});
 export const TlsPolicy = /*@__PURE__*/ S.String;
+
+export type PoolName = string;
 export interface DeliveryOptions {
   TlsPolicy?: TlsPolicy;
   SendingPoolName?: string;
@@ -158,6 +161,8 @@ export const DeliveryOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeliveryOptions",
 }) as any as S.Schema<DeliveryOptions>;
+export type Enabled = boolean;
+export type LastFreshStart = Date;
 export interface ReputationOptions {
   ReputationMetricsEnabled?: boolean;
   LastFreshStart?: Date;
@@ -176,6 +181,8 @@ export interface SendingOptions {
 export const SendingOptions = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SendingEnabled: S.optional(S.Boolean) }),
 ).annotate({ identifier: "SendingOptions" }) as any as S.Schema<SendingOptions>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -220,6 +227,7 @@ export const CreateConfigurationSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConfigurationSetResponse",
 }) as any as S.Schema<CreateConfigurationSetResponse>;
+export type EventDestinationName = string;
 export type EventType =
   | "SEND"
   | "REJECT"
@@ -231,8 +239,10 @@ export type EventType =
   | "RENDERING_FAILURE"
   | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
+
 export type EventTypes = EventType[];
 export const EventTypes = /*@__PURE__*/ S.Array(EventType);
+export type AmazonResourceName = string;
 export interface KinesisFirehoseDestination {
   IamRoleArn: string;
   DeliveryStreamArn: string;
@@ -242,12 +252,15 @@ export const KinesisFirehoseDestination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KinesisFirehoseDestination",
 }) as any as S.Schema<KinesisFirehoseDestination>;
+export type DimensionName = string;
 export type DimensionValueSource =
   | "MESSAGE_TAG"
   | "EMAIL_HEADER"
   | "LINK_TAG"
   | (string & {});
 export const DimensionValueSource = /*@__PURE__*/ S.String;
+
+export type DefaultDimensionValue = string;
 export interface CloudWatchDimensionConfiguration {
   DimensionName: string;
   DimensionValueSource: DimensionValueSource;
@@ -365,6 +378,10 @@ export const CreateDedicatedIpPoolResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDedicatedIpPoolResponse",
 }) as any as S.Schema<CreateDedicatedIpPoolResponse>;
+export type ReportName = string;
+export type EmailAddress = string;
+export type MessageData = string;
+export type Charset = string;
 export interface Content {
   Data: string;
   Charset?: string;
@@ -386,12 +403,15 @@ export interface Message {
 export const Message = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Subject: Content, Body: Body }),
 ).annotate({ identifier: "Message" }) as any as S.Schema<Message>;
+export type RawMessageData = Uint8Array;
 export interface RawMessage {
   Data: Uint8Array;
 }
 export const RawMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Data: T.Blob }),
 ).annotate({ identifier: "RawMessage" }) as any as S.Schema<RawMessage>;
+export type TemplateArn = string;
+export type TemplateData = string;
 export interface Template {
   TemplateArn?: string;
   TemplateData?: string;
@@ -443,11 +463,13 @@ export const CreateDeliverabilityTestReportRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateDeliverabilityTestReportRequest",
 }) as any as S.Schema<CreateDeliverabilityTestReportRequest>;
+export type ReportId = string;
 export type DeliverabilityTestStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
   | (string & {});
 export const DeliverabilityTestStatus = /*@__PURE__*/ S.String;
+
 export interface CreateDeliverabilityTestReportResponse {
   ReportId: string;
   DeliverabilityTestStatus: DeliverabilityTestStatus;
@@ -461,6 +483,7 @@ export const CreateDeliverabilityTestReportResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateDeliverabilityTestReportResponse",
 }) as any as S.Schema<CreateDeliverabilityTestReportResponse>;
+export type Identity = string;
 export interface CreateEmailIdentityRequest {
   EmailIdentity: string;
   Tags?: Tag[];
@@ -485,6 +508,7 @@ export type IdentityType =
   | "MANAGED_DOMAIN"
   | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
+
 export type DkimStatus =
   | "PENDING"
   | "SUCCESS"
@@ -493,6 +517,8 @@ export type DkimStatus =
   | "NOT_STARTED"
   | (string & {});
 export const DkimStatus = /*@__PURE__*/ S.String;
+
+export type DnsToken = string;
 export type DnsTokenList = string[];
 export const DnsTokenList = /*@__PURE__*/ S.Array(S.String);
 export interface DkimAttributes {
@@ -643,6 +669,9 @@ export const GetAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountRequest",
 }) as any as S.Schema<GetAccountRequest>;
+export type Max24HourSend = number;
+export type MaxSendRate = number;
+export type SentLast24Hours = number;
 export interface SendQuota {
   Max24HourSend?: number;
   MaxSendRate?: number;
@@ -655,6 +684,7 @@ export const SendQuota = /*@__PURE__*/ S.suspend(() =>
     SentLast24Hours: S.optional(S.Number),
   }),
 ).annotate({ identifier: "SendQuota" }) as any as S.Schema<SendQuota>;
+export type GeneralEnforcementStatus = string;
 export interface GetAccountResponse {
   SendQuota?: SendQuota;
   SendingEnabled?: boolean;
@@ -673,6 +703,7 @@ export const GetAccountResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountResponse",
 }) as any as S.Schema<GetAccountResponse>;
+export type BlacklistItemName = string;
 export type BlacklistItemNames = string[];
 export const BlacklistItemNames = /*@__PURE__*/ S.Array(S.String);
 export interface GetBlacklistReportsRequest {
@@ -699,6 +730,8 @@ export const GetBlacklistReportsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBlacklistReportsRequest",
 }) as any as S.Schema<GetBlacklistReportsRequest>;
+export type RblName = string;
+export type BlacklistingDescription = string;
 export interface BlacklistEntry {
   RblName?: string;
   ListingTime?: Date;
@@ -824,6 +857,7 @@ export const GetConfigurationSetEventDestinationsResponse =
   ).annotate({
     identifier: "GetConfigurationSetEventDestinationsResponse",
   }) as any as S.Schema<GetConfigurationSetEventDestinationsResponse>;
+export type Ip = string;
 export interface GetDedicatedIpRequest {
   Ip: string;
 }
@@ -843,6 +877,8 @@ export const GetDedicatedIpRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDedicatedIpRequest>;
 export type WarmupStatus = "IN_PROGRESS" | "DONE" | (string & {});
 export const WarmupStatus = /*@__PURE__*/ S.String;
+
+export type Percentage100Wrapper = number;
 export interface DedicatedIp {
   Ip: string;
   WarmupStatus: WarmupStatus;
@@ -865,6 +901,8 @@ export const GetDedicatedIpResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDedicatedIpResponse",
 }) as any as S.Schema<GetDedicatedIpResponse>;
+export type NextToken = string;
+export type MaxItems = number;
 export interface GetDedicatedIpsRequest {
   PoolName?: string;
   NextToken?: string;
@@ -924,6 +962,9 @@ export type DeliverabilityDashboardAccountStatus =
   | "DISABLED"
   | (string & {});
 export const DeliverabilityDashboardAccountStatus = /*@__PURE__*/ S.String;
+
+export type Domain = string;
+export type IspName = string;
 export type IspNameList = string[];
 export const IspNameList = /*@__PURE__*/ S.Array(S.String);
 export interface InboxPlacementTrackingOption {
@@ -1002,6 +1043,7 @@ export const GetDeliverabilityTestReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDeliverabilityTestReportRequest",
 }) as any as S.Schema<GetDeliverabilityTestReportRequest>;
+export type DeliverabilityTestSubject = string;
 export interface DeliverabilityTestReport {
   ReportId?: string;
   ReportName?: string;
@@ -1022,6 +1064,7 @@ export const DeliverabilityTestReport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeliverabilityTestReport",
 }) as any as S.Schema<DeliverabilityTestReport>;
+export type Percentage = number;
 export interface PlacementStatistics {
   InboxPercentage?: number;
   SpamPercentage?: number;
@@ -1052,6 +1095,7 @@ export const IspPlacement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IspPlacement" }) as any as S.Schema<IspPlacement>;
 export type IspPlacements = IspPlacement[];
 export const IspPlacements = /*@__PURE__*/ S.Array(IspPlacement);
+export type MessageContent = string;
 export interface GetDeliverabilityTestReportResponse {
   DeliverabilityTestReport: DeliverabilityTestReport;
   OverallPlacement: PlacementStatistics;
@@ -1070,6 +1114,7 @@ export const GetDeliverabilityTestReportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDeliverabilityTestReportResponse",
 }) as any as S.Schema<GetDeliverabilityTestReportResponse>;
+export type CampaignId = string;
 export interface GetDomainDeliverabilityCampaignRequest {
   CampaignId: string;
 }
@@ -1091,8 +1136,12 @@ export const GetDomainDeliverabilityCampaignRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetDomainDeliverabilityCampaignRequest",
 }) as any as S.Schema<GetDomainDeliverabilityCampaignRequest>;
+export type ImageUrl = string;
+export type Subject = string;
 export type IpList = string[];
 export const IpList = /*@__PURE__*/ S.Array(S.String);
+export type Volume = number;
+export type Esp = string;
 export type Esps = string[];
 export const Esps = /*@__PURE__*/ S.Array(S.String);
 export interface DomainDeliverabilityCampaign {
@@ -1262,6 +1311,7 @@ export const GetEmailIdentityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEmailIdentityRequest",
 }) as any as S.Schema<GetEmailIdentityRequest>;
+export type MailFromDomainName = string;
 export type MailFromDomainStatus =
   | "PENDING"
   | "SUCCESS"
@@ -1269,11 +1319,13 @@ export type MailFromDomainStatus =
   | "TEMPORARY_FAILURE"
   | (string & {});
 export const MailFromDomainStatus = /*@__PURE__*/ S.String;
+
 export type BehaviorOnMxFailure =
   | "USE_DEFAULT_VALUE"
   | "REJECT_MESSAGE"
   | (string & {});
 export const BehaviorOnMxFailure = /*@__PURE__*/ S.String;
+
 export interface MailFromAttributes {
   MailFromDomain: string;
   MailFromDomainStatus: MailFromDomainStatus;
@@ -1593,6 +1645,7 @@ export const PutAccountSendingAttributesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutAccountSendingAttributesResponse",
 }) as any as S.Schema<PutAccountSendingAttributesResponse>;
+export type SendingPoolName = string;
 export interface PutConfigurationSetDeliveryOptionsRequest {
   ConfigurationSetName: string;
   TlsPolicy?: TlsPolicy;
@@ -1905,6 +1958,8 @@ export const Destination = /*@__PURE__*/ S.suspend(() =>
     BccAddresses: S.optional(EmailAddressList),
   }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
+export type MessageTagName = string;
+export type MessageTagValue = string;
 export interface MessageTag {
   Name: string;
   Value: string;
@@ -1945,6 +2000,7 @@ export const SendEmailRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendEmailRequest",
 }) as any as S.Schema<SendEmailRequest>;
+export type OutboundMessageId = string;
 export interface SendEmailResponse {
   MessageId?: string;
 }
@@ -2038,60 +2094,7 @@ export const UpdateConfigurationSetEventDestinationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateConfigurationSetEventDestinationResponse",
   }) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>;
-
-//# Errors
-export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
-  "AlreadyExistsException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class AccountSuspendedException extends S.TaggedErrorClass<AccountSuspendedException>()(
-  "AccountSuspendedException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class MailFromDomainNotVerifiedException extends S.TaggedErrorClass<MailFromDomainNotVerifiedException>()(
-  "MailFromDomainNotVerifiedException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class MessageRejected extends S.TaggedErrorClass<MessageRejected>()(
-  "MessageRejected",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class SendingPausedException extends S.TaggedErrorClass<SendingPausedException>()(
-  "SendingPausedException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CreateConfigurationSetError =
   | AlreadyExistsException
   | BadRequestException
@@ -2127,6 +2130,7 @@ export const createConfigurationSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConfigurationSet",
 }));
+
 export type CreateConfigurationSetEventDestinationError =
   | AlreadyExistsException
   | BadRequestException
@@ -2163,6 +2167,7 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConfigurationSetEventDestination",
 }));
+
 export type CreateDedicatedIpPoolError =
   | AlreadyExistsException
   | BadRequestException
@@ -2195,6 +2200,7 @@ export const createDedicatedIpPool: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDedicatedIpPool",
 }));
+
 export type CreateDeliverabilityTestReportError =
   | AccountSuspendedException
   | BadRequestException
@@ -2238,6 +2244,7 @@ export const createDeliverabilityTestReport: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDeliverabilityTestReport",
 }));
+
 export type CreateEmailIdentityError =
   | BadRequestException
   | ConcurrentModificationException
@@ -2278,6 +2285,7 @@ export const createEmailIdentity: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEmailIdentity",
 }));
+
 export type DeleteConfigurationSetError =
   | BadRequestException
   | ConcurrentModificationException
@@ -2311,6 +2319,7 @@ export const deleteConfigurationSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfigurationSet",
 }));
+
 export type DeleteConfigurationSetEventDestinationError =
   | BadRequestException
   | NotFoundException
@@ -2338,6 +2347,7 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfigurationSetEventDestination",
 }));
+
 export type DeleteDedicatedIpPoolError =
   | BadRequestException
   | ConcurrentModificationException
@@ -2365,6 +2375,7 @@ export const deleteDedicatedIpPool: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDedicatedIpPool",
 }));
+
 export type DeleteEmailIdentityError =
   | BadRequestException
   | ConcurrentModificationException
@@ -2393,6 +2404,7 @@ export const deleteEmailIdentity: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEmailIdentity",
 }));
+
 export type GetAccountError =
   | BadRequestException
   | TooManyRequestsException
@@ -2414,6 +2426,7 @@ export const getAccount: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccount",
 }));
+
 export type GetBlacklistReportsError =
   | BadRequestException
   | NotFoundException
@@ -2435,6 +2448,7 @@ export const getBlacklistReports: API.OperationMethod<
   retry: Retry,
   operationName: "GetBlacklistReports",
 }));
+
 export type GetConfigurationSetError =
   | BadRequestException
   | NotFoundException
@@ -2464,6 +2478,7 @@ export const getConfigurationSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetConfigurationSet",
 }));
+
 export type GetConfigurationSetEventDestinationsError =
   | BadRequestException
   | NotFoundException
@@ -2492,6 +2507,7 @@ export const getConfigurationSetEventDestinations: API.OperationMethod<
   retry: Retry,
   operationName: "GetConfigurationSetEventDestinations",
 }));
+
 export type GetDedicatedIpError =
   | BadRequestException
   | NotFoundException
@@ -2515,6 +2531,7 @@ export const getDedicatedIp: API.OperationMethod<
   retry: Retry,
   operationName: "GetDedicatedIp",
 }));
+
 export type GetDedicatedIpsError =
   | BadRequestException
   | NotFoundException
@@ -2557,6 +2574,7 @@ export const getDedicatedIps: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type GetDeliverabilityDashboardOptionsError =
   | BadRequestException
   | LimitExceededException
@@ -2589,6 +2607,7 @@ export const getDeliverabilityDashboardOptions: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeliverabilityDashboardOptions",
 }));
+
 export type GetDeliverabilityTestReportError =
   | BadRequestException
   | NotFoundException
@@ -2610,6 +2629,7 @@ export const getDeliverabilityTestReport: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeliverabilityTestReport",
 }));
+
 export type GetDomainDeliverabilityCampaignError =
   | BadRequestException
   | NotFoundException
@@ -2634,6 +2654,7 @@ export const getDomainDeliverabilityCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "GetDomainDeliverabilityCampaign",
 }));
+
 export type GetDomainStatisticsReportError =
   | BadRequestException
   | NotFoundException
@@ -2656,6 +2677,7 @@ export const getDomainStatisticsReport: API.OperationMethod<
   retry: Retry,
   operationName: "GetDomainStatisticsReport",
 }));
+
 export type GetEmailIdentityError =
   | BadRequestException
   | NotFoundException
@@ -2679,6 +2701,7 @@ export const getEmailIdentity: API.OperationMethod<
   retry: Retry,
   operationName: "GetEmailIdentity",
 }));
+
 export type ListConfigurationSetsError =
   | BadRequestException
   | TooManyRequestsException
@@ -2726,6 +2749,7 @@ export const listConfigurationSets: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListDedicatedIpPoolsError =
   | BadRequestException
   | TooManyRequestsException
@@ -2767,6 +2791,7 @@ export const listDedicatedIpPools: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListDeliverabilityTestReportsError =
   | BadRequestException
   | NotFoundException
@@ -2810,6 +2835,7 @@ export const listDeliverabilityTestReports: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListDomainDeliverabilityCampaignsError =
   | BadRequestException
   | NotFoundException
@@ -2854,6 +2880,7 @@ export const listDomainDeliverabilityCampaigns: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListEmailIdentitiesError =
   | BadRequestException
   | TooManyRequestsException
@@ -2896,6 +2923,7 @@ export const listEmailIdentities: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | NotFoundException
@@ -2922,6 +2950,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutAccountDedicatedIpWarmupAttributesError =
   | BadRequestException
   | TooManyRequestsException
@@ -2942,6 +2971,7 @@ export const putAccountDedicatedIpWarmupAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "PutAccountDedicatedIpWarmupAttributes",
 }));
+
 export type PutAccountSendingAttributesError =
   | BadRequestException
   | TooManyRequestsException
@@ -2962,6 +2992,7 @@ export const putAccountSendingAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "PutAccountSendingAttributes",
 }));
+
 export type PutConfigurationSetDeliveryOptionsError =
   | BadRequestException
   | NotFoundException
@@ -2984,6 +3015,7 @@ export const putConfigurationSetDeliveryOptions: API.OperationMethod<
   retry: Retry,
   operationName: "PutConfigurationSetDeliveryOptions",
 }));
+
 export type PutConfigurationSetReputationOptionsError =
   | BadRequestException
   | NotFoundException
@@ -3006,6 +3038,7 @@ export const putConfigurationSetReputationOptions: API.OperationMethod<
   retry: Retry,
   operationName: "PutConfigurationSetReputationOptions",
 }));
+
 export type PutConfigurationSetSendingOptionsError =
   | BadRequestException
   | NotFoundException
@@ -3028,6 +3061,7 @@ export const putConfigurationSetSendingOptions: API.OperationMethod<
   retry: Retry,
   operationName: "PutConfigurationSetSendingOptions",
 }));
+
 export type PutConfigurationSetTrackingOptionsError =
   | BadRequestException
   | NotFoundException
@@ -3050,6 +3084,7 @@ export const putConfigurationSetTrackingOptions: API.OperationMethod<
   retry: Retry,
   operationName: "PutConfigurationSetTrackingOptions",
 }));
+
 export type PutDedicatedIpInPoolError =
   | BadRequestException
   | NotFoundException
@@ -3077,6 +3112,7 @@ export const putDedicatedIpInPool: API.OperationMethod<
   retry: Retry,
   operationName: "PutDedicatedIpInPool",
 }));
+
 export type PutDedicatedIpWarmupAttributesError =
   | BadRequestException
   | NotFoundException
@@ -3098,6 +3134,7 @@ export const putDedicatedIpWarmupAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "PutDedicatedIpWarmupAttributes",
 }));
+
 export type PutDeliverabilityDashboardOptionError =
   | AlreadyExistsException
   | BadRequestException
@@ -3134,6 +3171,7 @@ export const putDeliverabilityDashboardOption: API.OperationMethod<
   retry: Retry,
   operationName: "PutDeliverabilityDashboardOption",
 }));
+
 export type PutEmailIdentityDkimAttributesError =
   | BadRequestException
   | NotFoundException
@@ -3155,6 +3193,7 @@ export const putEmailIdentityDkimAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "PutEmailIdentityDkimAttributes",
 }));
+
 export type PutEmailIdentityFeedbackAttributesError =
   | BadRequestException
   | NotFoundException
@@ -3188,6 +3227,7 @@ export const putEmailIdentityFeedbackAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "PutEmailIdentityFeedbackAttributes",
 }));
+
 export type PutEmailIdentityMailFromAttributesError =
   | BadRequestException
   | NotFoundException
@@ -3210,6 +3250,7 @@ export const putEmailIdentityMailFromAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "PutEmailIdentityMailFromAttributes",
 }));
+
 export type SendEmailError =
   | AccountSuspendedException
   | BadRequestException
@@ -3256,6 +3297,7 @@ export const sendEmail: API.OperationMethod<
   retry: Retry,
   operationName: "SendEmail",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | ConcurrentModificationException
@@ -3292,6 +3334,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | ConcurrentModificationException
@@ -3319,6 +3362,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateConfigurationSetEventDestinationError =
   | BadRequestException
   | NotFoundException

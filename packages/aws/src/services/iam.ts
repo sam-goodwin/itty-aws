@@ -248,140 +248,295 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccountNotManagementOrDelegatedAdministratorException extends S.TaggedErrorClass<AccountNotManagementOrDelegatedAdministratorException>()(
+  "AccountNotManagementOrDelegatedAdministratorException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class CallerIsNotManagementAccountException extends S.TaggedErrorClass<CallerIsNotManagementAccountException>()(
+  "CallerIsNotManagementAccountException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ConcurrentModification", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class CredentialReportExpiredException extends S.TaggedErrorClass<CredentialReportExpiredException>()(
+  "CredentialReportExpiredException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ReportExpired", httpResponseCode: 410 }),
+    T.HttpError(410),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CredentialReportNotPresentException extends S.TaggedErrorClass<CredentialReportNotPresentException>()(
+  "CredentialReportNotPresentException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ReportNotPresent", httpResponseCode: 410 }),
+    T.HttpError(410),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CredentialReportNotReadyException extends S.TaggedErrorClass<CredentialReportNotReadyException>()(
+  "CredentialReportNotReadyException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ReportInProgress", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DeleteConflictException extends S.TaggedErrorClass<DeleteConflictException>()(
+  "DeleteConflictException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "DeleteConflict", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class DuplicateCertificateException extends S.TaggedErrorClass<DuplicateCertificateException>()(
+  "DuplicateCertificateException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "DuplicateCertificate", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class DuplicateSSHPublicKeyException extends S.TaggedErrorClass<DuplicateSSHPublicKeyException>()(
+  "DuplicateSSHPublicKeyException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "DuplicateSSHPublicKey", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EntityAlreadyExistsException extends S.TaggedErrorClass<EntityAlreadyExistsException>()(
+  "EntityAlreadyExistsException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "EntityAlreadyExists", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class EntityTemporarilyUnmodifiableException extends S.TaggedErrorClass<EntityTemporarilyUnmodifiableException>()(
+  "EntityTemporarilyUnmodifiableException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "EntityTemporarilyUnmodifiable",
+      httpResponseCode: 409,
+    }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class FeatureDisabledException extends S.TaggedErrorClass<FeatureDisabledException>()(
+  "FeatureDisabledException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "FeatureDisabled", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class FeatureEnabledException extends S.TaggedErrorClass<FeatureEnabledException>()(
+  "FeatureEnabledException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "FeatureEnabled", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class InvalidAuthenticationCodeException extends S.TaggedErrorClass<InvalidAuthenticationCodeException>()(
+  "InvalidAuthenticationCodeException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidAuthenticationCode",
+      httpResponseCode: 403,
+    }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class InvalidCertificateException extends S.TaggedErrorClass<InvalidCertificateException>()(
+  "InvalidCertificateException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidCertificate", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidInput extends S.TaggedErrorClass<InvalidInput>()(
+  "InvalidInput",
+  {},
+) {}
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidInput", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidPublicKeyException extends S.TaggedErrorClass<InvalidPublicKeyException>()(
+  "InvalidPublicKeyException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidPublicKey", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidUserTypeException extends S.TaggedErrorClass<InvalidUserTypeException>()(
+  "InvalidUserTypeException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidUserType", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class KeyPairMismatchException extends S.TaggedErrorClass<KeyPairMismatchException>()(
+  "KeyPairMismatchException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "KeyPairMismatch", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError, C.withQuotaError) {}
+export class MalformedCertificateException extends S.TaggedErrorClass<MalformedCertificateException>()(
+  "MalformedCertificateException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "MalformedCertificate", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class MalformedPolicyDocumentException extends S.TaggedErrorClass<MalformedPolicyDocumentException>()(
+  "MalformedPolicyDocumentException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "MalformedPolicyDocument", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class NoSuchEntityException extends S.TaggedErrorClass<NoSuchEntityException>()(
+  "NoSuchEntityException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "NoSuchEntity", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError, C.withNotFoundError) {}
+export class OpenIdIdpCommunicationErrorException extends S.TaggedErrorClass<OpenIdIdpCommunicationErrorException>()(
+  "OpenIdIdpCommunicationErrorException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "OpenIdIdpCommunicationError",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class OrganizationNotFoundException extends S.TaggedErrorClass<OrganizationNotFoundException>()(
+  "OrganizationNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class OrganizationNotInAllFeaturesModeException extends S.TaggedErrorClass<OrganizationNotInAllFeaturesModeException>()(
+  "OrganizationNotInAllFeaturesModeException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class PasswordPolicyViolationException extends S.TaggedErrorClass<PasswordPolicyViolationException>()(
+  "PasswordPolicyViolationException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "PasswordPolicyViolation", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class PolicyEvaluationException extends S.TaggedErrorClass<PolicyEvaluationException>()(
+  "PolicyEvaluationException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "PolicyEvaluation", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class PolicyNotAttachableException extends S.TaggedErrorClass<PolicyNotAttachableException>()(
+  "PolicyNotAttachableException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "PolicyNotAttachable", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ReportGenerationLimitExceededException extends S.TaggedErrorClass<ReportGenerationLimitExceededException>()(
+  "ReportGenerationLimitExceededException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ReportGenerationLimitExceeded",
+      httpResponseCode: 409,
+    }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
+  "RequestLimitExceeded",
+  {},
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ServiceAccessNotEnabledException extends S.TaggedErrorClass<ServiceAccessNotEnabledException>()(
+  "ServiceAccessNotEnabledException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ServiceFailureException extends S.TaggedErrorClass<ServiceFailureException>()(
+  "ServiceFailureException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ServiceFailure", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ServiceNotSupportedException extends S.TaggedErrorClass<ServiceNotSupportedException>()(
+  "ServiceNotSupportedException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "NotSupportedService", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class UnmodifiableEntityException extends S.TaggedErrorClass<UnmodifiableEntityException>()(
+  "UnmodifiableEntityException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "UnmodifiableEntity", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class UnrecognizedPublicKeyEncodingException extends S.TaggedErrorClass<UnrecognizedPublicKeyEncodingException>()(
+  "UnrecognizedPublicKeyEncodingException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "UnrecognizedPublicKeyEncoding",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type DelegationRequestIdType = string;
-export type ConcurrentModificationMessage = string;
-export type NoSuchEntityMessage = string;
-export type ServiceFailureExceptionMessage = string;
-export type ArnType = string;
-export type ClientIDType = string;
-export type InvalidInputMessage = string;
-export type LimitExceededMessage = string;
-export type InstanceProfileNameType = string;
-export type RoleNameType = string;
-export type EntityAlreadyExistsMessage = string;
-export type UnmodifiableEntityMessage = string;
-export type GroupNameType = string;
-export type ExistingUserNameType = string;
-export type PolicyNotAttachableMessage = string;
-export type UserNameType = string;
-export type PasswordType = string | redacted.Redacted<string>;
-export type EntityTemporarilyUnmodifiableMessage = string;
-export type InvalidUserTypeMessage = string;
-export type PasswordPolicyViolationMessage = string;
-export type AccessKeyIdType = string;
-export type AccessKeySecretType = string | redacted.Redacted<string>;
-export type AccountAliasType = string;
-export type AccountIdType = string;
-export type DelegationRequestDescriptionType = string;
-export type PolicyParameterNameType = string;
-export type PolicyParameterValueType = string;
-export type RequestMessageType = string;
-export type RequestorWorkflowIdType = string;
-export type RedirectUrlType = string;
-export type NotificationChannelType = string;
-export type SessionDurationType = number;
-export type ConsoleDeepLinkType = string;
-export type PathType = string;
-export type IdType = string;
-export type TagKeyType = string;
-export type TagValueType = string;
-export type PolicyDocumentType = string;
-export type RoleDescriptionType = string;
-export type RoleMaxSessionDurationType = number;
-export type StringType = string;
-export type OpenIDConnectProviderUrlType = string;
-export type ThumbprintType = string;
-export type OpenIdIdpCommunicationErrorExceptionMessage = string;
-export type PolicyNameType = string;
-export type PolicyPathType = string;
-export type PolicyDescriptionType = string;
-export type PolicyVersionIdType = string;
-export type AttachmentCountType = number;
-export type MalformedPolicyDocumentMessage = string;
-export type SAMLMetadataDocumentType = string;
-export type SAMLProviderNameType = string;
-export type PrivateKeyType = string | redacted.Redacted<string>;
-export type CustomSuffixType = string;
-export type ServiceName = string;
-export type CredentialAgeDays = number;
-export type ServiceUserName = string;
-export type ServicePassword = string | redacted.Redacted<string>;
-export type ServiceCredentialAlias = string;
-export type ServiceCredentialSecret = string | redacted.Redacted<string>;
-export type ServiceSpecificCredentialId = string;
-export type ServiceNotSupportedMessage = string;
-export type VirtualMFADeviceName = string;
-export type SerialNumberType = string;
-export type BootstrapDatum = Uint8Array | redacted.Redacted<Uint8Array>;
-export type DeleteConflictMessage = string;
-export type ServerCertificateNameType = string;
-export type DeletionTaskIdType = string;
-export type CertificateIdType = string;
-export type PublicKeyIdType = string;
-export type OrganizationIdType = string;
-export type ExceptionMessage = string;
-export type FeatureDisabledMessage = string;
-export type AuthenticationCodeType = string;
-export type InvalidAuthenticationCodeMessage = string;
-export type FeatureEnabledMessage = string;
-export type ReportStateDescriptionType = string;
-export type OrganizationsEntityPathType = string;
-export type OrganizationsPolicyIdType = string;
-export type JobIDType = string;
-export type ReportGenerationLimitExceededMessage = string;
-export type MaxItemsType = number;
-export type MarkerType = string;
-export type ResponseMarkerType = string;
-export type MinimumPasswordLengthType = number;
-export type MaxPasswordAgeType = number;
-export type PasswordReusePreventionType = number;
-export type BooleanObjectType = boolean;
-export type SummaryValueType = number;
-export type ContextKeyNameType = string;
-export type ReportContentType = Uint8Array;
-export type CredentialReportExpiredExceptionMessage = string;
-export type CredentialReportNotPresentExceptionMessage = string;
-export type CredentialReportNotReadyExceptionMessage = string;
-export type PermissionType = string;
-export type OwnerIdType = string;
-export type RequestorNameType = string;
-export type NotesType = string;
-export type LocaleType = string;
-export type SummaryContentType = string;
-export type CertificationKeyType = string;
-export type CertificationValueType = string;
-export type IntegerType = number;
-export type ServiceNameType = string;
-export type ServiceNamespaceType = string;
-export type PrivateKeyIdType = string;
-export type CertificateBodyType = string;
-export type CertificateChainType = string;
-export type ReasonType = string;
-export type RegionNameType = string;
-export type PublicKeyFingerprintType = string;
-export type PublicKeyMaterialType = string;
-export type UnrecognizedPublicKeyEncodingMessage = string;
-export type PathPrefixType = string;
-export type EntityNameType = string;
-export type AllUsers = boolean;
-export type ActionNameType = string;
-export type ResourceNameType = string;
-export type ContextKeyValueType = string;
-export type ResourceHandlingOptionType = string;
-export type PolicyIdentifierType = string;
-export type LineNumber = number;
-export type ColumnNumber = number;
-export type EvalDecisionSourceType = string;
-export type PolicyEvaluationErrorMessage = string;
-export type KeyPairMismatchMessage = string;
-export type MalformedCertificateMessage = string;
-export type DuplicateCertificateMessage = string;
-export type InvalidCertificateMessage = string;
-export type DuplicateSSHPublicKeyMessage = string;
-export type InvalidPublicKeyMessage = string;
-
-//# Schemas
 export interface AcceptDelegationRequestRequest {
   DelegationRequestId: string;
 }
@@ -406,6 +561,8 @@ export const AcceptDelegationRequestResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptDelegationRequestResponse",
 }) as any as S.Schema<AcceptDelegationRequestResponse>;
+export type ArnType = string;
+export type ClientIDType = string;
 export interface AddClientIDToOpenIDConnectProviderRequest {
   OpenIDConnectProviderArn: string;
   ClientID: string;
@@ -431,6 +588,8 @@ export const AddClientIDToOpenIDConnectProviderResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "AddClientIDToOpenIDConnectProviderResponse",
   }) as any as S.Schema<AddClientIDToOpenIDConnectProviderResponse>;
+export type InstanceProfileNameType = string;
+export type RoleNameType = string;
 export interface AddRoleToInstanceProfileRequest {
   InstanceProfileName: string;
   RoleName: string;
@@ -456,6 +615,8 @@ export const AddRoleToInstanceProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddRoleToInstanceProfileResponse",
 }) as any as S.Schema<AddRoleToInstanceProfileResponse>;
+export type GroupNameType = string;
+export type ExistingUserNameType = string;
 export interface AddUserToGroupRequest {
   GroupName: string;
   UserName: string;
@@ -555,6 +716,7 @@ export const AttachRolePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachRolePolicyResponse",
 }) as any as S.Schema<AttachRolePolicyResponse>;
+export type UserNameType = string;
 export interface AttachUserPolicyRequest {
   UserName: string;
   PolicyArn: string;
@@ -580,6 +742,7 @@ export const AttachUserPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachUserPolicyResponse",
 }) as any as S.Schema<AttachUserPolicyResponse>;
+export type PasswordType = string | redacted.Redacted<string>;
 export interface ChangePasswordRequest {
   OldPassword: string | redacted.Redacted<string>;
   NewPassword: string | redacted.Redacted<string>;
@@ -623,8 +786,11 @@ export const CreateAccessKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessKeyRequest",
 }) as any as S.Schema<CreateAccessKeyRequest>;
+export type AccessKeyIdType = string;
 export type StatusType = "Active" | "Inactive" | "Expired" | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
+
+export type AccessKeySecretType = string | redacted.Redacted<string>;
 export interface AccessKey {
   UserName: string;
   AccessKeyId: string;
@@ -651,6 +817,7 @@ export const CreateAccessKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessKeyResponse",
 }) as any as S.Schema<CreateAccessKeyResponse>;
+export type AccountAliasType = string;
 export interface CreateAccountAliasRequest {
   AccountAlias: string;
 }
@@ -675,10 +842,15 @@ export const CreateAccountAliasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccountAliasResponse",
 }) as any as S.Schema<CreateAccountAliasResponse>;
+export type AccountIdType = string;
+export type DelegationRequestDescriptionType = string;
+export type PolicyParameterNameType = string;
+export type PolicyParameterValueType = string;
 export type PolicyParameterValuesListType = string[];
 export const PolicyParameterValuesListType = /*@__PURE__*/ S.Array(S.String);
 export type PolicyParameterTypeEnum = "string" | "stringList" | (string & {});
 export const PolicyParameterTypeEnum = /*@__PURE__*/ S.String;
+
 export interface PolicyParameter {
   Name?: string;
   Values?: string[];
@@ -707,6 +879,11 @@ export const DelegationPermission = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DelegationPermission",
 }) as any as S.Schema<DelegationPermission>;
+export type RequestMessageType = string;
+export type RequestorWorkflowIdType = string;
+export type RedirectUrlType = string;
+export type NotificationChannelType = string;
+export type SessionDurationType = number;
 export interface CreateDelegationRequestRequest {
   OwnerAccountId?: string;
   Description: string;
@@ -743,6 +920,7 @@ export const CreateDelegationRequestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDelegationRequestRequest",
 }) as any as S.Schema<CreateDelegationRequestRequest>;
+export type ConsoleDeepLinkType = string;
 export interface CreateDelegationRequestResponse {
   ConsoleDeepLink?: string;
   DelegationRequestId?: string;
@@ -755,6 +933,7 @@ export const CreateDelegationRequestResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDelegationRequestResponse",
 }) as any as S.Schema<CreateDelegationRequestResponse>;
+export type PathType = string;
 export interface CreateGroupRequest {
   Path?: string;
   GroupName: string;
@@ -774,6 +953,7 @@ export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGroupRequest",
 }) as any as S.Schema<CreateGroupRequest>;
+export type IdType = string;
 export interface Group {
   Path: string;
   GroupName: string;
@@ -798,6 +978,8 @@ export const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGroupResponse",
 }) as any as S.Schema<CreateGroupResponse>;
+export type TagKeyType = string;
+export type TagValueType = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -831,10 +1013,14 @@ export const CreateInstanceProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateInstanceProfileRequest",
 }) as any as S.Schema<CreateInstanceProfileRequest>;
+export type PolicyDocumentType = string;
+export type RoleDescriptionType = string;
+export type RoleMaxSessionDurationType = number;
 export type PermissionsBoundaryAttachmentType =
   | "PermissionsBoundaryPolicy"
   | (string & {});
 export const PermissionsBoundaryAttachmentType = /*@__PURE__*/ S.String;
+
 export interface AttachedPermissionsBoundary {
   PermissionsBoundaryType?: PermissionsBoundaryAttachmentType;
   PermissionsBoundaryArn?: string;
@@ -847,6 +1033,7 @@ export const AttachedPermissionsBoundary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachedPermissionsBoundary",
 }) as any as S.Schema<AttachedPermissionsBoundary>;
+export type StringType = string;
 export interface RoleLastUsed {
   LastUsedDate?: Date;
   Region?: string;
@@ -963,8 +1150,10 @@ export const CreateLoginProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLoginProfileResponse",
 }) as any as S.Schema<CreateLoginProfileResponse>;
+export type OpenIDConnectProviderUrlType = string;
 export type ClientIDListType = string[];
 export const ClientIDListType = /*@__PURE__*/ S.Array(S.String);
+export type ThumbprintType = string;
 export type ThumbprintListType = string[];
 export const ThumbprintListType = /*@__PURE__*/ S.Array(S.String);
 export interface CreateOpenIDConnectProviderRequest {
@@ -1005,6 +1194,9 @@ export const CreateOpenIDConnectProviderResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOpenIDConnectProviderResponse",
 }) as any as S.Schema<CreateOpenIDConnectProviderResponse>;
+export type PolicyNameType = string;
+export type PolicyPathType = string;
+export type PolicyDescriptionType = string;
 export interface CreatePolicyRequest {
   PolicyName: string;
   Path?: string;
@@ -1033,6 +1225,8 @@ export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePolicyRequest",
 }) as any as S.Schema<CreatePolicyRequest>;
+export type PolicyVersionIdType = string;
+export type AttachmentCountType = number;
 export interface Policy {
   PolicyName?: string;
   PolicyId?: string;
@@ -1163,11 +1357,15 @@ export const CreateRoleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRoleResponse",
 }) as any as S.Schema<CreateRoleResponse>;
+export type SAMLMetadataDocumentType = string;
+export type SAMLProviderNameType = string;
 export type AssertionEncryptionModeType =
   | "Required"
   | "Allowed"
   | (string & {});
 export const AssertionEncryptionModeType = /*@__PURE__*/ S.String;
+
+export type PrivateKeyType = string | redacted.Redacted<string>;
 export interface CreateSAMLProviderRequest {
   SAMLMetadataDocument: string;
   Name: string;
@@ -1208,6 +1406,7 @@ export const CreateSAMLProviderResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSAMLProviderResponse",
 }) as any as S.Schema<CreateSAMLProviderResponse>;
+export type CustomSuffixType = string;
 export interface CreateServiceLinkedRoleRequest {
   AWSServiceName: string;
   Description?: string;
@@ -1240,6 +1439,8 @@ export const CreateServiceLinkedRoleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateServiceLinkedRoleResponse",
 }) as any as S.Schema<CreateServiceLinkedRoleResponse>;
+export type ServiceName = string;
+export type CredentialAgeDays = number;
 export interface CreateServiceSpecificCredentialRequest {
   UserName: string;
   ServiceName: string;
@@ -1265,6 +1466,11 @@ export const CreateServiceSpecificCredentialRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateServiceSpecificCredentialRequest",
 }) as any as S.Schema<CreateServiceSpecificCredentialRequest>;
+export type ServiceUserName = string;
+export type ServicePassword = string | redacted.Redacted<string>;
+export type ServiceCredentialAlias = string;
+export type ServiceCredentialSecret = string | redacted.Redacted<string>;
+export type ServiceSpecificCredentialId = string;
 export interface ServiceSpecificCredential {
   CreateDate: Date;
   ExpirationDate?: Date;
@@ -1364,6 +1570,7 @@ export const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUserResponse",
 }) as any as S.Schema<CreateUserResponse>;
+export type VirtualMFADeviceName = string;
 export interface CreateVirtualMFADeviceRequest {
   Path?: string;
   VirtualMFADeviceName: string;
@@ -1388,6 +1595,8 @@ export const CreateVirtualMFADeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVirtualMFADeviceRequest",
 }) as any as S.Schema<CreateVirtualMFADeviceRequest>;
+export type SerialNumberType = string;
+export type BootstrapDatum = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface VirtualMFADevice {
   SerialNumber: string;
   Base32StringSeed?: Uint8Array | redacted.Redacted<Uint8Array>;
@@ -1782,6 +1991,7 @@ export const DeleteSAMLProviderResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSAMLProviderResponse",
 }) as any as S.Schema<DeleteSAMLProviderResponse>;
+export type ServerCertificateNameType = string;
 export interface DeleteServerCertificateRequest {
   ServerCertificateName: string;
 }
@@ -1824,6 +2034,7 @@ export const DeleteServiceLinkedRoleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteServiceLinkedRoleRequest",
 }) as any as S.Schema<DeleteServiceLinkedRoleRequest>;
+export type DeletionTaskIdType = string;
 export interface DeleteServiceLinkedRoleResponse {
   DeletionTaskId: string;
 }
@@ -1861,6 +2072,7 @@ export const DeleteServiceSpecificCredentialResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteServiceSpecificCredentialResponse",
 }) as any as S.Schema<DeleteServiceSpecificCredentialResponse>;
+export type CertificateIdType = string;
 export interface DeleteSigningCertificateRequest {
   UserName?: string;
   CertificateId: string;
@@ -1886,6 +2098,7 @@ export const DeleteSigningCertificateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSigningCertificateResponse",
 }) as any as S.Schema<DeleteSigningCertificateResponse>;
+export type PublicKeyIdType = string;
 export interface DeleteSSHPublicKeyRequest {
   UserName: string;
   SSHPublicKeyId: string;
@@ -2101,11 +2314,13 @@ export const DisableOrganizationsRootCredentialsManagementRequest =
   ).annotate({
     identifier: "DisableOrganizationsRootCredentialsManagementRequest",
   }) as any as S.Schema<DisableOrganizationsRootCredentialsManagementRequest>;
+export type OrganizationIdType = string;
 export type FeatureType =
   | "RootCredentialsManagement"
   | "RootSessions"
   | (string & {});
 export const FeatureType = /*@__PURE__*/ S.String;
+
 export type FeaturesListType = FeatureType[];
 export const FeaturesListType = /*@__PURE__*/ S.Array(FeatureType);
 export interface DisableOrganizationsRootCredentialsManagementResponse {
@@ -2173,6 +2388,7 @@ export const DisableOutboundWebIdentityFederationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "DisableOutboundWebIdentityFederationResponse",
   }) as any as S.Schema<DisableOutboundWebIdentityFederationResponse>;
+export type AuthenticationCodeType = string;
 export interface EnableMFADeviceRequest {
   UserName: string;
   SerialNumber: string;
@@ -2313,6 +2529,8 @@ export type ReportStateType =
   | "COMPLETE"
   | (string & {});
 export const ReportStateType = /*@__PURE__*/ S.String;
+
+export type ReportStateDescriptionType = string;
 export interface GenerateCredentialReportResponse {
   State?: ReportStateType;
   Description?: string;
@@ -2325,6 +2543,8 @@ export const GenerateCredentialReportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GenerateCredentialReportResponse",
 }) as any as S.Schema<GenerateCredentialReportResponse>;
+export type OrganizationsEntityPathType = string;
+export type OrganizationsPolicyIdType = string;
 export interface GenerateOrganizationsAccessReportRequest {
   EntityPath: string;
   OrganizationsPolicyId?: string;
@@ -2348,6 +2568,7 @@ export const GenerateOrganizationsAccessReportRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GenerateOrganizationsAccessReportRequest",
 }) as any as S.Schema<GenerateOrganizationsAccessReportRequest>;
+export type JobIDType = string;
 export interface GenerateOrganizationsAccessReportResponse {
   JobId?: string;
 }
@@ -2362,6 +2583,7 @@ export type AccessAdvisorUsageGranularityType =
   | "ACTION_LEVEL"
   | (string & {});
 export const AccessAdvisorUsageGranularityType = /*@__PURE__*/ S.String;
+
 export interface GenerateServiceLastAccessedDetailsRequest {
   Arn: string;
   Granularity?: AccessAdvisorUsageGranularityType;
@@ -2448,8 +2670,11 @@ export type EntityType =
   | "AWSManagedPolicy"
   | (string & {});
 export const EntityType = /*@__PURE__*/ S.String;
+
 export type EntityListType = EntityType[];
 export const EntityListType = /*@__PURE__*/ S.Array(EntityType);
+export type MaxItemsType = number;
+export type MarkerType = string;
 export interface GetAccountAuthorizationDetailsRequest {
   Filter?: EntityType[];
   MaxItems?: number;
@@ -2633,6 +2858,7 @@ export const ManagedPolicyDetail = /*@__PURE__*/ S.suspend(() =>
 export type ManagedPolicyDetailListType = ManagedPolicyDetail[];
 export const ManagedPolicyDetailListType =
   /*@__PURE__*/ S.Array(ManagedPolicyDetail);
+export type ResponseMarkerType = string;
 export interface GetAccountAuthorizationDetailsResponse {
   UserDetailList?: UserDetail[];
   GroupDetailList?: GroupDetail[];
@@ -2670,6 +2896,10 @@ export const GetAccountPasswordPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountPasswordPolicyRequest",
 }) as any as S.Schema<GetAccountPasswordPolicyRequest>;
+export type MinimumPasswordLengthType = number;
+export type MaxPasswordAgeType = number;
+export type PasswordReusePreventionType = number;
+export type BooleanObjectType = boolean;
 export interface PasswordPolicy {
   MinimumPasswordLength?: number;
   RequireSymbols?: boolean;
@@ -2757,6 +2987,8 @@ export type SummaryKeyType =
   | "RolesQuota"
   | (string & {});
 export const SummaryKeyType = /*@__PURE__*/ S.String;
+
+export type SummaryValueType = number;
 export type SummaryMapType = { [key in SummaryKeyType]?: number };
 export const SummaryMapType = /*@__PURE__*/ S.Record(
   SummaryKeyType,
@@ -2791,6 +3023,7 @@ export const GetContextKeysForCustomPolicyRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetContextKeysForCustomPolicyRequest",
 }) as any as S.Schema<GetContextKeysForCustomPolicyRequest>;
+export type ContextKeyNameType = string;
 export type ContextKeyNamesResultListType = string[];
 export const ContextKeyNamesResultListType = /*@__PURE__*/ S.Array(S.String);
 export interface GetContextKeysForPolicyResponse {
@@ -2842,8 +3075,10 @@ export const GetCredentialReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCredentialReportRequest",
 }) as any as S.Schema<GetCredentialReportRequest>;
+export type ReportContentType = Uint8Array;
 export type ReportFormatType = "text/csv" | (string & {});
 export const ReportFormatType = /*@__PURE__*/ S.String;
+
 export interface GetCredentialReportResponse {
   Content?: Uint8Array;
   ReportFormat?: ReportFormatType;
@@ -2882,10 +3117,12 @@ export const GetDelegationRequestRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDelegationRequestRequest",
 }) as any as S.Schema<GetDelegationRequestRequest>;
+export type PermissionType = string;
 export type RolePermissionRestrictionArnListType = string[];
 export const RolePermissionRestrictionArnListType = /*@__PURE__*/ S.Array(
   S.String,
 );
+export type OwnerIdType = string;
 export type StateType =
   | "UNASSIGNED"
   | "ASSIGNED"
@@ -2896,6 +3133,9 @@ export type StateType =
   | "EXPIRED"
   | (string & {});
 export const StateType = /*@__PURE__*/ S.String;
+
+export type RequestorNameType = string;
+export type NotesType = string;
 export interface DelegationRequest {
   DelegationRequestId?: string;
   OwnerAccountId?: string;
@@ -2958,12 +3198,14 @@ export type PermissionCheckStatusType =
   | "FAILED"
   | (string & {});
 export const PermissionCheckStatusType = /*@__PURE__*/ S.String;
+
 export type PermissionCheckResultType =
   | "ALLOWED"
   | "DENIED"
   | "UNSURE"
   | (string & {});
 export const PermissionCheckResultType = /*@__PURE__*/ S.String;
+
 export interface GetDelegationRequestResponse {
   DelegationRequest?: DelegationRequest;
   PermissionCheckStatus?: PermissionCheckStatusType;
@@ -3053,6 +3295,7 @@ export const GetGroupPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetGroupPolicyResponse",
 }) as any as S.Schema<GetGroupPolicyResponse>;
+export type LocaleType = string;
 export interface GetHumanReadableSummaryRequest {
   EntityArn: string;
   Locale?: string;
@@ -3072,6 +3315,7 @@ export const GetHumanReadableSummaryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetHumanReadableSummaryRequest",
 }) as any as S.Schema<GetHumanReadableSummaryRequest>;
+export type SummaryContentType = string;
 export type SummaryStateType =
   | "AVAILABLE"
   | "NOT_AVAILABLE"
@@ -3079,6 +3323,7 @@ export type SummaryStateType =
   | "FAILED"
   | (string & {});
 export const SummaryStateType = /*@__PURE__*/ S.String;
+
 export interface GetHumanReadableSummaryResponse {
   SummaryContent?: string;
   Locale?: string;
@@ -3164,6 +3409,8 @@ export const GetMFADeviceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMFADeviceRequest",
 }) as any as S.Schema<GetMFADeviceRequest>;
+export type CertificationKeyType = string;
+export type CertificationValueType = string;
 export type CertificationMapType = { [key: string]: string | undefined };
 export const CertificationMapType = /*@__PURE__*/ S.Record(
   S.String,
@@ -3232,6 +3479,7 @@ export type SortKeyType =
   | "LAST_AUTHENTICATED_TIME_DESCENDING"
   | (string & {});
 export const SortKeyType = /*@__PURE__*/ S.String;
+
 export interface GetOrganizationsAccessReportRequest {
   JobId: string;
   MaxItems?: number;
@@ -3264,6 +3512,10 @@ export type JobStatusType =
   | "FAILED"
   | (string & {});
 export const JobStatusType = /*@__PURE__*/ S.String;
+
+export type IntegerType = number;
+export type ServiceNameType = string;
+export type ServiceNamespaceType = string;
 export interface AccessDetail {
   ServiceName: string;
   ServiceNamespace: string;
@@ -3480,6 +3732,7 @@ export const GetSAMLProviderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSAMLProviderRequest",
 }) as any as S.Schema<GetSAMLProviderRequest>;
+export type PrivateKeyIdType = string;
 export interface SAMLPrivateKey {
   KeyId?: string;
   Timestamp?: Date;
@@ -3562,6 +3815,8 @@ export const ServerCertificateMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServerCertificateMetadata",
 }) as any as S.Schema<ServerCertificateMetadata>;
+export type CertificateBodyType = string;
+export type CertificateChainType = string;
 export interface ServerCertificate {
   ServerCertificateMetadata: ServerCertificateMetadata;
   CertificateBody: string;
@@ -3713,6 +3968,7 @@ export const GetServiceLastAccessedDetailsWithEntitiesRequest =
   }) as any as S.Schema<GetServiceLastAccessedDetailsWithEntitiesRequest>;
 export type PolicyOwnerEntityType = "USER" | "ROLE" | "GROUP" | (string & {});
 export const PolicyOwnerEntityType = /*@__PURE__*/ S.String;
+
 export interface EntityInfo {
   Arn: string;
   Name: string;
@@ -3792,6 +4048,9 @@ export type DeletionTaskStatusType =
   | "NOT_STARTED"
   | (string & {});
 export const DeletionTaskStatusType = /*@__PURE__*/ S.String;
+
+export type ReasonType = string;
+export type RegionNameType = string;
 export type ArnListType = string[];
 export const ArnListType = /*@__PURE__*/ S.Array(S.String);
 export interface RoleUsageType {
@@ -3833,6 +4092,7 @@ export const GetServiceLinkedRoleDeletionStatusResponse =
   }) as any as S.Schema<GetServiceLinkedRoleDeletionStatusResponse>;
 export type EncodingType = "SSH" | "PEM" | (string & {});
 export const EncodingType = /*@__PURE__*/ S.String;
+
 export interface GetSSHPublicKeyRequest {
   UserName: string;
   SSHPublicKeyId: string;
@@ -3857,6 +4117,8 @@ export const GetSSHPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSSHPublicKeyRequest",
 }) as any as S.Schema<GetSSHPublicKeyRequest>;
+export type PublicKeyFingerprintType = string;
+export type PublicKeyMaterialType = string;
 export interface SSHPublicKey {
   UserName: string;
   SSHPublicKeyId: string;
@@ -4205,6 +4467,7 @@ export type PolicyUsageType =
   | "PermissionsBoundary"
   | (string & {});
 export const PolicyUsageType = /*@__PURE__*/ S.String;
+
 export interface ListEntitiesForPolicyRequest {
   PolicyArn: string;
   EntityFilter?: EntityType;
@@ -4320,6 +4583,7 @@ export const ListGroupPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGroupPoliciesResponse",
 }) as any as S.Schema<ListGroupPoliciesResponse>;
+export type PathPrefixType = string;
 export interface ListGroupsRequest {
   PathPrefix?: string;
   Marker?: string;
@@ -4710,6 +4974,7 @@ export const ListOrganizationsFeaturesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListOrganizationsFeaturesResponse>;
 export type PolicyScopeType = "All" | "AWS" | "Local" | (string & {});
 export const PolicyScopeType = /*@__PURE__*/ S.String;
+
 export interface ListPoliciesRequest {
   Scope?: PolicyScopeType;
   OnlyAttached?: boolean;
@@ -4785,6 +5050,8 @@ export const ListPoliciesGrantingServiceAccessRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListPoliciesGrantingServiceAccessRequest>;
 export type PolicyType = "INLINE" | "MANAGED" | (string & {});
 export const PolicyType = /*@__PURE__*/ S.String;
+
+export type EntityNameType = string;
 export interface PolicyGrantingServiceAccess {
   PolicyName: string;
   PolicyType: PolicyType;
@@ -5194,6 +5461,7 @@ export const ListServerCertificateTagsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListServerCertificateTagsResponse",
 }) as any as S.Schema<ListServerCertificateTagsResponse>;
+export type AllUsers = boolean;
 export interface ListServiceSpecificCredentialsRequest {
   UserName?: string;
   ServiceName?: string;
@@ -5507,6 +5775,7 @@ export type AssignmentStatusType =
   | "Any"
   | (string & {});
 export const AssignmentStatusType = /*@__PURE__*/ S.String;
+
 export interface ListVirtualMFADevicesRequest {
   AssignmentStatus?: AssignmentStatusType;
   Marker?: string;
@@ -5905,6 +6174,7 @@ export const SetDefaultPolicyVersionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetDefaultPolicyVersionResponse>;
 export type GlobalEndpointTokenVersion = "v1Token" | "v2Token" | (string & {});
 export const GlobalEndpointTokenVersion = /*@__PURE__*/ S.String;
+
 export interface SetSecurityTokenServicePreferencesRequest {
   GlobalEndpointTokenVersion: GlobalEndpointTokenVersion;
 }
@@ -5929,10 +6199,13 @@ export const SetSecurityTokenServicePreferencesResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "SetSecurityTokenServicePreferencesResponse",
   }) as any as S.Schema<SetSecurityTokenServicePreferencesResponse>;
+export type ActionNameType = string;
 export type ActionNameListType = string[];
 export const ActionNameListType = /*@__PURE__*/ S.Array(S.String);
+export type ResourceNameType = string;
 export type ResourceNameListType = string[];
 export const ResourceNameListType = /*@__PURE__*/ S.Array(S.String);
+export type ContextKeyValueType = string;
 export type ContextKeyValueListType = string[];
 export const ContextKeyValueListType = /*@__PURE__*/ S.Array(S.String);
 export type ContextKeyTypeEnum =
@@ -5950,6 +6223,7 @@ export type ContextKeyTypeEnum =
   | "dateList"
   | (string & {});
 export const ContextKeyTypeEnum = /*@__PURE__*/ S.String;
+
 export interface ContextEntry {
   ContextKeyName?: string;
   ContextKeyValues?: string[];
@@ -5964,6 +6238,7 @@ export const ContextEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ContextEntry" }) as any as S.Schema<ContextEntry>;
 export type ContextEntryListType = ContextEntry[];
 export const ContextEntryListType = /*@__PURE__*/ S.Array(ContextEntry);
+export type ResourceHandlingOptionType = string;
 export interface SimulateCustomPolicyRequest {
   PolicyInputList: string[];
   PermissionsBoundaryPolicyInputList?: string[];
@@ -6010,6 +6285,8 @@ export type PolicyEvaluationDecisionType =
   | "implicitDeny"
   | (string & {});
 export const PolicyEvaluationDecisionType = /*@__PURE__*/ S.String;
+
+export type PolicyIdentifierType = string;
 export type PolicySourceType =
   | "user"
   | "group"
@@ -6020,6 +6297,9 @@ export type PolicySourceType =
   | "none"
   | (string & {});
 export const PolicySourceType = /*@__PURE__*/ S.String;
+
+export type LineNumber = number;
+export type ColumnNumber = number;
 export interface Position {
   Line?: number;
   Column?: number;
@@ -6059,6 +6339,7 @@ export const PermissionsBoundaryDecisionDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PermissionsBoundaryDecisionDetail",
 }) as any as S.Schema<PermissionsBoundaryDecisionDetail>;
+export type EvalDecisionSourceType = string;
 export type EvalDecisionDetailsType = {
   [key: string]: PolicyEvaluationDecisionType | undefined;
 };
@@ -7134,298 +7415,37 @@ export const UploadSSHPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UploadSSHPublicKeyResponse",
 }) as any as S.Schema<UploadSSHPublicKeyResponse>;
-
-//# Errors
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ConcurrentModification", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class NoSuchEntityException extends S.TaggedErrorClass<NoSuchEntityException>()(
-  "NoSuchEntityException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "NoSuchEntity", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError, C.withNotFoundError) {}
-export class ServiceFailureException extends S.TaggedErrorClass<ServiceFailureException>()(
-  "ServiceFailureException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ServiceFailure", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidInput", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError, C.withQuotaError) {}
-export class EntityAlreadyExistsException extends S.TaggedErrorClass<EntityAlreadyExistsException>()(
-  "EntityAlreadyExistsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "EntityAlreadyExists", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class UnmodifiableEntityException extends S.TaggedErrorClass<UnmodifiableEntityException>()(
-  "UnmodifiableEntityException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "UnmodifiableEntity", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class PolicyNotAttachableException extends S.TaggedErrorClass<PolicyNotAttachableException>()(
-  "PolicyNotAttachableException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "PolicyNotAttachable", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class EntityTemporarilyUnmodifiableException extends S.TaggedErrorClass<EntityTemporarilyUnmodifiableException>()(
-  "EntityTemporarilyUnmodifiableException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "EntityTemporarilyUnmodifiable",
-      httpResponseCode: 409,
-    }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class InvalidUserTypeException extends S.TaggedErrorClass<InvalidUserTypeException>()(
-  "InvalidUserTypeException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidUserType", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class PasswordPolicyViolationException extends S.TaggedErrorClass<PasswordPolicyViolationException>()(
-  "PasswordPolicyViolationException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "PasswordPolicyViolation", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class OpenIdIdpCommunicationErrorException extends S.TaggedErrorClass<OpenIdIdpCommunicationErrorException>()(
-  "OpenIdIdpCommunicationErrorException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "OpenIdIdpCommunicationError",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class MalformedPolicyDocumentException extends S.TaggedErrorClass<MalformedPolicyDocumentException>()(
-  "MalformedPolicyDocumentException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "MalformedPolicyDocument", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ServiceNotSupportedException extends S.TaggedErrorClass<ServiceNotSupportedException>()(
-  "ServiceNotSupportedException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "NotSupportedService", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DeleteConflictException extends S.TaggedErrorClass<DeleteConflictException>()(
-  "DeleteConflictException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DeleteConflict", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class AccountNotManagementOrDelegatedAdministratorException extends S.TaggedErrorClass<AccountNotManagementOrDelegatedAdministratorException>()(
-  "AccountNotManagementOrDelegatedAdministratorException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class OrganizationNotFoundException extends S.TaggedErrorClass<OrganizationNotFoundException>()(
-  "OrganizationNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class OrganizationNotInAllFeaturesModeException extends S.TaggedErrorClass<OrganizationNotInAllFeaturesModeException>()(
-  "OrganizationNotInAllFeaturesModeException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceAccessNotEnabledException extends S.TaggedErrorClass<ServiceAccessNotEnabledException>()(
-  "ServiceAccessNotEnabledException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class FeatureDisabledException extends S.TaggedErrorClass<FeatureDisabledException>()(
-  "FeatureDisabledException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "FeatureDisabled", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidAuthenticationCodeException extends S.TaggedErrorClass<InvalidAuthenticationCodeException>()(
-  "InvalidAuthenticationCodeException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidAuthenticationCode",
-      httpResponseCode: 403,
-    }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class CallerIsNotManagementAccountException extends S.TaggedErrorClass<CallerIsNotManagementAccountException>()(
-  "CallerIsNotManagementAccountException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class FeatureEnabledException extends S.TaggedErrorClass<FeatureEnabledException>()(
-  "FeatureEnabledException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "FeatureEnabled", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class ReportGenerationLimitExceededException extends S.TaggedErrorClass<ReportGenerationLimitExceededException>()(
-  "ReportGenerationLimitExceededException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ReportGenerationLimitExceeded",
-      httpResponseCode: 409,
-    }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class CredentialReportExpiredException extends S.TaggedErrorClass<CredentialReportExpiredException>()(
-  "CredentialReportExpiredException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ReportExpired", httpResponseCode: 410 }),
-    T.HttpError(410),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CredentialReportNotPresentException extends S.TaggedErrorClass<CredentialReportNotPresentException>()(
-  "CredentialReportNotPresentException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ReportNotPresent", httpResponseCode: 410 }),
-    T.HttpError(410),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CredentialReportNotReadyException extends S.TaggedErrorClass<CredentialReportNotReadyException>()(
-  "CredentialReportNotReadyException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ReportInProgress", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class UnrecognizedPublicKeyEncodingException extends S.TaggedErrorClass<UnrecognizedPublicKeyEncodingException>()(
-  "UnrecognizedPublicKeyEncodingException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "UnrecognizedPublicKeyEncoding",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
-  "RequestLimitExceeded",
-  {},
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class InvalidInput extends S.TaggedErrorClass<InvalidInput>()(
-  "InvalidInput",
-  {},
-) {}
-export class PolicyEvaluationException extends S.TaggedErrorClass<PolicyEvaluationException>()(
-  "PolicyEvaluationException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "PolicyEvaluation", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class KeyPairMismatchException extends S.TaggedErrorClass<KeyPairMismatchException>()(
-  "KeyPairMismatchException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "KeyPairMismatch", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class MalformedCertificateException extends S.TaggedErrorClass<MalformedCertificateException>()(
-  "MalformedCertificateException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "MalformedCertificate", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DuplicateCertificateException extends S.TaggedErrorClass<DuplicateCertificateException>()(
-  "DuplicateCertificateException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DuplicateCertificate", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class InvalidCertificateException extends S.TaggedErrorClass<InvalidCertificateException>()(
-  "InvalidCertificateException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidCertificate", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DuplicateSSHPublicKeyException extends S.TaggedErrorClass<DuplicateSSHPublicKeyException>()(
-  "DuplicateSSHPublicKeyException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DuplicateSSHPublicKey", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidPublicKeyException extends S.TaggedErrorClass<InvalidPublicKeyException>()(
-  "InvalidPublicKeyException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidPublicKey", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ConcurrentModificationMessage = string;
+export type NoSuchEntityMessage = string;
+export type ServiceFailureExceptionMessage = string;
+export type InvalidInputMessage = string;
+export type LimitExceededMessage = string;
+export type EntityAlreadyExistsMessage = string;
+export type UnmodifiableEntityMessage = string;
+export type PolicyNotAttachableMessage = string;
+export type EntityTemporarilyUnmodifiableMessage = string;
+export type InvalidUserTypeMessage = string;
+export type PasswordPolicyViolationMessage = string;
+export type OpenIdIdpCommunicationErrorExceptionMessage = string;
+export type MalformedPolicyDocumentMessage = string;
+export type ServiceNotSupportedMessage = string;
+export type DeleteConflictMessage = string;
+export type ExceptionMessage = string;
+export type FeatureDisabledMessage = string;
+export type InvalidAuthenticationCodeMessage = string;
+export type FeatureEnabledMessage = string;
+export type ReportGenerationLimitExceededMessage = string;
+export type CredentialReportExpiredExceptionMessage = string;
+export type CredentialReportNotPresentExceptionMessage = string;
+export type CredentialReportNotReadyExceptionMessage = string;
+export type UnrecognizedPublicKeyEncodingMessage = string;
+export type PolicyEvaluationErrorMessage = string;
+export type KeyPairMismatchMessage = string;
+export type MalformedCertificateMessage = string;
+export type DuplicateCertificateMessage = string;
+export type InvalidCertificateMessage = string;
+export type DuplicateSSHPublicKeyMessage = string;
+export type InvalidPublicKeyMessage = string;
 export type AcceptDelegationRequestError =
   | ConcurrentModificationException
   | NoSuchEntityException
@@ -7460,6 +7480,7 @@ export const acceptDelegationRequest: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptDelegationRequest",
 }));
+
 export type AddClientIDToOpenIDConnectProviderError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -7493,6 +7514,7 @@ export const addClientIDToOpenIDConnectProvider: API.OperationMethod<
   retry: Retry,
   operationName: "AddClientIDToOpenIDConnectProvider",
 }));
+
 export type AddRoleToInstanceProfileError =
   | EntityAlreadyExistsException
   | LimitExceededException
@@ -7541,6 +7563,7 @@ export const addRoleToInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "AddRoleToInstanceProfile",
 }));
+
 export type AddUserToGroupError =
   | LimitExceededException
   | NoSuchEntityException
@@ -7566,6 +7589,7 @@ export const addUserToGroup: API.OperationMethod<
   retry: Retry,
   operationName: "AddUserToGroup",
 }));
+
 export type AssociateDelegationRequestError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -7612,6 +7636,7 @@ export const associateDelegationRequest: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateDelegationRequest",
 }));
+
 export type AttachGroupPolicyError =
   | InvalidInputException
   | LimitExceededException
@@ -7653,6 +7678,7 @@ export const attachGroupPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "AttachGroupPolicy",
 }));
+
 export type AttachRolePolicyError =
   | InvalidInputException
   | LimitExceededException
@@ -7705,6 +7731,7 @@ export const attachRolePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "AttachRolePolicy",
 }));
+
 export type AttachUserPolicyError =
   | InvalidInputException
   | LimitExceededException
@@ -7746,6 +7773,7 @@ export const attachUserPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "AttachUserPolicy",
 }));
+
 export type ChangePasswordError =
   | EntityTemporarilyUnmodifiableException
   | InvalidUserTypeException
@@ -7786,6 +7814,7 @@ export const changePassword: API.OperationMethod<
   retry: Retry,
   operationName: "ChangePassword",
 }));
+
 export type CreateAccessKeyError =
   | LimitExceededException
   | NoSuchEntityException
@@ -7825,6 +7854,7 @@ export const createAccessKey: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAccessKey",
 }));
+
 export type CreateAccountAliasError =
   | ConcurrentModificationException
   | EntityAlreadyExistsException
@@ -7855,6 +7885,7 @@ export const createAccountAlias: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAccountAlias",
 }));
+
 export type CreateDelegationRequestError =
   | ConcurrentModificationException
   | EntityAlreadyExistsException
@@ -7888,6 +7919,7 @@ export const createDelegationRequest: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDelegationRequest",
 }));
+
 export type CreateGroupError =
   | EntityAlreadyExistsException
   | LimitExceededException
@@ -7918,6 +7950,7 @@ export const createGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGroup",
 }));
+
 export type CreateInstanceProfileError =
   | ConcurrentModificationException
   | EntityAlreadyExistsException
@@ -7952,6 +7985,7 @@ export const createInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInstanceProfile",
 }));
+
 export type CreateLoginProfileError =
   | EntityAlreadyExistsException
   | LimitExceededException
@@ -7988,6 +8022,7 @@ export const createLoginProfile: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLoginProfile",
 }));
+
 export type CreateOpenIDConnectProviderError =
   | ConcurrentModificationException
   | EntityAlreadyExistsException
@@ -8055,6 +8090,7 @@ export const createOpenIDConnectProvider: API.OperationMethod<
   retry: Retry,
   operationName: "CreateOpenIDConnectProvider",
 }));
+
 export type CreatePolicyError =
   | ConcurrentModificationException
   | EntityAlreadyExistsException
@@ -8099,6 +8135,7 @@ export const createPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePolicy",
 }));
+
 export type CreatePolicyVersionError =
   | InvalidInputException
   | LimitExceededException
@@ -8137,6 +8174,7 @@ export const createPolicyVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePolicyVersion",
 }));
+
 export type CreateRoleError =
   | ConcurrentModificationException
   | EntityAlreadyExistsException
@@ -8173,6 +8211,7 @@ export const createRole: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRole",
 }));
+
 export type CreateSAMLProviderError =
   | ConcurrentModificationException
   | EntityAlreadyExistsException
@@ -8221,6 +8260,7 @@ export const createSAMLProvider: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSAMLProvider",
 }));
+
 export type CreateServiceLinkedRoleError =
   | InvalidInputException
   | LimitExceededException
@@ -8257,6 +8297,7 @@ export const createServiceLinkedRole: API.OperationMethod<
   retry: Retry,
   operationName: "CreateServiceLinkedRole",
 }));
+
 export type CreateServiceSpecificCredentialError =
   | LimitExceededException
   | NoSuchEntityException
@@ -8303,6 +8344,7 @@ export const createServiceSpecificCredential: API.OperationMethod<
   retry: Retry,
   operationName: "CreateServiceSpecificCredential",
 }));
+
 export type CreateUserError =
   | ConcurrentModificationException
   | EntityAlreadyExistsException
@@ -8337,6 +8379,7 @@ export const createUser: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUser",
 }));
+
 export type CreateVirtualMFADeviceError =
   | ConcurrentModificationException
   | EntityAlreadyExistsException
@@ -8379,6 +8422,7 @@ export const createVirtualMFADevice: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVirtualMFADevice",
 }));
+
 export type DeactivateMFADeviceError =
   | ConcurrentModificationException
   | EntityTemporarilyUnmodifiableException
@@ -8413,6 +8457,7 @@ export const deactivateMFADevice: API.OperationMethod<
   retry: Retry,
   operationName: "DeactivateMFADevice",
 }));
+
 export type DeleteAccessKeyError =
   | LimitExceededException
   | NoSuchEntityException
@@ -8443,6 +8488,7 @@ export const deleteAccessKey: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccessKey",
 }));
+
 export type DeleteAccountAliasError =
   | ConcurrentModificationException
   | LimitExceededException
@@ -8473,6 +8519,7 @@ export const deleteAccountAlias: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccountAlias",
 }));
+
 export type DeleteAccountPasswordPolicyError =
   | LimitExceededException
   | NoSuchEntityException
@@ -8498,6 +8545,7 @@ export const deleteAccountPasswordPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccountPasswordPolicy",
 }));
+
 export type DeleteGroupError =
   | DeleteConflictException
   | LimitExceededException
@@ -8526,6 +8574,7 @@ export const deleteGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGroup",
 }));
+
 export type DeleteGroupPolicyError =
   | LimitExceededException
   | NoSuchEntityException
@@ -8557,6 +8606,7 @@ export const deleteGroupPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGroupPolicy",
 }));
+
 export type DeleteInstanceProfileError =
   | DeleteConflictException
   | LimitExceededException
@@ -8593,6 +8643,7 @@ export const deleteInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInstanceProfile",
 }));
+
 export type DeleteLoginProfileError =
   | EntityTemporarilyUnmodifiableException
   | LimitExceededException
@@ -8633,6 +8684,7 @@ export const deleteLoginProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLoginProfile",
 }));
+
 export type DeleteOpenIDConnectProviderError =
   | InvalidInputException
   | NoSuchEntityException
@@ -8665,6 +8717,7 @@ export const deleteOpenIDConnectProvider: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteOpenIDConnectProvider",
 }));
+
 export type DeletePolicyError =
   | DeleteConflictException
   | InvalidInputException
@@ -8713,6 +8766,7 @@ export const deletePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePolicy",
 }));
+
 export type DeletePolicyVersionError =
   | DeleteConflictException
   | InvalidInputException
@@ -8749,6 +8803,7 @@ export const deletePolicyVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePolicyVersion",
 }));
+
 export type DeleteRoleError =
   | ConcurrentModificationException
   | DeleteConflictException
@@ -8796,6 +8851,7 @@ export const deleteRole: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRole",
 }));
+
 export type DeleteRolePermissionsBoundaryError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -8827,6 +8883,7 @@ export const deleteRolePermissionsBoundary: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRolePermissionsBoundary",
 }));
+
 export type DeleteRolePolicyError =
   | LimitExceededException
   | NoSuchEntityException
@@ -8860,6 +8917,7 @@ export const deleteRolePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRolePolicy",
 }));
+
 export type DeleteSAMLProviderError =
   | InvalidInputException
   | LimitExceededException
@@ -8893,6 +8951,7 @@ export const deleteSAMLProvider: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSAMLProvider",
 }));
+
 export type DeleteServerCertificateError =
   | DeleteConflictException
   | LimitExceededException
@@ -8934,6 +8993,7 @@ export const deleteServerCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteServerCertificate",
 }));
+
 export type DeleteServiceLinkedRoleError =
   | LimitExceededException
   | NoSuchEntityException
@@ -8977,6 +9037,7 @@ export const deleteServiceLinkedRole: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteServiceLinkedRole",
 }));
+
 export type DeleteServiceSpecificCredentialError =
   | NoSuchEntityException
   | CommonErrors;
@@ -8996,6 +9057,7 @@ export const deleteServiceSpecificCredential: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteServiceSpecificCredential",
 }));
+
 export type DeleteSigningCertificateError =
   | ConcurrentModificationException
   | LimitExceededException
@@ -9028,6 +9090,7 @@ export const deleteSigningCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSigningCertificate",
 }));
+
 export type DeleteSSHPublicKeyError = NoSuchEntityException | CommonErrors;
 /**
  * Deletes the specified SSH public key.
@@ -9050,6 +9113,7 @@ export const deleteSSHPublicKey: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSSHPublicKey",
 }));
+
 export type DeleteUserError =
   | ConcurrentModificationException
   | DeleteConflictException
@@ -9100,6 +9164,7 @@ export const deleteUser: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUser",
 }));
+
 export type DeleteUserPermissionsBoundaryError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -9123,6 +9188,7 @@ export const deleteUserPermissionsBoundary: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUserPermissionsBoundary",
 }));
+
 export type DeleteUserPolicyError =
   | LimitExceededException
   | NoSuchEntityException
@@ -9154,6 +9220,7 @@ export const deleteUserPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUserPolicy",
 }));
+
 export type DeleteVirtualMFADeviceError =
   | ConcurrentModificationException
   | DeleteConflictException
@@ -9186,6 +9253,7 @@ export const deleteVirtualMFADevice: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVirtualMFADevice",
 }));
+
 export type DetachGroupPolicyError =
   | InvalidInputException
   | LimitExceededException
@@ -9218,6 +9286,7 @@ export const detachGroupPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DetachGroupPolicy",
 }));
+
 export type DetachRolePolicyError =
   | InvalidInputException
   | LimitExceededException
@@ -9252,6 +9321,7 @@ export const detachRolePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DetachRolePolicy",
 }));
+
 export type DetachUserPolicyError =
   | InvalidInputException
   | LimitExceededException
@@ -9284,6 +9354,7 @@ export const detachUserPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DetachUserPolicy",
 }));
+
 export type DisableOrganizationsRootCredentialsManagementError =
   | AccountNotManagementOrDelegatedAdministratorException
   | OrganizationNotFoundException
@@ -9314,6 +9385,7 @@ export const disableOrganizationsRootCredentialsManagement: API.OperationMethod<
   retry: Retry,
   operationName: "DisableOrganizationsRootCredentialsManagement",
 }));
+
 export type DisableOrganizationsRootSessionsError =
   | AccountNotManagementOrDelegatedAdministratorException
   | OrganizationNotFoundException
@@ -9344,6 +9416,7 @@ export const disableOrganizationsRootSessions: API.OperationMethod<
   retry: Retry,
   operationName: "DisableOrganizationsRootSessions",
 }));
+
 export type DisableOutboundWebIdentityFederationError =
   | FeatureDisabledException
   | CommonErrors;
@@ -9365,6 +9438,7 @@ export const disableOutboundWebIdentityFederation: API.OperationMethod<
   retry: Retry,
   operationName: "DisableOutboundWebIdentityFederation",
 }));
+
 export type EnableMFADeviceError =
   | ConcurrentModificationException
   | EntityAlreadyExistsException
@@ -9400,6 +9474,7 @@ export const enableMFADevice: API.OperationMethod<
   retry: Retry,
   operationName: "EnableMFADevice",
 }));
+
 export type EnableOrganizationsRootCredentialsManagementError =
   | AccountNotManagementOrDelegatedAdministratorException
   | CallerIsNotManagementAccountException
@@ -9441,6 +9516,7 @@ export const enableOrganizationsRootCredentialsManagement: API.OperationMethod<
   retry: Retry,
   operationName: "EnableOrganizationsRootCredentialsManagement",
 }));
+
 export type EnableOrganizationsRootSessionsError =
   | AccountNotManagementOrDelegatedAdministratorException
   | CallerIsNotManagementAccountException
@@ -9481,6 +9557,7 @@ export const enableOrganizationsRootSessions: API.OperationMethod<
   retry: Retry,
   operationName: "EnableOrganizationsRootSessions",
 }));
+
 export type EnableOutboundWebIdentityFederationError =
   | FeatureEnabledException
   | CommonErrors;
@@ -9502,6 +9579,7 @@ export const enableOutboundWebIdentityFederation: API.OperationMethod<
   retry: Retry,
   operationName: "EnableOutboundWebIdentityFederation",
 }));
+
 export type GenerateCredentialReportError =
   | LimitExceededException
   | ServiceFailureException
@@ -9524,6 +9602,7 @@ export const generateCredentialReport: API.OperationMethod<
   retry: Retry,
   operationName: "GenerateCredentialReport",
 }));
+
 export type GenerateOrganizationsAccessReportError =
   | ReportGenerationLimitExceededException
   | CommonErrors;
@@ -9659,6 +9738,7 @@ export const generateOrganizationsAccessReport: API.OperationMethod<
   retry: Retry,
   operationName: "GenerateOrganizationsAccessReport",
 }));
+
 export type GenerateServiceLastAccessedDetailsError =
   | InvalidInputException
   | NoSuchEntityException
@@ -9730,6 +9810,7 @@ export const generateServiceLastAccessedDetails: API.OperationMethod<
   retry: Retry,
   operationName: "GenerateServiceLastAccessedDetails",
 }));
+
 export type GetAccessKeyLastUsedError = CommonErrors;
 /**
  * Retrieves information about when the specified access key was last used. The
@@ -9749,6 +9830,7 @@ export const getAccessKeyLastUsed: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccessKeyLastUsed",
 }));
+
 export type GetAccountAuthorizationDetailsError =
   | ServiceFailureException
   | CommonErrors;
@@ -9802,6 +9884,7 @@ export const getAccountAuthorizationDetails: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type GetAccountPasswordPolicyError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -9825,6 +9908,7 @@ export const getAccountPasswordPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountPasswordPolicy",
 }));
+
 export type GetAccountSummaryError = ServiceFailureException | CommonErrors;
 /**
  * Retrieves information about IAM entity usage and IAM quotas in the Amazon Web Services
@@ -9846,6 +9930,7 @@ export const getAccountSummary: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountSummary",
 }));
+
 export type GetContextKeysForCustomPolicyError =
   | InvalidInputException
   | CommonErrors;
@@ -9875,6 +9960,7 @@ export const getContextKeysForCustomPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetContextKeysForCustomPolicy",
 }));
+
 export type GetContextKeysForPrincipalPolicyError =
   | InvalidInputException
   | NoSuchEntityException
@@ -9911,6 +9997,7 @@ export const getContextKeysForPrincipalPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetContextKeysForPrincipalPolicy",
 }));
+
 export type GetCredentialReportError =
   | CredentialReportExpiredException
   | CredentialReportNotPresentException
@@ -9940,6 +10027,7 @@ export const getCredentialReport: API.OperationMethod<
   retry: Retry,
   operationName: "GetCredentialReport",
 }));
+
 export type GetDelegationRequestError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -9968,6 +10056,7 @@ export const getDelegationRequest: API.OperationMethod<
   retry: Retry,
   operationName: "GetDelegationRequest",
 }));
+
 export type GetGroupError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -10010,6 +10099,7 @@ export const getGroup: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type GetGroupPolicyError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -10046,6 +10136,7 @@ export const getGroupPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetGroupPolicy",
 }));
+
 export type GetHumanReadableSummaryError =
   | InvalidInputException
   | NoSuchEntityException
@@ -10086,6 +10177,7 @@ export const getHumanReadableSummary: API.OperationMethod<
   retry: Retry,
   operationName: "GetHumanReadableSummary",
 }));
+
 export type GetInstanceProfileError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -10109,6 +10201,7 @@ export const getInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "GetInstanceProfile",
 }));
+
 export type GetLoginProfileError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -10140,6 +10233,7 @@ export const getLoginProfile: API.OperationMethod<
   retry: Retry,
   operationName: "GetLoginProfile",
 }));
+
 export type GetMFADeviceError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -10160,6 +10254,7 @@ export const getMFADevice: API.OperationMethod<
   retry: Retry,
   operationName: "GetMFADevice",
 }));
+
 export type GetOpenIDConnectProviderError =
   | InvalidInputException
   | NoSuchEntityException
@@ -10186,6 +10281,7 @@ export const getOpenIDConnectProvider: API.OperationMethod<
   retry: Retry,
   operationName: "GetOpenIDConnectProvider",
 }));
+
 export type GetOrganizationsAccessReportError =
   | NoSuchEntityException
   | CommonErrors;
@@ -10226,6 +10322,7 @@ export const getOrganizationsAccessReport: API.OperationMethod<
   retry: Retry,
   operationName: "GetOrganizationsAccessReport",
 }));
+
 export type GetOutboundWebIdentityFederationInfoError =
   | FeatureDisabledException
   | CommonErrors;
@@ -10246,6 +10343,7 @@ export const getOutboundWebIdentityFederationInfo: API.OperationMethod<
   retry: Retry,
   operationName: "GetOutboundWebIdentityFederationInfo",
 }));
+
 export type GetPolicyError =
   | InvalidInputException
   | NoSuchEntityException
@@ -10282,6 +10380,7 @@ export const getPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetPolicy",
 }));
+
 export type GetPolicyVersionError =
   | InvalidInputException
   | NoSuchEntityException
@@ -10327,6 +10426,7 @@ export const getPolicyVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetPolicyVersion",
 }));
+
 export type GetRoleError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -10357,6 +10457,7 @@ export const getRole: API.OperationMethod<
   retry: Retry,
   operationName: "GetRole",
 }));
+
 export type GetRolePolicyError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -10396,6 +10497,7 @@ export const getRolePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetRolePolicy",
 }));
+
 export type GetSAMLProviderError =
   | InvalidInputException
   | NoSuchEntityException
@@ -10424,6 +10526,7 @@ export const getSAMLProvider: API.OperationMethod<
   retry: Retry,
   operationName: "GetSAMLProvider",
 }));
+
 export type GetServerCertificateError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -10449,6 +10552,7 @@ export const getServerCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "GetServerCertificate",
 }));
+
 export type GetServiceLastAccessedDetailsError =
   | InvalidInputException
   | NoSuchEntityException
@@ -10514,6 +10618,7 @@ export const getServiceLastAccessedDetails: API.OperationMethod<
   retry: Retry,
   operationName: "GetServiceLastAccessedDetails",
 }));
+
 export type GetServiceLastAccessedDetailsWithEntitiesError =
   | InvalidInputException
   | NoSuchEntityException
@@ -10556,6 +10661,7 @@ export const getServiceLastAccessedDetailsWithEntities: API.OperationMethod<
   retry: Retry,
   operationName: "GetServiceLastAccessedDetailsWithEntities",
 }));
+
 export type GetServiceLinkedRoleDeletionStatusError =
   | InvalidInputException
   | NoSuchEntityException
@@ -10585,6 +10691,7 @@ export const getServiceLinkedRoleDeletionStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetServiceLinkedRoleDeletionStatus",
 }));
+
 export type GetSSHPublicKeyError =
   | NoSuchEntityException
   | UnrecognizedPublicKeyEncodingException
@@ -10610,6 +10717,7 @@ export const getSSHPublicKey: API.OperationMethod<
   retry: Retry,
   operationName: "GetSSHPublicKey",
 }));
+
 export type GetUserError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -10634,6 +10742,7 @@ export const getUser: API.OperationMethod<
   retry: Retry,
   operationName: "GetUser",
 }));
+
 export type GetUserPolicyError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -10670,6 +10779,7 @@ export const getUserPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetUserPolicy",
 }));
+
 export type ListAccessKeysError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -10727,6 +10837,7 @@ export const listAccessKeys: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListAccountAliasesError = ServiceFailureException | CommonErrors;
 /**
  * Lists the account alias associated with the Amazon Web Services account (Note: you can have only
@@ -10768,6 +10879,7 @@ export const listAccountAliases: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListAttachedGroupPoliciesError =
   | InvalidInputException
   | NoSuchEntityException
@@ -10825,6 +10937,7 @@ export const listAttachedGroupPolicies: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListAttachedRolePoliciesError =
   | InvalidInputException
   | NoSuchEntityException
@@ -10882,6 +10995,7 @@ export const listAttachedRolePolicies: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListAttachedUserPoliciesError =
   | InvalidInputException
   | NoSuchEntityException
@@ -10939,6 +11053,7 @@ export const listAttachedUserPolicies: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListDelegationRequestsError =
   | InvalidInputException
   | NoSuchEntityException
@@ -10971,6 +11086,7 @@ export const listDelegationRequests: API.OperationMethod<
   retry: Retry,
   operationName: "ListDelegationRequests",
 }));
+
 export type ListEntitiesForPolicyError =
   | InvalidInputException
   | NoSuchEntityException
@@ -11025,6 +11141,7 @@ export const listEntitiesForPolicy: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListGroupPoliciesError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -11076,6 +11193,7 @@ export const listGroupPolicies: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListGroupsError = ServiceFailureException | CommonErrors;
 /**
  * Lists the IAM groups that have the specified path prefix.
@@ -11117,6 +11235,7 @@ export const listGroups: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListGroupsForUserError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -11161,6 +11280,7 @@ export const listGroupsForUser: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListInstanceProfilesError = ServiceFailureException | CommonErrors;
 /**
  * Lists the instance profiles that have the specified path prefix. If there are none,
@@ -11209,6 +11329,7 @@ export const listInstanceProfiles: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListInstanceProfilesForRoleError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -11256,6 +11377,7 @@ export const listInstanceProfilesForRole: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListInstanceProfileTagsError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -11299,6 +11421,7 @@ export const listInstanceProfileTags: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListMFADevicesError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -11346,6 +11469,7 @@ export const listMFADevices: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListMFADeviceTagsError =
   | InvalidInputException
   | NoSuchEntityException
@@ -11394,6 +11518,7 @@ export const listMFADeviceTags: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListOpenIDConnectProvidersError =
   | ServiceFailureException
   | CommonErrors;
@@ -11417,6 +11542,7 @@ export const listOpenIDConnectProviders: API.OperationMethod<
   retry: Retry,
   operationName: "ListOpenIDConnectProviders",
 }));
+
 export type ListOpenIDConnectProviderTagsError =
   | InvalidInputException
   | NoSuchEntityException
@@ -11468,6 +11594,7 @@ export const listOpenIDConnectProviderTags: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListOrganizationsFeaturesError =
   | AccountNotManagementOrDelegatedAdministratorException
   | OrganizationNotFoundException
@@ -11496,6 +11623,7 @@ export const listOrganizationsFeatures: API.OperationMethod<
   retry: Retry,
   operationName: "ListOrganizationsFeatures",
 }));
+
 export type ListPoliciesError = ServiceFailureException | CommonErrors;
 /**
  * Lists all the managed policies that are available in your Amazon Web Services account, including
@@ -11551,6 +11679,7 @@ export const listPolicies: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListPoliciesGrantingServiceAccessError =
   | InvalidInputException
   | NoSuchEntityException
@@ -11604,6 +11733,7 @@ export const listPoliciesGrantingServiceAccess: API.OperationMethod<
   retry: Retry,
   operationName: "ListPoliciesGrantingServiceAccess",
 }));
+
 export type ListPolicyTagsError =
   | InvalidInputException
   | NoSuchEntityException
@@ -11652,6 +11782,7 @@ export const listPolicyTags: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListPolicyVersionsError =
   | InvalidInputException
   | NoSuchEntityException
@@ -11702,6 +11833,7 @@ export const listPolicyVersions: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListRolePoliciesError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -11753,6 +11885,7 @@ export const listRolePolicies: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListRolesError = ServiceFailureException | CommonErrors;
 /**
  * Lists the IAM roles that have the specified path prefix. If there are none, the
@@ -11807,6 +11940,7 @@ export const listRoles: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListRoleTagsError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -11850,6 +11984,7 @@ export const listRoleTags: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListSAMLProvidersError = ServiceFailureException | CommonErrors;
 /**
  * Lists the SAML provider resource objects defined in IAM in the account.
@@ -11871,6 +12006,7 @@ export const listSAMLProviders: API.OperationMethod<
   retry: Retry,
   operationName: "ListSAMLProviders",
 }));
+
 export type ListSAMLProviderTagsError =
   | InvalidInputException
   | NoSuchEntityException
@@ -11922,6 +12058,7 @@ export const listSAMLProviderTags: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListServerCertificatesError =
   | ServiceFailureException
   | CommonErrors;
@@ -11975,6 +12112,7 @@ export const listServerCertificates: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListServerCertificateTagsError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -12024,6 +12162,7 @@ export const listServerCertificateTags: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListServiceSpecificCredentialsError =
   | NoSuchEntityException
   | ServiceNotSupportedException
@@ -12066,6 +12205,7 @@ export const listServiceSpecificCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "ListServiceSpecificCredentials",
 }));
+
 export type ListSigningCertificatesError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -12118,6 +12258,7 @@ export const listSigningCertificates: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListSSHPublicKeysError = NoSuchEntityException | CommonErrors;
 /**
  * Returns information about the SSH public keys associated with the specified IAM
@@ -12165,6 +12306,7 @@ export const listSSHPublicKeys: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListUserPoliciesError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -12215,6 +12357,7 @@ export const listUserPolicies: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListUsersError = ServiceFailureException | CommonErrors;
 /**
  * Lists the IAM users that have the specified path prefix. If no path prefix is
@@ -12267,6 +12410,7 @@ export const listUsers: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListUserTagsError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -12309,6 +12453,7 @@ export const listUserTags: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListVirtualMFADevicesError = CommonErrors;
 /**
  * Lists the virtual MFA devices defined in the Amazon Web Services account by assignment status. If
@@ -12356,6 +12501,7 @@ export const listVirtualMFADevices: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type PutGroupPolicyError =
   | LimitExceededException
   | MalformedPolicyDocumentException
@@ -12402,6 +12548,7 @@ export const putGroupPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutGroupPolicy",
 }));
+
 export type PutRolePermissionsBoundaryError =
   | InvalidInputException
   | NoSuchEntityException
@@ -12442,6 +12589,7 @@ export const putRolePermissionsBoundary: API.OperationMethod<
   retry: Retry,
   operationName: "PutRolePermissionsBoundary",
 }));
+
 export type PutRolePolicyError =
   | LimitExceededException
   | MalformedPolicyDocumentException
@@ -12501,6 +12649,7 @@ export const putRolePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutRolePolicy",
 }));
+
 export type PutUserPermissionsBoundaryError =
   | InvalidInputException
   | NoSuchEntityException
@@ -12537,6 +12686,7 @@ export const putUserPermissionsBoundary: API.OperationMethod<
   retry: Retry,
   operationName: "PutUserPermissionsBoundary",
 }));
+
 export type PutUserPolicyError =
   | LimitExceededException
   | MalformedPolicyDocumentException
@@ -12583,6 +12733,7 @@ export const putUserPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutUserPolicy",
 }));
+
 export type RejectDelegationRequestError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -12618,6 +12769,7 @@ export const rejectDelegationRequest: API.OperationMethod<
   retry: Retry,
   operationName: "RejectDelegationRequest",
 }));
+
 export type RemoveClientIDFromOpenIDConnectProviderError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -12650,6 +12802,7 @@ export const removeClientIDFromOpenIDConnectProvider: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveClientIDFromOpenIDConnectProvider",
 }));
+
 export type RemoveRoleFromInstanceProfileError =
   | LimitExceededException
   | NoSuchEntityException
@@ -12687,6 +12840,7 @@ export const removeRoleFromInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveRoleFromInstanceProfile",
 }));
+
 export type RemoveUserFromGroupError =
   | LimitExceededException
   | NoSuchEntityException
@@ -12712,6 +12866,7 @@ export const removeUserFromGroup: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveUserFromGroup",
 }));
+
 export type ResetServiceSpecificCredentialError =
   | NoSuchEntityException
   | CommonErrors;
@@ -12734,6 +12889,7 @@ export const resetServiceSpecificCredential: API.OperationMethod<
   retry: Retry,
   operationName: "ResetServiceSpecificCredential",
 }));
+
 export type ResyncMFADeviceError =
   | ConcurrentModificationException
   | InvalidAuthenticationCodeException
@@ -12767,6 +12923,7 @@ export const resyncMFADevice: API.OperationMethod<
   retry: Retry,
   operationName: "ResyncMFADevice",
 }));
+
 export type SendDelegationTokenError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -12805,6 +12962,7 @@ export const sendDelegationToken: API.OperationMethod<
   retry: Retry,
   operationName: "SendDelegationToken",
 }));
+
 export type SetDefaultPolicyVersionError =
   | InvalidInputException
   | LimitExceededException
@@ -12839,6 +12997,7 @@ export const setDefaultPolicyVersion: API.OperationMethod<
   retry: Retry,
   operationName: "SetDefaultPolicyVersion",
 }));
+
 export type SetSecurityTokenServicePreferencesError =
   | ServiceFailureException
   | CommonErrors;
@@ -12879,6 +13038,7 @@ export const setSecurityTokenServicePreferences: API.OperationMethod<
   retry: Retry,
   operationName: "SetSecurityTokenServicePreferences",
 }));
+
 export type SimulateCustomPolicyError =
   | InvalidInputException
   | PolicyEvaluationException
@@ -12946,6 +13106,7 @@ export const simulateCustomPolicy: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type SimulatePrincipalPolicyError =
   | InvalidInputException
   | NoSuchEntityException
@@ -13027,6 +13188,7 @@ export const simulatePrincipalPolicy: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type TagInstanceProfileError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13080,6 +13242,7 @@ export const tagInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "TagInstanceProfile",
 }));
+
 export type TagMFADeviceError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13134,6 +13297,7 @@ export const tagMFADevice: API.OperationMethod<
   retry: Retry,
   operationName: "TagMFADevice",
 }));
+
 export type TagOpenIDConnectProviderError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13189,6 +13353,7 @@ export const tagOpenIDConnectProvider: API.OperationMethod<
   retry: Retry,
   operationName: "TagOpenIDConnectProvider",
 }));
+
 export type TagPolicyError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13242,6 +13407,7 @@ export const tagPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "TagPolicy",
 }));
+
 export type TagRoleError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13303,6 +13469,7 @@ export const tagRole: API.OperationMethod<
   retry: Retry,
   operationName: "TagRole",
 }));
+
 export type TagSAMLProviderError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13358,6 +13525,7 @@ export const tagSAMLProvider: API.OperationMethod<
   retry: Retry,
   operationName: "TagSAMLProvider",
 }));
+
 export type TagServerCertificateError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13420,6 +13588,7 @@ export const tagServerCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "TagServerCertificate",
 }));
+
 export type TagUserError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13480,6 +13649,7 @@ export const tagUser: API.OperationMethod<
   retry: Retry,
   operationName: "TagUser",
 }));
+
 export type UntagInstanceProfileError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13508,6 +13678,7 @@ export const untagInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "UntagInstanceProfile",
 }));
+
 export type UntagMFADeviceError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13537,6 +13708,7 @@ export const untagMFADevice: API.OperationMethod<
   retry: Retry,
   operationName: "UntagMFADevice",
 }));
+
 export type UntagOpenIDConnectProviderError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13567,6 +13739,7 @@ export const untagOpenIDConnectProvider: API.OperationMethod<
   retry: Retry,
   operationName: "UntagOpenIDConnectProvider",
 }));
+
 export type UntagPolicyError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13595,6 +13768,7 @@ export const untagPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "UntagPolicy",
 }));
+
 export type UntagRoleError =
   | ConcurrentModificationException
   | NoSuchEntityException
@@ -13621,6 +13795,7 @@ export const untagRole: API.OperationMethod<
   retry: Retry,
   operationName: "UntagRole",
 }));
+
 export type UntagSAMLProviderError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13651,6 +13826,7 @@ export const untagSAMLProvider: API.OperationMethod<
   retry: Retry,
   operationName: "UntagSAMLProvider",
 }));
+
 export type UntagServerCertificateError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13686,6 +13862,7 @@ export const untagServerCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "UntagServerCertificate",
 }));
+
 export type UntagUserError =
   | ConcurrentModificationException
   | NoSuchEntityException
@@ -13712,6 +13889,7 @@ export const untagUser: API.OperationMethod<
   retry: Retry,
   operationName: "UntagUser",
 }));
+
 export type UpdateAccessKeyError =
   | InvalidInputException
   | LimitExceededException
@@ -13751,6 +13929,7 @@ export const updateAccessKey: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAccessKey",
 }));
+
 export type UpdateAccountPasswordPolicyError =
   | LimitExceededException
   | MalformedPolicyDocumentException
@@ -13788,6 +13967,7 @@ export const updateAccountPasswordPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAccountPasswordPolicy",
 }));
+
 export type UpdateAssumeRolePolicyError =
   | LimitExceededException
   | MalformedPolicyDocumentException
@@ -13820,6 +14000,7 @@ export const updateAssumeRolePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAssumeRolePolicy",
 }));
+
 export type UpdateDelegationRequestError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13853,6 +14034,7 @@ export const updateDelegationRequest: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDelegationRequest",
 }));
+
 export type UpdateGroupError =
   | EntityAlreadyExistsException
   | LimitExceededException
@@ -13891,6 +14073,7 @@ export const updateGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGroup",
 }));
+
 export type UpdateLoginProfileError =
   | EntityTemporarilyUnmodifiableException
   | LimitExceededException
@@ -13927,6 +14110,7 @@ export const updateLoginProfile: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLoginProfile",
 }));
+
 export type UpdateOpenIDConnectProviderThumbprintError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -13975,6 +14159,7 @@ export const updateOpenIDConnectProviderThumbprint: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateOpenIDConnectProviderThumbprint",
 }));
+
 export type UpdateRoleError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -14000,6 +14185,7 @@ export const updateRole: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRole",
 }));
+
 export type UpdateRoleDescriptionError =
   | NoSuchEntityException
   | ServiceFailureException
@@ -14028,6 +14214,7 @@ export const updateRoleDescription: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRoleDescription",
 }));
+
 export type UpdateSAMLProviderError =
   | ConcurrentModificationException
   | InvalidInputException
@@ -14059,6 +14246,7 @@ export const updateSAMLProvider: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSAMLProvider",
 }));
+
 export type UpdateServerCertificateError =
   | EntityAlreadyExistsException
   | LimitExceededException
@@ -14104,6 +14292,7 @@ export const updateServerCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateServerCertificate",
 }));
+
 export type UpdateServiceSpecificCredentialError =
   | NoSuchEntityException
   | CommonErrors;
@@ -14126,6 +14315,7 @@ export const updateServiceSpecificCredential: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateServiceSpecificCredential",
 }));
+
 export type UpdateSigningCertificateError =
   | InvalidInputException
   | LimitExceededException
@@ -14161,6 +14351,7 @@ export const updateSigningCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSigningCertificate",
 }));
+
 export type UpdateSSHPublicKeyError =
   | InvalidInputException
   | NoSuchEntityException
@@ -14188,6 +14379,7 @@ export const updateSSHPublicKey: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSSHPublicKey",
 }));
+
 export type UpdateUserError =
   | ConcurrentModificationException
   | EntityAlreadyExistsException
@@ -14229,6 +14421,7 @@ export const updateUser: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateUser",
 }));
+
 export type UploadServerCertificateError =
   | ConcurrentModificationException
   | EntityAlreadyExistsException
@@ -14287,6 +14480,7 @@ export const uploadServerCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "UploadServerCertificate",
 }));
+
 export type UploadSigningCertificateError =
   | ConcurrentModificationException
   | DuplicateCertificateException
@@ -14342,6 +14536,7 @@ export const uploadSigningCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "UploadSigningCertificate",
 }));
+
 export type UploadSSHPublicKeyError =
   | DuplicateSSHPublicKeyException
   | InvalidPublicKeyException

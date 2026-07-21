@@ -88,39 +88,190 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BatchWriteException extends S.TaggedErrorClass<BatchWriteException>()(
+  "BatchWriteException",
+  {
+    Index: S.optional(S.Number),
+    Type: S.optional(
+      S.suspend(() => BatchWriteExceptionType).annotate({
+        identifier: "BatchWriteExceptionType",
+      }),
+    ),
+    Message: S.optional(S.String),
+  },
+) {}
+export class CannotListParentOfRootException extends S.TaggedErrorClass<CannotListParentOfRootException>()(
+  "CannotListParentOfRootException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DirectoryAlreadyExistsException extends S.TaggedErrorClass<DirectoryAlreadyExistsException>()(
+  "DirectoryAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class DirectoryDeletedException extends S.TaggedErrorClass<DirectoryDeletedException>()(
+  "DirectoryDeletedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DirectoryNotDisabledException extends S.TaggedErrorClass<DirectoryNotDisabledException>()(
+  "DirectoryNotDisabledException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DirectoryNotEnabledException extends S.TaggedErrorClass<DirectoryNotEnabledException>()(
+  "DirectoryNotEnabledException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class FacetAlreadyExistsException extends S.TaggedErrorClass<FacetAlreadyExistsException>()(
+  "FacetAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class FacetInUseException extends S.TaggedErrorClass<FacetInUseException>()(
+  "FacetInUseException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class FacetNotFoundException extends S.TaggedErrorClass<FacetNotFoundException>()(
+  "FacetNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class FacetValidationException extends S.TaggedErrorClass<FacetValidationException>()(
+  "FacetValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class IncompatibleSchemaException extends S.TaggedErrorClass<IncompatibleSchemaException>()(
+  "IncompatibleSchemaException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class IndexedAttributeMissingException extends S.TaggedErrorClass<IndexedAttributeMissingException>()(
+  "IndexedAttributeMissingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
+  "InternalServiceException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidArnException extends S.TaggedErrorClass<InvalidArnException>()(
+  "InvalidArnException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidAttachmentException extends S.TaggedErrorClass<InvalidAttachmentException>()(
+  "InvalidAttachmentException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidFacetUpdateException extends S.TaggedErrorClass<InvalidFacetUpdateException>()(
+  "InvalidFacetUpdateException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidRuleException extends S.TaggedErrorClass<InvalidRuleException>()(
+  "InvalidRuleException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidSchemaDocException extends S.TaggedErrorClass<InvalidSchemaDocException>()(
+  "InvalidSchemaDocException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidTaggingRequestException extends S.TaggedErrorClass<InvalidTaggingRequestException>()(
+  "InvalidTaggingRequestException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LinkNameAlreadyInUseException extends S.TaggedErrorClass<LinkNameAlreadyInUseException>()(
+  "LinkNameAlreadyInUseException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotIndexException extends S.TaggedErrorClass<NotIndexException>()(
+  "NotIndexException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotNodeException extends S.TaggedErrorClass<NotNodeException>()(
+  "NotNodeException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotPolicyException extends S.TaggedErrorClass<NotPolicyException>()(
+  "NotPolicyException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ObjectAlreadyDetachedException extends S.TaggedErrorClass<ObjectAlreadyDetachedException>()(
+  "ObjectAlreadyDetachedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ObjectNotDetachedException extends S.TaggedErrorClass<ObjectNotDetachedException>()(
+  "ObjectNotDetachedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class RetryableConflictException extends S.TaggedErrorClass<RetryableConflictException>()(
+  "RetryableConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class SchemaAlreadyExistsException extends S.TaggedErrorClass<SchemaAlreadyExistsException>()(
+  "SchemaAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class SchemaAlreadyPublishedException extends S.TaggedErrorClass<SchemaAlreadyPublishedException>()(
+  "SchemaAlreadyPublishedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class StillContainsLinksException extends S.TaggedErrorClass<StillContainsLinksException>()(
+  "StillContainsLinksException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedIndexTypeException extends S.TaggedErrorClass<UnsupportedIndexTypeException>()(
+  "UnsupportedIndexTypeException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type FacetName = string;
-export type AttributeName = string;
-export type StringAttributeValue = string;
-export type BinaryAttributeValue = Uint8Array;
-export type BooleanAttributeValue = boolean;
-export type NumberAttributeValue = string;
-export type DatetimeAttributeValue = Date;
-export type SelectorObjectReference = string;
-export type ExceptionMessage = string;
-export type LinkName = string;
-export type ObjectIdentifier = string;
-export type TypedLinkName = string;
-export type NextToken = string;
-export type NumberResults = number;
-export type PathString = string;
-export type PolicyType = string;
-export type BatchReferenceName = string;
-export type BatchOperationIndex = number;
-export type DirectoryName = string;
-export type DirectoryArn = string;
-export type RuleKey = string;
-export type RuleParameterKey = string;
-export type RuleParameterValue = string;
-export type SchemaName = string;
-export type SchemaJsonDocument = string;
-export type TagsNumberResults = number;
-export type TagKey = string;
-export type TagValue = string;
-export type Version = string;
-
-//# Schemas
 export interface SchemaFacet {
   SchemaArn?: string;
   FacetName?: string;
@@ -131,6 +282,7 @@ export const SchemaFacet = /*@__PURE__*/ S.suspend(() =>
     FacetName: S.optional(S.String),
   }),
 ).annotate({ identifier: "SchemaFacet" }) as any as S.Schema<SchemaFacet>;
+export type AttributeName = string;
 export interface AttributeKey {
   SchemaArn: string;
   FacetName: string;
@@ -139,6 +291,11 @@ export interface AttributeKey {
 export const AttributeKey = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SchemaArn: S.String, FacetName: S.String, Name: S.String }),
 ).annotate({ identifier: "AttributeKey" }) as any as S.Schema<AttributeKey>;
+export type StringAttributeValue = string;
+export type BinaryAttributeValue = Uint8Array;
+export type BooleanAttributeValue = boolean;
+export type NumberAttributeValue = string;
+export type DatetimeAttributeValue = Date;
 export type TypedAttributeValue =
   | {
       StringValue: string;
@@ -194,6 +351,7 @@ export const AttributeKeyAndValue = /*@__PURE__*/ S.suspend(() =>
 export type AttributeKeyAndValueList = AttributeKeyAndValue[];
 export const AttributeKeyAndValueList =
   /*@__PURE__*/ S.Array(AttributeKeyAndValue);
+export type SelectorObjectReference = string;
 export interface ObjectReference {
   Selector?: string;
 }
@@ -272,6 +430,7 @@ export const ApplySchemaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplySchemaResponse",
 }) as any as S.Schema<ApplySchemaResponse>;
+export type LinkName = string;
 export interface AttachObjectRequest {
   DirectoryArn: string;
   ParentReference: ObjectReference;
@@ -300,6 +459,7 @@ export const AttachObjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachObjectRequest",
 }) as any as S.Schema<AttachObjectRequest>;
+export type ObjectIdentifier = string;
 export interface AttachObjectResponse {
   AttachedObjectIdentifier?: string;
 }
@@ -374,6 +534,7 @@ export const AttachToIndexResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachToIndexResponse",
 }) as any as S.Schema<AttachToIndexResponse>;
+export type TypedLinkName = string;
 export interface TypedLinkSchemaAndFacetName {
   SchemaArn: string;
   TypedLinkName: string;
@@ -450,6 +611,8 @@ export const AttachTypedLinkResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachTypedLinkResponse",
 }) as any as S.Schema<AttachTypedLinkResponse>;
+export type NextToken = string;
+export type NumberResults = number;
 export interface BatchListObjectAttributes {
   ObjectReference: ObjectReference;
   NextToken?: string;
@@ -596,6 +759,7 @@ export type RangeMode =
   | "EXCLUSIVE"
   | (string & {});
 export const RangeMode = /*@__PURE__*/ S.String;
+
 export interface TypedAttributeValueRange {
   StartMode: RangeMode;
   StartValue?: TypedAttributeValue;
@@ -745,6 +909,7 @@ export type BatchReadOperationList = BatchReadOperation[];
 export const BatchReadOperationList = /*@__PURE__*/ S.Array(BatchReadOperation);
 export type ConsistencyLevel = "SERIALIZABLE" | "EVENTUAL" | (string & {});
 export const ConsistencyLevel = /*@__PURE__*/ S.String;
+
 export interface BatchReadRequest {
   DirectoryArn: string;
   Operations: BatchReadOperation[];
@@ -852,6 +1017,7 @@ export const BatchListAttachedIndicesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchListAttachedIndicesResponse",
 }) as any as S.Schema<BatchListAttachedIndicesResponse>;
+export type PathString = string;
 export type ObjectIdentifierList = string[];
 export const ObjectIdentifierList = /*@__PURE__*/ S.Array(S.String);
 export interface PathToObjectIdentifiers {
@@ -906,6 +1072,7 @@ export const BatchListPolicyAttachmentsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchListPolicyAttachmentsResponse",
 }) as any as S.Schema<BatchListPolicyAttachmentsResponse>;
+export type PolicyType = string;
 export interface PolicyAttachment {
   PolicyId?: string;
   ObjectIdentifier?: string;
@@ -1073,6 +1240,8 @@ export type BatchReadExceptionType =
   | "InternalServiceException"
   | (string & {});
 export const BatchReadExceptionType = /*@__PURE__*/ S.String;
+
+export type ExceptionMessage = string;
 export interface BatchReadException {
   Type?: BatchReadExceptionType;
   Message?: string;
@@ -1109,6 +1278,7 @@ export const BatchReadResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchReadResponse",
 }) as any as S.Schema<BatchReadResponse>;
+export type BatchReferenceName = string;
 export interface BatchCreateObject {
   SchemaFacet: SchemaFacet[];
   ObjectAttributeList: AttributeKeyAndValue[];
@@ -1157,6 +1327,7 @@ export const BatchDetachObject = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchDetachObject>;
 export type UpdateActionType = "CREATE_OR_UPDATE" | "DELETE" | (string & {});
 export const UpdateActionType = /*@__PURE__*/ S.String;
+
 export interface ObjectAttributeAction {
   ObjectAttributeActionType?: UpdateActionType;
   ObjectAttributeUpdateValue?: TypedAttributeValue;
@@ -1580,27 +1751,7 @@ export const BatchWriteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchWriteResponse",
 }) as any as S.Schema<BatchWriteResponse>;
-export type BatchWriteExceptionType =
-  | "InternalServiceException"
-  | "ValidationException"
-  | "InvalidArnException"
-  | "LinkNameAlreadyInUseException"
-  | "StillContainsLinksException"
-  | "FacetValidationException"
-  | "ObjectNotDetachedException"
-  | "ResourceNotFoundException"
-  | "AccessDeniedException"
-  | "InvalidAttachmentException"
-  | "NotIndexException"
-  | "NotNodeException"
-  | "IndexedAttributeMissingException"
-  | "ObjectAlreadyDetachedException"
-  | "NotPolicyException"
-  | "DirectoryNotEnabledException"
-  | "LimitExceededException"
-  | "UnsupportedIndexTypeException"
-  | (string & {});
-export const BatchWriteExceptionType = /*@__PURE__*/ S.String;
+export type DirectoryName = string;
 export interface CreateDirectoryRequest {
   Name: string;
   SchemaArn: string;
@@ -1625,6 +1776,7 @@ export const CreateDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDirectoryRequest",
 }) as any as S.Schema<CreateDirectoryRequest>;
+export type DirectoryArn = string;
 export interface CreateDirectoryResponse {
   DirectoryArn: string;
   Name: string;
@@ -1650,6 +1802,8 @@ export type FacetAttributeType =
   | "VARIANT"
   | (string & {});
 export const FacetAttributeType = /*@__PURE__*/ S.String;
+
+export type RuleKey = string;
 export type RuleType =
   | "BINARY_LENGTH"
   | "NUMBER_COMPARISON"
@@ -1657,6 +1811,9 @@ export type RuleType =
   | "STRING_LENGTH"
   | (string & {});
 export const RuleType = /*@__PURE__*/ S.String;
+
+export type RuleParameterKey = string;
+export type RuleParameterValue = string;
 export type RuleParameterMap = { [key: string]: string | undefined };
 export const RuleParameterMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1704,6 +1861,7 @@ export type RequiredAttributeBehavior =
   | "NOT_REQUIRED"
   | (string & {});
 export const RequiredAttributeBehavior = /*@__PURE__*/ S.String;
+
 export interface FacetAttribute {
   Name: string;
   AttributeDefinition?: FacetAttributeDefinition;
@@ -1727,8 +1885,10 @@ export type ObjectType =
   | "INDEX"
   | (string & {});
 export const ObjectType = /*@__PURE__*/ S.String;
+
 export type FacetStyle = "STATIC" | "DYNAMIC" | (string & {});
 export const FacetStyle = /*@__PURE__*/ S.String;
+
 export interface CreateFacetRequest {
   SchemaArn: string;
   Name: string;
@@ -1835,6 +1995,7 @@ export const CreateObjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateObjectResponse",
 }) as any as S.Schema<CreateObjectResponse>;
+export type SchemaName = string;
 export interface CreateSchemaRequest {
   Name: string;
 }
@@ -2318,6 +2479,7 @@ export const GetDirectoryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDirectoryRequest>;
 export type DirectoryState = "ENABLED" | "DISABLED" | "DELETED" | (string & {});
 export const DirectoryState = /*@__PURE__*/ S.String;
+
 export interface Directory {
   Name?: string;
   DirectoryArn?: string;
@@ -2521,6 +2683,7 @@ export const GetSchemaAsJsonRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSchemaAsJsonRequest",
 }) as any as S.Schema<GetSchemaAsJsonRequest>;
+export type SchemaJsonDocument = string;
 export interface GetSchemaAsJsonResponse {
   Name?: string;
   Document?: string;
@@ -3276,6 +3439,7 @@ export const ListPublishedSchemaArnsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPublishedSchemaArnsResponse",
 }) as any as S.Schema<ListPublishedSchemaArnsResponse>;
+export type TagsNumberResults = number;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
   NextToken?: string;
@@ -3299,6 +3463,8 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -3438,6 +3604,7 @@ export const LookupPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LookupPolicyResponse",
 }) as any as S.Schema<LookupPolicyResponse>;
+export type Version = string;
 export interface PublishSchemaRequest {
   DevelopmentSchemaArn: string;
   Version: string;
@@ -3862,188 +4029,29 @@ export const UpgradePublishedSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpgradePublishedSchemaResponse",
 }) as any as S.Schema<UpgradePublishedSchemaResponse>;
+export type BatchOperationIndex = number;
+export type BatchWriteExceptionType =
+  | "InternalServiceException"
+  | "ValidationException"
+  | "InvalidArnException"
+  | "LinkNameAlreadyInUseException"
+  | "StillContainsLinksException"
+  | "FacetValidationException"
+  | "ObjectNotDetachedException"
+  | "ResourceNotFoundException"
+  | "AccessDeniedException"
+  | "InvalidAttachmentException"
+  | "NotIndexException"
+  | "NotNodeException"
+  | "IndexedAttributeMissingException"
+  | "ObjectAlreadyDetachedException"
+  | "NotPolicyException"
+  | "DirectoryNotEnabledException"
+  | "LimitExceededException"
+  | "UnsupportedIndexTypeException"
+  | (string & {});
+export const BatchWriteExceptionType = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class DirectoryNotEnabledException extends S.TaggedErrorClass<DirectoryNotEnabledException>()(
-  "DirectoryNotEnabledException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class FacetValidationException extends S.TaggedErrorClass<FacetValidationException>()(
-  "FacetValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidArnException extends S.TaggedErrorClass<InvalidArnException>()(
-  "InvalidArnException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class RetryableConflictException extends S.TaggedErrorClass<RetryableConflictException>()(
-  "RetryableConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidAttachmentException extends S.TaggedErrorClass<InvalidAttachmentException>()(
-  "InvalidAttachmentException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class SchemaAlreadyExistsException extends S.TaggedErrorClass<SchemaAlreadyExistsException>()(
-  "SchemaAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class LinkNameAlreadyInUseException extends S.TaggedErrorClass<LinkNameAlreadyInUseException>()(
-  "LinkNameAlreadyInUseException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NotPolicyException extends S.TaggedErrorClass<NotPolicyException>()(
-  "NotPolicyException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class IndexedAttributeMissingException extends S.TaggedErrorClass<IndexedAttributeMissingException>()(
-  "IndexedAttributeMissingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NotIndexException extends S.TaggedErrorClass<NotIndexException>()(
-  "NotIndexException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class BatchWriteException extends S.TaggedErrorClass<BatchWriteException>()(
-  "BatchWriteException",
-  {
-    Index: S.optional(S.Number),
-    Type: S.optional(BatchWriteExceptionType),
-    Message: S.optional(S.String),
-  },
-) {}
-export class DirectoryAlreadyExistsException extends S.TaggedErrorClass<DirectoryAlreadyExistsException>()(
-  "DirectoryAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class FacetAlreadyExistsException extends S.TaggedErrorClass<FacetAlreadyExistsException>()(
-  "FacetAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class InvalidRuleException extends S.TaggedErrorClass<InvalidRuleException>()(
-  "InvalidRuleException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedIndexTypeException extends S.TaggedErrorClass<UnsupportedIndexTypeException>()(
-  "UnsupportedIndexTypeException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class DirectoryDeletedException extends S.TaggedErrorClass<DirectoryDeletedException>()(
-  "DirectoryDeletedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class DirectoryNotDisabledException extends S.TaggedErrorClass<DirectoryNotDisabledException>()(
-  "DirectoryNotDisabledException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class FacetInUseException extends S.TaggedErrorClass<FacetInUseException>()(
-  "FacetInUseException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class FacetNotFoundException extends S.TaggedErrorClass<FacetNotFoundException>()(
-  "FacetNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ObjectNotDetachedException extends S.TaggedErrorClass<ObjectNotDetachedException>()(
-  "ObjectNotDetachedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class StillContainsLinksException extends S.TaggedErrorClass<StillContainsLinksException>()(
-  "StillContainsLinksException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ObjectAlreadyDetachedException extends S.TaggedErrorClass<ObjectAlreadyDetachedException>()(
-  "ObjectAlreadyDetachedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NotNodeException extends S.TaggedErrorClass<NotNodeException>()(
-  "NotNodeException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class CannotListParentOfRootException extends S.TaggedErrorClass<CannotListParentOfRootException>()(
-  "CannotListParentOfRootException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidTaggingRequestException extends S.TaggedErrorClass<InvalidTaggingRequestException>()(
-  "InvalidTaggingRequestException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class SchemaAlreadyPublishedException extends S.TaggedErrorClass<SchemaAlreadyPublishedException>()(
-  "SchemaAlreadyPublishedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidSchemaDocException extends S.TaggedErrorClass<InvalidSchemaDocException>()(
-  "InvalidSchemaDocException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidFacetUpdateException extends S.TaggedErrorClass<InvalidFacetUpdateException>()(
-  "InvalidFacetUpdateException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class IncompatibleSchemaException extends S.TaggedErrorClass<IncompatibleSchemaException>()(
-  "IncompatibleSchemaException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type AddFacetToObjectError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4081,6 +4089,7 @@ export const addFacetToObject: API.OperationMethod<
   retry: Retry,
   operationName: "AddFacetToObject",
 }));
+
 export type ApplySchemaError =
   | AccessDeniedException
   | InternalServiceException
@@ -4119,6 +4128,7 @@ export const applySchema: API.OperationMethod<
   retry: Retry,
   operationName: "ApplySchema",
 }));
+
 export type AttachObjectError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4165,6 +4175,7 @@ export const attachObject: API.OperationMethod<
   retry: Retry,
   operationName: "AttachObject",
 }));
+
 export type AttachPolicyError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4203,6 +4214,7 @@ export const attachPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "AttachPolicy",
 }));
+
 export type AttachToIndexError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4246,6 +4258,7 @@ export const attachToIndex: API.OperationMethod<
   retry: Retry,
   operationName: "AttachToIndex",
 }));
+
 export type AttachTypedLinkError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4285,6 +4298,7 @@ export const attachTypedLink: API.OperationMethod<
   retry: Retry,
   operationName: "AttachTypedLink",
 }));
+
 export type BatchReadError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4318,6 +4332,7 @@ export const batchRead: API.OperationMethod<
   retry: Retry,
   operationName: "BatchRead",
 }));
+
 export type BatchWriteError =
   | AccessDeniedException
   | BatchWriteException
@@ -4354,6 +4369,7 @@ export const batchWrite: API.OperationMethod<
   retry: Retry,
   operationName: "BatchWrite",
 }));
+
 export type CreateDirectoryError =
   | AccessDeniedException
   | DirectoryAlreadyExistsException
@@ -4393,6 +4409,7 @@ export const createDirectory: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDirectory",
 }));
+
 export type CreateFacetError =
   | AccessDeniedException
   | FacetAlreadyExistsException
@@ -4433,6 +4450,7 @@ export const createFacet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFacet",
 }));
+
 export type CreateIndexError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4474,6 +4492,7 @@ export const createIndex: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIndex",
 }));
+
 export type CreateObjectError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4518,6 +4537,7 @@ export const createObject: API.OperationMethod<
   retry: Retry,
   operationName: "CreateObject",
 }));
+
 export type CreateSchemaError =
   | AccessDeniedException
   | InternalServiceException
@@ -4563,6 +4583,7 @@ export const createSchema: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSchema",
 }));
+
 export type CreateTypedLinkFacetError =
   | AccessDeniedException
   | FacetAlreadyExistsException
@@ -4602,6 +4623,7 @@ export const createTypedLinkFacet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTypedLinkFacet",
 }));
+
 export type DeleteDirectoryError =
   | AccessDeniedException
   | DirectoryDeletedException
@@ -4641,6 +4663,7 @@ export const deleteDirectory: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDirectory",
 }));
+
 export type DeleteFacetError =
   | AccessDeniedException
   | FacetInUseException
@@ -4680,6 +4703,7 @@ export const deleteFacet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFacet",
 }));
+
 export type DeleteObjectError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4718,6 +4742,7 @@ export const deleteObject: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteObject",
 }));
+
 export type DeleteSchemaError =
   | AccessDeniedException
   | InternalServiceException
@@ -4753,6 +4778,7 @@ export const deleteSchema: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSchema",
 }));
+
 export type DeleteTypedLinkFacetError =
   | AccessDeniedException
   | FacetNotFoundException
@@ -4788,6 +4814,7 @@ export const deleteTypedLinkFacet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTypedLinkFacet",
 }));
+
 export type DetachFromIndexError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4827,6 +4854,7 @@ export const detachFromIndex: API.OperationMethod<
   retry: Retry,
   operationName: "DetachFromIndex",
 }));
+
 export type DetachObjectError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4865,6 +4893,7 @@ export const detachObject: API.OperationMethod<
   retry: Retry,
   operationName: "DetachObject",
 }));
+
 export type DetachPolicyError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4902,6 +4931,7 @@ export const detachPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DetachPolicy",
 }));
+
 export type DetachTypedLinkError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -4939,6 +4969,7 @@ export const detachTypedLink: API.OperationMethod<
   retry: Retry,
   operationName: "DetachTypedLink",
 }));
+
 export type DisableDirectoryError =
   | AccessDeniedException
   | DirectoryDeletedException
@@ -4975,6 +5006,7 @@ export const disableDirectory: API.OperationMethod<
   retry: Retry,
   operationName: "DisableDirectory",
 }));
+
 export type EnableDirectoryError =
   | AccessDeniedException
   | DirectoryDeletedException
@@ -5011,6 +5043,7 @@ export const enableDirectory: API.OperationMethod<
   retry: Retry,
   operationName: "EnableDirectory",
 }));
+
 export type GetAppliedSchemaVersionError =
   | AccessDeniedException
   | InternalServiceException
@@ -5044,6 +5077,7 @@ export const getAppliedSchemaVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetAppliedSchemaVersion",
 }));
+
 export type GetDirectoryError =
   | AccessDeniedException
   | InternalServiceException
@@ -5075,6 +5109,7 @@ export const getDirectory: API.OperationMethod<
   retry: Retry,
   operationName: "GetDirectory",
 }));
+
 export type GetFacetError =
   | AccessDeniedException
   | FacetNotFoundException
@@ -5111,6 +5146,7 @@ export const getFacet: API.OperationMethod<
   retry: Retry,
   operationName: "GetFacet",
 }));
+
 export type GetLinkAttributesError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5148,6 +5184,7 @@ export const getLinkAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "GetLinkAttributes",
 }));
+
 export type GetObjectAttributesError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5185,6 +5222,7 @@ export const getObjectAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "GetObjectAttributes",
 }));
+
 export type GetObjectInformationError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5220,6 +5258,7 @@ export const getObjectInformation: API.OperationMethod<
   retry: Retry,
   operationName: "GetObjectInformation",
 }));
+
 export type GetSchemaAsJsonError =
   | AccessDeniedException
   | InternalServiceException
@@ -5253,6 +5292,7 @@ export const getSchemaAsJson: API.OperationMethod<
   retry: Retry,
   operationName: "GetSchemaAsJson",
 }));
+
 export type GetTypedLinkFacetInformationError =
   | AccessDeniedException
   | FacetNotFoundException
@@ -5290,6 +5330,7 @@ export const getTypedLinkFacetInformation: API.OperationMethod<
   retry: Retry,
   operationName: "GetTypedLinkFacetInformation",
 }));
+
 export type ListAppliedSchemaArnsError =
   | AccessDeniedException
   | InternalServiceException
@@ -5345,6 +5386,7 @@ export const listAppliedSchemaArns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAttachedIndicesError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5400,6 +5442,7 @@ export const listAttachedIndices: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDevelopmentSchemaArnsError =
   | AccessDeniedException
   | InternalServiceException
@@ -5456,6 +5499,7 @@ export const listDevelopmentSchemaArns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDirectoriesError =
   | AccessDeniedException
   | InternalServiceException
@@ -5509,6 +5553,7 @@ export const listDirectories: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFacetAttributesError =
   | AccessDeniedException
   | FacetNotFoundException
@@ -5566,6 +5611,7 @@ export const listFacetAttributes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFacetNamesError =
   | AccessDeniedException
   | InternalServiceException
@@ -5621,6 +5667,7 @@ export const listFacetNames: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListIncomingTypedLinksError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5662,6 +5709,7 @@ export const listIncomingTypedLinks: API.OperationMethod<
   retry: Retry,
   operationName: "ListIncomingTypedLinks",
 }));
+
 export type ListIndexError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5723,6 +5771,7 @@ export const listIndex: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListManagedSchemaArnsError =
   | AccessDeniedException
   | InternalServiceException
@@ -5774,6 +5823,7 @@ export const listManagedSchemaArns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListObjectAttributesError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5833,6 +5883,7 @@ export const listObjectAttributes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListObjectChildrenError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5893,6 +5944,7 @@ export const listObjectChildren: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListObjectParentPathsError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -5958,6 +6010,7 @@ export const listObjectParentPaths: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListObjectParentsError =
   | AccessDeniedException
   | CannotListParentOfRootException
@@ -6018,6 +6071,7 @@ export const listObjectParents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListObjectPoliciesError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -6075,6 +6129,7 @@ export const listObjectPolicies: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOutgoingTypedLinksError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -6116,6 +6171,7 @@ export const listOutgoingTypedLinks: API.OperationMethod<
   retry: Retry,
   operationName: "ListOutgoingTypedLinks",
 }));
+
 export type ListPolicyAttachmentsError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -6175,6 +6231,7 @@ export const listPolicyAttachments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPublishedSchemaArnsError =
   | AccessDeniedException
   | InternalServiceException
@@ -6230,6 +6287,7 @@ export const listPublishedSchemaArns: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServiceException
@@ -6287,6 +6345,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTypedLinkFacetAttributesError =
   | AccessDeniedException
   | FacetNotFoundException
@@ -6344,6 +6403,7 @@ export const listTypedLinkFacetAttributes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTypedLinkFacetNamesError =
   | AccessDeniedException
   | InternalServiceException
@@ -6400,6 +6460,7 @@ export const listTypedLinkFacetNames: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type LookupPolicyError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -6462,6 +6523,7 @@ export const lookupPolicy: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PublishSchemaError =
   | AccessDeniedException
   | InternalServiceException
@@ -6497,6 +6559,7 @@ export const publishSchema: API.OperationMethod<
   retry: Retry,
   operationName: "PublishSchema",
 }));
+
 export type PutSchemaFromJsonError =
   | AccessDeniedException
   | InternalServiceException
@@ -6532,6 +6595,7 @@ export const putSchemaFromJson: API.OperationMethod<
   retry: Retry,
   operationName: "PutSchemaFromJson",
 }));
+
 export type RemoveFacetFromObjectError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -6569,6 +6633,7 @@ export const removeFacetFromObject: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveFacetFromObject",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServiceException
@@ -6604,6 +6669,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServiceException
@@ -6639,6 +6705,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateFacetError =
   | AccessDeniedException
   | FacetNotFoundException
@@ -6686,6 +6753,7 @@ export const updateFacet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFacet",
 }));
+
 export type UpdateLinkAttributesError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -6723,6 +6791,7 @@ export const updateLinkAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLinkAttributes",
 }));
+
 export type UpdateObjectAttributesError =
   | AccessDeniedException
   | DirectoryNotEnabledException
@@ -6762,6 +6831,7 @@ export const updateObjectAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateObjectAttributes",
 }));
+
 export type UpdateSchemaError =
   | AccessDeniedException
   | InternalServiceException
@@ -6796,6 +6866,7 @@ export const updateSchema: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSchema",
 }));
+
 export type UpdateTypedLinkFacetError =
   | AccessDeniedException
   | FacetNotFoundException
@@ -6837,6 +6908,7 @@ export const updateTypedLinkFacet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTypedLinkFacet",
 }));
+
 export type UpgradeAppliedSchemaError =
   | AccessDeniedException
   | IncompatibleSchemaException
@@ -6874,6 +6946,7 @@ export const upgradeAppliedSchema: API.OperationMethod<
   retry: Retry,
   operationName: "UpgradeAppliedSchema",
 }));
+
 export type UpgradePublishedSchemaError =
   | AccessDeniedException
   | IncompatibleSchemaException

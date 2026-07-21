@@ -84,19 +84,23 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+) {}
 export type SubscriptionProviderArn = string;
-export type SubscriptionProviderSource = string;
-export type SecretArn = string;
-export type SubscriptionProviderStatus = string;
-export type LinuxSubscriptionsDiscovery = string;
-export type OrganizationIntegration = string;
-export type Status = string;
-export type Operator = string;
-export type BoxInteger = number;
-export type BoxLong = number;
-
-//# Schemas
 export interface DeregisterSubscriptionProviderRequest {
   SubscriptionProviderArn: string;
 }
@@ -145,6 +149,9 @@ export const GetRegisteredSubscriptionProviderRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetRegisteredSubscriptionProviderRequest",
 }) as any as S.Schema<GetRegisteredSubscriptionProviderRequest>;
+export type SubscriptionProviderSource = string;
+export type SecretArn = string;
+export type SubscriptionProviderStatus = string;
 export interface GetRegisteredSubscriptionProviderResponse {
   SubscriptionProviderArn?: string;
   SubscriptionProviderSource?: string;
@@ -181,8 +188,10 @@ export const GetServiceSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetServiceSettingsRequest",
 }) as any as S.Schema<GetServiceSettingsRequest>;
+export type LinuxSubscriptionsDiscovery = string;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
+export type OrganizationIntegration = string;
 export interface LinuxSubscriptionsDiscoverySettings {
   SourceRegions: string[];
   OrganizationIntegration: string;
@@ -192,6 +201,7 @@ export const LinuxSubscriptionsDiscoverySettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LinuxSubscriptionsDiscoverySettings",
 }) as any as S.Schema<LinuxSubscriptionsDiscoverySettings>;
+export type Status = string;
 export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -217,6 +227,7 @@ export const GetServiceSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetServiceSettingsResponse",
 }) as any as S.Schema<GetServiceSettingsResponse>;
+export type Operator = string;
 export interface Filter {
   Name?: string;
   Values?: string[];
@@ -231,6 +242,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
 export const FilterList = /*@__PURE__*/ S.Array(Filter);
+export type BoxInteger = number;
 export interface ListLinuxSubscriptionInstancesRequest {
   Filters?: Filter[];
   MaxResults?: number;
@@ -334,6 +346,7 @@ export const ListLinuxSubscriptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListLinuxSubscriptionsRequest",
 }) as any as S.Schema<ListLinuxSubscriptionsRequest>;
+export type BoxLong = number;
 export interface Subscription {
   Name?: string;
   Type?: string;
@@ -596,26 +609,6 @@ export const UpdateServiceSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateServiceSettingsResponse",
 }) as any as S.Schema<UpdateServiceSettingsResponse>;
-
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
 export type DeregisterSubscriptionProviderError =
   | InternalServerException
   | ResourceNotFoundException
@@ -644,6 +637,7 @@ export const deregisterSubscriptionProvider: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterSubscriptionProvider",
 }));
+
 export type GetRegisteredSubscriptionProviderError =
   | InternalServerException
   | ResourceNotFoundException
@@ -671,6 +665,7 @@ export const getRegisteredSubscriptionProvider: API.OperationMethod<
   retry: Retry,
   operationName: "GetRegisteredSubscriptionProvider",
 }));
+
 export type GetServiceSettingsError =
   | InternalServerException
   | ThrottlingException
@@ -692,6 +687,7 @@ export const getServiceSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetServiceSettings",
 }));
+
 export type ListLinuxSubscriptionInstancesError =
   | InternalServerException
   | ThrottlingException
@@ -735,6 +731,7 @@ export const listLinuxSubscriptionInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLinuxSubscriptionsError =
   | InternalServerException
   | ThrottlingException
@@ -779,6 +776,7 @@ export const listLinuxSubscriptions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRegisteredSubscriptionProvidersError =
   | InternalServerException
   | ThrottlingException
@@ -821,6 +819,7 @@ export const listRegisteredSubscriptionProviders: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -847,6 +846,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RegisterSubscriptionProviderError =
   | InternalServerException
   | ThrottlingException
@@ -868,6 +868,7 @@ export const registerSubscriptionProvider: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterSubscriptionProvider",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -893,6 +894,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -913,6 +915,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateServiceSettingsError =
   | InternalServerException
   | ThrottlingException

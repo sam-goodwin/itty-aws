@@ -87,125 +87,222 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessPointAlreadyOwnedByYou extends S.TaggedErrorClass<AccessPointAlreadyOwnedByYou>()(
+  "AccessPointAlreadyOwnedByYou",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ActiveDirectoryError extends S.TaggedErrorClass<ActiveDirectoryError>()(
+  "ActiveDirectoryError",
+  {
+    ActiveDirectoryId: S.optional(S.String),
+    Type: S.optional(
+      S.suspend(() => ActiveDirectoryErrorType).annotate({
+        identifier: "ActiveDirectoryErrorType",
+      }),
+    ),
+    Message: S.optional(S.String),
+  },
+) {}
+export class BackupBeingCopied extends S.TaggedErrorClass<BackupBeingCopied>()(
+  "BackupBeingCopied",
+  { Message: S.optional(S.String), BackupId: S.optional(S.String) },
+) {}
+export class BackupInProgress extends S.TaggedErrorClass<BackupInProgress>()(
+  "BackupInProgress",
+  { Message: S.optional(S.String) },
+) {}
+export class BackupNotFound extends S.TaggedErrorClass<BackupNotFound>()(
+  "BackupNotFound",
+  { Message: S.optional(S.String) },
+) {}
+export class BackupRestoring extends S.TaggedErrorClass<BackupRestoring>()(
+  "BackupRestoring",
+  { Message: S.optional(S.String), FileSystemId: S.optional(S.String) },
+) {}
+export class BadRequest extends S.TaggedErrorClass<BadRequest>()("BadRequest", {
+  Message: S.optional(S.String),
+}) {}
+export class DataRepositoryAssociationNotFound extends S.TaggedErrorClass<DataRepositoryAssociationNotFound>()(
+  "DataRepositoryAssociationNotFound",
+  { Message: S.optional(S.String) },
+) {}
+export class DataRepositoryTaskEnded extends S.TaggedErrorClass<DataRepositoryTaskEnded>()(
+  "DataRepositoryTaskEnded",
+  { Message: S.optional(S.String) },
+) {}
+export class DataRepositoryTaskExecuting extends S.TaggedErrorClass<DataRepositoryTaskExecuting>()(
+  "DataRepositoryTaskExecuting",
+  { Message: S.optional(S.String) },
+) {}
+export class DataRepositoryTaskNotFound extends S.TaggedErrorClass<DataRepositoryTaskNotFound>()(
+  "DataRepositoryTaskNotFound",
+  { Message: S.optional(S.String) },
+) {}
+export class FileCacheNotFound extends S.TaggedErrorClass<FileCacheNotFound>()(
+  "FileCacheNotFound",
+  { Message: S.optional(S.String) },
+) {}
+export class FileSystemNotFound extends S.TaggedErrorClass<FileSystemNotFound>()(
+  "FileSystemNotFound",
+  { Message: S.optional(S.String) },
+) {}
+export class IncompatibleParameterError extends S.TaggedErrorClass<IncompatibleParameterError>()(
+  "IncompatibleParameterError",
+  { Parameter: S.optional(S.String), Message: S.optional(S.String) },
+) {}
+export class IncompatibleRegionForMultiAZ extends S.TaggedErrorClass<IncompatibleRegionForMultiAZ>()(
+  "IncompatibleRegionForMultiAZ",
+  { Message: S.optional(S.String) },
+) {}
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidAccessPoint extends S.TaggedErrorClass<InvalidAccessPoint>()(
+  "InvalidAccessPoint",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidDataRepositoryType extends S.TaggedErrorClass<InvalidDataRepositoryType>()(
+  "InvalidDataRepositoryType",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidDestinationKmsKey extends S.TaggedErrorClass<InvalidDestinationKmsKey>()(
+  "InvalidDestinationKmsKey",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidExportPath extends S.TaggedErrorClass<InvalidExportPath>()(
+  "InvalidExportPath",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidImportPath extends S.TaggedErrorClass<InvalidImportPath>()(
+  "InvalidImportPath",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidNetworkSettings extends S.TaggedErrorClass<InvalidNetworkSettings>()(
+  "InvalidNetworkSettings",
+  {
+    Message: S.optional(S.String),
+    InvalidSubnetId: S.optional(S.String),
+    InvalidSecurityGroupId: S.optional(S.String),
+    InvalidRouteTableId: S.optional(S.String),
+  },
+) {}
+export class InvalidPerUnitStorageThroughput extends S.TaggedErrorClass<InvalidPerUnitStorageThroughput>()(
+  "InvalidPerUnitStorageThroughput",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidRegion extends S.TaggedErrorClass<InvalidRegion>()(
+  "InvalidRegion",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidRequest extends S.TaggedErrorClass<InvalidRequest>()(
+  "InvalidRequest",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidSourceKmsKey extends S.TaggedErrorClass<InvalidSourceKmsKey>()(
+  "InvalidSourceKmsKey",
+  { Message: S.optional(S.String) },
+) {}
+export class MissingFileCacheConfiguration extends S.TaggedErrorClass<MissingFileCacheConfiguration>()(
+  "MissingFileCacheConfiguration",
+  { Message: S.optional(S.String) },
+) {}
+export class MissingFileSystemConfiguration extends S.TaggedErrorClass<MissingFileSystemConfiguration>()(
+  "MissingFileSystemConfiguration",
+  { Message: S.optional(S.String) },
+) {}
+export class MissingVolumeConfiguration extends S.TaggedErrorClass<MissingVolumeConfiguration>()(
+  "MissingVolumeConfiguration",
+  { Message: S.optional(S.String) },
+) {}
+export class NotServiceResourceError extends S.TaggedErrorClass<NotServiceResourceError>()(
+  "NotServiceResourceError",
+  { ResourceARN: S.optional(S.String), Message: S.optional(S.String) },
+) {}
+export class ResourceDoesNotSupportTagging extends S.TaggedErrorClass<ResourceDoesNotSupportTagging>()(
+  "ResourceDoesNotSupportTagging",
+  { ResourceARN: S.optional(S.String), Message: S.optional(S.String) },
+) {}
+export class ResourceNotFound extends S.TaggedErrorClass<ResourceNotFound>()(
+  "ResourceNotFound",
+  { ResourceARN: S.optional(S.String), Message: S.optional(S.String) },
+) {}
+export class RestoreSnapshotNotFound extends S.TaggedErrorClass<RestoreSnapshotNotFound>()(
+  "RestoreSnapshotNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "BadRequest",
+    message: { includes: "snapshot cannot be found" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class S3AccessPointAttachmentNotFound extends S.TaggedErrorClass<S3AccessPointAttachmentNotFound>()(
+  "S3AccessPointAttachmentNotFound",
+  { Message: S.optional(S.String) },
+) {}
+export class ServiceLimitExceeded extends S.TaggedErrorClass<ServiceLimitExceeded>()(
+  "ServiceLimitExceeded",
+  {
+    Limit: S.optional(
+      S.suspend(() => ServiceLimit).annotate({ identifier: "ServiceLimit" }),
+    ),
+    Message: S.optional(S.String),
+  },
+).pipe(C.withThrottlingError) {}
+export class SnapshotNotFound extends S.TaggedErrorClass<SnapshotNotFound>()(
+  "SnapshotNotFound",
+  { Message: S.optional(S.String) },
+) {}
+export class SnapshotVolumeNotFound extends S.TaggedErrorClass<SnapshotVolumeNotFound>()(
+  "SnapshotVolumeNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "BadRequest",
+    message: { includes: "volume was not found" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class SourceBackupUnavailable extends S.TaggedErrorClass<SourceBackupUnavailable>()(
+  "SourceBackupUnavailable",
+  { Message: S.optional(S.String), BackupId: S.optional(S.String) },
+) {}
+export class SourceSnapshotNotFound extends S.TaggedErrorClass<SourceSnapshotNotFound>()(
+  "SourceSnapshotNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "BadRequest",
+    message: { includes: "SourceSnapshotARN provided is not a valid ARN" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class StorageVirtualMachineNotFound extends S.TaggedErrorClass<StorageVirtualMachineNotFound>()(
+  "StorageVirtualMachineNotFound",
+  { Message: S.optional(S.String) },
+) {}
+export class TooManyAccessPoints extends S.TaggedErrorClass<TooManyAccessPoints>()(
+  "TooManyAccessPoints",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedOperation extends S.TaggedErrorClass<UnsupportedOperation>()(
+  "UnsupportedOperation",
+  { Message: S.optional(S.String) },
+) {}
+export class UpdateSnapshotNotFound extends S.TaggedErrorClass<UpdateSnapshotNotFound>()(
+  "UpdateSnapshotNotFound",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "BadRequest",
+    message: { includes: "the snapshot is not found" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class VolumeNotFound extends S.TaggedErrorClass<VolumeNotFound>()(
+  "VolumeNotFound",
+  { Message: S.optional(S.String) },
+) {}
 export type ClientRequestToken = string;
 export type FileSystemId = string;
 export type AlternateDNSName = string;
-export type ErrorMessage = string;
-export type TaskId = string;
-export type SourceBackupId = string;
-export type Region = string;
-export type KmsKeyId = string;
-export type Flag = boolean;
-export type TagKey = string;
-export type TagValue = string;
-export type BackupId = string;
-export type ProgressPercent = number;
-export type CreationTime = Date;
-export type ResourceARN = string;
-export type AWSAccountId = string;
-export type StorageCapacity = number;
-export type VpcId = string;
-export type SubnetId = string;
-export type NetworkInterfaceId = string;
-export type DNSName = string;
-export type DirectoryId = string;
-export type ActiveDirectoryFullyQualifiedName = string;
-export type OrganizationalUnitDistinguishedName = string;
-export type FileSystemAdministratorsGroupName = string;
-export type DirectoryUserName = string;
-export type IpAddress = string;
-export type CustomerSecretsManagerARN = string;
-export type MegabytesPerSecond = number;
-export type WeeklyTime = string;
-export type DailyTime = string;
-export type AutomaticBackupRetentionDays = number;
-export type GeneralARN = string;
-export type Iops = number;
-export type ArchivePath = string;
-export type Megabytes = number;
-export type PerUnitStorageThroughput = number;
-export type LustreFileSystemMountName = string;
-export type LustreRootSquash = string;
-export type LustreNoSquashNid = string;
-export type MetadataIops = number;
-export type ThroughputCapacityMbps = number;
-export type RequestTime = Date;
-export type VolumeName = string;
-export type JunctionPath = string;
-export type VolumeCapacity = number;
-export type StorageVirtualMachineId = string;
-export type CoolingPeriod = number;
-export type UUID = string;
-export type SnapshotPolicy = string;
-export type AutocommitPeriodValue = number;
-export type RetentionPeriodValue = number;
-export type Aggregate = string;
-export type TotalConstituents = number;
-export type VolumeCapacityBytes = number;
-export type VolumeId = string;
-export type VolumePath = string;
-export type IntegerNoMax = number;
-export type IntegerRecordSizeKiB = number;
-export type ReadOnly = boolean;
-export type OpenZFSClients = string;
-export type OpenZFSNfsExportOption = string;
-export type SnapshotId = string;
-export type SnapshotName = string;
-export type TotalTransferBytes = number;
-export type RemainingTransferBytes = number;
-export type IpAddressRange = string;
-export type RouteTableId = string;
-export type AdminPassword = string | redacted.Redacted<string>;
-export type HAPairs = number;
-export type ThroughputCapacityPerHAPair = number;
-export type Ipv6AddressRange = string;
-export type FileSystemTypeVersion = string;
-export type SizeInBytes = number;
-export type Parameter = string;
-export type S3AccessPointAttachmentName = string;
-export type FileSystemUID = number;
-export type FileSystemGID = number;
-export type OntapFileSystemUserName = string;
-export type AccessPointPolicy = string;
-export type S3AccessPointAlias = string;
-export type ErrorCode = string;
-export type Namespace = string;
-export type BatchImportMetaDataOnCreate = boolean;
-export type DataRepositoryAssociationId = string;
-export type FileCacheId = string;
-export type DataRepositoryTaskPath = string;
-export type CapacityToRelease = number;
-export type Value = number;
-export type StartTime = Date;
-export type EndTime = Date;
-export type TotalCount = number;
-export type SucceededCount = number;
-export type FailedCount = number;
-export type LastUpdatedTime = Date;
-export type ReleasedCapacity = number;
-export type SecurityGroupId = string;
-export type CopyTagsToDataRepositoryAssociations = boolean;
-export type MetadataStorageCapacity = number;
-export type DirectoryPassword = string | redacted.Redacted<string>;
-export type NetBiosAlias = string;
-export type StorageVirtualMachineName = string;
-export type AggregateListMultiplier = number;
-export type IntegerNoMaxFromNegativeOne = number;
-export type DeleteDataInFileSystem = boolean;
-export type FilterValue = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type LimitedMaxResults = number;
-export type DataRepositoryTaskFilterValue = string;
-export type S3AccessPointAttachmentsFilterValue = string;
-export type VerboseFlag = string;
-export type SnapshotFilterValue = string;
-export type IncludeShared = boolean;
-export type StorageVirtualMachineFilterValue = string;
-export type VolumeFilterValue = string;
-
-//# Schemas
 export type AlternateDNSNames = string[];
 export const AlternateDNSNames = /*@__PURE__*/ S.Array(S.String);
 export interface AssociateFileSystemAliasesRequest {
@@ -232,6 +329,7 @@ export type AliasLifecycle =
   | "DELETE_FAILED"
   | (string & {});
 export const AliasLifecycle = /*@__PURE__*/ S.String;
+
 export interface Alias {
   Name?: string;
   Lifecycle?: AliasLifecycle;
@@ -252,6 +350,7 @@ export const AssociateFileSystemAliasesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateFileSystemAliasesResponse",
 }) as any as S.Schema<AssociateFileSystemAliasesResponse>;
+export type TaskId = string;
 export interface CancelDataRepositoryTaskRequest {
   TaskId?: string;
 }
@@ -271,6 +370,7 @@ export type DataRepositoryTaskLifecycle =
   | "CANCELING"
   | (string & {});
 export const DataRepositoryTaskLifecycle = /*@__PURE__*/ S.String;
+
 export interface CancelDataRepositoryTaskResponse {
   Lifecycle?: DataRepositoryTaskLifecycle;
   TaskId?: string;
@@ -283,6 +383,12 @@ export const CancelDataRepositoryTaskResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelDataRepositoryTaskResponse",
 }) as any as S.Schema<CancelDataRepositoryTaskResponse>;
+export type SourceBackupId = string;
+export type Region = string;
+export type KmsKeyId = string;
+export type Flag = boolean;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -314,6 +420,7 @@ export const CopyBackupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyBackupRequest",
 }) as any as S.Schema<CopyBackupRequest>;
+export type BackupId = string;
 export type BackupLifecycle =
   | "AVAILABLE"
   | "CREATING"
@@ -324,6 +431,8 @@ export type BackupLifecycle =
   | "COPYING"
   | (string & {});
 export const BackupLifecycle = /*@__PURE__*/ S.String;
+
+export type ErrorMessage = string;
 export interface BackupFailureDetails {
   Message?: string;
 }
@@ -338,6 +447,11 @@ export type BackupType =
   | "AWS_BACKUP"
   | (string & {});
 export const BackupType = /*@__PURE__*/ S.String;
+
+export type ProgressPercent = number;
+export type CreationTime = Date;
+export type ResourceARN = string;
+export type AWSAccountId = string;
 export type FileSystemType =
   | "WINDOWS"
   | "LUSTRE"
@@ -345,6 +459,7 @@ export type FileSystemType =
   | "OPENZFS"
   | (string & {});
 export const FileSystemType = /*@__PURE__*/ S.String;
+
 export type FileSystemLifecycle =
   | "AVAILABLE"
   | "CREATING"
@@ -355,6 +470,7 @@ export type FileSystemLifecycle =
   | "MISCONFIGURED_UNAVAILABLE"
   | (string & {});
 export const FileSystemLifecycle = /*@__PURE__*/ S.String;
+
 export interface FileSystemFailureDetails {
   Message?: string;
 }
@@ -363,14 +479,27 @@ export const FileSystemFailureDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FileSystemFailureDetails",
 }) as any as S.Schema<FileSystemFailureDetails>;
+export type StorageCapacity = number;
 export type StorageType = "SSD" | "HDD" | "INTELLIGENT_TIERING" | (string & {});
 export const StorageType = /*@__PURE__*/ S.String;
+
+export type VpcId = string;
+export type SubnetId = string;
 export type SubnetIds = string[];
 export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
+export type NetworkInterfaceId = string;
 export type NetworkInterfaceIds = string[];
 export const NetworkInterfaceIds = /*@__PURE__*/ S.Array(S.String);
+export type DNSName = string;
+export type DirectoryId = string;
+export type ActiveDirectoryFullyQualifiedName = string;
+export type OrganizationalUnitDistinguishedName = string;
+export type FileSystemAdministratorsGroupName = string;
+export type DirectoryUserName = string;
+export type IpAddress = string;
 export type DnsIps = string[];
 export const DnsIps = /*@__PURE__*/ S.Array(S.String);
+export type CustomerSecretsManagerARN = string;
 export interface SelfManagedActiveDirectoryAttributes {
   DomainName?: string;
   OrganizationalUnitDistinguishedName?: string;
@@ -398,15 +527,21 @@ export type WindowsDeploymentType =
   | "SINGLE_AZ_2"
   | (string & {});
 export const WindowsDeploymentType = /*@__PURE__*/ S.String;
+
+export type MegabytesPerSecond = number;
 export type FileSystemMaintenanceOperation =
   | "PATCHING"
   | "BACKING_UP"
   | (string & {});
 export const FileSystemMaintenanceOperation = /*@__PURE__*/ S.String;
+
 export type FileSystemMaintenanceOperations = FileSystemMaintenanceOperation[];
 export const FileSystemMaintenanceOperations = /*@__PURE__*/ S.Array(
   FileSystemMaintenanceOperation,
 );
+export type WeeklyTime = string;
+export type DailyTime = string;
+export type AutomaticBackupRetentionDays = number;
 export type WindowsAccessAuditLogLevel =
   | "DISABLED"
   | "SUCCESS_ONLY"
@@ -414,6 +549,8 @@ export type WindowsAccessAuditLogLevel =
   | "SUCCESS_AND_FAILURE"
   | (string & {});
 export const WindowsAccessAuditLogLevel = /*@__PURE__*/ S.String;
+
+export type GeneralARN = string;
 export interface WindowsAuditLogConfiguration {
   FileAccessAuditLogLevel?: WindowsAccessAuditLogLevel;
   FileShareAccessAuditLogLevel?: WindowsAccessAuditLogLevel;
@@ -433,6 +570,8 @@ export type DiskIopsConfigurationMode =
   | "USER_PROVISIONED"
   | (string & {});
 export const DiskIopsConfigurationMode = /*@__PURE__*/ S.String;
+
+export type Iops = number;
 export interface DiskIopsConfiguration {
   Mode?: DiskIopsConfigurationMode;
   Iops?: number;
@@ -512,6 +651,9 @@ export type DataRepositoryLifecycle =
   | "FAILED"
   | (string & {});
 export const DataRepositoryLifecycle = /*@__PURE__*/ S.String;
+
+export type ArchivePath = string;
+export type Megabytes = number;
 export type AutoImportPolicyType =
   | "NONE"
   | "NEW"
@@ -519,6 +661,7 @@ export type AutoImportPolicyType =
   | "NEW_CHANGED_DELETED"
   | (string & {});
 export const AutoImportPolicyType = /*@__PURE__*/ S.String;
+
 export interface DataRepositoryFailureDetails {
   Message?: string;
 }
@@ -554,10 +697,15 @@ export type LustreDeploymentType =
   | "PERSISTENT_2"
   | (string & {});
 export const LustreDeploymentType = /*@__PURE__*/ S.String;
+
+export type PerUnitStorageThroughput = number;
+export type LustreFileSystemMountName = string;
 export type DriveCacheType = "NONE" | "READ" | (string & {});
 export const DriveCacheType = /*@__PURE__*/ S.String;
+
 export type DataCompressionType = "NONE" | "LZ4" | (string & {});
 export const DataCompressionType = /*@__PURE__*/ S.String;
+
 export type LustreAccessAuditLogLevel =
   | "DISABLED"
   | "WARN_ONLY"
@@ -565,6 +713,7 @@ export type LustreAccessAuditLogLevel =
   | "WARN_ERROR"
   | (string & {});
 export const LustreAccessAuditLogLevel = /*@__PURE__*/ S.String;
+
 export interface LustreLogConfiguration {
   Level?: LustreAccessAuditLogLevel;
   Destination?: string;
@@ -577,6 +726,8 @@ export const LustreLogConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LustreLogConfiguration",
 }) as any as S.Schema<LustreLogConfiguration>;
+export type LustreRootSquash = string;
+export type LustreNoSquashNid = string;
 export type LustreNoSquashNids = string[];
 export const LustreNoSquashNids = /*@__PURE__*/ S.Array(S.String);
 export interface LustreRootSquashConfiguration {
@@ -591,11 +742,13 @@ export const LustreRootSquashConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LustreRootSquashConfiguration",
 }) as any as S.Schema<LustreRootSquashConfiguration>;
+export type MetadataIops = number;
 export type MetadataConfigurationMode =
   | "AUTOMATIC"
   | "USER_PROVISIONED"
   | (string & {});
 export const MetadataConfigurationMode = /*@__PURE__*/ S.String;
+
 export interface FileSystemLustreMetadataConfiguration {
   Iops?: number;
   Mode?: MetadataConfigurationMode;
@@ -609,12 +762,14 @@ export const FileSystemLustreMetadataConfiguration = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "FileSystemLustreMetadataConfiguration",
 }) as any as S.Schema<FileSystemLustreMetadataConfiguration>;
+export type ThroughputCapacityMbps = number;
 export type LustreReadCacheSizingMode =
   | "NO_CACHE"
   | "USER_PROVISIONED"
   | "PROPORTIONAL_TO_THROUGHPUT_CAPACITY"
   | (string & {});
 export const LustreReadCacheSizingMode = /*@__PURE__*/ S.String;
+
 export interface LustreReadCacheConfiguration {
   SizingMode?: LustreReadCacheSizingMode;
   SizeGiB?: number;
@@ -685,6 +840,8 @@ export type AdministrativeActionType =
   | "DOWNLOAD_DATA_FROM_BACKUP"
   | (string & {});
 export const AdministrativeActionType = /*@__PURE__*/ S.String;
+
+export type RequestTime = Date;
 export type Status =
   | "FAILED"
   | "IN_PROGRESS"
@@ -696,6 +853,7 @@ export type Status =
   | "CANCELLED"
   | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface AdministrativeActionFailureDetails {
   Message?: string;
 }
@@ -714,10 +872,18 @@ export type VolumeLifecycle =
   | "AVAILABLE"
   | (string & {});
 export const VolumeLifecycle = /*@__PURE__*/ S.String;
+
+export type VolumeName = string;
 export type FlexCacheEndpointType = "NONE" | "ORIGIN" | "CACHE" | (string & {});
 export const FlexCacheEndpointType = /*@__PURE__*/ S.String;
+
+export type JunctionPath = string;
 export type SecurityStyle = "UNIX" | "NTFS" | "MIXED" | (string & {});
 export const SecurityStyle = /*@__PURE__*/ S.String;
+
+export type VolumeCapacity = number;
+export type StorageVirtualMachineId = string;
+export type CoolingPeriod = number;
 export type TieringPolicyName =
   | "SNAPSHOT_ONLY"
   | "AUTO"
@@ -725,6 +891,7 @@ export type TieringPolicyName =
   | "NONE"
   | (string & {});
 export const TieringPolicyName = /*@__PURE__*/ S.String;
+
 export interface TieringPolicy {
   CoolingPeriod?: number;
   Name?: TieringPolicyName;
@@ -735,8 +902,11 @@ export const TieringPolicy = /*@__PURE__*/ S.suspend(() =>
     Name: S.optional(TieringPolicyName),
   }),
 ).annotate({ identifier: "TieringPolicy" }) as any as S.Schema<TieringPolicy>;
+export type UUID = string;
 export type OntapVolumeType = "RW" | "DP" | "LS" | (string & {});
 export const OntapVolumeType = /*@__PURE__*/ S.String;
+
+export type SnapshotPolicy = string;
 export type AutocommitPeriodType =
   | "MINUTES"
   | "HOURS"
@@ -746,6 +916,8 @@ export type AutocommitPeriodType =
   | "NONE"
   | (string & {});
 export const AutocommitPeriodType = /*@__PURE__*/ S.String;
+
+export type AutocommitPeriodValue = number;
 export interface AutocommitPeriod {
   Type?: AutocommitPeriodType;
   Value?: number;
@@ -764,6 +936,7 @@ export type PrivilegedDelete =
   | "PERMANENTLY_DISABLED"
   | (string & {});
 export const PrivilegedDelete = /*@__PURE__*/ S.String;
+
 export type RetentionPeriodType =
   | "SECONDS"
   | "MINUTES"
@@ -775,6 +948,8 @@ export type RetentionPeriodType =
   | "UNSPECIFIED"
   | (string & {});
 export const RetentionPeriodType = /*@__PURE__*/ S.String;
+
+export type RetentionPeriodValue = number;
 export interface RetentionPeriod {
   Type?: RetentionPeriodType;
   Value?: number;
@@ -803,6 +978,7 @@ export const SnaplockRetentionPeriod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnaplockRetentionPeriod>;
 export type SnaplockType = "COMPLIANCE" | "ENTERPRISE" | (string & {});
 export const SnaplockType = /*@__PURE__*/ S.String;
+
 export interface SnaplockConfiguration {
   AuditLogVolume?: boolean;
   AutocommitPeriod?: AutocommitPeriod;
@@ -825,8 +1001,11 @@ export const SnaplockConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SnaplockConfiguration>;
 export type VolumeStyle = "FLEXVOL" | "FLEXGROUP" | (string & {});
 export const VolumeStyle = /*@__PURE__*/ S.String;
+
+export type Aggregate = string;
 export type Aggregates = string[];
 export const Aggregates = /*@__PURE__*/ S.Array(S.String);
+export type TotalConstituents = number;
 export interface AggregateConfiguration {
   Aggregates?: string[];
   TotalConstituents?: number;
@@ -839,6 +1018,7 @@ export const AggregateConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AggregateConfiguration",
 }) as any as S.Schema<AggregateConfiguration>;
+export type VolumeCapacityBytes = number;
 export interface OntapVolumeConfiguration {
   FlexCacheEndpointType?: FlexCacheEndpointType;
   JunctionPath?: string;
@@ -879,8 +1059,10 @@ export const OntapVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OntapVolumeConfiguration",
 }) as any as S.Schema<OntapVolumeConfiguration>;
+export type VolumeId = string;
 export type VolumeType = "ONTAP" | "OPENZFS" | (string & {});
 export const VolumeType = /*@__PURE__*/ S.String;
+
 export interface LifecycleTransitionReason {
   Message?: string;
 }
@@ -889,18 +1071,23 @@ export const LifecycleTransitionReason = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LifecycleTransitionReason",
 }) as any as S.Schema<LifecycleTransitionReason>;
+export type VolumePath = string;
+export type IntegerNoMax = number;
+export type IntegerRecordSizeKiB = number;
 export type OpenZFSDataCompressionType =
   | "NONE"
   | "ZSTD"
   | "LZ4"
   | (string & {});
 export const OpenZFSDataCompressionType = /*@__PURE__*/ S.String;
+
 export type OpenZFSCopyStrategy =
   | "CLONE"
   | "FULL_COPY"
   | "INCREMENTAL_COPY"
   | (string & {});
 export const OpenZFSCopyStrategy = /*@__PURE__*/ S.String;
+
 export interface OpenZFSOriginSnapshotConfiguration {
   SnapshotARN?: string;
   CopyStrategy?: OpenZFSCopyStrategy;
@@ -913,6 +1100,9 @@ export const OpenZFSOriginSnapshotConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OpenZFSOriginSnapshotConfiguration",
 }) as any as S.Schema<OpenZFSOriginSnapshotConfiguration>;
+export type ReadOnly = boolean;
+export type OpenZFSClients = string;
+export type OpenZFSNfsExportOption = string;
 export type OpenZFSNfsExportOptions = string[];
 export const OpenZFSNfsExportOptions = /*@__PURE__*/ S.Array(S.String);
 export interface OpenZFSClientConfiguration {
@@ -943,6 +1133,7 @@ export type OpenZFSNfsExports = OpenZFSNfsExport[];
 export const OpenZFSNfsExports = /*@__PURE__*/ S.Array(OpenZFSNfsExport);
 export type OpenZFSQuotaType = "USER" | "GROUP" | (string & {});
 export const OpenZFSQuotaType = /*@__PURE__*/ S.String;
+
 export interface OpenZFSUserOrGroupQuota {
   Type?: OpenZFSQuotaType;
   Id?: number;
@@ -961,6 +1152,7 @@ export type OpenZFSUserAndGroupQuotas = OpenZFSUserOrGroupQuota[];
 export const OpenZFSUserAndGroupQuotas = /*@__PURE__*/ S.Array(
   OpenZFSUserOrGroupQuota,
 );
+export type SnapshotId = string;
 export interface OpenZFSVolumeConfiguration {
   ParentVolumeId?: string;
   VolumePath?: string;
@@ -1039,6 +1231,7 @@ export const Volume = /*@__PURE__*/ S.suspend(() =>
     OpenZFSConfiguration: S.optional(OpenZFSVolumeConfiguration),
   }),
 ).annotate({ identifier: "Volume" }) as any as S.Schema<Volume>;
+export type SnapshotName = string;
 export type SnapshotLifecycle =
   | "PENDING"
   | "CREATING"
@@ -1046,6 +1239,7 @@ export type SnapshotLifecycle =
   | "AVAILABLE"
   | (string & {});
 export const SnapshotLifecycle = /*@__PURE__*/ S.String;
+
 export interface Snapshot {
   ResourceARN?: string;
   SnapshotId?: string;
@@ -1074,6 +1268,8 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
+export type TotalTransferBytes = number;
+export type RemainingTransferBytes = number;
 export interface AdministrativeAction {
   AdministrativeActionType?: AdministrativeActionType;
   ProgressPercent?: number;
@@ -1129,6 +1325,8 @@ export type OntapDeploymentType =
   | "MULTI_AZ_2"
   | (string & {});
 export const OntapDeploymentType = /*@__PURE__*/ S.String;
+
+export type IpAddressRange = string;
 export type OntapEndpointIpAddresses = string[];
 export const OntapEndpointIpAddresses = /*@__PURE__*/ S.Array(S.String);
 export interface FileSystemEndpoint {
@@ -1157,8 +1355,13 @@ export const FileSystemEndpoints = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FileSystemEndpoints",
 }) as any as S.Schema<FileSystemEndpoints>;
+export type RouteTableId = string;
 export type RouteTableIds = string[];
 export const RouteTableIds = /*@__PURE__*/ S.Array(S.String);
+export type AdminPassword = string | redacted.Redacted<string>;
+export type HAPairs = number;
+export type ThroughputCapacityPerHAPair = number;
+export type Ipv6AddressRange = string;
 export interface OntapFileSystemConfiguration {
   AutomaticBackupRetentionDays?: number;
   DailyAutomaticBackupStartTime?: string;
@@ -1195,6 +1398,7 @@ export const OntapFileSystemConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OntapFileSystemConfiguration",
 }) as any as S.Schema<OntapFileSystemConfiguration>;
+export type FileSystemTypeVersion = string;
 export type OpenZFSDeploymentType =
   | "SINGLE_AZ_1"
   | "SINGLE_AZ_2"
@@ -1203,12 +1407,14 @@ export type OpenZFSDeploymentType =
   | "MULTI_AZ_1"
   | (string & {});
 export const OpenZFSDeploymentType = /*@__PURE__*/ S.String;
+
 export type OpenZFSReadCacheSizingMode =
   | "NO_CACHE"
   | "USER_PROVISIONED"
   | "PROPORTIONAL_TO_THROUGHPUT_CAPACITY"
   | (string & {});
 export const OpenZFSReadCacheSizingMode = /*@__PURE__*/ S.String;
+
 export interface OpenZFSReadCacheConfiguration {
   SizingMode?: OpenZFSReadCacheSizingMode;
   SizeGiB?: number;
@@ -1263,6 +1469,7 @@ export const OpenZFSFileSystemConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OpenZFSFileSystemConfiguration>;
 export type NetworkType = "IPV4" | "DUAL" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
+
 export interface FileSystem {
   OwnerId?: string;
   CreationTime?: Date;
@@ -1333,6 +1540,8 @@ export const ActiveDirectoryBackupAttributes = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActiveDirectoryBackupAttributes>;
 export type ResourceType = "FILE_SYSTEM" | "VOLUME" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
+export type SizeInBytes = number;
 export interface Backup {
   BackupId?: string;
   Lifecycle?: BackupLifecycle;
@@ -1497,25 +1706,13 @@ export const CopyBackupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyBackupResponse",
 }) as any as S.Schema<CopyBackupResponse>;
-export type ServiceLimit =
-  | "FILE_SYSTEM_COUNT"
-  | "TOTAL_THROUGHPUT_CAPACITY"
-  | "TOTAL_STORAGE"
-  | "TOTAL_USER_INITIATED_BACKUPS"
-  | "TOTAL_USER_TAGS"
-  | "TOTAL_IN_PROGRESS_COPY_BACKUPS"
-  | "STORAGE_VIRTUAL_MACHINES_PER_FILE_SYSTEM"
-  | "VOLUMES_PER_FILE_SYSTEM"
-  | "TOTAL_SSD_IOPS"
-  | "FILE_CACHE_COUNT"
-  | (string & {});
-export const ServiceLimit = /*@__PURE__*/ S.String;
 export type UpdateOpenZFSVolumeOption =
   | "DELETE_INTERMEDIATE_SNAPSHOTS"
   | "DELETE_CLONED_VOLUMES"
   | "DELETE_INTERMEDIATE_DATA"
   | (string & {});
 export const UpdateOpenZFSVolumeOption = /*@__PURE__*/ S.String;
+
 export type UpdateOpenZFSVolumeOptions = UpdateOpenZFSVolumeOption[];
 export const UpdateOpenZFSVolumeOptions = /*@__PURE__*/ S.Array(
   UpdateOpenZFSVolumeOption,
@@ -1604,10 +1801,15 @@ export const CopySnapshotAndUpdateVolumeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopySnapshotAndUpdateVolumeResponse",
 }) as any as S.Schema<CopySnapshotAndUpdateVolumeResponse>;
+export type S3AccessPointAttachmentName = string;
 export type S3AccessPointAttachmentType = "OPENZFS" | "ONTAP" | (string & {});
 export const S3AccessPointAttachmentType = /*@__PURE__*/ S.String;
+
 export type OpenZFSFileSystemUserType = "POSIX" | (string & {});
 export const OpenZFSFileSystemUserType = /*@__PURE__*/ S.String;
+
+export type FileSystemUID = number;
+export type FileSystemGID = number;
 export type FileSystemSecondaryGIDs = number[];
 export const FileSystemSecondaryGIDs = /*@__PURE__*/ S.Array(S.Number);
 export interface OpenZFSPosixFileSystemUser {
@@ -1651,6 +1853,8 @@ export const CreateAndAttachS3AccessPointOpenZFSConfiguration =
   }) as any as S.Schema<CreateAndAttachS3AccessPointOpenZFSConfiguration>;
 export type OntapFileSystemUserType = "UNIX" | "WINDOWS" | (string & {});
 export const OntapFileSystemUserType = /*@__PURE__*/ S.String;
+
+export type OntapFileSystemUserName = string;
 export interface OntapUnixFileSystemUser {
   Name?: string;
 }
@@ -1702,6 +1906,7 @@ export const S3AccessPointVpcConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3AccessPointVpcConfiguration",
 }) as any as S.Schema<S3AccessPointVpcConfiguration>;
+export type AccessPointPolicy = string;
 export interface CreateAndAttachS3AccessPointS3Configuration {
   VpcConfiguration?: S3AccessPointVpcConfiguration;
   Policy?: string;
@@ -1750,6 +1955,7 @@ export type S3AccessPointAttachmentLifecycle =
   | "MISCONFIGURED"
   | (string & {});
 export const S3AccessPointAttachmentLifecycle = /*@__PURE__*/ S.String;
+
 export interface S3AccessPointOpenZFSConfiguration {
   VolumeId?: string;
   FileSystemIdentity?: OpenZFSFileSystemIdentity;
@@ -1774,6 +1980,7 @@ export const S3AccessPointOntapConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3AccessPointOntapConfiguration",
 }) as any as S.Schema<S3AccessPointOntapConfiguration>;
+export type S3AccessPointAlias = string;
 export interface S3AccessPoint {
   ResourceARN?: string;
   Alias?: string;
@@ -1980,8 +2187,11 @@ export const CreateBackupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBackupResponse",
 }) as any as S.Schema<CreateBackupResponse>;
+export type Namespace = string;
+export type BatchImportMetaDataOnCreate = boolean;
 export type EventType = "NEW" | "CHANGED" | "DELETED" | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
+
 export type EventTypes = EventType[];
 export const EventTypes = /*@__PURE__*/ S.Array(EventType);
 export interface AutoImportPolicy {
@@ -2039,10 +2249,13 @@ export const CreateDataRepositoryAssociationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateDataRepositoryAssociationRequest",
 }) as any as S.Schema<CreateDataRepositoryAssociationRequest>;
+export type DataRepositoryAssociationId = string;
+export type FileCacheId = string;
 export type SubDirectoriesPaths = string[];
 export const SubDirectoriesPaths = /*@__PURE__*/ S.Array(S.String);
 export type NfsVersion = "NFS3" | (string & {});
 export const NfsVersion = /*@__PURE__*/ S.String;
+
 export type RepositoryDnsIps = string[];
 export const RepositoryDnsIps = /*@__PURE__*/ S.Array(S.String);
 export interface NFSDataRepositoryConfiguration {
@@ -2117,12 +2330,16 @@ export type DataRepositoryTaskType =
   | "AUTO_RELEASE_DATA"
   | (string & {});
 export const DataRepositoryTaskType = /*@__PURE__*/ S.String;
+
+export type DataRepositoryTaskPath = string;
 export type DataRepositoryTaskPaths = string[];
 export const DataRepositoryTaskPaths = /*@__PURE__*/ S.Array(S.String);
 export type ReportFormat = "REPORT_CSV_20191124" | (string & {});
 export const ReportFormat = /*@__PURE__*/ S.String;
+
 export type ReportScope = "FAILED_FILES_ONLY" | (string & {});
 export const ReportScope = /*@__PURE__*/ S.String;
+
 export interface CompletionReport {
   Enabled?: boolean;
   Path?: string;
@@ -2139,8 +2356,11 @@ export const CompletionReport = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CompletionReport",
 }) as any as S.Schema<CompletionReport>;
+export type CapacityToRelease = number;
 export type Unit = "DAYS" | (string & {});
 export const Unit = /*@__PURE__*/ S.String;
+
+export type Value = number;
 export interface DurationSinceLastAccess {
   Unit?: Unit;
   Value?: number;
@@ -2184,6 +2404,8 @@ export const CreateDataRepositoryTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDataRepositoryTaskRequest",
 }) as any as S.Schema<CreateDataRepositoryTaskRequest>;
+export type StartTime = Date;
+export type EndTime = Date;
 export interface DataRepositoryTaskFailureDetails {
   Message?: string;
 }
@@ -2192,6 +2414,11 @@ export const DataRepositoryTaskFailureDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DataRepositoryTaskFailureDetails",
 }) as any as S.Schema<DataRepositoryTaskFailureDetails>;
+export type TotalCount = number;
+export type SucceededCount = number;
+export type FailedCount = number;
+export type LastUpdatedTime = Date;
+export type ReleasedCapacity = number;
 export interface DataRepositoryTaskStatus {
   TotalCount?: number;
   SucceededCount?: number;
@@ -2269,10 +2496,15 @@ export const CreateDataRepositoryTaskResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDataRepositoryTaskResponse>;
 export type FileCacheType = "LUSTRE" | (string & {});
 export const FileCacheType = /*@__PURE__*/ S.String;
+
+export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export type CopyTagsToDataRepositoryAssociations = boolean;
 export type FileCacheLustreDeploymentType = "CACHE_1" | (string & {});
 export const FileCacheLustreDeploymentType = /*@__PURE__*/ S.String;
+
+export type MetadataStorageCapacity = number;
 export interface FileCacheLustreMetadataConfiguration {
   StorageCapacity?: number;
 }
@@ -2372,6 +2604,7 @@ export type FileCacheLifecycle =
   | "FAILED"
   | (string & {});
 export const FileCacheLifecycle = /*@__PURE__*/ S.String;
+
 export interface FileCacheFailureDetails {
   Message?: string;
 }
@@ -2464,6 +2697,7 @@ export const CreateFileCacheResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFileCacheResponse",
 }) as any as S.Schema<CreateFileCacheResponse>;
+export type DirectoryPassword = string | redacted.Redacted<string>;
 export interface SelfManagedActiveDirectoryConfiguration {
   DomainName?: string;
   OrganizationalUnitDistinguishedName?: string;
@@ -2797,14 +3031,6 @@ export const CreateFileSystemResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFileSystemResponse",
 }) as any as S.Schema<CreateFileSystemResponse>;
-export type ActiveDirectoryErrorType =
-  | "DOMAIN_NOT_FOUND"
-  | "INCOMPATIBLE_DOMAIN_MODE"
-  | "WRONG_VPC"
-  | "INVALID_NETWORK_TYPE"
-  | "INVALID_DOMAIN_STAGE"
-  | (string & {});
-export const ActiveDirectoryErrorType = /*@__PURE__*/ S.String;
 export interface CreateFileSystemFromBackupRequest {
   BackupId?: string;
   ClientRequestToken?: string;
@@ -2975,6 +3201,7 @@ export const CreateSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSnapshotResponse",
 }) as any as S.Schema<CreateSnapshotResponse>;
+export type NetBiosAlias = string;
 export interface CreateSvmActiveDirectoryConfiguration {
   NetBiosName?: string;
   SelfManagedActiveDirectoryConfiguration?: SelfManagedActiveDirectoryConfiguration;
@@ -2990,6 +3217,7 @@ export const CreateSvmActiveDirectoryConfiguration = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateSvmActiveDirectoryConfiguration",
 }) as any as S.Schema<CreateSvmActiveDirectoryConfiguration>;
+export type StorageVirtualMachineName = string;
 export type StorageVirtualMachineRootVolumeSecurityStyle =
   | "UNIX"
   | "NTFS"
@@ -2997,6 +3225,7 @@ export type StorageVirtualMachineRootVolumeSecurityStyle =
   | (string & {});
 export const StorageVirtualMachineRootVolumeSecurityStyle =
   /*@__PURE__*/ S.String;
+
 export interface CreateStorageVirtualMachineRequest {
   ActiveDirectoryConfiguration?: CreateSvmActiveDirectoryConfiguration;
   ClientRequestToken?: string;
@@ -3074,6 +3303,7 @@ export type StorageVirtualMachineLifecycle =
   | "PENDING"
   | (string & {});
 export const StorageVirtualMachineLifecycle = /*@__PURE__*/ S.String;
+
 export type StorageVirtualMachineSubtype =
   | "DEFAULT"
   | "DP_DESTINATION"
@@ -3081,6 +3311,7 @@ export type StorageVirtualMachineSubtype =
   | "SYNC_SOURCE"
   | (string & {});
 export const StorageVirtualMachineSubtype = /*@__PURE__*/ S.String;
+
 export interface StorageVirtualMachine {
   ActiveDirectoryConfiguration?: SvmActiveDirectoryConfiguration;
   CreationTime?: Date;
@@ -3129,6 +3360,7 @@ export const CreateStorageVirtualMachineResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateStorageVirtualMachineResponse>;
 export type InputOntapVolumeType = "RW" | "DP" | (string & {});
 export const InputOntapVolumeType = /*@__PURE__*/ S.String;
+
 export interface CreateSnaplockConfiguration {
   AuditLogVolume?: boolean;
   AutocommitPeriod?: AutocommitPeriod;
@@ -3149,6 +3381,7 @@ export const CreateSnaplockConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSnaplockConfiguration",
 }) as any as S.Schema<CreateSnaplockConfiguration>;
+export type AggregateListMultiplier = number;
 export interface CreateAggregateConfiguration {
   Aggregates?: string[];
   ConstituentsPerAggregate?: number;
@@ -3195,6 +3428,7 @@ export const CreateOntapVolumeConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOntapVolumeConfiguration",
 }) as any as S.Schema<CreateOntapVolumeConfiguration>;
+export type IntegerNoMaxFromNegativeOne = number;
 export interface CreateOpenZFSOriginSnapshotConfiguration {
   SnapshotARN?: string;
   CopyStrategy?: OpenZFSCopyStrategy;
@@ -3420,6 +3654,7 @@ export const DeleteBackupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteBackupResponse",
 }) as any as S.Schema<DeleteBackupResponse>;
+export type DeleteDataInFileSystem = boolean;
 export interface DeleteDataRepositoryAssociationRequest {
   AssociationId?: string;
   ClientRequestToken?: string;
@@ -3507,6 +3742,7 @@ export type DeleteFileSystemOpenZFSOption =
   | "DELETE_CHILD_VOLUMES_AND_SNAPSHOTS"
   | (string & {});
 export const DeleteFileSystemOpenZFSOption = /*@__PURE__*/ S.String;
+
 export type DeleteFileSystemOpenZFSOptions = DeleteFileSystemOpenZFSOption[];
 export const DeleteFileSystemOpenZFSOptions = /*@__PURE__*/ S.Array(
   DeleteFileSystemOpenZFSOption,
@@ -3676,6 +3912,7 @@ export type DeleteOpenZFSVolumeOption =
   | "DELETE_CHILD_VOLUMES_AND_SNAPSHOTS"
   | (string & {});
 export const DeleteOpenZFSVolumeOption = /*@__PURE__*/ S.String;
+
 export type DeleteOpenZFSVolumeOptions = DeleteOpenZFSVolumeOption[];
 export const DeleteOpenZFSVolumeOptions = /*@__PURE__*/ S.Array(
   DeleteOpenZFSVolumeOption,
@@ -3746,6 +3983,8 @@ export type FilterName =
   | "file-cache-type"
   | (string & {});
 export const FilterName = /*@__PURE__*/ S.String;
+
+export type FilterValue = string;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface Filter {
@@ -3757,6 +3996,8 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type Filters = Filter[];
 export const Filters = /*@__PURE__*/ S.Array(Filter);
+export type MaxResults = number;
+export type NextToken = string;
 export interface DescribeBackupsRequest {
   BackupIds?: string[];
   Filters?: Filter[];
@@ -3902,6 +4143,7 @@ export const DescribeBackupsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeBackupsResponse",
 }) as any as S.Schema<DescribeBackupsResponse>;
+export type LimitedMaxResults = number;
 export interface DescribeDataRepositoryAssociationsRequest {
   AssociationIds?: string[];
   Filters?: Filter[];
@@ -3950,6 +4192,8 @@ export type DataRepositoryTaskFilterName =
   | "file-cache-id"
   | (string & {});
 export const DataRepositoryTaskFilterName = /*@__PURE__*/ S.String;
+
+export type DataRepositoryTaskFilterValue = string;
 export type DataRepositoryTaskFilterValues = string[];
 export const DataRepositoryTaskFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface DataRepositoryTaskFilter {
@@ -4207,6 +4451,8 @@ export type S3AccessPointAttachmentsFilterName =
   | "type"
   | (string & {});
 export const S3AccessPointAttachmentsFilterName = /*@__PURE__*/ S.String;
+
+export type S3AccessPointAttachmentsFilterValue = string;
 export type S3AccessPointAttachmentsFilterValues = string[];
 export const S3AccessPointAttachmentsFilterValues = /*@__PURE__*/ S.Array(
   S.String,
@@ -4291,6 +4537,7 @@ export const DescribeSharedVpcConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeSharedVpcConfigurationRequest",
 }) as any as S.Schema<DescribeSharedVpcConfigurationRequest>;
+export type VerboseFlag = string;
 export interface DescribeSharedVpcConfigurationResponse {
   EnableFsxRouteTableUpdatesFromParticipantAccounts?: string;
 }
@@ -4306,6 +4553,8 @@ export type SnapshotIds = string[];
 export const SnapshotIds = /*@__PURE__*/ S.Array(S.String);
 export type SnapshotFilterName = "file-system-id" | "volume-id" | (string & {});
 export const SnapshotFilterName = /*@__PURE__*/ S.String;
+
+export type SnapshotFilterValue = string;
 export type SnapshotFilterValues = string[];
 export const SnapshotFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface SnapshotFilter {
@@ -4320,6 +4569,7 @@ export const SnapshotFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SnapshotFilter" }) as any as S.Schema<SnapshotFilter>;
 export type SnapshotFilters = SnapshotFilter[];
 export const SnapshotFilters = /*@__PURE__*/ S.Array(SnapshotFilter);
+export type IncludeShared = boolean;
 export interface DescribeSnapshotsRequest {
   SnapshotIds?: string[];
   Filters?: SnapshotFilter[];
@@ -4412,6 +4662,8 @@ export type StorageVirtualMachineIds = string[];
 export const StorageVirtualMachineIds = /*@__PURE__*/ S.Array(S.String);
 export type StorageVirtualMachineFilterName = "file-system-id" | (string & {});
 export const StorageVirtualMachineFilterName = /*@__PURE__*/ S.String;
+
+export type StorageVirtualMachineFilterValue = string;
 export type StorageVirtualMachineFilterValues = string[];
 export const StorageVirtualMachineFilterValues = /*@__PURE__*/ S.Array(
   S.String,
@@ -4477,6 +4729,8 @@ export type VolumeFilterName =
   | "storage-virtual-machine-id"
   | (string & {});
 export const VolumeFilterName = /*@__PURE__*/ S.String;
+
+export type VolumeFilterValue = string;
 export type VolumeFilterValues = string[];
 export const VolumeFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface VolumeFilter {
@@ -4726,6 +4980,7 @@ export type RestoreOpenZFSVolumeOption =
   | "DELETE_CLONED_VOLUMES"
   | (string & {});
 export const RestoreOpenZFSVolumeOption = /*@__PURE__*/ S.String;
+
 export type RestoreOpenZFSVolumeOptions = RestoreOpenZFSVolumeOption[];
 export const RestoreOpenZFSVolumeOptions = /*@__PURE__*/ S.Array(
   RestoreOpenZFSVolumeOption,
@@ -5527,214 +5782,31 @@ export const UpdateVolumeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateVolumeResponse",
 }) as any as S.Schema<UpdateVolumeResponse>;
+export type Parameter = string;
+export type ServiceLimit =
+  | "FILE_SYSTEM_COUNT"
+  | "TOTAL_THROUGHPUT_CAPACITY"
+  | "TOTAL_STORAGE"
+  | "TOTAL_USER_INITIATED_BACKUPS"
+  | "TOTAL_USER_TAGS"
+  | "TOTAL_IN_PROGRESS_COPY_BACKUPS"
+  | "STORAGE_VIRTUAL_MACHINES_PER_FILE_SYSTEM"
+  | "VOLUMES_PER_FILE_SYSTEM"
+  | "TOTAL_SSD_IOPS"
+  | "FILE_CACHE_COUNT"
+  | (string & {});
+export const ServiceLimit = /*@__PURE__*/ S.String;
 
-//# Errors
-export class BadRequest extends S.TaggedErrorClass<BadRequest>()("BadRequest", {
-  Message: S.optional(S.String),
-}) {}
-export class FileSystemNotFound extends S.TaggedErrorClass<FileSystemNotFound>()(
-  "FileSystemNotFound",
-  { Message: S.optional(S.String) },
-) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { Message: S.optional(S.String) },
-) {}
-export class DataRepositoryTaskEnded extends S.TaggedErrorClass<DataRepositoryTaskEnded>()(
-  "DataRepositoryTaskEnded",
-  { Message: S.optional(S.String) },
-) {}
-export class DataRepositoryTaskNotFound extends S.TaggedErrorClass<DataRepositoryTaskNotFound>()(
-  "DataRepositoryTaskNotFound",
-  { Message: S.optional(S.String) },
-) {}
-export class UnsupportedOperation extends S.TaggedErrorClass<UnsupportedOperation>()(
-  "UnsupportedOperation",
-  { Message: S.optional(S.String) },
-) {}
-export class BackupNotFound extends S.TaggedErrorClass<BackupNotFound>()(
-  "BackupNotFound",
-  { Message: S.optional(S.String) },
-) {}
-export class IncompatibleParameterError extends S.TaggedErrorClass<IncompatibleParameterError>()(
-  "IncompatibleParameterError",
-  { Parameter: S.optional(S.String), Message: S.optional(S.String) },
-) {}
-export class IncompatibleRegionForMultiAZ extends S.TaggedErrorClass<IncompatibleRegionForMultiAZ>()(
-  "IncompatibleRegionForMultiAZ",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidDestinationKmsKey extends S.TaggedErrorClass<InvalidDestinationKmsKey>()(
-  "InvalidDestinationKmsKey",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidRegion extends S.TaggedErrorClass<InvalidRegion>()(
-  "InvalidRegion",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidSourceKmsKey extends S.TaggedErrorClass<InvalidSourceKmsKey>()(
-  "InvalidSourceKmsKey",
-  { Message: S.optional(S.String) },
-) {}
-export class ServiceLimitExceeded extends S.TaggedErrorClass<ServiceLimitExceeded>()(
-  "ServiceLimitExceeded",
-  { Limit: S.optional(ServiceLimit), Message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class SourceBackupUnavailable extends S.TaggedErrorClass<SourceBackupUnavailable>()(
-  "SourceBackupUnavailable",
-  { Message: S.optional(S.String), BackupId: S.optional(S.String) },
-) {}
-export class SourceSnapshotNotFound extends S.TaggedErrorClass<SourceSnapshotNotFound>()(
-  "SourceSnapshotNotFound",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "BadRequest",
-    message: { includes: "SourceSnapshotARN provided is not a valid ARN" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class AccessPointAlreadyOwnedByYou extends S.TaggedErrorClass<AccessPointAlreadyOwnedByYou>()(
-  "AccessPointAlreadyOwnedByYou",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InvalidAccessPoint extends S.TaggedErrorClass<InvalidAccessPoint>()(
-  "InvalidAccessPoint",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidRequest extends S.TaggedErrorClass<InvalidRequest>()(
-  "InvalidRequest",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyAccessPoints extends S.TaggedErrorClass<TooManyAccessPoints>()(
-  "TooManyAccessPoints",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class VolumeNotFound extends S.TaggedErrorClass<VolumeNotFound>()(
-  "VolumeNotFound",
-  { Message: S.optional(S.String) },
-) {}
-export class BackupInProgress extends S.TaggedErrorClass<BackupInProgress>()(
-  "BackupInProgress",
-  { Message: S.optional(S.String) },
-) {}
-export class DataRepositoryTaskExecuting extends S.TaggedErrorClass<DataRepositoryTaskExecuting>()(
-  "DataRepositoryTaskExecuting",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidNetworkSettings extends S.TaggedErrorClass<InvalidNetworkSettings>()(
-  "InvalidNetworkSettings",
-  {
-    Message: S.optional(S.String),
-    InvalidSubnetId: S.optional(S.String),
-    InvalidSecurityGroupId: S.optional(S.String),
-    InvalidRouteTableId: S.optional(S.String),
-  },
-) {}
-export class InvalidPerUnitStorageThroughput extends S.TaggedErrorClass<InvalidPerUnitStorageThroughput>()(
-  "InvalidPerUnitStorageThroughput",
-  { Message: S.optional(S.String) },
-) {}
-export class MissingFileCacheConfiguration extends S.TaggedErrorClass<MissingFileCacheConfiguration>()(
-  "MissingFileCacheConfiguration",
-  { Message: S.optional(S.String) },
-) {}
-export class ActiveDirectoryError extends S.TaggedErrorClass<ActiveDirectoryError>()(
-  "ActiveDirectoryError",
-  {
-    ActiveDirectoryId: S.optional(S.String),
-    Type: S.optional(ActiveDirectoryErrorType),
-    Message: S.optional(S.String),
-  },
-) {}
-export class InvalidExportPath extends S.TaggedErrorClass<InvalidExportPath>()(
-  "InvalidExportPath",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidImportPath extends S.TaggedErrorClass<InvalidImportPath>()(
-  "InvalidImportPath",
-  { Message: S.optional(S.String) },
-) {}
-export class MissingFileSystemConfiguration extends S.TaggedErrorClass<MissingFileSystemConfiguration>()(
-  "MissingFileSystemConfiguration",
-  { Message: S.optional(S.String) },
-) {}
-export class SnapshotVolumeNotFound extends S.TaggedErrorClass<SnapshotVolumeNotFound>()(
-  "SnapshotVolumeNotFound",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "BadRequest",
-    message: { includes: "volume was not found" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class MissingVolumeConfiguration extends S.TaggedErrorClass<MissingVolumeConfiguration>()(
-  "MissingVolumeConfiguration",
-  { Message: S.optional(S.String) },
-) {}
-export class StorageVirtualMachineNotFound extends S.TaggedErrorClass<StorageVirtualMachineNotFound>()(
-  "StorageVirtualMachineNotFound",
-  { Message: S.optional(S.String) },
-) {}
-export class BackupBeingCopied extends S.TaggedErrorClass<BackupBeingCopied>()(
-  "BackupBeingCopied",
-  { Message: S.optional(S.String), BackupId: S.optional(S.String) },
-) {}
-export class BackupRestoring extends S.TaggedErrorClass<BackupRestoring>()(
-  "BackupRestoring",
-  { Message: S.optional(S.String), FileSystemId: S.optional(S.String) },
-) {}
-export class DataRepositoryAssociationNotFound extends S.TaggedErrorClass<DataRepositoryAssociationNotFound>()(
-  "DataRepositoryAssociationNotFound",
-  { Message: S.optional(S.String) },
-) {}
-export class FileCacheNotFound extends S.TaggedErrorClass<FileCacheNotFound>()(
-  "FileCacheNotFound",
-  { Message: S.optional(S.String) },
-) {}
-export class SnapshotNotFound extends S.TaggedErrorClass<SnapshotNotFound>()(
-  "SnapshotNotFound",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidDataRepositoryType extends S.TaggedErrorClass<InvalidDataRepositoryType>()(
-  "InvalidDataRepositoryType",
-  { Message: S.optional(S.String) },
-) {}
-export class S3AccessPointAttachmentNotFound extends S.TaggedErrorClass<S3AccessPointAttachmentNotFound>()(
-  "S3AccessPointAttachmentNotFound",
-  { Message: S.optional(S.String) },
-) {}
-export class NotServiceResourceError extends S.TaggedErrorClass<NotServiceResourceError>()(
-  "NotServiceResourceError",
-  { ResourceARN: S.optional(S.String), Message: S.optional(S.String) },
-) {}
-export class ResourceDoesNotSupportTagging extends S.TaggedErrorClass<ResourceDoesNotSupportTagging>()(
-  "ResourceDoesNotSupportTagging",
-  { ResourceARN: S.optional(S.String), Message: S.optional(S.String) },
-) {}
-export class ResourceNotFound extends S.TaggedErrorClass<ResourceNotFound>()(
-  "ResourceNotFound",
-  { ResourceARN: S.optional(S.String), Message: S.optional(S.String) },
-) {}
-export class RestoreSnapshotNotFound extends S.TaggedErrorClass<RestoreSnapshotNotFound>()(
-  "RestoreSnapshotNotFound",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "BadRequest",
-    message: { includes: "snapshot cannot be found" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class UpdateSnapshotNotFound extends S.TaggedErrorClass<UpdateSnapshotNotFound>()(
-  "UpdateSnapshotNotFound",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "BadRequest",
-    message: { includes: "the snapshot is not found" },
-  }),
-).pipe(C.withNotFoundError) {}
+export type ErrorCode = string;
+export type ActiveDirectoryErrorType =
+  | "DOMAIN_NOT_FOUND"
+  | "INCOMPATIBLE_DOMAIN_MODE"
+  | "WRONG_VPC"
+  | "INVALID_NETWORK_TYPE"
+  | "INVALID_DOMAIN_STAGE"
+  | (string & {});
+export const ActiveDirectoryErrorType = /*@__PURE__*/ S.String;
 
-//# Operations
 export type AssociateFileSystemAliasesError =
   | BadRequest
   | FileSystemNotFound
@@ -5767,6 +5839,7 @@ export const associateFileSystemAliases: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateFileSystemAliases",
 }));
+
 export type CancelDataRepositoryTaskError =
   | BadRequest
   | DataRepositoryTaskEnded
@@ -5807,6 +5880,7 @@ export const cancelDataRepositoryTask: API.OperationMethod<
   retry: Retry,
   operationName: "CancelDataRepositoryTask",
 }));
+
 export type CopyBackupError =
   | BackupNotFound
   | BadRequest
@@ -5872,6 +5946,7 @@ export const copyBackup: API.OperationMethod<
   retry: Retry,
   operationName: "CopyBackup",
 }));
+
 export type CopySnapshotAndUpdateVolumeError =
   | BadRequest
   | IncompatibleParameterError
@@ -5902,6 +5977,7 @@ export const copySnapshotAndUpdateVolume: API.OperationMethod<
   retry: Retry,
   operationName: "CopySnapshotAndUpdateVolume",
 }));
+
 export type CreateAndAttachS3AccessPointError =
   | AccessPointAlreadyOwnedByYou
   | BadRequest
@@ -5960,6 +6036,7 @@ export const createAndAttachS3AccessPoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAndAttachS3AccessPoint",
 }));
+
 export type CreateBackupError =
   | BackupInProgress
   | BadRequest
@@ -6041,6 +6118,7 @@ export const createBackup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBackup",
 }));
+
 export type CreateDataRepositoryAssociationError =
   | BadRequest
   | FileSystemNotFound
@@ -6088,6 +6166,7 @@ export const createDataRepositoryAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataRepositoryAssociation",
 }));
+
 export type CreateDataRepositoryTaskError =
   | BadRequest
   | DataRepositoryTaskExecuting
@@ -6138,6 +6217,7 @@ export const createDataRepositoryTask: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataRepositoryTask",
 }));
+
 export type CreateFileCacheError =
   | BadRequest
   | IncompatibleParameterError
@@ -6190,6 +6270,7 @@ export const createFileCache: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFileCache",
 }));
+
 export type CreateFileSystemError =
   | ActiveDirectoryError
   | BadRequest
@@ -6265,6 +6346,7 @@ export const createFileSystem: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFileSystem",
 }));
+
 export type CreateFileSystemFromBackupError =
   | ActiveDirectoryError
   | BackupNotFound
@@ -6332,6 +6414,7 @@ export const createFileSystemFromBackup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFileSystemFromBackup",
 }));
+
 export type CreateSnapshotError =
   | BadRequest
   | InternalServerError
@@ -6387,6 +6470,7 @@ export const createSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSnapshot",
 }));
+
 export type CreateStorageVirtualMachineError =
   | ActiveDirectoryError
   | BadRequest
@@ -6420,6 +6504,7 @@ export const createStorageVirtualMachine: API.OperationMethod<
   retry: Retry,
   operationName: "CreateStorageVirtualMachine",
 }));
+
 export type CreateVolumeError =
   | BadRequest
   | FileSystemNotFound
@@ -6455,6 +6540,7 @@ export const createVolume: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVolume",
 }));
+
 export type CreateVolumeFromBackupError =
   | BackupNotFound
   | BadRequest
@@ -6491,6 +6577,7 @@ export const createVolumeFromBackup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVolumeFromBackup",
 }));
+
 export type DeleteBackupError =
   | BackupBeingCopied
   | BackupInProgress
@@ -6531,6 +6618,7 @@ export const deleteBackup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBackup",
 }));
+
 export type DeleteDataRepositoryAssociationError =
   | BadRequest
   | DataRepositoryAssociationNotFound
@@ -6566,6 +6654,7 @@ export const deleteDataRepositoryAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataRepositoryAssociation",
 }));
+
 export type DeleteFileCacheError =
   | BadRequest
   | FileCacheNotFound
@@ -6606,6 +6695,7 @@ export const deleteFileCache: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFileCache",
 }));
+
 export type DeleteFileSystemError =
   | BadRequest
   | FileSystemNotFound
@@ -6680,6 +6770,7 @@ export const deleteFileSystem: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFileSystem",
 }));
+
 export type DeleteSnapshotError =
   | BadRequest
   | InternalServerError
@@ -6706,6 +6797,7 @@ export const deleteSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSnapshot",
 }));
+
 export type DeleteStorageVirtualMachineError =
   | BadRequest
   | IncompatibleParameterError
@@ -6734,6 +6826,7 @@ export const deleteStorageVirtualMachine: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteStorageVirtualMachine",
 }));
+
 export type DeleteVolumeError =
   | BadRequest
   | IncompatibleParameterError
@@ -6764,6 +6857,7 @@ export const deleteVolume: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVolume",
 }));
+
 export type DescribeBackupsError =
   | BackupNotFound
   | BadRequest
@@ -6837,6 +6931,7 @@ export const describeBackups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeDataRepositoryAssociationsError =
   | BadRequest
   | DataRepositoryAssociationNotFound
@@ -6906,6 +7001,7 @@ export const describeDataRepositoryAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeDataRepositoryTasksError =
   | BadRequest
   | DataRepositoryTaskNotFound
@@ -6963,6 +7059,7 @@ export const describeDataRepositoryTasks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeFileCachesError =
   | BadRequest
   | FileCacheNotFound
@@ -7030,6 +7127,7 @@ export const describeFileCaches: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeFileSystemAliasesError =
   | BadRequest
   | FileSystemNotFound
@@ -7073,6 +7171,7 @@ export const describeFileSystemAliases: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeFileSystemsError =
   | BadRequest
   | FileSystemNotFound
@@ -7140,6 +7239,7 @@ export const describeFileSystems: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeS3AccessPointAttachmentsError =
   | BadRequest
   | InternalServerError
@@ -7192,6 +7292,7 @@ export const describeS3AccessPointAttachments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSharedVpcConfigurationError =
   | BadRequest
   | InternalServerError
@@ -7213,6 +7314,7 @@ export const describeSharedVpcConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSharedVpcConfiguration",
 }));
+
 export type DescribeSnapshotsError =
   | BadRequest
   | InternalServerError
@@ -7280,6 +7382,7 @@ export const describeSnapshots: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeStorageVirtualMachinesError =
   | BadRequest
   | InternalServerError
@@ -7322,6 +7425,7 @@ export const describeStorageVirtualMachines: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVolumesError =
   | BadRequest
   | InternalServerError
@@ -7365,6 +7469,7 @@ export const describeVolumes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DetachAndDeleteS3AccessPointError =
   | BadRequest
   | IncompatibleParameterError
@@ -7400,6 +7505,7 @@ export const detachAndDeleteS3AccessPoint: API.OperationMethod<
   retry: Retry,
   operationName: "DetachAndDeleteS3AccessPoint",
 }));
+
 export type DisassociateFileSystemAliasesError =
   | BadRequest
   | FileSystemNotFound
@@ -7430,6 +7536,7 @@ export const disassociateFileSystemAliases: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateFileSystemAliases",
 }));
+
 export type ListTagsForResourceError =
   | BadRequest
   | InternalServerError
@@ -7501,6 +7608,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ReleaseFileSystemNfsV3LocksError =
   | BadRequest
   | FileSystemNotFound
@@ -7531,6 +7639,7 @@ export const releaseFileSystemNfsV3Locks: API.OperationMethod<
   retry: Retry,
   operationName: "ReleaseFileSystemNfsV3Locks",
 }));
+
 export type RestoreVolumeFromSnapshotError =
   | BadRequest
   | InternalServerError
@@ -7559,6 +7668,7 @@ export const restoreVolumeFromSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreVolumeFromSnapshot",
 }));
+
 export type StartMisconfiguredStateRecoveryError =
   | BadRequest
   | FileSystemNotFound
@@ -7581,6 +7691,7 @@ export const startMisconfiguredStateRecovery: API.OperationMethod<
   retry: Retry,
   operationName: "StartMisconfiguredStateRecovery",
 }));
+
 export type TagResourceError =
   | BadRequest
   | InternalServerError
@@ -7610,6 +7721,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequest
   | InternalServerError
@@ -7639,6 +7751,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDataRepositoryAssociationError =
   | BadRequest
   | DataRepositoryAssociationNotFound
@@ -7671,6 +7784,7 @@ export const updateDataRepositoryAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDataRepositoryAssociation",
 }));
+
 export type UpdateFileCacheError =
   | BadRequest
   | FileCacheNotFound
@@ -7705,6 +7819,7 @@ export const updateFileCache: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFileCache",
 }));
+
 export type UpdateFileSystemError =
   | BadRequest
   | FileSystemNotFound
@@ -7845,6 +7960,7 @@ export const updateFileSystem: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFileSystem",
 }));
+
 export type UpdateSharedVpcConfigurationError =
   | BadRequest
   | IncompatibleParameterError
@@ -7874,6 +7990,7 @@ export const updateSharedVpcConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSharedVpcConfiguration",
 }));
+
 export type UpdateSnapshotError =
   | BadRequest
   | InternalServerError
@@ -7901,6 +8018,7 @@ export const updateSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSnapshot",
 }));
+
 export type UpdateStorageVirtualMachineError =
   | BadRequest
   | IncompatibleParameterError
@@ -7930,6 +8048,7 @@ export const updateStorageVirtualMachine: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateStorageVirtualMachine",
 }));
+
 export type UpdateVolumeError =
   | BadRequest
   | IncompatibleParameterError

@@ -87,34 +87,53 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConfigurationException extends S.TaggedErrorClass<ConfigurationException>()(
+  "ConfigurationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type NotificationRuleName = string | redacted.Redacted<string>;
 export type EventTypeId = string;
+export type EventTypeIds = string[];
+export const EventTypeIds = /*@__PURE__*/ S.Array(S.String);
 export type NotificationRuleResource = string;
 export type TargetType = string;
 export type TargetAddress = string | redacted.Redacted<string>;
-export type ClientRequestToken = string;
-export type TagKey = string;
-export type TagValue = string;
-export type NotificationRuleArn = string;
-export type Message = string;
-export type ForceUnsubscribeAll = boolean;
-export type ServiceName = string;
-export type EventTypeName = string;
-export type ResourceType = string;
-export type NotificationRuleCreatedBy = string;
-export type CreatedTimestamp = Date;
-export type LastModifiedTimestamp = Date;
-export type ListEventTypesFilterValue = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type ListNotificationRulesFilterValue = string;
-export type NotificationRuleId = string;
-export type ListTargetsFilterValue = string;
-
-//# Schemas
-export type EventTypeIds = string[];
-export const EventTypeIds = /*@__PURE__*/ S.Array(S.String);
 export interface Target {
   TargetType?: string;
   TargetAddress?: string | redacted.Redacted<string>;
@@ -129,10 +148,15 @@ export type Targets = Target[];
 export const Targets = /*@__PURE__*/ S.Array(Target);
 export type DetailType = "BASIC" | "FULL" | (string & {});
 export const DetailType = /*@__PURE__*/ S.String;
+
+export type ClientRequestToken = string;
+export type TagKey = string;
+export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export type NotificationRuleStatus = "ENABLED" | "DISABLED" | (string & {});
 export const NotificationRuleStatus = /*@__PURE__*/ S.String;
+
 export interface CreateNotificationRuleRequest {
   Name: string | redacted.Redacted<string>;
   EventTypeIds: string[];
@@ -166,6 +190,7 @@ export const CreateNotificationRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNotificationRuleRequest",
 }) as any as S.Schema<CreateNotificationRuleRequest>;
+export type NotificationRuleArn = string;
 export interface CreateNotificationRuleResult {
   Arn?: string;
 }
@@ -199,6 +224,7 @@ export const DeleteNotificationRuleResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteNotificationRuleResult",
 }) as any as S.Schema<DeleteNotificationRuleResult>;
+export type ForceUnsubscribeAll = boolean;
 export interface DeleteTargetRequest {
   TargetAddress: string | redacted.Redacted<string>;
   ForceUnsubscribeAll?: boolean;
@@ -243,6 +269,9 @@ export const DescribeNotificationRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeNotificationRuleRequest",
 }) as any as S.Schema<DescribeNotificationRuleRequest>;
+export type ServiceName = string;
+export type EventTypeName = string;
+export type ResourceType = string;
 export interface EventTypeSummary {
   EventTypeId?: string;
   ServiceName?: string;
@@ -269,6 +298,7 @@ export type TargetStatus =
   | "DEACTIVATED"
   | (string & {});
 export const TargetStatus = /*@__PURE__*/ S.String;
+
 export interface TargetSummary {
   TargetAddress?: string | redacted.Redacted<string>;
   TargetType?: string;
@@ -283,6 +313,9 @@ export const TargetSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetSummary" }) as any as S.Schema<TargetSummary>;
 export type TargetsBatch = TargetSummary[];
 export const TargetsBatch = /*@__PURE__*/ S.Array(TargetSummary);
+export type NotificationRuleCreatedBy = string;
+export type CreatedTimestamp = Date;
+export type LastModifiedTimestamp = Date;
 export interface DescribeNotificationRuleResult {
   Arn: string;
   Name?: string | redacted.Redacted<string>;
@@ -322,6 +355,8 @@ export type ListEventTypesFilterName =
   | "SERVICE_NAME"
   | (string & {});
 export const ListEventTypesFilterName = /*@__PURE__*/ S.String;
+
+export type ListEventTypesFilterValue = string;
 export interface ListEventTypesFilter {
   Name: ListEventTypesFilterName;
   Value: string;
@@ -334,6 +369,8 @@ export const ListEventTypesFilter = /*@__PURE__*/ S.suspend(() =>
 export type ListEventTypesFilters = ListEventTypesFilter[];
 export const ListEventTypesFilters =
   /*@__PURE__*/ S.Array(ListEventTypesFilter);
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListEventTypesRequest {
   Filters?: ListEventTypesFilter[];
   NextToken?: string;
@@ -376,6 +413,8 @@ export type ListNotificationRulesFilterName =
   | "TARGET_ADDRESS"
   | (string & {});
 export const ListNotificationRulesFilterName = /*@__PURE__*/ S.String;
+
+export type ListNotificationRulesFilterValue = string;
 export interface ListNotificationRulesFilter {
   Name: ListNotificationRulesFilterName;
   Value: string;
@@ -412,6 +451,7 @@ export const ListNotificationRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListNotificationRulesRequest",
 }) as any as S.Schema<ListNotificationRulesRequest>;
+export type NotificationRuleId = string;
 export interface NotificationRuleSummary {
   Id?: string;
   Arn?: string;
@@ -468,6 +508,8 @@ export type ListTargetsFilterName =
   | "TARGET_STATUS"
   | (string & {});
 export const ListTargetsFilterName = /*@__PURE__*/ S.String;
+
+export type ListTargetsFilterValue = string;
 export interface ListTargetsFilter {
   Name: ListTargetsFilterName;
   Value: string;
@@ -661,50 +703,7 @@ export const UpdateNotificationRuleResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateNotificationRuleResult",
 }) as any as S.Schema<UpdateNotificationRuleResult>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConfigurationException extends S.TaggedErrorClass<ConfigurationException>()(
-  "ConfigurationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type Message = string;
 export type CreateNotificationRuleError =
   | AccessDeniedException
   | ConcurrentModificationException
@@ -738,6 +737,7 @@ export const createNotificationRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNotificationRule",
 }));
+
 export type DeleteNotificationRuleError =
   | ConcurrentModificationException
   | LimitExceededException
@@ -763,6 +763,7 @@ export const deleteNotificationRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNotificationRule",
 }));
+
 export type DeleteTargetError = ValidationException | CommonErrors;
 /**
  * Deletes a specified target for notifications.
@@ -780,6 +781,7 @@ export const deleteTarget: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTarget",
 }));
+
 export type DescribeNotificationRuleError =
   | ResourceNotFoundException
   | ValidationException
@@ -800,6 +802,7 @@ export const describeNotificationRule: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeNotificationRule",
 }));
+
 export type ListEventTypesError =
   | InvalidNextTokenException
   | ValidationException
@@ -841,6 +844,7 @@ export const listEventTypes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNotificationRulesError =
   | InvalidNextTokenException
   | ValidationException
@@ -882,6 +886,7 @@ export const listNotificationRules: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | ResourceNotFoundException
   | ValidationException
@@ -902,6 +907,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTargetsError =
   | InvalidNextTokenException
   | ValidationException
@@ -943,6 +949,7 @@ export const listTargets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SubscribeError =
   | ConfigurationException
   | ResourceNotFoundException
@@ -970,6 +977,7 @@ export const subscribe: API.OperationMethod<
   retry: Retry,
   operationName: "Subscribe",
 }));
+
 export type TagResourceError =
   | ConcurrentModificationException
   | LimitExceededException
@@ -997,6 +1005,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UnsubscribeError = ValidationException | CommonErrors;
 /**
  * Removes an association between a notification rule and an Amazon Q Developer in chat applications topic so that
@@ -1016,6 +1025,7 @@ export const unsubscribe: API.OperationMethod<
   retry: Retry,
   operationName: "Unsubscribe",
 }));
+
 export type UntagResourceError =
   | ConcurrentModificationException
   | LimitExceededException
@@ -1044,6 +1054,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateNotificationRuleError =
   | ConfigurationException
   | ResourceNotFoundException

@@ -86,110 +86,100 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class ApplicationNotSupportedException extends S.TaggedErrorClass<ApplicationNotSupportedException>()(
+  "ApplicationNotSupportedException",
+  {},
+) {}
+export class ComputeNotCompatibleException extends S.TaggedErrorClass<ComputeNotCompatibleException>()(
+  "ComputeNotCompatibleException",
+  {},
+) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+) {}
+export class IncompatibleApplicationsException extends S.TaggedErrorClass<IncompatibleApplicationsException>()(
+  "IncompatibleApplicationsException",
+  {},
+) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
+  "InvalidParameterCombinationException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidParameterValuesException extends S.TaggedErrorClass<InvalidParameterValuesException>()(
+  "InvalidParameterValuesException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidResourceStateException extends S.TaggedErrorClass<InvalidResourceStateException>()(
+  "InvalidResourceStateException",
+  { message: S.optional(S.String) },
+) {}
+export class OperatingSystemNotCompatibleException extends S.TaggedErrorClass<OperatingSystemNotCompatibleException>()(
+  "OperatingSystemNotCompatibleException",
+  {},
+) {}
+export class OperationInProgressException extends S.TaggedErrorClass<OperationInProgressException>()(
+  "OperationInProgressException",
+  { message: S.optional(S.String) },
+) {}
+export class OperationNotSupportedException extends S.TaggedErrorClass<OperationNotSupportedException>()(
+  "OperationNotSupportedException",
+  { message: S.optional(S.String), reason: S.optional(S.String) },
+) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class ResourceAssociatedException extends S.TaggedErrorClass<ResourceAssociatedException>()(
+  "ResourceAssociatedException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceCreationFailedException extends S.TaggedErrorClass<ResourceCreationFailedException>()(
+  "ResourceCreationFailedException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { message: S.optional(S.String), ResourceId: S.optional(S.String) },
+) {}
+export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
+  "ResourceLimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String), ResourceId: S.optional(S.String) },
+) {}
+export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
+  "ResourceUnavailableException",
+  { message: S.optional(S.String), ResourceId: S.optional(S.String) },
+) {}
+export class UnsupportedNetworkConfigurationException extends S.TaggedErrorClass<UnsupportedNetworkConfigurationException>()(
+  "UnsupportedNetworkConfigurationException",
+  { message: S.optional(S.String) },
+) {}
+export class UnsupportedWorkspaceConfigurationException extends S.TaggedErrorClass<UnsupportedWorkspaceConfigurationException>()(
+  "UnsupportedWorkspaceConfigurationException",
+  { message: S.optional(S.String) },
+) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+) {}
+export class WorkspacesDefaultRoleNotFoundException extends S.TaggedErrorClass<WorkspacesDefaultRoleNotFoundException>()(
+  "WorkspacesDefaultRoleNotFoundException",
+  { message: S.optional(S.String) },
+) {}
 export type LinkId = string;
 export type ClientToken = string;
-export type AwsAccount = string;
-export type ExceptionMessage = string;
-export type NonEmptyString = string;
-export type ConnectionAliasId = string;
-export type ConnectionIdentifier = string;
-export type ExceptionErrorCode = string;
-export type DirectoryId = string;
-export type IpGroupId = string;
-export type WorkspaceId = string;
-export type WorkSpaceApplicationId = string;
-export type String2048 = string;
-export type IpRule = string;
-export type IpRuleDesc = string;
-export type WorkspaceImageName = string;
-export type WorkspaceImageDescription = string;
-export type WorkspaceImageId = string;
-export type Region = string;
-export type TagKey = string;
-export type TagValue = string;
-export type AddInName = string;
-export type AddInUrl = string;
-export type AmazonUuid = string;
-export type ConnectionString = string;
-export type IpGroupName = string;
-export type IpGroupDesc = string;
-export type VolumeEncryptionKey = string;
-export type WorkspaceErrorCode = string;
-export type Description = string;
-export type UserName = string;
-export type WorkspaceBundleName = string;
-export type WorkspaceBundleDescription = string;
-export type BundleId = string;
-export type BundleOwner = string;
-export type RunningModeAutoStopTimeoutInMinutes = number;
-export type RootVolumeSizeGib = number;
-export type UserVolumeSizeGib = number;
-export type WorkspaceName = string;
-export type Ipv6Address = string;
-export type ErrorType = string;
-export type IpAddress = string;
-export type SubnetId = string;
-export type ComputerName = string;
-export type WorkspacesPoolName = string;
-export type UpdateDescription = string;
-export type DesiredUserSessions = number;
-export type SettingsGroup = string;
-export type DisconnectTimeoutInSeconds = number;
-export type IdleDisconnectTimeoutInSeconds = number;
-export type MaxUserDurationInSeconds = number;
-export type WorkspacesPoolId = string;
-export type ARN = string;
-export type AvailableUserSessions = number;
-export type ActualUserSessions = number;
-export type ActiveUserSessions = number;
-export type ErrorMessage = string;
-export type S3BucketName = string;
-export type DedicatedTenancyManagementCidrRange = string;
-export type Message = string;
-export type PaginationToken = string;
-export type Limit = number;
-export type WorkSpaceApplicationOwner = string;
-export type ClientUrl = string;
-export type ClientEmail = string;
-export type ClientLocale = string;
-export type ClientLoginMessage = string;
-export type InfrastructureConfigurationArn = string;
-export type WorkflowStateMessage = string;
-export type Percentage = number;
-export type Ec2ImportTaskId = string;
-export type ImageBuildVersionArn = string;
-export type Ec2ImageId = string;
-export type ErrorCode = string;
-export type ImageErrorMessage = string;
-export type WorkspaceDirectoryName = string;
-export type DescribeWorkspaceDirectoriesFilterValue = string;
-export type Alias = string;
-export type DirectoryName = string;
-export type RegistrationCode = string;
-export type SecurityGroupId = string;
-export type DefaultOu = string;
-export type AlphanumericDashUnderscoreNonEmptyString = string;
-export type SamlUserAccessUrl = string;
-export type CertificateAuthorityArn = string;
-export type MicrosoftEntraConfigTenantId = string;
-export type SecretsManagerArn = string;
-export type WorkspaceDirectoryDescription = string;
-export type DomainName = string;
-export type MaximumLength = number;
-export type WorkspaceImageErrorCode = string;
-export type DescribeWorkspacesPoolsFilterValue = string;
-export type WorkspacesPoolUserId = string;
-export type Limit50 = number;
-export type SessionInstanceId = string;
-export type DefaultLogo = Uint8Array;
-export type IosLogo = Uint8Array;
-export type Ios2XLogo = Uint8Array;
-export type Ios3XLogo = Uint8Array;
-export type ManagementCidrRangeConstraint = string;
-export type ManagementCidrRangeMaxResults = number;
-
-//# Schemas
 export interface AcceptAccountLinkInvitationRequest {
   LinkId: string;
   ClientToken?: string;
@@ -217,6 +207,8 @@ export type AccountLinkStatusEnum =
   | "REJECTED"
   | (string & {});
 export const AccountLinkStatusEnum = /*@__PURE__*/ S.String;
+
+export type AwsAccount = string;
 export interface AccountLink {
   AccountLinkId?: string;
   AccountLinkStatus?: AccountLinkStatusEnum;
@@ -239,6 +231,8 @@ export const AcceptAccountLinkInvitationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptAccountLinkInvitationResult",
 }) as any as S.Schema<AcceptAccountLinkInvitationResult>;
+export type ConnectionAliasId = string;
+export type NonEmptyString = string;
 export interface AssociateConnectionAliasRequest {
   AliasId: string;
   ResourceId: string;
@@ -258,6 +252,7 @@ export const AssociateConnectionAliasRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateConnectionAliasRequest",
 }) as any as S.Schema<AssociateConnectionAliasRequest>;
+export type ConnectionIdentifier = string;
 export interface AssociateConnectionAliasResult {
   ConnectionIdentifier?: string;
 }
@@ -266,6 +261,8 @@ export const AssociateConnectionAliasResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateConnectionAliasResult",
 }) as any as S.Schema<AssociateConnectionAliasResult>;
+export type DirectoryId = string;
+export type IpGroupId = string;
 export type IpGroupIdList = string[];
 export const IpGroupIdList = /*@__PURE__*/ S.Array(S.String);
 export interface AssociateIpGroupsRequest {
@@ -293,6 +290,8 @@ export const AssociateIpGroupsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateIpGroupsResult",
 }) as any as S.Schema<AssociateIpGroupsResult>;
+export type WorkspaceId = string;
+export type WorkSpaceApplicationId = string;
 export interface AssociateWorkspaceApplicationRequest {
   WorkspaceId: string;
   ApplicationId: string;
@@ -315,6 +314,7 @@ export const AssociateWorkspaceApplicationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AssociateWorkspaceApplicationRequest>;
 export type WorkSpaceAssociatedResourceType = "APPLICATION" | (string & {});
 export const WorkSpaceAssociatedResourceType = /*@__PURE__*/ S.String;
+
 export type AssociationState =
   | "PENDING_INSTALL"
   | "PENDING_INSTALL_DEPLOYMENT"
@@ -327,6 +327,7 @@ export type AssociationState =
   | "REMOVED"
   | (string & {});
 export const AssociationState = /*@__PURE__*/ S.String;
+
 export type AssociationErrorCode =
   | "ValidationError.InsufficientDiskSpace"
   | "ValidationError.InsufficientMemory"
@@ -336,6 +337,8 @@ export type AssociationErrorCode =
   | "ValidationError.ApplicationOldVersionExists"
   | (string & {});
 export const AssociationErrorCode = /*@__PURE__*/ S.String;
+
+export type String2048 = string;
 export interface AssociationStateReason {
   ErrorCode?: AssociationErrorCode;
   ErrorMessage?: string;
@@ -380,6 +383,8 @@ export const AssociateWorkspaceApplicationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateWorkspaceApplicationResult",
 }) as any as S.Schema<AssociateWorkspaceApplicationResult>;
+export type IpRule = string;
+export type IpRuleDesc = string;
 export interface IpRuleItem {
   ipRule?: string;
   ruleDesc?: string;
@@ -414,6 +419,12 @@ export const AuthorizeIpRulesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthorizeIpRulesResult",
 }) as any as S.Schema<AuthorizeIpRulesResult>;
+export type WorkspaceImageName = string;
+export type WorkspaceImageDescription = string;
+export type WorkspaceImageId = string;
+export type Region = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value?: string;
@@ -489,6 +500,8 @@ export const CreateAccountLinkInvitationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccountLinkInvitationResult",
 }) as any as S.Schema<CreateAccountLinkInvitationResult>;
+export type AddInName = string;
+export type AddInUrl = string;
 export interface CreateConnectClientAddInRequest {
   ResourceId: string;
   Name: string;
@@ -509,6 +522,7 @@ export const CreateConnectClientAddInRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectClientAddInRequest",
 }) as any as S.Schema<CreateConnectClientAddInRequest>;
+export type AmazonUuid = string;
 export interface CreateConnectClientAddInResult {
   AddInId?: string;
 }
@@ -517,6 +531,7 @@ export const CreateConnectClientAddInResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectClientAddInResult",
 }) as any as S.Schema<CreateConnectClientAddInResult>;
+export type ConnectionString = string;
 export interface CreateConnectionAliasRequest {
   ConnectionString: string;
   Tags?: Tag[];
@@ -544,6 +559,8 @@ export const CreateConnectionAliasResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectionAliasResult",
 }) as any as S.Schema<CreateConnectionAliasResult>;
+export type IpGroupName = string;
+export type IpGroupDesc = string;
 export interface CreateIpGroupRequest {
   GroupName: string;
   GroupDesc?: string;
@@ -578,11 +595,13 @@ export const CreateIpGroupResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIpGroupResult",
 }) as any as S.Schema<CreateIpGroupResult>;
+export type VolumeEncryptionKey = string;
 export type DataReplication =
   | "NO_REPLICATION"
   | "PRIMARY_AS_SOURCE"
   | (string & {});
 export const DataReplication = /*@__PURE__*/ S.String;
+
 export interface StandbyWorkspace {
   PrimaryWorkspaceId: string;
   VolumeEncryptionKey?: string;
@@ -625,6 +644,8 @@ export const CreateStandbyWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStandbyWorkspacesRequest",
 }) as any as S.Schema<CreateStandbyWorkspacesRequest>;
+export type WorkspaceErrorCode = string;
+export type Description = string;
 export interface FailedCreateStandbyWorkspacesRequest {
   StandbyWorkspaceRequest?: StandbyWorkspace;
   ErrorCode?: string;
@@ -645,6 +666,7 @@ export type FailedCreateStandbyWorkspacesRequestList =
 export const FailedCreateStandbyWorkspacesRequestList = /*@__PURE__*/ S.Array(
   FailedCreateStandbyWorkspacesRequest,
 );
+export type UserName = string;
 export type WorkspaceState =
   | "PENDING"
   | "AVAILABLE"
@@ -665,6 +687,7 @@ export type WorkspaceState =
   | "ERROR"
   | (string & {});
 export const WorkspaceState = /*@__PURE__*/ S.String;
+
 export interface PendingCreateStandbyWorkspacesRequest {
   UserName?: string;
   DirectoryId?: string;
@@ -760,6 +783,8 @@ export const CreateUpdatedWorkspaceImageResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUpdatedWorkspaceImageResult",
 }) as any as S.Schema<CreateUpdatedWorkspaceImageResult>;
+export type WorkspaceBundleName = string;
+export type WorkspaceBundleDescription = string;
 export type Compute =
   | "VALUE"
   | "STANDARD"
@@ -786,6 +811,7 @@ export type Compute =
   | "GRAPHICS_GR6F_4XLARGE"
   | (string & {});
 export const Compute = /*@__PURE__*/ S.String;
+
 export interface ComputeType {
   Name?: Compute;
 }
@@ -836,14 +862,18 @@ export const CreateWorkspaceBundleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWorkspaceBundleRequest",
 }) as any as S.Schema<CreateWorkspaceBundleRequest>;
+export type BundleId = string;
+export type BundleOwner = string;
 export type WorkspaceBundleState =
   | "AVAILABLE"
   | "PENDING"
   | "ERROR"
   | (string & {});
 export const WorkspaceBundleState = /*@__PURE__*/ S.String;
+
 export type BundleType = "REGULAR" | "STANDBY" | (string & {});
 export const BundleType = /*@__PURE__*/ S.String;
+
 export interface WorkspaceBundle {
   BundleId?: string;
   Name?: string;
@@ -914,6 +944,7 @@ export const CreateWorkspaceImageRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWorkspaceImageRequest>;
 export type OperatingSystemType = "WINDOWS" | "LINUX" | (string & {});
 export const OperatingSystemType = /*@__PURE__*/ S.String;
+
 export interface OperatingSystem {
   Type?: OperatingSystemType;
 }
@@ -928,11 +959,13 @@ export type WorkspaceImageState =
   | "ERROR"
   | (string & {});
 export const WorkspaceImageState = /*@__PURE__*/ S.String;
+
 export type WorkspaceImageRequiredTenancy =
   | "DEFAULT"
   | "DEDICATED"
   | (string & {});
 export const WorkspaceImageRequiredTenancy = /*@__PURE__*/ S.String;
+
 export interface CreateWorkspaceImageResult {
   ImageId?: string;
   Name?: string;
@@ -959,8 +992,13 @@ export const CreateWorkspaceImageResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateWorkspaceImageResult>;
 export type RunningMode = "AUTO_STOP" | "ALWAYS_ON" | "MANUAL" | (string & {});
 export const RunningMode = /*@__PURE__*/ S.String;
+
+export type RunningModeAutoStopTimeoutInMinutes = number;
+export type RootVolumeSizeGib = number;
+export type UserVolumeSizeGib = number;
 export type Protocol = "PCOIP" | "WSP" | (string & {});
 export const Protocol = /*@__PURE__*/ S.String;
+
 export type ProtocolList = Protocol[];
 export const ProtocolList = /*@__PURE__*/ S.Array(Protocol);
 export type OperatingSystemName =
@@ -980,18 +1018,21 @@ export type OperatingSystemName =
   | "ROCKY_8"
   | (string & {});
 export const OperatingSystemName = /*@__PURE__*/ S.String;
+
 export type AGAModeForWorkSpaceEnum =
   | "ENABLED_AUTO"
   | "DISABLED"
   | "INHERITED"
   | (string & {});
 export const AGAModeForWorkSpaceEnum = /*@__PURE__*/ S.String;
+
 export type AGAPreferredProtocolForWorkSpace =
   | "TCP"
   | "NONE"
   | "INHERITED"
   | (string & {});
 export const AGAPreferredProtocolForWorkSpace = /*@__PURE__*/ S.String;
+
 export interface GlobalAcceleratorForWorkSpace {
   Mode: AGAModeForWorkSpaceEnum;
   PreferredProtocol?: AGAPreferredProtocolForWorkSpace;
@@ -1028,6 +1069,8 @@ export const WorkspaceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkspaceProperties",
 }) as any as S.Schema<WorkspaceProperties>;
+export type WorkspaceName = string;
+export type Ipv6Address = string;
 export interface WorkspaceRequest {
   DirectoryId: string;
   UserName: string;
@@ -1076,6 +1119,7 @@ export const CreateWorkspacesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWorkspacesRequest",
 }) as any as S.Schema<CreateWorkspacesRequest>;
+export type ErrorType = string;
 export interface FailedCreateWorkspaceRequest {
   WorkspaceRequest?: WorkspaceRequest;
   ErrorCode?: string;
@@ -1094,6 +1138,9 @@ export type FailedCreateWorkspaceRequests = FailedCreateWorkspaceRequest[];
 export const FailedCreateWorkspaceRequests = /*@__PURE__*/ S.Array(
   FailedCreateWorkspaceRequest,
 );
+export type IpAddress = string;
+export type SubnetId = string;
+export type ComputerName = string;
 export type ModificationResourceEnum =
   | "ROOT_VOLUME"
   | "USER_VOLUME"
@@ -1101,12 +1148,14 @@ export type ModificationResourceEnum =
   | "PROTOCOL"
   | (string & {});
 export const ModificationResourceEnum = /*@__PURE__*/ S.String;
+
 export type ModificationStateEnum =
   | "UPDATE_INITIATED"
   | "UPDATE_IN_PROGRESS"
   | "UPDATE_FAILED"
   | (string & {});
 export const ModificationStateEnum = /*@__PURE__*/ S.String;
+
 export interface ModificationState {
   Resource?: ModificationResourceEnum;
   State?: ModificationStateEnum;
@@ -1126,6 +1175,7 @@ export type StandbyWorkspaceRelationshipType =
   | "STANDBY"
   | (string & {});
 export const StandbyWorkspaceRelationshipType = /*@__PURE__*/ S.String;
+
 export interface RelatedWorkspaceProperties {
   WorkspaceId?: string;
   Region?: string;
@@ -1240,6 +1290,9 @@ export const CreateWorkspacesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWorkspacesResult",
 }) as any as S.Schema<CreateWorkspacesResult>;
+export type WorkspacesPoolName = string;
+export type UpdateDescription = string;
+export type DesiredUserSessions = number;
 export interface Capacity {
   DesiredUserSessions: number;
 }
@@ -1251,6 +1304,8 @@ export type ApplicationSettingsStatusEnum =
   | "ENABLED"
   | (string & {});
 export const ApplicationSettingsStatusEnum = /*@__PURE__*/ S.String;
+
+export type SettingsGroup = string;
 export interface ApplicationSettingsRequest {
   Status: ApplicationSettingsStatusEnum;
   SettingsGroup?: string;
@@ -1263,6 +1318,9 @@ export const ApplicationSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplicationSettingsRequest",
 }) as any as S.Schema<ApplicationSettingsRequest>;
+export type DisconnectTimeoutInSeconds = number;
+export type IdleDisconnectTimeoutInSeconds = number;
+export type MaxUserDurationInSeconds = number;
 export interface TimeoutSettings {
   DisconnectTimeoutInSeconds?: number;
   IdleDisconnectTimeoutInSeconds?: number;
@@ -1279,6 +1337,7 @@ export const TimeoutSettings = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TimeoutSettings>;
 export type PoolsRunningMode = "AUTO_STOP" | "ALWAYS_ON" | (string & {});
 export const PoolsRunningMode = /*@__PURE__*/ S.String;
+
 export interface CreateWorkspacesPoolRequest {
   PoolName: string;
   Description: string;
@@ -1315,6 +1374,11 @@ export const CreateWorkspacesPoolRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWorkspacesPoolRequest",
 }) as any as S.Schema<CreateWorkspacesPoolRequest>;
+export type WorkspacesPoolId = string;
+export type ARN = string;
+export type AvailableUserSessions = number;
+export type ActualUserSessions = number;
+export type ActiveUserSessions = number;
 export interface CapacityStatus {
   AvailableUserSessions: number;
   DesiredUserSessions: number;
@@ -1339,6 +1403,7 @@ export type WorkspacesPoolState =
   | "UPDATING"
   | (string & {});
 export const WorkspacesPoolState = /*@__PURE__*/ S.String;
+
 export type WorkspacesPoolErrorCode =
   | "IAM_SERVICE_ROLE_IS_MISSING"
   | "IAM_SERVICE_ROLE_MISSING_ENI_DESCRIBE_ACTION"
@@ -1382,6 +1447,8 @@ export type WorkspacesPoolErrorCode =
   | "DEFAULT_OU_IS_MISSING"
   | (string & {});
 export const WorkspacesPoolErrorCode = /*@__PURE__*/ S.String;
+
+export type ErrorMessage = string;
 export interface WorkspacesPoolError {
   ErrorCode?: WorkspacesPoolErrorCode;
   ErrorMessage?: string;
@@ -1396,6 +1463,7 @@ export const WorkspacesPoolError = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspacesPoolError>;
 export type WorkspacesPoolErrors = WorkspacesPoolError[];
 export const WorkspacesPoolErrors = /*@__PURE__*/ S.Array(WorkspacesPoolError);
+export type S3BucketName = string;
 export interface ApplicationSettingsResponse {
   Status: ApplicationSettingsStatusEnum;
   SettingsGroup?: string;
@@ -1486,6 +1554,7 @@ export type ClientDeviceType =
   | "DeviceTypeWeb"
   | (string & {});
 export const ClientDeviceType = /*@__PURE__*/ S.String;
+
 export type ClientDeviceTypeList = ClientDeviceType[];
 export const ClientDeviceTypeList = /*@__PURE__*/ S.Array(ClientDeviceType);
 export interface DeleteClientBrandingRequest {
@@ -1745,11 +1814,15 @@ export type DedicatedTenancySupportResultEnum =
   | "DISABLED"
   | (string & {});
 export const DedicatedTenancySupportResultEnum = /*@__PURE__*/ S.String;
+
+export type DedicatedTenancyManagementCidrRange = string;
 export type DedicatedTenancyAccountType =
   | "SOURCE_ACCOUNT"
   | "TARGET_ACCOUNT"
   | (string & {});
 export const DedicatedTenancyAccountType = /*@__PURE__*/ S.String;
+
+export type Message = string;
 export interface DescribeAccountResult {
   DedicatedTenancySupport?: DedicatedTenancySupportResultEnum;
   DedicatedTenancyManagementCidrRange?: string;
@@ -1766,6 +1839,7 @@ export const DescribeAccountResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAccountResult",
 }) as any as S.Schema<DescribeAccountResult>;
+export type PaginationToken = string;
 export interface DescribeAccountModificationsRequest {
   NextToken?: string;
 }
@@ -1790,6 +1864,7 @@ export type DedicatedTenancyModificationStateEnum =
   | "FAILED"
   | (string & {});
 export const DedicatedTenancyModificationStateEnum = /*@__PURE__*/ S.String;
+
 export interface AccountModification {
   ModificationState?: DedicatedTenancyModificationStateEnum;
   DedicatedTenancySupport?: DedicatedTenancySupportResultEnum;
@@ -1825,12 +1900,14 @@ export const DescribeAccountModificationsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAccountModificationsResult",
 }) as any as S.Schema<DescribeAccountModificationsResult>;
+export type Limit = number;
 export type ApplicationAssociatedResourceType =
   | "WORKSPACE"
   | "BUNDLE"
   | "IMAGE"
   | (string & {});
 export const ApplicationAssociatedResourceType = /*@__PURE__*/ S.String;
+
 export type ApplicationAssociatedResourceTypeList =
   ApplicationAssociatedResourceType[];
 export const ApplicationAssociatedResourceTypeList = /*@__PURE__*/ S.Array(
@@ -1914,9 +1991,11 @@ export type WorkSpaceApplicationLicenseType =
   | "UNLICENSED"
   | (string & {});
 export const WorkSpaceApplicationLicenseType = /*@__PURE__*/ S.String;
+
 export type OperatingSystemNameList = OperatingSystemName[];
 export const OperatingSystemNameList =
   /*@__PURE__*/ S.Array(OperatingSystemName);
+export type WorkSpaceApplicationOwner = string;
 export interface DescribeApplicationsRequest {
   ApplicationIds?: string[];
   ComputeTypeNames?: Compute[];
@@ -1956,6 +2035,7 @@ export type WorkSpaceApplicationState =
   | "UNINSTALL_ONLY"
   | (string & {});
 export const WorkSpaceApplicationState = /*@__PURE__*/ S.String;
+
 export interface WorkSpaceApplication {
   ApplicationId?: string;
   Created?: Date;
@@ -1999,6 +2079,7 @@ export const DescribeApplicationsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeApplicationsResult>;
 export type BundleAssociatedResourceType = "APPLICATION" | (string & {});
 export const BundleAssociatedResourceType = /*@__PURE__*/ S.String;
+
 export type BundleAssociatedResourceTypeList = BundleAssociatedResourceType[];
 export const BundleAssociatedResourceTypeList = /*@__PURE__*/ S.Array(
   BundleAssociatedResourceType,
@@ -2081,6 +2162,10 @@ export const DescribeClientBrandingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeClientBrandingRequest",
 }) as any as S.Schema<DescribeClientBrandingRequest>;
+export type ClientUrl = string;
+export type ClientEmail = string;
+export type ClientLocale = string;
+export type ClientLoginMessage = string;
 export type LoginMessage = { [key: string]: string | undefined };
 export const LoginMessage = /*@__PURE__*/ S.Record(
   S.String,
@@ -2168,8 +2253,10 @@ export const DescribeClientPropertiesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeClientPropertiesRequest>;
 export type ReconnectEnum = "ENABLED" | "DISABLED" | (string & {});
 export const ReconnectEnum = /*@__PURE__*/ S.String;
+
 export type LogUploadEnum = "ENABLED" | "DISABLED" | (string & {});
 export const LogUploadEnum = /*@__PURE__*/ S.String;
+
 export interface ClientProperties {
   ReconnectEnabled?: ReconnectEnum;
   LogUploadEnabled?: LogUploadEnum;
@@ -2294,6 +2381,7 @@ export type ConnectionAliasState =
   | "DELETING"
   | (string & {});
 export const ConnectionAliasState = /*@__PURE__*/ S.String;
+
 export type AssociationStatus =
   | "NOT_ASSOCIATED"
   | "ASSOCIATED_WITH_OWNER_ACCOUNT"
@@ -2302,6 +2390,7 @@ export type AssociationStatus =
   | "PENDING_DISASSOCIATION"
   | (string & {});
 export const AssociationStatus = /*@__PURE__*/ S.String;
+
 export interface ConnectionAliasAssociation {
   AssociationStatus?: AssociationStatus;
   AssociatedAccountId?: string;
@@ -2426,6 +2515,7 @@ export const DescribeCustomWorkspaceImageImportRequest =
   ).annotate({
     identifier: "DescribeCustomWorkspaceImageImportRequest",
   }) as any as S.Schema<DescribeCustomWorkspaceImageImportRequest>;
+export type InfrastructureConfigurationArn = string;
 export type CustomWorkspaceImageImportState =
   | "PENDING"
   | "IN_PROGRESS"
@@ -2443,6 +2533,12 @@ export type CustomWorkspaceImageImportState =
   | "ERROR"
   | (string & {});
 export const CustomWorkspaceImageImportState = /*@__PURE__*/ S.String;
+
+export type WorkflowStateMessage = string;
+export type Percentage = number;
+export type Ec2ImportTaskId = string;
+export type ImageBuildVersionArn = string;
+export type Ec2ImageId = string;
 export type ImageSourceIdentifier =
   | {
       Ec2ImportTaskId: string;
@@ -2464,6 +2560,8 @@ export const ImageSourceIdentifier = /*@__PURE__*/ S.Union([
   S.Struct({ ImageBuildVersionArn: S.String }),
   S.Struct({ Ec2ImageId: S.String }),
 ]);
+export type ErrorCode = string;
+export type ImageErrorMessage = string;
 export interface CustomWorkspaceImageImportErrorDetails {
   ErrorCode?: string;
   ErrorMessage?: string;
@@ -2515,6 +2613,7 @@ export const DescribeCustomWorkspaceImageImportResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeCustomWorkspaceImageImportResult>;
 export type ImageAssociatedResourceType = "APPLICATION" | (string & {});
 export const ImageAssociatedResourceType = /*@__PURE__*/ S.String;
+
 export type ImageAssociatedResourceTypeList = ImageAssociatedResourceType[];
 export const ImageAssociatedResourceTypeList = /*@__PURE__*/ S.Array(
   ImageAssociatedResourceType,
@@ -2737,6 +2836,7 @@ export const DescribeWorkspaceBundlesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeWorkspaceBundlesResult>;
 export type DirectoryIdList = string[];
 export const DirectoryIdList = /*@__PURE__*/ S.Array(S.String);
+export type WorkspaceDirectoryName = string;
 export type WorkspaceDirectoryNameList = string[];
 export const WorkspaceDirectoryNameList = /*@__PURE__*/ S.Array(S.String);
 export type DescribeWorkspaceDirectoriesFilterName =
@@ -2744,6 +2844,8 @@ export type DescribeWorkspaceDirectoriesFilterName =
   | "WORKSPACE_TYPE"
   | (string & {});
 export const DescribeWorkspaceDirectoriesFilterName = /*@__PURE__*/ S.String;
+
+export type DescribeWorkspaceDirectoriesFilterValue = string;
 export type DescribeWorkspaceDirectoriesFilterValues = string[];
 export const DescribeWorkspaceDirectoriesFilterValues = /*@__PURE__*/ S.Array(
   S.String,
@@ -2793,6 +2895,9 @@ export const DescribeWorkspaceDirectoriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeWorkspaceDirectoriesRequest",
 }) as any as S.Schema<DescribeWorkspaceDirectoriesRequest>;
+export type Alias = string;
+export type DirectoryName = string;
+export type RegistrationCode = string;
 export type SubnetIds = string[];
 export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type DnsIpAddresses = string[];
@@ -2806,6 +2911,8 @@ export type WorkspaceDirectoryType =
   | "AWS_IAM_IDENTITY_CENTER"
   | (string & {});
 export const WorkspaceDirectoryType = /*@__PURE__*/ S.String;
+
+export type SecurityGroupId = string;
 export type WorkspaceDirectoryState =
   | "REGISTERING"
   | "REGISTERED"
@@ -2814,6 +2921,8 @@ export type WorkspaceDirectoryState =
   | "ERROR"
   | (string & {});
 export const WorkspaceDirectoryState = /*@__PURE__*/ S.String;
+
+export type DefaultOu = string;
 export interface DefaultWorkspaceCreationProperties {
   EnableInternetAccess?: boolean;
   DefaultOu?: string;
@@ -2836,8 +2945,11 @@ export const DefaultWorkspaceCreationProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefaultWorkspaceCreationProperties>;
 export type AccessPropertyValue = "ALLOW" | "DENY" | (string & {});
 export const AccessPropertyValue = /*@__PURE__*/ S.String;
+
 export type AccessEndpointType = "STREAMING_WSP" | (string & {});
 export const AccessEndpointType = /*@__PURE__*/ S.String;
+
+export type AlphanumericDashUnderscoreNonEmptyString = string;
 export interface AccessEndpoint {
   AccessEndpointType?: AccessEndpointType;
   VpcEndpointId?: string;
@@ -2852,6 +2964,7 @@ export type AccessEndpointList = AccessEndpoint[];
 export const AccessEndpointList = /*@__PURE__*/ S.Array(AccessEndpoint);
 export type InternetFallbackProtocol = "PCOIP" | (string & {});
 export const InternetFallbackProtocol = /*@__PURE__*/ S.String;
+
 export type InternetFallbackProtocolList = InternetFallbackProtocol[];
 export const InternetFallbackProtocolList = /*@__PURE__*/ S.Array(
   InternetFallbackProtocol,
@@ -2898,6 +3011,7 @@ export const WorkspaceAccessProperties = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceAccessProperties>;
 export type Tenancy = "DEDICATED" | "SHARED" | (string & {});
 export const Tenancy = /*@__PURE__*/ S.String;
+
 export interface SelfservicePermissions {
   RestartWorkspace?: ReconnectEnum;
   IncreaseVolumeSize?: ReconnectEnum;
@@ -2922,6 +3036,8 @@ export type SamlStatusEnum =
   | "ENABLED_WITH_DIRECTORY_LOGIN_FALLBACK"
   | (string & {});
 export const SamlStatusEnum = /*@__PURE__*/ S.String;
+
+export type SamlUserAccessUrl = string;
 export interface SamlProperties {
   Status?: SamlStatusEnum;
   UserAccessUrl?: string;
@@ -2939,6 +3055,8 @@ export type CertificateBasedAuthStatusEnum =
   | "ENABLED"
   | (string & {});
 export const CertificateBasedAuthStatusEnum = /*@__PURE__*/ S.String;
+
+export type CertificateAuthorityArn = string;
 export interface CertificateBasedAuthProperties {
   Status?: CertificateBasedAuthStatusEnum;
   CertificateAuthorityArn?: string;
@@ -2956,6 +3074,9 @@ export type EndpointEncryptionMode =
   | "FIPS_VALIDATED"
   | (string & {});
 export const EndpointEncryptionMode = /*@__PURE__*/ S.String;
+
+export type MicrosoftEntraConfigTenantId = string;
+export type SecretsManagerArn = string;
 export interface MicrosoftEntraConfig {
   TenantId?: string;
   ApplicationConfigSecretArn?: string;
@@ -2968,14 +3089,17 @@ export const MicrosoftEntraConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MicrosoftEntraConfig",
 }) as any as S.Schema<MicrosoftEntraConfig>;
+export type WorkspaceDirectoryDescription = string;
 export type UserIdentityType =
   | "CUSTOMER_MANAGED"
   | "AWS_DIRECTORY_SERVICE"
   | "AWS_IAM_IDENTITY_CENTER"
   | (string & {});
 export const UserIdentityType = /*@__PURE__*/ S.String;
+
 export type WorkspaceType = "PERSONAL" | "POOLS" | (string & {});
 export const WorkspaceType = /*@__PURE__*/ S.String;
+
 export interface IDCConfig {
   InstanceArn?: string;
   ApplicationArn?: string;
@@ -2986,6 +3110,7 @@ export const IDCConfig = /*@__PURE__*/ S.suspend(() =>
     ApplicationArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "IDCConfig" }) as any as S.Schema<IDCConfig>;
+export type DomainName = string;
 export interface ActiveDirectoryConfig {
   DomainName: string;
   ServiceAccountSecretArn: string;
@@ -3000,6 +3125,7 @@ export type StreamingExperiencePreferredProtocolEnum =
   | "UDP"
   | (string & {});
 export const StreamingExperiencePreferredProtocolEnum = /*@__PURE__*/ S.String;
+
 export type UserSettingActionEnum =
   | "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"
   | "CLIPBOARD_COPY_TO_LOCAL_DEVICE"
@@ -3007,8 +3133,11 @@ export type UserSettingActionEnum =
   | "SMART_CARD"
   | (string & {});
 export const UserSettingActionEnum = /*@__PURE__*/ S.String;
+
 export type UserSettingPermissionEnum = "ENABLED" | "DISABLED" | (string & {});
 export const UserSettingPermissionEnum = /*@__PURE__*/ S.String;
+
+export type MaximumLength = number;
 export interface UserSetting {
   Action: UserSettingActionEnum;
   Permission: UserSettingPermissionEnum;
@@ -3025,8 +3154,10 @@ export type UserSettings = UserSetting[];
 export const UserSettings = /*@__PURE__*/ S.Array(UserSetting);
 export type StorageConnectorTypeEnum = "HOME_FOLDER" | (string & {});
 export const StorageConnectorTypeEnum = /*@__PURE__*/ S.String;
+
 export type StorageConnectorStatusEnum = "ENABLED" | "DISABLED" | (string & {});
 export const StorageConnectorStatusEnum = /*@__PURE__*/ S.String;
+
 export interface StorageConnector {
   ConnectorType: StorageConnectorTypeEnum;
   Status: StorageConnectorStatusEnum;
@@ -3046,8 +3177,10 @@ export type AGAModeForDirectoryEnum =
   | "DISABLED"
   | (string & {});
 export const AGAModeForDirectoryEnum = /*@__PURE__*/ S.String;
+
 export type AGAPreferredProtocolForDirectory = "TCP" | "NONE" | (string & {});
 export const AGAPreferredProtocolForDirectory = /*@__PURE__*/ S.String;
+
 export interface GlobalAcceleratorForDirectory {
   Mode: AGAModeForDirectoryEnum;
   PreferredProtocol?: AGAPreferredProtocolForDirectory;
@@ -3212,6 +3345,7 @@ export type WorkspaceImageIdList = string[];
 export const WorkspaceImageIdList = /*@__PURE__*/ S.Array(S.String);
 export type ImageType = "OWNED" | "SHARED" | (string & {});
 export const ImageType = /*@__PURE__*/ S.String;
+
 export interface DescribeWorkspaceImagesRequest {
   ImageIds?: string[];
   ImageType?: ImageType;
@@ -3238,6 +3372,7 @@ export const DescribeWorkspaceImagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeWorkspaceImagesRequest",
 }) as any as S.Schema<DescribeWorkspaceImagesRequest>;
+export type WorkspaceImageErrorCode = string;
 export interface UpdateResult {
   UpdateAvailable?: boolean;
   Description?: string;
@@ -3299,6 +3434,7 @@ export type WorkspaceImageErrorDetailCode =
   | "RestrictedDriveLetterInUse"
   | (string & {});
 export const WorkspaceImageErrorDetailCode = /*@__PURE__*/ S.String;
+
 export interface ErrorDetails {
   ErrorCode?: WorkspaceImageErrorDetailCode;
   ErrorMessage?: string;
@@ -3430,6 +3566,7 @@ export type ConnectionState =
   | "UNKNOWN"
   | (string & {});
 export const ConnectionState = /*@__PURE__*/ S.String;
+
 export interface WorkspaceConnectionStatus {
   WorkspaceId?: string;
   ConnectionState?: ConnectionState;
@@ -3511,6 +3648,8 @@ export type WorkspacesPoolIds = string[];
 export const WorkspacesPoolIds = /*@__PURE__*/ S.Array(S.String);
 export type DescribeWorkspacesPoolsFilterName = "PoolName" | (string & {});
 export const DescribeWorkspacesPoolsFilterName = /*@__PURE__*/ S.String;
+
+export type DescribeWorkspacesPoolsFilterValue = string;
 export type DescribeWorkspacesPoolsFilterValues = string[];
 export const DescribeWorkspacesPoolsFilterValues = /*@__PURE__*/ S.Array(
   S.String,
@@ -3522,6 +3661,7 @@ export type DescribeWorkspacesPoolsFilterOperator =
   | "NOTCONTAINS"
   | (string & {});
 export const DescribeWorkspacesPoolsFilterOperator = /*@__PURE__*/ S.String;
+
 export interface DescribeWorkspacesPoolsFilter {
   Name: DescribeWorkspacesPoolsFilterName;
   Values: string[];
@@ -3580,6 +3720,8 @@ export const DescribeWorkspacesPoolsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeWorkspacesPoolsResult",
 }) as any as S.Schema<DescribeWorkspacesPoolsResult>;
+export type WorkspacesPoolUserId = string;
+export type Limit50 = number;
 export interface DescribeWorkspacesPoolSessionsRequest {
   PoolId: string;
   UserId?: string;
@@ -3609,11 +3751,14 @@ export const DescribeWorkspacesPoolSessionsRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeWorkspacesPoolSessionsRequest>;
 export type AuthenticationType = "SAML" | (string & {});
 export const AuthenticationType = /*@__PURE__*/ S.String;
+
 export type SessionConnectionState =
   | "CONNECTED"
   | "NOT_CONNECTED"
   | (string & {});
 export const SessionConnectionState = /*@__PURE__*/ S.String;
+
+export type SessionInstanceId = string;
 export interface NetworkAccessConfiguration {
   EniPrivateIpAddress?: string;
   EniId?: string;
@@ -3779,6 +3924,7 @@ export const GetAccountLinkResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountLinkResult",
 }) as any as S.Schema<GetAccountLinkResult>;
+export type DefaultLogo = Uint8Array;
 export interface DefaultImportClientBrandingAttributes {
   Logo?: Uint8Array;
   SupportEmail?: string;
@@ -3798,6 +3944,9 @@ export const DefaultImportClientBrandingAttributes = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DefaultImportClientBrandingAttributes",
 }) as any as S.Schema<DefaultImportClientBrandingAttributes>;
+export type IosLogo = Uint8Array;
+export type Ios2XLogo = Uint8Array;
+export type Ios3XLogo = Uint8Array;
 export interface IosImportClientBrandingAttributes {
   Logo?: Uint8Array;
   Logo2x?: Uint8Array;
@@ -3878,12 +4027,16 @@ export type ImageComputeType =
   | "GRAPHICS_G6"
   | (string & {});
 export const ImageComputeType = /*@__PURE__*/ S.String;
+
 export type CustomImageProtocol = "PCOIP" | "DCV" | "BYOP" | (string & {});
 export const CustomImageProtocol = /*@__PURE__*/ S.String;
+
 export type Platform = "WINDOWS" | (string & {});
 export const Platform = /*@__PURE__*/ S.String;
+
 export type OSVersion = "Windows_10" | "Windows_11" | (string & {});
 export const OSVersion = /*@__PURE__*/ S.String;
+
 export interface ImportCustomWorkspaceImageRequest {
   ImageName: string;
   ImageDescription: string;
@@ -3943,11 +4096,13 @@ export type WorkspaceImageIngestionProcess =
   | "BYOL_GRAPHICS_G4DN_BYOP"
   | (string & {});
 export const WorkspaceImageIngestionProcess = /*@__PURE__*/ S.String;
+
 export type Application =
   | "Microsoft_Office_2016"
   | "Microsoft_Office_2019"
   | (string & {});
 export const Application = /*@__PURE__*/ S.String;
+
 export type ApplicationList = Application[];
 export const ApplicationList = /*@__PURE__*/ S.Array(Application);
 export interface ImportWorkspaceImageRequest {
@@ -4030,6 +4185,8 @@ export const ListAccountLinksResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAccountLinksResult",
 }) as any as S.Schema<ListAccountLinksResult>;
+export type ManagementCidrRangeConstraint = string;
+export type ManagementCidrRangeMaxResults = number;
 export interface ListAvailableManagementCidrRangesRequest {
   ManagementCidrRangeConstraint: string;
   MaxResults?: number;
@@ -4103,6 +4260,7 @@ export const MigrateWorkspaceResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MigrateWorkspaceResult>;
 export type DedicatedTenancySupportEnum = "ENABLED" | (string & {});
 export const DedicatedTenancySupportEnum = /*@__PURE__*/ S.String;
+
 export interface ModifyAccountRequest {
   DedicatedTenancySupport?: DedicatedTenancySupportEnum;
   DedicatedTenancyManagementCidrRange?: string;
@@ -4137,6 +4295,7 @@ export type DeletableCertificateBasedAuthProperty =
   | "CERTIFICATE_BASED_AUTH_PROPERTIES_CERTIFICATE_AUTHORITY_ARN"
   | (string & {});
 export const DeletableCertificateBasedAuthProperty = /*@__PURE__*/ S.String;
+
 export type DeletableCertificateBasedAuthPropertiesList =
   DeletableCertificateBasedAuthProperty[];
 export const DeletableCertificateBasedAuthPropertiesList =
@@ -4233,6 +4392,7 @@ export type DeletableSamlProperty =
   | "SAML_PROPERTIES_RELAY_STATE_PARAMETER_NAME"
   | (string & {});
 export const DeletableSamlProperty = /*@__PURE__*/ S.String;
+
 export type DeletableSamlPropertiesList = DeletableSamlProperty[];
 export const DeletableSamlPropertiesList = /*@__PURE__*/ S.Array(
   DeletableSamlProperty,
@@ -4436,6 +4596,7 @@ export type TargetWorkspaceState =
   | "ADMIN_MAINTENANCE"
   | (string & {});
 export const TargetWorkspaceState = /*@__PURE__*/ S.String;
+
 export interface ModifyWorkspaceStateRequest {
   WorkspaceId: string;
   WorkspaceState: TargetWorkspaceState;
@@ -5097,102 +5258,8 @@ export const UpdateWorkspacesPoolResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateWorkspacesPoolResult",
 }) as any as S.Schema<UpdateWorkspacesPoolResult>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String), ResourceId: S.optional(S.String) },
-) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidParameterValuesException extends S.TaggedErrorClass<InvalidParameterValuesException>()(
-  "InvalidParameterValuesException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidResourceStateException extends S.TaggedErrorClass<InvalidResourceStateException>()(
-  "InvalidResourceStateException",
-  { message: S.optional(S.String) },
-) {}
-export class OperationNotSupportedException extends S.TaggedErrorClass<OperationNotSupportedException>()(
-  "OperationNotSupportedException",
-  { message: S.optional(S.String), reason: S.optional(S.String) },
-) {}
-export class ResourceAssociatedException extends S.TaggedErrorClass<ResourceAssociatedException>()(
-  "ResourceAssociatedException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
-  "ResourceLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class ApplicationNotSupportedException extends S.TaggedErrorClass<ApplicationNotSupportedException>()(
-  "ApplicationNotSupportedException",
-  {},
-) {}
-export class ComputeNotCompatibleException extends S.TaggedErrorClass<ComputeNotCompatibleException>()(
-  "ComputeNotCompatibleException",
-  {},
-) {}
-export class IncompatibleApplicationsException extends S.TaggedErrorClass<IncompatibleApplicationsException>()(
-  "IncompatibleApplicationsException",
-  {},
-) {}
-export class OperatingSystemNotCompatibleException extends S.TaggedErrorClass<OperatingSystemNotCompatibleException>()(
-  "OperatingSystemNotCompatibleException",
-  {},
-) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { message: S.optional(S.String), ResourceId: S.optional(S.String) },
-) {}
-export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
-  "ResourceUnavailableException",
-  { message: S.optional(S.String), ResourceId: S.optional(S.String) },
-) {}
-export class ResourceCreationFailedException extends S.TaggedErrorClass<ResourceCreationFailedException>()(
-  "ResourceCreationFailedException",
-  { message: S.optional(S.String) },
-) {}
-export class OperationInProgressException extends S.TaggedErrorClass<OperationInProgressException>()(
-  "OperationInProgressException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidParameterCombinationException extends S.TaggedErrorClass<InvalidParameterCombinationException>()(
-  "InvalidParameterCombinationException",
-  { message: S.optional(S.String) },
-) {}
-export class UnsupportedWorkspaceConfigurationException extends S.TaggedErrorClass<UnsupportedWorkspaceConfigurationException>()(
-  "UnsupportedWorkspaceConfigurationException",
-  { message: S.optional(S.String) },
-) {}
-export class UnsupportedNetworkConfigurationException extends S.TaggedErrorClass<UnsupportedNetworkConfigurationException>()(
-  "UnsupportedNetworkConfigurationException",
-  { message: S.optional(S.String) },
-) {}
-export class WorkspacesDefaultRoleNotFoundException extends S.TaggedErrorClass<WorkspacesDefaultRoleNotFoundException>()(
-  "WorkspacesDefaultRoleNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ExceptionMessage = string;
+export type ExceptionErrorCode = string;
 export type AcceptAccountLinkInvitationError =
   | AccessDeniedException
   | ConflictException
@@ -5224,6 +5291,7 @@ export const acceptAccountLinkInvitation: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptAccountLinkInvitation",
 }));
+
 export type AssociateConnectionAliasError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5261,6 +5329,7 @@ export const associateConnectionAlias: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateConnectionAlias",
 }));
+
 export type AssociateIpGroupsError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5292,6 +5361,7 @@ export const associateIpGroups: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateIpGroups",
 }));
+
 export type AssociateWorkspaceApplicationError =
   | AccessDeniedException
   | ApplicationNotSupportedException
@@ -5331,6 +5401,7 @@ export const associateWorkspaceApplication: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateWorkspaceApplication",
 }));
+
 export type AuthorizeIpRulesError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5363,6 +5434,7 @@ export const authorizeIpRules: API.OperationMethod<
   retry: Retry,
   operationName: "AuthorizeIpRules",
 }));
+
 export type CopyWorkspaceImageError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5406,6 +5478,7 @@ export const copyWorkspaceImage: API.OperationMethod<
   retry: Retry,
   operationName: "CopyWorkspaceImage",
 }));
+
 export type CreateAccountLinkInvitationError =
   | AccessDeniedException
   | ConflictException
@@ -5433,6 +5506,7 @@ export const createAccountLinkInvitation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAccountLinkInvitation",
 }));
+
 export type CreateConnectClientAddInError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5465,6 +5539,7 @@ export const createConnectClientAddIn: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConnectClientAddIn",
 }));
+
 export type CreateConnectionAliasError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5498,6 +5573,7 @@ export const createConnectionAlias: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConnectionAlias",
 }));
+
 export type CreateIpGroupError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5537,6 +5613,7 @@ export const createIpGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIpGroup",
 }));
+
 export type CreateStandbyWorkspacesError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5566,6 +5643,7 @@ export const createStandbyWorkspaces: API.OperationMethod<
   retry: Retry,
   operationName: "CreateStandbyWorkspaces",
 }));
+
 export type CreateTagsError =
   | InvalidParameterValuesException
   | ResourceLimitExceededException
@@ -5591,6 +5669,7 @@ export const createTags: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTags",
 }));
+
 export type CreateUpdatedWorkspaceImageError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5639,6 +5718,7 @@ export const createUpdatedWorkspaceImage: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUpdatedWorkspaceImage",
 }));
+
 export type CreateWorkspaceBundleError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5672,6 +5752,7 @@ export const createWorkspaceBundle: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWorkspaceBundle",
 }));
+
 export type CreateWorkspaceImageError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5705,6 +5786,7 @@ export const createWorkspaceImage: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWorkspaceImage",
 }));
+
 export type CreateWorkspacesError =
   | InvalidParameterValuesException
   | ResourceLimitExceededException
@@ -5743,6 +5825,7 @@ export const createWorkspaces: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWorkspaces",
 }));
+
 export type CreateWorkspacesPoolError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5774,6 +5857,7 @@ export const createWorkspacesPool: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWorkspacesPool",
 }));
+
 export type DeleteAccountLinkInvitationError =
   | AccessDeniedException
   | ConflictException
@@ -5803,6 +5887,7 @@ export const deleteAccountLinkInvitation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccountLinkInvitation",
 }));
+
 export type DeleteClientBrandingError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5834,6 +5919,7 @@ export const deleteClientBranding: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteClientBranding",
 }));
+
 export type DeleteConnectClientAddInError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5860,6 +5946,7 @@ export const deleteConnectClientAddIn: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConnectClientAddIn",
 }));
+
 export type DeleteConnectionAliasError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5903,6 +5990,7 @@ export const deleteConnectionAlias: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConnectionAlias",
 }));
+
 export type DeleteIpGroupError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5932,6 +6020,7 @@ export const deleteIpGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIpGroup",
 }));
+
 export type DeleteTagsError =
   | InvalidParameterValuesException
   | ResourceNotFoundException
@@ -5952,6 +6041,7 @@ export const deleteTags: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTags",
 }));
+
 export type DeleteWorkspaceBundleError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -5981,6 +6071,7 @@ export const deleteWorkspaceBundle: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWorkspaceBundle",
 }));
+
 export type DeleteWorkspaceImageError =
   | AccessDeniedException
   | InvalidResourceStateException
@@ -6008,6 +6099,7 @@ export const deleteWorkspaceImage: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWorkspaceImage",
 }));
+
 export type DeployWorkspaceApplicationsError =
   | AccessDeniedException
   | IncompatibleApplicationsException
@@ -6039,6 +6131,7 @@ export const deployWorkspaceApplications: API.OperationMethod<
   retry: Retry,
   operationName: "DeployWorkspaceApplications",
 }));
+
 export type DeregisterWorkspaceDirectoryError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6081,6 +6174,7 @@ export const deregisterWorkspaceDirectory: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterWorkspaceDirectory",
 }));
+
 export type DescribeAccountError = AccessDeniedException | CommonErrors;
 /**
  * Retrieves a list that describes the configuration of Bring Your Own License (BYOL) for
@@ -6099,6 +6193,7 @@ export const describeAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccount",
 }));
+
 export type DescribeAccountModificationsError =
   | AccessDeniedException
   | CommonErrors;
@@ -6119,6 +6214,7 @@ export const describeAccountModifications: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccountModifications",
 }));
+
 export type DescribeApplicationAssociationsError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6166,6 +6262,7 @@ export const describeApplicationAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeApplicationsError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6213,6 +6310,7 @@ export const describeApplications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeBundleAssociationsError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6240,6 +6338,7 @@ export const describeBundleAssociations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBundleAssociations",
 }));
+
 export type DescribeClientBrandingError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6271,6 +6370,7 @@ export const describeClientBranding: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeClientBranding",
 }));
+
 export type DescribeClientPropertiesError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6296,6 +6396,7 @@ export const describeClientProperties: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeClientProperties",
 }));
+
 export type DescribeConnectClientAddInsError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6321,6 +6422,7 @@ export const describeConnectClientAddIns: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConnectClientAddIns",
 }));
+
 export type DescribeConnectionAliasesError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6348,6 +6450,7 @@ export const describeConnectionAliases: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConnectionAliases",
 }));
+
 export type DescribeConnectionAliasPermissionsError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6378,6 +6481,7 @@ export const describeConnectionAliasPermissions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConnectionAliasPermissions",
 }));
+
 export type DescribeCustomWorkspaceImageImportError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -6398,6 +6502,7 @@ export const describeCustomWorkspaceImageImport: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCustomWorkspaceImageImport",
 }));
+
 export type DescribeImageAssociationsError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6425,6 +6530,7 @@ export const describeImageAssociations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeImageAssociations",
 }));
+
 export type DescribeIpGroupsError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6445,6 +6551,7 @@ export const describeIpGroups: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeIpGroups",
 }));
+
 export type DescribeTagsError = ResourceNotFoundException | CommonErrors;
 /**
  * Describes the specified tags for the specified WorkSpaces resource.
@@ -6462,6 +6569,7 @@ export const describeTags: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTags",
 }));
+
 export type DescribeWorkspaceAssociationsError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6489,6 +6597,7 @@ export const describeWorkspaceAssociations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeWorkspaceAssociations",
 }));
+
 export type DescribeWorkspaceBundlesError =
   | InvalidParameterValuesException
   | CommonErrors;
@@ -6530,6 +6639,7 @@ export const describeWorkspaceBundles: API.OperationMethod<
     items: "Bundles",
   } as const,
 }));
+
 export type DescribeWorkspaceDirectoriesError =
   | InvalidParameterValuesException
   | CommonErrors;
@@ -6569,6 +6679,7 @@ export const describeWorkspaceDirectories: API.OperationMethod<
     items: "Directories",
   } as const,
 }));
+
 export type DescribeWorkspaceImagePermissionsError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6594,6 +6705,7 @@ export const describeWorkspaceImagePermissions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeWorkspaceImagePermissions",
 }));
+
 export type DescribeWorkspaceImagesError = AccessDeniedException | CommonErrors;
 /**
  * Retrieves a list that describes one or more specified images, if the image identifiers
@@ -6612,6 +6724,7 @@ export const describeWorkspaceImages: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeWorkspaceImages",
 }));
+
 export type DescribeWorkspacesError =
   | InvalidParameterValuesException
   | ResourceUnavailableException
@@ -6656,6 +6769,7 @@ export const describeWorkspaces: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeWorkspacesConnectionStatusError =
   | InvalidParameterValuesException
   | CommonErrors;
@@ -6675,6 +6789,7 @@ export const describeWorkspacesConnectionStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeWorkspacesConnectionStatus",
 }));
+
 export type DescribeWorkspaceSnapshotsError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6700,6 +6815,7 @@ export const describeWorkspaceSnapshots: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeWorkspaceSnapshots",
 }));
+
 export type DescribeWorkspacesPoolsError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6725,6 +6841,7 @@ export const describeWorkspacesPools: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeWorkspacesPools",
 }));
+
 export type DescribeWorkspacesPoolSessionsError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6750,6 +6867,7 @@ export const describeWorkspacesPoolSessions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeWorkspacesPoolSessions",
 }));
+
 export type DisassociateConnectionAliasError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6786,6 +6904,7 @@ export const disassociateConnectionAlias: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateConnectionAlias",
 }));
+
 export type DisassociateIpGroupsError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6815,6 +6934,7 @@ export const disassociateIpGroups: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateIpGroups",
 }));
+
 export type DisassociateWorkspaceApplicationError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6844,6 +6964,7 @@ export const disassociateWorkspaceApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateWorkspaceApplication",
 }));
+
 export type GetAccountLinkError =
   | AccessDeniedException
   | InternalServerException
@@ -6871,6 +6992,7 @@ export const getAccountLink: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountLink",
 }));
+
 export type ImportClientBrandingError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6918,6 +7040,7 @@ export const importClientBranding: API.OperationMethod<
   retry: Retry,
   operationName: "ImportClientBranding",
 }));
+
 export type ImportCustomWorkspaceImageError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6953,6 +7076,7 @@ export const importCustomWorkspaceImage: API.OperationMethod<
   retry: Retry,
   operationName: "ImportCustomWorkspaceImage",
 }));
+
 export type ImportWorkspaceImageError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -6988,6 +7112,7 @@ export const importWorkspaceImage: API.OperationMethod<
   retry: Retry,
   operationName: "ImportWorkspaceImage",
 }));
+
 export type ListAccountLinksError =
   | AccessDeniedException
   | InternalServerException
@@ -7030,6 +7155,7 @@ export const listAccountLinks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAvailableManagementCidrRangesError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7059,6 +7185,7 @@ export const listAvailableManagementCidrRanges: API.OperationMethod<
   retry: Retry,
   operationName: "ListAvailableManagementCidrRanges",
 }));
+
 export type MigrateWorkspaceError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7102,6 +7229,7 @@ export const migrateWorkspace: API.OperationMethod<
   retry: Retry,
   operationName: "MigrateWorkspace",
 }));
+
 export type ModifyAccountError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7132,6 +7260,7 @@ export const modifyAccount: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyAccount",
 }));
+
 export type ModifyCertificateBasedAuthPropertiesError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7160,6 +7289,7 @@ export const modifyCertificateBasedAuthProperties: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyCertificateBasedAuthProperties",
 }));
+
 export type ModifyClientPropertiesError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7187,6 +7317,7 @@ export const modifyClientProperties: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyClientProperties",
 }));
+
 export type ModifyEndpointEncryptionModeError =
   | AccessDeniedException
   | OperationNotSupportedException
@@ -7213,6 +7344,7 @@ export const modifyEndpointEncryptionMode: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyEndpointEncryptionMode",
 }));
+
 export type ModifySamlPropertiesError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7242,6 +7374,7 @@ export const modifySamlProperties: API.OperationMethod<
   retry: Retry,
   operationName: "ModifySamlProperties",
 }));
+
 export type ModifySelfservicePermissionsError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7270,6 +7403,7 @@ export const modifySelfservicePermissions: API.OperationMethod<
   retry: Retry,
   operationName: "ModifySelfservicePermissions",
 }));
+
 export type ModifyStreamingPropertiesError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7297,6 +7431,7 @@ export const modifyStreamingProperties: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyStreamingProperties",
 }));
+
 export type ModifyWorkspaceAccessPropertiesError =
   | AccessDeniedException
   | InvalidParameterCombinationException
@@ -7328,6 +7463,7 @@ export const modifyWorkspaceAccessProperties: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyWorkspaceAccessProperties",
 }));
+
 export type ModifyWorkspaceCreationPropertiesError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7355,6 +7491,7 @@ export const modifyWorkspaceCreationProperties: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyWorkspaceCreationProperties",
 }));
+
 export type ModifyWorkspacePropertiesError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7394,6 +7531,7 @@ export const modifyWorkspaceProperties: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyWorkspaceProperties",
 }));
+
 export type ModifyWorkspaceStateError =
   | InvalidParameterValuesException
   | InvalidResourceStateException
@@ -7427,6 +7565,7 @@ export const modifyWorkspaceState: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyWorkspaceState",
 }));
+
 export type RebootWorkspacesError =
   | OperationNotSupportedException
   | CommonErrors;
@@ -7452,6 +7591,7 @@ export const rebootWorkspaces: API.OperationMethod<
   retry: Retry,
   operationName: "RebootWorkspaces",
 }));
+
 export type RebuildWorkspacesError =
   | OperationNotSupportedException
   | CommonErrors;
@@ -7482,6 +7622,7 @@ export const rebuildWorkspaces: API.OperationMethod<
   retry: Retry,
   operationName: "RebuildWorkspaces",
 }));
+
 export type RegisterWorkspaceDirectoryError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7523,6 +7664,7 @@ export const registerWorkspaceDirectory: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterWorkspaceDirectory",
 }));
+
 export type RejectAccountLinkInvitationError =
   | AccessDeniedException
   | ConflictException
@@ -7552,6 +7694,7 @@ export const rejectAccountLinkInvitation: API.OperationMethod<
   retry: Retry,
   operationName: "RejectAccountLinkInvitation",
 }));
+
 export type RestoreWorkspaceError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7589,6 +7732,7 @@ export const restoreWorkspace: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreWorkspace",
 }));
+
 export type RevokeIpRulesError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7616,6 +7760,7 @@ export const revokeIpRules: API.OperationMethod<
   retry: Retry,
   operationName: "RevokeIpRules",
 }));
+
 export type StartWorkspacesError = CommonErrors;
 /**
  * Starts the specified WorkSpaces.
@@ -7636,6 +7781,7 @@ export const startWorkspaces: API.OperationMethod<
   retry: Retry,
   operationName: "StartWorkspaces",
 }));
+
 export type StartWorkspacesPoolError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7672,6 +7818,7 @@ export const startWorkspacesPool: API.OperationMethod<
   retry: Retry,
   operationName: "StartWorkspacesPool",
 }));
+
 export type StopWorkspacesError = CommonErrors;
 /**
  * Stops the specified WorkSpaces.
@@ -7693,6 +7840,7 @@ export const stopWorkspaces: API.OperationMethod<
   retry: Retry,
   operationName: "StopWorkspaces",
 }));
+
 export type StopWorkspacesPoolError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7725,6 +7873,7 @@ export const stopWorkspacesPool: API.OperationMethod<
   retry: Retry,
   operationName: "StopWorkspacesPool",
 }));
+
 export type TerminateWorkspacesError = CommonErrors;
 /**
  * Terminates the specified WorkSpaces.
@@ -7767,6 +7916,7 @@ export const terminateWorkspaces: API.OperationMethod<
   retry: Retry,
   operationName: "TerminateWorkspaces",
 }));
+
 export type TerminateWorkspacesPoolError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7796,6 +7946,7 @@ export const terminateWorkspacesPool: API.OperationMethod<
   retry: Retry,
   operationName: "TerminateWorkspacesPool",
 }));
+
 export type TerminateWorkspacesPoolSessionError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7825,6 +7976,7 @@ export const terminateWorkspacesPoolSession: API.OperationMethod<
   retry: Retry,
   operationName: "TerminateWorkspacesPoolSession",
 }));
+
 export type UpdateConnectClientAddInError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7851,6 +8003,7 @@ export const updateConnectClientAddIn: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConnectClientAddIn",
 }));
+
 export type UpdateConnectionAliasPermissionError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7899,6 +8052,7 @@ export const updateConnectionAliasPermission: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConnectionAliasPermission",
 }));
+
 export type UpdateRulesOfIpGroupError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7929,6 +8083,7 @@ export const updateRulesOfIpGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRulesOfIpGroup",
 }));
+
 export type UpdateWorkspaceBundleError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -7964,6 +8119,7 @@ export const updateWorkspaceBundle: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateWorkspaceBundle",
 }));
+
 export type UpdateWorkspaceImagePermissionError =
   | AccessDeniedException
   | InvalidParameterValuesException
@@ -8013,6 +8169,7 @@ export const updateWorkspaceImagePermission: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateWorkspaceImagePermission",
 }));
+
 export type UpdateWorkspacesPoolError =
   | AccessDeniedException
   | InvalidParameterValuesException

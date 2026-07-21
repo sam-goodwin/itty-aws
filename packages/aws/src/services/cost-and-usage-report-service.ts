@@ -85,20 +85,35 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class DuplicateReportNameException extends S.TaggedErrorClass<DuplicateReportNameException>()(
+  "DuplicateReportNameException",
+  { Message: S.optional(S.String) },
+) {}
+export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
+  "InternalErrorException",
+  { Message: S.optional(S.String) },
+).pipe(C.withServerError) {}
+export class ReportBucketNotVerified extends S.TaggedErrorClass<ReportBucketNotVerified>()(
+  "ReportBucketNotVerified",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { matches: "[Bb]ucket" },
+  }),
+).pipe(C.withRetryableError) {}
+export class ReportLimitReachedException extends S.TaggedErrorClass<ReportLimitReachedException>()(
+  "ReportLimitReachedException",
+  { Message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+) {}
 export type ReportName = string;
-export type DeleteResponseMessage = string;
-export type ErrorMessage = string;
-export type MaxResults = number;
-export type S3Bucket = string;
-export type S3Prefix = string;
-export type RefreshClosedReports = boolean;
-export type BillingViewArn = string;
-export type LastDelivery = string;
-export type TagKey = string;
-export type TagValue = string;
-
-//# Schemas
 export interface DeleteReportDefinitionRequest {
   ReportName: string;
 }
@@ -109,6 +124,7 @@ export const DeleteReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteReportDefinitionRequest",
 }) as any as S.Schema<DeleteReportDefinitionRequest>;
+export type DeleteResponseMessage = string;
 export interface DeleteReportDefinitionResponse {
   ResponseMessage?: string;
 }
@@ -117,6 +133,7 @@ export const DeleteReportDefinitionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteReportDefinitionResponse",
 }) as any as S.Schema<DeleteReportDefinitionResponse>;
+export type MaxResults = number;
 export interface DescribeReportDefinitionsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -133,18 +150,24 @@ export const DescribeReportDefinitionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeReportDefinitionsRequest>;
 export type TimeUnit = "HOURLY" | "DAILY" | "MONTHLY" | (string & {});
 export const TimeUnit = /*@__PURE__*/ S.String;
+
 export type ReportFormat = "textORcsv" | "Parquet" | (string & {});
 export const ReportFormat = /*@__PURE__*/ S.String;
+
 export type CompressionFormat = "ZIP" | "GZIP" | "Parquet" | (string & {});
 export const CompressionFormat = /*@__PURE__*/ S.String;
+
 export type SchemaElement =
   | "RESOURCES"
   | "SPLIT_COST_ALLOCATION_DATA"
   | "MANUAL_DISCOUNT_COMPATIBILITY"
   | (string & {});
 export const SchemaElement = /*@__PURE__*/ S.String;
+
 export type SchemaElementList = SchemaElement[];
 export const SchemaElementList = /*@__PURE__*/ S.Array(SchemaElement);
+export type S3Bucket = string;
+export type S3Prefix = string;
 export type AWSRegion =
   | "af-south-1"
   | "ap-east-1"
@@ -176,25 +199,32 @@ export type AWSRegion =
   | "cn-northwest-1"
   | (string & {});
 export const AWSRegion = /*@__PURE__*/ S.String;
+
 export type AdditionalArtifact =
   | "REDSHIFT"
   | "QUICKSIGHT"
   | "ATHENA"
   | (string & {});
 export const AdditionalArtifact = /*@__PURE__*/ S.String;
+
 export type AdditionalArtifactList = AdditionalArtifact[];
 export const AdditionalArtifactList = /*@__PURE__*/ S.Array(AdditionalArtifact);
+export type RefreshClosedReports = boolean;
 export type ReportVersioning =
   | "CREATE_NEW_REPORT"
   | "OVERWRITE_REPORT"
   | (string & {});
 export const ReportVersioning = /*@__PURE__*/ S.String;
+
+export type BillingViewArn = string;
+export type LastDelivery = string;
 export type LastStatus =
   | "SUCCESS"
   | "ERROR_PERMISSIONS"
   | "ERROR_NO_BUCKET"
   | (string & {});
 export const LastStatus = /*@__PURE__*/ S.String;
+
 export interface ReportStatus {
   lastDelivery?: string;
   lastStatus?: LastStatus;
@@ -263,6 +293,8 @@ export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceRequest",
 }) as any as S.Schema<ListTagsForResourceRequest>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -353,38 +385,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-
-//# Errors
-export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
-  "InternalErrorException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class ReportBucketNotVerified extends S.TaggedErrorClass<ReportBucketNotVerified>()(
-  "ReportBucketNotVerified",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { matches: "[Bb]ucket" },
-  }),
-).pipe(C.withRetryableError) {}
-export class DuplicateReportNameException extends S.TaggedErrorClass<DuplicateReportNameException>()(
-  "DuplicateReportNameException",
-  { Message: S.optional(S.String) },
-) {}
-export class ReportLimitReachedException extends S.TaggedErrorClass<ReportLimitReachedException>()(
-  "ReportLimitReachedException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type DeleteReportDefinitionError =
   | InternalErrorException
   | ValidationException
@@ -406,6 +407,7 @@ export const deleteReportDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReportDefinition",
 }));
+
 export type DescribeReportDefinitionsError =
   | InternalErrorException
   | CommonErrors;
@@ -445,6 +447,7 @@ export const describeReportDefinitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalErrorException
   | ResourceNotFoundException
@@ -470,6 +473,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ModifyReportDefinitionError =
   | InternalErrorException
   | ValidationException
@@ -495,6 +499,7 @@ export const modifyReportDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyReportDefinition",
 }));
+
 export type PutReportDefinitionError =
   | DuplicateReportNameException
   | InternalErrorException
@@ -526,6 +531,7 @@ export const putReportDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "PutReportDefinition",
 }));
+
 export type TagResourceError =
   | InternalErrorException
   | ResourceNotFoundException
@@ -551,6 +557,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalErrorException
   | ResourceNotFoundException

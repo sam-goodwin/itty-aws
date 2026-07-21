@@ -87,147 +87,49 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class PreconditionFailedException extends S.TaggedErrorClass<PreconditionFailedException>()(
+  "PreconditionFailedException",
+  { message: S.optional(S.String) },
+  T.HttpError(412),
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+    message: S.optional(S.String),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Id = string;
 export type BotVersion = string;
 export type LocaleId = string;
 export type Phrase = string;
 export type Weight = number;
-export type ItemId = string;
-export type ErrorMessage = string;
-export type ExceptionMessage = string;
-export type RetryAfterSeconds = number;
-export type DraftBotVersion = string;
-export type Name = string;
-export type Description = string;
-export type RoleArn = string;
-export type ChildDirected = boolean;
-export type SessionTTL = number;
-export type TagKey = string;
-export type TagValue = string;
-export type BotAliasId = string;
-export type BotAliasName = string;
-export type BoxedBoolean = boolean;
-export type NumericalBotVersion = string;
-export type LambdaARN = string;
-export type CodeHookInterfaceVersion = string;
-export type CloudWatchLogGroupArn = string;
-export type LogPrefix = string;
-export type KmsKeyArn = string;
-export type S3BucketArn = string;
-export type ConfidenceThreshold = number;
-export type VoiceId = string;
-export type BedrockModelArn = string;
-export type AudioFillerDelayInMilliseconds = number;
-export type AudioFillerDurationInMilliseconds = number;
-export type AudioFillerDeliveryDelayInMilliseconds = number;
-export type SecretsManagerSecretArn = string;
-export type DeepgramModelId = string;
-export type Enabled = boolean;
-export type BedrockGuardrailIdentifier = string;
-export type BedrockGuardrailVersion = string;
-export type BedrockModelCustomPrompt = string;
-export type MaxDisambiguationIntents = number;
-export type CustomDisambiguationMessage = string;
-export type LocaleName = string;
-export type ReplicaRegion = string;
-export type ImportExportFilePassword = string | redacted.Redacted<string>;
-export type DisplayName = string;
-export type IntentSignature = string;
-export type Utterance = string;
-export type PlainTextMessageValue = string;
-export type CustomPayloadValue = string;
-export type SSMLMessageValue = string;
-export type AttachmentTitle = string;
-export type AttachmentUrl = string;
-export type ButtonText = string;
-export type ButtonValue = string;
-export type NonEmptyString = string;
-export type ConditionExpression = string;
-export type FulfillmentStartResponseDelay = number;
-export type FulfillmentUpdateResponseFrequency = number;
-export type FulfillmentTimeout = number;
-export type PromptMaxRetries = number;
-export type TimeInMilliSeconds = number;
-export type MaxUtteranceDigits = number;
-export type DTMFCharacter = string;
-export type ContextTimeToLiveInSeconds = number;
-export type ContextTurnsToLive = number;
-export type KendraIndexArn = string;
-export type QueryFilterString = string;
-export type DomainEndpoint = string;
-export type OSIndexName = string;
-export type QuestionField = string;
-export type AnswerField = string;
-export type IncludeField = string;
-export type BedrockKnowledgeBaseArn = string;
-export type QInConnectAssistantARN = string;
-export type AmazonResourceName = string;
-export type Policy = string;
-export type RevisionId = string;
-export type ServicePrincipal = string;
-export type PrincipalArn = string;
-export type Operation = string;
-export type ConditionOperator = string;
-export type ConditionKey = string;
-export type ConditionValue = string;
-export type BuiltInOrCustomSlotTypeId = string;
-export type SlotDefaultValueString = string;
-export type StillWaitingResponseFrequency = number;
-export type StillWaitingResponseTimeout = number;
-export type SubSlotExpression = string;
-export type Value = string;
-export type RegexPattern = string;
-export type SlotTypeSignature = string;
-export type S3BucketName = string;
-export type S3ObjectPath = string;
-export type PresignedS3Url = string;
-export type SkipResourceInUseCheck = boolean;
-export type UUID = string;
-export type SessionId = string;
-export type FailureReason = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type ResourceCount = number;
-export type BotLocaleHistoryEventDescription = string;
-export type RecommendedAction = string;
-export type ObjectPrefix = string;
-export type FilePassword = string | redacted.Redacted<string>;
-export type Count = number;
-export type GenerationInput = string;
-export type ImportedResourceId = string;
-export type PriorityValue = number;
-export type TimeValue = number;
-export type FilterValue = string;
-export type HitCount = number;
-export type MissedCount = number;
-export type BuiltInsMaxResults = number;
-export type AnalyticsFilterValue = string;
-export type AnalyticsBinValue = number;
-export type AnalyticsGroupByValue = string;
-export type AnalyticsMetricValue = number;
-export type AnalyticsPath = string;
-export type AnalyticsNodeCount = number;
-export type AnalyticsNodeLevel = number;
-export type SampleUtterancesCount = number;
-export type AnalyticsChannel = string;
-export type AnalyticsSessionId = string;
-export type AnalyticsLongValue = number;
-export type AnalyticsOriginatingRequestId = string;
-export type TestSetConversationId = string;
-export type TestResultSlotName = string;
-export type RecordNumber = number;
-export type TestSetAgentPrompt = string;
-export type TestSetUtteranceText = string;
-export type AudioFileS3Location = string;
-export type ActiveContextName = string;
-export type RuntimeHintPhrase = string;
-export type TurnNumber = number;
-export type UtteranceUnderstood = boolean;
-export type NextIndex = number;
-export type Transcript = string;
-
-//# Schemas
 export interface NewCustomVocabularyItem {
   phrase: string;
   weight?: number;
@@ -275,6 +177,8 @@ export const BatchCreateCustomVocabularyItemRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchCreateCustomVocabularyItemRequest",
 }) as any as S.Schema<BatchCreateCustomVocabularyItemRequest>;
+export type ItemId = string;
+export type ErrorMessage = string;
 export type ErrorCode =
   | "DUPLICATE_INPUT"
   | "RESOURCE_DOES_NOT_EXIST"
@@ -282,6 +186,7 @@ export type ErrorCode =
   | "INTERNAL_SERVER_FAILURE"
   | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
+
 export interface FailedCustomVocabularyItem {
   itemId?: string;
   errorMessage?: string;
@@ -449,6 +354,7 @@ export const BatchUpdateCustomVocabularyItemResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchUpdateCustomVocabularyItemResponse",
 }) as any as S.Schema<BatchUpdateCustomVocabularyItemResponse>;
+export type DraftBotVersion = string;
 export interface BuildBotLocaleRequest {
   botId: string;
   botVersion: string;
@@ -487,6 +393,7 @@ export type BotLocaleStatus =
   | "Processing"
   | (string & {});
 export const BotLocaleStatus = /*@__PURE__*/ S.String;
+
 export interface BuildBotLocaleResponse {
   botId?: string;
   botVersion?: string;
@@ -507,12 +414,19 @@ export const BuildBotLocaleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BuildBotLocaleResponse",
 }) as any as S.Schema<BuildBotLocaleResponse>;
+export type Name = string;
+export type Description = string;
+export type RoleArn = string;
+export type ChildDirected = boolean;
 export interface DataPrivacy {
   childDirected: boolean;
 }
 export const DataPrivacy = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ childDirected: S.Boolean }),
 ).annotate({ identifier: "DataPrivacy" }) as any as S.Schema<DataPrivacy>;
+export type SessionTTL = number;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -520,6 +434,9 @@ export const TagMap = /*@__PURE__*/ S.Record(
 );
 export type BotType = "Bot" | "BotNetwork" | (string & {});
 export const BotType = /*@__PURE__*/ S.String;
+
+export type BotAliasId = string;
+export type BotAliasName = string;
 export interface BotMember {
   botMemberId: string;
   botMemberName: string;
@@ -538,6 +455,7 @@ export const BotMember = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BotMember" }) as any as S.Schema<BotMember>;
 export type BotMembers = BotMember[];
 export const BotMembers = /*@__PURE__*/ S.Array(BotMember);
+export type BoxedBoolean = boolean;
 export interface ErrorLogSettings {
   enabled: boolean;
 }
@@ -594,6 +512,7 @@ export type BotStatus =
   | "Updating"
   | (string & {});
 export const BotStatus = /*@__PURE__*/ S.String;
+
 export interface CreateBotResponse {
   botId?: string;
   botName?: string;
@@ -630,6 +549,9 @@ export const CreateBotResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBotResponse",
 }) as any as S.Schema<CreateBotResponse>;
+export type NumericalBotVersion = string;
+export type LambdaARN = string;
+export type CodeHookInterfaceVersion = string;
 export interface LambdaCodeHook {
   lambdaARN: string;
   codeHookInterfaceVersion: string;
@@ -664,6 +586,8 @@ export const BotAliasLocaleSettingsMap = /*@__PURE__*/ S.Record(
   S.String,
   BotAliasLocaleSettings.pipe(S.optional),
 );
+export type CloudWatchLogGroupArn = string;
+export type LogPrefix = string;
 export interface CloudWatchLogGroupLogDestination {
   cloudWatchLogGroupArn: string;
   logPrefix: string;
@@ -695,6 +619,8 @@ export const TextLogSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TextLogSetting" }) as any as S.Schema<TextLogSetting>;
 export type TextLogSettingsList = TextLogSetting[];
 export const TextLogSettingsList = /*@__PURE__*/ S.Array(TextLogSetting);
+export type KmsKeyArn = string;
+export type S3BucketArn = string;
 export interface S3BucketLogDestination {
   kmsKeyArn?: string;
   s3BucketArn: string;
@@ -795,6 +721,7 @@ export type BotAliasStatus =
   | "Failed"
   | (string & {});
 export const BotAliasStatus = /*@__PURE__*/ S.String;
+
 export interface CreateBotAliasResponse {
   botAliasId?: string;
   botAliasName?: string;
@@ -829,6 +756,7 @@ export const CreateBotAliasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBotAliasResponse",
 }) as any as S.Schema<CreateBotAliasResponse>;
+export type ConfidenceThreshold = number;
 export type VoiceEngine =
   | "standard"
   | "neural"
@@ -836,6 +764,8 @@ export type VoiceEngine =
   | "generative"
   | (string & {});
 export const VoiceEngine = /*@__PURE__*/ S.String;
+
+export type VoiceId = string;
 export interface VoiceSettings {
   engine?: VoiceEngine;
   voiceId: string;
@@ -843,6 +773,7 @@ export interface VoiceSettings {
 export const VoiceSettings = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ engine: S.optional(VoiceEngine), voiceId: S.String }),
 ).annotate({ identifier: "VoiceSettings" }) as any as S.Schema<VoiceSettings>;
+export type BedrockModelArn = string;
 export interface SpeechFoundationModel {
   modelArn: string;
   voiceId?: string;
@@ -870,6 +801,10 @@ export type AudioFillerType =
   | "TYPING_QUIET_QWERTY"
   | (string & {});
 export const AudioFillerType = /*@__PURE__*/ S.String;
+
+export type AudioFillerDelayInMilliseconds = number;
+export type AudioFillerDurationInMilliseconds = number;
+export type AudioFillerDeliveryDelayInMilliseconds = number;
 export interface AudioFillerSettings {
   enabled?: boolean;
   audioType?: AudioFillerType;
@@ -894,6 +829,9 @@ export type SpeechModelPreference =
   | "Deepgram"
   | (string & {});
 export const SpeechModelPreference = /*@__PURE__*/ S.String;
+
+export type SecretsManagerSecretArn = string;
+export type DeepgramModelId = string;
 export interface DeepgramSpeechModelConfig {
   apiTokenSecretArn: string;
   modelId?: string;
@@ -923,6 +861,9 @@ export const SpeechRecognitionSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SpeechRecognitionSettings",
 }) as any as S.Schema<SpeechRecognitionSettings>;
+export type Enabled = boolean;
+export type BedrockGuardrailIdentifier = string;
+export type BedrockGuardrailVersion = string;
 export interface BedrockGuardrailConfiguration {
   identifier: string;
   version: string;
@@ -934,6 +875,8 @@ export const BedrockGuardrailConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BedrockGuardrailConfiguration>;
 export type BedrockTraceStatus = "ENABLED" | "DISABLED" | (string & {});
 export const BedrockTraceStatus = /*@__PURE__*/ S.String;
+
+export type BedrockModelCustomPrompt = string;
 export interface BedrockModelSpecification {
   modelArn: string;
   guardrail?: BedrockGuardrailConfiguration;
@@ -965,6 +908,9 @@ export const SlotResolutionImprovementSpecification = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SlotResolutionImprovementSpecification>;
 export type AssistedNluMode = "Primary" | "Fallback" | (string & {});
 export const AssistedNluMode = /*@__PURE__*/ S.String;
+
+export type MaxDisambiguationIntents = number;
+export type CustomDisambiguationMessage = string;
 export interface IntentDisambiguationSettings {
   enabled: boolean;
   maxDisambiguationIntents?: number;
@@ -1064,6 +1010,7 @@ export type SpeechDetectionSensitivity =
   | "MaximumNoiseTolerance"
   | (string & {});
 export const SpeechDetectionSensitivity = /*@__PURE__*/ S.String;
+
 export interface CreateBotLocaleRequest {
   botId: string;
   botVersion: string;
@@ -1106,6 +1053,7 @@ export const CreateBotLocaleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBotLocaleRequest",
 }) as any as S.Schema<CreateBotLocaleRequest>;
+export type LocaleName = string;
 export interface CreateBotLocaleResponse {
   botId?: string;
   botVersion?: string;
@@ -1144,6 +1092,7 @@ export const CreateBotLocaleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBotLocaleResponse",
 }) as any as S.Schema<CreateBotLocaleResponse>;
+export type ReplicaRegion = string;
 export interface CreateBotReplicaRequest {
   botId: string;
   replicaRegion: string;
@@ -1172,6 +1121,7 @@ export type BotReplicaStatus =
   | "Failed"
   | (string & {});
 export const BotReplicaStatus = /*@__PURE__*/ S.String;
+
 export interface CreateBotReplicaResponse {
   botId?: string;
   replicaRegion?: string;
@@ -1313,6 +1263,8 @@ export const ExportResourceSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportResourceSpecification>;
 export type ImportExportFileFormat = "LexJson" | "TSV" | "CSV" | (string & {});
 export const ImportExportFileFormat = /*@__PURE__*/ S.String;
+
+export type ImportExportFilePassword = string | redacted.Redacted<string>;
 export interface CreateExportRequest {
   resourceSpecification: ExportResourceSpecification;
   fileFormat: ImportExportFileFormat;
@@ -1343,6 +1295,7 @@ export type ExportStatus =
   | "Deleting"
   | (string & {});
 export const ExportStatus = /*@__PURE__*/ S.String;
+
 export interface CreateExportResponse {
   exportId?: string;
   resourceSpecification?: ExportResourceSpecification;
@@ -1363,6 +1316,9 @@ export const CreateExportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateExportResponse",
 }) as any as S.Schema<CreateExportResponse>;
+export type DisplayName = string;
+export type IntentSignature = string;
+export type Utterance = string;
 export interface SampleUtterance {
   utterance: string;
 }
@@ -1381,6 +1337,7 @@ export const DialogCodeHookSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DialogCodeHookSettings",
 }) as any as S.Schema<DialogCodeHookSettings>;
+export type PlainTextMessageValue = string;
 export interface PlainTextMessage {
   value: string;
 }
@@ -1389,18 +1346,24 @@ export const PlainTextMessage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PlainTextMessage",
 }) as any as S.Schema<PlainTextMessage>;
+export type CustomPayloadValue = string;
 export interface CustomPayload {
   value: string;
 }
 export const CustomPayload = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.String }),
 ).annotate({ identifier: "CustomPayload" }) as any as S.Schema<CustomPayload>;
+export type SSMLMessageValue = string;
 export interface SSMLMessage {
   value: string;
 }
 export const SSMLMessage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ value: S.String }),
 ).annotate({ identifier: "SSMLMessage" }) as any as S.Schema<SSMLMessage>;
+export type AttachmentTitle = string;
+export type AttachmentUrl = string;
+export type ButtonText = string;
+export type ButtonValue = string;
 export interface Button {
   text: string;
   value: string;
@@ -1475,6 +1438,7 @@ export type DialogActionType =
   | "EndConversation"
   | (string & {});
 export const DialogActionType = /*@__PURE__*/ S.String;
+
 export interface DialogAction {
   type: DialogActionType;
   slotToElicit?: string;
@@ -1489,6 +1453,8 @@ export const DialogAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DialogAction" }) as any as S.Schema<DialogAction>;
 export type SlotShape = "Scalar" | "List" | (string & {});
 export const SlotShape = /*@__PURE__*/ S.String;
+
+export type NonEmptyString = string;
 export interface SlotValue {
   interpretedValue?: string;
 }
@@ -1553,6 +1519,7 @@ export const DialogState = /*@__PURE__*/ S.suspend(() =>
     sessionAttributes: S.optional(StringMap),
   }),
 ).annotate({ identifier: "DialogState" }) as any as S.Schema<DialogState>;
+export type ConditionExpression = string;
 export interface Condition {
   expressionString: string;
 }
@@ -1629,6 +1596,7 @@ export const PostFulfillmentStatusSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PostFulfillmentStatusSpecification",
 }) as any as S.Schema<PostFulfillmentStatusSpecification>;
+export type FulfillmentStartResponseDelay = number;
 export interface FulfillmentStartResponseSpecification {
   delayInSeconds: number;
   messageGroups: MessageGroup[];
@@ -1644,6 +1612,7 @@ export const FulfillmentStartResponseSpecification = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "FulfillmentStartResponseSpecification",
 }) as any as S.Schema<FulfillmentStartResponseSpecification>;
+export type FulfillmentUpdateResponseFrequency = number;
 export interface FulfillmentUpdateResponseSpecification {
   frequencyInSeconds: number;
   messageGroups: MessageGroup[];
@@ -1659,6 +1628,7 @@ export const FulfillmentUpdateResponseSpecification = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "FulfillmentUpdateResponseSpecification",
 }) as any as S.Schema<FulfillmentUpdateResponseSpecification>;
+export type FulfillmentTimeout = number;
 export interface FulfillmentUpdatesSpecification {
   active: boolean;
   startResponse?: FulfillmentStartResponseSpecification;
@@ -1695,8 +1665,10 @@ export const FulfillmentCodeHookSettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FulfillmentCodeHookSettings",
 }) as any as S.Schema<FulfillmentCodeHookSettings>;
+export type PromptMaxRetries = number;
 export type MessageSelectionStrategy = "Random" | "Ordered" | (string & {});
 export const MessageSelectionStrategy = /*@__PURE__*/ S.String;
+
 export type PromptAttempt =
   | "Initial"
   | "Retry1"
@@ -1706,6 +1678,7 @@ export type PromptAttempt =
   | "Retry5"
   | (string & {});
 export const PromptAttempt = /*@__PURE__*/ S.String;
+
 export interface AllowedInputTypes {
   allowAudioInput: boolean;
   allowDTMFInput: boolean;
@@ -1715,6 +1688,7 @@ export const AllowedInputTypes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AllowedInputTypes",
 }) as any as S.Schema<AllowedInputTypes>;
+export type TimeInMilliSeconds = number;
 export interface AudioSpecification {
   maxLengthMs: number;
   endTimeoutMs: number;
@@ -1724,6 +1698,8 @@ export const AudioSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AudioSpecification",
 }) as any as S.Schema<AudioSpecification>;
+export type MaxUtteranceDigits = number;
+export type DTMFCharacter = string;
 export interface DTMFSpecification {
   maxLength: number;
   endTimeoutMs: number;
@@ -1919,6 +1895,8 @@ export const InputContext = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "InputContext" }) as any as S.Schema<InputContext>;
 export type InputContextsList = InputContext[];
 export const InputContextsList = /*@__PURE__*/ S.Array(InputContext);
+export type ContextTimeToLiveInSeconds = number;
+export type ContextTurnsToLive = number;
 export interface OutputContext {
   name: string;
   timeToLiveInSeconds: number;
@@ -1933,6 +1911,8 @@ export const OutputContext = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "OutputContext" }) as any as S.Schema<OutputContext>;
 export type OutputContextsList = OutputContext[];
 export const OutputContextsList = /*@__PURE__*/ S.Array(OutputContext);
+export type KendraIndexArn = string;
+export type QueryFilterString = string;
 export interface KendraConfiguration {
   kendraIndex: string;
   queryFilterStringEnabled?: boolean;
@@ -1963,6 +1943,10 @@ export const InitialResponseSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InitialResponseSetting",
 }) as any as S.Schema<InitialResponseSetting>;
+export type DomainEndpoint = string;
+export type OSIndexName = string;
+export type QuestionField = string;
+export type AnswerField = string;
 export interface ExactResponseFields {
   questionField: string;
   answerField: string;
@@ -1972,6 +1956,7 @@ export const ExactResponseFields = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExactResponseFields",
 }) as any as S.Schema<ExactResponseFields>;
+export type IncludeField = string;
 export type OSIncludeFields = string[];
 export const OSIncludeFields = /*@__PURE__*/ S.Array(S.String);
 export interface OpensearchConfiguration {
@@ -2008,6 +1993,7 @@ export const QnAKendraConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "QnAKendraConfiguration",
 }) as any as S.Schema<QnAKendraConfiguration>;
+export type BedrockKnowledgeBaseArn = string;
 export interface BedrockKnowledgeStoreExactResponseFields {
   answerField?: string;
 }
@@ -2058,6 +2044,7 @@ export const QnAIntentConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "QnAIntentConfiguration",
 }) as any as S.Schema<QnAIntentConfiguration>;
+export type QInConnectAssistantARN = string;
 export interface QInConnectAssistantConfiguration {
   assistantArn: string;
 }
@@ -2184,6 +2171,8 @@ export const CreateIntentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIntentResponse",
 }) as any as S.Schema<CreateIntentResponse>;
+export type AmazonResourceName = string;
+export type Policy = string;
 export interface CreateResourcePolicyRequest {
   resourceArn: string;
   policy: string;
@@ -2205,6 +2194,7 @@ export const CreateResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateResourcePolicyRequest",
 }) as any as S.Schema<CreateResourcePolicyRequest>;
+export type RevisionId = string;
 export interface CreateResourcePolicyResponse {
   resourceArn?: string;
   revisionId?: string;
@@ -2219,6 +2209,9 @@ export const CreateResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResourcePolicyResponse>;
 export type Effect = "Allow" | "Deny" | (string & {});
 export const Effect = /*@__PURE__*/ S.String;
+
+export type ServicePrincipal = string;
+export type PrincipalArn = string;
 export interface Principal {
   service?: string;
   arn?: string;
@@ -2228,8 +2221,12 @@ export const Principal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Principal" }) as any as S.Schema<Principal>;
 export type PrincipalList = Principal[];
 export const PrincipalList = /*@__PURE__*/ S.Array(Principal);
+export type Operation = string;
 export type OperationList = string[];
 export const OperationList = /*@__PURE__*/ S.Array(S.String);
+export type ConditionOperator = string;
+export type ConditionKey = string;
+export type ConditionValue = string;
 export type ConditionKeyValueMap = { [key: string]: string | undefined };
 export const ConditionKeyValueMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2291,6 +2288,8 @@ export const CreateResourcePolicyStatementResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateResourcePolicyStatementResponse",
 }) as any as S.Schema<CreateResourcePolicyStatementResponse>;
+export type BuiltInOrCustomSlotTypeId = string;
+export type SlotDefaultValueString = string;
 export interface SlotDefaultValue {
   defaultValue: string;
 }
@@ -2311,6 +2310,9 @@ export const SlotDefaultValueSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SlotDefaultValueSpecification>;
 export type SlotConstraint = "Required" | "Optional" | (string & {});
 export const SlotConstraint = /*@__PURE__*/ S.String;
+
+export type StillWaitingResponseFrequency = number;
+export type StillWaitingResponseTimeout = number;
 export interface StillWaitingResponseSpecification {
   messageGroups: MessageGroup[];
   frequencyInSeconds: number;
@@ -2372,6 +2374,7 @@ export type SlotResolutionStrategy =
   | "Default"
   | (string & {});
 export const SlotResolutionStrategy = /*@__PURE__*/ S.String;
+
 export interface SlotResolutionSetting {
   slotResolutionStrategy: SlotResolutionStrategy;
 }
@@ -2407,6 +2410,7 @@ export type ObfuscationSettingType =
   | "DefaultObfuscation"
   | (string & {});
 export const ObfuscationSettingType = /*@__PURE__*/ S.String;
+
 export interface ObfuscationSetting {
   obfuscationSettingType: ObfuscationSettingType;
 }
@@ -2423,6 +2427,7 @@ export const MultipleValuesSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MultipleValuesSetting",
 }) as any as S.Schema<MultipleValuesSetting>;
+export type SubSlotExpression = string;
 export interface SubSlotValueElicitationSetting {
   defaultValueSpecification?: SlotDefaultValueSpecification;
   promptSpecification: PromptSpecification;
@@ -2544,6 +2549,7 @@ export const CreateSlotResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSlotResponse",
 }) as any as S.Schema<CreateSlotResponse>;
+export type Value = string;
 export interface SampleValue {
   value: string;
 }
@@ -2570,6 +2576,8 @@ export type SlotValueResolutionStrategy =
   | "Concatenation"
   | (string & {});
 export const SlotValueResolutionStrategy = /*@__PURE__*/ S.String;
+
+export type RegexPattern = string;
 export interface SlotValueRegexFilter {
   pattern: string;
 }
@@ -2582,6 +2590,7 @@ export type AudioRecognitionStrategy =
   | "UseSlotValuesAsCustomVocabulary"
   | (string & {});
 export const AudioRecognitionStrategy = /*@__PURE__*/ S.String;
+
 export interface AdvancedRecognitionSetting {
   audioRecognitionStrategy?: AudioRecognitionStrategy;
 }
@@ -2604,6 +2613,9 @@ export const SlotValueSelectionSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SlotValueSelectionSetting",
 }) as any as S.Schema<SlotValueSelectionSetting>;
+export type SlotTypeSignature = string;
+export type S3BucketName = string;
+export type S3ObjectPath = string;
 export interface GrammarSlotTypeSource {
   s3BucketName: string;
   s3ObjectKey: string;
@@ -2807,6 +2819,7 @@ export const CreateUploadUrlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUploadUrlRequest",
 }) as any as S.Schema<CreateUploadUrlRequest>;
+export type PresignedS3Url = string;
 export interface CreateUploadUrlResponse {
   importId?: string;
   uploadUrl?: string;
@@ -2816,6 +2829,7 @@ export const CreateUploadUrlResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUploadUrlResponse",
 }) as any as S.Schema<CreateUploadUrlResponse>;
+export type SkipResourceInUseCheck = boolean;
 export interface DeleteBotRequest {
   botId: string;
   skipResourceInUseCheck?: boolean;
@@ -2890,6 +2904,7 @@ export const DeleteBotAliasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteBotAliasResponse",
 }) as any as S.Schema<DeleteBotAliasResponse>;
+export type UUID = string;
 export interface DeleteBotAnalyzerRecommendationRequest {
   botId: string;
   botAnalyzerRequestId: string;
@@ -3077,6 +3092,7 @@ export type CustomVocabularyStatus =
   | "Creating"
   | (string & {});
 export const CustomVocabularyStatus = /*@__PURE__*/ S.String;
+
 export interface DeleteCustomVocabularyResponse {
   botId?: string;
   botVersion?: string;
@@ -3146,6 +3162,7 @@ export type ImportStatus =
   | "Deleting"
   | (string & {});
 export const ImportStatus = /*@__PURE__*/ S.String;
+
 export interface DeleteImportResponse {
   importId?: string;
   importStatus?: ImportStatus;
@@ -3366,6 +3383,7 @@ export const DeleteTestSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteTestSetResponse",
 }) as any as S.Schema<DeleteTestSetResponse>;
+export type SessionId = string;
 export interface DeleteUtterancesRequest {
   botId: string;
   localeId?: string;
@@ -3412,6 +3430,7 @@ export const DescribeBotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeBotRequest",
 }) as any as S.Schema<DescribeBotRequest>;
+export type FailureReason = string;
 export type FailureReasons = string[];
 export const FailureReasons = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeBotResponse {
@@ -3541,6 +3560,8 @@ export const DescribeBotAliasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeBotAliasResponse",
 }) as any as S.Schema<DescribeBotAliasResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface DescribeBotAnalyzerRecommendationRequest {
   botId: string;
   botAnalyzerRequestId: string;
@@ -3578,6 +3599,7 @@ export type BotAnalyzerStatus =
   | "Stopped"
   | (string & {});
 export const BotAnalyzerStatus = /*@__PURE__*/ S.String;
+
 export interface IssueLocation {
   botLocale?: string;
   intentId?: string;
@@ -3592,6 +3614,7 @@ export const IssueLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IssueLocation" }) as any as S.Schema<IssueLocation>;
 export type Priority = "High" | "Medium" | "Low" | (string & {});
 export const Priority = /*@__PURE__*/ S.String;
+
 export interface BotAnalyzerRecommendation {
   issueLocation: IssueLocation;
   priority: Priority;
@@ -3663,6 +3686,8 @@ export const DescribeBotLocaleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeBotLocaleRequest",
 }) as any as S.Schema<DescribeBotLocaleRequest>;
+export type ResourceCount = number;
+export type BotLocaleHistoryEventDescription = string;
 export interface BotLocaleHistoryEvent {
   event: string;
   eventDate: Date;
@@ -3679,6 +3704,7 @@ export type BotLocaleHistoryEventsList = BotLocaleHistoryEvent[];
 export const BotLocaleHistoryEventsList = /*@__PURE__*/ S.Array(
   BotLocaleHistoryEvent,
 );
+export type RecommendedAction = string;
 export type RecommendedActions = string[];
 export const RecommendedActions = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeBotLocaleResponse {
@@ -3777,6 +3803,8 @@ export type BotRecommendationStatus =
   | "Stopped"
   | (string & {});
 export const BotRecommendationStatus = /*@__PURE__*/ S.String;
+
+export type ObjectPrefix = string;
 export type ObjectPrefixes = string[];
 export const ObjectPrefixes = /*@__PURE__*/ S.Array(S.String);
 export interface PathFormat {
@@ -3787,6 +3815,7 @@ export const PathFormat = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PathFormat" }) as any as S.Schema<PathFormat>;
 export type TranscriptFormat = "Lex" | (string & {});
 export const TranscriptFormat = /*@__PURE__*/ S.String;
+
 export interface DateRangeFilter {
   startDateTime: Date;
   endDateTime: Date;
@@ -3841,6 +3870,7 @@ export const TranscriptSourceSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TranscriptSourceSetting",
 }) as any as S.Schema<TranscriptSourceSetting>;
+export type FilePassword = string | redacted.Redacted<string>;
 export interface EncryptionSetting {
   kmsKeyArn?: string;
   botLocaleExportPassword?: string | redacted.Redacted<string>;
@@ -3855,6 +3885,7 @@ export const EncryptionSetting = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptionSetting",
 }) as any as S.Schema<EncryptionSetting>;
+export type Count = number;
 export interface IntentStatistics {
   discoveredIntentCount?: number;
 }
@@ -4009,6 +4040,8 @@ export type GenerationStatus =
   | "InProgress"
   | (string & {});
 export const GenerationStatus = /*@__PURE__*/ S.String;
+
+export type GenerationInput = string;
 export interface DescribeBotResourceGenerationResponse {
   botId?: string;
   botVersion?: string;
@@ -4298,6 +4331,7 @@ export const TestSetImportInputLocation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TestSetImportInputLocation>;
 export type TestSetModality = "Text" | "Audio" | (string & {});
 export const TestSetModality = /*@__PURE__*/ S.String;
+
 export interface TestSetImportResourceSpecification {
   testSetName: string;
   description?: string;
@@ -4340,12 +4374,14 @@ export const ImportResourceSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportResourceSpecification",
 }) as any as S.Schema<ImportResourceSpecification>;
+export type ImportedResourceId = string;
 export type MergeStrategy =
   | "Overwrite"
   | "FailOnConflict"
   | "Append"
   | (string & {});
 export const MergeStrategy = /*@__PURE__*/ S.String;
+
 export interface DescribeImportResponse {
   importId?: string;
   resourceSpecification?: ImportResourceSpecification;
@@ -4404,6 +4440,7 @@ export const DescribeIntentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeIntentRequest",
 }) as any as S.Schema<DescribeIntentRequest>;
+export type PriorityValue = number;
 export interface SlotPriority {
   priority: number;
   slotId: string;
@@ -4665,6 +4702,7 @@ export type TestExecutionStatus =
   | "Stopped"
   | (string & {});
 export const TestExecutionStatus = /*@__PURE__*/ S.String;
+
 export interface BotAliasTestExecutionTarget {
   botId: string;
   botAliasId: string;
@@ -4685,8 +4723,10 @@ export const TestExecutionTarget = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TestExecutionTarget>;
 export type TestExecutionApiMode = "Streaming" | "NonStreaming" | (string & {});
 export const TestExecutionApiMode = /*@__PURE__*/ S.String;
+
 export type TestExecutionModality = "Text" | "Audio" | (string & {});
 export const TestExecutionModality = /*@__PURE__*/ S.String;
+
 export interface DescribeTestExecutionResponse {
   testExecutionId?: string;
   creationDateTime?: Date;
@@ -4744,6 +4784,7 @@ export type TestSetStatus =
   | "Ready"
   | (string & {});
 export const TestSetStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeTestSetResponse {
   testSetId?: string;
   testSetName?: string;
@@ -4807,6 +4848,7 @@ export type TestSetDiscrepancyReportStatus =
   | "Failed"
   | (string & {});
 export const TestSetDiscrepancyReportStatus = /*@__PURE__*/ S.String;
+
 export interface TestSetIntentDiscrepancyItem {
   intentName: string;
   errorMessage: string;
@@ -4912,8 +4954,10 @@ export type TestSetGenerationStatus =
   | "Pending"
   | (string & {});
 export const TestSetGenerationStatus = /*@__PURE__*/ S.String;
+
 export type ConversationLogsInputModeFilter = "Speech" | "Text" | (string & {});
 export const ConversationLogsInputModeFilter = /*@__PURE__*/ S.String;
+
 export interface ConversationLogsDataSourceFilterBy {
   startTime: Date;
   endTime: Date;
@@ -5071,6 +5115,8 @@ export const GetTestExecutionArtifactsUrlResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetTestExecutionArtifactsUrlResponse>;
 export type TimeDimension = "Hours" | "Days" | "Weeks" | (string & {});
 export const TimeDimension = /*@__PURE__*/ S.String;
+
+export type TimeValue = number;
 export interface RelativeAggregationDuration {
   timeDimension: TimeDimension;
   timeValue: number;
@@ -5093,8 +5139,10 @@ export type AggregatedUtterancesSortAttribute =
   | "MissedCount"
   | (string & {});
 export const AggregatedUtterancesSortAttribute = /*@__PURE__*/ S.String;
+
 export type SortOrder = "Ascending" | "Descending" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface AggregatedUtterancesSortBy {
   attribute: AggregatedUtterancesSortAttribute;
   order: SortOrder;
@@ -5106,10 +5154,13 @@ export const AggregatedUtterancesSortBy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AggregatedUtterancesSortBy>;
 export type AggregatedUtterancesFilterName = "Utterance" | (string & {});
 export const AggregatedUtterancesFilterName = /*@__PURE__*/ S.String;
+
+export type FilterValue = string;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(S.String);
 export type AggregatedUtterancesFilterOperator = "CO" | "EQ" | (string & {});
 export const AggregatedUtterancesFilterOperator = /*@__PURE__*/ S.String;
+
 export interface AggregatedUtterancesFilter {
   name: AggregatedUtterancesFilterName;
   values: string[];
@@ -5163,6 +5214,8 @@ export const ListAggregatedUtterancesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAggregatedUtterancesRequest",
 }) as any as S.Schema<ListAggregatedUtterancesRequest>;
+export type HitCount = number;
+export type MissedCount = number;
 export interface AggregatedUtterancesSummary {
   utterance?: string;
   hitCount?: number;
@@ -5326,6 +5379,7 @@ export type BotAliasReplicationStatus =
   | "Failed"
   | (string & {});
 export const BotAliasReplicationStatus = /*@__PURE__*/ S.String;
+
 export interface BotAliasReplicaSummary {
   botAliasId?: string;
   botAliasReplicationStatus?: BotAliasReplicationStatus;
@@ -5439,6 +5493,7 @@ export const ListBotAnalyzerHistoryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBotAnalyzerHistoryResponse>;
 export type BotLocaleSortAttribute = "BotLocaleName" | (string & {});
 export const BotLocaleSortAttribute = /*@__PURE__*/ S.String;
+
 export interface BotLocaleSortBy {
   attribute: BotLocaleSortAttribute;
   order: SortOrder;
@@ -5450,8 +5505,10 @@ export const BotLocaleSortBy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BotLocaleSortBy>;
 export type BotLocaleFilterName = "BotLocaleName" | (string & {});
 export const BotLocaleFilterName = /*@__PURE__*/ S.String;
+
 export type BotLocaleFilterOperator = "CO" | "EQ" | (string & {});
 export const BotLocaleFilterOperator = /*@__PURE__*/ S.String;
+
 export interface BotLocaleFilter {
   name: BotLocaleFilterName;
   values: string[];
@@ -5670,6 +5727,7 @@ export type GenerationSortByAttribute =
   | "lastUpdatedTime"
   | (string & {});
 export const GenerationSortByAttribute = /*@__PURE__*/ S.String;
+
 export interface GenerationSortBy {
   attribute: GenerationSortByAttribute;
   order: SortOrder;
@@ -5753,6 +5811,7 @@ export const ListBotResourceGenerationsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBotResourceGenerationsResponse>;
 export type BotSortAttribute = "BotName" | (string & {});
 export const BotSortAttribute = /*@__PURE__*/ S.String;
+
 export interface BotSortBy {
   attribute: BotSortAttribute;
   order: SortOrder;
@@ -5762,8 +5821,10 @@ export const BotSortBy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BotSortBy" }) as any as S.Schema<BotSortBy>;
 export type BotFilterName = "BotName" | "BotType" | (string & {});
 export const BotFilterName = /*@__PURE__*/ S.String;
+
 export type BotFilterOperator = "CO" | "EQ" | "NE" | (string & {});
 export const BotFilterOperator = /*@__PURE__*/ S.String;
+
 export interface BotFilter {
   name: BotFilterName;
   values: string[];
@@ -5841,6 +5902,7 @@ export const ListBotsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBotsResponse>;
 export type BotVersionReplicaSortAttribute = "BotVersion" | (string & {});
 export const BotVersionReplicaSortAttribute = /*@__PURE__*/ S.String;
+
 export interface BotVersionReplicaSortBy {
   attribute: BotVersionReplicaSortAttribute;
   order: SortOrder;
@@ -5887,6 +5949,7 @@ export type BotVersionReplicationStatus =
   | "Failed"
   | (string & {});
 export const BotVersionReplicationStatus = /*@__PURE__*/ S.String;
+
 export interface BotVersionReplicaSummary {
   botVersion?: string;
   botVersionReplicationStatus?: BotVersionReplicationStatus;
@@ -5929,6 +5992,7 @@ export const ListBotVersionReplicasResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBotVersionReplicasResponse>;
 export type BotVersionSortAttribute = "BotVersion" | (string & {});
 export const BotVersionSortAttribute = /*@__PURE__*/ S.String;
+
 export interface BotVersionSortBy {
   attribute: BotVersionSortAttribute;
   order: SortOrder;
@@ -6001,6 +6065,7 @@ export const ListBotVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBotVersionsResponse>;
 export type BuiltInIntentSortAttribute = "IntentSignature" | (string & {});
 export const BuiltInIntentSortAttribute = /*@__PURE__*/ S.String;
+
 export interface BuiltInIntentSortBy {
   attribute: BuiltInIntentSortAttribute;
   order: SortOrder;
@@ -6010,6 +6075,7 @@ export const BuiltInIntentSortBy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BuiltInIntentSortBy",
 }) as any as S.Schema<BuiltInIntentSortBy>;
+export type BuiltInsMaxResults = number;
 export interface ListBuiltInIntentsRequest {
   localeId: string;
   sortBy?: BuiltInIntentSortBy;
@@ -6066,6 +6132,7 @@ export const ListBuiltInIntentsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListBuiltInIntentsResponse>;
 export type BuiltInSlotTypeSortAttribute = "SlotTypeSignature" | (string & {});
 export const BuiltInSlotTypeSortAttribute = /*@__PURE__*/ S.String;
+
 export interface BuiltInSlotTypeSortBy {
   attribute: BuiltInSlotTypeSortAttribute;
   order: SortOrder;
@@ -6180,6 +6247,7 @@ export const ListCustomVocabularyItemsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCustomVocabularyItemsResponse>;
 export type ExportSortAttribute = "LastUpdatedDateTime" | (string & {});
 export const ExportSortAttribute = /*@__PURE__*/ S.String;
+
 export interface ExportSortBy {
   attribute: ExportSortAttribute;
   order: SortOrder;
@@ -6189,8 +6257,10 @@ export const ExportSortBy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExportSortBy" }) as any as S.Schema<ExportSortBy>;
 export type ExportFilterName = "ExportResourceType" | (string & {});
 export const ExportFilterName = /*@__PURE__*/ S.String;
+
 export type ExportFilterOperator = "CO" | "EQ" | (string & {});
 export const ExportFilterOperator = /*@__PURE__*/ S.String;
+
 export interface ExportFilter {
   name: ExportFilterName;
   values: string[];
@@ -6280,6 +6350,7 @@ export const ListExportsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListExportsResponse>;
 export type ImportSortAttribute = "LastUpdatedDateTime" | (string & {});
 export const ImportSortAttribute = /*@__PURE__*/ S.String;
+
 export interface ImportSortBy {
   attribute: ImportSortAttribute;
   order: SortOrder;
@@ -6289,8 +6360,10 @@ export const ImportSortBy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImportSortBy" }) as any as S.Schema<ImportSortBy>;
 export type ImportFilterName = "ImportResourceType" | (string & {});
 export const ImportFilterName = /*@__PURE__*/ S.String;
+
 export type ImportFilterOperator = "CO" | "EQ" | (string & {});
 export const ImportFilterOperator = /*@__PURE__*/ S.String;
+
 export interface ImportFilter {
   name: ImportFilterName;
   values: string[];
@@ -6343,6 +6416,7 @@ export type ImportResourceType =
   | "TestSet"
   | (string & {});
 export const ImportResourceType = /*@__PURE__*/ S.String;
+
 export interface ImportSummary {
   importId?: string;
   importedResourceId?: string;
@@ -6397,10 +6471,13 @@ export type AnalyticsIntentMetricName =
   | "Dropped"
   | (string & {});
 export const AnalyticsIntentMetricName = /*@__PURE__*/ S.String;
+
 export type AnalyticsMetricStatistic = "Sum" | "Avg" | "Max" | (string & {});
 export const AnalyticsMetricStatistic = /*@__PURE__*/ S.String;
+
 export type AnalyticsSortOrder = "Ascending" | "Descending" | (string & {});
 export const AnalyticsSortOrder = /*@__PURE__*/ S.String;
+
 export interface AnalyticsIntentMetric {
   name: AnalyticsIntentMetricName;
   statistic: AnalyticsMetricStatistic;
@@ -6424,8 +6501,10 @@ export type AnalyticsBinByName =
   | "UtteranceTimestamp"
   | (string & {});
 export const AnalyticsBinByName = /*@__PURE__*/ S.String;
+
 export type AnalyticsInterval = "OneHour" | "OneDay" | (string & {});
 export const AnalyticsInterval = /*@__PURE__*/ S.String;
+
 export interface AnalyticsBinBySpecification {
   name: AnalyticsBinByName;
   interval: AnalyticsInterval;
@@ -6450,6 +6529,7 @@ export type AnalyticsIntentField =
   | "IntentLevel"
   | (string & {});
 export const AnalyticsIntentField = /*@__PURE__*/ S.String;
+
 export interface AnalyticsIntentGroupBySpecification {
   name: AnalyticsIntentField;
 }
@@ -6474,8 +6554,11 @@ export type AnalyticsIntentFilterName =
   | "IntentEndState"
   | (string & {});
 export const AnalyticsIntentFilterName = /*@__PURE__*/ S.String;
+
 export type AnalyticsFilterOperator = "EQ" | "GT" | "LT" | (string & {});
 export const AnalyticsFilterOperator = /*@__PURE__*/ S.String;
+
+export type AnalyticsFilterValue = string;
 export type AnalyticsFilterValues = string[];
 export const AnalyticsFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface AnalyticsIntentFilter {
@@ -6531,6 +6614,7 @@ export const ListIntentMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListIntentMetricsRequest",
 }) as any as S.Schema<ListIntentMetricsRequest>;
+export type AnalyticsBinValue = number;
 export interface AnalyticsBinKey {
   name?: AnalyticsBinByName;
   value?: number;
@@ -6545,6 +6629,7 @@ export const AnalyticsBinKey = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AnalyticsBinKey>;
 export type AnalyticsBinKeys = AnalyticsBinKey[];
 export const AnalyticsBinKeys = /*@__PURE__*/ S.Array(AnalyticsBinKey);
+export type AnalyticsGroupByValue = string;
 export interface AnalyticsIntentGroupByKey {
   name?: AnalyticsIntentField;
   value?: string;
@@ -6561,6 +6646,7 @@ export type AnalyticsIntentGroupByKeys = AnalyticsIntentGroupByKey[];
 export const AnalyticsIntentGroupByKeys = /*@__PURE__*/ S.Array(
   AnalyticsIntentGroupByKey,
 );
+export type AnalyticsMetricValue = number;
 export interface AnalyticsIntentMetricResult {
   name?: AnalyticsIntentMetricName;
   statistic?: AnalyticsMetricStatistic;
@@ -6611,6 +6697,7 @@ export const ListIntentMetricsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListIntentMetricsResponse",
 }) as any as S.Schema<ListIntentMetricsResponse>;
+export type AnalyticsPath = string;
 export type AnalyticsCommonFilterName =
   | "BotAliasId"
   | "BotVersion"
@@ -6619,6 +6706,7 @@ export type AnalyticsCommonFilterName =
   | "Channel"
   | (string & {});
 export const AnalyticsCommonFilterName = /*@__PURE__*/ S.String;
+
 export interface AnalyticsPathFilter {
   name: AnalyticsCommonFilterName;
   operator: AnalyticsFilterOperator;
@@ -6662,8 +6750,11 @@ export const ListIntentPathsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListIntentPathsRequest",
 }) as any as S.Schema<ListIntentPathsRequest>;
+export type AnalyticsNodeCount = number;
+export type AnalyticsNodeLevel = number;
 export type AnalyticsNodeType = "Inner" | "Exit" | (string & {});
 export const AnalyticsNodeType = /*@__PURE__*/ S.String;
+
 export interface AnalyticsIntentNodeSummary {
   intentName?: string;
   intentPath?: string;
@@ -6699,6 +6790,7 @@ export type IntentSortAttribute =
   | "LastUpdatedDateTime"
   | (string & {});
 export const IntentSortAttribute = /*@__PURE__*/ S.String;
+
 export interface IntentSortBy {
   attribute: IntentSortAttribute;
   order: SortOrder;
@@ -6708,8 +6800,10 @@ export const IntentSortBy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "IntentSortBy" }) as any as S.Schema<IntentSortBy>;
 export type IntentFilterName = "IntentName" | (string & {});
 export const IntentFilterName = /*@__PURE__*/ S.String;
+
 export type IntentFilterOperator = "CO" | "EQ" | (string & {});
 export const IntentFilterOperator = /*@__PURE__*/ S.String;
+
 export interface IntentFilter {
   name: IntentFilterName;
   values: string[];
@@ -6810,6 +6904,7 @@ export type AnalyticsIntentStageMetricName =
   | "Retry"
   | (string & {});
 export const AnalyticsIntentStageMetricName = /*@__PURE__*/ S.String;
+
 export interface AnalyticsIntentStageMetric {
   name: AnalyticsIntentStageMetricName;
   statistic: AnalyticsMetricStatistic;
@@ -6833,6 +6928,7 @@ export type AnalyticsIntentStageField =
   | "SwitchedToIntent"
   | (string & {});
 export const AnalyticsIntentStageField = /*@__PURE__*/ S.String;
+
 export interface AnalyticsIntentStageGroupBySpecification {
   name: AnalyticsIntentStageField;
 }
@@ -6858,6 +6954,7 @@ export type AnalyticsIntentStageFilterName =
   | "IntentStageName"
   | (string & {});
 export const AnalyticsIntentStageFilterName = /*@__PURE__*/ S.String;
+
 export interface AnalyticsIntentStageFilter {
   name: AnalyticsIntentStageFilterName;
   operator: AnalyticsFilterOperator;
@@ -7013,6 +7110,7 @@ export const ListRecommendedIntentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecommendedIntentsRequest",
 }) as any as S.Schema<ListRecommendedIntentsRequest>;
+export type SampleUtterancesCount = number;
 export interface RecommendedIntentSummary {
   intentId?: string;
   intentName?: string;
@@ -7057,6 +7155,7 @@ export type AnalyticsSessionSortByName =
   | "Duration"
   | (string & {});
 export const AnalyticsSessionSortByName = /*@__PURE__*/ S.String;
+
 export interface SessionDataSortBy {
   name: AnalyticsSessionSortByName;
   order: AnalyticsSortOrder;
@@ -7079,6 +7178,7 @@ export type AnalyticsSessionFilterName =
   | "IntentPath"
   | (string & {});
 export const AnalyticsSessionFilterName = /*@__PURE__*/ S.String;
+
 export interface AnalyticsSessionFilter {
   name: AnalyticsSessionFilterName;
   operator: AnalyticsFilterOperator;
@@ -7128,12 +7228,16 @@ export const ListSessionAnalyticsDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSessionAnalyticsDataRequest",
 }) as any as S.Schema<ListSessionAnalyticsDataRequest>;
+export type AnalyticsChannel = string;
+export type AnalyticsSessionId = string;
+export type AnalyticsLongValue = number;
 export type ConversationEndState =
   | "Success"
   | "Failure"
   | "Dropped"
   | (string & {});
 export const ConversationEndState = /*@__PURE__*/ S.String;
+
 export type AnalyticsModality =
   | "Speech"
   | "Text"
@@ -7141,6 +7245,7 @@ export type AnalyticsModality =
   | "MultiMode"
   | (string & {});
 export const AnalyticsModality = /*@__PURE__*/ S.String;
+
 export interface InvokedIntentSample {
   intentName?: string;
 }
@@ -7151,6 +7256,7 @@ export const InvokedIntentSample = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvokedIntentSample>;
 export type InvokedIntentSamples = InvokedIntentSample[];
 export const InvokedIntentSamples = /*@__PURE__*/ S.Array(InvokedIntentSample);
+export type AnalyticsOriginatingRequestId = string;
 export interface SessionSpecification {
   botAliasId?: string;
   botVersion?: string;
@@ -7216,6 +7322,7 @@ export type AnalyticsSessionMetricName =
   | "Concurrency"
   | (string & {});
 export const AnalyticsSessionMetricName = /*@__PURE__*/ S.String;
+
 export interface AnalyticsSessionMetric {
   name: AnalyticsSessionMetricName;
   statistic: AnalyticsMetricStatistic;
@@ -7239,6 +7346,7 @@ export type AnalyticsSessionField =
   | "LocaleId"
   | (string & {});
 export const AnalyticsSessionField = /*@__PURE__*/ S.String;
+
 export interface AnalyticsSessionGroupBySpecification {
   name: AnalyticsSessionField;
 }
@@ -7358,6 +7466,7 @@ export type SlotSortAttribute =
   | "LastUpdatedDateTime"
   | (string & {});
 export const SlotSortAttribute = /*@__PURE__*/ S.String;
+
 export interface SlotSortBy {
   attribute: SlotSortAttribute;
   order: SortOrder;
@@ -7367,8 +7476,10 @@ export const SlotSortBy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SlotSortBy" }) as any as S.Schema<SlotSortBy>;
 export type SlotFilterName = "SlotName" | (string & {});
 export const SlotFilterName = /*@__PURE__*/ S.String;
+
 export type SlotFilterOperator = "CO" | "EQ" | (string & {});
 export const SlotFilterOperator = /*@__PURE__*/ S.String;
+
 export interface SlotFilter {
   name: SlotFilterName;
   values: string[];
@@ -7468,6 +7579,7 @@ export type SlotTypeSortAttribute =
   | "LastUpdatedDateTime"
   | (string & {});
 export const SlotTypeSortAttribute = /*@__PURE__*/ S.String;
+
 export interface SlotTypeSortBy {
   attribute: SlotTypeSortAttribute;
   order: SortOrder;
@@ -7480,8 +7592,10 @@ export type SlotTypeFilterName =
   | "ExternalSourceType"
   | (string & {});
 export const SlotTypeFilterName = /*@__PURE__*/ S.String;
+
 export type SlotTypeFilterOperator = "CO" | "EQ" | (string & {});
 export const SlotTypeFilterOperator = /*@__PURE__*/ S.String;
+
 export interface SlotTypeFilter {
   name: SlotTypeFilterName;
   values: string[];
@@ -7537,6 +7651,7 @@ export type SlotTypeCategory =
   | "Composite"
   | (string & {});
 export const SlotTypeCategory = /*@__PURE__*/ S.String;
+
 export interface SlotTypeSummary {
   slotTypeId?: string;
   slotTypeName?: string;
@@ -7612,12 +7727,14 @@ export type TestResultTypeFilter =
   | "UtteranceLevelResults"
   | (string & {});
 export const TestResultTypeFilter = /*@__PURE__*/ S.String;
+
 export type TestResultMatchStatus =
   | "Matched"
   | "Mismatched"
   | "ExecutionError"
   | (string & {});
 export const TestResultMatchStatus = /*@__PURE__*/ S.String;
+
 export interface ConversationLevelTestResultsFilterBy {
   endToEndResult?: TestResultMatchStatus;
 }
@@ -7703,6 +7820,7 @@ export const OverallTestResults = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OverallTestResults",
 }) as any as S.Schema<OverallTestResults>;
+export type TestSetConversationId = string;
 export interface ConversationLevelIntentClassificationResultItem {
   intentName: string;
   matchResult: TestResultMatchStatus;
@@ -7717,6 +7835,7 @@ export type ConversationLevelIntentClassificationResults =
   ConversationLevelIntentClassificationResultItem[];
 export const ConversationLevelIntentClassificationResults =
   /*@__PURE__*/ S.Array(ConversationLevelIntentClassificationResultItem);
+export type TestResultSlotName = string;
 export interface ConversationLevelSlotResolutionResultItem {
   intentName: string;
   slotName: string;
@@ -7869,6 +7988,8 @@ export const IntentLevelSlotResolutionTestResults = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "IntentLevelSlotResolutionTestResults",
 }) as any as S.Schema<IntentLevelSlotResolutionTestResults>;
+export type RecordNumber = number;
+export type TestSetAgentPrompt = string;
 export interface ExecutionErrorDetails {
   errorCode: string;
   errorMessage: string;
@@ -7896,6 +8017,8 @@ export const AgentTurnResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AgentTurnResult",
 }) as any as S.Schema<AgentTurnResult>;
+export type TestSetUtteranceText = string;
+export type AudioFileS3Location = string;
 export interface UtteranceAudioInputSpecification {
   audioFileS3Location: string;
 }
@@ -7916,6 +8039,7 @@ export const UtteranceInputSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UtteranceInputSpecification",
 }) as any as S.Schema<UtteranceInputSpecification>;
+export type ActiveContextName = string;
 export interface ActiveContext {
   name: string;
 }
@@ -7924,6 +8048,7 @@ export const ActiveContext = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ActiveContext" }) as any as S.Schema<ActiveContext>;
 export type ActiveContextList = ActiveContext[];
 export const ActiveContextList = /*@__PURE__*/ S.Array(ActiveContext);
+export type RuntimeHintPhrase = string;
 export interface RuntimeHintValue {
   phrase: string;
 }
@@ -8180,6 +8305,7 @@ export type TestExecutionSortAttribute =
   | "CreationDateTime"
   | (string & {});
 export const TestExecutionSortAttribute = /*@__PURE__*/ S.String;
+
 export interface TestExecutionSortBy {
   attribute: TestExecutionSortAttribute;
   order: SortOrder;
@@ -8280,6 +8406,7 @@ export const ListTestSetRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTestSetRecordsRequest",
 }) as any as S.Schema<ListTestSetRecordsRequest>;
+export type TurnNumber = number;
 export interface AgentTurnSpecification {
   agentPrompt: string;
 }
@@ -8347,6 +8474,7 @@ export type TestSetSortAttribute =
   | "LastUpdatedDateTime"
   | (string & {});
 export const TestSetSortAttribute = /*@__PURE__*/ S.String;
+
 export interface TestSetSortBy {
   attribute: TestSetSortAttribute;
   order: SortOrder;
@@ -8423,6 +8551,7 @@ export const ListTestSetsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTestSetsResponse>;
 export type AnalyticsUtteranceSortByName = "UtteranceTimestamp" | (string & {});
 export const AnalyticsUtteranceSortByName = /*@__PURE__*/ S.String;
+
 export interface UtteranceDataSortBy {
   name: AnalyticsUtteranceSortByName;
   order: AnalyticsSortOrder;
@@ -8444,6 +8573,7 @@ export type AnalyticsUtteranceFilterName =
   | "UtteranceText"
   | (string & {});
 export const AnalyticsUtteranceFilterName = /*@__PURE__*/ S.String;
+
 export interface AnalyticsUtteranceFilter {
   name: AnalyticsUtteranceFilterName;
   operator: AnalyticsFilterOperator;
@@ -8493,6 +8623,7 @@ export const ListUtteranceAnalyticsDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListUtteranceAnalyticsDataRequest",
 }) as any as S.Schema<ListUtteranceAnalyticsDataRequest>;
+export type UtteranceUnderstood = boolean;
 export type IntentState =
   | "Failed"
   | "Fulfilled"
@@ -8502,6 +8633,7 @@ export type IntentState =
   | "FulfillmentInProgress"
   | (string & {});
 export const IntentState = /*@__PURE__*/ S.String;
+
 export type UtteranceContentType =
   | "PlainText"
   | "CustomPayload"
@@ -8509,6 +8641,7 @@ export type UtteranceContentType =
   | "ImageResponseCard"
   | (string & {});
 export const UtteranceContentType = /*@__PURE__*/ S.String;
+
 export interface UtteranceBotResponse {
   content?: string;
   contentType?: UtteranceContentType;
@@ -8609,6 +8742,7 @@ export type AnalyticsUtteranceMetricName =
   | "UtteranceTimestamp"
   | (string & {});
 export const AnalyticsUtteranceMetricName = /*@__PURE__*/ S.String;
+
 export interface AnalyticsUtteranceMetric {
   name: AnalyticsUtteranceMetricName;
   statistic: AnalyticsMetricStatistic;
@@ -8632,6 +8766,7 @@ export type AnalyticsUtteranceField =
   | "UtteranceState"
   | (string & {});
 export const AnalyticsUtteranceField = /*@__PURE__*/ S.String;
+
 export interface AnalyticsUtteranceGroupBySpecification {
   name: AnalyticsUtteranceField;
 }
@@ -8647,6 +8782,7 @@ export const AnalyticsUtteranceGroupByList = /*@__PURE__*/ S.Array(
 );
 export type AnalyticsUtteranceAttributeName = "LastUsedIntent" | (string & {});
 export const AnalyticsUtteranceAttributeName = /*@__PURE__*/ S.String;
+
 export interface AnalyticsUtteranceAttribute {
   name: AnalyticsUtteranceAttributeName;
 }
@@ -8782,11 +8918,13 @@ export const ListUtteranceMetricsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUtteranceMetricsResponse>;
 export type SearchOrder = "Ascending" | "Descending" | (string & {});
 export const SearchOrder = /*@__PURE__*/ S.String;
+
 export type AssociatedTranscriptFilterName =
   | "IntentId"
   | "SlotTypeId"
   | (string & {});
 export const AssociatedTranscriptFilterName = /*@__PURE__*/ S.String;
+
 export interface AssociatedTranscriptFilter {
   name: AssociatedTranscriptFilterName;
   values: string[];
@@ -8800,6 +8938,7 @@ export type AssociatedTranscriptFilters = AssociatedTranscriptFilter[];
 export const AssociatedTranscriptFilters = /*@__PURE__*/ S.Array(
   AssociatedTranscriptFilter,
 );
+export type NextIndex = number;
 export interface SearchAssociatedTranscriptsRequest {
   botId: string;
   botVersion: string;
@@ -8836,6 +8975,7 @@ export const SearchAssociatedTranscriptsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchAssociatedTranscriptsRequest",
 }) as any as S.Schema<SearchAssociatedTranscriptsRequest>;
+export type Transcript = string;
 export interface AssociatedTranscript {
   transcript?: string;
 }
@@ -8871,6 +9011,7 @@ export const SearchAssociatedTranscriptsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchAssociatedTranscriptsResponse>;
 export type AnalysisScope = "BotLocale" | (string & {});
 export const AnalysisScope = /*@__PURE__*/ S.String;
+
 export interface StartBotAnalyzerRequest {
   botId: string;
   analysisScope: AnalysisScope;
@@ -10026,48 +10167,8 @@ export const UpdateTestSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTestSetResponse",
 }) as any as S.Schema<UpdateTestSetResponse>;
-
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-    message: S.optional(S.String),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class PreconditionFailedException extends S.TaggedErrorClass<PreconditionFailedException>()(
-  "PreconditionFailedException",
-  { message: S.optional(S.String) },
-  T.HttpError(412),
-) {}
-
-//# Operations
+export type ExceptionMessage = string;
+export type RetryAfterSeconds = number;
 export type BatchCreateCustomVocabularyItemError =
   | InternalServerException
   | ResourceNotFoundException
@@ -10098,6 +10199,7 @@ export const batchCreateCustomVocabularyItem: API.OperationMethod<
   retry: Retry,
   operationName: "BatchCreateCustomVocabularyItem",
 }));
+
 export type BatchDeleteCustomVocabularyItemError =
   | InternalServerException
   | ResourceNotFoundException
@@ -10128,6 +10230,7 @@ export const batchDeleteCustomVocabularyItem: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteCustomVocabularyItem",
 }));
+
 export type BatchUpdateCustomVocabularyItemError =
   | InternalServerException
   | ResourceNotFoundException
@@ -10158,6 +10261,7 @@ export const batchUpdateCustomVocabularyItem: API.OperationMethod<
   retry: Retry,
   operationName: "BatchUpdateCustomVocabularyItem",
 }));
+
 export type BuildBotLocaleError =
   | ConflictException
   | InternalServerException
@@ -10191,6 +10295,7 @@ export const buildBotLocale: API.OperationMethod<
   retry: Retry,
   operationName: "BuildBotLocale",
 }));
+
 export type CreateBotError =
   | ConflictException
   | InternalServerException
@@ -10222,6 +10327,7 @@ export const createBot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBot",
 }));
+
 export type CreateBotAliasError =
   | ConflictException
   | InternalServerException
@@ -10258,6 +10364,7 @@ export const createBotAlias: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBotAlias",
 }));
+
 export type CreateBotLocaleError =
   | ConflictException
   | InternalServerException
@@ -10292,6 +10399,7 @@ export const createBotLocale: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBotLocale",
 }));
+
 export type CreateBotReplicaError =
   | ConflictException
   | InternalServerException
@@ -10323,6 +10431,7 @@ export const createBotReplica: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBotReplica",
 }));
+
 export type CreateBotVersionError =
   | ConflictException
   | InternalServerException
@@ -10358,6 +10467,7 @@ export const createBotVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBotVersion",
 }));
+
 export type CreateExportError =
   | ConflictException
   | InternalServerException
@@ -10399,6 +10509,7 @@ export const createExport: API.OperationMethod<
   retry: Retry,
   operationName: "CreateExport",
 }));
+
 export type CreateIntentError =
   | ConflictException
   | InternalServerException
@@ -10461,6 +10572,7 @@ export const createIntent: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIntent",
 }));
+
 export type CreateResourcePolicyError =
   | InternalServerException
   | PreconditionFailedException
@@ -10493,6 +10605,7 @@ export const createResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "CreateResourcePolicy",
 }));
+
 export type CreateResourcePolicyStatementError =
   | ConflictException
   | InternalServerException
@@ -10534,6 +10647,7 @@ export const createResourcePolicyStatement: API.OperationMethod<
   retry: Retry,
   operationName: "CreateResourcePolicyStatement",
 }));
+
 export type CreateSlotError =
   | ConflictException
   | InternalServerException
@@ -10569,6 +10683,7 @@ export const createSlot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSlot",
 }));
+
 export type CreateSlotTypeError =
   | ConflictException
   | InternalServerException
@@ -10604,6 +10719,7 @@ export const createSlotType: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSlotType",
 }));
+
 export type CreateTestSetDiscrepancyReportError =
   | ConflictException
   | InternalServerException
@@ -10635,6 +10751,7 @@ export const createTestSetDiscrepancyReport: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTestSetDiscrepancyReport",
 }));
+
 export type CreateUploadUrlError =
   | ConflictException
   | InternalServerException
@@ -10665,6 +10782,7 @@ export const createUploadUrl: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUploadUrl",
 }));
+
 export type DeleteBotError =
   | ConflictException
   | InternalServerException
@@ -10707,6 +10825,7 @@ export const deleteBot: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBot",
 }));
+
 export type DeleteBotAliasError =
   | ConflictException
   | InternalServerException
@@ -10738,6 +10857,7 @@ export const deleteBotAlias: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBotAlias",
 }));
+
 export type DeleteBotAnalyzerRecommendationError =
   | InternalServerException
   | ResourceNotFoundException
@@ -10767,6 +10887,7 @@ export const deleteBotAnalyzerRecommendation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBotAnalyzerRecommendation",
 }));
+
 export type DeleteBotLocaleError =
   | ConflictException
   | InternalServerException
@@ -10801,6 +10922,7 @@ export const deleteBotLocale: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBotLocale",
 }));
+
 export type DeleteBotReplicaError =
   | ConflictException
   | InternalServerException
@@ -10832,6 +10954,7 @@ export const deleteBotReplica: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBotReplica",
 }));
+
 export type DeleteBotVersionError =
   | ConflictException
   | InternalServerException
@@ -10864,6 +10987,7 @@ export const deleteBotVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBotVersion",
 }));
+
 export type DeleteCustomVocabularyError =
   | ConflictException
   | InternalServerException
@@ -10896,6 +11020,7 @@ export const deleteCustomVocabulary: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCustomVocabulary",
 }));
+
 export type DeleteExportError =
   | InternalServerException
   | PreconditionFailedException
@@ -10926,6 +11051,7 @@ export const deleteExport: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteExport",
 }));
+
 export type DeleteImportError =
   | InternalServerException
   | PreconditionFailedException
@@ -10956,6 +11082,7 @@ export const deleteImport: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteImport",
 }));
+
 export type DeleteIntentError =
   | ConflictException
   | InternalServerException
@@ -10990,6 +11117,7 @@ export const deleteIntent: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIntent",
 }));
+
 export type DeleteResourcePolicyError =
   | InternalServerException
   | PreconditionFailedException
@@ -11018,6 +11146,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteResourcePolicyStatementError =
   | InternalServerException
   | PreconditionFailedException
@@ -11052,6 +11181,7 @@ export const deleteResourcePolicyStatement: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicyStatement",
 }));
+
 export type DeleteSlotError =
   | ConflictException
   | InternalServerException
@@ -11083,6 +11213,7 @@ export const deleteSlot: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSlot",
 }));
+
 export type DeleteSlotTypeError =
   | ConflictException
   | InternalServerException
@@ -11119,6 +11250,7 @@ export const deleteSlotType: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSlotType",
 }));
+
 export type DeleteTestSetError =
   | ConflictException
   | InternalServerException
@@ -11150,6 +11282,7 @@ export const deleteTestSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTestSet",
 }));
+
 export type DeleteUtterancesError =
   | InternalServerException
   | ThrottlingException
@@ -11184,6 +11317,7 @@ export const deleteUtterances: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUtterances",
 }));
+
 export type DescribeBotError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11213,6 +11347,7 @@ export const describeBot: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBot",
 }));
+
 export type DescribeBotAliasError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11242,6 +11377,7 @@ export const describeBotAlias: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBotAlias",
 }));
+
 export type DescribeBotAnalyzerRecommendationError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11292,6 +11428,7 @@ export const describeBotAnalyzerRecommendation: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeBotLocaleError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11321,6 +11458,7 @@ export const describeBotLocale: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBotLocale",
 }));
+
 export type DescribeBotRecommendationError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11352,6 +11490,7 @@ export const describeBotRecommendation: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBotRecommendation",
 }));
+
 export type DescribeBotReplicaError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11381,6 +11520,7 @@ export const describeBotReplica: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBotReplica",
 }));
+
 export type DescribeBotResourceGenerationError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11411,6 +11551,7 @@ export const describeBotResourceGeneration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBotResourceGeneration",
 }));
+
 export type DescribeBotVersionError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11440,6 +11581,7 @@ export const describeBotVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBotVersion",
 }));
+
 export type DescribeCustomVocabularyMetadataError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11469,6 +11611,7 @@ export const describeCustomVocabularyMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCustomVocabularyMetadata",
 }));
+
 export type DescribeExportError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11496,6 +11639,7 @@ export const describeExport: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeExport",
 }));
+
 export type DescribeImportError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11523,6 +11667,7 @@ export const describeImport: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeImport",
 }));
+
 export type DescribeIntentError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11552,6 +11697,7 @@ export const describeIntent: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeIntent",
 }));
+
 export type DescribeResourcePolicyError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11578,6 +11724,7 @@ export const describeResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeResourcePolicy",
 }));
+
 export type DescribeSlotError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11607,6 +11754,7 @@ export const describeSlot: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSlot",
 }));
+
 export type DescribeSlotTypeError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11636,6 +11784,7 @@ export const describeSlotType: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSlotType",
 }));
+
 export type DescribeTestExecutionError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11665,6 +11814,7 @@ export const describeTestExecution: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTestExecution",
 }));
+
 export type DescribeTestSetError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11694,6 +11844,7 @@ export const describeTestSet: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTestSet",
 }));
+
 export type DescribeTestSetDiscrepancyReportError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11723,6 +11874,7 @@ export const describeTestSetDiscrepancyReport: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTestSetDiscrepancyReport",
 }));
+
 export type DescribeTestSetGenerationError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11752,6 +11904,7 @@ export const describeTestSetGeneration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTestSetGeneration",
 }));
+
 export type GenerateBotElementError =
   | ConflictException
   | InternalServerException
@@ -11785,6 +11938,7 @@ export const generateBotElement: API.OperationMethod<
   retry: Retry,
   operationName: "GenerateBotElement",
 }));
+
 export type GetTestExecutionArtifactsUrlError =
   | InternalServerException
   | ResourceNotFoundException
@@ -11814,6 +11968,7 @@ export const getTestExecutionArtifactsUrl: API.OperationMethod<
   retry: Retry,
   operationName: "GetTestExecutionArtifactsUrl",
 }));
+
 export type ListAggregatedUtterancesError =
   | InternalServerException
   | PreconditionFailedException
@@ -11884,6 +12039,7 @@ export const listAggregatedUtterances: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBotAliasesError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -11933,6 +12089,7 @@ export const listBotAliases: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBotAliasReplicasError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -11980,6 +12137,7 @@ export const listBotAliasReplicas: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBotAnalyzerHistoryError =
   | InternalServerException
   | ResourceNotFoundException
@@ -12030,6 +12188,7 @@ export const listBotAnalyzerHistory: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBotLocalesError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -12077,6 +12236,7 @@ export const listBotLocales: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBotRecommendationsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -12125,6 +12285,7 @@ export const listBotRecommendations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBotReplicasError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -12152,6 +12313,7 @@ export const listBotReplicas: API.OperationMethod<
   retry: Retry,
   operationName: "ListBotReplicas",
 }));
+
 export type ListBotResourceGenerationsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -12199,6 +12361,7 @@ export const listBotResourceGenerations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBotsError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -12246,6 +12409,7 @@ export const listBots: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBotVersionReplicasError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -12293,6 +12457,7 @@ export const listBotVersionReplicas: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBotVersionsError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -12349,6 +12514,7 @@ export const listBotVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBuiltInIntentsError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -12402,6 +12568,7 @@ export const listBuiltInIntents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBuiltInSlotTypesError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -12450,6 +12617,7 @@ export const listBuiltInSlotTypes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListCustomVocabularyItemsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -12500,6 +12668,7 @@ export const listCustomVocabularyItems: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListExportsError =
   | InternalServerException
   | ThrottlingException
@@ -12542,6 +12711,7 @@ export const listExports: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListImportsError =
   | InternalServerException
   | ThrottlingException
@@ -12584,6 +12754,7 @@ export const listImports: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListIntentMetricsError =
   | InternalServerException
   | PreconditionFailedException
@@ -12645,6 +12816,7 @@ export const listIntentMetrics: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListIntentPathsError =
   | InternalServerException
   | PreconditionFailedException
@@ -12680,6 +12852,7 @@ export const listIntentPaths: API.OperationMethod<
   retry: Retry,
   operationName: "ListIntentPaths",
 }));
+
 export type ListIntentsError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -12729,6 +12902,7 @@ export const listIntents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListIntentStageMetricsError =
   | InternalServerException
   | PreconditionFailedException
@@ -12790,6 +12964,7 @@ export const listIntentStageMetrics: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListRecommendedIntentsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -12841,6 +13016,7 @@ export const listRecommendedIntents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSessionAnalyticsDataError =
   | InternalServerException
   | PreconditionFailedException
@@ -12894,6 +13070,7 @@ export const listSessionAnalyticsData: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSessionMetricsError =
   | InternalServerException
   | PreconditionFailedException
@@ -12955,6 +13132,7 @@ export const listSessionMetrics: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSlotsError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -13002,6 +13180,7 @@ export const listSlots: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSlotTypesError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -13051,6 +13230,7 @@ export const listSlotTypes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -13079,6 +13259,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTestExecutionResultItemsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -13128,6 +13309,7 @@ export const listTestExecutionResultItems: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTestExecutionsError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -13175,6 +13357,7 @@ export const listTestExecutions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTestSetRecordsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -13224,6 +13407,7 @@ export const listTestSetRecords: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTestSetsError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -13271,6 +13455,7 @@ export const listTestSets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListUtteranceAnalyticsDataError =
   | InternalServerException
   | PreconditionFailedException
@@ -13333,6 +13518,7 @@ export const listUtteranceAnalyticsData: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListUtteranceMetricsError =
   | InternalServerException
   | PreconditionFailedException
@@ -13399,6 +13585,7 @@ export const listUtteranceMetrics: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type SearchAssociatedTranscriptsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -13429,6 +13616,7 @@ export const searchAssociatedTranscripts: API.OperationMethod<
   retry: Retry,
   operationName: "SearchAssociatedTranscripts",
 }));
+
 export type StartBotAnalyzerError =
   | ConflictException
   | InternalServerException
@@ -13460,6 +13648,7 @@ export const startBotAnalyzer: API.OperationMethod<
   retry: Retry,
   operationName: "StartBotAnalyzer",
 }));
+
 export type StartBotRecommendationError =
   | ConflictException
   | InternalServerException
@@ -13494,6 +13683,7 @@ export const startBotRecommendation: API.OperationMethod<
   retry: Retry,
   operationName: "StartBotRecommendation",
 }));
+
 export type StartBotResourceGenerationError =
   | ConflictException
   | InternalServerException
@@ -13529,6 +13719,7 @@ export const startBotResourceGeneration: API.OperationMethod<
   retry: Retry,
   operationName: "StartBotResourceGeneration",
 }));
+
 export type StartImportError =
   | ConflictException
   | InternalServerException
@@ -13561,6 +13752,7 @@ export const startImport: API.OperationMethod<
   retry: Retry,
   operationName: "StartImport",
 }));
+
 export type StartTestExecutionError =
   | ConflictException
   | InternalServerException
@@ -13592,6 +13784,7 @@ export const startTestExecution: API.OperationMethod<
   retry: Retry,
   operationName: "StartTestExecution",
 }));
+
 export type StartTestSetGenerationError =
   | ConflictException
   | InternalServerException
@@ -13623,6 +13816,7 @@ export const startTestSetGeneration: API.OperationMethod<
   retry: Retry,
   operationName: "StartTestSetGeneration",
 }));
+
 export type StopBotAnalyzerError =
   | InternalServerException
   | ResourceNotFoundException
@@ -13650,6 +13844,7 @@ export const stopBotAnalyzer: API.OperationMethod<
   retry: Retry,
   operationName: "StopBotAnalyzer",
 }));
+
 export type StopBotRecommendationError =
   | ConflictException
   | InternalServerException
@@ -13683,6 +13878,7 @@ export const stopBotRecommendation: API.OperationMethod<
   retry: Retry,
   operationName: "StopBotRecommendation",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -13712,6 +13908,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -13739,6 +13936,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateBotError =
   | ConflictException
   | InternalServerException
@@ -13770,6 +13968,7 @@ export const updateBot: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBot",
 }));
+
 export type UpdateBotAliasError =
   | ConflictException
   | InternalServerException
@@ -13801,6 +14000,7 @@ export const updateBotAlias: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBotAlias",
 }));
+
 export type UpdateBotLocaleError =
   | ConflictException
   | InternalServerException
@@ -13832,6 +14032,7 @@ export const updateBotLocale: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBotLocale",
 }));
+
 export type UpdateBotRecommendationError =
   | ConflictException
   | InternalServerException
@@ -13865,6 +14066,7 @@ export const updateBotRecommendation: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBotRecommendation",
 }));
+
 export type UpdateExportError =
   | ConflictException
   | InternalServerException
@@ -13901,6 +14103,7 @@ export const updateExport: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateExport",
 }));
+
 export type UpdateIntentError =
   | ConflictException
   | InternalServerException
@@ -13932,6 +14135,7 @@ export const updateIntent: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateIntent",
 }));
+
 export type UpdateResourcePolicyError =
   | InternalServerException
   | PreconditionFailedException
@@ -13965,6 +14169,7 @@ export const updateResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateResourcePolicy",
 }));
+
 export type UpdateSlotError =
   | ConflictException
   | InternalServerException
@@ -13996,6 +14201,7 @@ export const updateSlot: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSlot",
 }));
+
 export type UpdateSlotTypeError =
   | ConflictException
   | InternalServerException
@@ -14027,6 +14233,7 @@ export const updateSlotType: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSlotType",
 }));
+
 export type UpdateTestSetError =
   | ConflictException
   | InternalServerException

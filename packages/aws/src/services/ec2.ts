@@ -88,457 +88,942 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type MillisecondDateTime = Date;
-export type CapacityReservationId = string;
-export type ReservationId = string;
-export type ReservedInstancesOfferingId = string;
-export type TransitGatewayAttachmentId = string;
-export type TransitGatewayId = string;
-export type ClientVpnEndpointId = string;
-export type TransitGatewayMulticastDomainId = string;
-export type VpcEndpointServiceId = string;
-export type VpcEndpointId = string;
-export type VpcPeeringConnectionIdWithResolver = string;
-export type PublicIpAddress = string;
-export type Ipv4PoolEc2Id = string;
-export type IpamPoolId = string;
-export type AssetId = string;
-export type AvailabilityZoneId = string;
-export type AvailabilityZoneName = string;
-export type IpamPoolAllocationId = string;
-export type VpcId = string;
-export type SecurityGroupId = string;
-export type NetworkInterfaceId = string;
-export type NatGatewayId = string;
-export type PrivateIpAddressCount = number;
-export type AllocationId = string;
-export type InstanceId = string;
-export type EipAllocationPublicIp = string;
-export type AccountID = string;
-export type SubnetId = string;
-export type DefaultingDhcpOptionsId = string;
-export type CertificateId = string;
-export type RoleId = string;
-export type InstanceEventWindowId = string;
-export type DedicatedHostId = string;
-export type Hour = number;
-export type InstanceEventWindowCronExpression = string;
-export type IpamId = string;
-export type IpamResourceDiscoveryId = string;
-export type IpamResourceDiscoveryAssociationId = string;
-export type ResourceArn = string;
-export type RouteServerId = string;
-export type RouteGatewayId = string;
-export type RouteTableId = string;
-export type NetmaskLength = number;
-export type SubnetCidrAssociationId = string;
-export type TransitGatewayPolicyTableId = string;
-export type TransitGatewayRouteTableId = string;
-export type TrunkInterfaceAssociationId = string;
-export type Ipv6PoolEc2Id = string;
-export type ImageId = string;
-export type ImageWatermarkNameRequest = string;
-export type InternetGatewayId = string;
-export type VerifiedAccessInstanceId = string;
-export type VerifiedAccessTrustProviderId = string;
-export type ClientSecretType = string | redacted.Redacted<string>;
-export type KmsKeyArn = string;
-export type VolumeId = string;
-export type BoxedInteger = number;
-export type VpnGatewayId = string;
-export type SecurityGroupRuleId = string;
-export type PrefixListResourceId = string;
-export type SecurityGroupName = string;
-export type S3StorageUploadPolicySignature = string | redacted.Redacted<string>;
-export type BundleId = string;
-export type CapacityReservationCancellationQuoteId = string;
-export type CapacityReservationFleetId = string;
-export type CancelCapacityReservationFleetErrorCode = string;
-export type CancelCapacityReservationFleetErrorMessage = string;
-export type ConversionTaskId = string;
-export type DeclarativePoliciesReportId = string;
-export type ExportVmTaskId = string;
-export type ImportTaskId = string;
-export type ReservedInstancesListingId = string;
-export type SpotFleetRequestId = string;
-export type SpotInstanceRequestId = string;
-export type CopyImageClientToken = string;
-export type ImageDescriptionRequest = string;
-export type KmsKeyId = string;
-export type ImageNameRequest = string;
-export type CopySnapshotRequestPSU = string | redacted.Redacted<string>;
-export type SnapshotCompletionDurationMinutesRequest = number;
-export type CapacityManagerDataExportId = string;
-export type OutpostArn = string;
-export type PlacementGroupArn = string;
-export type CapacityReservationCommitmentDuration = number;
-export type CapacityBlockId = string;
-export type BoxedBoolean = boolean;
-export type BoxedLong = number;
-export type DoubleWithConstraints = number;
-export type IntegerWithConstraints = number;
-export type CarrierGatewayId = string;
-export type Ipv4PoolCoipId = string;
-export type LocalGatewayRoutetableId = string;
-export type CoipPoolId = string;
-export type VpcEncryptionControlId = string;
-export type SensitiveMacCredentials = string | redacted.Redacted<string>;
-export type MacModificationTaskId = string;
-export type EgressOnlyInternetGatewayId = string;
-export type LaunchTemplateId = string;
-export type LaunchTemplateName = string;
-export type PlacementGroupName = string;
-export type PlacementGroupId = string;
-export type SnapshotId = string;
-export type ExcludedInstanceType = string;
-export type AllowedInstanceType = string;
-export type FleetId = string;
-export type FlowLogResourceId = string;
-export type TagKey = string;
-export type ImageUsageResourceTypeName = string;
-export type ImageUsageResourceTypeOptionValue = string;
-export type CreateImageUsageReportClientToken = string;
-export type ImageUsageReportId = string;
-export type InstanceConnectEndpointId = string;
-export type IpamScopeId = string;
-export type IpamExternalResourceVerificationTokenId = string;
-export type IpamPolicyId = string;
-export type IpamNetmaskLength = number;
-export type IpamPrefixListResolverId = string;
-export type IpamPrefixListResolverTargetId = string;
-export type SensitiveUserData = string | redacted.Redacted<string>;
-export type VersionDescription = string;
-export type KernelId = string;
-export type KeyPairName = string;
-export type RamdiskId = string;
-export type LaunchTemplateElasticInferenceAcceleratorCount = number;
-export type SecondarySubnetId = string;
-export type LocalGatewayVirtualInterfaceGroupId = string;
-export type LocalGatewayId = string;
-export type LocalGatewayRouteTableVirtualInterfaceGroupAssociationId = string;
-export type LocalGatewayRouteTableVpcAssociationId = string;
-export type OutpostLagId = string;
-export type LocalGatewayVirtualInterfaceId = string;
-export type NetworkAclId = string;
-export type NetworkInsightsAccessScopeId = string;
-export type IpAddress = string;
-export type NetworkInsightsResourceId = string;
-export type Port = number;
-export type NetworkInsightsPathId = string;
-export type ReplaceRootVolumeTaskId = string;
-export type CoreNetworkArn = string;
-export type OdbNetworkArn = string;
-export type VpcPeeringConnectionId = string;
-export type RouteServerEndpointId = string;
-export type RouteServerPeerId = string;
-export type SecondaryNetworkId = string;
-export type SecondaryNetworkCidrAssociationId = string;
-export type SecondarySubnetCidrAssociationId = string;
-export type SnapshotCompletionDurationMinutesResponse = number;
-export type InstanceIdWithVolumeResolver = string;
-export type SubnetCidrReservationId = string;
-export type TaggableResourceId = string;
-export type TrafficMirrorFilterId = string;
-export type TrafficMirrorTargetId = string;
-export type TransitGatewayConnectPeerId = string;
-export type TransitGatewayMeteringPolicyId = string;
-export type TransitAssociationGatewayId = string;
-export type TransitGatewayRouteTableAnnouncementId = string;
-export type VerifiedAccessGroupId = string;
-export type CertificateArn = string;
-export type VerifiedAccessEndpointPortNumber = number;
-export type LoadBalancerArn = string;
-export type RdsDbInstanceArn = string;
-export type RdsDbClusterArn = string;
-export type RdsDbProxyArn = string;
-export type VpcBlockPublicAccessExclusionId = string;
-export type ServiceNetworkArn = string;
-export type ResourceConfigurationArn = string;
-export type CustomerGatewayId = string;
-export type VpnConcentratorId = string;
-export type PreSharedKey = string | redacted.Redacted<string>;
-export type CloudWatchLogGroupArn = string;
-export type CustomerGatewayConfiguration = string | redacted.Redacted<string>;
-export type VpnConnectionId = string;
-export type DhcpOptionsId = string;
-export type VpcFlowLogId = string;
-export type FpgaImageId = string;
-export type KeyPairNameWithResolver = string;
-export type KeyPairId = string;
-export type NetworkInsightsAccessScopeAnalysisId = string;
-export type NetworkInsightsAnalysisId = string;
-export type NetworkInterfacePermissionId = string;
-export type PlacementGroupNameWithResolver = string;
-export type TrafficMirrorFilterRuleIdWithResolver = string;
-export type TrafficMirrorSessionId = string;
-export type VerifiedAccessEndpointId = string;
-export type ConnectionNotificationId = string;
-export type IpamPoolCidrId = string;
-export type NextToken = string;
-export type AddressMaxResults = number;
-export type DescribeAddressTransfersMaxResults = number;
-export type MaxResultsParam = number;
-export type DescribeByoipCidrsMaxResults = number;
-export type DescribeFutureCapacityMaxResults = number;
-export type OfferingId = string;
-export type DescribeCapacityBlockExtensionOfferingsMaxResults = number;
-export type DescribeCapacityBlockOfferingsMaxResults = number;
-export type DescribeCapacityBlocksMaxResults = number;
-export type DescribeCapacityBlockStatusMaxResults = number;
-export type DescribeCapacityManagerDataExportsRequestMaxResults = number;
-export type DescribeCapacityReservationBillingRequestsRequestMaxResults =
-  number;
-export type DescribeCapacityReservationCancellationQuotesRequestMaxResults =
-  number;
-export type DescribeCapacityReservationFleetsMaxResults = number;
-export type DescribeCapacityReservationsMaxResults = number;
-export type DescribeCapacityReservationTopologyMaxResults = number;
-export type CarrierGatewayMaxResults = number;
-export type DescribeClassicLinkInstancesMaxResults = number;
-export type DescribeClientVpnAuthorizationRulesMaxResults = number;
-export type DescribeClientVpnConnectionsMaxResults = number;
-export type DescribeClientVpnEndpointMaxResults = number;
-export type DescribeClientVpnRoutesMaxResults = number;
-export type DescribeClientVpnTargetNetworksMaxResults = number;
-export type CoipPoolMaxResults = number;
-export type ImportManifestUrl = string | redacted.Redacted<string>;
-export type DeclarativePoliciesMaxResults = number;
-export type DescribeDhcpOptionsMaxResults = number;
-export type DescribeEgressOnlyInternetGatewaysMaxResults = number;
-export type ElasticGpuId = string;
-export type DescribeElasticGpusMaxResults = number;
-export type ExportImageTaskId = string;
-export type DescribeExportImageTasksMaxResults = number;
-export type ExportTaskId = string;
-export type DescribeFastLaunchImagesRequestMaxResults = number;
-export type DescribeFastSnapshotRestoresMaxResults = number;
-export type DescribeFpgaImagesMaxResults = number;
-export type DescribeHostReservationsMaxResults = number;
-export type HostReservationId = string;
-export type IamInstanceProfileAssociationId = string;
-export type DescribeIamInstanceProfileAssociationsMaxResults = number;
-export type ResourceTypeOptionValue = string;
-export type DescribeImageReferencesMaxResults = number;
-export type DescribeImageUsageReportEntriesMaxResults = number;
-export type DescribeImageUsageReportsMaxResults = number;
-export type ImageUsageReportState = string;
-export type ImageUsageReportStateReason = string;
-export type ImportImageTaskId = string;
-export type SensitiveUrl = string | redacted.Redacted<string>;
-export type ImportSnapshotTaskId = string;
-export type InstanceConnectEndpointMaxResults = number;
-export type DescribeInstanceCreditSpecificationsMaxResults = number;
-export type ResultRange = number;
-export type DescribeInstanceImageMetadataMaxResults = number;
-export type SecondaryInterfaceId = string;
-export type DescribeInstanceSqlHaStatesRequestMaxResultsInteger = number;
-export type InstanceEventId = string;
-export type DescribeInstanceTopologyMaxResults = number;
-export type DITOMaxResults = number;
-export type Location = string;
-export type DITMaxResults = number;
-export type IncludeUnsupportedInRegion = boolean;
-export type CurrentGenerationFlag = boolean;
-export type FreeTierEligibleFlag = boolean;
-export type BareMetalFlag = boolean;
-export type ProcessorSustainedClockSpeed = number;
-export type CpuManufacturerName = string;
-export type VCpuCount = number;
-export type CoreCount = number;
-export type ThreadsPerCore = number;
-export type MemorySize = number;
-export type InstanceStorageFlag = boolean;
-export type DiskSize = number;
-export type DiskCount = number;
-export type BaselineBandwidthInMbps = number;
-export type BaselineThroughputInMBps = number;
-export type BaselineIops = number;
-export type MaximumBandwidthInMbps = number;
-export type MaximumThroughputInMBps = number;
-export type MaximumIops = number;
-export type MaximumEbsAttachments = number;
-export type MaximumEbsCards = number;
-export type EbsCardIndex = number;
-export type NetworkPerformance = string;
-export type MaxNetworkInterfaces = number;
-export type MaximumNetworkCards = number;
-export type DefaultNetworkCardIndex = number;
-export type NetworkCardIndex = number;
-export type AdditionalFlexibleNetworkInterfaces = number;
-export type BaselineBandwidthInGbps = number;
-export type PeakBandwidthInGbps = number;
-export type DefaultEnaQueueCountPerInterface = number;
-export type MaximumEnaQueueCount = number;
-export type MaximumEnaQueueCountPerInterface = number;
-export type MaxIpv4AddrPerInterface = number;
-export type MaxIpv6AddrPerInterface = number;
-export type Ipv6Flag = boolean;
-export type EfaSupportedFlag = boolean;
-export type MaximumEfaInterfaces = number;
-export type EncryptionInTransitSupported = boolean;
-export type EnaSrdSupported = boolean;
-export type DefaultTcpEstablishedTimeout = number;
-export type DefaultUdpTimeout = number;
-export type DefaultUdpStreamTimeout = number;
-export type SecondaryNetworkSupportedFlag = boolean;
-export type MaximumSecondaryNetworkInterfaces = number;
-export type Ipv4AddressesPerSecondaryInterface = number;
-export type GpuDeviceName = string;
-export type GpuDeviceManufacturerName = string;
-export type GpuDeviceCount = number;
-export type LogicalGpuCount = number;
-export type GpuPartitionSize = number;
-export type Workload = string;
-export type GpuDeviceMemorySize = number;
-export type TotalGpuMemory = number;
-export type FpgaDeviceName = string;
-export type FpgaDeviceManufacturerName = string;
-export type FpgaDeviceCount = number;
-export type FpgaDeviceMemorySize = number;
-export type TotalFpgaMemory = number;
-export type InferenceDeviceCount = number;
-export type InferenceDeviceName = string;
-export type InferenceDeviceManufacturerName = string;
-export type InferenceDeviceMemorySize = number;
-export type TotalInferenceMemory = number;
-export type HibernationFlag = boolean;
-export type BurstablePerformanceFlag = boolean;
-export type DedicatedHostFlag = boolean;
-export type AutoRecoveryFlag = boolean;
-export type NitroTpmSupportedVersionType = string;
-export type MediaDeviceCount = number;
-export type MediaDeviceName = string;
-export type MediaDeviceManufacturerName = string;
-export type MediaDeviceMemorySize = number;
-export type TotalMediaMemory = number;
-export type NeuronDeviceCount = number;
-export type NeuronDeviceName = string;
-export type NeuronDeviceCoreCount = number;
-export type NeuronDeviceCoreVersion = number;
-export type NeuronDeviceMemorySize = number;
-export type TotalNeuronMemory = number;
-export type SupportedInRegion = boolean;
-export type DescribeInternetGatewaysMaxResults = number;
-export type DescribeIpamByoasnMaxResults = number;
-export type IpamMaxResults = number;
-export type DescribeIpamPoolAllocationsMaxResults = number;
-export type Ipv6PoolMaxResults = number;
-export type DescribeLaunchTemplatesMaxResults = number;
-export type LocalGatewayMaxResults = number;
-export type DescribeLockedSnapshotsMaxResults = number;
-export type RetentionPeriodResponseDays = number;
-export type CoolOffPeriodResponseHours = number;
-export type DescribeMacHostsRequestMaxResults = number;
-export type DescribeMacModificationTasksMaxResults = number;
-export type PrefixListMaxResults = number;
-export type DescribeMovingAddressesMaxResults = number;
-export type DescribeNatGatewaysMaxResults = number;
-export type DescribeNetworkAclsMaxResults = number;
-export type NetworkInsightsMaxResults = number;
-export type ComponentAccount = string;
-export type ComponentRegion = string;
-export type ProtocolInt = number;
-export type Priority = number;
-export type DescribeNetworkInterfacePermissionsMaxResults = number;
-export type DescribeNetworkInterfacesMaxResults = number;
-export type OutpostLagMaxResults = number;
-export type ServiceLinkVirtualInterfaceId = string;
-export type DescribePrincipalIdFormatMaxResults = number;
-export type PoolMaxResults = number;
-export type DescribeReplaceRootVolumeTasksMaxResults = number;
-export type ReservedInstancesModificationId = string;
-export type RouteServerMaxResults = number;
-export type DescribeRouteTablesMaxResults = number;
-export type DescribeScheduledInstanceAvailabilityMaxResults = number;
-export type ScheduledInstanceId = string;
-export type DescribeSecondaryInterfacesMaxResults = number;
-export type DescribeSecondaryNetworksMaxResults = number;
-export type DescribeSecondarySubnetsMaxResults = number;
-export type DescribeSecurityGroupRulesMaxResults = number;
-export type DescribeSecurityGroupsMaxResults = number;
-export type DescribeSecurityGroupVpcAssociationsMaxResults = number;
-export type ServiceLinkMaxResults = number;
-export type DescribeSnapshotTierStatusMaxResults = number;
-export type DescribeSpotFleetInstancesMaxResults = number;
-export type DescribeSpotFleetRequestHistoryMaxResults = number;
-export type DescribeStaleSecurityGroupsMaxResults = number;
-export type DescribeStaleSecurityGroupsNextToken = string;
-export type DescribeStoreImageTasksRequestMaxResults = number;
-export type DescribeSubnetsMaxResults = number;
-export type TrafficMirroringMaxResults = number;
-export type TransitGatewayMaxResults = number;
-export type DescribeTrunkInterfaceAssociationsMaxResults = number;
-export type DescribeVerifiedAccessEndpointsMaxResults = number;
-export type DescribeVerifiedAccessGroupMaxResults = number;
-export type DescribeVerifiedAccessInstanceLoggingConfigurationsMaxResults =
-  number;
-export type DescribeVerifiedAccessInstancesMaxResults = number;
-export type DescribeVerifiedAccessTrustProvidersMaxResults = number;
-export type DescribeVpcBlockPublicAccessExclusionsMaxResults = number;
-export type DescribeVpcClassicLinkDnsSupportMaxResults = number;
-export type DescribeVpcClassicLinkDnsSupportNextToken = string;
-export type DescribeVpcEncryptionControlsMaxResults = number;
-export type MaxResults2 = number;
-export type DescribeVpcPeeringConnectionsMaxResults = number;
-export type DescribeVpcsMaxResults = number;
-export type GVCDMaxResults = number;
-export type NetworkInterfaceAttachmentId = string;
-export type InstanceIdForResolver = string;
-export type VolumeIdWithResolver = string;
-export type ElasticIpAssociationId = string;
-export type DrainSeconds = number;
-export type RouteTableAssociationId = string;
-export type DisassociateSecurityGroupVpcSecurityGroupId = string;
-export type VpcCidrAssociationId = string;
-export type SecretArn = string;
-export type ImageProvider = string;
-export type MarketplaceProductCode = string;
-export type ImageName = string;
-export type MaximumDaysSinceDeprecatedValue = number;
-export type MaximumDaysSinceCreatedValue = number;
-export type Period = number;
-export type ConditionValue = string;
-export type MaxResults = number;
-export type GetCapacityManagerMonitoredTagKeysRequestMaxResults = number;
-export type GetCapacityReservationUsageRequestMaxResults = number;
-export type GetGroupsForCapacityReservationRequestMaxResults = number;
-export type EkPubKeyValue = string | redacted.Redacted<string>;
-export type IpamAddressHistoryMaxResults = number;
-export type BoxedDouble = number;
-export type GetIpamPoolAllocationsMaxResults = number;
-export type GetManagedPrefixListAssociationsMaxResults = number;
-export type GetNetworkInsightsAccessScopeAnalysisFindingsMaxResults = number;
-export type PasswordData = string | redacted.Redacted<string>;
-export type GetSecurityGroupsForVpcRequestMaxResults = number;
-export type SpotPlacementScoresTargetCapacity = number;
-export type SpotPlacementScoresMaxResults = number;
-export type GetSubnetCidrReservationsMaxResults = number;
-export type GetVerifiedAccessEndpointTargetsMaxResults = number;
-export type GetVpcResourcesBlockingEncryptionEnforcementMaxResults = number;
-export type VpnConnectionDeviceTypeId = string;
-export type VpnConnectionDeviceSampleConfiguration =
-  | string
-  | redacted.Redacted<string>;
-export type ListImagesInRecycleBinMaxResults = number;
-export type ListSnapshotsInRecycleBinMaxResults = number;
-export type CoolOffPeriodRequestHours = number;
-export type RetentionPeriodRequestDays = number;
-export type ModifyInstanceAttributeValue = string | redacted.Redacted<string>;
-export type ImageUefiDataRequest = string;
-export type ImageProviderRequest = string;
-export type MarketplaceProductCodeRequest = string;
-export type ImageNameCriteriaRequest = string;
-export type NetworkAclAssociationId = string;
-export type ReportInstanceStatusRequestDescription =
-  | string
-  | redacted.Redacted<string>;
-export type RestoreSnapshotTierRequestTemporaryRestoreDays = number;
-export type RunInstancesUserData = string | redacted.Redacted<string>;
-export type ElasticInferenceAcceleratorCount = number;
-export type Ipv6Address = string;
-
-//# Schemas
+export class AddressLimitExceeded extends S.TaggedErrorClass<AddressLimitExceeded>()(
+  "AddressLimitExceeded",
+  {},
+).pipe(C.withThrottlingError) {}
+export class AuthFailure extends S.TaggedErrorClass<AuthFailure>()(
+  "AuthFailure",
+  {},
+).pipe(C.withAuthError) {}
+export class CannotDelete extends S.TaggedErrorClass<CannotDelete>()(
+  "CannotDelete",
+  {},
+) {}
+export class CapacityManagerDisabled extends S.TaggedErrorClass<CapacityManagerDisabled>()(
+  "CapacityManager.Disabled",
+  {},
+) {}
+export class CidrConflict extends S.TaggedErrorClass<CidrConflict>()(
+  "CidrConflict",
+  {},
+).pipe(C.withConflictError) {}
+export class DeclarativePoliciesAccessDenied extends S.TaggedErrorClass<DeclarativePoliciesAccessDenied>()(
+  "DeclarativePoliciesAccessDenied",
+  {},
+).pipe(C.withAuthError) {}
+export class DefaultSubnetAlreadyExistsInAvailabilityZone extends S.TaggedErrorClass<DefaultSubnetAlreadyExistsInAvailabilityZone>()(
+  "DefaultSubnetAlreadyExistsInAvailabilityZone",
+  {},
+).pipe(C.withAlreadyExistsError) {}
+export class DefaultVpcAlreadyExists extends S.TaggedErrorClass<DefaultVpcAlreadyExists>()(
+  "DefaultVpcAlreadyExists",
+  {},
+).pipe(C.withAlreadyExistsError) {}
+export class DependencyViolation extends S.TaggedErrorClass<DependencyViolation>()(
+  "DependencyViolation",
+  {},
+).pipe(C.withDependencyViolationError) {}
+export class DryRunOperation extends S.TaggedErrorClass<DryRunOperation>()(
+  "DryRunOperation",
+  {},
+) {}
+export class FilterLimitExceeded extends S.TaggedErrorClass<FilterLimitExceeded>()(
+  "FilterLimitExceeded",
+  {},
+).pipe(C.withThrottlingError) {}
+export class GatewayNotAttached extends S.TaggedErrorClass<GatewayNotAttached>()(
+  "Gateway.NotAttached",
+  {},
+) {}
+export class IdempotentParameterMismatch extends S.TaggedErrorClass<IdempotentParameterMismatch>()(
+  "IdempotentParameterMismatch",
+  {},
+).pipe(C.withConflictError) {}
+export class InaccessibleStorageLocation extends S.TaggedErrorClass<InaccessibleStorageLocation>()(
+  "InaccessibleStorageLocation",
+  {},
+) {}
+export class IncorrectState extends S.TaggedErrorClass<IncorrectState>()(
+  "IncorrectState",
+  {},
+).pipe(C.withConflictError) {}
+export class InternetGatewayLimitExceeded extends S.TaggedErrorClass<InternetGatewayLimitExceeded>()(
+  "InternetGatewayLimitExceeded",
+  {},
+).pipe(C.withThrottlingError) {}
+export class InvalidAction extends S.TaggedErrorClass<InvalidAction>()(
+  "InvalidAction",
+  {},
+) {}
+export class InvalidAddressMalformed extends S.TaggedErrorClass<InvalidAddressMalformed>()(
+  "InvalidAddress.Malformed",
+  {},
+) {}
+export class InvalidAddressNotFound extends S.TaggedErrorClass<InvalidAddressNotFound>()(
+  "InvalidAddress.NotFound",
+  {},
+) {}
+export class InvalidAllocationIDNotFound extends S.TaggedErrorClass<InvalidAllocationIDNotFound>()(
+  "InvalidAllocationID.NotFound",
+  {},
+) {}
+export class InvalidAMIIDMalformed extends S.TaggedErrorClass<InvalidAMIIDMalformed>()(
+  "InvalidAMIID.Malformed",
+  {},
+) {}
+export class InvalidAMIIDNotFound extends S.TaggedErrorClass<InvalidAMIIDNotFound>()(
+  "InvalidAMIID.NotFound",
+  {},
+) {}
+export class InvalidAssociationIDNotFound extends S.TaggedErrorClass<InvalidAssociationIDNotFound>()(
+  "InvalidAssociationID.NotFound",
+  {},
+) {}
+export class InvalidAttachmentIDNotFound extends S.TaggedErrorClass<InvalidAttachmentIDNotFound>()(
+  "InvalidAttachmentID.NotFound",
+  {},
+) {}
+export class InvalidBundleIDNotFound extends S.TaggedErrorClass<InvalidBundleIDNotFound>()(
+  "InvalidBundleID.NotFound",
+  {},
+) {}
+export class InvalidCapacityBlockIdMalformed extends S.TaggedErrorClass<InvalidCapacityBlockIdMalformed>()(
+  "InvalidCapacityBlockId.Malformed",
+  {},
+) {}
+export class InvalidCapacityManagerDataExportIdMalformed extends S.TaggedErrorClass<InvalidCapacityManagerDataExportIdMalformed>()(
+  "InvalidCapacityManagerDataExportId.Malformed",
+  {},
+) {}
+export class InvalidCapacityManagerDataExportIdNotFound extends S.TaggedErrorClass<InvalidCapacityManagerDataExportIdNotFound>()(
+  "InvalidCapacityManagerDataExportId.NotFound",
+  {},
+) {}
+export class InvalidCapacityReservationFleetIdMalformed extends S.TaggedErrorClass<InvalidCapacityReservationFleetIdMalformed>()(
+  "InvalidCapacityReservationFleetId.Malformed",
+  {},
+) {}
+export class InvalidCapacityReservationIdMalformed extends S.TaggedErrorClass<InvalidCapacityReservationIdMalformed>()(
+  "InvalidCapacityReservationId.Malformed",
+  {},
+) {}
+export class InvalidCapacityReservationIdNotFound extends S.TaggedErrorClass<InvalidCapacityReservationIdNotFound>()(
+  "InvalidCapacityReservationId.NotFound",
+  {},
+) {}
+export class InvalidCarrierGatewayIDMalformed extends S.TaggedErrorClass<InvalidCarrierGatewayIDMalformed>()(
+  "InvalidCarrierGatewayID.Malformed",
+  {},
+) {}
+export class InvalidCarrierGatewayIDNotFound extends S.TaggedErrorClass<InvalidCarrierGatewayIDNotFound>()(
+  "InvalidCarrierGatewayID.NotFound",
+  {},
+) {}
+export class InvalidCertificateArnMalformed extends S.TaggedErrorClass<InvalidCertificateArnMalformed>()(
+  "InvalidCertificateArn.Malformed",
+  {},
+) {}
+export class InvalidCidrBlockMalformed extends S.TaggedErrorClass<InvalidCidrBlockMalformed>()(
+  "InvalidCidrBlock.Malformed",
+  {},
+) {}
+export class InvalidCidrNotFound extends S.TaggedErrorClass<InvalidCidrNotFound>()(
+  "InvalidCidr.NotFound",
+  {},
+) {}
+export class InvalidClientVpnEndpointIdNotFound extends S.TaggedErrorClass<InvalidClientVpnEndpointIdNotFound>()(
+  "InvalidClientVpnEndpointId.NotFound",
+  {},
+) {}
+export class InvalidConnectionNotification extends S.TaggedErrorClass<InvalidConnectionNotification>()(
+  "InvalidConnectionNotification",
+  {},
+) {}
+export class InvalidConversionTaskIdMalformed extends S.TaggedErrorClass<InvalidConversionTaskIdMalformed>()(
+  "InvalidConversionTaskId.Malformed",
+  {},
+) {}
+export class InvalidCustomerGatewayIdMalformed extends S.TaggedErrorClass<InvalidCustomerGatewayIdMalformed>()(
+  "InvalidCustomerGatewayId.Malformed",
+  {},
+) {}
+export class InvalidCustomerGatewayIDNotFound extends S.TaggedErrorClass<InvalidCustomerGatewayIDNotFound>()(
+  "InvalidCustomerGatewayID.NotFound",
+  {},
+) {}
+export class InvalidDeclarativePoliciesReportIdMalformed extends S.TaggedErrorClass<InvalidDeclarativePoliciesReportIdMalformed>()(
+  "InvalidDeclarativePoliciesReportId.Malformed",
+  {},
+) {}
+export class InvalidDhcpOptionIDNotFound extends S.TaggedErrorClass<InvalidDhcpOptionIDNotFound>()(
+  "InvalidDhcpOptionID.NotFound",
+  {},
+) {}
+export class InvalidDhcpOptionsIdMalformed extends S.TaggedErrorClass<InvalidDhcpOptionsIdMalformed>()(
+  "InvalidDhcpOptionsId.Malformed",
+  {},
+) {}
+export class InvalidDhcpOptionsIDNotFound extends S.TaggedErrorClass<InvalidDhcpOptionsIDNotFound>()(
+  "InvalidDhcpOptionsID.NotFound",
+  {},
+) {}
+export class InvalidEgressOnlyInternetGatewayIdMalformed extends S.TaggedErrorClass<InvalidEgressOnlyInternetGatewayIdMalformed>()(
+  "InvalidEgressOnlyInternetGatewayId.Malformed",
+  {},
+) {}
+export class InvalidEgressOnlyInternetGatewayIdNotFound extends S.TaggedErrorClass<InvalidEgressOnlyInternetGatewayIdNotFound>()(
+  "InvalidEgressOnlyInternetGatewayId.NotFound",
+  {},
+) {}
+export class InvalidElasticIpIDNotFound extends S.TaggedErrorClass<InvalidElasticIpIDNotFound>()(
+  "InvalidElasticIpID.NotFound",
+  {},
+) {}
+export class InvalidExportTaskIDMalformed extends S.TaggedErrorClass<InvalidExportTaskIDMalformed>()(
+  "InvalidExportTaskID.Malformed",
+  {},
+) {}
+export class InvalidFleetIdMalformed extends S.TaggedErrorClass<InvalidFleetIdMalformed>()(
+  "InvalidFleetId.Malformed",
+  {},
+) {}
+export class InvalidFlowLogIdNotFound extends S.TaggedErrorClass<InvalidFlowLogIdNotFound>()(
+  "InvalidFlowLogId.NotFound",
+  {},
+) {}
+export class InvalidFpgaImageIDMalformed extends S.TaggedErrorClass<InvalidFpgaImageIDMalformed>()(
+  "InvalidFpgaImageID.Malformed",
+  {},
+) {}
+export class InvalidFpgaImageIDNotFound extends S.TaggedErrorClass<InvalidFpgaImageIDNotFound>()(
+  "InvalidFpgaImageID.NotFound",
+  {},
+) {}
+export class InvalidGatewayIDNotFound extends S.TaggedErrorClass<InvalidGatewayIDNotFound>()(
+  "InvalidGatewayID.NotFound",
+  {},
+) {}
+export class InvalidGroupDuplicate extends S.TaggedErrorClass<InvalidGroupDuplicate>()(
+  "InvalidGroup.Duplicate",
+  {},
+).pipe(C.withAlreadyExistsError) {}
+export class InvalidGroupIdMalformed extends S.TaggedErrorClass<InvalidGroupIdMalformed>()(
+  "InvalidGroupId.Malformed",
+  {},
+) {}
+export class InvalidGroupNotFound extends S.TaggedErrorClass<InvalidGroupNotFound>()(
+  "InvalidGroup.NotFound",
+  {},
+) {}
+export class InvalidHostConfiguration extends S.TaggedErrorClass<InvalidHostConfiguration>()(
+  "InvalidHostConfiguration",
+  {},
+) {}
+export class InvalidHostIDMalformed extends S.TaggedErrorClass<InvalidHostIDMalformed>()(
+  "InvalidHostID.Malformed",
+  {},
+) {}
+export class InvalidHostReservationOfferingIdMalformed extends S.TaggedErrorClass<InvalidHostReservationOfferingIdMalformed>()(
+  "InvalidHostReservationOfferingId.Malformed",
+  {},
+) {}
+export class InvalidID extends S.TaggedErrorClass<InvalidID>()(
+  "InvalidID",
+  {},
+) {}
+export class InvalidImageUsageReportIdMalformed extends S.TaggedErrorClass<InvalidImageUsageReportIdMalformed>()(
+  "InvalidImageUsageReportId.Malformed",
+  {},
+) {}
+export class InvalidInput extends S.TaggedErrorClass<InvalidInput>()(
+  "InvalidInput",
+  {},
+) {}
+export class InvalidInstanceConnectEndpointIdMalformed extends S.TaggedErrorClass<InvalidInstanceConnectEndpointIdMalformed>()(
+  "InvalidInstanceConnectEndpointId.Malformed",
+  {},
+) {}
+export class InvalidInstanceConnectEndpointIdNotFound extends S.TaggedErrorClass<InvalidInstanceConnectEndpointIdNotFound>()(
+  "InvalidInstanceConnectEndpointId.NotFound",
+  {},
+) {}
+export class InvalidInstanceEventWindowIdMalformed extends S.TaggedErrorClass<InvalidInstanceEventWindowIdMalformed>()(
+  "InvalidInstanceEventWindowId.Malformed",
+  {},
+) {}
+export class InvalidInstanceEventWindowIDNotFound extends S.TaggedErrorClass<InvalidInstanceEventWindowIDNotFound>()(
+  "InvalidInstanceEventWindowIDNotFound",
+  {},
+) {}
+export class InvalidInstanceIDMalformed extends S.TaggedErrorClass<InvalidInstanceIDMalformed>()(
+  "InvalidInstanceID.Malformed",
+  {},
+) {}
+export class InvalidInstanceIDNotFound extends S.TaggedErrorClass<InvalidInstanceIDNotFound>()(
+  "InvalidInstanceID.NotFound",
+  {},
+) {}
+export class InvalidInternetGatewayIdMalformed extends S.TaggedErrorClass<InvalidInternetGatewayIdMalformed>()(
+  "InvalidInternetGatewayId.Malformed",
+  {},
+) {}
+export class InvalidInternetGatewayIDNotFound extends S.TaggedErrorClass<InvalidInternetGatewayIDNotFound>()(
+  "InvalidInternetGatewayID.NotFound",
+  {},
+) {}
+export class InvalidIPAddressInUse extends S.TaggedErrorClass<InvalidIPAddressInUse>()(
+  "InvalidIPAddress.InUse",
+  {},
+).pipe(C.withDependencyViolationError) {}
+export class InvalidIpamExternalResourceVerificationTokenIdMalformed extends S.TaggedErrorClass<InvalidIpamExternalResourceVerificationTokenIdMalformed>()(
+  "InvalidIpamExternalResourceVerificationTokenId.Malformed",
+  {},
+) {}
+export class InvalidIpamExternalResourceVerificationTokenIdNotFound extends S.TaggedErrorClass<InvalidIpamExternalResourceVerificationTokenIdNotFound>()(
+  "InvalidIpamExternalResourceVerificationTokenId.NotFound",
+  {},
+) {}
+export class InvalidIpamIdNotFound extends S.TaggedErrorClass<InvalidIpamIdNotFound>()(
+  "InvalidIpamId.NotFound",
+  {},
+) {}
+export class InvalidIpamPolicyIdMalformed extends S.TaggedErrorClass<InvalidIpamPolicyIdMalformed>()(
+  "InvalidIpamPolicyId.Malformed",
+  {},
+) {}
+export class InvalidIpamPolicyIdNotFound extends S.TaggedErrorClass<InvalidIpamPolicyIdNotFound>()(
+  "InvalidIpamPolicyId.NotFound",
+  {},
+) {}
+export class InvalidIpamPoolIdNotFound extends S.TaggedErrorClass<InvalidIpamPoolIdNotFound>()(
+  "InvalidIpamPoolId.NotFound",
+  {},
+) {}
+export class InvalidIpamPrefixListResolverIdMalformed extends S.TaggedErrorClass<InvalidIpamPrefixListResolverIdMalformed>()(
+  "InvalidIpamPrefixListResolverId.Malformed",
+  {},
+) {}
+export class InvalidIpamPrefixListResolverIdNotFound extends S.TaggedErrorClass<InvalidIpamPrefixListResolverIdNotFound>()(
+  "InvalidIpamPrefixListResolverId.NotFound",
+  {},
+) {}
+export class InvalidIpamPrefixListResolverTargetIdMalformed extends S.TaggedErrorClass<InvalidIpamPrefixListResolverTargetIdMalformed>()(
+  "InvalidIpamPrefixListResolverTargetId.Malformed",
+  {},
+) {}
+export class InvalidIpamResourceDiscoveryAssociationIdMalformed extends S.TaggedErrorClass<InvalidIpamResourceDiscoveryAssociationIdMalformed>()(
+  "InvalidIpamResourceDiscoveryAssociationId.Malformed",
+  {},
+) {}
+export class InvalidIpamResourceDiscoveryAssociationIdNotFound extends S.TaggedErrorClass<InvalidIpamResourceDiscoveryAssociationIdNotFound>()(
+  "InvalidIpamResourceDiscoveryAssociationId.NotFound",
+  {},
+) {}
+export class InvalidIpamResourceDiscoveryIdMalformed extends S.TaggedErrorClass<InvalidIpamResourceDiscoveryIdMalformed>()(
+  "InvalidIpamResourceDiscoveryId.Malformed",
+  {},
+) {}
+export class InvalidIpamResourceDiscoveryIdNotFound extends S.TaggedErrorClass<InvalidIpamResourceDiscoveryIdNotFound>()(
+  "InvalidIpamResourceDiscoveryId.NotFound",
+  {},
+) {}
+export class InvalidIpamScopeIdMalformed extends S.TaggedErrorClass<InvalidIpamScopeIdMalformed>()(
+  "InvalidIpamScopeId.Malformed",
+  {},
+) {}
+export class InvalidIpamScopeIdNotFound extends S.TaggedErrorClass<InvalidIpamScopeIdNotFound>()(
+  "InvalidIpamScopeId.NotFound",
+  {},
+) {}
+export class InvalidIpv4PoolCoipIdMalformed extends S.TaggedErrorClass<InvalidIpv4PoolCoipIdMalformed>()(
+  "InvalidIpv4PoolCoipId.Malformed",
+  {},
+) {}
+export class InvalidIpv6PoolIDMalformed extends S.TaggedErrorClass<InvalidIpv6PoolIDMalformed>()(
+  "InvalidIpv6PoolID.Malformed",
+  {},
+) {}
+export class InvalidIpv6PoolIDNotFound extends S.TaggedErrorClass<InvalidIpv6PoolIDNotFound>()(
+  "InvalidIpv6PoolID.NotFound",
+  {},
+) {}
+export class InvalidKeyPairDuplicate extends S.TaggedErrorClass<InvalidKeyPairDuplicate>()(
+  "InvalidKeyPair.Duplicate",
+  {},
+).pipe(C.withAlreadyExistsError) {}
+export class InvalidKeyPairNotFound extends S.TaggedErrorClass<InvalidKeyPairNotFound>()(
+  "InvalidKeyPair.NotFound",
+  {},
+) {}
+export class InvalidLaunchTemplateIdMalformed extends S.TaggedErrorClass<InvalidLaunchTemplateIdMalformed>()(
+  "InvalidLaunchTemplateId.Malformed",
+  {},
+) {}
+export class InvalidLaunchTemplateIdNotFound extends S.TaggedErrorClass<InvalidLaunchTemplateIdNotFound>()(
+  "InvalidLaunchTemplateId.NotFound",
+  {},
+) {}
+export class InvalidLaunchTemplateNameNotFoundException extends S.TaggedErrorClass<InvalidLaunchTemplateNameNotFoundException>()(
+  "InvalidLaunchTemplateName.NotFoundException",
+  {},
+) {}
+export class InvalidLocalGatewayIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayIDMalformed>()(
+  "InvalidLocalGatewayID.Malformed",
+  {},
+) {}
+export class InvalidLocalGatewayIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayIDNotFound>()(
+  "InvalidLocalGatewayID.NotFound",
+  {},
+) {}
+export class InvalidLocalGatewayRouteTableIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableIDMalformed>()(
+  "InvalidLocalGatewayRouteTableID.Malformed",
+  {},
+) {}
+export class InvalidLocalGatewayRouteTableIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableIDNotFound>()(
+  "InvalidLocalGatewayRouteTableID.NotFound",
+  {},
+) {}
+export class InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDMalformed>()(
+  "InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationID.Malformed",
+  {},
+) {}
+export class InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDNotFound>()(
+  "InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationID.NotFound",
+  {},
+) {}
+export class InvalidLocalGatewayRouteTableVpcAssociationIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableVpcAssociationIDMalformed>()(
+  "InvalidLocalGatewayRouteTableVpcAssociationID.Malformed",
+  {},
+) {}
+export class InvalidLocalGatewayRouteTableVpcAssociationIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableVpcAssociationIDNotFound>()(
+  "InvalidLocalGatewayRouteTableVpcAssociationID.NotFound",
+  {},
+) {}
+export class InvalidLocalGatewayVirtualInterfaceGroupIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceGroupIDMalformed>()(
+  "InvalidLocalGatewayVirtualInterfaceGroupID.Malformed",
+  {},
+) {}
+export class InvalidLocalGatewayVirtualInterfaceGroupIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceGroupIDNotFound>()(
+  "InvalidLocalGatewayVirtualInterfaceGroupID.NotFound",
+  {},
+) {}
+export class InvalidLocalGatewayVirtualInterfaceIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceIDMalformed>()(
+  "InvalidLocalGatewayVirtualInterfaceID.Malformed",
+  {},
+) {}
+export class InvalidLocalGatewayVirtualInterfaceIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceIDNotFound>()(
+  "InvalidLocalGatewayVirtualInterfaceID.NotFound",
+  {},
+) {}
+export class InvalidNetworkAclEntryNotFound extends S.TaggedErrorClass<InvalidNetworkAclEntryNotFound>()(
+  "InvalidNetworkAclEntry.NotFound",
+  {},
+) {}
+export class InvalidNetworkAclIdMalformed extends S.TaggedErrorClass<InvalidNetworkAclIdMalformed>()(
+  "InvalidNetworkAclId.Malformed",
+  {},
+) {}
+export class InvalidNetworkAclIDNotFound extends S.TaggedErrorClass<InvalidNetworkAclIDNotFound>()(
+  "InvalidNetworkAclID.NotFound",
+  {},
+) {}
+export class InvalidNetworkInsightsAccessScopeIdNotFound extends S.TaggedErrorClass<InvalidNetworkInsightsAccessScopeIdNotFound>()(
+  "InvalidNetworkInsightsAccessScopeId.NotFound",
+  {},
+) {}
+export class InvalidNetworkInterfaceAttachmentIdMalformed extends S.TaggedErrorClass<InvalidNetworkInterfaceAttachmentIdMalformed>()(
+  "InvalidNetworkInterfaceAttachmentId.Malformed",
+  {},
+) {}
+export class InvalidNetworkInterfaceIdMalformed extends S.TaggedErrorClass<InvalidNetworkInterfaceIdMalformed>()(
+  "InvalidNetworkInterfaceId.Malformed",
+  {},
+) {}
+export class InvalidNetworkInterfaceIDNotFound extends S.TaggedErrorClass<InvalidNetworkInterfaceIDNotFound>()(
+  "InvalidNetworkInterfaceID.NotFound",
+  {},
+) {}
+export class InvalidNetworkInterfaceInUse extends S.TaggedErrorClass<InvalidNetworkInterfaceInUse>()(
+  "InvalidNetworkInterface.InUse",
+  {},
+).pipe(C.withDependencyViolationError) {}
+export class InvalidOutpostLagIDMalformed extends S.TaggedErrorClass<InvalidOutpostLagIDMalformed>()(
+  "InvalidOutpostLagID.Malformed",
+  {},
+) {}
+export class InvalidParameter extends S.TaggedErrorClass<InvalidParameter>()(
+  "InvalidParameter",
+  {},
+) {}
+export class InvalidParameterCombination extends S.TaggedErrorClass<InvalidParameterCombination>()(
+  "InvalidParameterCombination",
+  {},
+) {}
+export class InvalidParameterValue extends S.TaggedErrorClass<InvalidParameterValue>()(
+  "InvalidParameterValue",
+  {},
+) {}
+export class InvalidPermissionDuplicate extends S.TaggedErrorClass<InvalidPermissionDuplicate>()(
+  "InvalidPermission.Duplicate",
+  {},
+).pipe(C.withAlreadyExistsError) {}
+export class InvalidPermissionIDMalformed extends S.TaggedErrorClass<InvalidPermissionIDMalformed>()(
+  "InvalidPermissionID.Malformed",
+  {},
+) {}
+export class InvalidPermissionIDNotFound extends S.TaggedErrorClass<InvalidPermissionIDNotFound>()(
+  "InvalidPermissionID.NotFound",
+  {},
+) {}
+export class InvalidPermissionNotFound extends S.TaggedErrorClass<InvalidPermissionNotFound>()(
+  "InvalidPermission.NotFound",
+  {},
+) {}
+export class InvalidPlacementGroupUnknown extends S.TaggedErrorClass<InvalidPlacementGroupUnknown>()(
+  "InvalidPlacementGroup.Unknown",
+  {},
+) {}
+export class InvalidPoolIDMalformed extends S.TaggedErrorClass<InvalidPoolIDMalformed>()(
+  "InvalidPoolID.Malformed",
+  {},
+) {}
+export class InvalidPoolIDNotFound extends S.TaggedErrorClass<InvalidPoolIDNotFound>()(
+  "InvalidPoolID.NotFound",
+  {},
+) {}
+export class InvalidPrefixListIdMalformed extends S.TaggedErrorClass<InvalidPrefixListIdMalformed>()(
+  "InvalidPrefixListId.Malformed",
+  {},
+) {}
+export class InvalidPrefixListIdNotFound extends S.TaggedErrorClass<InvalidPrefixListIdNotFound>()(
+  "InvalidPrefixListId.NotFound",
+  {},
+) {}
+export class InvalidPrefixListIDNotFound extends S.TaggedErrorClass<InvalidPrefixListIDNotFound>()(
+  "InvalidPrefixListID.NotFound",
+  {},
+) {}
+export class InvalidPublicIpv4PoolIDMalformed extends S.TaggedErrorClass<InvalidPublicIpv4PoolIDMalformed>()(
+  "InvalidPublicIpv4PoolID.Malformed",
+  {},
+) {}
+export class InvalidPublicIpv4PoolIDNotFound extends S.TaggedErrorClass<InvalidPublicIpv4PoolIDNotFound>()(
+  "InvalidPublicIpv4PoolID.NotFound",
+  {},
+) {}
+export class InvalidPublicIpv4PoolNotFound extends S.TaggedErrorClass<InvalidPublicIpv4PoolNotFound>()(
+  "InvalidPublicIpv4Pool.NotFound",
+  {},
+) {}
+export class InvalidPurchaseTokenMalformed extends S.TaggedErrorClass<InvalidPurchaseTokenMalformed>()(
+  "InvalidPurchaseToken.Malformed",
+  {},
+) {}
+export class InvalidRegion extends S.TaggedErrorClass<InvalidRegion>()(
+  "InvalidRegion",
+  {},
+) {}
+export class InvalidRequest extends S.TaggedErrorClass<InvalidRequest>()(
+  "InvalidRequest",
+  {},
+) {}
+export class InvalidReservedInstancesIDNotFound extends S.TaggedErrorClass<InvalidReservedInstancesIDNotFound>()(
+  "InvalidReservedInstancesID.NotFound",
+  {},
+) {}
+export class InvalidRoleArnMalformed extends S.TaggedErrorClass<InvalidRoleArnMalformed>()(
+  "InvalidRoleArn.Malformed",
+  {},
+) {}
+export class InvalidRouteMalformed extends S.TaggedErrorClass<InvalidRouteMalformed>()(
+  "InvalidRoute.Malformed",
+  {},
+) {}
+export class InvalidRouteNotFound extends S.TaggedErrorClass<InvalidRouteNotFound>()(
+  "InvalidRoute.NotFound",
+  {},
+) {}
+export class InvalidRouteServerEndpointIdNotFound extends S.TaggedErrorClass<InvalidRouteServerEndpointIdNotFound>()(
+  "InvalidRouteServerEndpointId.NotFound",
+  {},
+) {}
+export class InvalidRouteServerIdNotAssociated extends S.TaggedErrorClass<InvalidRouteServerIdNotAssociated>()(
+  "InvalidRouteServerId.NotAssociated",
+  {},
+) {}
+export class InvalidRouteServerIdNotFound extends S.TaggedErrorClass<InvalidRouteServerIdNotFound>()(
+  "InvalidRouteServerId.NotFound",
+  {},
+) {}
+export class InvalidRouteServerPeerIdMalformed extends S.TaggedErrorClass<InvalidRouteServerPeerIdMalformed>()(
+  "InvalidRouteServerPeerId.Malformed",
+  {},
+) {}
+export class InvalidRouteServerPeerIdNotFound extends S.TaggedErrorClass<InvalidRouteServerPeerIdNotFound>()(
+  "InvalidRouteServerPeerId.NotFound",
+  {},
+) {}
+export class InvalidRouteTableAssociationIdMalformed extends S.TaggedErrorClass<InvalidRouteTableAssociationIdMalformed>()(
+  "InvalidRouteTableAssociationId.Malformed",
+  {},
+) {}
+export class InvalidRouteTableIdMalformed extends S.TaggedErrorClass<InvalidRouteTableIdMalformed>()(
+  "InvalidRouteTableId.Malformed",
+  {},
+) {}
+export class InvalidRouteTableIDNotFound extends S.TaggedErrorClass<InvalidRouteTableIDNotFound>()(
+  "InvalidRouteTableID.NotFound",
+  {},
+) {}
+export class InvalidScheduledInstance extends S.TaggedErrorClass<InvalidScheduledInstance>()(
+  "InvalidScheduledInstance",
+  {},
+) {}
+export class InvalidSecurityGroupRuleIdMalformed extends S.TaggedErrorClass<InvalidSecurityGroupRuleIdMalformed>()(
+  "InvalidSecurityGroupRuleId.Malformed",
+  {},
+) {}
+export class InvalidSecurityGroupRuleIdNotFound extends S.TaggedErrorClass<InvalidSecurityGroupRuleIdNotFound>()(
+  "InvalidSecurityGroupRuleId.NotFound",
+  {},
+) {}
+export class InvalidServiceLinkVirtualInterfaceIDMalformed extends S.TaggedErrorClass<InvalidServiceLinkVirtualInterfaceIDMalformed>()(
+  "InvalidServiceLinkVirtualInterfaceID.Malformed",
+  {},
+) {}
+export class InvalidServiceName extends S.TaggedErrorClass<InvalidServiceName>()(
+  "InvalidServiceName",
+  {},
+) {}
+export class InvalidSnapshotIDMalformed extends S.TaggedErrorClass<InvalidSnapshotIDMalformed>()(
+  "InvalidSnapshotID.Malformed",
+  {},
+) {}
+export class InvalidSnapshotNotFound extends S.TaggedErrorClass<InvalidSnapshotNotFound>()(
+  "InvalidSnapshot.NotFound",
+  {},
+) {}
+export class InvalidSpotDatafeedNotFound extends S.TaggedErrorClass<InvalidSpotDatafeedNotFound>()(
+  "InvalidSpotDatafeed.NotFound",
+  {},
+) {}
+export class InvalidSpotInstanceRequestIDMalformed extends S.TaggedErrorClass<InvalidSpotInstanceRequestIDMalformed>()(
+  "InvalidSpotInstanceRequestID.Malformed",
+  {},
+) {}
+export class InvalidState extends S.TaggedErrorClass<InvalidState>()(
+  "InvalidState",
+  {},
+) {}
+export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
+  "InvalidSubnet",
+  {},
+) {}
+export class InvalidSubnetCidrBlockAssociationIdMalformed extends S.TaggedErrorClass<InvalidSubnetCidrBlockAssociationIdMalformed>()(
+  "InvalidSubnetCidrBlockAssociationId.Malformed",
+  {},
+) {}
+export class InvalidSubnetCidrBlockAssociationIDNotFound extends S.TaggedErrorClass<InvalidSubnetCidrBlockAssociationIDNotFound>()(
+  "InvalidSubnetCidrBlockAssociationID.NotFound",
+  {},
+) {}
+export class InvalidSubnetCidrReservationIDMalformed extends S.TaggedErrorClass<InvalidSubnetCidrReservationIDMalformed>()(
+  "InvalidSubnetCidrReservationID.Malformed",
+  {},
+) {}
+export class InvalidSubnetCidrReservationIDNotFound extends S.TaggedErrorClass<InvalidSubnetCidrReservationIDNotFound>()(
+  "InvalidSubnetCidrReservationID.NotFound",
+  {},
+) {}
+export class InvalidSubnetConflict extends S.TaggedErrorClass<InvalidSubnetConflict>()(
+  "InvalidSubnet.Conflict",
+  {},
+) {}
+export class InvalidSubnetIdMalformed extends S.TaggedErrorClass<InvalidSubnetIdMalformed>()(
+  "InvalidSubnetId.Malformed",
+  {},
+) {}
+export class InvalidSubnetIDMalformed extends S.TaggedErrorClass<InvalidSubnetIDMalformed>()(
+  "InvalidSubnetID.Malformed",
+  {},
+) {}
+export class InvalidSubnetIDNotFound extends S.TaggedErrorClass<InvalidSubnetIDNotFound>()(
+  "InvalidSubnetID.NotFound",
+  {},
+) {}
+export class InvalidTargetArnUnknown extends S.TaggedErrorClass<InvalidTargetArnUnknown>()(
+  "InvalidTargetArn.Unknown",
+  {},
+) {}
+export class InvalidTrafficMirrorFilterIdNotFound extends S.TaggedErrorClass<InvalidTrafficMirrorFilterIdNotFound>()(
+  "InvalidTrafficMirrorFilterId.NotFound",
+  {},
+) {}
+export class InvalidTrafficMirrorFilterRuleIdNotFound extends S.TaggedErrorClass<InvalidTrafficMirrorFilterRuleIdNotFound>()(
+  "InvalidTrafficMirrorFilterRuleId.NotFound",
+  {},
+) {}
+export class InvalidTrafficMirrorSessionIdNotFound extends S.TaggedErrorClass<InvalidTrafficMirrorSessionIdNotFound>()(
+  "InvalidTrafficMirrorSessionId.NotFound",
+  {},
+) {}
+export class InvalidTrafficMirrorTargetIdNotFound extends S.TaggedErrorClass<InvalidTrafficMirrorTargetIdNotFound>()(
+  "InvalidTrafficMirrorTargetId.NotFound",
+  {},
+) {}
+export class InvalidTransitGatewayAttachmentIDMalformed extends S.TaggedErrorClass<InvalidTransitGatewayAttachmentIDMalformed>()(
+  "InvalidTransitGatewayAttachmentID.Malformed",
+  {},
+) {}
+export class InvalidTransitGatewayAttachmentIDNotFound extends S.TaggedErrorClass<InvalidTransitGatewayAttachmentIDNotFound>()(
+  "InvalidTransitGatewayAttachmentID.NotFound",
+  {},
+) {}
+export class InvalidTransitGatewayConnectPeerIDMalformed extends S.TaggedErrorClass<InvalidTransitGatewayConnectPeerIDMalformed>()(
+  "InvalidTransitGatewayConnectPeerID.Malformed",
+  {},
+) {}
+export class InvalidTransitGatewayConnectPeerIDNotFound extends S.TaggedErrorClass<InvalidTransitGatewayConnectPeerIDNotFound>()(
+  "InvalidTransitGatewayConnectPeerID.NotFound",
+  {},
+) {}
+export class InvalidTransitGatewayIDMalformed extends S.TaggedErrorClass<InvalidTransitGatewayIDMalformed>()(
+  "InvalidTransitGatewayID.Malformed",
+  {},
+) {}
+export class InvalidTransitGatewayIDNotFound extends S.TaggedErrorClass<InvalidTransitGatewayIDNotFound>()(
+  "InvalidTransitGatewayID.NotFound",
+  {},
+) {}
+export class InvalidTransitGatewayMeteringPolicyIdMalformedException extends S.TaggedErrorClass<InvalidTransitGatewayMeteringPolicyIdMalformedException>()(
+  "InvalidTransitGatewayMeteringPolicyIdMalformedException",
+  {},
+) {}
+export class InvalidTransitGatewayMeteringPolicyIdNotFound extends S.TaggedErrorClass<InvalidTransitGatewayMeteringPolicyIdNotFound>()(
+  "InvalidTransitGatewayMeteringPolicyId.NotFound",
+  {},
+) {}
+export class InvalidTransitGatewayMulticastDomainIdMalformed extends S.TaggedErrorClass<InvalidTransitGatewayMulticastDomainIdMalformed>()(
+  "InvalidTransitGatewayMulticastDomainId.Malformed",
+  {},
+) {}
+export class InvalidTransitGatewayMulticastDomainIdNotFound extends S.TaggedErrorClass<InvalidTransitGatewayMulticastDomainIdNotFound>()(
+  "InvalidTransitGatewayMulticastDomainId.NotFound",
+  {},
+) {}
+export class InvalidTransitGatewayPolicyTableIdMalformed extends S.TaggedErrorClass<InvalidTransitGatewayPolicyTableIdMalformed>()(
+  "InvalidTransitGatewayPolicyTableId.Malformed",
+  {},
+) {}
+export class InvalidTransitGatewayPolicyTableIdNotFound extends S.TaggedErrorClass<InvalidTransitGatewayPolicyTableIdNotFound>()(
+  "InvalidTransitGatewayPolicyTableId.NotFound",
+  {},
+) {}
+export class InvalidTransitGatewayRouteTableAnnouncementIdMalformed extends S.TaggedErrorClass<InvalidTransitGatewayRouteTableAnnouncementIdMalformed>()(
+  "InvalidTransitGatewayRouteTableAnnouncementId.Malformed",
+  {},
+) {}
+export class InvalidUserIDMalformed extends S.TaggedErrorClass<InvalidUserIDMalformed>()(
+  "InvalidUserID.Malformed",
+  {},
+) {}
+export class InvalidVerifiedAccessEndpointIdNotFound extends S.TaggedErrorClass<InvalidVerifiedAccessEndpointIdNotFound>()(
+  "InvalidVerifiedAccessEndpointId.NotFound",
+  {},
+) {}
+export class InvalidVerifiedAccessGroupIdNotFound extends S.TaggedErrorClass<InvalidVerifiedAccessGroupIdNotFound>()(
+  "InvalidVerifiedAccessGroupId.NotFound",
+  {},
+) {}
+export class InvalidVerifiedAccessInstanceIdNotFound extends S.TaggedErrorClass<InvalidVerifiedAccessInstanceIdNotFound>()(
+  "InvalidVerifiedAccessInstanceId.NotFound",
+  {},
+) {}
+export class InvalidVerifiedAccessTrustProviderIdNotFound extends S.TaggedErrorClass<InvalidVerifiedAccessTrustProviderIdNotFound>()(
+  "InvalidVerifiedAccessTrustProviderId.NotFound",
+  {},
+) {}
+export class InvalidVolumeIDMalformed extends S.TaggedErrorClass<InvalidVolumeIDMalformed>()(
+  "InvalidVolumeID.Malformed",
+  {},
+) {}
+export class InvalidVolumeNotFound extends S.TaggedErrorClass<InvalidVolumeNotFound>()(
+  "InvalidVolume.NotFound",
+  {},
+) {}
+export class InvalidVpcCidrBlockAssociationIdErrorNotFound extends S.TaggedErrorClass<InvalidVpcCidrBlockAssociationIdErrorNotFound>()(
+  "InvalidVpcCidrBlockAssociationIdError.NotFound",
+  {},
+) {}
+export class InvalidVpcCidrBlockAssociationIdMalformed extends S.TaggedErrorClass<InvalidVpcCidrBlockAssociationIdMalformed>()(
+  "InvalidVpcCidrBlockAssociationId.Malformed",
+  {},
+) {}
+export class InvalidVpcCidrBlockAssociationIDNotFound extends S.TaggedErrorClass<InvalidVpcCidrBlockAssociationIDNotFound>()(
+  "InvalidVpcCidrBlockAssociationID.NotFound",
+  {},
+) {}
+export class InvalidVpcEncryptionControlIdMalformed extends S.TaggedErrorClass<InvalidVpcEncryptionControlIdMalformed>()(
+  "InvalidVpcEncryptionControlId.Malformed",
+  {},
+) {}
+export class InvalidVpcEncryptionControlIdNotFound extends S.TaggedErrorClass<InvalidVpcEncryptionControlIdNotFound>()(
+  "InvalidVpcEncryptionControlId.NotFound",
+  {},
+) {}
+export class InvalidVpcEndpointIdNotFound extends S.TaggedErrorClass<InvalidVpcEndpointIdNotFound>()(
+  "InvalidVpcEndpointId.NotFound",
+  {},
+) {}
+export class InvalidVpcEndpointServiceIdMalformed extends S.TaggedErrorClass<InvalidVpcEndpointServiceIdMalformed>()(
+  "InvalidVpcEndpointServiceId.Malformed",
+  {},
+) {}
+export class InvalidVpcEndpointServiceIdNotFound extends S.TaggedErrorClass<InvalidVpcEndpointServiceIdNotFound>()(
+  "InvalidVpcEndpointServiceId.NotFound",
+  {},
+) {}
+export class InvalidVpcIdMalformed extends S.TaggedErrorClass<InvalidVpcIdMalformed>()(
+  "InvalidVpcId.Malformed",
+  {},
+) {}
+export class InvalidVpcIdNotFound extends S.TaggedErrorClass<InvalidVpcIdNotFound>()(
+  "InvalidVpcId.NotFound",
+  {},
+) {}
+export class InvalidVpcIDNotFound extends S.TaggedErrorClass<InvalidVpcIDNotFound>()(
+  "InvalidVpcID.NotFound",
+  {},
+) {}
+export class InvalidVpcPeeringConnectionIdNotFound extends S.TaggedErrorClass<InvalidVpcPeeringConnectionIdNotFound>()(
+  "InvalidVpcPeeringConnectionId.NotFound",
+  {},
+) {}
+export class InvalidVpcPeeringConnectionIDNotFound extends S.TaggedErrorClass<InvalidVpcPeeringConnectionIDNotFound>()(
+  "InvalidVpcPeeringConnectionID.NotFound",
+  {},
+) {}
+export class InvalidVpnConcentratorIdMalformed extends S.TaggedErrorClass<InvalidVpnConcentratorIdMalformed>()(
+  "InvalidVpnConcentratorId.Malformed",
+  {},
+) {}
+export class InvalidVpnConcentratorIDMalformed extends S.TaggedErrorClass<InvalidVpnConcentratorIDMalformed>()(
+  "InvalidVpnConcentratorID.Malformed",
+  {},
+) {}
+export class InvalidVpnConnectionDeviceTypeIdNotFound extends S.TaggedErrorClass<InvalidVpnConnectionDeviceTypeIdNotFound>()(
+  "InvalidVpnConnectionDeviceTypeId.NotFound",
+  {},
+) {}
+export class InvalidVpnConnectionId extends S.TaggedErrorClass<InvalidVpnConnectionId>()(
+  "InvalidVpnConnectionId",
+  {},
+) {}
+export class InvalidVpnConnectionIDNotFound extends S.TaggedErrorClass<InvalidVpnConnectionIDNotFound>()(
+  "InvalidVpnConnectionID.NotFound",
+  {},
+) {}
+export class InvalidVpnGatewayIDNotFound extends S.TaggedErrorClass<InvalidVpnGatewayIDNotFound>()(
+  "InvalidVpnGatewayID.NotFound",
+  {},
+) {}
+export class InvalidZoneNotFound extends S.TaggedErrorClass<InvalidZoneNotFound>()(
+  "InvalidZone.NotFound",
+  {},
+) {}
+export class MalformedGatewayIDNotFound extends S.TaggedErrorClass<MalformedGatewayIDNotFound>()(
+  "MalformedGatewayID.NotFound",
+  {},
+) {}
+export class MissingParameter extends S.TaggedErrorClass<MissingParameter>()(
+  "MissingParameter",
+  {},
+) {}
+export class MissingRequiredParameter extends S.TaggedErrorClass<MissingRequiredParameter>()(
+  "MissingRequiredParameter",
+  {},
+) {}
+export class NatGatewayMalformed extends S.TaggedErrorClass<NatGatewayMalformed>()(
+  "NatGatewayMalformed",
+  {},
+) {}
+export class NatGatewayNotFound extends S.TaggedErrorClass<NatGatewayNotFound>()(
+  "NatGatewayNotFound",
+  {},
+) {}
+export class OperationNotPermitted extends S.TaggedErrorClass<OperationNotPermitted>()(
+  "OperationNotPermitted",
+  {},
+) {}
+export class ParseError extends S.TaggedErrorClass<ParseError>()(
+  "ParseError",
+  {},
+) {}
+export class RequestError extends S.TaggedErrorClass<RequestError>()(
+  "RequestError",
+  {},
+) {}
+export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
+  "RequestLimitExceeded",
+  {},
+).pipe(C.withThrottlingError) {}
+export class ResourceLimitExceeded extends S.TaggedErrorClass<ResourceLimitExceeded>()(
+  "ResourceLimitExceeded",
+  {},
+).pipe(C.withThrottlingError) {}
+export class RouteAlreadyExists extends S.TaggedErrorClass<RouteAlreadyExists>()(
+  "RouteAlreadyExists",
+  {},
+).pipe(C.withAlreadyExistsError) {}
+export class TransitGatewayLimitExceeded extends S.TaggedErrorClass<TransitGatewayLimitExceeded>()(
+  "TransitGatewayLimitExceeded",
+  {},
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedOperation extends S.TaggedErrorClass<UnauthorizedOperation>()(
+  "UnauthorizedOperation",
+  {},
+).pipe(C.withAuthError) {}
+export class UnknownParameter extends S.TaggedErrorClass<UnknownParameter>()(
+  "UnknownParameter",
+  {},
+) {}
+export class UnknownResource extends S.TaggedErrorClass<UnknownResource>()(
+  "UnknownResource",
+  {},
+) {}
+export class Unsupported extends S.TaggedErrorClass<Unsupported>()(
+  "Unsupported",
+  {},
+) {}
+export class UnsupportedOperation extends S.TaggedErrorClass<UnsupportedOperation>()(
+  "UnsupportedOperation",
+  {},
+) {}
+export class VerifiedAccessInstanceLimitExceeded extends S.TaggedErrorClass<VerifiedAccessInstanceLimitExceeded>()(
+  "VerifiedAccessInstanceLimitExceeded",
+  {},
+).pipe(C.withThrottlingError) {}
+export class VolumeInUse extends S.TaggedErrorClass<VolumeInUse>()(
+  "VolumeInUse",
+  {},
+).pipe(
+  C.withConflictError,
+  C.withRetryableError,
+  C.withDependencyViolationError,
+) {}
+export class VpcBlockPublicAccessExclusionIdMalformed extends S.TaggedErrorClass<VpcBlockPublicAccessExclusionIdMalformed>()(
+  "VpcBlockPublicAccessExclusionId.Malformed",
+  {},
+) {}
+export class VPCIdNotSpecified extends S.TaggedErrorClass<VPCIdNotSpecified>()(
+  "VPCIdNotSpecified",
+  {},
+) {}
+export class VpcLimitExceeded extends S.TaggedErrorClass<VpcLimitExceeded>()(
+  "VpcLimitExceeded",
+  {},
+).pipe(C.withThrottlingError) {}
 export type ResourceType =
   | "capacity-reservation"
   | "client-vpn-endpoint"
@@ -651,6 +1136,7 @@ export type ResourceType =
   | "capacity-reservation-cancellation-quote"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -715,12 +1201,14 @@ export const AcceptAddressTransferRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptAddressTransferRequest",
 }) as any as S.Schema<AcceptAddressTransferRequest>;
+export type MillisecondDateTime = Date;
 export type AddressTransferStatus =
   | "pending"
   | "disabled"
   | "accepted"
   | (string & {});
 export const AddressTransferStatus = /*@__PURE__*/ S.String;
+
 export interface AddressTransfer {
   PublicIp?: string;
   AllocationId?: string;
@@ -775,6 +1263,7 @@ export const AcceptAddressTransferResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptAddressTransferResult",
 }) as any as S.Schema<AcceptAddressTransferResult>;
+export type CapacityReservationId = string;
 export interface AcceptCapacityReservationBillingOwnershipRequest {
   DryRun?: boolean;
   CapacityReservationId?: string;
@@ -812,10 +1301,12 @@ export const AcceptCapacityReservationBillingOwnershipResult =
   ).annotate({
     identifier: "AcceptCapacityReservationBillingOwnershipResult",
   }) as any as S.Schema<AcceptCapacityReservationBillingOwnershipResult>;
+export type ReservationId = string;
 export type ReservedInstanceIdSet = string[];
 export const ReservedInstanceIdSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ReservedInstanceId")),
 );
+export type ReservedInstancesOfferingId = string;
 export interface TargetConfigurationRequest {
   InstanceCount?: number;
   OfferingId?: string;
@@ -877,6 +1368,7 @@ export const AcceptReservedInstancesExchangeQuoteResult =
   ).annotate({
     identifier: "AcceptReservedInstancesExchangeQuoteResult",
   }) as any as S.Schema<AcceptReservedInstancesExchangeQuoteResult>;
+export type TransitGatewayAttachmentId = string;
 export interface AcceptTransitGatewayClientVpnAttachmentRequest {
   TransitGatewayAttachmentId?: string;
   DryRun?: boolean;
@@ -900,6 +1392,8 @@ export const AcceptTransitGatewayClientVpnAttachmentRequest =
   ).annotate({
     identifier: "AcceptTransitGatewayClientVpnAttachmentRequest",
   }) as any as S.Schema<AcceptTransitGatewayClientVpnAttachmentRequest>;
+export type TransitGatewayId = string;
+export type ClientVpnEndpointId = string;
 export type TransitGatewayAttachmentStatusType =
   | "pending-acceptance"
   | "pending"
@@ -909,6 +1403,7 @@ export type TransitGatewayAttachmentStatusType =
   | "deleted"
   | (string & {});
 export const TransitGatewayAttachmentStatusType = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayClientVpnAttachment {
   TransitGatewayAttachmentId?: string;
   TransitGatewayId?: string;
@@ -965,6 +1460,7 @@ export const AcceptTransitGatewayClientVpnAttachmentResult =
   ).annotate({
     identifier: "AcceptTransitGatewayClientVpnAttachmentResult",
   }) as any as S.Schema<AcceptTransitGatewayClientVpnAttachmentResult>;
+export type TransitGatewayMulticastDomainId = string;
 export type ValueStringList = string[];
 export const ValueStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -1008,6 +1504,7 @@ export type TransitGatewayAttachmentResourceType =
   | "client-vpn"
   | (string & {});
 export const TransitGatewayAttachmentResourceType = /*@__PURE__*/ S.String;
+
 export type TransitGatewayMulitcastDomainAssociationState =
   | "pendingAcceptance"
   | "associating"
@@ -1019,6 +1516,7 @@ export type TransitGatewayMulitcastDomainAssociationState =
   | (string & {});
 export const TransitGatewayMulitcastDomainAssociationState =
   /*@__PURE__*/ S.String;
+
 export interface SubnetAssociation {
   SubnetId?: string;
   State?: TransitGatewayMulitcastDomainAssociationState;
@@ -1146,6 +1644,7 @@ export const PeeringTgwInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PeeringTgwInfo" }) as any as S.Schema<PeeringTgwInfo>;
 export type DynamicRoutingValue = "enable" | "disable" | (string & {});
 export const DynamicRoutingValue = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayPeeringAttachmentOptions {
   DynamicRouting?: DynamicRoutingValue;
 }
@@ -1191,6 +1690,7 @@ export type TransitGatewayAttachmentState =
   | "failing"
   | (string & {});
 export const TransitGatewayAttachmentState = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayPeeringAttachment {
   TransitGatewayAttachmentId?: string;
   AccepterTransitGatewayAttachmentId?: string;
@@ -1282,15 +1782,19 @@ export const AcceptTransitGatewayVpcAttachmentRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AcceptTransitGatewayVpcAttachmentRequest>;
 export type DnsSupportValue = "enable" | "disable" | (string & {});
 export const DnsSupportValue = /*@__PURE__*/ S.String;
+
 export type SecurityGroupReferencingSupportValue =
   | "enable"
   | "disable"
   | (string & {});
 export const SecurityGroupReferencingSupportValue = /*@__PURE__*/ S.String;
+
 export type Ipv6SupportValue = "enable" | "disable" | (string & {});
 export const Ipv6SupportValue = /*@__PURE__*/ S.String;
+
 export type ApplianceModeSupportValue = "enable" | "disable" | (string & {});
 export const ApplianceModeSupportValue = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayVpcAttachmentOptions {
   DnsSupport?: DnsSupportValue;
   SecurityGroupReferencingSupport?: SecurityGroupReferencingSupportValue;
@@ -1388,6 +1892,8 @@ export const AcceptTransitGatewayVpcAttachmentResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AcceptTransitGatewayVpcAttachmentResult",
 }) as any as S.Schema<AcceptTransitGatewayVpcAttachmentResult>;
+export type VpcEndpointServiceId = string;
+export type VpcEndpointId = string;
 export type VpcEndpointIdList = string[];
 export const VpcEndpointIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -1469,6 +1975,7 @@ export const AcceptVpcEndpointConnectionsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptVpcEndpointConnectionsResult",
 }) as any as S.Schema<AcceptVpcEndpointConnectionsResult>;
+export type VpcPeeringConnectionIdWithResolver = string;
 export interface AcceptVpcPeeringConnectionRequest {
   DryRun?: boolean;
   VpcPeeringConnectionId?: string;
@@ -1607,6 +2114,7 @@ export type VpcPeeringConnectionStateReasonCode =
   | "deleting"
   | (string & {});
 export const VpcPeeringConnectionStateReasonCode = /*@__PURE__*/ S.String;
+
 export interface VpcPeeringConnectionStateReason {
   Code?: VpcPeeringConnectionStateReasonCode;
   Message?: string;
@@ -1709,6 +2217,7 @@ export type AsnAssociationState =
   | "associated"
   | (string & {});
 export const AsnAssociationState = /*@__PURE__*/ S.String;
+
 export interface AsnAssociation {
   Asn?: string;
   Cidr?: string;
@@ -1748,6 +2257,7 @@ export type ByoipCidrState =
   | "provisioned-not-publicly-advertisable"
   | (string & {});
 export const ByoipCidrState = /*@__PURE__*/ S.String;
+
 export interface ByoipCidr {
   Cidr?: string;
   Description?: string;
@@ -1800,6 +2310,10 @@ export const AdvertiseByoipCidrResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AdvertiseByoipCidrResult>;
 export type DomainType = "vpc" | "standard" | (string & {});
 export const DomainType = /*@__PURE__*/ S.String;
+
+export type PublicIpAddress = string;
+export type Ipv4PoolEc2Id = string;
+export type IpamPoolId = string;
 export interface AllocateAddressRequest {
   Domain?: DomainType;
   Address?: string;
@@ -1889,12 +2403,18 @@ export const AllocateAddressResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AllocateAddressResult>;
 export type HostRecovery = "on" | "off" | (string & {});
 export const HostRecovery = /*@__PURE__*/ S.String;
+
 export type HostMaintenance = "on" | "off" | (string & {});
 export const HostMaintenance = /*@__PURE__*/ S.String;
+
+export type AssetId = string;
 export type AssetIdList = string[];
 export const AssetIdList = /*@__PURE__*/ S.Array(S.String);
+export type AvailabilityZoneId = string;
 export type AutoPlacement = "on" | "off" | (string & {});
 export const AutoPlacement = /*@__PURE__*/ S.String;
+
+export type AvailabilityZoneName = string;
 export interface AllocateHostsRequest {
   InstanceFamily?: string;
   TagSpecifications?: TagSpecification[];
@@ -2023,6 +2543,7 @@ export const AllocateIpamPoolCidrRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AllocateIpamPoolCidrRequest",
 }) as any as S.Schema<AllocateIpamPoolCidrRequest>;
+export type IpamPoolAllocationId = string;
 export type IpamPoolAllocationResourceType =
   | "ipam-pool"
   | "vpc"
@@ -2033,6 +2554,7 @@ export type IpamPoolAllocationResourceType =
   | "anycast-ip-list"
   | (string & {});
 export const IpamPoolAllocationResourceType = /*@__PURE__*/ S.String;
+
 export interface IpamPoolAllocation {
   Cidr?: string;
   IpamPoolAllocationId?: string;
@@ -2093,6 +2615,8 @@ export const AllocateIpamPoolCidrResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AllocateIpamPoolCidrResult",
 }) as any as S.Schema<AllocateIpamPoolCidrResult>;
+export type VpcId = string;
+export type SecurityGroupId = string;
 export type ClientVpnSecurityGroupIdSet = string[];
 export const ClientVpnSecurityGroupIdSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -2144,6 +2668,7 @@ export type IpPrefixList = string[];
 export const IpPrefixList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type NetworkInterfaceId = string;
 export type Ipv6AddressList = string[];
 export const Ipv6AddressList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -2315,8 +2840,10 @@ export const AssignPrivateIpAddressesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssignPrivateIpAddressesResult",
 }) as any as S.Schema<AssignPrivateIpAddressesResult>;
+export type NatGatewayId = string;
 export type IpList = string[];
 export const IpList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
+export type PrivateIpAddressCount = number;
 export interface AssignPrivateNatGatewayAddressRequest {
   NatGatewayId?: string;
   PrivateIpAddresses?: string[];
@@ -2355,6 +2882,7 @@ export type NatGatewayAddressStatus =
   | "failed"
   | (string & {});
 export const NatGatewayAddressStatus = /*@__PURE__*/ S.String;
+
 export interface NatGatewayAddress {
   AllocationId?: string;
   NetworkInterfaceId?: string;
@@ -2438,6 +2966,9 @@ export const AssignPrivateNatGatewayAddressResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssignPrivateNatGatewayAddressResult",
 }) as any as S.Schema<AssignPrivateNatGatewayAddressResult>;
+export type AllocationId = string;
+export type InstanceId = string;
+export type EipAllocationPublicIp = string;
 export interface AssociateAddressRequest {
   AllocationId?: string;
   InstanceId?: string;
@@ -2495,6 +3026,7 @@ export const AssociateAddressResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateAddressResult",
 }) as any as S.Schema<AssociateAddressResult>;
+export type AccountID = string;
 export interface AssociateCapacityReservationBillingOwnerRequest {
   DryRun?: boolean;
   CapacityReservationId?: string;
@@ -2534,6 +3066,7 @@ export const AssociateCapacityReservationBillingOwnerResult =
   ).annotate({
     identifier: "AssociateCapacityReservationBillingOwnerResult",
   }) as any as S.Schema<AssociateCapacityReservationBillingOwnerResult>;
+export type SubnetId = string;
 export interface AssociateClientVpnTargetNetworkRequest {
   ClientVpnEndpointId?: string;
   SubnetId?: string;
@@ -2573,6 +3106,7 @@ export type AssociationStatusCode =
   | "disassociated"
   | (string & {});
 export const AssociationStatusCode = /*@__PURE__*/ S.String;
+
 export interface AssociationStatus {
   Code?: AssociationStatusCode;
   Message?: string;
@@ -2609,6 +3143,7 @@ export const AssociateClientVpnTargetNetworkResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociateClientVpnTargetNetworkResult",
 }) as any as S.Schema<AssociateClientVpnTargetNetworkResult>;
+export type DefaultingDhcpOptionsId = string;
 export interface AssociateDhcpOptionsRequest {
   DhcpOptionsId?: string;
   VpcId?: string;
@@ -2642,6 +3177,8 @@ export const AssociateDhcpOptionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateDhcpOptionsResponse",
 }) as any as S.Schema<AssociateDhcpOptionsResponse>;
+export type CertificateId = string;
+export type RoleId = string;
 export interface AssociateEnclaveCertificateIamRoleRequest {
   CertificateArn?: string;
   RoleArn?: string;
@@ -2744,6 +3281,7 @@ export type IamInstanceProfileAssociationState =
   | "disassociated"
   | (string & {});
 export const IamInstanceProfileAssociationState = /*@__PURE__*/ S.String;
+
 export interface IamInstanceProfileAssociation {
   AssociationId?: string;
   InstanceId?: string;
@@ -2793,10 +3331,12 @@ export const AssociateIamInstanceProfileResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateIamInstanceProfileResult",
 }) as any as S.Schema<AssociateIamInstanceProfileResult>;
+export type InstanceEventWindowId = string;
 export type InstanceIdList = string[];
 export const InstanceIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DedicatedHostId = string;
 export type DedicatedHostIdList = string[];
 export const DedicatedHostIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -2852,6 +3392,8 @@ export type WeekDay =
   | "saturday"
   | (string & {});
 export const WeekDay = /*@__PURE__*/ S.String;
+
+export type Hour = number;
 export interface InstanceEventWindowTimeRange {
   StartWeekDay?: WeekDay;
   StartHour?: number;
@@ -2886,6 +3428,7 @@ export const InstanceEventWindowTimeRangeList = /*@__PURE__*/ S.Array(
     identifier: "InstanceEventWindowTimeRange",
   }),
 );
+export type InstanceEventWindowCronExpression = string;
 export interface InstanceEventWindowAssociationTarget {
   InstanceIds?: string[];
   Tags?: Tag[];
@@ -2917,6 +3460,7 @@ export type InstanceEventWindowState =
   | "deleted"
   | (string & {});
 export const InstanceEventWindowState = /*@__PURE__*/ S.String;
+
 export interface InstanceEventWindow {
   InstanceEventWindowId?: string;
   TimeRanges?: InstanceEventWindowTimeRange[];
@@ -3007,6 +3551,8 @@ export const AssociateIpamByoasnResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateIpamByoasnResult",
 }) as any as S.Schema<AssociateIpamByoasnResult>;
+export type IpamId = string;
+export type IpamResourceDiscoveryId = string;
 export interface AssociateIpamResourceDiscoveryRequest {
   DryRun?: boolean;
   IpamId?: string;
@@ -3038,11 +3584,14 @@ export const AssociateIpamResourceDiscoveryRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociateIpamResourceDiscoveryRequest",
 }) as any as S.Schema<AssociateIpamResourceDiscoveryRequest>;
+export type IpamResourceDiscoveryAssociationId = string;
+export type ResourceArn = string;
 export type IpamAssociatedResourceDiscoveryStatus =
   | "active"
   | "not-found"
   | (string & {});
 export const IpamAssociatedResourceDiscoveryStatus = /*@__PURE__*/ S.String;
+
 export type IpamResourceDiscoveryAssociationState =
   | "associate-in-progress"
   | "associate-complete"
@@ -3055,6 +3604,7 @@ export type IpamResourceDiscoveryAssociationState =
   | "restore-in-progress"
   | (string & {});
 export const IpamResourceDiscoveryAssociationState = /*@__PURE__*/ S.String;
+
 export interface IpamResourceDiscoveryAssociation {
   OwnerId?: string;
   IpamResourceDiscoveryAssociationId?: string;
@@ -3190,6 +3740,7 @@ export const AssociateNatGatewayAddressResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateNatGatewayAddressResult",
 }) as any as S.Schema<AssociateNatGatewayAddressResult>;
+export type RouteServerId = string;
 export interface AssociateRouteServerRequest {
   RouteServerId?: string;
   VpcId?: string;
@@ -3220,6 +3771,7 @@ export type RouteServerAssociationState =
   | "disassociating"
   | (string & {});
 export const RouteServerAssociationState = /*@__PURE__*/ S.String;
+
 export interface RouteServerAssociation {
   RouteServerId?: string;
   VpcId?: string;
@@ -3258,6 +3810,8 @@ export const AssociateRouteServerResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateRouteServerResult",
 }) as any as S.Schema<AssociateRouteServerResult>;
+export type RouteGatewayId = string;
+export type RouteTableId = string;
 export interface AssociateRouteTableRequest {
   GatewayId?: string;
   PublicIpv4Pool?: string;
@@ -3303,6 +3857,7 @@ export type RouteTableAssociationStateCode =
   | "failed"
   | (string & {});
 export const RouteTableAssociationStateCode = /*@__PURE__*/ S.String;
+
 export interface RouteTableAssociationState {
   State?: RouteTableAssociationStateCode;
   StatusMessage?: string;
@@ -3371,6 +3926,7 @@ export type SecurityGroupVpcAssociationState =
   | "disassociation-failed"
   | (string & {});
 export const SecurityGroupVpcAssociationState = /*@__PURE__*/ S.String;
+
 export interface AssociateSecurityGroupVpcResult {
   State?: SecurityGroupVpcAssociationState;
 }
@@ -3384,6 +3940,7 @@ export const AssociateSecurityGroupVpcResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateSecurityGroupVpcResult",
 }) as any as S.Schema<AssociateSecurityGroupVpcResult>;
+export type NetmaskLength = number;
 export interface AssociateSubnetCidrBlockRequest {
   Ipv6IpamPoolId?: string;
   Ipv6NetmaskLength?: number;
@@ -3416,6 +3973,7 @@ export const AssociateSubnetCidrBlockRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateSubnetCidrBlockRequest",
 }) as any as S.Schema<AssociateSubnetCidrBlockRequest>;
+export type SubnetCidrAssociationId = string;
 export type SubnetCidrBlockStateCode =
   | "associating"
   | "associated"
@@ -3425,6 +3983,7 @@ export type SubnetCidrBlockStateCode =
   | "failed"
   | (string & {});
 export const SubnetCidrBlockStateCode = /*@__PURE__*/ S.String;
+
 export interface SubnetCidrBlockState {
   State?: SubnetCidrBlockStateCode;
   StatusMessage?: string;
@@ -3445,8 +4004,10 @@ export const SubnetCidrBlockState = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SubnetCidrBlockState>;
 export type Ipv6AddressAttribute = "public" | "private" | (string & {});
 export const Ipv6AddressAttribute = /*@__PURE__*/ S.String;
+
 export type IpSource = "amazon" | "byoip" | "none" | (string & {});
 export const IpSource = /*@__PURE__*/ S.String;
+
 export interface SubnetIpv6CidrBlockAssociation {
   AssociationId?: string;
   Ipv6CidrBlock?: string;
@@ -3546,6 +4107,7 @@ export const AssociateTransitGatewayMulticastDomainResult =
   ).annotate({
     identifier: "AssociateTransitGatewayMulticastDomainResult",
   }) as any as S.Schema<AssociateTransitGatewayMulticastDomainResult>;
+export type TransitGatewayPolicyTableId = string;
 export interface AssociateTransitGatewayPolicyTableRequest {
   TransitGatewayPolicyTableId?: string;
   TransitGatewayAttachmentId?: string;
@@ -3578,6 +4140,7 @@ export type TransitGatewayAssociationState =
   | "disassociated"
   | (string & {});
 export const TransitGatewayAssociationState = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayPolicyTableAssociation {
   TransitGatewayPolicyTableId?: string;
   TransitGatewayAttachmentId?: string;
@@ -3625,6 +4188,7 @@ export const AssociateTransitGatewayPolicyTableResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AssociateTransitGatewayPolicyTableResult",
 }) as any as S.Schema<AssociateTransitGatewayPolicyTableResult>;
+export type TransitGatewayRouteTableId = string;
 export interface AssociateTransitGatewayRouteTableRequest {
   TransitGatewayRouteTableId?: string;
   TransitGatewayAttachmentId?: string;
@@ -3726,8 +4290,10 @@ export const AssociateTrunkInterfaceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateTrunkInterfaceRequest",
 }) as any as S.Schema<AssociateTrunkInterfaceRequest>;
+export type TrunkInterfaceAssociationId = string;
 export type InterfaceProtocolType = "VLAN" | "GRE" | (string & {});
 export const InterfaceProtocolType = /*@__PURE__*/ S.String;
+
 export interface TrunkInterfaceAssociation {
   AssociationId?: string;
   BranchInterfaceId?: string;
@@ -3791,6 +4357,7 @@ export const AssociateTrunkInterfaceResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateTrunkInterfaceResult",
 }) as any as S.Schema<AssociateTrunkInterfaceResult>;
+export type Ipv6PoolEc2Id = string;
 export interface AssociateVpcCidrBlockRequest {
   CidrBlock?: string;
   Ipv6CidrBlockNetworkBorderGroup?: string;
@@ -3844,6 +4411,7 @@ export type VpcCidrBlockStateCode =
   | "failed"
   | (string & {});
 export const VpcCidrBlockStateCode = /*@__PURE__*/ S.String;
+
 export interface VpcCidrBlockState {
   State?: VpcCidrBlockStateCode;
   StatusMessage?: string;
@@ -4008,6 +4576,8 @@ export const AttachClassicLinkVpcResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachClassicLinkVpcResult",
 }) as any as S.Schema<AttachClassicLinkVpcResult>;
+export type ImageId = string;
+export type ImageWatermarkNameRequest = string;
 export interface AttachImageWatermarkRequest {
   ImageId?: string;
   WatermarkName?: string;
@@ -4045,6 +4615,7 @@ export const AttachImageWatermarkResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachImageWatermarkResult",
 }) as any as S.Schema<AttachImageWatermarkResult>;
+export type InternetGatewayId = string;
 export interface AttachInternetGatewayRequest {
   DryRun?: boolean;
   InternetGatewayId?: string;
@@ -4166,6 +4737,8 @@ export const AttachNetworkInterfaceResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachNetworkInterfaceResult",
 }) as any as S.Schema<AttachNetworkInterfaceResult>;
+export type VerifiedAccessInstanceId = string;
+export type VerifiedAccessTrustProviderId = string;
 export interface AttachVerifiedAccessTrustProviderRequest {
   VerifiedAccessInstanceId?: string;
   VerifiedAccessTrustProviderId?: string;
@@ -4195,17 +4768,21 @@ export const AttachVerifiedAccessTrustProviderRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AttachVerifiedAccessTrustProviderRequest>;
 export type TrustProviderType = "user" | "device" | (string & {});
 export const TrustProviderType = /*@__PURE__*/ S.String;
+
 export type UserTrustProviderType =
   | "iam-identity-center"
   | "oidc"
   | (string & {});
 export const UserTrustProviderType = /*@__PURE__*/ S.String;
+
 export type DeviceTrustProviderType =
   | "jamf"
   | "crowdstrike"
   | "jumpcloud"
   | (string & {});
 export const DeviceTrustProviderType = /*@__PURE__*/ S.String;
+
+export type ClientSecretType = string | redacted.Redacted<string>;
 export interface OidcOptions {
   Issuer?: string;
   AuthorizationEndpoint?: string;
@@ -4263,6 +4840,7 @@ export const DeviceOptions = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "DeviceOptions" }) as any as S.Schema<DeviceOptions>;
+export type KmsKeyArn = string;
 export interface VerifiedAccessSseSpecificationResponse {
   CustomerManagedKeyEnabled?: boolean;
   KmsKeyArn?: string;
@@ -4534,6 +5112,8 @@ export const AttachVerifiedAccessTrustProviderResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AttachVerifiedAccessTrustProviderResult",
 }) as any as S.Schema<AttachVerifiedAccessTrustProviderResult>;
+export type VolumeId = string;
+export type BoxedInteger = number;
 export interface AttachVolumeRequest {
   Device?: string;
   InstanceId?: string;
@@ -4573,6 +5153,7 @@ export type VolumeAttachmentState =
   | "busy"
   | (string & {});
 export const VolumeAttachmentState = /*@__PURE__*/ S.String;
+
 export interface VolumeAttachment {
   DeleteOnTermination?: boolean;
   AssociatedResource?: string;
@@ -4625,6 +5206,7 @@ export const VolumeAttachment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VolumeAttachment",
 }) as any as S.Schema<VolumeAttachment>;
+export type VpnGatewayId = string;
 export interface AttachVpnGatewayRequest {
   VpcId?: string;
   VpnGatewayId?: string;
@@ -4659,6 +5241,7 @@ export type AttachmentStatus =
   | "detached"
   | (string & {});
 export const AttachmentStatus = /*@__PURE__*/ S.String;
+
 export interface VpcAttachment {
   VpcId?: string;
   State?: AttachmentStatus;
@@ -4726,6 +5309,7 @@ export type ClientVpnAuthorizationRuleStatusCode =
   | "revoking"
   | (string & {});
 export const ClientVpnAuthorizationRuleStatusCode = /*@__PURE__*/ S.String;
+
 export interface ClientVpnAuthorizationRuleStatus {
   Code?: ClientVpnAuthorizationRuleStatusCode;
   Message?: string;
@@ -4977,6 +5561,8 @@ export const AuthorizeSecurityGroupEgressRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthorizeSecurityGroupEgressRequest",
 }) as any as S.Schema<AuthorizeSecurityGroupEgressRequest>;
+export type SecurityGroupRuleId = string;
+export type PrefixListResourceId = string;
 export interface ReferencedSecurityGroup {
   GroupId?: string;
   PeeringStatus?: string;
@@ -5114,6 +5700,7 @@ export const AuthorizeSecurityGroupEgressResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthorizeSecurityGroupEgressResult",
 }) as any as S.Schema<AuthorizeSecurityGroupEgressResult>;
+export type SecurityGroupName = string;
 export interface AuthorizeSecurityGroupIngressRequest {
   CidrIp?: string;
   FromPort?: number;
@@ -5178,6 +5765,7 @@ export const AuthorizeSecurityGroupIngressResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthorizeSecurityGroupIngressResult",
 }) as any as S.Schema<AuthorizeSecurityGroupIngressResult>;
+export type S3StorageUploadPolicySignature = string | redacted.Redacted<string>;
 export interface S3Storage {
   AWSAccessKeyId?: string;
   Bucket?: string;
@@ -5253,6 +5841,7 @@ export type BundleTaskState =
   | "failed"
   | (string & {});
 export const BundleTaskState = /*@__PURE__*/ S.String;
+
 export interface BundleTaskError {
   Code?: string;
   Message?: string;
@@ -5325,6 +5914,7 @@ export const BundleInstanceResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BundleInstanceResult",
 }) as any as S.Schema<BundleInstanceResult>;
+export type BundleId = string;
 export interface CancelBundleTaskRequest {
   BundleId?: string;
   DryRun?: boolean;
@@ -5367,6 +5957,8 @@ export const CancelBundleTaskResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CancelBundleTaskResult>;
 export type ApplyCancellationCharges = "commitment-wind-down" | (string & {});
 export const ApplyCancellationCharges = /*@__PURE__*/ S.String;
+
+export type CapacityReservationCancellationQuoteId = string;
 export interface CancelCapacityReservationRequest {
   CapacityReservationId?: string;
   DryRun?: boolean;
@@ -5406,6 +5998,7 @@ export const CancelCapacityReservationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelCapacityReservationResult",
 }) as any as S.Schema<CancelCapacityReservationResult>;
+export type CapacityReservationFleetId = string;
 export type CapacityReservationFleetIdSet = string[];
 export const CapacityReservationFleetIdSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -5447,6 +6040,7 @@ export type CapacityReservationFleetState =
   | "failed"
   | (string & {});
 export const CapacityReservationFleetState = /*@__PURE__*/ S.String;
+
 export interface CapacityReservationFleetCancellationState {
   CurrentFleetState?: CapacityReservationFleetState;
   PreviousFleetState?: CapacityReservationFleetState;
@@ -5479,6 +6073,8 @@ export const CapacityReservationFleetCancellationStateSet =
       identifier: "CapacityReservationFleetCancellationState",
     }),
   );
+export type CancelCapacityReservationFleetErrorCode = string;
+export type CancelCapacityReservationFleetErrorMessage = string;
 export interface CancelCapacityReservationFleetError {
   Code?: string;
   Message?: string;
@@ -5550,6 +6146,7 @@ export const CancelCapacityReservationFleetsResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CancelCapacityReservationFleetsResult",
 }) as any as S.Schema<CancelCapacityReservationFleetsResult>;
+export type ConversionTaskId = string;
 export interface CancelConversionRequest {
   DryRun?: boolean;
   ConversionTaskId?: string;
@@ -5589,6 +6186,7 @@ export const CancelConversionTaskResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelConversionTaskResponse",
 }) as any as S.Schema<CancelConversionTaskResponse>;
+export type DeclarativePoliciesReportId = string;
 export interface CancelDeclarativePoliciesReportRequest {
   DryRun?: boolean;
   ReportId?: string;
@@ -5626,6 +6224,7 @@ export const CancelDeclarativePoliciesReportResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CancelDeclarativePoliciesReportResult",
 }) as any as S.Schema<CancelDeclarativePoliciesReportResult>;
+export type ExportVmTaskId = string;
 export interface CancelExportTaskRequest {
   ExportTaskId?: string;
 }
@@ -5690,6 +6289,7 @@ export const CancelImageLaunchPermissionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelImageLaunchPermissionResult",
 }) as any as S.Schema<CancelImageLaunchPermissionResult>;
+export type ImportTaskId = string;
 export interface CancelImportTaskRequest {
   CancelReason?: string;
   DryRun?: boolean;
@@ -5737,6 +6337,7 @@ export const CancelImportTaskResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelImportTaskResult",
 }) as any as S.Schema<CancelImportTaskResult>;
+export type ReservedInstancesListingId = string;
 export interface CancelReservedInstancesListingRequest {
   ReservedInstancesListingId?: string;
 }
@@ -5768,6 +6369,7 @@ export type ListingState =
   | "pending"
   | (string & {});
 export const ListingState = /*@__PURE__*/ S.String;
+
 export interface InstanceCount {
   InstanceCount?: number;
   State?: ListingState;
@@ -5792,6 +6394,7 @@ export const InstanceCountList = /*@__PURE__*/ S.Array(
 );
 export type CurrencyCodeValues = "USD" | (string & {});
 export const CurrencyCodeValues = /*@__PURE__*/ S.String;
+
 export interface PriceSchedule {
   Active?: boolean;
   CurrencyCode?: CurrencyCodeValues;
@@ -5828,6 +6431,7 @@ export type ListingStatus =
   | "closed"
   | (string & {});
 export const ListingStatus = /*@__PURE__*/ S.String;
+
 export interface ReservedInstancesListing {
   ClientToken?: string;
   CreateDate?: Date;
@@ -5904,6 +6508,7 @@ export const CancelReservedInstancesListingResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CancelReservedInstancesListingResult",
 }) as any as S.Schema<CancelReservedInstancesListingResult>;
+export type SpotFleetRequestId = string;
 export type SpotFleetRequestIdList = string[];
 export const SpotFleetRequestIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -5951,6 +6556,7 @@ export type BatchState =
   | "modifying"
   | (string & {});
 export const BatchState = /*@__PURE__*/ S.String;
+
 export interface CancelSpotFleetRequestsSuccessItem {
   CurrentSpotFleetRequestState?: BatchState;
   PreviousSpotFleetRequestState?: BatchState;
@@ -5988,6 +6594,7 @@ export type CancelBatchErrorCode =
   | "unexpectedError"
   | (string & {});
 export const CancelBatchErrorCode = /*@__PURE__*/ S.String;
+
 export interface CancelSpotFleetRequestsError_ {
   Code?: CancelBatchErrorCode;
   Message?: string;
@@ -6048,6 +6655,7 @@ export const CancelSpotFleetRequestsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelSpotFleetRequestsResponse",
 }) as any as S.Schema<CancelSpotFleetRequestsResponse>;
+export type SpotInstanceRequestId = string;
 export type SpotInstanceRequestIdList = string[];
 export const SpotInstanceRequestIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("SpotInstanceRequestId")),
@@ -6087,6 +6695,7 @@ export type CancelSpotInstanceRequestState =
   | "completed"
   | (string & {});
 export const CancelSpotInstanceRequestState = /*@__PURE__*/ S.String;
+
 export interface CancelledSpotInstanceRequest {
   SpotInstanceRequestId?: string;
   State?: CancelSpotInstanceRequestState;
@@ -6214,6 +6823,10 @@ export const CopyFpgaImageResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyFpgaImageResult",
 }) as any as S.Schema<CopyFpgaImageResult>;
+export type CopyImageClientToken = string;
+export type ImageDescriptionRequest = string;
+export type KmsKeyId = string;
+export type ImageNameRequest = string;
 export interface CopyImageRequest {
   ClientToken?: string;
   Description?: string;
@@ -6284,6 +6897,8 @@ export const CopyImageResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyImageResult",
 }) as any as S.Schema<CopyImageResult>;
+export type CopySnapshotRequestPSU = string | redacted.Redacted<string>;
+export type SnapshotCompletionDurationMinutesRequest = number;
 export interface CopySnapshotRequest {
   Description?: string;
   DestinationOutpostArn?: string;
@@ -6371,6 +6986,7 @@ export type VolumeType =
   | "gp3"
   | (string & {});
 export const VolumeType = /*@__PURE__*/ S.String;
+
 export interface CopyVolumesRequest {
   SourceVolumeId?: string;
   Iops?: number;
@@ -6411,6 +7027,7 @@ export const CopyVolumesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CopyVolumesRequest>;
 export type SSEType = "sse-ebs" | "sse-kms" | "none" | (string & {});
 export const SSEType = /*@__PURE__*/ S.String;
+
 export interface OperatorResponse {
   Managed?: boolean;
   Principal?: string;
@@ -6443,6 +7060,7 @@ export type VolumeState =
   | "error"
   | (string & {});
 export const VolumeState = /*@__PURE__*/ S.String;
+
 export type VolumeAttachmentList = VolumeAttachment[];
 export const VolumeAttachmentList = /*@__PURE__*/ S.Array(
   VolumeAttachment.pipe(T.XmlName("item")).annotate({
@@ -6571,8 +7189,10 @@ export const CopyVolumesResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CopyVolumesResult>;
 export type Schedule = "hourly" | (string & {});
 export const Schedule = /*@__PURE__*/ S.String;
+
 export type OutputFormat = "csv" | "parquet" | (string & {});
 export const OutputFormat = /*@__PURE__*/ S.String;
+
 export interface CreateCapacityManagerDataExportRequest {
   S3BucketName?: string;
   S3BucketPrefix?: string;
@@ -6608,6 +7228,7 @@ export const CreateCapacityManagerDataExportRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateCapacityManagerDataExportRequest",
 }) as any as S.Schema<CreateCapacityManagerDataExportRequest>;
+export type CapacityManagerDataExportId = string;
 export interface CreateCapacityManagerDataExportResult {
   CapacityManagerDataExportId?: string;
 }
@@ -6643,20 +7264,28 @@ export type CapacityReservationInstancePlatform =
   | "Ubuntu Pro"
   | (string & {});
 export const CapacityReservationInstancePlatform = /*@__PURE__*/ S.String;
+
 export type CapacityReservationTenancy =
   | "default"
   | "dedicated"
   | (string & {});
 export const CapacityReservationTenancy = /*@__PURE__*/ S.String;
+
 export type EndDateType = "unlimited" | "limited" | (string & {});
 export const EndDateType = /*@__PURE__*/ S.String;
+
 export type InstanceMatchCriteria = "open" | "targeted" | (string & {});
 export const InstanceMatchCriteria = /*@__PURE__*/ S.String;
+
+export type OutpostArn = string;
+export type PlacementGroupArn = string;
+export type CapacityReservationCommitmentDuration = number;
 export type CapacityReservationDeliveryPreference =
   | "fixed"
   | "incremental"
   | (string & {});
 export const CapacityReservationDeliveryPreference = /*@__PURE__*/ S.String;
+
 export interface CreateCapacityReservationRequest {
   ClientToken?: string;
   InstanceType?: string;
@@ -6731,8 +7360,10 @@ export type CapacityReservationState =
   | "unavailable"
   | (string & {});
 export const CapacityReservationState = /*@__PURE__*/ S.String;
+
 export type AllocationType = "used" | "future" | "cancelling" | (string & {});
 export const AllocationType = /*@__PURE__*/ S.String;
+
 export interface CapacityAllocationMetadataEntry {
   Key?: string;
   Value?: string;
@@ -6788,6 +7419,7 @@ export type CapacityReservationType =
   | "capacity-block"
   | (string & {});
 export const CapacityReservationType = /*@__PURE__*/ S.String;
+
 export interface CapacityReservationCommitmentInfo {
   CommittedInstanceCount?: number;
   CommitmentEndDate?: Date;
@@ -6805,6 +7437,8 @@ export const CapacityReservationCommitmentInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CapacityReservationCommitmentInfo",
 }) as any as S.Schema<CapacityReservationCommitmentInfo>;
+export type CapacityBlockId = string;
+export type BoxedBoolean = boolean;
 export type InterruptibleCapacityReservationAllocationStatus =
   | "pending"
   | "active"
@@ -6815,8 +7449,10 @@ export type InterruptibleCapacityReservationAllocationStatus =
   | (string & {});
 export const InterruptibleCapacityReservationAllocationStatus =
   /*@__PURE__*/ S.String;
+
 export type InterruptionType = "adhoc" | (string & {});
 export const InterruptionType = /*@__PURE__*/ S.String;
+
 export interface InterruptibleCapacityAllocation {
   InstanceCount?: number;
   TargetInstanceCount?: number;
@@ -7137,6 +7773,7 @@ export type CapacityReservationCancellationQuoteState =
   | "expired"
   | (string & {});
 export const CapacityReservationCancellationQuoteState = /*@__PURE__*/ S.String;
+
 export interface CapacityReservationConfiguration {
   InstanceCount?: number;
   ReservationState?: string;
@@ -7155,6 +7792,7 @@ export const CapacityReservationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CapacityReservationConfiguration",
 }) as any as S.Schema<CapacityReservationConfiguration>;
+export type BoxedLong = number;
 export interface CancellationTerms {
   CancellationType?: ApplyCancellationCharges;
   ReservationState?: string;
@@ -8504,6 +9142,9 @@ export type InstanceType =
   | "m8gn.xlarge"
   | (string & {});
 export const InstanceType = /*@__PURE__*/ S.String;
+
+export type DoubleWithConstraints = number;
+export type IntegerWithConstraints = number;
 export interface ReservationFleetInstanceSpecification {
   InstanceType?: InstanceType;
   InstancePlatform?: CapacityReservationInstancePlatform;
@@ -8534,8 +9175,10 @@ export const ReservationFleetInstanceSpecificationList = /*@__PURE__*/ S.Array(
 );
 export type FleetCapacityReservationTenancy = "default" | (string & {});
 export const FleetCapacityReservationTenancy = /*@__PURE__*/ S.String;
+
 export type FleetInstanceMatchCriteria = "open" | (string & {});
 export const FleetInstanceMatchCriteria = /*@__PURE__*/ S.String;
+
 export interface CreateCapacityReservationFleetRequest {
   AllocationStrategy?: string;
   ClientToken?: string;
@@ -8737,6 +9380,7 @@ export const CreateCarrierGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCarrierGatewayRequest",
 }) as any as S.Schema<CreateCarrierGatewayRequest>;
+export type CarrierGatewayId = string;
 export type CarrierGatewayState =
   | "pending"
   | "available"
@@ -8744,6 +9388,7 @@ export type CarrierGatewayState =
   | "deleted"
   | (string & {});
 export const CarrierGatewayState = /*@__PURE__*/ S.String;
+
 export interface CarrierGateway {
   CarrierGatewayId?: string;
   VpcId?: string;
@@ -8793,6 +9438,7 @@ export type ClientVpnAuthenticationType =
   | "federated-authentication"
   | (string & {});
 export const ClientVpnAuthenticationType = /*@__PURE__*/ S.String;
+
 export interface DirectoryServiceAuthenticationRequest {
   DirectoryId?: string;
 }
@@ -8858,8 +9504,10 @@ export const ConnectionLogOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectionLogOptions>;
 export type TransportProtocol = "tcp" | "udp" | (string & {});
 export const TransportProtocol = /*@__PURE__*/ S.String;
+
 export type SelfServicePortal = "enabled" | "disabled" | (string & {});
 export const SelfServicePortal = /*@__PURE__*/ S.String;
+
 export interface ClientConnectOptions {
   Enabled?: boolean;
   LambdaFunctionArn?: string;
@@ -8898,12 +9546,14 @@ export type EndpointIpAddressType =
   | "dual-stack"
   | (string & {});
 export const EndpointIpAddressType = /*@__PURE__*/ S.String;
+
 export type TrafficIpAddressType =
   | "ipv4"
   | "ipv6"
   | "dual-stack"
   | (string & {});
 export const TrafficIpAddressType = /*@__PURE__*/ S.String;
+
 export type ClientVpnAvailabilityZoneSet = string[];
 export const ClientVpnAvailabilityZoneSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -9011,6 +9661,7 @@ export type ClientVpnEndpointStatusCode =
   | "pending"
   | (string & {});
 export const ClientVpnEndpointStatusCode = /*@__PURE__*/ S.String;
+
 export interface ClientVpnEndpointStatus {
   Code?: ClientVpnEndpointStatusCode;
   Message?: string;
@@ -9088,6 +9739,7 @@ export type ClientVpnRouteStatusCode =
   | "deleting"
   | (string & {});
 export const ClientVpnRouteStatusCode = /*@__PURE__*/ S.String;
+
 export interface ClientVpnRouteStatus {
   Code?: ClientVpnRouteStatusCode;
   Message?: string;
@@ -9118,6 +9770,7 @@ export const CreateClientVpnRouteResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateClientVpnRouteResult",
 }) as any as S.Schema<CreateClientVpnRouteResult>;
+export type Ipv4PoolCoipId = string;
 export interface CreateCoipCidrRequest {
   Cidr?: string;
   CoipPoolId?: string;
@@ -9172,6 +9825,7 @@ export const CreateCoipCidrResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCoipCidrResult",
 }) as any as S.Schema<CreateCoipCidrResult>;
+export type LocalGatewayRoutetableId = string;
 export interface CreateCoipPoolRequest {
   LocalGatewayRouteTableId?: string;
   TagSpecifications?: TagSpecification[];
@@ -9243,6 +9897,7 @@ export const CreateCoipPoolResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCoipPoolResult>;
 export type GatewayType = "ipsec.1" | (string & {});
 export const GatewayType = /*@__PURE__*/ S.String;
+
 export interface CreateCustomerGatewayRequest {
   BgpAsn?: number;
   PublicIp?: string;
@@ -9372,6 +10027,7 @@ export const CreateDefaultSubnetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDefaultSubnetRequest",
 }) as any as S.Schema<CreateDefaultSubnetRequest>;
+export type CoipPoolId = string;
 export type SubnetIpv6CidrBlockAssociationSet =
   SubnetIpv6CidrBlockAssociation[];
 export const SubnetIpv6CidrBlockAssociationSet = /*@__PURE__*/ S.Array(
@@ -9381,6 +10037,7 @@ export const SubnetIpv6CidrBlockAssociationSet = /*@__PURE__*/ S.Array(
 );
 export type HostnameType = "ip-name" | "resource-name" | (string & {});
 export const HostnameType = /*@__PURE__*/ S.String;
+
 export interface PrivateDnsNameOptionsOnLaunch {
   HostnameType?: HostnameType;
   EnableResourceNameDnsARecord?: boolean;
@@ -9410,6 +10067,7 @@ export type BlockPublicAccessMode =
   | "block-ingress"
   | (string & {});
 export const BlockPublicAccessMode = /*@__PURE__*/ S.String;
+
 export interface BlockPublicAccessStates {
   InternetGatewayBlockMode?: BlockPublicAccessMode;
 }
@@ -9431,6 +10089,7 @@ export type SubnetState =
   | "failed-insufficient-capacity"
   | (string & {});
 export const SubnetState = /*@__PURE__*/ S.String;
+
 export interface Subnet {
   AvailabilityZoneId?: string;
   EnableLniAtDeviceIndex?: number;
@@ -9587,6 +10246,7 @@ export const CreateDefaultVpcRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDefaultVpcRequest>;
 export type Tenancy = "default" | "dedicated" | "host" | (string & {});
 export const Tenancy = /*@__PURE__*/ S.String;
+
 export type VpcIpv6CidrBlockAssociationSet = VpcIpv6CidrBlockAssociation[];
 export const VpcIpv6CidrBlockAssociationSet = /*@__PURE__*/ S.Array(
   VpcIpv6CidrBlockAssociation.pipe(T.XmlName("item")).annotate({
@@ -9599,8 +10259,10 @@ export const VpcCidrBlockAssociationSet = /*@__PURE__*/ S.Array(
     identifier: "VpcCidrBlockAssociation",
   }),
 );
+export type VpcEncryptionControlId = string;
 export type VpcEncryptionControlMode = "monitor" | "enforce" | (string & {});
 export const VpcEncryptionControlMode = /*@__PURE__*/ S.String;
+
 export type VpcEncryptionControlState =
   | "enforce-in-progress"
   | "monitor-in-progress"
@@ -9613,6 +10275,7 @@ export type VpcEncryptionControlState =
   | "delete-failed"
   | (string & {});
 export const VpcEncryptionControlState = /*@__PURE__*/ S.String;
+
 export type VpcEncryptionControlExclusionState =
   | "enabling"
   | "enabled"
@@ -9620,6 +10283,7 @@ export type VpcEncryptionControlExclusionState =
   | "disabled"
   | (string & {});
 export const VpcEncryptionControlExclusionState = /*@__PURE__*/ S.String;
+
 export interface VpcEncryptionControlExclusion {
   State?: VpcEncryptionControlExclusionState;
   StateMessage?: string;
@@ -9731,6 +10395,7 @@ export const VpcEncryptionControl = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpcEncryptionControl>;
 export type VpcState = "pending" | "available" | (string & {});
 export const VpcState = /*@__PURE__*/ S.String;
+
 export interface Vpc {
   OwnerId?: string;
   InstanceTenancy?: Tenancy;
@@ -9812,6 +10477,7 @@ export const CreateDefaultVpcResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDefaultVpcResult",
 }) as any as S.Schema<CreateDefaultVpcResult>;
+export type SensitiveMacCredentials = string | redacted.Redacted<string>;
 export interface CreateDelegateMacVolumeOwnershipTaskRequest {
   ClientToken?: string;
   DryRun?: boolean;
@@ -9843,11 +10509,13 @@ export const CreateDelegateMacVolumeOwnershipTaskRequest =
   ).annotate({
     identifier: "CreateDelegateMacVolumeOwnershipTaskRequest",
   }) as any as S.Schema<CreateDelegateMacVolumeOwnershipTaskRequest>;
+export type MacModificationTaskId = string;
 export type MacSystemIntegrityProtectionSettingStatus =
   | "enabled"
   | "disabled"
   | (string & {});
 export const MacSystemIntegrityProtectionSettingStatus = /*@__PURE__*/ S.String;
+
 export interface MacSystemIntegrityProtectionConfiguration {
   AppleInternal?: MacSystemIntegrityProtectionSettingStatus;
   BaseSystem?: MacSystemIntegrityProtectionSettingStatus;
@@ -9909,11 +10577,13 @@ export type MacModificationTaskState =
   | "pending"
   | (string & {});
 export const MacModificationTaskState = /*@__PURE__*/ S.String;
+
 export type MacModificationTaskType =
   | "sip-modification"
   | "volume-ownership-delegation"
   | (string & {});
 export const MacModificationTaskType = /*@__PURE__*/ S.String;
+
 export interface MacModificationTask {
   InstanceId?: string;
   MacModificationTaskId?: string;
@@ -10155,6 +10825,7 @@ export const InternetGatewayAttachmentList = /*@__PURE__*/ S.Array(
     identifier: "InternetGatewayAttachment",
   }),
 );
+export type EgressOnlyInternetGatewayId = string;
 export interface EgressOnlyInternetGateway {
   Attachments?: InternetGatewayAttachment[];
   EgressOnlyInternetGatewayId?: string;
@@ -10207,11 +10878,13 @@ export type SpotAllocationStrategy =
   | "price-capacity-optimized"
   | (string & {});
 export const SpotAllocationStrategy = /*@__PURE__*/ S.String;
+
 export type FleetReplacementStrategy =
   | "launch"
   | "launch-before-terminate"
   | (string & {});
 export const FleetReplacementStrategy = /*@__PURE__*/ S.String;
+
 export interface FleetSpotCapacityRebalanceRequest {
   ReplacementStrategy?: FleetReplacementStrategy;
   TerminationDelay?: number;
@@ -10241,6 +10914,7 @@ export type SpotInstanceInterruptionBehavior =
   | "terminate"
   | (string & {});
 export const SpotInstanceInterruptionBehavior = /*@__PURE__*/ S.String;
+
 export interface SpotOptionsRequest {
   AllocationStrategy?: SpotAllocationStrategy;
   MaintenanceStrategies?: FleetSpotMaintenanceStrategiesRequest;
@@ -10270,10 +10944,12 @@ export type FleetOnDemandAllocationStrategy =
   | "prioritized"
   | (string & {});
 export const FleetOnDemandAllocationStrategy = /*@__PURE__*/ S.String;
+
 export type FleetCapacityReservationUsageStrategy =
   | "use-capacity-reservations-first"
   | (string & {});
 export const FleetCapacityReservationUsageStrategy = /*@__PURE__*/ S.String;
+
 export interface CapacityReservationOptionsRequest {
   UsageStrategy?: FleetCapacityReservationUsageStrategy;
 }
@@ -10308,6 +10984,7 @@ export type FleetReservationType =
   | "interruptible-capacity-reservation"
   | (string & {});
 export const FleetReservationType = /*@__PURE__*/ S.String;
+
 export type ReservationTypeListRequest = FleetReservationType[];
 export const ReservationTypeListRequest = /*@__PURE__*/ S.Array(
   FleetReservationType.pipe(T.XmlName("ReservationType")),
@@ -10329,6 +11006,9 @@ export type FleetExcessCapacityTerminationPolicy =
   | "termination"
   | (string & {});
 export const FleetExcessCapacityTerminationPolicy = /*@__PURE__*/ S.String;
+
+export type LaunchTemplateId = string;
+export type LaunchTemplateName = string;
 export interface FleetLaunchTemplateSpecificationRequest {
   LaunchTemplateId?: string;
   LaunchTemplateName?: string;
@@ -10344,6 +11024,8 @@ export const FleetLaunchTemplateSpecificationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "FleetLaunchTemplateSpecificationRequest",
 }) as any as S.Schema<FleetLaunchTemplateSpecificationRequest>;
+export type PlacementGroupName = string;
+export type PlacementGroupId = string;
 export interface Placement {
   AvailabilityZoneId?: string;
   Affinity?: string;
@@ -10400,6 +11082,7 @@ export const Placement = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "Placement" }) as any as S.Schema<Placement>;
+export type SnapshotId = string;
 export interface FleetEbsBlockDeviceRequest {
   Encrypted?: boolean;
   DeleteOnTermination?: boolean;
@@ -10472,6 +11155,7 @@ export type CpuManufacturer =
   | "apple"
   | (string & {});
 export const CpuManufacturer = /*@__PURE__*/ S.String;
+
 export type CpuManufacturerSet = CpuManufacturer[];
 export const CpuManufacturerSet = /*@__PURE__*/ S.Array(
   CpuManufacturer.pipe(T.XmlName("item")),
@@ -10485,24 +11169,28 @@ export const MemoryGiBPerVCpuRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MemoryGiBPerVCpuRequest",
 }) as any as S.Schema<MemoryGiBPerVCpuRequest>;
+export type ExcludedInstanceType = string;
 export type ExcludedInstanceTypeSet = string[];
 export const ExcludedInstanceTypeSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
 export type InstanceGeneration = "current" | "previous" | (string & {});
 export const InstanceGeneration = /*@__PURE__*/ S.String;
+
 export type InstanceGenerationSet = InstanceGeneration[];
 export const InstanceGenerationSet = /*@__PURE__*/ S.Array(
   InstanceGeneration.pipe(T.XmlName("item")),
 );
 export type BareMetal = "included" | "required" | "excluded" | (string & {});
 export const BareMetal = /*@__PURE__*/ S.String;
+
 export type BurstablePerformance =
   | "included"
   | "required"
   | "excluded"
   | (string & {});
 export const BurstablePerformance = /*@__PURE__*/ S.String;
+
 export interface NetworkInterfaceCountRequest {
   Min?: number;
   Max?: number;
@@ -10514,8 +11202,10 @@ export const NetworkInterfaceCountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterfaceCountRequest>;
 export type LocalStorage = "included" | "required" | "excluded" | (string & {});
 export const LocalStorage = /*@__PURE__*/ S.String;
+
 export type LocalStorageType = "hdd" | "ssd" | (string & {});
 export const LocalStorageType = /*@__PURE__*/ S.String;
+
 export type LocalStorageTypeSet = LocalStorageType[];
 export const LocalStorageTypeSet = /*@__PURE__*/ S.Array(
   LocalStorageType.pipe(T.XmlName("item")),
@@ -10545,6 +11235,7 @@ export type AcceleratorType =
   | "media"
   | (string & {});
 export const AcceleratorType = /*@__PURE__*/ S.String;
+
 export type AcceleratorTypeSet = AcceleratorType[];
 export const AcceleratorTypeSet = /*@__PURE__*/ S.Array(
   AcceleratorType.pipe(T.XmlName("item")),
@@ -10566,6 +11257,7 @@ export type AcceleratorManufacturer =
   | "habana"
   | (string & {});
 export const AcceleratorManufacturer = /*@__PURE__*/ S.String;
+
 export type AcceleratorManufacturerSet = AcceleratorManufacturer[];
 export const AcceleratorManufacturerSet = /*@__PURE__*/ S.Array(
   AcceleratorManufacturer.pipe(T.XmlName("item")),
@@ -10592,6 +11284,7 @@ export type AcceleratorName =
   | "u30"
   | (string & {});
 export const AcceleratorName = /*@__PURE__*/ S.String;
+
 export type AcceleratorNameSet = AcceleratorName[];
 export const AcceleratorNameSet = /*@__PURE__*/ S.Array(
   AcceleratorName.pipe(T.XmlName("item")),
@@ -10614,6 +11307,7 @@ export const NetworkBandwidthGbpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkBandwidthGbpsRequest",
 }) as any as S.Schema<NetworkBandwidthGbpsRequest>;
+export type AllowedInstanceType = string;
 export type AllowedInstanceTypeSet = string[];
 export const AllowedInstanceTypeSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -10796,12 +11490,14 @@ export type DefaultTargetCapacityType =
   | "reserved-capacity"
   | (string & {});
 export const DefaultTargetCapacityType = /*@__PURE__*/ S.String;
+
 export type TargetCapacityUnitType =
   | "vcpu"
   | "memory-mib"
   | "units"
   | (string & {});
 export const TargetCapacityUnitType = /*@__PURE__*/ S.String;
+
 export interface TargetCapacitySpecificationRequest {
   TotalTargetCapacity?: number;
   OnDemandTargetCapacity?: number;
@@ -10822,6 +11518,7 @@ export const TargetCapacitySpecificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetCapacitySpecificationRequest>;
 export type FleetType = "request" | "maintain" | "instant" | (string & {});
 export const FleetType = /*@__PURE__*/ S.String;
+
 export interface CreateFleetRequest {
   DryRun?: boolean;
   ClientToken?: string;
@@ -10878,6 +11575,7 @@ export const CreateFleetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFleetRequest",
 }) as any as S.Schema<CreateFleetRequest>;
+export type FleetId = string;
 export interface FleetLaunchTemplateSpecification {
   LaunchTemplateId?: string;
   LaunchTemplateName?: string;
@@ -11375,6 +12073,7 @@ export type InstanceLifecycle =
   | "interruptible-capacity-reservation"
   | (string & {});
 export const InstanceLifecycle = /*@__PURE__*/ S.String;
+
 export interface CreateFleetError_ {
   LaunchTemplateAndOverrides?: LaunchTemplateAndOverridesResponse;
   Lifecycle?: InstanceLifecycle;
@@ -11417,6 +12116,7 @@ export const InstanceIdsSet = /*@__PURE__*/ S.Array(
 );
 export type PlatformValues = "Windows" | (string & {});
 export const PlatformValues = /*@__PURE__*/ S.String;
+
 export interface CreateFleetInstance {
   LaunchTemplateAndOverrides?: LaunchTemplateAndOverridesResponse;
   Lifecycle?: InstanceLifecycle;
@@ -11481,6 +12181,7 @@ export const CreateFleetResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFleetResult",
 }) as any as S.Schema<CreateFleetResult>;
+export type FlowLogResourceId = string;
 export type FlowLogResourceIds = string[];
 export const FlowLogResourceIds = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -11494,16 +12195,20 @@ export type FlowLogsResourceType =
   | "RegionalNatGateway"
   | (string & {});
 export const FlowLogsResourceType = /*@__PURE__*/ S.String;
+
 export type TrafficType = "ACCEPT" | "REJECT" | "ALL" | (string & {});
 export const TrafficType = /*@__PURE__*/ S.String;
+
 export type LogDestinationType =
   | "cloud-watch-logs"
   | "s3"
   | "kinesis-data-firehose"
   | (string & {});
 export const LogDestinationType = /*@__PURE__*/ S.String;
+
 export type DestinationFileFormat = "plain-text" | "parquet" | (string & {});
 export const DestinationFileFormat = /*@__PURE__*/ S.String;
+
 export interface DestinationOptionsRequest {
   FileFormat?: DestinationFileFormat;
   HiveCompatiblePartitions?: boolean;
@@ -11524,6 +12229,8 @@ export type TaggableResourceType =
   | "auto-scaling-group"
   | (string & {});
 export const TaggableResourceType = /*@__PURE__*/ S.String;
+
+export type TagKey = string;
 export type TagKeyList = string[];
 export const TagKeyList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -11684,6 +12391,7 @@ export const CreateFpgaImageResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateFpgaImageResult>;
 export type SnapshotLocationEnum = "regional" | "local" | (string & {});
 export const SnapshotLocationEnum = /*@__PURE__*/ S.String;
+
 export interface EbsBlockDevice {
   DeleteOnTermination?: boolean;
   Iops?: number;
@@ -11840,6 +12548,8 @@ export const CreateImageResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateImageResult",
 }) as any as S.Schema<CreateImageResult>;
+export type ImageUsageResourceTypeName = string;
+export type ImageUsageResourceTypeOptionValue = string;
 export type ImageUsageResourceTypeOptionValuesList = string[];
 export const ImageUsageResourceTypeOptionValuesList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -11885,6 +12595,7 @@ export type ImageUsageReportUserIdStringList = string[];
 export const ImageUsageReportUserIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("UserId")),
 );
+export type CreateImageUsageReportClientToken = string;
 export interface CreateImageUsageReportRequest {
   ImageId?: string;
   DryRun?: boolean;
@@ -11921,6 +12632,7 @@ export const CreateImageUsageReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateImageUsageReportRequest",
 }) as any as S.Schema<CreateImageUsageReportRequest>;
+export type ImageUsageReportId = string;
 export interface CreateImageUsageReportResult {
   ReportId?: string;
 }
@@ -11940,6 +12652,7 @@ export const SecurityGroupIdStringListRequest = /*@__PURE__*/ S.Array(
 );
 export type IpAddressType = "ipv4" | "dualstack" | "ipv6" | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
+
 export interface CreateInstanceConnectEndpointRequest {
   DryRun?: boolean;
   SubnetId?: string;
@@ -11977,6 +12690,7 @@ export const CreateInstanceConnectEndpointRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateInstanceConnectEndpointRequest",
 }) as any as S.Schema<CreateInstanceConnectEndpointRequest>;
+export type InstanceConnectEndpointId = string;
 export type Ec2InstanceConnectEndpointState =
   | "create-in-progress"
   | "create-complete"
@@ -11989,6 +12703,7 @@ export type Ec2InstanceConnectEndpointState =
   | "update-failed"
   | (string & {});
 export const Ec2InstanceConnectEndpointState = /*@__PURE__*/ S.String;
+
 export type NetworkInterfaceIdSet = string[];
 export const NetworkInterfaceIdSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -12222,10 +12937,13 @@ export type ExportEnvironment =
   | "microsoft"
   | (string & {});
 export const ExportEnvironment = /*@__PURE__*/ S.String;
+
 export type DiskImageFormat = "VMDK" | "RAW" | "VHD" | (string & {});
 export const DiskImageFormat = /*@__PURE__*/ S.String;
+
 export type ContainerFormat = "ova" | (string & {});
 export const ContainerFormat = /*@__PURE__*/ S.String;
+
 export interface ExportToS3TaskSpecification {
   DiskImageFormat?: DiskImageFormat;
   ContainerFormat?: ContainerFormat;
@@ -12346,6 +13064,7 @@ export type ExportTaskState =
   | "completed"
   | (string & {});
 export const ExportTaskState = /*@__PURE__*/ S.String;
+
 export interface ExportTask {
   Description?: string;
   ExportTaskId?: string;
@@ -12538,11 +13257,13 @@ export const AddIpamOperatingRegionSet = /*@__PURE__*/ S.Array(
 );
 export type IpamTier = "free" | "advanced" | (string & {});
 export const IpamTier = /*@__PURE__*/ S.String;
+
 export type IpamMeteredAccount =
   | "ipam-owner"
   | "resource-owner"
   | (string & {});
 export const IpamMeteredAccount = /*@__PURE__*/ S.String;
+
 export interface CreateIpamRequest {
   DryRun?: boolean;
   Description?: string;
@@ -12581,6 +13302,7 @@ export const CreateIpamRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIpamRequest",
 }) as any as S.Schema<CreateIpamRequest>;
+export type IpamScopeId = string;
 export interface IpamOperatingRegion {
   RegionName?: string;
 }
@@ -12615,6 +13337,7 @@ export type IpamState =
   | "restore-in-progress"
   | (string & {});
 export const IpamState = /*@__PURE__*/ S.String;
+
 export interface Ipam {
   OwnerId?: string;
   IpamId?: string;
@@ -12749,8 +13472,10 @@ export const CreateIpamExternalResourceVerificationTokenRequest =
   ).annotate({
     identifier: "CreateIpamExternalResourceVerificationTokenRequest",
   }) as any as S.Schema<CreateIpamExternalResourceVerificationTokenRequest>;
+export type IpamExternalResourceVerificationTokenId = string;
 export type TokenState = "valid" | "expired" | (string & {});
 export const TokenState = /*@__PURE__*/ S.String;
+
 export type IpamExternalResourceVerificationTokenState =
   | "create-in-progress"
   | "create-complete"
@@ -12761,6 +13486,7 @@ export type IpamExternalResourceVerificationTokenState =
   | (string & {});
 export const IpamExternalResourceVerificationTokenState =
   /*@__PURE__*/ S.String;
+
 export interface IpamExternalResourceVerificationToken {
   IpamExternalResourceVerificationTokenId?: string;
   IpamExternalResourceVerificationTokenArn?: string;
@@ -12870,6 +13596,7 @@ export const CreateIpamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIpamPolicyRequest",
 }) as any as S.Schema<CreateIpamPolicyRequest>;
+export type IpamPolicyId = string;
 export type IpamPolicyState =
   | "create-in-progress"
   | "create-complete"
@@ -12885,6 +13612,7 @@ export type IpamPolicyState =
   | "restore-in-progress"
   | (string & {});
 export const IpamPolicyState = /*@__PURE__*/ S.String;
+
 export interface IpamPolicy {
   OwnerId?: string;
   IpamPolicyId?: string;
@@ -12945,6 +13673,8 @@ export const CreateIpamPolicyResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIpamPolicyResult>;
 export type AddressFamily = "ipv4" | "ipv6" | (string & {});
 export const AddressFamily = /*@__PURE__*/ S.String;
+
+export type IpamNetmaskLength = number;
 export interface RequestIpamResourceTag {
   Key?: string;
   Value?: string;
@@ -12962,10 +13692,13 @@ export const RequestIpamResourceTagList = /*@__PURE__*/ S.Array(
 );
 export type IpamPoolAwsService = "ec2" | "global-services" | (string & {});
 export const IpamPoolAwsService = /*@__PURE__*/ S.String;
+
 export type IpamPoolPublicIpSource = "amazon" | "byoip" | (string & {});
 export const IpamPoolPublicIpSource = /*@__PURE__*/ S.String;
+
 export type IpamPoolSourceResourceType = "vpc" | (string & {});
 export const IpamPoolSourceResourceType = /*@__PURE__*/ S.String;
+
 export interface IpamPoolSourceResourceRequest {
   ResourceId?: string;
   ResourceType?: IpamPoolSourceResourceType;
@@ -13040,6 +13773,7 @@ export const CreateIpamPoolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIpamPoolRequest>;
 export type IpamScopeType = "public" | "private" | (string & {});
 export const IpamScopeType = /*@__PURE__*/ S.String;
+
 export type IpamPoolState =
   | "create-in-progress"
   | "create-complete"
@@ -13055,6 +13789,7 @@ export type IpamPoolState =
   | "restore-in-progress"
   | (string & {});
 export const IpamPoolState = /*@__PURE__*/ S.String;
+
 export interface IpamResourceTag {
   Key?: string;
   Value?: string;
@@ -13247,6 +13982,7 @@ export type IpamPrefixListResolverRuleType =
   | "ipam-pool-cidr"
   | (string & {});
 export const IpamPrefixListResolverRuleType = /*@__PURE__*/ S.String;
+
 export type IpamResourceType =
   | "vpc"
   | "subnet"
@@ -13257,6 +13993,7 @@ export type IpamResourceType =
   | "anycast-ip-list"
   | (string & {});
 export const IpamResourceType = /*@__PURE__*/ S.String;
+
 export type IpamPrefixListResolverRuleConditionOperation =
   | "equals"
   | "not-equals"
@@ -13264,6 +14001,7 @@ export type IpamPrefixListResolverRuleConditionOperation =
   | (string & {});
 export const IpamPrefixListResolverRuleConditionOperation =
   /*@__PURE__*/ S.String;
+
 export interface IpamPrefixListResolverRuleConditionRequest {
   Operation?: IpamPrefixListResolverRuleConditionOperation;
   IpamPoolId?: string;
@@ -13358,6 +14096,7 @@ export const CreateIpamPrefixListResolverRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIpamPrefixListResolverRequest",
 }) as any as S.Schema<CreateIpamPrefixListResolverRequest>;
+export type IpamPrefixListResolverId = string;
 export type IpamPrefixListResolverState =
   | "create-in-progress"
   | "create-complete"
@@ -13373,6 +14112,7 @@ export type IpamPrefixListResolverState =
   | "restore-in-progress"
   | (string & {});
 export const IpamPrefixListResolverState = /*@__PURE__*/ S.String;
+
 export type IpamPrefixListResolverVersionCreationStatus =
   | "pending"
   | "success"
@@ -13380,6 +14120,7 @@ export type IpamPrefixListResolverVersionCreationStatus =
   | (string & {});
 export const IpamPrefixListResolverVersionCreationStatus =
   /*@__PURE__*/ S.String;
+
 export interface IpamPrefixListResolver {
   OwnerId?: string;
   IpamPrefixListResolverId?: string;
@@ -13497,6 +14238,7 @@ export const CreateIpamPrefixListResolverTargetRequest =
   ).annotate({
     identifier: "CreateIpamPrefixListResolverTargetRequest",
   }) as any as S.Schema<CreateIpamPrefixListResolverTargetRequest>;
+export type IpamPrefixListResolverTargetId = string;
 export type IpamPrefixListResolverTargetState =
   | "create-in-progress"
   | "create-complete"
@@ -13515,6 +14257,7 @@ export type IpamPrefixListResolverTargetState =
   | "restore-in-progress"
   | (string & {});
 export const IpamPrefixListResolverTargetState = /*@__PURE__*/ S.String;
+
 export interface IpamPrefixListResolverTarget {
   IpamPrefixListResolverTargetId?: string;
   IpamPrefixListResolverTargetArn?: string;
@@ -13646,6 +14389,7 @@ export type IpamResourceDiscoveryState =
   | "restore-in-progress"
   | (string & {});
 export const IpamResourceDiscoveryState = /*@__PURE__*/ S.String;
+
 export interface IpamOrganizationalUnitExclusion {
   OrganizationsEntityPath?: string;
 }
@@ -13743,6 +14487,7 @@ export const CreateIpamResourceDiscoveryResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIpamResourceDiscoveryResult>;
 export type IpamScopeExternalAuthorityType = "infoblox" | (string & {});
 export const IpamScopeExternalAuthorityType = /*@__PURE__*/ S.String;
+
 export interface ExternalAuthorityConfiguration {
   Type?: IpamScopeExternalAuthorityType;
   ExternalResourceIdentifier?: string;
@@ -13802,6 +14547,7 @@ export type IpamScopeState =
   | "restore-in-progress"
   | (string & {});
 export const IpamScopeState = /*@__PURE__*/ S.String;
+
 export interface IpamScopeExternalAuthorityConfiguration {
   Type?: IpamScopeExternalAuthorityType;
   ExternalResourceIdentifier?: string;
@@ -13905,8 +14651,10 @@ export const CreateIpamScopeResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateIpamScopeResult>;
 export type KeyType = "rsa" | "ed25519" | (string & {});
 export const KeyType = /*@__PURE__*/ S.String;
+
 export type KeyFormat = "pem" | "ppk" | (string & {});
 export const KeyFormat = /*@__PURE__*/ S.String;
+
 export interface CreateKeyPairRequest {
   KeyName?: string;
   KeyType?: KeyType;
@@ -13940,6 +14688,7 @@ export const CreateKeyPairRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKeyPairRequest",
 }) as any as S.Schema<CreateKeyPairRequest>;
+export type SensitiveUserData = string | redacted.Redacted<string>;
 export interface KeyPair {
   KeyPairId?: string;
   Tags?: Tag[];
@@ -13971,6 +14720,8 @@ export const KeyPair = /*@__PURE__*/ S.suspend(() =>
     ),
   }).pipe(ns),
 ).annotate({ identifier: "KeyPair" }) as any as S.Schema<KeyPair>;
+export type VersionDescription = string;
+export type KernelId = string;
 export interface LaunchTemplateIamInstanceProfileSpecificationRequest {
   Arn?: string;
   Name?: string;
@@ -14208,6 +14959,7 @@ export const LaunchTemplateInstanceNetworkInterfaceSpecificationRequestList =
       identifier: "LaunchTemplateInstanceNetworkInterfaceSpecificationRequest",
     }),
   );
+export type KeyPairName = string;
 export interface LaunchTemplatesMonitoringRequest {
   Enabled?: boolean;
 }
@@ -14244,8 +14996,10 @@ export const LaunchTemplatePlacementRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LaunchTemplatePlacementRequest",
 }) as any as S.Schema<LaunchTemplatePlacementRequest>;
+export type RamdiskId = string;
 export type ShutdownBehavior = "stop" | "terminate" | (string & {});
 export const ShutdownBehavior = /*@__PURE__*/ S.String;
+
 export interface LaunchTemplateTagSpecificationRequest {
   ResourceType?: ResourceType;
   Tags?: Tag[];
@@ -14280,6 +15034,7 @@ export const ElasticGpuSpecificationList = /*@__PURE__*/ S.Array(
     identifier: "ElasticGpuSpecification",
   }),
 );
+export type LaunchTemplateElasticInferenceAcceleratorCount = number;
 export interface LaunchTemplateElasticInferenceAccelerator {
   Type?: string;
   Count?: number;
@@ -14308,14 +15063,17 @@ export type MarketType =
   | "interruptible-capacity-reservation"
   | (string & {});
 export const MarketType = /*@__PURE__*/ S.String;
+
 export type SpotInstanceType = "one-time" | "persistent" | (string & {});
 export const SpotInstanceType = /*@__PURE__*/ S.String;
+
 export type InstanceInterruptionBehavior =
   | "hibernate"
   | "stop"
   | "terminate"
   | (string & {});
 export const InstanceInterruptionBehavior = /*@__PURE__*/ S.String;
+
 export interface LaunchTemplateSpotMarketOptionsRequest {
   MaxPrice?: string;
   SpotInstanceType?: SpotInstanceType;
@@ -14360,11 +15118,13 @@ export const CreditSpecificationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreditSpecificationRequest>;
 export type AmdSevSnpSpecification = "enabled" | "disabled" | (string & {});
 export const AmdSevSnpSpecification = /*@__PURE__*/ S.String;
+
 export type NestedVirtualizationSpecification =
   | "enabled"
   | "disabled"
   | (string & {});
 export const NestedVirtualizationSpecification = /*@__PURE__*/ S.String;
+
 export interface LaunchTemplateCpuOptionsRequest {
   CoreCount?: number;
   ThreadsPerCore?: number;
@@ -14387,6 +15147,7 @@ export type CapacityReservationPreference =
   | "none"
   | (string & {});
 export const CapacityReservationPreference = /*@__PURE__*/ S.String;
+
 export interface CapacityReservationTarget {
   CapacityReservationId?: string;
   CapacityReservationResourceGroupArn?: string;
@@ -14442,23 +15203,27 @@ export type LaunchTemplateHttpTokensState =
   | "required"
   | (string & {});
 export const LaunchTemplateHttpTokensState = /*@__PURE__*/ S.String;
+
 export type LaunchTemplateInstanceMetadataEndpointState =
   | "disabled"
   | "enabled"
   | (string & {});
 export const LaunchTemplateInstanceMetadataEndpointState =
   /*@__PURE__*/ S.String;
+
 export type LaunchTemplateInstanceMetadataProtocolIpv6 =
   | "disabled"
   | "enabled"
   | (string & {});
 export const LaunchTemplateInstanceMetadataProtocolIpv6 =
   /*@__PURE__*/ S.String;
+
 export type LaunchTemplateInstanceMetadataTagsState =
   | "disabled"
   | "enabled"
   | (string & {});
 export const LaunchTemplateInstanceMetadataTagsState = /*@__PURE__*/ S.String;
+
 export interface LaunchTemplateInstanceMetadataOptionsRequest {
   HttpTokens?: LaunchTemplateHttpTokensState;
   HttpPutResponseHopLimit?: number;
@@ -14506,6 +15271,7 @@ export type LaunchTemplateAutoRecoveryState =
   | "disabled"
   | (string & {});
 export const LaunchTemplateAutoRecoveryState = /*@__PURE__*/ S.String;
+
 export interface LaunchTemplateInstanceMaintenanceOptionsRequest {
   AutoRecovery?: LaunchTemplateAutoRecoveryState;
 }
@@ -14529,6 +15295,7 @@ export type InstanceBandwidthWeighting =
   | "ebs-1"
   | (string & {});
 export const InstanceBandwidthWeighting = /*@__PURE__*/ S.String;
+
 export interface LaunchTemplateNetworkPerformanceOptionsRequest {
   BandwidthWeighting?: InstanceBandwidthWeighting;
 }
@@ -14557,8 +15324,10 @@ export const SecondaryInterfacePrivateIpAddressSpecificationListRequest =
       identifier: "SecondaryInterfacePrivateIpAddressSpecificationRequest",
     }),
   );
+export type SecondarySubnetId = string;
 export type SecondaryInterfaceType = "secondary" | (string & {});
 export const SecondaryInterfaceType = /*@__PURE__*/ S.String;
+
 export interface LaunchTemplateInstanceSecondaryInterfaceSpecificationRequest {
   DeleteOnTermination?: boolean;
   DeviceIndex?: number;
@@ -15538,6 +16307,7 @@ export type LaunchTemplateInstanceMetadataOptionsState =
   | (string & {});
 export const LaunchTemplateInstanceMetadataOptionsState =
   /*@__PURE__*/ S.String;
+
 export interface LaunchTemplateInstanceMetadataOptions {
   State?: LaunchTemplateInstanceMetadataOptionsState;
   HttpTokens?: LaunchTemplateHttpTokensState;
@@ -16001,6 +16771,7 @@ export const CreateLaunchTemplateVersionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLaunchTemplateVersionResult",
 }) as any as S.Schema<CreateLaunchTemplateVersionResult>;
+export type LocalGatewayVirtualInterfaceGroupId = string;
 export interface CreateLocalGatewayRouteRequest {
   DestinationCidrBlock?: string;
   LocalGatewayRouteTableId?: string;
@@ -16033,6 +16804,7 @@ export const CreateLocalGatewayRouteRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateLocalGatewayRouteRequest>;
 export type LocalGatewayRouteType = "static" | "propagated" | (string & {});
 export const LocalGatewayRouteType = /*@__PURE__*/ S.String;
+
 export type LocalGatewayRouteState =
   | "pending"
   | "active"
@@ -16041,6 +16813,7 @@ export type LocalGatewayRouteState =
   | "deleted"
   | (string & {});
 export const LocalGatewayRouteState = /*@__PURE__*/ S.String;
+
 export interface LocalGatewayRoute {
   DestinationCidrBlock?: string;
   LocalGatewayVirtualInterfaceGroupId?: string;
@@ -16116,11 +16889,13 @@ export const CreateLocalGatewayRouteResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLocalGatewayRouteResult",
 }) as any as S.Schema<CreateLocalGatewayRouteResult>;
+export type LocalGatewayId = string;
 export type LocalGatewayRouteTableMode =
   | "direct-vpc-routing"
   | "coip"
   | (string & {});
 export const LocalGatewayRouteTableMode = /*@__PURE__*/ S.String;
+
 export interface CreateLocalGatewayRouteTableRequest {
   LocalGatewayId?: string;
   Mode?: LocalGatewayRouteTableMode;
@@ -16259,6 +17034,7 @@ export const CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest
     identifier:
       "CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest",
   }) as any as S.Schema<CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationRequest>;
+export type LocalGatewayRouteTableVirtualInterfaceGroupAssociationId = string;
 export interface LocalGatewayRouteTableVirtualInterfaceGroupAssociation {
   LocalGatewayRouteTableVirtualInterfaceGroupAssociationId?: string;
   LocalGatewayVirtualInterfaceGroupId?: string;
@@ -16364,6 +17140,7 @@ export const CreateLocalGatewayRouteTableVpcAssociationRequest =
   ).annotate({
     identifier: "CreateLocalGatewayRouteTableVpcAssociationRequest",
   }) as any as S.Schema<CreateLocalGatewayRouteTableVpcAssociationRequest>;
+export type LocalGatewayRouteTableVpcAssociationId = string;
 export interface LocalGatewayRouteTableVpcAssociation {
   LocalGatewayRouteTableVpcAssociationId?: string;
   LocalGatewayRouteTableId?: string;
@@ -16431,6 +17208,7 @@ export const CreateLocalGatewayRouteTableVpcAssociationResult =
   ).annotate({
     identifier: "CreateLocalGatewayRouteTableVpcAssociationResult",
   }) as any as S.Schema<CreateLocalGatewayRouteTableVpcAssociationResult>;
+export type OutpostLagId = string;
 export interface CreateLocalGatewayVirtualInterfaceRequest {
   LocalGatewayVirtualInterfaceGroupId?: string;
   OutpostLagId?: string;
@@ -16470,6 +17248,7 @@ export const CreateLocalGatewayVirtualInterfaceRequest =
   ).annotate({
     identifier: "CreateLocalGatewayVirtualInterfaceRequest",
   }) as any as S.Schema<CreateLocalGatewayVirtualInterfaceRequest>;
+export type LocalGatewayVirtualInterfaceId = string;
 export type LocalGatewayVirtualInterfaceConfigurationState =
   | "pending"
   | "available"
@@ -16478,6 +17257,7 @@ export type LocalGatewayVirtualInterfaceConfigurationState =
   | (string & {});
 export const LocalGatewayVirtualInterfaceConfigurationState =
   /*@__PURE__*/ S.String;
+
 export interface LocalGatewayVirtualInterface {
   LocalGatewayVirtualInterfaceId?: string;
   LocalGatewayId?: string;
@@ -16615,6 +17395,7 @@ export type LocalGatewayVirtualInterfaceGroupConfigurationState =
   | (string & {});
 export const LocalGatewayVirtualInterfaceGroupConfigurationState =
   /*@__PURE__*/ S.String;
+
 export interface LocalGatewayVirtualInterfaceGroup {
   LocalGatewayVirtualInterfaceGroupId?: string;
   LocalGatewayVirtualInterfaceIds?: string[];
@@ -16832,6 +17613,7 @@ export type PrefixListState =
   | "delete-failed"
   | (string & {});
 export const PrefixListState = /*@__PURE__*/ S.String;
+
 export interface ManagedPrefixList {
   PrefixListId?: string;
   AddressFamily?: string;
@@ -16914,6 +17696,7 @@ export const CreateManagedPrefixListResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateManagedPrefixListResult>;
 export type AvailabilityMode = "zonal" | "regional" | (string & {});
 export const AvailabilityMode = /*@__PURE__*/ S.String;
+
 export interface AvailabilityZoneAddress {
   AvailabilityZone?: string;
   AvailabilityZoneId?: string;
@@ -16936,6 +17719,7 @@ export const AvailabilityZoneAddresses = /*@__PURE__*/ S.Array(
 );
 export type ConnectivityType = "private" | "public" | (string & {});
 export const ConnectivityType = /*@__PURE__*/ S.String;
+
 export interface CreateNatGatewayRequest {
   AvailabilityMode?: AvailabilityMode;
   AllocationId?: string;
@@ -17027,12 +17811,16 @@ export type NatGatewayState =
   | "deleted"
   | (string & {});
 export const NatGatewayState = /*@__PURE__*/ S.String;
+
 export type AutoScalingIpsState = "enabled" | "disabled" | (string & {});
 export const AutoScalingIpsState = /*@__PURE__*/ S.String;
+
 export type AutoProvisionZonesState = "enabled" | "disabled" | (string & {});
 export const AutoProvisionZonesState = /*@__PURE__*/ S.String;
+
 export type NatGatewayApplianceType = "network-firewall-proxy" | (string & {});
 export const NatGatewayApplianceType = /*@__PURE__*/ S.String;
+
 export type NatGatewayApplianceState =
   | "attaching"
   | "attached"
@@ -17042,12 +17830,14 @@ export type NatGatewayApplianceState =
   | "detach-failed"
   | (string & {});
 export const NatGatewayApplianceState = /*@__PURE__*/ S.String;
+
 export type NatGatewayApplianceModifyState =
   | "modifying"
   | "completed"
   | "failed"
   | (string & {});
 export const NatGatewayApplianceModifyState = /*@__PURE__*/ S.String;
+
 export interface NatGatewayAttachedAppliance {
   Type?: NatGatewayApplianceType;
   ApplianceArn?: string;
@@ -17290,6 +18080,7 @@ export const PortRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PortRange" }) as any as S.Schema<PortRange>;
 export type RuleAction = "allow" | "deny" | (string & {});
 export const RuleAction = /*@__PURE__*/ S.String;
+
 export interface NetworkAclEntry {
   CidrBlock?: string;
   Egress?: boolean;
@@ -17400,6 +18191,7 @@ export const CreateNetworkAclResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNetworkAclResult",
 }) as any as S.Schema<CreateNetworkAclResult>;
+export type NetworkAclId = string;
 export interface CreateNetworkAclEntryRequest {
   DryRun?: boolean;
   NetworkAclId?: string;
@@ -17474,6 +18266,7 @@ export const CreateNetworkAclEntryResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateNetworkAclEntryResponse>;
 export type Protocol = "tcp" | "udp" | (string & {});
 export const Protocol = /*@__PURE__*/ S.String;
+
 export type ProtocolList = Protocol[];
 export const ProtocolList = /*@__PURE__*/ S.Array(
   Protocol.pipe(T.XmlName("item")),
@@ -17606,6 +18399,7 @@ export const CreateNetworkInsightsAccessScopeRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateNetworkInsightsAccessScopeRequest",
 }) as any as S.Schema<CreateNetworkInsightsAccessScopeRequest>;
+export type NetworkInsightsAccessScopeId = string;
 export interface NetworkInsightsAccessScope {
   NetworkInsightsAccessScopeId?: string;
   NetworkInsightsAccessScopeArn?: string;
@@ -17808,6 +18602,9 @@ export const CreateNetworkInsightsAccessScopeResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateNetworkInsightsAccessScopeResult",
 }) as any as S.Schema<CreateNetworkInsightsAccessScopeResult>;
+export type IpAddress = string;
+export type NetworkInsightsResourceId = string;
+export type Port = number;
 export interface RequestFilterPortRange {
   FromPort?: number;
   ToPort?: number;
@@ -17875,6 +18672,7 @@ export const CreateNetworkInsightsPathRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNetworkInsightsPathRequest",
 }) as any as S.Schema<CreateNetworkInsightsPathRequest>;
+export type NetworkInsightsPathId = string;
 export interface FilterPortRange {
   FromPort?: number;
   ToPort?: number;
@@ -18020,6 +18818,7 @@ export type NetworkInterfaceCreationType =
   | "trunk"
   | (string & {});
 export const NetworkInterfaceCreationType = /*@__PURE__*/ S.String;
+
 export interface CreateNetworkInterfaceRequest {
   Ipv4Prefixes?: Ipv4PrefixSpecificationRequest[];
   Ipv4PrefixCount?: number;
@@ -18309,6 +19108,7 @@ export type NetworkInterfaceType =
   | "aws_codestar_connections_managed"
   | (string & {});
 export const NetworkInterfaceType = /*@__PURE__*/ S.String;
+
 export interface NetworkInterfaceIpv6Address {
   Ipv6Address?: string;
   PublicIpv6DnsName?: string;
@@ -18427,6 +19227,7 @@ export type NetworkInterfaceStatus =
   | "detaching"
   | (string & {});
 export const NetworkInterfaceStatus = /*@__PURE__*/ S.String;
+
 export type AssociatedSubnetList = string[];
 export const AssociatedSubnetList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -18622,6 +19423,7 @@ export type InterfacePermissionType =
   | "EIP-ASSOCIATE"
   | (string & {});
 export const InterfacePermissionType = /*@__PURE__*/ S.String;
+
 export interface CreateNetworkInterfacePermissionRequest {
   NetworkInterfaceId?: string;
   AwsAccountId?: string;
@@ -18658,6 +19460,7 @@ export type NetworkInterfacePermissionStateCode =
   | "revoked"
   | (string & {});
 export const NetworkInterfacePermissionStateCode = /*@__PURE__*/ S.String;
+
 export interface NetworkInterfacePermissionState {
   State?: NetworkInterfacePermissionStateCode;
   StatusMessage?: string;
@@ -18731,6 +19534,7 @@ export const CreateNetworkInterfacePermissionResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CreateNetworkInterfacePermissionResult>;
 export type SpreadLevel = "host" | "rack" | (string & {});
 export const SpreadLevel = /*@__PURE__*/ S.String;
+
 export type PlacementStrategy =
   | "cluster"
   | "spread"
@@ -18738,6 +19542,7 @@ export type PlacementStrategy =
   | "precision-time"
   | (string & {});
 export const PlacementStrategy = /*@__PURE__*/ S.String;
+
 export interface CreatePlacementGroupRequest {
   PartitionCount?: number;
   TagSpecifications?: TagSpecification[];
@@ -18792,6 +19597,7 @@ export type PlacementGroupState =
   | "deleted"
   | (string & {});
 export const PlacementGroupState = /*@__PURE__*/ S.String;
+
 export interface PlacementGroup {
   GroupName?: string;
   State?: PlacementGroupState;
@@ -18939,6 +19745,7 @@ export const CreateReplaceRootVolumeTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateReplaceRootVolumeTaskRequest",
 }) as any as S.Schema<CreateReplaceRootVolumeTaskRequest>;
+export type ReplaceRootVolumeTaskId = string;
 export type ReplaceRootVolumeTaskState =
   | "pending"
   | "in-progress"
@@ -18948,6 +19755,7 @@ export type ReplaceRootVolumeTaskState =
   | "failed-detached"
   | (string & {});
 export const ReplaceRootVolumeTaskState = /*@__PURE__*/ S.String;
+
 export interface ReplaceRootVolumeTask {
   ReplaceRootVolumeTaskId?: string;
   InstanceId?: string;
@@ -19138,6 +19946,9 @@ export const CreateRestoreImageTaskResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRestoreImageTaskResult",
 }) as any as S.Schema<CreateRestoreImageTaskResult>;
+export type CoreNetworkArn = string;
+export type OdbNetworkArn = string;
+export type VpcPeeringConnectionId = string;
 export interface CreateRouteRequest {
   DestinationPrefixListId?: string;
   VpcEndpointId?: string;
@@ -19239,6 +20050,7 @@ export type RouteServerPersistRoutesAction =
   | "reset"
   | (string & {});
 export const RouteServerPersistRoutesAction = /*@__PURE__*/ S.String;
+
 export interface CreateRouteServerRequest {
   AmazonSideAsn?: number;
   ClientToken?: string;
@@ -19281,6 +20093,7 @@ export type RouteServerState =
   | "deleted"
   | (string & {});
 export const RouteServerState = /*@__PURE__*/ S.String;
+
 export type RouteServerPersistRoutesState =
   | "enabling"
   | "enabled"
@@ -19290,6 +20103,7 @@ export type RouteServerPersistRoutesState =
   | "modifying"
   | (string & {});
 export const RouteServerPersistRoutesState = /*@__PURE__*/ S.String;
+
 export interface RouteServer {
   RouteServerId?: string;
   AmazonSideAsn?: number;
@@ -19378,6 +20192,7 @@ export const CreateRouteServerEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRouteServerEndpointRequest",
 }) as any as S.Schema<CreateRouteServerEndpointRequest>;
+export type RouteServerEndpointId = string;
 export type RouteServerEndpointState =
   | "pending"
   | "available"
@@ -19388,6 +20203,7 @@ export type RouteServerEndpointState =
   | "delete-failed"
   | (string & {});
 export const RouteServerEndpointState = /*@__PURE__*/ S.String;
+
 export interface RouteServerEndpoint {
   RouteServerId?: string;
   RouteServerEndpointId?: string;
@@ -19461,6 +20277,7 @@ export type RouteServerPeerLivenessMode =
   | "bgp-keepalive"
   | (string & {});
 export const RouteServerPeerLivenessMode = /*@__PURE__*/ S.String;
+
 export interface RouteServerBgpOptionsRequest {
   PeerAsn?: number;
   PeerLivenessDetection?: RouteServerPeerLivenessMode;
@@ -19503,6 +20320,7 @@ export const CreateRouteServerPeerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRouteServerPeerRequest",
 }) as any as S.Schema<CreateRouteServerPeerRequest>;
+export type RouteServerPeerId = string;
 export type RouteServerPeerState =
   | "pending"
   | "available"
@@ -19512,6 +20330,7 @@ export type RouteServerPeerState =
   | "failed"
   | (string & {});
 export const RouteServerPeerState = /*@__PURE__*/ S.String;
+
 export interface RouteServerBgpOptions {
   PeerAsn?: number;
   PeerLivenessDetection?: RouteServerPeerLivenessMode;
@@ -19532,6 +20351,7 @@ export const RouteServerBgpOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteServerBgpOptions>;
 export type RouteServerBgpState = "up" | "down" | (string & {});
 export const RouteServerBgpState = /*@__PURE__*/ S.String;
+
 export interface RouteServerBgpStatus {
   Status?: RouteServerBgpState;
 }
@@ -19547,6 +20367,7 @@ export const RouteServerBgpStatus = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RouteServerBgpStatus>;
 export type RouteServerBfdState = "up" | "down" | (string & {});
 export const RouteServerBfdState = /*@__PURE__*/ S.String;
+
 export interface RouteServerBfdStatus {
   Status?: RouteServerBfdState;
 }
@@ -19750,8 +20571,10 @@ export type RouteOrigin =
   | "Advertisement"
   | (string & {});
 export const RouteOrigin = /*@__PURE__*/ S.String;
+
 export type RouteState = "active" | "blackhole" | "filtered" | (string & {});
 export const RouteState = /*@__PURE__*/ S.String;
+
 export interface Route {
   DestinationCidrBlock?: string;
   DestinationIpv6CidrBlock?: string;
@@ -19912,6 +20735,7 @@ export const CreateRouteTableResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRouteTableResult>;
 export type SecondaryNetworkType = "rdma" | (string & {});
 export const SecondaryNetworkType = /*@__PURE__*/ S.String;
+
 export interface CreateSecondaryNetworkRequest {
   ClientToken?: string;
   DryRun?: boolean;
@@ -19942,6 +20766,7 @@ export const CreateSecondaryNetworkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSecondaryNetworkRequest",
 }) as any as S.Schema<CreateSecondaryNetworkRequest>;
+export type SecondaryNetworkId = string;
 export type SecondaryNetworkState =
   | "create-in-progress"
   | "create-complete"
@@ -19951,6 +20776,8 @@ export type SecondaryNetworkState =
   | "delete-failed"
   | (string & {});
 export const SecondaryNetworkState = /*@__PURE__*/ S.String;
+
+export type SecondaryNetworkCidrAssociationId = string;
 export type SecondaryNetworkCidrBlockAssociationState =
   | "associating"
   | "associated"
@@ -19960,6 +20787,7 @@ export type SecondaryNetworkCidrBlockAssociationState =
   | "disassociation-failed"
   | (string & {});
 export const SecondaryNetworkCidrBlockAssociationState = /*@__PURE__*/ S.String;
+
 export interface SecondaryNetworkIpv4CidrBlockAssociation {
   AssociationId?: string;
   CidrBlock?: string;
@@ -20098,6 +20926,7 @@ export const CreateSecondarySubnetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSecondarySubnetRequest",
 }) as any as S.Schema<CreateSecondarySubnetRequest>;
+export type SecondarySubnetCidrAssociationId = string;
 export type SecondarySubnetCidrBlockAssociationState =
   | "associating"
   | "associated"
@@ -20107,6 +20936,7 @@ export type SecondarySubnetCidrBlockAssociationState =
   | "disassociation-failed"
   | (string & {});
 export const SecondarySubnetCidrBlockAssociationState = /*@__PURE__*/ S.String;
+
 export interface SecondarySubnetIpv4CidrBlockAssociation {
   AssociationId?: string;
   CidrBlock?: string;
@@ -20153,6 +20983,7 @@ export type SecondarySubnetState =
   | "delete-failed"
   | (string & {});
 export const SecondarySubnetState = /*@__PURE__*/ S.String;
+
 export interface SecondarySubnet {
   SecondarySubnetId?: string;
   SecondarySubnetArn?: string;
@@ -20328,8 +21159,11 @@ export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSnapshotRequest>;
 export type StorageTier = "archive" | "standard" | (string & {});
 export const StorageTier = /*@__PURE__*/ S.String;
+
 export type TransferType = "time-based" | "standard" | (string & {});
 export const TransferType = /*@__PURE__*/ S.String;
+
+export type SnapshotCompletionDurationMinutesResponse = number;
 export type SnapshotState =
   | "pending"
   | "completed"
@@ -20338,6 +21172,7 @@ export type SnapshotState =
   | "recovering"
   | (string & {});
 export const SnapshotState = /*@__PURE__*/ S.String;
+
 export interface Snapshot {
   OwnerAlias?: string;
   OutpostArn?: string;
@@ -20456,6 +21291,7 @@ export const Snapshot = /*@__PURE__*/ S.suspend(() =>
     ),
   }).pipe(ns),
 ).annotate({ identifier: "Snapshot" }) as any as S.Schema<Snapshot>;
+export type InstanceIdWithVolumeResolver = string;
 export type VolumeIdStringList = string[];
 export const VolumeIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("VolumeId")),
@@ -20478,6 +21314,7 @@ export const InstanceSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceSpecification>;
 export type CopyTagsFromSource = "volume" | (string & {});
 export const CopyTagsFromSource = /*@__PURE__*/ S.String;
+
 export interface CreateSnapshotsRequest {
   Description?: string;
   InstanceSpecification?: InstanceSpecification;
@@ -20650,6 +21487,7 @@ export const SpotInstanceStateFault = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SpotInstanceStateFault>;
 export type DatafeedSubscriptionState = "Active" | "Inactive" | (string & {});
 export const DatafeedSubscriptionState = /*@__PURE__*/ S.String;
+
 export interface SpotDatafeedSubscription {
   Bucket?: string;
   Fault?: SpotInstanceStateFault;
@@ -20811,6 +21649,7 @@ export const CreateSubnetResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSubnetResult>;
 export type SubnetCidrReservationType = "prefix" | "explicit" | (string & {});
 export const SubnetCidrReservationType = /*@__PURE__*/ S.String;
+
 export interface CreateSubnetCidrReservationRequest {
   SubnetId?: string;
   Cidr?: string;
@@ -20843,6 +21682,7 @@ export const CreateSubnetCidrReservationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSubnetCidrReservationRequest",
 }) as any as S.Schema<CreateSubnetCidrReservationRequest>;
+export type SubnetCidrReservationId = string;
 export interface SubnetCidrReservation {
   SubnetCidrReservationId?: string;
   SubnetId?: string;
@@ -20898,6 +21738,7 @@ export const CreateSubnetCidrReservationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSubnetCidrReservationResult",
 }) as any as S.Schema<CreateSubnetCidrReservationResult>;
+export type TaggableResourceId = string;
 export type ResourceIdList = string[];
 export const ResourceIdList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateTagsRequest {
@@ -20963,8 +21804,10 @@ export const CreateTrafficMirrorFilterRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTrafficMirrorFilterRequest>;
 export type TrafficDirection = "ingress" | "egress" | (string & {});
 export const TrafficDirection = /*@__PURE__*/ S.String;
+
 export type TrafficMirrorRuleAction = "accept" | "reject" | (string & {});
 export const TrafficMirrorRuleAction = /*@__PURE__*/ S.String;
+
 export interface TrafficMirrorPortRange {
   FromPort?: number;
   ToPort?: number;
@@ -21060,6 +21903,7 @@ export const TrafficMirrorFilterRuleList = /*@__PURE__*/ S.Array(
 );
 export type TrafficMirrorNetworkService = "amazon-dns" | (string & {});
 export const TrafficMirrorNetworkService = /*@__PURE__*/ S.String;
+
 export type TrafficMirrorNetworkServiceList = TrafficMirrorNetworkService[];
 export const TrafficMirrorNetworkServiceList = /*@__PURE__*/ S.Array(
   TrafficMirrorNetworkService.pipe(T.XmlName("item")),
@@ -21122,6 +21966,7 @@ export const CreateTrafficMirrorFilterResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTrafficMirrorFilterResult",
 }) as any as S.Schema<CreateTrafficMirrorFilterResult>;
+export type TrafficMirrorFilterId = string;
 export interface TrafficMirrorPortRangeRequest {
   FromPort?: number;
   ToPort?: number;
@@ -21198,6 +22043,7 @@ export const CreateTrafficMirrorFilterRuleResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTrafficMirrorFilterRuleResult",
 }) as any as S.Schema<CreateTrafficMirrorFilterRuleResult>;
+export type TrafficMirrorTargetId = string;
 export interface CreateTrafficMirrorSessionRequest {
   NetworkInterfaceId?: string;
   TrafficMirrorTargetId?: string;
@@ -21356,6 +22202,7 @@ export type TrafficMirrorTargetType =
   | "gateway-load-balancer-endpoint"
   | (string & {});
 export const TrafficMirrorTargetType = /*@__PURE__*/ S.String;
+
 export interface TrafficMirrorTarget {
   TrafficMirrorTargetId?: string;
   NetworkInterfaceId?: string;
@@ -21429,20 +22276,25 @@ export type AutoAcceptSharedAttachmentsValue =
   | "disable"
   | (string & {});
 export const AutoAcceptSharedAttachmentsValue = /*@__PURE__*/ S.String;
+
 export type DefaultRouteTableAssociationValue =
   | "enable"
   | "disable"
   | (string & {});
 export const DefaultRouteTableAssociationValue = /*@__PURE__*/ S.String;
+
 export type DefaultRouteTablePropagationValue =
   | "enable"
   | "disable"
   | (string & {});
 export const DefaultRouteTablePropagationValue = /*@__PURE__*/ S.String;
+
 export type VpnEcmpSupportValue = "enable" | "disable" | (string & {});
 export const VpnEcmpSupportValue = /*@__PURE__*/ S.String;
+
 export type MulticastSupportValue = "enable" | "disable" | (string & {});
 export const MulticastSupportValue = /*@__PURE__*/ S.String;
+
 export type TransitGatewayCidrBlockStringList = string[];
 export const TransitGatewayCidrBlockStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -21511,6 +22363,7 @@ export type TransitGatewayState =
   | "deleted"
   | (string & {});
 export const TransitGatewayState = /*@__PURE__*/ S.String;
+
 export type EncryptionStateValue =
   | "enabling"
   | "enabled"
@@ -21518,6 +22371,7 @@ export type EncryptionStateValue =
   | "disabled"
   | (string & {});
 export const EncryptionStateValue = /*@__PURE__*/ S.String;
+
 export interface EncryptionSupport {
   EncryptionState?: EncryptionStateValue;
   StateMessage?: string;
@@ -21669,6 +22523,7 @@ export const CreateTransitGatewayResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTransitGatewayResult>;
 export type ProtocolValue = "gre" | (string & {});
 export const ProtocolValue = /*@__PURE__*/ S.String;
+
 export interface CreateTransitGatewayConnectRequestOptions {
   Protocol?: ProtocolValue;
 }
@@ -21822,6 +22677,7 @@ export const CreateTransitGatewayConnectPeerRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateTransitGatewayConnectPeerRequest",
 }) as any as S.Schema<CreateTransitGatewayConnectPeerRequest>;
+export type TransitGatewayConnectPeerId = string;
 export type TransitGatewayConnectPeerState =
   | "pending"
   | "available"
@@ -21829,8 +22685,10 @@ export type TransitGatewayConnectPeerState =
   | "deleted"
   | (string & {});
 export const TransitGatewayConnectPeerState = /*@__PURE__*/ S.String;
+
 export type BgpStatus = "up" | "down" | (string & {});
 export const BgpStatus = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayAttachmentBgpConfiguration {
   TransitGatewayAsn?: number;
   PeerAsn?: number;
@@ -21997,6 +22855,7 @@ export const CreateTransitGatewayMeteringPolicyRequest =
   ).annotate({
     identifier: "CreateTransitGatewayMeteringPolicyRequest",
   }) as any as S.Schema<CreateTransitGatewayMeteringPolicyRequest>;
+export type TransitGatewayMeteringPolicyId = string;
 export type TransitGatewayMeteringPolicyState =
   | "available"
   | "deleted"
@@ -22005,6 +22864,7 @@ export type TransitGatewayMeteringPolicyState =
   | "deleting"
   | (string & {});
 export const TransitGatewayMeteringPolicyState = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayMeteringPolicy {
   TransitGatewayMeteringPolicyId?: string;
   TransitGatewayId?: string;
@@ -22064,6 +22924,7 @@ export type TransitGatewayMeteringPayerType =
   | "transit-gateway-owner"
   | (string & {});
 export const TransitGatewayMeteringPayerType = /*@__PURE__*/ S.String;
+
 export interface CreateTransitGatewayMeteringPolicyEntryRequest {
   TransitGatewayMeteringPolicyId?: string;
   PolicyRuleNumber?: number;
@@ -22118,6 +22979,7 @@ export type TransitGatewayMeteringPolicyEntryState =
   | "deleted"
   | (string & {});
 export const TransitGatewayMeteringPolicyEntryState = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayMeteringPolicyRule {
   SourceTransitGatewayAttachmentId?: string;
   SourceTransitGatewayAttachmentType?: TransitGatewayAttachmentResourceType;
@@ -22233,13 +23095,16 @@ export const CreateTransitGatewayMeteringPolicyEntryResult =
   }) as any as S.Schema<CreateTransitGatewayMeteringPolicyEntryResult>;
 export type Igmpv2SupportValue = "enable" | "disable" | (string & {});
 export const Igmpv2SupportValue = /*@__PURE__*/ S.String;
+
 export type StaticSourcesSupportValue = "enable" | "disable" | (string & {});
 export const StaticSourcesSupportValue = /*@__PURE__*/ S.String;
+
 export type AutoAcceptSharedAssociationsValue =
   | "enable"
   | "disable"
   | (string & {});
 export const AutoAcceptSharedAssociationsValue = /*@__PURE__*/ S.String;
+
 export interface CreateTransitGatewayMulticastDomainRequestOptions {
   Igmpv2Support?: Igmpv2SupportValue;
   StaticSourcesSupport?: StaticSourcesSupportValue;
@@ -22319,6 +23184,7 @@ export type TransitGatewayMulticastDomainState =
   | "deleted"
   | (string & {});
 export const TransitGatewayMulticastDomainState = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayMulticastDomain {
   TransitGatewayMulticastDomainId?: string;
   TransitGatewayId?: string;
@@ -22381,6 +23247,7 @@ export const CreateTransitGatewayMulticastDomainResult =
   ).annotate({
     identifier: "CreateTransitGatewayMulticastDomainResult",
   }) as any as S.Schema<CreateTransitGatewayMulticastDomainResult>;
+export type TransitAssociationGatewayId = string;
 export interface CreateTransitGatewayPeeringAttachmentRequestOptions {
   DynamicRouting?: DynamicRoutingValue;
 }
@@ -22475,6 +23342,7 @@ export type TransitGatewayPolicyTableState =
   | "deleted"
   | (string & {});
 export const TransitGatewayPolicyTableState = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayPolicyTable {
   TransitGatewayPolicyTableId?: string;
   TransitGatewayId?: string;
@@ -22559,6 +23427,7 @@ export type TransitGatewayPrefixListReferenceState =
   | "deleting"
   | (string & {});
 export const TransitGatewayPrefixListReferenceState = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayPrefixListAttachment {
   TransitGatewayAttachmentId?: string;
   ResourceType?: TransitGatewayAttachmentResourceType;
@@ -22668,6 +23537,7 @@ export const CreateTransitGatewayRouteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTransitGatewayRouteRequest",
 }) as any as S.Schema<CreateTransitGatewayRouteRequest>;
+export type TransitGatewayRouteTableAnnouncementId = string;
 export interface TransitGatewayRouteAttachment {
   ResourceId?: string;
   TransitGatewayAttachmentId?: string;
@@ -22699,6 +23569,7 @@ export const TransitGatewayRouteAttachmentList = /*@__PURE__*/ S.Array(
 );
 export type TransitGatewayRouteType = "static" | "propagated" | (string & {});
 export const TransitGatewayRouteType = /*@__PURE__*/ S.String;
+
 export type TransitGatewayRouteState =
   | "pending"
   | "active"
@@ -22707,6 +23578,7 @@ export type TransitGatewayRouteState =
   | "deleted"
   | (string & {});
 export const TransitGatewayRouteState = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayRoute {
   DestinationCidrBlock?: string;
   PrefixListId?: string;
@@ -22791,6 +23663,7 @@ export type TransitGatewayRouteTableState =
   | "deleted"
   | (string & {});
 export const TransitGatewayRouteTableState = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayRouteTable {
   TransitGatewayRouteTableId?: string;
   TransitGatewayId?: string;
@@ -22884,6 +23757,7 @@ export type TransitGatewayRouteTableAnnouncementDirection =
   | (string & {});
 export const TransitGatewayRouteTableAnnouncementDirection =
   /*@__PURE__*/ S.String;
+
 export type TransitGatewayRouteTableAnnouncementState =
   | "available"
   | "pending"
@@ -22893,6 +23767,7 @@ export type TransitGatewayRouteTableAnnouncementState =
   | "deleted"
   | (string & {});
 export const TransitGatewayRouteTableAnnouncementState = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayRouteTableAnnouncement {
   TransitGatewayRouteTableAnnouncementId?: string;
   TransitGatewayId?: string;
@@ -23042,6 +23917,7 @@ export const CreateTransitGatewayVpcAttachmentResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateTransitGatewayVpcAttachmentResult",
 }) as any as S.Schema<CreateTransitGatewayVpcAttachmentResult>;
+export type VerifiedAccessGroupId = string;
 export type VerifiedAccessEndpointType =
   | "load-balancer"
   | "network-interface"
@@ -23049,8 +23925,11 @@ export type VerifiedAccessEndpointType =
   | "cidr"
   | (string & {});
 export const VerifiedAccessEndpointType = /*@__PURE__*/ S.String;
+
 export type VerifiedAccessEndpointAttachmentType = "vpc" | (string & {});
 export const VerifiedAccessEndpointAttachmentType = /*@__PURE__*/ S.String;
+
+export type CertificateArn = string;
 export type SecurityGroupIdList = string[];
 export const SecurityGroupIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -23061,6 +23940,9 @@ export type VerifiedAccessEndpointProtocol =
   | "tcp"
   | (string & {});
 export const VerifiedAccessEndpointProtocol = /*@__PURE__*/ S.String;
+
+export type VerifiedAccessEndpointPortNumber = number;
+export type LoadBalancerArn = string;
 export type CreateVerifiedAccessEndpointSubnetIdList = string[];
 export const CreateVerifiedAccessEndpointSubnetIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -23137,6 +24019,9 @@ export const VerifiedAccessSseSpecificationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "VerifiedAccessSseSpecificationRequest",
 }) as any as S.Schema<VerifiedAccessSseSpecificationRequest>;
+export type RdsDbInstanceArn = string;
+export type RdsDbClusterArn = string;
+export type RdsDbProxyArn = string;
 export interface CreateVerifiedAccessEndpointRdsOptions {
   Protocol?: VerifiedAccessEndpointProtocol;
   Port?: number;
@@ -23337,6 +24222,7 @@ export type VerifiedAccessEndpointStatusCode =
   | "deleted"
   | (string & {});
 export const VerifiedAccessEndpointStatusCode = /*@__PURE__*/ S.String;
+
 export interface VerifiedAccessEndpointStatus {
   Code?: VerifiedAccessEndpointStatusCode;
   Message?: string;
@@ -23888,6 +24774,7 @@ export type VpcEncryptionControlExclusionStateInput =
   | "disable"
   | (string & {});
 export const VpcEncryptionControlExclusionStateInput = /*@__PURE__*/ S.String;
+
 export interface VpcEncryptionControlConfiguration {
   Mode?: VpcEncryptionControlMode;
   InternetGatewayExclusion?: VpcEncryptionControlExclusionStateInput;
@@ -23994,6 +24881,7 @@ export type InternetGatewayExclusionMode =
   | "allow-egress"
   | (string & {});
 export const InternetGatewayExclusionMode = /*@__PURE__*/ S.String;
+
 export interface CreateVpcBlockPublicAccessExclusionRequest {
   DryRun?: boolean;
   SubnetId?: string;
@@ -24025,6 +24913,7 @@ export const CreateVpcBlockPublicAccessExclusionRequest =
   ).annotate({
     identifier: "CreateVpcBlockPublicAccessExclusionRequest",
   }) as any as S.Schema<CreateVpcBlockPublicAccessExclusionRequest>;
+export type VpcBlockPublicAccessExclusionId = string;
 export type VpcBlockPublicAccessExclusionState =
   | "create-in-progress"
   | "create-complete"
@@ -24038,6 +24927,7 @@ export type VpcBlockPublicAccessExclusionState =
   | "disable-complete"
   | (string & {});
 export const VpcBlockPublicAccessExclusionState = /*@__PURE__*/ S.String;
+
 export interface VpcBlockPublicAccessExclusion {
   ExclusionId?: string;
   InternetGatewayExclusionMode?: InternetGatewayExclusionMode;
@@ -24156,6 +25046,7 @@ export type VpcEndpointType =
   | "ServiceNetwork"
   | (string & {});
 export const VpcEndpointType = /*@__PURE__*/ S.String;
+
 export type VpcEndpointRouteTableIdList = string[];
 export const VpcEndpointRouteTableIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -24175,6 +25066,7 @@ export type DnsRecordIpType =
   | "service-defined"
   | (string & {});
 export const DnsRecordIpType = /*@__PURE__*/ S.String;
+
 export type PrivateDnsSpecifiedDomainSet = string[];
 export const PrivateDnsSpecifiedDomainSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -24217,6 +25109,8 @@ export const SubnetConfigurationsList = /*@__PURE__*/ S.Array(
     identifier: "SubnetConfiguration",
   }),
 );
+export type ServiceNetworkArn = string;
+export type ResourceConfigurationArn = string;
 export interface CreateVpcEndpointRequest {
   DryRun?: boolean;
   VpcEndpointType?: VpcEndpointType;
@@ -24289,6 +25183,7 @@ export type State =
   | "partial"
   | (string & {});
 export const State = /*@__PURE__*/ S.String;
+
 export interface SecurityGroupIdentifier {
   GroupId?: string;
   GroupName?: string;
@@ -24571,11 +25466,13 @@ export const CreateVpcEndpointConnectionNotificationRequest =
   }) as any as S.Schema<CreateVpcEndpointConnectionNotificationRequest>;
 export type ConnectionNotificationType = "Topic" | (string & {});
 export const ConnectionNotificationType = /*@__PURE__*/ S.String;
+
 export type ConnectionNotificationState =
   | "Enabled"
   | "Disabled"
   | (string & {});
 export const ConnectionNotificationState = /*@__PURE__*/ S.String;
+
 export interface ConnectionNotification {
   ConnectionNotificationId?: string;
   ServiceId?: string;
@@ -24698,6 +25595,7 @@ export type ServiceType =
   | "GatewayLoadBalancer"
   | (string & {});
 export const ServiceType = /*@__PURE__*/ S.String;
+
 export interface ServiceTypeDetail {
   ServiceType?: ServiceType;
 }
@@ -24725,8 +25623,10 @@ export type ServiceState =
   | "Failed"
   | (string & {});
 export const ServiceState = /*@__PURE__*/ S.String;
+
 export type ServiceConnectivityType = "ipv4" | "ipv6" | (string & {});
 export const ServiceConnectivityType = /*@__PURE__*/ S.String;
+
 export type SupportedIpAddressTypes = ServiceConnectivityType[];
 export const SupportedIpAddressTypes = /*@__PURE__*/ S.Array(
   ServiceConnectivityType.pipe(T.XmlName("item")),
@@ -24737,6 +25637,7 @@ export type DnsNameState =
   | "failed"
   | (string & {});
 export const DnsNameState = /*@__PURE__*/ S.String;
+
 export interface PrivateDnsNameConfiguration {
   State?: DnsNameState;
   Type?: string;
@@ -24761,6 +25662,7 @@ export const PrivateDnsNameConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateDnsNameConfiguration>;
 export type PayerResponsibility = "ServiceOwner" | (string & {});
 export const PayerResponsibility = /*@__PURE__*/ S.String;
+
 export interface SupportedRegionDetail {
   Region?: string;
   ServiceState?: string;
@@ -24967,6 +25869,7 @@ export const CreateVpcPeeringConnectionResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateVpcPeeringConnectionResult>;
 export type VpnConcentratorType = "ipsec.1" | (string & {});
 export const VpnConcentratorType = /*@__PURE__*/ S.String;
+
 export interface CreateVpnConcentratorRequest {
   Type?: VpnConcentratorType;
   TransitGatewayId?: string;
@@ -25042,8 +25945,12 @@ export const CreateVpnConcentratorResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVpnConcentratorResult",
 }) as any as S.Schema<CreateVpnConcentratorResult>;
+export type CustomerGatewayId = string;
+export type VpnConcentratorId = string;
 export type TunnelInsideIpVersion = "ipv4" | "ipv6" | (string & {});
 export const TunnelInsideIpVersion = /*@__PURE__*/ S.String;
+
+export type PreSharedKey = string | redacted.Redacted<string>;
 export interface Phase1EncryptionAlgorithmsRequestListValue {
   Value?: string;
 }
@@ -25152,6 +26059,7 @@ export const IKEVersionsRequestList = /*@__PURE__*/ S.Array(
     identifier: "IKEVersionsRequestListValue",
   }),
 );
+export type CloudWatchLogGroupArn = string;
 export interface CloudWatchLogOptionsSpecification {
   LogEnabled?: boolean;
   LogGroupArn?: string;
@@ -25251,6 +26159,7 @@ export const VpnTunnelOptionsSpecificationsList = /*@__PURE__*/ S.Array(
 );
 export type VpnTunnelBandwidth = "standard" | "large" | (string & {});
 export const VpnTunnelBandwidth = /*@__PURE__*/ S.String;
+
 export interface VpnConnectionOptionsSpecification {
   EnableAcceleration?: boolean;
   TunnelInsideIpVersion?: TunnelInsideIpVersion;
@@ -25334,6 +26243,7 @@ export type GatewayAssociationState =
   | "disassociating"
   | (string & {});
 export const GatewayAssociationState = /*@__PURE__*/ S.String;
+
 export interface Phase1EncryptionAlgorithmsListValue {
   Value?: string;
 }
@@ -25703,6 +26613,7 @@ export const VpnConnectionOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VpnConnectionOptions>;
 export type VpnStaticRouteSource = "Static" | (string & {});
 export const VpnStaticRouteSource = /*@__PURE__*/ S.String;
+
 export type VpnState =
   | "pending"
   | "available"
@@ -25710,6 +26621,7 @@ export type VpnState =
   | "deleted"
   | (string & {});
 export const VpnState = /*@__PURE__*/ S.String;
+
 export interface VpnStaticRoute {
   DestinationCidrBlock?: string;
   Source?: VpnStaticRouteSource;
@@ -25739,6 +26651,7 @@ export const VpnStaticRouteList = /*@__PURE__*/ S.Array(
 );
 export type TelemetryStatus = "UP" | "DOWN" | (string & {});
 export const TelemetryStatus = /*@__PURE__*/ S.String;
+
 export interface VgwTelemetry {
   AcceptedRouteCount?: number;
   LastStatusChange?: Date;
@@ -25778,6 +26691,7 @@ export type VgwTelemetryList = VgwTelemetry[];
 export const VgwTelemetryList = /*@__PURE__*/ S.Array(
   VgwTelemetry.pipe(T.XmlName("item")).annotate({ identifier: "VgwTelemetry" }),
 );
+export type CustomerGatewayConfiguration = string | redacted.Redacted<string>;
 export interface VpnConnection {
   Category?: string;
   TransitGatewayId?: string;
@@ -25880,6 +26794,7 @@ export const CreateVpnConnectionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVpnConnectionResult",
 }) as any as S.Schema<CreateVpnConnectionResult>;
+export type VpnConnectionId = string;
 export interface CreateVpnConnectionRouteRequest {
   DestinationCidrBlock?: string;
   VpnConnectionId?: string;
@@ -26244,6 +27159,7 @@ export const DeleteCustomerGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteCustomerGatewayResponse",
 }) as any as S.Schema<DeleteCustomerGatewayResponse>;
+export type DhcpOptionsId = string;
 export interface DeleteDhcpOptionsRequest {
   DhcpOptionsId?: string;
   DryRun?: boolean;
@@ -26348,6 +27264,7 @@ export type FleetStateCode =
   | "modifying"
   | (string & {});
 export const FleetStateCode = /*@__PURE__*/ S.String;
+
 export interface DeleteFleetSuccessItem {
   CurrentFleetState?: FleetStateCode;
   PreviousFleetState?: FleetStateCode;
@@ -26384,6 +27301,7 @@ export type DeleteFleetErrorCode =
   | "unexpectedError"
   | (string & {});
 export const DeleteFleetErrorCode = /*@__PURE__*/ S.String;
+
 export interface DeleteFleetError {
   Code?: DeleteFleetErrorCode;
   Message?: string;
@@ -26443,6 +27361,7 @@ export const DeleteFleetsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteFleetsResult",
 }) as any as S.Schema<DeleteFleetsResult>;
+export type VpcFlowLogId = string;
 export type FlowLogIdList = string[];
 export const FlowLogIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -26482,6 +27401,7 @@ export const DeleteFlowLogsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteFlowLogsResult",
 }) as any as S.Schema<DeleteFlowLogsResult>;
+export type FpgaImageId = string;
 export interface DeleteFpgaImageRequest {
   DryRun?: boolean;
   FpgaImageId?: string;
@@ -26977,6 +27897,8 @@ export const DeleteIpamScopeResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteIpamScopeResult",
 }) as any as S.Schema<DeleteIpamScopeResult>;
+export type KeyPairNameWithResolver = string;
+export type KeyPairId = string;
 export interface DeleteKeyPairRequest {
   KeyName?: string;
   KeyPairId?: string;
@@ -27133,6 +28055,7 @@ export type LaunchTemplateErrorCode =
   | "unexpectedError"
   | (string & {});
 export const LaunchTemplateErrorCode = /*@__PURE__*/ S.String;
+
 export interface ResponseError {
   Code?: LaunchTemplateErrorCode;
   Message?: string;
@@ -27636,6 +28559,7 @@ export const DeleteNetworkInsightsAccessScopeResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteNetworkInsightsAccessScopeResult",
 }) as any as S.Schema<DeleteNetworkInsightsAccessScopeResult>;
+export type NetworkInsightsAccessScopeAnalysisId = string;
 export interface DeleteNetworkInsightsAccessScopeAnalysisRequest {
   NetworkInsightsAccessScopeAnalysisId?: string;
   DryRun?: boolean;
@@ -27673,6 +28597,7 @@ export const DeleteNetworkInsightsAccessScopeAnalysisResult =
   ).annotate({
     identifier: "DeleteNetworkInsightsAccessScopeAnalysisResult",
   }) as any as S.Schema<DeleteNetworkInsightsAccessScopeAnalysisResult>;
+export type NetworkInsightsAnalysisId = string;
 export interface DeleteNetworkInsightsAnalysisRequest {
   DryRun?: boolean;
   NetworkInsightsAnalysisId?: string;
@@ -27778,6 +28703,7 @@ export const DeleteNetworkInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteNetworkInterfaceResponse",
 }) as any as S.Schema<DeleteNetworkInterfaceResponse>;
+export type NetworkInterfacePermissionId = string;
 export interface DeleteNetworkInterfacePermissionRequest {
   NetworkInterfacePermissionId?: string;
   Force?: boolean;
@@ -27817,6 +28743,7 @@ export const DeleteNetworkInterfacePermissionResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteNetworkInterfacePermissionResult",
 }) as any as S.Schema<DeleteNetworkInterfacePermissionResult>;
+export type PlacementGroupNameWithResolver = string;
 export interface DeletePlacementGroupRequest {
   DryRun?: boolean;
   GroupName?: string;
@@ -27943,6 +28870,7 @@ export type DeleteQueuedReservedInstancesErrorCode =
   | "unexpected-error"
   | (string & {});
 export const DeleteQueuedReservedInstancesErrorCode = /*@__PURE__*/ S.String;
+
 export interface DeleteQueuedReservedInstancesError_ {
   Code?: DeleteQueuedReservedInstancesErrorCode;
   Message?: string;
@@ -28518,6 +29446,7 @@ export const DeleteTrafficMirrorFilterResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteTrafficMirrorFilterResult",
 }) as any as S.Schema<DeleteTrafficMirrorFilterResult>;
+export type TrafficMirrorFilterRuleIdWithResolver = string;
 export interface DeleteTrafficMirrorFilterRuleRequest {
   TrafficMirrorFilterRuleId?: string;
   DryRun?: boolean;
@@ -28554,6 +29483,7 @@ export const DeleteTrafficMirrorFilterRuleResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteTrafficMirrorFilterRuleResult",
 }) as any as S.Schema<DeleteTrafficMirrorFilterRuleResult>;
+export type TrafficMirrorSessionId = string;
 export interface DeleteTrafficMirrorSessionRequest {
   TrafficMirrorSessionId?: string;
   DryRun?: boolean;
@@ -29174,6 +30104,7 @@ export const DeleteTransitGatewayVpcAttachmentResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeleteTransitGatewayVpcAttachmentResult",
 }) as any as S.Schema<DeleteTransitGatewayVpcAttachmentResult>;
+export type VerifiedAccessEndpointId = string;
 export interface DeleteVerifiedAccessEndpointRequest {
   VerifiedAccessEndpointId?: string;
   ClientToken?: string;
@@ -29470,6 +30401,7 @@ export const DeleteVpcEncryptionControlResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteVpcEncryptionControlResult",
 }) as any as S.Schema<DeleteVpcEncryptionControlResult>;
+export type ConnectionNotificationId = string;
 export type ConnectionNotificationIdsList = string[];
 export const ConnectionNotificationIdsList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -29823,6 +30755,7 @@ export type AsnState =
   | "provisioned"
   | (string & {});
 export const AsnState = /*@__PURE__*/ S.String;
+
 export interface Byoasn {
   Asn?: string;
   IpamId?: string;
@@ -29893,11 +30826,13 @@ export type IpamPoolCidrState =
   | "failed-import"
   | (string & {});
 export const IpamPoolCidrState = /*@__PURE__*/ S.String;
+
 export type IpamPoolCidrFailureCode =
   | "cidr-not-available"
   | "limit-exceeded"
   | (string & {});
 export const IpamPoolCidrFailureCode = /*@__PURE__*/ S.String;
+
 export interface IpamPoolCidrFailureReason {
   Code?: IpamPoolCidrFailureCode;
   Message?: string;
@@ -29916,6 +30851,7 @@ export const IpamPoolCidrFailureReason = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IpamPoolCidrFailureReason",
 }) as any as S.Schema<IpamPoolCidrFailureReason>;
+export type IpamPoolCidrId = string;
 export interface IpamPoolCidr {
   Cidr?: string;
   State?: IpamPoolCidrState;
@@ -30037,6 +30973,7 @@ export type SnapshotReturnCodes =
   | "client-error"
   | (string & {});
 export const SnapshotReturnCodes = /*@__PURE__*/ S.String;
+
 export interface DeleteSnapshotReturnCode {
   SnapshotId?: string;
   ReturnCode?: SnapshotReturnCodes;
@@ -30306,6 +31243,7 @@ export type AccountAttributeName =
   | "default-vpc"
   | (string & {});
 export const AccountAttributeName = /*@__PURE__*/ S.String;
+
 export type AccountAttributeNameStringList = AccountAttributeName[];
 export const AccountAttributeNameStringList = /*@__PURE__*/ S.Array(
   AccountAttributeName.pipe(T.XmlName("attributeName")),
@@ -30443,6 +31381,7 @@ export const DescribeAddressesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeAddressesRequest>;
 export type ServiceManaged = "alb" | "nlb" | "rnat" | "rds" | (string & {});
 export const ServiceManaged = /*@__PURE__*/ S.String;
+
 export interface Address {
   AllocationId?: string;
   AssociationId?: string;
@@ -30552,6 +31491,9 @@ export const AllocationIds = /*@__PURE__*/ S.Array(
 );
 export type AddressAttributeName = "domain-name" | (string & {});
 export const AddressAttributeName = /*@__PURE__*/ S.String;
+
+export type NextToken = string;
+export type AddressMaxResults = number;
 export interface DescribeAddressesAttributeRequest {
   AllocationIds?: string[];
   Attribute?: AddressAttributeName;
@@ -30654,6 +31596,7 @@ export const DescribeAddressesAttributeResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAddressesAttributeResult",
 }) as any as S.Schema<DescribeAddressesAttributeResult>;
+export type DescribeAddressTransfersMaxResults = number;
 export interface DescribeAddressTransfersRequest {
   AllocationIds?: string[];
   NextToken?: string;
@@ -30809,6 +31752,7 @@ export type AvailabilityZoneOptInStatus =
   | "not-opted-in"
   | (string & {});
 export const AvailabilityZoneOptInStatus = /*@__PURE__*/ S.String;
+
 export interface AvailabilityZoneMessage {
   Message?: string;
 }
@@ -30868,6 +31812,7 @@ export type AvailabilityZoneState =
   | "constrained"
   | (string & {});
 export const AvailabilityZoneState = /*@__PURE__*/ S.String;
+
 export interface AvailabilityZone {
   OptInStatus?: AvailabilityZoneOptInStatus;
   Messages?: AvailabilityZoneMessage[];
@@ -30965,6 +31910,7 @@ export const DescribeAvailabilityZonesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAvailabilityZonesResult",
 }) as any as S.Schema<DescribeAvailabilityZonesResult>;
+export type MaxResultsParam = number;
 export interface DescribeAwsNetworkPerformanceMetricSubscriptionsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -30994,8 +31940,10 @@ export const DescribeAwsNetworkPerformanceMetricSubscriptionsRequest =
   }) as any as S.Schema<DescribeAwsNetworkPerformanceMetricSubscriptionsRequest>;
 export type MetricType = "aggregate-latency" | (string & {});
 export const MetricType = /*@__PURE__*/ S.String;
+
 export type StatisticType = "p50" | (string & {});
 export const StatisticType = /*@__PURE__*/ S.String;
+
 export type PeriodType =
   | "five-minutes"
   | "fifteen-minutes"
@@ -31005,6 +31953,7 @@ export type PeriodType =
   | "one-week"
   | (string & {});
 export const PeriodType = /*@__PURE__*/ S.String;
+
 export interface Subscription {
   Source?: string;
   Destination?: string;
@@ -31107,6 +32056,7 @@ export const DescribeBundleTasksResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeBundleTasksResult",
 }) as any as S.Schema<DescribeBundleTasksResult>;
+export type DescribeByoipCidrsMaxResults = number;
 export interface DescribeByoipCidrsRequest {
   DryRun?: boolean;
   MaxResults?: number;
@@ -31157,6 +32107,7 @@ export type CapacityReservationIdSet = string[];
 export const CapacityReservationIdSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeFutureCapacityMaxResults = number;
 export interface DescribeCapacityBlockExtensionHistoryRequest {
   CapacityReservationIds?: string[];
   NextToken?: string;
@@ -31188,12 +32139,14 @@ export const DescribeCapacityBlockExtensionHistoryRequest =
   ).annotate({
     identifier: "DescribeCapacityBlockExtensionHistoryRequest",
   }) as any as S.Schema<DescribeCapacityBlockExtensionHistoryRequest>;
+export type OfferingId = string;
 export type CapacityBlockExtensionStatus =
   | "payment-pending"
   | "payment-failed"
   | "payment-succeeded"
   | (string & {});
 export const CapacityBlockExtensionStatus = /*@__PURE__*/ S.String;
+
 export interface CapacityBlockExtension {
   CapacityReservationId?: string;
   InstanceType?: string;
@@ -31303,6 +32256,7 @@ export const DescribeCapacityBlockExtensionHistoryResult =
   ).annotate({
     identifier: "DescribeCapacityBlockExtensionHistoryResult",
   }) as any as S.Schema<DescribeCapacityBlockExtensionHistoryResult>;
+export type DescribeCapacityBlockExtensionOfferingsMaxResults = number;
 export interface DescribeCapacityBlockExtensionOfferingsRequest {
   DryRun?: boolean;
   CapacityBlockExtensionDurationHours?: number;
@@ -31436,6 +32390,7 @@ export const DescribeCapacityBlockExtensionOfferingsResult =
   ).annotate({
     identifier: "DescribeCapacityBlockExtensionOfferingsResult",
   }) as any as S.Schema<DescribeCapacityBlockExtensionOfferingsResult>;
+export type DescribeCapacityBlockOfferingsMaxResults = number;
 export interface DescribeCapacityBlockOfferingsRequest {
   DryRun?: boolean;
   InstanceType?: string;
@@ -31586,6 +32541,7 @@ export type CapacityBlockIds = string[];
 export const CapacityBlockIds = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeCapacityBlocksMaxResults = number;
 export interface DescribeCapacityBlocksRequest {
   CapacityBlockIds?: string[];
   NextToken?: string;
@@ -31627,6 +32583,7 @@ export type CapacityBlockResourceState =
   | "payment-failed"
   | (string & {});
 export const CapacityBlockResourceState = /*@__PURE__*/ S.String;
+
 export interface CapacityBlock {
   CapacityBlockId?: string;
   UltraserverType?: string;
@@ -31704,6 +32661,7 @@ export const DescribeCapacityBlocksResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCapacityBlocksResult",
 }) as any as S.Schema<DescribeCapacityBlocksResult>;
+export type DescribeCapacityBlockStatusMaxResults = number;
 export interface DescribeCapacityBlockStatusRequest {
   CapacityBlockIds?: string[];
   NextToken?: string;
@@ -31740,6 +32698,7 @@ export type CapacityBlockInterconnectStatus =
   | "insufficient-data"
   | (string & {});
 export const CapacityBlockInterconnectStatus = /*@__PURE__*/ S.String;
+
 export interface CapacityReservationStatus {
   CapacityReservationId?: string;
   TotalCapacity?: number;
@@ -31840,6 +32799,7 @@ export type CapacityManagerDataExportIdSet = string[];
 export const CapacityManagerDataExportIdSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeCapacityManagerDataExportsRequestMaxResults = number;
 export interface DescribeCapacityManagerDataExportsRequest {
   CapacityManagerDataExportIds?: string[];
   MaxResults?: number;
@@ -31878,6 +32838,7 @@ export type CapacityManagerDataExportStatus =
   | "failed"
   | (string & {});
 export const CapacityManagerDataExportStatus = /*@__PURE__*/ S.String;
+
 export interface CapacityManagerDataExportResponse {
   CapacityManagerDataExportId?: string;
   S3BucketName?: string;
@@ -31975,6 +32936,9 @@ export type CallerRole =
   | "unused-reservation-billing-owner"
   | (string & {});
 export const CallerRole = /*@__PURE__*/ S.String;
+
+export type DescribeCapacityReservationBillingRequestsRequestMaxResults =
+  number;
 export interface DescribeCapacityReservationBillingRequestsRequest {
   CapacityReservationIds?: string[];
   Role?: CallerRole;
@@ -32017,6 +32981,7 @@ export type CapacityReservationBillingRequestStatus =
   | "expired"
   | (string & {});
 export const CapacityReservationBillingRequestStatus = /*@__PURE__*/ S.String;
+
 export interface CapacityReservationInfo {
   InstanceType?: string;
   AvailabilityZone?: string;
@@ -32121,6 +33086,8 @@ export type CapacityReservationCancellationQuoteIdSet = string[];
 export const CapacityReservationCancellationQuoteIdSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeCapacityReservationCancellationQuotesRequestMaxResults =
+  number;
 export interface DescribeCapacityReservationCancellationQuotesRequest {
   CapacityReservationCancellationQuoteIds?: string[];
   MaxResults?: number;
@@ -32181,6 +33148,7 @@ export const DescribeCapacityReservationCancellationQuotesResult =
   ).annotate({
     identifier: "DescribeCapacityReservationCancellationQuotesResult",
   }) as any as S.Schema<DescribeCapacityReservationCancellationQuotesResult>;
+export type DescribeCapacityReservationFleetsMaxResults = number;
 export interface DescribeCapacityReservationFleetsRequest {
   CapacityReservationFleetIds?: string[];
   NextToken?: string;
@@ -32303,6 +33271,7 @@ export const DescribeCapacityReservationFleetsResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeCapacityReservationFleetsResult",
 }) as any as S.Schema<DescribeCapacityReservationFleetsResult>;
+export type DescribeCapacityReservationsMaxResults = number;
 export interface DescribeCapacityReservationsRequest {
   CapacityReservationIds?: string[];
   NextToken?: string;
@@ -32357,6 +33326,7 @@ export const DescribeCapacityReservationsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCapacityReservationsResult",
 }) as any as S.Schema<DescribeCapacityReservationsResult>;
+export type DescribeCapacityReservationTopologyMaxResults = number;
 export interface DescribeCapacityReservationTopologyRequest {
   DryRun?: boolean;
   NextToken?: string;
@@ -32467,6 +33437,7 @@ export const DescribeCapacityReservationTopologyResult =
   }) as any as S.Schema<DescribeCapacityReservationTopologyResult>;
 export type CarrierGatewayIdSet = string[];
 export const CarrierGatewayIdSet = /*@__PURE__*/ S.Array(S.String);
+export type CarrierGatewayMaxResults = number;
 export interface DescribeCarrierGatewaysRequest {
   CarrierGatewayIds?: string[];
   Filters?: Filter[];
@@ -32525,6 +33496,7 @@ export type InstanceIdStringList = string[];
 export const InstanceIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("InstanceId")),
 );
+export type DescribeClassicLinkInstancesMaxResults = number;
 export interface DescribeClassicLinkInstancesRequest {
   DryRun?: boolean;
   InstanceIds?: string[];
@@ -32614,6 +33586,7 @@ export const DescribeClassicLinkInstancesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeClassicLinkInstancesResult",
 }) as any as S.Schema<DescribeClassicLinkInstancesResult>;
+export type DescribeClientVpnAuthorizationRulesMaxResults = number;
 export interface DescribeClientVpnAuthorizationRulesRequest {
   ClientVpnEndpointId?: string;
   DryRun?: boolean;
@@ -32705,6 +33678,7 @@ export const DescribeClientVpnAuthorizationRulesResult =
   ).annotate({
     identifier: "DescribeClientVpnAuthorizationRulesResult",
   }) as any as S.Schema<DescribeClientVpnAuthorizationRulesResult>;
+export type DescribeClientVpnConnectionsMaxResults = number;
 export interface DescribeClientVpnConnectionsRequest {
   ClientVpnEndpointId?: string;
   Filters?: Filter[];
@@ -32740,6 +33714,7 @@ export type ClientVpnConnectionStatusCode =
   | "terminated"
   | (string & {});
 export const ClientVpnConnectionStatusCode = /*@__PURE__*/ S.String;
+
 export interface ClientVpnConnectionStatus {
   Code?: ClientVpnConnectionStatusCode;
   Message?: string;
@@ -32868,6 +33843,7 @@ export type ClientVpnEndpointIdList = string[];
 export const ClientVpnEndpointIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeClientVpnEndpointMaxResults = number;
 export interface DescribeClientVpnEndpointsRequest {
   ClientVpnEndpointIds?: string[];
   MaxResults?: number;
@@ -32900,8 +33876,10 @@ export const DescribeClientVpnEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeClientVpnEndpointsRequest>;
 export type VpnProtocol = "openvpn" | (string & {});
 export const VpnProtocol = /*@__PURE__*/ S.String;
+
 export type AssociatedNetworkType = "vpc" | (string & {});
 export const AssociatedNetworkType = /*@__PURE__*/ S.String;
+
 export interface AssociatedTargetNetwork {
   NetworkId?: string;
   NetworkType?: AssociatedNetworkType;
@@ -33026,6 +34004,7 @@ export type ClientVpnEndpointAttributeStatusCode =
   | "applied"
   | (string & {});
 export const ClientVpnEndpointAttributeStatusCode = /*@__PURE__*/ S.String;
+
 export interface ClientVpnEndpointAttributeStatus {
   Code?: ClientVpnEndpointAttributeStatusCode;
   Message?: string;
@@ -33314,6 +34293,7 @@ export const DescribeClientVpnEndpointsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeClientVpnEndpointsResult",
 }) as any as S.Schema<DescribeClientVpnEndpointsResult>;
+export type DescribeClientVpnRoutesMaxResults = number;
 export interface DescribeClientVpnRoutesRequest {
   ClientVpnEndpointId?: string;
   Filters?: Filter[];
@@ -33408,6 +34388,7 @@ export const DescribeClientVpnRoutesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeClientVpnRoutesResult",
 }) as any as S.Schema<DescribeClientVpnRoutesResult>;
+export type DescribeClientVpnTargetNetworksMaxResults = number;
 export interface DescribeClientVpnTargetNetworksRequest {
   ClientVpnEndpointId?: string;
   AssociationIds?: string[];
@@ -33513,6 +34494,7 @@ export type CoipPoolIdSet = string[];
 export const CoipPoolIdSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type CoipPoolMaxResults = number;
 export interface DescribeCoipPoolsRequest {
   PoolIds?: string[];
   Filters?: Filter[];
@@ -33595,6 +34577,7 @@ export const DescribeConversionTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeConversionTasksRequest",
 }) as any as S.Schema<DescribeConversionTasksRequest>;
+export type ImportManifestUrl = string | redacted.Redacted<string>;
 export interface DiskImageDescription {
   Checksum?: string;
   Format?: DiskImageFormat;
@@ -33755,6 +34738,7 @@ export type ConversionTaskState =
   | "completed"
   | (string & {});
 export const ConversionTaskState = /*@__PURE__*/ S.String;
+
 export interface ConversionTask {
   ConversionTaskId?: string;
   ExpirationTime?: string;
@@ -33865,6 +34849,7 @@ export const DescribeCustomerGatewaysResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCustomerGatewaysResult",
 }) as any as S.Schema<DescribeCustomerGatewaysResult>;
+export type DeclarativePoliciesMaxResults = number;
 export interface DescribeDeclarativePoliciesReportsRequest {
   DryRun?: boolean;
   NextToken?: string;
@@ -33899,6 +34884,7 @@ export type ReportState =
   | "error"
   | (string & {});
 export const ReportState = /*@__PURE__*/ S.String;
+
 export interface DeclarativePoliciesReport {
   ReportId?: string;
   S3Bucket?: string;
@@ -33974,6 +34960,7 @@ export type DhcpOptionsIdStringList = string[];
 export const DhcpOptionsIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("DhcpOptionsId")),
 );
+export type DescribeDhcpOptionsMaxResults = number;
 export interface DescribeDhcpOptionsRequest {
   DhcpOptionsIds?: string[];
   NextToken?: string;
@@ -34033,6 +35020,7 @@ export type EgressOnlyInternetGatewayIdList = string[];
 export const EgressOnlyInternetGatewayIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeEgressOnlyInternetGatewaysMaxResults = number;
 export interface DescribeEgressOnlyInternetGatewaysRequest {
   DryRun?: boolean;
   EgressOnlyInternetGatewayIds?: string[];
@@ -34091,10 +35079,12 @@ export const DescribeEgressOnlyInternetGatewaysResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeEgressOnlyInternetGatewaysResult",
 }) as any as S.Schema<DescribeEgressOnlyInternetGatewaysResult>;
+export type ElasticGpuId = string;
 export type ElasticGpuIdSet = string[];
 export const ElasticGpuIdSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeElasticGpusMaxResults = number;
 export interface DescribeElasticGpusRequest {
   ElasticGpuIds?: string[];
   DryRun?: boolean;
@@ -34125,6 +35115,7 @@ export const DescribeElasticGpusRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeElasticGpusRequest>;
 export type ElasticGpuStatus = "OK" | "IMPAIRED" | (string & {});
 export const ElasticGpuStatus = /*@__PURE__*/ S.String;
+
 export interface ElasticGpuHealth {
   Status?: ElasticGpuStatus;
 }
@@ -34140,6 +35131,7 @@ export const ElasticGpuHealth = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ElasticGpuHealth>;
 export type ElasticGpuState = "ATTACHED" | (string & {});
 export const ElasticGpuState = /*@__PURE__*/ S.String;
+
 export interface ElasticGpus {
   ElasticGpuId?: string;
   AvailabilityZone?: string;
@@ -34207,10 +35199,12 @@ export const DescribeElasticGpusResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeElasticGpusResult",
 }) as any as S.Schema<DescribeElasticGpusResult>;
+export type ExportImageTaskId = string;
 export type ExportImageTaskIdList = string[];
 export const ExportImageTaskIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ExportImageTaskId")),
 );
+export type DescribeExportImageTasksMaxResults = number;
 export interface DescribeExportImageTasksRequest {
   DryRun?: boolean;
   Filters?: Filter[];
@@ -34330,6 +35324,7 @@ export const DescribeExportImageTasksResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeExportImageTasksResult",
 }) as any as S.Schema<DescribeExportImageTasksResult>;
+export type ExportTaskId = string;
 export type ExportTaskIdStringList = string[];
 export const ExportTaskIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ExportTaskId")),
@@ -34380,6 +35375,7 @@ export type FastLaunchImageIdList = string[];
 export const FastLaunchImageIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ImageId")),
 );
+export type DescribeFastLaunchImagesRequestMaxResults = number;
 export interface DescribeFastLaunchImagesRequest {
   ImageIds?: string[];
   Filters?: Filter[];
@@ -34410,6 +35406,7 @@ export const DescribeFastLaunchImagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeFastLaunchImagesRequest>;
 export type FastLaunchResourceType = "snapshot" | (string & {});
 export const FastLaunchResourceType = /*@__PURE__*/ S.String;
+
 export interface FastLaunchSnapshotConfigurationResponse {
   TargetResourceCount?: number;
 }
@@ -34457,6 +35454,7 @@ export type FastLaunchStateCode =
   | "disabling-failed"
   | (string & {});
 export const FastLaunchStateCode = /*@__PURE__*/ S.String;
+
 export interface DescribeFastLaunchImagesSuccessItem {
   ImageId?: string;
   ResourceType?: FastLaunchResourceType;
@@ -34540,6 +35538,7 @@ export const DescribeFastLaunchImagesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFastLaunchImagesResult",
 }) as any as S.Schema<DescribeFastLaunchImagesResult>;
+export type DescribeFastSnapshotRestoresMaxResults = number;
 export interface DescribeFastSnapshotRestoresRequest {
   Filters?: Filter[];
   MaxResults?: number;
@@ -34574,6 +35573,7 @@ export type FastSnapshotRestoreStateCode =
   | "disabled"
   | (string & {});
 export const FastSnapshotRestoreStateCode = /*@__PURE__*/ S.String;
+
 export interface DescribeFastSnapshotRestoreSuccessItem {
   SnapshotId?: string;
   AvailabilityZone?: string;
@@ -34671,6 +35671,7 @@ export type FleetEventType =
   | "service-error"
   | (string & {});
 export const FleetEventType = /*@__PURE__*/ S.String;
+
 export interface DescribeFleetHistoryRequest {
   DryRun?: boolean;
   EventType?: FleetEventType;
@@ -34814,6 +35815,7 @@ export const DescribeFleetInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeFleetInstancesRequest>;
 export type InstanceHealthStatus = "healthy" | "unhealthy" | (string & {});
 export const InstanceHealthStatus = /*@__PURE__*/ S.String;
+
 export interface ActiveInstance {
   InstanceId?: string;
   InstanceType?: string;
@@ -34904,6 +35906,7 @@ export type FleetActivityStatus =
   | "fulfilled"
   | (string & {});
 export const FleetActivityStatus = /*@__PURE__*/ S.String;
+
 export type FleetLaunchTemplateOverridesList = FleetLaunchTemplateOverrides[];
 export const FleetLaunchTemplateOverridesList = /*@__PURE__*/ S.Array(
   FleetLaunchTemplateOverrides.pipe(T.XmlName("item")).annotate({
@@ -35528,6 +36531,7 @@ export type FpgaImageAttributeName =
   | "productCodes"
   | (string & {});
 export const FpgaImageAttributeName = /*@__PURE__*/ S.String;
+
 export interface DescribeFpgaImageAttributeRequest {
   DryRun?: boolean;
   FpgaImageId?: string;
@@ -35554,6 +36558,7 @@ export const DescribeFpgaImageAttributeRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeFpgaImageAttributeRequest>;
 export type PermissionGroup = "all" | (string & {});
 export const PermissionGroup = /*@__PURE__*/ S.String;
+
 export interface LoadPermission {
   UserId?: string;
   Group?: PermissionGroup;
@@ -35578,6 +36583,7 @@ export const LoadPermissionList = /*@__PURE__*/ S.Array(
 );
 export type ProductCodeValues = "devpay" | "marketplace" | (string & {});
 export const ProductCodeValues = /*@__PURE__*/ S.String;
+
 export interface ProductCode {
   ProductCodeId?: string;
   ProductCodeType?: ProductCodeValues;
@@ -35651,6 +36657,7 @@ export type OwnerStringList = string[];
 export const OwnerStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("Owner")),
 );
+export type DescribeFpgaImagesMaxResults = number;
 export interface DescribeFpgaImagesRequest {
   DryRun?: boolean;
   FpgaImageIds?: string[];
@@ -35702,6 +36709,7 @@ export type FpgaImageStateCode =
   | "unavailable"
   | (string & {});
 export const FpgaImageStateCode = /*@__PURE__*/ S.String;
+
 export interface FpgaImageState {
   Code?: FpgaImageStateCode;
   Message?: string;
@@ -35820,6 +36828,7 @@ export const DescribeFpgaImagesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFpgaImagesResult",
 }) as any as S.Schema<DescribeFpgaImagesResult>;
+export type DescribeHostReservationsMaxResults = number;
 export interface DescribeHostReservationOfferingsRequest {
   Filter?: Filter[];
   MaxDuration?: number;
@@ -35857,6 +36866,7 @@ export type PaymentOption =
   | "NoUpfront"
   | (string & {});
 export const PaymentOption = /*@__PURE__*/ S.String;
+
 export interface HostOffering {
   CurrencyCode?: CurrencyCodeValues;
   Duration?: number;
@@ -35921,6 +36931,7 @@ export const DescribeHostReservationOfferingsResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeHostReservationOfferingsResult",
 }) as any as S.Schema<DescribeHostReservationOfferingsResult>;
+export type HostReservationId = string;
 export type HostReservationIdSet = string[];
 export const HostReservationIdSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -35969,6 +36980,7 @@ export type ReservationState =
   | "retired"
   | (string & {});
 export const ReservationState = /*@__PURE__*/ S.String;
+
 export interface HostReservation {
   Count?: number;
   CurrencyCode?: CurrencyCodeValues;
@@ -36224,8 +37236,10 @@ export type AllocationState =
   | "pending"
   | (string & {});
 export const AllocationState = /*@__PURE__*/ S.String;
+
 export type AllowsMultipleInstanceTypes = "on" | "off" | (string & {});
 export const AllowsMultipleInstanceTypes = /*@__PURE__*/ S.String;
+
 export interface Host {
   AutoPlacement?: AutoPlacement;
   AvailabilityZone?: string;
@@ -36350,10 +37364,12 @@ export const DescribeHostsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeHostsResult",
 }) as any as S.Schema<DescribeHostsResult>;
+export type IamInstanceProfileAssociationId = string;
 export type AssociationIdList = string[];
 export const AssociationIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("AssociationId")),
 );
+export type DescribeIamInstanceProfileAssociationsMaxResults = number;
 export interface DescribeIamInstanceProfileAssociationsRequest {
   AssociationIds?: string[];
   Filters?: Filter[];
@@ -36498,6 +37514,7 @@ export type ImageAttributeName =
   | "deregistrationProtection"
   | (string & {});
 export const ImageAttributeName = /*@__PURE__*/ S.String;
+
 export interface DescribeImageAttributeRequest {
   Attribute?: ImageAttributeName;
   ImageId?: string;
@@ -36646,11 +37663,14 @@ export type ImageReferenceResourceType =
   | "imagebuilder:ContainerRecipe"
   | (string & {});
 export const ImageReferenceResourceType = /*@__PURE__*/ S.String;
+
 export type ImageReferenceOptionName =
   | "state-name"
   | "version-depth"
   | (string & {});
 export const ImageReferenceOptionName = /*@__PURE__*/ S.String;
+
+export type ResourceTypeOptionValue = string;
 export type ResourceTypeOptionValuesList = string[];
 export const ResourceTypeOptionValuesList = /*@__PURE__*/ S.Array(S.String);
 export interface ResourceTypeOption {
@@ -36686,6 +37706,7 @@ export const ResourceTypeRequest = /*@__PURE__*/ S.suspend(() =>
 export type ResourceTypeRequestList = ResourceTypeRequest[];
 export const ResourceTypeRequestList =
   /*@__PURE__*/ S.Array(ResourceTypeRequest);
+export type DescribeImageReferencesMaxResults = number;
 export interface DescribeImageReferencesRequest {
   ImageIds?: string[];
   IncludeAllResourceTypes?: boolean;
@@ -36813,24 +37834,30 @@ export const DescribeImagesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeImagesRequest>;
 export type HypervisorType = "ovm" | "xen" | "nitro" | (string & {});
 export const HypervisorType = /*@__PURE__*/ S.String;
+
 export type DeviceType = "ebs" | "instance-store" | (string & {});
 export const DeviceType = /*@__PURE__*/ S.String;
+
 export type VirtualizationType =
   | "hvm"
   | "paravirtual"
   | "nested-virtualization"
   | (string & {});
 export const VirtualizationType = /*@__PURE__*/ S.String;
+
 export type BootModeValues =
   | "legacy-bios"
   | "uefi"
   | "uefi-preferred"
   | (string & {});
 export const BootModeValues = /*@__PURE__*/ S.String;
+
 export type TpmSupportValues = "v2.0" | (string & {});
 export const TpmSupportValues = /*@__PURE__*/ S.String;
+
 export type ImdsSupportValues = "v2.0" | (string & {});
 export const ImdsSupportValues = /*@__PURE__*/ S.String;
+
 export interface ImageWatermark {
   WatermarkKey?: string;
   SourceImageRegion?: string;
@@ -36883,6 +37910,7 @@ export type ImageState =
   | "disabled"
   | (string & {});
 export const ImageState = /*@__PURE__*/ S.String;
+
 export type ArchitectureValues =
   | "i386"
   | "x86_64"
@@ -36891,8 +37919,10 @@ export type ArchitectureValues =
   | "arm64_mac"
   | (string & {});
 export const ArchitectureValues = /*@__PURE__*/ S.String;
+
 export type ImageTypeValues = "machine" | "kernel" | "ramdisk" | (string & {});
 export const ImageTypeValues = /*@__PURE__*/ S.String;
+
 export interface Image {
   PlatformDetails?: string;
   UsageOperation?: string;
@@ -37113,6 +38143,7 @@ export const DescribeImageUsageReportsImageIdStringList = /*@__PURE__*/ S.Array(
 );
 export type ImageUsageReportIdStringList = string[];
 export const ImageUsageReportIdStringList = /*@__PURE__*/ S.Array(S.String);
+export type DescribeImageUsageReportEntriesMaxResults = number;
 export interface DescribeImageUsageReportEntriesRequest {
   ImageIds?: string[];
   ReportIds?: string[];
@@ -37213,6 +38244,7 @@ export const DescribeImageUsageReportEntriesResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeImageUsageReportEntriesResult",
 }) as any as S.Schema<DescribeImageUsageReportEntriesResult>;
+export type DescribeImageUsageReportsMaxResults = number;
 export interface DescribeImageUsageReportsRequest {
   ImageIds?: string[];
   ReportIds?: string[];
@@ -37299,6 +38331,8 @@ export type UserIdList = string[];
 export const UserIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type ImageUsageReportState = string;
+export type ImageUsageReportStateReason = string;
 export interface ImageUsageReport {
   ImageId?: string;
   ReportId?: string;
@@ -37374,6 +38408,7 @@ export const DescribeImageUsageReportsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeImageUsageReportsResult",
 }) as any as S.Schema<DescribeImageUsageReportsResult>;
+export type ImportImageTaskId = string;
 export type ImportTaskIdList = string[];
 export const ImportTaskIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ImportTaskId")),
@@ -37406,6 +38441,7 @@ export const DescribeImportImageTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeImportImageTasksRequest",
 }) as any as S.Schema<DescribeImportImageTasksRequest>;
+export type SensitiveUrl = string | redacted.Redacted<string>;
 export interface UserBucketDetails {
   S3Bucket?: string;
   S3Key?: string;
@@ -37626,6 +38662,7 @@ export const DescribeImportImageTasksResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeImportImageTasksResult",
 }) as any as S.Schema<DescribeImportImageTasksResult>;
+export type ImportSnapshotTaskId = string;
 export type ImportSnapshotTaskIdList = string[];
 export const ImportSnapshotTaskIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ImportTaskId")),
@@ -37795,6 +38832,7 @@ export type InstanceAttributeName =
   | "disableApiStop"
   | (string & {});
 export const InstanceAttributeName = /*@__PURE__*/ S.String;
+
 export interface DescribeInstanceAttributeRequest {
   DryRun?: boolean;
   InstanceId?: string;
@@ -38007,6 +39045,7 @@ export const InstanceAttribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstanceAttribute",
 }) as any as S.Schema<InstanceAttribute>;
+export type InstanceConnectEndpointMaxResults = number;
 export interface DescribeInstanceConnectEndpointsRequest {
   DryRun?: boolean;
   MaxResults?: number;
@@ -38063,6 +39102,7 @@ export const DescribeInstanceConnectEndpointsResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeInstanceConnectEndpointsResult",
 }) as any as S.Schema<DescribeInstanceConnectEndpointsResult>;
+export type DescribeInstanceCreditSpecificationsMaxResults = number;
 export interface DescribeInstanceCreditSpecificationsRequest {
   DryRun?: boolean;
   Filters?: Filter[];
@@ -38178,6 +39218,7 @@ export type InstanceEventWindowIdSet = string[];
 export const InstanceEventWindowIdSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("InstanceEventWindowId")),
 );
+export type ResultRange = number;
 export interface DescribeInstanceEventWindowsRequest {
   DryRun?: boolean;
   InstanceEventWindowIds?: string[];
@@ -38232,6 +39273,7 @@ export const DescribeInstanceEventWindowsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInstanceEventWindowsResult",
 }) as any as S.Schema<DescribeInstanceEventWindowsResult>;
+export type DescribeInstanceImageMetadataMaxResults = number;
 export interface DescribeInstanceImageMetadataRequest {
   Filters?: Filter[];
   InstanceIds?: string[];
@@ -38272,6 +39314,7 @@ export type InstanceStateName =
   | "stopped"
   | (string & {});
 export const InstanceStateName = /*@__PURE__*/ S.String;
+
 export interface InstanceState {
   Code?: number;
   Name?: InstanceStateName;
@@ -38462,6 +39505,7 @@ export type InstanceLifecycleType =
   | "interruptible-capacity-reservation"
   | (string & {});
 export const InstanceLifecycleType = /*@__PURE__*/ S.String;
+
 export interface ElasticGpuAssociation {
   ElasticGpuId?: string;
   ElasticGpuAssociationId?: string;
@@ -38949,20 +39993,25 @@ export type InstanceMetadataOptionsState =
   | "applied"
   | (string & {});
 export const InstanceMetadataOptionsState = /*@__PURE__*/ S.String;
+
 export type HttpTokensState = "optional" | "required" | (string & {});
 export const HttpTokensState = /*@__PURE__*/ S.String;
+
 export type InstanceMetadataEndpointState =
   | "disabled"
   | "enabled"
   | (string & {});
 export const InstanceMetadataEndpointState = /*@__PURE__*/ S.String;
+
 export type InstanceMetadataProtocolState =
   | "disabled"
   | "enabled"
   | (string & {});
 export const InstanceMetadataProtocolState = /*@__PURE__*/ S.String;
+
 export type InstanceMetadataTagsState = "disabled" | "enabled" | (string & {});
 export const InstanceMetadataTagsState = /*@__PURE__*/ S.String;
+
 export interface InstanceMetadataOptionsResponse {
   State?: InstanceMetadataOptionsState;
   HttpTokens?: HttpTokensState;
@@ -39026,11 +40075,13 @@ export const PrivateDnsNameOptionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PrivateDnsNameOptionsResponse>;
 export type InstanceAutoRecoveryState = "disabled" | "default" | (string & {});
 export const InstanceAutoRecoveryState = /*@__PURE__*/ S.String;
+
 export type InstanceRebootMigrationState =
   | "disabled"
   | "default"
   | (string & {});
 export const InstanceRebootMigrationState = /*@__PURE__*/ S.String;
+
 export interface InstanceMaintenanceOptions {
   AutoRecovery?: InstanceAutoRecoveryState;
   RebootMigration?: InstanceRebootMigrationState;
@@ -39051,6 +40102,7 @@ export const InstanceMaintenanceOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstanceMaintenanceOptions>;
 export type InstanceBootModeValues = "legacy-bios" | "uefi" | (string & {});
 export const InstanceBootModeValues = /*@__PURE__*/ S.String;
+
 export interface InstanceNetworkPerformanceOptions {
   BandwidthWeighting?: InstanceBandwidthWeighting;
 }
@@ -39102,6 +40154,7 @@ export const InstanceSecondaryInterfaceAttachment = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "InstanceSecondaryInterfaceAttachment",
 }) as any as S.Schema<InstanceSecondaryInterfaceAttachment>;
+export type SecondaryInterfaceId = string;
 export interface InstanceSecondaryInterfacePrivateIpAddress {
   PrivateIpAddress?: string;
 }
@@ -39126,6 +40179,7 @@ export const InstanceSecondaryInterfacePrivateIpAddressList =
   );
 export type SecondaryInterfaceStatus = "available" | "in-use" | (string & {});
 export const SecondaryInterfaceStatus = /*@__PURE__*/ S.String;
+
 export interface InstanceSecondaryInterface {
   Attachment?: InstanceSecondaryInterfaceAttachment;
   MacAddress?: string;
@@ -39198,6 +40252,7 @@ export type MonitoringState =
   | "pending"
   | (string & {});
 export const MonitoringState = /*@__PURE__*/ S.String;
+
 export interface Monitoring {
   State?: MonitoringState;
 }
@@ -39586,6 +40641,7 @@ export const DescribeInstancesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInstancesResult",
 }) as any as S.Schema<DescribeInstancesResult>;
+export type DescribeInstanceSqlHaStatesRequestMaxResultsInteger = number;
 export interface DescribeInstanceSqlHaHistoryStatesRequest {
   InstanceIds?: string[];
   StartTime?: Date;
@@ -39627,6 +40683,7 @@ export const DescribeInstanceSqlHaHistoryStatesRequest =
   }) as any as S.Schema<DescribeInstanceSqlHaHistoryStatesRequest>;
 export type SqlServerLicenseUsage = "full" | "waived" | (string & {});
 export const SqlServerLicenseUsage = /*@__PURE__*/ S.String;
+
 export type HaStatus =
   | "processing"
   | "active"
@@ -39634,6 +40691,7 @@ export type HaStatus =
   | "invalid"
   | (string & {});
 export const HaStatus = /*@__PURE__*/ S.String;
+
 export interface RegisteredInstance {
   InstanceId?: string;
   SqlServerLicenseUsage?: SqlServerLicenseUsage;
@@ -39785,6 +40843,7 @@ export const DescribeInstanceStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInstanceStatusRequest",
 }) as any as S.Schema<DescribeInstanceStatusRequest>;
+export type InstanceEventId = string;
 export type EventCode =
   | "instance-reboot"
   | "system-reboot"
@@ -39793,6 +40852,7 @@ export type EventCode =
   | "instance-stop"
   | (string & {});
 export const EventCode = /*@__PURE__*/ S.String;
+
 export interface InstanceStatusEvent {
   InstanceEventId?: string;
   Code?: EventCode;
@@ -39833,6 +40893,7 @@ export const InstanceStatusEventList = /*@__PURE__*/ S.Array(
 );
 export type StatusName = "reachability" | (string & {});
 export const StatusName = /*@__PURE__*/ S.String;
+
 export type StatusType =
   | "passed"
   | "failed"
@@ -39840,6 +40901,7 @@ export type StatusType =
   | "initializing"
   | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
+
 export interface InstanceStatusDetails {
   ImpairedSince?: Date;
   Name?: StatusName;
@@ -39876,6 +40938,7 @@ export type SummaryStatus =
   | "initializing"
   | (string & {});
 export const SummaryStatus = /*@__PURE__*/ S.String;
+
 export interface InstanceStatusSummary {
   Details?: InstanceStatusDetails[];
   Status?: SummaryStatus;
@@ -40015,6 +41078,7 @@ export const DescribeInstanceStatusResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInstanceStatusResult",
 }) as any as S.Schema<DescribeInstanceStatusResult>;
+export type DescribeInstanceTopologyMaxResults = number;
 export type DescribeInstanceTopologyInstanceIdSet = string[];
 export const DescribeInstanceTopologyInstanceIdSet = /*@__PURE__*/ S.Array(
   S.String,
@@ -40135,6 +41199,8 @@ export type LocationType =
   | "outpost"
   | (string & {});
 export const LocationType = /*@__PURE__*/ S.String;
+
+export type DITOMaxResults = number;
 export interface DescribeInstanceTypeOfferingsRequest {
   DryRun?: boolean;
   LocationType?: LocationType;
@@ -40164,6 +41230,7 @@ export const DescribeInstanceTypeOfferingsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeInstanceTypeOfferingsRequest",
 }) as any as S.Schema<DescribeInstanceTypeOfferingsRequest>;
+export type Location = string;
 export interface InstanceTypeOffering {
   InstanceType?: InstanceType;
   LocationType?: LocationType;
@@ -40213,6 +41280,8 @@ export const DescribeInstanceTypeOfferingsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeInstanceTypeOfferingsResult>;
 export type RequestInstanceTypeList = InstanceType[];
 export const RequestInstanceTypeList = /*@__PURE__*/ S.Array(InstanceType);
+export type DITMaxResults = number;
+export type IncludeUnsupportedInRegion = boolean;
 export interface DescribeInstanceTypesRequest {
   DryRun?: boolean;
   InstanceTypes?: InstanceType[];
@@ -40245,18 +41314,22 @@ export const DescribeInstanceTypesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInstanceTypesRequest",
 }) as any as S.Schema<DescribeInstanceTypesRequest>;
+export type CurrentGenerationFlag = boolean;
+export type FreeTierEligibleFlag = boolean;
 export type UsageClassType =
   | "spot"
   | "on-demand"
   | "capacity-block"
   | (string & {});
 export const UsageClassType = /*@__PURE__*/ S.String;
+
 export type UsageClassTypeList = UsageClassType[];
 export const UsageClassTypeList = /*@__PURE__*/ S.Array(
   UsageClassType.pipe(T.XmlName("item")),
 );
 export type RootDeviceType = "ebs" | "instance-store" | (string & {});
 export const RootDeviceType = /*@__PURE__*/ S.String;
+
 export type RootDeviceTypeList = RootDeviceType[];
 export const RootDeviceTypeList = /*@__PURE__*/ S.Array(
   RootDeviceType.pipe(T.XmlName("item")),
@@ -40265,8 +41338,10 @@ export type VirtualizationTypeList = VirtualizationType[];
 export const VirtualizationTypeList = /*@__PURE__*/ S.Array(
   VirtualizationType.pipe(T.XmlName("item")),
 );
+export type BareMetalFlag = boolean;
 export type InstanceTypeHypervisor = "nitro" | "xen" | (string & {});
 export const InstanceTypeHypervisor = /*@__PURE__*/ S.String;
+
 export type ArchitectureType =
   | "i386"
   | "x86_64"
@@ -40275,20 +41350,24 @@ export type ArchitectureType =
   | "arm64_mac"
   | (string & {});
 export const ArchitectureType = /*@__PURE__*/ S.String;
+
 export type ArchitectureTypeList = ArchitectureType[];
 export const ArchitectureTypeList = /*@__PURE__*/ S.Array(
   ArchitectureType.pipe(T.XmlName("item")),
 );
+export type ProcessorSustainedClockSpeed = number;
 export type SupportedAdditionalProcessorFeature =
   | "amd-sev-snp"
   | "nested-virtualization"
   | (string & {});
 export const SupportedAdditionalProcessorFeature = /*@__PURE__*/ S.String;
+
 export type SupportedAdditionalProcessorFeatureList =
   SupportedAdditionalProcessorFeature[];
 export const SupportedAdditionalProcessorFeatureList = /*@__PURE__*/ S.Array(
   SupportedAdditionalProcessorFeature.pipe(T.XmlName("item")),
 );
+export type CpuManufacturerName = string;
 export interface ProcessorInfo {
   SupportedArchitectures?: ArchitectureType[];
   SustainedClockSpeedInGhz?: number;
@@ -40315,6 +41394,9 @@ export const ProcessorInfo = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "ProcessorInfo" }) as any as S.Schema<ProcessorInfo>;
+export type VCpuCount = number;
+export type CoreCount = number;
+export type ThreadsPerCore = number;
 export type CoreCountList = number[];
 export const CoreCountList = /*@__PURE__*/ S.Array(
   S.Number.pipe(T.XmlName("item")),
@@ -40354,6 +41436,7 @@ export const VCpuInfo = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "VCpuInfo" }) as any as S.Schema<VCpuInfo>;
+export type MemorySize = number;
 export interface MemoryInfo {
   SizeInMiB?: number;
 }
@@ -40365,8 +41448,12 @@ export const MemoryInfo = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "MemoryInfo" }) as any as S.Schema<MemoryInfo>;
+export type InstanceStorageFlag = boolean;
+export type DiskSize = number;
+export type DiskCount = number;
 export type DiskType = "hdd" | "ssd" | (string & {});
 export const DiskType = /*@__PURE__*/ S.String;
+
 export interface DiskInfo {
   SizeInGB?: number;
   Count?: number;
@@ -40395,11 +41482,13 @@ export type EphemeralNvmeSupport =
   | "required"
   | (string & {});
 export const EphemeralNvmeSupport = /*@__PURE__*/ S.String;
+
 export type InstanceStorageEncryptionSupport =
   | "unsupported"
   | "required"
   | (string & {});
 export const InstanceStorageEncryptionSupport = /*@__PURE__*/ S.String;
+
 export interface InstanceStorageInfo {
   TotalSizeInGB?: number;
   Disks?: DiskInfo[];
@@ -40434,8 +41523,16 @@ export type EbsOptimizedSupport =
   | "default"
   | (string & {});
 export const EbsOptimizedSupport = /*@__PURE__*/ S.String;
+
 export type EbsEncryptionSupport = "unsupported" | "supported" | (string & {});
 export const EbsEncryptionSupport = /*@__PURE__*/ S.String;
+
+export type BaselineBandwidthInMbps = number;
+export type BaselineThroughputInMBps = number;
+export type BaselineIops = number;
+export type MaximumBandwidthInMbps = number;
+export type MaximumThroughputInMBps = number;
+export type MaximumIops = number;
 export interface EbsOptimizedInfo {
   BaselineBandwidthInMbps?: number;
   BaselineThroughputInMBps?: number;
@@ -40480,8 +41577,13 @@ export type EbsNvmeSupport =
   | "required"
   | (string & {});
 export const EbsNvmeSupport = /*@__PURE__*/ S.String;
+
+export type MaximumEbsAttachments = number;
 export type AttachmentLimitType = "shared" | "dedicated" | (string & {});
 export const AttachmentLimitType = /*@__PURE__*/ S.String;
+
+export type MaximumEbsCards = number;
+export type EbsCardIndex = number;
 export interface EbsCardInfo {
   EbsCardIndex?: number;
   BaselineBandwidthInMbps?: number;
@@ -40572,6 +41674,17 @@ export const EbsInfo = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "EbsInfo" }) as any as S.Schema<EbsInfo>;
+export type NetworkPerformance = string;
+export type MaxNetworkInterfaces = number;
+export type MaximumNetworkCards = number;
+export type DefaultNetworkCardIndex = number;
+export type NetworkCardIndex = number;
+export type AdditionalFlexibleNetworkInterfaces = number;
+export type BaselineBandwidthInGbps = number;
+export type PeakBandwidthInGbps = number;
+export type DefaultEnaQueueCountPerInterface = number;
+export type MaximumEnaQueueCount = number;
+export type MaximumEnaQueueCountPerInterface = number;
 export interface NetworkCardInfo {
   NetworkCardIndex?: number;
   NetworkPerformance?: string;
@@ -40631,12 +41744,18 @@ export const NetworkCardInfoList = /*@__PURE__*/ S.Array(
     identifier: "NetworkCardInfo",
   }),
 );
+export type MaxIpv4AddrPerInterface = number;
+export type MaxIpv6AddrPerInterface = number;
+export type Ipv6Flag = boolean;
 export type EnaSupport =
   | "unsupported"
   | "supported"
   | "required"
   | (string & {});
 export const EnaSupport = /*@__PURE__*/ S.String;
+
+export type EfaSupportedFlag = boolean;
+export type MaximumEfaInterfaces = number;
 export interface EfaInfo {
   MaximumEfaInterfaces?: number;
 }
@@ -40648,12 +41767,15 @@ export const EfaInfo = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "EfaInfo" }) as any as S.Schema<EfaInfo>;
+export type EncryptionInTransitSupported = boolean;
+export type EnaSrdSupported = boolean;
 export type BandwidthWeightingType =
   | "default"
   | "vpc-1"
   | "ebs-1"
   | (string & {});
 export const BandwidthWeightingType = /*@__PURE__*/ S.String;
+
 export type BandwidthWeightingTypeList = BandwidthWeightingType[];
 export const BandwidthWeightingTypeList = /*@__PURE__*/ S.Array(
   BandwidthWeightingType.pipe(T.XmlName("item")),
@@ -40663,6 +41785,10 @@ export type FlexibleEnaQueuesSupport =
   | "supported"
   | (string & {});
 export const FlexibleEnaQueuesSupport = /*@__PURE__*/ S.String;
+
+export type DefaultTcpEstablishedTimeout = number;
+export type DefaultUdpTimeout = number;
+export type DefaultUdpStreamTimeout = number;
 export interface DefaultConnectionTrackingConfiguration {
   DefaultTcpEstablishedTimeout?: number;
   DefaultUdpTimeout?: number;
@@ -40687,6 +41813,9 @@ export const DefaultConnectionTrackingConfiguration = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DefaultConnectionTrackingConfiguration",
 }) as any as S.Schema<DefaultConnectionTrackingConfiguration>;
+export type SecondaryNetworkSupportedFlag = boolean;
+export type MaximumSecondaryNetworkInterfaces = number;
+export type Ipv4AddressesPerSecondaryInterface = number;
 export interface NetworkInfo {
   NetworkPerformance?: string;
   MaximumNetworkInterfaces?: number;
@@ -40791,10 +41920,17 @@ export const NetworkInfo = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "NetworkInfo" }) as any as S.Schema<NetworkInfo>;
+export type GpuDeviceName = string;
+export type GpuDeviceManufacturerName = string;
+export type GpuDeviceCount = number;
+export type LogicalGpuCount = number;
+export type GpuPartitionSize = number;
+export type Workload = string;
 export type WorkloadsList = string[];
 export const WorkloadsList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type GpuDeviceMemorySize = number;
 export interface GpuDeviceMemoryInfo {
   SizeInMiB?: number;
 }
@@ -40851,6 +41987,7 @@ export const GpuDeviceInfoList = /*@__PURE__*/ S.Array(
     identifier: "GpuDeviceInfo",
   }),
 );
+export type TotalGpuMemory = number;
 export interface GpuInfo {
   Gpus?: GpuDeviceInfo[];
   TotalGpuMemoryInMiB?: number;
@@ -40867,6 +42004,10 @@ export const GpuInfo = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "GpuInfo" }) as any as S.Schema<GpuInfo>;
+export type FpgaDeviceName = string;
+export type FpgaDeviceManufacturerName = string;
+export type FpgaDeviceCount = number;
+export type FpgaDeviceMemorySize = number;
 export interface FpgaDeviceMemoryInfo {
   SizeInMiB?: number;
 }
@@ -40908,6 +42049,7 @@ export const FpgaDeviceInfoList = /*@__PURE__*/ S.Array(
     identifier: "FpgaDeviceInfo",
   }),
 );
+export type TotalFpgaMemory = number;
 export interface FpgaInfo {
   Fpgas?: FpgaDeviceInfo[];
   TotalFpgaMemoryInMiB?: number;
@@ -40930,6 +42072,7 @@ export type PlacementGroupStrategy =
   | "spread"
   | (string & {});
 export const PlacementGroupStrategy = /*@__PURE__*/ S.String;
+
 export type PlacementGroupStrategyList = PlacementGroupStrategy[];
 export const PlacementGroupStrategyList = /*@__PURE__*/ S.Array(
   PlacementGroupStrategy.pipe(T.XmlName("item")),
@@ -40947,6 +42090,10 @@ export const PlacementGroupInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PlacementGroupInfo",
 }) as any as S.Schema<PlacementGroupInfo>;
+export type InferenceDeviceCount = number;
+export type InferenceDeviceName = string;
+export type InferenceDeviceManufacturerName = string;
+export type InferenceDeviceMemorySize = number;
 export interface InferenceDeviceMemoryInfo {
   SizeInMiB?: number;
 }
@@ -40987,6 +42134,7 @@ export const InferenceDeviceInfo = /*@__PURE__*/ S.suspend(() =>
 export type InferenceDeviceInfoList = InferenceDeviceInfo[];
 export const InferenceDeviceInfoList =
   /*@__PURE__*/ S.Array(InferenceDeviceInfo);
+export type TotalInferenceMemory = number;
 export interface InferenceAcceleratorInfo {
   Accelerators?: InferenceDeviceInfo[];
   TotalInferenceMemoryInMiB?: number;
@@ -41005,16 +42153,24 @@ export const InferenceAcceleratorInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InferenceAcceleratorInfo",
 }) as any as S.Schema<InferenceAcceleratorInfo>;
+export type HibernationFlag = boolean;
+export type BurstablePerformanceFlag = boolean;
+export type DedicatedHostFlag = boolean;
+export type AutoRecoveryFlag = boolean;
 export type BootModeType = "legacy-bios" | "uefi" | (string & {});
 export const BootModeType = /*@__PURE__*/ S.String;
+
 export type BootModeTypeList = BootModeType[];
 export const BootModeTypeList = /*@__PURE__*/ S.Array(
   BootModeType.pipe(T.XmlName("item")),
 );
 export type NitroEnclavesSupport = "unsupported" | "supported" | (string & {});
 export const NitroEnclavesSupport = /*@__PURE__*/ S.String;
+
 export type NitroTpmSupport = "unsupported" | "supported" | (string & {});
 export const NitroTpmSupport = /*@__PURE__*/ S.String;
+
+export type NitroTpmSupportedVersionType = string;
 export type NitroTpmSupportedVersionsList = string[];
 export const NitroTpmSupportedVersionsList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -41030,6 +42186,10 @@ export const NitroTpmInfo = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "NitroTpmInfo" }) as any as S.Schema<NitroTpmInfo>;
+export type MediaDeviceCount = number;
+export type MediaDeviceName = string;
+export type MediaDeviceManufacturerName = string;
+export type MediaDeviceMemorySize = number;
 export interface MediaDeviceMemoryInfo {
   SizeInMiB?: number;
 }
@@ -41073,6 +42233,7 @@ export const MediaDeviceInfoList = /*@__PURE__*/ S.Array(
     identifier: "MediaDeviceInfo",
   }),
 );
+export type TotalMediaMemory = number;
 export interface MediaAcceleratorInfo {
   Accelerators?: MediaDeviceInfo[];
   TotalMediaMemoryInMiB?: number;
@@ -41091,6 +42252,10 @@ export const MediaAcceleratorInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MediaAcceleratorInfo",
 }) as any as S.Schema<MediaAcceleratorInfo>;
+export type NeuronDeviceCount = number;
+export type NeuronDeviceName = string;
+export type NeuronDeviceCoreCount = number;
+export type NeuronDeviceCoreVersion = number;
 export interface NeuronDeviceCoreInfo {
   Count?: number;
   Version?: number;
@@ -41109,6 +42274,7 @@ export const NeuronDeviceCoreInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NeuronDeviceCoreInfo",
 }) as any as S.Schema<NeuronDeviceCoreInfo>;
+export type NeuronDeviceMemorySize = number;
 export interface NeuronDeviceMemoryInfo {
   SizeInMiB?: number;
 }
@@ -41151,6 +42317,7 @@ export const NeuronDeviceInfoList = /*@__PURE__*/ S.Array(
     identifier: "NeuronDeviceInfo",
   }),
 );
+export type TotalNeuronMemory = number;
 export interface NeuronInfo {
   NeuronDevices?: NeuronDeviceInfo[];
   TotalNeuronDeviceMemoryInMiB?: number;
@@ -41169,11 +42336,14 @@ export const NeuronInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NeuronInfo" }) as any as S.Schema<NeuronInfo>;
 export type PhcSupport = "unsupported" | "supported" | (string & {});
 export const PhcSupport = /*@__PURE__*/ S.String;
+
 export type RebootMigrationSupport =
   | "unsupported"
   | "supported"
   | (string & {});
 export const RebootMigrationSupport = /*@__PURE__*/ S.String;
+
+export type SupportedInRegion = boolean;
 export interface InstanceTypeInfo {
   InstanceType?: InstanceType;
   CurrentGeneration?: boolean;
@@ -41365,6 +42535,7 @@ export const DescribeInstanceTypesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInstanceTypesResult",
 }) as any as S.Schema<DescribeInstanceTypesResult>;
+export type DescribeInternetGatewaysMaxResults = number;
 export type InternetGatewayIdList = string[];
 export const InternetGatewayIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -41427,6 +42598,7 @@ export const DescribeInternetGatewaysResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeInternetGatewaysResult",
 }) as any as S.Schema<DescribeInternetGatewaysResult>;
+export type DescribeIpamByoasnMaxResults = number;
 export interface DescribeIpamByoasnRequest {
   DryRun?: boolean;
   MaxResults?: number;
@@ -41473,6 +42645,7 @@ export const DescribeIpamByoasnResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeIpamByoasnResult",
 }) as any as S.Schema<DescribeIpamByoasnResult>;
+export type IpamMaxResults = number;
 export interface DescribeIpamExternalResourceVerificationTokensRequest {
   DryRun?: boolean;
   Filters?: Filter[];
@@ -41582,6 +42755,7 @@ export const DescribeIpamPoliciesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeIpamPoliciesResult",
 }) as any as S.Schema<DescribeIpamPoliciesResult>;
+export type DescribeIpamPoolAllocationsMaxResults = number;
 export interface DescribeIpamPoolAllocationsRequest {
   DryRun?: boolean;
   IpamPoolAllocationIds?: string[];
@@ -42021,6 +43195,7 @@ export type Ipv6PoolIdList = string[];
 export const Ipv6PoolIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type Ipv6PoolMaxResults = number;
 export interface DescribeIpv6PoolsRequest {
   PoolIds?: string[];
   NextToken?: string;
@@ -42218,6 +43393,7 @@ export type LaunchTemplateNameStringList = string[];
 export const LaunchTemplateNameStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeLaunchTemplatesMaxResults = number;
 export interface DescribeLaunchTemplatesRequest {
   DryRun?: boolean;
   LaunchTemplateIds?: string[];
@@ -42350,6 +43526,7 @@ export type LocalGatewayRouteTableIdSet = string[];
 export const LocalGatewayRouteTableIdSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type LocalGatewayMaxResults = number;
 export interface DescribeLocalGatewayRouteTablesRequest {
   LocalGatewayRouteTableIds?: string[];
   Filters?: Filter[];
@@ -42749,6 +43926,7 @@ export const DescribeLocalGatewayVirtualInterfacesResult =
   ).annotate({
     identifier: "DescribeLocalGatewayVirtualInterfacesResult",
   }) as any as S.Schema<DescribeLocalGatewayVirtualInterfacesResult>;
+export type DescribeLockedSnapshotsMaxResults = number;
 export type SnapshotIdStringList = string[];
 export const SnapshotIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("SnapshotId")),
@@ -42788,6 +43966,9 @@ export type LockState =
   | "expired"
   | (string & {});
 export const LockState = /*@__PURE__*/ S.String;
+
+export type RetentionPeriodResponseDays = number;
+export type CoolOffPeriodResponseHours = number;
 export interface LockedSnapshotsInfo {
   OwnerId?: string;
   SnapshotId?: string;
@@ -42867,6 +44048,7 @@ export const DescribeLockedSnapshotsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLockedSnapshotsResult",
 }) as any as S.Schema<DescribeLockedSnapshotsResult>;
+export type DescribeMacHostsRequestMaxResults = number;
 export interface DescribeMacHostsRequest {
   Filters?: Filter[];
   HostIds?: string[];
@@ -42939,6 +44121,7 @@ export type MacModificationTaskIdList = string[];
 export const MacModificationTaskIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeMacModificationTasksMaxResults = number;
 export interface DescribeMacModificationTasksRequest {
   DryRun?: boolean;
   Filters?: Filter[];
@@ -42993,6 +44176,7 @@ export const DescribeMacModificationTasksResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeMacModificationTasksResult",
 }) as any as S.Schema<DescribeMacModificationTasksResult>;
+export type PrefixListMaxResults = number;
 export interface DescribeManagedPrefixListsRequest {
   DryRun?: boolean;
   Filters?: Filter[];
@@ -43045,6 +44229,7 @@ export const DescribeManagedPrefixListsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeManagedPrefixListsResult",
 }) as any as S.Schema<DescribeManagedPrefixListsResult>;
+export type DescribeMovingAddressesMaxResults = number;
 export interface DescribeMovingAddressesRequest {
   DryRun?: boolean;
   PublicIps?: string[];
@@ -43090,6 +44275,7 @@ export const DescribeMovingAddressesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeMovingAddressesRequest>;
 export type MoveStatus = "movingToVpc" | "restoringToClassic" | (string & {});
 export const MoveStatus = /*@__PURE__*/ S.String;
+
 export interface MovingAddressStatus {
   MoveStatus?: MoveStatus;
   PublicIp?: string;
@@ -43132,6 +44318,7 @@ export const DescribeMovingAddressesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeMovingAddressesResult",
 }) as any as S.Schema<DescribeMovingAddressesResult>;
+export type DescribeNatGatewaysMaxResults = number;
 export type NatGatewayIdStringList = string[];
 export const NatGatewayIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -43188,6 +44375,7 @@ export const DescribeNatGatewaysResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeNatGatewaysResult",
 }) as any as S.Schema<DescribeNatGatewaysResult>;
+export type DescribeNetworkAclsMaxResults = number;
 export type NetworkAclIdStringList = string[];
 export const NetworkAclIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -43251,6 +44439,7 @@ export type NetworkInsightsAccessScopeAnalysisIdList = string[];
 export const NetworkInsightsAccessScopeAnalysisIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type NetworkInsightsMaxResults = number;
 export interface DescribeNetworkInsightsAccessScopeAnalysesRequest {
   NetworkInsightsAccessScopeAnalysisIds?: string[];
   NetworkInsightsAccessScopeId?: string;
@@ -43294,8 +44483,10 @@ export const DescribeNetworkInsightsAccessScopeAnalysesRequest =
   }) as any as S.Schema<DescribeNetworkInsightsAccessScopeAnalysesRequest>;
 export type AnalysisStatus = "running" | "succeeded" | "failed" | (string & {});
 export const AnalysisStatus = /*@__PURE__*/ S.String;
+
 export type FindingsFound = "true" | "false" | "unknown" | (string & {});
 export const FindingsFound = /*@__PURE__*/ S.String;
+
 export interface NetworkInsightsAccessScopeAnalysis {
   NetworkInsightsAccessScopeAnalysisId?: string;
   NetworkInsightsAccessScopeAnalysisArn?: string;
@@ -43918,10 +45109,14 @@ export const AnalysisLoadBalancerTarget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AnalysisLoadBalancerTarget",
 }) as any as S.Schema<AnalysisLoadBalancerTarget>;
+export type ComponentAccount = string;
+export type ComponentRegion = string;
+export type ProtocolInt = number;
 export type ProtocolIntList = number[];
 export const ProtocolIntList = /*@__PURE__*/ S.Array(
   S.Number.pipe(T.XmlName("item")),
 );
+export type Priority = number;
 export interface FirewallStatelessRule {
   RuleGroupArn?: string;
   Sources?: string[];
@@ -44606,6 +45801,7 @@ export type NetworkInterfaceAttribute =
   | "associatePublicIpAddress"
   | (string & {});
 export const NetworkInterfaceAttribute = /*@__PURE__*/ S.String;
+
 export interface DescribeNetworkInterfaceAttributeRequest {
   DryRun?: boolean;
   NetworkInterfaceId?: string;
@@ -44678,6 +45874,7 @@ export const DescribeNetworkInterfaceAttributeResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeNetworkInterfaceAttributeResult>;
 export type NetworkInterfacePermissionIdList = string[];
 export const NetworkInterfacePermissionIdList = /*@__PURE__*/ S.Array(S.String);
+export type DescribeNetworkInterfacePermissionsMaxResults = number;
 export interface DescribeNetworkInterfacePermissionsRequest {
   NetworkInterfacePermissionIds?: string[];
   Filters?: Filter[];
@@ -44734,6 +45931,7 @@ export const DescribeNetworkInterfacePermissionsResult =
   ).annotate({
     identifier: "DescribeNetworkInterfacePermissionsResult",
   }) as any as S.Schema<DescribeNetworkInterfacePermissionsResult>;
+export type DescribeNetworkInterfacesMaxResults = number;
 export type NetworkInterfaceIdList = string[];
 export const NetworkInterfaceIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -44804,6 +46002,7 @@ export type OutpostLagIdSet = string[];
 export const OutpostLagIdSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type OutpostLagMaxResults = number;
 export interface DescribeOutpostLagsRequest {
   OutpostLagIds?: string[];
   Filters?: Filter[];
@@ -44832,6 +46031,7 @@ export const DescribeOutpostLagsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeOutpostLagsRequest",
 }) as any as S.Schema<DescribeOutpostLagsRequest>;
+export type ServiceLinkVirtualInterfaceId = string;
 export type ServiceLinkVirtualInterfaceIdSet = string[];
 export const ServiceLinkVirtualInterfaceIdSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -45041,6 +46241,7 @@ export type ResourceList = string[];
 export const ResourceList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribePrincipalIdFormatMaxResults = number;
 export interface DescribePrincipalIdFormatRequest {
   DryRun?: boolean;
   Resources?: string[];
@@ -45110,6 +46311,7 @@ export type PublicIpv4PoolIdStringList = string[];
 export const PublicIpv4PoolIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type PoolMaxResults = number;
 export interface DescribePublicIpv4PoolsRequest {
   PoolIds?: string[];
   NextToken?: string;
@@ -45331,6 +46533,7 @@ export type ReplaceRootVolumeTaskIds = string[];
 export const ReplaceRootVolumeTaskIds = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ReplaceRootVolumeTaskId")),
 );
+export type DescribeReplaceRootVolumeTasksMaxResults = number;
 export interface DescribeReplaceRootVolumeTasksRequest {
   ReplaceRootVolumeTaskIds?: string[];
   Filters?: Filter[];
@@ -45389,6 +46592,7 @@ export const DescribeReplaceRootVolumeTasksResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeReplaceRootVolumeTasksResult>;
 export type OfferingClassType = "standard" | "convertible" | (string & {});
 export const OfferingClassType = /*@__PURE__*/ S.String;
+
 export type ReservedInstancesIdStringList = string[];
 export const ReservedInstancesIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ReservedInstancesId")),
@@ -45402,6 +46606,7 @@ export type OfferingTypeValues =
   | "All Upfront"
   | (string & {});
 export const OfferingTypeValues = /*@__PURE__*/ S.String;
+
 export interface DescribeReservedInstancesRequest {
   OfferingClass?: OfferingClassType;
   ReservedInstancesIds?: string[];
@@ -45440,6 +46645,7 @@ export const DescribeReservedInstancesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeReservedInstancesRequest>;
 export type RecurringChargeFrequency = "Hourly" | (string & {});
 export const RecurringChargeFrequency = /*@__PURE__*/ S.String;
+
 export interface RecurringCharge {
   Amount?: number;
   Frequency?: RecurringChargeFrequency;
@@ -45466,6 +46672,7 @@ export const RecurringChargesList = /*@__PURE__*/ S.Array(
 );
 export type Scope = "Availability Zone" | "Region" | (string & {});
 export const Scope = /*@__PURE__*/ S.String;
+
 export type RIProductDescription =
   | "Linux/UNIX"
   | "Linux/UNIX (Amazon VPC)"
@@ -45476,6 +46683,7 @@ export type RIProductDescription =
   | "Ubuntu Pro Linux"
   | (string & {});
 export const RIProductDescription = /*@__PURE__*/ S.String;
+
 export type ReservedInstanceState =
   | "payment-pending"
   | "active"
@@ -45485,6 +46693,7 @@ export type ReservedInstanceState =
   | "queued-deleted"
   | (string & {});
 export const ReservedInstanceState = /*@__PURE__*/ S.String;
+
 export interface ReservedInstances {
   CurrencyCode?: CurrencyCodeValues;
   InstanceTenancy?: Tenancy;
@@ -45648,6 +46857,7 @@ export const DescribeReservedInstancesListingsResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeReservedInstancesListingsResult",
 }) as any as S.Schema<DescribeReservedInstancesListingsResult>;
+export type ReservedInstancesModificationId = string;
 export type ReservedInstancesModificationIdStringList = string[];
 export const ReservedInstancesModificationIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ReservedInstancesModificationId")),
@@ -46050,6 +47260,7 @@ export const DescribeReservedInstancesOfferingsResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DescribeReservedInstancesOfferingsResult>;
 export type RouteServerEndpointIdsList = string[];
 export const RouteServerEndpointIdsList = /*@__PURE__*/ S.Array(S.String);
+export type RouteServerMaxResults = number;
 export interface DescribeRouteServerEndpointsRequest {
   RouteServerEndpointIds?: string[];
   NextToken?: string;
@@ -46214,6 +47425,7 @@ export const DescribeRouteServersResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRouteServersResult",
 }) as any as S.Schema<DescribeRouteServersResult>;
+export type DescribeRouteTablesMaxResults = number;
 export type RouteTableIdStringList = string[];
 export const RouteTableIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -46289,6 +47501,7 @@ export const SlotDateTimeRangeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SlotDateTimeRangeRequest",
 }) as any as S.Schema<SlotDateTimeRangeRequest>;
+export type DescribeScheduledInstanceAvailabilityMaxResults = number;
 export type OccurrenceDayRequestSet = number[];
 export const OccurrenceDayRequestSet = /*@__PURE__*/ S.Array(
   S.Number.pipe(T.XmlName("OccurenceDay")),
@@ -46486,6 +47699,7 @@ export const DescribeScheduledInstanceAvailabilityResult =
   ).annotate({
     identifier: "DescribeScheduledInstanceAvailabilityResult",
   }) as any as S.Schema<DescribeScheduledInstanceAvailabilityResult>;
+export type ScheduledInstanceId = string;
 export type ScheduledInstanceIdRequestSet = string[];
 export const ScheduledInstanceIdRequestSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ScheduledInstanceId")),
@@ -46642,6 +47856,7 @@ export const DescribeScheduledInstancesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeScheduledInstancesResult",
 }) as any as S.Schema<DescribeScheduledInstancesResult>;
+export type DescribeSecondaryInterfacesMaxResults = number;
 export type SecondaryInterfaceIdList = string[];
 export const SecondaryInterfaceIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -46848,6 +48063,7 @@ export const DescribeSecondaryInterfacesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSecondaryInterfacesResult",
 }) as any as S.Schema<DescribeSecondaryInterfacesResult>;
+export type DescribeSecondaryNetworksMaxResults = number;
 export type SecondaryNetworkIdList = string[];
 export const SecondaryNetworkIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -46906,6 +48122,7 @@ export const DescribeSecondaryNetworksResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSecondaryNetworksResult",
 }) as any as S.Schema<DescribeSecondaryNetworksResult>;
+export type DescribeSecondarySubnetsMaxResults = number;
 export type SecondarySubnetIdList = string[];
 export const SecondarySubnetIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -47041,6 +48258,7 @@ export type SecurityGroupRuleIdList = string[];
 export const SecurityGroupRuleIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeSecurityGroupRulesMaxResults = number;
 export interface DescribeSecurityGroupRulesRequest {
   Filters?: Filter[];
   SecurityGroupRuleIds?: string[];
@@ -47093,6 +48311,7 @@ export type GroupNameStringList = string[];
 export const GroupNameStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("GroupName")),
 );
+export type DescribeSecurityGroupsMaxResults = number;
 export interface DescribeSecurityGroupsRequest {
   GroupIds?: string[];
   GroupNames?: string[];
@@ -47201,6 +48420,7 @@ export const DescribeSecurityGroupsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSecurityGroupsResult",
 }) as any as S.Schema<DescribeSecurityGroupsResult>;
+export type DescribeSecurityGroupVpcAssociationsMaxResults = number;
 export interface DescribeSecurityGroupVpcAssociationsRequest {
   Filters?: Filter[];
   NextToken?: string;
@@ -47293,6 +48513,7 @@ export const DescribeSecurityGroupVpcAssociationsResult =
   ).annotate({
     identifier: "DescribeSecurityGroupVpcAssociationsResult",
   }) as any as S.Schema<DescribeSecurityGroupVpcAssociationsResult>;
+export type ServiceLinkMaxResults = number;
 export interface DescribeServiceLinkVirtualInterfacesRequest {
   ServiceLinkVirtualInterfaceIds?: string[];
   Filters?: Filter[];
@@ -47332,6 +48553,7 @@ export type ServiceLinkVirtualInterfaceConfigurationState =
   | (string & {});
 export const ServiceLinkVirtualInterfaceConfigurationState =
   /*@__PURE__*/ S.String;
+
 export interface ServiceLinkVirtualInterface {
   ServiceLinkVirtualInterfaceId?: string;
   ServiceLinkVirtualInterfaceArn?: string;
@@ -47431,6 +48653,7 @@ export type SnapshotAttributeName =
   | "createVolumePermission"
   | (string & {});
 export const SnapshotAttributeName = /*@__PURE__*/ S.String;
+
 export interface DescribeSnapshotAttributeRequest {
   Attribute?: SnapshotAttributeName;
   SnapshotId?: string;
@@ -47566,6 +48789,7 @@ export const DescribeSnapshotsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSnapshotsResult",
 }) as any as S.Schema<DescribeSnapshotsResult>;
+export type DescribeSnapshotTierStatusMaxResults = number;
 export interface DescribeSnapshotTierStatusRequest {
   Filters?: Filter[];
   DryRun?: boolean;
@@ -47604,6 +48828,7 @@ export type TieringOperationStatus =
   | "permanent-restore-failed"
   | (string & {});
 export const TieringOperationStatus = /*@__PURE__*/ S.String;
+
 export interface SnapshotTierStatus {
   SnapshotId?: string;
   VolumeId?: string;
@@ -47739,6 +48964,7 @@ export const DescribeSpotDatafeedSubscriptionResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeSpotDatafeedSubscriptionResult",
 }) as any as S.Schema<DescribeSpotDatafeedSubscriptionResult>;
+export type DescribeSpotFleetInstancesMaxResults = number;
 export interface DescribeSpotFleetInstancesRequest {
   DryRun?: boolean;
   SpotFleetRequestId?: string;
@@ -47807,6 +49033,8 @@ export type EventType =
   | "information"
   | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
+
+export type DescribeSpotFleetRequestHistoryMaxResults = number;
 export interface DescribeSpotFleetRequestHistoryRequest {
   DryRun?: boolean;
   SpotFleetRequestId?: string;
@@ -47960,6 +49188,7 @@ export type ActivityStatus =
   | "fulfilled"
   | (string & {});
 export const ActivityStatus = /*@__PURE__*/ S.String;
+
 export type AllocationStrategy =
   | "lowestPrice"
   | "diversified"
@@ -47968,16 +49197,19 @@ export type AllocationStrategy =
   | "priceCapacityOptimized"
   | (string & {});
 export const AllocationStrategy = /*@__PURE__*/ S.String;
+
 export type OnDemandAllocationStrategy =
   | "lowestPrice"
   | "prioritized"
   | (string & {});
 export const OnDemandAllocationStrategy = /*@__PURE__*/ S.String;
+
 export type ReplacementStrategy =
   | "launch"
   | "launch-before-terminate"
   | (string & {});
 export const ReplacementStrategy = /*@__PURE__*/ S.String;
+
 export interface SpotCapacityRebalance {
   ReplacementStrategy?: ReplacementStrategy;
   TerminationDelay?: number;
@@ -48013,6 +49245,7 @@ export type ExcessCapacityTerminationPolicy =
   | "default"
   | (string & {});
 export const ExcessCapacityTerminationPolicy = /*@__PURE__*/ S.String;
+
 export interface SpotFleetMonitoring {
   Enabled?: boolean;
 }
@@ -48789,6 +50022,7 @@ export type SpotInstanceState =
   | "disabled"
   | (string & {});
 export const SpotInstanceState = /*@__PURE__*/ S.String;
+
 export interface SpotInstanceStatus {
   Code?: string;
   Message?: string;
@@ -49058,6 +50292,8 @@ export const DescribeSpotPriceHistoryResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSpotPriceHistoryResult",
 }) as any as S.Schema<DescribeSpotPriceHistoryResult>;
+export type DescribeStaleSecurityGroupsMaxResults = number;
+export type DescribeStaleSecurityGroupsNextToken = string;
 export interface DescribeStaleSecurityGroupsRequest {
   DryRun?: boolean;
   MaxResults?: number;
@@ -49206,6 +50442,7 @@ export type ImageIdList = string[];
 export const ImageIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeStoreImageTasksRequestMaxResults = number;
 export interface DescribeStoreImageTasksRequest {
   ImageIds?: string[];
   DryRun?: boolean;
@@ -49304,6 +50541,7 @@ export type SubnetIdStringList = string[];
 export const SubnetIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("SubnetId")),
 );
+export type DescribeSubnetsMaxResults = number;
 export interface DescribeSubnetsRequest {
   Filters?: Filter[];
   SubnetIds?: string[];
@@ -49443,6 +50681,7 @@ export type TrafficMirrorFilterRuleIdList = string[];
 export const TrafficMirrorFilterRuleIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type TrafficMirroringMaxResults = number;
 export interface DescribeTrafficMirrorFilterRulesRequest {
   TrafficMirrorFilterRuleIds?: string[];
   TrafficMirrorFilterId?: string;
@@ -49676,6 +50915,7 @@ export const DescribeTrafficMirrorTargetsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTrafficMirrorTargetsResult",
 }) as any as S.Schema<DescribeTrafficMirrorTargetsResult>;
+export type TransitGatewayMaxResults = number;
 export interface DescribeTransitGatewayAttachmentsRequest {
   TransitGatewayAttachmentIds?: string[];
   Filters?: Filter[];
@@ -50409,6 +51649,7 @@ export type TrunkInterfaceAssociationIdList = string[];
 export const TrunkInterfaceAssociationIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeTrunkInterfaceAssociationsMaxResults = number;
 export interface DescribeTrunkInterfaceAssociationsRequest {
   AssociationIds?: string[];
   DryRun?: boolean;
@@ -50469,6 +51710,7 @@ export type VerifiedAccessEndpointIdList = string[];
 export const VerifiedAccessEndpointIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeVerifiedAccessEndpointsMaxResults = number;
 export interface DescribeVerifiedAccessEndpointsRequest {
   VerifiedAccessEndpointIds?: string[];
   VerifiedAccessInstanceId?: string;
@@ -50533,6 +51775,7 @@ export type VerifiedAccessGroupIdList = string[];
 export const VerifiedAccessGroupIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeVerifiedAccessGroupMaxResults = number;
 export interface DescribeVerifiedAccessGroupsRequest {
   VerifiedAccessGroupIds?: string[];
   VerifiedAccessInstanceId?: string;
@@ -50593,6 +51836,8 @@ export type VerifiedAccessInstanceIdList = string[];
 export const VerifiedAccessInstanceIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeVerifiedAccessInstanceLoggingConfigurationsMaxResults =
+  number;
 export interface DescribeVerifiedAccessInstanceLoggingConfigurationsRequest {
   VerifiedAccessInstanceIds?: string[];
   MaxResults?: number;
@@ -50629,6 +51874,7 @@ export type VerifiedAccessLogDeliveryStatusCode =
   | "failed"
   | (string & {});
 export const VerifiedAccessLogDeliveryStatusCode = /*@__PURE__*/ S.String;
+
 export interface VerifiedAccessLogDeliveryStatus {
   Code?: VerifiedAccessLogDeliveryStatusCode;
   Message?: string;
@@ -50809,6 +52055,7 @@ export const DescribeVerifiedAccessInstanceLoggingConfigurationsResult =
   ).annotate({
     identifier: "DescribeVerifiedAccessInstanceLoggingConfigurationsResult",
   }) as any as S.Schema<DescribeVerifiedAccessInstanceLoggingConfigurationsResult>;
+export type DescribeVerifiedAccessInstancesMaxResults = number;
 export interface DescribeVerifiedAccessInstancesRequest {
   VerifiedAccessInstanceIds?: string[];
   MaxResults?: number;
@@ -50869,6 +52116,7 @@ export type VerifiedAccessTrustProviderIdList = string[];
 export const VerifiedAccessTrustProviderIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeVerifiedAccessTrustProvidersMaxResults = number;
 export interface DescribeVerifiedAccessTrustProvidersRequest {
   VerifiedAccessTrustProviderIds?: string[];
   MaxResults?: number;
@@ -50932,6 +52180,7 @@ export type VolumeAttributeName =
   | "productCodes"
   | (string & {});
 export const VolumeAttributeName = /*@__PURE__*/ S.String;
+
 export interface DescribeVolumeAttributeRequest {
   Attribute?: VolumeAttributeName;
   VolumeId?: string;
@@ -51073,6 +52322,7 @@ export type VolumeModificationState =
   | "failed"
   | (string & {});
 export const VolumeModificationState = /*@__PURE__*/ S.String;
+
 export interface VolumeModification {
   VolumeId?: string;
   ModificationState?: VolumeModificationState;
@@ -51295,6 +52545,7 @@ export type VolumeStatusName =
   | "initialization-state"
   | (string & {});
 export const VolumeStatusName = /*@__PURE__*/ S.String;
+
 export interface VolumeStatusDetails {
   Name?: VolumeStatusName;
   Status?: string;
@@ -51326,6 +52577,7 @@ export type VolumeStatusInfoStatus =
   | "warning"
   | (string & {});
 export const VolumeStatusInfoStatus = /*@__PURE__*/ S.String;
+
 export interface VolumeStatusInfo {
   Details?: VolumeStatusDetails[];
   Status?: VolumeStatusInfoStatus;
@@ -51374,6 +52626,7 @@ export type InitializationType =
   | "volume-copy"
   | (string & {});
 export const InitializationType = /*@__PURE__*/ S.String;
+
 export interface InitializationStatusDetails {
   InitializationType?: InitializationType;
   Progress?: number;
@@ -51485,6 +52738,7 @@ export type VpcAttributeName =
   | "enableNetworkAddressUsageMetrics"
   | (string & {});
 export const VpcAttributeName = /*@__PURE__*/ S.String;
+
 export interface DescribeVpcAttributeRequest {
   Attribute?: VpcAttributeName;
   VpcId?: string;
@@ -51547,6 +52801,7 @@ export type VpcBlockPublicAccessExclusionIdList = string[];
 export const VpcBlockPublicAccessExclusionIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DescribeVpcBlockPublicAccessExclusionsMaxResults = number;
 export interface DescribeVpcBlockPublicAccessExclusionsRequest {
   DryRun?: boolean;
   Filters?: Filter[];
@@ -51630,19 +52885,23 @@ export type VpcBlockPublicAccessState =
   | "update-complete"
   | (string & {});
 export const VpcBlockPublicAccessState = /*@__PURE__*/ S.String;
+
 export type InternetGatewayBlockMode =
   | "off"
   | "block-bidirectional"
   | "block-ingress"
   | (string & {});
 export const InternetGatewayBlockMode = /*@__PURE__*/ S.String;
+
 export type ManagedBy = "account" | "declarative-policy" | (string & {});
 export const ManagedBy = /*@__PURE__*/ S.String;
+
 export type VpcBlockPublicAccessExclusionsAllowed =
   | "allowed"
   | "not-allowed"
   | (string & {});
 export const VpcBlockPublicAccessExclusionsAllowed = /*@__PURE__*/ S.String;
+
 export interface VpcBlockPublicAccessOptions {
   AwsAccountId?: string;
   AwsRegion?: string;
@@ -51780,6 +53039,8 @@ export const DescribeVpcClassicLinkResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeVpcClassicLinkResult",
 }) as any as S.Schema<DescribeVpcClassicLinkResult>;
+export type DescribeVpcClassicLinkDnsSupportMaxResults = number;
+export type DescribeVpcClassicLinkDnsSupportNextToken = string;
 export interface DescribeVpcClassicLinkDnsSupportRequest {
   VpcIds?: string[];
   MaxResults?: number;
@@ -51862,6 +53123,7 @@ export type VpcIdStringList = string[];
 export const VpcIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("VpcId")),
 );
+export type DescribeVpcEncryptionControlsMaxResults = number;
 export interface DescribeVpcEncryptionControlsRequest {
   DryRun?: boolean;
   Filters?: Filter[];
@@ -51919,6 +53181,7 @@ export const DescribeVpcEncryptionControlsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeVpcEncryptionControlsResult",
 }) as any as S.Schema<DescribeVpcEncryptionControlsResult>;
+export type MaxResults2 = number;
 export interface DescribeVpcEndpointAssociationsRequest {
   DryRun?: boolean;
   VpcEndpointIds?: string[];
@@ -52357,6 +53620,7 @@ export type PrincipalType =
   | "Role"
   | (string & {});
 export const PrincipalType = /*@__PURE__*/ S.String;
+
 export interface AllowedPrincipal {
   PrincipalType?: PrincipalType;
   Principal?: string;
@@ -52586,6 +53850,7 @@ export const DescribeVpcEndpointServicesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeVpcEndpointServicesResult",
 }) as any as S.Schema<DescribeVpcEndpointServicesResult>;
+export type DescribeVpcPeeringConnectionsMaxResults = number;
 export type VpcPeeringConnectionIdList = string[];
 export const VpcPeeringConnectionIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -52648,6 +53913,7 @@ export const DescribeVpcPeeringConnectionsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeVpcPeeringConnectionsResult",
 }) as any as S.Schema<DescribeVpcPeeringConnectionsResult>;
+export type DescribeVpcsMaxResults = number;
 export interface DescribeVpcsRequest {
   Filters?: Filter[];
   VpcIds?: string[];
@@ -52705,6 +53971,7 @@ export type VpnConcentratorIdStringList = string[];
 export const VpnConcentratorIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("VpnConcentratorId")),
 );
+export type GVCDMaxResults = number;
 export interface DescribeVpnConcentratorsRequest {
   VpnConcentratorIds?: string[];
   Filters?: Filter[];
@@ -52983,6 +54250,7 @@ export const DetachInternetGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DetachInternetGatewayResponse",
 }) as any as S.Schema<DetachInternetGatewayResponse>;
+export type NetworkInterfaceAttachmentId = string;
 export interface DetachNetworkInterfaceRequest {
   DryRun?: boolean;
   AttachmentId?: string;
@@ -53072,6 +54340,8 @@ export const DetachVerifiedAccessTrustProviderResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DetachVerifiedAccessTrustProviderResult",
 }) as any as S.Schema<DetachVerifiedAccessTrustProviderResult>;
+export type InstanceIdForResolver = string;
+export type VolumeIdWithResolver = string;
 export interface DetachVolumeRequest {
   Device?: string;
   Force?: boolean;
@@ -53190,6 +54460,7 @@ export const DisableAllowedImagesSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableAllowedImagesSettingsRequest>;
 export type AllowedImagesSettingsDisabledState = "disabled" | (string & {});
 export const AllowedImagesSettingsDisabledState = /*@__PURE__*/ S.String;
+
 export interface DisableAllowedImagesSettingsResult {
   AllowedImagesSettingsState?: AllowedImagesSettingsDisabledState;
 }
@@ -53272,6 +54543,7 @@ export const DisableCapacityManagerRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisableCapacityManagerRequest>;
 export type CapacityManagerStatus = "enabled" | "disabled" | (string & {});
 export const CapacityManagerStatus = /*@__PURE__*/ S.String;
+
 export interface DisableCapacityManagerResult {
   CapacityManagerStatus?: CapacityManagerStatus;
   OrganizationsAccess?: boolean;
@@ -53665,6 +54937,7 @@ export const DisableImageBlockPublicAccessRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DisableImageBlockPublicAccessRequest>;
 export type ImageBlockPublicAccessDisabledState = "unblocked" | (string & {});
 export const ImageBlockPublicAccessDisabledState = /*@__PURE__*/ S.String;
+
 export interface DisableImageBlockPublicAccessResult {
   ImageBlockPublicAccessState?: ImageBlockPublicAccessDisabledState;
 }
@@ -53900,6 +55173,7 @@ export type RouteServerPropagationState =
   | "deleting"
   | (string & {});
 export const RouteServerPropagationState = /*@__PURE__*/ S.String;
+
 export interface RouteServerPropagation {
   RouteServerId?: string;
   RouteTableId?: string;
@@ -53994,6 +55268,7 @@ export type SnapshotBlockPublicAccessState =
   | "unblocked"
   | (string & {});
 export const SnapshotBlockPublicAccessState = /*@__PURE__*/ S.String;
+
 export interface DisableSnapshotBlockPublicAccessResult {
   State?: SnapshotBlockPublicAccessState;
 }
@@ -54042,6 +55317,7 @@ export type TransitGatewayPropagationState =
   | "disabled"
   | (string & {});
 export const TransitGatewayPropagationState = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayPropagation {
   TransitGatewayAttachmentId?: string;
   ResourceId?: string;
@@ -54197,6 +55473,7 @@ export const DisableVpcClassicLinkDnsSupportResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DisableVpcClassicLinkDnsSupportResult",
 }) as any as S.Schema<DisableVpcClassicLinkDnsSupportResult>;
+export type ElasticIpAssociationId = string;
 export interface DisassociateAddressRequest {
   AssociationId?: string;
   PublicIp?: string;
@@ -54525,6 +55802,7 @@ export type EipAssociationIdList = string[];
 export const EipAssociationIdList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type DrainSeconds = number;
 export interface DisassociateNatGatewayAddressRequest {
   NatGatewayId?: string;
   AssociationIds?: string[];
@@ -54611,6 +55889,7 @@ export const DisassociateRouteServerResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisassociateRouteServerResult",
 }) as any as S.Schema<DisassociateRouteServerResult>;
+export type RouteTableAssociationId = string;
 export interface DisassociateRouteTableRequest {
   DryRun?: boolean;
   AssociationId?: string;
@@ -54645,6 +55924,7 @@ export const DisassociateRouteTableResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisassociateRouteTableResponse",
 }) as any as S.Schema<DisassociateRouteTableResponse>;
+export type DisassociateSecurityGroupVpcSecurityGroupId = string;
 export interface DisassociateSecurityGroupVpcRequest {
   GroupId?: string;
   VpcId?: string;
@@ -54883,6 +56163,7 @@ export const DisassociateTrunkInterfaceResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisassociateTrunkInterfaceResult",
 }) as any as S.Schema<DisassociateTrunkInterfaceResult>;
+export type VpcCidrAssociationId = string;
 export interface DisassociateVpcCidrBlockRequest {
   AssociationId?: string;
 }
@@ -54974,6 +56255,7 @@ export type AllowedImagesSettingsEnabledState =
   | "audit-mode"
   | (string & {});
 export const AllowedImagesSettingsEnabledState = /*@__PURE__*/ S.String;
+
 export interface EnableAllowedImagesSettingsRequest {
   AllowedImagesSettingsState?: AllowedImagesSettingsEnabledState;
   DryRun?: boolean;
@@ -55470,6 +56752,7 @@ export type ImageBlockPublicAccessEnabledState =
   | "block-new-sharing"
   | (string & {});
 export const ImageBlockPublicAccessEnabledState = /*@__PURE__*/ S.String;
+
 export interface EnableImageBlockPublicAccessRequest {
   ImageBlockPublicAccessState?: ImageBlockPublicAccessEnabledState;
   DryRun?: boolean;
@@ -55585,6 +56868,7 @@ export const EnableImageDeregistrationProtectionResult =
   ).annotate({
     identifier: "EnableImageDeregistrationProtectionResult",
   }) as any as S.Schema<EnableImageDeregistrationProtectionResult>;
+export type SecretArn = string;
 export interface EnableInstanceSqlHaStandbyDetectionsRequest {
   InstanceIds?: string[];
   SqlServerCredentials?: string;
@@ -56046,6 +57330,7 @@ export type ClientCertificateRevocationListStatusCode =
   | "active"
   | (string & {});
 export const ClientCertificateRevocationListStatusCode = /*@__PURE__*/ S.String;
+
 export interface ClientCertificateRevocationListStatus {
   Code?: ClientCertificateRevocationListStatusCode;
   Message?: string;
@@ -56477,6 +57762,7 @@ export type VpnTunnelProvisioningStatus =
   | "failed"
   | (string & {});
 export const VpnTunnelProvisioningStatus = /*@__PURE__*/ S.String;
+
 export interface ActiveVpnTunnelStatus {
   Phase1EncryptionAlgorithm?: string;
   Phase2EncryptionAlgorithm?: string;
@@ -56563,18 +57849,22 @@ export const GetAllowedImagesSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAllowedImagesSettingsRequest",
 }) as any as S.Schema<GetAllowedImagesSettingsRequest>;
+export type ImageProvider = string;
 export type ImageProviderList = string[];
 export const ImageProviderList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type MarketplaceProductCode = string;
 export type MarketplaceProductCodeList = string[];
 export const MarketplaceProductCodeList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type ImageName = string;
 export type ImageNameList = string[];
 export const ImageNameList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type MaximumDaysSinceDeprecatedValue = number;
 export interface DeprecationTimeCondition {
   MaximumDaysSinceDeprecated?: number;
 }
@@ -56588,6 +57878,7 @@ export const DeprecationTimeCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeprecationTimeCondition",
 }) as any as S.Schema<DeprecationTimeCondition>;
+export type MaximumDaysSinceCreatedValue = number;
 export interface CreationDateCondition {
   MaximumDaysSinceCreated?: number;
 }
@@ -57005,6 +58296,7 @@ export type IngestionStatus =
   | "ingestion-failed"
   | (string & {});
 export const IngestionStatus = /*@__PURE__*/ S.String;
+
 export interface GetCapacityManagerAttributesResult {
   CapacityManagerStatus?: CapacityManagerStatus;
   OrganizationsAccess?: boolean;
@@ -57104,8 +58396,10 @@ export type Metric =
   | "spot-interruption-rate-vcpu"
   | (string & {});
 export const Metric = /*@__PURE__*/ S.String;
+
 export type MetricSet = Metric[];
 export const MetricSet = /*@__PURE__*/ S.Array(Metric.pipe(T.XmlName("item")));
+export type Period = number;
 export type GroupBy =
   | "resource-region"
   | "availability-zone-id"
@@ -57127,6 +58421,7 @@ export type GroupBy =
   | "reservation-unused-financial-owner"
   | (string & {});
 export const GroupBy = /*@__PURE__*/ S.String;
+
 export type GroupBySet = GroupBy[];
 export const GroupBySet = /*@__PURE__*/ S.Array(
   GroupBy.pipe(T.XmlName("item")),
@@ -57152,8 +58447,11 @@ export type FilterByDimension =
   | "reservation-unused-financial-owner"
   | (string & {});
 export const FilterByDimension = /*@__PURE__*/ S.String;
+
 export type Comparison = "equals" | "in" | (string & {});
 export const Comparison = /*@__PURE__*/ S.String;
+
+export type ConditionValue = string;
 export type ConditionValueList = string[];
 export const ConditionValueList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -57186,6 +58484,7 @@ export const CapacityManagerConditionSet = /*@__PURE__*/ S.Array(
     identifier: "CapacityManagerCondition",
   }),
 );
+export type MaxResults = number;
 export interface GetCapacityManagerMetricDataRequest {
   MetricNames?: Metric[];
   StartTime?: Date;
@@ -57226,10 +58525,13 @@ export const GetCapacityManagerMetricDataRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetCapacityManagerMetricDataRequest>;
 export type ReservationType = "capacity-block" | "odcr" | (string & {});
 export const ReservationType = /*@__PURE__*/ S.String;
+
 export type ReservationEndDateType = "limited" | "unlimited" | (string & {});
 export const ReservationEndDateType = /*@__PURE__*/ S.String;
+
 export type CapacityTenancy = "default" | "dedicated" | (string & {});
 export const CapacityTenancy = /*@__PURE__*/ S.String;
+
 export interface CapacityManagerTagDimension {
   Key?: string;
   Value?: string;
@@ -57489,6 +58791,7 @@ export const GetCapacityManagerMetricDimensionsResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetCapacityManagerMetricDimensionsResult",
 }) as any as S.Schema<GetCapacityManagerMetricDimensionsResult>;
+export type GetCapacityManagerMonitoredTagKeysRequestMaxResults = number;
 export interface GetCapacityManagerMonitoredTagKeysRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -57521,6 +58824,7 @@ export type CapacityManagerMonitoredTagKeyStatus =
   | "suspended"
   | (string & {});
 export const CapacityManagerMonitoredTagKeyStatus = /*@__PURE__*/ S.String;
+
 export interface CapacityManagerMonitoredTagKey {
   TagKey?: string;
   Status?: CapacityManagerMonitoredTagKeyStatus;
@@ -57584,6 +58888,7 @@ export const GetCapacityManagerMonitoredTagKeysResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetCapacityManagerMonitoredTagKeysResult",
 }) as any as S.Schema<GetCapacityManagerMonitoredTagKeysResult>;
+export type GetCapacityReservationUsageRequestMaxResults = number;
 export interface GetCapacityReservationUsageRequest {
   CapacityReservationId?: string;
   NextToken?: string;
@@ -58019,6 +59324,7 @@ export type UnlimitedSupportedInstanceFamily =
   | "t4g"
   | (string & {});
 export const UnlimitedSupportedInstanceFamily = /*@__PURE__*/ S.String;
+
 export interface GetDefaultCreditSpecificationRequest {
   DryRun?: boolean;
   InstanceFamily?: UnlimitedSupportedInstanceFamily;
@@ -58167,6 +59473,7 @@ export type IpamPolicyManagedBy =
   | "delegated-administrator-for-ipam"
   | (string & {});
 export const IpamPolicyManagedBy = /*@__PURE__*/ S.String;
+
 export interface GetEnabledIpamPolicyResult {
   IpamPolicyEnabled?: boolean;
   IpamPolicyId?: string;
@@ -58197,6 +59504,7 @@ export type PartitionLoadFrequency =
   | "monthly"
   | (string & {});
 export const PartitionLoadFrequency = /*@__PURE__*/ S.String;
+
 export interface AthenaIntegration {
   IntegrationResultS3DestinationArn?: string;
   PartitionLoadFrequency?: PartitionLoadFrequency;
@@ -58278,6 +59586,7 @@ export const GetFlowLogsIntegrationTemplateResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetFlowLogsIntegrationTemplateResult",
 }) as any as S.Schema<GetFlowLogsIntegrationTemplateResult>;
+export type GetGroupsForCapacityReservationRequestMaxResults = number;
 export interface GetGroupsForCapacityReservationRequest {
   CapacityReservationId?: string;
   NextToken?: string;
@@ -58585,6 +59894,7 @@ export const GetInstanceMetadataDefaultsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInstanceMetadataDefaultsRequest>;
 export type HttpTokensEnforcedState = "disabled" | "enabled" | (string & {});
 export const HttpTokensEnforcedState = /*@__PURE__*/ S.String;
+
 export interface InstanceMetadataDefaultsResponse {
   HttpTokens?: HttpTokensState;
   HttpPutResponseHopLimit?: number;
@@ -58642,8 +59952,10 @@ export const GetInstanceMetadataDefaultsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetInstanceMetadataDefaultsResult>;
 export type EkPubKeyType = "rsa-2048" | "ecc-sec-p384" | (string & {});
 export const EkPubKeyType = /*@__PURE__*/ S.String;
+
 export type EkPubKeyFormat = "der" | "tpmt" | (string & {});
 export const EkPubKeyFormat = /*@__PURE__*/ S.String;
+
 export interface GetInstanceTpmEkPubRequest {
   InstanceId?: string;
   KeyType?: EkPubKeyType;
@@ -58670,6 +59982,7 @@ export const GetInstanceTpmEkPubRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInstanceTpmEkPubRequest",
 }) as any as S.Schema<GetInstanceTpmEkPubRequest>;
+export type EkPubKeyValue = string | redacted.Redacted<string>;
 export interface GetInstanceTpmEkPubResult {
   InstanceId?: string;
   KeyType?: EkPubKeyType;
@@ -58823,6 +60136,7 @@ export const GetInstanceUefiDataResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetInstanceUefiDataResult",
 }) as any as S.Schema<GetInstanceUefiDataResult>;
+export type IpamAddressHistoryMaxResults = number;
 export interface GetIpamAddressHistoryRequest {
   DryRun?: boolean;
   Cidr?: string;
@@ -58867,6 +60181,7 @@ export type IpamAddressHistoryResourceType =
   | "instance"
   | (string & {});
 export const IpamAddressHistoryResourceType = /*@__PURE__*/ S.String;
+
 export type IpamComplianceStatus =
   | "compliant"
   | "noncompliant"
@@ -58874,12 +60189,14 @@ export type IpamComplianceStatus =
   | "ignored"
   | (string & {});
 export const IpamComplianceStatus = /*@__PURE__*/ S.String;
+
 export type IpamOverlapStatus =
   | "overlapping"
   | "nonoverlapping"
   | "ignored"
   | (string & {});
 export const IpamOverlapStatus = /*@__PURE__*/ S.String;
+
 export interface IpamAddressHistoryRecord {
   ResourceOwnerId?: string;
   ResourceRegion?: string;
@@ -59001,6 +60318,7 @@ export type IpamDiscoveryFailureCode =
   | "unauthorized-failure"
   | (string & {});
 export const IpamDiscoveryFailureCode = /*@__PURE__*/ S.String;
+
 export interface IpamDiscoveryFailureReason {
   Code?: IpamDiscoveryFailureCode;
   Message?: string;
@@ -59120,6 +60438,7 @@ export type IpamPublicAddressAssociationStatus =
   | "disassociated"
   | (string & {});
 export const IpamPublicAddressAssociationStatus = /*@__PURE__*/ S.String;
+
 export type IpamPublicAddressType =
   | "service-managed-ip"
   | "service-managed-byoip"
@@ -59130,6 +60449,7 @@ export type IpamPublicAddressType =
   | "anycast-ip-list-ip"
   | (string & {});
 export const IpamPublicAddressType = /*@__PURE__*/ S.String;
+
 export type IpamPublicAddressAwsService =
   | "nat-gateway"
   | "database-migration-service"
@@ -59143,6 +60463,7 @@ export type IpamPublicAddressAwsService =
   | "other"
   | (string & {});
 export const IpamPublicAddressAwsService = /*@__PURE__*/ S.String;
+
 export interface IpamPublicAddressTag {
   Key?: string;
   Value?: string;
@@ -59371,11 +60692,14 @@ export type IpamResourceCidrIpSource =
   | "none"
   | (string & {});
 export const IpamResourceCidrIpSource = /*@__PURE__*/ S.String;
+
+export type BoxedDouble = number;
 export type IpamNetworkInterfaceAttachmentStatus =
   | "available"
   | "in-use"
   | (string & {});
 export const IpamNetworkInterfaceAttachmentStatus = /*@__PURE__*/ S.String;
+
 export interface IpamDiscoveredResourceCidr {
   IpamResourceDiscoveryId?: string;
   ResourceRegion?: string;
@@ -59489,6 +60813,7 @@ export type IpamPolicyResourceType =
   | "rnat"
   | (string & {});
 export const IpamPolicyResourceType = /*@__PURE__*/ S.String;
+
 export interface GetIpamPolicyAllocationRulesRequest {
   DryRun?: boolean;
   IpamPolicyId?: string;
@@ -59659,6 +60984,7 @@ export const GetIpamPolicyOrganizationTargetsResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetIpamPolicyOrganizationTargetsResult",
 }) as any as S.Schema<GetIpamPolicyOrganizationTargetsResult>;
+export type GetIpamPoolAllocationsMaxResults = number;
 export interface GetIpamPoolAllocationsRequest {
   DryRun?: boolean;
   IpamPoolId?: string;
@@ -60076,6 +61402,7 @@ export type IpamManagementState =
   | "ignored"
   | (string & {});
 export const IpamManagementState = /*@__PURE__*/ S.String;
+
 export interface IpamResourceCidr {
   IpamId?: string;
   IpamScopeId?: string;
@@ -60225,6 +61552,7 @@ export const GetLaunchTemplateDataResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetLaunchTemplateDataResult",
 }) as any as S.Schema<GetLaunchTemplateDataResult>;
+export type GetManagedPrefixListAssociationsMaxResults = number;
 export interface GetManagedPrefixListAssociationsRequest {
   DryRun?: boolean;
   PrefixListId?: string;
@@ -60385,6 +61713,7 @@ export type ManagedResourceDefaultVisibility =
   | "visible"
   | (string & {});
 export const ManagedResourceDefaultVisibility = /*@__PURE__*/ S.String;
+
 export interface ManagedResourceVisibilitySettings {
   DefaultVisibility?: ManagedResourceDefaultVisibility;
 }
@@ -60410,6 +61739,7 @@ export const GetManagedResourceVisibilityResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetManagedResourceVisibilityResult",
 }) as any as S.Schema<GetManagedResourceVisibilityResult>;
+export type GetNetworkInsightsAccessScopeAnalysisFindingsMaxResults = number;
 export interface GetNetworkInsightsAccessScopeAnalysisFindingsRequest {
   NetworkInsightsAccessScopeAnalysisId?: string;
   MaxResults?: number;
@@ -60566,6 +61896,7 @@ export const GetPasswordDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPasswordDataRequest",
 }) as any as S.Schema<GetPasswordDataRequest>;
+export type PasswordData = string | redacted.Redacted<string>;
 export interface GetPasswordDataResult {
   InstanceId?: string;
   Timestamp?: Date;
@@ -60887,6 +62218,7 @@ export type RouteServerRouteInstallationStatus =
   | "rejected"
   | (string & {});
 export const RouteServerRouteInstallationStatus = /*@__PURE__*/ S.String;
+
 export interface RouteServerRouteInstallationDetail {
   RouteTableId?: string;
   RouteInstallationStatus?: RouteServerRouteInstallationStatus;
@@ -60921,6 +62253,7 @@ export const RouteServerRouteInstallationDetails = /*@__PURE__*/ S.Array(
 );
 export type RouteServerRouteStatus = "in-rib" | "in-fib" | (string & {});
 export const RouteServerRouteStatus = /*@__PURE__*/ S.String;
+
 export type AsPath = string[];
 export const AsPath = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("item")));
 export interface RouteServerRoute {
@@ -60999,6 +62332,7 @@ export const GetRouteServerRoutingDatabaseResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRouteServerRoutingDatabaseResult",
 }) as any as S.Schema<GetRouteServerRoutingDatabaseResult>;
+export type GetSecurityGroupsForVpcRequestMaxResults = number;
 export interface GetSecurityGroupsForVpcRequest {
   VpcId?: string;
   NextToken?: string;
@@ -61165,6 +62499,7 @@ export const GetSnapshotBlockPublicAccessStateResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetSnapshotBlockPublicAccessStateResult>;
 export type InstanceTypes = string[];
 export const InstanceTypes = /*@__PURE__*/ S.Array(S.String);
+export type SpotPlacementScoresTargetCapacity = number;
 export type RegionNames = string[];
 export const RegionNames = /*@__PURE__*/ S.Array(S.String);
 export interface InstanceRequirementsWithMetadataRequest {
@@ -61186,6 +62521,7 @@ export const InstanceRequirementsWithMetadataRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "InstanceRequirementsWithMetadataRequest",
 }) as any as S.Schema<InstanceRequirementsWithMetadataRequest>;
+export type SpotPlacementScoresMaxResults = number;
 export interface GetSpotPlacementScoresRequest {
   InstanceTypes?: string[];
   TargetCapacity?: number;
@@ -61271,6 +62607,7 @@ export const GetSpotPlacementScoresResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSpotPlacementScoresResult",
 }) as any as S.Schema<GetSpotPlacementScoresResult>;
+export type GetSubnetCidrReservationsMaxResults = number;
 export interface GetSubnetCidrReservationsRequest {
   Filters?: Filter[];
   SubnetId?: string;
@@ -62007,6 +63344,7 @@ export const GetVerifiedAccessEndpointPolicyResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetVerifiedAccessEndpointPolicyResult",
 }) as any as S.Schema<GetVerifiedAccessEndpointPolicyResult>;
+export type GetVerifiedAccessEndpointTargetsMaxResults = number;
 export interface GetVerifiedAccessEndpointTargetsRequest {
   VerifiedAccessEndpointId?: string;
   MaxResults?: number;
@@ -62126,6 +63464,7 @@ export const GetVerifiedAccessGroupPolicyResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetVerifiedAccessGroupPolicyResult",
 }) as any as S.Schema<GetVerifiedAccessGroupPolicyResult>;
+export type GetVpcResourcesBlockingEncryptionEnforcementMaxResults = number;
 export interface GetVpcResourcesBlockingEncryptionEnforcementRequest {
   VpcId?: string;
   MaxResults?: number;
@@ -62203,6 +63542,7 @@ export const GetVpcResourcesBlockingEncryptionEnforcementResult =
   ).annotate({
     identifier: "GetVpcResourcesBlockingEncryptionEnforcementResult",
   }) as any as S.Schema<GetVpcResourcesBlockingEncryptionEnforcementResult>;
+export type VpnConnectionDeviceTypeId = string;
 export interface GetVpnConnectionDeviceSampleConfigurationRequest {
   VpnConnectionId?: string;
   VpnConnectionDeviceTypeId?: string;
@@ -62232,6 +63572,9 @@ export const GetVpnConnectionDeviceSampleConfigurationRequest =
   ).annotate({
     identifier: "GetVpnConnectionDeviceSampleConfigurationRequest",
   }) as any as S.Schema<GetVpnConnectionDeviceSampleConfigurationRequest>;
+export type VpnConnectionDeviceSampleConfiguration =
+  | string
+  | redacted.Redacted<string>;
 export interface GetVpnConnectionDeviceSampleConfigurationResult {
   VpnConnectionDeviceSampleConfiguration?: string | redacted.Redacted<string>;
 }
@@ -63036,6 +64379,7 @@ export const ImportVolumeResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportVolumeResult",
 }) as any as S.Schema<ImportVolumeResult>;
+export type ListImagesInRecycleBinMaxResults = number;
 export interface ListImagesInRecycleBinRequest {
   ImageIds?: string[];
   NextToken?: string;
@@ -63120,6 +64464,7 @@ export const ListImagesInRecycleBinResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListImagesInRecycleBinResult",
 }) as any as S.Schema<ListImagesInRecycleBinResult>;
+export type ListSnapshotsInRecycleBinMaxResults = number;
 export interface ListSnapshotsInRecycleBinRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -63338,6 +64683,9 @@ export const ListVolumesInRecycleBinResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListVolumesInRecycleBinResult>;
 export type LockMode = "compliance" | "governance" | (string & {});
 export const LockMode = /*@__PURE__*/ S.String;
+
+export type CoolOffPeriodRequestHours = number;
+export type RetentionPeriodRequestDays = number;
 export interface LockSnapshotRequest {
   SnapshotId?: string;
   DryRun?: boolean;
@@ -63461,6 +64809,7 @@ export type ModifyAvailabilityZoneOptInStatus =
   | "not-opted-in"
   | (string & {});
 export const ModifyAvailabilityZoneOptInStatus = /*@__PURE__*/ S.String;
+
 export interface ModifyAvailabilityZoneGroupRequest {
   GroupName?: string;
   OptInStatus?: ModifyAvailabilityZoneOptInStatus;
@@ -63798,6 +65147,7 @@ export const ModifyFleetResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModifyFleetResult>;
 export type OperationType = "add" | "remove" | (string & {});
 export const OperationType = /*@__PURE__*/ S.String;
+
 export type UserIdStringList = string[];
 export const UserIdStringList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("UserId")),
@@ -64109,6 +65459,7 @@ export const EnclaveOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnclaveOptionsRequest",
 }) as any as S.Schema<EnclaveOptionsRequest>;
+export type ModifyInstanceAttributeValue = string | redacted.Redacted<string>;
 export interface EbsInstanceBlockDeviceSpecification {
   VolumeId?: string;
   DeleteOnTermination?: boolean;
@@ -64502,6 +65853,7 @@ export type UnsuccessfulInstanceCreditSpecificationErrorCode =
   | (string & {});
 export const UnsuccessfulInstanceCreditSpecificationErrorCode =
   /*@__PURE__*/ S.String;
+
 export interface UnsuccessfulInstanceCreditSpecificationItemError {
   Code?: UnsuccessfulInstanceCreditSpecificationErrorCode;
   Message?: string;
@@ -64713,24 +66065,28 @@ export type MetadataDefaultHttpTokensState =
   | "no-preference"
   | (string & {});
 export const MetadataDefaultHttpTokensState = /*@__PURE__*/ S.String;
+
 export type DefaultInstanceMetadataEndpointState =
   | "disabled"
   | "enabled"
   | "no-preference"
   | (string & {});
 export const DefaultInstanceMetadataEndpointState = /*@__PURE__*/ S.String;
+
 export type DefaultInstanceMetadataTagsState =
   | "disabled"
   | "enabled"
   | "no-preference"
   | (string & {});
 export const DefaultInstanceMetadataTagsState = /*@__PURE__*/ S.String;
+
 export type DefaultHttpTokensEnforcedState =
   | "disabled"
   | "enabled"
   | "no-preference"
   | (string & {});
 export const DefaultHttpTokensEnforcedState = /*@__PURE__*/ S.String;
+
 export interface ModifyInstanceMetadataDefaultsRequest {
   HttpTokens?: MetadataDefaultHttpTokensState;
   HttpPutResponseHopLimit?: number;
@@ -64875,8 +66231,10 @@ export const ModifyInstanceNetworkPerformanceResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ModifyInstanceNetworkPerformanceResult>;
 export type HostTenancy = "default" | "dedicated" | "host" | (string & {});
 export const HostTenancy = /*@__PURE__*/ S.String;
+
 export type Affinity = "default" | "host" | (string & {});
 export const Affinity = /*@__PURE__*/ S.String;
+
 export interface ModifyInstancePlacementRequest {
   GroupName?: string;
   PartitionNumber?: number;
@@ -65722,6 +67080,7 @@ export type PublicIpDnsOption =
   | "public-ipv6-dns-name"
   | (string & {});
 export const PublicIpDnsOption = /*@__PURE__*/ S.String;
+
 export interface ModifyPublicIpDnsNameOptionsRequest {
   NetworkInterfaceId?: string;
   HostnameType?: PublicIpDnsOption;
@@ -65986,6 +67345,7 @@ export const ModifySnapshotAttributeResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModifySnapshotAttributeResponse>;
 export type TargetStorageTier = "archive" | (string & {});
 export const TargetStorageTier = /*@__PURE__*/ S.String;
+
 export interface ModifySnapshotTierRequest {
   SnapshotId?: string;
   StorageTier?: TargetStorageTier;
@@ -66186,6 +67546,7 @@ export type TrafficMirrorFilterRuleField =
   | "description"
   | (string & {});
 export const TrafficMirrorFilterRuleField = /*@__PURE__*/ S.String;
+
 export type TrafficMirrorFilterRuleFieldList = TrafficMirrorFilterRuleField[];
 export const TrafficMirrorFilterRuleFieldList = /*@__PURE__*/ S.Array(
   TrafficMirrorFilterRuleField,
@@ -66256,6 +67617,7 @@ export type TrafficMirrorSessionField =
   | "virtual-network-id"
   | (string & {});
 export const TrafficMirrorSessionField = /*@__PURE__*/ S.String;
+
 export type TrafficMirrorSessionFieldList = TrafficMirrorSessionField[];
 export const TrafficMirrorSessionFieldList = /*@__PURE__*/ S.Array(
   TrafficMirrorSessionField,
@@ -66315,6 +67677,7 @@ export const ModifyTrafficMirrorSessionResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModifyTrafficMirrorSessionResult>;
 export type EncryptionSupportOptionValue = "enable" | "disable" | (string & {});
 export const EncryptionSupportOptionValue = /*@__PURE__*/ S.String;
+
 export interface ModifyTransitGatewayOptions {
   AddTransitGatewayCidrBlocks?: string[];
   RemoveTransitGatewayCidrBlocks?: string[];
@@ -67760,6 +69123,7 @@ export const ModifyVpcPeeringConnectionOptionsResult = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ModifyVpcPeeringConnectionOptionsResult>;
 export type VpcTenancy = "default" | (string & {});
 export const VpcTenancy = /*@__PURE__*/ S.String;
+
 export interface ModifyVpcTenancyRequest {
   VpcId?: string;
   InstanceTenancy?: VpcTenancy;
@@ -68112,6 +69476,7 @@ export const MoveAddressToVpcRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MoveAddressToVpcRequest>;
 export type Status = "MoveInProgress" | "InVpc" | "InClassic" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface MoveAddressToVpcResult {
   AllocationId?: string;
   Status?: Status;
@@ -68340,6 +69705,7 @@ export const IpamCidrAuthorizationContext = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IpamCidrAuthorizationContext>;
 export type VerificationMethod = "remarks-x509" | "dns-token" | (string & {});
 export const VerificationMethod = /*@__PURE__*/ S.String;
+
 export interface ProvisionIpamPoolCidrRequest {
   DryRun?: boolean;
   IpamPoolId?: string;
@@ -68749,6 +70115,7 @@ export type BillingProductList = string[];
 export const BillingProductList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type ImageUefiDataRequest = string;
 export interface RegisterImageRequest {
   ImageLocation?: string;
   BillingProducts?: string[];
@@ -69476,14 +70843,17 @@ export const ReplaceIamInstanceProfileAssociationResult =
   ).annotate({
     identifier: "ReplaceIamInstanceProfileAssociationResult",
   }) as any as S.Schema<ReplaceIamInstanceProfileAssociationResult>;
+export type ImageProviderRequest = string;
 export type ImageProviderRequestList = string[];
 export const ImageProviderRequestList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type MarketplaceProductCodeRequest = string;
 export type MarketplaceProductCodeRequestList = string[];
 export const MarketplaceProductCodeRequestList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type ImageNameCriteriaRequest = string;
 export type ImageNameCriteriaRequestList = string[];
 export const ImageNameCriteriaRequestList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
@@ -69599,6 +70969,7 @@ export const ReplaceImageCriteriaInAllowedImagesSettingsResult =
   ).annotate({
     identifier: "ReplaceImageCriteriaInAllowedImagesSettingsResult",
   }) as any as S.Schema<ReplaceImageCriteriaInAllowedImagesSettingsResult>;
+export type NetworkAclAssociationId = string;
 export interface ReplaceNetworkAclAssociationRequest {
   DryRun?: boolean;
   AssociationId?: string;
@@ -69938,6 +71309,7 @@ export const ReplaceVpnTunnelResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplaceVpnTunnelResult>;
 export type ReportStatusType = "ok" | "impaired" | (string & {});
 export const ReportStatusType = /*@__PURE__*/ S.String;
+
 export type ReportInstanceReasonCodes =
   | "instance-stuck-in-state"
   | "unresponsive"
@@ -69950,10 +71322,14 @@ export type ReportInstanceReasonCodes =
   | "other"
   | (string & {});
 export const ReportInstanceReasonCodes = /*@__PURE__*/ S.String;
+
 export type ReasonCodesList = ReportInstanceReasonCodes[];
 export const ReasonCodesList = /*@__PURE__*/ S.Array(
   ReportInstanceReasonCodes.pipe(T.XmlName("item")),
 );
+export type ReportInstanceStatusRequestDescription =
+  | string
+  | redacted.Redacted<string>;
 export interface ReportInstanceStatusRequest {
   DryRun?: boolean;
   Instances?: string[];
@@ -70305,6 +71681,7 @@ export const ResetEbsDefaultKmsKeyIdResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetEbsDefaultKmsKeyIdResult>;
 export type ResetFpgaImageAttributeName = "loadPermission" | (string & {});
 export const ResetFpgaImageAttributeName = /*@__PURE__*/ S.String;
+
 export interface ResetFpgaImageAttributeRequest {
   DryRun?: boolean;
   FpgaImageId?: string;
@@ -70344,6 +71721,7 @@ export const ResetFpgaImageAttributeResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResetFpgaImageAttributeResult>;
 export type ResetImageAttributeName = "launchPermission" | (string & {});
 export const ResetImageAttributeName = /*@__PURE__*/ S.String;
+
 export interface ResetImageAttributeRequest {
   Attribute?: ResetImageAttributeName;
   ImageId?: string;
@@ -70695,6 +72073,7 @@ export const RestoreSnapshotFromRecycleBinResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RestoreSnapshotFromRecycleBinResult",
 }) as any as S.Schema<RestoreSnapshotFromRecycleBinResult>;
+export type RestoreSnapshotTierRequestTemporaryRestoreDays = number;
 export interface RestoreSnapshotTierRequest {
   SnapshotId?: string;
   TemporaryRestoreDays?: number;
@@ -71050,12 +72429,14 @@ export const RevokeSecurityGroupIngressResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RevokeSecurityGroupIngressResult",
 }) as any as S.Schema<RevokeSecurityGroupIngressResult>;
+export type RunInstancesUserData = string | redacted.Redacted<string>;
 export type ElasticGpuSpecifications = ElasticGpuSpecification[];
 export const ElasticGpuSpecifications = /*@__PURE__*/ S.Array(
   ElasticGpuSpecification.pipe(T.XmlName("item")).annotate({
     identifier: "ElasticGpuSpecification",
   }),
 );
+export type ElasticInferenceAcceleratorCount = number;
 export interface ElasticInferenceAccelerator {
   Type?: string;
   Count?: number;
@@ -71478,6 +72859,7 @@ export type ScheduledInstancesSecurityGroupIdSet = string[];
 export const ScheduledInstancesSecurityGroupIdSet = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("SecurityGroupId")),
 );
+export type Ipv6Address = string;
 export interface ScheduledInstancesIpv6Address {
   Ipv6Address?: string;
 }
@@ -71740,6 +73122,7 @@ export const SearchTransitGatewayMulticastGroupsRequest =
   }) as any as S.Schema<SearchTransitGatewayMulticastGroupsRequest>;
 export type MembershipType = "static" | "igmp" | (string & {});
 export const MembershipType = /*@__PURE__*/ S.String;
+
 export interface TransitGatewayMulticastGroup {
   GroupIpAddress?: string;
   TransitGatewayAttachmentId?: string;
@@ -72833,946 +74216,6 @@ export const WithdrawByoipCidrResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WithdrawByoipCidrResult",
 }) as any as S.Schema<WithdrawByoipCidrResult>;
-
-//# Errors
-export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
-  "RequestLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class InvalidAddressMalformed extends S.TaggedErrorClass<InvalidAddressMalformed>()(
-  "InvalidAddress.Malformed",
-  {},
-) {}
-export class InvalidAddressNotFound extends S.TaggedErrorClass<InvalidAddressNotFound>()(
-  "InvalidAddress.NotFound",
-  {},
-) {}
-export class UnauthorizedOperation extends S.TaggedErrorClass<UnauthorizedOperation>()(
-  "UnauthorizedOperation",
-  {},
-).pipe(C.withAuthError) {}
-export class InvalidCapacityReservationIdMalformed extends S.TaggedErrorClass<InvalidCapacityReservationIdMalformed>()(
-  "InvalidCapacityReservationId.Malformed",
-  {},
-) {}
-export class InvalidReservedInstancesIDNotFound extends S.TaggedErrorClass<InvalidReservedInstancesIDNotFound>()(
-  "InvalidReservedInstancesID.NotFound",
-  {},
-) {}
-export class MissingParameter extends S.TaggedErrorClass<MissingParameter>()(
-  "MissingParameter",
-  {},
-) {}
-export class InvalidTransitGatewayAttachmentIDNotFound extends S.TaggedErrorClass<InvalidTransitGatewayAttachmentIDNotFound>()(
-  "InvalidTransitGatewayAttachmentID.NotFound",
-  {},
-) {}
-export class InvalidParameter extends S.TaggedErrorClass<InvalidParameter>()(
-  "InvalidParameter",
-  {},
-) {}
-export class InvalidVpcEndpointServiceIdNotFound extends S.TaggedErrorClass<InvalidVpcEndpointServiceIdNotFound>()(
-  "InvalidVpcEndpointServiceId.NotFound",
-  {},
-) {}
-export class InvalidVpcPeeringConnectionIDNotFound extends S.TaggedErrorClass<InvalidVpcPeeringConnectionIDNotFound>()(
-  "InvalidVpcPeeringConnectionID.NotFound",
-  {},
-) {}
-export class InvalidVpcPeeringConnectionIdNotFound extends S.TaggedErrorClass<InvalidVpcPeeringConnectionIdNotFound>()(
-  "InvalidVpcPeeringConnectionId.NotFound",
-  {},
-) {}
-export class AddressLimitExceeded extends S.TaggedErrorClass<AddressLimitExceeded>()(
-  "AddressLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class InvalidHostConfiguration extends S.TaggedErrorClass<InvalidHostConfiguration>()(
-  "InvalidHostConfiguration",
-  {},
-) {}
-export class InvalidRequest extends S.TaggedErrorClass<InvalidRequest>()(
-  "InvalidRequest",
-  {},
-) {}
-export class InvalidIpamPoolIdNotFound extends S.TaggedErrorClass<InvalidIpamPoolIdNotFound>()(
-  "InvalidIpamPoolId.NotFound",
-  {},
-) {}
-export class InvalidVpcIdMalformed extends S.TaggedErrorClass<InvalidVpcIdMalformed>()(
-  "InvalidVpcId.Malformed",
-  {},
-) {}
-export class InvalidNetworkInterfaceIDNotFound extends S.TaggedErrorClass<InvalidNetworkInterfaceIDNotFound>()(
-  "InvalidNetworkInterfaceID.NotFound",
-  {},
-) {}
-export class InvalidParameterCombination extends S.TaggedErrorClass<InvalidParameterCombination>()(
-  "InvalidParameterCombination",
-  {},
-) {}
-export class InvalidNetworkInterfaceIdMalformed extends S.TaggedErrorClass<InvalidNetworkInterfaceIdMalformed>()(
-  "InvalidNetworkInterfaceId.Malformed",
-  {},
-) {}
-export class NatGatewayNotFound extends S.TaggedErrorClass<NatGatewayNotFound>()(
-  "NatGatewayNotFound",
-  {},
-) {}
-export class AuthFailure extends S.TaggedErrorClass<AuthFailure>()(
-  "AuthFailure",
-  {},
-).pipe(C.withAuthError) {}
-export class InvalidAllocationIDNotFound extends S.TaggedErrorClass<InvalidAllocationIDNotFound>()(
-  "InvalidAllocationID.NotFound",
-  {},
-) {}
-export class InvalidInstanceIDNotFound extends S.TaggedErrorClass<InvalidInstanceIDNotFound>()(
-  "InvalidInstanceID.NotFound",
-  {},
-) {}
-export class InvalidSubnetIDMalformed extends S.TaggedErrorClass<InvalidSubnetIDMalformed>()(
-  "InvalidSubnetID.Malformed",
-  {},
-) {}
-export class InvalidDhcpOptionsIdMalformed extends S.TaggedErrorClass<InvalidDhcpOptionsIdMalformed>()(
-  "InvalidDhcpOptionsId.Malformed",
-  {},
-) {}
-export class InvalidVpcIDNotFound extends S.TaggedErrorClass<InvalidVpcIDNotFound>()(
-  "InvalidVpcID.NotFound",
-  {},
-) {}
-export class InvalidCertificateArnMalformed extends S.TaggedErrorClass<InvalidCertificateArnMalformed>()(
-  "InvalidCertificateArn.Malformed",
-  {},
-) {}
-export class InvalidRoleArnMalformed extends S.TaggedErrorClass<InvalidRoleArnMalformed>()(
-  "InvalidRoleArn.Malformed",
-  {},
-) {}
-export class InvalidCidrNotFound extends S.TaggedErrorClass<InvalidCidrNotFound>()(
-  "InvalidCidr.NotFound",
-  {},
-) {}
-export class InvalidIpamResourceDiscoveryIdMalformed extends S.TaggedErrorClass<InvalidIpamResourceDiscoveryIdMalformed>()(
-  "InvalidIpamResourceDiscoveryId.Malformed",
-  {},
-) {}
-export class InvalidIpamResourceDiscoveryIdNotFound extends S.TaggedErrorClass<InvalidIpamResourceDiscoveryIdNotFound>()(
-  "InvalidIpamResourceDiscoveryId.NotFound",
-  {},
-) {}
-export class NatGatewayMalformed extends S.TaggedErrorClass<NatGatewayMalformed>()(
-  "NatGatewayMalformed",
-  {},
-) {}
-export class InvalidRouteServerIdNotFound extends S.TaggedErrorClass<InvalidRouteServerIdNotFound>()(
-  "InvalidRouteServerId.NotFound",
-  {},
-) {}
-export class DryRunOperation extends S.TaggedErrorClass<DryRunOperation>()(
-  "DryRunOperation",
-  {},
-) {}
-export class InvalidParameterValue extends S.TaggedErrorClass<InvalidParameterValue>()(
-  "InvalidParameterValue",
-  {},
-) {}
-export class InvalidPublicIpv4PoolIDMalformed extends S.TaggedErrorClass<InvalidPublicIpv4PoolIDMalformed>()(
-  "InvalidPublicIpv4PoolID.Malformed",
-  {},
-) {}
-export class InvalidPublicIpv4PoolIDNotFound extends S.TaggedErrorClass<InvalidPublicIpv4PoolIDNotFound>()(
-  "InvalidPublicIpv4PoolID.NotFound",
-  {},
-) {}
-export class InvalidRouteTableIDNotFound extends S.TaggedErrorClass<InvalidRouteTableIDNotFound>()(
-  "InvalidRouteTableID.NotFound",
-  {},
-) {}
-export class InvalidSubnetIDNotFound extends S.TaggedErrorClass<InvalidSubnetIDNotFound>()(
-  "InvalidSubnetID.NotFound",
-  {},
-) {}
-export class InvalidGroupIdMalformed extends S.TaggedErrorClass<InvalidGroupIdMalformed>()(
-  "InvalidGroupId.Malformed",
-  {},
-) {}
-export class InvalidTransitGatewayMulticastDomainIdNotFound extends S.TaggedErrorClass<InvalidTransitGatewayMulticastDomainIdNotFound>()(
-  "InvalidTransitGatewayMulticastDomainId.NotFound",
-  {},
-) {}
-export class InvalidTransitGatewayPolicyTableIdMalformed extends S.TaggedErrorClass<InvalidTransitGatewayPolicyTableIdMalformed>()(
-  "InvalidTransitGatewayPolicyTableId.Malformed",
-  {},
-) {}
-export class InvalidTransitGatewayPolicyTableIdNotFound extends S.TaggedErrorClass<InvalidTransitGatewayPolicyTableIdNotFound>()(
-  "InvalidTransitGatewayPolicyTableId.NotFound",
-  {},
-) {}
-export class OperationNotPermitted extends S.TaggedErrorClass<OperationNotPermitted>()(
-  "OperationNotPermitted",
-  {},
-) {}
-export class CidrConflict extends S.TaggedErrorClass<CidrConflict>()(
-  "CidrConflict",
-  {},
-).pipe(C.withConflictError) {}
-export class InvalidInstanceIDMalformed extends S.TaggedErrorClass<InvalidInstanceIDMalformed>()(
-  "InvalidInstanceID.Malformed",
-  {},
-) {}
-export class InvalidInternetGatewayIDNotFound extends S.TaggedErrorClass<InvalidInternetGatewayIDNotFound>()(
-  "InvalidInternetGatewayID.NotFound",
-  {},
-) {}
-export class InvalidInternetGatewayIdMalformed extends S.TaggedErrorClass<InvalidInternetGatewayIdMalformed>()(
-  "InvalidInternetGatewayId.Malformed",
-  {},
-) {}
-export class InvalidVerifiedAccessInstanceIdNotFound extends S.TaggedErrorClass<InvalidVerifiedAccessInstanceIdNotFound>()(
-  "InvalidVerifiedAccessInstanceId.NotFound",
-  {},
-) {}
-export class InvalidVolumeNotFound extends S.TaggedErrorClass<InvalidVolumeNotFound>()(
-  "InvalidVolume.NotFound",
-  {},
-) {}
-export class VolumeInUse extends S.TaggedErrorClass<VolumeInUse>()(
-  "VolumeInUse",
-  {},
-).pipe(
-  C.withConflictError,
-  C.withRetryableError,
-  C.withDependencyViolationError,
-) {}
-export class InvalidVpnGatewayIDNotFound extends S.TaggedErrorClass<InvalidVpnGatewayIDNotFound>()(
-  "InvalidVpnGatewayID.NotFound",
-  {},
-) {}
-export class InvalidGroupNotFound extends S.TaggedErrorClass<InvalidGroupNotFound>()(
-  "InvalidGroup.NotFound",
-  {},
-) {}
-export class InvalidPermissionDuplicate extends S.TaggedErrorClass<InvalidPermissionDuplicate>()(
-  "InvalidPermission.Duplicate",
-  {},
-).pipe(C.withAlreadyExistsError) {}
-export class InvalidBundleIDNotFound extends S.TaggedErrorClass<InvalidBundleIDNotFound>()(
-  "InvalidBundleID.NotFound",
-  {},
-) {}
-export class InvalidCapacityReservationFleetIdMalformed extends S.TaggedErrorClass<InvalidCapacityReservationFleetIdMalformed>()(
-  "InvalidCapacityReservationFleetId.Malformed",
-  {},
-) {}
-export class InvalidAction extends S.TaggedErrorClass<InvalidAction>()(
-  "InvalidAction",
-  {},
-) {}
-export class InvalidDeclarativePoliciesReportIdMalformed extends S.TaggedErrorClass<InvalidDeclarativePoliciesReportIdMalformed>()(
-  "InvalidDeclarativePoliciesReportId.Malformed",
-  {},
-) {}
-export class InvalidID extends S.TaggedErrorClass<InvalidID>()(
-  "InvalidID",
-  {},
-) {}
-export class InvalidAMIIDMalformed extends S.TaggedErrorClass<InvalidAMIIDMalformed>()(
-  "InvalidAMIID.Malformed",
-  {},
-) {}
-export class InvalidConversionTaskIdMalformed extends S.TaggedErrorClass<InvalidConversionTaskIdMalformed>()(
-  "InvalidConversionTaskId.Malformed",
-  {},
-) {}
-export class InvalidInput extends S.TaggedErrorClass<InvalidInput>()(
-  "InvalidInput",
-  {},
-) {}
-export class InvalidSpotInstanceRequestIDMalformed extends S.TaggedErrorClass<InvalidSpotInstanceRequestIDMalformed>()(
-  "InvalidSpotInstanceRequestID.Malformed",
-  {},
-) {}
-export class InvalidFpgaImageIDMalformed extends S.TaggedErrorClass<InvalidFpgaImageIDMalformed>()(
-  "InvalidFpgaImageID.Malformed",
-  {},
-) {}
-export class InvalidAMIIDNotFound extends S.TaggedErrorClass<InvalidAMIIDNotFound>()(
-  "InvalidAMIID.NotFound",
-  {},
-) {}
-export class InvalidRegion extends S.TaggedErrorClass<InvalidRegion>()(
-  "InvalidRegion",
-  {},
-) {}
-export class InvalidSnapshotNotFound extends S.TaggedErrorClass<InvalidSnapshotNotFound>()(
-  "InvalidSnapshot.NotFound",
-  {},
-) {}
-export class InvalidVolumeIDMalformed extends S.TaggedErrorClass<InvalidVolumeIDMalformed>()(
-  "InvalidVolumeID.Malformed",
-  {},
-) {}
-export class Unsupported extends S.TaggedErrorClass<Unsupported>()(
-  "Unsupported",
-  {},
-) {}
-export class InvalidCapacityReservationIdNotFound extends S.TaggedErrorClass<InvalidCapacityReservationIdNotFound>()(
-  "InvalidCapacityReservationId.NotFound",
-  {},
-) {}
-export class ParseError extends S.TaggedErrorClass<ParseError>()(
-  "ParseError",
-  {},
-) {}
-export class InvalidClientVpnEndpointIdNotFound extends S.TaggedErrorClass<InvalidClientVpnEndpointIdNotFound>()(
-  "InvalidClientVpnEndpointId.NotFound",
-  {},
-) {}
-export class InvalidPoolIDMalformed extends S.TaggedErrorClass<InvalidPoolIDMalformed>()(
-  "InvalidPoolID.Malformed",
-  {},
-) {}
-export class InvalidPoolIDNotFound extends S.TaggedErrorClass<InvalidPoolIDNotFound>()(
-  "InvalidPoolID.NotFound",
-  {},
-) {}
-export class InvalidLocalGatewayRouteTableIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableIDMalformed>()(
-  "InvalidLocalGatewayRouteTableID.Malformed",
-  {},
-) {}
-export class InvalidLocalGatewayRouteTableIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableIDNotFound>()(
-  "InvalidLocalGatewayRouteTableID.NotFound",
-  {},
-) {}
-export class DefaultSubnetAlreadyExistsInAvailabilityZone extends S.TaggedErrorClass<DefaultSubnetAlreadyExistsInAvailabilityZone>()(
-  "DefaultSubnetAlreadyExistsInAvailabilityZone",
-  {},
-).pipe(C.withAlreadyExistsError) {}
-export class DefaultVpcAlreadyExists extends S.TaggedErrorClass<DefaultVpcAlreadyExists>()(
-  "DefaultVpcAlreadyExists",
-  {},
-).pipe(C.withAlreadyExistsError) {}
-export class InternetGatewayLimitExceeded extends S.TaggedErrorClass<InternetGatewayLimitExceeded>()(
-  "InternetGatewayLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class ResourceLimitExceeded extends S.TaggedErrorClass<ResourceLimitExceeded>()(
-  "ResourceLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class InvalidIpamIdNotFound extends S.TaggedErrorClass<InvalidIpamIdNotFound>()(
-  "InvalidIpamId.NotFound",
-  {},
-) {}
-export class InvalidIpamScopeIdNotFound extends S.TaggedErrorClass<InvalidIpamScopeIdNotFound>()(
-  "InvalidIpamScopeId.NotFound",
-  {},
-) {}
-export class InvalidIpamPrefixListResolverIdMalformed extends S.TaggedErrorClass<InvalidIpamPrefixListResolverIdMalformed>()(
-  "InvalidIpamPrefixListResolverId.Malformed",
-  {},
-) {}
-export class InvalidIpamPrefixListResolverIdNotFound extends S.TaggedErrorClass<InvalidIpamPrefixListResolverIdNotFound>()(
-  "InvalidIpamPrefixListResolverId.NotFound",
-  {},
-) {}
-export class InvalidKeyPairDuplicate extends S.TaggedErrorClass<InvalidKeyPairDuplicate>()(
-  "InvalidKeyPair.Duplicate",
-  {},
-).pipe(C.withAlreadyExistsError) {}
-export class InvalidLocalGatewayIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayIDMalformed>()(
-  "InvalidLocalGatewayID.Malformed",
-  {},
-) {}
-export class InvalidLocalGatewayIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayIDNotFound>()(
-  "InvalidLocalGatewayID.NotFound",
-  {},
-) {}
-export class InvalidLocalGatewayVirtualInterfaceGroupIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceGroupIDMalformed>()(
-  "InvalidLocalGatewayVirtualInterfaceGroupID.Malformed",
-  {},
-) {}
-export class InvalidLocalGatewayVirtualInterfaceGroupIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceGroupIDNotFound>()(
-  "InvalidLocalGatewayVirtualInterfaceGroupID.NotFound",
-  {},
-) {}
-export class InvalidElasticIpIDNotFound extends S.TaggedErrorClass<InvalidElasticIpIDNotFound>()(
-  "InvalidElasticIpID.NotFound",
-  {},
-) {}
-export class InvalidSubnet extends S.TaggedErrorClass<InvalidSubnet>()(
-  "InvalidSubnet",
-  {},
-) {}
-export class InvalidNetworkAclIDNotFound extends S.TaggedErrorClass<InvalidNetworkAclIDNotFound>()(
-  "InvalidNetworkAclID.NotFound",
-  {},
-) {}
-export class InvalidGatewayIDNotFound extends S.TaggedErrorClass<InvalidGatewayIDNotFound>()(
-  "InvalidGatewayID.NotFound",
-  {},
-) {}
-export class InvalidPrefixListIDNotFound extends S.TaggedErrorClass<InvalidPrefixListIDNotFound>()(
-  "InvalidPrefixListID.NotFound",
-  {},
-) {}
-export class InvalidRouteTableIdMalformed extends S.TaggedErrorClass<InvalidRouteTableIdMalformed>()(
-  "InvalidRouteTableId.Malformed",
-  {},
-) {}
-export class InvalidVpcEndpointIdNotFound extends S.TaggedErrorClass<InvalidVpcEndpointIdNotFound>()(
-  "InvalidVpcEndpointId.NotFound",
-  {},
-) {}
-export class RouteAlreadyExists extends S.TaggedErrorClass<RouteAlreadyExists>()(
-  "RouteAlreadyExists",
-  {},
-).pipe(C.withAlreadyExistsError) {}
-export class InvalidRouteServerIdNotAssociated extends S.TaggedErrorClass<InvalidRouteServerIdNotAssociated>()(
-  "InvalidRouteServerId.NotAssociated",
-  {},
-) {}
-export class InvalidGroupDuplicate extends S.TaggedErrorClass<InvalidGroupDuplicate>()(
-  "InvalidGroup.Duplicate",
-  {},
-).pipe(C.withAlreadyExistsError) {}
-export class VPCIdNotSpecified extends S.TaggedErrorClass<VPCIdNotSpecified>()(
-  "VPCIdNotSpecified",
-  {},
-) {}
-export class InaccessibleStorageLocation extends S.TaggedErrorClass<InaccessibleStorageLocation>()(
-  "InaccessibleStorageLocation",
-  {},
-) {}
-export class InvalidSubnetConflict extends S.TaggedErrorClass<InvalidSubnetConflict>()(
-  "InvalidSubnet.Conflict",
-  {},
-) {}
-export class TransitGatewayLimitExceeded extends S.TaggedErrorClass<TransitGatewayLimitExceeded>()(
-  "TransitGatewayLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class IncorrectState extends S.TaggedErrorClass<IncorrectState>()(
-  "IncorrectState",
-  {},
-).pipe(C.withConflictError) {}
-export class InvalidTransitGatewayIDNotFound extends S.TaggedErrorClass<InvalidTransitGatewayIDNotFound>()(
-  "InvalidTransitGatewayID.NotFound",
-  {},
-) {}
-export class InvalidTransitGatewayIDMalformed extends S.TaggedErrorClass<InvalidTransitGatewayIDMalformed>()(
-  "InvalidTransitGatewayID.Malformed",
-  {},
-) {}
-export class InvalidTransitGatewayAttachmentIDMalformed extends S.TaggedErrorClass<InvalidTransitGatewayAttachmentIDMalformed>()(
-  "InvalidTransitGatewayAttachmentID.Malformed",
-  {},
-) {}
-export class VerifiedAccessInstanceLimitExceeded extends S.TaggedErrorClass<VerifiedAccessInstanceLimitExceeded>()(
-  "VerifiedAccessInstanceLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class InvalidZoneNotFound extends S.TaggedErrorClass<InvalidZoneNotFound>()(
-  "InvalidZone.NotFound",
-  {},
-) {}
-export class VpcLimitExceeded extends S.TaggedErrorClass<VpcLimitExceeded>()(
-  "VpcLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class InvalidServiceName extends S.TaggedErrorClass<InvalidServiceName>()(
-  "InvalidServiceName",
-  {},
-) {}
-export class InvalidVpcIdNotFound extends S.TaggedErrorClass<InvalidVpcIdNotFound>()(
-  "InvalidVpcId.NotFound",
-  {},
-) {}
-export class InvalidCustomerGatewayIDNotFound extends S.TaggedErrorClass<InvalidCustomerGatewayIDNotFound>()(
-  "InvalidCustomerGatewayID.NotFound",
-  {},
-) {}
-export class InvalidCapacityManagerDataExportIdMalformed extends S.TaggedErrorClass<InvalidCapacityManagerDataExportIdMalformed>()(
-  "InvalidCapacityManagerDataExportId.Malformed",
-  {},
-) {}
-export class InvalidCapacityManagerDataExportIdNotFound extends S.TaggedErrorClass<InvalidCapacityManagerDataExportIdNotFound>()(
-  "InvalidCapacityManagerDataExportId.NotFound",
-  {},
-) {}
-export class InvalidCarrierGatewayIDMalformed extends S.TaggedErrorClass<InvalidCarrierGatewayIDMalformed>()(
-  "InvalidCarrierGatewayID.Malformed",
-  {},
-) {}
-export class InvalidCarrierGatewayIDNotFound extends S.TaggedErrorClass<InvalidCarrierGatewayIDNotFound>()(
-  "InvalidCarrierGatewayID.NotFound",
-  {},
-) {}
-export class InvalidCidrBlockMalformed extends S.TaggedErrorClass<InvalidCidrBlockMalformed>()(
-  "InvalidCidrBlock.Malformed",
-  {},
-) {}
-export class InvalidIpv4PoolCoipIdMalformed extends S.TaggedErrorClass<InvalidIpv4PoolCoipIdMalformed>()(
-  "InvalidIpv4PoolCoipId.Malformed",
-  {},
-) {}
-export class InvalidCustomerGatewayIdMalformed extends S.TaggedErrorClass<InvalidCustomerGatewayIdMalformed>()(
-  "InvalidCustomerGatewayId.Malformed",
-  {},
-) {}
-export class DependencyViolation extends S.TaggedErrorClass<DependencyViolation>()(
-  "DependencyViolation",
-  {},
-).pipe(C.withDependencyViolationError) {}
-export class InvalidDhcpOptionIDNotFound extends S.TaggedErrorClass<InvalidDhcpOptionIDNotFound>()(
-  "InvalidDhcpOptionID.NotFound",
-  {},
-) {}
-export class InvalidDhcpOptionsIDNotFound extends S.TaggedErrorClass<InvalidDhcpOptionsIDNotFound>()(
-  "InvalidDhcpOptionsID.NotFound",
-  {},
-) {}
-export class InvalidEgressOnlyInternetGatewayIdNotFound extends S.TaggedErrorClass<InvalidEgressOnlyInternetGatewayIdNotFound>()(
-  "InvalidEgressOnlyInternetGatewayId.NotFound",
-  {},
-) {}
-export class MalformedGatewayIDNotFound extends S.TaggedErrorClass<MalformedGatewayIDNotFound>()(
-  "MalformedGatewayID.NotFound",
-  {},
-) {}
-export class InvalidFleetIdMalformed extends S.TaggedErrorClass<InvalidFleetIdMalformed>()(
-  "InvalidFleetId.Malformed",
-  {},
-) {}
-export class InvalidFlowLogIdNotFound extends S.TaggedErrorClass<InvalidFlowLogIdNotFound>()(
-  "InvalidFlowLogId.NotFound",
-  {},
-) {}
-export class InvalidImageUsageReportIdMalformed extends S.TaggedErrorClass<InvalidImageUsageReportIdMalformed>()(
-  "InvalidImageUsageReportId.Malformed",
-  {},
-) {}
-export class InvalidInstanceConnectEndpointIdMalformed extends S.TaggedErrorClass<InvalidInstanceConnectEndpointIdMalformed>()(
-  "InvalidInstanceConnectEndpointId.Malformed",
-  {},
-) {}
-export class InvalidInstanceConnectEndpointIdNotFound extends S.TaggedErrorClass<InvalidInstanceConnectEndpointIdNotFound>()(
-  "InvalidInstanceConnectEndpointId.NotFound",
-  {},
-) {}
-export class InvalidState extends S.TaggedErrorClass<InvalidState>()(
-  "InvalidState",
-  {},
-) {}
-export class InvalidInstanceEventWindowIDNotFound extends S.TaggedErrorClass<InvalidInstanceEventWindowIDNotFound>()(
-  "InvalidInstanceEventWindowIDNotFound",
-  {},
-) {}
-export class InvalidIpamExternalResourceVerificationTokenIdMalformed extends S.TaggedErrorClass<InvalidIpamExternalResourceVerificationTokenIdMalformed>()(
-  "InvalidIpamExternalResourceVerificationTokenId.Malformed",
-  {},
-) {}
-export class InvalidIpamExternalResourceVerificationTokenIdNotFound extends S.TaggedErrorClass<InvalidIpamExternalResourceVerificationTokenIdNotFound>()(
-  "InvalidIpamExternalResourceVerificationTokenId.NotFound",
-  {},
-) {}
-export class InvalidIpamPolicyIdMalformed extends S.TaggedErrorClass<InvalidIpamPolicyIdMalformed>()(
-  "InvalidIpamPolicyId.Malformed",
-  {},
-) {}
-export class InvalidIpamPolicyIdNotFound extends S.TaggedErrorClass<InvalidIpamPolicyIdNotFound>()(
-  "InvalidIpamPolicyId.NotFound",
-  {},
-) {}
-export class InvalidIpamPrefixListResolverTargetIdMalformed extends S.TaggedErrorClass<InvalidIpamPrefixListResolverTargetIdMalformed>()(
-  "InvalidIpamPrefixListResolverTargetId.Malformed",
-  {},
-) {}
-export class InvalidLaunchTemplateNameNotFoundException extends S.TaggedErrorClass<InvalidLaunchTemplateNameNotFoundException>()(
-  "InvalidLaunchTemplateName.NotFoundException",
-  {},
-) {}
-export class InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDMalformed>()(
-  "InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationID.Malformed",
-  {},
-) {}
-export class InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDNotFound>()(
-  "InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationID.NotFound",
-  {},
-) {}
-export class InvalidLocalGatewayRouteTableVpcAssociationIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableVpcAssociationIDMalformed>()(
-  "InvalidLocalGatewayRouteTableVpcAssociationID.Malformed",
-  {},
-) {}
-export class InvalidLocalGatewayRouteTableVpcAssociationIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayRouteTableVpcAssociationIDNotFound>()(
-  "InvalidLocalGatewayRouteTableVpcAssociationID.NotFound",
-  {},
-) {}
-export class InvalidLocalGatewayVirtualInterfaceIDMalformed extends S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceIDMalformed>()(
-  "InvalidLocalGatewayVirtualInterfaceID.Malformed",
-  {},
-) {}
-export class InvalidLocalGatewayVirtualInterfaceIDNotFound extends S.TaggedErrorClass<InvalidLocalGatewayVirtualInterfaceIDNotFound>()(
-  "InvalidLocalGatewayVirtualInterfaceID.NotFound",
-  {},
-) {}
-export class InvalidPrefixListIdMalformed extends S.TaggedErrorClass<InvalidPrefixListIdMalformed>()(
-  "InvalidPrefixListId.Malformed",
-  {},
-) {}
-export class InvalidNetworkAclIdMalformed extends S.TaggedErrorClass<InvalidNetworkAclIdMalformed>()(
-  "InvalidNetworkAclId.Malformed",
-  {},
-) {}
-export class InvalidNetworkAclEntryNotFound extends S.TaggedErrorClass<InvalidNetworkAclEntryNotFound>()(
-  "InvalidNetworkAclEntry.NotFound",
-  {},
-) {}
-export class InvalidNetworkInsightsAccessScopeIdNotFound extends S.TaggedErrorClass<InvalidNetworkInsightsAccessScopeIdNotFound>()(
-  "InvalidNetworkInsightsAccessScopeId.NotFound",
-  {},
-) {}
-export class InvalidNetworkInterfaceInUse extends S.TaggedErrorClass<InvalidNetworkInterfaceInUse>()(
-  "InvalidNetworkInterface.InUse",
-  {},
-).pipe(C.withDependencyViolationError) {}
-export class InvalidPermissionIDMalformed extends S.TaggedErrorClass<InvalidPermissionIDMalformed>()(
-  "InvalidPermissionID.Malformed",
-  {},
-) {}
-export class InvalidPermissionIDNotFound extends S.TaggedErrorClass<InvalidPermissionIDNotFound>()(
-  "InvalidPermissionID.NotFound",
-  {},
-) {}
-export class InvalidPlacementGroupUnknown extends S.TaggedErrorClass<InvalidPlacementGroupUnknown>()(
-  "InvalidPlacementGroup.Unknown",
-  {},
-) {}
-export class InvalidPublicIpv4PoolNotFound extends S.TaggedErrorClass<InvalidPublicIpv4PoolNotFound>()(
-  "InvalidPublicIpv4Pool.NotFound",
-  {},
-) {}
-export class InvalidRouteNotFound extends S.TaggedErrorClass<InvalidRouteNotFound>()(
-  "InvalidRoute.NotFound",
-  {},
-) {}
-export class InvalidRouteServerEndpointIdNotFound extends S.TaggedErrorClass<InvalidRouteServerEndpointIdNotFound>()(
-  "InvalidRouteServerEndpointId.NotFound",
-  {},
-) {}
-export class InvalidRouteServerPeerIdMalformed extends S.TaggedErrorClass<InvalidRouteServerPeerIdMalformed>()(
-  "InvalidRouteServerPeerId.Malformed",
-  {},
-) {}
-export class InvalidRouteServerPeerIdNotFound extends S.TaggedErrorClass<InvalidRouteServerPeerIdNotFound>()(
-  "InvalidRouteServerPeerId.NotFound",
-  {},
-) {}
-export class CannotDelete extends S.TaggedErrorClass<CannotDelete>()(
-  "CannotDelete",
-  {},
-) {}
-export class InvalidSnapshotIDMalformed extends S.TaggedErrorClass<InvalidSnapshotIDMalformed>()(
-  "InvalidSnapshotID.Malformed",
-  {},
-) {}
-export class InvalidSubnetIdMalformed extends S.TaggedErrorClass<InvalidSubnetIdMalformed>()(
-  "InvalidSubnetId.Malformed",
-  {},
-) {}
-export class InvalidSubnetCidrReservationIDMalformed extends S.TaggedErrorClass<InvalidSubnetCidrReservationIDMalformed>()(
-  "InvalidSubnetCidrReservationID.Malformed",
-  {},
-) {}
-export class InvalidSubnetCidrReservationIDNotFound extends S.TaggedErrorClass<InvalidSubnetCidrReservationIDNotFound>()(
-  "InvalidSubnetCidrReservationID.NotFound",
-  {},
-) {}
-export class InvalidTrafficMirrorFilterIdNotFound extends S.TaggedErrorClass<InvalidTrafficMirrorFilterIdNotFound>()(
-  "InvalidTrafficMirrorFilterId.NotFound",
-  {},
-) {}
-export class InvalidTrafficMirrorFilterRuleIdNotFound extends S.TaggedErrorClass<InvalidTrafficMirrorFilterRuleIdNotFound>()(
-  "InvalidTrafficMirrorFilterRuleId.NotFound",
-  {},
-) {}
-export class InvalidTrafficMirrorSessionIdNotFound extends S.TaggedErrorClass<InvalidTrafficMirrorSessionIdNotFound>()(
-  "InvalidTrafficMirrorSessionId.NotFound",
-  {},
-) {}
-export class InvalidTrafficMirrorTargetIdNotFound extends S.TaggedErrorClass<InvalidTrafficMirrorTargetIdNotFound>()(
-  "InvalidTrafficMirrorTargetId.NotFound",
-  {},
-) {}
-export class InvalidTransitGatewayConnectPeerIDMalformed extends S.TaggedErrorClass<InvalidTransitGatewayConnectPeerIDMalformed>()(
-  "InvalidTransitGatewayConnectPeerID.Malformed",
-  {},
-) {}
-export class InvalidTransitGatewayConnectPeerIDNotFound extends S.TaggedErrorClass<InvalidTransitGatewayConnectPeerIDNotFound>()(
-  "InvalidTransitGatewayConnectPeerID.NotFound",
-  {},
-) {}
-export class InvalidTransitGatewayMeteringPolicyIdNotFound extends S.TaggedErrorClass<InvalidTransitGatewayMeteringPolicyIdNotFound>()(
-  "InvalidTransitGatewayMeteringPolicyId.NotFound",
-  {},
-) {}
-export class InvalidTransitGatewayMeteringPolicyIdMalformedException extends S.TaggedErrorClass<InvalidTransitGatewayMeteringPolicyIdMalformedException>()(
-  "InvalidTransitGatewayMeteringPolicyIdMalformedException",
-  {},
-) {}
-export class InvalidTransitGatewayMulticastDomainIdMalformed extends S.TaggedErrorClass<InvalidTransitGatewayMulticastDomainIdMalformed>()(
-  "InvalidTransitGatewayMulticastDomainId.Malformed",
-  {},
-) {}
-export class InvalidTransitGatewayRouteTableAnnouncementIdMalformed extends S.TaggedErrorClass<InvalidTransitGatewayRouteTableAnnouncementIdMalformed>()(
-  "InvalidTransitGatewayRouteTableAnnouncementId.Malformed",
-  {},
-) {}
-export class InvalidVerifiedAccessEndpointIdNotFound extends S.TaggedErrorClass<InvalidVerifiedAccessEndpointIdNotFound>()(
-  "InvalidVerifiedAccessEndpointId.NotFound",
-  {},
-) {}
-export class InvalidVerifiedAccessGroupIdNotFound extends S.TaggedErrorClass<InvalidVerifiedAccessGroupIdNotFound>()(
-  "InvalidVerifiedAccessGroupId.NotFound",
-  {},
-) {}
-export class InvalidVerifiedAccessTrustProviderIdNotFound extends S.TaggedErrorClass<InvalidVerifiedAccessTrustProviderIdNotFound>()(
-  "InvalidVerifiedAccessTrustProviderId.NotFound",
-  {},
-) {}
-export class RequestError extends S.TaggedErrorClass<RequestError>()(
-  "RequestError",
-  {},
-) {}
-export class VpcBlockPublicAccessExclusionIdMalformed extends S.TaggedErrorClass<VpcBlockPublicAccessExclusionIdMalformed>()(
-  "VpcBlockPublicAccessExclusionId.Malformed",
-  {},
-) {}
-export class InvalidVpcEncryptionControlIdMalformed extends S.TaggedErrorClass<InvalidVpcEncryptionControlIdMalformed>()(
-  "InvalidVpcEncryptionControlId.Malformed",
-  {},
-) {}
-export class InvalidVpcEncryptionControlIdNotFound extends S.TaggedErrorClass<InvalidVpcEncryptionControlIdNotFound>()(
-  "InvalidVpcEncryptionControlId.NotFound",
-  {},
-) {}
-export class InvalidVpnConcentratorIDMalformed extends S.TaggedErrorClass<InvalidVpnConcentratorIDMalformed>()(
-  "InvalidVpnConcentratorID.Malformed",
-  {},
-) {}
-export class InvalidVpnConnectionIDNotFound extends S.TaggedErrorClass<InvalidVpnConnectionIDNotFound>()(
-  "InvalidVpnConnectionID.NotFound",
-  {},
-) {}
-export class InvalidRouteMalformed extends S.TaggedErrorClass<InvalidRouteMalformed>()(
-  "InvalidRoute.Malformed",
-  {},
-) {}
-export class InvalidCapacityBlockIdMalformed extends S.TaggedErrorClass<InvalidCapacityBlockIdMalformed>()(
-  "InvalidCapacityBlockId.Malformed",
-  {},
-) {}
-export class InvalidEgressOnlyInternetGatewayIdMalformed extends S.TaggedErrorClass<InvalidEgressOnlyInternetGatewayIdMalformed>()(
-  "InvalidEgressOnlyInternetGatewayId.Malformed",
-  {},
-) {}
-export class UnsupportedOperation extends S.TaggedErrorClass<UnsupportedOperation>()(
-  "UnsupportedOperation",
-  {},
-) {}
-export class InvalidExportTaskIDMalformed extends S.TaggedErrorClass<InvalidExportTaskIDMalformed>()(
-  "InvalidExportTaskID.Malformed",
-  {},
-) {}
-export class InvalidFpgaImageIDNotFound extends S.TaggedErrorClass<InvalidFpgaImageIDNotFound>()(
-  "InvalidFpgaImageID.NotFound",
-  {},
-) {}
-export class InvalidHostReservationOfferingIdMalformed extends S.TaggedErrorClass<InvalidHostReservationOfferingIdMalformed>()(
-  "InvalidHostReservationOfferingId.Malformed",
-  {},
-) {}
-export class InvalidHostIDMalformed extends S.TaggedErrorClass<InvalidHostIDMalformed>()(
-  "InvalidHostID.Malformed",
-  {},
-) {}
-export class InvalidTargetArnUnknown extends S.TaggedErrorClass<InvalidTargetArnUnknown>()(
-  "InvalidTargetArn.Unknown",
-  {},
-) {}
-export class InvalidIpamResourceDiscoveryAssociationIdNotFound extends S.TaggedErrorClass<InvalidIpamResourceDiscoveryAssociationIdNotFound>()(
-  "InvalidIpamResourceDiscoveryAssociationId.NotFound",
-  {},
-) {}
-export class InvalidIpv6PoolIDNotFound extends S.TaggedErrorClass<InvalidIpv6PoolIDNotFound>()(
-  "InvalidIpv6PoolID.NotFound",
-  {},
-) {}
-export class InvalidKeyPairNotFound extends S.TaggedErrorClass<InvalidKeyPairNotFound>()(
-  "InvalidKeyPair.NotFound",
-  {},
-) {}
-export class InvalidLaunchTemplateIdMalformed extends S.TaggedErrorClass<InvalidLaunchTemplateIdMalformed>()(
-  "InvalidLaunchTemplateId.Malformed",
-  {},
-) {}
-export class InvalidLaunchTemplateIdNotFound extends S.TaggedErrorClass<InvalidLaunchTemplateIdNotFound>()(
-  "InvalidLaunchTemplateId.NotFound",
-  {},
-) {}
-export class FilterLimitExceeded extends S.TaggedErrorClass<FilterLimitExceeded>()(
-  "FilterLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class InvalidOutpostLagIDMalformed extends S.TaggedErrorClass<InvalidOutpostLagIDMalformed>()(
-  "InvalidOutpostLagID.Malformed",
-  {},
-) {}
-export class InvalidPrefixListIdNotFound extends S.TaggedErrorClass<InvalidPrefixListIdNotFound>()(
-  "InvalidPrefixListId.NotFound",
-  {},
-) {}
-export class InvalidSecurityGroupRuleIdNotFound extends S.TaggedErrorClass<InvalidSecurityGroupRuleIdNotFound>()(
-  "InvalidSecurityGroupRuleId.NotFound",
-  {},
-) {}
-export class InvalidServiceLinkVirtualInterfaceIDMalformed extends S.TaggedErrorClass<InvalidServiceLinkVirtualInterfaceIDMalformed>()(
-  "InvalidServiceLinkVirtualInterfaceID.Malformed",
-  {},
-) {}
-export class InvalidUserIDMalformed extends S.TaggedErrorClass<InvalidUserIDMalformed>()(
-  "InvalidUserID.Malformed",
-  {},
-) {}
-export class InvalidSpotDatafeedNotFound extends S.TaggedErrorClass<InvalidSpotDatafeedNotFound>()(
-  "InvalidSpotDatafeed.NotFound",
-  {},
-) {}
-export class InvalidConnectionNotification extends S.TaggedErrorClass<InvalidConnectionNotification>()(
-  "InvalidConnectionNotification",
-  {},
-) {}
-export class InvalidVpcEndpointServiceIdMalformed extends S.TaggedErrorClass<InvalidVpcEndpointServiceIdMalformed>()(
-  "InvalidVpcEndpointServiceId.Malformed",
-  {},
-) {}
-export class InvalidVpnConcentratorIdMalformed extends S.TaggedErrorClass<InvalidVpnConcentratorIdMalformed>()(
-  "InvalidVpnConcentratorId.Malformed",
-  {},
-) {}
-export class GatewayNotAttached extends S.TaggedErrorClass<GatewayNotAttached>()(
-  "Gateway.NotAttached",
-  {},
-) {}
-export class InvalidAttachmentIDNotFound extends S.TaggedErrorClass<InvalidAttachmentIDNotFound>()(
-  "InvalidAttachmentID.NotFound",
-  {},
-) {}
-export class InvalidNetworkInterfaceAttachmentIdMalformed extends S.TaggedErrorClass<InvalidNetworkInterfaceAttachmentIdMalformed>()(
-  "InvalidNetworkInterfaceAttachmentId.Malformed",
-  {},
-) {}
-export class CapacityManagerDisabled extends S.TaggedErrorClass<CapacityManagerDisabled>()(
-  "CapacityManager.Disabled",
-  {},
-) {}
-export class InvalidAssociationIDNotFound extends S.TaggedErrorClass<InvalidAssociationIDNotFound>()(
-  "InvalidAssociationID.NotFound",
-  {},
-) {}
-export class InvalidIpamResourceDiscoveryAssociationIdMalformed extends S.TaggedErrorClass<InvalidIpamResourceDiscoveryAssociationIdMalformed>()(
-  "InvalidIpamResourceDiscoveryAssociationId.Malformed",
-  {},
-) {}
-export class InvalidSubnetCidrBlockAssociationIDNotFound extends S.TaggedErrorClass<InvalidSubnetCidrBlockAssociationIDNotFound>()(
-  "InvalidSubnetCidrBlockAssociationID.NotFound",
-  {},
-) {}
-export class InvalidSubnetCidrBlockAssociationIdMalformed extends S.TaggedErrorClass<InvalidSubnetCidrBlockAssociationIdMalformed>()(
-  "InvalidSubnetCidrBlockAssociationId.Malformed",
-  {},
-) {}
-export class InvalidVpcCidrBlockAssociationIDNotFound extends S.TaggedErrorClass<InvalidVpcCidrBlockAssociationIDNotFound>()(
-  "InvalidVpcCidrBlockAssociationID.NotFound",
-  {},
-) {}
-export class InvalidVpcCidrBlockAssociationIdMalformed extends S.TaggedErrorClass<InvalidVpcCidrBlockAssociationIdMalformed>()(
-  "InvalidVpcCidrBlockAssociationId.Malformed",
-  {},
-) {}
-export class InvalidVpcCidrBlockAssociationIdErrorNotFound extends S.TaggedErrorClass<InvalidVpcCidrBlockAssociationIdErrorNotFound>()(
-  "InvalidVpcCidrBlockAssociationIdError.NotFound",
-  {},
-) {}
-export class InvalidIpv6PoolIDMalformed extends S.TaggedErrorClass<InvalidIpv6PoolIDMalformed>()(
-  "InvalidIpv6PoolID.Malformed",
-  {},
-) {}
-export class InvalidVpnConnectionDeviceTypeIdNotFound extends S.TaggedErrorClass<InvalidVpnConnectionDeviceTypeIdNotFound>()(
-  "InvalidVpnConnectionDeviceTypeId.NotFound",
-  {},
-) {}
-export class InvalidVpnConnectionId extends S.TaggedErrorClass<InvalidVpnConnectionId>()(
-  "InvalidVpnConnectionId",
-  {},
-) {}
-export class MissingRequiredParameter extends S.TaggedErrorClass<MissingRequiredParameter>()(
-  "MissingRequiredParameter",
-  {},
-) {}
-export class InvalidInstanceEventWindowIdMalformed extends S.TaggedErrorClass<InvalidInstanceEventWindowIdMalformed>()(
-  "InvalidInstanceEventWindowId.Malformed",
-  {},
-) {}
-export class InvalidIpamScopeIdMalformed extends S.TaggedErrorClass<InvalidIpamScopeIdMalformed>()(
-  "InvalidIpamScopeId.Malformed",
-  {},
-) {}
-export class UnknownResource extends S.TaggedErrorClass<UnknownResource>()(
-  "UnknownResource",
-  {},
-) {}
-export class InvalidPurchaseTokenMalformed extends S.TaggedErrorClass<InvalidPurchaseTokenMalformed>()(
-  "InvalidPurchaseToken.Malformed",
-  {},
-) {}
-export class InvalidIPAddressInUse extends S.TaggedErrorClass<InvalidIPAddressInUse>()(
-  "InvalidIPAddress.InUse",
-  {},
-).pipe(C.withDependencyViolationError) {}
-export class InvalidRouteTableAssociationIdMalformed extends S.TaggedErrorClass<InvalidRouteTableAssociationIdMalformed>()(
-  "InvalidRouteTableAssociationId.Malformed",
-  {},
-) {}
-export class InvalidPermissionNotFound extends S.TaggedErrorClass<InvalidPermissionNotFound>()(
-  "InvalidPermission.NotFound",
-  {},
-) {}
-export class InvalidSecurityGroupRuleIdMalformed extends S.TaggedErrorClass<InvalidSecurityGroupRuleIdMalformed>()(
-  "InvalidSecurityGroupRuleId.Malformed",
-  {},
-) {}
-export class UnknownParameter extends S.TaggedErrorClass<UnknownParameter>()(
-  "UnknownParameter",
-  {},
-) {}
-export class InvalidScheduledInstance extends S.TaggedErrorClass<InvalidScheduledInstance>()(
-  "InvalidScheduledInstance",
-  {},
-) {}
-export class DeclarativePoliciesAccessDenied extends S.TaggedErrorClass<DeclarativePoliciesAccessDenied>()(
-  "DeclarativePoliciesAccessDenied",
-  {},
-).pipe(C.withAuthError) {}
-export class IdempotentParameterMismatch extends S.TaggedErrorClass<IdempotentParameterMismatch>()(
-  "IdempotentParameterMismatch",
-  {},
-).pipe(C.withConflictError) {}
-
-//# Operations
 export type AcceptAddressTransferError =
   | RequestLimitExceeded
   | InvalidAddressMalformed
@@ -73800,6 +74243,7 @@ export const acceptAddressTransfer: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptAddressTransfer",
 }));
+
 export type AcceptCapacityReservationBillingOwnershipError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
@@ -73827,6 +74271,7 @@ export const acceptCapacityReservationBillingOwnership: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptCapacityReservationBillingOwnership",
 }));
+
 export type AcceptReservedInstancesExchangeQuoteError =
   | RequestLimitExceeded
   | InvalidReservedInstancesIDNotFound
@@ -73852,6 +74297,7 @@ export const acceptReservedInstancesExchangeQuote: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptReservedInstancesExchangeQuote",
 }));
+
 export type AcceptTransitGatewayClientVpnAttachmentError = CommonErrors;
 /**
  * Accepts a Transit Gateway attachment request for a Client VPN endpoint. The Transit Gateway owner must accept the attachment request before the Client VPN endpoint can route traffic through the Transit Gateway.
@@ -73869,6 +74315,7 @@ export const acceptTransitGatewayClientVpnAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptTransitGatewayClientVpnAttachment",
 }));
+
 export type AcceptTransitGatewayMulticastDomainAssociationsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -73890,6 +74337,7 @@ export const acceptTransitGatewayMulticastDomainAssociations: API.OperationMetho
   retry: Retry,
   operationName: "AcceptTransitGatewayMulticastDomainAssociations",
 }));
+
 export type AcceptTransitGatewayPeeringAttachmentError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
@@ -73916,6 +74364,7 @@ export const acceptTransitGatewayPeeringAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptTransitGatewayPeeringAttachment",
 }));
+
 export type AcceptTransitGatewayVpcAttachmentError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
@@ -73945,6 +74394,7 @@ export const acceptTransitGatewayVpcAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptTransitGatewayVpcAttachment",
 }));
+
 export type AcceptVpcEndpointConnectionsError =
   | RequestLimitExceeded
   | InvalidParameter
@@ -73972,6 +74422,7 @@ export const acceptVpcEndpointConnections: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptVpcEndpointConnections",
 }));
+
 export type AcceptVpcPeeringConnectionError =
   | RequestLimitExceeded
   | InvalidVpcPeeringConnectionIDNotFound
@@ -74005,6 +74456,7 @@ export const acceptVpcPeeringConnection: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptVpcPeeringConnection",
 }));
+
 export type AdvertiseByoipCidrError =
   | RequestLimitExceeded
   | UnauthorizedOperation
@@ -74037,6 +74489,7 @@ export const advertiseByoipCidr: API.OperationMethod<
   retry: Retry,
   operationName: "AdvertiseByoipCidr",
 }));
+
 export type AllocateAddressError =
   | RequestLimitExceeded
   | AddressLimitExceeded
@@ -74082,6 +74535,7 @@ export const allocateAddress: API.OperationMethod<
   retry: Retry,
   operationName: "AllocateAddress",
 }));
+
 export type AllocateHostsError =
   | RequestLimitExceeded
   | InvalidHostConfiguration
@@ -74111,6 +74565,7 @@ export const allocateHosts: API.OperationMethod<
   retry: Retry,
   operationName: "AllocateHosts",
 }));
+
 export type AllocateIpamPoolCidrError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
@@ -74140,6 +74595,7 @@ export const allocateIpamPoolCidr: API.OperationMethod<
   retry: Retry,
   operationName: "AllocateIpamPoolCidr",
 }));
+
 export type ApplySecurityGroupsToClientVpnTargetNetworkError =
   | RequestLimitExceeded
   | InvalidVpcIdMalformed
@@ -74162,6 +74618,7 @@ export const applySecurityGroupsToClientVpnTargetNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "ApplySecurityGroupsToClientVpnTargetNetwork",
 }));
+
 export type AssignIpv6AddressesError =
   | RequestLimitExceeded
   | InvalidNetworkInterfaceIDNotFound
@@ -74200,6 +74657,7 @@ export const assignIpv6Addresses: API.OperationMethod<
   retry: Retry,
   operationName: "AssignIpv6Addresses",
 }));
+
 export type AssignPrivateIpAddressesError =
   | RequestLimitExceeded
   | InvalidNetworkInterfaceIDNotFound
@@ -74252,6 +74710,7 @@ export const assignPrivateIpAddresses: API.OperationMethod<
   retry: Retry,
   operationName: "AssignPrivateIpAddresses",
 }));
+
 export type AssignPrivateNatGatewayAddressError =
   | RequestLimitExceeded
   | NatGatewayNotFound
@@ -74274,6 +74733,7 @@ export const assignPrivateNatGatewayAddress: API.OperationMethod<
   retry: Retry,
   operationName: "AssignPrivateNatGatewayAddress",
 }));
+
 export type AssociateAddressError =
   | RequestLimitExceeded
   | AuthFailure
@@ -74324,6 +74784,7 @@ export const associateAddress: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateAddress",
 }));
+
 export type AssociateCapacityReservationBillingOwnerError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
@@ -74354,6 +74815,7 @@ export const associateCapacityReservationBillingOwner: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateCapacityReservationBillingOwner",
 }));
+
 export type AssociateClientVpnTargetNetworkError =
   | RequestLimitExceeded
   | InvalidSubnetIDMalformed
@@ -74383,6 +74845,7 @@ export const associateClientVpnTargetNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateClientVpnTargetNetwork",
 }));
+
 export type AssociateDhcpOptionsError =
   | RequestLimitExceeded
   | InvalidDhcpOptionsIdMalformed
@@ -74417,6 +74880,7 @@ export const associateDhcpOptions: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateDhcpOptions",
 }));
+
 export type AssociateEnclaveCertificateIamRoleError =
   | RequestLimitExceeded
   | InvalidCertificateArnMalformed
@@ -74458,6 +74922,7 @@ export const associateEnclaveCertificateIamRole: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateEnclaveCertificateIamRole",
 }));
+
 export type AssociateIamInstanceProfileError =
   | RequestLimitExceeded
   | MissingParameter
@@ -74480,6 +74945,7 @@ export const associateIamInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateIamInstanceProfile",
 }));
+
 export type AssociateInstanceEventWindowError =
   | RequestLimitExceeded
   | MissingParameter
@@ -74505,6 +74971,7 @@ export const associateInstanceEventWindow: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateInstanceEventWindow",
 }));
+
 export type AssociateIpamByoasnError =
   | RequestLimitExceeded
   | InvalidCidrNotFound
@@ -74530,6 +74997,7 @@ export const associateIpamByoasn: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateIpamByoasn",
 }));
+
 export type AssociateIpamResourceDiscoveryError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryIdMalformed
@@ -74557,6 +75025,7 @@ export const associateIpamResourceDiscovery: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateIpamResourceDiscovery",
 }));
+
 export type AssociateNatGatewayAddressError =
   | RequestLimitExceeded
   | MissingParameter
@@ -74596,6 +75065,7 @@ export const associateNatGatewayAddress: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateNatGatewayAddress",
 }));
+
 export type AssociateRouteServerError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
@@ -74625,6 +75095,7 @@ export const associateRouteServer: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateRouteServer",
 }));
+
 export type AssociateRouteTableError =
   | RequestLimitExceeded
   | DryRunOperation
@@ -74671,6 +75142,7 @@ export const associateRouteTable: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateRouteTable",
 }));
+
 export type AssociateSecurityGroupVpcError =
   | RequestLimitExceeded
   | InvalidGroupIdMalformed
@@ -74708,6 +75180,7 @@ export const associateSecurityGroupVpc: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateSecurityGroupVpc",
 }));
+
 export type AssociateSubnetCidrBlockError =
   | RequestLimitExceeded
   | InvalidSubnetIDNotFound
@@ -74736,6 +75209,7 @@ export const associateSubnetCidrBlock: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateSubnetCidrBlock",
 }));
+
 export type AssociateTransitGatewayMulticastDomainError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMulticastDomainIdNotFound
@@ -74764,6 +75238,7 @@ export const associateTransitGatewayMulticastDomain: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateTransitGatewayMulticastDomain",
 }));
+
 export type AssociateTransitGatewayPolicyTableError =
   | RequestLimitExceeded
   | InvalidTransitGatewayPolicyTableIdMalformed
@@ -74791,6 +75266,7 @@ export const associateTransitGatewayPolicyTable: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateTransitGatewayPolicyTable",
 }));
+
 export type AssociateTransitGatewayRouteTableError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -74817,6 +75293,7 @@ export const associateTransitGatewayRouteTable: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateTransitGatewayRouteTable",
 }));
+
 export type AssociateTrunkInterfaceError =
   | RequestLimitExceeded
   | OperationNotPermitted
@@ -74843,6 +75320,7 @@ export const associateTrunkInterface: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateTrunkInterface",
 }));
+
 export type AssociateVpcCidrBlockError =
   | RequestLimitExceeded
   | CidrConflict
@@ -74885,6 +75363,7 @@ export const associateVpcCidrBlock: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateVpcCidrBlock",
 }));
+
 export type AttachClassicLinkVpcError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -74922,6 +75401,7 @@ export const attachClassicLinkVpc: API.OperationMethod<
   retry: Retry,
   operationName: "AttachClassicLinkVpc",
 }));
+
 export type AttachImageWatermarkError = CommonErrors;
 /**
  * Attaches a watermark to a non-public AMI. The watermark is a structured identifier that
@@ -74945,6 +75425,7 @@ export const attachImageWatermark: API.OperationMethod<
   retry: Retry,
   operationName: "AttachImageWatermark",
 }));
+
 export type AttachInternetGatewayError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -74978,6 +75459,7 @@ export const attachInternetGateway: API.OperationMethod<
   retry: Retry,
   operationName: "AttachInternetGateway",
 }));
+
 export type AttachNetworkInterfaceError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -75007,6 +75489,7 @@ export const attachNetworkInterface: API.OperationMethod<
   retry: Retry,
   operationName: "AttachNetworkInterface",
 }));
+
 export type AttachVerifiedAccessTrustProviderError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessInstanceIdNotFound
@@ -75032,6 +75515,7 @@ export const attachVerifiedAccessTrustProvider: API.OperationMethod<
   retry: Retry,
   operationName: "AttachVerifiedAccessTrustProvider",
 }));
+
 export type AttachVolumeError =
   | RequestLimitExceeded
   | InvalidInstanceIDNotFound
@@ -75089,6 +75573,7 @@ export const attachVolume: API.OperationMethod<
   retry: Retry,
   operationName: "AttachVolume",
 }));
+
 export type AttachVpnGatewayError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -75120,6 +75605,7 @@ export const attachVpnGateway: API.OperationMethod<
   retry: Retry,
   operationName: "AttachVpnGateway",
 }));
+
 export type AuthorizeClientVpnIngressError =
   | RequestLimitExceeded
   | MissingParameter
@@ -75143,6 +75629,7 @@ export const authorizeClientVpnIngress: API.OperationMethod<
   retry: Retry,
   operationName: "AuthorizeClientVpnIngress",
 }));
+
 export type AuthorizeSecurityGroupEgressError =
   | RequestLimitExceeded
   | InvalidGroupNotFound
@@ -75191,6 +75678,7 @@ export const authorizeSecurityGroupEgress: API.OperationMethod<
   retry: Retry,
   operationName: "AuthorizeSecurityGroupEgress",
 }));
+
 export type AuthorizeSecurityGroupIngressError =
   | RequestLimitExceeded
   | InvalidGroupNotFound
@@ -75239,6 +75727,7 @@ export const authorizeSecurityGroupIngress: API.OperationMethod<
   retry: Retry,
   operationName: "AuthorizeSecurityGroupIngress",
 }));
+
 export type BundleInstanceError =
   | RequestLimitExceeded
   | MissingParameter
@@ -75268,6 +75757,7 @@ export const bundleInstance: API.OperationMethod<
   retry: Retry,
   operationName: "BundleInstance",
 }));
+
 export type CancelBundleTaskError =
   | RequestLimitExceeded
   | InvalidBundleIDNotFound
@@ -75295,6 +75785,7 @@ export const cancelBundleTask: API.OperationMethod<
   retry: Retry,
   operationName: "CancelBundleTask",
 }));
+
 export type CancelCapacityReservationError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
@@ -75350,6 +75841,7 @@ export const cancelCapacityReservation: API.OperationMethod<
   retry: Retry,
   operationName: "CancelCapacityReservation",
 }));
+
 export type CancelCapacityReservationFleetsError =
   | RequestLimitExceeded
   | InvalidCapacityReservationFleetIdMalformed
@@ -75385,6 +75877,7 @@ export const cancelCapacityReservationFleets: API.OperationMethod<
   retry: Retry,
   operationName: "CancelCapacityReservationFleets",
 }));
+
 export type CancelConversionTaskError =
   | RequestLimitExceeded
   | InvalidAction
@@ -75408,6 +75901,7 @@ export const cancelConversionTask: API.OperationMethod<
   retry: Retry,
   operationName: "CancelConversionTask",
 }));
+
 export type CancelDeclarativePoliciesReportError =
   | RequestLimitExceeded
   | InvalidDeclarativePoliciesReportIdMalformed
@@ -75440,6 +75934,7 @@ export const cancelDeclarativePoliciesReport: API.OperationMethod<
   retry: Retry,
   operationName: "CancelDeclarativePoliciesReport",
 }));
+
 export type CancelExportTaskError =
   | RequestLimitExceeded
   | InvalidID
@@ -75463,6 +75958,7 @@ export const cancelExportTask: API.OperationMethod<
   retry: Retry,
   operationName: "CancelExportTask",
 }));
+
 export type CancelImageLaunchPermissionError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -75486,6 +75982,7 @@ export const cancelImageLaunchPermission: API.OperationMethod<
   retry: Retry,
   operationName: "CancelImageLaunchPermission",
 }));
+
 export type CancelImportTaskError =
   | RequestLimitExceeded
   | InvalidConversionTaskIdMalformed
@@ -75511,6 +76008,7 @@ export const cancelImportTask: API.OperationMethod<
   retry: Retry,
   operationName: "CancelImportTask",
 }));
+
 export type CancelReservedInstancesListingError =
   | RequestLimitExceeded
   | InvalidInput
@@ -75536,6 +76034,7 @@ export const cancelReservedInstancesListing: API.OperationMethod<
   retry: Retry,
   operationName: "CancelReservedInstancesListing",
 }));
+
 export type CancelSpotFleetRequestsError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -75587,6 +76086,7 @@ export const cancelSpotFleetRequests: API.OperationMethod<
   retry: Retry,
   operationName: "CancelSpotFleetRequests",
 }));
+
 export type CancelSpotInstanceRequestsError =
   | RequestLimitExceeded
   | InvalidParameterCombination
@@ -75617,6 +76117,7 @@ export const cancelSpotInstanceRequests: API.OperationMethod<
   retry: Retry,
   operationName: "CancelSpotInstanceRequests",
 }));
+
 export type ConfirmProductInstanceError =
   | RequestLimitExceeded
   | AuthFailure
@@ -75640,6 +76141,7 @@ export const confirmProductInstance: API.OperationMethod<
   retry: Retry,
   operationName: "ConfirmProductInstance",
 }));
+
 export type CopyFpgaImageError =
   | RequestLimitExceeded
   | InvalidFpgaImageIDMalformed
@@ -75665,6 +76167,7 @@ export const copyFpgaImage: API.OperationMethod<
   retry: Retry,
   operationName: "CopyFpgaImage",
 }));
+
 export type CopyImageError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -75757,6 +76260,7 @@ export const copyImage: API.OperationMethod<
   retry: Retry,
   operationName: "CopyImage",
 }));
+
 export type CopySnapshotError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -75814,6 +76318,7 @@ export const copySnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CopySnapshot",
 }));
+
 export type CopyVolumesError =
   | RequestLimitExceeded
   | InvalidVolumeIDMalformed
@@ -75841,6 +76346,7 @@ export const copyVolumes: API.OperationMethod<
   retry: Retry,
   operationName: "CopyVolumes",
 }));
+
 export type CreateCapacityManagerDataExportError =
   | RequestLimitExceeded
   | MissingParameter
@@ -75863,6 +76369,7 @@ export const createCapacityManagerDataExport: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCapacityManagerDataExport",
 }));
+
 export type CreateCapacityReservationError =
   | RequestLimitExceeded
   | Unsupported
@@ -75907,6 +76414,7 @@ export const createCapacityReservation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCapacityReservation",
 }));
+
 export type CreateCapacityReservationBySplittingError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
@@ -75937,6 +76445,7 @@ export const createCapacityReservationBySplitting: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCapacityReservationBySplitting",
 }));
+
 export type CreateCapacityReservationCancellationQuoteError = CommonErrors;
 /**
  * Generates a cancellation quote for a future-dated Capacity Reservation that is
@@ -75957,6 +76466,7 @@ export const createCapacityReservationCancellationQuote: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCapacityReservationCancellationQuote",
 }));
+
 export type CreateCapacityReservationFleetError =
   | RequestLimitExceeded
   | MissingParameter
@@ -75980,6 +76490,7 @@ export const createCapacityReservationFleet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCapacityReservationFleet",
 }));
+
 export type CreateCarrierGatewayError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -76011,6 +76522,7 @@ export const createCarrierGateway: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCarrierGateway",
 }));
+
 export type CreateClientVpnEndpointError =
   | RequestLimitExceeded
   | MissingParameter
@@ -76034,6 +76546,7 @@ export const createClientVpnEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateClientVpnEndpoint",
 }));
+
 export type CreateClientVpnRouteError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
@@ -76060,6 +76573,7 @@ export const createClientVpnRoute: API.OperationMethod<
   retry: Retry,
   operationName: "CreateClientVpnRoute",
 }));
+
 export type CreateCoipCidrError =
   | RequestLimitExceeded
   | InvalidPoolIDMalformed
@@ -76089,6 +76603,7 @@ export const createCoipCidr: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCoipCidr",
 }));
+
 export type CreateCoipPoolError =
   | RequestLimitExceeded
   | InvalidLocalGatewayRouteTableIDMalformed
@@ -76118,6 +76633,7 @@ export const createCoipPool: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCoipPool",
 }));
+
 export type CreateCustomerGatewayError =
   | RequestLimitExceeded
   | MissingParameter
@@ -76160,6 +76676,7 @@ export const createCustomerGateway: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCustomerGateway",
 }));
+
 export type CreateDefaultSubnetError =
   | RequestLimitExceeded
   | DefaultSubnetAlreadyExistsInAvailabilityZone
@@ -76190,6 +76707,7 @@ export const createDefaultSubnet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDefaultSubnet",
 }));
+
 export type CreateDefaultVpcError =
   | RequestLimitExceeded
   | DefaultVpcAlreadyExists
@@ -76222,6 +76740,7 @@ export const createDefaultVpc: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDefaultVpc",
 }));
+
 export type CreateDelegateMacVolumeOwnershipTaskError =
   | RequestLimitExceeded
   | MissingParameter
@@ -76244,6 +76763,7 @@ export const createDelegateMacVolumeOwnershipTask: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDelegateMacVolumeOwnershipTask",
 }));
+
 export type CreateDhcpOptionsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -76308,6 +76828,7 @@ export const createDhcpOptions: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDhcpOptions",
 }));
+
 export type CreateEgressOnlyInternetGatewayError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -76342,6 +76863,7 @@ export const createEgressOnlyInternetGateway: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEgressOnlyInternetGateway",
 }));
+
 export type CreateFleetError =
   | RequestLimitExceeded
   | MissingParameter
@@ -76369,6 +76891,7 @@ export const createFleet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFleet",
 }));
+
 export type CreateFlowLogsError =
   | RequestLimitExceeded
   | InvalidID
@@ -76412,6 +76935,7 @@ export const createFlowLogs: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFlowLogs",
 }));
+
 export type CreateFpgaImageError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -76440,6 +76964,7 @@ export const createFpgaImage: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFpgaImage",
 }));
+
 export type CreateImageError =
   | RequestLimitExceeded
   | InvalidInstanceIDNotFound
@@ -76485,6 +77010,7 @@ export const createImage: API.OperationMethod<
   retry: Retry,
   operationName: "CreateImage",
 }));
+
 export type CreateImageUsageReportError =
   | RequestLimitExceeded
   | MissingParameter
@@ -76511,6 +77037,7 @@ export const createImageUsageReport: API.OperationMethod<
   retry: Retry,
   operationName: "CreateImageUsageReport",
 }));
+
 export type CreateInstanceConnectEndpointError =
   | RequestLimitExceeded
   | InvalidGroupNotFound
@@ -76545,6 +77072,7 @@ export const createInstanceConnectEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInstanceConnectEndpoint",
 }));
+
 export type CreateInstanceEventWindowError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -76588,6 +77116,7 @@ export const createInstanceEventWindow: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInstanceEventWindow",
 }));
+
 export type CreateInstanceExportTaskError =
   | RequestLimitExceeded
   | MissingParameter
@@ -76613,6 +77142,7 @@ export const createInstanceExportTask: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInstanceExportTask",
 }));
+
 export type CreateInternetGatewayError =
   | RequestLimitExceeded
   | InternetGatewayLimitExceeded
@@ -76644,6 +77174,7 @@ export const createInternetGateway: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInternetGateway",
 }));
+
 export type CreateInterruptibleCapacityReservationAllocationError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdNotFound
@@ -76669,6 +77200,7 @@ export const createInterruptibleCapacityReservationAllocation: API.OperationMeth
   retry: Retry,
   operationName: "CreateInterruptibleCapacityReservationAllocation",
 }));
+
 export type CreateIpamError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -76703,6 +77235,7 @@ export const createIpam: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIpam",
 }));
+
 export type CreateIpamExternalResourceVerificationTokenError =
   | RequestLimitExceeded
   | InvalidIpamIdNotFound
@@ -76732,6 +77265,7 @@ export const createIpamExternalResourceVerificationToken: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIpamExternalResourceVerificationToken",
 }));
+
 export type CreateIpamPolicyError =
   | RequestLimitExceeded
   | InvalidIpamIdNotFound
@@ -76763,6 +77297,7 @@ export const createIpamPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIpamPolicy",
 }));
+
 export type CreateIpamPoolError =
   | RequestLimitExceeded
   | InvalidIpamScopeIdNotFound
@@ -76792,6 +77327,7 @@ export const createIpamPool: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIpamPool",
 }));
+
 export type CreateIpamPrefixListResolverError =
   | RequestLimitExceeded
   | MissingParameter
@@ -76817,6 +77353,7 @@ export const createIpamPrefixListResolver: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIpamPrefixListResolver",
 }));
+
 export type CreateIpamPrefixListResolverTargetError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverIdMalformed
@@ -76850,6 +77387,7 @@ export const createIpamPrefixListResolverTarget: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIpamPrefixListResolverTarget",
 }));
+
 export type CreateIpamResourceDiscoveryError =
   | RequestLimitExceeded
   | ResourceLimitExceeded
@@ -76871,6 +77409,7 @@ export const createIpamResourceDiscovery: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIpamResourceDiscovery",
 }));
+
 export type CreateIpamScopeError =
   | RequestLimitExceeded
   | InvalidIpamIdNotFound
@@ -76900,6 +77439,7 @@ export const createIpamScope: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIpamScope",
 }));
+
 export type CreateKeyPairError =
   | RequestLimitExceeded
   | InvalidKeyPairDuplicate
@@ -76938,6 +77478,7 @@ export const createKeyPair: API.OperationMethod<
   retry: Retry,
   operationName: "CreateKeyPair",
 }));
+
 export type CreateLaunchTemplateError =
   | RequestLimitExceeded
   | MissingParameter
@@ -76970,6 +77511,7 @@ export const createLaunchTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLaunchTemplate",
 }));
+
 export type CreateLaunchTemplateVersionError = CommonErrors;
 /**
  * Creates a new version of a launch template. You must specify an existing launch
@@ -77000,6 +77542,7 @@ export const createLaunchTemplateVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLaunchTemplateVersion",
 }));
+
 export type CreateLocalGatewayRouteError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -77032,6 +77575,7 @@ export const createLocalGatewayRoute: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocalGatewayRoute",
 }));
+
 export type CreateLocalGatewayRouteTableError =
   | RequestLimitExceeded
   | InvalidLocalGatewayIDMalformed
@@ -77061,6 +77605,7 @@ export const createLocalGatewayRouteTable: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocalGatewayRouteTable",
 }));
+
 export type CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationError =
   | RequestLimitExceeded
   | InvalidLocalGatewayRouteTableIDNotFound
@@ -77090,6 +77635,7 @@ export const createLocalGatewayRouteTableVirtualInterfaceGroupAssociation: API.O
   retry: Retry,
   operationName: "CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociation",
 }));
+
 export type CreateLocalGatewayRouteTableVpcAssociationError =
   | RequestLimitExceeded
   | InvalidLocalGatewayRouteTableIDMalformed
@@ -77121,6 +77667,7 @@ export const createLocalGatewayRouteTableVpcAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocalGatewayRouteTableVpcAssociation",
 }));
+
 export type CreateLocalGatewayVirtualInterfaceError =
   | RequestLimitExceeded
   | InvalidLocalGatewayVirtualInterfaceGroupIDMalformed
@@ -77150,6 +77697,7 @@ export const createLocalGatewayVirtualInterface: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocalGatewayVirtualInterface",
 }));
+
 export type CreateLocalGatewayVirtualInterfaceGroupError =
   | RequestLimitExceeded
   | InvalidLocalGatewayIDNotFound
@@ -77177,6 +77725,7 @@ export const createLocalGatewayVirtualInterfaceGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocalGatewayVirtualInterfaceGroup",
 }));
+
 export type CreateMacSystemIntegrityProtectionModificationTaskError =
   CommonErrors;
 /**
@@ -77228,6 +77777,7 @@ export const createMacSystemIntegrityProtectionModificationTask: API.OperationMe
   retry: Retry,
   operationName: "CreateMacSystemIntegrityProtectionModificationTask",
 }));
+
 export type CreateManagedPrefixListError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -77256,6 +77806,7 @@ export const createManagedPrefixList: API.OperationMethod<
   retry: Retry,
   operationName: "CreateManagedPrefixList",
 }));
+
 export type CreateNatGatewayError =
   | RequestLimitExceeded
   | InvalidElasticIpIDNotFound
@@ -77309,6 +77860,7 @@ export const createNatGateway: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNatGateway",
 }));
+
 export type CreateNetworkAclError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -77341,6 +77893,7 @@ export const createNetworkAcl: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNetworkAcl",
 }));
+
 export type CreateNetworkAclEntryError =
   | RequestLimitExceeded
   | InvalidNetworkAclIDNotFound
@@ -77379,6 +77932,7 @@ export const createNetworkAclEntry: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNetworkAclEntry",
 }));
+
 export type CreateNetworkInsightsAccessScopeError = CommonErrors;
 /**
  * Creates a Network Access Scope.
@@ -77400,6 +77954,7 @@ export const createNetworkInsightsAccessScope: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNetworkInsightsAccessScope",
 }));
+
 export type CreateNetworkInsightsPathError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -77431,6 +77986,7 @@ export const createNetworkInsightsPath: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNetworkInsightsPath",
 }));
+
 export type CreateNetworkInterfaceError =
   | RequestLimitExceeded
   | InvalidSubnetIDNotFound
@@ -77466,6 +78022,7 @@ export const createNetworkInterface: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNetworkInterface",
 }));
+
 export type CreateNetworkInterfacePermissionError =
   | RequestLimitExceeded
   | MissingParameter
@@ -77491,6 +78048,7 @@ export const createNetworkInterfacePermission: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNetworkInterfacePermission",
 }));
+
 export type CreatePlacementGroupError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -77531,6 +78089,7 @@ export const createPlacementGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePlacementGroup",
 }));
+
 export type CreatePublicIpv4PoolError = CommonErrors;
 /**
  * Creates a public IPv4 address pool. A public IPv4 pool is an EC2 IP address pool required for the public IPv4 CIDRs that you own and bring to Amazon Web Services to manage with IPAM. IPv6 addresses you bring to Amazon Web Services, however, use IPAM pools only. To monitor the status of pool creation, use DescribePublicIpv4Pools.
@@ -77548,6 +78107,7 @@ export const createPublicIpv4Pool: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePublicIpv4Pool",
 }));
+
 export type CreateReplaceRootVolumeTaskError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -77578,6 +78138,7 @@ export const createReplaceRootVolumeTask: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReplaceRootVolumeTask",
 }));
+
 export type CreateReservedInstancesListingError =
   | RequestLimitExceeded
   | MissingParameter
@@ -77619,6 +78180,7 @@ export const createReservedInstancesListing: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReservedInstancesListing",
 }));
+
 export type CreateRestoreImageTaskError =
   | RequestLimitExceeded
   | InvalidRequest
@@ -77647,6 +78209,7 @@ export const createRestoreImageTask: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRestoreImageTask",
 }));
+
 export type CreateRouteError =
   | RequestLimitExceeded
   | InvalidGatewayIDNotFound
@@ -77706,6 +78269,7 @@ export const createRoute: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRoute",
 }));
+
 export type CreateRouteServerError =
   | RequestLimitExceeded
   | MissingParameter
@@ -77742,6 +78306,7 @@ export const createRouteServer: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRouteServer",
 }));
+
 export type CreateRouteServerEndpointError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotAssociated
@@ -77777,6 +78342,7 @@ export const createRouteServerEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRouteServerEndpoint",
 }));
+
 export type CreateRouteServerPeerError =
   | RequestLimitExceeded
   | MissingParameter
@@ -77808,6 +78374,7 @@ export const createRouteServerPeer: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRouteServerPeer",
 }));
+
 export type CreateRouteTableError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -77840,6 +78407,7 @@ export const createRouteTable: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRouteTable",
 }));
+
 export type CreateSecondaryNetworkError = CommonErrors;
 /**
  * Creates a secondary network.
@@ -77859,6 +78427,7 @@ export const createSecondaryNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSecondaryNetwork",
 }));
+
 export type CreateSecondarySubnetError = CommonErrors;
 /**
  * Creates a secondary subnet in a secondary network.
@@ -77880,6 +78449,7 @@ export const createSecondarySubnet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSecondarySubnet",
 }));
+
 export type CreateSecurityGroupError =
   | RequestLimitExceeded
   | InvalidGroupDuplicate
@@ -77938,6 +78508,7 @@ export const createSecurityGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSecurityGroup",
 }));
+
 export type CreateSnapshotError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -78000,6 +78571,7 @@ export const createSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSnapshot",
 }));
+
 export type CreateSnapshotsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -78036,6 +78608,7 @@ export const createSnapshots: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSnapshots",
 }));
+
 export type CreateSpotDatafeedSubscriptionError =
   | RequestLimitExceeded
   | InaccessibleStorageLocation
@@ -78064,6 +78637,7 @@ export const createSpotDatafeedSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSpotDatafeedSubscription",
 }));
+
 export type CreateStoreImageTaskError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -78091,6 +78665,7 @@ export const createStoreImageTask: API.OperationMethod<
   retry: Retry,
   operationName: "CreateStoreImageTask",
 }));
+
 export type CreateSubnetError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -78146,6 +78721,7 @@ export const createSubnet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSubnet",
 }));
+
 export type CreateSubnetCidrReservationError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -78177,6 +78753,7 @@ export const createSubnetCidrReservation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSubnetCidrReservation",
 }));
+
 export type CreateTagsError =
   | RequestLimitExceeded
   | InvalidID
@@ -78213,6 +78790,7 @@ export const createTags: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTags",
 }));
+
 export type CreateTrafficMirrorFilterError =
   | RequestLimitExceeded
   | ParseError
@@ -78240,6 +78818,7 @@ export const createTrafficMirrorFilter: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTrafficMirrorFilter",
 }));
+
 export type CreateTrafficMirrorFilterRuleError =
   | RequestLimitExceeded
   | MissingParameter
@@ -78265,6 +78844,7 @@ export const createTrafficMirrorFilterRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTrafficMirrorFilterRule",
 }));
+
 export type CreateTrafficMirrorSessionError =
   | RequestLimitExceeded
   | InvalidNetworkInterfaceIDNotFound
@@ -78303,6 +78883,7 @@ export const createTrafficMirrorSession: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTrafficMirrorSession",
 }));
+
 export type CreateTrafficMirrorTargetError =
   | RequestLimitExceeded
   | InvalidParameterCombination
@@ -78336,6 +78917,7 @@ export const createTrafficMirrorTarget: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTrafficMirrorTarget",
 }));
+
 export type CreateTransitGatewayError =
   | RequestLimitExceeded
   | ParseError
@@ -78379,6 +78961,7 @@ export const createTransitGateway: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitGateway",
 }));
+
 export type CreateTransitGatewayConnectError =
   | RequestLimitExceeded
   | MissingParameter
@@ -78402,6 +78985,7 @@ export const createTransitGatewayConnect: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitGatewayConnect",
 }));
+
 export type CreateTransitGatewayConnectPeerError =
   | RequestLimitExceeded
   | MissingParameter
@@ -78429,6 +79013,7 @@ export const createTransitGatewayConnectPeer: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitGatewayConnectPeer",
 }));
+
 export type CreateTransitGatewayMeteringPolicyError =
   | RequestLimitExceeded
   | IncorrectState
@@ -78458,6 +79043,7 @@ export const createTransitGatewayMeteringPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitGatewayMeteringPolicy",
 }));
+
 export type CreateTransitGatewayMeteringPolicyEntryError =
   | RequestLimitExceeded
   | MissingParameter
@@ -78479,6 +79065,7 @@ export const createTransitGatewayMeteringPolicyEntry: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitGatewayMeteringPolicyEntry",
 }));
+
 export type CreateTransitGatewayMulticastDomainError =
   | RequestLimitExceeded
   | IncorrectState
@@ -78512,6 +79099,7 @@ export const createTransitGatewayMulticastDomain: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitGatewayMulticastDomain",
 }));
+
 export type CreateTransitGatewayPeeringAttachmentError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -78546,6 +79134,7 @@ export const createTransitGatewayPeeringAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitGatewayPeeringAttachment",
 }));
+
 export type CreateTransitGatewayPolicyTableError =
   | RequestLimitExceeded
   | IncorrectState
@@ -78575,6 +79164,7 @@ export const createTransitGatewayPolicyTable: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitGatewayPolicyTable",
 }));
+
 export type CreateTransitGatewayPrefixListReferenceError =
   | RequestLimitExceeded
   | MissingParameter
@@ -78596,6 +79186,7 @@ export const createTransitGatewayPrefixListReference: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitGatewayPrefixListReference",
 }));
+
 export type CreateTransitGatewayRouteError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -78623,6 +79214,7 @@ export const createTransitGatewayRoute: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitGatewayRoute",
 }));
+
 export type CreateTransitGatewayRouteTableError =
   | RequestLimitExceeded
   | IncorrectState
@@ -78654,6 +79246,7 @@ export const createTransitGatewayRouteTable: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitGatewayRouteTable",
 }));
+
 export type CreateTransitGatewayRouteTableAnnouncementError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -78683,6 +79276,7 @@ export const createTransitGatewayRouteTableAnnouncement: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitGatewayRouteTableAnnouncement",
 }));
+
 export type CreateTransitGatewayVpcAttachmentError =
   | RequestLimitExceeded
   | InvalidSubnetIDNotFound
@@ -78717,6 +79311,7 @@ export const createTransitGatewayVpcAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitGatewayVpcAttachment",
 }));
+
 export type CreateVerifiedAccessEndpointError =
   | RequestLimitExceeded
   | MissingParameter
@@ -78738,6 +79333,7 @@ export const createVerifiedAccessEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVerifiedAccessEndpoint",
 }));
+
 export type CreateVerifiedAccessGroupError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -78770,6 +79366,7 @@ export const createVerifiedAccessGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVerifiedAccessGroup",
 }));
+
 export type CreateVerifiedAccessInstanceError =
   | RequestLimitExceeded
   | ParseError
@@ -78798,6 +79395,7 @@ export const createVerifiedAccessInstance: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVerifiedAccessInstance",
 }));
+
 export type CreateVerifiedAccessTrustProviderError =
   | RequestLimitExceeded
   | MissingParameter
@@ -78822,6 +79420,7 @@ export const createVerifiedAccessTrustProvider: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVerifiedAccessTrustProvider",
 }));
+
 export type CreateVolumeError =
   | RequestLimitExceeded
   | InvalidZoneNotFound
@@ -78863,6 +79462,7 @@ export const createVolume: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVolume",
 }));
+
 export type CreateVpcError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -78909,6 +79509,7 @@ export const createVpc: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpc",
 }));
+
 export type CreateVpcBlockPublicAccessExclusionError =
   | RequestLimitExceeded
   | InvalidVpcIdMalformed
@@ -78936,6 +79537,7 @@ export const createVpcBlockPublicAccessExclusion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpcBlockPublicAccessExclusion",
 }));
+
 export type CreateVpcEncryptionControlError =
   | RequestLimitExceeded
   | InvalidVpcIdMalformed
@@ -78965,6 +79567,7 @@ export const createVpcEncryptionControl: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpcEncryptionControl",
 }));
+
 export type CreateVpcEndpointError =
   | RequestLimitExceeded
   | InvalidParameter
@@ -79001,6 +79604,7 @@ export const createVpcEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpcEndpoint",
 }));
+
 export type CreateVpcEndpointConnectionNotificationError =
   | RequestLimitExceeded
   | InvalidParameter
@@ -79027,6 +79631,7 @@ export const createVpcEndpointConnectionNotification: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpcEndpointConnectionNotification",
 }));
+
 export type CreateVpcEndpointServiceConfigurationError =
   | RequestLimitExceeded
   | InvalidParameter
@@ -79063,6 +79668,7 @@ export const createVpcEndpointServiceConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpcEndpointServiceConfiguration",
 }));
+
 export type CreateVpcPeeringConnectionError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -79107,6 +79713,7 @@ export const createVpcPeeringConnection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpcPeeringConnection",
 }));
+
 export type CreateVpnConcentratorError =
   | RequestLimitExceeded
   | MissingParameter
@@ -79128,6 +79735,7 @@ export const createVpnConcentrator: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpnConcentrator",
 }));
+
 export type CreateVpnConnectionError =
   | RequestLimitExceeded
   | InvalidCustomerGatewayIDNotFound
@@ -79178,6 +79786,7 @@ export const createVpnConnection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpnConnection",
 }));
+
 export type CreateVpnConnectionRouteError =
   | RequestLimitExceeded
   | InvalidParameter
@@ -79210,6 +79819,7 @@ export const createVpnConnectionRoute: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpnConnectionRoute",
 }));
+
 export type CreateVpnGatewayError =
   | RequestLimitExceeded
   | MissingParameter
@@ -79242,6 +79852,7 @@ export const createVpnGateway: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpnGateway",
 }));
+
 export type DeleteCapacityManagerDataExportError =
   | RequestLimitExceeded
   | InvalidCapacityManagerDataExportIdMalformed
@@ -79269,6 +79880,7 @@ export const deleteCapacityManagerDataExport: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCapacityManagerDataExport",
 }));
+
 export type DeleteCarrierGatewayError =
   | RequestLimitExceeded
   | InvalidCarrierGatewayIDMalformed
@@ -79302,6 +79914,7 @@ export const deleteCarrierGateway: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCarrierGateway",
 }));
+
 export type DeleteClientVpnEndpointError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
@@ -79328,6 +79941,7 @@ export const deleteClientVpnEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteClientVpnEndpoint",
 }));
+
 export type DeleteClientVpnRouteError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
@@ -79356,6 +79970,7 @@ export const deleteClientVpnRoute: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteClientVpnRoute",
 }));
+
 export type DeleteCoipCidrError =
   | RequestLimitExceeded
   | InvalidCidrBlockMalformed
@@ -79385,6 +80000,7 @@ export const deleteCoipCidr: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCoipCidr",
 }));
+
 export type DeleteCoipPoolError =
   | RequestLimitExceeded
   | InvalidIpv4PoolCoipIdMalformed
@@ -79414,6 +80030,7 @@ export const deleteCoipPool: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCoipPool",
 }));
+
 export type DeleteCustomerGatewayError =
   | RequestLimitExceeded
   | InvalidCustomerGatewayIDNotFound
@@ -79444,6 +80061,7 @@ export const deleteCustomerGateway: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCustomerGateway",
 }));
+
 export type DeleteDhcpOptionsError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -79475,6 +80093,7 @@ export const deleteDhcpOptions: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDhcpOptions",
 }));
+
 export type DeleteEgressOnlyInternetGatewayError =
   | DependencyViolation
   | DryRunOperation
@@ -79510,6 +80129,7 @@ export const deleteEgressOnlyInternetGateway: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEgressOnlyInternetGateway",
 }));
+
 export type DeleteFleetsError =
   | RequestLimitExceeded
   | InvalidFleetIdMalformed
@@ -79577,6 +80197,7 @@ export const deleteFleets: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFleets",
 }));
+
 export type DeleteFlowLogsError =
   | RequestLimitExceeded
   | InvalidFlowLogIdNotFound
@@ -79602,6 +80223,7 @@ export const deleteFlowLogs: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFlowLogs",
 }));
+
 export type DeleteFpgaImageError =
   | RequestLimitExceeded
   | InvalidFpgaImageIDMalformed
@@ -79627,6 +80249,7 @@ export const deleteFpgaImage: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFpgaImage",
 }));
+
 export type DeleteImageUsageReportError =
   | RequestLimitExceeded
   | InvalidImageUsageReportIdMalformed
@@ -79657,6 +80280,7 @@ export const deleteImageUsageReport: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteImageUsageReport",
 }));
+
 export type DeleteInstanceConnectEndpointError =
   | RequestLimitExceeded
   | InvalidInstanceConnectEndpointIdMalformed
@@ -79688,6 +80312,7 @@ export const deleteInstanceConnectEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInstanceConnectEndpoint",
 }));
+
 export type DeleteInstanceEventWindowError =
   | RequestLimitExceeded
   | InvalidInstanceEventWindowIDNotFound
@@ -79718,6 +80343,7 @@ export const deleteInstanceEventWindow: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInstanceEventWindow",
 }));
+
 export type DeleteInternetGatewayError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -79748,6 +80374,7 @@ export const deleteInternetGateway: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInternetGateway",
 }));
+
 export type DeleteIpamError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -79779,6 +80406,7 @@ export const deleteIpam: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIpam",
 }));
+
 export type DeleteIpamExternalResourceVerificationTokenError =
   | RequestLimitExceeded
   | InvalidIpamExternalResourceVerificationTokenIdMalformed
@@ -79810,6 +80438,7 @@ export const deleteIpamExternalResourceVerificationToken: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIpamExternalResourceVerificationToken",
 }));
+
 export type DeleteIpamPolicyError =
   | RequestLimitExceeded
   | InvalidIpamPolicyIdMalformed
@@ -79841,6 +80470,7 @@ export const deleteIpamPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIpamPolicy",
 }));
+
 export type DeleteIpamPoolError =
   | RequestLimitExceeded
   | IncorrectState
@@ -79876,6 +80506,7 @@ export const deleteIpamPool: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIpamPool",
 }));
+
 export type DeleteIpamPrefixListResolverError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverIdMalformed
@@ -79905,6 +80536,7 @@ export const deleteIpamPrefixListResolver: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIpamPrefixListResolver",
 }));
+
 export type DeleteIpamPrefixListResolverTargetError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverTargetIdMalformed
@@ -79934,6 +80566,7 @@ export const deleteIpamPrefixListResolverTarget: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIpamPrefixListResolverTarget",
 }));
+
 export type DeleteIpamResourceDiscoveryError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryIdMalformed
@@ -79961,6 +80594,7 @@ export const deleteIpamResourceDiscovery: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIpamResourceDiscovery",
 }));
+
 export type DeleteIpamScopeError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -79994,6 +80628,7 @@ export const deleteIpamScope: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIpamScope",
 }));
+
 export type DeleteKeyPairError =
   | RequestLimitExceeded
   | MissingParameter
@@ -80015,6 +80650,7 @@ export const deleteKeyPair: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteKeyPair",
 }));
+
 export type DeleteLaunchTemplateError =
   | RequestLimitExceeded
   | InvalidLaunchTemplateNameNotFoundException
@@ -80043,6 +80679,7 @@ export const deleteLaunchTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLaunchTemplate",
 }));
+
 export type DeleteLaunchTemplateVersionsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -80075,6 +80712,7 @@ export const deleteLaunchTemplateVersions: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLaunchTemplateVersions",
 }));
+
 export type DeleteLocalGatewayRouteError =
   | RequestLimitExceeded
   | MissingParameter
@@ -80096,6 +80734,7 @@ export const deleteLocalGatewayRoute: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLocalGatewayRoute",
 }));
+
 export type DeleteLocalGatewayRouteTableError =
   | RequestLimitExceeded
   | InvalidLocalGatewayRouteTableIDNotFound
@@ -80123,6 +80762,7 @@ export const deleteLocalGatewayRouteTable: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLocalGatewayRouteTable",
 }));
+
 export type DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationError =
   | RequestLimitExceeded
   | InvalidLocalGatewayRouteTableVirtualInterfaceGroupAssociationIDMalformed
@@ -80152,6 +80792,7 @@ export const deleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation: API.O
   retry: Retry,
   operationName: "DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation",
 }));
+
 export type DeleteLocalGatewayRouteTableVpcAssociationError =
   | RequestLimitExceeded
   | InvalidLocalGatewayRouteTableVpcAssociationIDMalformed
@@ -80181,6 +80822,7 @@ export const deleteLocalGatewayRouteTableVpcAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLocalGatewayRouteTableVpcAssociation",
 }));
+
 export type DeleteLocalGatewayVirtualInterfaceError =
   | RequestLimitExceeded
   | InvalidLocalGatewayVirtualInterfaceIDMalformed
@@ -80210,6 +80852,7 @@ export const deleteLocalGatewayVirtualInterface: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLocalGatewayVirtualInterface",
 }));
+
 export type DeleteLocalGatewayVirtualInterfaceGroupError =
   | RequestLimitExceeded
   | InvalidLocalGatewayVirtualInterfaceGroupIDMalformed
@@ -80239,6 +80882,7 @@ export const deleteLocalGatewayVirtualInterfaceGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLocalGatewayVirtualInterfaceGroup",
 }));
+
 export type DeleteManagedPrefixListError =
   | RequestLimitExceeded
   | InvalidPrefixListIDNotFound
@@ -80268,6 +80912,7 @@ export const deleteManagedPrefixList: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteManagedPrefixList",
 }));
+
 export type DeleteNatGatewayError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -80305,6 +80950,7 @@ export const deleteNatGateway: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNatGateway",
 }));
+
 export type DeleteNetworkAclError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -80340,6 +80986,7 @@ export const deleteNetworkAcl: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNetworkAcl",
 }));
+
 export type DeleteNetworkAclEntryError =
   | RequestLimitExceeded
   | InvalidNetworkAclEntryNotFound
@@ -80371,6 +81018,7 @@ export const deleteNetworkAclEntry: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNetworkAclEntry",
 }));
+
 export type DeleteNetworkInsightsAccessScopeError =
   | RequestLimitExceeded
   | InvalidNetworkInsightsAccessScopeIdNotFound
@@ -80398,6 +81046,7 @@ export const deleteNetworkInsightsAccessScope: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNetworkInsightsAccessScope",
 }));
+
 export type DeleteNetworkInsightsAccessScopeAnalysisError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -80425,6 +81074,7 @@ export const deleteNetworkInsightsAccessScopeAnalysis: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNetworkInsightsAccessScopeAnalysis",
 }));
+
 export type DeleteNetworkInsightsAnalysisError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -80452,6 +81102,7 @@ export const deleteNetworkInsightsAnalysis: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNetworkInsightsAnalysis",
 }));
+
 export type DeleteNetworkInsightsPathError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -80479,6 +81130,7 @@ export const deleteNetworkInsightsPath: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNetworkInsightsPath",
 }));
+
 export type DeleteNetworkInterfaceError =
   | RequestLimitExceeded
   | InvalidNetworkInterfaceInUse
@@ -80513,6 +81165,7 @@ export const deleteNetworkInterface: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNetworkInterface",
 }));
+
 export type DeleteNetworkInterfacePermissionError =
   | RequestLimitExceeded
   | InvalidPermissionIDMalformed
@@ -80545,6 +81198,7 @@ export const deleteNetworkInterfacePermission: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNetworkInterfacePermission",
 }));
+
 export type DeletePlacementGroupError =
   | RequestLimitExceeded
   | InvalidPlacementGroupUnknown
@@ -80574,6 +81228,7 @@ export const deletePlacementGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePlacementGroup",
 }));
+
 export type DeletePublicIpv4PoolError =
   | RequestLimitExceeded
   | InvalidPublicIpv4PoolNotFound
@@ -80601,6 +81256,7 @@ export const deletePublicIpv4Pool: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePublicIpv4Pool",
 }));
+
 export type DeleteQueuedReservedInstancesError =
   | RequestLimitExceeded
   | InvalidReservedInstancesIDNotFound
@@ -80626,6 +81282,7 @@ export const deleteQueuedReservedInstances: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteQueuedReservedInstances",
 }));
+
 export type DeleteRouteError =
   | RequestLimitExceeded
   | InvalidParameterCombination
@@ -80661,6 +81318,7 @@ export const deleteRoute: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRoute",
 }));
+
 export type DeleteRouteServerError =
   | RequestLimitExceeded
   | IncorrectState
@@ -80703,6 +81361,7 @@ export const deleteRouteServer: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRouteServer",
 }));
+
 export type DeleteRouteServerEndpointError =
   | RequestLimitExceeded
   | InvalidRouteServerEndpointIdNotFound
@@ -80732,6 +81391,7 @@ export const deleteRouteServerEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRouteServerEndpoint",
 }));
+
 export type DeleteRouteServerPeerError =
   | RequestLimitExceeded
   | InvalidRouteServerPeerIdMalformed
@@ -80769,6 +81429,7 @@ export const deleteRouteServerPeer: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRouteServerPeer",
 }));
+
 export type DeleteRouteTableError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -80798,6 +81459,7 @@ export const deleteRouteTable: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRouteTable",
 }));
+
 export type DeleteSecondaryNetworkError = CommonErrors;
 /**
  * Deletes a secondary network. You must delete all secondary subnets in the secondary network before you can delete the secondary network.
@@ -80815,6 +81477,7 @@ export const deleteSecondaryNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSecondaryNetwork",
 }));
+
 export type DeleteSecondarySubnetError = CommonErrors;
 /**
  * Deletes a secondary subnet. A secondary subnet must not contain any secondary interfaces prior to deletion.
@@ -80832,6 +81495,7 @@ export const deleteSecondarySubnet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSecondarySubnet",
 }));
+
 export type DeleteSecurityGroupError =
   | RequestLimitExceeded
   | CannotDelete
@@ -80871,6 +81535,7 @@ export const deleteSecurityGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSecurityGroup",
 }));
+
 export type DeleteSnapshotError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -80912,6 +81577,7 @@ export const deleteSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSnapshot",
 }));
+
 export type DeleteSpotDatafeedSubscriptionError = CommonErrors;
 /**
  * Deletes the data feed for Spot Instances.
@@ -80929,6 +81595,7 @@ export const deleteSpotDatafeedSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSpotDatafeedSubscription",
 }));
+
 export type DeleteSubnetError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -80960,6 +81627,7 @@ export const deleteSubnet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSubnet",
 }));
+
 export type DeleteSubnetCidrReservationError =
   | RequestLimitExceeded
   | InvalidSubnetCidrReservationIDMalformed
@@ -80989,6 +81657,7 @@ export const deleteSubnetCidrReservation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSubnetCidrReservation",
 }));
+
 export type DeleteTagsError =
   | RequestLimitExceeded
   | InvalidID
@@ -81021,6 +81690,7 @@ export const deleteTags: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTags",
 }));
+
 export type DeleteTrafficMirrorFilterError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -81050,6 +81720,7 @@ export const deleteTrafficMirrorFilter: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTrafficMirrorFilter",
 }));
+
 export type DeleteTrafficMirrorFilterRuleError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -81079,6 +81750,7 @@ export const deleteTrafficMirrorFilterRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTrafficMirrorFilterRule",
 }));
+
 export type DeleteTrafficMirrorSessionError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -81108,6 +81780,7 @@ export const deleteTrafficMirrorSession: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTrafficMirrorSession",
 }));
+
 export type DeleteTrafficMirrorTargetError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -81139,6 +81812,7 @@ export const deleteTrafficMirrorTarget: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTrafficMirrorTarget",
 }));
+
 export type DeleteTransitGatewayError =
   | RequestLimitExceeded
   | IncorrectState
@@ -81172,6 +81846,7 @@ export const deleteTransitGateway: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTransitGateway",
 }));
+
 export type DeleteTransitGatewayClientVpnAttachmentError = CommonErrors;
 /**
  * Deletes a Transit Gateway attachment for a Client VPN endpoint. The Transit Gateway owner can delete the attachment to remove the association between the Client VPN endpoint and the Transit Gateway.
@@ -81189,6 +81864,7 @@ export const deleteTransitGatewayClientVpnAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTransitGatewayClientVpnAttachment",
 }));
+
 export type DeleteTransitGatewayConnectError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
@@ -81215,6 +81891,7 @@ export const deleteTransitGatewayConnect: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTransitGatewayConnect",
 }));
+
 export type DeleteTransitGatewayConnectPeerError =
   | RequestLimitExceeded
   | InvalidTransitGatewayConnectPeerIDMalformed
@@ -81242,6 +81919,7 @@ export const deleteTransitGatewayConnectPeer: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTransitGatewayConnectPeer",
 }));
+
 export type DeleteTransitGatewayMeteringPolicyError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMeteringPolicyIdNotFound
@@ -81271,6 +81949,7 @@ export const deleteTransitGatewayMeteringPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTransitGatewayMeteringPolicy",
 }));
+
 export type DeleteTransitGatewayMeteringPolicyEntryError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMeteringPolicyIdNotFound
@@ -81300,6 +81979,7 @@ export const deleteTransitGatewayMeteringPolicyEntry: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTransitGatewayMeteringPolicyEntry",
 }));
+
 export type DeleteTransitGatewayMulticastDomainError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMulticastDomainIdMalformed
@@ -81327,6 +82007,7 @@ export const deleteTransitGatewayMulticastDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTransitGatewayMulticastDomain",
 }));
+
 export type DeleteTransitGatewayPeeringAttachmentError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
@@ -81352,6 +82033,7 @@ export const deleteTransitGatewayPeeringAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTransitGatewayPeeringAttachment",
 }));
+
 export type DeleteTransitGatewayPolicyTableError =
   | RequestLimitExceeded
   | InvalidTransitGatewayPolicyTableIdMalformed
@@ -81381,6 +82063,7 @@ export const deleteTransitGatewayPolicyTable: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTransitGatewayPolicyTable",
 }));
+
 export type DeleteTransitGatewayPrefixListReferenceError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -81408,6 +82091,7 @@ export const deleteTransitGatewayPrefixListReference: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTransitGatewayPrefixListReference",
 }));
+
 export type DeleteTransitGatewayRouteError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -81435,6 +82119,7 @@ export const deleteTransitGatewayRoute: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTransitGatewayRoute",
 }));
+
 export type DeleteTransitGatewayRouteTableError =
   | RequestLimitExceeded
   | IncorrectState
@@ -81469,6 +82154,7 @@ export const deleteTransitGatewayRouteTable: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTransitGatewayRouteTable",
 }));
+
 export type DeleteTransitGatewayRouteTableAnnouncementError =
   | RequestLimitExceeded
   | InvalidTransitGatewayRouteTableAnnouncementIdMalformed
@@ -81496,6 +82182,7 @@ export const deleteTransitGatewayRouteTableAnnouncement: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTransitGatewayRouteTableAnnouncement",
 }));
+
 export type DeleteTransitGatewayVpcAttachmentError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDMalformed
@@ -81523,6 +82210,7 @@ export const deleteTransitGatewayVpcAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTransitGatewayVpcAttachment",
 }));
+
 export type DeleteVerifiedAccessEndpointError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -81552,6 +82240,7 @@ export const deleteVerifiedAccessEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVerifiedAccessEndpoint",
 }));
+
 export type DeleteVerifiedAccessGroupError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessGroupIdNotFound
@@ -81579,6 +82268,7 @@ export const deleteVerifiedAccessGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVerifiedAccessGroup",
 }));
+
 export type DeleteVerifiedAccessInstanceError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessInstanceIdNotFound
@@ -81604,6 +82294,7 @@ export const deleteVerifiedAccessInstance: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVerifiedAccessInstance",
 }));
+
 export type DeleteVerifiedAccessTrustProviderError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessTrustProviderIdNotFound
@@ -81629,6 +82320,7 @@ export const deleteVerifiedAccessTrustProvider: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVerifiedAccessTrustProvider",
 }));
+
 export type DeleteVolumeError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -81664,6 +82356,7 @@ export const deleteVolume: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVolume",
 }));
+
 export type DeleteVpcError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -81704,6 +82397,7 @@ export const deleteVpc: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpc",
 }));
+
 export type DeleteVpcBlockPublicAccessExclusionError =
   | RequestLimitExceeded
   | MissingParameter
@@ -81731,6 +82425,7 @@ export const deleteVpcBlockPublicAccessExclusion: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpcBlockPublicAccessExclusion",
 }));
+
 export type DeleteVpcEncryptionControlError =
   | RequestLimitExceeded
   | InvalidVpcEncryptionControlIdMalformed
@@ -81762,6 +82457,7 @@ export const deleteVpcEncryptionControl: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpcEncryptionControl",
 }));
+
 export type DeleteVpcEndpointConnectionNotificationsError = CommonErrors;
 /**
  * Deletes the specified VPC endpoint connection notifications.
@@ -81779,6 +82475,7 @@ export const deleteVpcEndpointConnectionNotifications: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpcEndpointConnectionNotifications",
 }));
+
 export type DeleteVpcEndpointsError =
   | RequestLimitExceeded
   | InvalidVpcEndpointIdNotFound
@@ -81813,6 +82510,7 @@ export const deleteVpcEndpoints: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpcEndpoints",
 }));
+
 export type DeleteVpcEndpointServiceConfigurationsError = CommonErrors;
 /**
  * Deletes the specified VPC endpoint service configurations. Before you can delete
@@ -81833,6 +82531,7 @@ export const deleteVpcEndpointServiceConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpcEndpointServiceConfigurations",
 }));
+
 export type DeleteVpcPeeringConnectionError =
   | RequestLimitExceeded
   | InvalidVpcPeeringConnectionIDNotFound
@@ -81866,6 +82565,7 @@ export const deleteVpcPeeringConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpcPeeringConnection",
 }));
+
 export type DeleteVpnConcentratorError =
   | RequestLimitExceeded
   | InvalidVpnConcentratorIDMalformed
@@ -81891,6 +82591,7 @@ export const deleteVpnConcentrator: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpnConcentrator",
 }));
+
 export type DeleteVpnConnectionError =
   | RequestLimitExceeded
   | InvalidVpnConnectionIDNotFound
@@ -81930,6 +82631,7 @@ export const deleteVpnConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpnConnection",
 }));
+
 export type DeleteVpnConnectionRouteError =
   | RequestLimitExceeded
   | InvalidRouteMalformed
@@ -81960,6 +82662,7 @@ export const deleteVpnConnectionRoute: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpnConnectionRoute",
 }));
+
 export type DeleteVpnGatewayError =
   | RequestLimitExceeded
   | IncorrectState
@@ -81990,6 +82693,7 @@ export const deleteVpnGateway: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpnGateway",
 }));
+
 export type DeprovisionByoipCidrError =
   | RequestLimitExceeded
   | UnauthorizedOperation
@@ -82014,6 +82718,7 @@ export const deprovisionByoipCidr: API.OperationMethod<
   retry: Retry,
   operationName: "DeprovisionByoipCidr",
 }));
+
 export type DeprovisionIpamByoasnError =
   | RequestLimitExceeded
   | InvalidIpamIdNotFound
@@ -82042,6 +82747,7 @@ export const deprovisionIpamByoasn: API.OperationMethod<
   retry: Retry,
   operationName: "DeprovisionIpamByoasn",
 }));
+
 export type DeprovisionIpamPoolCidrError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
@@ -82069,6 +82775,7 @@ export const deprovisionIpamPoolCidr: API.OperationMethod<
   retry: Retry,
   operationName: "DeprovisionIpamPoolCidr",
 }));
+
 export type DeprovisionPublicIpv4PoolCidrError =
   | RequestLimitExceeded
   | InvalidPublicIpv4PoolNotFound
@@ -82098,6 +82805,7 @@ export const deprovisionPublicIpv4PoolCidr: API.OperationMethod<
   retry: Retry,
   operationName: "DeprovisionPublicIpv4PoolCidr",
 }));
+
 export type DeregisterImageError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -82153,6 +82861,7 @@ export const deregisterImage: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterImage",
 }));
+
 export type DeregisterInstanceEventNotificationAttributesError =
   | RequestLimitExceeded
   | MissingParameter
@@ -82175,6 +82884,7 @@ export const deregisterInstanceEventNotificationAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterInstanceEventNotificationAttributes",
 }));
+
 export type DeregisterTransitGatewayMulticastGroupMembersError =
   | RequestLimitExceeded
   | MissingParameter
@@ -82196,6 +82906,7 @@ export const deregisterTransitGatewayMulticastGroupMembers: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterTransitGatewayMulticastGroupMembers",
 }));
+
 export type DeregisterTransitGatewayMulticastGroupSourcesError =
   | RequestLimitExceeded
   | MissingParameter
@@ -82217,6 +82928,7 @@ export const deregisterTransitGatewayMulticastGroupSources: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterTransitGatewayMulticastGroupSources",
 }));
+
 export type DescribeAccountAttributesError = CommonErrors;
 /**
  * Describes attributes of your Amazon Web Services account. The following are the supported account attributes:
@@ -82254,6 +82966,7 @@ export const describeAccountAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccountAttributes",
 }));
+
 export type DescribeAddressesError =
   | RequestLimitExceeded
   | InvalidAllocationIDNotFound
@@ -82279,6 +82992,7 @@ export const describeAddresses: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAddresses",
 }));
+
 export type DescribeAddressesAttributeError =
   | RequestLimitExceeded
   | InvalidAllocationIDNotFound
@@ -82325,6 +83039,7 @@ export const describeAddressesAttribute: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeAddressTransfersError = CommonErrors;
 /**
  * Describes an Elastic IP address transfer. For more information, see Transfer Elastic IP addresses in the *Amazon VPC User Guide*.
@@ -82373,6 +83088,7 @@ export const describeAddressTransfers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeAggregateIdFormatError = CommonErrors;
 /**
  * Describes the longer ID format settings for all resource types in a specific
@@ -82408,6 +83124,7 @@ export const describeAggregateIdFormat: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAggregateIdFormat",
 }));
+
 export type DescribeAvailabilityZonesError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -82444,6 +83161,7 @@ export const describeAvailabilityZones: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAvailabilityZones",
 }));
+
 export type DescribeAwsNetworkPerformanceMetricSubscriptionsError =
   CommonErrors;
 /**
@@ -82483,6 +83201,7 @@ export const describeAwsNetworkPerformanceMetricSubscriptions: API.OperationMeth
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeBundleTasksError =
   | RequestLimitExceeded
   | InvalidBundleIDNotFound
@@ -82518,6 +83237,7 @@ export const describeBundleTasks: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBundleTasks",
 }));
+
 export type DescribeByoipCidrsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -82561,6 +83281,7 @@ export const describeByoipCidrs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeCapacityBlockExtensionHistoryError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
@@ -82608,6 +83329,7 @@ export const describeCapacityBlockExtensionHistory: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeCapacityBlockExtensionOfferingsError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdNotFound
@@ -82655,6 +83377,7 @@ export const describeCapacityBlockExtensionOfferings: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeCapacityBlockOfferingsError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -82701,6 +83424,7 @@ export const describeCapacityBlockOfferings: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeCapacityBlocksError =
   | RequestLimitExceeded
   | InvalidCapacityBlockIdMalformed
@@ -82747,6 +83471,7 @@ export const describeCapacityBlocks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeCapacityBlockStatusError =
   | RequestLimitExceeded
   | InvalidCapacityBlockIdMalformed
@@ -82793,6 +83518,7 @@ export const describeCapacityBlockStatus: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeCapacityManagerDataExportsError =
   | RequestLimitExceeded
   | InvalidCapacityManagerDataExportIdNotFound
@@ -82839,6 +83565,7 @@ export const describeCapacityManagerDataExports: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeCapacityReservationBillingRequestsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -82883,6 +83610,7 @@ export const describeCapacityReservationBillingRequests: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeCapacityReservationCancellationQuotesError = CommonErrors;
 /**
  * Describes one or more Capacity Reservation cancellation quotes. The results describe
@@ -82902,6 +83630,7 @@ export const describeCapacityReservationCancellationQuotes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCapacityReservationCancellationQuotes",
 }));
+
 export type DescribeCapacityReservationFleetsError =
   | RequestLimitExceeded
   | InvalidCapacityReservationFleetIdMalformed
@@ -82948,6 +83677,7 @@ export const describeCapacityReservationFleets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeCapacityReservationsError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
@@ -82996,6 +83726,7 @@ export const describeCapacityReservations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeCapacityReservationTopologyError = CommonErrors;
 /**
  * Describes a tree-based hierarchy that represents the physical host placement of your
@@ -83034,6 +83765,7 @@ export const describeCapacityReservationTopology: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCapacityReservationTopology",
 }));
+
 export type DescribeCarrierGatewaysError =
   | RequestLimitExceeded
   | InvalidCarrierGatewayIDMalformed
@@ -83084,6 +83816,7 @@ export const describeCarrierGateways: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeClassicLinkInstancesError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -83134,6 +83867,7 @@ export const describeClassicLinkInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeClientVpnAuthorizationRulesError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
@@ -83180,6 +83914,7 @@ export const describeClientVpnAuthorizationRules: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeClientVpnConnectionsError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
@@ -83229,6 +83964,7 @@ export const describeClientVpnConnections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeClientVpnEndpointsError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
@@ -83275,6 +84011,7 @@ export const describeClientVpnEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeClientVpnRoutesError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
@@ -83323,6 +84060,7 @@ export const describeClientVpnRoutes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeClientVpnTargetNetworksError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
@@ -83371,6 +84109,7 @@ export const describeClientVpnTargetNetworks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeCoipPoolsError =
   | RequestLimitExceeded
   | InvalidPoolIDMalformed
@@ -83413,6 +84152,7 @@ export const describeCoipPools: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeConversionTasksError = CommonErrors;
 /**
  * Describes the specified conversion tasks or all your conversion tasks. For more information, see the
@@ -83433,6 +84173,7 @@ export const describeConversionTasks: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConversionTasks",
 }));
+
 export type DescribeCustomerGatewaysError =
   | RequestLimitExceeded
   | InvalidCustomerGatewayIDNotFound
@@ -83463,6 +84204,7 @@ export const describeCustomerGateways: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCustomerGateways",
 }));
+
 export type DescribeDeclarativePoliciesReportsError =
   | RequestLimitExceeded
   | InvalidParameter
@@ -83495,6 +84237,7 @@ export const describeDeclarativePoliciesReports: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDeclarativePoliciesReports",
 }));
+
 export type DescribeDhcpOptionsError =
   | RequestLimitExceeded
   | InvalidDhcpOptionIDNotFound
@@ -83552,6 +84295,7 @@ export const describeDhcpOptions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeEgressOnlyInternetGatewaysError =
   | RequestLimitExceeded
   | InvalidEgressOnlyInternetGatewayIdMalformed
@@ -83604,6 +84348,7 @@ export const describeEgressOnlyInternetGateways: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeElasticGpusError =
   | RequestLimitExceeded
   | UnsupportedOperation
@@ -83627,6 +84372,7 @@ export const describeElasticGpus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeElasticGpus",
 }));
+
 export type DescribeExportImageTasksError =
   | RequestLimitExceeded
   | InvalidExportTaskIDMalformed
@@ -83673,6 +84419,7 @@ export const describeExportImageTasks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeExportTasksError =
   | RequestLimitExceeded
   | InvalidExportTaskIDMalformed
@@ -83698,6 +84445,7 @@ export const describeExportTasks: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeExportTasks",
 }));
+
 export type DescribeFastLaunchImagesError =
   | RequestLimitExceeded
   | InvalidRequest
@@ -83740,6 +84488,7 @@ export const describeFastLaunchImages: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeFastSnapshotRestoresError = CommonErrors;
 /**
  * Describes the state of fast snapshot restores for your snapshots.
@@ -83778,6 +84527,7 @@ export const describeFastSnapshotRestores: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeFleetHistoryError =
   | RequestLimitExceeded
   | InvalidFleetIdMalformed
@@ -83810,6 +84560,7 @@ export const describeFleetHistory: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFleetHistory",
 }));
+
 export type DescribeFleetInstancesError =
   | RequestLimitExceeded
   | InvalidFleetIdMalformed
@@ -83842,6 +84593,7 @@ export const describeFleetInstances: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFleetInstances",
 }));
+
 export type DescribeFleetsError =
   | RequestLimitExceeded
   | InvalidFleetIdMalformed
@@ -83894,6 +84646,7 @@ export const describeFleets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeFlowLogsError =
   | RequestLimitExceeded
   | InvalidFlowLogIdNotFound
@@ -83945,6 +84698,7 @@ export const describeFlowLogs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeFpgaImageAttributeError =
   | RequestLimitExceeded
   | InvalidFpgaImageIDMalformed
@@ -83972,6 +84726,7 @@ export const describeFpgaImageAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFpgaImageAttribute",
 }));
+
 export type DescribeFpgaImagesError =
   | RequestLimitExceeded
   | InvalidFpgaImageIDMalformed
@@ -84020,6 +84775,7 @@ export const describeFpgaImages: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeHostReservationOfferingsError =
   | RequestLimitExceeded
   | InvalidHostReservationOfferingIdMalformed
@@ -84073,6 +84829,7 @@ export const describeHostReservationOfferings: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeHostReservationsError = CommonErrors;
 /**
  * Describes reservations that are associated with Dedicated Hosts in your
@@ -84112,6 +84869,7 @@ export const describeHostReservations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeHostsError =
   | RequestLimitExceeded
   | InvalidHostIDMalformed
@@ -84158,6 +84916,7 @@ export const describeHosts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeIamInstanceProfileAssociationsError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -84200,6 +84959,7 @@ export const describeIamInstanceProfileAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeIdentityIdFormatError =
   | RequestLimitExceeded
   | InvalidTargetArnUnknown
@@ -84245,6 +85005,7 @@ export const describeIdentityIdFormat: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeIdentityIdFormat",
 }));
+
 export type DescribeIdFormatError = CommonErrors;
 /**
  * Describes the ID format settings for your resources on a per-Region basis, for example, to view which resource types are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types.
@@ -84283,6 +85044,7 @@ export const describeIdFormat: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeIdFormat",
 }));
+
 export type DescribeImageAttributeError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -84314,6 +85076,7 @@ export const describeImageAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeImageAttribute",
 }));
+
 export type DescribeImageReferencesError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -84359,6 +85122,7 @@ export const describeImageReferences: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeImagesError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -84435,6 +85199,7 @@ export const describeImages: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeImageUsageReportEntriesError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -84481,6 +85246,7 @@ export const describeImageUsageReportEntries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeImageUsageReportsError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -84527,6 +85293,7 @@ export const describeImageUsageReports: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeImportImageTasksError =
   | RequestLimitExceeded
   | InvalidParameter
@@ -84569,6 +85336,7 @@ export const describeImportImageTasks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeImportSnapshotTasksError =
   | RequestLimitExceeded
   | InvalidParameter
@@ -84611,6 +85379,7 @@ export const describeImportSnapshotTasks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInstanceAttributeError =
   | RequestLimitExceeded
   | InvalidInstanceIDNotFound
@@ -84640,6 +85409,7 @@ export const describeInstanceAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInstanceAttribute",
 }));
+
 export type DescribeInstanceConnectEndpointsError =
   | RequestLimitExceeded
   | InvalidInstanceConnectEndpointIdNotFound
@@ -84686,6 +85456,7 @@ export const describeInstanceConnectEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInstanceCreditSpecificationsError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -84756,6 +85527,7 @@ export const describeInstanceCreditSpecifications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInstanceEventNotificationAttributesError = CommonErrors;
 /**
  * Describes the tag keys that are registered to appear in scheduled event notifications
@@ -84774,6 +85546,7 @@ export const describeInstanceEventNotificationAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInstanceEventNotificationAttributes",
 }));
+
 export type DescribeInstanceEventWindowsError =
   | RequestLimitExceeded
   | InvalidInstanceEventWindowIDNotFound
@@ -84830,6 +85603,7 @@ export const describeInstanceEventWindows: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInstanceImageMetadataError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -84898,6 +85672,7 @@ export const describeInstanceImageMetadata: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInstancesError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -84984,6 +85759,7 @@ export const describeInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInstanceSqlHaHistoryStatesError =
   | RequestLimitExceeded
   | InvalidInstanceIDNotFound
@@ -85010,6 +85786,7 @@ export const describeInstanceSqlHaHistoryStates: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInstanceSqlHaHistoryStates",
 }));
+
 export type DescribeInstanceSqlHaStatesError =
   | RequestLimitExceeded
   | InvalidInstanceIDNotFound
@@ -85036,6 +85813,7 @@ export const describeInstanceSqlHaStates: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInstanceSqlHaStates",
 }));
+
 export type DescribeInstanceStatusError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -85116,6 +85894,7 @@ export const describeInstanceStatus: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInstanceTopologyError = CommonErrors;
 /**
  * Describes a tree-based hierarchy that represents the physical host placement of your
@@ -85174,6 +85953,7 @@ export const describeInstanceTopology: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInstanceTypeOfferingsError = CommonErrors;
 /**
  * Lists the instance types that are offered for the specified location. If no location is
@@ -85214,6 +85994,7 @@ export const describeInstanceTypeOfferings: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInstanceTypesError = CommonErrors;
 /**
  * Describes the specified instance types. By default, all instance types for the current
@@ -85255,6 +86036,7 @@ export const describeInstanceTypes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeInternetGatewaysError =
   | RequestLimitExceeded
   | InvalidInternetGatewayIDNotFound
@@ -85305,6 +86087,7 @@ export const describeInternetGateways: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeIpamByoasnError = CommonErrors;
 /**
  * Describes your Autonomous System Numbers (ASNs), their provisioning statuses, and the BYOIP CIDRs with which they are associated. For more information, see Tutorial: Bring your ASN to IPAM in the *Amazon VPC IPAM guide*.
@@ -85322,6 +86105,7 @@ export const describeIpamByoasn: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeIpamByoasn",
 }));
+
 export type DescribeIpamExternalResourceVerificationTokensError =
   | RequestLimitExceeded
   | InvalidIpamExternalResourceVerificationTokenIdNotFound
@@ -85349,6 +86133,7 @@ export const describeIpamExternalResourceVerificationTokens: API.OperationMethod
   retry: Retry,
   operationName: "DescribeIpamExternalResourceVerificationTokens",
 }));
+
 export type DescribeIpamPoliciesError =
   | RequestLimitExceeded
   | InvalidIpamPolicyIdNotFound
@@ -85376,6 +86161,7 @@ export const describeIpamPolicies: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeIpamPolicies",
 }));
+
 export type DescribeIpamPoolAllocationsError = CommonErrors;
 /**
  * Describes IPAM pool allocations. You can describe all allocations owned by you across all pools, or you can describe specific allocations by ID.
@@ -85418,6 +86204,7 @@ export const describeIpamPoolAllocations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeIpamPoolsError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
@@ -85464,6 +86251,7 @@ export const describeIpamPools: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeIpamPrefixListResolversError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverIdNotFound
@@ -85510,6 +86298,7 @@ export const describeIpamPrefixListResolvers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeIpamPrefixListResolverTargetsError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverTargetIdMalformed
@@ -85556,6 +86345,7 @@ export const describeIpamPrefixListResolverTargets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeIpamResourceDiscoveriesError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryIdNotFound
@@ -85602,6 +86392,7 @@ export const describeIpamResourceDiscoveries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeIpamResourceDiscoveryAssociationsError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryAssociationIdNotFound
@@ -85648,6 +86439,7 @@ export const describeIpamResourceDiscoveryAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeIpamsError =
   | RequestLimitExceeded
   | InvalidIpamIdNotFound
@@ -85692,6 +86484,7 @@ export const describeIpams: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeIpamScopesError =
   | RequestLimitExceeded
   | InvalidIpamScopeIdNotFound
@@ -85738,6 +86531,7 @@ export const describeIpamScopes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeIpv6PoolsError =
   | RequestLimitExceeded
   | InvalidIpv6PoolIDNotFound
@@ -85784,6 +86578,7 @@ export const describeIpv6Pools: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeKeyPairsError =
   | RequestLimitExceeded
   | InvalidKeyPairNotFound
@@ -85814,6 +86609,7 @@ export const describeKeyPairs: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeKeyPairs",
 }));
+
 export type DescribeLaunchTemplatesError =
   | RequestLimitExceeded
   | InvalidLaunchTemplateIdMalformed
@@ -85866,6 +86662,7 @@ export const describeLaunchTemplates: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeLaunchTemplateVersionsError =
   | RequestLimitExceeded
   | InvalidLaunchTemplateIdMalformed
@@ -85917,6 +86714,7 @@ export const describeLaunchTemplateVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeLocalGatewayRouteTablesError = CommonErrors;
 /**
  * Describes one or more local gateway route tables. By default, all local gateway route tables are described.
@@ -85956,6 +86754,7 @@ export const describeLocalGatewayRouteTables: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsError =
   CommonErrors;
 /**
@@ -85996,6 +86795,7 @@ export const describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations: AP
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeLocalGatewayRouteTableVpcAssociationsError = CommonErrors;
 /**
  * Describes the specified associations between VPCs and local gateway route tables.
@@ -86034,6 +86834,7 @@ export const describeLocalGatewayRouteTableVpcAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeLocalGatewaysError = CommonErrors;
 /**
  * Describes one or more local gateways. By default, all local gateways are described.
@@ -86073,6 +86874,7 @@ export const describeLocalGateways: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeLocalGatewayVirtualInterfaceGroupsError = CommonErrors;
 /**
  * Describes the specified local gateway virtual interface groups.
@@ -86111,6 +86913,7 @@ export const describeLocalGatewayVirtualInterfaceGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeLocalGatewayVirtualInterfacesError = CommonErrors;
 /**
  * Describes the specified local gateway virtual interfaces.
@@ -86149,6 +86952,7 @@ export const describeLocalGatewayVirtualInterfaces: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeLockedSnapshotsError =
   | RequestLimitExceeded
   | InvalidRequest
@@ -86170,6 +86974,7 @@ export const describeLockedSnapshots: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLockedSnapshots",
 }));
+
 export type DescribeMacHostsError =
   | RequestLimitExceeded
   | InvalidHostIDMalformed
@@ -86212,6 +87017,7 @@ export const describeMacHosts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeMacModificationTasksError =
   | RequestLimitExceeded
   | InvalidParameter
@@ -86256,6 +87062,7 @@ export const describeMacModificationTasks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeManagedPrefixListsError =
   | RequestLimitExceeded
   | InvalidPrefixListIDNotFound
@@ -86304,6 +87111,7 @@ export const describeManagedPrefixLists: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeMovingAddressesError =
   | RequestLimitExceeded
   | UnsupportedOperation
@@ -86349,6 +87157,7 @@ export const describeMovingAddresses: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeNatGatewaysError =
   | RequestLimitExceeded
   | DryRunOperation
@@ -86407,6 +87216,7 @@ export const describeNatGateways: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeNetworkAclsError =
   | RequestLimitExceeded
   | InvalidNetworkAclIDNotFound
@@ -86462,6 +87272,7 @@ export const describeNetworkAcls: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeNetworkInsightsAccessScopeAnalysesError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -86504,6 +87315,7 @@ export const describeNetworkInsightsAccessScopeAnalyses: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeNetworkInsightsAccessScopesError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -86546,6 +87358,7 @@ export const describeNetworkInsightsAccessScopes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeNetworkInsightsAnalysesError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -86588,6 +87401,7 @@ export const describeNetworkInsightsAnalyses: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeNetworkInsightsPathsError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -86630,6 +87444,7 @@ export const describeNetworkInsightsPaths: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeNetworkInterfaceAttributeError =
   | RequestLimitExceeded
   | InvalidNetworkInterfaceIDNotFound
@@ -86660,6 +87475,7 @@ export const describeNetworkInterfaceAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeNetworkInterfaceAttribute",
 }));
+
 export type DescribeNetworkInterfacePermissionsError =
   | RequestLimitExceeded
   | InvalidPermissionIDNotFound
@@ -86706,6 +87522,7 @@ export const describeNetworkInterfacePermissions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeNetworkInterfacesError =
   | RequestLimitExceeded
   | InvalidNetworkInterfaceIDNotFound
@@ -86765,6 +87582,7 @@ export const describeNetworkInterfaces: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeOutpostLagsError =
   | RequestLimitExceeded
   | InvalidOutpostLagIDMalformed
@@ -86792,6 +87610,7 @@ export const describeOutpostLags: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeOutpostLags",
 }));
+
 export type DescribePlacementGroupsError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -86828,6 +87647,7 @@ export const describePlacementGroups: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePlacementGroups",
 }));
+
 export type DescribePrefixListsError =
   | RequestLimitExceeded
   | InvalidPrefixListIdNotFound
@@ -86875,6 +87695,7 @@ export const describePrefixLists: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribePrincipalIdFormatError = CommonErrors;
 /**
  * Describes the ID format settings for the root user and all IAM roles and IAM users
@@ -86932,6 +87753,7 @@ export const describePrincipalIdFormat: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribePublicIpv4PoolsError =
   | RequestLimitExceeded
   | InvalidPublicIpv4PoolIDNotFound
@@ -86978,6 +87800,7 @@ export const describePublicIpv4Pools: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeRegionsError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -87007,6 +87830,7 @@ export const describeRegions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRegions",
 }));
+
 export type DescribeReplaceRootVolumeTasksError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -87050,6 +87874,7 @@ export const describeReplaceRootVolumeTasks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeReservedInstancesError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -87077,6 +87902,7 @@ export const describeReservedInstances: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeReservedInstances",
 }));
+
 export type DescribeReservedInstancesListingsError = CommonErrors;
 /**
  * Describes your account's Reserved Instance listings in the Reserved Instance
@@ -87116,6 +87942,7 @@ export const describeReservedInstancesListings: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeReservedInstancesListings",
 }));
+
 export type DescribeReservedInstancesModificationsError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -87166,6 +87993,7 @@ export const describeReservedInstancesModifications: API.OperationMethod<
     items: "ReservedInstancesModifications",
   } as const,
 }));
+
 export type DescribeReservedInstancesOfferingsError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -87221,6 +88049,7 @@ export const describeReservedInstancesOfferings: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeRouteServerEndpointsError =
   | RequestLimitExceeded
   | InvalidRouteServerEndpointIdNotFound
@@ -87271,6 +88100,7 @@ export const describeRouteServerEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeRouteServerPeersError =
   | RequestLimitExceeded
   | InvalidRouteServerPeerIdNotFound
@@ -87327,6 +88157,7 @@ export const describeRouteServerPeers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeRouteServersError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
@@ -87388,6 +88219,7 @@ export const describeRouteServers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeRouteTablesError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -87443,6 +88275,7 @@ export const describeRouteTables: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeScheduledInstanceAvailabilityError = CommonErrors;
 /**
  * Finds available schedules that meet the specified criteria.
@@ -87486,6 +88319,7 @@ export const describeScheduledInstanceAvailability: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeScheduledInstancesError = CommonErrors;
 /**
  * Describes the specified Scheduled Instances or all your Scheduled Instances.
@@ -87524,6 +88358,7 @@ export const describeScheduledInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSecondaryInterfacesError = CommonErrors;
 /**
  * Describes one or more of your secondary interfaces.
@@ -87562,6 +88397,7 @@ export const describeSecondaryInterfaces: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSecondaryNetworksError = CommonErrors;
 /**
  * Describes one or more secondary networks.
@@ -87600,6 +88436,7 @@ export const describeSecondaryNetworks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSecondarySubnetsError = CommonErrors;
 /**
  * Describes one or more of your secondary subnets.
@@ -87638,6 +88475,7 @@ export const describeSecondarySubnets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSecurityGroupReferencesError = CommonErrors;
 /**
  * Describes the VPCs on the other side of a VPC peering or Transit Gateway connection that are referencing the security groups you've specified in this request.
@@ -87655,6 +88493,7 @@ export const describeSecurityGroupReferences: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSecurityGroupReferences",
 }));
+
 export type DescribeSecurityGroupRulesError =
   | RequestLimitExceeded
   | InvalidSecurityGroupRuleIdNotFound
@@ -87701,6 +88540,7 @@ export const describeSecurityGroupRules: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSecurityGroupsError =
   | RequestLimitExceeded
   | InvalidGroupNotFound
@@ -87753,6 +88593,7 @@ export const describeSecurityGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSecurityGroupVpcAssociationsError = CommonErrors;
 /**
  * Describes security group VPC associations made with AssociateSecurityGroupVpc.
@@ -87791,6 +88632,7 @@ export const describeSecurityGroupVpcAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeServiceLinkVirtualInterfacesError =
   | RequestLimitExceeded
   | InvalidServiceLinkVirtualInterfaceIDMalformed
@@ -87816,6 +88658,7 @@ export const describeServiceLinkVirtualInterfaces: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeServiceLinkVirtualInterfaces",
 }));
+
 export type DescribeSnapshotAttributeError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -87848,6 +88691,7 @@ export const describeSnapshotAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSnapshotAttribute",
 }));
+
 export type DescribeSnapshotsError =
   | RequestLimitExceeded
   | InvalidSnapshotNotFound
@@ -87940,6 +88784,7 @@ export const describeSnapshots: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSnapshotTierStatusError = CommonErrors;
 /**
  * Describes the storage tier status of one or more Amazon EBS snapshots.
@@ -87978,6 +88823,7 @@ export const describeSnapshotTierStatus: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSpotDatafeedSubscriptionError =
   | RequestLimitExceeded
   | InvalidSpotDatafeedNotFound
@@ -88004,6 +88850,7 @@ export const describeSpotDatafeedSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSpotDatafeedSubscription",
 }));
+
 export type DescribeSpotFleetInstancesError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -88025,6 +88872,7 @@ export const describeSpotFleetInstances: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSpotFleetInstances",
 }));
+
 export type DescribeSpotFleetRequestHistoryError =
   | RequestLimitExceeded
   | MissingParameter
@@ -88054,6 +88902,7 @@ export const describeSpotFleetRequestHistory: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSpotFleetRequestHistory",
 }));
+
 export type DescribeSpotFleetRequestsError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -88105,6 +88954,7 @@ export const describeSpotFleetRequests: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSpotInstanceRequestsError =
   | RequestLimitExceeded
   | InvalidSpotInstanceRequestIDMalformed
@@ -88171,6 +89021,7 @@ export const describeSpotInstanceRequests: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSpotPriceHistoryError = CommonErrors;
 /**
  * Describes the Spot price history. For more information, see Spot Instance pricing history in the
@@ -88214,6 +89065,7 @@ export const describeSpotPriceHistory: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeStaleSecurityGroupsError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -88263,6 +89115,7 @@ export const describeStaleSecurityGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeStoreImageTasksError = CommonErrors;
 /**
  * Describes the progress of the AMI store tasks. You can describe the store tasks for
@@ -88316,6 +89169,7 @@ export const describeStoreImageTasks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeSubnetsError =
   | RequestLimitExceeded
   | InvalidSubnetIDNotFound
@@ -88369,6 +89223,7 @@ export const describeSubnets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTagsError =
   | RequestLimitExceeded
   | ParseError
@@ -88421,6 +89276,7 @@ export const describeTags: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTrafficMirrorFilterRulesError = CommonErrors;
 /**
  * Describe traffic mirror filters that determine the traffic that is mirrored.
@@ -88438,6 +89294,7 @@ export const describeTrafficMirrorFilterRules: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTrafficMirrorFilterRules",
 }));
+
 export type DescribeTrafficMirrorFiltersError =
   | RequestLimitExceeded
   | InvalidTrafficMirrorFilterIdNotFound
@@ -88484,6 +89341,7 @@ export const describeTrafficMirrorFilters: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTrafficMirrorSessionsError =
   | RequestLimitExceeded
   | InvalidTrafficMirrorSessionIdNotFound
@@ -88530,6 +89388,7 @@ export const describeTrafficMirrorSessions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTrafficMirrorTargetsError =
   | RequestLimitExceeded
   | InvalidTrafficMirrorTargetIdNotFound
@@ -88576,6 +89435,7 @@ export const describeTrafficMirrorTargets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTransitGatewayAttachmentsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
@@ -88625,6 +89485,7 @@ export const describeTransitGatewayAttachments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTransitGatewayConnectPeersError =
   | RequestLimitExceeded
   | InvalidTransitGatewayConnectPeerIDNotFound
@@ -88671,6 +89532,7 @@ export const describeTransitGatewayConnectPeers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTransitGatewayConnectsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
@@ -88717,6 +89579,7 @@ export const describeTransitGatewayConnects: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTransitGatewayMeteringPoliciesError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMeteringPolicyIdNotFound
@@ -88742,6 +89605,7 @@ export const describeTransitGatewayMeteringPolicies: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTransitGatewayMeteringPolicies",
 }));
+
 export type DescribeTransitGatewayMulticastDomainsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMulticastDomainIdNotFound
@@ -88788,6 +89652,7 @@ export const describeTransitGatewayMulticastDomains: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTransitGatewayPeeringAttachmentsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
@@ -88834,6 +89699,7 @@ export const describeTransitGatewayPeeringAttachments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTransitGatewayPolicyTablesError =
   | RequestLimitExceeded
   | InvalidTransitGatewayPolicyTableIdNotFound
@@ -88880,6 +89746,7 @@ export const describeTransitGatewayPolicyTables: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTransitGatewayRouteTableAnnouncementsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayRouteTableAnnouncementIdMalformed
@@ -88926,6 +89793,7 @@ export const describeTransitGatewayRouteTableAnnouncements: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTransitGatewayRouteTablesError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -88975,6 +89843,7 @@ export const describeTransitGatewayRouteTables: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTransitGatewaysError =
   | RequestLimitExceeded
   | InvalidTransitGatewayIDNotFound
@@ -89024,6 +89893,7 @@ export const describeTransitGateways: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTransitGatewayVpcAttachmentsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
@@ -89071,6 +89941,7 @@ export const describeTransitGatewayVpcAttachments: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeTrunkInterfaceAssociationsError =
   | RequestLimitExceeded
   | OperationNotPermitted
@@ -89113,6 +89984,7 @@ export const describeTrunkInterfaceAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVerifiedAccessEndpointsError =
   | RequestLimitExceeded
   | InvalidParameterCombination
@@ -89159,6 +90031,7 @@ export const describeVerifiedAccessEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVerifiedAccessGroupsError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessGroupIdNotFound
@@ -89205,6 +90078,7 @@ export const describeVerifiedAccessGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVerifiedAccessInstanceLoggingConfigurationsError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessInstanceIdNotFound
@@ -89251,6 +90125,7 @@ export const describeVerifiedAccessInstanceLoggingConfigurations: API.OperationM
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVerifiedAccessInstancesError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessInstanceIdNotFound
@@ -89297,6 +90172,7 @@ export const describeVerifiedAccessInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVerifiedAccessTrustProvidersError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessTrustProviderIdNotFound
@@ -89343,6 +90219,7 @@ export const describeVerifiedAccessTrustProviders: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVolumeAttributeError =
   | RequestLimitExceeded
   | InvalidParameterCombination
@@ -89375,6 +90252,7 @@ export const describeVolumeAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVolumeAttribute",
 }));
+
 export type DescribeVolumesError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -89437,6 +90315,7 @@ export const describeVolumes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVolumesModificationsError =
   | RequestLimitExceeded
   | InvalidVolumeIDMalformed
@@ -89486,6 +90365,7 @@ export const describeVolumesModifications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVolumeStatusError =
   | RequestLimitExceeded
   | InvalidVolumeIDMalformed
@@ -89571,6 +90451,7 @@ export const describeVolumeStatus: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVpcAttributeError =
   | RequestLimitExceeded
   | InvalidParameterCombination
@@ -89598,6 +90479,7 @@ export const describeVpcAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpcAttribute",
 }));
+
 export type DescribeVpcBlockPublicAccessExclusionsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -89625,6 +90507,7 @@ export const describeVpcBlockPublicAccessExclusions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpcBlockPublicAccessExclusions",
 }));
+
 export type DescribeVpcBlockPublicAccessOptionsError = CommonErrors;
 /**
  * Describe VPC Block Public Access (BPA) options. VPC Block Public Access (BPA) enables you to block resources in VPCs and subnets that you own in a Region from reaching or being reached from the internet through internet gateways and egress-only internet gateways. To learn more about VPC BPA, see Block public access to VPCs and subnets in the *Amazon VPC User Guide*.
@@ -89642,6 +90525,7 @@ export const describeVpcBlockPublicAccessOptions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpcBlockPublicAccessOptions",
 }));
+
 export type DescribeVpcClassicLinkError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -89671,6 +90555,7 @@ export const describeVpcClassicLink: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpcClassicLink",
 }));
+
 export type DescribeVpcClassicLinkDnsSupportError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -89719,6 +90604,7 @@ export const describeVpcClassicLinkDnsSupport: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVpcEncryptionControlsError =
   | RequestLimitExceeded
   | InvalidParameterCombination
@@ -89746,6 +90632,7 @@ export const describeVpcEncryptionControls: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpcEncryptionControls",
 }));
+
 export type DescribeVpcEndpointAssociationsError = CommonErrors;
 /**
  * Describes the VPC resources, VPC endpoint services, Amazon Lattice services, or service networks
@@ -89764,6 +90651,7 @@ export const describeVpcEndpointAssociations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpcEndpointAssociations",
 }));
+
 export type DescribeVpcEndpointConnectionNotificationsError =
   | RequestLimitExceeded
   | InvalidConnectionNotification
@@ -89811,6 +90699,7 @@ export const describeVpcEndpointConnectionNotifications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVpcEndpointConnectionsError = CommonErrors;
 /**
  * Describes the VPC endpoint connections to your VPC endpoint services, including any
@@ -89850,6 +90739,7 @@ export const describeVpcEndpointConnections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVpcEndpointsError =
   | RequestLimitExceeded
   | InvalidVpcEndpointIdNotFound
@@ -89900,6 +90790,7 @@ export const describeVpcEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVpcEndpointServiceConfigurationsError =
   | RequestLimitExceeded
   | InvalidVpcEndpointServiceIdNotFound
@@ -89946,6 +90837,7 @@ export const describeVpcEndpointServiceConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVpcEndpointServicePermissionsError =
   | RequestLimitExceeded
   | InvalidVpcEndpointServiceIdMalformed
@@ -89995,6 +90887,7 @@ export const describeVpcEndpointServicePermissions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVpcEndpointServicesError =
   | RequestLimitExceeded
   | ParseError
@@ -90024,6 +90917,7 @@ export const describeVpcEndpointServices: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpcEndpointServices",
 }));
+
 export type DescribeVpcPeeringConnectionsError =
   | RequestLimitExceeded
   | InvalidVpcPeeringConnectionIDNotFound
@@ -90076,6 +90970,7 @@ export const describeVpcPeeringConnections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVpcsError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -90128,6 +91023,7 @@ export const describeVpcs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVpnConcentratorsError =
   | RequestLimitExceeded
   | InvalidVpnConcentratorIdMalformed
@@ -90174,6 +91070,7 @@ export const describeVpnConcentrators: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeVpnConnectionsError =
   | RequestLimitExceeded
   | InvalidVpnConnectionIDNotFound
@@ -90202,6 +91099,7 @@ export const describeVpnConnections: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpnConnections",
 }));
+
 export type DescribeVpnGatewaysError =
   | RequestLimitExceeded
   | InvalidVpnGatewayIDNotFound
@@ -90232,6 +91130,7 @@ export const describeVpnGateways: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpnGateways",
 }));
+
 export type DetachClassicLinkVpcError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -90267,6 +91166,7 @@ export const detachClassicLinkVpc: API.OperationMethod<
   retry: Retry,
   operationName: "DetachClassicLinkVpc",
 }));
+
 export type DetachImageWatermarkError = CommonErrors;
 /**
  * Removes a watermark from the specified AMI. This is an idempotent operation. It succeeds
@@ -90290,6 +91190,7 @@ export const detachImageWatermark: API.OperationMethod<
   retry: Retry,
   operationName: "DetachImageWatermark",
 }));
+
 export type DetachInternetGatewayError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -90325,6 +91226,7 @@ export const detachInternetGateway: API.OperationMethod<
   retry: Retry,
   operationName: "DetachInternetGateway",
 }));
+
 export type DetachNetworkInterfaceError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -90354,6 +91256,7 @@ export const detachNetworkInterface: API.OperationMethod<
   retry: Retry,
   operationName: "DetachNetworkInterface",
 }));
+
 export type DetachVerifiedAccessTrustProviderError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -90381,6 +91284,7 @@ export const detachVerifiedAccessTrustProvider: API.OperationMethod<
   retry: Retry,
   operationName: "DetachVerifiedAccessTrustProvider",
 }));
+
 export type DetachVolumeError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -90428,6 +91332,7 @@ export const detachVolume: API.OperationMethod<
   retry: Retry,
   operationName: "DetachVolume",
 }));
+
 export type DetachVpnGatewayError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -90465,6 +91370,7 @@ export const detachVpnGateway: API.OperationMethod<
   retry: Retry,
   operationName: "DetachVpnGateway",
 }));
+
 export type DisableAddressTransferError =
   | RequestLimitExceeded
   | InvalidElasticIpIDNotFound
@@ -90490,6 +91396,7 @@ export const disableAddressTransfer: API.OperationMethod<
   retry: Retry,
   operationName: "DisableAddressTransfer",
 }));
+
 export type DisableAllowedImagesSettingsError = CommonErrors;
 /**
  * Disables Allowed AMIs for your account in the specified Amazon Web Services Region. When set to
@@ -90518,6 +91425,7 @@ export const disableAllowedImagesSettings: API.OperationMethod<
   retry: Retry,
   operationName: "DisableAllowedImagesSettings",
 }));
+
 export type DisableAwsNetworkPerformanceMetricSubscriptionError =
   | RequestLimitExceeded
   | MissingParameter
@@ -90539,6 +91447,7 @@ export const disableAwsNetworkPerformanceMetricSubscription: API.OperationMethod
   retry: Retry,
   operationName: "DisableAwsNetworkPerformanceMetricSubscription",
 }));
+
 export type DisableCapacityManagerError =
   | RequestLimitExceeded
   | CapacityManagerDisabled
@@ -90565,6 +91474,7 @@ export const disableCapacityManager: API.OperationMethod<
   retry: Retry,
   operationName: "DisableCapacityManager",
 }));
+
 export type DisableEbsEncryptionByDefaultError = CommonErrors;
 /**
  * Disables EBS encryption by default for your account in the current Region.
@@ -90591,6 +91501,7 @@ export const disableEbsEncryptionByDefault: API.OperationMethod<
   retry: Retry,
   operationName: "DisableEbsEncryptionByDefault",
 }));
+
 export type DisableFastLaunchError =
   | RequestLimitExceeded
   | InvalidRequest
@@ -90618,6 +91529,7 @@ export const disableFastLaunch: API.OperationMethod<
   retry: Retry,
   operationName: "DisableFastLaunch",
 }));
+
 export type DisableFastSnapshotRestoresError =
   | RequestLimitExceeded
   | MissingParameter
@@ -90639,6 +91551,7 @@ export const disableFastSnapshotRestores: API.OperationMethod<
   retry: Retry,
   operationName: "DisableFastSnapshotRestores",
 }));
+
 export type DisableImageError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -90675,6 +91588,7 @@ export const disableImage: API.OperationMethod<
   retry: Retry,
   operationName: "DisableImage",
 }));
+
 export type DisableImageBlockPublicAccessError = CommonErrors;
 /**
  * Disables *block public access for AMIs* at the account level in the
@@ -90698,6 +91612,7 @@ export const disableImageBlockPublicAccess: API.OperationMethod<
   retry: Retry,
   operationName: "DisableImageBlockPublicAccess",
 }));
+
 export type DisableImageDeprecationError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -90722,6 +91637,7 @@ export const disableImageDeprecation: API.OperationMethod<
   retry: Retry,
   operationName: "DisableImageDeprecation",
 }));
+
 export type DisableImageDeregistrationProtectionError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -90751,6 +91667,7 @@ export const disableImageDeregistrationProtection: API.OperationMethod<
   retry: Retry,
   operationName: "DisableImageDeregistrationProtection",
 }));
+
 export type DisableInstanceSqlHaStandbyDetectionsError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -90779,6 +91696,7 @@ export const disableInstanceSqlHaStandbyDetections: API.OperationMethod<
   retry: Retry,
   operationName: "DisableInstanceSqlHaStandbyDetections",
 }));
+
 export type DisableIpamOrganizationAdminAccountError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -90800,6 +91718,7 @@ export const disableIpamOrganizationAdminAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DisableIpamOrganizationAdminAccount",
 }));
+
 export type DisableIpamPolicyError =
   | RequestLimitExceeded
   | InvalidIpamPolicyIdMalformed
@@ -90829,6 +91748,7 @@ export const disableIpamPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DisableIpamPolicy",
 }));
+
 export type DisableRouteServerPropagationError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
@@ -90871,6 +91791,7 @@ export const disableRouteServerPropagation: API.OperationMethod<
   retry: Retry,
   operationName: "DisableRouteServerPropagation",
 }));
+
 export type DisableSerialConsoleAccessError = CommonErrors;
 /**
  * Disables access to the EC2 serial console of all instances for your account. By default,
@@ -90891,6 +91812,7 @@ export const disableSerialConsoleAccess: API.OperationMethod<
   retry: Retry,
   operationName: "DisableSerialConsoleAccess",
 }));
+
 export type DisableSnapshotBlockPublicAccessError = CommonErrors;
 /**
  * Disables the *block public access for snapshots* setting at
@@ -90922,6 +91844,7 @@ export const disableSnapshotBlockPublicAccess: API.OperationMethod<
   retry: Retry,
   operationName: "DisableSnapshotBlockPublicAccess",
 }));
+
 export type DisableTransitGatewayRouteTablePropagationError =
   | RequestLimitExceeded
   | MissingParameter
@@ -90944,6 +91867,7 @@ export const disableTransitGatewayRouteTablePropagation: API.OperationMethod<
   retry: Retry,
   operationName: "DisableTransitGatewayRouteTablePropagation",
 }));
+
 export type DisableVgwRoutePropagationError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -90970,6 +91894,7 @@ export const disableVgwRoutePropagation: API.OperationMethod<
   retry: Retry,
   operationName: "DisableVgwRoutePropagation",
 }));
+
 export type DisableVpcClassicLinkError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -91000,6 +91925,7 @@ export const disableVpcClassicLink: API.OperationMethod<
   retry: Retry,
   operationName: "DisableVpcClassicLink",
 }));
+
 export type DisableVpcClassicLinkDnsSupportError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -91033,6 +91959,7 @@ export const disableVpcClassicLinkDnsSupport: API.OperationMethod<
   retry: Retry,
   operationName: "DisableVpcClassicLinkDnsSupport",
 }));
+
 export type DisassociateAddressError =
   | RequestLimitExceeded
   | InvalidAssociationIDNotFound
@@ -91070,6 +91997,7 @@ export const disassociateAddress: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateAddress",
 }));
+
 export type DisassociateCapacityReservationBillingOwnerError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
@@ -91100,6 +92028,7 @@ export const disassociateCapacityReservationBillingOwner: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateCapacityReservationBillingOwner",
 }));
+
 export type DisassociateClientVpnTargetNetworkError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
@@ -91136,6 +92065,7 @@ export const disassociateClientVpnTargetNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateClientVpnTargetNetwork",
 }));
+
 export type DisassociateEnclaveCertificateIamRoleError =
   | RequestLimitExceeded
   | InvalidCertificateArnMalformed
@@ -91167,6 +92097,7 @@ export const disassociateEnclaveCertificateIamRole: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateEnclaveCertificateIamRole",
 }));
+
 export type DisassociateIamInstanceProfileError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -91191,6 +92122,7 @@ export const disassociateIamInstanceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateIamInstanceProfile",
 }));
+
 export type DisassociateInstanceEventWindowError =
   | RequestLimitExceeded
   | DependencyViolation
@@ -91221,6 +92153,7 @@ export const disassociateInstanceEventWindow: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateInstanceEventWindow",
 }));
+
 export type DisassociateIpamByoasnError =
   | RequestLimitExceeded
   | InvalidCidrNotFound
@@ -91243,6 +92176,7 @@ export const disassociateIpamByoasn: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateIpamByoasn",
 }));
+
 export type DisassociateIpamResourceDiscoveryError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryAssociationIdMalformed
@@ -91270,6 +92204,7 @@ export const disassociateIpamResourceDiscovery: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateIpamResourceDiscovery",
 }));
+
 export type DisassociateNatGatewayAddressError =
   | RequestLimitExceeded
   | MissingParameter
@@ -91308,6 +92243,7 @@ export const disassociateNatGatewayAddress: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateNatGatewayAddress",
 }));
+
 export type DisassociateRouteServerError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
@@ -91341,6 +92277,7 @@ export const disassociateRouteServer: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateRouteServer",
 }));
+
 export type DisassociateRouteTableError =
   | RequestLimitExceeded
   | InvalidAssociationIDNotFound
@@ -91375,6 +92312,7 @@ export const disassociateRouteTable: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateRouteTable",
 }));
+
 export type DisassociateSecurityGroupVpcError =
   | RequestLimitExceeded
   | InvalidGroupIdMalformed
@@ -91404,6 +92342,7 @@ export const disassociateSecurityGroupVpc: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateSecurityGroupVpc",
 }));
+
 export type DisassociateSubnetCidrBlockError =
   | RequestLimitExceeded
   | InvalidSubnetCidrBlockAssociationIDNotFound
@@ -91431,6 +92370,7 @@ export const disassociateSubnetCidrBlock: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateSubnetCidrBlock",
 }));
+
 export type DisassociateTransitGatewayMulticastDomainError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMulticastDomainIdNotFound
@@ -91458,6 +92398,7 @@ export const disassociateTransitGatewayMulticastDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateTransitGatewayMulticastDomain",
 }));
+
 export type DisassociateTransitGatewayPolicyTableError =
   | RequestLimitExceeded
   | InvalidTransitGatewayPolicyTableIdMalformed
@@ -91487,6 +92428,7 @@ export const disassociateTransitGatewayPolicyTable: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateTransitGatewayPolicyTable",
 }));
+
 export type DisassociateTransitGatewayRouteTableError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -91514,6 +92456,7 @@ export const disassociateTransitGatewayRouteTable: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateTransitGatewayRouteTable",
 }));
+
 export type DisassociateTrunkInterfaceError =
   | RequestLimitExceeded
   | OperationNotPermitted
@@ -91535,6 +92478,7 @@ export const disassociateTrunkInterface: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateTrunkInterface",
 }));
+
 export type DisassociateVpcCidrBlockError =
   | RequestLimitExceeded
   | InvalidVpcCidrBlockAssociationIDNotFound
@@ -91572,6 +92516,7 @@ export const disassociateVpcCidrBlock: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateVpcCidrBlock",
 }));
+
 export type EnableAddressTransferError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -91593,6 +92538,7 @@ export const enableAddressTransfer: API.OperationMethod<
   retry: Retry,
   operationName: "EnableAddressTransfer",
 }));
+
 export type EnableAllowedImagesSettingsError = CommonErrors;
 /**
  * Enables Allowed AMIs for your account in the specified Amazon Web Services Region. Two values are
@@ -91633,6 +92579,7 @@ export const enableAllowedImagesSettings: API.OperationMethod<
   retry: Retry,
   operationName: "EnableAllowedImagesSettings",
 }));
+
 export type EnableAwsNetworkPerformanceMetricSubscriptionError =
   | RequestLimitExceeded
   | MissingParameter
@@ -91654,6 +92601,7 @@ export const enableAwsNetworkPerformanceMetricSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "EnableAwsNetworkPerformanceMetricSubscription",
 }));
+
 export type EnableCapacityManagerError = CommonErrors;
 /**
  * Enables EC2 Capacity Manager for your account. This starts data ingestion for your EC2 capacity usage across On-Demand, Spot, and Capacity Reservations.
@@ -91672,6 +92620,7 @@ export const enableCapacityManager: API.OperationMethod<
   retry: Retry,
   operationName: "EnableCapacityManager",
 }));
+
 export type EnableEbsEncryptionByDefaultError = CommonErrors;
 /**
  * Enables EBS encryption by default for your account in the current Region.
@@ -91701,6 +92650,7 @@ export const enableEbsEncryptionByDefault: API.OperationMethod<
   retry: Retry,
   operationName: "EnableEbsEncryptionByDefault",
 }));
+
 export type EnableFastLaunchError =
   | RequestLimitExceeded
   | InvalidRequest
@@ -91730,6 +92680,7 @@ export const enableFastLaunch: API.OperationMethod<
   retry: Retry,
   operationName: "EnableFastLaunch",
 }));
+
 export type EnableFastSnapshotRestoresError =
   | RequestLimitExceeded
   | MissingParameter
@@ -91756,6 +92707,7 @@ export const enableFastSnapshotRestores: API.OperationMethod<
   retry: Retry,
   operationName: "EnableFastSnapshotRestores",
 }));
+
 export type EnableImageError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -91786,6 +92738,7 @@ export const enableImage: API.OperationMethod<
   retry: Retry,
   operationName: "EnableImage",
 }));
+
 export type EnableImageBlockPublicAccessError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -91817,6 +92770,7 @@ export const enableImageBlockPublicAccess: API.OperationMethod<
   retry: Retry,
   operationName: "EnableImageBlockPublicAccess",
 }));
+
 export type EnableImageDeprecationError =
   | RequestLimitExceeded
   | MissingParameter
@@ -91841,6 +92795,7 @@ export const enableImageDeprecation: API.OperationMethod<
   retry: Retry,
   operationName: "EnableImageDeprecation",
 }));
+
 export type EnableImageDeregistrationProtectionError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -91868,6 +92823,7 @@ export const enableImageDeregistrationProtection: API.OperationMethod<
   retry: Retry,
   operationName: "EnableImageDeregistrationProtection",
 }));
+
 export type EnableInstanceSqlHaStandbyDetectionsError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -91903,6 +92859,7 @@ export const enableInstanceSqlHaStandbyDetections: API.OperationMethod<
   retry: Retry,
   operationName: "EnableInstanceSqlHaStandbyDetections",
 }));
+
 export type EnableIpamOrganizationAdminAccountError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -91924,6 +92881,7 @@ export const enableIpamOrganizationAdminAccount: API.OperationMethod<
   retry: Retry,
   operationName: "EnableIpamOrganizationAdminAccount",
 }));
+
 export type EnableIpamPolicyError =
   | RequestLimitExceeded
   | InvalidIpamPolicyIdMalformed
@@ -91955,6 +92913,7 @@ export const enableIpamPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "EnableIpamPolicy",
 }));
+
 export type EnableReachabilityAnalyzerOrganizationSharingError = CommonErrors;
 /**
  * Establishes a trust relationship between Reachability Analyzer and Organizations.
@@ -91977,6 +92936,7 @@ export const enableReachabilityAnalyzerOrganizationSharing: API.OperationMethod<
   retry: Retry,
   operationName: "EnableReachabilityAnalyzerOrganizationSharing",
 }));
+
 export type EnableRouteServerPropagationError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
@@ -92006,6 +92966,7 @@ export const enableRouteServerPropagation: API.OperationMethod<
   retry: Retry,
   operationName: "EnableRouteServerPropagation",
 }));
+
 export type EnableSerialConsoleAccessError = CommonErrors;
 /**
  * Enables access to the EC2 serial console of all instances for your account. By default,
@@ -92025,6 +92986,7 @@ export const enableSerialConsoleAccess: API.OperationMethod<
   retry: Retry,
   operationName: "EnableSerialConsoleAccess",
 }));
+
 export type EnableSnapshotBlockPublicAccessError =
   | RequestLimitExceeded
   | MissingParameter
@@ -92063,6 +93025,7 @@ export const enableSnapshotBlockPublicAccess: API.OperationMethod<
   retry: Retry,
   operationName: "EnableSnapshotBlockPublicAccess",
 }));
+
 export type EnableTransitGatewayRouteTablePropagationError =
   | RequestLimitExceeded
   | MissingParameter
@@ -92085,6 +93048,7 @@ export const enableTransitGatewayRouteTablePropagation: API.OperationMethod<
   retry: Retry,
   operationName: "EnableTransitGatewayRouteTablePropagation",
 }));
+
 export type EnableVgwRoutePropagationError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -92111,6 +93075,7 @@ export const enableVgwRoutePropagation: API.OperationMethod<
   retry: Retry,
   operationName: "EnableVgwRoutePropagation",
 }));
+
 export type EnableVolumeIOError = CommonErrors;
 /**
  * Enables I/O operations for a volume that had I/O operations disabled because the data on
@@ -92129,6 +93094,7 @@ export const enableVolumeIO: API.OperationMethod<
   retry: Retry,
   operationName: "EnableVolumeIO",
 }));
+
 export type EnableVpcClassicLinkError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -92163,6 +93129,7 @@ export const enableVpcClassicLink: API.OperationMethod<
   retry: Retry,
   operationName: "EnableVpcClassicLink",
 }));
+
 export type EnableVpcClassicLinkDnsSupportError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -92198,6 +93165,7 @@ export const enableVpcClassicLinkDnsSupport: API.OperationMethod<
   retry: Retry,
   operationName: "EnableVpcClassicLinkDnsSupport",
 }));
+
 export type ExportClientVpnClientCertificateRevocationListError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
@@ -92223,6 +93191,7 @@ export const exportClientVpnClientCertificateRevocationList: API.OperationMethod
   retry: Retry,
   operationName: "ExportClientVpnClientCertificateRevocationList",
 }));
+
 export type ExportClientVpnClientConfigurationError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
@@ -92250,6 +93219,7 @@ export const exportClientVpnClientConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "ExportClientVpnClientConfiguration",
 }));
+
 export type ExportImageError =
   | RequestLimitExceeded
   | MissingParameter
@@ -92273,6 +93243,7 @@ export const exportImage: API.OperationMethod<
   retry: Retry,
   operationName: "ExportImage",
 }));
+
 export type ExportTransitGatewayRoutesError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -92303,6 +93274,7 @@ export const exportTransitGatewayRoutes: API.OperationMethod<
   retry: Retry,
   operationName: "ExportTransitGatewayRoutes",
 }));
+
 export type ExportVerifiedAccessInstanceClientConfigurationError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessInstanceIdNotFound
@@ -92328,6 +93300,7 @@ export const exportVerifiedAccessInstanceClientConfiguration: API.OperationMetho
   retry: Retry,
   operationName: "ExportVerifiedAccessInstanceClientConfiguration",
 }));
+
 export type GetActiveVpnTunnelStatusError =
   | RequestLimitExceeded
   | InvalidVpnConnectionIDNotFound
@@ -92353,6 +93326,7 @@ export const getActiveVpnTunnelStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetActiveVpnTunnelStatus",
 }));
+
 export type GetAllowedImagesSettingsError = CommonErrors;
 /**
  * Gets the current state of the Allowed AMIs setting and the list of Allowed AMIs criteria
@@ -92379,6 +93353,7 @@ export const getAllowedImagesSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetAllowedImagesSettings",
 }));
+
 export type GetAssociatedEnclaveCertificateIamRolesError =
   | RequestLimitExceeded
   | InvalidCertificateArnMalformed
@@ -92407,6 +93382,7 @@ export const getAssociatedEnclaveCertificateIamRoles: API.OperationMethod<
   retry: Retry,
   operationName: "GetAssociatedEnclaveCertificateIamRoles",
 }));
+
 export type GetAssociatedIpv6PoolCidrsError =
   | RequestLimitExceeded
   | InvalidIpv6PoolIDMalformed
@@ -92453,6 +93429,7 @@ export const getAssociatedIpv6PoolCidrs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetAwsNetworkPerformanceDataError =
   | RequestLimitExceeded
   | MissingParameter
@@ -92495,6 +93472,7 @@ export const getAwsNetworkPerformanceData: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetCapacityManagerAttributesError = CommonErrors;
 /**
  * Retrieves the current configuration and status of EC2 Capacity Manager for your account, including enablement status, Organizations access settings, and data ingestion status.
@@ -92512,6 +93490,7 @@ export const getCapacityManagerAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "GetCapacityManagerAttributes",
 }));
+
 export type GetCapacityManagerMetricDataError =
   | RequestLimitExceeded
   | MissingParameter
@@ -92555,6 +93534,7 @@ export const getCapacityManagerMetricData: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetCapacityManagerMetricDimensionsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -92598,6 +93578,7 @@ export const getCapacityManagerMetricDimensions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetCapacityManagerMonitoredTagKeysError = CommonErrors;
 /**
  * Retrieves the tag keys that are currently being monitored by EC2 Capacity Manager. Monitored tag keys are included as dimensions in capacity metric data, enabling you to group and filter metrics by tag values.
@@ -92636,6 +93617,7 @@ export const getCapacityManagerMonitoredTagKeys: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetCapacityReservationUsageError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
@@ -92663,6 +93645,7 @@ export const getCapacityReservationUsage: API.OperationMethod<
   retry: Retry,
   operationName: "GetCapacityReservationUsage",
 }));
+
 export type GetCoipPoolUsageError =
   | RequestLimitExceeded
   | InvalidPoolIDMalformed
@@ -92684,6 +93667,7 @@ export const getCoipPoolUsage: API.OperationMethod<
   retry: Retry,
   operationName: "GetCoipPoolUsage",
 }));
+
 export type GetConsoleOutputError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -92717,6 +93701,7 @@ export const getConsoleOutput: API.OperationMethod<
   retry: Retry,
   operationName: "GetConsoleOutput",
 }));
+
 export type GetConsoleScreenshotError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -92749,6 +93734,7 @@ export const getConsoleScreenshot: API.OperationMethod<
   retry: Retry,
   operationName: "GetConsoleScreenshot",
 }));
+
 export type GetDeclarativePoliciesReportSummaryError =
   | RequestLimitExceeded
   | InvalidDeclarativePoliciesReportIdMalformed
@@ -92784,6 +93770,7 @@ export const getDeclarativePoliciesReportSummary: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeclarativePoliciesReportSummary",
 }));
+
 export type GetDefaultCreditSpecificationError =
   | RequestLimitExceeded
   | MissingParameter
@@ -92809,6 +93796,7 @@ export const getDefaultCreditSpecification: API.OperationMethod<
   retry: Retry,
   operationName: "GetDefaultCreditSpecification",
 }));
+
 export type GetEbsDefaultKmsKeyIdError = CommonErrors;
 /**
  * Describes the default KMS key for EBS encryption by default for your account in this Region.
@@ -92829,6 +93817,7 @@ export const getEbsDefaultKmsKeyId: API.OperationMethod<
   retry: Retry,
   operationName: "GetEbsDefaultKmsKeyId",
 }));
+
 export type GetEbsEncryptionByDefaultError = CommonErrors;
 /**
  * Describes whether EBS encryption by default is enabled for your account in the current
@@ -92850,6 +93839,7 @@ export const getEbsEncryptionByDefault: API.OperationMethod<
   retry: Retry,
   operationName: "GetEbsEncryptionByDefault",
 }));
+
 export type GetEnabledIpamPolicyError = CommonErrors;
 /**
  * Gets the enabled IPAM policy.
@@ -92869,6 +93859,7 @@ export const getEnabledIpamPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetEnabledIpamPolicy",
 }));
+
 export type GetFlowLogsIntegrationTemplateError = CommonErrors;
 /**
  * Generates a CloudFormation template that streamlines and automates the integration of VPC flow logs
@@ -92900,6 +93891,7 @@ export const getFlowLogsIntegrationTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetFlowLogsIntegrationTemplate",
 }));
+
 export type GetGroupsForCapacityReservationError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
@@ -92946,6 +93938,7 @@ export const getGroupsForCapacityReservation: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetHostReservationPurchasePreviewError = CommonErrors;
 /**
  * Preview a reservation purchase with configurations that match those of your Dedicated
@@ -92968,6 +93961,7 @@ export const getHostReservationPurchasePreview: API.OperationMethod<
   retry: Retry,
   operationName: "GetHostReservationPurchasePreview",
 }));
+
 export type GetImageAncestryError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -92991,6 +93985,7 @@ export const getImageAncestry: API.OperationMethod<
   retry: Retry,
   operationName: "GetImageAncestry",
 }));
+
 export type GetImageBlockPublicAccessStateError = CommonErrors;
 /**
  * Gets the current state of *block public access for AMIs* at the account
@@ -93012,6 +94007,7 @@ export const getImageBlockPublicAccessState: API.OperationMethod<
   retry: Retry,
   operationName: "GetImageBlockPublicAccessState",
 }));
+
 export type GetInstanceMetadataDefaultsError = CommonErrors;
 /**
  * Gets the default instance metadata service (IMDS) settings that are set at the account
@@ -93034,6 +94030,7 @@ export const getInstanceMetadataDefaults: API.OperationMethod<
   retry: Retry,
   operationName: "GetInstanceMetadataDefaults",
 }));
+
 export type GetInstanceTpmEkPubError =
   | RequestLimitExceeded
   | MissingParameter
@@ -93056,6 +94053,7 @@ export const getInstanceTpmEkPub: API.OperationMethod<
   retry: Retry,
   operationName: "GetInstanceTpmEkPub",
 }));
+
 export type GetInstanceTypesFromInstanceRequirementsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -93109,6 +94107,7 @@ export const getInstanceTypesFromInstanceRequirements: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetInstanceUefiDataError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -93146,6 +94145,7 @@ export const getInstanceUefiData: API.OperationMethod<
   retry: Retry,
   operationName: "GetInstanceUefiData",
 }));
+
 export type GetIpamAddressHistoryError =
   | RequestLimitExceeded
   | InvalidIpamScopeIdNotFound
@@ -93192,6 +94192,7 @@ export const getIpamAddressHistory: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetIpamDiscoveredAccountsError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryIdMalformed
@@ -93240,6 +94241,7 @@ export const getIpamDiscoveredAccounts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetIpamDiscoveredPublicAddressesError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryIdMalformed
@@ -93267,6 +94269,7 @@ export const getIpamDiscoveredPublicAddresses: API.OperationMethod<
   retry: Retry,
   operationName: "GetIpamDiscoveredPublicAddresses",
 }));
+
 export type GetIpamDiscoveredResourceCidrsError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryIdMalformed
@@ -93315,6 +94318,7 @@ export const getIpamDiscoveredResourceCidrs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetIpamPolicyAllocationRulesError =
   | RequestLimitExceeded
   | InvalidIpamPolicyIdMalformed
@@ -93346,6 +94350,7 @@ export const getIpamPolicyAllocationRules: API.OperationMethod<
   retry: Retry,
   operationName: "GetIpamPolicyAllocationRules",
 }));
+
 export type GetIpamPolicyOrganizationTargetsError =
   | RequestLimitExceeded
   | InvalidIpamPolicyIdMalformed
@@ -93377,6 +94382,7 @@ export const getIpamPolicyOrganizationTargets: API.OperationMethod<
   retry: Retry,
   operationName: "GetIpamPolicyOrganizationTargets",
 }));
+
 export type GetIpamPoolAllocationsError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
@@ -93427,6 +94433,7 @@ export const getIpamPoolAllocations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetIpamPoolCidrsError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
@@ -93475,6 +94482,7 @@ export const getIpamPoolCidrs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetIpamPrefixListResolverRulesError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverIdMalformed
@@ -93523,6 +94531,7 @@ export const getIpamPrefixListResolverRules: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetIpamPrefixListResolverVersionEntriesError =
   | RequestLimitExceeded
   | MissingParameter
@@ -93565,6 +94574,7 @@ export const getIpamPrefixListResolverVersionEntries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetIpamPrefixListResolverVersionsError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverIdMalformed
@@ -93640,6 +94650,7 @@ export const getIpamPrefixListResolverVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetIpamResourceCidrsError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
@@ -93688,6 +94699,7 @@ export const getIpamResourceCidrs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetLaunchTemplateDataError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -93721,6 +94733,7 @@ export const getLaunchTemplateData: API.OperationMethod<
   retry: Retry,
   operationName: "GetLaunchTemplateData",
 }));
+
 export type GetManagedPrefixListAssociationsError =
   | RequestLimitExceeded
   | InvalidPrefixListIDNotFound
@@ -93769,6 +94782,7 @@ export const getManagedPrefixListAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetManagedPrefixListEntriesError =
   | RequestLimitExceeded
   | InvalidPrefixListIDNotFound
@@ -93819,6 +94833,7 @@ export const getManagedPrefixListEntries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetManagedResourceVisibilityError = CommonErrors;
 /**
  * Retrieves the managed resource visibility configuration for the account. The response
@@ -93837,6 +94852,7 @@ export const getManagedResourceVisibility: API.OperationMethod<
   retry: Retry,
   operationName: "GetManagedResourceVisibility",
 }));
+
 export type GetNetworkInsightsAccessScopeAnalysisFindingsError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -93879,6 +94895,7 @@ export const getNetworkInsightsAccessScopeAnalysisFindings: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetNetworkInsightsAccessScopeContentError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -93900,6 +94917,7 @@ export const getNetworkInsightsAccessScopeContent: API.OperationMethod<
   retry: Retry,
   operationName: "GetNetworkInsightsAccessScopeContent",
 }));
+
 export type GetPasswordDataError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -93943,6 +94961,7 @@ export const getPasswordData: API.OperationMethod<
   retry: Retry,
   operationName: "GetPasswordData",
 }));
+
 export type GetReservedInstancesExchangeQuoteError =
   | RequestLimitExceeded
   | InvalidReservedInstancesIDNotFound
@@ -93970,6 +94989,7 @@ export const getReservedInstancesExchangeQuote: API.OperationMethod<
   retry: Retry,
   operationName: "GetReservedInstancesExchangeQuote",
 }));
+
 export type GetRouteServerAssociationsError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
@@ -93999,6 +95019,7 @@ export const getRouteServerAssociations: API.OperationMethod<
   retry: Retry,
   operationName: "GetRouteServerAssociations",
 }));
+
 export type GetRouteServerPropagationsError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
@@ -94039,6 +95060,7 @@ export const getRouteServerPropagations: API.OperationMethod<
   retry: Retry,
   operationName: "GetRouteServerPropagations",
 }));
+
 export type GetRouteServerRoutingDatabaseError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
@@ -94077,6 +95099,7 @@ export const getRouteServerRoutingDatabase: API.OperationMethod<
   retry: Retry,
   operationName: "GetRouteServerRoutingDatabase",
 }));
+
 export type GetSecurityGroupsForVpcError =
   | RequestLimitExceeded
   | InvalidVpcIdMalformed
@@ -94125,6 +95148,7 @@ export const getSecurityGroupsForVpc: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetSerialConsoleAccessStatusError = CommonErrors;
 /**
  * Retrieves the access status of your account to the EC2 serial console of all instances. By
@@ -94145,6 +95169,7 @@ export const getSerialConsoleAccessStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetSerialConsoleAccessStatus",
 }));
+
 export type GetSnapshotBlockPublicAccessStateError = CommonErrors;
 /**
  * Gets the current state of *block public access for snapshots* setting
@@ -94166,6 +95191,7 @@ export const getSnapshotBlockPublicAccessState: API.OperationMethod<
   retry: Retry,
   operationName: "GetSnapshotBlockPublicAccessState",
 }));
+
 export type GetSpotPlacementScoresError = CommonErrors;
 /**
  * Calculates the Spot placement score for a Region or Availability Zone based on the
@@ -94213,6 +95239,7 @@ export const getSpotPlacementScores: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetSubnetCidrReservationsError =
   | RequestLimitExceeded
   | InvalidSubnetIDNotFound
@@ -94240,6 +95267,7 @@ export const getSubnetCidrReservations: API.OperationMethod<
   retry: Retry,
   operationName: "GetSubnetCidrReservations",
 }));
+
 export type GetTransitGatewayAttachmentPropagationsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
@@ -94286,6 +95314,7 @@ export const getTransitGatewayAttachmentPropagations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetTransitGatewayMeteringPolicyEntriesError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMeteringPolicyIdNotFound
@@ -94313,6 +95342,7 @@ export const getTransitGatewayMeteringPolicyEntries: API.OperationMethod<
   retry: Retry,
   operationName: "GetTransitGatewayMeteringPolicyEntries",
 }));
+
 export type GetTransitGatewayMulticastDomainAssociationsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMulticastDomainIdMalformed
@@ -94363,6 +95393,7 @@ export const getTransitGatewayMulticastDomainAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetTransitGatewayPolicyTableAssociationsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayPolicyTableIdMalformed
@@ -94411,6 +95442,7 @@ export const getTransitGatewayPolicyTableAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetTransitGatewayPolicyTableEntriesError =
   | RequestLimitExceeded
   | InvalidTransitGatewayPolicyTableIdMalformed
@@ -94438,6 +95470,7 @@ export const getTransitGatewayPolicyTableEntries: API.OperationMethod<
   retry: Retry,
   operationName: "GetTransitGatewayPolicyTableEntries",
 }));
+
 export type GetTransitGatewayPrefixListReferencesError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -94486,6 +95519,7 @@ export const getTransitGatewayPrefixListReferences: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetTransitGatewayRouteTableAssociationsError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -94532,6 +95566,7 @@ export const getTransitGatewayRouteTableAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetTransitGatewayRouteTablePropagationsError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -94578,6 +95613,7 @@ export const getTransitGatewayRouteTablePropagations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetVerifiedAccessEndpointPolicyError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -94605,6 +95641,7 @@ export const getVerifiedAccessEndpointPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetVerifiedAccessEndpointPolicy",
 }));
+
 export type GetVerifiedAccessEndpointTargetsError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessEndpointIdNotFound
@@ -94630,6 +95667,7 @@ export const getVerifiedAccessEndpointTargets: API.OperationMethod<
   retry: Retry,
   operationName: "GetVerifiedAccessEndpointTargets",
 }));
+
 export type GetVerifiedAccessGroupPolicyError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessGroupIdNotFound
@@ -94655,6 +95693,7 @@ export const getVerifiedAccessGroupPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetVerifiedAccessGroupPolicy",
 }));
+
 export type GetVpcResourcesBlockingEncryptionEnforcementError =
   | RequestLimitExceeded
   | InvalidVpcIdMalformed
@@ -94678,6 +95717,7 @@ export const getVpcResourcesBlockingEncryptionEnforcement: API.OperationMethod<
   retry: Retry,
   operationName: "GetVpcResourcesBlockingEncryptionEnforcement",
 }));
+
 export type GetVpnConnectionDeviceSampleConfigurationError =
   | RequestLimitExceeded
   | InvalidVpnConnectionDeviceTypeIdNotFound
@@ -94704,6 +95744,7 @@ export const getVpnConnectionDeviceSampleConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetVpnConnectionDeviceSampleConfiguration",
 }));
+
 export type GetVpnConnectionDeviceTypesError = CommonErrors;
 /**
  * Obtain a list of customer gateway devices for which sample configuration
@@ -94745,6 +95786,7 @@ export const getVpnConnectionDeviceTypes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetVpnTunnelReplacementStatusError =
   | RequestLimitExceeded
   | InvalidVpnConnectionId
@@ -94766,6 +95808,7 @@ export const getVpnTunnelReplacementStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetVpnTunnelReplacementStatus",
 }));
+
 export type ImportClientVpnClientCertificateRevocationListError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
@@ -94793,6 +95836,7 @@ export const importClientVpnClientCertificateRevocationList: API.OperationMethod
   retry: Retry,
   operationName: "ImportClientVpnClientCertificateRevocationList",
 }));
+
 export type ImportImageError =
   | RequestLimitExceeded
   | MissingRequiredParameter
@@ -94832,6 +95876,7 @@ export const importImage: API.OperationMethod<
   retry: Retry,
   operationName: "ImportImage",
 }));
+
 export type ImportInstanceError =
   | RequestLimitExceeded
   | InvalidParameter
@@ -94866,6 +95911,7 @@ export const importInstance: API.OperationMethod<
   retry: Retry,
   operationName: "ImportInstance",
 }));
+
 export type ImportKeyPairError =
   | RequestLimitExceeded
   | InvalidKeyPairDuplicate
@@ -94894,6 +95940,7 @@ export const importKeyPair: API.OperationMethod<
   retry: Retry,
   operationName: "ImportKeyPair",
 }));
+
 export type ImportSnapshotError =
   | RequestLimitExceeded
   | InvalidParameter
@@ -94918,6 +95965,7 @@ export const importSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "ImportSnapshot",
 }));
+
 export type ImportVolumeError = CommonErrors;
 /**
  * This API action supports only single-volume VMs. To import multi-volume VMs, use
@@ -94943,6 +95991,7 @@ export const importVolume: API.OperationMethod<
   retry: Retry,
   operationName: "ImportVolume",
 }));
+
 export type ListImagesInRecycleBinError =
   | RequestLimitExceeded
   | InvalidAMIIDNotFound
@@ -94987,6 +96036,7 @@ export const listImagesInRecycleBin: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSnapshotsInRecycleBinError =
   | RequestLimitExceeded
   | InvalidSnapshotIDMalformed
@@ -95033,6 +96083,7 @@ export const listSnapshotsInRecycleBin: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListVolumesInRecycleBinError =
   | RequestLimitExceeded
   | InvalidVolumeIDMalformed
@@ -95058,6 +96109,7 @@ export const listVolumesInRecycleBin: API.OperationMethod<
   retry: Retry,
   operationName: "ListVolumesInRecycleBin",
 }));
+
 export type LockSnapshotError =
   | RequestLimitExceeded
   | MissingParameter
@@ -95093,6 +96145,7 @@ export const lockSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "LockSnapshot",
 }));
+
 export type ModifyAddressAttributeError =
   | RequestLimitExceeded
   | InvalidAllocationIDNotFound
@@ -95120,6 +96173,7 @@ export const modifyAddressAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyAddressAttribute",
 }));
+
 export type ModifyAvailabilityZoneGroupError =
   | RequestLimitExceeded
   | MissingParameter
@@ -95141,6 +96195,7 @@ export const modifyAvailabilityZoneGroup: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyAvailabilityZoneGroup",
 }));
+
 export type ModifyCapacityReservationError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
@@ -95191,6 +96246,7 @@ export const modifyCapacityReservation: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyCapacityReservation",
 }));
+
 export type ModifyCapacityReservationFleetError =
   | RequestLimitExceeded
   | InvalidCapacityReservationFleetIdMalformed
@@ -95222,6 +96278,7 @@ export const modifyCapacityReservationFleet: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyCapacityReservationFleet",
 }));
+
 export type ModifyClientVpnEndpointError =
   | RequestLimitExceeded
   | InvalidClientVpnEndpointIdNotFound
@@ -95247,6 +96304,7 @@ export const modifyClientVpnEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyClientVpnEndpoint",
 }));
+
 export type ModifyDefaultCreditSpecificationError =
   | RequestLimitExceeded
   | MissingParameter
@@ -95282,6 +96340,7 @@ export const modifyDefaultCreditSpecification: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyDefaultCreditSpecification",
 }));
+
 export type ModifyEbsDefaultKmsKeyIdError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -95313,6 +96372,7 @@ export const modifyEbsDefaultKmsKeyId: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyEbsDefaultKmsKeyId",
 }));
+
 export type ModifyFleetError =
   | RequestLimitExceeded
   | InvalidFleetIdMalformed
@@ -95364,6 +96424,7 @@ export const modifyFleet: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyFleet",
 }));
+
 export type ModifyFpgaImageAttributeError =
   | RequestLimitExceeded
   | InvalidFpgaImageIDMalformed
@@ -95391,6 +96452,7 @@ export const modifyFpgaImageAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyFpgaImageAttribute",
 }));
+
 export type ModifyHostsError = CommonErrors;
 /**
  * Modify the auto-placement setting of a Dedicated Host. When auto-placement is enabled,
@@ -95417,6 +96479,7 @@ export const modifyHosts: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyHosts",
 }));
+
 export type ModifyIdentityIdFormatError = CommonErrors;
 /**
  * Modifies the ID format of a resource for a specified IAM user, IAM role, or the root
@@ -95459,6 +96522,7 @@ export const modifyIdentityIdFormat: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyIdentityIdFormat",
 }));
+
 export type ModifyIdFormatError = CommonErrors;
 /**
  * Modifies the ID format for the specified resource on a per-Region basis. You can
@@ -95502,6 +96566,7 @@ export const modifyIdFormat: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyIdFormat",
 }));
+
 export type ModifyImageAttributeError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -95541,6 +96606,7 @@ export const modifyImageAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyImageAttribute",
 }));
+
 export type ModifyInstanceAttributeError =
   | RequestLimitExceeded
   | InvalidInstanceIDNotFound
@@ -95579,6 +96645,7 @@ export const modifyInstanceAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyInstanceAttribute",
 }));
+
 export type ModifyInstanceCapacityReservationAttributesError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -95603,6 +96670,7 @@ export const modifyInstanceCapacityReservationAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyInstanceCapacityReservationAttributes",
 }));
+
 export type ModifyInstanceConnectEndpointError =
   | RequestLimitExceeded
   | InvalidInstanceConnectEndpointIdMalformed
@@ -95634,6 +96702,7 @@ export const modifyInstanceConnectEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyInstanceConnectEndpoint",
 }));
+
 export type ModifyInstanceCpuOptionsError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -95668,6 +96737,7 @@ export const modifyInstanceCpuOptions: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyInstanceCpuOptions",
 }));
+
 export type ModifyInstanceCreditSpecificationError = CommonErrors;
 /**
  * Modifies the credit option for CPU usage on a running or stopped burstable performance
@@ -95690,6 +96760,7 @@ export const modifyInstanceCreditSpecification: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyInstanceCreditSpecification",
 }));
+
 export type ModifyInstanceEventStartTimeError =
   | RequestLimitExceeded
   | MissingParameter
@@ -95711,6 +96782,7 @@ export const modifyInstanceEventStartTime: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyInstanceEventStartTime",
 }));
+
 export type ModifyInstanceEventWindowError =
   | RequestLimitExceeded
   | InvalidInstanceEventWindowIDNotFound
@@ -95749,6 +96821,7 @@ export const modifyInstanceEventWindow: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyInstanceEventWindow",
 }));
+
 export type ModifyInstanceMaintenanceOptionsError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -95780,6 +96853,7 @@ export const modifyInstanceMaintenanceOptions: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyInstanceMaintenanceOptions",
 }));
+
 export type ModifyInstanceMetadataDefaultsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -95809,6 +96883,7 @@ export const modifyInstanceMetadataDefaults: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyInstanceMetadataDefaults",
 }));
+
 export type ModifyInstanceMetadataOptionsError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -95840,6 +96915,7 @@ export const modifyInstanceMetadataOptions: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyInstanceMetadataOptions",
 }));
+
 export type ModifyInstanceNetworkPerformanceOptionsError =
   | RequestLimitExceeded
   | InvalidAction
@@ -95862,6 +96938,7 @@ export const modifyInstanceNetworkPerformanceOptions: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyInstanceNetworkPerformanceOptions",
 }));
+
 export type ModifyInstancePlacementError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -95908,6 +96985,7 @@ export const modifyInstancePlacement: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyInstancePlacement",
 }));
+
 export type ModifyIpamError =
   | RequestLimitExceeded
   | InvalidParameterCombination
@@ -95933,6 +97011,7 @@ export const modifyIpam: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyIpam",
 }));
+
 export type ModifyIpamPolicyAllocationRulesError =
   | RequestLimitExceeded
   | MissingParameter
@@ -95958,6 +97037,7 @@ export const modifyIpamPolicyAllocationRules: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyIpamPolicyAllocationRules",
 }));
+
 export type ModifyIpamPoolError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
@@ -95985,6 +97065,7 @@ export const modifyIpamPool: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyIpamPool",
 }));
+
 export type ModifyIpamPoolAllocationError = CommonErrors;
 /**
  * Modifies the description of an IPAM pool allocation. For more information, see Modify an IPAM pool allocation in the *Amazon VPC IPAM User Guide*.
@@ -96002,6 +97083,7 @@ export const modifyIpamPoolAllocation: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyIpamPoolAllocation",
 }));
+
 export type ModifyIpamPrefixListResolverError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverIdMalformed
@@ -96029,6 +97111,7 @@ export const modifyIpamPrefixListResolver: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyIpamPrefixListResolver",
 }));
+
 export type ModifyIpamPrefixListResolverTargetError =
   | RequestLimitExceeded
   | InvalidIpamPrefixListResolverTargetIdMalformed
@@ -96054,6 +97137,7 @@ export const modifyIpamPrefixListResolverTarget: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyIpamPrefixListResolverTarget",
 }));
+
 export type ModifyIpamResourceCidrError =
   | RequestLimitExceeded
   | InvalidIpamScopeIdMalformed
@@ -96083,6 +97167,7 @@ export const modifyIpamResourceCidr: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyIpamResourceCidr",
 }));
+
 export type ModifyIpamResourceDiscoveryError =
   | RequestLimitExceeded
   | InvalidIpamResourceDiscoveryIdMalformed
@@ -96110,6 +97195,7 @@ export const modifyIpamResourceDiscovery: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyIpamResourceDiscovery",
 }));
+
 export type ModifyIpamScopeError =
   | RequestLimitExceeded
   | InvalidParameterCombination
@@ -96135,6 +97221,7 @@ export const modifyIpamScope: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyIpamScope",
 }));
+
 export type ModifyLaunchTemplateError =
   | RequestLimitExceeded
   | MissingParameter
@@ -96158,6 +97245,7 @@ export const modifyLaunchTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyLaunchTemplate",
 }));
+
 export type ModifyLocalGatewayRouteError =
   | RequestLimitExceeded
   | MissingParameter
@@ -96179,6 +97267,7 @@ export const modifyLocalGatewayRoute: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyLocalGatewayRoute",
 }));
+
 export type ModifyManagedPrefixListError =
   | RequestLimitExceeded
   | InvalidParameterCombination
@@ -96214,6 +97303,7 @@ export const modifyManagedPrefixList: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyManagedPrefixList",
 }));
+
 export type ModifyManagedResourceVisibilityError = CommonErrors;
 /**
  * Modifies the managed resource visibility configuration for the account. Use this
@@ -96234,6 +97324,7 @@ export const modifyManagedResourceVisibility: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyManagedResourceVisibility",
 }));
+
 export type ModifyNetworkInterfaceAttributeError =
   | RequestLimitExceeded
   | InvalidNetworkInterfaceIDNotFound
@@ -96265,6 +97356,7 @@ export const modifyNetworkInterfaceAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyNetworkInterfaceAttribute",
 }));
+
 export type ModifyPrivateDnsNameOptionsError =
   | RequestLimitExceeded
   | UnknownResource
@@ -96286,6 +97378,7 @@ export const modifyPrivateDnsNameOptions: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyPrivateDnsNameOptions",
 }));
+
 export type ModifyPublicIpDnsNameOptionsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -96307,6 +97400,7 @@ export const modifyPublicIpDnsNameOptions: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyPublicIpDnsNameOptions",
 }));
+
 export type ModifyReservedInstancesError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -96333,6 +97427,7 @@ export const modifyReservedInstances: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyReservedInstances",
 }));
+
 export type ModifyRouteServerError =
   | RequestLimitExceeded
   | InvalidRouteServerIdNotFound
@@ -96373,6 +97468,7 @@ export const modifyRouteServer: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyRouteServer",
 }));
+
 export type ModifySecurityGroupRulesError =
   | RequestLimitExceeded
   | MissingParameter
@@ -96394,6 +97490,7 @@ export const modifySecurityGroupRules: API.OperationMethod<
   retry: Retry,
   operationName: "ModifySecurityGroupRules",
 }));
+
 export type ModifySnapshotAttributeError =
   | RequestLimitExceeded
   | InvalidParameterCombination
@@ -96430,6 +97527,7 @@ export const modifySnapshotAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "ModifySnapshotAttribute",
 }));
+
 export type ModifySnapshotTierError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -96455,6 +97553,7 @@ export const modifySnapshotTier: API.OperationMethod<
   retry: Retry,
   operationName: "ModifySnapshotTier",
 }));
+
 export type ModifySpotFleetRequestError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -96505,6 +97604,7 @@ export const modifySpotFleetRequest: API.OperationMethod<
   retry: Retry,
   operationName: "ModifySpotFleetRequest",
 }));
+
 export type ModifySubnetAttributeError =
   | RequestLimitExceeded
   | InvalidSubnetIDNotFound
@@ -96549,6 +97649,7 @@ export const modifySubnetAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "ModifySubnetAttribute",
 }));
+
 export type ModifyTrafficMirrorFilterNetworkServicesError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -96573,6 +97674,7 @@ export const modifyTrafficMirrorFilterNetworkServices: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyTrafficMirrorFilterNetworkServices",
 }));
+
 export type ModifyTrafficMirrorFilterRuleError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -96603,6 +97705,7 @@ export const modifyTrafficMirrorFilterRule: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyTrafficMirrorFilterRule",
 }));
+
 export type ModifyTrafficMirrorSessionError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -96624,6 +97727,7 @@ export const modifyTrafficMirrorSession: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyTrafficMirrorSession",
 }));
+
 export type ModifyTransitGatewayError =
   | RequestLimitExceeded
   | MissingParameter
@@ -96645,6 +97749,7 @@ export const modifyTransitGateway: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyTransitGateway",
 }));
+
 export type ModifyTransitGatewayMeteringPolicyError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMeteringPolicyIdMalformedException
@@ -96672,6 +97777,7 @@ export const modifyTransitGatewayMeteringPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyTransitGatewayMeteringPolicy",
 }));
+
 export type ModifyTransitGatewayPrefixListReferenceError =
   | RequestLimitExceeded
   | MissingParameter
@@ -96693,6 +97799,7 @@ export const modifyTransitGatewayPrefixListReference: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyTransitGatewayPrefixListReference",
 }));
+
 export type ModifyTransitGatewayVpcAttachmentError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
@@ -96718,6 +97825,7 @@ export const modifyTransitGatewayVpcAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyTransitGatewayVpcAttachment",
 }));
+
 export type ModifyVerifiedAccessEndpointError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -96745,6 +97853,7 @@ export const modifyVerifiedAccessEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVerifiedAccessEndpoint",
 }));
+
 export type ModifyVerifiedAccessEndpointPolicyError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -96772,6 +97881,7 @@ export const modifyVerifiedAccessEndpointPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVerifiedAccessEndpointPolicy",
 }));
+
 export type ModifyVerifiedAccessGroupError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessGroupIdNotFound
@@ -96797,6 +97907,7 @@ export const modifyVerifiedAccessGroup: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVerifiedAccessGroup",
 }));
+
 export type ModifyVerifiedAccessGroupPolicyError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessGroupIdNotFound
@@ -96822,6 +97933,7 @@ export const modifyVerifiedAccessGroupPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVerifiedAccessGroupPolicy",
 }));
+
 export type ModifyVerifiedAccessInstanceError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessInstanceIdNotFound
@@ -96847,6 +97959,7 @@ export const modifyVerifiedAccessInstance: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVerifiedAccessInstance",
 }));
+
 export type ModifyVerifiedAccessInstanceLoggingConfigurationError =
   | RequestLimitExceeded
   | MissingParameter
@@ -96868,6 +97981,7 @@ export const modifyVerifiedAccessInstanceLoggingConfiguration: API.OperationMeth
   retry: Retry,
   operationName: "ModifyVerifiedAccessInstanceLoggingConfiguration",
 }));
+
 export type ModifyVerifiedAccessTrustProviderError =
   | RequestLimitExceeded
   | InvalidVerifiedAccessTrustProviderIdNotFound
@@ -96893,6 +98007,7 @@ export const modifyVerifiedAccessTrustProvider: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVerifiedAccessTrustProvider",
 }));
+
 export type ModifyVolumeError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -96941,6 +98056,7 @@ export const modifyVolume: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVolume",
 }));
+
 export type ModifyVolumeAttributeError =
   | RequestLimitExceeded
   | InvalidVolumeNotFound
@@ -96976,6 +98092,7 @@ export const modifyVolumeAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVolumeAttribute",
 }));
+
 export type ModifyVpcAttributeError =
   | RequestLimitExceeded
   | InvalidParameterCombination
@@ -97003,6 +98120,7 @@ export const modifyVpcAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVpcAttribute",
 }));
+
 export type ModifyVpcBlockPublicAccessExclusionError = CommonErrors;
 /**
  * Modify VPC Block Public Access (BPA) exclusions. A VPC BPA exclusion is a mode that can be applied to a single VPC or subnet that exempts it from the account’s BPA mode and will allow bidirectional or egress-only access. You can create BPA exclusions for VPCs and subnets even when BPA is not enabled on the account to ensure that there is no traffic disruption to the exclusions when VPC BPA is turned on.
@@ -97020,6 +98138,7 @@ export const modifyVpcBlockPublicAccessExclusion: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVpcBlockPublicAccessExclusion",
 }));
+
 export type ModifyVpcBlockPublicAccessOptionsError = CommonErrors;
 /**
  * Modify VPC Block Public Access (BPA) options. VPC Block Public Access (BPA) enables you to block resources in VPCs and subnets that you own in a Region from reaching or being reached from the internet through internet gateways and egress-only internet gateways. To learn more about VPC BPA, see Block public access to VPCs and subnets in the *Amazon VPC User Guide*.
@@ -97037,6 +98156,7 @@ export const modifyVpcBlockPublicAccessOptions: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVpcBlockPublicAccessOptions",
 }));
+
 export type ModifyVpcEncryptionControlError =
   | RequestLimitExceeded
   | InvalidVpcEncryptionControlIdMalformed
@@ -97066,6 +98186,7 @@ export const modifyVpcEncryptionControl: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVpcEncryptionControl",
 }));
+
 export type ModifyVpcEndpointError =
   | RequestLimitExceeded
   | InvalidVpcEndpointIdNotFound
@@ -97094,6 +98215,7 @@ export const modifyVpcEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVpcEndpoint",
 }));
+
 export type ModifyVpcEndpointConnectionNotificationError =
   | RequestLimitExceeded
   | InvalidConnectionNotification
@@ -97122,6 +98244,7 @@ export const modifyVpcEndpointConnectionNotification: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVpcEndpointConnectionNotification",
 }));
+
 export type ModifyVpcEndpointServiceConfigurationError =
   | RequestLimitExceeded
   | InvalidVpcEndpointServiceIdMalformed
@@ -97152,6 +98275,7 @@ export const modifyVpcEndpointServiceConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVpcEndpointServiceConfiguration",
 }));
+
 export type ModifyVpcEndpointServicePayerResponsibilityError =
   | RequestLimitExceeded
   | UnsupportedOperation
@@ -97173,6 +98297,7 @@ export const modifyVpcEndpointServicePayerResponsibility: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVpcEndpointServicePayerResponsibility",
 }));
+
 export type ModifyVpcEndpointServicePermissionsError =
   | RequestLimitExceeded
   | InvalidVpcEndpointServiceIdMalformed
@@ -97206,6 +98331,7 @@ export const modifyVpcEndpointServicePermissions: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVpcEndpointServicePermissions",
 }));
+
 export type ModifyVpcPeeringConnectionOptionsError =
   | RequestLimitExceeded
   | InvalidVpcPeeringConnectionIDNotFound
@@ -97244,6 +98370,7 @@ export const modifyVpcPeeringConnectionOptions: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVpcPeeringConnectionOptions",
 }));
+
 export type ModifyVpcTenancyError =
   | RequestLimitExceeded
   | InvalidVpcIDNotFound
@@ -97280,6 +98407,7 @@ export const modifyVpcTenancy: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVpcTenancy",
 }));
+
 export type ModifyVpnConnectionError =
   | RequestLimitExceeded
   | InvalidVpnConnectionId
@@ -97338,6 +98466,7 @@ export const modifyVpnConnection: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVpnConnection",
 }));
+
 export type ModifyVpnConnectionOptionsError =
   | RequestLimitExceeded
   | InvalidVpnConnectionIDNotFound
@@ -97368,6 +98497,7 @@ export const modifyVpnConnectionOptions: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVpnConnectionOptions",
 }));
+
 export type ModifyVpnTunnelCertificateError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -97389,6 +98519,7 @@ export const modifyVpnTunnelCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVpnTunnelCertificate",
 }));
+
 export type ModifyVpnTunnelOptionsError =
   | RequestLimitExceeded
   | InvalidVpnConnectionId
@@ -97413,6 +98544,7 @@ export const modifyVpnTunnelOptions: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyVpnTunnelOptions",
 }));
+
 export type MonitorInstancesError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -97444,6 +98576,7 @@ export const monitorInstances: API.OperationMethod<
   retry: Retry,
   operationName: "MonitorInstances",
 }));
+
 export type MoveAddressToVpcError =
   | RequestLimitExceeded
   | UnsupportedOperation
@@ -97471,6 +98604,7 @@ export const moveAddressToVpc: API.OperationMethod<
   retry: Retry,
   operationName: "MoveAddressToVpc",
 }));
+
 export type MoveByoipCidrToIpamError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
@@ -97498,6 +98632,7 @@ export const moveByoipCidrToIpam: API.OperationMethod<
   retry: Retry,
   operationName: "MoveByoipCidrToIpam",
 }));
+
 export type MoveCapacityReservationInstancesError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
@@ -97538,6 +98673,7 @@ export const moveCapacityReservationInstances: API.OperationMethod<
   retry: Retry,
   operationName: "MoveCapacityReservationInstances",
 }));
+
 export type ProvisionByoipCidrError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -97570,6 +98706,7 @@ export const provisionByoipCidr: API.OperationMethod<
   retry: Retry,
   operationName: "ProvisionByoipCidr",
 }));
+
 export type ProvisionIpamByoasnError =
   | RequestLimitExceeded
   | MissingParameter
@@ -97591,6 +98728,7 @@ export const provisionIpamByoasn: API.OperationMethod<
   retry: Retry,
   operationName: "ProvisionIpamByoasn",
 }));
+
 export type ProvisionIpamPoolCidrError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
@@ -97620,6 +98758,7 @@ export const provisionIpamPoolCidr: API.OperationMethod<
   retry: Retry,
   operationName: "ProvisionIpamPoolCidr",
 }));
+
 export type ProvisionPublicIpv4PoolCidrError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
@@ -97649,6 +98788,7 @@ export const provisionPublicIpv4PoolCidr: API.OperationMethod<
   retry: Retry,
   operationName: "ProvisionPublicIpv4PoolCidr",
 }));
+
 export type PurchaseCapacityBlockError =
   | RequestLimitExceeded
   | MissingParameter
@@ -97672,6 +98812,7 @@ export const purchaseCapacityBlock: API.OperationMethod<
   retry: Retry,
   operationName: "PurchaseCapacityBlock",
 }));
+
 export type PurchaseCapacityBlockExtensionError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdNotFound
@@ -97698,6 +98839,7 @@ export const purchaseCapacityBlockExtension: API.OperationMethod<
   retry: Retry,
   operationName: "PurchaseCapacityBlockExtension",
 }));
+
 export type PurchaseHostReservationError = CommonErrors;
 /**
  * Purchase a reservation with configurations that match those of your Dedicated Host.
@@ -97718,6 +98860,7 @@ export const purchaseHostReservation: API.OperationMethod<
   retry: Retry,
   operationName: "PurchaseHostReservation",
 }));
+
 export type PurchaseReservedInstancesOfferingError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -97751,6 +98894,7 @@ export const purchaseReservedInstancesOffering: API.OperationMethod<
   retry: Retry,
   operationName: "PurchaseReservedInstancesOffering",
 }));
+
 export type PurchaseScheduledInstancesError =
   | RequestLimitExceeded
   | InvalidPurchaseTokenMalformed
@@ -97785,6 +98929,7 @@ export const purchaseScheduledInstances: API.OperationMethod<
   retry: Retry,
   operationName: "PurchaseScheduledInstances",
 }));
+
 export type RebootInstancesError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -97823,6 +98968,7 @@ export const rebootInstances: API.OperationMethod<
   retry: Retry,
   operationName: "RebootInstances",
 }));
+
 export type RegisterImageError =
   | RequestLimitExceeded
   | InvalidParameterCombination
@@ -97889,6 +99035,7 @@ export const registerImage: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterImage",
 }));
+
 export type RegisterInstanceEventNotificationAttributesError =
   | RequestLimitExceeded
   | MissingParameter
@@ -97913,6 +99060,7 @@ export const registerInstanceEventNotificationAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterInstanceEventNotificationAttributes",
 }));
+
 export type RegisterTransitGatewayMulticastGroupMembersError =
   | RequestLimitExceeded
   | InvalidNetworkInterfaceIdMalformed
@@ -97946,6 +99094,7 @@ export const registerTransitGatewayMulticastGroupMembers: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterTransitGatewayMulticastGroupMembers",
 }));
+
 export type RegisterTransitGatewayMulticastGroupSourcesError =
   | RequestLimitExceeded
   | InvalidNetworkInterfaceIdMalformed
@@ -97980,6 +99129,7 @@ export const registerTransitGatewayMulticastGroupSources: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterTransitGatewayMulticastGroupSources",
 }));
+
 export type RejectCapacityReservationBillingOwnershipError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdMalformed
@@ -98007,6 +99157,7 @@ export const rejectCapacityReservationBillingOwnership: API.OperationMethod<
   retry: Retry,
   operationName: "RejectCapacityReservationBillingOwnership",
 }));
+
 export type RejectTransitGatewayClientVpnAttachmentError = CommonErrors;
 /**
  * Rejects a Transit Gateway attachment request for a Client VPN endpoint. The Transit Gateway owner can reject the attachment request to prevent the Client VPN endpoint from routing traffic through the Transit Gateway.
@@ -98024,6 +99175,7 @@ export const rejectTransitGatewayClientVpnAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "RejectTransitGatewayClientVpnAttachment",
 }));
+
 export type RejectTransitGatewayMulticastDomainAssociationsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -98045,6 +99197,7 @@ export const rejectTransitGatewayMulticastDomainAssociations: API.OperationMetho
   retry: Retry,
   operationName: "RejectTransitGatewayMulticastDomainAssociations",
 }));
+
 export type RejectTransitGatewayPeeringAttachmentError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
@@ -98072,6 +99225,7 @@ export const rejectTransitGatewayPeeringAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "RejectTransitGatewayPeeringAttachment",
 }));
+
 export type RejectTransitGatewayVpcAttachmentError =
   | RequestLimitExceeded
   | InvalidTransitGatewayAttachmentIDNotFound
@@ -98103,6 +99257,7 @@ export const rejectTransitGatewayVpcAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "RejectTransitGatewayVpcAttachment",
 }));
+
 export type RejectVpcEndpointConnectionsError =
   | RequestLimitExceeded
   | InvalidParameter
@@ -98130,6 +99285,7 @@ export const rejectVpcEndpointConnections: API.OperationMethod<
   retry: Retry,
   operationName: "RejectVpcEndpointConnections",
 }));
+
 export type RejectVpcPeeringConnectionError =
   | RequestLimitExceeded
   | InvalidVpcPeeringConnectionIDNotFound
@@ -98162,6 +99318,7 @@ export const rejectVpcPeeringConnection: API.OperationMethod<
   retry: Retry,
   operationName: "RejectVpcPeeringConnection",
 }));
+
 export type ReleaseAddressError =
   | RequestLimitExceeded
   | AuthFailure
@@ -98218,6 +99375,7 @@ export const releaseAddress: API.OperationMethod<
   retry: Retry,
   operationName: "ReleaseAddress",
 }));
+
 export type ReleaseHostsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -98249,6 +99407,7 @@ export const releaseHosts: API.OperationMethod<
   retry: Retry,
   operationName: "ReleaseHosts",
 }));
+
 export type ReleaseIpamPoolAllocationError =
   | RequestLimitExceeded
   | InvalidIpamPoolIdNotFound
@@ -98276,6 +99435,7 @@ export const releaseIpamPoolAllocation: API.OperationMethod<
   retry: Retry,
   operationName: "ReleaseIpamPoolAllocation",
 }));
+
 export type ReplaceIamInstanceProfileAssociationError = CommonErrors;
 /**
  * Replaces an IAM instance profile for the specified running instance. You can use
@@ -98298,6 +99458,7 @@ export const replaceIamInstanceProfileAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "ReplaceIamInstanceProfileAssociation",
 }));
+
 export type ReplaceImageCriteriaInAllowedImagesSettingsError = CommonErrors;
 /**
  * Sets or replaces the criteria for Allowed AMIs.
@@ -98327,6 +99488,7 @@ export const replaceImageCriteriaInAllowedImagesSettings: API.OperationMethod<
   retry: Retry,
   operationName: "ReplaceImageCriteriaInAllowedImagesSettings",
 }));
+
 export type ReplaceNetworkAclAssociationError =
   | RequestLimitExceeded
   | DryRunOperation
@@ -98360,6 +99522,7 @@ export const replaceNetworkAclAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "ReplaceNetworkAclAssociation",
 }));
+
 export type ReplaceNetworkAclEntryError =
   | RequestLimitExceeded
   | InvalidNetworkAclIDNotFound
@@ -98388,6 +99551,7 @@ export const replaceNetworkAclEntry: API.OperationMethod<
   retry: Retry,
   operationName: "ReplaceNetworkAclEntry",
 }));
+
 export type ReplaceRouteError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -98422,6 +99586,7 @@ export const replaceRoute: API.OperationMethod<
   retry: Retry,
   operationName: "ReplaceRoute",
 }));
+
 export type ReplaceRouteTableAssociationError =
   | RequestLimitExceeded
   | InvalidRouteTableAssociationIdMalformed
@@ -98454,6 +99619,7 @@ export const replaceRouteTableAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "ReplaceRouteTableAssociation",
 }));
+
 export type ReplaceTransitGatewayRouteError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -98479,6 +99645,7 @@ export const replaceTransitGatewayRoute: API.OperationMethod<
   retry: Retry,
   operationName: "ReplaceTransitGatewayRoute",
 }));
+
 export type ReplaceVpnTunnelError =
   | RequestLimitExceeded
   | InvalidVpnConnectionId
@@ -98500,6 +99667,7 @@ export const replaceVpnTunnel: API.OperationMethod<
   retry: Retry,
   operationName: "ReplaceVpnTunnel",
 }));
+
 export type ReportInstanceStatusError =
   | RequestLimitExceeded
   | MissingParameter
@@ -98526,6 +99694,7 @@ export const reportInstanceStatus: API.OperationMethod<
   retry: Retry,
   operationName: "ReportInstanceStatus",
 }));
+
 export type RequestSpotFleetError =
   | RequestLimitExceeded
   | MissingParameter
@@ -98578,6 +99747,7 @@ export const requestSpotFleet: API.OperationMethod<
   retry: Retry,
   operationName: "RequestSpotFleet",
 }));
+
 export type RequestSpotInstancesError =
   | RequestLimitExceeded
   | MissingParameter
@@ -98608,6 +99778,7 @@ export const requestSpotInstances: API.OperationMethod<
   retry: Retry,
   operationName: "RequestSpotInstances",
 }));
+
 export type ResetAddressAttributeError =
   | RequestLimitExceeded
   | MissingParameter
@@ -98629,6 +99800,7 @@ export const resetAddressAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "ResetAddressAttribute",
 }));
+
 export type ResetEbsDefaultKmsKeyIdError = CommonErrors;
 /**
  * Resets the default KMS key for EBS encryption for your account in this Region
@@ -98652,6 +99824,7 @@ export const resetEbsDefaultKmsKeyId: API.OperationMethod<
   retry: Retry,
   operationName: "ResetEbsDefaultKmsKeyId",
 }));
+
 export type ResetFpgaImageAttributeError =
   | RequestLimitExceeded
   | InvalidFpgaImageIDMalformed
@@ -98678,6 +99851,7 @@ export const resetFpgaImageAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "ResetFpgaImageAttribute",
 }));
+
 export type ResetImageAttributeError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -98707,6 +99881,7 @@ export const resetImageAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "ResetImageAttribute",
 }));
+
 export type ResetInstanceAttributeError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -98737,6 +99912,7 @@ export const resetInstanceAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "ResetInstanceAttribute",
 }));
+
 export type ResetNetworkInterfaceAttributeError =
   | RequestLimitExceeded
   | InvalidParameterCombination
@@ -98763,6 +99939,7 @@ export const resetNetworkInterfaceAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "ResetNetworkInterfaceAttribute",
 }));
+
 export type ResetSnapshotAttributeError =
   | RequestLimitExceeded
   | InvalidSnapshotNotFound
@@ -98795,6 +99972,7 @@ export const resetSnapshotAttribute: API.OperationMethod<
   retry: Retry,
   operationName: "ResetSnapshotAttribute",
 }));
+
 export type RestoreAddressToClassicError =
   | RequestLimitExceeded
   | UnsupportedOperation
@@ -98818,6 +99996,7 @@ export const restoreAddressToClassic: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreAddressToClassic",
 }));
+
 export type RestoreImageFromRecycleBinError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -98841,6 +100020,7 @@ export const restoreImageFromRecycleBin: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreImageFromRecycleBin",
 }));
+
 export type RestoreManagedPrefixListVersionError =
   | RequestLimitExceeded
   | MissingParameter
@@ -98862,6 +100042,7 @@ export const restoreManagedPrefixListVersion: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreManagedPrefixListVersion",
 }));
+
 export type RestoreSnapshotFromRecycleBinError =
   | RequestLimitExceeded
   | InvalidSnapshotIDMalformed
@@ -98888,6 +100069,7 @@ export const restoreSnapshotFromRecycleBin: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreSnapshotFromRecycleBin",
 }));
+
 export type RestoreSnapshotTierError =
   | RequestLimitExceeded
   | InvalidSnapshotIDMalformed
@@ -98918,6 +100100,7 @@ export const restoreSnapshotTier: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreSnapshotTier",
 }));
+
 export type RestoreVolumeFromRecycleBinError =
   | RequestLimitExceeded
   | InvalidVolumeIDMalformed
@@ -98944,6 +100127,7 @@ export const restoreVolumeFromRecycleBin: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreVolumeFromRecycleBin",
 }));
+
 export type RevokeClientVpnIngressError =
   | RequestLimitExceeded
   | MissingParameter
@@ -98965,6 +100149,7 @@ export const revokeClientVpnIngress: API.OperationMethod<
   retry: Retry,
   operationName: "RevokeClientVpnIngress",
 }));
+
 export type RevokeSecurityGroupEgressError =
   | RequestLimitExceeded
   | InvalidGroupNotFound
@@ -99020,6 +100205,7 @@ export const revokeSecurityGroupEgress: API.OperationMethod<
   retry: Retry,
   operationName: "RevokeSecurityGroupEgress",
 }));
+
 export type RevokeSecurityGroupIngressError =
   | RequestLimitExceeded
   | InvalidGroupNotFound
@@ -99074,6 +100260,7 @@ export const revokeSecurityGroupIngress: API.OperationMethod<
   retry: Retry,
   operationName: "RevokeSecurityGroupIngress",
 }));
+
 export type RunInstancesError =
   | RequestLimitExceeded
   | InvalidAMIIDMalformed
@@ -99156,6 +100343,7 @@ export const runInstances: API.OperationMethod<
   retry: Retry,
   operationName: "RunInstances",
 }));
+
 export type RunScheduledInstancesError =
   | RequestLimitExceeded
   | InvalidScheduledInstance
@@ -99188,6 +100376,7 @@ export const runScheduledInstances: API.OperationMethod<
   retry: Retry,
   operationName: "RunScheduledInstances",
 }));
+
 export type SearchLocalGatewayRoutesError =
   | RequestLimitExceeded
   | InvalidLocalGatewayRouteTableIDNotFound
@@ -99236,6 +100425,7 @@ export const searchLocalGatewayRoutes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchTransitGatewayMulticastGroupsError =
   | RequestLimitExceeded
   | InvalidTransitGatewayMulticastDomainIdMalformed
@@ -99284,6 +100474,7 @@ export const searchTransitGatewayMulticastGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SearchTransitGatewayRoutesError =
   | RequestLimitExceeded
   | InvalidRouteTableIDNotFound
@@ -99332,6 +100523,7 @@ export const searchTransitGatewayRoutes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SendDiagnosticInterruptError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -99373,6 +100565,7 @@ export const sendDiagnosticInterrupt: API.OperationMethod<
   retry: Retry,
   operationName: "SendDiagnosticInterrupt",
 }));
+
 export type StartDeclarativePoliciesReportError =
   | RequestLimitExceeded
   | DeclarativePoliciesAccessDenied
@@ -99436,6 +100629,7 @@ export const startDeclarativePoliciesReport: API.OperationMethod<
   retry: Retry,
   operationName: "StartDeclarativePoliciesReport",
 }));
+
 export type StartInstancesError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -99488,6 +100682,7 @@ export const startInstances: API.OperationMethod<
   retry: Retry,
   operationName: "StartInstances",
 }));
+
 export type StartNetworkInsightsAccessScopeAnalysisError =
   | RequestLimitExceeded
   | IdempotentParameterMismatch
@@ -99515,6 +100710,7 @@ export const startNetworkInsightsAccessScopeAnalysis: API.OperationMethod<
   retry: Retry,
   operationName: "StartNetworkInsightsAccessScopeAnalysis",
 }));
+
 export type StartNetworkInsightsAnalysisError =
   | RequestLimitExceeded
   | InvalidParameterValue
@@ -99543,6 +100739,7 @@ export const startNetworkInsightsAnalysis: API.OperationMethod<
   retry: Retry,
   operationName: "StartNetworkInsightsAnalysis",
 }));
+
 export type StartVpcEndpointServicePrivateDnsVerificationError =
   | RequestLimitExceeded
   | InvalidVpcEndpointServiceIdMalformed
@@ -99575,6 +100772,7 @@ export const startVpcEndpointServicePrivateDnsVerification: API.OperationMethod<
   retry: Retry,
   operationName: "StartVpcEndpointServicePrivateDnsVerification",
 }));
+
 export type StopInstancesError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -99640,6 +100838,7 @@ export const stopInstances: API.OperationMethod<
   retry: Retry,
   operationName: "StopInstances",
 }));
+
 export type TerminateClientVpnConnectionsError =
   | RequestLimitExceeded
   | MissingParameter
@@ -99661,6 +100860,7 @@ export const terminateClientVpnConnections: API.OperationMethod<
   retry: Retry,
   operationName: "TerminateClientVpnConnections",
 }));
+
 export type TerminateInstancesError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -99762,6 +100962,7 @@ export const terminateInstances: API.OperationMethod<
   retry: Retry,
   operationName: "TerminateInstances",
 }));
+
 export type UnassignIpv6AddressesError =
   | RequestLimitExceeded
   | InvalidNetworkInterfaceIDNotFound
@@ -99790,6 +100991,7 @@ export const unassignIpv6Addresses: API.OperationMethod<
   retry: Retry,
   operationName: "UnassignIpv6Addresses",
 }));
+
 export type UnassignPrivateIpAddressesError =
   | RequestLimitExceeded
   | InvalidNetworkInterfaceIDNotFound
@@ -99820,6 +101022,7 @@ export const unassignPrivateIpAddresses: API.OperationMethod<
   retry: Retry,
   operationName: "UnassignPrivateIpAddresses",
 }));
+
 export type UnassignPrivateNatGatewayAddressError = CommonErrors;
 /**
  * Unassigns secondary private IPv4 addresses from a private NAT gateway. You cannot unassign your primary private IP. For more information,
@@ -99847,6 +101050,7 @@ export const unassignPrivateNatGatewayAddress: API.OperationMethod<
   retry: Retry,
   operationName: "UnassignPrivateNatGatewayAddress",
 }));
+
 export type UnlockSnapshotError =
   | RequestLimitExceeded
   | InvalidSnapshotIDMalformed
@@ -99874,6 +101078,7 @@ export const unlockSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "UnlockSnapshot",
 }));
+
 export type UnmonitorInstancesError =
   | RequestLimitExceeded
   | InvalidInstanceIDMalformed
@@ -99903,6 +101108,7 @@ export const unmonitorInstances: API.OperationMethod<
   retry: Retry,
   operationName: "UnmonitorInstances",
 }));
+
 export type UpdateCapacityManagerMonitoredTagKeysError = CommonErrors;
 /**
  * Activates or deactivates tag keys for monitoring by EC2 Capacity Manager. Activated tag keys are included as dimensions in capacity metric data, enabling you to group and filter metrics by tag values.
@@ -99920,6 +101126,7 @@ export const updateCapacityManagerMonitoredTagKeys: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCapacityManagerMonitoredTagKeys",
 }));
+
 export type UpdateCapacityManagerOrganizationsAccessError =
   | RequestLimitExceeded
   | MissingParameter
@@ -99942,6 +101149,7 @@ export const updateCapacityManagerOrganizationsAccess: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCapacityManagerOrganizationsAccess",
 }));
+
 export type UpdateInterruptibleCapacityReservationAllocationError =
   | RequestLimitExceeded
   | InvalidCapacityReservationIdNotFound
@@ -99967,6 +101175,7 @@ export const updateInterruptibleCapacityReservationAllocation: API.OperationMeth
   retry: Retry,
   operationName: "UpdateInterruptibleCapacityReservationAllocation",
 }));
+
 export type UpdateSecurityGroupRuleDescriptionsEgressError =
   | RequestLimitExceeded
   | MissingParameter
@@ -99991,6 +101200,7 @@ export const updateSecurityGroupRuleDescriptionsEgress: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSecurityGroupRuleDescriptionsEgress",
 }));
+
 export type UpdateSecurityGroupRuleDescriptionsIngressError =
   | RequestLimitExceeded
   | MissingParameter
@@ -100015,6 +101225,7 @@ export const updateSecurityGroupRuleDescriptionsIngress: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSecurityGroupRuleDescriptionsIngress",
 }));
+
 export type WithdrawByoipCidrError =
   | RequestLimitExceeded
   | UnauthorizedOperation

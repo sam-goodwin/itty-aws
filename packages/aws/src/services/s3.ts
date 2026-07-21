@@ -3019,228 +3019,243 @@ const rules = T.EndpointResolver((p, _) => {
   return err("A region must be set when sending requests to S3.");
 });
 
-//# Newtypes
+export class AccessDenied extends S.TaggedErrorClass<AccessDenied>()(
+  "AccessDenied",
+  {},
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class AnnotationLimitExceeded extends S.TaggedErrorClass<AnnotationLimitExceeded>()(
+  "AnnotationLimitExceeded",
+  {},
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withThrottlingError) {}
+export class AnnotationNameTooLong extends S.TaggedErrorClass<AnnotationNameTooLong>()(
+  "AnnotationNameTooLong",
+  {},
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class BucketAlreadyExists extends S.TaggedErrorClass<BucketAlreadyExists>()(
+  "BucketAlreadyExists",
+  {},
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class BucketAlreadyOwnedByYou extends S.TaggedErrorClass<BucketAlreadyOwnedByYou>()(
+  "BucketAlreadyOwnedByYou",
+  {},
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class BucketHasAccessPointsAttached extends S.TaggedErrorClass<BucketHasAccessPointsAttached>()(
+  "BucketHasAccessPointsAttached",
+  {},
+).pipe(C.withConflictError) {}
+export class BucketNotEmpty extends S.TaggedErrorClass<BucketNotEmpty>()(
+  "BucketNotEmpty",
+  {},
+).pipe(C.withConflictError) {}
+export class ConditionalRequestConflict extends S.TaggedErrorClass<ConditionalRequestConflict>()(
+  "ConditionalRequestConflict",
+  {},
+).pipe(C.withConflictError, C.withRetryableError) {}
+export class EncryptionTypeMismatch extends S.TaggedErrorClass<EncryptionTypeMismatch>()(
+  "EncryptionTypeMismatch",
+  {},
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class IdempotencyParameterMismatch extends S.TaggedErrorClass<IdempotencyParameterMismatch>()(
+  "IdempotencyParameterMismatch",
+  {},
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class IllegalLocationConstraintException extends S.TaggedErrorClass<IllegalLocationConstraintException>()(
+  "IllegalLocationConstraintException",
+  {},
+).pipe(C.withBadRequestError) {}
+export class InvalidAnnotationName extends S.TaggedErrorClass<InvalidAnnotationName>()(
+  "InvalidAnnotationName",
+  {},
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidArgument extends S.TaggedErrorClass<InvalidArgument>()(
+  "InvalidArgument",
+  {},
+).pipe(C.withBadRequestError) {}
+export class InvalidBucketName extends S.TaggedErrorClass<InvalidBucketName>()(
+  "InvalidBucketName",
+  {},
+).pipe(C.withBadRequestError) {}
+export class InvalidBucketState extends S.TaggedErrorClass<InvalidBucketState>()(
+  "InvalidBucketState",
+  {},
+).pipe(C.withConflictError) {}
+export class InvalidDigest extends S.TaggedErrorClass<InvalidDigest>()(
+  "InvalidDigest",
+  {},
+).pipe(C.withBadRequestError) {}
+export class InvalidLocationConstraint extends S.TaggedErrorClass<InvalidLocationConstraint>()(
+  "InvalidLocationConstraint",
+  {},
+).pipe(C.withBadRequestError) {}
+export class InvalidObjectState extends S.TaggedErrorClass<InvalidObjectState>()(
+  "InvalidObjectState",
+  {
+    StorageClass: S.optional(
+      S.suspend(() => StorageClass).annotate({ identifier: "StorageClass" }),
+    ),
+    AccessTier: S.optional(
+      S.suspend(() => IntelligentTieringAccessTier).annotate({
+        identifier: "IntelligentTieringAccessTier",
+      }),
+    ),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InvalidPrefix extends S.TaggedErrorClass<InvalidPrefix>()(
+  "InvalidPrefix",
+  {},
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidRequest extends S.TaggedErrorClass<InvalidRequest>()(
+  "InvalidRequest",
+  {},
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidWriteOffset extends S.TaggedErrorClass<InvalidWriteOffset>()(
+  "InvalidWriteOffset",
+  {},
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class MalformedPolicy extends S.TaggedErrorClass<MalformedPolicy>()(
+  "MalformedPolicy",
+  {},
+).pipe(C.withBadRequestError) {}
+export class MalformedXML extends S.TaggedErrorClass<MalformedXML>()(
+  "MalformedXML",
+  {},
+).pipe(C.withBadRequestError) {}
+export class NoSuchAnnotation extends S.TaggedErrorClass<NoSuchAnnotation>()(
+  "NoSuchAnnotation",
+  {},
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NoSuchBucket extends S.TaggedErrorClass<NoSuchBucket>()(
+  "NoSuchBucket",
+  { Message: S.optional(S.String), BucketName: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NoSuchBucketPolicy extends S.TaggedErrorClass<NoSuchBucketPolicy>()(
+  "NoSuchBucketPolicy",
+  {},
+) {}
+export class NoSuchConfiguration extends S.TaggedErrorClass<NoSuchConfiguration>()(
+  "NoSuchConfiguration",
+  {},
+) {}
+export class NoSuchCORSConfiguration extends S.TaggedErrorClass<NoSuchCORSConfiguration>()(
+  "NoSuchCORSConfiguration",
+  {},
+) {}
+export class NoSuchKey extends S.TaggedErrorClass<NoSuchKey>()(
+  "NoSuchKey",
+  {},
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NoSuchLifecycleConfiguration extends S.TaggedErrorClass<NoSuchLifecycleConfiguration>()(
+  "NoSuchLifecycleConfiguration",
+  {},
+) {}
+export class NoSuchPublicAccessBlockConfiguration extends S.TaggedErrorClass<NoSuchPublicAccessBlockConfiguration>()(
+  "NoSuchPublicAccessBlockConfiguration",
+  {},
+) {}
+export class NoSuchTagSet extends S.TaggedErrorClass<NoSuchTagSet>()(
+  "NoSuchTagSet",
+  {},
+) {}
+export class NoSuchUpload extends S.TaggedErrorClass<NoSuchUpload>()(
+  "NoSuchUpload",
+  {},
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NoSuchWebsiteConfiguration extends S.TaggedErrorClass<NoSuchWebsiteConfiguration>()(
+  "NoSuchWebsiteConfiguration",
+  {},
+) {}
+export class NotFound extends S.TaggedErrorClass<NotFound>()("NotFound", {}) {}
+export class ObjectAlreadyInActiveTierError extends S.TaggedErrorClass<ObjectAlreadyInActiveTierError>()(
+  "ObjectAlreadyInActiveTierError",
+  {},
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ObjectLockConfigurationNotFoundError extends S.TaggedErrorClass<ObjectLockConfigurationNotFoundError>()(
+  "ObjectLockConfigurationNotFoundError",
+  {},
+) {}
+export class ObjectNotInActiveTierError extends S.TaggedErrorClass<ObjectNotInActiveTierError>()(
+  "ObjectNotInActiveTierError",
+  {},
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class OwnershipControlsNotFoundError extends S.TaggedErrorClass<OwnershipControlsNotFoundError>()(
+  "OwnershipControlsNotFoundError",
+  {},
+) {}
+export class ParseError extends S.TaggedErrorClass<ParseError>()(
+  "ParseError",
+  {},
+) {}
+export class PermanentRedirect extends S.TaggedErrorClass<PermanentRedirect>()(
+  "PermanentRedirect",
+  {
+    BucketRegion: S.optional(S.String).pipe(
+      T.HttpHeader("x-amz-bucket-region"),
+    ),
+    Endpoint: S.optional(S.String),
+    Bucket: S.optional(S.String),
+    Message: S.optional(S.String),
+  },
+) {}
+export class PreconditionFailed extends S.TaggedErrorClass<PreconditionFailed>()(
+  "PreconditionFailed",
+  {},
+).pipe(C.withConflictError) {}
+export class ReplicationConfigurationNotFoundError extends S.TaggedErrorClass<ReplicationConfigurationNotFoundError>()(
+  "ReplicationConfigurationNotFoundError",
+  {},
+) {}
+export class RequestError extends S.TaggedErrorClass<RequestError>()(
+  "RequestError",
+  {},
+) {}
+export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
+  "RequestLimitExceeded",
+  {},
+).pipe(C.withThrottlingError) {}
+export class SignatureDoesNotMatch extends S.TaggedErrorClass<SignatureDoesNotMatch>()(
+  "SignatureDoesNotMatch",
+  {},
+).pipe(C.withAuthError) {}
+export class SlowDown extends S.TaggedErrorClass<SlowDown>()(
+  "SlowDown",
+  {},
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class TooManyParts extends S.TaggedErrorClass<TooManyParts>()(
+  "TooManyParts",
+  {},
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedMediaType extends S.TaggedErrorClass<UnsupportedMediaType>()(
+  "UnsupportedMediaType",
+  {},
+  T.HttpError(415),
+).pipe(C.withBadRequestError) {}
 export type BucketName = string;
 export type ObjectKey = string;
 export type MultipartUploadId = string;
-export type AccountId = string;
-export type IfMatchInitiatedTime = Date;
-export type ETag = string;
-export type ChecksumCRC32 = string;
-export type ChecksumCRC32C = string;
-export type ChecksumCRC64NVME = string;
-export type ChecksumSHA1 = string;
-export type ChecksumSHA256 = string;
-export type ChecksumSHA512 = string;
-export type ChecksumMD5 = string;
-export type ChecksumXXHASH64 = string;
-export type ChecksumXXHASH3 = string;
-export type ChecksumXXHASH128 = string;
-export type PartNumber = number;
-export type MpuObjectSize = number;
-export type IfMatch = string;
-export type IfNoneMatch = string;
-export type SSECustomerAlgorithm = string;
-export type SSECustomerKey = string | redacted.Redacted<string>;
-export type SSECustomerKeyMD5 = string;
-export type Location = string;
-export type Expiration = string;
-export type ObjectVersionId = string;
-export type SSEKMSKeyId = string | redacted.Redacted<string>;
-export type BucketKeyEnabled = boolean;
-export type CacheControl = string;
-export type ContentDisposition = string;
-export type ContentEncoding = string;
-export type ContentLanguage = string;
-export type ContentType = string;
-export type CopySource = string;
-export type CopySourceIfMatch = string;
-export type CopySourceIfModifiedSince = Date;
-export type CopySourceIfNoneMatch = string;
-export type CopySourceIfUnmodifiedSince = Date;
-export type Expires = string;
-export type GrantFullControl = string;
-export type GrantRead = string;
-export type GrantReadACP = string;
-export type GrantWriteACP = string;
-export type MetadataKey = string;
-export type MetadataValue = string;
-export type WebsiteRedirectLocation = string;
-export type SSEKMSEncryptionContext = string | redacted.Redacted<string>;
-export type CopySourceSSECustomerAlgorithm = string;
-export type CopySourceSSECustomerKey = string | redacted.Redacted<string>;
-export type CopySourceSSECustomerKeyMD5 = string;
-export type TaggingHeader = string;
-export type ObjectLockRetainUntilDate = Date;
-export type LastModified = Date;
-export type CopySourceVersionId = string;
-export type LocationNameAsString = string;
-export type Value = string;
-export type GrantWrite = string;
-export type ObjectLockEnabledForBucket = boolean;
-export type S3RegionalOrS3ExpressBucketArnString = string;
-export type ContentMD5 = string;
-export type RecordExpirationDays = number;
-export type KmsKeyArn = string;
-export type Role = string;
-export type S3TablesBucketArn = string;
-export type S3TablesName = string;
-export type AbortDate = Date;
-export type AbortRuleId = string;
-export type AccessKeyIdValue = string;
-export type SessionCredentialValue = string | redacted.Redacted<string>;
-export type SessionExpiration = Date;
-export type AnalyticsId = string;
-export type IntelligentTieringId = string;
-export type InventoryId = string;
-export type MetricsId = string;
-export type MFA = string;
-export type BypassGovernanceRetention = boolean;
-export type IfMatchLastModifiedTime = Date;
-export type IfMatchSize = number;
-export type DeleteMarker = boolean;
-export type AnnotationName = string;
-export type ObjectIfMatch = string;
-export type LastModifiedTime = Date;
-export type Size = number;
-export type Quiet = boolean;
-export type DeleteMarkerVersionId = string;
-export type Code = string;
-export type Message = string;
-export type DisplayName = string;
-export type ID = string;
-export type EmailAddress = string;
-export type URI = string;
-export type Prefix = string;
-export type AllowedHeader = string;
-export type AllowedMethod = string;
-export type AllowedOrigin = string;
-export type ExposeHeader = string;
-export type MaxAgeSeconds = number;
-export type IntelligentTieringDays = number;
-export type IsEnabled = boolean;
-export type Days = number;
-export type ExpiredObjectDeleteMarker = boolean;
-export type ObjectSizeGreaterThanBytes = number;
-export type ObjectSizeLessThanBytes = number;
-export type VersionCount = number;
-export type DaysAfterInitiation = number;
-export type TargetBucket = string;
-export type TargetPrefix = string;
-export type S3TablesNamespace = string;
-export type MetadataTableStatus = string;
-export type ErrorCode = string;
-export type ErrorMessage = string;
-export type S3TablesArn = string;
-export type AccessPointArn = string;
-export type NotificationId = string;
-export type TopicArn = string;
-export type FilterRuleValue = string;
-export type QueueArn = string;
-export type LambdaFunctionArn = string;
-export type Policy = string;
-export type IsPublic = boolean;
-export type Priority = number;
-export type ReplicaKmsKeyID = string;
-export type Minutes = number;
-export type HostName = string;
-export type Suffix = string;
-export type HttpErrorCodeReturnedEquals = string;
-export type KeyPrefixEquals = string;
-export type HttpRedirectCode = string;
-export type ReplaceKeyPrefixWith = string;
-export type ReplaceKeyWith = string;
-export type IfModifiedSince = Date;
-export type IfUnmodifiedSince = Date;
-export type Range = string;
-export type ResponseCacheControl = string;
-export type ResponseContentDisposition = string;
-export type ResponseContentEncoding = string;
-export type ResponseContentLanguage = string;
-export type ResponseContentType = string;
-export type ResponseExpires = Date;
-export type AcceptRanges = string;
-export type Restore = string;
-export type ContentLength = number;
-export type MissingMeta = number;
-export type ContentRange = string;
-export type PartsCount = number;
-export type TagCount = number;
-export type MaxParts = number;
-export type PartNumberMarker = string;
-export type NextPartNumberMarker = string;
-export type IsTruncated = boolean;
-export type ObjectSize = number;
-export type Years = number;
-export type Setting = boolean;
-export type BucketLocationName = string;
-export type Region = string;
-export type AccessPointAlias = boolean;
-export type Token = string;
-export type NextToken = string;
-export type MaxBuckets = number;
-export type BucketRegion = string;
-export type CreationDate = Date;
-export type DirectoryBucketToken = string;
-export type MaxDirectoryBuckets = number;
-export type Delimiter = string;
-export type KeyMarker = string;
-export type MaxUploads = number;
-export type UploadIdMarker = string;
-export type NextKeyMarker = string;
-export type NextUploadIdMarker = string;
-export type Initiated = Date;
-export type MaxAnnotationResults = number;
-export type AnnotationPrefix = string;
-export type AnnotationCount = number;
-export type Marker = string;
-export type MaxKeys = number;
-export type NextMarker = string;
-export type IsRestoreInProgress = boolean;
-export type RestoreExpiryDate = Date;
-export type FetchOwner = boolean;
-export type StartAfter = string;
-export type KeyCount = number;
-export type VersionIdMarker = string;
-export type NextVersionIdMarker = string;
-export type IsLatest = boolean;
-export type SkipValidation = boolean;
-export type ConfirmRemoveSelfBucketAccess = boolean;
-export type ObjectLockToken = string;
-export type WriteOffsetBytes = number;
-export type RenameSource = string;
-export type RenameSourceIfMatch = string;
-export type RenameSourceIfNoneMatch = string;
-export type RenameSourceIfModifiedSince = Date;
-export type RenameSourceIfUnmodifiedSince = Date;
-export type ClientToken = string;
-export type Description = string;
-export type Comments = string;
-export type QuoteEscapeCharacter = string;
-export type RecordDelimiter = string;
-export type FieldDelimiter = string;
-export type QuoteCharacter = string;
-export type AllowQuotedRecordDelimiter = boolean;
-export type Expression = string;
-export type LocationPrefix = string;
-export type KMSContext = string;
-export type RestoreOutputPath = string;
-export type EnableRequestProgress = boolean;
-export type Start = number;
-export type End = number;
-export type Body = Uint8Array;
-export type BytesScanned = number;
-export type BytesProcessed = number;
-export type BytesReturned = number;
-export type NonEmptyKmsKeyArnString = string | redacted.Redacted<string>;
-export type CopySourceRange = string;
-export type RequestRoute = string;
-export type RequestToken = string;
-export type GetObjectResponseStatusCode = number;
-
-//# Schemas
 export type RequestPayer = "requester" | (string & {});
 export const RequestPayer = /*@__PURE__*/ S.String;
+
+export type AccountId = string;
+export type IfMatchInitiatedTime = Date;
 export interface AbortMultipartUploadRequest {
   Bucket: string;
   Key: string;
@@ -3282,6 +3297,7 @@ export const AbortMultipartUploadRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AbortMultipartUploadRequest>;
 export type RequestCharged = "requester" | (string & {});
 export const RequestCharged = /*@__PURE__*/ S.String;
+
 export interface AbortMultipartUploadOutput {
   RequestCharged?: RequestCharged;
 }
@@ -3294,6 +3310,18 @@ export const AbortMultipartUploadOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AbortMultipartUploadOutput",
 }) as any as S.Schema<AbortMultipartUploadOutput>;
+export type ETag = string;
+export type ChecksumCRC32 = string;
+export type ChecksumCRC32C = string;
+export type ChecksumCRC64NVME = string;
+export type ChecksumSHA1 = string;
+export type ChecksumSHA256 = string;
+export type ChecksumSHA512 = string;
+export type ChecksumMD5 = string;
+export type ChecksumXXHASH64 = string;
+export type ChecksumXXHASH3 = string;
+export type ChecksumXXHASH128 = string;
+export type PartNumber = number;
 export interface CompletedPart {
   ETag?: string;
   ChecksumCRC32?: string;
@@ -3341,6 +3369,13 @@ export const CompletedMultipartUpload = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CompletedMultipartUpload>;
 export type ChecksumType = "COMPOSITE" | "FULL_OBJECT" | (string & {});
 export const ChecksumType = /*@__PURE__*/ S.String;
+
+export type MpuObjectSize = number;
+export type IfMatch = string;
+export type IfNoneMatch = string;
+export type SSECustomerAlgorithm = string;
+export type SSECustomerKey = string | redacted.Redacted<string>;
+export type SSECustomerKeyMD5 = string;
 export interface CompleteMultipartUploadRequest {
   Bucket: string;
   Key: string;
@@ -3439,6 +3474,8 @@ export const CompleteMultipartUploadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CompleteMultipartUploadRequest",
 }) as any as S.Schema<CompleteMultipartUploadRequest>;
+export type Location = string;
+export type Expiration = string;
 export type ServerSideEncryption =
   | "AES256"
   | "aws:fsx"
@@ -3446,6 +3483,10 @@ export type ServerSideEncryption =
   | "aws:kms:dsse"
   | (string & {});
 export const ServerSideEncryption = /*@__PURE__*/ S.String;
+
+export type ObjectVersionId = string;
+export type SSEKMSKeyId = string | redacted.Redacted<string>;
+export type BucketKeyEnabled = boolean;
 export interface CompleteMultipartUploadOutput {
   Location?: string;
   Bucket?: string;
@@ -3514,6 +3555,8 @@ export type ObjectCannedACL =
   | "bucket-owner-full-control"
   | (string & {});
 export const ObjectCannedACL = /*@__PURE__*/ S.String;
+
+export type CacheControl = string;
 export type ChecksumAlgorithm =
   | "CRC32"
   | "CRC32C"
@@ -3527,6 +3570,23 @@ export type ChecksumAlgorithm =
   | "XXHASH128"
   | (string & {});
 export const ChecksumAlgorithm = /*@__PURE__*/ S.String;
+
+export type ContentDisposition = string;
+export type ContentEncoding = string;
+export type ContentLanguage = string;
+export type ContentType = string;
+export type CopySource = string;
+export type CopySourceIfMatch = string;
+export type CopySourceIfModifiedSince = Date;
+export type CopySourceIfNoneMatch = string;
+export type CopySourceIfUnmodifiedSince = Date;
+export type Expires = string;
+export type GrantFullControl = string;
+export type GrantRead = string;
+export type GrantReadACP = string;
+export type GrantWriteACP = string;
+export type MetadataKey = string;
+export type MetadataValue = string;
 export type Metadata = { [key: string]: string | undefined };
 export const Metadata = /*@__PURE__*/ S.Record(
   S.String,
@@ -3534,10 +3594,13 @@ export const Metadata = /*@__PURE__*/ S.Record(
 );
 export type MetadataDirective = "COPY" | "REPLACE" | (string & {});
 export const MetadataDirective = /*@__PURE__*/ S.String;
+
 export type TaggingDirective = "COPY" | "REPLACE" | (string & {});
 export const TaggingDirective = /*@__PURE__*/ S.String;
+
 export type AnnotationDirective = "COPY" | "EXCLUDE" | (string & {});
 export const AnnotationDirective = /*@__PURE__*/ S.String;
+
 export type StorageClass =
   | "STANDARD"
   | "REDUCED_REDUNDANCY"
@@ -3554,10 +3617,20 @@ export type StorageClass =
   | "FSX_ONTAP"
   | (string & {});
 export const StorageClass = /*@__PURE__*/ S.String;
+
+export type WebsiteRedirectLocation = string;
+export type SSEKMSEncryptionContext = string | redacted.Redacted<string>;
+export type CopySourceSSECustomerAlgorithm = string;
+export type CopySourceSSECustomerKey = string | redacted.Redacted<string>;
+export type CopySourceSSECustomerKeyMD5 = string;
+export type TaggingHeader = string;
 export type ObjectLockMode = "GOVERNANCE" | "COMPLIANCE" | (string & {});
 export const ObjectLockMode = /*@__PURE__*/ S.String;
+
+export type ObjectLockRetainUntilDate = Date;
 export type ObjectLockLegalHoldStatus = "ON" | "OFF" | (string & {});
 export const ObjectLockLegalHoldStatus = /*@__PURE__*/ S.String;
+
 export interface CopyObjectRequest {
   ACL?: ObjectCannedACL;
   Bucket: string;
@@ -3734,6 +3807,7 @@ export const CopyObjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyObjectRequest",
 }) as any as S.Schema<CopyObjectRequest>;
+export type LastModified = Date;
 export interface CopyObjectResult {
   ETag?: string;
   LastModified?: Date;
@@ -3768,6 +3842,7 @@ export const CopyObjectResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyObjectResult",
 }) as any as S.Schema<CopyObjectResult>;
+export type CopySourceVersionId = string;
 export interface CopyObjectOutput {
   CopyObjectResult?: CopyObjectResult;
   Expiration?: string;
@@ -3823,6 +3898,7 @@ export type BucketCannedACL =
   | "authenticated-read"
   | (string & {});
 export const BucketCannedACL = /*@__PURE__*/ S.String;
+
 export type BucketLocationConstraint =
   | "af-south-1"
   | "ap-east-1"
@@ -3864,8 +3940,11 @@ export type BucketLocationConstraint =
   | "us-west-2"
   | (string & {});
 export const BucketLocationConstraint = /*@__PURE__*/ S.String;
+
 export type LocationType = "AvailabilityZone" | "LocalZone" | (string & {});
 export const LocationType = /*@__PURE__*/ S.String;
+
+export type LocationNameAsString = string;
 export interface LocationInfo {
   Type?: LocationType;
   Name?: string;
@@ -3878,8 +3957,10 @@ export type DataRedundancy =
   | "SingleLocalZone"
   | (string & {});
 export const DataRedundancy = /*@__PURE__*/ S.String;
+
 export type BucketType = "Directory" | (string & {});
 export const BucketType = /*@__PURE__*/ S.String;
+
 export interface BucketInfo {
   DataRedundancy?: DataRedundancy;
   Type?: BucketType;
@@ -3890,6 +3971,7 @@ export const BucketInfo = /*@__PURE__*/ S.suspend(() =>
     Type: S.optional(BucketType),
   }),
 ).annotate({ identifier: "BucketInfo" }) as any as S.Schema<BucketInfo>;
+export type Value = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -3917,14 +3999,18 @@ export const CreateBucketConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBucketConfiguration",
 }) as any as S.Schema<CreateBucketConfiguration>;
+export type GrantWrite = string;
+export type ObjectLockEnabledForBucket = boolean;
 export type ObjectOwnership =
   | "BucketOwnerPreferred"
   | "ObjectWriter"
   | "BucketOwnerEnforced"
   | (string & {});
 export const ObjectOwnership = /*@__PURE__*/ S.String;
+
 export type BucketNamespace = "account-regional" | "global" | (string & {});
 export const BucketNamespace = /*@__PURE__*/ S.String;
+
 export interface CreateBucketRequest {
   ACL?: BucketCannedACL;
   Bucket: string;
@@ -3983,6 +4069,7 @@ export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBucketRequest",
 }) as any as S.Schema<CreateBucketRequest>;
+export type S3RegionalOrS3ExpressBucketArnString = string;
 export interface CreateBucketOutput {
   Location?: string;
   BucketArn?: string;
@@ -3995,8 +4082,11 @@ export const CreateBucketOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBucketOutput",
 }) as any as S.Schema<CreateBucketOutput>;
+export type ContentMD5 = string;
 export type ExpirationState = "ENABLED" | "DISABLED" | (string & {});
 export const ExpirationState = /*@__PURE__*/ S.String;
+
+export type RecordExpirationDays = number;
 export interface RecordExpiration {
   Expiration: ExpirationState;
   Days?: number;
@@ -4008,6 +4098,8 @@ export const RecordExpiration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordExpiration>;
 export type TableSseAlgorithm = "aws:kms" | "AES256" | (string & {});
 export const TableSseAlgorithm = /*@__PURE__*/ S.String;
+
+export type KmsKeyArn = string;
 export interface MetadataTableEncryptionConfiguration {
   SseAlgorithm: TableSseAlgorithm;
   KmsKeyArn?: string;
@@ -4038,6 +4130,7 @@ export type InventoryConfigurationState =
   | "DISABLED"
   | (string & {});
 export const InventoryConfigurationState = /*@__PURE__*/ S.String;
+
 export interface InventoryTableConfiguration {
   ConfigurationState: InventoryConfigurationState;
   EncryptionConfiguration?: MetadataTableEncryptionConfiguration;
@@ -4055,6 +4148,8 @@ export type AnnotationConfigurationState =
   | "DISABLED"
   | (string & {});
 export const AnnotationConfigurationState = /*@__PURE__*/ S.String;
+
+export type Role = string;
 export interface AnnotationTableConfiguration {
   ConfigurationState: AnnotationConfigurationState;
   EncryptionConfiguration?: MetadataTableEncryptionConfiguration;
@@ -4129,6 +4224,8 @@ export const CreateBucketMetadataConfigurationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "CreateBucketMetadataConfigurationResponse",
   }) as any as S.Schema<CreateBucketMetadataConfigurationResponse>;
+export type S3TablesBucketArn = string;
+export type S3TablesName = string;
 export interface S3TablesDestination {
   TableBucketArn: string;
   TableName: string;
@@ -4316,6 +4413,8 @@ export const CreateMultipartUploadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMultipartUploadRequest",
 }) as any as S.Schema<CreateMultipartUploadRequest>;
+export type AbortDate = Date;
+export type AbortRuleId = string;
 export interface CreateMultipartUploadOutput {
   AbortDate?: Date;
   AbortRuleId?: string;
@@ -4374,6 +4473,7 @@ export const CreateMultipartUploadOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateMultipartUploadOutput>;
 export type SessionMode = "ReadOnly" | "ReadWrite" | (string & {});
 export const SessionMode = /*@__PURE__*/ S.String;
+
 export interface CreateSessionRequest {
   SessionMode?: SessionMode;
   Bucket: string;
@@ -4415,6 +4515,9 @@ export const CreateSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSessionRequest",
 }) as any as S.Schema<CreateSessionRequest>;
+export type AccessKeyIdValue = string;
+export type SessionCredentialValue = string | redacted.Redacted<string>;
+export type SessionExpiration = Date;
 export interface SessionCredentials {
   AccessKeyId: string;
   SecretAccessKey: string | redacted.Redacted<string>;
@@ -4490,6 +4593,7 @@ export const DeleteBucketResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteBucketResponse",
 }) as any as S.Schema<DeleteBucketResponse>;
+export type AnalyticsId = string;
 export interface DeleteBucketAnalyticsConfigurationRequest {
   Bucket: string;
   Id: string;
@@ -4585,6 +4689,7 @@ export const DeleteBucketEncryptionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteBucketEncryptionResponse",
 }) as any as S.Schema<DeleteBucketEncryptionResponse>;
+export type IntelligentTieringId = string;
 export interface DeleteBucketIntelligentTieringConfigurationRequest {
   Bucket: string;
   Id: string;
@@ -4618,6 +4723,7 @@ export const DeleteBucketIntelligentTieringConfigurationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "DeleteBucketIntelligentTieringConfigurationResponse",
   }) as any as S.Schema<DeleteBucketIntelligentTieringConfigurationResponse>;
+export type InventoryId = string;
 export interface DeleteBucketInventoryConfigurationRequest {
   Bucket: string;
   Id: string;
@@ -4744,6 +4850,7 @@ export const DeleteBucketMetadataTableConfigurationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "DeleteBucketMetadataTableConfigurationResponse",
   }) as any as S.Schema<DeleteBucketMetadataTableConfigurationResponse>;
+export type MetricsId = string;
 export interface DeleteBucketMetricsConfigurationRequest {
   Bucket: string;
   Id: string;
@@ -4934,6 +5041,10 @@ export const DeleteBucketWebsiteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteBucketWebsiteResponse",
 }) as any as S.Schema<DeleteBucketWebsiteResponse>;
+export type MFA = string;
+export type BypassGovernanceRetention = boolean;
+export type IfMatchLastModifiedTime = Date;
+export type IfMatchSize = number;
 export interface DeleteObjectRequest {
   Bucket: string;
   Key: string;
@@ -4980,6 +5091,7 @@ export const DeleteObjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteObjectRequest",
 }) as any as S.Schema<DeleteObjectRequest>;
+export type DeleteMarker = boolean;
 export interface DeleteObjectOutput {
   DeleteMarker?: boolean;
   VersionId?: string;
@@ -4998,6 +5110,8 @@ export const DeleteObjectOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteObjectOutput",
 }) as any as S.Schema<DeleteObjectOutput>;
+export type AnnotationName = string;
+export type ObjectIfMatch = string;
 export interface DeleteObjectAnnotationRequest {
   Bucket: string;
   Key: string;
@@ -5052,6 +5166,8 @@ export const DeleteObjectAnnotationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteObjectAnnotationOutput",
 }) as any as S.Schema<DeleteObjectAnnotationOutput>;
+export type LastModifiedTime = Date;
+export type Size = number;
 export interface ObjectIdentifier {
   Key: string;
   VersionId?: string;
@@ -5072,6 +5188,7 @@ export const ObjectIdentifier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ObjectIdentifier>;
 export type ObjectIdentifierList = ObjectIdentifier[];
 export const ObjectIdentifierList = /*@__PURE__*/ S.Array(ObjectIdentifier);
+export type Quiet = boolean;
 export interface Delete {
   Objects: ObjectIdentifier[];
   Quiet?: boolean;
@@ -5128,6 +5245,7 @@ export const DeleteObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteObjectsRequest",
 }) as any as S.Schema<DeleteObjectsRequest>;
+export type DeleteMarkerVersionId = string;
 export interface DeletedObject {
   Key?: string;
   VersionId?: string;
@@ -5144,6 +5262,8 @@ export const DeletedObject = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DeletedObject" }) as any as S.Schema<DeletedObject>;
 export type DeletedObjects = DeletedObject[];
 export const DeletedObjects = /*@__PURE__*/ S.Array(DeletedObject);
+export type Code = string;
+export type Message = string;
 export interface Error {
   Key?: string;
   VersionId?: string;
@@ -5271,6 +5391,7 @@ export const GetBucketAbacRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBucketAbacRequest>;
 export type BucketAbacStatus = "Enabled" | "Disabled" | (string & {});
 export const BucketAbacStatus = /*@__PURE__*/ S.String;
+
 export interface AbacStatus {
   Status?: BucketAbacStatus;
 }
@@ -5321,6 +5442,7 @@ export const GetBucketAccelerateConfigurationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetBucketAccelerateConfigurationRequest>;
 export type BucketAccelerateStatus = "Enabled" | "Suspended" | (string & {});
 export const BucketAccelerateStatus = /*@__PURE__*/ S.String;
+
 export interface GetBucketAccelerateConfigurationOutput {
   Status?: BucketAccelerateStatus;
   RequestCharged?: RequestCharged;
@@ -5361,6 +5483,8 @@ export const GetBucketAclRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketAclRequest",
 }) as any as S.Schema<GetBucketAclRequest>;
+export type DisplayName = string;
+export type ID = string;
 export interface Owner {
   DisplayName?: string;
   ID?: string;
@@ -5368,12 +5492,15 @@ export interface Owner {
 export const Owner = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ DisplayName: S.optional(S.String), ID: S.optional(S.String) }),
 ).annotate({ identifier: "Owner" }) as any as S.Schema<Owner>;
+export type EmailAddress = string;
+export type URI = string;
 export type Type =
   | "CanonicalUser"
   | "AmazonCustomerByEmail"
   | "Group"
   | (string & {});
 export const Type = /*@__PURE__*/ S.String;
+
 export interface Grantee {
   DisplayName?: string;
   EmailAddress?: string;
@@ -5398,6 +5525,7 @@ export type Permission =
   | "READ_ACP"
   | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
+
 export interface Grant {
   Grantee?: Grantee;
   Permission?: Permission;
@@ -5455,6 +5583,7 @@ export const GetBucketAnalyticsConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetBucketAnalyticsConfigurationRequest",
 }) as any as S.Schema<GetBucketAnalyticsConfigurationRequest>;
+export type Prefix = string;
 export interface AnalyticsAndOperator {
   Prefix?: string;
   Tags?: Tag[];
@@ -5478,8 +5607,10 @@ export const AnalyticsFilter = /*@__PURE__*/ S.Union([
 ]);
 export type StorageClassAnalysisSchemaVersion = "V_1" | (string & {});
 export const StorageClassAnalysisSchemaVersion = /*@__PURE__*/ S.String;
+
 export type AnalyticsS3ExportFileFormat = "CSV" | (string & {});
 export const AnalyticsS3ExportFileFormat = /*@__PURE__*/ S.String;
+
 export interface AnalyticsS3BucketDestination {
   Format: AnalyticsS3ExportFileFormat;
   BucketAccountId?: string;
@@ -5576,14 +5707,19 @@ export const GetBucketCorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketCorsRequest",
 }) as any as S.Schema<GetBucketCorsRequest>;
+export type AllowedHeader = string;
 export type AllowedHeaders = string[];
 export const AllowedHeaders = /*@__PURE__*/ S.Array(S.String);
+export type AllowedMethod = string;
 export type AllowedMethods = string[];
 export const AllowedMethods = /*@__PURE__*/ S.Array(S.String);
+export type AllowedOrigin = string;
 export type AllowedOrigins = string[];
 export const AllowedOrigins = /*@__PURE__*/ S.Array(S.String);
+export type ExposeHeader = string;
 export type ExposeHeaders = string[];
 export const ExposeHeaders = /*@__PURE__*/ S.Array(S.String);
+export type MaxAgeSeconds = number;
 export interface CORSRule {
   ID?: string;
   AllowedHeaders?: string[];
@@ -5668,6 +5804,7 @@ export const ServerSideEncryptionByDefault = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ServerSideEncryptionByDefault>;
 export type EncryptionType = "NONE" | "SSE-C" | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
+
 export type EncryptionTypeList = EncryptionType[];
 export const EncryptionTypeList = /*@__PURE__*/ S.Array(
   EncryptionType.pipe(T.XmlName("EncryptionType")),
@@ -5785,11 +5922,14 @@ export const IntelligentTieringFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IntelligentTieringFilter>;
 export type IntelligentTieringStatus = "Enabled" | "Disabled" | (string & {});
 export const IntelligentTieringStatus = /*@__PURE__*/ S.String;
+
+export type IntelligentTieringDays = number;
 export type IntelligentTieringAccessTier =
   | "ARCHIVE_ACCESS"
   | "DEEP_ARCHIVE_ACCESS"
   | (string & {});
 export const IntelligentTieringAccessTier = /*@__PURE__*/ S.String;
+
 export interface Tiering {
   Days: number;
   AccessTier: IntelligentTieringAccessTier;
@@ -5863,6 +6003,7 @@ export const GetBucketInventoryConfigurationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetBucketInventoryConfigurationRequest>;
 export type InventoryFormat = "CSV" | "ORC" | "Parquet" | (string & {});
 export const InventoryFormat = /*@__PURE__*/ S.String;
+
 export interface SSES3 {}
 export const SSES3 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.XmlName("SSE-S3")),
@@ -5915,6 +6056,7 @@ export const InventoryDestination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InventoryDestination",
 }) as any as S.Schema<InventoryDestination>;
+export type IsEnabled = boolean;
 export interface InventoryFilter {
   Prefix: string;
 }
@@ -5925,6 +6067,7 @@ export const InventoryFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InventoryFilter>;
 export type InventoryIncludedObjectVersions = "All" | "Current" | (string & {});
 export const InventoryIncludedObjectVersions = /*@__PURE__*/ S.String;
+
 export type InventoryOptionalField =
   | "Size"
   | "LastModifiedDate"
@@ -5944,12 +6087,14 @@ export type InventoryOptionalField =
   | "LifecycleExpirationDate"
   | (string & {});
 export const InventoryOptionalField = /*@__PURE__*/ S.String;
+
 export type InventoryOptionalFields = InventoryOptionalField[];
 export const InventoryOptionalFields = /*@__PURE__*/ S.Array(
   InventoryOptionalField.pipe(T.XmlName("Field")),
 );
 export type InventoryFrequency = "Daily" | "Weekly" | (string & {});
 export const InventoryFrequency = /*@__PURE__*/ S.String;
+
 export interface InventorySchedule {
   Frequency: InventoryFrequency;
 }
@@ -6019,6 +6164,8 @@ export const GetBucketLifecycleConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetBucketLifecycleConfigurationRequest",
 }) as any as S.Schema<GetBucketLifecycleConfigurationRequest>;
+export type Days = number;
+export type ExpiredObjectDeleteMarker = boolean;
 export interface LifecycleExpiration {
   Date?: Date;
   Days?: number;
@@ -6033,6 +6180,8 @@ export const LifecycleExpiration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LifecycleExpiration",
 }) as any as S.Schema<LifecycleExpiration>;
+export type ObjectSizeGreaterThanBytes = number;
+export type ObjectSizeLessThanBytes = number;
 export interface LifecycleRuleAndOperator {
   Prefix?: string;
   Tags?: Tag[];
@@ -6069,6 +6218,7 @@ export const LifecycleRuleFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LifecycleRuleFilter>;
 export type ExpirationStatus = "Enabled" | "Disabled" | (string & {});
 export const ExpirationStatus = /*@__PURE__*/ S.String;
+
 export type TransitionStorageClass =
   | "GLACIER"
   | "STANDARD_IA"
@@ -6078,6 +6228,7 @@ export type TransitionStorageClass =
   | "GLACIER_IR"
   | (string & {});
 export const TransitionStorageClass = /*@__PURE__*/ S.String;
+
 export interface Transition {
   Date?: Date;
   Days?: number;
@@ -6092,6 +6243,7 @@ export const Transition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Transition" }) as any as S.Schema<Transition>;
 export type TransitionList = Transition[];
 export const TransitionList = /*@__PURE__*/ S.Array(Transition);
+export type VersionCount = number;
 export interface NoncurrentVersionTransition {
   NoncurrentDays?: number;
   StorageClass?: TransitionStorageClass;
@@ -6122,6 +6274,7 @@ export const NoncurrentVersionExpiration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NoncurrentVersionExpiration",
 }) as any as S.Schema<NoncurrentVersionExpiration>;
+export type DaysAfterInitiation = number;
 export interface AbortIncompleteMultipartUpload {
   DaysAfterInitiation?: number;
 }
@@ -6166,6 +6319,7 @@ export type TransitionDefaultMinimumObjectSize =
   | "all_storage_classes_128K"
   | (string & {});
 export const TransitionDefaultMinimumObjectSize = /*@__PURE__*/ S.String;
+
 export interface GetBucketLifecycleConfigurationOutput {
   Rules?: LifecycleRule[];
   TransitionDefaultMinimumObjectSize?: TransitionDefaultMinimumObjectSize;
@@ -6244,12 +6398,14 @@ export const GetBucketLoggingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketLoggingRequest",
 }) as any as S.Schema<GetBucketLoggingRequest>;
+export type TargetBucket = string;
 export type BucketLogsPermission =
   | "FULL_CONTROL"
   | "READ"
   | "WRITE"
   | (string & {});
 export const BucketLogsPermission = /*@__PURE__*/ S.String;
+
 export interface TargetGrant {
   Grantee?: Grantee;
   Permission?: BucketLogsPermission;
@@ -6264,12 +6420,14 @@ export type TargetGrants = TargetGrant[];
 export const TargetGrants = /*@__PURE__*/ S.Array(
   TargetGrant.pipe(T.XmlName("Grant")).annotate({ identifier: "TargetGrant" }),
 );
+export type TargetPrefix = string;
 export interface SimplePrefix {}
 export const SimplePrefix = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.XmlName("SimplePrefix")),
 ).annotate({ identifier: "SimplePrefix" }) as any as S.Schema<SimplePrefix>;
 export type PartitionDateSource = "EventTime" | "DeliveryTime" | (string & {});
 export const PartitionDateSource = /*@__PURE__*/ S.String;
+
 export interface PartitionedPrefix {
   PartitionDateSource?: PartitionDateSource;
 }
@@ -6348,6 +6506,8 @@ export const GetBucketMetadataConfigurationRequest = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<GetBucketMetadataConfigurationRequest>;
 export type S3TablesBucketType = "aws" | "customer" | (string & {});
 export const S3TablesBucketType = /*@__PURE__*/ S.String;
+
+export type S3TablesNamespace = string;
 export interface DestinationResult {
   TableBucketType?: S3TablesBucketType;
   TableBucketArn?: string;
@@ -6362,6 +6522,9 @@ export const DestinationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DestinationResult",
 }) as any as S.Schema<DestinationResult>;
+export type MetadataTableStatus = string;
+export type ErrorCode = string;
+export type ErrorMessage = string;
 export interface ErrorDetails {
   ErrorCode?: string;
   ErrorMessage?: string;
@@ -6372,6 +6535,7 @@ export const ErrorDetails = /*@__PURE__*/ S.suspend(() =>
     ErrorMessage: S.optional(S.String),
   }),
 ).annotate({ identifier: "ErrorDetails" }) as any as S.Schema<ErrorDetails>;
+export type S3TablesArn = string;
 export interface JournalTableConfigurationResult {
   TableStatus: string;
   Error?: ErrorDetails;
@@ -6584,6 +6748,7 @@ export const GetBucketMetricsConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetBucketMetricsConfigurationRequest",
 }) as any as S.Schema<GetBucketMetricsConfigurationRequest>;
+export type AccessPointArn = string;
 export interface MetricsAndOperator {
   Prefix?: string;
   Tags?: Tag[];
@@ -6661,6 +6826,8 @@ export const GetBucketNotificationConfigurationRequest =
   ).annotate({
     identifier: "GetBucketNotificationConfigurationRequest",
   }) as any as S.Schema<GetBucketNotificationConfigurationRequest>;
+export type NotificationId = string;
+export type TopicArn = string;
 export type Event =
   | "s3:ReducedRedundancyLostObject"
   | "s3:ObjectCreated:*"
@@ -6694,10 +6861,13 @@ export type Event =
   | "s3:ObjectAnnotation:Delete"
   | (string & {});
 export const Event = /*@__PURE__*/ S.String;
+
 export type EventList = Event[];
 export const EventList = /*@__PURE__*/ S.Array(Event);
 export type FilterRuleName = "prefix" | "suffix" | (string & {});
 export const FilterRuleName = /*@__PURE__*/ S.String;
+
+export type FilterRuleValue = string;
 export interface FilterRule {
   Name?: FilterRuleName;
   Value?: string;
@@ -6748,6 +6918,7 @@ export const TopicConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TopicConfiguration>;
 export type TopicConfigurationList = TopicConfiguration[];
 export const TopicConfigurationList = /*@__PURE__*/ S.Array(TopicConfiguration);
+export type QueueArn = string;
 export interface QueueConfiguration {
   Id?: string;
   QueueArn: string;
@@ -6766,6 +6937,7 @@ export const QueueConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QueueConfiguration>;
 export type QueueConfigurationList = QueueConfiguration[];
 export const QueueConfigurationList = /*@__PURE__*/ S.Array(QueueConfiguration);
+export type LambdaFunctionArn = string;
 export interface LambdaFunctionConfiguration {
   Id?: string;
   LambdaFunctionArn: string;
@@ -6900,6 +7072,7 @@ export const GetBucketPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketPolicyRequest",
 }) as any as S.Schema<GetBucketPolicyRequest>;
+export type Policy = string;
 export interface GetBucketPolicyOutput {
   Policy?: string;
 }
@@ -6933,6 +7106,7 @@ export const GetBucketPolicyStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketPolicyStatusRequest",
 }) as any as S.Schema<GetBucketPolicyStatusRequest>;
+export type IsPublic = boolean;
 export interface PolicyStatus {
   IsPublic?: boolean;
 }
@@ -6976,6 +7150,7 @@ export const GetBucketReplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketReplicationRequest",
 }) as any as S.Schema<GetBucketReplicationRequest>;
+export type Priority = number;
 export interface ReplicationRuleAndOperator {
   Prefix?: string;
   Tags?: Tag[];
@@ -7004,11 +7179,13 @@ export const ReplicationRuleFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationRuleFilter>;
 export type ReplicationRuleStatus = "Enabled" | "Disabled" | (string & {});
 export const ReplicationRuleStatus = /*@__PURE__*/ S.String;
+
 export type SseKmsEncryptedObjectsStatus =
   | "Enabled"
   | "Disabled"
   | (string & {});
 export const SseKmsEncryptedObjectsStatus = /*@__PURE__*/ S.String;
+
 export interface SseKmsEncryptedObjects {
   Status: SseKmsEncryptedObjectsStatus;
 }
@@ -7019,6 +7196,7 @@ export const SseKmsEncryptedObjects = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SseKmsEncryptedObjects>;
 export type ReplicaModificationsStatus = "Enabled" | "Disabled" | (string & {});
 export const ReplicaModificationsStatus = /*@__PURE__*/ S.String;
+
 export interface ReplicaModifications {
   Status: ReplicaModificationsStatus;
 }
@@ -7044,6 +7222,7 @@ export type ExistingObjectReplicationStatus =
   | "Disabled"
   | (string & {});
 export const ExistingObjectReplicationStatus = /*@__PURE__*/ S.String;
+
 export interface ExistingObjectReplication {
   Status: ExistingObjectReplicationStatus;
 }
@@ -7054,6 +7233,7 @@ export const ExistingObjectReplication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExistingObjectReplication>;
 export type OwnerOverride = "Destination" | (string & {});
 export const OwnerOverride = /*@__PURE__*/ S.String;
+
 export interface AccessControlTranslation {
   Owner: OwnerOverride;
 }
@@ -7062,6 +7242,7 @@ export const AccessControlTranslation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AccessControlTranslation",
 }) as any as S.Schema<AccessControlTranslation>;
+export type ReplicaKmsKeyID = string;
 export interface EncryptionConfiguration {
   ReplicaKmsKeyID?: string;
 }
@@ -7072,6 +7253,8 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionConfiguration>;
 export type ReplicationTimeStatus = "Enabled" | "Disabled" | (string & {});
 export const ReplicationTimeStatus = /*@__PURE__*/ S.String;
+
+export type Minutes = number;
 export interface ReplicationTimeValue {
   Minutes?: number;
 }
@@ -7091,6 +7274,7 @@ export const ReplicationTime = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationTime>;
 export type MetricsStatus = "Enabled" | "Disabled" | (string & {});
 export const MetricsStatus = /*@__PURE__*/ S.String;
+
 export interface Metrics {
   Status: MetricsStatus;
   EventThreshold?: ReplicationTimeValue;
@@ -7126,6 +7310,7 @@ export type DeleteMarkerReplicationStatus =
   | "Disabled"
   | (string & {});
 export const DeleteMarkerReplicationStatus = /*@__PURE__*/ S.String;
+
 export interface DeleteMarkerReplication {
   Status?: DeleteMarkerReplicationStatus;
 }
@@ -7213,6 +7398,7 @@ export const GetBucketRequestPaymentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBucketRequestPaymentRequest>;
 export type Payer = "Requester" | "BucketOwner" | (string & {});
 export const Payer = /*@__PURE__*/ S.String;
+
 export interface GetBucketRequestPaymentOutput {
   Payer?: Payer;
 }
@@ -7283,8 +7469,10 @@ export const GetBucketVersioningRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBucketVersioningRequest>;
 export type BucketVersioningStatus = "Enabled" | "Suspended" | (string & {});
 export const BucketVersioningStatus = /*@__PURE__*/ S.String;
+
 export type MFADeleteStatus = "Enabled" | "Disabled" | (string & {});
 export const MFADeleteStatus = /*@__PURE__*/ S.String;
+
 export interface GetBucketVersioningOutput {
   Status?: BucketVersioningStatus;
   MFADelete?: MFADeleteStatus;
@@ -7322,8 +7510,10 @@ export const GetBucketWebsiteRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketWebsiteRequest",
 }) as any as S.Schema<GetBucketWebsiteRequest>;
+export type HostName = string;
 export type Protocol = "http" | "https" | (string & {});
 export const Protocol = /*@__PURE__*/ S.String;
+
 export interface RedirectAllRequestsTo {
   HostName: string;
   Protocol?: Protocol;
@@ -7333,6 +7523,7 @@ export const RedirectAllRequestsTo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RedirectAllRequestsTo",
 }) as any as S.Schema<RedirectAllRequestsTo>;
+export type Suffix = string;
 export interface IndexDocument {
   Suffix: string;
 }
@@ -7345,6 +7536,8 @@ export interface ErrorDocument {
 export const ErrorDocument = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Key: S.String }),
 ).annotate({ identifier: "ErrorDocument" }) as any as S.Schema<ErrorDocument>;
+export type HttpErrorCodeReturnedEquals = string;
+export type KeyPrefixEquals = string;
 export interface Condition {
   HttpErrorCodeReturnedEquals?: string;
   KeyPrefixEquals?: string;
@@ -7355,6 +7548,9 @@ export const Condition = /*@__PURE__*/ S.suspend(() =>
     KeyPrefixEquals: S.optional(S.String),
   }),
 ).annotate({ identifier: "Condition" }) as any as S.Schema<Condition>;
+export type HttpRedirectCode = string;
+export type ReplaceKeyPrefixWith = string;
+export type ReplaceKeyWith = string;
 export interface Redirect {
   HostName?: string;
   HttpRedirectCode?: string;
@@ -7400,8 +7596,18 @@ export const GetBucketWebsiteOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketWebsiteOutput",
 }) as any as S.Schema<GetBucketWebsiteOutput>;
+export type IfModifiedSince = Date;
+export type IfUnmodifiedSince = Date;
+export type Range = string;
+export type ResponseCacheControl = string;
+export type ResponseContentDisposition = string;
+export type ResponseContentEncoding = string;
+export type ResponseContentLanguage = string;
+export type ResponseContentType = string;
+export type ResponseExpires = Date;
 export type ChecksumMode = "ENABLED" | (string & {});
 export const ChecksumMode = /*@__PURE__*/ S.String;
+
 export interface GetObjectRequest {
   Bucket: string;
   IfMatch?: string;
@@ -7504,6 +7710,11 @@ export const GetObjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetObjectRequest",
 }) as any as S.Schema<GetObjectRequest>;
+export type AcceptRanges = string;
+export type Restore = string;
+export type ContentLength = number;
+export type MissingMeta = number;
+export type ContentRange = string;
 export type ReplicationStatus =
   | "COMPLETE"
   | "PENDING"
@@ -7512,6 +7723,9 @@ export type ReplicationStatus =
   | "COMPLETED"
   | (string & {});
 export const ReplicationStatus = /*@__PURE__*/ S.String;
+
+export type PartsCount = number;
+export type TagCount = number;
 export interface GetObjectOutput {
   Body?: T.StreamingOutputBody;
   DeleteMarker?: boolean;
@@ -7839,6 +8053,8 @@ export const GetObjectAnnotationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetObjectAnnotationOutput",
 }) as any as S.Schema<GetObjectAnnotationOutput>;
+export type MaxParts = number;
+export type PartNumberMarker = string;
 export type ObjectAttributes =
   | "ETag"
   | "Checksum"
@@ -7847,6 +8063,7 @@ export type ObjectAttributes =
   | "ObjectSize"
   | (string & {});
 export const ObjectAttributes = /*@__PURE__*/ S.String;
+
 export type ObjectAttributesList = ObjectAttributes[];
 export const ObjectAttributesList = /*@__PURE__*/ S.Array(ObjectAttributes);
 export interface GetObjectAttributesRequest {
@@ -7931,6 +8148,8 @@ export const Checksum = /*@__PURE__*/ S.suspend(() =>
     ChecksumType: S.optional(ChecksumType),
   }),
 ).annotate({ identifier: "Checksum" }) as any as S.Schema<Checksum>;
+export type NextPartNumberMarker = string;
+export type IsTruncated = boolean;
 export interface ObjectPart {
   PartNumber?: number;
   Size?: number;
@@ -7983,6 +8202,7 @@ export const GetObjectAttributesParts = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetObjectAttributesParts",
 }) as any as S.Schema<GetObjectAttributesParts>;
+export type ObjectSize = number;
 export interface GetObjectAttributesOutput {
   DeleteMarker?: boolean;
   LastModified?: Date;
@@ -8093,11 +8313,14 @@ export const GetObjectLockConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetObjectLockConfigurationRequest>;
 export type ObjectLockEnabled = "Enabled" | (string & {});
 export const ObjectLockEnabled = /*@__PURE__*/ S.String;
+
 export type ObjectLockRetentionMode =
   | "GOVERNANCE"
   | "COMPLIANCE"
   | (string & {});
 export const ObjectLockRetentionMode = /*@__PURE__*/ S.String;
+
+export type Years = number;
 export interface DefaultRetention {
   Mode?: ObjectLockRetentionMode;
   Days?: number;
@@ -8313,6 +8536,7 @@ export const GetPublicAccessBlockRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPublicAccessBlockRequest",
 }) as any as S.Schema<GetPublicAccessBlockRequest>;
+export type Setting = boolean;
 export interface PublicAccessBlockConfiguration {
   BlockPublicAcls?: boolean;
   IgnorePublicAcls?: boolean;
@@ -8369,6 +8593,9 @@ export const HeadBucketRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HeadBucketRequest",
 }) as any as S.Schema<HeadBucketRequest>;
+export type BucketLocationName = string;
+export type Region = string;
+export type AccessPointAlias = boolean;
 export interface HeadBucketOutput {
   BucketArn?: string;
   BucketLocationType?: LocationType;
@@ -8488,6 +8715,7 @@ export type ArchiveStatus =
   | "DEEP_ARCHIVE_ACCESS"
   | (string & {});
 export const ArchiveStatus = /*@__PURE__*/ S.String;
+
 export interface HeadObjectOutput {
   DeleteMarker?: boolean;
   AcceptRanges?: string;
@@ -8638,6 +8866,7 @@ export const HeadObjectOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HeadObjectOutput",
 }) as any as S.Schema<HeadObjectOutput>;
+export type Token = string;
 export interface ListBucketAnalyticsConfigurationsRequest {
   Bucket: string;
   ContinuationToken?: string;
@@ -8671,6 +8900,7 @@ export const ListBucketAnalyticsConfigurationsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListBucketAnalyticsConfigurationsRequest",
 }) as any as S.Schema<ListBucketAnalyticsConfigurationsRequest>;
+export type NextToken = string;
 export type AnalyticsConfigurationList = AnalyticsConfiguration[];
 export const AnalyticsConfigurationList = /*@__PURE__*/ S.Array(
   AnalyticsConfiguration,
@@ -8865,6 +9095,8 @@ export const ListBucketMetricsConfigurationsOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListBucketMetricsConfigurationsOutput",
 }) as any as S.Schema<ListBucketMetricsConfigurationsOutput>;
+export type MaxBuckets = number;
+export type BucketRegion = string;
 export interface ListBucketsRequest {
   MaxBuckets?: number;
   ContinuationToken?: string;
@@ -8893,6 +9125,7 @@ export const ListBucketsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListBucketsRequest",
 }) as any as S.Schema<ListBucketsRequest>;
+export type CreationDate = Date;
 export interface Bucket {
   Name?: string;
   CreationDate?: Date;
@@ -8927,6 +9160,8 @@ export const ListBucketsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListBucketsOutput",
 }) as any as S.Schema<ListBucketsOutput>;
+export type DirectoryBucketToken = string;
+export type MaxDirectoryBuckets = number;
 export interface ListDirectoryBucketsRequest {
   ContinuationToken?: string;
   MaxDirectoryBuckets?: number;
@@ -8966,8 +9201,13 @@ export const ListDirectoryBucketsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDirectoryBucketsOutput",
 }) as any as S.Schema<ListDirectoryBucketsOutput>;
+export type Delimiter = string;
 export type EncodingType = "url" | (string & {});
 export const EncodingType = /*@__PURE__*/ S.String;
+
+export type KeyMarker = string;
+export type MaxUploads = number;
+export type UploadIdMarker = string;
 export interface ListMultipartUploadsRequest {
   Bucket: string;
   Delimiter?: string;
@@ -9011,6 +9251,9 @@ export const ListMultipartUploadsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMultipartUploadsRequest",
 }) as any as S.Schema<ListMultipartUploadsRequest>;
+export type NextKeyMarker = string;
+export type NextUploadIdMarker = string;
+export type Initiated = Date;
 export interface Initiator {
   ID?: string;
   DisplayName?: string;
@@ -9091,6 +9334,8 @@ export const ListMultipartUploadsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMultipartUploadsOutput",
 }) as any as S.Schema<ListMultipartUploadsOutput>;
+export type MaxAnnotationResults = number;
+export type AnnotationPrefix = string;
 export interface ListObjectAnnotationsRequest {
   Bucket: string;
   Key: string;
@@ -9166,6 +9411,7 @@ export const AnnotationList = /*@__PURE__*/ S.Array(
     identifier: "AnnotationEntry",
   }),
 );
+export type AnnotationCount = number;
 export interface ListObjectAnnotationsOutput {
   Annotations?: AnnotationEntry[];
   Bucket?: string;
@@ -9198,8 +9444,11 @@ export const ListObjectAnnotationsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListObjectAnnotationsOutput",
 }) as any as S.Schema<ListObjectAnnotationsOutput>;
+export type Marker = string;
+export type MaxKeys = number;
 export type OptionalObjectAttributes = "RestoreStatus" | (string & {});
 export const OptionalObjectAttributes = /*@__PURE__*/ S.String;
+
 export type OptionalObjectAttributesList = OptionalObjectAttributes[];
 export const OptionalObjectAttributesList = /*@__PURE__*/ S.Array(
   OptionalObjectAttributes,
@@ -9249,6 +9498,7 @@ export const ListObjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListObjectsRequest",
 }) as any as S.Schema<ListObjectsRequest>;
+export type NextMarker = string;
 export type ObjectStorageClass =
   | "STANDARD"
   | "REDUCED_REDUNDANCY"
@@ -9265,6 +9515,9 @@ export type ObjectStorageClass =
   | "FSX_ONTAP"
   | (string & {});
 export const ObjectStorageClass = /*@__PURE__*/ S.String;
+
+export type IsRestoreInProgress = boolean;
+export type RestoreExpiryDate = Date;
 export interface RestoreStatus {
   IsRestoreInProgress?: boolean;
   RestoreExpiryDate?: Date;
@@ -9333,6 +9586,8 @@ export const ListObjectsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListObjectsOutput",
 }) as any as S.Schema<ListObjectsOutput>;
+export type FetchOwner = boolean;
+export type StartAfter = string;
 export interface ListObjectsV2Request {
   Bucket: string;
   Delimiter?: string;
@@ -9384,6 +9639,7 @@ export const ListObjectsV2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListObjectsV2Request",
 }) as any as S.Schema<ListObjectsV2Request>;
+export type KeyCount = number;
 export interface ListObjectsV2Output {
   IsTruncated?: boolean;
   Contents?: Object[];
@@ -9420,6 +9676,7 @@ export const ListObjectsV2Output = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListObjectsV2Output",
 }) as any as S.Schema<ListObjectsV2Output>;
+export type VersionIdMarker = string;
 export interface ListObjectVersionsRequest {
   Bucket: string;
   Delimiter?: string;
@@ -9469,8 +9726,11 @@ export const ListObjectVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListObjectVersionsRequest",
 }) as any as S.Schema<ListObjectVersionsRequest>;
+export type NextVersionIdMarker = string;
 export type ObjectVersionStorageClass = "STANDARD" | (string & {});
 export const ObjectVersionStorageClass = /*@__PURE__*/ S.String;
+
+export type IsLatest = boolean;
 export interface ObjectVersion {
   ETag?: string;
   ChecksumAlgorithm?: ChecksumAlgorithm[];
@@ -10240,6 +10500,7 @@ export const PutBucketMetricsConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "PutBucketMetricsConfigurationResponse",
 }) as any as S.Schema<PutBucketMetricsConfigurationResponse>;
+export type SkipValidation = boolean;
 export interface PutBucketNotificationConfigurationRequest {
   Bucket: string;
   NotificationConfiguration: NotificationConfiguration;
@@ -10326,6 +10587,7 @@ export const PutBucketOwnershipControlsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutBucketOwnershipControlsResponse",
 }) as any as S.Schema<PutBucketOwnershipControlsResponse>;
+export type ConfirmRemoveSelfBucketAccess = boolean;
 export interface PutBucketPolicyRequest {
   Bucket: string;
   ContentMD5?: string;
@@ -10373,6 +10635,7 @@ export const PutBucketPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutBucketPolicyResponse",
 }) as any as S.Schema<PutBucketPolicyResponse>;
+export type ObjectLockToken = string;
 export interface PutBucketReplicationRequest {
   Bucket: string;
   ContentMD5?: string;
@@ -10530,6 +10793,7 @@ export const PutBucketTaggingResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PutBucketTaggingResponse>;
 export type MFADelete = "Enabled" | "Disabled" | (string & {});
 export const MFADelete = /*@__PURE__*/ S.String;
+
 export interface VersioningConfiguration {
   MFADelete?: MFADelete;
   Status?: BucketVersioningStatus;
@@ -10652,6 +10916,7 @@ export const PutBucketWebsiteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutBucketWebsiteResponse",
 }) as any as S.Schema<PutBucketWebsiteResponse>;
+export type WriteOffsetBytes = number;
 export interface PutObjectRequest {
   ACL?: ObjectCannedACL;
   Body?: T.StreamingInputBody;
@@ -11424,6 +11689,12 @@ export const PutPublicAccessBlockResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutPublicAccessBlockResponse",
 }) as any as S.Schema<PutPublicAccessBlockResponse>;
+export type RenameSource = string;
+export type RenameSourceIfMatch = string;
+export type RenameSourceIfNoneMatch = string;
+export type RenameSourceIfModifiedSince = Date;
+export type RenameSourceIfUnmodifiedSince = Date;
+export type ClientToken = string;
 export interface RenameObjectRequest {
   Bucket: string;
   Key: string;
@@ -11491,6 +11762,7 @@ export const RenameObjectOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RenameObjectOutput>;
 export type Tier = "Standard" | "Bulk" | "Expedited" | (string & {});
 export const Tier = /*@__PURE__*/ S.String;
+
 export interface GlacierJobParameters {
   Tier: Tier;
 }
@@ -11501,8 +11773,17 @@ export const GlacierJobParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GlacierJobParameters>;
 export type RestoreRequestType = "SELECT" | (string & {});
 export const RestoreRequestType = /*@__PURE__*/ S.String;
+
+export type Description = string;
 export type FileHeaderInfo = "USE" | "IGNORE" | "NONE" | (string & {});
 export const FileHeaderInfo = /*@__PURE__*/ S.String;
+
+export type Comments = string;
+export type QuoteEscapeCharacter = string;
+export type RecordDelimiter = string;
+export type FieldDelimiter = string;
+export type QuoteCharacter = string;
+export type AllowQuotedRecordDelimiter = boolean;
 export interface CSVInput {
   FileHeaderInfo?: FileHeaderInfo;
   Comments?: string;
@@ -11525,8 +11806,10 @@ export const CSVInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CSVInput" }) as any as S.Schema<CSVInput>;
 export type CompressionType = "NONE" | "GZIP" | "BZIP2" | (string & {});
 export const CompressionType = /*@__PURE__*/ S.String;
+
 export type JSONType = "DOCUMENT" | "LINES" | (string & {});
 export const JSONType = /*@__PURE__*/ S.String;
+
 export interface JSONInput {
   Type?: JSONType;
 }
@@ -11555,8 +11838,11 @@ export const InputSerialization = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InputSerialization>;
 export type ExpressionType = "SQL" | (string & {});
 export const ExpressionType = /*@__PURE__*/ S.String;
+
+export type Expression = string;
 export type QuoteFields = "ALWAYS" | "ASNEEDED" | (string & {});
 export const QuoteFields = /*@__PURE__*/ S.String;
+
 export interface CSVOutput {
   QuoteFields?: QuoteFields;
   QuoteEscapeCharacter?: string;
@@ -11604,6 +11890,8 @@ export const SelectParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SelectParameters",
 }) as any as S.Schema<SelectParameters>;
+export type LocationPrefix = string;
+export type KMSContext = string;
 export interface Encryption {
   EncryptionType: ServerSideEncryption;
   KMSKeyId?: string | redacted.Redacted<string>;
@@ -11720,6 +12008,7 @@ export const RestoreObjectRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RestoreObjectRequest",
 }) as any as S.Schema<RestoreObjectRequest>;
+export type RestoreOutputPath = string;
 export interface RestoreObjectOutput {
   RequestCharged?: RequestCharged;
   RestoreOutputPath?: string;
@@ -11736,6 +12025,7 @@ export const RestoreObjectOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RestoreObjectOutput",
 }) as any as S.Schema<RestoreObjectOutput>;
+export type EnableRequestProgress = boolean;
 export interface RequestProgress {
   Enabled?: boolean;
 }
@@ -11744,6 +12034,8 @@ export const RequestProgress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RequestProgress",
 }) as any as S.Schema<RequestProgress>;
+export type Start = number;
+export type End = number;
 export interface ScanRange {
   Start?: number;
   End?: number;
@@ -11801,12 +12093,16 @@ export const SelectObjectContentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SelectObjectContentRequest",
 }) as any as S.Schema<SelectObjectContentRequest>;
+export type Body = Uint8Array;
 export interface RecordsEvent {
   Payload?: Uint8Array;
 }
 export const RecordsEvent = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Payload: S.optional(T.Blob).pipe(T.EventPayload()) }),
 ).annotate({ identifier: "RecordsEvent" }) as any as S.Schema<RecordsEvent>;
+export type BytesScanned = number;
+export type BytesProcessed = number;
+export type BytesReturned = number;
 export interface Stats {
   BytesScanned?: number;
   BytesProcessed?: number;
@@ -12090,6 +12386,7 @@ export const UpdateBucketMetadataJournalTableConfigurationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "UpdateBucketMetadataJournalTableConfigurationResponse",
   }) as any as S.Schema<UpdateBucketMetadataJournalTableConfigurationResponse>;
+export type NonEmptyKmsKeyArnString = string | redacted.Redacted<string>;
 export interface SSEKMSEncryption {
   KMSKeyArn: string | redacted.Redacted<string>;
   BucketKeyEnabled?: boolean;
@@ -12335,6 +12632,7 @@ export const UploadPartOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UploadPartOutput",
 }) as any as S.Schema<UploadPartOutput>;
+export type CopySourceRange = string;
 export interface UploadPartCopyRequest {
   Bucket: string;
   CopySource: string;
@@ -12492,6 +12790,9 @@ export const UploadPartCopyOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UploadPartCopyOutput",
 }) as any as S.Schema<UploadPartCopyOutput>;
+export type RequestRoute = string;
+export type RequestToken = string;
+export type GetObjectResponseStatusCode = number;
 export interface WriteGetObjectResponseRequest {
   RequestRoute: string;
   RequestToken: string;
@@ -12698,230 +12999,6 @@ export const WriteGetObjectResponseResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WriteGetObjectResponseResponse",
 }) as any as S.Schema<WriteGetObjectResponseResponse>;
-
-//# Errors
-export class NoSuchUpload extends S.TaggedErrorClass<NoSuchUpload>()(
-  "NoSuchUpload",
-  {},
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
-  "RequestLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class SlowDown extends S.TaggedErrorClass<SlowDown>()(
-  "SlowDown",
-  {},
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class NoSuchBucket extends S.TaggedErrorClass<NoSuchBucket>()(
-  "NoSuchBucket",
-  { Message: S.optional(S.String), BucketName: S.optional(S.String) },
-) {}
-export class NotFound extends S.TaggedErrorClass<NotFound>()("NotFound", {}) {}
-export class ObjectNotInActiveTierError extends S.TaggedErrorClass<ObjectNotInActiveTierError>()(
-  "ObjectNotInActiveTierError",
-  {},
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class PermanentRedirect extends S.TaggedErrorClass<PermanentRedirect>()(
-  "PermanentRedirect",
-  {
-    BucketRegion: S.optional(S.String).pipe(
-      T.HttpHeader("x-amz-bucket-region"),
-    ),
-    Endpoint: S.optional(S.String),
-    Bucket: S.optional(S.String),
-    Message: S.optional(S.String),
-  },
-) {}
-export class BucketAlreadyExists extends S.TaggedErrorClass<BucketAlreadyExists>()(
-  "BucketAlreadyExists",
-  {},
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class BucketAlreadyOwnedByYou extends S.TaggedErrorClass<BucketAlreadyOwnedByYou>()(
-  "BucketAlreadyOwnedByYou",
-  {},
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class IllegalLocationConstraintException extends S.TaggedErrorClass<IllegalLocationConstraintException>()(
-  "IllegalLocationConstraintException",
-  {},
-).pipe(C.withBadRequestError) {}
-export class InvalidArgument extends S.TaggedErrorClass<InvalidArgument>()(
-  "InvalidArgument",
-  {},
-).pipe(C.withBadRequestError) {}
-export class InvalidBucketName extends S.TaggedErrorClass<InvalidBucketName>()(
-  "InvalidBucketName",
-  {},
-).pipe(C.withBadRequestError) {}
-export class InvalidLocationConstraint extends S.TaggedErrorClass<InvalidLocationConstraint>()(
-  "InvalidLocationConstraint",
-  {},
-).pipe(C.withBadRequestError) {}
-export class BucketNotEmpty extends S.TaggedErrorClass<BucketNotEmpty>()(
-  "BucketNotEmpty",
-  {},
-).pipe(C.withConflictError) {}
-export class BucketHasAccessPointsAttached extends S.TaggedErrorClass<BucketHasAccessPointsAttached>()(
-  "BucketHasAccessPointsAttached",
-  {},
-).pipe(C.withConflictError) {}
-export class SignatureDoesNotMatch extends S.TaggedErrorClass<SignatureDoesNotMatch>()(
-  "SignatureDoesNotMatch",
-  {},
-).pipe(C.withAuthError) {}
-export class NoSuchKey extends S.TaggedErrorClass<NoSuchKey>()(
-  "NoSuchKey",
-  {},
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class NoSuchConfiguration extends S.TaggedErrorClass<NoSuchConfiguration>()(
-  "NoSuchConfiguration",
-  {},
-) {}
-export class NoSuchCORSConfiguration extends S.TaggedErrorClass<NoSuchCORSConfiguration>()(
-  "NoSuchCORSConfiguration",
-  {},
-) {}
-export class ParseError extends S.TaggedErrorClass<ParseError>()(
-  "ParseError",
-  {},
-) {}
-export class NoSuchLifecycleConfiguration extends S.TaggedErrorClass<NoSuchLifecycleConfiguration>()(
-  "NoSuchLifecycleConfiguration",
-  {},
-) {}
-export class OwnershipControlsNotFoundError extends S.TaggedErrorClass<OwnershipControlsNotFoundError>()(
-  "OwnershipControlsNotFoundError",
-  {},
-) {}
-export class NoSuchBucketPolicy extends S.TaggedErrorClass<NoSuchBucketPolicy>()(
-  "NoSuchBucketPolicy",
-  {},
-) {}
-export class ReplicationConfigurationNotFoundError extends S.TaggedErrorClass<ReplicationConfigurationNotFoundError>()(
-  "ReplicationConfigurationNotFoundError",
-  {},
-) {}
-export class NoSuchTagSet extends S.TaggedErrorClass<NoSuchTagSet>()(
-  "NoSuchTagSet",
-  {},
-) {}
-export class NoSuchWebsiteConfiguration extends S.TaggedErrorClass<NoSuchWebsiteConfiguration>()(
-  "NoSuchWebsiteConfiguration",
-  {},
-) {}
-export class InvalidObjectState extends S.TaggedErrorClass<InvalidObjectState>()(
-  "InvalidObjectState",
-  {
-    StorageClass: S.optional(StorageClass),
-    AccessTier: S.optional(IntelligentTieringAccessTier),
-  },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class NoSuchAnnotation extends S.TaggedErrorClass<NoSuchAnnotation>()(
-  "NoSuchAnnotation",
-  {},
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InvalidRequest extends S.TaggedErrorClass<InvalidRequest>()(
-  "InvalidRequest",
-  {},
-).pipe(C.withBadRequestError) {}
-export class ObjectLockConfigurationNotFoundError extends S.TaggedErrorClass<ObjectLockConfigurationNotFoundError>()(
-  "ObjectLockConfigurationNotFoundError",
-  {},
-) {}
-export class NoSuchPublicAccessBlockConfiguration extends S.TaggedErrorClass<NoSuchPublicAccessBlockConfiguration>()(
-  "NoSuchPublicAccessBlockConfiguration",
-  {},
-) {}
-export class RequestError extends S.TaggedErrorClass<RequestError>()(
-  "RequestError",
-  {},
-) {}
-export class InvalidPrefix extends S.TaggedErrorClass<InvalidPrefix>()(
-  "InvalidPrefix",
-  {},
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class MalformedXML extends S.TaggedErrorClass<MalformedXML>()(
-  "MalformedXML",
-  {},
-).pipe(C.withBadRequestError) {}
-export class AccessDenied extends S.TaggedErrorClass<AccessDenied>()(
-  "AccessDenied",
-  {},
-).pipe(C.withAuthError) {}
-export class InvalidDigest extends S.TaggedErrorClass<InvalidDigest>()(
-  "InvalidDigest",
-  {},
-).pipe(C.withBadRequestError) {}
-export class MalformedPolicy extends S.TaggedErrorClass<MalformedPolicy>()(
-  "MalformedPolicy",
-  {},
-).pipe(C.withBadRequestError) {}
-export class EncryptionTypeMismatch extends S.TaggedErrorClass<EncryptionTypeMismatch>()(
-  "EncryptionTypeMismatch",
-  {},
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidWriteOffset extends S.TaggedErrorClass<InvalidWriteOffset>()(
-  "InvalidWriteOffset",
-  {},
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyParts extends S.TaggedErrorClass<TooManyParts>()(
-  "TooManyParts",
-  {},
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class PreconditionFailed extends S.TaggedErrorClass<PreconditionFailed>()(
-  "PreconditionFailed",
-  {},
-).pipe(C.withConflictError) {}
-export class ConditionalRequestConflict extends S.TaggedErrorClass<ConditionalRequestConflict>()(
-  "ConditionalRequestConflict",
-  {},
-).pipe(C.withConflictError, C.withRetryableError) {}
-export class AnnotationLimitExceeded extends S.TaggedErrorClass<AnnotationLimitExceeded>()(
-  "AnnotationLimitExceeded",
-  {},
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withThrottlingError) {}
-export class AnnotationNameTooLong extends S.TaggedErrorClass<AnnotationNameTooLong>()(
-  "AnnotationNameTooLong",
-  {},
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidAnnotationName extends S.TaggedErrorClass<InvalidAnnotationName>()(
-  "InvalidAnnotationName",
-  {},
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedMediaType extends S.TaggedErrorClass<UnsupportedMediaType>()(
-  "UnsupportedMediaType",
-  {},
-  T.HttpError(415),
-).pipe(C.withBadRequestError) {}
-export class InvalidBucketState extends S.TaggedErrorClass<InvalidBucketState>()(
-  "InvalidBucketState",
-  {},
-).pipe(C.withConflictError) {}
-export class IdempotencyParameterMismatch extends S.TaggedErrorClass<IdempotencyParameterMismatch>()(
-  "IdempotencyParameterMismatch",
-  {},
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ObjectAlreadyInActiveTierError extends S.TaggedErrorClass<ObjectAlreadyInActiveTierError>()(
-  "ObjectAlreadyInActiveTierError",
-  {},
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-
-//# Operations
 export type AbortMultipartUploadError =
   | NoSuchUpload
   | RequestLimitExceeded
@@ -13002,6 +13079,7 @@ export const abortMultipartUpload: API.OperationMethod<
   retry: Retry,
   operationName: "AbortMultipartUpload",
 }));
+
 export type CompleteMultipartUploadError = CommonErrors;
 /**
  * Completes a multipart upload by assembling previously uploaded parts.
@@ -13129,6 +13207,7 @@ export const completeMultipartUpload: API.OperationMethod<
   retry: Retry,
   operationName: "CompleteMultipartUpload",
 }));
+
 export type CopyObjectError =
   | ObjectNotInActiveTierError
   | RequestLimitExceeded
@@ -13316,6 +13395,7 @@ export const copyObject: API.OperationMethod<
   retry: Retry,
   operationName: "CopyObject",
 }));
+
 export type CreateBucketError =
   | BucketAlreadyExists
   | BucketAlreadyOwnedByYou
@@ -13462,6 +13542,7 @@ export const createBucket: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBucket",
 }));
+
 export type CreateBucketMetadataConfigurationError = CommonErrors;
 /**
  * Creates an S3 Metadata V2 metadata configuration for a general purpose bucket. For more information, see
@@ -13544,6 +13625,7 @@ export const createBucketMetadataConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBucketMetadataConfiguration",
 }));
+
 export type CreateBucketMetadataTableConfigurationError = CommonErrors;
 /**
  * We recommend that you create your S3 Metadata configurations by using the V2
@@ -13606,6 +13688,7 @@ export const createBucketMetadataTableConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBucketMetadataTableConfiguration",
 }));
+
 export type CreateMultipartUploadError =
   | RequestLimitExceeded
   | SlowDown
@@ -13799,6 +13882,7 @@ export const createMultipartUpload: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMultipartUpload",
 }));
+
 export type CreateSessionError = NoSuchBucket | CommonErrors;
 /**
  * Creates a session that establishes temporary security credentials to support fast authentication and
@@ -13908,6 +13992,7 @@ export const createSession: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSession",
 }));
+
 export type DeleteBucketError =
   | RequestLimitExceeded
   | SlowDown
@@ -13971,6 +14056,7 @@ export const deleteBucket: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucket",
 }));
+
 export type DeleteBucketAnalyticsConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -14013,6 +14099,7 @@ export const deleteBucketAnalyticsConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucketAnalyticsConfiguration",
 }));
+
 export type DeleteBucketCorsError =
   | RequestLimitExceeded
   | SlowDown
@@ -14050,6 +14137,7 @@ export const deleteBucketCors: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucketCors",
 }));
+
 export type DeleteBucketEncryptionError =
   | RequestLimitExceeded
   | SlowDown
@@ -14106,6 +14194,7 @@ export const deleteBucketEncryption: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucketEncryption",
 }));
+
 export type DeleteBucketIntelligentTieringConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -14145,6 +14234,7 @@ export const deleteBucketIntelligentTieringConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucketIntelligentTieringConfiguration",
 }));
+
 export type DeleteBucketInventoryConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -14208,6 +14298,7 @@ export const deleteBucketInventoryConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucketInventoryConfiguration",
 }));
+
 export type DeleteBucketLifecycleError =
   | RequestLimitExceeded
   | SlowDown
@@ -14275,6 +14366,7 @@ export const deleteBucketLifecycle: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucketLifecycle",
 }));
+
 export type DeleteBucketMetadataConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -14324,6 +14416,7 @@ export const deleteBucketMetadataConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucketMetadataConfiguration",
 }));
+
 export type DeleteBucketMetadataTableConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -14379,6 +14472,7 @@ export const deleteBucketMetadataTableConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucketMetadataTableConfiguration",
 }));
+
 export type DeleteBucketMetricsConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -14443,6 +14537,7 @@ export const deleteBucketMetricsConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucketMetricsConfiguration",
 }));
+
 export type DeleteBucketOwnershipControlsError =
   | RequestLimitExceeded
   | SlowDown
@@ -14479,6 +14574,7 @@ export const deleteBucketOwnershipControls: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucketOwnershipControls",
 }));
+
 export type DeleteBucketPolicyError =
   | RequestLimitExceeded
   | SlowDown
@@ -14554,6 +14650,7 @@ export const deleteBucketPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucketPolicy",
 }));
+
 export type DeleteBucketReplicationError =
   | RequestLimitExceeded
   | SlowDown
@@ -14595,6 +14692,7 @@ export const deleteBucketReplication: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucketReplication",
 }));
+
 export type DeleteBucketTaggingError =
   | RequestLimitExceeded
   | SlowDown
@@ -14629,6 +14727,7 @@ export const deleteBucketTagging: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucketTagging",
 }));
+
 export type DeleteBucketWebsiteError =
   | RequestLimitExceeded
   | SlowDown
@@ -14671,6 +14770,7 @@ export const deleteBucketWebsite: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBucketWebsite",
 }));
+
 export type DeleteObjectError =
   | RequestLimitExceeded
   | SlowDown
@@ -14787,6 +14887,7 @@ export const deleteObject: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteObject",
 }));
+
 export type DeleteObjectAnnotationError =
   | NoSuchBucket
   | NoSuchKey
@@ -14828,6 +14929,7 @@ export const deleteObjectAnnotation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteObjectAnnotation",
 }));
+
 export type DeleteObjectsError =
   | RequestLimitExceeded
   | SlowDown
@@ -14939,6 +15041,7 @@ export const deleteObjects: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteObjects",
 }));
+
 export type DeleteObjectTaggingError =
   | RequestLimitExceeded
   | SlowDown
@@ -14979,6 +15082,7 @@ export const deleteObjectTagging: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteObjectTagging",
 }));
+
 export type DeletePublicAccessBlockError =
   | RequestLimitExceeded
   | SlowDown
@@ -15020,6 +15124,7 @@ export const deletePublicAccessBlock: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePublicAccessBlock",
 }));
+
 export type GetBucketAbacError =
   | RequestLimitExceeded
   | SlowDown
@@ -15041,6 +15146,7 @@ export const getBucketAbac: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketAbac",
 }));
+
 export type GetBucketAccelerateConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -15089,6 +15195,7 @@ export const getBucketAccelerateConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketAccelerateConfiguration",
 }));
+
 export type GetBucketAclError =
   | RequestLimitExceeded
   | SlowDown
@@ -15135,6 +15242,7 @@ export const getBucketAcl: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketAcl",
 }));
+
 export type GetBucketAnalyticsConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -15178,6 +15286,7 @@ export const getBucketAnalyticsConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketAnalyticsConfiguration",
 }));
+
 export type GetBucketCorsError =
   | RequestLimitExceeded
   | SlowDown
@@ -15230,6 +15339,7 @@ export const getBucketCors: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketCors",
 }));
+
 export type GetBucketEncryptionError =
   | RequestLimitExceeded
   | SlowDown
@@ -15294,6 +15404,7 @@ export const getBucketEncryption: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketEncryption",
 }));
+
 export type GetBucketIntelligentTieringConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -15334,6 +15445,7 @@ export const getBucketIntelligentTieringConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketIntelligentTieringConfiguration",
 }));
+
 export type GetBucketInventoryConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -15396,6 +15508,7 @@ export const getBucketInventoryConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketInventoryConfiguration",
 }));
+
 export type GetBucketLifecycleConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -15488,6 +15601,7 @@ export const getBucketLifecycleConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketLifecycleConfiguration",
 }));
+
 export type GetBucketLocationError =
   | RequestLimitExceeded
   | SlowDown
@@ -15541,6 +15655,7 @@ export const getBucketLocation: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketLocation",
 }));
+
 export type GetBucketLoggingError =
   | RequestLimitExceeded
   | SlowDown
@@ -15574,6 +15689,7 @@ export const getBucketLogging: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketLogging",
 }));
+
 export type GetBucketMetadataConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -15622,6 +15738,7 @@ export const getBucketMetadataConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketMetadataConfiguration",
 }));
+
 export type GetBucketMetadataTableConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -15676,6 +15793,7 @@ export const getBucketMetadataTableConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketMetadataTableConfiguration",
 }));
+
 export type GetBucketMetricsConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -15742,6 +15860,7 @@ export const getBucketMetricsConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketMetricsConfiguration",
 }));
+
 export type GetBucketNotificationConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -15789,6 +15908,7 @@ export const getBucketNotificationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketNotificationConfiguration",
 }));
+
 export type GetBucketOwnershipControlsError =
   | RequestLimitExceeded
   | SlowDown
@@ -15841,6 +15961,7 @@ export const getBucketOwnershipControls: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketOwnershipControls",
 }));
+
 export type GetBucketPolicyError =
   | RequestLimitExceeded
   | SlowDown
@@ -15924,6 +16045,7 @@ export const getBucketPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketPolicy",
 }));
+
 export type GetBucketPolicyStatusError =
   | RequestLimitExceeded
   | SlowDown
@@ -15965,6 +16087,7 @@ export const getBucketPolicyStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketPolicyStatus",
 }));
+
 export type GetBucketReplicationError =
   | RequestLimitExceeded
   | SlowDown
@@ -16019,6 +16142,7 @@ export const getBucketReplication: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketReplication",
 }));
+
 export type GetBucketRequestPaymentError =
   | RequestLimitExceeded
   | SlowDown
@@ -16050,6 +16174,7 @@ export const getBucketRequestPayment: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketRequestPayment",
 }));
+
 export type GetBucketTaggingError =
   | RequestLimitExceeded
   | SlowDown
@@ -16098,6 +16223,7 @@ export const getBucketTagging: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketTagging",
 }));
+
 export type GetBucketVersioningError =
   | RequestLimitExceeded
   | SlowDown
@@ -16138,6 +16264,7 @@ export const getBucketVersioning: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketVersioning",
 }));
+
 export type GetBucketWebsiteError =
   | RequestLimitExceeded
   | SlowDown
@@ -16183,6 +16310,7 @@ export const getBucketWebsite: API.OperationMethod<
   retry: Retry,
   operationName: "GetBucketWebsite",
 }));
+
 export type GetObjectError =
   | InvalidObjectState
   | NoSuchKey
@@ -16343,6 +16471,7 @@ export const getObject: API.OperationMethod<
   retry: Retry,
   operationName: "GetObject",
 }));
+
 export type GetObjectAclError =
   | NoSuchKey
   | RequestLimitExceeded
@@ -16399,6 +16528,7 @@ export const getObjectAcl: API.OperationMethod<
   retry: Retry,
   operationName: "GetObjectAcl",
 }));
+
 export type GetObjectAnnotationError =
   | NoSuchAnnotation
   | NoSuchBucket
@@ -16436,6 +16566,7 @@ export const getObjectAnnotation: API.OperationMethod<
   retry: Retry,
   operationName: "GetObjectAnnotation",
 }));
+
 export type GetObjectAttributesError = NoSuchKey | CommonErrors;
 /**
  * Retrieves all of the metadata from an object without returning the object itself. This operation is
@@ -16590,6 +16721,7 @@ export const getObjectAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "GetObjectAttributes",
 }));
+
 export type GetObjectLegalHoldError =
   | RequestLimitExceeded
   | SlowDown
@@ -16621,6 +16753,7 @@ export const getObjectLegalHold: API.OperationMethod<
   retry: Retry,
   operationName: "GetObjectLegalHold",
 }));
+
 export type GetObjectLockConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -16660,6 +16793,7 @@ export const getObjectLockConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetObjectLockConfiguration",
 }));
+
 export type GetObjectRetentionError =
   | RequestLimitExceeded
   | SlowDown
@@ -16691,6 +16825,7 @@ export const getObjectRetention: API.OperationMethod<
   retry: Retry,
   operationName: "GetObjectRetention",
 }));
+
 export type GetObjectTaggingError =
   | RequestLimitExceeded
   | SlowDown
@@ -16743,6 +16878,7 @@ export const getObjectTagging: API.OperationMethod<
   retry: Retry,
   operationName: "GetObjectTagging",
 }));
+
 export type GetObjectTorrentError = CommonErrors;
 /**
  * This operation is not supported for directory buckets.
@@ -16776,6 +16912,7 @@ export const getObjectTorrent: API.OperationMethod<
   retry: Retry,
   operationName: "GetObjectTorrent",
 }));
+
 export type GetPublicAccessBlockError =
   | RequestLimitExceeded
   | SlowDown
@@ -16835,6 +16972,7 @@ export const getPublicAccessBlock: API.OperationMethod<
   retry: Retry,
   operationName: "GetPublicAccessBlock",
 }));
+
 export type HeadBucketError =
   | NotFound
   | RequestLimitExceeded
@@ -16918,6 +17056,7 @@ export const headBucket: API.OperationMethod<
   retry: Retry,
   operationName: "HeadBucket",
 }));
+
 export type HeadObjectError =
   | NotFound
   | RequestLimitExceeded
@@ -17046,6 +17185,7 @@ export const headObject: API.OperationMethod<
   retry: Retry,
   operationName: "HeadObject",
 }));
+
 export type ListBucketAnalyticsConfigurationsError =
   | RequestLimitExceeded
   | SlowDown
@@ -17096,6 +17236,7 @@ export const listBucketAnalyticsConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "ListBucketAnalyticsConfigurations",
 }));
+
 export type ListBucketIntelligentTieringConfigurationsError =
   | RequestLimitExceeded
   | SlowDown
@@ -17135,6 +17276,7 @@ export const listBucketIntelligentTieringConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "ListBucketIntelligentTieringConfigurations",
 }));
+
 export type ListBucketInventoryConfigurationsError =
   | RequestLimitExceeded
   | SlowDown
@@ -17203,6 +17345,7 @@ export const listBucketInventoryConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "ListBucketInventoryConfigurations",
 }));
+
 export type ListBucketMetricsConfigurationsError =
   | RequestLimitExceeded
   | SlowDown
@@ -17273,6 +17416,7 @@ export const listBucketMetricsConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "ListBucketMetricsConfigurations",
 }));
+
 export type ListBucketsError =
   | RequestLimitExceeded
   | SlowDown
@@ -17330,6 +17474,7 @@ export const listBuckets: API.OperationMethod<
     pageSize: "MaxBuckets",
   } as const,
 }));
+
 export type ListDirectoryBucketsError = CommonErrors;
 /**
  * Returns a list of all Amazon S3 directory buckets owned by the authenticated sender of the request. For
@@ -17392,6 +17537,7 @@ export const listDirectoryBuckets: API.OperationMethod<
     pageSize: "MaxDirectoryBuckets",
   } as const,
 }));
+
 export type ListMultipartUploadsError =
   | RequestLimitExceeded
   | SlowDown
@@ -17498,6 +17644,7 @@ export const listMultipartUploads: API.OperationMethod<
   retry: Retry,
   operationName: "ListMultipartUploads",
 }));
+
 export type ListObjectAnnotationsError =
   | InvalidPrefix
   | NoSuchBucket
@@ -17556,6 +17703,7 @@ export const listObjectAnnotations: API.OperationMethod<
     pageSize: "MaxAnnotationResults",
   } as const,
 }));
+
 export type ListObjectsError =
   | NoSuchBucket
   | RequestLimitExceeded
@@ -17601,6 +17749,7 @@ export const listObjects: API.OperationMethod<
   retry: Retry,
   operationName: "ListObjects",
 }));
+
 export type ListObjectsV2Error =
   | NoSuchBucket
   | RequestLimitExceeded
@@ -17706,6 +17855,7 @@ export const listObjectsV2: API.OperationMethod<
     pageSize: "MaxKeys",
   } as const,
 }));
+
 export type ListObjectVersionsError =
   | RequestLimitExceeded
   | SlowDown
@@ -17751,6 +17901,7 @@ export const listObjectVersions: API.OperationMethod<
   retry: Retry,
   operationName: "ListObjectVersions",
 }));
+
 export type ListPartsError =
   | RequestLimitExceeded
   | SlowDown
@@ -17852,6 +18003,7 @@ export const listParts: API.OperationMethod<
     pageSize: "MaxParts",
   } as const,
 }));
+
 export type PutBucketAbacError = CommonErrors;
 /**
  * Sets the attribute-based access control (ABAC) property of the general purpose bucket. You must have `s3:PutBucketABAC` permission to perform this action. When you enable ABAC, you can use tags for access control on your buckets. Additionally, when ABAC is enabled, you must use the TagResource and UntagResource actions to manage tags on your buckets. You can nolonger use the PutBucketTagging and DeleteBucketTagging actions to tag your bucket. For more information, see Enabling ABAC in general purpose buckets.
@@ -17869,6 +18021,7 @@ export const putBucketAbac: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketAbac",
 }));
+
 export type PutBucketAccelerateConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -17924,6 +18077,7 @@ export const putBucketAccelerateConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketAccelerateConfiguration",
 }));
+
 export type PutBucketAclError =
   | RequestLimitExceeded
   | SlowDown
@@ -18088,6 +18242,7 @@ export const putBucketAcl: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketAcl",
 }));
+
 export type PutBucketAnalyticsConfigurationError = CommonErrors;
 /**
  * This operation is not supported for directory buckets.
@@ -18165,6 +18320,7 @@ export const putBucketAnalyticsConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketAnalyticsConfiguration",
 }));
+
 export type PutBucketCorsError =
   | RequestLimitExceeded
   | SlowDown
@@ -18230,6 +18386,7 @@ export const putBucketCors: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketCors",
 }));
+
 export type PutBucketEncryptionError =
   | RequestLimitExceeded
   | SlowDown
@@ -18334,6 +18491,7 @@ export const putBucketEncryption: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketEncryption",
 }));
+
 export type PutBucketIntelligentTieringConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -18399,6 +18557,7 @@ export const putBucketIntelligentTieringConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketIntelligentTieringConfiguration",
 }));
+
 export type PutBucketInventoryConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -18507,6 +18666,7 @@ export const putBucketInventoryConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketInventoryConfiguration",
 }));
+
 export type PutBucketLifecycleConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -18631,6 +18791,7 @@ export const putBucketLifecycleConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketLifecycleConfiguration",
 }));
+
 export type PutBucketLoggingError =
   | RequestLimitExceeded
   | SlowDown
@@ -18718,6 +18879,7 @@ export const putBucketLogging: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketLogging",
 }));
+
 export type PutBucketMetricsConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -18791,6 +18953,7 @@ export const putBucketMetricsConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketMetricsConfiguration",
 }));
+
 export type PutBucketNotificationConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -18862,6 +19025,7 @@ export const putBucketNotificationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketNotificationConfiguration",
 }));
+
 export type PutBucketOwnershipControlsError =
   | RequestLimitExceeded
   | SlowDown
@@ -18897,6 +19061,7 @@ export const putBucketOwnershipControls: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketOwnershipControls",
 }));
+
 export type PutBucketPolicyError =
   | RequestLimitExceeded
   | SlowDown
@@ -18990,6 +19155,7 @@ export const putBucketPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketPolicy",
 }));
+
 export type PutBucketReplicationError =
   | RequestLimitExceeded
   | SlowDown
@@ -19070,6 +19236,7 @@ export const putBucketReplication: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketReplication",
 }));
+
 export type PutBucketRequestPaymentError =
   | RequestLimitExceeded
   | SlowDown
@@ -19105,6 +19272,7 @@ export const putBucketRequestPayment: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketRequestPayment",
 }));
+
 export type PutBucketTaggingError =
   | RequestLimitExceeded
   | SlowDown
@@ -19166,6 +19334,7 @@ export const putBucketTagging: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketTagging",
 }));
+
 export type PutBucketVersioningError =
   | RequestLimitExceeded
   | SlowDown
@@ -19228,6 +19397,7 @@ export const putBucketVersioning: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketVersioning",
 }));
+
 export type PutBucketWebsiteError =
   | RequestLimitExceeded
   | SlowDown
@@ -19318,6 +19488,7 @@ export const putBucketWebsite: API.OperationMethod<
   retry: Retry,
   operationName: "PutBucketWebsite",
 }));
+
 export type PutObjectError =
   | EncryptionTypeMismatch
   | InvalidRequest
@@ -19477,6 +19648,7 @@ export const putObject: API.OperationMethod<
   retry: Retry,
   operationName: "PutObject",
 }));
+
 export type PutObjectAclError =
   | NoSuchKey
   | RequestLimitExceeded
@@ -19639,6 +19811,7 @@ export const putObjectAcl: API.OperationMethod<
   retry: Retry,
   operationName: "PutObjectAcl",
 }));
+
 export type PutObjectAnnotationError =
   | AnnotationLimitExceeded
   | AnnotationNameTooLong
@@ -19696,6 +19869,7 @@ export const putObjectAnnotation: API.OperationMethod<
   retry: Retry,
   operationName: "PutObjectAnnotation",
 }));
+
 export type PutObjectLegalHoldError =
   | RequestLimitExceeded
   | SlowDown
@@ -19724,6 +19898,7 @@ export const putObjectLegalHold: API.OperationMethod<
   retry: Retry,
   operationName: "PutObjectLegalHold",
 }));
+
 export type PutObjectLockConfigurationError =
   | RequestLimitExceeded
   | SlowDown
@@ -19769,6 +19944,7 @@ export const putObjectLockConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutObjectLockConfiguration",
 }));
+
 export type PutObjectRetentionError =
   | RequestLimitExceeded
   | SlowDown
@@ -19799,6 +19975,7 @@ export const putObjectRetention: API.OperationMethod<
   retry: Retry,
   operationName: "PutObjectRetention",
 }));
+
 export type PutObjectTaggingError =
   | RequestLimitExceeded
   | SlowDown
@@ -19858,6 +20035,7 @@ export const putObjectTagging: API.OperationMethod<
   retry: Retry,
   operationName: "PutObjectTagging",
 }));
+
 export type PutPublicAccessBlockError =
   | RequestLimitExceeded
   | SlowDown
@@ -19907,6 +20085,7 @@ export const putPublicAccessBlock: API.OperationMethod<
   retry: Retry,
   operationName: "PutPublicAccessBlock",
 }));
+
 export type RenameObjectError = IdempotencyParameterMismatch | CommonErrors;
 /**
  * Renames an existing object in a directory bucket that uses the S3 Express One Zone storage class.
@@ -19966,6 +20145,7 @@ export const renameObject: API.OperationMethod<
   retry: Retry,
   operationName: "RenameObject",
 }));
+
 export type RestoreObjectError =
   | ObjectAlreadyInActiveTierError
   | RequestLimitExceeded
@@ -20134,6 +20314,7 @@ export const restoreObject: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreObject",
 }));
+
 export type SelectObjectContentError =
   | RequestLimitExceeded
   | SlowDown
@@ -20243,6 +20424,7 @@ export const selectObjectContent: API.OperationMethod<
   retry: Retry,
   operationName: "SelectObjectContent",
 }));
+
 export type UpdateBucketMetadataAnnotationTableConfigurationError =
   CommonErrors;
 /**
@@ -20282,6 +20464,7 @@ export const updateBucketMetadataAnnotationTableConfiguration: API.OperationMeth
   retry: Retry,
   operationName: "UpdateBucketMetadataAnnotationTableConfiguration",
 }));
+
 export type UpdateBucketMetadataInventoryTableConfigurationError = CommonErrors;
 /**
  * Enables or disables a live inventory table for an S3 Metadata configuration on a general
@@ -20342,6 +20525,7 @@ export const updateBucketMetadataInventoryTableConfiguration: API.OperationMetho
   retry: Retry,
   operationName: "UpdateBucketMetadataInventoryTableConfiguration",
 }));
+
 export type UpdateBucketMetadataJournalTableConfigurationError = CommonErrors;
 /**
  * Enables or disables journal table record expiration for an S3 Metadata configuration on a general
@@ -20380,6 +20564,7 @@ export const updateBucketMetadataJournalTableConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBucketMetadataJournalTableConfiguration",
 }));
+
 export type UpdateObjectEncryptionError =
   | AccessDenied
   | InvalidRequest
@@ -20509,6 +20694,7 @@ export const updateObjectEncryption: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateObjectEncryption",
 }));
+
 export type UploadPartError =
   | RequestLimitExceeded
   | SlowDown
@@ -20668,6 +20854,7 @@ export const uploadPart: API.OperationMethod<
   retry: Retry,
   operationName: "UploadPart",
 }));
+
 export type UploadPartCopyError =
   | RequestLimitExceeded
   | SlowDown
@@ -20847,6 +21034,7 @@ export const uploadPartCopy: API.OperationMethod<
   retry: Retry,
   operationName: "UploadPartCopy",
 }));
+
 export type WriteGetObjectResponseError = CommonErrors;
 /**
  * This operation is not supported for directory buckets.

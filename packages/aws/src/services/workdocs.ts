@@ -88,51 +88,139 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ConflictingOperationException extends S.TaggedErrorClass<ConflictingOperationException>()(
+  "ConflictingOperationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class CustomMetadataLimitExceededException extends S.TaggedErrorClass<CustomMetadataLimitExceededException>()(
+  "CustomMetadataLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class DeactivatingLastSystemUserException extends S.TaggedErrorClass<DeactivatingLastSystemUserException>()(
+  "DeactivatingLastSystemUserException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class DocumentLockedForCommentsException extends S.TaggedErrorClass<DocumentLockedForCommentsException>()(
+  "DocumentLockedForCommentsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class DraftUploadOutOfSyncException extends S.TaggedErrorClass<DraftUploadOutOfSyncException>()(
+  "DraftUploadOutOfSyncException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class EntityAlreadyExistsException extends S.TaggedErrorClass<EntityAlreadyExistsException>()(
+  "EntityAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class EntityNotExistsException extends S.TaggedErrorClass<EntityNotExistsException>()(
+  "EntityNotExistsException",
+  {
+    Message: S.optional(S.String),
+    EntityIds: S.optional(
+      S.suspend(() => EntityIdList).annotate({ identifier: "EntityIdList" }),
+    ),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class FailedDependencyException extends S.TaggedErrorClass<FailedDependencyException>()(
+  "FailedDependencyException",
+  { Message: S.optional(S.String) },
+  T.HttpError(424),
+) {}
+export class IllegalUserStateException extends S.TaggedErrorClass<IllegalUserStateException>()(
+  "IllegalUserStateException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
+  "InvalidArgumentException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidCommentOperationException extends S.TaggedErrorClass<InvalidCommentOperationException>()(
+  "InvalidCommentOperationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
+  "InvalidOperationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(405),
+).pipe(C.withBadRequestError) {}
+export class InvalidPasswordException extends S.TaggedErrorClass<InvalidPasswordException>()(
+  "InvalidPasswordException",
+  { Message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ProhibitedStateException extends S.TaggedErrorClass<ProhibitedStateException>()(
+  "ProhibitedStateException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class RequestedEntityTooLargeException extends S.TaggedErrorClass<RequestedEntityTooLargeException>()(
+  "RequestedEntityTooLargeException",
+  { Message: S.optional(S.String) },
+  T.HttpError(413),
+).pipe(C.withBadRequestError) {}
+export class ResourceAlreadyCheckedOutException extends S.TaggedErrorClass<ResourceAlreadyCheckedOutException>()(
+  "ResourceAlreadyCheckedOutException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class StorageLimitExceededException extends S.TaggedErrorClass<StorageLimitExceededException>()(
+  "StorageLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class StorageLimitWillExceedException extends S.TaggedErrorClass<StorageLimitWillExceedException>()(
+  "StorageLimitWillExceedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(413),
+).pipe(C.withBadRequestError) {}
+export class TooManyLabelsException extends S.TaggedErrorClass<TooManyLabelsException>()(
+  "TooManyLabelsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TooManySubscriptionsException extends S.TaggedErrorClass<TooManySubscriptionsException>()(
+  "TooManySubscriptionsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedOperationException extends S.TaggedErrorClass<UnauthorizedOperationException>()(
+  "UnauthorizedOperationException",
+  { Message: S.optional(S.String), Code: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class UnauthorizedResourceAccessException extends S.TaggedErrorClass<UnauthorizedResourceAccessException>()(
+  "UnauthorizedResourceAccessException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError, C.withAuthError) {}
 export type AuthenticationHeaderType = string | redacted.Redacted<string>;
 export type ResourceIdType = string;
 export type DocumentVersionIdType = string;
-export type ErrorMessageType = string;
-export type IdType = string;
-export type ExceptionCodeType = string;
-export type UsernameType = string | redacted.Redacted<string>;
-export type EmailAddressType = string | redacted.Redacted<string>;
-export type UserAttributeValueType = string | redacted.Redacted<string>;
-export type TimeZoneIdType = string;
-export type SizeType = number;
-export type PositiveSizeType = number;
-export type MessageType = string | redacted.Redacted<string>;
-export type CommentIdType = string;
-export type CommentTextType = string | redacted.Redacted<string>;
-export type CustomMetadataKeyType = string;
-export type CustomMetadataValueType = string;
-export type ResourceNameType = string | redacted.Redacted<string>;
-export type HashType = string;
-export type SharedLabel = string;
-export type SubscriptionEndPointType = string;
-export type PasswordType = string | redacted.Redacted<string>;
-export type ActivityNamesFilterType = string;
-export type LimitType = number;
-export type SearchMarkerType = string;
-export type GroupNameType = string;
-export type MarkerType = string;
-export type PageMarkerType = string;
-export type FieldNamesType = string;
-export type DocumentContentType = string;
-export type UrlType = string | redacted.Redacted<string>;
-export type SearchQueryType = string | redacted.Redacted<string>;
-export type PositiveIntegerType = number;
-export type UserIdsType = string;
-export type HeaderNameType = string;
-export type HeaderValueType = string;
-export type SearchLabel = string;
-export type SearchAncestorId = string;
-export type LongType = number;
-export type SearchResultsLimitType = number;
-export type NextMarkerType = string;
-export type ResponseItemWebUrl = string | redacted.Redacted<string>;
-
-//# Schemas
 export interface AbortDocumentVersionUploadRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   DocumentId: string;
@@ -168,8 +256,7 @@ export const AbortDocumentVersionUploadResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AbortDocumentVersionUploadResponse",
 }) as any as S.Schema<AbortDocumentVersionUploadResponse>;
-export type EntityIdList = string[];
-export const EntityIdList = /*@__PURE__*/ S.Array(S.String);
+export type IdType = string;
 export interface ActivateUserRequest {
   UserId: string;
   AuthenticationToken?: string | redacted.Redacted<string>;
@@ -194,8 +281,12 @@ export const ActivateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivateUserRequest",
 }) as any as S.Schema<ActivateUserRequest>;
+export type UsernameType = string | redacted.Redacted<string>;
+export type EmailAddressType = string | redacted.Redacted<string>;
+export type UserAttributeValueType = string | redacted.Redacted<string>;
 export type UserStatusType = "ACTIVE" | "INACTIVE" | "PENDING" | (string & {});
 export const UserStatusType = /*@__PURE__*/ S.String;
+
 export type UserType =
   | "USER"
   | "ADMIN"
@@ -204,6 +295,8 @@ export type UserType =
   | "WORKSPACESUSER"
   | (string & {});
 export const UserType = /*@__PURE__*/ S.String;
+
+export type TimeZoneIdType = string;
 export type LocaleType =
   | "en"
   | "fr"
@@ -218,8 +311,12 @@ export type LocaleType =
   | "default"
   | (string & {});
 export const LocaleType = /*@__PURE__*/ S.String;
+
+export type SizeType = number;
+export type PositiveSizeType = number;
 export type StorageType = "UNLIMITED" | "QUOTA" | (string & {});
 export const StorageType = /*@__PURE__*/ S.String;
+
 export interface StorageRuleType {
   StorageAllocatedInBytes?: number;
   StorageType?: StorageType;
@@ -300,6 +397,7 @@ export type PrincipalType =
   | "ORGANIZATION"
   | (string & {});
 export const PrincipalType = /*@__PURE__*/ S.String;
+
 export type RoleType =
   | "VIEWER"
   | "CONTRIBUTOR"
@@ -307,6 +405,7 @@ export type RoleType =
   | "COOWNER"
   | (string & {});
 export const RoleType = /*@__PURE__*/ S.String;
+
 export interface SharePrincipal {
   Id: string;
   Type: PrincipalType;
@@ -317,6 +416,7 @@ export const SharePrincipal = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SharePrincipal" }) as any as S.Schema<SharePrincipal>;
 export type SharePrincipalList = SharePrincipal[];
 export const SharePrincipalList = /*@__PURE__*/ S.Array(SharePrincipal);
+export type MessageType = string | redacted.Redacted<string>;
 export interface NotificationOptions {
   SendEmail?: boolean;
   EmailMessage?: string | redacted.Redacted<string>;
@@ -362,6 +462,7 @@ export const AddResourcePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddResourcePermissionsRequest>;
 export type ShareStatusType = "SUCCESS" | "FAILURE" | (string & {});
 export const ShareStatusType = /*@__PURE__*/ S.String;
+
 export interface ShareResult {
   PrincipalId?: string;
   InviteePrincipalId?: string;
@@ -390,8 +491,11 @@ export const AddResourcePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddResourcePermissionsResponse",
 }) as any as S.Schema<AddResourcePermissionsResponse>;
+export type CommentIdType = string;
+export type CommentTextType = string | redacted.Redacted<string>;
 export type CommentVisibilityType = "PUBLIC" | "PRIVATE" | (string & {});
 export const CommentVisibilityType = /*@__PURE__*/ S.String;
+
 export interface CreateCommentRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   DocumentId: string;
@@ -437,6 +541,7 @@ export type CommentStatusType =
   | "DELETED"
   | (string & {});
 export const CommentStatusType = /*@__PURE__*/ S.String;
+
 export interface Comment {
   CommentId: string;
   ParentId?: string;
@@ -471,6 +576,8 @@ export const CreateCommentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCommentResponse",
 }) as any as S.Schema<CreateCommentResponse>;
+export type CustomMetadataKeyType = string;
+export type CustomMetadataValueType = string;
 export type CustomMetadataMap = { [key: string]: string | undefined };
 export const CustomMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -513,6 +620,7 @@ export const CreateCustomMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCustomMetadataResponse",
 }) as any as S.Schema<CreateCustomMetadataResponse>;
+export type ResourceNameType = string | redacted.Redacted<string>;
 export interface CreateFolderRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   Name?: string | redacted.Redacted<string>;
@@ -546,6 +654,9 @@ export type ResourceStateType =
   | "RECYCLED"
   | (string & {});
 export const ResourceStateType = /*@__PURE__*/ S.String;
+
+export type HashType = string;
+export type SharedLabel = string;
 export type SharedLabels = string[];
 export const SharedLabels = /*@__PURE__*/ S.Array(S.String);
 export interface FolderMetadata {
@@ -620,10 +731,13 @@ export const CreateLabelsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLabelsResponse",
 }) as any as S.Schema<CreateLabelsResponse>;
+export type SubscriptionEndPointType = string;
 export type SubscriptionProtocolType = "HTTPS" | "SQS" | (string & {});
 export const SubscriptionProtocolType = /*@__PURE__*/ S.String;
+
 export type SubscriptionType = "ALL" | (string & {});
 export const SubscriptionType = /*@__PURE__*/ S.String;
+
 export interface CreateNotificationSubscriptionRequest {
   OrganizationId: string;
   Endpoint: string;
@@ -674,6 +788,7 @@ export const CreateNotificationSubscriptionResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateNotificationSubscriptionResponse",
 }) as any as S.Schema<CreateNotificationSubscriptionResponse>;
+export type PasswordType = string | redacted.Redacted<string>;
 export interface CreateUserRequest {
   OrganizationId?: string;
   Username: string | redacted.Redacted<string>;
@@ -1054,6 +1169,9 @@ export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteUserResponse",
 }) as any as S.Schema<DeleteUserResponse>;
+export type ActivityNamesFilterType = string;
+export type LimitType = number;
+export type SearchMarkerType = string;
 export interface DescribeActivitiesRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   StartTime?: Date;
@@ -1136,6 +1254,7 @@ export type ActivityType =
   | "FOLDER_MOVED"
   | (string & {});
 export const ActivityType = /*@__PURE__*/ S.String;
+
 export interface UserMetadata {
   Id?: string;
   Username?: string | redacted.Redacted<string>;
@@ -1154,6 +1273,7 @@ export const UserMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "UserMetadata" }) as any as S.Schema<UserMetadata>;
 export type UserMetadataList = UserMetadata[];
 export const UserMetadataList = /*@__PURE__*/ S.Array(UserMetadata);
+export type GroupNameType = string;
 export interface GroupMetadata {
   Id?: string;
   Name?: string;
@@ -1175,6 +1295,7 @@ export const Participants = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Participants" }) as any as S.Schema<Participants>;
 export type ResourceType = "FOLDER" | "DOCUMENT" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export interface ResourceMetadata {
   Type?: ResourceType;
   Name?: string | redacted.Redacted<string>;
@@ -1257,6 +1378,7 @@ export const DescribeActivitiesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeActivitiesResponse",
 }) as any as S.Schema<DescribeActivitiesResponse>;
+export type MarkerType = string;
 export interface DescribeCommentsRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   DocumentId: string;
@@ -1304,6 +1426,8 @@ export const DescribeCommentsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCommentsResponse",
 }) as any as S.Schema<DescribeCommentsResponse>;
+export type PageMarkerType = string;
+export type FieldNamesType = string;
 export interface DescribeDocumentVersionsRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   DocumentId: string;
@@ -1336,14 +1460,18 @@ export const DescribeDocumentVersionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDocumentVersionsRequest",
 }) as any as S.Schema<DescribeDocumentVersionsRequest>;
+export type DocumentContentType = string;
 export type DocumentStatusType = "INITIALIZED" | "ACTIVE" | (string & {});
 export const DocumentStatusType = /*@__PURE__*/ S.String;
+
 export type DocumentThumbnailType =
   | "SMALL"
   | "SMALL_HQ"
   | "LARGE"
   | (string & {});
 export const DocumentThumbnailType = /*@__PURE__*/ S.String;
+
+export type UrlType = string | redacted.Redacted<string>;
 export type DocumentThumbnailUrlMap = {
   [key in DocumentThumbnailType]?: string | redacted.Redacted<string>;
 };
@@ -1353,6 +1481,7 @@ export const DocumentThumbnailUrlMap = /*@__PURE__*/ S.Record(
 );
 export type DocumentSourceType = "ORIGINAL" | "WITH_COMMENTS" | (string & {});
 export const DocumentSourceType = /*@__PURE__*/ S.String;
+
 export type DocumentSourceUrlMap = {
   [key in DocumentSourceType]?: string | redacted.Redacted<string>;
 };
@@ -1420,10 +1549,13 @@ export const DescribeDocumentVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeDocumentVersionsResponse>;
 export type ResourceSortType = "DATE" | "NAME" | (string & {});
 export const ResourceSortType = /*@__PURE__*/ S.String;
+
 export type OrderType = "ASCENDING" | "DESCENDING" | (string & {});
 export const OrderType = /*@__PURE__*/ S.String;
+
 export type FolderContentType = "ALL" | "DOCUMENT" | "FOLDER" | (string & {});
 export const FolderContentType = /*@__PURE__*/ S.String;
+
 export interface DescribeFolderContentsRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   FolderId: string;
@@ -1506,6 +1638,8 @@ export const DescribeFolderContentsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFolderContentsResponse",
 }) as any as S.Schema<DescribeFolderContentsResponse>;
+export type SearchQueryType = string | redacted.Redacted<string>;
+export type PositiveIntegerType = number;
 export interface DescribeGroupsRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   SearchQuery: string | redacted.Redacted<string>;
@@ -1626,6 +1760,7 @@ export const DescribeResourcePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeResourcePermissionsRequest>;
 export type RolePermissionType = "DIRECT" | "INHERITED" | (string & {});
 export const RolePermissionType = /*@__PURE__*/ S.String;
+
 export interface PermissionInfo {
   Role?: RoleType;
   Type?: RolePermissionType;
@@ -1700,8 +1835,10 @@ export const DescribeRootFoldersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRootFoldersResponse",
 }) as any as S.Schema<DescribeRootFoldersResponse>;
+export type UserIdsType = string;
 export type UserFilterType = "ALL" | "ACTIVE_PENDING" | (string & {});
 export const UserFilterType = /*@__PURE__*/ S.String;
+
 export type UserSortType =
   | "USER_NAME"
   | "FULL_NAME"
@@ -1710,6 +1847,7 @@ export type UserSortType =
   | "STORAGE_USED"
   | (string & {});
 export const UserSortType = /*@__PURE__*/ S.String;
+
 export interface DescribeUsersRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   OrganizationId?: string;
@@ -2018,6 +2156,7 @@ export const GetFolderPathResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetFolderPathResponse>;
 export type ResourceCollectionType = "SHARED_WITH_ME" | (string & {});
 export const ResourceCollectionType = /*@__PURE__*/ S.String;
+
 export interface GetResourcesRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   UserId?: string;
@@ -2105,6 +2244,8 @@ export const InitiateDocumentVersionUploadRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "InitiateDocumentVersionUploadRequest",
 }) as any as S.Schema<InitiateDocumentVersionUploadRequest>;
+export type HeaderNameType = string;
+export type HeaderValueType = string;
 export type SignedHeaderMap = { [key: string]: string | undefined };
 export const SignedHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -2238,11 +2379,13 @@ export const RestoreDocumentVersionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RestoreDocumentVersionsResponse>;
 export type SearchQueryScopeType = "NAME" | "CONTENT" | (string & {});
 export const SearchQueryScopeType = /*@__PURE__*/ S.String;
+
 export type SearchQueryScopeTypeList = SearchQueryScopeType[];
 export const SearchQueryScopeTypeList =
   /*@__PURE__*/ S.Array(SearchQueryScopeType);
 export type AdditionalResponseFieldType = "WEBURL" | (string & {});
 export const AdditionalResponseFieldType = /*@__PURE__*/ S.String;
+
 export type AdditionalResponseFieldsList = AdditionalResponseFieldType[];
 export const AdditionalResponseFieldsList = /*@__PURE__*/ S.Array(
   AdditionalResponseFieldType,
@@ -2281,6 +2424,7 @@ export type LanguageCodeType =
   | "DEFAULT"
   | (string & {});
 export const LanguageCodeType = /*@__PURE__*/ S.String;
+
 export type TextLocaleTypeList = LanguageCodeType[];
 export const TextLocaleTypeList = /*@__PURE__*/ S.Array(LanguageCodeType);
 export type ContentCategoryType =
@@ -2295,6 +2439,7 @@ export type ContentCategoryType =
   | "OTHER"
   | (string & {});
 export const ContentCategoryType = /*@__PURE__*/ S.String;
+
 export type SearchContentCategoryTypeList = ContentCategoryType[];
 export const SearchContentCategoryTypeList =
   /*@__PURE__*/ S.Array(ContentCategoryType);
@@ -2305,8 +2450,10 @@ export type SearchResourceType =
   | "DOCUMENT_VERSION"
   | (string & {});
 export const SearchResourceType = /*@__PURE__*/ S.String;
+
 export type SearchResourceTypeList = SearchResourceType[];
 export const SearchResourceTypeList = /*@__PURE__*/ S.Array(SearchResourceType);
+export type SearchLabel = string;
 export type SearchLabelList = string[];
 export const SearchLabelList = /*@__PURE__*/ S.Array(S.String);
 export type PrincipalRoleType =
@@ -2316,6 +2463,7 @@ export type PrincipalRoleType =
   | "COOWNER"
   | (string & {});
 export const PrincipalRoleType = /*@__PURE__*/ S.String;
+
 export type SearchPrincipalRoleList = PrincipalRoleType[];
 export const SearchPrincipalRoleList = /*@__PURE__*/ S.Array(PrincipalRoleType);
 export interface SearchPrincipalType {
@@ -2330,13 +2478,16 @@ export const SearchPrincipalType = /*@__PURE__*/ S.suspend(() =>
 export type SearchPrincipalTypeList = SearchPrincipalType[];
 export const SearchPrincipalTypeList =
   /*@__PURE__*/ S.Array(SearchPrincipalType);
+export type SearchAncestorId = string;
 export type SearchAncestorIdList = string[];
 export const SearchAncestorIdList = /*@__PURE__*/ S.Array(S.String);
 export type SearchCollectionType = "OWNED" | "SHARED_WITH_ME" | (string & {});
 export const SearchCollectionType = /*@__PURE__*/ S.String;
+
 export type SearchCollectionTypeList = SearchCollectionType[];
 export const SearchCollectionTypeList =
   /*@__PURE__*/ S.Array(SearchCollectionType);
+export type LongType = number;
 export interface LongRangeType {
   StartValue?: number;
   EndValue?: number;
@@ -2391,8 +2542,10 @@ export type OrderByFieldType =
   | "MODIFIED_TIMESTAMP"
   | (string & {});
 export const OrderByFieldType = /*@__PURE__*/ S.String;
+
 export type SortOrder = "ASC" | "DESC" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface SearchSortResult {
   Field?: OrderByFieldType;
   Order?: SortOrder;
@@ -2407,6 +2560,8 @@ export const SearchSortResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchSortResult>;
 export type SearchResultSortList = SearchSortResult[];
 export const SearchResultSortList = /*@__PURE__*/ S.Array(SearchSortResult);
+export type SearchResultsLimitType = number;
+export type NextMarkerType = string;
 export interface SearchResourcesRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   QueryText?: string | redacted.Redacted<string>;
@@ -2452,6 +2607,8 @@ export type ResponseItemType =
   | "DOCUMENT_VERSION"
   | (string & {});
 export const ResponseItemType = /*@__PURE__*/ S.String;
+
+export type ResponseItemWebUrl = string | redacted.Redacted<string>;
 export interface ResponseItem {
   ResourceType?: ResponseItemType;
   WebUrl?: string | redacted.Redacted<string>;
@@ -2522,6 +2679,7 @@ export const UpdateDocumentResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateDocumentResponse>;
 export type DocumentVersionStatus = "ACTIVE" | (string & {});
 export const DocumentVersionStatus = /*@__PURE__*/ S.String;
+
 export interface UpdateDocumentVersionRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   DocumentId: string;
@@ -2597,6 +2755,7 @@ export const UpdateFolderResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateFolderResponse>;
 export type BooleanEnumType = "TRUE" | "FALSE" | (string & {});
 export const BooleanEnumType = /*@__PURE__*/ S.String;
+
 export interface UpdateUserRequest {
   AuthenticationToken?: string | redacted.Redacted<string>;
   UserId: string;
@@ -2643,135 +2802,10 @@ export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateUserResponse",
 }) as any as S.Schema<UpdateUserResponse>;
-
-//# Errors
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class EntityNotExistsException extends S.TaggedErrorClass<EntityNotExistsException>()(
-  "EntityNotExistsException",
-  { Message: S.optional(S.String), EntityIds: S.optional(EntityIdList) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class FailedDependencyException extends S.TaggedErrorClass<FailedDependencyException>()(
-  "FailedDependencyException",
-  { Message: S.optional(S.String) },
-  T.HttpError(424),
-) {}
-export class ProhibitedStateException extends S.TaggedErrorClass<ProhibitedStateException>()(
-  "ProhibitedStateException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class UnauthorizedOperationException extends S.TaggedErrorClass<UnauthorizedOperationException>()(
-  "UnauthorizedOperationException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class UnauthorizedResourceAccessException extends S.TaggedErrorClass<UnauthorizedResourceAccessException>()(
-  "UnauthorizedResourceAccessException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError, C.withAuthError) {}
-export class DocumentLockedForCommentsException extends S.TaggedErrorClass<DocumentLockedForCommentsException>()(
-  "DocumentLockedForCommentsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InvalidCommentOperationException extends S.TaggedErrorClass<InvalidCommentOperationException>()(
-  "InvalidCommentOperationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class CustomMetadataLimitExceededException extends S.TaggedErrorClass<CustomMetadataLimitExceededException>()(
-  "CustomMetadataLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ConflictingOperationException extends S.TaggedErrorClass<ConflictingOperationException>()(
-  "ConflictingOperationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class EntityAlreadyExistsException extends S.TaggedErrorClass<EntityAlreadyExistsException>()(
-  "EntityAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class TooManyLabelsException extends S.TaggedErrorClass<TooManyLabelsException>()(
-  "TooManyLabelsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
-  "InvalidArgumentException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManySubscriptionsException extends S.TaggedErrorClass<TooManySubscriptionsException>()(
-  "TooManySubscriptionsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
-  "InvalidOperationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(405),
-).pipe(C.withBadRequestError) {}
-export class InvalidPasswordException extends S.TaggedErrorClass<InvalidPasswordException>()(
-  "InvalidPasswordException",
-  { Message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class RequestedEntityTooLargeException extends S.TaggedErrorClass<RequestedEntityTooLargeException>()(
-  "RequestedEntityTooLargeException",
-  { Message: S.optional(S.String) },
-  T.HttpError(413),
-).pipe(C.withBadRequestError) {}
-export class DraftUploadOutOfSyncException extends S.TaggedErrorClass<DraftUploadOutOfSyncException>()(
-  "DraftUploadOutOfSyncException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceAlreadyCheckedOutException extends S.TaggedErrorClass<ResourceAlreadyCheckedOutException>()(
-  "ResourceAlreadyCheckedOutException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class StorageLimitExceededException extends S.TaggedErrorClass<StorageLimitExceededException>()(
-  "StorageLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class StorageLimitWillExceedException extends S.TaggedErrorClass<StorageLimitWillExceedException>()(
-  "StorageLimitWillExceedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(413),
-).pipe(C.withBadRequestError) {}
-export class DeactivatingLastSystemUserException extends S.TaggedErrorClass<DeactivatingLastSystemUserException>()(
-  "DeactivatingLastSystemUserException",
-  { Message: S.optional(S.String), Code: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class IllegalUserStateException extends S.TaggedErrorClass<IllegalUserStateException>()(
-  "IllegalUserStateException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-
-//# Operations
+export type ErrorMessageType = string;
+export type EntityIdList = string[];
+export const EntityIdList = /*@__PURE__*/ S.Array(S.String);
+export type ExceptionCodeType = string;
 export type AbortDocumentVersionUploadError =
   | ConcurrentModificationException
   | EntityNotExistsException
@@ -2808,6 +2842,7 @@ export const abortDocumentVersionUpload: API.OperationMethod<
   retry: Retry,
   operationName: "AbortDocumentVersionUpload",
 }));
+
 export type ActivateUserError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -2838,6 +2873,7 @@ export const activateUser: API.OperationMethod<
   retry: Retry,
   operationName: "ActivateUser",
 }));
+
 export type AddResourcePermissionsError =
   | FailedDependencyException
   | ProhibitedStateException
@@ -2869,6 +2905,7 @@ export const addResourcePermissions: API.OperationMethod<
   retry: Retry,
   operationName: "AddResourcePermissions",
 }));
+
 export type CreateCommentError =
   | DocumentLockedForCommentsException
   | EntityNotExistsException
@@ -2904,6 +2941,7 @@ export const createComment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateComment",
 }));
+
 export type CreateCustomMetadataError =
   | CustomMetadataLimitExceededException
   | EntityNotExistsException
@@ -2938,6 +2976,7 @@ export const createCustomMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCustomMetadata",
 }));
+
 export type CreateFolderError =
   | ConcurrentModificationException
   | ConflictingOperationException
@@ -2977,6 +3016,7 @@ export const createFolder: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFolder",
 }));
+
 export type CreateLabelsError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -3009,6 +3049,7 @@ export const createLabels: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLabels",
 }));
+
 export type CreateNotificationSubscriptionError =
   | InvalidArgumentException
   | ServiceUnavailableException
@@ -3040,6 +3081,7 @@ export const createNotificationSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNotificationSubscription",
 }));
+
 export type CreateUserError =
   | EntityAlreadyExistsException
   | FailedDependencyException
@@ -3070,6 +3112,7 @@ export const createUser: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUser",
 }));
+
 export type DeactivateUserError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -3100,6 +3143,7 @@ export const deactivateUser: API.OperationMethod<
   retry: Retry,
   operationName: "DeactivateUser",
 }));
+
 export type DeleteCommentError =
   | DocumentLockedForCommentsException
   | EntityNotExistsException
@@ -3133,6 +3177,7 @@ export const deleteComment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteComment",
 }));
+
 export type DeleteCustomMetadataError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -3164,6 +3209,7 @@ export const deleteCustomMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCustomMetadata",
 }));
+
 export type DeleteDocumentError =
   | ConcurrentModificationException
   | ConflictingOperationException
@@ -3201,6 +3247,7 @@ export const deleteDocument: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDocument",
 }));
+
 export type DeleteDocumentVersionError =
   | ConcurrentModificationException
   | ConflictingOperationException
@@ -3236,6 +3283,7 @@ export const deleteDocumentVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDocumentVersion",
 }));
+
 export type DeleteFolderError =
   | ConcurrentModificationException
   | ConflictingOperationException
@@ -3273,6 +3321,7 @@ export const deleteFolder: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFolder",
 }));
+
 export type DeleteFolderContentsError =
   | ConflictingOperationException
   | EntityNotExistsException
@@ -3306,6 +3355,7 @@ export const deleteFolderContents: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFolderContents",
 }));
+
 export type DeleteLabelsError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -3337,6 +3387,7 @@ export const deleteLabels: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLabels",
 }));
+
 export type DeleteNotificationSubscriptionError =
   | EntityNotExistsException
   | ProhibitedStateException
@@ -3364,6 +3415,7 @@ export const deleteNotificationSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNotificationSubscription",
 }));
+
 export type DeleteUserError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -3395,6 +3447,7 @@ export const deleteUser: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUser",
 }));
+
 export type DescribeActivitiesError =
   | FailedDependencyException
   | InvalidArgumentException
@@ -3445,6 +3498,7 @@ export const describeActivities: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeCommentsError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -3497,6 +3551,7 @@ export const describeComments: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeDocumentVersionsError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -3555,6 +3610,7 @@ export const describeDocumentVersions: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeFolderContentsError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -3612,6 +3668,7 @@ export const describeFolderContents: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeGroupsError =
   | FailedDependencyException
   | ServiceUnavailableException
@@ -3661,6 +3718,7 @@ export const describeGroups: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeNotificationSubscriptionsError =
   | EntityNotExistsException
   | ServiceUnavailableException
@@ -3707,6 +3765,7 @@ export const describeNotificationSubscriptions: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeResourcePermissionsError =
   | FailedDependencyException
   | InvalidArgumentException
@@ -3757,6 +3816,7 @@ export const describeResourcePermissions: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeRootFoldersError =
   | FailedDependencyException
   | InvalidArgumentException
@@ -3816,6 +3876,7 @@ export const describeRootFolders: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type DescribeUsersError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -3875,6 +3936,7 @@ export const describeUsers: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type GetCurrentUserError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -3911,6 +3973,7 @@ export const getCurrentUser: API.OperationMethod<
   retry: Retry,
   operationName: "GetCurrentUser",
 }));
+
 export type GetDocumentError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -3944,6 +4007,7 @@ export const getDocument: API.OperationMethod<
   retry: Retry,
   operationName: "GetDocument",
 }));
+
 export type GetDocumentPathError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -3979,6 +4043,7 @@ export const getDocumentPath: API.OperationMethod<
   retry: Retry,
   operationName: "GetDocumentPath",
 }));
+
 export type GetDocumentVersionError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -4012,6 +4077,7 @@ export const getDocumentVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetDocumentVersion",
 }));
+
 export type GetFolderError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -4045,6 +4111,7 @@ export const getFolder: API.OperationMethod<
   retry: Retry,
   operationName: "GetFolder",
 }));
+
 export type GetFolderPathError =
   | EntityNotExistsException
   | FailedDependencyException
@@ -4080,6 +4147,7 @@ export const getFolderPath: API.OperationMethod<
   retry: Retry,
   operationName: "GetFolderPath",
 }));
+
 export type GetResourcesError =
   | FailedDependencyException
   | InvalidArgumentException
@@ -4110,6 +4178,7 @@ export const getResources: API.OperationMethod<
   retry: Retry,
   operationName: "GetResources",
 }));
+
 export type InitiateDocumentVersionUploadError =
   | DraftUploadOutOfSyncException
   | EntityAlreadyExistsException
@@ -4164,6 +4233,7 @@ export const initiateDocumentVersionUpload: API.OperationMethod<
   retry: Retry,
   operationName: "InitiateDocumentVersionUpload",
 }));
+
 export type RemoveAllResourcePermissionsError =
   | FailedDependencyException
   | ServiceUnavailableException
@@ -4191,6 +4261,7 @@ export const removeAllResourcePermissions: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveAllResourcePermissions",
 }));
+
 export type RemoveResourcePermissionError =
   | FailedDependencyException
   | ServiceUnavailableException
@@ -4219,6 +4290,7 @@ export const removeResourcePermission: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveResourcePermission",
 }));
+
 export type RestoreDocumentVersionsError =
   | ConcurrentModificationException
   | ConflictingOperationException
@@ -4254,6 +4326,7 @@ export const restoreDocumentVersions: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreDocumentVersions",
 }));
+
 export type SearchResourcesError =
   | InvalidArgumentException
   | ServiceUnavailableException
@@ -4302,6 +4375,7 @@ export const searchResources: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type UpdateDocumentError =
   | ConcurrentModificationException
   | ConflictingOperationException
@@ -4342,6 +4416,7 @@ export const updateDocument: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDocument",
 }));
+
 export type UpdateDocumentVersionError =
   | ConcurrentModificationException
   | EntityNotExistsException
@@ -4381,6 +4456,7 @@ export const updateDocumentVersion: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDocumentVersion",
 }));
+
 export type UpdateFolderError =
   | ConcurrentModificationException
   | ConflictingOperationException
@@ -4421,6 +4497,7 @@ export const updateFolder: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFolder",
 }));
+
 export type UpdateUserError =
   | DeactivatingLastSystemUserException
   | EntityNotExistsException

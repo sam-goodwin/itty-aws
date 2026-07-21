@@ -85,32 +85,54 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class DryRunOperation extends S.TaggedErrorClass<DryRunOperation>()(
+  "DryRunOperation",
+  { Message: S.optional(S.String) },
+) {}
+export class HomeRegionNotSetException extends S.TaggedErrorClass<HomeRegionNotSetException>()(
+  "HomeRegionNotSetException",
+  { Message: S.optional(S.String) },
+) {}
+export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
+  "InternalServerError",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  { Message: S.optional(S.String) },
+) {}
+export class PolicyErrorException extends S.TaggedErrorClass<PolicyErrorException>()(
+  "PolicyErrorException",
+  { Message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { Message: S.optional(S.String) },
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    Message: S.String,
+    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedOperation extends S.TaggedErrorClass<UnauthorizedOperation>()(
+  "UnauthorizedOperation",
+  { Message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
 export type ProgressUpdateStream = string;
 export type MigrationTaskName = string;
 export type CreatedArtifactName = string;
 export type CreatedArtifactDescription = string;
-export type DryRun = boolean;
-export type ErrorMessage = string;
-export type RetryAfterSeconds = number;
-export type ConfigurationId = string;
-export type DiscoveredResourceDescription = string;
-export type SourceResourceName = string;
-export type SourceResourceDescription = string;
-export type StatusDetail = string;
-export type ApplicationId = string;
-export type UpdateDateTime = Date;
-export type ProgressPercent = number;
-export type ResourceAttributeValue = string;
-export type Token = string;
-export type MaxResults = number;
-export type MaxResultsCreatedArtifacts = number;
-export type MaxResultsResources = number;
-export type ResourceName = string;
-export type MaxResultsSourceResources = number;
-export type NextUpdateSeconds = number;
-
-//# Schemas
 export interface CreatedArtifact {
   Name: string;
   Description?: string;
@@ -120,6 +142,7 @@ export const CreatedArtifact = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatedArtifact",
 }) as any as S.Schema<CreatedArtifact>;
+export type DryRun = boolean;
 export interface AssociateCreatedArtifactRequest {
   ProgressUpdateStream: string;
   MigrationTaskName: string;
@@ -144,6 +167,8 @@ export const AssociateCreatedArtifactResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateCreatedArtifactResult",
 }) as any as S.Schema<AssociateCreatedArtifactResult>;
+export type ConfigurationId = string;
+export type DiscoveredResourceDescription = string;
 export interface DiscoveredResource {
   ConfigurationId: string;
   Description?: string;
@@ -177,6 +202,9 @@ export const AssociateDiscoveredResourceResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateDiscoveredResourceResult",
 }) as any as S.Schema<AssociateDiscoveredResourceResult>;
+export type SourceResourceName = string;
+export type SourceResourceDescription = string;
+export type StatusDetail = string;
 export interface SourceResource {
   Name: string;
   Description?: string;
@@ -253,6 +281,7 @@ export const DeleteProgressUpdateStreamResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteProgressUpdateStreamResult",
 }) as any as S.Schema<DeleteProgressUpdateStreamResult>;
+export type ApplicationId = string;
 export interface DescribeApplicationStateRequest {
   ApplicationId: string;
 }
@@ -269,6 +298,8 @@ export type ApplicationStatus =
   | "COMPLETED"
   | (string & {});
 export const ApplicationStatus = /*@__PURE__*/ S.String;
+
+export type UpdateDateTime = Date;
 export interface DescribeApplicationStateResult {
   ApplicationStatus?: ApplicationStatus;
   LastUpdatedTime?: Date;
@@ -304,6 +335,8 @@ export type Status =
   | "COMPLETED"
   | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
+export type ProgressPercent = number;
 export interface Task {
   Status: Status;
   StatusDetail?: string;
@@ -329,6 +362,8 @@ export type ResourceAttributeType =
   | "MOTHERBOARD_SERIAL_NUMBER"
   | (string & {});
 export const ResourceAttributeType = /*@__PURE__*/ S.String;
+
+export type ResourceAttributeValue = string;
 export interface ResourceAttribute {
   Type: ResourceAttributeType;
   Value: string;
@@ -462,6 +497,8 @@ export const ImportMigrationTaskResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImportMigrationTaskResult>;
 export type ApplicationIds = string[];
 export const ApplicationIds = /*@__PURE__*/ S.Array(S.String);
+export type Token = string;
+export type MaxResults = number;
 export interface ListApplicationStatesRequest {
   ApplicationIds?: string[];
   NextToken?: string;
@@ -508,6 +545,7 @@ export const ListApplicationStatesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListApplicationStatesResult",
 }) as any as S.Schema<ListApplicationStatesResult>;
+export type MaxResultsCreatedArtifacts = number;
 export interface ListCreatedArtifactsRequest {
   ProgressUpdateStream: string;
   MigrationTaskName: string;
@@ -540,6 +578,7 @@ export const ListCreatedArtifactsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCreatedArtifactsResult",
 }) as any as S.Schema<ListCreatedArtifactsResult>;
+export type MaxResultsResources = number;
 export interface ListDiscoveredResourcesRequest {
   ProgressUpdateStream: string;
   MigrationTaskName: string;
@@ -572,6 +611,7 @@ export const ListDiscoveredResourcesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDiscoveredResourcesResult",
 }) as any as S.Schema<ListDiscoveredResourcesResult>;
+export type ResourceName = string;
 export interface ListMigrationTasksRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -643,6 +683,7 @@ export const ListMigrationTaskUpdatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMigrationTaskUpdatesRequest>;
 export type UpdateType = "MIGRATION_TASK_STATE_UPDATED" | (string & {});
 export const UpdateType = /*@__PURE__*/ S.String;
+
 export interface MigrationTaskUpdate {
   UpdateDateTime?: Date;
   UpdateType?: UpdateType;
@@ -712,6 +753,7 @@ export const ListProgressUpdateStreamsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProgressUpdateStreamsResult",
 }) as any as S.Schema<ListProgressUpdateStreamsResult>;
+export type MaxResultsSourceResources = number;
 export interface ListSourceResourcesRequest {
   ProgressUpdateStream: string;
   MigrationTaskName: string;
@@ -768,6 +810,7 @@ export const NotifyApplicationStateResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotifyApplicationStateResult",
 }) as any as S.Schema<NotifyApplicationStateResult>;
+export type NextUpdateSeconds = number;
 export interface NotifyMigrationTaskStateRequest {
   ProgressUpdateStream: string;
   MigrationTaskName: string;
@@ -822,54 +865,8 @@ export const PutResourceAttributesResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutResourceAttributesResult",
 }) as any as S.Schema<PutResourceAttributesResult>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class DryRunOperation extends S.TaggedErrorClass<DryRunOperation>()(
-  "DryRunOperation",
-  { Message: S.optional(S.String) },
-) {}
-export class HomeRegionNotSetException extends S.TaggedErrorClass<HomeRegionNotSetException>()(
-  "HomeRegionNotSetException",
-  { Message: S.optional(S.String) },
-) {}
-export class InternalServerError extends S.TaggedErrorClass<InternalServerError>()(
-  "InternalServerError",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    Message: S.String,
-    RetryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedOperation extends S.TaggedErrorClass<UnauthorizedOperation>()(
-  "UnauthorizedOperation",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class PolicyErrorException extends S.TaggedErrorClass<PolicyErrorException>()(
-  "PolicyErrorException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ErrorMessage = string;
+export type RetryAfterSeconds = number;
 export type AssociateCreatedArtifactError =
   | AccessDeniedException
   | DryRunOperation
@@ -919,6 +916,7 @@ export const associateCreatedArtifact: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateCreatedArtifact",
 }));
+
 export type AssociateDiscoveredResourceError =
   | AccessDeniedException
   | DryRunOperation
@@ -959,6 +957,7 @@ export const associateDiscoveredResource: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateDiscoveredResource",
 }));
+
 export type AssociateSourceResourceError =
   | AccessDeniedException
   | DryRunOperation
@@ -995,6 +994,7 @@ export const associateSourceResource: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateSourceResource",
 }));
+
 export type CreateProgressUpdateStreamError =
   | AccessDeniedException
   | DryRunOperation
@@ -1034,6 +1034,7 @@ export const createProgressUpdateStream: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProgressUpdateStream",
 }));
+
 export type DeleteProgressUpdateStreamError =
   | AccessDeniedException
   | DryRunOperation
@@ -1093,6 +1094,7 @@ export const deleteProgressUpdateStream: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProgressUpdateStream",
 }));
+
 export type DescribeApplicationStateError =
   | AccessDeniedException
   | HomeRegionNotSetException
@@ -1128,6 +1130,7 @@ export const describeApplicationState: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeApplicationState",
 }));
+
 export type DescribeMigrationTaskError =
   | AccessDeniedException
   | HomeRegionNotSetException
@@ -1161,6 +1164,7 @@ export const describeMigrationTask: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeMigrationTask",
 }));
+
 export type DisassociateCreatedArtifactError =
   | AccessDeniedException
   | DryRunOperation
@@ -1209,6 +1213,7 @@ export const disassociateCreatedArtifact: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateCreatedArtifact",
 }));
+
 export type DisassociateDiscoveredResourceError =
   | AccessDeniedException
   | DryRunOperation
@@ -1247,6 +1252,7 @@ export const disassociateDiscoveredResource: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateDiscoveredResource",
 }));
+
 export type DisassociateSourceResourceError =
   | AccessDeniedException
   | DryRunOperation
@@ -1282,6 +1288,7 @@ export const disassociateSourceResource: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateSourceResource",
 }));
+
 export type ImportMigrationTaskError =
   | AccessDeniedException
   | DryRunOperation
@@ -1323,6 +1330,7 @@ export const importMigrationTask: API.OperationMethod<
   retry: Retry,
   operationName: "ImportMigrationTask",
 }));
+
 export type ListApplicationStatesError =
   | AccessDeniedException
   | HomeRegionNotSetException
@@ -1377,6 +1385,7 @@ export const listApplicationStates: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCreatedArtifactsError =
   | AccessDeniedException
   | HomeRegionNotSetException
@@ -1440,6 +1449,7 @@ export const listCreatedArtifacts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDiscoveredResourcesError =
   | AccessDeniedException
   | HomeRegionNotSetException
@@ -1494,6 +1504,7 @@ export const listDiscoveredResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMigrationTasksError =
   | AccessDeniedException
   | HomeRegionNotSetException
@@ -1558,6 +1569,7 @@ export const listMigrationTasks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMigrationTaskUpdatesError =
   | AccessDeniedException
   | InternalServerError
@@ -1611,6 +1623,7 @@ export const listMigrationTaskUpdates: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProgressUpdateStreamsError =
   | AccessDeniedException
   | HomeRegionNotSetException
@@ -1663,6 +1676,7 @@ export const listProgressUpdateStreams: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSourceResourcesError =
   | AccessDeniedException
   | InternalServerError
@@ -1716,6 +1730,7 @@ export const listSourceResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type NotifyApplicationStateError =
   | AccessDeniedException
   | DryRunOperation
@@ -1758,6 +1773,7 @@ export const notifyApplicationState: API.OperationMethod<
   retry: Retry,
   operationName: "NotifyApplicationState",
 }));
+
 export type NotifyMigrationTaskStateError =
   | AccessDeniedException
   | DryRunOperation
@@ -1805,6 +1821,7 @@ export const notifyMigrationTaskState: API.OperationMethod<
   retry: Retry,
   operationName: "NotifyMigrationTaskState",
 }));
+
 export type PutResourceAttributesError =
   | AccessDeniedException
   | DryRunOperation

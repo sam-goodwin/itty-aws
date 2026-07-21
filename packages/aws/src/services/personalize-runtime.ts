@@ -86,27 +86,21 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type Arn = string;
 export type UserID = string;
 export type NumResults = number;
 export type FilterAttributeName = string;
 export type FilterAttributeValue = string | redacted.Redacted<string>;
-export type ActionID = string;
-export type Score = number;
-export type RecommendationID = string;
-export type ErrorMessage = string;
-export type ItemID = string;
-export type AttributeName = string;
-export type AttributeValue = string | redacted.Redacted<string>;
-export type DatasetType = string;
-export type ColumnName = string;
-export type Name = string;
-export type ColumnValue = string;
-export type Reason = string;
-export type PercentPromotedItems = number;
-
-//# Schemas
 export type FilterValues = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -143,6 +137,8 @@ export const GetActionRecommendationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetActionRecommendationsRequest",
 }) as any as S.Schema<GetActionRecommendationsRequest>;
+export type ActionID = string;
+export type Score = number;
 export interface PredictedAction {
   actionId?: string;
   score?: number;
@@ -154,6 +150,7 @@ export const PredictedAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PredictedAction>;
 export type ActionList = PredictedAction[];
 export const ActionList = /*@__PURE__*/ S.Array(PredictedAction);
+export type RecommendationID = string;
 export interface GetActionRecommendationsResponse {
   actionList?: PredictedAction[];
   recommendationId?: string;
@@ -166,8 +163,11 @@ export const GetActionRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetActionRecommendationsResponse",
 }) as any as S.Schema<GetActionRecommendationsResponse>;
+export type ItemID = string;
 export type InputList = string[];
 export const InputList = /*@__PURE__*/ S.Array(S.String);
+export type AttributeName = string;
+export type AttributeValue = string | redacted.Redacted<string>;
 export type Context = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -175,6 +175,8 @@ export const Context = /*@__PURE__*/ S.Record(
   S.String,
   SensitiveString.pipe(S.optional),
 );
+export type DatasetType = string;
+export type ColumnName = string;
 export type ColumnNamesList = string[];
 export const ColumnNamesList = /*@__PURE__*/ S.Array(S.String);
 export type MetadataColumns = { [key: string]: string[] | undefined };
@@ -215,11 +217,14 @@ export const GetPersonalizedRankingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPersonalizedRankingRequest",
 }) as any as S.Schema<GetPersonalizedRankingRequest>;
+export type Name = string;
+export type ColumnValue = string;
 export type Metadata = { [key: string]: string | undefined };
 export const Metadata = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type Reason = string;
 export type ReasonList = string[];
 export const ReasonList = /*@__PURE__*/ S.Array(S.String);
 export interface PredictedItem {
@@ -252,6 +257,7 @@ export const GetPersonalizedRankingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPersonalizedRankingResponse",
 }) as any as S.Schema<GetPersonalizedRankingResponse>;
+export type PercentPromotedItems = number;
 export interface Promotion {
   name?: string;
   percentPromotedItems?: number;
@@ -321,20 +327,7 @@ export const GetRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRecommendationsResponse",
 }) as any as S.Schema<GetRecommendationsResponse>;
-
-//# Errors
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type GetActionRecommendationsError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -360,6 +353,7 @@ export const getActionRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "GetActionRecommendations",
 }));
+
 export type GetPersonalizedRankingError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -384,6 +378,7 @@ export const getPersonalizedRanking: API.OperationMethod<
   retry: Retry,
   operationName: "GetPersonalizedRanking",
 }));
+
 export type GetRecommendationsError =
   | InvalidInputException
   | ResourceNotFoundException

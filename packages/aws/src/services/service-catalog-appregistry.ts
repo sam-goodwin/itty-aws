@@ -90,30 +90,38 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String), serviceCode: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ApplicationSpecifier = string;
 export type AttributeGroupSpecifier = string;
-export type ApplicationArn = string;
-export type AttributeGroupArn = string;
-export type ResourceSpecifier = string;
-export type Arn = string;
-export type Name = string;
-export type Description = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ClientToken = string;
-export type ApplicationId = string;
-export type Attributes = string;
-export type AttributeGroupId = string;
-export type CreatedBy = string;
-export type AssociationCount = number;
-export type NextToken = string;
-export type MaxResults = number;
-export type ResourcesListItemErrorMessage = string;
-export type ResourceItemType = string;
-export type TagKeyConfig = string;
-
-//# Schemas
 export interface AssociateAttributeGroupRequest {
   application: string;
   attributeGroup: string;
@@ -138,6 +146,8 @@ export const AssociateAttributeGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateAttributeGroupRequest",
 }) as any as S.Schema<AssociateAttributeGroupRequest>;
+export type ApplicationArn = string;
+export type AttributeGroupArn = string;
 export interface AssociateAttributeGroupResponse {
   applicationArn?: string;
   attributeGroupArn?: string;
@@ -152,11 +162,14 @@ export const AssociateAttributeGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociateAttributeGroupResponse>;
 export type ResourceType = "CFN_STACK" | "RESOURCE_TAG_VALUE" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
+export type ResourceSpecifier = string;
 export type AssociationOption =
   | "APPLY_APPLICATION_TAG"
   | "SKIP_APPLICATION_TAG"
   | (string & {});
 export const AssociationOption = /*@__PURE__*/ S.String;
+
 export type Options = AssociationOption[];
 export const Options = /*@__PURE__*/ S.Array(AssociationOption);
 export interface AssociateResourceRequest {
@@ -187,6 +200,7 @@ export const AssociateResourceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateResourceRequest",
 }) as any as S.Schema<AssociateResourceRequest>;
+export type Arn = string;
 export interface AssociateResourceResponse {
   applicationArn?: string;
   resourceArn?: string;
@@ -201,8 +215,13 @@ export const AssociateResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateResourceResponse",
 }) as any as S.Schema<AssociateResourceResponse>;
+export type Name = string;
+export type Description = string;
+export type TagKey = string;
+export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
+export type ClientToken = string;
 export interface CreateApplicationRequest {
   name: string;
   description?: string;
@@ -228,6 +247,7 @@ export const CreateApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationRequest",
 }) as any as S.Schema<CreateApplicationRequest>;
+export type ApplicationId = string;
 export type ApplicationTagDefinition = { [key: string]: string | undefined };
 export const ApplicationTagDefinition = /*@__PURE__*/ S.Record(
   S.String,
@@ -267,6 +287,7 @@ export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationResponse",
 }) as any as S.Schema<CreateApplicationResponse>;
+export type Attributes = string;
 export interface CreateAttributeGroupRequest {
   name: string;
   description?: string;
@@ -294,6 +315,7 @@ export const CreateAttributeGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAttributeGroupRequest",
 }) as any as S.Schema<CreateAttributeGroupRequest>;
+export type AttributeGroupId = string;
 export interface AttributeGroup {
   id?: string;
   arn?: string;
@@ -394,6 +416,7 @@ export const DeleteAttributeGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteAttributeGroupRequest",
 }) as any as S.Schema<DeleteAttributeGroupRequest>;
+export type CreatedBy = string;
 export interface AttributeGroupSummary {
   id?: string;
   arn?: string;
@@ -519,6 +542,7 @@ export const GetApplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetApplicationRequest",
 }) as any as S.Schema<GetApplicationRequest>;
+export type AssociationCount = number;
 export type ResourceGroupState =
   | "CREATING"
   | "CREATE_COMPLETE"
@@ -528,6 +552,7 @@ export type ResourceGroupState =
   | "UPDATE_FAILED"
   | (string & {});
 export const ResourceGroupState = /*@__PURE__*/ S.String;
+
 export interface ResourceGroup {
   state?: ResourceGroupState;
   arn?: string;
@@ -582,6 +607,7 @@ export const GetApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetApplicationResponse",
 }) as any as S.Schema<GetApplicationResponse>;
+export type NextToken = string;
 export type ResourceItemStatus =
   | "SUCCESS"
   | "FAILED"
@@ -589,9 +615,11 @@ export type ResourceItemStatus =
   | "SKIPPED"
   | (string & {});
 export const ResourceItemStatus = /*@__PURE__*/ S.String;
+
 export type GetAssociatedResourceFilter = ResourceItemStatus[];
 export const GetAssociatedResourceFilter =
   /*@__PURE__*/ S.Array(ResourceItemStatus);
+export type MaxResults = number;
 export interface GetAssociatedResourceRequest {
   application: string;
   resourceType: ResourceType;
@@ -656,6 +684,9 @@ export type ApplicationTagStatus =
   | "FAILURE"
   | (string & {});
 export const ApplicationTagStatus = /*@__PURE__*/ S.String;
+
+export type ResourcesListItemErrorMessage = string;
+export type ResourceItemType = string;
 export interface ResourcesListItem {
   resourceArn?: string;
   errorMessage?: string;
@@ -768,6 +799,7 @@ export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetConfigurationRequest",
 }) as any as S.Schema<GetConfigurationRequest>;
+export type TagKeyConfig = string;
 export interface TagQueryConfiguration {
   tagKey?: string;
 }
@@ -1098,6 +1130,7 @@ export const SyncResourceRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SyncResourceRequest>;
 export type SyncAction = "START_SYNC" | "NO_ACTION" | (string & {});
 export const SyncAction = /*@__PURE__*/ S.String;
+
 export interface SyncResourceResponse {
   applicationArn?: string;
   resourceArn?: string;
@@ -1232,39 +1265,6 @@ export const UpdateAttributeGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateAttributeGroupResponse",
 }) as any as S.Schema<UpdateAttributeGroupResponse>;
-
-//# Errors
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String), serviceCode: S.optional(S.String) },
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-
-//# Operations
 export type AssociateAttributeGroupError =
   | ConflictException
   | InternalServerException
@@ -1298,6 +1298,7 @@ export const associateAttributeGroup: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateAttributeGroup",
 }));
+
 export type AssociateResourceError =
   | ConflictException
   | InternalServerException
@@ -1351,6 +1352,7 @@ export const associateResource: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateResource",
 }));
+
 export type CreateApplicationError =
   | ConflictException
   | InternalServerException
@@ -1380,6 +1382,7 @@ export const createApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApplication",
 }));
+
 export type CreateAttributeGroupError =
   | ConflictException
   | InternalServerException
@@ -1410,6 +1413,7 @@ export const createAttributeGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAttributeGroup",
 }));
+
 export type DeleteApplicationError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1435,6 +1439,7 @@ export const deleteApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplication",
 }));
+
 export type DeleteAttributeGroupError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1460,6 +1465,7 @@ export const deleteAttributeGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAttributeGroup",
 }));
+
 export type DisassociateAttributeGroupError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1485,6 +1491,7 @@ export const disassociateAttributeGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateAttributeGroup",
 }));
+
 export type DisassociateResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1533,6 +1540,7 @@ export const disassociateResource: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateResource",
 }));
+
 export type GetApplicationError =
   | ConflictException
   | InternalServerException
@@ -1576,6 +1584,7 @@ export const getApplication: API.OperationMethod<
   retry: Retry,
   operationName: "GetApplication",
 }));
+
 export type GetAssociatedResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1601,6 +1610,7 @@ export const getAssociatedResource: API.OperationMethod<
   retry: Retry,
   operationName: "GetAssociatedResource",
 }));
+
 export type GetAttributeGroupError =
   | ConflictException
   | InternalServerException
@@ -1631,6 +1641,7 @@ export const getAttributeGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetAttributeGroup",
 }));
+
 export type GetConfigurationError = InternalServerException | CommonErrors;
 /**
  * Retrieves a `TagKey` configuration
@@ -1649,6 +1660,7 @@ export const getConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetConfiguration",
 }));
+
 export type ListApplicationsError =
   | InternalServerException
   | ValidationException
@@ -1690,6 +1702,7 @@ export const listApplications: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssociatedAttributeGroupsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1736,6 +1749,7 @@ export const listAssociatedAttributeGroups: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssociatedResourcesError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1797,6 +1811,7 @@ export const listAssociatedResources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAttributeGroupsError =
   | InternalServerException
   | ValidationException
@@ -1838,6 +1853,7 @@ export const listAttributeGroups: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAttributeGroupsForApplicationError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1884,6 +1900,7 @@ export const listAttributeGroupsForApplication: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1909,6 +1926,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutConfigurationError =
   | ConflictException
   | InternalServerException
@@ -1931,6 +1949,7 @@ export const putConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutConfiguration",
 }));
+
 export type SyncResourceError =
   | ConflictException
   | InternalServerException
@@ -1962,6 +1981,7 @@ export const syncResource: API.OperationMethod<
   retry: Retry,
   operationName: "SyncResource",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1991,6 +2011,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2018,6 +2039,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateApplicationError =
   | ConflictException
   | InternalServerException
@@ -2047,6 +2069,7 @@ export const updateApplication: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApplication",
 }));
+
 export type UpdateAttributeGroupError =
   | ConflictException
   | InternalServerException

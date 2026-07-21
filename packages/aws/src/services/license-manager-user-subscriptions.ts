@@ -85,24 +85,41 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+) {}
 export type Directory = string;
 export type IpV4 = string;
-export type IpV6 = string;
-export type Subnet = string;
-export type ActiveDirectoryType = string;
-export type Arn = string;
-export type ServerType = string;
-export type LicenseServerEndpointId = string;
-export type LicenseServerEndpointProvisioningStatus = string;
-export type LicenseServerHealthStatus = string;
-export type SecurityGroup = string;
-export type BoxInteger = number;
-export type ResourceArn = string;
-
-//# Schemas
 export type IpV4List = string[];
 export const IpV4List = /*@__PURE__*/ S.Array(S.String);
+export type IpV6 = string;
 export type IpV6List = string[];
 export const IpV6List = /*@__PURE__*/ S.Array(S.String);
 export interface SecretsManagerCredentialsProvider {
@@ -121,6 +138,7 @@ export const CredentialsProvider = /*@__PURE__*/ S.Union([
     SecretsManagerCredentialsProvider: SecretsManagerCredentialsProvider,
   }),
 ]);
+export type Subnet = string;
 export type Subnets = string[];
 export const Subnets = /*@__PURE__*/ S.Array(S.String);
 export interface DomainNetworkSettings {
@@ -149,6 +167,7 @@ export const ActiveDirectorySettings = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActiveDirectorySettings",
 }) as any as S.Schema<ActiveDirectorySettings>;
+export type ActiveDirectoryType = string;
 export interface ActiveDirectoryIdentityProvider {
   DirectoryId?: string;
   ActiveDirectorySettings?: ActiveDirectorySettings;
@@ -202,6 +221,7 @@ export const AssociateUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateUserRequest",
 }) as any as S.Schema<AssociateUserRequest>;
+export type Arn = string;
 export interface InstanceUserSummary {
   Username: string;
   InstanceId: string;
@@ -236,6 +256,7 @@ export const AssociateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateUserResponse",
 }) as any as S.Schema<AssociateUserResponse>;
+export type ServerType = string;
 export interface RdsSalSettings {
   RdsSalCredentialsProvider: CredentialsProvider;
 }
@@ -320,6 +341,9 @@ export interface ServerEndpoint {
 export const ServerEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Endpoint: S.optional(S.String) }),
 ).annotate({ identifier: "ServerEndpoint" }) as any as S.Schema<ServerEndpoint>;
+export type LicenseServerEndpointId = string;
+export type LicenseServerEndpointProvisioningStatus = string;
+export type LicenseServerHealthStatus = string;
 export interface LicenseServer {
   ProvisioningStatus?: string;
   HealthStatus?: string;
@@ -396,6 +420,7 @@ export const DeregisterIdentityProviderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeregisterIdentityProviderRequest",
 }) as any as S.Schema<DeregisterIdentityProviderRequest>;
+export type SecurityGroup = string;
 export interface Settings {
   Subnets: string[];
   SecurityGroupId: string;
@@ -468,6 +493,7 @@ export const DisassociateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisassociateUserResponse",
 }) as any as S.Schema<DisassociateUserResponse>;
+export type BoxInteger = number;
 export interface Filter {
   Attribute?: string;
   Operation?: string;
@@ -694,6 +720,7 @@ export const ListProductSubscriptionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProductSubscriptionsResponse",
 }) as any as S.Schema<ListProductSubscriptionsResponse>;
+export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -972,40 +999,6 @@ export const UpdateIdentityProviderSettingsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateIdentityProviderSettingsResponse",
 }) as any as S.Schema<UpdateIdentityProviderSettingsResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
 export type AssociateUserError =
   | AccessDeniedException
   | ConflictException
@@ -1041,6 +1034,7 @@ export const associateUser: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateUser",
 }));
+
 export type CreateLicenseServerEndpointError =
   | AccessDeniedException
   | ConflictException
@@ -1074,6 +1068,7 @@ export const createLicenseServerEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLicenseServerEndpoint",
 }));
+
 export type DeleteLicenseServerEndpointError =
   | AccessDeniedException
   | ConflictException
@@ -1107,6 +1102,7 @@ export const deleteLicenseServerEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLicenseServerEndpoint",
 }));
+
 export type DeregisterIdentityProviderError =
   | AccessDeniedException
   | ConflictException
@@ -1140,6 +1136,7 @@ export const deregisterIdentityProvider: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterIdentityProvider",
 }));
+
 export type DisassociateUserError =
   | AccessDeniedException
   | ConflictException
@@ -1173,6 +1170,7 @@ export const disassociateUser: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateUser",
 }));
+
 export type ListIdentityProvidersError =
   | AccessDeniedException
   | ConflictException
@@ -1227,6 +1225,7 @@ export const listIdentityProviders: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInstancesError =
   | AccessDeniedException
   | ConflictException
@@ -1281,6 +1280,7 @@ export const listInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLicenseServerEndpointsError =
   | AccessDeniedException
   | ConflictException
@@ -1333,6 +1333,7 @@ export const listLicenseServerEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProductSubscriptionsError =
   | AccessDeniedException
   | ConflictException
@@ -1387,6 +1388,7 @@ export const listProductSubscriptions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1412,6 +1414,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListUserAssociationsError =
   | AccessDeniedException
   | ConflictException
@@ -1466,6 +1469,7 @@ export const listUserAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type RegisterIdentityProviderError =
   | AccessDeniedException
   | ConflictException
@@ -1499,6 +1503,7 @@ export const registerIdentityProvider: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterIdentityProvider",
 }));
+
 export type StartProductSubscriptionError =
   | AccessDeniedException
   | ConflictException
@@ -1534,6 +1539,7 @@ export const startProductSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "StartProductSubscription",
 }));
+
 export type StopProductSubscriptionError =
   | AccessDeniedException
   | ConflictException
@@ -1567,6 +1573,7 @@ export const stopProductSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "StopProductSubscription",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1592,6 +1599,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1612,6 +1620,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateIdentityProviderSettingsError =
   | AccessDeniedException
   | InternalServerException

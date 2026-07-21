@@ -292,30 +292,81 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    error: S.suspend(() => OAuth2ErrorCode).annotate({
+      identifier: "OAuth2ErrorCode",
+    }),
+    message: S.String,
+  },
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    error: S.suspend(() => OAuth2ErrorCode).annotate({
+      identifier: "OAuth2ErrorCode",
+    }),
+    message: S.String,
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    error: S.suspend(() => OAuth2ErrorCode).annotate({
+      identifier: "OAuth2ErrorCode",
+    }),
+    message: S.String,
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    error: S.suspend(() => OAuth2ErrorCode).annotate({
+      identifier: "OAuth2ErrorCode",
+    }),
+    message: S.String,
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    error: S.suspend(() => OAuth2ErrorCode).annotate({
+      identifier: "OAuth2ErrorCode",
+    }),
+    message: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class TooManyRequestsError extends S.TaggedErrorClass<TooManyRequestsError>()(
+  "TooManyRequestsError",
+  {
+    error: S.suspend(() => OAuth2ErrorCode).annotate({
+      identifier: "OAuth2ErrorCode",
+    }),
+    message: S.String,
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    error: S.suspend(() => OAuth2ErrorCode).annotate({
+      identifier: "OAuth2ErrorCode",
+    }),
+    message: S.String,
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ClientId = string;
 export type GrantType = string;
 export type AuthorizationCode = string;
 export type RedirectUri = string;
 export type CodeVerifier = string;
 export type RefreshToken = string | redacted.Redacted<string>;
-export type TokenType = string;
-export type ExpiresIn = number;
-export type IdToken = string;
-export type TargetId = string;
-export type StatementId = string;
-export type ClientToken = string;
-export type ConditionType = string;
-export type ConsolePermissionMaxResults = number;
-export type NextToken = string;
-export type SourceVpc = string;
-export type SourceVpce = string;
-export type VpcSourceIp = string;
-export type SourceIp = string;
-export type RequestedRegion = string;
-export type ExcludedPrincipal = string;
-
-//# Schemas
 export interface CreateOAuth2TokenRequestBody {
   clientId: string;
   grantType: string;
@@ -370,6 +421,9 @@ export const AccessToken = /*@__PURE__*/ S.suspend(() =>
     sessionToken: S.String,
   }),
 ).annotate({ identifier: "AccessToken" }) as any as S.Schema<AccessToken>;
+export type TokenType = string;
+export type ExpiresIn = number;
+export type IdToken = string;
 export interface CreateOAuth2TokenResponseBody {
   accessToken: AccessToken;
   tokenType: string;
@@ -400,18 +454,7 @@ export const CreateOAuth2TokenResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOAuth2TokenResponse",
 }) as any as S.Schema<CreateOAuth2TokenResponse>;
-export type OAuth2ErrorCode =
-  | "TOKEN_EXPIRED"
-  | "USER_CREDENTIALS_CHANGED"
-  | "INSUFFICIENT_PERMISSIONS"
-  | "AUTHCODE_EXPIRED"
-  | "server_error"
-  | "INVALID_REQUEST"
-  | "RESOURCE_NOT_FOUND"
-  | "CONFLICT"
-  | "SERVICE_QUOTA_EXCEEDED"
-  | (string & {});
-export const OAuth2ErrorCode = /*@__PURE__*/ S.String;
+export type TargetId = string;
 export interface DeleteConsoleAuthorizationConfigurationInput {
   targetId?: string;
 }
@@ -449,6 +492,8 @@ export const DeleteConsoleAuthorizationConfigurationOutput =
   ).annotate({
     identifier: "DeleteConsoleAuthorizationConfigurationOutput",
   }) as any as S.Schema<DeleteConsoleAuthorizationConfigurationOutput>;
+export type StatementId = string;
+export type ClientToken = string;
 export interface DeleteResourcePermissionStatementInput {
   statementId: string;
   clientToken?: string;
@@ -541,6 +586,7 @@ export const Principal = /*@__PURE__*/ S.Record(
 );
 export type PolicyActions = string[];
 export const PolicyActions = /*@__PURE__*/ S.Array(S.String);
+export type ConditionType = string;
 export type ConditionValues = string[];
 export const ConditionValues = /*@__PURE__*/ S.Array(S.String);
 export type Condition = { [key: string]: string[] | undefined };
@@ -605,6 +651,8 @@ export const GetResourcePolicyOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyOutput",
 }) as any as S.Schema<GetResourcePolicyOutput>;
+export type ConsolePermissionMaxResults = number;
+export type NextToken = string;
 export interface ListResourcePermissionStatementsInput {
   maxResults?: number;
   nextToken?: string;
@@ -693,6 +741,12 @@ export const PutConsoleAuthorizationConfigurationOutput =
   ).annotate({
     identifier: "PutConsoleAuthorizationConfigurationOutput",
   }) as any as S.Schema<PutConsoleAuthorizationConfigurationOutput>;
+export type SourceVpc = string;
+export type SourceVpce = string;
+export type VpcSourceIp = string;
+export type SourceIp = string;
+export type RequestedRegion = string;
+export type ExcludedPrincipal = string;
 export interface PutResourcePermissionStatementInput {
   sourceVpc?: string;
   signinSourceVpce?: string;
@@ -735,44 +789,19 @@ export const PutResourcePermissionStatementOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "PutResourcePermissionStatementOutput",
 }) as any as S.Schema<PutResourcePermissionStatementOutput>;
+export type OAuth2ErrorCode =
+  | "TOKEN_EXPIRED"
+  | "USER_CREDENTIALS_CHANGED"
+  | "INSUFFICIENT_PERMISSIONS"
+  | "AUTHCODE_EXPIRED"
+  | "server_error"
+  | "INVALID_REQUEST"
+  | "RESOURCE_NOT_FOUND"
+  | "CONFLICT"
+  | "SERVICE_QUOTA_EXCEEDED"
+  | (string & {});
+export const OAuth2ErrorCode = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { error: OAuth2ErrorCode, message: S.String },
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { error: OAuth2ErrorCode, message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class TooManyRequestsError extends S.TaggedErrorClass<TooManyRequestsError>()(
-  "TooManyRequestsError",
-  { error: OAuth2ErrorCode, message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { error: OAuth2ErrorCode, message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { error: OAuth2ErrorCode, message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { error: OAuth2ErrorCode, message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { error: OAuth2ErrorCode, message: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
 export type CreateOAuth2TokenError =
   | AccessDeniedException
   | InternalServerException
@@ -827,6 +856,7 @@ export const createOAuth2Token: API.OperationMethod<
   retry: Retry,
   operationName: "CreateOAuth2Token",
 }));
+
 export type DeleteConsoleAuthorizationConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -856,6 +886,7 @@ export const deleteConsoleAuthorizationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConsoleAuthorizationConfiguration",
 }));
+
 export type DeleteResourcePermissionStatementError =
   | AccessDeniedException
   | InternalServerException
@@ -885,6 +916,7 @@ export const deleteResourcePermissionStatement: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePermissionStatement",
 }));
+
 export type GetConsoleAuthorizationConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -914,6 +946,7 @@ export const getConsoleAuthorizationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetConsoleAuthorizationConfiguration",
 }));
+
 export type GetResourcePolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -941,6 +974,7 @@ export const getResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type ListResourcePermissionStatementsError =
   | AccessDeniedException
   | InternalServerException
@@ -991,6 +1025,7 @@ export const listResourcePermissionStatements: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type PutConsoleAuthorizationConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -1022,6 +1057,7 @@ export const putConsoleAuthorizationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutConsoleAuthorizationConfiguration",
 }));
+
 export type PutResourcePermissionStatementError =
   | AccessDeniedException
   | ConflictException

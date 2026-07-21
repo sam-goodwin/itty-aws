@@ -64,25 +64,47 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type DashboardName = string;
 export type Description = string;
 export type WidgetId = string;
 export type WidgetTitle = string;
 export type WidgetWidth = number;
 export type WidgetHeight = number;
-export type ResourceTagKey = string;
-export type ResourceTagValue = string;
-export type DashboardArn = string;
-export type ScheduledReportName = string;
-export type ServiceRoleArn = string;
-export type ClientToken = string;
-export type ScheduledReportArn = string;
-export type MaxResults = number;
-export type NextPageToken = string;
-export type ResourceArn = string;
-
-//# Schemas
 export type MetricName =
   | "AmortizedCost"
   | "BlendedCost"
@@ -97,10 +119,12 @@ export type MetricName =
   | "Cost"
   | (string & {});
 export const MetricName = /*@__PURE__*/ S.String;
+
 export type MetricNames = MetricName[];
 export const MetricNames = /*@__PURE__*/ S.Array(MetricName);
 export type DateTimeType = "ABSOLUTE" | "RELATIVE" | (string & {});
 export const DateTimeType = /*@__PURE__*/ S.String;
+
 export interface DateTimeValue {
   type: DateTimeType;
   value: string;
@@ -117,12 +141,14 @@ export const DateTimeRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DateTimeRange" }) as any as S.Schema<DateTimeRange>;
 export type Granularity = "HOURLY" | "DAILY" | "MONTHLY" | (string & {});
 export const Granularity = /*@__PURE__*/ S.String;
+
 export type GroupDefinitionType =
   | "DIMENSION"
   | "TAG"
   | "COST_CATEGORY"
   | (string & {});
 export const GroupDefinitionType = /*@__PURE__*/ S.String;
+
 export interface GroupDefinition {
   key: string;
   type?: GroupDefinitionType;
@@ -169,6 +195,7 @@ export type Dimension =
   | "PLATFORM"
   | (string & {});
 export const Dimension = /*@__PURE__*/ S.String;
+
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export type MatchOption =
@@ -182,6 +209,7 @@ export type MatchOption =
   | "CASE_INSENSITIVE"
   | (string & {});
 export const MatchOption = /*@__PURE__*/ S.String;
+
 export type MatchOptions = MatchOption[];
 export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface DimensionValues {
@@ -379,6 +407,7 @@ export const QueryParameters = /*@__PURE__*/ S.Union([
 ]);
 export type VisualType = "LINE" | "BAR" | "STACK" | (string & {});
 export const VisualType = /*@__PURE__*/ S.String;
+
 export interface GraphDisplayConfig {
   visualType: VisualType;
 }
@@ -438,6 +467,8 @@ export const Widget = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Widget" }) as any as S.Schema<Widget>;
 export type WidgetList = Widget[];
 export const WidgetList = /*@__PURE__*/ S.Array(Widget);
+export type ResourceTagKey = string;
+export type ResourceTagValue = string;
 export interface ResourceTag {
   key: string;
   value: string;
@@ -465,6 +496,7 @@ export const CreateDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDashboardRequest",
 }) as any as S.Schema<CreateDashboardRequest>;
+export type DashboardArn = string;
 export interface CreateDashboardResponse {
   arn: string;
 }
@@ -473,6 +505,8 @@ export const CreateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDashboardResponse",
 }) as any as S.Schema<CreateDashboardResponse>;
+export type ScheduledReportName = string;
+export type ServiceRoleArn = string;
 export interface SchedulePeriod {
   startTime?: Date;
   endTime?: Date;
@@ -485,6 +519,7 @@ export const SchedulePeriod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SchedulePeriod" }) as any as S.Schema<SchedulePeriod>;
 export type ScheduleState = "ENABLED" | "DISABLED" | (string & {});
 export const ScheduleState = /*@__PURE__*/ S.String;
+
 export interface ScheduleConfig {
   scheduleExpression?: string;
   scheduleExpressionTimeZone?: string;
@@ -523,6 +558,7 @@ export const ScheduledReportInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScheduledReportInput",
 }) as any as S.Schema<ScheduledReportInput>;
+export type ClientToken = string;
 export interface CreateScheduledReportRequest {
   scheduledReport: ScheduledReportInput;
   resourceTags?: ResourceTag[];
@@ -542,6 +578,7 @@ export const CreateScheduledReportRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateScheduledReportRequest",
 }) as any as S.Schema<CreateScheduledReportRequest>;
+export type ScheduledReportArn = string;
 export interface CreateScheduledReportResponse {
   arn: string;
 }
@@ -607,6 +644,7 @@ export const ExecuteScheduledReportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExecuteScheduledReportRequest>;
 export type HealthStatusCode = "HEALTHY" | "UNHEALTHY" | (string & {});
 export const HealthStatusCode = /*@__PURE__*/ S.String;
+
 export type StatusReason =
   | "DATA_SOURCE_ACCESS_DENIED"
   | "EXECUTION_ROLE_ASSUME_FAILED"
@@ -617,6 +655,7 @@ export type StatusReason =
   | "WIDGET_ID_NOT_FOUND"
   | (string & {});
 export const StatusReason = /*@__PURE__*/ S.String;
+
 export type StatusReasonList = StatusReason[];
 export const StatusReasonList = /*@__PURE__*/ S.Array(StatusReason);
 export interface HealthStatus {
@@ -657,6 +696,7 @@ export const GetDashboardRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDashboardRequest>;
 export type DashboardType = "CUSTOM" | (string & {});
 export const DashboardType = /*@__PURE__*/ S.String;
+
 export interface GetDashboardResponse {
   arn: string;
   name: string;
@@ -750,6 +790,8 @@ export const GetScheduledReportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetScheduledReportResponse",
 }) as any as S.Schema<GetScheduledReportResponse>;
+export type MaxResults = number;
+export type NextPageToken = string;
 export interface ListDashboardsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -852,6 +894,7 @@ export const ListScheduledReportsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListScheduledReportsResponse",
 }) as any as S.Schema<ListScheduledReportsResponse>;
+export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -970,45 +1013,6 @@ export const UpdateScheduledReportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateScheduledReportResponse",
 }) as any as S.Schema<UpdateScheduledReportResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateDashboardError =
   | AccessDeniedException
   | InternalServerException
@@ -1038,6 +1042,7 @@ export const createDashboard: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDashboard",
 }));
+
 export type CreateScheduledReportError =
   | AccessDeniedException
   | ConflictException
@@ -1069,6 +1074,7 @@ export const createScheduledReport: API.OperationMethod<
   retry: Retry,
   operationName: "CreateScheduledReport",
 }));
+
 export type DeleteDashboardError =
   | AccessDeniedException
   | InternalServerException
@@ -1096,6 +1102,7 @@ export const deleteDashboard: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDashboard",
 }));
+
 export type DeleteScheduledReportError =
   | AccessDeniedException
   | InternalServerException
@@ -1125,6 +1132,7 @@ export const deleteScheduledReport: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteScheduledReport",
 }));
+
 export type ExecuteScheduledReportError =
   | AccessDeniedException
   | ConflictException
@@ -1158,6 +1166,7 @@ export const executeScheduledReport: API.OperationMethod<
   retry: Retry,
   operationName: "ExecuteScheduledReport",
 }));
+
 export type GetDashboardError =
   | AccessDeniedException
   | InternalServerException
@@ -1187,6 +1196,7 @@ export const getDashboard: API.OperationMethod<
   retry: Retry,
   operationName: "GetDashboard",
 }));
+
 export type GetResourcePolicyError =
   | AccessDeniedException
   | InternalServerException
@@ -1216,6 +1226,7 @@ export const getResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type GetScheduledReportError =
   | AccessDeniedException
   | InternalServerException
@@ -1245,6 +1256,7 @@ export const getScheduledReport: API.OperationMethod<
   retry: Retry,
   operationName: "GetScheduledReport",
 }));
+
 export type ListDashboardsError =
   | AccessDeniedException
   | InternalServerException
@@ -1293,6 +1305,7 @@ export const listDashboards: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListScheduledReportsError =
   | AccessDeniedException
   | InternalServerException
@@ -1341,6 +1354,7 @@ export const listScheduledReports: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1368,6 +1382,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1395,6 +1410,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1422,6 +1438,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDashboardError =
   | AccessDeniedException
   | InternalServerException
@@ -1451,6 +1468,7 @@ export const updateDashboard: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDashboard",
 }));
+
 export type UpdateScheduledReportError =
   | AccessDeniedException
   | ConflictException

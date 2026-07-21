@@ -86,73 +86,448 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AlarmsLimitExceededException extends S.TaggedErrorClass<AlarmsLimitExceededException>()(
+  "AlarmsLimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class ApplicationAlreadyExistsException extends S.TaggedErrorClass<ApplicationAlreadyExistsException>()(
+  "ApplicationAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class ApplicationDoesNotExistException extends S.TaggedErrorClass<ApplicationDoesNotExistException>()(
+  "ApplicationDoesNotExistException",
+  { message: S.optional(S.String) },
+) {}
+export class ApplicationLimitExceededException extends S.TaggedErrorClass<ApplicationLimitExceededException>()(
+  "ApplicationLimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class ApplicationNameRequiredException extends S.TaggedErrorClass<ApplicationNameRequiredException>()(
+  "ApplicationNameRequiredException",
+  { message: S.optional(S.String) },
+) {}
+export class ArnNotSupportedException extends S.TaggedErrorClass<ArnNotSupportedException>()(
+  "ArnNotSupportedException",
+  { message: S.optional(S.String) },
+) {}
+export class BatchLimitExceededException extends S.TaggedErrorClass<BatchLimitExceededException>()(
+  "BatchLimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class BucketNameFilterRequiredException extends S.TaggedErrorClass<BucketNameFilterRequiredException>()(
+  "BucketNameFilterRequiredException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentAlreadyCompletedException extends S.TaggedErrorClass<DeploymentAlreadyCompletedException>()(
+  "DeploymentAlreadyCompletedException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentConfigAlreadyExistsException extends S.TaggedErrorClass<DeploymentConfigAlreadyExistsException>()(
+  "DeploymentConfigAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class DeploymentConfigDoesNotExistException extends S.TaggedErrorClass<DeploymentConfigDoesNotExistException>()(
+  "DeploymentConfigDoesNotExistException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentConfigInUseException extends S.TaggedErrorClass<DeploymentConfigInUseException>()(
+  "DeploymentConfigInUseException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentConfigLimitExceededException extends S.TaggedErrorClass<DeploymentConfigLimitExceededException>()(
+  "DeploymentConfigLimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentConfigNameRequiredException extends S.TaggedErrorClass<DeploymentConfigNameRequiredException>()(
+  "DeploymentConfigNameRequiredException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentDoesNotExistException extends S.TaggedErrorClass<DeploymentDoesNotExistException>()(
+  "DeploymentDoesNotExistException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentGroupAlreadyExistsException extends S.TaggedErrorClass<DeploymentGroupAlreadyExistsException>()(
+  "DeploymentGroupAlreadyExistsException",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class DeploymentGroupDoesNotExistException extends S.TaggedErrorClass<DeploymentGroupDoesNotExistException>()(
+  "DeploymentGroupDoesNotExistException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentGroupLimitExceededException extends S.TaggedErrorClass<DeploymentGroupLimitExceededException>()(
+  "DeploymentGroupLimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentGroupNameRequiredException extends S.TaggedErrorClass<DeploymentGroupNameRequiredException>()(
+  "DeploymentGroupNameRequiredException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentIdRequiredException extends S.TaggedErrorClass<DeploymentIdRequiredException>()(
+  "DeploymentIdRequiredException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentIsNotInReadyStateException extends S.TaggedErrorClass<DeploymentIsNotInReadyStateException>()(
+  "DeploymentIsNotInReadyStateException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentLimitExceededException extends S.TaggedErrorClass<DeploymentLimitExceededException>()(
+  "DeploymentLimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentNotStartedException extends S.TaggedErrorClass<DeploymentNotStartedException>()(
+  "DeploymentNotStartedException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentTargetDoesNotExistException extends S.TaggedErrorClass<DeploymentTargetDoesNotExistException>()(
+  "DeploymentTargetDoesNotExistException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentTargetIdRequiredException extends S.TaggedErrorClass<DeploymentTargetIdRequiredException>()(
+  "DeploymentTargetIdRequiredException",
+  { message: S.optional(S.String) },
+) {}
+export class DeploymentTargetListSizeExceededException extends S.TaggedErrorClass<DeploymentTargetListSizeExceededException>()(
+  "DeploymentTargetListSizeExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class DescriptionTooLongException extends S.TaggedErrorClass<DescriptionTooLongException>()(
+  "DescriptionTooLongException",
+  { message: S.optional(S.String) },
+) {}
+export class ECSServiceMappingLimitExceededException extends S.TaggedErrorClass<ECSServiceMappingLimitExceededException>()(
+  "ECSServiceMappingLimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class GitHubAccountTokenDoesNotExistException extends S.TaggedErrorClass<GitHubAccountTokenDoesNotExistException>()(
+  "GitHubAccountTokenDoesNotExistException",
+  { message: S.optional(S.String) },
+) {}
+export class GitHubAccountTokenNameRequiredException extends S.TaggedErrorClass<GitHubAccountTokenNameRequiredException>()(
+  "GitHubAccountTokenNameRequiredException",
+  { message: S.optional(S.String) },
+) {}
+export class IamArnRequiredException extends S.TaggedErrorClass<IamArnRequiredException>()(
+  "IamArnRequiredException",
+  { message: S.optional(S.String) },
+) {}
+export class IamSessionArnAlreadyRegisteredException extends S.TaggedErrorClass<IamSessionArnAlreadyRegisteredException>()(
+  "IamSessionArnAlreadyRegisteredException",
+  { message: S.optional(S.String) },
+) {}
+export class IamUserArnAlreadyRegisteredException extends S.TaggedErrorClass<IamUserArnAlreadyRegisteredException>()(
+  "IamUserArnAlreadyRegisteredException",
+  { message: S.optional(S.String) },
+) {}
+export class IamUserArnRequiredException extends S.TaggedErrorClass<IamUserArnRequiredException>()(
+  "IamUserArnRequiredException",
+  { message: S.optional(S.String) },
+) {}
+export class InstanceDoesNotExistException extends S.TaggedErrorClass<InstanceDoesNotExistException>()(
+  "InstanceDoesNotExistException",
+  { message: S.optional(S.String) },
+) {}
+export class InstanceIdRequiredException extends S.TaggedErrorClass<InstanceIdRequiredException>()(
+  "InstanceIdRequiredException",
+  { message: S.optional(S.String) },
+) {}
+export class InstanceLimitExceededException extends S.TaggedErrorClass<InstanceLimitExceededException>()(
+  "InstanceLimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class InstanceNameAlreadyRegisteredException extends S.TaggedErrorClass<InstanceNameAlreadyRegisteredException>()(
+  "InstanceNameAlreadyRegisteredException",
+  { message: S.optional(S.String) },
+) {}
+export class InstanceNameRequiredException extends S.TaggedErrorClass<InstanceNameRequiredException>()(
+  "InstanceNameRequiredException",
+  { message: S.optional(S.String) },
+) {}
+export class InstanceNotRegisteredException extends S.TaggedErrorClass<InstanceNotRegisteredException>()(
+  "InstanceNotRegisteredException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidAlarmConfigException extends S.TaggedErrorClass<InvalidAlarmConfigException>()(
+  "InvalidAlarmConfigException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidApplicationNameException extends S.TaggedErrorClass<InvalidApplicationNameException>()(
+  "InvalidApplicationNameException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidArnException extends S.TaggedErrorClass<InvalidArnException>()(
+  "InvalidArnException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidAutoRollbackConfigException extends S.TaggedErrorClass<InvalidAutoRollbackConfigException>()(
+  "InvalidAutoRollbackConfigException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidAutoScalingGroupException extends S.TaggedErrorClass<InvalidAutoScalingGroupException>()(
+  "InvalidAutoScalingGroupException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidBlueGreenDeploymentConfigurationException extends S.TaggedErrorClass<InvalidBlueGreenDeploymentConfigurationException>()(
+  "InvalidBlueGreenDeploymentConfigurationException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidBucketNameFilterException extends S.TaggedErrorClass<InvalidBucketNameFilterException>()(
+  "InvalidBucketNameFilterException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidComputePlatformException extends S.TaggedErrorClass<InvalidComputePlatformException>()(
+  "InvalidComputePlatformException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidDeployedStateFilterException extends S.TaggedErrorClass<InvalidDeployedStateFilterException>()(
+  "InvalidDeployedStateFilterException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidDeploymentConfigNameException extends S.TaggedErrorClass<InvalidDeploymentConfigNameException>()(
+  "InvalidDeploymentConfigNameException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidDeploymentGroupNameException extends S.TaggedErrorClass<InvalidDeploymentGroupNameException>()(
+  "InvalidDeploymentGroupNameException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidDeploymentIdException extends S.TaggedErrorClass<InvalidDeploymentIdException>()(
+  "InvalidDeploymentIdException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidDeploymentInstanceTypeException extends S.TaggedErrorClass<InvalidDeploymentInstanceTypeException>()(
+  "InvalidDeploymentInstanceTypeException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidDeploymentStatusException extends S.TaggedErrorClass<InvalidDeploymentStatusException>()(
+  "InvalidDeploymentStatusException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidDeploymentStyleException extends S.TaggedErrorClass<InvalidDeploymentStyleException>()(
+  "InvalidDeploymentStyleException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidDeploymentTargetIdException extends S.TaggedErrorClass<InvalidDeploymentTargetIdException>()(
+  "InvalidDeploymentTargetIdException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidDeploymentWaitTypeException extends S.TaggedErrorClass<InvalidDeploymentWaitTypeException>()(
+  "InvalidDeploymentWaitTypeException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidEC2TagCombinationException extends S.TaggedErrorClass<InvalidEC2TagCombinationException>()(
+  "InvalidEC2TagCombinationException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidEC2TagException extends S.TaggedErrorClass<InvalidEC2TagException>()(
+  "InvalidEC2TagException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidECSServiceException extends S.TaggedErrorClass<InvalidECSServiceException>()(
+  "InvalidECSServiceException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidExternalIdException extends S.TaggedErrorClass<InvalidExternalIdException>()(
+  "InvalidExternalIdException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidFileExistsBehaviorException extends S.TaggedErrorClass<InvalidFileExistsBehaviorException>()(
+  "InvalidFileExistsBehaviorException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidGitHubAccountTokenException extends S.TaggedErrorClass<InvalidGitHubAccountTokenException>()(
+  "InvalidGitHubAccountTokenException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidGitHubAccountTokenNameException extends S.TaggedErrorClass<InvalidGitHubAccountTokenNameException>()(
+  "InvalidGitHubAccountTokenNameException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidIamSessionArnException extends S.TaggedErrorClass<InvalidIamSessionArnException>()(
+  "InvalidIamSessionArnException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidIamUserArnException extends S.TaggedErrorClass<InvalidIamUserArnException>()(
+  "InvalidIamUserArnException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidIgnoreApplicationStopFailuresValueException extends S.TaggedErrorClass<InvalidIgnoreApplicationStopFailuresValueException>()(
+  "InvalidIgnoreApplicationStopFailuresValueException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidInstanceNameException extends S.TaggedErrorClass<InvalidInstanceNameException>()(
+  "InvalidInstanceNameException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidInstanceStatusException extends S.TaggedErrorClass<InvalidInstanceStatusException>()(
+  "InvalidInstanceStatusException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidInstanceTypeException extends S.TaggedErrorClass<InvalidInstanceTypeException>()(
+  "InvalidInstanceTypeException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidKeyPrefixFilterException extends S.TaggedErrorClass<InvalidKeyPrefixFilterException>()(
+  "InvalidKeyPrefixFilterException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidLifecycleEventHookExecutionIdException extends S.TaggedErrorClass<InvalidLifecycleEventHookExecutionIdException>()(
+  "InvalidLifecycleEventHookExecutionIdException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidLifecycleEventHookExecutionStatusException extends S.TaggedErrorClass<InvalidLifecycleEventHookExecutionStatusException>()(
+  "InvalidLifecycleEventHookExecutionStatusException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidLoadBalancerInfoException extends S.TaggedErrorClass<InvalidLoadBalancerInfoException>()(
+  "InvalidLoadBalancerInfoException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidMinimumHealthyHostValueException extends S.TaggedErrorClass<InvalidMinimumHealthyHostValueException>()(
+  "InvalidMinimumHealthyHostValueException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidOnPremisesTagCombinationException extends S.TaggedErrorClass<InvalidOnPremisesTagCombinationException>()(
+  "InvalidOnPremisesTagCombinationException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
+  "InvalidOperationException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidRegistrationStatusException extends S.TaggedErrorClass<InvalidRegistrationStatusException>()(
+  "InvalidRegistrationStatusException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidRevisionException extends S.TaggedErrorClass<InvalidRevisionException>()(
+  "InvalidRevisionException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidRoleException extends S.TaggedErrorClass<InvalidRoleException>()(
+  "InvalidRoleException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidSortByException extends S.TaggedErrorClass<InvalidSortByException>()(
+  "InvalidSortByException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidSortOrderException extends S.TaggedErrorClass<InvalidSortOrderException>()(
+  "InvalidSortOrderException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidTagException extends S.TaggedErrorClass<InvalidTagException>()(
+  "InvalidTagException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidTagFilterException extends S.TaggedErrorClass<InvalidTagFilterException>()(
+  "InvalidTagFilterException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidTagsToAddException extends S.TaggedErrorClass<InvalidTagsToAddException>()(
+  "InvalidTagsToAddException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidTargetFilterNameException extends S.TaggedErrorClass<InvalidTargetFilterNameException>()(
+  "InvalidTargetFilterNameException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidTargetGroupPairException extends S.TaggedErrorClass<InvalidTargetGroupPairException>()(
+  "InvalidTargetGroupPairException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidTargetInstancesException extends S.TaggedErrorClass<InvalidTargetInstancesException>()(
+  "InvalidTargetInstancesException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidTimeRangeException extends S.TaggedErrorClass<InvalidTimeRangeException>()(
+  "InvalidTimeRangeException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidTrafficRoutingConfigurationException extends S.TaggedErrorClass<InvalidTrafficRoutingConfigurationException>()(
+  "InvalidTrafficRoutingConfigurationException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidTriggerConfigException extends S.TaggedErrorClass<InvalidTriggerConfigException>()(
+  "InvalidTriggerConfigException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidUpdateOutdatedInstancesOnlyValueException extends S.TaggedErrorClass<InvalidUpdateOutdatedInstancesOnlyValueException>()(
+  "InvalidUpdateOutdatedInstancesOnlyValueException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidZonalDeploymentConfigurationException extends S.TaggedErrorClass<InvalidZonalDeploymentConfigurationException>()(
+  "InvalidZonalDeploymentConfigurationException",
+  { message: S.optional(S.String) },
+) {}
+export class LifecycleEventAlreadyCompletedException extends S.TaggedErrorClass<LifecycleEventAlreadyCompletedException>()(
+  "LifecycleEventAlreadyCompletedException",
+  { message: S.optional(S.String) },
+) {}
+export class LifecycleHookLimitExceededException extends S.TaggedErrorClass<LifecycleHookLimitExceededException>()(
+  "LifecycleHookLimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class MultipleIamArnsProvidedException extends S.TaggedErrorClass<MultipleIamArnsProvidedException>()(
+  "MultipleIamArnsProvidedException",
+  { message: S.optional(S.String) },
+) {}
+export class OperationNotSupportedException extends S.TaggedErrorClass<OperationNotSupportedException>()(
+  "OperationNotSupportedException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceArnRequiredException extends S.TaggedErrorClass<ResourceArnRequiredException>()(
+  "ResourceArnRequiredException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceValidationException extends S.TaggedErrorClass<ResourceValidationException>()(
+  "ResourceValidationException",
+  { message: S.optional(S.String) },
+) {}
+export class RevisionDoesNotExistException extends S.TaggedErrorClass<RevisionDoesNotExistException>()(
+  "RevisionDoesNotExistException",
+  { message: S.optional(S.String) },
+) {}
+export class RevisionRequiredException extends S.TaggedErrorClass<RevisionRequiredException>()(
+  "RevisionRequiredException",
+  { message: S.optional(S.String) },
+) {}
+export class RoleRequiredException extends S.TaggedErrorClass<RoleRequiredException>()(
+  "RoleRequiredException",
+  { message: S.optional(S.String) },
+) {}
+export class TagLimitExceededException extends S.TaggedErrorClass<TagLimitExceededException>()(
+  "TagLimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class TagRequiredException extends S.TaggedErrorClass<TagRequiredException>()(
+  "TagRequiredException",
+  { message: S.optional(S.String) },
+) {}
+export class TagSetListLimitExceededException extends S.TaggedErrorClass<TagSetListLimitExceededException>()(
+  "TagSetListLimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+) {}
+export class TriggerTargetsLimitExceededException extends S.TaggedErrorClass<TriggerTargetsLimitExceededException>()(
+  "TriggerTargetsLimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class UnsupportedActionForDeploymentTypeException extends S.TaggedErrorClass<UnsupportedActionForDeploymentTypeException>()(
+  "UnsupportedActionForDeploymentTypeException",
+  { message: S.optional(S.String) },
+) {}
 export type Key = string;
 export type Value = string;
-export type InstanceName = string;
-export type Message = string;
-export type ApplicationName = string;
-export type S3Bucket = string;
-export type S3Key = string;
-export type VersionId = string;
-export type ETag = string;
-export type Repository = string;
-export type CommitId = string;
-export type RawStringContent = string;
-export type RawStringSha256 = string;
-export type ErrorMessage = string;
-export type Description = string;
-export type DeploymentGroupName = string;
-export type ApplicationId = string;
-export type GitHubAccountTokenName = string;
-export type DeploymentGroupId = string;
-export type DeploymentConfigName = string;
-export type AutoScalingGroupName = string;
-export type AutoScalingGroupHook = string;
-export type Role = string;
-export type TriggerName = string;
-export type TriggerTargetArn = string;
-export type AlarmName = string;
-export type Duration = number;
-export type ELBName = string;
-export type TargetGroupName = string;
-export type ListenerArn = string;
-export type DeploymentId = string;
-export type ECSServiceName = string;
-export type ECSClusterName = string;
-export type InstanceId = string;
-export type LifecycleEventName = string;
-export type ScriptName = string;
-export type LifecycleMessage = string;
-export type LogTail = string;
-export type InstanceCount = number;
-export type AdditionalDeploymentStatusInfo = string;
-export type ExternalId = string;
-export type TargetId = string;
-export type TargetArn = string;
-export type LambdaFunctionName = string;
-export type LambdaFunctionAlias = string;
-export type Version = string;
-export type TrafficWeight = number;
-export type ECSTaskSetIdentifier = string;
-export type ECSTaskSetCount = number;
-export type ECSTaskSetStatus = string;
-export type CloudFormationResourceType = string;
-export type IamSessionArn = string;
-export type IamUserArn = string;
-export type InstanceArn = string;
-export type MinimumHealthyHostsValue = number;
-export type Percentage = number;
-export type WaitTimeInMins = number;
-export type WaitTimeInSeconds = number;
-export type MinimumHealthyHostsPerZoneValue = number;
-export type DeploymentConfigId = string;
-export type NextToken = string;
-export type FilterValue = string;
-export type Arn = string;
-export type LifecycleEventHookExecutionId = string;
-
-//# Schemas
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -162,6 +537,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
+export type InstanceName = string;
 export type InstanceNameList = string[];
 export const InstanceNameList = /*@__PURE__*/ S.Array(S.String);
 export interface AddTagsToOnPremisesInstancesInput {
@@ -189,6 +565,7 @@ export const AddTagsToOnPremisesInstancesResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AddTagsToOnPremisesInstancesResponse",
 }) as any as S.Schema<AddTagsToOnPremisesInstancesResponse>;
+export type ApplicationName = string;
 export type RevisionLocationType =
   | "S3"
   | "GitHub"
@@ -196,6 +573,9 @@ export type RevisionLocationType =
   | "AppSpecContent"
   | (string & {});
 export const RevisionLocationType = /*@__PURE__*/ S.String;
+
+export type S3Bucket = string;
+export type S3Key = string;
 export type BundleType =
   | "tar"
   | "tgz"
@@ -204,6 +584,9 @@ export type BundleType =
   | "JSON"
   | (string & {});
 export const BundleType = /*@__PURE__*/ S.String;
+
+export type VersionId = string;
+export type ETag = string;
 export interface S3Location {
   bucket?: string;
   key?: string;
@@ -220,6 +603,8 @@ export const S3Location = /*@__PURE__*/ S.suspend(() =>
     eTag: S.optional(S.String),
   }),
 ).annotate({ identifier: "S3Location" }) as any as S.Schema<S3Location>;
+export type Repository = string;
+export type CommitId = string;
 export interface GitHubLocation {
   repository?: string;
   commitId?: string;
@@ -230,6 +615,8 @@ export const GitHubLocation = /*@__PURE__*/ S.suspend(() =>
     commitId: S.optional(S.String),
   }),
 ).annotate({ identifier: "GitHubLocation" }) as any as S.Schema<GitHubLocation>;
+export type RawStringContent = string;
+export type RawStringSha256 = string;
 export interface RawString {
   content?: string;
   sha256?: string;
@@ -283,6 +670,9 @@ export const BatchGetApplicationRevisionsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetApplicationRevisionsInput",
 }) as any as S.Schema<BatchGetApplicationRevisionsInput>;
+export type ErrorMessage = string;
+export type Description = string;
+export type DeploymentGroupName = string;
 export type DeploymentGroupsList = string[];
 export const DeploymentGroupsList = /*@__PURE__*/ S.Array(S.String);
 export interface GenericRevisionInfo {
@@ -349,8 +739,11 @@ export const BatchGetApplicationsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetApplicationsInput",
 }) as any as S.Schema<BatchGetApplicationsInput>;
+export type ApplicationId = string;
+export type GitHubAccountTokenName = string;
 export type ComputePlatform = "Server" | "Lambda" | "ECS" | (string & {});
 export const ComputePlatform = /*@__PURE__*/ S.String;
+
 export interface ApplicationInfo {
   applicationId?: string;
   applicationName?: string;
@@ -403,12 +796,15 @@ export const BatchGetDeploymentGroupsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetDeploymentGroupsInput",
 }) as any as S.Schema<BatchGetDeploymentGroupsInput>;
+export type DeploymentGroupId = string;
+export type DeploymentConfigName = string;
 export type EC2TagFilterType =
   | "KEY_ONLY"
   | "VALUE_ONLY"
   | "KEY_AND_VALUE"
   | (string & {});
 export const EC2TagFilterType = /*@__PURE__*/ S.String;
+
 export interface EC2TagFilter {
   Key?: string;
   Value?: string;
@@ -429,6 +825,7 @@ export type TagFilterType =
   | "KEY_AND_VALUE"
   | (string & {});
 export const TagFilterType = /*@__PURE__*/ S.String;
+
 export interface TagFilter {
   Key?: string;
   Value?: string;
@@ -443,6 +840,8 @@ export const TagFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagFilter" }) as any as S.Schema<TagFilter>;
 export type TagFilterList = TagFilter[];
 export const TagFilterList = /*@__PURE__*/ S.Array(TagFilter);
+export type AutoScalingGroupName = string;
+export type AutoScalingGroupHook = string;
 export interface AutoScalingGroup {
   name?: string;
   hook?: string;
@@ -459,6 +858,9 @@ export const AutoScalingGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutoScalingGroup>;
 export type AutoScalingGroupList = AutoScalingGroup[];
 export const AutoScalingGroupList = /*@__PURE__*/ S.Array(AutoScalingGroup);
+export type Role = string;
+export type TriggerName = string;
+export type TriggerTargetArn = string;
 export type TriggerEventType =
   | "DeploymentStart"
   | "DeploymentSuccess"
@@ -472,6 +874,7 @@ export type TriggerEventType =
   | "InstanceReady"
   | (string & {});
 export const TriggerEventType = /*@__PURE__*/ S.String;
+
 export type TriggerEventTypeList = TriggerEventType[];
 export const TriggerEventTypeList = /*@__PURE__*/ S.Array(TriggerEventType);
 export interface TriggerConfig {
@@ -488,6 +891,7 @@ export const TriggerConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TriggerConfig" }) as any as S.Schema<TriggerConfig>;
 export type TriggerConfigList = TriggerConfig[];
 export const TriggerConfigList = /*@__PURE__*/ S.Array(TriggerConfig);
+export type AlarmName = string;
 export interface Alarm {
   name?: string;
 }
@@ -516,6 +920,7 @@ export type AutoRollbackEvent =
   | "DEPLOYMENT_STOP_ON_REQUEST"
   | (string & {});
 export const AutoRollbackEvent = /*@__PURE__*/ S.String;
+
 export type AutoRollbackEventsList = AutoRollbackEvent[];
 export const AutoRollbackEventsList = /*@__PURE__*/ S.Array(AutoRollbackEvent);
 export interface AutoRollbackConfiguration {
@@ -532,11 +937,13 @@ export const AutoRollbackConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AutoRollbackConfiguration>;
 export type DeploymentType = "IN_PLACE" | "BLUE_GREEN" | (string & {});
 export const DeploymentType = /*@__PURE__*/ S.String;
+
 export type DeploymentOption =
   | "WITH_TRAFFIC_CONTROL"
   | "WITHOUT_TRAFFIC_CONTROL"
   | (string & {});
 export const DeploymentOption = /*@__PURE__*/ S.String;
+
 export interface DeploymentStyle {
   deploymentType?: DeploymentType;
   deploymentOption?: DeploymentOption;
@@ -551,8 +958,11 @@ export const DeploymentStyle = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeploymentStyle>;
 export type OutdatedInstancesStrategy = "UPDATE" | "IGNORE" | (string & {});
 export const OutdatedInstancesStrategy = /*@__PURE__*/ S.String;
+
 export type InstanceAction = "TERMINATE" | "KEEP_ALIVE" | (string & {});
 export const InstanceAction = /*@__PURE__*/ S.String;
+
+export type Duration = number;
 export interface BlueInstanceTerminationOption {
   action?: InstanceAction;
   terminationWaitTimeInMinutes?: number;
@@ -570,6 +980,7 @@ export type DeploymentReadyAction =
   | "STOP_DEPLOYMENT"
   | (string & {});
 export const DeploymentReadyAction = /*@__PURE__*/ S.String;
+
 export interface DeploymentReadyOption {
   actionOnTimeout?: DeploymentReadyAction;
   waitTimeInMinutes?: number;
@@ -587,6 +998,7 @@ export type GreenFleetProvisioningAction =
   | "COPY_AUTO_SCALING_GROUP"
   | (string & {});
 export const GreenFleetProvisioningAction = /*@__PURE__*/ S.String;
+
 export interface GreenFleetProvisioningOption {
   action?: GreenFleetProvisioningAction;
 }
@@ -611,6 +1023,7 @@ export const BlueGreenDeploymentConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BlueGreenDeploymentConfiguration",
 }) as any as S.Schema<BlueGreenDeploymentConfiguration>;
+export type ELBName = string;
 export interface ELBInfo {
   name?: string;
 }
@@ -619,6 +1032,7 @@ export const ELBInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ELBInfo" }) as any as S.Schema<ELBInfo>;
 export type ELBInfoList = ELBInfo[];
 export const ELBInfoList = /*@__PURE__*/ S.Array(ELBInfo);
+export type TargetGroupName = string;
 export interface TargetGroupInfo {
   name?: string;
 }
@@ -629,6 +1043,7 @@ export const TargetGroupInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetGroupInfo>;
 export type TargetGroupInfoList = TargetGroupInfo[];
 export const TargetGroupInfoList = /*@__PURE__*/ S.Array(TargetGroupInfo);
+export type ListenerArn = string;
 export type ListenerArnList = string[];
 export const ListenerArnList = /*@__PURE__*/ S.Array(S.String);
 export interface TrafficRoute {
@@ -668,6 +1083,7 @@ export const LoadBalancerInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LoadBalancerInfo",
 }) as any as S.Schema<LoadBalancerInfo>;
+export type DeploymentId = string;
 export type DeploymentStatus =
   | "Created"
   | "Queued"
@@ -679,6 +1095,7 @@ export type DeploymentStatus =
   | "Ready"
   | (string & {});
 export const DeploymentStatus = /*@__PURE__*/ S.String;
+
 export interface LastDeploymentInfo {
   deploymentId?: string;
   status?: DeploymentStatus;
@@ -713,6 +1130,8 @@ export const OnPremisesTagSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OnPremisesTagSet",
 }) as any as S.Schema<OnPremisesTagSet>;
+export type ECSServiceName = string;
+export type ECSClusterName = string;
 export interface ECSService {
   serviceName?: string;
   clusterName?: string;
@@ -796,6 +1215,7 @@ export const BatchGetDeploymentGroupsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetDeploymentGroupsOutput",
 }) as any as S.Schema<BatchGetDeploymentGroupsOutput>;
+export type InstanceId = string;
 export type InstancesList = string[];
 export const InstancesList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetDeploymentInstancesInput {
@@ -827,6 +1247,8 @@ export type InstanceStatus =
   | "Ready"
   | (string & {});
 export const InstanceStatus = /*@__PURE__*/ S.String;
+
+export type LifecycleEventName = string;
 export type LifecycleErrorCode =
   | "Success"
   | "ScriptMissing"
@@ -836,6 +1258,10 @@ export type LifecycleErrorCode =
   | "UnknownError"
   | (string & {});
 export const LifecycleErrorCode = /*@__PURE__*/ S.String;
+
+export type ScriptName = string;
+export type LifecycleMessage = string;
+export type LogTail = string;
 export interface Diagnostics {
   errorCode?: LifecycleErrorCode;
   scriptName?: string;
@@ -859,6 +1285,7 @@ export type LifecycleEventStatus =
   | "Unknown"
   | (string & {});
 export const LifecycleEventStatus = /*@__PURE__*/ S.String;
+
 export interface LifecycleEvent {
   lifecycleEventName?: string;
   diagnostics?: Diagnostics;
@@ -879,6 +1306,7 @@ export type LifecycleEventList = LifecycleEvent[];
 export const LifecycleEventList = /*@__PURE__*/ S.Array(LifecycleEvent);
 export type InstanceType = "Blue" | "Green" | (string & {});
 export const InstanceType = /*@__PURE__*/ S.String;
+
 export interface InstanceSummary {
   deploymentId?: string;
   instanceId?: string;
@@ -970,6 +1398,7 @@ export type ErrorCode =
   | "CLOUDFORMATION_STACK_FAILURE"
   | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
+
 export interface ErrorInformation {
   code?: ErrorCode;
   message?: string;
@@ -979,6 +1408,7 @@ export const ErrorInformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ErrorInformation",
 }) as any as S.Schema<ErrorInformation>;
+export type InstanceCount = number;
 export interface DeploymentOverview {
   Pending?: number;
   InProgress?: number;
@@ -1010,6 +1440,7 @@ export type DeploymentCreator =
   | "autoscalingTermination"
   | (string & {});
 export const DeploymentCreator = /*@__PURE__*/ S.String;
+
 export interface RollbackInfo {
   rollbackDeploymentId?: string;
   rollbackTriggeringDeploymentId?: string;
@@ -1038,14 +1469,17 @@ export const TargetInstances = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TargetInstances",
 }) as any as S.Schema<TargetInstances>;
+export type AdditionalDeploymentStatusInfo = string;
 export type FileExistsBehavior =
   | "DISALLOW"
   | "OVERWRITE"
   | "RETAIN"
   | (string & {});
 export const FileExistsBehavior = /*@__PURE__*/ S.String;
+
 export type DeploymentStatusMessageList = string[];
 export const DeploymentStatusMessageList = /*@__PURE__*/ S.Array(S.String);
+export type ExternalId = string;
 export interface RelatedDeployments {
   autoUpdateOutdatedInstancesRootDeploymentId?: string;
   autoUpdateOutdatedInstancesDeploymentIds?: string[];
@@ -1136,6 +1570,7 @@ export const BatchGetDeploymentsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetDeploymentsOutput",
 }) as any as S.Schema<BatchGetDeploymentsOutput>;
+export type TargetId = string;
 export type TargetIdList = string[];
 export const TargetIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetDeploymentTargetsInput {
@@ -1164,6 +1599,8 @@ export type DeploymentTargetType =
   | "CloudFormationTarget"
   | (string & {});
 export const DeploymentTargetType = /*@__PURE__*/ S.String;
+
+export type TargetArn = string;
 export type TargetStatus =
   | "Pending"
   | "InProgress"
@@ -1174,8 +1611,10 @@ export type TargetStatus =
   | "Ready"
   | (string & {});
 export const TargetStatus = /*@__PURE__*/ S.String;
+
 export type TargetLabel = "Blue" | "Green" | (string & {});
 export const TargetLabel = /*@__PURE__*/ S.String;
+
 export interface InstanceTarget {
   deploymentId?: string;
   targetId?: string;
@@ -1196,6 +1635,10 @@ export const InstanceTarget = /*@__PURE__*/ S.suspend(() =>
     instanceLabel: S.optional(TargetLabel),
   }),
 ).annotate({ identifier: "InstanceTarget" }) as any as S.Schema<InstanceTarget>;
+export type LambdaFunctionName = string;
+export type LambdaFunctionAlias = string;
+export type Version = string;
+export type TrafficWeight = number;
 export interface LambdaFunctionInfo {
   functionName?: string;
   functionAlias?: string;
@@ -1234,6 +1677,9 @@ export const LambdaTarget = /*@__PURE__*/ S.suspend(() =>
     lambdaFunctionInfo: S.optional(LambdaFunctionInfo),
   }),
 ).annotate({ identifier: "LambdaTarget" }) as any as S.Schema<LambdaTarget>;
+export type ECSTaskSetIdentifier = string;
+export type ECSTaskSetCount = number;
+export type ECSTaskSetStatus = string;
 export interface ECSTaskSet {
   identifer?: string;
   desiredCount?: number;
@@ -1278,6 +1724,7 @@ export const ECSTarget = /*@__PURE__*/ S.suspend(() =>
     taskSetsInfo: S.optional(ECSTaskSetList),
   }),
 ).annotate({ identifier: "ECSTarget" }) as any as S.Schema<ECSTarget>;
+export type CloudFormationResourceType = string;
 export interface CloudFormationTarget {
   deploymentId?: string;
   targetId?: string;
@@ -1346,6 +1793,9 @@ export const BatchGetOnPremisesInstancesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetOnPremisesInstancesInput",
 }) as any as S.Schema<BatchGetOnPremisesInstancesInput>;
+export type IamSessionArn = string;
+export type IamUserArn = string;
+export type InstanceArn = string;
 export interface InstanceInfo {
   instanceName?: string;
   iamSessionArn?: string;
@@ -1381,6 +1831,7 @@ export type DeploymentWaitType =
   | "TERMINATION_WAIT"
   | (string & {});
 export const DeploymentWaitType = /*@__PURE__*/ S.String;
+
 export interface ContinueDeploymentInput {
   deploymentId?: string;
   deploymentWaitType?: DeploymentWaitType;
@@ -1494,6 +1945,8 @@ export type MinimumHealthyHostsType =
   | "FLEET_PERCENT"
   | (string & {});
 export const MinimumHealthyHostsType = /*@__PURE__*/ S.String;
+
+export type MinimumHealthyHostsValue = number;
 export interface MinimumHealthyHosts {
   type?: MinimumHealthyHostsType;
   value?: number;
@@ -1512,6 +1965,9 @@ export type TrafficRoutingType =
   | "AllAtOnce"
   | (string & {});
 export const TrafficRoutingType = /*@__PURE__*/ S.String;
+
+export type Percentage = number;
+export type WaitTimeInMins = number;
 export interface TimeBasedCanary {
   canaryPercentage?: number;
   canaryInterval?: number;
@@ -1550,11 +2006,14 @@ export const TrafficRoutingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TrafficRoutingConfig",
 }) as any as S.Schema<TrafficRoutingConfig>;
+export type WaitTimeInSeconds = number;
 export type MinimumHealthyHostsPerZoneType =
   | "HOST_COUNT"
   | "FLEET_PERCENT"
   | (string & {});
 export const MinimumHealthyHostsPerZoneType = /*@__PURE__*/ S.String;
+
+export type MinimumHealthyHostsPerZoneValue = number;
 export interface MinimumHealthyHostsPerZone {
   type?: MinimumHealthyHostsPerZoneType;
   value?: number;
@@ -1607,6 +2066,7 @@ export const CreateDeploymentConfigInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDeploymentConfigInput",
 }) as any as S.Schema<CreateDeploymentConfigInput>;
+export type DeploymentConfigId = string;
 export interface CreateDeploymentConfigOutput {
   deploymentConfigId?: string;
 }
@@ -2076,14 +2536,18 @@ export type ApplicationRevisionSortBy =
   | "lastUsedTime"
   | (string & {});
 export const ApplicationRevisionSortBy = /*@__PURE__*/ S.String;
+
 export type SortOrder = "ascending" | "descending" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export type ListStateFilterAction =
   | "include"
   | "exclude"
   | "ignore"
   | (string & {});
 export const ListStateFilterAction = /*@__PURE__*/ S.String;
+
+export type NextToken = string;
 export interface ListApplicationRevisionsInput {
   applicationName: string;
   sortBy?: ApplicationRevisionSortBy;
@@ -2324,6 +2788,8 @@ export type TargetFilterName =
   | "ServerInstanceLabel"
   | (string & {});
 export const TargetFilterName = /*@__PURE__*/ S.String;
+
+export type FilterValue = string;
 export type FilterValueList = string[];
 export const FilterValueList = /*@__PURE__*/ S.Array(S.String);
 export type TargetFilters = { [key in TargetFilterName]?: string[] };
@@ -2401,6 +2867,7 @@ export const ListGitHubAccountTokenNamesOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListGitHubAccountTokenNamesOutput>;
 export type RegistrationStatus = "Registered" | "Deregistered" | (string & {});
 export const RegistrationStatus = /*@__PURE__*/ S.String;
+
 export interface ListOnPremisesInstancesInput {
   registrationStatus?: RegistrationStatus;
   tagFilters?: TagFilter[];
@@ -2437,6 +2904,7 @@ export const ListOnPremisesInstancesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOnPremisesInstancesOutput",
 }) as any as S.Schema<ListOnPremisesInstancesOutput>;
+export type Arn = string;
 export interface ListTagsForResourceInput {
   ResourceArn: string;
   NextToken?: string;
@@ -2467,6 +2935,7 @@ export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
+export type LifecycleEventHookExecutionId = string;
 export interface PutLifecycleEventHookExecutionStatusInput {
   deploymentId?: string;
   lifecycleEventHookExecutionId?: string;
@@ -2634,6 +3103,8 @@ export const StopDeploymentInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StopDeploymentInput>;
 export type StopStatus = "Pending" | "Succeeded" | (string & {});
 export const StopStatus = /*@__PURE__*/ S.String;
+
+export type Message = string;
 export interface StopDeploymentOutput {
   status?: StopStatus;
   statusMessage?: string;
@@ -2792,450 +3263,6 @@ export const UpdateDeploymentGroupOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateDeploymentGroupOutput",
 }) as any as S.Schema<UpdateDeploymentGroupOutput>;
-
-//# Errors
-export class InstanceLimitExceededException extends S.TaggedErrorClass<InstanceLimitExceededException>()(
-  "InstanceLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class InstanceNameRequiredException extends S.TaggedErrorClass<InstanceNameRequiredException>()(
-  "InstanceNameRequiredException",
-  { message: S.optional(S.String) },
-) {}
-export class InstanceNotRegisteredException extends S.TaggedErrorClass<InstanceNotRegisteredException>()(
-  "InstanceNotRegisteredException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidInstanceNameException extends S.TaggedErrorClass<InvalidInstanceNameException>()(
-  "InvalidInstanceNameException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTagException extends S.TaggedErrorClass<InvalidTagException>()(
-  "InvalidTagException",
-  { message: S.optional(S.String) },
-) {}
-export class TagLimitExceededException extends S.TaggedErrorClass<TagLimitExceededException>()(
-  "TagLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class TagRequiredException extends S.TaggedErrorClass<TagRequiredException>()(
-  "TagRequiredException",
-  { message: S.optional(S.String) },
-) {}
-export class ApplicationDoesNotExistException extends S.TaggedErrorClass<ApplicationDoesNotExistException>()(
-  "ApplicationDoesNotExistException",
-  { message: S.optional(S.String) },
-) {}
-export class ApplicationNameRequiredException extends S.TaggedErrorClass<ApplicationNameRequiredException>()(
-  "ApplicationNameRequiredException",
-  { message: S.optional(S.String) },
-) {}
-export class BatchLimitExceededException extends S.TaggedErrorClass<BatchLimitExceededException>()(
-  "BatchLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidApplicationNameException extends S.TaggedErrorClass<InvalidApplicationNameException>()(
-  "InvalidApplicationNameException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidRevisionException extends S.TaggedErrorClass<InvalidRevisionException>()(
-  "InvalidRevisionException",
-  { message: S.optional(S.String) },
-) {}
-export class RevisionRequiredException extends S.TaggedErrorClass<RevisionRequiredException>()(
-  "RevisionRequiredException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentConfigDoesNotExistException extends S.TaggedErrorClass<DeploymentConfigDoesNotExistException>()(
-  "DeploymentConfigDoesNotExistException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentGroupNameRequiredException extends S.TaggedErrorClass<DeploymentGroupNameRequiredException>()(
-  "DeploymentGroupNameRequiredException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidDeploymentGroupNameException extends S.TaggedErrorClass<InvalidDeploymentGroupNameException>()(
-  "InvalidDeploymentGroupNameException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentDoesNotExistException extends S.TaggedErrorClass<DeploymentDoesNotExistException>()(
-  "DeploymentDoesNotExistException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentIdRequiredException extends S.TaggedErrorClass<DeploymentIdRequiredException>()(
-  "DeploymentIdRequiredException",
-  { message: S.optional(S.String) },
-) {}
-export class InstanceIdRequiredException extends S.TaggedErrorClass<InstanceIdRequiredException>()(
-  "InstanceIdRequiredException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidComputePlatformException extends S.TaggedErrorClass<InvalidComputePlatformException>()(
-  "InvalidComputePlatformException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidDeploymentIdException extends S.TaggedErrorClass<InvalidDeploymentIdException>()(
-  "InvalidDeploymentIdException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentNotStartedException extends S.TaggedErrorClass<DeploymentNotStartedException>()(
-  "DeploymentNotStartedException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentTargetDoesNotExistException extends S.TaggedErrorClass<DeploymentTargetDoesNotExistException>()(
-  "DeploymentTargetDoesNotExistException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentTargetIdRequiredException extends S.TaggedErrorClass<DeploymentTargetIdRequiredException>()(
-  "DeploymentTargetIdRequiredException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentTargetListSizeExceededException extends S.TaggedErrorClass<DeploymentTargetListSizeExceededException>()(
-  "DeploymentTargetListSizeExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class InstanceDoesNotExistException extends S.TaggedErrorClass<InstanceDoesNotExistException>()(
-  "InstanceDoesNotExistException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidDeploymentTargetIdException extends S.TaggedErrorClass<InvalidDeploymentTargetIdException>()(
-  "InvalidDeploymentTargetIdException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentAlreadyCompletedException extends S.TaggedErrorClass<DeploymentAlreadyCompletedException>()(
-  "DeploymentAlreadyCompletedException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentIsNotInReadyStateException extends S.TaggedErrorClass<DeploymentIsNotInReadyStateException>()(
-  "DeploymentIsNotInReadyStateException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidDeploymentStatusException extends S.TaggedErrorClass<InvalidDeploymentStatusException>()(
-  "InvalidDeploymentStatusException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidDeploymentWaitTypeException extends S.TaggedErrorClass<InvalidDeploymentWaitTypeException>()(
-  "InvalidDeploymentWaitTypeException",
-  { message: S.optional(S.String) },
-) {}
-export class UnsupportedActionForDeploymentTypeException extends S.TaggedErrorClass<UnsupportedActionForDeploymentTypeException>()(
-  "UnsupportedActionForDeploymentTypeException",
-  { message: S.optional(S.String) },
-) {}
-export class ApplicationAlreadyExistsException extends S.TaggedErrorClass<ApplicationAlreadyExistsException>()(
-  "ApplicationAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class ApplicationLimitExceededException extends S.TaggedErrorClass<ApplicationLimitExceededException>()(
-  "ApplicationLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTagsToAddException extends S.TaggedErrorClass<InvalidTagsToAddException>()(
-  "InvalidTagsToAddException",
-  { message: S.optional(S.String) },
-) {}
-export class AlarmsLimitExceededException extends S.TaggedErrorClass<AlarmsLimitExceededException>()(
-  "AlarmsLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentGroupDoesNotExistException extends S.TaggedErrorClass<DeploymentGroupDoesNotExistException>()(
-  "DeploymentGroupDoesNotExistException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentLimitExceededException extends S.TaggedErrorClass<DeploymentLimitExceededException>()(
-  "DeploymentLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class DescriptionTooLongException extends S.TaggedErrorClass<DescriptionTooLongException>()(
-  "DescriptionTooLongException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidAlarmConfigException extends S.TaggedErrorClass<InvalidAlarmConfigException>()(
-  "InvalidAlarmConfigException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidAutoRollbackConfigException extends S.TaggedErrorClass<InvalidAutoRollbackConfigException>()(
-  "InvalidAutoRollbackConfigException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidAutoScalingGroupException extends S.TaggedErrorClass<InvalidAutoScalingGroupException>()(
-  "InvalidAutoScalingGroupException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidDeploymentConfigNameException extends S.TaggedErrorClass<InvalidDeploymentConfigNameException>()(
-  "InvalidDeploymentConfigNameException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidFileExistsBehaviorException extends S.TaggedErrorClass<InvalidFileExistsBehaviorException>()(
-  "InvalidFileExistsBehaviorException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidGitHubAccountTokenException extends S.TaggedErrorClass<InvalidGitHubAccountTokenException>()(
-  "InvalidGitHubAccountTokenException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidIgnoreApplicationStopFailuresValueException extends S.TaggedErrorClass<InvalidIgnoreApplicationStopFailuresValueException>()(
-  "InvalidIgnoreApplicationStopFailuresValueException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidLoadBalancerInfoException extends S.TaggedErrorClass<InvalidLoadBalancerInfoException>()(
-  "InvalidLoadBalancerInfoException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidRoleException extends S.TaggedErrorClass<InvalidRoleException>()(
-  "InvalidRoleException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTargetInstancesException extends S.TaggedErrorClass<InvalidTargetInstancesException>()(
-  "InvalidTargetInstancesException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTrafficRoutingConfigurationException extends S.TaggedErrorClass<InvalidTrafficRoutingConfigurationException>()(
-  "InvalidTrafficRoutingConfigurationException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidUpdateOutdatedInstancesOnlyValueException extends S.TaggedErrorClass<InvalidUpdateOutdatedInstancesOnlyValueException>()(
-  "InvalidUpdateOutdatedInstancesOnlyValueException",
-  { message: S.optional(S.String) },
-) {}
-export class RevisionDoesNotExistException extends S.TaggedErrorClass<RevisionDoesNotExistException>()(
-  "RevisionDoesNotExistException",
-  { message: S.optional(S.String) },
-) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentConfigAlreadyExistsException extends S.TaggedErrorClass<DeploymentConfigAlreadyExistsException>()(
-  "DeploymentConfigAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class DeploymentConfigLimitExceededException extends S.TaggedErrorClass<DeploymentConfigLimitExceededException>()(
-  "DeploymentConfigLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentConfigNameRequiredException extends S.TaggedErrorClass<DeploymentConfigNameRequiredException>()(
-  "DeploymentConfigNameRequiredException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidMinimumHealthyHostValueException extends S.TaggedErrorClass<InvalidMinimumHealthyHostValueException>()(
-  "InvalidMinimumHealthyHostValueException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidZonalDeploymentConfigurationException extends S.TaggedErrorClass<InvalidZonalDeploymentConfigurationException>()(
-  "InvalidZonalDeploymentConfigurationException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentGroupAlreadyExistsException extends S.TaggedErrorClass<DeploymentGroupAlreadyExistsException>()(
-  "DeploymentGroupAlreadyExistsException",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class DeploymentGroupLimitExceededException extends S.TaggedErrorClass<DeploymentGroupLimitExceededException>()(
-  "DeploymentGroupLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class ECSServiceMappingLimitExceededException extends S.TaggedErrorClass<ECSServiceMappingLimitExceededException>()(
-  "ECSServiceMappingLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidBlueGreenDeploymentConfigurationException extends S.TaggedErrorClass<InvalidBlueGreenDeploymentConfigurationException>()(
-  "InvalidBlueGreenDeploymentConfigurationException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidDeploymentStyleException extends S.TaggedErrorClass<InvalidDeploymentStyleException>()(
-  "InvalidDeploymentStyleException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidEC2TagCombinationException extends S.TaggedErrorClass<InvalidEC2TagCombinationException>()(
-  "InvalidEC2TagCombinationException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidEC2TagException extends S.TaggedErrorClass<InvalidEC2TagException>()(
-  "InvalidEC2TagException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidECSServiceException extends S.TaggedErrorClass<InvalidECSServiceException>()(
-  "InvalidECSServiceException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidOnPremisesTagCombinationException extends S.TaggedErrorClass<InvalidOnPremisesTagCombinationException>()(
-  "InvalidOnPremisesTagCombinationException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTargetGroupPairException extends S.TaggedErrorClass<InvalidTargetGroupPairException>()(
-  "InvalidTargetGroupPairException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTriggerConfigException extends S.TaggedErrorClass<InvalidTriggerConfigException>()(
-  "InvalidTriggerConfigException",
-  { message: S.optional(S.String) },
-) {}
-export class LifecycleHookLimitExceededException extends S.TaggedErrorClass<LifecycleHookLimitExceededException>()(
-  "LifecycleHookLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class RoleRequiredException extends S.TaggedErrorClass<RoleRequiredException>()(
-  "RoleRequiredException",
-  { message: S.optional(S.String) },
-) {}
-export class TagSetListLimitExceededException extends S.TaggedErrorClass<TagSetListLimitExceededException>()(
-  "TagSetListLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class TriggerTargetsLimitExceededException extends S.TaggedErrorClass<TriggerTargetsLimitExceededException>()(
-  "TriggerTargetsLimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class DeploymentConfigInUseException extends S.TaggedErrorClass<DeploymentConfigInUseException>()(
-  "DeploymentConfigInUseException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
-  "InvalidOperationException",
-  { message: S.optional(S.String) },
-) {}
-export class GitHubAccountTokenDoesNotExistException extends S.TaggedErrorClass<GitHubAccountTokenDoesNotExistException>()(
-  "GitHubAccountTokenDoesNotExistException",
-  { message: S.optional(S.String) },
-) {}
-export class GitHubAccountTokenNameRequiredException extends S.TaggedErrorClass<GitHubAccountTokenNameRequiredException>()(
-  "GitHubAccountTokenNameRequiredException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidGitHubAccountTokenNameException extends S.TaggedErrorClass<InvalidGitHubAccountTokenNameException>()(
-  "InvalidGitHubAccountTokenNameException",
-  { message: S.optional(S.String) },
-) {}
-export class OperationNotSupportedException extends S.TaggedErrorClass<OperationNotSupportedException>()(
-  "OperationNotSupportedException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceValidationException extends S.TaggedErrorClass<ResourceValidationException>()(
-  "ResourceValidationException",
-  { message: S.optional(S.String) },
-) {}
-export class BucketNameFilterRequiredException extends S.TaggedErrorClass<BucketNameFilterRequiredException>()(
-  "BucketNameFilterRequiredException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidBucketNameFilterException extends S.TaggedErrorClass<InvalidBucketNameFilterException>()(
-  "InvalidBucketNameFilterException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidDeployedStateFilterException extends S.TaggedErrorClass<InvalidDeployedStateFilterException>()(
-  "InvalidDeployedStateFilterException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidKeyPrefixFilterException extends S.TaggedErrorClass<InvalidKeyPrefixFilterException>()(
-  "InvalidKeyPrefixFilterException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidSortByException extends S.TaggedErrorClass<InvalidSortByException>()(
-  "InvalidSortByException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidSortOrderException extends S.TaggedErrorClass<InvalidSortOrderException>()(
-  "InvalidSortOrderException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidDeploymentInstanceTypeException extends S.TaggedErrorClass<InvalidDeploymentInstanceTypeException>()(
-  "InvalidDeploymentInstanceTypeException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidInstanceStatusException extends S.TaggedErrorClass<InvalidInstanceStatusException>()(
-  "InvalidInstanceStatusException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidInstanceTypeException extends S.TaggedErrorClass<InvalidInstanceTypeException>()(
-  "InvalidInstanceTypeException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTargetFilterNameException extends S.TaggedErrorClass<InvalidTargetFilterNameException>()(
-  "InvalidTargetFilterNameException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidExternalIdException extends S.TaggedErrorClass<InvalidExternalIdException>()(
-  "InvalidExternalIdException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTimeRangeException extends S.TaggedErrorClass<InvalidTimeRangeException>()(
-  "InvalidTimeRangeException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidRegistrationStatusException extends S.TaggedErrorClass<InvalidRegistrationStatusException>()(
-  "InvalidRegistrationStatusException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTagFilterException extends S.TaggedErrorClass<InvalidTagFilterException>()(
-  "InvalidTagFilterException",
-  { message: S.optional(S.String) },
-) {}
-export class ArnNotSupportedException extends S.TaggedErrorClass<ArnNotSupportedException>()(
-  "ArnNotSupportedException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidArnException extends S.TaggedErrorClass<InvalidArnException>()(
-  "InvalidArnException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceArnRequiredException extends S.TaggedErrorClass<ResourceArnRequiredException>()(
-  "ResourceArnRequiredException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidLifecycleEventHookExecutionIdException extends S.TaggedErrorClass<InvalidLifecycleEventHookExecutionIdException>()(
-  "InvalidLifecycleEventHookExecutionIdException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidLifecycleEventHookExecutionStatusException extends S.TaggedErrorClass<InvalidLifecycleEventHookExecutionStatusException>()(
-  "InvalidLifecycleEventHookExecutionStatusException",
-  { message: S.optional(S.String) },
-) {}
-export class LifecycleEventAlreadyCompletedException extends S.TaggedErrorClass<LifecycleEventAlreadyCompletedException>()(
-  "LifecycleEventAlreadyCompletedException",
-  { message: S.optional(S.String) },
-) {}
-export class IamArnRequiredException extends S.TaggedErrorClass<IamArnRequiredException>()(
-  "IamArnRequiredException",
-  { message: S.optional(S.String) },
-) {}
-export class IamSessionArnAlreadyRegisteredException extends S.TaggedErrorClass<IamSessionArnAlreadyRegisteredException>()(
-  "IamSessionArnAlreadyRegisteredException",
-  { message: S.optional(S.String) },
-) {}
-export class IamUserArnAlreadyRegisteredException extends S.TaggedErrorClass<IamUserArnAlreadyRegisteredException>()(
-  "IamUserArnAlreadyRegisteredException",
-  { message: S.optional(S.String) },
-) {}
-export class IamUserArnRequiredException extends S.TaggedErrorClass<IamUserArnRequiredException>()(
-  "IamUserArnRequiredException",
-  { message: S.optional(S.String) },
-) {}
-export class InstanceNameAlreadyRegisteredException extends S.TaggedErrorClass<InstanceNameAlreadyRegisteredException>()(
-  "InstanceNameAlreadyRegisteredException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidIamSessionArnException extends S.TaggedErrorClass<InvalidIamSessionArnException>()(
-  "InvalidIamSessionArnException",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidIamUserArnException extends S.TaggedErrorClass<InvalidIamUserArnException>()(
-  "InvalidIamUserArnException",
-  { message: S.optional(S.String) },
-) {}
-export class MultipleIamArnsProvidedException extends S.TaggedErrorClass<MultipleIamArnsProvidedException>()(
-  "MultipleIamArnsProvidedException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
 export type AddTagsToOnPremisesInstancesError =
   | InstanceLimitExceededException
   | InstanceNameRequiredException
@@ -3269,6 +3296,7 @@ export const addTagsToOnPremisesInstances: API.OperationMethod<
   retry: Retry,
   operationName: "AddTagsToOnPremisesInstances",
 }));
+
 export type BatchGetApplicationRevisionsError =
   | ApplicationDoesNotExistException
   | ApplicationNameRequiredException
@@ -3301,6 +3329,7 @@ export const batchGetApplicationRevisions: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetApplicationRevisions",
 }));
+
 export type BatchGetApplicationsError =
   | ApplicationDoesNotExistException
   | ApplicationNameRequiredException
@@ -3329,6 +3358,7 @@ export const batchGetApplications: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetApplications",
 }));
+
 export type BatchGetDeploymentGroupsError =
   | ApplicationDoesNotExistException
   | ApplicationNameRequiredException
@@ -3362,6 +3392,7 @@ export const batchGetDeploymentGroups: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetDeploymentGroups",
 }));
+
 export type BatchGetDeploymentInstancesError =
   | BatchLimitExceededException
   | DeploymentDoesNotExistException
@@ -3401,6 +3432,7 @@ export const batchGetDeploymentInstances: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetDeploymentInstances",
 }));
+
 export type BatchGetDeploymentsError =
   | BatchLimitExceededException
   | DeploymentIdRequiredException
@@ -3427,6 +3459,7 @@ export const batchGetDeployments: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetDeployments",
 }));
+
 export type BatchGetDeploymentTargetsError =
   | DeploymentDoesNotExistException
   | DeploymentIdRequiredException
@@ -3481,6 +3514,7 @@ export const batchGetDeploymentTargets: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetDeploymentTargets",
 }));
+
 export type BatchGetOnPremisesInstancesError =
   | BatchLimitExceededException
   | InstanceNameRequiredException
@@ -3507,6 +3541,7 @@ export const batchGetOnPremisesInstances: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetOnPremisesInstances",
 }));
+
 export type ContinueDeploymentError =
   | DeploymentAlreadyCompletedException
   | DeploymentDoesNotExistException
@@ -3546,6 +3581,7 @@ export const continueDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "ContinueDeployment",
 }));
+
 export type CreateApplicationError =
   | ApplicationAlreadyExistsException
   | ApplicationLimitExceededException
@@ -3577,6 +3613,7 @@ export const createApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApplication",
 }));
+
 export type CreateDeploymentError =
   | AlarmsLimitExceededException
   | ApplicationDoesNotExistException
@@ -3648,6 +3685,7 @@ export const createDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDeployment",
 }));
+
 export type CreateDeploymentConfigError =
   | DeploymentConfigAlreadyExistsException
   | DeploymentConfigLimitExceededException
@@ -3683,6 +3721,7 @@ export const createDeploymentConfig: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDeploymentConfig",
 }));
+
 export type CreateDeploymentGroupError =
   | AlarmsLimitExceededException
   | ApplicationDoesNotExistException
@@ -3768,6 +3807,7 @@ export const createDeploymentGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDeploymentGroup",
 }));
+
 export type DeleteApplicationError =
   | ApplicationNameRequiredException
   | InvalidApplicationNameException
@@ -3793,6 +3833,7 @@ export const deleteApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplication",
 }));
+
 export type DeleteDeploymentConfigError =
   | DeploymentConfigInUseException
   | DeploymentConfigNameRequiredException
@@ -3823,6 +3864,7 @@ export const deleteDeploymentConfig: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDeploymentConfig",
 }));
+
 export type DeleteDeploymentGroupError =
   | ApplicationNameRequiredException
   | DeploymentGroupNameRequiredException
@@ -3852,6 +3894,7 @@ export const deleteDeploymentGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDeploymentGroup",
 }));
+
 export type DeleteGitHubAccountTokenError =
   | GitHubAccountTokenDoesNotExistException
   | GitHubAccountTokenNameRequiredException
@@ -3881,6 +3924,7 @@ export const deleteGitHubAccountToken: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGitHubAccountToken",
 }));
+
 export type DeleteResourcesByExternalIdError = CommonErrors;
 /**
  * Deletes resources linked to an external ID. This action only applies if you have
@@ -3904,6 +3948,7 @@ export const deleteResourcesByExternalId: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcesByExternalId",
 }));
+
 export type DeregisterOnPremisesInstanceError =
   | InstanceNameRequiredException
   | InvalidInstanceNameException
@@ -3924,6 +3969,7 @@ export const deregisterOnPremisesInstance: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterOnPremisesInstance",
 }));
+
 export type GetApplicationError =
   | ApplicationDoesNotExistException
   | ApplicationNameRequiredException
@@ -3949,6 +3995,7 @@ export const getApplication: API.OperationMethod<
   retry: Retry,
   operationName: "GetApplication",
 }));
+
 export type GetApplicationRevisionError =
   | ApplicationDoesNotExistException
   | ApplicationNameRequiredException
@@ -3980,6 +4027,7 @@ export const getApplicationRevision: API.OperationMethod<
   retry: Retry,
   operationName: "GetApplicationRevision",
 }));
+
 export type GetDeploymentError =
   | DeploymentDoesNotExistException
   | DeploymentIdRequiredException
@@ -4010,6 +4058,7 @@ export const getDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeployment",
 }));
+
 export type GetDeploymentConfigError =
   | DeploymentConfigDoesNotExistException
   | DeploymentConfigNameRequiredException
@@ -4037,6 +4086,7 @@ export const getDeploymentConfig: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeploymentConfig",
 }));
+
 export type GetDeploymentGroupError =
   | ApplicationDoesNotExistException
   | ApplicationNameRequiredException
@@ -4070,6 +4120,7 @@ export const getDeploymentGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeploymentGroup",
 }));
+
 export type GetDeploymentInstanceError =
   | DeploymentDoesNotExistException
   | DeploymentIdRequiredException
@@ -4103,6 +4154,7 @@ export const getDeploymentInstance: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeploymentInstance",
 }));
+
 export type GetDeploymentTargetError =
   | DeploymentDoesNotExistException
   | DeploymentIdRequiredException
@@ -4138,6 +4190,7 @@ export const getDeploymentTarget: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeploymentTarget",
 }));
+
 export type GetOnPremisesInstanceError =
   | InstanceNameRequiredException
   | InstanceNotRegisteredException
@@ -4163,6 +4216,7 @@ export const getOnPremisesInstance: API.OperationMethod<
   retry: Retry,
   operationName: "GetOnPremisesInstance",
 }));
+
 export type ListApplicationRevisionsError =
   | ApplicationDoesNotExistException
   | ApplicationNameRequiredException
@@ -4222,6 +4276,7 @@ export const listApplicationRevisions: API.OperationMethod<
     items: "revisions",
   } as const,
 }));
+
 export type ListApplicationsError = InvalidNextTokenException | CommonErrors;
 /**
  * Lists the applications registered with the user or Amazon Web Services account.
@@ -4259,6 +4314,7 @@ export const listApplications: API.OperationMethod<
     items: "applications",
   } as const,
 }));
+
 export type ListDeploymentConfigsError =
   | InvalidNextTokenException
   | CommonErrors;
@@ -4298,6 +4354,7 @@ export const listDeploymentConfigs: API.OperationMethod<
     items: "deploymentConfigsList",
   } as const,
 }));
+
 export type ListDeploymentGroupsError =
   | ApplicationDoesNotExistException
   | ApplicationNameRequiredException
@@ -4346,6 +4403,7 @@ export const listDeploymentGroups: API.OperationMethod<
     items: "deploymentGroups",
   } as const,
 }));
+
 export type ListDeploymentInstancesError =
   | DeploymentDoesNotExistException
   | DeploymentIdRequiredException
@@ -4410,6 +4468,7 @@ export const listDeploymentInstances: API.OperationMethod<
     items: "instancesList",
   } as const,
 }));
+
 export type ListDeploymentsError =
   | ApplicationDoesNotExistException
   | ApplicationNameRequiredException
@@ -4472,6 +4531,7 @@ export const listDeployments: API.OperationMethod<
     items: "deployments",
   } as const,
 }));
+
 export type ListDeploymentTargetsError =
   | DeploymentDoesNotExistException
   | DeploymentIdRequiredException
@@ -4509,6 +4569,7 @@ export const listDeploymentTargets: API.OperationMethod<
   retry: Retry,
   operationName: "ListDeploymentTargets",
 }));
+
 export type ListGitHubAccountTokenNamesError =
   | InvalidNextTokenException
   | OperationNotSupportedException
@@ -4534,6 +4595,7 @@ export const listGitHubAccountTokenNames: API.OperationMethod<
   retry: Retry,
   operationName: "ListGitHubAccountTokenNames",
 }));
+
 export type ListOnPremisesInstancesError =
   | InvalidNextTokenException
   | InvalidRegistrationStatusException
@@ -4563,6 +4625,7 @@ export const listOnPremisesInstances: API.OperationMethod<
   retry: Retry,
   operationName: "ListOnPremisesInstances",
 }));
+
 export type ListTagsForResourceError =
   | ArnNotSupportedException
   | InvalidArnException
@@ -4589,6 +4652,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutLifecycleEventHookExecutionStatusError =
   | DeploymentDoesNotExistException
   | DeploymentIdRequiredException
@@ -4630,6 +4694,7 @@ export const putLifecycleEventHookExecutionStatus: API.OperationMethod<
   retry: Retry,
   operationName: "PutLifecycleEventHookExecutionStatus",
 }));
+
 export type RegisterApplicationRevisionError =
   | ApplicationDoesNotExistException
   | ApplicationNameRequiredException
@@ -4661,6 +4726,7 @@ export const registerApplicationRevision: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterApplicationRevision",
 }));
+
 export type RegisterOnPremisesInstanceError =
   | IamArnRequiredException
   | IamSessionArnAlreadyRegisteredException
@@ -4702,6 +4768,7 @@ export const registerOnPremisesInstance: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterOnPremisesInstance",
 }));
+
 export type RemoveTagsFromOnPremisesInstancesError =
   | InstanceLimitExceededException
   | InstanceNameRequiredException
@@ -4735,6 +4802,7 @@ export const removeTagsFromOnPremisesInstances: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveTagsFromOnPremisesInstances",
 }));
+
 export type SkipWaitTimeForInstanceTerminationError =
   | DeploymentAlreadyCompletedException
   | DeploymentDoesNotExistException
@@ -4767,6 +4835,7 @@ export const skipWaitTimeForInstanceTermination: API.OperationMethod<
   retry: Retry,
   operationName: "SkipWaitTimeForInstanceTermination",
 }));
+
 export type StopDeploymentError =
   | DeploymentAlreadyCompletedException
   | DeploymentDoesNotExistException
@@ -4798,6 +4867,7 @@ export const stopDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "StopDeployment",
 }));
+
 export type TagResourceError =
   | ApplicationDoesNotExistException
   | ArnNotSupportedException
@@ -4834,6 +4904,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | ApplicationDoesNotExistException
   | ArnNotSupportedException
@@ -4871,6 +4942,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateApplicationError =
   | ApplicationAlreadyExistsException
   | ApplicationDoesNotExistException
@@ -4898,6 +4970,7 @@ export const updateApplication: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApplication",
 }));
+
 export type UpdateDeploymentGroupError =
   | AlarmsLimitExceededException
   | ApplicationDoesNotExistException

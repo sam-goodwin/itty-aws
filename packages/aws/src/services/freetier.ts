@@ -118,14 +118,32 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ActivityId = string;
-export type AccountId = string;
-export type Value = string;
-export type MaxResults = number;
-export type NextPageToken = string;
-
-//# Schemas
 export type LanguageCode =
   | "en-US"
   | "en-GB"
@@ -142,6 +160,7 @@ export type LanguageCode =
   | "tr-TR"
   | (string & {});
 export const LanguageCode = /*@__PURE__*/ S.String;
+
 export interface GetAccountActivityRequest {
   activityId: string;
   languageCode?: LanguageCode;
@@ -163,8 +182,10 @@ export type ActivityStatus =
   | "EXPIRING"
   | (string & {});
 export const ActivityStatus = /*@__PURE__*/ S.String;
+
 export type CurrencyCode = "USD" | (string & {});
 export const CurrencyCode = /*@__PURE__*/ S.String;
+
 export interface MonetaryAmount {
   amount: number;
   unit: CurrencyCode;
@@ -218,14 +239,17 @@ export const GetAccountPlanStateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountPlanStateRequest",
 }) as any as S.Schema<GetAccountPlanStateRequest>;
+export type AccountId = string;
 export type AccountPlanType = "FREE" | "PAID" | (string & {});
 export const AccountPlanType = /*@__PURE__*/ S.String;
+
 export type AccountPlanStatus =
   | "NOT_STARTED"
   | "ACTIVE"
   | "EXPIRED"
   | (string & {});
 export const AccountPlanStatus = /*@__PURE__*/ S.String;
+
 export interface GetAccountPlanStateResponse {
   accountId: string;
   accountPlanType: AccountPlanType;
@@ -262,6 +286,8 @@ export type Dimension =
   | "USAGE_PERCENTAGE"
   | (string & {});
 export const Dimension = /*@__PURE__*/ S.String;
+
+export type Value = string;
 export type Values = string[];
 export const Values = /*@__PURE__*/ S.Array(S.String);
 export type MatchOption =
@@ -272,6 +298,7 @@ export type MatchOption =
   | "GREATER_THAN_OR_EQUAL"
   | (string & {});
 export const MatchOption = /*@__PURE__*/ S.String;
+
 export type MatchOptions = MatchOption[];
 export const MatchOptions = /*@__PURE__*/ S.Array(MatchOption);
 export interface DimensionValues {
@@ -306,6 +333,8 @@ export const Expression = /*@__PURE__*/ S.suspend(() =>
     Dimensions: S.optional(DimensionValues),
   }),
 ).annotate({ identifier: "Expression" }) as any as S.Schema<Expression>;
+export type MaxResults = number;
+export type NextPageToken = string;
 export interface GetFreeTierUsageRequest {
   filter?: Expression;
   maxResults?: number;
@@ -430,35 +459,6 @@ export const UpgradeAccountPlanResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpgradeAccountPlanResponse",
 }) as any as S.Schema<UpgradeAccountPlanResponse>;
-
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-
-//# Operations
 export type GetAccountActivityError =
   | InternalServerException
   | ResourceNotFoundException
@@ -486,6 +486,7 @@ export const getAccountActivity: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountActivity",
 }));
+
 export type GetAccountPlanStateError =
   | AccessDeniedException
   | InternalServerException
@@ -515,6 +516,7 @@ export const getAccountPlanState: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountPlanState",
 }));
+
 export type GetFreeTierUsageError =
   | InternalServerException
   | ThrottlingException
@@ -557,6 +559,7 @@ export const getFreeTierUsage: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAccountActivitiesError =
   | InternalServerException
   | ThrottlingException
@@ -599,6 +602,7 @@ export const listAccountActivities: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type UpgradeAccountPlanError =
   | AccessDeniedException
   | InternalServerException

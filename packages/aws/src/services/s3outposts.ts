@@ -85,30 +85,48 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class OutpostOfflineException extends S.TaggedErrorClass<OutpostOfflineException>()(
+  "OutpostOfflineException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type OutpostId = string;
 export type SubnetId = string;
 export type SecurityGroupId = string;
-export type CustomerOwnedIpv4Pool = string;
-export type EndpointArn = string;
-export type ErrorMessage = string;
-export type EndpointId = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type CidrBlock = string;
-export type CreationTime = Date;
-export type NetworkInterfaceId = string;
-export type VpcId = string;
-export type ErrorCode = string;
-export type Message = string;
-export type OutpostArn = string;
-export type S3OutpostArn = string;
-export type AwsAccountId = string;
-export type CapacityInBytes = number;
-
-//# Schemas
 export type EndpointAccessType = "Private" | "CustomerOwnedIp" | (string & {});
 export const EndpointAccessType = /*@__PURE__*/ S.String;
+
+export type CustomerOwnedIpv4Pool = string;
 export interface CreateEndpointRequest {
   OutpostId: string;
   SubnetId: string;
@@ -136,6 +154,7 @@ export const CreateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEndpointRequest",
 }) as any as S.Schema<CreateEndpointRequest>;
+export type EndpointArn = string;
 export interface CreateEndpointResult {
   EndpointArn?: string;
 }
@@ -144,6 +163,7 @@ export const CreateEndpointResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEndpointResult",
 }) as any as S.Schema<CreateEndpointResult>;
+export type EndpointId = string;
 export interface DeleteEndpointRequest {
   EndpointId: string;
   OutpostId: string;
@@ -171,6 +191,8 @@ export const DeleteEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteEndpointResponse",
 }) as any as S.Schema<DeleteEndpointResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListEndpointsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -192,6 +214,7 @@ export const ListEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEndpointsRequest",
 }) as any as S.Schema<ListEndpointsRequest>;
+export type CidrBlock = string;
 export type EndpointStatus =
   | "Pending"
   | "Available"
@@ -200,6 +223,9 @@ export type EndpointStatus =
   | "Delete_Failed"
   | (string & {});
 export const EndpointStatus = /*@__PURE__*/ S.String;
+
+export type CreationTime = Date;
+export type NetworkInterfaceId = string;
 export interface NetworkInterface {
   NetworkInterfaceId?: string;
 }
@@ -210,6 +236,9 @@ export const NetworkInterface = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterface>;
 export type NetworkInterfaces = NetworkInterface[];
 export const NetworkInterfaces = /*@__PURE__*/ S.Array(NetworkInterface);
+export type VpcId = string;
+export type ErrorCode = string;
+export type Message = string;
 export interface FailedReason {
   ErrorCode?: string;
   Message?: string;
@@ -282,6 +311,10 @@ export const ListOutpostsWithS3Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOutpostsWithS3Request",
 }) as any as S.Schema<ListOutpostsWithS3Request>;
+export type OutpostArn = string;
+export type S3OutpostArn = string;
+export type AwsAccountId = string;
+export type CapacityInBytes = number;
 export interface Outpost {
   OutpostArn?: string;
   S3OutpostArn?: string;
@@ -344,45 +377,7 @@ export const ListSharedEndpointsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSharedEndpointsResult",
 }) as any as S.Schema<ListSharedEndpointsResult>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class OutpostOfflineException extends S.TaggedErrorClass<OutpostOfflineException>()(
-  "OutpostOfflineException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CreateEndpointError =
   | AccessDeniedException
   | ConflictException
@@ -424,6 +419,7 @@ export const createEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEndpoint",
 }));
+
 export type DeleteEndpointError =
   | AccessDeniedException
   | InternalServerException
@@ -463,6 +459,7 @@ export const deleteEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEndpoint",
 }));
+
 export type ListEndpointsError =
   | AccessDeniedException
   | InternalServerException
@@ -519,6 +516,7 @@ export const listEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOutpostsWithS3Error =
   | AccessDeniedException
   | InternalServerException
@@ -569,6 +567,7 @@ export const listOutpostsWithS3: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSharedEndpointsError =
   | AccessDeniedException
   | InternalServerException

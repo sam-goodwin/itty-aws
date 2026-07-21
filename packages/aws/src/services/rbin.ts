@@ -85,23 +85,63 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ConflictExceptionReason).annotate({
+        identifier: "ConflictExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ResourceNotFoundExceptionReason).annotate({
+        identifier: "ResourceNotFoundExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ServiceQuotaExceededExceptionReason).annotate({
+        identifier: "ServiceQuotaExceededExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type RetentionPeriodValue = number;
-export type Description = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ResourceTagKey = string;
-export type ResourceTagValue = string;
-export type UnlockDelayValue = number;
-export type RuleIdentifier = string;
-export type RuleArn = string;
-export type ErrorMessage = string;
-export type MaxResults = number;
-export type NextToken = string;
-
-//# Schemas
 export type RetentionPeriodUnit = "DAYS" | (string & {});
 export const RetentionPeriodUnit = /*@__PURE__*/ S.String;
+
 export interface RetentionPeriod {
   RetentionPeriodValue: number;
   RetentionPeriodUnit: RetentionPeriodUnit;
@@ -114,6 +154,9 @@ export const RetentionPeriod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RetentionPeriod",
 }) as any as S.Schema<RetentionPeriod>;
+export type Description = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -129,6 +172,9 @@ export type ResourceType =
   | "EBS_VOLUME"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
+export type ResourceTagKey = string;
+export type ResourceTagValue = string;
 export interface ResourceTag {
   ResourceTagKey: string;
   ResourceTagValue?: string;
@@ -141,8 +187,10 @@ export const ResourceTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ResourceTag" }) as any as S.Schema<ResourceTag>;
 export type ResourceTags = ResourceTag[];
 export const ResourceTags = /*@__PURE__*/ S.Array(ResourceTag);
+export type UnlockDelayValue = number;
 export type UnlockDelayUnit = "DAYS" | (string & {});
 export const UnlockDelayUnit = /*@__PURE__*/ S.String;
+
 export interface UnlockDelay {
   UnlockDelayValue: number;
   UnlockDelayUnit: UnlockDelayUnit;
@@ -191,14 +239,18 @@ export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRuleRequest",
 }) as any as S.Schema<CreateRuleRequest>;
+export type RuleIdentifier = string;
 export type RuleStatus = "pending" | "available" | (string & {});
 export const RuleStatus = /*@__PURE__*/ S.String;
+
 export type LockState =
   | "locked"
   | "pending_unlock"
   | "unlocked"
   | (string & {});
 export const LockState = /*@__PURE__*/ S.String;
+
+export type RuleArn = string;
 export interface CreateRuleResponse {
   Identifier?: string;
   RetentionPeriod?: RetentionPeriod;
@@ -229,15 +281,6 @@ export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRuleResponse",
 }) as any as S.Schema<CreateRuleResponse>;
-export type ServiceQuotaExceededExceptionReason =
-  | "SERVICE_QUOTA_EXCEEDED"
-  | (string & {});
-export const ServiceQuotaExceededExceptionReason = /*@__PURE__*/ S.String;
-export type ValidationExceptionReason =
-  | "INVALID_PAGE_TOKEN"
-  | "INVALID_PARAMETER_VALUE"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 export interface DeleteRuleRequest {
   Identifier: string;
 }
@@ -261,10 +304,6 @@ export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteRuleResponse",
 }) as any as S.Schema<DeleteRuleResponse>;
-export type ConflictExceptionReason = "INVALID_RULE_STATE" | (string & {});
-export const ConflictExceptionReason = /*@__PURE__*/ S.String;
-export type ResourceNotFoundExceptionReason = "RULE_NOT_FOUND" | (string & {});
-export const ResourceNotFoundExceptionReason = /*@__PURE__*/ S.String;
 export interface GetRuleRequest {
   Identifier: string;
 }
@@ -310,6 +349,8 @@ export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRuleResponse",
 }) as any as S.Schema<GetRuleResponse>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface ListRulesRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -603,47 +644,24 @@ export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRuleResponse",
 }) as any as S.Schema<UpdateRuleResponse>;
+export type ErrorMessage = string;
+export type ServiceQuotaExceededExceptionReason =
+  | "SERVICE_QUOTA_EXCEEDED"
+  | (string & {});
+export const ServiceQuotaExceededExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(ServiceQuotaExceededExceptionReason),
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(ValidationExceptionReason),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(ConflictExceptionReason),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    Reason: S.optional(ResourceNotFoundExceptionReason),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
+export type ValidationExceptionReason =
+  | "INVALID_PAGE_TOKEN"
+  | "INVALID_PARAMETER_VALUE"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Operations
+export type ConflictExceptionReason = "INVALID_RULE_STATE" | (string & {});
+export const ConflictExceptionReason = /*@__PURE__*/ S.String;
+
+export type ResourceNotFoundExceptionReason = "RULE_NOT_FOUND" | (string & {});
+export const ResourceNotFoundExceptionReason = /*@__PURE__*/ S.String;
+
 export type CreateRuleError =
   | InternalServerException
   | ServiceQuotaExceededException
@@ -684,6 +702,7 @@ export const createRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRule",
 }));
+
 export type DeleteRuleError =
   | ConflictException
   | InternalServerException
@@ -712,6 +731,7 @@ export const deleteRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRule",
 }));
+
 export type GetRuleError =
   | InternalServerException
   | ResourceNotFoundException
@@ -737,6 +757,7 @@ export const getRule: API.OperationMethod<
   retry: Retry,
   operationName: "GetRule",
 }));
+
 export type ListRulesError =
   | InternalServerException
   | ValidationException
@@ -778,6 +799,7 @@ export const listRules: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -803,6 +825,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type LockRuleError =
   | ConflictException
   | InternalServerException
@@ -834,6 +857,7 @@ export const lockRule: API.OperationMethod<
   retry: Retry,
   operationName: "LockRule",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -861,6 +885,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UnlockRuleError =
   | ConflictException
   | InternalServerException
@@ -889,6 +914,7 @@ export const unlockRule: API.OperationMethod<
   retry: Retry,
   operationName: "UnlockRule",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -914,6 +940,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateRuleError =
   | ConflictException
   | InternalServerException

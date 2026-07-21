@@ -87,99 +87,34 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type Uuid = string;
 export type Name = string;
 export type String1To255 = string;
-export type Message = string;
-export type TypeName = string;
-export type Start = number;
-export type End = number;
-export type String1To1000 = string;
-export type DisplayName = string;
-export type SensitiveString1To255 = string | redacted.Redacted<string>;
-export type SensitiveString1To1000 = string | redacted.Redacted<string>;
-export type StringifiedJson = string | redacted.Redacted<string>;
-export type ResponseCode = number;
-export type Text = string;
-export type SensitiveText = string | redacted.Redacted<string>;
-export type AttributeName = string;
-export type Value = number;
-export type ValueRangeStart = number;
-export type ValueRangeEnd = number;
-export type ObjectCount = number;
-export type OptionalBoolean = boolean;
-export type TagKey = string;
-export type TagValue = string;
-export type PercentageInteger = number;
-export type ExpirationDaysInteger = number;
-export type EncryptionKey = string;
-export type SqsQueueUrl = string;
-export type JobScheduleTime = string;
-export type Double0To1 = number;
-export type S3BucketName = string;
-export type S3KeyNameCustomerOutputConfig = string;
-export type MaxAllowedRuleLevelForMerging = number;
-export type MaxAllowedRuleLevelForMatching = number;
-export type SensitiveString1To2000000 = string | redacted.Redacted<string>;
-export type FieldName = string;
-export type OptionalLong = number;
-export type MaxSize60 = number;
-export type MaxSize1000 = number;
-export type FlowDescription = string;
-export type FlowName = string;
-export type KmsArn = string;
-export type ConnectorProfileName = string;
-export type DatetimeTypeFieldName = string;
-export type BucketName = string;
-export type BucketPrefix = string;
-export type DestinationField = string;
-export type StringTo2048 = string;
-export type Property = string;
-export type ScheduleExpression = string;
-export type Timezone = string;
-export type ScheduleOffset = number;
-export type RoleArn = string;
-export type EventParametersEventTypeString = string;
-export type EventParametersEventWeightDouble = number;
-export type RecommenderConfigTrainingFrequencyInteger = number;
-export type InferenceConfigMinProvisionedTPSInteger = number;
-export type Arn = string;
-export type RecommenderFilterName = string;
-export type RecommenderFilterExpression = string | redacted.Redacted<string>;
-export type SensitiveString1To4000 = string | redacted.Redacted<string>;
-export type SensitiveString1To50000 = string | redacted.Redacted<string>;
-export type SegmentDefinitionArn = string;
-export type StatusCode = number;
-export type SensitiveString1To10000 = string | redacted.Redacted<string>;
-export type DomainObjectTypeFieldName = string;
-export type S3KeyName = string;
-export type Token = string;
-export type MaxSize100 = number;
-export type MatchesNumber = number;
-export type MinSize0 = number;
-export type MinSize1 = number;
-export type ContextKey = string;
-export type RecommenderFilterAttributeName = string;
-export type RecommenderFilterAttributeValue =
-  | string
-  | redacted.Redacted<string>;
-export type PercentPromotedItems = number;
-export type MaxSize500 = number;
-export type MetadataColumnName = string;
-export type GetRecommenderRequestTrainingMetricsCountInteger = number;
-export type ProfileId = string;
-export type GetSegmentMembershipMessage = string;
-export type GetSegmentMembershipStatus = number;
-export type RuleLevel = number;
-export type ListRecommenderRecipesRequestMaxResultsInteger = number;
-export type ListRecommendersRequestMaxResultsInteger = number;
-export type TagArn = string;
-export type SensitiveString0To1000 = string | redacted.Redacted<string>;
-export type SensitiveString0To255 = string | redacted.Redacted<string>;
-export type String0To255 = string;
-
-//# Schemas
 export type RequestValueList = string[];
 export const RequestValueList = /*@__PURE__*/ S.Array(S.String);
 export interface AddProfileKeyRequest {
@@ -219,11 +154,15 @@ export const AddProfileKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddProfileKeyResponse",
 }) as any as S.Schema<AddProfileKeyResponse>;
+export type TypeName = string;
 export type BatchGetCalculatedAttributeForProfileIdList = string[];
 export const BatchGetCalculatedAttributeForProfileIdList =
   /*@__PURE__*/ S.Array(S.String);
+export type Start = number;
+export type End = number;
 export type RangeUnit = "DAYS" | (string & {});
 export const RangeUnit = /*@__PURE__*/ S.String;
+
 export interface RangeOverride {
   Start: number;
   End?: number;
@@ -271,6 +210,7 @@ export const BatchGetCalculatedAttributeForProfileRequest =
   ).annotate({
     identifier: "BatchGetCalculatedAttributeForProfileRequest",
   }) as any as S.Schema<BatchGetCalculatedAttributeForProfileRequest>;
+export type String1To1000 = string;
 export interface BatchGetCalculatedAttributeForProfileError_ {
   Code: string;
   Message: string;
@@ -286,6 +226,7 @@ export type BatchGetCalculatedAttributeForProfileErrorList =
   BatchGetCalculatedAttributeForProfileError_[];
 export const BatchGetCalculatedAttributeForProfileErrorList =
   /*@__PURE__*/ S.Array(BatchGetCalculatedAttributeForProfileError_);
+export type DisplayName = string;
 export interface CalculatedAttributeValue {
   CalculatedAttributeName?: string;
   DisplayName?: string;
@@ -367,10 +308,14 @@ export type BatchGetProfileErrorList = BatchGetProfileError_[];
 export const BatchGetProfileErrorList = /*@__PURE__*/ S.Array(
   BatchGetProfileError_,
 );
+export type SensitiveString1To255 = string | redacted.Redacted<string>;
+export type SensitiveString1To1000 = string | redacted.Redacted<string>;
 export type PartyType = "INDIVIDUAL" | "BUSINESS" | "OTHER" | (string & {});
 export const PartyType = /*@__PURE__*/ S.String;
+
 export type Gender = "MALE" | "FEMALE" | "UNSPECIFIED" | (string & {});
 export const Gender = /*@__PURE__*/ S.String;
+
 export interface Address {
   Address1?: string;
   Address2?: string;
@@ -418,6 +363,7 @@ export type FoundByList = FoundByKeyValue[];
 export const FoundByList = /*@__PURE__*/ S.Array(FoundByKeyValue);
 export type ProfileType = "ACCOUNT_PROFILE" | "PROFILE" | (string & {});
 export const ProfileType = /*@__PURE__*/ S.String;
+
 export type ContactType =
   | "PhoneNumber"
   | "MobilePhoneNumber"
@@ -428,6 +374,7 @@ export type ContactType =
   | "BusinessEmailAddress"
   | (string & {});
 export const ContactType = /*@__PURE__*/ S.String;
+
 export interface ContactPreference {
   KeyName?: string;
   KeyValue?: string;
@@ -534,6 +481,7 @@ export const BatchGetProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetProfileResponse",
 }) as any as S.Schema<BatchGetProfileResponse>;
+export type StringifiedJson = string | redacted.Redacted<string>;
 export interface BatchPutProfileObjectRequestItem {
   Id: string;
   Object: string | redacted.Redacted<string>;
@@ -588,6 +536,8 @@ export type BatchPutProfileObjectResponseList =
 export const BatchPutProfileObjectResponseList = /*@__PURE__*/ S.Array(
   BatchPutProfileObjectResponseItem,
 );
+export type ResponseCode = number;
+export type Text = string;
 export interface BatchPutProfileObjectErrorItem {
   Id: string;
   Code: number;
@@ -614,6 +564,8 @@ export const BatchPutProfileObjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchPutProfileObjectResponse",
 }) as any as S.Schema<BatchPutProfileObjectResponse>;
+export type SensitiveText = string | redacted.Redacted<string>;
+export type AttributeName = string;
 export interface AttributeItem {
   Name: string;
 }
@@ -631,8 +583,12 @@ export const AttributeDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttributeDetails",
 }) as any as S.Schema<AttributeDetails>;
+export type Value = number;
 export type Unit = "DAYS" | (string & {});
 export const Unit = /*@__PURE__*/ S.String;
+
+export type ValueRangeStart = number;
+export type ValueRangeEnd = number;
 export interface ValueRange {
   Start: number;
   End: number;
@@ -656,6 +612,7 @@ export const Range = /*@__PURE__*/ S.suspend(() =>
     TimestampFormat: S.optional(S.String),
   }),
 ).annotate({ identifier: "Range" }) as any as S.Schema<Range>;
+export type ObjectCount = number;
 export type Operator =
   | "EQUAL_TO"
   | "GREATER_THAN"
@@ -663,6 +620,7 @@ export type Operator =
   | "NOT_EQUAL_TO"
   | (string & {});
 export const Operator = /*@__PURE__*/ S.String;
+
 export interface Threshold {
   Value: string;
   Operator: Operator;
@@ -684,8 +642,10 @@ export const Conditions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Conditions" }) as any as S.Schema<Conditions>;
 export type Include = "ALL" | "ANY" | "NONE" | (string & {});
 export const Include = /*@__PURE__*/ S.String;
+
 export type Type = "ALL" | "ANY" | "NONE" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
+
 export type FilterDimensionType =
   | "INCLUSIVE"
   | "EXCLUSIVE"
@@ -704,6 +664,7 @@ export type FilterDimensionType =
   | "EQUAL"
   | (string & {});
 export const FilterDimensionType = /*@__PURE__*/ S.String;
+
 export type ValueList = string[];
 export const ValueList = /*@__PURE__*/ S.Array(S.String);
 export interface FilterAttributeDimension {
@@ -759,6 +720,10 @@ export type Statistic =
   | "MAX_OCCURRENCE"
   | (string & {});
 export const Statistic = /*@__PURE__*/ S.String;
+
+export type OptionalBoolean = boolean;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -814,6 +779,8 @@ export type ReadinessStatus =
   | "FAILED"
   | (string & {});
 export const ReadinessStatus = /*@__PURE__*/ S.String;
+
+export type PercentageInteger = number;
 export interface Readiness {
   ProgressPercentage?: number;
   Message?: string;
@@ -861,6 +828,9 @@ export const CreateCalculatedAttributeDefinitionResponse =
   ).annotate({
     identifier: "CreateCalculatedAttributeDefinitionResponse",
   }) as any as S.Schema<CreateCalculatedAttributeDefinitionResponse>;
+export type ExpirationDaysInteger = number;
+export type EncryptionKey = string;
+export type SqsQueueUrl = string;
 export type JobScheduleDayOfTheWeek =
   | "SUNDAY"
   | "MONDAY"
@@ -871,6 +841,8 @@ export type JobScheduleDayOfTheWeek =
   | "SATURDAY"
   | (string & {});
 export const JobScheduleDayOfTheWeek = /*@__PURE__*/ S.String;
+
+export type JobScheduleTime = string;
 export interface JobSchedule {
   DayOfTheWeek: JobScheduleDayOfTheWeek;
   Time: string;
@@ -890,6 +862,7 @@ export const Consolidation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Consolidation" }) as any as S.Schema<Consolidation>;
 export type ConflictResolvingModel = "RECENCY" | "SOURCE" | (string & {});
 export const ConflictResolvingModel = /*@__PURE__*/ S.String;
+
 export interface ConflictResolution {
   ConflictResolvingModel: ConflictResolvingModel;
   SourceName?: string;
@@ -902,6 +875,7 @@ export const ConflictResolution = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConflictResolution",
 }) as any as S.Schema<ConflictResolution>;
+export type Double0To1 = number;
 export interface AutoMerging {
   Enabled: boolean;
   Consolidation?: Consolidation;
@@ -916,6 +890,8 @@ export const AutoMerging = /*@__PURE__*/ S.suspend(() =>
     MinAllowedConfidenceScoreForMerging: S.optional(S.Number),
   }),
 ).annotate({ identifier: "AutoMerging" }) as any as S.Schema<AutoMerging>;
+export type S3BucketName = string;
+export type S3KeyNameCustomerOutputConfig = string;
 export interface S3ExportingConfig {
   S3BucketName: string;
   S3KeyName?: string;
@@ -959,11 +935,14 @@ export const MatchingRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MatchingRule" }) as any as S.Schema<MatchingRule>;
 export type MatchingRules = MatchingRule[];
 export const MatchingRules = /*@__PURE__*/ S.Array(MatchingRule);
+export type MaxAllowedRuleLevelForMerging = number;
+export type MaxAllowedRuleLevelForMatching = number;
 export type AttributeMatchingModel =
   | "ONE_TO_ONE"
   | "MANY_TO_MANY"
   | (string & {});
 export const AttributeMatchingModel = /*@__PURE__*/ S.String;
+
 export type AddressList = string[];
 export const AddressList = /*@__PURE__*/ S.Array(S.String);
 export type PhoneNumberList = string[];
@@ -1071,6 +1050,7 @@ export type RuleBasedMatchingStatus =
   | "ACTIVE"
   | (string & {});
 export const RuleBasedMatchingStatus = /*@__PURE__*/ S.String;
+
 export interface RuleBasedMatchingResponse {
   Enabled?: boolean;
   MatchingRules?: MatchingRule[];
@@ -1137,6 +1117,8 @@ export const CreateDomainResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDomainResponse>;
 export type LayoutType = "PROFILE_EXPLORER" | (string & {});
 export const LayoutType = /*@__PURE__*/ S.String;
+
+export type SensitiveString1To2000000 = string | redacted.Redacted<string>;
 export interface CreateDomainLayoutRequest {
   DomainName: string;
   LayoutDefinitionName: string;
@@ -1238,6 +1220,7 @@ export const CreateEventStreamResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEventStreamResponse",
 }) as any as S.Schema<CreateEventStreamResponse>;
+export type FieldName = string;
 export type ComparisonOperator =
   | "INCLUSIVE"
   | "EXCLUSIVE"
@@ -1256,6 +1239,7 @@ export type ComparisonOperator =
   | "NOT_BETWEEN"
   | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
 export type EventTriggerValues = string[];
 export const EventTriggerValues = /*@__PURE__*/ S.Array(S.String);
 export interface ObjectAttribute {
@@ -1294,6 +1278,7 @@ export type EventTriggerLogicalOperator =
   | "NONE"
   | (string & {});
 export const EventTriggerLogicalOperator = /*@__PURE__*/ S.String;
+
 export interface EventTriggerCondition {
   EventTriggerDimensions: EventTriggerDimension[];
   LogicalOperator: EventTriggerLogicalOperator;
@@ -1310,6 +1295,7 @@ export type EventTriggerConditions = EventTriggerCondition[];
 export const EventTriggerConditions = /*@__PURE__*/ S.Array(
   EventTriggerCondition,
 );
+export type OptionalLong = number;
 export type PeriodUnit =
   | "MINUTES"
   | "HOURS"
@@ -1318,6 +1304,9 @@ export type PeriodUnit =
   | "MONTHS"
   | (string & {});
 export const PeriodUnit = /*@__PURE__*/ S.String;
+
+export type MaxSize60 = number;
+export type MaxSize1000 = number;
 export interface Period {
   Unit: PeriodUnit;
   Value: number;
@@ -1410,6 +1399,11 @@ export const CreateEventTriggerResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEventTriggerResponse>;
 export type WorkflowType = "APPFLOW_INTEGRATION" | (string & {});
 export const WorkflowType = /*@__PURE__*/ S.String;
+
+export type FlowDescription = string;
+export type FlowName = string;
+export type KmsArn = string;
+export type ConnectorProfileName = string;
 export type SourceConnectorType =
   | "Salesforce"
   | "Marketo"
@@ -1418,6 +1412,8 @@ export type SourceConnectorType =
   | "S3"
   | (string & {});
 export const SourceConnectorType = /*@__PURE__*/ S.String;
+
+export type DatetimeTypeFieldName = string;
 export interface IncrementalPullConfig {
   DatetimeTypeFieldName?: string;
 }
@@ -1434,6 +1430,8 @@ export const MarketoSourceProperties = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MarketoSourceProperties",
 }) as any as S.Schema<MarketoSourceProperties>;
+export type BucketName = string;
+export type BucketPrefix = string;
 export interface S3SourceProperties {
   BucketName: string;
   BucketPrefix?: string;
@@ -1526,6 +1524,7 @@ export type MarketoConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const MarketoConnectorOperator = /*@__PURE__*/ S.String;
+
 export type S3ConnectorOperator =
   | "PROJECTION"
   | "LESS_THAN"
@@ -1549,6 +1548,7 @@ export type S3ConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const S3ConnectorOperator = /*@__PURE__*/ S.String;
+
 export type SalesforceConnectorOperator =
   | "PROJECTION"
   | "LESS_THAN"
@@ -1573,6 +1573,7 @@ export type SalesforceConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const SalesforceConnectorOperator = /*@__PURE__*/ S.String;
+
 export type ServiceNowConnectorOperator =
   | "PROJECTION"
   | "CONTAINS"
@@ -1597,6 +1598,7 @@ export type ServiceNowConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const ServiceNowConnectorOperator = /*@__PURE__*/ S.String;
+
 export type ZendeskConnectorOperator =
   | "PROJECTION"
   | "GREATER_THAN"
@@ -1614,6 +1616,7 @@ export type ZendeskConnectorOperator =
   | "NO_OP"
   | (string & {});
 export const ZendeskConnectorOperator = /*@__PURE__*/ S.String;
+
 export interface ConnectorOperator {
   Marketo?: MarketoConnectorOperator;
   S3?: S3ConnectorOperator;
@@ -1632,6 +1635,8 @@ export const ConnectorOperator = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectorOperator",
 }) as any as S.Schema<ConnectorOperator>;
+export type DestinationField = string;
+export type StringTo2048 = string;
 export type SourceFields = string[];
 export const SourceFields = /*@__PURE__*/ S.Array(S.String);
 export type OperatorPropertiesKeys =
@@ -1651,6 +1656,8 @@ export type OperatorPropertiesKeys =
   | "SUBFIELD_CATEGORY_MAP"
   | (string & {});
 export const OperatorPropertiesKeys = /*@__PURE__*/ S.String;
+
+export type Property = string;
 export type TaskPropertiesMap = { [key in OperatorPropertiesKeys]?: string };
 export const TaskPropertiesMap = /*@__PURE__*/ S.Record(
   OperatorPropertiesKeys,
@@ -1666,6 +1673,7 @@ export type TaskType =
   | "Validate"
   | (string & {});
 export const TaskType = /*@__PURE__*/ S.String;
+
 export interface Task {
   ConnectorOperator?: ConnectorOperator;
   DestinationField?: string;
@@ -1686,8 +1694,13 @@ export type Tasks = Task[];
 export const Tasks = /*@__PURE__*/ S.Array(Task);
 export type TriggerType = "Scheduled" | "Event" | "OnDemand" | (string & {});
 export const TriggerType = /*@__PURE__*/ S.String;
+
+export type ScheduleExpression = string;
 export type DataPullMode = "Incremental" | "Complete" | (string & {});
 export const DataPullMode = /*@__PURE__*/ S.String;
+
+export type Timezone = string;
+export type ScheduleOffset = number;
 export interface ScheduledTriggerProperties {
   ScheduleExpression: string;
   DataPullMode?: DataPullMode;
@@ -1781,6 +1794,7 @@ export const IntegrationConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IntegrationConfig",
 }) as any as S.Schema<IntegrationConfig>;
+export type RoleArn = string;
 export interface CreateIntegrationWorkflowRequest {
   DomainName: string;
   WorkflowType: WorkflowType;
@@ -1908,6 +1922,9 @@ export type RecommenderRecipeName =
   | "personalized-ranking"
   | (string & {});
 export const RecommenderRecipeName = /*@__PURE__*/ S.String;
+
+export type EventParametersEventTypeString = string;
+export type EventParametersEventWeightDouble = number;
 export interface EventParameters {
   EventType: string;
   EventValueThreshold?: number;
@@ -1930,6 +1947,8 @@ export interface EventsConfig {
 export const EventsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ EventParametersList: EventParametersList }),
 ).annotate({ identifier: "EventsConfig" }) as any as S.Schema<EventsConfig>;
+export type RecommenderConfigTrainingFrequencyInteger = number;
+export type InferenceConfigMinProvisionedTPSInteger = number;
 export interface InferenceConfig {
   MinProvisionedTPS?: number;
 }
@@ -1997,6 +2016,7 @@ export const CreateRecommenderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRecommenderRequest",
 }) as any as S.Schema<CreateRecommenderRequest>;
+export type Arn = string;
 export interface CreateRecommenderResponse {
   RecommenderArn: string;
   Tags?: { [key: string]: string | undefined };
@@ -2006,6 +2026,8 @@ export const CreateRecommenderResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRecommenderResponse",
 }) as any as S.Schema<CreateRecommenderResponse>;
+export type RecommenderFilterName = string;
+export type RecommenderFilterExpression = string | redacted.Redacted<string>;
 export interface CreateRecommenderFilterRequest {
   DomainName: string;
   RecommenderFilterName: string;
@@ -2049,8 +2071,10 @@ export const CreateRecommenderFilterResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRecommenderFilterResponse>;
 export type ContentType = "STRING" | "NUMBER" | (string & {});
 export const ContentType = /*@__PURE__*/ S.String;
+
 export type FeatureType = "TEXTUAL" | "CATEGORICAL" | (string & {});
 export const FeatureType = /*@__PURE__*/ S.String;
+
 export interface RecommenderSchemaField {
   TargetFieldName: string;
   ContentType?: ContentType;
@@ -2106,6 +2130,7 @@ export const CreateRecommenderSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateRecommenderSchemaRequest>;
 export type RecommenderSchemaStatus = "ACTIVE" | "DELETING" | (string & {});
 export const RecommenderSchemaStatus = /*@__PURE__*/ S.String;
+
 export interface CreateRecommenderSchemaResponse {
   RecommenderSchemaArn: string;
   RecommenderSchemaName: string;
@@ -2126,6 +2151,7 @@ export const CreateRecommenderSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRecommenderSchemaResponse",
 }) as any as S.Schema<CreateRecommenderSchemaResponse>;
+export type SensitiveString1To4000 = string | redacted.Redacted<string>;
 export type StringDimensionType =
   | "INCLUSIVE"
   | "EXCLUSIVE"
@@ -2134,6 +2160,7 @@ export type StringDimensionType =
   | "ENDS_WITH"
   | (string & {});
 export const StringDimensionType = /*@__PURE__*/ S.String;
+
 export type Values = string[];
 export const Values = /*@__PURE__*/ S.Array(S.String);
 export interface ProfileDimension {
@@ -2164,6 +2191,7 @@ export type DateDimensionType =
   | "ON"
   | (string & {});
 export const DateDimensionType = /*@__PURE__*/ S.String;
+
 export type DateValues = string[];
 export const DateValues = /*@__PURE__*/ S.Array(S.String);
 export interface DateDimension {
@@ -2211,6 +2239,7 @@ export type AttributeDimensionType =
   | "EQUAL"
   | (string & {});
 export const AttributeDimensionType = /*@__PURE__*/ S.String;
+
 export interface AttributeDimension {
   DimensionType: AttributeDimensionType;
   Values: string[];
@@ -2232,6 +2261,7 @@ export type ProfileTypeDimensionType =
   | "EXCLUSIVE"
   | (string & {});
 export const ProfileTypeDimensionType = /*@__PURE__*/ S.String;
+
 export type ProfileTypeValues = ProfileType[];
 export const ProfileTypeValues = /*@__PURE__*/ S.Array(ProfileType);
 export interface ProfileTypeDimension {
@@ -2343,6 +2373,7 @@ export type SourceSegmentList = SourceSegment[];
 export const SourceSegmentList = /*@__PURE__*/ S.Array(SourceSegment);
 export type IncludeOptions = "ALL" | "ANY" | "NONE" | (string & {});
 export const IncludeOptions = /*@__PURE__*/ S.String;
+
 export interface Group {
   Dimensions?: Dimension[];
   SourceSegments?: SourceSegment[];
@@ -2369,12 +2400,16 @@ export const SegmentGroup = /*@__PURE__*/ S.suspend(() =>
     Include: S.optional(IncludeOptions),
   }),
 ).annotate({ identifier: "SegmentGroup" }) as any as S.Schema<SegmentGroup>;
+export type SensitiveString1To50000 = string | redacted.Redacted<string>;
 export type SegmentSortDataType = "STRING" | "NUMBER" | "DATE" | (string & {});
 export const SegmentSortDataType = /*@__PURE__*/ S.String;
+
 export type SegmentSortOrder = "ASC" | "DESC" | (string & {});
 export const SegmentSortOrder = /*@__PURE__*/ S.String;
+
 export type SortAttributeType = "PROFILE" | "CALCULATED" | (string & {});
 export const SortAttributeType = /*@__PURE__*/ S.String;
+
 export interface SortAttribute {
   Name: string;
   DataType?: SegmentSortDataType;
@@ -2433,6 +2468,7 @@ export const CreateSegmentDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSegmentDefinitionRequest",
 }) as any as S.Schema<CreateSegmentDefinitionRequest>;
+export type SegmentDefinitionArn = string;
 export interface CreateSegmentDefinitionResponse {
   SegmentDefinitionName: string;
   DisplayName?: string;
@@ -2491,6 +2527,7 @@ export const CreateSegmentEstimateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSegmentEstimateRequest",
 }) as any as S.Schema<CreateSegmentEstimateRequest>;
+export type StatusCode = number;
 export interface CreateSegmentEstimateResponse {
   DomainName?: string;
   EstimateId?: string;
@@ -2507,6 +2544,7 @@ export const CreateSegmentEstimateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSegmentEstimateResponse>;
 export type DataFormat = "CSV" | "JSONL" | "ORC" | (string & {});
 export const DataFormat = /*@__PURE__*/ S.String;
+
 export interface CreateSegmentSnapshotRequest {
   DomainName: string;
   SegmentDefinitionName: string;
@@ -2555,6 +2593,7 @@ export type FieldContentType =
   | "NAME"
   | (string & {});
 export const FieldContentType = /*@__PURE__*/ S.String;
+
 export interface ObjectTypeField {
   Source?: string;
   Target?: string;
@@ -2658,6 +2697,7 @@ export const DeleteDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteDomainRequest",
 }) as any as S.Schema<DeleteDomainRequest>;
+export type Message = string;
 export interface DeleteDomainResponse {
   Message: string;
 }
@@ -3158,6 +3198,7 @@ export type StandardIdentifier =
   | "NEW_ONLY"
   | (string & {});
 export const StandardIdentifier = /*@__PURE__*/ S.String;
+
 export type StandardIdentifierList = StandardIdentifier[];
 export const StandardIdentifierList = /*@__PURE__*/ S.Array(StandardIdentifier);
 export type FieldNameList = string[];
@@ -3502,6 +3543,8 @@ export const GetDomainObjectTypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDomainObjectTypeRequest",
 }) as any as S.Schema<GetDomainObjectTypeRequest>;
+export type SensitiveString1To10000 = string | redacted.Redacted<string>;
+export type DomainObjectTypeFieldName = string;
 export interface DomainObjectTypeField {
   Source: string;
   Target: string;
@@ -3573,11 +3616,13 @@ export const GetEventStreamRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetEventStreamRequest>;
 export type EventStreamState = "RUNNING" | "STOPPED" | (string & {});
 export const EventStreamState = /*@__PURE__*/ S.String;
+
 export type EventStreamDestinationStatus =
   | "HEALTHY"
   | "UNHEALTHY"
   | (string & {});
 export const EventStreamDestinationStatus = /*@__PURE__*/ S.String;
+
 export interface EventStreamDestinationDetails {
   Uri: string;
   Status: EventStreamDestinationStatus;
@@ -3700,6 +3745,8 @@ export type IdentityResolutionJobStatus =
   | "FAILED"
   | (string & {});
 export const IdentityResolutionJobStatus = /*@__PURE__*/ S.String;
+
+export type S3KeyName = string;
 export interface S3ExportingLocation {
   S3BucketName?: string;
   S3KeyName?: string;
@@ -3794,6 +3841,7 @@ export type EventTriggerNames = string[];
 export const EventTriggerNames = /*@__PURE__*/ S.Array(S.String);
 export type Scope = "PROFILE" | "DOMAIN" | (string & {});
 export const Scope = /*@__PURE__*/ S.String;
+
 export interface GetIntegrationResponse {
   DomainName: string;
   Uri: string;
@@ -3826,6 +3874,8 @@ export const GetIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIntegrationResponse",
 }) as any as S.Schema<GetIntegrationResponse>;
+export type Token = string;
+export type MaxSize100 = number;
 export interface GetMatchesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -3849,6 +3899,7 @@ export const GetMatchesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMatchesRequest",
 }) as any as S.Schema<GetMatchesRequest>;
+export type MatchesNumber = number;
 export type ProfileIdList = string[];
 export const ProfileIdList = /*@__PURE__*/ S.Array(S.String);
 export interface MatchItem {
@@ -3999,6 +4050,7 @@ export type ActionType =
   | "DELETED_BY_MERGE"
   | (string & {});
 export const ActionType = /*@__PURE__*/ S.String;
+
 export interface GetProfileHistoryRecordResponse {
   Id: string;
   ObjectTypeName: string;
@@ -4047,6 +4099,8 @@ export const GetProfileObjectTypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetProfileObjectTypeRequest",
 }) as any as S.Schema<GetProfileObjectTypeRequest>;
+export type MinSize0 = number;
+export type MinSize1 = number;
 export interface GetProfileObjectTypeResponse {
   ObjectTypeName: string;
   Description: string | redacted.Redacted<string>;
@@ -4125,11 +4179,16 @@ export const GetProfileObjectTypeTemplateResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetProfileObjectTypeTemplateResponse",
 }) as any as S.Schema<GetProfileObjectTypeTemplateResponse>;
+export type ContextKey = string;
 export type RecommenderContext = { [key: string]: string | undefined };
 export const RecommenderContext = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type RecommenderFilterAttributeName = string;
+export type RecommenderFilterAttributeValue =
+  | string
+  | redacted.Redacted<string>;
 export type RecommenderFilterValues = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -4151,6 +4210,7 @@ export const RecommenderFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecommenderFilter>;
 export type RecommenderFilters = RecommenderFilter[];
 export const RecommenderFilters = /*@__PURE__*/ S.Array(RecommenderFilter);
+export type PercentPromotedItems = number;
 export interface RecommenderPromotionalFilter {
   Name?: string;
   Values?: { [key: string]: string | redacted.Redacted<string> | undefined };
@@ -4173,6 +4233,8 @@ export const RecommenderPromotionalFilters = /*@__PURE__*/ S.Array(
 );
 export type CandidateIdList = string[];
 export const CandidateIdList = /*@__PURE__*/ S.Array(S.String);
+export type MaxSize500 = number;
+export type MetadataColumnName = string;
 export type MetadataColumnsList = string[];
 export const MetadataColumnsList = /*@__PURE__*/ S.Array(S.String);
 export interface MetadataConfig {
@@ -4271,6 +4333,7 @@ export const GetProfileRecommendationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetProfileRecommendationsResponse",
 }) as any as S.Schema<GetProfileRecommendationsResponse>;
+export type GetRecommenderRequestTrainingMetricsCountInteger = number;
 export interface GetRecommenderRequest {
   DomainName: string;
   RecommenderName: string;
@@ -4310,6 +4373,7 @@ export type RecommenderStatus =
   | "DELETING"
   | (string & {});
 export const RecommenderStatus = /*@__PURE__*/ S.String;
+
 export interface RecommenderUpdate {
   RecommenderConfig?: RecommenderConfig;
   Status?: RecommenderStatus;
@@ -4344,6 +4408,7 @@ export type TrainingMetricName =
   | "precision_at_25"
   | (string & {});
 export const TrainingMetricName = /*@__PURE__*/ S.String;
+
 export type Metrics = { [key in TrainingMetricName]?: number };
 export const Metrics = /*@__PURE__*/ S.Record(
   TrainingMetricName,
@@ -4427,6 +4492,7 @@ export type RecommenderFilterStatus =
   | "DELETING"
   | (string & {});
 export const RecommenderFilterStatus = /*@__PURE__*/ S.String;
+
 export interface GetRecommenderFilterResponse {
   RecommenderFilterName: string;
   RecommenderFilterExpression: string | redacted.Redacted<string>;
@@ -4517,6 +4583,7 @@ export const GetSegmentDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSegmentDefinitionRequest>;
 export type SegmentType = "CLASSIC" | "ENHANCED" | (string & {});
 export const SegmentType = /*@__PURE__*/ S.String;
+
 export interface GetSegmentDefinitionResponse {
   SegmentDefinitionName?: string;
   DisplayName?: string;
@@ -4571,6 +4638,7 @@ export const GetSegmentEstimateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSegmentEstimateRequest>;
 export type EstimateStatus = "RUNNING" | "SUCCEEDED" | "FAILED" | (string & {});
 export const EstimateStatus = /*@__PURE__*/ S.String;
+
 export interface GetSegmentEstimateResponse {
   DomainName?: string;
   EstimateId?: string;
@@ -4619,8 +4687,10 @@ export const GetSegmentMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSegmentMembershipRequest",
 }) as any as S.Schema<GetSegmentMembershipRequest>;
+export type ProfileId = string;
 export type QueryResult = "PRESENT" | "ABSENT" | (string & {});
 export const QueryResult = /*@__PURE__*/ S.String;
+
 export interface ProfileQueryResult {
   ProfileId: string;
   QueryResult: QueryResult;
@@ -4637,6 +4707,8 @@ export const ProfileQueryResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ProfileQueryResult>;
 export type Profiles = ProfileQueryResult[];
 export const Profiles = /*@__PURE__*/ S.Array(ProfileQueryResult);
+export type GetSegmentMembershipMessage = string;
+export type GetSegmentMembershipStatus = number;
 export interface ProfileQueryFailures {
   ProfileId: string;
   Message: string;
@@ -4701,6 +4773,7 @@ export type SegmentSnapshotStatus =
   | "FAILED"
   | (string & {});
 export const SegmentSnapshotStatus = /*@__PURE__*/ S.String;
+
 export interface GetSegmentSnapshotResponse {
   SnapshotId: string;
   Status: SegmentSnapshotStatus;
@@ -4728,6 +4801,7 @@ export type MatchType =
   | "ML_BASED_MATCHING"
   | (string & {});
 export const MatchType = /*@__PURE__*/ S.String;
+
 export interface GetSimilarProfilesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -4757,6 +4831,7 @@ export const GetSimilarProfilesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSimilarProfilesRequest",
 }) as any as S.Schema<GetSimilarProfilesRequest>;
+export type RuleLevel = number;
 export interface GetSimilarProfilesResponse {
   ProfileIds?: string[];
   MatchId?: string;
@@ -4810,11 +4885,13 @@ export type UploadJobStatus =
   | "STOPPED"
   | (string & {});
 export const UploadJobStatus = /*@__PURE__*/ S.String;
+
 export type StatusReason =
   | "VALIDATION_FAILURE"
   | "INTERNAL_FAILURE"
   | (string & {});
 export const StatusReason = /*@__PURE__*/ S.String;
+
 export interface ResultsSummary {
   UpdatedRecords?: number;
   CreatedRecords?: number;
@@ -4927,6 +5004,7 @@ export type Status =
   | "CANCELLED"
   | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface AppflowIntegrationWorkflowAttributes {
   SourceConnectorType: SourceConnectorType;
   ConnectorProfileName: string;
@@ -6170,6 +6248,7 @@ export const ListRecommenderFiltersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecommenderFiltersResponse",
 }) as any as S.Schema<ListRecommenderFiltersResponse>;
+export type ListRecommenderRecipesRequestMaxResultsInteger = number;
 export interface ListRecommenderRecipesRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -6217,6 +6296,7 @@ export const ListRecommenderRecipesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRecommenderRecipesResponse",
 }) as any as S.Schema<ListRecommenderRecipesResponse>;
+export type ListRecommendersRequestMaxResultsInteger = number;
 export interface ListRecommendersRequest {
   DomainName: string;
   MaxResults?: number;
@@ -6446,6 +6526,7 @@ export const ListSegmentDefinitionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSegmentDefinitionsResponse",
 }) as any as S.Schema<ListSegmentDefinitionsResponse>;
+export type TagArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -6940,6 +7021,7 @@ export const AdditionalSearchKeysList =
   /*@__PURE__*/ S.Array(AdditionalSearchKey);
 export type LogicalOperator = "AND" | "OR" | (string & {});
 export const LogicalOperator = /*@__PURE__*/ S.String;
+
 export interface SearchProfilesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -7407,6 +7489,9 @@ export const UpdateEventTriggerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateEventTriggerResponse",
 }) as any as S.Schema<UpdateEventTriggerResponse>;
+export type SensitiveString0To1000 = string | redacted.Redacted<string>;
+export type SensitiveString0To255 = string | redacted.Redacted<string>;
+export type String0To255 = string;
 export interface UpdateAddress {
   Address1?: string;
   Address2?: string;
@@ -7553,35 +7638,6 @@ export const UpdateRecommenderResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRecommenderResponse",
 }) as any as S.Schema<UpdateRecommenderResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-
-//# Operations
 export type AddProfileKeyError =
   | AccessDeniedException
   | BadRequestException
@@ -7615,6 +7671,7 @@ export const addProfileKey: API.OperationMethod<
   retry: Retry,
   operationName: "AddProfileKey",
 }));
+
 export type BatchGetCalculatedAttributeForProfileError =
   | AccessDeniedException
   | BadRequestException
@@ -7644,6 +7701,7 @@ export const batchGetCalculatedAttributeForProfile: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetCalculatedAttributeForProfile",
 }));
+
 export type BatchGetProfileError =
   | AccessDeniedException
   | BadRequestException
@@ -7673,6 +7731,7 @@ export const batchGetProfile: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetProfile",
 }));
+
 export type BatchPutProfileObjectError =
   | AccessDeniedException
   | BadRequestException
@@ -7714,6 +7773,7 @@ export const batchPutProfileObject: API.OperationMethod<
   retry: Retry,
   operationName: "BatchPutProfileObject",
 }));
+
 export type CreateCalculatedAttributeDefinitionError =
   | AccessDeniedException
   | BadRequestException
@@ -7748,6 +7808,7 @@ export const createCalculatedAttributeDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCalculatedAttributeDefinition",
 }));
+
 export type CreateDomainError =
   | AccessDeniedException
   | BadRequestException
@@ -7796,6 +7857,7 @@ export const createDomain: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDomain",
 }));
+
 export type CreateDomainLayoutError =
   | AccessDeniedException
   | BadRequestException
@@ -7826,6 +7888,7 @@ export const createDomainLayout: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDomainLayout",
 }));
+
 export type CreateEventStreamError =
   | AccessDeniedException
   | BadRequestException
@@ -7859,6 +7922,7 @@ export const createEventStream: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEventStream",
 }));
+
 export type CreateEventTriggerError =
   | AccessDeniedException
   | BadRequestException
@@ -7892,6 +7956,7 @@ export const createEventTrigger: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEventTrigger",
 }));
+
 export type CreateIntegrationWorkflowError =
   | AccessDeniedException
   | BadRequestException
@@ -7922,6 +7987,7 @@ export const createIntegrationWorkflow: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIntegrationWorkflow",
 }));
+
 export type CreateProfileError =
   | AccessDeniedException
   | BadRequestException
@@ -7954,6 +8020,7 @@ export const createProfile: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProfile",
 }));
+
 export type CreateRecommenderError =
   | AccessDeniedException
   | BadRequestException
@@ -7983,6 +8050,7 @@ export const createRecommender: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRecommender",
 }));
+
 export type CreateRecommenderFilterError =
   | AccessDeniedException
   | BadRequestException
@@ -8012,6 +8080,7 @@ export const createRecommenderFilter: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRecommenderFilter",
 }));
+
 export type CreateRecommenderSchemaError =
   | AccessDeniedException
   | BadRequestException
@@ -8041,6 +8110,7 @@ export const createRecommenderSchema: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRecommenderSchema",
 }));
+
 export type CreateSegmentDefinitionError =
   | AccessDeniedException
   | BadRequestException
@@ -8070,6 +8140,7 @@ export const createSegmentDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSegmentDefinition",
 }));
+
 export type CreateSegmentEstimateError =
   | AccessDeniedException
   | BadRequestException
@@ -8099,6 +8170,7 @@ export const createSegmentEstimate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSegmentEstimate",
 }));
+
 export type CreateSegmentSnapshotError =
   | AccessDeniedException
   | BadRequestException
@@ -8128,6 +8200,7 @@ export const createSegmentSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSegmentSnapshot",
 }));
+
 export type CreateUploadJobError =
   | AccessDeniedException
   | BadRequestException
@@ -8158,6 +8231,7 @@ export const createUploadJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUploadJob",
 }));
+
 export type DeleteCalculatedAttributeDefinitionError =
   | AccessDeniedException
   | BadRequestException
@@ -8190,6 +8264,7 @@ export const deleteCalculatedAttributeDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCalculatedAttributeDefinition",
 }));
+
 export type DeleteDomainError =
   | AccessDeniedException
   | BadRequestException
@@ -8220,6 +8295,7 @@ export const deleteDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDomain",
 }));
+
 export type DeleteDomainLayoutError =
   | AccessDeniedException
   | BadRequestException
@@ -8250,6 +8326,7 @@ export const deleteDomainLayout: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDomainLayout",
 }));
+
 export type DeleteDomainObjectTypeError =
   | AccessDeniedException
   | BadRequestException
@@ -8279,6 +8356,7 @@ export const deleteDomainObjectType: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDomainObjectType",
 }));
+
 export type DeleteEventStreamError =
   | AccessDeniedException
   | BadRequestException
@@ -8308,6 +8386,7 @@ export const deleteEventStream: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEventStream",
 }));
+
 export type DeleteEventTriggerError =
   | AccessDeniedException
   | BadRequestException
@@ -8339,6 +8418,7 @@ export const deleteEventTrigger: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEventTrigger",
 }));
+
 export type DeleteIntegrationError =
   | AccessDeniedException
   | BadRequestException
@@ -8368,6 +8448,7 @@ export const deleteIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIntegration",
 }));
+
 export type DeleteProfileError =
   | AccessDeniedException
   | BadRequestException
@@ -8397,6 +8478,7 @@ export const deleteProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProfile",
 }));
+
 export type DeleteProfileKeyError =
   | AccessDeniedException
   | BadRequestException
@@ -8426,6 +8508,7 @@ export const deleteProfileKey: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProfileKey",
 }));
+
 export type DeleteProfileObjectError =
   | AccessDeniedException
   | BadRequestException
@@ -8455,6 +8538,7 @@ export const deleteProfileObject: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProfileObject",
 }));
+
 export type DeleteProfileObjectTypeError =
   | AccessDeniedException
   | BadRequestException
@@ -8487,6 +8571,7 @@ export const deleteProfileObjectType: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProfileObjectType",
 }));
+
 export type DeleteRecommenderError =
   | AccessDeniedException
   | BadRequestException
@@ -8516,6 +8601,7 @@ export const deleteRecommender: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRecommender",
 }));
+
 export type DeleteRecommenderFilterError =
   | AccessDeniedException
   | BadRequestException
@@ -8545,6 +8631,7 @@ export const deleteRecommenderFilter: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRecommenderFilter",
 }));
+
 export type DeleteRecommenderSchemaError =
   | AccessDeniedException
   | BadRequestException
@@ -8574,6 +8661,7 @@ export const deleteRecommenderSchema: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRecommenderSchema",
 }));
+
 export type DeleteSegmentDefinitionError =
   | AccessDeniedException
   | BadRequestException
@@ -8603,6 +8691,7 @@ export const deleteSegmentDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSegmentDefinition",
 }));
+
 export type DeleteWorkflowError =
   | AccessDeniedException
   | BadRequestException
@@ -8633,6 +8722,7 @@ export const deleteWorkflow: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWorkflow",
 }));
+
 export type DetectProfileObjectTypeError =
   | AccessDeniedException
   | BadRequestException
@@ -8662,6 +8752,7 @@ export const detectProfileObjectType: API.OperationMethod<
   retry: Retry,
   operationName: "DetectProfileObjectType",
 }));
+
 export type GetAutoMergingPreviewError =
   | AccessDeniedException
   | BadRequestException
@@ -8703,6 +8794,7 @@ export const getAutoMergingPreview: API.OperationMethod<
   retry: Retry,
   operationName: "GetAutoMergingPreview",
 }));
+
 export type GetCalculatedAttributeDefinitionError =
   | AccessDeniedException
   | BadRequestException
@@ -8733,6 +8825,7 @@ export const getCalculatedAttributeDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "GetCalculatedAttributeDefinition",
 }));
+
 export type GetCalculatedAttributeForProfileError =
   | AccessDeniedException
   | BadRequestException
@@ -8762,6 +8855,7 @@ export const getCalculatedAttributeForProfile: API.OperationMethod<
   retry: Retry,
   operationName: "GetCalculatedAttributeForProfile",
 }));
+
 export type GetDomainError =
   | AccessDeniedException
   | BadRequestException
@@ -8791,6 +8885,7 @@ export const getDomain: API.OperationMethod<
   retry: Retry,
   operationName: "GetDomain",
 }));
+
 export type GetDomainLayoutError =
   | AccessDeniedException
   | BadRequestException
@@ -8821,6 +8916,7 @@ export const getDomainLayout: API.OperationMethod<
   retry: Retry,
   operationName: "GetDomainLayout",
 }));
+
 export type GetDomainObjectTypeError =
   | AccessDeniedException
   | BadRequestException
@@ -8850,6 +8946,7 @@ export const getDomainObjectType: API.OperationMethod<
   retry: Retry,
   operationName: "GetDomainObjectType",
 }));
+
 export type GetEventStreamError =
   | AccessDeniedException
   | BadRequestException
@@ -8879,6 +8976,7 @@ export const getEventStream: API.OperationMethod<
   retry: Retry,
   operationName: "GetEventStream",
 }));
+
 export type GetEventTriggerError =
   | AccessDeniedException
   | BadRequestException
@@ -8908,6 +9006,7 @@ export const getEventTrigger: API.OperationMethod<
   retry: Retry,
   operationName: "GetEventTrigger",
 }));
+
 export type GetIdentityResolutionJobError =
   | AccessDeniedException
   | BadRequestException
@@ -8940,6 +9039,7 @@ export const getIdentityResolutionJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetIdentityResolutionJob",
 }));
+
 export type GetIntegrationError =
   | AccessDeniedException
   | BadRequestException
@@ -8969,6 +9069,7 @@ export const getIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "GetIntegration",
 }));
+
 export type GetMatchesError =
   | AccessDeniedException
   | BadRequestException
@@ -9035,6 +9136,7 @@ export const getMatches: API.OperationMethod<
   retry: Retry,
   operationName: "GetMatches",
 }));
+
 export type GetObjectTypeAttributeStatisticsError =
   | AccessDeniedException
   | BadRequestException
@@ -9070,6 +9172,7 @@ export const getObjectTypeAttributeStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "GetObjectTypeAttributeStatistics",
 }));
+
 export type GetProfileHistoryRecordError =
   | AccessDeniedException
   | BadRequestException
@@ -9099,6 +9202,7 @@ export const getProfileHistoryRecord: API.OperationMethod<
   retry: Retry,
   operationName: "GetProfileHistoryRecord",
 }));
+
 export type GetProfileObjectTypeError =
   | AccessDeniedException
   | BadRequestException
@@ -9128,6 +9232,7 @@ export const getProfileObjectType: API.OperationMethod<
   retry: Retry,
   operationName: "GetProfileObjectType",
 }));
+
 export type GetProfileObjectTypeTemplateError =
   | AccessDeniedException
   | BadRequestException
@@ -9162,6 +9267,7 @@ export const getProfileObjectTypeTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetProfileObjectTypeTemplate",
 }));
+
 export type GetProfileRecommendationsError =
   | AccessDeniedException
   | BadRequestException
@@ -9191,6 +9297,7 @@ export const getProfileRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "GetProfileRecommendations",
 }));
+
 export type GetRecommenderError =
   | AccessDeniedException
   | BadRequestException
@@ -9220,6 +9327,7 @@ export const getRecommender: API.OperationMethod<
   retry: Retry,
   operationName: "GetRecommender",
 }));
+
 export type GetRecommenderFilterError =
   | AccessDeniedException
   | BadRequestException
@@ -9249,6 +9357,7 @@ export const getRecommenderFilter: API.OperationMethod<
   retry: Retry,
   operationName: "GetRecommenderFilter",
 }));
+
 export type GetRecommenderSchemaError =
   | AccessDeniedException
   | BadRequestException
@@ -9278,6 +9387,7 @@ export const getRecommenderSchema: API.OperationMethod<
   retry: Retry,
   operationName: "GetRecommenderSchema",
 }));
+
 export type GetSegmentDefinitionError =
   | AccessDeniedException
   | BadRequestException
@@ -9307,6 +9417,7 @@ export const getSegmentDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "GetSegmentDefinition",
 }));
+
 export type GetSegmentEstimateError =
   | AccessDeniedException
   | BadRequestException
@@ -9336,6 +9447,7 @@ export const getSegmentEstimate: API.OperationMethod<
   retry: Retry,
   operationName: "GetSegmentEstimate",
 }));
+
 export type GetSegmentMembershipError =
   | AccessDeniedException
   | BadRequestException
@@ -9365,6 +9477,7 @@ export const getSegmentMembership: API.OperationMethod<
   retry: Retry,
   operationName: "GetSegmentMembership",
 }));
+
 export type GetSegmentSnapshotError =
   | AccessDeniedException
   | BadRequestException
@@ -9394,6 +9507,7 @@ export const getSegmentSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "GetSegmentSnapshot",
 }));
+
 export type GetSimilarProfilesError =
   | AccessDeniedException
   | BadRequestException
@@ -9447,6 +9561,7 @@ export const getSimilarProfiles: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetUploadJobError =
   | AccessDeniedException
   | BadRequestException
@@ -9476,6 +9591,7 @@ export const getUploadJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetUploadJob",
 }));
+
 export type GetUploadJobPathError =
   | AccessDeniedException
   | BadRequestException
@@ -9506,6 +9622,7 @@ export const getUploadJobPath: API.OperationMethod<
   retry: Retry,
   operationName: "GetUploadJobPath",
 }));
+
 export type GetWorkflowError =
   | AccessDeniedException
   | BadRequestException
@@ -9535,6 +9652,7 @@ export const getWorkflow: API.OperationMethod<
   retry: Retry,
   operationName: "GetWorkflow",
 }));
+
 export type GetWorkflowStepsError =
   | AccessDeniedException
   | BadRequestException
@@ -9564,6 +9682,7 @@ export const getWorkflowSteps: API.OperationMethod<
   retry: Retry,
   operationName: "GetWorkflowSteps",
 }));
+
 export type ListAccountIntegrationsError =
   | AccessDeniedException
   | BadRequestException
@@ -9593,6 +9712,7 @@ export const listAccountIntegrations: API.OperationMethod<
   retry: Retry,
   operationName: "ListAccountIntegrations",
 }));
+
 export type ListCalculatedAttributeDefinitionsError =
   | AccessDeniedException
   | BadRequestException
@@ -9622,6 +9742,7 @@ export const listCalculatedAttributeDefinitions: API.OperationMethod<
   retry: Retry,
   operationName: "ListCalculatedAttributeDefinitions",
 }));
+
 export type ListCalculatedAttributesForProfileError =
   | AccessDeniedException
   | BadRequestException
@@ -9651,6 +9772,7 @@ export const listCalculatedAttributesForProfile: API.OperationMethod<
   retry: Retry,
   operationName: "ListCalculatedAttributesForProfile",
 }));
+
 export type ListDomainLayoutsError =
   | AccessDeniedException
   | BadRequestException
@@ -9702,6 +9824,7 @@ export const listDomainLayouts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDomainObjectTypesError =
   | AccessDeniedException
   | BadRequestException
@@ -9752,6 +9875,7 @@ export const listDomainObjectTypes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDomainsError =
   | AccessDeniedException
   | BadRequestException
@@ -9781,6 +9905,7 @@ export const listDomains: API.OperationMethod<
   retry: Retry,
   operationName: "ListDomains",
 }));
+
 export type ListEventStreamsError =
   | AccessDeniedException
   | BadRequestException
@@ -9831,6 +9956,7 @@ export const listEventStreams: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEventTriggersError =
   | AccessDeniedException
   | BadRequestException
@@ -9881,6 +10007,7 @@ export const listEventTriggers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListIdentityResolutionJobsError =
   | AccessDeniedException
   | BadRequestException
@@ -9911,6 +10038,7 @@ export const listIdentityResolutionJobs: API.OperationMethod<
   retry: Retry,
   operationName: "ListIdentityResolutionJobs",
 }));
+
 export type ListIntegrationsError =
   | AccessDeniedException
   | BadRequestException
@@ -9940,6 +10068,7 @@ export const listIntegrations: API.OperationMethod<
   retry: Retry,
   operationName: "ListIntegrations",
 }));
+
 export type ListObjectTypeAttributesError =
   | AccessDeniedException
   | BadRequestException
@@ -9990,6 +10119,7 @@ export const listObjectTypeAttributes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListObjectTypeAttributeValuesError =
   | AccessDeniedException
   | BadRequestException
@@ -10019,6 +10149,7 @@ export const listObjectTypeAttributeValues: API.OperationMethod<
   retry: Retry,
   operationName: "ListObjectTypeAttributeValues",
 }));
+
 export type ListProfileAttributeValuesError =
   | AccessDeniedException
   | BadRequestException
@@ -10048,6 +10179,7 @@ export const listProfileAttributeValues: API.OperationMethod<
   retry: Retry,
   operationName: "ListProfileAttributeValues",
 }));
+
 export type ListProfileHistoryRecordsError =
   | AccessDeniedException
   | BadRequestException
@@ -10077,6 +10209,7 @@ export const listProfileHistoryRecords: API.OperationMethod<
   retry: Retry,
   operationName: "ListProfileHistoryRecords",
 }));
+
 export type ListProfileObjectsError =
   | AccessDeniedException
   | BadRequestException
@@ -10106,6 +10239,7 @@ export const listProfileObjects: API.OperationMethod<
   retry: Retry,
   operationName: "ListProfileObjects",
 }));
+
 export type ListProfileObjectTypesError =
   | AccessDeniedException
   | BadRequestException
@@ -10135,6 +10269,7 @@ export const listProfileObjectTypes: API.OperationMethod<
   retry: Retry,
   operationName: "ListProfileObjectTypes",
 }));
+
 export type ListProfileObjectTypeTemplatesError =
   | AccessDeniedException
   | BadRequestException
@@ -10164,6 +10299,7 @@ export const listProfileObjectTypeTemplates: API.OperationMethod<
   retry: Retry,
   operationName: "ListProfileObjectTypeTemplates",
 }));
+
 export type ListRecommenderFiltersError =
   | AccessDeniedException
   | BadRequestException
@@ -10214,6 +10350,7 @@ export const listRecommenderFilters: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRecommenderRecipesError =
   | AccessDeniedException
   | BadRequestException
@@ -10262,6 +10399,7 @@ export const listRecommenderRecipes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRecommendersError =
   | AccessDeniedException
   | BadRequestException
@@ -10312,6 +10450,7 @@ export const listRecommenders: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRecommenderSchemasError =
   | AccessDeniedException
   | BadRequestException
@@ -10362,6 +10501,7 @@ export const listRecommenderSchemas: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRuleBasedMatchesError =
   | AccessDeniedException
   | BadRequestException
@@ -10412,6 +10552,7 @@ export const listRuleBasedMatches: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSegmentDefinitionsError =
   | AccessDeniedException
   | BadRequestException
@@ -10462,6 +10603,7 @@ export const listSegmentDefinitions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | InternalServerException
@@ -10488,6 +10630,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListUploadJobsError =
   | AccessDeniedException
   | BadRequestException
@@ -10538,6 +10681,7 @@ export const listUploadJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListWorkflowsError =
   | AccessDeniedException
   | BadRequestException
@@ -10567,6 +10711,7 @@ export const listWorkflows: API.OperationMethod<
   retry: Retry,
   operationName: "ListWorkflows",
 }));
+
 export type MergeProfilesError =
   | BadRequestException
   | InternalServerException
@@ -10622,6 +10767,7 @@ export const mergeProfiles: API.OperationMethod<
   retry: Retry,
   operationName: "MergeProfiles",
 }));
+
 export type PutDomainObjectTypeError =
   | AccessDeniedException
   | BadRequestException
@@ -10651,6 +10797,7 @@ export const putDomainObjectType: API.OperationMethod<
   retry: Retry,
   operationName: "PutDomainObjectType",
 }));
+
 export type PutIntegrationError =
   | AccessDeniedException
   | BadRequestException
@@ -10687,6 +10834,7 @@ export const putIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "PutIntegration",
 }));
+
 export type PutProfileObjectError =
   | AccessDeniedException
   | BadRequestException
@@ -10728,6 +10876,7 @@ export const putProfileObject: API.OperationMethod<
   retry: Retry,
   operationName: "PutProfileObject",
 }));
+
 export type PutProfileObjectTypeError =
   | AccessDeniedException
   | BadRequestException
@@ -10760,6 +10909,7 @@ export const putProfileObjectType: API.OperationMethod<
   retry: Retry,
   operationName: "PutProfileObjectType",
 }));
+
 export type SearchProfilesError =
   | AccessDeniedException
   | BadRequestException
@@ -10795,6 +10945,7 @@ export const searchProfiles: API.OperationMethod<
   retry: Retry,
   operationName: "SearchProfiles",
 }));
+
 export type StartRecommenderError =
   | AccessDeniedException
   | BadRequestException
@@ -10824,6 +10975,7 @@ export const startRecommender: API.OperationMethod<
   retry: Retry,
   operationName: "StartRecommender",
 }));
+
 export type StartUploadJobError =
   | AccessDeniedException
   | BadRequestException
@@ -10853,6 +11005,7 @@ export const startUploadJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartUploadJob",
 }));
+
 export type StopRecommenderError =
   | AccessDeniedException
   | BadRequestException
@@ -10882,6 +11035,7 @@ export const stopRecommender: API.OperationMethod<
   retry: Retry,
   operationName: "StopRecommender",
 }));
+
 export type StopUploadJobError =
   | AccessDeniedException
   | BadRequestException
@@ -10911,6 +11065,7 @@ export const stopUploadJob: API.OperationMethod<
   retry: Retry,
   operationName: "StopUploadJob",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | InternalServerException
@@ -10950,6 +11105,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | InternalServerException
@@ -10976,6 +11132,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateCalculatedAttributeDefinitionError =
   | AccessDeniedException
   | BadRequestException
@@ -11007,6 +11164,7 @@ export const updateCalculatedAttributeDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCalculatedAttributeDefinition",
 }));
+
 export type UpdateDomainError =
   | AccessDeniedException
   | BadRequestException
@@ -11048,6 +11206,7 @@ export const updateDomain: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDomain",
 }));
+
 export type UpdateDomainLayoutError =
   | AccessDeniedException
   | BadRequestException
@@ -11078,6 +11237,7 @@ export const updateDomainLayout: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDomainLayout",
 }));
+
 export type UpdateEventTriggerError =
   | AccessDeniedException
   | BadRequestException
@@ -11107,6 +11267,7 @@ export const updateEventTrigger: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEventTrigger",
 }));
+
 export type UpdateProfileError =
   | AccessDeniedException
   | BadRequestException
@@ -11141,6 +11302,7 @@ export const updateProfile: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProfile",
 }));
+
 export type UpdateRecommenderError =
   | AccessDeniedException
   | BadRequestException

@@ -72,14 +72,46 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
+  "InternalServiceError",
+  { Message: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.String },
+  T.all(T.HttpError(429), T.Retryable()),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type JobArn = string;
 export type TrajectoryId = string;
-export type FailureReason = string;
-
-//# Schemas
 export type CompletionStatus = "ready" | "failed" | (string & {});
 export const CompletionStatus = /*@__PURE__*/ S.String;
+
 export interface CompleteRolloutRequest {
   JobArn: string;
   TrajectoryId: string;
@@ -210,45 +242,7 @@ export const UpdateRewardResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRewardResponse",
 }) as any as S.Schema<UpdateRewardResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
-  "InternalServiceError",
-  { Message: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.String },
-  T.all(T.HttpError(429), T.Retryable()),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type FailureReason = string;
 export type CompleteRolloutError =
   | AccessDeniedException
   | ConflictException
@@ -284,6 +278,7 @@ export const completeRollout: API.OperationMethod<
   retry: Retry,
   operationName: "CompleteRollout",
 }));
+
 export type SampleError =
   | AccessDeniedException
   | InternalServiceError
@@ -317,6 +312,7 @@ export const sample: API.OperationMethod<
   retry: Retry,
   operationName: "Sample",
 }));
+
 export type SampleWithResponseStreamError =
   | AccessDeniedException
   | InternalServiceError
@@ -350,6 +346,7 @@ export const sampleWithResponseStream: API.OperationMethod<
   retry: Retry,
   operationName: "SampleWithResponseStream",
 }));
+
 export type UpdateRewardError =
   | AccessDeniedException
   | ConflictException

@@ -85,87 +85,62 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class DataCatalogNotFound extends S.TaggedErrorClass<DataCatalogNotFound>()(
+  "DataCatalogNotFound",
+  { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "DataCatalog.*not found" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+) {}
+export class MetadataException extends S.TaggedErrorClass<MetadataException>()(
+  "MetadataException",
+  { Message: S.optional(S.String) },
+) {}
+export class NamedQueryNotFound extends S.TaggedErrorClass<NamedQueryNotFound>()(
+  "NamedQueryNotFound",
+  { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "NamedQuery.*does not exist" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+) {}
+export class SessionAlreadyExistsException extends S.TaggedErrorClass<SessionAlreadyExistsException>()(
+  "SessionAlreadyExistsException",
+  { Message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  {
+    Message: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ThrottleReason).annotate({
+        identifier: "ThrottleReason",
+      }),
+    ),
+  },
+) {}
+export class WorkGroupNotFound extends S.TaggedErrorClass<WorkGroupNotFound>()(
+  "WorkGroupNotFound",
+  { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "WorkGroup.*not found" },
+  }),
+).pipe(C.withNotFoundError) {}
 export type NamedQueryId = string;
-export type NameString = string;
-export type DescriptionString = string;
-export type DatabaseString = string;
-export type QueryString = string;
-export type WorkGroupName = string;
-export type ErrorCode = string;
-export type ErrorMessage = string;
-export type StatementName = string;
-export type QueryExecutionId = string;
-export type KmsKey = string;
-export type ResultOutputLocation = string;
-export type AwsAccountId = string;
-export type Age = number;
-export type CatalogNameString = string;
-export type ErrorCategory = number;
-export type ErrorType = number;
-export type DpuCount = number;
-export type ExecutionParameter = string;
-export type BoxedBoolean = boolean;
-export type CapacityReservationName = string;
-export type TargetDpusInteger = number;
-export type TagKey = string;
-export type TagValue = string;
-export type KeyString = string;
-export type ParametersMapValue = string;
-export type IdempotencyToken = string;
-export type NotebookName = string;
-export type ClientRequestToken = string;
-export type NotebookId = string;
-export type SessionId = string;
-export type AuthToken = string;
-export type AmazonResourceName = string;
-export type BytesScannedCutoffValue = number;
-export type RoleArn = string;
-export type LogGroupName = string;
-export type LogStreamNamePrefix = string;
-export type LogTypeKey = string;
-export type LogTypeValue = string;
-export type S3OutputLocation = string;
-export type CoordinatorDpuSize = number;
-export type MaxConcurrentDpus = number;
-export type DefaultExecutorDpuSize = number;
-export type IdentityCenterInstanceArn = string;
-export type WorkGroupDescriptionString = string;
-export type Payload = string;
-export type CalculationExecutionId = string;
-export type S3Uri = string;
-export type CalculationResultType = string;
-export type CodeBlock = string;
-export type AllocatedDpusInteger = number;
-export type Token = string;
-export type MaxQueryResults = number;
-export type DatumString = string;
-export type SessionIdleTimeoutInMinutes = number;
-export type TableTypeString = string;
-export type TypeString = string;
-export type CommentString = string;
-export type IdentityCenterApplicationArn = string;
-export type MaxApplicationDPUSizesCount = number;
-export type MaxCalculationsCount = number;
-export type SessionManagerToken = string;
-export type MaxCapacityReservationsCount = number;
-export type MaxDatabasesCount = number;
-export type MaxDataCatalogsCount = number;
-export type MaxEngineVersionsCount = number;
-export type MaxListExecutorsCount = number;
-export type ExecutorId = string;
-export type MaxNamedQueriesCount = number;
-export type MaxNotebooksCount = number;
-export type MaxSessionsCount = number;
-export type MaxPreparedStatementsCount = number;
-export type MaxQueryExecutionsCount = number;
-export type ExpressionString = string;
-export type MaxTableMetadataCount = number;
-export type MaxTagsCount = number;
-export type MaxWorkGroupsCount = number;
-export type NamedQueryDescriptionString = string;
-
-//# Schemas
 export type NamedQueryIdList = string[];
 export const NamedQueryIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetNamedQueryInput {
@@ -178,6 +153,11 @@ export const BatchGetNamedQueryInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetNamedQueryInput",
 }) as any as S.Schema<BatchGetNamedQueryInput>;
+export type NameString = string;
+export type DescriptionString = string;
+export type DatabaseString = string;
+export type QueryString = string;
+export type WorkGroupName = string;
 export interface NamedQuery {
   Name: string;
   Description?: string;
@@ -198,6 +178,8 @@ export const NamedQuery = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "NamedQuery" }) as any as S.Schema<NamedQuery>;
 export type NamedQueryList = NamedQuery[];
 export const NamedQueryList = /*@__PURE__*/ S.Array(NamedQuery);
+export type ErrorCode = string;
+export type ErrorMessage = string;
 export interface UnprocessedNamedQueryId {
   NamedQueryId?: string;
   ErrorCode?: string;
@@ -228,6 +210,7 @@ export const BatchGetNamedQueryOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetNamedQueryOutput",
 }) as any as S.Schema<BatchGetNamedQueryOutput>;
+export type StatementName = string;
 export type PreparedStatementNameList = string[];
 export const PreparedStatementNameList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetPreparedStatementInput {
@@ -300,6 +283,7 @@ export const BatchGetPreparedStatementOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetPreparedStatementOutput",
 }) as any as S.Schema<BatchGetPreparedStatementOutput>;
+export type QueryExecutionId = string;
 export type QueryExecutionIdList = string[];
 export const QueryExecutionIdList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchGetQueryExecutionInput {
@@ -314,6 +298,8 @@ export const BatchGetQueryExecutionInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetQueryExecutionInput>;
 export type StatementType = "DDL" | "DML" | "UTILITY" | (string & {});
 export const StatementType = /*@__PURE__*/ S.String;
+
+export type KmsKey = string;
 export interface ManagedQueryResultsEncryptionConfiguration {
   KmsKey: string;
 }
@@ -335,8 +321,10 @@ export const ManagedQueryResultsConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ManagedQueryResultsConfiguration",
 }) as any as S.Schema<ManagedQueryResultsConfiguration>;
+export type ResultOutputLocation = string;
 export type EncryptionOption = "SSE_S3" | "SSE_KMS" | "CSE_KMS" | (string & {});
 export const EncryptionOption = /*@__PURE__*/ S.String;
+
 export interface EncryptionConfiguration {
   EncryptionOption: EncryptionOption;
   KmsKey?: string;
@@ -349,8 +337,10 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptionConfiguration",
 }) as any as S.Schema<EncryptionConfiguration>;
+export type AwsAccountId = string;
 export type S3AclOption = "BUCKET_OWNER_FULL_CONTROL" | (string & {});
 export const S3AclOption = /*@__PURE__*/ S.String;
+
 export interface AclConfiguration {
   S3AclOption: S3AclOption;
 }
@@ -375,6 +365,7 @@ export const ResultConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResultConfiguration",
 }) as any as S.Schema<ResultConfiguration>;
+export type Age = number;
 export interface ResultReuseByAgeConfiguration {
   Enabled: boolean;
   MaxAgeInMinutes?: number;
@@ -394,6 +385,7 @@ export const ResultReuseConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResultReuseConfiguration",
 }) as any as S.Schema<ResultReuseConfiguration>;
+export type CatalogNameString = string;
 export interface QueryExecutionContext {
   Database?: string;
   Catalog?: string;
@@ -411,6 +403,9 @@ export type QueryExecutionState =
   | "CANCELLED"
   | (string & {});
 export const QueryExecutionState = /*@__PURE__*/ S.String;
+
+export type ErrorCategory = number;
+export type ErrorType = number;
 export interface AthenaError {
   ErrorCategory?: number;
   ErrorType?: number;
@@ -455,6 +450,7 @@ export const ResultReuseInformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResultReuseInformation",
 }) as any as S.Schema<ResultReuseInformation>;
+export type DpuCount = number;
 export interface QueryExecutionStatistics {
   EngineExecutionTimeInMillis?: number;
   DataScannedInBytes?: number;
@@ -493,10 +489,13 @@ export const EngineVersion = /*@__PURE__*/ S.suspend(() =>
     EffectiveEngineVersion: S.optional(S.String),
   }),
 ).annotate({ identifier: "EngineVersion" }) as any as S.Schema<EngineVersion>;
+export type ExecutionParameter = string;
 export type ExecutionParameters = string[];
 export const ExecutionParameters = /*@__PURE__*/ S.Array(S.String);
+export type BoxedBoolean = boolean;
 export type AuthenticationType = "DIRECTORY_IDENTITY" | (string & {});
 export const AuthenticationType = /*@__PURE__*/ S.String;
+
 export interface QueryResultsS3AccessGrantsConfiguration {
   EnableS3AccessGrants: boolean;
   CreateUserLevelPrefix?: boolean;
@@ -582,6 +581,7 @@ export const BatchGetQueryExecutionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetQueryExecutionOutput",
 }) as any as S.Schema<BatchGetQueryExecutionOutput>;
+export type CapacityReservationName = string;
 export interface CancelCapacityReservationInput {
   Name: string;
 }
@@ -598,6 +598,9 @@ export const CancelCapacityReservationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelCapacityReservationOutput",
 }) as any as S.Schema<CancelCapacityReservationOutput>;
+export type TargetDpusInteger = number;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -636,6 +639,9 @@ export type DataCatalogType =
   | "FEDERATED"
   | (string & {});
 export const DataCatalogType = /*@__PURE__*/ S.String;
+
+export type KeyString = string;
+export type ParametersMapValue = string;
 export type ParametersMap = { [key: string]: string | undefined };
 export const ParametersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -673,6 +679,7 @@ export type DataCatalogStatus =
   | "DELETE_FAILED"
   | (string & {});
 export const DataCatalogStatus = /*@__PURE__*/ S.String;
+
 export type ConnectionType =
   | "DYNAMODB"
   | "MYSQL"
@@ -696,6 +703,7 @@ export type ConnectionType =
   | "DB2AS400"
   | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
+
 export interface DataCatalog {
   Name: string;
   Description?: string;
@@ -724,6 +732,7 @@ export const CreateDataCatalogOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDataCatalogOutput",
 }) as any as S.Schema<CreateDataCatalogOutput>;
+export type IdempotencyToken = string;
 export interface CreateNamedQueryInput {
   Name: string;
   Description?: string;
@@ -754,6 +763,8 @@ export const CreateNamedQueryOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNamedQueryOutput",
 }) as any as S.Schema<CreateNamedQueryOutput>;
+export type NotebookName = string;
+export type ClientRequestToken = string;
 export interface CreateNotebookInput {
   WorkGroup: string;
   Name: string;
@@ -770,6 +781,7 @@ export const CreateNotebookInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNotebookInput",
 }) as any as S.Schema<CreateNotebookInput>;
+export type NotebookId = string;
 export interface CreateNotebookOutput {
   NotebookId?: string;
 }
@@ -778,8 +790,6 @@ export const CreateNotebookOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNotebookOutput",
 }) as any as S.Schema<CreateNotebookOutput>;
-export type ThrottleReason = "CONCURRENT_QUERY_LIMIT_EXCEEDED" | (string & {});
-export const ThrottleReason = /*@__PURE__*/ S.String;
 export interface CreatePreparedStatementInput {
   StatementName: string;
   WorkGroup: string;
@@ -804,6 +814,7 @@ export const CreatePreparedStatementOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePreparedStatementOutput",
 }) as any as S.Schema<CreatePreparedStatementOutput>;
+export type SessionId = string;
 export interface CreatePresignedNotebookUrlRequest {
   SessionId: string;
 }
@@ -814,6 +825,7 @@ export const CreatePresignedNotebookUrlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePresignedNotebookUrlRequest",
 }) as any as S.Schema<CreatePresignedNotebookUrlRequest>;
+export type AuthToken = string;
 export interface CreatePresignedNotebookUrlResponse {
   NotebookUrl: string;
   AuthToken: string;
@@ -828,6 +840,12 @@ export const CreatePresignedNotebookUrlResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePresignedNotebookUrlResponse",
 }) as any as S.Schema<CreatePresignedNotebookUrlResponse>;
+export type BytesScannedCutoffValue = number;
+export type RoleArn = string;
+export type LogGroupName = string;
+export type LogStreamNamePrefix = string;
+export type LogTypeKey = string;
+export type LogTypeValue = string;
 export type LogTypeValuesList = string[];
 export const LogTypeValuesList = /*@__PURE__*/ S.Array(S.String);
 export type LogTypesMap = { [key: string]: string[] | undefined };
@@ -860,6 +878,7 @@ export const ManagedLoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ManagedLoggingConfiguration",
 }) as any as S.Schema<ManagedLoggingConfiguration>;
+export type S3OutputLocation = string;
 export interface S3LoggingConfiguration {
   Enabled: boolean;
   KmsKey?: string;
@@ -888,6 +907,9 @@ export const MonitoringConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MonitoringConfiguration",
 }) as any as S.Schema<MonitoringConfiguration>;
+export type CoordinatorDpuSize = number;
+export type MaxConcurrentDpus = number;
+export type DefaultExecutorDpuSize = number;
 export interface Classification {
   Name?: string;
   Properties?: { [key: string]: string | undefined };
@@ -928,6 +950,7 @@ export const CustomerContentEncryptionConfiguration = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CustomerContentEncryptionConfiguration",
 }) as any as S.Schema<CustomerContentEncryptionConfiguration>;
+export type IdentityCenterInstanceArn = string;
 export interface IdentityCenterConfiguration {
   EnableIdentityCenter?: boolean;
   IdentityCenterInstanceArn?: string;
@@ -984,6 +1007,7 @@ export const WorkGroupConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkGroupConfiguration",
 }) as any as S.Schema<WorkGroupConfiguration>;
+export type WorkGroupDescriptionString = string;
 export interface CreateWorkGroupInput {
   Name: string;
   Configuration?: WorkGroupConfiguration;
@@ -1124,6 +1148,7 @@ export const ExportNotebookInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExportNotebookInput>;
 export type NotebookType = "IPYNB" | (string & {});
 export const NotebookType = /*@__PURE__*/ S.String;
+
 export interface NotebookMetadata {
   NotebookId?: string;
   Name?: string;
@@ -1146,6 +1171,7 @@ export const NotebookMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotebookMetadata",
 }) as any as S.Schema<NotebookMetadata>;
+export type Payload = string;
 export interface ExportNotebookOutput {
   NotebookMetadata?: NotebookMetadata;
   Payload?: string;
@@ -1158,6 +1184,7 @@ export const ExportNotebookOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExportNotebookOutput",
 }) as any as S.Schema<ExportNotebookOutput>;
+export type CalculationExecutionId = string;
 export interface GetCalculationExecutionRequest {
   CalculationExecutionId: string;
 }
@@ -1168,6 +1195,7 @@ export const GetCalculationExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCalculationExecutionRequest",
 }) as any as S.Schema<GetCalculationExecutionRequest>;
+export type S3Uri = string;
 export type CalculationExecutionState =
   | "CREATING"
   | "CREATED"
@@ -1179,6 +1207,7 @@ export type CalculationExecutionState =
   | "FAILED"
   | (string & {});
 export const CalculationExecutionState = /*@__PURE__*/ S.String;
+
 export interface CalculationStatus {
   SubmissionDateTime?: Date;
   CompletionDateTime?: Date;
@@ -1211,6 +1240,7 @@ export const CalculationStatistics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CalculationStatistics",
 }) as any as S.Schema<CalculationStatistics>;
+export type CalculationResultType = string;
 export interface CalculationResult {
   StdOutS3Uri?: string;
   StdErrorS3Uri?: string;
@@ -1259,6 +1289,7 @@ export const GetCalculationExecutionCodeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCalculationExecutionCodeRequest",
 }) as any as S.Schema<GetCalculationExecutionCodeRequest>;
+export type CodeBlock = string;
 export interface GetCalculationExecutionCodeResponse {
   CodeBlock?: string;
 }
@@ -1357,12 +1388,15 @@ export type CapacityReservationStatus =
   | "UPDATE_PENDING"
   | (string & {});
 export const CapacityReservationStatus = /*@__PURE__*/ S.String;
+
+export type AllocatedDpusInteger = number;
 export type CapacityAllocationStatus =
   | "PENDING"
   | "SUCCEEDED"
   | "FAILED"
   | (string & {});
 export const CapacityAllocationStatus = /*@__PURE__*/ S.String;
+
 export interface CapacityAllocation {
   Status: CapacityAllocationStatus;
   StatusMessage?: string;
@@ -1541,8 +1575,11 @@ export const GetQueryExecutionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetQueryExecutionOutput",
 }) as any as S.Schema<GetQueryExecutionOutput>;
+export type Token = string;
+export type MaxQueryResults = number;
 export type QueryResultType = "DATA_MANIFEST" | "DATA_ROWS" | (string & {});
 export const QueryResultType = /*@__PURE__*/ S.String;
+
 export interface GetQueryResultsInput {
   QueryExecutionId: string;
   NextToken?: string;
@@ -1561,6 +1598,7 @@ export const GetQueryResultsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetQueryResultsInput",
 }) as any as S.Schema<GetQueryResultsInput>;
+export type DatumString = string;
 export interface Datum {
   VarCharValue?: string;
 }
@@ -1583,6 +1621,7 @@ export type ColumnNullable =
   | "UNKNOWN"
   | (string & {});
 export const ColumnNullable = /*@__PURE__*/ S.String;
+
 export interface ColumnInfo {
   CatalogName?: string;
   SchemaName?: string;
@@ -1775,6 +1814,7 @@ export const GetQueryRuntimeStatisticsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetQueryRuntimeStatisticsOutput",
 }) as any as S.Schema<GetQueryRuntimeStatisticsOutput>;
+export type AmazonResourceName = string;
 export interface GetResourceDashboardRequest {
   ResourceARN: string;
 }
@@ -1803,6 +1843,7 @@ export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSessionRequest",
 }) as any as S.Schema<GetSessionRequest>;
+export type SessionIdleTimeoutInMinutes = number;
 export interface SessionConfiguration {
   ExecutionRole?: string;
   WorkingDirectory?: string;
@@ -1832,6 +1873,7 @@ export type SessionState =
   | "FAILED"
   | (string & {});
 export const SessionState = /*@__PURE__*/ S.String;
+
 export interface SessionStatus {
   StartDateTime?: Date;
   LastModifiedDateTime?: Date;
@@ -1954,6 +1996,9 @@ export const GetTableMetadataInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTableMetadataInput",
 }) as any as S.Schema<GetTableMetadataInput>;
+export type TableTypeString = string;
+export type TypeString = string;
+export type CommentString = string;
 export interface Column {
   Name: string;
   Type?: string;
@@ -2008,6 +2053,8 @@ export const GetWorkGroupInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetWorkGroupInput>;
 export type WorkGroupState = "ENABLED" | "DISABLED" | (string & {});
 export const WorkGroupState = /*@__PURE__*/ S.String;
+
+export type IdentityCenterApplicationArn = string;
 export interface WorkGroup {
   Name: string;
   State?: WorkGroupState;
@@ -2064,6 +2111,7 @@ export const ImportNotebookOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportNotebookOutput",
 }) as any as S.Schema<ImportNotebookOutput>;
+export type MaxApplicationDPUSizesCount = number;
 export interface ListApplicationDPUSizesInput {
   MaxResults?: number;
   NextToken?: string;
@@ -2107,6 +2155,8 @@ export const ListApplicationDPUSizesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListApplicationDPUSizesOutput",
 }) as any as S.Schema<ListApplicationDPUSizesOutput>;
+export type MaxCalculationsCount = number;
+export type SessionManagerToken = string;
 export interface ListCalculationExecutionsRequest {
   SessionId: string;
   StateFilter?: CalculationExecutionState;
@@ -2153,6 +2203,7 @@ export const ListCalculationExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCalculationExecutionsResponse",
 }) as any as S.Schema<ListCalculationExecutionsResponse>;
+export type MaxCapacityReservationsCount = number;
 export interface ListCapacityReservationsInput {
   NextToken?: string;
   MaxResults?: number;
@@ -2182,6 +2233,7 @@ export const ListCapacityReservationsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCapacityReservationsOutput",
 }) as any as S.Schema<ListCapacityReservationsOutput>;
+export type MaxDatabasesCount = number;
 export interface ListDatabasesInput {
   CatalogName: string;
   NextToken?: string;
@@ -2214,6 +2266,7 @@ export const ListDatabasesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDatabasesOutput",
 }) as any as S.Schema<ListDatabasesOutput>;
+export type MaxDataCatalogsCount = number;
 export interface ListDataCatalogsInput {
   NextToken?: string;
   MaxResults?: number;
@@ -2262,6 +2315,7 @@ export const ListDataCatalogsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDataCatalogsOutput",
 }) as any as S.Schema<ListDataCatalogsOutput>;
+export type MaxEngineVersionsCount = number;
 export interface ListEngineVersionsInput {
   NextToken?: string;
   MaxResults?: number;
@@ -2299,6 +2353,8 @@ export type ExecutorState =
   | "FAILED"
   | (string & {});
 export const ExecutorState = /*@__PURE__*/ S.String;
+
+export type MaxListExecutorsCount = number;
 export interface ListExecutorsRequest {
   SessionId: string;
   ExecutorStateFilter?: ExecutorState;
@@ -2317,8 +2373,10 @@ export const ListExecutorsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListExecutorsRequest",
 }) as any as S.Schema<ListExecutorsRequest>;
+export type ExecutorId = string;
 export type ExecutorType = "COORDINATOR" | "GATEWAY" | "WORKER" | (string & {});
 export const ExecutorType = /*@__PURE__*/ S.String;
+
 export interface ExecutorsSummary {
   ExecutorId: string;
   ExecutorType?: ExecutorType;
@@ -2355,6 +2413,7 @@ export const ListExecutorsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListExecutorsResponse",
 }) as any as S.Schema<ListExecutorsResponse>;
+export type MaxNamedQueriesCount = number;
 export interface ListNamedQueriesInput {
   NextToken?: string;
   MaxResults?: number;
@@ -2391,6 +2450,7 @@ export const FilterDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FilterDefinition",
 }) as any as S.Schema<FilterDefinition>;
+export type MaxNotebooksCount = number;
 export interface ListNotebookMetadataInput {
   Filters?: FilterDefinition;
   NextToken?: string;
@@ -2423,6 +2483,7 @@ export const ListNotebookMetadataOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListNotebookMetadataOutput",
 }) as any as S.Schema<ListNotebookMetadataOutput>;
+export type MaxSessionsCount = number;
 export interface ListNotebookSessionsRequest {
   NotebookId: string;
   MaxResults?: number;
@@ -2467,6 +2528,7 @@ export const ListNotebookSessionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListNotebookSessionsResponse",
 }) as any as S.Schema<ListNotebookSessionsResponse>;
+export type MaxPreparedStatementsCount = number;
 export interface ListPreparedStatementsInput {
   WorkGroup: string;
   NextToken?: string;
@@ -2513,6 +2575,7 @@ export const ListPreparedStatementsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPreparedStatementsOutput",
 }) as any as S.Schema<ListPreparedStatementsOutput>;
+export type MaxQueryExecutionsCount = number;
 export interface ListQueryExecutionsInput {
   NextToken?: string;
   MaxResults?: number;
@@ -2589,6 +2652,8 @@ export const ListSessionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSessionsResponse",
 }) as any as S.Schema<ListSessionsResponse>;
+export type ExpressionString = string;
+export type MaxTableMetadataCount = number;
 export interface ListTableMetadataInput {
   CatalogName: string;
   DatabaseName: string;
@@ -2625,6 +2690,7 @@ export const ListTableMetadataOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTableMetadataOutput",
 }) as any as S.Schema<ListTableMetadataOutput>;
+export type MaxTagsCount = number;
 export interface ListTagsForResourceInput {
   ResourceARN: string;
   NextToken?: string;
@@ -2650,6 +2716,7 @@ export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceOutput",
 }) as any as S.Schema<ListTagsForResourceOutput>;
+export type MaxWorkGroupsCount = number;
 export interface ListWorkGroupsInput {
   NextToken?: string;
   MaxResults?: number;
@@ -2964,6 +3031,7 @@ export const UpdateDataCatalogOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateDataCatalogOutput",
 }) as any as S.Schema<UpdateDataCatalogOutput>;
+export type NamedQueryDescriptionString = string;
 export interface UpdateNamedQueryInput {
   NamedQueryId: string;
   Name: string;
@@ -3171,58 +3239,9 @@ export const UpdateWorkGroupOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateWorkGroupOutput",
 }) as any as S.Schema<UpdateWorkGroupOutput>;
+export type ThrottleReason = "CONCURRENT_QUERY_LIMIT_EXCEEDED" | (string & {});
+export const ThrottleReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String), Reason: S.optional(ThrottleReason) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
-) {}
-export class DataCatalogNotFound extends S.TaggedErrorClass<DataCatalogNotFound>()(
-  "DataCatalogNotFound",
-  { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "DataCatalog.*not found" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class NamedQueryNotFound extends S.TaggedErrorClass<NamedQueryNotFound>()(
-  "NamedQueryNotFound",
-  { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "NamedQuery.*does not exist" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class WorkGroupNotFound extends S.TaggedErrorClass<WorkGroupNotFound>()(
-  "WorkGroupNotFound",
-  { AthenaErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "WorkGroup.*not found" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class MetadataException extends S.TaggedErrorClass<MetadataException>()(
-  "MetadataException",
-  { Message: S.optional(S.String) },
-) {}
-export class SessionAlreadyExistsException extends S.TaggedErrorClass<SessionAlreadyExistsException>()(
-  "SessionAlreadyExistsException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-
-//# Operations
 export type BatchGetNamedQueryError =
   | InternalServerException
   | InvalidRequestException
@@ -3251,6 +3270,7 @@ export const batchGetNamedQuery: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetNamedQuery",
 }));
+
 export type BatchGetPreparedStatementError =
   | InternalServerException
   | InvalidRequestException
@@ -3275,6 +3295,7 @@ export const batchGetPreparedStatement: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetPreparedStatement",
 }));
+
 export type BatchGetQueryExecutionError =
   | InternalServerException
   | InvalidRequestException
@@ -3300,6 +3321,7 @@ export const batchGetQueryExecution: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetQueryExecution",
 }));
+
 export type CancelCapacityReservationError =
   | InternalServerException
   | InvalidRequestException
@@ -3323,6 +3345,7 @@ export const cancelCapacityReservation: API.OperationMethod<
   retry: Retry,
   operationName: "CancelCapacityReservation",
 }));
+
 export type CreateCapacityReservationError =
   | InternalServerException
   | InvalidRequestException
@@ -3344,6 +3367,7 @@ export const createCapacityReservation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCapacityReservation",
 }));
+
 export type CreateDataCatalogError =
   | InternalServerException
   | InvalidRequestException
@@ -3380,6 +3404,7 @@ export const createDataCatalog: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataCatalog",
 }));
+
 export type CreateNamedQueryError =
   | InternalServerException
   | InvalidRequestException
@@ -3401,6 +3426,7 @@ export const createNamedQuery: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNamedQuery",
 }));
+
 export type CreateNotebookError =
   | InternalServerException
   | InvalidRequestException
@@ -3428,6 +3454,7 @@ export const createNotebook: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNotebook",
 }));
+
 export type CreatePreparedStatementError =
   | InternalServerException
   | InvalidRequestException
@@ -3448,6 +3475,7 @@ export const createPreparedStatement: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePreparedStatement",
 }));
+
 export type CreatePresignedNotebookUrlError =
   | InternalServerException
   | InvalidRequestException
@@ -3477,6 +3505,7 @@ export const createPresignedNotebookUrl: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePresignedNotebookUrl",
 }));
+
 export type CreateWorkGroupError =
   | InternalServerException
   | InvalidRequestException
@@ -3498,6 +3527,7 @@ export const createWorkGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWorkGroup",
 }));
+
 export type DeleteCapacityReservationError =
   | InternalServerException
   | InvalidRequestException
@@ -3522,6 +3552,7 @@ export const deleteCapacityReservation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCapacityReservation",
 }));
+
 export type DeleteDataCatalogError =
   | InternalServerException
   | InvalidRequestException
@@ -3547,6 +3578,7 @@ export const deleteDataCatalog: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataCatalog",
 }));
+
 export type DeleteNamedQueryError =
   | InternalServerException
   | InvalidRequestException
@@ -3573,6 +3605,7 @@ export const deleteNamedQuery: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNamedQuery",
 }));
+
 export type DeleteNotebookError =
   | InternalServerException
   | InvalidRequestException
@@ -3598,6 +3631,7 @@ export const deleteNotebook: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNotebook",
 }));
+
 export type DeletePreparedStatementError =
   | InternalServerException
   | InvalidRequestException
@@ -3626,6 +3660,7 @@ export const deletePreparedStatement: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePreparedStatement",
 }));
+
 export type DeleteWorkGroupError =
   | InternalServerException
   | InvalidRequestException
@@ -3647,6 +3682,7 @@ export const deleteWorkGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWorkGroup",
 }));
+
 export type ExportNotebookError =
   | InternalServerException
   | InvalidRequestException
@@ -3672,6 +3708,7 @@ export const exportNotebook: API.OperationMethod<
   retry: Retry,
   operationName: "ExportNotebook",
 }));
+
 export type GetCalculationExecutionError =
   | InternalServerException
   | InvalidRequestException
@@ -3697,6 +3734,7 @@ export const getCalculationExecution: API.OperationMethod<
   retry: Retry,
   operationName: "GetCalculationExecution",
 }));
+
 export type GetCalculationExecutionCodeError =
   | InternalServerException
   | InvalidRequestException
@@ -3722,6 +3760,7 @@ export const getCalculationExecutionCode: API.OperationMethod<
   retry: Retry,
   operationName: "GetCalculationExecutionCode",
 }));
+
 export type GetCalculationExecutionStatusError =
   | InternalServerException
   | InvalidRequestException
@@ -3747,6 +3786,7 @@ export const getCalculationExecutionStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetCalculationExecutionStatus",
 }));
+
 export type GetCapacityAssignmentConfigurationError =
   | InternalServerException
   | InvalidRequestException
@@ -3768,6 +3808,7 @@ export const getCapacityAssignmentConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetCapacityAssignmentConfiguration",
 }));
+
 export type GetCapacityReservationError =
   | InternalServerException
   | InvalidRequestException
@@ -3788,6 +3829,7 @@ export const getCapacityReservation: API.OperationMethod<
   retry: Retry,
   operationName: "GetCapacityReservation",
 }));
+
 export type GetDatabaseError =
   | InternalServerException
   | InvalidRequestException
@@ -3809,6 +3851,7 @@ export const getDatabase: API.OperationMethod<
   retry: Retry,
   operationName: "GetDatabase",
 }));
+
 export type GetDataCatalogError =
   | InternalServerException
   | InvalidRequestException
@@ -3834,6 +3877,7 @@ export const getDataCatalog: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataCatalog",
 }));
+
 export type GetNamedQueryError =
   | InternalServerException
   | InvalidRequestException
@@ -3860,6 +3904,7 @@ export const getNamedQuery: API.OperationMethod<
   retry: Retry,
   operationName: "GetNamedQuery",
 }));
+
 export type GetNotebookMetadataError =
   | InternalServerException
   | InvalidRequestException
@@ -3885,6 +3930,7 @@ export const getNotebookMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "GetNotebookMetadata",
 }));
+
 export type GetPreparedStatementError =
   | InternalServerException
   | InvalidRequestException
@@ -3913,6 +3959,7 @@ export const getPreparedStatement: API.OperationMethod<
   retry: Retry,
   operationName: "GetPreparedStatement",
 }));
+
 export type GetQueryExecutionError =
   | InternalServerException
   | InvalidRequestException
@@ -3935,6 +3982,7 @@ export const getQueryExecution: API.OperationMethod<
   retry: Retry,
   operationName: "GetQueryExecution",
 }));
+
 export type GetQueryResultsError =
   | InternalServerException
   | InvalidRequestException
@@ -3995,6 +4043,7 @@ export const getQueryResults: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetQueryRuntimeStatisticsError =
   | InternalServerException
   | InvalidRequestException
@@ -4021,6 +4070,7 @@ export const getQueryRuntimeStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "GetQueryRuntimeStatistics",
 }));
+
 export type GetResourceDashboardError =
   | InternalServerException
   | InvalidRequestException
@@ -4046,6 +4096,7 @@ export const getResourceDashboard: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourceDashboard",
 }));
+
 export type GetSessionError =
   | InternalServerException
   | InvalidRequestException
@@ -4072,6 +4123,7 @@ export const getSession: API.OperationMethod<
   retry: Retry,
   operationName: "GetSession",
 }));
+
 export type GetSessionEndpointError =
   | InternalServerException
   | InvalidRequestException
@@ -4097,6 +4149,7 @@ export const getSessionEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "GetSessionEndpoint",
 }));
+
 export type GetSessionStatusError =
   | InternalServerException
   | InvalidRequestException
@@ -4122,6 +4175,7 @@ export const getSessionStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetSessionStatus",
 }));
+
 export type GetTableMetadataError =
   | InternalServerException
   | InvalidRequestException
@@ -4143,6 +4197,7 @@ export const getTableMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "GetTableMetadata",
 }));
+
 export type GetWorkGroupError =
   | InternalServerException
   | InvalidRequestException
@@ -4164,6 +4219,7 @@ export const getWorkGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetWorkGroup",
 }));
+
 export type ImportNotebookError =
   | InternalServerException
   | InvalidRequestException
@@ -4194,6 +4250,7 @@ export const importNotebook: API.OperationMethod<
   retry: Retry,
   operationName: "ImportNotebook",
 }));
+
 export type ListApplicationDPUSizesError =
   | InternalServerException
   | InvalidRequestException
@@ -4240,6 +4297,7 @@ export const listApplicationDPUSizes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCalculationExecutionsError =
   | InternalServerException
   | InvalidRequestException
@@ -4286,6 +4344,7 @@ export const listCalculationExecutions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCapacityReservationsError =
   | InternalServerException
   | InvalidRequestException
@@ -4326,6 +4385,7 @@ export const listCapacityReservations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDatabasesError =
   | InternalServerException
   | InvalidRequestException
@@ -4368,6 +4428,7 @@ export const listDatabases: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDataCatalogsError =
   | InternalServerException
   | InvalidRequestException
@@ -4412,6 +4473,7 @@ export const listDataCatalogs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEngineVersionsError =
   | InternalServerException
   | InvalidRequestException
@@ -4453,6 +4515,7 @@ export const listEngineVersions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListExecutorsError =
   | InternalServerException
   | InvalidRequestException
@@ -4500,6 +4563,7 @@ export const listExecutors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNamedQueriesError =
   | InternalServerException
   | InvalidRequestException
@@ -4542,6 +4606,7 @@ export const listNamedQueries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNotebookMetadataError =
   | InternalServerException
   | InvalidRequestException
@@ -4567,6 +4632,7 @@ export const listNotebookMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "ListNotebookMetadata",
 }));
+
 export type ListNotebookSessionsError =
   | InternalServerException
   | InvalidRequestException
@@ -4595,6 +4661,7 @@ export const listNotebookSessions: API.OperationMethod<
   retry: Retry,
   operationName: "ListNotebookSessions",
 }));
+
 export type ListPreparedStatementsError =
   | InternalServerException
   | InvalidRequestException
@@ -4635,6 +4702,7 @@ export const listPreparedStatements: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListQueryExecutionsError =
   | InternalServerException
   | InvalidRequestException
@@ -4678,6 +4746,7 @@ export const listQueryExecutions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSessionsError =
   | InternalServerException
   | InvalidRequestException
@@ -4726,6 +4795,7 @@ export const listSessions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTableMetadataError =
   | InternalServerException
   | InvalidRequestException
@@ -4768,6 +4838,7 @@ export const listTableMetadata: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | InvalidRequestException
@@ -4814,6 +4885,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListWorkGroupsError =
   | InternalServerException
   | InvalidRequestException
@@ -4854,6 +4926,7 @@ export const listWorkGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutCapacityAssignmentConfigurationError =
   | InternalServerException
   | InvalidRequestException
@@ -4876,6 +4949,7 @@ export const putCapacityAssignmentConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutCapacityAssignmentConfiguration",
 }));
+
 export type StartCalculationExecutionError =
   | InternalServerException
   | InvalidRequestException
@@ -4907,6 +4981,7 @@ export const startCalculationExecution: API.OperationMethod<
   retry: Retry,
   operationName: "StartCalculationExecution",
 }));
+
 export type StartQueryExecutionError =
   | InternalServerException
   | InvalidRequestException
@@ -4937,6 +5012,7 @@ export const startQueryExecution: API.OperationMethod<
   retry: Retry,
   operationName: "StartQueryExecution",
 }));
+
 export type StartSessionError =
   | InternalServerException
   | InvalidRequestException
@@ -4967,6 +5043,7 @@ export const startSession: API.OperationMethod<
   retry: Retry,
   operationName: "StartSession",
 }));
+
 export type StopCalculationExecutionError =
   | InternalServerException
   | InvalidRequestException
@@ -5000,6 +5077,7 @@ export const stopCalculationExecution: API.OperationMethod<
   retry: Retry,
   operationName: "StopCalculationExecution",
 }));
+
 export type StopQueryExecutionError =
   | InternalServerException
   | InvalidRequestException
@@ -5021,6 +5099,7 @@ export const stopQueryExecution: API.OperationMethod<
   retry: Retry,
   operationName: "StopQueryExecution",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | InvalidRequestException
@@ -5056,6 +5135,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TerminateSessionError =
   | InternalServerException
   | InvalidRequestException
@@ -5085,6 +5165,7 @@ export const terminateSession: API.OperationMethod<
   retry: Retry,
   operationName: "TerminateSession",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | InvalidRequestException
@@ -5110,6 +5191,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateCapacityReservationError =
   | InternalServerException
   | InvalidRequestException
@@ -5131,6 +5213,7 @@ export const updateCapacityReservation: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCapacityReservation",
 }));
+
 export type UpdateDataCatalogError =
   | InternalServerException
   | InvalidRequestException
@@ -5156,6 +5239,7 @@ export const updateDataCatalog: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDataCatalog",
 }));
+
 export type UpdateNamedQueryError =
   | InternalServerException
   | InvalidRequestException
@@ -5182,6 +5266,7 @@ export const updateNamedQuery: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNamedQuery",
 }));
+
 export type UpdateNotebookError =
   | InternalServerException
   | InvalidRequestException
@@ -5207,6 +5292,7 @@ export const updateNotebook: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNotebook",
 }));
+
 export type UpdateNotebookMetadataError =
   | InternalServerException
   | InvalidRequestException
@@ -5232,6 +5318,7 @@ export const updateNotebookMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNotebookMetadata",
 }));
+
 export type UpdatePreparedStatementError =
   | InternalServerException
   | InvalidRequestException
@@ -5257,6 +5344,7 @@ export const updatePreparedStatement: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePreparedStatement",
 }));
+
 export type UpdateWorkGroupError =
   | InternalServerException
   | InvalidRequestException

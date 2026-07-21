@@ -142,13 +142,39 @@ const rules = T.EndpointResolver((p, _) => {
   );
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type KvsARN = string;
 export type Key = string;
 export type Etag = string;
-export type Value = string | redacted.Redacted<string>;
-
-//# Schemas
 export interface DeleteKeyRequest {
   KvsARN: string;
   Key: string;
@@ -251,6 +277,7 @@ export const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetKeyRequest" }) as any as S.Schema<GetKeyRequest>;
+export type Value = string | redacted.Redacted<string>;
 export interface GetKeyResponse {
   Key: string;
   Value: string | redacted.Redacted<string>;
@@ -410,40 +437,6 @@ export const UpdateKeysResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateKeysResponse",
 }) as any as S.Schema<UpdateKeysResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type DeleteKeyError =
   | AccessDeniedException
   | ConflictException
@@ -475,6 +468,7 @@ export const deleteKey: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteKey",
 }));
+
 export type DescribeKeyValueStoreError =
   | AccessDeniedException
   | ConflictException
@@ -502,6 +496,7 @@ export const describeKeyValueStore: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeKeyValueStore",
 }));
+
 export type GetKeyError =
   | AccessDeniedException
   | ConflictException
@@ -529,6 +524,7 @@ export const getKey: API.OperationMethod<
   retry: Retry,
   operationName: "GetKey",
 }));
+
 export type ListKeysError =
   | AccessDeniedException
   | ConflictException
@@ -579,6 +575,7 @@ export const listKeys: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutKeyError =
   | AccessDeniedException
   | ConflictException
@@ -610,6 +607,7 @@ export const putKey: API.OperationMethod<
   retry: Retry,
   operationName: "PutKey",
 }));
+
 export type UpdateKeysError =
   | AccessDeniedException
   | ConflictException

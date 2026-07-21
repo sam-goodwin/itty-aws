@@ -85,53 +85,103 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    message: S.String,
+    errorCode: S.suspend(() => AccessDeniedErrorCode).annotate({
+      identifier: "AccessDeniedErrorCode",
+    }),
+    canRetry: S.Boolean,
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class AgentsAlreadyRunningAssessmentException extends S.TaggedErrorClass<AgentsAlreadyRunningAssessmentException>()(
+  "AgentsAlreadyRunningAssessmentException",
+  {
+    message: S.String,
+    agents: S.suspend(() => AgentAlreadyRunningAssessmentList).annotate({
+      identifier: "AgentAlreadyRunningAssessmentList",
+    }),
+    agentsTruncated: S.Boolean,
+    canRetry: S.Boolean,
+  },
+) {}
+export class AssessmentRunInProgressException extends S.TaggedErrorClass<AssessmentRunInProgressException>()(
+  "AssessmentRunInProgressException",
+  {
+    message: S.String,
+    assessmentRunArns: S.suspend(() => AssessmentRunInProgressArnList).annotate(
+      { identifier: "AssessmentRunInProgressArnList" },
+    ),
+    assessmentRunArnsTruncated: S.Boolean,
+    canRetry: S.Boolean,
+  },
+) {}
+export class InternalException extends S.TaggedErrorClass<InternalException>()(
+  "InternalException",
+  { message: S.String, canRetry: S.Boolean },
+) {}
+export class InvalidCrossAccountRoleException extends S.TaggedErrorClass<InvalidCrossAccountRoleException>()(
+  "InvalidCrossAccountRoleException",
+  {
+    message: S.String,
+    errorCode: S.suspend(() => InvalidCrossAccountRoleErrorCode).annotate({
+      identifier: "InvalidCrossAccountRoleErrorCode",
+    }),
+    canRetry: S.Boolean,
+  },
+) {}
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  {
+    message: S.String,
+    errorCode: S.suspend(() => InvalidInputErrorCode).annotate({
+      identifier: "InvalidInputErrorCode",
+    }),
+    canRetry: S.Boolean,
+  },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  {
+    message: S.String,
+    errorCode: S.suspend(() => LimitExceededErrorCode).annotate({
+      identifier: "LimitExceededErrorCode",
+    }),
+    canRetry: S.Boolean,
+  },
+) {}
+export class NoSuchEntityException extends S.TaggedErrorClass<NoSuchEntityException>()(
+  "NoSuchEntityException",
+  {
+    message: S.String,
+    errorCode: S.suspend(() => NoSuchEntityErrorCode).annotate({
+      identifier: "NoSuchEntityErrorCode",
+    }),
+    canRetry: S.Boolean,
+  },
+) {}
+export class PreviewGenerationInProgressException extends S.TaggedErrorClass<PreviewGenerationInProgressException>()(
+  "PreviewGenerationInProgressException",
+  { message: S.String },
+) {}
+export class ServiceTemporarilyUnavailableException extends S.TaggedErrorClass<ServiceTemporarilyUnavailableException>()(
+  "ServiceTemporarilyUnavailableException",
+  { message: S.String, canRetry: S.Boolean },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class UnsupportedFeatureException extends S.TaggedErrorClass<UnsupportedFeatureException>()(
+  "UnsupportedFeatureException",
+  { message: S.String, canRetry: S.Boolean },
+) {}
 export type Arn = string;
-export type AttributeKey = string;
-export type AttributeValue = string;
-export type ErrorMessage = string;
-export type AssessmentTargetName = string;
-export type AssessmentTemplateName = string;
-export type AssessmentRunDuration = number;
-export type UUID = string;
-export type TagKey = string;
-export type TagValue = string;
-export type AssessmentRunName = string;
-export type Message = string;
-export type FindingCount = number;
-export type ArnCount = number;
-export type Text = string;
-export type ScopeValue = string;
-export type NumericVersion = number;
-export type ServiceName = string;
-export type AgentId = string;
-export type AutoScalingGroup = string;
-export type AmiId = string;
-export type Hostname = string;
-export type Ipv4Address = string;
-export type FindingId = string;
-export type NumericSeverity = number;
-export type IocConfidence = number;
-export type RulesPackageName = string;
-export type Version = string;
-export type ProviderName = string;
-export type Url = string;
-export type PaginationToken = string;
-export type ListMaxResults = number;
-export type MessageType = string;
-export type NamePattern = string;
-export type ListEventSubscriptionsMaxResults = number;
-export type RuleName = string;
-export type PreviewAgentsMaxResults = number;
-export type AgentVersion = string;
-export type OperatingSystem = string;
-export type KernelVersion = string;
-
-//# Schemas
 export type AddRemoveAttributesFindingArnList = string[];
 export const AddRemoveAttributesFindingArnList = /*@__PURE__*/ S.Array(
   S.String,
 );
+export type AttributeKey = string;
+export type AttributeValue = string;
 export interface Attribute {
   key: string;
   value?: string;
@@ -164,6 +214,7 @@ export type FailedItemErrorCode =
   | "INTERNAL_ERROR"
   | (string & {});
 export const FailedItemErrorCode = /*@__PURE__*/ S.String;
+
 export interface FailedItemDetails {
   failureCode: FailedItemErrorCode;
   retryable: boolean;
@@ -186,85 +237,7 @@ export const AddAttributesToFindingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddAttributesToFindingsResponse",
 }) as any as S.Schema<AddAttributesToFindingsResponse>;
-export type AccessDeniedErrorCode =
-  | "ACCESS_DENIED_TO_ASSESSMENT_TARGET"
-  | "ACCESS_DENIED_TO_ASSESSMENT_TEMPLATE"
-  | "ACCESS_DENIED_TO_ASSESSMENT_RUN"
-  | "ACCESS_DENIED_TO_FINDING"
-  | "ACCESS_DENIED_TO_RESOURCE_GROUP"
-  | "ACCESS_DENIED_TO_RULES_PACKAGE"
-  | "ACCESS_DENIED_TO_SNS_TOPIC"
-  | "ACCESS_DENIED_TO_IAM_ROLE"
-  | (string & {});
-export const AccessDeniedErrorCode = /*@__PURE__*/ S.String;
-export type InvalidInputErrorCode =
-  | "INVALID_ASSESSMENT_TARGET_ARN"
-  | "INVALID_ASSESSMENT_TEMPLATE_ARN"
-  | "INVALID_ASSESSMENT_RUN_ARN"
-  | "INVALID_FINDING_ARN"
-  | "INVALID_RESOURCE_GROUP_ARN"
-  | "INVALID_RULES_PACKAGE_ARN"
-  | "INVALID_RESOURCE_ARN"
-  | "INVALID_SNS_TOPIC_ARN"
-  | "INVALID_IAM_ROLE_ARN"
-  | "INVALID_ASSESSMENT_TARGET_NAME"
-  | "INVALID_ASSESSMENT_TARGET_NAME_PATTERN"
-  | "INVALID_ASSESSMENT_TEMPLATE_NAME"
-  | "INVALID_ASSESSMENT_TEMPLATE_NAME_PATTERN"
-  | "INVALID_ASSESSMENT_TEMPLATE_DURATION"
-  | "INVALID_ASSESSMENT_TEMPLATE_DURATION_RANGE"
-  | "INVALID_ASSESSMENT_RUN_DURATION_RANGE"
-  | "INVALID_ASSESSMENT_RUN_START_TIME_RANGE"
-  | "INVALID_ASSESSMENT_RUN_COMPLETION_TIME_RANGE"
-  | "INVALID_ASSESSMENT_RUN_STATE_CHANGE_TIME_RANGE"
-  | "INVALID_ASSESSMENT_RUN_STATE"
-  | "INVALID_TAG"
-  | "INVALID_TAG_KEY"
-  | "INVALID_TAG_VALUE"
-  | "INVALID_RESOURCE_GROUP_TAG_KEY"
-  | "INVALID_RESOURCE_GROUP_TAG_VALUE"
-  | "INVALID_ATTRIBUTE"
-  | "INVALID_USER_ATTRIBUTE"
-  | "INVALID_USER_ATTRIBUTE_KEY"
-  | "INVALID_USER_ATTRIBUTE_VALUE"
-  | "INVALID_PAGINATION_TOKEN"
-  | "INVALID_MAX_RESULTS"
-  | "INVALID_AGENT_ID"
-  | "INVALID_AUTO_SCALING_GROUP"
-  | "INVALID_RULE_NAME"
-  | "INVALID_SEVERITY"
-  | "INVALID_LOCALE"
-  | "INVALID_EVENT"
-  | "ASSESSMENT_TARGET_NAME_ALREADY_TAKEN"
-  | "ASSESSMENT_TEMPLATE_NAME_ALREADY_TAKEN"
-  | "INVALID_NUMBER_OF_ASSESSMENT_TARGET_ARNS"
-  | "INVALID_NUMBER_OF_ASSESSMENT_TEMPLATE_ARNS"
-  | "INVALID_NUMBER_OF_ASSESSMENT_RUN_ARNS"
-  | "INVALID_NUMBER_OF_FINDING_ARNS"
-  | "INVALID_NUMBER_OF_RESOURCE_GROUP_ARNS"
-  | "INVALID_NUMBER_OF_RULES_PACKAGE_ARNS"
-  | "INVALID_NUMBER_OF_ASSESSMENT_RUN_STATES"
-  | "INVALID_NUMBER_OF_TAGS"
-  | "INVALID_NUMBER_OF_RESOURCE_GROUP_TAGS"
-  | "INVALID_NUMBER_OF_ATTRIBUTES"
-  | "INVALID_NUMBER_OF_USER_ATTRIBUTES"
-  | "INVALID_NUMBER_OF_AGENT_IDS"
-  | "INVALID_NUMBER_OF_AUTO_SCALING_GROUPS"
-  | "INVALID_NUMBER_OF_RULE_NAMES"
-  | "INVALID_NUMBER_OF_SEVERITIES"
-  | (string & {});
-export const InvalidInputErrorCode = /*@__PURE__*/ S.String;
-export type NoSuchEntityErrorCode =
-  | "ASSESSMENT_TARGET_DOES_NOT_EXIST"
-  | "ASSESSMENT_TEMPLATE_DOES_NOT_EXIST"
-  | "ASSESSMENT_RUN_DOES_NOT_EXIST"
-  | "FINDING_DOES_NOT_EXIST"
-  | "RESOURCE_GROUP_DOES_NOT_EXIST"
-  | "RULES_PACKAGE_DOES_NOT_EXIST"
-  | "SNS_TOPIC_DOES_NOT_EXIST"
-  | "IAM_ROLE_DOES_NOT_EXIST"
-  | (string & {});
-export const NoSuchEntityErrorCode = /*@__PURE__*/ S.String;
+export type AssessmentTargetName = string;
 export interface CreateAssessmentTargetRequest {
   assessmentTargetName: string;
   resourceGroupArn?: string;
@@ -287,19 +260,8 @@ export const CreateAssessmentTargetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAssessmentTargetResponse",
 }) as any as S.Schema<CreateAssessmentTargetResponse>;
-export type InvalidCrossAccountRoleErrorCode =
-  | "ROLE_DOES_NOT_EXIST_OR_INVALID_TRUST_RELATIONSHIP"
-  | "ROLE_DOES_NOT_HAVE_CORRECT_POLICY"
-  | (string & {});
-export const InvalidCrossAccountRoleErrorCode = /*@__PURE__*/ S.String;
-export type LimitExceededErrorCode =
-  | "ASSESSMENT_TARGET_LIMIT_EXCEEDED"
-  | "ASSESSMENT_TEMPLATE_LIMIT_EXCEEDED"
-  | "ASSESSMENT_RUN_LIMIT_EXCEEDED"
-  | "RESOURCE_GROUP_LIMIT_EXCEEDED"
-  | "EVENT_SUBSCRIPTION_LIMIT_EXCEEDED"
-  | (string & {});
-export const LimitExceededErrorCode = /*@__PURE__*/ S.String;
+export type AssessmentTemplateName = string;
+export type AssessmentRunDuration = number;
 export type AssessmentTemplateRulesPackageArnList = string[];
 export const AssessmentTemplateRulesPackageArnList = /*@__PURE__*/ S.Array(
   S.String,
@@ -342,6 +304,7 @@ export const CreateExclusionsPreviewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateExclusionsPreviewRequest",
 }) as any as S.Schema<CreateExclusionsPreviewRequest>;
+export type UUID = string;
 export interface CreateExclusionsPreviewResponse {
   previewToken: string;
 }
@@ -350,6 +313,8 @@ export const CreateExclusionsPreviewResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateExclusionsPreviewResponse",
 }) as any as S.Schema<CreateExclusionsPreviewResponse>;
+export type TagKey = string;
+export type TagValue = string;
 export interface ResourceGroupTag {
   key: string;
   value?: string;
@@ -395,8 +360,6 @@ export const DeleteAssessmentRunResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteAssessmentRunResponse",
 }) as any as S.Schema<DeleteAssessmentRunResponse>;
-export type AssessmentRunInProgressArnList = string[];
-export const AssessmentRunInProgressArnList = /*@__PURE__*/ S.Array(S.String);
 export interface DeleteAssessmentTargetRequest {
   assessmentTargetArn: string;
 }
@@ -441,6 +404,7 @@ export const DescribeAssessmentRunsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAssessmentRunsRequest",
 }) as any as S.Schema<DescribeAssessmentRunsRequest>;
+export type AssessmentRunName = string;
 export type AssessmentRunState =
   | "CREATED"
   | "START_DATA_COLLECTION_PENDING"
@@ -457,6 +421,7 @@ export type AssessmentRunState =
   | "CANCELED"
   | (string & {});
 export const AssessmentRunState = /*@__PURE__*/ S.String;
+
 export type AssessmentRulesPackageArnList = string[];
 export const AssessmentRulesPackageArnList = /*@__PURE__*/ S.Array(S.String);
 export interface AssessmentRunStateChange {
@@ -483,6 +448,8 @@ export type InspectorEvent =
   | "OTHER"
   | (string & {});
 export const InspectorEvent = /*@__PURE__*/ S.String;
+
+export type Message = string;
 export type AssessmentRunNotificationSnsStatusCode =
   | "SUCCESS"
   | "TOPIC_DOES_NOT_EXIST"
@@ -490,6 +457,7 @@ export type AssessmentRunNotificationSnsStatusCode =
   | "INTERNAL_ERROR"
   | (string & {});
 export const AssessmentRunNotificationSnsStatusCode = /*@__PURE__*/ S.String;
+
 export interface AssessmentRunNotification {
   date: Date;
   event: InspectorEvent;
@@ -522,6 +490,8 @@ export type Severity =
   | "Undefined"
   | (string & {});
 export const Severity = /*@__PURE__*/ S.String;
+
+export type FindingCount = number;
 export type AssessmentRunFindingCounts = { [key in Severity]?: number };
 export const AssessmentRunFindingCounts = /*@__PURE__*/ S.Record(
   Severity,
@@ -626,6 +596,7 @@ export const DescribeAssessmentTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAssessmentTemplatesRequest",
 }) as any as S.Schema<DescribeAssessmentTemplatesRequest>;
+export type ArnCount = number;
 export interface AssessmentTemplate {
   arn: string;
   name: string;
@@ -694,6 +665,7 @@ export type BatchDescribeExclusionsArnList = string[];
 export const BatchDescribeExclusionsArnList = /*@__PURE__*/ S.Array(S.String);
 export type Locale = "EN_US" | (string & {});
 export const Locale = /*@__PURE__*/ S.String;
+
 export interface DescribeExclusionsRequest {
   exclusionArns: string[];
   locale?: Locale;
@@ -708,8 +680,11 @@ export const DescribeExclusionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeExclusionsRequest",
 }) as any as S.Schema<DescribeExclusionsRequest>;
+export type Text = string;
 export type ScopeType = "INSTANCE_ID" | "RULES_PACKAGE_ARN" | (string & {});
 export const ScopeType = /*@__PURE__*/ S.String;
+
+export type ScopeValue = string;
 export interface Scope {
   key?: ScopeType;
   value?: string;
@@ -767,6 +742,8 @@ export const DescribeFindingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeFindingsRequest",
 }) as any as S.Schema<DescribeFindingsRequest>;
+export type NumericVersion = number;
+export type ServiceName = string;
 export interface InspectorServiceAttributes {
   schemaVersion: number;
   assessmentRunArn?: string;
@@ -783,6 +760,12 @@ export const InspectorServiceAttributes = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InspectorServiceAttributes>;
 export type AssetType = "ec2-instance" | (string & {});
 export const AssetType = /*@__PURE__*/ S.String;
+
+export type AgentId = string;
+export type AutoScalingGroup = string;
+export type AmiId = string;
+export type Hostname = string;
+export type Ipv4Address = string;
 export type Ipv4AddressList = string[];
 export const Ipv4AddressList = /*@__PURE__*/ S.Array(S.String);
 export interface Tag {
@@ -871,6 +854,9 @@ export const AssetAttributes = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssetAttributes",
 }) as any as S.Schema<AssetAttributes>;
+export type FindingId = string;
+export type NumericSeverity = number;
+export type IocConfidence = number;
 export interface Finding {
   arn: string;
   schemaVersion?: number;
@@ -971,6 +957,9 @@ export const DescribeRulesPackagesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRulesPackagesRequest",
 }) as any as S.Schema<DescribeRulesPackagesRequest>;
+export type RulesPackageName = string;
+export type Version = string;
+export type ProviderName = string;
 export interface RulesPackage {
   arn: string;
   name: string;
@@ -1000,8 +989,10 @@ export const DescribeRulesPackagesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeRulesPackagesResponse>;
 export type ReportFileFormat = "HTML" | "PDF" | (string & {});
 export const ReportFileFormat = /*@__PURE__*/ S.String;
+
 export type ReportType = "FINDING" | "FULL" | (string & {});
 export const ReportType = /*@__PURE__*/ S.String;
+
 export interface GetAssessmentReportRequest {
   assessmentRunArn: string;
   reportFileFormat: ReportFileFormat;
@@ -1024,6 +1015,8 @@ export type ReportStatus =
   | "COMPLETED"
   | (string & {});
 export const ReportStatus = /*@__PURE__*/ S.String;
+
+export type Url = string;
 export interface GetAssessmentReportResponse {
   status: ReportStatus;
   url?: string;
@@ -1033,6 +1026,8 @@ export const GetAssessmentReportResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAssessmentReportResponse",
 }) as any as S.Schema<GetAssessmentReportResponse>;
+export type PaginationToken = string;
+export type ListMaxResults = number;
 export interface GetExclusionsPreviewRequest {
   assessmentTemplateArn: string;
   previewToken: string;
@@ -1055,6 +1050,7 @@ export const GetExclusionsPreviewRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetExclusionsPreviewRequest>;
 export type PreviewStatus = "WORK_IN_PROGRESS" | "COMPLETED" | (string & {});
 export const PreviewStatus = /*@__PURE__*/ S.String;
+
 export interface ExclusionPreview {
   title: string;
   description: string;
@@ -1099,6 +1095,7 @@ export const GetTelemetryMetadataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTelemetryMetadataRequest",
 }) as any as S.Schema<GetTelemetryMetadataRequest>;
+export type MessageType = string;
 export interface TelemetryMetadata {
   messageType: string;
   count: number;
@@ -1125,6 +1122,7 @@ export const GetTelemetryMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetTelemetryMetadataResponse>;
 export type AgentHealth = "HEALTHY" | "UNHEALTHY" | "UNKNOWN" | (string & {});
 export const AgentHealth = /*@__PURE__*/ S.String;
+
 export type AgentHealthList = AgentHealth[];
 export const AgentHealthList = /*@__PURE__*/ S.Array(AgentHealth);
 export type AgentHealthCode =
@@ -1136,6 +1134,7 @@ export type AgentHealthCode =
   | "UNKNOWN"
   | (string & {});
 export const AgentHealthCode = /*@__PURE__*/ S.String;
+
 export type AgentHealthCodeList = AgentHealthCode[];
 export const AgentHealthCodeList = /*@__PURE__*/ S.Array(AgentHealthCode);
 export interface AgentFilter {
@@ -1204,6 +1203,7 @@ export const ListAssessmentRunAgentsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAssessmentRunAgentsResponse>;
 export type ListParentArnList = string[];
 export const ListParentArnList = /*@__PURE__*/ S.Array(S.String);
+export type NamePattern = string;
 export type AssessmentRunStateList = AssessmentRunState[];
 export const AssessmentRunStateList = /*@__PURE__*/ S.Array(AssessmentRunState);
 export interface DurationRange {
@@ -1362,6 +1362,7 @@ export const ListAssessmentTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAssessmentTemplatesResponse",
 }) as any as S.Schema<ListAssessmentTemplatesResponse>;
+export type ListEventSubscriptionsMaxResults = number;
 export interface ListEventSubscriptionsRequest {
   resourceArn?: string;
   nextToken?: string;
@@ -1450,6 +1451,7 @@ export type AgentIdList = string[];
 export const AgentIdList = /*@__PURE__*/ S.Array(S.String);
 export type AutoScalingGroupList = string[];
 export const AutoScalingGroupList = /*@__PURE__*/ S.Array(S.String);
+export type RuleName = string;
 export type RuleNameList = string[];
 export const RuleNameList = /*@__PURE__*/ S.Array(S.String);
 export type SeverityList = Severity[];
@@ -1552,6 +1554,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
+export type PreviewAgentsMaxResults = number;
 export interface PreviewAgentsRequest {
   previewAgentsArn: string;
   nextToken?: string;
@@ -1568,6 +1571,9 @@ export const PreviewAgentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PreviewAgentsRequest",
 }) as any as S.Schema<PreviewAgentsRequest>;
+export type AgentVersion = string;
+export type OperatingSystem = string;
+export type KernelVersion = string;
 export interface AgentPreview {
   hostname?: string;
   agentId: string;
@@ -1684,21 +1690,9 @@ export const StartAssessmentRunResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartAssessmentRunResponse",
 }) as any as S.Schema<StartAssessmentRunResponse>;
-export interface AgentAlreadyRunningAssessment {
-  agentId: string;
-  assessmentRunArn: string;
-}
-export const AgentAlreadyRunningAssessment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agentId: S.String, assessmentRunArn: S.String }),
-).annotate({
-  identifier: "AgentAlreadyRunningAssessment",
-}) as any as S.Schema<AgentAlreadyRunningAssessment>;
-export type AgentAlreadyRunningAssessmentList = AgentAlreadyRunningAssessment[];
-export const AgentAlreadyRunningAssessmentList = /*@__PURE__*/ S.Array(
-  AgentAlreadyRunningAssessment,
-);
 export type StopAction = "START_EVALUATION" | "SKIP_EVALUATION" | (string & {});
 export const StopAction = /*@__PURE__*/ S.String;
+
 export interface StopAssessmentRunRequest {
   assessmentRunArn: string;
   stopAction?: StopAction;
@@ -1785,70 +1779,119 @@ export const UpdateAssessmentTargetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateAssessmentTargetResponse",
 }) as any as S.Schema<UpdateAssessmentTargetResponse>;
+export type ErrorMessage = string;
+export type AccessDeniedErrorCode =
+  | "ACCESS_DENIED_TO_ASSESSMENT_TARGET"
+  | "ACCESS_DENIED_TO_ASSESSMENT_TEMPLATE"
+  | "ACCESS_DENIED_TO_ASSESSMENT_RUN"
+  | "ACCESS_DENIED_TO_FINDING"
+  | "ACCESS_DENIED_TO_RESOURCE_GROUP"
+  | "ACCESS_DENIED_TO_RULES_PACKAGE"
+  | "ACCESS_DENIED_TO_SNS_TOPIC"
+  | "ACCESS_DENIED_TO_IAM_ROLE"
+  | (string & {});
+export const AccessDeniedErrorCode = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String, errorCode: AccessDeniedErrorCode, canRetry: S.Boolean },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalException extends S.TaggedErrorClass<InternalException>()(
-  "InternalException",
-  { message: S.String, canRetry: S.Boolean },
-) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { message: S.String, errorCode: InvalidInputErrorCode, canRetry: S.Boolean },
-) {}
-export class NoSuchEntityException extends S.TaggedErrorClass<NoSuchEntityException>()(
-  "NoSuchEntityException",
-  { message: S.String, errorCode: NoSuchEntityErrorCode, canRetry: S.Boolean },
-) {}
-export class ServiceTemporarilyUnavailableException extends S.TaggedErrorClass<ServiceTemporarilyUnavailableException>()(
-  "ServiceTemporarilyUnavailableException",
-  { message: S.String, canRetry: S.Boolean },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class InvalidCrossAccountRoleException extends S.TaggedErrorClass<InvalidCrossAccountRoleException>()(
-  "InvalidCrossAccountRoleException",
-  {
-    message: S.String,
-    errorCode: InvalidCrossAccountRoleErrorCode,
-    canRetry: S.Boolean,
-  },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.String, errorCode: LimitExceededErrorCode, canRetry: S.Boolean },
-) {}
-export class PreviewGenerationInProgressException extends S.TaggedErrorClass<PreviewGenerationInProgressException>()(
-  "PreviewGenerationInProgressException",
-  { message: S.String },
-) {}
-export class AssessmentRunInProgressException extends S.TaggedErrorClass<AssessmentRunInProgressException>()(
-  "AssessmentRunInProgressException",
-  {
-    message: S.String,
-    assessmentRunArns: AssessmentRunInProgressArnList,
-    assessmentRunArnsTruncated: S.Boolean,
-    canRetry: S.Boolean,
-  },
-) {}
-export class UnsupportedFeatureException extends S.TaggedErrorClass<UnsupportedFeatureException>()(
-  "UnsupportedFeatureException",
-  { message: S.String, canRetry: S.Boolean },
-) {}
-export class AgentsAlreadyRunningAssessmentException extends S.TaggedErrorClass<AgentsAlreadyRunningAssessmentException>()(
-  "AgentsAlreadyRunningAssessmentException",
-  {
-    message: S.String,
-    agents: AgentAlreadyRunningAssessmentList,
-    agentsTruncated: S.Boolean,
-    canRetry: S.Boolean,
-  },
-) {}
+export type InvalidInputErrorCode =
+  | "INVALID_ASSESSMENT_TARGET_ARN"
+  | "INVALID_ASSESSMENT_TEMPLATE_ARN"
+  | "INVALID_ASSESSMENT_RUN_ARN"
+  | "INVALID_FINDING_ARN"
+  | "INVALID_RESOURCE_GROUP_ARN"
+  | "INVALID_RULES_PACKAGE_ARN"
+  | "INVALID_RESOURCE_ARN"
+  | "INVALID_SNS_TOPIC_ARN"
+  | "INVALID_IAM_ROLE_ARN"
+  | "INVALID_ASSESSMENT_TARGET_NAME"
+  | "INVALID_ASSESSMENT_TARGET_NAME_PATTERN"
+  | "INVALID_ASSESSMENT_TEMPLATE_NAME"
+  | "INVALID_ASSESSMENT_TEMPLATE_NAME_PATTERN"
+  | "INVALID_ASSESSMENT_TEMPLATE_DURATION"
+  | "INVALID_ASSESSMENT_TEMPLATE_DURATION_RANGE"
+  | "INVALID_ASSESSMENT_RUN_DURATION_RANGE"
+  | "INVALID_ASSESSMENT_RUN_START_TIME_RANGE"
+  | "INVALID_ASSESSMENT_RUN_COMPLETION_TIME_RANGE"
+  | "INVALID_ASSESSMENT_RUN_STATE_CHANGE_TIME_RANGE"
+  | "INVALID_ASSESSMENT_RUN_STATE"
+  | "INVALID_TAG"
+  | "INVALID_TAG_KEY"
+  | "INVALID_TAG_VALUE"
+  | "INVALID_RESOURCE_GROUP_TAG_KEY"
+  | "INVALID_RESOURCE_GROUP_TAG_VALUE"
+  | "INVALID_ATTRIBUTE"
+  | "INVALID_USER_ATTRIBUTE"
+  | "INVALID_USER_ATTRIBUTE_KEY"
+  | "INVALID_USER_ATTRIBUTE_VALUE"
+  | "INVALID_PAGINATION_TOKEN"
+  | "INVALID_MAX_RESULTS"
+  | "INVALID_AGENT_ID"
+  | "INVALID_AUTO_SCALING_GROUP"
+  | "INVALID_RULE_NAME"
+  | "INVALID_SEVERITY"
+  | "INVALID_LOCALE"
+  | "INVALID_EVENT"
+  | "ASSESSMENT_TARGET_NAME_ALREADY_TAKEN"
+  | "ASSESSMENT_TEMPLATE_NAME_ALREADY_TAKEN"
+  | "INVALID_NUMBER_OF_ASSESSMENT_TARGET_ARNS"
+  | "INVALID_NUMBER_OF_ASSESSMENT_TEMPLATE_ARNS"
+  | "INVALID_NUMBER_OF_ASSESSMENT_RUN_ARNS"
+  | "INVALID_NUMBER_OF_FINDING_ARNS"
+  | "INVALID_NUMBER_OF_RESOURCE_GROUP_ARNS"
+  | "INVALID_NUMBER_OF_RULES_PACKAGE_ARNS"
+  | "INVALID_NUMBER_OF_ASSESSMENT_RUN_STATES"
+  | "INVALID_NUMBER_OF_TAGS"
+  | "INVALID_NUMBER_OF_RESOURCE_GROUP_TAGS"
+  | "INVALID_NUMBER_OF_ATTRIBUTES"
+  | "INVALID_NUMBER_OF_USER_ATTRIBUTES"
+  | "INVALID_NUMBER_OF_AGENT_IDS"
+  | "INVALID_NUMBER_OF_AUTO_SCALING_GROUPS"
+  | "INVALID_NUMBER_OF_RULE_NAMES"
+  | "INVALID_NUMBER_OF_SEVERITIES"
+  | (string & {});
+export const InvalidInputErrorCode = /*@__PURE__*/ S.String;
 
-//# Operations
+export type NoSuchEntityErrorCode =
+  | "ASSESSMENT_TARGET_DOES_NOT_EXIST"
+  | "ASSESSMENT_TEMPLATE_DOES_NOT_EXIST"
+  | "ASSESSMENT_RUN_DOES_NOT_EXIST"
+  | "FINDING_DOES_NOT_EXIST"
+  | "RESOURCE_GROUP_DOES_NOT_EXIST"
+  | "RULES_PACKAGE_DOES_NOT_EXIST"
+  | "SNS_TOPIC_DOES_NOT_EXIST"
+  | "IAM_ROLE_DOES_NOT_EXIST"
+  | (string & {});
+export const NoSuchEntityErrorCode = /*@__PURE__*/ S.String;
+
+export type InvalidCrossAccountRoleErrorCode =
+  | "ROLE_DOES_NOT_EXIST_OR_INVALID_TRUST_RELATIONSHIP"
+  | "ROLE_DOES_NOT_HAVE_CORRECT_POLICY"
+  | (string & {});
+export const InvalidCrossAccountRoleErrorCode = /*@__PURE__*/ S.String;
+
+export type LimitExceededErrorCode =
+  | "ASSESSMENT_TARGET_LIMIT_EXCEEDED"
+  | "ASSESSMENT_TEMPLATE_LIMIT_EXCEEDED"
+  | "ASSESSMENT_RUN_LIMIT_EXCEEDED"
+  | "RESOURCE_GROUP_LIMIT_EXCEEDED"
+  | "EVENT_SUBSCRIPTION_LIMIT_EXCEEDED"
+  | (string & {});
+export const LimitExceededErrorCode = /*@__PURE__*/ S.String;
+
+export type AssessmentRunInProgressArnList = string[];
+export const AssessmentRunInProgressArnList = /*@__PURE__*/ S.Array(S.String);
+export interface AgentAlreadyRunningAssessment {
+  agentId: string;
+  assessmentRunArn: string;
+}
+export const AgentAlreadyRunningAssessment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ agentId: S.String, assessmentRunArn: S.String }),
+).annotate({
+  identifier: "AgentAlreadyRunningAssessment",
+}) as any as S.Schema<AgentAlreadyRunningAssessment>;
+export type AgentAlreadyRunningAssessmentList = AgentAlreadyRunningAssessment[];
+export const AgentAlreadyRunningAssessmentList = /*@__PURE__*/ S.Array(
+  AgentAlreadyRunningAssessment,
+);
 export type AddAttributesToFindingsError =
   | AccessDeniedException
   | InternalException
@@ -1879,6 +1922,7 @@ export const addAttributesToFindings: API.OperationMethod<
   retry: Retry,
   operationName: "AddAttributesToFindings",
 }));
+
 export type CreateAssessmentTargetError =
   | AccessDeniedException
   | InternalException
@@ -1919,6 +1963,7 @@ export const createAssessmentTarget: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAssessmentTarget",
 }));
+
 export type CreateAssessmentTemplateError =
   | AccessDeniedException
   | InternalException
@@ -1953,6 +1998,7 @@ export const createAssessmentTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAssessmentTemplate",
 }));
+
 export type CreateExclusionsPreviewError =
   | AccessDeniedException
   | InternalException
@@ -1986,6 +2032,7 @@ export const createExclusionsPreview: API.OperationMethod<
   retry: Retry,
   operationName: "CreateExclusionsPreview",
 }));
+
 export type CreateResourceGroupError =
   | AccessDeniedException
   | InternalException
@@ -2018,6 +2065,7 @@ export const createResourceGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateResourceGroup",
 }));
+
 export type DeleteAssessmentRunError =
   | AccessDeniedException
   | AssessmentRunInProgressException
@@ -2050,6 +2098,7 @@ export const deleteAssessmentRun: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAssessmentRun",
 }));
+
 export type DeleteAssessmentTargetError =
   | AccessDeniedException
   | AssessmentRunInProgressException
@@ -2082,6 +2131,7 @@ export const deleteAssessmentTarget: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAssessmentTarget",
 }));
+
 export type DeleteAssessmentTemplateError =
   | AccessDeniedException
   | AssessmentRunInProgressException
@@ -2114,6 +2164,7 @@ export const deleteAssessmentTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAssessmentTemplate",
 }));
+
 export type DescribeAssessmentRunsError =
   | InternalException
   | InvalidInputException
@@ -2135,6 +2186,7 @@ export const describeAssessmentRuns: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAssessmentRuns",
 }));
+
 export type DescribeAssessmentTargetsError =
   | InternalException
   | InvalidInputException
@@ -2156,6 +2208,7 @@ export const describeAssessmentTargets: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAssessmentTargets",
 }));
+
 export type DescribeAssessmentTemplatesError =
   | InternalException
   | InvalidInputException
@@ -2177,6 +2230,7 @@ export const describeAssessmentTemplates: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAssessmentTemplates",
 }));
+
 export type DescribeCrossAccountAccessRoleError =
   | InternalException
   | CommonErrors;
@@ -2197,6 +2251,7 @@ export const describeCrossAccountAccessRole: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCrossAccountAccessRole",
 }));
+
 export type DescribeExclusionsError =
   | InternalException
   | InvalidInputException
@@ -2217,6 +2272,7 @@ export const describeExclusions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeExclusions",
 }));
+
 export type DescribeFindingsError =
   | InternalException
   | InvalidInputException
@@ -2237,6 +2293,7 @@ export const describeFindings: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFindings",
 }));
+
 export type DescribeResourceGroupsError =
   | InternalException
   | InvalidInputException
@@ -2258,6 +2315,7 @@ export const describeResourceGroups: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeResourceGroups",
 }));
+
 export type DescribeRulesPackagesError =
   | InternalException
   | InvalidInputException
@@ -2279,6 +2337,7 @@ export const describeRulesPackages: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRulesPackages",
 }));
+
 export type GetAssessmentReportError =
   | AccessDeniedException
   | AssessmentRunInProgressException
@@ -2313,6 +2372,7 @@ export const getAssessmentReport: API.OperationMethod<
   retry: Retry,
   operationName: "GetAssessmentReport",
 }));
+
 export type GetExclusionsPreviewError =
   | AccessDeniedException
   | InternalException
@@ -2362,6 +2422,7 @@ export const getExclusionsPreview: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetTelemetryMetadataError =
   | AccessDeniedException
   | InternalException
@@ -2390,6 +2451,7 @@ export const getTelemetryMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "GetTelemetryMetadata",
 }));
+
 export type ListAssessmentRunAgentsError =
   | AccessDeniedException
   | InternalException
@@ -2438,6 +2500,7 @@ export const listAssessmentRunAgents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssessmentRunsError =
   | AccessDeniedException
   | InternalException
@@ -2486,6 +2549,7 @@ export const listAssessmentRuns: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssessmentTargetsError =
   | AccessDeniedException
   | InternalException
@@ -2529,6 +2593,7 @@ export const listAssessmentTargets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssessmentTemplatesError =
   | AccessDeniedException
   | InternalException
@@ -2577,6 +2642,7 @@ export const listAssessmentTemplates: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListEventSubscriptionsError =
   | AccessDeniedException
   | InternalException
@@ -2625,6 +2691,7 @@ export const listEventSubscriptions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListExclusionsError =
   | AccessDeniedException
   | InternalException
@@ -2672,6 +2739,7 @@ export const listExclusions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFindingsError =
   | AccessDeniedException
   | InternalException
@@ -2720,6 +2788,7 @@ export const listFindings: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListRulesPackagesError =
   | AccessDeniedException
   | InternalException
@@ -2761,6 +2830,7 @@ export const listRulesPackages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalException
@@ -2788,6 +2858,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PreviewAgentsError =
   | AccessDeniedException
   | InternalException
@@ -2838,6 +2909,7 @@ export const previewAgents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type RegisterCrossAccountAccessRoleError =
   | AccessDeniedException
   | InternalException
@@ -2868,6 +2940,7 @@ export const registerCrossAccountAccessRole: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterCrossAccountAccessRole",
 }));
+
 export type RemoveAttributesFromFindingsError =
   | AccessDeniedException
   | InternalException
@@ -2898,6 +2971,7 @@ export const removeAttributesFromFindings: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveAttributesFromFindings",
 }));
+
 export type SetTagsForResourceError =
   | AccessDeniedException
   | InternalException
@@ -2928,6 +3002,7 @@ export const setTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "SetTagsForResource",
 }));
+
 export type StartAssessmentRunError =
   | AccessDeniedException
   | AgentsAlreadyRunningAssessmentException
@@ -2965,6 +3040,7 @@ export const startAssessmentRun: API.OperationMethod<
   retry: Retry,
   operationName: "StartAssessmentRun",
 }));
+
 export type StopAssessmentRunError =
   | AccessDeniedException
   | InternalException
@@ -2995,6 +3071,7 @@ export const stopAssessmentRun: API.OperationMethod<
   retry: Retry,
   operationName: "StopAssessmentRun",
 }));
+
 export type SubscribeToEventError =
   | AccessDeniedException
   | InternalException
@@ -3027,6 +3104,7 @@ export const subscribeToEvent: API.OperationMethod<
   retry: Retry,
   operationName: "SubscribeToEvent",
 }));
+
 export type UnsubscribeFromEventError =
   | AccessDeniedException
   | InternalException
@@ -3057,6 +3135,7 @@ export const unsubscribeFromEvent: API.OperationMethod<
   retry: Retry,
   operationName: "UnsubscribeFromEvent",
 }));
+
 export type UpdateAssessmentTargetError =
   | AccessDeniedException
   | InternalException

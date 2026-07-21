@@ -87,88 +87,190 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class PendingVerification extends S.TaggedErrorClass<PendingVerification>()(
+  "PendingVerification",
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {},
+) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    accessControlAllowOrigin: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Allow-Origin"),
+    ),
+    accessControlExposeHeaders: S.optional(S.String).pipe(
+      T.HttpHeader("Access-Control-Expose-Headers"),
+    ),
+    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
+    contentSecurityPolicy: S.optional(S.String).pipe(
+      T.HttpHeader("Content-Security-Policy"),
+    ),
+    strictTransportSecurity: S.optional(S.String).pipe(
+      T.HttpHeader("Strict-Transport-Security"),
+    ),
+    xContentTypeOptions: S.optional(S.String).pipe(
+      T.HttpHeader("X-Content-Type-Options"),
+    ),
+    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
+    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
+    exceptionMessage: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type EncoderConfigurationName = string;
 export type Width = number;
 export type Height = number;
 export type Framerate = number;
 export type Bitrate = number;
-export type TagKey = string;
-export type TagValue = string;
-export type EncoderConfigurationArn = string;
-export type ErrorMessage = string;
-export type IngestConfigurationName = string;
-export type IngestConfigurationStageArn = string;
-export type UserId = string;
-export type InsecureIngest = boolean;
-export type RedundantIngest = boolean;
-export type IngestConfigurationArn = string;
-export type StreamKey = string | redacted.Redacted<string>;
-export type ParticipantId = string;
-export type IngestConfigurationState = string;
-export type StageArn = string;
-export type ParticipantTokenDurationMinutes = number;
-export type ParticipantTokenUserId = string;
-export type ParticipantTokenCapability = string;
-export type ParticipantTokenId = string;
-export type ParticipantTokenString = string | redacted.Redacted<string>;
-export type ParticipantTokenExpirationTime = Date;
-export type StageName = string;
-export type AutoParticipantRecordingStorageConfigurationArn = string;
-export type ThumbnailIntervalSeconds = number;
-export type ParticipantRecordingReconnectWindowSeconds = number;
-export type ParticipantRecordingTargetSegmentDurationSeconds = number;
-export type RecordParticipantReplicas = boolean;
-export type StageSessionId = string;
-export type StageEndpoint = string;
-export type StorageConfigurationName = string;
-export type S3BucketName = string;
-export type StorageConfigurationArn = string;
-export type PublicKeyArn = string;
-export type DisconnectParticipantReason = string;
-export type CompositionArn = string;
-export type CompositionState = string;
-export type AttributeKey = string;
-export type OmitStoppedVideo = boolean;
-export type GridGap = number;
-export type PipOffset = number;
-export type PipWidth = number;
-export type PipHeight = number;
-export type DestinationState = string;
-export type DestinationConfigurationName = string;
-export type ChannelArn = string;
-export type CompositionRecordingTargetSegmentDurationSeconds = number;
-export type RecordingConfigurationFormat = string;
-export type ParticipantState = string;
-export type Published = boolean;
-export type ParticipantClientAttribute = string;
-export type ParticipantRecordingS3BucketName = string;
-export type ParticipantRecordingS3Prefix = string;
-export type ParticipantRecordingState = string;
-export type ReplicationType = string;
-export type ReplicationState = string;
-export type PublicKeyName = string;
-export type PublicKeyMaterial = string;
-export type PublicKeyFingerprint = string;
-export type PaginationToken = string;
-export type MaxCompositionResults = number;
-export type MaxEncoderConfigurationResults = number;
-export type MaxIngestConfigurationResults = number;
-export type MaxParticipantEventResults = number;
-export type EventName = string;
-export type Replica = boolean;
-export type MaxParticipantReplicaResults = number;
-export type MaxParticipantResults = number;
-export type ParticipantRecordingFilterByRecordingState = string;
-export type MaxPublicKeyResults = number;
-export type MaxStageResults = number;
-export type MaxStageSessionResults = number;
-export type MaxStorageConfigurationResults = number;
-export type ResourceArn = string;
-export type CompositionClientToken = string;
-export type ReconnectWindowSeconds = number;
-
-//# Schemas
 export interface Video {
   width?: number;
   height?: number;
@@ -183,6 +285,8 @@ export const Video = /*@__PURE__*/ S.suspend(() =>
     bitrate: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Video" }) as any as S.Schema<Video>;
+export type TagKey = string;
+export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CreateEncoderConfigurationRequest {
@@ -208,6 +312,7 @@ export const CreateEncoderConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEncoderConfigurationRequest",
 }) as any as S.Schema<CreateEncoderConfigurationRequest>;
+export type EncoderConfigurationArn = string;
 export interface EncoderConfiguration {
   arn: string;
   name?: string;
@@ -232,6 +337,9 @@ export const CreateEncoderConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEncoderConfigurationResponse",
 }) as any as S.Schema<CreateEncoderConfigurationResponse>;
+export type IngestConfigurationName = string;
+export type IngestConfigurationStageArn = string;
+export type UserId = string;
 export type ParticipantAttributes = { [key: string]: string | undefined };
 export const ParticipantAttributes = /*@__PURE__*/ S.Record(
   S.String,
@@ -239,6 +347,9 @@ export const ParticipantAttributes = /*@__PURE__*/ S.Record(
 );
 export type IngestProtocol = "RTMP" | "RTMPS" | (string & {});
 export const IngestProtocol = /*@__PURE__*/ S.String;
+
+export type InsecureIngest = boolean;
+export type RedundantIngest = boolean;
 export interface CreateIngestConfigurationRequest {
   name?: string;
   stageArn?: string;
@@ -272,6 +383,10 @@ export const CreateIngestConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIngestConfigurationRequest",
 }) as any as S.Schema<CreateIngestConfigurationRequest>;
+export type IngestConfigurationArn = string;
+export type StreamKey = string | redacted.Redacted<string>;
+export type ParticipantId = string;
+export type IngestConfigurationState = string;
 export interface RedundantIngestCredential {
   participantId?: string;
   streamKey?: string | redacted.Redacted<string>;
@@ -328,11 +443,15 @@ export const CreateIngestConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIngestConfigurationResponse",
 }) as any as S.Schema<CreateIngestConfigurationResponse>;
+export type StageArn = string;
+export type ParticipantTokenDurationMinutes = number;
+export type ParticipantTokenUserId = string;
 export type ParticipantTokenAttributes = { [key: string]: string | undefined };
 export const ParticipantTokenAttributes = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ParticipantTokenCapability = string;
 export type ParticipantTokenCapabilities = string[];
 export const ParticipantTokenCapabilities = /*@__PURE__*/ S.Array(S.String);
 export interface CreateParticipantTokenRequest {
@@ -362,6 +481,9 @@ export const CreateParticipantTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateParticipantTokenRequest",
 }) as any as S.Schema<CreateParticipantTokenRequest>;
+export type ParticipantTokenId = string;
+export type ParticipantTokenString = string | redacted.Redacted<string>;
+export type ParticipantTokenExpirationTime = Date;
 export interface ParticipantToken {
   participantId?: string;
   token?: string | redacted.Redacted<string>;
@@ -394,6 +516,7 @@ export const CreateParticipantTokenResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateParticipantTokenResponse",
 }) as any as S.Schema<CreateParticipantTokenResponse>;
+export type StageName = string;
 export interface ParticipantTokenConfiguration {
   duration?: number;
   userId?: string;
@@ -414,23 +537,28 @@ export type ParticipantTokenConfigurations = ParticipantTokenConfiguration[];
 export const ParticipantTokenConfigurations = /*@__PURE__*/ S.Array(
   ParticipantTokenConfiguration,
 );
+export type AutoParticipantRecordingStorageConfigurationArn = string;
 export type ParticipantRecordingMediaType =
   | "AUDIO_VIDEO"
   | "AUDIO_ONLY"
   | "NONE"
   | (string & {});
 export const ParticipantRecordingMediaType = /*@__PURE__*/ S.String;
+
 export type ParticipantRecordingMediaTypeList = ParticipantRecordingMediaType[];
 export const ParticipantRecordingMediaTypeList = /*@__PURE__*/ S.Array(
   ParticipantRecordingMediaType,
 );
+export type ThumbnailIntervalSeconds = number;
 export type ThumbnailStorageType = "SEQUENTIAL" | "LATEST" | (string & {});
 export const ThumbnailStorageType = /*@__PURE__*/ S.String;
+
 export type ThumbnailStorageTypeList = ThumbnailStorageType[];
 export const ThumbnailStorageTypeList =
   /*@__PURE__*/ S.Array(ThumbnailStorageType);
 export type ThumbnailRecordingMode = "INTERVAL" | "DISABLED" | (string & {});
 export const ThumbnailRecordingMode = /*@__PURE__*/ S.String;
+
 export interface ParticipantThumbnailConfiguration {
   targetIntervalSeconds?: number;
   storage?: ThumbnailStorageType[];
@@ -445,6 +573,8 @@ export const ParticipantThumbnailConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ParticipantThumbnailConfiguration",
 }) as any as S.Schema<ParticipantThumbnailConfiguration>;
+export type ParticipantRecordingReconnectWindowSeconds = number;
+export type ParticipantRecordingTargetSegmentDurationSeconds = number;
 export interface ParticipantRecordingHlsConfiguration {
   targetSegmentDurationSeconds?: number;
 }
@@ -453,6 +583,7 @@ export const ParticipantRecordingHlsConfiguration = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ParticipantRecordingHlsConfiguration",
 }) as any as S.Schema<ParticipantRecordingHlsConfiguration>;
+export type RecordParticipantReplicas = boolean;
 export interface AutoParticipantRecordingConfiguration {
   storageConfigurationArn: string;
   mediaTypes?: ParticipantRecordingMediaType[];
@@ -501,6 +632,8 @@ export const CreateStageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStageRequest",
 }) as any as S.Schema<CreateStageRequest>;
+export type StageSessionId = string;
+export type StageEndpoint = string;
 export interface StageEndpoints {
   events?: string;
   whip?: string;
@@ -549,6 +682,8 @@ export const CreateStageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStageResponse",
 }) as any as S.Schema<CreateStageResponse>;
+export type StorageConfigurationName = string;
+export type S3BucketName = string;
 export interface S3StorageConfiguration {
   bucketName: string;
 }
@@ -580,6 +715,7 @@ export const CreateStorageConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStorageConfigurationRequest",
 }) as any as S.Schema<CreateStorageConfigurationRequest>;
+export type StorageConfigurationArn = string;
 export interface StorageConfiguration {
   arn: string;
   name?: string;
@@ -651,6 +787,7 @@ export const DeleteIngestConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteIngestConfigurationResponse",
 }) as any as S.Schema<DeleteIngestConfigurationResponse>;
+export type PublicKeyArn = string;
 export interface DeletePublicKeyRequest {
   arn: string;
 }
@@ -720,6 +857,7 @@ export const DeleteStorageConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteStorageConfigurationResponse",
 }) as any as S.Schema<DeleteStorageConfigurationResponse>;
+export type DisconnectParticipantReason = string;
 export interface DisconnectParticipantRequest {
   stageArn: string;
   participantId: string;
@@ -749,6 +887,7 @@ export const DisconnectParticipantResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisconnectParticipantResponse",
 }) as any as S.Schema<DisconnectParticipantResponse>;
+export type CompositionArn = string;
 export interface GetCompositionRequest {
   arn: string;
 }
@@ -766,6 +905,9 @@ export const GetCompositionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCompositionRequest",
 }) as any as S.Schema<GetCompositionRequest>;
+export type CompositionState = string;
+export type AttributeKey = string;
+export type OmitStoppedVideo = boolean;
 export type VideoAspectRatio =
   | "AUTO"
   | "VIDEO"
@@ -773,8 +915,11 @@ export type VideoAspectRatio =
   | "PORTRAIT"
   | (string & {});
 export const VideoAspectRatio = /*@__PURE__*/ S.String;
+
 export type VideoFillMode = "FILL" | "COVER" | "CONTAIN" | (string & {});
 export const VideoFillMode = /*@__PURE__*/ S.String;
+
+export type GridGap = number;
 export interface GridConfiguration {
   featuredParticipantAttribute?: string;
   omitStoppedVideo?: boolean;
@@ -797,6 +942,8 @@ export const GridConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GridConfiguration>;
 export type PipBehavior = "STATIC" | "DYNAMIC" | (string & {});
 export const PipBehavior = /*@__PURE__*/ S.String;
+
+export type PipOffset = number;
 export type PipPosition =
   | "TOP_LEFT"
   | "TOP_RIGHT"
@@ -804,6 +951,9 @@ export type PipPosition =
   | "BOTTOM_RIGHT"
   | (string & {});
 export const PipPosition = /*@__PURE__*/ S.String;
+
+export type PipWidth = number;
+export type PipHeight = number;
 export interface PipConfiguration {
   featuredParticipantAttribute?: string;
   omitStoppedVideo?: boolean;
@@ -846,6 +996,9 @@ export const LayoutConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LayoutConfiguration",
 }) as any as S.Schema<LayoutConfiguration>;
+export type DestinationState = string;
+export type DestinationConfigurationName = string;
+export type ChannelArn = string;
 export interface ChannelDestinationConfiguration {
   channelArn: string;
   encoderConfigurationArn?: string;
@@ -860,6 +1013,7 @@ export const ChannelDestinationConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChannelDestinationConfiguration>;
 export type EncoderConfigurationArnList = string[];
 export const EncoderConfigurationArnList = /*@__PURE__*/ S.Array(S.String);
+export type CompositionRecordingTargetSegmentDurationSeconds = number;
 export interface CompositionRecordingHlsConfiguration {
   targetSegmentDurationSeconds?: number;
 }
@@ -868,6 +1022,7 @@ export const CompositionRecordingHlsConfiguration = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CompositionRecordingHlsConfiguration",
 }) as any as S.Schema<CompositionRecordingHlsConfiguration>;
+export type RecordingConfigurationFormat = string;
 export interface RecordingConfiguration {
   hlsConfiguration?: CompositionRecordingHlsConfiguration;
   format?: string;
@@ -1068,6 +1223,12 @@ export const GetParticipantRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetParticipantRequest",
 }) as any as S.Schema<GetParticipantRequest>;
+export type ParticipantState = string;
+export type Published = boolean;
+export type ParticipantClientAttribute = string;
+export type ParticipantRecordingS3BucketName = string;
+export type ParticipantRecordingS3Prefix = string;
+export type ParticipantRecordingState = string;
 export type ParticipantProtocol =
   | "UNKNOWN"
   | "WHIP"
@@ -1075,6 +1236,9 @@ export type ParticipantProtocol =
   | "RTMPS"
   | (string & {});
 export const ParticipantProtocol = /*@__PURE__*/ S.String;
+
+export type ReplicationType = string;
+export type ReplicationState = string;
 export interface Participant {
   participantId?: string;
   userId?: string;
@@ -1152,6 +1316,9 @@ export const GetPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPublicKeyRequest",
 }) as any as S.Schema<GetPublicKeyRequest>;
+export type PublicKeyName = string;
+export type PublicKeyMaterial = string;
+export type PublicKeyFingerprint = string;
 export interface PublicKey {
   arn?: string;
   name?: string;
@@ -1297,6 +1464,8 @@ export const ImportPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportPublicKeyResponse",
 }) as any as S.Schema<ImportPublicKeyResponse>;
+export type PaginationToken = string;
+export type MaxCompositionResults = number;
 export interface ListCompositionsRequest {
   filterByStageArn?: string;
   filterByEncoderConfigurationArn?: string;
@@ -1380,6 +1549,7 @@ export const ListCompositionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListCompositionsResponse",
 }) as any as S.Schema<ListCompositionsResponse>;
+export type MaxEncoderConfigurationResults = number;
 export interface ListEncoderConfigurationsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1431,6 +1601,7 @@ export const ListEncoderConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEncoderConfigurationsResponse",
 }) as any as S.Schema<ListEncoderConfigurationsResponse>;
+export type MaxIngestConfigurationResults = number;
 export interface ListIngestConfigurationsRequest {
   filterByStageArn?: string;
   filterByState?: string;
@@ -1496,6 +1667,7 @@ export const ListIngestConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListIngestConfigurationsResponse",
 }) as any as S.Schema<ListIngestConfigurationsResponse>;
+export type MaxParticipantEventResults = number;
 export interface ListParticipantEventsRequest {
   stageArn: string;
   sessionId: string;
@@ -1523,6 +1695,7 @@ export const ListParticipantEventsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListParticipantEventsRequest",
 }) as any as S.Schema<ListParticipantEventsRequest>;
+export type EventName = string;
 export type EventErrorCode =
   | "INSUFFICIENT_CAPABILITIES"
   | "QUOTA_EXCEEDED"
@@ -1540,6 +1713,8 @@ export type EventErrorCode =
   | "INTERNAL_SERVER_EXCEPTION"
   | (string & {});
 export const EventErrorCode = /*@__PURE__*/ S.String;
+
+export type Replica = boolean;
 export interface ExchangedParticipantToken {
   capabilities?: string[];
   attributes?: { [key: string]: string | undefined };
@@ -1597,6 +1772,7 @@ export const ListParticipantEventsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListParticipantEventsResponse",
 }) as any as S.Schema<ListParticipantEventsResponse>;
+export type MaxParticipantReplicaResults = number;
 export interface ListParticipantReplicasRequest {
   sourceStageArn: string;
   participantId: string;
@@ -1656,6 +1832,8 @@ export const ListParticipantReplicasResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListParticipantReplicasResponse",
 }) as any as S.Schema<ListParticipantReplicasResponse>;
+export type MaxParticipantResults = number;
+export type ParticipantRecordingFilterByRecordingState = string;
 export interface ListParticipantsRequest {
   stageArn: string;
   sessionId: string;
@@ -1734,6 +1912,7 @@ export const ListParticipantsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListParticipantsResponse",
 }) as any as S.Schema<ListParticipantsResponse>;
+export type MaxPublicKeyResults = number;
 export interface ListPublicKeysRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1780,6 +1959,7 @@ export const ListPublicKeysResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPublicKeysResponse",
 }) as any as S.Schema<ListPublicKeysResponse>;
+export type MaxStageResults = number;
 export interface ListStagesRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1826,6 +2006,7 @@ export const ListStagesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListStagesResponse",
 }) as any as S.Schema<ListStagesResponse>;
+export type MaxStageSessionResults = number;
 export interface ListStageSessionsRequest {
   stageArn: string;
   nextToken?: string;
@@ -1879,6 +2060,7 @@ export const ListStageSessionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListStageSessionsResponse",
 }) as any as S.Schema<ListStageSessionsResponse>;
+export type MaxStorageConfigurationResults = number;
 export interface ListStorageConfigurationsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -1932,6 +2114,7 @@ export const ListStorageConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListStorageConfigurationsResponse",
 }) as any as S.Schema<ListStorageConfigurationsResponse>;
+export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -1957,6 +2140,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
+export type CompositionClientToken = string;
 export type DestinationConfigurationList = DestinationConfiguration[];
 export const DestinationConfigurationList = /*@__PURE__*/ S.Array(
   DestinationConfiguration,
@@ -1996,6 +2180,7 @@ export const StartCompositionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartCompositionResponse",
 }) as any as S.Schema<StartCompositionResponse>;
+export type ReconnectWindowSeconds = number;
 export interface StartParticipantReplicationRequest {
   sourceStageArn: string;
   destinationStageArn: string;
@@ -2253,189 +2438,7 @@ export const UpdateStageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateStageResponse",
 }) as any as S.Schema<UpdateStageResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  {
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(
-      T.HttpHeader("Content-Security-Policy"),
-    ),
-    strictTransportSecurity: S.optional(S.String).pipe(
-      T.HttpHeader("Strict-Transport-Security"),
-    ),
-    xContentTypeOptions: S.optional(S.String).pipe(
-      T.HttpHeader("X-Content-Type-Options"),
-    ),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-    exceptionMessage: S.optional(S.String),
-  },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(
-      T.HttpHeader("Content-Security-Policy"),
-    ),
-    strictTransportSecurity: S.optional(S.String).pipe(
-      T.HttpHeader("Strict-Transport-Security"),
-    ),
-    xContentTypeOptions: S.optional(S.String).pipe(
-      T.HttpHeader("X-Content-Type-Options"),
-    ),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-    exceptionMessage: S.optional(S.String),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  {
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(
-      T.HttpHeader("Content-Security-Policy"),
-    ),
-    strictTransportSecurity: S.optional(S.String).pipe(
-      T.HttpHeader("Strict-Transport-Security"),
-    ),
-    xContentTypeOptions: S.optional(S.String).pipe(
-      T.HttpHeader("X-Content-Type-Options"),
-    ),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-    exceptionMessage: S.optional(S.String),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class PendingVerification extends S.TaggedErrorClass<PendingVerification>()(
-  "PendingVerification",
-  {
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(
-      T.HttpHeader("Content-Security-Policy"),
-    ),
-    strictTransportSecurity: S.optional(S.String).pipe(
-      T.HttpHeader("Strict-Transport-Security"),
-    ),
-    xContentTypeOptions: S.optional(S.String).pipe(
-      T.HttpHeader("X-Content-Type-Options"),
-    ),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-    exceptionMessage: S.optional(S.String),
-  },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(
-      T.HttpHeader("Content-Security-Policy"),
-    ),
-    strictTransportSecurity: S.optional(S.String).pipe(
-      T.HttpHeader("Strict-Transport-Security"),
-    ),
-    xContentTypeOptions: S.optional(S.String).pipe(
-      T.HttpHeader("X-Content-Type-Options"),
-    ),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-    exceptionMessage: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  {
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(
-      T.HttpHeader("Content-Security-Policy"),
-    ),
-    strictTransportSecurity: S.optional(S.String).pipe(
-      T.HttpHeader("Strict-Transport-Security"),
-    ),
-    xContentTypeOptions: S.optional(S.String).pipe(
-      T.HttpHeader("X-Content-Type-Options"),
-    ),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-    exceptionMessage: S.optional(S.String),
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    accessControlAllowOrigin: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Allow-Origin"),
-    ),
-    accessControlExposeHeaders: S.optional(S.String).pipe(
-      T.HttpHeader("Access-Control-Expose-Headers"),
-    ),
-    cacheControl: S.optional(S.String).pipe(T.HttpHeader("Cache-Control")),
-    contentSecurityPolicy: S.optional(S.String).pipe(
-      T.HttpHeader("Content-Security-Policy"),
-    ),
-    strictTransportSecurity: S.optional(S.String).pipe(
-      T.HttpHeader("Strict-Transport-Security"),
-    ),
-    xContentTypeOptions: S.optional(S.String).pipe(
-      T.HttpHeader("X-Content-Type-Options"),
-    ),
-    xFrameOptions: S.optional(S.String).pipe(T.HttpHeader("X-Frame-Options")),
-    xAmznErrorType: S.optional(S.String).pipe(T.HttpHeader("x-amzn-ErrorType")),
-    exceptionMessage: S.optional(S.String),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {},
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CreateEncoderConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -2469,6 +2472,7 @@ export const createEncoderConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEncoderConfiguration",
 }));
+
 export type CreateIngestConfigurationError =
   | AccessDeniedException
   | PendingVerification
@@ -2496,6 +2500,7 @@ export const createIngestConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIngestConfiguration",
 }));
+
 export type CreateParticipantTokenError =
   | AccessDeniedException
   | PendingVerification
@@ -2530,6 +2535,7 @@ export const createParticipantToken: API.OperationMethod<
   retry: Retry,
   operationName: "CreateParticipantToken",
 }));
+
 export type CreateStageError =
   | AccessDeniedException
   | PendingVerification
@@ -2559,6 +2565,7 @@ export const createStage: API.OperationMethod<
   retry: Retry,
   operationName: "CreateStage",
 }));
+
 export type CreateStorageConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -2594,6 +2601,7 @@ export const createStorageConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateStorageConfiguration",
 }));
+
 export type DeleteEncoderConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -2626,6 +2634,7 @@ export const deleteEncoderConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEncoderConfiguration",
 }));
+
 export type DeleteIngestConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -2655,6 +2664,7 @@ export const deleteIngestConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIngestConfiguration",
 }));
+
 export type DeletePublicKeyError =
   | AccessDeniedException
   | ConflictException
@@ -2685,6 +2695,7 @@ export const deletePublicKey: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePublicKey",
 }));
+
 export type DeleteStageError =
   | AccessDeniedException
   | ConflictException
@@ -2718,6 +2729,7 @@ export const deleteStage: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteStage",
 }));
+
 export type DeleteStorageConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -2753,6 +2765,7 @@ export const deleteStorageConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteStorageConfiguration",
 }));
+
 export type DisconnectParticipantError =
   | AccessDeniedException
   | PendingVerification
@@ -2782,6 +2795,7 @@ export const disconnectParticipant: API.OperationMethod<
   retry: Retry,
   operationName: "DisconnectParticipant",
 }));
+
 export type GetCompositionError =
   | AccessDeniedException
   | ConflictException
@@ -2813,6 +2827,7 @@ export const getComposition: API.OperationMethod<
   retry: Retry,
   operationName: "GetComposition",
 }));
+
 export type GetEncoderConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -2844,6 +2859,7 @@ export const getEncoderConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetEncoderConfiguration",
 }));
+
 export type GetIngestConfigurationError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -2869,6 +2885,7 @@ export const getIngestConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetIngestConfiguration",
 }));
+
 export type GetParticipantError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -2894,6 +2911,7 @@ export const getParticipant: API.OperationMethod<
   retry: Retry,
   operationName: "GetParticipant",
 }));
+
 export type GetPublicKeyError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -2919,6 +2937,7 @@ export const getPublicKey: API.OperationMethod<
   retry: Retry,
   operationName: "GetPublicKey",
 }));
+
 export type GetStageError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -2946,6 +2965,7 @@ export const getStage: API.OperationMethod<
   retry: Retry,
   operationName: "GetStage",
 }));
+
 export type GetStageSessionError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -2971,6 +2991,7 @@ export const getStageSession: API.OperationMethod<
   retry: Retry,
   operationName: "GetStageSession",
 }));
+
 export type GetStorageConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -3002,6 +3023,7 @@ export const getStorageConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetStorageConfiguration",
 }));
+
 export type ImportPublicKeyError =
   | AccessDeniedException
   | ConflictException
@@ -3031,6 +3053,7 @@ export const importPublicKey: API.OperationMethod<
   retry: Retry,
   operationName: "ImportPublicKey",
 }));
+
 export type ListCompositionsError =
   | AccessDeniedException
   | ConflictException
@@ -3081,6 +3104,7 @@ export const listCompositions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListEncoderConfigurationsError =
   | AccessDeniedException
   | ConflictException
@@ -3131,6 +3155,7 @@ export const listEncoderConfigurations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListIngestConfigurationsError =
   | AccessDeniedException
   | ValidationException
@@ -3172,6 +3197,7 @@ export const listIngestConfigurations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListParticipantEventsError =
   | AccessDeniedException
   | ValidationException
@@ -3213,6 +3239,7 @@ export const listParticipantEvents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListParticipantReplicasError =
   | AccessDeniedException
   | ValidationException
@@ -3254,6 +3281,7 @@ export const listParticipantReplicas: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListParticipantsError =
   | AccessDeniedException
   | ValidationException
@@ -3294,6 +3322,7 @@ export const listParticipants: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPublicKeysError =
   | AccessDeniedException
   | ValidationException
@@ -3335,6 +3364,7 @@ export const listPublicKeys: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListStagesError =
   | AccessDeniedException
   | ConflictException
@@ -3383,6 +3413,7 @@ export const listStages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListStageSessionsError =
   | AccessDeniedException
   | ValidationException
@@ -3423,6 +3454,7 @@ export const listStageSessions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListStorageConfigurationsError =
   | AccessDeniedException
   | ConflictException
@@ -3473,6 +3505,7 @@ export const listStorageConfigurations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3500,6 +3533,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type StartCompositionError =
   | AccessDeniedException
   | ConflictException
@@ -3550,6 +3584,7 @@ export const startComposition: API.OperationMethod<
   retry: Retry,
   operationName: "StartComposition",
 }));
+
 export type StartParticipantReplicationError =
   | AccessDeniedException
   | ConflictException
@@ -3583,6 +3618,7 @@ export const startParticipantReplication: API.OperationMethod<
   retry: Retry,
   operationName: "StartParticipantReplication",
 }));
+
 export type StopCompositionError =
   | AccessDeniedException
   | ConflictException
@@ -3615,6 +3651,7 @@ export const stopComposition: API.OperationMethod<
   retry: Retry,
   operationName: "StopComposition",
 }));
+
 export type StopParticipantReplicationError =
   | AccessDeniedException
   | InternalServerException
@@ -3642,6 +3679,7 @@ export const stopParticipantReplication: API.OperationMethod<
   retry: Retry,
   operationName: "StopParticipantReplication",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3669,6 +3707,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3696,6 +3735,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateIngestConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -3725,6 +3765,7 @@ export const updateIngestConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateIngestConfiguration",
 }));
+
 export type UpdateStageError =
   | AccessDeniedException
   | ConflictException

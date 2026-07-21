@@ -102,36 +102,65 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidEndpointException extends S.TaggedErrorClass<InvalidEndpointException>()(
+  "InvalidEndpointException",
+  { Message: S.optional(S.String) },
+  T.HttpError(421),
+) {}
+export class QueryExecutionException extends S.TaggedErrorClass<QueryExecutionException>()(
+  "QueryExecutionException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String), ScheduledQueryArn: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TimestreamNotOnboarded extends S.TaggedErrorClass<TimestreamNotOnboarded>()(
+  "TimestreamNotOnboarded",
+  { Message: S.optional(S.String) },
+  T.SyntheticError({
+    from: "AccessDeniedException",
+    message: {
+      includes: "Only existing Timestream for LiveAnalytics customers",
+    },
+  }),
+).pipe(C.withAuthError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type QueryId = string;
-export type ServiceErrorMessage = string;
-export type ErrorMessage = string;
-export type ScheduledQueryName = string;
-export type QueryString = string | redacted.Redacted<string>;
-export type ScheduleExpression = string;
-export type AmazonResourceName = string;
-export type ResourceName = string;
-export type SchemaName = string;
-export type ClientToken = string | redacted.Redacted<string>;
-export type TagKey = string;
-export type TagValue = string;
-export type StringValue2048 = string;
-export type S3BucketName = string;
-export type S3ObjectKeyPrefix = string;
-export type MaxQueryCapacity = number;
-export type QueryTCU = number;
-export type PartitionKey = string;
-export type S3ObjectKey = string;
-export type MaxScheduledQueriesResults = number;
-export type NextScheduledQueriesResultsToken = string;
-export type MaxTagsForResourceResult = number;
-export type NextTagsForResourceResultsToken = string;
-export type ClientRequestToken = string | redacted.Redacted<string>;
-export type PaginationToken = string;
-export type MaxQueryResults = number;
-export type ScalarValue = string;
-
-//# Schemas
 export interface CancelQueryRequest {
   QueryId: string;
 }
@@ -150,6 +179,9 @@ export const CancelQueryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelQueryResponse",
 }) as any as S.Schema<CancelQueryResponse>;
+export type ScheduledQueryName = string;
+export type QueryString = string | redacted.Redacted<string>;
+export type ScheduleExpression = string;
 export interface ScheduleConfiguration {
   ScheduleExpression: string;
 }
@@ -158,6 +190,7 @@ export const ScheduleConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScheduleConfiguration",
 }) as any as S.Schema<ScheduleConfiguration>;
+export type AmazonResourceName = string;
 export interface SnsConfiguration {
   TopicArn: string;
 }
@@ -174,8 +207,11 @@ export const NotificationConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotificationConfiguration",
 }) as any as S.Schema<NotificationConfiguration>;
+export type ResourceName = string;
+export type SchemaName = string;
 export type DimensionValueType = "VARCHAR" | (string & {});
 export const DimensionValueType = /*@__PURE__*/ S.String;
+
 export interface DimensionMapping {
   Name: string;
   DimensionValueType: DimensionValueType;
@@ -195,6 +231,7 @@ export type ScalarMeasureValueType =
   | "TIMESTAMP"
   | (string & {});
 export const ScalarMeasureValueType = /*@__PURE__*/ S.String;
+
 export interface MultiMeasureAttributeMapping {
   SourceColumn: string;
   TargetMultiMeasureAttributeName?: string;
@@ -233,6 +270,7 @@ export type MeasureValueType =
   | "MULTI"
   | (string & {});
 export const MeasureValueType = /*@__PURE__*/ S.String;
+
 export interface MixedMeasureMapping {
   MeasureName?: string;
   SourceColumn?: string;
@@ -284,6 +322,9 @@ export const TargetConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TargetConfiguration",
 }) as any as S.Schema<TargetConfiguration>;
+export type ClientToken = string | redacted.Redacted<string>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -293,8 +334,12 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
+export type StringValue2048 = string;
+export type S3BucketName = string;
+export type S3ObjectKeyPrefix = string;
 export type S3EncryptionOption = "SSE_S3" | "SSE_KMS" | (string & {});
 export const S3EncryptionOption = /*@__PURE__*/ S.String;
+
 export interface S3Configuration {
   BucketName: string;
   ObjectKeyPrefix?: string;
@@ -379,13 +424,17 @@ export const DescribeAccountSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAccountSettingsRequest",
 }) as any as S.Schema<DescribeAccountSettingsRequest>;
+export type MaxQueryCapacity = number;
 export type QueryPricingModel =
   | "BYTES_SCANNED"
   | "COMPUTE_UNITS"
   | (string & {});
 export const QueryPricingModel = /*@__PURE__*/ S.String;
+
 export type ComputeMode = "ON_DEMAND" | "PROVISIONED" | (string & {});
 export const ComputeMode = /*@__PURE__*/ S.String;
+
+export type QueryTCU = number;
 export interface AccountSettingsNotificationConfiguration {
   SnsConfiguration?: SnsConfiguration;
   RoleArn: string;
@@ -405,6 +454,7 @@ export type LastUpdateStatus =
   | "SUCCEEDED"
   | (string & {});
 export const LastUpdateStatus = /*@__PURE__*/ S.String;
+
 export interface LastUpdate {
   TargetQueryTCU?: number;
   Status?: LastUpdateStatus;
@@ -496,6 +546,7 @@ export const DescribeScheduledQueryRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeScheduledQueryRequest>;
 export type ScheduledQueryState = "ENABLED" | "DISABLED" | (string & {});
 export const ScheduledQueryState = /*@__PURE__*/ S.String;
+
 export type ScheduledQueryRunStatus =
   | "AUTO_TRIGGER_SUCCESS"
   | "AUTO_TRIGGER_FAILURE"
@@ -503,6 +554,7 @@ export type ScheduledQueryRunStatus =
   | "MANUAL_TRIGGER_FAILURE"
   | (string & {});
 export const ScheduledQueryRunStatus = /*@__PURE__*/ S.String;
+
 export interface ExecutionStats {
   ExecutionTimeInMillis?: number;
   DataWrites?: number;
@@ -521,6 +573,7 @@ export const ExecutionStats = /*@__PURE__*/ S.suspend(() =>
     QueryResultRows: S.optional(S.Number),
   }),
 ).annotate({ identifier: "ExecutionStats" }) as any as S.Schema<ExecutionStats>;
+export type PartitionKey = string;
 export type PartitionKeyList = string[];
 export const PartitionKeyList = /*@__PURE__*/ S.Array(S.String);
 export interface QuerySpatialCoverageMax {
@@ -580,6 +633,7 @@ export const ScheduledQueryInsightsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ScheduledQueryInsightsResponse",
 }) as any as S.Schema<ScheduledQueryInsightsResponse>;
+export type S3ObjectKey = string;
 export interface S3ReportLocation {
   BucketName?: string;
   ObjectKey?: string;
@@ -600,6 +654,7 @@ export const ErrorReportLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ErrorReportLocation",
 }) as any as S.Schema<ErrorReportLocation>;
+export type ErrorMessage = string;
 export interface ScheduledQueryRunSummary {
   InvocationTime?: Date;
   TriggerTime?: Date;
@@ -681,6 +736,7 @@ export type ScheduledQueryInsightsMode =
   | "DISABLED"
   | (string & {});
 export const ScheduledQueryInsightsMode = /*@__PURE__*/ S.String;
+
 export interface ScheduledQueryInsights {
   Mode: ScheduledQueryInsightsMode;
 }
@@ -713,6 +769,8 @@ export const ExecuteScheduledQueryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecuteScheduledQueryResponse",
 }) as any as S.Schema<ExecuteScheduledQueryResponse>;
+export type MaxScheduledQueriesResults = number;
+export type NextScheduledQueriesResultsToken = string;
 export interface ListScheduledQueriesRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -789,6 +847,8 @@ export const ListScheduledQueriesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListScheduledQueriesResponse",
 }) as any as S.Schema<ListScheduledQueriesResponse>;
+export type MaxTagsForResourceResult = number;
+export type NextTagsForResourceResultsToken = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
   MaxResults?: number;
@@ -842,6 +902,7 @@ export type ScalarType =
   | "INTEGER"
   | (string & {});
 export const ScalarType = /*@__PURE__*/ S.String;
+
 export interface ColumnInfo {
   Name?: string;
   Type: Type;
@@ -929,11 +990,15 @@ export const PrepareQueryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PrepareQueryResponse",
 }) as any as S.Schema<PrepareQueryResponse>;
+export type ClientRequestToken = string | redacted.Redacted<string>;
+export type PaginationToken = string;
+export type MaxQueryResults = number;
 export type QueryInsightsMode =
   | "ENABLED_WITH_RATE_CONTROL"
   | "DISABLED"
   | (string & {});
 export const QueryInsightsMode = /*@__PURE__*/ S.String;
+
 export interface QueryInsights {
   Mode: QueryInsightsMode;
 }
@@ -958,6 +1023,7 @@ export const QueryRequest = /*@__PURE__*/ S.suspend(() =>
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({ identifier: "QueryRequest" }) as any as S.Schema<QueryRequest>;
+export type ScalarValue = string;
 export interface TimeSeriesDataPoint {
   Time: string;
   Value: Datum;
@@ -1181,68 +1247,7 @@ export const UpdateScheduledQueryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateScheduledQueryResponse",
 }) as any as S.Schema<UpdateScheduledQueryResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AccessDenied", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidEndpointException extends S.TaggedErrorClass<InvalidEndpointException>()(
-  "InvalidEndpointException",
-  { Message: S.optional(S.String) },
-  T.HttpError(421),
-) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String), ScheduledQueryArn: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TimestreamNotOnboarded extends S.TaggedErrorClass<TimestreamNotOnboarded>()(
-  "TimestreamNotOnboarded",
-  { Message: S.optional(S.String) },
-  T.SyntheticError({
-    from: "AccessDeniedException",
-    message: {
-      includes: "Only existing Timestream for LiveAnalytics customers",
-    },
-  }),
-).pipe(C.withAuthError) {}
-export class QueryExecutionException extends S.TaggedErrorClass<QueryExecutionException>()(
-  "QueryExecutionException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ServiceErrorMessage = string;
 export type CancelQueryError =
   | AccessDeniedException
   | InternalServerException
@@ -1277,6 +1282,7 @@ export const cancelQuery: API.OperationMethod<
   retry: Retry,
   operationName: "CancelQuery",
 }));
+
 export type CreateScheduledQueryError =
   | AccessDeniedException
   | ConflictException
@@ -1314,6 +1320,7 @@ export const createScheduledQuery: API.OperationMethod<
   retry: Retry,
   operationName: "CreateScheduledQuery",
 }));
+
 export type DeleteScheduledQueryError =
   | AccessDeniedException
   | InternalServerException
@@ -1345,6 +1352,7 @@ export const deleteScheduledQuery: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteScheduledQuery",
 }));
+
 export type DescribeAccountSettingsError =
   | AccessDeniedException
   | InternalServerException
@@ -1374,6 +1382,7 @@ export const describeAccountSettings: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccountSettings",
 }));
+
 export type DescribeEndpointsError =
   | InternalServerException
   | ThrottlingException
@@ -1416,6 +1425,7 @@ export const describeEndpoints: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEndpoints",
 }));
+
 export type DescribeScheduledQueryError =
   | AccessDeniedException
   | InternalServerException
@@ -1447,6 +1457,7 @@ export const describeScheduledQuery: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeScheduledQuery",
 }));
+
 export type ExecuteScheduledQueryError =
   | AccessDeniedException
   | InternalServerException
@@ -1480,6 +1491,7 @@ export const executeScheduledQuery: API.OperationMethod<
   retry: Retry,
   operationName: "ExecuteScheduledQuery",
 }));
+
 export type ListScheduledQueriesError =
   | AccessDeniedException
   | InternalServerException
@@ -1531,6 +1543,7 @@ export const listScheduledQueries: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InvalidEndpointException
   | ResourceNotFoundException
@@ -1579,6 +1592,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PrepareQueryError =
   | AccessDeniedException
   | InternalServerException
@@ -1610,6 +1624,7 @@ export const prepareQuery: API.OperationMethod<
   retry: Retry,
   operationName: "PrepareQuery",
 }));
+
 export type QueryError =
   | AccessDeniedException
   | ConflictException
@@ -1695,6 +1710,7 @@ export const query: API.OperationMethod<
     pageSize: "MaxRows",
   } as const,
 }));
+
 export type TagResourceError =
   | InvalidEndpointException
   | ResourceNotFoundException
@@ -1726,6 +1742,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InvalidEndpointException
   | ResourceNotFoundException
@@ -1753,6 +1770,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAccountSettingsError =
   | AccessDeniedException
   | InternalServerException
@@ -1784,6 +1802,7 @@ export const updateAccountSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAccountSettings",
 }));
+
 export type UpdateScheduledQueryError =
   | AccessDeniedException
   | InternalServerException

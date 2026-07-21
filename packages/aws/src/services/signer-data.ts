@@ -54,13 +54,29 @@ const rules = T.EndpointResolver((p, _) => {
   return err("No matching endpoint rule");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
+  "InternalServiceErrorException",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type PlatformId = string;
 export type Arn = string;
 export type CertificateHash = string;
-export type RevokedEntity = string;
-
-//# Schemas
 export type CertificateHashes = string[];
 export const CertificateHashes = /*@__PURE__*/ S.Array(S.String);
 export interface GetRevocationStatusRequest {
@@ -92,6 +108,7 @@ export const GetRevocationStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRevocationStatusRequest",
 }) as any as S.Schema<GetRevocationStatusRequest>;
+export type RevokedEntity = string;
 export type RevokedEntities = string[];
 export const RevokedEntities = /*@__PURE__*/ S.Array(S.String);
 export interface GetRevocationStatusResponse {
@@ -102,30 +119,6 @@ export const GetRevocationStatusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRevocationStatusResponse",
 }) as any as S.Schema<GetRevocationStatusResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String), code: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
-  "InternalServiceErrorException",
-  { message: S.optional(S.String), code: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { message: S.optional(S.String), code: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String), code: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type GetRevocationStatusError =
   | AccessDeniedException
   | InternalServiceErrorException

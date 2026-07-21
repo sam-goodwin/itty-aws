@@ -87,778 +87,43 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type TokenProviders = string;
-export type SensitiveString = string | redacted.Redacted<string>;
-export type TagKey = string;
-export type TagValue = string;
-export type AppId = string;
-export type Uuid = string;
-export type ListCodegenJobsLimit = number;
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
+  "ResourceConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
 export type ComponentName = string;
 export type ComponentType = string;
-export type OperandType = string;
-export type ListEntityLimit = number;
-export type FormName = string;
-export type FormDataSourceType = string;
-export type LabelDecorator = string;
-export type ThemeName = string;
-
-//# Schemas
-export interface ExchangeCodeForTokenRequestBody {
-  code: string | redacted.Redacted<string>;
-  redirectUri: string;
-  clientId?: string | redacted.Redacted<string>;
-}
-export const ExchangeCodeForTokenRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: SensitiveString,
-    redirectUri: S.String,
-    clientId: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "ExchangeCodeForTokenRequestBody",
-}) as any as S.Schema<ExchangeCodeForTokenRequestBody>;
-export interface ExchangeCodeForTokenRequest {
-  provider: string;
-  request: ExchangeCodeForTokenRequestBody;
-}
-export const ExchangeCodeForTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.String.pipe(T.HttpLabel("provider")),
-    request: ExchangeCodeForTokenRequestBody.pipe(T.HttpPayload()).annotate({
-      identifier: "ExchangeCodeForTokenRequestBody",
-    }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/tokens/{provider}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ExchangeCodeForTokenRequest",
-}) as any as S.Schema<ExchangeCodeForTokenRequest>;
-export interface ExchangeCodeForTokenResponse {
-  accessToken: string | redacted.Redacted<string>;
-  expiresIn: number;
-  refreshToken: string | redacted.Redacted<string>;
-}
-export const ExchangeCodeForTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessToken: SensitiveString,
-    expiresIn: S.Number,
-    refreshToken: SensitiveString,
-  }),
-).annotate({
-  identifier: "ExchangeCodeForTokenResponse",
-}) as any as S.Schema<ExchangeCodeForTokenResponse>;
-export interface GetMetadataRequest {
-  appId: string;
-  environmentName: string;
-}
-export const GetMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/app/{appId}/environment/{environmentName}/metadata",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetMetadataRequest",
-}) as any as S.Schema<GetMetadataRequest>;
-export type FeaturesMap = { [key: string]: string | undefined };
-export const FeaturesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
-export interface GetMetadataResponse {
-  features: { [key: string]: string | undefined };
-}
-export const GetMetadataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ features: FeaturesMap }),
-).annotate({
-  identifier: "GetMetadataResponse",
-}) as any as S.Schema<GetMetadataResponse>;
-export interface ListTagsForResourceRequest {
-  resourceArn: string;
-}
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
-export type Tags = { [key: string]: string | undefined };
-export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
-export interface ListTagsForResourceResponse {
-  tags: { [key: string]: string | undefined };
-}
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: Tags }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
-export interface PutMetadataFlagBody {
-  newValue: string;
-}
-export const PutMetadataFlagBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ newValue: S.String }),
-).annotate({
-  identifier: "PutMetadataFlagBody",
-}) as any as S.Schema<PutMetadataFlagBody>;
-export interface PutMetadataFlagRequest {
-  appId: string;
-  environmentName: string;
-  featureName: string;
-  body: PutMetadataFlagBody;
-}
-export const PutMetadataFlagRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    featureName: S.String.pipe(T.HttpLabel("featureName")),
-    body: PutMetadataFlagBody.pipe(T.HttpPayload()).annotate({
-      identifier: "PutMetadataFlagBody",
-    }),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/app/{appId}/environment/{environmentName}/metadata/features/{featureName}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutMetadataFlagRequest",
-}) as any as S.Schema<PutMetadataFlagRequest>;
-export interface PutMetadataFlagResponse {}
-export const PutMetadataFlagResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PutMetadataFlagResponse",
-}) as any as S.Schema<PutMetadataFlagResponse>;
-export interface RefreshTokenRequestBody {
-  token: string | redacted.Redacted<string>;
-  clientId?: string | redacted.Redacted<string>;
-}
-export const RefreshTokenRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ token: SensitiveString, clientId: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "RefreshTokenRequestBody",
-}) as any as S.Schema<RefreshTokenRequestBody>;
-export interface RefreshTokenRequest {
-  provider: string;
-  refreshTokenBody: RefreshTokenRequestBody;
-}
-export const RefreshTokenRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.String.pipe(T.HttpLabel("provider")),
-    refreshTokenBody: RefreshTokenRequestBody.pipe(T.HttpPayload()).annotate({
-      identifier: "RefreshTokenRequestBody",
-    }),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/tokens/{provider}/refresh" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "RefreshTokenRequest",
-}) as any as S.Schema<RefreshTokenRequest>;
-export interface RefreshTokenResponse {
-  accessToken: string | redacted.Redacted<string>;
-  expiresIn: number;
-}
-export const RefreshTokenResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ accessToken: SensitiveString, expiresIn: S.Number }),
-).annotate({
-  identifier: "RefreshTokenResponse",
-}) as any as S.Schema<RefreshTokenResponse>;
-export interface TagResourceRequest {
-  resourceArn: string;
-  tags: { [key: string]: string | undefined };
-}
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tags: Tags,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "TagResourceRequest",
-}) as any as S.Schema<TagResourceRequest>;
-export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
-export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
-export interface UntagResourceRequest {
-  resourceArn: string;
-  tagKeys: string[];
-}
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UntagResourceRequest",
-}) as any as S.Schema<UntagResourceRequest>;
-export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
-export type JSModule = "es2020" | "esnext" | (string & {});
-export const JSModule = /*@__PURE__*/ S.String;
-export type JSTarget = "es2015" | "es2020" | (string & {});
-export const JSTarget = /*@__PURE__*/ S.String;
-export type JSScript = "jsx" | "tsx" | "js" | (string & {});
-export const JSScript = /*@__PURE__*/ S.String;
-export interface GraphQLRenderConfig {
-  typesFilePath: string;
-  queriesFilePath: string;
-  mutationsFilePath: string;
-  subscriptionsFilePath: string;
-  fragmentsFilePath: string;
-}
-export const GraphQLRenderConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    typesFilePath: S.String,
-    queriesFilePath: S.String,
-    mutationsFilePath: S.String,
-    subscriptionsFilePath: S.String,
-    fragmentsFilePath: S.String,
-  }),
-).annotate({
-  identifier: "GraphQLRenderConfig",
-}) as any as S.Schema<GraphQLRenderConfig>;
-export interface DataStoreRenderConfig {}
-export const DataStoreRenderConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DataStoreRenderConfig",
-}) as any as S.Schema<DataStoreRenderConfig>;
-export interface NoApiRenderConfig {}
-export const NoApiRenderConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "NoApiRenderConfig",
-}) as any as S.Schema<NoApiRenderConfig>;
-export type ApiConfiguration =
-  | {
-      graphQLConfig: GraphQLRenderConfig;
-      dataStoreConfig?: never;
-      noApiConfig?: never;
-    }
-  | {
-      graphQLConfig?: never;
-      dataStoreConfig: DataStoreRenderConfig;
-      noApiConfig?: never;
-    }
-  | {
-      graphQLConfig?: never;
-      dataStoreConfig?: never;
-      noApiConfig: NoApiRenderConfig;
-    };
-export const ApiConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ graphQLConfig: GraphQLRenderConfig }),
-  S.Struct({ dataStoreConfig: DataStoreRenderConfig }),
-  S.Struct({ noApiConfig: NoApiRenderConfig }),
-]);
-export type ReactCodegenDependencies = { [key: string]: string | undefined };
-export const ReactCodegenDependencies = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
-export interface ReactStartCodegenJobData {
-  module?: JSModule;
-  target?: JSTarget;
-  script?: JSScript;
-  renderTypeDeclarations?: boolean;
-  inlineSourceMap?: boolean;
-  apiConfiguration?: ApiConfiguration;
-  dependencies?: { [key: string]: string | undefined };
-}
-export const ReactStartCodegenJobData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    module: S.optional(JSModule),
-    target: S.optional(JSTarget),
-    script: S.optional(JSScript),
-    renderTypeDeclarations: S.optional(S.Boolean),
-    inlineSourceMap: S.optional(S.Boolean),
-    apiConfiguration: S.optional(ApiConfiguration),
-    dependencies: S.optional(ReactCodegenDependencies),
-  }),
-).annotate({
-  identifier: "ReactStartCodegenJobData",
-}) as any as S.Schema<ReactStartCodegenJobData>;
-export type CodegenJobRenderConfig = { react: ReactStartCodegenJobData };
-export const CodegenJobRenderConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ react: ReactStartCodegenJobData }),
-]);
-export type CodegenJobGenericDataSourceType = "DataStore" | (string & {});
-export const CodegenJobGenericDataSourceType = /*@__PURE__*/ S.String;
-export type CodegenGenericDataFieldDataType =
-  | "ID"
-  | "String"
-  | "Int"
-  | "Float"
-  | "AWSDate"
-  | "AWSTime"
-  | "AWSDateTime"
-  | "AWSTimestamp"
-  | "AWSEmail"
-  | "AWSURL"
-  | "AWSIPAddress"
-  | "Boolean"
-  | "AWSJSON"
-  | "AWSPhone"
-  | "Enum"
-  | "Model"
-  | "NonModel"
-  | (string & {});
-export const CodegenGenericDataFieldDataType = /*@__PURE__*/ S.String;
-export type GenericDataRelationshipType =
-  | "HAS_MANY"
-  | "HAS_ONE"
-  | "BELONGS_TO"
-  | (string & {});
-export const GenericDataRelationshipType = /*@__PURE__*/ S.String;
-export type RelatedModelFieldsList = string[];
-export const RelatedModelFieldsList = /*@__PURE__*/ S.Array(S.String);
-export type AssociatedFieldsList = string[];
-export const AssociatedFieldsList = /*@__PURE__*/ S.Array(S.String);
-export interface CodegenGenericDataRelationshipType {
-  type: GenericDataRelationshipType;
-  relatedModelName: string;
-  relatedModelFields?: string[];
-  canUnlinkAssociatedModel?: boolean;
-  relatedJoinFieldName?: string;
-  relatedJoinTableName?: string;
-  belongsToFieldOnRelatedModel?: string;
-  associatedFields?: string[];
-  isHasManyIndex?: boolean;
-}
-export const CodegenGenericDataRelationshipType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: GenericDataRelationshipType,
-    relatedModelName: S.String,
-    relatedModelFields: S.optional(RelatedModelFieldsList),
-    canUnlinkAssociatedModel: S.optional(S.Boolean),
-    relatedJoinFieldName: S.optional(S.String),
-    relatedJoinTableName: S.optional(S.String),
-    belongsToFieldOnRelatedModel: S.optional(S.String),
-    associatedFields: S.optional(AssociatedFieldsList),
-    isHasManyIndex: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CodegenGenericDataRelationshipType",
-}) as any as S.Schema<CodegenGenericDataRelationshipType>;
-export interface CodegenGenericDataField {
-  dataType: CodegenGenericDataFieldDataType;
-  dataTypeValue: string;
-  required: boolean;
-  readOnly: boolean;
-  isArray: boolean;
-  relationship?: CodegenGenericDataRelationshipType;
-}
-export const CodegenGenericDataField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataType: CodegenGenericDataFieldDataType,
-    dataTypeValue: S.String,
-    required: S.Boolean,
-    readOnly: S.Boolean,
-    isArray: S.Boolean,
-    relationship: S.optional(CodegenGenericDataRelationshipType),
-  }),
-).annotate({
-  identifier: "CodegenGenericDataField",
-}) as any as S.Schema<CodegenGenericDataField>;
-export type CodegenGenericDataFields = {
-  [key: string]: CodegenGenericDataField | undefined;
-};
-export const CodegenGenericDataFields = /*@__PURE__*/ S.Record(
-  S.String,
-  CodegenGenericDataField.pipe(S.optional),
-);
-export type CodegenPrimaryKeysList = string[];
-export const CodegenPrimaryKeysList = /*@__PURE__*/ S.Array(S.String);
-export interface CodegenGenericDataModel {
-  fields: { [key: string]: CodegenGenericDataField | undefined };
-  isJoinTable?: boolean;
-  primaryKeys: string[];
-}
-export const CodegenGenericDataModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: CodegenGenericDataFields,
-    isJoinTable: S.optional(S.Boolean),
-    primaryKeys: CodegenPrimaryKeysList,
-  }),
-).annotate({
-  identifier: "CodegenGenericDataModel",
-}) as any as S.Schema<CodegenGenericDataModel>;
-export type CodegenGenericDataModels = {
-  [key: string]: CodegenGenericDataModel | undefined;
-};
-export const CodegenGenericDataModels = /*@__PURE__*/ S.Record(
-  S.String,
-  CodegenGenericDataModel.pipe(S.optional),
-);
-export type CodegenGenericDataEnumValuesList = string[];
-export const CodegenGenericDataEnumValuesList = /*@__PURE__*/ S.Array(S.String);
-export interface CodegenGenericDataEnum {
-  values: string[];
-}
-export const CodegenGenericDataEnum = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ values: CodegenGenericDataEnumValuesList }),
-).annotate({
-  identifier: "CodegenGenericDataEnum",
-}) as any as S.Schema<CodegenGenericDataEnum>;
-export type CodegenGenericDataEnums = {
-  [key: string]: CodegenGenericDataEnum | undefined;
-};
-export const CodegenGenericDataEnums = /*@__PURE__*/ S.Record(
-  S.String,
-  CodegenGenericDataEnum.pipe(S.optional),
-);
-export type CodegenGenericDataNonModelFields = {
-  [key: string]: CodegenGenericDataField | undefined;
-};
-export const CodegenGenericDataNonModelFields = /*@__PURE__*/ S.Record(
-  S.String,
-  CodegenGenericDataField.pipe(S.optional),
-);
-export interface CodegenGenericDataNonModel {
-  fields: { [key: string]: CodegenGenericDataField | undefined };
-}
-export const CodegenGenericDataNonModel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ fields: CodegenGenericDataNonModelFields }),
-).annotate({
-  identifier: "CodegenGenericDataNonModel",
-}) as any as S.Schema<CodegenGenericDataNonModel>;
-export type CodegenGenericDataNonModels = {
-  [key: string]: CodegenGenericDataNonModel | undefined;
-};
-export const CodegenGenericDataNonModels = /*@__PURE__*/ S.Record(
-  S.String,
-  CodegenGenericDataNonModel.pipe(S.optional),
-);
-export interface CodegenJobGenericDataSchema {
-  dataSourceType: CodegenJobGenericDataSourceType;
-  models: { [key: string]: CodegenGenericDataModel | undefined };
-  enums: { [key: string]: CodegenGenericDataEnum | undefined };
-  nonModels: { [key: string]: CodegenGenericDataNonModel | undefined };
-}
-export const CodegenJobGenericDataSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataSourceType: CodegenJobGenericDataSourceType,
-    models: CodegenGenericDataModels,
-    enums: CodegenGenericDataEnums,
-    nonModels: CodegenGenericDataNonModels,
-  }),
-).annotate({
-  identifier: "CodegenJobGenericDataSchema",
-}) as any as S.Schema<CodegenJobGenericDataSchema>;
-export interface CodegenFeatureFlags {
-  isRelationshipSupported?: boolean;
-  isNonModelSupported?: boolean;
-}
-export const CodegenFeatureFlags = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isRelationshipSupported: S.optional(S.Boolean),
-    isNonModelSupported: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CodegenFeatureFlags",
-}) as any as S.Schema<CodegenFeatureFlags>;
-export interface StartCodegenJobData {
-  renderConfig: CodegenJobRenderConfig;
-  genericDataSchema?: CodegenJobGenericDataSchema;
-  autoGenerateForms?: boolean;
-  features?: CodegenFeatureFlags;
-  tags?: { [key: string]: string | undefined };
-}
-export const StartCodegenJobData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    renderConfig: CodegenJobRenderConfig,
-    genericDataSchema: S.optional(CodegenJobGenericDataSchema),
-    autoGenerateForms: S.optional(S.Boolean),
-    features: S.optional(CodegenFeatureFlags),
-    tags: S.optional(Tags),
-  }),
-).annotate({
-  identifier: "StartCodegenJobData",
-}) as any as S.Schema<StartCodegenJobData>;
-export interface StartCodegenJobRequest {
-  appId: string;
-  environmentName: string;
-  clientToken?: string;
-  codegenJobToCreate: StartCodegenJobData;
-}
-export const StartCodegenJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    clientToken: S.optional(S.String).pipe(
-      T.HttpQuery("clientToken"),
-      T.IdempotencyToken(),
-    ),
-    codegenJobToCreate: StartCodegenJobData.pipe(T.HttpPayload()).annotate({
-      identifier: "StartCodegenJobData",
-    }),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/app/{appId}/environment/{environmentName}/codegen-jobs",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartCodegenJobRequest",
-}) as any as S.Schema<StartCodegenJobRequest>;
-export type CodegenJobStatus =
-  | "in_progress"
-  | "failed"
-  | "succeeded"
-  | (string & {});
-export const CodegenJobStatus = /*@__PURE__*/ S.String;
-export interface CodegenJobAsset {
-  downloadUrl?: string;
-}
-export const CodegenJobAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ downloadUrl: S.optional(S.String) }),
-).annotate({
-  identifier: "CodegenJobAsset",
-}) as any as S.Schema<CodegenJobAsset>;
-export interface CodegenDependency {
-  name?: string;
-  supportedVersion?: string;
-  isSemVer?: boolean;
-  reason?: string;
-}
-export const CodegenDependency = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    supportedVersion: S.optional(S.String),
-    isSemVer: S.optional(S.Boolean),
-    reason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CodegenDependency",
-}) as any as S.Schema<CodegenDependency>;
-export type CodegenDependencies = CodegenDependency[];
-export const CodegenDependencies = /*@__PURE__*/ S.Array(CodegenDependency);
-export interface CodegenJob {
-  id: string;
-  appId: string;
-  environmentName: string;
-  renderConfig?: CodegenJobRenderConfig;
-  genericDataSchema?: CodegenJobGenericDataSchema;
-  autoGenerateForms?: boolean;
-  features?: CodegenFeatureFlags;
-  status?: CodegenJobStatus;
-  statusMessage?: string;
-  asset?: CodegenJobAsset;
-  tags?: { [key: string]: string | undefined };
-  createdAt?: Date;
-  modifiedAt?: Date;
-  dependencies?: CodegenDependency[];
-}
-export const CodegenJob = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    appId: S.String,
-    environmentName: S.String,
-    renderConfig: S.optional(CodegenJobRenderConfig),
-    genericDataSchema: S.optional(CodegenJobGenericDataSchema),
-    autoGenerateForms: S.optional(S.Boolean),
-    features: S.optional(CodegenFeatureFlags),
-    status: S.optional(CodegenJobStatus),
-    statusMessage: S.optional(S.String),
-    asset: S.optional(CodegenJobAsset),
-    tags: S.optional(Tags),
-    createdAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    modifiedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    dependencies: S.optional(CodegenDependencies),
-  }),
-).annotate({ identifier: "CodegenJob" }) as any as S.Schema<CodegenJob>;
-export interface StartCodegenJobResponse {
-  entity?: CodegenJob;
-}
-export const StartCodegenJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entity: S.optional(CodegenJob)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CodegenJob" }),
-  }),
-).annotate({
-  identifier: "StartCodegenJobResponse",
-}) as any as S.Schema<StartCodegenJobResponse>;
-export interface GetCodegenJobRequest {
-  appId: string;
-  environmentName: string;
-  id: string;
-}
-export const GetCodegenJobRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    id: S.String.pipe(T.HttpLabel("id")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/app/{appId}/environment/{environmentName}/codegen-jobs/{id}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCodegenJobRequest",
-}) as any as S.Schema<GetCodegenJobRequest>;
-export interface GetCodegenJobResponse {
-  job?: CodegenJob;
-}
-export const GetCodegenJobResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    job: S.optional(CodegenJob)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "CodegenJob" }),
-  }),
-).annotate({
-  identifier: "GetCodegenJobResponse",
-}) as any as S.Schema<GetCodegenJobResponse>;
-export interface ListCodegenJobsRequest {
-  appId: string;
-  environmentName: string;
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListCodegenJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/app/{appId}/environment/{environmentName}/codegen-jobs",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListCodegenJobsRequest",
-}) as any as S.Schema<ListCodegenJobsRequest>;
-export interface CodegenJobSummary {
-  appId: string;
-  environmentName: string;
-  id: string;
-  createdAt?: Date;
-  modifiedAt?: Date;
-}
-export const CodegenJobSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String,
-    environmentName: S.String,
-    id: S.String,
-    createdAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    modifiedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({
-  identifier: "CodegenJobSummary",
-}) as any as S.Schema<CodegenJobSummary>;
-export type CodegenJobSummaryList = CodegenJobSummary[];
-export const CodegenJobSummaryList = /*@__PURE__*/ S.Array(CodegenJobSummary);
-export interface ListCodegenJobsResponse {
-  entities: CodegenJobSummary[];
-  nextToken?: string;
-}
-export const ListCodegenJobsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entities: CodegenJobSummaryList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCodegenJobsResponse",
-}) as any as S.Schema<ListCodegenJobsResponse>;
 export interface ComponentPropertyBindingProperties {
   property: string;
   field?: string;
@@ -1091,6 +356,7 @@ export const ComponentVariant = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ComponentVariant>;
 export type ComponentVariants = ComponentVariant[];
 export const ComponentVariants = /*@__PURE__*/ S.Array(ComponentVariant);
+export type OperandType = string;
 export interface Predicate {
   or?: Predicate[];
   and?: Predicate[];
@@ -1167,6 +433,7 @@ export const ComponentBindingProperties = /*@__PURE__*/ S.Record(
 );
 export type SortDirection = "ASC" | "DESC" | (string & {});
 export const SortDirection = /*@__PURE__*/ S.String;
+
 export interface SortProperty {
   field: string;
   direction: SortDirection;
@@ -1201,6 +468,10 @@ export const ComponentCollectionProperties = /*@__PURE__*/ S.Record(
   S.String,
   ComponentDataConfiguration.pipe(S.optional),
 );
+export type TagKey = string;
+export type TagValue = string;
+export type Tags = { [key: string]: string | undefined };
+export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CreateComponentData {
   name: string;
   sourceId?: string;
@@ -1272,6 +543,7 @@ export const CreateComponentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateComponentRequest",
 }) as any as S.Schema<CreateComponentRequest>;
+export type Uuid = string;
 export interface Component {
   appId: string;
   environmentName: string;
@@ -1332,255 +604,8 @@ export const CreateComponentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateComponentResponse",
 }) as any as S.Schema<CreateComponentResponse>;
-export interface GetComponentRequest {
-  appId: string;
-  environmentName: string;
-  id: string;
-}
-export const GetComponentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    id: S.String.pipe(T.HttpLabel("id")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/app/{appId}/environment/{environmentName}/components/{id}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetComponentRequest",
-}) as any as S.Schema<GetComponentRequest>;
-export interface GetComponentResponse {
-  component?: Component;
-}
-export const GetComponentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    component: S.optional(Component)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "Component" }),
-  }),
-).annotate({
-  identifier: "GetComponentResponse",
-}) as any as S.Schema<GetComponentResponse>;
-export interface UpdateComponentData {
-  id?: string;
-  name?: string;
-  sourceId?: string;
-  componentType?: string;
-  properties?: { [key: string]: ComponentProperty | undefined };
-  children?: ComponentChild[];
-  variants?: ComponentVariant[];
-  overrides?: {
-    [key: string]: { [key: string]: string | undefined } | undefined;
-  };
-  bindingProperties?: {
-    [key: string]: ComponentBindingPropertiesValue | undefined;
-  };
-  collectionProperties?: {
-    [key: string]: ComponentDataConfiguration | undefined;
-  };
-  events?: { [key: string]: ComponentEvent | undefined };
-  schemaVersion?: string;
-}
-export const UpdateComponentData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    sourceId: S.optional(S.String),
-    componentType: S.optional(S.String),
-    properties: S.optional(ComponentProperties),
-    children: S.optional(ComponentChildList),
-    variants: S.optional(ComponentVariants),
-    overrides: S.optional(ComponentOverrides),
-    bindingProperties: S.optional(ComponentBindingProperties),
-    collectionProperties: S.optional(ComponentCollectionProperties),
-    events: S.optional(ComponentEvents),
-    schemaVersion: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateComponentData",
-}) as any as S.Schema<UpdateComponentData>;
-export interface UpdateComponentRequest {
-  appId: string;
-  environmentName: string;
-  id: string;
-  clientToken?: string;
-  updatedComponent: UpdateComponentData;
-}
-export const UpdateComponentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    id: S.String.pipe(T.HttpLabel("id")),
-    clientToken: S.optional(S.String).pipe(
-      T.HttpQuery("clientToken"),
-      T.IdempotencyToken(),
-    ),
-    updatedComponent: UpdateComponentData.pipe(T.HttpPayload()).annotate({
-      identifier: "UpdateComponentData",
-    }),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/app/{appId}/environment/{environmentName}/components/{id}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateComponentRequest",
-}) as any as S.Schema<UpdateComponentRequest>;
-export interface UpdateComponentResponse {
-  entity?: Component;
-}
-export const UpdateComponentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entity: S.optional(Component)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "Component" }),
-  }),
-).annotate({
-  identifier: "UpdateComponentResponse",
-}) as any as S.Schema<UpdateComponentResponse>;
-export interface DeleteComponentRequest {
-  appId: string;
-  environmentName: string;
-  id: string;
-}
-export const DeleteComponentRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    id: S.String.pipe(T.HttpLabel("id")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/app/{appId}/environment/{environmentName}/components/{id}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteComponentRequest",
-}) as any as S.Schema<DeleteComponentRequest>;
-export interface DeleteComponentResponse {}
-export const DeleteComponentResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteComponentResponse",
-}) as any as S.Schema<DeleteComponentResponse>;
-export interface ListComponentsRequest {
-  appId: string;
-  environmentName: string;
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListComponentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/app/{appId}/environment/{environmentName}/components",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListComponentsRequest",
-}) as any as S.Schema<ListComponentsRequest>;
-export interface ComponentSummary {
-  appId: string;
-  environmentName: string;
-  id: string;
-  name: string;
-  componentType: string;
-}
-export const ComponentSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String,
-    environmentName: S.String,
-    id: S.String,
-    name: S.String,
-    componentType: S.String,
-  }),
-).annotate({
-  identifier: "ComponentSummary",
-}) as any as S.Schema<ComponentSummary>;
-export type ComponentSummaryList = ComponentSummary[];
-export const ComponentSummaryList = /*@__PURE__*/ S.Array(ComponentSummary);
-export interface ListComponentsResponse {
-  entities: ComponentSummary[];
-  nextToken?: string;
-}
-export const ListComponentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ entities: ComponentSummaryList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListComponentsResponse",
-}) as any as S.Schema<ListComponentsResponse>;
-export interface ExportComponentsRequest {
-  appId: string;
-  environmentName: string;
-  nextToken?: string;
-}
-export const ExportComponentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/export/app/{appId}/environment/{environmentName}/components",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ExportComponentsRequest",
-}) as any as S.Schema<ExportComponentsRequest>;
-export type ComponentList = Component[];
-export const ComponentList = /*@__PURE__*/ S.Array(Component);
-export interface ExportComponentsResponse {
-  entities: Component[];
-  nextToken?: string;
-}
-export const ExportComponentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ entities: ComponentList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ExportComponentsResponse",
-}) as any as S.Schema<ExportComponentsResponse>;
+export type FormName = string;
+export type FormDataSourceType = string;
 export interface FormDataTypeConfig {
   dataSourceType: string;
   dataTypeName: string;
@@ -1592,8 +617,10 @@ export const FormDataTypeConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FormDataTypeConfig>;
 export type FormActionType = "create" | "update" | (string & {});
 export const FormActionType = /*@__PURE__*/ S.String;
+
 export type FixedPosition = "first" | (string & {});
 export const FixedPosition = /*@__PURE__*/ S.String;
+
 export type FieldPosition =
   | { fixed: FixedPosition; rightOf?: never; below?: never }
   | { fixed?: never; rightOf: string; below?: never }
@@ -1694,6 +721,7 @@ export type StorageAccessLevel =
   | "private"
   | (string & {});
 export const StorageAccessLevel = /*@__PURE__*/ S.String;
+
 export type StrValues = string[];
 export const StrValues = /*@__PURE__*/ S.Array(S.String);
 export interface FileUploaderFieldConfig {
@@ -1851,6 +879,7 @@ export type FormButtonsPosition =
   | "top_and_bottom"
   | (string & {});
 export const FormButtonsPosition = /*@__PURE__*/ S.String;
+
 export interface FormButton {
   excluded?: boolean;
   children?: string;
@@ -1877,6 +906,7 @@ export const FormCTA = /*@__PURE__*/ S.suspend(() =>
     submit: S.optional(FormButton),
   }),
 ).annotate({ identifier: "FormCTA" }) as any as S.Schema<FormCTA>;
+export type LabelDecorator = string;
 export interface CreateFormData {
   name: string;
   dataType: FormDataTypeConfig;
@@ -1980,239 +1010,7 @@ export const CreateFormResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFormResponse",
 }) as any as S.Schema<CreateFormResponse>;
-export interface GetFormRequest {
-  appId: string;
-  environmentName: string;
-  id: string;
-}
-export const GetFormRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    id: S.String.pipe(T.HttpLabel("id")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/app/{appId}/environment/{environmentName}/forms/{id}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({ identifier: "GetFormRequest" }) as any as S.Schema<GetFormRequest>;
-export interface GetFormResponse {
-  form?: Form;
-}
-export const GetFormResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    form: S.optional(Form)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "Form" }),
-  }),
-).annotate({
-  identifier: "GetFormResponse",
-}) as any as S.Schema<GetFormResponse>;
-export interface UpdateFormData {
-  name?: string;
-  dataType?: FormDataTypeConfig;
-  formActionType?: FormActionType;
-  fields?: { [key: string]: FieldConfig | undefined };
-  style?: FormStyle;
-  sectionalElements?: { [key: string]: SectionalElement | undefined };
-  schemaVersion?: string;
-  cta?: FormCTA;
-  labelDecorator?: string;
-}
-export const UpdateFormData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    dataType: S.optional(FormDataTypeConfig),
-    formActionType: S.optional(FormActionType),
-    fields: S.optional(FieldsMap),
-    style: S.optional(FormStyle),
-    sectionalElements: S.optional(SectionalElementMap),
-    schemaVersion: S.optional(S.String),
-    cta: S.optional(FormCTA),
-    labelDecorator: S.optional(S.String),
-  }),
-).annotate({ identifier: "UpdateFormData" }) as any as S.Schema<UpdateFormData>;
-export interface UpdateFormRequest {
-  appId: string;
-  environmentName: string;
-  id: string;
-  clientToken?: string;
-  updatedForm: UpdateFormData;
-}
-export const UpdateFormRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    id: S.String.pipe(T.HttpLabel("id")),
-    clientToken: S.optional(S.String).pipe(
-      T.HttpQuery("clientToken"),
-      T.IdempotencyToken(),
-    ),
-    updatedForm: UpdateFormData.pipe(T.HttpPayload()).annotate({
-      identifier: "UpdateFormData",
-    }),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/app/{appId}/environment/{environmentName}/forms/{id}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateFormRequest",
-}) as any as S.Schema<UpdateFormRequest>;
-export interface UpdateFormResponse {
-  entity?: Form;
-}
-export const UpdateFormResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    entity: S.optional(Form)
-      .pipe(T.HttpPayload())
-      .annotate({ identifier: "Form" }),
-  }),
-).annotate({
-  identifier: "UpdateFormResponse",
-}) as any as S.Schema<UpdateFormResponse>;
-export interface DeleteFormRequest {
-  appId: string;
-  environmentName: string;
-  id: string;
-}
-export const DeleteFormRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    id: S.String.pipe(T.HttpLabel("id")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/app/{appId}/environment/{environmentName}/forms/{id}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteFormRequest",
-}) as any as S.Schema<DeleteFormRequest>;
-export interface DeleteFormResponse {}
-export const DeleteFormResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteFormResponse",
-}) as any as S.Schema<DeleteFormResponse>;
-export interface ListFormsRequest {
-  appId: string;
-  environmentName: string;
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListFormsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/app/{appId}/environment/{environmentName}/forms",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListFormsRequest",
-}) as any as S.Schema<ListFormsRequest>;
-export interface FormSummary {
-  appId: string;
-  dataType: FormDataTypeConfig;
-  environmentName: string;
-  formActionType: FormActionType;
-  id: string;
-  name: string;
-}
-export const FormSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String,
-    dataType: FormDataTypeConfig,
-    environmentName: S.String,
-    formActionType: FormActionType,
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({ identifier: "FormSummary" }) as any as S.Schema<FormSummary>;
-export type FormSummaryList = FormSummary[];
-export const FormSummaryList = /*@__PURE__*/ S.Array(FormSummary);
-export interface ListFormsResponse {
-  entities: FormSummary[];
-  nextToken?: string;
-}
-export const ListFormsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ entities: FormSummaryList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListFormsResponse",
-}) as any as S.Schema<ListFormsResponse>;
-export interface ExportFormsRequest {
-  appId: string;
-  environmentName: string;
-  nextToken?: string;
-}
-export const ExportFormsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/export/app/{appId}/environment/{environmentName}/forms",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ExportFormsRequest",
-}) as any as S.Schema<ExportFormsRequest>;
-export type FormList = Form[];
-export const FormList = /*@__PURE__*/ S.Array(Form);
-export interface ExportFormsResponse {
-  entities: Form[];
-  nextToken?: string;
-}
-export const ExportFormsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ entities: FormList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ExportFormsResponse",
-}) as any as S.Schema<ExportFormsResponse>;
+export type ThemeName = string;
 export interface ThemeValue {
   value?: string;
   children?: ThemeValues[];
@@ -2334,6 +1132,756 @@ export const CreateThemeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateThemeResponse",
 }) as any as S.Schema<CreateThemeResponse>;
+export interface DeleteComponentRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
+}
+export const DeleteComponentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    id: S.String.pipe(T.HttpLabel("id")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/app/{appId}/environment/{environmentName}/components/{id}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteComponentRequest",
+}) as any as S.Schema<DeleteComponentRequest>;
+export interface DeleteComponentResponse {}
+export const DeleteComponentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteComponentResponse",
+}) as any as S.Schema<DeleteComponentResponse>;
+export interface DeleteFormRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
+}
+export const DeleteFormRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    id: S.String.pipe(T.HttpLabel("id")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/app/{appId}/environment/{environmentName}/forms/{id}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteFormRequest",
+}) as any as S.Schema<DeleteFormRequest>;
+export interface DeleteFormResponse {}
+export const DeleteFormResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteFormResponse",
+}) as any as S.Schema<DeleteFormResponse>;
+export interface DeleteThemeRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
+}
+export const DeleteThemeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    id: S.String.pipe(T.HttpLabel("id")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/app/{appId}/environment/{environmentName}/themes/{id}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteThemeRequest",
+}) as any as S.Schema<DeleteThemeRequest>;
+export interface DeleteThemeResponse {}
+export const DeleteThemeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteThemeResponse",
+}) as any as S.Schema<DeleteThemeResponse>;
+export type TokenProviders = string;
+export type SensitiveString = string | redacted.Redacted<string>;
+export interface ExchangeCodeForTokenRequestBody {
+  code: string | redacted.Redacted<string>;
+  redirectUri: string;
+  clientId?: string | redacted.Redacted<string>;
+}
+export const ExchangeCodeForTokenRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: SensitiveString,
+    redirectUri: S.String,
+    clientId: S.optional(SensitiveString),
+  }),
+).annotate({
+  identifier: "ExchangeCodeForTokenRequestBody",
+}) as any as S.Schema<ExchangeCodeForTokenRequestBody>;
+export interface ExchangeCodeForTokenRequest {
+  provider: string;
+  request: ExchangeCodeForTokenRequestBody;
+}
+export const ExchangeCodeForTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.String.pipe(T.HttpLabel("provider")),
+    request: ExchangeCodeForTokenRequestBody.pipe(T.HttpPayload()).annotate({
+      identifier: "ExchangeCodeForTokenRequestBody",
+    }),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/tokens/{provider}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ExchangeCodeForTokenRequest",
+}) as any as S.Schema<ExchangeCodeForTokenRequest>;
+export interface ExchangeCodeForTokenResponse {
+  accessToken: string | redacted.Redacted<string>;
+  expiresIn: number;
+  refreshToken: string | redacted.Redacted<string>;
+}
+export const ExchangeCodeForTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessToken: SensitiveString,
+    expiresIn: S.Number,
+    refreshToken: SensitiveString,
+  }),
+).annotate({
+  identifier: "ExchangeCodeForTokenResponse",
+}) as any as S.Schema<ExchangeCodeForTokenResponse>;
+export interface ExportComponentsRequest {
+  appId: string;
+  environmentName: string;
+  nextToken?: string;
+}
+export const ExportComponentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/export/app/{appId}/environment/{environmentName}/components",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ExportComponentsRequest",
+}) as any as S.Schema<ExportComponentsRequest>;
+export type ComponentList = Component[];
+export const ComponentList = /*@__PURE__*/ S.Array(Component);
+export interface ExportComponentsResponse {
+  entities: Component[];
+  nextToken?: string;
+}
+export const ExportComponentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ entities: ComponentList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ExportComponentsResponse",
+}) as any as S.Schema<ExportComponentsResponse>;
+export interface ExportFormsRequest {
+  appId: string;
+  environmentName: string;
+  nextToken?: string;
+}
+export const ExportFormsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/export/app/{appId}/environment/{environmentName}/forms",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ExportFormsRequest",
+}) as any as S.Schema<ExportFormsRequest>;
+export type FormList = Form[];
+export const FormList = /*@__PURE__*/ S.Array(Form);
+export interface ExportFormsResponse {
+  entities: Form[];
+  nextToken?: string;
+}
+export const ExportFormsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ entities: FormList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ExportFormsResponse",
+}) as any as S.Schema<ExportFormsResponse>;
+export interface ExportThemesRequest {
+  appId: string;
+  environmentName: string;
+  nextToken?: string;
+}
+export const ExportThemesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/export/app/{appId}/environment/{environmentName}/themes",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ExportThemesRequest",
+}) as any as S.Schema<ExportThemesRequest>;
+export type ThemeList = Theme[];
+export const ThemeList = /*@__PURE__*/ S.Array(Theme);
+export interface ExportThemesResponse {
+  entities: Theme[];
+  nextToken?: string;
+}
+export const ExportThemesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ entities: ThemeList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ExportThemesResponse",
+}) as any as S.Schema<ExportThemesResponse>;
+export type AppId = string;
+export interface GetCodegenJobRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
+}
+export const GetCodegenJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    id: S.String.pipe(T.HttpLabel("id")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/app/{appId}/environment/{environmentName}/codegen-jobs/{id}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetCodegenJobRequest",
+}) as any as S.Schema<GetCodegenJobRequest>;
+export type JSModule = "es2020" | "esnext" | (string & {});
+export const JSModule = /*@__PURE__*/ S.String;
+
+export type JSTarget = "es2015" | "es2020" | (string & {});
+export const JSTarget = /*@__PURE__*/ S.String;
+
+export type JSScript = "jsx" | "tsx" | "js" | (string & {});
+export const JSScript = /*@__PURE__*/ S.String;
+
+export interface GraphQLRenderConfig {
+  typesFilePath: string;
+  queriesFilePath: string;
+  mutationsFilePath: string;
+  subscriptionsFilePath: string;
+  fragmentsFilePath: string;
+}
+export const GraphQLRenderConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    typesFilePath: S.String,
+    queriesFilePath: S.String,
+    mutationsFilePath: S.String,
+    subscriptionsFilePath: S.String,
+    fragmentsFilePath: S.String,
+  }),
+).annotate({
+  identifier: "GraphQLRenderConfig",
+}) as any as S.Schema<GraphQLRenderConfig>;
+export interface DataStoreRenderConfig {}
+export const DataStoreRenderConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DataStoreRenderConfig",
+}) as any as S.Schema<DataStoreRenderConfig>;
+export interface NoApiRenderConfig {}
+export const NoApiRenderConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "NoApiRenderConfig",
+}) as any as S.Schema<NoApiRenderConfig>;
+export type ApiConfiguration =
+  | {
+      graphQLConfig: GraphQLRenderConfig;
+      dataStoreConfig?: never;
+      noApiConfig?: never;
+    }
+  | {
+      graphQLConfig?: never;
+      dataStoreConfig: DataStoreRenderConfig;
+      noApiConfig?: never;
+    }
+  | {
+      graphQLConfig?: never;
+      dataStoreConfig?: never;
+      noApiConfig: NoApiRenderConfig;
+    };
+export const ApiConfiguration = /*@__PURE__*/ S.Union([
+  S.Struct({ graphQLConfig: GraphQLRenderConfig }),
+  S.Struct({ dataStoreConfig: DataStoreRenderConfig }),
+  S.Struct({ noApiConfig: NoApiRenderConfig }),
+]);
+export type ReactCodegenDependencies = { [key: string]: string | undefined };
+export const ReactCodegenDependencies = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface ReactStartCodegenJobData {
+  module?: JSModule;
+  target?: JSTarget;
+  script?: JSScript;
+  renderTypeDeclarations?: boolean;
+  inlineSourceMap?: boolean;
+  apiConfiguration?: ApiConfiguration;
+  dependencies?: { [key: string]: string | undefined };
+}
+export const ReactStartCodegenJobData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    module: S.optional(JSModule),
+    target: S.optional(JSTarget),
+    script: S.optional(JSScript),
+    renderTypeDeclarations: S.optional(S.Boolean),
+    inlineSourceMap: S.optional(S.Boolean),
+    apiConfiguration: S.optional(ApiConfiguration),
+    dependencies: S.optional(ReactCodegenDependencies),
+  }),
+).annotate({
+  identifier: "ReactStartCodegenJobData",
+}) as any as S.Schema<ReactStartCodegenJobData>;
+export type CodegenJobRenderConfig = { react: ReactStartCodegenJobData };
+export const CodegenJobRenderConfig = /*@__PURE__*/ S.Union([
+  S.Struct({ react: ReactStartCodegenJobData }),
+]);
+export type CodegenJobGenericDataSourceType = "DataStore" | (string & {});
+export const CodegenJobGenericDataSourceType = /*@__PURE__*/ S.String;
+
+export type CodegenGenericDataFieldDataType =
+  | "ID"
+  | "String"
+  | "Int"
+  | "Float"
+  | "AWSDate"
+  | "AWSTime"
+  | "AWSDateTime"
+  | "AWSTimestamp"
+  | "AWSEmail"
+  | "AWSURL"
+  | "AWSIPAddress"
+  | "Boolean"
+  | "AWSJSON"
+  | "AWSPhone"
+  | "Enum"
+  | "Model"
+  | "NonModel"
+  | (string & {});
+export const CodegenGenericDataFieldDataType = /*@__PURE__*/ S.String;
+
+export type GenericDataRelationshipType =
+  | "HAS_MANY"
+  | "HAS_ONE"
+  | "BELONGS_TO"
+  | (string & {});
+export const GenericDataRelationshipType = /*@__PURE__*/ S.String;
+
+export type RelatedModelFieldsList = string[];
+export const RelatedModelFieldsList = /*@__PURE__*/ S.Array(S.String);
+export type AssociatedFieldsList = string[];
+export const AssociatedFieldsList = /*@__PURE__*/ S.Array(S.String);
+export interface CodegenGenericDataRelationshipType {
+  type: GenericDataRelationshipType;
+  relatedModelName: string;
+  relatedModelFields?: string[];
+  canUnlinkAssociatedModel?: boolean;
+  relatedJoinFieldName?: string;
+  relatedJoinTableName?: string;
+  belongsToFieldOnRelatedModel?: string;
+  associatedFields?: string[];
+  isHasManyIndex?: boolean;
+}
+export const CodegenGenericDataRelationshipType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: GenericDataRelationshipType,
+    relatedModelName: S.String,
+    relatedModelFields: S.optional(RelatedModelFieldsList),
+    canUnlinkAssociatedModel: S.optional(S.Boolean),
+    relatedJoinFieldName: S.optional(S.String),
+    relatedJoinTableName: S.optional(S.String),
+    belongsToFieldOnRelatedModel: S.optional(S.String),
+    associatedFields: S.optional(AssociatedFieldsList),
+    isHasManyIndex: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CodegenGenericDataRelationshipType",
+}) as any as S.Schema<CodegenGenericDataRelationshipType>;
+export interface CodegenGenericDataField {
+  dataType: CodegenGenericDataFieldDataType;
+  dataTypeValue: string;
+  required: boolean;
+  readOnly: boolean;
+  isArray: boolean;
+  relationship?: CodegenGenericDataRelationshipType;
+}
+export const CodegenGenericDataField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataType: CodegenGenericDataFieldDataType,
+    dataTypeValue: S.String,
+    required: S.Boolean,
+    readOnly: S.Boolean,
+    isArray: S.Boolean,
+    relationship: S.optional(CodegenGenericDataRelationshipType),
+  }),
+).annotate({
+  identifier: "CodegenGenericDataField",
+}) as any as S.Schema<CodegenGenericDataField>;
+export type CodegenGenericDataFields = {
+  [key: string]: CodegenGenericDataField | undefined;
+};
+export const CodegenGenericDataFields = /*@__PURE__*/ S.Record(
+  S.String,
+  CodegenGenericDataField.pipe(S.optional),
+);
+export type CodegenPrimaryKeysList = string[];
+export const CodegenPrimaryKeysList = /*@__PURE__*/ S.Array(S.String);
+export interface CodegenGenericDataModel {
+  fields: { [key: string]: CodegenGenericDataField | undefined };
+  isJoinTable?: boolean;
+  primaryKeys: string[];
+}
+export const CodegenGenericDataModel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fields: CodegenGenericDataFields,
+    isJoinTable: S.optional(S.Boolean),
+    primaryKeys: CodegenPrimaryKeysList,
+  }),
+).annotate({
+  identifier: "CodegenGenericDataModel",
+}) as any as S.Schema<CodegenGenericDataModel>;
+export type CodegenGenericDataModels = {
+  [key: string]: CodegenGenericDataModel | undefined;
+};
+export const CodegenGenericDataModels = /*@__PURE__*/ S.Record(
+  S.String,
+  CodegenGenericDataModel.pipe(S.optional),
+);
+export type CodegenGenericDataEnumValuesList = string[];
+export const CodegenGenericDataEnumValuesList = /*@__PURE__*/ S.Array(S.String);
+export interface CodegenGenericDataEnum {
+  values: string[];
+}
+export const CodegenGenericDataEnum = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ values: CodegenGenericDataEnumValuesList }),
+).annotate({
+  identifier: "CodegenGenericDataEnum",
+}) as any as S.Schema<CodegenGenericDataEnum>;
+export type CodegenGenericDataEnums = {
+  [key: string]: CodegenGenericDataEnum | undefined;
+};
+export const CodegenGenericDataEnums = /*@__PURE__*/ S.Record(
+  S.String,
+  CodegenGenericDataEnum.pipe(S.optional),
+);
+export type CodegenGenericDataNonModelFields = {
+  [key: string]: CodegenGenericDataField | undefined;
+};
+export const CodegenGenericDataNonModelFields = /*@__PURE__*/ S.Record(
+  S.String,
+  CodegenGenericDataField.pipe(S.optional),
+);
+export interface CodegenGenericDataNonModel {
+  fields: { [key: string]: CodegenGenericDataField | undefined };
+}
+export const CodegenGenericDataNonModel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ fields: CodegenGenericDataNonModelFields }),
+).annotate({
+  identifier: "CodegenGenericDataNonModel",
+}) as any as S.Schema<CodegenGenericDataNonModel>;
+export type CodegenGenericDataNonModels = {
+  [key: string]: CodegenGenericDataNonModel | undefined;
+};
+export const CodegenGenericDataNonModels = /*@__PURE__*/ S.Record(
+  S.String,
+  CodegenGenericDataNonModel.pipe(S.optional),
+);
+export interface CodegenJobGenericDataSchema {
+  dataSourceType: CodegenJobGenericDataSourceType;
+  models: { [key: string]: CodegenGenericDataModel | undefined };
+  enums: { [key: string]: CodegenGenericDataEnum | undefined };
+  nonModels: { [key: string]: CodegenGenericDataNonModel | undefined };
+}
+export const CodegenJobGenericDataSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataSourceType: CodegenJobGenericDataSourceType,
+    models: CodegenGenericDataModels,
+    enums: CodegenGenericDataEnums,
+    nonModels: CodegenGenericDataNonModels,
+  }),
+).annotate({
+  identifier: "CodegenJobGenericDataSchema",
+}) as any as S.Schema<CodegenJobGenericDataSchema>;
+export interface CodegenFeatureFlags {
+  isRelationshipSupported?: boolean;
+  isNonModelSupported?: boolean;
+}
+export const CodegenFeatureFlags = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isRelationshipSupported: S.optional(S.Boolean),
+    isNonModelSupported: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CodegenFeatureFlags",
+}) as any as S.Schema<CodegenFeatureFlags>;
+export type CodegenJobStatus =
+  | "in_progress"
+  | "failed"
+  | "succeeded"
+  | (string & {});
+export const CodegenJobStatus = /*@__PURE__*/ S.String;
+
+export interface CodegenJobAsset {
+  downloadUrl?: string;
+}
+export const CodegenJobAsset = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ downloadUrl: S.optional(S.String) }),
+).annotate({
+  identifier: "CodegenJobAsset",
+}) as any as S.Schema<CodegenJobAsset>;
+export interface CodegenDependency {
+  name?: string;
+  supportedVersion?: string;
+  isSemVer?: boolean;
+  reason?: string;
+}
+export const CodegenDependency = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    supportedVersion: S.optional(S.String),
+    isSemVer: S.optional(S.Boolean),
+    reason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CodegenDependency",
+}) as any as S.Schema<CodegenDependency>;
+export type CodegenDependencies = CodegenDependency[];
+export const CodegenDependencies = /*@__PURE__*/ S.Array(CodegenDependency);
+export interface CodegenJob {
+  id: string;
+  appId: string;
+  environmentName: string;
+  renderConfig?: CodegenJobRenderConfig;
+  genericDataSchema?: CodegenJobGenericDataSchema;
+  autoGenerateForms?: boolean;
+  features?: CodegenFeatureFlags;
+  status?: CodegenJobStatus;
+  statusMessage?: string;
+  asset?: CodegenJobAsset;
+  tags?: { [key: string]: string | undefined };
+  createdAt?: Date;
+  modifiedAt?: Date;
+  dependencies?: CodegenDependency[];
+}
+export const CodegenJob = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    appId: S.String,
+    environmentName: S.String,
+    renderConfig: S.optional(CodegenJobRenderConfig),
+    genericDataSchema: S.optional(CodegenJobGenericDataSchema),
+    autoGenerateForms: S.optional(S.Boolean),
+    features: S.optional(CodegenFeatureFlags),
+    status: S.optional(CodegenJobStatus),
+    statusMessage: S.optional(S.String),
+    asset: S.optional(CodegenJobAsset),
+    tags: S.optional(Tags),
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    modifiedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    dependencies: S.optional(CodegenDependencies),
+  }),
+).annotate({ identifier: "CodegenJob" }) as any as S.Schema<CodegenJob>;
+export interface GetCodegenJobResponse {
+  job?: CodegenJob;
+}
+export const GetCodegenJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    job: S.optional(CodegenJob)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "CodegenJob" }),
+  }),
+).annotate({
+  identifier: "GetCodegenJobResponse",
+}) as any as S.Schema<GetCodegenJobResponse>;
+export interface GetComponentRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
+}
+export const GetComponentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    id: S.String.pipe(T.HttpLabel("id")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/app/{appId}/environment/{environmentName}/components/{id}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetComponentRequest",
+}) as any as S.Schema<GetComponentRequest>;
+export interface GetComponentResponse {
+  component?: Component;
+}
+export const GetComponentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    component: S.optional(Component)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "Component" }),
+  }),
+).annotate({
+  identifier: "GetComponentResponse",
+}) as any as S.Schema<GetComponentResponse>;
+export interface GetFormRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
+}
+export const GetFormRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    id: S.String.pipe(T.HttpLabel("id")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/app/{appId}/environment/{environmentName}/forms/{id}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({ identifier: "GetFormRequest" }) as any as S.Schema<GetFormRequest>;
+export interface GetFormResponse {
+  form?: Form;
+}
+export const GetFormResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    form: S.optional(Form)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "Form" }),
+  }),
+).annotate({
+  identifier: "GetFormResponse",
+}) as any as S.Schema<GetFormResponse>;
+export interface GetMetadataRequest {
+  appId: string;
+  environmentName: string;
+}
+export const GetMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/app/{appId}/environment/{environmentName}/metadata",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetMetadataRequest",
+}) as any as S.Schema<GetMetadataRequest>;
+export type FeaturesMap = { [key: string]: string | undefined };
+export const FeaturesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface GetMetadataResponse {
+  features: { [key: string]: string | undefined };
+}
+export const GetMetadataResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ features: FeaturesMap }),
+).annotate({
+  identifier: "GetMetadataResponse",
+}) as any as S.Schema<GetMetadataResponse>;
 export interface GetThemeRequest {
   appId: string;
   environmentName: string;
@@ -2372,6 +1920,624 @@ export const GetThemeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetThemeResponse",
 }) as any as S.Schema<GetThemeResponse>;
+export type ListCodegenJobsLimit = number;
+export interface ListCodegenJobsRequest {
+  appId: string;
+  environmentName: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListCodegenJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/app/{appId}/environment/{environmentName}/codegen-jobs",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListCodegenJobsRequest",
+}) as any as S.Schema<ListCodegenJobsRequest>;
+export interface CodegenJobSummary {
+  appId: string;
+  environmentName: string;
+  id: string;
+  createdAt?: Date;
+  modifiedAt?: Date;
+}
+export const CodegenJobSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String,
+    environmentName: S.String,
+    id: S.String,
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    modifiedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "CodegenJobSummary",
+}) as any as S.Schema<CodegenJobSummary>;
+export type CodegenJobSummaryList = CodegenJobSummary[];
+export const CodegenJobSummaryList = /*@__PURE__*/ S.Array(CodegenJobSummary);
+export interface ListCodegenJobsResponse {
+  entities: CodegenJobSummary[];
+  nextToken?: string;
+}
+export const ListCodegenJobsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entities: CodegenJobSummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCodegenJobsResponse",
+}) as any as S.Schema<ListCodegenJobsResponse>;
+export type ListEntityLimit = number;
+export interface ListComponentsRequest {
+  appId: string;
+  environmentName: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListComponentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/app/{appId}/environment/{environmentName}/components",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListComponentsRequest",
+}) as any as S.Schema<ListComponentsRequest>;
+export interface ComponentSummary {
+  appId: string;
+  environmentName: string;
+  id: string;
+  name: string;
+  componentType: string;
+}
+export const ComponentSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String,
+    environmentName: S.String,
+    id: S.String,
+    name: S.String,
+    componentType: S.String,
+  }),
+).annotate({
+  identifier: "ComponentSummary",
+}) as any as S.Schema<ComponentSummary>;
+export type ComponentSummaryList = ComponentSummary[];
+export const ComponentSummaryList = /*@__PURE__*/ S.Array(ComponentSummary);
+export interface ListComponentsResponse {
+  entities: ComponentSummary[];
+  nextToken?: string;
+}
+export const ListComponentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ entities: ComponentSummaryList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListComponentsResponse",
+}) as any as S.Schema<ListComponentsResponse>;
+export interface ListFormsRequest {
+  appId: string;
+  environmentName: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListFormsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/app/{appId}/environment/{environmentName}/forms",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListFormsRequest",
+}) as any as S.Schema<ListFormsRequest>;
+export interface FormSummary {
+  appId: string;
+  dataType: FormDataTypeConfig;
+  environmentName: string;
+  formActionType: FormActionType;
+  id: string;
+  name: string;
+}
+export const FormSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String,
+    dataType: FormDataTypeConfig,
+    environmentName: S.String,
+    formActionType: FormActionType,
+    id: S.String,
+    name: S.String,
+  }),
+).annotate({ identifier: "FormSummary" }) as any as S.Schema<FormSummary>;
+export type FormSummaryList = FormSummary[];
+export const FormSummaryList = /*@__PURE__*/ S.Array(FormSummary);
+export interface ListFormsResponse {
+  entities: FormSummary[];
+  nextToken?: string;
+}
+export const ListFormsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ entities: FormSummaryList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListFormsResponse",
+}) as any as S.Schema<ListFormsResponse>;
+export interface ListTagsForResourceRequest {
+  resourceArn: string;
+}
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListTagsForResourceRequest",
+}) as any as S.Schema<ListTagsForResourceRequest>;
+export interface ListTagsForResourceResponse {
+  tags: { [key: string]: string | undefined };
+}
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: Tags }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
+export interface ListThemesRequest {
+  appId: string;
+  environmentName: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListThemesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/app/{appId}/environment/{environmentName}/themes",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListThemesRequest",
+}) as any as S.Schema<ListThemesRequest>;
+export interface ThemeSummary {
+  appId: string;
+  environmentName: string;
+  id: string;
+  name: string;
+}
+export const ThemeSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String,
+    environmentName: S.String,
+    id: S.String,
+    name: S.String,
+  }),
+).annotate({ identifier: "ThemeSummary" }) as any as S.Schema<ThemeSummary>;
+export type ThemeSummaryList = ThemeSummary[];
+export const ThemeSummaryList = /*@__PURE__*/ S.Array(ThemeSummary);
+export interface ListThemesResponse {
+  entities: ThemeSummary[];
+  nextToken?: string;
+}
+export const ListThemesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ entities: ThemeSummaryList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListThemesResponse",
+}) as any as S.Schema<ListThemesResponse>;
+export interface PutMetadataFlagBody {
+  newValue: string;
+}
+export const PutMetadataFlagBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ newValue: S.String }),
+).annotate({
+  identifier: "PutMetadataFlagBody",
+}) as any as S.Schema<PutMetadataFlagBody>;
+export interface PutMetadataFlagRequest {
+  appId: string;
+  environmentName: string;
+  featureName: string;
+  body: PutMetadataFlagBody;
+}
+export const PutMetadataFlagRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    featureName: S.String.pipe(T.HttpLabel("featureName")),
+    body: PutMetadataFlagBody.pipe(T.HttpPayload()).annotate({
+      identifier: "PutMetadataFlagBody",
+    }),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/app/{appId}/environment/{environmentName}/metadata/features/{featureName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutMetadataFlagRequest",
+}) as any as S.Schema<PutMetadataFlagRequest>;
+export interface PutMetadataFlagResponse {}
+export const PutMetadataFlagResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PutMetadataFlagResponse",
+}) as any as S.Schema<PutMetadataFlagResponse>;
+export interface RefreshTokenRequestBody {
+  token: string | redacted.Redacted<string>;
+  clientId?: string | redacted.Redacted<string>;
+}
+export const RefreshTokenRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ token: SensitiveString, clientId: S.optional(SensitiveString) }),
+).annotate({
+  identifier: "RefreshTokenRequestBody",
+}) as any as S.Schema<RefreshTokenRequestBody>;
+export interface RefreshTokenRequest {
+  provider: string;
+  refreshTokenBody: RefreshTokenRequestBody;
+}
+export const RefreshTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.String.pipe(T.HttpLabel("provider")),
+    refreshTokenBody: RefreshTokenRequestBody.pipe(T.HttpPayload()).annotate({
+      identifier: "RefreshTokenRequestBody",
+    }),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/tokens/{provider}/refresh" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "RefreshTokenRequest",
+}) as any as S.Schema<RefreshTokenRequest>;
+export interface RefreshTokenResponse {
+  accessToken: string | redacted.Redacted<string>;
+  expiresIn: number;
+}
+export const RefreshTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ accessToken: SensitiveString, expiresIn: S.Number }),
+).annotate({
+  identifier: "RefreshTokenResponse",
+}) as any as S.Schema<RefreshTokenResponse>;
+export interface StartCodegenJobData {
+  renderConfig: CodegenJobRenderConfig;
+  genericDataSchema?: CodegenJobGenericDataSchema;
+  autoGenerateForms?: boolean;
+  features?: CodegenFeatureFlags;
+  tags?: { [key: string]: string | undefined };
+}
+export const StartCodegenJobData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    renderConfig: CodegenJobRenderConfig,
+    genericDataSchema: S.optional(CodegenJobGenericDataSchema),
+    autoGenerateForms: S.optional(S.Boolean),
+    features: S.optional(CodegenFeatureFlags),
+    tags: S.optional(Tags),
+  }),
+).annotate({
+  identifier: "StartCodegenJobData",
+}) as any as S.Schema<StartCodegenJobData>;
+export interface StartCodegenJobRequest {
+  appId: string;
+  environmentName: string;
+  clientToken?: string;
+  codegenJobToCreate: StartCodegenJobData;
+}
+export const StartCodegenJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+    codegenJobToCreate: StartCodegenJobData.pipe(T.HttpPayload()).annotate({
+      identifier: "StartCodegenJobData",
+    }),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/app/{appId}/environment/{environmentName}/codegen-jobs",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StartCodegenJobRequest",
+}) as any as S.Schema<StartCodegenJobRequest>;
+export interface StartCodegenJobResponse {
+  entity?: CodegenJob;
+}
+export const StartCodegenJobResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entity: S.optional(CodegenJob)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "CodegenJob" }),
+  }),
+).annotate({
+  identifier: "StartCodegenJobResponse",
+}) as any as S.Schema<StartCodegenJobResponse>;
+export interface TagResourceRequest {
+  resourceArn: string;
+  tags: { [key: string]: string | undefined };
+}
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+    tags: Tags,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "TagResourceRequest",
+}) as any as S.Schema<TagResourceRequest>;
+export interface TagResourceResponse {}
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "TagResourceResponse",
+}) as any as S.Schema<TagResourceResponse>;
+export type TagKeyList = string[];
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export interface UntagResourceRequest {
+  resourceArn: string;
+  tagKeys: string[];
+}
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+    tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UntagResourceRequest",
+}) as any as S.Schema<UntagResourceRequest>;
+export interface UntagResourceResponse {}
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UntagResourceResponse",
+}) as any as S.Schema<UntagResourceResponse>;
+export interface UpdateComponentData {
+  id?: string;
+  name?: string;
+  sourceId?: string;
+  componentType?: string;
+  properties?: { [key: string]: ComponentProperty | undefined };
+  children?: ComponentChild[];
+  variants?: ComponentVariant[];
+  overrides?: {
+    [key: string]: { [key: string]: string | undefined } | undefined;
+  };
+  bindingProperties?: {
+    [key: string]: ComponentBindingPropertiesValue | undefined;
+  };
+  collectionProperties?: {
+    [key: string]: ComponentDataConfiguration | undefined;
+  };
+  events?: { [key: string]: ComponentEvent | undefined };
+  schemaVersion?: string;
+}
+export const UpdateComponentData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    sourceId: S.optional(S.String),
+    componentType: S.optional(S.String),
+    properties: S.optional(ComponentProperties),
+    children: S.optional(ComponentChildList),
+    variants: S.optional(ComponentVariants),
+    overrides: S.optional(ComponentOverrides),
+    bindingProperties: S.optional(ComponentBindingProperties),
+    collectionProperties: S.optional(ComponentCollectionProperties),
+    events: S.optional(ComponentEvents),
+    schemaVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateComponentData",
+}) as any as S.Schema<UpdateComponentData>;
+export interface UpdateComponentRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
+  clientToken?: string;
+  updatedComponent: UpdateComponentData;
+}
+export const UpdateComponentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    id: S.String.pipe(T.HttpLabel("id")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+    updatedComponent: UpdateComponentData.pipe(T.HttpPayload()).annotate({
+      identifier: "UpdateComponentData",
+    }),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/app/{appId}/environment/{environmentName}/components/{id}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateComponentRequest",
+}) as any as S.Schema<UpdateComponentRequest>;
+export interface UpdateComponentResponse {
+  entity?: Component;
+}
+export const UpdateComponentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entity: S.optional(Component)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "Component" }),
+  }),
+).annotate({
+  identifier: "UpdateComponentResponse",
+}) as any as S.Schema<UpdateComponentResponse>;
+export interface UpdateFormData {
+  name?: string;
+  dataType?: FormDataTypeConfig;
+  formActionType?: FormActionType;
+  fields?: { [key: string]: FieldConfig | undefined };
+  style?: FormStyle;
+  sectionalElements?: { [key: string]: SectionalElement | undefined };
+  schemaVersion?: string;
+  cta?: FormCTA;
+  labelDecorator?: string;
+}
+export const UpdateFormData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    dataType: S.optional(FormDataTypeConfig),
+    formActionType: S.optional(FormActionType),
+    fields: S.optional(FieldsMap),
+    style: S.optional(FormStyle),
+    sectionalElements: S.optional(SectionalElementMap),
+    schemaVersion: S.optional(S.String),
+    cta: S.optional(FormCTA),
+    labelDecorator: S.optional(S.String),
+  }),
+).annotate({ identifier: "UpdateFormData" }) as any as S.Schema<UpdateFormData>;
+export interface UpdateFormRequest {
+  appId: string;
+  environmentName: string;
+  id: string;
+  clientToken?: string;
+  updatedForm: UpdateFormData;
+}
+export const UpdateFormRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String.pipe(T.HttpLabel("appId")),
+    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
+    id: S.String.pipe(T.HttpLabel("id")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+    updatedForm: UpdateFormData.pipe(T.HttpPayload()).annotate({
+      identifier: "UpdateFormData",
+    }),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/app/{appId}/environment/{environmentName}/forms/{id}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateFormRequest",
+}) as any as S.Schema<UpdateFormRequest>;
+export interface UpdateFormResponse {
+  entity?: Form;
+}
+export const UpdateFormResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    entity: S.optional(Form)
+      .pipe(T.HttpPayload())
+      .annotate({ identifier: "Form" }),
+  }),
+).annotate({
+  identifier: "UpdateFormResponse",
+}) as any as S.Schema<UpdateFormResponse>;
 export interface UpdateThemeData {
   id?: string;
   name?: string;
@@ -2435,167 +2601,168 @@ export const UpdateThemeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateThemeResponse",
 }) as any as S.Schema<UpdateThemeResponse>;
-export interface DeleteThemeRequest {
-  appId: string;
-  environmentName: string;
-  id: string;
-}
-export const DeleteThemeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    id: S.String.pipe(T.HttpLabel("id")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/app/{appId}/environment/{environmentName}/themes/{id}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteThemeRequest",
-}) as any as S.Schema<DeleteThemeRequest>;
-export interface DeleteThemeResponse {}
-export const DeleteThemeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteThemeResponse",
-}) as any as S.Schema<DeleteThemeResponse>;
-export interface ListThemesRequest {
-  appId: string;
-  environmentName: string;
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListThemesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/app/{appId}/environment/{environmentName}/themes",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListThemesRequest",
-}) as any as S.Schema<ListThemesRequest>;
-export interface ThemeSummary {
-  appId: string;
-  environmentName: string;
-  id: string;
-  name: string;
-}
-export const ThemeSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String,
-    environmentName: S.String,
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({ identifier: "ThemeSummary" }) as any as S.Schema<ThemeSummary>;
-export type ThemeSummaryList = ThemeSummary[];
-export const ThemeSummaryList = /*@__PURE__*/ S.Array(ThemeSummary);
-export interface ListThemesResponse {
-  entities: ThemeSummary[];
-  nextToken?: string;
-}
-export const ListThemesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ entities: ThemeSummaryList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListThemesResponse",
-}) as any as S.Schema<ListThemesResponse>;
-export interface ExportThemesRequest {
-  appId: string;
-  environmentName: string;
-  nextToken?: string;
-}
-export const ExportThemesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String.pipe(T.HttpLabel("appId")),
-    environmentName: S.String.pipe(T.HttpLabel("environmentName")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/export/app/{appId}/environment/{environmentName}/themes",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ExportThemesRequest",
-}) as any as S.Schema<ExportThemesRequest>;
-export type ThemeList = Theme[];
-export const ThemeList = /*@__PURE__*/ S.Array(Theme);
-export interface ExportThemesResponse {
-  entities: Theme[];
-  nextToken?: string;
-}
-export const ExportThemesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ entities: ThemeList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ExportThemesResponse",
-}) as any as S.Schema<ExportThemesResponse>;
+export type CreateComponentError =
+  | InternalServerException
+  | InvalidParameterException
+  | ResourceConflictException
+  | ServiceQuotaExceededException
+  | CommonErrors;
+/**
+ * Creates a new component for an Amplify app.
+ */
+export const createComponent: API.OperationMethod<
+  CreateComponentRequest,
+  CreateComponentResponse,
+  CreateComponentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateComponentRequest,
+  output: CreateComponentResponse,
+  errors: [
+    InternalServerException,
+    InvalidParameterException,
+    ResourceConflictException,
+    ServiceQuotaExceededException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateComponent",
+}));
 
-//# Errors
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ResourceConflictException extends S.TaggedErrorClass<ResourceConflictException>()(
-  "ResourceConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
+export type CreateFormError =
+  | InternalServerException
+  | InvalidParameterException
+  | ResourceConflictException
+  | ServiceQuotaExceededException
+  | CommonErrors;
+/**
+ * Creates a new form for an Amplify app.
+ */
+export const createForm: API.OperationMethod<
+  CreateFormRequest,
+  CreateFormResponse,
+  CreateFormError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateFormRequest,
+  output: CreateFormResponse,
+  errors: [
+    InternalServerException,
+    InvalidParameterException,
+    ResourceConflictException,
+    ServiceQuotaExceededException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateForm",
+}));
 
-//# Operations
+export type CreateThemeError =
+  | InternalServerException
+  | InvalidParameterException
+  | ResourceConflictException
+  | ServiceQuotaExceededException
+  | CommonErrors;
+/**
+ * Creates a theme to apply to the components in an Amplify app.
+ */
+export const createTheme: API.OperationMethod<
+  CreateThemeRequest,
+  CreateThemeResponse,
+  CreateThemeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateThemeRequest,
+  output: CreateThemeResponse,
+  errors: [
+    InternalServerException,
+    InvalidParameterException,
+    ResourceConflictException,
+    ServiceQuotaExceededException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateTheme",
+}));
+
+export type DeleteComponentError =
+  | InternalServerException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Deletes a component from an Amplify app.
+ */
+export const deleteComponent: API.OperationMethod<
+  DeleteComponentRequest,
+  DeleteComponentResponse,
+  DeleteComponentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteComponentRequest,
+  output: DeleteComponentResponse,
+  errors: [
+    InternalServerException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteComponent",
+}));
+
+export type DeleteFormError =
+  | InternalServerException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Deletes a form from an Amplify app.
+ */
+export const deleteForm: API.OperationMethod<
+  DeleteFormRequest,
+  DeleteFormResponse,
+  DeleteFormError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteFormRequest,
+  output: DeleteFormResponse,
+  errors: [
+    InternalServerException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteForm",
+}));
+
+export type DeleteThemeError =
+  | InternalServerException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Deletes a theme from an Amplify app.
+ */
+export const deleteTheme: API.OperationMethod<
+  DeleteThemeRequest,
+  DeleteThemeResponse,
+  DeleteThemeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteThemeRequest,
+  output: DeleteThemeResponse,
+  errors: [
+    InternalServerException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteTheme",
+}));
+
 export type ExchangeCodeForTokenError =
   | InvalidParameterException
   | CommonErrors;
@@ -2617,177 +2784,130 @@ export const exchangeCodeForToken: API.OperationMethod<
   retry: Retry,
   operationName: "ExchangeCodeForToken",
 }));
-export type GetMetadataError =
-  | InvalidParameterException
-  | UnauthorizedException
-  | CommonErrors;
-/**
- * Returns existing metadata for an Amplify app.
- */
-export const getMetadata: API.OperationMethod<
-  GetMetadataRequest,
-  GetMetadataResponse,
-  GetMetadataError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetMetadataRequest,
-  output: GetMetadataResponse,
-  errors: [InvalidParameterException, UnauthorizedException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetMetadata",
-}));
-export type ListTagsForResourceError =
+
+export type ExportComponentsError =
   | InternalServerException
   | InvalidParameterException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
   | CommonErrors;
 /**
- * Returns a list of tags for a specified Amazon Resource Name (ARN).
+ * Exports component configurations to code that is ready to integrate into an Amplify app.
  */
-export const listTagsForResource: API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResponse,
-  ListTagsForResourceError,
+export const exportComponents: API.OperationMethod<
+  ExportComponentsRequest,
+  ExportComponentsResponse,
+  ExportComponentsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
-  errors: [
-    InternalServerException,
-    InvalidParameterException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-  ],
+> & {
+  pages: (
+    input: ExportComponentsRequest,
+  ) => stream.Stream<
+    ExportComponentsResponse,
+    ExportComponentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ExportComponentsRequest,
+  ) => stream.Stream<
+    Component,
+    ExportComponentsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ExportComponentsRequest,
+  output: ExportComponentsResponse,
+  errors: [InternalServerException, InvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "ListTagsForResource",
+  operationName: "ExportComponents",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "entities",
+  } as const,
 }));
-export type PutMetadataFlagError =
-  | InvalidParameterException
-  | UnauthorizedException
-  | CommonErrors;
-/**
- * Stores the metadata information about a feature on a form.
- */
-export const putMetadataFlag: API.OperationMethod<
-  PutMetadataFlagRequest,
-  PutMetadataFlagResponse,
-  PutMetadataFlagError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutMetadataFlagRequest,
-  output: PutMetadataFlagResponse,
-  errors: [InvalidParameterException, UnauthorizedException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "PutMetadataFlag",
-}));
-export type RefreshTokenError = InvalidParameterException | CommonErrors;
-/**
- * This is for internal use.
- *
- * Amplify uses this action to refresh a previously issued access token that might have expired.
- */
-export const refreshToken: API.OperationMethod<
-  RefreshTokenRequest,
-  RefreshTokenResponse,
-  RefreshTokenError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: RefreshTokenRequest,
-  output: RefreshTokenResponse,
-  errors: [InvalidParameterException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "RefreshToken",
-}));
-export type TagResourceError =
+
+export type ExportFormsError =
   | InternalServerException
   | InvalidParameterException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
   | CommonErrors;
 /**
- * Tags the resource with a tag key and value.
+ * Exports form configurations to code that is ready to integrate into an Amplify app.
  */
-export const tagResource: API.OperationMethod<
-  TagResourceRequest,
-  TagResourceResponse,
-  TagResourceError,
+export const exportForms: API.OperationMethod<
+  ExportFormsRequest,
+  ExportFormsResponse,
+  ExportFormsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
-  errors: [
-    InternalServerException,
-    InvalidParameterException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-  ],
+> & {
+  pages: (
+    input: ExportFormsRequest,
+  ) => stream.Stream<
+    ExportFormsResponse,
+    ExportFormsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ExportFormsRequest,
+  ) => stream.Stream<
+    Form,
+    ExportFormsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ExportFormsRequest,
+  output: ExportFormsResponse,
+  errors: [InternalServerException, InvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "TagResource",
+  operationName: "ExportForms",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "entities",
+  } as const,
 }));
-export type UntagResourceError =
+
+export type ExportThemesError =
   | InternalServerException
   | InvalidParameterException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
   | CommonErrors;
 /**
- * Untags a resource with a specified Amazon Resource Name (ARN).
+ * Exports theme configurations to code that is ready to integrate into an Amplify app.
  */
-export const untagResource: API.OperationMethod<
-  UntagResourceRequest,
-  UntagResourceResponse,
-  UntagResourceError,
+export const exportThemes: API.OperationMethod<
+  ExportThemesRequest,
+  ExportThemesResponse,
+  ExportThemesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
-  errors: [
-    InternalServerException,
-    InvalidParameterException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-  ],
+> & {
+  pages: (
+    input: ExportThemesRequest,
+  ) => stream.Stream<
+    ExportThemesResponse,
+    ExportThemesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ExportThemesRequest,
+  ) => stream.Stream<
+    Theme,
+    ExportThemesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ExportThemesRequest,
+  output: ExportThemesResponse,
+  errors: [InternalServerException, InvalidParameterException],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "UntagResource",
+  operationName: "ExportThemes",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "entities",
+  } as const,
 }));
-export type StartCodegenJobError =
-  | InternalServerException
-  | InvalidParameterException
-  | ThrottlingException
-  | CommonErrors;
-/**
- * Starts a code generation job for a specified Amplify app and backend environment.
- */
-export const startCodegenJob: API.OperationMethod<
-  StartCodegenJobRequest,
-  StartCodegenJobResponse,
-  StartCodegenJobError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: StartCodegenJobRequest,
-  output: StartCodegenJobResponse,
-  errors: [
-    InternalServerException,
-    InvalidParameterException,
-    ThrottlingException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "StartCodegenJob",
-}));
+
 export type GetCodegenJobError =
   | InternalServerException
   | InvalidParameterException
@@ -2815,6 +2935,106 @@ export const getCodegenJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetCodegenJob",
 }));
+
+export type GetComponentError =
+  | InternalServerException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Returns an existing component for an Amplify app.
+ */
+export const getComponent: API.OperationMethod<
+  GetComponentRequest,
+  GetComponentResponse,
+  GetComponentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetComponentRequest,
+  output: GetComponentResponse,
+  errors: [
+    InternalServerException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetComponent",
+}));
+
+export type GetFormError =
+  | InternalServerException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Returns an existing form for an Amplify app.
+ */
+export const getForm: API.OperationMethod<
+  GetFormRequest,
+  GetFormResponse,
+  GetFormError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetFormRequest,
+  output: GetFormResponse,
+  errors: [
+    InternalServerException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetForm",
+}));
+
+export type GetMetadataError =
+  | InvalidParameterException
+  | UnauthorizedException
+  | CommonErrors;
+/**
+ * Returns existing metadata for an Amplify app.
+ */
+export const getMetadata: API.OperationMethod<
+  GetMetadataRequest,
+  GetMetadataResponse,
+  GetMetadataError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMetadataRequest,
+  output: GetMetadataResponse,
+  errors: [InvalidParameterException, UnauthorizedException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetMetadata",
+}));
+
+export type GetThemeError =
+  | InternalServerException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | CommonErrors;
+/**
+ * Returns an existing theme for an Amplify app.
+ */
+export const getTheme: API.OperationMethod<
+  GetThemeRequest,
+  GetThemeResponse,
+  GetThemeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetThemeRequest,
+  output: GetThemeResponse,
+  errors: [
+    InternalServerException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetTheme",
+}));
+
 export type ListCodegenJobsError =
   | InternalServerException
   | InvalidParameterException
@@ -2861,108 +3081,7 @@ export const listCodegenJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateComponentError =
-  | InternalServerException
-  | InvalidParameterException
-  | ResourceConflictException
-  | ServiceQuotaExceededException
-  | CommonErrors;
-/**
- * Creates a new component for an Amplify app.
- */
-export const createComponent: API.OperationMethod<
-  CreateComponentRequest,
-  CreateComponentResponse,
-  CreateComponentError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateComponentRequest,
-  output: CreateComponentResponse,
-  errors: [
-    InternalServerException,
-    InvalidParameterException,
-    ResourceConflictException,
-    ServiceQuotaExceededException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateComponent",
-}));
-export type GetComponentError =
-  | InternalServerException
-  | InvalidParameterException
-  | ResourceNotFoundException
-  | CommonErrors;
-/**
- * Returns an existing component for an Amplify app.
- */
-export const getComponent: API.OperationMethod<
-  GetComponentRequest,
-  GetComponentResponse,
-  GetComponentError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetComponentRequest,
-  output: GetComponentResponse,
-  errors: [
-    InternalServerException,
-    InvalidParameterException,
-    ResourceNotFoundException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetComponent",
-}));
-export type UpdateComponentError =
-  | InternalServerException
-  | InvalidParameterException
-  | ResourceConflictException
-  | CommonErrors;
-/**
- * Updates an existing component.
- */
-export const updateComponent: API.OperationMethod<
-  UpdateComponentRequest,
-  UpdateComponentResponse,
-  UpdateComponentError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateComponentRequest,
-  output: UpdateComponentResponse,
-  errors: [
-    InternalServerException,
-    InvalidParameterException,
-    ResourceConflictException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateComponent",
-}));
-export type DeleteComponentError =
-  | InternalServerException
-  | InvalidParameterException
-  | ResourceNotFoundException
-  | CommonErrors;
-/**
- * Deletes a component from an Amplify app.
- */
-export const deleteComponent: API.OperationMethod<
-  DeleteComponentRequest,
-  DeleteComponentResponse,
-  DeleteComponentError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteComponentRequest,
-  output: DeleteComponentResponse,
-  errors: [
-    InternalServerException,
-    InvalidParameterException,
-    ResourceNotFoundException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteComponent",
-}));
+
 export type ListComponentsError =
   | InternalServerException
   | InvalidParameterException
@@ -3005,148 +3124,7 @@ export const listComponents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type ExportComponentsError =
-  | InternalServerException
-  | InvalidParameterException
-  | CommonErrors;
-/**
- * Exports component configurations to code that is ready to integrate into an Amplify app.
- */
-export const exportComponents: API.OperationMethod<
-  ExportComponentsRequest,
-  ExportComponentsResponse,
-  ExportComponentsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ExportComponentsRequest,
-  ) => stream.Stream<
-    ExportComponentsResponse,
-    ExportComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ExportComponentsRequest,
-  ) => stream.Stream<
-    Component,
-    ExportComponentsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ExportComponentsRequest,
-  output: ExportComponentsResponse,
-  errors: [InternalServerException, InvalidParameterException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ExportComponents",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "entities",
-  } as const,
-}));
-export type CreateFormError =
-  | InternalServerException
-  | InvalidParameterException
-  | ResourceConflictException
-  | ServiceQuotaExceededException
-  | CommonErrors;
-/**
- * Creates a new form for an Amplify app.
- */
-export const createForm: API.OperationMethod<
-  CreateFormRequest,
-  CreateFormResponse,
-  CreateFormError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateFormRequest,
-  output: CreateFormResponse,
-  errors: [
-    InternalServerException,
-    InvalidParameterException,
-    ResourceConflictException,
-    ServiceQuotaExceededException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateForm",
-}));
-export type GetFormError =
-  | InternalServerException
-  | InvalidParameterException
-  | ResourceNotFoundException
-  | CommonErrors;
-/**
- * Returns an existing form for an Amplify app.
- */
-export const getForm: API.OperationMethod<
-  GetFormRequest,
-  GetFormResponse,
-  GetFormError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetFormRequest,
-  output: GetFormResponse,
-  errors: [
-    InternalServerException,
-    InvalidParameterException,
-    ResourceNotFoundException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetForm",
-}));
-export type UpdateFormError =
-  | InternalServerException
-  | InvalidParameterException
-  | ResourceConflictException
-  | CommonErrors;
-/**
- * Updates an existing form.
- */
-export const updateForm: API.OperationMethod<
-  UpdateFormRequest,
-  UpdateFormResponse,
-  UpdateFormError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFormRequest,
-  output: UpdateFormResponse,
-  errors: [
-    InternalServerException,
-    InvalidParameterException,
-    ResourceConflictException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateForm",
-}));
-export type DeleteFormError =
-  | InternalServerException
-  | InvalidParameterException
-  | ResourceNotFoundException
-  | CommonErrors;
-/**
- * Deletes a form from an Amplify app.
- */
-export const deleteForm: API.OperationMethod<
-  DeleteFormRequest,
-  DeleteFormResponse,
-  DeleteFormError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFormRequest,
-  output: DeleteFormResponse,
-  errors: [
-    InternalServerException,
-    InvalidParameterException,
-    ResourceNotFoundException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteForm",
-}));
+
 export type ListFormsError =
   | InternalServerException
   | InvalidParameterException
@@ -3188,148 +3166,37 @@ export const listForms: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type ExportFormsError =
-  | InternalServerException
-  | InvalidParameterException
-  | CommonErrors;
-/**
- * Exports form configurations to code that is ready to integrate into an Amplify app.
- */
-export const exportForms: API.OperationMethod<
-  ExportFormsRequest,
-  ExportFormsResponse,
-  ExportFormsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ExportFormsRequest,
-  ) => stream.Stream<
-    ExportFormsResponse,
-    ExportFormsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ExportFormsRequest,
-  ) => stream.Stream<
-    Form,
-    ExportFormsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ExportFormsRequest,
-  output: ExportFormsResponse,
-  errors: [InternalServerException, InvalidParameterException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ExportForms",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "entities",
-  } as const,
-}));
-export type CreateThemeError =
-  | InternalServerException
-  | InvalidParameterException
-  | ResourceConflictException
-  | ServiceQuotaExceededException
-  | CommonErrors;
-/**
- * Creates a theme to apply to the components in an Amplify app.
- */
-export const createTheme: API.OperationMethod<
-  CreateThemeRequest,
-  CreateThemeResponse,
-  CreateThemeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateThemeRequest,
-  output: CreateThemeResponse,
-  errors: [
-    InternalServerException,
-    InvalidParameterException,
-    ResourceConflictException,
-    ServiceQuotaExceededException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateTheme",
-}));
-export type GetThemeError =
+
+export type ListTagsForResourceError =
   | InternalServerException
   | InvalidParameterException
   | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
   | CommonErrors;
 /**
- * Returns an existing theme for an Amplify app.
+ * Returns a list of tags for a specified Amazon Resource Name (ARN).
  */
-export const getTheme: API.OperationMethod<
-  GetThemeRequest,
-  GetThemeResponse,
-  GetThemeError,
+export const listTagsForResource: API.OperationMethod<
+  ListTagsForResourceRequest,
+  ListTagsForResourceResponse,
+  ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetThemeRequest,
-  output: GetThemeResponse,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     InternalServerException,
     InvalidParameterException,
     ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "GetTheme",
+  operationName: "ListTagsForResource",
 }));
-export type UpdateThemeError =
-  | InternalServerException
-  | InvalidParameterException
-  | ResourceConflictException
-  | CommonErrors;
-/**
- * Updates an existing theme.
- */
-export const updateTheme: API.OperationMethod<
-  UpdateThemeRequest,
-  UpdateThemeResponse,
-  UpdateThemeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateThemeRequest,
-  output: UpdateThemeResponse,
-  errors: [
-    InternalServerException,
-    InvalidParameterException,
-    ResourceConflictException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateTheme",
-}));
-export type DeleteThemeError =
-  | InternalServerException
-  | InvalidParameterException
-  | ResourceNotFoundException
-  | CommonErrors;
-/**
- * Deletes a theme from an Amplify app.
- */
-export const deleteTheme: API.OperationMethod<
-  DeleteThemeRequest,
-  DeleteThemeResponse,
-  DeleteThemeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteThemeRequest,
-  output: DeleteThemeResponse,
-  errors: [
-    InternalServerException,
-    InvalidParameterException,
-    ResourceNotFoundException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteTheme",
-}));
+
 export type ListThemesError =
   | InternalServerException
   | InvalidParameterException
@@ -3372,43 +3239,208 @@ export const listThemes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type ExportThemesError =
-  | InternalServerException
+
+export type PutMetadataFlagError =
   | InvalidParameterException
+  | UnauthorizedException
   | CommonErrors;
 /**
- * Exports theme configurations to code that is ready to integrate into an Amplify app.
+ * Stores the metadata information about a feature on a form.
  */
-export const exportThemes: API.OperationMethod<
-  ExportThemesRequest,
-  ExportThemesResponse,
-  ExportThemesError,
+export const putMetadataFlag: API.OperationMethod<
+  PutMetadataFlagRequest,
+  PutMetadataFlagResponse,
+  PutMetadataFlagError,
   Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ExportThemesRequest,
-  ) => stream.Stream<
-    ExportThemesResponse,
-    ExportThemesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ExportThemesRequest,
-  ) => stream.Stream<
-    Theme,
-    ExportThemesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ExportThemesRequest,
-  output: ExportThemesResponse,
-  errors: [InternalServerException, InvalidParameterException],
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutMetadataFlagRequest,
+  output: PutMetadataFlagResponse,
+  errors: [InvalidParameterException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "ExportThemes",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "entities",
-  } as const,
+  operationName: "PutMetadataFlag",
+}));
+
+export type RefreshTokenError = InvalidParameterException | CommonErrors;
+/**
+ * This is for internal use.
+ *
+ * Amplify uses this action to refresh a previously issued access token that might have expired.
+ */
+export const refreshToken: API.OperationMethod<
+  RefreshTokenRequest,
+  RefreshTokenResponse,
+  RefreshTokenError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: RefreshTokenRequest,
+  output: RefreshTokenResponse,
+  errors: [InvalidParameterException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "RefreshToken",
+}));
+
+export type StartCodegenJobError =
+  | InternalServerException
+  | InvalidParameterException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Starts a code generation job for a specified Amplify app and backend environment.
+ */
+export const startCodegenJob: API.OperationMethod<
+  StartCodegenJobRequest,
+  StartCodegenJobResponse,
+  StartCodegenJobError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartCodegenJobRequest,
+  output: StartCodegenJobResponse,
+  errors: [
+    InternalServerException,
+    InvalidParameterException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "StartCodegenJob",
+}));
+
+export type TagResourceError =
+  | InternalServerException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | CommonErrors;
+/**
+ * Tags the resource with a tag key and value.
+ */
+export const tagResource: API.OperationMethod<
+  TagResourceRequest,
+  TagResourceResponse,
+  TagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: TagResourceRequest,
+  output: TagResourceResponse,
+  errors: [
+    InternalServerException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TagResource",
+}));
+
+export type UntagResourceError =
+  | InternalServerException
+  | InvalidParameterException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | CommonErrors;
+/**
+ * Untags a resource with a specified Amazon Resource Name (ARN).
+ */
+export const untagResource: API.OperationMethod<
+  UntagResourceRequest,
+  UntagResourceResponse,
+  UntagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
+  errors: [
+    InternalServerException,
+    InvalidParameterException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UntagResource",
+}));
+
+export type UpdateComponentError =
+  | InternalServerException
+  | InvalidParameterException
+  | ResourceConflictException
+  | CommonErrors;
+/**
+ * Updates an existing component.
+ */
+export const updateComponent: API.OperationMethod<
+  UpdateComponentRequest,
+  UpdateComponentResponse,
+  UpdateComponentError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateComponentRequest,
+  output: UpdateComponentResponse,
+  errors: [
+    InternalServerException,
+    InvalidParameterException,
+    ResourceConflictException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateComponent",
+}));
+
+export type UpdateFormError =
+  | InternalServerException
+  | InvalidParameterException
+  | ResourceConflictException
+  | CommonErrors;
+/**
+ * Updates an existing form.
+ */
+export const updateForm: API.OperationMethod<
+  UpdateFormRequest,
+  UpdateFormResponse,
+  UpdateFormError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateFormRequest,
+  output: UpdateFormResponse,
+  errors: [
+    InternalServerException,
+    InvalidParameterException,
+    ResourceConflictException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateForm",
+}));
+
+export type UpdateThemeError =
+  | InternalServerException
+  | InvalidParameterException
+  | ResourceConflictException
+  | CommonErrors;
+/**
+ * Updates an existing theme.
+ */
+export const updateTheme: API.OperationMethod<
+  UpdateThemeRequest,
+  UpdateThemeResponse,
+  UpdateThemeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateThemeRequest,
+  output: UpdateThemeResponse,
+  errors: [
+    InternalServerException,
+    InvalidParameterException,
+    ResourceConflictException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateTheme",
 }));

@@ -106,85 +106,157 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ActivityAlreadyExists extends S.TaggedErrorClass<ActivityAlreadyExists>()(
+  "ActivityAlreadyExists",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class ActivityDoesNotExist extends S.TaggedErrorClass<ActivityDoesNotExist>()(
+  "ActivityDoesNotExist",
+  { message: S.optional(S.String) },
+) {}
+export class ActivityLimitExceeded extends S.TaggedErrorClass<ActivityLimitExceeded>()(
+  "ActivityLimitExceeded",
+  { message: S.optional(S.String) },
+).pipe(C.withThrottlingError) {}
+export class ActivityWorkerLimitExceeded extends S.TaggedErrorClass<ActivityWorkerLimitExceeded>()(
+  "ActivityWorkerLimitExceeded",
+  { message: S.optional(S.String) },
+).pipe(C.withThrottlingError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ExecutionAlreadyExists extends S.TaggedErrorClass<ExecutionAlreadyExists>()(
+  "ExecutionAlreadyExists",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class ExecutionDoesNotExist extends S.TaggedErrorClass<ExecutionDoesNotExist>()(
+  "ExecutionDoesNotExist",
+  { message: S.optional(S.String) },
+) {}
+export class ExecutionLimitExceeded extends S.TaggedErrorClass<ExecutionLimitExceeded>()(
+  "ExecutionLimitExceeded",
+  { message: S.optional(S.String) },
+).pipe(C.withThrottlingError) {}
+export class ExecutionNotRedrivable extends S.TaggedErrorClass<ExecutionNotRedrivable>()(
+  "ExecutionNotRedrivable",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidArn extends S.TaggedErrorClass<InvalidArn>()("InvalidArn", {
+  message: S.optional(S.String),
+}) {}
+export class InvalidDefinition extends S.TaggedErrorClass<InvalidDefinition>()(
+  "InvalidDefinition",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidEncryptionConfiguration extends S.TaggedErrorClass<InvalidEncryptionConfiguration>()(
+  "InvalidEncryptionConfiguration",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidExecutionInput extends S.TaggedErrorClass<InvalidExecutionInput>()(
+  "InvalidExecutionInput",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidLoggingConfiguration extends S.TaggedErrorClass<InvalidLoggingConfiguration>()(
+  "InvalidLoggingConfiguration",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidName extends S.TaggedErrorClass<InvalidName>()(
+  "InvalidName",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidOutput extends S.TaggedErrorClass<InvalidOutput>()(
+  "InvalidOutput",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidToken extends S.TaggedErrorClass<InvalidToken>()(
+  "InvalidToken",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidTracingConfiguration extends S.TaggedErrorClass<InvalidTracingConfiguration>()(
+  "InvalidTracingConfiguration",
+  { message: S.optional(S.String) },
+) {}
+export class KmsAccessDeniedException extends S.TaggedErrorClass<KmsAccessDeniedException>()(
+  "KmsAccessDeniedException",
+  { message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class KmsInvalidStateException extends S.TaggedErrorClass<KmsInvalidStateException>()(
+  "KmsInvalidStateException",
+  {
+    kmsKeyState: S.optional(
+      S.suspend(() => KmsKeyState).annotate({ identifier: "KmsKeyState" }),
+    ),
+    message: S.optional(S.String),
+  },
+) {}
+export class KmsThrottlingException extends S.TaggedErrorClass<KmsThrottlingException>()(
+  "KmsThrottlingException",
+  { message: S.optional(S.String) },
+) {}
+export class MissingRequiredParameter extends S.TaggedErrorClass<MissingRequiredParameter>()(
+  "MissingRequiredParameter",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceNotFound extends S.TaggedErrorClass<ResourceNotFound>()(
+  "ResourceNotFound",
+  { message: S.optional(S.String), resourceName: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class StateMachineAlreadyExists extends S.TaggedErrorClass<StateMachineAlreadyExists>()(
+  "StateMachineAlreadyExists",
+  { message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class StateMachineDeleting extends S.TaggedErrorClass<StateMachineDeleting>()(
+  "StateMachineDeleting",
+  { message: S.optional(S.String) },
+) {}
+export class StateMachineDoesNotExist extends S.TaggedErrorClass<StateMachineDoesNotExist>()(
+  "StateMachineDoesNotExist",
+  { message: S.optional(S.String) },
+) {}
+export class StateMachineLimitExceeded extends S.TaggedErrorClass<StateMachineLimitExceeded>()(
+  "StateMachineLimitExceeded",
+  { message: S.optional(S.String) },
+).pipe(C.withThrottlingError) {}
+export class StateMachineTypeNotSupported extends S.TaggedErrorClass<StateMachineTypeNotSupported>()(
+  "StateMachineTypeNotSupported",
+  { message: S.optional(S.String) },
+) {}
+export class TaskDoesNotExist extends S.TaggedErrorClass<TaskDoesNotExist>()(
+  "TaskDoesNotExist",
+  { message: S.optional(S.String) },
+) {}
+export class TaskTimedOut extends S.TaggedErrorClass<TaskTimedOut>()(
+  "TaskTimedOut",
+  { message: S.optional(S.String) },
+) {}
+export class TooManyTags extends S.TaggedErrorClass<TooManyTags>()(
+  "TooManyTags",
+  { message: S.optional(S.String), resourceName: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.optional(S.String),
+    reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Name = string;
 export type TagKey = string;
 export type TagValue = string;
-export type KmsKeyId = string;
-export type KmsDataKeyReusePeriodSeconds = number;
-export type Arn = string;
-export type ErrorMessage = string;
-export type Definition = string | redacted.Redacted<string>;
-export type IncludeExecutionData = boolean;
-export type Enabled = boolean;
-export type Publish = boolean;
-export type VersionDescription = string | redacted.Redacted<string>;
-export type AliasDescription = string | redacted.Redacted<string>;
-export type CharacterRestrictedName = string;
-export type VersionWeight = number;
-export type LongArn = string;
-export type SensitiveData = string | redacted.Redacted<string>;
-export type IncludedDetails = boolean;
-export type TraceHeader = string;
-export type SensitiveError = string | redacted.Redacted<string>;
-export type SensitiveCause = string | redacted.Redacted<string>;
-export type RedriveCount = number;
-export type MaxConcurrency = number;
-export type ToleratedFailurePercentage = number;
-export type ToleratedFailureCount = number;
-export type UnsignedLong = number;
-export type LongObject = number;
-export type MapRunLabel = string;
-export type RevisionId = string;
-export type StateName = string;
-export type VariableName = string | redacted.Redacted<string>;
-export type TaskToken = string;
-export type SensitiveDataJobInput = string | redacted.Redacted<string>;
-export type PageSize = number;
-export type ReverseOrder = boolean;
-export type PageToken = string;
-export type IncludeExecutionDataGetExecutionHistory = boolean;
-export type EventId = number;
-export type Truncated = boolean;
-export type TimeoutInSeconds = number;
-export type Identity = string;
-export type ConnectorParameters = string | redacted.Redacted<string>;
-export type UnsignedInteger = number;
-export type VariableValue = string | redacted.Redacted<string>;
-export type EvaluationFailureLocation = string | redacted.Redacted<string>;
-export type ListExecutionsPageToken = string;
-export type ClientToken = string;
-export type BilledMemoryUsed = number;
-export type BilledDuration = number;
-export type RevealSecrets = boolean;
-export type TestStateStateName = string | redacted.Redacted<string>;
-export type RetrierRetryCount = number;
-export type MapIterationFailureCount = number;
-export type HTTPProtocol = string;
-export type HTTPMethod = string;
-export type URL = string;
-export type HTTPHeaders = string;
-export type HTTPBody = string;
-export type HTTPStatusCode = string;
-export type HTTPStatusMessage = string;
-export type ExceptionHandlerIndex = number;
-export type RetryBackoffIntervalSeconds = number;
-export type InspectionToleratedFailureCount = number;
-export type InspectionToleratedFailurePercentage = number;
-export type InspectionMaxConcurrency = number;
-export type ValidateStateMachineDefinitionMaxResult = number;
-export type ValidateStateMachineDefinitionCode =
-  | string
-  | redacted.Redacted<string>;
-export type ValidateStateMachineDefinitionMessage =
-  | string
-  | redacted.Redacted<string>;
-export type ValidateStateMachineDefinitionLocation =
-  | string
-  | redacted.Redacted<string>;
-export type ValidateStateMachineDefinitionTruncated = boolean;
-
-//# Schemas
 export interface Tag {
   key?: string;
   value?: string;
@@ -194,11 +266,14 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
+export type KmsKeyId = string;
+export type KmsDataKeyReusePeriodSeconds = number;
 export type EncryptionType =
   | "AWS_OWNED_KEY"
   | "CUSTOMER_MANAGED_KMS_KEY"
   | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
+
 export interface EncryptionConfiguration {
   kmsKeyId?: string;
   kmsDataKeyReusePeriodSeconds?: number;
@@ -237,6 +312,7 @@ export const CreateActivityInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateActivityInput",
 }) as any as S.Schema<CreateActivityInput>;
+export type Arn = string;
 export interface CreateActivityOutput {
   activityArn: string;
   creationDate: Date;
@@ -249,10 +325,14 @@ export const CreateActivityOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateActivityOutput",
 }) as any as S.Schema<CreateActivityOutput>;
+export type Definition = string | redacted.Redacted<string>;
 export type StateMachineType = "STANDARD" | "EXPRESS" | (string & {});
 export const StateMachineType = /*@__PURE__*/ S.String;
+
 export type LogLevel = "ALL" | "ERROR" | "FATAL" | "OFF" | (string & {});
 export const LogLevel = /*@__PURE__*/ S.String;
+
+export type IncludeExecutionData = boolean;
 export interface CloudWatchLogsLogGroup {
   logGroupArn?: string;
 }
@@ -283,6 +363,7 @@ export const LoggingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LoggingConfiguration",
 }) as any as S.Schema<LoggingConfiguration>;
+export type Enabled = boolean;
 export interface TracingConfiguration {
   enabled?: boolean;
 }
@@ -291,6 +372,8 @@ export const TracingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TracingConfiguration",
 }) as any as S.Schema<TracingConfiguration>;
+export type Publish = boolean;
+export type VersionDescription = string | redacted.Redacted<string>;
 export interface CreateStateMachineInput {
   name: string;
   definition: string | redacted.Redacted<string>;
@@ -343,13 +426,9 @@ export const CreateStateMachineOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateStateMachineOutput",
 }) as any as S.Schema<CreateStateMachineOutput>;
-export type ValidationExceptionReason =
-  | "API_DOES_NOT_SUPPORT_LABELED_ARNS"
-  | "MISSING_REQUIRED_PARAMETER"
-  | "CANNOT_UPDATE_COMPLETED_MAP_RUN"
-  | "INVALID_ROUTING_CONFIGURATION"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+export type AliasDescription = string | redacted.Redacted<string>;
+export type CharacterRestrictedName = string;
+export type VersionWeight = number;
 export interface RoutingConfigurationListItem {
   stateMachineVersionArn: string;
   weight: number;
@@ -471,6 +550,7 @@ export const DeleteStateMachineAliasOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteStateMachineAliasOutput",
 }) as any as S.Schema<DeleteStateMachineAliasOutput>;
+export type LongArn = string;
 export interface DeleteStateMachineVersionInput {
   stateMachineVersionArn: string;
 }
@@ -531,6 +611,7 @@ export const DescribeActivityOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeActivityOutput>;
 export type IncludedData = "ALL_DATA" | "METADATA_ONLY" | (string & {});
 export const IncludedData = /*@__PURE__*/ S.String;
+
 export interface DescribeExecutionInput {
   executionArn: string;
   includedData?: IncludedData;
@@ -562,6 +643,9 @@ export type ExecutionStatus =
   | "PENDING_REDRIVE"
   | (string & {});
 export const ExecutionStatus = /*@__PURE__*/ S.String;
+
+export type SensitiveData = string | redacted.Redacted<string>;
+export type IncludedDetails = boolean;
 export interface CloudWatchEventsExecutionDataDetails {
   included?: boolean;
 }
@@ -570,12 +654,17 @@ export const CloudWatchEventsExecutionDataDetails = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CloudWatchEventsExecutionDataDetails",
 }) as any as S.Schema<CloudWatchEventsExecutionDataDetails>;
+export type TraceHeader = string;
+export type SensitiveError = string | redacted.Redacted<string>;
+export type SensitiveCause = string | redacted.Redacted<string>;
+export type RedriveCount = number;
 export type ExecutionRedriveStatus =
   | "REDRIVABLE"
   | "NOT_REDRIVABLE"
   | "REDRIVABLE_BY_MAP_RUN"
   | (string & {});
 export const ExecutionRedriveStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeExecutionOutput {
   executionArn: string;
   stateMachineArn: string;
@@ -624,14 +713,6 @@ export const DescribeExecutionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeExecutionOutput",
 }) as any as S.Schema<DescribeExecutionOutput>;
-export type KmsKeyState =
-  | "DISABLED"
-  | "PENDING_DELETION"
-  | "PENDING_IMPORT"
-  | "UNAVAILABLE"
-  | "CREATING"
-  | (string & {});
-export const KmsKeyState = /*@__PURE__*/ S.String;
 export interface DescribeMapRunInput {
   mapRunArn: string;
 }
@@ -657,6 +738,12 @@ export type MapRunStatus =
   | "ABORTED"
   | (string & {});
 export const MapRunStatus = /*@__PURE__*/ S.String;
+
+export type MaxConcurrency = number;
+export type ToleratedFailurePercentage = number;
+export type ToleratedFailureCount = number;
+export type UnsignedLong = number;
+export type LongObject = number;
 export interface MapRunItemCounts {
   pending: number;
   running: number;
@@ -769,6 +856,11 @@ export const DescribeStateMachineInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeStateMachineInput>;
 export type StateMachineStatus = "ACTIVE" | "DELETING" | (string & {});
 export const StateMachineStatus = /*@__PURE__*/ S.String;
+
+export type MapRunLabel = string;
+export type RevisionId = string;
+export type StateName = string;
+export type VariableName = string | redacted.Redacted<string>;
 export type VariableNameList = (string | redacted.Redacted<string>)[];
 export const VariableNameList = /*@__PURE__*/ S.Array(SensitiveString);
 export type VariableReferences = {
@@ -931,6 +1023,8 @@ export const GetActivityTaskInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetActivityTaskInput",
 }) as any as S.Schema<GetActivityTaskInput>;
+export type TaskToken = string;
+export type SensitiveDataJobInput = string | redacted.Redacted<string>;
 export interface GetActivityTaskOutput {
   taskToken?: string;
   input?: string | redacted.Redacted<string>;
@@ -943,6 +1037,10 @@ export const GetActivityTaskOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetActivityTaskOutput",
 }) as any as S.Schema<GetActivityTaskOutput>;
+export type PageSize = number;
+export type ReverseOrder = boolean;
+export type PageToken = string;
+export type IncludeExecutionDataGetExecutionHistory = boolean;
 export interface GetExecutionHistoryInput {
   executionArn: string;
   maxResults?: number;
@@ -1036,6 +1134,8 @@ export type HistoryEventType =
   | "EvaluationFailed"
   | (string & {});
 export const HistoryEventType = /*@__PURE__*/ S.String;
+
+export type EventId = number;
 export interface ActivityFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
@@ -1060,6 +1160,7 @@ export const ActivityScheduleFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivityScheduleFailedEventDetails",
 }) as any as S.Schema<ActivityScheduleFailedEventDetails>;
+export type Truncated = boolean;
 export interface HistoryEventExecutionDataDetails {
   truncated?: boolean;
 }
@@ -1068,6 +1169,7 @@ export const HistoryEventExecutionDataDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HistoryEventExecutionDataDetails",
 }) as any as S.Schema<HistoryEventExecutionDataDetails>;
+export type TimeoutInSeconds = number;
 export interface ActivityScheduledEventDetails {
   resource: string;
   input?: string | redacted.Redacted<string>;
@@ -1086,6 +1188,7 @@ export const ActivityScheduledEventDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivityScheduledEventDetails",
 }) as any as S.Schema<ActivityScheduledEventDetails>;
+export type Identity = string;
 export interface ActivityStartedEventDetails {
   workerName?: string;
 }
@@ -1134,6 +1237,7 @@ export const TaskFailedEventDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TaskFailedEventDetails",
 }) as any as S.Schema<TaskFailedEventDetails>;
+export type ConnectorParameters = string | redacted.Redacted<string>;
 export interface TaskCredentials {
   roleArn?: string;
 }
@@ -1327,6 +1431,7 @@ export const ExecutionRedrivenEventDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecutionRedrivenEventDetails",
 }) as any as S.Schema<ExecutionRedrivenEventDetails>;
+export type UnsignedInteger = number;
 export interface MapStateStartedEventDetails {
   length?: number;
 }
@@ -1438,6 +1543,7 @@ export const StateEnteredEventDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StateEnteredEventDetails",
 }) as any as S.Schema<StateEnteredEventDetails>;
+export type VariableValue = string | redacted.Redacted<string>;
 export type AssignedVariables = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -1505,6 +1611,7 @@ export const MapRunRedrivenEventDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MapRunRedrivenEventDetails",
 }) as any as S.Schema<MapRunRedrivenEventDetails>;
+export type EvaluationFailureLocation = string | redacted.Redacted<string>;
 export interface EvaluationFailedEventDetails {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
@@ -1685,11 +1792,13 @@ export const ListActivitiesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListActivitiesOutput",
 }) as any as S.Schema<ListActivitiesOutput>;
+export type ListExecutionsPageToken = string;
 export type ExecutionRedriveFilter =
   | "REDRIVEN"
   | "NOT_REDRIVEN"
   | (string & {});
 export const ExecutionRedriveFilter = /*@__PURE__*/ S.String;
+
 export interface ListExecutionsInput {
   stateMachineArn?: string;
   statusFilter?: ExecutionStatus;
@@ -2034,6 +2143,7 @@ export const PublishStateMachineVersionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PublishStateMachineVersionOutput",
 }) as any as S.Schema<PublishStateMachineVersionOutput>;
+export type ClientToken = string;
 export interface RedriveExecutionInput {
   executionArn: string;
   clientToken?: string;
@@ -2217,6 +2327,9 @@ export type SyncExecutionStatus =
   | "TIMED_OUT"
   | (string & {});
 export const SyncExecutionStatus = /*@__PURE__*/ S.String;
+
+export type BilledMemoryUsed = number;
+export type BilledDuration = number;
 export interface BillingDetails {
   billedMemoryUsedInMB?: number;
   billedDurationInMilliseconds?: number;
@@ -2324,6 +2437,9 @@ export const TagResourceOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TagResourceOutput>;
 export type InspectionLevel = "INFO" | "DEBUG" | "TRACE" | (string & {});
 export const InspectionLevel = /*@__PURE__*/ S.String;
+
+export type RevealSecrets = boolean;
+export type TestStateStateName = string | redacted.Redacted<string>;
 export interface MockErrorOutput {
   error?: string | redacted.Redacted<string>;
   cause?: string | redacted.Redacted<string>;
@@ -2342,6 +2458,7 @@ export type MockResponseValidationMode =
   | "NONE"
   | (string & {});
 export const MockResponseValidationMode = /*@__PURE__*/ S.String;
+
 export interface MockInput {
   result?: string | redacted.Redacted<string>;
   errorOutput?: MockErrorOutput;
@@ -2354,6 +2471,8 @@ export const MockInput = /*@__PURE__*/ S.suspend(() =>
     fieldValidationMode: S.optional(MockResponseValidationMode),
   }),
 ).annotate({ identifier: "MockInput" }) as any as S.Schema<MockInput>;
+export type RetrierRetryCount = number;
+export type MapIterationFailureCount = number;
 export interface TestStateConfiguration {
   retrierRetryCount?: number;
   errorCausedByState?: string | redacted.Redacted<string>;
@@ -2406,6 +2525,11 @@ export const TestStateInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "TestStateInput" }) as any as S.Schema<TestStateInput>;
+export type HTTPProtocol = string;
+export type HTTPMethod = string;
+export type URL = string;
+export type HTTPHeaders = string;
+export type HTTPBody = string;
 export interface InspectionDataRequest {
   protocol?: string;
   method?: string;
@@ -2424,6 +2548,8 @@ export const InspectionDataRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InspectionDataRequest",
 }) as any as S.Schema<InspectionDataRequest>;
+export type HTTPStatusCode = string;
+export type HTTPStatusMessage = string;
 export interface InspectionDataResponse {
   protocol?: string;
   statusCode?: string;
@@ -2442,6 +2568,8 @@ export const InspectionDataResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InspectionDataResponse",
 }) as any as S.Schema<InspectionDataResponse>;
+export type ExceptionHandlerIndex = number;
+export type RetryBackoffIntervalSeconds = number;
 export interface InspectionErrorDetails {
   catchIndex?: number;
   retryIndex?: number;
@@ -2456,6 +2584,9 @@ export const InspectionErrorDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InspectionErrorDetails",
 }) as any as S.Schema<InspectionErrorDetails>;
+export type InspectionToleratedFailureCount = number;
+export type InspectionToleratedFailurePercentage = number;
+export type InspectionMaxConcurrency = number;
 export interface InspectionData {
   input?: string | redacted.Redacted<string>;
   afterArguments?: string | redacted.Redacted<string>;
@@ -2505,6 +2636,7 @@ export type TestExecutionStatus =
   | "CAUGHT_ERROR"
   | (string & {});
 export const TestExecutionStatus = /*@__PURE__*/ S.String;
+
 export interface TestStateOutput {
   output?: string | redacted.Redacted<string>;
   error?: string | redacted.Redacted<string>;
@@ -2671,6 +2803,8 @@ export type ValidateStateMachineDefinitionSeverity =
   | "WARNING"
   | (string & {});
 export const ValidateStateMachineDefinitionSeverity = /*@__PURE__*/ S.String;
+
+export type ValidateStateMachineDefinitionMaxResult = number;
 export interface ValidateStateMachineDefinitionInput {
   definition: string | redacted.Redacted<string>;
   type?: StateMachineType;
@@ -2702,6 +2836,16 @@ export type ValidateStateMachineDefinitionResultCode =
   | "FAIL"
   | (string & {});
 export const ValidateStateMachineDefinitionResultCode = /*@__PURE__*/ S.String;
+
+export type ValidateStateMachineDefinitionCode =
+  | string
+  | redacted.Redacted<string>;
+export type ValidateStateMachineDefinitionMessage =
+  | string
+  | redacted.Redacted<string>;
+export type ValidateStateMachineDefinitionLocation =
+  | string
+  | redacted.Redacted<string>;
 export interface ValidateStateMachineDefinitionDiagnostic {
   severity: ValidateStateMachineDefinitionSeverity;
   code: string | redacted.Redacted<string>;
@@ -2723,6 +2867,7 @@ export type ValidateStateMachineDefinitionDiagnosticList =
   ValidateStateMachineDefinitionDiagnostic[];
 export const ValidateStateMachineDefinitionDiagnosticList =
   /*@__PURE__*/ S.Array(ValidateStateMachineDefinitionDiagnostic);
+export type ValidateStateMachineDefinitionTruncated = boolean;
 export interface ValidateStateMachineDefinitionOutput {
   result: ValidateStateMachineDefinitionResultCode;
   diagnostics: ValidateStateMachineDefinitionDiagnostic[];
@@ -2738,149 +2883,24 @@ export const ValidateStateMachineDefinitionOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ValidateStateMachineDefinitionOutput",
 }) as any as S.Schema<ValidateStateMachineDefinitionOutput>;
+export type ErrorMessage = string;
+export type ValidationExceptionReason =
+  | "API_DOES_NOT_SUPPORT_LABELED_ARNS"
+  | "MISSING_REQUIRED_PARAMETER"
+  | "CANNOT_UPDATE_COMPLETED_MAP_RUN"
+  | "INVALID_ROUTING_CONFIGURATION"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class ActivityAlreadyExists extends S.TaggedErrorClass<ActivityAlreadyExists>()(
-  "ActivityAlreadyExists",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class ActivityLimitExceeded extends S.TaggedErrorClass<ActivityLimitExceeded>()(
-  "ActivityLimitExceeded",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class InvalidEncryptionConfiguration extends S.TaggedErrorClass<InvalidEncryptionConfiguration>()(
-  "InvalidEncryptionConfiguration",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidName extends S.TaggedErrorClass<InvalidName>()(
-  "InvalidName",
-  { message: S.optional(S.String) },
-) {}
-export class KmsAccessDeniedException extends S.TaggedErrorClass<KmsAccessDeniedException>()(
-  "KmsAccessDeniedException",
-  { message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class KmsThrottlingException extends S.TaggedErrorClass<KmsThrottlingException>()(
-  "KmsThrottlingException",
-  { message: S.optional(S.String) },
-) {}
-export class TooManyTags extends S.TaggedErrorClass<TooManyTags>()(
-  "TooManyTags",
-  { message: S.optional(S.String), resourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InvalidArn extends S.TaggedErrorClass<InvalidArn>()("InvalidArn", {
-  message: S.optional(S.String),
-}) {}
-export class InvalidDefinition extends S.TaggedErrorClass<InvalidDefinition>()(
-  "InvalidDefinition",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidLoggingConfiguration extends S.TaggedErrorClass<InvalidLoggingConfiguration>()(
-  "InvalidLoggingConfiguration",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTracingConfiguration extends S.TaggedErrorClass<InvalidTracingConfiguration>()(
-  "InvalidTracingConfiguration",
-  { message: S.optional(S.String) },
-) {}
-export class StateMachineAlreadyExists extends S.TaggedErrorClass<StateMachineAlreadyExists>()(
-  "StateMachineAlreadyExists",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class StateMachineDeleting extends S.TaggedErrorClass<StateMachineDeleting>()(
-  "StateMachineDeleting",
-  { message: S.optional(S.String) },
-) {}
-export class StateMachineLimitExceeded extends S.TaggedErrorClass<StateMachineLimitExceeded>()(
-  "StateMachineLimitExceeded",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class StateMachineTypeNotSupported extends S.TaggedErrorClass<StateMachineTypeNotSupported>()(
-  "StateMachineTypeNotSupported",
-  { message: S.optional(S.String) },
-) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.optional(S.String),
-    reason: S.optional(ValidationExceptionReason),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFound extends S.TaggedErrorClass<ResourceNotFound>()(
-  "ResourceNotFound",
-  { message: S.optional(S.String), resourceName: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ActivityDoesNotExist extends S.TaggedErrorClass<ActivityDoesNotExist>()(
-  "ActivityDoesNotExist",
-  { message: S.optional(S.String) },
-) {}
-export class ExecutionDoesNotExist extends S.TaggedErrorClass<ExecutionDoesNotExist>()(
-  "ExecutionDoesNotExist",
-  { message: S.optional(S.String) },
-) {}
-export class KmsInvalidStateException extends S.TaggedErrorClass<KmsInvalidStateException>()(
-  "KmsInvalidStateException",
-  { kmsKeyState: S.optional(KmsKeyState), message: S.optional(S.String) },
-) {}
-export class StateMachineDoesNotExist extends S.TaggedErrorClass<StateMachineDoesNotExist>()(
-  "StateMachineDoesNotExist",
-  { message: S.optional(S.String) },
-) {}
-export class ActivityWorkerLimitExceeded extends S.TaggedErrorClass<ActivityWorkerLimitExceeded>()(
-  "ActivityWorkerLimitExceeded",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class InvalidToken extends S.TaggedErrorClass<InvalidToken>()(
-  "InvalidToken",
-  { message: S.optional(S.String) },
-) {}
-export class ExecutionLimitExceeded extends S.TaggedErrorClass<ExecutionLimitExceeded>()(
-  "ExecutionLimitExceeded",
-  { message: S.optional(S.String) },
-).pipe(C.withThrottlingError) {}
-export class ExecutionNotRedrivable extends S.TaggedErrorClass<ExecutionNotRedrivable>()(
-  "ExecutionNotRedrivable",
-  { message: S.optional(S.String) },
-) {}
-export class TaskDoesNotExist extends S.TaggedErrorClass<TaskDoesNotExist>()(
-  "TaskDoesNotExist",
-  { message: S.optional(S.String) },
-) {}
-export class TaskTimedOut extends S.TaggedErrorClass<TaskTimedOut>()(
-  "TaskTimedOut",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidOutput extends S.TaggedErrorClass<InvalidOutput>()(
-  "InvalidOutput",
-  { message: S.optional(S.String) },
-) {}
-export class ExecutionAlreadyExists extends S.TaggedErrorClass<ExecutionAlreadyExists>()(
-  "ExecutionAlreadyExists",
-  { message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class InvalidExecutionInput extends S.TaggedErrorClass<InvalidExecutionInput>()(
-  "InvalidExecutionInput",
-  { message: S.optional(S.String) },
-) {}
-export class MissingRequiredParameter extends S.TaggedErrorClass<MissingRequiredParameter>()(
-  "MissingRequiredParameter",
-  { message: S.optional(S.String) },
-) {}
+export type KmsKeyState =
+  | "DISABLED"
+  | "PENDING_DELETION"
+  | "PENDING_IMPORT"
+  | "UNAVAILABLE"
+  | "CREATING"
+  | (string & {});
+export const KmsKeyState = /*@__PURE__*/ S.String;
 
-//# Operations
 export type CreateActivityError =
   | ActivityAlreadyExists
   | ActivityLimitExceeded
@@ -2927,6 +2947,7 @@ export const createActivity: API.OperationMethod<
   retry: Retry,
   operationName: "CreateActivity",
 }));
+
 export type CreateStateMachineError =
   | ConflictException
   | InvalidArn
@@ -2997,6 +3018,7 @@ export const createStateMachine: API.OperationMethod<
   retry: Retry,
   operationName: "CreateStateMachine",
 }));
+
 export type CreateStateMachineAliasError =
   | ConflictException
   | InvalidArn
@@ -3058,6 +3080,7 @@ export const createStateMachineAlias: API.OperationMethod<
   retry: Retry,
   operationName: "CreateStateMachineAlias",
 }));
+
 export type DeleteActivityError = InvalidArn | CommonErrors;
 /**
  * Deletes an activity.
@@ -3075,6 +3098,7 @@ export const deleteActivity: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteActivity",
 }));
+
 export type DeleteStateMachineError =
   | InvalidArn
   | ValidationException
@@ -3116,6 +3140,7 @@ export const deleteStateMachine: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteStateMachine",
 }));
+
 export type DeleteStateMachineAliasError =
   | ConflictException
   | InvalidArn
@@ -3157,6 +3182,7 @@ export const deleteStateMachineAlias: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteStateMachineAlias",
 }));
+
 export type DeleteStateMachineVersionError =
   | ConflictException
   | InvalidArn
@@ -3190,6 +3216,7 @@ export const deleteStateMachineVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteStateMachineVersion",
 }));
+
 export type DescribeActivityError =
   | ActivityDoesNotExist
   | InvalidArn
@@ -3212,6 +3239,7 @@ export const describeActivity: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeActivity",
 }));
+
 export type DescribeExecutionError =
   | ExecutionDoesNotExist
   | InvalidArn
@@ -3248,6 +3276,7 @@ export const describeExecution: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeExecution",
 }));
+
 export type DescribeMapRunError = InvalidArn | ResourceNotFound | CommonErrors;
 /**
  * Provides information about a Map Run's configuration, progress, and results. If you've redriven a Map Run, this API action also returns information about the redrives of that Map Run. For more information, see Examining Map Run in the *Step Functions Developer Guide*.
@@ -3265,6 +3294,7 @@ export const describeMapRun: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeMapRun",
 }));
+
 export type DescribeStateMachineError =
   | InvalidArn
   | KmsAccessDeniedException
@@ -3319,6 +3349,7 @@ export const describeStateMachine: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeStateMachine",
 }));
+
 export type DescribeStateMachineAliasError =
   | InvalidArn
   | ResourceNotFound
@@ -3350,6 +3381,7 @@ export const describeStateMachineAlias: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeStateMachineAlias",
 }));
+
 export type DescribeStateMachineForExecutionError =
   | ExecutionDoesNotExist
   | InvalidArn
@@ -3386,6 +3418,7 @@ export const describeStateMachineForExecution: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeStateMachineForExecution",
 }));
+
 export type GetActivityTaskError =
   | ActivityDoesNotExist
   | ActivityWorkerLimitExceeded
@@ -3431,6 +3464,7 @@ export const getActivityTask: API.OperationMethod<
   retry: Retry,
   operationName: "GetActivityTask",
 }));
+
 export type GetExecutionHistoryError =
   | ExecutionDoesNotExist
   | InvalidArn
@@ -3490,6 +3524,7 @@ export const getExecutionHistory: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListActivitiesError = InvalidToken | CommonErrors;
 /**
  * Lists the existing activities.
@@ -3533,6 +3568,7 @@ export const listActivities: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListExecutionsError =
   | InvalidArn
   | InvalidToken
@@ -3597,6 +3633,7 @@ export const listExecutions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListMapRunsError =
   | ExecutionDoesNotExist
   | InvalidArn
@@ -3639,6 +3676,7 @@ export const listMapRuns: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListStateMachineAliasesError =
   | InvalidArn
   | InvalidToken
@@ -3683,6 +3721,7 @@ export const listStateMachineAliases: API.OperationMethod<
   retry: Retry,
   operationName: "ListStateMachineAliases",
 }));
+
 export type ListStateMachinesError = InvalidToken | CommonErrors;
 /**
  * Lists the existing state machines.
@@ -3726,6 +3765,7 @@ export const listStateMachines: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListStateMachineVersionsError =
   | InvalidArn
   | InvalidToken
@@ -3758,6 +3798,7 @@ export const listStateMachineVersions: API.OperationMethod<
   retry: Retry,
   operationName: "ListStateMachineVersions",
 }));
+
 export type ListTagsForResourceError =
   | InvalidArn
   | ResourceNotFound
@@ -3780,6 +3821,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PublishStateMachineVersionError =
   | ConflictException
   | InvalidArn
@@ -3829,6 +3871,7 @@ export const publishStateMachineVersion: API.OperationMethod<
   retry: Retry,
   operationName: "PublishStateMachineVersion",
 }));
+
 export type RedriveExecutionError =
   | ExecutionDoesNotExist
   | ExecutionLimitExceeded
@@ -3876,6 +3919,7 @@ export const redriveExecution: API.OperationMethod<
   retry: Retry,
   operationName: "RedriveExecution",
 }));
+
 export type SendTaskFailureError =
   | InvalidToken
   | KmsAccessDeniedException
@@ -3912,6 +3956,7 @@ export const sendTaskFailure: API.OperationMethod<
   retry: Retry,
   operationName: "SendTaskFailure",
 }));
+
 export type SendTaskHeartbeatError =
   | InvalidToken
   | TaskDoesNotExist
@@ -3946,6 +3991,7 @@ export const sendTaskHeartbeat: API.OperationMethod<
   retry: Retry,
   operationName: "SendTaskHeartbeat",
 }));
+
 export type SendTaskSuccessError =
   | InvalidOutput
   | InvalidToken
@@ -3981,6 +4027,7 @@ export const sendTaskSuccess: API.OperationMethod<
   retry: Retry,
   operationName: "SendTaskSuccess",
 }));
+
 export type StartExecutionError =
   | ExecutionAlreadyExists
   | ExecutionLimitExceeded
@@ -4055,6 +4102,7 @@ export const startExecution: API.OperationMethod<
   retry: Retry,
   operationName: "StartExecution",
 }));
+
 export type StartSyncExecutionError =
   | InvalidArn
   | InvalidExecutionInput
@@ -4102,6 +4150,7 @@ export const startSyncExecution: API.OperationMethod<
   operationName: "StartSyncExecution",
   endpointHostPrefix: "sync-",
 }));
+
 export type StopExecutionError =
   | ExecutionDoesNotExist
   | InvalidArn
@@ -4139,6 +4188,7 @@ export const stopExecution: API.OperationMethod<
   retry: Retry,
   operationName: "StopExecution",
 }));
+
 export type TagResourceError =
   | InvalidArn
   | ResourceNotFound
@@ -4167,6 +4217,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TestStateError =
   | InvalidArn
   | InvalidDefinition
@@ -4222,6 +4273,7 @@ export const testState: API.OperationMethod<
   operationName: "TestState",
   endpointHostPrefix: "sync-",
 }));
+
 export type UntagResourceError = InvalidArn | ResourceNotFound | CommonErrors;
 /**
  * Remove a tag from a Step Functions resource
@@ -4239,6 +4291,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateMapRunError =
   | InvalidArn
   | ResourceNotFound
@@ -4260,6 +4313,7 @@ export const updateMapRun: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMapRun",
 }));
+
 export type UpdateStateMachineError =
   | ConflictException
   | InvalidArn
@@ -4342,6 +4396,7 @@ export const updateStateMachine: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateStateMachine",
 }));
+
 export type UpdateStateMachineAliasError =
   | ConflictException
   | InvalidArn
@@ -4393,6 +4448,7 @@ export const updateStateMachineAlias: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateStateMachineAlias",
 }));
+
 export type ValidateStateMachineDefinitionError =
   | ValidationException
   | CommonErrors;

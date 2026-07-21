@@ -105,30 +105,48 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
 export type __integerMin1Max8 = number;
 export type __integerMin1Max100 = number;
-export type __stringMax1024 = string;
-export type __stringMin1Max128 = string;
-export type KafkaClusterClientAuthenticationType = string;
-export type KafkaClusterEncryptionInTransitType = string;
-export type NetworkType = string;
-export type __longMin1 = number;
-export type TagKey = string;
-export type TagValue = string;
-export type ConnectorState = string;
-export type CustomPluginContentType = string;
-export type CustomPluginState = string;
-export type __sensitiveString = string | redacted.Redacted<string>;
-export type __timestampIso8601 = Date;
-export type WorkerConfigurationState = string;
-export type ConnectorOperationState = string;
-export type ConnectorOperationType = string;
-export type ConnectorOperationStepType = string;
-export type ConnectorOperationStepState = string;
-export type MaxResults = number;
-
-//# Schemas
 export interface ScaleInPolicy {
   cpuUtilizationPercentage: number;
 }
@@ -183,6 +201,8 @@ export const ConnectorConfiguration = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type __stringMax1024 = string;
+export type __stringMin1Max128 = string;
 export type __listOf__string = string[];
 export const __listOf__string = /*@__PURE__*/ S.Array(S.String);
 export interface Vpc {
@@ -210,6 +230,7 @@ export interface KafkaCluster {
 export const KafkaCluster = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ apacheKafkaCluster: ApacheKafkaCluster }),
 ).annotate({ identifier: "KafkaCluster" }) as any as S.Schema<KafkaCluster>;
+export type KafkaClusterClientAuthenticationType = string;
 export interface KafkaClusterClientAuthentication {
   authenticationType: string;
 }
@@ -218,6 +239,7 @@ export const KafkaClusterClientAuthentication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KafkaClusterClientAuthentication",
 }) as any as S.Schema<KafkaClusterClientAuthentication>;
+export type KafkaClusterEncryptionInTransitType = string;
 export interface KafkaClusterEncryptionInTransit {
   encryptionType: string;
 }
@@ -276,6 +298,8 @@ export interface LogDelivery {
 export const LogDelivery = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ workerLogDelivery: WorkerLogDelivery }),
 ).annotate({ identifier: "LogDelivery" }) as any as S.Schema<LogDelivery>;
+export type NetworkType = string;
+export type __longMin1 = number;
 export interface CustomPlugin {
   customPluginArn: string;
   revision: number;
@@ -300,6 +324,8 @@ export const WorkerConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkerConfiguration",
 }) as any as S.Schema<WorkerConfiguration>;
+export type TagKey = string;
+export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CreateConnectorRequest {
@@ -347,6 +373,7 @@ export const CreateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectorRequest",
 }) as any as S.Schema<CreateConnectorRequest>;
+export type ConnectorState = string;
 export interface CreateConnectorResponse {
   connectorArn?: string;
   connectorName?: string;
@@ -361,6 +388,7 @@ export const CreateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectorResponse",
 }) as any as S.Schema<CreateConnectorResponse>;
+export type CustomPluginContentType = string;
 export interface S3Location {
   bucketArn: string;
   fileKey: string;
@@ -408,6 +436,7 @@ export const CreateCustomPluginRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCustomPluginRequest",
 }) as any as S.Schema<CreateCustomPluginRequest>;
+export type CustomPluginState = string;
 export interface CreateCustomPluginResponse {
   customPluginArn?: string;
   customPluginState?: string;
@@ -424,6 +453,7 @@ export const CreateCustomPluginResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCustomPluginResponse",
 }) as any as S.Schema<CreateCustomPluginResponse>;
+export type __sensitiveString = string | redacted.Redacted<string>;
 export interface CreateWorkerConfigurationRequest {
   description?: string;
   name: string;
@@ -449,6 +479,7 @@ export const CreateWorkerConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWorkerConfigurationRequest",
 }) as any as S.Schema<CreateWorkerConfigurationRequest>;
+export type __timestampIso8601 = Date;
 export interface WorkerConfigurationRevisionSummary {
   creationTime?: Date;
   description?: string;
@@ -465,6 +496,7 @@ export const WorkerConfigurationRevisionSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkerConfigurationRevisionSummary",
 }) as any as S.Schema<WorkerConfigurationRevisionSummary>;
+export type WorkerConfigurationState = string;
 export interface CreateWorkerConfigurationResponse {
   creationTime?: Date;
   latestRevision?: WorkerConfigurationRevisionSummary;
@@ -887,6 +919,10 @@ export const DescribeConnectorOperationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeConnectorOperationRequest",
 }) as any as S.Schema<DescribeConnectorOperationRequest>;
+export type ConnectorOperationState = string;
+export type ConnectorOperationType = string;
+export type ConnectorOperationStepType = string;
+export type ConnectorOperationStepState = string;
 export interface ConnectorOperationStep {
   stepType?: string;
   stepState?: string;
@@ -1101,6 +1137,7 @@ export const DescribeWorkerConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeWorkerConfigurationResponse",
 }) as any as S.Schema<DescribeWorkerConfigurationResponse>;
+export type MaxResults = number;
 export interface ListConnectorOperationsRequest {
   connectorArn: string;
   maxResults?: number;
@@ -1551,50 +1588,6 @@ export const UpdateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateConnectorResponse",
 }) as any as S.Schema<UpdateConnectorResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-
-//# Operations
 export type CreateConnectorError =
   | BadRequestException
   | ConflictException
@@ -1630,6 +1623,7 @@ export const createConnector: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConnector",
 }));
+
 export type CreateCustomPluginError =
   | BadRequestException
   | ConflictException
@@ -1665,6 +1659,7 @@ export const createCustomPlugin: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCustomPlugin",
 }));
+
 export type CreateWorkerConfigurationError =
   | BadRequestException
   | ConflictException
@@ -1700,6 +1695,7 @@ export const createWorkerConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWorkerConfiguration",
 }));
+
 export type DeleteConnectorError =
   | BadRequestException
   | ForbiddenException
@@ -1733,6 +1729,7 @@ export const deleteConnector: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConnector",
 }));
+
 export type DeleteCustomPluginError =
   | BadRequestException
   | ForbiddenException
@@ -1766,6 +1763,7 @@ export const deleteCustomPlugin: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCustomPlugin",
 }));
+
 export type DeleteWorkerConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -1799,6 +1797,7 @@ export const deleteWorkerConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWorkerConfiguration",
 }));
+
 export type DescribeConnectorError =
   | BadRequestException
   | ForbiddenException
@@ -1832,6 +1831,7 @@ export const describeConnector: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConnector",
 }));
+
 export type DescribeConnectorOperationError =
   | BadRequestException
   | ForbiddenException
@@ -1865,6 +1865,7 @@ export const describeConnectorOperation: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConnectorOperation",
 }));
+
 export type DescribeCustomPluginError =
   | BadRequestException
   | ForbiddenException
@@ -1898,6 +1899,7 @@ export const describeCustomPlugin: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCustomPlugin",
 }));
+
 export type DescribeWorkerConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -1931,6 +1933,7 @@ export const describeWorkerConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeWorkerConfiguration",
 }));
+
 export type ListConnectorOperationsError =
   | BadRequestException
   | ForbiddenException
@@ -1985,6 +1988,7 @@ export const listConnectorOperations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListConnectorsError =
   | BadRequestException
   | ForbiddenException
@@ -2039,6 +2043,7 @@ export const listConnectors: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListCustomPluginsError =
   | BadRequestException
   | ForbiddenException
@@ -2093,6 +2098,7 @@ export const listCustomPlugins: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | ForbiddenException
@@ -2126,6 +2132,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListWorkerConfigurationsError =
   | BadRequestException
   | ForbiddenException
@@ -2180,6 +2187,7 @@ export const listWorkerConfigurations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type TagResourceError =
   | BadRequestException
   | ConflictException
@@ -2215,6 +2223,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | ForbiddenException
@@ -2248,6 +2257,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateConnectorError =
   | BadRequestException
   | ForbiddenException

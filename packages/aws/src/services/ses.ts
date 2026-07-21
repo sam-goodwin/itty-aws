@@ -86,74 +86,359 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccountSendingPausedException extends S.TaggedErrorClass<AccountSendingPausedException>()(
+  "AccountSendingPausedException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "AccountSendingPausedException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
+  "AlreadyExistsException",
+  { Name: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class CannotDeleteException extends S.TaggedErrorClass<CannotDeleteException>()(
+  "CannotDeleteException",
+  { Name: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "CannotDelete", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ConfigurationSetAlreadyExistsException extends S.TaggedErrorClass<ConfigurationSetAlreadyExistsException>()(
+  "ConfigurationSetAlreadyExistsException",
+  { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ConfigurationSetAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class ConfigurationSetDoesNotExistException extends S.TaggedErrorClass<ConfigurationSetDoesNotExistException>()(
+  "ConfigurationSetDoesNotExistException",
+  { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ConfigurationSetDoesNotExist",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ConfigurationSetSendingPausedException extends S.TaggedErrorClass<ConfigurationSetSendingPausedException>()(
+  "ConfigurationSetSendingPausedException",
+  { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ConfigurationSetSendingPausedException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CustomVerificationEmailInvalidContentException extends S.TaggedErrorClass<CustomVerificationEmailInvalidContentException>()(
+  "CustomVerificationEmailInvalidContentException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CustomVerificationEmailInvalidContent",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CustomVerificationEmailTemplateAlreadyExistsException extends S.TaggedErrorClass<CustomVerificationEmailTemplateAlreadyExistsException>()(
+  "CustomVerificationEmailTemplateAlreadyExistsException",
+  {
+    CustomVerificationEmailTemplateName: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.all(
+    T.AwsQueryError({
+      code: "CustomVerificationEmailTemplateAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class CustomVerificationEmailTemplateDoesNotExistException extends S.TaggedErrorClass<CustomVerificationEmailTemplateDoesNotExistException>()(
+  "CustomVerificationEmailTemplateDoesNotExistException",
+  {
+    CustomVerificationEmailTemplateName: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.all(
+    T.AwsQueryError({
+      code: "CustomVerificationEmailTemplateDoesNotExist",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EventDestinationAlreadyExistsException extends S.TaggedErrorClass<EventDestinationAlreadyExistsException>()(
+  "EventDestinationAlreadyExistsException",
+  {
+    ConfigurationSetName: S.optional(S.String),
+    EventDestinationName: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.all(
+    T.AwsQueryError({
+      code: "EventDestinationAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class EventDestinationDoesNotExistException extends S.TaggedErrorClass<EventDestinationDoesNotExistException>()(
+  "EventDestinationDoesNotExistException",
+  {
+    ConfigurationSetName: S.optional(S.String),
+    EventDestinationName: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.all(
+    T.AwsQueryError({
+      code: "EventDestinationDoesNotExist",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class FromEmailAddressNotVerifiedException extends S.TaggedErrorClass<FromEmailAddressNotVerifiedException>()(
+  "FromEmailAddressNotVerifiedException",
+  { FromEmailAddress: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "FromEmailAddressNotVerified",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidCloudWatchDestinationException extends S.TaggedErrorClass<InvalidCloudWatchDestinationException>()(
+  "InvalidCloudWatchDestinationException",
+  {
+    ConfigurationSetName: S.optional(S.String),
+    EventDestinationName: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidCloudWatchDestination",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidConfigurationSetException extends S.TaggedErrorClass<InvalidConfigurationSetException>()(
+  "InvalidConfigurationSetException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidConfigurationSet", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidDeliveryOptionsException extends S.TaggedErrorClass<InvalidDeliveryOptionsException>()(
+  "InvalidDeliveryOptionsException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidDeliveryOptions", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidFirehoseDestinationException extends S.TaggedErrorClass<InvalidFirehoseDestinationException>()(
+  "InvalidFirehoseDestinationException",
+  {
+    ConfigurationSetName: S.optional(S.String),
+    EventDestinationName: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidFirehoseDestination",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidLambdaFunctionException extends S.TaggedErrorClass<InvalidLambdaFunctionException>()(
+  "InvalidLambdaFunctionException",
+  { FunctionArn: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidLambdaFunction", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidPolicyException extends S.TaggedErrorClass<InvalidPolicyException>()(
+  "InvalidPolicyException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidPolicy", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidRenderingParameterException extends S.TaggedErrorClass<InvalidRenderingParameterException>()(
+  "InvalidRenderingParameterException",
+  { TemplateName: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidRenderingParameter",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidS3ConfigurationException extends S.TaggedErrorClass<InvalidS3ConfigurationException>()(
+  "InvalidS3ConfigurationException",
+  { Bucket: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidS3Configuration", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSNSDestinationException extends S.TaggedErrorClass<InvalidSNSDestinationException>()(
+  "InvalidSNSDestinationException",
+  {
+    ConfigurationSetName: S.optional(S.String),
+    EventDestinationName: S.optional(S.String),
+    message: S.optional(S.String),
+  },
+  T.all(
+    T.AwsQueryError({ code: "InvalidSNSDestination", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSnsTopicException extends S.TaggedErrorClass<InvalidSnsTopicException>()(
+  "InvalidSnsTopicException",
+  { Topic: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidSnsTopic", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidTemplateException extends S.TaggedErrorClass<InvalidTemplateException>()(
+  "InvalidTemplateException",
+  { TemplateName: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidTemplate", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidTrackingOptionsException extends S.TaggedErrorClass<InvalidTrackingOptionsException>()(
+  "InvalidTrackingOptionsException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidTrackingOptions", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class MailFromDomainNotVerifiedException extends S.TaggedErrorClass<MailFromDomainNotVerifiedException>()(
+  "MailFromDomainNotVerifiedException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "MailFromDomainNotVerifiedException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class MessageRejected extends S.TaggedErrorClass<MessageRejected>()(
+  "MessageRejected",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "MessageRejected", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class MissingRenderingAttributeException extends S.TaggedErrorClass<MissingRenderingAttributeException>()(
+  "MissingRenderingAttributeException",
+  { TemplateName: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "MissingRenderingAttribute",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ProductionAccessNotGrantedException extends S.TaggedErrorClass<ProductionAccessNotGrantedException>()(
+  "ProductionAccessNotGrantedException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ProductionAccessNotGranted",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class RuleDoesNotExistException extends S.TaggedErrorClass<RuleDoesNotExistException>()(
+  "RuleDoesNotExistException",
+  { Name: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "RuleDoesNotExist", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class RuleSetDoesNotExistException extends S.TaggedErrorClass<RuleSetDoesNotExistException>()(
+  "RuleSetDoesNotExistException",
+  { Name: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "RuleSetDoesNotExist", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TemplateDoesNotExistException extends S.TaggedErrorClass<TemplateDoesNotExistException>()(
+  "TemplateDoesNotExistException",
+  { TemplateName: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TemplateDoesNotExist", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TrackingOptionsAlreadyExistsException extends S.TaggedErrorClass<TrackingOptionsAlreadyExistsException>()(
+  "TrackingOptionsAlreadyExistsException",
+  { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TrackingOptionsAlreadyExistsException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class TrackingOptionsDoesNotExistException extends S.TaggedErrorClass<TrackingOptionsDoesNotExistException>()(
+  "TrackingOptionsDoesNotExistException",
+  { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TrackingOptionsDoesNotExistException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type ReceiptRuleSetName = string;
-export type RuleOrRuleSetName = string;
-export type ErrorMessage = string;
-export type ConfigurationSetName = string;
-export type EventDestinationName = string;
-export type Enabled = boolean;
-export type AmazonResourceName = string;
-export type DimensionName = string;
-export type DefaultDimensionValue = string;
-export type CustomRedirectDomain = string;
-export type TemplateName = string;
-export type FromAddress = string;
-export type Subject = string;
-export type TemplateContent = string;
-export type SuccessRedirectionURL = string;
-export type FailureRedirectionURL = string;
-export type ReceiptFilterName = string;
-export type Cidr = string;
-export type ReceiptRuleName = string;
-export type Recipient = string;
-export type S3BucketName = string;
-export type S3KeyPrefix = string;
-export type IAMRoleARN = string;
-export type BounceSmtpReplyCode = string;
-export type BounceStatusCode = string;
-export type BounceMessage = string;
-export type Address = string;
-export type HeaderName = string;
-export type HeaderValue = string;
-export type ConnectInstanceArn = string;
-export type SubjectPart = string;
-export type TextPart = string;
-export type HtmlPart = string;
-export type Identity = string;
-export type PolicyName = string;
-export type LastFreshStart = Date;
-export type VerificationToken = string;
-export type MailFromDomainName = string;
-export type NotificationTopic = string;
-export type Policy = string;
-export type Max24HourSend = number;
-export type MaxSendRate = number;
-export type SentLast24Hours = number;
-export type Counter = number;
-export type NextToken = string;
-export type MaxItems = number;
-export type MaxResults = number;
-export type MessageId = string;
-export type Explanation = string;
-export type ReportingMta = string;
-export type ArrivalDate = Date;
-export type ExtensionFieldName = string;
-export type ExtensionFieldValue = string;
-export type RemoteMta = string;
-export type DsnStatus = string;
-export type DiagnosticCode = string;
-export type LastAttemptDate = Date;
-export type MessageTagName = string;
-export type MessageTagValue = string;
-export type TemplateData = string;
-export type MessageData = string;
-export type Charset = string;
-export type RawMessageData = Uint8Array;
-export type RenderedTemplate = string;
-export type Domain = string;
-
-//# Schemas
 export interface CloneReceiptRuleSetRequest {
   RuleSetName: string;
   OriginalRuleSetName: string;
@@ -179,6 +464,7 @@ export const CloneReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CloneReceiptRuleSetResponse",
 }) as any as S.Schema<CloneReceiptRuleSetResponse>;
+export type ConfigurationSetName = string;
 export interface ConfigurationSet {
   Name: string;
 }
@@ -211,6 +497,8 @@ export const CreateConfigurationSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConfigurationSetResponse",
 }) as any as S.Schema<CreateConfigurationSetResponse>;
+export type EventDestinationName = string;
+export type Enabled = boolean;
 export type EventType =
   | "send"
   | "reject"
@@ -222,8 +510,10 @@ export type EventType =
   | "renderingFailure"
   | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
+
 export type EventTypes = EventType[];
 export const EventTypes = /*@__PURE__*/ S.Array(EventType);
+export type AmazonResourceName = string;
 export interface KinesisFirehoseDestination {
   IAMRoleARN: string;
   DeliveryStreamARN: string;
@@ -233,12 +523,15 @@ export const KinesisFirehoseDestination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KinesisFirehoseDestination",
 }) as any as S.Schema<KinesisFirehoseDestination>;
+export type DimensionName = string;
 export type DimensionValueSource =
   | "messageTag"
   | "emailHeader"
   | "linkTag"
   | (string & {});
 export const DimensionValueSource = /*@__PURE__*/ S.String;
+
+export type DefaultDimensionValue = string;
 export interface CloudWatchDimensionConfiguration {
   DimensionName: string;
   DimensionValueSource: DimensionValueSource;
@@ -320,6 +613,7 @@ export const CreateConfigurationSetEventDestinationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "CreateConfigurationSetEventDestinationResponse",
   }) as any as S.Schema<CreateConfigurationSetEventDestinationResponse>;
+export type CustomRedirectDomain = string;
 export interface TrackingOptions {
   CustomRedirectDomain?: string;
 }
@@ -356,6 +650,12 @@ export const CreateConfigurationSetTrackingOptionsResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "CreateConfigurationSetTrackingOptionsResponse",
   }) as any as S.Schema<CreateConfigurationSetTrackingOptionsResponse>;
+export type TemplateName = string;
+export type FromAddress = string;
+export type Subject = string;
+export type TemplateContent = string;
+export type SuccessRedirectionURL = string;
+export type FailureRedirectionURL = string;
 export interface CreateCustomVerificationEmailTemplateRequest {
   TemplateName: string;
   FromEmailAddress: string;
@@ -392,8 +692,11 @@ export const CreateCustomVerificationEmailTemplateResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "CreateCustomVerificationEmailTemplateResponse",
   }) as any as S.Schema<CreateCustomVerificationEmailTemplateResponse>;
+export type ReceiptFilterName = string;
 export type ReceiptFilterPolicy = "Block" | "Allow" | (string & {});
 export const ReceiptFilterPolicy = /*@__PURE__*/ S.String;
+
+export type Cidr = string;
 export interface ReceiptIpFilter {
   Policy: ReceiptFilterPolicy;
   Cidr: string;
@@ -434,10 +737,16 @@ export const CreateReceiptFilterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateReceiptFilterResponse",
 }) as any as S.Schema<CreateReceiptFilterResponse>;
+export type ReceiptRuleName = string;
 export type TlsPolicy = "Require" | "Optional" | (string & {});
 export const TlsPolicy = /*@__PURE__*/ S.String;
+
+export type Recipient = string;
 export type RecipientsList = string[];
 export const RecipientsList = /*@__PURE__*/ S.Array(S.String);
+export type S3BucketName = string;
+export type S3KeyPrefix = string;
+export type IAMRoleARN = string;
 export interface S3Action {
   TopicArn?: string;
   BucketName: string;
@@ -454,6 +763,10 @@ export const S3Action = /*@__PURE__*/ S.suspend(() =>
     IamRoleArn: S.optional(S.String),
   }),
 ).annotate({ identifier: "S3Action" }) as any as S.Schema<S3Action>;
+export type BounceSmtpReplyCode = string;
+export type BounceStatusCode = string;
+export type BounceMessage = string;
+export type Address = string;
 export interface BounceAction {
   TopicArn?: string;
   SmtpReplyCode: string;
@@ -479,6 +792,7 @@ export const WorkmailAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "WorkmailAction" }) as any as S.Schema<WorkmailAction>;
 export type InvocationType = "Event" | "RequestResponse" | (string & {});
 export const InvocationType = /*@__PURE__*/ S.String;
+
 export interface LambdaAction {
   TopicArn?: string;
   FunctionArn: string;
@@ -493,6 +807,7 @@ export const LambdaAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LambdaAction" }) as any as S.Schema<LambdaAction>;
 export type StopScope = "RuleSet" | (string & {});
 export const StopScope = /*@__PURE__*/ S.String;
+
 export interface StopAction {
   Scope: StopScope;
   TopicArn?: string;
@@ -500,6 +815,8 @@ export interface StopAction {
 export const StopAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Scope: StopScope, TopicArn: S.optional(S.String) }),
 ).annotate({ identifier: "StopAction" }) as any as S.Schema<StopAction>;
+export type HeaderName = string;
+export type HeaderValue = string;
 export interface AddHeaderAction {
   HeaderName: string;
   HeaderValue: string;
@@ -511,6 +828,7 @@ export const AddHeaderAction = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AddHeaderAction>;
 export type SNSActionEncoding = "UTF-8" | "Base64" | (string & {});
 export const SNSActionEncoding = /*@__PURE__*/ S.String;
+
 export interface SNSAction {
   TopicArn: string;
   Encoding?: SNSActionEncoding;
@@ -518,6 +836,7 @@ export interface SNSAction {
 export const SNSAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ TopicArn: S.String, Encoding: S.optional(SNSActionEncoding) }),
 ).annotate({ identifier: "SNSAction" }) as any as S.Schema<SNSAction>;
+export type ConnectInstanceArn = string;
 export interface ConnectAction {
   InstanceARN: string;
   IAMRoleARN: string;
@@ -621,6 +940,9 @@ export const CreateReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateReceiptRuleSetResponse",
 }) as any as S.Schema<CreateReceiptRuleSetResponse>;
+export type SubjectPart = string;
+export type TextPart = string;
+export type HtmlPart = string;
 export interface Template {
   TemplateName: string;
   SubjectPart?: string;
@@ -759,6 +1081,7 @@ export const DeleteCustomVerificationEmailTemplateResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "DeleteCustomVerificationEmailTemplateResponse",
   }) as any as S.Schema<DeleteCustomVerificationEmailTemplateResponse>;
+export type Identity = string;
 export interface DeleteIdentityRequest {
   Identity: string;
 }
@@ -783,6 +1106,7 @@ export const DeleteIdentityResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteIdentityResponse",
 }) as any as S.Schema<DeleteIdentityResponse>;
+export type PolicyName = string;
 export interface DeleteIdentityPolicyRequest {
   Identity: string;
   PolicyName: string;
@@ -981,6 +1305,7 @@ export type ConfigurationSetAttribute =
   | "reputationOptions"
   | (string & {});
 export const ConfigurationSetAttribute = /*@__PURE__*/ S.String;
+
 export type ConfigurationSetAttributeList = ConfigurationSetAttribute[];
 export const ConfigurationSetAttributeList = /*@__PURE__*/ S.Array(
   ConfigurationSetAttribute,
@@ -1017,6 +1342,7 @@ export const DeliveryOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeliveryOptions",
 }) as any as S.Schema<DeliveryOptions>;
+export type LastFreshStart = Date;
 export interface ReputationOptions {
   SendingEnabled?: boolean;
   ReputationMetricsEnabled?: boolean;
@@ -1200,6 +1526,8 @@ export type VerificationStatus =
   | "NotStarted"
   | (string & {});
 export const VerificationStatus = /*@__PURE__*/ S.String;
+
+export type VerificationToken = string;
 export type VerificationTokenList = string[];
 export const VerificationTokenList = /*@__PURE__*/ S.Array(S.String);
 export interface IdentityDkimAttributes {
@@ -1250,6 +1578,7 @@ export const GetIdentityMailFromDomainAttributesRequest =
   ).annotate({
     identifier: "GetIdentityMailFromDomainAttributesRequest",
   }) as any as S.Schema<GetIdentityMailFromDomainAttributesRequest>;
+export type MailFromDomainName = string;
 export type CustomMailFromStatus =
   | "Pending"
   | "Success"
@@ -1257,11 +1586,13 @@ export type CustomMailFromStatus =
   | "TemporaryFailure"
   | (string & {});
 export const CustomMailFromStatus = /*@__PURE__*/ S.String;
+
 export type BehaviorOnMXFailure =
   | "UseDefaultValue"
   | "RejectMessage"
   | (string & {});
 export const BehaviorOnMXFailure = /*@__PURE__*/ S.String;
+
 export interface IdentityMailFromDomainAttributes {
   MailFromDomain: string;
   MailFromDomainStatus: CustomMailFromStatus;
@@ -1313,6 +1644,7 @@ export const GetIdentityNotificationAttributesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetIdentityNotificationAttributesRequest",
 }) as any as S.Schema<GetIdentityNotificationAttributesRequest>;
+export type NotificationTopic = string;
 export interface IdentityNotificationAttributes {
   BounceTopic: string;
   ComplaintTopic: string;
@@ -1374,6 +1706,7 @@ export const GetIdentityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetIdentityPoliciesRequest",
 }) as any as S.Schema<GetIdentityPoliciesRequest>;
+export type Policy = string;
 export type PolicyMap = { [key: string]: string | undefined };
 export const PolicyMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1452,6 +1785,9 @@ export const GetSendQuotaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSendQuotaRequest",
 }) as any as S.Schema<GetSendQuotaRequest>;
+export type Max24HourSend = number;
+export type MaxSendRate = number;
+export type SentLast24Hours = number;
 export interface GetSendQuotaResponse {
   Max24HourSend?: number;
   MaxSendRate?: number;
@@ -1482,6 +1818,7 @@ export const GetSendStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSendStatisticsRequest",
 }) as any as S.Schema<GetSendStatisticsRequest>;
+export type Counter = number;
 export interface SendDataPoint {
   Timestamp?: Date;
   DeliveryAttempts?: number;
@@ -1536,6 +1873,8 @@ export const GetTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTemplateResponse",
 }) as any as S.Schema<GetTemplateResponse>;
+export type NextToken = string;
+export type MaxItems = number;
 export interface ListConfigurationSetsRequest {
   NextToken?: string;
   MaxItems?: number;
@@ -1572,6 +1911,7 @@ export const ListConfigurationSetsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListConfigurationSetsResponse",
 }) as any as S.Schema<ListConfigurationSetsResponse>;
+export type MaxResults = number;
 export interface ListCustomVerificationEmailTemplatesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -1635,6 +1975,7 @@ export const ListCustomVerificationEmailTemplatesResponse =
   }) as any as S.Schema<ListCustomVerificationEmailTemplatesResponse>;
 export type IdentityType = "EmailAddress" | "Domain" | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
+
 export interface ListIdentitiesRequest {
   IdentityType?: IdentityType;
   NextToken?: string;
@@ -1913,6 +2254,12 @@ export const ReorderReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReorderReceiptRuleSetResponse",
 }) as any as S.Schema<ReorderReceiptRuleSetResponse>;
+export type MessageId = string;
+export type Explanation = string;
+export type ReportingMta = string;
+export type ArrivalDate = Date;
+export type ExtensionFieldName = string;
+export type ExtensionFieldValue = string;
 export interface ExtensionField {
   Name: string;
   Value: string;
@@ -1945,6 +2292,7 @@ export type BounceType =
   | "TemporaryFailure"
   | (string & {});
 export const BounceType = /*@__PURE__*/ S.String;
+
 export type DsnAction =
   | "failed"
   | "delayed"
@@ -1953,6 +2301,11 @@ export type DsnAction =
   | "expanded"
   | (string & {});
 export const DsnAction = /*@__PURE__*/ S.String;
+
+export type RemoteMta = string;
+export type DsnStatus = string;
+export type DiagnosticCode = string;
+export type LastAttemptDate = Date;
 export interface RecipientDsnFields {
   FinalRecipient?: string;
   Action: DsnAction;
@@ -2034,6 +2387,8 @@ export const SendBounceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendBounceResponse",
 }) as any as S.Schema<SendBounceResponse>;
+export type MessageTagName = string;
+export type MessageTagValue = string;
 export interface MessageTag {
   Name: string;
   Value: string;
@@ -2043,6 +2398,7 @@ export const MessageTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MessageTag" }) as any as S.Schema<MessageTag>;
 export type MessageTagList = MessageTag[];
 export const MessageTagList = /*@__PURE__*/ S.Array(MessageTag);
+export type TemplateData = string;
 export interface Destination {
   ToAddresses?: string[];
   CcAddresses?: string[];
@@ -2129,6 +2485,7 @@ export type BulkEmailStatus =
   | "Failed"
   | (string & {});
 export const BulkEmailStatus = /*@__PURE__*/ S.String;
+
 export interface BulkEmailDestinationStatus {
   Status?: BulkEmailStatus;
   Error?: string;
@@ -2187,6 +2544,8 @@ export const SendCustomVerificationEmailResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendCustomVerificationEmailResponse",
 }) as any as S.Schema<SendCustomVerificationEmailResponse>;
+export type MessageData = string;
+export type Charset = string;
 export interface Content {
   Data: string;
   Charset?: string;
@@ -2252,6 +2611,7 @@ export const SendEmailResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendEmailResponse",
 }) as any as S.Schema<SendEmailResponse>;
+export type RawMessageData = Uint8Array;
 export interface RawMessage {
   Data: Uint8Array;
 }
@@ -2428,6 +2788,7 @@ export type NotificationType =
   | "Delivery"
   | (string & {});
 export const NotificationType = /*@__PURE__*/ S.String;
+
 export interface SetIdentityHeadersInNotificationsEnabledRequest {
   Identity: string;
   NotificationType: NotificationType;
@@ -2567,6 +2928,7 @@ export const TestRenderTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TestRenderTemplateRequest",
 }) as any as S.Schema<TestRenderTemplateRequest>;
+export type RenderedTemplate = string;
 export interface TestRenderTemplateResponse {
   RenderedTemplate?: string;
 }
@@ -2790,6 +3152,7 @@ export const UpdateTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTemplateResponse",
 }) as any as S.Schema<UpdateTemplateResponse>;
+export type Domain = string;
 export interface VerifyDomainDkimRequest {
   Domain: string;
 }
@@ -2890,362 +3253,8 @@ export const VerifyEmailIdentityResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VerifyEmailIdentityResponse",
 }) as any as S.Schema<VerifyEmailIdentityResponse>;
-
-//# Errors
-export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
-  "AlreadyExistsException",
-  { Name: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class RuleSetDoesNotExistException extends S.TaggedErrorClass<RuleSetDoesNotExistException>()(
-  "RuleSetDoesNotExistException",
-  { Name: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "RuleSetDoesNotExist", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ConfigurationSetAlreadyExistsException extends S.TaggedErrorClass<ConfigurationSetAlreadyExistsException>()(
-  "ConfigurationSetAlreadyExistsException",
-  { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ConfigurationSetAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class InvalidConfigurationSetException extends S.TaggedErrorClass<InvalidConfigurationSetException>()(
-  "InvalidConfigurationSetException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidConfigurationSet", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ConfigurationSetDoesNotExistException extends S.TaggedErrorClass<ConfigurationSetDoesNotExistException>()(
-  "ConfigurationSetDoesNotExistException",
-  { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ConfigurationSetDoesNotExist",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class EventDestinationAlreadyExistsException extends S.TaggedErrorClass<EventDestinationAlreadyExistsException>()(
-  "EventDestinationAlreadyExistsException",
-  {
-    ConfigurationSetName: S.optional(S.String),
-    EventDestinationName: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({
-      code: "EventDestinationAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class InvalidCloudWatchDestinationException extends S.TaggedErrorClass<InvalidCloudWatchDestinationException>()(
-  "InvalidCloudWatchDestinationException",
-  {
-    ConfigurationSetName: S.optional(S.String),
-    EventDestinationName: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidCloudWatchDestination",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidFirehoseDestinationException extends S.TaggedErrorClass<InvalidFirehoseDestinationException>()(
-  "InvalidFirehoseDestinationException",
-  {
-    ConfigurationSetName: S.optional(S.String),
-    EventDestinationName: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidFirehoseDestination",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidSNSDestinationException extends S.TaggedErrorClass<InvalidSNSDestinationException>()(
-  "InvalidSNSDestinationException",
-  {
-    ConfigurationSetName: S.optional(S.String),
-    EventDestinationName: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({ code: "InvalidSNSDestination", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidTrackingOptionsException extends S.TaggedErrorClass<InvalidTrackingOptionsException>()(
-  "InvalidTrackingOptionsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidTrackingOptions", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TrackingOptionsAlreadyExistsException extends S.TaggedErrorClass<TrackingOptionsAlreadyExistsException>()(
-  "TrackingOptionsAlreadyExistsException",
-  { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TrackingOptionsAlreadyExistsException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class CustomVerificationEmailInvalidContentException extends S.TaggedErrorClass<CustomVerificationEmailInvalidContentException>()(
-  "CustomVerificationEmailInvalidContentException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "CustomVerificationEmailInvalidContent",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CustomVerificationEmailTemplateAlreadyExistsException extends S.TaggedErrorClass<CustomVerificationEmailTemplateAlreadyExistsException>()(
-  "CustomVerificationEmailTemplateAlreadyExistsException",
-  {
-    CustomVerificationEmailTemplateName: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({
-      code: "CustomVerificationEmailTemplateAlreadyExists",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class FromEmailAddressNotVerifiedException extends S.TaggedErrorClass<FromEmailAddressNotVerifiedException>()(
-  "FromEmailAddressNotVerifiedException",
-  { FromEmailAddress: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "FromEmailAddressNotVerified",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidLambdaFunctionException extends S.TaggedErrorClass<InvalidLambdaFunctionException>()(
-  "InvalidLambdaFunctionException",
-  { FunctionArn: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidLambdaFunction", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidS3ConfigurationException extends S.TaggedErrorClass<InvalidS3ConfigurationException>()(
-  "InvalidS3ConfigurationException",
-  { Bucket: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidS3Configuration", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidSnsTopicException extends S.TaggedErrorClass<InvalidSnsTopicException>()(
-  "InvalidSnsTopicException",
-  { Topic: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidSnsTopic", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class RuleDoesNotExistException extends S.TaggedErrorClass<RuleDoesNotExistException>()(
-  "RuleDoesNotExistException",
-  { Name: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "RuleDoesNotExist", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidTemplateException extends S.TaggedErrorClass<InvalidTemplateException>()(
-  "InvalidTemplateException",
-  { TemplateName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidTemplate", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class EventDestinationDoesNotExistException extends S.TaggedErrorClass<EventDestinationDoesNotExistException>()(
-  "EventDestinationDoesNotExistException",
-  {
-    ConfigurationSetName: S.optional(S.String),
-    EventDestinationName: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({
-      code: "EventDestinationDoesNotExist",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TrackingOptionsDoesNotExistException extends S.TaggedErrorClass<TrackingOptionsDoesNotExistException>()(
-  "TrackingOptionsDoesNotExistException",
-  { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TrackingOptionsDoesNotExistException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CannotDeleteException extends S.TaggedErrorClass<CannotDeleteException>()(
-  "CannotDeleteException",
-  { Name: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "CannotDelete", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CustomVerificationEmailTemplateDoesNotExistException extends S.TaggedErrorClass<CustomVerificationEmailTemplateDoesNotExistException>()(
-  "CustomVerificationEmailTemplateDoesNotExistException",
-  {
-    CustomVerificationEmailTemplateName: S.optional(S.String),
-    message: S.optional(S.String),
-  },
-  T.all(
-    T.AwsQueryError({
-      code: "CustomVerificationEmailTemplateDoesNotExist",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TemplateDoesNotExistException extends S.TaggedErrorClass<TemplateDoesNotExistException>()(
-  "TemplateDoesNotExistException",
-  { TemplateName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TemplateDoesNotExist", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidDeliveryOptionsException extends S.TaggedErrorClass<InvalidDeliveryOptionsException>()(
-  "InvalidDeliveryOptionsException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidDeliveryOptions", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidPolicyException extends S.TaggedErrorClass<InvalidPolicyException>()(
-  "InvalidPolicyException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidPolicy", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class MessageRejected extends S.TaggedErrorClass<MessageRejected>()(
-  "MessageRejected",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "MessageRejected", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class AccountSendingPausedException extends S.TaggedErrorClass<AccountSendingPausedException>()(
-  "AccountSendingPausedException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "AccountSendingPausedException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ConfigurationSetSendingPausedException extends S.TaggedErrorClass<ConfigurationSetSendingPausedException>()(
-  "ConfigurationSetSendingPausedException",
-  { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ConfigurationSetSendingPausedException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class MailFromDomainNotVerifiedException extends S.TaggedErrorClass<MailFromDomainNotVerifiedException>()(
-  "MailFromDomainNotVerifiedException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "MailFromDomainNotVerifiedException",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ProductionAccessNotGrantedException extends S.TaggedErrorClass<ProductionAccessNotGrantedException>()(
-  "ProductionAccessNotGrantedException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ProductionAccessNotGranted",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidRenderingParameterException extends S.TaggedErrorClass<InvalidRenderingParameterException>()(
-  "InvalidRenderingParameterException",
-  { TemplateName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidRenderingParameter",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class MissingRenderingAttributeException extends S.TaggedErrorClass<MissingRenderingAttributeException>()(
-  "MissingRenderingAttributeException",
-  { TemplateName: S.optional(S.String), message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "MissingRenderingAttribute",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type RuleOrRuleSetName = string;
+export type ErrorMessage = string;
 export type CloneReceiptRuleSetError =
   | AlreadyExistsException
   | LimitExceededException
@@ -3277,6 +3286,7 @@ export const cloneReceiptRuleSet: API.OperationMethod<
   retry: Retry,
   operationName: "CloneReceiptRuleSet",
 }));
+
 export type CreateConfigurationSetError =
   | ConfigurationSetAlreadyExistsException
   | InvalidConfigurationSetException
@@ -3308,6 +3318,7 @@ export const createConfigurationSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConfigurationSet",
 }));
+
 export type CreateConfigurationSetEventDestinationError =
   | ConfigurationSetDoesNotExistException
   | EventDestinationAlreadyExistsException
@@ -3349,6 +3360,7 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConfigurationSetEventDestination",
 }));
+
 export type CreateConfigurationSetTrackingOptionsError =
   | ConfigurationSetDoesNotExistException
   | InvalidTrackingOptionsException
@@ -3379,6 +3391,7 @@ export const createConfigurationSetTrackingOptions: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConfigurationSetTrackingOptions",
 }));
+
 export type CreateCustomVerificationEmailTemplateError =
   | CustomVerificationEmailInvalidContentException
   | CustomVerificationEmailTemplateAlreadyExistsException
@@ -3412,6 +3425,7 @@ export const createCustomVerificationEmailTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCustomVerificationEmailTemplate",
 }));
+
 export type CreateReceiptFilterError =
   | AlreadyExistsException
   | LimitExceededException
@@ -3437,6 +3451,7 @@ export const createReceiptFilter: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReceiptFilter",
 }));
+
 export type CreateReceiptRuleError =
   | AlreadyExistsException
   | InvalidLambdaFunctionException
@@ -3475,6 +3490,7 @@ export const createReceiptRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReceiptRule",
 }));
+
 export type CreateReceiptRuleSetError =
   | AlreadyExistsException
   | LimitExceededException
@@ -3499,6 +3515,7 @@ export const createReceiptRuleSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReceiptRuleSet",
 }));
+
 export type CreateTemplateError =
   | AlreadyExistsException
   | InvalidTemplateException
@@ -3528,6 +3545,7 @@ export const createTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTemplate",
 }));
+
 export type DeleteConfigurationSetError =
   | ConfigurationSetDoesNotExistException
   | CommonErrors;
@@ -3551,6 +3569,7 @@ export const deleteConfigurationSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfigurationSet",
 }));
+
 export type DeleteConfigurationSetEventDestinationError =
   | ConfigurationSetDoesNotExistException
   | EventDestinationDoesNotExistException
@@ -3579,6 +3598,7 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfigurationSetEventDestination",
 }));
+
 export type DeleteConfigurationSetTrackingOptionsError =
   | ConfigurationSetDoesNotExistException
   | TrackingOptionsDoesNotExistException
@@ -3611,6 +3631,7 @@ export const deleteConfigurationSetTrackingOptions: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfigurationSetTrackingOptions",
 }));
+
 export type DeleteCustomVerificationEmailTemplateError = CommonErrors;
 /**
  * Deletes an existing custom verification email template.
@@ -3634,6 +3655,7 @@ export const deleteCustomVerificationEmailTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCustomVerificationEmailTemplate",
 }));
+
 export type DeleteIdentityError = CommonErrors;
 /**
  * Deletes the specified identity (an email address or a domain) from the list of
@@ -3654,6 +3676,7 @@ export const deleteIdentity: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIdentity",
 }));
+
 export type DeleteIdentityPolicyError = CommonErrors;
 /**
  * Deletes the specified sending authorization policy for the given identity (an email
@@ -3683,6 +3706,7 @@ export const deleteIdentityPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIdentityPolicy",
 }));
+
 export type DeleteReceiptFilterError = CommonErrors;
 /**
  * Deletes the specified IP address filter.
@@ -3705,6 +3729,7 @@ export const deleteReceiptFilter: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReceiptFilter",
 }));
+
 export type DeleteReceiptRuleError =
   | RuleSetDoesNotExistException
   | CommonErrors;
@@ -3729,6 +3754,7 @@ export const deleteReceiptRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReceiptRule",
 }));
+
 export type DeleteReceiptRuleSetError = CannotDeleteException | CommonErrors;
 /**
  * Deletes the specified receipt rule set and all of the receipt rules it
@@ -3754,6 +3780,7 @@ export const deleteReceiptRuleSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReceiptRuleSet",
 }));
+
 export type DeleteTemplateError = CommonErrors;
 /**
  * Deletes an email template.
@@ -3773,6 +3800,7 @@ export const deleteTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTemplate",
 }));
+
 export type DeleteVerifiedEmailAddressError = CommonErrors;
 /**
  * Deprecated. Use the `DeleteIdentity` operation to delete email addresses
@@ -3791,6 +3819,7 @@ export const deleteVerifiedEmailAddress: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVerifiedEmailAddress",
 }));
+
 export type DescribeActiveReceiptRuleSetError = CommonErrors;
 /**
  * Returns the metadata and receipt rules for the receipt rule set that is currently
@@ -3813,6 +3842,7 @@ export const describeActiveReceiptRuleSet: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeActiveReceiptRuleSet",
 }));
+
 export type DescribeConfigurationSetError =
   | ConfigurationSetDoesNotExistException
   | CommonErrors;
@@ -3836,6 +3866,7 @@ export const describeConfigurationSet: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConfigurationSet",
 }));
+
 export type DescribeReceiptRuleError =
   | RuleDoesNotExistException
   | RuleSetDoesNotExistException
@@ -3861,6 +3892,7 @@ export const describeReceiptRule: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeReceiptRule",
 }));
+
 export type DescribeReceiptRuleSetError =
   | RuleSetDoesNotExistException
   | CommonErrors;
@@ -3885,6 +3917,7 @@ export const describeReceiptRuleSet: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeReceiptRuleSet",
 }));
+
 export type GetAccountSendingEnabledError = CommonErrors;
 /**
  * Returns the email sending status of the Amazon SES account for the current Region.
@@ -3904,6 +3937,7 @@ export const getAccountSendingEnabled: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountSendingEnabled",
 }));
+
 export type GetCustomVerificationEmailTemplateError =
   | CustomVerificationEmailTemplateDoesNotExistException
   | CommonErrors;
@@ -3930,6 +3964,7 @@ export const getCustomVerificationEmailTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetCustomVerificationEmailTemplate",
 }));
+
 export type GetIdentityDkimAttributesError = CommonErrors;
 /**
  * Returns the current status of Easy DKIM signing for an entity. For domain name
@@ -3968,6 +4003,7 @@ export const getIdentityDkimAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "GetIdentityDkimAttributes",
 }));
+
 export type GetIdentityMailFromDomainAttributesError = CommonErrors;
 /**
  * Returns the custom MAIL FROM attributes for a list of identities (email addresses :
@@ -3989,6 +4025,7 @@ export const getIdentityMailFromDomainAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "GetIdentityMailFromDomainAttributes",
 }));
+
 export type GetIdentityNotificationAttributesError = CommonErrors;
 /**
  * Given a list of verified identities (email addresses and/or domains), returns a
@@ -4013,6 +4050,7 @@ export const getIdentityNotificationAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "GetIdentityNotificationAttributes",
 }));
+
 export type GetIdentityPoliciesError = CommonErrors;
 /**
  * Returns the requested sending authorization policies for the given identity (an email
@@ -4042,6 +4080,7 @@ export const getIdentityPolicies: API.OperationMethod<
   retry: Retry,
   operationName: "GetIdentityPolicies",
 }));
+
 export type GetIdentityVerificationAttributesError = CommonErrors;
 /**
  * Given a list of identities (email addresses and/or domains), returns the verification
@@ -4077,6 +4116,7 @@ export const getIdentityVerificationAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "GetIdentityVerificationAttributes",
 }));
+
 export type GetSendQuotaError = CommonErrors;
 /**
  * Provides the sending limits for the Amazon SES account.
@@ -4096,6 +4136,7 @@ export const getSendQuota: API.OperationMethod<
   retry: Retry,
   operationName: "GetSendQuota",
 }));
+
 export type GetSendStatisticsError = CommonErrors;
 /**
  * Provides sending statistics for the current Amazon Web Services Region. The result is a list of data
@@ -4117,6 +4158,7 @@ export const getSendStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "GetSendStatistics",
 }));
+
 export type GetTemplateError = TemplateDoesNotExistException | CommonErrors;
 /**
  * Displays the template object (which includes the Subject line, HTML part and text
@@ -4137,6 +4179,7 @@ export const getTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetTemplate",
 }));
+
 export type ListConfigurationSetsError = CommonErrors;
 /**
  * Provides a list of the configuration sets associated with your Amazon SES account in the
@@ -4164,6 +4207,7 @@ export const listConfigurationSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListConfigurationSets",
 }));
+
 export type ListCustomVerificationEmailTemplatesError = CommonErrors;
 /**
  * Lists the existing custom verification email templates for your account in the current
@@ -4208,6 +4252,7 @@ export const listCustomVerificationEmailTemplates: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListIdentitiesError = CommonErrors;
 /**
  * Returns a list containing all of the identities (email addresses and domains) for your
@@ -4258,6 +4303,7 @@ export const listIdentities: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListIdentityPoliciesError = CommonErrors;
 /**
  * Returns a list of sending authorization policies that are attached to the given
@@ -4287,6 +4333,7 @@ export const listIdentityPolicies: API.OperationMethod<
   retry: Retry,
   operationName: "ListIdentityPolicies",
 }));
+
 export type ListReceiptFiltersError = CommonErrors;
 /**
  * Lists the IP address filters associated with your Amazon Web Services account in the current
@@ -4310,6 +4357,7 @@ export const listReceiptFilters: API.OperationMethod<
   retry: Retry,
   operationName: "ListReceiptFilters",
 }));
+
 export type ListReceiptRuleSetsError = CommonErrors;
 /**
  * Lists the receipt rule sets that exist under your Amazon Web Services account in the current
@@ -4335,6 +4383,7 @@ export const listReceiptRuleSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListReceiptRuleSets",
 }));
+
 export type ListTemplatesError = CommonErrors;
 /**
  * Lists the email templates present in your Amazon SES account in the current
@@ -4355,6 +4404,7 @@ export const listTemplates: API.OperationMethod<
   retry: Retry,
   operationName: "ListTemplates",
 }));
+
 export type ListVerifiedEmailAddressesError = CommonErrors;
 /**
  * Deprecated. Use the `ListIdentities` operation to list the email addresses
@@ -4373,6 +4423,7 @@ export const listVerifiedEmailAddresses: API.OperationMethod<
   retry: Retry,
   operationName: "ListVerifiedEmailAddresses",
 }));
+
 export type PutConfigurationSetDeliveryOptionsError =
   | ConfigurationSetDoesNotExistException
   | InvalidDeliveryOptionsException
@@ -4396,6 +4447,7 @@ export const putConfigurationSetDeliveryOptions: API.OperationMethod<
   retry: Retry,
   operationName: "PutConfigurationSetDeliveryOptions",
 }));
+
 export type PutIdentityPolicyError = InvalidPolicyException | CommonErrors;
 /**
  * Adds or updates a sending authorization policy for the specified identity (an email
@@ -4424,6 +4476,7 @@ export const putIdentityPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutIdentityPolicy",
 }));
+
 export type ReorderReceiptRuleSetError =
   | RuleDoesNotExistException
   | RuleSetDoesNotExistException
@@ -4452,6 +4505,7 @@ export const reorderReceiptRuleSet: API.OperationMethod<
   retry: Retry,
   operationName: "ReorderReceiptRuleSet",
 }));
+
 export type SendBounceError = MessageRejected | CommonErrors;
 /**
  * Generates and sends a bounce message to the sender of an email you received through
@@ -4479,6 +4533,7 @@ export const sendBounce: API.OperationMethod<
   retry: Retry,
   operationName: "SendBounce",
 }));
+
 export type SendBulkTemplatedEmailError =
   | AccountSendingPausedException
   | ConfigurationSetDoesNotExistException
@@ -4543,6 +4598,7 @@ export const sendBulkTemplatedEmail: API.OperationMethod<
   retry: Retry,
   operationName: "SendBulkTemplatedEmail",
 }));
+
 export type SendCustomVerificationEmailError =
   | ConfigurationSetDoesNotExistException
   | CustomVerificationEmailTemplateDoesNotExistException
@@ -4582,6 +4638,7 @@ export const sendCustomVerificationEmail: API.OperationMethod<
   retry: Retry,
   operationName: "SendCustomVerificationEmail",
 }));
+
 export type SendEmailError =
   | AccountSendingPausedException
   | ConfigurationSetDoesNotExistException
@@ -4643,6 +4700,7 @@ export const sendEmail: API.OperationMethod<
   retry: Retry,
   operationName: "SendEmail",
 }));
+
 export type SendRawEmailError =
   | AccountSendingPausedException
   | ConfigurationSetDoesNotExistException
@@ -4749,6 +4807,7 @@ export const sendRawEmail: API.OperationMethod<
   retry: Retry,
   operationName: "SendRawEmail",
 }));
+
 export type SendTemplatedEmailError =
   | AccountSendingPausedException
   | ConfigurationSetDoesNotExistException
@@ -4820,6 +4879,7 @@ export const sendTemplatedEmail: API.OperationMethod<
   retry: Retry,
   operationName: "SendTemplatedEmail",
 }));
+
 export type SetActiveReceiptRuleSetError =
   | RuleSetDoesNotExistException
   | CommonErrors;
@@ -4847,6 +4907,7 @@ export const setActiveReceiptRuleSet: API.OperationMethod<
   retry: Retry,
   operationName: "SetActiveReceiptRuleSet",
 }));
+
 export type SetIdentityDkimEnabledError = CommonErrors;
 /**
  * Enables or disables Easy DKIM signing of email sent from an identity. If Easy DKIM
@@ -4879,6 +4940,7 @@ export const setIdentityDkimEnabled: API.OperationMethod<
   retry: Retry,
   operationName: "SetIdentityDkimEnabled",
 }));
+
 export type SetIdentityFeedbackForwardingEnabledError = CommonErrors;
 /**
  * Given an identity (an email address or a domain), enables or disables whether Amazon SES
@@ -4907,6 +4969,7 @@ export const setIdentityFeedbackForwardingEnabled: API.OperationMethod<
   retry: Retry,
   operationName: "SetIdentityFeedbackForwardingEnabled",
 }));
+
 export type SetIdentityHeadersInNotificationsEnabledError = CommonErrors;
 /**
  * Given an identity (an email address or a domain), sets whether Amazon SES includes the
@@ -4931,6 +4994,7 @@ export const setIdentityHeadersInNotificationsEnabled: API.OperationMethod<
   retry: Retry,
   operationName: "SetIdentityHeadersInNotificationsEnabled",
 }));
+
 export type SetIdentityMailFromDomainError = CommonErrors;
 /**
  * Enables or disables the custom MAIL FROM domain setup for a verified identity (an
@@ -4956,6 +5020,7 @@ export const setIdentityMailFromDomain: API.OperationMethod<
   retry: Retry,
   operationName: "SetIdentityMailFromDomain",
 }));
+
 export type SetIdentityNotificationTopicError = CommonErrors;
 /**
  * Sets an Amazon Simple Notification Service (Amazon SNS) topic to use when delivering notifications. When you use
@@ -4983,6 +5048,7 @@ export const setIdentityNotificationTopic: API.OperationMethod<
   retry: Retry,
   operationName: "SetIdentityNotificationTopic",
 }));
+
 export type SetReceiptRulePositionError =
   | RuleDoesNotExistException
   | RuleSetDoesNotExistException
@@ -5008,6 +5074,7 @@ export const setReceiptRulePosition: API.OperationMethod<
   retry: Retry,
   operationName: "SetReceiptRulePosition",
 }));
+
 export type TestRenderTemplateError =
   | InvalidRenderingParameterException
   | MissingRenderingAttributeException
@@ -5036,6 +5103,7 @@ export const testRenderTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "TestRenderTemplate",
 }));
+
 export type UpdateAccountSendingEnabledError = CommonErrors;
 /**
  * Enables or disables email sending across your entire Amazon SES account in the current
@@ -5059,6 +5127,7 @@ export const updateAccountSendingEnabled: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAccountSendingEnabled",
 }));
+
 export type UpdateConfigurationSetEventDestinationError =
   | ConfigurationSetDoesNotExistException
   | EventDestinationDoesNotExistException
@@ -5098,6 +5167,7 @@ export const updateConfigurationSetEventDestination: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConfigurationSetEventDestination",
 }));
+
 export type UpdateConfigurationSetReputationMetricsEnabledError =
   | ConfigurationSetDoesNotExistException
   | CommonErrors;
@@ -5122,6 +5192,7 @@ export const updateConfigurationSetReputationMetricsEnabled: API.OperationMethod
   retry: Retry,
   operationName: "UpdateConfigurationSetReputationMetricsEnabled",
 }));
+
 export type UpdateConfigurationSetSendingEnabledError =
   | ConfigurationSetDoesNotExistException
   | CommonErrors;
@@ -5147,6 +5218,7 @@ export const updateConfigurationSetSendingEnabled: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConfigurationSetSendingEnabled",
 }));
+
 export type UpdateConfigurationSetTrackingOptionsError =
   | ConfigurationSetDoesNotExistException
   | InvalidTrackingOptionsException
@@ -5177,6 +5249,7 @@ export const updateConfigurationSetTrackingOptions: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConfigurationSetTrackingOptions",
 }));
+
 export type UpdateCustomVerificationEmailTemplateError =
   | CustomVerificationEmailInvalidContentException
   | CustomVerificationEmailTemplateDoesNotExistException
@@ -5208,6 +5281,7 @@ export const updateCustomVerificationEmailTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCustomVerificationEmailTemplate",
 }));
+
 export type UpdateReceiptRuleError =
   | InvalidLambdaFunctionException
   | InvalidS3ConfigurationException
@@ -5244,6 +5318,7 @@ export const updateReceiptRule: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateReceiptRule",
 }));
+
 export type UpdateTemplateError =
   | InvalidTemplateException
   | TemplateDoesNotExistException
@@ -5268,6 +5343,7 @@ export const updateTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTemplate",
 }));
+
 export type VerifyDomainDkimError = CommonErrors;
 /**
  * Returns a set of DKIM tokens for a domain identity.
@@ -5317,6 +5393,7 @@ export const verifyDomainDkim: API.OperationMethod<
   retry: Retry,
   operationName: "VerifyDomainDkim",
 }));
+
 export type VerifyDomainIdentityError = CommonErrors;
 /**
  * Adds a domain to the list of identities for your Amazon SES account in the current
@@ -5339,6 +5416,7 @@ export const verifyDomainIdentity: API.OperationMethod<
   retry: Retry,
   operationName: "VerifyDomainIdentity",
 }));
+
 export type VerifyEmailAddressError = CommonErrors;
 /**
  * Deprecated. Use the `VerifyEmailIdentity` operation to verify a new email
@@ -5357,6 +5435,7 @@ export const verifyEmailAddress: API.OperationMethod<
   retry: Retry,
   operationName: "VerifyEmailAddress",
 }));
+
 export type VerifyEmailIdentityError = CommonErrors;
 /**
  * Adds an email address to the list of identities for your Amazon SES account in the current

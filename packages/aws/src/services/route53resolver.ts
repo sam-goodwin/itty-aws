@@ -91,74 +91,83 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+) {}
+export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
+  "InternalServiceErrorException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { Message: S.String, FieldName: S.optional(S.String) },
+) {}
+export class InvalidPolicyDocument extends S.TaggedErrorClass<InvalidPolicyDocument>()(
+  "InvalidPolicyDocument",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidTagException extends S.TaggedErrorClass<InvalidTagException>()(
+  "InvalidTagException",
+  { Message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+) {}
+export class ResourceExistsException extends S.TaggedErrorClass<ResourceExistsException>()(
+  "ResourceExistsException",
+  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+) {}
+export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
+  "ResourceUnavailableException",
+  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+) {}
+export class UnknownResourceException extends S.TaggedErrorClass<UnknownResourceException>()(
+  "UnknownResourceException",
+  { Message: S.optional(S.String) },
+) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+) {}
 export type CreatorRequestId = string;
 export type ResourceId = string;
 export type Priority = number;
 export type Name = string;
-export type TagKey = string;
-export type TagValue = string;
-export type Arn = string;
-export type ServicePrinciple = string;
-export type StatusMessage = string;
-export type Rfc3339TimeString = string;
-export type ExceptionMessage = string;
-export type SubnetId = string;
-export type Ip = string;
-export type Ipv6 = string;
-export type IpAddressCount = number;
-export type OutpostArn = string;
-export type OutpostInstanceType = string;
-export type RniEnhancedMetricsEnabled = boolean;
-export type TargetNameServerMetricsEnabled = boolean;
-export type Dns64Enabled = boolean;
-export type Ipv6InternetAccessEnabled = boolean;
-export type ResolverQueryLogConfigAssociationErrorMessage = string;
-export type BlockOverrideDomain = string;
-export type BlockOverrideTtl = number;
-export type Qtype = string;
-export type PartnerValue = string;
-export type FirewallAdvancedContentCategoryValue = string;
-export type FirewallAdvancedThreatCategoryValue = string;
-export type DnsThreatProtectionRuleTypeValue = string;
-export type Unsigned = number;
-export type FirewallRuleStatus = string;
-export type FirewallRuleStatusMessage = string;
-export type Category = string;
-export type AccountId = string;
-export type OutpostResolverName = string;
-export type InstanceCount = number;
-export type OutpostResolverStatusMessage = string;
-export type ResolverQueryLogConfigName = string;
-export type DestinationArn = string;
-export type Count = number;
-export type DomainName = string;
-export type Port = number;
-export type ServerNameIndication = string;
-export type DelegationRecord = string;
-export type FirewallRuleGroupPolicy = string;
-export type ResolverQueryLogConfigPolicy = string;
-export type ResolverRulePolicy = string;
-export type DomainListFileUrl = string;
-export type ListFirewallConfigsMaxResult = number;
-export type NextToken = string;
-export type MaxResults = number;
-export type ListDomainMaxResults = number;
-export type FirewallDomainName = string;
-export type RuleTypeName = string;
-export type RuleTypeValue = string;
-export type DisplayName = string;
-export type RuleTypeDescription = string;
-export type VendorName = string;
-export type ProductId = string;
-export type ListResolverConfigsMaxResult = number;
-export type FilterName = string;
-export type FilterValue = string;
-export type SortByKey = string;
-
-//# Schemas
 export type MutationProtectionStatus = "ENABLED" | "DISABLED" | (string & {});
 export const MutationProtectionStatus = /*@__PURE__*/ S.String;
+
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -192,12 +201,17 @@ export const AssociateFirewallRuleGroupRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateFirewallRuleGroupRequest",
 }) as any as S.Schema<AssociateFirewallRuleGroupRequest>;
+export type Arn = string;
+export type ServicePrinciple = string;
 export type FirewallRuleGroupAssociationStatus =
   | "COMPLETE"
   | "DELETING"
   | "UPDATING"
   | (string & {});
 export const FirewallRuleGroupAssociationStatus = /*@__PURE__*/ S.String;
+
+export type StatusMessage = string;
+export type Rfc3339TimeString = string;
 export interface FirewallRuleGroupAssociation {
   Id?: string;
   Arn?: string;
@@ -242,6 +256,9 @@ export const AssociateFirewallRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateFirewallRuleGroupResponse",
 }) as any as S.Schema<AssociateFirewallRuleGroupResponse>;
+export type SubnetId = string;
+export type Ip = string;
+export type Ipv6 = string;
 export interface IpAddressUpdate {
   IpId?: string;
   SubnetId?: string;
@@ -278,6 +295,8 @@ export type ResolverEndpointDirection =
   | "INBOUND_DELEGATION"
   | (string & {});
 export const ResolverEndpointDirection = /*@__PURE__*/ S.String;
+
+export type IpAddressCount = number;
 export type ResolverEndpointStatus =
   | "CREATING"
   | "OPERATIONAL"
@@ -287,16 +306,25 @@ export type ResolverEndpointStatus =
   | "DELETING"
   | (string & {});
 export const ResolverEndpointStatus = /*@__PURE__*/ S.String;
+
+export type OutpostArn = string;
+export type OutpostInstanceType = string;
 export type ResolverEndpointType =
   | "IPV6"
   | "IPV4"
   | "DUALSTACK"
   | (string & {});
 export const ResolverEndpointType = /*@__PURE__*/ S.String;
+
 export type Protocol = "DoH" | "Do53" | "DoH-FIPS" | (string & {});
 export const Protocol = /*@__PURE__*/ S.String;
+
 export type ProtocolList = Protocol[];
 export const ProtocolList = /*@__PURE__*/ S.Array(Protocol);
+export type RniEnhancedMetricsEnabled = boolean;
+export type TargetNameServerMetricsEnabled = boolean;
+export type Dns64Enabled = boolean;
+export type Ipv6InternetAccessEnabled = boolean;
 export interface ResolverEndpoint {
   Id?: string;
   CreatorRequestId?: string;
@@ -374,6 +402,7 @@ export type ResolverQueryLogConfigAssociationStatus =
   | "FAILED"
   | (string & {});
 export const ResolverQueryLogConfigAssociationStatus = /*@__PURE__*/ S.String;
+
 export type ResolverQueryLogConfigAssociationError =
   | "NONE"
   | "DESTINATION_NOT_FOUND"
@@ -381,6 +410,8 @@ export type ResolverQueryLogConfigAssociationError =
   | "INTERNAL_SERVICE_ERROR"
   | (string & {});
 export const ResolverQueryLogConfigAssociationError = /*@__PURE__*/ S.String;
+
+export type ResolverQueryLogConfigAssociationErrorMessage = string;
 export interface ResolverQueryLogConfigAssociation {
   Id?: string;
   ResolverQueryLogConfigId?: string;
@@ -440,6 +471,7 @@ export type ResolverRuleAssociationStatus =
   | "OVERRIDDEN"
   | (string & {});
 export const ResolverRuleAssociationStatus = /*@__PURE__*/ S.String;
+
 export interface ResolverRuleAssociation {
   Id?: string;
   ResolverRuleId?: string;
@@ -470,23 +502,33 @@ export const AssociateResolverRuleResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssociateResolverRuleResponse>;
 export type Action = "ALLOW" | "BLOCK" | "ALERT" | (string & {});
 export const Action = /*@__PURE__*/ S.String;
+
 export type BlockResponse = "NODATA" | "NXDOMAIN" | "OVERRIDE" | (string & {});
 export const BlockResponse = /*@__PURE__*/ S.String;
+
+export type BlockOverrideDomain = string;
 export type BlockOverrideDnsType = "CNAME" | (string & {});
 export const BlockOverrideDnsType = /*@__PURE__*/ S.String;
+
+export type BlockOverrideTtl = number;
 export type FirewallDomainRedirectionAction =
   | "INSPECT_REDIRECTION_DOMAIN"
   | "TRUST_REDIRECTION_DOMAIN"
   | (string & {});
 export const FirewallDomainRedirectionAction = /*@__PURE__*/ S.String;
+
+export type Qtype = string;
 export type DnsThreatProtection =
   | "DGA"
   | "DNS_TUNNELING"
   | "DICTIONARY_DGA"
   | (string & {});
 export const DnsThreatProtection = /*@__PURE__*/ S.String;
+
 export type ConfidenceThreshold = "LOW" | "MEDIUM" | "HIGH" | (string & {});
 export const ConfidenceThreshold = /*@__PURE__*/ S.String;
+
+export type PartnerValue = string;
 export interface PartnerThreatProtectionConfig {
   Partner: string;
 }
@@ -495,6 +537,7 @@ export const PartnerThreatProtectionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PartnerThreatProtectionConfig",
 }) as any as S.Schema<PartnerThreatProtectionConfig>;
+export type FirewallAdvancedContentCategoryValue = string;
 export interface FirewallAdvancedContentCategoryConfig {
   Category: string;
 }
@@ -503,6 +546,7 @@ export const FirewallAdvancedContentCategoryConfig = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "FirewallAdvancedContentCategoryConfig",
 }) as any as S.Schema<FirewallAdvancedContentCategoryConfig>;
+export type FirewallAdvancedThreatCategoryValue = string;
 export interface FirewallAdvancedThreatCategoryConfig {
   Category: string;
 }
@@ -511,6 +555,7 @@ export const FirewallAdvancedThreatCategoryConfig = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "FirewallAdvancedThreatCategoryConfig",
 }) as any as S.Schema<FirewallAdvancedThreatCategoryConfig>;
+export type DnsThreatProtectionRuleTypeValue = string;
 export interface DnsThreatProtectionRuleTypeConfig {
   Value: string;
   ConfidenceThreshold: ConfidenceThreshold;
@@ -594,6 +639,9 @@ export const BatchCreateFirewallRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchCreateFirewallRuleRequest",
 }) as any as S.Schema<BatchCreateFirewallRuleRequest>;
+export type Unsigned = number;
+export type FirewallRuleStatus = string;
+export type FirewallRuleStatusMessage = string;
 export interface FirewallRule {
   FirewallRuleGroupId?: string;
   FirewallDomainListId?: string;
@@ -842,8 +890,11 @@ export type FirewallDomainListStatus =
   | "UPDATING"
   | (string & {});
 export const FirewallDomainListStatus = /*@__PURE__*/ S.String;
+
+export type Category = string;
 export type DomainListType = "THREAT" | "CONTENT" | (string & {});
 export const DomainListType = /*@__PURE__*/ S.String;
+
 export interface FirewallDomainList {
   Id?: string;
   Arn?: string;
@@ -956,12 +1007,15 @@ export type FirewallRuleGroupStatus =
   | "UPDATING"
   | (string & {});
 export const FirewallRuleGroupStatus = /*@__PURE__*/ S.String;
+
+export type AccountId = string;
 export type ShareStatus =
   | "NOT_SHARED"
   | "SHARED_WITH_ME"
   | "SHARED_BY_ME"
   | (string & {});
 export const ShareStatus = /*@__PURE__*/ S.String;
+
 export interface FirewallRuleGroup {
   Id?: string;
   Arn?: string;
@@ -1000,6 +1054,8 @@ export const CreateFirewallRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFirewallRuleGroupResponse",
 }) as any as S.Schema<CreateFirewallRuleGroupResponse>;
+export type OutpostResolverName = string;
+export type InstanceCount = number;
 export interface CreateOutpostResolverRequest {
   CreatorRequestId: string;
   Name: string;
@@ -1032,6 +1088,8 @@ export type OutpostResolverStatus =
   | "FAILED_DELETION"
   | (string & {});
 export const OutpostResolverStatus = /*@__PURE__*/ S.String;
+
+export type OutpostResolverStatusMessage = string;
 export interface OutpostResolver {
   Arn?: string;
   CreationTime?: string;
@@ -1132,6 +1190,8 @@ export const CreateResolverEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateResolverEndpointResponse",
 }) as any as S.Schema<CreateResolverEndpointResponse>;
+export type ResolverQueryLogConfigName = string;
+export type DestinationArn = string;
 export interface CreateResolverQueryLogConfigRequest {
   Name: string;
   DestinationArn: string;
@@ -1157,6 +1217,8 @@ export type ResolverQueryLogConfigStatus =
   | "FAILED"
   | (string & {});
 export const ResolverQueryLogConfigStatus = /*@__PURE__*/ S.String;
+
+export type Count = number;
 export interface ResolverQueryLogConfig {
   Id?: string;
   OwnerId?: string;
@@ -1201,6 +1263,10 @@ export type RuleTypeOption =
   | "DELEGATE"
   | (string & {});
 export const RuleTypeOption = /*@__PURE__*/ S.String;
+
+export type DomainName = string;
+export type Port = number;
+export type ServerNameIndication = string;
 export interface TargetAddress {
   Ip?: string;
   Port?: number;
@@ -1219,6 +1285,7 @@ export const TargetAddress = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetAddress" }) as any as S.Schema<TargetAddress>;
 export type TargetList = TargetAddress[];
 export const TargetList = /*@__PURE__*/ S.Array(TargetAddress);
+export type DelegationRecord = string;
 export interface CreateResolverRuleRequest {
   CreatorRequestId: string;
   Name?: string;
@@ -1252,6 +1319,7 @@ export type ResolverRuleStatus =
   | "FAILED"
   | (string & {});
 export const ResolverRuleStatus = /*@__PURE__*/ S.String;
+
 export interface ResolverRule {
   Id?: string;
   CreatorRequestId?: string;
@@ -1534,6 +1602,7 @@ export type FirewallFailOpenStatus =
   | "USE_LOCAL_RESOURCE_SETTING"
   | (string & {});
 export const FirewallFailOpenStatus = /*@__PURE__*/ S.String;
+
 export interface FirewallConfig {
   Id?: string;
   ResourceId?: string;
@@ -1624,6 +1693,7 @@ export const GetFirewallRuleGroupPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetFirewallRuleGroupPolicyRequest",
 }) as any as S.Schema<GetFirewallRuleGroupPolicyRequest>;
+export type FirewallRuleGroupPolicy = string;
 export interface GetFirewallRuleGroupPolicyResponse {
   FirewallRuleGroupPolicy?: string;
 }
@@ -1669,6 +1739,7 @@ export type ResolverAutodefinedReverseStatus =
   | "USE_LOCAL_RESOURCE_SETTING"
   | (string & {});
 export const ResolverAutodefinedReverseStatus = /*@__PURE__*/ S.String;
+
 export interface ResolverConfig {
   Id?: string;
   ResourceId?: string;
@@ -1710,6 +1781,7 @@ export type ResolverDNSSECValidationStatus =
   | "USE_LOCAL_RESOURCE_SETTING"
   | (string & {});
 export const ResolverDNSSECValidationStatus = /*@__PURE__*/ S.String;
+
 export interface ResolverDnssecConfig {
   Id?: string;
   OwnerId?: string;
@@ -1805,6 +1877,7 @@ export const GetResolverQueryLogConfigPolicyRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetResolverQueryLogConfigPolicyRequest",
 }) as any as S.Schema<GetResolverQueryLogConfigPolicyRequest>;
+export type ResolverQueryLogConfigPolicy = string;
 export interface GetResolverQueryLogConfigPolicyResponse {
   ResolverQueryLogConfigPolicy?: string;
 }
@@ -1859,6 +1932,7 @@ export const GetResolverRulePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResolverRulePolicyRequest",
 }) as any as S.Schema<GetResolverRulePolicyRequest>;
+export type ResolverRulePolicy = string;
 export interface GetResolverRulePolicyResponse {
   ResolverRulePolicy?: string;
 }
@@ -1869,6 +1943,8 @@ export const GetResolverRulePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResolverRulePolicyResponse>;
 export type FirewallDomainImportOperation = "REPLACE" | (string & {});
 export const FirewallDomainImportOperation = /*@__PURE__*/ S.String;
+
+export type DomainListFileUrl = string;
 export interface ImportFirewallDomainsRequest {
   FirewallDomainListId: string;
   Operation: FirewallDomainImportOperation;
@@ -1901,6 +1977,8 @@ export const ImportFirewallDomainsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportFirewallDomainsResponse",
 }) as any as S.Schema<ImportFirewallDomainsResponse>;
+export type ListFirewallConfigsMaxResult = number;
+export type NextToken = string;
 export interface ListFirewallConfigsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -1929,6 +2007,7 @@ export const ListFirewallConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFirewallConfigsResponse",
 }) as any as S.Schema<ListFirewallConfigsResponse>;
+export type MaxResults = number;
 export interface ListFirewallDomainListsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -1981,6 +2060,7 @@ export const ListFirewallDomainListsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFirewallDomainListsResponse",
 }) as any as S.Schema<ListFirewallDomainListsResponse>;
+export type ListDomainMaxResults = number;
 export interface ListFirewallDomainsRequest {
   FirewallDomainListId: string;
   MaxResults?: number;
@@ -1997,6 +2077,7 @@ export const ListFirewallDomainsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFirewallDomainsRequest",
 }) as any as S.Schema<ListFirewallDomainsRequest>;
+export type FirewallDomainName = string;
 export type FirewallDomains = string[];
 export const FirewallDomains = /*@__PURE__*/ S.Array(S.String);
 export interface ListFirewallDomainsResponse {
@@ -2133,6 +2214,7 @@ export const ListFirewallRulesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFirewallRulesResponse",
 }) as any as S.Schema<ListFirewallRulesResponse>;
+export type RuleTypeName = string;
 export interface ListFirewallRuleTypesRequest {
   RuleType?: string;
   MaxResults?: number;
@@ -2149,6 +2231,11 @@ export const ListFirewallRuleTypesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListFirewallRuleTypesRequest",
 }) as any as S.Schema<ListFirewallRuleTypesRequest>;
+export type RuleTypeValue = string;
+export type DisplayName = string;
+export type RuleTypeDescription = string;
+export type VendorName = string;
+export type ProductId = string;
 export interface SubscriptionInfo {
   VendorName?: string;
   ProductId?: string;
@@ -2225,6 +2312,7 @@ export const ListOutpostResolversResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOutpostResolversResponse",
 }) as any as S.Schema<ListOutpostResolversResponse>;
+export type ListResolverConfigsMaxResult = number;
 export interface ListResolverConfigsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -2253,6 +2341,8 @@ export const ListResolverConfigsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListResolverConfigsResponse",
 }) as any as S.Schema<ListResolverConfigsResponse>;
+export type FilterName = string;
+export type FilterValue = string;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface Filter {
@@ -2329,6 +2419,7 @@ export type IpAddressStatus =
   | "ISOLATED"
   | (string & {});
 export const IpAddressStatus = /*@__PURE__*/ S.String;
+
 export interface IpAddressResponse {
   IpId?: string;
   SubnetId?: string;
@@ -2402,8 +2493,10 @@ export const ListResolverEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListResolverEndpointsResponse",
 }) as any as S.Schema<ListResolverEndpointsResponse>;
+export type SortByKey = string;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface ListResolverQueryLogConfigAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -2703,6 +2796,7 @@ export type FirewallDomainUpdateOperation =
   | "REPLACE"
   | (string & {});
 export const FirewallDomainUpdateOperation = /*@__PURE__*/ S.String;
+
 export interface UpdateFirewallDomainsRequest {
   FirewallDomainListId: string;
   Operation: FirewallDomainUpdateOperation;
@@ -2847,6 +2941,7 @@ export type AutodefinedReverseFlag =
   | "USE_LOCAL_RESOURCE_SETTING"
   | (string & {});
 export const AutodefinedReverseFlag = /*@__PURE__*/ S.String;
+
 export interface UpdateResolverConfigRequest {
   ResourceId: string;
   AutodefinedReverseFlag: AutodefinedReverseFlag;
@@ -2875,6 +2970,7 @@ export type Validation =
   | "USE_LOCAL_RESOURCE_SETTING"
   | (string & {});
 export const Validation = /*@__PURE__*/ S.String;
+
 export interface UpdateResolverDnssecConfigRequest {
   ResourceId: string;
   Validation: Validation;
@@ -2974,78 +3070,7 @@ export const UpdateResolverRuleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateResolverRuleResponse",
 }) as any as S.Schema<UpdateResolverRuleResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-) {}
-export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
-  "InternalServiceErrorException",
-  { Message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
-) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { Message: S.String, FieldName: S.optional(S.String) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceExistsException extends S.TaggedErrorClass<ResourceExistsException>()(
-  "ResourceExistsException",
-  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
-) {}
-export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
-  "ResourceUnavailableException",
-  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
-) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
-) {}
-export class UnknownResourceException extends S.TaggedErrorClass<UnknownResourceException>()(
-  "UnknownResourceException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidPolicyDocument extends S.TaggedErrorClass<InvalidPolicyDocument>()(
-  "InvalidPolicyDocument",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidTagException extends S.TaggedErrorClass<InvalidTagException>()(
-  "InvalidTagException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type AssociateFirewallRuleGroupError =
   | AccessDeniedException
   | ConflictException
@@ -3081,6 +3106,7 @@ export const associateFirewallRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateFirewallRuleGroup",
 }));
+
 export type AssociateResolverEndpointIpAddressError =
   | InternalServiceErrorException
   | InvalidParameterException
@@ -3118,6 +3144,7 @@ export const associateResolverEndpointIpAddress: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateResolverEndpointIpAddress",
 }));
+
 export type AssociateResolverQueryLogConfigError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3160,6 +3187,7 @@ export const associateResolverQueryLogConfig: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateResolverQueryLogConfig",
 }));
+
 export type AssociateResolverRuleError =
   | InternalServiceErrorException
   | InvalidParameterException
@@ -3198,6 +3226,7 @@ export const associateResolverRule: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateResolverRule",
 }));
+
 export type BatchCreateFirewallRuleError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3227,6 +3256,7 @@ export const batchCreateFirewallRule: API.OperationMethod<
   retry: Retry,
   operationName: "BatchCreateFirewallRule",
 }));
+
 export type BatchDeleteFirewallRuleError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3256,6 +3286,7 @@ export const batchDeleteFirewallRule: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteFirewallRule",
 }));
+
 export type BatchUpdateFirewallRuleError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3285,6 +3316,7 @@ export const batchUpdateFirewallRule: API.OperationMethod<
   retry: Retry,
   operationName: "BatchUpdateFirewallRule",
 }));
+
 export type CreateFirewallDomainListError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3314,6 +3346,7 @@ export const createFirewallDomainList: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFirewallDomainList",
 }));
+
 export type CreateFirewallRuleError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3353,6 +3386,7 @@ export const createFirewallRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFirewallRule",
 }));
+
 export type CreateFirewallRuleGroupError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3383,6 +3417,7 @@ export const createFirewallRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFirewallRuleGroup",
 }));
+
 export type CreateOutpostResolverError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3414,6 +3449,7 @@ export const createOutpostResolver: API.OperationMethod<
   retry: Retry,
   operationName: "CreateOutpostResolver",
 }));
+
 export type CreateResolverEndpointError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3455,6 +3491,7 @@ export const createResolverEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateResolverEndpoint",
 }));
+
 export type CreateResolverQueryLogConfigError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3498,6 +3535,7 @@ export const createResolverQueryLogConfig: API.OperationMethod<
   retry: Retry,
   operationName: "CreateResolverQueryLogConfig",
 }));
+
 export type CreateResolverRuleError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3536,6 +3574,7 @@ export const createResolverRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateResolverRule",
 }));
+
 export type DeleteFirewallDomainListError =
   | AccessDeniedException
   | ConflictException
@@ -3565,6 +3604,7 @@ export const deleteFirewallDomainList: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFirewallDomainList",
 }));
+
 export type DeleteFirewallRuleError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3596,6 +3636,7 @@ export const deleteFirewallRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFirewallRule",
 }));
+
 export type DeleteFirewallRuleGroupError =
   | AccessDeniedException
   | ConflictException
@@ -3627,6 +3668,7 @@ export const deleteFirewallRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFirewallRuleGroup",
 }));
+
 export type DeleteOutpostResolverError =
   | AccessDeniedException
   | ConflictException
@@ -3658,6 +3700,7 @@ export const deleteOutpostResolver: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteOutpostResolver",
 }));
+
 export type DeleteResolverEndpointError =
   | InternalServiceErrorException
   | InvalidParameterException
@@ -3693,6 +3736,7 @@ export const deleteResolverEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResolverEndpoint",
 }));
+
 export type DeleteResolverQueryLogConfigError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3734,6 +3778,7 @@ export const deleteResolverQueryLogConfig: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResolverQueryLogConfig",
 }));
+
 export type DeleteResolverRuleError =
   | InternalServiceErrorException
   | InvalidParameterException
@@ -3767,6 +3812,7 @@ export const deleteResolverRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResolverRule",
 }));
+
 export type DisassociateFirewallRuleGroupError =
   | AccessDeniedException
   | ConflictException
@@ -3798,6 +3844,7 @@ export const disassociateFirewallRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateFirewallRuleGroup",
 }));
+
 export type DisassociateResolverEndpointIpAddressError =
   | InternalServiceErrorException
   | InvalidParameterException
@@ -3833,6 +3880,7 @@ export const disassociateResolverEndpointIpAddress: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateResolverEndpointIpAddress",
 }));
+
 export type DisassociateResolverQueryLogConfigError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3873,6 +3921,7 @@ export const disassociateResolverQueryLogConfig: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateResolverQueryLogConfig",
 }));
+
 export type DisassociateResolverRuleError =
   | InternalServiceErrorException
   | InvalidParameterException
@@ -3905,6 +3954,7 @@ export const disassociateResolverRule: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateResolverRule",
 }));
+
 export type GetFirewallConfigError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3935,6 +3985,7 @@ export const getFirewallConfig: API.OperationMethod<
   retry: Retry,
   operationName: "GetFirewallConfig",
 }));
+
 export type GetFirewallDomainListError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3962,6 +4013,7 @@ export const getFirewallDomainList: API.OperationMethod<
   retry: Retry,
   operationName: "GetFirewallDomainList",
 }));
+
 export type GetFirewallRuleGroupError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -3989,6 +4041,7 @@ export const getFirewallRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetFirewallRuleGroup",
 }));
+
 export type GetFirewallRuleGroupAssociationError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4016,6 +4069,7 @@ export const getFirewallRuleGroupAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "GetFirewallRuleGroupAssociation",
 }));
+
 export type GetFirewallRuleGroupPolicyError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4046,6 +4100,7 @@ export const getFirewallRuleGroupPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetFirewallRuleGroupPolicy",
 }));
+
 export type GetOutpostResolverError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4076,6 +4131,7 @@ export const getOutpostResolver: API.OperationMethod<
   retry: Retry,
   operationName: "GetOutpostResolver",
 }));
+
 export type GetResolverConfigError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4108,6 +4164,7 @@ export const getResolverConfig: API.OperationMethod<
   retry: Retry,
   operationName: "GetResolverConfig",
 }));
+
 export type GetResolverDnssecConfigError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4139,6 +4196,7 @@ export const getResolverDnssecConfig: API.OperationMethod<
   retry: Retry,
   operationName: "GetResolverDnssecConfig",
 }));
+
 export type GetResolverEndpointError =
   | InternalServiceErrorException
   | InvalidParameterException
@@ -4167,6 +4225,7 @@ export const getResolverEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "GetResolverEndpoint",
 }));
+
 export type GetResolverQueryLogConfigError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4199,6 +4258,7 @@ export const getResolverQueryLogConfig: API.OperationMethod<
   retry: Retry,
   operationName: "GetResolverQueryLogConfig",
 }));
+
 export type GetResolverQueryLogConfigAssociationError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4231,6 +4291,7 @@ export const getResolverQueryLogConfigAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "GetResolverQueryLogConfigAssociation",
 }));
+
 export type GetResolverQueryLogConfigPolicyError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4261,6 +4322,7 @@ export const getResolverQueryLogConfigPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResolverQueryLogConfigPolicy",
 }));
+
 export type GetResolverRuleError =
   | InternalServiceErrorException
   | InvalidParameterException
@@ -4289,6 +4351,7 @@ export const getResolverRule: API.OperationMethod<
   retry: Retry,
   operationName: "GetResolverRule",
 }));
+
 export type GetResolverRuleAssociationError =
   | InternalServiceErrorException
   | InvalidParameterException
@@ -4317,6 +4380,7 @@ export const getResolverRuleAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "GetResolverRuleAssociation",
 }));
+
 export type GetResolverRulePolicyError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4345,6 +4409,7 @@ export const getResolverRulePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResolverRulePolicy",
 }));
+
 export type ImportFirewallDomainsError =
   | AccessDeniedException
   | ConflictException
@@ -4389,6 +4454,7 @@ export const importFirewallDomains: API.OperationMethod<
   retry: Retry,
   operationName: "ImportFirewallDomains",
 }));
+
 export type ListFirewallConfigsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4439,6 +4505,7 @@ export const listFirewallConfigs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFirewallDomainListsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4489,6 +4556,7 @@ export const listFirewallDomainLists: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFirewallDomainsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4541,6 +4609,7 @@ export const listFirewallDomains: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFirewallRuleGroupAssociationsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4591,6 +4660,7 @@ export const listFirewallRuleGroupAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFirewallRuleGroupsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4641,6 +4711,7 @@ export const listFirewallRuleGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFirewallRulesError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4695,6 +4766,7 @@ export const listFirewallRules: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListFirewallRuleTypesError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4745,6 +4817,7 @@ export const listFirewallRuleTypes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOutpostResolversError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4795,6 +4868,7 @@ export const listOutpostResolvers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResolverConfigsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4850,6 +4924,7 @@ export const listResolverConfigs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResolverDnssecConfigsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -4902,6 +4977,7 @@ export const listResolverDnssecConfigs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResolverEndpointIpAddressesError =
   | InternalServiceErrorException
   | InvalidNextTokenException
@@ -4952,6 +5028,7 @@ export const listResolverEndpointIpAddresses: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResolverEndpointsError =
   | InternalServiceErrorException
   | InvalidNextTokenException
@@ -5002,6 +5079,7 @@ export const listResolverEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResolverQueryLogConfigAssociationsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -5054,6 +5132,7 @@ export const listResolverQueryLogConfigAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResolverQueryLogConfigsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -5107,6 +5186,7 @@ export const listResolverQueryLogConfigs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResolverRuleAssociationsError =
   | InternalServiceErrorException
   | InvalidNextTokenException
@@ -5157,6 +5237,7 @@ export const listResolverRuleAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResolverRulesError =
   | InternalServiceErrorException
   | InvalidNextTokenException
@@ -5207,6 +5288,7 @@ export const listResolverRules: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServiceErrorException
   | InvalidNextTokenException
@@ -5259,6 +5341,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutFirewallRuleGroupPolicyError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -5290,6 +5373,7 @@ export const putFirewallRuleGroupPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutFirewallRuleGroupPolicy",
 }));
+
 export type PutResolverQueryLogConfigPolicyError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -5322,6 +5406,7 @@ export const putResolverQueryLogConfigPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResolverQueryLogConfigPolicy",
 }));
+
 export type PutResolverRulePolicyError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -5352,6 +5437,7 @@ export const putResolverRulePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResolverRulePolicy",
 }));
+
 export type TagResourceError =
   | InternalServiceErrorException
   | InvalidParameterException
@@ -5385,6 +5471,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServiceErrorException
   | InvalidParameterException
@@ -5414,6 +5501,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateFirewallConfigError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -5444,6 +5532,7 @@ export const updateFirewallConfig: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFirewallConfig",
 }));
+
 export type UpdateFirewallDomainsError =
   | AccessDeniedException
   | ConflictException
@@ -5477,6 +5566,7 @@ export const updateFirewallDomains: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFirewallDomains",
 }));
+
 export type UpdateFirewallRuleError =
   | AccessDeniedException
   | ConflictException
@@ -5508,6 +5598,7 @@ export const updateFirewallRule: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFirewallRule",
 }));
+
 export type UpdateFirewallRuleGroupAssociationError =
   | AccessDeniedException
   | ConflictException
@@ -5539,6 +5630,7 @@ export const updateFirewallRuleGroupAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFirewallRuleGroupAssociation",
 }));
+
 export type UpdateOutpostResolverError =
   | AccessDeniedException
   | ConflictException
@@ -5572,6 +5664,7 @@ export const updateOutpostResolver: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateOutpostResolver",
 }));
+
 export type UpdateResolverConfigError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -5610,6 +5703,7 @@ export const updateResolverConfig: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateResolverConfig",
 }));
+
 export type UpdateResolverDnssecConfigError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -5641,6 +5735,7 @@ export const updateResolverDnssecConfig: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateResolverDnssecConfig",
 }));
+
 export type UpdateResolverEndpointError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -5673,6 +5768,7 @@ export const updateResolverEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateResolverEndpoint",
 }));
+
 export type UpdateResolverRuleError =
   | AccessDeniedException
   | InternalServiceErrorException

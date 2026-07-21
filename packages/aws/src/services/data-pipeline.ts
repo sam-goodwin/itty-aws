@@ -85,22 +85,29 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
+  "InternalServiceError",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { message: S.optional(S.String) },
+) {}
+export class PipelineDeletedException extends S.TaggedErrorClass<PipelineDeletedException>()(
+  "PipelineDeletedException",
+  { message: S.optional(S.String) },
+) {}
+export class PipelineNotFoundException extends S.TaggedErrorClass<PipelineNotFoundException>()(
+  "PipelineNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class TaskNotFoundException extends S.TaggedErrorClass<TaskNotFoundException>()(
+  "TaskNotFoundException",
+  { message: S.optional(S.String) },
+) {}
 export type Id = string;
 export type FieldNameString = string;
 export type FieldStringValue = string;
-export type ErrorMessage = string;
-export type TagKey = string;
-export type TagValue = string;
-export type CancelActive = boolean;
-export type LongString = string;
-export type AttributeNameString = string;
-export type AttributeValueString = string;
-export type TaskId = string;
-export type ValidationMessage = string;
-export type Int = number;
-
-//# Schemas
 export interface ParameterValue {
   id: string;
   stringValue: string;
@@ -140,6 +147,8 @@ export const ActivatePipelineOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivatePipelineOutput",
 }) as any as S.Schema<ActivatePipelineOutput>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
@@ -204,6 +213,7 @@ export const CreatePipelineOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePipelineOutput",
 }) as any as S.Schema<CreatePipelineOutput>;
+export type CancelActive = boolean;
 export interface DeactivatePipelineInput {
   pipelineId: string;
   cancelActive?: boolean;
@@ -366,6 +376,7 @@ export const DescribePipelinesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePipelinesOutput",
 }) as any as S.Schema<DescribePipelinesOutput>;
+export type LongString = string;
 export interface EvaluateExpressionInput {
   pipelineId: string;
   objectId: string;
@@ -417,6 +428,8 @@ export const GetPipelineDefinitionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPipelineDefinitionInput",
 }) as any as S.Schema<GetPipelineDefinitionInput>;
+export type AttributeNameString = string;
+export type AttributeValueString = string;
 export interface ParameterAttribute {
   key: string;
   stringValue: string;
@@ -527,6 +540,7 @@ export const PollForTaskInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PollForTaskInput",
 }) as any as S.Schema<PollForTaskInput>;
+export type TaskId = string;
 export type PipelineObjectMap = { [key: string]: PipelineObject | undefined };
 export const PipelineObjectMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -580,6 +594,7 @@ export const PutPipelineDefinitionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutPipelineDefinitionInput",
 }) as any as S.Schema<PutPipelineDefinitionInput>;
+export type ValidationMessage = string;
 export type ValidationMessages = string[];
 export const ValidationMessages = /*@__PURE__*/ S.Array(S.String);
 export interface ValidationError {
@@ -632,6 +647,7 @@ export type OperatorType =
   | "BETWEEN"
   | (string & {});
 export const OperatorType = /*@__PURE__*/ S.String;
+
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface Operator {
@@ -656,6 +672,7 @@ export interface Query {
 export const Query = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ selectors: S.optional(SelectorList) }),
 ).annotate({ identifier: "Query" }) as any as S.Schema<Query>;
+export type Int = number;
 export interface QueryObjectsInput {
   pipelineId: string;
   query?: Query;
@@ -808,6 +825,8 @@ export const SetStatusResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SetStatusResponse>;
 export type TaskStatus = "FINISHED" | "FAILED" | "FALSE" | (string & {});
 export const TaskStatus = /*@__PURE__*/ S.String;
+
+export type ErrorMessage = string;
 export interface SetTaskStatusInput {
   taskId: string;
   taskStatus: TaskStatus;
@@ -882,30 +901,6 @@ export const ValidatePipelineDefinitionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ValidatePipelineDefinitionOutput",
 }) as any as S.Schema<ValidatePipelineDefinitionOutput>;
-
-//# Errors
-export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
-  "InternalServiceError",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String) },
-) {}
-export class PipelineDeletedException extends S.TaggedErrorClass<PipelineDeletedException>()(
-  "PipelineDeletedException",
-  { message: S.optional(S.String) },
-) {}
-export class PipelineNotFoundException extends S.TaggedErrorClass<PipelineNotFoundException>()(
-  "PipelineNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class TaskNotFoundException extends S.TaggedErrorClass<TaskNotFoundException>()(
-  "TaskNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
 export type ActivatePipelineError =
   | InternalServiceError
   | InvalidRequestException
@@ -957,6 +952,7 @@ export const activatePipeline: API.OperationMethod<
   retry: Retry,
   operationName: "ActivatePipeline",
 }));
+
 export type AddTagsError =
   | InternalServiceError
   | InvalidRequestException
@@ -984,6 +980,7 @@ export const addTags: API.OperationMethod<
   retry: Retry,
   operationName: "AddTags",
 }));
+
 export type CreatePipelineError =
   | InternalServiceError
   | InvalidRequestException
@@ -1024,6 +1021,7 @@ export const createPipeline: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePipeline",
 }));
+
 export type DeactivatePipelineError =
   | InternalServiceError
   | InvalidRequestException
@@ -1055,6 +1053,7 @@ export const deactivatePipeline: API.OperationMethod<
   retry: Retry,
   operationName: "DeactivatePipeline",
 }));
+
 export type DeletePipelineError =
   | InternalServiceError
   | InvalidRequestException
@@ -1102,6 +1101,7 @@ export const deletePipeline: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePipeline",
 }));
+
 export type DescribeObjectsError =
   | InternalServiceError
   | InvalidRequestException
@@ -1197,6 +1197,7 @@ export const describeObjects: API.OperationMethod<
     items: "pipelineObjects",
   } as const,
 }));
+
 export type DescribePipelinesError =
   | InternalServiceError
   | InvalidRequestException
@@ -1277,6 +1278,7 @@ export const describePipelines: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePipelines",
 }));
+
 export type EvaluateExpressionError =
   | InternalServiceError
   | InvalidRequestException
@@ -1326,6 +1328,7 @@ export const evaluateExpression: API.OperationMethod<
   retry: Retry,
   operationName: "EvaluateExpression",
 }));
+
 export type GetPipelineDefinitionError =
   | InternalServiceError
   | InvalidRequestException
@@ -1407,6 +1410,7 @@ export const getPipelineDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "GetPipelineDefinition",
 }));
+
 export type ListPipelinesError =
   | InternalServiceError
   | InvalidRequestException
@@ -1472,6 +1476,7 @@ export const listPipelines: API.OperationMethod<
     items: "pipelineIdList",
   } as const,
 }));
+
 export type PollForTaskError =
   | InternalServiceError
   | InvalidRequestException
@@ -1565,6 +1570,7 @@ export const pollForTask: API.OperationMethod<
   retry: Retry,
   operationName: "PollForTask",
 }));
+
 export type PutPipelineDefinitionError =
   | InternalServiceError
   | InvalidRequestException
@@ -1731,6 +1737,7 @@ export const putPipelineDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "PutPipelineDefinition",
 }));
+
 export type QueryObjectsError =
   | InternalServiceError
   | InvalidRequestException
@@ -1807,6 +1814,7 @@ export const queryObjects: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type RemoveTagsError =
   | InternalServiceError
   | InvalidRequestException
@@ -1834,6 +1842,7 @@ export const removeTags: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveTags",
 }));
+
 export type ReportTaskProgressError =
   | InternalServiceError
   | InvalidRequestException
@@ -1892,6 +1901,7 @@ export const reportTaskProgress: API.OperationMethod<
   retry: Retry,
   operationName: "ReportTaskProgress",
 }));
+
 export type ReportTaskRunnerHeartbeatError =
   | InternalServiceError
   | InvalidRequestException
@@ -1934,6 +1944,7 @@ export const reportTaskRunnerHeartbeat: API.OperationMethod<
   retry: Retry,
   operationName: "ReportTaskRunnerHeartbeat",
 }));
+
 export type SetStatusError =
   | InternalServiceError
   | InvalidRequestException
@@ -1983,6 +1994,7 @@ export const setStatus: API.OperationMethod<
   retry: Retry,
   operationName: "SetStatus",
 }));
+
 export type SetTaskStatusError =
   | InternalServiceError
   | InvalidRequestException
@@ -2032,6 +2044,7 @@ export const setTaskStatus: API.OperationMethod<
   retry: Retry,
   operationName: "SetTaskStatus",
 }));
+
 export type ValidatePipelineDefinitionError =
   | InternalServiceError
   | InvalidRequestException

@@ -89,119 +89,124 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ActiveInstanceRefreshNotFoundFault extends S.TaggedErrorClass<ActiveInstanceRefreshNotFoundFault>()(
+  "ActiveInstanceRefreshNotFoundFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ActiveInstanceRefreshNotFound",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AlreadyExistsFault extends S.TaggedErrorClass<AlreadyExistsFault>()(
+  "AlreadyExistsFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
+export class AutoScalingGroupNotFound extends S.TaggedErrorClass<AutoScalingGroupNotFound>()(
+  "AutoScalingGroupNotFound",
+  {},
+  T.SyntheticError({
+    from: "ValidationError",
+    message: { includes: "not found" },
+  }),
+) {}
+export class IdempotentParameterMismatchError extends S.TaggedErrorClass<IdempotentParameterMismatchError>()(
+  "IdempotentParameterMismatchError",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IdempotentParameterMismatch",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InstanceRefreshInProgressFault extends S.TaggedErrorClass<InstanceRefreshInProgressFault>()(
+  "InstanceRefreshInProgressFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InstanceRefreshInProgress",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidNextToken extends S.TaggedErrorClass<InvalidNextToken>()(
+  "InvalidNextToken",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class IrreversibleInstanceRefreshFault extends S.TaggedErrorClass<IrreversibleInstanceRefreshFault>()(
+  "IrreversibleInstanceRefreshFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "IrreversibleInstanceRefresh",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededFault extends S.TaggedErrorClass<LimitExceededFault>()(
+  "LimitExceededFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceContentionFault extends S.TaggedErrorClass<ResourceContentionFault>()(
+  "ResourceContentionFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceContention", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class ResourceInUseFault extends S.TaggedErrorClass<ResourceInUseFault>()(
+  "ResourceInUseFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceInUse", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ScalingActivityInProgressFault extends S.TaggedErrorClass<ScalingActivityInProgressFault>()(
+  "ScalingActivityInProgressFault",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ScalingActivityInProgress",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ServiceLinkedRoleFailure extends S.TaggedErrorClass<ServiceLinkedRoleFailure>()(
+  "ServiceLinkedRoleFailure",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ServiceLinkedRoleFailure",
+      httpResponseCode: 500,
+    }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
 export type XmlStringMaxLen19 = string;
-export type XmlStringMaxLen255 = string;
-export type XmlStringMaxLen511 = string;
-export type SkipZonalShiftValidation = boolean;
-export type XmlStringMaxLen64 = string;
-export type XmlString = string;
-export type AutoScalingGroupMinSize = number;
-export type AutoScalingGroupMaxSize = number;
-export type AutoScalingGroupDesiredCapacity = number;
-export type AsciiStringMaxLen255 = string;
-export type ResourceName = string;
-export type LifecycleActionToken = string;
-export type LifecycleActionResult = string;
-export type LaunchTemplateName = string;
-export type XmlStringMaxLen32 = string;
-export type NullablePositiveInteger = number;
-export type NullablePositiveDouble = number;
-export type ExcludedInstance = string;
-export type AllowedInstanceType = string;
-export type ImageId = string;
-export type OnDemandBaseCapacity = number;
-export type OnDemandPercentageAboveBaseCapacity = number;
-export type SpotInstancePools = number;
-export type MixedInstanceSpotPrice = string;
-export type Cooldown = number;
-export type HealthCheckGracePeriod = number;
-export type XmlStringMaxLen5000 = string;
-export type XmlStringMaxLen1600 = string;
-export type InstanceProtected = boolean;
-export type CapacityRebalanceEnabled = boolean;
-export type LifecycleTransition = string;
-export type AnyPrintableAsciiStringMaxLen4000 = string;
-export type HeartbeatTimeout = number;
-export type NotificationTargetResourceName = string;
-export type TagKey = string;
-export type TagValue = string;
-export type PropagateAtLaunch = boolean;
-export type MaxInstanceLifetime = number;
-export type Context = string;
-export type DefaultInstanceWarmup = number;
-export type IntPercentResettable = number;
-export type IntPercent100To200Resettable = number;
-export type ZonalShiftEnabled = boolean;
-export type XmlStringUserData = string;
-export type BlockDeviceEbsVolumeSize = number;
-export type BlockDeviceEbsVolumeType = string;
-export type BlockDeviceEbsDeleteOnTermination = boolean;
-export type BlockDeviceEbsIops = number;
-export type BlockDeviceEbsEncrypted = boolean;
-export type BlockDeviceEbsThroughput = number;
-export type NoDevice = boolean;
-export type MonitoringEnabled = boolean;
-export type SpotPrice = string;
-export type EbsOptimized = boolean;
-export type AssociatePublicIpAddress = boolean;
-export type InstanceMetadataHttpPutResponseHopLimit = number;
-export type ForceDelete = boolean;
-export type MaxNumberOfAutoScalingGroups = number;
-export type MaxNumberOfLaunchConfigurations = number;
-export type NumberOfAutoScalingGroups = number;
-export type NumberOfLaunchConfigurations = number;
-export type IncludeInstances = boolean;
-export type MaxRecords = number;
-export type AutoScalingGroupPredictedCapacity = number;
-export type MaxGroupPreparedCapacity = number;
-export type WarmPoolMinSize = number;
-export type ReuseOnScaleIn = boolean;
-export type WarmPoolSize = number;
-export type XmlStringMaxLen1023 = string;
-export type IntPercent = number;
-export type InstancesToUpdate = number;
-export type RefreshInstanceWarmup = number;
-export type NonZeroIntPercent = number;
-export type CheckpointDelay = number;
-export type SkipMatching = boolean;
-export type AutoRollback = boolean;
-export type IntPercent100To200 = number;
-export type BakeTime = number;
-export type GlobalTimeout = number;
-export type MinAdjustmentStep = number;
-export type MinAdjustmentMagnitude = number;
-export type PolicyIncrement = number;
-export type MetricScale = number;
-export type EstimatedInstanceWarmup = number;
-export type MetricName = string;
-export type MetricNamespace = string;
-export type MetricDimensionName = string;
-export type MetricDimensionValue = string;
-export type MetricUnit = string;
-export type MetricGranularityInSeconds = number;
-export type XmlStringMaxLen2047 = string;
-export type XmlStringMetricStat = string;
-export type XmlStringMetricLabel = string;
-export type ReturnData = boolean;
-export type DisableScaleIn = boolean;
-export type ScalingPolicyEnabled = boolean;
-export type PredictiveScalingSchedulingBufferTime = number;
-export type PredictiveScalingMaxCapacityBuffer = number;
-export type IncludeDeletedGroups = boolean;
-export type Progress = number;
-export type AutoScalingGroupState = string;
-export type ShouldDecrementDesiredCapacity = boolean;
-export type HonorCooldown = boolean;
-export type RequestedCapacity = number;
-export type ClientToken = string;
-export type ShouldRespectGracePeriod = boolean;
-export type ProtectedFromScaleIn = boolean;
-export type UpdatePlacementGroupParam = string;
-
-//# Schemas
 export type InstanceIds = string[];
 export const InstanceIds = /*@__PURE__*/ S.Array(S.String);
+export type XmlStringMaxLen255 = string;
 export interface AttachInstancesQuery {
   InstanceIds?: string[];
   AutoScalingGroupName?: string;
@@ -260,6 +265,7 @@ export const AttachLoadBalancersResultType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AttachLoadBalancersResultType",
 }) as any as S.Schema<AttachLoadBalancersResultType>;
+export type XmlStringMaxLen511 = string;
 export type TargetGroupARNs = string[];
 export const TargetGroupARNs = /*@__PURE__*/ S.Array(S.String);
 export interface AttachLoadBalancerTargetGroupsType {
@@ -301,6 +307,7 @@ export const TrafficSourceIdentifier = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TrafficSourceIdentifier>;
 export type TrafficSources = TrafficSourceIdentifier[];
 export const TrafficSources = /*@__PURE__*/ S.Array(TrafficSourceIdentifier);
+export type SkipZonalShiftValidation = boolean;
 export interface AttachTrafficSourcesType {
   AutoScalingGroupName?: string;
   TrafficSources?: TrafficSourceIdentifier[];
@@ -355,6 +362,8 @@ export const BatchDeleteScheduledActionType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDeleteScheduledActionType",
 }) as any as S.Schema<BatchDeleteScheduledActionType>;
+export type XmlStringMaxLen64 = string;
+export type XmlString = string;
 export interface FailedScheduledUpdateGroupActionRequest {
   ScheduledActionName?: string;
   ErrorCode?: string;
@@ -389,6 +398,9 @@ export const BatchDeleteScheduledActionAnswer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDeleteScheduledActionAnswer",
 }) as any as S.Schema<BatchDeleteScheduledActionAnswer>;
+export type AutoScalingGroupMinSize = number;
+export type AutoScalingGroupMaxSize = number;
+export type AutoScalingGroupDesiredCapacity = number;
 export interface ScheduledUpdateGroupActionRequest {
   ScheduledActionName?: string;
   StartTime?: Date;
@@ -490,6 +502,10 @@ export const CancelInstanceRefreshAnswer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelInstanceRefreshAnswer",
 }) as any as S.Schema<CancelInstanceRefreshAnswer>;
+export type AsciiStringMaxLen255 = string;
+export type ResourceName = string;
+export type LifecycleActionToken = string;
+export type LifecycleActionResult = string;
 export interface CompleteLifecycleActionType {
   LifecycleHookName?: string;
   AutoScalingGroupName?: string;
@@ -524,6 +540,7 @@ export const CompleteLifecycleActionAnswer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CompleteLifecycleActionAnswer",
 }) as any as S.Schema<CompleteLifecycleActionAnswer>;
+export type LaunchTemplateName = string;
 export interface LaunchTemplateSpecification {
   LaunchTemplateId?: string;
   LaunchTemplateName?: string;
@@ -538,6 +555,8 @@ export const LaunchTemplateSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LaunchTemplateSpecification",
 }) as any as S.Schema<LaunchTemplateSpecification>;
+export type XmlStringMaxLen32 = string;
+export type NullablePositiveInteger = number;
 export interface VCpuCountRequest {
   Min?: number;
   Max?: number;
@@ -563,8 +582,10 @@ export type CpuManufacturer =
   | "apple"
   | (string & {});
 export const CpuManufacturer = /*@__PURE__*/ S.String;
+
 export type CpuManufacturers = CpuManufacturer[];
 export const CpuManufacturers = /*@__PURE__*/ S.Array(CpuManufacturer);
+export type NullablePositiveDouble = number;
 export interface MemoryGiBPerVCpuRequest {
   Min?: number;
   Max?: number;
@@ -574,20 +595,24 @@ export const MemoryGiBPerVCpuRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MemoryGiBPerVCpuRequest",
 }) as any as S.Schema<MemoryGiBPerVCpuRequest>;
+export type ExcludedInstance = string;
 export type ExcludedInstanceTypes = string[];
 export const ExcludedInstanceTypes = /*@__PURE__*/ S.Array(S.String);
 export type InstanceGeneration = "current" | "previous" | (string & {});
 export const InstanceGeneration = /*@__PURE__*/ S.String;
+
 export type InstanceGenerations = InstanceGeneration[];
 export const InstanceGenerations = /*@__PURE__*/ S.Array(InstanceGeneration);
 export type BareMetal = "included" | "excluded" | "required" | (string & {});
 export const BareMetal = /*@__PURE__*/ S.String;
+
 export type BurstablePerformance =
   | "included"
   | "excluded"
   | "required"
   | (string & {});
 export const BurstablePerformance = /*@__PURE__*/ S.String;
+
 export interface NetworkInterfaceCountRequest {
   Min?: number;
   Max?: number;
@@ -599,8 +624,10 @@ export const NetworkInterfaceCountRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NetworkInterfaceCountRequest>;
 export type LocalStorage = "included" | "excluded" | "required" | (string & {});
 export const LocalStorage = /*@__PURE__*/ S.String;
+
 export type LocalStorageType = "hdd" | "ssd" | (string & {});
 export const LocalStorageType = /*@__PURE__*/ S.String;
+
 export type LocalStorageTypes = LocalStorageType[];
 export const LocalStorageTypes = /*@__PURE__*/ S.Array(LocalStorageType);
 export interface TotalLocalStorageGBRequest {
@@ -623,6 +650,7 @@ export const BaselineEbsBandwidthMbpsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BaselineEbsBandwidthMbpsRequest>;
 export type AcceleratorType = "gpu" | "fpga" | "inference" | (string & {});
 export const AcceleratorType = /*@__PURE__*/ S.String;
+
 export type AcceleratorTypes = AcceleratorType[];
 export const AcceleratorTypes = /*@__PURE__*/ S.Array(AcceleratorType);
 export interface AcceleratorCountRequest {
@@ -641,6 +669,7 @@ export type AcceleratorManufacturer =
   | "xilinx"
   | (string & {});
 export const AcceleratorManufacturer = /*@__PURE__*/ S.String;
+
 export type AcceleratorManufacturers = AcceleratorManufacturer[];
 export const AcceleratorManufacturers = /*@__PURE__*/ S.Array(
   AcceleratorManufacturer,
@@ -655,6 +684,7 @@ export type AcceleratorName =
   | "vu9p"
   | (string & {});
 export const AcceleratorName = /*@__PURE__*/ S.String;
+
 export type AcceleratorNames = AcceleratorName[];
 export const AcceleratorNames = /*@__PURE__*/ S.Array(AcceleratorName);
 export interface AcceleratorTotalMemoryMiBRequest {
@@ -675,6 +705,7 @@ export const NetworkBandwidthGbpsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkBandwidthGbpsRequest",
 }) as any as S.Schema<NetworkBandwidthGbpsRequest>;
+export type AllowedInstanceType = string;
 export type AllowedInstanceTypes = string[];
 export const AllowedInstanceTypes = /*@__PURE__*/ S.Array(S.String);
 export interface PerformanceFactorReferenceRequest {
@@ -770,6 +801,7 @@ export const InstanceRequirements = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstanceRequirements",
 }) as any as S.Schema<InstanceRequirements>;
+export type ImageId = string;
 export interface LaunchTemplateOverrides {
   InstanceType?: string;
   WeightedCapacity?: string;
@@ -800,6 +832,10 @@ export const LaunchTemplate = /*@__PURE__*/ S.suspend(() =>
     Overrides: S.optional(Overrides),
   }),
 ).annotate({ identifier: "LaunchTemplate" }) as any as S.Schema<LaunchTemplate>;
+export type OnDemandBaseCapacity = number;
+export type OnDemandPercentageAboveBaseCapacity = number;
+export type SpotInstancePools = number;
+export type MixedInstanceSpotPrice = string;
 export interface InstancesDistribution {
   OnDemandAllocationStrategy?: string;
   OnDemandBaseCapacity?: number;
@@ -832,12 +868,22 @@ export const MixedInstancesPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MixedInstancesPolicy",
 }) as any as S.Schema<MixedInstancesPolicy>;
+export type Cooldown = number;
 export type AvailabilityZones = string[];
 export const AvailabilityZones = /*@__PURE__*/ S.Array(S.String);
 export type AvailabilityZoneIds = string[];
 export const AvailabilityZoneIds = /*@__PURE__*/ S.Array(S.String);
+export type HealthCheckGracePeriod = number;
+export type XmlStringMaxLen5000 = string;
+export type XmlStringMaxLen1600 = string;
 export type TerminationPolicies = string[];
 export const TerminationPolicies = /*@__PURE__*/ S.Array(S.String);
+export type InstanceProtected = boolean;
+export type CapacityRebalanceEnabled = boolean;
+export type LifecycleTransition = string;
+export type AnyPrintableAsciiStringMaxLen4000 = string;
+export type HeartbeatTimeout = number;
+export type NotificationTargetResourceName = string;
 export interface LifecycleHookSpecification {
   LifecycleHookName?: string;
   LifecycleTransition?: string;
@@ -870,6 +916,10 @@ export type DeletionProtection =
   | "prevent-all-deletion"
   | (string & {});
 export const DeletionProtection = /*@__PURE__*/ S.String;
+
+export type TagKey = string;
+export type TagValue = string;
+export type PropagateAtLaunch = boolean;
 export interface Tag {
   ResourceId?: string;
   ResourceType?: string;
@@ -888,6 +938,11 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type Tags = Tag[];
 export const Tags = /*@__PURE__*/ S.Array(Tag);
+export type MaxInstanceLifetime = number;
+export type Context = string;
+export type DefaultInstanceWarmup = number;
+export type IntPercentResettable = number;
+export type IntPercent100To200Resettable = number;
 export interface InstanceMaintenancePolicy {
   MinHealthyPercentage?: number;
   MaxHealthyPercentage?: number;
@@ -905,6 +960,7 @@ export type CapacityDistributionStrategy =
   | "balanced-best-effort"
   | (string & {});
 export const CapacityDistributionStrategy = /*@__PURE__*/ S.String;
+
 export interface AvailabilityZoneDistribution {
   CapacityDistributionStrategy?: CapacityDistributionStrategy;
 }
@@ -915,11 +971,13 @@ export const AvailabilityZoneDistribution = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AvailabilityZoneDistribution",
 }) as any as S.Schema<AvailabilityZoneDistribution>;
+export type ZonalShiftEnabled = boolean;
 export type ImpairedZoneHealthCheckBehavior =
   | "ReplaceUnhealthy"
   | "IgnoreUnhealthy"
   | (string & {});
 export const ImpairedZoneHealthCheckBehavior = /*@__PURE__*/ S.String;
+
 export interface AvailabilityZoneImpairmentPolicy {
   ZonalShiftEnabled?: boolean;
   ImpairedZoneHealthCheckBehavior?: ImpairedZoneHealthCheckBehavior;
@@ -941,6 +999,7 @@ export type CapacityReservationPreference =
   | "default"
   | (string & {});
 export const CapacityReservationPreference = /*@__PURE__*/ S.String;
+
 export type CapacityReservationIds = string[];
 export const CapacityReservationIds = /*@__PURE__*/ S.Array(S.String);
 export type CapacityReservationResourceGroupArns = string[];
@@ -975,6 +1034,7 @@ export const CapacityReservationSpecification = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CapacityReservationSpecification>;
 export type RetentionAction = "retain" | "terminate" | (string & {});
 export const RetentionAction = /*@__PURE__*/ S.String;
+
 export interface RetentionTriggers {
   TerminateHookAbandon?: RetentionAction;
 }
@@ -1093,6 +1153,13 @@ export type SecurityGroups = string[];
 export const SecurityGroups = /*@__PURE__*/ S.Array(S.String);
 export type ClassicLinkVPCSecurityGroups = string[];
 export const ClassicLinkVPCSecurityGroups = /*@__PURE__*/ S.Array(S.String);
+export type XmlStringUserData = string;
+export type BlockDeviceEbsVolumeSize = number;
+export type BlockDeviceEbsVolumeType = string;
+export type BlockDeviceEbsDeleteOnTermination = boolean;
+export type BlockDeviceEbsIops = number;
+export type BlockDeviceEbsEncrypted = boolean;
+export type BlockDeviceEbsThroughput = number;
 export interface Ebs {
   SnapshotId?: string;
   VolumeSize?: number;
@@ -1113,6 +1180,7 @@ export const Ebs = /*@__PURE__*/ S.suspend(() =>
     Throughput: S.optional(S.Number),
   }),
 ).annotate({ identifier: "Ebs" }) as any as S.Schema<Ebs>;
+export type NoDevice = boolean;
 export interface BlockDeviceMapping {
   VirtualName?: string;
   DeviceName?: string;
@@ -1131,6 +1199,7 @@ export const BlockDeviceMapping = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BlockDeviceMapping>;
 export type BlockDeviceMappings = BlockDeviceMapping[];
 export const BlockDeviceMappings = /*@__PURE__*/ S.Array(BlockDeviceMapping);
+export type MonitoringEnabled = boolean;
 export interface InstanceMonitoring {
   Enabled?: boolean;
 }
@@ -1139,16 +1208,22 @@ export const InstanceMonitoring = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstanceMonitoring",
 }) as any as S.Schema<InstanceMonitoring>;
+export type SpotPrice = string;
+export type EbsOptimized = boolean;
+export type AssociatePublicIpAddress = boolean;
 export type InstanceMetadataHttpTokensState =
   | "optional"
   | "required"
   | (string & {});
 export const InstanceMetadataHttpTokensState = /*@__PURE__*/ S.String;
+
+export type InstanceMetadataHttpPutResponseHopLimit = number;
 export type InstanceMetadataEndpointState =
   | "disabled"
   | "enabled"
   | (string & {});
 export const InstanceMetadataEndpointState = /*@__PURE__*/ S.String;
+
 export interface InstanceMetadataOptions {
   HttpTokens?: InstanceMetadataHttpTokensState;
   HttpPutResponseHopLimit?: number;
@@ -1249,6 +1324,7 @@ export const CreateOrUpdateTagsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateOrUpdateTagsResponse",
 }) as any as S.Schema<CreateOrUpdateTagsResponse>;
+export type ForceDelete = boolean;
 export interface DeleteAutoScalingGroupType {
   AutoScalingGroupName?: string;
   ForceDelete?: boolean;
@@ -1479,6 +1555,10 @@ export const DescribeAccountLimitsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAccountLimitsRequest",
 }) as any as S.Schema<DescribeAccountLimitsRequest>;
+export type MaxNumberOfAutoScalingGroups = number;
+export type MaxNumberOfLaunchConfigurations = number;
+export type NumberOfAutoScalingGroups = number;
+export type NumberOfLaunchConfigurations = number;
 export interface DescribeAccountLimitsAnswer {
   MaxNumberOfAutoScalingGroups?: number;
   MaxNumberOfLaunchConfigurations?: number;
@@ -1529,6 +1609,8 @@ export const DescribeAdjustmentTypesAnswer = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeAdjustmentTypesAnswer>;
 export type AutoScalingGroupNames = string[];
 export const AutoScalingGroupNames = /*@__PURE__*/ S.Array(S.String);
+export type IncludeInstances = boolean;
+export type MaxRecords = number;
 export type Values = string[];
 export const Values = /*@__PURE__*/ S.Array(S.String);
 export interface Filter {
@@ -1568,6 +1650,7 @@ export const AutoScalingGroupNamesType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AutoScalingGroupNamesType",
 }) as any as S.Schema<AutoScalingGroupNamesType>;
+export type AutoScalingGroupPredictedCapacity = number;
 export type LifecycleState =
   | "Pending"
   | "Pending:Wait"
@@ -1601,6 +1684,7 @@ export type LifecycleState =
   | "Warmed:Hibernated"
   | (string & {});
 export const LifecycleState = /*@__PURE__*/ S.String;
+
 export interface Instance {
   InstanceId?: string;
   InstanceType?: string;
@@ -1672,14 +1756,19 @@ export const TagDescription = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagDescription" }) as any as S.Schema<TagDescription>;
 export type TagDescriptionList = TagDescription[];
 export const TagDescriptionList = /*@__PURE__*/ S.Array(TagDescription);
+export type MaxGroupPreparedCapacity = number;
+export type WarmPoolMinSize = number;
 export type WarmPoolState =
   | "Stopped"
   | "Running"
   | "Hibernated"
   | (string & {});
 export const WarmPoolState = /*@__PURE__*/ S.String;
+
 export type WarmPoolStatus = "PendingDelete" | (string & {});
 export const WarmPoolStatus = /*@__PURE__*/ S.String;
+
+export type ReuseOnScaleIn = boolean;
 export interface InstanceReusePolicy {
   ReuseOnScaleIn?: boolean;
 }
@@ -1706,6 +1795,7 @@ export const WarmPoolConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WarmPoolConfiguration",
 }) as any as S.Schema<WarmPoolConfiguration>;
+export type WarmPoolSize = number;
 export interface AutoScalingGroup {
   AutoScalingGroupName?: string;
   AutoScalingGroupARN?: string;
@@ -1995,6 +2085,10 @@ export type InstanceRefreshStatus =
   | "Baking"
   | (string & {});
 export const InstanceRefreshStatus = /*@__PURE__*/ S.String;
+
+export type XmlStringMaxLen1023 = string;
+export type IntPercent = number;
+export type InstancesToUpdate = number;
 export interface InstanceRefreshLivePoolProgress {
   PercentageComplete?: number;
   InstancesToUpdate?: number;
@@ -2031,16 +2125,23 @@ export const InstanceRefreshProgressDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstanceRefreshProgressDetails",
 }) as any as S.Schema<InstanceRefreshProgressDetails>;
+export type RefreshInstanceWarmup = number;
+export type NonZeroIntPercent = number;
 export type CheckpointPercentages = number[];
 export const CheckpointPercentages = /*@__PURE__*/ S.Array(S.Number);
+export type CheckpointDelay = number;
+export type SkipMatching = boolean;
+export type AutoRollback = boolean;
 export type ScaleInProtectedInstances =
   | "Refresh"
   | "Ignore"
   | "Wait"
   | (string & {});
 export const ScaleInProtectedInstances = /*@__PURE__*/ S.String;
+
 export type StandbyInstances = "Terminate" | "Ignore" | "Wait" | (string & {});
 export const StandbyInstances = /*@__PURE__*/ S.String;
+
 export type AlarmList = string[];
 export const AlarmList = /*@__PURE__*/ S.Array(S.String);
 export interface AlarmSpecification {
@@ -2051,6 +2152,8 @@ export const AlarmSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AlarmSpecification",
 }) as any as S.Schema<AlarmSpecification>;
+export type IntPercent100To200 = number;
+export type BakeTime = number;
 export interface RefreshPreferences {
   MinHealthyPercentage?: number;
   InstanceWarmup?: number;
@@ -2115,6 +2218,7 @@ export const RollbackDetails = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RollbackDetails>;
 export type RefreshStrategy = "Rolling" | "ReplaceRootVolume" | (string & {});
 export const RefreshStrategy = /*@__PURE__*/ S.String;
+
 export interface InstanceRefresh {
   InstanceRefreshId?: string;
   AutoScalingGroupName?: string;
@@ -2300,6 +2404,7 @@ export const DescribeLifecycleHooksType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLifecycleHooksType",
 }) as any as S.Schema<DescribeLifecycleHooksType>;
+export type GlobalTimeout = number;
 export interface LifecycleHook {
   LifecycleHookName?: string;
   AutoScalingGroupName?: string;
@@ -2604,6 +2709,10 @@ export const DescribePoliciesType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePoliciesType",
 }) as any as S.Schema<DescribePoliciesType>;
+export type MinAdjustmentStep = number;
+export type MinAdjustmentMagnitude = number;
+export type PolicyIncrement = number;
+export type MetricScale = number;
 export interface StepAdjustment {
   MetricIntervalLowerBound?: number;
   MetricIntervalUpperBound?: number;
@@ -2618,6 +2727,7 @@ export const StepAdjustment = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "StepAdjustment" }) as any as S.Schema<StepAdjustment>;
 export type StepAdjustments = StepAdjustment[];
 export const StepAdjustments = /*@__PURE__*/ S.Array(StepAdjustment);
+export type EstimatedInstanceWarmup = number;
 export interface Alarm {
   AlarmName?: string;
   AlarmARN?: string;
@@ -2634,6 +2744,7 @@ export type MetricType =
   | "ALBRequestCountPerTarget"
   | (string & {});
 export const MetricType = /*@__PURE__*/ S.String;
+
 export interface PredefinedMetricSpecification {
   PredefinedMetricType?: MetricType;
   ResourceLabel?: string;
@@ -2646,6 +2757,10 @@ export const PredefinedMetricSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PredefinedMetricSpecification",
 }) as any as S.Schema<PredefinedMetricSpecification>;
+export type MetricName = string;
+export type MetricNamespace = string;
+export type MetricDimensionName = string;
+export type MetricDimensionValue = string;
 export interface MetricDimension {
   Name?: string;
   Value?: string;
@@ -2665,6 +2780,10 @@ export type MetricStatistic =
   | "Sum"
   | (string & {});
 export const MetricStatistic = /*@__PURE__*/ S.String;
+
+export type MetricUnit = string;
+export type MetricGranularityInSeconds = number;
+export type XmlStringMaxLen2047 = string;
 export interface Metric {
   Namespace?: string;
   MetricName?: string;
@@ -2677,6 +2796,7 @@ export const Metric = /*@__PURE__*/ S.suspend(() =>
     Dimensions: S.optional(MetricDimensions),
   }),
 ).annotate({ identifier: "Metric" }) as any as S.Schema<Metric>;
+export type XmlStringMetricStat = string;
 export interface TargetTrackingMetricStat {
   Metric?: Metric;
   Stat?: string;
@@ -2693,6 +2813,8 @@ export const TargetTrackingMetricStat = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TargetTrackingMetricStat",
 }) as any as S.Schema<TargetTrackingMetricStat>;
+export type XmlStringMetricLabel = string;
+export type ReturnData = boolean;
 export interface TargetTrackingMetricDataQuery {
   Id?: string;
   Expression?: string;
@@ -2739,6 +2861,7 @@ export const CustomizedMetricSpecification = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomizedMetricSpecification",
 }) as any as S.Schema<CustomizedMetricSpecification>;
+export type DisableScaleIn = boolean;
 export interface TargetTrackingConfiguration {
   PredefinedMetricSpecification?: PredefinedMetricSpecification;
   CustomizedMetricSpecification?: CustomizedMetricSpecification;
@@ -2755,6 +2878,7 @@ export const TargetTrackingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TargetTrackingConfiguration",
 }) as any as S.Schema<TargetTrackingConfiguration>;
+export type ScalingPolicyEnabled = boolean;
 export type PredefinedMetricPairType =
   | "ASGCPUUtilization"
   | "ASGNetworkIn"
@@ -2762,6 +2886,7 @@ export type PredefinedMetricPairType =
   | "ALBRequestCount"
   | (string & {});
 export const PredefinedMetricPairType = /*@__PURE__*/ S.String;
+
 export interface PredictiveScalingPredefinedMetricPair {
   PredefinedMetricType?: PredefinedMetricPairType;
   ResourceLabel?: string;
@@ -2782,6 +2907,7 @@ export type PredefinedScalingMetricType =
   | "ALBRequestCountPerTarget"
   | (string & {});
 export const PredefinedScalingMetricType = /*@__PURE__*/ S.String;
+
 export interface PredictiveScalingPredefinedScalingMetric {
   PredefinedMetricType?: PredefinedScalingMetricType;
   ResourceLabel?: string;
@@ -2802,6 +2928,7 @@ export type PredefinedLoadMetricType =
   | "ALBTargetGroupRequestCount"
   | (string & {});
 export const PredefinedLoadMetricType = /*@__PURE__*/ S.String;
+
 export interface PredictiveScalingPredefinedLoadMetric {
   PredefinedMetricType?: PredefinedLoadMetricType;
   ResourceLabel?: string;
@@ -2917,12 +3044,16 @@ export type PredictiveScalingMode =
   | "ForecastOnly"
   | (string & {});
 export const PredictiveScalingMode = /*@__PURE__*/ S.String;
+
+export type PredictiveScalingSchedulingBufferTime = number;
 export type PredictiveScalingMaxCapacityBreachBehavior =
   | "HonorMaxCapacity"
   | "IncreaseMaxCapacity"
   | (string & {});
 export const PredictiveScalingMaxCapacityBreachBehavior =
   /*@__PURE__*/ S.String;
+
+export type PredictiveScalingMaxCapacityBuffer = number;
 export interface PredictiveScalingConfiguration {
   MetricSpecifications?: PredictiveScalingMetricSpecification[];
   Mode?: PredictiveScalingMode;
@@ -3087,6 +3218,7 @@ export const PoliciesType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PoliciesType" }) as any as S.Schema<PoliciesType>;
 export type ActivityIds = string[];
 export const ActivityIds = /*@__PURE__*/ S.Array(S.String);
+export type IncludeDeletedGroups = boolean;
 export interface DescribeScalingActivitiesType {
   ActivityIds?: string[];
   AutoScalingGroupName?: string;
@@ -3136,6 +3268,9 @@ export type ScalingActivityStatusCode =
   | "InPlaceUpdateInProgress"
   | (string & {});
 export const ScalingActivityStatusCode = /*@__PURE__*/ S.String;
+
+export type Progress = number;
+export type AutoScalingGroupState = string;
 export interface Activity {
   ActivityId?: string;
   AutoScalingGroupName?: string;
@@ -3458,6 +3593,7 @@ export const DescribeWarmPoolAnswer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeWarmPoolAnswer",
 }) as any as S.Schema<DescribeWarmPoolAnswer>;
+export type ShouldDecrementDesiredCapacity = boolean;
 export interface DetachInstancesQuery {
   InstanceIds?: string[];
   AutoScalingGroupName?: string;
@@ -3678,6 +3814,7 @@ export const EnterStandbyAnswer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnterStandbyAnswer",
 }) as any as S.Schema<EnterStandbyAnswer>;
+export type HonorCooldown = boolean;
 export interface ExecutePolicyType {
   AutoScalingGroupName?: string;
   PolicyName?: string;
@@ -3890,6 +4027,8 @@ export const GetPredictiveScalingForecastAnswer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPredictiveScalingForecastAnswer",
 }) as any as S.Schema<GetPredictiveScalingForecastAnswer>;
+export type RequestedCapacity = number;
+export type ClientToken = string;
 export type AvailabilityZonesLimit1 = string[];
 export const AvailabilityZonesLimit1 = /*@__PURE__*/ S.Array(S.String);
 export type AvailabilityZoneIdsLimit1 = string[];
@@ -3901,6 +4040,7 @@ export type RetryStrategy =
   | "none"
   | (string & {});
 export const RetryStrategy = /*@__PURE__*/ S.String;
+
 export interface LaunchInstancesRequest {
   AutoScalingGroupName?: string;
   RequestedCapacity?: number;
@@ -4321,6 +4461,7 @@ export const SetDesiredCapacityResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SetDesiredCapacityResponse",
 }) as any as S.Schema<SetDesiredCapacityResponse>;
+export type ShouldRespectGracePeriod = boolean;
 export interface SetInstanceHealthQuery {
   InstanceId?: string;
   HealthStatus?: string;
@@ -4351,6 +4492,7 @@ export const SetInstanceHealthResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SetInstanceHealthResponse",
 }) as any as S.Schema<SetInstanceHealthResponse>;
+export type ProtectedFromScaleIn = boolean;
 export interface SetInstanceProtectionQuery {
   InstanceIds?: string[];
   AutoScalingGroupName?: string;
@@ -4456,6 +4598,7 @@ export interface ActivityType {
 export const ActivityType = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Activity: S.optional(Activity) }).pipe(ns),
 ).annotate({ identifier: "ActivityType" }) as any as S.Schema<ActivityType>;
+export type UpdatePlacementGroupParam = string;
 export interface UpdateAutoScalingGroupType {
   AutoScalingGroupName?: string;
   LaunchConfigurationName?: string;
@@ -4542,124 +4685,6 @@ export const UpdateAutoScalingGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateAutoScalingGroupResponse",
 }) as any as S.Schema<UpdateAutoScalingGroupResponse>;
-
-//# Errors
-export class ResourceContentionFault extends S.TaggedErrorClass<ResourceContentionFault>()(
-  "ResourceContentionFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceContention", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class ServiceLinkedRoleFailure extends S.TaggedErrorClass<ServiceLinkedRoleFailure>()(
-  "ServiceLinkedRoleFailure",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ServiceLinkedRoleFailure",
-      httpResponseCode: 500,
-    }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class InstanceRefreshInProgressFault extends S.TaggedErrorClass<InstanceRefreshInProgressFault>()(
-  "InstanceRefreshInProgressFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InstanceRefreshInProgress",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class AlreadyExistsFault extends S.TaggedErrorClass<AlreadyExistsFault>()(
-  "AlreadyExistsFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
-export class LimitExceededFault extends S.TaggedErrorClass<LimitExceededFault>()(
-  "LimitExceededFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ActiveInstanceRefreshNotFoundFault extends S.TaggedErrorClass<ActiveInstanceRefreshNotFoundFault>()(
-  "ActiveInstanceRefreshNotFoundFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ActiveInstanceRefreshNotFound",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceInUseFault extends S.TaggedErrorClass<ResourceInUseFault>()(
-  "ResourceInUseFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceInUse", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ScalingActivityInProgressFault extends S.TaggedErrorClass<ScalingActivityInProgressFault>()(
-  "ScalingActivityInProgressFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ScalingActivityInProgress",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class AutoScalingGroupNotFound extends S.TaggedErrorClass<AutoScalingGroupNotFound>()(
-  "AutoScalingGroupNotFound",
-  {},
-  T.SyntheticError({
-    from: "ValidationError",
-    message: { includes: "not found" },
-  }),
-) {}
-export class InvalidNextToken extends S.TaggedErrorClass<InvalidNextToken>()(
-  "InvalidNextToken",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidNextToken", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class IdempotentParameterMismatchError extends S.TaggedErrorClass<IdempotentParameterMismatchError>()(
-  "IdempotentParameterMismatchError",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "IdempotentParameterMismatch",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class IrreversibleInstanceRefreshFault extends S.TaggedErrorClass<IrreversibleInstanceRefreshFault>()(
-  "IrreversibleInstanceRefreshFault",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "IrreversibleInstanceRefresh",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type AttachInstancesError =
   | ResourceContentionFault
   | ServiceLinkedRoleFailure
@@ -4692,6 +4717,7 @@ export const attachInstances: API.OperationMethod<
   retry: Retry,
   operationName: "AttachInstances",
 }));
+
 export type AttachLoadBalancersError =
   | InstanceRefreshInProgressFault
   | ResourceContentionFault
@@ -4736,6 +4762,7 @@ export const attachLoadBalancers: API.OperationMethod<
   retry: Retry,
   operationName: "AttachLoadBalancers",
 }));
+
 export type AttachLoadBalancerTargetGroupsError =
   | InstanceRefreshInProgressFault
   | ResourceContentionFault
@@ -4789,6 +4816,7 @@ export const attachLoadBalancerTargetGroups: API.OperationMethod<
   retry: Retry,
   operationName: "AttachLoadBalancerTargetGroups",
 }));
+
 export type AttachTrafficSourcesError =
   | InstanceRefreshInProgressFault
   | ResourceContentionFault
@@ -4834,6 +4862,7 @@ export const attachTrafficSources: API.OperationMethod<
   retry: Retry,
   operationName: "AttachTrafficSources",
 }));
+
 export type BatchDeleteScheduledActionError =
   | ResourceContentionFault
   | CommonErrors;
@@ -4853,6 +4882,7 @@ export const batchDeleteScheduledAction: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteScheduledAction",
 }));
+
 export type BatchPutScheduledUpdateGroupActionError =
   | AlreadyExistsFault
   | LimitExceededFault
@@ -4874,6 +4904,7 @@ export const batchPutScheduledUpdateGroupAction: API.OperationMethod<
   retry: Retry,
   operationName: "BatchPutScheduledUpdateGroupAction",
 }));
+
 export type CancelInstanceRefreshError =
   | ActiveInstanceRefreshNotFoundFault
   | LimitExceededFault
@@ -4908,6 +4939,7 @@ export const cancelInstanceRefresh: API.OperationMethod<
   retry: Retry,
   operationName: "CancelInstanceRefresh",
 }));
+
 export type CompleteLifecycleActionError =
   | ResourceContentionFault
   | CommonErrors;
@@ -4956,6 +4988,7 @@ export const completeLifecycleAction: API.OperationMethod<
   retry: Retry,
   operationName: "CompleteLifecycleAction",
 }));
+
 export type CreateAutoScalingGroupError =
   | AlreadyExistsFault
   | LimitExceededFault
@@ -4999,6 +5032,7 @@ export const createAutoScalingGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAutoScalingGroup",
 }));
+
 export type CreateLaunchConfigurationError =
   | AlreadyExistsFault
   | LimitExceededFault
@@ -5033,6 +5067,7 @@ export const createLaunchConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLaunchConfiguration",
 }));
+
 export type CreateOrUpdateTagsError =
   | AlreadyExistsFault
   | LimitExceededFault
@@ -5066,6 +5101,7 @@ export const createOrUpdateTags: API.OperationMethod<
   retry: Retry,
   operationName: "CreateOrUpdateTags",
 }));
+
 export type DeleteAutoScalingGroupError =
   | ResourceContentionFault
   | ResourceInUseFault
@@ -5112,6 +5148,7 @@ export const deleteAutoScalingGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAutoScalingGroup",
 }));
+
 export type DeleteLaunchConfigurationError =
   | ResourceContentionFault
   | ResourceInUseFault
@@ -5135,6 +5172,7 @@ export const deleteLaunchConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLaunchConfiguration",
 }));
+
 export type DeleteLifecycleHookError =
   | ResourceContentionFault
   | AutoScalingGroupNotFound
@@ -5159,6 +5197,7 @@ export const deleteLifecycleHook: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLifecycleHook",
 }));
+
 export type DeleteNotificationConfigurationError =
   | ResourceContentionFault
   | CommonErrors;
@@ -5178,6 +5217,7 @@ export const deleteNotificationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNotificationConfiguration",
 }));
+
 export type DeletePolicyError =
   | ResourceContentionFault
   | ServiceLinkedRoleFailure
@@ -5205,6 +5245,7 @@ export const deletePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePolicy",
 }));
+
 export type DeleteScheduledActionError =
   | ResourceContentionFault
   | AutoScalingGroupNotFound
@@ -5225,6 +5266,7 @@ export const deleteScheduledAction: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteScheduledAction",
 }));
+
 export type DeleteTagsError =
   | ResourceContentionFault
   | ResourceInUseFault
@@ -5245,6 +5287,7 @@ export const deleteTags: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTags",
 }));
+
 export type DeleteWarmPoolError =
   | LimitExceededFault
   | ResourceContentionFault
@@ -5275,6 +5318,7 @@ export const deleteWarmPool: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWarmPool",
 }));
+
 export type DescribeAccountLimitsError = ResourceContentionFault | CommonErrors;
 /**
  * Describes the current Amazon EC2 Auto Scaling resource quotas for your account.
@@ -5297,6 +5341,7 @@ export const describeAccountLimits: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAccountLimits",
 }));
+
 export type DescribeAdjustmentTypesError =
   | ResourceContentionFault
   | CommonErrors;
@@ -5325,6 +5370,7 @@ export const describeAdjustmentTypes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAdjustmentTypes",
 }));
+
 export type DescribeAutoScalingGroupsError =
   | InvalidNextToken
   | ResourceContentionFault
@@ -5375,6 +5421,7 @@ export const describeAutoScalingGroups: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeAutoScalingInstancesError =
   | InvalidNextToken
   | ResourceContentionFault
@@ -5416,6 +5463,7 @@ export const describeAutoScalingInstances: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeAutoScalingNotificationTypesError =
   | ResourceContentionFault
   | CommonErrors;
@@ -5435,6 +5483,7 @@ export const describeAutoScalingNotificationTypes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAutoScalingNotificationTypes",
 }));
+
 export type DescribeInstanceRefreshesError =
   | InvalidNextToken
   | ResourceContentionFault
@@ -5487,6 +5536,7 @@ export const describeInstanceRefreshes: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeLaunchConfigurationsError =
   | InvalidNextToken
   | ResourceContentionFault
@@ -5528,6 +5578,7 @@ export const describeLaunchConfigurations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeLifecycleHooksError =
   | ResourceContentionFault
   | AutoScalingGroupNotFound
@@ -5548,6 +5599,7 @@ export const describeLifecycleHooks: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLifecycleHooks",
 }));
+
 export type DescribeLifecycleHookTypesError =
   | ResourceContentionFault
   | CommonErrors;
@@ -5573,6 +5625,7 @@ export const describeLifecycleHookTypes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLifecycleHookTypes",
 }));
+
 export type DescribeLoadBalancersError =
   | InvalidNextToken
   | ResourceContentionFault
@@ -5646,6 +5699,7 @@ export const describeLoadBalancers: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeLoadBalancerTargetGroupsError =
   | InvalidNextToken
   | ResourceContentionFault
@@ -5719,6 +5773,7 @@ export const describeLoadBalancerTargetGroups: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeMetricCollectionTypesError =
   | ResourceContentionFault
   | CommonErrors;
@@ -5738,6 +5793,7 @@ export const describeMetricCollectionTypes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeMetricCollectionTypes",
 }));
+
 export type DescribeNotificationConfigurationsError =
   | InvalidNextToken
   | ResourceContentionFault
@@ -5780,6 +5836,7 @@ export const describeNotificationConfigurations: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribePoliciesError =
   | InvalidNextToken
   | ResourceContentionFault
@@ -5822,6 +5879,7 @@ export const describePolicies: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeScalingActivitiesError =
   | InvalidNextToken
   | ResourceContentionFault
@@ -5873,6 +5931,7 @@ export const describeScalingActivities: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeScalingProcessTypesError =
   | ResourceContentionFault
   | CommonErrors;
@@ -5893,6 +5952,7 @@ export const describeScalingProcessTypes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeScalingProcessTypes",
 }));
+
 export type DescribeScheduledActionsError =
   | InvalidNextToken
   | ResourceContentionFault
@@ -5939,6 +5999,7 @@ export const describeScheduledActions: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeTagsError =
   | InvalidNextToken
   | ResourceContentionFault
@@ -5991,6 +6052,7 @@ export const describeTags: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeTerminationPolicyTypesError =
   | ResourceContentionFault
   | CommonErrors;
@@ -6014,6 +6076,7 @@ export const describeTerminationPolicyTypes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTerminationPolicyTypes",
 }));
+
 export type DescribeTrafficSourcesError =
   | InvalidNextToken
   | ResourceContentionFault
@@ -6060,6 +6123,7 @@ export const describeTrafficSources: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DescribeWarmPoolError =
   | InvalidNextToken
   | LimitExceededFault
@@ -6105,6 +6169,7 @@ export const describeWarmPool: API.OperationMethod<
     pageSize: "MaxRecords",
   } as const,
 }));
+
 export type DetachInstancesError = ResourceContentionFault | CommonErrors;
 /**
  * Removes one or more instances from the specified Auto Scaling group.
@@ -6135,6 +6200,7 @@ export const detachInstances: API.OperationMethod<
   retry: Retry,
   operationName: "DetachInstances",
 }));
+
 export type DetachLoadBalancersError = ResourceContentionFault | CommonErrors;
 /**
  * This API operation is superseded by DetachTrafficSources, which
@@ -6167,6 +6233,7 @@ export const detachLoadBalancers: API.OperationMethod<
   retry: Retry,
   operationName: "DetachLoadBalancers",
 }));
+
 export type DetachLoadBalancerTargetGroupsError =
   | ResourceContentionFault
   | CommonErrors;
@@ -6203,6 +6270,7 @@ export const detachLoadBalancerTargetGroups: API.OperationMethod<
   retry: Retry,
   operationName: "DetachLoadBalancerTargetGroups",
 }));
+
 export type DetachTrafficSourcesError = ResourceContentionFault | CommonErrors;
 /**
  * Detaches one or more traffic sources from the specified Auto Scaling group.
@@ -6226,6 +6294,7 @@ export const detachTrafficSources: API.OperationMethod<
   retry: Retry,
   operationName: "DetachTrafficSources",
 }));
+
 export type DisableMetricsCollectionError =
   | ResourceContentionFault
   | CommonErrors;
@@ -6245,6 +6314,7 @@ export const disableMetricsCollection: API.OperationMethod<
   retry: Retry,
   operationName: "DisableMetricsCollection",
 }));
+
 export type EnableMetricsCollectionError =
   | ResourceContentionFault
   | CommonErrors;
@@ -6270,6 +6340,7 @@ export const enableMetricsCollection: API.OperationMethod<
   retry: Retry,
   operationName: "EnableMetricsCollection",
 }));
+
 export type EnterStandbyError = ResourceContentionFault | CommonErrors;
 /**
  * Moves the specified instances into the standby state.
@@ -6299,6 +6370,7 @@ export const enterStandby: API.OperationMethod<
   retry: Retry,
   operationName: "EnterStandby",
 }));
+
 export type ExecutePolicyError =
   | ResourceContentionFault
   | ScalingActivityInProgressFault
@@ -6320,6 +6392,7 @@ export const executePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "ExecutePolicy",
 }));
+
 export type ExitStandbyError = ResourceContentionFault | CommonErrors;
 /**
  * Moves the specified instances out of the standby state.
@@ -6344,6 +6417,7 @@ export const exitStandby: API.OperationMethod<
   retry: Retry,
   operationName: "ExitStandby",
 }));
+
 export type GetPredictiveScalingForecastError =
   | ResourceContentionFault
   | CommonErrors;
@@ -6374,6 +6448,7 @@ export const getPredictiveScalingForecast: API.OperationMethod<
   retry: Retry,
   operationName: "GetPredictiveScalingForecast",
 }));
+
 export type LaunchInstancesError =
   | IdempotentParameterMismatchError
   | ResourceContentionFault
@@ -6395,6 +6470,7 @@ export const launchInstances: API.OperationMethod<
   retry: Retry,
   operationName: "LaunchInstances",
 }));
+
 export type PutLifecycleHookError =
   | LimitExceededFault
   | ResourceContentionFault
@@ -6458,6 +6534,7 @@ export const putLifecycleHook: API.OperationMethod<
   retry: Retry,
   operationName: "PutLifecycleHook",
 }));
+
 export type PutNotificationConfigurationError =
   | LimitExceededFault
   | ResourceContentionFault
@@ -6494,6 +6571,7 @@ export const putNotificationConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutNotificationConfiguration",
 }));
+
 export type PutScalingPolicyError =
   | LimitExceededFault
   | ResourceContentionFault
@@ -6532,6 +6610,7 @@ export const putScalingPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutScalingPolicy",
 }));
+
 export type PutScheduledUpdateGroupActionError =
   | AlreadyExistsFault
   | LimitExceededFault
@@ -6570,6 +6649,7 @@ export const putScheduledUpdateGroupAction: API.OperationMethod<
   retry: Retry,
   operationName: "PutScheduledUpdateGroupAction",
 }));
+
 export type PutWarmPoolError =
   | InstanceRefreshInProgressFault
   | LimitExceededFault
@@ -6607,6 +6687,7 @@ export const putWarmPool: API.OperationMethod<
   retry: Retry,
   operationName: "PutWarmPool",
 }));
+
 export type RecordLifecycleActionHeartbeatError =
   | ResourceContentionFault
   | CommonErrors;
@@ -6655,6 +6736,7 @@ export const recordLifecycleActionHeartbeat: API.OperationMethod<
   retry: Retry,
   operationName: "RecordLifecycleActionHeartbeat",
 }));
+
 export type ResumeProcessesError =
   | ResourceContentionFault
   | ResourceInUseFault
@@ -6679,6 +6761,7 @@ export const resumeProcesses: API.OperationMethod<
   retry: Retry,
   operationName: "ResumeProcesses",
 }));
+
 export type RollbackInstanceRefreshError =
   | ActiveInstanceRefreshNotFoundFault
   | IrreversibleInstanceRefreshFault
@@ -6727,6 +6810,7 @@ export const rollbackInstanceRefresh: API.OperationMethod<
   retry: Retry,
   operationName: "RollbackInstanceRefresh",
 }));
+
 export type SetDesiredCapacityError =
   | ResourceContentionFault
   | ScalingActivityInProgressFault
@@ -6754,6 +6838,7 @@ export const setDesiredCapacity: API.OperationMethod<
   retry: Retry,
   operationName: "SetDesiredCapacity",
 }));
+
 export type SetInstanceHealthError = ResourceContentionFault | CommonErrors;
 /**
  * Sets the health status of the specified instance.
@@ -6775,6 +6860,7 @@ export const setInstanceHealth: API.OperationMethod<
   retry: Retry,
   operationName: "SetInstanceHealth",
 }));
+
 export type SetInstanceProtectionError =
   | LimitExceededFault
   | ResourceContentionFault
@@ -6803,6 +6889,7 @@ export const setInstanceProtection: API.OperationMethod<
   retry: Retry,
   operationName: "SetInstanceProtection",
 }));
+
 export type StartInstanceRefreshError =
   | InstanceRefreshInProgressFault
   | LimitExceededFault
@@ -6854,6 +6941,7 @@ export const startInstanceRefresh: API.OperationMethod<
   retry: Retry,
   operationName: "StartInstanceRefresh",
 }));
+
 export type SuspendProcessesError =
   | ResourceContentionFault
   | ResourceInUseFault
@@ -6882,6 +6970,7 @@ export const suspendProcesses: API.OperationMethod<
   retry: Retry,
   operationName: "SuspendProcesses",
 }));
+
 export type TerminateInstanceInAutoScalingGroupError =
   | ResourceContentionFault
   | ScalingActivityInProgressFault
@@ -6917,6 +7006,7 @@ export const terminateInstanceInAutoScalingGroup: API.OperationMethod<
   retry: Retry,
   operationName: "TerminateInstanceInAutoScalingGroup",
 }));
+
 export type UpdateAutoScalingGroupError =
   | ResourceContentionFault
   | ScalingActivityInProgressFault

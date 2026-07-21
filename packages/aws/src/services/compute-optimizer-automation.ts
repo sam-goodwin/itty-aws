@@ -85,31 +85,70 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class IdempotencyTokenInUseException extends S.TaggedErrorClass<IdempotencyTokenInUseException>()(
+  "IdempotencyTokenInUseException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
+  "IdempotentParameterMismatchException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotManagementAccountException extends S.TaggedErrorClass<NotManagementAccountException>()(
+  "NotManagementAccountException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class OptInRequiredException extends S.TaggedErrorClass<OptInRequiredException>()(
+  "OptInRequiredException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type AccountId = string;
-export type ClientToken = string;
-export type RuleName = string;
-export type RuleDescription = string;
-export type StringCriteriaValue = string;
-export type TagKey = string;
-export type TagValue = string;
-export type RuleArn = string;
-export type RuleId = string;
-export type EventId = string;
-export type ResourceArn = string;
-export type ResourceId = string;
-export type RecommendedActionId = string;
-export type NextToken = string;
-export type AutomationEventFilterName = string;
-export type FilterValue = string;
-export type StepId = string;
-export type SummaryDimensionKey = string;
-export type AutomationRuleFilterName = string;
-export type RecommendedActionFilterName = string;
-
-//# Schemas
 export type AccountIdList = string[];
 export const AccountIdList = /*@__PURE__*/ S.Array(S.String);
+export type ClientToken = string;
 export interface AssociateAccountsRequest {
   accountIds: string[];
   clientToken?: string;
@@ -138,13 +177,17 @@ export const AssociateAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateAccountsResponse",
 }) as any as S.Schema<AssociateAccountsResponse>;
+export type RuleName = string;
+export type RuleDescription = string;
 export type RuleType = "OrganizationRule" | "AccountRule" | (string & {});
 export const RuleType = /*@__PURE__*/ S.String;
+
 export type RuleApplyOrder =
   | "BeforeAccountRules"
   | "AfterAccountRules"
   | (string & {});
 export const RuleApplyOrder = /*@__PURE__*/ S.String;
+
 export type OrganizationConfigurationAccountIds = string[];
 export const OrganizationConfigurationAccountIds = /*@__PURE__*/ S.Array(
   S.String,
@@ -166,6 +209,7 @@ export type RecommendedActionType =
   | "UpgradeEbsVolumeType"
   | (string & {});
 export const RecommendedActionType = /*@__PURE__*/ S.String;
+
 export type RecommendedActionTypeList = RecommendedActionType[];
 export const RecommendedActionTypeList = /*@__PURE__*/ S.Array(
   RecommendedActionType,
@@ -197,6 +241,8 @@ export type ComparisonOperator =
   | "NumericGreaterThanEqualsIfExists"
   | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
+export type StringCriteriaValue = string;
 export type StringCriteriaValues = string[];
 export const StringCriteriaValues = /*@__PURE__*/ S.Array(S.String);
 export interface StringCriteriaCondition {
@@ -305,6 +351,9 @@ export const Schedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Schedule" }) as any as S.Schema<Schedule>;
 export type RuleStatus = "Active" | "Inactive" | (string & {});
 export const RuleStatus = /*@__PURE__*/ S.String;
+
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
@@ -346,6 +395,8 @@ export const CreateAutomationRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAutomationRuleRequest",
 }) as any as S.Schema<CreateAutomationRuleRequest>;
+export type RuleArn = string;
+export type RuleId = string;
 export interface CreateAutomationRuleResponse {
   ruleArn?: string;
   ruleId?: string;
@@ -432,6 +483,7 @@ export const DisassociateAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisassociateAccountsResponse",
 }) as any as S.Schema<DisassociateAccountsResponse>;
+export type EventId = string;
 export interface GetAutomationEventRequest {
   eventId: string;
 }
@@ -447,6 +499,7 @@ export type EventType =
   | "UpgradeEbsVolumeType"
   | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
+
 export type EventStatus =
   | "Ready"
   | "InProgress"
@@ -459,13 +512,19 @@ export type EventStatus =
   | "RollbackFailed"
   | (string & {});
 export const EventStatus = /*@__PURE__*/ S.String;
+
+export type ResourceArn = string;
+export type ResourceId = string;
+export type RecommendedActionId = string;
 export type ResourceType = "EbsVolume" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export type SavingsEstimationMode =
   | "BeforeDiscount"
   | "AfterDiscount"
   | (string & {});
 export const SavingsEstimationMode = /*@__PURE__*/ S.String;
+
 export interface EstimatedMonthlySavings {
   currency: string;
   beforeDiscountSavings: number;
@@ -593,8 +652,10 @@ export type EnrollmentStatus =
   | "Failed"
   | (string & {});
 export const EnrollmentStatus = /*@__PURE__*/ S.String;
+
 export type OrganizationRuleMode = "AnyAllowed" | "NoneAllowed" | (string & {});
 export const OrganizationRuleMode = /*@__PURE__*/ S.String;
+
 export interface GetEnrollmentConfigurationResponse {
   status: EnrollmentStatus;
   statusReason?: string;
@@ -613,6 +674,7 @@ export const GetEnrollmentConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEnrollmentConfigurationResponse",
 }) as any as S.Schema<GetEnrollmentConfigurationResponse>;
+export type NextToken = string;
 export interface ListAccountsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -654,6 +716,8 @@ export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAccountsResponse",
 }) as any as S.Schema<ListAccountsResponse>;
+export type AutomationEventFilterName = string;
+export type FilterValue = string;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface AutomationEventFilter {
@@ -765,6 +829,7 @@ export const ListAutomationEventStepsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAutomationEventStepsRequest",
 }) as any as S.Schema<ListAutomationEventStepsRequest>;
+export type StepId = string;
 export type StepType =
   | "CreateEbsSnapshot"
   | "DeleteEbsVolume"
@@ -772,6 +837,7 @@ export type StepType =
   | "CreateEbsVolume"
   | (string & {});
 export const StepType = /*@__PURE__*/ S.String;
+
 export type StepStatus =
   | "Ready"
   | "InProgress"
@@ -779,6 +845,7 @@ export type StepStatus =
   | "Failed"
   | (string & {});
 export const StepStatus = /*@__PURE__*/ S.String;
+
 export interface AutomationEventStep {
   eventId?: string;
   stepId?: string;
@@ -839,6 +906,7 @@ export const ListAutomationEventSummariesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAutomationEventSummariesRequest",
 }) as any as S.Schema<ListAutomationEventSummariesRequest>;
+export type SummaryDimensionKey = string;
 export interface SummaryDimension {
   key: string;
   value: string;
@@ -1073,6 +1141,7 @@ export const ListAutomationRulePreviewSummariesResponse =
   ).annotate({
     identifier: "ListAutomationRulePreviewSummariesResponse",
   }) as any as S.Schema<ListAutomationRulePreviewSummariesResponse>;
+export type AutomationRuleFilterName = string;
 export interface Filter {
   name: string;
   values: string[];
@@ -1150,6 +1219,7 @@ export const ListAutomationRulesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAutomationRulesResponse",
 }) as any as S.Schema<ListAutomationRulesResponse>;
+export type RecommendedActionFilterName = string;
 export interface RecommendedActionFilter {
   name: string;
   values: string[];
@@ -1510,70 +1580,6 @@ export const UpdateEnrollmentConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateEnrollmentConfigurationResponse",
 }) as any as S.Schema<UpdateEnrollmentConfigurationResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class IdempotencyTokenInUseException extends S.TaggedErrorClass<IdempotencyTokenInUseException>()(
-  "IdempotencyTokenInUseException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class IdempotentParameterMismatchException extends S.TaggedErrorClass<IdempotentParameterMismatchException>()(
-  "IdempotentParameterMismatchException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NotManagementAccountException extends S.TaggedErrorClass<NotManagementAccountException>()(
-  "NotManagementAccountException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class OptInRequiredException extends S.TaggedErrorClass<OptInRequiredException>()(
-  "OptInRequiredException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
 export type AssociateAccountsError =
   | AccessDeniedException
   | ForbiddenException
@@ -1615,6 +1621,7 @@ export const associateAccounts: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateAccounts",
 }));
+
 export type CreateAutomationRuleError =
   | AccessDeniedException
   | ForbiddenException
@@ -1656,6 +1663,7 @@ export const createAutomationRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAutomationRule",
 }));
+
 export type DeleteAutomationRuleError =
   | AccessDeniedException
   | ForbiddenException
@@ -1695,6 +1703,7 @@ export const deleteAutomationRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAutomationRule",
 }));
+
 export type DisassociateAccountsError =
   | AccessDeniedException
   | ForbiddenException
@@ -1736,6 +1745,7 @@ export const disassociateAccounts: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateAccounts",
 }));
+
 export type GetAutomationEventError =
   | AccessDeniedException
   | ForbiddenException
@@ -1771,6 +1781,7 @@ export const getAutomationEvent: API.OperationMethod<
   retry: Retry,
   operationName: "GetAutomationEvent",
 }));
+
 export type GetAutomationRuleError =
   | AccessDeniedException
   | ForbiddenException
@@ -1806,6 +1817,7 @@ export const getAutomationRule: API.OperationMethod<
   retry: Retry,
   operationName: "GetAutomationRule",
 }));
+
 export type GetEnrollmentConfigurationError =
   | AccessDeniedException
   | ForbiddenException
@@ -1841,6 +1853,7 @@ export const getEnrollmentConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetEnrollmentConfiguration",
 }));
+
 export type ListAccountsError =
   | AccessDeniedException
   | ForbiddenException
@@ -1899,6 +1912,7 @@ export const listAccounts: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAutomationEventsError =
   | AccessDeniedException
   | ForbiddenException
@@ -1953,6 +1967,7 @@ export const listAutomationEvents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAutomationEventStepsError =
   | AccessDeniedException
   | ForbiddenException
@@ -2009,6 +2024,7 @@ export const listAutomationEventSteps: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAutomationEventSummariesError =
   | AccessDeniedException
   | ForbiddenException
@@ -2063,6 +2079,7 @@ export const listAutomationEventSummaries: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAutomationRulePreviewError =
   | AccessDeniedException
   | ForbiddenException
@@ -2117,6 +2134,7 @@ export const listAutomationRulePreview: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAutomationRulePreviewSummariesError =
   | AccessDeniedException
   | ForbiddenException
@@ -2171,6 +2189,7 @@ export const listAutomationRulePreviewSummaries: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAutomationRulesError =
   | AccessDeniedException
   | ForbiddenException
@@ -2225,6 +2244,7 @@ export const listAutomationRules: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListRecommendedActionsError =
   | AccessDeniedException
   | ForbiddenException
@@ -2281,6 +2301,7 @@ export const listRecommendedActions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListRecommendedActionSummariesError =
   | AccessDeniedException
   | ForbiddenException
@@ -2337,6 +2358,7 @@ export const listRecommendedActionSummaries: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | ForbiddenException
@@ -2372,6 +2394,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RollbackAutomationEventError =
   | AccessDeniedException
   | ForbiddenException
@@ -2413,6 +2436,7 @@ export const rollbackAutomationEvent: API.OperationMethod<
   retry: Retry,
   operationName: "RollbackAutomationEvent",
 }));
+
 export type StartAutomationEventError =
   | AccessDeniedException
   | ForbiddenException
@@ -2456,6 +2480,7 @@ export const startAutomationEvent: API.OperationMethod<
   retry: Retry,
   operationName: "StartAutomationEvent",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ForbiddenException
@@ -2495,6 +2520,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | ForbiddenException
@@ -2534,6 +2560,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAutomationRuleError =
   | AccessDeniedException
   | ForbiddenException
@@ -2573,6 +2600,7 @@ export const updateAutomationRule: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAutomationRule",
 }));
+
 export type UpdateEnrollmentConfigurationError =
   | AccessDeniedException
   | ForbiddenException

@@ -87,30 +87,50 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BadGatewayException extends S.TaggedErrorClass<BadGatewayException>()(
+  "BadGatewayException",
+  { message: S.String },
+  T.HttpError(502),
+).pipe(C.withServerError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class DependencyFailedException extends S.TaggedErrorClass<DependencyFailedException>()(
+  "DependencyFailedException",
+  { message: S.String },
+  T.HttpError(424),
+) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type BotIdentifier = string;
 export type BotAliasIdentifier = string;
 export type LocaleId = string;
 export type SessionId = string;
-export type NonEmptyString = string;
-export type Text = string | redacted.Redacted<string>;
-export type AttachmentTitle = string;
-export type AttachmentUrl = string;
-export type ButtonText = string;
-export type ButtonValue = string;
-export type ActiveContextName = string;
-export type ActiveContextTimeToLiveInSeconds = number;
-export type ActiveContextTurnsToLive = number;
-export type ParameterName = string;
-export type Name = string;
-export type RuntimeHintPhrase = string;
-export type SensitiveNonEmptyString = string | redacted.Redacted<string>;
-export type EventId = string;
-export type EpochMillis = number;
-export type AudioChunk = Uint8Array;
-export type DTMFRegex = string | redacted.Redacted<string>;
-
-//# Schemas
 export interface DeleteSessionRequest {
   botId: string;
   botAliasId: string;
@@ -183,6 +203,8 @@ export const GetSessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSessionRequest",
 }) as any as S.Schema<GetSessionRequest>;
+export type NonEmptyString = string;
+export type Text = string | redacted.Redacted<string>;
 export type MessageContentType =
   | "CustomPayload"
   | "ImageResponseCard"
@@ -190,6 +212,11 @@ export type MessageContentType =
   | "SSML"
   | (string & {});
 export const MessageContentType = /*@__PURE__*/ S.String;
+
+export type AttachmentTitle = string;
+export type AttachmentUrl = string;
+export type ButtonText = string;
+export type ButtonValue = string;
 export interface Button {
   text: string;
   value: string;
@@ -244,6 +271,7 @@ export type SentimentType =
   | "POSITIVE"
   | (string & {});
 export const SentimentType = /*@__PURE__*/ S.String;
+
 export interface SentimentScore {
   positive?: number;
   negative?: number;
@@ -286,6 +314,7 @@ export const Value = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 export type Shape = "Scalar" | "List" | "Composite" | (string & {});
 export const Shape = /*@__PURE__*/ S.String;
+
 export type Values = Slot[];
 export const Values = /*@__PURE__*/ S.Array(
   S.suspend((): S.Schema<Slot> => Slot).annotate({ identifier: "Slot" }),
@@ -324,8 +353,10 @@ export type IntentState =
   | "FulfillmentInProgress"
   | (string & {});
 export const IntentState = /*@__PURE__*/ S.String;
+
 export type ConfirmationState = "Confirmed" | "Denied" | "None" | (string & {});
 export const ConfirmationState = /*@__PURE__*/ S.String;
+
 export interface Intent {
   name: string;
   slots?: { [key: string]: Slot | undefined };
@@ -342,6 +373,7 @@ export const Intent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Intent" }) as any as S.Schema<Intent>;
 export type InterpretationSource = "Bedrock" | "Lex" | (string & {});
 export const InterpretationSource = /*@__PURE__*/ S.String;
+
 export interface Interpretation {
   nluConfidence?: ConfidenceScore;
   sentimentResponse?: SentimentResponse;
@@ -367,12 +399,14 @@ export type DialogActionType =
   | "None"
   | (string & {});
 export const DialogActionType = /*@__PURE__*/ S.String;
+
 export type StyleType =
   | "Default"
   | "SpellByLetter"
   | "SpellByWord"
   | (string & {});
 export const StyleType = /*@__PURE__*/ S.String;
+
 export interface ElicitSubSlot {
   name: string;
   subSlotToElicit?: ElicitSubSlot;
@@ -401,6 +435,9 @@ export const DialogAction = /*@__PURE__*/ S.suspend(() =>
     subSlotToElicit: S.optional(ElicitSubSlot),
   }),
 ).annotate({ identifier: "DialogAction" }) as any as S.Schema<DialogAction>;
+export type ActiveContextName = string;
+export type ActiveContextTimeToLiveInSeconds = number;
+export type ActiveContextTurnsToLive = number;
 export interface ActiveContextTimeToLive {
   timeToLiveInSeconds: number;
   turnsToLive: number;
@@ -410,6 +447,7 @@ export const ActiveContextTimeToLive = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActiveContextTimeToLive",
 }) as any as S.Schema<ActiveContextTimeToLive>;
+export type ParameterName = string;
 export type ActiveContextParametersMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -438,6 +476,8 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type Name = string;
+export type RuntimeHintPhrase = string;
 export interface RuntimeHintValue {
   phrase: string;
 }
@@ -651,6 +691,7 @@ export const RecognizeTextResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecognizeTextResponse",
 }) as any as S.Schema<RecognizeTextResponse>;
+export type SensitiveNonEmptyString = string | redacted.Redacted<string>;
 export interface RecognizeUtteranceRequest {
   botId: string;
   botAliasId: string;
@@ -735,6 +776,9 @@ export const RecognizeUtteranceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecognizeUtteranceResponse>;
 export type ConversationMode = "AUDIO" | "TEXT" | (string & {});
 export const ConversationMode = /*@__PURE__*/ S.String;
+
+export type EventId = string;
+export type EpochMillis = number;
 export interface ConfigurationEvent {
   requestAttributes?: { [key: string]: string | undefined };
   responseContentType: string;
@@ -757,6 +801,7 @@ export const ConfigurationEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfigurationEvent",
 }) as any as S.Schema<ConfigurationEvent>;
+export type AudioChunk = Uint8Array;
 export interface AudioInputEvent {
   audioChunk?: Uint8Array;
   contentType: string;
@@ -773,6 +818,7 @@ export const AudioInputEvent = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AudioInputEvent",
 }) as any as S.Schema<AudioInputEvent>;
+export type DTMFRegex = string | redacted.Redacted<string>;
 export interface DTMFInputEvent {
   inputCharacter: string | redacted.Redacted<string>;
   eventId?: string;
@@ -929,6 +975,7 @@ export type PlaybackInterruptionReason =
   | "VOICE_START_DETECTED"
   | (string & {});
 export const PlaybackInterruptionReason = /*@__PURE__*/ S.String;
+
 export interface PlaybackInterruptionEvent {
   eventReason?: PlaybackInterruptionReason;
   causedByEventId?: string;
@@ -954,6 +1001,7 @@ export const TranscriptEvent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TranscriptEvent>;
 export type InputMode = "Text" | "Speech" | "DTMF" | (string & {});
 export const InputMode = /*@__PURE__*/ S.String;
+
 export interface IntentResultEvent {
   inputMode?: InputMode;
   interpretations?: Interpretation[];
@@ -1298,50 +1346,6 @@ export const StartConversationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartConversationResponse",
 }) as any as S.Schema<StartConversationResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class BadGatewayException extends S.TaggedErrorClass<BadGatewayException>()(
-  "BadGatewayException",
-  { message: S.String },
-  T.HttpError(502),
-).pipe(C.withServerError) {}
-export class DependencyFailedException extends S.TaggedErrorClass<DependencyFailedException>()(
-  "DependencyFailedException",
-  { message: S.String },
-  T.HttpError(424),
-) {}
-
-//# Operations
 export type DeleteSessionError =
   | AccessDeniedException
   | ConflictException
@@ -1389,6 +1393,7 @@ export const deleteSession: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSession",
 }));
+
 export type GetSessionError =
   | AccessDeniedException
   | InternalServerException
@@ -1428,6 +1433,7 @@ export const getSession: API.OperationMethod<
   retry: Retry,
   operationName: "GetSession",
 }));
+
 export type PutSessionError =
   | AccessDeniedException
   | BadGatewayException
@@ -1465,6 +1471,7 @@ export const putSession: API.OperationMethod<
   retry: Retry,
   operationName: "PutSession",
 }));
+
 export type RecognizeTextError =
   | AccessDeniedException
   | BadGatewayException
@@ -1525,6 +1532,7 @@ export const recognizeText: API.OperationMethod<
   retry: Retry,
   operationName: "RecognizeText",
 }));
+
 export type RecognizeUtteranceError =
   | AccessDeniedException
   | BadGatewayException
@@ -1608,6 +1616,7 @@ export const recognizeUtterance: API.OperationMethod<
   retry: Retry,
   operationName: "RecognizeUtterance",
 }));
+
 export type StartConversationError =
   | AccessDeniedException
   | InternalServerException

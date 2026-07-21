@@ -82,27 +82,37 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type NsLcmOpOccId = string;
-export type TagKey = string;
-export type TagValue = string;
-export type VnfPkgId = string;
-export type VnfPkgArn = string;
-export type NsdInfoId = string;
-export type NsInstanceId = string;
-export type NsInstanceArn = string;
-export type NsdInfoArn = string;
-export type VnfInstanceId = string;
-export type VnfInstanceArn = string;
-export type VnfdId = string;
-export type NsdId = string;
-export type NsLcmOpOccArn = string;
-export type ErrorCause = string;
-export type ErrorDetails = string;
-export type PaginationToken = string;
-export type TNBResourceArn = string;
-
-//# Schemas
 export interface CancelSolNetworkOperationInput {
   nsLcmOpOccId: string;
 }
@@ -129,6 +139,8 @@ export const CancelSolNetworkOperationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelSolNetworkOperationResponse",
 }) as any as S.Schema<CancelSolNetworkOperationResponse>;
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -151,12 +163,17 @@ export const CreateSolFunctionPackageInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSolFunctionPackageInput",
 }) as any as S.Schema<CreateSolFunctionPackageInput>;
+export type VnfPkgId = string;
+export type VnfPkgArn = string;
 export type OnboardingState = "CREATED" | "ONBOARDED" | "ERROR" | (string & {});
 export const OnboardingState = /*@__PURE__*/ S.String;
+
 export type OperationalState = "ENABLED" | "DISABLED" | (string & {});
 export const OperationalState = /*@__PURE__*/ S.String;
+
 export type UsageState = "IN_USE" | "NOT_IN_USE" | (string & {});
 export const UsageState = /*@__PURE__*/ S.String;
+
 export interface CreateSolFunctionPackageOutput {
   id: string;
   arn: string;
@@ -177,6 +194,7 @@ export const CreateSolFunctionPackageOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSolFunctionPackageOutput",
 }) as any as S.Schema<CreateSolFunctionPackageOutput>;
+export type NsdInfoId = string;
 export interface CreateSolNetworkInstanceInput {
   nsdInfoId: string;
   nsName: string;
@@ -202,6 +220,8 @@ export const CreateSolNetworkInstanceInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSolNetworkInstanceInput",
 }) as any as S.Schema<CreateSolNetworkInstanceInput>;
+export type NsInstanceId = string;
+export type NsInstanceArn = string;
 export interface CreateSolNetworkInstanceOutput {
   id: string;
   arn: string;
@@ -237,16 +257,20 @@ export const CreateSolNetworkPackageInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSolNetworkPackageInput",
 }) as any as S.Schema<CreateSolNetworkPackageInput>;
+export type NsdInfoArn = string;
 export type NsdOnboardingState =
   | "CREATED"
   | "ONBOARDED"
   | "ERROR"
   | (string & {});
 export const NsdOnboardingState = /*@__PURE__*/ S.String;
+
 export type NsdOperationalState = "ENABLED" | "DISABLED" | (string & {});
 export const NsdOperationalState = /*@__PURE__*/ S.String;
+
 export type NsdUsageState = "IN_USE" | "NOT_IN_USE" | (string & {});
 export const NsdUsageState = /*@__PURE__*/ S.String;
+
 export interface CreateSolNetworkPackageOutput {
   id: string;
   arn: string;
@@ -345,6 +369,7 @@ export const DeleteSolNetworkPackageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSolNetworkPackageResponse",
 }) as any as S.Schema<DeleteSolNetworkPackageResponse>;
+export type VnfInstanceId = string;
 export interface GetSolFunctionInstanceInput {
   vnfInstanceId: string;
 }
@@ -365,13 +390,17 @@ export const GetSolFunctionInstanceInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSolFunctionInstanceInput",
 }) as any as S.Schema<GetSolFunctionInstanceInput>;
+export type VnfInstanceArn = string;
+export type VnfdId = string;
 export type VnfInstantiationState =
   | "INSTANTIATED"
   | "NOT_INSTANTIATED"
   | (string & {});
 export const VnfInstantiationState = /*@__PURE__*/ S.String;
+
 export type VnfOperationalState = "STARTED" | "STOPPED" | (string & {});
 export const VnfOperationalState = /*@__PURE__*/ S.String;
+
 export interface GetSolVnfcResourceInfoMetadata {
   nodeGroup?: string;
   cluster?: string;
@@ -532,6 +561,7 @@ export const GetSolFunctionPackageOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSolFunctionPackageOutput>;
 export type PackageContentType = "application/zip" | (string & {});
 export const PackageContentType = /*@__PURE__*/ S.String;
+
 export interface GetSolFunctionPackageContentInput {
   vnfPkgId: string;
   accept: PackageContentType;
@@ -572,6 +602,7 @@ export const GetSolFunctionPackageContentOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSolFunctionPackageContentOutput>;
 export type DescriptorContentType = "text/plain" | (string & {});
 export const DescriptorContentType = /*@__PURE__*/ S.String;
+
 export interface GetSolFunctionPackageDescriptorInput {
   vnfPkgId: string;
   accept: DescriptorContentType;
@@ -632,6 +663,7 @@ export const GetSolNetworkInstanceInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSolNetworkInstanceInput",
 }) as any as S.Schema<GetSolNetworkInstanceInput>;
+export type NsdId = string;
 export type NsState =
   | "INSTANTIATED"
   | "NOT_INSTANTIATED"
@@ -646,6 +678,7 @@ export type NsState =
   | "TERMINATE_IN_PROGRESS"
   | (string & {});
 export const NsState = /*@__PURE__*/ S.String;
+
 export interface LcmOperationInfo {
   nsLcmOpOccId: string;
 }
@@ -714,6 +747,7 @@ export const GetSolNetworkOperationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSolNetworkOperationInput",
 }) as any as S.Schema<GetSolNetworkOperationInput>;
+export type NsLcmOpOccArn = string;
 export type NsLcmOperationState =
   | "PROCESSING"
   | "COMPLETED"
@@ -722,17 +756,20 @@ export type NsLcmOperationState =
   | "CANCELLED"
   | (string & {});
 export const NsLcmOperationState = /*@__PURE__*/ S.String;
+
 export type LcmOperationType =
   | "INSTANTIATE"
   | "UPDATE"
   | "TERMINATE"
   | (string & {});
 export const LcmOperationType = /*@__PURE__*/ S.String;
+
 export type UpdateSolNetworkType =
   | "MODIFY_VNF_INFORMATION"
   | "UPDATE_NS"
   | (string & {});
 export const UpdateSolNetworkType = /*@__PURE__*/ S.String;
+
 export interface ProblemDetails {
   detail: string;
   title?: string;
@@ -790,6 +827,8 @@ export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ErrorCause = string;
+export type ErrorDetails = string;
 export interface ErrorInfo {
   cause?: string;
   details?: string;
@@ -807,6 +846,7 @@ export type TaskStatus =
   | "CANCELLED"
   | (string & {});
 export const TaskStatus = /*@__PURE__*/ S.String;
+
 export interface GetSolNetworkOperationTaskDetails {
   taskName?: string;
   taskContext?: { [key: string]: string | undefined };
@@ -1045,6 +1085,7 @@ export const InstantiateSolNetworkInstanceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstantiateSolNetworkInstanceOutput",
 }) as any as S.Schema<InstantiateSolNetworkInstanceOutput>;
+export type PaginationToken = string;
 export interface ListSolFunctionInstancesInput {
   maxResults?: number;
   nextToken?: string;
@@ -1436,6 +1477,7 @@ export const ListSolNetworkPackagesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSolNetworkPackagesOutput",
 }) as any as S.Schema<ListSolNetworkPackagesOutput>;
+export type TNBResourceArn = string;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
@@ -1904,40 +1946,6 @@ export const ValidateSolNetworkPackageContentOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ValidateSolNetworkPackageContentOutput",
 }) as any as S.Schema<ValidateSolNetworkPackageContentOutput>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
 export type CancelSolNetworkOperationError =
   | AccessDeniedException
   | InternalServerException
@@ -1969,6 +1977,7 @@ export const cancelSolNetworkOperation: API.OperationMethod<
   retry: Retry,
   operationName: "CancelSolNetworkOperation",
 }));
+
 export type CreateSolFunctionPackageError =
   | AccessDeniedException
   | InternalServerException
@@ -2005,6 +2014,7 @@ export const createSolFunctionPackage: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSolFunctionPackage",
 }));
+
 export type CreateSolNetworkInstanceError =
   | AccessDeniedException
   | InternalServerException
@@ -2043,6 +2053,7 @@ export const createSolNetworkInstance: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSolNetworkInstance",
 }));
+
 export type CreateSolNetworkPackageError =
   | AccessDeniedException
   | InternalServerException
@@ -2083,6 +2094,7 @@ export const createSolNetworkPackage: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSolNetworkPackage",
 }));
+
 export type DeleteSolFunctionPackageError =
   | AccessDeniedException
   | InternalServerException
@@ -2117,6 +2129,7 @@ export const deleteSolFunctionPackage: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSolFunctionPackage",
 }));
+
 export type DeleteSolNetworkInstanceError =
   | AccessDeniedException
   | InternalServerException
@@ -2151,6 +2164,7 @@ export const deleteSolNetworkInstance: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSolNetworkInstance",
 }));
+
 export type DeleteSolNetworkPackageError =
   | AccessDeniedException
   | InternalServerException
@@ -2185,6 +2199,7 @@ export const deleteSolNetworkPackage: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSolNetworkPackage",
 }));
+
 export type GetSolFunctionInstanceError =
   | AccessDeniedException
   | InternalServerException
@@ -2217,6 +2232,7 @@ export const getSolFunctionInstance: API.OperationMethod<
   retry: Retry,
   operationName: "GetSolFunctionInstance",
 }));
+
 export type GetSolFunctionPackageError =
   | AccessDeniedException
   | InternalServerException
@@ -2249,6 +2265,7 @@ export const getSolFunctionPackage: API.OperationMethod<
   retry: Retry,
   operationName: "GetSolFunctionPackage",
 }));
+
 export type GetSolFunctionPackageContentError =
   | AccessDeniedException
   | InternalServerException
@@ -2280,6 +2297,7 @@ export const getSolFunctionPackageContent: API.OperationMethod<
   retry: Retry,
   operationName: "GetSolFunctionPackageContent",
 }));
+
 export type GetSolFunctionPackageDescriptorError =
   | AccessDeniedException
   | InternalServerException
@@ -2313,6 +2331,7 @@ export const getSolFunctionPackageDescriptor: API.OperationMethod<
   retry: Retry,
   operationName: "GetSolFunctionPackageDescriptor",
 }));
+
 export type GetSolNetworkInstanceError =
   | AccessDeniedException
   | InternalServerException
@@ -2344,6 +2363,7 @@ export const getSolNetworkInstance: API.OperationMethod<
   retry: Retry,
   operationName: "GetSolNetworkInstance",
 }));
+
 export type GetSolNetworkOperationError =
   | AccessDeniedException
   | InternalServerException
@@ -2376,6 +2396,7 @@ export const getSolNetworkOperation: API.OperationMethod<
   retry: Retry,
   operationName: "GetSolNetworkOperation",
 }));
+
 export type GetSolNetworkPackageError =
   | AccessDeniedException
   | InternalServerException
@@ -2407,6 +2428,7 @@ export const getSolNetworkPackage: API.OperationMethod<
   retry: Retry,
   operationName: "GetSolNetworkPackage",
 }));
+
 export type GetSolNetworkPackageContentError =
   | AccessDeniedException
   | InternalServerException
@@ -2438,6 +2460,7 @@ export const getSolNetworkPackageContent: API.OperationMethod<
   retry: Retry,
   operationName: "GetSolNetworkPackageContent",
 }));
+
 export type GetSolNetworkPackageDescriptorError =
   | AccessDeniedException
   | InternalServerException
@@ -2469,6 +2492,7 @@ export const getSolNetworkPackageDescriptor: API.OperationMethod<
   retry: Retry,
   operationName: "GetSolNetworkPackageDescriptor",
 }));
+
 export type InstantiateSolNetworkInstanceError =
   | AccessDeniedException
   | InternalServerException
@@ -2505,6 +2529,7 @@ export const instantiateSolNetworkInstance: API.OperationMethod<
   retry: Retry,
   operationName: "InstantiateSolNetworkInstance",
 }));
+
 export type ListSolFunctionInstancesError =
   | AccessDeniedException
   | InternalServerException
@@ -2555,6 +2580,7 @@ export const listSolFunctionInstances: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSolFunctionPackagesError =
   | AccessDeniedException
   | InternalServerException
@@ -2605,6 +2631,7 @@ export const listSolFunctionPackages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSolNetworkInstancesError =
   | AccessDeniedException
   | InternalServerException
@@ -2655,6 +2682,7 @@ export const listSolNetworkInstances: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSolNetworkOperationsError =
   | AccessDeniedException
   | InternalServerException
@@ -2706,6 +2734,7 @@ export const listSolNetworkOperations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSolNetworkPackagesError =
   | AccessDeniedException
   | InternalServerException
@@ -2756,6 +2785,7 @@ export const listSolNetworkPackages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2785,6 +2815,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutSolFunctionPackageContentError =
   | AccessDeniedException
   | InternalServerException
@@ -2816,6 +2847,7 @@ export const putSolFunctionPackageContent: API.OperationMethod<
   retry: Retry,
   operationName: "PutSolFunctionPackageContent",
 }));
+
 export type PutSolNetworkPackageContentError =
   | AccessDeniedException
   | InternalServerException
@@ -2847,6 +2879,7 @@ export const putSolNetworkPackageContent: API.OperationMethod<
   retry: Retry,
   operationName: "PutSolNetworkPackageContent",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2878,6 +2911,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TerminateSolNetworkInstanceError =
   | AccessDeniedException
   | InternalServerException
@@ -2913,6 +2947,7 @@ export const terminateSolNetworkInstance: API.OperationMethod<
   retry: Retry,
   operationName: "TerminateSolNetworkInstance",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -2944,6 +2979,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateSolFunctionPackageError =
   | AccessDeniedException
   | InternalServerException
@@ -2975,6 +3011,7 @@ export const updateSolFunctionPackage: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSolFunctionPackage",
 }));
+
 export type UpdateSolNetworkInstanceError =
   | AccessDeniedException
   | InternalServerException
@@ -3010,6 +3047,7 @@ export const updateSolNetworkInstance: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSolNetworkInstance",
 }));
+
 export type UpdateSolNetworkPackageError =
   | AccessDeniedException
   | InternalServerException
@@ -3043,6 +3081,7 @@ export const updateSolNetworkPackage: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSolNetworkPackage",
 }));
+
 export type ValidateSolFunctionPackageContentError =
   | AccessDeniedException
   | InternalServerException
@@ -3075,6 +3114,7 @@ export const validateSolFunctionPackageContent: API.OperationMethod<
   retry: Retry,
   operationName: "ValidateSolFunctionPackageContent",
 }));
+
 export type ValidateSolNetworkPackageContentError =
   | AccessDeniedException
   | InternalServerException

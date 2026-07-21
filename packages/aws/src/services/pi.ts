@@ -87,26 +87,25 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
+  "InternalServiceError",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
+  "InvalidArgumentException",
+  { Message: S.optional(S.String) },
+) {}
+export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
+  "NotAuthorizedException",
+  { Message: S.optional(S.String) },
+) {}
+export type ServiceType = "RDS" | "DOCDB" | (string & {});
+export const ServiceType = /*@__PURE__*/ S.String;
+
 export type IdentifierString = string;
 export type ISOTimestamp = Date;
 export type TagKey = string;
 export type TagValue = string;
-export type AnalysisReportId = string;
-export type ErrorString = string;
-export type RequestString = string;
-export type SanitizedString = string;
-export type Limit = number;
-export type MaxResults = number;
-export type NextToken = string;
-export type MarkdownString = string | redacted.Redacted<string>;
-export type DescriptiveString = string;
-export type Description = string;
-export type AmazonResourceName = string;
-
-//# Schemas
-export type ServiceType = "RDS" | "DOCDB" | (string & {});
-export const ServiceType = /*@__PURE__*/ S.String;
 export interface Tag {
   Key: string;
   Value: string;
@@ -145,6 +144,7 @@ export const CreatePerformanceAnalysisReportRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreatePerformanceAnalysisReportRequest",
 }) as any as S.Schema<CreatePerformanceAnalysisReportRequest>;
+export type AnalysisReportId = string;
 export interface CreatePerformanceAnalysisReportResponse {
   AnalysisReportId?: string;
 }
@@ -184,8 +184,11 @@ export const DeletePerformanceAnalysisReportResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DeletePerformanceAnalysisReportResponse",
 }) as any as S.Schema<DeletePerformanceAnalysisReportResponse>;
+export type RequestString = string;
+export type SanitizedString = string;
 export type SanitizedStringList = string[];
 export const SanitizedStringList = /*@__PURE__*/ S.Array(S.String);
+export type Limit = number;
 export interface DimensionGroup {
   Group: string;
   Dimensions?: string[];
@@ -205,6 +208,8 @@ export const MetricQueryFilterMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type MaxResults = number;
+export type NextToken = string;
 export interface DescribeDimensionKeysRequest {
   ServiceType: ServiceType;
   Identifier: string;
@@ -346,6 +351,7 @@ export type DetailStatus =
   | "UNAVAILABLE"
   | (string & {});
 export const DetailStatus = /*@__PURE__*/ S.String;
+
 export interface DimensionKeyDetail {
   Value?: string;
   Dimension?: string;
@@ -372,8 +378,10 @@ export const GetDimensionKeyDetailsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDimensionKeyDetailsResponse>;
 export type TextFormat = "PLAIN_TEXT" | "MARKDOWN" | (string & {});
 export const TextFormat = /*@__PURE__*/ S.String;
+
 export type AcceptLanguage = "EN_US" | (string & {});
 export const AcceptLanguage = /*@__PURE__*/ S.String;
+
 export interface GetPerformanceAnalysisReportRequest {
   ServiceType: ServiceType;
   Identifier: string;
@@ -404,10 +412,14 @@ export const GetPerformanceAnalysisReportRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetPerformanceAnalysisReportRequest>;
 export type AnalysisStatus = "RUNNING" | "SUCCEEDED" | "FAILED" | (string & {});
 export const AnalysisStatus = /*@__PURE__*/ S.String;
+
 export type ContextType = "CAUSAL" | "CONTEXTUAL" | (string & {});
 export const ContextType = /*@__PURE__*/ S.String;
+
 export type Severity = "LOW" | "MEDIUM" | "HIGH" | (string & {});
 export const Severity = /*@__PURE__*/ S.String;
+
+export type MarkdownString = string | redacted.Redacted<string>;
 export interface Recommendation {
   RecommendationId?: string;
   RecommendationDescription?: string | redacted.Redacted<string>;
@@ -422,6 +434,7 @@ export const Recommendation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Recommendation" }) as any as S.Schema<Recommendation>;
 export type RecommendationList = Recommendation[];
 export const RecommendationList = /*@__PURE__*/ S.Array(Recommendation);
+export type DescriptiveString = string;
 export type DescriptiveMap = { [key: string]: string | undefined };
 export const DescriptiveMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -549,6 +562,7 @@ export type FeatureStatus =
   | "UNKNOWN"
   | (string & {});
 export const FeatureStatus = /*@__PURE__*/ S.String;
+
 export interface FeatureMetadata {
   Status?: FeatureStatus;
 }
@@ -590,6 +604,7 @@ export type MetricQueryList = MetricQuery[];
 export const MetricQueryList = /*@__PURE__*/ S.Array(MetricQuery);
 export type PeriodAlignment = "END_TIME" | "START_TIME" | (string & {});
 export const PeriodAlignment = /*@__PURE__*/ S.String;
+
 export interface GetResourceMetricsRequest {
   ServiceType: ServiceType;
   Identifier: string;
@@ -690,6 +705,7 @@ export type FineGrainedAction =
   | "GetResourceMetrics"
   | (string & {});
 export const FineGrainedAction = /*@__PURE__*/ S.String;
+
 export type AuthorizedActionsList = FineGrainedAction[];
 export const AuthorizedActionsList = /*@__PURE__*/ S.Array(FineGrainedAction);
 export interface ListAvailableResourceDimensionsRequest {
@@ -807,6 +823,7 @@ export const ListAvailableResourceMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAvailableResourceMetricsRequest",
 }) as any as S.Schema<ListAvailableResourceMetricsRequest>;
+export type Description = string;
 export interface ResponseResourceMetric {
   Metric?: string;
   Description?: string;
@@ -950,6 +967,7 @@ export const ListPerformanceAnalysisReportsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListPerformanceAnalysisReportsResponse",
 }) as any as S.Schema<ListPerformanceAnalysisReportsResponse>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ServiceType: ServiceType;
   ResourceARN: string;
@@ -1039,22 +1057,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-
-//# Errors
-export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
-  "InternalServiceError",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
-  "InvalidArgumentException",
-  { Message: S.optional(S.String) },
-) {}
-export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
-  "NotAuthorizedException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ErrorString = string;
 export type CreatePerformanceAnalysisReportError =
   | InternalServiceError
   | InvalidArgumentException
@@ -1081,6 +1084,7 @@ export const createPerformanceAnalysisReport: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePerformanceAnalysisReport",
 }));
+
 export type DeletePerformanceAnalysisReportError =
   | InternalServiceError
   | InvalidArgumentException
@@ -1106,6 +1110,7 @@ export const deletePerformanceAnalysisReport: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePerformanceAnalysisReport",
 }));
+
 export type DescribeDimensionKeysError =
   | InternalServiceError
   | InvalidArgumentException
@@ -1154,6 +1159,7 @@ export const describeDimensionKeys: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetDimensionKeyDetailsError =
   | InternalServiceError
   | InvalidArgumentException
@@ -1182,6 +1188,7 @@ export const getDimensionKeyDetails: API.OperationMethod<
   retry: Retry,
   operationName: "GetDimensionKeyDetails",
 }));
+
 export type GetPerformanceAnalysisReportError =
   | InternalServiceError
   | InvalidArgumentException
@@ -1210,6 +1217,7 @@ export const getPerformanceAnalysisReport: API.OperationMethod<
   retry: Retry,
   operationName: "GetPerformanceAnalysisReport",
 }));
+
 export type GetResourceMetadataError =
   | InternalServiceError
   | InvalidArgumentException
@@ -1236,6 +1244,7 @@ export const getResourceMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourceMetadata",
 }));
+
 export type GetResourceMetricsError =
   | InternalServiceError
   | InvalidArgumentException
@@ -1286,6 +1295,7 @@ export const getResourceMetrics: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAvailableResourceDimensionsError =
   | InternalServiceError
   | InvalidArgumentException
@@ -1331,6 +1341,7 @@ export const listAvailableResourceDimensions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAvailableResourceMetricsError =
   | InternalServiceError
   | InvalidArgumentException
@@ -1376,6 +1387,7 @@ export const listAvailableResourceMetrics: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPerformanceAnalysisReportRecommendationsError =
   | InternalServiceError
   | InvalidArgumentException
@@ -1422,6 +1434,7 @@ export const listPerformanceAnalysisReportRecommendations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPerformanceAnalysisReportsError =
   | InternalServiceError
   | InvalidArgumentException
@@ -1467,6 +1480,7 @@ export const listPerformanceAnalysisReports: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServiceError
   | InvalidArgumentException
@@ -1492,6 +1506,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError =
   | InternalServiceError
   | InvalidArgumentException
@@ -1517,6 +1532,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServiceError
   | InvalidArgumentException

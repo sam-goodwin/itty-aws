@@ -87,20 +87,54 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    message: S.String,
+    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
+  },
+  T.all(T.HttpError(429), T.Retryable()),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.String,
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type InputString = string;
 export type OptInType = string;
-export type ValidationExceptionReason = string;
-export type TagKey = string;
-export type TagValue = string;
-export type Status = string;
-export type SnapshotType = string;
-export type Auth = string;
-export type Password = string | redacted.Redacted<string>;
-export type PaginationToken = string;
-export type Arn = string;
-
-//# Schemas
 export interface ApplyPendingMaintenanceActionInput {
   resourceArn: string;
   applyAction: string;
@@ -175,19 +209,8 @@ export const ApplyPendingMaintenanceActionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplyPendingMaintenanceActionOutput",
 }) as any as S.Schema<ApplyPendingMaintenanceActionOutput>;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -222,6 +245,8 @@ export const CopyClusterSnapshotInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CopyClusterSnapshotInput>;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
+export type Status = string;
+export type SnapshotType = string;
 export interface ClusterSnapshot {
   subnetIds: string[];
   snapshotName: string;
@@ -260,6 +285,8 @@ export const CopyClusterSnapshotOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyClusterSnapshotOutput",
 }) as any as S.Schema<CopyClusterSnapshotOutput>;
+export type Auth = string;
+export type Password = string | redacted.Redacted<string>;
 export interface CreateClusterInput {
   clusterName: string;
   authType: string;
@@ -523,6 +550,7 @@ export const GetPendingMaintenanceActionOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPendingMaintenanceActionOutput",
 }) as any as S.Schema<GetPendingMaintenanceActionOutput>;
+export type PaginationToken = string;
 export interface ListClustersInput {
   nextToken?: string;
   maxResults?: number;
@@ -661,6 +689,7 @@ export const ListPendingMaintenanceActionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPendingMaintenanceActionsOutput",
 }) as any as S.Schema<ListPendingMaintenanceActionsOutput>;
+export type Arn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -885,52 +914,20 @@ export const UpdateClusterOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateClusterOutput",
 }) as any as S.Schema<UpdateClusterOutput>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    message: S.String,
-    retryAfterSeconds: S.optional(S.Number).pipe(T.HttpHeader("Retry-After")),
-  },
-  T.all(T.HttpError(429), T.Retryable()),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: S.String,
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
+export type ValidationExceptionReason = string;
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type ApplyPendingMaintenanceActionError =
   | AccessDeniedException
   | ConflictException
@@ -962,6 +959,7 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
   retry: Retry,
   operationName: "ApplyPendingMaintenanceAction",
 }));
+
 export type CopyClusterSnapshotError =
   | AccessDeniedException
   | ConflictException
@@ -995,6 +993,7 @@ export const copyClusterSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CopyClusterSnapshot",
 }));
+
 export type CreateClusterError =
   | AccessDeniedException
   | ConflictException
@@ -1026,6 +1025,7 @@ export const createCluster: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCluster",
 }));
+
 export type CreateClusterSnapshotError =
   | AccessDeniedException
   | ConflictException
@@ -1059,6 +1059,7 @@ export const createClusterSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "CreateClusterSnapshot",
 }));
+
 export type DeleteClusterError =
   | AccessDeniedException
   | ConflictException
@@ -1090,6 +1091,7 @@ export const deleteCluster: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCluster",
 }));
+
 export type DeleteClusterSnapshotError =
   | AccessDeniedException
   | ConflictException
@@ -1121,6 +1123,7 @@ export const deleteClusterSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteClusterSnapshot",
 }));
+
 export type GetClusterError =
   | AccessDeniedException
   | InternalServerException
@@ -1150,6 +1153,7 @@ export const getCluster: API.OperationMethod<
   retry: Retry,
   operationName: "GetCluster",
 }));
+
 export type GetClusterSnapshotError =
   | AccessDeniedException
   | InternalServerException
@@ -1179,6 +1183,7 @@ export const getClusterSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "GetClusterSnapshot",
 }));
+
 export type GetPendingMaintenanceActionError =
   | AccessDeniedException
   | ConflictException
@@ -1210,6 +1215,7 @@ export const getPendingMaintenanceAction: API.OperationMethod<
   retry: Retry,
   operationName: "GetPendingMaintenanceAction",
 }));
+
 export type ListClustersError =
   | AccessDeniedException
   | InternalServerException
@@ -1258,6 +1264,7 @@ export const listClusters: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListClusterSnapshotsError =
   | AccessDeniedException
   | InternalServerException
@@ -1306,6 +1313,7 @@ export const listClusterSnapshots: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPendingMaintenanceActionsError =
   | AccessDeniedException
   | InternalServerException
@@ -1354,6 +1362,7 @@ export const listPendingMaintenanceActions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1381,6 +1390,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RestoreClusterFromSnapshotError =
   | AccessDeniedException
   | ConflictException
@@ -1414,6 +1424,7 @@ export const restoreClusterFromSnapshot: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreClusterFromSnapshot",
 }));
+
 export type StartClusterError =
   | AccessDeniedException
   | InternalServerException
@@ -1443,6 +1454,7 @@ export const startCluster: API.OperationMethod<
   retry: Retry,
   operationName: "StartCluster",
 }));
+
 export type StopClusterError =
   | AccessDeniedException
   | InternalServerException
@@ -1473,6 +1485,7 @@ export const stopCluster: API.OperationMethod<
   retry: Retry,
   operationName: "StopCluster",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1500,6 +1513,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -1527,6 +1541,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateClusterError =
   | AccessDeniedException
   | ConflictException

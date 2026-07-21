@@ -93,128 +93,508 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AllocationIdNotFoundException extends S.TaggedErrorClass<AllocationIdNotFoundException>()(
+  "AllocationIdNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AllocationIdNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ALPNPolicyNotSupportedException extends S.TaggedErrorClass<ALPNPolicyNotSupportedException>()(
+  "ALPNPolicyNotSupportedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ALPNPolicyNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class AvailabilityZoneNotSupportedException extends S.TaggedErrorClass<AvailabilityZoneNotSupportedException>()(
+  "AvailabilityZoneNotSupportedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "AvailabilityZoneNotSupported",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CaCertificatesBundleNotFoundException extends S.TaggedErrorClass<CaCertificatesBundleNotFoundException>()(
+  "CaCertificatesBundleNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CaCertificatesBundleNotFound",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CapacityDecreaseRequestsLimitExceededException extends S.TaggedErrorClass<CapacityDecreaseRequestsLimitExceededException>()(
+  "CapacityDecreaseRequestsLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CapacityDecreaseRequestLimitExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CapacityReservationPendingException extends S.TaggedErrorClass<CapacityReservationPendingException>()(
+  "CapacityReservationPendingException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CapacityReservationPending",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CapacityUnitsLimitExceededException extends S.TaggedErrorClass<CapacityUnitsLimitExceededException>()(
+  "CapacityUnitsLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "CapacityUnitsLimitExceeded",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class CertificateNotFoundException extends S.TaggedErrorClass<CertificateNotFoundException>()(
+  "CertificateNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "CertificateNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DeleteAssociationSameAccountException extends S.TaggedErrorClass<DeleteAssociationSameAccountException>()(
+  "DeleteAssociationSameAccountException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DeleteAssociationSameAccount",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DuplicateListenerException extends S.TaggedErrorClass<DuplicateListenerException>()(
+  "DuplicateListenerException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "DuplicateListener", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DuplicateLoadBalancerNameException extends S.TaggedErrorClass<DuplicateLoadBalancerNameException>()(
+  "DuplicateLoadBalancerNameException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DuplicateLoadBalancerName",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DuplicateTagKeysException extends S.TaggedErrorClass<DuplicateTagKeysException>()(
+  "DuplicateTagKeysException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "DuplicateTagKeys", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DuplicateTargetGroupNameException extends S.TaggedErrorClass<DuplicateTargetGroupNameException>()(
+  "DuplicateTargetGroupNameException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "DuplicateTargetGroupName",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class DuplicateTrustStoreNameException extends S.TaggedErrorClass<DuplicateTrustStoreNameException>()(
+  "DuplicateTrustStoreNameException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "DuplicateTrustStoreName", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class HealthUnavailableException extends S.TaggedErrorClass<HealthUnavailableException>()(
+  "HealthUnavailableException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "HealthUnavailable", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class IncompatibleProtocolsException extends S.TaggedErrorClass<IncompatibleProtocolsException>()(
+  "IncompatibleProtocolsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "IncompatibleProtocols", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InsufficientCapacityException extends S.TaggedErrorClass<InsufficientCapacityException>()(
+  "InsufficientCapacityException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InsufficientCapacity", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class InvalidCaCertificatesBundleException extends S.TaggedErrorClass<InvalidCaCertificatesBundleException>()(
+  "InvalidCaCertificatesBundleException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidCaCertificatesBundle",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidConfigurationRequestException extends S.TaggedErrorClass<InvalidConfigurationRequestException>()(
+  "InvalidConfigurationRequestException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidConfigurationRequest",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidLoadBalancerActionException extends S.TaggedErrorClass<InvalidLoadBalancerActionException>()(
+  "InvalidLoadBalancerActionException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidLoadBalancerAction",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidRevocationContentException extends S.TaggedErrorClass<InvalidRevocationContentException>()(
+  "InvalidRevocationContentException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidRevocationContent",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSchemeException extends S.TaggedErrorClass<InvalidSchemeException>()(
+  "InvalidSchemeException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidScheme", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSecurityGroupException extends S.TaggedErrorClass<InvalidSecurityGroupException>()(
+  "InvalidSecurityGroupException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidSecurityGroup", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSubnetException extends S.TaggedErrorClass<InvalidSubnetException>()(
+  "InvalidSubnetException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidTargetException extends S.TaggedErrorClass<InvalidTargetException>()(
+  "InvalidTargetException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidTarget", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ListenerNotFoundException extends S.TaggedErrorClass<ListenerNotFoundException>()(
+  "ListenerNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ListenerNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class LoadBalancerNotFoundException extends S.TaggedErrorClass<LoadBalancerNotFoundException>()(
+  "LoadBalancerNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "LoadBalancerNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class OperationNotPermittedException extends S.TaggedErrorClass<OperationNotPermittedException>()(
+  "OperationNotPermittedException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "OperationNotPermitted", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class PriorityInUseException extends S.TaggedErrorClass<PriorityInUseException>()(
+  "PriorityInUseException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "PriorityInUse", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class PriorRequestNotCompleteException extends S.TaggedErrorClass<PriorRequestNotCompleteException>()(
+  "PriorRequestNotCompleteException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "PriorRequestNotComplete", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceInUse", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class RevocationContentNotFoundException extends S.TaggedErrorClass<RevocationContentNotFoundException>()(
+  "RevocationContentNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "RevocationContentNotFound",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class RevocationIdNotFoundException extends S.TaggedErrorClass<RevocationIdNotFoundException>()(
+  "RevocationIdNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "RevocationIdNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class RuleNotFoundException extends S.TaggedErrorClass<RuleNotFoundException>()(
+  "RuleNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "RuleNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SSLPolicyNotFoundException extends S.TaggedErrorClass<SSLPolicyNotFoundException>()(
+  "SSLPolicyNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SSLPolicyNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubnetNotFoundException extends S.TaggedErrorClass<SubnetNotFoundException>()(
+  "SubnetNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "SubnetNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TargetGroupAssociationLimitException extends S.TaggedErrorClass<TargetGroupAssociationLimitException>()(
+  "TargetGroupAssociationLimitException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TargetGroupAssociationLimit",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TargetGroupNotFoundException extends S.TaggedErrorClass<TargetGroupNotFoundException>()(
+  "TargetGroupNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TargetGroupNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyActionsException extends S.TaggedErrorClass<TooManyActionsException>()(
+  "TooManyActionsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TooManyActions", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyCertificatesException extends S.TaggedErrorClass<TooManyCertificatesException>()(
+  "TooManyCertificatesException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TooManyCertificates", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyListenersException extends S.TaggedErrorClass<TooManyListenersException>()(
+  "TooManyListenersException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TooManyListeners", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyLoadBalancersException extends S.TaggedErrorClass<TooManyLoadBalancersException>()(
+  "TooManyLoadBalancersException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TooManyLoadBalancers", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyRegistrationsForTargetIdException extends S.TaggedErrorClass<TooManyRegistrationsForTargetIdException>()(
+  "TooManyRegistrationsForTargetIdException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TooManyRegistrationsForTargetId",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyRulesException extends S.TaggedErrorClass<TooManyRulesException>()(
+  "TooManyRulesException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TooManyRules", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TooManyTags", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyTargetGroupsException extends S.TaggedErrorClass<TooManyTargetGroupsException>()(
+  "TooManyTargetGroupsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TooManyTargetGroups", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyTargetsException extends S.TaggedErrorClass<TooManyTargetsException>()(
+  "TooManyTargetsException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TooManyTargets", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyTrustStoreRevocationEntriesException extends S.TaggedErrorClass<TooManyTrustStoreRevocationEntriesException>()(
+  "TooManyTrustStoreRevocationEntriesException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TooManyTrustStoreRevocationEntries",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyTrustStoresException extends S.TaggedErrorClass<TooManyTrustStoresException>()(
+  "TooManyTrustStoresException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TooManyTrustStores", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TooManyUniqueTargetGroupsPerLoadBalancerException extends S.TaggedErrorClass<TooManyUniqueTargetGroupsPerLoadBalancerException>()(
+  "TooManyUniqueTargetGroupsPerLoadBalancerException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TooManyUniqueTargetGroupsPerLoadBalancer",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TrustStoreAssociationNotFoundException extends S.TaggedErrorClass<TrustStoreAssociationNotFoundException>()(
+  "TrustStoreAssociationNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AssociationNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TrustStoreInUseException extends S.TaggedErrorClass<TrustStoreInUseException>()(
+  "TrustStoreInUseException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TrustStoreInUse", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TrustStoreNotFoundException extends S.TaggedErrorClass<TrustStoreNotFoundException>()(
+  "TrustStoreNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TrustStoreNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TrustStoreNotReadyException extends S.TaggedErrorClass<TrustStoreNotReadyException>()(
+  "TrustStoreNotReadyException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TrustStoreNotReady", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedProtocolException extends S.TaggedErrorClass<UnsupportedProtocolException>()(
+  "UnsupportedProtocolException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "UnsupportedProtocol", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type ListenerArn = string;
 export type CertificateArn = string;
 export type Default = boolean;
-export type ErrorDescription = string;
-export type ResourceArn = string;
-export type TagKey = string;
-export type TagValue = string;
-export type TrustStoreArn = string;
-export type S3Bucket = string;
-export type S3Key = string;
-export type S3ObjectVersion = string;
-export type RevocationId = number;
-export type NumberOfRevokedEntries = number;
-export type LoadBalancerArn = string;
-export type Port = number;
-export type SslPolicyName = string;
-export type TargetGroupArn = string;
-export type AuthenticateOidcActionIssuer = string;
-export type AuthenticateOidcActionAuthorizationEndpoint = string;
-export type AuthenticateOidcActionTokenEndpoint = string;
-export type AuthenticateOidcActionUserInfoEndpoint = string;
-export type AuthenticateOidcActionClientId = string;
-export type AuthenticateOidcActionClientSecret = string;
-export type AuthenticateOidcActionSessionCookieName = string;
-export type AuthenticateOidcActionScope = string;
-export type AuthenticateOidcActionSessionTimeout = number;
-export type AuthenticateOidcActionAuthenticationRequestParamName = string;
-export type AuthenticateOidcActionAuthenticationRequestParamValue = string;
-export type AuthenticateOidcActionUseExistingClientSecret = boolean;
-export type AuthenticateCognitoActionUserPoolArn = string;
-export type AuthenticateCognitoActionUserPoolClientId = string;
-export type AuthenticateCognitoActionUserPoolDomain = string;
-export type AuthenticateCognitoActionSessionCookieName = string;
-export type AuthenticateCognitoActionScope = string;
-export type AuthenticateCognitoActionSessionTimeout = number;
-export type AuthenticateCognitoActionAuthenticationRequestParamName = string;
-export type AuthenticateCognitoActionAuthenticationRequestParamValue = string;
-export type ActionOrder = number;
-export type RedirectActionProtocol = string;
-export type RedirectActionPort = string;
-export type RedirectActionHost = string;
-export type RedirectActionPath = string;
-export type RedirectActionQuery = string;
-export type FixedResponseActionMessage = string;
-export type FixedResponseActionStatusCode = string;
-export type FixedResponseActionContentType = string;
-export type TargetGroupWeight = number;
-export type TargetGroupStickinessEnabled = boolean;
-export type TargetGroupStickinessDurationSeconds = number;
-export type JwtValidationActionJwksEndpoint = string;
-export type JwtValidationActionIssuer = string;
-export type JwtValidationActionAdditionalClaimName = string;
-export type JwtValidationActionAdditionalClaimValue = string;
-export type AlpnPolicyValue = string;
-export type Mode = string;
-export type IgnoreClientCertificateExpiry = boolean;
-export type LoadBalancerName = string;
-export type SubnetId = string;
-export type AllocationId = string;
-export type PrivateIPv4Address = string;
-export type IPv6Address = string;
-export type SourceNatIpv6Prefix = string;
-export type SecurityGroupId = string;
-export type CustomerOwnedIpv4Pool = string;
-export type IpamPoolId = string;
-export type DNSName = string;
-export type CanonicalHostedZoneId = string;
-export type CreatedTime = Date;
-export type VpcId = string;
-export type StateReason = string;
-export type ZoneName = string;
-export type OutpostId = string;
-export type IpAddress = string;
-export type EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic = string;
-export type ConditionFieldName = string;
-export type StringValue = string;
-export type HttpHeaderConditionName = string;
-export type RulePriority = number;
-export type RuleArn = string;
-export type IsDefault = boolean;
-export type TargetGroupName = string;
-export type ProtocolVersion = string;
-export type HealthCheckPort = string;
-export type HealthCheckEnabled = boolean;
-export type Path = string;
-export type HealthCheckIntervalSeconds = number;
-export type HealthCheckTimeoutSeconds = number;
-export type HealthCheckThresholdCount = number;
-export type HttpCode = string;
-export type GrpcCode = string;
-export type TargetControlPort = number;
-export type TrustStoreName = string;
-export type NumberOfCaCertificates = number;
-export type TotalRevokedEntries = number;
-export type TargetId = string;
-export type QuicServerId = string;
-export type Marker = string;
-export type PageSize = number;
-export type Name = string;
-export type Max = string;
-export type LastModifiedTime = Date;
-export type DecreaseRequestsRemaining = number;
-export type CapacityUnits = number;
-export type CapacityUnitsDouble = number;
-export type ListenerAttributeKey = string;
-export type ListenerAttributeValue = string;
-export type LoadBalancerAttributeKey = string;
-export type LoadBalancerAttributeValue = string;
-export type SslProtocol = string;
-export type CipherName = string;
-export type CipherPriority = number;
-export type TargetGroupAttributeKey = string;
-export type TargetGroupAttributeValue = string;
-export type Description = string;
-export type TrustStoreAssociationResourceArn = string;
-export type Policy = string;
-export type Location = string;
-export type ResetCapacityReservation = boolean;
-export type ResetTransforms = boolean;
-
-//# Schemas
 export interface Certificate {
   CertificateArn?: string;
   IsDefault?: boolean;
@@ -257,8 +637,11 @@ export const AddListenerCertificatesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddListenerCertificatesOutput",
 }) as any as S.Schema<AddListenerCertificatesOutput>;
+export type ResourceArn = string;
 export type ResourceArns = string[];
 export const ResourceArns = /*@__PURE__*/ S.Array(S.String);
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -292,8 +675,13 @@ export interface AddTagsOutput {}
 export const AddTagsOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(ns),
 ).annotate({ identifier: "AddTagsOutput" }) as any as S.Schema<AddTagsOutput>;
+export type TrustStoreArn = string;
+export type S3Bucket = string;
+export type S3Key = string;
+export type S3ObjectVersion = string;
 export type RevocationType = "CRL" | (string & {});
 export const RevocationType = /*@__PURE__*/ S.String;
+
 export interface RevocationContent {
   S3Bucket?: string;
   S3Key?: string;
@@ -334,6 +722,8 @@ export const AddTrustStoreRevocationsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddTrustStoreRevocationsInput",
 }) as any as S.Schema<AddTrustStoreRevocationsInput>;
+export type RevocationId = number;
+export type NumberOfRevokedEntries = number;
 export interface TrustStoreRevocation {
   TrustStoreArn?: string;
   RevocationId?: number;
@@ -363,6 +753,7 @@ export const AddTrustStoreRevocationsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddTrustStoreRevocationsOutput",
 }) as any as S.Schema<AddTrustStoreRevocationsOutput>;
+export type LoadBalancerArn = string;
 export type ProtocolEnum =
   | "HTTP"
   | "HTTPS"
@@ -375,6 +766,9 @@ export type ProtocolEnum =
   | "TCP_QUIC"
   | (string & {});
 export const ProtocolEnum = /*@__PURE__*/ S.String;
+
+export type Port = number;
+export type SslPolicyName = string;
 export type ActionTypeEnum =
   | "forward"
   | "authenticate-oidc"
@@ -384,6 +778,19 @@ export type ActionTypeEnum =
   | "jwt-validation"
   | (string & {});
 export const ActionTypeEnum = /*@__PURE__*/ S.String;
+
+export type TargetGroupArn = string;
+export type AuthenticateOidcActionIssuer = string;
+export type AuthenticateOidcActionAuthorizationEndpoint = string;
+export type AuthenticateOidcActionTokenEndpoint = string;
+export type AuthenticateOidcActionUserInfoEndpoint = string;
+export type AuthenticateOidcActionClientId = string;
+export type AuthenticateOidcActionClientSecret = string;
+export type AuthenticateOidcActionSessionCookieName = string;
+export type AuthenticateOidcActionScope = string;
+export type AuthenticateOidcActionSessionTimeout = number;
+export type AuthenticateOidcActionAuthenticationRequestParamName = string;
+export type AuthenticateOidcActionAuthenticationRequestParamValue = string;
 export type AuthenticateOidcActionAuthenticationRequestExtraParams = {
   [key: string]: string | undefined;
 };
@@ -396,6 +803,8 @@ export type AuthenticateOidcActionConditionalBehaviorEnum =
   | (string & {});
 export const AuthenticateOidcActionConditionalBehaviorEnum =
   /*@__PURE__*/ S.String;
+
+export type AuthenticateOidcActionUseExistingClientSecret = boolean;
 export interface AuthenticateOidcActionConfig {
   Issuer?: string;
   AuthorizationEndpoint?: string;
@@ -432,6 +841,14 @@ export const AuthenticateOidcActionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthenticateOidcActionConfig",
 }) as any as S.Schema<AuthenticateOidcActionConfig>;
+export type AuthenticateCognitoActionUserPoolArn = string;
+export type AuthenticateCognitoActionUserPoolClientId = string;
+export type AuthenticateCognitoActionUserPoolDomain = string;
+export type AuthenticateCognitoActionSessionCookieName = string;
+export type AuthenticateCognitoActionScope = string;
+export type AuthenticateCognitoActionSessionTimeout = number;
+export type AuthenticateCognitoActionAuthenticationRequestParamName = string;
+export type AuthenticateCognitoActionAuthenticationRequestParamValue = string;
 export type AuthenticateCognitoActionAuthenticationRequestExtraParams = {
   [key: string]: string | undefined;
 };
@@ -444,6 +861,7 @@ export type AuthenticateCognitoActionConditionalBehaviorEnum =
   | (string & {});
 export const AuthenticateCognitoActionConditionalBehaviorEnum =
   /*@__PURE__*/ S.String;
+
 export interface AuthenticateCognitoActionConfig {
   UserPoolArn?: string;
   UserPoolClientId?: string;
@@ -472,11 +890,18 @@ export const AuthenticateCognitoActionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuthenticateCognitoActionConfig",
 }) as any as S.Schema<AuthenticateCognitoActionConfig>;
+export type ActionOrder = number;
+export type RedirectActionProtocol = string;
+export type RedirectActionPort = string;
+export type RedirectActionHost = string;
+export type RedirectActionPath = string;
+export type RedirectActionQuery = string;
 export type RedirectActionStatusCodeEnum =
   | "HTTP_301"
   | "HTTP_302"
   | (string & {});
 export const RedirectActionStatusCodeEnum = /*@__PURE__*/ S.String;
+
 export interface RedirectActionConfig {
   Protocol?: string;
   Port?: string;
@@ -497,6 +922,9 @@ export const RedirectActionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RedirectActionConfig",
 }) as any as S.Schema<RedirectActionConfig>;
+export type FixedResponseActionMessage = string;
+export type FixedResponseActionStatusCode = string;
+export type FixedResponseActionContentType = string;
 export interface FixedResponseActionConfig {
   MessageBody?: string;
   StatusCode?: string;
@@ -511,6 +939,7 @@ export const FixedResponseActionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FixedResponseActionConfig",
 }) as any as S.Schema<FixedResponseActionConfig>;
+export type TargetGroupWeight = number;
 export interface TargetGroupTuple {
   TargetGroupArn?: string;
   Weight?: number;
@@ -525,6 +954,8 @@ export const TargetGroupTuple = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TargetGroupTuple>;
 export type TargetGroupList = TargetGroupTuple[];
 export const TargetGroupList = /*@__PURE__*/ S.Array(TargetGroupTuple);
+export type TargetGroupStickinessEnabled = boolean;
+export type TargetGroupStickinessDurationSeconds = number;
 export interface TargetGroupStickinessConfig {
   Enabled?: boolean;
   DurationSeconds?: number;
@@ -549,6 +980,8 @@ export const ForwardActionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ForwardActionConfig",
 }) as any as S.Schema<ForwardActionConfig>;
+export type JwtValidationActionJwksEndpoint = string;
+export type JwtValidationActionIssuer = string;
 export type JwtValidationActionAdditionalClaimFormatEnum =
   | "single-string"
   | "string-array"
@@ -556,6 +989,9 @@ export type JwtValidationActionAdditionalClaimFormatEnum =
   | (string & {});
 export const JwtValidationActionAdditionalClaimFormatEnum =
   /*@__PURE__*/ S.String;
+
+export type JwtValidationActionAdditionalClaimName = string;
+export type JwtValidationActionAdditionalClaimValue = string;
 export type JwtValidationActionAdditionalClaimValues = string[];
 export const JwtValidationActionAdditionalClaimValues = /*@__PURE__*/ S.Array(
   S.String,
@@ -619,15 +1055,20 @@ export const Action = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
 export type Actions = Action[];
 export const Actions = /*@__PURE__*/ S.Array(Action);
+export type AlpnPolicyValue = string;
 export type AlpnPolicyName = string[];
 export const AlpnPolicyName = /*@__PURE__*/ S.Array(S.String);
+export type Mode = string;
+export type IgnoreClientCertificateExpiry = boolean;
 export type TrustStoreAssociationStatusEnum =
   | "active"
   | "removed"
   | (string & {});
 export const TrustStoreAssociationStatusEnum = /*@__PURE__*/ S.String;
+
 export type AdvertiseTrustStoreCaNamesEnum = "on" | "off" | (string & {});
 export const AdvertiseTrustStoreCaNamesEnum = /*@__PURE__*/ S.String;
+
 export interface MutualAuthenticationAttributes {
   Mode?: string;
   TrustStoreArn?: string;
@@ -747,8 +1188,14 @@ export const CreateListenerOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateListenerOutput",
 }) as any as S.Schema<CreateListenerOutput>;
+export type LoadBalancerName = string;
+export type SubnetId = string;
 export type Subnets = string[];
 export const Subnets = /*@__PURE__*/ S.Array(S.String);
+export type AllocationId = string;
+export type PrivateIPv4Address = string;
+export type IPv6Address = string;
+export type SourceNatIpv6Prefix = string;
 export interface SubnetMapping {
   SubnetId?: string;
   AllocationId?: string;
@@ -767,6 +1214,7 @@ export const SubnetMapping = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SubnetMapping" }) as any as S.Schema<SubnetMapping>;
 export type SubnetMappings = SubnetMapping[];
 export const SubnetMappings = /*@__PURE__*/ S.Array(SubnetMapping);
+export type SecurityGroupId = string;
 export type SecurityGroups = string[];
 export const SecurityGroups = /*@__PURE__*/ S.Array(S.String);
 export type LoadBalancerSchemeEnum =
@@ -774,20 +1222,26 @@ export type LoadBalancerSchemeEnum =
   | "internal"
   | (string & {});
 export const LoadBalancerSchemeEnum = /*@__PURE__*/ S.String;
+
 export type LoadBalancerTypeEnum =
   | "application"
   | "network"
   | "gateway"
   | (string & {});
 export const LoadBalancerTypeEnum = /*@__PURE__*/ S.String;
+
 export type IpAddressType =
   | "ipv4"
   | "dualstack"
   | "dualstack-without-public-ipv4"
   | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
+
+export type CustomerOwnedIpv4Pool = string;
 export type EnablePrefixForIpv6SourceNatEnum = "on" | "off" | (string & {});
 export const EnablePrefixForIpv6SourceNatEnum = /*@__PURE__*/ S.String;
+
+export type IpamPoolId = string;
 export interface IpamPools {
   Ipv4IpamPoolId?: string;
 }
@@ -834,6 +1288,10 @@ export const CreateLoadBalancerInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLoadBalancerInput",
 }) as any as S.Schema<CreateLoadBalancerInput>;
+export type DNSName = string;
+export type CanonicalHostedZoneId = string;
+export type CreatedTime = Date;
+export type VpcId = string;
 export type LoadBalancerStateEnum =
   | "active"
   | "provisioning"
@@ -841,6 +1299,8 @@ export type LoadBalancerStateEnum =
   | "failed"
   | (string & {});
 export const LoadBalancerStateEnum = /*@__PURE__*/ S.String;
+
+export type StateReason = string;
 export interface LoadBalancerState {
   Code?: LoadBalancerStateEnum;
   Reason?: string;
@@ -853,6 +1313,9 @@ export const LoadBalancerState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LoadBalancerState",
 }) as any as S.Schema<LoadBalancerState>;
+export type ZoneName = string;
+export type OutpostId = string;
+export type IpAddress = string;
 export interface LoadBalancerAddress {
   IpAddress?: string;
   AllocationId?: string;
@@ -893,6 +1356,7 @@ export const AvailabilityZone = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AvailabilityZone>;
 export type AvailabilityZones = AvailabilityZone[];
 export const AvailabilityZones = /*@__PURE__*/ S.Array(AvailabilityZone);
+export type EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic = string;
 export interface LoadBalancer {
   LoadBalancerArn?: string;
   DNSName?: string;
@@ -943,6 +1407,8 @@ export const CreateLoadBalancerOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLoadBalancerOutput",
 }) as any as S.Schema<CreateLoadBalancerOutput>;
+export type ConditionFieldName = string;
+export type StringValue = string;
 export type ListOfString = string[];
 export const ListOfString = /*@__PURE__*/ S.Array(S.String);
 export interface HostHeaderConditionConfig {
@@ -969,6 +1435,7 @@ export const PathPatternConditionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PathPatternConditionConfig",
 }) as any as S.Schema<PathPatternConditionConfig>;
+export type HttpHeaderConditionName = string;
 export interface HttpHeaderConditionConfig {
   HttpHeaderName?: string;
   Values?: string[];
@@ -1046,11 +1513,13 @@ export const RuleCondition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "RuleCondition" }) as any as S.Schema<RuleCondition>;
 export type RuleConditionList = RuleCondition[];
 export const RuleConditionList = /*@__PURE__*/ S.Array(RuleCondition);
+export type RulePriority = number;
 export type TransformTypeEnum =
   | "host-header-rewrite"
   | "url-rewrite"
   | (string & {});
 export const TransformTypeEnum = /*@__PURE__*/ S.String;
+
 export interface RewriteConfig {
   Regex?: string;
   Replace?: string;
@@ -1120,6 +1589,8 @@ export const CreateRuleInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRuleInput",
 }) as any as S.Schema<CreateRuleInput>;
+export type RuleArn = string;
+export type IsDefault = boolean;
 export interface Rule {
   RuleArn?: string;
   Priority?: string;
@@ -1194,6 +1665,16 @@ export const CreateRuleOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRuleOutput",
 }) as any as S.Schema<CreateRuleOutput>;
+export type TargetGroupName = string;
+export type ProtocolVersion = string;
+export type HealthCheckPort = string;
+export type HealthCheckEnabled = boolean;
+export type Path = string;
+export type HealthCheckIntervalSeconds = number;
+export type HealthCheckTimeoutSeconds = number;
+export type HealthCheckThresholdCount = number;
+export type HttpCode = string;
+export type GrpcCode = string;
 export interface Matcher {
   HttpCode?: string;
   GrpcCode?: string;
@@ -1208,8 +1689,11 @@ export type TargetTypeEnum =
   | "alb"
   | (string & {});
 export const TargetTypeEnum = /*@__PURE__*/ S.String;
+
 export type TargetGroupIpAddressTypeEnum = "ipv4" | "ipv6" | (string & {});
 export const TargetGroupIpAddressTypeEnum = /*@__PURE__*/ S.String;
+
+export type TargetControlPort = number;
 export interface CreateTargetGroupInput {
   Name?: string;
   Protocol?: ProtocolEnum;
@@ -1320,6 +1804,7 @@ export const CreateTargetGroupOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTargetGroupOutput",
 }) as any as S.Schema<CreateTargetGroupOutput>;
+export type TrustStoreName = string;
 export interface CreateTrustStoreInput {
   Name?: string;
   CaCertificatesBundleS3Bucket?: string;
@@ -1350,6 +1835,9 @@ export const CreateTrustStoreInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateTrustStoreInput>;
 export type TrustStoreStatus = "ACTIVE" | "CREATING" | (string & {});
 export const TrustStoreStatus = /*@__PURE__*/ S.String;
+
+export type NumberOfCaCertificates = number;
+export type TotalRevokedEntries = number;
 export interface TrustStore {
   Name?: string;
   TrustStoreArn?: string;
@@ -1525,6 +2013,8 @@ export const DeleteTrustStoreOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteTrustStoreOutput",
 }) as any as S.Schema<DeleteTrustStoreOutput>;
+export type TargetId = string;
+export type QuicServerId = string;
 export interface TargetDescription {
   Id?: string;
   Port?: number;
@@ -1571,6 +2061,8 @@ export const DeregisterTargetsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeregisterTargetsOutput",
 }) as any as S.Schema<DeregisterTargetsOutput>;
+export type Marker = string;
+export type PageSize = number;
 export interface DescribeAccountLimitsInput {
   Marker?: string;
   PageSize?: number;
@@ -1593,6 +2085,8 @@ export const DescribeAccountLimitsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAccountLimitsInput",
 }) as any as S.Schema<DescribeAccountLimitsInput>;
+export type Name = string;
+export type Max = string;
 export interface Limit {
   Name?: string;
   Max?: string;
@@ -1632,6 +2126,9 @@ export const DescribeCapacityReservationInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCapacityReservationInput",
 }) as any as S.Schema<DescribeCapacityReservationInput>;
+export type LastModifiedTime = Date;
+export type DecreaseRequestsRemaining = number;
+export type CapacityUnits = number;
 export interface MinimumLoadBalancerCapacity {
   CapacityUnits?: number;
 }
@@ -1647,6 +2144,7 @@ export type CapacityReservationStateEnum =
   | "failed"
   | (string & {});
 export const CapacityReservationStateEnum = /*@__PURE__*/ S.String;
+
 export interface CapacityReservationStatus {
   Code?: CapacityReservationStateEnum;
   Reason?: string;
@@ -1659,6 +2157,7 @@ export const CapacityReservationStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CapacityReservationStatus",
 }) as any as S.Schema<CapacityReservationStatus>;
+export type CapacityUnitsDouble = number;
 export interface ZonalCapacityReservationState {
   State?: CapacityReservationStatus;
   AvailabilityZone?: string;
@@ -1713,6 +2212,8 @@ export const DescribeListenerAttributesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeListenerAttributesInput",
 }) as any as S.Schema<DescribeListenerAttributesInput>;
+export type ListenerAttributeKey = string;
+export type ListenerAttributeValue = string;
 export interface ListenerAttribute {
   Key?: string;
   Value?: string;
@@ -1857,6 +2358,8 @@ export const DescribeLoadBalancerAttributesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLoadBalancerAttributesInput",
 }) as any as S.Schema<DescribeLoadBalancerAttributesInput>;
+export type LoadBalancerAttributeKey = string;
+export type LoadBalancerAttributeValue = string;
 export interface LoadBalancerAttribute {
   Key?: string;
   Value?: string;
@@ -2031,8 +2534,11 @@ export const DescribeSSLPoliciesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSSLPoliciesInput",
 }) as any as S.Schema<DescribeSSLPoliciesInput>;
+export type SslProtocol = string;
 export type SslProtocols = string[];
 export const SslProtocols = /*@__PURE__*/ S.Array(S.String);
+export type CipherName = string;
+export type CipherPriority = number;
 export interface Cipher {
   Name?: string;
   Priority?: number;
@@ -2123,6 +2629,8 @@ export const DescribeTargetGroupAttributesInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTargetGroupAttributesInput",
 }) as any as S.Schema<DescribeTargetGroupAttributesInput>;
+export type TargetGroupAttributeKey = string;
+export type TargetGroupAttributeValue = string;
 export interface TargetGroupAttribute {
   Key?: string;
   Value?: string;
@@ -2192,6 +2700,7 @@ export type DescribeTargetHealthInputIncludeEnum =
   | "All"
   | (string & {});
 export const DescribeTargetHealthInputIncludeEnum = /*@__PURE__*/ S.String;
+
 export type ListOfDescribeTargetHealthIncludeOptions =
   DescribeTargetHealthInputIncludeEnum[];
 export const ListOfDescribeTargetHealthIncludeOptions = /*@__PURE__*/ S.Array(
@@ -2231,6 +2740,7 @@ export type TargetHealthStateEnum =
   | "unavailable"
   | (string & {});
 export const TargetHealthStateEnum = /*@__PURE__*/ S.String;
+
 export type TargetHealthReasonEnum =
   | "Elb.RegistrationInProgress"
   | "Elb.InitialHealthChecking"
@@ -2246,6 +2756,8 @@ export type TargetHealthReasonEnum =
   | "Elb.InternalError"
   | (string & {});
 export const TargetHealthReasonEnum = /*@__PURE__*/ S.String;
+
+export type Description = string;
 export interface TargetHealth {
   State?: TargetHealthStateEnum;
   Reason?: TargetHealthReasonEnum;
@@ -2260,8 +2772,10 @@ export const TargetHealth = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TargetHealth" }) as any as S.Schema<TargetHealth>;
 export type AnomalyResultEnum = "anomalous" | "normal" | (string & {});
 export const AnomalyResultEnum = /*@__PURE__*/ S.String;
+
 export type MitigationInEffectEnum = "yes" | "no" | (string & {});
 export const MitigationInEffectEnum = /*@__PURE__*/ S.String;
+
 export interface AnomalyDetection {
   Result?: AnomalyResultEnum;
   MitigationInEffect?: MitigationInEffectEnum;
@@ -2281,6 +2795,7 @@ export type TargetAdministrativeOverrideStateEnum =
   | "zonal_shift_delegated_to_dns"
   | (string & {});
 export const TargetAdministrativeOverrideStateEnum = /*@__PURE__*/ S.String;
+
 export type TargetAdministrativeOverrideReasonEnum =
   | "AdministrativeOverride.Unknown"
   | "AdministrativeOverride.NoOverride"
@@ -2288,6 +2803,7 @@ export type TargetAdministrativeOverrideReasonEnum =
   | "AdministrativeOverride.ZonalShiftDelegatedToDns"
   | (string & {});
 export const TargetAdministrativeOverrideReasonEnum = /*@__PURE__*/ S.String;
+
 export interface AdministrativeOverride {
   State?: TargetAdministrativeOverrideStateEnum;
   Reason?: TargetAdministrativeOverrideReasonEnum;
@@ -2360,6 +2876,7 @@ export const DescribeTrustStoreAssociationsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTrustStoreAssociationsInput",
 }) as any as S.Schema<DescribeTrustStoreAssociationsInput>;
+export type TrustStoreAssociationResourceArn = string;
 export interface TrustStoreAssociation {
   ResourceArn?: string;
 }
@@ -2506,6 +3023,7 @@ export const GetResourcePolicyInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyInput",
 }) as any as S.Schema<GetResourcePolicyInput>;
+export type Policy = string;
 export interface GetResourcePolicyOutput {
   Policy?: string;
 }
@@ -2533,6 +3051,7 @@ export const GetTrustStoreCaCertificatesBundleInput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetTrustStoreCaCertificatesBundleInput",
 }) as any as S.Schema<GetTrustStoreCaCertificatesBundleInput>;
+export type Location = string;
 export interface GetTrustStoreCaCertificatesBundleOutput {
   Location?: string;
 }
@@ -2571,6 +3090,7 @@ export const GetTrustStoreRevocationContentOutput = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetTrustStoreRevocationContentOutput",
 }) as any as S.Schema<GetTrustStoreRevocationContentOutput>;
+export type ResetCapacityReservation = boolean;
 export interface ModifyCapacityReservationInput {
   LoadBalancerArn?: string;
   MinimumLoadBalancerCapacity?: MinimumLoadBalancerCapacity;
@@ -2615,6 +3135,7 @@ export const ModifyCapacityReservationOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModifyCapacityReservationOutput>;
 export type RemoveIpamPoolEnum = "ipv4" | (string & {});
 export const RemoveIpamPoolEnum = /*@__PURE__*/ S.String;
+
 export type RemoveIpamPools = RemoveIpamPoolEnum[];
 export const RemoveIpamPools = /*@__PURE__*/ S.Array(RemoveIpamPoolEnum);
 export interface ModifyIpPoolsInput {
@@ -2782,6 +3303,7 @@ export const ModifyLoadBalancerAttributesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ModifyLoadBalancerAttributesOutput",
 }) as any as S.Schema<ModifyLoadBalancerAttributesOutput>;
+export type ResetTransforms = boolean;
 export interface ModifyRuleInput {
   RuleArn?: string;
   Conditions?: RuleCondition[];
@@ -3207,6 +3729,7 @@ export type EnforceSecurityGroupInboundRulesOnPrivateLinkTrafficEnum =
   | (string & {});
 export const EnforceSecurityGroupInboundRulesOnPrivateLinkTrafficEnum =
   /*@__PURE__*/ S.String;
+
 export interface SetSecurityGroupsInput {
   LoadBalancerArn?: string;
   SecurityGroups?: string[];
@@ -3289,509 +3812,7 @@ export const SetSubnetsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SetSubnetsOutput",
 }) as any as S.Schema<SetSubnetsOutput>;
-
-//# Errors
-export class CertificateNotFoundException extends S.TaggedErrorClass<CertificateNotFoundException>()(
-  "CertificateNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "CertificateNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ListenerNotFoundException extends S.TaggedErrorClass<ListenerNotFoundException>()(
-  "ListenerNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ListenerNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyCertificatesException extends S.TaggedErrorClass<TooManyCertificatesException>()(
-  "TooManyCertificatesException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyCertificates", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DuplicateTagKeysException extends S.TaggedErrorClass<DuplicateTagKeysException>()(
-  "DuplicateTagKeysException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DuplicateTagKeys", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class LoadBalancerNotFoundException extends S.TaggedErrorClass<LoadBalancerNotFoundException>()(
-  "LoadBalancerNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "LoadBalancerNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class RuleNotFoundException extends S.TaggedErrorClass<RuleNotFoundException>()(
-  "RuleNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "RuleNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TargetGroupNotFoundException extends S.TaggedErrorClass<TargetGroupNotFoundException>()(
-  "TargetGroupNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TargetGroupNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyTags", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TrustStoreNotFoundException extends S.TaggedErrorClass<TrustStoreNotFoundException>()(
-  "TrustStoreNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TrustStoreNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidRevocationContentException extends S.TaggedErrorClass<InvalidRevocationContentException>()(
-  "InvalidRevocationContentException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidRevocationContent",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class RevocationContentNotFoundException extends S.TaggedErrorClass<RevocationContentNotFoundException>()(
-  "RevocationContentNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "RevocationContentNotFound",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyTrustStoreRevocationEntriesException extends S.TaggedErrorClass<TooManyTrustStoreRevocationEntriesException>()(
-  "TooManyTrustStoreRevocationEntriesException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TooManyTrustStoreRevocationEntries",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ALPNPolicyNotSupportedException extends S.TaggedErrorClass<ALPNPolicyNotSupportedException>()(
-  "ALPNPolicyNotSupportedException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ALPNPolicyNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DuplicateListenerException extends S.TaggedErrorClass<DuplicateListenerException>()(
-  "DuplicateListenerException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DuplicateListener", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class IncompatibleProtocolsException extends S.TaggedErrorClass<IncompatibleProtocolsException>()(
-  "IncompatibleProtocolsException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "IncompatibleProtocols", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidConfigurationRequestException extends S.TaggedErrorClass<InvalidConfigurationRequestException>()(
-  "InvalidConfigurationRequestException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidConfigurationRequest",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidLoadBalancerActionException extends S.TaggedErrorClass<InvalidLoadBalancerActionException>()(
-  "InvalidLoadBalancerActionException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidLoadBalancerAction",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SSLPolicyNotFoundException extends S.TaggedErrorClass<SSLPolicyNotFoundException>()(
-  "SSLPolicyNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SSLPolicyNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TargetGroupAssociationLimitException extends S.TaggedErrorClass<TargetGroupAssociationLimitException>()(
-  "TargetGroupAssociationLimitException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TargetGroupAssociationLimit",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyActionsException extends S.TaggedErrorClass<TooManyActionsException>()(
-  "TooManyActionsException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyActions", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyListenersException extends S.TaggedErrorClass<TooManyListenersException>()(
-  "TooManyListenersException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyListeners", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyRegistrationsForTargetIdException extends S.TaggedErrorClass<TooManyRegistrationsForTargetIdException>()(
-  "TooManyRegistrationsForTargetIdException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TooManyRegistrationsForTargetId",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyTargetsException extends S.TaggedErrorClass<TooManyTargetsException>()(
-  "TooManyTargetsException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyTargets", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyUniqueTargetGroupsPerLoadBalancerException extends S.TaggedErrorClass<TooManyUniqueTargetGroupsPerLoadBalancerException>()(
-  "TooManyUniqueTargetGroupsPerLoadBalancerException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TooManyUniqueTargetGroupsPerLoadBalancer",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TrustStoreNotReadyException extends S.TaggedErrorClass<TrustStoreNotReadyException>()(
-  "TrustStoreNotReadyException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TrustStoreNotReady", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedProtocolException extends S.TaggedErrorClass<UnsupportedProtocolException>()(
-  "UnsupportedProtocolException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "UnsupportedProtocol", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class AllocationIdNotFoundException extends S.TaggedErrorClass<AllocationIdNotFoundException>()(
-  "AllocationIdNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AllocationIdNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class AvailabilityZoneNotSupportedException extends S.TaggedErrorClass<AvailabilityZoneNotSupportedException>()(
-  "AvailabilityZoneNotSupportedException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "AvailabilityZoneNotSupported",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DuplicateLoadBalancerNameException extends S.TaggedErrorClass<DuplicateLoadBalancerNameException>()(
-  "DuplicateLoadBalancerNameException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DuplicateLoadBalancerName",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidSchemeException extends S.TaggedErrorClass<InvalidSchemeException>()(
-  "InvalidSchemeException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidScheme", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidSecurityGroupException extends S.TaggedErrorClass<InvalidSecurityGroupException>()(
-  "InvalidSecurityGroupException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidSecurityGroup", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidSubnetException extends S.TaggedErrorClass<InvalidSubnetException>()(
-  "InvalidSubnetException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidSubnet", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class OperationNotPermittedException extends S.TaggedErrorClass<OperationNotPermittedException>()(
-  "OperationNotPermittedException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "OperationNotPermitted", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceInUse", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class SubnetNotFoundException extends S.TaggedErrorClass<SubnetNotFoundException>()(
-  "SubnetNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "SubnetNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyLoadBalancersException extends S.TaggedErrorClass<TooManyLoadBalancersException>()(
-  "TooManyLoadBalancersException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyLoadBalancers", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class PriorityInUseException extends S.TaggedErrorClass<PriorityInUseException>()(
-  "PriorityInUseException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "PriorityInUse", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyRulesException extends S.TaggedErrorClass<TooManyRulesException>()(
-  "TooManyRulesException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyRules", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyTargetGroupsException extends S.TaggedErrorClass<TooManyTargetGroupsException>()(
-  "TooManyTargetGroupsException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyTargetGroups", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DuplicateTargetGroupNameException extends S.TaggedErrorClass<DuplicateTargetGroupNameException>()(
-  "DuplicateTargetGroupNameException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DuplicateTargetGroupName",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CaCertificatesBundleNotFoundException extends S.TaggedErrorClass<CaCertificatesBundleNotFoundException>()(
-  "CaCertificatesBundleNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "CaCertificatesBundleNotFound",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DuplicateTrustStoreNameException extends S.TaggedErrorClass<DuplicateTrustStoreNameException>()(
-  "DuplicateTrustStoreNameException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DuplicateTrustStoreName", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidCaCertificatesBundleException extends S.TaggedErrorClass<InvalidCaCertificatesBundleException>()(
-  "InvalidCaCertificatesBundleException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "InvalidCaCertificatesBundle",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyTrustStoresException extends S.TaggedErrorClass<TooManyTrustStoresException>()(
-  "TooManyTrustStoresException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TooManyTrustStores", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class DeleteAssociationSameAccountException extends S.TaggedErrorClass<DeleteAssociationSameAccountException>()(
-  "DeleteAssociationSameAccountException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "DeleteAssociationSameAccount",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TrustStoreAssociationNotFoundException extends S.TaggedErrorClass<TrustStoreAssociationNotFoundException>()(
-  "TrustStoreAssociationNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AssociationNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TrustStoreInUseException extends S.TaggedErrorClass<TrustStoreInUseException>()(
-  "TrustStoreInUseException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TrustStoreInUse", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidTargetException extends S.TaggedErrorClass<InvalidTargetException>()(
-  "InvalidTargetException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidTarget", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class HealthUnavailableException extends S.TaggedErrorClass<HealthUnavailableException>()(
-  "HealthUnavailableException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "HealthUnavailable", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class RevocationIdNotFoundException extends S.TaggedErrorClass<RevocationIdNotFoundException>()(
-  "RevocationIdNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "RevocationIdNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CapacityDecreaseRequestsLimitExceededException extends S.TaggedErrorClass<CapacityDecreaseRequestsLimitExceededException>()(
-  "CapacityDecreaseRequestsLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "CapacityDecreaseRequestLimitExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CapacityReservationPendingException extends S.TaggedErrorClass<CapacityReservationPendingException>()(
-  "CapacityReservationPendingException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "CapacityReservationPending",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class CapacityUnitsLimitExceededException extends S.TaggedErrorClass<CapacityUnitsLimitExceededException>()(
-  "CapacityUnitsLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "CapacityUnitsLimitExceeded",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InsufficientCapacityException extends S.TaggedErrorClass<InsufficientCapacityException>()(
-  "InsufficientCapacityException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InsufficientCapacity", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class PriorRequestNotCompleteException extends S.TaggedErrorClass<PriorRequestNotCompleteException>()(
-  "PriorRequestNotCompleteException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "PriorRequestNotComplete", httpResponseCode: 429 }),
-    T.HttpError(429),
-  ),
-).pipe(C.withThrottlingError) {}
-
-//# Operations
+export type ErrorDescription = string;
 export type AddListenerCertificatesError =
   | CertificateNotFoundException
   | ListenerNotFoundException
@@ -3825,6 +3846,7 @@ export const addListenerCertificates: API.OperationMethod<
   retry: Retry,
   operationName: "AddListenerCertificates",
 }));
+
 export type AddTagsError =
   | DuplicateTagKeysException
   | ListenerNotFoundException
@@ -3863,6 +3885,7 @@ export const addTags: API.OperationMethod<
   retry: Retry,
   operationName: "AddTags",
 }));
+
 export type AddTrustStoreRevocationsError =
   | InvalidRevocationContentException
   | RevocationContentNotFoundException
@@ -3890,6 +3913,7 @@ export const addTrustStoreRevocations: API.OperationMethod<
   retry: Retry,
   operationName: "AddTrustStoreRevocations",
 }));
+
 export type CreateListenerError =
   | ALPNPolicyNotSupportedException
   | CertificateNotFoundException
@@ -3964,6 +3988,7 @@ export const createListener: API.OperationMethod<
   retry: Retry,
   operationName: "CreateListener",
 }));
+
 export type CreateLoadBalancerError =
   | AllocationIdNotFoundException
   | AvailabilityZoneNotSupportedException
@@ -4023,6 +4048,7 @@ export const createLoadBalancer: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLoadBalancer",
 }));
+
 export type CreateRuleError =
   | IncompatibleProtocolsException
   | InvalidConfigurationRequestException
@@ -4079,6 +4105,7 @@ export const createRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRule",
 }));
+
 export type CreateTargetGroupError =
   | DuplicateTargetGroupNameException
   | InvalidConfigurationRequestException
@@ -4120,6 +4147,7 @@ export const createTargetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTargetGroup",
 }));
+
 export type CreateTrustStoreError =
   | CaCertificatesBundleNotFoundException
   | DuplicateTagKeysException
@@ -4153,6 +4181,7 @@ export const createTrustStore: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTrustStore",
 }));
+
 export type DeleteListenerError =
   | ListenerNotFoundException
   | ResourceInUseException
@@ -4176,6 +4205,7 @@ export const deleteListener: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteListener",
 }));
+
 export type DeleteLoadBalancerError =
   | LoadBalancerNotFoundException
   | OperationNotPermittedException
@@ -4209,6 +4239,7 @@ export const deleteLoadBalancer: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLoadBalancer",
 }));
+
 export type DeleteRuleError =
   | OperationNotPermittedException
   | RuleNotFoundException
@@ -4231,6 +4262,7 @@ export const deleteRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRule",
 }));
+
 export type DeleteSharedTrustStoreAssociationError =
   | DeleteAssociationSameAccountException
   | TrustStoreAssociationNotFoundException
@@ -4256,6 +4288,7 @@ export const deleteSharedTrustStoreAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSharedTrustStoreAssociation",
 }));
+
 export type DeleteTargetGroupError = ResourceInUseException | CommonErrors;
 /**
  * Deletes the specified target group.
@@ -4278,6 +4311,7 @@ export const deleteTargetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTargetGroup",
 }));
+
 export type DeleteTrustStoreError =
   | TrustStoreInUseException
   | TrustStoreNotFoundException
@@ -4298,6 +4332,7 @@ export const deleteTrustStore: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTrustStore",
 }));
+
 export type DeregisterTargetsError =
   | InvalidTargetException
   | TargetGroupNotFoundException
@@ -4336,6 +4371,7 @@ export const deregisterTargets: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterTargets",
 }));
+
 export type DescribeAccountLimitsError = CommonErrors;
 /**
  * Describes the current Elastic Load Balancing resource limits for your Amazon Web Services
@@ -4385,6 +4421,7 @@ export const describeAccountLimits: API.OperationMethod<
     items: "Limits",
   } as const,
 }));
+
 export type DescribeCapacityReservationError =
   | LoadBalancerNotFoundException
   | CommonErrors;
@@ -4404,6 +4441,7 @@ export const describeCapacityReservation: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCapacityReservation",
 }));
+
 export type DescribeListenerAttributesError =
   | ListenerNotFoundException
   | CommonErrors;
@@ -4423,6 +4461,7 @@ export const describeListenerAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeListenerAttributes",
 }));
+
 export type DescribeListenerCertificatesError =
   | ListenerNotFoundException
   | CommonErrors;
@@ -4471,6 +4510,7 @@ export const describeListenerCertificates: API.OperationMethod<
     items: "Certificates",
   } as const,
 }));
+
 export type DescribeListenersError =
   | ListenerNotFoundException
   | LoadBalancerNotFoundException
@@ -4518,6 +4558,7 @@ export const describeListeners: API.OperationMethod<
     items: "Listeners",
   } as const,
 }));
+
 export type DescribeLoadBalancerAttributesError =
   | LoadBalancerNotFoundException
   | CommonErrors;
@@ -4549,6 +4590,7 @@ export const describeLoadBalancerAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLoadBalancerAttributes",
 }));
+
 export type DescribeLoadBalancersError =
   | LoadBalancerNotFoundException
   | CommonErrors;
@@ -4588,6 +4630,7 @@ export const describeLoadBalancers: API.OperationMethod<
     items: "LoadBalancers",
   } as const,
 }));
+
 export type DescribeRulesError =
   | ListenerNotFoundException
   | RuleNotFoundException
@@ -4634,6 +4677,7 @@ export const describeRules: API.OperationMethod<
     items: "Rules",
   } as const,
 }));
+
 export type DescribeSSLPoliciesError =
   | SSLPolicyNotFoundException
   | CommonErrors;
@@ -4656,6 +4700,7 @@ export const describeSSLPolicies: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSSLPolicies",
 }));
+
 export type DescribeTagsError =
   | ListenerNotFoundException
   | LoadBalancerNotFoundException
@@ -4687,6 +4732,7 @@ export const describeTags: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTags",
 }));
+
 export type DescribeTargetGroupAttributesError =
   | TargetGroupNotFoundException
   | CommonErrors;
@@ -4717,6 +4763,7 @@ export const describeTargetGroupAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTargetGroupAttributes",
 }));
+
 export type DescribeTargetGroupsError =
   | LoadBalancerNotFoundException
   | TargetGroupNotFoundException
@@ -4760,6 +4807,7 @@ export const describeTargetGroups: API.OperationMethod<
     items: "TargetGroups",
   } as const,
 }));
+
 export type DescribeTargetHealthError =
   | HealthUnavailableException
   | InvalidTargetException
@@ -4785,6 +4833,7 @@ export const describeTargetHealth: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTargetHealth",
 }));
+
 export type DescribeTrustStoreAssociationsError =
   | TrustStoreNotFoundException
   | CommonErrors;
@@ -4825,6 +4874,7 @@ export const describeTrustStoreAssociations: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type DescribeTrustStoreRevocationsError =
   | RevocationIdNotFoundException
   | TrustStoreNotFoundException
@@ -4867,6 +4917,7 @@ export const describeTrustStoreRevocations: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type DescribeTrustStoresError =
   | TrustStoreNotFoundException
   | CommonErrors;
@@ -4907,6 +4958,7 @@ export const describeTrustStores: API.OperationMethod<
     pageSize: "PageSize",
   } as const,
 }));
+
 export type GetResourcePolicyError = ResourceNotFoundException | CommonErrors;
 /**
  * Retrieves the resource policy for a specified resource.
@@ -4924,6 +4976,7 @@ export const getResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type GetTrustStoreCaCertificatesBundleError =
   | TrustStoreNotFoundException
   | CommonErrors;
@@ -4946,6 +4999,7 @@ export const getTrustStoreCaCertificatesBundle: API.OperationMethod<
   retry: Retry,
   operationName: "GetTrustStoreCaCertificatesBundle",
 }));
+
 export type GetTrustStoreRevocationContentError =
   | RevocationIdNotFoundException
   | TrustStoreNotFoundException
@@ -4969,6 +5023,7 @@ export const getTrustStoreRevocationContent: API.OperationMethod<
   retry: Retry,
   operationName: "GetTrustStoreRevocationContent",
 }));
+
 export type ModifyCapacityReservationError =
   | CapacityDecreaseRequestsLimitExceededException
   | CapacityReservationPendingException
@@ -5007,6 +5062,7 @@ export const modifyCapacityReservation: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyCapacityReservation",
 }));
+
 export type ModifyIpPoolsError = LoadBalancerNotFoundException | CommonErrors;
 /**
  * [Application Load Balancers] Modify the IP pool associated to a load balancer.
@@ -5024,6 +5080,7 @@ export const modifyIpPools: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyIpPools",
 }));
+
 export type ModifyListenerError =
   | ALPNPolicyNotSupportedException
   | CertificateNotFoundException
@@ -5090,6 +5147,7 @@ export const modifyListener: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyListener",
 }));
+
 export type ModifyListenerAttributesError =
   | InvalidConfigurationRequestException
   | ListenerNotFoundException
@@ -5110,6 +5168,7 @@ export const modifyListenerAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyListenerAttributes",
 }));
+
 export type ModifyLoadBalancerAttributesError =
   | InvalidConfigurationRequestException
   | LoadBalancerNotFoundException
@@ -5134,6 +5193,7 @@ export const modifyLoadBalancerAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyLoadBalancerAttributes",
 }));
+
 export type ModifyRuleError =
   | IncompatibleProtocolsException
   | InvalidLoadBalancerActionException
@@ -5180,6 +5240,7 @@ export const modifyRule: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyRule",
 }));
+
 export type ModifyTargetGroupError =
   | InvalidConfigurationRequestException
   | TargetGroupNotFoundException
@@ -5201,6 +5262,7 @@ export const modifyTargetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyTargetGroup",
 }));
+
 export type ModifyTargetGroupAttributesError =
   | InvalidConfigurationRequestException
   | TargetGroupNotFoundException
@@ -5221,6 +5283,7 @@ export const modifyTargetGroupAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyTargetGroupAttributes",
 }));
+
 export type ModifyTrustStoreError =
   | CaCertificatesBundleNotFoundException
   | InvalidCaCertificatesBundleException
@@ -5246,6 +5309,7 @@ export const modifyTrustStore: API.OperationMethod<
   retry: Retry,
   operationName: "ModifyTrustStore",
 }));
+
 export type RegisterTargetsError =
   | InvalidTargetException
   | TargetGroupNotFoundException
@@ -5292,6 +5356,7 @@ export const registerTargets: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterTargets",
 }));
+
 export type RemoveListenerCertificatesError =
   | ListenerNotFoundException
   | OperationNotPermittedException
@@ -5313,6 +5378,7 @@ export const removeListenerCertificates: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveListenerCertificates",
 }));
+
 export type RemoveTagsError =
   | ListenerNotFoundException
   | LoadBalancerNotFoundException
@@ -5346,6 +5412,7 @@ export const removeTags: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveTags",
 }));
+
 export type RemoveTrustStoreRevocationsError =
   | RevocationIdNotFoundException
   | TrustStoreNotFoundException
@@ -5366,6 +5433,7 @@ export const removeTrustStoreRevocations: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveTrustStoreRevocations",
 }));
+
 export type SetIpAddressTypeError =
   | InvalidConfigurationRequestException
   | InvalidSubnetException
@@ -5391,6 +5459,7 @@ export const setIpAddressType: API.OperationMethod<
   retry: Retry,
   operationName: "SetIpAddressType",
 }));
+
 export type SetRulePrioritiesError =
   | OperationNotPermittedException
   | PriorityInUseException
@@ -5419,6 +5488,7 @@ export const setRulePriorities: API.OperationMethod<
   retry: Retry,
   operationName: "SetRulePriorities",
 }));
+
 export type SetSecurityGroupsError =
   | InvalidConfigurationRequestException
   | InvalidSecurityGroupException
@@ -5451,6 +5521,7 @@ export const setSecurityGroups: API.OperationMethod<
   retry: Retry,
   operationName: "SetSecurityGroups",
 }));
+
 export type SetSubnetsError =
   | AllocationIdNotFoundException
   | AvailabilityZoneNotSupportedException

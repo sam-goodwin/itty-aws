@@ -87,37 +87,72 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class CodeValidationException extends S.TaggedErrorClass<CodeValidationException>()(
+  "CodeValidationException",
+  { message: S.optional(S.String) },
+) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InvalidApplicationConfigurationException extends S.TaggedErrorClass<InvalidApplicationConfigurationException>()(
+  "InvalidApplicationConfigurationException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
+  "InvalidArgumentException",
+  { message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+) {}
+export class ResourceProvisionedThroughputExceededException extends S.TaggedErrorClass<ResourceProvisionedThroughputExceededException>()(
+  "ResourceProvisionedThroughputExceededException",
+  { message: S.optional(S.String) },
+) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { message: S.optional(S.String) },
+) {}
+export class UnableToDetectSchemaException extends S.TaggedErrorClass<UnableToDetectSchemaException>()(
+  "UnableToDetectSchemaException",
+  {
+    message: S.optional(S.String),
+    RawInputRecords: S.optional(
+      S.suspend(() => RawInputRecords).annotate({
+        identifier: "RawInputRecords",
+      }),
+    ),
+    ProcessedInputRecords: S.optional(
+      S.suspend(() => ProcessedInputRecords).annotate({
+        identifier: "ProcessedInputRecords",
+      }),
+    ),
+  },
+) {}
+export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
+  "UnsupportedOperationException",
+  { message: S.optional(S.String) },
+) {}
 export type ApplicationName = string;
 export type ApplicationVersionId = number;
 export type LogStreamARN = string;
 export type RoleARN = string;
-export type ErrorMessage = string;
-export type InAppStreamName = string;
-export type ResourceARN = string;
-export type InputParallelismCount = number;
-export type RecordRowPath = string;
-export type RecordRowDelimiter = string;
-export type RecordColumnDelimiter = string;
-export type RecordEncoding = string;
-export type RecordColumnName = string;
-export type RecordColumnMapping = string;
-export type RecordColumnSqlType = string;
-export type Id = string;
-export type InAppTableName = string;
-export type BucketARN = string;
-export type FileKey = string;
-export type ApplicationDescription = string;
-export type ApplicationCode = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ParsedInputRecordField = string;
-export type ProcessedInputRecord = string;
-export type RawInputRecord = string;
-export type ListApplicationsInputLimit = number;
-export type KinesisAnalyticsARN = string;
-
-//# Schemas
 export interface CloudWatchLoggingOption {
   LogStreamARN: string;
   RoleARN: string;
@@ -157,6 +192,8 @@ export const AddApplicationCloudWatchLoggingOptionResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "AddApplicationCloudWatchLoggingOptionResponse",
   }) as any as S.Schema<AddApplicationCloudWatchLoggingOptionResponse>;
+export type InAppStreamName = string;
+export type ResourceARN = string;
 export interface InputLambdaProcessor {
   ResourceARN: string;
   RoleARN: string;
@@ -192,6 +229,7 @@ export const KinesisFirehoseInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KinesisFirehoseInput",
 }) as any as S.Schema<KinesisFirehoseInput>;
+export type InputParallelismCount = number;
 export interface InputParallelism {
   Count?: number;
 }
@@ -202,6 +240,8 @@ export const InputParallelism = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InputParallelism>;
 export type RecordFormatType = "JSON" | "CSV" | (string & {});
 export const RecordFormatType = /*@__PURE__*/ S.String;
+
+export type RecordRowPath = string;
 export interface JSONMappingParameters {
   RecordRowPath: string;
 }
@@ -210,6 +250,8 @@ export const JSONMappingParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JSONMappingParameters",
 }) as any as S.Schema<JSONMappingParameters>;
+export type RecordRowDelimiter = string;
+export type RecordColumnDelimiter = string;
 export interface CSVMappingParameters {
   RecordRowDelimiter: string;
   RecordColumnDelimiter: string;
@@ -241,6 +283,10 @@ export const RecordFormat = /*@__PURE__*/ S.suspend(() =>
     MappingParameters: S.optional(MappingParameters),
   }),
 ).annotate({ identifier: "RecordFormat" }) as any as S.Schema<RecordFormat>;
+export type RecordEncoding = string;
+export type RecordColumnName = string;
+export type RecordColumnMapping = string;
+export type RecordColumnSqlType = string;
 export interface RecordColumn {
   Name: string;
   Mapping?: string;
@@ -315,6 +361,7 @@ export const AddApplicationInputResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddApplicationInputResponse",
 }) as any as S.Schema<AddApplicationInputResponse>;
+export type Id = string;
 export interface AddApplicationInputProcessingConfigurationRequest {
   ApplicationName: string;
   CurrentApplicationVersionId: number;
@@ -426,6 +473,9 @@ export const AddApplicationOutputResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddApplicationOutputResponse",
 }) as any as S.Schema<AddApplicationOutputResponse>;
+export type InAppTableName = string;
+export type BucketARN = string;
+export type FileKey = string;
 export interface S3ReferenceDataSource {
   BucketARN: string;
   FileKey: string;
@@ -484,6 +534,7 @@ export const AddApplicationReferenceDataSourceResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "AddApplicationReferenceDataSourceResponse",
   }) as any as S.Schema<AddApplicationReferenceDataSourceResponse>;
+export type ApplicationDescription = string;
 export type Inputs = Input[];
 export const Inputs = /*@__PURE__*/ S.Array(Input);
 export type Outputs = Output[];
@@ -492,6 +543,9 @@ export type CloudWatchLoggingOptions = CloudWatchLoggingOption[];
 export const CloudWatchLoggingOptions = /*@__PURE__*/ S.Array(
   CloudWatchLoggingOption,
 );
+export type ApplicationCode = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value?: string;
@@ -542,6 +596,7 @@ export type ApplicationStatus =
   | "UPDATING"
   | (string & {});
 export const ApplicationStatus = /*@__PURE__*/ S.String;
+
 export interface ApplicationSummary {
   ApplicationName: string;
   ApplicationARN: string;
@@ -787,6 +842,7 @@ export type InputStartingPosition =
   | "LAST_STOPPED_POINT"
   | (string & {});
 export const InputStartingPosition = /*@__PURE__*/ S.String;
+
 export interface InputStartingPositionConfiguration {
   InputStartingPosition?: InputStartingPosition;
 }
@@ -1032,12 +1088,15 @@ export const DiscoverInputSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DiscoverInputSchemaRequest",
 }) as any as S.Schema<DiscoverInputSchemaRequest>;
+export type ParsedInputRecordField = string;
 export type ParsedInputRecord = string[];
 export const ParsedInputRecord = /*@__PURE__*/ S.Array(S.String);
 export type ParsedInputRecords = string[][];
 export const ParsedInputRecords = /*@__PURE__*/ S.Array(ParsedInputRecord);
+export type ProcessedInputRecord = string;
 export type ProcessedInputRecords = string[];
 export const ProcessedInputRecords = /*@__PURE__*/ S.Array(S.String);
+export type RawInputRecord = string;
 export type RawInputRecords = string[];
 export const RawInputRecords = /*@__PURE__*/ S.Array(S.String);
 export interface DiscoverInputSchemaResponse {
@@ -1056,6 +1115,7 @@ export const DiscoverInputSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DiscoverInputSchemaResponse",
 }) as any as S.Schema<DiscoverInputSchemaResponse>;
+export type ListApplicationsInputLimit = number;
 export interface ListApplicationsRequest {
   Limit?: number;
   ExclusiveStartApplicationName?: string;
@@ -1092,6 +1152,7 @@ export const ListApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListApplicationsResponse",
 }) as any as S.Schema<ListApplicationsResponse>;
+export type KinesisAnalyticsARN = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
@@ -1482,64 +1543,7 @@ export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateApplicationResponse",
 }) as any as S.Schema<UpdateApplicationResponse>;
-
-//# Errors
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InvalidArgumentException extends S.TaggedErrorClass<InvalidArgumentException>()(
-  "InvalidArgumentException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { message: S.optional(S.String) },
-) {}
-export class CodeValidationException extends S.TaggedErrorClass<CodeValidationException>()(
-  "CodeValidationException",
-  { message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String) },
-) {}
-export class ResourceProvisionedThroughputExceededException extends S.TaggedErrorClass<ResourceProvisionedThroughputExceededException>()(
-  "ResourceProvisionedThroughputExceededException",
-  { message: S.optional(S.String) },
-) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class UnableToDetectSchemaException extends S.TaggedErrorClass<UnableToDetectSchemaException>()(
-  "UnableToDetectSchemaException",
-  {
-    message: S.optional(S.String),
-    RawInputRecords: S.optional(RawInputRecords),
-    ProcessedInputRecords: S.optional(ProcessedInputRecords),
-  },
-) {}
-export class InvalidApplicationConfigurationException extends S.TaggedErrorClass<InvalidApplicationConfigurationException>()(
-  "InvalidApplicationConfigurationException",
-  { message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type AddApplicationCloudWatchLoggingOptionError =
   | ConcurrentModificationException
   | InvalidArgumentException
@@ -1574,6 +1578,7 @@ export const addApplicationCloudWatchLoggingOption: API.OperationMethod<
   retry: Retry,
   operationName: "AddApplicationCloudWatchLoggingOption",
 }));
+
 export type AddApplicationInputError =
   | CodeValidationException
   | ConcurrentModificationException
@@ -1620,6 +1625,7 @@ export const addApplicationInput: API.OperationMethod<
   retry: Retry,
   operationName: "AddApplicationInput",
 }));
+
 export type AddApplicationInputProcessingConfigurationError =
   | ConcurrentModificationException
   | InvalidArgumentException
@@ -1653,6 +1659,7 @@ export const addApplicationInputProcessingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "AddApplicationInputProcessingConfiguration",
 }));
+
 export type AddApplicationOutputError =
   | ConcurrentModificationException
   | InvalidArgumentException
@@ -1705,6 +1712,7 @@ export const addApplicationOutput: API.OperationMethod<
   retry: Retry,
   operationName: "AddApplicationOutput",
 }));
+
 export type AddApplicationReferenceDataSourceError =
   | ConcurrentModificationException
   | InvalidArgumentException
@@ -1745,6 +1753,7 @@ export const addApplicationReferenceDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "AddApplicationReferenceDataSource",
 }));
+
 export type CreateApplicationError =
   | CodeValidationException
   | ConcurrentModificationException
@@ -1798,6 +1807,7 @@ export const createApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApplication",
 }));
+
 export type DeleteApplicationError =
   | ConcurrentModificationException
   | ResourceInUseException
@@ -1829,6 +1839,7 @@ export const deleteApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplication",
 }));
+
 export type DeleteApplicationCloudWatchLoggingOptionError =
   | ConcurrentModificationException
   | InvalidArgumentException
@@ -1862,6 +1873,7 @@ export const deleteApplicationCloudWatchLoggingOption: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplicationCloudWatchLoggingOption",
 }));
+
 export type DeleteApplicationInputProcessingConfigurationError =
   | ConcurrentModificationException
   | InvalidArgumentException
@@ -1893,6 +1905,7 @@ export const deleteApplicationInputProcessingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplicationInputProcessingConfiguration",
 }));
+
 export type DeleteApplicationOutputError =
   | ConcurrentModificationException
   | InvalidArgumentException
@@ -1927,6 +1940,7 @@ export const deleteApplicationOutput: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplicationOutput",
 }));
+
 export type DeleteApplicationReferenceDataSourceError =
   | ConcurrentModificationException
   | InvalidArgumentException
@@ -1964,6 +1978,7 @@ export const deleteApplicationReferenceDataSource: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplicationReferenceDataSource",
 }));
+
 export type DescribeApplicationError =
   | ResourceNotFoundException
   | UnsupportedOperationException
@@ -1993,6 +2008,7 @@ export const describeApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeApplication",
 }));
+
 export type DiscoverInputSchemaError =
   | InvalidArgumentException
   | ResourceProvisionedThroughputExceededException
@@ -2031,6 +2047,7 @@ export const discoverInputSchema: API.OperationMethod<
   retry: Retry,
   operationName: "DiscoverInputSchema",
 }));
+
 export type ListApplicationsError = CommonErrors;
 /**
  * This documentation is for version 1 of the Amazon Kinesis Data Analytics API, which only supports SQL applications. Version 2 of the API supports SQL and Java applications. For more information about version 2, see Amazon Kinesis Data Analytics API V2 Documentation.
@@ -2064,6 +2081,7 @@ export const listApplications: API.OperationMethod<
   retry: Retry,
   operationName: "ListApplications",
 }));
+
 export type ListTagsForResourceError =
   | ConcurrentModificationException
   | InvalidArgumentException
@@ -2089,6 +2107,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type StartApplicationError =
   | InvalidApplicationConfigurationException
   | InvalidArgumentException
@@ -2131,6 +2150,7 @@ export const startApplication: API.OperationMethod<
   retry: Retry,
   operationName: "StartApplication",
 }));
+
 export type StopApplicationError =
   | ResourceInUseException
   | ResourceNotFoundException
@@ -2166,6 +2186,7 @@ export const stopApplication: API.OperationMethod<
   retry: Retry,
   operationName: "StopApplication",
 }));
+
 export type TagResourceError =
   | ConcurrentModificationException
   | InvalidArgumentException
@@ -2196,6 +2217,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | ConcurrentModificationException
   | InvalidArgumentException
@@ -2225,6 +2247,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateApplicationError =
   | CodeValidationException
   | ConcurrentModificationException

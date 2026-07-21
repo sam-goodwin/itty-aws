@@ -84,12 +84,37 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
+  "AlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
+  "InternalServiceErrorException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(412),
+) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type WordCharactersWithDelimiters = string;
-export type NonEmptyString = string;
-export type NextTokenString = string;
-
-//# Schemas
 export interface CreateConfigurationSetRequest {
   ConfigurationSetName?: string;
 }
@@ -147,6 +172,7 @@ export type EventType =
   | "NO_ANSWER"
   | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
+
 export type EventTypes = EventType[];
 export const EventTypes = /*@__PURE__*/ S.Array(EventType);
 export interface SnsDestination {
@@ -173,6 +199,7 @@ export const EventDestinationDefinition = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EventDestinationDefinition",
 }) as any as S.Schema<EventDestinationDefinition>;
+export type NonEmptyString = string;
 export interface CreateConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestination?: EventDestinationDefinition;
@@ -340,6 +367,7 @@ export const ListConfigurationSetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListConfigurationSetsRequest>;
 export type ConfigurationSets = string[];
 export const ConfigurationSets = /*@__PURE__*/ S.Array(S.String);
+export type NextTokenString = string;
 export interface ListConfigurationSetsResponse {
   ConfigurationSets?: string[];
   NextToken?: string;
@@ -469,40 +497,6 @@ export const UpdateConfigurationSetEventDestinationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "UpdateConfigurationSetEventDestinationResponse",
   }) as any as S.Schema<UpdateConfigurationSetEventDestinationResponse>;
-
-//# Errors
-export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
-  "AlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
-  "InternalServiceErrorException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(412),
-) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateConfigurationSetError =
   | AlreadyExistsException
   | BadRequestException
@@ -532,6 +526,7 @@ export const createConfigurationSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConfigurationSet",
 }));
+
 export type CreateConfigurationSetEventDestinationError =
   | AlreadyExistsException
   | BadRequestException
@@ -563,6 +558,7 @@ export const createConfigurationSetEventDestination: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConfigurationSetEventDestination",
 }));
+
 export type DeleteConfigurationSetError =
   | BadRequestException
   | InternalServiceErrorException
@@ -590,6 +586,7 @@ export const deleteConfigurationSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfigurationSet",
 }));
+
 export type DeleteConfigurationSetEventDestinationError =
   | BadRequestException
   | InternalServiceErrorException
@@ -617,6 +614,7 @@ export const deleteConfigurationSetEventDestination: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfigurationSetEventDestination",
 }));
+
 export type GetConfigurationSetEventDestinationsError =
   | BadRequestException
   | InternalServiceErrorException
@@ -644,6 +642,7 @@ export const getConfigurationSetEventDestinations: API.OperationMethod<
   retry: Retry,
   operationName: "GetConfigurationSetEventDestinations",
 }));
+
 export type ListConfigurationSetsError =
   | BadRequestException
   | InternalServiceErrorException
@@ -669,6 +668,7 @@ export const listConfigurationSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListConfigurationSets",
 }));
+
 export type SendVoiceMessageError =
   | BadRequestException
   | InternalServiceErrorException
@@ -694,6 +694,7 @@ export const sendVoiceMessage: API.OperationMethod<
   retry: Retry,
   operationName: "SendVoiceMessage",
 }));
+
 export type UpdateConfigurationSetEventDestinationError =
   | BadRequestException
   | InternalServiceErrorException

@@ -87,29 +87,51 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ClusterLimitExceededException extends S.TaggedErrorClass<ClusterLimitExceededException>()(
+  "ClusterLimitExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { ConflictResource: S.optional(S.String), Message: S.optional(S.String) },
+) {}
+export class Ec2RequestFailedException extends S.TaggedErrorClass<Ec2RequestFailedException>()(
+  "Ec2RequestFailedException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidAddressException extends S.TaggedErrorClass<InvalidAddressException>()(
+  "InvalidAddressException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidInputCombinationException extends S.TaggedErrorClass<InvalidInputCombinationException>()(
+  "InvalidInputCombinationException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidJobStateException extends S.TaggedErrorClass<InvalidJobStateException>()(
+  "InvalidJobStateException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidResourceException extends S.TaggedErrorClass<InvalidResourceException>()(
+  "InvalidResourceException",
+  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+) {}
+export class KMSRequestFailedException extends S.TaggedErrorClass<KMSRequestFailedException>()(
+  "KMSRequestFailedException",
+  { Message: S.optional(S.String) },
+) {}
+export class ReturnShippingLabelAlreadyExistsException extends S.TaggedErrorClass<ReturnShippingLabelAlreadyExistsException>()(
+  "ReturnShippingLabelAlreadyExistsException",
+  { Message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class UnsupportedAddressException extends S.TaggedErrorClass<UnsupportedAddressException>()(
+  "UnsupportedAddressException",
+  { Message: S.optional(S.String) },
+) {}
 export type ClusterId = string;
-export type JobId = string;
-export type AddressId = string;
-export type ResourceARN = string;
-export type AmiId = string;
-export type StorageLimit = number;
-export type S3StorageLimit = number;
-export type ServiceSize = number;
-export type NodeFaultTolerance = number;
-export type KmsKeyARN = string;
-export type RoleARN = string;
-export type SnsTopicARN = string;
-export type GSTIN = string;
-export type InitialClusterSize = number;
-export type LongTermPricingId = string;
-export type PhoneNumber = string | redacted.Redacted<string>;
-export type Email = string | redacted.Redacted<string>;
-export type DevicePickupId = string;
-export type JavaBoolean = boolean;
-export type ListLimit = number;
-
-//# Schemas
 export interface CancelClusterRequest {
   ClusterId: string;
 }
@@ -126,6 +148,7 @@ export const CancelClusterResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelClusterResult",
 }) as any as S.Schema<CancelClusterResult>;
+export type JobId = string;
 export interface CancelJobRequest {
   JobId: string;
 }
@@ -142,8 +165,10 @@ export const CancelJobResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelJobResult",
 }) as any as S.Schema<CancelJobResult>;
+export type AddressId = string;
 export type AddressType = "CUST_PICKUP" | "AWS_SHIP" | (string & {});
 export const AddressType = /*@__PURE__*/ S.String;
+
 export interface Address {
   AddressId?: string;
   Name?: string;
@@ -200,6 +225,8 @@ export const CreateAddressResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAddressResult>;
 export type JobType = "IMPORT" | "EXPORT" | "LOCAL_USE" | (string & {});
 export const JobType = /*@__PURE__*/ S.String;
+
+export type ResourceARN = string;
 export interface KeyRange {
   BeginMarker?: string;
   EndMarker?: string;
@@ -215,8 +242,10 @@ export type DeviceServiceName =
   | "S3_ON_DEVICE_SERVICE"
   | (string & {});
 export const DeviceServiceName = /*@__PURE__*/ S.String;
+
 export type TransferOption = "IMPORT" | "EXPORT" | "LOCAL_USE" | (string & {});
 export const TransferOption = /*@__PURE__*/ S.String;
+
 export interface TargetOnDeviceService {
   ServiceName?: DeviceServiceName;
   TransferOption?: TransferOption;
@@ -271,6 +300,7 @@ export const LambdaResource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LambdaResource" }) as any as S.Schema<LambdaResource>;
 export type LambdaResourceList = LambdaResource[];
 export const LambdaResourceList = /*@__PURE__*/ S.Array(LambdaResource);
+export type AmiId = string;
 export interface Ec2AmiResource {
   AmiId: string;
   SnowballAmiId?: string;
@@ -292,8 +322,10 @@ export const JobResource = /*@__PURE__*/ S.suspend(() =>
     Ec2AmiResources: S.optional(Ec2AmiResourceList),
   }),
 ).annotate({ identifier: "JobResource" }) as any as S.Schema<JobResource>;
+export type StorageLimit = number;
 export type StorageUnit = "TB" | (string & {});
 export const StorageUnit = /*@__PURE__*/ S.String;
+
 export interface NFSOnDeviceServiceConfiguration {
   StorageLimit?: number;
   StorageUnit?: StorageUnit;
@@ -330,6 +362,9 @@ export const EKSOnDeviceServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EKSOnDeviceServiceConfiguration",
 }) as any as S.Schema<EKSOnDeviceServiceConfiguration>;
+export type S3StorageLimit = number;
+export type ServiceSize = number;
+export type NodeFaultTolerance = number;
 export interface S3OnDeviceServiceConfiguration {
   StorageLimit?: number;
   StorageUnit?: StorageUnit;
@@ -362,6 +397,8 @@ export const OnDeviceServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OnDeviceServiceConfiguration",
 }) as any as S.Schema<OnDeviceServiceConfiguration>;
+export type KmsKeyARN = string;
+export type RoleARN = string;
 export type SnowballType =
   | "STANDARD"
   | "EDGE"
@@ -375,6 +412,7 @@ export type SnowballType =
   | "RACK_5U_C"
   | (string & {});
 export const SnowballType = /*@__PURE__*/ S.String;
+
 export type ShippingOption =
   | "SECOND_DAY"
   | "NEXT_DAY"
@@ -382,6 +420,8 @@ export type ShippingOption =
   | "STANDARD"
   | (string & {});
 export const ShippingOption = /*@__PURE__*/ S.String;
+
+export type SnsTopicARN = string;
 export type JobState =
   | "New"
   | "PreparingAppliance"
@@ -398,6 +438,7 @@ export type JobState =
   | "Pending"
   | (string & {});
 export const JobState = /*@__PURE__*/ S.String;
+
 export type JobStateList = JobState[];
 export const JobStateList = /*@__PURE__*/ S.Array(JobState);
 export interface Notification {
@@ -414,6 +455,7 @@ export const Notification = /*@__PURE__*/ S.suspend(() =>
     DevicePickupSnsTopicARN: S.optional(S.String),
   }),
 ).annotate({ identifier: "Notification" }) as any as S.Schema<Notification>;
+export type GSTIN = string;
 export interface INDTaxDocuments {
   GSTIN?: string;
 }
@@ -434,6 +476,9 @@ export type RemoteManagement =
   | "NOT_INSTALLED"
   | (string & {});
 export const RemoteManagement = /*@__PURE__*/ S.String;
+
+export type InitialClusterSize = number;
+export type LongTermPricingId = string;
 export type LongTermPricingIdList = string[];
 export const LongTermPricingIdList = /*@__PURE__*/ S.Array(S.String);
 export type SnowballCapacity =
@@ -450,6 +495,7 @@ export type SnowballCapacity =
   | "T13"
   | (string & {});
 export const SnowballCapacity = /*@__PURE__*/ S.String;
+
 export interface CreateClusterRequest {
   JobType: JobType;
   Resources?: JobResource;
@@ -562,6 +608,10 @@ export type ImpactLevel =
   | "IL99"
   | (string & {});
 export const ImpactLevel = /*@__PURE__*/ S.String;
+
+export type PhoneNumber = string | redacted.Redacted<string>;
+export type Email = string | redacted.Redacted<string>;
+export type DevicePickupId = string;
 export interface PickupDetails {
   Name?: string;
   PhoneNumber?: string | redacted.Redacted<string>;
@@ -646,6 +696,8 @@ export type LongTermPricingType =
   | "OneMonth"
   | (string & {});
 export const LongTermPricingType = /*@__PURE__*/ S.String;
+
+export type JavaBoolean = boolean;
 export interface CreateLongTermPricingRequest {
   LongTermPricingType: LongTermPricingType;
   IsLongTermPricingAutoRenew?: boolean;
@@ -691,6 +743,7 @@ export type ShippingLabelStatus =
   | "Failed"
   | (string & {});
 export const ShippingLabelStatus = /*@__PURE__*/ S.String;
+
 export interface CreateReturnShippingLabelResult {
   Status?: ShippingLabelStatus;
 }
@@ -717,6 +770,7 @@ export const DescribeAddressResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAddressResult",
 }) as any as S.Schema<DescribeAddressResult>;
+export type ListLimit = number;
 export interface DescribeAddressesRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -763,6 +817,7 @@ export type ClusterState =
   | "Cancelled"
   | (string & {});
 export const ClusterState = /*@__PURE__*/ S.String;
+
 export interface ClusterMetadata {
   ClusterId?: string;
   Description?: string;
@@ -1264,6 +1319,7 @@ export const ListPickupLocationsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPickupLocationsResult>;
 export type ServiceName = "KUBERNETES" | "EKS_ANYWHERE" | (string & {});
 export const ServiceName = /*@__PURE__*/ S.String;
+
 export interface ServiceVersion {
   Version?: string;
 }
@@ -1394,6 +1450,7 @@ export const UpdateJobResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateJobResult>;
 export type ShipmentState = "RECEIVED" | "RETURNED" | (string & {});
 export const ShipmentState = /*@__PURE__*/ S.String;
+
 export interface UpdateJobShipmentStateRequest {
   JobId: string;
   ShipmentState: ShipmentState;
@@ -1433,54 +1490,6 @@ export const UpdateLongTermPricingResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateLongTermPricingResult",
 }) as any as S.Schema<UpdateLongTermPricingResult>;
-
-//# Errors
-export class InvalidJobStateException extends S.TaggedErrorClass<InvalidJobStateException>()(
-  "InvalidJobStateException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidResourceException extends S.TaggedErrorClass<InvalidResourceException>()(
-  "InvalidResourceException",
-  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
-) {}
-export class KMSRequestFailedException extends S.TaggedErrorClass<KMSRequestFailedException>()(
-  "KMSRequestFailedException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidAddressException extends S.TaggedErrorClass<InvalidAddressException>()(
-  "InvalidAddressException",
-  { Message: S.optional(S.String) },
-) {}
-export class UnsupportedAddressException extends S.TaggedErrorClass<UnsupportedAddressException>()(
-  "UnsupportedAddressException",
-  { Message: S.optional(S.String) },
-) {}
-export class Ec2RequestFailedException extends S.TaggedErrorClass<Ec2RequestFailedException>()(
-  "Ec2RequestFailedException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidInputCombinationException extends S.TaggedErrorClass<InvalidInputCombinationException>()(
-  "InvalidInputCombinationException",
-  { Message: S.optional(S.String) },
-) {}
-export class ClusterLimitExceededException extends S.TaggedErrorClass<ClusterLimitExceededException>()(
-  "ClusterLimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { ConflictResource: S.optional(S.String), Message: S.optional(S.String) },
-) {}
-export class ReturnShippingLabelAlreadyExistsException extends S.TaggedErrorClass<ReturnShippingLabelAlreadyExistsException>()(
-  "ReturnShippingLabelAlreadyExistsException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
 export type CancelClusterError =
   | InvalidJobStateException
   | InvalidResourceException
@@ -1508,6 +1517,7 @@ export const cancelCluster: API.OperationMethod<
   retry: Retry,
   operationName: "CancelCluster",
 }));
+
 export type CancelJobError =
   | InvalidJobStateException
   | InvalidResourceException
@@ -1536,6 +1546,7 @@ export const cancelJob: API.OperationMethod<
   retry: Retry,
   operationName: "CancelJob",
 }));
+
 export type CreateAddressError =
   | InvalidAddressException
   | UnsupportedAddressException
@@ -1559,6 +1570,7 @@ export const createAddress: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAddress",
 }));
+
 export type CreateClusterError =
   | Ec2RequestFailedException
   | InvalidInputCombinationException
@@ -1587,6 +1599,7 @@ export const createCluster: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCluster",
 }));
+
 export type CreateJobError =
   | ClusterLimitExceededException
   | Ec2RequestFailedException
@@ -1695,6 +1708,7 @@ export const createJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateJob",
 }));
+
 export type CreateLongTermPricingError =
   | InvalidResourceException
   | CommonErrors;
@@ -1715,6 +1729,7 @@ export const createLongTermPricing: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLongTermPricing",
 }));
+
 export type CreateReturnShippingLabelError =
   | ConflictException
   | InvalidInputCombinationException
@@ -1744,6 +1759,7 @@ export const createReturnShippingLabel: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReturnShippingLabel",
 }));
+
 export type DescribeAddressError = InvalidResourceException | CommonErrors;
 /**
  * Takes an `AddressId` and returns specific details about that address in the
@@ -1762,6 +1778,7 @@ export const describeAddress: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAddress",
 }));
+
 export type DescribeAddressesError =
   | InvalidNextTokenException
   | InvalidResourceException
@@ -1805,6 +1822,7 @@ export const describeAddresses: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeClusterError = InvalidResourceException | CommonErrors;
 /**
  * Returns information about a specific cluster including shipping information, cluster
@@ -1823,6 +1841,7 @@ export const describeCluster: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCluster",
 }));
+
 export type DescribeJobError = InvalidResourceException | CommonErrors;
 /**
  * Returns information about a specific job including shipping information, job status,
@@ -1841,6 +1860,7 @@ export const describeJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeJob",
 }));
+
 export type DescribeReturnShippingLabelError =
   | ConflictException
   | InvalidJobStateException
@@ -1866,6 +1886,7 @@ export const describeReturnShippingLabel: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeReturnShippingLabel",
 }));
+
 export type GetJobManifestError =
   | InvalidJobStateException
   | InvalidResourceException
@@ -1904,6 +1925,7 @@ export const getJobManifest: API.OperationMethod<
   retry: Retry,
   operationName: "GetJobManifest",
 }));
+
 export type GetJobUnlockCodeError =
   | InvalidJobStateException
   | InvalidResourceException
@@ -1938,6 +1960,7 @@ export const getJobUnlockCode: API.OperationMethod<
   retry: Retry,
   operationName: "GetJobUnlockCode",
 }));
+
 export type GetSnowballUsageError = CommonErrors;
 /**
  * Returns information about the Snow Family service limit for your account, and also the
@@ -1959,6 +1982,7 @@ export const getSnowballUsage: API.OperationMethod<
   retry: Retry,
   operationName: "GetSnowballUsage",
 }));
+
 export type GetSoftwareUpdatesError =
   | InvalidJobStateException
   | InvalidResourceException
@@ -1980,6 +2004,7 @@ export const getSoftwareUpdates: API.OperationMethod<
   retry: Retry,
   operationName: "GetSoftwareUpdates",
 }));
+
 export type ListClusterJobsError =
   | InvalidNextTokenException
   | InvalidResourceException
@@ -2023,6 +2048,7 @@ export const listClusterJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListClustersError = InvalidNextTokenException | CommonErrors;
 /**
  * Returns an array of `ClusterListEntry` objects of the specified length. Each
@@ -2063,6 +2089,7 @@ export const listClusters: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCompatibleImagesError =
   | Ec2RequestFailedException
   | InvalidNextTokenException
@@ -2107,6 +2134,7 @@ export const listCompatibleImages: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListJobsError = InvalidNextTokenException | CommonErrors;
 /**
  * Returns an array of `JobListEntry` objects of the specified length. Each
@@ -2149,6 +2177,7 @@ export const listJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLongTermPricingError =
   | InvalidNextTokenException
   | InvalidResourceException
@@ -2190,6 +2219,7 @@ export const listLongTermPricing: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPickupLocationsError = InvalidResourceException | CommonErrors;
 /**
  * A list of locations from which the customer can choose to pickup a device.
@@ -2227,6 +2257,7 @@ export const listPickupLocations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListServiceVersionsError =
   | InvalidNextTokenException
   | InvalidResourceException
@@ -2248,6 +2279,7 @@ export const listServiceVersions: API.OperationMethod<
   retry: Retry,
   operationName: "ListServiceVersions",
 }));
+
 export type UpdateClusterError =
   | Ec2RequestFailedException
   | InvalidInputCombinationException
@@ -2280,6 +2312,7 @@ export const updateCluster: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCluster",
 }));
+
 export type UpdateJobError =
   | ClusterLimitExceededException
   | Ec2RequestFailedException
@@ -2313,6 +2346,7 @@ export const updateJob: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateJob",
 }));
+
 export type UpdateJobShipmentStateError =
   | InvalidJobStateException
   | InvalidResourceException
@@ -2333,6 +2367,7 @@ export const updateJobShipmentState: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateJobShipmentState",
 }));
+
 export type UpdateLongTermPricingError =
   | InvalidResourceException
   | CommonErrors;

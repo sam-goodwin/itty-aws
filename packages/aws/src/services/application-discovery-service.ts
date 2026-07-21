@@ -86,50 +86,58 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AuthorizationErrorException extends S.TaggedErrorClass<AuthorizationErrorException>()(
+  "AuthorizationErrorException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictErrorException extends S.TaggedErrorClass<ConflictErrorException>()(
+  "ConflictErrorException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class HomeRegionNotSetException extends S.TaggedErrorClass<HomeRegionNotSetException>()(
+  "HomeRegionNotSetException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class OperationNotPermittedException extends S.TaggedErrorClass<OperationNotPermittedException>()(
+  "OperationNotPermittedException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ServerInternalErrorException extends S.TaggedErrorClass<ServerInternalErrorException>()(
+  "ServerInternalErrorException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
 export type ApplicationId = string;
 export type ConfigurationId = string;
-export type Message = string;
-export type AgentId = string;
-export type ImportTaskIdentifier = string;
-export type BatchDeleteImportDataErrorDescription = string;
-export type ApplicationName = string;
-export type ApplicationDescription = string;
-export type ApplicationWave = string;
-export type TagKey = string;
-export type TagValue = string;
-export type FilterValue = string;
-export type Condition = string;
-export type NextToken = string;
-export type UUID = string;
-export type ErrorStatusCode = number;
-export type ErrorMessage = string;
-export type WarningCode = number;
-export type WarningText = string;
-export type ConfigurationsExportId = string;
-export type DescribeContinuousExportsMaxResults = number;
-export type StringMax255 = string;
-export type S3Bucket = string;
-export type DatabaseName = string;
-export type ExportStatusMessage = string;
-export type ConfigurationsDownloadUrl = string;
-export type ExportRequestTime = Date;
-export type FilterName = string;
-export type ImportTaskFilterValue = string;
-export type DescribeImportTasksMaxResults = number;
-export type ClientRequestToken = string;
-export type ImportTaskName = string;
-export type ImportURL = string;
-export type S3PresignedUrl = string;
-export type OrderByElementFieldName = string;
-export type BoxedInteger = number;
-export type ExportEnabled = boolean;
-export type UsageMetricBasisName = string;
-export type UsageMetricPercentageAdjust = number;
-export type EC2InstanceType = string;
-export type UserPreferredRegion = string;
-
-//# Schemas
 export type ConfigurationIdList = string[];
 export const ConfigurationIdList = /*@__PURE__*/ S.Array(S.String);
 export interface AssociateConfigurationItemsToApplicationRequest {
@@ -160,6 +168,7 @@ export const AssociateConfigurationItemsToApplicationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "AssociateConfigurationItemsToApplicationResponse",
   }) as any as S.Schema<AssociateConfigurationItemsToApplicationResponse>;
+export type AgentId = string;
 export interface DeleteAgent {
   agentId: string;
   force?: boolean;
@@ -193,6 +202,7 @@ export type DeleteAgentErrorCode =
   | "AGENT_IN_USE"
   | (string & {});
 export const DeleteAgentErrorCode = /*@__PURE__*/ S.String;
+
 export interface BatchDeleteAgentError {
   agentId: string;
   errorMessage: string;
@@ -219,6 +229,7 @@ export const BatchDeleteAgentsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDeleteAgentsResponse",
 }) as any as S.Schema<BatchDeleteAgentsResponse>;
+export type ImportTaskIdentifier = string;
 export type ToDeleteIdentifierList = string[];
 export const ToDeleteIdentifierList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchDeleteImportDataRequest {
@@ -249,6 +260,8 @@ export type BatchDeleteImportDataErrorCode =
   | "OVER_LIMIT"
   | (string & {});
 export const BatchDeleteImportDataErrorCode = /*@__PURE__*/ S.String;
+
+export type BatchDeleteImportDataErrorDescription = string;
 export interface BatchDeleteImportDataError_ {
   importTaskId?: string;
   errorCode?: BatchDeleteImportDataErrorCode;
@@ -275,6 +288,9 @@ export const BatchDeleteImportDataResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDeleteImportDataResponse",
 }) as any as S.Schema<BatchDeleteImportDataResponse>;
+export type ApplicationName = string;
+export type ApplicationDescription = string;
+export type ApplicationWave = string;
 export interface CreateApplicationRequest {
   name: string;
   description?: string;
@@ -307,6 +323,8 @@ export const CreateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateApplicationResponse",
 }) as any as S.Schema<CreateApplicationResponse>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
@@ -399,10 +417,12 @@ export const DeleteTagsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteTagsResponse>;
 export type AgentIds = string[];
 export const AgentIds = /*@__PURE__*/ S.Array(S.String);
+export type FilterValue = string;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("item")),
 );
+export type Condition = string;
 export interface Filter {
   name: string;
   values: string[];
@@ -413,6 +433,7 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type Filters = Filter[];
 export const Filters = /*@__PURE__*/ S.Array(Filter);
+export type NextToken = string;
 export interface DescribeAgentsRequest {
   agentIds?: string[];
   filters?: Filter[];
@@ -462,6 +483,7 @@ export type AgentStatus =
   | "SHUTDOWN"
   | (string & {});
 export const AgentStatus = /*@__PURE__*/ S.String;
+
 export interface AgentInfo {
   agentId?: string;
   hostName?: string;
@@ -502,6 +524,7 @@ export const DescribeAgentsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAgentsResponse",
 }) as any as S.Schema<DescribeAgentsResponse>;
+export type UUID = string;
 export interface DescribeBatchDeleteConfigurationTaskRequest {
   taskId: string;
 }
@@ -529,8 +552,12 @@ export type BatchDeleteConfigurationTaskStatus =
   | "FAILED"
   | (string & {});
 export const BatchDeleteConfigurationTaskStatus = /*@__PURE__*/ S.String;
+
 export type DeletionConfigurationItemType = "SERVER" | (string & {});
 export const DeletionConfigurationItemType = /*@__PURE__*/ S.String;
+
+export type ErrorStatusCode = number;
+export type ErrorMessage = string;
 export interface FailedConfiguration {
   configurationId?: string;
   errorStatusCode?: number;
@@ -548,6 +575,8 @@ export const FailedConfiguration = /*@__PURE__*/ S.suspend(() =>
 export type FailedConfigurationList = FailedConfiguration[];
 export const FailedConfigurationList =
   /*@__PURE__*/ S.Array(FailedConfiguration);
+export type WarningCode = number;
+export type WarningText = string;
 export interface DeletionWarning {
   configurationId?: string;
   warningCode?: number;
@@ -640,8 +669,10 @@ export const DescribeConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeConfigurationsResponse",
 }) as any as S.Schema<DescribeConfigurationsResponse>;
+export type ConfigurationsExportId = string;
 export type ContinuousExportIds = string[];
 export const ContinuousExportIds = /*@__PURE__*/ S.Array(S.String);
+export type DescribeContinuousExportsMaxResults = number;
 export interface DescribeContinuousExportsRequest {
   exportIds?: string[];
   maxResults?: number;
@@ -676,8 +707,13 @@ export type ContinuousExportStatus =
   | "INACTIVE"
   | (string & {});
 export const ContinuousExportStatus = /*@__PURE__*/ S.String;
+
+export type StringMax255 = string;
+export type S3Bucket = string;
 export type DataSource = "AGENT" | (string & {});
 export const DataSource = /*@__PURE__*/ S.String;
+
+export type DatabaseName = string;
 export type SchemaStorageConfig = { [key: string]: string | undefined };
 export const SchemaStorageConfig = /*@__PURE__*/ S.Record(
   S.String,
@@ -755,6 +791,10 @@ export type ExportStatus =
   | "IN_PROGRESS"
   | (string & {});
 export const ExportStatus = /*@__PURE__*/ S.String;
+
+export type ExportStatusMessage = string;
+export type ConfigurationsDownloadUrl = string;
+export type ExportRequestTime = Date;
 export interface ExportInfo {
   exportId: string;
   exportStatus: ExportStatus;
@@ -796,6 +836,7 @@ export const DescribeExportConfigurationsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeExportConfigurationsResponse",
 }) as any as S.Schema<DescribeExportConfigurationsResponse>;
+export type FilterName = string;
 export interface ExportFilter {
   name: string;
   values: string[];
@@ -851,6 +892,8 @@ export type ImportTaskFilterName =
   | "FILE_CLASSIFICATION"
   | (string & {});
 export const ImportTaskFilterName = /*@__PURE__*/ S.String;
+
+export type ImportTaskFilterValue = string;
 export type ImportTaskFilterValueList = string[];
 export const ImportTaskFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface ImportTaskFilter {
@@ -868,6 +911,7 @@ export const ImportTaskFilter = /*@__PURE__*/ S.suspend(() =>
 export type DescribeImportTasksFilterList = ImportTaskFilter[];
 export const DescribeImportTasksFilterList =
   /*@__PURE__*/ S.Array(ImportTaskFilter);
+export type DescribeImportTasksMaxResults = number;
 export interface DescribeImportTasksRequest {
   filters?: ImportTaskFilter[];
   maxResults?: number;
@@ -892,6 +936,9 @@ export const DescribeImportTasksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeImportTasksRequest",
 }) as any as S.Schema<DescribeImportTasksRequest>;
+export type ClientRequestToken = string;
+export type ImportTaskName = string;
+export type ImportURL = string;
 export type ImportStatus =
   | "IMPORT_IN_PROGRESS"
   | "IMPORT_COMPLETE"
@@ -907,6 +954,7 @@ export type ImportStatus =
   | "INTERNAL_ERROR"
   | (string & {});
 export const ImportStatus = /*@__PURE__*/ S.String;
+
 export type FileClassification =
   | "MODELIZEIT_EXPORT"
   | "RVTOOLS_EXPORT"
@@ -914,6 +962,8 @@ export type FileClassification =
   | "IMPORT_TEMPLATE"
   | (string & {});
 export const FileClassification = /*@__PURE__*/ S.String;
+
+export type S3PresignedUrl = string;
 export interface ImportTask {
   importTaskId?: string;
   clientRequestToken?: string;
@@ -1008,6 +1058,7 @@ export type ConfigurationItemType =
   | "APPLICATION"
   | (string & {});
 export const ConfigurationItemType = /*@__PURE__*/ S.String;
+
 export interface ConfigurationTag {
   configurationType?: ConfigurationItemType;
   configurationId?: string;
@@ -1224,8 +1275,10 @@ export const GetDiscoverySummaryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDiscoverySummaryResponse",
 }) as any as S.Schema<GetDiscoverySummaryResponse>;
+export type OrderByElementFieldName = string;
 export type OrderString = "ASC" | "DESC" | (string & {});
 export const OrderString = /*@__PURE__*/ S.String;
+
 export interface OrderByElement {
   fieldName: string;
   sortOrder?: OrderString;
@@ -1310,6 +1363,7 @@ export const ListServerNeighborsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListServerNeighborsRequest",
 }) as any as S.Schema<ListServerNeighborsRequest>;
+export type BoxedInteger = number;
 export interface NeighborConnectionDetail {
   sourceServerId: string;
   destinationServerId: string;
@@ -1462,8 +1516,12 @@ export const StartDataCollectionByAgentIdsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<StartDataCollectionByAgentIdsResponse>;
 export type ExportDataFormat = "CSV" | (string & {});
 export const ExportDataFormat = /*@__PURE__*/ S.String;
+
 export type ExportDataFormats = ExportDataFormat[];
 export const ExportDataFormats = /*@__PURE__*/ S.Array(ExportDataFormat);
+export type ExportEnabled = boolean;
+export type UsageMetricBasisName = string;
+export type UsageMetricPercentageAdjust = number;
 export interface UsageMetricBasis {
   name?: string;
   percentageAdjust?: number;
@@ -1478,18 +1536,24 @@ export const UsageMetricBasis = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UsageMetricBasis>;
 export type Tenancy = "DEDICATED" | "SHARED" | (string & {});
 export const Tenancy = /*@__PURE__*/ S.String;
+
+export type EC2InstanceType = string;
 export type ExcludedInstanceTypes = string[];
 export const ExcludedInstanceTypes = /*@__PURE__*/ S.Array(S.String);
+export type UserPreferredRegion = string;
 export type PurchasingOption =
   | "ALL_UPFRONT"
   | "PARTIAL_UPFRONT"
   | "NO_UPFRONT"
   | (string & {});
 export const PurchasingOption = /*@__PURE__*/ S.String;
+
 export type OfferingClass = "STANDARD" | "CONVERTIBLE" | (string & {});
 export const OfferingClass = /*@__PURE__*/ S.String;
+
 export type TermLength = "ONE_YEAR" | "THREE_YEAR" | (string & {});
 export const TermLength = /*@__PURE__*/ S.String;
+
 export interface ReservedInstanceOptions {
   purchasingOption: PurchasingOption;
   offeringClass: OfferingClass;
@@ -1693,60 +1757,7 @@ export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateApplicationResponse",
 }) as any as S.Schema<UpdateApplicationResponse>;
-
-//# Errors
-export class AuthorizationErrorException extends S.TaggedErrorClass<AuthorizationErrorException>()(
-  "AuthorizationErrorException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class HomeRegionNotSetException extends S.TaggedErrorClass<HomeRegionNotSetException>()(
-  "HomeRegionNotSetException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServerInternalErrorException extends S.TaggedErrorClass<ServerInternalErrorException>()(
-  "ServerInternalErrorException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class OperationNotPermittedException extends S.TaggedErrorClass<OperationNotPermittedException>()(
-  "OperationNotPermittedException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictErrorException extends S.TaggedErrorClass<ConflictErrorException>()(
-  "ConflictErrorException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type Message = string;
 export type AssociateConfigurationItemsToApplicationError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -1776,6 +1787,7 @@ export const associateConfigurationItemsToApplication: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateConfigurationItemsToApplication",
 }));
+
 export type BatchDeleteAgentsError =
   | AuthorizationErrorException
   | InvalidParameterException
@@ -1805,6 +1817,7 @@ export const batchDeleteAgents: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteAgents",
 }));
+
 export type BatchDeleteImportDataError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -1841,6 +1854,7 @@ export const batchDeleteImportData: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteImportData",
 }));
+
 export type CreateApplicationError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -1870,6 +1884,7 @@ export const createApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApplication",
 }));
+
 export type CreateTagsError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -1904,6 +1919,7 @@ export const createTags: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTags",
 }));
+
 export type DeleteApplicationsError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -1934,6 +1950,7 @@ export const deleteApplications: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplications",
 }));
+
 export type DeleteTagsError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -1966,6 +1983,7 @@ export const deleteTags: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTags",
 }));
+
 export type DescribeAgentsError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2018,6 +2036,7 @@ export const describeAgents: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeBatchDeleteConfigurationTaskError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2045,6 +2064,7 @@ export const describeBatchDeleteConfigurationTask: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBatchDeleteConfigurationTask",
 }));
+
 export type DescribeConfigurationsError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2092,6 +2112,7 @@ export const describeConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConfigurations",
 }));
+
 export type DescribeContinuousExportsError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2148,6 +2169,7 @@ export const describeContinuousExports: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeExportConfigurationsError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2200,6 +2222,7 @@ export const describeExportConfigurations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeExportTasksError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2251,6 +2274,7 @@ export const describeExportTasks: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeImportTasksError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2302,6 +2326,7 @@ export const describeImportTasks: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeTagsError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2366,6 +2391,7 @@ export const describeTags: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DisassociateConfigurationItemsFromApplicationError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2395,6 +2421,7 @@ export const disassociateConfigurationItemsFromApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateConfigurationItemsFromApplication",
 }));
+
 export type ExportConfigurationsError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2432,6 +2459,7 @@ export const exportConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "ExportConfigurations",
 }));
+
 export type GetDiscoverySummaryError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2464,6 +2492,7 @@ export const getDiscoverySummary: API.OperationMethod<
   retry: Retry,
   operationName: "GetDiscoverySummary",
 }));
+
 export type ListConfigurationsError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2518,6 +2547,7 @@ export const listConfigurations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListServerNeighborsError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2548,6 +2578,7 @@ export const listServerNeighbors: API.OperationMethod<
   retry: Retry,
   operationName: "ListServerNeighbors",
 }));
+
 export type StartBatchDeleteConfigurationTaskError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2582,6 +2613,7 @@ export const startBatchDeleteConfigurationTask: API.OperationMethod<
   retry: Retry,
   operationName: "StartBatchDeleteConfigurationTask",
 }));
+
 export type StartContinuousExportError =
   | AuthorizationErrorException
   | ConflictErrorException
@@ -2617,6 +2649,7 @@ export const startContinuousExport: API.OperationMethod<
   retry: Retry,
   operationName: "StartContinuousExport",
 }));
+
 export type StartDataCollectionByAgentIdsError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2646,6 +2679,7 @@ export const startDataCollectionByAgentIds: API.OperationMethod<
   retry: Retry,
   operationName: "StartDataCollectionByAgentIds",
 }));
+
 export type StartExportTaskError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2700,6 +2734,7 @@ export const startExportTask: API.OperationMethod<
   retry: Retry,
   operationName: "StartExportTask",
 }));
+
 export type StartImportTaskError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2758,6 +2793,7 @@ export const startImportTask: API.OperationMethod<
   retry: Retry,
   operationName: "StartImportTask",
 }));
+
 export type StopContinuousExportError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2793,6 +2829,7 @@ export const stopContinuousExport: API.OperationMethod<
   retry: Retry,
   operationName: "StopContinuousExport",
 }));
+
 export type StopDataCollectionByAgentIdsError =
   | AuthorizationErrorException
   | HomeRegionNotSetException
@@ -2822,6 +2859,7 @@ export const stopDataCollectionByAgentIds: API.OperationMethod<
   retry: Retry,
   operationName: "StopDataCollectionByAgentIds",
 }));
+
 export type UpdateApplicationError =
   | AuthorizationErrorException
   | HomeRegionNotSetException

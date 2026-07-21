@@ -85,58 +85,31 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
+  "InternalErrorException",
+  { Message: S.optional(S.String) },
+).pipe(C.withServerError) {}
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
+  "InvalidOperationException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidTypeException extends S.TaggedErrorClass<InvalidTypeException>()(
+  "InvalidTypeException",
+  { Message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+) {}
 export type AWSAccountId = string;
-export type ErrorMessage = string;
-export type Identifier = string;
-export type ListId = string;
-export type PolicyId = string;
-export type Base62Id = string;
-export type OrganizationalUnitId = string;
-export type AWSRegion = string;
-export type ResourceName = string;
-export type UpdateToken = string;
-export type Protocol = string;
-export type IPPortNumber = number;
-export type PreviousListVersion = string;
-export type ResourceArn = string;
-export type ResourceId = string;
-export type ResourceType = string;
-export type LengthBoundedString = string;
-export type DetailedInfo = string;
-export type PolicyUpdateToken = string;
-export type ManagedServiceData = string;
-export type IntegerObject = number;
-export type IPPortNumberInteger = number;
-export type LengthBoundedNonEmptyString = string;
-export type ResourceTagKey = string;
-export type ResourceTagValue = string;
-export type CustomerPolicyScopeId = string;
-export type ResourceDescription = string;
-export type PaginationToken = string;
-export type PaginationMaxResults = number;
-export type ProtectionData = string;
-export type Name = string;
-export type Description = string;
-export type ViolationTarget = string;
-export type ReferenceRule = string;
-export type TargetViolationReason = string;
-export type RemediationActionDescription = string;
-export type CIDR = string;
-export type NetworkFirewallResourceName = string;
-export type StatelessRuleGroupPriority = number;
-export type NetworkFirewallAction = string;
-export type PriorityNumber = number;
-export type DnsRuleGroupPriority = number;
-export type BasicInteger = number;
-export type IntegerObjectMinimum0 = number;
-export type TagKey = string;
-export type TagValue = string;
-export type ResourceCount = number;
-export type FirewallPolicyId = string;
-export type FirewallPolicyName = string;
-
-//# Schemas
 export interface AssociateAdminAccountRequest {
   AdminAccount: string;
 }
@@ -158,6 +131,7 @@ export type ThirdPartyFirewall =
   | "FORTIGATE_CLOUD_NATIVE_FIREWALL"
   | (string & {});
 export const ThirdPartyFirewall = /*@__PURE__*/ S.String;
+
 export interface AssociateThirdPartyFirewallRequest {
   ThirdPartyFirewall: ThirdPartyFirewall;
 }
@@ -176,6 +150,7 @@ export type ThirdPartyFirewallAssociationStatus =
   | "NOT_EXIST"
   | (string & {});
 export const ThirdPartyFirewallAssociationStatus = /*@__PURE__*/ S.String;
+
 export interface AssociateThirdPartyFirewallResponse {
   ThirdPartyFirewallStatus?: ThirdPartyFirewallAssociationStatus;
 }
@@ -186,6 +161,7 @@ export const AssociateThirdPartyFirewallResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateThirdPartyFirewallResponse",
 }) as any as S.Schema<AssociateThirdPartyFirewallResponse>;
+export type Identifier = string;
 export type IdentifierList = string[];
 export const IdentifierList = /*@__PURE__*/ S.Array(S.String);
 export interface BatchAssociateResourceRequest {
@@ -208,6 +184,7 @@ export type FailedItemReason =
   | "NOT_VALID_ACCOUNT_ID"
   | (string & {});
 export const FailedItemReason = /*@__PURE__*/ S.String;
+
 export interface FailedItem {
   URI?: string;
   Reason?: FailedItemReason;
@@ -246,6 +223,7 @@ export const BatchDisassociateResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchDisassociateResourceResponse",
 }) as any as S.Schema<BatchDisassociateResourceResponse>;
+export type ListId = string;
 export interface DeleteAppsListRequest {
   ListId: string;
 }
@@ -276,6 +254,7 @@ export const DeleteNotificationChannelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteNotificationChannelResponse",
 }) as any as S.Schema<DeleteNotificationChannelResponse>;
+export type PolicyId = string;
 export interface DeletePolicyRequest {
   PolicyId: string;
   DeleteAllPolicyResources?: boolean;
@@ -312,6 +291,7 @@ export const DeleteProtocolsListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteProtocolsListResponse",
 }) as any as S.Schema<DeleteProtocolsListResponse>;
+export type Base62Id = string;
 export interface DeleteResourceSetRequest {
   Identifier: string;
 }
@@ -380,6 +360,7 @@ export type AccountRoleStatus =
   | "DELETED"
   | (string & {});
 export const AccountRoleStatus = /*@__PURE__*/ S.String;
+
 export interface GetAdminAccountResponse {
   AdminAccount?: string;
   RoleStatus?: AccountRoleStatus;
@@ -416,6 +397,7 @@ export const AccountScope = /*@__PURE__*/ S.suspend(() =>
     ExcludeSpecifiedAccounts: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "AccountScope" }) as any as S.Schema<AccountScope>;
+export type OrganizationalUnitId = string;
 export type OrganizationalUnitIdList = string[];
 export const OrganizationalUnitIdList = /*@__PURE__*/ S.Array(S.String);
 export interface OrganizationalUnitScope {
@@ -432,6 +414,7 @@ export const OrganizationalUnitScope = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OrganizationalUnitScope",
 }) as any as S.Schema<OrganizationalUnitScope>;
+export type AWSRegion = string;
 export type AWSRegionList = string[];
 export const AWSRegionList = /*@__PURE__*/ S.Array(S.String);
 export interface RegionScope {
@@ -458,6 +441,7 @@ export type SecurityServiceType =
   | "NETWORK_ACL_COMMON"
   | (string & {});
 export const SecurityServiceType = /*@__PURE__*/ S.String;
+
 export type SecurityServiceTypeList = SecurityServiceType[];
 export const SecurityServiceTypeList =
   /*@__PURE__*/ S.Array(SecurityServiceType);
@@ -494,6 +478,7 @@ export type OrganizationStatus =
   | "OFFBOARDING_COMPLETE"
   | (string & {});
 export const OrganizationStatus = /*@__PURE__*/ S.String;
+
 export interface GetAdminScopeResponse {
   AdminScope?: AdminScope;
   Status?: OrganizationStatus;
@@ -517,6 +502,10 @@ export const GetAppsListRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAppsListRequest",
 }) as any as S.Schema<GetAppsListRequest>;
+export type ResourceName = string;
+export type UpdateToken = string;
+export type Protocol = string;
+export type IPPortNumber = number;
 export interface App {
   AppName: string;
   Protocol: string;
@@ -527,6 +516,7 @@ export const App = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "App" }) as any as S.Schema<App>;
 export type AppsList = App[];
 export const AppsList = /*@__PURE__*/ S.Array(App);
+export type PreviousListVersion = string;
 export type PreviousAppsList = { [key: string]: App[] | undefined };
 export const PreviousAppsList = /*@__PURE__*/ S.Record(
   S.String,
@@ -552,6 +542,7 @@ export const AppsListData = /*@__PURE__*/ S.suspend(() =>
     PreviousAppsList: S.optional(PreviousAppsList),
   }),
 ).annotate({ identifier: "AppsListData" }) as any as S.Schema<AppsListData>;
+export type ResourceArn = string;
 export interface GetAppsListResponse {
   AppsList?: AppsListData;
   AppsListArn?: string;
@@ -575,6 +566,7 @@ export const GetComplianceDetailRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetComplianceDetailRequest",
 }) as any as S.Schema<GetComplianceDetailRequest>;
+export type ResourceId = string;
 export type ViolationReason =
   | "WEB_ACL_MISSING_RULE_GROUP"
   | "RESOURCE_MISSING_WEB_ACL"
@@ -608,6 +600,9 @@ export type ViolationReason =
   | "WEB_ACL_CONFIGURATION_OR_SCOPE_OF_USE"
   | (string & {});
 export const ViolationReason = /*@__PURE__*/ S.String;
+
+export type ResourceType = string;
+export type LengthBoundedString = string;
 export type ComplianceViolatorMetadata = { [key: string]: string | undefined };
 export const ComplianceViolatorMetadata = /*@__PURE__*/ S.Record(
   S.String,
@@ -638,6 +633,8 @@ export type DependentServiceName =
   | "AWSVPC"
   | (string & {});
 export const DependentServiceName = /*@__PURE__*/ S.String;
+
+export type DetailedInfo = string;
 export type IssueInfoMap = { [key in DependentServiceName]?: string };
 export const IssueInfoMap = /*@__PURE__*/ S.Record(
   DependentServiceName,
@@ -703,11 +700,14 @@ export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPolicyRequest",
 }) as any as S.Schema<GetPolicyRequest>;
+export type PolicyUpdateToken = string;
+export type ManagedServiceData = string;
 export type FirewallDeploymentModel =
   | "CENTRALIZED"
   | "DISTRIBUTED"
   | (string & {});
 export const FirewallDeploymentModel = /*@__PURE__*/ S.String;
+
 export interface NetworkFirewallPolicy {
   FirewallDeploymentModel?: FirewallDeploymentModel;
 }
@@ -724,6 +724,7 @@ export const ThirdPartyFirewallPolicy = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ThirdPartyFirewallPolicy",
 }) as any as S.Schema<ThirdPartyFirewallPolicy>;
+export type IntegerObject = number;
 export interface NetworkAclIcmpTypeCode {
   Code?: number;
   Type?: number;
@@ -733,6 +734,7 @@ export const NetworkAclIcmpTypeCode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkAclIcmpTypeCode",
 }) as any as S.Schema<NetworkAclIcmpTypeCode>;
+export type IPPortNumberInteger = number;
 export interface NetworkAclPortRange {
   From?: number;
   To?: number;
@@ -742,8 +744,10 @@ export const NetworkAclPortRange = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkAclPortRange",
 }) as any as S.Schema<NetworkAclPortRange>;
+export type LengthBoundedNonEmptyString = string;
 export type NetworkAclRuleAction = "allow" | "deny" | (string & {});
 export const NetworkAclRuleAction = /*@__PURE__*/ S.String;
+
 export interface NetworkAclEntry {
   IcmpTypeCode?: NetworkAclIcmpTypeCode;
   Protocol: string;
@@ -820,6 +824,8 @@ export const SecurityServicePolicyData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecurityServicePolicyData>;
 export type ResourceTypeList = string[];
 export const ResourceTypeList = /*@__PURE__*/ S.Array(S.String);
+export type ResourceTagKey = string;
+export type ResourceTagValue = string;
 export interface ResourceTag {
   Key: string;
   Value?: string;
@@ -831,6 +837,8 @@ export type ResourceTags = ResourceTag[];
 export const ResourceTags = /*@__PURE__*/ S.Array(ResourceTag);
 export type CustomerPolicyScopeIdType = "ACCOUNT" | "ORG_UNIT" | (string & {});
 export const CustomerPolicyScopeIdType = /*@__PURE__*/ S.String;
+
+export type CustomerPolicyScopeId = string;
 export type CustomerPolicyScopeIdList = string[];
 export const CustomerPolicyScopeIdList = /*@__PURE__*/ S.Array(S.String);
 export type CustomerPolicyScopeMap = {
@@ -842,13 +850,16 @@ export const CustomerPolicyScopeMap = /*@__PURE__*/ S.Record(
 );
 export type ResourceSetIds = string[];
 export const ResourceSetIds = /*@__PURE__*/ S.Array(S.String);
+export type ResourceDescription = string;
 export type CustomerPolicyStatus =
   | "ACTIVE"
   | "OUT_OF_ADMIN_SCOPE"
   | (string & {});
 export const CustomerPolicyStatus = /*@__PURE__*/ S.String;
+
 export type ResourceTagLogicalOperator = "AND" | "OR" | (string & {});
 export const ResourceTagLogicalOperator = /*@__PURE__*/ S.String;
+
 export interface Policy {
   PolicyId?: string;
   PolicyName: string;
@@ -896,6 +907,8 @@ export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPolicyResponse",
 }) as any as S.Schema<GetPolicyResponse>;
+export type PaginationToken = string;
+export type PaginationMaxResults = number;
 export interface GetProtectionStatusRequest {
   PolicyId: string;
   MemberAccountId?: string;
@@ -918,6 +931,7 @@ export const GetProtectionStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetProtectionStatusRequest",
 }) as any as S.Schema<GetProtectionStatusRequest>;
+export type ProtectionData = string;
 export interface GetProtectionStatusResponse {
   AdminAccountId?: string;
   ServiceType?: SecurityServiceType;
@@ -996,8 +1010,11 @@ export const GetResourceSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourceSetRequest",
 }) as any as S.Schema<GetResourceSetRequest>;
+export type Name = string;
+export type Description = string;
 export type ResourceSetStatus = "ACTIVE" | "OUT_OF_ADMIN_SCOPE" | (string & {});
 export const ResourceSetStatus = /*@__PURE__*/ S.String;
+
 export interface ResourceSet {
   Id?: string;
   Name: string;
@@ -1044,6 +1061,7 @@ export type MarketplaceSubscriptionOnboardingStatus =
   | "COMPLETE"
   | (string & {});
 export const MarketplaceSubscriptionOnboardingStatus = /*@__PURE__*/ S.String;
+
 export interface GetThirdPartyFirewallAssociationStatusResponse {
   ThirdPartyFirewallStatus?: ThirdPartyFirewallAssociationStatus;
   MarketplaceOnboardingStatus?: MarketplaceSubscriptionOnboardingStatus;
@@ -1077,6 +1095,9 @@ export const GetViolationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetViolationDetailsRequest",
 }) as any as S.Schema<GetViolationDetailsRequest>;
+export type ViolationTarget = string;
+export type ReferenceRule = string;
+export type TargetViolationReason = string;
 export type TargetViolationReasons = string[];
 export const TargetViolationReasons = /*@__PURE__*/ S.Array(S.String);
 export interface PartialMatch {
@@ -1093,6 +1114,9 @@ export type PartialMatches = PartialMatch[];
 export const PartialMatches = /*@__PURE__*/ S.Array(PartialMatch);
 export type RemediationActionType = "REMOVE" | "MODIFY" | (string & {});
 export const RemediationActionType = /*@__PURE__*/ S.String;
+
+export type RemediationActionDescription = string;
+export type CIDR = string;
 export interface SecurityGroupRuleDescription {
   IPV4Range?: string;
   IPV6Range?: string;
@@ -1237,6 +1261,8 @@ export const NetworkFirewallMissingExpectedRTViolation =
   ).annotate({
     identifier: "NetworkFirewallMissingExpectedRTViolation",
   }) as any as S.Schema<NetworkFirewallMissingExpectedRTViolation>;
+export type NetworkFirewallResourceName = string;
+export type StatelessRuleGroupPriority = number;
 export interface StatelessRuleGroup {
   RuleGroupName?: string;
   ResourceId?: string;
@@ -1253,10 +1279,13 @@ export const StatelessRuleGroup = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StatelessRuleGroup>;
 export type StatelessRuleGroupList = StatelessRuleGroup[];
 export const StatelessRuleGroupList = /*@__PURE__*/ S.Array(StatelessRuleGroup);
+export type NetworkFirewallAction = string;
 export type NetworkFirewallActionList = string[];
 export const NetworkFirewallActionList = /*@__PURE__*/ S.Array(S.String);
+export type PriorityNumber = number;
 export type NetworkFirewallOverrideAction = "DROP_TO_ALERT" | (string & {});
 export const NetworkFirewallOverrideAction = /*@__PURE__*/ S.String;
+
 export interface NetworkFirewallStatefulRuleGroupOverride {
   Action?: NetworkFirewallOverrideAction;
 }
@@ -1285,6 +1314,7 @@ export type StatefulRuleGroupList = StatefulRuleGroup[];
 export const StatefulRuleGroupList = /*@__PURE__*/ S.Array(StatefulRuleGroup);
 export type RuleOrder = "STRICT_ORDER" | "DEFAULT_ACTION_ORDER" | (string & {});
 export const RuleOrder = /*@__PURE__*/ S.String;
+
 export type StreamExceptionPolicy =
   | "DROP"
   | "CONTINUE"
@@ -1292,6 +1322,7 @@ export type StreamExceptionPolicy =
   | "FMS_IGNORE"
   | (string & {});
 export const StreamExceptionPolicy = /*@__PURE__*/ S.String;
+
 export interface StatefulEngineOptions {
   RuleOrder?: RuleOrder;
   StreamExceptionPolicy?: StreamExceptionPolicy;
@@ -1343,6 +1374,7 @@ export const NetworkFirewallPolicyModifiedViolation = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<NetworkFirewallPolicyModifiedViolation>;
 export type DestinationType = "IPV4" | "IPV6" | "PREFIX_LIST" | (string & {});
 export const DestinationType = /*@__PURE__*/ S.String;
+
 export type TargetType =
   | "GATEWAY"
   | "CARRIER_GATEWAY"
@@ -1356,6 +1388,7 @@ export type TargetType =
   | "TRANSIT_GATEWAY"
   | (string & {});
 export const TargetType = /*@__PURE__*/ S.String;
+
 export interface Route {
   DestinationType?: DestinationType;
   TargetType?: TargetType;
@@ -1542,6 +1575,7 @@ export const NetworkFirewallMissingExpectedRoutesViolation =
   ).annotate({
     identifier: "NetworkFirewallMissingExpectedRoutesViolation",
   }) as any as S.Schema<NetworkFirewallMissingExpectedRoutesViolation>;
+export type DnsRuleGroupPriority = number;
 export type DnsRuleGroupPriorities = number[];
 export const DnsRuleGroupPriorities = /*@__PURE__*/ S.Array(S.Number);
 export interface DnsRuleGroupPriorityConflictViolation {
@@ -1575,6 +1609,7 @@ export const DnsDuplicateRuleGroupViolation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DnsDuplicateRuleGroupViolation",
 }) as any as S.Schema<DnsDuplicateRuleGroupViolation>;
+export type BasicInteger = number;
 export interface DnsRuleGroupLimitExceededViolation {
   ViolationTarget?: string;
   ViolationTargetDescription?: string;
@@ -1709,12 +1744,14 @@ export const FirewallSubnetMissingVPCEndpointViolation =
   ).annotate({
     identifier: "FirewallSubnetMissingVPCEndpointViolation",
   }) as any as S.Schema<FirewallSubnetMissingVPCEndpointViolation>;
+export type IntegerObjectMinimum0 = number;
 export type EntryType =
   | "FMS_MANAGED_FIRST_ENTRY"
   | "FMS_MANAGED_LAST_ENTRY"
   | "CUSTOM_ENTRY"
   | (string & {});
 export const EntryType = /*@__PURE__*/ S.String;
+
 export interface EntryDescription {
   EntryDetail?: NetworkAclEntry;
   EntryRuleNumber?: number;
@@ -1737,6 +1774,7 @@ export type EntryViolationReason =
   | "ENTRY_CONFLICT"
   | (string & {});
 export const EntryViolationReason = /*@__PURE__*/ S.String;
+
 export type EntryViolationReasons = EntryViolationReason[];
 export const EntryViolationReasons =
   /*@__PURE__*/ S.Array(EntryViolationReason);
@@ -2199,6 +2237,8 @@ export const ResourceViolation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ResourceViolation>;
 export type ResourceViolations = ResourceViolation[];
 export const ResourceViolations = /*@__PURE__*/ S.Array(ResourceViolation);
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -2376,6 +2416,8 @@ export type PolicyComplianceStatusType =
   | "NON_COMPLIANT"
   | (string & {});
 export const PolicyComplianceStatusType = /*@__PURE__*/ S.String;
+
+export type ResourceCount = number;
 export interface EvaluationResult {
   ComplianceStatus?: PolicyComplianceStatusType;
   ViolatorCount?: number;
@@ -2721,6 +2763,8 @@ export const ListThirdPartyFirewallFirewallPoliciesRequest =
   ).annotate({
     identifier: "ListThirdPartyFirewallFirewallPoliciesRequest",
   }) as any as S.Schema<ListThirdPartyFirewallFirewallPoliciesRequest>;
+export type FirewallPolicyId = string;
+export type FirewallPolicyName = string;
 export interface ThirdPartyFirewallFirewallPolicy {
   FirewallPolicyId?: string;
   FirewallPolicyName?: string;
@@ -2912,34 +2956,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-
-//# Errors
-export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
-  "InternalErrorException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidOperationException extends S.TaggedErrorClass<InvalidOperationException>()(
-  "InvalidOperationException",
-  { Message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidTypeException extends S.TaggedErrorClass<InvalidTypeException>()(
-  "InvalidTypeException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type AssociateAdminAccountError =
   | InternalErrorException
   | InvalidInputException
@@ -2971,6 +2988,7 @@ export const associateAdminAccount: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateAdminAccount",
 }));
+
 export type AssociateThirdPartyFirewallError =
   | InternalErrorException
   | InvalidInputException
@@ -2998,6 +3016,7 @@ export const associateThirdPartyFirewall: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateThirdPartyFirewall",
 }));
+
 export type BatchAssociateResourceError =
   | InternalErrorException
   | InvalidInputException
@@ -3027,6 +3046,7 @@ export const batchAssociateResource: API.OperationMethod<
   retry: Retry,
   operationName: "BatchAssociateResource",
 }));
+
 export type BatchDisassociateResourceError =
   | InternalErrorException
   | InvalidInputException
@@ -3054,6 +3074,7 @@ export const batchDisassociateResource: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDisassociateResource",
 }));
+
 export type DeleteAppsListError =
   | InternalErrorException
   | InvalidOperationException
@@ -3079,6 +3100,7 @@ export const deleteAppsList: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAppsList",
 }));
+
 export type DeleteNotificationChannelError =
   | InternalErrorException
   | InvalidOperationException
@@ -3105,6 +3127,7 @@ export const deleteNotificationChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNotificationChannel",
 }));
+
 export type DeletePolicyError =
   | InternalErrorException
   | InvalidInputException
@@ -3134,6 +3157,7 @@ export const deletePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePolicy",
 }));
+
 export type DeleteProtocolsListError =
   | InternalErrorException
   | InvalidOperationException
@@ -3159,6 +3183,7 @@ export const deleteProtocolsList: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProtocolsList",
 }));
+
 export type DeleteResourceSetError =
   | InternalErrorException
   | InvalidInputException
@@ -3186,6 +3211,7 @@ export const deleteResourceSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourceSet",
 }));
+
 export type DisassociateAdminAccountError =
   | InternalErrorException
   | InvalidOperationException
@@ -3213,6 +3239,7 @@ export const disassociateAdminAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateAdminAccount",
 }));
+
 export type DisassociateThirdPartyFirewallError =
   | InternalErrorException
   | InvalidInputException
@@ -3240,6 +3267,7 @@ export const disassociateThirdPartyFirewall: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateThirdPartyFirewall",
 }));
+
 export type GetAdminAccountError =
   | InternalErrorException
   | InvalidOperationException
@@ -3266,6 +3294,7 @@ export const getAdminAccount: API.OperationMethod<
   retry: Retry,
   operationName: "GetAdminAccount",
 }));
+
 export type GetAdminScopeError =
   | InternalErrorException
   | InvalidInputException
@@ -3295,6 +3324,7 @@ export const getAdminScope: API.OperationMethod<
   retry: Retry,
   operationName: "GetAdminScope",
 }));
+
 export type GetAppsListError =
   | InternalErrorException
   | InvalidOperationException
@@ -3320,6 +3350,7 @@ export const getAppsList: API.OperationMethod<
   retry: Retry,
   operationName: "GetAppsList",
 }));
+
 export type GetComplianceDetailError =
   | InternalErrorException
   | InvalidInputException
@@ -3350,6 +3381,7 @@ export const getComplianceDetail: API.OperationMethod<
   retry: Retry,
   operationName: "GetComplianceDetail",
 }));
+
 export type GetNotificationChannelError =
   | InternalErrorException
   | InvalidOperationException
@@ -3377,6 +3409,7 @@ export const getNotificationChannel: API.OperationMethod<
   retry: Retry,
   operationName: "GetNotificationChannel",
 }));
+
 export type GetPolicyError =
   | InternalErrorException
   | InvalidOperationException
@@ -3404,6 +3437,7 @@ export const getPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetPolicy",
 }));
+
 export type GetProtectionStatusError =
   | InternalErrorException
   | InvalidInputException
@@ -3430,6 +3464,7 @@ export const getProtectionStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetProtectionStatus",
 }));
+
 export type GetProtocolsListError =
   | InternalErrorException
   | InvalidOperationException
@@ -3455,6 +3490,7 @@ export const getProtocolsList: API.OperationMethod<
   retry: Retry,
   operationName: "GetProtocolsList",
 }));
+
 export type GetResourceSetError =
   | InternalErrorException
   | InvalidInputException
@@ -3482,6 +3518,7 @@ export const getResourceSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourceSet",
 }));
+
 export type GetThirdPartyFirewallAssociationStatusError =
   | InternalErrorException
   | InvalidInputException
@@ -3509,6 +3546,7 @@ export const getThirdPartyFirewallAssociationStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetThirdPartyFirewallAssociationStatus",
 }));
+
 export type GetViolationDetailsError =
   | InternalErrorException
   | InvalidInputException
@@ -3534,6 +3572,7 @@ export const getViolationDetails: API.OperationMethod<
   retry: Retry,
   operationName: "GetViolationDetails",
 }));
+
 export type ListAdminAccountsForOrganizationError =
   | InternalErrorException
   | InvalidOperationException
@@ -3584,6 +3623,7 @@ export const listAdminAccountsForOrganization: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAdminsManagingAccountError =
   | InternalErrorException
   | InvalidInputException
@@ -3630,6 +3670,7 @@ export const listAdminsManagingAccount: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAppsListsError =
   | InternalErrorException
   | InvalidOperationException
@@ -3678,6 +3719,7 @@ export const listAppsLists: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListComplianceStatusError =
   | InternalErrorException
   | ResourceNotFoundException
@@ -3721,6 +3763,7 @@ export const listComplianceStatus: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDiscoveredResourcesError =
   | InternalErrorException
   | InvalidInputException
@@ -3746,6 +3789,7 @@ export const listDiscoveredResources: API.OperationMethod<
   retry: Retry,
   operationName: "ListDiscoveredResources",
 }));
+
 export type ListMemberAccountsError =
   | InternalErrorException
   | ResourceNotFoundException
@@ -3790,6 +3834,7 @@ export const listMemberAccounts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPoliciesError =
   | InternalErrorException
   | InvalidOperationException
@@ -3838,6 +3883,7 @@ export const listPolicies: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProtocolsListsError =
   | InternalErrorException
   | InvalidOperationException
@@ -3884,6 +3930,7 @@ export const listProtocolsLists: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourceSetResourcesError =
   | InternalErrorException
   | InvalidInputException
@@ -3911,6 +3958,7 @@ export const listResourceSetResources: API.OperationMethod<
   retry: Retry,
   operationName: "ListResourceSetResources",
 }));
+
 export type ListResourceSetsError =
   | InternalErrorException
   | InvalidInputException
@@ -3936,6 +3984,7 @@ export const listResourceSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListResourceSets",
 }));
+
 export type ListTagsForResourceError =
   | InternalErrorException
   | InvalidInputException
@@ -3963,6 +4012,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListThirdPartyFirewallFirewallPoliciesError =
   | InternalErrorException
   | InvalidInputException
@@ -4011,6 +4061,7 @@ export const listThirdPartyFirewallFirewallPolicies: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutAdminAccountError =
   | InternalErrorException
   | InvalidInputException
@@ -4039,6 +4090,7 @@ export const putAdminAccount: API.OperationMethod<
   retry: Retry,
   operationName: "PutAdminAccount",
 }));
+
 export type PutAppsListError =
   | InternalErrorException
   | InvalidInputException
@@ -4068,6 +4120,7 @@ export const putAppsList: API.OperationMethod<
   retry: Retry,
   operationName: "PutAppsList",
 }));
+
 export type PutNotificationChannelError =
   | InternalErrorException
   | InvalidOperationException
@@ -4097,6 +4150,7 @@ export const putNotificationChannel: API.OperationMethod<
   retry: Retry,
   operationName: "PutNotificationChannel",
 }));
+
 export type PutPolicyError =
   | InternalErrorException
   | InvalidInputException
@@ -4165,6 +4219,7 @@ export const putPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutPolicy",
 }));
+
 export type PutProtocolsListError =
   | InternalErrorException
   | InvalidInputException
@@ -4194,6 +4249,7 @@ export const putProtocolsList: API.OperationMethod<
   retry: Retry,
   operationName: "PutProtocolsList",
 }));
+
 export type PutResourceSetError =
   | InternalErrorException
   | InvalidInputException
@@ -4223,6 +4279,7 @@ export const putResourceSet: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourceSet",
 }));
+
 export type TagResourceError =
   | InternalErrorException
   | InvalidInputException
@@ -4252,6 +4309,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalErrorException
   | InvalidInputException

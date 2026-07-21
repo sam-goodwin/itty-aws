@@ -1050,135 +1050,107 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Region must be set");
 });
 
-//# Newtypes
+export class AccessPointAlreadyOwnedByYou extends S.TaggedErrorClass<AccessPointAlreadyOwnedByYou>()(
+  "AccessPointAlreadyOwnedByYou",
+  {},
+).pipe(C.withAlreadyExistsError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { Message: S.optional(S.String) },
+) {}
+export class BucketAlreadyExists extends S.TaggedErrorClass<BucketAlreadyExists>()(
+  "BucketAlreadyExists",
+  {},
+).pipe(C.withAlreadyExistsError) {}
+export class BucketAlreadyOwnedByYou extends S.TaggedErrorClass<BucketAlreadyOwnedByYou>()(
+  "BucketAlreadyOwnedByYou",
+  {},
+) {}
+export class IdempotencyException extends S.TaggedErrorClass<IdempotencyException>()(
+  "IdempotencyException",
+  { Message: S.optional(S.String) },
+) {}
+export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
+  "InternalServiceException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidRequest extends S.TaggedErrorClass<InvalidRequest>()(
+  "InvalidRequest",
+  {},
+).pipe(C.withBadRequestError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String) },
+) {}
+export class JobStatusException extends S.TaggedErrorClass<JobStatusException>()(
+  "JobStatusException",
+  { Message: S.optional(S.String) },
+) {}
+export class JobStatusTransitionForbidden extends S.TaggedErrorClass<JobStatusTransitionForbidden>()(
+  "JobStatusTransitionForbidden",
+  {},
+  T.SyntheticError({
+    from: "InvalidRequest",
+    message: { includes: "job status forbidden" },
+  }),
+).pipe(C.withBadRequestError) {}
+export class MalformedPolicy extends S.TaggedErrorClass<MalformedPolicy>()(
+  "MalformedPolicy",
+  {},
+).pipe(C.withBadRequestError) {}
+export class MissingBucketLevelActivityMetrics extends S.TaggedErrorClass<MissingBucketLevelActivityMetrics>()(
+  "MissingBucketLevelActivityMetrics",
+  {},
+).pipe(C.withBadRequestError) {}
+export class NoSuchAccessPoint extends S.TaggedErrorClass<NoSuchAccessPoint>()(
+  "NoSuchAccessPoint",
+  {},
+).pipe(C.withNotFoundError) {}
+export class NoSuchAccessPointPolicy extends S.TaggedErrorClass<NoSuchAccessPointPolicy>()(
+  "NoSuchAccessPointPolicy",
+  {},
+).pipe(C.withNotFoundError) {}
+export class NoSuchConfiguration extends S.TaggedErrorClass<NoSuchConfiguration>()(
+  "NoSuchConfiguration",
+  {},
+).pipe(C.withNotFoundError) {}
+export class NoSuchMultiRegionAccessPoint extends S.TaggedErrorClass<NoSuchMultiRegionAccessPoint>()(
+  "NoSuchMultiRegionAccessPoint",
+  {},
+).pipe(C.withNotFoundError) {}
+export class NoSuchPublicAccessBlockConfiguration extends S.TaggedErrorClass<NoSuchPublicAccessBlockConfiguration>()(
+  "NoSuchPublicAccessBlockConfiguration",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String) },
+) {}
+export class ObjectLambdaNotAvailable extends S.TaggedErrorClass<ObjectLambdaNotAvailable>()(
+  "ObjectLambdaNotAvailable",
+  {},
+  T.SyntheticError({
+    from: "AccessDenied",
+    message: {
+      includes: "Object Lambda is available only to existing customers",
+    },
+  }),
+).pipe(C.withAuthError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Message: S.optional(S.String) },
+) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { Message: S.optional(S.String) },
+) {}
 export type AccountId = string;
 export type IdentityCenterArn = string;
-export type AccessGrantsLocationId = string;
-export type S3Prefix = string;
-export type GranteeIdentifier = string;
-export type IdentityCenterApplicationArn = string;
-export type TagKeyString = string;
-export type TagValueString = string;
-export type CreationTimestamp = Date;
-export type AccessGrantId = string;
-export type AccessGrantArn = string;
-export type AccessGrantsInstanceId = string;
-export type AccessGrantsInstanceArn = string;
-export type IAMRoleArn = string;
-export type AccessGrantsLocationArn = string;
-export type AccessPointName = string;
-export type BucketName = string;
-export type VpcId = string;
-export type Setting = boolean;
-export type Prefix = string;
-export type S3AccessPointArn = string;
-export type Alias = string;
-export type ObjectLambdaAccessPointName = string;
-export type ObjectLambdaSupportingAccessPointArn = string;
-export type FunctionArnString = string;
-export type AwsLambdaTransformationPayload = string;
-export type ObjectLambdaAccessPointArn = string;
-export type ObjectLambdaAccessPointAliasValue = string;
-export type GrantFullControl = string;
-export type GrantRead = string;
-export type GrantReadACP = string;
-export type GrantWrite = string;
-export type GrantWriteACP = string;
-export type ObjectLockEnabledForBucket = boolean;
-export type NonEmptyMaxLength64String = string;
-export type Location = string;
-export type S3RegionalBucketArn = string;
-export type ConfirmationRequired = boolean;
-export type MaxLength1024String = string;
-export type S3RegionalOrS3ExpressBucketArnString = string;
-export type NonEmptyMaxLength1024String = string;
-export type S3ContentLength = number;
-export type NonEmptyMaxLength2048String = string;
-export type KmsKeyArnString = string;
-export type S3ExpirationInDays = number;
-export type NonEmptyKmsKeyArnString = string;
-export type S3BucketArnString = string;
-export type ReportPrefixString = string;
-export type S3KeyArnString = string;
-export type S3ObjectVersionId = string;
-export type NonEmptyMaxLength256String = string;
-export type JobPriority = number;
-export type ManifestPrefixString = string;
-export type ObjectCreationTime = Date;
-export type ObjectSizeGreaterThanBytes = number;
-export type ObjectSizeLessThanBytes = number;
-export type JobId = string;
-export type ExceptionMessage = string;
-export type MultiRegionAccessPointClientToken = string;
-export type MultiRegionAccessPointName = string;
-export type AsyncRequestTokenARN = string;
-export type StorageLensGroupName = string;
-export type Suffix = string;
-export type ObjectAgeValue = number;
-export type ObjectSizeValue = number;
-export type StorageLensGroupArn = string;
-export type ConfigId = string;
-export type JobArn = string;
-export type JobTotalNumberOfTasks = number;
-export type JobNumberOfTasksSucceeded = number;
-export type JobNumberOfTasksFailed = number;
-export type JobTimeInStateSeconds = number;
-export type JobStatusUpdateReason = string;
-export type JobFailureCode = string;
-export type JobFailureReason = string;
-export type JobCreationTime = Date;
-export type JobTerminationDate = Date;
-export type SuspendedDate = Date;
-export type SuspendedCause = string;
-export type AsyncCreationTimestamp = Date;
-export type Policy = string;
-export type AsyncRequestStatus = string;
-export type RegionName = string;
-export type PolicyDocument = string;
-export type Organization = string;
-export type AccessPointBucketName = string;
-export type CreationDate = Date;
-export type DataSourceId = string;
-export type DataSourceType = string;
-export type ObjectLambdaPolicy = string;
-export type IsPublic = boolean;
-export type PublicAccessBlockEnabled = boolean;
-export type Days = number;
-export type ExpiredObjectDeleteMarker = boolean;
-export type ID = string;
-export type NoncurrentVersionCount = number;
-export type DaysAfterInitiation = number;
-export type Role = string;
-export type Priority = number;
-export type BucketIdentifierString = string;
-export type Minutes = number;
-export type ReplicaKmsKeyID = string;
-export type DurationSeconds = number;
-export type AuditContext = string;
-export type AccessKeyId = string | redacted.Redacted<string>;
-export type SecretAccessKey = string | redacted.Redacted<string>;
-export type SessionToken = string | redacted.Redacted<string>;
-export type Expiration = Date;
-export type MultiRegionAccessPointAlias = string;
-export type MultiRegionAccessPointId = string;
-export type TrafficDialPercentage = number;
-export type NoSuchPublicAccessBlockConfigurationMessage = string;
-export type IsEnabled = boolean;
-export type StorageLensPrefixLevelDelimiter = string;
-export type StorageLensPrefixLevelMaxDepth = number;
-export type MinStorageBytesPercentage = number;
-export type S3AWSRegion = string;
-export type SSEKMSKeyId = string;
-export type AwsOrgArn = string;
-export type StorageLensArn = string;
-export type ContinuationToken = string;
-export type MaxResults = number;
-export type StringForNextToken = string;
-export type S3ResourceArn = string;
-export type ConfirmRemoveSelfBucketAccess = boolean;
-export type MFA = string;
-
-//# Schemas
 export interface AssociateAccessGrantsIdentityCenterRequest {
   AccountId: string;
   IdentityCenterArn: string;
@@ -1215,6 +1187,8 @@ export const AssociateAccessGrantsIdentityCenterResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
     identifier: "AssociateAccessGrantsIdentityCenterResponse",
   }) as any as S.Schema<AssociateAccessGrantsIdentityCenterResponse>;
+export type AccessGrantsLocationId = string;
+export type S3Prefix = string;
 export interface AccessGrantsLocationConfiguration {
   S3SubPrefix?: string;
 }
@@ -1229,6 +1203,8 @@ export type GranteeType =
   | "IAM"
   | (string & {});
 export const GranteeType = /*@__PURE__*/ S.String;
+
+export type GranteeIdentifier = string;
 export interface Grantee {
   GranteeType?: GranteeType;
   GranteeIdentifier?: string;
@@ -1241,8 +1217,13 @@ export const Grantee = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Grantee" }) as any as S.Schema<Grantee>;
 export type Permission = "READ" | "WRITE" | "READWRITE" | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
+
+export type IdentityCenterApplicationArn = string;
 export type S3PrefixType = "Object" | (string & {});
 export const S3PrefixType = /*@__PURE__*/ S.String;
+
+export type TagKeyString = string;
+export type TagValueString = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -1295,6 +1276,9 @@ export const CreateAccessGrantRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessGrantRequest",
 }) as any as S.Schema<CreateAccessGrantRequest>;
+export type CreationTimestamp = Date;
+export type AccessGrantId = string;
+export type AccessGrantArn = string;
 export interface CreateAccessGrantResult {
   CreatedAt?: Date;
   AccessGrantId?: string;
@@ -1352,6 +1336,8 @@ export const CreateAccessGrantsInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessGrantsInstanceRequest",
 }) as any as S.Schema<CreateAccessGrantsInstanceRequest>;
+export type AccessGrantsInstanceId = string;
+export type AccessGrantsInstanceArn = string;
 export interface CreateAccessGrantsInstanceResult {
   CreatedAt?: Date;
   AccessGrantsInstanceId?: string;
@@ -1372,6 +1358,7 @@ export const CreateAccessGrantsInstanceResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessGrantsInstanceResult",
 }) as any as S.Schema<CreateAccessGrantsInstanceResult>;
+export type IAMRoleArn = string;
 export interface CreateAccessGrantsLocationRequest {
   AccountId: string;
   LocationScope: string;
@@ -1406,6 +1393,7 @@ export const CreateAccessGrantsLocationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessGrantsLocationRequest",
 }) as any as S.Schema<CreateAccessGrantsLocationRequest>;
+export type AccessGrantsLocationArn = string;
 export interface CreateAccessGrantsLocationResult {
   CreatedAt?: Date;
   AccessGrantsLocationId?: string;
@@ -1424,6 +1412,9 @@ export const CreateAccessGrantsLocationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessGrantsLocationResult",
 }) as any as S.Schema<CreateAccessGrantsLocationResult>;
+export type AccessPointName = string;
+export type BucketName = string;
+export type VpcId = string;
 export interface VpcConfiguration {
   VpcId: string;
 }
@@ -1432,6 +1423,7 @@ export const VpcConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VpcConfiguration",
 }) as any as S.Schema<VpcConfiguration>;
+export type Setting = boolean;
 export interface PublicAccessBlockConfiguration {
   BlockPublicAcls?: boolean;
   IgnorePublicAcls?: boolean;
@@ -1452,6 +1444,7 @@ export const PublicAccessBlockConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PublicAccessBlockConfiguration",
 }) as any as S.Schema<PublicAccessBlockConfiguration>;
+export type Prefix = string;
 export type PrefixesList = string[];
 export const PrefixesList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("Prefix")),
@@ -1467,6 +1460,7 @@ export type ScopePermission =
   | "AbortMultipartUpload"
   | (string & {});
 export const ScopePermission = /*@__PURE__*/ S.String;
+
 export type ScopePermissionList = ScopePermission[];
 export const ScopePermissionList = /*@__PURE__*/ S.Array(
   ScopePermission.pipe(T.XmlName("Permission")),
@@ -1520,6 +1514,8 @@ export const CreateAccessPointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessPointRequest",
 }) as any as S.Schema<CreateAccessPointRequest>;
+export type S3AccessPointArn = string;
+export type Alias = string;
 export interface CreateAccessPointResult {
   AccessPointArn?: string;
   Alias?: string;
@@ -1532,6 +1528,8 @@ export const CreateAccessPointResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessPointResult",
 }) as any as S.Schema<CreateAccessPointResult>;
+export type ObjectLambdaAccessPointName = string;
+export type ObjectLambdaSupportingAccessPointArn = string;
 export type ObjectLambdaAllowedFeature =
   | "GetObject-Range"
   | "GetObject-PartNumber"
@@ -1539,6 +1537,7 @@ export type ObjectLambdaAllowedFeature =
   | "HeadObject-PartNumber"
   | (string & {});
 export const ObjectLambdaAllowedFeature = /*@__PURE__*/ S.String;
+
 export type ObjectLambdaAllowedFeaturesList = ObjectLambdaAllowedFeature[];
 export const ObjectLambdaAllowedFeaturesList = /*@__PURE__*/ S.Array(
   ObjectLambdaAllowedFeature.pipe(T.XmlName("AllowedFeature")),
@@ -1551,12 +1550,15 @@ export type ObjectLambdaTransformationConfigurationAction =
   | (string & {});
 export const ObjectLambdaTransformationConfigurationAction =
   /*@__PURE__*/ S.String;
+
 export type ObjectLambdaTransformationConfigurationActionsList =
   ObjectLambdaTransformationConfigurationAction[];
 export const ObjectLambdaTransformationConfigurationActionsList =
   /*@__PURE__*/ S.Array(
     ObjectLambdaTransformationConfigurationAction.pipe(T.XmlName("Action")),
   );
+export type FunctionArnString = string;
+export type AwsLambdaTransformationPayload = string;
 export interface AwsLambdaTransformation {
   FunctionArn: string;
   FunctionPayload?: string;
@@ -1642,11 +1644,14 @@ export const CreateAccessPointForObjectLambdaRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateAccessPointForObjectLambdaRequest",
 }) as any as S.Schema<CreateAccessPointForObjectLambdaRequest>;
+export type ObjectLambdaAccessPointArn = string;
+export type ObjectLambdaAccessPointAliasValue = string;
 export type ObjectLambdaAccessPointAliasStatus =
   | "PROVISIONING"
   | "READY"
   | (string & {});
 export const ObjectLambdaAccessPointAliasStatus = /*@__PURE__*/ S.String;
+
 export interface ObjectLambdaAccessPointAlias {
   Value?: string;
   Status?: ObjectLambdaAccessPointAliasStatus;
@@ -1679,6 +1684,7 @@ export type BucketCannedACL =
   | "authenticated-read"
   | (string & {});
 export const BucketCannedACL = /*@__PURE__*/ S.String;
+
 export type BucketLocationConstraint =
   | "EU"
   | "eu-west-1"
@@ -1693,6 +1699,7 @@ export type BucketLocationConstraint =
   | "eu-central-1"
   | (string & {});
 export const BucketLocationConstraint = /*@__PURE__*/ S.String;
+
 export interface CreateBucketConfiguration {
   LocationConstraint?: BucketLocationConstraint;
 }
@@ -1701,6 +1708,13 @@ export const CreateBucketConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBucketConfiguration",
 }) as any as S.Schema<CreateBucketConfiguration>;
+export type GrantFullControl = string;
+export type GrantRead = string;
+export type GrantReadACP = string;
+export type GrantWrite = string;
+export type GrantWriteACP = string;
+export type ObjectLockEnabledForBucket = boolean;
+export type NonEmptyMaxLength64String = string;
 export interface CreateBucketRequest {
   ACL?: BucketCannedACL;
   Bucket: string;
@@ -1752,6 +1766,8 @@ export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBucketRequest",
 }) as any as S.Schema<CreateBucketRequest>;
+export type Location = string;
+export type S3RegionalBucketArn = string;
 export interface CreateBucketResult {
   Location?: string;
   BucketArn?: string;
@@ -1764,6 +1780,8 @@ export const CreateBucketResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBucketResult",
 }) as any as S.Schema<CreateBucketResult>;
+export type ConfirmationRequired = boolean;
+export type MaxLength1024String = string;
 export type UserArguments = { [key: string]: string | undefined };
 export const UserArguments = /*@__PURE__*/ S.Record(
   S.String,
@@ -1783,6 +1801,7 @@ export const LambdaInvokeOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LambdaInvokeOperation",
 }) as any as S.Schema<LambdaInvokeOperation>;
+export type S3RegionalOrS3ExpressBucketArnString = string;
 export type S3CannedAccessControlList =
   | "private"
   | "public-read"
@@ -1793,12 +1812,15 @@ export type S3CannedAccessControlList =
   | "bucket-owner-full-control"
   | (string & {});
 export const S3CannedAccessControlList = /*@__PURE__*/ S.String;
+
 export type S3GranteeTypeIdentifier =
   | "id"
   | "emailAddress"
   | "uri"
   | (string & {});
 export const S3GranteeTypeIdentifier = /*@__PURE__*/ S.String;
+
+export type NonEmptyMaxLength1024String = string;
 export interface S3Grantee {
   TypeIdentifier?: S3GranteeTypeIdentifier;
   Identifier?: string;
@@ -1819,6 +1841,7 @@ export type S3Permission =
   | "WRITE_ACP"
   | (string & {});
 export const S3Permission = /*@__PURE__*/ S.String;
+
 export interface S3Grant {
   Grantee?: S3Grantee;
   Permission?: S3Permission;
@@ -1833,13 +1856,16 @@ export type S3GrantList = S3Grant[];
 export const S3GrantList = /*@__PURE__*/ S.Array(S3Grant);
 export type S3MetadataDirective = "COPY" | "REPLACE" | (string & {});
 export const S3MetadataDirective = /*@__PURE__*/ S.String;
+
 export type S3UserMetadata = { [key: string]: string | undefined };
 export const S3UserMetadata = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type S3ContentLength = number;
 export type S3SSEAlgorithm = "AES256" | "KMS" | (string & {});
 export const S3SSEAlgorithm = /*@__PURE__*/ S.String;
+
 export interface S3ObjectMetadata {
   CacheControl?: string;
   ContentDisposition?: string;
@@ -1879,6 +1905,7 @@ export const S3Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "S3Tag" }) as any as S.Schema<S3Tag>;
 export type S3TagSet = S3Tag[];
 export const S3TagSet = /*@__PURE__*/ S.Array(S3Tag);
+export type NonEmptyMaxLength2048String = string;
 export type S3StorageClass =
   | "STANDARD"
   | "STANDARD_IA"
@@ -1889,10 +1916,14 @@ export type S3StorageClass =
   | "GLACIER_IR"
   | (string & {});
 export const S3StorageClass = /*@__PURE__*/ S.String;
+
+export type KmsKeyArnString = string;
 export type S3ObjectLockLegalHoldStatus = "OFF" | "ON" | (string & {});
 export const S3ObjectLockLegalHoldStatus = /*@__PURE__*/ S.String;
+
 export type S3ObjectLockMode = "COMPLIANCE" | "GOVERNANCE" | (string & {});
 export const S3ObjectLockMode = /*@__PURE__*/ S.String;
+
 export type S3ChecksumAlgorithm =
   | "CRC32"
   | "CRC32C"
@@ -1906,6 +1937,7 @@ export type S3ChecksumAlgorithm =
   | "XXHASH128"
   | (string & {});
 export const S3ChecksumAlgorithm = /*@__PURE__*/ S.String;
+
 export interface S3CopyObjectOperation {
   TargetResource?: string;
   CannedAccessControlList?: S3CannedAccessControlList;
@@ -2000,8 +2032,10 @@ export const S3DeleteObjectTaggingOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3DeleteObjectTaggingOperation",
 }) as any as S.Schema<S3DeleteObjectTaggingOperation>;
+export type S3ExpirationInDays = number;
 export type S3GlacierJobTier = "BULK" | "STANDARD" | (string & {});
 export const S3GlacierJobTier = /*@__PURE__*/ S.String;
+
 export interface S3InitiateRestoreObjectOperation {
   ExpirationInDays?: number;
   GlacierJobTier?: S3GlacierJobTier;
@@ -2035,6 +2069,7 @@ export type S3ObjectLockRetentionMode =
   | "GOVERNANCE"
   | (string & {});
 export const S3ObjectLockRetentionMode = /*@__PURE__*/ S.String;
+
 export interface S3Retention {
   RetainUntilDate?: Date;
   Mode?: S3ObjectLockRetentionMode;
@@ -2076,11 +2111,13 @@ export type ComputeObjectChecksumAlgorithm =
   | "XXHASH128"
   | (string & {});
 export const ComputeObjectChecksumAlgorithm = /*@__PURE__*/ S.String;
+
 export type ComputeObjectChecksumType =
   | "FULL_OBJECT"
   | "COMPOSITE"
   | (string & {});
 export const ComputeObjectChecksumType = /*@__PURE__*/ S.String;
+
 export interface S3ComputeObjectChecksumOperation {
   ChecksumAlgorithm?: ComputeObjectChecksumAlgorithm;
   ChecksumType?: ComputeObjectChecksumType;
@@ -2093,6 +2130,7 @@ export const S3ComputeObjectChecksumOperation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3ComputeObjectChecksumOperation",
 }) as any as S.Schema<S3ComputeObjectChecksumOperation>;
+export type NonEmptyKmsKeyArnString = string;
 export interface S3UpdateObjectEncryptionSSEKMS {
   KMSKeyArn: string;
   BucketKeyEnabled?: boolean;
@@ -2153,10 +2191,14 @@ export const JobOperation = /*@__PURE__*/ S.suspend(() =>
     S3UpdateObjectEncryption: S.optional(S3UpdateObjectEncryptionOperation),
   }),
 ).annotate({ identifier: "JobOperation" }) as any as S.Schema<JobOperation>;
+export type S3BucketArnString = string;
 export type JobReportFormat = "Report_CSV_20180820" | (string & {});
 export const JobReportFormat = /*@__PURE__*/ S.String;
+
+export type ReportPrefixString = string;
 export type JobReportScope = "AllTasks" | "FailedTasksOnly" | (string & {});
 export const JobReportScope = /*@__PURE__*/ S.String;
+
 export interface JobReport {
   Bucket?: string;
   Format?: JobReportFormat;
@@ -2180,6 +2222,7 @@ export type JobManifestFormat =
   | "S3InventoryReport_CSV_20161130"
   | (string & {});
 export const JobManifestFormat = /*@__PURE__*/ S.String;
+
 export type JobManifestFieldName =
   | "Ignore"
   | "Bucket"
@@ -2187,6 +2230,7 @@ export type JobManifestFieldName =
   | "VersionId"
   | (string & {});
 export const JobManifestFieldName = /*@__PURE__*/ S.String;
+
 export type JobManifestFieldList = JobManifestFieldName[];
 export const JobManifestFieldList = /*@__PURE__*/ S.Array(JobManifestFieldName);
 export interface JobManifestSpec {
@@ -2201,6 +2245,8 @@ export const JobManifestSpec = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JobManifestSpec",
 }) as any as S.Schema<JobManifestSpec>;
+export type S3KeyArnString = string;
+export type S3ObjectVersionId = string;
 export interface JobManifestLocation {
   ObjectArn: string;
   ObjectVersionId?: string;
@@ -2222,6 +2268,9 @@ export interface JobManifest {
 export const JobManifest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Spec: JobManifestSpec, Location: JobManifestLocation }),
 ).annotate({ identifier: "JobManifest" }) as any as S.Schema<JobManifest>;
+export type NonEmptyMaxLength256String = string;
+export type JobPriority = number;
+export type ManifestPrefixString = string;
 export interface SSES3Encryption {}
 export const SSES3Encryption = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.XmlName("SSE-S3")),
@@ -2256,6 +2305,7 @@ export type GeneratedManifestFormat =
   | "S3InventoryReport_CSV_20211130"
   | (string & {});
 export const GeneratedManifestFormat = /*@__PURE__*/ S.String;
+
 export interface S3ManifestOutputLocation {
   ExpectedManifestBucketOwner?: string;
   Bucket: string;
@@ -2274,6 +2324,7 @@ export const S3ManifestOutputLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3ManifestOutputLocation",
 }) as any as S.Schema<S3ManifestOutputLocation>;
+export type ObjectCreationTime = Date;
 export type ReplicationStatus =
   | "COMPLETED"
   | "FAILED"
@@ -2281,6 +2332,7 @@ export type ReplicationStatus =
   | "NONE"
   | (string & {});
 export const ReplicationStatus = /*@__PURE__*/ S.String;
+
 export type ReplicationStatusFilterList = ReplicationStatus[];
 export const ReplicationStatusFilterList =
   /*@__PURE__*/ S.Array(ReplicationStatus);
@@ -2300,6 +2352,8 @@ export const KeyNameConstraint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "KeyNameConstraint",
 }) as any as S.Schema<KeyNameConstraint>;
+export type ObjectSizeGreaterThanBytes = number;
+export type ObjectSizeLessThanBytes = number;
 export type StorageClassList = S3StorageClass[];
 export const StorageClassList = /*@__PURE__*/ S.Array(S3StorageClass);
 export interface SSES3Filter {}
@@ -2492,6 +2546,7 @@ export const CreateJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateJobRequest",
 }) as any as S.Schema<CreateJobRequest>;
+export type JobId = string;
 export interface CreateJobResult {
   JobId?: string;
 }
@@ -2500,6 +2555,8 @@ export const CreateJobResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateJobResult",
 }) as any as S.Schema<CreateJobResult>;
+export type MultiRegionAccessPointClientToken = string;
+export type MultiRegionAccessPointName = string;
 export interface Region {
   Bucket: string;
   BucketAccountId?: string;
@@ -2554,6 +2611,7 @@ export const CreateMultiRegionAccessPointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMultiRegionAccessPointRequest",
 }) as any as S.Schema<CreateMultiRegionAccessPointRequest>;
+export type AsyncRequestTokenARN = string;
 export interface CreateMultiRegionAccessPointResult {
   RequestTokenARN?: string;
 }
@@ -2562,10 +2620,12 @@ export const CreateMultiRegionAccessPointResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMultiRegionAccessPointResult",
 }) as any as S.Schema<CreateMultiRegionAccessPointResult>;
+export type StorageLensGroupName = string;
 export type MatchAnyPrefix = string[];
 export const MatchAnyPrefix = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("Prefix")),
 );
+export type Suffix = string;
 export type MatchAnySuffix = string[];
 export const MatchAnySuffix = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("Suffix")),
@@ -2574,6 +2634,7 @@ export type MatchAnyTag = S3Tag[];
 export const MatchAnyTag = /*@__PURE__*/ S.Array(
   S3Tag.pipe(T.XmlName("Tag")).annotate({ identifier: "S3Tag" }),
 );
+export type ObjectAgeValue = number;
 export interface MatchObjectAge {
   DaysGreaterThan?: number;
   DaysLessThan?: number;
@@ -2584,6 +2645,7 @@ export const MatchObjectAge = /*@__PURE__*/ S.suspend(() =>
     DaysLessThan: S.optional(S.Number),
   }),
 ).annotate({ identifier: "MatchObjectAge" }) as any as S.Schema<MatchObjectAge>;
+export type ObjectSizeValue = number;
 export interface MatchObjectSize {
   BytesGreaterThan?: number;
   BytesLessThan?: number;
@@ -2654,6 +2716,7 @@ export const StorageLensGroupFilter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StorageLensGroupFilter",
 }) as any as S.Schema<StorageLensGroupFilter>;
+export type StorageLensGroupArn = string;
 export interface StorageLensGroup {
   Name: string;
   Filter: StorageLensGroupFilter;
@@ -3300,6 +3363,7 @@ export const DeletePublicAccessBlockResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeletePublicAccessBlockResponse",
 }) as any as S.Schema<DeletePublicAccessBlockResponse>;
+export type ConfigId = string;
 export interface DeleteStorageLensConfigurationRequest {
   ConfigId: string;
   AccountId: string;
@@ -3430,6 +3494,7 @@ export const DescribeJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeJobRequest",
 }) as any as S.Schema<DescribeJobRequest>;
+export type JobArn = string;
 export type JobStatus =
   | "Active"
   | "Cancelled"
@@ -3446,6 +3511,11 @@ export type JobStatus =
   | "Suspended"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
+export type JobTotalNumberOfTasks = number;
+export type JobNumberOfTasksSucceeded = number;
+export type JobNumberOfTasksFailed = number;
+export type JobTimeInStateSeconds = number;
 export interface JobTimers {
   ElapsedTimeInActiveSeconds?: number;
 }
@@ -3468,6 +3538,9 @@ export const JobProgressSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JobProgressSummary",
 }) as any as S.Schema<JobProgressSummary>;
+export type JobStatusUpdateReason = string;
+export type JobFailureCode = string;
+export type JobFailureReason = string;
 export interface JobFailure {
   FailureCode?: string;
   FailureReason?: string;
@@ -3480,6 +3553,10 @@ export const JobFailure = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobFailure" }) as any as S.Schema<JobFailure>;
 export type JobFailureList = JobFailure[];
 export const JobFailureList = /*@__PURE__*/ S.Array(JobFailure);
+export type JobCreationTime = Date;
+export type JobTerminationDate = Date;
+export type SuspendedDate = Date;
+export type SuspendedCause = string;
 export interface S3GeneratedManifestDescriptor {
   Format?: GeneratedManifestFormat;
   Location?: JobManifestLocation;
@@ -3575,12 +3652,15 @@ export const DescribeMultiRegionAccessPointOperationRequest =
   ).annotate({
     identifier: "DescribeMultiRegionAccessPointOperationRequest",
   }) as any as S.Schema<DescribeMultiRegionAccessPointOperationRequest>;
+export type AsyncCreationTimestamp = Date;
 export type AsyncOperationName =
   | "CreateMultiRegionAccessPoint"
   | "DeleteMultiRegionAccessPoint"
   | "PutMultiRegionAccessPointPolicy"
   | (string & {});
 export const AsyncOperationName = /*@__PURE__*/ S.String;
+
+export type Policy = string;
 export interface PutMultiRegionAccessPointPolicyInput {
   Name: string;
   Policy: string;
@@ -3610,6 +3690,8 @@ export const AsyncRequestParameters = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AsyncRequestParameters",
 }) as any as S.Schema<AsyncRequestParameters>;
+export type AsyncRequestStatus = string;
+export type RegionName = string;
 export interface MultiRegionAccessPointRegionalResponse {
   Name?: string;
   RequestStatus?: string;
@@ -3908,6 +3990,8 @@ export const GetAccessGrantsInstanceResourcePolicyRequest =
   ).annotate({
     identifier: "GetAccessGrantsInstanceResourcePolicyRequest",
   }) as any as S.Schema<GetAccessGrantsInstanceResourcePolicyRequest>;
+export type PolicyDocument = string;
+export type Organization = string;
 export interface GetAccessGrantsInstanceResourcePolicyResult {
   Policy?: string;
   Organization?: string;
@@ -4000,13 +4084,18 @@ export const GetAccessPointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccessPointRequest",
 }) as any as S.Schema<GetAccessPointRequest>;
+export type AccessPointBucketName = string;
 export type NetworkOrigin = "Internet" | "VPC" | (string & {});
 export const NetworkOrigin = /*@__PURE__*/ S.String;
+
+export type CreationDate = Date;
 export type Endpoints = { [key: string]: string | undefined };
 export const Endpoints = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type DataSourceId = string;
+export type DataSourceType = string;
 export interface GetAccessPointResult {
   Name?: string;
   Bucket?: string;
@@ -4192,6 +4281,7 @@ export const GetAccessPointPolicyForObjectLambdaRequest =
   ).annotate({
     identifier: "GetAccessPointPolicyForObjectLambdaRequest",
   }) as any as S.Schema<GetAccessPointPolicyForObjectLambdaRequest>;
+export type ObjectLambdaPolicy = string;
 export interface GetAccessPointPolicyForObjectLambdaResult {
   Policy?: string;
 }
@@ -4231,6 +4321,7 @@ export const GetAccessPointPolicyStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccessPointPolicyStatusRequest",
 }) as any as S.Schema<GetAccessPointPolicyStatusRequest>;
+export type IsPublic = boolean;
 export interface PolicyStatus {
   IsPublic?: boolean;
 }
@@ -4350,6 +4441,7 @@ export const GetBucketRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketRequest",
 }) as any as S.Schema<GetBucketRequest>;
+export type PublicAccessBlockEnabled = boolean;
 export interface GetBucketResult {
   Bucket?: string;
   PublicAccessBlockEnabled?: boolean;
@@ -4395,6 +4487,8 @@ export const GetBucketLifecycleConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetBucketLifecycleConfigurationRequest",
 }) as any as S.Schema<GetBucketLifecycleConfigurationRequest>;
+export type Days = number;
+export type ExpiredObjectDeleteMarker = boolean;
 export interface LifecycleExpiration {
   Date?: Date;
   Days?: number;
@@ -4409,6 +4503,7 @@ export const LifecycleExpiration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LifecycleExpiration",
 }) as any as S.Schema<LifecycleExpiration>;
+export type ID = string;
 export interface LifecycleRuleAndOperator {
   Prefix?: string;
   Tags?: S3Tag[];
@@ -4445,6 +4540,7 @@ export const LifecycleRuleFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LifecycleRuleFilter>;
 export type ExpirationStatus = "Enabled" | "Disabled" | (string & {});
 export const ExpirationStatus = /*@__PURE__*/ S.String;
+
 export type TransitionStorageClass =
   | "GLACIER"
   | "STANDARD_IA"
@@ -4453,6 +4549,7 @@ export type TransitionStorageClass =
   | "DEEP_ARCHIVE"
   | (string & {});
 export const TransitionStorageClass = /*@__PURE__*/ S.String;
+
 export interface Transition {
   Date?: Date;
   Days?: number;
@@ -4489,6 +4586,7 @@ export const NoncurrentVersionTransitionList = /*@__PURE__*/ S.Array(
     T.XmlName("NoncurrentVersionTransition"),
   ).annotate({ identifier: "NoncurrentVersionTransition" }),
 );
+export type NoncurrentVersionCount = number;
 export interface NoncurrentVersionExpiration {
   NoncurrentDays?: number;
   NewerNoncurrentVersions?: number;
@@ -4501,6 +4599,7 @@ export const NoncurrentVersionExpiration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NoncurrentVersionExpiration",
 }) as any as S.Schema<NoncurrentVersionExpiration>;
+export type DaysAfterInitiation = number;
 export interface AbortIncompleteMultipartUpload {
   DaysAfterInitiation?: number;
 }
@@ -4607,6 +4706,8 @@ export const GetBucketReplicationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketReplicationRequest",
 }) as any as S.Schema<GetBucketReplicationRequest>;
+export type Role = string;
+export type Priority = number;
 export interface ReplicationRuleAndOperator {
   Prefix?: string;
   Tags?: S3Tag[];
@@ -4632,11 +4733,13 @@ export const ReplicationRuleFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationRuleFilter>;
 export type ReplicationRuleStatus = "Enabled" | "Disabled" | (string & {});
 export const ReplicationRuleStatus = /*@__PURE__*/ S.String;
+
 export type SseKmsEncryptedObjectsStatus =
   | "Enabled"
   | "Disabled"
   | (string & {});
 export const SseKmsEncryptedObjectsStatus = /*@__PURE__*/ S.String;
+
 export interface SseKmsEncryptedObjects {
   Status: SseKmsEncryptedObjectsStatus;
 }
@@ -4647,6 +4750,7 @@ export const SseKmsEncryptedObjects = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SseKmsEncryptedObjects>;
 export type ReplicaModificationsStatus = "Enabled" | "Disabled" | (string & {});
 export const ReplicaModificationsStatus = /*@__PURE__*/ S.String;
+
 export interface ReplicaModifications {
   Status: ReplicaModificationsStatus;
 }
@@ -4672,6 +4776,7 @@ export type ExistingObjectReplicationStatus =
   | "Disabled"
   | (string & {});
 export const ExistingObjectReplicationStatus = /*@__PURE__*/ S.String;
+
 export interface ExistingObjectReplication {
   Status: ExistingObjectReplicationStatus;
 }
@@ -4680,8 +4785,11 @@ export const ExistingObjectReplication = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExistingObjectReplication",
 }) as any as S.Schema<ExistingObjectReplication>;
+export type BucketIdentifierString = string;
 export type ReplicationTimeStatus = "Enabled" | "Disabled" | (string & {});
 export const ReplicationTimeStatus = /*@__PURE__*/ S.String;
+
+export type Minutes = number;
 export interface ReplicationTimeValue {
   Minutes?: number;
 }
@@ -4701,6 +4809,7 @@ export const ReplicationTime = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReplicationTime>;
 export type OwnerOverride = "Destination" | (string & {});
 export const OwnerOverride = /*@__PURE__*/ S.String;
+
 export interface AccessControlTranslation {
   Owner: OwnerOverride;
 }
@@ -4709,6 +4818,7 @@ export const AccessControlTranslation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AccessControlTranslation",
 }) as any as S.Schema<AccessControlTranslation>;
+export type ReplicaKmsKeyID = string;
 export interface EncryptionConfiguration {
   ReplicaKmsKeyID?: string;
 }
@@ -4719,6 +4829,7 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionConfiguration>;
 export type MetricsStatus = "Enabled" | "Disabled" | (string & {});
 export const MetricsStatus = /*@__PURE__*/ S.String;
+
 export interface Metrics {
   Status: MetricsStatus;
   EventThreshold?: ReplicationTimeValue;
@@ -4741,6 +4852,7 @@ export type ReplicationStorageClass =
   | "GLACIER_IR"
   | (string & {});
 export const ReplicationStorageClass = /*@__PURE__*/ S.String;
+
 export interface Destination {
   Account?: string;
   Bucket: string;
@@ -4766,6 +4878,7 @@ export type DeleteMarkerReplicationStatus =
   | "Disabled"
   | (string & {});
 export const DeleteMarkerReplicationStatus = /*@__PURE__*/ S.String;
+
 export interface DeleteMarkerReplication {
   Status: DeleteMarkerReplicationStatus;
 }
@@ -4891,8 +5004,10 @@ export const GetBucketVersioningRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetBucketVersioningRequest>;
 export type BucketVersioningStatus = "Enabled" | "Suspended" | (string & {});
 export const BucketVersioningStatus = /*@__PURE__*/ S.String;
+
 export type MFADeleteStatus = "Enabled" | "Disabled" | (string & {});
 export const MFADeleteStatus = /*@__PURE__*/ S.String;
+
 export interface GetBucketVersioningResult {
   Status?: BucketVersioningStatus;
   MFADelete?: MFADeleteStatus;
@@ -4905,8 +5020,11 @@ export const GetBucketVersioningResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBucketVersioningResult",
 }) as any as S.Schema<GetBucketVersioningResult>;
+export type DurationSeconds = number;
 export type Privilege = "Minimal" | "Default" | (string & {});
 export const Privilege = /*@__PURE__*/ S.String;
+
+export type AuditContext = string;
 export interface GetDataAccessRequest {
   AccountId: string;
   Target: string;
@@ -4947,6 +5065,10 @@ export const GetDataAccessRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDataAccessRequest",
 }) as any as S.Schema<GetDataAccessRequest>;
+export type AccessKeyId = string | redacted.Redacted<string>;
+export type SecretAccessKey = string | redacted.Redacted<string>;
+export type SessionToken = string | redacted.Redacted<string>;
+export type Expiration = Date;
 export interface Credentials {
   AccessKeyId?: string | redacted.Redacted<string>;
   SecretAccessKey?: string | redacted.Redacted<string>;
@@ -5037,6 +5159,7 @@ export const GetMultiRegionAccessPointRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMultiRegionAccessPointRequest",
 }) as any as S.Schema<GetMultiRegionAccessPointRequest>;
+export type MultiRegionAccessPointAlias = string;
 export type MultiRegionAccessPointStatus =
   | "READY"
   | "INCONSISTENT_ACROSS_REGIONS"
@@ -5046,6 +5169,7 @@ export type MultiRegionAccessPointStatus =
   | "DELETING"
   | (string & {});
 export const MultiRegionAccessPointStatus = /*@__PURE__*/ S.String;
+
 export interface RegionReport {
   Bucket?: string;
   Region?: string;
@@ -5203,6 +5327,7 @@ export const GetMultiRegionAccessPointPolicyStatusResult =
   ).annotate({
     identifier: "GetMultiRegionAccessPointPolicyStatusResult",
   }) as any as S.Schema<GetMultiRegionAccessPointPolicyStatusResult>;
+export type MultiRegionAccessPointId = string;
 export interface GetMultiRegionAccessPointRoutesRequest {
   AccountId: string;
   Mrap: string;
@@ -5234,6 +5359,7 @@ export const GetMultiRegionAccessPointRoutesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetMultiRegionAccessPointRoutesRequest",
 }) as any as S.Schema<GetMultiRegionAccessPointRoutesRequest>;
+export type TrafficDialPercentage = number;
 export interface MultiRegionAccessPointRoute {
   Bucket?: string;
   Region?: string;
@@ -5334,6 +5460,7 @@ export const GetStorageLensConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetStorageLensConfigurationRequest",
 }) as any as S.Schema<GetStorageLensConfigurationRequest>;
+export type IsEnabled = boolean;
 export interface ActivityMetrics {
   IsEnabled?: boolean;
 }
@@ -5342,6 +5469,9 @@ export const ActivityMetrics = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ActivityMetrics",
 }) as any as S.Schema<ActivityMetrics>;
+export type StorageLensPrefixLevelDelimiter = string;
+export type StorageLensPrefixLevelMaxDepth = number;
+export type MinStorageBytesPercentage = number;
 export interface SelectionCriteria {
   Delimiter?: string;
   MaxDepth?: number;
@@ -5481,6 +5611,7 @@ export const AccountLevel = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AccountLevel" }) as any as S.Schema<AccountLevel>;
 export type Buckets = string[];
 export const Buckets = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Arn")));
+export type S3AWSRegion = string;
 export type Regions = string[];
 export const Regions = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("Region")),
@@ -5501,12 +5632,15 @@ export const Exclude = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Exclude" }) as any as S.Schema<Exclude>;
 export type Format = "CSV" | "Parquet" | (string & {});
 export const Format = /*@__PURE__*/ S.String;
+
 export type OutputSchemaVersion = "V_1" | (string & {});
 export const OutputSchemaVersion = /*@__PURE__*/ S.String;
+
 export interface SSES3 {}
 export const SSES3 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.XmlName("SSE-S3")),
 ).annotate({ identifier: "SSES3" }) as any as S.Schema<SSES3>;
+export type SSEKMSKeyId = string;
 export interface SSEKMS {
   KeyId: string;
 }
@@ -5596,6 +5730,7 @@ export const StorageLensExpandedPrefixesDataExport = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "StorageLensExpandedPrefixesDataExport",
 }) as any as S.Schema<StorageLensExpandedPrefixesDataExport>;
+export type AwsOrgArn = string;
 export interface StorageLensAwsOrg {
   Arn: string;
 }
@@ -5604,6 +5739,7 @@ export const StorageLensAwsOrg = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StorageLensAwsOrg",
 }) as any as S.Schema<StorageLensAwsOrg>;
+export type StorageLensArn = string;
 export interface StorageLensConfiguration {
   Id: string;
   AccountLevel: AccountLevel;
@@ -5737,6 +5873,8 @@ export const GetStorageLensGroupResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetStorageLensGroupResult",
 }) as any as S.Schema<GetStorageLensGroupResult>;
+export type ContinuationToken = string;
+export type MaxResults = number;
 export interface ListAccessGrantsRequest {
   AccountId: string;
   NextToken?: string;
@@ -6226,6 +6364,7 @@ export const ListCallerAccessGrantsResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListCallerAccessGrantsResult>;
 export type JobStatusList = JobStatus[];
 export const JobStatusList = /*@__PURE__*/ S.Array(JobStatus);
+export type StringForNextToken = string;
 export interface ListJobsRequest {
   AccountId: string;
   JobStatuses?: JobStatus[];
@@ -6271,6 +6410,7 @@ export type OperationName =
   | "S3UpdateObjectEncryption"
   | (string & {});
 export const OperationName = /*@__PURE__*/ S.String;
+
 export interface JobListDescriptor {
   JobId?: string;
   Description?: string;
@@ -6549,6 +6689,7 @@ export const ListStorageLensGroupsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListStorageLensGroupsResult",
 }) as any as S.Schema<ListStorageLensGroupsResult>;
+export type S3ResourceArn = string;
 export interface ListTagsForResourceRequest {
   AccountId: string;
   ResourceArn: string;
@@ -6833,6 +6974,7 @@ export const PutBucketLifecycleConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "PutBucketLifecycleConfigurationResponse",
 }) as any as S.Schema<PutBucketLifecycleConfigurationResponse>;
+export type ConfirmRemoveSelfBucketAccess = boolean;
 export interface PutBucketPolicyRequest {
   AccountId: string;
   Bucket: string;
@@ -6953,8 +7095,10 @@ export const PutBucketTaggingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutBucketTaggingResponse",
 }) as any as S.Schema<PutBucketTaggingResponse>;
+export type MFA = string;
 export type MFADelete = "Enabled" | "Disabled" | (string & {});
 export const MFADelete = /*@__PURE__*/ S.String;
+
 export interface VersioningConfiguration {
   MFADelete?: MFADelete;
   Status?: BucketVersioningStatus;
@@ -7407,6 +7551,7 @@ export const UpdateJobPriorityResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateJobPriorityResult>;
 export type RequestedJobStatus = "Cancelled" | "Ready" | (string & {});
 export const RequestedJobStatus = /*@__PURE__*/ S.String;
+
 export interface UpdateJobStatusRequest {
   AccountId: string;
   JobId: string;
@@ -7491,109 +7636,8 @@ export const UpdateStorageLensGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateStorageLensGroupResponse",
 }) as any as S.Schema<UpdateStorageLensGroupResponse>;
-
-//# Errors
-export class AccessPointAlreadyOwnedByYou extends S.TaggedErrorClass<AccessPointAlreadyOwnedByYou>()(
-  "AccessPointAlreadyOwnedByYou",
-  {},
-).pipe(C.withAlreadyExistsError) {}
-export class InvalidRequest extends S.TaggedErrorClass<InvalidRequest>()(
-  "InvalidRequest",
-  {},
-).pipe(C.withBadRequestError) {}
-export class NoSuchAccessPoint extends S.TaggedErrorClass<NoSuchAccessPoint>()(
-  "NoSuchAccessPoint",
-  {},
-).pipe(C.withNotFoundError) {}
-export class ObjectLambdaNotAvailable extends S.TaggedErrorClass<ObjectLambdaNotAvailable>()(
-  "ObjectLambdaNotAvailable",
-  {},
-  T.SyntheticError({
-    from: "AccessDenied",
-    message: {
-      includes: "Object Lambda is available only to existing customers",
-    },
-  }),
-).pipe(C.withAuthError) {}
-export class BucketAlreadyExists extends S.TaggedErrorClass<BucketAlreadyExists>()(
-  "BucketAlreadyExists",
-  {},
-).pipe(C.withAlreadyExistsError) {}
-export class BucketAlreadyOwnedByYou extends S.TaggedErrorClass<BucketAlreadyOwnedByYou>()(
-  "BucketAlreadyOwnedByYou",
-  {},
-) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Message: S.optional(S.String) },
-) {}
-export class IdempotencyException extends S.TaggedErrorClass<IdempotencyException>()(
-  "IdempotencyException",
-  { Message: S.optional(S.String) },
-) {}
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { Message: S.optional(S.String) },
-) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String) },
-) {}
-export class NoSuchAccessPointPolicy extends S.TaggedErrorClass<NoSuchAccessPointPolicy>()(
-  "NoSuchAccessPointPolicy",
-  {},
-).pipe(C.withNotFoundError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class NoSuchMultiRegionAccessPoint extends S.TaggedErrorClass<NoSuchMultiRegionAccessPoint>()(
-  "NoSuchMultiRegionAccessPoint",
-  {},
-).pipe(C.withNotFoundError) {}
-export class NoSuchConfiguration extends S.TaggedErrorClass<NoSuchConfiguration>()(
-  "NoSuchConfiguration",
-  {},
-).pipe(C.withNotFoundError) {}
-export class NoSuchPublicAccessBlockConfiguration extends S.TaggedErrorClass<NoSuchPublicAccessBlockConfiguration>()(
-  "NoSuchPublicAccessBlockConfiguration",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-) {}
-export class MalformedPolicy extends S.TaggedErrorClass<MalformedPolicy>()(
-  "MalformedPolicy",
-  {},
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { Message: S.optional(S.String) },
-) {}
-export class MissingBucketLevelActivityMetrics extends S.TaggedErrorClass<MissingBucketLevelActivityMetrics>()(
-  "MissingBucketLevelActivityMetrics",
-  {},
-).pipe(C.withBadRequestError) {}
-export class JobStatusTransitionForbidden extends S.TaggedErrorClass<JobStatusTransitionForbidden>()(
-  "JobStatusTransitionForbidden",
-  {},
-  T.SyntheticError({
-    from: "InvalidRequest",
-    message: { includes: "job status forbidden" },
-  }),
-).pipe(C.withBadRequestError) {}
-export class JobStatusException extends S.TaggedErrorClass<JobStatusException>()(
-  "JobStatusException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ExceptionMessage = string;
+export type NoSuchPublicAccessBlockConfigurationMessage = string;
 export type AssociateAccessGrantsIdentityCenterError = CommonErrors;
 /**
  * Associate your S3 Access Grants instance with an Amazon Web Services IAM Identity Center instance. Use this action if you want to create access grants for users or groups from your corporate identity directory. First, you must add your corporate identity directory to Amazon Web Services IAM Identity Center. Then, you can associate this IAM Identity Center instance with your S3 Access Grants instance.
@@ -7620,6 +7664,7 @@ export const associateAccessGrantsIdentityCenter: API.OperationMethod<
   operationName: "AssociateAccessGrantsIdentityCenter",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type CreateAccessGrantError = CommonErrors;
 /**
  * Creates an access grant that gives a grantee access to your S3 data. The grantee can be an IAM user or role or a directory user, or group. Before you can create a grant, you must have an S3 Access Grants instance in the same Region as the S3 data. You can create an S3 Access Grants instance using the CreateAccessGrantsInstance. You must also have registered at least one S3 data location in your S3 Access Grants instance using CreateAccessGrantsLocation.
@@ -7650,6 +7695,7 @@ export const createAccessGrant: API.OperationMethod<
   operationName: "CreateAccessGrant",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type CreateAccessGrantsInstanceError = CommonErrors;
 /**
  * Creates an S3 Access Grants instance, which serves as a logical grouping for access grants. You can create one S3 Access Grants instance per Region per account.
@@ -7676,6 +7722,7 @@ export const createAccessGrantsInstance: API.OperationMethod<
   operationName: "CreateAccessGrantsInstance",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type CreateAccessGrantsLocationError = CommonErrors;
 /**
  * The S3 data location that you would like to register in your S3 Access Grants instance. Your S3 data must be in the same Region as your S3 Access Grants instance. The location can be one of the following:
@@ -7710,6 +7757,7 @@ export const createAccessGrantsLocation: API.OperationMethod<
   operationName: "CreateAccessGrantsLocation",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type CreateAccessPointError =
   | AccessPointAlreadyOwnedByYou
   | InvalidRequest
@@ -7756,6 +7804,7 @@ export const createAccessPoint: API.OperationMethod<
   operationName: "CreateAccessPoint",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type CreateAccessPointForObjectLambdaError =
   | AccessPointAlreadyOwnedByYou
   | InvalidRequest
@@ -7796,6 +7845,7 @@ export const createAccessPointForObjectLambda: API.OperationMethod<
   operationName: "CreateAccessPointForObjectLambda",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type CreateBucketError =
   | BucketAlreadyExists
   | BucketAlreadyOwnedByYou
@@ -7852,6 +7902,7 @@ export const createBucket: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBucket",
 }));
+
 export type CreateJobError =
   | BadRequestException
   | IdempotencyException
@@ -7903,6 +7954,7 @@ export const createJob: API.OperationMethod<
   operationName: "CreateJob",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type CreateMultiRegionAccessPointError = InvalidRequest | CommonErrors;
 /**
  * This operation is not supported by directory buckets.
@@ -7943,6 +7995,7 @@ export const createMultiRegionAccessPoint: API.OperationMethod<
   operationName: "CreateMultiRegionAccessPoint",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type CreateStorageLensGroupError = CommonErrors;
 /**
  * Creates a new S3 Storage Lens group and associates it with the specified Amazon Web Services account ID. An
@@ -7975,6 +8028,7 @@ export const createStorageLensGroup: API.OperationMethod<
   operationName: "CreateStorageLensGroup",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteAccessGrantError = CommonErrors;
 /**
  * Deletes the access grant from the S3 Access Grants instance. You cannot undo an access grant deletion and the grantee will no longer have access to the S3 data.
@@ -7997,6 +8051,7 @@ export const deleteAccessGrant: API.OperationMethod<
   operationName: "DeleteAccessGrant",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteAccessGrantsInstanceError = CommonErrors;
 /**
  * Deletes your S3 Access Grants instance. You must first delete the access grants and locations before S3 Access Grants can delete the instance. See DeleteAccessGrant and DeleteAccessGrantsLocation. If you have associated an IAM Identity Center instance with your S3 Access Grants instance, you must first dissassociate the Identity Center instance from the S3 Access Grants instance before you can delete the S3 Access Grants instance. See AssociateAccessGrantsIdentityCenter and DissociateAccessGrantsIdentityCenter.
@@ -8019,6 +8074,7 @@ export const deleteAccessGrantsInstance: API.OperationMethod<
   operationName: "DeleteAccessGrantsInstance",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteAccessGrantsInstanceResourcePolicyError = CommonErrors;
 /**
  * Deletes the resource policy of the S3 Access Grants instance. The resource policy is used to manage cross-account access to your S3 Access Grants instance. By deleting the resource policy, you delete any cross-account permissions to your S3 Access Grants instance.
@@ -8041,6 +8097,7 @@ export const deleteAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   operationName: "DeleteAccessGrantsInstanceResourcePolicy",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteAccessGrantsLocationError = CommonErrors;
 /**
  * Deregisters a location from your S3 Access Grants instance. You can only delete a location registration from an S3 Access Grants instance if there are no grants associated with this location. See Delete a grant for information on how to delete grants. You need to have at least one registered location in your S3 Access Grants instance in order to create access grants.
@@ -8063,6 +8120,7 @@ export const deleteAccessGrantsLocation: API.OperationMethod<
   operationName: "DeleteAccessGrantsLocation",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteAccessPointError = NoSuchAccessPoint | CommonErrors;
 /**
  * Deletes the specified access point.
@@ -8091,6 +8149,7 @@ export const deleteAccessPoint: API.OperationMethod<
   operationName: "DeleteAccessPoint",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteAccessPointForObjectLambdaError =
   | NoSuchAccessPoint
   | CommonErrors;
@@ -8122,6 +8181,7 @@ export const deleteAccessPointForObjectLambda: API.OperationMethod<
   operationName: "DeleteAccessPointForObjectLambda",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteAccessPointPolicyError =
   | NoSuchAccessPoint
   | NoSuchAccessPointPolicy
@@ -8151,6 +8211,7 @@ export const deleteAccessPointPolicy: API.OperationMethod<
   operationName: "DeleteAccessPointPolicy",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteAccessPointPolicyForObjectLambdaError =
   | NoSuchAccessPoint
   | NoSuchAccessPointPolicy
@@ -8181,6 +8242,7 @@ export const deleteAccessPointPolicyForObjectLambda: API.OperationMethod<
   operationName: "DeleteAccessPointPolicyForObjectLambda",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteAccessPointScopeError = CommonErrors;
 /**
  * Deletes an existing access point scope for a directory bucket.
@@ -8205,6 +8267,7 @@ export const deleteAccessPointScope: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccessPointScope",
 }));
+
 export type DeleteBucketError = CommonErrors;
 /**
  * This action deletes an Amazon S3 on Outposts bucket. To delete an S3 bucket, see DeleteBucket in the *Amazon S3 API Reference*.
@@ -8238,6 +8301,7 @@ export const deleteBucket: API.OperationMethod<
   operationName: "DeleteBucket",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteBucketLifecycleConfigurationError = CommonErrors;
 /**
  * This action deletes an Amazon S3 on Outposts bucket's lifecycle configuration. To delete
@@ -8279,6 +8343,7 @@ export const deleteBucketLifecycleConfiguration: API.OperationMethod<
   operationName: "DeleteBucketLifecycleConfiguration",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteBucketPolicyError = CommonErrors;
 /**
  * This action deletes an Amazon S3 on Outposts bucket policy. To delete an S3 bucket policy,
@@ -8326,6 +8391,7 @@ export const deleteBucketPolicy: API.OperationMethod<
   operationName: "DeleteBucketPolicy",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteBucketReplicationError = CommonErrors;
 /**
  * This operation deletes an Amazon S3 on Outposts bucket's replication configuration. To
@@ -8372,6 +8438,7 @@ export const deleteBucketReplication: API.OperationMethod<
   operationName: "DeleteBucketReplication",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteBucketTaggingError = CommonErrors;
 /**
  * This action deletes an Amazon S3 on Outposts bucket's tags. To delete an S3 bucket tags,
@@ -8406,6 +8473,7 @@ export const deleteBucketTagging: API.OperationMethod<
   operationName: "DeleteBucketTagging",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteJobTaggingError =
   | InternalServiceException
   | NotFoundException
@@ -8448,6 +8516,7 @@ export const deleteJobTagging: API.OperationMethod<
   operationName: "DeleteJobTagging",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteMultiRegionAccessPointError =
   | NoSuchMultiRegionAccessPoint
   | InvalidRequest
@@ -8491,6 +8560,7 @@ export const deleteMultiRegionAccessPoint: API.OperationMethod<
   operationName: "DeleteMultiRegionAccessPoint",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeletePublicAccessBlockError = CommonErrors;
 /**
  * This operation is not supported by directory buckets.
@@ -8523,6 +8593,7 @@ export const deletePublicAccessBlock: API.OperationMethod<
   operationName: "DeletePublicAccessBlock",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteStorageLensConfigurationError =
   | NoSuchConfiguration
   | CommonErrors;
@@ -8552,6 +8623,7 @@ export const deleteStorageLensConfiguration: API.OperationMethod<
   operationName: "DeleteStorageLensConfiguration",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteStorageLensConfigurationTaggingError =
   | NoSuchConfiguration
   | CommonErrors;
@@ -8582,6 +8654,7 @@ export const deleteStorageLensConfigurationTagging: API.OperationMethod<
   operationName: "DeleteStorageLensConfigurationTagging",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DeleteStorageLensGroupError = CommonErrors;
 /**
  * Deletes an existing S3 Storage Lens group.
@@ -8607,6 +8680,7 @@ export const deleteStorageLensGroup: API.OperationMethod<
   operationName: "DeleteStorageLensGroup",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DescribeJobError =
   | BadRequestException
   | InternalServiceException
@@ -8650,6 +8724,7 @@ export const describeJob: API.OperationMethod<
   operationName: "DescribeJob",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DescribeMultiRegionAccessPointOperationError =
   | InvalidRequest
   | CommonErrors;
@@ -8683,6 +8758,7 @@ export const describeMultiRegionAccessPointOperation: API.OperationMethod<
   operationName: "DescribeMultiRegionAccessPointOperation",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type DissociateAccessGrantsIdentityCenterError = CommonErrors;
 /**
  * Dissociates the Amazon Web Services IAM Identity Center instance from the S3 Access Grants instance.
@@ -8709,6 +8785,7 @@ export const dissociateAccessGrantsIdentityCenter: API.OperationMethod<
   operationName: "DissociateAccessGrantsIdentityCenter",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetAccessGrantError = CommonErrors;
 /**
  * Get the details of an access grant from your S3 Access Grants instance.
@@ -8731,6 +8808,7 @@ export const getAccessGrant: API.OperationMethod<
   operationName: "GetAccessGrant",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetAccessGrantsInstanceError = CommonErrors;
 /**
  * Retrieves the S3 Access Grants instance for a Region in your account.
@@ -8755,6 +8833,7 @@ export const getAccessGrantsInstance: API.OperationMethod<
   operationName: "GetAccessGrantsInstance",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetAccessGrantsInstanceForPrefixError = CommonErrors;
 /**
  * Retrieve the S3 Access Grants instance that contains a particular prefix.
@@ -8781,6 +8860,7 @@ export const getAccessGrantsInstanceForPrefix: API.OperationMethod<
   operationName: "GetAccessGrantsInstanceForPrefix",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetAccessGrantsInstanceResourcePolicyError = CommonErrors;
 /**
  * Returns the resource policy of the S3 Access Grants instance.
@@ -8803,6 +8883,7 @@ export const getAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   operationName: "GetAccessGrantsInstanceResourcePolicy",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetAccessGrantsLocationError = CommonErrors;
 /**
  * Retrieves the details of a particular location registered in your S3 Access Grants instance.
@@ -8825,6 +8906,7 @@ export const getAccessGrantsLocation: API.OperationMethod<
   operationName: "GetAccessGrantsLocation",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetAccessPointError = NoSuchAccessPoint | CommonErrors;
 /**
  * Returns configuration information about the specified access point.
@@ -8853,6 +8935,7 @@ export const getAccessPoint: API.OperationMethod<
   operationName: "GetAccessPoint",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetAccessPointConfigurationForObjectLambdaError =
   | NoSuchAccessPoint
   | CommonErrors;
@@ -8880,6 +8963,7 @@ export const getAccessPointConfigurationForObjectLambda: API.OperationMethod<
   operationName: "GetAccessPointConfigurationForObjectLambda",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetAccessPointForObjectLambdaError =
   | NoSuchAccessPoint
   | CommonErrors;
@@ -8910,6 +8994,7 @@ export const getAccessPointForObjectLambda: API.OperationMethod<
   operationName: "GetAccessPointForObjectLambda",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetAccessPointPolicyError =
   | NoSuchAccessPoint
   | NoSuchAccessPointPolicy
@@ -8937,6 +9022,7 @@ export const getAccessPointPolicy: API.OperationMethod<
   operationName: "GetAccessPointPolicy",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetAccessPointPolicyForObjectLambdaError =
   | NoSuchAccessPoint
   | NoSuchAccessPointPolicy
@@ -8967,6 +9053,7 @@ export const getAccessPointPolicyForObjectLambda: API.OperationMethod<
   operationName: "GetAccessPointPolicyForObjectLambda",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetAccessPointPolicyStatusError =
   | NoSuchAccessPoint
   | NoSuchAccessPointPolicy
@@ -8992,6 +9079,7 @@ export const getAccessPointPolicyStatus: API.OperationMethod<
   operationName: "GetAccessPointPolicyStatus",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetAccessPointPolicyStatusForObjectLambdaError = CommonErrors;
 /**
  * This operation is not supported by directory buckets.
@@ -9012,6 +9100,7 @@ export const getAccessPointPolicyStatusForObjectLambda: API.OperationMethod<
   operationName: "GetAccessPointPolicyStatusForObjectLambda",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetAccessPointScopeError = CommonErrors;
 /**
  * Returns the access point scope for a directory bucket.
@@ -9034,6 +9123,7 @@ export const getAccessPointScope: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccessPointScope",
 }));
+
 export type GetBucketError = CommonErrors;
 /**
  * Gets an Amazon S3 on Outposts bucket. For more information, see Using Amazon S3 on Outposts in the
@@ -9073,6 +9163,7 @@ export const getBucket: API.OperationMethod<
   operationName: "GetBucket",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetBucketLifecycleConfigurationError = CommonErrors;
 /**
  * This action gets an Amazon S3 on Outposts bucket's lifecycle configuration. To get an S3
@@ -9122,6 +9213,7 @@ export const getBucketLifecycleConfiguration: API.OperationMethod<
   operationName: "GetBucketLifecycleConfiguration",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetBucketPolicyError = CommonErrors;
 /**
  * This action gets a bucket policy for an Amazon S3 on Outposts bucket. To get a policy for
@@ -9172,6 +9264,7 @@ export const getBucketPolicy: API.OperationMethod<
   operationName: "GetBucketPolicy",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetBucketReplicationError = CommonErrors;
 /**
  * This operation gets an Amazon S3 on Outposts bucket's replication configuration. To get an
@@ -9226,6 +9319,7 @@ export const getBucketReplication: API.OperationMethod<
   operationName: "GetBucketReplication",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetBucketTaggingError = CommonErrors;
 /**
  * This action gets an Amazon S3 on Outposts bucket's tags. To get an S3 bucket tags, see
@@ -9267,6 +9361,7 @@ export const getBucketTagging: API.OperationMethod<
   operationName: "GetBucketTagging",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetBucketVersioningError = CommonErrors;
 /**
  * This operation returns the versioning state
@@ -9314,6 +9409,7 @@ export const getBucketVersioning: API.OperationMethod<
   operationName: "GetBucketVersioning",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetDataAccessError = CommonErrors;
 /**
  * Returns a temporary access credential from S3 Access Grants to the grantee or client application. The temporary credential is an Amazon Web Services STS token that grants them access to the S3 data.
@@ -9340,6 +9436,7 @@ export const getDataAccess: API.OperationMethod<
   operationName: "GetDataAccess",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetJobTaggingError =
   | InternalServiceException
   | NotFoundException
@@ -9382,6 +9479,7 @@ export const getJobTagging: API.OperationMethod<
   operationName: "GetJobTagging",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetMultiRegionAccessPointError =
   | NoSuchMultiRegionAccessPoint
   | CommonErrors;
@@ -9418,6 +9516,7 @@ export const getMultiRegionAccessPoint: API.OperationMethod<
   operationName: "GetMultiRegionAccessPoint",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetMultiRegionAccessPointPolicyError =
   | NoSuchMultiRegionAccessPoint
   | CommonErrors;
@@ -9451,6 +9550,7 @@ export const getMultiRegionAccessPointPolicy: API.OperationMethod<
   operationName: "GetMultiRegionAccessPointPolicy",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetMultiRegionAccessPointPolicyStatusError = CommonErrors;
 /**
  * This operation is not supported by directory buckets.
@@ -9483,6 +9583,7 @@ export const getMultiRegionAccessPointPolicyStatus: API.OperationMethod<
   operationName: "GetMultiRegionAccessPointPolicyStatus",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetMultiRegionAccessPointRoutesError = CommonErrors;
 /**
  * This operation is not supported by directory buckets.
@@ -9517,6 +9618,7 @@ export const getMultiRegionAccessPointRoutes: API.OperationMethod<
   operationName: "GetMultiRegionAccessPointRoutes",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetPublicAccessBlockError =
   | NoSuchPublicAccessBlockConfiguration
   | CommonErrors;
@@ -9548,6 +9650,7 @@ export const getPublicAccessBlock: API.OperationMethod<
   operationName: "GetPublicAccessBlock",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetStorageLensConfigurationError =
   | NoSuchConfiguration
   | CommonErrors;
@@ -9576,6 +9679,7 @@ export const getStorageLensConfiguration: API.OperationMethod<
   operationName: "GetStorageLensConfiguration",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetStorageLensConfigurationTaggingError =
   | NoSuchConfiguration
   | CommonErrors;
@@ -9606,6 +9710,7 @@ export const getStorageLensConfigurationTagging: API.OperationMethod<
   operationName: "GetStorageLensConfigurationTagging",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type GetStorageLensGroupError = CommonErrors;
 /**
  * Retrieves the Storage Lens group configuration details.
@@ -9631,6 +9736,7 @@ export const getStorageLensGroup: API.OperationMethod<
   operationName: "GetStorageLensGroup",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type ListAccessGrantsError = CommonErrors;
 /**
  * Returns the list of access grants in your S3 Access Grants instance.
@@ -9673,6 +9779,7 @@ export const listAccessGrants: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAccessGrantsInstancesError = CommonErrors;
 /**
  * Returns a list of S3 Access Grants instances. An S3 Access Grants instance serves as a logical grouping for your individual access grants. You can only have one S3 Access Grants instance per Region per account.
@@ -9715,6 +9822,7 @@ export const listAccessGrantsInstances: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAccessGrantsLocationsError = CommonErrors;
 /**
  * Returns a list of the locations registered in your S3 Access Grants instance.
@@ -9757,6 +9865,7 @@ export const listAccessGrantsLocations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAccessPointsError = CommonErrors;
 /**
  * This operation is not supported by directory buckets.
@@ -9813,6 +9922,7 @@ export const listAccessPoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAccessPointsForDirectoryBucketsError = CommonErrors;
 /**
  * Returns a list of the access points that are owned by the Amazon Web Services account and that are associated with the specified directory bucket.
@@ -9858,6 +9968,7 @@ export const listAccessPointsForDirectoryBuckets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListAccessPointsForObjectLambdaError = CommonErrors;
 /**
  * This operation is not supported by directory buckets.
@@ -9910,6 +10021,7 @@ export const listAccessPointsForObjectLambda: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCallerAccessGrantsError = CommonErrors;
 /**
  * Use this API to list the access grants that grant the caller access to Amazon S3 data through S3 Access Grants. The caller (grantee) can be an Identity and Access Management (IAM) identity or Amazon Web Services Identity Center corporate directory identity. You must pass the Amazon Web Services account of the S3 data owner (grantor) in the request. You can, optionally, narrow the results by `GrantScope`, using a fragment of the data's S3 path, and S3 Access Grants will return only the grants with a path that contains the path fragment. You can also pass the `AllowedByApplication` filter in the request, which returns only the grants authorized for applications, whether the application is the caller's Identity Center application or any other application (`ALL`). For more information, see List the caller's access grants in the *Amazon S3 User Guide*.
@@ -9953,6 +10065,7 @@ export const listCallerAccessGrants: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListJobsError =
   | InternalServiceException
   | InvalidNextTokenException
@@ -10016,6 +10129,7 @@ export const listJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMultiRegionAccessPointsError = CommonErrors;
 /**
  * This operation is not supported by directory buckets.
@@ -10072,6 +10186,7 @@ export const listMultiRegionAccessPoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRegionalBucketsError = CommonErrors;
 /**
  * This operation is not supported by directory buckets.
@@ -10117,6 +10232,7 @@ export const listRegionalBuckets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListStorageLensConfigurationsError = CommonErrors;
 /**
  * This operation is not supported by directory buckets.
@@ -10161,6 +10277,7 @@ export const listStorageLensConfigurations: API.OperationMethod<
   endpointHostPrefix: "{AccountId}.",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
+
 export type ListStorageLensGroupsError = CommonErrors;
 /**
  * Lists all the Storage Lens groups in the specified home Region.
@@ -10202,6 +10319,7 @@ export const listStorageLensGroups: API.OperationMethod<
   endpointHostPrefix: "{AccountId}.",
   pagination: { inputToken: "NextToken", outputToken: "NextToken" } as const,
 }));
+
 export type ListTagsForResourceError = NoSuchAccessPoint | CommonErrors;
 /**
  * This operation allows you to list all of the tags for a specified resource. Each tag is a label consisting of a key and value. Tags can help you organize, track costs for, and control access to resources.
@@ -10248,6 +10366,7 @@ export const listTagsForResource: API.OperationMethod<
   operationName: "ListTagsForResource",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type PutAccessGrantsInstanceResourcePolicyError = CommonErrors;
 /**
  * Updates the resource policy of the S3 Access Grants instance.
@@ -10270,6 +10389,7 @@ export const putAccessGrantsInstanceResourcePolicy: API.OperationMethod<
   operationName: "PutAccessGrantsInstanceResourcePolicy",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type PutAccessPointConfigurationForObjectLambdaError =
   | NoSuchAccessPoint
   | InvalidRequest
@@ -10298,6 +10418,7 @@ export const putAccessPointConfigurationForObjectLambda: API.OperationMethod<
   operationName: "PutAccessPointConfigurationForObjectLambda",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type PutAccessPointPolicyError =
   | NoSuchAccessPoint
   | MalformedPolicy
@@ -10329,6 +10450,7 @@ export const putAccessPointPolicy: API.OperationMethod<
   operationName: "PutAccessPointPolicy",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type PutAccessPointPolicyForObjectLambdaError =
   | NoSuchAccessPoint
   | MalformedPolicy
@@ -10359,6 +10481,7 @@ export const putAccessPointPolicyForObjectLambda: API.OperationMethod<
   operationName: "PutAccessPointPolicyForObjectLambda",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type PutAccessPointScopeError = CommonErrors;
 /**
  * Creates or replaces the access point scope for a directory bucket. You can use the access point scope to restrict access to specific prefixes, API operations, or a combination of both.
@@ -10383,6 +10506,7 @@ export const putAccessPointScope: API.OperationMethod<
   retry: Retry,
   operationName: "PutAccessPointScope",
 }));
+
 export type PutBucketLifecycleConfigurationError = CommonErrors;
 /**
  * This action puts a lifecycle configuration to an Amazon S3 on Outposts bucket. To put a
@@ -10416,6 +10540,7 @@ export const putBucketLifecycleConfiguration: API.OperationMethod<
   operationName: "PutBucketLifecycleConfiguration",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type PutBucketPolicyError = CommonErrors;
 /**
  * This action puts a bucket policy to an Amazon S3 on Outposts bucket. To put a policy on an
@@ -10464,6 +10589,7 @@ export const putBucketPolicy: API.OperationMethod<
   operationName: "PutBucketPolicy",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type PutBucketReplicationError = CommonErrors;
 /**
  * This action creates an Amazon S3 on Outposts bucket's replication configuration. To create
@@ -10554,6 +10680,7 @@ export const putBucketReplication: API.OperationMethod<
   operationName: "PutBucketReplication",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type PutBucketTaggingError = CommonErrors;
 /**
  * This action puts tags on an Amazon S3 on Outposts bucket. To put tags on an S3 bucket, see
@@ -10626,6 +10753,7 @@ export const putBucketTagging: API.OperationMethod<
   operationName: "PutBucketTagging",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type PutBucketVersioningError = CommonErrors;
 /**
  * This operation sets the versioning state
@@ -10693,6 +10821,7 @@ export const putBucketVersioning: API.OperationMethod<
   operationName: "PutBucketVersioning",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type PutJobTaggingError =
   | InternalServiceException
   | NotFoundException
@@ -10764,6 +10893,7 @@ export const putJobTagging: API.OperationMethod<
   operationName: "PutJobTagging",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type PutMultiRegionAccessPointPolicyError =
   | NoSuchMultiRegionAccessPoint
   | InvalidRequest
@@ -10800,6 +10930,7 @@ export const putMultiRegionAccessPointPolicy: API.OperationMethod<
   operationName: "PutMultiRegionAccessPointPolicy",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type PutPublicAccessBlockError = CommonErrors;
 /**
  * This operation is not supported by directory buckets.
@@ -10833,6 +10964,7 @@ export const putPublicAccessBlock: API.OperationMethod<
   operationName: "PutPublicAccessBlock",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type PutStorageLensConfigurationError =
   | InvalidRequest
   | MissingBucketLevelActivityMetrics
@@ -10861,6 +10993,7 @@ export const putStorageLensConfiguration: API.OperationMethod<
   operationName: "PutStorageLensConfiguration",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type PutStorageLensConfigurationTaggingError =
   | NoSuchConfiguration
   | CommonErrors;
@@ -10890,6 +11023,7 @@ export const putStorageLensConfigurationTagging: API.OperationMethod<
   operationName: "PutStorageLensConfigurationTagging",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type SubmitMultiRegionAccessPointRoutesError = CommonErrors;
 /**
  * This operation is not supported by directory buckets.
@@ -10936,6 +11070,7 @@ export const submitMultiRegionAccessPointRoutes: API.OperationMethod<
   operationName: "SubmitMultiRegionAccessPointRoutes",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type TagResourceError = NoSuchAccessPoint | CommonErrors;
 /**
  * Creates a new user-defined tag or updates an existing tag. Each tag is a label consisting of a key and value that is applied to your resource. Tags can help you organize, track costs for, and control access to your resources. You can add up to 50 Amazon Web Services resource tags for each S3 resource.
@@ -10982,6 +11117,7 @@ export const tagResource: API.OperationMethod<
   operationName: "TagResource",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type UntagResourceError = NoSuchAccessPoint | CommonErrors;
 /**
  * This operation removes the specified user-defined tags from an S3 resource. You can pass one or more tag keys.
@@ -11029,6 +11165,7 @@ export const untagResource: API.OperationMethod<
   operationName: "UntagResource",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type UpdateAccessGrantsLocationError = CommonErrors;
 /**
  * Updates the IAM role of a registered location in your S3 Access Grants instance.
@@ -11055,6 +11192,7 @@ export const updateAccessGrantsLocation: API.OperationMethod<
   operationName: "UpdateAccessGrantsLocation",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type UpdateJobPriorityError =
   | BadRequestException
   | InternalServiceException
@@ -11103,6 +11241,7 @@ export const updateJobPriority: API.OperationMethod<
   operationName: "UpdateJobPriority",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type UpdateJobStatusError =
   | BadRequestException
   | InternalServiceException
@@ -11154,6 +11293,7 @@ export const updateJobStatus: API.OperationMethod<
   operationName: "UpdateJobStatus",
   endpointHostPrefix: "{AccountId}.",
 }));
+
 export type UpdateStorageLensGroupError = CommonErrors;
 /**
  * Updates the existing Storage Lens group.

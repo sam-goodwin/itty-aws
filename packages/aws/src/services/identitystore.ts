@@ -90,241 +90,85 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Message: S.optional(S.String),
+    RequestId: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ConflictExceptionReason).annotate({
+        identifier: "ConflictExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    ResourceType: S.optional(
+      S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+    ),
+    ResourceId: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ResourceNotFoundExceptionReason).annotate({
+        identifier: "ResourceNotFoundExceptionReason",
+      }),
+    ),
+    Message: S.optional(S.String),
+    RequestId: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.optional(S.String),
+    RequestId: S.optional(S.String),
+    Reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type IdentityStoreId = string;
-export type ExternalIdIssuer = string | redacted.Redacted<string>;
-export type ExternalIdIdentifier = string | redacted.Redacted<string>;
-export type AttributePath = string;
-export type AttributeValue = unknown;
-export type ResourceId = string;
-export type ExceptionMessage = string;
-export type RequestId = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type StringType = string;
 export type GroupDisplayName = string | redacted.Redacted<string>;
 export type SensitiveStringType = string | redacted.Redacted<string>;
-export type UserName = string | redacted.Redacted<string>;
-export type ExtensionName = string;
-
-//# Schemas
-export interface ExternalId {
-  Issuer: string | redacted.Redacted<string>;
-  Id: string | redacted.Redacted<string>;
-}
-export const ExternalId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Issuer: SensitiveString, Id: SensitiveString }),
-).annotate({ identifier: "ExternalId" }) as any as S.Schema<ExternalId>;
-export interface UniqueAttribute {
-  AttributePath: string;
-  AttributeValue: any;
-}
-export const UniqueAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttributePath: S.String, AttributeValue: S.Any }),
-).annotate({
-  identifier: "UniqueAttribute",
-}) as any as S.Schema<UniqueAttribute>;
-export type AlternateIdentifier =
-  | { ExternalId: ExternalId; UniqueAttribute?: never }
-  | { ExternalId?: never; UniqueAttribute: UniqueAttribute };
-export const AlternateIdentifier = /*@__PURE__*/ S.Union([
-  S.Struct({ ExternalId: ExternalId }),
-  S.Struct({ UniqueAttribute: UniqueAttribute }),
-]);
-export interface GetGroupIdRequest {
+export interface CreateGroupRequest {
   IdentityStoreId: string;
-  AlternateIdentifier: AlternateIdentifier;
+  DisplayName?: string | redacted.Redacted<string>;
+  Description?: string | redacted.Redacted<string>;
 }
-export const GetGroupIdRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityStoreId: S.String,
-    AlternateIdentifier: AlternateIdentifier,
+    DisplayName: S.optional(SensitiveString),
+    Description: S.optional(SensitiveString),
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({
-  identifier: "GetGroupIdRequest",
-}) as any as S.Schema<GetGroupIdRequest>;
-export interface GetGroupIdResponse {
+  identifier: "CreateGroupRequest",
+}) as any as S.Schema<CreateGroupRequest>;
+export type ResourceId = string;
+export interface CreateGroupResponse {
   GroupId: string;
   IdentityStoreId: string;
 }
-export const GetGroupIdResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ GroupId: S.String, IdentityStoreId: S.String }),
 ).annotate({
-  identifier: "GetGroupIdResponse",
-}) as any as S.Schema<GetGroupIdResponse>;
-export type ResourceType =
-  | "GROUP"
-  | "USER"
-  | "IDENTITY_STORE"
-  | "GROUP_MEMBERSHIP"
-  | "RESOURCE_POLICY"
-  | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
-export type ResourceNotFoundExceptionReason =
-  | "KMS_KEY_NOT_FOUND"
-  | (string & {});
-export const ResourceNotFoundExceptionReason = /*@__PURE__*/ S.String;
-export type ValidationExceptionReason =
-  | "KMS_INVALID_ARN"
-  | "KMS_INVALID_KEY_USAGE"
-  | "KMS_INVALID_STATE"
-  | "KMS_DISABLED"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+  identifier: "CreateGroupResponse",
+}) as any as S.Schema<CreateGroupResponse>;
 export type MemberId = { UserId: string };
 export const MemberId = /*@__PURE__*/ S.Union([S.Struct({ UserId: S.String })]);
-export interface GetGroupMembershipIdRequest {
-  IdentityStoreId: string;
-  GroupId: string;
-  MemberId: MemberId;
-}
-export const GetGroupMembershipIdRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdentityStoreId: S.String,
-    GroupId: S.String,
-    MemberId: MemberId,
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetGroupMembershipIdRequest",
-}) as any as S.Schema<GetGroupMembershipIdRequest>;
-export interface GetGroupMembershipIdResponse {
-  MembershipId: string;
-  IdentityStoreId: string;
-}
-export const GetGroupMembershipIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ MembershipId: S.String, IdentityStoreId: S.String }),
-).annotate({
-  identifier: "GetGroupMembershipIdResponse",
-}) as any as S.Schema<GetGroupMembershipIdResponse>;
-export interface GetUserIdRequest {
-  IdentityStoreId: string;
-  AlternateIdentifier: AlternateIdentifier;
-}
-export const GetUserIdRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdentityStoreId: S.String,
-    AlternateIdentifier: AlternateIdentifier,
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "GetUserIdRequest",
-}) as any as S.Schema<GetUserIdRequest>;
-export interface GetUserIdResponse {
-  IdentityStoreId: string;
-  UserId: string;
-}
-export const GetUserIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IdentityStoreId: S.String, UserId: S.String }),
-).annotate({
-  identifier: "GetUserIdResponse",
-}) as any as S.Schema<GetUserIdResponse>;
-export type GroupIds = string[];
-export const GroupIds = /*@__PURE__*/ S.Array(S.String);
-export interface IsMemberInGroupsRequest {
-  IdentityStoreId: string;
-  MemberId: MemberId;
-  GroupIds: string[];
-}
-export const IsMemberInGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdentityStoreId: S.String,
-    MemberId: MemberId,
-    GroupIds: GroupIds,
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "IsMemberInGroupsRequest",
-}) as any as S.Schema<IsMemberInGroupsRequest>;
-export interface GroupMembershipExistenceResult {
-  GroupId?: string;
-  MemberId?: MemberId;
-  MembershipExists?: boolean;
-}
-export const GroupMembershipExistenceResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GroupId: S.optional(S.String),
-    MemberId: S.optional(MemberId),
-    MembershipExists: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "GroupMembershipExistenceResult",
-}) as any as S.Schema<GroupMembershipExistenceResult>;
-export type GroupMembershipExistenceResults = GroupMembershipExistenceResult[];
-export const GroupMembershipExistenceResults = /*@__PURE__*/ S.Array(
-  GroupMembershipExistenceResult,
-);
-export interface IsMemberInGroupsResponse {
-  Results: GroupMembershipExistenceResult[];
-}
-export const IsMemberInGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Results: GroupMembershipExistenceResults }),
-).annotate({
-  identifier: "IsMemberInGroupsResponse",
-}) as any as S.Schema<IsMemberInGroupsResponse>;
-export interface ListGroupMembershipsForMemberRequest {
-  IdentityStoreId: string;
-  MemberId: MemberId;
-  MaxResults?: number;
-  NextToken?: string;
-}
-export const ListGroupMembershipsForMemberRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      IdentityStoreId: S.String,
-      MemberId: MemberId,
-      MaxResults: S.optional(S.Number),
-      NextToken: S.optional(S.String),
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-).annotate({
-  identifier: "ListGroupMembershipsForMemberRequest",
-}) as any as S.Schema<ListGroupMembershipsForMemberRequest>;
-export interface GroupMembership {
-  IdentityStoreId: string;
-  MembershipId?: string;
-  GroupId?: string;
-  MemberId?: MemberId;
-  CreatedAt?: Date;
-  UpdatedAt?: Date;
-  CreatedBy?: string;
-  UpdatedBy?: string;
-}
-export const GroupMembership = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdentityStoreId: S.String,
-    MembershipId: S.optional(S.String),
-    GroupId: S.optional(S.String),
-    MemberId: S.optional(MemberId),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedBy: S.optional(S.String),
-    UpdatedBy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GroupMembership",
-}) as any as S.Schema<GroupMembership>;
-export type GroupMemberships = GroupMembership[];
-export const GroupMemberships = /*@__PURE__*/ S.Array(GroupMembership);
-export interface ListGroupMembershipsForMemberResponse {
-  GroupMemberships: GroupMembership[];
-  NextToken?: string;
-}
-export const ListGroupMembershipsForMemberResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      GroupMemberships: GroupMemberships,
-      NextToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListGroupMembershipsForMemberResponse",
-}) as any as S.Schema<ListGroupMembershipsForMemberResponse>;
 export interface CreateGroupMembershipRequest {
   IdentityStoreId: string;
   GroupId: string;
@@ -350,269 +194,7 @@ export const CreateGroupMembershipResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGroupMembershipResponse",
 }) as any as S.Schema<CreateGroupMembershipResponse>;
-export type ConflictExceptionReason =
-  | "UNIQUENESS_CONSTRAINT_VIOLATION"
-  | "CONCURRENT_MODIFICATION"
-  | (string & {});
-export const ConflictExceptionReason = /*@__PURE__*/ S.String;
-export interface DescribeGroupMembershipRequest {
-  IdentityStoreId: string;
-  MembershipId: string;
-}
-export const DescribeGroupMembershipRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IdentityStoreId: S.String, MembershipId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeGroupMembershipRequest",
-}) as any as S.Schema<DescribeGroupMembershipRequest>;
-export interface DescribeGroupMembershipResponse {
-  IdentityStoreId: string;
-  MembershipId: string;
-  GroupId: string;
-  MemberId: MemberId;
-  CreatedAt?: Date;
-  UpdatedAt?: Date;
-  CreatedBy?: string;
-  UpdatedBy?: string;
-}
-export const DescribeGroupMembershipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdentityStoreId: S.String,
-    MembershipId: S.String,
-    GroupId: S.String,
-    MemberId: MemberId,
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedBy: S.optional(S.String),
-    UpdatedBy: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DescribeGroupMembershipResponse",
-}) as any as S.Schema<DescribeGroupMembershipResponse>;
-export interface DeleteGroupMembershipRequest {
-  IdentityStoreId: string;
-  MembershipId: string;
-}
-export const DeleteGroupMembershipRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IdentityStoreId: S.String, MembershipId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteGroupMembershipRequest",
-}) as any as S.Schema<DeleteGroupMembershipRequest>;
-export interface DeleteGroupMembershipResponse {}
-export const DeleteGroupMembershipResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupMembershipResponse",
-}) as any as S.Schema<DeleteGroupMembershipResponse>;
-export interface ListGroupMembershipsRequest {
-  IdentityStoreId: string;
-  GroupId: string;
-  MaxResults?: number;
-  NextToken?: string;
-}
-export const ListGroupMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdentityStoreId: S.String,
-    GroupId: S.String,
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListGroupMembershipsRequest",
-}) as any as S.Schema<ListGroupMembershipsRequest>;
-export interface ListGroupMembershipsResponse {
-  GroupMemberships: GroupMembership[];
-  NextToken?: string;
-}
-export const ListGroupMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GroupMemberships: GroupMemberships,
-    NextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListGroupMembershipsResponse",
-}) as any as S.Schema<ListGroupMembershipsResponse>;
-export interface CreateGroupRequest {
-  IdentityStoreId: string;
-  DisplayName?: string | redacted.Redacted<string>;
-  Description?: string | redacted.Redacted<string>;
-}
-export const CreateGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdentityStoreId: S.String,
-    DisplayName: S.optional(SensitiveString),
-    Description: S.optional(SensitiveString),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "CreateGroupRequest",
-}) as any as S.Schema<CreateGroupRequest>;
-export interface CreateGroupResponse {
-  GroupId: string;
-  IdentityStoreId: string;
-}
-export const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ GroupId: S.String, IdentityStoreId: S.String }),
-).annotate({
-  identifier: "CreateGroupResponse",
-}) as any as S.Schema<CreateGroupResponse>;
-export interface DescribeGroupRequest {
-  IdentityStoreId: string;
-  GroupId: string;
-}
-export const DescribeGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IdentityStoreId: S.String, GroupId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DescribeGroupRequest",
-}) as any as S.Schema<DescribeGroupRequest>;
-export type ExternalIds = ExternalId[];
-export const ExternalIds = /*@__PURE__*/ S.Array(ExternalId);
-export interface DescribeGroupResponse {
-  GroupId: string;
-  DisplayName?: string | redacted.Redacted<string>;
-  ExternalIds?: ExternalId[];
-  Description?: string | redacted.Redacted<string>;
-  CreatedAt?: Date;
-  UpdatedAt?: Date;
-  CreatedBy?: string;
-  UpdatedBy?: string;
-  IdentityStoreId: string;
-}
-export const DescribeGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GroupId: S.String,
-    DisplayName: S.optional(SensitiveString),
-    ExternalIds: S.optional(ExternalIds),
-    Description: S.optional(SensitiveString),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedBy: S.optional(S.String),
-    UpdatedBy: S.optional(S.String),
-    IdentityStoreId: S.String,
-  }),
-).annotate({
-  identifier: "DescribeGroupResponse",
-}) as any as S.Schema<DescribeGroupResponse>;
-export interface AttributeOperation {
-  AttributePath: string;
-  AttributeValue?: any;
-}
-export const AttributeOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttributePath: S.String, AttributeValue: S.optional(S.Any) }),
-).annotate({
-  identifier: "AttributeOperation",
-}) as any as S.Schema<AttributeOperation>;
-export type AttributeOperations = AttributeOperation[];
-export const AttributeOperations = /*@__PURE__*/ S.Array(AttributeOperation);
-export interface UpdateGroupRequest {
-  IdentityStoreId: string;
-  GroupId: string;
-  Operations: AttributeOperation[];
-}
-export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdentityStoreId: S.String,
-    GroupId: S.String,
-    Operations: AttributeOperations,
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "UpdateGroupRequest",
-}) as any as S.Schema<UpdateGroupRequest>;
-export interface UpdateGroupResponse {}
-export const UpdateGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateGroupResponse",
-}) as any as S.Schema<UpdateGroupResponse>;
-export interface DeleteGroupRequest {
-  IdentityStoreId: string;
-  GroupId: string;
-}
-export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IdentityStoreId: S.String, GroupId: S.String }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "DeleteGroupRequest",
-}) as any as S.Schema<DeleteGroupRequest>;
-export interface DeleteGroupResponse {}
-export const DeleteGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteGroupResponse",
-}) as any as S.Schema<DeleteGroupResponse>;
-export interface Filter {
-  AttributePath: string;
-  AttributeValue: string | redacted.Redacted<string>;
-}
-export const Filter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ AttributePath: S.String, AttributeValue: SensitiveString }),
-).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
-export type Filters = Filter[];
-export const Filters = /*@__PURE__*/ S.Array(Filter);
-export interface ListGroupsRequest {
-  IdentityStoreId: string;
-  MaxResults?: number;
-  NextToken?: string;
-  Filters?: Filter[];
-}
-export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    IdentityStoreId: S.String,
-    MaxResults: S.optional(S.Number),
-    NextToken: S.optional(S.String),
-    Filters: S.optional(Filters),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "ListGroupsRequest",
-}) as any as S.Schema<ListGroupsRequest>;
-export interface Group {
-  GroupId: string;
-  DisplayName?: string | redacted.Redacted<string>;
-  ExternalIds?: ExternalId[];
-  Description?: string | redacted.Redacted<string>;
-  CreatedAt?: Date;
-  UpdatedAt?: Date;
-  CreatedBy?: string;
-  UpdatedBy?: string;
-  IdentityStoreId: string;
-}
-export const Group = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    GroupId: S.String,
-    DisplayName: S.optional(SensitiveString),
-    ExternalIds: S.optional(ExternalIds),
-    Description: S.optional(SensitiveString),
-    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    CreatedBy: S.optional(S.String),
-    UpdatedBy: S.optional(S.String),
-    IdentityStoreId: S.String,
-  }),
-).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
-export type Groups = Group[];
-export const Groups = /*@__PURE__*/ S.Array(Group);
-export interface ListGroupsResponse {
-  Groups: Group[];
-  NextToken?: string;
-}
-export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Groups: Groups, NextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListGroupsResponse",
-}) as any as S.Schema<ListGroupsResponse>;
+export type UserName = string | redacted.Redacted<string>;
 export interface Name {
   Formatted?: string | redacted.Redacted<string>;
   FamilyName?: string | redacted.Redacted<string>;
@@ -713,6 +295,8 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
 export type Roles = Role[];
 export const Roles = /*@__PURE__*/ S.Array(Role);
+export type ExtensionName = string;
+export type AttributeValue = unknown;
 export type Extensions = { [key: string]: any | undefined };
 export const Extensions = /*@__PURE__*/ S.Record(
   S.String,
@@ -775,6 +359,141 @@ export const CreateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUserResponse",
 }) as any as S.Schema<CreateUserResponse>;
+export interface DeleteGroupRequest {
+  IdentityStoreId: string;
+  GroupId: string;
+}
+export const DeleteGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ IdentityStoreId: S.String, GroupId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteGroupRequest",
+}) as any as S.Schema<DeleteGroupRequest>;
+export interface DeleteGroupResponse {}
+export const DeleteGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteGroupResponse",
+}) as any as S.Schema<DeleteGroupResponse>;
+export interface DeleteGroupMembershipRequest {
+  IdentityStoreId: string;
+  MembershipId: string;
+}
+export const DeleteGroupMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ IdentityStoreId: S.String, MembershipId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteGroupMembershipRequest",
+}) as any as S.Schema<DeleteGroupMembershipRequest>;
+export interface DeleteGroupMembershipResponse {}
+export const DeleteGroupMembershipResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteGroupMembershipResponse",
+}) as any as S.Schema<DeleteGroupMembershipResponse>;
+export interface DeleteUserRequest {
+  IdentityStoreId: string;
+  UserId: string;
+}
+export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ IdentityStoreId: S.String, UserId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DeleteUserRequest",
+}) as any as S.Schema<DeleteUserRequest>;
+export interface DeleteUserResponse {}
+export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteUserResponse",
+}) as any as S.Schema<DeleteUserResponse>;
+export interface DescribeGroupRequest {
+  IdentityStoreId: string;
+  GroupId: string;
+}
+export const DescribeGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ IdentityStoreId: S.String, GroupId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeGroupRequest",
+}) as any as S.Schema<DescribeGroupRequest>;
+export type ExternalIdIssuer = string | redacted.Redacted<string>;
+export type ExternalIdIdentifier = string | redacted.Redacted<string>;
+export interface ExternalId {
+  Issuer: string | redacted.Redacted<string>;
+  Id: string | redacted.Redacted<string>;
+}
+export const ExternalId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Issuer: SensitiveString, Id: SensitiveString }),
+).annotate({ identifier: "ExternalId" }) as any as S.Schema<ExternalId>;
+export type ExternalIds = ExternalId[];
+export const ExternalIds = /*@__PURE__*/ S.Array(ExternalId);
+export type StringType = string;
+export interface DescribeGroupResponse {
+  GroupId: string;
+  DisplayName?: string | redacted.Redacted<string>;
+  ExternalIds?: ExternalId[];
+  Description?: string | redacted.Redacted<string>;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+  CreatedBy?: string;
+  UpdatedBy?: string;
+  IdentityStoreId: string;
+}
+export const DescribeGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GroupId: S.String,
+    DisplayName: S.optional(SensitiveString),
+    ExternalIds: S.optional(ExternalIds),
+    Description: S.optional(SensitiveString),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    CreatedBy: S.optional(S.String),
+    UpdatedBy: S.optional(S.String),
+    IdentityStoreId: S.String,
+  }),
+).annotate({
+  identifier: "DescribeGroupResponse",
+}) as any as S.Schema<DescribeGroupResponse>;
+export interface DescribeGroupMembershipRequest {
+  IdentityStoreId: string;
+  MembershipId: string;
+}
+export const DescribeGroupMembershipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ IdentityStoreId: S.String, MembershipId: S.String }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "DescribeGroupMembershipRequest",
+}) as any as S.Schema<DescribeGroupMembershipRequest>;
+export interface DescribeGroupMembershipResponse {
+  IdentityStoreId: string;
+  MembershipId: string;
+  GroupId: string;
+  MemberId: MemberId;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+  CreatedBy?: string;
+  UpdatedBy?: string;
+}
+export const DescribeGroupMembershipResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdentityStoreId: S.String,
+    MembershipId: S.String,
+    GroupId: S.String,
+    MemberId: MemberId,
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    CreatedBy: S.optional(S.String),
+    UpdatedBy: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DescribeGroupMembershipResponse",
+}) as any as S.Schema<DescribeGroupMembershipResponse>;
 export type ExtensionNames = string[];
 export const ExtensionNames = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeUserRequest {
@@ -795,6 +514,7 @@ export const DescribeUserRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeUserRequest>;
 export type UserStatus = "ENABLED" | "DISABLED" | (string & {});
 export const UserStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeUserResponse {
   IdentityStoreId: string;
   UserId: string;
@@ -855,45 +575,290 @@ export const DescribeUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeUserResponse",
 }) as any as S.Schema<DescribeUserResponse>;
-export interface UpdateUserRequest {
-  IdentityStoreId: string;
-  UserId: string;
-  Operations: AttributeOperation[];
+export type AttributePath = string;
+export interface UniqueAttribute {
+  AttributePath: string;
+  AttributeValue: any;
 }
-export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
+export const UniqueAttribute = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AttributePath: S.String, AttributeValue: S.Any }),
+).annotate({
+  identifier: "UniqueAttribute",
+}) as any as S.Schema<UniqueAttribute>;
+export type AlternateIdentifier =
+  | { ExternalId: ExternalId; UniqueAttribute?: never }
+  | { ExternalId?: never; UniqueAttribute: UniqueAttribute };
+export const AlternateIdentifier = /*@__PURE__*/ S.Union([
+  S.Struct({ ExternalId: ExternalId }),
+  S.Struct({ UniqueAttribute: UniqueAttribute }),
+]);
+export interface GetGroupIdRequest {
+  IdentityStoreId: string;
+  AlternateIdentifier: AlternateIdentifier;
+}
+export const GetGroupIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IdentityStoreId: S.String,
-    UserId: S.String,
-    Operations: AttributeOperations,
+    AlternateIdentifier: AlternateIdentifier,
   }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({
-  identifier: "UpdateUserRequest",
-}) as any as S.Schema<UpdateUserRequest>;
-export interface UpdateUserResponse {}
-export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UpdateUserResponse",
-}) as any as S.Schema<UpdateUserResponse>;
-export interface DeleteUserRequest {
+  identifier: "GetGroupIdRequest",
+}) as any as S.Schema<GetGroupIdRequest>;
+export interface GetGroupIdResponse {
+  GroupId: string;
   IdentityStoreId: string;
-  UserId: string;
 }
-export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ IdentityStoreId: S.String, UserId: S.String }).pipe(
+export const GetGroupIdResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ GroupId: S.String, IdentityStoreId: S.String }),
+).annotate({
+  identifier: "GetGroupIdResponse",
+}) as any as S.Schema<GetGroupIdResponse>;
+export interface GetGroupMembershipIdRequest {
+  IdentityStoreId: string;
+  GroupId: string;
+  MemberId: MemberId;
+}
+export const GetGroupMembershipIdRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdentityStoreId: S.String,
+    GroupId: S.String,
+    MemberId: MemberId,
+  }).pipe(
     T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
   ),
 ).annotate({
-  identifier: "DeleteUserRequest",
-}) as any as S.Schema<DeleteUserRequest>;
-export interface DeleteUserResponse {}
-export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+  identifier: "GetGroupMembershipIdRequest",
+}) as any as S.Schema<GetGroupMembershipIdRequest>;
+export interface GetGroupMembershipIdResponse {
+  MembershipId: string;
+  IdentityStoreId: string;
+}
+export const GetGroupMembershipIdResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MembershipId: S.String, IdentityStoreId: S.String }),
 ).annotate({
-  identifier: "DeleteUserResponse",
-}) as any as S.Schema<DeleteUserResponse>;
+  identifier: "GetGroupMembershipIdResponse",
+}) as any as S.Schema<GetGroupMembershipIdResponse>;
+export interface GetUserIdRequest {
+  IdentityStoreId: string;
+  AlternateIdentifier: AlternateIdentifier;
+}
+export const GetUserIdRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdentityStoreId: S.String,
+    AlternateIdentifier: AlternateIdentifier,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "GetUserIdRequest",
+}) as any as S.Schema<GetUserIdRequest>;
+export interface GetUserIdResponse {
+  IdentityStoreId: string;
+  UserId: string;
+}
+export const GetUserIdResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ IdentityStoreId: S.String, UserId: S.String }),
+).annotate({
+  identifier: "GetUserIdResponse",
+}) as any as S.Schema<GetUserIdResponse>;
+export type GroupIds = string[];
+export const GroupIds = /*@__PURE__*/ S.Array(S.String);
+export interface IsMemberInGroupsRequest {
+  IdentityStoreId: string;
+  MemberId: MemberId;
+  GroupIds: string[];
+}
+export const IsMemberInGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdentityStoreId: S.String,
+    MemberId: MemberId,
+    GroupIds: GroupIds,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "IsMemberInGroupsRequest",
+}) as any as S.Schema<IsMemberInGroupsRequest>;
+export interface GroupMembershipExistenceResult {
+  GroupId?: string;
+  MemberId?: MemberId;
+  MembershipExists?: boolean;
+}
+export const GroupMembershipExistenceResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GroupId: S.optional(S.String),
+    MemberId: S.optional(MemberId),
+    MembershipExists: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GroupMembershipExistenceResult",
+}) as any as S.Schema<GroupMembershipExistenceResult>;
+export type GroupMembershipExistenceResults = GroupMembershipExistenceResult[];
+export const GroupMembershipExistenceResults = /*@__PURE__*/ S.Array(
+  GroupMembershipExistenceResult,
+);
+export interface IsMemberInGroupsResponse {
+  Results: GroupMembershipExistenceResult[];
+}
+export const IsMemberInGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Results: GroupMembershipExistenceResults }),
+).annotate({
+  identifier: "IsMemberInGroupsResponse",
+}) as any as S.Schema<IsMemberInGroupsResponse>;
+export type MaxResults = number;
+export type NextToken = string;
+export interface ListGroupMembershipsRequest {
+  IdentityStoreId: string;
+  GroupId: string;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListGroupMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdentityStoreId: S.String,
+    GroupId: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListGroupMembershipsRequest",
+}) as any as S.Schema<ListGroupMembershipsRequest>;
+export interface GroupMembership {
+  IdentityStoreId: string;
+  MembershipId?: string;
+  GroupId?: string;
+  MemberId?: MemberId;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+  CreatedBy?: string;
+  UpdatedBy?: string;
+}
+export const GroupMembership = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdentityStoreId: S.String,
+    MembershipId: S.optional(S.String),
+    GroupId: S.optional(S.String),
+    MemberId: S.optional(MemberId),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    CreatedBy: S.optional(S.String),
+    UpdatedBy: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GroupMembership",
+}) as any as S.Schema<GroupMembership>;
+export type GroupMemberships = GroupMembership[];
+export const GroupMemberships = /*@__PURE__*/ S.Array(GroupMembership);
+export interface ListGroupMembershipsResponse {
+  GroupMemberships: GroupMembership[];
+  NextToken?: string;
+}
+export const ListGroupMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GroupMemberships: GroupMemberships,
+    NextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListGroupMembershipsResponse",
+}) as any as S.Schema<ListGroupMembershipsResponse>;
+export interface ListGroupMembershipsForMemberRequest {
+  IdentityStoreId: string;
+  MemberId: MemberId;
+  MaxResults?: number;
+  NextToken?: string;
+}
+export const ListGroupMembershipsForMemberRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      IdentityStoreId: S.String,
+      MemberId: MemberId,
+      MaxResults: S.optional(S.Number),
+      NextToken: S.optional(S.String),
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "ListGroupMembershipsForMemberRequest",
+}) as any as S.Schema<ListGroupMembershipsForMemberRequest>;
+export interface ListGroupMembershipsForMemberResponse {
+  GroupMemberships: GroupMembership[];
+  NextToken?: string;
+}
+export const ListGroupMembershipsForMemberResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      GroupMemberships: GroupMemberships,
+      NextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListGroupMembershipsForMemberResponse",
+}) as any as S.Schema<ListGroupMembershipsForMemberResponse>;
+export interface Filter {
+  AttributePath: string;
+  AttributeValue: string | redacted.Redacted<string>;
+}
+export const Filter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AttributePath: S.String, AttributeValue: SensitiveString }),
+).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
+export type Filters = Filter[];
+export const Filters = /*@__PURE__*/ S.Array(Filter);
+export interface ListGroupsRequest {
+  IdentityStoreId: string;
+  MaxResults?: number;
+  NextToken?: string;
+  Filters?: Filter[];
+}
+export const ListGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdentityStoreId: S.String,
+    MaxResults: S.optional(S.Number),
+    NextToken: S.optional(S.String),
+    Filters: S.optional(Filters),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "ListGroupsRequest",
+}) as any as S.Schema<ListGroupsRequest>;
+export interface Group {
+  GroupId: string;
+  DisplayName?: string | redacted.Redacted<string>;
+  ExternalIds?: ExternalId[];
+  Description?: string | redacted.Redacted<string>;
+  CreatedAt?: Date;
+  UpdatedAt?: Date;
+  CreatedBy?: string;
+  UpdatedBy?: string;
+  IdentityStoreId: string;
+}
+export const Group = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    GroupId: S.String,
+    DisplayName: S.optional(SensitiveString),
+    ExternalIds: S.optional(ExternalIds),
+    Description: S.optional(SensitiveString),
+    CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    CreatedBy: S.optional(S.String),
+    UpdatedBy: S.optional(S.String),
+    IdentityStoreId: S.String,
+  }),
+).annotate({ identifier: "Group" }) as any as S.Schema<Group>;
+export type Groups = Group[];
+export const Groups = /*@__PURE__*/ S.Array(Group);
+export interface ListGroupsResponse {
+  Groups: Group[];
+  NextToken?: string;
+}
+export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Groups: Groups, NextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListGroupsResponse",
+}) as any as S.Schema<ListGroupsResponse>;
 export interface ListUsersRequest {
   IdentityStoreId: string;
   Extensions?: string[];
@@ -983,175 +948,119 @@ export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListUsersResponse",
 }) as any as S.Schema<ListUsersResponse>;
+export interface AttributeOperation {
+  AttributePath: string;
+  AttributeValue?: any;
+}
+export const AttributeOperation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ AttributePath: S.String, AttributeValue: S.optional(S.Any) }),
+).annotate({
+  identifier: "AttributeOperation",
+}) as any as S.Schema<AttributeOperation>;
+export type AttributeOperations = AttributeOperation[];
+export const AttributeOperations = /*@__PURE__*/ S.Array(AttributeOperation);
+export interface UpdateGroupRequest {
+  IdentityStoreId: string;
+  GroupId: string;
+  Operations: AttributeOperation[];
+}
+export const UpdateGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdentityStoreId: S.String,
+    GroupId: S.String,
+    Operations: AttributeOperations,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateGroupRequest",
+}) as any as S.Schema<UpdateGroupRequest>;
+export interface UpdateGroupResponse {}
+export const UpdateGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateGroupResponse",
+}) as any as S.Schema<UpdateGroupResponse>;
+export interface UpdateUserRequest {
+  IdentityStoreId: string;
+  UserId: string;
+  Operations: AttributeOperation[];
+}
+export const UpdateUserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    IdentityStoreId: S.String,
+    UserId: S.String,
+    Operations: AttributeOperations,
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "UpdateUserRequest",
+}) as any as S.Schema<UpdateUserRequest>;
+export interface UpdateUserResponse {}
+export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UpdateUserResponse",
+}) as any as S.Schema<UpdateUserResponse>;
+export type ExceptionMessage = string;
+export type RequestId = string;
+export type ConflictExceptionReason =
+  | "UNIQUENESS_CONSTRAINT_VIOLATION"
+  | "CONCURRENT_MODIFICATION"
+  | (string & {});
+export const ConflictExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    ResourceType: S.optional(ResourceType),
-    ResourceId: S.optional(S.String),
-    Reason: S.optional(ResourceNotFoundExceptionReason),
-    Message: S.optional(S.String),
-    RequestId: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.optional(S.String),
-    RequestId: S.optional(S.String),
-    Reason: S.optional(ValidationExceptionReason),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Message: S.optional(S.String),
-    RequestId: S.optional(S.String),
-    Reason: S.optional(ConflictExceptionReason),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String), RequestId: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
+export type ResourceType =
+  | "GROUP"
+  | "USER"
+  | "IDENTITY_STORE"
+  | "GROUP_MEMBERSHIP"
+  | "RESOURCE_POLICY"
+  | (string & {});
+export const ResourceType = /*@__PURE__*/ S.String;
 
-//# Operations
-export type GetGroupIdError =
+export type ResourceNotFoundExceptionReason =
+  | "KMS_KEY_NOT_FOUND"
+  | (string & {});
+export const ResourceNotFoundExceptionReason = /*@__PURE__*/ S.String;
+
+export type ValidationExceptionReason =
+  | "KMS_INVALID_ARN"
+  | "KMS_INVALID_KEY_USAGE"
+  | "KMS_INVALID_STATE"
+  | "KMS_DISABLED"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
+
+export type CreateGroupError =
+  | ConflictException
   | ResourceNotFoundException
+  | ServiceQuotaExceededException
   | ValidationException
   | CommonErrors;
 /**
- * Retrieves `GroupId` in an identity store.
- *
- * If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the * IAM Identity Center User Guide*.
+ * Creates a group within the specified identity store.
  */
-export const getGroupId: API.OperationMethod<
-  GetGroupIdRequest,
-  GetGroupIdResponse,
-  GetGroupIdError,
+export const createGroup: API.OperationMethod<
+  CreateGroupRequest,
+  CreateGroupResponse,
+  CreateGroupError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupIdRequest,
-  output: GetGroupIdResponse,
-  errors: [ResourceNotFoundException, ValidationException],
+  input: CreateGroupRequest,
+  output: CreateGroupResponse,
+  errors: [
+    ConflictException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ValidationException,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "GetGroupId",
+  operationName: "CreateGroup",
 }));
-export type GetGroupMembershipIdError =
-  | ResourceNotFoundException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves the `MembershipId` in an identity store.
- *
- * If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the * IAM Identity Center User Guide*.
- */
-export const getGroupMembershipId: API.OperationMethod<
-  GetGroupMembershipIdRequest,
-  GetGroupMembershipIdResponse,
-  GetGroupMembershipIdError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupMembershipIdRequest,
-  output: GetGroupMembershipIdResponse,
-  errors: [ResourceNotFoundException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetGroupMembershipId",
-}));
-export type GetUserIdError =
-  | ResourceNotFoundException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves the `UserId` in an identity store.
- *
- * If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the * IAM Identity Center User Guide*.
- */
-export const getUserId: API.OperationMethod<
-  GetUserIdRequest,
-  GetUserIdResponse,
-  GetUserIdError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetUserIdRequest,
-  output: GetUserIdResponse,
-  errors: [ResourceNotFoundException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetUserId",
-}));
-export type IsMemberInGroupsError =
-  | ResourceNotFoundException
-  | ValidationException
-  | CommonErrors;
-/**
- * Checks the user's membership in all requested groups and returns if the member exists in all queried groups.
- *
- * If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the * IAM Identity Center User Guide*.
- */
-export const isMemberInGroups: API.OperationMethod<
-  IsMemberInGroupsRequest,
-  IsMemberInGroupsResponse,
-  IsMemberInGroupsError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: IsMemberInGroupsRequest,
-  output: IsMemberInGroupsResponse,
-  errors: [ResourceNotFoundException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "IsMemberInGroups",
-}));
-export type ListGroupMembershipsForMemberError =
-  | ResourceNotFoundException
-  | ValidationException
-  | CommonErrors;
-/**
- * For the specified member in the specified identity store, returns the list of all ` GroupMembership` objects and returns results in paginated form.
- *
- * If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the * IAM Identity Center User Guide*.
- */
-export const listGroupMembershipsForMember: API.OperationMethod<
-  ListGroupMembershipsForMemberRequest,
-  ListGroupMembershipsForMemberResponse,
-  ListGroupMembershipsForMemberError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGroupMembershipsForMemberRequest,
-  ) => stream.Stream<
-    ListGroupMembershipsForMemberResponse,
-    ListGroupMembershipsForMemberError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGroupMembershipsForMemberRequest,
-  ) => stream.Stream<
-    GroupMembership,
-    ListGroupMembershipsForMemberError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListGroupMembershipsForMemberRequest,
-  output: ListGroupMembershipsForMemberResponse,
-  errors: [ResourceNotFoundException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListGroupMembershipsForMember",
-  pagination: {
-    inputToken: "NextToken",
-    outputToken: "NextToken",
-    items: "GroupMemberships",
-    pageSize: "MaxResults",
-  } as const,
-}));
+
 export type CreateGroupMembershipError =
   | ConflictException
   | ResourceNotFoundException
@@ -1179,6 +1088,124 @@ export const createGroupMembership: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGroupMembership",
 }));
+
+export type CreateUserError =
+  | ConflictException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a user within the specified identity store.
+ */
+export const createUser: API.OperationMethod<
+  CreateUserRequest,
+  CreateUserResponse,
+  CreateUserError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateUserRequest,
+  output: CreateUserResponse,
+  errors: [
+    ConflictException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateUser",
+}));
+
+export type DeleteGroupError =
+  | ConflictException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Delete a group within an identity store given `GroupId`.
+ */
+export const deleteGroup: API.OperationMethod<
+  DeleteGroupRequest,
+  DeleteGroupResponse,
+  DeleteGroupError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteGroupRequest,
+  output: DeleteGroupResponse,
+  errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteGroup",
+}));
+
+export type DeleteGroupMembershipError =
+  | ConflictException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Delete a membership within a group given `MembershipId`.
+ */
+export const deleteGroupMembership: API.OperationMethod<
+  DeleteGroupMembershipRequest,
+  DeleteGroupMembershipResponse,
+  DeleteGroupMembershipError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteGroupMembershipRequest,
+  output: DeleteGroupMembershipResponse,
+  errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteGroupMembership",
+}));
+
+export type DeleteUserError =
+  | ConflictException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a user within an identity store given `UserId`.
+ */
+export const deleteUser: API.OperationMethod<
+  DeleteUserRequest,
+  DeleteUserResponse,
+  DeleteUserError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteUserRequest,
+  output: DeleteUserResponse,
+  errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteUser",
+}));
+
+export type DescribeGroupError =
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the group metadata and attributes from `GroupId` in an identity store.
+ *
+ * If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the * IAM Identity Center User Guide*.
+ */
+export const describeGroup: API.OperationMethod<
+  DescribeGroupRequest,
+  DescribeGroupResponse,
+  DescribeGroupError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DescribeGroupRequest,
+  output: DescribeGroupResponse,
+  errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeGroup",
+}));
+
 export type DescribeGroupMembershipError =
   | ResourceNotFoundException
   | ValidationException
@@ -1201,27 +1228,122 @@ export const describeGroupMembership: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeGroupMembership",
 }));
-export type DeleteGroupMembershipError =
-  | ConflictException
+
+export type DescribeUserError =
   | ResourceNotFoundException
   | ValidationException
   | CommonErrors;
 /**
- * Delete a membership within a group given `MembershipId`.
+ * Retrieves the user metadata and attributes from the `UserId` in an identity store.
+ *
+ * If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the * IAM Identity Center User Guide*.
  */
-export const deleteGroupMembership: API.OperationMethod<
-  DeleteGroupMembershipRequest,
-  DeleteGroupMembershipResponse,
-  DeleteGroupMembershipError,
+export const describeUser: API.OperationMethod<
+  DescribeUserRequest,
+  DescribeUserResponse,
+  DescribeUserError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGroupMembershipRequest,
-  output: DeleteGroupMembershipResponse,
-  errors: [ConflictException, ResourceNotFoundException, ValidationException],
+  input: DescribeUserRequest,
+  output: DescribeUserResponse,
+  errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "DeleteGroupMembership",
+  operationName: "DescribeUser",
 }));
+
+export type GetGroupIdError =
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves `GroupId` in an identity store.
+ *
+ * If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the * IAM Identity Center User Guide*.
+ */
+export const getGroupId: API.OperationMethod<
+  GetGroupIdRequest,
+  GetGroupIdResponse,
+  GetGroupIdError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGroupIdRequest,
+  output: GetGroupIdResponse,
+  errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetGroupId",
+}));
+
+export type GetGroupMembershipIdError =
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the `MembershipId` in an identity store.
+ *
+ * If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the * IAM Identity Center User Guide*.
+ */
+export const getGroupMembershipId: API.OperationMethod<
+  GetGroupMembershipIdRequest,
+  GetGroupMembershipIdResponse,
+  GetGroupMembershipIdError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGroupMembershipIdRequest,
+  output: GetGroupMembershipIdResponse,
+  errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetGroupMembershipId",
+}));
+
+export type GetUserIdError =
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the `UserId` in an identity store.
+ *
+ * If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the * IAM Identity Center User Guide*.
+ */
+export const getUserId: API.OperationMethod<
+  GetUserIdRequest,
+  GetUserIdResponse,
+  GetUserIdError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetUserIdRequest,
+  output: GetUserIdResponse,
+  errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetUserId",
+}));
+
+export type IsMemberInGroupsError =
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Checks the user's membership in all requested groups and returns if the member exists in all queried groups.
+ *
+ * If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the * IAM Identity Center User Guide*.
+ */
+export const isMemberInGroups: API.OperationMethod<
+  IsMemberInGroupsRequest,
+  IsMemberInGroupsResponse,
+  IsMemberInGroupsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: IsMemberInGroupsRequest,
+  output: IsMemberInGroupsResponse,
+  errors: [ResourceNotFoundException, ValidationException],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "IsMemberInGroups",
+}));
+
 export type ListGroupMembershipsError =
   | ResourceNotFoundException
   | ValidationException
@@ -1265,103 +1387,51 @@ export const listGroupMemberships: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type CreateGroupError =
-  | ConflictException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a group within the specified identity store.
- */
-export const createGroup: API.OperationMethod<
-  CreateGroupRequest,
-  CreateGroupResponse,
-  CreateGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateGroupRequest,
-  output: CreateGroupResponse,
-  errors: [
-    ConflictException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateGroup",
-}));
-export type DescribeGroupError =
+
+export type ListGroupMembershipsForMemberError =
   | ResourceNotFoundException
   | ValidationException
   | CommonErrors;
 /**
- * Retrieves the group metadata and attributes from `GroupId` in an identity store.
+ * For the specified member in the specified identity store, returns the list of all ` GroupMembership` objects and returns results in paginated form.
  *
  * If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the * IAM Identity Center User Guide*.
  */
-export const describeGroup: API.OperationMethod<
-  DescribeGroupRequest,
-  DescribeGroupResponse,
-  DescribeGroupError,
+export const listGroupMembershipsForMember: API.OperationMethod<
+  ListGroupMembershipsForMemberRequest,
+  ListGroupMembershipsForMemberResponse,
+  ListGroupMembershipsForMemberError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DescribeGroupRequest,
-  output: DescribeGroupResponse,
+> & {
+  pages: (
+    input: ListGroupMembershipsForMemberRequest,
+  ) => stream.Stream<
+    ListGroupMembershipsForMemberResponse,
+    ListGroupMembershipsForMemberError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGroupMembershipsForMemberRequest,
+  ) => stream.Stream<
+    GroupMembership,
+    ListGroupMembershipsForMemberError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListGroupMembershipsForMemberRequest,
+  output: ListGroupMembershipsForMemberResponse,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "DescribeGroup",
+  operationName: "ListGroupMembershipsForMember",
+  pagination: {
+    inputToken: "NextToken",
+    outputToken: "NextToken",
+    items: "GroupMemberships",
+    pageSize: "MaxResults",
+  } as const,
 }));
-export type UpdateGroupError =
-  | ConflictException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates the specified group metadata and attributes in the specified identity store.
- */
-export const updateGroup: API.OperationMethod<
-  UpdateGroupRequest,
-  UpdateGroupResponse,
-  UpdateGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGroupRequest,
-  output: UpdateGroupResponse,
-  errors: [
-    ConflictException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateGroup",
-}));
-export type DeleteGroupError =
-  | ConflictException
-  | ResourceNotFoundException
-  | ValidationException
-  | CommonErrors;
-/**
- * Delete a group within an identity store given `GroupId`.
- */
-export const deleteGroup: API.OperationMethod<
-  DeleteGroupRequest,
-  DeleteGroupResponse,
-  DeleteGroupError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGroupRequest,
-  output: DeleteGroupResponse,
-  errors: [ConflictException, ResourceNotFoundException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteGroup",
-}));
+
 export type ListGroupsError =
   | ResourceNotFoundException
   | ValidationException
@@ -1405,103 +1475,7 @@ export const listGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
-export type CreateUserError =
-  | ConflictException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a user within the specified identity store.
- */
-export const createUser: API.OperationMethod<
-  CreateUserRequest,
-  CreateUserResponse,
-  CreateUserError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserRequest,
-  output: CreateUserResponse,
-  errors: [
-    ConflictException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateUser",
-}));
-export type DescribeUserError =
-  | ResourceNotFoundException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves the user metadata and attributes from the `UserId` in an identity store.
- *
- * If you have access to a member account, you can use this API operation from the member account. For more information, see Limiting access to the identity store from member accounts in the * IAM Identity Center User Guide*.
- */
-export const describeUser: API.OperationMethod<
-  DescribeUserRequest,
-  DescribeUserResponse,
-  DescribeUserError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DescribeUserRequest,
-  output: DescribeUserResponse,
-  errors: [ResourceNotFoundException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DescribeUser",
-}));
-export type UpdateUserError =
-  | ConflictException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates the specified user metadata and attributes in the specified identity store.
- */
-export const updateUser: API.OperationMethod<
-  UpdateUserRequest,
-  UpdateUserResponse,
-  UpdateUserError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserRequest,
-  output: UpdateUserResponse,
-  errors: [
-    ConflictException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateUser",
-}));
-export type DeleteUserError =
-  | ConflictException
-  | ResourceNotFoundException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a user within an identity store given `UserId`.
- */
-export const deleteUser: API.OperationMethod<
-  DeleteUserRequest,
-  DeleteUserResponse,
-  DeleteUserError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserRequest,
-  output: DeleteUserResponse,
-  errors: [ConflictException, ResourceNotFoundException, ValidationException],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteUser",
-}));
+
 export type ListUsersError =
   | ResourceNotFoundException
   | ValidationException
@@ -1544,4 +1518,60 @@ export const listUsers: API.OperationMethod<
     items: "Users",
     pageSize: "MaxResults",
   } as const,
+}));
+
+export type UpdateGroupError =
+  | ConflictException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the specified group metadata and attributes in the specified identity store.
+ */
+export const updateGroup: API.OperationMethod<
+  UpdateGroupRequest,
+  UpdateGroupResponse,
+  UpdateGroupError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateGroupRequest,
+  output: UpdateGroupResponse,
+  errors: [
+    ConflictException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateGroup",
+}));
+
+export type UpdateUserError =
+  | ConflictException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the specified user metadata and attributes in the specified identity store.
+ */
+export const updateUser: API.OperationMethod<
+  UpdateUserRequest,
+  UpdateUserResponse,
+  UpdateUserError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateUserRequest,
+  output: UpdateUserResponse,
+  errors: [
+    ConflictException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateUser",
 }));

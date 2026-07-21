@@ -85,36 +85,66 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
+  "InternalServiceErrorException",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceLimitExceededException extends S.TaggedErrorClass<ServiceLimitExceededException>()(
+  "ServiceLimitExceededException",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class SigningProfileAlreadyExists extends S.TaggedErrorClass<SigningProfileAlreadyExists>()(
+  "SigningProfileAlreadyExists",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "already exists" },
+  }),
+).pipe(C.withAlreadyExistsError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String), code: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ProfileName = string;
 export type ProfileVersion = string;
-export type ErrorMessage = string;
-export type ErrorCode = string;
-export type JobId = string;
-export type BucketName = string;
-export type Key = string;
-export type Version = string;
-export type CertificateArn = string;
-export type PlatformId = string;
-export type DisplayName = string;
-export type SigningParameterKey = string;
-export type SigningParameterValue = string;
-export type RequestedBy = string;
-export type StatusReason = string;
-export type AccountId = string;
-export type Arn = string;
-export type MaxSizeInMB = number;
-export type TagKey = string;
-export type TagValue = string;
-export type PolicySizeBytes = number;
-export type MaxResults = number;
-export type NextToken = string;
-export type RevocationReasonString = string;
-export type Payload = Uint8Array;
-export type Prefix = string;
-export type ClientRequestToken = string;
-
-//# Schemas
 export interface AddProfilePermissionRequest {
   profileName: string;
   profileVersion?: string;
@@ -178,6 +208,7 @@ export const CancelSigningProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelSigningProfileResponse",
 }) as any as S.Schema<CancelSigningProfileResponse>;
+export type JobId = string;
 export interface DescribeSigningJobRequest {
   jobId: string;
 }
@@ -195,6 +226,9 @@ export const DescribeSigningJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSigningJobRequest",
 }) as any as S.Schema<DescribeSigningJobRequest>;
+export type BucketName = string;
+export type Key = string;
+export type Version = string;
 export interface S3Source {
   bucketName: string;
   key: string;
@@ -209,6 +243,7 @@ export interface Source {
 export const Source = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3: S.optional(S3Source) }),
 ).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
+export type CertificateArn = string;
 export interface SigningMaterial {
   certificateArn?: string;
 }
@@ -217,10 +252,14 @@ export const SigningMaterial = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SigningMaterial",
 }) as any as S.Schema<SigningMaterial>;
+export type PlatformId = string;
+export type DisplayName = string;
 export type EncryptionAlgorithm = "RSA" | "ECDSA" | (string & {});
 export const EncryptionAlgorithm = /*@__PURE__*/ S.String;
+
 export type HashAlgorithm = "SHA1" | "SHA256" | (string & {});
 export const HashAlgorithm = /*@__PURE__*/ S.String;
+
 export interface SigningConfigurationOverrides {
   encryptionAlgorithm?: EncryptionAlgorithm;
   hashAlgorithm?: HashAlgorithm;
@@ -239,6 +278,7 @@ export type ImageFormat =
   | "JSONDetached"
   | (string & {});
 export const ImageFormat = /*@__PURE__*/ S.String;
+
 export interface SigningPlatformOverrides {
   signingConfiguration?: SigningConfigurationOverrides;
   signingImageFormat?: ImageFormat;
@@ -251,17 +291,22 @@ export const SigningPlatformOverrides = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SigningPlatformOverrides",
 }) as any as S.Schema<SigningPlatformOverrides>;
+export type SigningParameterKey = string;
+export type SigningParameterValue = string;
 export type SigningParameters = { [key: string]: string | undefined };
 export const SigningParameters = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type RequestedBy = string;
 export type SigningStatus =
   | "InProgress"
   | "Failed"
   | "Succeeded"
   | (string & {});
 export const SigningStatus = /*@__PURE__*/ S.String;
+
+export type StatusReason = string;
 export interface SigningJobRevocationRecord {
   reason?: string;
   revokedAt?: Date;
@@ -289,6 +334,7 @@ export interface SignedObject {
 export const SignedObject = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3: S.optional(S3SignedObject) }),
 ).annotate({ identifier: "SignedObject" }) as any as S.Schema<SignedObject>;
+export type AccountId = string;
 export interface DescribeSigningJobResponse {
   jobId?: string;
   source?: Source;
@@ -337,6 +383,7 @@ export const DescribeSigningJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSigningJobResponse",
 }) as any as S.Schema<DescribeSigningJobResponse>;
+export type Arn = string;
 export type CertificateHashes = string[];
 export const CertificateHashes = /*@__PURE__*/ S.Array(S.String);
 export interface GetRevocationStatusRequest {
@@ -397,6 +444,7 @@ export const GetSigningPlatformRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetSigningPlatformRequest>;
 export type Category = "AWSIoT" | (string & {});
 export const Category = /*@__PURE__*/ S.String;
+
 export type EncryptionAlgorithms = EncryptionAlgorithm[];
 export const EncryptionAlgorithms = /*@__PURE__*/ S.Array(EncryptionAlgorithm);
 export interface EncryptionAlgorithmOptions {
@@ -445,6 +493,7 @@ export const SigningImageFormat = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SigningImageFormat",
 }) as any as S.Schema<SigningImageFormat>;
+export type MaxSizeInMB = number;
 export interface GetSigningPlatformResponse {
   platformId?: string;
   displayName?: string;
@@ -510,6 +559,7 @@ export const SigningProfileRevocationRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SigningProfileRevocationRecord>;
 export type ValidityType = "DAYS" | "MONTHS" | "YEARS" | (string & {});
 export const ValidityType = /*@__PURE__*/ S.String;
+
 export interface SignatureValidityPeriod {
   value?: number;
   type?: ValidityType;
@@ -525,6 +575,9 @@ export type SigningProfileStatus =
   | "Revoked"
   | (string & {});
 export const SigningProfileStatus = /*@__PURE__*/ S.String;
+
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -590,6 +643,7 @@ export const ListProfilePermissionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProfilePermissionsRequest",
 }) as any as S.Schema<ListProfilePermissionsRequest>;
+export type PolicySizeBytes = number;
 export interface Permission {
   action?: string;
   principal?: string;
@@ -622,6 +676,8 @@ export const ListProfilePermissionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProfilePermissionsResponse",
 }) as any as S.Schema<ListProfilePermissionsResponse>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface ListSigningJobsRequest {
   status?: SigningStatus;
   platformId?: string;
@@ -950,6 +1006,7 @@ export const RemoveProfilePermissionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RemoveProfilePermissionResponse",
 }) as any as S.Schema<RemoveProfilePermissionResponse>;
+export type RevocationReasonString = string;
 export interface RevokeSignatureRequest {
   jobId: string;
   jobOwner?: string;
@@ -1010,6 +1067,7 @@ export const RevokeSigningProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RevokeSigningProfileResponse",
 }) as any as S.Schema<RevokeSigningProfileResponse>;
+export type Payload = Uint8Array;
 export interface SignPayloadRequest {
   profileName: string;
   profileOwner?: string;
@@ -1056,6 +1114,7 @@ export const SignPayloadResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SignPayloadResponse",
 }) as any as S.Schema<SignPayloadResponse>;
+export type Prefix = string;
 export interface S3Destination {
   bucketName?: string;
   prefix?: string;
@@ -1069,6 +1128,7 @@ export interface Destination {
 export const Destination = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ s3: S.optional(S3Destination) }),
 ).annotate({ identifier: "Destination" }) as any as S.Schema<Destination>;
+export type ClientRequestToken = string;
 export interface StartSigningJobRequest {
   source: Source;
   destination: Destination;
@@ -1161,68 +1221,8 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String), code: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String), code: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
-  "InternalServiceErrorException",
-  { message: S.optional(S.String), code: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String), code: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceLimitExceededException extends S.TaggedErrorClass<ServiceLimitExceededException>()(
-  "ServiceLimitExceededException",
-  { message: S.optional(S.String), code: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { message: S.optional(S.String), code: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String), code: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { message: S.optional(S.String), code: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String), code: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class SigningProfileAlreadyExists extends S.TaggedErrorClass<SigningProfileAlreadyExists>()(
-  "SigningProfileAlreadyExists",
-  { message: S.optional(S.String), code: S.optional(S.String) },
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "already exists" },
-  }),
-).pipe(C.withAlreadyExistsError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String), code: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-
-//# Operations
+export type ErrorMessage = string;
+export type ErrorCode = string;
 export type AddProfilePermissionError =
   | AccessDeniedException
   | ConflictException
@@ -1256,6 +1256,7 @@ export const addProfilePermission: API.OperationMethod<
   retry: Retry,
   operationName: "AddProfilePermission",
 }));
+
 export type CancelSigningProfileError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1285,6 +1286,7 @@ export const cancelSigningProfile: API.OperationMethod<
   retry: Retry,
   operationName: "CancelSigningProfile",
 }));
+
 export type DescribeSigningJobError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1314,6 +1316,7 @@ export const describeSigningJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSigningJob",
 }));
+
 export type GetRevocationStatusError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1343,6 +1346,7 @@ export const getRevocationStatus: API.OperationMethod<
   operationName: "GetRevocationStatus",
   endpointHostPrefix: "data-",
 }));
+
 export type GetSigningPlatformError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1370,6 +1374,7 @@ export const getSigningPlatform: API.OperationMethod<
   retry: Retry,
   operationName: "GetSigningPlatform",
 }));
+
 export type GetSigningProfileError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1397,6 +1402,7 @@ export const getSigningProfile: API.OperationMethod<
   retry: Retry,
   operationName: "GetSigningProfile",
 }));
+
 export type ListProfilePermissionsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1426,6 +1432,7 @@ export const listProfilePermissions: API.OperationMethod<
   retry: Retry,
   operationName: "ListProfilePermissions",
 }));
+
 export type ListSigningJobsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1479,6 +1486,7 @@ export const listSigningJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSigningPlatformsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1532,6 +1540,7 @@ export const listSigningPlatforms: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSigningProfilesError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1584,6 +1593,7 @@ export const listSigningProfiles: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | InternalServiceErrorException
@@ -1611,6 +1621,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutSigningProfileError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1643,6 +1654,7 @@ export const putSigningProfile: API.OperationMethod<
   retry: Retry,
   operationName: "PutSigningProfile",
 }));
+
 export type RemoveProfilePermissionError =
   | AccessDeniedException
   | ConflictException
@@ -1674,6 +1686,7 @@ export const removeProfilePermission: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveProfilePermission",
 }));
+
 export type RevokeSignatureError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1704,6 +1717,7 @@ export const revokeSignature: API.OperationMethod<
   retry: Retry,
   operationName: "RevokeSignature",
 }));
+
 export type RevokeSigningProfileError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1737,6 +1751,7 @@ export const revokeSigningProfile: API.OperationMethod<
   retry: Retry,
   operationName: "RevokeSigningProfile",
 }));
+
 export type SignPayloadError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1766,6 +1781,7 @@ export const signPayload: API.OperationMethod<
   retry: Retry,
   operationName: "SignPayload",
 }));
+
 export type StartSigningJobError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1818,6 +1834,7 @@ export const startSigningJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartSigningJob",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | InternalServiceErrorException
@@ -1848,6 +1865,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | InternalServiceErrorException

@@ -88,10 +88,36 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type MaxItems = number;
-
-//# Schemas
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
 export type __listOf__string = string[];
 export const __listOf__string = /*@__PURE__*/ S.Array(S.String);
 export interface CreateApplicationRequest {
@@ -221,6 +247,7 @@ export type Capability =
   | "CAPABILITY_RESOURCE_POLICY"
   | (string & {});
 export const Capability = /*@__PURE__*/ S.String;
+
 export type __listOfCapability = Capability[];
 export const __listOfCapability = /*@__PURE__*/ S.Array(Capability);
 export interface Version {
@@ -570,6 +597,7 @@ export const CreateCloudFormationTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateCloudFormationTemplateRequest>;
 export type Status = "PREPARING" | "ACTIVE" | "EXPIRED" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface CreateCloudFormationTemplateResponse {
   ApplicationId?: string;
   CreationTime?: string;
@@ -821,6 +849,7 @@ export const GetCloudFormationTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCloudFormationTemplateResponse",
 }) as any as S.Schema<GetCloudFormationTemplateResponse>;
+export type MaxItems = number;
 export interface ListApplicationDependenciesRequest {
   ApplicationId: string;
   MaxItems?: number;
@@ -1199,40 +1228,6 @@ export const UpdateApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateApplicationResponse",
 }) as any as S.Schema<UpdateApplicationResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { ErrorCode: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateApplicationError =
   | BadRequestException
   | ConflictException
@@ -1262,6 +1257,7 @@ export const createApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApplication",
 }));
+
 export type CreateApplicationVersionError =
   | BadRequestException
   | ConflictException
@@ -1291,6 +1287,7 @@ export const createApplicationVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApplicationVersion",
 }));
+
 export type CreateCloudFormationChangeSetError =
   | BadRequestException
   | ForbiddenException
@@ -1318,6 +1315,7 @@ export const createCloudFormationChangeSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCloudFormationChangeSet",
 }));
+
 export type CreateCloudFormationTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -1347,6 +1345,7 @@ export const createCloudFormationTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCloudFormationTemplate",
 }));
+
 export type DeleteApplicationError =
   | BadRequestException
   | ConflictException
@@ -1378,6 +1377,7 @@ export const deleteApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApplication",
 }));
+
 export type GetApplicationError =
   | BadRequestException
   | ForbiddenException
@@ -1407,6 +1407,7 @@ export const getApplication: API.OperationMethod<
   retry: Retry,
   operationName: "GetApplication",
 }));
+
 export type GetApplicationPolicyError =
   | BadRequestException
   | ForbiddenException
@@ -1436,6 +1437,7 @@ export const getApplicationPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetApplicationPolicy",
 }));
+
 export type GetCloudFormationTemplateError =
   | BadRequestException
   | ForbiddenException
@@ -1465,6 +1467,7 @@ export const getCloudFormationTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetCloudFormationTemplate",
 }));
+
 export type ListApplicationDependenciesError =
   | BadRequestException
   | ForbiddenException
@@ -1514,6 +1517,7 @@ export const listApplicationDependencies: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListApplicationsError =
   | BadRequestException
   | ForbiddenException
@@ -1561,6 +1565,7 @@ export const listApplications: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListApplicationVersionsError =
   | BadRequestException
   | ForbiddenException
@@ -1610,6 +1615,7 @@ export const listApplicationVersions: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type PutApplicationPolicyError =
   | BadRequestException
   | ForbiddenException
@@ -1642,6 +1648,7 @@ export const putApplicationPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutApplicationPolicy",
 }));
+
 export type UnshareApplicationError =
   | BadRequestException
   | ForbiddenException
@@ -1673,6 +1680,7 @@ export const unshareApplication: API.OperationMethod<
   retry: Retry,
   operationName: "UnshareApplication",
 }));
+
 export type UpdateApplicationError =
   | BadRequestException
   | ConflictException

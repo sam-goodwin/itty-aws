@@ -87,78 +87,67 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalException extends S.TaggedErrorClass<InternalException>()(
+  "InternalException",
+  { message: S.optional(S.String), errorCode: S.optional(S.String) },
+) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  {
+    message: S.optional(S.String),
+    errorCode: S.optional(S.String),
+    datasyncErrorCode: S.optional(S.String),
+  },
+) {}
+export class LocationAccessTestFailed extends S.TaggedErrorClass<LocationAccessTestFailed>()(
+  "LocationAccessTestFailed",
+  {
+    message: S.optional(S.String),
+    errorCode: S.optional(S.String),
+    datasyncErrorCode: S.optional(S.String),
+  },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { includes: "location access test failed" },
+  }),
+).pipe(C.withRetryableError) {}
+export class LocationNotFound extends S.TaggedErrorClass<LocationNotFound>()(
+  "LocationNotFound",
+  {
+    message: S.optional(S.String),
+    errorCode: S.optional(S.String),
+    datasyncErrorCode: S.optional(S.String),
+  },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "^Location .* is not found" },
+  }),
+).pipe(C.withNotFoundError) {}
+export class LocationRoleNotAssumable extends S.TaggedErrorClass<LocationRoleNotAssumable>()(
+  "LocationRoleNotAssumable",
+  {
+    message: S.optional(S.String),
+    errorCode: S.optional(S.String),
+    datasyncErrorCode: S.optional(S.String),
+  },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { includes: "Invalid IAM role" },
+  }),
+).pipe(C.withRetryableError) {}
+export class TaskNotFound extends S.TaggedErrorClass<TaskNotFound>()(
+  "TaskNotFound",
+  {
+    message: S.optional(S.String),
+    errorCode: S.optional(S.String),
+    datasyncErrorCode: S.optional(S.String),
+  },
+  T.SyntheticError({
+    from: "InvalidRequestException",
+    message: { matches: "^Task .* is not found" },
+  }),
+).pipe(C.withNotFoundError) {}
 export type TaskExecutionArn = string;
-export type ActivationKey = string;
-export type TagValue = string;
-export type TagKey = string;
-export type VpcEndpointId = string;
-export type Ec2SubnetArn = string;
-export type Ec2SecurityGroupArn = string;
-export type AgentArn = string;
-export type AzureBlobContainerUrl = string;
-export type AzureBlobSasToken = string | redacted.Redacted<string>;
-export type AzureBlobSubdirectory = string;
-export type SecretArn = string;
-export type KmsKeyArn = string;
-export type IamRoleArnOrEmptyString = string;
-export type LocationArn = string;
-export type EfsSubdirectory = string;
-export type EfsFilesystemArn = string;
-export type EfsAccessPointArn = string;
-export type IamRoleArn = string;
-export type FsxFilesystemArn = string;
-export type FsxLustreSubdirectory = string;
-export type SmbDomain = string;
-export type SmbPassword = string | redacted.Redacted<string>;
-export type SmbUser = string;
-export type StorageVirtualMachineArn = string;
-export type FsxOntapSubdirectory = string;
-export type FsxOpenZfsSubdirectory = string;
-export type FsxWindowsSubdirectory = string;
-export type HdfsSubdirectory = string;
-export type HdfsServerHostname = string;
-export type HdfsServerPort = number;
-export type HdfsBlockSize = number;
-export type HdfsReplicationFactor = number;
-export type KmsKeyProviderUri = string;
-export type HdfsUser = string;
-export type KerberosPrincipal = string;
-export type KerberosKeytabFile = Uint8Array;
-export type KerberosKrb5ConfFile = Uint8Array;
-export type NfsSubdirectory = string;
-export type ServerHostname = string;
-export type ObjectStorageServerPort = number;
-export type S3Subdirectory = string;
-export type ObjectStorageBucketName = string;
-export type ObjectStorageAccessKey = string;
-export type ObjectStorageSecretKey = string | redacted.Redacted<string>;
-export type ObjectStorageCertificate = Uint8Array;
-export type S3BucketArn = string;
-export type SmbSubdirectory = string;
-export type ServerIpAddress = string;
-export type LogGroupArn = string;
-export type BytesPerSecond = number;
-export type FilterValue = string;
-export type ScheduleExpressionCron = string;
-export type S3ObjectVersionId = string;
-export type TaskArn = string;
-export type Endpoint = string;
-export type AgentVersion = string;
-export type LocationUri = string;
-export type NetworkInterfaceArn = string;
-export type ScheduleDisabledReason = string;
-export type Duration = number;
-export type ItemCount = number;
-export type MaxResults = number;
-export type NextToken = string;
-export type FilterAttributeValue = string;
-export type TaggableResourceArn = string;
-export type UpdatedEfsAccessPointArn = string;
-export type UpdatedEfsIamRoleArn = string;
-export type UpdateSmbDomain = string;
-
-//# Schemas
 export interface CancelTaskExecutionRequest {
   TaskExecutionArn: string;
 }
@@ -175,6 +164,9 @@ export const CancelTaskExecutionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelTaskExecutionResponse",
 }) as any as S.Schema<CancelTaskExecutionResponse>;
+export type ActivationKey = string;
+export type TagValue = string;
+export type TagKey = string;
 export interface TagListEntry {
   Key: string;
   Value?: string;
@@ -184,8 +176,11 @@ export const TagListEntry = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TagListEntry" }) as any as S.Schema<TagListEntry>;
 export type InputTagList = TagListEntry[];
 export const InputTagList = /*@__PURE__*/ S.Array(TagListEntry);
+export type VpcEndpointId = string;
+export type Ec2SubnetArn = string;
 export type PLSubnetArnList = string[];
 export const PLSubnetArnList = /*@__PURE__*/ S.Array(S.String);
+export type Ec2SecurityGroupArn = string;
 export type PLSecurityGroupArnList = string[];
 export const PLSecurityGroupArnList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateAgentRequest {
@@ -210,6 +205,7 @@ export const CreateAgentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAgentRequest",
 }) as any as S.Schema<CreateAgentRequest>;
+export type AgentArn = string;
 export interface CreateAgentResponse {
   AgentArn?: string;
 }
@@ -218,8 +214,11 @@ export const CreateAgentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAgentResponse",
 }) as any as S.Schema<CreateAgentResponse>;
+export type AzureBlobContainerUrl = string;
 export type AzureBlobAuthenticationType = "SAS" | "NONE" | (string & {});
 export const AzureBlobAuthenticationType = /*@__PURE__*/ S.String;
+
+export type AzureBlobSasToken = string | redacted.Redacted<string>;
 export interface AzureBlobSasConfiguration {
   Token: string | redacted.Redacted<string>;
 }
@@ -230,10 +229,15 @@ export const AzureBlobSasConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AzureBlobSasConfiguration>;
 export type AzureBlobType = "BLOCK" | (string & {});
 export const AzureBlobType = /*@__PURE__*/ S.String;
+
 export type AzureAccessTier = "HOT" | "COOL" | "ARCHIVE" | (string & {});
 export const AzureAccessTier = /*@__PURE__*/ S.String;
+
+export type AzureBlobSubdirectory = string;
 export type AgentArnList = string[];
 export const AgentArnList = /*@__PURE__*/ S.Array(S.String);
+export type SecretArn = string;
+export type KmsKeyArn = string;
 export interface CmkSecretConfig {
   SecretArn?: string;
   KmsKeyArn?: string;
@@ -246,6 +250,7 @@ export const CmkSecretConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CmkSecretConfig",
 }) as any as S.Schema<CmkSecretConfig>;
+export type IamRoleArnOrEmptyString = string;
 export interface CustomSecretConfig {
   SecretArn?: string;
   SecretAccessRoleArn?: string;
@@ -288,6 +293,7 @@ export const CreateLocationAzureBlobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLocationAzureBlobRequest",
 }) as any as S.Schema<CreateLocationAzureBlobRequest>;
+export type LocationArn = string;
 export interface CreateLocationAzureBlobResponse {
   LocationArn?: string;
 }
@@ -296,6 +302,8 @@ export const CreateLocationAzureBlobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLocationAzureBlobResponse",
 }) as any as S.Schema<CreateLocationAzureBlobResponse>;
+export type EfsSubdirectory = string;
+export type EfsFilesystemArn = string;
 export type Ec2SecurityGroupArnList = string[];
 export const Ec2SecurityGroupArnList = /*@__PURE__*/ S.Array(S.String);
 export interface Ec2Config {
@@ -305,8 +313,11 @@ export interface Ec2Config {
 export const Ec2Config = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ SubnetArn: S.String, SecurityGroupArns: Ec2SecurityGroupArnList }),
 ).annotate({ identifier: "Ec2Config" }) as any as S.Schema<Ec2Config>;
+export type EfsAccessPointArn = string;
+export type IamRoleArn = string;
 export type EfsInTransitEncryption = "NONE" | "TLS1_2" | (string & {});
 export const EfsInTransitEncryption = /*@__PURE__*/ S.String;
+
 export interface CreateLocationEfsRequest {
   Subdirectory?: string;
   EfsFilesystemArn: string;
@@ -339,6 +350,8 @@ export const CreateLocationEfsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLocationEfsResponse",
 }) as any as S.Schema<CreateLocationEfsResponse>;
+export type FsxFilesystemArn = string;
+export type FsxLustreSubdirectory = string;
 export interface CreateLocationFsxLustreRequest {
   FsxFilesystemArn: string;
   SecurityGroupArns: string[];
@@ -372,6 +385,7 @@ export type NfsVersion =
   | "NFS4_1"
   | (string & {});
 export const NfsVersion = /*@__PURE__*/ S.String;
+
 export interface NfsMountOptions {
   Version?: NfsVersion;
 }
@@ -386,6 +400,7 @@ export interface FsxProtocolNfs {
 export const FsxProtocolNfs = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ MountOptions: S.optional(NfsMountOptions) }),
 ).annotate({ identifier: "FsxProtocolNfs" }) as any as S.Schema<FsxProtocolNfs>;
+export type SmbDomain = string;
 export type SmbVersion =
   | "AUTOMATIC"
   | "SMB2"
@@ -394,6 +409,7 @@ export type SmbVersion =
   | "SMB2_0"
   | (string & {});
 export const SmbVersion = /*@__PURE__*/ S.String;
+
 export interface SmbMountOptions {
   Version?: SmbVersion;
 }
@@ -402,6 +418,8 @@ export const SmbMountOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SmbMountOptions",
 }) as any as S.Schema<SmbMountOptions>;
+export type SmbPassword = string | redacted.Redacted<string>;
+export type SmbUser = string;
 export interface ManagedSecretConfig {
   SecretArn?: string;
 }
@@ -440,6 +458,8 @@ export const FsxProtocol = /*@__PURE__*/ S.suspend(() =>
     SMB: S.optional(FsxProtocolSmb),
   }),
 ).annotate({ identifier: "FsxProtocol" }) as any as S.Schema<FsxProtocol>;
+export type StorageVirtualMachineArn = string;
+export type FsxOntapSubdirectory = string;
 export interface CreateLocationFsxOntapRequest {
   Protocol: FsxProtocol;
   SecurityGroupArns: string[];
@@ -468,6 +488,7 @@ export const CreateLocationFsxOntapResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLocationFsxOntapResponse",
 }) as any as S.Schema<CreateLocationFsxOntapResponse>;
+export type FsxOpenZfsSubdirectory = string;
 export interface CreateLocationFsxOpenZfsRequest {
   FsxFilesystemArn: string;
   Protocol: FsxProtocol;
@@ -496,6 +517,7 @@ export const CreateLocationFsxOpenZfsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLocationFsxOpenZfsResponse",
 }) as any as S.Schema<CreateLocationFsxOpenZfsResponse>;
+export type FsxWindowsSubdirectory = string;
 export interface CreateLocationFsxWindowsRequest {
   Subdirectory?: string;
   FsxFilesystemArn: string;
@@ -532,6 +554,9 @@ export const CreateLocationFsxWindowsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLocationFsxWindowsResponse",
 }) as any as S.Schema<CreateLocationFsxWindowsResponse>;
+export type HdfsSubdirectory = string;
+export type HdfsServerHostname = string;
+export type HdfsServerPort = number;
 export interface HdfsNameNode {
   Hostname: string;
   Port: number;
@@ -541,6 +566,9 @@ export const HdfsNameNode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HdfsNameNode" }) as any as S.Schema<HdfsNameNode>;
 export type HdfsNameNodeList = HdfsNameNode[];
 export const HdfsNameNodeList = /*@__PURE__*/ S.Array(HdfsNameNode);
+export type HdfsBlockSize = number;
+export type HdfsReplicationFactor = number;
+export type KmsKeyProviderUri = string;
 export type HdfsRpcProtection =
   | "DISABLED"
   | "AUTHENTICATION"
@@ -548,6 +576,7 @@ export type HdfsRpcProtection =
   | "PRIVACY"
   | (string & {});
 export const HdfsRpcProtection = /*@__PURE__*/ S.String;
+
 export type HdfsDataTransferProtection =
   | "DISABLED"
   | "AUTHENTICATION"
@@ -555,6 +584,7 @@ export type HdfsDataTransferProtection =
   | "PRIVACY"
   | (string & {});
 export const HdfsDataTransferProtection = /*@__PURE__*/ S.String;
+
 export interface QopConfiguration {
   RpcProtection?: HdfsRpcProtection;
   DataTransferProtection?: HdfsDataTransferProtection;
@@ -569,6 +599,11 @@ export const QopConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<QopConfiguration>;
 export type HdfsAuthenticationType = "SIMPLE" | "KERBEROS" | (string & {});
 export const HdfsAuthenticationType = /*@__PURE__*/ S.String;
+
+export type HdfsUser = string;
+export type KerberosPrincipal = string;
+export type KerberosKeytabFile = Uint8Array;
+export type KerberosKrb5ConfFile = Uint8Array;
 export interface CreateLocationHdfsRequest {
   Subdirectory?: string;
   NameNodes: HdfsNameNode[];
@@ -617,6 +652,8 @@ export const CreateLocationHdfsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLocationHdfsResponse",
 }) as any as S.Schema<CreateLocationHdfsResponse>;
+export type NfsSubdirectory = string;
+export type ServerHostname = string;
 export interface OnPremConfig {
   AgentArns: string[];
 }
@@ -651,8 +688,15 @@ export const CreateLocationNfsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLocationNfsResponse",
 }) as any as S.Schema<CreateLocationNfsResponse>;
+export type ObjectStorageServerPort = number;
 export type ObjectStorageServerProtocol = "HTTPS" | "HTTP" | (string & {});
 export const ObjectStorageServerProtocol = /*@__PURE__*/ S.String;
+
+export type S3Subdirectory = string;
+export type ObjectStorageBucketName = string;
+export type ObjectStorageAccessKey = string;
+export type ObjectStorageSecretKey = string | redacted.Redacted<string>;
+export type ObjectStorageCertificate = Uint8Array;
 export interface CreateLocationObjectStorageRequest {
   ServerHostname: string;
   ServerPort?: number;
@@ -695,6 +739,7 @@ export const CreateLocationObjectStorageResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLocationObjectStorageResponse",
 }) as any as S.Schema<CreateLocationObjectStorageResponse>;
+export type S3BucketArn = string;
 export type S3StorageClass =
   | "STANDARD"
   | "STANDARD_IA"
@@ -706,6 +751,7 @@ export type S3StorageClass =
   | "GLACIER_INSTANT_RETRIEVAL"
   | (string & {});
 export const S3StorageClass = /*@__PURE__*/ S.String;
+
 export interface S3Config {
   BucketAccessRoleArn: string;
 }
@@ -742,8 +788,11 @@ export const CreateLocationS3Response = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLocationS3Response",
 }) as any as S.Schema<CreateLocationS3Response>;
+export type SmbSubdirectory = string;
 export type SmbAuthenticationType = "NTLM" | "KERBEROS" | (string & {});
 export const SmbAuthenticationType = /*@__PURE__*/ S.String;
+
+export type ServerIpAddress = string;
 export type DnsIpList = string[];
 export const DnsIpList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateLocationSmbRequest {
@@ -794,42 +843,58 @@ export const CreateLocationSmbResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateLocationSmbResponse",
 }) as any as S.Schema<CreateLocationSmbResponse>;
+export type LogGroupArn = string;
 export type VerifyMode =
   | "POINT_IN_TIME_CONSISTENT"
   | "ONLY_FILES_TRANSFERRED"
   | "NONE"
   | (string & {});
 export const VerifyMode = /*@__PURE__*/ S.String;
+
 export type OverwriteMode = "ALWAYS" | "NEVER" | (string & {});
 export const OverwriteMode = /*@__PURE__*/ S.String;
+
 export type Atime = "NONE" | "BEST_EFFORT" | (string & {});
 export const Atime = /*@__PURE__*/ S.String;
+
 export type Mtime = "NONE" | "PRESERVE" | (string & {});
 export const Mtime = /*@__PURE__*/ S.String;
+
 export type Uid = "NONE" | "INT_VALUE" | "NAME" | "BOTH" | (string & {});
 export const Uid = /*@__PURE__*/ S.String;
+
 export type Gid = "NONE" | "INT_VALUE" | "NAME" | "BOTH" | (string & {});
 export const Gid = /*@__PURE__*/ S.String;
+
 export type PreserveDeletedFiles = "PRESERVE" | "REMOVE" | (string & {});
 export const PreserveDeletedFiles = /*@__PURE__*/ S.String;
+
 export type PreserveDevices = "NONE" | "PRESERVE" | (string & {});
 export const PreserveDevices = /*@__PURE__*/ S.String;
+
 export type PosixPermissions = "NONE" | "PRESERVE" | (string & {});
 export const PosixPermissions = /*@__PURE__*/ S.String;
+
+export type BytesPerSecond = number;
 export type TaskQueueing = "ENABLED" | "DISABLED" | (string & {});
 export const TaskQueueing = /*@__PURE__*/ S.String;
+
 export type LogLevel = "OFF" | "BASIC" | "TRANSFER" | (string & {});
 export const LogLevel = /*@__PURE__*/ S.String;
+
 export type TransferMode = "CHANGED" | "ALL" | (string & {});
 export const TransferMode = /*@__PURE__*/ S.String;
+
 export type SmbSecurityDescriptorCopyFlags =
   | "NONE"
   | "OWNER_DACL"
   | "OWNER_DACL_SACL"
   | (string & {});
 export const SmbSecurityDescriptorCopyFlags = /*@__PURE__*/ S.String;
+
 export type ObjectTags = "PRESERVE" | "NONE" | (string & {});
 export const ObjectTags = /*@__PURE__*/ S.String;
+
 export interface Options {
   VerifyMode?: VerifyMode;
   OverwriteMode?: OverwriteMode;
@@ -868,6 +933,8 @@ export const Options = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Options" }) as any as S.Schema<Options>;
 export type FilterType = "SIMPLE_PATTERN" | (string & {});
 export const FilterType = /*@__PURE__*/ S.String;
+
+export type FilterValue = string;
 export interface FilterRule {
   FilterType?: FilterType;
   Value?: string;
@@ -877,8 +944,10 @@ export const FilterRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FilterRule" }) as any as S.Schema<FilterRule>;
 export type FilterList = FilterRule[];
 export const FilterList = /*@__PURE__*/ S.Array(FilterRule);
+export type ScheduleExpressionCron = string;
 export type ScheduleStatus = "ENABLED" | "DISABLED" | (string & {});
 export const ScheduleStatus = /*@__PURE__*/ S.String;
+
 export interface TaskSchedule {
   ScheduleExpression: string;
   Status?: ScheduleStatus;
@@ -891,8 +960,11 @@ export const TaskSchedule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TaskSchedule" }) as any as S.Schema<TaskSchedule>;
 export type ManifestAction = "TRANSFER" | (string & {});
 export const ManifestAction = /*@__PURE__*/ S.String;
+
 export type ManifestFormat = "CSV" | (string & {});
 export const ManifestFormat = /*@__PURE__*/ S.String;
+
+export type S3ObjectVersionId = string;
 export interface S3ManifestConfig {
   ManifestObjectPath: string;
   BucketAccessRoleArn: string;
@@ -953,13 +1025,16 @@ export const ReportDestination = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ReportDestination>;
 export type ReportOutputType = "SUMMARY_ONLY" | "STANDARD" | (string & {});
 export const ReportOutputType = /*@__PURE__*/ S.String;
+
 export type ReportLevel =
   | "ERRORS_ONLY"
   | "SUCCESSES_AND_ERRORS"
   | (string & {});
 export const ReportLevel = /*@__PURE__*/ S.String;
+
 export type ObjectVersionIds = "INCLUDE" | "NONE" | (string & {});
 export const ObjectVersionIds = /*@__PURE__*/ S.String;
+
 export interface ReportOverride {
   ReportLevel?: ReportLevel;
 }
@@ -1002,6 +1077,7 @@ export const TaskReportConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<TaskReportConfig>;
 export type TaskMode = "BASIC" | "ENHANCED" | (string & {});
 export const TaskMode = /*@__PURE__*/ S.String;
+
 export interface CreateTaskRequest {
   SourceLocationArn: string;
   DestinationLocationArn: string;
@@ -1036,6 +1112,7 @@ export const CreateTaskRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTaskRequest",
 }) as any as S.Schema<CreateTaskRequest>;
+export type TaskArn = string;
 export interface CreateTaskResponse {
   TaskArn?: string;
 }
@@ -1104,6 +1181,7 @@ export const DescribeAgentRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeAgentRequest>;
 export type AgentStatus = "ONLINE" | "OFFLINE" | (string & {});
 export const AgentStatus = /*@__PURE__*/ S.String;
+
 export type EndpointType =
   | "PUBLIC"
   | "PRIVATE_LINK"
@@ -1111,6 +1189,8 @@ export type EndpointType =
   | "FIPS_PRIVATE_LINK"
   | (string & {});
 export const EndpointType = /*@__PURE__*/ S.String;
+
+export type Endpoint = string;
 export interface PrivateLinkConfig {
   VpcEndpointId?: string;
   PrivateLinkEndpoint?: string;
@@ -1127,6 +1207,7 @@ export const PrivateLinkConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PrivateLinkConfig",
 }) as any as S.Schema<PrivateLinkConfig>;
+export type AgentVersion = string;
 export interface Platform {
   Version?: string;
 }
@@ -1169,6 +1250,7 @@ export const DescribeLocationAzureBlobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLocationAzureBlobRequest",
 }) as any as S.Schema<DescribeLocationAzureBlobRequest>;
+export type LocationUri = string;
 export interface DescribeLocationAzureBlobResponse {
   LocationArn?: string;
   LocationUri?: string;
@@ -1561,12 +1643,16 @@ export type TaskStatus =
   | "UNAVAILABLE"
   | (string & {});
 export const TaskStatus = /*@__PURE__*/ S.String;
+
+export type NetworkInterfaceArn = string;
 export type SourceNetworkInterfaceArns = string[];
 export const SourceNetworkInterfaceArns = /*@__PURE__*/ S.Array(S.String);
 export type DestinationNetworkInterfaceArns = string[];
 export const DestinationNetworkInterfaceArns = /*@__PURE__*/ S.Array(S.String);
+export type ScheduleDisabledReason = string;
 export type ScheduleDisabledBy = "USER" | "SERVICE" | (string & {});
 export const ScheduleDisabledBy = /*@__PURE__*/ S.String;
+
 export interface TaskScheduleDetails {
   StatusUpdateTime?: Date;
   DisabledReason?: string;
@@ -1654,8 +1740,11 @@ export type TaskExecutionStatus =
   | "ERROR"
   | (string & {});
 export const TaskExecutionStatus = /*@__PURE__*/ S.String;
+
+export type Duration = number;
 export type PhaseStatus = "PENDING" | "SUCCESS" | "ERROR" | (string & {});
 export const PhaseStatus = /*@__PURE__*/ S.String;
+
 export interface TaskExecutionResultDetail {
   PrepareDuration?: number;
   PrepareStatus?: PhaseStatus;
@@ -1722,6 +1811,7 @@ export const TaskExecutionFilesFailedDetail = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TaskExecutionFilesFailedDetail",
 }) as any as S.Schema<TaskExecutionFilesFailedDetail>;
+export type ItemCount = number;
 export interface TaskExecutionFoldersListedDetail {
   AtSource?: number;
   AtDestinationForDelete?: number;
@@ -1830,6 +1920,8 @@ export const DescribeTaskExecutionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTaskExecutionResponse",
 }) as any as S.Schema<DescribeTaskExecutionResponse>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface ListAgentsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -1875,6 +1967,8 @@ export type LocationFilterName =
   | "CreationTime"
   | (string & {});
 export const LocationFilterName = /*@__PURE__*/ S.String;
+
+export type FilterAttributeValue = string;
 export type FilterValues = string[];
 export const FilterValues = /*@__PURE__*/ S.Array(S.String);
 export type Operator =
@@ -1890,6 +1984,7 @@ export type Operator =
   | "BeginsWith"
   | (string & {});
 export const Operator = /*@__PURE__*/ S.String;
+
 export interface LocationFilter {
   Name: LocationFilterName;
   Values: string[];
@@ -1946,6 +2041,7 @@ export const ListLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListLocationsResponse",
 }) as any as S.Schema<ListLocationsResponse>;
+export type TaggableResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
   MaxResults?: number;
@@ -2022,6 +2118,7 @@ export const ListTaskExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTaskExecutionsResponse>;
 export type TaskFilterName = "LocationId" | "CreationTime" | (string & {});
 export const TaskFilterName = /*@__PURE__*/ S.String;
+
 export interface TaskFilter {
   Name: TaskFilterName;
   Values: string[];
@@ -2192,6 +2289,8 @@ export const UpdateLocationAzureBlobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateLocationAzureBlobResponse",
 }) as any as S.Schema<UpdateLocationAzureBlobResponse>;
+export type UpdatedEfsAccessPointArn = string;
+export type UpdatedEfsIamRoleArn = string;
 export interface UpdateLocationEfsRequest {
   LocationArn: string;
   Subdirectory?: string;
@@ -2235,6 +2334,7 @@ export const UpdateLocationFsxLustreResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateLocationFsxLustreResponse",
 }) as any as S.Schema<UpdateLocationFsxLustreResponse>;
+export type UpdateSmbDomain = string;
 export interface FsxUpdateProtocolSmb {
   Domain?: string;
   MountOptions?: SmbMountOptions;
@@ -2572,70 +2672,6 @@ export const UpdateTaskExecutionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTaskExecutionResponse",
 }) as any as S.Schema<UpdateTaskExecutionResponse>;
-
-//# Errors
-export class InternalException extends S.TaggedErrorClass<InternalException>()(
-  "InternalException",
-  { message: S.optional(S.String), errorCode: S.optional(S.String) },
-) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  {
-    message: S.optional(S.String),
-    errorCode: S.optional(S.String),
-    datasyncErrorCode: S.optional(S.String),
-  },
-) {}
-export class LocationRoleNotAssumable extends S.TaggedErrorClass<LocationRoleNotAssumable>()(
-  "LocationRoleNotAssumable",
-  {
-    message: S.optional(S.String),
-    errorCode: S.optional(S.String),
-    datasyncErrorCode: S.optional(S.String),
-  },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { includes: "Invalid IAM role" },
-  }),
-).pipe(C.withRetryableError) {}
-export class LocationAccessTestFailed extends S.TaggedErrorClass<LocationAccessTestFailed>()(
-  "LocationAccessTestFailed",
-  {
-    message: S.optional(S.String),
-    errorCode: S.optional(S.String),
-    datasyncErrorCode: S.optional(S.String),
-  },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { includes: "location access test failed" },
-  }),
-).pipe(C.withRetryableError) {}
-export class LocationNotFound extends S.TaggedErrorClass<LocationNotFound>()(
-  "LocationNotFound",
-  {
-    message: S.optional(S.String),
-    errorCode: S.optional(S.String),
-    datasyncErrorCode: S.optional(S.String),
-  },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "^Location .* is not found" },
-  }),
-).pipe(C.withNotFoundError) {}
-export class TaskNotFound extends S.TaggedErrorClass<TaskNotFound>()(
-  "TaskNotFound",
-  {
-    message: S.optional(S.String),
-    errorCode: S.optional(S.String),
-    datasyncErrorCode: S.optional(S.String),
-  },
-  T.SyntheticError({
-    from: "InvalidRequestException",
-    message: { matches: "^Task .* is not found" },
-  }),
-).pipe(C.withNotFoundError) {}
-
-//# Operations
 export type CancelTaskExecutionError =
   | InternalException
   | InvalidRequestException
@@ -2663,6 +2699,7 @@ export const cancelTaskExecution: API.OperationMethod<
   retry: Retry,
   operationName: "CancelTaskExecution",
 }));
+
 export type CreateAgentError =
   | InternalException
   | InvalidRequestException
@@ -2687,6 +2724,7 @@ export const createAgent: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAgent",
 }));
+
 export type CreateLocationAzureBlobError =
   | InternalException
   | InvalidRequestException
@@ -2712,6 +2750,7 @@ export const createLocationAzureBlob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocationAzureBlob",
 }));
+
 export type CreateLocationEfsError =
   | InternalException
   | InvalidRequestException
@@ -2745,6 +2784,7 @@ export const createLocationEfs: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocationEfs",
 }));
+
 export type CreateLocationFsxLustreError =
   | InternalException
   | InvalidRequestException
@@ -2770,6 +2810,7 @@ export const createLocationFsxLustre: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocationFsxLustre",
 }));
+
 export type CreateLocationFsxOntapError =
   | InternalException
   | InvalidRequestException
@@ -2795,6 +2836,7 @@ export const createLocationFsxOntap: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocationFsxOntap",
 }));
+
 export type CreateLocationFsxOpenZfsError =
   | InternalException
   | InvalidRequestException
@@ -2824,6 +2866,7 @@ export const createLocationFsxOpenZfs: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocationFsxOpenZfs",
 }));
+
 export type CreateLocationFsxWindowsError =
   | InternalException
   | InvalidRequestException
@@ -2850,6 +2893,7 @@ export const createLocationFsxWindows: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocationFsxWindows",
 }));
+
 export type CreateLocationHdfsError =
   | InternalException
   | InvalidRequestException
@@ -2876,6 +2920,7 @@ export const createLocationHdfs: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocationHdfs",
 }));
+
 export type CreateLocationNfsError =
   | InternalException
   | InvalidRequestException
@@ -2902,6 +2947,7 @@ export const createLocationNfs: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocationNfs",
 }));
+
 export type CreateLocationObjectStorageError =
   | InternalException
   | InvalidRequestException
@@ -2926,6 +2972,7 @@ export const createLocationObjectStorage: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocationObjectStorage",
 }));
+
 export type CreateLocationS3Error =
   | InternalException
   | InvalidRequestException
@@ -2965,6 +3012,7 @@ export const createLocationS3: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocationS3",
 }));
+
 export type CreateLocationSmbError =
   | InternalException
   | InvalidRequestException
@@ -2990,6 +3038,7 @@ export const createLocationSmb: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLocationSmb",
 }));
+
 export type CreateTaskError =
   | InternalException
   | InvalidRequestException
@@ -3019,6 +3068,7 @@ export const createTask: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTask",
 }));
+
 export type DeleteAgentError =
   | InternalException
   | InvalidRequestException
@@ -3044,6 +3094,7 @@ export const deleteAgent: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAgent",
 }));
+
 export type DeleteLocationError =
   | InternalException
   | InvalidRequestException
@@ -3065,6 +3116,7 @@ export const deleteLocation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLocation",
 }));
+
 export type DeleteTaskError =
   | InternalException
   | InvalidRequestException
@@ -3086,6 +3138,7 @@ export const deleteTask: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTask",
 }));
+
 export type DescribeAgentError =
   | InternalException
   | InvalidRequestException
@@ -3107,6 +3160,7 @@ export const describeAgent: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAgent",
 }));
+
 export type DescribeLocationAzureBlobError =
   | InternalException
   | InvalidRequestException
@@ -3128,6 +3182,7 @@ export const describeLocationAzureBlob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLocationAzureBlob",
 }));
+
 export type DescribeLocationEfsError =
   | InternalException
   | InvalidRequestException
@@ -3149,6 +3204,7 @@ export const describeLocationEfs: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLocationEfs",
 }));
+
 export type DescribeLocationFsxLustreError =
   | InternalException
   | InvalidRequestException
@@ -3169,6 +3225,7 @@ export const describeLocationFsxLustre: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLocationFsxLustre",
 }));
+
 export type DescribeLocationFsxOntapError =
   | InternalException
   | InvalidRequestException
@@ -3192,6 +3249,7 @@ export const describeLocationFsxOntap: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLocationFsxOntap",
 }));
+
 export type DescribeLocationFsxOpenZfsError =
   | InternalException
   | InvalidRequestException
@@ -3215,6 +3273,7 @@ export const describeLocationFsxOpenZfs: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLocationFsxOpenZfs",
 }));
+
 export type DescribeLocationFsxWindowsError =
   | InternalException
   | InvalidRequestException
@@ -3235,6 +3294,7 @@ export const describeLocationFsxWindows: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLocationFsxWindows",
 }));
+
 export type DescribeLocationHdfsError =
   | InternalException
   | InvalidRequestException
@@ -3256,6 +3316,7 @@ export const describeLocationHdfs: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLocationHdfs",
 }));
+
 export type DescribeLocationNfsError =
   | InternalException
   | InvalidRequestException
@@ -3277,6 +3338,7 @@ export const describeLocationNfs: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLocationNfs",
 }));
+
 export type DescribeLocationObjectStorageError =
   | InternalException
   | InvalidRequestException
@@ -3298,6 +3360,7 @@ export const describeLocationObjectStorage: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLocationObjectStorage",
 }));
+
 export type DescribeLocationS3Error =
   | InternalException
   | InvalidRequestException
@@ -3320,6 +3383,7 @@ export const describeLocationS3: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLocationS3",
 }));
+
 export type DescribeLocationSmbError =
   | InternalException
   | InvalidRequestException
@@ -3341,6 +3405,7 @@ export const describeLocationSmb: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLocationSmb",
 }));
+
 export type DescribeTaskError =
   | InternalException
   | InvalidRequestException
@@ -3363,6 +3428,7 @@ export const describeTask: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTask",
 }));
+
 export type DescribeTaskExecutionError =
   | InternalException
   | InvalidRequestException
@@ -3389,6 +3455,7 @@ export const describeTaskExecution: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTaskExecution",
 }));
+
 export type ListAgentsError =
   | InternalException
   | InvalidRequestException
@@ -3441,6 +3508,7 @@ export const listAgents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListLocationsError =
   | InternalException
   | InvalidRequestException
@@ -3486,6 +3554,7 @@ export const listLocations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalException
   | InvalidRequestException
@@ -3527,6 +3596,7 @@ export const listTagsForResource: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTaskExecutionsError =
   | InternalException
   | InvalidRequestException
@@ -3568,6 +3638,7 @@ export const listTaskExecutions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTasksError =
   | InternalException
   | InvalidRequestException
@@ -3609,6 +3680,7 @@ export const listTasks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type StartTaskExecutionError =
   | InternalException
   | InvalidRequestException
@@ -3642,6 +3714,7 @@ export const startTaskExecution: API.OperationMethod<
   retry: Retry,
   operationName: "StartTaskExecution",
 }));
+
 export type TagResourceError =
   | InternalException
   | InvalidRequestException
@@ -3666,6 +3739,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalException
   | InvalidRequestException
@@ -3686,6 +3760,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAgentError =
   | InternalException
   | InvalidRequestException
@@ -3706,6 +3781,7 @@ export const updateAgent: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAgent",
 }));
+
 export type UpdateLocationAzureBlobError =
   | InternalException
   | InvalidRequestException
@@ -3729,6 +3805,7 @@ export const updateLocationAzureBlob: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLocationAzureBlob",
 }));
+
 export type UpdateLocationEfsError =
   | InternalException
   | InvalidRequestException
@@ -3753,6 +3830,7 @@ export const updateLocationEfs: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLocationEfs",
 }));
+
 export type UpdateLocationFsxLustreError =
   | InternalException
   | InvalidRequestException
@@ -3777,6 +3855,7 @@ export const updateLocationFsxLustre: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLocationFsxLustre",
 }));
+
 export type UpdateLocationFsxOntapError =
   | InternalException
   | InvalidRequestException
@@ -3801,6 +3880,7 @@ export const updateLocationFsxOntap: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLocationFsxOntap",
 }));
+
 export type UpdateLocationFsxOpenZfsError =
   | InternalException
   | InvalidRequestException
@@ -3828,6 +3908,7 @@ export const updateLocationFsxOpenZfs: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLocationFsxOpenZfs",
 }));
+
 export type UpdateLocationFsxWindowsError =
   | InternalException
   | InvalidRequestException
@@ -3852,6 +3933,7 @@ export const updateLocationFsxWindows: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLocationFsxWindows",
 }));
+
 export type UpdateLocationHdfsError =
   | InternalException
   | InvalidRequestException
@@ -3876,6 +3958,7 @@ export const updateLocationHdfs: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLocationHdfs",
 }));
+
 export type UpdateLocationNfsError =
   | InternalException
   | InvalidRequestException
@@ -3900,6 +3983,7 @@ export const updateLocationNfs: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLocationNfs",
 }));
+
 export type UpdateLocationObjectStorageError =
   | InternalException
   | InvalidRequestException
@@ -3924,6 +4008,7 @@ export const updateLocationObjectStorage: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLocationObjectStorage",
 }));
+
 export type UpdateLocationS3Error =
   | InternalException
   | InvalidRequestException
@@ -3952,6 +4037,7 @@ export const updateLocationS3: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLocationS3",
 }));
+
 export type UpdateLocationSmbError =
   | InternalException
   | InvalidRequestException
@@ -3976,6 +4062,7 @@ export const updateLocationSmb: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLocationSmb",
 }));
+
 export type UpdateTaskError =
   | InternalException
   | InvalidRequestException
@@ -3998,6 +4085,7 @@ export const updateTask: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTask",
 }));
+
 export type UpdateTaskExecutionError =
   | InternalException
   | InvalidRequestException

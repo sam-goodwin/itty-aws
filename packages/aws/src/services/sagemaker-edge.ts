@@ -83,22 +83,12 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
+  "InternalServiceException",
+  { Message: S.optional(S.String) },
+) {}
 export type DeviceName = string;
 export type DeviceFleetName = string;
-export type EntityName = string;
-export type S3Uri = string;
-export type ChecksumString = string;
-export type ErrorMessage = string;
-export type DeviceRegistration = string;
-export type CacheTTLSeconds = string;
-export type Dimension = string;
-export type Metric = string;
-export type Value = number;
-export type ModelName = string;
-export type Version = string;
-
-//# Schemas
 export interface GetDeploymentsRequest {
   DeviceName?: string;
   DeviceFleetName?: string;
@@ -120,15 +110,21 @@ export const GetDeploymentsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDeploymentsRequest",
 }) as any as S.Schema<GetDeploymentsRequest>;
+export type EntityName = string;
 export type DeploymentType = "Model" | (string & {});
 export const DeploymentType = /*@__PURE__*/ S.String;
+
 export type FailureHandlingPolicy =
   | "ROLLBACK_ON_FAILURE"
   | "DO_NOTHING"
   | (string & {});
 export const FailureHandlingPolicy = /*@__PURE__*/ S.String;
+
+export type S3Uri = string;
 export type ChecksumType = "SHA1" | (string & {});
 export const ChecksumType = /*@__PURE__*/ S.String;
+
+export type ChecksumString = string;
 export interface Checksum {
   Type?: ChecksumType;
   Sum?: string;
@@ -138,6 +134,7 @@ export const Checksum = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Checksum" }) as any as S.Schema<Checksum>;
 export type ModelState = "DEPLOY" | "UNDEPLOY" | (string & {});
 export const ModelState = /*@__PURE__*/ S.String;
+
 export interface Definition {
   ModelHandle?: string;
   S3Url?: string;
@@ -199,6 +196,8 @@ export const GetDeviceRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDeviceRegistrationRequest",
 }) as any as S.Schema<GetDeviceRegistrationRequest>;
+export type DeviceRegistration = string;
+export type CacheTTLSeconds = string;
 export interface GetDeviceRegistrationResult {
   DeviceRegistration?: string;
   CacheTTL?: string;
@@ -211,6 +210,9 @@ export const GetDeviceRegistrationResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDeviceRegistrationResult",
 }) as any as S.Schema<GetDeviceRegistrationResult>;
+export type Dimension = string;
+export type Metric = string;
+export type Value = number;
 export interface EdgeMetric {
   Dimension?: string;
   MetricName?: string;
@@ -227,6 +229,8 @@ export const EdgeMetric = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EdgeMetric" }) as any as S.Schema<EdgeMetric>;
 export type EdgeMetrics = EdgeMetric[];
 export const EdgeMetrics = /*@__PURE__*/ S.Array(EdgeMetric);
+export type ModelName = string;
+export type Version = string;
 export interface Model {
   ModelName?: string;
   ModelVersion?: string;
@@ -251,6 +255,7 @@ export type Models = Model[];
 export const Models = /*@__PURE__*/ S.Array(Model);
 export type DeploymentStatus = "SUCCESS" | "FAIL" | (string & {});
 export const DeploymentStatus = /*@__PURE__*/ S.String;
+
 export interface DeploymentModel {
   ModelHandle?: string;
   ModelName?: string;
@@ -336,14 +341,7 @@ export const SendHeartbeatResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SendHeartbeatResponse",
 }) as any as S.Schema<SendHeartbeatResponse>;
-
-//# Errors
-export class InternalServiceException extends S.TaggedErrorClass<InternalServiceException>()(
-  "InternalServiceException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type GetDeploymentsError = InternalServiceException | CommonErrors;
 /**
  * Use to get the active deployments from a device.
@@ -361,6 +359,7 @@ export const getDeployments: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeployments",
 }));
+
 export type GetDeviceRegistrationError =
   | InternalServiceException
   | CommonErrors;
@@ -380,6 +379,7 @@ export const getDeviceRegistration: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeviceRegistration",
 }));
+
 export type SendHeartbeatError = InternalServiceException | CommonErrors;
 /**
  * Use to get the current status of devices registered on SageMaker Edge Manager.

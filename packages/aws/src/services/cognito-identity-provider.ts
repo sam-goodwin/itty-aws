@@ -103,119 +103,296 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class AliasExistsException extends S.TaggedErrorClass<AliasExistsException>()(
+  "AliasExistsException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class CodeDeliveryFailureException extends S.TaggedErrorClass<CodeDeliveryFailureException>()(
+  "CodeDeliveryFailureException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class CodeMismatchException extends S.TaggedErrorClass<CodeMismatchException>()(
+  "CodeMismatchException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DeviceKeyExistsException extends S.TaggedErrorClass<DeviceKeyExistsException>()(
+  "DeviceKeyExistsException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DuplicateProviderException extends S.TaggedErrorClass<DuplicateProviderException>()(
+  "DuplicateProviderException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class EnableSoftwareTokenMFAException extends S.TaggedErrorClass<EnableSoftwareTokenMFAException>()(
+  "EnableSoftwareTokenMFAException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ExpiredCodeException extends S.TaggedErrorClass<ExpiredCodeException>()(
+  "ExpiredCodeException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class FeatureUnavailableInTierException extends S.TaggedErrorClass<FeatureUnavailableInTierException>()(
+  "FeatureUnavailableInTierException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class GroupExistsException extends S.TaggedErrorClass<GroupExistsException>()(
+  "GroupExistsException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
+  "InternalErrorException",
+  { message: S.optional(S.String) },
+).pipe(C.withServerError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidEmailRoleAccessPolicyException extends S.TaggedErrorClass<InvalidEmailRoleAccessPolicyException>()(
+  "InvalidEmailRoleAccessPolicyException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidLambdaResponseException extends S.TaggedErrorClass<InvalidLambdaResponseException>()(
+  "InvalidLambdaResponseException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidOAuthFlowException extends S.TaggedErrorClass<InvalidOAuthFlowException>()(
+  "InvalidOAuthFlowException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { message: S.optional(S.String), reasonCode: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidPasswordException extends S.TaggedErrorClass<InvalidPasswordException>()(
+  "InvalidPasswordException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidSmsRoleAccessPolicyException extends S.TaggedErrorClass<InvalidSmsRoleAccessPolicyException>()(
+  "InvalidSmsRoleAccessPolicyException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidSmsRoleTrustRelationshipException extends S.TaggedErrorClass<InvalidSmsRoleTrustRelationshipException>()(
+  "InvalidSmsRoleTrustRelationshipException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidUserPoolConfigurationException extends S.TaggedErrorClass<InvalidUserPoolConfigurationException>()(
+  "InvalidUserPoolConfigurationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ManagedLoginBrandingExistsException extends S.TaggedErrorClass<ManagedLoginBrandingExistsException>()(
+  "ManagedLoginBrandingExistsException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class MFAMethodNotFoundException extends S.TaggedErrorClass<MFAMethodNotFoundException>()(
+  "MFAMethodNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
+  "NotAuthorizedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class OperationNotEnabledException extends S.TaggedErrorClass<OperationNotEnabledException>()(
+  "OperationNotEnabledException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class PasswordHistoryPolicyViolationException extends S.TaggedErrorClass<PasswordHistoryPolicyViolationException>()(
+  "PasswordHistoryPolicyViolationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class PasswordResetRequiredException extends S.TaggedErrorClass<PasswordResetRequiredException>()(
+  "PasswordResetRequiredException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class PreconditionNotMetException extends S.TaggedErrorClass<PreconditionNotMetException>()(
+  "PreconditionNotMetException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class RefreshTokenReuseException extends S.TaggedErrorClass<RefreshTokenReuseException>()(
+  "RefreshTokenReuseException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ScopeDoesNotExistException extends S.TaggedErrorClass<ScopeDoesNotExistException>()(
+  "ScopeDoesNotExistException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class SoftwareTokenMFANotFoundException extends S.TaggedErrorClass<SoftwareTokenMFANotFoundException>()(
+  "SoftwareTokenMFANotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TermsExistsException extends S.TaggedErrorClass<TermsExistsException>()(
+  "TermsExistsException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TierChangeNotAllowedException extends S.TaggedErrorClass<TierChangeNotAllowedException>()(
+  "TierChangeNotAllowedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class TooManyFailedAttemptsException extends S.TaggedErrorClass<TooManyFailedAttemptsException>()(
+  "TooManyFailedAttemptsException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class UnexpectedLambdaException extends S.TaggedErrorClass<UnexpectedLambdaException>()(
+  "UnexpectedLambdaException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedIdentityProviderException extends S.TaggedErrorClass<UnsupportedIdentityProviderException>()(
+  "UnsupportedIdentityProviderException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
+  "UnsupportedOperationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedTokenTypeException extends S.TaggedErrorClass<UnsupportedTokenTypeException>()(
+  "UnsupportedTokenTypeException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnsupportedUserStateException extends S.TaggedErrorClass<UnsupportedUserStateException>()(
+  "UnsupportedUserStateException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UserImportInProgressException extends S.TaggedErrorClass<UserImportInProgressException>()(
+  "UserImportInProgressException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UserLambdaValidationException extends S.TaggedErrorClass<UserLambdaValidationException>()(
+  "UserLambdaValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UsernameExistsException extends S.TaggedErrorClass<UsernameExistsException>()(
+  "UsernameExistsException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UserNotConfirmedException extends S.TaggedErrorClass<UserNotConfirmedException>()(
+  "UserNotConfirmedException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UserNotFoundException extends S.TaggedErrorClass<UserNotFoundException>()(
+  "UserNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class UserPoolAddOnNotEnabledException extends S.TaggedErrorClass<UserPoolAddOnNotEnabledException>()(
+  "UserPoolAddOnNotEnabledException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UserPoolTaggingException extends S.TaggedErrorClass<UserPoolTaggingException>()(
+  "UserPoolTaggingException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class WebAuthnChallengeNotFoundException extends S.TaggedErrorClass<WebAuthnChallengeNotFoundException>()(
+  "WebAuthnChallengeNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class WebAuthnClientMismatchException extends S.TaggedErrorClass<WebAuthnClientMismatchException>()(
+  "WebAuthnClientMismatchException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class WebAuthnConfigurationMissingException extends S.TaggedErrorClass<WebAuthnConfigurationMissingException>()(
+  "WebAuthnConfigurationMissingException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class WebAuthnCredentialNotSupportedException extends S.TaggedErrorClass<WebAuthnCredentialNotSupportedException>()(
+  "WebAuthnCredentialNotSupportedException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class WebAuthnNotEnabledException extends S.TaggedErrorClass<WebAuthnNotEnabledException>()(
+  "WebAuthnNotEnabledException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class WebAuthnOriginNotAllowedException extends S.TaggedErrorClass<WebAuthnOriginNotAllowedException>()(
+  "WebAuthnOriginNotAllowedException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class WebAuthnRelyingPartyMismatchException extends S.TaggedErrorClass<WebAuthnRelyingPartyMismatchException>()(
+  "WebAuthnRelyingPartyMismatchException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type UserPoolIdType = string;
 export type CustomAttributeNameType = string;
-export type StringType = string;
-export type MessageType = string;
-export type InvalidParameterExceptionReasonCodeType = string;
-export type ClientIdType = string | redacted.Redacted<string>;
-export type ClientSecretType = string | redacted.Redacted<string>;
-export type ClientSecretIdType = string;
-export type UsernameType = string | redacted.Redacted<string>;
-export type GroupNameType = string;
-export type AttributeNameType = string;
-export type AttributeValueType = string | redacted.Redacted<string>;
-export type PasswordType = string | redacted.Redacted<string>;
-export type ForceAliasCreation = boolean;
-export type ProviderNameType = string;
-export type DeviceKeyType = string;
-export type SessionType = string | redacted.Redacted<string>;
-export type TokenModelType = string | redacted.Redacted<string>;
-export type IntegerType = number;
-export type QueryLimitType = number;
-export type SearchPaginationTokenType = string;
-export type PaginationKey = string;
-export type DescriptionType = string;
-export type ArnType = string;
-export type PrecedenceType = number;
-export type WrappedBooleanType = boolean;
-export type EventIdType = string;
-export type SecretCodeType = string | redacted.Redacted<string>;
-export type Document = unknown;
-export type DeviceNameType = string;
-export type SecretHashType = string | redacted.Redacted<string>;
-export type ConfirmationCodeType = string;
-export type ProviderNameTypeV2 = string;
-export type AttributeMappingKeyType = string;
-export type IdpIdentifierType = string;
-export type AssetBytesType = Uint8Array;
-export type ResourceIdType = string;
-export type ManagedLoginBrandingIdType = string;
-export type ResourceServerIdentifierType = string;
-export type ResourceServerNameType = string;
-export type ResourceServerScopeNameType = string;
-export type ResourceServerScopeDescriptionType = string;
-export type TermsNameType = string;
-export type LanguageIdType = string;
-export type LinkUrlType = string;
-export type TermsIdType = string;
-export type UserImportJobNameType = string;
-export type UserImportJobIdType = string;
-export type PreSignedUrlType = string;
-export type LongType = number;
-export type CompletionMessageType = string;
-export type UserPoolNameType = string;
-export type PasswordPolicyMinLengthType = number;
-export type PasswordHistorySizeType = number;
-export type TemporaryPasswordValidityDaysType = number;
-export type SmsVerificationMessageType = string;
-export type EmailVerificationMessageType = string;
-export type EmailVerificationSubjectType = string;
-export type EmailVerificationMessageByLinkType = string;
-export type EmailVerificationSubjectByLinkType = string;
-export type EmailAddressType = string;
-export type SESConfigurationSet = string;
-export type RegionCodeType = string;
-export type TagKeysType = string;
-export type TagValueType = string;
-export type AdminCreateUserUnusedAccountValidityDaysType = number;
-export type SmsInviteMessageType = string;
-export type EmailInviteMessageType = string;
-export type PriorityType = number;
-export type EncryptionKeyArnType = string;
-export type DomainType = string;
-export type ClientNameType = string;
-export type GenerateSecret = boolean;
-export type RefreshTokenValidityType = number;
-export type AccessTokenValidityType = number;
-export type IdTokenValidityType = number;
-export type ClientPermissionType = string;
-export type RedirectUrlType = string;
-export type ScopeType = string;
-export type HexStringType = string;
-export type AuthSessionValidityType = number;
-export type RetryGracePeriodSecondsType = number;
-export type WrappedIntegerType = number;
-export type RegionNameType = string;
-export type HealthCheckIdType = string;
-export type EmailNotificationSubjectType = string;
-export type EmailNotificationBodyType = string;
-export type AccountTakeoverActionNotifyType = boolean;
-export type AWSAccountIdType = string;
-export type S3BucketType = string;
-export type DomainVersionType = string;
-export type S3ArnType = string;
-export type ImageUrlType = string;
-export type CSSType = string;
-export type CSSVersionType = string;
-export type EmailMfaMessageType = string;
-export type EmailMfaSubjectType = string;
-export type RelyingPartyIdType = string;
-export type ListProvidersLimitType = number;
-export type PaginationKeyType = string;
-export type ListResourceServersLimitType = number;
-export type ListTermsRequestMaxResultsInteger = number;
-export type PoolQueryLimitType = number;
-export type QueryLimit = number;
-export type UserFilterType = string;
-export type WebAuthnCredentialsQueryLimitType = number;
-export type WebAuthnAuthenticatorAttachmentType = string;
-export type WebAuthnAuthenticatorTransportType = string;
-export type ImageFileType = Uint8Array;
-export type SoftwareTokenMFAUserCodeType = string | redacted.Redacted<string>;
-
-//# Schemas
 export type AttributeDataType =
   | "String"
   | "Number"
@@ -223,6 +400,8 @@ export type AttributeDataType =
   | "Boolean"
   | (string & {});
 export const AttributeDataType = /*@__PURE__*/ S.String;
+
+export type StringType = string;
 export interface NumberAttributeConstraintsType {
   MinValue?: string;
   MaxValue?: string;
@@ -297,6 +476,8 @@ export const AddCustomAttributesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddCustomAttributesResponse",
 }) as any as S.Schema<AddCustomAttributesResponse>;
+export type ClientIdType = string | redacted.Redacted<string>;
+export type ClientSecretType = string | redacted.Redacted<string>;
 export interface AddUserPoolClientSecretRequest {
   UserPoolId: string;
   ClientId: string | redacted.Redacted<string>;
@@ -321,6 +502,7 @@ export const AddUserPoolClientSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddUserPoolClientSecretRequest",
 }) as any as S.Schema<AddUserPoolClientSecretRequest>;
+export type ClientSecretIdType = string;
 export interface ClientSecretDescriptorType {
   ClientSecretId?: string;
   ClientSecretValue?: string | redacted.Redacted<string>;
@@ -347,6 +529,8 @@ export const AddUserPoolClientSecretResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddUserPoolClientSecretResponse",
 }) as any as S.Schema<AddUserPoolClientSecretResponse>;
+export type UsernameType = string | redacted.Redacted<string>;
+export type GroupNameType = string;
 export interface AdminAddUserToGroupRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -412,6 +596,8 @@ export const AdminConfirmSignUpResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdminConfirmSignUpResponse",
 }) as any as S.Schema<AdminConfirmSignUpResponse>;
+export type AttributeNameType = string;
+export type AttributeValueType = string | redacted.Redacted<string>;
 export interface AttributeType {
   Name: string;
   Value?: string | redacted.Redacted<string>;
@@ -421,10 +607,14 @@ export const AttributeType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AttributeType" }) as any as S.Schema<AttributeType>;
 export type AttributeListType = AttributeType[];
 export const AttributeListType = /*@__PURE__*/ S.Array(AttributeType);
+export type PasswordType = string | redacted.Redacted<string>;
+export type ForceAliasCreation = boolean;
 export type MessageActionType = "RESEND" | "SUPPRESS" | (string & {});
 export const MessageActionType = /*@__PURE__*/ S.String;
+
 export type DeliveryMediumType = "SMS" | "EMAIL" | (string & {});
 export const DeliveryMediumType = /*@__PURE__*/ S.String;
+
 export type DeliveryMediumListType = DeliveryMediumType[];
 export const DeliveryMediumListType = /*@__PURE__*/ S.Array(DeliveryMediumType);
 export interface AdminCreateUserRequest {
@@ -474,6 +664,7 @@ export type UserStatusType =
   | "EXTERNAL_PROVIDER"
   | (string & {});
 export const UserStatusType = /*@__PURE__*/ S.String;
+
 export interface MFAOptionType {
   DeliveryMedium?: DeliveryMediumType;
   AttributeName?: string;
@@ -573,6 +764,7 @@ export const AdminDeleteUserAttributesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdminDeleteUserAttributesResponse",
 }) as any as S.Schema<AdminDeleteUserAttributesResponse>;
+export type ProviderNameType = string;
 export interface ProviderUserIdentifierType {
   ProviderName?: string;
   ProviderAttributeName?: string;
@@ -662,6 +854,7 @@ export const AdminEnableUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdminEnableUserResponse",
 }) as any as S.Schema<AdminEnableUserResponse>;
+export type DeviceKeyType = string;
 export interface AdminForgetDeviceRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -806,6 +999,7 @@ export type AuthFlowType =
   | "USER_AUTH"
   | (string & {});
 export const AuthFlowType = /*@__PURE__*/ S.String;
+
 export type AuthParametersType = { [key: string]: string | undefined };
 export const AuthParametersType = /*@__PURE__*/ S.Record(
   S.String,
@@ -849,6 +1043,7 @@ export const ContextDataType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContextDataType",
 }) as any as S.Schema<ContextDataType>;
+export type SessionType = string | redacted.Redacted<string>;
 export interface AdminInitiateAuthRequest {
   UserPoolId: string;
   ClientId: string | redacted.Redacted<string>;
@@ -902,11 +1097,14 @@ export type ChallengeNameType =
   | "PASSWORD_SRP"
   | (string & {});
 export const ChallengeNameType = /*@__PURE__*/ S.String;
+
 export type ChallengeParametersType = { [key: string]: string | undefined };
 export const ChallengeParametersType = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type TokenModelType = string | redacted.Redacted<string>;
+export type IntegerType = number;
 export interface NewDeviceMetadataType {
   DeviceKey?: string;
   DeviceGroupKey?: string;
@@ -990,6 +1188,8 @@ export const AdminLinkProviderForUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdminLinkProviderForUserResponse",
 }) as any as S.Schema<AdminLinkProviderForUserResponse>;
+export type QueryLimitType = number;
+export type SearchPaginationTokenType = string;
 export interface AdminListDevicesRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -1030,6 +1230,7 @@ export const AdminListDevicesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdminListDevicesResponse",
 }) as any as S.Schema<AdminListDevicesResponse>;
+export type PaginationKey = string;
 export interface AdminListGroupsForUserRequest {
   Username: string | redacted.Redacted<string>;
   UserPoolId: string;
@@ -1056,6 +1257,9 @@ export const AdminListGroupsForUserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdminListGroupsForUserRequest",
 }) as any as S.Schema<AdminListGroupsForUserRequest>;
+export type DescriptionType = string;
+export type ArnType = string;
+export type PrecedenceType = number;
 export interface GroupType {
   GroupName?: string;
   UserPoolId?: string;
@@ -1126,16 +1330,21 @@ export type EventType =
   | "ResendCode"
   | (string & {});
 export const EventType = /*@__PURE__*/ S.String;
+
 export type EventResponseType = "Pass" | "Fail" | "InProgress" | (string & {});
 export const EventResponseType = /*@__PURE__*/ S.String;
+
 export type RiskDecisionType =
   | "NoRisk"
   | "AccountTakeover"
   | "Block"
   | (string & {});
 export const RiskDecisionType = /*@__PURE__*/ S.String;
+
 export type RiskLevelType = "Low" | "Medium" | "High" | (string & {});
 export const RiskLevelType = /*@__PURE__*/ S.String;
+
+export type WrappedBooleanType = boolean;
 export interface EventRiskType {
   RiskDecision?: RiskDecisionType;
   RiskLevel?: RiskLevelType;
@@ -1150,8 +1359,10 @@ export const EventRiskType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "EventRiskType" }) as any as S.Schema<EventRiskType>;
 export type ChallengeName = "Password" | "Mfa" | (string & {});
 export const ChallengeName = /*@__PURE__*/ S.String;
+
 export type ChallengeResponse = "Success" | "Failure" | (string & {});
 export const ChallengeResponse = /*@__PURE__*/ S.String;
+
 export interface ChallengeResponseType {
   ChallengeName?: ChallengeName;
   ChallengeResponse?: ChallengeResponse;
@@ -1188,6 +1399,7 @@ export const EventContextDataType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EventContextDataType>;
 export type FeedbackValueType = "Valid" | "Invalid" | (string & {});
 export const FeedbackValueType = /*@__PURE__*/ S.String;
+
 export interface EventFeedbackType {
   FeedbackValue: FeedbackValueType;
   Provider: string;
@@ -1495,6 +1707,7 @@ export const AdminSetUserSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AdminSetUserSettingsResponse",
 }) as any as S.Schema<AdminSetUserSettingsResponse>;
+export type EventIdType = string;
 export interface AdminUpdateAuthEventFeedbackRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -1532,6 +1745,7 @@ export type DeviceRememberedStatusType =
   | "not_remembered"
   | (string & {});
 export const DeviceRememberedStatusType = /*@__PURE__*/ S.String;
+
 export interface AdminUpdateDeviceStatusRequest {
   UserPoolId: string;
   Username: string | redacted.Redacted<string>;
@@ -1643,6 +1857,7 @@ export const AssociateSoftwareTokenRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateSoftwareTokenRequest",
 }) as any as S.Schema<AssociateSoftwareTokenRequest>;
+export type SecretCodeType = string | redacted.Redacted<string>;
 export interface AssociateSoftwareTokenResponse {
   SecretCode?: string | redacted.Redacted<string>;
   Session?: string | redacted.Redacted<string>;
@@ -1685,6 +1900,7 @@ export const ChangePasswordResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ChangePasswordResponse",
 }) as any as S.Schema<ChangePasswordResponse>;
+export type Document = unknown;
 export interface CompleteWebAuthnRegistrationRequest {
   AccessToken: string | redacted.Redacted<string>;
   Credential: any;
@@ -1722,6 +1938,7 @@ export const DeviceSecretVerifierConfigType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeviceSecretVerifierConfigType",
 }) as any as S.Schema<DeviceSecretVerifierConfigType>;
+export type DeviceNameType = string;
 export interface ConfirmDeviceRequest {
   AccessToken: string | redacted.Redacted<string>;
   DeviceKey: string;
@@ -1756,6 +1973,8 @@ export const ConfirmDeviceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfirmDeviceResponse",
 }) as any as S.Schema<ConfirmDeviceResponse>;
+export type SecretHashType = string | redacted.Redacted<string>;
+export type ConfirmationCodeType = string;
 export interface UserContextDataType {
   IpAddress?: string;
   EncodedData?: string;
@@ -1888,6 +2107,7 @@ export const CreateGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGroupResponse",
 }) as any as S.Schema<CreateGroupResponse>;
+export type ProviderNameTypeV2 = string;
 export type IdentityProviderTypeType =
   | "SAML"
   | "Facebook"
@@ -1897,16 +2117,19 @@ export type IdentityProviderTypeType =
   | "OIDC"
   | (string & {});
 export const IdentityProviderTypeType = /*@__PURE__*/ S.String;
+
 export type ProviderDetailsType = { [key: string]: string | undefined };
 export const ProviderDetailsType = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type AttributeMappingKeyType = string;
 export type AttributeMappingType = { [key: string]: string | undefined };
 export const AttributeMappingType = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type IdpIdentifierType = string;
 export type IdpIdentifiersListType = string[];
 export const IdpIdentifiersListType = /*@__PURE__*/ S.Array(S.String);
 export interface CreateIdentityProviderRequest {
@@ -1991,8 +2214,10 @@ export type AssetCategoryType =
   | "IDP_BUTTON_ICON"
   | (string & {});
 export const AssetCategoryType = /*@__PURE__*/ S.String;
+
 export type ColorSchemeModeType = "LIGHT" | "DARK" | "DYNAMIC" | (string & {});
 export const ColorSchemeModeType = /*@__PURE__*/ S.String;
+
 export type AssetExtensionType =
   | "ICO"
   | "JPEG"
@@ -2001,6 +2226,9 @@ export type AssetExtensionType =
   | "WEBP"
   | (string & {});
 export const AssetExtensionType = /*@__PURE__*/ S.String;
+
+export type AssetBytesType = Uint8Array;
+export type ResourceIdType = string;
 export interface AssetType {
   Category: AssetCategoryType;
   ColorMode: ColorSchemeModeType;
@@ -2047,6 +2275,7 @@ export const CreateManagedLoginBrandingRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateManagedLoginBrandingRequest",
 }) as any as S.Schema<CreateManagedLoginBrandingRequest>;
+export type ManagedLoginBrandingIdType = string;
 export interface ManagedLoginBrandingType {
   ManagedLoginBrandingId?: string;
   UserPoolId?: string;
@@ -2081,6 +2310,10 @@ export const CreateManagedLoginBrandingResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateManagedLoginBrandingResponse",
 }) as any as S.Schema<CreateManagedLoginBrandingResponse>;
+export type ResourceServerIdentifierType = string;
+export type ResourceServerNameType = string;
+export type ResourceServerScopeNameType = string;
+export type ResourceServerScopeDescriptionType = string;
 export interface ResourceServerScopeType {
   ScopeName: string;
   ScopeDescription: string;
@@ -2144,10 +2377,15 @@ export const CreateResourceServerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateResourceServerResponse",
 }) as any as S.Schema<CreateResourceServerResponse>;
+export type TermsNameType = string;
 export type TermsSourceType = "LINK" | (string & {});
 export const TermsSourceType = /*@__PURE__*/ S.String;
+
 export type TermsEnforcementType = "NONE" | (string & {});
 export const TermsEnforcementType = /*@__PURE__*/ S.String;
+
+export type LanguageIdType = string;
+export type LinkUrlType = string;
 export type LinksType = { [key: string]: string | undefined };
 export const LinksType = /*@__PURE__*/ S.Record(
   S.String,
@@ -2183,6 +2421,7 @@ export const CreateTermsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTermsRequest",
 }) as any as S.Schema<CreateTermsRequest>;
+export type TermsIdType = string;
 export interface TermsType {
   TermsId: string;
   UserPoolId: string;
@@ -2215,6 +2454,7 @@ export const CreateTermsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTermsResponse",
 }) as any as S.Schema<CreateTermsResponse>;
+export type UserImportJobNameType = string;
 export interface CreateUserImportJobRequest {
   JobName: string;
   UserPoolId: string;
@@ -2239,6 +2479,8 @@ export const CreateUserImportJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUserImportJobRequest",
 }) as any as S.Schema<CreateUserImportJobRequest>;
+export type UserImportJobIdType = string;
+export type PreSignedUrlType = string;
 export type UserImportJobStatusType =
   | "Created"
   | "Pending"
@@ -2250,6 +2492,9 @@ export type UserImportJobStatusType =
   | "Succeeded"
   | (string & {});
 export const UserImportJobStatusType = /*@__PURE__*/ S.String;
+
+export type LongType = number;
+export type CompletionMessageType = string;
 export interface UserImportJobType {
   JobName?: string;
   JobId?: string;
@@ -2292,6 +2537,10 @@ export const CreateUserImportJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUserImportJobResponse",
 }) as any as S.Schema<CreateUserImportJobResponse>;
+export type UserPoolNameType = string;
+export type PasswordPolicyMinLengthType = number;
+export type PasswordHistorySizeType = number;
+export type TemporaryPasswordValidityDaysType = number;
 export interface PasswordPolicyType {
   MinimumLength?: number;
   RequireUppercase?: boolean;
@@ -2321,6 +2570,7 @@ export type AuthFactorType =
   | "WEB_AUTHN"
   | (string & {});
 export const AuthFactorType = /*@__PURE__*/ S.String;
+
 export type AllowedFirstAuthFactorsListType = AuthFactorType[];
 export const AllowedFirstAuthFactorsListType =
   /*@__PURE__*/ S.Array(AuthFactorType);
@@ -2348,12 +2598,14 @@ export const UserPoolPolicyType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UserPoolPolicyType>;
 export type DeletionProtectionType = "ACTIVE" | "INACTIVE" | (string & {});
 export const DeletionProtectionType = /*@__PURE__*/ S.String;
+
 export type PreTokenGenerationLambdaVersionType =
   | "V1_0"
   | "V2_0"
   | "V3_0"
   | (string & {});
 export const PreTokenGenerationLambdaVersionType = /*@__PURE__*/ S.String;
+
 export interface PreTokenGenerationVersionConfigType {
   LambdaVersion: PreTokenGenerationLambdaVersionType;
   LambdaArn: string;
@@ -2368,6 +2620,7 @@ export const PreTokenGenerationVersionConfigType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PreTokenGenerationVersionConfigType>;
 export type CustomSMSSenderLambdaVersionType = "V1_0" | (string & {});
 export const CustomSMSSenderLambdaVersionType = /*@__PURE__*/ S.String;
+
 export interface CustomSMSLambdaVersionConfigType {
   LambdaVersion: CustomSMSSenderLambdaVersionType;
   LambdaArn: string;
@@ -2382,6 +2635,7 @@ export const CustomSMSLambdaVersionConfigType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomSMSLambdaVersionConfigType>;
 export type CustomEmailSenderLambdaVersionType = "V1_0" | (string & {});
 export const CustomEmailSenderLambdaVersionType = /*@__PURE__*/ S.String;
+
 export interface CustomEmailLambdaVersionConfigType {
   LambdaVersion: CustomEmailSenderLambdaVersionType;
   LambdaArn: string;
@@ -2396,6 +2650,7 @@ export const CustomEmailLambdaVersionConfigType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CustomEmailLambdaVersionConfigType>;
 export type InboundFederationLambdaVersionType = "V1_0" | (string & {});
 export const InboundFederationLambdaVersionType = /*@__PURE__*/ S.String;
+
 export interface InboundFederationLambdaType {
   LambdaVersion: InboundFederationLambdaVersionType;
   LambdaArn: string;
@@ -2448,6 +2703,7 @@ export const LambdaConfigType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<LambdaConfigType>;
 export type VerifiedAttributeType = "phone_number" | "email" | (string & {});
 export const VerifiedAttributeType = /*@__PURE__*/ S.String;
+
 export type VerifiedAttributesListType = VerifiedAttributeType[];
 export const VerifiedAttributesListType = /*@__PURE__*/ S.Array(
   VerifiedAttributeType,
@@ -2458,20 +2714,28 @@ export type AliasAttributeType =
   | "preferred_username"
   | (string & {});
 export const AliasAttributeType = /*@__PURE__*/ S.String;
+
 export type AliasAttributesListType = AliasAttributeType[];
 export const AliasAttributesListType =
   /*@__PURE__*/ S.Array(AliasAttributeType);
 export type UsernameAttributeType = "phone_number" | "email" | (string & {});
 export const UsernameAttributeType = /*@__PURE__*/ S.String;
+
 export type UsernameAttributesListType = UsernameAttributeType[];
 export const UsernameAttributesListType = /*@__PURE__*/ S.Array(
   UsernameAttributeType,
 );
+export type SmsVerificationMessageType = string;
+export type EmailVerificationMessageType = string;
+export type EmailVerificationSubjectType = string;
+export type EmailVerificationMessageByLinkType = string;
+export type EmailVerificationSubjectByLinkType = string;
 export type DefaultEmailOptionType =
   | "CONFIRM_WITH_LINK"
   | "CONFIRM_WITH_CODE"
   | (string & {});
 export const DefaultEmailOptionType = /*@__PURE__*/ S.String;
+
 export interface VerificationMessageTemplateType {
   SmsMessage?: string;
   EmailMessage?: string;
@@ -2494,6 +2758,7 @@ export const VerificationMessageTemplateType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VerificationMessageTemplateType>;
 export type UserPoolMfaType = "OFF" | "ON" | "OPTIONAL" | (string & {});
 export const UserPoolMfaType = /*@__PURE__*/ S.String;
+
 export type AttributesRequireVerificationBeforeUpdateType =
   VerifiedAttributeType[];
 export const AttributesRequireVerificationBeforeUpdateType =
@@ -2522,11 +2787,14 @@ export const DeviceConfigurationType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeviceConfigurationType",
 }) as any as S.Schema<DeviceConfigurationType>;
+export type EmailAddressType = string;
 export type EmailSendingAccountType =
   | "COGNITO_DEFAULT"
   | "DEVELOPER"
   | (string & {});
 export const EmailSendingAccountType = /*@__PURE__*/ S.String;
+
+export type SESConfigurationSet = string;
 export interface EmailConfigurationType {
   SourceArn?: string;
   ReplyToEmailAddress?: string;
@@ -2545,6 +2813,7 @@ export const EmailConfigurationType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EmailConfigurationType",
 }) as any as S.Schema<EmailConfigurationType>;
+export type RegionCodeType = string;
 export interface SmsConfigurationType {
   SnsCallerArn: string;
   ExternalId?: string;
@@ -2559,11 +2828,16 @@ export const SmsConfigurationType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SmsConfigurationType",
 }) as any as S.Schema<SmsConfigurationType>;
+export type TagKeysType = string;
+export type TagValueType = string;
 export type UserPoolTagsType = { [key: string]: string | undefined };
 export const UserPoolTagsType = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type AdminCreateUserUnusedAccountValidityDaysType = number;
+export type SmsInviteMessageType = string;
+export type EmailInviteMessageType = string;
 export interface MessageTemplateType {
   SMSMessage?: string;
   EmailMessage?: string;
@@ -2601,11 +2875,13 @@ export type AdvancedSecurityModeType =
   | "ENFORCED"
   | (string & {});
 export const AdvancedSecurityModeType = /*@__PURE__*/ S.String;
+
 export type AdvancedSecurityEnabledModeType =
   | "AUDIT"
   | "ENFORCED"
   | (string & {});
 export const AdvancedSecurityEnabledModeType = /*@__PURE__*/ S.String;
+
 export interface AdvancedSecurityAdditionalFlowsType {
   CustomAuthMode?: AdvancedSecurityEnabledModeType;
 }
@@ -2636,12 +2912,14 @@ export const UsernameConfigurationType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UsernameConfigurationType",
 }) as any as S.Schema<UsernameConfigurationType>;
+export type PriorityType = number;
 export type RecoveryOptionNameType =
   | "verified_email"
   | "verified_phone_number"
   | "admin_only"
   | (string & {});
 export const RecoveryOptionNameType = /*@__PURE__*/ S.String;
+
 export interface RecoveryOptionType {
   Priority: number;
   Name: RecoveryOptionNameType;
@@ -2663,11 +2941,14 @@ export const AccountRecoverySettingType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccountRecoverySettingType>;
 export type UserPoolTierType = "LITE" | "ESSENTIALS" | "PLUS" | (string & {});
 export const UserPoolTierType = /*@__PURE__*/ S.String;
+
 export type EncryptionKeyType =
   | "AWS_OWNED_KEY"
   | "CUSTOMER_MANAGED_KEY"
   | (string & {});
 export const EncryptionKeyType = /*@__PURE__*/ S.String;
+
+export type EncryptionKeyArnType = string;
 export interface KeyConfigurationType {
   KeyType?: EncryptionKeyType;
   KmsKeyArn?: string;
@@ -2682,6 +2963,7 @@ export const KeyConfigurationType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<KeyConfigurationType>;
 export type IssuerType = "ORIGINAL" | "UPDATED" | (string & {});
 export const IssuerType = /*@__PURE__*/ S.String;
+
 export interface IssuerConfigurationType {
   Type?: IssuerType;
 }
@@ -2762,6 +3044,8 @@ export const CreateUserPoolRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateUserPoolRequest>;
 export type StatusType = "Enabled" | "Disabled" | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
+
+export type DomainType = string;
 export interface UserPoolType {
   Id?: string;
   Name?: string;
@@ -2850,6 +3134,11 @@ export const CreateUserPoolResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUserPoolResponse",
 }) as any as S.Schema<CreateUserPoolResponse>;
+export type ClientNameType = string;
+export type GenerateSecret = boolean;
+export type RefreshTokenValidityType = number;
+export type AccessTokenValidityType = number;
+export type IdTokenValidityType = number;
 export type TimeUnitsType =
   | "seconds"
   | "minutes"
@@ -2857,6 +3146,7 @@ export type TimeUnitsType =
   | "days"
   | (string & {});
 export const TimeUnitsType = /*@__PURE__*/ S.String;
+
 export interface TokenValidityUnitsType {
   AccessToken?: TimeUnitsType;
   IdToken?: TimeUnitsType;
@@ -2871,6 +3161,7 @@ export const TokenValidityUnitsType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TokenValidityUnitsType",
 }) as any as S.Schema<TokenValidityUnitsType>;
+export type ClientPermissionType = string;
 export type ClientPermissionListType = string[];
 export const ClientPermissionListType = /*@__PURE__*/ S.Array(S.String);
 export type ExplicitAuthFlowsType =
@@ -2885,6 +3176,7 @@ export type ExplicitAuthFlowsType =
   | "ALLOW_USER_AUTH"
   | (string & {});
 export const ExplicitAuthFlowsType = /*@__PURE__*/ S.String;
+
 export type ExplicitAuthFlowsListType = ExplicitAuthFlowsType[];
 export const ExplicitAuthFlowsListType = /*@__PURE__*/ S.Array(
   ExplicitAuthFlowsType,
@@ -2893,6 +3185,7 @@ export type SupportedIdentityProvidersListType = string[];
 export const SupportedIdentityProvidersListType = /*@__PURE__*/ S.Array(
   S.String,
 );
+export type RedirectUrlType = string;
 export type CallbackURLsListType = string[];
 export const CallbackURLsListType = /*@__PURE__*/ S.Array(S.String);
 export type LogoutURLsListType = string[];
@@ -2903,10 +3196,13 @@ export type OAuthFlowType =
   | "client_credentials"
   | (string & {});
 export const OAuthFlowType = /*@__PURE__*/ S.String;
+
 export type OAuthFlowsType = OAuthFlowType[];
 export const OAuthFlowsType = /*@__PURE__*/ S.Array(OAuthFlowType);
+export type ScopeType = string;
 export type ScopeListType = string[];
 export const ScopeListType = /*@__PURE__*/ S.Array(S.String);
+export type HexStringType = string;
 export interface AnalyticsConfigurationType {
   ApplicationId?: string;
   ApplicationArn?: string;
@@ -2930,8 +3226,12 @@ export type PreventUserExistenceErrorTypes =
   | "ENABLED"
   | (string & {});
 export const PreventUserExistenceErrorTypes = /*@__PURE__*/ S.String;
+
+export type AuthSessionValidityType = number;
 export type FeatureType = "ENABLED" | "DISABLED" | (string & {});
 export const FeatureType = /*@__PURE__*/ S.String;
+
+export type RetryGracePeriodSecondsType = number;
 export interface RefreshTokenRotationType {
   Feature: FeatureType;
   RetryGracePeriodSeconds?: number;
@@ -3080,12 +3380,14 @@ export const CreateUserPoolClientResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUserPoolClientResponse",
 }) as any as S.Schema<CreateUserPoolClientResponse>;
+export type WrappedIntegerType = number;
 export type SecurityPolicyType =
   | "TLS_V1"
   | "TLS_V1_2_2021"
   | "TLS_V1_3_2025"
   | (string & {});
 export const SecurityPolicyType = /*@__PURE__*/ S.String;
+
 export interface CustomDomainConfigType {
   CertificateArn: string;
   SecurityPolicy?: SecurityPolicyType;
@@ -3098,6 +3400,8 @@ export const CustomDomainConfigType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomDomainConfigType",
 }) as any as S.Schema<CustomDomainConfigType>;
+export type RegionNameType = string;
+export type HealthCheckIdType = string;
 export interface FailoverType {
   SecondaryRegion: string;
   PrimaryRoute53HealthCheckId: string;
@@ -3187,8 +3491,10 @@ export type ReplicaStatusType =
   | "DELETING"
   | (string & {});
 export const ReplicaStatusType = /*@__PURE__*/ S.String;
+
 export type ReplicaRoleType = "PRIMARY" | "SECONDARY" | (string & {});
 export const ReplicaRoleType = /*@__PURE__*/ S.String;
+
 export interface UserPoolReplicaType {
   RegionName?: string;
   Status?: ReplicaStatusType;
@@ -3699,6 +4005,7 @@ export type EventFilterType =
   | "SIGN_UP"
   | (string & {});
 export const EventFilterType = /*@__PURE__*/ S.String;
+
 export type EventFiltersType = EventFilterType[];
 export const EventFiltersType = /*@__PURE__*/ S.Array(EventFilterType);
 export type CompromisedCredentialsEventActionType =
@@ -3706,6 +4013,7 @@ export type CompromisedCredentialsEventActionType =
   | "NO_ACTION"
   | (string & {});
 export const CompromisedCredentialsEventActionType = /*@__PURE__*/ S.String;
+
 export interface CompromisedCredentialsActionsType {
   EventAction: CompromisedCredentialsEventActionType;
 }
@@ -3727,6 +4035,8 @@ export const CompromisedCredentialsRiskConfigurationType =
   ).annotate({
     identifier: "CompromisedCredentialsRiskConfigurationType",
   }) as any as S.Schema<CompromisedCredentialsRiskConfigurationType>;
+export type EmailNotificationSubjectType = string;
+export type EmailNotificationBodyType = string;
 export interface NotifyEmailType {
   Subject: string;
   HtmlBody?: string;
@@ -3761,6 +4071,7 @@ export const NotifyConfigurationType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotifyConfigurationType",
 }) as any as S.Schema<NotifyConfigurationType>;
+export type AccountTakeoverActionNotifyType = boolean;
 export type AccountTakeoverEventActionType =
   | "BLOCK"
   | "MFA_IF_CONFIGURED"
@@ -3768,6 +4079,7 @@ export type AccountTakeoverEventActionType =
   | "NO_ACTION"
   | (string & {});
 export const AccountTakeoverEventActionType = /*@__PURE__*/ S.String;
+
 export interface AccountTakeoverActionType {
   Notify: boolean;
   EventAction: AccountTakeoverEventActionType;
@@ -3979,6 +4291,9 @@ export const DescribeUserPoolDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeUserPoolDomainRequest",
 }) as any as S.Schema<DescribeUserPoolDomainRequest>;
+export type AWSAccountIdType = string;
+export type S3BucketType = string;
+export type DomainVersionType = string;
 export type DomainStatusType =
   | "CREATING"
   | "DELETING"
@@ -3987,6 +4302,7 @@ export type DomainStatusType =
   | "FAILED"
   | (string & {});
 export const DomainStatusType = /*@__PURE__*/ S.String;
+
 export interface DomainDescriptionType {
   UserPoolId?: string;
   AWSAccountId?: string;
@@ -4242,11 +4558,13 @@ export const GetLogDeliveryConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetLogDeliveryConfigurationRequest>;
 export type LogLevel = "ERROR" | "INFO" | (string & {});
 export const LogLevel = /*@__PURE__*/ S.String;
+
 export type EventSourceName =
   | "userNotification"
   | "userAuthEvents"
   | (string & {});
 export const EventSourceName = /*@__PURE__*/ S.String;
+
 export interface CloudWatchLogsConfigurationType {
   LogGroupArn?: string;
 }
@@ -4255,6 +4573,7 @@ export const CloudWatchLogsConfigurationType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CloudWatchLogsConfigurationType",
 }) as any as S.Schema<CloudWatchLogsConfigurationType>;
+export type S3ArnType = string;
 export interface S3ConfigurationType {
   BucketArn?: string;
 }
@@ -4400,6 +4719,9 @@ export const GetUICustomizationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetUICustomizationRequest",
 }) as any as S.Schema<GetUICustomizationRequest>;
+export type ImageUrlType = string;
+export type CSSType = string;
+export type CSSVersionType = string;
 export interface UICustomizationType {
   UserPoolId?: string;
   ClientId?: string | redacted.Redacted<string>;
@@ -4577,6 +4899,8 @@ export const SoftwareTokenMfaConfigType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SoftwareTokenMfaConfigType",
 }) as any as S.Schema<SoftwareTokenMfaConfigType>;
+export type EmailMfaMessageType = string;
+export type EmailMfaSubjectType = string;
 export interface EmailMfaConfigType {
   Message?: string;
   Subject?: string;
@@ -4586,13 +4910,16 @@ export const EmailMfaConfigType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EmailMfaConfigType",
 }) as any as S.Schema<EmailMfaConfigType>;
+export type RelyingPartyIdType = string;
 export type UserVerificationType = "required" | "preferred" | (string & {});
 export const UserVerificationType = /*@__PURE__*/ S.String;
+
 export type WebAuthnFactorConfigurationType =
   | "SINGLE_FACTOR"
   | "MULTI_FACTOR_WITH_USER_VERIFICATION"
   | (string & {});
 export const WebAuthnFactorConfigurationType = /*@__PURE__*/ S.String;
+
 export interface WebAuthnConfigurationType {
   RelyingPartyId?: string;
   UserVerification?: UserVerificationType;
@@ -4771,6 +5098,8 @@ export const ListGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGroupsResponse",
 }) as any as S.Schema<ListGroupsResponse>;
+export type ListProvidersLimitType = number;
+export type PaginationKeyType = string;
 export interface ListIdentityProvidersRequest {
   UserPoolId: string;
   MaxResults?: number;
@@ -4827,6 +5156,7 @@ export const ListIdentityProvidersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListIdentityProvidersResponse",
 }) as any as S.Schema<ListIdentityProvidersResponse>;
+export type ListResourceServersLimitType = number;
 export interface ListResourceServersRequest {
   UserPoolId: string;
   MaxResults?: number;
@@ -4892,6 +5222,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
+export type ListTermsRequestMaxResultsInteger = number;
 export interface ListTermsRequest {
   UserPoolId: string;
   MaxResults?: number;
@@ -4949,6 +5280,7 @@ export const ListTermsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTermsResponse",
 }) as any as S.Schema<ListTermsResponse>;
+export type PoolQueryLimitType = number;
 export interface ListUserImportJobsRequest {
   UserPoolId: string;
   MaxResults: number;
@@ -4987,6 +5319,7 @@ export const ListUserImportJobsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListUserImportJobsResponse",
 }) as any as S.Schema<ListUserImportJobsResponse>;
+export type QueryLimit = number;
 export interface ListUserPoolClientsRequest {
   UserPoolId: string;
   MaxResults?: number;
@@ -5176,6 +5509,7 @@ export const ListUserPoolsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUserPoolsResponse>;
 export type SearchedAttributeNamesListType = string[];
 export const SearchedAttributeNamesListType = /*@__PURE__*/ S.Array(S.String);
+export type UserFilterType = string;
 export interface ListUsersRequest {
   UserPoolId: string;
   AttributesToGet?: string[];
@@ -5256,6 +5590,7 @@ export const ListUsersInGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListUsersInGroupResponse",
 }) as any as S.Schema<ListUsersInGroupResponse>;
+export type WebAuthnCredentialsQueryLimitType = number;
 export interface ListWebAuthnCredentialsRequest {
   AccessToken: string | redacted.Redacted<string>;
   NextToken?: string;
@@ -5280,6 +5615,8 @@ export const ListWebAuthnCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListWebAuthnCredentialsRequest",
 }) as any as S.Schema<ListWebAuthnCredentialsRequest>;
+export type WebAuthnAuthenticatorAttachmentType = string;
+export type WebAuthnAuthenticatorTransportType = string;
 export type WebAuthnAuthenticatorTransportsList = string[];
 export const WebAuthnAuthenticatorTransportsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -5511,6 +5848,7 @@ export const SetRiskConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SetRiskConfigurationResponse",
 }) as any as S.Schema<SetRiskConfigurationResponse>;
+export type ImageFileType = Uint8Array;
 export interface SetUICustomizationRequest {
   UserPoolId: string;
   ClientId?: string | redacted.Redacted<string>;
@@ -6305,6 +6643,7 @@ export const UpdateUserPoolDomainResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateUserPoolDomainResponse>;
 export type UpdateReplicaStatusType = "ACTIVE" | "INACTIVE" | (string & {});
 export const UpdateReplicaStatusType = /*@__PURE__*/ S.String;
+
 export interface UpdateUserPoolReplicaRequest {
   UserPoolId: string;
   RegionName: string;
@@ -6337,6 +6676,7 @@ export const UpdateUserPoolReplicaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateUserPoolReplicaResponse",
 }) as any as S.Schema<UpdateUserPoolReplicaResponse>;
+export type SoftwareTokenMFAUserCodeType = string | redacted.Redacted<string>;
 export interface VerifySoftwareTokenRequest {
   AccessToken?: string | redacted.Redacted<string>;
   Session?: string | redacted.Redacted<string>;
@@ -6368,6 +6708,7 @@ export type VerifySoftwareTokenResponseType =
   | "ERROR"
   | (string & {});
 export const VerifySoftwareTokenResponseType = /*@__PURE__*/ S.String;
+
 export interface VerifySoftwareTokenResponse {
   Status?: VerifySoftwareTokenResponseType;
   Session?: string | redacted.Redacted<string>;
@@ -6410,298 +6751,8 @@ export const VerifyUserAttributeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VerifyUserAttributeResponse",
 }) as any as S.Schema<VerifyUserAttributeResponse>;
-
-//# Errors
-export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
-  "InternalErrorException",
-  { message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { message: S.optional(S.String), reasonCode: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
-  "NotAuthorizedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class OperationNotEnabledException extends S.TaggedErrorClass<OperationNotEnabledException>()(
-  "OperationNotEnabledException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UserImportInProgressException extends S.TaggedErrorClass<UserImportInProgressException>()(
-  "UserImportInProgressException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UserNotFoundException extends S.TaggedErrorClass<UserNotFoundException>()(
-  "UserNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InvalidLambdaResponseException extends S.TaggedErrorClass<InvalidLambdaResponseException>()(
-  "InvalidLambdaResponseException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyFailedAttemptsException extends S.TaggedErrorClass<TooManyFailedAttemptsException>()(
-  "TooManyFailedAttemptsException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnexpectedLambdaException extends S.TaggedErrorClass<UnexpectedLambdaException>()(
-  "UnexpectedLambdaException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UserLambdaValidationException extends S.TaggedErrorClass<UserLambdaValidationException>()(
-  "UserLambdaValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class CodeDeliveryFailureException extends S.TaggedErrorClass<CodeDeliveryFailureException>()(
-  "CodeDeliveryFailureException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidPasswordException extends S.TaggedErrorClass<InvalidPasswordException>()(
-  "InvalidPasswordException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidSmsRoleAccessPolicyException extends S.TaggedErrorClass<InvalidSmsRoleAccessPolicyException>()(
-  "InvalidSmsRoleAccessPolicyException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidSmsRoleTrustRelationshipException extends S.TaggedErrorClass<InvalidSmsRoleTrustRelationshipException>()(
-  "InvalidSmsRoleTrustRelationshipException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class PreconditionNotMetException extends S.TaggedErrorClass<PreconditionNotMetException>()(
-  "PreconditionNotMetException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedUserStateException extends S.TaggedErrorClass<UnsupportedUserStateException>()(
-  "UnsupportedUserStateException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UsernameExistsException extends S.TaggedErrorClass<UsernameExistsException>()(
-  "UsernameExistsException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AliasExistsException extends S.TaggedErrorClass<AliasExistsException>()(
-  "AliasExistsException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidUserPoolConfigurationException extends S.TaggedErrorClass<InvalidUserPoolConfigurationException>()(
-  "InvalidUserPoolConfigurationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidEmailRoleAccessPolicyException extends S.TaggedErrorClass<InvalidEmailRoleAccessPolicyException>()(
-  "InvalidEmailRoleAccessPolicyException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class MFAMethodNotFoundException extends S.TaggedErrorClass<MFAMethodNotFoundException>()(
-  "MFAMethodNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class PasswordResetRequiredException extends S.TaggedErrorClass<PasswordResetRequiredException>()(
-  "PasswordResetRequiredException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedOperationException extends S.TaggedErrorClass<UnsupportedOperationException>()(
-  "UnsupportedOperationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UserNotConfirmedException extends S.TaggedErrorClass<UserNotConfirmedException>()(
-  "UserNotConfirmedException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UserPoolAddOnNotEnabledException extends S.TaggedErrorClass<UserPoolAddOnNotEnabledException>()(
-  "UserPoolAddOnNotEnabledException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class CodeMismatchException extends S.TaggedErrorClass<CodeMismatchException>()(
-  "CodeMismatchException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ExpiredCodeException extends S.TaggedErrorClass<ExpiredCodeException>()(
-  "ExpiredCodeException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class PasswordHistoryPolicyViolationException extends S.TaggedErrorClass<PasswordHistoryPolicyViolationException>()(
-  "PasswordHistoryPolicyViolationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class SoftwareTokenMFANotFoundException extends S.TaggedErrorClass<SoftwareTokenMFANotFoundException>()(
-  "SoftwareTokenMFANotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class WebAuthnChallengeNotFoundException extends S.TaggedErrorClass<WebAuthnChallengeNotFoundException>()(
-  "WebAuthnChallengeNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class WebAuthnClientMismatchException extends S.TaggedErrorClass<WebAuthnClientMismatchException>()(
-  "WebAuthnClientMismatchException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class WebAuthnCredentialNotSupportedException extends S.TaggedErrorClass<WebAuthnCredentialNotSupportedException>()(
-  "WebAuthnCredentialNotSupportedException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class WebAuthnNotEnabledException extends S.TaggedErrorClass<WebAuthnNotEnabledException>()(
-  "WebAuthnNotEnabledException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class WebAuthnOriginNotAllowedException extends S.TaggedErrorClass<WebAuthnOriginNotAllowedException>()(
-  "WebAuthnOriginNotAllowedException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class WebAuthnRelyingPartyMismatchException extends S.TaggedErrorClass<WebAuthnRelyingPartyMismatchException>()(
-  "WebAuthnRelyingPartyMismatchException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class DeviceKeyExistsException extends S.TaggedErrorClass<DeviceKeyExistsException>()(
-  "DeviceKeyExistsException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class GroupExistsException extends S.TaggedErrorClass<GroupExistsException>()(
-  "GroupExistsException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class DuplicateProviderException extends S.TaggedErrorClass<DuplicateProviderException>()(
-  "DuplicateProviderException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ManagedLoginBrandingExistsException extends S.TaggedErrorClass<ManagedLoginBrandingExistsException>()(
-  "ManagedLoginBrandingExistsException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TermsExistsException extends S.TaggedErrorClass<TermsExistsException>()(
-  "TermsExistsException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class FeatureUnavailableInTierException extends S.TaggedErrorClass<FeatureUnavailableInTierException>()(
-  "FeatureUnavailableInTierException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class TierChangeNotAllowedException extends S.TaggedErrorClass<TierChangeNotAllowedException>()(
-  "TierChangeNotAllowedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class UserPoolTaggingException extends S.TaggedErrorClass<UserPoolTaggingException>()(
-  "UserPoolTaggingException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidOAuthFlowException extends S.TaggedErrorClass<InvalidOAuthFlowException>()(
-  "InvalidOAuthFlowException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ScopeDoesNotExistException extends S.TaggedErrorClass<ScopeDoesNotExistException>()(
-  "ScopeDoesNotExistException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnsupportedIdentityProviderException extends S.TaggedErrorClass<UnsupportedIdentityProviderException>()(
-  "UnsupportedIdentityProviderException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class RefreshTokenReuseException extends S.TaggedErrorClass<RefreshTokenReuseException>()(
-  "RefreshTokenReuseException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class UnsupportedTokenTypeException extends S.TaggedErrorClass<UnsupportedTokenTypeException>()(
-  "UnsupportedTokenTypeException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class WebAuthnConfigurationMissingException extends S.TaggedErrorClass<WebAuthnConfigurationMissingException>()(
-  "WebAuthnConfigurationMissingException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class EnableSoftwareTokenMFAException extends S.TaggedErrorClass<EnableSoftwareTokenMFAException>()(
-  "EnableSoftwareTokenMFAException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type MessageType = string;
+export type InvalidParameterExceptionReasonCodeType = string;
 export type AddCustomAttributesError =
   | InternalErrorException
   | InvalidParameterException
@@ -6747,6 +6798,7 @@ export const addCustomAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "AddCustomAttributes",
 }));
+
 export type AddUserPoolClientSecretError =
   | AccessDeniedException
   | InternalServerException
@@ -6778,6 +6830,7 @@ export const addUserPoolClientSecret: API.OperationMethod<
   retry: Retry,
   operationName: "AddUserPoolClientSecret",
 }));
+
 export type AdminAddUserToGroupError =
   | InternalErrorException
   | InvalidParameterException
@@ -6823,6 +6876,7 @@ export const adminAddUserToGroup: API.OperationMethod<
   retry: Retry,
   operationName: "AdminAddUserToGroup",
 }));
+
 export type AdminConfirmSignUpError =
   | InternalErrorException
   | InvalidLambdaResponseException
@@ -6884,6 +6938,7 @@ export const adminConfirmSignUp: API.OperationMethod<
   retry: Retry,
   operationName: "AdminConfirmSignUp",
 }));
+
 export type AdminCreateUserError =
   | CodeDeliveryFailureException
   | InternalErrorException
@@ -6982,6 +7037,7 @@ export const adminCreateUser: API.OperationMethod<
   retry: Retry,
   operationName: "AdminCreateUser",
 }));
+
 export type AdminDeleteUserError =
   | InternalErrorException
   | InvalidParameterException
@@ -7025,6 +7081,7 @@ export const adminDeleteUser: API.OperationMethod<
   retry: Retry,
   operationName: "AdminDeleteUser",
 }));
+
 export type AdminDeleteUserAttributesError =
   | InternalErrorException
   | InvalidParameterException
@@ -7070,6 +7127,7 @@ export const adminDeleteUserAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "AdminDeleteUserAttributes",
 }));
+
 export type AdminDisableProviderForUserError =
   | AliasExistsException
   | InternalErrorException
@@ -7141,6 +7199,7 @@ export const adminDisableProviderForUser: API.OperationMethod<
   retry: Retry,
   operationName: "AdminDisableProviderForUser",
 }));
+
 export type AdminDisableUserError =
   | InternalErrorException
   | InvalidParameterException
@@ -7186,6 +7245,7 @@ export const adminDisableUser: API.OperationMethod<
   retry: Retry,
   operationName: "AdminDisableUser",
 }));
+
 export type AdminEnableUserError =
   | InternalErrorException
   | InvalidParameterException
@@ -7230,6 +7290,7 @@ export const adminEnableUser: API.OperationMethod<
   retry: Retry,
   operationName: "AdminEnableUser",
 }));
+
 export type AdminForgetDeviceError =
   | InternalErrorException
   | InvalidParameterException
@@ -7277,6 +7338,7 @@ export const adminForgetDevice: API.OperationMethod<
   retry: Retry,
   operationName: "AdminForgetDevice",
 }));
+
 export type AdminGetDeviceError =
   | InternalErrorException
   | InvalidParameterException
@@ -7321,6 +7383,7 @@ export const adminGetDevice: API.OperationMethod<
   retry: Retry,
   operationName: "AdminGetDevice",
 }));
+
 export type AdminGetUserError =
   | InternalErrorException
   | InvalidParameterException
@@ -7368,6 +7431,7 @@ export const adminGetUser: API.OperationMethod<
   retry: Retry,
   operationName: "AdminGetUser",
 }));
+
 export type AdminInitiateAuthError =
   | InternalErrorException
   | InvalidEmailRoleAccessPolicyException
@@ -7454,6 +7518,7 @@ export const adminInitiateAuth: API.OperationMethod<
   retry: Retry,
   operationName: "AdminInitiateAuth",
 }));
+
 export type AdminLinkProviderForUserError =
   | AliasExistsException
   | InternalErrorException
@@ -7515,6 +7580,7 @@ export const adminLinkProviderForUser: API.OperationMethod<
   retry: Retry,
   operationName: "AdminLinkProviderForUser",
 }));
+
 export type AdminListDevicesError =
   | InternalErrorException
   | InvalidParameterException
@@ -7561,6 +7627,7 @@ export const adminListDevices: API.OperationMethod<
   retry: Retry,
   operationName: "AdminListDevices",
 }));
+
 export type AdminListGroupsForUserError =
   | InternalErrorException
   | InvalidParameterException
@@ -7627,6 +7694,7 @@ export const adminListGroupsForUser: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type AdminListUserAuthEventsError =
   | InternalErrorException
   | InvalidParameterException
@@ -7694,6 +7762,7 @@ export const adminListUserAuthEvents: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type AdminRemoveUserFromGroupError =
   | InternalErrorException
   | InvalidParameterException
@@ -7739,6 +7808,7 @@ export const adminRemoveUserFromGroup: API.OperationMethod<
   retry: Retry,
   operationName: "AdminRemoveUserFromGroup",
 }));
+
 export type AdminResetUserPasswordError =
   | InternalErrorException
   | InvalidEmailRoleAccessPolicyException
@@ -7821,6 +7891,7 @@ export const adminResetUserPassword: API.OperationMethod<
   retry: Retry,
   operationName: "AdminResetUserPassword",
 }));
+
 export type AdminRespondToAuthChallengeError =
   | AliasExistsException
   | CodeMismatchException
@@ -7920,6 +7991,7 @@ export const adminRespondToAuthChallenge: API.OperationMethod<
   retry: Retry,
   operationName: "AdminRespondToAuthChallenge",
 }));
+
 export type AdminSetUserMFAPreferenceError =
   | InternalErrorException
   | InvalidParameterException
@@ -7969,6 +8041,7 @@ export const adminSetUserMFAPreference: API.OperationMethod<
   retry: Retry,
   operationName: "AdminSetUserMFAPreference",
 }));
+
 export type AdminSetUserPasswordError =
   | InternalErrorException
   | InvalidParameterException
@@ -8044,6 +8117,7 @@ export const adminSetUserPassword: API.OperationMethod<
   retry: Retry,
   operationName: "AdminSetUserPassword",
 }));
+
 export type AdminSetUserSettingsError =
   | InternalErrorException
   | InvalidParameterException
@@ -8087,6 +8161,7 @@ export const adminSetUserSettings: API.OperationMethod<
   retry: Retry,
   operationName: "AdminSetUserSettings",
 }));
+
 export type AdminUpdateAuthEventFeedbackError =
   | InternalErrorException
   | InvalidParameterException
@@ -8142,6 +8217,7 @@ export const adminUpdateAuthEventFeedback: API.OperationMethod<
   retry: Retry,
   operationName: "AdminUpdateAuthEventFeedback",
 }));
+
 export type AdminUpdateDeviceStatusError =
   | InternalErrorException
   | InvalidParameterException
@@ -8192,6 +8268,7 @@ export const adminUpdateDeviceStatus: API.OperationMethod<
   retry: Retry,
   operationName: "AdminUpdateDeviceStatus",
 }));
+
 export type AdminUpdateUserAttributesError =
   | AliasExistsException
   | InternalErrorException
@@ -8275,6 +8352,7 @@ export const adminUpdateUserAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "AdminUpdateUserAttributes",
 }));
+
 export type AdminUserGlobalSignOutError =
   | InternalErrorException
   | InvalidParameterException
@@ -8341,6 +8419,7 @@ export const adminUserGlobalSignOut: API.OperationMethod<
   retry: Retry,
   operationName: "AdminUserGlobalSignOut",
 }));
+
 export type AssociateSoftwareTokenError =
   | ConcurrentModificationException
   | ForbiddenException
@@ -8387,6 +8466,7 @@ export const associateSoftwareToken: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateSoftwareToken",
 }));
+
 export type ChangePasswordError =
   | ForbiddenException
   | InternalErrorException
@@ -8439,6 +8519,7 @@ export const changePassword: API.OperationMethod<
   retry: Retry,
   operationName: "ChangePassword",
 }));
+
 export type CompleteWebAuthnRegistrationError =
   | ForbiddenException
   | InternalErrorException
@@ -8489,6 +8570,7 @@ export const completeWebAuthnRegistration: API.OperationMethod<
   retry: Retry,
   operationName: "CompleteWebAuthnRegistration",
 }));
+
 export type ConfirmDeviceError =
   | DeviceKeyExistsException
   | ForbiddenException
@@ -8548,6 +8630,7 @@ export const confirmDevice: API.OperationMethod<
   retry: Retry,
   operationName: "ConfirmDevice",
 }));
+
 export type ConfirmForgotPasswordError =
   | CodeMismatchException
   | ExpiredCodeException
@@ -8609,6 +8692,7 @@ export const confirmForgotPassword: API.OperationMethod<
   retry: Retry,
   operationName: "ConfirmForgotPassword",
 }));
+
 export type ConfirmSignUpError =
   | AliasExistsException
   | CodeMismatchException
@@ -8674,6 +8758,7 @@ export const confirmSignUp: API.OperationMethod<
   retry: Retry,
   operationName: "ConfirmSignUp",
 }));
+
 export type CreateGroupError =
   | GroupExistsException
   | InternalErrorException
@@ -8720,6 +8805,7 @@ export const createGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGroup",
 }));
+
 export type CreateIdentityProviderError =
   | DuplicateProviderException
   | InternalErrorException
@@ -8765,6 +8851,7 @@ export const createIdentityProvider: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIdentityProvider",
 }));
+
 export type CreateManagedLoginBrandingError =
   | ConcurrentModificationException
   | InternalErrorException
@@ -8827,6 +8914,7 @@ export const createManagedLoginBranding: API.OperationMethod<
   retry: Retry,
   operationName: "CreateManagedLoginBranding",
 }));
+
 export type CreateResourceServerError =
   | InternalErrorException
   | InvalidParameterException
@@ -8872,6 +8960,7 @@ export const createResourceServer: API.OperationMethod<
   retry: Retry,
   operationName: "CreateResourceServer",
 }));
+
 export type CreateTermsError =
   | ConcurrentModificationException
   | InternalErrorException
@@ -8932,6 +9021,7 @@ export const createTerms: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTerms",
 }));
+
 export type CreateUserImportJobError =
   | InternalErrorException
   | InvalidParameterException
@@ -8978,6 +9068,7 @@ export const createUserImportJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUserImportJob",
 }));
+
 export type CreateUserPoolError =
   | FeatureUnavailableInTierException
   | InternalErrorException
@@ -9049,6 +9140,7 @@ export const createUserPool: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUserPool",
 }));
+
 export type CreateUserPoolClientError =
   | FeatureUnavailableInTierException
   | InternalErrorException
@@ -9105,6 +9197,7 @@ export const createUserPoolClient: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUserPoolClient",
 }));
+
 export type CreateUserPoolDomainError =
   | ConcurrentModificationException
   | FeatureUnavailableInTierException
@@ -9161,6 +9254,7 @@ export const createUserPoolDomain: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUserPoolDomain",
 }));
+
 export type CreateUserPoolReplicaError =
   | FeatureUnavailableInTierException
   | InternalErrorException
@@ -9210,6 +9304,7 @@ export const createUserPoolReplica: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUserPoolReplica",
 }));
+
 export type DeleteGroupError =
   | InternalErrorException
   | InvalidParameterException
@@ -9255,6 +9350,7 @@ export const deleteGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGroup",
 }));
+
 export type DeleteIdentityProviderError =
   | ConcurrentModificationException
   | InternalErrorException
@@ -9300,6 +9396,7 @@ export const deleteIdentityProvider: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIdentityProvider",
 }));
+
 export type DeleteManagedLoginBrandingError =
   | ConcurrentModificationException
   | InternalErrorException
@@ -9346,6 +9443,7 @@ export const deleteManagedLoginBranding: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteManagedLoginBranding",
 }));
+
 export type DeleteResourceServerError =
   | InternalErrorException
   | InvalidParameterException
@@ -9391,6 +9489,7 @@ export const deleteResourceServer: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourceServer",
 }));
+
 export type DeleteTermsError =
   | ConcurrentModificationException
   | InternalErrorException
@@ -9434,6 +9533,7 @@ export const deleteTerms: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTerms",
 }));
+
 export type DeleteUserError =
   | ForbiddenException
   | InternalErrorException
@@ -9481,6 +9581,7 @@ export const deleteUser: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUser",
 }));
+
 export type DeleteUserAttributesError =
   | ForbiddenException
   | InternalErrorException
@@ -9529,6 +9630,7 @@ export const deleteUserAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUserAttributes",
 }));
+
 export type DeleteUserPoolError =
   | InternalErrorException
   | InvalidParameterException
@@ -9572,6 +9674,7 @@ export const deleteUserPool: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUserPool",
 }));
+
 export type DeleteUserPoolClientError =
   | ConcurrentModificationException
   | InternalErrorException
@@ -9606,6 +9709,7 @@ export const deleteUserPoolClient: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUserPoolClient",
 }));
+
 export type DeleteUserPoolClientSecretError =
   | InternalServerException
   | InvalidParameterException
@@ -9635,6 +9739,7 @@ export const deleteUserPoolClientSecret: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUserPoolClientSecret",
 }));
+
 export type DeleteUserPoolDomainError =
   | ConcurrentModificationException
   | InternalErrorException
@@ -9668,6 +9773,7 @@ export const deleteUserPoolDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUserPoolDomain",
 }));
+
 export type DeleteUserPoolReplicaError =
   | InternalErrorException
   | InvalidParameterException
@@ -9710,6 +9816,7 @@ export const deleteUserPoolReplica: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUserPoolReplica",
 }));
+
 export type DeleteWebAuthnCredentialError =
   | ForbiddenException
   | InternalErrorException
@@ -9755,6 +9862,7 @@ export const deleteWebAuthnCredential: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWebAuthnCredential",
 }));
+
 export type DescribeIdentityProviderError =
   | InternalErrorException
   | InvalidParameterException
@@ -9785,6 +9893,7 @@ export const describeIdentityProvider: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeIdentityProvider",
 }));
+
 export type DescribeManagedLoginBrandingError =
   | InternalErrorException
   | InvalidParameterException
@@ -9817,6 +9926,7 @@ export const describeManagedLoginBranding: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeManagedLoginBranding",
 }));
+
 export type DescribeManagedLoginBrandingByClientError =
   | InternalErrorException
   | InvalidParameterException
@@ -9849,6 +9959,7 @@ export const describeManagedLoginBrandingByClient: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeManagedLoginBrandingByClient",
 }));
+
 export type DescribeResourceServerError =
   | InternalErrorException
   | InvalidParameterException
@@ -9880,6 +9991,7 @@ export const describeResourceServer: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeResourceServer",
 }));
+
 export type DescribeRiskConfigurationError =
   | InternalErrorException
   | InvalidParameterException
@@ -9916,6 +10028,7 @@ export const describeRiskConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRiskConfiguration",
 }));
+
 export type DescribeTermsError =
   | InternalErrorException
   | InvalidParameterException
@@ -9957,6 +10070,7 @@ export const describeTerms: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTerms",
 }));
+
 export type DescribeUserImportJobError =
   | InternalErrorException
   | InvalidParameterException
@@ -9988,6 +10102,7 @@ export const describeUserImportJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeUserImportJob",
 }));
+
 export type DescribeUserPoolError =
   | InternalErrorException
   | InvalidParameterException
@@ -10033,6 +10148,7 @@ export const describeUserPool: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeUserPool",
 }));
+
 export type DescribeUserPoolClientError =
   | InternalErrorException
   | InvalidParameterException
@@ -10076,6 +10192,7 @@ export const describeUserPoolClient: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeUserPoolClient",
 }));
+
 export type DescribeUserPoolDomainError =
   | InternalErrorException
   | InvalidParameterException
@@ -10116,6 +10233,7 @@ export const describeUserPoolDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeUserPoolDomain",
 }));
+
 export type ForgetDeviceError =
   | ForbiddenException
   | InternalErrorException
@@ -10165,6 +10283,7 @@ export const forgetDevice: API.OperationMethod<
   retry: Retry,
   operationName: "ForgetDevice",
 }));
+
 export type ForgotPasswordError =
   | CodeDeliveryFailureException
   | ForbiddenException
@@ -10249,6 +10368,7 @@ export const forgotPassword: API.OperationMethod<
   retry: Retry,
   operationName: "ForgotPassword",
 }));
+
 export type GetCSVHeaderError =
   | InternalErrorException
   | InvalidParameterException
@@ -10295,6 +10415,7 @@ export const getCSVHeader: API.OperationMethod<
   retry: Retry,
   operationName: "GetCSVHeader",
 }));
+
 export type GetDeviceError =
   | ForbiddenException
   | InternalErrorException
@@ -10344,6 +10465,7 @@ export const getDevice: API.OperationMethod<
   retry: Retry,
   operationName: "GetDevice",
 }));
+
 export type GetGroupError =
   | InternalErrorException
   | InvalidParameterException
@@ -10388,6 +10510,7 @@ export const getGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetGroup",
 }));
+
 export type GetIdentityProviderByIdentifierError =
   | InternalErrorException
   | InvalidParameterException
@@ -10419,6 +10542,7 @@ export const getIdentityProviderByIdentifier: API.OperationMethod<
   retry: Retry,
   operationName: "GetIdentityProviderByIdentifier",
 }));
+
 export type GetLogDeliveryConfigurationError =
   | InternalErrorException
   | InvalidParameterException
@@ -10459,6 +10583,7 @@ export const getLogDeliveryConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetLogDeliveryConfiguration",
 }));
+
 export type GetSigningCertificateError =
   | InternalErrorException
   | InvalidParameterException
@@ -10503,6 +10628,7 @@ export const getSigningCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "GetSigningCertificate",
 }));
+
 export type GetTokensFromRefreshTokenError =
   | ForbiddenException
   | InternalErrorException
@@ -10550,6 +10676,7 @@ export const getTokensFromRefreshToken: API.OperationMethod<
   retry: Retry,
   operationName: "GetTokensFromRefreshToken",
 }));
+
 export type GetUICustomizationError =
   | InternalErrorException
   | InvalidParameterException
@@ -10585,6 +10712,7 @@ export const getUICustomization: API.OperationMethod<
   retry: Retry,
   operationName: "GetUICustomization",
 }));
+
 export type GetUserError =
   | ForbiddenException
   | InternalErrorException
@@ -10631,6 +10759,7 @@ export const getUser: API.OperationMethod<
   retry: Retry,
   operationName: "GetUser",
 }));
+
 export type GetUserAttributeVerificationCodeError =
   | CodeDeliveryFailureException
   | ForbiddenException
@@ -10711,6 +10840,7 @@ export const getUserAttributeVerificationCode: API.OperationMethod<
   retry: Retry,
   operationName: "GetUserAttributeVerificationCode",
 }));
+
 export type GetUserAuthFactorsError =
   | ForbiddenException
   | InternalErrorException
@@ -10763,6 +10893,7 @@ export const getUserAuthFactors: API.OperationMethod<
   retry: Retry,
   operationName: "GetUserAuthFactors",
 }));
+
 export type GetUserPoolMfaConfigError =
   | InternalErrorException
   | InvalidParameterException
@@ -10814,6 +10945,7 @@ export const getUserPoolMfaConfig: API.OperationMethod<
   retry: Retry,
   operationName: "GetUserPoolMfaConfig",
 }));
+
 export type GlobalSignOutError =
   | ForbiddenException
   | InternalErrorException
@@ -10881,6 +11013,7 @@ export const globalSignOut: API.OperationMethod<
   retry: Retry,
   operationName: "GlobalSignOut",
 }));
+
 export type InitiateAuthError =
   | ForbiddenException
   | InternalErrorException
@@ -10962,6 +11095,7 @@ export const initiateAuth: API.OperationMethod<
   retry: Retry,
   operationName: "InitiateAuth",
 }));
+
 export type ListDevicesError =
   | ForbiddenException
   | InternalErrorException
@@ -11011,6 +11145,7 @@ export const listDevices: API.OperationMethod<
   retry: Retry,
   operationName: "ListDevices",
 }));
+
 export type ListGroupsError =
   | InternalErrorException
   | InvalidParameterException
@@ -11073,6 +11208,7 @@ export const listGroups: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListIdentityProvidersError =
   | InternalErrorException
   | InvalidParameterException
@@ -11134,6 +11270,7 @@ export const listIdentityProviders: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourceServersError =
   | InternalErrorException
   | InvalidParameterException
@@ -11197,6 +11334,7 @@ export const listResourceServers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalErrorException
   | InvalidParameterException
@@ -11230,6 +11368,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTermsError =
   | InternalErrorException
   | InvalidParameterException
@@ -11271,6 +11410,7 @@ export const listTerms: API.OperationMethod<
   retry: Retry,
   operationName: "ListTerms",
 }));
+
 export type ListUserImportJobsError =
   | InternalErrorException
   | InvalidParameterException
@@ -11314,6 +11454,7 @@ export const listUserImportJobs: API.OperationMethod<
   retry: Retry,
   operationName: "ListUserImportJobs",
 }));
+
 export type ListUserPoolClientsError =
   | InternalErrorException
   | InvalidParameterException
@@ -11377,6 +11518,7 @@ export const listUserPoolClients: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListUserPoolClientSecretsError =
   | InternalServerException
   | InvalidParameterException
@@ -11406,6 +11548,7 @@ export const listUserPoolClientSecrets: API.OperationMethod<
   retry: Retry,
   operationName: "ListUserPoolClientSecrets",
 }));
+
 export type ListUserPoolReplicasError =
   | InternalErrorException
   | InvalidParameterException
@@ -11449,6 +11592,7 @@ export const listUserPoolReplicas: API.OperationMethod<
   retry: Retry,
   operationName: "ListUserPoolReplicas",
 }));
+
 export type ListUserPoolsError =
   | InternalErrorException
   | InvalidParameterException
@@ -11507,6 +11651,7 @@ export const listUserPools: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListUsersError =
   | InternalErrorException
   | InvalidParameterException
@@ -11574,6 +11719,7 @@ export const listUsers: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListUsersInGroupError =
   | InternalErrorException
   | InvalidParameterException
@@ -11637,6 +11783,7 @@ export const listUsersInGroup: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListWebAuthnCredentialsError =
   | ForbiddenException
   | InternalErrorException
@@ -11680,6 +11827,7 @@ export const listWebAuthnCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "ListWebAuthnCredentials",
 }));
+
 export type ResendConfirmationCodeError =
   | CodeDeliveryFailureException
   | ForbiddenException
@@ -11757,6 +11905,7 @@ export const resendConfirmationCode: API.OperationMethod<
   retry: Retry,
   operationName: "ResendConfirmationCode",
 }));
+
 export type RespondToAuthChallengeError =
   | AliasExistsException
   | CodeMismatchException
@@ -11853,6 +12002,7 @@ export const respondToAuthChallenge: API.OperationMethod<
   retry: Retry,
   operationName: "RespondToAuthChallenge",
 }));
+
 export type RevokeTokenError =
   | ForbiddenException
   | InternalErrorException
@@ -11895,6 +12045,7 @@ export const revokeToken: API.OperationMethod<
   retry: Retry,
   operationName: "RevokeToken",
 }));
+
 export type SetLogDeliveryConfigurationError =
   | FeatureUnavailableInTierException
   | InternalErrorException
@@ -11929,6 +12080,7 @@ export const setLogDeliveryConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "SetLogDeliveryConfiguration",
 }));
+
 export type SetRiskConfigurationError =
   | CodeDeliveryFailureException
   | InternalErrorException
@@ -11990,6 +12142,7 @@ export const setRiskConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "SetRiskConfiguration",
 }));
+
 export type SetUICustomizationError =
   | InternalErrorException
   | InvalidParameterException
@@ -12037,6 +12190,7 @@ export const setUICustomization: API.OperationMethod<
   retry: Retry,
   operationName: "SetUICustomization",
 }));
+
 export type SetUserMFAPreferenceError =
   | ForbiddenException
   | InternalErrorException
@@ -12089,6 +12243,7 @@ export const setUserMFAPreference: API.OperationMethod<
   retry: Retry,
   operationName: "SetUserMFAPreference",
 }));
+
 export type SetUserPoolMfaConfigError =
   | ConcurrentModificationException
   | FeatureUnavailableInTierException
@@ -12146,6 +12301,7 @@ export const setUserPoolMfaConfig: API.OperationMethod<
   retry: Retry,
   operationName: "SetUserPoolMfaConfig",
 }));
+
 export type SetUserSettingsError =
   | ForbiddenException
   | InternalErrorException
@@ -12192,6 +12348,7 @@ export const setUserSettings: API.OperationMethod<
   retry: Retry,
   operationName: "SetUserSettings",
 }));
+
 export type SignUpError =
   | CodeDeliveryFailureException
   | ForbiddenException
@@ -12274,6 +12431,7 @@ export const signUp: API.OperationMethod<
   retry: Retry,
   operationName: "SignUp",
 }));
+
 export type StartUserImportJobError =
   | InternalErrorException
   | InvalidParameterException
@@ -12309,6 +12467,7 @@ export const startUserImportJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartUserImportJob",
 }));
+
 export type StartWebAuthnRegistrationError =
   | ForbiddenException
   | InternalErrorException
@@ -12353,6 +12512,7 @@ export const startWebAuthnRegistration: API.OperationMethod<
   retry: Retry,
   operationName: "StartWebAuthnRegistration",
 }));
+
 export type StopUserImportJobError =
   | InternalErrorException
   | InvalidParameterException
@@ -12388,6 +12548,7 @@ export const stopUserImportJob: API.OperationMethod<
   retry: Retry,
   operationName: "StopUserImportJob",
 }));
+
 export type TagResourceError =
   | InternalErrorException
   | InvalidParameterException
@@ -12435,6 +12596,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalErrorException
   | InvalidParameterException
@@ -12466,6 +12628,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAuthEventFeedbackError =
   | InternalErrorException
   | InvalidParameterException
@@ -12519,6 +12682,7 @@ export const updateAuthEventFeedback: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAuthEventFeedback",
 }));
+
 export type UpdateDeviceStatusError =
   | ForbiddenException
   | InternalErrorException
@@ -12572,6 +12736,7 @@ export const updateDeviceStatus: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDeviceStatus",
 }));
+
 export type UpdateGroupError =
   | InternalErrorException
   | InvalidParameterException
@@ -12614,6 +12779,7 @@ export const updateGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGroup",
 }));
+
 export type UpdateIdentityProviderError =
   | ConcurrentModificationException
   | InternalErrorException
@@ -12660,6 +12826,7 @@ export const updateIdentityProvider: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateIdentityProvider",
 }));
+
 export type UpdateManagedLoginBrandingError =
   | ConcurrentModificationException
   | InternalErrorException
@@ -12713,6 +12880,7 @@ export const updateManagedLoginBranding: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateManagedLoginBranding",
 }));
+
 export type UpdateResourceServerError =
   | InternalErrorException
   | InvalidParameterException
@@ -12758,6 +12926,7 @@ export const updateResourceServer: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateResourceServer",
 }));
+
 export type UpdateTermsError =
   | ConcurrentModificationException
   | InternalErrorException
@@ -12816,6 +12985,7 @@ export const updateTerms: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTerms",
 }));
+
 export type UpdateUserAttributesError =
   | AliasExistsException
   | CodeDeliveryFailureException
@@ -12903,6 +13073,7 @@ export const updateUserAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateUserAttributes",
 }));
+
 export type UpdateUserPoolError =
   | ConcurrentModificationException
   | FeatureUnavailableInTierException
@@ -12986,6 +13157,7 @@ export const updateUserPool: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateUserPool",
 }));
+
 export type UpdateUserPoolClientError =
   | ConcurrentModificationException
   | FeatureUnavailableInTierException
@@ -13044,6 +13216,7 @@ export const updateUserPoolClient: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateUserPoolClient",
 }));
+
 export type UpdateUserPoolDomainError =
   | ConcurrentModificationException
   | FeatureUnavailableInTierException
@@ -13110,6 +13283,7 @@ export const updateUserPoolDomain: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateUserPoolDomain",
 }));
+
 export type UpdateUserPoolReplicaError =
   | InternalErrorException
   | InvalidParameterException
@@ -13153,6 +13327,7 @@ export const updateUserPoolReplica: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateUserPoolReplica",
 }));
+
 export type VerifySoftwareTokenError =
   | CodeMismatchException
   | EnableSoftwareTokenMFAException
@@ -13208,6 +13383,7 @@ export const verifySoftwareToken: API.OperationMethod<
   retry: Retry,
   operationName: "VerifySoftwareToken",
 }));
+
 export type VerifyUserAttributeError =
   | AliasExistsException
   | CodeMismatchException

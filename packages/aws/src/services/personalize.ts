@@ -87,59 +87,51 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError, C.withAlreadyExistsError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class TooManyTagKeysException extends S.TaggedErrorClass<TooManyTagKeysException>()(
+  "TooManyTagKeysException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type Name = string;
 export type Arn = string;
 export type NumBatchResults = number;
 export type S3Location = string;
 export type KmsKeyArn = string;
-export type RoleArn = string;
-export type ParameterName = string;
-export type ParameterValue = string;
-export type RankingInfluenceWeight = number;
-export type TagKey = string | redacted.Redacted<string>;
-export type TagValue = string | redacted.Redacted<string>;
-export type ColumnName = string;
-export type ErrorMessage = string;
-export type TransactionsPerSecond = number;
-export type DatasetType = string;
-export type TrackingId = string;
-export type FilterExpression = string | redacted.Redacted<string>;
-export type EventType = string;
-export type MetricName = string;
-export type MetricExpression = string;
-export type AvroSchema = string;
-export type PerformAutoML = boolean;
-export type PerformAutoTraining = boolean;
-export type PerformIncrementalUpdate = boolean;
-export type EventValueThreshold = string;
-export type HPOObjectiveType = string;
-export type MetricRegex = string;
-export type HPOResource = string;
-export type IntegerMinValue = number;
-export type IntegerMaxValue = number;
-export type ContinuousMinValue = number;
-export type ContinuousMaxValue = number;
-export type CategoricalValue = string;
-export type EventTypeThresholdValue = number;
-export type EventTypeWeight = number;
-export type ItemAttribute = string;
-export type SchedulingExpression = string;
-export type DockerURI = string;
-export type Tunable = boolean;
-export type TrainingInputMode = string;
-export type FailureReason = string;
-export type Status = string;
-export type AccountId = string;
-export type Description = string;
-export type RecipeType = string;
-export type MetricValue = number;
-export type PerformHPO = boolean;
-export type TrainingHours = number;
-export type NextToken = string;
-export type MaxResults = number;
-
-//# Schemas
 export interface S3DataConfig {
   path: string;
   kmsKeyArn?: string;
@@ -163,6 +155,9 @@ export const BatchInferenceJobOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchInferenceJobOutput",
 }) as any as S.Schema<BatchInferenceJobOutput>;
+export type RoleArn = string;
+export type ParameterName = string;
+export type ParameterValue = string;
 export type HyperParameters = { [key: string]: string | undefined };
 export const HyperParameters = /*@__PURE__*/ S.Record(
   S.String,
@@ -170,6 +165,8 @@ export const HyperParameters = /*@__PURE__*/ S.Record(
 );
 export type RankingInfluenceType = "POPULARITY" | "FRESHNESS" | (string & {});
 export const RankingInfluenceType = /*@__PURE__*/ S.String;
+
+export type RankingInfluenceWeight = number;
 export type RankingInfluence = { [key in RankingInfluenceType]?: number };
 export const RankingInfluence = /*@__PURE__*/ S.Record(
   RankingInfluenceType,
@@ -187,6 +184,8 @@ export const BatchInferenceJobConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchInferenceJobConfig",
 }) as any as S.Schema<BatchInferenceJobConfig>;
+export type TagKey = string | redacted.Redacted<string>;
+export type TagValue = string | redacted.Redacted<string>;
 export interface Tag {
   tagKey: string | redacted.Redacted<string>;
   tagValue: string | redacted.Redacted<string>;
@@ -201,6 +200,8 @@ export type BatchInferenceJobMode =
   | "THEME_GENERATION"
   | (string & {});
 export const BatchInferenceJobMode = /*@__PURE__*/ S.String;
+
+export type ColumnName = string;
 export interface FieldsForThemeGeneration {
   itemName: string;
 }
@@ -307,6 +308,7 @@ export const CreateBatchSegmentJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBatchSegmentJobResponse",
 }) as any as S.Schema<CreateBatchSegmentJobResponse>;
+export type TransactionsPerSecond = number;
 export interface CampaignConfig {
   itemExplorationConfig?: { [key: string]: string | undefined };
   enableMetadataWithRecommendations?: boolean;
@@ -383,6 +385,7 @@ export const CreateDataDeletionJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDataDeletionJobResponse",
 }) as any as S.Schema<CreateDataDeletionJobResponse>;
+export type DatasetType = string;
 export interface CreateDatasetRequest {
   name: string;
   schemaArn: string;
@@ -413,6 +416,7 @@ export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatasetResponse>;
 export type IngestionMode = "BULK" | "PUT" | "ALL" | (string & {});
 export const IngestionMode = /*@__PURE__*/ S.String;
+
 export interface DatasetExportJobOutput {
   s3DataDestination: S3DataConfig;
 }
@@ -453,6 +457,7 @@ export const CreateDatasetExportJobResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatasetExportJobResponse>;
 export type Domain = "ECOMMERCE" | "VIDEO_ON_DEMAND" | (string & {});
 export const Domain = /*@__PURE__*/ S.String;
+
 export interface CreateDatasetGroupRequest {
   name: string;
   roleArn?: string;
@@ -487,6 +492,7 @@ export const CreateDatasetGroupResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatasetGroupResponse>;
 export type ImportMode = "FULL" | "INCREMENTAL" | (string & {});
 export const ImportMode = /*@__PURE__*/ S.String;
+
 export interface CreateDatasetImportJobRequest {
   jobName: string;
   datasetArn: string;
@@ -535,6 +541,7 @@ export const CreateEventTrackerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEventTrackerRequest",
 }) as any as S.Schema<CreateEventTrackerRequest>;
+export type TrackingId = string;
 export interface CreateEventTrackerResponse {
   eventTrackerArn?: string;
   trackingId?: string;
@@ -547,6 +554,7 @@ export const CreateEventTrackerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEventTrackerResponse",
 }) as any as S.Schema<CreateEventTrackerResponse>;
+export type FilterExpression = string | redacted.Redacted<string>;
 export interface CreateFilterRequest {
   name: string;
   datasetGroupArn: string;
@@ -573,6 +581,9 @@ export const CreateFilterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateFilterResponse",
 }) as any as S.Schema<CreateFilterResponse>;
+export type EventType = string;
+export type MetricName = string;
+export type MetricExpression = string;
 export interface MetricAttribute {
   eventType: string;
   metricName: string;
@@ -688,6 +699,7 @@ export const CreateRecommenderResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRecommenderResponse",
 }) as any as S.Schema<CreateRecommenderResponse>;
+export type AvroSchema = string;
 export interface CreateSchemaRequest {
   name: string;
   schema: string;
@@ -712,6 +724,12 @@ export const CreateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSchemaResponse",
 }) as any as S.Schema<CreateSchemaResponse>;
+export type PerformAutoML = boolean;
+export type PerformAutoTraining = boolean;
+export type PerformIncrementalUpdate = boolean;
+export type EventValueThreshold = string;
+export type HPOObjectiveType = string;
+export type MetricRegex = string;
 export interface HPOObjective {
   type?: string;
   metricName?: string;
@@ -724,6 +742,7 @@ export const HPOObjective = /*@__PURE__*/ S.suspend(() =>
     metricRegex: S.optional(S.String),
   }),
 ).annotate({ identifier: "HPOObjective" }) as any as S.Schema<HPOObjective>;
+export type HPOResource = string;
 export interface HPOResourceConfig {
   maxNumberOfTrainingJobs?: string;
   maxParallelTrainingJobs?: string;
@@ -736,6 +755,8 @@ export const HPOResourceConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HPOResourceConfig",
 }) as any as S.Schema<HPOResourceConfig>;
+export type IntegerMinValue = number;
+export type IntegerMaxValue = number;
 export interface IntegerHyperParameterRange {
   name?: string;
   minValue?: number;
@@ -754,6 +775,8 @@ export type IntegerHyperParameterRanges = IntegerHyperParameterRange[];
 export const IntegerHyperParameterRanges = /*@__PURE__*/ S.Array(
   IntegerHyperParameterRange,
 );
+export type ContinuousMinValue = number;
+export type ContinuousMaxValue = number;
 export interface ContinuousHyperParameterRange {
   name?: string;
   minValue?: number;
@@ -772,6 +795,7 @@ export type ContinuousHyperParameterRanges = ContinuousHyperParameterRange[];
 export const ContinuousHyperParameterRanges = /*@__PURE__*/ S.Array(
   ContinuousHyperParameterRange,
 );
+export type CategoricalValue = string;
 export type CategoricalValues = string[];
 export const CategoricalValues = /*@__PURE__*/ S.Array(S.String);
 export interface CategoricalHyperParameterRange {
@@ -837,6 +861,8 @@ export const AutoMLConfig = /*@__PURE__*/ S.suspend(() =>
     recipeList: S.optional(ArnList),
   }),
 ).annotate({ identifier: "AutoMLConfig" }) as any as S.Schema<AutoMLConfig>;
+export type EventTypeThresholdValue = number;
+export type EventTypeWeight = number;
 export interface EventParameters {
   eventType?: string;
   eventValueThreshold?: number;
@@ -859,6 +885,7 @@ export interface EventsConfig {
 export const EventsConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ eventParametersList: S.optional(EventParametersList) }),
 ).annotate({ identifier: "EventsConfig" }) as any as S.Schema<EventsConfig>;
+export type ItemAttribute = string;
 export type ObjectiveSensitivity =
   | "LOW"
   | "MEDIUM"
@@ -866,6 +893,7 @@ export type ObjectiveSensitivity =
   | "OFF"
   | (string & {});
 export const ObjectiveSensitivity = /*@__PURE__*/ S.String;
+
 export interface OptimizationObjective {
   itemAttribute?: string;
   objectiveSensitivity?: ObjectiveSensitivity;
@@ -878,6 +906,7 @@ export const OptimizationObjective = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OptimizationObjective",
 }) as any as S.Schema<OptimizationObjective>;
+export type SchedulingExpression = string;
 export interface AutoTrainingConfig {
   schedulingExpression?: string;
 }
@@ -952,6 +981,7 @@ export const CreateSolutionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSolutionResponse>;
 export type TrainingMode = "FULL" | "UPDATE" | "AUTOTRAIN" | (string & {});
 export const TrainingMode = /*@__PURE__*/ S.String;
+
 export interface CreateSolutionVersionRequest {
   name?: string;
   solutionArn: string;
@@ -1132,6 +1162,7 @@ export const DescribeAlgorithmRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAlgorithmRequest",
 }) as any as S.Schema<DescribeAlgorithmRequest>;
+export type DockerURI = string;
 export interface AlgorithmImage {
   name?: string;
   dockerURI: string;
@@ -1139,6 +1170,7 @@ export interface AlgorithmImage {
 export const AlgorithmImage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ name: S.optional(S.String), dockerURI: S.String }),
 ).annotate({ identifier: "AlgorithmImage" }) as any as S.Schema<AlgorithmImage>;
+export type Tunable = boolean;
 export interface DefaultIntegerHyperParameterRange {
   name?: string;
   minValue?: number;
@@ -1225,6 +1257,7 @@ export const ResourceConfig = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type TrainingInputMode = string;
 export interface Algorithm {
   name?: string;
   algorithmArn?: string;
@@ -1273,6 +1306,8 @@ export const DescribeBatchInferenceJobRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeBatchInferenceJobRequest",
 }) as any as S.Schema<DescribeBatchInferenceJobRequest>;
+export type FailureReason = string;
+export type Status = string;
 export interface BatchInferenceJob {
   jobName?: string;
   batchInferenceJobArn?: string;
@@ -1729,6 +1764,7 @@ export const DescribeEventTrackerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeEventTrackerRequest",
 }) as any as S.Schema<DescribeEventTrackerRequest>;
+export type AccountId = string;
 export interface EventTracker {
   name?: string;
   eventTrackerArn?: string;
@@ -1911,6 +1947,8 @@ export const DescribeRecipeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRecipeRequest",
 }) as any as S.Schema<DescribeRecipeRequest>;
+export type Description = string;
+export type RecipeType = string;
 export interface Recipe {
   name?: string;
   recipeArn?: string;
@@ -1979,6 +2017,7 @@ export const RecommenderUpdateSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RecommenderUpdateSummary",
 }) as any as S.Schema<RecommenderUpdateSummary>;
+export type MetricValue = number;
 export type Metrics = { [key: string]: number | undefined };
 export const Metrics = /*@__PURE__*/ S.Record(
   S.String,
@@ -2074,6 +2113,7 @@ export const DescribeSolutionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSolutionRequest",
 }) as any as S.Schema<DescribeSolutionRequest>;
+export type PerformHPO = boolean;
 export interface AutoMLResult {
   bestRecipeArn?: string;
 }
@@ -2082,6 +2122,7 @@ export const AutoMLResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AutoMLResult" }) as any as S.Schema<AutoMLResult>;
 export type TrainingType = "AUTOMATIC" | "MANUAL" | (string & {});
 export const TrainingType = /*@__PURE__*/ S.String;
+
 export interface SolutionVersionSummary {
   solutionVersionArn?: string;
   status?: string;
@@ -2206,6 +2247,7 @@ export const DescribeSolutionVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSolutionVersionRequest",
 }) as any as S.Schema<DescribeSolutionVersionRequest>;
+export type TrainingHours = number;
 export interface TunedHPOParams {
   algorithmHyperParameters?: { [key: string]: string | undefined };
 }
@@ -2290,6 +2332,8 @@ export const GetSolutionMetricsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSolutionMetricsResponse",
 }) as any as S.Schema<GetSolutionMetricsResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListBatchInferenceJobsRequest {
   solutionVersionArn?: string;
   nextToken?: string;
@@ -2919,6 +2963,7 @@ export const ListMetricAttributionsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListMetricAttributionsResponse>;
 export type RecipeProvider = "SERVICE" | (string & {});
 export const RecipeProvider = /*@__PURE__*/ S.String;
+
 export interface ListRecipesRequest {
   recipeProvider?: RecipeProvider;
   nextToken?: string;
@@ -3386,50 +3431,7 @@ export const UpdateSolutionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSolutionResponse",
 }) as any as S.Schema<UpdateSolutionResponse>;
-
-//# Errors
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError, C.withAlreadyExistsError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyTagKeysException extends S.TaggedErrorClass<TooManyTagKeysException>()(
-  "TooManyTagKeysException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CreateBatchInferenceJobError =
   | InvalidInputException
   | LimitExceededException
@@ -3480,6 +3482,7 @@ export const createBatchInferenceJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBatchInferenceJob",
 }));
+
 export type CreateBatchSegmentJobError =
   | InvalidInputException
   | LimitExceededException
@@ -3513,6 +3516,7 @@ export const createBatchSegmentJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBatchSegmentJob",
 }));
+
 export type CreateCampaignError =
   | InvalidInputException
   | LimitExceededException
@@ -3598,6 +3602,7 @@ export const createCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCampaign",
 }));
+
 export type CreateDataDeletionJobError =
   | InvalidInputException
   | LimitExceededException
@@ -3663,6 +3668,7 @@ export const createDataDeletionJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataDeletionJob",
 }));
+
 export type CreateDatasetError =
   | InvalidInputException
   | LimitExceededException
@@ -3731,6 +3737,7 @@ export const createDataset: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataset",
 }));
+
 export type CreateDatasetExportJobError =
   | InvalidInputException
   | LimitExceededException
@@ -3778,6 +3785,7 @@ export const createDatasetExportJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDatasetExportJob",
 }));
+
 export type CreateDatasetGroupError =
   | InvalidInputException
   | LimitExceededException
@@ -3859,6 +3867,7 @@ export const createDatasetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDatasetGroup",
 }));
+
 export type CreateDatasetImportJobError =
   | InvalidInputException
   | LimitExceededException
@@ -3927,6 +3936,7 @@ export const createDatasetImportJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDatasetImportJob",
 }));
+
 export type CreateEventTrackerError =
   | InvalidInputException
   | LimitExceededException
@@ -3987,6 +3997,7 @@ export const createEventTracker: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEventTracker",
 }));
+
 export type CreateFilterError =
   | InvalidInputException
   | LimitExceededException
@@ -4016,6 +4027,7 @@ export const createFilter: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFilter",
 }));
+
 export type CreateMetricAttributionError =
   | InvalidInputException
   | LimitExceededException
@@ -4047,6 +4059,7 @@ export const createMetricAttribution: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMetricAttribution",
 }));
+
 export type CreateRecommenderError =
   | InvalidInputException
   | LimitExceededException
@@ -4131,6 +4144,7 @@ export const createRecommender: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRecommender",
 }));
+
 export type CreateSchemaError =
   | InvalidInputException
   | LimitExceededException
@@ -4170,6 +4184,7 @@ export const createSchema: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSchema",
 }));
+
 export type CreateSolutionError =
   | InvalidInputException
   | LimitExceededException
@@ -4257,6 +4272,7 @@ export const createSolution: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSolution",
 }));
+
 export type CreateSolutionVersionError =
   | InvalidInputException
   | LimitExceededException
@@ -4327,6 +4343,7 @@ export const createSolutionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSolutionVersion",
 }));
+
 export type DeleteCampaignError =
   | InvalidInputException
   | ResourceInUseException
@@ -4357,6 +4374,7 @@ export const deleteCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCampaign",
 }));
+
 export type DeleteDatasetError =
   | InvalidInputException
   | ResourceInUseException
@@ -4385,6 +4403,7 @@ export const deleteDataset: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataset",
 }));
+
 export type DeleteDatasetGroupError =
   | InvalidInputException
   | ResourceInUseException
@@ -4417,6 +4436,7 @@ export const deleteDatasetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDatasetGroup",
 }));
+
 export type DeleteEventTrackerError =
   | InvalidInputException
   | ResourceInUseException
@@ -4444,6 +4464,7 @@ export const deleteEventTracker: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEventTracker",
 }));
+
 export type DeleteFilterError =
   | InvalidInputException
   | ResourceInUseException
@@ -4469,6 +4490,7 @@ export const deleteFilter: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFilter",
 }));
+
 export type DeleteMetricAttributionError =
   | InvalidInputException
   | ResourceInUseException
@@ -4494,6 +4516,7 @@ export const deleteMetricAttribution: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMetricAttribution",
 }));
+
 export type DeleteRecommenderError =
   | InvalidInputException
   | ResourceInUseException
@@ -4520,6 +4543,7 @@ export const deleteRecommender: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRecommender",
 }));
+
 export type DeleteSchemaError =
   | InvalidInputException
   | ResourceInUseException
@@ -4547,6 +4571,7 @@ export const deleteSchema: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSchema",
 }));
+
 export type DeleteSolutionError =
   | InvalidInputException
   | ResourceInUseException
@@ -4578,6 +4603,7 @@ export const deleteSolution: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSolution",
 }));
+
 export type DescribeAlgorithmError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4598,6 +4624,7 @@ export const describeAlgorithm: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAlgorithm",
 }));
+
 export type DescribeBatchInferenceJobError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4620,6 +4647,7 @@ export const describeBatchInferenceJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBatchInferenceJob",
 }));
+
 export type DescribeBatchSegmentJobError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4642,6 +4670,7 @@ export const describeBatchSegmentJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBatchSegmentJob",
 }));
+
 export type DescribeCampaignError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4673,6 +4702,7 @@ export const describeCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCampaign",
 }));
+
 export type DescribeDataDeletionJobError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4693,6 +4723,7 @@ export const describeDataDeletionJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDataDeletionJob",
 }));
+
 export type DescribeDatasetError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4714,6 +4745,7 @@ export const describeDataset: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDataset",
 }));
+
 export type DescribeDatasetExportJobError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4734,6 +4766,7 @@ export const describeDatasetExportJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDatasetExportJob",
 }));
+
 export type DescribeDatasetGroupError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4755,6 +4788,7 @@ export const describeDatasetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDatasetGroup",
 }));
+
 export type DescribeDatasetImportJobError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4775,6 +4809,7 @@ export const describeDatasetImportJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDatasetImportJob",
 }));
+
 export type DescribeEventTrackerError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4797,6 +4832,7 @@ export const describeEventTracker: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEventTracker",
 }));
+
 export type DescribeFeatureTransformationError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4817,6 +4853,7 @@ export const describeFeatureTransformation: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFeatureTransformation",
 }));
+
 export type DescribeFilterError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4837,6 +4874,7 @@ export const describeFilter: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeFilter",
 }));
+
 export type DescribeMetricAttributionError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4857,6 +4895,7 @@ export const describeMetricAttribution: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeMetricAttribution",
 }));
+
 export type DescribeRecipeError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4892,6 +4931,7 @@ export const describeRecipe: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRecipe",
 }));
+
 export type DescribeRecommenderError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4928,6 +4968,7 @@ export const describeRecommender: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRecommender",
 }));
+
 export type DescribeSchemaError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4949,6 +4990,7 @@ export const describeSchema: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSchema",
 }));
+
 export type DescribeSolutionError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4970,6 +5012,7 @@ export const describeSolution: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSolution",
 }));
+
 export type DescribeSolutionVersionError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4990,6 +5033,7 @@ export const describeSolutionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSolutionVersion",
 }));
+
 export type GetSolutionMetricsError =
   | InvalidInputException
   | ResourceInUseException
@@ -5015,6 +5059,7 @@ export const getSolutionMetrics: API.OperationMethod<
   retry: Retry,
   operationName: "GetSolutionMetrics",
 }));
+
 export type ListBatchInferenceJobsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5057,6 +5102,7 @@ export const listBatchInferenceJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBatchSegmentJobsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5099,6 +5145,7 @@ export const listBatchSegmentJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListCampaignsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5143,6 +5190,7 @@ export const listCampaigns: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDataDeletionJobsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5169,6 +5217,7 @@ export const listDataDeletionJobs: API.OperationMethod<
   retry: Retry,
   operationName: "ListDataDeletionJobs",
 }));
+
 export type ListDatasetExportJobsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5215,6 +5264,7 @@ export const listDatasetExportJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDatasetGroupsError = InvalidNextTokenException | CommonErrors;
 /**
  * Returns a list of dataset groups. The response provides the properties
@@ -5255,6 +5305,7 @@ export const listDatasetGroups: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDatasetImportJobsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5301,6 +5352,7 @@ export const listDatasetImportJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDatasetsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5344,6 +5396,7 @@ export const listDatasets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListEventTrackersError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5388,6 +5441,7 @@ export const listEventTrackers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListFiltersError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5429,6 +5483,7 @@ export const listFilters: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListMetricAttributionMetricsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5470,6 +5525,7 @@ export const listMetricAttributionMetrics: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListMetricAttributionsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5511,6 +5567,7 @@ export const listMetricAttributions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListRecipesError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5553,6 +5610,7 @@ export const listRecipes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListRecommendersError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5597,6 +5655,7 @@ export const listRecommenders: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSchemasError = InvalidNextTokenException | CommonErrors;
 /**
  * Returns the list of schemas associated with the account. The response provides the
@@ -5637,6 +5696,7 @@ export const listSchemas: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSolutionsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5681,6 +5741,7 @@ export const listSolutions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListSolutionVersionsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5729,6 +5790,7 @@ export const listSolutionVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InvalidInputException
   | ResourceInUseException
@@ -5754,6 +5816,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type StartRecommenderError =
   | InvalidInputException
   | ResourceInUseException
@@ -5780,6 +5843,7 @@ export const startRecommender: API.OperationMethod<
   retry: Retry,
   operationName: "StartRecommender",
 }));
+
 export type StopRecommenderError =
   | InvalidInputException
   | ResourceInUseException
@@ -5805,6 +5869,7 @@ export const stopRecommender: API.OperationMethod<
   retry: Retry,
   operationName: "StopRecommender",
 }));
+
 export type StopSolutionVersionCreationError =
   | InvalidInputException
   | ResourceInUseException
@@ -5841,6 +5906,7 @@ export const stopSolutionVersionCreation: API.OperationMethod<
   retry: Retry,
   operationName: "StopSolutionVersionCreation",
 }));
+
 export type TagResourceError =
   | InvalidInputException
   | LimitExceededException
@@ -5870,6 +5936,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InvalidInputException
   | ResourceInUseException
@@ -5897,6 +5964,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateCampaignError =
   | InvalidInputException
   | ResourceInUseException
@@ -5939,6 +6007,7 @@ export const updateCampaign: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCampaign",
 }));
+
 export type UpdateDatasetError =
   | InvalidInputException
   | ResourceInUseException
@@ -5964,6 +6033,7 @@ export const updateDataset: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDataset",
 }));
+
 export type UpdateMetricAttributionError =
   | InvalidInputException
   | ResourceAlreadyExistsException
@@ -5991,6 +6061,7 @@ export const updateMetricAttribution: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMetricAttribution",
 }));
+
 export type UpdateRecommenderError =
   | InvalidInputException
   | ResourceInUseException
@@ -6022,6 +6093,7 @@ export const updateRecommender: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRecommender",
 }));
+
 export type UpdateSolutionError =
   | InvalidInputException
   | LimitExceededException

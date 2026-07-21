@@ -85,90 +85,32 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class DirectConnectClientException extends S.TaggedErrorClass<DirectConnectClientException>()(
+  "DirectConnectClientException",
+  { message: S.optional(S.String) },
+) {}
+export class DirectConnectServerException extends S.TaggedErrorClass<DirectConnectServerException>()(
+  "DirectConnectServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class DuplicateTagKeysException extends S.TaggedErrorClass<DuplicateTagKeysException>()(
+  "DuplicateTagKeysException",
+  { message: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { message: S.optional(S.String) },
+) {}
 export type DirectConnectGatewayId = string;
 export type DirectConnectGatewayAssociationProposalId = string;
 export type OwnerAccount = string;
 export type CIDR = string;
-export type StateChangeError = string;
-export type GatewayIdentifier = string;
-export type Region = string;
-export type DirectConnectGatewayAssociationId = string;
-export type CoreNetworkIdentifier = string;
-export type CoreNetworkAttachmentId = string;
-export type VirtualGatewayId = string;
-export type VirtualGatewayRegion = string;
-export type ErrorMessage = string;
-export type Bandwidth = string;
-export type ConnectionName = string;
-export type InterconnectId = string;
-export type VLAN = number;
-export type ConnectionId = string;
-export type LocationCode = string;
-export type PartnerName = string;
-export type LoaIssueTime = Date;
-export type LagId = string;
-export type AwsDevice = string;
-export type JumboFrameCapable = boolean;
-export type AwsDeviceV2 = string;
-export type AwsLogicalDeviceId = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ProviderName = string;
-export type MacSecCapable = boolean;
-export type PortEncryptionStatus = string;
-export type EncryptionMode = string;
-export type SecretARN = string;
-export type Ckn = string;
-export type State = string;
-export type StartOnDate = string;
-export type Count = number;
-export type PartnerInterconnectMacSecCapable = boolean;
-export type VirtualInterfaceName = string;
-export type ASN = number;
-export type LongAsn = number;
-export type MTU = number;
-export type BGPAuthKey = string;
-export type AmazonAddress = string;
-export type CustomerAddress = string;
-export type RateLimit = string;
-export type VirtualInterfaceId = string;
-export type VirtualInterfaceType = string;
-export type RouterConfig = string;
-export type BGPPeerId = string;
-export type SiteLinkEnabled = boolean;
-export type Cak = string;
-export type AgreementName = string;
-export type Status = string;
-export type RequestMACSec = boolean;
-export type DirectConnectGatewayName = string;
-export type GatewayIdToAssociate = string;
-export type InterconnectName = string;
-export type LagName = string;
-export type BooleanFlag = boolean;
-export type EnableSiteLink = boolean;
-export type LoaContent = Uint8Array;
-export type MaxResultSetSize = number;
-export type PaginationToken = string;
-export type AssociatedGatewayId = string;
-export type VirtualInterfaceRegion = string;
-export type LocationName = string;
-export type PortSpeed = string;
-export type RouterTypeIdentifier = string;
-export type Vendor = string;
-export type Platform = string;
-export type Software = string;
-export type XsltTemplateName = string;
-export type XsltTemplateNameForMacSec = string;
-export type ResourceArn = string;
-export type VirtualGatewayState = string;
-export type TestId = string;
-export type FailureTestHistoryStatus = string;
-export type TestDuration = number;
-export type StartTime = Date;
-export type EndTime = Date;
-
-//# Schemas
 export interface RouteFilterPrefix {
   cidr?: string;
 }
@@ -216,11 +158,16 @@ export type DirectConnectGatewayAssociationState =
   | "updating"
   | (string & {});
 export const DirectConnectGatewayAssociationState = /*@__PURE__*/ S.String;
+
+export type StateChangeError = string;
+export type GatewayIdentifier = string;
 export type GatewayType =
   | "virtualPrivateGateway"
   | "transitGateway"
   | (string & {});
 export const GatewayType = /*@__PURE__*/ S.String;
+
+export type Region = string;
 export interface AssociatedGateway {
   id?: string;
   type?: GatewayType;
@@ -237,6 +184,9 @@ export const AssociatedGateway = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociatedGateway",
 }) as any as S.Schema<AssociatedGateway>;
+export type DirectConnectGatewayAssociationId = string;
+export type CoreNetworkIdentifier = string;
+export type CoreNetworkAttachmentId = string;
 export interface AssociatedCoreNetwork {
   id?: string;
   ownerAccount?: string;
@@ -251,6 +201,8 @@ export const AssociatedCoreNetwork = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociatedCoreNetwork",
 }) as any as S.Schema<AssociatedCoreNetwork>;
+export type VirtualGatewayId = string;
+export type VirtualGatewayRegion = string;
 export interface DirectConnectGatewayAssociation {
   directConnectGatewayId?: string;
   directConnectGatewayOwnerAccount?: string;
@@ -294,6 +246,10 @@ export const AcceptDirectConnectGatewayAssociationProposalResult =
   ).annotate({
     identifier: "AcceptDirectConnectGatewayAssociationProposalResult",
   }) as any as S.Schema<AcceptDirectConnectGatewayAssociationProposalResult>;
+export type Bandwidth = string;
+export type ConnectionName = string;
+export type InterconnectId = string;
+export type VLAN = number;
 export interface AllocateConnectionOnInterconnectRequest {
   bandwidth: string;
   connectionName: string;
@@ -323,6 +279,7 @@ export const AllocateConnectionOnInterconnectRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AllocateConnectionOnInterconnectRequest",
 }) as any as S.Schema<AllocateConnectionOnInterconnectRequest>;
+export type ConnectionId = string;
 export type ConnectionState =
   | "ordering"
   | "requested"
@@ -335,8 +292,20 @@ export type ConnectionState =
   | "unknown"
   | (string & {});
 export const ConnectionState = /*@__PURE__*/ S.String;
+
+export type LocationCode = string;
+export type PartnerName = string;
+export type LoaIssueTime = Date;
+export type LagId = string;
+export type AwsDevice = string;
+export type JumboFrameCapable = boolean;
+export type AwsDeviceV2 = string;
+export type AwsLogicalDeviceId = string;
 export type HasLogicalRedundancy = "unknown" | "yes" | "no" | (string & {});
 export const HasLogicalRedundancy = /*@__PURE__*/ S.String;
+
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   key: string;
   value?: string;
@@ -346,6 +315,14 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
+export type ProviderName = string;
+export type MacSecCapable = boolean;
+export type PortEncryptionStatus = string;
+export type EncryptionMode = string;
+export type SecretARN = string;
+export type Ckn = string;
+export type State = string;
+export type StartOnDate = string;
 export interface MacSecKey {
   secretARN?: string;
   ckn?: string;
@@ -362,6 +339,7 @@ export const MacSecKey = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MacSecKey" }) as any as S.Schema<MacSecKey>;
 export type MacSecKeyList = MacSecKey[];
 export const MacSecKeyList = /*@__PURE__*/ S.Array(MacSecKey);
+export type Count = number;
 export interface RateLimiterStatus {
   maxAllowed?: number;
   inUse?: number;
@@ -378,6 +356,7 @@ export const RateLimiterStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RateLimiterStatus",
 }) as any as S.Schema<RateLimiterStatus>;
+export type PartnerInterconnectMacSecCapable = boolean;
 export interface Connection {
   ownerAccount?: string;
   connectionId?: string;
@@ -462,8 +441,17 @@ export const AllocateHostedConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AllocateHostedConnectionRequest",
 }) as any as S.Schema<AllocateHostedConnectionRequest>;
+export type VirtualInterfaceName = string;
+export type ASN = number;
+export type LongAsn = number;
+export type MTU = number;
+export type BGPAuthKey = string;
+export type AmazonAddress = string;
 export type AddressFamily = "ipv4" | "ipv6" | (string & {});
 export const AddressFamily = /*@__PURE__*/ S.String;
+
+export type CustomerAddress = string;
+export type RateLimit = string;
 export interface NewPrivateVirtualInterfaceAllocation {
   virtualInterfaceName: string;
   vlan: number;
@@ -521,6 +509,8 @@ export const AllocatePrivateVirtualInterfaceRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "AllocatePrivateVirtualInterfaceRequest",
 }) as any as S.Schema<AllocatePrivateVirtualInterfaceRequest>;
+export type VirtualInterfaceId = string;
+export type VirtualInterfaceType = string;
 export type VirtualInterfaceState =
   | "confirming"
   | "verifying"
@@ -534,6 +524,9 @@ export type VirtualInterfaceState =
   | "unknown"
   | (string & {});
 export const VirtualInterfaceState = /*@__PURE__*/ S.String;
+
+export type RouterConfig = string;
+export type BGPPeerId = string;
 export type BGPPeerState =
   | "verifying"
   | "pending"
@@ -542,8 +535,10 @@ export type BGPPeerState =
   | "deleted"
   | (string & {});
 export const BGPPeerState = /*@__PURE__*/ S.String;
+
 export type BGPStatus = "up" | "down" | "unknown" | (string & {});
 export const BGPStatus = /*@__PURE__*/ S.String;
+
 export interface BGPPeer {
   bgpPeerId?: string;
   asn?: number;
@@ -574,6 +569,7 @@ export const BGPPeer = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "BGPPeer" }) as any as S.Schema<BGPPeer>;
 export type BGPPeerList = BGPPeer[];
 export const BGPPeerList = /*@__PURE__*/ S.Array(BGPPeer);
+export type SiteLinkEnabled = boolean;
 export interface VirtualInterface {
   ownerAccount?: string;
   virtualInterfaceId?: string;
@@ -796,6 +792,7 @@ export const AssociateHostedConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateHostedConnectionRequest",
 }) as any as S.Schema<AssociateHostedConnectionRequest>;
+export type Cak = string;
 export interface AssociateMacSecKeyRequest {
   connectionId: string;
   secretARN?: string;
@@ -879,6 +876,7 @@ export const ConfirmConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfirmConnectionResponse",
 }) as any as S.Schema<ConfirmConnectionResponse>;
+export type AgreementName = string;
 export interface ConfirmCustomerAgreementRequest {
   agreementName?: string;
 }
@@ -897,6 +895,7 @@ export const ConfirmCustomerAgreementRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfirmCustomerAgreementRequest",
 }) as any as S.Schema<ConfirmCustomerAgreementRequest>;
+export type Status = string;
 export interface ConfirmCustomerAgreementResponse {
   status?: string;
 }
@@ -1053,6 +1052,7 @@ export const CreateBGPPeerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBGPPeerResponse",
 }) as any as S.Schema<CreateBGPPeerResponse>;
+export type RequestMACSec = boolean;
 export interface CreateConnectionRequest {
   location: string;
   bandwidth: string;
@@ -1085,6 +1085,7 @@ export const CreateConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectionRequest",
 }) as any as S.Schema<CreateConnectionRequest>;
+export type DirectConnectGatewayName = string;
 export interface CreateDirectConnectGatewayRequest {
   directConnectGatewayName: string;
   tags?: Tag[];
@@ -1116,6 +1117,7 @@ export type DirectConnectGatewayState =
   | "deleted"
   | (string & {});
 export const DirectConnectGatewayState = /*@__PURE__*/ S.String;
+
 export interface DirectConnectGateway {
   directConnectGatewayId?: string;
   directConnectGatewayName?: string;
@@ -1146,6 +1148,7 @@ export const CreateDirectConnectGatewayResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDirectConnectGatewayResult",
 }) as any as S.Schema<CreateDirectConnectGatewayResult>;
+export type GatewayIdToAssociate = string;
 export interface CreateDirectConnectGatewayAssociationRequest {
   directConnectGatewayId: string;
   gatewayId?: string;
@@ -1228,6 +1231,7 @@ export type DirectConnectGatewayAssociationProposalState =
   | (string & {});
 export const DirectConnectGatewayAssociationProposalState =
   /*@__PURE__*/ S.String;
+
 export interface DirectConnectGatewayAssociationProposal {
   proposalId?: string;
   directConnectGatewayId?: string;
@@ -1268,6 +1272,7 @@ export const CreateDirectConnectGatewayAssociationProposalResult =
   ).annotate({
     identifier: "CreateDirectConnectGatewayAssociationProposalResult",
   }) as any as S.Schema<CreateDirectConnectGatewayAssociationProposalResult>;
+export type InterconnectName = string;
 export interface CreateInterconnectRequest {
   interconnectName: string;
   bandwidth: string;
@@ -1310,6 +1315,7 @@ export type InterconnectState =
   | "unknown"
   | (string & {});
 export const InterconnectState = /*@__PURE__*/ S.String;
+
 export interface Interconnect {
   interconnectId?: string;
   interconnectName?: string;
@@ -1354,6 +1360,7 @@ export const Interconnect = /*@__PURE__*/ S.suspend(() =>
     macSecKeys: S.optional(MacSecKeyList),
   }).pipe(ns),
 ).annotate({ identifier: "Interconnect" }) as any as S.Schema<Interconnect>;
+export type LagName = string;
 export interface CreateLagRequest {
   numberOfConnections: number;
   location: string;
@@ -1400,8 +1407,10 @@ export type LagState =
   | "unknown"
   | (string & {});
 export const LagState = /*@__PURE__*/ S.String;
+
 export type ConnectionList = Connection[];
 export const ConnectionList = /*@__PURE__*/ S.Array(Connection);
+export type BooleanFlag = boolean;
 export interface Lag {
   connectionsBandwidth?: string;
   numberOfConnections?: number;
@@ -1452,6 +1461,7 @@ export const Lag = /*@__PURE__*/ S.suspend(() =>
     rateLimiterStatus: S.optional(RateLimiterStatus),
   }).pipe(ns),
 ).annotate({ identifier: "Lag" }) as any as S.Schema<Lag>;
+export type EnableSiteLink = boolean;
 export interface NewPrivateVirtualInterface {
   virtualInterfaceName: string;
   vlan: number;
@@ -1852,6 +1862,7 @@ export const DeleteVirtualInterfaceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteVirtualInterfaceResponse>;
 export type LoaContentType = "application/pdf" | (string & {});
 export const LoaContentType = /*@__PURE__*/ S.String;
+
 export interface DescribeConnectionLoaRequest {
   connectionId: string;
   providerName?: string;
@@ -1876,6 +1887,7 @@ export const DescribeConnectionLoaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeConnectionLoaRequest",
 }) as any as S.Schema<DescribeConnectionLoaRequest>;
+export type LoaContent = Uint8Array;
 export interface Loa {
   loaContent?: Uint8Array;
   loaContentType?: LoaContentType;
@@ -1894,6 +1906,8 @@ export const DescribeConnectionLoaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeConnectionLoaResponse",
 }) as any as S.Schema<DescribeConnectionLoaResponse>;
+export type MaxResultSetSize = number;
+export type PaginationToken = string;
 export interface DescribeConnectionsRequest {
   connectionId?: string;
   maxResults?: number;
@@ -1979,6 +1993,7 @@ export type AgreementList = CustomerAgreement[];
 export const AgreementList = /*@__PURE__*/ S.Array(CustomerAgreement);
 export type NniPartnerType = "v1" | "v2" | "nonPartner" | (string & {});
 export const NniPartnerType = /*@__PURE__*/ S.String;
+
 export interface DescribeCustomerMetadataResponse {
   agreements?: CustomerAgreement[];
   nniPartnerType?: NniPartnerType;
@@ -1991,6 +2006,7 @@ export const DescribeCustomerMetadataResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeCustomerMetadataResponse",
 }) as any as S.Schema<DescribeCustomerMetadataResponse>;
+export type AssociatedGatewayId = string;
 export interface DescribeDirectConnectGatewayAssociationProposalsRequest {
   directConnectGatewayId?: string;
   proposalId?: string;
@@ -2117,6 +2133,7 @@ export const DescribeDirectConnectGatewayAttachmentsRequest =
   ).annotate({
     identifier: "DescribeDirectConnectGatewayAttachmentsRequest",
   }) as any as S.Schema<DescribeDirectConnectGatewayAttachmentsRequest>;
+export type VirtualInterfaceRegion = string;
 export type DirectConnectGatewayAttachmentState =
   | "attaching"
   | "attached"
@@ -2124,11 +2141,13 @@ export type DirectConnectGatewayAttachmentState =
   | "detached"
   | (string & {});
 export const DirectConnectGatewayAttachmentState = /*@__PURE__*/ S.String;
+
 export type DirectConnectGatewayAttachmentType =
   | "TransitVirtualInterface"
   | "PrivateVirtualInterface"
   | (string & {});
 export const DirectConnectGatewayAttachmentType = /*@__PURE__*/ S.String;
+
 export interface DirectConnectGatewayAttachment {
   directConnectGatewayId?: string;
   virtualInterfaceId?: string;
@@ -2378,6 +2397,8 @@ export const DescribeLocationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeLocationsRequest",
 }) as any as S.Schema<DescribeLocationsRequest>;
+export type LocationName = string;
+export type PortSpeed = string;
 export type AvailablePortSpeeds = string[];
 export const AvailablePortSpeeds = /*@__PURE__*/ S.Array(S.String);
 export type ProviderList = string[];
@@ -2410,6 +2431,7 @@ export interface Locations {
 export const Locations = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ locations: S.optional(LocationList) }).pipe(ns),
 ).annotate({ identifier: "Locations" }) as any as S.Schema<Locations>;
+export type RouterTypeIdentifier = string;
 export interface DescribeRouterConfigurationRequest {
   virtualInterfaceId: string;
   routerTypeIdentifier?: string;
@@ -2432,6 +2454,11 @@ export const DescribeRouterConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRouterConfigurationRequest",
 }) as any as S.Schema<DescribeRouterConfigurationRequest>;
+export type Vendor = string;
+export type Platform = string;
+export type Software = string;
+export type XsltTemplateName = string;
+export type XsltTemplateNameForMacSec = string;
 export interface RouterType {
   vendor?: string;
   platform?: string;
@@ -2466,6 +2493,7 @@ export const DescribeRouterConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeRouterConfigurationResponse",
 }) as any as S.Schema<DescribeRouterConfigurationResponse>;
+export type ResourceArn = string;
 export type ResourceArnList = string[];
 export const ResourceArnList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeTagsRequest {
@@ -2519,6 +2547,7 @@ export const DescribeVirtualGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeVirtualGatewaysRequest",
 }) as any as S.Schema<DescribeVirtualGatewaysRequest>;
+export type VirtualGatewayState = string;
 export interface VirtualGateway {
   virtualGatewayId?: string;
   virtualGatewayState?: string;
@@ -2630,8 +2659,10 @@ export const DisassociateMacSecKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisassociateMacSecKeyResponse",
 }) as any as S.Schema<DisassociateMacSecKeyResponse>;
+export type TestId = string;
 export type BGPPeerIdList = string[];
 export const BGPPeerIdList = /*@__PURE__*/ S.Array(S.String);
+export type FailureTestHistoryStatus = string;
 export interface ListVirtualInterfaceTestHistoryRequest {
   testId?: string;
   virtualInterfaceId?: string;
@@ -2663,6 +2694,9 @@ export const ListVirtualInterfaceTestHistoryRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListVirtualInterfaceTestHistoryRequest",
 }) as any as S.Schema<ListVirtualInterfaceTestHistoryRequest>;
+export type TestDuration = number;
+export type StartTime = Date;
+export type EndTime = Date;
 export interface VirtualInterfaceTestHistory {
   testId?: string;
   virtualInterfaceId?: string;
@@ -2969,32 +3003,7 @@ export const UpdateVirtualInterfaceAttributesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateVirtualInterfaceAttributesRequest",
 }) as any as S.Schema<UpdateVirtualInterfaceAttributesRequest>;
-
-//# Errors
-export class DirectConnectClientException extends S.TaggedErrorClass<DirectConnectClientException>()(
-  "DirectConnectClientException",
-  { message: S.optional(S.String) },
-) {}
-export class DirectConnectServerException extends S.TaggedErrorClass<DirectConnectServerException>()(
-  "DirectConnectServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class DuplicateTagKeysException extends S.TaggedErrorClass<DuplicateTagKeysException>()(
-  "DuplicateTagKeysException",
-  { message: S.optional(S.String) },
-) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type AcceptDirectConnectGatewayAssociationProposalError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3015,6 +3024,7 @@ export const acceptDirectConnectGatewayAssociationProposal: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptDirectConnectGatewayAssociationProposal",
 }));
+
 export type AllocateConnectionOnInterconnectError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3041,6 +3051,7 @@ export const allocateConnectionOnInterconnect: API.OperationMethod<
   retry: Retry,
   operationName: "AllocateConnectionOnInterconnect",
 }));
+
 export type AllocateHostedConnectionError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3073,6 +3084,7 @@ export const allocateHostedConnection: API.OperationMethod<
   retry: Retry,
   operationName: "AllocateHostedConnection",
 }));
+
 export type AllocatePrivateVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3105,6 +3117,7 @@ export const allocatePrivateVirtualInterface: API.OperationMethod<
   retry: Retry,
   operationName: "AllocatePrivateVirtualInterface",
 }));
+
 export type AllocatePublicVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3142,6 +3155,7 @@ export const allocatePublicVirtualInterface: API.OperationMethod<
   retry: Retry,
   operationName: "AllocatePublicVirtualInterface",
 }));
+
 export type AllocateTransitVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3175,6 +3189,7 @@ export const allocateTransitVirtualInterface: API.OperationMethod<
   retry: Retry,
   operationName: "AllocateTransitVirtualInterface",
 }));
+
 export type AssociateConnectionWithLagError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3215,6 +3230,7 @@ export const associateConnectionWithLag: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateConnectionWithLag",
 }));
+
 export type AssociateHostedConnectionError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3241,6 +3257,7 @@ export const associateHostedConnection: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateHostedConnection",
 }));
+
 export type AssociateMacSecKeyError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3265,6 +3282,7 @@ export const associateMacSecKey: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateMacSecKey",
 }));
+
 export type AssociateVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3296,6 +3314,7 @@ export const associateVirtualInterface: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateVirtualInterface",
 }));
+
 export type ConfirmConnectionError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3319,6 +3338,7 @@ export const confirmConnection: API.OperationMethod<
   retry: Retry,
   operationName: "ConfirmConnection",
 }));
+
 export type ConfirmCustomerAgreementError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3339,6 +3359,7 @@ export const confirmCustomerAgreement: API.OperationMethod<
   retry: Retry,
   operationName: "ConfirmCustomerAgreement",
 }));
+
 export type ConfirmPrivateVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3363,6 +3384,7 @@ export const confirmPrivateVirtualInterface: API.OperationMethod<
   retry: Retry,
   operationName: "ConfirmPrivateVirtualInterface",
 }));
+
 export type ConfirmPublicVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3386,6 +3408,7 @@ export const confirmPublicVirtualInterface: API.OperationMethod<
   retry: Retry,
   operationName: "ConfirmPublicVirtualInterface",
 }));
+
 export type ConfirmTransitVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3408,6 +3431,7 @@ export const confirmTransitVirtualInterface: API.OperationMethod<
   retry: Retry,
   operationName: "ConfirmTransitVirtualInterface",
 }));
+
 export type CreateBGPPeerError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3446,6 +3470,7 @@ export const createBGPPeer: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBGPPeer",
 }));
+
 export type CreateConnectionError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3483,6 +3508,7 @@ export const createConnection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConnection",
 }));
+
 export type CreateDirectConnectGatewayError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3508,6 +3534,7 @@ export const createDirectConnectGateway: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDirectConnectGateway",
 }));
+
 export type CreateDirectConnectGatewayAssociationError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3529,6 +3556,7 @@ export const createDirectConnectGatewayAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDirectConnectGatewayAssociation",
 }));
+
 export type CreateDirectConnectGatewayAssociationProposalError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3551,6 +3579,7 @@ export const createDirectConnectGatewayAssociationProposal: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDirectConnectGatewayAssociationProposal",
 }));
+
 export type CreateInterconnectError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3595,6 +3624,7 @@ export const createInterconnect: API.OperationMethod<
   retry: Retry,
   operationName: "CreateInterconnect",
 }));
+
 export type CreateLagError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3644,6 +3674,7 @@ export const createLag: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLag",
 }));
+
 export type CreatePrivateVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3684,6 +3715,7 @@ export const createPrivateVirtualInterface: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePrivateVirtualInterface",
 }));
+
 export type CreatePublicVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3717,6 +3749,7 @@ export const createPublicVirtualInterface: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePublicVirtualInterface",
 }));
+
 export type CreateTransitVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3755,6 +3788,7 @@ export const createTransitVirtualInterface: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTransitVirtualInterface",
 }));
+
 export type DeleteBGPPeerError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3777,6 +3811,7 @@ export const deleteBGPPeer: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBGPPeer",
 }));
+
 export type DeleteConnectionError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3801,6 +3836,7 @@ export const deleteConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConnection",
 }));
+
 export type DeleteDirectConnectGatewayError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3823,6 +3859,7 @@ export const deleteDirectConnectGateway: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDirectConnectGateway",
 }));
+
 export type DeleteDirectConnectGatewayAssociationError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3845,6 +3882,7 @@ export const deleteDirectConnectGatewayAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDirectConnectGatewayAssociation",
 }));
+
 export type DeleteDirectConnectGatewayAssociationProposalError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3865,6 +3903,7 @@ export const deleteDirectConnectGatewayAssociationProposal: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDirectConnectGatewayAssociationProposal",
 }));
+
 export type DeleteInterconnectError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3888,6 +3927,7 @@ export const deleteInterconnect: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteInterconnect",
 }));
+
 export type DeleteLagError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3909,6 +3949,7 @@ export const deleteLag: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLag",
 }));
+
 export type DeleteVirtualInterfaceError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3929,6 +3970,7 @@ export const deleteVirtualInterface: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVirtualInterface",
 }));
+
 export type DescribeConnectionLoaError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3956,6 +3998,7 @@ export const describeConnectionLoa: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConnectionLoa",
 }));
+
 export type DescribeConnectionsError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -3976,6 +4019,7 @@ export const describeConnections: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConnections",
 }));
+
 export type DescribeConnectionsOnInterconnectError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4000,6 +4044,7 @@ export const describeConnectionsOnInterconnect: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConnectionsOnInterconnect",
 }));
+
 export type DescribeCustomerMetadataError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4020,6 +4065,7 @@ export const describeCustomerMetadata: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCustomerMetadata",
 }));
+
 export type DescribeDirectConnectGatewayAssociationProposalsError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4040,6 +4086,7 @@ export const describeDirectConnectGatewayAssociationProposals: API.OperationMeth
   retry: Retry,
   operationName: "DescribeDirectConnectGatewayAssociationProposals",
 }));
+
 export type DescribeDirectConnectGatewayAssociationsError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4088,6 +4135,7 @@ export const describeDirectConnectGatewayAssociations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDirectConnectGatewayAssociations",
 }));
+
 export type DescribeDirectConnectGatewayAttachmentsError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4112,6 +4160,7 @@ export const describeDirectConnectGatewayAttachments: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDirectConnectGatewayAttachments",
 }));
+
 export type DescribeDirectConnectGatewaysError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4132,6 +4181,7 @@ export const describeDirectConnectGateways: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDirectConnectGateways",
 }));
+
 export type DescribeHostedConnectionsError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4155,6 +4205,7 @@ export const describeHostedConnections: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeHostedConnections",
 }));
+
 export type DescribeInterconnectLoaError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4181,6 +4232,7 @@ export const describeInterconnectLoa: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInterconnectLoa",
 }));
+
 export type DescribeInterconnectsError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4201,6 +4253,7 @@ export const describeInterconnects: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeInterconnects",
 }));
+
 export type DescribeLagsError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4221,6 +4274,7 @@ export const describeLags: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLags",
 }));
+
 export type DescribeLoaError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4245,6 +4299,7 @@ export const describeLoa: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLoa",
 }));
+
 export type DescribeLocationsError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4266,6 +4321,7 @@ export const describeLocations: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeLocations",
 }));
+
 export type DescribeRouterConfigurationError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4286,6 +4342,7 @@ export const describeRouterConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRouterConfiguration",
 }));
+
 export type DescribeTagsError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4306,6 +4363,7 @@ export const describeTags: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeTags",
 }));
+
 export type DescribeVirtualGatewaysError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4330,6 +4388,7 @@ export const describeVirtualGateways: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVirtualGateways",
 }));
+
 export type DescribeVirtualInterfacesError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4359,6 +4418,7 @@ export const describeVirtualInterfaces: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVirtualInterfaces",
 }));
+
 export type DisassociateConnectionFromLagError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4389,6 +4449,7 @@ export const disassociateConnectionFromLag: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateConnectionFromLag",
 }));
+
 export type DisassociateMacSecKeyError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4409,6 +4470,7 @@ export const disassociateMacSecKey: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateMacSecKey",
 }));
+
 export type ListVirtualInterfaceTestHistoryError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4429,6 +4491,7 @@ export const listVirtualInterfaceTestHistory: API.OperationMethod<
   retry: Retry,
   operationName: "ListVirtualInterfaceTestHistory",
 }));
+
 export type StartBgpFailoverTestError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4455,6 +4518,7 @@ export const startBgpFailoverTest: API.OperationMethod<
   retry: Retry,
   operationName: "StartBgpFailoverTest",
 }));
+
 export type StopBgpFailoverTestError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4475,6 +4539,7 @@ export const stopBgpFailoverTest: API.OperationMethod<
   retry: Retry,
   operationName: "StopBgpFailoverTest",
 }));
+
 export type TagResourceError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4504,6 +4569,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4524,6 +4590,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateConnectionError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4550,6 +4617,7 @@ export const updateConnection: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConnection",
 }));
+
 export type UpdateDirectConnectGatewayError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4570,6 +4638,7 @@ export const updateDirectConnectGateway: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDirectConnectGateway",
 }));
+
 export type UpdateDirectConnectGatewayAssociationError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4592,6 +4661,7 @@ export const updateDirectConnectGatewayAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDirectConnectGatewayAssociation",
 }));
+
 export type UpdateLagError =
   | DirectConnectClientException
   | DirectConnectServerException
@@ -4629,6 +4699,7 @@ export const updateLag: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLag",
 }));
+
 export type UpdateVirtualInterfaceAttributesError =
   | DirectConnectClientException
   | DirectConnectServerException

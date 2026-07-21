@@ -85,21 +85,50 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+) {}
+export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
+  "InternalServiceErrorException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { Message: S.String, FieldName: S.optional(S.String) },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+) {}
+export class ResourceExistsException extends S.TaggedErrorClass<ResourceExistsException>()(
+  "ResourceExistsException",
+  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
+) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+) {}
 export type ResourceId = string;
 export type Name = string;
 export type TagKey = string;
 export type TagValue = string;
-export type AccountId = string;
-export type Rfc3339Timestamp = Date;
-export type ExceptionMessage = string;
-export type Arn = string;
-export type ResourceProperties = string;
-export type CreatorRequestId = string;
-export type MaxResults = number;
-export type NextToken = string;
-
-//# Schemas
 export interface Tag {
   Key: string;
   Value: string;
@@ -134,6 +163,7 @@ export const AssociateProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateProfileRequest",
 }) as any as S.Schema<AssociateProfileRequest>;
+export type AccountId = string;
 export type ProfileStatus =
   | "COMPLETE"
   | "DELETING"
@@ -143,6 +173,8 @@ export type ProfileStatus =
   | "FAILED"
   | (string & {});
 export const ProfileStatus = /*@__PURE__*/ S.String;
+
+export type Rfc3339Timestamp = Date;
 export interface ProfileAssociation {
   Id?: string;
   Name?: string;
@@ -179,6 +211,8 @@ export const AssociateProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateProfileResponse",
 }) as any as S.Schema<AssociateProfileResponse>;
+export type Arn = string;
+export type ResourceProperties = string;
 export interface AssociateResourceToProfileRequest {
   ProfileId: string;
   ResourceArn: string;
@@ -246,6 +280,7 @@ export const AssociateResourceToProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateResourceToProfileResponse",
 }) as any as S.Schema<AssociateResourceToProfileResponse>;
+export type CreatorRequestId = string;
 export interface CreateProfileRequest {
   Name: string;
   ClientToken: string;
@@ -275,6 +310,7 @@ export type ShareStatus =
   | "SHARED_BY_ME"
   | (string & {});
 export const ShareStatus = /*@__PURE__*/ S.String;
+
 export interface Profile {
   Id?: string;
   Arn?: string;
@@ -495,6 +531,8 @@ export const GetProfileResourceAssociationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetProfileResourceAssociationResponse",
 }) as any as S.Schema<GetProfileResourceAssociationResponse>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface ListProfileAssociationsRequest {
   ResourceId?: string;
   ProfileId?: string;
@@ -755,50 +793,7 @@ export const UpdateProfileResourceAssociationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateProfileResourceAssociationResponse",
 }) as any as S.Schema<UpdateProfileResourceAssociationResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { Message: S.String, FieldName: S.optional(S.String) },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
-) {}
-export class ResourceExistsException extends S.TaggedErrorClass<ResourceExistsException>()(
-  "ResourceExistsException",
-  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
-) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String), ResourceType: S.optional(S.String) },
-) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-) {}
-export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
-  "InternalServiceErrorException",
-  { Message: S.optional(S.String) },
-) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type AssociateProfileError =
   | AccessDeniedException
   | ConflictException
@@ -835,6 +830,7 @@ export const associateProfile: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateProfile",
 }));
+
 export type AssociateResourceToProfileError =
   | AccessDeniedException
   | ConflictException
@@ -870,6 +866,7 @@ export const associateResourceToProfile: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateResourceToProfile",
 }));
+
 export type CreateProfileError =
   | AccessDeniedException
   | InvalidParameterException
@@ -899,6 +896,7 @@ export const createProfile: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProfile",
 }));
+
 export type DeleteProfileError =
   | AccessDeniedException
   | ConflictException
@@ -928,6 +926,7 @@ export const deleteProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProfile",
 }));
+
 export type DisassociateProfileError =
   | AccessDeniedException
   | InvalidParameterException
@@ -959,6 +958,7 @@ export const disassociateProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateProfile",
 }));
+
 export type DisassociateResourceFromProfileError =
   | AccessDeniedException
   | ConflictException
@@ -994,6 +994,7 @@ export const disassociateResourceFromProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateResourceFromProfile",
 }));
+
 export type GetProfileError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -1021,6 +1022,7 @@ export const getProfile: API.OperationMethod<
   retry: Retry,
   operationName: "GetProfile",
 }));
+
 export type GetProfileAssociationError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -1048,6 +1050,7 @@ export const getProfileAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "GetProfileAssociation",
 }));
+
 export type GetProfileResourceAssociationError =
   | AccessDeniedException
   | InvalidParameterException
@@ -1077,6 +1080,7 @@ export const getProfileResourceAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "GetProfileResourceAssociation",
 }));
+
 export type ListProfileAssociationsError =
   | AccessDeniedException
   | InvalidNextTokenException
@@ -1127,6 +1131,7 @@ export const listProfileAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProfileResourceAssociationsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1181,6 +1186,7 @@ export const listProfileResourceAssociations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProfilesError =
   | AccessDeniedException
   | InvalidNextTokenException
@@ -1231,6 +1237,7 @@ export const listProfiles: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1260,6 +1267,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -1287,6 +1295,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1316,6 +1325,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateProfileResourceAssociationError =
   | AccessDeniedException
   | ConflictException

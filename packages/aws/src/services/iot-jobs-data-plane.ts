@@ -84,41 +84,65 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class CertificateValidationException extends S.TaggedErrorClass<CertificateValidationException>()(
+  "CertificateValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String), resourceId: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidStateTransitionException extends S.TaggedErrorClass<InvalidStateTransitionException>()(
+  "InvalidStateTransitionException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class TerminalStateException extends S.TaggedErrorClass<TerminalStateException>()(
+  "TerminalStateException",
+  { message: S.optional(S.String) },
+  T.HttpError(410),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String), payload: S.optional(T.Blob) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type DescribeJobExecutionJobId = string;
 export type ThingName = string;
 export type IncludeJobDocument = boolean;
 export type ExecutionNumber = number;
-export type JobId = string;
-export type DetailsKey = string;
-export type DetailsValue = string;
-export type QueuedAt = number;
-export type StartedAt = number;
-export type LastUpdatedAt = number;
-export type ApproximateSecondsBeforeTimedOut = number;
-export type VersionNumber = number;
-export type JobDocument = string;
-export type ErrorMessage = string;
-export type BinaryBlob = Uint8Array;
-export type TargetArn = string;
-export type CommandArn = string;
-export type CommandParameterName = string;
-export type StringParameterValue = string;
-export type BooleanParameterValue = boolean;
-export type IntegerParameterValue = number;
-export type LongParameterValue = number;
-export type DoubleParameterValue = number;
-export type BinaryParameterValue = Uint8Array;
-export type UnsignedLongParameterValue = string;
-export type CommandExecutionTimeoutInSeconds = number;
-export type ClientRequestTokenV2 = string;
-export type CommandExecutionId = string;
-export type ResourceId = string;
-export type StepTimeoutInMinutes = number;
-export type ExpectedVersion = number;
-export type IncludeExecutionState = boolean;
-
-//# Schemas
 export interface DescribeJobExecutionRequest {
   jobId: string;
   thingName: string;
@@ -146,6 +170,7 @@ export const DescribeJobExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeJobExecutionRequest",
 }) as any as S.Schema<DescribeJobExecutionRequest>;
+export type JobId = string;
 export type JobExecutionStatus =
   | "QUEUED"
   | "IN_PROGRESS"
@@ -157,11 +182,20 @@ export type JobExecutionStatus =
   | "CANCELED"
   | (string & {});
 export const JobExecutionStatus = /*@__PURE__*/ S.String;
+
+export type DetailsKey = string;
+export type DetailsValue = string;
 export type DetailsMap = { [key: string]: string | undefined };
 export const DetailsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type QueuedAt = number;
+export type StartedAt = number;
+export type LastUpdatedAt = number;
+export type ApproximateSecondsBeforeTimedOut = number;
+export type VersionNumber = number;
+export type JobDocument = string;
 export interface JobExecution {
   jobId?: string;
   thingName?: string;
@@ -250,6 +284,16 @@ export const GetPendingJobExecutionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPendingJobExecutionsResponse",
 }) as any as S.Schema<GetPendingJobExecutionsResponse>;
+export type TargetArn = string;
+export type CommandArn = string;
+export type CommandParameterName = string;
+export type StringParameterValue = string;
+export type BooleanParameterValue = boolean;
+export type IntegerParameterValue = number;
+export type LongParameterValue = number;
+export type DoubleParameterValue = number;
+export type BinaryParameterValue = Uint8Array;
+export type UnsignedLongParameterValue = string;
 export interface CommandParameterValue {
   S?: string;
   B?: boolean;
@@ -279,6 +323,8 @@ export const CommandExecutionParameterMap = /*@__PURE__*/ S.Record(
   S.String,
   CommandParameterValue.pipe(S.optional),
 );
+export type CommandExecutionTimeoutInSeconds = number;
+export type ClientRequestTokenV2 = string;
 export interface StartCommandExecutionRequest {
   targetArn: string;
   commandArn: string;
@@ -306,6 +352,7 @@ export const StartCommandExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartCommandExecutionRequest",
 }) as any as S.Schema<StartCommandExecutionRequest>;
+export type CommandExecutionId = string;
 export interface StartCommandExecutionResponse {
   executionId?: string;
 }
@@ -314,6 +361,7 @@ export const StartCommandExecutionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartCommandExecutionResponse",
 }) as any as S.Schema<StartCommandExecutionResponse>;
+export type StepTimeoutInMinutes = number;
 export interface StartNextPendingJobExecutionRequest {
   thingName: string;
   statusDetails?: { [key: string]: string | undefined };
@@ -345,6 +393,8 @@ export const StartNextPendingJobExecutionResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "StartNextPendingJobExecutionResponse",
 }) as any as S.Schema<StartNextPendingJobExecutionResponse>;
+export type ExpectedVersion = number;
+export type IncludeExecutionState = boolean;
 export interface UpdateJobExecutionRequest {
   jobId: string;
   thingName: string;
@@ -406,65 +456,9 @@ export const UpdateJobExecutionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateJobExecutionResponse",
 }) as any as S.Schema<UpdateJobExecutionResponse>;
-
-//# Errors
-export class CertificateValidationException extends S.TaggedErrorClass<CertificateValidationException>()(
-  "CertificateValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class TerminalStateException extends S.TaggedErrorClass<TerminalStateException>()(
-  "TerminalStateException",
-  { message: S.optional(S.String) },
-  T.HttpError(410),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String), payload: S.optional(T.Blob) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String), resourceId: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidStateTransitionException extends S.TaggedErrorClass<InvalidStateTransitionException>()(
-  "InvalidStateTransitionException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-
-//# Operations
+export type ErrorMessage = string;
+export type BinaryBlob = Uint8Array;
+export type ResourceId = string;
 export type DescribeJobExecutionError =
   | CertificateValidationException
   | InvalidRequestException
@@ -498,6 +492,7 @@ export const describeJobExecution: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeJobExecution",
 }));
+
 export type GetPendingJobExecutionsError =
   | CertificateValidationException
   | InvalidRequestException
@@ -529,6 +524,7 @@ export const getPendingJobExecutions: API.OperationMethod<
   retry: Retry,
   operationName: "GetPendingJobExecutions",
 }));
+
 export type StartCommandExecutionError =
   | ConflictException
   | InternalServerException
@@ -561,6 +557,7 @@ export const startCommandExecution: API.OperationMethod<
   retry: Retry,
   operationName: "StartCommandExecution",
 }));
+
 export type StartNextPendingJobExecutionError =
   | CertificateValidationException
   | InvalidRequestException
@@ -593,6 +590,7 @@ export const startNextPendingJobExecution: API.OperationMethod<
   retry: Retry,
   operationName: "StartNextPendingJobExecution",
 }));
+
 export type UpdateJobExecutionError =
   | CertificateValidationException
   | InvalidRequestException

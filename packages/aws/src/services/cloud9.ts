@@ -86,7 +86,70 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  {
+    message: S.optional(S.String),
+    className: S.optional(S.String),
+    code: S.optional(S.Number),
+  },
+) {}
+export class ConcurrentAccessException extends S.TaggedErrorClass<ConcurrentAccessException>()(
+  "ConcurrentAccessException",
+  {
+    message: S.optional(S.String),
+    className: S.optional(S.String),
+    code: S.optional(S.Number),
+  },
+) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    message: S.optional(S.String),
+    className: S.optional(S.String),
+    code: S.optional(S.Number),
+  },
+) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  {
+    message: S.optional(S.String),
+    className: S.optional(S.String),
+    code: S.optional(S.Number),
+  },
+) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  {
+    message: S.optional(S.String),
+    className: S.optional(S.String),
+    code: S.optional(S.Number),
+  },
+) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  {
+    message: S.optional(S.String),
+    className: S.optional(S.String),
+    code: S.optional(S.Number),
+  },
+) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  {
+    message: S.optional(S.String),
+    className: S.optional(S.String),
+    code: S.optional(S.Number),
+  },
+) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  {
+    message: S.optional(S.String),
+    className: S.optional(S.String),
+    code: S.optional(S.Number),
+  },
+) {}
 export type EnvironmentName = string;
 export type EnvironmentDescription = string | redacted.Redacted<string>;
 export type ClientRequestToken = string;
@@ -97,11 +160,6 @@ export type AutomaticStopTimeMinutes = number;
 export type UserArn = string;
 export type TagKey = string | redacted.Redacted<string>;
 export type TagValue = string | redacted.Redacted<string>;
-export type EnvironmentId = string;
-export type MaxResults = number;
-export type EnvironmentArn = string;
-
-//# Schemas
 export interface Tag {
   Key: string | redacted.Redacted<string>;
   Value: string | redacted.Redacted<string>;
@@ -113,6 +171,7 @@ export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
 export type ConnectionType = "CONNECT_SSH" | "CONNECT_SSM" | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
+
 export interface CreateEnvironmentEC2Request {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -145,6 +204,7 @@ export const CreateEnvironmentEC2Request = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEnvironmentEC2Request",
 }) as any as S.Schema<CreateEnvironmentEC2Request>;
+export type EnvironmentId = string;
 export interface CreateEnvironmentEC2Result {
   environmentId?: string;
 }
@@ -155,6 +215,7 @@ export const CreateEnvironmentEC2Result = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEnvironmentEC2Result>;
 export type MemberPermissions = "read-write" | "read-only" | (string & {});
 export const MemberPermissions = /*@__PURE__*/ S.String;
+
 export interface CreateEnvironmentMembershipRequest {
   environmentId: string;
   userArn: string;
@@ -173,6 +234,7 @@ export const CreateEnvironmentMembershipRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateEnvironmentMembershipRequest>;
 export type Permissions = "owner" | "read-write" | "read-only" | (string & {});
 export const Permissions = /*@__PURE__*/ S.String;
+
 export interface EnvironmentMember {
   permissions: Permissions;
   userId: string;
@@ -234,6 +296,7 @@ export const DeleteEnvironmentMembershipResult = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteEnvironmentMembershipResult>;
 export type PermissionsList = Permissions[];
 export const PermissionsList = /*@__PURE__*/ S.Array(Permissions);
+export type MaxResults = number;
 export interface DescribeEnvironmentMembershipsRequest {
   userArn?: string;
   environmentId?: string;
@@ -284,6 +347,7 @@ export const DescribeEnvironmentsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeEnvironmentsRequest>;
 export type EnvironmentType = "ssh" | "ec2" | (string & {});
 export const EnvironmentType = /*@__PURE__*/ S.String;
+
 export type EnvironmentLifecycleStatus =
   | "CREATING"
   | "CREATED"
@@ -292,6 +356,7 @@ export type EnvironmentLifecycleStatus =
   | "DELETE_FAILED"
   | (string & {});
 export const EnvironmentLifecycleStatus = /*@__PURE__*/ S.String;
+
 export interface EnvironmentLifecycle {
   status?: EnvironmentLifecycleStatus;
   reason?: string;
@@ -320,6 +385,7 @@ export type ManagedCredentialsStatus =
   | "FAILED_REMOVAL_BY_OWNER"
   | (string & {});
 export const ManagedCredentialsStatus = /*@__PURE__*/ S.String;
+
 export interface Environment {
   id?: string;
   name?: string;
@@ -374,6 +440,7 @@ export type EnvironmentStatus =
   | "deleting"
   | (string & {});
 export const EnvironmentStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeEnvironmentStatusResult {
   status: EnvironmentStatus;
   message: string;
@@ -411,6 +478,7 @@ export const ListEnvironmentsResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListEnvironmentsResult",
 }) as any as S.Schema<ListEnvironmentsResult>;
+export type EnvironmentArn = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
@@ -467,6 +535,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UntagResourceResponse>;
 export type ManagedCredentialsAction = "ENABLE" | "DISABLE" | (string & {});
 export const ManagedCredentialsAction = /*@__PURE__*/ S.String;
+
 export interface UpdateEnvironmentRequest {
   environmentId: string;
   name?: string;
@@ -515,74 +584,6 @@ export const UpdateEnvironmentMembershipResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateEnvironmentMembershipResult",
 }) as any as S.Schema<UpdateEnvironmentMembershipResult>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  {
-    message: S.optional(S.String),
-    className: S.optional(S.String),
-    code: S.optional(S.Number),
-  },
-) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    message: S.optional(S.String),
-    className: S.optional(S.String),
-    code: S.optional(S.Number),
-  },
-) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  {
-    message: S.optional(S.String),
-    className: S.optional(S.String),
-    code: S.optional(S.Number),
-  },
-) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  {
-    message: S.optional(S.String),
-    className: S.optional(S.String),
-    code: S.optional(S.Number),
-  },
-) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    message: S.optional(S.String),
-    className: S.optional(S.String),
-    code: S.optional(S.Number),
-  },
-) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  {
-    message: S.optional(S.String),
-    className: S.optional(S.String),
-    code: S.optional(S.Number),
-  },
-) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  {
-    message: S.optional(S.String),
-    className: S.optional(S.String),
-    code: S.optional(S.Number),
-  },
-) {}
-export class ConcurrentAccessException extends S.TaggedErrorClass<ConcurrentAccessException>()(
-  "ConcurrentAccessException",
-  {
-    message: S.optional(S.String),
-    className: S.optional(S.String),
-    code: S.optional(S.Number),
-  },
-) {}
-
-//# Operations
 export type CreateEnvironmentEC2Error =
   | BadRequestException
   | ConflictException
@@ -621,6 +622,7 @@ export const createEnvironmentEC2: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEnvironmentEC2",
 }));
+
 export type CreateEnvironmentMembershipError =
   | BadRequestException
   | ConflictException
@@ -658,6 +660,7 @@ export const createEnvironmentMembership: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEnvironmentMembership",
 }));
+
 export type DeleteEnvironmentError =
   | BadRequestException
   | ConflictException
@@ -696,6 +699,7 @@ export const deleteEnvironment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEnvironment",
 }));
+
 export type DeleteEnvironmentMembershipError =
   | BadRequestException
   | ConflictException
@@ -733,6 +737,7 @@ export const deleteEnvironmentMembership: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEnvironmentMembership",
 }));
+
 export type DescribeEnvironmentMembershipsError =
   | BadRequestException
   | ConflictException
@@ -790,6 +795,7 @@ export const describeEnvironmentMemberships: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type DescribeEnvironmentsError =
   | BadRequestException
   | ConflictException
@@ -827,6 +833,7 @@ export const describeEnvironments: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEnvironments",
 }));
+
 export type DescribeEnvironmentStatusError =
   | BadRequestException
   | ConflictException
@@ -864,6 +871,7 @@ export const describeEnvironmentStatus: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeEnvironmentStatus",
 }));
+
 export type ListEnvironmentsError =
   | BadRequestException
   | ConflictException
@@ -925,6 +933,7 @@ export const listEnvironments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | InternalServerErrorException
@@ -954,6 +963,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | ConcurrentAccessException
@@ -988,6 +998,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | ConcurrentAccessException
@@ -1019,6 +1030,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateEnvironmentError =
   | BadRequestException
   | ConflictException
@@ -1056,6 +1068,7 @@ export const updateEnvironment: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEnvironment",
 }));
+
 export type UpdateEnvironmentMembershipError =
   | BadRequestException
   | ConflictException

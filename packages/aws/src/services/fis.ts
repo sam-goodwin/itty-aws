@@ -88,92 +88,48 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ResourceNotFoundException",
+      httpResponseCode: 404,
+    }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "ServiceQuotaExceededException",
+      httpResponseCode: 402,
+    }),
+    T.HttpError(402),
+  ),
+).pipe(C.withQuotaError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
 export type ClientToken = string;
 export type ExperimentTemplateDescription = string;
 export type StopConditionSource = string;
 export type StopConditionValue = string;
-export type ExperimentTemplateTargetName = string;
-export type TargetResourceTypeId = string;
-export type ResourceArn = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ExperimentTemplateTargetFilterPath = string;
-export type ExperimentTemplateTargetFilterValue = string;
-export type ExperimentTemplateTargetSelectionMode = string;
-export type ExperimentTemplateTargetParameterName = string;
-export type ExperimentTemplateTargetParameterValue = string;
-export type ExperimentTemplateActionName = string;
-export type ActionId = string;
-export type ExperimentTemplateActionDescription = string;
-export type ExperimentTemplateActionParameterName = string;
-export type ExperimentTemplateActionParameter = string;
-export type ExperimentTemplateActionTargetName = string;
-export type ExperimentTemplateActionStartAfter = string;
-export type RoleArn = string;
-export type CloudWatchLogGroupArn = string;
-export type S3BucketName = string;
-export type S3ObjectKey = string;
-export type LogSchemaVersion = number;
-export type ReportConfigurationS3OutputPrefix = string;
-export type ReportConfigurationCloudWatchDashboardIdentifier = string;
-export type ReportConfigurationDuration = string;
-export type ExperimentTemplateId = string;
-export type CreationTime = Date;
-export type LastUpdateTime = Date;
-export type TargetAccountConfigurationsCount = number;
-export type ExceptionMessage = string;
-export type TargetAccountId = string;
-export type TargetAccountConfigurationDescription = string;
-export type ActionDescription = string;
-export type ActionParameterName = string;
-export type ActionParameterDescription = string;
-export type ActionParameterRequired = boolean;
-export type ActionTargetName = string;
-export type ExperimentId = string;
-export type ExperimentStatusReason = string;
-export type ExperimentErrorAccountId = string;
-export type ExperimentErrorCode = string;
-export type ExperimentErrorLocation = string;
-export type ExperimentTargetName = string;
-export type ExperimentTargetFilterPath = string;
-export type ExperimentTargetFilterValue = string;
-export type ExperimentTargetSelectionMode = string;
-export type ExperimentTargetParameterName = string;
-export type ExperimentTargetParameterValue = string;
-export type ExperimentActionName = string;
-export type ExperimentActionDescription = string;
-export type ExperimentActionParameterName = string;
-export type ExperimentActionParameter = string;
-export type ExperimentActionTargetName = string;
-export type ExperimentActionStartAfter = string;
-export type ExperimentActionStatusReason = string;
-export type ExperimentActionStartTime = Date;
-export type ExperimentActionEndTime = Date;
-export type ExperimentStartTime = Date;
-export type ExperimentEndTime = Date;
-export type ExperimentReportReason = string;
-export type ExperimentReportErrorCode = string;
-export type ExperimentReportS3ReportArn = string;
-export type ExperimentReportS3ReportType = string;
-export type SafetyLeverId = string;
-export type SafetyLeverStatusReason = string;
-export type TargetResourceTypeDescription = string;
-export type TargetResourceTypeParameterName = string;
-export type TargetResourceTypeParameterDescription = string;
-export type TargetResourceTypeParameterRequired = boolean;
-export type ListActionsMaxResults = number;
-export type NextToken = string;
-export type ListExperimentResolvedTargetsMaxResults = number;
-export type TargetName = string;
-export type TargetInformationKey = string;
-export type TargetInformationValue = string;
-export type ListExperimentsMaxResults = number;
-export type ListExperimentTemplatesMaxResults = number;
-export type ListTargetAccountConfigurationsMaxResults = number;
-export type ListTargetResourceTypesMaxResults = number;
-
-//# Schemas
 export interface CreateExperimentTemplateStopConditionInput {
   source: string;
   value?: string;
@@ -188,13 +144,20 @@ export type CreateExperimentTemplateStopConditionInputList =
   CreateExperimentTemplateStopConditionInput[];
 export const CreateExperimentTemplateStopConditionInputList =
   /*@__PURE__*/ S.Array(CreateExperimentTemplateStopConditionInput);
+export type ExperimentTemplateTargetName = string;
+export type TargetResourceTypeId = string;
+export type ResourceArn = string;
 export type ResourceArnList = string[];
 export const ResourceArnList = /*@__PURE__*/ S.Array(S.String);
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ExperimentTemplateTargetFilterPath = string;
+export type ExperimentTemplateTargetFilterValue = string;
 export type ExperimentTemplateTargetFilterValues = string[];
 export const ExperimentTemplateTargetFilterValues = /*@__PURE__*/ S.Array(
   S.String,
@@ -213,6 +176,9 @@ export type ExperimentTemplateTargetFilterInputList =
 export const ExperimentTemplateTargetFilterInputList = /*@__PURE__*/ S.Array(
   ExperimentTemplateTargetInputFilter,
 );
+export type ExperimentTemplateTargetSelectionMode = string;
+export type ExperimentTemplateTargetParameterName = string;
+export type ExperimentTemplateTargetParameterValue = string;
 export type ExperimentTemplateTargetParameterMap = {
   [key: string]: string | undefined;
 };
@@ -247,6 +213,11 @@ export const CreateExperimentTemplateTargetInputMap = /*@__PURE__*/ S.Record(
   S.String,
   CreateExperimentTemplateTargetInput.pipe(S.optional),
 );
+export type ExperimentTemplateActionName = string;
+export type ActionId = string;
+export type ExperimentTemplateActionDescription = string;
+export type ExperimentTemplateActionParameterName = string;
+export type ExperimentTemplateActionParameter = string;
 export type ExperimentTemplateActionParameterMap = {
   [key: string]: string | undefined;
 };
@@ -254,6 +225,7 @@ export const ExperimentTemplateActionParameterMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ExperimentTemplateActionTargetName = string;
 export type ExperimentTemplateActionTargetMap = {
   [key: string]: string | undefined;
 };
@@ -261,6 +233,7 @@ export const ExperimentTemplateActionTargetMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ExperimentTemplateActionStartAfter = string;
 export type ExperimentTemplateActionStartAfterList = string[];
 export const ExperimentTemplateActionStartAfterList = /*@__PURE__*/ S.Array(
   S.String,
@@ -290,6 +263,8 @@ export const CreateExperimentTemplateActionInputMap = /*@__PURE__*/ S.Record(
   S.String,
   CreateExperimentTemplateActionInput.pipe(S.optional),
 );
+export type RoleArn = string;
+export type CloudWatchLogGroupArn = string;
 export interface ExperimentTemplateCloudWatchLogsLogConfigurationInput {
   logGroupArn: string;
 }
@@ -297,6 +272,8 @@ export const ExperimentTemplateCloudWatchLogsLogConfigurationInput =
   /*@__PURE__*/ S.suspend(() => S.Struct({ logGroupArn: S.String })).annotate({
     identifier: "ExperimentTemplateCloudWatchLogsLogConfigurationInput",
   }) as any as S.Schema<ExperimentTemplateCloudWatchLogsLogConfigurationInput>;
+export type S3BucketName = string;
+export type S3ObjectKey = string;
 export interface ExperimentTemplateS3LogConfigurationInput {
   bucketName: string;
   prefix?: string;
@@ -307,6 +284,7 @@ export const ExperimentTemplateS3LogConfigurationInput =
   ).annotate({
     identifier: "ExperimentTemplateS3LogConfigurationInput",
   }) as any as S.Schema<ExperimentTemplateS3LogConfigurationInput>;
+export type LogSchemaVersion = number;
 export interface CreateExperimentTemplateLogConfigurationInput {
   cloudWatchLogsConfiguration?: ExperimentTemplateCloudWatchLogsLogConfigurationInput;
   s3Configuration?: ExperimentTemplateS3LogConfigurationInput;
@@ -329,8 +307,10 @@ export type AccountTargeting =
   | "multi-account"
   | (string & {});
 export const AccountTargeting = /*@__PURE__*/ S.String;
+
 export type EmptyTargetResolutionMode = "fail" | "skip" | (string & {});
 export const EmptyTargetResolutionMode = /*@__PURE__*/ S.String;
+
 export interface CreateExperimentTemplateExperimentOptionsInput {
   accountTargeting?: AccountTargeting;
   emptyTargetResolutionMode?: EmptyTargetResolutionMode;
@@ -344,6 +324,7 @@ export const CreateExperimentTemplateExperimentOptionsInput =
   ).annotate({
     identifier: "CreateExperimentTemplateExperimentOptionsInput",
   }) as any as S.Schema<CreateExperimentTemplateExperimentOptionsInput>;
+export type ReportConfigurationS3OutputPrefix = string;
 export interface ReportConfigurationS3OutputInput {
   bucketName?: string;
   prefix?: string;
@@ -362,6 +343,7 @@ export const ExperimentTemplateReportConfigurationOutputsInput =
   ).annotate({
     identifier: "ExperimentTemplateReportConfigurationOutputsInput",
   }) as any as S.Schema<ExperimentTemplateReportConfigurationOutputsInput>;
+export type ReportConfigurationCloudWatchDashboardIdentifier = string;
 export interface ReportConfigurationCloudWatchDashboardInput {
   dashboardIdentifier?: string;
 }
@@ -388,6 +370,7 @@ export const ExperimentTemplateReportConfigurationDataSourcesInput =
   ).annotate({
     identifier: "ExperimentTemplateReportConfigurationDataSourcesInput",
   }) as any as S.Schema<ExperimentTemplateReportConfigurationDataSourcesInput>;
+export type ReportConfigurationDuration = string;
 export interface CreateExperimentTemplateReportConfigurationInput {
   outputs?: ExperimentTemplateReportConfigurationOutputsInput;
   dataSources?: ExperimentTemplateReportConfigurationDataSourcesInput;
@@ -448,6 +431,7 @@ export const CreateExperimentTemplateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateExperimentTemplateRequest",
 }) as any as S.Schema<CreateExperimentTemplateRequest>;
+export type ExperimentTemplateId = string;
 export interface ExperimentTemplateTargetFilter {
   path?: string;
   values?: string[];
@@ -531,6 +515,8 @@ export type ExperimentTemplateStopConditionList =
 export const ExperimentTemplateStopConditionList = /*@__PURE__*/ S.Array(
   ExperimentTemplateStopCondition,
 );
+export type CreationTime = Date;
+export type LastUpdateTime = Date;
 export interface ExperimentTemplateCloudWatchLogsLogConfiguration {
   logGroupArn?: string;
 }
@@ -581,6 +567,7 @@ export const ExperimentTemplateExperimentOptions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExperimentTemplateExperimentOptions",
 }) as any as S.Schema<ExperimentTemplateExperimentOptions>;
+export type TargetAccountConfigurationsCount = number;
 export interface ReportConfigurationS3Output {
   bucketName?: string;
   prefix?: string;
@@ -690,6 +677,8 @@ export const CreateExperimentTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateExperimentTemplateResponse",
 }) as any as S.Schema<CreateExperimentTemplateResponse>;
+export type TargetAccountId = string;
+export type TargetAccountConfigurationDescription = string;
 export interface CreateTargetAccountConfigurationRequest {
   clientToken?: string;
   experimentTemplateId: string;
@@ -824,6 +813,10 @@ export const GetActionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetActionRequest",
 }) as any as S.Schema<GetActionRequest>;
+export type ActionDescription = string;
+export type ActionParameterName = string;
+export type ActionParameterDescription = string;
+export type ActionParameterRequired = boolean;
 export interface ActionParameter {
   description?: string;
   required?: boolean;
@@ -841,6 +834,7 @@ export const ActionParameterMap = /*@__PURE__*/ S.Record(
   S.String,
   ActionParameter.pipe(S.optional),
 );
+export type ActionTargetName = string;
 export interface ActionTarget {
   resourceType?: string;
 }
@@ -878,6 +872,7 @@ export const GetActionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetActionResponse",
 }) as any as S.Schema<GetActionResponse>;
+export type ExperimentId = string;
 export interface GetExperimentRequest {
   id: string;
 }
@@ -906,6 +901,11 @@ export type ExperimentStatus =
   | "cancelled"
   | (string & {});
 export const ExperimentStatus = /*@__PURE__*/ S.String;
+
+export type ExperimentStatusReason = string;
+export type ExperimentErrorAccountId = string;
+export type ExperimentErrorCode = string;
+export type ExperimentErrorLocation = string;
 export interface ExperimentError {
   accountId?: string;
   code?: string;
@@ -934,6 +934,9 @@ export const ExperimentState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExperimentState",
 }) as any as S.Schema<ExperimentState>;
+export type ExperimentTargetName = string;
+export type ExperimentTargetFilterPath = string;
+export type ExperimentTargetFilterValue = string;
 export type ExperimentTargetFilterValues = string[];
 export const ExperimentTargetFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface ExperimentTargetFilter {
@@ -952,6 +955,9 @@ export type ExperimentTargetFilterList = ExperimentTargetFilter[];
 export const ExperimentTargetFilterList = /*@__PURE__*/ S.Array(
   ExperimentTargetFilter,
 );
+export type ExperimentTargetSelectionMode = string;
+export type ExperimentTargetParameterName = string;
+export type ExperimentTargetParameterValue = string;
 export type ExperimentTargetParameterMap = {
   [key: string]: string | undefined;
 };
@@ -986,6 +992,10 @@ export const ExperimentTargetMap = /*@__PURE__*/ S.Record(
   S.String,
   ExperimentTarget.pipe(S.optional),
 );
+export type ExperimentActionName = string;
+export type ExperimentActionDescription = string;
+export type ExperimentActionParameterName = string;
+export type ExperimentActionParameter = string;
 export type ExperimentActionParameterMap = {
   [key: string]: string | undefined;
 };
@@ -993,11 +1003,13 @@ export const ExperimentActionParameterMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ExperimentActionTargetName = string;
 export type ExperimentActionTargetMap = { [key: string]: string | undefined };
 export const ExperimentActionTargetMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ExperimentActionStartAfter = string;
 export type ExperimentActionStartAfterList = string[];
 export const ExperimentActionStartAfterList = /*@__PURE__*/ S.Array(S.String);
 export type ExperimentActionStatus =
@@ -1012,6 +1024,8 @@ export type ExperimentActionStatus =
   | "skipped"
   | (string & {});
 export const ExperimentActionStatus = /*@__PURE__*/ S.String;
+
+export type ExperimentActionStatusReason = string;
 export interface ExperimentActionState {
   status?: ExperimentActionStatus;
   reason?: string;
@@ -1024,6 +1038,8 @@ export const ExperimentActionState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExperimentActionState",
 }) as any as S.Schema<ExperimentActionState>;
+export type ExperimentActionStartTime = Date;
+export type ExperimentActionEndTime = Date;
 export interface ExperimentAction {
   actionId?: string;
   description?: string;
@@ -1068,6 +1084,8 @@ export type ExperimentStopConditionList = ExperimentStopCondition[];
 export const ExperimentStopConditionList = /*@__PURE__*/ S.Array(
   ExperimentStopCondition,
 );
+export type ExperimentStartTime = Date;
+export type ExperimentEndTime = Date;
 export interface ExperimentCloudWatchLogsLogConfiguration {
   logGroupArn?: string;
 }
@@ -1103,6 +1121,7 @@ export const ExperimentLogConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentLogConfiguration>;
 export type ActionsMode = "skip-all" | "run-all" | (string & {});
 export const ActionsMode = /*@__PURE__*/ S.String;
+
 export interface ExperimentOptions {
   accountTargeting?: AccountTargeting;
   emptyTargetResolutionMode?: EmptyTargetResolutionMode;
@@ -1193,6 +1212,9 @@ export type ExperimentReportStatus =
   | "failed"
   | (string & {});
 export const ExperimentReportStatus = /*@__PURE__*/ S.String;
+
+export type ExperimentReportReason = string;
+export type ExperimentReportErrorCode = string;
 export interface ExperimentReportError {
   code?: string;
 }
@@ -1215,6 +1237,8 @@ export const ExperimentReportState = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExperimentReportState",
 }) as any as S.Schema<ExperimentReportState>;
+export type ExperimentReportS3ReportArn = string;
+export type ExperimentReportS3ReportType = string;
 export interface ExperimentReportS3Report {
   arn?: string;
   reportType?: string;
@@ -1366,6 +1390,7 @@ export const GetExperimentTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetExperimentTemplateResponse",
 }) as any as S.Schema<GetExperimentTemplateResponse>;
+export type SafetyLeverId = string;
 export interface GetSafetyLeverRequest {
   id: string;
 }
@@ -1389,6 +1414,8 @@ export type SafetyLeverStatus =
   | "engaging"
   | (string & {});
 export const SafetyLeverStatus = /*@__PURE__*/ S.String;
+
+export type SafetyLeverStatusReason = string;
 export interface SafetyLeverState {
   status?: SafetyLeverStatus;
   reason?: string;
@@ -1474,6 +1501,10 @@ export const GetTargetResourceTypeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTargetResourceTypeRequest",
 }) as any as S.Schema<GetTargetResourceTypeRequest>;
+export type TargetResourceTypeDescription = string;
+export type TargetResourceTypeParameterName = string;
+export type TargetResourceTypeParameterDescription = string;
+export type TargetResourceTypeParameterRequired = boolean;
 export interface TargetResourceTypeParameter {
   description?: string;
   required?: boolean;
@@ -1515,6 +1546,8 @@ export const GetTargetResourceTypeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTargetResourceTypeResponse",
 }) as any as S.Schema<GetTargetResourceTypeResponse>;
+export type ListActionsMaxResults = number;
+export type NextToken = string;
 export interface ListActionsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -1566,6 +1599,8 @@ export const ListActionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListActionsResponse",
 }) as any as S.Schema<ListActionsResponse>;
+export type ListExperimentResolvedTargetsMaxResults = number;
+export type TargetName = string;
 export interface ListExperimentResolvedTargetsRequest {
   experimentId: string;
   maxResults?: number;
@@ -1595,6 +1630,8 @@ export const ListExperimentResolvedTargetsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListExperimentResolvedTargetsRequest",
 }) as any as S.Schema<ListExperimentResolvedTargetsRequest>;
+export type TargetInformationKey = string;
+export type TargetInformationValue = string;
 export type TargetInformationMap = { [key: string]: string | undefined };
 export const TargetInformationMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1627,6 +1664,7 @@ export const ListExperimentResolvedTargetsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListExperimentResolvedTargetsResponse",
 }) as any as S.Schema<ListExperimentResolvedTargetsResponse>;
+export type ListExperimentsMaxResults = number;
 export interface ListExperimentsRequest {
   maxResults?: number;
   nextToken?: string;
@@ -1748,6 +1786,7 @@ export const ListExperimentTargetAccountConfigurationsResponse =
   ).annotate({
     identifier: "ListExperimentTargetAccountConfigurationsResponse",
   }) as any as S.Schema<ListExperimentTargetAccountConfigurationsResponse>;
+export type ListExperimentTemplatesMaxResults = number;
 export interface ListExperimentTemplatesRequest {
   maxResults?: number;
   nextToken?: string;
@@ -1830,6 +1869,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
+export type ListTargetAccountConfigurationsMaxResults = number;
 export interface ListTargetAccountConfigurationsRequest {
   experimentTemplateId: string;
   maxResults?: number;
@@ -1889,6 +1929,7 @@ export const ListTargetAccountConfigurationsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListTargetAccountConfigurationsResponse",
 }) as any as S.Schema<ListTargetAccountConfigurationsResponse>;
+export type ListTargetResourceTypesMaxResults = number;
 export interface ListTargetResourceTypesRequest {
   maxResults?: number;
   nextToken?: string;
@@ -2225,6 +2266,7 @@ export const UpdateExperimentTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateExperimentTemplateResponse>;
 export type SafetyLeverStatusInput = "disengaged" | "engaged" | (string & {});
 export const SafetyLeverStatusInput = /*@__PURE__*/ S.String;
+
 export interface UpdateSafetyLeverStateInput {
   status: SafetyLeverStatusInput;
   reason: string;
@@ -2303,48 +2345,7 @@ export const UpdateTargetAccountConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateTargetAccountConfigurationResponse",
 }) as any as S.Schema<UpdateTargetAccountConfigurationResponse>;
-
-//# Errors
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ConflictException", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ResourceNotFoundException",
-      httpResponseCode: 404,
-    }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "ServiceQuotaExceededException",
-      httpResponseCode: 402,
-    }),
-    T.HttpError(402),
-  ),
-).pipe(C.withQuotaError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type CreateExperimentTemplateError =
   | ConflictException
   | ResourceNotFoundException
@@ -2388,6 +2389,7 @@ export const createExperimentTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "CreateExperimentTemplate",
 }));
+
 export type CreateTargetAccountConfigurationError =
   | ConflictException
   | ResourceNotFoundException
@@ -2418,6 +2420,7 @@ export const createTargetAccountConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTargetAccountConfiguration",
 }));
+
 export type DeleteExperimentTemplateError =
   | ResourceNotFoundException
   | ValidationException
@@ -2438,6 +2441,7 @@ export const deleteExperimentTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteExperimentTemplate",
 }));
+
 export type DeleteTargetAccountConfigurationError =
   | ResourceNotFoundException
   | ValidationException
@@ -2458,6 +2462,7 @@ export const deleteTargetAccountConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTargetAccountConfiguration",
 }));
+
 export type GetActionError =
   | ResourceNotFoundException
   | ValidationException
@@ -2478,6 +2483,7 @@ export const getAction: API.OperationMethod<
   retry: Retry,
   operationName: "GetAction",
 }));
+
 export type GetExperimentError =
   | ResourceNotFoundException
   | ValidationException
@@ -2498,6 +2504,7 @@ export const getExperiment: API.OperationMethod<
   retry: Retry,
   operationName: "GetExperiment",
 }));
+
 export type GetExperimentTargetAccountConfigurationError =
   | ResourceNotFoundException
   | ValidationException
@@ -2518,6 +2525,7 @@ export const getExperimentTargetAccountConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetExperimentTargetAccountConfiguration",
 }));
+
 export type GetExperimentTemplateError =
   | ResourceNotFoundException
   | ValidationException
@@ -2538,6 +2546,7 @@ export const getExperimentTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetExperimentTemplate",
 }));
+
 export type GetSafetyLeverError = ResourceNotFoundException | CommonErrors;
 /**
  * Gets information about the specified safety lever.
@@ -2555,6 +2564,7 @@ export const getSafetyLever: API.OperationMethod<
   retry: Retry,
   operationName: "GetSafetyLever",
 }));
+
 export type GetTargetAccountConfigurationError =
   | ResourceNotFoundException
   | ValidationException
@@ -2575,6 +2585,7 @@ export const getTargetAccountConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetTargetAccountConfiguration",
 }));
+
 export type GetTargetResourceTypeError =
   | ResourceNotFoundException
   | ValidationException
@@ -2595,6 +2606,7 @@ export const getTargetResourceType: API.OperationMethod<
   retry: Retry,
   operationName: "GetTargetResourceType",
 }));
+
 export type ListActionsError = ValidationException | CommonErrors;
 /**
  * Lists the available FIS actions.
@@ -2633,6 +2645,7 @@ export const listActions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListExperimentResolvedTargetsError =
   | ResourceNotFoundException
   | ValidationException
@@ -2674,6 +2687,7 @@ export const listExperimentResolvedTargets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListExperimentsError = ValidationException | CommonErrors;
 /**
  * Lists your experiments.
@@ -2712,6 +2726,7 @@ export const listExperiments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListExperimentTargetAccountConfigurationsError =
   | ResourceNotFoundException
   | ValidationException
@@ -2732,6 +2747,7 @@ export const listExperimentTargetAccountConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "ListExperimentTargetAccountConfigurations",
 }));
+
 export type ListExperimentTemplatesError = ValidationException | CommonErrors;
 /**
  * Lists your experiment templates.
@@ -2770,6 +2786,7 @@ export const listExperimentTemplates: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError = CommonErrors;
 /**
  * Lists the tags for the specified resource.
@@ -2787,6 +2804,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTargetAccountConfigurationsError =
   | ResourceNotFoundException
   | ValidationException
@@ -2828,6 +2846,7 @@ export const listTargetAccountConfigurations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTargetResourceTypesError = ValidationException | CommonErrors;
 /**
  * Lists the target resource types.
@@ -2866,6 +2885,7 @@ export const listTargetResourceTypes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type StartExperimentError =
   | ConflictException
   | ResourceNotFoundException
@@ -2893,6 +2913,7 @@ export const startExperiment: API.OperationMethod<
   retry: Retry,
   operationName: "StartExperiment",
 }));
+
 export type StopExperimentError =
   | ResourceNotFoundException
   | ValidationException
@@ -2913,6 +2934,7 @@ export const stopExperiment: API.OperationMethod<
   retry: Retry,
   operationName: "StopExperiment",
 }));
+
 export type TagResourceError = CommonErrors;
 /**
  * Applies the specified tags to the specified resource.
@@ -2930,6 +2952,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError = CommonErrors;
 /**
  * Removes the specified tags from the specified resource.
@@ -2947,6 +2970,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateExperimentTemplateError =
   | ResourceNotFoundException
   | ServiceQuotaExceededException
@@ -2972,6 +2996,7 @@ export const updateExperimentTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateExperimentTemplate",
 }));
+
 export type UpdateSafetyLeverStateError =
   | ConflictException
   | ResourceNotFoundException
@@ -2993,6 +3018,7 @@ export const updateSafetyLeverState: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSafetyLeverState",
 }));
+
 export type UpdateTargetAccountConfigurationError =
   | ResourceNotFoundException
   | ValidationException

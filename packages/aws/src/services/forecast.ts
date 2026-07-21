@@ -87,42 +87,45 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
+  "InvalidInputException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError, C.withAlreadyExistsError) {}
+export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
+  "ResourceInUseException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type Name = string;
 export type ForecastType = string;
-export type Frequency = string;
-export type Arn = string;
-export type Value = string;
-export type KMSKeyArn = string;
-export type TagKey = string | redacted.Redacted<string>;
-export type TagValue = string | redacted.Redacted<string>;
-export type DayOfMonth = number;
-export type Hour = number;
-export type ErrorMessage = string;
-export type S3Path = string;
-export type TimestampFormat = string;
-export type TimeZone = string;
-export type UseGeolocationForTimeZone = boolean;
-export type GeolocationFormat = string;
-export type Format = string;
-export type LocalDateTime = string;
-export type ParameterKey = string;
-export type ParameterValue = string;
-export type AttributeValue = string;
-export type LongArn = string;
-export type Status = string;
-export type Message = string;
-export type EvaluationState = string;
-export type NextToken = string;
-export type MaxResults = number;
-export type Detail = string;
-export type MetricName = string;
-
-//# Schemas
 export type ForecastTypes = string[];
 export const ForecastTypes = /*@__PURE__*/ S.Array(S.String);
 export type ForecastDimensions = string[];
 export const ForecastDimensions = /*@__PURE__*/ S.Array(S.String);
+export type Frequency = string;
+export type Arn = string;
+export type Value = string;
 export type Transformations = { [key: string]: string | undefined };
 export const Transformations = /*@__PURE__*/ S.Record(
   S.String,
@@ -169,6 +172,7 @@ export const DataConfig = /*@__PURE__*/ S.suspend(() =>
     AdditionalDatasets: S.optional(AdditionalDatasets),
   }),
 ).annotate({ identifier: "DataConfig" }) as any as S.Schema<DataConfig>;
+export type KMSKeyArn = string;
 export interface EncryptionConfig {
   RoleArn: string;
   KMSKeyArn: string;
@@ -186,6 +190,9 @@ export type OptimizationMetric =
   | "MAPE"
   | (string & {});
 export const OptimizationMetric = /*@__PURE__*/ S.String;
+
+export type TagKey = string | redacted.Redacted<string>;
+export type TagValue = string | redacted.Redacted<string>;
 export interface Tag {
   Key: string | redacted.Redacted<string>;
   Value: string | redacted.Redacted<string>;
@@ -216,6 +223,8 @@ export type Month =
   | "DECEMBER"
   | (string & {});
 export const Month = /*@__PURE__*/ S.String;
+
+export type DayOfMonth = number;
 export type DayOfWeek =
   | "MONDAY"
   | "TUESDAY"
@@ -226,6 +235,8 @@ export type DayOfWeek =
   | "SUNDAY"
   | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
+
+export type Hour = number;
 export interface TimeAlignmentBoundary {
   Month?: Month;
   DayOfMonth?: number;
@@ -296,12 +307,14 @@ export type Domain =
   | "METRICS"
   | (string & {});
 export const Domain = /*@__PURE__*/ S.String;
+
 export type DatasetType =
   | "TARGET_TIME_SERIES"
   | "RELATED_TIME_SERIES"
   | "ITEM_METADATA"
   | (string & {});
 export const DatasetType = /*@__PURE__*/ S.String;
+
 export type AttributeType =
   | "string"
   | "integer"
@@ -310,6 +323,7 @@ export type AttributeType =
   | "geolocation"
   | (string & {});
 export const AttributeType = /*@__PURE__*/ S.String;
+
 export interface SchemaAttribute {
   AttributeName?: string;
   AttributeType?: AttributeType;
@@ -390,6 +404,7 @@ export const CreateDatasetGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetGroupResponse",
 }) as any as S.Schema<CreateDatasetGroupResponse>;
+export type S3Path = string;
 export interface S3Config {
   Path: string;
   RoleArn: string;
@@ -408,8 +423,14 @@ export interface DataSource {
 export const DataSource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ S3Config: S3Config }),
 ).annotate({ identifier: "DataSource" }) as any as S.Schema<DataSource>;
+export type TimestampFormat = string;
+export type TimeZone = string;
+export type UseGeolocationForTimeZone = boolean;
+export type GeolocationFormat = string;
+export type Format = string;
 export type ImportMode = "FULL" | "INCREMENTAL" | (string & {});
 export const ImportMode = /*@__PURE__*/ S.String;
+
 export interface CreateDatasetImportJobRequest {
   DatasetImportJobName: string;
   DatasetArn: string;
@@ -450,8 +471,10 @@ export const CreateDatasetImportJobResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDatasetImportJobResponse>;
 export type TimeSeriesGranularity = "ALL" | "SPECIFIC" | (string & {});
 export const TimeSeriesGranularity = /*@__PURE__*/ S.String;
+
 export type TimePointGranularity = "ALL" | "SPECIFIC" | (string & {});
 export const TimePointGranularity = /*@__PURE__*/ S.String;
+
 export interface ExplainabilityConfig {
   TimeSeriesGranularity: TimeSeriesGranularity;
   TimePointGranularity: TimePointGranularity;
@@ -464,6 +487,7 @@ export const ExplainabilityConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExplainabilityConfig",
 }) as any as S.Schema<ExplainabilityConfig>;
+export type LocalDateTime = string;
 export interface CreateExplainabilityRequest {
   ExplainabilityName: string;
   ResourceArn: string;
@@ -643,6 +667,9 @@ export type AutoMLOverrideStrategy =
   | "AccuracyOptimized"
   | (string & {});
 export const AutoMLOverrideStrategy = /*@__PURE__*/ S.String;
+
+export type ParameterKey = string;
+export type ParameterValue = string;
 export type TrainingParameters = { [key: string]: string | undefined };
 export const TrainingParameters = /*@__PURE__*/ S.Record(
   S.String,
@@ -680,6 +707,7 @@ export type ScalingType =
   | "ReverseLogarithmic"
   | (string & {});
 export const ScalingType = /*@__PURE__*/ S.String;
+
 export interface ContinuousParameterRange {
   Name: string;
   MaxValue: number;
@@ -768,6 +796,7 @@ export const InputDataConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InputDataConfig>;
 export type FeaturizationMethodName = "filling" | (string & {});
 export const FeaturizationMethodName = /*@__PURE__*/ S.String;
+
 export type FeaturizationMethodParameters = {
   [key: string]: string | undefined;
 };
@@ -925,6 +954,7 @@ export type Operation =
   | "DIVIDE"
   | (string & {});
 export const Operation = /*@__PURE__*/ S.String;
+
 export interface Action {
   AttributeName: string;
   Operation: Operation;
@@ -933,6 +963,7 @@ export interface Action {
 export const Action = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ AttributeName: S.String, Operation: Operation, Value: S.Number }),
 ).annotate({ identifier: "Action" }) as any as S.Schema<Action>;
+export type AttributeValue = string;
 export type Condition =
   | "EQUALS"
   | "NOT_EQUALS"
@@ -940,6 +971,7 @@ export type Condition =
   | "GREATER_THAN"
   | (string & {});
 export const Condition = /*@__PURE__*/ S.String;
+
 export interface TimeSeriesCondition {
   AttributeName: string;
   AttributeValue: string;
@@ -1010,6 +1042,7 @@ export const CreateWhatIfForecastRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateWhatIfForecastRequest",
 }) as any as S.Schema<CreateWhatIfForecastRequest>;
+export type LongArn = string;
 export interface CreateWhatIfForecastResponse {
   WhatIfForecastArn?: string;
 }
@@ -1285,6 +1318,7 @@ export const DescribeAutoPredictorRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeAutoPredictorRequest>;
 export type State = "Active" | "Deleted" | (string & {});
 export const State = /*@__PURE__*/ S.String;
+
 export interface ReferencePredictorSummary {
   Arn?: string;
   State?: State;
@@ -1294,6 +1328,8 @@ export const ReferencePredictorSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReferencePredictorSummary",
 }) as any as S.Schema<ReferencePredictorSummary>;
+export type Status = string;
+export type Message = string;
 export interface ExplainabilityInfo {
   ExplainabilityArn?: string;
   Status?: string;
@@ -1621,6 +1657,7 @@ export const DescribeForecastRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeForecastRequest",
 }) as any as S.Schema<DescribeForecastRequest>;
+export type ErrorMessage = string;
 export interface DescribeForecastResponse {
   ForecastArn?: string;
   ForecastName?: string;
@@ -1701,6 +1738,7 @@ export const DescribeMonitorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeMonitorRequest",
 }) as any as S.Schema<DescribeMonitorRequest>;
+export type EvaluationState = string;
 export interface BaselineMetric {
   Name?: string;
   Value?: number;
@@ -2045,6 +2083,7 @@ export const GetAccuracyMetricsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetAccuracyMetricsRequest>;
 export type EvaluationType = "SUMMARY" | "COMPUTED" | (string & {});
 export const EvaluationType = /*@__PURE__*/ S.String;
+
 export interface WeightedQuantileLoss {
   Quantile?: number;
   LossValue?: number;
@@ -2140,6 +2179,8 @@ export const GetAccuracyMetricsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccuracyMetricsResponse",
 }) as any as S.Schema<GetAccuracyMetricsResponse>;
+export type NextToken = string;
+export type MaxResults = number;
 export interface ListDatasetGroupsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2188,6 +2229,7 @@ export const ListDatasetGroupsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListDatasetGroupsResponse>;
 export type FilterConditionString = "IS" | "IS_NOT" | (string & {});
 export const FilterConditionString = /*@__PURE__*/ S.String;
+
 export interface Filter {
   Key: string;
   Value: string;
@@ -2547,6 +2589,7 @@ export const ListMonitorEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMonitorEvaluationsRequest",
 }) as any as S.Schema<ListMonitorEvaluationsRequest>;
+export type Detail = string;
 export interface PredictorEvent {
   Detail?: string;
   Datetime?: Date;
@@ -2571,6 +2614,7 @@ export const MonitorDataSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MonitorDataSource",
 }) as any as S.Schema<MonitorDataSource>;
+export type MetricName = string;
 export interface MetricResult {
   MetricName?: string;
   MetricValue?: number;
@@ -3065,40 +3109,6 @@ export const UpdateDatasetGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateDatasetGroupResponse",
 }) as any as S.Schema<UpdateDatasetGroupResponse>;
-
-//# Errors
-export class InvalidInputException extends S.TaggedErrorClass<InvalidInputException>()(
-  "InvalidInputException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError, C.withAlreadyExistsError) {}
-export class ResourceInUseException extends S.TaggedErrorClass<ResourceInUseException>()(
-  "ResourceInUseException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateAutoPredictorError =
   | InvalidInputException
   | LimitExceededException
@@ -3163,6 +3173,7 @@ export const createAutoPredictor: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAutoPredictor",
 }));
+
 export type CreateDatasetError =
   | InvalidInputException
   | LimitExceededException
@@ -3223,6 +3234,7 @@ export const createDataset: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataset",
 }));
+
 export type CreateDatasetGroupError =
   | InvalidInputException
   | LimitExceededException
@@ -3262,6 +3274,7 @@ export const createDatasetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDatasetGroup",
 }));
+
 export type CreateDatasetImportJobError =
   | InvalidInputException
   | LimitExceededException
@@ -3312,6 +3325,7 @@ export const createDatasetImportJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDatasetImportJob",
 }));
+
 export type CreateExplainabilityError =
   | InvalidInputException
   | LimitExceededException
@@ -3420,6 +3434,7 @@ export const createExplainability: API.OperationMethod<
   retry: Retry,
   operationName: "CreateExplainability",
 }));
+
 export type CreateExplainabilityExportError =
   | InvalidInputException
   | LimitExceededException
@@ -3457,6 +3472,7 @@ export const createExplainabilityExport: API.OperationMethod<
   retry: Retry,
   operationName: "CreateExplainabilityExport",
 }));
+
 export type CreateForecastError =
   | InvalidInputException
   | LimitExceededException
@@ -3508,6 +3524,7 @@ export const createForecast: API.OperationMethod<
   retry: Retry,
   operationName: "CreateForecast",
 }));
+
 export type CreateForecastExportJobError =
   | InvalidInputException
   | LimitExceededException
@@ -3554,6 +3571,7 @@ export const createForecastExportJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateForecastExportJob",
 }));
+
 export type CreateMonitorError =
   | InvalidInputException
   | LimitExceededException
@@ -3584,6 +3602,7 @@ export const createMonitor: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMonitor",
 }));
+
 export type CreatePredictorError =
   | InvalidInputException
   | LimitExceededException
@@ -3664,6 +3683,7 @@ export const createPredictor: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePredictor",
 }));
+
 export type CreatePredictorBacktestExportJobError =
   | InvalidInputException
   | LimitExceededException
@@ -3708,6 +3728,7 @@ export const createPredictorBacktestExportJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePredictorBacktestExportJob",
 }));
+
 export type CreateWhatIfAnalysisError =
   | InvalidInputException
   | LimitExceededException
@@ -3753,6 +3774,7 @@ export const createWhatIfAnalysis: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWhatIfAnalysis",
 }));
+
 export type CreateWhatIfForecastError =
   | InvalidInputException
   | LimitExceededException
@@ -3783,6 +3805,7 @@ export const createWhatIfForecast: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWhatIfForecast",
 }));
+
 export type CreateWhatIfForecastExportError =
   | InvalidInputException
   | LimitExceededException
@@ -3830,6 +3853,7 @@ export const createWhatIfForecastExport: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWhatIfForecastExport",
 }));
+
 export type DeleteDatasetError =
   | InvalidInputException
   | ResourceInUseException
@@ -3861,6 +3885,7 @@ export const deleteDataset: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataset",
 }));
+
 export type DeleteDatasetGroupError =
   | InvalidInputException
   | ResourceInUseException
@@ -3890,6 +3915,7 @@ export const deleteDatasetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDatasetGroup",
 }));
+
 export type DeleteDatasetImportJobError =
   | InvalidInputException
   | ResourceInUseException
@@ -3918,6 +3944,7 @@ export const deleteDatasetImportJob: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDatasetImportJob",
 }));
+
 export type DeleteExplainabilityError =
   | InvalidInputException
   | ResourceInUseException
@@ -3946,6 +3973,7 @@ export const deleteExplainability: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteExplainability",
 }));
+
 export type DeleteExplainabilityExportError =
   | InvalidInputException
   | ResourceInUseException
@@ -3971,6 +3999,7 @@ export const deleteExplainabilityExport: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteExplainabilityExport",
 }));
+
 export type DeleteForecastError =
   | InvalidInputException
   | ResourceInUseException
@@ -4001,6 +4030,7 @@ export const deleteForecast: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteForecast",
 }));
+
 export type DeleteForecastExportJobError =
   | InvalidInputException
   | ResourceInUseException
@@ -4028,6 +4058,7 @@ export const deleteForecastExportJob: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteForecastExportJob",
 }));
+
 export type DeleteMonitorError =
   | InvalidInputException
   | ResourceInUseException
@@ -4053,6 +4084,7 @@ export const deleteMonitor: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMonitor",
 }));
+
 export type DeletePredictorError =
   | InvalidInputException
   | ResourceInUseException
@@ -4079,6 +4111,7 @@ export const deletePredictor: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePredictor",
 }));
+
 export type DeletePredictorBacktestExportJobError =
   | InvalidInputException
   | ResourceInUseException
@@ -4104,6 +4137,7 @@ export const deletePredictorBacktestExportJob: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePredictorBacktestExportJob",
 }));
+
 export type DeleteResourceTreeError =
   | InvalidInputException
   | ResourceInUseException
@@ -4149,6 +4183,7 @@ export const deleteResourceTree: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourceTree",
 }));
+
 export type DeleteWhatIfAnalysisError =
   | InvalidInputException
   | ResourceInUseException
@@ -4177,6 +4212,7 @@ export const deleteWhatIfAnalysis: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWhatIfAnalysis",
 }));
+
 export type DeleteWhatIfForecastError =
   | InvalidInputException
   | ResourceInUseException
@@ -4205,6 +4241,7 @@ export const deleteWhatIfForecast: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWhatIfForecast",
 }));
+
 export type DeleteWhatIfForecastExportError =
   | InvalidInputException
   | ResourceInUseException
@@ -4231,6 +4268,7 @@ export const deleteWhatIfForecastExport: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWhatIfForecastExport",
 }));
+
 export type DescribeAutoPredictorError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4251,6 +4289,7 @@ export const describeAutoPredictor: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAutoPredictor",
 }));
+
 export type DescribeDatasetError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4280,6 +4319,7 @@ export const describeDataset: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDataset",
 }));
+
 export type DescribeDatasetGroupError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4312,6 +4352,7 @@ export const describeDatasetGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDatasetGroup",
 }));
+
 export type DescribeDatasetImportJobError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4348,6 +4389,7 @@ export const describeDatasetImportJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDatasetImportJob",
 }));
+
 export type DescribeExplainabilityError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4368,6 +4410,7 @@ export const describeExplainability: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeExplainability",
 }));
+
 export type DescribeExplainabilityExportError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4388,6 +4431,7 @@ export const describeExplainabilityExport: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeExplainabilityExport",
 }));
+
 export type DescribeForecastError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4422,6 +4466,7 @@ export const describeForecast: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeForecast",
 }));
+
 export type DescribeForecastExportJobError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4454,6 +4499,7 @@ export const describeForecastExportJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeForecastExportJob",
 }));
+
 export type DescribeMonitorError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4488,6 +4534,7 @@ export const describeMonitor: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeMonitor",
 }));
+
 export type DescribePredictorError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4529,6 +4576,7 @@ export const describePredictor: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePredictor",
 }));
+
 export type DescribePredictorBacktestExportJobError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4561,6 +4609,7 @@ export const describePredictorBacktestExportJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePredictorBacktestExportJob",
 }));
+
 export type DescribeWhatIfAnalysisError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4591,6 +4640,7 @@ export const describeWhatIfAnalysis: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeWhatIfAnalysis",
 }));
+
 export type DescribeWhatIfForecastError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4621,6 +4671,7 @@ export const describeWhatIfForecast: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeWhatIfForecast",
 }));
+
 export type DescribeWhatIfForecastExportError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -4651,6 +4702,7 @@ export const describeWhatIfForecastExport: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeWhatIfForecastExport",
 }));
+
 export type GetAccuracyMetricsError =
   | InvalidInputException
   | ResourceInUseException
@@ -4693,6 +4745,7 @@ export const getAccuracyMetrics: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccuracyMetrics",
 }));
+
 export type ListDatasetGroupsError = InvalidNextTokenException | CommonErrors;
 /**
  * Returns a list of dataset groups created using the CreateDatasetGroup operation.
@@ -4735,6 +4788,7 @@ export const listDatasetGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDatasetImportJobsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -4780,6 +4834,7 @@ export const listDatasetImportJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDatasetsError = InvalidNextTokenException | CommonErrors;
 /**
  * Returns a list of datasets created using the CreateDataset operation. For each
@@ -4820,6 +4875,7 @@ export const listDatasets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListExplainabilitiesError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -4866,6 +4922,7 @@ export const listExplainabilities: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListExplainabilityExportsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -4911,6 +4968,7 @@ export const listExplainabilityExports: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListForecastExportJobsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -4955,6 +5013,7 @@ export const listForecastExportJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListForecastsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5000,6 +5059,7 @@ export const listForecasts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMonitorEvaluationsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5050,6 +5110,7 @@ export const listMonitorEvaluations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMonitorsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5092,6 +5153,7 @@ export const listMonitors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPredictorBacktestExportJobsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5137,6 +5199,7 @@ export const listPredictorBacktestExportJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPredictorsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5183,6 +5246,7 @@ export const listPredictors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -5203,6 +5267,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListWhatIfAnalysesError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5244,6 +5309,7 @@ export const listWhatIfAnalyses: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListWhatIfForecastExportsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5285,6 +5351,7 @@ export const listWhatIfForecastExports: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListWhatIfForecastsError =
   | InvalidInputException
   | InvalidNextTokenException
@@ -5326,6 +5393,7 @@ export const listWhatIfForecasts: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ResumeResourceError =
   | InvalidInputException
   | LimitExceededException
@@ -5353,6 +5421,7 @@ export const resumeResource: API.OperationMethod<
   retry: Retry,
   operationName: "ResumeResource",
 }));
+
 export type StopResourceError =
   | InvalidInputException
   | LimitExceededException
@@ -5399,6 +5468,7 @@ export const stopResource: API.OperationMethod<
   retry: Retry,
   operationName: "StopResource",
 }));
+
 export type TagResourceError =
   | InvalidInputException
   | LimitExceededException
@@ -5427,6 +5497,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InvalidInputException
   | ResourceNotFoundException
@@ -5447,6 +5518,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDatasetGroupError =
   | InvalidInputException
   | ResourceInUseException

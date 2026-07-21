@@ -158,35 +158,37 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type MapStyle = string;
-export type ColorScheme = string;
-export type Variant = string;
-export type PositionListString = string | redacted.Redacted<string>;
-export type PositionString = string | redacted.Redacted<string>;
-export type CompactOverlay = string | redacted.Redacted<string>;
-export type GeoJsonOverlay = string | redacted.Redacted<string>;
-export type SensitiveInteger = number;
-export type ApiKey = string | redacted.Redacted<string>;
-export type LabelSize = string;
-export type LanguageTag = string;
-export type CountryCode = string | redacted.Redacted<string>;
-export type MapFeatureMode = string;
-export type DistanceMeters = number;
-export type ScaleBarUnit = string;
-export type StaticMapStyle = string;
-export type SensitiveFloat = number;
-export type ValidationExceptionReason = string;
-export type Terrain = string;
-export type ContourDensity = string;
-export type Traffic = string;
-export type TravelMode = string;
-export type Buildings = string;
-export type TileAdditionalFeature = string;
-export type Tileset = string;
-export type SensitiveString = string | redacted.Redacted<string>;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.String },
+  T.all(T.HttpError(429), T.Retryable()),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    Message: S.String,
+    Reason: S.String,
+    FieldList: S.suspend(() => ValidationExceptionFieldList).annotate({
+      identifier: "ValidationExceptionFieldList",
+    }),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export interface GetGlyphsRequest {
   FontStack: string;
   FontUnicodeRange: string;
@@ -224,6 +226,9 @@ export const GetGlyphsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetGlyphsResponse",
 }) as any as S.Schema<GetGlyphsResponse>;
+export type MapStyle = string;
+export type ColorScheme = string;
+export type Variant = string;
 export interface GetSpritesRequest {
   FileName: string;
   Style: string;
@@ -268,6 +273,20 @@ export const GetSpritesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSpritesResponse",
 }) as any as S.Schema<GetSpritesResponse>;
+export type PositionListString = string | redacted.Redacted<string>;
+export type PositionString = string | redacted.Redacted<string>;
+export type CompactOverlay = string | redacted.Redacted<string>;
+export type GeoJsonOverlay = string | redacted.Redacted<string>;
+export type SensitiveInteger = number;
+export type ApiKey = string | redacted.Redacted<string>;
+export type LabelSize = string;
+export type LanguageTag = string;
+export type CountryCode = string | redacted.Redacted<string>;
+export type MapFeatureMode = string;
+export type DistanceMeters = number;
+export type ScaleBarUnit = string;
+export type StaticMapStyle = string;
+export type SensitiveFloat = number;
 export interface GetStaticMapRequest {
   BoundingBox?: string | redacted.Redacted<string>;
   BoundedPositions?: string | redacted.Redacted<string>;
@@ -351,23 +370,13 @@ export const GetStaticMapResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetStaticMapResponse",
 }) as any as S.Schema<GetStaticMapResponse>;
-export interface ValidationExceptionField {
-  Name: string;
-  Message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ Name: S.String, Message: S.String }).pipe(
-    S.encodeKeys({ Name: "name", Message: "message" }),
-  ),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type Terrain = string;
+export type ContourDensity = string;
+export type Traffic = string;
+export type TravelMode = string;
 export type TravelModeList = string[];
 export const TravelModeList = /*@__PURE__*/ S.Array(S.String);
+export type Buildings = string;
 export interface GetStyleDescriptorRequest {
   Style: string;
   ColorScheme?: string;
@@ -421,8 +430,11 @@ export const GetStyleDescriptorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetStyleDescriptorResponse",
 }) as any as S.Schema<GetStyleDescriptorResponse>;
+export type TileAdditionalFeature = string;
 export type TileAdditionalFeatureList = string[];
 export const TileAdditionalFeatureList = /*@__PURE__*/ S.Array(S.String);
+export type Tileset = string;
+export type SensitiveString = string | redacted.Redacted<string>;
 export interface GetTileRequest {
   AdditionalFeatures?: string[];
   Tileset: string;
@@ -470,39 +482,22 @@ export const GetTileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTileResponse",
 }) as any as S.Schema<GetTileResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.String },
-  T.all(T.HttpError(429), T.Retryable()),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    Message: S.String,
-    Reason: S.String,
-    FieldList: ValidationExceptionFieldList,
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ValidationExceptionReason = string;
+export interface ValidationExceptionField {
+  Name: string;
+  Message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Name: S.String, Message: S.String }).pipe(
+    S.encodeKeys({ Name: "name", Message: "message" }),
+  ),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type GetGlyphsError = CommonErrors;
 /**
  * `GetGlyphs` returns the map's glyphs.
@@ -522,6 +517,7 @@ export const getGlyphs: API.OperationMethod<
   retry: Retry,
   operationName: "GetGlyphs",
 }));
+
 export type GetSpritesError = CommonErrors;
 /**
  * `GetSprites` returns the map's sprites.
@@ -541,6 +537,7 @@ export const getSprites: API.OperationMethod<
   retry: Retry,
   operationName: "GetSprites",
 }));
+
 export type GetStaticMapError =
   | AccessDeniedException
   | InternalServerException
@@ -578,6 +575,7 @@ export const getStaticMap: API.OperationMethod<
   retry: Retry,
   operationName: "GetStaticMap",
 }));
+
 export type GetStyleDescriptorError = CommonErrors;
 /**
  * `GetStyleDescriptor` returns information about the style.
@@ -597,6 +595,7 @@ export const getStyleDescriptor: API.OperationMethod<
   retry: Retry,
   operationName: "GetStyleDescriptor",
 }));
+
 export type GetTileError =
   | AccessDeniedException
   | InternalServerException

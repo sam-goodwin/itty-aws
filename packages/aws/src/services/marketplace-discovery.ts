@@ -52,29 +52,12 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type ListingId = string;
-export type ProductId = string;
-export type NonEmptyString = string;
-export type SellerProfileId = string;
-export type OfferId = string;
-export type NullableString = string;
-export type Catalog = string;
-export type URL = string;
-export type NonNegativeCount = number;
-export type ExceptionMessage = string;
-export type AgreementResourceId = string;
-export type OfferSetId = string;
-export type NextToken = string;
-export type TermId = string;
-export type CurrencyCode = string;
-export type BoundedString = string;
-export type PurchaseOptionFilterValue = string;
-export type MaxResults = number;
-export type SearchText = string;
-export type SearchFilterValue = string;
-
-//# Schemas
 export interface GetListingInput {
   listingId: string;
 }
@@ -92,6 +75,9 @@ export const GetListingInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetListingInput",
 }) as any as S.Schema<GetListingInput>;
+export type ProductId = string;
+export type NonEmptyString = string;
+export type SellerProfileId = string;
 export interface SellerInformation {
   sellerProfileId: string;
   displayName: string;
@@ -115,6 +101,8 @@ export const ProductInformation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProductInformation",
 }) as any as S.Schema<ProductInformation>;
+export type OfferId = string;
+export type NullableString = string;
 export interface OfferInformation {
   offerId: string;
   offerName?: string;
@@ -153,6 +141,7 @@ export type ListingBadgeType =
   | "MULTI_PRODUCT"
   | (string & {});
 export const ListingBadgeType = /*@__PURE__*/ S.String;
+
 export interface ListingBadge {
   displayName: string;
   badgeType: ListingBadgeType;
@@ -162,6 +151,7 @@ export const ListingBadge = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ListingBadge" }) as any as S.Schema<ListingBadge>;
 export type ListingBadgeList = ListingBadge[];
 export const ListingBadgeList = /*@__PURE__*/ S.Array(ListingBadge);
+export type Catalog = string;
 export interface Category {
   categoryId: string;
   displayName: string;
@@ -186,6 +176,7 @@ export type FulfillmentOptionType =
   | "SAGEMAKER_MODEL"
   | (string & {});
 export const FulfillmentOptionType = /*@__PURE__*/ S.String;
+
 export interface FulfillmentOptionSummary {
   fulfillmentOptionType: FulfillmentOptionType;
   displayName: string;
@@ -204,6 +195,7 @@ export const FulfillmentOptionSummaryList = /*@__PURE__*/ S.Array(
 );
 export type HighlightList = string[];
 export const HighlightList = /*@__PURE__*/ S.Array(S.String);
+export type URL = string;
 export type PricingModelType =
   | "USAGE"
   | "CONTRACT"
@@ -211,6 +203,7 @@ export type PricingModelType =
   | "FREE"
   | (string & {});
 export const PricingModelType = /*@__PURE__*/ S.String;
+
 export interface PricingModel {
   pricingModelType: PricingModelType;
   displayName: string;
@@ -230,6 +223,7 @@ export type PricingUnitType =
   | "UNITS"
   | (string & {});
 export const PricingUnitType = /*@__PURE__*/ S.String;
+
 export interface PricingUnit {
   pricingUnitType: PricingUnitType;
   displayName: string;
@@ -285,6 +279,7 @@ export type ResourceType =
   | "MANUFACTURER_INSTRUCTIONS"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export type ResourceContentType =
   | "EMAIL"
   | "PHONE_NUMBER"
@@ -292,6 +287,7 @@ export type ResourceContentType =
   | "OTHER"
   | (string & {});
 export const ResourceContentType = /*@__PURE__*/ S.String;
+
 export interface Resource {
   resourceType: ResourceType;
   contentType: ResourceContentType;
@@ -310,6 +306,8 @@ export type ResourceList = Resource[];
 export const ResourceList = /*@__PURE__*/ S.Array(Resource);
 export type ReviewSourceId = "AWS_MARKETPLACE" | (string & {});
 export const ReviewSourceId = /*@__PURE__*/ S.String;
+
+export type NonNegativeCount = number;
 export interface ReviewSourceSummary {
   sourceName: string;
   sourceId: ReviewSourceId;
@@ -342,8 +340,10 @@ export type SellerEngagementType =
   | "REQUEST_FOR_DEMO"
   | (string & {});
 export const SellerEngagementType = /*@__PURE__*/ S.String;
+
 export type SellerEngagementContentType = "LINK" | (string & {});
 export const SellerEngagementContentType = /*@__PURE__*/ S.String;
+
 export interface SellerEngagement {
   engagementType: SellerEngagementType;
   contentType: SellerEngagementContentType;
@@ -439,12 +439,14 @@ export const GetOfferInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetOfferInput" }) as any as S.Schema<GetOfferInput>;
+export type AgreementResourceId = string;
 export type PurchaseOptionBadgeType =
   | "PRIVATE_PRICING"
   | "FUTURE_DATED"
   | "REPLACEMENT_OFFER"
   | (string & {});
 export const PurchaseOptionBadgeType = /*@__PURE__*/ S.String;
+
 export interface PurchaseOptionBadge {
   displayName: string;
   badgeType: PurchaseOptionBadgeType;
@@ -457,6 +459,7 @@ export const PurchaseOptionBadge = /*@__PURE__*/ S.suspend(() =>
 export type PurchaseOptionBadgeList = PurchaseOptionBadge[];
 export const PurchaseOptionBadgeList =
   /*@__PURE__*/ S.Array(PurchaseOptionBadge);
+export type OfferSetId = string;
 export interface OfferSetInformation {
   offerSetId: string;
   sellerOfRecord: SellerInformation;
@@ -570,6 +573,7 @@ export const GetOfferSetOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOfferSetOutput",
 }) as any as S.Schema<GetOfferSetOutput>;
+export type NextToken = string;
 export interface GetOfferTermsInput {
   offerId: string;
   maxResults?: number;
@@ -593,6 +597,7 @@ export const GetOfferTermsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOfferTermsInput",
 }) as any as S.Schema<GetOfferTermsInput>;
+export type TermId = string;
 export type TermType =
   | "ByolPricingTerm"
   | "ConfigurableUpfrontPricingTerm"
@@ -608,6 +613,7 @@ export type TermType =
   | "VariablePaymentTerm"
   | (string & {});
 export const TermType = /*@__PURE__*/ S.String;
+
 export interface ByolPricingTerm {
   id: string;
   type: TermType;
@@ -617,8 +623,11 @@ export const ByolPricingTerm = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ByolPricingTerm",
 }) as any as S.Schema<ByolPricingTerm>;
+export type CurrencyCode = string;
 export type SelectorType = "Duration" | (string & {});
 export const SelectorType = /*@__PURE__*/ S.String;
+
+export type BoundedString = string;
 export interface Selector {
   type: SelectorType;
   value: string;
@@ -628,6 +637,7 @@ export const Selector = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Selector" }) as any as S.Schema<Selector>;
 export type RateCardConstraintType = "Allowed" | "Disallowed" | (string & {});
 export const RateCardConstraintType = /*@__PURE__*/ S.String;
+
 export interface Constraints {
   multipleDimensionSelection: RateCardConstraintType;
   quantityConfiguration: RateCardConstraintType;
@@ -640,6 +650,7 @@ export const Constraints = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Constraints" }) as any as S.Schema<Constraints>;
 export type DimensionLabelType = "Region" | "SagemakerOption" | (string & {});
 export const DimensionLabelType = /*@__PURE__*/ S.String;
+
 export interface DimensionLabel {
   labelType: DimensionLabelType;
   labelValue: string;
@@ -772,6 +783,7 @@ export type LegalDocumentType =
   | "StandardDsa"
   | (string & {});
 export const LegalDocumentType = /*@__PURE__*/ S.String;
+
 export interface DocumentItem {
   type: LegalDocumentType;
   url: string;
@@ -824,6 +836,7 @@ export const PaymentScheduleTerm = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PaymentScheduleTerm>;
 export type BillingPeriodType = "Monthly" | (string & {});
 export const BillingPeriodType = /*@__PURE__*/ S.String;
+
 export interface RecurringPaymentTerm {
   id: string;
   type: TermType;
@@ -1138,6 +1151,7 @@ export type DeployedOnAwsStatus =
   | "NOT_APPLICABLE"
   | (string & {});
 export const DeployedOnAwsStatus = /*@__PURE__*/ S.String;
+
 export interface GetProductOutput {
   productId: string;
   catalog: string;
@@ -1813,6 +1827,8 @@ export type PurchaseOptionFilterType =
   | "AVAILABILITY_STATUS"
   | (string & {});
 export const PurchaseOptionFilterType = /*@__PURE__*/ S.String;
+
+export type PurchaseOptionFilterValue = string;
 export type PurchaseOptionFilterValueList = string[];
 export const PurchaseOptionFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface PurchaseOptionFilter {
@@ -1830,6 +1846,7 @@ export const PurchaseOptionFilter = /*@__PURE__*/ S.suspend(() =>
 export type PurchaseOptionFilterList = PurchaseOptionFilter[];
 export const PurchaseOptionFilterList =
   /*@__PURE__*/ S.Array(PurchaseOptionFilter);
+export type MaxResults = number;
 export interface ListPurchaseOptionsInput {
   filters?: PurchaseOptionFilter[];
   maxResults?: number;
@@ -1855,6 +1872,7 @@ export const ListPurchaseOptionsInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListPurchaseOptionsInput>;
 export type PurchaseOptionType = "OFFER" | "OFFERSET" | (string & {});
 export const PurchaseOptionType = /*@__PURE__*/ S.String;
+
 export interface PurchaseOptionAssociatedEntity {
   product: ProductInformation;
   offer: OfferInformation;
@@ -1918,6 +1936,7 @@ export const ListPurchaseOptionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPurchaseOptionsOutput",
 }) as any as S.Schema<ListPurchaseOptionsOutput>;
+export type SearchText = string;
 export type SearchFilterType =
   | "MIN_AVERAGE_CUSTOMER_RATING"
   | "MAX_AVERAGE_CUSTOMER_RATING"
@@ -1930,6 +1949,8 @@ export type SearchFilterType =
   | "NUMBER_OF_PRODUCTS"
   | (string & {});
 export const SearchFilterType = /*@__PURE__*/ S.String;
+
+export type SearchFilterValue = string;
 export type SearchFilterValueList = string[];
 export const SearchFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface SearchFilter {
@@ -1955,6 +1976,7 @@ export type SearchFacetType =
   | "NUMBER_OF_PRODUCTS"
   | (string & {});
 export const SearchFacetType = /*@__PURE__*/ S.String;
+
 export type FacetTypeList = SearchFacetType[];
 export const FacetTypeList = /*@__PURE__*/ S.Array(SearchFacetType);
 export interface SearchFacetsInput {
@@ -2022,11 +2044,13 @@ export type SearchListingsSortBy =
   | "AVERAGE_CUSTOMER_RATING"
   | (string & {});
 export const SearchListingsSortBy = /*@__PURE__*/ S.String;
+
 export type SearchListingsSortOrder =
   | "DESCENDING"
   | "ASCENDING"
   | (string & {});
 export const SearchListingsSortOrder = /*@__PURE__*/ S.String;
+
 export interface SearchListingsInput {
   searchText?: string;
   filters?: SearchFilter[];
@@ -2117,15 +2141,7 @@ export const SearchListingsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchListingsOutput",
 }) as any as S.Schema<SearchListingsOutput>;
-
-//# Errors
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type GetListingError = ResourceNotFoundException | CommonErrors;
 /**
  * Provides details about a listing, such as descriptions, badges, categories, pricing model summaries, reviews, and associated products and offers.
@@ -2143,6 +2159,7 @@ export const getListing: API.OperationMethod<
   retry: Retry,
   operationName: "GetListing",
 }));
+
 export type GetOfferError = ResourceNotFoundException | CommonErrors;
 /**
  * Provides details about an offer, such as the pricing model, seller of record, availability dates, badges, and associated products.
@@ -2160,6 +2177,7 @@ export const getOffer: API.OperationMethod<
   retry: Retry,
   operationName: "GetOffer",
 }));
+
 export type GetOfferSetError = ResourceNotFoundException | CommonErrors;
 /**
  * Provides details about an offer set, which is a bundle of offers across multiple products. Includes the seller, availability dates, buyer notes, and associated product-offer pairs.
@@ -2177,6 +2195,7 @@ export const getOfferSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetOfferSet",
 }));
+
 export type GetOfferTermsError = ResourceNotFoundException | CommonErrors;
 /**
  * Returns the terms attached to an offer, such as pricing terms (usage-based, contract, BYOL, free trial), legal terms, payment schedules, validity terms, support terms, and renewal terms.
@@ -2214,6 +2233,7 @@ export const getOfferTerms: API.OperationMethod<
     items: "offerTerms",
   } as const,
 }));
+
 export type GetProductError = ResourceNotFoundException | CommonErrors;
 /**
  * Provides details about a product, such as descriptions, highlights, categories, fulfillment option summaries, promotional media, and seller engagement options.
@@ -2231,6 +2251,7 @@ export const getProduct: API.OperationMethod<
   retry: Retry,
   operationName: "GetProduct",
 }));
+
 export type ListFulfillmentOptionsError =
   | ResourceNotFoundException
   | CommonErrors;
@@ -2271,6 +2292,7 @@ export const listFulfillmentOptions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPurchaseOptionsError = CommonErrors;
 /**
  * Returns the purchase options (offers and offer sets) available to the buyer. You can filter results by product, seller, purchase option type, visibility scope, and availability status.
@@ -2310,6 +2332,7 @@ export const listPurchaseOptions: API.OperationMethod<
     items: "purchaseOptions",
   } as const,
 }));
+
 export type SearchFacetsError = CommonErrors;
 /**
  * Returns available facet values for filtering listings, such as categories, pricing models, fulfillment option types, publishers, and customer ratings. Each facet value includes a count of matching listings.
@@ -2347,6 +2370,7 @@ export const searchFacets: API.OperationMethod<
     items: "listingFacets",
   } as const,
 }));
+
 export type SearchListingsError = CommonErrors;
 /**
  * Returns a list of product listings based on search criteria and filters. You can search by keyword, filter by category, pricing model, fulfillment type, and other attributes, and sort results by relevance or customer rating.

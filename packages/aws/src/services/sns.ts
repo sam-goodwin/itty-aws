@@ -94,39 +94,303 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AuthorizationErrorException extends S.TaggedErrorClass<AuthorizationErrorException>()(
+  "AuthorizationErrorException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "AuthorizationError", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class BatchEntryIdsNotDistinctException extends S.TaggedErrorClass<BatchEntryIdsNotDistinctException>()(
+  "BatchEntryIdsNotDistinctException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "BatchEntryIdsNotDistinct",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class BatchRequestTooLongException extends S.TaggedErrorClass<BatchRequestTooLongException>()(
+  "BatchRequestTooLongException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "BatchRequestTooLong", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ConcurrentAccessException extends S.TaggedErrorClass<ConcurrentAccessException>()(
+  "ConcurrentAccessException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ConcurrentAccess", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EmptyBatchRequestException extends S.TaggedErrorClass<EmptyBatchRequestException>()(
+  "EmptyBatchRequestException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "EmptyBatchRequest", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class EndpointDisabledException extends S.TaggedErrorClass<EndpointDisabledException>()(
+  "EndpointDisabledException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "EndpointDisabled", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class FilterPolicyLimitExceededException extends S.TaggedErrorClass<FilterPolicyLimitExceededException>()(
+  "FilterPolicyLimitExceededException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "FilterPolicyLimitExceeded",
+      httpResponseCode: 403,
+    }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
+  "InternalErrorException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class InvalidBatchEntryIdException extends S.TaggedErrorClass<InvalidBatchEntryIdException>()(
+  "InvalidBatchEntryIdException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidBatchEntryId", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidClientTokenId extends S.TaggedErrorClass<InvalidClientTokenId>()(
+  "InvalidClientTokenId",
+  {},
+).pipe(C.withAuthError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
+  "InvalidParameterValueException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ParameterValueInvalid", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidSecurityException extends S.TaggedErrorClass<InvalidSecurityException>()(
+  "InvalidSecurityException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidSecurity", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
+  "InvalidStateException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class KMSAccessDeniedException extends S.TaggedErrorClass<KMSAccessDeniedException>()(
+  "KMSAccessDeniedException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "KMSAccessDenied", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError, C.withAuthError) {}
+export class KMSDisabledException extends S.TaggedErrorClass<KMSDisabledException>()(
+  "KMSDisabledException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "KMSDisabled", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class KMSInvalidStateException extends S.TaggedErrorClass<KMSInvalidStateException>()(
+  "KMSInvalidStateException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "KMSInvalidState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class KMSNotFoundException extends S.TaggedErrorClass<KMSNotFoundException>()(
+  "KMSNotFoundException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "KMSNotFound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class KMSOptInRequired extends S.TaggedErrorClass<KMSOptInRequired>()(
+  "KMSOptInRequired",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "KMSOptInRequired", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class KMSThrottlingException extends S.TaggedErrorClass<KMSThrottlingException>()(
+  "KMSThrottlingException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "KMSThrottling", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "NotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class OptedOutException extends S.TaggedErrorClass<OptedOutException>()(
+  "OptedOutException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "OptedOut", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class PlatformApplicationDisabledException extends S.TaggedErrorClass<PlatformApplicationDisabledException>()(
+  "PlatformApplicationDisabledException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "PlatformApplicationDisabled",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ReplayLimitExceededException extends S.TaggedErrorClass<ReplayLimitExceededException>()(
+  "ReplayLimitExceededException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ReplayLimitExceeded", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
+  "RequestLimitExceeded",
+  {},
+).pipe(C.withThrottlingError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 404 }),
+    T.HttpError(404),
+  ),
+).pipe(C.withBadRequestError) {}
+export class StaleTagException extends S.TaggedErrorClass<StaleTagException>()(
+  "StaleTagException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "StaleTag", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class SubscriptionLimitExceededException extends S.TaggedErrorClass<SubscriptionLimitExceededException>()(
+  "SubscriptionLimitExceededException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "SubscriptionLimitExceeded",
+      httpResponseCode: 403,
+    }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class TagLimitExceededException extends S.TaggedErrorClass<TagLimitExceededException>()(
+  "TagLimitExceededException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TagLimitExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TagPolicyException extends S.TaggedErrorClass<TagPolicyException>()(
+  "TagPolicyException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TagPolicy", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
+  "ThrottledException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "Throttled", httpResponseCode: 429 }),
+    T.HttpError(429),
+  ),
+).pipe(C.withThrottlingError) {}
+export class TooManyEntriesInBatchRequestException extends S.TaggedErrorClass<TooManyEntriesInBatchRequestException>()(
+  "TooManyEntriesInBatchRequestException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({
+      code: "TooManyEntriesInBatchRequest",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class TopicLimitExceededException extends S.TaggedErrorClass<TopicLimitExceededException>()(
+  "TopicLimitExceededException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "TopicLimitExceeded", httpResponseCode: 403 }),
+    T.HttpError(403),
+  ),
+).pipe(C.withAuthError) {}
+export class UserErrorException extends S.TaggedErrorClass<UserErrorException>()(
+  "UserErrorException",
+  { message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "UserError", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.String },
+  T.all(
+    T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class VerificationException extends S.TaggedErrorClass<VerificationException>()(
+  "VerificationException",
+  { Message: S.String, Status: S.String },
+) {}
 export type TopicARN = string;
 export type Label = string;
 export type Delegate = string;
-export type Action = string;
-export type PhoneNumber = string | redacted.Redacted<string>;
-export type Token = string;
-export type AuthenticateOnUnsubscribe = string;
-export type SubscriptionARN = string;
-export type PhoneNumberString = string | redacted.Redacted<string>;
-export type TopicName = string;
-export type AttributeName = string;
-export type AttributeValue = string;
-export type TagKey = string;
-export type TagValue = string;
-export type NextToken = string;
-export type MaxItemsListOriginationNumbers = number;
-export type Iso2CountryCode = string;
-export type MaxItems = number;
-export type Account = string;
-export type Protocol = string;
-export type Endpoint2 = string;
-export type AmazonResourceName = string;
-export type Message = string;
-export type Subject = string;
-export type MessageStructure = string;
-export type Binary = Uint8Array;
-export type MessageId = string;
-export type OTPCode = string;
-
-//# Schemas
 export type DelegatesList = string[];
 export const DelegatesList = /*@__PURE__*/ S.Array(S.String);
+export type Action = string;
 export type ActionsList = string[];
 export const ActionsList = /*@__PURE__*/ S.Array(S.String);
 export interface AddPermissionInput {
@@ -161,6 +425,7 @@ export const AddPermissionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AddPermissionResponse",
 }) as any as S.Schema<AddPermissionResponse>;
+export type PhoneNumber = string | redacted.Redacted<string>;
 export interface CheckIfPhoneNumberIsOptedOutInput {
   phoneNumber: string | redacted.Redacted<string>;
 }
@@ -187,6 +452,8 @@ export const CheckIfPhoneNumberIsOptedOutResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CheckIfPhoneNumberIsOptedOutResponse",
 }) as any as S.Schema<CheckIfPhoneNumberIsOptedOutResponse>;
+export type Token = string;
+export type AuthenticateOnUnsubscribe = string;
 export interface ConfirmSubscriptionInput {
   TopicArn: string;
   Token: string;
@@ -211,6 +478,7 @@ export const ConfirmSubscriptionInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfirmSubscriptionInput",
 }) as any as S.Schema<ConfirmSubscriptionInput>;
+export type SubscriptionARN = string;
 export interface ConfirmSubscriptionResponse {
   SubscriptionArn?: string;
 }
@@ -290,6 +558,7 @@ export const CreateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEndpointResponse",
 }) as any as S.Schema<CreateEndpointResponse>;
+export type PhoneNumberString = string | redacted.Redacted<string>;
 export type LanguageCodeString =
   | "en-US"
   | "en-GB"
@@ -306,6 +575,7 @@ export type LanguageCodeString =
   | "zh-TW"
   | (string & {});
 export const LanguageCodeString = /*@__PURE__*/ S.String;
+
 export interface CreateSMSSandboxPhoneNumberInput {
   PhoneNumber: string | redacted.Redacted<string>;
   LanguageCode?: LanguageCodeString;
@@ -334,11 +604,16 @@ export const CreateSMSSandboxPhoneNumberResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSMSSandboxPhoneNumberResult",
 }) as any as S.Schema<CreateSMSSandboxPhoneNumberResult>;
+export type TopicName = string;
+export type AttributeName = string;
+export type AttributeValue = string;
 export type TopicAttributesMap = { [key: string]: string | undefined };
 export const TopicAttributesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -714,6 +989,8 @@ export const ListEndpointsByPlatformApplicationResponse =
   ).annotate({
     identifier: "ListEndpointsByPlatformApplicationResponse",
   }) as any as S.Schema<ListEndpointsByPlatformApplicationResponse>;
+export type NextToken = string;
+export type MaxItemsListOriginationNumbers = number;
 export interface ListOriginationNumbersRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -736,14 +1013,17 @@ export const ListOriginationNumbersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOriginationNumbersRequest",
 }) as any as S.Schema<ListOriginationNumbersRequest>;
+export type Iso2CountryCode = string;
 export type RouteType =
   | "Transactional"
   | "Promotional"
   | "Premium"
   | (string & {});
 export const RouteType = /*@__PURE__*/ S.String;
+
 export type NumberCapability = "SMS" | "MMS" | "VOICE" | (string & {});
 export const NumberCapability = /*@__PURE__*/ S.String;
+
 export type NumberCapabilityList = NumberCapability[];
 export const NumberCapabilityList = /*@__PURE__*/ S.Array(NumberCapability);
 export interface PhoneNumberInformation {
@@ -861,6 +1141,7 @@ export const ListPlatformApplicationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPlatformApplicationsResponse",
 }) as any as S.Schema<ListPlatformApplicationsResponse>;
+export type MaxItems = number;
 export interface ListSMSSandboxPhoneNumbersInput {
   NextToken?: string;
   MaxResults?: number;
@@ -888,6 +1169,7 @@ export type SMSSandboxPhoneNumberVerificationStatus =
   | "Verified"
   | (string & {});
 export const SMSSandboxPhoneNumberVerificationStatus = /*@__PURE__*/ S.String;
+
 export interface SMSSandboxPhoneNumber {
   PhoneNumber?: string | redacted.Redacted<string>;
   Status?: SMSSandboxPhoneNumberVerificationStatus;
@@ -934,6 +1216,9 @@ export const ListSubscriptionsInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSubscriptionsInput",
 }) as any as S.Schema<ListSubscriptionsInput>;
+export type Account = string;
+export type Protocol = string;
+export type Endpoint2 = string;
 export interface Subscription {
   SubscriptionArn?: string;
   Owner?: string;
@@ -995,6 +1280,7 @@ export const ListSubscriptionsByTopicResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSubscriptionsByTopicResponse",
 }) as any as S.Schema<ListSubscriptionsByTopicResponse>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
@@ -1083,6 +1369,10 @@ export const OptInPhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OptInPhoneNumberResponse",
 }) as any as S.Schema<OptInPhoneNumberResponse>;
+export type Message = string;
+export type Subject = string;
+export type MessageStructure = string;
+export type Binary = Uint8Array;
 export interface MessageAttributeValue {
   DataType: string;
   StringValue?: string;
@@ -1140,6 +1430,7 @@ export const PublishInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "PublishInput" }) as any as S.Schema<PublishInput>;
+export type MessageId = string;
 export interface PublishResponse {
   MessageId?: string;
   SequenceNumber?: string;
@@ -1548,6 +1839,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UntagResourceResponse",
 }) as any as S.Schema<UntagResourceResponse>;
+export type OTPCode = string;
 export interface VerifySMSSandboxPhoneNumberInput {
   PhoneNumber: string | redacted.Redacted<string>;
   OneTimePassword: string;
@@ -1573,301 +1865,6 @@ export const VerifySMSSandboxPhoneNumberResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VerifySMSSandboxPhoneNumberResult",
 }) as any as S.Schema<VerifySMSSandboxPhoneNumberResult>;
-
-//# Errors
-export class AuthorizationErrorException extends S.TaggedErrorClass<AuthorizationErrorException>()(
-  "AuthorizationErrorException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "AuthorizationError", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class InternalErrorException extends S.TaggedErrorClass<InternalErrorException>()(
-  "InternalErrorException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InternalError", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidParameter", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "NotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class RequestLimitExceeded extends S.TaggedErrorClass<RequestLimitExceeded>()(
-  "RequestLimitExceeded",
-  {},
-).pipe(C.withThrottlingError) {}
-export class InvalidClientTokenId extends S.TaggedErrorClass<InvalidClientTokenId>()(
-  "InvalidClientTokenId",
-  {},
-).pipe(C.withAuthError) {}
-export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
-  "ThrottledException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "Throttled", httpResponseCode: 429 }),
-    T.HttpError(429),
-  ),
-).pipe(C.withThrottlingError) {}
-export class FilterPolicyLimitExceededException extends S.TaggedErrorClass<FilterPolicyLimitExceededException>()(
-  "FilterPolicyLimitExceededException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "FilterPolicyLimitExceeded",
-      httpResponseCode: 403,
-    }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class ReplayLimitExceededException extends S.TaggedErrorClass<ReplayLimitExceededException>()(
-  "ReplayLimitExceededException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ReplayLimitExceeded", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class SubscriptionLimitExceededException extends S.TaggedErrorClass<SubscriptionLimitExceededException>()(
-  "SubscriptionLimitExceededException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "SubscriptionLimitExceeded",
-      httpResponseCode: 403,
-    }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class OptedOutException extends S.TaggedErrorClass<OptedOutException>()(
-  "OptedOutException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "OptedOut", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class UserErrorException extends S.TaggedErrorClass<UserErrorException>()(
-  "UserErrorException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "UserError", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ConcurrentAccessException extends S.TaggedErrorClass<ConcurrentAccessException>()(
-  "ConcurrentAccessException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ConcurrentAccess", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidSecurityException extends S.TaggedErrorClass<InvalidSecurityException>()(
-  "InvalidSecurityException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidSecurity", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class StaleTagException extends S.TaggedErrorClass<StaleTagException>()(
-  "StaleTagException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "StaleTag", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TagLimitExceededException extends S.TaggedErrorClass<TagLimitExceededException>()(
-  "TagLimitExceededException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TagLimitExceeded", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TagPolicyException extends S.TaggedErrorClass<TagPolicyException>()(
-  "TagPolicyException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TagPolicy", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TopicLimitExceededException extends S.TaggedErrorClass<TopicLimitExceededException>()(
-  "TopicLimitExceededException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "TopicLimitExceeded", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 404 }),
-    T.HttpError(404),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
-  "InvalidStateException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidState", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.String },
-  T.all(
-    T.AwsQueryError({ code: "ValidationException", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class EndpointDisabledException extends S.TaggedErrorClass<EndpointDisabledException>()(
-  "EndpointDisabledException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "EndpointDisabled", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterValueException extends S.TaggedErrorClass<InvalidParameterValueException>()(
-  "InvalidParameterValueException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ParameterValueInvalid", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class KMSAccessDeniedException extends S.TaggedErrorClass<KMSAccessDeniedException>()(
-  "KMSAccessDeniedException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "KMSAccessDenied", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError, C.withAuthError) {}
-export class KMSDisabledException extends S.TaggedErrorClass<KMSDisabledException>()(
-  "KMSDisabledException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "KMSDisabled", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class KMSInvalidStateException extends S.TaggedErrorClass<KMSInvalidStateException>()(
-  "KMSInvalidStateException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "KMSInvalidState", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class KMSNotFoundException extends S.TaggedErrorClass<KMSNotFoundException>()(
-  "KMSNotFoundException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "KMSNotFound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class KMSOptInRequired extends S.TaggedErrorClass<KMSOptInRequired>()(
-  "KMSOptInRequired",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "KMSOptInRequired", httpResponseCode: 403 }),
-    T.HttpError(403),
-  ),
-).pipe(C.withAuthError) {}
-export class KMSThrottlingException extends S.TaggedErrorClass<KMSThrottlingException>()(
-  "KMSThrottlingException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "KMSThrottling", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class PlatformApplicationDisabledException extends S.TaggedErrorClass<PlatformApplicationDisabledException>()(
-  "PlatformApplicationDisabledException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "PlatformApplicationDisabled",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class BatchEntryIdsNotDistinctException extends S.TaggedErrorClass<BatchEntryIdsNotDistinctException>()(
-  "BatchEntryIdsNotDistinctException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "BatchEntryIdsNotDistinct",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class BatchRequestTooLongException extends S.TaggedErrorClass<BatchRequestTooLongException>()(
-  "BatchRequestTooLongException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "BatchRequestTooLong", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class EmptyBatchRequestException extends S.TaggedErrorClass<EmptyBatchRequestException>()(
-  "EmptyBatchRequestException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "EmptyBatchRequest", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidBatchEntryIdException extends S.TaggedErrorClass<InvalidBatchEntryIdException>()(
-  "InvalidBatchEntryIdException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidBatchEntryId", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class TooManyEntriesInBatchRequestException extends S.TaggedErrorClass<TooManyEntriesInBatchRequestException>()(
-  "TooManyEntriesInBatchRequestException",
-  { message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({
-      code: "TooManyEntriesInBatchRequest",
-      httpResponseCode: 400,
-    }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class VerificationException extends S.TaggedErrorClass<VerificationException>()(
-  "VerificationException",
-  { Message: S.String, Status: S.String },
-) {}
-
-//# Operations
 export type AddPermissionError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -1904,6 +1901,7 @@ export const addPermission: API.OperationMethod<
   retry: Retry,
   operationName: "AddPermission",
 }));
+
 export type CheckIfPhoneNumberIsOptedOutError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -1936,6 +1934,7 @@ export const checkIfPhoneNumberIsOptedOut: API.OperationMethod<
   retry: Retry,
   operationName: "CheckIfPhoneNumberIsOptedOut",
 }));
+
 export type ConfirmSubscriptionError =
   | AuthorizationErrorException
   | FilterPolicyLimitExceededException
@@ -1973,6 +1972,7 @@ export const confirmSubscription: API.OperationMethod<
   retry: Retry,
   operationName: "ConfirmSubscription",
 }));
+
 export type CreatePlatformApplicationError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2035,6 +2035,7 @@ export const createPlatformApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePlatformApplication",
 }));
+
 export type CreatePlatformEndpointError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2080,6 +2081,7 @@ export const createPlatformEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePlatformEndpoint",
 }));
+
 export type CreateSMSSandboxPhoneNumberError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2121,6 +2123,7 @@ export const createSMSSandboxPhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSMSSandboxPhoneNumber",
 }));
+
 export type CreateTopicError =
   | AuthorizationErrorException
   | ConcurrentAccessException
@@ -2162,6 +2165,7 @@ export const createTopic: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTopic",
 }));
+
 export type DeleteEndpointError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2196,6 +2200,7 @@ export const deleteEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEndpoint",
 }));
+
 export type DeletePlatformApplicationError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2228,6 +2233,7 @@ export const deletePlatformApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePlatformApplication",
 }));
+
 export type DeleteSMSSandboxPhoneNumberError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2269,6 +2275,7 @@ export const deleteSMSSandboxPhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSMSSandboxPhoneNumber",
 }));
+
 export type DeleteTopicError =
   | AuthorizationErrorException
   | ConcurrentAccessException
@@ -2311,6 +2318,7 @@ export const deleteTopic: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTopic",
 }));
+
 export type GetDataProtectionPolicyError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2345,6 +2353,7 @@ export const getDataProtectionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataProtectionPolicy",
 }));
+
 export type GetEndpointAttributesError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2378,6 +2387,7 @@ export const getEndpointAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "GetEndpointAttributes",
 }));
+
 export type GetPlatformApplicationAttributesError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2411,6 +2421,7 @@ export const getPlatformApplicationAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "GetPlatformApplicationAttributes",
 }));
+
 export type GetSMSAttributesError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2440,6 +2451,7 @@ export const getSMSAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "GetSMSAttributes",
 }));
+
 export type GetSMSSandboxAccountStatusError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2475,6 +2487,7 @@ export const getSMSSandboxAccountStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetSMSSandboxAccountStatus",
 }));
+
 export type GetSubscriptionAttributesError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2502,6 +2515,7 @@ export const getSubscriptionAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "GetSubscriptionAttributes",
 }));
+
 export type GetTopicAttributesError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2536,6 +2550,7 @@ export const getTopicAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "GetTopicAttributes",
 }));
+
 export type ListEndpointsByPlatformApplicationError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2597,6 +2612,7 @@ export const listEndpointsByPlatformApplication: API.OperationMethod<
     items: "Endpoints",
   } as const,
 }));
+
 export type ListOriginationNumbersError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2649,6 +2665,7 @@ export const listOriginationNumbers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPhoneNumbersOptedOutError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2704,6 +2721,7 @@ export const listPhoneNumbersOptedOut: API.OperationMethod<
     items: "phoneNumbers",
   } as const,
 }));
+
 export type ListPlatformApplicationsError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2759,6 +2777,7 @@ export const listPlatformApplications: API.OperationMethod<
     items: "PlatformApplications",
   } as const,
 }));
+
 export type ListSMSSandboxPhoneNumbersError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2819,6 +2838,7 @@ export const listSMSSandboxPhoneNumbers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSubscriptionsError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2869,6 +2889,7 @@ export const listSubscriptions: API.OperationMethod<
     items: "Subscriptions",
   } as const,
 }));
+
 export type ListSubscriptionsByTopicError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -2925,6 +2946,7 @@ export const listSubscriptionsByTopic: API.OperationMethod<
     items: "Subscriptions",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AuthorizationErrorException
   | ConcurrentAccessException
@@ -2959,6 +2981,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTopicsError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -3009,6 +3032,7 @@ export const listTopics: API.OperationMethod<
     items: "Topics",
   } as const,
 }));
+
 export type OptInPhoneNumberError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -3039,6 +3063,7 @@ export const optInPhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "OptInPhoneNumber",
 }));
+
 export type PublishError =
   | AuthorizationErrorException
   | EndpointDisabledException
@@ -3112,6 +3137,7 @@ export const publish: API.OperationMethod<
   retry: Retry,
   operationName: "Publish",
 }));
+
 export type PublishBatchError =
   | AuthorizationErrorException
   | BatchEntryIdsNotDistinctException
@@ -3208,6 +3234,7 @@ export const publishBatch: API.OperationMethod<
   retry: Retry,
   operationName: "PublishBatch",
 }));
+
 export type PutDataProtectionPolicyError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -3242,6 +3269,7 @@ export const putDataProtectionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutDataProtectionPolicy",
 }));
+
 export type RemovePermissionError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -3277,6 +3305,7 @@ export const removePermission: API.OperationMethod<
   retry: Retry,
   operationName: "RemovePermission",
 }));
+
 export type SetEndpointAttributesError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -3310,6 +3339,7 @@ export const setEndpointAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "SetEndpointAttributes",
 }));
+
 export type SetPlatformApplicationAttributesError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -3345,6 +3375,7 @@ export const setPlatformApplicationAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "SetPlatformApplicationAttributes",
 }));
+
 export type SetSMSAttributesError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -3382,6 +3413,7 @@ export const setSMSAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "SetSMSAttributes",
 }));
+
 export type SetSubscriptionAttributesError =
   | AuthorizationErrorException
   | FilterPolicyLimitExceededException
@@ -3414,6 +3446,7 @@ export const setSubscriptionAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "SetSubscriptionAttributes",
 }));
+
 export type SetTopicAttributesError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -3451,6 +3484,7 @@ export const setTopicAttributes: API.OperationMethod<
   retry: Retry,
   operationName: "SetTopicAttributes",
 }));
+
 export type SubscribeError =
   | AuthorizationErrorException
   | FilterPolicyLimitExceededException
@@ -3497,6 +3531,7 @@ export const subscribe: API.OperationMethod<
   retry: Retry,
   operationName: "Subscribe",
 }));
+
 export type TagResourceError =
   | AuthorizationErrorException
   | ConcurrentAccessException
@@ -3550,6 +3585,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UnsubscribeError =
   | AuthorizationErrorException
   | InternalErrorException
@@ -3586,6 +3622,7 @@ export const unsubscribe: API.OperationMethod<
   retry: Retry,
   operationName: "Unsubscribe",
 }));
+
 export type UntagResourceError =
   | AuthorizationErrorException
   | ConcurrentAccessException
@@ -3624,6 +3661,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type VerifySMSSandboxPhoneNumberError =
   | AuthorizationErrorException
   | InternalErrorException

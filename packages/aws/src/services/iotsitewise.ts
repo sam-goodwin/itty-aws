@@ -87,104 +87,78 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictingOperationException extends S.TaggedErrorClass<ConflictingOperationException>()(
+  "ConflictingOperationException",
+  { message: S.String, resourceId: S.String, resourceArn: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
+  "InternalFailureException",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { message: S.String },
+  T.HttpError(410),
+).pipe(C.withBadRequestError) {}
+export class PreconditionFailedException extends S.TaggedErrorClass<PreconditionFailedException>()(
+  "PreconditionFailedException",
+  { message: S.String, resourceId: S.String, resourceArn: S.String },
+  T.HttpError(412),
+) {}
+export class QueryTimeoutException extends S.TaggedErrorClass<QueryTimeoutException>()(
+  "QueryTimeoutException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { message: S.String, resourceId: S.String, resourceArn: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { message: S.String },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { message: S.optional(S.String), resourceName: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { message: S.String },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type CustomID = string;
 export type ClientToken = string;
-export type ErrorMessage = string;
-export type ResourceId = string;
-export type ResourceArn = string;
-export type PropertyAlias = string;
-export type ID = string;
-export type AssetErrorMessage = string;
-export type EntryId = string;
-export type AssetPropertyAlias = string;
-export type Resolution = string;
-export type NextToken = string;
-export type BatchGetAssetPropertyAggregatesMaxResults = number;
-export type AggregatedDoubleValue = number;
-export type PropertyValueStringValue = string;
-export type PropertyValueIntegerValue = number;
-export type PropertyValueDoubleValue = number;
-export type PropertyValueBooleanValue = boolean;
-export type TimeInSeconds = number;
-export type OffsetInNanos = number;
-export type BatchGetAssetPropertyValueHistoryMaxResults = number;
-export type IdentityId = string;
-export type IamArn = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ARN = string;
-export type Name = string;
-export type ExternalId = string;
-export type Description = string;
-export type DetailedErrorMessage = string;
-export type PropertyUnit = string;
-export type DefaultValue = string;
-export type Expression = string;
-export type VariableName = string;
-export type Macro = string;
-export type Interval = string;
-export type Offset = string;
-export type ETag = string;
-export type SelectAll = string;
-export type Bucket = string;
-export type AdaptiveIngestion = boolean;
-export type DeleteFilesAfterImport = boolean;
-export type RestrictedName = string;
-export type RestrictedDescription = string;
-export type InputProperties = string;
-export type ResultProperty = string;
-export type ComputationModelDataBindingVariable = string;
-export type DashboardDefinition = string;
-export type GatewayName = string;
-export type CoreDeviceThingName = string;
-export type IotCoreThingName = string;
-export type GatewayVersion = string;
-export type Email = string | redacted.Redacted<string>;
-export type ImageFileData = Uint8Array;
-export type PortalTypeKey = string;
-export type Url = string;
-export type MonitorErrorMessage = string;
-export type SSOApplicationId = string;
-export type ActionPayloadString = string;
-export type ExcludeProperties = boolean;
-export type PropertyNotificationTopic = string;
-export type AssetModelVersionFilter = string;
-export type Version = string;
-export type ComputationModelVersionFilter = string;
-export type ComputationModelExecutionSummaryKey = string;
-export type ComputationModelExecutionSummaryValue = string;
-export type ExecutionResultKey = string;
-export type ExecutionResultValue = string;
-export type ExecutionDetailsKey = string;
-export type ExecutionDetailsValue = string;
-export type CapabilityNamespace = string;
-export type CapabilityConfiguration = string;
-export type PortalClientId = string;
-export type NumberOfDays = number;
-export type Unlimited = boolean;
-export type DisallowIngestNullNaN = boolean;
-export type TimeSeriesId = string;
-export type QueryStatement = string;
-export type ExecuteQueryNextToken = string;
-export type ExecuteQueryMaxResults = number;
-export type ScalarValue = string;
-export type GetAssetPropertyValueAggregatesMaxResults = number;
-export type GetAssetPropertyValueHistoryMaxResults = number;
-export type IntervalInSeconds = number;
-export type MaxInterpolatedResults = number;
-export type InterpolationType = string;
-export type IntervalWindowInSeconds = number;
-export type ConversationId = string;
-export type MessageInput = string | redacted.Redacted<string>;
-export type MaxResults = number;
-export type AmazonResourceName = string;
-export type MatchByPropertyName = boolean;
-export type CreateMissingProperty = boolean;
-export type KmsKeyId = string;
-export type ExceptionMessage = string;
-
-//# Schemas
 export interface AssociateAssetsRequest {
   assetId: string;
   hierarchyId: string;
@@ -216,6 +190,7 @@ export const AssociateAssetsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateAssetsResponse",
 }) as any as S.Schema<AssociateAssetsResponse>;
+export type PropertyAlias = string;
 export interface AssociateTimeSeriesToAssetPropertyRequest {
   alias: string;
   assetId: string;
@@ -247,6 +222,7 @@ export const AssociateTimeSeriesToAssetPropertyResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateTimeSeriesToAssetPropertyResponse",
   }) as any as S.Schema<AssociateTimeSeriesToAssetPropertyResponse>;
+export type ID = string;
 export type IDs = string[];
 export const IDs = /*@__PURE__*/ S.Array(S.String);
 export interface BatchAssociateProjectAssetsRequest {
@@ -274,6 +250,8 @@ export const BatchAssociateProjectAssetsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchAssociateProjectAssetsRequest>;
 export type AssetErrorCode = "INTERNAL_FAILURE" | (string & {});
 export const AssetErrorCode = /*@__PURE__*/ S.String;
+
+export type AssetErrorMessage = string;
 export interface AssetErrorDetails {
   assetId: string;
   code: AssetErrorCode;
@@ -333,6 +311,8 @@ export const BatchDisassociateProjectAssetsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchDisassociateProjectAssetsResponse",
 }) as any as S.Schema<BatchDisassociateProjectAssetsResponse>;
+export type EntryId = string;
+export type AssetPropertyAlias = string;
 export type AggregateType =
   | "AVERAGE"
   | "COUNT"
@@ -342,14 +322,18 @@ export type AggregateType =
   | "STANDARD_DEVIATION"
   | (string & {});
 export const AggregateType = /*@__PURE__*/ S.String;
+
 export type AggregateTypes = AggregateType[];
 export const AggregateTypes = /*@__PURE__*/ S.Array(AggregateType);
+export type Resolution = string;
 export type Quality = "GOOD" | "BAD" | "UNCERTAIN" | (string & {});
 export const Quality = /*@__PURE__*/ S.String;
+
 export type Qualities = Quality[];
 export const Qualities = /*@__PURE__*/ S.Array(Quality);
 export type TimeOrdering = "ASCENDING" | "DESCENDING" | (string & {});
 export const TimeOrdering = /*@__PURE__*/ S.String;
+
 export interface BatchGetAssetPropertyAggregatesEntry {
   entryId: string;
   assetId?: string;
@@ -384,6 +368,8 @@ export type BatchGetAssetPropertyAggregatesEntries =
 export const BatchGetAssetPropertyAggregatesEntries = /*@__PURE__*/ S.Array(
   BatchGetAssetPropertyAggregatesEntry,
 );
+export type NextToken = string;
+export type BatchGetAssetPropertyAggregatesMaxResults = number;
 export interface BatchGetAssetPropertyAggregatesRequest {
   entries: BatchGetAssetPropertyAggregatesEntry[];
   nextToken?: string;
@@ -414,6 +400,8 @@ export type BatchGetAssetPropertyAggregatesErrorCode =
   | "AccessDeniedException"
   | (string & {});
 export const BatchGetAssetPropertyAggregatesErrorCode = /*@__PURE__*/ S.String;
+
+export type ErrorMessage = string;
 export interface BatchGetAssetPropertyAggregatesErrorEntry {
   errorCode: BatchGetAssetPropertyAggregatesErrorCode;
   errorMessage: string;
@@ -433,6 +421,7 @@ export type BatchGetAssetPropertyAggregatesErrorEntries =
   BatchGetAssetPropertyAggregatesErrorEntry[];
 export const BatchGetAssetPropertyAggregatesErrorEntries =
   /*@__PURE__*/ S.Array(BatchGetAssetPropertyAggregatesErrorEntry);
+export type AggregatedDoubleValue = number;
 export interface Aggregates {
   average?: number;
   count?: number;
@@ -483,6 +472,7 @@ export const BatchGetAssetPropertyAggregatesSuccessEntries =
   /*@__PURE__*/ S.Array(BatchGetAssetPropertyAggregatesSuccessEntry);
 export type BatchEntryCompletionStatus = "SUCCESS" | "ERROR" | (string & {});
 export const BatchEntryCompletionStatus = /*@__PURE__*/ S.String;
+
 export interface BatchGetAssetPropertyAggregatesErrorInfo {
   errorCode: BatchGetAssetPropertyAggregatesErrorCode;
   errorTimestamp: Date;
@@ -580,6 +570,7 @@ export type BatchGetAssetPropertyValueErrorCode =
   | "AccessDeniedException"
   | (string & {});
 export const BatchGetAssetPropertyValueErrorCode = /*@__PURE__*/ S.String;
+
 export interface BatchGetAssetPropertyValueErrorEntry {
   errorCode: BatchGetAssetPropertyValueErrorCode;
   errorMessage: string;
@@ -600,8 +591,13 @@ export type BatchGetAssetPropertyValueErrorEntries =
 export const BatchGetAssetPropertyValueErrorEntries = /*@__PURE__*/ S.Array(
   BatchGetAssetPropertyValueErrorEntry,
 );
+export type PropertyValueStringValue = string;
+export type PropertyValueIntegerValue = number;
+export type PropertyValueDoubleValue = number;
+export type PropertyValueBooleanValue = boolean;
 export type RawValueType = "D" | "B" | "S" | "I" | "U" | (string & {});
 export const RawValueType = /*@__PURE__*/ S.String;
+
 export interface PropertyValueNullValue {
   valueType: RawValueType;
 }
@@ -626,6 +622,8 @@ export const Variant = /*@__PURE__*/ S.suspend(() =>
     nullValue: S.optional(PropertyValueNullValue),
   }),
 ).annotate({ identifier: "Variant" }) as any as S.Schema<Variant>;
+export type TimeInSeconds = number;
+export type OffsetInNanos = number;
 export interface TimeInNanos {
   timeInSeconds: number;
   offsetInNanos?: number;
@@ -743,6 +741,7 @@ export type BatchGetAssetPropertyValueHistoryEntries =
 export const BatchGetAssetPropertyValueHistoryEntries = /*@__PURE__*/ S.Array(
   BatchGetAssetPropertyValueHistoryEntry,
 );
+export type BatchGetAssetPropertyValueHistoryMaxResults = number;
 export interface BatchGetAssetPropertyValueHistoryRequest {
   entries: BatchGetAssetPropertyValueHistoryEntry[];
   nextToken?: string;
@@ -774,6 +773,7 @@ export type BatchGetAssetPropertyValueHistoryErrorCode =
   | (string & {});
 export const BatchGetAssetPropertyValueHistoryErrorCode =
   /*@__PURE__*/ S.String;
+
 export interface BatchGetAssetPropertyValueHistoryErrorEntry {
   errorCode: BatchGetAssetPropertyValueHistoryErrorCode;
   errorMessage: string;
@@ -919,6 +919,7 @@ export type BatchPutAssetPropertyValueErrorCode =
   | "AccessDeniedException"
   | (string & {});
 export const BatchPutAssetPropertyValueErrorCode = /*@__PURE__*/ S.String;
+
 export type Timestamps = TimeInNanos[];
 export const Timestamps = /*@__PURE__*/ S.Array(TimeInNanos);
 export interface BatchPutAssetPropertyError {
@@ -961,6 +962,7 @@ export const BatchPutAssetPropertyValueResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchPutAssetPropertyValueResponse",
 }) as any as S.Schema<BatchPutAssetPropertyValueResponse>;
+export type IdentityId = string;
 export interface UserIdentity {
   id: string;
 }
@@ -973,6 +975,7 @@ export interface GroupIdentity {
 export const GroupIdentity = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ id: S.String }),
 ).annotate({ identifier: "GroupIdentity" }) as any as S.Schema<GroupIdentity>;
+export type IamArn = string;
 export interface IAMUserIdentity {
   arn: string;
 }
@@ -1029,6 +1032,9 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 export type Permission = "ADMINISTRATOR" | "VIEWER" | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
+
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1061,6 +1067,7 @@ export const CreateAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessPolicyRequest",
 }) as any as S.Schema<CreateAccessPolicyRequest>;
+export type ARN = string;
 export interface CreateAccessPolicyResponse {
   accessPolicyId: string;
   accessPolicyArn: string;
@@ -1070,6 +1077,9 @@ export const CreateAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessPolicyResponse",
 }) as any as S.Schema<CreateAccessPolicyResponse>;
+export type Name = string;
+export type ExternalId = string;
+export type Description = string;
 export interface CreateAssetRequest {
   assetName: string;
   assetModelId: string;
@@ -1109,13 +1119,17 @@ export type AssetState =
   | "FAILED"
   | (string & {});
 export const AssetState = /*@__PURE__*/ S.String;
+
 export type ErrorCode = "VALIDATION_ERROR" | "INTERNAL_FAILURE" | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
+
 export type DetailedErrorCode =
   | "INCOMPATIBLE_COMPUTE_LOCATION"
   | "INCOMPATIBLE_FORWARDING_CONFIGURATION"
   | (string & {});
 export const DetailedErrorCode = /*@__PURE__*/ S.String;
+
+export type DetailedErrorMessage = string;
 export interface DetailedError {
   code: DetailedErrorCode;
   message: string;
@@ -1160,6 +1174,7 @@ export type AssetModelType =
   | "INTERFACE"
   | (string & {});
 export const AssetModelType = /*@__PURE__*/ S.String;
+
 export type PropertyDataType =
   | "STRING"
   | "INTEGER"
@@ -1168,6 +1183,9 @@ export type PropertyDataType =
   | "STRUCT"
   | (string & {});
 export const PropertyDataType = /*@__PURE__*/ S.String;
+
+export type PropertyUnit = string;
+export type DefaultValue = string;
 export interface Attribute {
   defaultValue?: string;
 }
@@ -1176,6 +1194,7 @@ export const Attribute = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Attribute" }) as any as S.Schema<Attribute>;
 export type ForwardingConfigState = "DISABLED" | "ENABLED" | (string & {});
 export const ForwardingConfigState = /*@__PURE__*/ S.String;
+
 export interface ForwardingConfig {
   state: ForwardingConfigState;
 }
@@ -1198,6 +1217,9 @@ export interface Measurement {
 export const Measurement = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ processingConfig: S.optional(MeasurementProcessingConfig) }),
 ).annotate({ identifier: "Measurement" }) as any as S.Schema<Measurement>;
+export type Expression = string;
+export type VariableName = string;
+export type Macro = string;
 export interface AssetModelPropertyPathSegment {
   id?: string;
   name?: string;
@@ -1236,6 +1258,7 @@ export type ExpressionVariables = ExpressionVariable[];
 export const ExpressionVariables = /*@__PURE__*/ S.Array(ExpressionVariable);
 export type ComputeLocation = "EDGE" | "CLOUD" | (string & {});
 export const ComputeLocation = /*@__PURE__*/ S.String;
+
 export interface TransformProcessingConfig {
   computeLocation: ComputeLocation;
   forwardingConfig?: ForwardingConfig;
@@ -1260,6 +1283,8 @@ export const Transform = /*@__PURE__*/ S.suspend(() =>
     processingConfig: S.optional(TransformProcessingConfig),
   }),
 ).annotate({ identifier: "Transform" }) as any as S.Schema<Transform>;
+export type Interval = string;
+export type Offset = string;
 export interface TumblingWindow {
   interval: string;
   offset?: string;
@@ -1426,6 +1451,7 @@ export type AssetModelState =
   | "FAILED"
   | (string & {});
 export const AssetModelState = /*@__PURE__*/ S.String;
+
 export interface AssetModelStatus {
   state: AssetModelState;
   error?: ErrorDetails;
@@ -1449,8 +1475,11 @@ export const CreateAssetModelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAssetModelResponse",
 }) as any as S.Schema<CreateAssetModelResponse>;
+export type ETag = string;
+export type SelectAll = string;
 export type AssetModelVersionType = "LATEST" | "ACTIVE" | (string & {});
 export const AssetModelVersionType = /*@__PURE__*/ S.String;
+
 export interface CreateAssetModelCompositeModelRequest {
   assetModelId: string;
   assetModelCompositeModelExternalId?: string;
@@ -1531,6 +1560,7 @@ export const CreateAssetModelCompositeModelResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateAssetModelCompositeModelResponse",
 }) as any as S.Schema<CreateAssetModelCompositeModelResponse>;
+export type Bucket = string;
 export interface File {
   bucket: string;
   key: string;
@@ -1565,6 +1595,7 @@ export type ColumnName =
   | "VALUE"
   | (string & {});
 export const ColumnName = /*@__PURE__*/ S.String;
+
 export type ColumnNames = ColumnName[];
 export const ColumnNames = /*@__PURE__*/ S.Array(ColumnName);
 export interface Csv {
@@ -1592,6 +1623,8 @@ export const JobConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JobConfiguration",
 }) as any as S.Schema<JobConfiguration>;
+export type AdaptiveIngestion = boolean;
+export type DeleteFilesAfterImport = boolean;
 export interface CreateBulkImportJobRequest {
   jobName: string;
   jobRoleArn: string;
@@ -1632,6 +1665,7 @@ export type JobStatus =
   | "COMPLETED_WITH_FAILURES"
   | (string & {});
 export const JobStatus = /*@__PURE__*/ S.String;
+
 export interface CreateBulkImportJobResponse {
   jobId: string;
   jobName: string;
@@ -1642,6 +1676,10 @@ export const CreateBulkImportJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBulkImportJobResponse",
 }) as any as S.Schema<CreateBulkImportJobResponse>;
+export type RestrictedName = string;
+export type RestrictedDescription = string;
+export type InputProperties = string;
+export type ResultProperty = string;
 export interface ComputationModelAnomalyDetectionConfiguration {
   inputProperties: string;
   resultProperty: string;
@@ -1662,6 +1700,7 @@ export const ComputationModelConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ComputationModelConfiguration",
 }) as any as S.Schema<ComputationModelConfiguration>;
+export type ComputationModelDataBindingVariable = string;
 export interface AssetModelPropertyBindingValue {
   assetModelId: string;
   propertyId: string;
@@ -1756,6 +1795,7 @@ export type ComputationModelState =
   | "FAILED"
   | (string & {});
 export const ComputationModelState = /*@__PURE__*/ S.String;
+
 export interface ComputationModelStatus {
   state: ComputationModelState;
   error?: ErrorDetails;
@@ -1779,6 +1819,7 @@ export const CreateComputationModelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateComputationModelResponse",
 }) as any as S.Schema<CreateComputationModelResponse>;
+export type DashboardDefinition = string;
 export interface CreateDashboardRequest {
   projectId: string;
   dashboardName: string;
@@ -1819,8 +1860,10 @@ export const CreateDashboardResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDashboardResponse>;
 export type DatasetSourceType = "KENDRA" | (string & {});
 export const DatasetSourceType = /*@__PURE__*/ S.String;
+
 export type DatasetSourceFormat = "KNOWLEDGE_BASE" | (string & {});
 export const DatasetSourceFormat = /*@__PURE__*/ S.String;
+
 export interface KendraSourceDetail {
   knowledgeBaseArn: string;
   roleArn: string;
@@ -1885,6 +1928,7 @@ export type DatasetState =
   | "FAILED"
   | (string & {});
 export const DatasetState = /*@__PURE__*/ S.String;
+
 export interface DatasetStatus {
   state: DatasetState;
   error?: ErrorDetails;
@@ -1906,18 +1950,21 @@ export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetResponse",
 }) as any as S.Schema<CreateDatasetResponse>;
+export type GatewayName = string;
 export interface Greengrass {
   groupArn: string;
 }
 export const Greengrass = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ groupArn: S.String }),
 ).annotate({ identifier: "Greengrass" }) as any as S.Schema<Greengrass>;
+export type CoreDeviceThingName = string;
 export type CoreDeviceOperatingSystem =
   | "LINUX_AARCH64"
   | "LINUX_AMD64"
   | "WINDOWS_AMD64"
   | (string & {});
 export const CoreDeviceOperatingSystem = /*@__PURE__*/ S.String;
+
 export interface GreengrassV2 {
   coreDeviceThingName: string;
   coreDeviceOperatingSystem?: CoreDeviceOperatingSystem;
@@ -1928,6 +1975,7 @@ export const GreengrassV2 = /*@__PURE__*/ S.suspend(() =>
     coreDeviceOperatingSystem: S.optional(CoreDeviceOperatingSystem),
   }),
 ).annotate({ identifier: "GreengrassV2" }) as any as S.Schema<GreengrassV2>;
+export type IotCoreThingName = string;
 export interface SiemensIE {
   iotCoreThingName: string;
 }
@@ -1948,6 +1996,7 @@ export const GatewayPlatform = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GatewayPlatform",
 }) as any as S.Schema<GatewayPlatform>;
+export type GatewayVersion = string;
 export interface CreateGatewayRequest {
   gatewayName: string;
   gatewayPlatform: GatewayPlatform;
@@ -1982,8 +2031,11 @@ export const CreateGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGatewayResponse",
 }) as any as S.Schema<CreateGatewayResponse>;
+export type Email = string | redacted.Redacted<string>;
+export type ImageFileData = Uint8Array;
 export type ImageFileType = "PNG" | (string & {});
 export const ImageFileType = /*@__PURE__*/ S.String;
+
 export interface ImageFile {
   data: Uint8Array;
   type: ImageFileType;
@@ -1993,6 +2045,7 @@ export const ImageFile = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ImageFile" }) as any as S.Schema<ImageFile>;
 export type AuthMode = "IAM" | "SSO" | (string & {});
 export const AuthMode = /*@__PURE__*/ S.String;
+
 export interface Alarms {
   alarmRoleArn: string;
   notificationLambdaArn?: string;
@@ -2008,6 +2061,8 @@ export type PortalType =
   | "SITEWISE_PORTAL_V2"
   | (string & {});
 export const PortalType = /*@__PURE__*/ S.String;
+
+export type PortalTypeKey = string;
 export type PortalTools = string[];
 export const PortalTools = /*@__PURE__*/ S.Array(S.String);
 export interface PortalTypeEntry {
@@ -2066,6 +2121,7 @@ export const CreatePortalRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePortalRequest",
 }) as any as S.Schema<CreatePortalRequest>;
+export type Url = string;
 export type PortalState =
   | "CREATING"
   | "PENDING"
@@ -2075,12 +2131,15 @@ export type PortalState =
   | "FAILED"
   | (string & {});
 export const PortalState = /*@__PURE__*/ S.String;
+
 export type MonitorErrorCode =
   | "INTERNAL_FAILURE"
   | "VALIDATION_ERROR"
   | "LIMIT_EXCEEDED"
   | (string & {});
 export const MonitorErrorCode = /*@__PURE__*/ S.String;
+
+export type MonitorErrorMessage = string;
 export interface MonitorErrorDetails {
   code?: MonitorErrorCode;
   message?: string;
@@ -2100,6 +2159,7 @@ export interface PortalStatus {
 export const PortalStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ state: PortalState, error: S.optional(MonitorErrorDetails) }),
 ).annotate({ identifier: "PortalStatus" }) as any as S.Schema<PortalStatus>;
+export type SSOApplicationId = string;
 export interface CreatePortalResponse {
   portalId: string;
   portalArn: string;
@@ -2634,6 +2694,7 @@ export const TargetResource = /*@__PURE__*/ S.suspend(() =>
     computationModelId: S.optional(S.String),
   }),
 ).annotate({ identifier: "TargetResource" }) as any as S.Schema<TargetResource>;
+export type ActionPayloadString = string;
 export interface ActionPayload {
   stringValue: string;
 }
@@ -2666,6 +2727,7 @@ export const DescribeActionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeActionResponse",
 }) as any as S.Schema<DescribeActionResponse>;
+export type ExcludeProperties = boolean;
 export interface DescribeAssetRequest {
   assetId: string;
   excludeProperties?: boolean;
@@ -2689,8 +2751,10 @@ export const DescribeAssetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAssetRequest",
 }) as any as S.Schema<DescribeAssetRequest>;
+export type PropertyNotificationTopic = string;
 export type PropertyNotificationState = "ENABLED" | "DISABLED" | (string & {});
 export const PropertyNotificationState = /*@__PURE__*/ S.String;
+
 export interface PropertyNotification {
   topic: string;
   state: PropertyNotificationState;
@@ -2914,6 +2978,7 @@ export const DescribeAssetCompositeModelResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAssetCompositeModelResponse",
 }) as any as S.Schema<DescribeAssetCompositeModelResponse>;
+export type AssetModelVersionFilter = string;
 export interface DescribeAssetModelRequest {
   assetModelId: string;
   excludeProperties?: boolean;
@@ -3034,6 +3099,7 @@ export type AssetModelCompositeModelSummaries =
 export const AssetModelCompositeModelSummaries = /*@__PURE__*/ S.Array(
   AssetModelCompositeModelSummary,
 );
+export type Version = string;
 export interface InterfaceRelationship {
   id: string;
 }
@@ -3373,6 +3439,7 @@ export const DescribeBulkImportJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeBulkImportJobResponse",
 }) as any as S.Schema<DescribeBulkImportJobResponse>;
+export type ComputationModelVersionFilter = string;
 export interface DescribeComputationModelRequest {
   computationModelId: string;
   computationModelVersion?: string;
@@ -3437,6 +3504,7 @@ export const DescribeComputationModelResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeComputationModelResponse>;
 export type ResolveToResourceType = "ASSET" | (string & {});
 export const ResolveToResourceType = /*@__PURE__*/ S.String;
+
 export interface DescribeComputationModelExecutionSummaryRequest {
   computationModelId: string;
   resolveToResourceType?: ResolveToResourceType;
@@ -3468,6 +3536,8 @@ export const DescribeComputationModelExecutionSummaryRequest =
   ).annotate({
     identifier: "DescribeComputationModelExecutionSummaryRequest",
   }) as any as S.Schema<DescribeComputationModelExecutionSummaryRequest>;
+export type ComputationModelExecutionSummaryKey = string;
+export type ComputationModelExecutionSummaryValue = string;
 export type ComputationModelExecutionSummary = {
   [key: string]: string | undefined;
 };
@@ -3595,12 +3665,14 @@ export type EncryptionType =
   | "KMS_BASED_ENCRYPTION"
   | (string & {});
 export const EncryptionType = /*@__PURE__*/ S.String;
+
 export type ConfigurationState =
   | "ACTIVE"
   | "UPDATE_IN_PROGRESS"
   | "UPDATE_FAILED"
   | (string & {});
 export const ConfigurationState = /*@__PURE__*/ S.String;
+
 export interface ConfigurationErrorDetails {
   code: ErrorCode;
   message: string;
@@ -3656,6 +3728,7 @@ export const DescribeExecutionRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeExecutionRequest>;
 export type ExecutionState = "RUNNING" | "COMPLETED" | "FAILED" | (string & {});
 export const ExecutionState = /*@__PURE__*/ S.String;
+
 export interface ExecutionStatus {
   state: ExecutionState;
 }
@@ -3664,11 +3737,15 @@ export const ExecutionStatus = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecutionStatus",
 }) as any as S.Schema<ExecutionStatus>;
+export type ExecutionResultKey = string;
+export type ExecutionResultValue = string;
 export type ExecutionResult = { [key: string]: string | undefined };
 export const ExecutionResult = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type ExecutionDetailsKey = string;
+export type ExecutionDetailsValue = string;
 export type ExecutionDetails = { [key: string]: string | undefined };
 export const ExecutionDetails = /*@__PURE__*/ S.Record(
   S.String,
@@ -3723,6 +3800,7 @@ export const DescribeGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeGatewayRequest",
 }) as any as S.Schema<DescribeGatewayRequest>;
+export type CapabilityNamespace = string;
 export type CapabilitySyncStatus =
   | "IN_SYNC"
   | "OUT_OF_SYNC"
@@ -3731,6 +3809,7 @@ export type CapabilitySyncStatus =
   | "NOT_APPLICABLE"
   | (string & {});
 export const CapabilitySyncStatus = /*@__PURE__*/ S.String;
+
 export interface GatewayCapabilitySummary {
   capabilityNamespace: string;
   capabilitySyncStatus: CapabilitySyncStatus;
@@ -3796,6 +3875,7 @@ export const DescribeGatewayCapabilityConfigurationRequest =
   ).annotate({
     identifier: "DescribeGatewayCapabilityConfigurationRequest",
   }) as any as S.Schema<DescribeGatewayCapabilityConfigurationRequest>;
+export type CapabilityConfiguration = string;
 export interface DescribeGatewayCapabilityConfigurationResponse {
   gatewayId: string;
   capabilityNamespace: string;
@@ -3830,6 +3910,7 @@ export const DescribeLoggingOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DescribeLoggingOptionsRequest>;
 export type LoggingLevel = "ERROR" | "INFO" | "OFF" | (string & {});
 export const LoggingLevel = /*@__PURE__*/ S.String;
+
 export interface LoggingOptions {
   level: LoggingLevel;
 }
@@ -3861,6 +3942,7 @@ export const DescribePortalRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePortalRequest",
 }) as any as S.Schema<DescribePortalRequest>;
+export type PortalClientId = string;
 export interface ImageLocation {
   id: string;
   url: string;
@@ -3969,6 +4051,7 @@ export type StorageType =
   | "MULTI_LAYER_STORAGE"
   | (string & {});
 export const StorageType = /*@__PURE__*/ S.String;
+
 export interface CustomerManagedS3Storage {
   s3ResourceArn: string;
   roleArn: string;
@@ -3991,6 +4074,9 @@ export type DisassociatedDataStorageState =
   | "DISABLED"
   | (string & {});
 export const DisassociatedDataStorageState = /*@__PURE__*/ S.String;
+
+export type NumberOfDays = number;
+export type Unlimited = boolean;
 export interface RetentionPeriod {
   numberOfDays?: number;
   unlimited?: boolean;
@@ -4005,6 +4091,7 @@ export const RetentionPeriod = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RetentionPeriod>;
 export type WarmTierState = "ENABLED" | "DISABLED" | (string & {});
 export const WarmTierState = /*@__PURE__*/ S.String;
+
 export interface WarmTierRetentionPeriod {
   numberOfDays?: number;
   unlimited?: boolean;
@@ -4017,6 +4104,7 @@ export const WarmTierRetentionPeriod = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WarmTierRetentionPeriod",
 }) as any as S.Schema<WarmTierRetentionPeriod>;
+export type DisallowIngestNullNaN = boolean;
 export interface DescribeStorageConfigurationResponse {
   storageType: StorageType;
   multiLayerStorage?: MultiLayerStorage;
@@ -4069,6 +4157,7 @@ export const DescribeTimeSeriesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeTimeSeriesRequest",
 }) as any as S.Schema<DescribeTimeSeriesRequest>;
+export type TimeSeriesId = string;
 export interface DescribeTimeSeriesResponse {
   assetId?: string;
   propertyId?: string;
@@ -4192,6 +4281,9 @@ export const ExecuteActionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecuteActionResponse",
 }) as any as S.Schema<ExecuteActionResponse>;
+export type QueryStatement = string;
+export type ExecuteQueryNextToken = string;
+export type ExecuteQueryMaxResults = number;
 export interface ExecuteQueryRequest {
   queryStatement: string;
   nextToken?: string;
@@ -4225,6 +4317,7 @@ export type ScalarType =
   | "STRING"
   | (string & {});
 export const ScalarType = /*@__PURE__*/ S.String;
+
 export interface ColumnType {
   scalarType?: ScalarType;
 }
@@ -4240,6 +4333,7 @@ export const ColumnInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ColumnInfo" }) as any as S.Schema<ColumnInfo>;
 export type ColumnsList = ColumnInfo[];
 export const ColumnsList = /*@__PURE__*/ S.Array(ColumnInfo);
+export type ScalarValue = string;
 export interface Datum {
   scalarValue?: string;
   arrayValue?: Datum[];
@@ -4288,6 +4382,7 @@ export const ExecuteQueryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExecuteQueryResponse",
 }) as any as S.Schema<ExecuteQueryResponse>;
+export type GetAssetPropertyValueAggregatesMaxResults = number;
 export interface GetAssetPropertyAggregatesRequest {
   assetId?: string;
   propertyId?: string;
@@ -4374,6 +4469,7 @@ export const GetAssetPropertyValueResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAssetPropertyValueResponse",
 }) as any as S.Schema<GetAssetPropertyValueResponse>;
+export type GetAssetPropertyValueHistoryMaxResults = number;
 export interface GetAssetPropertyValueHistoryRequest {
   assetId?: string;
   propertyId?: string;
@@ -4426,6 +4522,10 @@ export const GetAssetPropertyValueHistoryResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetAssetPropertyValueHistoryResponse",
 }) as any as S.Schema<GetAssetPropertyValueHistoryResponse>;
+export type IntervalInSeconds = number;
+export type MaxInterpolatedResults = number;
+export type InterpolationType = string;
+export type IntervalWindowInSeconds = number;
 export interface GetInterpolatedAssetPropertyValuesRequest {
   assetId?: string;
   propertyId?: string;
@@ -4502,6 +4602,8 @@ export const GetInterpolatedAssetPropertyValuesResponse =
   ).annotate({
     identifier: "GetInterpolatedAssetPropertyValuesResponse",
   }) as any as S.Schema<GetInterpolatedAssetPropertyValuesResponse>;
+export type ConversationId = string;
+export type MessageInput = string | redacted.Redacted<string>;
 export interface InvokeAssistantRequest {
   conversationId?: string;
   message: string | redacted.Redacted<string>;
@@ -4583,6 +4685,8 @@ export const InvocationOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InvocationOutput",
 }) as any as S.Schema<InvocationOutput>;
+export type ResourceId = string;
+export type ResourceArn = string;
 export type ResponseStream =
   | {
       trace: Trace;
@@ -4740,8 +4844,11 @@ export const InvokeAssistantResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvokeAssistantResponse>;
 export type IdentityType = "USER" | "GROUP" | "IAM" | (string & {});
 export const IdentityType = /*@__PURE__*/ S.String;
+
 export type ResourceType = "PORTAL" | "PROJECT" | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
+export type MaxResults = number;
 export interface ListAccessPoliciesRequest {
   identityType?: IdentityType;
   identityId?: string;
@@ -4809,6 +4916,7 @@ export const ListAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAccessPoliciesResponse>;
 export type TargetResourceType = "ASSET" | "COMPUTATION_MODEL" | (string & {});
 export const TargetResourceType = /*@__PURE__*/ S.String;
+
 export interface ListActionsRequest {
   targetResourceType: TargetResourceType;
   targetResourceId: string;
@@ -4915,6 +5023,7 @@ export const ListAssetModelCompositeModelsResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<ListAssetModelCompositeModelsResponse>;
 export type ListAssetModelPropertiesFilter = "ALL" | "BASE" | (string & {});
 export const ListAssetModelPropertiesFilter = /*@__PURE__*/ S.String;
+
 export interface ListAssetModelPropertiesRequest {
   assetModelId: string;
   nextToken?: string;
@@ -5079,6 +5188,7 @@ export const ListAssetModelsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAssetModelsResponse>;
 export type ListAssetPropertiesFilter = "ALL" | "BASE" | (string & {});
 export const ListAssetPropertiesFilter = /*@__PURE__*/ S.String;
+
 export interface ListAssetPropertiesRequest {
   assetId: string;
   nextToken?: string;
@@ -5143,6 +5253,7 @@ export const ListAssetPropertiesResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAssetPropertiesResponse>;
 export type TraversalType = "PATH_TO_ROOT" | (string & {});
 export const TraversalType = /*@__PURE__*/ S.String;
+
 export interface ListAssetRelationshipsRequest {
   assetId: string;
   traversalType: TraversalType;
@@ -5182,6 +5293,7 @@ export const AssetHierarchyInfo = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AssetHierarchyInfo>;
 export type AssetRelationshipType = "HIERARCHY" | (string & {});
 export const AssetRelationshipType = /*@__PURE__*/ S.String;
+
 export interface AssetRelationshipSummary {
   hierarchyInfo?: AssetHierarchyInfo;
   relationshipType: AssetRelationshipType;
@@ -5212,6 +5324,7 @@ export const ListAssetRelationshipsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAssetRelationshipsResponse>;
 export type ListAssetsFilter = "ALL" | "TOP_LEVEL" | (string & {});
 export const ListAssetsFilter = /*@__PURE__*/ S.String;
+
 export interface ListAssetsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -5276,6 +5389,7 @@ export const ListAssetsResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListAssetsResponse>;
 export type TraversalDirection = "PARENT" | "CHILD" | (string & {});
 export const TraversalDirection = /*@__PURE__*/ S.String;
+
 export interface ListAssociatedAssetsRequest {
   assetId: string;
   hierarchyId?: string;
@@ -5359,6 +5473,7 @@ export type ListBulkImportJobsFilter =
   | "COMPLETED"
   | (string & {});
 export const ListBulkImportJobsFilter = /*@__PURE__*/ S.String;
+
 export interface ListBulkImportJobsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -5644,6 +5759,7 @@ export const ListComputationModelResolveToResourcesResponse =
   }) as any as S.Schema<ListComputationModelResolveToResourcesResponse>;
 export type ComputationModelType = "ANOMALY_DETECTION" | (string & {});
 export const ComputationModelType = /*@__PURE__*/ S.String;
+
 export interface ListComputationModelsRequest {
   computationModelType?: ComputationModelType;
   nextToken?: string;
@@ -6153,6 +6269,7 @@ export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProjectsResponse",
 }) as any as S.Schema<ListProjectsResponse>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
@@ -6180,6 +6297,7 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListTagsForResourceResponse>;
 export type ListTimeSeriesType = "ASSOCIATED" | "DISASSOCIATED" | (string & {});
 export const ListTimeSeriesType = /*@__PURE__*/ S.String;
+
 export interface ListTimeSeriesRequest {
   nextToken?: string;
   maxResults?: number;
@@ -6249,6 +6367,8 @@ export const ListTimeSeriesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTimeSeriesResponse",
 }) as any as S.Schema<ListTimeSeriesResponse>;
+export type MatchByPropertyName = boolean;
+export type CreateMissingProperty = boolean;
 export interface PropertyMappingConfiguration {
   matchByPropertyName?: boolean;
   createMissingProperty?: boolean;
@@ -6311,6 +6431,7 @@ export const PutAssetModelInterfaceRelationshipResponse =
   ).annotate({
     identifier: "PutAssetModelInterfaceRelationshipResponse",
   }) as any as S.Schema<PutAssetModelInterfaceRelationshipResponse>;
+export type KmsKeyId = string;
 export interface PutDefaultEncryptionConfigurationRequest {
   encryptionType: EncryptionType;
   kmsKeyId?: string;
@@ -6963,80 +7084,7 @@ export const UpdateProjectResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateProjectResponse",
 }) as any as S.Schema<UpdateProjectResponse>;
-
-//# Errors
-export class ConflictingOperationException extends S.TaggedErrorClass<ConflictingOperationException>()(
-  "ConflictingOperationException",
-  { message: S.String, resourceId: S.String, resourceArn: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalFailureException extends S.TaggedErrorClass<InternalFailureException>()(
-  "InternalFailureException",
-  { message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { message: S.String },
-  T.HttpError(410),
-).pipe(C.withBadRequestError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { message: S.String, resourceId: S.String, resourceArn: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { message: S.String },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class PreconditionFailedException extends S.TaggedErrorClass<PreconditionFailedException>()(
-  "PreconditionFailedException",
-  { message: S.String, resourceId: S.String, resourceArn: S.String },
-  T.HttpError(412),
-) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class QueryTimeoutException extends S.TaggedErrorClass<QueryTimeoutException>()(
-  "QueryTimeoutException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { message: S.String },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { message: S.optional(S.String), resourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type AssociateAssetsError =
   | ConflictingOperationException
   | InternalFailureException
@@ -7073,6 +7121,7 @@ export const associateAssets: API.OperationMethod<
   operationName: "AssociateAssets",
   endpointHostPrefix: "api.",
 }));
+
 export type AssociateTimeSeriesToAssetPropertyError =
   | ConflictingOperationException
   | InternalFailureException
@@ -7103,6 +7152,7 @@ export const associateTimeSeriesToAssetProperty: API.OperationMethod<
   operationName: "AssociateTimeSeriesToAssetProperty",
   endpointHostPrefix: "api.",
 }));
+
 export type BatchAssociateProjectAssetsError =
   | InternalFailureException
   | InvalidRequestException
@@ -7133,6 +7183,7 @@ export const batchAssociateProjectAssets: API.OperationMethod<
   operationName: "BatchAssociateProjectAssets",
   endpointHostPrefix: "monitor.",
 }));
+
 export type BatchDisassociateProjectAssetsError =
   | InternalFailureException
   | InvalidRequestException
@@ -7161,6 +7212,7 @@ export const batchDisassociateProjectAssets: API.OperationMethod<
   operationName: "BatchDisassociateProjectAssets",
   endpointHostPrefix: "monitor.",
 }));
+
 export type BatchGetAssetPropertyAggregatesError =
   | InternalFailureException
   | InvalidRequestException
@@ -7211,6 +7263,7 @@ export const batchGetAssetPropertyAggregates: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type BatchGetAssetPropertyValueError =
   | InternalFailureException
   | InvalidRequestException
@@ -7256,6 +7309,7 @@ export const batchGetAssetPropertyValue: API.OperationMethod<
   endpointHostPrefix: "data.",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
+
 export type BatchGetAssetPropertyValueHistoryError =
   | InternalFailureException
   | InvalidRequestException
@@ -7305,6 +7359,7 @@ export const batchGetAssetPropertyValueHistory: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type BatchPutAssetPropertyValueError =
   | ConflictingOperationException
   | InternalFailureException
@@ -7361,6 +7416,7 @@ export const batchPutAssetPropertyValue: API.OperationMethod<
   operationName: "BatchPutAssetPropertyValue",
   endpointHostPrefix: "data.",
 }));
+
 export type CreateAccessPolicyError =
   | InternalFailureException
   | InvalidRequestException
@@ -7394,6 +7450,7 @@ export const createAccessPolicy: API.OperationMethod<
   operationName: "CreateAccessPolicy",
   endpointHostPrefix: "monitor.",
 }));
+
 export type CreateAssetError =
   | ConflictingOperationException
   | InternalFailureException
@@ -7429,6 +7486,7 @@ export const createAsset: API.OperationMethod<
   operationName: "CreateAsset",
   endpointHostPrefix: "api.",
 }));
+
 export type CreateAssetModelError =
   | ConflictingOperationException
   | InternalFailureException
@@ -7481,6 +7539,7 @@ export const createAssetModel: API.OperationMethod<
   operationName: "CreateAssetModel",
   endpointHostPrefix: "api.",
 }));
+
 export type CreateAssetModelCompositeModelError =
   | ConflictingOperationException
   | InternalFailureException
@@ -7537,6 +7596,7 @@ export const createAssetModelCompositeModel: API.OperationMethod<
   operationName: "CreateAssetModelCompositeModel",
   endpointHostPrefix: "api.",
 }));
+
 export type CreateBulkImportJobError =
   | ConflictingOperationException
   | InternalFailureException
@@ -7584,6 +7644,7 @@ export const createBulkImportJob: API.OperationMethod<
   operationName: "CreateBulkImportJob",
   endpointHostPrefix: "data.",
 }));
+
 export type CreateComputationModelError =
   | ConflictingOperationException
   | InternalFailureException
@@ -7618,6 +7679,7 @@ export const createComputationModel: API.OperationMethod<
   operationName: "CreateComputationModel",
   endpointHostPrefix: "api.",
 }));
+
 export type CreateDashboardError =
   | InternalFailureException
   | InvalidRequestException
@@ -7648,6 +7710,7 @@ export const createDashboard: API.OperationMethod<
   operationName: "CreateDashboard",
   endpointHostPrefix: "monitor.",
 }));
+
 export type CreateDatasetError =
   | ConflictingOperationException
   | InternalFailureException
@@ -7682,6 +7745,7 @@ export const createDataset: API.OperationMethod<
   operationName: "CreateDataset",
   endpointHostPrefix: "api.",
 }));
+
 export type CreateGatewayError =
   | InternalFailureException
   | InvalidRequestException
@@ -7714,6 +7778,7 @@ export const createGateway: API.OperationMethod<
   operationName: "CreateGateway",
   endpointHostPrefix: "api.",
 }));
+
 export type CreatePortalError =
   | InternalFailureException
   | InvalidRequestException
@@ -7749,6 +7814,7 @@ export const createPortal: API.OperationMethod<
   operationName: "CreatePortal",
   endpointHostPrefix: "monitor.",
 }));
+
 export type CreateProjectError =
   | InternalFailureException
   | InvalidRequestException
@@ -7782,6 +7848,7 @@ export const createProject: API.OperationMethod<
   operationName: "CreateProject",
   endpointHostPrefix: "monitor.",
 }));
+
 export type DeleteAccessPolicyError =
   | InternalFailureException
   | InvalidRequestException
@@ -7812,6 +7879,7 @@ export const deleteAccessPolicy: API.OperationMethod<
   operationName: "DeleteAccessPolicy",
   endpointHostPrefix: "monitor.",
 }));
+
 export type DeleteAssetError =
   | ConflictingOperationException
   | InternalFailureException
@@ -7846,6 +7914,7 @@ export const deleteAsset: API.OperationMethod<
   operationName: "DeleteAsset",
   endpointHostPrefix: "api.",
 }));
+
 export type DeleteAssetModelError =
   | ConflictingOperationException
   | InternalFailureException
@@ -7882,6 +7951,7 @@ export const deleteAssetModel: API.OperationMethod<
   operationName: "DeleteAssetModel",
   endpointHostPrefix: "api.",
 }));
+
 export type DeleteAssetModelCompositeModelError =
   | ConflictingOperationException
   | InternalFailureException
@@ -7918,6 +7988,7 @@ export const deleteAssetModelCompositeModel: API.OperationMethod<
   operationName: "DeleteAssetModelCompositeModel",
   endpointHostPrefix: "api.",
 }));
+
 export type DeleteAssetModelInterfaceRelationshipError =
   | ConflictingOperationException
   | InternalFailureException
@@ -7949,6 +8020,7 @@ export const deleteAssetModelInterfaceRelationship: API.OperationMethod<
   operationName: "DeleteAssetModelInterfaceRelationship",
   endpointHostPrefix: "api.",
 }));
+
 export type DeleteComputationModelError =
   | ConflictingOperationException
   | InternalFailureException
@@ -7979,6 +8051,7 @@ export const deleteComputationModel: API.OperationMethod<
   operationName: "DeleteComputationModel",
   endpointHostPrefix: "api.",
 }));
+
 export type DeleteDashboardError =
   | InternalFailureException
   | InvalidRequestException
@@ -8007,6 +8080,7 @@ export const deleteDashboard: API.OperationMethod<
   operationName: "DeleteDashboard",
   endpointHostPrefix: "monitor.",
 }));
+
 export type DeleteDatasetError =
   | ConflictingOperationException
   | InternalFailureException
@@ -8037,6 +8111,7 @@ export const deleteDataset: API.OperationMethod<
   operationName: "DeleteDataset",
   endpointHostPrefix: "api.",
 }));
+
 export type DeleteGatewayError =
   | ConflictingOperationException
   | InternalFailureException
@@ -8068,6 +8143,7 @@ export const deleteGateway: API.OperationMethod<
   operationName: "DeleteGateway",
   endpointHostPrefix: "api.",
 }));
+
 export type DeletePortalError =
   | ConflictingOperationException
   | InternalFailureException
@@ -8098,6 +8174,7 @@ export const deletePortal: API.OperationMethod<
   operationName: "DeletePortal",
   endpointHostPrefix: "monitor.",
 }));
+
 export type DeleteProjectError =
   | InternalFailureException
   | InvalidRequestException
@@ -8126,6 +8203,7 @@ export const deleteProject: API.OperationMethod<
   operationName: "DeleteProject",
   endpointHostPrefix: "monitor.",
 }));
+
 export type DeleteTimeSeriesError =
   | ConflictingOperationException
   | InternalFailureException
@@ -8170,6 +8248,7 @@ export const deleteTimeSeries: API.OperationMethod<
   operationName: "DeleteTimeSeries",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeAccessPolicyError =
   | InternalFailureException
   | InvalidRequestException
@@ -8199,6 +8278,7 @@ export const describeAccessPolicy: API.OperationMethod<
   operationName: "DescribeAccessPolicy",
   endpointHostPrefix: "monitor.",
 }));
+
 export type DescribeActionError =
   | InternalFailureException
   | InvalidRequestException
@@ -8227,6 +8307,7 @@ export const describeAction: API.OperationMethod<
   operationName: "DescribeAction",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeAssetError =
   | InternalFailureException
   | InvalidRequestException
@@ -8255,6 +8336,7 @@ export const describeAsset: API.OperationMethod<
   operationName: "DescribeAsset",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeAssetCompositeModelError =
   | InternalFailureException
   | InvalidRequestException
@@ -8286,6 +8368,7 @@ export const describeAssetCompositeModel: API.OperationMethod<
   operationName: "DescribeAssetCompositeModel",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeAssetModelError =
   | InternalFailureException
   | InvalidRequestException
@@ -8316,6 +8399,7 @@ export const describeAssetModel: API.OperationMethod<
   operationName: "DescribeAssetModel",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeAssetModelCompositeModelError =
   | InternalFailureException
   | InvalidRequestException
@@ -8346,6 +8430,7 @@ export const describeAssetModelCompositeModel: API.OperationMethod<
   operationName: "DescribeAssetModelCompositeModel",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeAssetModelInterfaceRelationshipError =
   | InternalFailureException
   | InvalidRequestException
@@ -8375,6 +8460,7 @@ export const describeAssetModelInterfaceRelationship: API.OperationMethod<
   operationName: "DescribeAssetModelInterfaceRelationship",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeAssetPropertyError =
   | InternalFailureException
   | InvalidRequestException
@@ -8410,6 +8496,7 @@ export const describeAssetProperty: API.OperationMethod<
   operationName: "DescribeAssetProperty",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeBulkImportJobError =
   | InternalFailureException
   | InvalidRequestException
@@ -8439,6 +8526,7 @@ export const describeBulkImportJob: API.OperationMethod<
   operationName: "DescribeBulkImportJob",
   endpointHostPrefix: "data.",
 }));
+
 export type DescribeComputationModelError =
   | InternalFailureException
   | InvalidRequestException
@@ -8467,6 +8555,7 @@ export const describeComputationModel: API.OperationMethod<
   operationName: "DescribeComputationModel",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeComputationModelExecutionSummaryError =
   | InternalFailureException
   | InvalidRequestException
@@ -8495,6 +8584,7 @@ export const describeComputationModelExecutionSummary: API.OperationMethod<
   operationName: "DescribeComputationModelExecutionSummary",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeDashboardError =
   | InternalFailureException
   | InvalidRequestException
@@ -8523,6 +8613,7 @@ export const describeDashboard: API.OperationMethod<
   operationName: "DescribeDashboard",
   endpointHostPrefix: "monitor.",
 }));
+
 export type DescribeDatasetError =
   | InternalFailureException
   | InvalidRequestException
@@ -8551,6 +8642,7 @@ export const describeDataset: API.OperationMethod<
   operationName: "DescribeDataset",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeDefaultEncryptionConfigurationError =
   | InternalFailureException
   | InvalidRequestException
@@ -8579,6 +8671,7 @@ export const describeDefaultEncryptionConfiguration: API.OperationMethod<
   operationName: "DescribeDefaultEncryptionConfiguration",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeExecutionError =
   | InternalFailureException
   | InvalidRequestException
@@ -8607,6 +8700,7 @@ export const describeExecution: API.OperationMethod<
   operationName: "DescribeExecution",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeGatewayError =
   | InternalFailureException
   | InvalidRequestException
@@ -8635,6 +8729,7 @@ export const describeGateway: API.OperationMethod<
   operationName: "DescribeGateway",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeGatewayCapabilityConfigurationError =
   | InternalFailureException
   | InvalidRequestException
@@ -8675,6 +8770,7 @@ export const describeGatewayCapabilityConfiguration: API.OperationMethod<
   operationName: "DescribeGatewayCapabilityConfiguration",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeLoggingOptionsError =
   | InternalFailureException
   | InvalidRequestException
@@ -8703,6 +8799,7 @@ export const describeLoggingOptions: API.OperationMethod<
   operationName: "DescribeLoggingOptions",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribePortalError =
   | InternalFailureException
   | InvalidRequestException
@@ -8731,6 +8828,7 @@ export const describePortal: API.OperationMethod<
   operationName: "DescribePortal",
   endpointHostPrefix: "monitor.",
 }));
+
 export type DescribeProjectError =
   | InternalFailureException
   | InvalidRequestException
@@ -8759,6 +8857,7 @@ export const describeProject: API.OperationMethod<
   operationName: "DescribeProject",
   endpointHostPrefix: "monitor.",
 }));
+
 export type DescribeStorageConfigurationError =
   | ConflictingOperationException
   | InternalFailureException
@@ -8791,6 +8890,7 @@ export const describeStorageConfiguration: API.OperationMethod<
   operationName: "DescribeStorageConfiguration",
   endpointHostPrefix: "api.",
 }));
+
 export type DescribeTimeSeriesError =
   | InternalFailureException
   | InvalidRequestException
@@ -8831,6 +8931,7 @@ export const describeTimeSeries: API.OperationMethod<
   operationName: "DescribeTimeSeries",
   endpointHostPrefix: "api.",
 }));
+
 export type DisassociateAssetsError =
   | ConflictingOperationException
   | InternalFailureException
@@ -8862,6 +8963,7 @@ export const disassociateAssets: API.OperationMethod<
   operationName: "DisassociateAssets",
   endpointHostPrefix: "api.",
 }));
+
 export type DisassociateTimeSeriesFromAssetPropertyError =
   | ConflictingOperationException
   | InternalFailureException
@@ -8892,6 +8994,7 @@ export const disassociateTimeSeriesFromAssetProperty: API.OperationMethod<
   operationName: "DisassociateTimeSeriesFromAssetProperty",
   endpointHostPrefix: "api.",
 }));
+
 export type ExecuteActionError =
   | ConflictingOperationException
   | InternalFailureException
@@ -8924,6 +9027,7 @@ export const executeAction: API.OperationMethod<
   operationName: "ExecuteAction",
   endpointHostPrefix: "api.",
 }));
+
 export type ExecuteQueryError =
   | AccessDeniedException
   | InternalFailureException
@@ -8980,6 +9084,7 @@ export const executeQuery: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetAssetPropertyAggregatesError =
   | InternalFailureException
   | InvalidRequestException
@@ -9039,6 +9144,7 @@ export const getAssetPropertyAggregates: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetAssetPropertyValueError =
   | InternalFailureException
   | InvalidRequestException
@@ -9077,6 +9183,7 @@ export const getAssetPropertyValue: API.OperationMethod<
   operationName: "GetAssetPropertyValue",
   endpointHostPrefix: "data.",
 }));
+
 export type GetAssetPropertyValueHistoryError =
   | InternalFailureException
   | InvalidRequestException
@@ -9136,6 +9243,7 @@ export const getAssetPropertyValueHistory: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetInterpolatedAssetPropertyValuesError =
   | InternalFailureException
   | InvalidRequestException
@@ -9199,6 +9307,7 @@ export const getInterpolatedAssetPropertyValues: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type InvokeAssistantError =
   | AccessDeniedException
   | ConflictingOperationException
@@ -9233,6 +9342,7 @@ export const invokeAssistant: API.OperationMethod<
   operationName: "InvokeAssistant",
   endpointHostPrefix: "data.",
 }));
+
 export type ListAccessPoliciesError =
   | InternalFailureException
   | InvalidRequestException
@@ -9281,6 +9391,7 @@ export const listAccessPolicies: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListActionsError =
   | InternalFailureException
   | InvalidRequestException
@@ -9330,6 +9441,7 @@ export const listActions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssetModelCompositeModelsError =
   | InternalFailureException
   | InvalidRequestException
@@ -9379,6 +9491,7 @@ export const listAssetModelCompositeModels: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssetModelPropertiesError =
   | InternalFailureException
   | InvalidRequestException
@@ -9430,6 +9543,7 @@ export const listAssetModelProperties: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssetModelsError =
   | InternalFailureException
   | InvalidRequestException
@@ -9477,6 +9591,7 @@ export const listAssetModels: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssetPropertiesError =
   | InternalFailureException
   | InvalidRequestException
@@ -9528,6 +9643,7 @@ export const listAssetProperties: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssetRelationshipsError =
   | InternalFailureException
   | InvalidRequestException
@@ -9579,6 +9695,7 @@ export const listAssetRelationships: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssetsError =
   | InternalFailureException
   | InvalidRequestException
@@ -9638,6 +9755,7 @@ export const listAssets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssociatedAssetsError =
   | InternalFailureException
   | InvalidRequestException
@@ -9693,6 +9811,7 @@ export const listAssociatedAssets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListBulkImportJobsError =
   | InternalFailureException
   | InvalidRequestException
@@ -9743,6 +9862,7 @@ export const listBulkImportJobs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListCompositionRelationshipsError =
   | InternalFailureException
   | InvalidRequestException
@@ -9793,6 +9913,7 @@ export const listCompositionRelationships: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListComputationModelDataBindingUsagesError =
   | InternalFailureException
   | InvalidRequestException
@@ -9842,6 +9963,7 @@ export const listComputationModelDataBindingUsages: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListComputationModelResolveToResourcesError =
   | InternalFailureException
   | InvalidRequestException
@@ -9892,6 +10014,7 @@ export const listComputationModelResolveToResources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListComputationModelsError =
   | InternalFailureException
   | InvalidRequestException
@@ -9939,6 +10062,7 @@ export const listComputationModels: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDashboardsError =
   | InternalFailureException
   | InvalidRequestException
@@ -9986,6 +10110,7 @@ export const listDashboards: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListDatasetsError =
   | InternalFailureException
   | InvalidRequestException
@@ -10033,6 +10158,7 @@ export const listDatasets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListExecutionsError =
   | InternalFailureException
   | InvalidRequestException
@@ -10082,6 +10208,7 @@ export const listExecutions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListGatewaysError =
   | InternalFailureException
   | InvalidRequestException
@@ -10129,6 +10256,7 @@ export const listGateways: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListInterfaceRelationshipsError =
   | InternalFailureException
   | InvalidRequestException
@@ -10179,6 +10307,7 @@ export const listInterfaceRelationships: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListPortalsError =
   | InternalFailureException
   | InvalidRequestException
@@ -10226,6 +10355,7 @@ export const listPortals: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListProjectAssetsError =
   | InternalFailureException
   | InvalidRequestException
@@ -10273,6 +10403,7 @@ export const listProjectAssets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListProjectsError =
   | InternalFailureException
   | InvalidRequestException
@@ -10320,6 +10451,7 @@ export const listProjects: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | ConflictingOperationException
   | InternalFailureException
@@ -10354,6 +10486,7 @@ export const listTagsForResource: API.OperationMethod<
   operationName: "ListTagsForResource",
   endpointHostPrefix: "api.",
 }));
+
 export type ListTimeSeriesError =
   | InternalFailureException
   | InvalidRequestException
@@ -10403,6 +10536,7 @@ export const listTimeSeries: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type PutAssetModelInterfaceRelationshipError =
   | ConflictingOperationException
   | InternalFailureException
@@ -10436,6 +10570,7 @@ export const putAssetModelInterfaceRelationship: API.OperationMethod<
   operationName: "PutAssetModelInterfaceRelationship",
   endpointHostPrefix: "api.",
 }));
+
 export type PutDefaultEncryptionConfigurationError =
   | ConflictingOperationException
   | InternalFailureException
@@ -10468,6 +10603,7 @@ export const putDefaultEncryptionConfiguration: API.OperationMethod<
   operationName: "PutDefaultEncryptionConfiguration",
   endpointHostPrefix: "api.",
 }));
+
 export type PutLoggingOptionsError =
   | ConflictingOperationException
   | InternalFailureException
@@ -10498,6 +10634,7 @@ export const putLoggingOptions: API.OperationMethod<
   operationName: "PutLoggingOptions",
   endpointHostPrefix: "api.",
 }));
+
 export type PutStorageConfigurationError =
   | ConflictingOperationException
   | InternalFailureException
@@ -10532,6 +10669,7 @@ export const putStorageConfiguration: API.OperationMethod<
   operationName: "PutStorageConfiguration",
   endpointHostPrefix: "api.",
 }));
+
 export type TagResourceError =
   | ConflictingOperationException
   | InternalFailureException
@@ -10569,6 +10707,7 @@ export const tagResource: API.OperationMethod<
   operationName: "TagResource",
   endpointHostPrefix: "api.",
 }));
+
 export type UntagResourceError =
   | ConflictingOperationException
   | InternalFailureException
@@ -10603,6 +10742,7 @@ export const untagResource: API.OperationMethod<
   operationName: "UntagResource",
   endpointHostPrefix: "api.",
 }));
+
 export type UpdateAccessPolicyError =
   | InternalFailureException
   | InvalidRequestException
@@ -10632,6 +10772,7 @@ export const updateAccessPolicy: API.OperationMethod<
   operationName: "UpdateAccessPolicy",
   endpointHostPrefix: "monitor.",
 }));
+
 export type UpdateAssetError =
   | ConflictingOperationException
   | InternalFailureException
@@ -10665,6 +10806,7 @@ export const updateAsset: API.OperationMethod<
   operationName: "UpdateAsset",
   endpointHostPrefix: "api.",
 }));
+
 export type UpdateAssetModelError =
   | ConflictingOperationException
   | InternalFailureException
@@ -10717,6 +10859,7 @@ export const updateAssetModel: API.OperationMethod<
   operationName: "UpdateAssetModel",
   endpointHostPrefix: "api.",
 }));
+
 export type UpdateAssetModelCompositeModelError =
   | ConflictingOperationException
   | InternalFailureException
@@ -10769,6 +10912,7 @@ export const updateAssetModelCompositeModel: API.OperationMethod<
   operationName: "UpdateAssetModelCompositeModel",
   endpointHostPrefix: "api.",
 }));
+
 export type UpdateAssetPropertyError =
   | ConflictingOperationException
   | InternalFailureException
@@ -10803,6 +10947,7 @@ export const updateAssetProperty: API.OperationMethod<
   operationName: "UpdateAssetProperty",
   endpointHostPrefix: "api.",
 }));
+
 export type UpdateComputationModelError =
   | ConflictingOperationException
   | InternalFailureException
@@ -10837,6 +10982,7 @@ export const updateComputationModel: API.OperationMethod<
   operationName: "UpdateComputationModel",
   endpointHostPrefix: "api.",
 }));
+
 export type UpdateDashboardError =
   | InternalFailureException
   | InvalidRequestException
@@ -10865,6 +11011,7 @@ export const updateDashboard: API.OperationMethod<
   operationName: "UpdateDashboard",
   endpointHostPrefix: "monitor.",
 }));
+
 export type UpdateDatasetError =
   | ConflictingOperationException
   | InternalFailureException
@@ -10897,6 +11044,7 @@ export const updateDataset: API.OperationMethod<
   operationName: "UpdateDataset",
   endpointHostPrefix: "api.",
 }));
+
 export type UpdateGatewayError =
   | ConflictingOperationException
   | InternalFailureException
@@ -10927,6 +11075,7 @@ export const updateGateway: API.OperationMethod<
   operationName: "UpdateGateway",
   endpointHostPrefix: "api.",
 }));
+
 export type UpdateGatewayCapabilityConfigurationError =
   | ConflictingOperationException
   | InternalFailureException
@@ -10975,6 +11124,7 @@ export const updateGatewayCapabilityConfiguration: API.OperationMethod<
   operationName: "UpdateGatewayCapabilityConfiguration",
   endpointHostPrefix: "api.",
 }));
+
 export type UpdatePortalError =
   | ConflictingOperationException
   | InternalFailureException
@@ -11005,6 +11155,7 @@ export const updatePortal: API.OperationMethod<
   operationName: "UpdatePortal",
   endpointHostPrefix: "monitor.",
 }));
+
 export type UpdateProjectError =
   | InternalFailureException
   | InvalidRequestException

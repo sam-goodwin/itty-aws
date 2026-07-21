@@ -84,75 +84,6 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type InstanceId = string;
-export type SerialPort = number;
-export type SSHPublicKey = string;
-export type RequestId = string;
-export type Success = boolean;
-export type InstanceOSUser = string;
-export type AvailabilityZone = string;
-
-//# Schemas
-export interface SendSerialConsoleSSHPublicKeyRequest {
-  InstanceId: string;
-  SerialPort?: number;
-  SSHPublicKey: string;
-}
-export const SendSerialConsoleSSHPublicKeyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      InstanceId: S.String,
-      SerialPort: S.optional(S.Number),
-      SSHPublicKey: S.String,
-    }).pipe(
-      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-    ),
-).annotate({
-  identifier: "SendSerialConsoleSSHPublicKeyRequest",
-}) as any as S.Schema<SendSerialConsoleSSHPublicKeyRequest>;
-export interface SendSerialConsoleSSHPublicKeyResponse {
-  RequestId?: string;
-  Success?: boolean;
-}
-export const SendSerialConsoleSSHPublicKeyResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      RequestId: S.optional(S.String),
-      Success: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "SendSerialConsoleSSHPublicKeyResponse",
-}) as any as S.Schema<SendSerialConsoleSSHPublicKeyResponse>;
-export interface SendSSHPublicKeyRequest {
-  InstanceId: string;
-  InstanceOSUser: string;
-  SSHPublicKey: string;
-  AvailabilityZone?: string;
-}
-export const SendSSHPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    InstanceId: S.String,
-    InstanceOSUser: S.String,
-    SSHPublicKey: S.String,
-    AvailabilityZone: S.optional(S.String),
-  }).pipe(
-    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
-  ),
-).annotate({
-  identifier: "SendSSHPublicKeyRequest",
-}) as any as S.Schema<SendSSHPublicKeyRequest>;
-export interface SendSSHPublicKeyResponse {
-  RequestId?: string;
-  Success?: boolean;
-}
-export const SendSSHPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ RequestId: S.optional(S.String), Success: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "SendSSHPublicKeyResponse",
-}) as any as S.Schema<SendSSHPublicKeyResponse>;
-
-//# Errors
 export class AuthException extends S.TaggedErrorClass<AuthException>()(
   "AuthException",
   { Message: S.optional(S.String) },
@@ -261,8 +192,70 @@ export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>
     T.HttpError(429),
   ),
 ).pipe(C.withThrottlingError) {}
-
-//# Operations
+export type InstanceId = string;
+export type SerialPort = number;
+export type SSHPublicKey = string;
+export interface SendSerialConsoleSSHPublicKeyRequest {
+  InstanceId: string;
+  SerialPort?: number;
+  SSHPublicKey: string;
+}
+export const SendSerialConsoleSSHPublicKeyRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      InstanceId: S.String,
+      SerialPort: S.optional(S.Number),
+      SSHPublicKey: S.String,
+    }).pipe(
+      T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+    ),
+).annotate({
+  identifier: "SendSerialConsoleSSHPublicKeyRequest",
+}) as any as S.Schema<SendSerialConsoleSSHPublicKeyRequest>;
+export type RequestId = string;
+export type Success = boolean;
+export interface SendSerialConsoleSSHPublicKeyResponse {
+  RequestId?: string;
+  Success?: boolean;
+}
+export const SendSerialConsoleSSHPublicKeyResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      RequestId: S.optional(S.String),
+      Success: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "SendSerialConsoleSSHPublicKeyResponse",
+}) as any as S.Schema<SendSerialConsoleSSHPublicKeyResponse>;
+export type InstanceOSUser = string;
+export type AvailabilityZone = string;
+export interface SendSSHPublicKeyRequest {
+  InstanceId: string;
+  InstanceOSUser: string;
+  SSHPublicKey: string;
+  AvailabilityZone?: string;
+}
+export const SendSSHPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    InstanceId: S.String,
+    InstanceOSUser: S.String,
+    SSHPublicKey: S.String,
+    AvailabilityZone: S.optional(S.String),
+  }).pipe(
+    T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
+  ),
+).annotate({
+  identifier: "SendSSHPublicKeyRequest",
+}) as any as S.Schema<SendSSHPublicKeyRequest>;
+export interface SendSSHPublicKeyResponse {
+  RequestId?: string;
+  Success?: boolean;
+}
+export const SendSSHPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RequestId: S.optional(S.String), Success: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "SendSSHPublicKeyResponse",
+}) as any as S.Schema<SendSSHPublicKeyResponse>;
 export type SendSerialConsoleSSHPublicKeyError =
   | AuthException
   | EC2InstanceNotFoundException
@@ -309,6 +302,7 @@ export const sendSerialConsoleSSHPublicKey: API.OperationMethod<
   retry: Retry,
   operationName: "SendSerialConsoleSSHPublicKey",
 }));
+
 export type SendSSHPublicKeyError =
   | AuthException
   | EC2InstanceNotFoundException

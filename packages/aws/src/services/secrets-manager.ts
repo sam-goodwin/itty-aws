@@ -102,59 +102,55 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class DecryptionFailure extends S.TaggedErrorClass<DecryptionFailure>()(
+  "DecryptionFailure",
+  { Message: S.optional(S.String) },
+).pipe(C.withServerError) {}
+export class EncryptionFailure extends S.TaggedErrorClass<EncryptionFailure>()(
+  "EncryptionFailure",
+  { Message: S.optional(S.String) },
+).pipe(C.withServerError) {}
+export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
+  "InternalServiceError",
+  { Message: S.optional(S.String) },
+).pipe(C.withServerError, C.withRetryableError) {}
+export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
+  "InvalidNextTokenException",
+  { Message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
+  "InvalidParameterException",
+  { Message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Message: S.optional(S.String) },
+).pipe(C.withQuotaError) {}
+export class MalformedPolicyDocumentException extends S.TaggedErrorClass<MalformedPolicyDocumentException>()(
+  "MalformedPolicyDocumentException",
+  { Message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class PreconditionNotMetException extends S.TaggedErrorClass<PreconditionNotMetException>()(
+  "PreconditionNotMetException",
+  { Message: S.optional(S.String) },
+).pipe(C.withConflictError) {}
+export class PublicPolicyException extends S.TaggedErrorClass<PublicPolicyException>()(
+  "PublicPolicyException",
+  { Message: S.optional(S.String) },
+).pipe(C.withBadRequestError) {}
+export class ResourceExistsException extends S.TaggedErrorClass<ResourceExistsException>()(
+  "ResourceExistsException",
+  { Message: S.optional(S.String) },
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+).pipe(C.withNotFoundError) {}
 export type SecretIdType = string;
-export type FilterValueStringType = string;
-export type MaxResultsBatchType = number;
-export type NextTokenType = string;
-export type SecretARNType = string;
-export type SecretNameType = string;
-export type SecretVersionIdType = string;
-export type SecretBinaryType = Uint8Array | redacted.Redacted<Uint8Array>;
-export type SecretStringType = string | redacted.Redacted<string>;
-export type SecretVersionStageType = string;
-export type CreatedDateType = Date;
-export type ErrorCode = string;
-export type ErrorMessage = string;
-export type NameType = string;
-export type ClientRequestTokenType = string;
-export type DescriptionType = string;
-export type KmsKeyIdType = string;
-export type TagKeyType = string;
-export type TagValueType = string;
-export type RegionType = string;
-export type MedeaTypeType = string;
-export type StatusMessageType = string;
-export type LastAccessedDateType = Date;
-export type RecoveryWindowInDaysType = number;
-export type DeletionDateType = Date;
-export type RotationEnabledType = boolean;
-export type RotationLambdaARNType = string;
-export type AutomaticallyRotateAfterDaysType = number;
-export type DurationType = string;
-export type ScheduleExpressionType = string;
-export type ExternalSecretRotationMetadataItemKeyType = string;
-export type ExternalSecretRotationMetadataItemValueType = string;
-export type RoleARNType = string;
-export type LastRotatedDateType = Date;
-export type LastChangedDateType = Date;
-export type DeletedDateType = Date;
-export type NextRotationDateType = Date;
-export type OwningServiceType = string;
-export type PasswordLengthType = number;
-export type ExcludeCharactersType = string;
-export type ExcludeNumbersType = boolean;
-export type ExcludePunctuationType = boolean;
-export type ExcludeUppercaseType = boolean;
-export type ExcludeLowercaseType = boolean;
-export type IncludeSpaceType = boolean;
-export type RequireEachIncludedTypeType = boolean;
-export type RandomPasswordType = string | redacted.Redacted<string>;
-export type NonEmptyResourcePolicyType = string;
-export type MaxResultsType = number;
-export type RotationTokenType = string | redacted.Redacted<string>;
-
-//# Schemas
 export type SecretIdListType = string[];
 export const SecretIdListType = /*@__PURE__*/ S.Array(S.String);
 export type FilterNameStringType =
@@ -167,6 +163,8 @@ export type FilterNameStringType =
   | "all"
   | (string & {});
 export const FilterNameStringType = /*@__PURE__*/ S.String;
+
+export type FilterValueStringType = string;
 export type FilterValuesStringList = string[];
 export const FilterValuesStringList = /*@__PURE__*/ S.Array(S.String);
 export interface Filter {
@@ -181,6 +179,8 @@ export const Filter = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
 export type FiltersListType = Filter[];
 export const FiltersListType = /*@__PURE__*/ S.Array(Filter);
+export type MaxResultsBatchType = number;
+export type NextTokenType = string;
 export interface BatchGetSecretValueRequest {
   SecretIdList?: string[];
   Filters?: Filter[];
@@ -199,8 +199,15 @@ export const BatchGetSecretValueRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetSecretValueRequest",
 }) as any as S.Schema<BatchGetSecretValueRequest>;
+export type SecretARNType = string;
+export type SecretNameType = string;
+export type SecretVersionIdType = string;
+export type SecretBinaryType = Uint8Array | redacted.Redacted<Uint8Array>;
+export type SecretStringType = string | redacted.Redacted<string>;
+export type SecretVersionStageType = string;
 export type SecretVersionStagesType = string[];
 export const SecretVersionStagesType = /*@__PURE__*/ S.Array(S.String);
+export type CreatedDateType = Date;
 export interface SecretValueEntry {
   ARN?: string;
   Name?: string;
@@ -225,6 +232,8 @@ export const SecretValueEntry = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecretValueEntry>;
 export type SecretValuesType = SecretValueEntry[];
 export const SecretValuesType = /*@__PURE__*/ S.Array(SecretValueEntry);
+export type ErrorCode = string;
+export type ErrorMessage = string;
 export interface APIErrorType {
   SecretId?: string;
   ErrorCode?: string;
@@ -277,6 +286,12 @@ export const CancelRotateSecretResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelRotateSecretResponse",
 }) as any as S.Schema<CancelRotateSecretResponse>;
+export type NameType = string;
+export type ClientRequestTokenType = string;
+export type DescriptionType = string;
+export type KmsKeyIdType = string;
+export type TagKeyType = string;
+export type TagValueType = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -286,6 +301,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagListType = Tag[];
 export const TagListType = /*@__PURE__*/ S.Array(Tag);
+export type RegionType = string;
 export interface ReplicaRegionType {
   Region?: string;
   KmsKeyId?: string;
@@ -298,6 +314,7 @@ export const ReplicaRegionType = /*@__PURE__*/ S.suspend(() =>
 export type AddReplicaRegionListType = ReplicaRegionType[];
 export const AddReplicaRegionListType =
   /*@__PURE__*/ S.Array(ReplicaRegionType);
+export type MedeaTypeType = string;
 export interface CreateSecretRequest {
   Name: string;
   ClientRequestToken?: string;
@@ -330,6 +347,9 @@ export const CreateSecretRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateSecretRequest>;
 export type StatusType = "InSync" | "Failed" | "InProgress" | (string & {});
 export const StatusType = /*@__PURE__*/ S.String;
+
+export type StatusMessageType = string;
+export type LastAccessedDateType = Date;
 export interface ReplicationStatusType {
   Region?: string;
   KmsKeyId?: string;
@@ -389,6 +409,7 @@ export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteResourcePolicyResponse",
 }) as any as S.Schema<DeleteResourcePolicyResponse>;
+export type RecoveryWindowInDaysType = number;
 export interface DeleteSecretRequest {
   SecretId: string;
   RecoveryWindowInDays?: number;
@@ -405,6 +426,7 @@ export const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteSecretRequest",
 }) as any as S.Schema<DeleteSecretRequest>;
+export type DeletionDateType = Date;
 export interface DeleteSecretResponse {
   ARN?: string;
   Name?: string;
@@ -429,6 +451,11 @@ export const DescribeSecretRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSecretRequest",
 }) as any as S.Schema<DescribeSecretRequest>;
+export type RotationEnabledType = boolean;
+export type RotationLambdaARNType = string;
+export type AutomaticallyRotateAfterDaysType = number;
+export type DurationType = string;
+export type ScheduleExpressionType = string;
 export interface RotationRulesType {
   AutomaticallyAfterDays?: number;
   Duration?: string;
@@ -443,6 +470,8 @@ export const RotationRulesType = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RotationRulesType",
 }) as any as S.Schema<RotationRulesType>;
+export type ExternalSecretRotationMetadataItemKeyType = string;
+export type ExternalSecretRotationMetadataItemValueType = string;
 export interface ExternalSecretRotationMetadataItem {
   Key?: string;
   Value?: string;
@@ -457,6 +486,11 @@ export type ExternalSecretRotationMetadataType =
 export const ExternalSecretRotationMetadataType = /*@__PURE__*/ S.Array(
   ExternalSecretRotationMetadataItem,
 );
+export type RoleARNType = string;
+export type LastRotatedDateType = Date;
+export type LastChangedDateType = Date;
+export type DeletedDateType = Date;
+export type NextRotationDateType = Date;
 export type SecretVersionsToStagesMapType = {
   [key: string]: string[] | undefined;
 };
@@ -464,6 +498,7 @@ export const SecretVersionsToStagesMapType = /*@__PURE__*/ S.Record(
   S.String,
   SecretVersionStagesType.pipe(S.optional),
 );
+export type OwningServiceType = string;
 export interface DescribeSecretResponse {
   ARN?: string;
   Name?: string;
@@ -524,6 +559,14 @@ export const DescribeSecretResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeSecretResponse",
 }) as any as S.Schema<DescribeSecretResponse>;
+export type PasswordLengthType = number;
+export type ExcludeCharactersType = string;
+export type ExcludeNumbersType = boolean;
+export type ExcludePunctuationType = boolean;
+export type ExcludeUppercaseType = boolean;
+export type ExcludeLowercaseType = boolean;
+export type IncludeSpaceType = boolean;
+export type RequireEachIncludedTypeType = boolean;
 export interface GetRandomPasswordRequest {
   PasswordLength?: number;
   ExcludeCharacters?: string;
@@ -550,6 +593,7 @@ export const GetRandomPasswordRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRandomPasswordRequest",
 }) as any as S.Schema<GetRandomPasswordRequest>;
+export type RandomPasswordType = string | redacted.Redacted<string>;
 export interface GetRandomPasswordResponse {
   RandomPassword?: string | redacted.Redacted<string>;
 }
@@ -568,6 +612,7 @@ export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyRequest",
 }) as any as S.Schema<GetResourcePolicyRequest>;
+export type NonEmptyResourcePolicyType = string;
 export interface GetResourcePolicyResponse {
   ARN?: string;
   Name?: string;
@@ -620,8 +665,10 @@ export const GetSecretValueResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSecretValueResponse",
 }) as any as S.Schema<GetSecretValueResponse>;
+export type MaxResultsType = number;
 export type SortOrderType = "asc" | "desc" | (string & {});
 export const SortOrderType = /*@__PURE__*/ S.String;
+
 export type SortByType =
   | "created-date"
   | "last-accessed-date"
@@ -629,6 +676,7 @@ export type SortByType =
   | "name"
   | (string & {});
 export const SortByType = /*@__PURE__*/ S.String;
+
 export interface ListSecretsRequest {
   IncludePlannedDeletion?: boolean;
   MaxResults?: number;
@@ -808,6 +856,7 @@ export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PutResourcePolicyResponse",
 }) as any as S.Schema<PutResourcePolicyResponse>;
+export type RotationTokenType = string | redacted.Redacted<string>;
 export interface PutSecretValueRequest {
   SecretId: string;
   ClientRequestToken?: string;
@@ -1120,58 +1169,6 @@ export const ValidateResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ValidateResourcePolicyResponse",
 }) as any as S.Schema<ValidateResourcePolicyResponse>;
-
-//# Errors
-export class DecryptionFailure extends S.TaggedErrorClass<DecryptionFailure>()(
-  "DecryptionFailure",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class InternalServiceError extends S.TaggedErrorClass<InternalServiceError>()(
-  "InternalServiceError",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError, C.withRetryableError) {}
-export class InvalidNextTokenException extends S.TaggedErrorClass<InvalidNextTokenException>()(
-  "InvalidNextTokenException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidParameterException extends S.TaggedErrorClass<InvalidParameterException>()(
-  "InvalidParameterException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-).pipe(C.withNotFoundError) {}
-export class EncryptionFailure extends S.TaggedErrorClass<EncryptionFailure>()(
-  "EncryptionFailure",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Message: S.optional(S.String) },
-).pipe(C.withQuotaError) {}
-export class MalformedPolicyDocumentException extends S.TaggedErrorClass<MalformedPolicyDocumentException>()(
-  "MalformedPolicyDocumentException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-export class PreconditionNotMetException extends S.TaggedErrorClass<PreconditionNotMetException>()(
-  "PreconditionNotMetException",
-  { Message: S.optional(S.String) },
-).pipe(C.withConflictError) {}
-export class ResourceExistsException extends S.TaggedErrorClass<ResourceExistsException>()(
-  "ResourceExistsException",
-  { Message: S.optional(S.String) },
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class PublicPolicyException extends S.TaggedErrorClass<PublicPolicyException>()(
-  "PublicPolicyException",
-  { Message: S.optional(S.String) },
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type BatchGetSecretValueError =
   | DecryptionFailure
   | InternalServiceError
@@ -1245,6 +1242,7 @@ export const batchGetSecretValue: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type CancelRotateSecretError =
   | InternalServiceError
   | InvalidParameterException
@@ -1291,6 +1289,7 @@ export const cancelRotateSecret: API.OperationMethod<
   retry: Retry,
   operationName: "CancelRotateSecret",
 }));
+
 export type CreateSecretError =
   | DecryptionFailure
   | EncryptionFailure
@@ -1384,6 +1383,7 @@ export const createSecret: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSecret",
 }));
+
 export type DeleteResourcePolicyError =
   | InternalServiceError
   | InvalidParameterException
@@ -1420,6 +1420,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteSecretError =
   | InternalServiceError
   | InvalidParameterException
@@ -1484,6 +1485,7 @@ export const deleteSecret: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSecret",
 }));
+
 export type DescribeSecretError =
   | InternalServiceError
   | InvalidParameterException
@@ -1518,6 +1520,7 @@ export const describeSecret: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSecret",
 }));
+
 export type GetRandomPasswordError =
   | InternalServiceError
   | InvalidParameterException
@@ -1556,6 +1559,7 @@ export const getRandomPassword: API.OperationMethod<
   retry: Retry,
   operationName: "GetRandomPassword",
 }));
+
 export type GetResourcePolicyError =
   | InternalServiceError
   | InvalidParameterException
@@ -1592,6 +1596,7 @@ export const getResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type GetSecretValueError =
   | DecryptionFailure
   | InternalServiceError
@@ -1642,6 +1647,7 @@ export const getSecretValue: API.OperationMethod<
   retry: Retry,
   operationName: "GetSecretValue",
 }));
+
 export type ListSecretsError =
   | InternalServiceError
   | InvalidNextTokenException
@@ -1711,6 +1717,7 @@ export const listSecrets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSecretVersionIdsError =
   | InternalServiceError
   | InvalidNextTokenException
@@ -1770,6 +1777,7 @@ export const listSecretVersionIds: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutResourcePolicyError =
   | InternalServiceError
   | InvalidParameterException
@@ -1812,6 +1820,7 @@ export const putResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type PutSecretValueError =
   | DecryptionFailure
   | EncryptionFailure
@@ -1884,6 +1893,7 @@ export const putSecretValue: API.OperationMethod<
   retry: Retry,
   operationName: "PutSecretValue",
 }));
+
 export type RemoveRegionsFromReplicationError =
   | InternalServiceError
   | InvalidParameterException
@@ -1921,6 +1931,7 @@ export const removeRegionsFromReplication: API.OperationMethod<
   retry: Retry,
   operationName: "RemoveRegionsFromReplication",
 }));
+
 export type ReplicateSecretToRegionsError =
   | InternalServiceError
   | InvalidParameterException
@@ -1961,6 +1972,7 @@ export const replicateSecretToRegions: API.OperationMethod<
   retry: Retry,
   operationName: "ReplicateSecretToRegions",
 }));
+
 export type RestoreSecretError =
   | InternalServiceError
   | InvalidParameterException
@@ -1997,6 +2009,7 @@ export const restoreSecret: API.OperationMethod<
   retry: Retry,
   operationName: "RestoreSecret",
 }));
+
 export type RotateSecretError =
   | InternalServiceError
   | InvalidParameterException
@@ -2049,6 +2062,7 @@ export const rotateSecret: API.OperationMethod<
   retry: Retry,
   operationName: "RotateSecret",
 }));
+
 export type StopReplicationToReplicaError =
   | InternalServiceError
   | InvalidParameterException
@@ -2088,6 +2102,7 @@ export const stopReplicationToReplica: API.OperationMethod<
   retry: Retry,
   operationName: "StopReplicationToReplica",
 }));
+
 export type TagResourceError =
   | InternalServiceError
   | InvalidParameterException
@@ -2133,6 +2148,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServiceError
   | InvalidParameterException
@@ -2176,6 +2192,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateSecretError =
   | DecryptionFailure
   | EncryptionFailure
@@ -2259,6 +2276,7 @@ export const updateSecret: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSecret",
 }));
+
 export type UpdateSecretVersionStageError =
   | InternalServiceError
   | InvalidParameterException
@@ -2315,6 +2333,7 @@ export const updateSecretVersionStage: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSecretVersionStage",
 }));
+
 export type ValidateResourcePolicyError =
   | InternalServiceError
   | InvalidParameterException

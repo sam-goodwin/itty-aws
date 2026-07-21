@@ -82,16 +82,58 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class GoneException extends S.TaggedErrorClass<GoneException>()(
+  "GoneException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(410),
+).pipe(C.withBadRequestError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class PreconditionFailedException extends S.TaggedErrorClass<PreconditionFailedException>()(
+  "PreconditionFailedException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(412),
+) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
 export type __stringMin0Max256 = string;
 export type __stringMin20Max1600 = string;
-export type __stringMin1Max100000 = string;
-export type __timestampIso8601 = Date;
-export type GetDiscoveredSchemaVersionItemInput = string;
-export type SynthesizedJson__string = string;
-export type __stringMin0Max36 = string;
-
-//# Schemas
 export type Tags = { [key: string]: string | undefined };
 export const Tags = /*@__PURE__*/ S.Record(S.String, S.String.pipe(S.optional));
 export interface CreateDiscovererRequest {
@@ -123,6 +165,7 @@ export const CreateDiscovererRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateDiscovererRequest>;
 export type DiscovererState = "STARTED" | "STOPPED" | (string & {});
 export const DiscovererState = /*@__PURE__*/ S.String;
+
 export interface CreateDiscovererResponse {
   Description?: string;
   DiscovererArn?: string;
@@ -186,8 +229,10 @@ export const CreateRegistryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRegistryResponse",
 }) as any as S.Schema<CreateRegistryResponse>;
+export type __stringMin1Max100000 = string;
 export type Type = "OpenApi3" | "JSONSchemaDraft4" | (string & {});
 export const Type = /*@__PURE__*/ S.String;
+
 export interface CreateSchemaRequest {
   Content?: string;
   Description?: string;
@@ -222,6 +267,7 @@ export const CreateSchemaRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSchemaRequest",
 }) as any as S.Schema<CreateSchemaRequest>;
+export type __timestampIso8601 = Date;
 export interface CreateSchemaResponse {
   Description?: string;
   LastModified?: Date;
@@ -417,6 +463,7 @@ export type CodeGenerationStatus =
   | "CREATE_FAILED"
   | (string & {});
 export const CodeGenerationStatus = /*@__PURE__*/ S.String;
+
 export interface DescribeCodeBindingResponse {
   CreationDate?: Date;
   LastModified?: Date;
@@ -647,6 +694,7 @@ export const GetCodeBindingSourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCodeBindingSourceResponse",
 }) as any as S.Schema<GetCodeBindingSourceResponse>;
+export type GetDiscoveredSchemaVersionItemInput = string;
 export type __listOfGetDiscoveredSchemaVersionItemInput = string[];
 export const __listOfGetDiscoveredSchemaVersionItemInput =
   /*@__PURE__*/ S.Array(S.String);
@@ -698,6 +746,7 @@ export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetResourcePolicyRequest",
 }) as any as S.Schema<GetResourcePolicyRequest>;
+export type SynthesizedJson__string = string;
 export interface GetResourcePolicyResponse {
   Policy?: string;
   RevisionId?: string;
@@ -1330,6 +1379,7 @@ export const UpdateRegistryResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRegistryResponse",
 }) as any as S.Schema<UpdateRegistryResponse>;
+export type __stringMin0Max36 = string;
 export interface UpdateSchemaRequest {
   ClientTokenId?: string;
   Content?: string;
@@ -1390,60 +1440,6 @@ export const UpdateSchemaResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateSchemaResponse",
 }) as any as S.Schema<UpdateSchemaResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class GoneException extends S.TaggedErrorClass<GoneException>()(
-  "GoneException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(410),
-).pipe(C.withBadRequestError) {}
-export class PreconditionFailedException extends S.TaggedErrorClass<PreconditionFailedException>()(
-  "PreconditionFailedException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(412),
-) {}
-
-//# Operations
 export type CreateDiscovererError =
   | BadRequestException
   | ConflictException
@@ -1475,6 +1471,7 @@ export const createDiscoverer: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDiscoverer",
 }));
+
 export type CreateRegistryError =
   | BadRequestException
   | ConflictException
@@ -1506,6 +1503,7 @@ export const createRegistry: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRegistry",
 }));
+
 export type CreateSchemaError =
   | BadRequestException
   | ForbiddenException
@@ -1535,6 +1533,7 @@ export const createSchema: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSchema",
 }));
+
 export type DeleteDiscovererError =
   | BadRequestException
   | ForbiddenException
@@ -1566,6 +1565,7 @@ export const deleteDiscoverer: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDiscoverer",
 }));
+
 export type DeleteRegistryError =
   | BadRequestException
   | ForbiddenException
@@ -1597,6 +1597,7 @@ export const deleteRegistry: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRegistry",
 }));
+
 export type DeleteResourcePolicyError =
   | BadRequestException
   | ForbiddenException
@@ -1628,6 +1629,7 @@ export const deleteResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourcePolicy",
 }));
+
 export type DeleteSchemaError =
   | BadRequestException
   | ForbiddenException
@@ -1659,6 +1661,7 @@ export const deleteSchema: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSchema",
 }));
+
 export type DeleteSchemaVersionError =
   | BadRequestException
   | ForbiddenException
@@ -1690,6 +1693,7 @@ export const deleteSchemaVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSchemaVersion",
 }));
+
 export type DescribeCodeBindingError =
   | BadRequestException
   | ForbiddenException
@@ -1721,6 +1725,7 @@ export const describeCodeBinding: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeCodeBinding",
 }));
+
 export type DescribeDiscovererError =
   | BadRequestException
   | ForbiddenException
@@ -1752,6 +1757,7 @@ export const describeDiscoverer: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDiscoverer",
 }));
+
 export type DescribeRegistryError =
   | BadRequestException
   | ForbiddenException
@@ -1783,6 +1789,7 @@ export const describeRegistry: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRegistry",
 }));
+
 export type DescribeSchemaError =
   | BadRequestException
   | ForbiddenException
@@ -1814,6 +1821,7 @@ export const describeSchema: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSchema",
 }));
+
 export type ExportSchemaError =
   | BadRequestException
   | ForbiddenException
@@ -1847,6 +1855,7 @@ export const exportSchema: API.OperationMethod<
   retry: Retry,
   operationName: "ExportSchema",
 }));
+
 export type GetCodeBindingSourceError =
   | BadRequestException
   | ForbiddenException
@@ -1878,6 +1887,7 @@ export const getCodeBindingSource: API.OperationMethod<
   retry: Retry,
   operationName: "GetCodeBindingSource",
 }));
+
 export type GetDiscoveredSchemaError =
   | BadRequestException
   | ForbiddenException
@@ -1907,6 +1917,7 @@ export const getDiscoveredSchema: API.OperationMethod<
   retry: Retry,
   operationName: "GetDiscoveredSchema",
 }));
+
 export type GetResourcePolicyError =
   | BadRequestException
   | ForbiddenException
@@ -1938,6 +1949,7 @@ export const getResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourcePolicy",
 }));
+
 export type ListDiscoverersError =
   | BadRequestException
   | ForbiddenException
@@ -1988,6 +2000,7 @@ export const listDiscoverers: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListRegistriesError =
   | BadRequestException
   | ForbiddenException
@@ -2038,6 +2051,7 @@ export const listRegistries: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListSchemasError =
   | BadRequestException
   | ForbiddenException
@@ -2088,6 +2102,7 @@ export const listSchemas: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListSchemaVersionsError =
   | BadRequestException
   | ForbiddenException
@@ -2140,6 +2155,7 @@ export const listSchemaVersions: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | ForbiddenException
@@ -2167,6 +2183,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type PutCodeBindingError =
   | BadRequestException
   | ForbiddenException
@@ -2202,6 +2219,7 @@ export const putCodeBinding: API.OperationMethod<
   retry: Retry,
   operationName: "PutCodeBinding",
 }));
+
 export type PutResourcePolicyError =
   | BadRequestException
   | ForbiddenException
@@ -2235,6 +2253,7 @@ export const putResourcePolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutResourcePolicy",
 }));
+
 export type SearchSchemasError =
   | BadRequestException
   | ForbiddenException
@@ -2285,6 +2304,7 @@ export const searchSchemas: API.OperationMethod<
     pageSize: "Limit",
   } as const,
 }));
+
 export type StartDiscovererError =
   | BadRequestException
   | ForbiddenException
@@ -2316,6 +2336,7 @@ export const startDiscoverer: API.OperationMethod<
   retry: Retry,
   operationName: "StartDiscoverer",
 }));
+
 export type StopDiscovererError =
   | BadRequestException
   | ForbiddenException
@@ -2347,6 +2368,7 @@ export const stopDiscoverer: API.OperationMethod<
   retry: Retry,
   operationName: "StopDiscoverer",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | ForbiddenException
@@ -2374,6 +2396,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | ForbiddenException
@@ -2401,6 +2424,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDiscovererError =
   | BadRequestException
   | ForbiddenException
@@ -2432,6 +2456,7 @@ export const updateDiscoverer: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDiscoverer",
 }));
+
 export type UpdateRegistryError =
   | BadRequestException
   | ForbiddenException
@@ -2463,6 +2488,7 @@ export const updateRegistry: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRegistry",
 }));
+
 export type UpdateSchemaError =
   | BadRequestException
   | ForbiddenException

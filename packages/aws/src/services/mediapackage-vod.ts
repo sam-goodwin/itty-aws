@@ -85,10 +85,36 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type MaxResults = number;
-
-//# Schemas
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
+  "UnprocessableEntityException",
+  { Message: S.optional(S.String) },
+  T.HttpError(422),
+).pipe(C.withBadRequestError) {}
 export interface EgressAccessLogs {
   LogGroupName?: string;
 }
@@ -280,6 +306,7 @@ export type PresetSpeke20Audio =
   | "UNENCRYPTED"
   | (string & {});
 export const PresetSpeke20Audio = /*@__PURE__*/ S.String;
+
 export type PresetSpeke20Video =
   | "PRESET-VIDEO-1"
   | "PRESET-VIDEO-2"
@@ -293,6 +320,7 @@ export type PresetSpeke20Video =
   | "UNENCRYPTED"
   | (string & {});
 export const PresetSpeke20Video = /*@__PURE__*/ S.String;
+
 export interface EncryptionContractConfiguration {
   PresetSpeke20Audio?: PresetSpeke20Audio;
   PresetSpeke20Video?: PresetSpeke20Video;
@@ -358,12 +386,14 @@ export type AdMarkers =
   | "PASSTHROUGH"
   | (string & {});
 export const AdMarkers = /*@__PURE__*/ S.String;
+
 export type StreamOrder =
   | "ORIGINAL"
   | "VIDEO_BITRATE_ASCENDING"
   | "VIDEO_BITRATE_DESCENDING"
   | (string & {});
 export const StreamOrder = /*@__PURE__*/ S.String;
+
 export interface StreamSelection {
   MaxVideoBitsPerSecond?: number;
   MinVideoBitsPerSecond?: number;
@@ -437,10 +467,13 @@ export const CmafPackage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CmafPackage" }) as any as S.Schema<CmafPackage>;
 export type ManifestLayout = "FULL" | "COMPACT" | (string & {});
 export const ManifestLayout = /*@__PURE__*/ S.String;
+
 export type Profile = "NONE" | "HBBTV_1_5" | (string & {});
 export const Profile = /*@__PURE__*/ S.String;
+
 export type ScteMarkersSource = "SEGMENTS" | "MANIFEST" | (string & {});
 export const ScteMarkersSource = /*@__PURE__*/ S.String;
+
 export interface DashManifest {
   ManifestLayout?: ManifestLayout;
   ManifestName?: string;
@@ -480,6 +513,7 @@ export const DashEncryption = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DashEncryption" }) as any as S.Schema<DashEncryption>;
 export type __PeriodTriggersElement = "ADS" | (string & {});
 export const __PeriodTriggersElement = /*@__PURE__*/ S.String;
+
 export type __listOf__PeriodTriggersElement = __PeriodTriggersElement[];
 export const __listOf__PeriodTriggersElement = /*@__PURE__*/ S.Array(
   __PeriodTriggersElement,
@@ -490,6 +524,7 @@ export type SegmentTemplateFormat =
   | "NUMBER_WITH_DURATION"
   | (string & {});
 export const SegmentTemplateFormat = /*@__PURE__*/ S.String;
+
 export interface DashPackage {
   DashManifests?: DashManifest[];
   Encryption?: DashEncryption;
@@ -523,6 +558,7 @@ export const DashPackage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DashPackage" }) as any as S.Schema<DashPackage>;
 export type EncryptionMethod = "AES_128" | "SAMPLE_AES" | (string & {});
 export const EncryptionMethod = /*@__PURE__*/ S.String;
+
 export interface HlsEncryption {
   ConstantInitializationVector?: string;
   EncryptionMethod?: EncryptionMethod;
@@ -1099,6 +1135,7 @@ export const DescribePackagingGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribePackagingGroupResponse",
 }) as any as S.Schema<DescribePackagingGroupResponse>;
+export type MaxResults = number;
 export interface ListAssetsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -1539,40 +1576,6 @@ export const UpdatePackagingGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdatePackagingGroupResponse",
 }) as any as S.Schema<UpdatePackagingGroupResponse>;
-
-//# Errors
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
-  "UnprocessableEntityException",
-  { Message: S.optional(S.String) },
-  T.HttpError(422),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type ConfigureLogsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -1604,6 +1607,7 @@ export const configureLogs: API.OperationMethod<
   retry: Retry,
   operationName: "ConfigureLogs",
 }));
+
 export type CreateAssetError =
   | ForbiddenException
   | InternalServerErrorException
@@ -1635,6 +1639,7 @@ export const createAsset: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAsset",
 }));
+
 export type CreatePackagingConfigurationError =
   | ForbiddenException
   | InternalServerErrorException
@@ -1666,6 +1671,7 @@ export const createPackagingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePackagingConfiguration",
 }));
+
 export type CreatePackagingGroupError =
   | ForbiddenException
   | InternalServerErrorException
@@ -1697,6 +1703,7 @@ export const createPackagingGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePackagingGroup",
 }));
+
 export type DeleteAssetError =
   | ForbiddenException
   | InternalServerErrorException
@@ -1728,6 +1735,7 @@ export const deleteAsset: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAsset",
 }));
+
 export type DeletePackagingConfigurationError =
   | ForbiddenException
   | InternalServerErrorException
@@ -1759,6 +1767,7 @@ export const deletePackagingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePackagingConfiguration",
 }));
+
 export type DeletePackagingGroupError =
   | ForbiddenException
   | InternalServerErrorException
@@ -1790,6 +1799,7 @@ export const deletePackagingGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePackagingGroup",
 }));
+
 export type DescribeAssetError =
   | ForbiddenException
   | InternalServerErrorException
@@ -1821,6 +1831,7 @@ export const describeAsset: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAsset",
 }));
+
 export type DescribePackagingConfigurationError =
   | ForbiddenException
   | InternalServerErrorException
@@ -1852,6 +1863,7 @@ export const describePackagingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePackagingConfiguration",
 }));
+
 export type DescribePackagingGroupError =
   | ForbiddenException
   | InternalServerErrorException
@@ -1883,6 +1895,7 @@ export const describePackagingGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DescribePackagingGroup",
 }));
+
 export type ListAssetsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -1935,6 +1948,7 @@ export const listAssets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPackagingConfigurationsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -1987,6 +2001,7 @@ export const listPackagingConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPackagingGroupsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2039,6 +2054,7 @@ export const listPackagingGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError = CommonErrors;
 /**
  * Returns a list of the tags assigned to the specified resource.
@@ -2056,6 +2072,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError = CommonErrors;
 /**
  * Adds tags to the specified resource. You can specify one or more tags to add.
@@ -2073,6 +2090,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError = CommonErrors;
 /**
  * Removes tags from the specified resource. You can specify one or more tags to remove.
@@ -2090,6 +2108,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdatePackagingGroupError =
   | ForbiddenException
   | InternalServerErrorException

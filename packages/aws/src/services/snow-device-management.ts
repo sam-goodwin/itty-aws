@@ -85,31 +85,44 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ManagedDeviceId = string;
-export type UnlockState = string;
-export type PhysicalConnectorType = string;
-export type IpAddressAssignment = string;
-export type JobId = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type InstanceStateName = string;
-export type AttachmentStatus = string;
-export type TaskDescriptionString = string;
-export type IdempotencyToken = string;
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type TaskId = string;
-export type TaskState = string;
-export type ExecutionId = string;
-export type ExecutionState = string;
-
-//# Schemas
-export interface ListTagsForResourceInput {
-  resourceArn: string;
+export interface CancelTaskInput {
+  taskId: string;
 }
-export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+export const CancelTaskInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ taskId: S.String.pipe(T.HttpLabel("taskId")) }).pipe(
     T.all(
-      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      T.Http({ method: "POST", uri: "/task/{taskId}/cancel" }),
       svc,
       auth,
       proto,
@@ -118,32 +131,57 @@ export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "ListTagsForResourceInput",
-}) as any as S.Schema<ListTagsForResourceInput>;
+  identifier: "CancelTaskInput",
+}) as any as S.Schema<CancelTaskInput>;
+export interface CancelTaskOutput {
+  taskId?: string;
+}
+export const CancelTaskOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ taskId: S.optional(S.String) }),
+).annotate({
+  identifier: "CancelTaskOutput",
+}) as any as S.Schema<CancelTaskOutput>;
+export type TargetList = string[];
+export const TargetList = /*@__PURE__*/ S.Array(S.String);
+export interface Unlock {}
+export const Unlock = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Unlock",
+}) as any as S.Schema<Unlock>;
+export interface Reboot {}
+export const Reboot = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Reboot",
+}) as any as S.Schema<Reboot>;
+export type Command =
+  | { unlock: Unlock; reboot?: never }
+  | { unlock?: never; reboot: Reboot };
+export const Command = /*@__PURE__*/ S.Union([
+  S.Struct({ unlock: Unlock }),
+  S.Struct({ reboot: Reboot }),
+]);
+export type TaskDescriptionString = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
-export interface ListTagsForResourceOutput {
+export type IdempotencyToken = string;
+export interface CreateTaskInput {
+  targets: string[];
+  command: Command;
+  description?: string;
   tags?: { [key: string]: string | undefined };
+  clientToken?: string;
 }
-export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(TagMap) }),
-).annotate({
-  identifier: "ListTagsForResourceOutput",
-}) as any as S.Schema<ListTagsForResourceOutput>;
-export interface TagResourceInput {
-  resourceArn: string;
-  tags: { [key: string]: string | undefined };
-}
-export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
+export const CreateTaskInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tags: TagMap,
+    targets: TargetList,
+    command: Command,
+    description: S.optional(S.String),
+    tags: S.optional(TagMap),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
   }).pipe(
     T.all(
-      T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+      T.Http({ method: "POST", uri: "/task" }),
       svc,
       auth,
       proto,
@@ -152,43 +190,18 @@ export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "TagResourceInput",
-}) as any as S.Schema<TagResourceInput>;
-export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
-export type TagKeys = string[];
-export const TagKeys = /*@__PURE__*/ S.Array(S.String);
-export interface UntagResourceInput {
-  resourceArn: string;
-  tagKeys: string[];
+  identifier: "CreateTaskInput",
+}) as any as S.Schema<CreateTaskInput>;
+export interface CreateTaskOutput {
+  taskId?: string;
+  taskArn?: string;
 }
-export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
+export const CreateTaskOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ taskId: S.optional(S.String), taskArn: S.optional(S.String) }),
 ).annotate({
-  identifier: "UntagResourceInput",
-}) as any as S.Schema<UntagResourceInput>;
-export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
+  identifier: "CreateTaskOutput",
+}) as any as S.Schema<CreateTaskOutput>;
+export type ManagedDeviceId = string;
 export interface DescribeDeviceInput {
   managedDeviceId: string;
 }
@@ -211,6 +224,9 @@ export const DescribeDeviceInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDeviceInput",
 }) as any as S.Schema<DescribeDeviceInput>;
+export type UnlockState = string;
+export type PhysicalConnectorType = string;
+export type IpAddressAssignment = string;
 export interface PhysicalNetworkInterface {
   physicalNetworkInterfaceId?: string;
   physicalConnectorType?: string;
@@ -301,57 +317,6 @@ export const DescribeDeviceOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDeviceOutput",
 }) as any as S.Schema<DescribeDeviceOutput>;
-export interface ListDevicesInput {
-  jobId?: string;
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListDevicesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    jobId: S.optional(S.String).pipe(T.HttpQuery("jobId")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/managed-devices" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListDevicesInput",
-}) as any as S.Schema<ListDevicesInput>;
-export interface DeviceSummary {
-  managedDeviceId?: string;
-  managedDeviceArn?: string;
-  associatedWithJob?: string;
-  tags?: { [key: string]: string | undefined };
-}
-export const DeviceSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedDeviceId: S.optional(S.String),
-    managedDeviceArn: S.optional(S.String),
-    associatedWithJob: S.optional(S.String),
-    tags: S.optional(TagMap),
-  }),
-).annotate({ identifier: "DeviceSummary" }) as any as S.Schema<DeviceSummary>;
-export type DeviceSummaryList = DeviceSummary[];
-export const DeviceSummaryList = /*@__PURE__*/ S.Array(DeviceSummary);
-export interface ListDevicesOutput {
-  devices?: DeviceSummary[];
-  nextToken?: string;
-}
-export const ListDevicesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    devices: S.optional(DeviceSummaryList),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDevicesOutput",
-}) as any as S.Schema<ListDevicesOutput>;
 export type InstanceIdsList = string[];
 export const InstanceIdsList = /*@__PURE__*/ S.Array(S.String);
 export interface DescribeDeviceEc2Input {
@@ -378,6 +343,7 @@ export const DescribeDeviceEc2Input = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDeviceEc2Input",
 }) as any as S.Schema<DescribeDeviceEc2Input>;
+export type InstanceStateName = string;
 export interface InstanceState {
   code?: number;
   name?: string;
@@ -385,6 +351,7 @@ export interface InstanceState {
 export const InstanceState = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ code: S.optional(S.Number), name: S.optional(S.String) }),
 ).annotate({ identifier: "InstanceState" }) as any as S.Schema<InstanceState>;
+export type AttachmentStatus = string;
 export interface EbsInstanceBlockDevice {
   attachTime?: Date;
   deleteOnTermination?: boolean;
@@ -494,6 +461,98 @@ export const DescribeDeviceEc2Output = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeDeviceEc2Output",
 }) as any as S.Schema<DescribeDeviceEc2Output>;
+export interface DescribeExecutionInput {
+  taskId: string;
+  managedDeviceId: string;
+}
+export const DescribeExecutionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    taskId: S.String.pipe(T.HttpLabel("taskId")),
+    managedDeviceId: S.String.pipe(T.HttpLabel("managedDeviceId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/task/{taskId}/execution/{managedDeviceId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeExecutionInput",
+}) as any as S.Schema<DescribeExecutionInput>;
+export type ExecutionId = string;
+export type ExecutionState = string;
+export interface DescribeExecutionOutput {
+  taskId?: string;
+  executionId?: string;
+  managedDeviceId?: string;
+  state?: string;
+  startedAt?: Date;
+  lastUpdatedAt?: Date;
+}
+export const DescribeExecutionOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    taskId: S.optional(S.String),
+    executionId: S.optional(S.String),
+    managedDeviceId: S.optional(S.String),
+    state: S.optional(S.String),
+    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "DescribeExecutionOutput",
+}) as any as S.Schema<DescribeExecutionOutput>;
+export interface DescribeTaskInput {
+  taskId: string;
+}
+export const DescribeTaskInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ taskId: S.String.pipe(T.HttpLabel("taskId")) }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/task/{taskId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DescribeTaskInput",
+}) as any as S.Schema<DescribeTaskInput>;
+export type TaskState = string;
+export interface DescribeTaskOutput {
+  taskId?: string;
+  taskArn?: string;
+  targets?: string[];
+  state?: string;
+  createdAt?: Date;
+  lastUpdatedAt?: Date;
+  completedAt?: Date;
+  description?: string;
+  tags?: { [key: string]: string | undefined };
+}
+export const DescribeTaskOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    taskId: S.optional(S.String),
+    taskArn: S.optional(S.String),
+    targets: S.optional(TargetList),
+    state: S.optional(S.String),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+    description: S.optional(S.String),
+    tags: S.optional(TagMap),
+  }),
+).annotate({
+  identifier: "DescribeTaskOutput",
+}) as any as S.Schema<DescribeTaskOutput>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface ListDeviceResourcesInput {
   managedDeviceId: string;
   type?: string;
@@ -550,115 +609,20 @@ export const ListDeviceResourcesOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDeviceResourcesOutput",
 }) as any as S.Schema<ListDeviceResourcesOutput>;
-export type TargetList = string[];
-export const TargetList = /*@__PURE__*/ S.Array(S.String);
-export interface Unlock {}
-export const Unlock = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Unlock",
-}) as any as S.Schema<Unlock>;
-export interface Reboot {}
-export const Reboot = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Reboot",
-}) as any as S.Schema<Reboot>;
-export type Command =
-  | { unlock: Unlock; reboot?: never }
-  | { unlock?: never; reboot: Reboot };
-export const Command = /*@__PURE__*/ S.Union([
-  S.Struct({ unlock: Unlock }),
-  S.Struct({ reboot: Reboot }),
-]);
-export interface CreateTaskInput {
-  targets: string[];
-  command: Command;
-  description?: string;
-  tags?: { [key: string]: string | undefined };
-  clientToken?: string;
-}
-export const CreateTaskInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targets: TargetList,
-    command: Command,
-    description: S.optional(S.String),
-    tags: S.optional(TagMap),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/task" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateTaskInput",
-}) as any as S.Schema<CreateTaskInput>;
-export interface CreateTaskOutput {
-  taskId?: string;
-  taskArn?: string;
-}
-export const CreateTaskOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskId: S.optional(S.String), taskArn: S.optional(S.String) }),
-).annotate({
-  identifier: "CreateTaskOutput",
-}) as any as S.Schema<CreateTaskOutput>;
-export interface DescribeTaskInput {
-  taskId: string;
-}
-export const DescribeTaskInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskId: S.String.pipe(T.HttpLabel("taskId")) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/task/{taskId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DescribeTaskInput",
-}) as any as S.Schema<DescribeTaskInput>;
-export interface DescribeTaskOutput {
-  taskId?: string;
-  taskArn?: string;
-  targets?: string[];
-  state?: string;
-  createdAt?: Date;
-  lastUpdatedAt?: Date;
-  completedAt?: Date;
-  description?: string;
-  tags?: { [key: string]: string | undefined };
-}
-export const DescribeTaskOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskId: S.optional(S.String),
-    taskArn: S.optional(S.String),
-    targets: S.optional(TargetList),
-    state: S.optional(S.String),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    description: S.optional(S.String),
-    tags: S.optional(TagMap),
-  }),
-).annotate({
-  identifier: "DescribeTaskOutput",
-}) as any as S.Schema<DescribeTaskOutput>;
-export interface ListTasksInput {
-  state?: string;
+export type JobId = string;
+export interface ListDevicesInput {
+  jobId?: string;
   maxResults?: number;
   nextToken?: string;
 }
-export const ListTasksInput = /*@__PURE__*/ S.suspend(() =>
+export const ListDevicesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    state: S.optional(S.String).pipe(T.HttpQuery("state")),
+    jobId: S.optional(S.String).pipe(T.HttpQuery("jobId")),
     maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
     nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
   }).pipe(
     T.all(
-      T.Http({ method: "GET", uri: "/tasks" }),
+      T.Http({ method: "GET", uri: "/managed-devices" }),
       svc,
       auth,
       proto,
@@ -666,104 +630,37 @@ export const ListTasksInput = /*@__PURE__*/ S.suspend(() =>
       rules,
     ),
   ),
-).annotate({ identifier: "ListTasksInput" }) as any as S.Schema<ListTasksInput>;
-export interface TaskSummary {
-  taskId: string;
-  taskArn?: string;
-  state?: string;
+).annotate({
+  identifier: "ListDevicesInput",
+}) as any as S.Schema<ListDevicesInput>;
+export interface DeviceSummary {
+  managedDeviceId?: string;
+  managedDeviceArn?: string;
+  associatedWithJob?: string;
   tags?: { [key: string]: string | undefined };
 }
-export const TaskSummary = /*@__PURE__*/ S.suspend(() =>
+export const DeviceSummary = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    taskId: S.String,
-    taskArn: S.optional(S.String),
-    state: S.optional(S.String),
+    managedDeviceId: S.optional(S.String),
+    managedDeviceArn: S.optional(S.String),
+    associatedWithJob: S.optional(S.String),
     tags: S.optional(TagMap),
   }),
-).annotate({ identifier: "TaskSummary" }) as any as S.Schema<TaskSummary>;
-export type TaskSummaryList = TaskSummary[];
-export const TaskSummaryList = /*@__PURE__*/ S.Array(TaskSummary);
-export interface ListTasksOutput {
-  tasks?: TaskSummary[];
+).annotate({ identifier: "DeviceSummary" }) as any as S.Schema<DeviceSummary>;
+export type DeviceSummaryList = DeviceSummary[];
+export const DeviceSummaryList = /*@__PURE__*/ S.Array(DeviceSummary);
+export interface ListDevicesOutput {
+  devices?: DeviceSummary[];
   nextToken?: string;
 }
-export const ListTasksOutput = /*@__PURE__*/ S.suspend(() =>
+export const ListDevicesOutput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    tasks: S.optional(TaskSummaryList),
+    devices: S.optional(DeviceSummaryList),
     nextToken: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "ListTasksOutput",
-}) as any as S.Schema<ListTasksOutput>;
-export interface CancelTaskInput {
-  taskId: string;
-}
-export const CancelTaskInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskId: S.String.pipe(T.HttpLabel("taskId")) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/task/{taskId}/cancel" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CancelTaskInput",
-}) as any as S.Schema<CancelTaskInput>;
-export interface CancelTaskOutput {
-  taskId?: string;
-}
-export const CancelTaskOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ taskId: S.optional(S.String) }),
-).annotate({
-  identifier: "CancelTaskOutput",
-}) as any as S.Schema<CancelTaskOutput>;
-export interface DescribeExecutionInput {
-  taskId: string;
-  managedDeviceId: string;
-}
-export const DescribeExecutionInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskId: S.String.pipe(T.HttpLabel("taskId")),
-    managedDeviceId: S.String.pipe(T.HttpLabel("managedDeviceId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/task/{taskId}/execution/{managedDeviceId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DescribeExecutionInput",
-}) as any as S.Schema<DescribeExecutionInput>;
-export interface DescribeExecutionOutput {
-  taskId?: string;
-  executionId?: string;
-  managedDeviceId?: string;
-  state?: string;
-  startedAt?: Date;
-  lastUpdatedAt?: Date;
-}
-export const DescribeExecutionOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskId: S.optional(S.String),
-    executionId: S.optional(S.String),
-    managedDeviceId: S.optional(S.String),
-    state: S.optional(S.String),
-    startedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-    lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "DescribeExecutionOutput",
-}) as any as S.Schema<DescribeExecutionOutput>;
+  identifier: "ListDevicesOutput",
+}) as any as S.Schema<ListDevicesOutput>;
 export interface ListExecutionsInput {
   taskId: string;
   state?: string;
@@ -819,115 +716,202 @@ export const ListExecutionsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListExecutionsOutput",
 }) as any as S.Schema<ListExecutionsOutput>;
+export interface ListTagsForResourceInput {
+  resourceArn: string;
+}
+export const ListTagsForResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListTagsForResourceInput",
+}) as any as S.Schema<ListTagsForResourceInput>;
+export interface ListTagsForResourceOutput {
+  tags?: { [key: string]: string | undefined };
+}
+export const ListTagsForResourceOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagMap) }),
+).annotate({
+  identifier: "ListTagsForResourceOutput",
+}) as any as S.Schema<ListTagsForResourceOutput>;
+export interface ListTasksInput {
+  state?: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListTasksInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    state: S.optional(S.String).pipe(T.HttpQuery("state")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tasks" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({ identifier: "ListTasksInput" }) as any as S.Schema<ListTasksInput>;
+export interface TaskSummary {
+  taskId: string;
+  taskArn?: string;
+  state?: string;
+  tags?: { [key: string]: string | undefined };
+}
+export const TaskSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    taskId: S.String,
+    taskArn: S.optional(S.String),
+    state: S.optional(S.String),
+    tags: S.optional(TagMap),
+  }),
+).annotate({ identifier: "TaskSummary" }) as any as S.Schema<TaskSummary>;
+export type TaskSummaryList = TaskSummary[];
+export const TaskSummaryList = /*@__PURE__*/ S.Array(TaskSummary);
+export interface ListTasksOutput {
+  tasks?: TaskSummary[];
+  nextToken?: string;
+}
+export const ListTasksOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tasks: S.optional(TaskSummaryList),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTasksOutput",
+}) as any as S.Schema<ListTasksOutput>;
+export interface TagResourceInput {
+  resourceArn: string;
+  tags: { [key: string]: string | undefined };
+}
+export const TagResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+    tags: TagMap,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "TagResourceInput",
+}) as any as S.Schema<TagResourceInput>;
+export interface TagResourceResponse {}
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "TagResourceResponse",
+}) as any as S.Schema<TagResourceResponse>;
+export type TagKeys = string[];
+export const TagKeys = /*@__PURE__*/ S.Array(S.String);
+export interface UntagResourceInput {
+  resourceArn: string;
+  tagKeys: string[];
+}
+export const UntagResourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+    tagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UntagResourceInput",
+}) as any as S.Schema<UntagResourceInput>;
+export interface UntagResourceResponse {}
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UntagResourceResponse",
+}) as any as S.Schema<UntagResourceResponse>;
+export type CancelTaskError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Sends a cancel request for a specified task. You can cancel a task only if it's still in a
+ * `QUEUED` state. Tasks that are already running can't be cancelled.
+ *
+ * A task might still run if it's processed from the queue before the
+ * `CancelTask` operation changes the task's state.
+ */
+export const cancelTask: API.OperationMethod<
+  CancelTaskInput,
+  CancelTaskOutput,
+  CancelTaskError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CancelTaskInput,
+  output: CancelTaskOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CancelTask",
+}));
 
-//# Errors
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
+export type CreateTaskError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Instructs one or more devices to start a task, such as unlocking or rebooting.
+ */
+export const createTask: API.OperationMethod<
+  CreateTaskInput,
+  CreateTaskOutput,
+  CreateTaskError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateTaskInput,
+  output: CreateTaskOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateTask",
+}));
 
-//# Operations
-export type ListTagsForResourceError =
-  | InternalServerException
-  | ResourceNotFoundException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns a list of tags for a managed device or task.
- */
-export const listTagsForResource: API.OperationMethod<
-  ListTagsForResourceInput,
-  ListTagsForResourceOutput,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceInput,
-  output: ListTagsForResourceOutput,
-  errors: [
-    InternalServerException,
-    ResourceNotFoundException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListTagsForResource",
-}));
-export type TagResourceError =
-  | InternalServerException
-  | ResourceNotFoundException
-  | ValidationException
-  | CommonErrors;
-/**
- * Adds or replaces tags on a device or task.
- */
-export const tagResource: API.OperationMethod<
-  TagResourceInput,
-  TagResourceResponse,
-  TagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceInput,
-  output: TagResourceResponse,
-  errors: [
-    InternalServerException,
-    ResourceNotFoundException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "TagResource",
-}));
-export type UntagResourceError =
-  | InternalServerException
-  | ResourceNotFoundException
-  | ValidationException
-  | CommonErrors;
-/**
- * Removes a tag from a device or task.
- */
-export const untagResource: API.OperationMethod<
-  UntagResourceInput,
-  UntagResourceResponse,
-  UntagResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceInput,
-  output: UntagResourceResponse,
-  errors: [
-    InternalServerException,
-    ResourceNotFoundException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UntagResource",
-}));
 export type DescribeDeviceError =
   | AccessDeniedException
   | InternalServerException
@@ -958,55 +942,7 @@ export const describeDevice: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDevice",
 }));
-export type ListDevicesError =
-  | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Returns a list of all devices on your Amazon Web Services account that have Amazon Web Services Snow Device Management
- * enabled in the Amazon Web Services Region where the command is run.
- */
-export const listDevices: API.OperationMethod<
-  ListDevicesInput,
-  ListDevicesOutput,
-  ListDevicesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDevicesInput,
-  ) => stream.Stream<
-    ListDevicesOutput,
-    ListDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDevicesInput,
-  ) => stream.Stream<
-    DeviceSummary,
-    ListDevicesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDevicesInput,
-  output: ListDevicesOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListDevices",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "devices",
-    pageSize: "maxResults",
-  } as const,
-}));
+
 export type DescribeDeviceEc2InstancesError =
   | AccessDeniedException
   | InternalServerException
@@ -1038,6 +974,67 @@ export const describeDeviceEc2Instances: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDeviceEc2Instances",
 }));
+
+export type DescribeExecutionError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Checks the status of a remote task running on one or more target devices.
+ */
+export const describeExecution: API.OperationMethod<
+  DescribeExecutionInput,
+  DescribeExecutionOutput,
+  DescribeExecutionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DescribeExecutionInput,
+  output: DescribeExecutionOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeExecution",
+}));
+
+export type DescribeTaskError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Checks the metadata for a given task on a device.
+ */
+export const describeTask: API.OperationMethod<
+  DescribeTaskInput,
+  DescribeTaskOutput,
+  DescribeTaskError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DescribeTaskInput,
+  output: DescribeTaskOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DescribeTask",
+}));
+
 export type ListDeviceResourcesError =
   | AccessDeniedException
   | InternalServerException
@@ -1088,98 +1085,40 @@ export const listDeviceResources: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateTaskError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Instructs one or more devices to start a task, such as unlocking or rebooting.
- */
-export const createTask: API.OperationMethod<
-  CreateTaskInput,
-  CreateTaskOutput,
-  CreateTaskError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateTaskInput,
-  output: CreateTaskOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateTask",
-}));
-export type DescribeTaskError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Checks the metadata for a given task on a device.
- */
-export const describeTask: API.OperationMethod<
-  DescribeTaskInput,
-  DescribeTaskOutput,
-  DescribeTaskError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DescribeTaskInput,
-  output: DescribeTaskOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DescribeTask",
-}));
-export type ListTasksError =
+
+export type ListDevicesError =
   | AccessDeniedException
   | InternalServerException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Returns a list of tasks that can be filtered by state.
+ * Returns a list of all devices on your Amazon Web Services account that have Amazon Web Services Snow Device Management
+ * enabled in the Amazon Web Services Region where the command is run.
  */
-export const listTasks: API.OperationMethod<
-  ListTasksInput,
-  ListTasksOutput,
-  ListTasksError,
+export const listDevices: API.OperationMethod<
+  ListDevicesInput,
+  ListDevicesOutput,
+  ListDevicesError,
   Credentials | Region | HttpClient.HttpClient
 > & {
   pages: (
-    input: ListTasksInput,
+    input: ListDevicesInput,
   ) => stream.Stream<
-    ListTasksOutput,
-    ListTasksError,
+    ListDevicesOutput,
+    ListDevicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
   items: (
-    input: ListTasksInput,
+    input: ListDevicesInput,
   ) => stream.Stream<
-    TaskSummary,
-    ListTasksError,
+    DeviceSummary,
+    ListDevicesError,
     Credentials | Region | HttpClient.HttpClient
   >;
 } = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTasksInput,
-  output: ListTasksOutput,
+  input: ListDevicesInput,
+  output: ListDevicesOutput,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1188,76 +1127,15 @@ export const listTasks: API.OperationMethod<
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "ListTasks",
+  operationName: "ListDevices",
   pagination: {
     inputToken: "nextToken",
     outputToken: "nextToken",
-    items: "tasks",
+    items: "devices",
     pageSize: "maxResults",
   } as const,
 }));
-export type CancelTaskError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Sends a cancel request for a specified task. You can cancel a task only if it's still in a
- * `QUEUED` state. Tasks that are already running can't be cancelled.
- *
- * A task might still run if it's processed from the queue before the
- * `CancelTask` operation changes the task's state.
- */
-export const cancelTask: API.OperationMethod<
-  CancelTaskInput,
-  CancelTaskOutput,
-  CancelTaskError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CancelTaskInput,
-  output: CancelTaskOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CancelTask",
-}));
-export type DescribeExecutionError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Checks the status of a remote task running on one or more target devices.
- */
-export const describeExecution: API.OperationMethod<
-  DescribeExecutionInput,
-  DescribeExecutionOutput,
-  DescribeExecutionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DescribeExecutionInput,
-  output: DescribeExecutionOutput,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DescribeExecution",
-}));
+
 export type ListExecutionsError =
   | AccessDeniedException
   | InternalServerException
@@ -1307,4 +1185,131 @@ export const listExecutions: API.OperationMethod<
     items: "executions",
     pageSize: "maxResults",
   } as const,
+}));
+
+export type ListTagsForResourceError =
+  | InternalServerException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a list of tags for a managed device or task.
+ */
+export const listTagsForResource: API.OperationMethod<
+  ListTagsForResourceInput,
+  ListTagsForResourceOutput,
+  ListTagsForResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListTagsForResourceInput,
+  output: ListTagsForResourceOutput,
+  errors: [
+    InternalServerException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTagsForResource",
+}));
+
+export type ListTasksError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Returns a list of tasks that can be filtered by state.
+ */
+export const listTasks: API.OperationMethod<
+  ListTasksInput,
+  ListTasksOutput,
+  ListTasksError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListTasksInput,
+  ) => stream.Stream<
+    ListTasksOutput,
+    ListTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListTasksInput,
+  ) => stream.Stream<
+    TaskSummary,
+    ListTasksError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListTasksInput,
+  output: ListTasksOutput,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListTasks",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "tasks",
+    pageSize: "maxResults",
+  } as const,
+}));
+
+export type TagResourceError =
+  | InternalServerException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Adds or replaces tags on a device or task.
+ */
+export const tagResource: API.OperationMethod<
+  TagResourceInput,
+  TagResourceResponse,
+  TagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: TagResourceInput,
+  output: TagResourceResponse,
+  errors: [
+    InternalServerException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TagResource",
+}));
+
+export type UntagResourceError =
+  | InternalServerException
+  | ResourceNotFoundException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Removes a tag from a device or task.
+ */
+export const untagResource: API.OperationMethod<
+  UntagResourceInput,
+  UntagResourceResponse,
+  UntagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UntagResourceInput,
+  output: UntagResourceResponse,
+  errors: [
+    InternalServerException,
+    ResourceNotFoundException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UntagResource",
 }));

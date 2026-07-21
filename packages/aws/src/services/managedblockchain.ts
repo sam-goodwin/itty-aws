@@ -87,38 +87,62 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class IllegalActionException extends S.TaggedErrorClass<IllegalActionException>()(
+  "IllegalActionException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
+  "InternalServiceErrorException",
+  {},
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
+  "ResourceLimitExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotReadyException>()(
+  "ResourceNotReadyException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {},
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
+  "TooManyTagsException",
+  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ClientRequestTokenString = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ResourceIdString = string;
-export type AccessorBillingTokenString = string;
-export type ExceptionMessage = string;
-export type ArnString = string;
-export type NetworkMemberNameString = string;
-export type DescriptionString = string;
-export type UsernameString = string;
-export type PasswordString = string | redacted.Redacted<string>;
-export type Enabled = boolean;
-export type NameString = string;
-export type FrameworkVersionString = string;
-export type ThresholdPercentageInt = number;
-export type ProposalDurationInt = number;
-export type InstanceTypeString = string;
-export type AvailabilityZoneString = string;
-export type PrincipalString = string;
-export type VoteCount = number;
-export type AccessorListMaxResults = number;
-export type PaginationToken = string;
-export type ProposalListMaxResults = number;
-export type IsOwned = boolean;
-export type MemberListMaxResults = number;
-export type NetworkListMaxResults = number;
-export type NodeListMaxResults = number;
-
-//# Schemas
 export type AccessorType = "BILLING_TOKEN" | (string & {});
 export const AccessorType = /*@__PURE__*/ S.String;
+
+export type TagKey = string;
+export type TagValue = string;
 export type InputTagMap = { [key: string]: string | undefined };
 export const InputTagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -132,6 +156,7 @@ export type AccessorNetworkType =
   | "POLYGON_MUMBAI"
   | (string & {});
 export const AccessorNetworkType = /*@__PURE__*/ S.String;
+
 export interface CreateAccessorInput {
   ClientRequestToken: string;
   AccessorType: AccessorType;
@@ -157,6 +182,8 @@ export const CreateAccessorInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessorInput",
 }) as any as S.Schema<CreateAccessorInput>;
+export type ResourceIdString = string;
+export type AccessorBillingTokenString = string;
 export interface CreateAccessorOutput {
   AccessorId?: string;
   BillingToken?: string;
@@ -171,6 +198,10 @@ export const CreateAccessorOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAccessorOutput",
 }) as any as S.Schema<CreateAccessorOutput>;
+export type NetworkMemberNameString = string;
+export type DescriptionString = string;
+export type UsernameString = string;
+export type PasswordString = string | redacted.Redacted<string>;
 export interface MemberFabricConfiguration {
   AdminUsername: string;
   AdminPassword: string | redacted.Redacted<string>;
@@ -188,6 +219,7 @@ export const MemberFrameworkConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MemberFrameworkConfiguration",
 }) as any as S.Schema<MemberFrameworkConfiguration>;
+export type Enabled = boolean;
 export interface LogConfiguration {
   Enabled?: boolean;
 }
@@ -220,6 +252,7 @@ export const MemberLogPublishingConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MemberLogPublishingConfiguration",
 }) as any as S.Schema<MemberLogPublishingConfiguration>;
+export type ArnString = string;
 export interface MemberConfiguration {
   Name: string;
   Description?: string;
@@ -273,10 +306,14 @@ export const CreateMemberOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMemberOutput",
 }) as any as S.Schema<CreateMemberOutput>;
+export type NameString = string;
 export type Framework = "HYPERLEDGER_FABRIC" | "ETHEREUM" | (string & {});
 export const Framework = /*@__PURE__*/ S.String;
+
+export type FrameworkVersionString = string;
 export type Edition = "STARTER" | "STANDARD" | (string & {});
 export const Edition = /*@__PURE__*/ S.String;
+
 export interface NetworkFabricConfiguration {
   Edition: Edition;
 }
@@ -293,11 +330,14 @@ export const NetworkFrameworkConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkFrameworkConfiguration",
 }) as any as S.Schema<NetworkFrameworkConfiguration>;
+export type ThresholdPercentageInt = number;
+export type ProposalDurationInt = number;
 export type ThresholdComparator =
   | "GREATER_THAN"
   | "GREATER_THAN_OR_EQUAL_TO"
   | (string & {});
 export const ThresholdComparator = /*@__PURE__*/ S.String;
+
 export interface ApprovalThresholdPolicy {
   ThresholdPercentage?: number;
   ProposalDurationInHours?: number;
@@ -362,6 +402,8 @@ export const CreateNetworkOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNetworkOutput",
 }) as any as S.Schema<CreateNetworkOutput>;
+export type InstanceTypeString = string;
+export type AvailabilityZoneString = string;
 export interface NodeFabricLogPublishingConfiguration {
   ChaincodeLogs?: LogConfigurations;
   PeerLogs?: LogConfigurations;
@@ -385,6 +427,7 @@ export const NodeLogPublishingConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<NodeLogPublishingConfiguration>;
 export type StateDBType = "LevelDB" | "CouchDB" | (string & {});
 export const StateDBType = /*@__PURE__*/ S.String;
+
 export interface NodeConfiguration {
   InstanceType: string;
   AvailabilityZone?: string;
@@ -436,6 +479,7 @@ export const CreateNodeOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateNodeOutput",
 }) as any as S.Schema<CreateNodeOutput>;
+export type PrincipalString = string;
 export interface InviteAction {
   Principal: string;
 }
@@ -606,6 +650,7 @@ export type AccessorStatus =
   | "DELETED"
   | (string & {});
 export const AccessorStatus = /*@__PURE__*/ S.String;
+
 export type OutputTagMap = { [key: string]: string | undefined };
 export const OutputTagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -695,6 +740,7 @@ export type MemberStatus =
   | "INACCESSIBLE_ENCRYPTION_KEY"
   | (string & {});
 export const MemberStatus = /*@__PURE__*/ S.String;
+
 export interface Member {
   NetworkId?: string;
   Id?: string;
@@ -790,6 +836,7 @@ export type NetworkStatus =
   | "DELETED"
   | (string & {});
 export const NetworkStatus = /*@__PURE__*/ S.String;
+
 export interface Network {
   Id?: string;
   Name?: string;
@@ -899,6 +946,7 @@ export type NodeStatus =
   | "INACCESSIBLE_ENCRYPTION_KEY"
   | (string & {});
 export const NodeStatus = /*@__PURE__*/ S.String;
+
 export interface Node {
   NetworkId?: string;
   MemberId?: string;
@@ -971,6 +1019,8 @@ export type ProposalStatus =
   | "ACTION_FAILED"
   | (string & {});
 export const ProposalStatus = /*@__PURE__*/ S.String;
+
+export type VoteCount = number;
 export interface Proposal {
   ProposalId?: string;
   NetworkId?: string;
@@ -1017,6 +1067,8 @@ export const GetProposalOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetProposalOutput",
 }) as any as S.Schema<GetProposalOutput>;
+export type AccessorListMaxResults = number;
+export type PaginationToken = string;
 export interface ListAccessorsInput {
   MaxResults?: number;
   NextToken?: string;
@@ -1078,6 +1130,7 @@ export const ListAccessorsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAccessorsOutput",
 }) as any as S.Schema<ListAccessorsOutput>;
+export type ProposalListMaxResults = number;
 export interface ListInvitationsInput {
   MaxResults?: number;
   NextToken?: string;
@@ -1107,6 +1160,7 @@ export type InvitationStatus =
   | "EXPIRED"
   | (string & {});
 export const InvitationStatus = /*@__PURE__*/ S.String;
+
 export interface NetworkSummary {
   Id?: string;
   Name?: string;
@@ -1167,6 +1221,8 @@ export const ListInvitationsOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListInvitationsOutput",
 }) as any as S.Schema<ListInvitationsOutput>;
+export type IsOwned = boolean;
+export type MemberListMaxResults = number;
 export interface ListMembersInput {
   NetworkId: string;
   Name?: string;
@@ -1232,6 +1288,7 @@ export const ListMembersOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListMembersOutput",
 }) as any as S.Schema<ListMembersOutput>;
+export type NetworkListMaxResults = number;
 export interface ListNetworksInput {
   Name?: string;
   Framework?: Framework;
@@ -1273,6 +1330,7 @@ export const ListNetworksOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListNetworksOutput",
 }) as any as S.Schema<ListNetworksOutput>;
+export type NodeListMaxResults = number;
 export interface ListNodesInput {
   NetworkId: string;
   MemberId?: string;
@@ -1427,6 +1485,7 @@ export const ListProposalVotesInput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListProposalVotesInput>;
 export type VoteValue = "YES" | "NO" | (string & {});
 export const VoteValue = /*@__PURE__*/ S.String;
+
 export interface VoteSummary {
   Vote?: VoteValue;
   MemberName?: string;
@@ -1654,60 +1713,7 @@ export const VoteOnProposalOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VoteOnProposalOutput",
 }) as any as S.Schema<VoteOnProposalOutput>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
-  "InternalServiceErrorException",
-  {},
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
-  "ResourceLimitExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {},
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class TooManyTagsException extends S.TaggedErrorClass<TooManyTagsException>()(
-  "TooManyTagsException",
-  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String), ResourceName: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotReadyException extends S.TaggedErrorClass<ResourceNotReadyException>()(
-  "ResourceNotReadyException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class IllegalActionException extends S.TaggedErrorClass<IllegalActionException>()(
-  "IllegalActionException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ExceptionMessage = string;
 export type CreateAccessorError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1742,6 +1748,7 @@ export const createAccessor: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAccessor",
 }));
+
 export type CreateMemberError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1781,6 +1788,7 @@ export const createMember: API.OperationMethod<
   retry: Retry,
   operationName: "CreateMember",
 }));
+
 export type CreateNetworkError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1816,6 +1824,7 @@ export const createNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNetwork",
 }));
+
 export type CreateNodeError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1855,6 +1864,7 @@ export const createNode: API.OperationMethod<
   retry: Retry,
   operationName: "CreateNode",
 }));
+
 export type CreateProposalError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1890,6 +1900,7 @@ export const createProposal: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProposal",
 }));
+
 export type DeleteAccessorError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1925,6 +1936,7 @@ export const deleteAccessor: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccessor",
 }));
+
 export type DeleteMemberError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1958,6 +1970,7 @@ export const deleteMember: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMember",
 }));
+
 export type DeleteNodeError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -1991,6 +2004,7 @@ export const deleteNode: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteNode",
 }));
+
 export type GetAccessorError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2021,6 +2035,7 @@ export const getAccessor: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccessor",
 }));
+
 export type GetMemberError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2052,6 +2067,7 @@ export const getMember: API.OperationMethod<
   retry: Retry,
   operationName: "GetMember",
 }));
+
 export type GetNetworkError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2083,6 +2099,7 @@ export const getNetwork: API.OperationMethod<
   retry: Retry,
   operationName: "GetNetwork",
 }));
+
 export type GetNodeError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2114,6 +2131,7 @@ export const getNode: API.OperationMethod<
   retry: Retry,
   operationName: "GetNode",
 }));
+
 export type GetProposalError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2145,6 +2163,7 @@ export const getProposal: API.OperationMethod<
   retry: Retry,
   operationName: "GetProposal",
 }));
+
 export type ListAccessorsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2194,6 +2213,7 @@ export const listAccessors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListInvitationsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2247,6 +2267,7 @@ export const listInvitations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListMembersError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2296,6 +2317,7 @@ export const listMembers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNetworksError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2345,6 +2367,7 @@ export const listNetworks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListNodesError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2394,6 +2417,7 @@ export const listNodes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProposalsError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2445,6 +2469,7 @@ export const listProposals: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProposalVotesError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2494,6 +2519,7 @@ export const listProposalVotes: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2523,6 +2549,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RejectInvitationError =
   | AccessDeniedException
   | IllegalActionException
@@ -2556,6 +2583,7 @@ export const rejectInvitation: API.OperationMethod<
   retry: Retry,
   operationName: "RejectInvitation",
 }));
+
 export type TagResourceError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2591,6 +2619,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2620,6 +2649,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateMemberError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2651,6 +2681,7 @@ export const updateMember: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMember",
 }));
+
 export type UpdateNodeError =
   | AccessDeniedException
   | InternalServiceErrorException
@@ -2682,6 +2713,7 @@ export const updateNode: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateNode",
 }));
+
 export type VoteOnProposalError =
   | AccessDeniedException
   | IllegalActionException

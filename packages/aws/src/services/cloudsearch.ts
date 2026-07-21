@@ -85,32 +85,64 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class BaseException extends S.TaggedErrorClass<BaseException>()(
+  "BaseException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+) {}
+export class DisabledOperationException extends S.TaggedErrorClass<DisabledOperationException>()(
+  "DisabledOperationException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "DisabledAction", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class InternalException extends S.TaggedErrorClass<InternalException>()(
+  "InternalException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InternalException", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class InvalidTypeException extends S.TaggedErrorClass<InvalidTypeException>()(
+  "InvalidTypeException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidType", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
+  "ResourceAlreadyExistsException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceAlreadyExists", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 409 }),
+    T.HttpError(409),
+  ),
+).pipe(C.withConflictError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Code: S.optional(S.String), Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type DomainName = string;
-export type FieldName = string;
-export type ErrorCode = string;
-export type ErrorMessage = string;
-export type DomainId = string;
-export type ARN = string;
-export type ServiceUrl = string;
-export type SearchInstanceType = string;
-export type PartitionCount = number;
-export type InstanceCount = number;
-export type MaximumReplicationCount = number;
-export type MaximumPartitionCount = number;
-export type StandardName = string;
-export type UpdateTimestamp = Date;
-export type UIntValue = number;
-export type ExpressionValue = string;
-export type DynamicFieldName = string;
-export type FieldValue = string;
-export type Word = string;
-export type FieldNameCommaList = string;
-export type MultiAZ = boolean;
-export type PolicyDocument = string;
-export type APIVersion = string;
-
-//# Schemas
 export interface BuildSuggestersRequest {
   DomainName: string;
 }
@@ -129,6 +161,7 @@ export const BuildSuggestersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BuildSuggestersRequest",
 }) as any as S.Schema<BuildSuggestersRequest>;
+export type FieldName = string;
 export type FieldNameList = string[];
 export const FieldNameList = /*@__PURE__*/ S.Array(S.String);
 export interface BuildSuggestersResponse {
@@ -157,6 +190,9 @@ export const CreateDomainRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDomainRequest",
 }) as any as S.Schema<CreateDomainRequest>;
+export type DomainId = string;
+export type ARN = string;
+export type ServiceUrl = string;
 export interface ServiceEndpoint {
   Endpoint?: string;
 }
@@ -165,6 +201,11 @@ export const ServiceEndpoint = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServiceEndpoint",
 }) as any as S.Schema<ServiceEndpoint>;
+export type SearchInstanceType = string;
+export type PartitionCount = number;
+export type InstanceCount = number;
+export type MaximumReplicationCount = number;
+export type MaximumPartitionCount = number;
 export interface Limits {
   MaximumReplicationCount: number;
   MaximumPartitionCount: number;
@@ -215,6 +256,7 @@ export const CreateDomainResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDomainResponse",
 }) as any as S.Schema<CreateDomainResponse>;
+export type StandardName = string;
 export type AnalysisSchemeLanguage =
   | "ar"
   | "bg"
@@ -253,6 +295,7 @@ export type AnalysisSchemeLanguage =
   | "zh-Hant"
   | (string & {});
 export const AnalysisSchemeLanguage = /*@__PURE__*/ S.String;
+
 export type AlgorithmicStemming =
   | "none"
   | "minimal"
@@ -260,6 +303,7 @@ export type AlgorithmicStemming =
   | "full"
   | (string & {});
 export const AlgorithmicStemming = /*@__PURE__*/ S.String;
+
 export interface AnalysisOptions {
   Synonyms?: string;
   Stopwords?: string;
@@ -309,6 +353,8 @@ export const DefineAnalysisSchemeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DefineAnalysisSchemeRequest",
 }) as any as S.Schema<DefineAnalysisSchemeRequest>;
+export type UpdateTimestamp = Date;
+export type UIntValue = number;
 export type OptionState =
   | "RequiresIndexDocuments"
   | "Processing"
@@ -316,6 +362,7 @@ export type OptionState =
   | "FailedToValidate"
   | (string & {});
 export const OptionState = /*@__PURE__*/ S.String;
+
 export interface OptionStatus {
   CreationDate: Date;
   UpdateDate: Date;
@@ -349,6 +396,7 @@ export const DefineAnalysisSchemeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DefineAnalysisSchemeResponse",
 }) as any as S.Schema<DefineAnalysisSchemeResponse>;
+export type ExpressionValue = string;
 export interface Expression {
   ExpressionName: string;
   ExpressionValue: string;
@@ -392,6 +440,7 @@ export const DefineExpressionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DefineExpressionResponse",
 }) as any as S.Schema<DefineExpressionResponse>;
+export type DynamicFieldName = string;
 export type IndexFieldType =
   | "int"
   | "double"
@@ -406,6 +455,7 @@ export type IndexFieldType =
   | "date-array"
   | (string & {});
 export const IndexFieldType = /*@__PURE__*/ S.String;
+
 export interface IntOptions {
   DefaultValue?: number;
   SourceField?: string;
@@ -442,6 +492,7 @@ export const DoubleOptions = /*@__PURE__*/ S.suspend(() =>
     SortEnabled: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "DoubleOptions" }) as any as S.Schema<DoubleOptions>;
+export type FieldValue = string;
 export interface LiteralOptions {
   DefaultValue?: string;
   SourceField?: string;
@@ -460,6 +511,7 @@ export const LiteralOptions = /*@__PURE__*/ S.suspend(() =>
     SortEnabled: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "LiteralOptions" }) as any as S.Schema<LiteralOptions>;
+export type Word = string;
 export interface TextOptions {
   DefaultValue?: string;
   SourceField?: string;
@@ -514,6 +566,7 @@ export const LatLonOptions = /*@__PURE__*/ S.suspend(() =>
     SortEnabled: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "LatLonOptions" }) as any as S.Schema<LatLonOptions>;
+export type FieldNameCommaList = string;
 export interface IntArrayOptions {
   DefaultValue?: number;
   SourceFields?: string;
@@ -674,6 +727,7 @@ export const DefineIndexFieldResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DefineIndexFieldResponse>;
 export type SuggesterFuzzyMatching = "none" | "low" | "high" | (string & {});
 export const SuggesterFuzzyMatching = /*@__PURE__*/ S.String;
+
 export interface DocumentSuggesterOptions {
   SourceField: string;
   FuzzyMatching?: SuggesterFuzzyMatching;
@@ -924,6 +978,7 @@ export const DescribeAvailabilityOptionsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAvailabilityOptionsRequest",
 }) as any as S.Schema<DescribeAvailabilityOptionsRequest>;
+export type MultiAZ = boolean;
 export interface AvailabilityOptionsStatus {
   Options: boolean;
   Status: OptionStatus;
@@ -968,6 +1023,7 @@ export type TLSSecurityPolicy =
   | "Policy-Min-TLS-1-2-2019-07"
   | (string & {});
 export const TLSSecurityPolicy = /*@__PURE__*/ S.String;
+
 export interface DomainEndpointOptions {
   EnforceHTTPS?: boolean;
   TLSSecurityPolicy?: TLSSecurityPolicy;
@@ -1138,6 +1194,7 @@ export type PartitionInstanceType =
   | "search.previousgeneration.2xlarge"
   | (string & {});
 export const PartitionInstanceType = /*@__PURE__*/ S.String;
+
 export interface ScalingParameters {
   DesiredInstanceType?: PartitionInstanceType;
   DesiredReplicationCount?: number;
@@ -1189,6 +1246,7 @@ export const DescribeServiceAccessPoliciesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeServiceAccessPoliciesRequest",
 }) as any as S.Schema<DescribeServiceAccessPoliciesRequest>;
+export type PolicyDocument = string;
 export interface AccessPoliciesStatus {
   Options: string;
   Status: OptionStatus;
@@ -1282,6 +1340,7 @@ export const ListDomainNamesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListDomainNamesRequest",
 }) as any as S.Schema<ListDomainNamesRequest>;
+export type APIVersion = string;
 export type DomainNameMap = { [key: string]: string | undefined };
 export const DomainNameMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -1410,67 +1469,8 @@ export const UpdateServiceAccessPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateServiceAccessPoliciesResponse",
 }) as any as S.Schema<UpdateServiceAccessPoliciesResponse>;
-
-//# Errors
-export class BaseException extends S.TaggedErrorClass<BaseException>()(
-  "BaseException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-) {}
-export class InternalException extends S.TaggedErrorClass<InternalException>()(
-  "InternalException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InternalException", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceNotFound", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class ResourceAlreadyExistsException extends S.TaggedErrorClass<ResourceAlreadyExistsException>()(
-  "ResourceAlreadyExistsException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceAlreadyExists", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class InvalidTypeException extends S.TaggedErrorClass<InvalidTypeException>()(
-  "InvalidTypeException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidType", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-export class DisabledOperationException extends S.TaggedErrorClass<DisabledOperationException>()(
-  "DisabledOperationException",
-  { Code: S.optional(S.String), Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "DisabledAction", httpResponseCode: 409 }),
-    T.HttpError(409),
-  ),
-).pipe(C.withConflictError) {}
-
-//# Operations
+export type ErrorCode = string;
+export type ErrorMessage = string;
 export type BuildSuggestersError =
   | BaseException
   | InternalException
@@ -1498,6 +1498,7 @@ export const buildSuggesters: API.OperationMethod<
   retry: Retry,
   operationName: "BuildSuggesters",
 }));
+
 export type CreateDomainError =
   | BaseException
   | InternalException
@@ -1528,6 +1529,7 @@ export const createDomain: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDomain",
 }));
+
 export type DefineAnalysisSchemeError =
   | BaseException
   | InternalException
@@ -1559,6 +1561,7 @@ export const defineAnalysisScheme: API.OperationMethod<
   retry: Retry,
   operationName: "DefineAnalysisScheme",
 }));
+
 export type DefineExpressionError =
   | BaseException
   | InternalException
@@ -1590,6 +1593,7 @@ export const defineExpression: API.OperationMethod<
   retry: Retry,
   operationName: "DefineExpression",
 }));
+
 export type DefineIndexFieldError =
   | BaseException
   | InternalException
@@ -1621,6 +1625,7 @@ export const defineIndexField: API.OperationMethod<
   retry: Retry,
   operationName: "DefineIndexField",
 }));
+
 export type DefineSuggesterError =
   | BaseException
   | InternalException
@@ -1652,6 +1657,7 @@ export const defineSuggester: API.OperationMethod<
   retry: Retry,
   operationName: "DefineSuggester",
 }));
+
 export type DeleteAnalysisSchemeError =
   | BaseException
   | InternalException
@@ -1681,6 +1687,7 @@ export const deleteAnalysisScheme: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAnalysisScheme",
 }));
+
 export type DeleteDomainError =
   | BaseException
   | InternalException
@@ -1702,6 +1709,7 @@ export const deleteDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDomain",
 }));
+
 export type DeleteExpressionError =
   | BaseException
   | InternalException
@@ -1731,6 +1739,7 @@ export const deleteExpression: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteExpression",
 }));
+
 export type DeleteIndexFieldError =
   | BaseException
   | InternalException
@@ -1760,6 +1769,7 @@ export const deleteIndexField: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIndexField",
 }));
+
 export type DeleteSuggesterError =
   | BaseException
   | InternalException
@@ -1789,6 +1799,7 @@ export const deleteSuggester: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSuggester",
 }));
+
 export type DescribeAnalysisSchemesError =
   | BaseException
   | InternalException
@@ -1810,6 +1821,7 @@ export const describeAnalysisSchemes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAnalysisSchemes",
 }));
+
 export type DescribeAvailabilityOptionsError =
   | BaseException
   | DisabledOperationException
@@ -1841,6 +1853,7 @@ export const describeAvailabilityOptions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAvailabilityOptions",
 }));
+
 export type DescribeDomainEndpointOptionsError =
   | BaseException
   | DisabledOperationException
@@ -1870,6 +1883,7 @@ export const describeDomainEndpointOptions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDomainEndpointOptions",
 }));
+
 export type DescribeDomainsError =
   | BaseException
   | InternalException
@@ -1892,6 +1906,7 @@ export const describeDomains: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeDomains",
 }));
+
 export type DescribeExpressionsError =
   | BaseException
   | InternalException
@@ -1913,6 +1928,7 @@ export const describeExpressions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeExpressions",
 }));
+
 export type DescribeIndexFieldsError =
   | BaseException
   | InternalException
@@ -1936,6 +1952,7 @@ export const describeIndexFields: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeIndexFields",
 }));
+
 export type DescribeScalingParametersError =
   | BaseException
   | InternalException
@@ -1957,6 +1974,7 @@ export const describeScalingParameters: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeScalingParameters",
 }));
+
 export type DescribeServiceAccessPoliciesError =
   | BaseException
   | InternalException
@@ -1979,6 +1997,7 @@ export const describeServiceAccessPolicies: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeServiceAccessPolicies",
 }));
+
 export type DescribeSuggestersError =
   | BaseException
   | InternalException
@@ -2000,6 +2019,7 @@ export const describeSuggesters: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeSuggesters",
 }));
+
 export type IndexDocumentsError =
   | BaseException
   | InternalException
@@ -2027,6 +2047,7 @@ export const indexDocuments: API.OperationMethod<
   retry: Retry,
   operationName: "IndexDocuments",
 }));
+
 export type ListDomainNamesError = BaseException | CommonErrors;
 /**
  * Lists all search domains owned by an account.
@@ -2044,6 +2065,7 @@ export const listDomainNames: API.OperationMethod<
   retry: Retry,
   operationName: "ListDomainNames",
 }));
+
 export type UpdateAvailabilityOptionsError =
   | BaseException
   | DisabledOperationException
@@ -2077,6 +2099,7 @@ export const updateAvailabilityOptions: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAvailabilityOptions",
 }));
+
 export type UpdateDomainEndpointOptionsError =
   | BaseException
   | DisabledOperationException
@@ -2110,6 +2133,7 @@ export const updateDomainEndpointOptions: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDomainEndpointOptions",
 }));
+
 export type UpdateScalingParametersError =
   | BaseException
   | InternalException
@@ -2141,6 +2165,7 @@ export const updateScalingParameters: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateScalingParameters",
 }));
+
 export type UpdateServiceAccessPoliciesError =
   | BaseException
   | InternalException

@@ -87,21 +87,67 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ScanName = string;
-export type ClientToken = string;
-export type Uuid = string;
-export type TagKey = string;
-export type TagValue = string;
-export type ScanNameArn = string;
-export type S3Url = string | redacted.Redacted<string>;
-export type HeaderKey = string;
-export type HeaderValue = string;
-export type KmsKeyArn = string;
-export type NextToken = string;
-export type ErrorMessage = string;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    errorCode: S.String,
+    message: S.String,
+    resourceId: S.optional(S.String),
+    resourceType: S.optional(S.String),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    errorCode: S.String,
+    message: S.String,
+    resourceId: S.String,
+    resourceType: S.String,
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { error: S.optional(S.String), message: S.optional(S.String) },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    errorCode: S.String,
+    message: S.String,
+    resourceId: S.String,
+    resourceType: S.String,
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  {
+    errorCode: S.String,
+    message: S.String,
+    serviceCode: S.optional(S.String),
+    quotaCode: S.optional(S.String),
+  },
+  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    errorCode: S.String,
+    message: S.String,
+    reason: S.suspend(() => ValidationExceptionReason).annotate({
+      identifier: "ValidationExceptionReason",
+    }),
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export interface FindingIdentifier {
   scanName: string;
   findingId: string;
@@ -132,6 +178,7 @@ export const BatchGetFindingsRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BatchGetFindingsRequest>;
 export type Status = "Closed" | "Open" | "All" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface Resource {
   id?: string;
   subResourceId?: string;
@@ -192,6 +239,7 @@ export type Severity =
   | "Info"
   | (string & {});
 export const Severity = /*@__PURE__*/ S.String;
+
 export interface Recommendation {
   text?: string;
   url?: string;
@@ -260,6 +308,7 @@ export const Finding = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Finding" }) as any as S.Schema<Finding>;
 export type Findings = Finding[];
 export const Findings = /*@__PURE__*/ S.Array(Finding);
+export type ScanName = string;
 export type ErrorCode =
   | "DUPLICATE_IDENTIFIER"
   | "ITEM_DOES_NOT_EXIST"
@@ -268,6 +317,7 @@ export type ErrorCode =
   | "INVALID_SCAN_NAME"
   | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
+
 export interface BatchGetFindingsError_ {
   scanName: string;
   findingId: string;
@@ -297,35 +347,20 @@ export const BatchGetFindingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetFindingsResponse",
 }) as any as S.Schema<BatchGetFindingsResponse>;
-export type ValidationExceptionReason =
-  | "unknownOperation"
-  | "cannotParse"
-  | "fieldValidationFailed"
-  | "other"
-  | "lambdaCodeShaMisMatch"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
+export type ClientToken = string;
+export type Uuid = string;
 export type ResourceId = { codeArtifactId: string };
 export const ResourceId = /*@__PURE__*/ S.Union([
   S.Struct({ codeArtifactId: S.String }),
 ]);
 export type ScanType = "Standard" | "Express" | (string & {});
 export const ScanType = /*@__PURE__*/ S.String;
+
 export type AnalysisType = "Security" | "All" | (string & {});
 export const AnalysisType = /*@__PURE__*/ S.String;
+
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -362,6 +397,8 @@ export const CreateScanRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateScanRequest>;
 export type ScanState = "InProgress" | "Successful" | "Failed" | (string & {});
 export const ScanState = /*@__PURE__*/ S.String;
+
+export type ScanNameArn = string;
 export interface CreateScanResponse {
   scanName: string;
   runId: string;
@@ -397,6 +434,9 @@ export const CreateUploadUrlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateUploadUrlRequest",
 }) as any as S.Schema<CreateUploadUrlRequest>;
+export type S3Url = string | redacted.Redacted<string>;
+export type HeaderKey = string;
+export type HeaderValue = string;
 export type RequestHeaderMap = { [key: string]: string | undefined };
 export const RequestHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -431,6 +471,7 @@ export const GetAccountConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountConfigurationRequest",
 }) as any as S.Schema<GetAccountConfigurationRequest>;
+export type KmsKeyArn = string;
 export interface EncryptionConfig {
   kmsKeyArn?: string;
 }
@@ -447,6 +488,7 @@ export const GetAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountConfigurationResponse",
 }) as any as S.Schema<GetAccountConfigurationResponse>;
+export type NextToken = string;
 export interface GetFindingsRequest {
   scanName: string;
   nextToken?: string;
@@ -601,6 +643,7 @@ export const GetScanRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "GetScanRequest" }) as any as S.Schema<GetScanRequest>;
+export type ErrorMessage = string;
 export interface GetScanResponse {
   scanName: string;
   runId: string;
@@ -847,65 +890,28 @@ export const UpdateAccountConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateAccountConfigurationResponse",
 }) as any as S.Schema<UpdateAccountConfigurationResponse>;
+export type ValidationExceptionReason =
+  | "unknownOperation"
+  | "cannotParse"
+  | "fieldValidationFailed"
+  | "other"
+  | "lambdaCodeShaMisMatch"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  {
-    errorCode: S.String,
-    message: S.String,
-    resourceId: S.optional(S.String),
-    resourceType: S.optional(S.String),
-  },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { error: S.optional(S.String), message: S.optional(S.String) },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  {
-    errorCode: S.String,
-    message: S.String,
-    serviceCode: S.optional(S.String),
-    quotaCode: S.optional(S.String),
-  },
-  T.all(T.HttpError(429), T.Retryable({ throttling: true })),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    errorCode: S.String,
-    message: S.String,
-    reason: ValidationExceptionReason,
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    errorCode: S.String,
-    message: S.String,
-    resourceId: S.String,
-    resourceType: S.String,
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    errorCode: S.String,
-    message: S.String,
-    resourceId: S.String,
-    resourceType: S.String,
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type BatchGetFindingsError =
   | AccessDeniedException
   | InternalServerException
@@ -933,6 +939,7 @@ export const batchGetFindings: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetFindings",
 }));
+
 export type CreateScanError =
   | AccessDeniedException
   | ConflictException
@@ -964,6 +971,7 @@ export const createScan: API.OperationMethod<
   retry: Retry,
   operationName: "CreateScan",
 }));
+
 export type CreateUploadUrlError =
   | AccessDeniedException
   | InternalServerException
@@ -993,6 +1001,7 @@ export const createUploadUrl: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUploadUrl",
 }));
+
 export type GetAccountConfigurationError =
   | AccessDeniedException
   | InternalServerException
@@ -1020,6 +1029,7 @@ export const getAccountConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountConfiguration",
 }));
+
 export type GetFindingsError =
   | AccessDeniedException
   | ConflictException
@@ -1072,6 +1082,7 @@ export const getFindings: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetMetricsSummaryError =
   | AccessDeniedException
   | InternalServerException
@@ -1099,6 +1110,7 @@ export const getMetricsSummary: API.OperationMethod<
   retry: Retry,
   operationName: "GetMetricsSummary",
 }));
+
 export type GetScanError =
   | AccessDeniedException
   | InternalServerException
@@ -1128,6 +1140,7 @@ export const getScan: API.OperationMethod<
   retry: Retry,
   operationName: "GetScan",
 }));
+
 export type ListFindingsMetricsError =
   | AccessDeniedException
   | InternalServerException
@@ -1176,6 +1189,7 @@ export const listFindingsMetrics: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListScansError =
   | AccessDeniedException
   | InternalServerException
@@ -1224,6 +1238,7 @@ export const listScans: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1255,6 +1270,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1286,6 +1302,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | ConflictException
@@ -1317,6 +1334,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAccountConfigurationError =
   | AccessDeniedException
   | InternalServerException

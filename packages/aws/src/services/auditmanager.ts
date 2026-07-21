@@ -87,72 +87,69 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class AuditManagerMaintenanceMode extends S.TaggedErrorClass<AuditManagerMaintenanceMode>()(
+  "AuditManagerMaintenanceMode",
+  {
+    message: S.String,
+    reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    fields: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.SyntheticError({
+    from: "ValidationException",
+    message: { includes: "maintenance mode" },
+  }),
+).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.String, resourceId: S.String, resourceType: S.String },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.optional(
+      S.suspend(() => ValidationExceptionReason).annotate({
+        identifier: "ValidationExceptionReason",
+      }),
+    ),
+    fields: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type UUID = string;
-export type ErrorCode = string;
-export type ErrorMessage = string;
-export type DelegationComment = string | redacted.Redacted<string>;
-export type ControlSetId = string;
-export type IamArn = string;
-export type AssessmentName = string | redacted.Redacted<string>;
-export type CreatedBy = string | redacted.Redacted<string>;
-export type S3Url = string;
-export type ManualEvidenceTextResponse = string | redacted.Redacted<string>;
-export type ManualEvidenceLocalFileName = string | redacted.Redacted<string>;
-export type AssessmentDescription = string | redacted.Redacted<string>;
-export type AccountId = string;
-export type EmailAddress = string | redacted.Redacted<string>;
-export type AccountName = string;
-export type AWSServiceName = string;
-export type TagKey = string;
-export type TagValue = string;
-export type AuditManagerArn = string;
-export type ComplianceType = string | redacted.Redacted<string>;
-export type AssessmentFrameworkDescription = string;
-export type Filename = string;
-export type NonEmptyString = string;
-export type ControlName = string;
-export type ControlDescription = string | redacted.Redacted<string>;
-export type Username = string | redacted.Redacted<string>;
-export type ControlCommentBody = string | redacted.Redacted<string>;
-export type FrameworkName = string;
-export type FrameworkDescription = string;
-export type ControlSetName = string;
-export type ControlSources = string;
-export type TestingInformation = string | redacted.Redacted<string>;
-export type ActionPlanTitle = string | redacted.Redacted<string>;
-export type ActionPlanInstructions = string | redacted.Redacted<string>;
-export type SourceName = string;
-export type SourceDescription = string;
-export type KeywordValue = string;
-export type TroubleshootingText = string | redacted.Redacted<string>;
-export type LastUpdatedBy = string | redacted.Redacted<string>;
-export type AssessmentReportName = string;
-export type AssessmentReportDescription = string | redacted.Redacted<string>;
-export type QueryStatement = string;
-export type HyperlinkName = string;
-export type UrlLink = string;
-export type Token = string;
-export type MaxResults = number;
-export type EventName = string;
-export type GenericArn = string;
-export type EvidenceAttributeKey = string;
-export type EvidenceAttributeValue = string;
-export type AssessmentEvidenceFolderName = string;
-export type OrganizationId = string;
-export type SNSTopic = string | redacted.Redacted<string>;
-export type KmsKey = string;
-export type CloudTrailArn = string;
-export type ControlDomainId = string;
-export type ControlsCount = number;
-export type ControlSetsCount = number;
-export type Region = string;
-export type ShareRequestComment = string;
-export type ControlCatalogId = string;
-export type TimestampUUID = string;
-export type SnsArn = string;
-
-//# Schemas
 export interface AssociateAssessmentReportEvidenceFolderRequest {
   assessmentId: string;
   evidenceFolderId: string;
@@ -183,26 +180,6 @@ export const AssociateAssessmentReportEvidenceFolderResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AssociateAssessmentReportEvidenceFolderResponse",
   }) as any as S.Schema<AssociateAssessmentReportEvidenceFolderResponse>;
-export type ValidationExceptionReason =
-  | "unknownOperation"
-  | "cannotParse"
-  | "fieldValidationFailed"
-  | "other"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
 export type EvidenceIds = string[];
 export const EvidenceIds = /*@__PURE__*/ S.Array(S.String);
 export interface BatchAssociateAssessmentReportEvidenceRequest {
@@ -232,6 +209,8 @@ export const BatchAssociateAssessmentReportEvidenceRequest =
   ).annotate({
     identifier: "BatchAssociateAssessmentReportEvidenceRequest",
   }) as any as S.Schema<BatchAssociateAssessmentReportEvidenceRequest>;
+export type ErrorCode = string;
+export type ErrorMessage = string;
 export interface AssessmentReportEvidenceError {
   evidenceId?: string;
   errorCode?: string;
@@ -263,8 +242,12 @@ export const BatchAssociateAssessmentReportEvidenceResponse =
   ).annotate({
     identifier: "BatchAssociateAssessmentReportEvidenceResponse",
   }) as any as S.Schema<BatchAssociateAssessmentReportEvidenceResponse>;
+export type DelegationComment = string | redacted.Redacted<string>;
+export type ControlSetId = string;
+export type IamArn = string;
 export type RoleType = "PROCESS_OWNER" | "RESOURCE_OWNER" | (string & {});
 export const RoleType = /*@__PURE__*/ S.String;
+
 export interface CreateDelegationRequest {
   comment?: string | redacted.Redacted<string>;
   controlSetId?: string;
@@ -310,12 +293,15 @@ export const BatchCreateDelegationByAssessmentRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "BatchCreateDelegationByAssessmentRequest",
 }) as any as S.Schema<BatchCreateDelegationByAssessmentRequest>;
+export type AssessmentName = string | redacted.Redacted<string>;
 export type DelegationStatus =
   | "IN_PROGRESS"
   | "UNDER_REVIEW"
   | "COMPLETE"
   | (string & {});
 export const DelegationStatus = /*@__PURE__*/ S.String;
+
+export type CreatedBy = string | redacted.Redacted<string>;
 export interface Delegation {
   id?: string;
   assessmentName?: string | redacted.Redacted<string>;
@@ -475,6 +461,9 @@ export const BatchDisassociateAssessmentReportEvidenceResponse =
   ).annotate({
     identifier: "BatchDisassociateAssessmentReportEvidenceResponse",
   }) as any as S.Schema<BatchDisassociateAssessmentReportEvidenceResponse>;
+export type S3Url = string;
+export type ManualEvidenceTextResponse = string | redacted.Redacted<string>;
+export type ManualEvidenceLocalFileName = string | redacted.Redacted<string>;
 export interface ManualEvidence {
   s3ResourcePath?: string;
   textResponse?: string | redacted.Redacted<string>;
@@ -548,8 +537,10 @@ export const BatchImportEvidenceToAssessmentControlResponse =
   ).annotate({
     identifier: "BatchImportEvidenceToAssessmentControlResponse",
   }) as any as S.Schema<BatchImportEvidenceToAssessmentControlResponse>;
+export type AssessmentDescription = string | redacted.Redacted<string>;
 export type AssessmentReportDestinationType = "S3" | (string & {});
 export const AssessmentReportDestinationType = /*@__PURE__*/ S.String;
+
 export interface AssessmentReportsDestination {
   destinationType?: AssessmentReportDestinationType;
   destination?: string;
@@ -562,6 +553,9 @@ export const AssessmentReportsDestination = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssessmentReportsDestination",
 }) as any as S.Schema<AssessmentReportsDestination>;
+export type AccountId = string;
+export type EmailAddress = string | redacted.Redacted<string>;
+export type AccountName = string;
 export interface AWSAccount {
   id?: string;
   emailAddress?: string | redacted.Redacted<string>;
@@ -576,6 +570,7 @@ export const AWSAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "AWSAccount" }) as any as S.Schema<AWSAccount>;
 export type AWSAccounts = AWSAccount[];
 export const AWSAccounts = /*@__PURE__*/ S.Array(AWSAccount);
+export type AWSServiceName = string;
 export interface AWSService {
   serviceName?: string;
 }
@@ -603,6 +598,8 @@ export const Role = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Role" }) as any as S.Schema<Role>;
 export type Roles = Role[];
 export const Roles = /*@__PURE__*/ S.Array(Role);
+export type TagKey = string;
+export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
 export const TagMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -639,8 +636,11 @@ export const CreateAssessmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAssessmentRequest",
 }) as any as S.Schema<CreateAssessmentRequest>;
+export type AuditManagerArn = string;
+export type ComplianceType = string | redacted.Redacted<string>;
 export type AssessmentStatus = "ACTIVE" | "INACTIVE" | (string & {});
 export const AssessmentStatus = /*@__PURE__*/ S.String;
+
 export interface AssessmentMetadata {
   name?: string | redacted.Redacted<string>;
   id?: string;
@@ -671,6 +671,8 @@ export const AssessmentMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssessmentMetadata",
 }) as any as S.Schema<AssessmentMetadata>;
+export type AssessmentFrameworkDescription = string;
+export type Filename = string;
 export interface FrameworkMetadata {
   name?: string | redacted.Redacted<string>;
   description?: string;
@@ -687,18 +689,23 @@ export const FrameworkMetadata = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "FrameworkMetadata",
 }) as any as S.Schema<FrameworkMetadata>;
+export type NonEmptyString = string;
 export type ControlSetStatus =
   | "ACTIVE"
   | "UNDER_REVIEW"
   | "REVIEWED"
   | (string & {});
 export const ControlSetStatus = /*@__PURE__*/ S.String;
+
+export type ControlName = string;
+export type ControlDescription = string | redacted.Redacted<string>;
 export type ControlStatus =
   | "UNDER_REVIEW"
   | "REVIEWED"
   | "INACTIVE"
   | (string & {});
 export const ControlStatus = /*@__PURE__*/ S.String;
+
 export type ControlResponse =
   | "MANUAL"
   | "AUTOMATE"
@@ -706,6 +713,9 @@ export type ControlResponse =
   | "IGNORE"
   | (string & {});
 export const ControlResponse = /*@__PURE__*/ S.String;
+
+export type Username = string | redacted.Redacted<string>;
+export type ControlCommentBody = string | redacted.Redacted<string>;
 export interface ControlComment {
   authorName?: string | redacted.Redacted<string>;
   commentBody?: string | redacted.Redacted<string>;
@@ -817,6 +827,9 @@ export const CreateAssessmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAssessmentResponse",
 }) as any as S.Schema<CreateAssessmentResponse>;
+export type FrameworkName = string;
+export type FrameworkDescription = string;
+export type ControlSetName = string;
 export interface CreateAssessmentFrameworkControl {
   id: string;
 }
@@ -876,13 +889,22 @@ export const CreateAssessmentFrameworkRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateAssessmentFrameworkRequest>;
 export type FrameworkType = "Standard" | "Custom" | (string & {});
 export const FrameworkType = /*@__PURE__*/ S.String;
+
+export type ControlSources = string;
 export type ControlType = "Standard" | "Custom" | "Core" | (string & {});
 export const ControlType = /*@__PURE__*/ S.String;
+
+export type TestingInformation = string | redacted.Redacted<string>;
+export type ActionPlanTitle = string | redacted.Redacted<string>;
+export type ActionPlanInstructions = string | redacted.Redacted<string>;
+export type SourceName = string;
+export type SourceDescription = string;
 export type SourceSetUpOption =
   | "System_Controls_Mapping"
   | "Procedural_Controls_Mapping"
   | (string & {});
 export const SourceSetUpOption = /*@__PURE__*/ S.String;
+
 export type SourceType =
   | "AWS_Cloudtrail"
   | "AWS_Config"
@@ -893,12 +915,15 @@ export type SourceType =
   | "Core_Control"
   | (string & {});
 export const SourceType = /*@__PURE__*/ S.String;
+
 export type KeywordInputType =
   | "SELECT_FROM_LIST"
   | "UPLOAD_FILE"
   | "INPUT_TEXT"
   | (string & {});
 export const KeywordInputType = /*@__PURE__*/ S.String;
+
+export type KeywordValue = string;
 export interface SourceKeyword {
   keywordInputType?: KeywordInputType;
   keywordValue?: string;
@@ -911,6 +936,8 @@ export const SourceKeyword = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "SourceKeyword" }) as any as S.Schema<SourceKeyword>;
 export type SourceFrequency = "DAILY" | "WEEKLY" | "MONTHLY" | (string & {});
 export const SourceFrequency = /*@__PURE__*/ S.String;
+
+export type TroubleshootingText = string | redacted.Redacted<string>;
 export interface ControlMappingSource {
   sourceId?: string;
   sourceName?: string;
@@ -938,8 +965,10 @@ export const ControlMappingSource = /*@__PURE__*/ S.suspend(() =>
 export type ControlMappingSources = ControlMappingSource[];
 export const ControlMappingSources =
   /*@__PURE__*/ S.Array(ControlMappingSource);
+export type LastUpdatedBy = string | redacted.Redacted<string>;
 export type ControlState = "ACTIVE" | "END_OF_SUPPORT" | (string & {});
 export const ControlState = /*@__PURE__*/ S.String;
+
 export interface Control {
   arn?: string;
   id?: string;
@@ -1036,6 +1065,9 @@ export const CreateAssessmentFrameworkResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAssessmentFrameworkResponse",
 }) as any as S.Schema<CreateAssessmentFrameworkResponse>;
+export type AssessmentReportName = string;
+export type AssessmentReportDescription = string | redacted.Redacted<string>;
+export type QueryStatement = string;
 export interface CreateAssessmentReportRequest {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -1067,6 +1099,7 @@ export type AssessmentReportStatus =
   | "FAILED"
   | (string & {});
 export const AssessmentReportStatus = /*@__PURE__*/ S.String;
+
 export interface AssessmentReport {
   id?: string;
   name?: string;
@@ -1214,6 +1247,7 @@ export const DeleteAssessmentFrameworkResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteAssessmentFrameworkResponse>;
 export type ShareRequestType = "SENT" | "RECEIVED" | (string & {});
 export const ShareRequestType = /*@__PURE__*/ S.String;
+
 export interface DeleteAssessmentFrameworkShareRequest {
   requestId: string;
   requestType: ShareRequestType;
@@ -1319,6 +1353,7 @@ export type AccountStatus =
   | "PENDING_ACTIVATION"
   | (string & {});
 export const AccountStatus = /*@__PURE__*/ S.String;
+
 export interface DeregisterAccountResponse {
   status?: AccountStatus;
 }
@@ -1481,6 +1516,8 @@ export const GetAssessmentReportUrlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAssessmentReportUrlRequest",
 }) as any as S.Schema<GetAssessmentReportUrlRequest>;
+export type HyperlinkName = string;
+export type UrlLink = string;
 export interface URL {
   hyperlinkName?: string;
   link?: string;
@@ -1496,6 +1533,8 @@ export const GetAssessmentReportUrlResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAssessmentReportUrlResponse",
 }) as any as S.Schema<GetAssessmentReportUrlResponse>;
+export type Token = string;
+export type MaxResults = number;
 export interface GetChangeLogsRequest {
   assessmentId: string;
   controlSetId?: string;
@@ -1531,6 +1570,7 @@ export type ObjectTypeEnum =
   | "ASSESSMENT_REPORT"
   | (string & {});
 export const ObjectTypeEnum = /*@__PURE__*/ S.String;
+
 export type ActionEnum =
   | "CREATE"
   | "UPDATE_METADATA"
@@ -1542,6 +1582,7 @@ export type ActionEnum =
   | "IMPORT_EVIDENCE"
   | (string & {});
 export const ActionEnum = /*@__PURE__*/ S.String;
+
 export interface ChangeLog {
   objectType?: ObjectTypeEnum;
   objectName?: string;
@@ -1682,6 +1723,8 @@ export const GetEvidenceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEvidenceRequest",
 }) as any as S.Schema<GetEvidenceRequest>;
+export type EventName = string;
+export type GenericArn = string;
 export interface Resource {
   arn?: string;
   value?: string;
@@ -1696,6 +1739,8 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 export type Resources = Resource[];
 export const Resources = /*@__PURE__*/ S.Array(Resource);
+export type EvidenceAttributeKey = string;
+export type EvidenceAttributeValue = string;
 export type EvidenceAttributes = { [key: string]: string | undefined };
 export const EvidenceAttributes = /*@__PURE__*/ S.Record(
   S.String,
@@ -1844,6 +1889,7 @@ export const GetEvidenceFolderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetEvidenceFolderRequest",
 }) as any as S.Schema<GetEvidenceFolderRequest>;
+export type AssessmentEvidenceFolderName = string;
 export interface AssessmentEvidenceFolder {
   name?: string;
   date?: Date;
@@ -2087,6 +2133,7 @@ export const GetOrganizationAdminAccountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOrganizationAdminAccountRequest",
 }) as any as S.Schema<GetOrganizationAdminAccountRequest>;
+export type OrganizationId = string;
 export interface GetOrganizationAdminAccountResponse {
   adminAccountId?: string;
   organizationId?: string;
@@ -2151,6 +2198,7 @@ export type SettingAttribute =
   | "DEFAULT_EXPORT_DESTINATION"
   | (string & {});
 export const SettingAttribute = /*@__PURE__*/ S.String;
+
 export interface GetSettingsRequest {
   attribute: SettingAttribute;
 }
@@ -2168,6 +2216,9 @@ export const GetSettingsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSettingsRequest",
 }) as any as S.Schema<GetSettingsRequest>;
+export type SNSTopic = string | redacted.Redacted<string>;
+export type KmsKey = string;
+export type CloudTrailArn = string;
 export type EvidenceFinderEnablementStatus =
   | "ENABLED"
   | "DISABLED"
@@ -2175,12 +2226,14 @@ export type EvidenceFinderEnablementStatus =
   | "DISABLE_IN_PROGRESS"
   | (string & {});
 export const EvidenceFinderEnablementStatus = /*@__PURE__*/ S.String;
+
 export type EvidenceFinderBackfillStatus =
   | "NOT_STARTED"
   | "IN_PROGRESS"
   | "COMPLETED"
   | (string & {});
 export const EvidenceFinderBackfillStatus = /*@__PURE__*/ S.String;
+
 export interface EvidenceFinderEnablement {
   eventDataStoreArn?: string;
   enablementStatus?: EvidenceFinderEnablementStatus;
@@ -2199,6 +2252,7 @@ export const EvidenceFinderEnablement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EvidenceFinderEnablement>;
 export type DeleteResources = "ALL" | "DEFAULT" | (string & {});
 export const DeleteResources = /*@__PURE__*/ S.String;
+
 export interface DeregistrationPolicy {
   deleteResources?: DeleteResources;
 }
@@ -2209,6 +2263,7 @@ export const DeregistrationPolicy = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeregistrationPolicy>;
 export type ExportDestinationType = "S3" | (string & {});
 export const ExportDestinationType = /*@__PURE__*/ S.String;
+
 export interface DefaultExportDestination {
   destinationType?: ExportDestinationType;
   destination?: string;
@@ -2253,6 +2308,7 @@ export const GetSettingsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSettingsResponse",
 }) as any as S.Schema<GetSettingsResponse>;
+export type ControlDomainId = string;
 export interface ListAssessmentControlInsightsByControlDomainRequest {
   controlDomainId: string;
   assessmentId: string;
@@ -2355,6 +2411,8 @@ export const ListAssessmentFrameworksRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAssessmentFrameworksRequest",
 }) as any as S.Schema<ListAssessmentFrameworksRequest>;
+export type ControlsCount = number;
+export type ControlSetsCount = number;
 export interface AssessmentFrameworkMetadata {
   arn?: string;
   id?: string;
@@ -2436,6 +2494,9 @@ export type ShareRequestStatus =
   | "REVOKED"
   | (string & {});
 export const ShareRequestStatus = /*@__PURE__*/ S.String;
+
+export type Region = string;
+export type ShareRequestComment = string;
 export interface AssessmentFrameworkShareRequest {
   id?: string;
   frameworkId?: string;
@@ -2772,6 +2833,7 @@ export const ListControlInsightsByControlDomainResponse =
   ).annotate({
     identifier: "ListControlInsightsByControlDomainResponse",
   }) as any as S.Schema<ListControlInsightsByControlDomainResponse>;
+export type ControlCatalogId = string;
 export interface ListControlsRequest {
   controlType: ControlType;
   nextToken?: string;
@@ -2841,6 +2903,7 @@ export type DataSourceType =
   | "MANUAL"
   | (string & {});
 export const DataSourceType = /*@__PURE__*/ S.String;
+
 export interface ListKeywordsForDataSourceRequest {
   source: DataSourceType;
   nextToken?: string;
@@ -2896,6 +2959,7 @@ export const ListNotificationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListNotificationsRequest",
 }) as any as S.Schema<ListNotificationsRequest>;
+export type TimestampUUID = string;
 export interface Notification {
   id?: string;
   assessmentId?: string;
@@ -3290,6 +3354,7 @@ export type ShareRequestAction =
   | "REVOKE"
   | (string & {});
 export const ShareRequestAction = /*@__PURE__*/ S.String;
+
 export interface UpdateAssessmentFrameworkShareRequest {
   requestId: string;
   requestType: ShareRequestType;
@@ -3398,6 +3463,7 @@ export const UpdateControlResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateControlResponse",
 }) as any as S.Schema<UpdateControlResponse>;
+export type SnsArn = string;
 export interface UpdateSettingsRequest {
   snsTopic?: string;
   defaultAssessmentReportsDestination?: AssessmentReportsDestination;
@@ -3478,56 +3544,27 @@ export const ValidateAssessmentReportIntegrityResponse =
   ).annotate({
     identifier: "ValidateAssessmentReportIntegrityResponse",
   }) as any as S.Schema<ValidateAssessmentReportIntegrityResponse>;
+export type ValidationExceptionReason =
+  | "unknownOperation"
+  | "cannotParse"
+  | "fieldValidationFailed"
+  | "other"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.String, resourceId: S.String, resourceType: S.String },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: S.optional(ValidationExceptionReason),
-    fields: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class AuditManagerMaintenanceMode extends S.TaggedErrorClass<AuditManagerMaintenanceMode>()(
-  "AuditManagerMaintenanceMode",
-  {
-    message: S.String,
-    reason: S.optional(ValidationExceptionReason),
-    fields: S.optional(ValidationExceptionFieldList),
-  },
-  T.SyntheticError({
-    from: "ValidationException",
-    message: { includes: "maintenance mode" },
-  }),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
 export type AssociateAssessmentReportEvidenceFolderError =
   | AccessDeniedException
   | InternalServerException
@@ -3556,6 +3593,7 @@ export const associateAssessmentReportEvidenceFolder: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateAssessmentReportEvidenceFolder",
 }));
+
 export type BatchAssociateAssessmentReportEvidenceError =
   | AccessDeniedException
   | InternalServerException
@@ -3584,6 +3622,7 @@ export const batchAssociateAssessmentReportEvidence: API.OperationMethod<
   retry: Retry,
   operationName: "BatchAssociateAssessmentReportEvidence",
 }));
+
 export type BatchCreateDelegationByAssessmentError =
   | AccessDeniedException
   | InternalServerException
@@ -3611,6 +3650,7 @@ export const batchCreateDelegationByAssessment: API.OperationMethod<
   retry: Retry,
   operationName: "BatchCreateDelegationByAssessment",
 }));
+
 export type BatchDeleteDelegationByAssessmentError =
   | AccessDeniedException
   | InternalServerException
@@ -3638,6 +3678,7 @@ export const batchDeleteDelegationByAssessment: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeleteDelegationByAssessment",
 }));
+
 export type BatchDisassociateAssessmentReportEvidenceError =
   | AccessDeniedException
   | InternalServerException
@@ -3665,6 +3706,7 @@ export const batchDisassociateAssessmentReportEvidence: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDisassociateAssessmentReportEvidence",
 }));
+
 export type BatchImportEvidenceToAssessmentControlError =
   | AccessDeniedException
   | InternalServerException
@@ -3713,6 +3755,7 @@ export const batchImportEvidenceToAssessmentControl: API.OperationMethod<
   retry: Retry,
   operationName: "BatchImportEvidenceToAssessmentControl",
 }));
+
 export type CreateAssessmentError =
   | AccessDeniedException
   | InternalServerException
@@ -3744,6 +3787,7 @@ export const createAssessment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAssessment",
 }));
+
 export type CreateAssessmentFrameworkError =
   | AccessDeniedException
   | InternalServerException
@@ -3773,6 +3817,7 @@ export const createAssessmentFramework: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAssessmentFramework",
 }));
+
 export type CreateAssessmentReportError =
   | AccessDeniedException
   | InternalServerException
@@ -3800,6 +3845,7 @@ export const createAssessmentReport: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAssessmentReport",
 }));
+
 export type CreateControlError =
   | AccessDeniedException
   | InternalServerException
@@ -3829,6 +3875,7 @@ export const createControl: API.OperationMethod<
   retry: Retry,
   operationName: "CreateControl",
 }));
+
 export type DeleteAssessmentError =
   | AccessDeniedException
   | InternalServerException
@@ -3856,6 +3903,7 @@ export const deleteAssessment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAssessment",
 }));
+
 export type DeleteAssessmentFrameworkError =
   | AccessDeniedException
   | InternalServerException
@@ -3883,6 +3931,7 @@ export const deleteAssessmentFramework: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAssessmentFramework",
 }));
+
 export type DeleteAssessmentFrameworkShareError =
   | AccessDeniedException
   | InternalServerException
@@ -3910,6 +3959,7 @@ export const deleteAssessmentFrameworkShare: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAssessmentFrameworkShare",
 }));
+
 export type DeleteAssessmentReportError =
   | AccessDeniedException
   | InternalServerException
@@ -3957,6 +4007,7 @@ export const deleteAssessmentReport: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAssessmentReport",
 }));
+
 export type DeleteControlError =
   | AccessDeniedException
   | InternalServerException
@@ -3989,6 +4040,7 @@ export const deleteControl: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteControl",
 }));
+
 export type DeregisterAccountError =
   | AccessDeniedException
   | InternalServerException
@@ -4024,6 +4076,7 @@ export const deregisterAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterAccount",
 }));
+
 export type DeregisterOrganizationAdminAccountError =
   | AccessDeniedException
   | InternalServerException
@@ -4103,6 +4156,7 @@ export const deregisterOrganizationAdminAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DeregisterOrganizationAdminAccount",
 }));
+
 export type DisassociateAssessmentReportEvidenceFolderError =
   | AccessDeniedException
   | InternalServerException
@@ -4130,6 +4184,7 @@ export const disassociateAssessmentReportEvidenceFolder: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateAssessmentReportEvidenceFolder",
 }));
+
 export type GetAccountStatusError = InternalServerException | CommonErrors;
 /**
  * Gets the registration status of an account in Audit Manager.
@@ -4147,6 +4202,7 @@ export const getAccountStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountStatus",
 }));
+
 export type GetAssessmentError =
   | AccessDeniedException
   | InternalServerException
@@ -4174,6 +4230,7 @@ export const getAssessment: API.OperationMethod<
   retry: Retry,
   operationName: "GetAssessment",
 }));
+
 export type GetAssessmentFrameworkError =
   | AccessDeniedException
   | InternalServerException
@@ -4201,6 +4258,7 @@ export const getAssessmentFramework: API.OperationMethod<
   retry: Retry,
   operationName: "GetAssessmentFramework",
 }));
+
 export type GetAssessmentReportUrlError =
   | AccessDeniedException
   | InternalServerException
@@ -4228,6 +4286,7 @@ export const getAssessmentReportUrl: API.OperationMethod<
   retry: Retry,
   operationName: "GetAssessmentReportUrl",
 }));
+
 export type GetChangeLogsError =
   | AccessDeniedException
   | InternalServerException
@@ -4275,6 +4334,7 @@ export const getChangeLogs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetControlError =
   | AccessDeniedException
   | InternalServerException
@@ -4302,6 +4362,7 @@ export const getControl: API.OperationMethod<
   retry: Retry,
   operationName: "GetControl",
 }));
+
 export type GetDelegationsError =
   | AccessDeniedException
   | InternalServerException
@@ -4343,6 +4404,7 @@ export const getDelegations: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetEvidenceError =
   | AccessDeniedException
   | InternalServerException
@@ -4370,6 +4432,7 @@ export const getEvidence: API.OperationMethod<
   retry: Retry,
   operationName: "GetEvidence",
 }));
+
 export type GetEvidenceByEvidenceFolderError =
   | AccessDeniedException
   | InternalServerException
@@ -4417,6 +4480,7 @@ export const getEvidenceByEvidenceFolder: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetEvidenceFileUploadUrlError =
   | AccessDeniedException
   | InternalServerException
@@ -4457,6 +4521,7 @@ export const getEvidenceFileUploadUrl: API.OperationMethod<
   retry: Retry,
   operationName: "GetEvidenceFileUploadUrl",
 }));
+
 export type GetEvidenceFolderError =
   | AccessDeniedException
   | InternalServerException
@@ -4484,6 +4549,7 @@ export const getEvidenceFolder: API.OperationMethod<
   retry: Retry,
   operationName: "GetEvidenceFolder",
 }));
+
 export type GetEvidenceFoldersByAssessmentError =
   | AccessDeniedException
   | InternalServerException
@@ -4531,6 +4597,7 @@ export const getEvidenceFoldersByAssessment: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetEvidenceFoldersByAssessmentControlError =
   | AccessDeniedException
   | InternalServerException
@@ -4579,6 +4646,7 @@ export const getEvidenceFoldersByAssessmentControl: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type GetInsightsError =
   | AccessDeniedException
   | InternalServerException
@@ -4599,6 +4667,7 @@ export const getInsights: API.OperationMethod<
   retry: Retry,
   operationName: "GetInsights",
 }));
+
 export type GetInsightsByAssessmentError =
   | AccessDeniedException
   | InternalServerException
@@ -4626,6 +4695,7 @@ export const getInsightsByAssessment: API.OperationMethod<
   retry: Retry,
   operationName: "GetInsightsByAssessment",
 }));
+
 export type GetOrganizationAdminAccountError =
   | AccessDeniedException
   | InternalServerException
@@ -4654,6 +4724,7 @@ export const getOrganizationAdminAccount: API.OperationMethod<
   retry: Retry,
   operationName: "GetOrganizationAdminAccount",
 }));
+
 export type GetServicesInScopeError =
   | AccessDeniedException
   | InternalServerException
@@ -4686,6 +4757,7 @@ export const getServicesInScope: API.OperationMethod<
   retry: Retry,
   operationName: "GetServicesInScope",
 }));
+
 export type GetSettingsError =
   | AccessDeniedException
   | InternalServerException
@@ -4706,6 +4778,7 @@ export const getSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetSettings",
 }));
+
 export type ListAssessmentControlInsightsByControlDomainError =
   | AccessDeniedException
   | InternalServerException
@@ -4759,6 +4832,7 @@ export const listAssessmentControlInsightsByControlDomain: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssessmentFrameworksError =
   | AccessDeniedException
   | InternalServerException
@@ -4801,6 +4875,7 @@ export const listAssessmentFrameworks: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssessmentFrameworkShareRequestsError =
   | AccessDeniedException
   | InternalServerException
@@ -4842,6 +4917,7 @@ export const listAssessmentFrameworkShareRequests: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssessmentReportsError =
   | AccessDeniedException
   | InternalServerException
@@ -4883,6 +4959,7 @@ export const listAssessmentReports: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAssessmentsError =
   | AccessDeniedException
   | InternalServerException
@@ -4924,6 +5001,7 @@ export const listAssessments: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListControlDomainInsightsError =
   | AccessDeniedException
   | InternalServerException
@@ -4984,6 +5062,7 @@ export const listControlDomainInsights: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListControlDomainInsightsByAssessmentError =
   | AccessDeniedException
   | InternalServerException
@@ -5043,6 +5122,7 @@ export const listControlDomainInsightsByAssessment: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListControlInsightsByControlDomainError =
   | AccessDeniedException
   | InternalServerException
@@ -5096,6 +5176,7 @@ export const listControlInsightsByControlDomain: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListControlsError =
   | AccessDeniedException
   | InternalServerException
@@ -5137,6 +5218,7 @@ export const listControls: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListKeywordsForDataSourceError =
   | AccessDeniedException
   | InternalServerException
@@ -5179,6 +5261,7 @@ export const listKeywordsForDataSource: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListNotificationsError =
   | AccessDeniedException
   | InternalServerException
@@ -5220,6 +5303,7 @@ export const listNotifications: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -5245,6 +5329,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RegisterAccountError =
   | AccessDeniedException
   | InternalServerException
@@ -5276,6 +5361,7 @@ export const registerAccount: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterAccount",
 }));
+
 export type RegisterOrganizationAdminAccountError =
   | AccessDeniedException
   | InternalServerException
@@ -5306,6 +5392,7 @@ export const registerOrganizationAdminAccount: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterOrganizationAdminAccount",
 }));
+
 export type StartAssessmentFrameworkShareError =
   | AccessDeniedException
   | InternalServerException
@@ -5367,6 +5454,7 @@ export const startAssessmentFrameworkShare: API.OperationMethod<
   retry: Retry,
   operationName: "StartAssessmentFrameworkShare",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -5392,6 +5480,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -5417,6 +5506,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAssessmentError =
   | AccessDeniedException
   | InternalServerException
@@ -5448,6 +5538,7 @@ export const updateAssessment: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAssessment",
 }));
+
 export type UpdateAssessmentControlError =
   | AccessDeniedException
   | InternalServerException
@@ -5475,6 +5566,7 @@ export const updateAssessmentControl: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAssessmentControl",
 }));
+
 export type UpdateAssessmentControlSetStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -5502,6 +5594,7 @@ export const updateAssessmentControlSetStatus: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAssessmentControlSetStatus",
 }));
+
 export type UpdateAssessmentFrameworkError =
   | AccessDeniedException
   | InternalServerException
@@ -5531,6 +5624,7 @@ export const updateAssessmentFramework: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAssessmentFramework",
 }));
+
 export type UpdateAssessmentFrameworkShareError =
   | AccessDeniedException
   | InternalServerException
@@ -5560,6 +5654,7 @@ export const updateAssessmentFrameworkShare: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAssessmentFrameworkShare",
 }));
+
 export type UpdateAssessmentStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -5589,6 +5684,7 @@ export const updateAssessmentStatus: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAssessmentStatus",
 }));
+
 export type UpdateControlError =
   | AccessDeniedException
   | InternalServerException
@@ -5616,6 +5712,7 @@ export const updateControl: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateControl",
 }));
+
 export type UpdateSettingsError =
   | AccessDeniedException
   | InternalServerException
@@ -5637,6 +5734,7 @@ export const updateSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSettings",
 }));
+
 export type ValidateAssessmentReportIntegrityError =
   | AccessDeniedException
   | InternalServerException

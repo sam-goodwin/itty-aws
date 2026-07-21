@@ -87,54 +87,54 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Message: S.String,
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.String,
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceLimitExceededException extends S.TaggedErrorClass<ServiceLimitExceededException>()(
+  "ServiceLimitExceededException",
+  {
+    LimitName: S.optional(S.String),
+    LimitValue: S.optional(S.Number),
+    Message: S.String,
+  },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.String, ExceptionCause: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type DataGrantArn = string;
-export type DataGrantName = string;
-export type SenderPrincipal = string;
-export type ReceiverPrincipal = string;
-export type DataGrantDescription = string;
-export type DataGrantAcceptanceState = string;
-export type GrantDistributionScope = string;
-export type Id = string;
-export type Arn = string;
-export type ResourceType = string;
-export type ExceptionCause = string;
-export type Description = string;
-export type LimitName = string;
-export type AssetType = string;
-export type Name = string;
-export type Origin = string;
-export type ServerSideEncryptionTypes = string;
-export type AssetName = string;
-export type __stringMin24Max24PatternAZaZ094AZaZ092AZaZ093 = string;
-export type ApiDescription = string;
-export type ProtocolType = string;
-export type KmsKeyArn = string;
-export type AwsAccountId = string;
-export type DatabaseLFTagPolicyPermission = string;
-export type TableTagPolicyLFPermission = string;
-export type RoleArn = string;
-export type Type = string;
-export type Code = string;
-export type JobErrorLimitName = string;
-export type JobErrorResourceTypes = string;
-export type State = string;
-export type __stringMin0Max16384 = string;
-export type __stringMin10Max512 = string;
-export type DataGrantId = string;
-export type __doubleMin0 = number;
-export type LFResourceType = string;
-export type LakeFormationDataPermissionType = string;
-export type LFPermission = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type AcceptanceStateFilterValue = string;
-export type ClientToken = string;
-export type __stringMin0Max4096 = string;
-export type SchemaChangeType = string;
-export type NotificationType = string;
-
-//# Schemas
 export interface AcceptDataGrantRequest {
   DataGrantArn: string;
 }
@@ -152,6 +152,14 @@ export const AcceptDataGrantRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AcceptDataGrantRequest",
 }) as any as S.Schema<AcceptDataGrantRequest>;
+export type DataGrantName = string;
+export type SenderPrincipal = string;
+export type ReceiverPrincipal = string;
+export type DataGrantDescription = string;
+export type DataGrantAcceptanceState = string;
+export type GrantDistributionScope = string;
+export type Id = string;
+export type Arn = string;
 export interface AcceptDataGrantResponse {
   Name: string;
   SenderPrincipal?: string;
@@ -211,6 +219,7 @@ export const CancelJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CancelJobResponse",
 }) as any as S.Schema<CancelJobResponse>;
+export type Description = string;
 export type MapOf__string = { [key: string]: string | undefined };
 export const MapOf__string = /*@__PURE__*/ S.Record(
   S.String,
@@ -287,6 +296,8 @@ export const CreateDataGrantResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDataGrantResponse",
 }) as any as S.Schema<CreateDataGrantResponse>;
+export type AssetType = string;
+export type Name = string;
 export interface CreateDataSetRequest {
   AssetType: string;
   Description: string;
@@ -312,6 +323,7 @@ export const CreateDataSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDataSetRequest",
 }) as any as S.Schema<CreateDataSetRequest>;
+export type Origin = string;
 export interface OriginDetails {
   ProductId?: string;
   DataGrantId?: string;
@@ -356,6 +368,7 @@ export const CreateDataSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDataSetResponse",
 }) as any as S.Schema<CreateDataSetResponse>;
+export type ServerSideEncryptionTypes = string;
 export interface ExportServerSideEncryption {
   KmsKeyArn?: string;
   Type: string;
@@ -548,6 +561,8 @@ export const ExportRevisionsToS3RequestDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ExportRevisionsToS3RequestDetails",
 }) as any as S.Schema<ExportRevisionsToS3RequestDetails>;
+export type AssetName = string;
+export type __stringMin24Max24PatternAZaZ094AZaZ092AZaZ093 = string;
 export interface ImportAssetFromSignedUrlRequestDetails {
   AssetName: string;
   DataSetId: string;
@@ -618,6 +633,8 @@ export const ImportAssetsFromRedshiftDataSharesRequestDetails =
   ).annotate({
     identifier: "ImportAssetsFromRedshiftDataSharesRequestDetails",
   }) as any as S.Schema<ImportAssetsFromRedshiftDataSharesRequestDetails>;
+export type ApiDescription = string;
+export type ProtocolType = string;
 export interface ImportAssetFromApiGatewayApiRequestDetails {
   ApiDescription?: string;
   ApiId: string;
@@ -647,6 +664,7 @@ export const ImportAssetFromApiGatewayApiRequestDetails =
   }) as any as S.Schema<ImportAssetFromApiGatewayApiRequestDetails>;
 export type ListOf__string = string[];
 export const ListOf__string = /*@__PURE__*/ S.Array(S.String);
+export type KmsKeyArn = string;
 export interface KmsKeyToGrant {
   KmsKeyArn: string;
 }
@@ -686,6 +704,7 @@ export const CreateS3DataAccessFromS3BucketRequestDetails =
   ).annotate({
     identifier: "CreateS3DataAccessFromS3BucketRequestDetails",
   }) as any as S.Schema<CreateS3DataAccessFromS3BucketRequestDetails>;
+export type AwsAccountId = string;
 export type ListOfLFTagValues = string[];
 export const ListOfLFTagValues = /*@__PURE__*/ S.Array(S.String);
 export interface LFTag {
@@ -697,6 +716,7 @@ export const LFTag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LFTag" }) as any as S.Schema<LFTag>;
 export type ListOfLFTags = LFTag[];
 export const ListOfLFTags = /*@__PURE__*/ S.Array(LFTag);
+export type DatabaseLFTagPolicyPermission = string;
 export type ListOfDatabaseLFTagPolicyPermissions = string[];
 export const ListOfDatabaseLFTagPolicyPermissions = /*@__PURE__*/ S.Array(
   S.String,
@@ -713,6 +733,7 @@ export const DatabaseLFTagPolicyAndPermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DatabaseLFTagPolicyAndPermissions",
 }) as any as S.Schema<DatabaseLFTagPolicyAndPermissions>;
+export type TableTagPolicyLFPermission = string;
 export type ListOfTableTagPolicyLFPermissions = string[];
 export const ListOfTableTagPolicyLFPermissions = /*@__PURE__*/ S.Array(
   S.String,
@@ -729,6 +750,7 @@ export const TableLFTagPolicyAndPermissions = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TableLFTagPolicyAndPermissions",
 }) as any as S.Schema<TableLFTagPolicyAndPermissions>;
+export type RoleArn = string;
 export interface ImportAssetsFromLakeFormationTagPolicyRequestDetails {
   CatalogId: string;
   Database?: DatabaseLFTagPolicyAndPermissions;
@@ -784,6 +806,7 @@ export const RequestDetails = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({ identifier: "RequestDetails" }) as any as S.Schema<RequestDetails>;
+export type Type = string;
 export interface CreateJobRequest {
   AssetConfiguration?: AssetConfiguration;
   Details: RequestDetails;
@@ -1017,6 +1040,7 @@ export const ResponseDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResponseDetails",
 }) as any as S.Schema<ResponseDetails>;
+export type Code = string;
 export interface ImportAssetFromSignedUrlJobErrorDetails {
   AssetName: string;
 }
@@ -1037,6 +1061,8 @@ export const Details = /*@__PURE__*/ S.suspend(() =>
     ImportAssetsFromS3JobErrorDetails: S.optional(ListOfAssetSourceEntry),
   }),
 ).annotate({ identifier: "Details" }) as any as S.Schema<Details>;
+export type JobErrorLimitName = string;
+export type JobErrorResourceTypes = string;
 export interface JobError {
   Code: string;
   Details?: Details;
@@ -1059,6 +1085,7 @@ export const JobError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "JobError" }) as any as S.Schema<JobError>;
 export type ListOfJobError = JobError[];
 export const ListOfJobError = /*@__PURE__*/ S.Array(JobError);
+export type State = string;
 export interface CreateJobResponse {
   Arn?: string;
   AssetConfiguration?: AssetConfiguration;
@@ -1089,6 +1116,7 @@ export const CreateJobResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateJobResponse",
 }) as any as S.Schema<CreateJobResponse>;
+export type __stringMin0Max16384 = string;
 export interface CreateRevisionRequest {
   Comment?: string;
   DataSetId: string;
@@ -1112,6 +1140,7 @@ export const CreateRevisionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRevisionRequest",
 }) as any as S.Schema<CreateRevisionRequest>;
+export type __stringMin10Max512 = string;
 export interface CreateRevisionResponse {
   Arn?: string;
   Comment?: string;
@@ -1182,6 +1211,7 @@ export const DeleteAssetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteAssetResponse",
 }) as any as S.Schema<DeleteAssetResponse>;
+export type DataGrantId = string;
 export interface DeleteDataGrantRequest {
   DataGrantId: string;
 }
@@ -1307,6 +1337,7 @@ export const GetAssetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAssetRequest",
 }) as any as S.Schema<GetAssetRequest>;
+export type __doubleMin0 = number;
 export interface S3SnapshotAsset {
   Size: number;
 }
@@ -1371,6 +1402,7 @@ export const S3DataAccessAsset = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3DataAccessAsset",
 }) as any as S.Schema<S3DataAccessAsset>;
+export type LFResourceType = string;
 export interface DatabaseLFTagPolicy {
   Expression: LFTag[];
 }
@@ -1421,6 +1453,8 @@ export const LakeFormationDataPermissionDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LakeFormationDataPermissionDetails",
 }) as any as S.Schema<LakeFormationDataPermissionDetails>;
+export type LakeFormationDataPermissionType = string;
+export type LFPermission = string;
 export type ListOfLFPermissions = string[];
 export const ListOfLFPermissions = /*@__PURE__*/ S.Array(S.String);
 export interface LakeFormationDataPermissionAsset {
@@ -1800,6 +1834,7 @@ export const GetRevisionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRevisionResponse",
 }) as any as S.Schema<GetRevisionResponse>;
+export type MaxResults = number;
 export interface ListDataGrantsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -1859,6 +1894,7 @@ export type ListOfDataGrantSummaryEntry = DataGrantSummaryEntry[];
 export const ListOfDataGrantSummaryEntry = /*@__PURE__*/ S.Array(
   DataGrantSummaryEntry,
 );
+export type NextToken = string;
 export interface ListDataGrantsResponse {
   DataGrantSummaries?: DataGrantSummaryEntry[];
   NextToken?: string;
@@ -2121,6 +2157,7 @@ export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListJobsResponse",
 }) as any as S.Schema<ListJobsResponse>;
+export type AcceptanceStateFilterValue = string;
 export type AcceptanceStateFilterValues = string[];
 export const AcceptanceStateFilterValues = /*@__PURE__*/ S.Array(S.String);
 export interface ListReceivedDataGrantsRequest {
@@ -2459,6 +2496,8 @@ export const ScopeDetails = /*@__PURE__*/ S.suspend(() =>
     S3DataAccesses: S.optional(ListOfS3DataAccesses),
   }),
 ).annotate({ identifier: "ScopeDetails" }) as any as S.Schema<ScopeDetails>;
+export type ClientToken = string;
+export type __stringMin0Max4096 = string;
 export interface DataUpdateRequestDetails {
   DataUpdatedAt?: Date;
 }
@@ -2481,6 +2520,7 @@ export const DeprecationRequestDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeprecationRequestDetails",
 }) as any as S.Schema<DeprecationRequestDetails>;
+export type SchemaChangeType = string;
 export interface SchemaChangeDetails {
   Name: string;
   Type: string;
@@ -2524,6 +2564,7 @@ export const NotificationDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotificationDetails",
 }) as any as S.Schema<NotificationDetails>;
+export type NotificationType = string;
 export interface SendDataSetNotificationRequest {
   Scope?: ScopeDetails;
   ClientToken?: string;
@@ -2862,57 +2903,9 @@ export const UpdateRevisionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRevisionResponse",
 }) as any as S.Schema<UpdateRevisionResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    Message: S.String,
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.String,
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(S.String),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.String, ExceptionCause: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceLimitExceededException extends S.TaggedErrorClass<ServiceLimitExceededException>()(
-  "ServiceLimitExceededException",
-  {
-    LimitName: S.optional(S.String),
-    LimitValue: S.optional(S.Number),
-    Message: S.String,
-  },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
+export type ResourceType = string;
+export type ExceptionCause = string;
+export type LimitName = string;
 export type AcceptDataGrantError =
   | AccessDeniedException
   | ConflictException
@@ -2944,6 +2937,7 @@ export const acceptDataGrant: API.OperationMethod<
   retry: Retry,
   operationName: "AcceptDataGrant",
 }));
+
 export type CancelJobError =
   | ConflictException
   | InternalServerException
@@ -2973,6 +2967,7 @@ export const cancelJob: API.OperationMethod<
   retry: Retry,
   operationName: "CancelJob",
 }));
+
 export type CreateDataGrantError =
   | AccessDeniedException
   | InternalServerException
@@ -3004,6 +2999,7 @@ export const createDataGrant: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataGrant",
 }));
+
 export type CreateDataSetError =
   | AccessDeniedException
   | InternalServerException
@@ -3033,6 +3029,7 @@ export const createDataSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDataSet",
 }));
+
 export type CreateEventActionError =
   | AccessDeniedException
   | InternalServerException
@@ -3062,6 +3059,7 @@ export const createEventAction: API.OperationMethod<
   retry: Retry,
   operationName: "CreateEventAction",
 }));
+
 export type CreateJobError =
   | AccessDeniedException
   | ConflictException
@@ -3093,6 +3091,7 @@ export const createJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateJob",
 }));
+
 export type CreateRevisionError =
   | AccessDeniedException
   | InternalServerException
@@ -3122,6 +3121,7 @@ export const createRevision: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRevision",
 }));
+
 export type DeleteAssetError =
   | AccessDeniedException
   | ConflictException
@@ -3153,6 +3153,7 @@ export const deleteAsset: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAsset",
 }));
+
 export type DeleteDataGrantError =
   | AccessDeniedException
   | InternalServerException
@@ -3182,6 +3183,7 @@ export const deleteDataGrant: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataGrant",
 }));
+
 export type DeleteDataSetError =
   | AccessDeniedException
   | ConflictException
@@ -3213,6 +3215,7 @@ export const deleteDataSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDataSet",
 }));
+
 export type DeleteEventActionError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3240,6 +3243,7 @@ export const deleteEventAction: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteEventAction",
 }));
+
 export type DeleteRevisionError =
   | AccessDeniedException
   | ConflictException
@@ -3271,6 +3275,7 @@ export const deleteRevision: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRevision",
 }));
+
 export type GetAssetError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3298,6 +3303,7 @@ export const getAsset: API.OperationMethod<
   retry: Retry,
   operationName: "GetAsset",
 }));
+
 export type GetDataGrantError =
   | AccessDeniedException
   | InternalServerException
@@ -3327,6 +3333,7 @@ export const getDataGrant: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataGrant",
 }));
+
 export type GetDataSetError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3354,6 +3361,7 @@ export const getDataSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetDataSet",
 }));
+
 export type GetEventActionError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3381,6 +3389,7 @@ export const getEventAction: API.OperationMethod<
   retry: Retry,
   operationName: "GetEventAction",
 }));
+
 export type GetJobError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3408,6 +3417,7 @@ export const getJob: API.OperationMethod<
   retry: Retry,
   operationName: "GetJob",
 }));
+
 export type GetReceivedDataGrantError =
   | AccessDeniedException
   | InternalServerException
@@ -3437,6 +3447,7 @@ export const getReceivedDataGrant: API.OperationMethod<
   retry: Retry,
   operationName: "GetReceivedDataGrant",
 }));
+
 export type GetRevisionError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3464,6 +3475,7 @@ export const getRevision: API.OperationMethod<
   retry: Retry,
   operationName: "GetRevision",
 }));
+
 export type ListDataGrantsError =
   | AccessDeniedException
   | InternalServerException
@@ -3514,6 +3526,7 @@ export const listDataGrants: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDataSetRevisionsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3562,6 +3575,7 @@ export const listDataSetRevisions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListDataSetsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3610,6 +3624,7 @@ export const listDataSets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListEventActionsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3658,6 +3673,7 @@ export const listEventActions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListJobsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3706,6 +3722,7 @@ export const listJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListReceivedDataGrantsError =
   | AccessDeniedException
   | InternalServerException
@@ -3756,6 +3773,7 @@ export const listReceivedDataGrants: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRevisionAssetsError =
   | InternalServerException
   | ResourceNotFoundException
@@ -3804,6 +3822,7 @@ export const listRevisionAssets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError = CommonErrors;
 /**
  * This operation lists the tags on the resource.
@@ -3821,6 +3840,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RevokeRevisionError =
   | AccessDeniedException
   | ConflictException
@@ -3852,6 +3872,7 @@ export const revokeRevision: API.OperationMethod<
   retry: Retry,
   operationName: "RevokeRevision",
 }));
+
 export type SendApiAssetError =
   | AccessDeniedException
   | InternalServerException
@@ -3882,6 +3903,7 @@ export const sendApiAsset: API.OperationMethod<
   operationName: "SendApiAsset",
   endpointHostPrefix: "api-fulfill.",
 }));
+
 export type SendDataSetNotificationError =
   | AccessDeniedException
   | ConflictException
@@ -3913,6 +3935,7 @@ export const sendDataSetNotification: API.OperationMethod<
   retry: Retry,
   operationName: "SendDataSetNotification",
 }));
+
 export type StartJobError =
   | AccessDeniedException
   | ConflictException
@@ -3944,6 +3967,7 @@ export const startJob: API.OperationMethod<
   retry: Retry,
   operationName: "StartJob",
 }));
+
 export type TagResourceError = CommonErrors;
 /**
  * This operation tags a resource.
@@ -3961,6 +3985,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError = CommonErrors;
 /**
  * This operation removes one or more tags from a resource.
@@ -3978,6 +4003,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAssetError =
   | AccessDeniedException
   | ConflictException
@@ -4009,6 +4035,7 @@ export const updateAsset: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAsset",
 }));
+
 export type UpdateDataSetError =
   | AccessDeniedException
   | InternalServerException
@@ -4038,6 +4065,7 @@ export const updateDataSet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDataSet",
 }));
+
 export type UpdateEventActionError =
   | AccessDeniedException
   | InternalServerException
@@ -4067,6 +4095,7 @@ export const updateEventAction: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateEventAction",
 }));
+
 export type UpdateRevisionError =
   | AccessDeniedException
   | ConflictException

@@ -120,10 +120,26 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type S3UrlSignerRole = string;
-
-//# Schemas
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  {
+    ErrorDetails: S.optional(
+      S.suspend(() => ErrorDetails).annotate({ identifier: "ErrorDetails" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  {
+    ErrorDetails: S.optional(
+      S.suspend(() => ErrorDetails).annotate({ identifier: "ErrorDetails" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
 export interface AssociateRoleToGroupRequest {
   GroupId: string;
   RoleArn?: string;
@@ -153,18 +169,6 @@ export const AssociateRoleToGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateRoleToGroupResponse",
 }) as any as S.Schema<AssociateRoleToGroupResponse>;
-export interface ErrorDetail {
-  DetailedErrorCode?: string;
-  DetailedErrorMessage?: string;
-}
-export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    DetailedErrorCode: S.optional(S.String),
-    DetailedErrorMessage: S.optional(S.String),
-  }),
-).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
-export type ErrorDetails = ErrorDetail[];
-export const ErrorDetails = /*@__PURE__*/ S.Array(ErrorDetail);
 export interface AssociateServiceRoleToAccountRequest {
   RoleArn?: string;
 }
@@ -441,6 +445,7 @@ export type DeploymentType =
   | "ForceResetDeployment"
   | (string & {});
 export const DeploymentType = /*@__PURE__*/ S.String;
+
 export interface CreateDeploymentRequest {
   AmznClientToken?: string;
   DeploymentId?: string;
@@ -609,6 +614,7 @@ export type FunctionIsolationMode =
   | "NoContainer"
   | (string & {});
 export const FunctionIsolationMode = /*@__PURE__*/ S.String;
+
 export interface FunctionRunAsConfig {
   Gid?: number;
   Uid?: number;
@@ -640,6 +646,7 @@ export const FunctionDefaultConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionDefaultConfig>;
 export type EncodingType = "binary" | "json" | (string & {});
 export const EncodingType = /*@__PURE__*/ S.String;
+
 export interface FunctionExecutionConfig {
   IsolationMode?: FunctionIsolationMode;
   RunAs?: FunctionRunAsConfig;
@@ -654,6 +661,7 @@ export const FunctionExecutionConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<FunctionExecutionConfig>;
 export type Permission = "ro" | "rw" | (string & {});
 export const Permission = /*@__PURE__*/ S.String;
+
 export interface ResourceAccessPolicy {
   Permission?: Permission;
   ResourceId?: string;
@@ -991,6 +999,7 @@ export const CreateGroupVersionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateGroupVersionResponse>;
 export type LoggerComponent = "GreengrassSystem" | "Lambda" | (string & {});
 export const LoggerComponent = /*@__PURE__*/ S.String;
+
 export type LoggerLevel =
   | "DEBUG"
   | "INFO"
@@ -999,8 +1008,10 @@ export type LoggerLevel =
   | "FATAL"
   | (string & {});
 export const LoggerLevel = /*@__PURE__*/ S.String;
+
 export type LoggerType = "FileSystem" | "AWSCloudWatch" | (string & {});
 export const LoggerType = /*@__PURE__*/ S.String;
+
 export interface Logger {
   Component?: LoggerComponent;
   Id?: string;
@@ -1356,8 +1367,10 @@ export const CreateResourceDefinitionVersionResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateResourceDefinitionVersionResponse",
 }) as any as S.Schema<CreateResourceDefinitionVersionResponse>;
+export type S3UrlSignerRole = string;
 export type SoftwareToUpdate = "core" | "ota_agent" | (string & {});
 export const SoftwareToUpdate = /*@__PURE__*/ S.String;
+
 export type UpdateAgentLogLevel =
   | "NONE"
   | "TRACE"
@@ -1369,6 +1382,7 @@ export type UpdateAgentLogLevel =
   | "FATAL"
   | (string & {});
 export const UpdateAgentLogLevel = /*@__PURE__*/ S.String;
+
 export type UpdateTargets = string[];
 export const UpdateTargets = /*@__PURE__*/ S.Array(S.String);
 export type UpdateTargetsArchitecture =
@@ -1378,6 +1392,7 @@ export type UpdateTargetsArchitecture =
   | "aarch64"
   | (string & {});
 export const UpdateTargetsArchitecture = /*@__PURE__*/ S.String;
+
 export type UpdateTargetsOperatingSystem =
   | "ubuntu"
   | "raspbian"
@@ -1385,6 +1400,7 @@ export type UpdateTargetsOperatingSystem =
   | "openwrt"
   | (string & {});
 export const UpdateTargetsOperatingSystem = /*@__PURE__*/ S.String;
+
 export interface CreateSoftwareUpdateJobRequest {
   AmznClientToken?: string;
   S3UrlSignerRole?: string;
@@ -1899,6 +1915,19 @@ export type BulkDeploymentStatus =
   | "Failed"
   | (string & {});
 export const BulkDeploymentStatus = /*@__PURE__*/ S.String;
+
+export interface ErrorDetail {
+  DetailedErrorCode?: string;
+  DetailedErrorMessage?: string;
+}
+export const ErrorDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DetailedErrorCode: S.optional(S.String),
+    DetailedErrorMessage: S.optional(S.String),
+  }),
+).annotate({ identifier: "ErrorDetail" }) as any as S.Schema<ErrorDetail>;
+export type ErrorDetails = ErrorDetail[];
+export const ErrorDetails = /*@__PURE__*/ S.Array(ErrorDetail);
 export interface GetBulkDeploymentStatusResponse {
   BulkDeploymentMetrics?: BulkDeploymentMetrics;
   BulkDeploymentStatus?: BulkDeploymentStatus;
@@ -2936,8 +2965,10 @@ export const GetThingRuntimeConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetThingRuntimeConfigurationRequest>;
 export type ConfigurationSyncStatus = "InSync" | "OutOfSync" | (string & {});
 export const ConfigurationSyncStatus = /*@__PURE__*/ S.String;
+
 export type Telemetry = "On" | "Off" | (string & {});
 export const Telemetry = /*@__PURE__*/ S.String;
+
 export interface TelemetryConfiguration {
   ConfigurationSyncStatus?: ConfigurationSyncStatus;
   Telemetry?: Telemetry;
@@ -4378,20 +4409,6 @@ export const UpdateThingRuntimeConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateThingRuntimeConfigurationResponse",
 }) as any as S.Schema<UpdateThingRuntimeConfigurationResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { ErrorDetails: S.optional(ErrorDetails), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { ErrorDetails: S.optional(ErrorDetails), Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-
-//# Operations
 export type AssociateRoleToGroupError =
   | BadRequestException
   | InternalServerErrorException
@@ -4412,6 +4429,7 @@ export const associateRoleToGroup: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateRoleToGroup",
 }));
+
 export type AssociateServiceRoleToAccountError =
   | BadRequestException
   | InternalServerErrorException
@@ -4432,6 +4450,7 @@ export const associateServiceRoleToAccount: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateServiceRoleToAccount",
 }));
+
 export type CreateConnectorDefinitionError = BadRequestException | CommonErrors;
 /**
  * Creates a connector definition. You may provide the initial version of the connector definition now or use ''CreateConnectorDefinitionVersion'' at a later time.
@@ -4449,6 +4468,7 @@ export const createConnectorDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConnectorDefinition",
 }));
+
 export type CreateConnectorDefinitionVersionError =
   | BadRequestException
   | CommonErrors;
@@ -4468,6 +4488,7 @@ export const createConnectorDefinitionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConnectorDefinitionVersion",
 }));
+
 export type CreateCoreDefinitionError = BadRequestException | CommonErrors;
 /**
  * Creates a core definition. You may provide the initial version of the core definition now or use ''CreateCoreDefinitionVersion'' at a later time. Greengrass groups must each contain exactly one Greengrass core.
@@ -4485,6 +4506,7 @@ export const createCoreDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCoreDefinition",
 }));
+
 export type CreateCoreDefinitionVersionError =
   | BadRequestException
   | CommonErrors;
@@ -4504,6 +4526,7 @@ export const createCoreDefinitionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCoreDefinitionVersion",
 }));
+
 export type CreateDeploymentError = BadRequestException | CommonErrors;
 /**
  * Creates a deployment. ''CreateDeployment'' requests are idempotent with respect to the ''X-Amzn-Client-Token'' token and the request parameters.
@@ -4521,6 +4544,7 @@ export const createDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDeployment",
 }));
+
 export type CreateDeviceDefinitionError = BadRequestException | CommonErrors;
 /**
  * Creates a device definition. You may provide the initial version of the device definition now or use ''CreateDeviceDefinitionVersion'' at a later time.
@@ -4538,6 +4562,7 @@ export const createDeviceDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDeviceDefinition",
 }));
+
 export type CreateDeviceDefinitionVersionError =
   | BadRequestException
   | CommonErrors;
@@ -4557,6 +4582,7 @@ export const createDeviceDefinitionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDeviceDefinitionVersion",
 }));
+
 export type CreateFunctionDefinitionError = BadRequestException | CommonErrors;
 /**
  * Creates a Lambda function definition which contains a list of Lambda functions and their configurations to be used in a group. You can create an initial version of the definition by providing a list of Lambda functions and their configurations now, or use ''CreateFunctionDefinitionVersion'' later.
@@ -4574,6 +4600,7 @@ export const createFunctionDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFunctionDefinition",
 }));
+
 export type CreateFunctionDefinitionVersionError =
   | BadRequestException
   | CommonErrors;
@@ -4593,6 +4620,7 @@ export const createFunctionDefinitionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateFunctionDefinitionVersion",
 }));
+
 export type CreateGroupError = BadRequestException | CommonErrors;
 /**
  * Creates a group. You may provide the initial version of the group or use ''CreateGroupVersion'' at a later time. Tip: You can use the ''gg_group_setup'' package (https://github.com/awslabs/aws-greengrass-group-setup) as a library or command-line application to create and deploy Greengrass groups.
@@ -4610,6 +4638,7 @@ export const createGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGroup",
 }));
+
 export type CreateGroupCertificateAuthorityError =
   | BadRequestException
   | InternalServerErrorException
@@ -4630,6 +4659,7 @@ export const createGroupCertificateAuthority: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGroupCertificateAuthority",
 }));
+
 export type CreateGroupVersionError = BadRequestException | CommonErrors;
 /**
  * Creates a version of a group which has already been defined.
@@ -4647,6 +4677,7 @@ export const createGroupVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateGroupVersion",
 }));
+
 export type CreateLoggerDefinitionError = BadRequestException | CommonErrors;
 /**
  * Creates a logger definition. You may provide the initial version of the logger definition now or use ''CreateLoggerDefinitionVersion'' at a later time.
@@ -4664,6 +4695,7 @@ export const createLoggerDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLoggerDefinition",
 }));
+
 export type CreateLoggerDefinitionVersionError =
   | BadRequestException
   | CommonErrors;
@@ -4683,6 +4715,7 @@ export const createLoggerDefinitionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateLoggerDefinitionVersion",
 }));
+
 export type CreateResourceDefinitionError = BadRequestException | CommonErrors;
 /**
  * Creates a resource definition which contains a list of resources to be used in a group. You can create an initial version of the definition by providing a list of resources now, or use ''CreateResourceDefinitionVersion'' later.
@@ -4700,6 +4733,7 @@ export const createResourceDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "CreateResourceDefinition",
 }));
+
 export type CreateResourceDefinitionVersionError =
   | BadRequestException
   | CommonErrors;
@@ -4719,6 +4753,7 @@ export const createResourceDefinitionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateResourceDefinitionVersion",
 }));
+
 export type CreateSoftwareUpdateJobError =
   | BadRequestException
   | InternalServerErrorException
@@ -4739,6 +4774,7 @@ export const createSoftwareUpdateJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSoftwareUpdateJob",
 }));
+
 export type CreateSubscriptionDefinitionError =
   | BadRequestException
   | CommonErrors;
@@ -4758,6 +4794,7 @@ export const createSubscriptionDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSubscriptionDefinition",
 }));
+
 export type CreateSubscriptionDefinitionVersionError =
   | BadRequestException
   | CommonErrors;
@@ -4777,6 +4814,7 @@ export const createSubscriptionDefinitionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSubscriptionDefinitionVersion",
 }));
+
 export type DeleteConnectorDefinitionError = BadRequestException | CommonErrors;
 /**
  * Deletes a connector definition.
@@ -4794,6 +4832,7 @@ export const deleteConnectorDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConnectorDefinition",
 }));
+
 export type DeleteCoreDefinitionError = BadRequestException | CommonErrors;
 /**
  * Deletes a core definition.
@@ -4811,6 +4850,7 @@ export const deleteCoreDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCoreDefinition",
 }));
+
 export type DeleteDeviceDefinitionError = BadRequestException | CommonErrors;
 /**
  * Deletes a device definition.
@@ -4828,6 +4868,7 @@ export const deleteDeviceDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDeviceDefinition",
 }));
+
 export type DeleteFunctionDefinitionError = BadRequestException | CommonErrors;
 /**
  * Deletes a Lambda function definition.
@@ -4845,6 +4886,7 @@ export const deleteFunctionDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFunctionDefinition",
 }));
+
 export type DeleteGroupError = BadRequestException | CommonErrors;
 /**
  * Deletes a group.
@@ -4862,6 +4904,7 @@ export const deleteGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGroup",
 }));
+
 export type DeleteLoggerDefinitionError = BadRequestException | CommonErrors;
 /**
  * Deletes a logger definition.
@@ -4879,6 +4922,7 @@ export const deleteLoggerDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLoggerDefinition",
 }));
+
 export type DeleteResourceDefinitionError = BadRequestException | CommonErrors;
 /**
  * Deletes a resource definition.
@@ -4896,6 +4940,7 @@ export const deleteResourceDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourceDefinition",
 }));
+
 export type DeleteSubscriptionDefinitionError =
   | BadRequestException
   | CommonErrors;
@@ -4915,6 +4960,7 @@ export const deleteSubscriptionDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSubscriptionDefinition",
 }));
+
 export type DisassociateRoleFromGroupError =
   | BadRequestException
   | InternalServerErrorException
@@ -4935,6 +4981,7 @@ export const disassociateRoleFromGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateRoleFromGroup",
 }));
+
 export type DisassociateServiceRoleFromAccountError =
   | InternalServerErrorException
   | CommonErrors;
@@ -4954,6 +5001,7 @@ export const disassociateServiceRoleFromAccount: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateServiceRoleFromAccount",
 }));
+
 export type GetAssociatedRoleError =
   | BadRequestException
   | InternalServerErrorException
@@ -4974,6 +5022,7 @@ export const getAssociatedRole: API.OperationMethod<
   retry: Retry,
   operationName: "GetAssociatedRole",
 }));
+
 export type GetBulkDeploymentStatusError = BadRequestException | CommonErrors;
 /**
  * Returns the status of a bulk deployment.
@@ -4991,6 +5040,7 @@ export const getBulkDeploymentStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetBulkDeploymentStatus",
 }));
+
 export type GetConnectivityInfoError =
   | BadRequestException
   | InternalServerErrorException
@@ -5011,6 +5061,7 @@ export const getConnectivityInfo: API.OperationMethod<
   retry: Retry,
   operationName: "GetConnectivityInfo",
 }));
+
 export type GetConnectorDefinitionError = BadRequestException | CommonErrors;
 /**
  * Retrieves information about a connector definition.
@@ -5028,6 +5079,7 @@ export const getConnectorDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "GetConnectorDefinition",
 }));
+
 export type GetConnectorDefinitionVersionError =
   | BadRequestException
   | CommonErrors;
@@ -5047,6 +5099,7 @@ export const getConnectorDefinitionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetConnectorDefinitionVersion",
 }));
+
 export type GetCoreDefinitionError = BadRequestException | CommonErrors;
 /**
  * Retrieves information about a core definition version.
@@ -5064,6 +5117,7 @@ export const getCoreDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "GetCoreDefinition",
 }));
+
 export type GetCoreDefinitionVersionError = BadRequestException | CommonErrors;
 /**
  * Retrieves information about a core definition version.
@@ -5081,6 +5135,7 @@ export const getCoreDefinitionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetCoreDefinitionVersion",
 }));
+
 export type GetDeploymentStatusError = BadRequestException | CommonErrors;
 /**
  * Returns the status of a deployment.
@@ -5098,6 +5153,7 @@ export const getDeploymentStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeploymentStatus",
 }));
+
 export type GetDeviceDefinitionError = BadRequestException | CommonErrors;
 /**
  * Retrieves information about a device definition.
@@ -5115,6 +5171,7 @@ export const getDeviceDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeviceDefinition",
 }));
+
 export type GetDeviceDefinitionVersionError =
   | BadRequestException
   | CommonErrors;
@@ -5134,6 +5191,7 @@ export const getDeviceDefinitionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeviceDefinitionVersion",
 }));
+
 export type GetFunctionDefinitionError = BadRequestException | CommonErrors;
 /**
  * Retrieves information about a Lambda function definition, including its creation time and latest version.
@@ -5151,6 +5209,7 @@ export const getFunctionDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "GetFunctionDefinition",
 }));
+
 export type GetFunctionDefinitionVersionError =
   | BadRequestException
   | CommonErrors;
@@ -5170,6 +5229,7 @@ export const getFunctionDefinitionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetFunctionDefinitionVersion",
 }));
+
 export type GetGroupError = BadRequestException | CommonErrors;
 /**
  * Retrieves information about a group.
@@ -5187,6 +5247,7 @@ export const getGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetGroup",
 }));
+
 export type GetGroupCertificateAuthorityError =
   | BadRequestException
   | InternalServerErrorException
@@ -5207,6 +5268,7 @@ export const getGroupCertificateAuthority: API.OperationMethod<
   retry: Retry,
   operationName: "GetGroupCertificateAuthority",
 }));
+
 export type GetGroupCertificateConfigurationError =
   | BadRequestException
   | InternalServerErrorException
@@ -5227,6 +5289,7 @@ export const getGroupCertificateConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetGroupCertificateConfiguration",
 }));
+
 export type GetGroupVersionError = BadRequestException | CommonErrors;
 /**
  * Retrieves information about a group version.
@@ -5244,6 +5307,7 @@ export const getGroupVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetGroupVersion",
 }));
+
 export type GetLoggerDefinitionError = BadRequestException | CommonErrors;
 /**
  * Retrieves information about a logger definition.
@@ -5261,6 +5325,7 @@ export const getLoggerDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "GetLoggerDefinition",
 }));
+
 export type GetLoggerDefinitionVersionError =
   | BadRequestException
   | CommonErrors;
@@ -5280,6 +5345,7 @@ export const getLoggerDefinitionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetLoggerDefinitionVersion",
 }));
+
 export type GetResourceDefinitionError = BadRequestException | CommonErrors;
 /**
  * Retrieves information about a resource definition, including its creation time and latest version.
@@ -5297,6 +5363,7 @@ export const getResourceDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourceDefinition",
 }));
+
 export type GetResourceDefinitionVersionError =
   | BadRequestException
   | CommonErrors;
@@ -5316,6 +5383,7 @@ export const getResourceDefinitionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourceDefinitionVersion",
 }));
+
 export type GetServiceRoleForAccountError =
   | InternalServerErrorException
   | CommonErrors;
@@ -5335,6 +5403,7 @@ export const getServiceRoleForAccount: API.OperationMethod<
   retry: Retry,
   operationName: "GetServiceRoleForAccount",
 }));
+
 export type GetSubscriptionDefinitionError = BadRequestException | CommonErrors;
 /**
  * Retrieves information about a subscription definition.
@@ -5352,6 +5421,7 @@ export const getSubscriptionDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "GetSubscriptionDefinition",
 }));
+
 export type GetSubscriptionDefinitionVersionError =
   | BadRequestException
   | CommonErrors;
@@ -5371,6 +5441,7 @@ export const getSubscriptionDefinitionVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetSubscriptionDefinitionVersion",
 }));
+
 export type GetThingRuntimeConfigurationError =
   | BadRequestException
   | InternalServerErrorException
@@ -5391,6 +5462,7 @@ export const getThingRuntimeConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetThingRuntimeConfiguration",
 }));
+
 export type ListBulkDeploymentDetailedReportsError =
   | BadRequestException
   | CommonErrors;
@@ -5410,6 +5482,7 @@ export const listBulkDeploymentDetailedReports: API.OperationMethod<
   retry: Retry,
   operationName: "ListBulkDeploymentDetailedReports",
 }));
+
 export type ListBulkDeploymentsError = BadRequestException | CommonErrors;
 /**
  * Returns a list of bulk deployments.
@@ -5427,6 +5500,7 @@ export const listBulkDeployments: API.OperationMethod<
   retry: Retry,
   operationName: "ListBulkDeployments",
 }));
+
 export type ListConnectorDefinitionsError = CommonErrors;
 /**
  * Retrieves a list of connector definitions.
@@ -5444,6 +5518,7 @@ export const listConnectorDefinitions: API.OperationMethod<
   retry: Retry,
   operationName: "ListConnectorDefinitions",
 }));
+
 export type ListConnectorDefinitionVersionsError =
   | BadRequestException
   | CommonErrors;
@@ -5463,6 +5538,7 @@ export const listConnectorDefinitionVersions: API.OperationMethod<
   retry: Retry,
   operationName: "ListConnectorDefinitionVersions",
 }));
+
 export type ListCoreDefinitionsError = CommonErrors;
 /**
  * Retrieves a list of core definitions.
@@ -5480,6 +5556,7 @@ export const listCoreDefinitions: API.OperationMethod<
   retry: Retry,
   operationName: "ListCoreDefinitions",
 }));
+
 export type ListCoreDefinitionVersionsError =
   | BadRequestException
   | CommonErrors;
@@ -5499,6 +5576,7 @@ export const listCoreDefinitionVersions: API.OperationMethod<
   retry: Retry,
   operationName: "ListCoreDefinitionVersions",
 }));
+
 export type ListDeploymentsError = BadRequestException | CommonErrors;
 /**
  * Returns a history of deployments for the group.
@@ -5516,6 +5594,7 @@ export const listDeployments: API.OperationMethod<
   retry: Retry,
   operationName: "ListDeployments",
 }));
+
 export type ListDeviceDefinitionsError = CommonErrors;
 /**
  * Retrieves a list of device definitions.
@@ -5533,6 +5612,7 @@ export const listDeviceDefinitions: API.OperationMethod<
   retry: Retry,
   operationName: "ListDeviceDefinitions",
 }));
+
 export type ListDeviceDefinitionVersionsError =
   | BadRequestException
   | CommonErrors;
@@ -5552,6 +5632,7 @@ export const listDeviceDefinitionVersions: API.OperationMethod<
   retry: Retry,
   operationName: "ListDeviceDefinitionVersions",
 }));
+
 export type ListFunctionDefinitionsError = CommonErrors;
 /**
  * Retrieves a list of Lambda function definitions.
@@ -5569,6 +5650,7 @@ export const listFunctionDefinitions: API.OperationMethod<
   retry: Retry,
   operationName: "ListFunctionDefinitions",
 }));
+
 export type ListFunctionDefinitionVersionsError =
   | BadRequestException
   | CommonErrors;
@@ -5588,6 +5670,7 @@ export const listFunctionDefinitionVersions: API.OperationMethod<
   retry: Retry,
   operationName: "ListFunctionDefinitionVersions",
 }));
+
 export type ListGroupCertificateAuthoritiesError =
   | BadRequestException
   | InternalServerErrorException
@@ -5608,6 +5691,7 @@ export const listGroupCertificateAuthorities: API.OperationMethod<
   retry: Retry,
   operationName: "ListGroupCertificateAuthorities",
 }));
+
 export type ListGroupsError = CommonErrors;
 /**
  * Retrieves a list of groups.
@@ -5625,6 +5709,7 @@ export const listGroups: API.OperationMethod<
   retry: Retry,
   operationName: "ListGroups",
 }));
+
 export type ListGroupVersionsError = BadRequestException | CommonErrors;
 /**
  * Lists the versions of a group.
@@ -5642,6 +5727,7 @@ export const listGroupVersions: API.OperationMethod<
   retry: Retry,
   operationName: "ListGroupVersions",
 }));
+
 export type ListLoggerDefinitionsError = CommonErrors;
 /**
  * Retrieves a list of logger definitions.
@@ -5659,6 +5745,7 @@ export const listLoggerDefinitions: API.OperationMethod<
   retry: Retry,
   operationName: "ListLoggerDefinitions",
 }));
+
 export type ListLoggerDefinitionVersionsError =
   | BadRequestException
   | CommonErrors;
@@ -5678,6 +5765,7 @@ export const listLoggerDefinitionVersions: API.OperationMethod<
   retry: Retry,
   operationName: "ListLoggerDefinitionVersions",
 }));
+
 export type ListResourceDefinitionsError = CommonErrors;
 /**
  * Retrieves a list of resource definitions.
@@ -5695,6 +5783,7 @@ export const listResourceDefinitions: API.OperationMethod<
   retry: Retry,
   operationName: "ListResourceDefinitions",
 }));
+
 export type ListResourceDefinitionVersionsError =
   | BadRequestException
   | CommonErrors;
@@ -5714,6 +5803,7 @@ export const listResourceDefinitionVersions: API.OperationMethod<
   retry: Retry,
   operationName: "ListResourceDefinitionVersions",
 }));
+
 export type ListSubscriptionDefinitionsError = CommonErrors;
 /**
  * Retrieves a list of subscription definitions.
@@ -5731,6 +5821,7 @@ export const listSubscriptionDefinitions: API.OperationMethod<
   retry: Retry,
   operationName: "ListSubscriptionDefinitions",
 }));
+
 export type ListSubscriptionDefinitionVersionsError =
   | BadRequestException
   | CommonErrors;
@@ -5750,6 +5841,7 @@ export const listSubscriptionDefinitionVersions: API.OperationMethod<
   retry: Retry,
   operationName: "ListSubscriptionDefinitionVersions",
 }));
+
 export type ListTagsForResourceError = BadRequestException | CommonErrors;
 /**
  * Retrieves a list of resource tags for a resource arn.
@@ -5767,6 +5859,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ResetDeploymentsError = BadRequestException | CommonErrors;
 /**
  * Resets a group's deployments.
@@ -5784,6 +5877,7 @@ export const resetDeployments: API.OperationMethod<
   retry: Retry,
   operationName: "ResetDeployments",
 }));
+
 export type StartBulkDeploymentError = BadRequestException | CommonErrors;
 /**
  * Deploys multiple groups in one operation. This action starts the bulk deployment of a specified set of group versions. Each group version deployment will be triggered with an adaptive rate that has a fixed upper limit. We recommend that you include an ''X-Amzn-Client-Token'' token in every ''StartBulkDeployment'' request. These requests are idempotent with respect to the token and the request parameters.
@@ -5801,6 +5895,7 @@ export const startBulkDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "StartBulkDeployment",
 }));
+
 export type StopBulkDeploymentError = BadRequestException | CommonErrors;
 /**
  * Stops the execution of a bulk deployment. This action returns a status of ''Stopping'' until the deployment is stopped. You cannot start a new bulk deployment while a previous deployment is in the ''Stopping'' state. This action doesn't rollback completed deployments or cancel pending deployments.
@@ -5818,6 +5913,7 @@ export const stopBulkDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "StopBulkDeployment",
 }));
+
 export type TagResourceError = BadRequestException | CommonErrors;
 /**
  * Adds tags to a Greengrass resource. Valid resources are 'Group', 'ConnectorDefinition', 'CoreDefinition', 'DeviceDefinition', 'FunctionDefinition', 'LoggerDefinition', 'SubscriptionDefinition', 'ResourceDefinition', and 'BulkDeployment'.
@@ -5835,6 +5931,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError = BadRequestException | CommonErrors;
 /**
  * Remove resource tags from a Greengrass Resource.
@@ -5852,6 +5949,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateConnectivityInfoError =
   | BadRequestException
   | InternalServerErrorException
@@ -5872,6 +5970,7 @@ export const updateConnectivityInfo: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConnectivityInfo",
 }));
+
 export type UpdateConnectorDefinitionError = BadRequestException | CommonErrors;
 /**
  * Updates a connector definition.
@@ -5889,6 +5988,7 @@ export const updateConnectorDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConnectorDefinition",
 }));
+
 export type UpdateCoreDefinitionError = BadRequestException | CommonErrors;
 /**
  * Updates a core definition.
@@ -5906,6 +6006,7 @@ export const updateCoreDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCoreDefinition",
 }));
+
 export type UpdateDeviceDefinitionError = BadRequestException | CommonErrors;
 /**
  * Updates a device definition.
@@ -5923,6 +6024,7 @@ export const updateDeviceDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDeviceDefinition",
 }));
+
 export type UpdateFunctionDefinitionError = BadRequestException | CommonErrors;
 /**
  * Updates a Lambda function definition.
@@ -5940,6 +6042,7 @@ export const updateFunctionDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateFunctionDefinition",
 }));
+
 export type UpdateGroupError = BadRequestException | CommonErrors;
 /**
  * Updates a group.
@@ -5957,6 +6060,7 @@ export const updateGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGroup",
 }));
+
 export type UpdateGroupCertificateConfigurationError =
   | BadRequestException
   | InternalServerErrorException
@@ -5977,6 +6081,7 @@ export const updateGroupCertificateConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGroupCertificateConfiguration",
 }));
+
 export type UpdateLoggerDefinitionError = BadRequestException | CommonErrors;
 /**
  * Updates a logger definition.
@@ -5994,6 +6099,7 @@ export const updateLoggerDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateLoggerDefinition",
 }));
+
 export type UpdateResourceDefinitionError = BadRequestException | CommonErrors;
 /**
  * Updates a resource definition.
@@ -6011,6 +6117,7 @@ export const updateResourceDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateResourceDefinition",
 }));
+
 export type UpdateSubscriptionDefinitionError =
   | BadRequestException
   | CommonErrors;
@@ -6030,6 +6137,7 @@ export const updateSubscriptionDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSubscriptionDefinition",
 }));
+
 export type UpdateThingRuntimeConfigurationError =
   | BadRequestException
   | InternalServerErrorException

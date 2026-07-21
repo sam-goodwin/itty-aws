@@ -72,28 +72,49 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
+  "ResourceUnavailableException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type RescoreExecutionPlanName = string;
 export type Description = string;
 export type RescoreCapacityUnit = number;
-export type TagKey = string;
-export type TagValue = string;
-export type ClientTokenName = string;
-export type RescoreExecutionPlanId = string;
-export type RescoreExecutionPlanArn = string;
-export type ErrorMessage = string;
-export type NextToken = string;
-export type MaxResultsIntegerForListRescoreExecutionPlansRequest = number;
-export type AmazonResourceName = string;
-export type SearchQuery = string;
-export type DocumentId = string;
-export type GroupId = string;
-export type DocumentTitle = string;
-export type DocumentBody = string;
-export type Tokens = string;
-export type RescoreId = string;
-
-//# Schemas
 export interface CapacityUnitsConfiguration {
   RescoreCapacityUnits: number;
 }
@@ -102,6 +123,8 @@ export const CapacityUnitsConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CapacityUnitsConfiguration",
 }) as any as S.Schema<CapacityUnitsConfiguration>;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -111,6 +134,7 @@ export const Tag = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
 export type TagList = Tag[];
 export const TagList = /*@__PURE__*/ S.Array(Tag);
+export type ClientTokenName = string;
 export interface CreateRescoreExecutionPlanRequest {
   Name: string;
   Description?: string;
@@ -138,6 +162,8 @@ export const CreateRescoreExecutionPlanRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRescoreExecutionPlanRequest",
 }) as any as S.Schema<CreateRescoreExecutionPlanRequest>;
+export type RescoreExecutionPlanId = string;
+export type RescoreExecutionPlanArn = string;
 export interface CreateRescoreExecutionPlanResponse {
   Id: string;
   Arn: string;
@@ -195,6 +221,8 @@ export type RescoreExecutionPlanStatus =
   | "FAILED"
   | (string & {});
 export const RescoreExecutionPlanStatus = /*@__PURE__*/ S.String;
+
+export type ErrorMessage = string;
 export interface DescribeRescoreExecutionPlanResponse {
   Id?: string;
   Arn?: string;
@@ -222,6 +250,8 @@ export const DescribeRescoreExecutionPlanResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeRescoreExecutionPlanResponse",
 }) as any as S.Schema<DescribeRescoreExecutionPlanResponse>;
+export type NextToken = string;
+export type MaxResultsIntegerForListRescoreExecutionPlansRequest = number;
 export interface ListRescoreExecutionPlansRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -277,6 +307,7 @@ export const ListRescoreExecutionPlansResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRescoreExecutionPlansResponse",
 }) as any as S.Schema<ListRescoreExecutionPlansResponse>;
+export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
@@ -295,6 +326,12 @@ export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListTagsForResourceResponse",
 }) as any as S.Schema<ListTagsForResourceResponse>;
+export type SearchQuery = string;
+export type DocumentId = string;
+export type GroupId = string;
+export type DocumentTitle = string;
+export type DocumentBody = string;
+export type Tokens = string;
 export type TitleTokensList = string[];
 export const TitleTokensList = /*@__PURE__*/ S.Array(S.String);
 export type BodyTokensList = string[];
@@ -347,6 +384,7 @@ export const RescoreRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({ identifier: "RescoreRequest" }) as any as S.Schema<RescoreRequest>;
+export type RescoreId = string;
 export interface RescoreResultItem {
   DocumentId?: string;
   Score?: number;
@@ -435,50 +473,6 @@ export const UpdateRescoreExecutionPlanResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRescoreExecutionPlanResponse",
 }) as any as S.Schema<UpdateRescoreExecutionPlanResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ResourceUnavailableException extends S.TaggedErrorClass<ResourceUnavailableException>()(
-  "ResourceUnavailableException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateRescoreExecutionPlanError =
   | AccessDeniedException
   | ConflictException
@@ -520,6 +514,7 @@ export const createRescoreExecutionPlan: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRescoreExecutionPlan",
 }));
+
 export type DeleteRescoreExecutionPlanError =
   | AccessDeniedException
   | ConflictException
@@ -553,6 +548,7 @@ export const deleteRescoreExecutionPlan: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRescoreExecutionPlan",
 }));
+
 export type DescribeRescoreExecutionPlanError =
   | AccessDeniedException
   | InternalServerException
@@ -584,6 +580,7 @@ export const describeRescoreExecutionPlan: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeRescoreExecutionPlan",
 }));
+
 export type ListRescoreExecutionPlansError =
   | AccessDeniedException
   | InternalServerException
@@ -633,6 +630,7 @@ export const listRescoreExecutionPlans: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -664,6 +662,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RescoreError =
   | AccessDeniedException
   | ConflictException
@@ -698,6 +697,7 @@ export const rescore: API.OperationMethod<
   retry: Retry,
   operationName: "Rescore",
 }));
+
 export type TagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -731,6 +731,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | AccessDeniedException
   | InternalServerException
@@ -763,6 +764,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateRescoreExecutionPlanError =
   | AccessDeniedException
   | ConflictException

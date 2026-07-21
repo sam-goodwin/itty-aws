@@ -88,57 +88,48 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
+  "InternalServiceErrorException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InternalServiceError", httpResponseCode: 500 }),
+    T.HttpError(500),
+  ),
+).pipe(C.withServerError) {}
+export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
+  "InvalidRequestException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidRequest", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
+  "InvalidStateException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "InvalidState", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ResourceNotfound", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.optional(S.String) },
+  T.all(
+    T.AwsQueryError({ code: "ServiceQuotaExceeded", httpResponseCode: 402 }),
+    T.HttpError(402),
+  ),
+).pipe(C.withQuotaError) {}
 export type AppRunnerResourceArn = string;
 export type DomainName = string;
-export type ErrorMessage = string;
-export type AutoScalingConfigurationName = string;
-export type ASConfigMaxConcurrency = number;
-export type ASConfigMinSize = number;
-export type ASConfigMaxSize = number;
-export type TagKey = string;
-export type TagValue = string;
-export type AutoScalingConfigurationRevision = number;
-export type Latest = boolean;
-export type MaxConcurrency = number;
-export type MinSize = number;
-export type MaxSize = number;
-export type HasAssociatedService = boolean;
-export type IsDefault = boolean;
-export type ConnectionName = string;
-export type ObservabilityConfigurationName = string;
-export type ServiceName = string;
-export type BuildCommand = string | redacted.Redacted<string>;
-export type StartCommand = string | redacted.Redacted<string>;
-export type RuntimeEnvironmentVariablesKey = string | redacted.Redacted<string>;
-export type RuntimeEnvironmentVariablesValue =
-  | string
-  | redacted.Redacted<string>;
-export type RuntimeEnvironmentSecretsName = string | redacted.Redacted<string>;
-export type RuntimeEnvironmentSecretsValue = string | redacted.Redacted<string>;
-export type SourceDirectory = string;
-export type ImageIdentifier = string;
-export type RoleArn = string;
-export type Cpu = string;
-export type Memory = string;
-export type KmsKeyArn = string;
-export type HealthCheckPath = string;
-export type HealthCheckInterval = number;
-export type HealthCheckTimeout = number;
-export type HealthCheckHealthyThreshold = number;
-export type HealthCheckUnhealthyThreshold = number;
-export type ServiceId = string;
-export type UUID = string;
-export type VpcConnectorName = string;
-export type VpcIngressConnectionName = string;
-export type CustomerAccountId = string;
-export type DescribeCustomDomainsMaxResults = number;
-export type MaxResults = number;
-export type NextToken = string;
-export type ListOperationsMaxResults = number;
-export type ServiceMaxResults = number;
-
-//# Schemas
 export interface AssociateCustomDomainRequest {
   ServiceArn: string;
   DomainName: string;
@@ -169,6 +160,7 @@ export type CertificateValidationRecordStatus =
   | "FAILED"
   | (string & {});
 export const CertificateValidationRecordStatus = /*@__PURE__*/ S.String;
+
 export interface CertificateValidationRecord {
   Name?: string;
   Type?: string;
@@ -199,6 +191,7 @@ export type CustomDomainAssociationStatus =
   | "BINDING_CERTIFICATE"
   | (string & {});
 export const CustomDomainAssociationStatus = /*@__PURE__*/ S.String;
+
 export interface CustomDomain {
   DomainName: string;
   EnableWWWSubdomain: boolean;
@@ -243,6 +236,12 @@ export const AssociateCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateCustomDomainResponse",
 }) as any as S.Schema<AssociateCustomDomainResponse>;
+export type AutoScalingConfigurationName = string;
+export type ASConfigMaxConcurrency = number;
+export type ASConfigMinSize = number;
+export type ASConfigMaxSize = number;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -281,6 +280,8 @@ export const CreateAutoScalingConfigurationRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateAutoScalingConfigurationRequest",
 }) as any as S.Schema<CreateAutoScalingConfigurationRequest>;
+export type AutoScalingConfigurationRevision = number;
+export type Latest = boolean;
 export type AutoScalingConfigurationStatus =
   | "ACTIVE"
   | "INACTIVE"
@@ -288,6 +289,12 @@ export type AutoScalingConfigurationStatus =
   | "inactive"
   | (string & {});
 export const AutoScalingConfigurationStatus = /*@__PURE__*/ S.String;
+
+export type MaxConcurrency = number;
+export type MinSize = number;
+export type MaxSize = number;
+export type HasAssociatedService = boolean;
+export type IsDefault = boolean;
 export interface AutoScalingConfiguration {
   AutoScalingConfigurationArn?: string;
   AutoScalingConfigurationName?: string;
@@ -329,8 +336,10 @@ export const CreateAutoScalingConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateAutoScalingConfigurationResponse",
 }) as any as S.Schema<CreateAutoScalingConfigurationResponse>;
+export type ConnectionName = string;
 export type ProviderType = "GITHUB" | "BITBUCKET" | (string & {});
 export const ProviderType = /*@__PURE__*/ S.String;
+
 export interface CreateConnectionRequest {
   ConnectionName: string;
   ProviderType: ProviderType;
@@ -362,6 +371,7 @@ export type ConnectionStatus =
   | "DELETED"
   | (string & {});
 export const ConnectionStatus = /*@__PURE__*/ S.String;
+
 export interface Connection {
   ConnectionName?: string;
   ConnectionArn?: string;
@@ -386,8 +396,10 @@ export const CreateConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConnectionResponse",
 }) as any as S.Schema<CreateConnectionResponse>;
+export type ObservabilityConfigurationName = string;
 export type TracingVendor = "AWSXRAY" | (string & {});
 export const TracingVendor = /*@__PURE__*/ S.String;
+
 export interface TraceConfiguration {
   Vendor: TracingVendor;
 }
@@ -426,6 +438,7 @@ export type ObservabilityConfigurationStatus =
   | "INACTIVE"
   | (string & {});
 export const ObservabilityConfigurationStatus = /*@__PURE__*/ S.String;
+
 export interface ObservabilityConfiguration {
   ObservabilityConfigurationArn?: string;
   ObservabilityConfigurationName?: string;
@@ -461,8 +474,10 @@ export const CreateObservabilityConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateObservabilityConfigurationResponse",
 }) as any as S.Schema<CreateObservabilityConfigurationResponse>;
+export type ServiceName = string;
 export type SourceCodeVersionType = "BRANCH" | (string & {});
 export const SourceCodeVersionType = /*@__PURE__*/ S.String;
+
 export interface SourceCodeVersion {
   Type: SourceCodeVersionType;
   Value: string;
@@ -474,6 +489,7 @@ export const SourceCodeVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourceCodeVersion>;
 export type ConfigurationSource = "REPOSITORY" | "API" | (string & {});
 export const ConfigurationSource = /*@__PURE__*/ S.String;
+
 export type Runtime =
   | "PYTHON_3"
   | "NODEJS_12"
@@ -490,6 +506,13 @@ export type Runtime =
   | "NODEJS_22"
   | (string & {});
 export const Runtime = /*@__PURE__*/ S.String;
+
+export type BuildCommand = string | redacted.Redacted<string>;
+export type StartCommand = string | redacted.Redacted<string>;
+export type RuntimeEnvironmentVariablesKey = string | redacted.Redacted<string>;
+export type RuntimeEnvironmentVariablesValue =
+  | string
+  | redacted.Redacted<string>;
 export type RuntimeEnvironmentVariables = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -497,6 +520,8 @@ export const RuntimeEnvironmentVariables = /*@__PURE__*/ S.Record(
   S.String,
   SensitiveString.pipe(S.optional),
 );
+export type RuntimeEnvironmentSecretsName = string | redacted.Redacted<string>;
+export type RuntimeEnvironmentSecretsValue = string | redacted.Redacted<string>;
 export type RuntimeEnvironmentSecrets = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -540,6 +565,7 @@ export const CodeConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CodeConfiguration",
 }) as any as S.Schema<CodeConfiguration>;
+export type SourceDirectory = string;
 export interface CodeRepository {
   RepositoryUrl: string;
   SourceCodeVersion: SourceCodeVersion;
@@ -554,6 +580,7 @@ export const CodeRepository = /*@__PURE__*/ S.suspend(() =>
     SourceDirectory: S.optional(S.String),
   }),
 ).annotate({ identifier: "CodeRepository" }) as any as S.Schema<CodeRepository>;
+export type ImageIdentifier = string;
 export interface ImageConfiguration {
   RuntimeEnvironmentVariables?: {
     [key: string]: string | redacted.Redacted<string> | undefined;
@@ -576,6 +603,7 @@ export const ImageConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ImageConfiguration>;
 export type ImageRepositoryType = "ECR" | "ECR_PUBLIC" | (string & {});
 export const ImageRepositoryType = /*@__PURE__*/ S.String;
+
 export interface ImageRepository {
   ImageIdentifier: string;
   ImageConfiguration?: ImageConfiguration;
@@ -590,6 +618,7 @@ export const ImageRepository = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImageRepository",
 }) as any as S.Schema<ImageRepository>;
+export type RoleArn = string;
 export interface AuthenticationConfiguration {
   ConnectionArn?: string;
   AccessRoleArn?: string;
@@ -618,6 +647,8 @@ export const SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SourceConfiguration",
 }) as any as S.Schema<SourceConfiguration>;
+export type Cpu = string;
+export type Memory = string;
 export interface InstanceConfiguration {
   Cpu?: string;
   Memory?: string;
@@ -632,6 +663,7 @@ export const InstanceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InstanceConfiguration",
 }) as any as S.Schema<InstanceConfiguration>;
+export type KmsKeyArn = string;
 export interface EncryptionConfiguration {
   KmsKey: string;
 }
@@ -642,6 +674,12 @@ export const EncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionConfiguration>;
 export type HealthCheckProtocol = "TCP" | "HTTP" | (string & {});
 export const HealthCheckProtocol = /*@__PURE__*/ S.String;
+
+export type HealthCheckPath = string;
+export type HealthCheckInterval = number;
+export type HealthCheckTimeout = number;
+export type HealthCheckHealthyThreshold = number;
+export type HealthCheckUnhealthyThreshold = number;
 export interface HealthCheckConfiguration {
   Protocol?: HealthCheckProtocol;
   Path?: string;
@@ -664,6 +702,7 @@ export const HealthCheckConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthCheckConfiguration>;
 export type EgressType = "DEFAULT" | "VPC" | (string & {});
 export const EgressType = /*@__PURE__*/ S.String;
+
 export interface EgressConfiguration {
   EgressType?: EgressType;
   VpcConnectorArn?: string;
@@ -686,6 +725,7 @@ export const IngressConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<IngressConfiguration>;
 export type IpAddressType = "IPV4" | "DUAL_STACK" | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
+
 export interface NetworkConfiguration {
   EgressConfiguration?: EgressConfiguration;
   IngressConfiguration?: IngressConfiguration;
@@ -748,6 +788,7 @@ export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateServiceRequest",
 }) as any as S.Schema<CreateServiceRequest>;
+export type ServiceId = string;
 export type ServiceStatus =
   | "CREATE_FAILED"
   | "RUNNING"
@@ -757,6 +798,7 @@ export type ServiceStatus =
   | "OPERATION_IN_PROGRESS"
   | (string & {});
 export const ServiceStatus = /*@__PURE__*/ S.String;
+
 export interface AutoScalingConfigurationSummary {
   AutoScalingConfigurationArn?: string;
   AutoScalingConfigurationName?: string;
@@ -815,6 +857,7 @@ export const Service = /*@__PURE__*/ S.suspend(() =>
     ObservabilityConfiguration: S.optional(ServiceObservabilityConfiguration),
   }),
 ).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
+export type UUID = string;
 export interface CreateServiceResponse {
   Service: Service;
   OperationId: string;
@@ -824,6 +867,7 @@ export const CreateServiceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateServiceResponse",
 }) as any as S.Schema<CreateServiceResponse>;
+export type VpcConnectorName = string;
 export type StringList = string[];
 export const StringList = /*@__PURE__*/ S.Array(S.String);
 export interface CreateVpcConnectorRequest {
@@ -859,6 +903,7 @@ export type VpcConnectorStatus =
   | "inactive"
   | (string & {});
 export const VpcConnectorStatus = /*@__PURE__*/ S.String;
+
 export interface VpcConnector {
   VpcConnectorName?: string;
   VpcConnectorArn?: string;
@@ -889,6 +934,7 @@ export const CreateVpcConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVpcConnectorResponse",
 }) as any as S.Schema<CreateVpcConnectorResponse>;
+export type VpcIngressConnectionName = string;
 export interface IngressVpcConfiguration {
   VpcId?: string;
   VpcEndpointId?: string;
@@ -938,6 +984,8 @@ export type VpcIngressConnectionStatus =
   | "DELETED"
   | (string & {});
 export const VpcIngressConnectionStatus = /*@__PURE__*/ S.String;
+
+export type CustomerAccountId = string;
 export interface VpcIngressConnection {
   VpcIngressConnectionArn?: string;
   VpcIngressConnectionName?: string;
@@ -1167,6 +1215,7 @@ export const DescribeAutoScalingConfigurationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DescribeAutoScalingConfigurationResponse",
 }) as any as S.Schema<DescribeAutoScalingConfigurationResponse>;
+export type DescribeCustomDomainsMaxResults = number;
 export interface DescribeCustomDomainsRequest {
   ServiceArn: string;
   NextToken?: string;
@@ -1354,6 +1403,8 @@ export const DisassociateCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisassociateCustomDomainResponse",
 }) as any as S.Schema<DisassociateCustomDomainResponse>;
+export type MaxResults = number;
+export type NextToken = string;
 export interface ListAutoScalingConfigurationsRequest {
   AutoScalingConfigurationName?: string;
   LatestOnly?: boolean;
@@ -1515,6 +1566,7 @@ export const ListObservabilityConfigurationsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListObservabilityConfigurationsResponse",
 }) as any as S.Schema<ListObservabilityConfigurationsResponse>;
+export type ListOperationsMaxResults = number;
 export interface ListOperationsRequest {
   ServiceArn: string;
   NextToken?: string;
@@ -1548,6 +1600,7 @@ export type OperationType =
   | "UPDATE_SERVICE"
   | (string & {});
 export const OperationType = /*@__PURE__*/ S.String;
+
 export type OperationStatus =
   | "PENDING"
   | "IN_PROGRESS"
@@ -1558,6 +1611,7 @@ export type OperationStatus =
   | "ROLLBACK_SUCCEEDED"
   | (string & {});
 export const OperationStatus = /*@__PURE__*/ S.String;
+
 export interface OperationSummary {
   Id?: string;
   Type?: OperationType;
@@ -1594,6 +1648,7 @@ export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListOperationsResponse",
 }) as any as S.Schema<ListOperationsResponse>;
+export type ServiceMaxResults = number;
 export interface ListServicesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2047,50 +2102,7 @@ export const UpdateVpcIngressConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateVpcIngressConnectionResponse",
 }) as any as S.Schema<UpdateVpcIngressConnectionResponse>;
-
-//# Errors
-export class InternalServiceErrorException extends S.TaggedErrorClass<InternalServiceErrorException>()(
-  "InternalServiceErrorException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InternalServiceError", httpResponseCode: 500 }),
-    T.HttpError(500),
-  ),
-).pipe(C.withServerError) {}
-export class InvalidRequestException extends S.TaggedErrorClass<InvalidRequestException>()(
-  "InvalidRequestException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidRequest", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class InvalidStateException extends S.TaggedErrorClass<InvalidStateException>()(
-  "InvalidStateException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "InvalidState", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ServiceQuotaExceeded", httpResponseCode: 402 }),
-    T.HttpError(402),
-  ),
-).pipe(C.withQuotaError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.all(
-    T.AwsQueryError({ code: "ResourceNotfound", httpResponseCode: 400 }),
-    T.HttpError(400),
-  ),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type AssociateCustomDomainError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2121,6 +2133,7 @@ export const associateCustomDomain: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateCustomDomain",
 }));
+
 export type CreateAutoScalingConfigurationError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2157,6 +2170,7 @@ export const createAutoScalingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAutoScalingConfiguration",
 }));
+
 export type CreateConnectionError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2187,6 +2201,7 @@ export const createConnection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConnection",
 }));
+
 export type CreateObservabilityConfigurationError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2222,6 +2237,7 @@ export const createObservabilityConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateObservabilityConfiguration",
 }));
+
 export type CreateServiceError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2249,6 +2265,7 @@ export const createService: API.OperationMethod<
   retry: Retry,
   operationName: "CreateService",
 }));
+
 export type CreateVpcConnectorError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2275,6 +2292,7 @@ export const createVpcConnector: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpcConnector",
 }));
+
 export type CreateVpcIngressConnectionError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2302,6 +2320,7 @@ export const createVpcIngressConnection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpcIngressConnection",
 }));
+
 export type DeleteAutoScalingConfigurationError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2329,6 +2348,7 @@ export const deleteAutoScalingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAutoScalingConfiguration",
 }));
+
 export type DeleteConnectionError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2355,6 +2375,7 @@ export const deleteConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConnection",
 }));
+
 export type DeleteObservabilityConfigurationError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2381,6 +2402,7 @@ export const deleteObservabilityConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteObservabilityConfiguration",
 }));
+
 export type DeleteServiceError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2413,6 +2435,7 @@ export const deleteService: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteService",
 }));
+
 export type DeleteVpcConnectorError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2439,6 +2462,7 @@ export const deleteVpcConnector: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpcConnector",
 }));
+
 export type DeleteVpcIngressConnectionError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2474,6 +2498,7 @@ export const deleteVpcIngressConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpcIngressConnection",
 }));
+
 export type DescribeAutoScalingConfigurationError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2499,6 +2524,7 @@ export const describeAutoScalingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAutoScalingConfiguration",
 }));
+
 export type DescribeCustomDomainsError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2544,6 +2570,7 @@ export const describeCustomDomains: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeObservabilityConfigurationError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2569,6 +2596,7 @@ export const describeObservabilityConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeObservabilityConfiguration",
 }));
+
 export type DescribeServiceError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2594,6 +2622,7 @@ export const describeService: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeService",
 }));
+
 export type DescribeVpcConnectorError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2619,6 +2648,7 @@ export const describeVpcConnector: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpcConnector",
 }));
+
 export type DescribeVpcIngressConnectionError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2644,6 +2674,7 @@ export const describeVpcIngressConnection: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeVpcIngressConnection",
 }));
+
 export type DisassociateCustomDomainError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2675,6 +2706,7 @@ export const disassociateCustomDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateCustomDomain",
 }));
+
 export type ListAutoScalingConfigurationsError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2720,6 +2752,7 @@ export const listAutoScalingConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListConnectionsError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2760,6 +2793,7 @@ export const listConnections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListObservabilityConfigurationsError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2805,6 +2839,7 @@ export const listObservabilityConfigurations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOperationsError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2853,6 +2888,7 @@ export const listOperations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListServicesError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2893,6 +2929,7 @@ export const listServices: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListServicesForAutoScalingConfigurationError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2938,6 +2975,7 @@ export const listServicesForAutoScalingConfiguration: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -2965,6 +3003,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListVpcConnectorsError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -3005,6 +3044,7 @@ export const listVpcConnectors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListVpcIngressConnectionsError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -3045,6 +3085,7 @@ export const listVpcIngressConnections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PauseServiceError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -3076,6 +3117,7 @@ export const pauseService: API.OperationMethod<
   retry: Retry,
   operationName: "PauseService",
 }));
+
 export type ResumeServiceError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -3106,6 +3148,7 @@ export const resumeService: API.OperationMethod<
   retry: Retry,
   operationName: "ResumeService",
 }));
+
 export type StartDeploymentError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -3138,6 +3181,7 @@ export const startDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "StartDeployment",
 }));
+
 export type TagResourceError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -3165,6 +3209,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -3192,6 +3237,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateDefaultAutoScalingConfigurationError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -3218,6 +3264,7 @@ export const updateDefaultAutoScalingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDefaultAutoScalingConfiguration",
 }));
+
 export type UpdateServiceError =
   | InternalServiceErrorException
   | InvalidRequestException
@@ -3252,6 +3299,7 @@ export const updateService: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateService",
 }));
+
 export type UpdateVpcIngressConnectionError =
   | InternalServiceErrorException
   | InvalidRequestException

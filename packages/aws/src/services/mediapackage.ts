@@ -87,11 +87,36 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type SensitiveString = string | redacted.Redacted<string>;
-export type MaxResults = number;
-
-//# Schemas
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  { Message: S.optional(S.String) },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
+  "UnprocessableEntityException",
+  { Message: S.optional(S.String) },
+  T.HttpError(422),
+).pipe(C.withBadRequestError) {}
 export interface EgressAccessLogs {
   LogGroupName?: string;
 }
@@ -142,6 +167,7 @@ export const ConfigureLogsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfigureLogsRequest",
 }) as any as S.Schema<ConfigureLogsRequest>;
+export type SensitiveString = string | redacted.Redacted<string>;
 export interface IngestEndpoint {
   Id?: string;
   Password?: string | redacted.Redacted<string>;
@@ -327,6 +353,7 @@ export const CreateHarvestJobRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateHarvestJobRequest>;
 export type Status = "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | (string & {});
 export const Status = /*@__PURE__*/ S.String;
+
 export interface CreateHarvestJobResponse {
   Arn?: string;
   ChannelId?: string;
@@ -386,6 +413,7 @@ export const Authorization = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Authorization" }) as any as S.Schema<Authorization>;
 export type CmafEncryptionMethod = "SAMPLE_AES" | "AES_CTR" | (string & {});
 export const CmafEncryptionMethod = /*@__PURE__*/ S.String;
+
 export type PresetSpeke20Audio =
   | "PRESET-AUDIO-1"
   | "PRESET-AUDIO-2"
@@ -394,6 +422,7 @@ export type PresetSpeke20Audio =
   | "UNENCRYPTED"
   | (string & {});
 export const PresetSpeke20Audio = /*@__PURE__*/ S.String;
+
 export type PresetSpeke20Video =
   | "PRESET-VIDEO-1"
   | "PRESET-VIDEO-2"
@@ -407,6 +436,7 @@ export type PresetSpeke20Video =
   | "UNENCRYPTED"
   | (string & {});
 export const PresetSpeke20Video = /*@__PURE__*/ S.String;
+
 export interface EncryptionContractConfiguration {
   PresetSpeke20Audio?: PresetSpeke20Audio;
   PresetSpeke20Video?: PresetSpeke20Video;
@@ -485,6 +515,7 @@ export type AdMarkers =
   | "DATERANGE"
   | (string & {});
 export const AdMarkers = /*@__PURE__*/ S.String;
+
 export type __AdTriggersElement =
   | "SPLICE_INSERT"
   | "BREAK"
@@ -496,6 +527,7 @@ export type __AdTriggersElement =
   | "DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
   | (string & {});
 export const __AdTriggersElement = /*@__PURE__*/ S.String;
+
 export type AdTriggers = __AdTriggersElement[];
 export const AdTriggers = /*@__PURE__*/ S.Array(__AdTriggersElement);
 export type AdsOnDeliveryRestrictions =
@@ -505,8 +537,10 @@ export type AdsOnDeliveryRestrictions =
   | "BOTH"
   | (string & {});
 export const AdsOnDeliveryRestrictions = /*@__PURE__*/ S.String;
+
 export type PlaylistType = "NONE" | "EVENT" | "VOD" | (string & {});
 export const PlaylistType = /*@__PURE__*/ S.String;
+
 export interface HlsManifestCreateOrUpdateParameters {
   AdMarkers?: AdMarkers;
   AdTriggers?: __AdTriggersElement[];
@@ -555,6 +589,7 @@ export type StreamOrder =
   | "VIDEO_BITRATE_DESCENDING"
   | (string & {});
 export const StreamOrder = /*@__PURE__*/ S.String;
+
 export interface StreamSelection {
   MaxVideoBitsPerSecond?: number;
   MinVideoBitsPerSecond?: number;
@@ -622,8 +657,10 @@ export type ManifestLayout =
   | "DRM_TOP_LEVEL_COMPACT"
   | (string & {});
 export const ManifestLayout = /*@__PURE__*/ S.String;
+
 export type __PeriodTriggersElement = "ADS" | (string & {});
 export const __PeriodTriggersElement = /*@__PURE__*/ S.String;
+
 export type __listOf__PeriodTriggersElement = __PeriodTriggersElement[];
 export const __listOf__PeriodTriggersElement = /*@__PURE__*/ S.Array(
   __PeriodTriggersElement,
@@ -635,12 +672,14 @@ export type Profile =
   | "DVB_DASH_2014"
   | (string & {});
 export const Profile = /*@__PURE__*/ S.String;
+
 export type SegmentTemplateFormat =
   | "NUMBER_WITH_TIMELINE"
   | "TIME_WITH_TIMELINE"
   | "NUMBER_WITH_DURATION"
   | (string & {});
 export const SegmentTemplateFormat = /*@__PURE__*/ S.String;
+
 export type UtcTiming =
   | "NONE"
   | "HTTP-HEAD"
@@ -648,6 +687,7 @@ export type UtcTiming =
   | "HTTP-XSDATE"
   | (string & {});
 export const UtcTiming = /*@__PURE__*/ S.String;
+
 export interface DashPackage {
   AdTriggers?: __AdTriggersElement[];
   AdsOnDeliveryRestrictions?: AdsOnDeliveryRestrictions;
@@ -707,6 +747,7 @@ export const DashPackage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DashPackage" }) as any as S.Schema<DashPackage>;
 export type EncryptionMethod = "AES_128" | "SAMPLE_AES" | (string & {});
 export const EncryptionMethod = /*@__PURE__*/ S.String;
+
 export interface HlsEncryption {
   ConstantInitializationVector?: string;
   EncryptionMethod?: EncryptionMethod;
@@ -807,6 +848,7 @@ export const MssPackage = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "MssPackage" }) as any as S.Schema<MssPackage>;
 export type Origination = "ALLOW" | "DENY" | (string & {});
 export const Origination = /*@__PURE__*/ S.String;
+
 export interface CreateOriginEndpointRequest {
   Authorization?: Authorization;
   ChannelId?: string;
@@ -1346,6 +1388,7 @@ export const DescribeOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeOriginEndpointResponse",
 }) as any as S.Schema<DescribeOriginEndpointResponse>;
+export type MaxResults = number;
 export interface ListChannelsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -2095,40 +2138,6 @@ export const UpdateOriginEndpointResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateOriginEndpointResponse",
 }) as any as S.Schema<UpdateOriginEndpointResponse>;
-
-//# Errors
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
-  "UnprocessableEntityException",
-  { Message: S.optional(S.String) },
-  T.HttpError(422),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type ConfigureLogsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2160,6 +2169,7 @@ export const configureLogs: API.OperationMethod<
   retry: Retry,
   operationName: "ConfigureLogs",
 }));
+
 export type CreateChannelError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2191,6 +2201,7 @@ export const createChannel: API.OperationMethod<
   retry: Retry,
   operationName: "CreateChannel",
 }));
+
 export type CreateHarvestJobError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2222,6 +2233,7 @@ export const createHarvestJob: API.OperationMethod<
   retry: Retry,
   operationName: "CreateHarvestJob",
 }));
+
 export type CreateOriginEndpointError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2253,6 +2265,7 @@ export const createOriginEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateOriginEndpoint",
 }));
+
 export type DeleteChannelError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2284,6 +2297,7 @@ export const deleteChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteChannel",
 }));
+
 export type DeleteOriginEndpointError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2315,6 +2329,7 @@ export const deleteOriginEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteOriginEndpoint",
 }));
+
 export type DescribeChannelError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2346,6 +2361,7 @@ export const describeChannel: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeChannel",
 }));
+
 export type DescribeHarvestJobError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2377,6 +2393,7 @@ export const describeHarvestJob: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeHarvestJob",
 }));
+
 export type DescribeOriginEndpointError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2408,6 +2425,7 @@ export const describeOriginEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeOriginEndpoint",
 }));
+
 export type ListChannelsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2460,6 +2478,7 @@ export const listChannels: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListHarvestJobsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2512,6 +2531,7 @@ export const listHarvestJobs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListOriginEndpointsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2564,6 +2584,7 @@ export const listOriginEndpoints: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourceError = CommonErrors;
 /**
  *
@@ -2581,6 +2602,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type RotateChannelCredentialsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2612,6 +2634,7 @@ export const rotateChannelCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "RotateChannelCredentials",
 }));
+
 export type RotateIngestEndpointCredentialsError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2643,6 +2666,7 @@ export const rotateIngestEndpointCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "RotateIngestEndpointCredentials",
 }));
+
 export type TagResourceError = CommonErrors;
 /**
  *
@@ -2660,6 +2684,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError = CommonErrors;
 /**
  *
@@ -2677,6 +2702,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateChannelError =
   | ForbiddenException
   | InternalServerErrorException
@@ -2708,6 +2734,7 @@ export const updateChannel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateChannel",
 }));
+
 export type UpdateOriginEndpointError =
   | ForbiddenException
   | InternalServerErrorException

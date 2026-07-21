@@ -260,110 +260,338 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class CidrBlockInUseException extends S.TaggedErrorClass<CidrBlockInUseException>()(
+  "CidrBlockInUseException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class CidrCollectionAlreadyExistsException extends S.TaggedErrorClass<CidrCollectionAlreadyExistsException>()(
+  "CidrCollectionAlreadyExistsException",
+  { Message: S.optional(S.String) },
+).pipe(C.withAlreadyExistsError) {}
+export class CidrCollectionInUseException extends S.TaggedErrorClass<CidrCollectionInUseException>()(
+  "CidrCollectionInUseException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class CidrCollectionVersionMismatchException extends S.TaggedErrorClass<CidrCollectionVersionMismatchException>()(
+  "CidrCollectionVersionMismatchException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ConcurrentModification extends S.TaggedErrorClass<ConcurrentModification>()(
+  "ConcurrentModification",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictingDomainExists extends S.TaggedErrorClass<ConflictingDomainExists>()(
+  "ConflictingDomainExists",
+  { message: S.optional(S.String) },
+) {}
+export class ConflictingTypes extends S.TaggedErrorClass<ConflictingTypes>()(
+  "ConflictingTypes",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class DelegationSetAlreadyCreated extends S.TaggedErrorClass<DelegationSetAlreadyCreated>()(
+  "DelegationSetAlreadyCreated",
+  { message: S.optional(S.String) },
+) {}
+export class DelegationSetAlreadyReusable extends S.TaggedErrorClass<DelegationSetAlreadyReusable>()(
+  "DelegationSetAlreadyReusable",
+  { message: S.optional(S.String) },
+) {}
+export class DelegationSetInUse extends S.TaggedErrorClass<DelegationSetInUse>()(
+  "DelegationSetInUse",
+  { message: S.optional(S.String) },
+).pipe(C.withDependencyViolationError) {}
+export class DelegationSetNotAvailable extends S.TaggedErrorClass<DelegationSetNotAvailable>()(
+  "DelegationSetNotAvailable",
+  { message: S.optional(S.String) },
+) {}
+export class DelegationSetNotReusable extends S.TaggedErrorClass<DelegationSetNotReusable>()(
+  "DelegationSetNotReusable",
+  { message: S.optional(S.String) },
+) {}
+export class DNSSECNotFound extends S.TaggedErrorClass<DNSSECNotFound>()(
+  "DNSSECNotFound",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class HealthCheckAlreadyExists extends S.TaggedErrorClass<HealthCheckAlreadyExists>()(
+  "HealthCheckAlreadyExists",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class HealthCheckInUse extends S.TaggedErrorClass<HealthCheckInUse>()(
+  "HealthCheckInUse",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
+export class HealthCheckVersionMismatch extends S.TaggedErrorClass<HealthCheckVersionMismatch>()(
+  "HealthCheckVersionMismatch",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class HostedZoneAlreadyExists extends S.TaggedErrorClass<HostedZoneAlreadyExists>()(
+  "HostedZoneAlreadyExists",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class HostedZoneNotEmpty extends S.TaggedErrorClass<HostedZoneNotEmpty>()(
+  "HostedZoneNotEmpty",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class HostedZoneNotFound extends S.TaggedErrorClass<HostedZoneNotFound>()(
+  "HostedZoneNotFound",
+  { message: S.optional(S.String) },
+) {}
+export class HostedZoneNotPrivate extends S.TaggedErrorClass<HostedZoneNotPrivate>()(
+  "HostedZoneNotPrivate",
+  { message: S.optional(S.String) },
+) {}
+export class HostedZonePartiallyDelegated extends S.TaggedErrorClass<HostedZonePartiallyDelegated>()(
+  "HostedZonePartiallyDelegated",
+  { message: S.optional(S.String) },
+) {}
+export class IncompatibleVersion extends S.TaggedErrorClass<IncompatibleVersion>()(
+  "IncompatibleVersion",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InsufficientCloudWatchLogsResourcePolicy extends S.TaggedErrorClass<InsufficientCloudWatchLogsResourcePolicy>()(
+  "InsufficientCloudWatchLogsResourcePolicy",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidArgument extends S.TaggedErrorClass<InvalidArgument>()(
+  "InvalidArgument",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidChangeBatch extends S.TaggedErrorClass<InvalidChangeBatch>()(
+  "InvalidChangeBatch",
+  {
+    messages: S.optional(
+      S.suspend(() => ErrorMessages).annotate({ identifier: "ErrorMessages" }),
+    ),
+    message: S.optional(S.String),
+  },
+) {}
+export class InvalidDomainName extends S.TaggedErrorClass<InvalidDomainName>()(
+  "InvalidDomainName",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidInput extends S.TaggedErrorClass<InvalidInput>()(
+  "InvalidInput",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidKeySigningKeyName extends S.TaggedErrorClass<InvalidKeySigningKeyName>()(
+  "InvalidKeySigningKeyName",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidKeySigningKeyStatus extends S.TaggedErrorClass<InvalidKeySigningKeyStatus>()(
+  "InvalidKeySigningKeyStatus",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidKMSArn extends S.TaggedErrorClass<InvalidKMSArn>()(
+  "InvalidKMSArn",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidPaginationToken extends S.TaggedErrorClass<InvalidPaginationToken>()(
+  "InvalidPaginationToken",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidSigningStatus extends S.TaggedErrorClass<InvalidSigningStatus>()(
+  "InvalidSigningStatus",
+  { message: S.optional(S.String) },
+) {}
+export class InvalidTrafficPolicyDocument extends S.TaggedErrorClass<InvalidTrafficPolicyDocument>()(
+  "InvalidTrafficPolicyDocument",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InvalidVPCId extends S.TaggedErrorClass<InvalidVPCId>()(
+  "InvalidVPCId",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class KeySigningKeyAlreadyExists extends S.TaggedErrorClass<KeySigningKeyAlreadyExists>()(
+  "KeySigningKeyAlreadyExists",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class KeySigningKeyInParentDSRecord extends S.TaggedErrorClass<KeySigningKeyInParentDSRecord>()(
+  "KeySigningKeyInParentDSRecord",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class KeySigningKeyInUse extends S.TaggedErrorClass<KeySigningKeyInUse>()(
+  "KeySigningKeyInUse",
+  { message: S.optional(S.String) },
+).pipe(C.withDependencyViolationError) {}
+export class KeySigningKeyWithActiveStatusNotFound extends S.TaggedErrorClass<KeySigningKeyWithActiveStatusNotFound>()(
+  "KeySigningKeyWithActiveStatusNotFound",
+  { message: S.optional(S.String) },
+) {}
+export class LastVPCAssociation extends S.TaggedErrorClass<LastVPCAssociation>()(
+  "LastVPCAssociation",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class LimitsExceeded extends S.TaggedErrorClass<LimitsExceeded>()(
+  "LimitsExceeded",
+  { message: S.optional(S.String) },
+) {}
+export class NoSuchChange extends S.TaggedErrorClass<NoSuchChange>()(
+  "NoSuchChange",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NoSuchCidrCollectionException extends S.TaggedErrorClass<NoSuchCidrCollectionException>()(
+  "NoSuchCidrCollectionException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NoSuchCidrLocationException extends S.TaggedErrorClass<NoSuchCidrLocationException>()(
+  "NoSuchCidrLocationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NoSuchCloudWatchLogsLogGroup extends S.TaggedErrorClass<NoSuchCloudWatchLogsLogGroup>()(
+  "NoSuchCloudWatchLogsLogGroup",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NoSuchDelegationSet extends S.TaggedErrorClass<NoSuchDelegationSet>()(
+  "NoSuchDelegationSet",
+  { message: S.optional(S.String) },
+) {}
+export class NoSuchGeoLocation extends S.TaggedErrorClass<NoSuchGeoLocation>()(
+  "NoSuchGeoLocation",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NoSuchHealthCheck extends S.TaggedErrorClass<NoSuchHealthCheck>()(
+  "NoSuchHealthCheck",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NoSuchHostedZone extends S.TaggedErrorClass<NoSuchHostedZone>()(
+  "NoSuchHostedZone",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NoSuchKeySigningKey extends S.TaggedErrorClass<NoSuchKeySigningKey>()(
+  "NoSuchKeySigningKey",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NoSuchQueryLoggingConfig extends S.TaggedErrorClass<NoSuchQueryLoggingConfig>()(
+  "NoSuchQueryLoggingConfig",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NoSuchTrafficPolicy extends S.TaggedErrorClass<NoSuchTrafficPolicy>()(
+  "NoSuchTrafficPolicy",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NoSuchTrafficPolicyInstance extends S.TaggedErrorClass<NoSuchTrafficPolicyInstance>()(
+  "NoSuchTrafficPolicyInstance",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
+  "NotAuthorizedException",
+  { message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class PriorRequestNotComplete extends S.TaggedErrorClass<PriorRequestNotComplete>()(
+  "PriorRequestNotComplete",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withConflictError, C.withRetryableError) {}
+export class PublicZoneVPCAssociation extends S.TaggedErrorClass<PublicZoneVPCAssociation>()(
+  "PublicZoneVPCAssociation",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class QueryLoggingConfigAlreadyExists extends S.TaggedErrorClass<QueryLoggingConfigAlreadyExists>()(
+  "QueryLoggingConfigAlreadyExists",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
+export class TooManyHealthChecks extends S.TaggedErrorClass<TooManyHealthChecks>()(
+  "TooManyHealthChecks",
+  { message: S.optional(S.String) },
+) {}
+export class TooManyHostedZones extends S.TaggedErrorClass<TooManyHostedZones>()(
+  "TooManyHostedZones",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TooManyKeySigningKeys extends S.TaggedErrorClass<TooManyKeySigningKeys>()(
+  "TooManyKeySigningKeys",
+  { message: S.optional(S.String) },
+) {}
+export class TooManyTrafficPolicies extends S.TaggedErrorClass<TooManyTrafficPolicies>()(
+  "TooManyTrafficPolicies",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TooManyTrafficPolicyInstances extends S.TaggedErrorClass<TooManyTrafficPolicyInstances>()(
+  "TooManyTrafficPolicyInstances",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TooManyTrafficPolicyVersionsForCurrentPolicy extends S.TaggedErrorClass<TooManyTrafficPolicyVersionsForCurrentPolicy>()(
+  "TooManyTrafficPolicyVersionsForCurrentPolicy",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TooManyVPCAssociationAuthorizations extends S.TaggedErrorClass<TooManyVPCAssociationAuthorizations>()(
+  "TooManyVPCAssociationAuthorizations",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class TrafficPolicyAlreadyExists extends S.TaggedErrorClass<TrafficPolicyAlreadyExists>()(
+  "TrafficPolicyAlreadyExists",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class TrafficPolicyInstanceAlreadyExists extends S.TaggedErrorClass<TrafficPolicyInstanceAlreadyExists>()(
+  "TrafficPolicyInstanceAlreadyExists",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError, C.withAlreadyExistsError) {}
+export class TrafficPolicyInUse extends S.TaggedErrorClass<TrafficPolicyInUse>()(
+  "TrafficPolicyInUse",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
+export class VPCAssociationAuthorizationNotFound extends S.TaggedErrorClass<VPCAssociationAuthorizationNotFound>()(
+  "VPCAssociationAuthorizationNotFound",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class VPCAssociationNotFound extends S.TaggedErrorClass<VPCAssociationNotFound>()(
+  "VPCAssociationNotFound",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
 export type ResourceId = string;
 export type SigningKeyName = string;
-export type ResourceDescription = string;
-export type ErrorMessage = string;
-export type VPCId = string;
-export type AssociateVPCComment = string;
-export type UUID = string;
-export type CollectionVersion = number;
-export type CidrLocationNameDefaultNotAllowed = string;
-export type Cidr = string;
-export type ChangeId = string;
-export type DNSName = string;
-export type ResourceRecordSetIdentifier = string;
-export type ResourceRecordSetWeight = number;
-export type GeoLocationContinentCode = string;
-export type GeoLocationCountryCode = string;
-export type GeoLocationSubdivisionCode = string;
-export type ResourceRecordSetMultiValueAnswer = boolean;
-export type TTL = number;
-export type RData = string;
-export type AliasHealthEnabled = boolean;
-export type HealthCheckId = string;
-export type TrafficPolicyInstanceId = string;
-export type CidrLocationNameDefaultAllowed = string;
-export type AWSRegion = string;
-export type LocalZoneGroup = string;
-export type Latitude = string;
-export type Longitude = string;
-export type Bias = number;
-export type TagResourceId = string;
-export type TagKey = string;
-export type TagValue = string;
-export type CollectionName = string;
-export type CidrNonce = string;
-export type ARN = string;
-export type ResourceURI = string;
-export type HealthCheckNonce = string;
-export type IPAddress = string;
-export type Port = number;
-export type ResourcePath = string;
-export type FullyQualifiedDomainName = string;
-export type SearchString = string;
-export type RequestInterval = number;
-export type FailureThreshold = number;
-export type MeasureLatency = boolean;
-export type Inverted = boolean;
-export type Disabled = boolean;
-export type HealthThreshold = number;
-export type EnableSNI = boolean;
-export type AlarmName = string;
-export type RoutingControlArn = string;
-export type ServicePrincipal = string;
-export type HealthCheckVersion = number;
-export type EvaluationPeriods = number;
-export type Threshold = number;
-export type Period = number;
-export type MetricName = string;
-export type Namespace = string;
-export type DimensionField = string;
-export type Nonce = string;
-export type IsPrivateZone = boolean;
-export type HostedZoneRRSetCount = number;
-export type FailureReason = string;
-export type SigningKeyString = string;
-export type SigningKeyStatus = string;
-export type SigningKeyInteger = number;
-export type SigningKeyTag = number;
-export type SigningKeyStatusMessage = string;
-export type CloudWatchLogsLogGroupArn = string;
-export type QueryLoggingConfigId = string;
-export type TrafficPolicyName = string;
-export type TrafficPolicyDocument = string;
-export type TrafficPolicyComment = string;
-export type TrafficPolicyId = string;
-export type TrafficPolicyVersion = number;
-export type TrafficPolicyInstanceState = string;
-export type Message = string;
-export type DisassociateVPCComment = string;
-export type LimitValue = number;
-export type UsageCount = number;
-export type IPAddressCidr = string;
-export type ServeSignature = string;
-export type GeoLocationContinentName = string;
-export type GeoLocationCountryName = string;
-export type GeoLocationSubdivisionName = string;
-export type HealthCheckCount = number;
-export type Status = string;
-export type HostedZoneCount = number;
-export type TrafficPolicyInstanceCount = number;
-export type PaginationToken = string;
-export type PageTruncated = boolean;
-export type PageMarker = string;
-export type AWSAccountID = string;
-export type HostedZoneOwningService = string;
-export type TrafficPolicyVersionMarker = string;
-export type SubnetMask = string;
-export type Nameserver = string;
-export type RecordDataEntry = string;
-export type DNSRCode = string;
-export type TransportProtocol = string;
-export type AcceleratedRecoveryEnabled = boolean;
-
-//# Schemas
 export interface ActivateKeySigningKeyRequest {
   HostedZoneId: string;
   Name: string;
@@ -391,6 +619,8 @@ export const ActivateKeySigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ActivateKeySigningKeyRequest>;
 export type ChangeStatus = "PENDING" | "INSYNC" | (string & {});
 export const ChangeStatus = /*@__PURE__*/ S.String;
+
+export type ResourceDescription = string;
 export interface ChangeInfo {
   Id: string;
   Status: ChangeStatus;
@@ -462,6 +692,8 @@ export type VPCRegion =
   | "eusc-de-east-1"
   | (string & {});
 export const VPCRegion = /*@__PURE__*/ S.String;
+
+export type VPCId = string;
 export interface VPC {
   VPCRegion?: VPCRegion;
   VPCId?: string;
@@ -469,6 +701,7 @@ export interface VPC {
 export const VPC = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ VPCRegion: S.optional(VPCRegion), VPCId: S.optional(S.String) }),
 ).annotate({ identifier: "VPC" }) as any as S.Schema<VPC>;
+export type AssociateVPCComment = string;
 export interface AssociateVPCWithHostedZoneRequest {
   HostedZoneId: string;
   VPC: VPC;
@@ -504,11 +737,16 @@ export const AssociateVPCWithHostedZoneResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateVPCWithHostedZoneResponse",
 }) as any as S.Schema<AssociateVPCWithHostedZoneResponse>;
+export type UUID = string;
+export type CollectionVersion = number;
+export type CidrLocationNameDefaultNotAllowed = string;
 export type CidrCollectionChangeAction =
   | "PUT"
   | "DELETE_IF_EXISTS"
   | (string & {});
 export const CidrCollectionChangeAction = /*@__PURE__*/ S.String;
+
+export type Cidr = string;
 export type CidrList = string[];
 export const CidrList = /*@__PURE__*/ S.Array(S.String.pipe(T.XmlName("Cidr")));
 export interface CidrCollectionChange {
@@ -552,6 +790,7 @@ export const ChangeCidrCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ChangeCidrCollectionRequest",
 }) as any as S.Schema<ChangeCidrCollectionRequest>;
+export type ChangeId = string;
 export interface ChangeCidrCollectionResponse {
   Id: string;
 }
@@ -562,6 +801,8 @@ export const ChangeCidrCollectionResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ChangeCidrCollectionResponse>;
 export type ChangeAction = "CREATE" | "DELETE" | "UPSERT" | (string & {});
 export const ChangeAction = /*@__PURE__*/ S.String;
+
+export type DNSName = string;
 export type RRType =
   | "SOA"
   | "A"
@@ -582,6 +823,9 @@ export type RRType =
   | "HTTPS"
   | (string & {});
 export const RRType = /*@__PURE__*/ S.String;
+
+export type ResourceRecordSetIdentifier = string;
+export type ResourceRecordSetWeight = number;
 export type ResourceRecordSetRegion =
   | "us-east-1"
   | "us-east-2"
@@ -624,6 +868,10 @@ export type ResourceRecordSetRegion =
   | "eusc-de-east-1"
   | (string & {});
 export const ResourceRecordSetRegion = /*@__PURE__*/ S.String;
+
+export type GeoLocationContinentCode = string;
+export type GeoLocationCountryCode = string;
+export type GeoLocationSubdivisionCode = string;
 export interface GeoLocation {
   ContinentCode?: string;
   CountryCode?: string;
@@ -638,6 +886,10 @@ export const GeoLocation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "GeoLocation" }) as any as S.Schema<GeoLocation>;
 export type ResourceRecordSetFailover = "PRIMARY" | "SECONDARY" | (string & {});
 export const ResourceRecordSetFailover = /*@__PURE__*/ S.String;
+
+export type ResourceRecordSetMultiValueAnswer = boolean;
+export type TTL = number;
+export type RData = string;
 export interface ResourceRecord {
   Value: string;
 }
@@ -650,6 +902,7 @@ export const ResourceRecords = /*@__PURE__*/ S.Array(
     identifier: "ResourceRecord",
   }),
 );
+export type AliasHealthEnabled = boolean;
 export interface AliasTarget {
   HostedZoneId: string;
   DNSName: string;
@@ -662,6 +915,9 @@ export const AliasTarget = /*@__PURE__*/ S.suspend(() =>
     EvaluateTargetHealth: S.Boolean,
   }),
 ).annotate({ identifier: "AliasTarget" }) as any as S.Schema<AliasTarget>;
+export type HealthCheckId = string;
+export type TrafficPolicyInstanceId = string;
+export type CidrLocationNameDefaultAllowed = string;
 export interface CidrRoutingConfig {
   CollectionId: string;
   LocationName: string;
@@ -671,6 +927,10 @@ export const CidrRoutingConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CidrRoutingConfig",
 }) as any as S.Schema<CidrRoutingConfig>;
+export type AWSRegion = string;
+export type LocalZoneGroup = string;
+export type Latitude = string;
+export type Longitude = string;
 export interface Coordinates {
   Latitude: string;
   Longitude: string;
@@ -678,6 +938,7 @@ export interface Coordinates {
 export const Coordinates = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Latitude: S.String, Longitude: S.String }),
 ).annotate({ identifier: "Coordinates" }) as any as S.Schema<Coordinates>;
+export type Bias = number;
 export interface GeoProximityLocation {
   AWSRegion?: string;
   LocalZoneGroup?: string;
@@ -783,12 +1044,12 @@ export const ChangeResourceRecordSetsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ChangeResourceRecordSetsResponse",
 }) as any as S.Schema<ChangeResourceRecordSetsResponse>;
-export type ErrorMessages = string[];
-export const ErrorMessages = /*@__PURE__*/ S.Array(
-  S.String.pipe(T.XmlName("Message")),
-);
 export type TagResourceType = "healthcheck" | "hostedzone" | (string & {});
 export const TagResourceType = /*@__PURE__*/ S.String;
+
+export type TagResourceId = string;
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key?: string;
   Value?: string;
@@ -839,6 +1100,8 @@ export const ChangeTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ChangeTagsForResourceResponse",
 }) as any as S.Schema<ChangeTagsForResourceResponse>;
+export type CollectionName = string;
+export type CidrNonce = string;
 export interface CreateCidrCollectionRequest {
   Name: string;
   CallerReference: string;
@@ -858,6 +1121,7 @@ export const CreateCidrCollectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCidrCollectionRequest",
 }) as any as S.Schema<CreateCidrCollectionRequest>;
+export type ARN = string;
 export interface CidrCollection {
   Arn?: string;
   Id?: string;
@@ -872,6 +1136,7 @@ export const CidrCollection = /*@__PURE__*/ S.suspend(() =>
     Version: S.optional(S.Number),
   }),
 ).annotate({ identifier: "CidrCollection" }) as any as S.Schema<CidrCollection>;
+export type ResourceURI = string;
 export interface CreateCidrCollectionResponse {
   Collection?: CidrCollection;
   Location?: string;
@@ -884,6 +1149,9 @@ export const CreateCidrCollectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCidrCollectionResponse",
 }) as any as S.Schema<CreateCidrCollectionResponse>;
+export type HealthCheckNonce = string;
+export type IPAddress = string;
+export type Port = number;
 export type HealthCheckType =
   | "HTTP"
   | "HTTPS"
@@ -895,10 +1163,21 @@ export type HealthCheckType =
   | "RECOVERY_CONTROL"
   | (string & {});
 export const HealthCheckType = /*@__PURE__*/ S.String;
+
+export type ResourcePath = string;
+export type FullyQualifiedDomainName = string;
+export type SearchString = string;
+export type RequestInterval = number;
+export type FailureThreshold = number;
+export type MeasureLatency = boolean;
+export type Inverted = boolean;
+export type Disabled = boolean;
+export type HealthThreshold = number;
 export type ChildHealthCheckList = string[];
 export const ChildHealthCheckList = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("ChildHealthCheck")),
 );
+export type EnableSNI = boolean;
 export type HealthCheckRegion =
   | "us-east-1"
   | "us-west-1"
@@ -910,6 +1189,7 @@ export type HealthCheckRegion =
   | "sa-east-1"
   | (string & {});
 export const HealthCheckRegion = /*@__PURE__*/ S.String;
+
 export type HealthCheckRegionList = HealthCheckRegion[];
 export const HealthCheckRegionList = /*@__PURE__*/ S.Array(
   HealthCheckRegion.pipe(T.XmlName("Region")),
@@ -963,6 +1243,8 @@ export type CloudWatchRegion =
   | "eusc-de-east-1"
   | (string & {});
 export const CloudWatchRegion = /*@__PURE__*/ S.String;
+
+export type AlarmName = string;
 export interface AlarmIdentifier {
   Region: CloudWatchRegion;
   Name: string;
@@ -978,6 +1260,8 @@ export type InsufficientDataHealthStatus =
   | "LastKnownStatus"
   | (string & {});
 export const InsufficientDataHealthStatus = /*@__PURE__*/ S.String;
+
+export type RoutingControlArn = string;
 export interface HealthCheckConfig {
   IPAddress?: string;
   Port?: number;
@@ -1044,6 +1328,7 @@ export const CreateHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHealthCheckRequest",
 }) as any as S.Schema<CreateHealthCheckRequest>;
+export type ServicePrincipal = string;
 export interface LinkedService {
   ServicePrincipal?: string;
   Description?: string;
@@ -1054,6 +1339,9 @@ export const LinkedService = /*@__PURE__*/ S.suspend(() =>
     Description: S.optional(S.String),
   }),
 ).annotate({ identifier: "LinkedService" }) as any as S.Schema<LinkedService>;
+export type HealthCheckVersion = number;
+export type EvaluationPeriods = number;
+export type Threshold = number;
 export type ComparisonOperator =
   | "GreaterThanOrEqualToThreshold"
   | "GreaterThanThreshold"
@@ -1061,6 +1349,10 @@ export type ComparisonOperator =
   | "LessThanOrEqualToThreshold"
   | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
+export type Period = number;
+export type MetricName = string;
+export type Namespace = string;
 export type Statistic =
   | "Average"
   | "Sum"
@@ -1069,6 +1361,8 @@ export type Statistic =
   | "Minimum"
   | (string & {});
 export const Statistic = /*@__PURE__*/ S.String;
+
+export type DimensionField = string;
 export interface Dimension {
   Name: string;
   Value: string;
@@ -1134,6 +1428,8 @@ export const CreateHealthCheckResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHealthCheckResponse",
 }) as any as S.Schema<CreateHealthCheckResponse>;
+export type Nonce = string;
+export type IsPrivateZone = boolean;
 export interface HostedZoneConfig {
   Comment?: string;
   PrivateZone?: boolean;
@@ -1174,6 +1470,7 @@ export const CreateHostedZoneRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHostedZoneRequest",
 }) as any as S.Schema<CreateHostedZoneRequest>;
+export type HostedZoneRRSetCount = number;
 export type AcceleratedRecoveryStatus =
   | "ENABLING"
   | "ENABLE_FAILED"
@@ -1185,6 +1482,8 @@ export type AcceleratedRecoveryStatus =
   | "DISABLING_HOSTED_ZONE_LOCKED"
   | (string & {});
 export const AcceleratedRecoveryStatus = /*@__PURE__*/ S.String;
+
+export type FailureReason = string;
 export interface HostedZoneFailureReasons {
   AcceleratedRecovery?: string;
 }
@@ -1259,6 +1558,8 @@ export const CreateHostedZoneResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHostedZoneResponse",
 }) as any as S.Schema<CreateHostedZoneResponse>;
+export type SigningKeyString = string;
+export type SigningKeyStatus = string;
 export interface CreateKeySigningKeyRequest {
   CallerReference: string;
   HostedZoneId: string;
@@ -1287,6 +1588,9 @@ export const CreateKeySigningKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKeySigningKeyRequest",
 }) as any as S.Schema<CreateKeySigningKeyRequest>;
+export type SigningKeyInteger = number;
+export type SigningKeyTag = number;
+export type SigningKeyStatusMessage = string;
 export interface KeySigningKey {
   Name?: string;
   KmsArn?: string;
@@ -1339,6 +1643,7 @@ export const CreateKeySigningKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateKeySigningKeyResponse",
 }) as any as S.Schema<CreateKeySigningKeyResponse>;
+export type CloudWatchLogsLogGroupArn = string;
 export interface CreateQueryLoggingConfigRequest {
   HostedZoneId: string;
   CloudWatchLogsLogGroupArn: string;
@@ -1361,6 +1666,7 @@ export const CreateQueryLoggingConfigRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateQueryLoggingConfigRequest",
 }) as any as S.Schema<CreateQueryLoggingConfigRequest>;
+export type QueryLoggingConfigId = string;
 export interface QueryLoggingConfig {
   Id: string;
   HostedZoneId: string;
@@ -1421,6 +1727,9 @@ export const CreateReusableDelegationSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateReusableDelegationSetResponse",
 }) as any as S.Schema<CreateReusableDelegationSetResponse>;
+export type TrafficPolicyName = string;
+export type TrafficPolicyDocument = string;
+export type TrafficPolicyComment = string;
 export interface CreateTrafficPolicyRequest {
   Name: string;
   Document: string;
@@ -1445,6 +1754,8 @@ export const CreateTrafficPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTrafficPolicyRequest",
 }) as any as S.Schema<CreateTrafficPolicyRequest>;
+export type TrafficPolicyId = string;
+export type TrafficPolicyVersion = number;
 export interface TrafficPolicy {
   Id: string;
   Version: number;
@@ -1503,6 +1814,8 @@ export const CreateTrafficPolicyInstanceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateTrafficPolicyInstanceRequest",
 }) as any as S.Schema<CreateTrafficPolicyInstanceRequest>;
+export type TrafficPolicyInstanceState = string;
+export type Message = string;
 export interface TrafficPolicyInstance {
   Id: string;
   HostedZoneId: string;
@@ -1922,6 +2235,7 @@ export const DisableHostedZoneDNSSECResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisableHostedZoneDNSSECResponse",
 }) as any as S.Schema<DisableHostedZoneDNSSECResponse>;
+export type DisassociateVPCComment = string;
 export interface DisassociateVPCFromHostedZoneRequest {
   HostedZoneId: string;
   VPC: VPC;
@@ -1995,6 +2309,7 @@ export type AccountLimitType =
   | "MAX_TRAFFIC_POLICIES_BY_OWNER"
   | (string & {});
 export const AccountLimitType = /*@__PURE__*/ S.String;
+
 export interface GetAccountLimitRequest {
   Type: AccountLimitType;
 }
@@ -2013,6 +2328,7 @@ export const GetAccountLimitRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountLimitRequest",
 }) as any as S.Schema<GetAccountLimitRequest>;
+export type LimitValue = number;
 export interface AccountLimit {
   Type: AccountLimitType;
   Value: number;
@@ -2020,6 +2336,7 @@ export interface AccountLimit {
 export const AccountLimit = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Type: AccountLimitType, Value: S.Number }),
 ).annotate({ identifier: "AccountLimit" }) as any as S.Schema<AccountLimit>;
+export type UsageCount = number;
 export interface GetAccountLimitResponse {
   Limit: AccountLimit;
   Count: number;
@@ -2071,6 +2388,7 @@ export const GetCheckerIpRangesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetCheckerIpRangesRequest",
 }) as any as S.Schema<GetCheckerIpRangesRequest>;
+export type IPAddressCidr = string;
 export type CheckerIpRanges = string[];
 export const CheckerIpRanges = /*@__PURE__*/ S.Array(S.String);
 export interface GetCheckerIpRangesResponse {
@@ -2102,6 +2420,7 @@ export const GetDNSSECRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetDNSSECRequest",
 }) as any as S.Schema<GetDNSSECRequest>;
+export type ServeSignature = string;
 export interface DNSSECStatus {
   ServeSignature?: string;
   StatusMessage?: string;
@@ -2147,6 +2466,9 @@ export const GetGeoLocationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetGeoLocationRequest",
 }) as any as S.Schema<GetGeoLocationRequest>;
+export type GeoLocationContinentName = string;
+export type GeoLocationCountryName = string;
+export type GeoLocationSubdivisionName = string;
 export interface GeoLocationDetails {
   ContinentCode?: string;
   ContinentName?: string;
@@ -2217,6 +2539,7 @@ export const GetHealthCheckCountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetHealthCheckCountRequest",
 }) as any as S.Schema<GetHealthCheckCountRequest>;
+export type HealthCheckCount = number;
 export interface GetHealthCheckCountResponse {
   HealthCheckCount: number;
 }
@@ -2249,6 +2572,7 @@ export const GetHealthCheckLastFailureReasonRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetHealthCheckLastFailureReasonRequest",
 }) as any as S.Schema<GetHealthCheckLastFailureReasonRequest>;
+export type Status = string;
 export interface StatusReport {
   Status?: string;
   CheckedTime?: Date;
@@ -2368,6 +2692,7 @@ export const GetHostedZoneCountRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetHostedZoneCountRequest",
 }) as any as S.Schema<GetHostedZoneCountRequest>;
+export type HostedZoneCount = number;
 export interface GetHostedZoneCountResponse {
   HostedZoneCount: number;
 }
@@ -2381,6 +2706,7 @@ export type HostedZoneLimitType =
   | "MAX_VPCS_ASSOCIATED_BY_ZONE"
   | (string & {});
 export const HostedZoneLimitType = /*@__PURE__*/ S.String;
+
 export interface GetHostedZoneLimitRequest {
   Type: HostedZoneLimitType;
   HostedZoneId: string;
@@ -2480,6 +2806,7 @@ export type ReusableDelegationSetLimitType =
   | "MAX_ZONES_BY_REUSABLE_DELEGATION_SET"
   | (string & {});
 export const ReusableDelegationSetLimitType = /*@__PURE__*/ S.String;
+
 export interface GetReusableDelegationSetLimitRequest {
   Type: ReusableDelegationSetLimitType;
   DelegationSetId: string;
@@ -2604,6 +2931,7 @@ export const GetTrafficPolicyInstanceCountRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetTrafficPolicyInstanceCountRequest",
 }) as any as S.Schema<GetTrafficPolicyInstanceCountRequest>;
+export type TrafficPolicyInstanceCount = number;
 export interface GetTrafficPolicyInstanceCountResponse {
   TrafficPolicyInstanceCount: number;
 }
@@ -2612,6 +2940,7 @@ export const GetTrafficPolicyInstanceCountResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetTrafficPolicyInstanceCountResponse",
 }) as any as S.Schema<GetTrafficPolicyInstanceCountResponse>;
+export type PaginationToken = string;
 export interface ListCidrBlocksRequest {
   CollectionId: string;
   LocationName?: string;
@@ -2806,6 +3135,7 @@ export const GeoLocationDetailsList = /*@__PURE__*/ S.Array(
     identifier: "GeoLocationDetails",
   }),
 );
+export type PageTruncated = boolean;
 export interface ListGeoLocationsResponse {
   GeoLocationDetailsList: GeoLocationDetails[];
   IsTruncated: boolean;
@@ -2826,6 +3156,7 @@ export const ListGeoLocationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListGeoLocationsResponse",
 }) as any as S.Schema<ListGeoLocationsResponse>;
+export type PageMarker = string;
 export interface ListHealthChecksRequest {
   Marker?: string;
   MaxItems?: number;
@@ -2874,6 +3205,7 @@ export const ListHealthChecksResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListHealthChecksResponse>;
 export type HostedZoneType = "PrivateHostedZone" | (string & {});
 export const HostedZoneType = /*@__PURE__*/ S.String;
+
 export interface ListHostedZonesRequest {
   Marker?: string;
   MaxItems?: number;
@@ -2998,6 +3330,8 @@ export const ListHostedZonesByVPCRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListHostedZonesByVPCRequest",
 }) as any as S.Schema<ListHostedZonesByVPCRequest>;
+export type AWSAccountID = string;
+export type HostedZoneOwningService = string;
 export interface HostedZoneOwner {
   OwningAccount?: string;
   OwningService?: string;
@@ -3504,6 +3838,7 @@ export const ListTrafficPolicyInstancesByPolicyResponse =
   ).annotate({
     identifier: "ListTrafficPolicyInstancesByPolicyResponse",
   }) as any as S.Schema<ListTrafficPolicyInstancesByPolicyResponse>;
+export type TrafficPolicyVersionMarker = string;
 export interface ListTrafficPolicyVersionsRequest {
   Id: string;
   TrafficPolicyVersionMarker?: string;
@@ -3598,6 +3933,7 @@ export const ListVPCAssociationAuthorizationsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListVPCAssociationAuthorizationsResponse",
 }) as any as S.Schema<ListVPCAssociationAuthorizationsResponse>;
+export type SubnetMask = string;
 export interface TestDNSAnswerRequest {
   HostedZoneId: string;
   RecordName: string;
@@ -3632,10 +3968,14 @@ export const TestDNSAnswerRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TestDNSAnswerRequest",
 }) as any as S.Schema<TestDNSAnswerRequest>;
+export type Nameserver = string;
+export type RecordDataEntry = string;
 export type RecordData = string[];
 export const RecordData = /*@__PURE__*/ S.Array(
   S.String.pipe(T.XmlName("RecordDataEntry")),
 );
+export type DNSRCode = string;
+export type TransportProtocol = string;
 export interface TestDNSAnswerResponse {
   Nameserver: string;
   RecordName: string;
@@ -3663,6 +4003,7 @@ export type ResettableElementName =
   | "ChildHealthChecks"
   | (string & {});
 export const ResettableElementName = /*@__PURE__*/ S.String;
+
 export type ResettableElementNameList = ResettableElementName[];
 export const ResettableElementNameList = /*@__PURE__*/ S.Array(
   ResettableElementName.pipe(T.XmlName("ResettableElementName")),
@@ -3760,6 +4101,7 @@ export const UpdateHostedZoneCommentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateHostedZoneCommentResponse",
 }) as any as S.Schema<UpdateHostedZoneCommentResponse>;
+export type AcceleratedRecoveryEnabled = boolean;
 export interface UpdateHostedZoneFeaturesRequest {
   HostedZoneId: string;
   EnableAcceleratedRecovery?: boolean;
@@ -3860,335 +4202,11 @@ export const UpdateTrafficPolicyInstanceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateTrafficPolicyInstanceResponse",
 }) as any as S.Schema<UpdateTrafficPolicyInstanceResponse>;
-
-//# Errors
-export class ConcurrentModification extends S.TaggedErrorClass<ConcurrentModification>()(
-  "ConcurrentModification",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidInput extends S.TaggedErrorClass<InvalidInput>()(
-  "InvalidInput",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidKeySigningKeyStatus extends S.TaggedErrorClass<InvalidKeySigningKeyStatus>()(
-  "InvalidKeySigningKeyStatus",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidKMSArn extends S.TaggedErrorClass<InvalidKMSArn>()(
-  "InvalidKMSArn",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidSigningStatus extends S.TaggedErrorClass<InvalidSigningStatus>()(
-  "InvalidSigningStatus",
-  { message: S.optional(S.String) },
-) {}
-export class NoSuchKeySigningKey extends S.TaggedErrorClass<NoSuchKeySigningKey>()(
-  "NoSuchKeySigningKey",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ConflictingDomainExists extends S.TaggedErrorClass<ConflictingDomainExists>()(
-  "ConflictingDomainExists",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidVPCId extends S.TaggedErrorClass<InvalidVPCId>()(
-  "InvalidVPCId",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LimitsExceeded extends S.TaggedErrorClass<LimitsExceeded>()(
-  "LimitsExceeded",
-  { message: S.optional(S.String) },
-) {}
-export class NoSuchHostedZone extends S.TaggedErrorClass<NoSuchHostedZone>()(
-  "NoSuchHostedZone",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class NotAuthorizedException extends S.TaggedErrorClass<NotAuthorizedException>()(
-  "NotAuthorizedException",
-  { message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class PriorRequestNotComplete extends S.TaggedErrorClass<PriorRequestNotComplete>()(
-  "PriorRequestNotComplete",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withConflictError, C.withRetryableError) {}
-export class PublicZoneVPCAssociation extends S.TaggedErrorClass<PublicZoneVPCAssociation>()(
-  "PublicZoneVPCAssociation",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class CidrBlockInUseException extends S.TaggedErrorClass<CidrBlockInUseException>()(
-  "CidrBlockInUseException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class CidrCollectionVersionMismatchException extends S.TaggedErrorClass<CidrCollectionVersionMismatchException>()(
-  "CidrCollectionVersionMismatchException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class NoSuchCidrCollectionException extends S.TaggedErrorClass<NoSuchCidrCollectionException>()(
-  "NoSuchCidrCollectionException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InvalidChangeBatch extends S.TaggedErrorClass<InvalidChangeBatch>()(
-  "InvalidChangeBatch",
-  { messages: S.optional(ErrorMessages), message: S.optional(S.String) },
-) {}
-export class NoSuchHealthCheck extends S.TaggedErrorClass<NoSuchHealthCheck>()(
-  "NoSuchHealthCheck",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withThrottlingError, C.withRetryableError) {}
-export class CidrCollectionAlreadyExistsException extends S.TaggedErrorClass<CidrCollectionAlreadyExistsException>()(
-  "CidrCollectionAlreadyExistsException",
-  { Message: S.optional(S.String) },
-).pipe(C.withAlreadyExistsError) {}
-export class HealthCheckAlreadyExists extends S.TaggedErrorClass<HealthCheckAlreadyExists>()(
-  "HealthCheckAlreadyExists",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class TooManyHealthChecks extends S.TaggedErrorClass<TooManyHealthChecks>()(
-  "TooManyHealthChecks",
-  { message: S.optional(S.String) },
-) {}
-export class DelegationSetNotAvailable extends S.TaggedErrorClass<DelegationSetNotAvailable>()(
-  "DelegationSetNotAvailable",
-  { message: S.optional(S.String) },
-) {}
-export class DelegationSetNotReusable extends S.TaggedErrorClass<DelegationSetNotReusable>()(
-  "DelegationSetNotReusable",
-  { message: S.optional(S.String) },
-) {}
-export class HostedZoneAlreadyExists extends S.TaggedErrorClass<HostedZoneAlreadyExists>()(
-  "HostedZoneAlreadyExists",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class InvalidDomainName extends S.TaggedErrorClass<InvalidDomainName>()(
-  "InvalidDomainName",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NoSuchDelegationSet extends S.TaggedErrorClass<NoSuchDelegationSet>()(
-  "NoSuchDelegationSet",
-  { message: S.optional(S.String) },
-) {}
-export class TooManyHostedZones extends S.TaggedErrorClass<TooManyHostedZones>()(
-  "TooManyHostedZones",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class InvalidArgument extends S.TaggedErrorClass<InvalidArgument>()(
-  "InvalidArgument",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidKeySigningKeyName extends S.TaggedErrorClass<InvalidKeySigningKeyName>()(
-  "InvalidKeySigningKeyName",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class KeySigningKeyAlreadyExists extends S.TaggedErrorClass<KeySigningKeyAlreadyExists>()(
-  "KeySigningKeyAlreadyExists",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class TooManyKeySigningKeys extends S.TaggedErrorClass<TooManyKeySigningKeys>()(
-  "TooManyKeySigningKeys",
-  { message: S.optional(S.String) },
-) {}
-export class InsufficientCloudWatchLogsResourcePolicy extends S.TaggedErrorClass<InsufficientCloudWatchLogsResourcePolicy>()(
-  "InsufficientCloudWatchLogsResourcePolicy",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NoSuchCloudWatchLogsLogGroup extends S.TaggedErrorClass<NoSuchCloudWatchLogsLogGroup>()(
-  "NoSuchCloudWatchLogsLogGroup",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class QueryLoggingConfigAlreadyExists extends S.TaggedErrorClass<QueryLoggingConfigAlreadyExists>()(
-  "QueryLoggingConfigAlreadyExists",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class DelegationSetAlreadyCreated extends S.TaggedErrorClass<DelegationSetAlreadyCreated>()(
-  "DelegationSetAlreadyCreated",
-  { message: S.optional(S.String) },
-) {}
-export class DelegationSetAlreadyReusable extends S.TaggedErrorClass<DelegationSetAlreadyReusable>()(
-  "DelegationSetAlreadyReusable",
-  { message: S.optional(S.String) },
-) {}
-export class HostedZoneNotFound extends S.TaggedErrorClass<HostedZoneNotFound>()(
-  "HostedZoneNotFound",
-  { message: S.optional(S.String) },
-) {}
-export class InvalidTrafficPolicyDocument extends S.TaggedErrorClass<InvalidTrafficPolicyDocument>()(
-  "InvalidTrafficPolicyDocument",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyTrafficPolicies extends S.TaggedErrorClass<TooManyTrafficPolicies>()(
-  "TooManyTrafficPolicies",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TrafficPolicyAlreadyExists extends S.TaggedErrorClass<TrafficPolicyAlreadyExists>()(
-  "TrafficPolicyAlreadyExists",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class NoSuchTrafficPolicy extends S.TaggedErrorClass<NoSuchTrafficPolicy>()(
-  "NoSuchTrafficPolicy",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TooManyTrafficPolicyInstances extends S.TaggedErrorClass<TooManyTrafficPolicyInstances>()(
-  "TooManyTrafficPolicyInstances",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TrafficPolicyInstanceAlreadyExists extends S.TaggedErrorClass<TrafficPolicyInstanceAlreadyExists>()(
-  "TrafficPolicyInstanceAlreadyExists",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError, C.withAlreadyExistsError) {}
-export class TooManyTrafficPolicyVersionsForCurrentPolicy extends S.TaggedErrorClass<TooManyTrafficPolicyVersionsForCurrentPolicy>()(
-  "TooManyTrafficPolicyVersionsForCurrentPolicy",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class TooManyVPCAssociationAuthorizations extends S.TaggedErrorClass<TooManyVPCAssociationAuthorizations>()(
-  "TooManyVPCAssociationAuthorizations",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class KeySigningKeyInParentDSRecord extends S.TaggedErrorClass<KeySigningKeyInParentDSRecord>()(
-  "KeySigningKeyInParentDSRecord",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class KeySigningKeyInUse extends S.TaggedErrorClass<KeySigningKeyInUse>()(
-  "KeySigningKeyInUse",
-  { message: S.optional(S.String) },
-).pipe(C.withDependencyViolationError) {}
-export class CidrCollectionInUseException extends S.TaggedErrorClass<CidrCollectionInUseException>()(
-  "CidrCollectionInUseException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class HealthCheckInUse extends S.TaggedErrorClass<HealthCheckInUse>()(
-  "HealthCheckInUse",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
-export class HostedZoneNotEmpty extends S.TaggedErrorClass<HostedZoneNotEmpty>()(
-  "HostedZoneNotEmpty",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class NoSuchQueryLoggingConfig extends S.TaggedErrorClass<NoSuchQueryLoggingConfig>()(
-  "NoSuchQueryLoggingConfig",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class DelegationSetInUse extends S.TaggedErrorClass<DelegationSetInUse>()(
-  "DelegationSetInUse",
-  { message: S.optional(S.String) },
-).pipe(C.withDependencyViolationError) {}
-export class TrafficPolicyInUse extends S.TaggedErrorClass<TrafficPolicyInUse>()(
-  "TrafficPolicyInUse",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError, C.withDependencyViolationError) {}
-export class NoSuchTrafficPolicyInstance extends S.TaggedErrorClass<NoSuchTrafficPolicyInstance>()(
-  "NoSuchTrafficPolicyInstance",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class VPCAssociationAuthorizationNotFound extends S.TaggedErrorClass<VPCAssociationAuthorizationNotFound>()(
-  "VPCAssociationAuthorizationNotFound",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class DNSSECNotFound extends S.TaggedErrorClass<DNSSECNotFound>()(
-  "DNSSECNotFound",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class LastVPCAssociation extends S.TaggedErrorClass<LastVPCAssociation>()(
-  "LastVPCAssociation",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class VPCAssociationNotFound extends S.TaggedErrorClass<VPCAssociationNotFound>()(
-  "VPCAssociationNotFound",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class HostedZonePartiallyDelegated extends S.TaggedErrorClass<HostedZonePartiallyDelegated>()(
-  "HostedZonePartiallyDelegated",
-  { message: S.optional(S.String) },
-) {}
-export class KeySigningKeyWithActiveStatusNotFound extends S.TaggedErrorClass<KeySigningKeyWithActiveStatusNotFound>()(
-  "KeySigningKeyWithActiveStatusNotFound",
-  { message: S.optional(S.String) },
-) {}
-export class NoSuchChange extends S.TaggedErrorClass<NoSuchChange>()(
-  "NoSuchChange",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class NoSuchGeoLocation extends S.TaggedErrorClass<NoSuchGeoLocation>()(
-  "NoSuchGeoLocation",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class IncompatibleVersion extends S.TaggedErrorClass<IncompatibleVersion>()(
-  "IncompatibleVersion",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class HostedZoneNotPrivate extends S.TaggedErrorClass<HostedZoneNotPrivate>()(
-  "HostedZoneNotPrivate",
-  { message: S.optional(S.String) },
-) {}
-export class NoSuchCidrLocationException extends S.TaggedErrorClass<NoSuchCidrLocationException>()(
-  "NoSuchCidrLocationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class InvalidPaginationToken extends S.TaggedErrorClass<InvalidPaginationToken>()(
-  "InvalidPaginationToken",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class HealthCheckVersionMismatch extends S.TaggedErrorClass<HealthCheckVersionMismatch>()(
-  "HealthCheckVersionMismatch",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ConflictingTypes extends S.TaggedErrorClass<ConflictingTypes>()(
-  "ConflictingTypes",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
+export type ErrorMessages = string[];
+export const ErrorMessages = /*@__PURE__*/ S.Array(
+  S.String.pipe(T.XmlName("Message")),
+);
 export type ActivateKeySigningKeyError =
   | ConcurrentModification
   | InvalidInput
@@ -4221,6 +4239,7 @@ export const activateKeySigningKey: API.OperationMethod<
   retry: Retry,
   operationName: "ActivateKeySigningKey",
 }));
+
 export type AssociateVPCWithHostedZoneError =
   | ConflictingDomainExists
   | InvalidInput
@@ -4280,6 +4299,7 @@ export const associateVPCWithHostedZone: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateVPCWithHostedZone",
 }));
+
 export type ChangeCidrCollectionError =
   | CidrBlockInUseException
   | CidrCollectionVersionMismatchException
@@ -4330,6 +4350,7 @@ export const changeCidrCollection: API.OperationMethod<
   retry: Retry,
   operationName: "ChangeCidrCollection",
 }));
+
 export type ChangeResourceRecordSetsError =
   | InvalidChangeBatch
   | InvalidInput
@@ -4442,6 +4463,7 @@ export const changeResourceRecordSets: API.OperationMethod<
   retry: Retry,
   operationName: "ChangeResourceRecordSets",
 }));
+
 export type ChangeTagsForResourceError =
   | InvalidInput
   | NoSuchHealthCheck
@@ -4474,6 +4496,7 @@ export const changeTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ChangeTagsForResource",
 }));
+
 export type CreateCidrCollectionError =
   | CidrCollectionAlreadyExistsException
   | ConcurrentModification
@@ -4501,6 +4524,7 @@ export const createCidrCollection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCidrCollection",
 }));
+
 export type CreateHealthCheckError =
   | HealthCheckAlreadyExists
   | InvalidInput
@@ -4552,6 +4576,7 @@ export const createHealthCheck: API.OperationMethod<
   retry: Retry,
   operationName: "CreateHealthCheck",
 }));
+
 export type CreateHostedZoneError =
   | ConflictingDomainExists
   | DelegationSetNotAvailable
@@ -4643,6 +4668,7 @@ export const createHostedZone: API.OperationMethod<
   retry: Retry,
   operationName: "CreateHostedZone",
 }));
+
 export type CreateKeySigningKeyError =
   | ConcurrentModification
   | InvalidArgument
@@ -4683,6 +4709,7 @@ export const createKeySigningKey: API.OperationMethod<
   retry: Retry,
   operationName: "CreateKeySigningKey",
 }));
+
 export type CreateQueryLoggingConfigError =
   | ConcurrentModification
   | InsufficientCloudWatchLogsResourcePolicy
@@ -4854,6 +4881,7 @@ export const createQueryLoggingConfig: API.OperationMethod<
   retry: Retry,
   operationName: "CreateQueryLoggingConfig",
 }));
+
 export type CreateReusableDelegationSetError =
   | DelegationSetAlreadyCreated
   | DelegationSetAlreadyReusable
@@ -4934,6 +4962,7 @@ export const createReusableDelegationSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReusableDelegationSet",
 }));
+
 export type CreateTrafficPolicyError =
   | InvalidInput
   | InvalidTrafficPolicyDocument
@@ -4963,6 +4992,7 @@ export const createTrafficPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTrafficPolicy",
 }));
+
 export type CreateTrafficPolicyInstanceError =
   | InvalidInput
   | NoSuchHostedZone
@@ -5004,6 +5034,7 @@ export const createTrafficPolicyInstance: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTrafficPolicyInstance",
 }));
+
 export type CreateTrafficPolicyVersionError =
   | ConcurrentModification
   | InvalidInput
@@ -5039,6 +5070,7 @@ export const createTrafficPolicyVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTrafficPolicyVersion",
 }));
+
 export type CreateVPCAssociationAuthorizationError =
   | ConcurrentModification
   | InvalidInput
@@ -5077,6 +5109,7 @@ export const createVPCAssociationAuthorization: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVPCAssociationAuthorization",
 }));
+
 export type DeactivateKeySigningKeyError =
   | ConcurrentModification
   | InvalidInput
@@ -5111,6 +5144,7 @@ export const deactivateKeySigningKey: API.OperationMethod<
   retry: Retry,
   operationName: "DeactivateKeySigningKey",
 }));
+
 export type DeleteCidrCollectionError =
   | CidrCollectionInUseException
   | ConcurrentModification
@@ -5139,6 +5173,7 @@ export const deleteCidrCollection: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCidrCollection",
 }));
+
 export type DeleteHealthCheckError =
   | HealthCheckInUse
   | InvalidInput
@@ -5174,6 +5209,7 @@ export const deleteHealthCheck: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteHealthCheck",
 }));
+
 export type DeleteHostedZoneError =
   | HostedZoneNotEmpty
   | InvalidDomainName
@@ -5244,6 +5280,7 @@ export const deleteHostedZone: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteHostedZone",
 }));
+
 export type DeleteKeySigningKeyError =
   | ConcurrentModification
   | InvalidInput
@@ -5282,6 +5319,7 @@ export const deleteKeySigningKey: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteKeySigningKey",
 }));
+
 export type DeleteQueryLoggingConfigError =
   | ConcurrentModification
   | InvalidInput
@@ -5307,6 +5345,7 @@ export const deleteQueryLoggingConfig: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteQueryLoggingConfig",
 }));
+
 export type DeleteReusableDelegationSetError =
   | DelegationSetInUse
   | DelegationSetNotReusable
@@ -5341,6 +5380,7 @@ export const deleteReusableDelegationSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReusableDelegationSet",
 }));
+
 export type DeleteTrafficPolicyError =
   | ConcurrentModification
   | InvalidInput
@@ -5379,6 +5419,7 @@ export const deleteTrafficPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTrafficPolicy",
 }));
+
 export type DeleteTrafficPolicyInstanceError =
   | InvalidInput
   | NoSuchTrafficPolicyInstance
@@ -5404,6 +5445,7 @@ export const deleteTrafficPolicyInstance: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTrafficPolicyInstance",
 }));
+
 export type DeleteVPCAssociationAuthorizationError =
   | ConcurrentModification
   | InvalidInput
@@ -5443,6 +5485,7 @@ export const deleteVPCAssociationAuthorization: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVPCAssociationAuthorization",
 }));
+
 export type DisableHostedZoneDNSSECError =
   | ConcurrentModification
   | DNSSECNotFound
@@ -5479,6 +5522,7 @@ export const disableHostedZoneDNSSEC: API.OperationMethod<
   retry: Retry,
   operationName: "DisableHostedZoneDNSSEC",
 }));
+
 export type DisassociateVPCFromHostedZoneError =
   | InvalidInput
   | InvalidVPCId
@@ -5544,6 +5588,7 @@ export const disassociateVPCFromHostedZone: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateVPCFromHostedZone",
 }));
+
 export type EnableHostedZoneDNSSECError =
   | ConcurrentModification
   | DNSSECNotFound
@@ -5581,6 +5626,7 @@ export const enableHostedZoneDNSSEC: API.OperationMethod<
   retry: Retry,
   operationName: "EnableHostedZoneDNSSEC",
 }));
+
 export type GetAccountLimitError = InvalidInput | CommonErrors;
 /**
  * Gets the specified limit for the current account, for example, the maximum number of
@@ -5606,6 +5652,7 @@ export const getAccountLimit: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountLimit",
 }));
+
 export type GetChangeError = InvalidInput | NoSuchChange | CommonErrors;
 /**
  * Returns the current status of a change batch request. The status is one of the
@@ -5631,6 +5678,7 @@ export const getChange: API.OperationMethod<
   retry: Retry,
   operationName: "GetChange",
 }));
+
 export type GetCheckerIpRangesError = CommonErrors;
 /**
  * Route 53 does not perform authorization for this API because it retrieves information
@@ -5655,6 +5703,7 @@ export const getCheckerIpRanges: API.OperationMethod<
   retry: Retry,
   operationName: "GetCheckerIpRanges",
 }));
+
 export type GetDNSSECError =
   | InvalidArgument
   | InvalidInput
@@ -5677,6 +5726,7 @@ export const getDNSSEC: API.OperationMethod<
   retry: Retry,
   operationName: "GetDNSSEC",
 }));
+
 export type GetGeoLocationError =
   | InvalidInput
   | NoSuchGeoLocation
@@ -5720,6 +5770,7 @@ export const getGeoLocation: API.OperationMethod<
   retry: Retry,
   operationName: "GetGeoLocation",
 }));
+
 export type GetHealthCheckError =
   | IncompatibleVersion
   | InvalidInput
@@ -5741,6 +5792,7 @@ export const getHealthCheck: API.OperationMethod<
   retry: Retry,
   operationName: "GetHealthCheck",
 }));
+
 export type GetHealthCheckCountError = CommonErrors;
 /**
  * Retrieves the number of health checks that are associated with the current Amazon Web Services account.
@@ -5758,6 +5810,7 @@ export const getHealthCheckCount: API.OperationMethod<
   retry: Retry,
   operationName: "GetHealthCheckCount",
 }));
+
 export type GetHealthCheckLastFailureReasonError =
   | InvalidInput
   | NoSuchHealthCheck
@@ -5778,6 +5831,7 @@ export const getHealthCheckLastFailureReason: API.OperationMethod<
   retry: Retry,
   operationName: "GetHealthCheckLastFailureReason",
 }));
+
 export type GetHealthCheckStatusError =
   | InvalidInput
   | NoSuchHealthCheck
@@ -5802,6 +5856,7 @@ export const getHealthCheckStatus: API.OperationMethod<
   retry: Retry,
   operationName: "GetHealthCheckStatus",
 }));
+
 export type GetHostedZoneError = InvalidInput | NoSuchHostedZone | CommonErrors;
 /**
  * Gets information about a specified hosted zone including the four name servers
@@ -5823,6 +5878,7 @@ export const getHostedZone: API.OperationMethod<
   retry: Retry,
   operationName: "GetHostedZone",
 }));
+
 export type GetHostedZoneCountError = InvalidInput | CommonErrors;
 /**
  * Retrieves the number of hosted zones that are associated with the current Amazon Web Services account.
@@ -5840,6 +5896,7 @@ export const getHostedZoneCount: API.OperationMethod<
   retry: Retry,
   operationName: "GetHostedZoneCount",
 }));
+
 export type GetHostedZoneLimitError =
   | HostedZoneNotPrivate
   | InvalidInput
@@ -5866,6 +5923,7 @@ export const getHostedZoneLimit: API.OperationMethod<
   retry: Retry,
   operationName: "GetHostedZoneLimit",
 }));
+
 export type GetQueryLoggingConfigError =
   | InvalidInput
   | NoSuchQueryLoggingConfig
@@ -5889,6 +5947,7 @@ export const getQueryLoggingConfig: API.OperationMethod<
   retry: Retry,
   operationName: "GetQueryLoggingConfig",
 }));
+
 export type GetReusableDelegationSetError =
   | DelegationSetNotReusable
   | InvalidInput
@@ -5911,6 +5970,7 @@ export const getReusableDelegationSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetReusableDelegationSet",
 }));
+
 export type GetReusableDelegationSetLimitError =
   | InvalidInput
   | NoSuchDelegationSet
@@ -5936,6 +5996,7 @@ export const getReusableDelegationSetLimit: API.OperationMethod<
   retry: Retry,
   operationName: "GetReusableDelegationSetLimit",
 }));
+
 export type GetTrafficPolicyError =
   | InvalidInput
   | NoSuchTrafficPolicy
@@ -5959,6 +6020,7 @@ export const getTrafficPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetTrafficPolicy",
 }));
+
 export type GetTrafficPolicyInstanceError =
   | InvalidInput
   | NoSuchTrafficPolicyInstance
@@ -5987,6 +6049,7 @@ export const getTrafficPolicyInstance: API.OperationMethod<
   retry: Retry,
   operationName: "GetTrafficPolicyInstance",
 }));
+
 export type GetTrafficPolicyInstanceCountError = CommonErrors;
 /**
  * Gets the number of traffic policy instances that are associated with the current
@@ -6005,6 +6068,7 @@ export const getTrafficPolicyInstanceCount: API.OperationMethod<
   retry: Retry,
   operationName: "GetTrafficPolicyInstanceCount",
 }));
+
 export type ListCidrBlocksError =
   | InvalidInput
   | NoSuchCidrCollectionException
@@ -6051,6 +6115,7 @@ export const listCidrBlocks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCidrCollectionsError = InvalidInput | CommonErrors;
 /**
  * Returns a paginated list of CIDR collections in the Amazon Web Services account
@@ -6090,6 +6155,7 @@ export const listCidrCollections: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCidrLocationsError =
   | InvalidInput
   | NoSuchCidrCollectionException
@@ -6132,6 +6198,7 @@ export const listCidrLocations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListGeoLocationsError = InvalidInput | CommonErrors;
 /**
  * Retrieves a list of supported geographic locations.
@@ -6160,6 +6227,7 @@ export const listGeoLocations: API.OperationMethod<
   retry: Retry,
   operationName: "ListGeoLocations",
 }));
+
 export type ListHealthChecksError =
   | IncompatibleVersion
   | InvalidInput
@@ -6201,6 +6269,7 @@ export const listHealthChecks: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListHostedZonesError =
   | DelegationSetNotReusable
   | InvalidInput
@@ -6249,6 +6318,7 @@ export const listHostedZones: API.OperationMethod<
     pageSize: "MaxItems",
   } as const,
 }));
+
 export type ListHostedZonesByNameError =
   | InvalidDomainName
   | InvalidInput
@@ -6321,6 +6391,7 @@ export const listHostedZonesByName: API.OperationMethod<
   retry: Retry,
   operationName: "ListHostedZonesByName",
 }));
+
 export type ListHostedZonesByVPCError =
   | InvalidInput
   | InvalidPaginationToken
@@ -6372,6 +6443,7 @@ export const listHostedZonesByVPC: API.OperationMethod<
   retry: Retry,
   operationName: "ListHostedZonesByVPC",
 }));
+
 export type ListQueryLoggingConfigsError =
   | InvalidInput
   | InvalidPaginationToken
@@ -6420,6 +6492,7 @@ export const listQueryLoggingConfigs: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourceRecordSetsError =
   | InvalidInput
   | NoSuchHostedZone
@@ -6509,6 +6582,7 @@ export const listResourceRecordSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListResourceRecordSets",
 }));
+
 export type ListReusableDelegationSetsError = InvalidInput | CommonErrors;
 /**
  * Retrieves a list of the reusable delegation sets that are associated with the current
@@ -6527,6 +6601,7 @@ export const listReusableDelegationSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListReusableDelegationSets",
 }));
+
 export type ListTagsForResourceError =
   | InvalidInput
   | NoSuchHealthCheck
@@ -6559,6 +6634,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListTagsForResourcesError =
   | InvalidInput
   | NoSuchHealthCheck
@@ -6591,6 +6667,7 @@ export const listTagsForResources: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResources",
 }));
+
 export type ListTrafficPoliciesError = InvalidInput | CommonErrors;
 /**
  * Gets information about the latest version for every traffic policy that is associated
@@ -6613,6 +6690,7 @@ export const listTrafficPolicies: API.OperationMethod<
   retry: Retry,
   operationName: "ListTrafficPolicies",
 }));
+
 export type ListTrafficPolicyInstancesError =
   | InvalidInput
   | NoSuchTrafficPolicyInstance
@@ -6643,6 +6721,7 @@ export const listTrafficPolicyInstances: API.OperationMethod<
   retry: Retry,
   operationName: "ListTrafficPolicyInstances",
 }));
+
 export type ListTrafficPolicyInstancesByHostedZoneError =
   | InvalidInput
   | NoSuchHostedZone
@@ -6675,6 +6754,7 @@ export const listTrafficPolicyInstancesByHostedZone: API.OperationMethod<
   retry: Retry,
   operationName: "ListTrafficPolicyInstancesByHostedZone",
 }));
+
 export type ListTrafficPolicyInstancesByPolicyError =
   | InvalidInput
   | NoSuchTrafficPolicy
@@ -6707,6 +6787,7 @@ export const listTrafficPolicyInstancesByPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "ListTrafficPolicyInstancesByPolicy",
 }));
+
 export type ListTrafficPolicyVersionsError =
   | InvalidInput
   | NoSuchTrafficPolicy
@@ -6730,6 +6811,7 @@ export const listTrafficPolicyVersions: API.OperationMethod<
   retry: Retry,
   operationName: "ListTrafficPolicyVersions",
 }));
+
 export type ListVPCAssociationAuthorizationsError =
   | InvalidInput
   | InvalidPaginationToken
@@ -6756,6 +6838,7 @@ export const listVPCAssociationAuthorizations: API.OperationMethod<
   retry: Retry,
   operationName: "ListVPCAssociationAuthorizations",
 }));
+
 export type TestDNSAnswerError = InvalidInput | NoSuchHostedZone | CommonErrors;
 /**
  * Gets the value that Amazon Route 53 returns in response to a DNS request for a
@@ -6782,6 +6865,7 @@ export const testDNSAnswer: API.OperationMethod<
   retry: Retry,
   operationName: "TestDNSAnswer",
 }));
+
 export type UpdateHealthCheckError =
   | HealthCheckVersionMismatch
   | InvalidInput
@@ -6807,6 +6891,7 @@ export const updateHealthCheck: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateHealthCheck",
 }));
+
 export type UpdateHostedZoneCommentError =
   | InvalidInput
   | NoSuchHostedZone
@@ -6828,6 +6913,7 @@ export const updateHostedZoneComment: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateHostedZoneComment",
 }));
+
 export type UpdateHostedZoneFeaturesError =
   | InvalidInput
   | LimitsExceeded
@@ -6857,6 +6943,7 @@ export const updateHostedZoneFeatures: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateHostedZoneFeatures",
 }));
+
 export type UpdateTrafficPolicyCommentError =
   | ConcurrentModification
   | InvalidInput
@@ -6878,6 +6965,7 @@ export const updateTrafficPolicyComment: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateTrafficPolicyComment",
 }));
+
 export type UpdateTrafficPolicyInstanceError =
   | ConflictingTypes
   | InvalidInput

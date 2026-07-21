@@ -84,18 +84,91 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type __timestampIso8601 = Date;
-export type MaxResults = number;
-export type __integerMin5Max100 = number;
-
-//# Schemas
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  {
+    ErrorAttribute: S.optional(S.String),
+    Message: S.optional(S.String),
+    ResourceShareErrors: S.optional(
+      S.suspend(() => __listOfResourceShareError).annotate({
+        identifier: "__listOfResourceShareError",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    ErrorAttribute: S.optional(S.String),
+    Message: S.optional(S.String),
+    ResourceShareErrors: S.optional(
+      S.suspend(() => __listOfResourceShareError).annotate({
+        identifier: "__listOfResourceShareError",
+      }),
+    ),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  {
+    ErrorAttribute: S.optional(S.String),
+    Message: S.optional(S.String),
+    ResourceShareErrors: S.optional(
+      S.suspend(() => __listOfResourceShareError).annotate({
+        identifier: "__listOfResourceShareError",
+      }),
+    ),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
+  "InternalServerErrorException",
+  {
+    ErrorAttribute: S.optional(S.String),
+    Message: S.optional(S.String),
+    ResourceShareErrors: S.optional(
+      S.suspend(() => __listOfResourceShareError).annotate({
+        identifier: "__listOfResourceShareError",
+      }),
+    ),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  {
+    ErrorAttribute: S.optional(S.String),
+    Message: S.optional(S.String),
+    ResourceShareErrors: S.optional(
+      S.suspend(() => __listOfResourceShareError).annotate({
+        identifier: "__listOfResourceShareError",
+      }),
+    ),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  {
+    ErrorAttribute: S.optional(S.String),
+    Message: S.optional(S.String),
+    ResourceShareErrors: S.optional(
+      S.suspend(() => __listOfResourceShareError).annotate({
+        identifier: "__listOfResourceShareError",
+      }),
+    ),
+  },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
 export type AuthenticationStrategy =
   | "SIMPLE"
   | "LDAP"
   | "CONFIG_MANAGED"
   | (string & {});
 export const AuthenticationStrategy = /*@__PURE__*/ S.String;
+
 export interface ConfigurationId {
   Id?: string;
   Revision?: number;
@@ -113,6 +186,7 @@ export type DeploymentMode =
   | "CLUSTER_MULTI_AZ"
   | (string & {});
 export const DeploymentMode = /*@__PURE__*/ S.String;
+
 export interface EncryptionOptions {
   KmsKeyId?: string;
   UseAwsOwnedKey?: boolean;
@@ -129,6 +203,7 @@ export const EncryptionOptions = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EncryptionOptions>;
 export type EngineType = "ACTIVEMQ" | "RABBITMQ" | (string & {});
 export const EngineType = /*@__PURE__*/ S.String;
+
 export type __listOf__string = string[];
 export const __listOf__string = /*@__PURE__*/ S.Array(S.String);
 export interface LdapServerMetadataInput {
@@ -195,6 +270,7 @@ export type DayOfWeek =
   | "SUNDAY"
   | (string & {});
 export const DayOfWeek = /*@__PURE__*/ S.String;
+
 export interface WeeklyStartTime {
   DayOfWeek?: DayOfWeek;
   TimeOfDay?: string;
@@ -217,6 +293,7 @@ export const WeeklyStartTime = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WeeklyStartTime>;
 export type BrokerStorageType = "EBS" | "EFS" | (string & {});
 export const BrokerStorageType = /*@__PURE__*/ S.String;
+
 export type __mapOf__string = { [key: string]: string | undefined };
 export const __mapOf__string = /*@__PURE__*/ S.Record(
   S.String,
@@ -250,6 +327,7 @@ export type __listOfUser = User[];
 export const __listOfUser = /*@__PURE__*/ S.Array(User);
 export type DataReplicationMode = "NONE" | "CRDR" | (string & {});
 export const DataReplicationMode = /*@__PURE__*/ S.String;
+
 export interface CreateBrokerRequest {
   AuthenticationStrategy?: AuthenticationStrategy;
   AutoMinorVersionUpgrade?: boolean;
@@ -347,29 +425,6 @@ export const CreateBrokerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBrokerResponse",
 }) as any as S.Schema<CreateBrokerResponse>;
-export interface ResourceShareError {
-  ErrorCode?: string;
-  ResourceShareArn?: string;
-  Status?: string;
-}
-export const ResourceShareError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ErrorCode: S.optional(S.String),
-    ResourceShareArn: S.optional(S.String),
-    Status: S.optional(S.String),
-  }).pipe(
-    S.encodeKeys({
-      ErrorCode: "errorCode",
-      ResourceShareArn: "resourceShareArn",
-      Status: "status",
-    }),
-  ),
-).annotate({
-  identifier: "ResourceShareError",
-}) as any as S.Schema<ResourceShareError>;
-export type __listOfResourceShareError = ResourceShareError[];
-export const __listOfResourceShareError =
-  /*@__PURE__*/ S.Array(ResourceShareError);
 export interface CreateConfigurationRequest {
   AuthenticationStrategy?: AuthenticationStrategy;
   EngineType?: EngineType;
@@ -407,6 +462,7 @@ export const CreateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConfigurationRequest",
 }) as any as S.Schema<CreateConfigurationRequest>;
+export type __timestampIso8601 = Date;
 export interface ConfigurationRevision {
   Created?: Date;
   Description?: string;
@@ -712,6 +768,7 @@ export type BrokerState =
   | "REPLICA"
   | (string & {});
 export const BrokerState = /*@__PURE__*/ S.String;
+
 export type __listOfConfigurationId = ConfigurationId[];
 export const __listOfConfigurationId = /*@__PURE__*/ S.Array(ConfigurationId);
 export interface Configurations {
@@ -809,6 +866,7 @@ export const LogsSummary = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "LogsSummary" }) as any as S.Schema<LogsSummary>;
 export type ChangeType = "CREATE" | "UPDATE" | "DELETE" | (string & {});
 export const ChangeType = /*@__PURE__*/ S.String;
+
 export interface UserSummary {
   PendingChange?: ChangeType;
   Username?: string;
@@ -995,6 +1053,7 @@ export const DescribeBrokerResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeBrokerResponse",
 }) as any as S.Schema<DescribeBrokerResponse>;
+export type MaxResults = number;
 export interface DescribeBrokerEngineTypesRequest {
   EngineType?: string;
   MaxResults?: number;
@@ -1045,6 +1104,7 @@ export const BrokerEngineType = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BrokerEngineType>;
 export type __listOfBrokerEngineType = BrokerEngineType[];
 export const __listOfBrokerEngineType = /*@__PURE__*/ S.Array(BrokerEngineType);
+export type __integerMin5Max100 = number;
 export interface DescribeBrokerEngineTypesResponse {
   BrokerEngineTypes?: BrokerEngineType[];
   MaxResults?: number;
@@ -1309,6 +1369,7 @@ export type SharedResourceErrorCode =
   | "RESOURCE_CONFIGURATION_NOT_FOUND"
   | (string & {});
 export const SharedResourceErrorCode = /*@__PURE__*/ S.String;
+
 export interface SharedResourceError {
   Code?: SharedResourceErrorCode;
   Message?: string;
@@ -1330,8 +1391,10 @@ export type SharedResourceStatus =
   | "ERROR"
   | (string & {});
 export const SharedResourceStatus = /*@__PURE__*/ S.String;
+
 export type SharedResourceType = "RESOURCE_SHARE" | "RESOURCE" | (string & {});
 export const SharedResourceType = /*@__PURE__*/ S.String;
+
 export interface SharedResource {
   DnsNames?: string[];
   Error?: SharedResourceError;
@@ -1758,6 +1821,7 @@ export const ListUsersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ListUsersResponse>;
 export type PromoteMode = "SWITCHOVER" | "FAILOVER" | (string & {});
 export const PromoteMode = /*@__PURE__*/ S.String;
+
 export interface PromoteRequest {
   BrokerId: string;
   Mode?: PromoteMode;
@@ -1978,6 +2042,7 @@ export type SanitizationWarningReason =
   | "INVALID_ATTRIBUTE_VALUE_REMOVED"
   | (string & {});
 export const SanitizationWarningReason = /*@__PURE__*/ S.String;
+
 export interface SanitizationWarning {
   AttributeName?: string;
   ElementName?: string;
@@ -2080,64 +2145,29 @@ export const UpdateUserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateUserResponse",
 }) as any as S.Schema<UpdateUserResponse>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  {
-    ErrorAttribute: S.optional(S.String),
-    Message: S.optional(S.String),
-    ResourceShareErrors: S.optional(__listOfResourceShareError),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  {
-    ErrorAttribute: S.optional(S.String),
-    Message: S.optional(S.String),
-    ResourceShareErrors: S.optional(__listOfResourceShareError),
-  },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  {
-    ErrorAttribute: S.optional(S.String),
-    Message: S.optional(S.String),
-    ResourceShareErrors: S.optional(__listOfResourceShareError),
-  },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerErrorException extends S.TaggedErrorClass<InternalServerErrorException>()(
-  "InternalServerErrorException",
-  {
-    ErrorAttribute: S.optional(S.String),
-    Message: S.optional(S.String),
-    ResourceShareErrors: S.optional(__listOfResourceShareError),
-  },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  {
-    ErrorAttribute: S.optional(S.String),
-    Message: S.optional(S.String),
-    ResourceShareErrors: S.optional(__listOfResourceShareError),
-  },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  {
-    ErrorAttribute: S.optional(S.String),
-    Message: S.optional(S.String),
-    ResourceShareErrors: S.optional(__listOfResourceShareError),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export interface ResourceShareError {
+  ErrorCode?: string;
+  ResourceShareArn?: string;
+  Status?: string;
+}
+export const ResourceShareError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ErrorCode: S.optional(S.String),
+    ResourceShareArn: S.optional(S.String),
+    Status: S.optional(S.String),
+  }).pipe(
+    S.encodeKeys({
+      ErrorCode: "errorCode",
+      ResourceShareArn: "resourceShareArn",
+      Status: "status",
+    }),
+  ),
+).annotate({
+  identifier: "ResourceShareError",
+}) as any as S.Schema<ResourceShareError>;
+export type __listOfResourceShareError = ResourceShareError[];
+export const __listOfResourceShareError =
+  /*@__PURE__*/ S.Array(ResourceShareError);
 export type CreateBrokerError =
   | BadRequestException
   | ConflictException
@@ -2199,6 +2229,7 @@ export const createBroker: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBroker",
 }));
+
 export type CreateConfigurationError =
   | BadRequestException
   | ConflictException
@@ -2226,6 +2257,7 @@ export const createConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateConfiguration",
 }));
+
 export type CreateTagsError =
   | BadRequestException
   | ForbiddenException
@@ -2253,6 +2285,7 @@ export const createTags: API.OperationMethod<
   retry: Retry,
   operationName: "CreateTags",
 }));
+
 export type CreateUserError =
   | BadRequestException
   | ConflictException
@@ -2284,6 +2317,7 @@ export const createUser: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUser",
 }));
+
 export type DeleteBrokerError =
   | BadRequestException
   | ForbiddenException
@@ -2311,6 +2345,7 @@ export const deleteBroker: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBroker",
 }));
+
 export type DeleteConfigurationError =
   | BadRequestException
   | ConflictException
@@ -2340,6 +2375,7 @@ export const deleteConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteConfiguration",
 }));
+
 export type DeleteTagsError =
   | BadRequestException
   | ForbiddenException
@@ -2367,6 +2403,7 @@ export const deleteTags: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteTags",
 }));
+
 export type DeleteUserError =
   | BadRequestException
   | ForbiddenException
@@ -2394,6 +2431,7 @@ export const deleteUser: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUser",
 }));
+
 export type DescribeBrokerError =
   | BadRequestException
   | ForbiddenException
@@ -2421,6 +2459,7 @@ export const describeBroker: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBroker",
 }));
+
 export type DescribeBrokerEngineTypesError =
   | BadRequestException
   | ForbiddenException
@@ -2446,6 +2485,7 @@ export const describeBrokerEngineTypes: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBrokerEngineTypes",
 }));
+
 export type DescribeBrokerInstanceOptionsError =
   | BadRequestException
   | ForbiddenException
@@ -2471,6 +2511,7 @@ export const describeBrokerInstanceOptions: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeBrokerInstanceOptions",
 }));
+
 export type DescribeConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -2498,6 +2539,7 @@ export const describeConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConfiguration",
 }));
+
 export type DescribeConfigurationRevisionError =
   | BadRequestException
   | ForbiddenException
@@ -2525,6 +2567,7 @@ export const describeConfigurationRevision: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeConfigurationRevision",
 }));
+
 export type DescribeSharedResourcesError =
   | BadRequestException
   | ForbiddenException
@@ -2573,6 +2616,7 @@ export const describeSharedResources: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type DescribeUserError =
   | BadRequestException
   | ForbiddenException
@@ -2600,6 +2644,7 @@ export const describeUser: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeUser",
 }));
+
 export type ListBrokersError =
   | BadRequestException
   | ForbiddenException
@@ -2646,6 +2691,7 @@ export const listBrokers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListConfigurationRevisionsError =
   | BadRequestException
   | ForbiddenException
@@ -2673,6 +2719,7 @@ export const listConfigurationRevisions: API.OperationMethod<
   retry: Retry,
   operationName: "ListConfigurationRevisions",
 }));
+
 export type ListConfigurationsError =
   | BadRequestException
   | ForbiddenException
@@ -2698,6 +2745,7 @@ export const listConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "ListConfigurations",
 }));
+
 export type ListTagsError =
   | BadRequestException
   | ForbiddenException
@@ -2725,6 +2773,7 @@ export const listTags: API.OperationMethod<
   retry: Retry,
   operationName: "ListTags",
 }));
+
 export type ListUsersError =
   | BadRequestException
   | ForbiddenException
@@ -2752,6 +2801,7 @@ export const listUsers: API.OperationMethod<
   retry: Retry,
   operationName: "ListUsers",
 }));
+
 export type PromoteError =
   | BadRequestException
   | ForbiddenException
@@ -2779,6 +2829,7 @@ export const promote: API.OperationMethod<
   retry: Retry,
   operationName: "Promote",
 }));
+
 export type RebootBrokerError =
   | BadRequestException
   | ForbiddenException
@@ -2806,6 +2857,7 @@ export const rebootBroker: API.OperationMethod<
   retry: Retry,
   operationName: "RebootBroker",
 }));
+
 export type UpdateBrokerError =
   | BadRequestException
   | ConflictException
@@ -2835,6 +2887,7 @@ export const updateBroker: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBroker",
 }));
+
 export type UpdateConfigurationError =
   | BadRequestException
   | ConflictException
@@ -2864,6 +2917,7 @@ export const updateConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateConfiguration",
 }));
+
 export type UpdateUserError =
   | BadRequestException
   | ConflictException

@@ -87,804 +87,173 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type BedrockAgentcoreResourceArn = string;
-export type NonBlankString = string;
-export type ResourcePolicyBody = string;
-export type TokenVaultIdType = string;
-export type KmsKeyArn = string;
-export type TaggableResourcesArn = string;
-export type TagKey = string;
-export type TagValue = string;
-export type AgentRuntimeId = string;
-export type EndpointName = string | redacted.Redacted<string>;
-export type AgentRuntimeVersion = string;
-export type AgentEndpointDescription = string;
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
+  "ConcurrentModificationException",
+  { message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class DecryptionFailure extends S.TaggedErrorClass<DecryptionFailure>()(
+  "DecryptionFailure",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class EncryptionFailure extends S.TaggedErrorClass<EncryptionFailure>()(
+  "EncryptionFailure",
+  { message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
+  "ResourceLimitExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
+  "ServiceException",
+  { message: S.optional(S.String) },
+  T.all(T.HttpError(500), T.Retryable()),
+).pipe(C.withServerError, C.withRetryableError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
+  "ThrottledException",
+  { message: S.optional(S.String) },
+  T.all(T.HttpError(429), T.Retryable()),
+).pipe(C.withThrottlingError, C.withRetryableError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  {
+    message: S.String,
+    reason: S.suspend(() => ValidationExceptionReason).annotate({
+      identifier: "ValidationExceptionReason",
+    }),
+    fieldList: S.optional(
+      S.suspend(() => ValidationExceptionFieldList).annotate({
+        identifier: "ValidationExceptionFieldList",
+      }),
+    ),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export type DatasetId = string;
 export type ClientToken = string;
-export type AgentRuntimeEndpointArn = string;
-export type AgentRuntimeArn = string;
-export type AgentRuntimeEndpointId = string;
-export type MaxResults = number;
-export type NextToken = string;
+export type SensitiveJson = unknown;
+export type DatasetExampleList = any[];
+export const DatasetExampleList = /*@__PURE__*/ S.Array(S.Any);
+export interface InlineExamplesSource {
+  examples: any[];
+}
+export const InlineExamplesSource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ examples: DatasetExampleList }),
+).annotate({
+  identifier: "InlineExamplesSource",
+}) as any as S.Schema<InlineExamplesSource>;
+export type S3Uri = string;
+export interface S3Source {
+  s3Uri: string;
+}
+export const S3Source = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ s3Uri: S.String }),
+).annotate({ identifier: "S3Source" }) as any as S.Schema<S3Source>;
+export type DataSourceType =
+  | { inlineExamples: InlineExamplesSource; s3Source?: never }
+  | { inlineExamples?: never; s3Source: S3Source };
+export const DataSourceType = /*@__PURE__*/ S.Union([
+  S.Struct({ inlineExamples: InlineExamplesSource }),
+  S.Struct({ s3Source: S3Source }),
+]);
+export interface AddDatasetExamplesRequest {
+  datasetId: string;
+  clientToken?: string;
+  source: DataSourceType;
+}
+export const AddDatasetExamplesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    source: DataSourceType,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/datasets/{datasetId}/examples/add" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "AddDatasetExamplesRequest",
+}) as any as S.Schema<AddDatasetExamplesRequest>;
+export type DatasetArn = string;
+export type DatasetStatus =
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING"
+  | "ACTIVE"
+  | "CREATE_FAILED"
+  | "UPDATE_FAILED"
+  | "DELETE_FAILED"
+  | (string & {});
+export const DatasetStatus = /*@__PURE__*/ S.String;
+
+export type ExampleId = string;
+export type ExampleIdList = string[];
+export const ExampleIdList = /*@__PURE__*/ S.Array(S.String);
+export interface AddDatasetExamplesResponse {
+  datasetArn: string;
+  datasetId: string;
+  status: DatasetStatus;
+  addedCount: number;
+  updatedAt: Date;
+  exampleIds: string[];
+}
+export const AddDatasetExamplesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetArn: S.String,
+    datasetId: S.String,
+    status: DatasetStatus,
+    addedCount: S.Number,
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    exampleIds: ExampleIdList,
+  }),
+).annotate({
+  identifier: "AddDatasetExamplesResponse",
+}) as any as S.Schema<AddDatasetExamplesResponse>;
 export type AgentRuntimeName = string;
 export type RuntimeContainerUri = string;
-export type EntryPoint = string;
-export type RoleArn = string;
-export type SecurityGroupId = string;
-export type SubnetId = string;
-export type Description = string | redacted.Redacted<string>;
-export type DiscoveryUrl = string;
-export type AllowedAudience = string;
-export type AllowedClient = string;
-export type AllowedScopeType = string;
-export type InboundTokenClaimNameType = string;
-export type MatchValueString = string;
-export type ResourceConfigurationIdentifier = string;
-export type VpcIdentifier = string;
-export type SecurityGroupIdentifier = string;
-export type RoutingDomain = string;
-export type PrivateEndpointOverrideDomain = string;
-export type WorkloadIdentityNameType = string;
-export type HeaderName = string;
-export type EnvironmentVariableKey = string;
-export type EnvironmentVariableValue = string;
-export type MountPath = string;
-export type S3FilesAccessPointArn = string;
-export type EfsAccessPointArn = string;
-export type WorkloadIdentityArn = string;
-export type CredentialProviderName = string;
-export type DefaultApiKeyType = string | redacted.Redacted<string>;
-export type SecretIdType = string;
-export type SecretJsonKeyType = string;
-export type SecretArn = string;
-export type ApiKeyCredentialProviderArnType = string;
-export type BrowserProfileName = string;
-export type BrowserProfileId = string;
-export type BrowserProfileArn = string;
-export type BrowserSessionId = string;
-export type BrowserId = string;
-export type SandboxName = string;
-export type ToolSecretArn = string;
-export type BrowserArn = string;
-export type CodeInterpreterId = string;
-export type CodeInterpreterArn = string;
-export type ConfigurationBundleName = string;
-export type ConfigurationBundleDescription = string | redacted.Redacted<string>;
-export type ComponentIdentifier = string;
-export type BranchName = string;
-export type ConfigurationBundleArn = string;
-export type ConfigurationBundleId = string;
-export type ConfigurationBundleVersion = string;
-export type DatasetName = string;
-export type SensitiveJson = unknown;
-export type S3Uri = string;
-export type DatasetArn = string;
-export type DatasetId = string;
-export type DatasetVersion = string;
-export type DownloadUrl = string | redacted.Redacted<string>;
-export type ExampleId = string;
-export type CustomEvaluatorName = string;
-export type EvaluatorDescription = string | redacted.Redacted<string>;
-export type EvaluatorInstructions = string | redacted.Redacted<string>;
-export type ModelId = string;
-export type NonEmptyString = string;
-export type AdditionalModelRequestFields = unknown;
-export type LambdaArn = string;
-export type CustomEvaluatorArn = string;
-export type EvaluatorId = string;
-export type EvaluatorArn = string;
-export type EvaluatorName = string;
-export type GatewayName = string;
-export type GatewayDescription = string | redacted.Redacted<string>;
-export type McpVersion = string;
-export type McpInstructions = string | redacted.Redacted<string>;
-export type LambdaFunctionArn = string;
-export type GatewayPolicyEngineArn = string;
-export type GatewayArn = string;
-export type GatewayId = string;
-export type GatewayUrl = string;
-export type StatusReason = string;
-export type WebAclArn = string;
-export type GatewayIdentifier = string;
-export type GatewayMaxResults = number;
-export type GatewayNextToken = string;
-export type GatewayRulePriority = number;
-export type IamPrincipalArn = string;
-export type MatchPathPattern = string;
-export type GatewayConfigurationBundleArn = string;
-export type TrafficSplitMetadataKey = string;
-export type TrafficSplitMetadataValue = string;
-export type TargetName = string | redacted.Redacted<string>;
-export type GatewayRuleDescription = string;
-export type GatewayRuleId = string;
-export type GatewayRuleMaxResults = number;
-export type GatewayRuleNextToken = string;
-export type TargetDescription = string | redacted.Redacted<string>;
-export type S3BucketUri = string;
-export type AwsAccountId = string;
-export type InlinePayload = string | redacted.Redacted<string>;
-export type TargetResourcePriority = number;
-export type ConnectorId = string;
-export type RuntimeArn = string;
-export type RuntimeQualifier = string;
-export type PassthroughEndpoint = string;
-export type StickinessTimeout = number;
-export type InferenceConnectorId = string;
-export type InferenceOperationPath = string;
-export type ModelPattern = string;
-export type OAuthCredentialProviderArn = string;
-export type OAuthScope = string;
-export type OAuthCustomParametersKey = string;
-export type OAuthCustomParametersValue = string | redacted.Redacted<string>;
-export type OAuthDefaultReturnUrl = string;
-export type ApiKeyCredentialProviderArn = string;
-export type ApiKeyCredentialParameterName = string;
-export type ApiKeyCredentialPrefix = string;
-export type HttpHeaderName = string;
-export type HttpQueryParameterName = string;
-export type TargetId = string;
-export type DomainName = string;
-export type ResourceGatewayArn = string;
-export type ResourceAssociationArn = string;
-export type TargetMaxResults = number;
-export type TargetNextToken = string;
-export type HarnessId = string;
-export type HarnessEndpointName = string;
-export type HarnessVersion = string;
-export type HarnessEndpointDescription = string;
-export type HarnessName = string;
-export type HarnessEndpointArn = string;
-export type MaxTokens = number;
-export type Temperature = number;
-export type TopP = number;
-export type ApiKeyArn = string;
-export type TopK = number;
-export type HarnessLiteLlmApiBase = string | redacted.Redacted<string>;
-export type SensitiveText = string | redacted.Redacted<string>;
-export type HarnessToolName = string;
-export type HarnessRemoteMcpUrl = string | redacted.Redacted<string>;
-export type HttpHeaderKey = string;
-export type HttpHeaderValue = string;
-export type HarnessBrowserArn = string;
-export type HarnessInlineFunctionDescription =
-  | string
-  | redacted.Redacted<string>;
-export type HarnessCodeInterpreterArn = string;
-export type HarnessSkillPath = string;
-export type HarnessSkillS3Uri = string;
-export type HarnessSkillGitUrl = string;
-export type HarnessAwsSkillPath = string;
-export type HarnessAllowedTool = string;
-export type MemoryArn = string;
-export type HarnessArn = string;
-export type Name = string;
-export type Arn = string;
-export type Namespace = string;
-export type MetadataKey = string;
-export type LlmExtractionInstruction = string | redacted.Redacted<string>;
-export type Definition = string | redacted.Redacted<string>;
-export type AllowedStringValue = string;
-export type AllowedStringListValue = string;
-export type Prompt = string | redacted.Redacted<string>;
-export type MemoryId = string;
-export type MemoryStrategyId = string;
-export type DiscoveryUrlType = string;
-export type IssuerUrlType = string;
-export type AuthorizationEndpointType = string;
-export type TokenEndpointType = string;
-export type ResponseType = string;
-export type TokenAuthMethod = string;
-export type DefaultClientIdType = string;
-export type DefaultClientSecretType = string | redacted.Redacted<string>;
-export type ScopeType = string;
-export type ClientIdType = string;
-export type TenantIdType = string;
-export type CredentialProviderArnType = string;
-export type EvaluationConfigName = string;
-export type EvaluationConfigDescription = string | redacted.Redacted<string>;
-export type SamplingPercentage = number;
-export type LogGroupName = string;
-export type ServiceName = string;
-export type InsightId = string;
-export type OnlineEvaluationConfigArn = string;
-export type OnlineEvaluationConfigId = string;
-export type CoinbaseCdpApiKeyIdType = string;
-export type DefaultCoinbaseCdpApiKeySecretType =
-  | string
-  | redacted.Redacted<string>;
-export type DefaultCoinbaseCdpWalletSecretType =
-  | string
-  | redacted.Redacted<string>;
-export type StripePrivyAppIdType = string;
-export type DefaultStripePrivyAppSecretType =
-  | string
-  | redacted.Redacted<string>;
-export type DefaultStripePrivyAuthorizationPrivateKeyType =
-  | string
-  | redacted.Redacted<string>;
-export type StripePrivyAuthorizationIdType = string;
-export type PaymentCredentialProviderArnType = string;
-export type PaymentManagerName = string;
-export type PaymentsDescription = string;
-export type PaymentManagerArn = string;
-export type PaymentManagerId = string;
-export type PaymentConnectorName = string;
-export type PaymentCredentialProviderArn = string;
-export type PaymentConnectorId = string;
-export type PolicyEngineName = string;
-export type ResourceId = string;
-export type PolicyEngineArn = string;
-export type NaturalLanguage = string;
-export type PolicyGenerationName = string;
-export type PolicyGenerationArn = string;
-export type Statement = string;
-export type PolicyName = string;
-export type PolicyArn = string;
-export type RegistryIdentifier = string;
-export type RegistryRecordName = string;
-export type SchemaVersion = string;
-export type InlineContent = string;
-export type RegistryRecordVersion = string;
-export type McpServerUrl = string;
-export type CredentialProviderArn = string;
-export type IamRoleArn = string;
-export type IamSigningServiceName = string;
-export type IamSigningRegion = string;
-export type RegistryRecordArn = string;
-export type RecordIdentifier = string;
-export type RegistryArn = string;
-export type RegistryRecordId = string;
-export type RegistryName = string;
-export type RegistryId = string;
-export type ResourceOauth2ReturnUrlType = string;
-export type WorkloadIdentityArnType = string;
-
-//# Schemas
-export interface DeleteResourcePolicyRequest {
-  resourceArn: string;
-}
-export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/resourcepolicy/{resourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteResourcePolicyRequest",
-}) as any as S.Schema<DeleteResourcePolicyRequest>;
-export interface DeleteResourcePolicyResponse {}
-export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteResourcePolicyResponse",
-}) as any as S.Schema<DeleteResourcePolicyResponse>;
-export type ValidationExceptionReason =
-  | "CannotParse"
-  | "FieldValidationFailed"
-  | "IdempotentParameterMismatchException"
-  | "EventInOtherSession"
-  | "ResourceConflict"
-  | (string & {});
-export const ValidationExceptionReason = /*@__PURE__*/ S.String;
-export interface ValidationExceptionField {
-  name: string;
-  message: string;
-}
-export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, message: S.String }),
-).annotate({
-  identifier: "ValidationExceptionField",
-}) as any as S.Schema<ValidationExceptionField>;
-export type ValidationExceptionFieldList = ValidationExceptionField[];
-export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
-  ValidationExceptionField,
-);
-export interface GetResourcePolicyRequest {
-  resourceArn: string;
-}
-export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/resourcepolicy/{resourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetResourcePolicyRequest",
-}) as any as S.Schema<GetResourcePolicyRequest>;
-export interface GetResourcePolicyResponse {
-  policy?: string;
-}
-export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policy: S.optional(S.String) }),
-).annotate({
-  identifier: "GetResourcePolicyResponse",
-}) as any as S.Schema<GetResourcePolicyResponse>;
-export interface GetTokenVaultRequest {
-  tokenVaultId?: string;
-}
-export const GetTokenVaultRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tokenVaultId: S.optional(S.String) }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/identities/get-token-vault" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetTokenVaultRequest",
-}) as any as S.Schema<GetTokenVaultRequest>;
-export type KeyType =
-  | "CustomerManagedKey"
-  | "ServiceManagedKey"
-  | (string & {});
-export const KeyType = /*@__PURE__*/ S.String;
-export interface KmsConfiguration {
-  keyType: KeyType;
-  kmsKeyArn?: string;
-}
-export const KmsConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ keyType: KeyType, kmsKeyArn: S.optional(S.String) }),
-).annotate({
-  identifier: "KmsConfiguration",
-}) as any as S.Schema<KmsConfiguration>;
-export interface GetTokenVaultResponse {
-  tokenVaultId: string;
-  kmsConfiguration: KmsConfiguration;
-  lastModifiedDate: Date;
-}
-export const GetTokenVaultResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenVaultId: S.String,
-    kmsConfiguration: KmsConfiguration,
-    lastModifiedDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "GetTokenVaultResponse",
-}) as any as S.Schema<GetTokenVaultResponse>;
-export interface ListTagsForResourceRequest {
-  resourceArn: string;
-}
-export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListTagsForResourceRequest",
-}) as any as S.Schema<ListTagsForResourceRequest>;
-export type TagsMap = { [key: string]: string | undefined };
-export const TagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
-export interface ListTagsForResourceResponse {
-  tags?: { [key: string]: string | undefined };
-}
-export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ tags: S.optional(TagsMap) }),
-).annotate({
-  identifier: "ListTagsForResourceResponse",
-}) as any as S.Schema<ListTagsForResourceResponse>;
-export interface PutResourcePolicyRequest {
-  resourceArn: string;
-  policy: string;
-}
-export const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    policy: S.String,
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/resourcepolicy/{resourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "PutResourcePolicyRequest",
-}) as any as S.Schema<PutResourcePolicyRequest>;
-export interface PutResourcePolicyResponse {
-  policy: string;
-}
-export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policy: S.String }),
-).annotate({
-  identifier: "PutResourcePolicyResponse",
-}) as any as S.Schema<PutResourcePolicyResponse>;
-export interface SetTokenVaultCMKRequest {
-  tokenVaultId?: string;
-  kmsConfiguration: KmsConfiguration;
-}
-export const SetTokenVaultCMKRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenVaultId: S.optional(S.String),
-    kmsConfiguration: KmsConfiguration,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/identities/set-token-vault-cmk" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "SetTokenVaultCMKRequest",
-}) as any as S.Schema<SetTokenVaultCMKRequest>;
-export interface SetTokenVaultCMKResponse {
-  tokenVaultId: string;
-  kmsConfiguration: KmsConfiguration;
-  lastModifiedDate: Date;
-}
-export const SetTokenVaultCMKResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenVaultId: S.String,
-    kmsConfiguration: KmsConfiguration,
-    lastModifiedDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "SetTokenVaultCMKResponse",
-}) as any as S.Schema<SetTokenVaultCMKResponse>;
-export interface TagResourceRequest {
-  resourceArn: string;
-  tags: { [key: string]: string | undefined };
-}
-export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tags: TagsMap,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "TagResourceRequest",
-}) as any as S.Schema<TagResourceRequest>;
-export interface TagResourceResponse {}
-export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "TagResourceResponse",
-}) as any as S.Schema<TagResourceResponse>;
-export type TagKeyList = string[];
-export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
-export interface UntagResourceRequest {
-  resourceArn: string;
-  tagKeys: string[];
-}
-export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-    tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UntagResourceRequest",
-}) as any as S.Schema<UntagResourceRequest>;
-export interface UntagResourceResponse {}
-export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UntagResourceResponse",
-}) as any as S.Schema<UntagResourceResponse>;
-export interface CreateAgentRuntimeEndpointRequest {
-  agentRuntimeId: string;
-  name: string | redacted.Redacted<string>;
-  agentRuntimeVersion?: string;
-  description?: string;
-  clientToken?: string;
-  tags?: { [key: string]: string | undefined };
-}
-export const CreateAgentRuntimeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
-    name: SensitiveString,
-    agentRuntimeVersion: S.optional(S.String),
-    description: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(TagsMap),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/runtimes/{agentRuntimeId}/runtime-endpoints/",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateAgentRuntimeEndpointRequest",
-}) as any as S.Schema<CreateAgentRuntimeEndpointRequest>;
-export type AgentRuntimeEndpointStatus =
-  | "CREATING"
-  | "CREATE_FAILED"
-  | "UPDATING"
-  | "UPDATE_FAILED"
-  | "READY"
-  | "DELETING"
-  | (string & {});
-export const AgentRuntimeEndpointStatus = /*@__PURE__*/ S.String;
-export interface CreateAgentRuntimeEndpointResponse {
-  targetVersion: string;
-  agentRuntimeEndpointArn: string;
-  agentRuntimeArn: string;
-  agentRuntimeId?: string;
-  endpointName?: string | redacted.Redacted<string>;
-  status: AgentRuntimeEndpointStatus;
-  createdAt: Date;
-}
-export const CreateAgentRuntimeEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetVersion: S.String,
-    agentRuntimeEndpointArn: S.String,
-    agentRuntimeArn: S.String,
-    agentRuntimeId: S.optional(S.String),
-    endpointName: S.optional(SensitiveString),
-    status: AgentRuntimeEndpointStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "CreateAgentRuntimeEndpointResponse",
-}) as any as S.Schema<CreateAgentRuntimeEndpointResponse>;
-export interface GetAgentRuntimeEndpointRequest {
-  agentRuntimeId: string;
-  endpointName: string | redacted.Redacted<string>;
-}
-export const GetAgentRuntimeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
-    endpointName: SensitiveString.pipe(T.HttpLabel("endpointName")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/runtimes/{agentRuntimeId}/runtime-endpoints/{endpointName}/",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAgentRuntimeEndpointRequest",
-}) as any as S.Schema<GetAgentRuntimeEndpointRequest>;
-export interface GetAgentRuntimeEndpointResponse {
-  liveVersion?: string;
-  targetVersion?: string;
-  agentRuntimeEndpointArn: string;
-  agentRuntimeArn: string;
-  description?: string;
-  status: AgentRuntimeEndpointStatus;
-  createdAt: Date;
-  lastUpdatedAt: Date;
-  failureReason?: string;
-  name: string | redacted.Redacted<string>;
-  id: string;
-}
-export const GetAgentRuntimeEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    liveVersion: S.optional(S.String),
-    targetVersion: S.optional(S.String),
-    agentRuntimeEndpointArn: S.String,
-    agentRuntimeArn: S.String,
-    description: S.optional(S.String),
-    status: AgentRuntimeEndpointStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    failureReason: S.optional(S.String),
-    name: SensitiveString,
-    id: S.String,
-  }),
-).annotate({
-  identifier: "GetAgentRuntimeEndpointResponse",
-}) as any as S.Schema<GetAgentRuntimeEndpointResponse>;
-export interface UpdateAgentRuntimeEndpointRequest {
-  agentRuntimeId: string;
-  endpointName: string | redacted.Redacted<string>;
-  agentRuntimeVersion?: string;
-  description?: string;
-  clientToken?: string;
-}
-export const UpdateAgentRuntimeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
-    endpointName: SensitiveString.pipe(T.HttpLabel("endpointName")),
-    agentRuntimeVersion: S.optional(S.String),
-    description: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/runtimes/{agentRuntimeId}/runtime-endpoints/{endpointName}/",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateAgentRuntimeEndpointRequest",
-}) as any as S.Schema<UpdateAgentRuntimeEndpointRequest>;
-export interface UpdateAgentRuntimeEndpointResponse {
-  liveVersion?: string;
-  targetVersion?: string;
-  agentRuntimeEndpointArn: string;
-  agentRuntimeArn: string;
-  status: AgentRuntimeEndpointStatus;
-  createdAt: Date;
-  lastUpdatedAt: Date;
-}
-export const UpdateAgentRuntimeEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    liveVersion: S.optional(S.String),
-    targetVersion: S.optional(S.String),
-    agentRuntimeEndpointArn: S.String,
-    agentRuntimeArn: S.String,
-    status: AgentRuntimeEndpointStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "UpdateAgentRuntimeEndpointResponse",
-}) as any as S.Schema<UpdateAgentRuntimeEndpointResponse>;
-export interface DeleteAgentRuntimeEndpointRequest {
-  agentRuntimeId: string;
-  endpointName: string | redacted.Redacted<string>;
-  clientToken?: string;
-}
-export const DeleteAgentRuntimeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
-    endpointName: SensitiveString.pipe(T.HttpLabel("endpointName")),
-    clientToken: S.optional(S.String).pipe(
-      T.HttpQuery("clientToken"),
-      T.IdempotencyToken(),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/runtimes/{agentRuntimeId}/runtime-endpoints/{endpointName}/",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteAgentRuntimeEndpointRequest",
-}) as any as S.Schema<DeleteAgentRuntimeEndpointRequest>;
-export interface DeleteAgentRuntimeEndpointResponse {
-  status: AgentRuntimeEndpointStatus;
-  agentRuntimeId?: string;
-  endpointName?: string | redacted.Redacted<string>;
-}
-export const DeleteAgentRuntimeEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: AgentRuntimeEndpointStatus,
-    agentRuntimeId: S.optional(S.String),
-    endpointName: S.optional(SensitiveString),
-  }),
-).annotate({
-  identifier: "DeleteAgentRuntimeEndpointResponse",
-}) as any as S.Schema<DeleteAgentRuntimeEndpointResponse>;
-export interface ListAgentRuntimeEndpointsRequest {
-  agentRuntimeId: string;
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListAgentRuntimeEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/runtimes/{agentRuntimeId}/runtime-endpoints/",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAgentRuntimeEndpointsRequest",
-}) as any as S.Schema<ListAgentRuntimeEndpointsRequest>;
-export interface AgentRuntimeEndpoint {
-  name: string | redacted.Redacted<string>;
-  liveVersion?: string;
-  targetVersion?: string;
-  agentRuntimeEndpointArn: string;
-  agentRuntimeArn: string;
-  status: AgentRuntimeEndpointStatus;
-  id: string;
-  description?: string;
-  createdAt: Date;
-  lastUpdatedAt: Date;
-}
-export const AgentRuntimeEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SensitiveString,
-    liveVersion: S.optional(S.String),
-    targetVersion: S.optional(S.String),
-    agentRuntimeEndpointArn: S.String,
-    agentRuntimeArn: S.String,
-    status: AgentRuntimeEndpointStatus,
-    id: S.String,
-    description: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "AgentRuntimeEndpoint",
-}) as any as S.Schema<AgentRuntimeEndpoint>;
-export type AgentRuntimeEndpoints = AgentRuntimeEndpoint[];
-export const AgentRuntimeEndpoints =
-  /*@__PURE__*/ S.Array(AgentRuntimeEndpoint);
-export interface ListAgentRuntimeEndpointsResponse {
-  runtimeEndpoints: AgentRuntimeEndpoint[];
-  nextToken?: string;
-}
-export const ListAgentRuntimeEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    runtimeEndpoints: AgentRuntimeEndpoints,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListAgentRuntimeEndpointsResponse",
-}) as any as S.Schema<ListAgentRuntimeEndpointsResponse>;
 export interface ContainerConfiguration {
   containerUri: string;
 }
@@ -916,6 +285,8 @@ export type AgentManagedRuntimeType =
   | "NODE_22"
   | (string & {});
 export const AgentManagedRuntimeType = /*@__PURE__*/ S.String;
+
+export type EntryPoint = string;
 export type EntryPoints = string[];
 export const EntryPoints = /*@__PURE__*/ S.Array(S.String);
 export interface CodeConfiguration {
@@ -942,10 +313,14 @@ export const AgentRuntimeArtifact = /*@__PURE__*/ S.Union([
   S.Struct({ containerConfiguration: ContainerConfiguration }),
   S.Struct({ codeConfiguration: CodeConfiguration }),
 ]);
+export type RoleArn = string;
 export type NetworkMode = "PUBLIC" | "VPC" | (string & {});
 export const NetworkMode = /*@__PURE__*/ S.String;
+
+export type SecurityGroupId = string;
 export type SecurityGroups = string[];
 export const SecurityGroups = /*@__PURE__*/ S.Array(S.String);
+export type SubnetId = string;
 export type Subnets = string[];
 export const Subnets = /*@__PURE__*/ S.Array(S.String);
 export interface VpcConfig {
@@ -972,17 +347,25 @@ export const NetworkConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NetworkConfiguration",
 }) as any as S.Schema<NetworkConfiguration>;
+export type Description = string | redacted.Redacted<string>;
+export type DiscoveryUrl = string;
+export type AllowedAudience = string;
 export type AllowedAudienceList = string[];
 export const AllowedAudienceList = /*@__PURE__*/ S.Array(S.String);
+export type AllowedClient = string;
 export type AllowedClientsList = string[];
 export const AllowedClientsList = /*@__PURE__*/ S.Array(S.String);
+export type AllowedScopeType = string;
 export type AllowedScopesType = string[];
 export const AllowedScopesType = /*@__PURE__*/ S.Array(S.String);
+export type InboundTokenClaimNameType = string;
 export type InboundTokenClaimValueType =
   | "STRING"
   | "STRING_ARRAY"
   | (string & {});
 export const InboundTokenClaimValueType = /*@__PURE__*/ S.String;
+
+export type MatchValueString = string;
 export type MatchValueStringList = string[];
 export const MatchValueStringList = /*@__PURE__*/ S.Array(S.String);
 export type ClaimMatchValueType =
@@ -998,6 +381,7 @@ export type ClaimMatchOperatorType =
   | "CONTAINS_ANY"
   | (string & {});
 export const ClaimMatchOperatorType = /*@__PURE__*/ S.String;
+
 export interface AuthorizingClaimMatchValueType {
   claimMatchValue: ClaimMatchValueType;
   claimMatchOperator: ClaimMatchOperatorType;
@@ -1028,18 +412,30 @@ export type CustomClaimValidationsType = CustomClaimValidationType[];
 export const CustomClaimValidationsType = /*@__PURE__*/ S.Array(
   CustomClaimValidationType,
 );
+export type ResourceConfigurationIdentifier = string;
 export type SelfManagedLatticeResource = {
   resourceConfigurationIdentifier: string;
 };
 export const SelfManagedLatticeResource = /*@__PURE__*/ S.Union([
   S.Struct({ resourceConfigurationIdentifier: S.String }),
 ]);
+export type VpcIdentifier = string;
 export type SubnetIds = string[];
 export const SubnetIds = /*@__PURE__*/ S.Array(S.String);
 export type EndpointIpAddressType = "IPV4" | "IPV6" | (string & {});
 export const EndpointIpAddressType = /*@__PURE__*/ S.String;
+
+export type SecurityGroupIdentifier = string;
 export type SecurityGroupIds = string[];
 export const SecurityGroupIds = /*@__PURE__*/ S.Array(S.String);
+export type TagKey = string;
+export type TagValue = string;
+export type TagsMap = { [key: string]: string | undefined };
+export const TagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export type RoutingDomain = string;
 export interface ManagedVpcResource {
   vpcIdentifier: string;
   subnetIds: string[];
@@ -1073,6 +469,7 @@ export const PrivateEndpoint = /*@__PURE__*/ S.Union([
   S.Struct({ selfManagedLatticeResource: SelfManagedLatticeResource }),
   S.Struct({ managedVpcResource: ManagedVpcResource }),
 ]);
+export type PrivateEndpointOverrideDomain = string;
 export interface PrivateEndpointOverride {
   domain: string;
   privateEndpoint: PrivateEndpoint;
@@ -1086,6 +483,7 @@ export type PrivateEndpointOverrides = PrivateEndpointOverride[];
 export const PrivateEndpointOverrides = /*@__PURE__*/ S.Array(
   PrivateEndpointOverride,
 );
+export type BedrockAgentcoreResourceArn = string;
 export interface HostingEnvironment {
   arn: string;
 }
@@ -1097,6 +495,7 @@ export const HostingEnvironment = /*@__PURE__*/ S.suspend(() =>
 export type HostingEnvironmentListType = HostingEnvironment[];
 export const HostingEnvironmentListType =
   /*@__PURE__*/ S.Array(HostingEnvironment);
+export type WorkloadIdentityNameType = string;
 export type WorkloadIdentityNameListType = string[];
 export const WorkloadIdentityNameListType = /*@__PURE__*/ S.Array(S.String);
 export interface AllowedWorkloadConfiguration {
@@ -1141,6 +540,7 @@ export type AuthorizerConfiguration = {
 export const AuthorizerConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ customJWTAuthorizer: CustomJWTAuthorizerConfiguration }),
 ]);
+export type HeaderName = string;
 export type RequestHeaderAllowlist = string[];
 export const RequestHeaderAllowlist = /*@__PURE__*/ S.Array(S.String);
 export type RequestHeaderConfiguration = { requestHeaderAllowlist: string[] };
@@ -1149,6 +549,7 @@ export const RequestHeaderConfiguration = /*@__PURE__*/ S.Union([
 ]);
 export type ServerProtocol = "MCP" | "HTTP" | "A2A" | "AGUI" | (string & {});
 export const ServerProtocol = /*@__PURE__*/ S.String;
+
 export interface ProtocolConfiguration {
   serverProtocol: ServerProtocol;
 }
@@ -1169,11 +570,14 @@ export const LifecycleConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LifecycleConfiguration",
 }) as any as S.Schema<LifecycleConfiguration>;
+export type EnvironmentVariableKey = string;
+export type EnvironmentVariableValue = string;
 export type EnvironmentVariablesMap = { [key: string]: string | undefined };
 export const EnvironmentVariablesMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String.pipe(S.optional),
 );
+export type MountPath = string;
 export interface SessionStorageConfiguration {
   mountPath: string;
 }
@@ -1182,6 +586,7 @@ export const SessionStorageConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SessionStorageConfiguration",
 }) as any as S.Schema<SessionStorageConfiguration>;
+export type S3FilesAccessPointArn = string;
 export interface S3FilesAccessPointConfiguration {
   accessPointArn: string;
   mountPath: string;
@@ -1191,6 +596,7 @@ export const S3FilesAccessPointConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3FilesAccessPointConfiguration",
 }) as any as S.Schema<S3FilesAccessPointConfiguration>;
+export type EfsAccessPointArn = string;
 export interface EfsAccessPointConfiguration {
   accessPointArn: string;
   mountPath: string;
@@ -1268,6 +674,8 @@ export const CreateAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAgentRuntimeRequest",
 }) as any as S.Schema<CreateAgentRuntimeRequest>;
+export type AgentRuntimeArn = string;
+export type WorkloadIdentityArn = string;
 export interface WorkloadIdentityDetails {
   workloadIdentityArn?: string;
 }
@@ -1276,6 +684,8 @@ export const WorkloadIdentityDetails = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkloadIdentityDetails",
 }) as any as S.Schema<WorkloadIdentityDetails>;
+export type AgentRuntimeId = string;
+export type AgentRuntimeVersion = string;
 export type AgentRuntimeStatus =
   | "CREATING"
   | "CREATE_FAILED"
@@ -1285,6 +695,7 @@ export type AgentRuntimeStatus =
   | "DELETING"
   | (string & {});
 export const AgentRuntimeStatus = /*@__PURE__*/ S.String;
+
 export interface CreateAgentRuntimeResponse {
   agentRuntimeArn: string;
   workloadIdentityDetails?: WorkloadIdentityDetails;
@@ -1305,116 +716,30 @@ export const CreateAgentRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAgentRuntimeResponse",
 }) as any as S.Schema<CreateAgentRuntimeResponse>;
-export interface GetAgentRuntimeRequest {
+export type EndpointName = string | redacted.Redacted<string>;
+export type AgentEndpointDescription = string;
+export interface CreateAgentRuntimeEndpointRequest {
   agentRuntimeId: string;
+  name: string | redacted.Redacted<string>;
   agentRuntimeVersion?: string;
-}
-export const GetAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
-    agentRuntimeVersion: S.optional(S.String).pipe(T.HttpQuery("version")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/runtimes/{agentRuntimeId}/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetAgentRuntimeRequest",
-}) as any as S.Schema<GetAgentRuntimeRequest>;
-export interface RuntimeMetadataConfiguration {
-  requireMMDSV2: boolean;
-}
-export const RuntimeMetadataConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ requireMMDSV2: S.Boolean }),
-).annotate({
-  identifier: "RuntimeMetadataConfiguration",
-}) as any as S.Schema<RuntimeMetadataConfiguration>;
-export interface GetAgentRuntimeResponse {
-  agentRuntimeArn: string;
-  agentRuntimeName: string;
-  agentRuntimeId: string;
-  agentRuntimeVersion: string;
-  createdAt: Date;
-  lastUpdatedAt: Date;
-  roleArn: string;
-  networkConfiguration: NetworkConfiguration;
-  status: AgentRuntimeStatus;
-  lifecycleConfiguration: LifecycleConfiguration;
-  failureReason?: string;
-  description?: string | redacted.Redacted<string>;
-  workloadIdentityDetails?: WorkloadIdentityDetails;
-  agentRuntimeArtifact?: AgentRuntimeArtifact;
-  protocolConfiguration?: ProtocolConfiguration;
-  environmentVariables?: { [key: string]: string | undefined };
-  authorizerConfiguration?: AuthorizerConfiguration;
-  requestHeaderConfiguration?: RequestHeaderConfiguration;
-  metadataConfiguration?: RuntimeMetadataConfiguration;
-  filesystemConfigurations?: FilesystemConfiguration[];
-}
-export const GetAgentRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agentRuntimeArn: S.String,
-    agentRuntimeName: S.String,
-    agentRuntimeId: S.String,
-    agentRuntimeVersion: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    roleArn: S.String,
-    networkConfiguration: NetworkConfiguration,
-    status: AgentRuntimeStatus,
-    lifecycleConfiguration: LifecycleConfiguration,
-    failureReason: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    workloadIdentityDetails: S.optional(WorkloadIdentityDetails),
-    agentRuntimeArtifact: S.optional(AgentRuntimeArtifact),
-    protocolConfiguration: S.optional(ProtocolConfiguration),
-    environmentVariables: S.optional(EnvironmentVariablesMap),
-    authorizerConfiguration: S.optional(AuthorizerConfiguration),
-    requestHeaderConfiguration: S.optional(RequestHeaderConfiguration),
-    metadataConfiguration: S.optional(RuntimeMetadataConfiguration),
-    filesystemConfigurations: S.optional(FilesystemConfigurations),
-  }),
-).annotate({
-  identifier: "GetAgentRuntimeResponse",
-}) as any as S.Schema<GetAgentRuntimeResponse>;
-export interface UpdateAgentRuntimeRequest {
-  agentRuntimeId: string;
-  agentRuntimeArtifact: AgentRuntimeArtifact;
-  roleArn: string;
-  networkConfiguration: NetworkConfiguration;
-  description?: string | redacted.Redacted<string>;
-  authorizerConfiguration?: AuthorizerConfiguration;
-  requestHeaderConfiguration?: RequestHeaderConfiguration;
-  protocolConfiguration?: ProtocolConfiguration;
-  lifecycleConfiguration?: LifecycleConfiguration;
-  metadataConfiguration?: RuntimeMetadataConfiguration;
-  environmentVariables?: { [key: string]: string | undefined };
-  filesystemConfigurations?: FilesystemConfiguration[];
+  description?: string;
   clientToken?: string;
+  tags?: { [key: string]: string | undefined };
 }
-export const UpdateAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateAgentRuntimeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
-    agentRuntimeArtifact: AgentRuntimeArtifact,
-    roleArn: S.String,
-    networkConfiguration: NetworkConfiguration,
-    description: S.optional(SensitiveString),
-    authorizerConfiguration: S.optional(AuthorizerConfiguration),
-    requestHeaderConfiguration: S.optional(RequestHeaderConfiguration),
-    protocolConfiguration: S.optional(ProtocolConfiguration),
-    lifecycleConfiguration: S.optional(LifecycleConfiguration),
-    metadataConfiguration: S.optional(RuntimeMetadataConfiguration),
-    environmentVariables: S.optional(EnvironmentVariablesMap),
-    filesystemConfigurations: S.optional(FilesystemConfigurations),
+    name: SensitiveString,
+    agentRuntimeVersion: S.optional(S.String),
+    description: S.optional(S.String),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    tags: S.optional(TagsMap),
   }).pipe(
     T.all(
-      T.Http({ method: "PUT", uri: "/runtimes/{agentRuntimeId}/" }),
+      T.Http({
+        method: "PUT",
+        uri: "/runtimes/{agentRuntimeId}/runtime-endpoints/",
+      }),
       svc,
       auth,
       proto,
@@ -1423,150 +748,45 @@ export const UpdateAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "UpdateAgentRuntimeRequest",
-}) as any as S.Schema<UpdateAgentRuntimeRequest>;
-export interface UpdateAgentRuntimeResponse {
+  identifier: "CreateAgentRuntimeEndpointRequest",
+}) as any as S.Schema<CreateAgentRuntimeEndpointRequest>;
+export type AgentRuntimeEndpointArn = string;
+export type AgentRuntimeEndpointStatus =
+  | "CREATING"
+  | "CREATE_FAILED"
+  | "UPDATING"
+  | "UPDATE_FAILED"
+  | "READY"
+  | "DELETING"
+  | (string & {});
+export const AgentRuntimeEndpointStatus = /*@__PURE__*/ S.String;
+
+export interface CreateAgentRuntimeEndpointResponse {
+  targetVersion: string;
+  agentRuntimeEndpointArn: string;
   agentRuntimeArn: string;
-  agentRuntimeId: string;
-  workloadIdentityDetails?: WorkloadIdentityDetails;
-  agentRuntimeVersion: string;
-  createdAt: Date;
-  lastUpdatedAt: Date;
-  status: AgentRuntimeStatus;
-}
-export const UpdateAgentRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agentRuntimeArn: S.String,
-    agentRuntimeId: S.String,
-    workloadIdentityDetails: S.optional(WorkloadIdentityDetails),
-    agentRuntimeVersion: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: AgentRuntimeStatus,
-  }),
-).annotate({
-  identifier: "UpdateAgentRuntimeResponse",
-}) as any as S.Schema<UpdateAgentRuntimeResponse>;
-export interface DeleteAgentRuntimeRequest {
-  agentRuntimeId: string;
-  clientToken?: string;
-}
-export const DeleteAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
-    clientToken: S.optional(S.String).pipe(
-      T.HttpQuery("clientToken"),
-      T.IdempotencyToken(),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/runtimes/{agentRuntimeId}/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteAgentRuntimeRequest",
-}) as any as S.Schema<DeleteAgentRuntimeRequest>;
-export interface DeleteAgentRuntimeResponse {
-  status: AgentRuntimeStatus;
   agentRuntimeId?: string;
+  endpointName?: string | redacted.Redacted<string>;
+  status: AgentRuntimeEndpointStatus;
+  createdAt: Date;
 }
-export const DeleteAgentRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateAgentRuntimeEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    status: AgentRuntimeStatus,
-    agentRuntimeId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteAgentRuntimeResponse",
-}) as any as S.Schema<DeleteAgentRuntimeResponse>;
-export interface ListAgentRuntimesRequest {
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListAgentRuntimesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/runtimes/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAgentRuntimesRequest",
-}) as any as S.Schema<ListAgentRuntimesRequest>;
-export interface AgentRuntime {
-  agentRuntimeArn: string;
-  agentRuntimeId: string;
-  agentRuntimeVersion: string;
-  agentRuntimeName: string;
-  description: string | redacted.Redacted<string>;
-  lastUpdatedAt: Date;
-  status: AgentRuntimeStatus;
-}
-export const AgentRuntime = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
+    targetVersion: S.String,
+    agentRuntimeEndpointArn: S.String,
     agentRuntimeArn: S.String,
-    agentRuntimeId: S.String,
-    agentRuntimeVersion: S.String,
-    agentRuntimeName: S.String,
-    description: SensitiveString,
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: AgentRuntimeStatus,
+    agentRuntimeId: S.optional(S.String),
+    endpointName: S.optional(SensitiveString),
+    status: AgentRuntimeEndpointStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
   }),
-).annotate({ identifier: "AgentRuntime" }) as any as S.Schema<AgentRuntime>;
-export type AgentRuntimes = AgentRuntime[];
-export const AgentRuntimes = /*@__PURE__*/ S.Array(AgentRuntime);
-export interface ListAgentRuntimesResponse {
-  agentRuntimes: AgentRuntime[];
-  nextToken?: string;
-}
-export const ListAgentRuntimesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agentRuntimes: AgentRuntimes, nextToken: S.optional(S.String) }),
 ).annotate({
-  identifier: "ListAgentRuntimesResponse",
-}) as any as S.Schema<ListAgentRuntimesResponse>;
-export interface ListAgentRuntimeVersionsRequest {
-  agentRuntimeId: string;
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListAgentRuntimeVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/runtimes/{agentRuntimeId}/versions/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListAgentRuntimeVersionsRequest",
-}) as any as S.Schema<ListAgentRuntimeVersionsRequest>;
-export interface ListAgentRuntimeVersionsResponse {
-  agentRuntimes: AgentRuntime[];
-  nextToken?: string;
-}
-export const ListAgentRuntimeVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agentRuntimes: AgentRuntimes, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListAgentRuntimeVersionsResponse",
-}) as any as S.Schema<ListAgentRuntimeVersionsResponse>;
+  identifier: "CreateAgentRuntimeEndpointResponse",
+}) as any as S.Schema<CreateAgentRuntimeEndpointResponse>;
+export type CredentialProviderName = string;
+export type DefaultApiKeyType = string | redacted.Redacted<string>;
+export type SecretIdType = string;
+export type SecretJsonKeyType = string;
 export interface SecretReference {
   secretId: string;
   jsonKey: string;
@@ -1578,6 +798,7 @@ export const SecretReference = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SecretReference>;
 export type SecretSourceType = "MANAGED" | "EXTERNAL" | (string & {});
 export const SecretSourceType = /*@__PURE__*/ S.String;
+
 export interface CreateApiKeyCredentialProviderRequest {
   name: string;
   apiKey?: string | redacted.Redacted<string>;
@@ -1609,12 +830,14 @@ export const CreateApiKeyCredentialProviderRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateApiKeyCredentialProviderRequest",
 }) as any as S.Schema<CreateApiKeyCredentialProviderRequest>;
+export type SecretArn = string;
 export interface Secret {
   secretArn: string;
 }
 export const Secret = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ secretArn: S.String }),
 ).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
+export type ApiKeyCredentialProviderArnType = string;
 export interface CreateApiKeyCredentialProviderResponse {
   apiKeySecretArn: Secret;
   apiKeySecretJsonKey?: string;
@@ -1634,395 +857,10 @@ export const CreateApiKeyCredentialProviderResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateApiKeyCredentialProviderResponse",
 }) as any as S.Schema<CreateApiKeyCredentialProviderResponse>;
-export interface GetApiKeyCredentialProviderRequest {
-  name: string;
-}
-export const GetApiKeyCredentialProviderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/identities/GetApiKeyCredentialProvider",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetApiKeyCredentialProviderRequest",
-}) as any as S.Schema<GetApiKeyCredentialProviderRequest>;
-export interface GetApiKeyCredentialProviderResponse {
-  apiKeySecretArn: Secret;
-  apiKeySecretJsonKey?: string;
-  apiKeySecretSource?: SecretSourceType;
-  name: string;
-  credentialProviderArn: string;
-  createdTime: Date;
-  lastUpdatedTime: Date;
-}
-export const GetApiKeyCredentialProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiKeySecretArn: Secret,
-    apiKeySecretJsonKey: S.optional(S.String),
-    apiKeySecretSource: S.optional(SecretSourceType),
-    name: S.String,
-    credentialProviderArn: S.String,
-    createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "GetApiKeyCredentialProviderResponse",
-}) as any as S.Schema<GetApiKeyCredentialProviderResponse>;
-export interface UpdateApiKeyCredentialProviderRequest {
-  name: string;
-  apiKey?: string | redacted.Redacted<string>;
-  apiKeySecretConfig?: SecretReference;
-  apiKeySecretSource?: SecretSourceType;
-}
-export const UpdateApiKeyCredentialProviderRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      apiKey: S.optional(SensitiveString),
-      apiKeySecretConfig: S.optional(SecretReference),
-      apiKeySecretSource: S.optional(SecretSourceType),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/identities/UpdateApiKeyCredentialProvider",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "UpdateApiKeyCredentialProviderRequest",
-}) as any as S.Schema<UpdateApiKeyCredentialProviderRequest>;
-export interface UpdateApiKeyCredentialProviderResponse {
-  apiKeySecretArn: Secret;
-  apiKeySecretJsonKey?: string;
-  apiKeySecretSource?: SecretSourceType;
-  name: string;
-  credentialProviderArn: string;
-  createdTime: Date;
-  lastUpdatedTime: Date;
-}
-export const UpdateApiKeyCredentialProviderResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      apiKeySecretArn: Secret,
-      apiKeySecretJsonKey: S.optional(S.String),
-      apiKeySecretSource: S.optional(SecretSourceType),
-      name: S.String,
-      credentialProviderArn: S.String,
-      createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    }),
-).annotate({
-  identifier: "UpdateApiKeyCredentialProviderResponse",
-}) as any as S.Schema<UpdateApiKeyCredentialProviderResponse>;
-export interface DeleteApiKeyCredentialProviderRequest {
-  name: string;
-}
-export const DeleteApiKeyCredentialProviderRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ name: S.String }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/identities/DeleteApiKeyCredentialProvider",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "DeleteApiKeyCredentialProviderRequest",
-}) as any as S.Schema<DeleteApiKeyCredentialProviderRequest>;
-export interface DeleteApiKeyCredentialProviderResponse {}
-export const DeleteApiKeyCredentialProviderResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteApiKeyCredentialProviderResponse",
-}) as any as S.Schema<DeleteApiKeyCredentialProviderResponse>;
-export interface ListApiKeyCredentialProvidersRequest {
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListApiKeyCredentialProvidersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/identities/ListApiKeyCredentialProviders",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "ListApiKeyCredentialProvidersRequest",
-}) as any as S.Schema<ListApiKeyCredentialProvidersRequest>;
-export interface ApiKeyCredentialProviderItem {
-  name: string;
-  credentialProviderArn: string;
-  createdTime: Date;
-  lastUpdatedTime: Date;
-}
-export const ApiKeyCredentialProviderItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    credentialProviderArn: S.String,
-    createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "ApiKeyCredentialProviderItem",
-}) as any as S.Schema<ApiKeyCredentialProviderItem>;
-export type ApiKeyCredentialProviders = ApiKeyCredentialProviderItem[];
-export const ApiKeyCredentialProviders = /*@__PURE__*/ S.Array(
-  ApiKeyCredentialProviderItem,
-);
-export interface ListApiKeyCredentialProvidersResponse {
-  credentialProviders: ApiKeyCredentialProviderItem[];
-  nextToken?: string;
-}
-export const ListApiKeyCredentialProvidersResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      credentialProviders: ApiKeyCredentialProviders,
-      nextToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListApiKeyCredentialProvidersResponse",
-}) as any as S.Schema<ListApiKeyCredentialProvidersResponse>;
-export interface CreateBrowserProfileRequest {
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  clientToken?: string;
-  tags?: { [key: string]: string | undefined };
-}
-export const CreateBrowserProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(TagsMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/browser-profiles" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateBrowserProfileRequest",
-}) as any as S.Schema<CreateBrowserProfileRequest>;
-export type BrowserProfileStatus =
-  | "READY"
-  | "DELETING"
-  | "DELETED"
-  | "SAVING"
-  | (string & {});
-export const BrowserProfileStatus = /*@__PURE__*/ S.String;
-export interface CreateBrowserProfileResponse {
-  profileId: string;
-  profileArn: string;
-  createdAt: Date;
-  status: BrowserProfileStatus;
-}
-export const CreateBrowserProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String,
-    profileArn: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: BrowserProfileStatus,
-  }),
-).annotate({
-  identifier: "CreateBrowserProfileResponse",
-}) as any as S.Schema<CreateBrowserProfileResponse>;
-export interface GetBrowserProfileRequest {
-  profileId: string;
-}
-export const GetBrowserProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ profileId: S.String.pipe(T.HttpLabel("profileId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/browser-profiles/{profileId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetBrowserProfileRequest",
-}) as any as S.Schema<GetBrowserProfileRequest>;
-export interface GetBrowserProfileResponse {
-  profileId: string;
-  profileArn: string;
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  status: BrowserProfileStatus;
-  createdAt: Date;
-  lastUpdatedAt: Date;
-  lastSavedAt?: Date;
-  lastSavedBrowserSessionId?: string;
-  lastSavedBrowserId?: string;
-}
-export const GetBrowserProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String,
-    profileArn: S.String,
-    name: S.String,
-    description: S.optional(SensitiveString),
-    status: BrowserProfileStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastSavedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    lastSavedBrowserSessionId: S.optional(S.String),
-    lastSavedBrowserId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetBrowserProfileResponse",
-}) as any as S.Schema<GetBrowserProfileResponse>;
-export interface DeleteBrowserProfileRequest {
-  profileId: string;
-  clientToken?: string;
-}
-export const DeleteBrowserProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String.pipe(T.HttpLabel("profileId")),
-    clientToken: S.optional(S.String).pipe(
-      T.HttpQuery("clientToken"),
-      T.IdempotencyToken(),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/browser-profiles/{profileId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteBrowserProfileRequest",
-}) as any as S.Schema<DeleteBrowserProfileRequest>;
-export interface DeleteBrowserProfileResponse {
-  profileId: string;
-  profileArn: string;
-  status: BrowserProfileStatus;
-  lastUpdatedAt: Date;
-  lastSavedAt?: Date;
-}
-export const DeleteBrowserProfileResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String,
-    profileArn: S.String,
-    status: BrowserProfileStatus,
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastSavedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({
-  identifier: "DeleteBrowserProfileResponse",
-}) as any as S.Schema<DeleteBrowserProfileResponse>;
-export interface ListBrowserProfilesRequest {
-  maxResults?: number;
-  nextToken?: string;
-  name?: string;
-}
-export const ListBrowserProfilesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    name: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/browser-profiles" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListBrowserProfilesRequest",
-}) as any as S.Schema<ListBrowserProfilesRequest>;
-export interface BrowserProfileSummary {
-  profileId: string;
-  profileArn: string;
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  status: BrowserProfileStatus;
-  createdAt: Date;
-  lastUpdatedAt: Date;
-  lastSavedAt?: Date;
-  lastSavedBrowserSessionId?: string;
-  lastSavedBrowserId?: string;
-}
-export const BrowserProfileSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileId: S.String,
-    profileArn: S.String,
-    name: S.String,
-    description: S.optional(SensitiveString),
-    status: BrowserProfileStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastSavedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    lastSavedBrowserSessionId: S.optional(S.String),
-    lastSavedBrowserId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BrowserProfileSummary",
-}) as any as S.Schema<BrowserProfileSummary>;
-export type BrowserProfileSummaries = BrowserProfileSummary[];
-export const BrowserProfileSummaries = /*@__PURE__*/ S.Array(
-  BrowserProfileSummary,
-);
-export interface ListBrowserProfilesResponse {
-  profileSummaries: BrowserProfileSummary[];
-  nextToken?: string;
-}
-export const ListBrowserProfilesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileSummaries: BrowserProfileSummaries,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListBrowserProfilesResponse",
-}) as any as S.Schema<ListBrowserProfilesResponse>;
+export type SandboxName = string;
 export type BrowserNetworkMode = "PUBLIC" | "VPC" | (string & {});
 export const BrowserNetworkMode = /*@__PURE__*/ S.String;
+
 export interface BrowserNetworkConfiguration {
   networkMode: BrowserNetworkMode;
   vpcConfig?: VpcConfig;
@@ -2064,6 +902,7 @@ export type BrowserEnterprisePolicyType =
   | "RECOMMENDED"
   | (string & {});
 export const BrowserEnterprisePolicyType = /*@__PURE__*/ S.String;
+
 export interface BrowserEnterprisePolicy {
   location: ResourceLocation;
   type?: BrowserEnterprisePolicyType;
@@ -2080,6 +919,7 @@ export type BrowserEnterprisePolicies = BrowserEnterprisePolicy[];
 export const BrowserEnterprisePolicies = /*@__PURE__*/ S.Array(
   BrowserEnterprisePolicy,
 );
+export type ToolSecretArn = string;
 export interface SecretsManagerLocation {
   secretArn: string;
 }
@@ -2137,6 +977,8 @@ export const CreateBrowserRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBrowserRequest",
 }) as any as S.Schema<CreateBrowserRequest>;
+export type BrowserId = string;
+export type BrowserArn = string;
 export type BrowserStatus =
   | "CREATING"
   | "CREATE_FAILED"
@@ -2146,6 +988,7 @@ export type BrowserStatus =
   | "DELETED"
   | (string & {});
 export const BrowserStatus = /*@__PURE__*/ S.String;
+
 export interface CreateBrowserResponse {
   browserId: string;
   browserArn: string;
@@ -2162,81 +1005,22 @@ export const CreateBrowserResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateBrowserResponse",
 }) as any as S.Schema<CreateBrowserResponse>;
-export interface GetBrowserRequest {
-  browserId: string;
-}
-export const GetBrowserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ browserId: S.String.pipe(T.HttpLabel("browserId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/browsers/{browserId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetBrowserRequest",
-}) as any as S.Schema<GetBrowserRequest>;
-export interface BrowserSigningConfigOutput {
-  enabled: boolean;
-}
-export const BrowserSigningConfigOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ enabled: S.Boolean }),
-).annotate({
-  identifier: "BrowserSigningConfigOutput",
-}) as any as S.Schema<BrowserSigningConfigOutput>;
-export interface GetBrowserResponse {
-  browserId: string;
-  browserArn: string;
+export type BrowserProfileName = string;
+export interface CreateBrowserProfileRequest {
   name: string;
   description?: string | redacted.Redacted<string>;
-  executionRoleArn?: string;
-  networkConfiguration: BrowserNetworkConfiguration;
-  recording?: RecordingConfig;
-  browserSigning?: BrowserSigningConfigOutput;
-  enterprisePolicies?: BrowserEnterprisePolicy[];
-  certificates?: Certificate[];
-  status: BrowserStatus;
-  failureReason?: string;
-  createdAt: Date;
-  lastUpdatedAt: Date;
+  clientToken?: string;
+  tags?: { [key: string]: string | undefined };
 }
-export const GetBrowserResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateBrowserProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    browserId: S.String,
-    browserArn: S.String,
     name: S.String,
     description: S.optional(SensitiveString),
-    executionRoleArn: S.optional(S.String),
-    networkConfiguration: BrowserNetworkConfiguration,
-    recording: S.optional(RecordingConfig),
-    browserSigning: S.optional(BrowserSigningConfigOutput),
-    enterprisePolicies: S.optional(BrowserEnterprisePolicies),
-    certificates: S.optional(Certificates),
-    status: BrowserStatus,
-    failureReason: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "GetBrowserResponse",
-}) as any as S.Schema<GetBrowserResponse>;
-export interface DeleteBrowserRequest {
-  browserId: string;
-  clientToken?: string;
-}
-export const DeleteBrowserRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserId: S.String.pipe(T.HttpLabel("browserId")),
-    clientToken: S.optional(S.String).pipe(
-      T.HttpQuery("clientToken"),
-      T.IdempotencyToken(),
-    ),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    tags: S.optional(TagsMap),
   }).pipe(
     T.all(
-      T.Http({ method: "DELETE", uri: "/browsers/{browserId}" }),
+      T.Http({ method: "PUT", uri: "/browser-profiles" }),
       svc,
       auth,
       proto,
@@ -2245,89 +1029,41 @@ export const DeleteBrowserRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "DeleteBrowserRequest",
-}) as any as S.Schema<DeleteBrowserRequest>;
-export interface DeleteBrowserResponse {
-  browserId: string;
-  status: BrowserStatus;
-  lastUpdatedAt: Date;
-}
-export const DeleteBrowserResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserId: S.String,
-    status: BrowserStatus,
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "DeleteBrowserResponse",
-}) as any as S.Schema<DeleteBrowserResponse>;
-export type ResourceType = "SYSTEM" | "CUSTOM" | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
-export interface ListBrowsersRequest {
-  maxResults?: number;
-  nextToken?: string;
-  type?: ResourceType;
-}
-export const ListBrowsersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    type: S.optional(ResourceType).pipe(T.HttpQuery("type")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/browsers" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListBrowsersRequest",
-}) as any as S.Schema<ListBrowsersRequest>;
-export interface BrowserSummary {
-  browserId: string;
-  browserArn: string;
-  name?: string;
-  description?: string | redacted.Redacted<string>;
-  status: BrowserStatus;
+  identifier: "CreateBrowserProfileRequest",
+}) as any as S.Schema<CreateBrowserProfileRequest>;
+export type BrowserProfileId = string;
+export type BrowserProfileArn = string;
+export type BrowserProfileStatus =
+  | "READY"
+  | "DELETING"
+  | "DELETED"
+  | "SAVING"
+  | (string & {});
+export const BrowserProfileStatus = /*@__PURE__*/ S.String;
+
+export interface CreateBrowserProfileResponse {
+  profileId: string;
+  profileArn: string;
   createdAt: Date;
-  lastUpdatedAt?: Date;
+  status: BrowserProfileStatus;
 }
-export const BrowserSummary = /*@__PURE__*/ S.suspend(() =>
+export const CreateBrowserProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    browserId: S.String,
-    browserArn: S.String,
-    name: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    status: BrowserStatus,
+    profileId: S.String,
+    profileArn: S.String,
     createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({ identifier: "BrowserSummary" }) as any as S.Schema<BrowserSummary>;
-export type BrowserSummaries = BrowserSummary[];
-export const BrowserSummaries = /*@__PURE__*/ S.Array(BrowserSummary);
-export interface ListBrowsersResponse {
-  browserSummaries: BrowserSummary[];
-  nextToken?: string;
-}
-export const ListBrowsersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    browserSummaries: BrowserSummaries,
-    nextToken: S.optional(S.String),
+    status: BrowserProfileStatus,
   }),
 ).annotate({
-  identifier: "ListBrowsersResponse",
-}) as any as S.Schema<ListBrowsersResponse>;
+  identifier: "CreateBrowserProfileResponse",
+}) as any as S.Schema<CreateBrowserProfileResponse>;
 export type CodeInterpreterNetworkMode =
   | "PUBLIC"
   | "SANDBOX"
   | "VPC"
   | (string & {});
 export const CodeInterpreterNetworkMode = /*@__PURE__*/ S.String;
+
 export interface CodeInterpreterNetworkConfiguration {
   networkMode: CodeInterpreterNetworkMode;
   vpcConfig?: VpcConfig;
@@ -2371,6 +1107,8 @@ export const CreateCodeInterpreterRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCodeInterpreterRequest",
 }) as any as S.Schema<CreateCodeInterpreterRequest>;
+export type CodeInterpreterId = string;
+export type CodeInterpreterArn = string;
 export type CodeInterpreterStatus =
   | "CREATING"
   | "CREATE_FAILED"
@@ -2380,6 +1118,7 @@ export type CodeInterpreterStatus =
   | "DELETED"
   | (string & {});
 export const CodeInterpreterStatus = /*@__PURE__*/ S.String;
+
 export interface CreateCodeInterpreterResponse {
   codeInterpreterId: string;
   codeInterpreterArn: string;
@@ -2396,159 +1135,9 @@ export const CreateCodeInterpreterResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCodeInterpreterResponse",
 }) as any as S.Schema<CreateCodeInterpreterResponse>;
-export interface GetCodeInterpreterRequest {
-  codeInterpreterId: string;
-}
-export const GetCodeInterpreterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeInterpreterId: S.String.pipe(T.HttpLabel("codeInterpreterId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/code-interpreters/{codeInterpreterId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetCodeInterpreterRequest",
-}) as any as S.Schema<GetCodeInterpreterRequest>;
-export interface GetCodeInterpreterResponse {
-  codeInterpreterId: string;
-  codeInterpreterArn: string;
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  executionRoleArn?: string;
-  networkConfiguration: CodeInterpreterNetworkConfiguration;
-  status: CodeInterpreterStatus;
-  certificates?: Certificate[];
-  failureReason?: string;
-  createdAt: Date;
-  lastUpdatedAt: Date;
-}
-export const GetCodeInterpreterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeInterpreterId: S.String,
-    codeInterpreterArn: S.String,
-    name: S.String,
-    description: S.optional(SensitiveString),
-    executionRoleArn: S.optional(S.String),
-    networkConfiguration: CodeInterpreterNetworkConfiguration,
-    status: CodeInterpreterStatus,
-    certificates: S.optional(Certificates),
-    failureReason: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "GetCodeInterpreterResponse",
-}) as any as S.Schema<GetCodeInterpreterResponse>;
-export interface DeleteCodeInterpreterRequest {
-  codeInterpreterId: string;
-  clientToken?: string;
-}
-export const DeleteCodeInterpreterRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeInterpreterId: S.String.pipe(T.HttpLabel("codeInterpreterId")),
-    clientToken: S.optional(S.String).pipe(
-      T.HttpQuery("clientToken"),
-      T.IdempotencyToken(),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/code-interpreters/{codeInterpreterId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteCodeInterpreterRequest",
-}) as any as S.Schema<DeleteCodeInterpreterRequest>;
-export interface DeleteCodeInterpreterResponse {
-  codeInterpreterId: string;
-  status: CodeInterpreterStatus;
-  lastUpdatedAt: Date;
-}
-export const DeleteCodeInterpreterResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeInterpreterId: S.String,
-    status: CodeInterpreterStatus,
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "DeleteCodeInterpreterResponse",
-}) as any as S.Schema<DeleteCodeInterpreterResponse>;
-export interface ListCodeInterpretersRequest {
-  maxResults?: number;
-  nextToken?: string;
-  type?: ResourceType;
-}
-export const ListCodeInterpretersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    type: S.optional(ResourceType).pipe(T.HttpQuery("type")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/code-interpreters" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListCodeInterpretersRequest",
-}) as any as S.Schema<ListCodeInterpretersRequest>;
-export interface CodeInterpreterSummary {
-  codeInterpreterId: string;
-  codeInterpreterArn: string;
-  name?: string;
-  description?: string | redacted.Redacted<string>;
-  status: CodeInterpreterStatus;
-  createdAt: Date;
-  lastUpdatedAt?: Date;
-}
-export const CodeInterpreterSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeInterpreterId: S.String,
-    codeInterpreterArn: S.String,
-    name: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    status: CodeInterpreterStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({
-  identifier: "CodeInterpreterSummary",
-}) as any as S.Schema<CodeInterpreterSummary>;
-export type CodeInterpreterSummaries = CodeInterpreterSummary[];
-export const CodeInterpreterSummaries = /*@__PURE__*/ S.Array(
-  CodeInterpreterSummary,
-);
-export interface ListCodeInterpretersResponse {
-  codeInterpreterSummaries: CodeInterpreterSummary[];
-  nextToken?: string;
-}
-export const ListCodeInterpretersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    codeInterpreterSummaries: CodeInterpreterSummaries,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListCodeInterpretersResponse",
-}) as any as S.Schema<ListCodeInterpretersResponse>;
+export type ConfigurationBundleName = string;
+export type ConfigurationBundleDescription = string | redacted.Redacted<string>;
+export type ComponentIdentifier = string;
 export interface ComponentConfiguration {
   configuration: any;
 }
@@ -2564,6 +1153,7 @@ export const ComponentConfigurationMap = /*@__PURE__*/ S.Record(
   S.String,
   ComponentConfiguration.pipe(S.optional),
 );
+export type BranchName = string;
 export interface VersionCreatedBySource {
   name: string;
   arn?: string;
@@ -2573,6 +1163,7 @@ export const VersionCreatedBySource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VersionCreatedBySource",
 }) as any as S.Schema<VersionCreatedBySource>;
+export type KmsKeyArn = string;
 export interface CreateConfigurationBundleRequest {
   clientToken?: string;
   bundleName: string;
@@ -2608,6 +1199,9 @@ export const CreateConfigurationBundleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConfigurationBundleRequest",
 }) as any as S.Schema<CreateConfigurationBundleRequest>;
+export type ConfigurationBundleArn = string;
+export type ConfigurationBundleId = string;
+export type ConfigurationBundleVersion = string;
 export interface CreateConfigurationBundleResponse {
   bundleArn: string;
   bundleId: string;
@@ -2624,376 +1218,13 @@ export const CreateConfigurationBundleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateConfigurationBundleResponse",
 }) as any as S.Schema<CreateConfigurationBundleResponse>;
-export interface GetConfigurationBundleRequest {
-  bundleId: string;
-  branchName?: string;
-}
-export const GetConfigurationBundleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bundleId: S.String.pipe(T.HttpLabel("bundleId")),
-    branchName: S.optional(S.String).pipe(T.HttpQuery("branchName")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/configuration-bundles/{bundleId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetConfigurationBundleRequest",
-}) as any as S.Schema<GetConfigurationBundleRequest>;
-export type ConfigurationBundleVersionList = string[];
-export const ConfigurationBundleVersionList = /*@__PURE__*/ S.Array(S.String);
-export interface VersionLineageMetadata {
-  parentVersionIds?: string[];
-  branchName?: string;
-  createdBy?: VersionCreatedBySource;
-  commitMessage?: string;
-}
-export const VersionLineageMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parentVersionIds: S.optional(ConfigurationBundleVersionList),
-    branchName: S.optional(S.String),
-    createdBy: S.optional(VersionCreatedBySource),
-    commitMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "VersionLineageMetadata",
-}) as any as S.Schema<VersionLineageMetadata>;
-export interface GetConfigurationBundleResponse {
-  bundleArn: string;
-  bundleId: string;
-  bundleName: string;
-  description?: string | redacted.Redacted<string>;
-  versionId: string;
-  components: { [key: string]: ComponentConfiguration | undefined };
-  lineageMetadata?: VersionLineageMetadata;
-  createdAt: Date;
-  updatedAt: Date;
-  kmsKeyArn?: string;
-}
-export const GetConfigurationBundleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bundleArn: S.String,
-    bundleId: S.String,
-    bundleName: S.String,
-    description: S.optional(SensitiveString),
-    versionId: S.String,
-    components: ComponentConfigurationMap,
-    lineageMetadata: S.optional(VersionLineageMetadata),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    kmsKeyArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetConfigurationBundleResponse",
-}) as any as S.Schema<GetConfigurationBundleResponse>;
-export interface UpdateConfigurationBundleRequest {
-  clientToken?: string;
-  bundleId: string;
-  bundleName?: string;
-  description?: string | redacted.Redacted<string>;
-  components?: { [key: string]: ComponentConfiguration | undefined };
-  parentVersionIds?: string[];
-  branchName?: string;
-  commitMessage?: string;
-  createdBy?: VersionCreatedBySource;
-  kmsKeyArn?: string;
-}
-export const UpdateConfigurationBundleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    bundleId: S.String.pipe(T.HttpLabel("bundleId")),
-    bundleName: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    components: S.optional(ComponentConfigurationMap),
-    parentVersionIds: S.optional(ConfigurationBundleVersionList),
-    branchName: S.optional(S.String),
-    commitMessage: S.optional(S.String),
-    createdBy: S.optional(VersionCreatedBySource),
-    kmsKeyArn: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/configuration-bundles/{bundleId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateConfigurationBundleRequest",
-}) as any as S.Schema<UpdateConfigurationBundleRequest>;
-export interface UpdateConfigurationBundleResponse {
-  bundleArn: string;
-  bundleId: string;
-  versionId: string;
-  updatedAt: Date;
-}
-export const UpdateConfigurationBundleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bundleArn: S.String,
-    bundleId: S.String,
-    versionId: S.String,
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "UpdateConfigurationBundleResponse",
-}) as any as S.Schema<UpdateConfigurationBundleResponse>;
-export interface DeleteConfigurationBundleRequest {
-  bundleId: string;
-}
-export const DeleteConfigurationBundleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bundleId: S.String.pipe(T.HttpLabel("bundleId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/configuration-bundles/{bundleId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteConfigurationBundleRequest",
-}) as any as S.Schema<DeleteConfigurationBundleRequest>;
-export type ConfigurationBundleStatus =
-  | "ACTIVE"
-  | "CREATING"
-  | "CREATE_FAILED"
-  | "UPDATING"
-  | "UPDATE_FAILED"
-  | "DELETING"
-  | "DELETE_FAILED"
-  | (string & {});
-export const ConfigurationBundleStatus = /*@__PURE__*/ S.String;
-export interface DeleteConfigurationBundleResponse {
-  bundleId: string;
-  status: ConfigurationBundleStatus;
-}
-export const DeleteConfigurationBundleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ bundleId: S.String, status: ConfigurationBundleStatus }),
-).annotate({
-  identifier: "DeleteConfigurationBundleResponse",
-}) as any as S.Schema<DeleteConfigurationBundleResponse>;
-export interface ListConfigurationBundlesRequest {
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListConfigurationBundlesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/configuration-bundles" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListConfigurationBundlesRequest",
-}) as any as S.Schema<ListConfigurationBundlesRequest>;
-export interface ConfigurationBundleSummary {
-  bundleArn: string;
-  bundleId: string;
-  bundleName: string;
-  description?: string | redacted.Redacted<string>;
-  createdAt?: Date;
-}
-export const ConfigurationBundleSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bundleArn: S.String,
-    bundleId: S.String,
-    bundleName: S.String,
-    description: S.optional(SensitiveString),
-    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-  }),
-).annotate({
-  identifier: "ConfigurationBundleSummary",
-}) as any as S.Schema<ConfigurationBundleSummary>;
-export type ConfigurationBundleSummaryList = ConfigurationBundleSummary[];
-export const ConfigurationBundleSummaryList = /*@__PURE__*/ S.Array(
-  ConfigurationBundleSummary,
-);
-export interface ListConfigurationBundlesResponse {
-  bundles: ConfigurationBundleSummary[];
-  nextToken?: string;
-}
-export const ListConfigurationBundlesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bundles: ConfigurationBundleSummaryList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListConfigurationBundlesResponse",
-}) as any as S.Schema<ListConfigurationBundlesResponse>;
-export interface GetConfigurationBundleVersionRequest {
-  bundleId: string;
-  versionId: string;
-}
-export const GetConfigurationBundleVersionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      bundleId: S.String.pipe(T.HttpLabel("bundleId")),
-      versionId: S.String.pipe(T.HttpLabel("versionId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "GET",
-          uri: "/configuration-bundles/{bundleId}/versions/{versionId}",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "GetConfigurationBundleVersionRequest",
-}) as any as S.Schema<GetConfigurationBundleVersionRequest>;
-export interface GetConfigurationBundleVersionResponse {
-  bundleArn: string;
-  bundleId: string;
-  bundleName: string;
-  description?: string | redacted.Redacted<string>;
-  versionId: string;
-  components: { [key: string]: ComponentConfiguration | undefined };
-  lineageMetadata?: VersionLineageMetadata;
-  createdAt: Date;
-  versionCreatedAt: Date;
-  kmsKeyArn?: string;
-}
-export const GetConfigurationBundleVersionResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      bundleArn: S.String,
-      bundleId: S.String,
-      bundleName: S.String,
-      description: S.optional(SensitiveString),
-      versionId: S.String,
-      components: ComponentConfigurationMap,
-      lineageMetadata: S.optional(VersionLineageMetadata),
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      versionCreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      kmsKeyArn: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GetConfigurationBundleVersionResponse",
-}) as any as S.Schema<GetConfigurationBundleVersionResponse>;
-export interface VersionFilter {
-  branchName?: string;
-  createdByName?: string;
-  latestPerBranch?: boolean;
-}
-export const VersionFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branchName: S.optional(S.String),
-    createdByName: S.optional(S.String),
-    latestPerBranch: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "VersionFilter" }) as any as S.Schema<VersionFilter>;
-export interface ListConfigurationBundleVersionsRequest {
-  bundleId: string;
-  nextToken?: string;
-  maxResults?: number;
-  filter?: VersionFilter;
-}
-export const ListConfigurationBundleVersionsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      bundleId: S.String.pipe(T.HttpLabel("bundleId")),
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      filter: S.optional(VersionFilter),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/configuration-bundles/{bundleId}/versions",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "ListConfigurationBundleVersionsRequest",
-}) as any as S.Schema<ListConfigurationBundleVersionsRequest>;
-export interface ConfigurationBundleVersionSummary {
-  bundleArn: string;
-  bundleId: string;
-  versionId: string;
-  lineageMetadata?: VersionLineageMetadata;
-  versionCreatedAt: Date;
-}
-export const ConfigurationBundleVersionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bundleArn: S.String,
-    bundleId: S.String,
-    versionId: S.String,
-    lineageMetadata: S.optional(VersionLineageMetadata),
-    versionCreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "ConfigurationBundleVersionSummary",
-}) as any as S.Schema<ConfigurationBundleVersionSummary>;
-export type ConfigurationBundleVersionSummaryList =
-  ConfigurationBundleVersionSummary[];
-export const ConfigurationBundleVersionSummaryList = /*@__PURE__*/ S.Array(
-  ConfigurationBundleVersionSummary,
-);
-export interface ListConfigurationBundleVersionsResponse {
-  versions: ConfigurationBundleVersionSummary[];
-  nextToken?: string;
-}
-export const ListConfigurationBundleVersionsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      versions: ConfigurationBundleVersionSummaryList,
-      nextToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListConfigurationBundleVersionsResponse",
-}) as any as S.Schema<ListConfigurationBundleVersionsResponse>;
-export type DatasetExampleList = any[];
-export const DatasetExampleList = /*@__PURE__*/ S.Array(S.Any);
-export interface InlineExamplesSource {
-  examples: any[];
-}
-export const InlineExamplesSource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ examples: DatasetExampleList }),
-).annotate({
-  identifier: "InlineExamplesSource",
-}) as any as S.Schema<InlineExamplesSource>;
-export interface S3Source {
-  s3Uri: string;
-}
-export const S3Source = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ s3Uri: S.String }),
-).annotate({ identifier: "S3Source" }) as any as S.Schema<S3Source>;
-export type DataSourceType =
-  | { inlineExamples: InlineExamplesSource; s3Source?: never }
-  | { inlineExamples?: never; s3Source: S3Source };
-export const DataSourceType = /*@__PURE__*/ S.Union([
-  S.Struct({ inlineExamples: InlineExamplesSource }),
-  S.Struct({ s3Source: S3Source }),
-]);
+export type DatasetName = string;
 export type DatasetSchemaType =
   | "AGENTCORE_EVALUATION_PREDEFINED_V1"
   | "AGENTCORE_EVALUATION_SIMULATED_V1"
   | (string & {});
 export const DatasetSchemaType = /*@__PURE__*/ S.String;
+
 export interface CreateDatasetRequest {
   clientToken?: string;
   datasetName: string;
@@ -3025,16 +1256,6 @@ export const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetRequest",
 }) as any as S.Schema<CreateDatasetRequest>;
-export type DatasetStatus =
-  | "CREATING"
-  | "UPDATING"
-  | "DELETING"
-  | "ACTIVE"
-  | "CREATE_FAILED"
-  | "UPDATE_FAILED"
-  | "DELETE_FAILED"
-  | (string & {});
-export const DatasetStatus = /*@__PURE__*/ S.String;
 export interface CreateDatasetResponse {
   datasetArn: string;
   datasetId: string;
@@ -3051,250 +1272,6 @@ export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetResponse",
 }) as any as S.Schema<CreateDatasetResponse>;
-export interface GetDatasetRequest {
-  datasetId: string;
-  datasetVersion?: string;
-}
-export const GetDatasetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
-    datasetVersion: S.optional(S.String).pipe(T.HttpQuery("datasetVersion")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/datasets/{datasetId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetDatasetRequest",
-}) as any as S.Schema<GetDatasetRequest>;
-export type DraftStatus = "MODIFIED" | "UNMODIFIED" | (string & {});
-export const DraftStatus = /*@__PURE__*/ S.String;
-export interface GetDatasetResponse {
-  datasetArn: string;
-  datasetId: string;
-  datasetVersion: string;
-  datasetName: string;
-  description?: string;
-  status: DatasetStatus;
-  draftStatus?: DraftStatus;
-  failureReason?: string;
-  schemaType: DatasetSchemaType;
-  kmsKeyArn?: string;
-  exampleCount: number;
-  downloadUrl?: string | redacted.Redacted<string>;
-  downloadUrlExpiresAt?: Date;
-  createdAt: Date;
-  updatedAt: Date;
-  tags?: { [key: string]: string | undefined };
-}
-export const GetDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetArn: S.String,
-    datasetId: S.String,
-    datasetVersion: S.String,
-    datasetName: S.String,
-    description: S.optional(S.String),
-    status: DatasetStatus,
-    draftStatus: S.optional(DraftStatus),
-    failureReason: S.optional(S.String),
-    schemaType: DatasetSchemaType,
-    kmsKeyArn: S.optional(S.String),
-    exampleCount: S.Number,
-    downloadUrl: S.optional(SensitiveString),
-    downloadUrlExpiresAt: S.optional(
-      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    ),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    tags: S.optional(TagsMap),
-  }),
-).annotate({
-  identifier: "GetDatasetResponse",
-}) as any as S.Schema<GetDatasetResponse>;
-export interface UpdateDatasetRequest {
-  datasetId: string;
-  clientToken?: string;
-  description?: string;
-}
-export const UpdateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    description: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/datasets/{datasetId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateDatasetRequest",
-}) as any as S.Schema<UpdateDatasetRequest>;
-export interface UpdateDatasetResponse {
-  datasetArn: string;
-  datasetId: string;
-  updatedAt: Date;
-}
-export const UpdateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetArn: S.String,
-    datasetId: S.String,
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "UpdateDatasetResponse",
-}) as any as S.Schema<UpdateDatasetResponse>;
-export interface DeleteDatasetRequest {
-  datasetId: string;
-  datasetVersion?: string;
-}
-export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
-    datasetVersion: S.optional(S.String).pipe(T.HttpQuery("datasetVersion")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/datasets/{datasetId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteDatasetRequest",
-}) as any as S.Schema<DeleteDatasetRequest>;
-export interface DeleteDatasetResponse {
-  datasetArn: string;
-  datasetId: string;
-  status: DatasetStatus;
-  datasetVersion: string;
-  updatedAt: Date;
-}
-export const DeleteDatasetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetArn: S.String,
-    datasetId: S.String,
-    status: DatasetStatus,
-    datasetVersion: S.String,
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "DeleteDatasetResponse",
-}) as any as S.Schema<DeleteDatasetResponse>;
-export interface ListDatasetsRequest {
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/datasets" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListDatasetsRequest",
-}) as any as S.Schema<ListDatasetsRequest>;
-export interface DatasetSummary {
-  datasetArn: string;
-  datasetId: string;
-  datasetName: string;
-  description?: string;
-  status: DatasetStatus;
-  draftStatus?: DraftStatus;
-  schemaType: DatasetSchemaType;
-  exampleCount: number;
-  createdAt: Date;
-  updatedAt: Date;
-}
-export const DatasetSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetArn: S.String,
-    datasetId: S.String,
-    datasetName: S.String,
-    description: S.optional(S.String),
-    status: DatasetStatus,
-    draftStatus: S.optional(DraftStatus),
-    schemaType: DatasetSchemaType,
-    exampleCount: S.Number,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({ identifier: "DatasetSummary" }) as any as S.Schema<DatasetSummary>;
-export type DatasetSummaryList = DatasetSummary[];
-export const DatasetSummaryList = /*@__PURE__*/ S.Array(DatasetSummary);
-export interface ListDatasetsResponse {
-  datasets: DatasetSummary[];
-  nextToken?: string;
-}
-export const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ datasets: DatasetSummaryList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListDatasetsResponse",
-}) as any as S.Schema<ListDatasetsResponse>;
-export interface AddDatasetExamplesRequest {
-  datasetId: string;
-  clientToken?: string;
-  source: DataSourceType;
-}
-export const AddDatasetExamplesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    source: DataSourceType,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/datasets/{datasetId}/examples/add" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "AddDatasetExamplesRequest",
-}) as any as S.Schema<AddDatasetExamplesRequest>;
-export type ExampleIdList = string[];
-export const ExampleIdList = /*@__PURE__*/ S.Array(S.String);
-export interface AddDatasetExamplesResponse {
-  datasetArn: string;
-  datasetId: string;
-  status: DatasetStatus;
-  addedCount: number;
-  updatedAt: Date;
-  exampleIds: string[];
-}
-export const AddDatasetExamplesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetArn: S.String,
-    datasetId: S.String,
-    status: DatasetStatus,
-    addedCount: S.Number,
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    exampleIds: ExampleIdList,
-  }),
-).annotate({
-  identifier: "AddDatasetExamplesResponse",
-}) as any as S.Schema<AddDatasetExamplesResponse>;
 export interface CreateDatasetVersionRequest {
   datasetId: string;
   clientToken?: string;
@@ -3316,6 +1293,7 @@ export const CreateDatasetVersionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetVersionRequest",
 }) as any as S.Schema<CreateDatasetVersionRequest>;
+export type DatasetVersion = string;
 export interface CreateDatasetVersionResponse {
   datasetArn: string;
   datasetId: string;
@@ -3334,184 +1312,9 @@ export const CreateDatasetVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateDatasetVersionResponse",
 }) as any as S.Schema<CreateDatasetVersionResponse>;
-export interface DeleteDatasetExamplesRequest {
-  datasetId: string;
-  clientToken?: string;
-  exampleIds: string[];
-}
-export const DeleteDatasetExamplesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    exampleIds: ExampleIdList,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/datasets/{datasetId}/examples/delete" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteDatasetExamplesRequest",
-}) as any as S.Schema<DeleteDatasetExamplesRequest>;
-export interface DeleteDatasetExamplesResponse {
-  datasetArn: string;
-  datasetId: string;
-  status: DatasetStatus;
-  deletedCount: number;
-  updatedAt: Date;
-}
-export const DeleteDatasetExamplesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetArn: S.String,
-    datasetId: S.String,
-    status: DatasetStatus,
-    deletedCount: S.Number,
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "DeleteDatasetExamplesResponse",
-}) as any as S.Schema<DeleteDatasetExamplesResponse>;
-export interface ListDatasetExamplesRequest {
-  datasetId: string;
-  datasetVersion?: string;
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListDatasetExamplesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
-    datasetVersion: S.optional(S.String).pipe(T.HttpQuery("datasetVersion")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/datasets/{datasetId}/examples" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListDatasetExamplesRequest",
-}) as any as S.Schema<ListDatasetExamplesRequest>;
-export interface ListDatasetExamplesResponse {
-  datasetArn: string;
-  datasetId: string;
-  datasetVersion: string;
-  examples: any[];
-  nextToken?: string;
-}
-export const ListDatasetExamplesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetArn: S.String,
-    datasetId: S.String,
-    datasetVersion: S.String,
-    examples: DatasetExampleList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDatasetExamplesResponse",
-}) as any as S.Schema<ListDatasetExamplesResponse>;
-export interface ListDatasetVersionsRequest {
-  datasetId: string;
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListDatasetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/datasets/{datasetId}/versions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListDatasetVersionsRequest",
-}) as any as S.Schema<ListDatasetVersionsRequest>;
-export interface DatasetVersionSummary {
-  datasetVersion: string;
-  exampleCount: number;
-  createdAt: Date;
-}
-export const DatasetVersionSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetVersion: S.String,
-    exampleCount: S.Number,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "DatasetVersionSummary",
-}) as any as S.Schema<DatasetVersionSummary>;
-export type DatasetVersionSummaryList = DatasetVersionSummary[];
-export const DatasetVersionSummaryList = /*@__PURE__*/ S.Array(
-  DatasetVersionSummary,
-);
-export interface ListDatasetVersionsResponse {
-  versions: DatasetVersionSummary[];
-  nextToken?: string;
-}
-export const ListDatasetVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    versions: DatasetVersionSummaryList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListDatasetVersionsResponse",
-}) as any as S.Schema<ListDatasetVersionsResponse>;
-export interface UpdateDatasetExamplesRequest {
-  datasetId: string;
-  clientToken?: string;
-  examples: any[];
-}
-export const UpdateDatasetExamplesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    examples: DatasetExampleList,
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/datasets/{datasetId}/examples/update" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateDatasetExamplesRequest",
-}) as any as S.Schema<UpdateDatasetExamplesRequest>;
-export interface UpdateDatasetExamplesResponse {
-  datasetArn: string;
-  datasetId: string;
-  status: DatasetStatus;
-  updatedCount: number;
-  updatedAt: Date;
-}
-export const UpdateDatasetExamplesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    datasetArn: S.String,
-    datasetId: S.String,
-    status: DatasetStatus,
-    updatedCount: S.Number,
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "UpdateDatasetExamplesResponse",
-}) as any as S.Schema<UpdateDatasetExamplesResponse>;
+export type CustomEvaluatorName = string;
+export type EvaluatorDescription = string | redacted.Redacted<string>;
+export type EvaluatorInstructions = string | redacted.Redacted<string>;
 export interface NumericalScaleDefinition {
   definition: string;
   value: number;
@@ -3546,6 +1349,8 @@ export const RatingScale = /*@__PURE__*/ S.Union([
   S.Struct({ numerical: NumericalScaleDefinitions }),
   S.Struct({ categorical: CategoricalScaleDefinitions }),
 ]);
+export type ModelId = string;
+export type NonEmptyString = string;
 export type NonEmptyStringList = string[];
 export const NonEmptyStringList = /*@__PURE__*/ S.Array(S.String);
 export interface InferenceConfiguration {
@@ -3564,6 +1369,7 @@ export const InferenceConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "InferenceConfiguration",
 }) as any as S.Schema<InferenceConfiguration>;
+export type AdditionalModelRequestFields = unknown;
 export interface BedrockEvaluatorModelConfig {
   modelId: string;
   inferenceConfig?: InferenceConfiguration;
@@ -3598,6 +1404,7 @@ export const LlmAsAJudgeEvaluatorConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LlmAsAJudgeEvaluatorConfig",
 }) as any as S.Schema<LlmAsAJudgeEvaluatorConfig>;
+export type LambdaArn = string;
 export interface LambdaEvaluatorConfig {
   lambdaArn: string;
   lambdaTimeoutInSeconds?: number;
@@ -3623,6 +1430,7 @@ export const EvaluatorConfig = /*@__PURE__*/ S.Union([
 ]);
 export type EvaluatorLevel = "TOOL_CALL" | "TRACE" | "SESSION" | (string & {});
 export const EvaluatorLevel = /*@__PURE__*/ S.String;
+
 export interface CreateEvaluatorRequest {
   clientToken?: string;
   evaluatorName: string;
@@ -3654,6 +1462,8 @@ export const CreateEvaluatorRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEvaluatorRequest",
 }) as any as S.Schema<CreateEvaluatorRequest>;
+export type CustomEvaluatorArn = string;
+export type EvaluatorId = string;
 export type EvaluatorStatus =
   | "ACTIVE"
   | "CREATING"
@@ -3663,6 +1473,7 @@ export type EvaluatorStatus =
   | "DELETING"
   | (string & {});
 export const EvaluatorStatus = /*@__PURE__*/ S.String;
+
 export interface CreateEvaluatorResponse {
   evaluatorArn: string;
   evaluatorId: string;
@@ -3679,208 +1490,18 @@ export const CreateEvaluatorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateEvaluatorResponse",
 }) as any as S.Schema<CreateEvaluatorResponse>;
-export type IncludedData = "ALL_DATA" | "METADATA_ONLY" | (string & {});
-export const IncludedData = /*@__PURE__*/ S.String;
-export interface GetEvaluatorRequest {
-  evaluatorId: string;
-  includedData?: IncludedData;
-}
-export const GetEvaluatorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluatorId: S.String.pipe(T.HttpLabel("evaluatorId")),
-    includedData: S.optional(IncludedData).pipe(T.HttpQuery("includedData")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/evaluators/{evaluatorId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetEvaluatorRequest",
-}) as any as S.Schema<GetEvaluatorRequest>;
-export interface GetEvaluatorResponse {
-  evaluatorArn: string;
-  evaluatorId: string;
-  evaluatorName: string;
-  description?: string | redacted.Redacted<string>;
-  evaluatorConfig: EvaluatorConfig;
-  level: EvaluatorLevel;
-  status: EvaluatorStatus;
-  createdAt: Date;
-  updatedAt: Date;
-  lockedForModification?: boolean;
-  kmsKeyArn?: string;
-}
-export const GetEvaluatorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluatorArn: S.String,
-    evaluatorId: S.String,
-    evaluatorName: S.String,
-    description: S.optional(SensitiveString),
-    evaluatorConfig: EvaluatorConfig,
-    level: EvaluatorLevel,
-    status: EvaluatorStatus,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lockedForModification: S.optional(S.Boolean),
-    kmsKeyArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetEvaluatorResponse",
-}) as any as S.Schema<GetEvaluatorResponse>;
-export interface UpdateEvaluatorRequest {
-  clientToken?: string;
-  evaluatorId: string;
-  description?: string | redacted.Redacted<string>;
-  evaluatorConfig?: EvaluatorConfig;
-  level?: EvaluatorLevel;
-  kmsKeyArn?: string;
-}
-export const UpdateEvaluatorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    evaluatorId: S.String.pipe(T.HttpLabel("evaluatorId")),
-    description: S.optional(SensitiveString),
-    evaluatorConfig: S.optional(EvaluatorConfig),
-    level: S.optional(EvaluatorLevel),
-    kmsKeyArn: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/evaluators/{evaluatorId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateEvaluatorRequest",
-}) as any as S.Schema<UpdateEvaluatorRequest>;
-export interface UpdateEvaluatorResponse {
-  evaluatorArn: string;
-  evaluatorId: string;
-  updatedAt: Date;
-  status: EvaluatorStatus;
-}
-export const UpdateEvaluatorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluatorArn: S.String,
-    evaluatorId: S.String,
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    status: EvaluatorStatus,
-  }),
-).annotate({
-  identifier: "UpdateEvaluatorResponse",
-}) as any as S.Schema<UpdateEvaluatorResponse>;
-export interface DeleteEvaluatorRequest {
-  evaluatorId: string;
-}
-export const DeleteEvaluatorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ evaluatorId: S.String.pipe(T.HttpLabel("evaluatorId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/evaluators/{evaluatorId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteEvaluatorRequest",
-}) as any as S.Schema<DeleteEvaluatorRequest>;
-export interface DeleteEvaluatorResponse {
-  evaluatorArn: string;
-  evaluatorId: string;
-  status: EvaluatorStatus;
-}
-export const DeleteEvaluatorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluatorArn: S.String,
-    evaluatorId: S.String,
-    status: EvaluatorStatus,
-  }),
-).annotate({
-  identifier: "DeleteEvaluatorResponse",
-}) as any as S.Schema<DeleteEvaluatorResponse>;
-export interface ListEvaluatorsRequest {
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListEvaluatorsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/evaluators" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListEvaluatorsRequest",
-}) as any as S.Schema<ListEvaluatorsRequest>;
-export type EvaluatorType = "Builtin" | "Custom" | "CustomCode" | (string & {});
-export const EvaluatorType = /*@__PURE__*/ S.String;
-export interface EvaluatorSummary {
-  evaluatorArn: string;
-  evaluatorId: string;
-  evaluatorName: string;
-  description?: string | redacted.Redacted<string>;
-  evaluatorType: EvaluatorType;
-  level?: EvaluatorLevel;
-  status: EvaluatorStatus;
-  createdAt: Date;
-  updatedAt: Date;
-  lockedForModification?: boolean;
-  kmsKeyArn?: string;
-}
-export const EvaluatorSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluatorArn: S.String,
-    evaluatorId: S.String,
-    evaluatorName: S.String,
-    description: S.optional(SensitiveString),
-    evaluatorType: EvaluatorType,
-    level: S.optional(EvaluatorLevel),
-    status: EvaluatorStatus,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lockedForModification: S.optional(S.Boolean),
-    kmsKeyArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EvaluatorSummary",
-}) as any as S.Schema<EvaluatorSummary>;
-export type EvaluatorSummaryList = EvaluatorSummary[];
-export const EvaluatorSummaryList = /*@__PURE__*/ S.Array(EvaluatorSummary);
-export interface ListEvaluatorsResponse {
-  evaluators: EvaluatorSummary[];
-  nextToken?: string;
-}
-export const ListEvaluatorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    evaluators: EvaluatorSummaryList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListEvaluatorsResponse",
-}) as any as S.Schema<ListEvaluatorsResponse>;
+export type GatewayName = string;
+export type GatewayDescription = string | redacted.Redacted<string>;
 export type GatewayProtocolType = "MCP" | (string & {});
 export const GatewayProtocolType = /*@__PURE__*/ S.String;
+
+export type McpVersion = string;
 export type McpSupportedVersions = string[];
 export const McpSupportedVersions = /*@__PURE__*/ S.Array(S.String);
+export type McpInstructions = string | redacted.Redacted<string>;
 export type SearchType = "SEMANTIC" | (string & {});
 export const SearchType = /*@__PURE__*/ S.String;
+
 export interface SessionConfiguration {
   sessionTimeoutInSeconds?: number;
 }
@@ -3926,6 +1547,8 @@ export type AuthorizerType =
   | "AUTHENTICATE_ONLY"
   | (string & {});
 export const AuthorizerType = /*@__PURE__*/ S.String;
+
+export type LambdaFunctionArn = string;
 export interface LambdaInterceptorConfiguration {
   arn: string;
 }
@@ -3942,12 +1565,14 @@ export const InterceptorConfiguration = /*@__PURE__*/ S.Union([
 ]);
 export type GatewayInterceptionPoint = "REQUEST" | "RESPONSE" | (string & {});
 export const GatewayInterceptionPoint = /*@__PURE__*/ S.String;
+
 export type GatewayInterceptionPoints = GatewayInterceptionPoint[];
 export const GatewayInterceptionPoints = /*@__PURE__*/ S.Array(
   GatewayInterceptionPoint,
 );
 export type InterceptorPayloadExclusion = "RESPONSE_BODY" | (string & {});
 export const InterceptorPayloadExclusion = /*@__PURE__*/ S.String;
+
 export type InterceptorPayloadExclusionSelector = {
   field: InterceptorPayloadExclusion;
 };
@@ -3998,8 +1623,10 @@ export type GatewayInterceptorConfigurations =
 export const GatewayInterceptorConfigurations = /*@__PURE__*/ S.Array(
   GatewayInterceptorConfiguration,
 );
+export type GatewayPolicyEngineArn = string;
 export type GatewayPolicyEngineMode = "LOG_ONLY" | "ENFORCE" | (string & {});
 export const GatewayPolicyEngineMode = /*@__PURE__*/ S.String;
+
 export interface GatewayPolicyEngineConfiguration {
   arn: string;
   mode: GatewayPolicyEngineMode;
@@ -4011,6 +1638,7 @@ export const GatewayPolicyEngineConfiguration = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GatewayPolicyEngineConfiguration>;
 export type ExceptionLevel = "DEBUG" | (string & {});
 export const ExceptionLevel = /*@__PURE__*/ S.String;
+
 export interface CreateGatewayRequest {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -4054,6 +1682,9 @@ export const CreateGatewayRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGatewayRequest",
 }) as any as S.Schema<CreateGatewayRequest>;
+export type GatewayArn = string;
+export type GatewayId = string;
+export type GatewayUrl = string;
 export type GatewayStatus =
   | "CREATING"
   | "UPDATING"
@@ -4063,6 +1694,8 @@ export type GatewayStatus =
   | "FAILED"
   | (string & {});
 export const GatewayStatus = /*@__PURE__*/ S.String;
+
+export type StatusReason = string;
 export type StatusReasons = string[];
 export const StatusReasons = /*@__PURE__*/ S.Array(S.String);
 export interface LambdaTransformConfiguration {
@@ -4081,8 +1714,10 @@ export const CustomTransformConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CustomTransformConfiguration",
 }) as any as S.Schema<CustomTransformConfiguration>;
+export type WebAclArn = string;
 export type WafFailureMode = "FAIL_CLOSE" | "FAIL_OPEN" | (string & {});
 export const WafFailureMode = /*@__PURE__*/ S.String;
+
 export interface WafConfiguration {
   failureMode?: WafFailureMode;
 }
@@ -4143,266 +1778,15 @@ export const CreateGatewayResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGatewayResponse",
 }) as any as S.Schema<CreateGatewayResponse>;
-export interface DeleteGatewayRequest {
-  gatewayIdentifier: string;
-}
-export const DeleteGatewayRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/gateways/{gatewayIdentifier}/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteGatewayRequest",
-}) as any as S.Schema<DeleteGatewayRequest>;
-export interface DeleteGatewayResponse {
-  gatewayId: string;
-  status: GatewayStatus;
-  statusReasons?: string[];
-}
-export const DeleteGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayId: S.String,
-    status: GatewayStatus,
-    statusReasons: S.optional(StatusReasons),
-  }),
-).annotate({
-  identifier: "DeleteGatewayResponse",
-}) as any as S.Schema<DeleteGatewayResponse>;
-export interface GetGatewayRequest {
-  gatewayIdentifier: string;
-}
-export const GetGatewayRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/gateways/{gatewayIdentifier}/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetGatewayRequest",
-}) as any as S.Schema<GetGatewayRequest>;
-export interface GetGatewayResponse {
-  gatewayArn: string;
-  gatewayId: string;
-  gatewayUrl?: string;
-  createdAt: Date;
-  updatedAt: Date;
-  status: GatewayStatus;
-  statusReasons?: string[];
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  roleArn?: string;
-  protocolType?: GatewayProtocolType;
-  protocolConfiguration?: GatewayProtocolConfiguration;
-  authorizerType: AuthorizerType;
-  authorizerConfiguration?: AuthorizerConfiguration;
-  kmsKeyArn?: string;
-  customTransformConfiguration?: CustomTransformConfiguration;
-  interceptorConfigurations?: GatewayInterceptorConfiguration[];
-  policyEngineConfiguration?: GatewayPolicyEngineConfiguration;
-  workloadIdentityDetails?: WorkloadIdentityDetails;
-  exceptionLevel?: ExceptionLevel;
-  webAclArn?: string;
-  wafConfiguration?: WafConfiguration;
-}
-export const GetGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayArn: S.String,
-    gatewayId: S.String,
-    gatewayUrl: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: GatewayStatus,
-    statusReasons: S.optional(StatusReasons),
-    name: S.String,
-    description: S.optional(SensitiveString),
-    roleArn: S.optional(S.String),
-    protocolType: S.optional(GatewayProtocolType),
-    protocolConfiguration: S.optional(GatewayProtocolConfiguration),
-    authorizerType: AuthorizerType,
-    authorizerConfiguration: S.optional(AuthorizerConfiguration),
-    kmsKeyArn: S.optional(S.String),
-    customTransformConfiguration: S.optional(CustomTransformConfiguration),
-    interceptorConfigurations: S.optional(GatewayInterceptorConfigurations),
-    policyEngineConfiguration: S.optional(GatewayPolicyEngineConfiguration),
-    workloadIdentityDetails: S.optional(WorkloadIdentityDetails),
-    exceptionLevel: S.optional(ExceptionLevel),
-    webAclArn: S.optional(S.String),
-    wafConfiguration: S.optional(WafConfiguration),
-  }),
-).annotate({
-  identifier: "GetGatewayResponse",
-}) as any as S.Schema<GetGatewayResponse>;
-export interface ListGatewaysRequest {
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/gateways/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListGatewaysRequest",
-}) as any as S.Schema<ListGatewaysRequest>;
-export interface GatewaySummary {
-  gatewayId: string;
-  name: string;
-  status: GatewayStatus;
-  description?: string | redacted.Redacted<string>;
-  createdAt: Date;
-  updatedAt: Date;
-  authorizerType: AuthorizerType;
-  protocolType?: GatewayProtocolType;
-}
-export const GatewaySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayId: S.String,
-    name: S.String,
-    status: GatewayStatus,
-    description: S.optional(SensitiveString),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    authorizerType: AuthorizerType,
-    protocolType: S.optional(GatewayProtocolType),
-  }),
-).annotate({ identifier: "GatewaySummary" }) as any as S.Schema<GatewaySummary>;
-export type GatewaySummaries = GatewaySummary[];
-export const GatewaySummaries = /*@__PURE__*/ S.Array(GatewaySummary);
-export interface ListGatewaysResponse {
-  items: GatewaySummary[];
-  nextToken?: string;
-}
-export const ListGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: GatewaySummaries, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListGatewaysResponse",
-}) as any as S.Schema<ListGatewaysResponse>;
-export interface UpdateGatewayRequest {
-  gatewayIdentifier: string;
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  roleArn: string;
-  protocolType?: GatewayProtocolType;
-  protocolConfiguration?: GatewayProtocolConfiguration;
-  authorizerType: AuthorizerType;
-  authorizerConfiguration?: AuthorizerConfiguration;
-  kmsKeyArn?: string;
-  customTransformConfiguration?: CustomTransformConfiguration;
-  interceptorConfigurations?: GatewayInterceptorConfiguration[];
-  policyEngineConfiguration?: GatewayPolicyEngineConfiguration;
-  exceptionLevel?: ExceptionLevel;
-  wafConfiguration?: WafConfiguration;
-}
-export const UpdateGatewayRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
-    name: S.String,
-    description: S.optional(SensitiveString),
-    roleArn: S.String,
-    protocolType: S.optional(GatewayProtocolType),
-    protocolConfiguration: S.optional(GatewayProtocolConfiguration),
-    authorizerType: AuthorizerType,
-    authorizerConfiguration: S.optional(AuthorizerConfiguration),
-    kmsKeyArn: S.optional(S.String),
-    customTransformConfiguration: S.optional(CustomTransformConfiguration),
-    interceptorConfigurations: S.optional(GatewayInterceptorConfigurations),
-    policyEngineConfiguration: S.optional(GatewayPolicyEngineConfiguration),
-    exceptionLevel: S.optional(ExceptionLevel),
-    wafConfiguration: S.optional(WafConfiguration),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PUT", uri: "/gateways/{gatewayIdentifier}/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateGatewayRequest",
-}) as any as S.Schema<UpdateGatewayRequest>;
-export interface UpdateGatewayResponse {
-  gatewayArn: string;
-  gatewayId: string;
-  gatewayUrl?: string;
-  createdAt: Date;
-  updatedAt: Date;
-  status: GatewayStatus;
-  statusReasons?: string[];
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  roleArn?: string;
-  protocolType?: GatewayProtocolType;
-  protocolConfiguration?: GatewayProtocolConfiguration;
-  authorizerType: AuthorizerType;
-  authorizerConfiguration?: AuthorizerConfiguration;
-  kmsKeyArn?: string;
-  customTransformConfiguration?: CustomTransformConfiguration;
-  interceptorConfigurations?: GatewayInterceptorConfiguration[];
-  policyEngineConfiguration?: GatewayPolicyEngineConfiguration;
-  workloadIdentityDetails?: WorkloadIdentityDetails;
-  exceptionLevel?: ExceptionLevel;
-  webAclArn?: string;
-  wafConfiguration?: WafConfiguration;
-}
-export const UpdateGatewayResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayArn: S.String,
-    gatewayId: S.String,
-    gatewayUrl: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: GatewayStatus,
-    statusReasons: S.optional(StatusReasons),
-    name: S.String,
-    description: S.optional(SensitiveString),
-    roleArn: S.optional(S.String),
-    protocolType: S.optional(GatewayProtocolType),
-    protocolConfiguration: S.optional(GatewayProtocolConfiguration),
-    authorizerType: AuthorizerType,
-    authorizerConfiguration: S.optional(AuthorizerConfiguration),
-    kmsKeyArn: S.optional(S.String),
-    customTransformConfiguration: S.optional(CustomTransformConfiguration),
-    interceptorConfigurations: S.optional(GatewayInterceptorConfigurations),
-    policyEngineConfiguration: S.optional(GatewayPolicyEngineConfiguration),
-    workloadIdentityDetails: S.optional(WorkloadIdentityDetails),
-    exceptionLevel: S.optional(ExceptionLevel),
-    webAclArn: S.optional(S.String),
-    wafConfiguration: S.optional(WafConfiguration),
-  }),
-).annotate({
-  identifier: "UpdateGatewayResponse",
-}) as any as S.Schema<UpdateGatewayResponse>;
+export type GatewayIdentifier = string;
+export type GatewayRulePriority = number;
+export type IamPrincipalArn = string;
 export type PrincipalMatchOperator =
   | "StringEquals"
   | "StringLike"
   | (string & {});
 export const PrincipalMatchOperator = /*@__PURE__*/ S.String;
+
 export interface IamPrincipal {
   arn: string;
   operator?: PrincipalMatchOperator;
@@ -4424,6 +1808,7 @@ export const MatchPrincipals = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MatchPrincipals",
 }) as any as S.Schema<MatchPrincipals>;
+export type MatchPathPattern = string;
 export type MatchPathPatterns = string[];
 export const MatchPathPatterns = /*@__PURE__*/ S.Array(S.String);
 export interface MatchPaths {
@@ -4441,6 +1826,7 @@ export const Condition = /*@__PURE__*/ S.Union([
 ]);
 export type Conditions = Condition[];
 export const Conditions = /*@__PURE__*/ S.Array(Condition);
+export type GatewayConfigurationBundleArn = string;
 export interface StaticOverride {
   bundleArn: string;
   bundleVersion: string;
@@ -4457,6 +1843,8 @@ export const ConfigurationBundleReference = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConfigurationBundleReference",
 }) as any as S.Schema<ConfigurationBundleReference>;
+export type TrafficSplitMetadataKey = string;
+export type TrafficSplitMetadataValue = string;
 export type TrafficSplitMetadataMap = { [key: string]: string | undefined };
 export const TrafficSplitMetadataMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -4497,6 +1885,7 @@ export const ConfigurationBundleAction = /*@__PURE__*/ S.Union([
   S.Struct({ staticOverride: StaticOverride }),
   S.Struct({ weightedOverride: WeightedOverride }),
 ]);
+export type TargetName = string | redacted.Redacted<string>;
 export interface StaticRoute {
   targetName: string | redacted.Redacted<string>;
 }
@@ -4547,6 +1936,7 @@ export const Action = /*@__PURE__*/ S.Union([
 ]);
 export type Actions = Action[];
 export const Actions = /*@__PURE__*/ S.Array(Action);
+export type GatewayRuleDescription = string;
 export interface CreateGatewayRuleRequest {
   gatewayIdentifier: string;
   clientToken?: string;
@@ -4576,6 +1966,7 @@ export const CreateGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGatewayRuleRequest",
 }) as any as S.Schema<CreateGatewayRuleRequest>;
+export type GatewayRuleId = string;
 export type GatewayRuleStatus =
   | "CREATING"
   | "ACTIVE"
@@ -4583,6 +1974,7 @@ export type GatewayRuleStatus =
   | "DELETING"
   | (string & {});
 export const GatewayRuleStatus = /*@__PURE__*/ S.String;
+
 export interface SystemManagedBlock {
   managedBy: string;
 }
@@ -4617,219 +2009,9 @@ export const CreateGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGatewayRuleResponse",
 }) as any as S.Schema<CreateGatewayRuleResponse>;
-export interface DeleteGatewayRuleRequest {
-  gatewayIdentifier: string;
-  ruleId: string;
-}
-export const DeleteGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
-    ruleId: S.String.pipe(T.HttpLabel("ruleId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/gateways/{gatewayIdentifier}/rules/{ruleId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteGatewayRuleRequest",
-}) as any as S.Schema<DeleteGatewayRuleRequest>;
-export interface DeleteGatewayRuleResponse {
-  ruleId: string;
-  status: GatewayRuleStatus;
-}
-export const DeleteGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ ruleId: S.String, status: GatewayRuleStatus }),
-).annotate({
-  identifier: "DeleteGatewayRuleResponse",
-}) as any as S.Schema<DeleteGatewayRuleResponse>;
-export interface GetGatewayRuleRequest {
-  gatewayIdentifier: string;
-  ruleId: string;
-}
-export const GetGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
-    ruleId: S.String.pipe(T.HttpLabel("ruleId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/gateways/{gatewayIdentifier}/rules/{ruleId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetGatewayRuleRequest",
-}) as any as S.Schema<GetGatewayRuleRequest>;
-export interface GetGatewayRuleResponse {
-  ruleId: string;
-  gatewayArn: string;
-  priority: number;
-  conditions?: Condition[];
-  actions: Action[];
-  description?: string;
-  createdAt: Date;
-  status: GatewayRuleStatus;
-  system?: SystemManagedBlock;
-  updatedAt?: Date;
-}
-export const GetGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleId: S.String,
-    gatewayArn: S.String,
-    priority: S.Number,
-    conditions: S.optional(Conditions),
-    actions: Actions,
-    description: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: GatewayRuleStatus,
-    system: S.optional(SystemManagedBlock),
-    updatedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({
-  identifier: "GetGatewayRuleResponse",
-}) as any as S.Schema<GetGatewayRuleResponse>;
-export interface ListGatewayRulesRequest {
-  gatewayIdentifier: string;
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListGatewayRulesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/gateways/{gatewayIdentifier}/rules" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListGatewayRulesRequest",
-}) as any as S.Schema<ListGatewayRulesRequest>;
-export interface GatewayRuleDetail {
-  ruleId: string;
-  gatewayArn: string;
-  priority: number;
-  conditions?: Condition[];
-  actions: Action[];
-  description?: string;
-  createdAt: Date;
-  status: GatewayRuleStatus;
-  system?: SystemManagedBlock;
-  updatedAt?: Date;
-}
-export const GatewayRuleDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleId: S.String,
-    gatewayArn: S.String,
-    priority: S.Number,
-    conditions: S.optional(Conditions),
-    actions: Actions,
-    description: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: GatewayRuleStatus,
-    system: S.optional(SystemManagedBlock),
-    updatedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({
-  identifier: "GatewayRuleDetail",
-}) as any as S.Schema<GatewayRuleDetail>;
-export type GatewayRules = GatewayRuleDetail[];
-export const GatewayRules = /*@__PURE__*/ S.Array(GatewayRuleDetail);
-export interface ListGatewayRulesResponse {
-  gatewayRules: GatewayRuleDetail[];
-  nextToken?: string;
-}
-export const ListGatewayRulesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ gatewayRules: GatewayRules, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListGatewayRulesResponse",
-}) as any as S.Schema<ListGatewayRulesResponse>;
-export interface UpdateGatewayRuleRequest {
-  gatewayIdentifier: string;
-  ruleId: string;
-  priority?: number;
-  conditions?: Condition[];
-  actions?: Action[];
-  description?: string;
-}
-export const UpdateGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
-    ruleId: S.String.pipe(T.HttpLabel("ruleId")),
-    priority: S.optional(S.Number),
-    conditions: S.optional(Conditions),
-    actions: S.optional(Actions),
-    description: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/gateways/{gatewayIdentifier}/rules/{ruleId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateGatewayRuleRequest",
-}) as any as S.Schema<UpdateGatewayRuleRequest>;
-export interface UpdateGatewayRuleResponse {
-  ruleId: string;
-  gatewayArn: string;
-  priority: number;
-  conditions?: Condition[];
-  actions: Action[];
-  description?: string;
-  createdAt: Date;
-  status: GatewayRuleStatus;
-  system?: SystemManagedBlock;
-  updatedAt?: Date;
-}
-export const UpdateGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleId: S.String,
-    gatewayArn: S.String,
-    priority: S.Number,
-    conditions: S.optional(Conditions),
-    actions: Actions,
-    description: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: GatewayRuleStatus,
-    system: S.optional(SystemManagedBlock),
-    updatedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-  }),
-).annotate({
-  identifier: "UpdateGatewayRuleResponse",
-}) as any as S.Schema<UpdateGatewayRuleResponse>;
+export type TargetDescription = string | redacted.Redacted<string>;
+export type S3BucketUri = string;
+export type AwsAccountId = string;
 export interface S3Configuration {
   uri?: string;
   bucketOwnerAccountId?: string;
@@ -4842,6 +2024,7 @@ export const S3Configuration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "S3Configuration",
 }) as any as S.Schema<S3Configuration>;
+export type InlinePayload = string | redacted.Redacted<string>;
 export type ApiSchemaConfiguration =
   | { s3: S3Configuration; inlinePayload?: never }
   | { s3?: never; inlinePayload: string | redacted.Redacted<string> };
@@ -4858,6 +2041,7 @@ export type SchemaType =
   | "integer"
   | (string & {});
 export const SchemaType = /*@__PURE__*/ S.String;
+
 export type SchemaProperties = { [key: string]: SchemaDefinition | undefined };
 export const SchemaProperties = /*@__PURE__*/ S.Record(
   S.String,
@@ -4934,6 +2118,8 @@ export const McpToolSchemaConfiguration = /*@__PURE__*/ S.Union([
 ]);
 export type ListingMode = "DEFAULT" | "DYNAMIC" | (string & {});
 export const ListingMode = /*@__PURE__*/ S.String;
+
+export type TargetResourcePriority = number;
 export interface McpServerTargetConfiguration {
   endpoint: string;
   mcpToolSchema?: McpToolSchemaConfiguration;
@@ -4960,6 +2146,7 @@ export type RestApiMethod =
   | "POST"
   | (string & {});
 export const RestApiMethod = /*@__PURE__*/ S.String;
+
 export interface ApiGatewayToolOverride {
   name: string;
   description?: string;
@@ -5020,6 +2207,7 @@ export const ApiGatewayTargetConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApiGatewayTargetConfiguration",
 }) as any as S.Schema<ApiGatewayTargetConfiguration>;
+export type ConnectorId = string;
 export interface ConnectorSource {
   connectorId: string;
 }
@@ -5139,6 +2327,8 @@ export const McpTargetConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ apiGateway: ApiGatewayTargetConfiguration }),
   S.Struct({ connector: ConnectorTargetConfiguration }),
 ]);
+export type RuntimeArn = string;
+export type RuntimeQualifier = string;
 export interface HttpApiSchemaConfiguration {
   source: ApiSchemaConfiguration;
 }
@@ -5161,6 +2351,7 @@ export const RuntimeTargetConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RuntimeTargetConfiguration",
 }) as any as S.Schema<RuntimeTargetConfiguration>;
+export type PassthroughEndpoint = string;
 export type PassthroughProtocolType =
   | "MCP"
   | "A2A"
@@ -5168,6 +2359,8 @@ export type PassthroughProtocolType =
   | "CUSTOM"
   | (string & {});
 export const PassthroughProtocolType = /*@__PURE__*/ S.String;
+
+export type StickinessTimeout = number;
 export interface StickinessConfiguration {
   identifier: string;
   timeout?: number;
@@ -5200,6 +2393,7 @@ export const HttpTargetConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ agentcoreRuntime: RuntimeTargetConfiguration }),
   S.Struct({ passthrough: PassthroughTargetConfiguration }),
 ]);
+export type InferenceConnectorId = string;
 export interface InferenceConnectorSource {
   connectorId: string;
 }
@@ -5229,6 +2423,8 @@ export interface ModelMapping {
 export const ModelMapping = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ providerPrefix: S.optional(ProviderPrefix) }),
 ).annotate({ identifier: "ModelMapping" }) as any as S.Schema<ModelMapping>;
+export type InferenceOperationPath = string;
+export type ModelPattern = string;
 export interface ModelEntry {
   model: string;
 }
@@ -5295,8 +2491,13 @@ export type CredentialProviderType =
   | "JWT_PASSTHROUGH"
   | (string & {});
 export const CredentialProviderType = /*@__PURE__*/ S.String;
+
+export type OAuthCredentialProviderArn = string;
+export type OAuthScope = string;
 export type OAuthScopes = string[];
 export const OAuthScopes = /*@__PURE__*/ S.Array(S.String);
+export type OAuthCustomParametersKey = string;
+export type OAuthCustomParametersValue = string | redacted.Redacted<string>;
 export type OAuthCustomParameters = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -5310,6 +2511,8 @@ export type OAuthGrantType =
   | "TOKEN_EXCHANGE"
   | (string & {});
 export const OAuthGrantType = /*@__PURE__*/ S.String;
+
+export type OAuthDefaultReturnUrl = string;
 export interface OAuthCredentialProvider {
   providerArn: string;
   scopes: string[];
@@ -5330,11 +2533,15 @@ export const OAuthCredentialProvider = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OAuthCredentialProvider",
 }) as any as S.Schema<OAuthCredentialProvider>;
+export type ApiKeyCredentialProviderArn = string;
+export type ApiKeyCredentialParameterName = string;
+export type ApiKeyCredentialPrefix = string;
 export type ApiKeyCredentialLocation =
   | "HEADER"
   | "QUERY_PARAMETER"
   | (string & {});
 export const ApiKeyCredentialLocation = /*@__PURE__*/ S.String;
+
 export interface GatewayApiKeyCredentialProvider {
   providerArn: string;
   credentialParameterName?: string;
@@ -5398,8 +2605,10 @@ export type CredentialProviderConfigurations =
 export const CredentialProviderConfigurations = /*@__PURE__*/ S.Array(
   CredentialProviderConfiguration,
 );
+export type HttpHeaderName = string;
 export type AllowedRequestHeaders = string[];
 export const AllowedRequestHeaders = /*@__PURE__*/ S.Array(S.String);
+export type HttpQueryParameterName = string;
 export type AllowedQueryParameters = string[];
 export const AllowedQueryParameters = /*@__PURE__*/ S.Array(S.String);
 export type AllowedResponseHeaders = string[];
@@ -5453,6 +2662,7 @@ export const CreateGatewayTargetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGatewayTargetRequest",
 }) as any as S.Schema<CreateGatewayTargetRequest>;
+export type TargetId = string;
 export type TargetStatus =
   | "CREATING"
   | "UPDATING"
@@ -5467,6 +2677,10 @@ export type TargetStatus =
   | "SYNCHRONIZE_PENDING_AUTH"
   | (string & {});
 export const TargetStatus = /*@__PURE__*/ S.String;
+
+export type DomainName = string;
+export type ResourceGatewayArn = string;
+export type ResourceAssociationArn = string;
 export interface ManagedResourceDetails {
   domain?: string;
   resourceGatewayArn?: string;
@@ -5500,6 +2714,7 @@ export const AuthorizationData = /*@__PURE__*/ S.Union([
 ]);
 export type TargetProtocolType = "MCP" | "HTTP" | (string & {});
 export const TargetProtocolType = /*@__PURE__*/ S.String;
+
 export interface CreateGatewayTargetResponse {
   gatewayArn: string;
   targetId: string;
@@ -5544,568 +2759,7 @@ export const CreateGatewayTargetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateGatewayTargetResponse",
 }) as any as S.Schema<CreateGatewayTargetResponse>;
-export interface DeleteGatewayTargetRequest {
-  gatewayIdentifier: string;
-  targetId: string;
-}
-export const DeleteGatewayTargetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
-    targetId: S.String.pipe(T.HttpLabel("targetId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/gateways/{gatewayIdentifier}/targets/{targetId}/",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteGatewayTargetRequest",
-}) as any as S.Schema<DeleteGatewayTargetRequest>;
-export interface DeleteGatewayTargetResponse {
-  gatewayArn: string;
-  targetId: string;
-  status: TargetStatus;
-  statusReasons?: string[];
-}
-export const DeleteGatewayTargetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayArn: S.String,
-    targetId: S.String,
-    status: TargetStatus,
-    statusReasons: S.optional(StatusReasons),
-  }),
-).annotate({
-  identifier: "DeleteGatewayTargetResponse",
-}) as any as S.Schema<DeleteGatewayTargetResponse>;
-export interface GetGatewayTargetRequest {
-  gatewayIdentifier: string;
-  targetId: string;
-}
-export const GetGatewayTargetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
-    targetId: S.String.pipe(T.HttpLabel("targetId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/gateways/{gatewayIdentifier}/targets/{targetId}/",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetGatewayTargetRequest",
-}) as any as S.Schema<GetGatewayTargetRequest>;
-export interface GetGatewayTargetResponse {
-  gatewayArn: string;
-  targetId: string;
-  createdAt: Date;
-  updatedAt: Date;
-  status: TargetStatus;
-  statusReasons?: string[];
-  name: string | redacted.Redacted<string>;
-  description?: string | redacted.Redacted<string>;
-  targetConfiguration: TargetConfiguration;
-  credentialProviderConfigurations: CredentialProviderConfiguration[];
-  lastSynchronizedAt?: Date;
-  metadataConfiguration?: MetadataConfiguration;
-  privateEndpoint?: PrivateEndpoint;
-  privateEndpointManagedResources?: ManagedResourceDetails[];
-  authorizationData?: AuthorizationData;
-  protocolType?: TargetProtocolType;
-}
-export const GetGatewayTargetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayArn: S.String,
-    targetId: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: TargetStatus,
-    statusReasons: S.optional(StatusReasons),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    targetConfiguration: TargetConfiguration,
-    credentialProviderConfigurations: CredentialProviderConfigurations,
-    lastSynchronizedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    metadataConfiguration: S.optional(MetadataConfiguration),
-    privateEndpoint: S.optional(PrivateEndpoint),
-    privateEndpointManagedResources: S.optional(
-      PrivateEndpointManagedResources,
-    ),
-    authorizationData: S.optional(AuthorizationData),
-    protocolType: S.optional(TargetProtocolType),
-  }),
-).annotate({
-  identifier: "GetGatewayTargetResponse",
-}) as any as S.Schema<GetGatewayTargetResponse>;
-export interface ListGatewayTargetsRequest {
-  gatewayIdentifier: string;
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListGatewayTargetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/gateways/{gatewayIdentifier}/targets/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListGatewayTargetsRequest",
-}) as any as S.Schema<ListGatewayTargetsRequest>;
-export type TargetType =
-  | "OPEN_API_SCHEMA"
-  | "SMITHY_MODEL"
-  | "MCP_SERVER"
-  | "LAMBDA"
-  | "API_GATEWAY"
-  | "CONNECTOR"
-  | "AGENTCORE_RUNTIME"
-  | "PASSTHROUGH"
-  | "PROVIDER"
-  | (string & {});
-export const TargetType = /*@__PURE__*/ S.String;
-export interface TargetSummary {
-  targetId: string;
-  name: string | redacted.Redacted<string>;
-  status: TargetStatus;
-  description?: string | redacted.Redacted<string>;
-  createdAt: Date;
-  updatedAt: Date;
-  resourcePriority?: number;
-  lastSynchronizedAt?: Date;
-  authorizationData?: AuthorizationData;
-  targetType?: TargetType;
-  listingMode?: ListingMode;
-}
-export const TargetSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetId: S.String,
-    name: SensitiveString,
-    status: TargetStatus,
-    description: S.optional(SensitiveString),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    resourcePriority: S.optional(S.Number),
-    lastSynchronizedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    authorizationData: S.optional(AuthorizationData),
-    targetType: S.optional(TargetType),
-    listingMode: S.optional(ListingMode),
-  }),
-).annotate({ identifier: "TargetSummary" }) as any as S.Schema<TargetSummary>;
-export type TargetSummaries = TargetSummary[];
-export const TargetSummaries = /*@__PURE__*/ S.Array(TargetSummary);
-export interface ListGatewayTargetsResponse {
-  items: TargetSummary[];
-  nextToken?: string;
-}
-export const ListGatewayTargetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ items: TargetSummaries, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListGatewayTargetsResponse",
-}) as any as S.Schema<ListGatewayTargetsResponse>;
-export type TargetIdList = string[];
-export const TargetIdList = /*@__PURE__*/ S.Array(S.String);
-export interface SynchronizeGatewayTargetsRequest {
-  gatewayIdentifier: string;
-  targetIdList: string[];
-}
-export const SynchronizeGatewayTargetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
-    targetIdList: TargetIdList,
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/gateways/{gatewayIdentifier}/synchronizeTargets",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "SynchronizeGatewayTargetsRequest",
-}) as any as S.Schema<SynchronizeGatewayTargetsRequest>;
-export interface GatewayTarget {
-  gatewayArn: string;
-  targetId: string;
-  createdAt: Date;
-  updatedAt: Date;
-  status: TargetStatus;
-  statusReasons?: string[];
-  name: string | redacted.Redacted<string>;
-  description?: string | redacted.Redacted<string>;
-  targetConfiguration: TargetConfiguration;
-  credentialProviderConfigurations: CredentialProviderConfiguration[];
-  lastSynchronizedAt?: Date;
-  metadataConfiguration?: MetadataConfiguration;
-  privateEndpoint?: PrivateEndpoint;
-  privateEndpointManagedResources?: ManagedResourceDetails[];
-  authorizationData?: AuthorizationData;
-  protocolType?: TargetProtocolType;
-}
-export const GatewayTarget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayArn: S.String,
-    targetId: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: TargetStatus,
-    statusReasons: S.optional(StatusReasons),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    targetConfiguration: TargetConfiguration,
-    credentialProviderConfigurations: CredentialProviderConfigurations,
-    lastSynchronizedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    metadataConfiguration: S.optional(MetadataConfiguration),
-    privateEndpoint: S.optional(PrivateEndpoint),
-    privateEndpointManagedResources: S.optional(
-      PrivateEndpointManagedResources,
-    ),
-    authorizationData: S.optional(AuthorizationData),
-    protocolType: S.optional(TargetProtocolType),
-  }),
-).annotate({ identifier: "GatewayTarget" }) as any as S.Schema<GatewayTarget>;
-export type GatewayTargetList = GatewayTarget[];
-export const GatewayTargetList = /*@__PURE__*/ S.Array(GatewayTarget);
-export interface SynchronizeGatewayTargetsResponse {
-  targets?: GatewayTarget[];
-}
-export const SynchronizeGatewayTargetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ targets: S.optional(GatewayTargetList) }),
-).annotate({
-  identifier: "SynchronizeGatewayTargetsResponse",
-}) as any as S.Schema<SynchronizeGatewayTargetsResponse>;
-export interface UpdateGatewayTargetRequest {
-  gatewayIdentifier: string;
-  targetId: string;
-  name?: string | redacted.Redacted<string>;
-  description?: string | redacted.Redacted<string>;
-  targetConfiguration: TargetConfiguration;
-  credentialProviderConfigurations?: CredentialProviderConfiguration[];
-  metadataConfiguration?: MetadataConfiguration;
-  privateEndpoint?: PrivateEndpoint;
-}
-export const UpdateGatewayTargetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
-    targetId: S.String.pipe(T.HttpLabel("targetId")),
-    name: S.optional(SensitiveString),
-    description: S.optional(SensitiveString),
-    targetConfiguration: TargetConfiguration,
-    credentialProviderConfigurations: S.optional(
-      CredentialProviderConfigurations,
-    ),
-    metadataConfiguration: S.optional(MetadataConfiguration),
-    privateEndpoint: S.optional(PrivateEndpoint),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PUT",
-        uri: "/gateways/{gatewayIdentifier}/targets/{targetId}/",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateGatewayTargetRequest",
-}) as any as S.Schema<UpdateGatewayTargetRequest>;
-export interface UpdateGatewayTargetResponse {
-  gatewayArn: string;
-  targetId: string;
-  createdAt: Date;
-  updatedAt: Date;
-  status: TargetStatus;
-  statusReasons?: string[];
-  name: string | redacted.Redacted<string>;
-  description?: string | redacted.Redacted<string>;
-  targetConfiguration: TargetConfiguration;
-  credentialProviderConfigurations: CredentialProviderConfiguration[];
-  lastSynchronizedAt?: Date;
-  metadataConfiguration?: MetadataConfiguration;
-  privateEndpoint?: PrivateEndpoint;
-  privateEndpointManagedResources?: ManagedResourceDetails[];
-  authorizationData?: AuthorizationData;
-  protocolType?: TargetProtocolType;
-}
-export const UpdateGatewayTargetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gatewayArn: S.String,
-    targetId: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: TargetStatus,
-    statusReasons: S.optional(StatusReasons),
-    name: SensitiveString,
-    description: S.optional(SensitiveString),
-    targetConfiguration: TargetConfiguration,
-    credentialProviderConfigurations: CredentialProviderConfigurations,
-    lastSynchronizedAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    metadataConfiguration: S.optional(MetadataConfiguration),
-    privateEndpoint: S.optional(PrivateEndpoint),
-    privateEndpointManagedResources: S.optional(
-      PrivateEndpointManagedResources,
-    ),
-    authorizationData: S.optional(AuthorizationData),
-    protocolType: S.optional(TargetProtocolType),
-  }),
-).annotate({
-  identifier: "UpdateGatewayTargetResponse",
-}) as any as S.Schema<UpdateGatewayTargetResponse>;
-export interface CreateHarnessEndpointRequest {
-  harnessId: string;
-  endpointName: string;
-  targetVersion?: string;
-  description?: string;
-  clientToken?: string;
-  tags?: { [key: string]: string | undefined };
-}
-export const CreateHarnessEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
-    endpointName: S.String,
-    targetVersion: S.optional(S.String),
-    description: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(TagsMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/harnesses/{harnessId}/endpoints" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateHarnessEndpointRequest",
-}) as any as S.Schema<CreateHarnessEndpointRequest>;
-export type HarnessEndpointStatus =
-  | "CREATING"
-  | "CREATE_FAILED"
-  | "UPDATING"
-  | "UPDATE_FAILED"
-  | "READY"
-  | "DELETING"
-  | "DELETE_FAILED"
-  | (string & {});
-export const HarnessEndpointStatus = /*@__PURE__*/ S.String;
-export interface HarnessEndpoint {
-  harnessId: string;
-  harnessName: string;
-  endpointName: string;
-  arn: string;
-  status: HarnessEndpointStatus;
-  createdAt: Date;
-  updatedAt: Date;
-  liveVersion?: string;
-  targetVersion?: string;
-  description?: string;
-  failureReason?: string;
-}
-export const HarnessEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    harnessId: S.String,
-    harnessName: S.String,
-    endpointName: S.String,
-    arn: S.String,
-    status: HarnessEndpointStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    liveVersion: S.optional(S.String),
-    targetVersion: S.optional(S.String),
-    description: S.optional(S.String),
-    failureReason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HarnessEndpoint",
-}) as any as S.Schema<HarnessEndpoint>;
-export interface CreateHarnessEndpointResponse {
-  endpoint: HarnessEndpoint;
-}
-export const CreateHarnessEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ endpoint: HarnessEndpoint }),
-).annotate({
-  identifier: "CreateHarnessEndpointResponse",
-}) as any as S.Schema<CreateHarnessEndpointResponse>;
-export interface DeleteHarnessEndpointRequest {
-  harnessId: string;
-  endpointName: string;
-  clientToken?: string;
-}
-export const DeleteHarnessEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
-    endpointName: S.String.pipe(T.HttpLabel("endpointName")),
-    clientToken: S.optional(S.String).pipe(
-      T.HttpQuery("clientToken"),
-      T.IdempotencyToken(),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/harnesses/{harnessId}/endpoints/{endpointName}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteHarnessEndpointRequest",
-}) as any as S.Schema<DeleteHarnessEndpointRequest>;
-export interface DeleteHarnessEndpointResponse {
-  endpoint: HarnessEndpoint;
-}
-export const DeleteHarnessEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ endpoint: HarnessEndpoint }),
-).annotate({
-  identifier: "DeleteHarnessEndpointResponse",
-}) as any as S.Schema<DeleteHarnessEndpointResponse>;
-export interface GetHarnessEndpointRequest {
-  harnessId: string;
-  endpointName: string;
-}
-export const GetHarnessEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
-    endpointName: S.String.pipe(T.HttpLabel("endpointName")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/harnesses/{harnessId}/endpoints/{endpointName}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetHarnessEndpointRequest",
-}) as any as S.Schema<GetHarnessEndpointRequest>;
-export interface GetHarnessEndpointResponse {
-  endpoint: HarnessEndpoint;
-}
-export const GetHarnessEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ endpoint: HarnessEndpoint }),
-).annotate({
-  identifier: "GetHarnessEndpointResponse",
-}) as any as S.Schema<GetHarnessEndpointResponse>;
-export interface ListHarnessEndpointsRequest {
-  harnessId: string;
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListHarnessEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/harnesses/{harnessId}/endpoints" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListHarnessEndpointsRequest",
-}) as any as S.Schema<ListHarnessEndpointsRequest>;
-export type HarnessEndpoints = HarnessEndpoint[];
-export const HarnessEndpoints = /*@__PURE__*/ S.Array(HarnessEndpoint);
-export interface ListHarnessEndpointsResponse {
-  endpoints: HarnessEndpoint[];
-  nextToken?: string;
-}
-export const ListHarnessEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ endpoints: HarnessEndpoints, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListHarnessEndpointsResponse",
-}) as any as S.Schema<ListHarnessEndpointsResponse>;
-export interface UpdateHarnessEndpointRequest {
-  harnessId: string;
-  endpointName: string;
-  targetVersion?: string;
-  description?: string;
-  clientToken?: string;
-}
-export const UpdateHarnessEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
-    endpointName: S.String.pipe(T.HttpLabel("endpointName")),
-    targetVersion: S.optional(S.String),
-    description: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "PATCH",
-        uri: "/harnesses/{harnessId}/endpoints/{endpointName}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateHarnessEndpointRequest",
-}) as any as S.Schema<UpdateHarnessEndpointRequest>;
-export interface UpdateHarnessEndpointResponse {
-  endpoint: HarnessEndpoint;
-}
-export const UpdateHarnessEndpointResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ endpoint: HarnessEndpoint }),
-).annotate({
-  identifier: "UpdateHarnessEndpointResponse",
-}) as any as S.Schema<UpdateHarnessEndpointResponse>;
+export type HarnessName = string;
 export interface HarnessAgentCoreRuntimeEnvironmentRequest {
   lifecycleConfiguration?: LifecycleConfiguration;
   networkConfiguration?: NetworkConfiguration;
@@ -6135,12 +2789,16 @@ export type HarnessEnvironmentArtifact = {
 export const HarnessEnvironmentArtifact = /*@__PURE__*/ S.Union([
   S.Struct({ containerConfiguration: ContainerConfiguration }),
 ]);
+export type MaxTokens = number;
+export type Temperature = number;
+export type TopP = number;
 export type HarnessBedrockApiFormat =
   | "converse_stream"
   | "responses"
   | "chat_completions"
   | (string & {});
 export const HarnessBedrockApiFormat = /*@__PURE__*/ S.String;
+
 export interface HarnessBedrockModelConfig {
   modelId: string;
   maxTokens?: number;
@@ -6161,11 +2819,13 @@ export const HarnessBedrockModelConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HarnessBedrockModelConfig",
 }) as any as S.Schema<HarnessBedrockModelConfig>;
+export type ApiKeyArn = string;
 export type HarnessOpenAiApiFormat =
   | "chat_completions"
   | "responses"
   | (string & {});
 export const HarnessOpenAiApiFormat = /*@__PURE__*/ S.String;
+
 export interface HarnessOpenAiModelConfig {
   modelId: string;
   apiKeyArn: string;
@@ -6188,6 +2848,7 @@ export const HarnessOpenAiModelConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HarnessOpenAiModelConfig",
 }) as any as S.Schema<HarnessOpenAiModelConfig>;
+export type TopK = number;
 export interface HarnessGeminiModelConfig {
   modelId: string;
   apiKeyArn: string;
@@ -6208,6 +2869,7 @@ export const HarnessGeminiModelConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HarnessGeminiModelConfig",
 }) as any as S.Schema<HarnessGeminiModelConfig>;
+export type HarnessLiteLlmApiBase = string | redacted.Redacted<string>;
 export interface HarnessLiteLlmModelConfig {
   modelId: string;
   apiKeyArn?: string;
@@ -6261,6 +2923,7 @@ export const HarnessModelConfiguration = /*@__PURE__*/ S.Union([
   S.Struct({ geminiModelConfig: HarnessGeminiModelConfig }),
   S.Struct({ liteLlmModelConfig: HarnessLiteLlmModelConfig }),
 ]);
+export type SensitiveText = string | redacted.Redacted<string>;
 export type HarnessSystemContentBlock = {
   text: string | redacted.Redacted<string>;
 };
@@ -6279,6 +2942,11 @@ export type HarnessToolType =
   | "agentcore_code_interpreter"
   | (string & {});
 export const HarnessToolType = /*@__PURE__*/ S.String;
+
+export type HarnessToolName = string;
+export type HarnessRemoteMcpUrl = string | redacted.Redacted<string>;
+export type HttpHeaderKey = string;
+export type HttpHeaderValue = string;
 export type HttpHeadersMap = { [key: string]: string | undefined };
 export const HttpHeadersMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -6293,6 +2961,7 @@ export const HarnessRemoteMcpConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HarnessRemoteMcpConfig",
 }) as any as S.Schema<HarnessRemoteMcpConfig>;
+export type HarnessBrowserArn = string;
 export interface HarnessAgentCoreBrowserConfig {
   browserArn?: string;
 }
@@ -6322,6 +2991,9 @@ export const HarnessAgentCoreGatewayConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HarnessAgentCoreGatewayConfig",
 }) as any as S.Schema<HarnessAgentCoreGatewayConfig>;
+export type HarnessInlineFunctionDescription =
+  | string
+  | redacted.Redacted<string>;
 export interface HarnessInlineFunctionConfig {
   description: string | redacted.Redacted<string>;
   inputSchema: any;
@@ -6331,6 +3003,7 @@ export const HarnessInlineFunctionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HarnessInlineFunctionConfig",
 }) as any as S.Schema<HarnessInlineFunctionConfig>;
+export type HarnessCodeInterpreterArn = string;
 export interface HarnessAgentCoreCodeInterpreterConfig {
   codeInterpreterArn?: string;
 }
@@ -6396,6 +3069,8 @@ export const HarnessTool = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HarnessTool" }) as any as S.Schema<HarnessTool>;
 export type HarnessTools = HarnessTool[];
 export const HarnessTools = /*@__PURE__*/ S.Array(HarnessTool);
+export type HarnessSkillPath = string;
+export type HarnessSkillS3Uri = string;
 export interface HarnessSkillS3Source {
   uri: string;
 }
@@ -6404,6 +3079,7 @@ export const HarnessSkillS3Source = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HarnessSkillS3Source",
 }) as any as S.Schema<HarnessSkillS3Source>;
+export type HarnessSkillGitUrl = string;
 export interface HarnessSkillGitAuth {
   credentialArn: string;
   username?: string;
@@ -6427,6 +3103,7 @@ export const HarnessSkillGitSource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "HarnessSkillGitSource",
 }) as any as S.Schema<HarnessSkillGitSource>;
+export type HarnessAwsSkillPath = string;
 export type HarnessAwsSkillPaths = string[];
 export const HarnessAwsSkillPaths = /*@__PURE__*/ S.Array(S.String);
 export interface HarnessSkillAwsSkillsSource {
@@ -6455,8 +3132,10 @@ export const HarnessSkill = /*@__PURE__*/ S.Union([
 ]);
 export type HarnessSkills = HarnessSkill[];
 export const HarnessSkills = /*@__PURE__*/ S.Array(HarnessSkill);
+export type HarnessAllowedTool = string;
 export type HarnessAllowedTools = string[];
 export const HarnessAllowedTools = /*@__PURE__*/ S.Array(S.String);
+export type MemoryArn = string;
 export interface HarnessAgentCoreMemoryRetrievalConfig {
   topK?: number;
   relevanceScore?: number;
@@ -6504,6 +3183,7 @@ export type HarnessManagedMemoryStrategyType =
   | "EPISODIC"
   | (string & {});
 export const HarnessManagedMemoryStrategyType = /*@__PURE__*/ S.String;
+
 export type HarnessManagedMemoryStrategyList =
   HarnessManagedMemoryStrategyType[];
 export const HarnessManagedMemoryStrategyList = /*@__PURE__*/ S.Array(
@@ -6560,6 +3240,7 @@ export type HarnessTruncationStrategy =
   | "none"
   | (string & {});
 export const HarnessTruncationStrategy = /*@__PURE__*/ S.String;
+
 export interface HarnessSlidingWindowConfiguration {
   messagesCount?: number;
 }
@@ -6654,6 +3335,8 @@ export const CreateHarnessRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHarnessRequest",
 }) as any as S.Schema<CreateHarnessRequest>;
+export type HarnessId = string;
+export type HarnessArn = string;
 export type HarnessStatus =
   | "CREATING"
   | "CREATE_FAILED"
@@ -6664,6 +3347,8 @@ export type HarnessStatus =
   | "DELETE_FAILED"
   | (string & {});
 export const HarnessStatus = /*@__PURE__*/ S.String;
+
+export type HarnessVersion = string;
 export interface HarnessAgentCoreRuntimeEnvironment {
   agentRuntimeArn: string;
   agentRuntimeName: string;
@@ -6750,24 +3435,27 @@ export const CreateHarnessResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateHarnessResponse",
 }) as any as S.Schema<CreateHarnessResponse>;
-export interface DeleteHarnessRequest {
+export type HarnessEndpointName = string;
+export type HarnessEndpointDescription = string;
+export interface CreateHarnessEndpointRequest {
   harnessId: string;
+  endpointName: string;
+  targetVersion?: string;
+  description?: string;
   clientToken?: string;
-  deleteManagedMemory?: boolean;
+  tags?: { [key: string]: string | undefined };
 }
-export const DeleteHarnessRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateHarnessEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     harnessId: S.String.pipe(T.HttpLabel("harnessId")),
-    clientToken: S.optional(S.String).pipe(
-      T.HttpQuery("clientToken"),
-      T.IdempotencyToken(),
-    ),
-    deleteManagedMemory: S.optional(S.Boolean).pipe(
-      T.HttpQuery("deleteManagedMemory"),
-    ),
+    endpointName: S.String,
+    targetVersion: S.optional(S.String),
+    description: S.optional(S.String),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    tags: S.optional(TagsMap),
   }).pipe(
     T.all(
-      T.Http({ method: "DELETE", uri: "/harnesses/{harnessId}" }),
+      T.Http({ method: "POST", uri: "/harnesses/{harnessId}/endpoints" }),
       svc,
       auth,
       proto,
@@ -6776,256 +3464,80 @@ export const DeleteHarnessRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "DeleteHarnessRequest",
-}) as any as S.Schema<DeleteHarnessRequest>;
-export interface DeleteHarnessResponse {
-  harness?: Harness;
-}
-export const DeleteHarnessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ harness: S.optional(Harness) }),
-).annotate({
-  identifier: "DeleteHarnessResponse",
-}) as any as S.Schema<DeleteHarnessResponse>;
-export interface GetHarnessRequest {
-  harnessId: string;
-  harnessVersion?: string;
-}
-export const GetHarnessRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
-    harnessVersion: S.optional(S.String).pipe(T.HttpQuery("harnessVersion")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/harnesses/{harnessId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetHarnessRequest",
-}) as any as S.Schema<GetHarnessRequest>;
-export interface GetHarnessResponse {
-  harness: Harness;
-}
-export const GetHarnessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ harness: Harness }),
-).annotate({
-  identifier: "GetHarnessResponse",
-}) as any as S.Schema<GetHarnessResponse>;
-export interface ListHarnessesRequest {
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListHarnessesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/harnesses" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListHarnessesRequest",
-}) as any as S.Schema<ListHarnessesRequest>;
-export interface HarnessSummary {
+  identifier: "CreateHarnessEndpointRequest",
+}) as any as S.Schema<CreateHarnessEndpointRequest>;
+export type HarnessEndpointArn = string;
+export type HarnessEndpointStatus =
+  | "CREATING"
+  | "CREATE_FAILED"
+  | "UPDATING"
+  | "UPDATE_FAILED"
+  | "READY"
+  | "DELETING"
+  | "DELETE_FAILED"
+  | (string & {});
+export const HarnessEndpointStatus = /*@__PURE__*/ S.String;
+
+export interface HarnessEndpoint {
   harnessId: string;
   harnessName: string;
+  endpointName: string;
   arn: string;
-  status: HarnessStatus;
+  status: HarnessEndpointStatus;
   createdAt: Date;
   updatedAt: Date;
-  harnessVersion?: string;
-}
-export const HarnessSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    harnessId: S.String,
-    harnessName: S.String,
-    arn: S.String,
-    status: HarnessStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    harnessVersion: S.optional(S.String),
-  }),
-).annotate({ identifier: "HarnessSummary" }) as any as S.Schema<HarnessSummary>;
-export type HarnessSummaries = HarnessSummary[];
-export const HarnessSummaries = /*@__PURE__*/ S.Array(HarnessSummary);
-export interface ListHarnessesResponse {
-  harnesses: HarnessSummary[];
-  nextToken?: string;
-}
-export const ListHarnessesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ harnesses: HarnessSummaries, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListHarnessesResponse",
-}) as any as S.Schema<ListHarnessesResponse>;
-export interface ListHarnessVersionsRequest {
-  harnessId: string;
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListHarnessVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/harnesses/{harnessId}/versions" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListHarnessVersionsRequest",
-}) as any as S.Schema<ListHarnessVersionsRequest>;
-export interface HarnessVersionSummary {
-  harnessId: string;
-  harnessName: string;
-  arn: string;
-  harnessVersion: string;
-  status: HarnessStatus;
-  createdAt: Date;
-  updatedAt: Date;
+  liveVersion?: string;
+  targetVersion?: string;
+  description?: string;
   failureReason?: string;
 }
-export const HarnessVersionSummary = /*@__PURE__*/ S.suspend(() =>
+export const HarnessEndpoint = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     harnessId: S.String,
     harnessName: S.String,
+    endpointName: S.String,
     arn: S.String,
-    harnessVersion: S.String,
-    status: HarnessStatus,
+    status: HarnessEndpointStatus,
     createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    liveVersion: S.optional(S.String),
+    targetVersion: S.optional(S.String),
+    description: S.optional(S.String),
     failureReason: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "HarnessVersionSummary",
-}) as any as S.Schema<HarnessVersionSummary>;
-export type HarnessVersionSummaries = HarnessVersionSummary[];
-export const HarnessVersionSummaries = /*@__PURE__*/ S.Array(
-  HarnessVersionSummary,
-);
-export interface ListHarnessVersionsResponse {
-  harnessVersions: HarnessVersionSummary[];
-  nextToken?: string;
+  identifier: "HarnessEndpoint",
+}) as any as S.Schema<HarnessEndpoint>;
+export interface CreateHarnessEndpointResponse {
+  endpoint: HarnessEndpoint;
 }
-export const ListHarnessVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    harnessVersions: HarnessVersionSummaries,
-    nextToken: S.optional(S.String),
-  }),
+export const CreateHarnessEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ endpoint: HarnessEndpoint }),
 ).annotate({
-  identifier: "ListHarnessVersionsResponse",
-}) as any as S.Schema<ListHarnessVersionsResponse>;
-export interface UpdatedHarnessEnvironmentArtifact {
-  optionalValue?: HarnessEnvironmentArtifact;
-}
-export const UpdatedHarnessEnvironmentArtifact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ optionalValue: S.optional(HarnessEnvironmentArtifact) }),
-).annotate({
-  identifier: "UpdatedHarnessEnvironmentArtifact",
-}) as any as S.Schema<UpdatedHarnessEnvironmentArtifact>;
-export interface UpdatedAuthorizerConfiguration {
-  optionalValue?: AuthorizerConfiguration;
-}
-export const UpdatedAuthorizerConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ optionalValue: S.optional(AuthorizerConfiguration) }),
-).annotate({
-  identifier: "UpdatedAuthorizerConfiguration",
-}) as any as S.Schema<UpdatedAuthorizerConfiguration>;
-export interface UpdatedHarnessMemoryConfiguration {
-  optionalValue?: HarnessMemoryConfiguration;
-}
-export const UpdatedHarnessMemoryConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ optionalValue: S.optional(HarnessMemoryConfiguration) }),
-).annotate({
-  identifier: "UpdatedHarnessMemoryConfiguration",
-}) as any as S.Schema<UpdatedHarnessMemoryConfiguration>;
-export interface UpdateHarnessRequest {
-  harnessId: string;
-  clientToken?: string;
-  executionRoleArn?: string;
-  environment?: HarnessEnvironmentProviderRequest;
-  environmentArtifact?: UpdatedHarnessEnvironmentArtifact;
-  environmentVariables?: { [key: string]: string | undefined };
-  authorizerConfiguration?: UpdatedAuthorizerConfiguration;
-  model?: HarnessModelConfiguration;
-  systemPrompt?: HarnessSystemContentBlock[];
-  tools?: HarnessTool[];
-  skills?: HarnessSkill[];
-  allowedTools?: string[];
-  memory?: UpdatedHarnessMemoryConfiguration;
-  truncation?: HarnessTruncationConfiguration;
-  maxIterations?: number;
-  maxTokens?: number;
-  timeoutSeconds?: number;
-}
-export const UpdateHarnessRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    executionRoleArn: S.optional(S.String),
-    environment: S.optional(HarnessEnvironmentProviderRequest),
-    environmentArtifact: S.optional(UpdatedHarnessEnvironmentArtifact),
-    environmentVariables: S.optional(EnvironmentVariablesMap),
-    authorizerConfiguration: S.optional(UpdatedAuthorizerConfiguration),
-    model: S.optional(HarnessModelConfiguration),
-    systemPrompt: S.optional(HarnessSystemPrompt),
-    tools: S.optional(HarnessTools),
-    skills: S.optional(HarnessSkills),
-    allowedTools: S.optional(HarnessAllowedTools),
-    memory: S.optional(UpdatedHarnessMemoryConfiguration),
-    truncation: S.optional(HarnessTruncationConfiguration),
-    maxIterations: S.optional(S.Number),
-    maxTokens: S.optional(S.Number),
-    timeoutSeconds: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/harnesses/{harnessId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateHarnessRequest",
-}) as any as S.Schema<UpdateHarnessRequest>;
-export interface UpdateHarnessResponse {
-  harness: Harness;
-}
-export const UpdateHarnessResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ harness: Harness }),
-).annotate({
-  identifier: "UpdateHarnessResponse",
-}) as any as S.Schema<UpdateHarnessResponse>;
+  identifier: "CreateHarnessEndpointResponse",
+}) as any as S.Schema<CreateHarnessEndpointResponse>;
+export type Name = string;
+export type Arn = string;
+export type Namespace = string;
 export type NamespacesList = string[];
 export const NamespacesList = /*@__PURE__*/ S.Array(S.String);
+export type MetadataKey = string;
 export type MetadataValueType =
   | "STRING"
   | "STRINGLIST"
   | "NUMBER"
   | (string & {});
 export const MetadataValueType = /*@__PURE__*/ S.String;
+
 export type ExtractionType =
   | "LLM_INFERRED"
   | "STRICTLY_CONSISTENT"
   | (string & {});
 export const ExtractionType = /*@__PURE__*/ S.String;
+
+export type LlmExtractionInstruction = string | redacted.Redacted<string>;
+export type Definition = string | redacted.Redacted<string>;
+export type AllowedStringValue = string;
 export type AllowedStringValuesList = string[];
 export const AllowedStringValuesList = /*@__PURE__*/ S.Array(S.String);
 export interface StringValidation {
@@ -7036,6 +3548,7 @@ export const StringValidation = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StringValidation",
 }) as any as S.Schema<StringValidation>;
+export type AllowedStringListValue = string;
 export type AllowedStringListValuesList = string[];
 export const AllowedStringListValuesList = /*@__PURE__*/ S.Array(S.String);
 export interface StringListValidation {
@@ -7178,6 +3691,7 @@ export const UserPreferenceMemoryStrategyInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UserPreferenceMemoryStrategyInput",
 }) as any as S.Schema<UserPreferenceMemoryStrategyInput>;
+export type Prompt = string | redacted.Redacted<string>;
 export interface SemanticOverrideExtractionConfigurationInput {
   appendToPrompt: string | redacted.Redacted<string>;
   modelId: string;
@@ -7549,8 +4063,10 @@ export type IndexedKeysList = IndexedKey[];
 export const IndexedKeysList = /*@__PURE__*/ S.Array(IndexedKey);
 export type ContentType = "MEMORY_RECORDS" | (string & {});
 export const ContentType = /*@__PURE__*/ S.String;
+
 export type ContentLevel = "METADATA_ONLY" | "FULL_CONTENT" | (string & {});
 export const ContentLevel = /*@__PURE__*/ S.String;
+
 export interface ContentConfiguration {
   type: ContentType;
   level?: ContentLevel;
@@ -7628,6 +4144,7 @@ export const CreateMemoryInput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMemoryInput",
 }) as any as S.Schema<CreateMemoryInput>;
+export type MemoryId = string;
 export type MemoryStatus =
   | "CREATING"
   | "ACTIVE"
@@ -7636,6 +4153,8 @@ export type MemoryStatus =
   | "UPDATING"
   | (string & {});
 export const MemoryStatus = /*@__PURE__*/ S.String;
+
+export type MemoryStrategyId = string;
 export type OverrideType =
   | "SEMANTIC_OVERRIDE"
   | "SUMMARY_OVERRIDE"
@@ -7644,6 +4163,7 @@ export type OverrideType =
   | "EPISODIC_OVERRIDE"
   | (string & {});
 export const OverrideType = /*@__PURE__*/ S.String;
+
 export interface SemanticExtractionOverride {
   appendToPrompt: string | redacted.Redacted<string>;
   modelId: string;
@@ -7926,6 +4446,7 @@ export type MemoryStrategyType =
   | "EPISODIC"
   | (string & {});
 export const MemoryStrategyType = /*@__PURE__*/ S.String;
+
 export type MemoryStrategyStatus =
   | "CREATING"
   | "ACTIVE"
@@ -7933,6 +4454,7 @@ export type MemoryStrategyStatus =
   | "FAILED"
   | (string & {});
 export const MemoryStrategyStatus = /*@__PURE__*/ S.String;
+
 export interface MemoryStrategy {
   strategyId: string;
   name: string;
@@ -8007,8 +4529,3632 @@ export const CreateMemoryOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateMemoryOutput",
 }) as any as S.Schema<CreateMemoryOutput>;
+export type CredentialProviderVendorType =
+  | "GoogleOauth2"
+  | "GithubOauth2"
+  | "SlackOauth2"
+  | "SalesforceOauth2"
+  | "MicrosoftOauth2"
+  | "CustomOauth2"
+  | "AtlassianOauth2"
+  | "LinkedinOauth2"
+  | "XOauth2"
+  | "OktaOauth2"
+  | "OneLoginOauth2"
+  | "PingOneOauth2"
+  | "FacebookOauth2"
+  | "YandexOauth2"
+  | "RedditOauth2"
+  | "ZoomOauth2"
+  | "TwitchOauth2"
+  | "SpotifyOauth2"
+  | "DropboxOauth2"
+  | "NotionOauth2"
+  | "HubspotOauth2"
+  | "CyberArkOauth2"
+  | "FusionAuthOauth2"
+  | "Auth0Oauth2"
+  | "CognitoOauth2"
+  | (string & {});
+export const CredentialProviderVendorType = /*@__PURE__*/ S.String;
+
+export type DiscoveryUrlType = string;
+export type IssuerUrlType = string;
+export type AuthorizationEndpointType = string;
+export type TokenEndpointType = string;
+export type ResponseType = string;
+export type ResponseListType = string[];
+export const ResponseListType = /*@__PURE__*/ S.Array(S.String);
+export type TokenAuthMethod = string;
+export type TokenEndpointAuthMethodsType = string[];
+export const TokenEndpointAuthMethodsType = /*@__PURE__*/ S.Array(S.String);
+export interface Oauth2AuthorizationServerMetadata {
+  issuer: string;
+  authorizationEndpoint: string;
+  tokenEndpoint: string;
+  responseTypes?: string[];
+  tokenEndpointAuthMethods?: string[];
+}
+export const Oauth2AuthorizationServerMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    issuer: S.String,
+    authorizationEndpoint: S.String,
+    tokenEndpoint: S.String,
+    responseTypes: S.optional(ResponseListType),
+    tokenEndpointAuthMethods: S.optional(TokenEndpointAuthMethodsType),
+  }),
+).annotate({
+  identifier: "Oauth2AuthorizationServerMetadata",
+}) as any as S.Schema<Oauth2AuthorizationServerMetadata>;
+export type Oauth2Discovery =
+  | { discoveryUrl: string; authorizationServerMetadata?: never }
+  | {
+      discoveryUrl?: never;
+      authorizationServerMetadata: Oauth2AuthorizationServerMetadata;
+    };
+export const Oauth2Discovery = /*@__PURE__*/ S.Union([
+  S.Struct({ discoveryUrl: S.String }),
+  S.Struct({ authorizationServerMetadata: Oauth2AuthorizationServerMetadata }),
+]);
+export type DefaultClientIdType = string;
+export type DefaultClientSecretType = string | redacted.Redacted<string>;
+export type OnBehalfOfTokenExchangeGrantTypeType =
+  | "TOKEN_EXCHANGE"
+  | "JWT_AUTHORIZATION_GRANT"
+  | (string & {});
+export const OnBehalfOfTokenExchangeGrantTypeType = /*@__PURE__*/ S.String;
+
+export type ActorTokenContentType =
+  | "NONE"
+  | "M2M"
+  | "AWS_IAM_ID_TOKEN_JWT"
+  | (string & {});
+export const ActorTokenContentType = /*@__PURE__*/ S.String;
+
+export type ScopeType = string;
+export type ScopesListType = string[];
+export const ScopesListType = /*@__PURE__*/ S.Array(S.String);
+export interface TokenExchangeGrantTypeConfigType {
+  actorTokenContent: ActorTokenContentType;
+  actorTokenScopes?: string[];
+}
+export const TokenExchangeGrantTypeConfigType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actorTokenContent: ActorTokenContentType,
+    actorTokenScopes: S.optional(ScopesListType),
+  }),
+).annotate({
+  identifier: "TokenExchangeGrantTypeConfigType",
+}) as any as S.Schema<TokenExchangeGrantTypeConfigType>;
+export interface OnBehalfOfTokenExchangeConfigType {
+  grantType: OnBehalfOfTokenExchangeGrantTypeType;
+  tokenExchangeGrantTypeConfig?: TokenExchangeGrantTypeConfigType;
+}
+export const OnBehalfOfTokenExchangeConfigType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    grantType: OnBehalfOfTokenExchangeGrantTypeType,
+    tokenExchangeGrantTypeConfig: S.optional(TokenExchangeGrantTypeConfigType),
+  }),
+).annotate({
+  identifier: "OnBehalfOfTokenExchangeConfigType",
+}) as any as S.Schema<OnBehalfOfTokenExchangeConfigType>;
+export type ClientAuthenticationMethodType =
+  | "CLIENT_SECRET_BASIC"
+  | "CLIENT_SECRET_POST"
+  | "AWS_IAM_ID_TOKEN_JWT"
+  | (string & {});
+export const ClientAuthenticationMethodType = /*@__PURE__*/ S.String;
+
+export interface CustomOauth2ProviderConfigInput {
+  oauthDiscovery: Oauth2Discovery;
+  clientId?: string;
+  clientSecret?: string | redacted.Redacted<string>;
+  clientSecretConfig?: SecretReference;
+  clientSecretSource?: SecretSourceType;
+  onBehalfOfTokenExchangeConfig?: OnBehalfOfTokenExchangeConfigType;
+  clientAuthenticationMethod?: ClientAuthenticationMethodType;
+  privateEndpoint?: PrivateEndpoint;
+  privateEndpointOverrides?: PrivateEndpointOverride[];
+}
+export const CustomOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    oauthDiscovery: Oauth2Discovery,
+    clientId: S.optional(S.String),
+    clientSecret: S.optional(SensitiveString),
+    clientSecretConfig: S.optional(SecretReference),
+    clientSecretSource: S.optional(SecretSourceType),
+    onBehalfOfTokenExchangeConfig: S.optional(
+      OnBehalfOfTokenExchangeConfigType,
+    ),
+    clientAuthenticationMethod: S.optional(ClientAuthenticationMethodType),
+    privateEndpoint: S.optional(PrivateEndpoint),
+    privateEndpointOverrides: S.optional(PrivateEndpointOverrides),
+  }),
+).annotate({
+  identifier: "CustomOauth2ProviderConfigInput",
+}) as any as S.Schema<CustomOauth2ProviderConfigInput>;
+export type ClientIdType = string;
+export interface GoogleOauth2ProviderConfigInput {
+  clientId: string;
+  clientSecret?: string | redacted.Redacted<string>;
+  clientSecretConfig?: SecretReference;
+  clientSecretSource?: SecretSourceType;
+}
+export const GoogleOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientId: S.String,
+    clientSecret: S.optional(SensitiveString),
+    clientSecretConfig: S.optional(SecretReference),
+    clientSecretSource: S.optional(SecretSourceType),
+  }),
+).annotate({
+  identifier: "GoogleOauth2ProviderConfigInput",
+}) as any as S.Schema<GoogleOauth2ProviderConfigInput>;
+export interface GithubOauth2ProviderConfigInput {
+  clientId: string;
+  clientSecret?: string | redacted.Redacted<string>;
+  clientSecretConfig?: SecretReference;
+  clientSecretSource?: SecretSourceType;
+}
+export const GithubOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientId: S.String,
+    clientSecret: S.optional(SensitiveString),
+    clientSecretConfig: S.optional(SecretReference),
+    clientSecretSource: S.optional(SecretSourceType),
+  }),
+).annotate({
+  identifier: "GithubOauth2ProviderConfigInput",
+}) as any as S.Schema<GithubOauth2ProviderConfigInput>;
+export interface SlackOauth2ProviderConfigInput {
+  clientId: string;
+  clientSecret?: string | redacted.Redacted<string>;
+  clientSecretConfig?: SecretReference;
+  clientSecretSource?: SecretSourceType;
+}
+export const SlackOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientId: S.String,
+    clientSecret: S.optional(SensitiveString),
+    clientSecretConfig: S.optional(SecretReference),
+    clientSecretSource: S.optional(SecretSourceType),
+  }),
+).annotate({
+  identifier: "SlackOauth2ProviderConfigInput",
+}) as any as S.Schema<SlackOauth2ProviderConfigInput>;
+export interface SalesforceOauth2ProviderConfigInput {
+  clientId: string;
+  clientSecret?: string | redacted.Redacted<string>;
+  clientSecretConfig?: SecretReference;
+  clientSecretSource?: SecretSourceType;
+}
+export const SalesforceOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientId: S.String,
+    clientSecret: S.optional(SensitiveString),
+    clientSecretConfig: S.optional(SecretReference),
+    clientSecretSource: S.optional(SecretSourceType),
+  }),
+).annotate({
+  identifier: "SalesforceOauth2ProviderConfigInput",
+}) as any as S.Schema<SalesforceOauth2ProviderConfigInput>;
+export type TenantIdType = string;
+export interface MicrosoftOauth2ProviderConfigInput {
+  clientId: string;
+  clientSecret?: string | redacted.Redacted<string>;
+  clientSecretConfig?: SecretReference;
+  clientSecretSource?: SecretSourceType;
+  tenantId?: string;
+}
+export const MicrosoftOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientId: S.String,
+    clientSecret: S.optional(SensitiveString),
+    clientSecretConfig: S.optional(SecretReference),
+    clientSecretSource: S.optional(SecretSourceType),
+    tenantId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MicrosoftOauth2ProviderConfigInput",
+}) as any as S.Schema<MicrosoftOauth2ProviderConfigInput>;
+export interface AtlassianOauth2ProviderConfigInput {
+  clientId: string;
+  clientSecret?: string | redacted.Redacted<string>;
+  clientSecretConfig?: SecretReference;
+  clientSecretSource?: SecretSourceType;
+}
+export const AtlassianOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientId: S.String,
+    clientSecret: S.optional(SensitiveString),
+    clientSecretConfig: S.optional(SecretReference),
+    clientSecretSource: S.optional(SecretSourceType),
+  }),
+).annotate({
+  identifier: "AtlassianOauth2ProviderConfigInput",
+}) as any as S.Schema<AtlassianOauth2ProviderConfigInput>;
+export interface LinkedinOauth2ProviderConfigInput {
+  clientId: string;
+  clientSecret?: string | redacted.Redacted<string>;
+  clientSecretConfig?: SecretReference;
+  clientSecretSource?: SecretSourceType;
+}
+export const LinkedinOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientId: S.String,
+    clientSecret: S.optional(SensitiveString),
+    clientSecretConfig: S.optional(SecretReference),
+    clientSecretSource: S.optional(SecretSourceType),
+  }),
+).annotate({
+  identifier: "LinkedinOauth2ProviderConfigInput",
+}) as any as S.Schema<LinkedinOauth2ProviderConfigInput>;
+export interface IncludedOauth2ProviderConfigInput {
+  clientId: string;
+  clientSecret?: string | redacted.Redacted<string>;
+  clientSecretConfig?: SecretReference;
+  clientSecretSource?: SecretSourceType;
+  issuer?: string;
+  authorizationEndpoint?: string;
+  tokenEndpoint?: string;
+}
+export const IncludedOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientId: S.String,
+    clientSecret: S.optional(SensitiveString),
+    clientSecretConfig: S.optional(SecretReference),
+    clientSecretSource: S.optional(SecretSourceType),
+    issuer: S.optional(S.String),
+    authorizationEndpoint: S.optional(S.String),
+    tokenEndpoint: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IncludedOauth2ProviderConfigInput",
+}) as any as S.Schema<IncludedOauth2ProviderConfigInput>;
+export type Oauth2ProviderConfigInput =
+  | {
+      customOauth2ProviderConfig: CustomOauth2ProviderConfigInput;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig: GoogleOauth2ProviderConfigInput;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig: GithubOauth2ProviderConfigInput;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig: SlackOauth2ProviderConfigInput;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig: SalesforceOauth2ProviderConfigInput;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig: MicrosoftOauth2ProviderConfigInput;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig: AtlassianOauth2ProviderConfigInput;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig: LinkedinOauth2ProviderConfigInput;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig: IncludedOauth2ProviderConfigInput;
+    };
+export const Oauth2ProviderConfigInput = /*@__PURE__*/ S.Union([
+  S.Struct({ customOauth2ProviderConfig: CustomOauth2ProviderConfigInput }),
+  S.Struct({ googleOauth2ProviderConfig: GoogleOauth2ProviderConfigInput }),
+  S.Struct({ githubOauth2ProviderConfig: GithubOauth2ProviderConfigInput }),
+  S.Struct({ slackOauth2ProviderConfig: SlackOauth2ProviderConfigInput }),
+  S.Struct({
+    salesforceOauth2ProviderConfig: SalesforceOauth2ProviderConfigInput,
+  }),
+  S.Struct({
+    microsoftOauth2ProviderConfig: MicrosoftOauth2ProviderConfigInput,
+  }),
+  S.Struct({
+    atlassianOauth2ProviderConfig: AtlassianOauth2ProviderConfigInput,
+  }),
+  S.Struct({ linkedinOauth2ProviderConfig: LinkedinOauth2ProviderConfigInput }),
+  S.Struct({ includedOauth2ProviderConfig: IncludedOauth2ProviderConfigInput }),
+]);
+export interface CreateOauth2CredentialProviderRequest {
+  name: string;
+  credentialProviderVendor: CredentialProviderVendorType;
+  oauth2ProviderConfigInput: Oauth2ProviderConfigInput;
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateOauth2CredentialProviderRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      credentialProviderVendor: CredentialProviderVendorType,
+      oauth2ProviderConfigInput: Oauth2ProviderConfigInput,
+      tags: S.optional(TagsMap),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/identities/CreateOauth2CredentialProvider",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "CreateOauth2CredentialProviderRequest",
+}) as any as S.Schema<CreateOauth2CredentialProviderRequest>;
+export type CredentialProviderArnType = string;
+export interface CustomOauth2ProviderConfigOutput {
+  oauthDiscovery: Oauth2Discovery;
+  clientId?: string;
+  privateEndpoint?: PrivateEndpoint;
+  privateEndpointOverrides?: PrivateEndpointOverride[];
+  onBehalfOfTokenExchangeConfig?: OnBehalfOfTokenExchangeConfigType;
+  clientAuthenticationMethod?: ClientAuthenticationMethodType;
+}
+export const CustomOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    oauthDiscovery: Oauth2Discovery,
+    clientId: S.optional(S.String),
+    privateEndpoint: S.optional(PrivateEndpoint),
+    privateEndpointOverrides: S.optional(PrivateEndpointOverrides),
+    onBehalfOfTokenExchangeConfig: S.optional(
+      OnBehalfOfTokenExchangeConfigType,
+    ),
+    clientAuthenticationMethod: S.optional(ClientAuthenticationMethodType),
+  }),
+).annotate({
+  identifier: "CustomOauth2ProviderConfigOutput",
+}) as any as S.Schema<CustomOauth2ProviderConfigOutput>;
+export interface GoogleOauth2ProviderConfigOutput {
+  oauthDiscovery: Oauth2Discovery;
+  clientId?: string;
+}
+export const GoogleOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ oauthDiscovery: Oauth2Discovery, clientId: S.optional(S.String) }),
+).annotate({
+  identifier: "GoogleOauth2ProviderConfigOutput",
+}) as any as S.Schema<GoogleOauth2ProviderConfigOutput>;
+export interface GithubOauth2ProviderConfigOutput {
+  oauthDiscovery: Oauth2Discovery;
+  clientId?: string;
+}
+export const GithubOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ oauthDiscovery: Oauth2Discovery, clientId: S.optional(S.String) }),
+).annotate({
+  identifier: "GithubOauth2ProviderConfigOutput",
+}) as any as S.Schema<GithubOauth2ProviderConfigOutput>;
+export interface SlackOauth2ProviderConfigOutput {
+  oauthDiscovery: Oauth2Discovery;
+  clientId?: string;
+}
+export const SlackOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ oauthDiscovery: Oauth2Discovery, clientId: S.optional(S.String) }),
+).annotate({
+  identifier: "SlackOauth2ProviderConfigOutput",
+}) as any as S.Schema<SlackOauth2ProviderConfigOutput>;
+export interface SalesforceOauth2ProviderConfigOutput {
+  oauthDiscovery: Oauth2Discovery;
+  clientId?: string;
+}
+export const SalesforceOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      oauthDiscovery: Oauth2Discovery,
+      clientId: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "SalesforceOauth2ProviderConfigOutput",
+}) as any as S.Schema<SalesforceOauth2ProviderConfigOutput>;
+export interface MicrosoftOauth2ProviderConfigOutput {
+  oauthDiscovery: Oauth2Discovery;
+  clientId?: string;
+}
+export const MicrosoftOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ oauthDiscovery: Oauth2Discovery, clientId: S.optional(S.String) }),
+).annotate({
+  identifier: "MicrosoftOauth2ProviderConfigOutput",
+}) as any as S.Schema<MicrosoftOauth2ProviderConfigOutput>;
+export interface AtlassianOauth2ProviderConfigOutput {
+  oauthDiscovery: Oauth2Discovery;
+  clientId?: string;
+}
+export const AtlassianOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ oauthDiscovery: Oauth2Discovery, clientId: S.optional(S.String) }),
+).annotate({
+  identifier: "AtlassianOauth2ProviderConfigOutput",
+}) as any as S.Schema<AtlassianOauth2ProviderConfigOutput>;
+export interface LinkedinOauth2ProviderConfigOutput {
+  oauthDiscovery: Oauth2Discovery;
+  clientId?: string;
+}
+export const LinkedinOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ oauthDiscovery: Oauth2Discovery, clientId: S.optional(S.String) }),
+).annotate({
+  identifier: "LinkedinOauth2ProviderConfigOutput",
+}) as any as S.Schema<LinkedinOauth2ProviderConfigOutput>;
+export interface IncludedOauth2ProviderConfigOutput {
+  oauthDiscovery: Oauth2Discovery;
+  clientId?: string;
+}
+export const IncludedOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ oauthDiscovery: Oauth2Discovery, clientId: S.optional(S.String) }),
+).annotate({
+  identifier: "IncludedOauth2ProviderConfigOutput",
+}) as any as S.Schema<IncludedOauth2ProviderConfigOutput>;
+export type Oauth2ProviderConfigOutput =
+  | {
+      customOauth2ProviderConfig: CustomOauth2ProviderConfigOutput;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig: GoogleOauth2ProviderConfigOutput;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig: GithubOauth2ProviderConfigOutput;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig: SlackOauth2ProviderConfigOutput;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig: SalesforceOauth2ProviderConfigOutput;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig: MicrosoftOauth2ProviderConfigOutput;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig: AtlassianOauth2ProviderConfigOutput;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig: LinkedinOauth2ProviderConfigOutput;
+      includedOauth2ProviderConfig?: never;
+    }
+  | {
+      customOauth2ProviderConfig?: never;
+      googleOauth2ProviderConfig?: never;
+      githubOauth2ProviderConfig?: never;
+      slackOauth2ProviderConfig?: never;
+      salesforceOauth2ProviderConfig?: never;
+      microsoftOauth2ProviderConfig?: never;
+      atlassianOauth2ProviderConfig?: never;
+      linkedinOauth2ProviderConfig?: never;
+      includedOauth2ProviderConfig: IncludedOauth2ProviderConfigOutput;
+    };
+export const Oauth2ProviderConfigOutput = /*@__PURE__*/ S.Union([
+  S.Struct({ customOauth2ProviderConfig: CustomOauth2ProviderConfigOutput }),
+  S.Struct({ googleOauth2ProviderConfig: GoogleOauth2ProviderConfigOutput }),
+  S.Struct({ githubOauth2ProviderConfig: GithubOauth2ProviderConfigOutput }),
+  S.Struct({ slackOauth2ProviderConfig: SlackOauth2ProviderConfigOutput }),
+  S.Struct({
+    salesforceOauth2ProviderConfig: SalesforceOauth2ProviderConfigOutput,
+  }),
+  S.Struct({
+    microsoftOauth2ProviderConfig: MicrosoftOauth2ProviderConfigOutput,
+  }),
+  S.Struct({
+    atlassianOauth2ProviderConfig: AtlassianOauth2ProviderConfigOutput,
+  }),
+  S.Struct({
+    linkedinOauth2ProviderConfig: LinkedinOauth2ProviderConfigOutput,
+  }),
+  S.Struct({
+    includedOauth2ProviderConfig: IncludedOauth2ProviderConfigOutput,
+  }),
+]);
+export type Status =
+  | "CREATING"
+  | "CREATE_FAILED"
+  | "UPDATING"
+  | "UPDATE_FAILED"
+  | "READY"
+  | "DELETING"
+  | "DELETE_FAILED"
+  | (string & {});
+export const Status = /*@__PURE__*/ S.String;
+
+export interface CreateOauth2CredentialProviderResponse {
+  clientSecretArn: Secret;
+  clientSecretJsonKey?: string;
+  clientSecretSource?: SecretSourceType;
+  name: string;
+  credentialProviderArn: string;
+  callbackUrl?: string;
+  oauth2ProviderConfigOutput?: Oauth2ProviderConfigOutput;
+  status?: Status;
+}
+export const CreateOauth2CredentialProviderResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      clientSecretArn: Secret,
+      clientSecretJsonKey: S.optional(S.String),
+      clientSecretSource: S.optional(SecretSourceType),
+      name: S.String,
+      credentialProviderArn: S.String,
+      callbackUrl: S.optional(S.String),
+      oauth2ProviderConfigOutput: S.optional(Oauth2ProviderConfigOutput),
+      status: S.optional(Status),
+    }),
+).annotate({
+  identifier: "CreateOauth2CredentialProviderResponse",
+}) as any as S.Schema<CreateOauth2CredentialProviderResponse>;
+export type EvaluationConfigName = string;
+export type EvaluationConfigDescription = string | redacted.Redacted<string>;
+export type SamplingPercentage = number;
+export interface SamplingConfig {
+  samplingPercentage: number;
+}
+export const SamplingConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ samplingPercentage: S.Number }),
+).annotate({ identifier: "SamplingConfig" }) as any as S.Schema<SamplingConfig>;
+export type FilterOperator =
+  | "Equals"
+  | "NotEquals"
+  | "GreaterThan"
+  | "LessThan"
+  | "GreaterThanOrEqual"
+  | "LessThanOrEqual"
+  | "Contains"
+  | "NotContains"
+  | (string & {});
+export const FilterOperator = /*@__PURE__*/ S.String;
+
+export type FilterValue =
+  | { stringValue: string; doubleValue?: never; booleanValue?: never }
+  | { stringValue?: never; doubleValue: number; booleanValue?: never }
+  | { stringValue?: never; doubleValue?: never; booleanValue: boolean };
+export const FilterValue = /*@__PURE__*/ S.Union([
+  S.Struct({ stringValue: S.String }),
+  S.Struct({ doubleValue: S.Number }),
+  S.Struct({ booleanValue: S.Boolean }),
+]);
+export interface Filter {
+  key: string;
+  operator: FilterOperator;
+  value: FilterValue;
+}
+export const Filter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ key: S.String, operator: FilterOperator, value: FilterValue }),
+).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
+export type FilterList = Filter[];
+export const FilterList = /*@__PURE__*/ S.Array(Filter);
+export interface SessionConfig {
+  sessionTimeoutMinutes: number;
+}
+export const SessionConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ sessionTimeoutMinutes: S.Number }),
+).annotate({ identifier: "SessionConfig" }) as any as S.Schema<SessionConfig>;
+export interface Rule {
+  samplingConfig: SamplingConfig;
+  filters?: Filter[];
+  sessionConfig?: SessionConfig;
+}
+export const Rule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    samplingConfig: SamplingConfig,
+    filters: S.optional(FilterList),
+    sessionConfig: S.optional(SessionConfig),
+  }),
+).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
+export type LogGroupName = string;
+export type LogGroupNamesList = string[];
+export const LogGroupNamesList = /*@__PURE__*/ S.Array(S.String);
+export type ServiceName = string;
+export type ServiceNamesList = string[];
+export const ServiceNamesList = /*@__PURE__*/ S.Array(S.String);
+export interface CloudWatchLogsInputConfig {
+  logGroupNames: string[];
+  serviceNames: string[];
+}
+export const CloudWatchLogsInputConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    logGroupNames: LogGroupNamesList,
+    serviceNames: ServiceNamesList,
+  }),
+).annotate({
+  identifier: "CloudWatchLogsInputConfig",
+}) as any as S.Schema<CloudWatchLogsInputConfig>;
+export type DataSourceConfig = { cloudWatchLogs: CloudWatchLogsInputConfig };
+export const DataSourceConfig = /*@__PURE__*/ S.Union([
+  S.Struct({ cloudWatchLogs: CloudWatchLogsInputConfig }),
+]);
+export type EvaluatorReference = { evaluatorId: string };
+export const EvaluatorReference = /*@__PURE__*/ S.Union([
+  S.Struct({ evaluatorId: S.String }),
+]);
+export type EvaluatorList = EvaluatorReference[];
+export const EvaluatorList = /*@__PURE__*/ S.Array(EvaluatorReference);
+export type InsightId = string;
+export interface Insight {
+  insightId: string;
+}
+export const Insight = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ insightId: S.String }),
+).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
+export type InsightList = Insight[];
+export const InsightList = /*@__PURE__*/ S.Array(Insight);
+export type ClusteringFrequency =
+  | "DAILY"
+  | "WEEKLY"
+  | "MONTHLY"
+  | (string & {});
+export const ClusteringFrequency = /*@__PURE__*/ S.String;
+
+export type ClusteringFrequencyList = ClusteringFrequency[];
+export const ClusteringFrequencyList =
+  /*@__PURE__*/ S.Array(ClusteringFrequency);
+export interface ClusteringConfig {
+  frequencies: ClusteringFrequency[];
+}
+export const ClusteringConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ frequencies: ClusteringFrequencyList }),
+).annotate({
+  identifier: "ClusteringConfig",
+}) as any as S.Schema<ClusteringConfig>;
+export interface CreateOnlineEvaluationConfigRequest {
+  clientToken?: string;
+  onlineEvaluationConfigName: string;
+  description?: string | redacted.Redacted<string>;
+  rule: Rule;
+  dataSourceConfig: DataSourceConfig;
+  evaluators?: EvaluatorReference[];
+  insights?: Insight[];
+  clusteringConfig?: ClusteringConfig;
+  evaluationExecutionRoleArn: string;
+  enableOnCreate: boolean;
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateOnlineEvaluationConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    onlineEvaluationConfigName: S.String,
+    description: S.optional(SensitiveString),
+    rule: Rule,
+    dataSourceConfig: DataSourceConfig,
+    evaluators: S.optional(EvaluatorList),
+    insights: S.optional(InsightList),
+    clusteringConfig: S.optional(ClusteringConfig),
+    evaluationExecutionRoleArn: S.String,
+    enableOnCreate: S.Boolean,
+    tags: S.optional(TagsMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/online-evaluation-configs/create" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateOnlineEvaluationConfigRequest",
+}) as any as S.Schema<CreateOnlineEvaluationConfigRequest>;
+export type OnlineEvaluationConfigArn = string;
+export type OnlineEvaluationConfigId = string;
+export interface CloudWatchOutputConfig {
+  logGroupName: string;
+}
+export const CloudWatchOutputConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ logGroupName: S.String }),
+).annotate({
+  identifier: "CloudWatchOutputConfig",
+}) as any as S.Schema<CloudWatchOutputConfig>;
+export interface OutputConfig {
+  cloudWatchConfig: CloudWatchOutputConfig;
+}
+export const OutputConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ cloudWatchConfig: CloudWatchOutputConfig }),
+).annotate({ identifier: "OutputConfig" }) as any as S.Schema<OutputConfig>;
+export type OnlineEvaluationConfigStatus =
+  | "ACTIVE"
+  | "CREATING"
+  | "CREATE_FAILED"
+  | "UPDATING"
+  | "UPDATE_FAILED"
+  | "DELETING"
+  | "ERROR"
+  | (string & {});
+export const OnlineEvaluationConfigStatus = /*@__PURE__*/ S.String;
+
+export type OnlineEvaluationExecutionStatus =
+  | "ENABLED"
+  | "DISABLED"
+  | (string & {});
+export const OnlineEvaluationExecutionStatus = /*@__PURE__*/ S.String;
+
+export interface CreateOnlineEvaluationConfigResponse {
+  onlineEvaluationConfigArn: string;
+  onlineEvaluationConfigId: string;
+  createdAt: Date;
+  outputConfig?: OutputConfig;
+  status: OnlineEvaluationConfigStatus;
+  executionStatus: OnlineEvaluationExecutionStatus;
+  failureReason?: string;
+}
+export const CreateOnlineEvaluationConfigResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      onlineEvaluationConfigArn: S.String,
+      onlineEvaluationConfigId: S.String,
+      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      outputConfig: S.optional(OutputConfig),
+      status: OnlineEvaluationConfigStatus,
+      executionStatus: OnlineEvaluationExecutionStatus,
+      failureReason: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "CreateOnlineEvaluationConfigResponse",
+}) as any as S.Schema<CreateOnlineEvaluationConfigResponse>;
+export type PaymentManagerId = string;
+export type PaymentConnectorName = string;
+export type PaymentsDescription = string;
+export type PaymentConnectorType =
+  | "CoinbaseCDP"
+  | "StripePrivy"
+  | (string & {});
+export const PaymentConnectorType = /*@__PURE__*/ S.String;
+
+export type PaymentCredentialProviderArn = string;
+export interface PaymentCredentialProviderConfiguration {
+  credentialProviderArn: string;
+}
+export const PaymentCredentialProviderConfiguration = /*@__PURE__*/ S.suspend(
+  () => S.Struct({ credentialProviderArn: S.String }),
+).annotate({
+  identifier: "PaymentCredentialProviderConfiguration",
+}) as any as S.Schema<PaymentCredentialProviderConfiguration>;
+export type CredentialsProviderConfiguration =
+  | { coinbaseCDP: PaymentCredentialProviderConfiguration; stripePrivy?: never }
+  | {
+      coinbaseCDP?: never;
+      stripePrivy: PaymentCredentialProviderConfiguration;
+    };
+export const CredentialsProviderConfiguration = /*@__PURE__*/ S.Union([
+  S.Struct({ coinbaseCDP: PaymentCredentialProviderConfiguration }),
+  S.Struct({ stripePrivy: PaymentCredentialProviderConfiguration }),
+]);
+export type CredentialsProviderConfigurations =
+  CredentialsProviderConfiguration[];
+export const CredentialsProviderConfigurations = /*@__PURE__*/ S.Array(
+  CredentialsProviderConfiguration,
+);
+export interface CreatePaymentConnectorRequest {
+  paymentManagerId: string;
+  name: string;
+  description?: string;
+  type: PaymentConnectorType;
+  credentialProviderConfigurations: CredentialsProviderConfiguration[];
+  clientToken?: string;
+}
+export const CreatePaymentConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentManagerId: S.String.pipe(T.HttpLabel("paymentManagerId")),
+    name: S.String,
+    description: S.optional(S.String),
+    type: PaymentConnectorType,
+    credentialProviderConfigurations: CredentialsProviderConfigurations,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/payments/managers/{paymentManagerId}/connectors",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreatePaymentConnectorRequest",
+}) as any as S.Schema<CreatePaymentConnectorRequest>;
+export type PaymentConnectorId = string;
+export type PaymentConnectorStatus =
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING"
+  | "READY"
+  | "CREATE_FAILED"
+  | "UPDATE_FAILED"
+  | "DELETE_FAILED"
+  | (string & {});
+export const PaymentConnectorStatus = /*@__PURE__*/ S.String;
+
+export interface CreatePaymentConnectorResponse {
+  paymentConnectorId: string;
+  paymentManagerId: string;
+  name: string;
+  type: PaymentConnectorType;
+  credentialProviderConfigurations: CredentialsProviderConfiguration[];
+  createdAt: Date;
+  status: PaymentConnectorStatus;
+}
+export const CreatePaymentConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentConnectorId: S.String,
+    paymentManagerId: S.String,
+    name: S.String,
+    type: PaymentConnectorType,
+    credentialProviderConfigurations: CredentialsProviderConfigurations,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: PaymentConnectorStatus,
+  }),
+).annotate({
+  identifier: "CreatePaymentConnectorResponse",
+}) as any as S.Schema<CreatePaymentConnectorResponse>;
+export type PaymentCredentialProviderVendorType =
+  | "CoinbaseCDP"
+  | "StripePrivy"
+  | (string & {});
+export const PaymentCredentialProviderVendorType = /*@__PURE__*/ S.String;
+
+export type CoinbaseCdpApiKeyIdType = string;
+export type DefaultCoinbaseCdpApiKeySecretType =
+  | string
+  | redacted.Redacted<string>;
+export type DefaultCoinbaseCdpWalletSecretType =
+  | string
+  | redacted.Redacted<string>;
+export interface CoinbaseCdpConfigurationInput {
+  apiKeyId: string;
+  apiKeySecret?: string | redacted.Redacted<string>;
+  apiKeySecretSource?: SecretSourceType;
+  apiKeySecretConfig?: SecretReference;
+  walletSecret?: string | redacted.Redacted<string>;
+  walletSecretSource?: SecretSourceType;
+  walletSecretConfig?: SecretReference;
+}
+export const CoinbaseCdpConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiKeyId: S.String,
+    apiKeySecret: S.optional(SensitiveString),
+    apiKeySecretSource: S.optional(SecretSourceType),
+    apiKeySecretConfig: S.optional(SecretReference),
+    walletSecret: S.optional(SensitiveString),
+    walletSecretSource: S.optional(SecretSourceType),
+    walletSecretConfig: S.optional(SecretReference),
+  }),
+).annotate({
+  identifier: "CoinbaseCdpConfigurationInput",
+}) as any as S.Schema<CoinbaseCdpConfigurationInput>;
+export type StripePrivyAppIdType = string;
+export type DefaultStripePrivyAppSecretType =
+  | string
+  | redacted.Redacted<string>;
+export type DefaultStripePrivyAuthorizationPrivateKeyType =
+  | string
+  | redacted.Redacted<string>;
+export type StripePrivyAuthorizationIdType = string;
+export interface StripePrivyConfigurationInput {
+  appId: string;
+  appSecret?: string | redacted.Redacted<string>;
+  appSecretSource?: SecretSourceType;
+  appSecretConfig?: SecretReference;
+  authorizationPrivateKey?: string | redacted.Redacted<string>;
+  authorizationPrivateKeySource?: SecretSourceType;
+  authorizationPrivateKeyConfig?: SecretReference;
+  authorizationId: string;
+}
+export const StripePrivyConfigurationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String,
+    appSecret: S.optional(SensitiveString),
+    appSecretSource: S.optional(SecretSourceType),
+    appSecretConfig: S.optional(SecretReference),
+    authorizationPrivateKey: S.optional(SensitiveString),
+    authorizationPrivateKeySource: S.optional(SecretSourceType),
+    authorizationPrivateKeyConfig: S.optional(SecretReference),
+    authorizationId: S.String,
+  }),
+).annotate({
+  identifier: "StripePrivyConfigurationInput",
+}) as any as S.Schema<StripePrivyConfigurationInput>;
+export type PaymentProviderConfigurationInput =
+  | {
+      coinbaseCdpConfiguration: CoinbaseCdpConfigurationInput;
+      stripePrivyConfiguration?: never;
+    }
+  | {
+      coinbaseCdpConfiguration?: never;
+      stripePrivyConfiguration: StripePrivyConfigurationInput;
+    };
+export const PaymentProviderConfigurationInput = /*@__PURE__*/ S.Union([
+  S.Struct({ coinbaseCdpConfiguration: CoinbaseCdpConfigurationInput }),
+  S.Struct({ stripePrivyConfiguration: StripePrivyConfigurationInput }),
+]);
+export interface CreatePaymentCredentialProviderRequest {
+  name: string;
+  credentialProviderVendor: PaymentCredentialProviderVendorType;
+  providerConfigurationInput: PaymentProviderConfigurationInput;
+  tags?: { [key: string]: string | undefined };
+}
+export const CreatePaymentCredentialProviderRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      credentialProviderVendor: PaymentCredentialProviderVendorType,
+      providerConfigurationInput: PaymentProviderConfigurationInput,
+      tags: S.optional(TagsMap),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/identities/CreatePaymentCredentialProvider",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "CreatePaymentCredentialProviderRequest",
+}) as any as S.Schema<CreatePaymentCredentialProviderRequest>;
+export type PaymentCredentialProviderArnType = string;
+export interface CoinbaseCdpConfigurationOutput {
+  apiKeyId: string;
+  apiKeySecretArn: Secret;
+  apiKeySecretJsonKey?: string;
+  apiKeySecretSource?: SecretSourceType;
+  walletSecretArn: Secret;
+  walletSecretJsonKey?: string;
+  walletSecretSource?: SecretSourceType;
+}
+export const CoinbaseCdpConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiKeyId: S.String,
+    apiKeySecretArn: Secret,
+    apiKeySecretJsonKey: S.optional(S.String),
+    apiKeySecretSource: S.optional(SecretSourceType),
+    walletSecretArn: Secret,
+    walletSecretJsonKey: S.optional(S.String),
+    walletSecretSource: S.optional(SecretSourceType),
+  }),
+).annotate({
+  identifier: "CoinbaseCdpConfigurationOutput",
+}) as any as S.Schema<CoinbaseCdpConfigurationOutput>;
+export interface StripePrivyConfigurationOutput {
+  appId: string;
+  appSecretArn: Secret;
+  appSecretJsonKey?: string;
+  appSecretSource?: SecretSourceType;
+  authorizationPrivateKeyArn: Secret;
+  authorizationPrivateKeyJsonKey?: string;
+  authorizationPrivateKeySource?: SecretSourceType;
+  authorizationId: string;
+}
+export const StripePrivyConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appId: S.String,
+    appSecretArn: Secret,
+    appSecretJsonKey: S.optional(S.String),
+    appSecretSource: S.optional(SecretSourceType),
+    authorizationPrivateKeyArn: Secret,
+    authorizationPrivateKeyJsonKey: S.optional(S.String),
+    authorizationPrivateKeySource: S.optional(SecretSourceType),
+    authorizationId: S.String,
+  }),
+).annotate({
+  identifier: "StripePrivyConfigurationOutput",
+}) as any as S.Schema<StripePrivyConfigurationOutput>;
+export type PaymentProviderConfigurationOutput =
+  | {
+      coinbaseCdpConfiguration: CoinbaseCdpConfigurationOutput;
+      stripePrivyConfiguration?: never;
+    }
+  | {
+      coinbaseCdpConfiguration?: never;
+      stripePrivyConfiguration: StripePrivyConfigurationOutput;
+    };
+export const PaymentProviderConfigurationOutput = /*@__PURE__*/ S.Union([
+  S.Struct({ coinbaseCdpConfiguration: CoinbaseCdpConfigurationOutput }),
+  S.Struct({ stripePrivyConfiguration: StripePrivyConfigurationOutput }),
+]);
+export interface CreatePaymentCredentialProviderResponse {
+  name: string;
+  credentialProviderVendor: PaymentCredentialProviderVendorType;
+  credentialProviderArn: string;
+  providerConfigurationOutput: PaymentProviderConfigurationOutput;
+}
+export const CreatePaymentCredentialProviderResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      credentialProviderVendor: PaymentCredentialProviderVendorType,
+      credentialProviderArn: S.String,
+      providerConfigurationOutput: PaymentProviderConfigurationOutput,
+    }),
+).annotate({
+  identifier: "CreatePaymentCredentialProviderResponse",
+}) as any as S.Schema<CreatePaymentCredentialProviderResponse>;
+export type PaymentManagerName = string;
+export type PaymentsAuthorizerType = "CUSTOM_JWT" | "AWS_IAM" | (string & {});
+export const PaymentsAuthorizerType = /*@__PURE__*/ S.String;
+
+export interface CreatePaymentManagerRequest {
+  name: string;
+  description?: string;
+  authorizerType: PaymentsAuthorizerType;
+  authorizerConfiguration?: AuthorizerConfiguration;
+  roleArn: string;
+  clientToken?: string;
+  tags?: { [key: string]: string | undefined };
+}
+export const CreatePaymentManagerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(S.String),
+    authorizerType: PaymentsAuthorizerType,
+    authorizerConfiguration: S.optional(AuthorizerConfiguration),
+    roleArn: S.String,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    tags: S.optional(TagsMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/payments/managers" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreatePaymentManagerRequest",
+}) as any as S.Schema<CreatePaymentManagerRequest>;
+export type PaymentManagerArn = string;
+export type PaymentManagerStatus =
+  | "CREATING"
+  | "UPDATING"
+  | "DELETING"
+  | "READY"
+  | "CREATE_FAILED"
+  | "UPDATE_FAILED"
+  | "DELETE_FAILED"
+  | (string & {});
+export const PaymentManagerStatus = /*@__PURE__*/ S.String;
+
+export interface CreatePaymentManagerResponse {
+  paymentManagerArn: string;
+  paymentManagerId: string;
+  name: string;
+  authorizerType: PaymentsAuthorizerType;
+  authorizerConfiguration?: AuthorizerConfiguration;
+  roleArn: string;
+  workloadIdentityDetails?: WorkloadIdentityDetails;
+  createdAt: Date;
+  status: PaymentManagerStatus;
+  tags?: { [key: string]: string | undefined };
+}
+export const CreatePaymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentManagerArn: S.String,
+    paymentManagerId: S.String,
+    name: S.String,
+    authorizerType: PaymentsAuthorizerType,
+    authorizerConfiguration: S.optional(AuthorizerConfiguration),
+    roleArn: S.String,
+    workloadIdentityDetails: S.optional(WorkloadIdentityDetails),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: PaymentManagerStatus,
+    tags: S.optional(TagsMap),
+  }),
+).annotate({
+  identifier: "CreatePaymentManagerResponse",
+}) as any as S.Schema<CreatePaymentManagerResponse>;
+export type PolicyName = string;
+export type Statement = string;
+export interface CedarPolicy {
+  statement: string;
+}
+export const CedarPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ statement: S.String }),
+).annotate({ identifier: "CedarPolicy" }) as any as S.Schema<CedarPolicy>;
+export type ResourceId = string;
+export interface PolicyGenerationDetails {
+  policyGenerationId: string;
+  policyGenerationAssetId: string;
+}
+export const PolicyGenerationDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ policyGenerationId: S.String, policyGenerationAssetId: S.String }),
+).annotate({
+  identifier: "PolicyGenerationDetails",
+}) as any as S.Schema<PolicyGenerationDetails>;
+export interface PolicyStatement {
+  statement: string;
+}
+export const PolicyStatement = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ statement: S.String }),
+).annotate({
+  identifier: "PolicyStatement",
+}) as any as S.Schema<PolicyStatement>;
+export type PolicyDefinition =
+  | { cedar: CedarPolicy; policyGeneration?: never; policy?: never }
+  | { cedar?: never; policyGeneration: PolicyGenerationDetails; policy?: never }
+  | { cedar?: never; policyGeneration?: never; policy: PolicyStatement };
+export const PolicyDefinition = /*@__PURE__*/ S.Union([
+  S.Struct({ cedar: CedarPolicy }),
+  S.Struct({ policyGeneration: PolicyGenerationDetails }),
+  S.Struct({ policy: PolicyStatement }),
+]);
+export type PolicyValidationMode =
+  | "FAIL_ON_ANY_FINDINGS"
+  | "IGNORE_ALL_FINDINGS"
+  | (string & {});
+export const PolicyValidationMode = /*@__PURE__*/ S.String;
+
+export type EnforcementMode = "ACTIVE" | "LOG_ONLY" | (string & {});
+export const EnforcementMode = /*@__PURE__*/ S.String;
+
+export interface CreatePolicyRequest {
+  name: string;
+  definition: PolicyDefinition;
+  description?: string | redacted.Redacted<string>;
+  validationMode?: PolicyValidationMode;
+  enforcementMode?: EnforcementMode;
+  policyEngineId: string;
+  clientToken?: string;
+}
+export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    definition: PolicyDefinition,
+    description: S.optional(SensitiveString),
+    validationMode: S.optional(PolicyValidationMode),
+    enforcementMode: S.optional(EnforcementMode),
+    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/policy-engines/{policyEngineId}/policies",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreatePolicyRequest",
+}) as any as S.Schema<CreatePolicyRequest>;
+export type PolicyArn = string;
+export type PolicyStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING"
+  | "CREATE_FAILED"
+  | "UPDATE_FAILED"
+  | "DELETE_FAILED"
+  | (string & {});
+export const PolicyStatus = /*@__PURE__*/ S.String;
+
+export type PolicyStatusReasons = string[];
+export const PolicyStatusReasons = /*@__PURE__*/ S.Array(S.String);
+export interface CreatePolicyResponse {
+  policyId: string;
+  name: string;
+  policyEngineId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  policyArn: string;
+  status: PolicyStatus;
+  enforcementMode?: EnforcementMode;
+  definition: PolicyDefinition;
+  description?: string | redacted.Redacted<string>;
+  statusReasons: string[];
+}
+export const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyId: S.String,
+    name: S.String,
+    policyEngineId: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    policyArn: S.String,
+    status: PolicyStatus,
+    enforcementMode: S.optional(EnforcementMode),
+    definition: PolicyDefinition,
+    description: S.optional(SensitiveString),
+    statusReasons: PolicyStatusReasons,
+  }),
+).annotate({
+  identifier: "CreatePolicyResponse",
+}) as any as S.Schema<CreatePolicyResponse>;
+export type PolicyEngineName = string;
+export interface CreatePolicyEngineRequest {
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  clientToken?: string;
+  encryptionKeyArn?: string;
+  tags?: { [key: string]: string | undefined };
+}
+export const CreatePolicyEngineRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(SensitiveString),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    encryptionKeyArn: S.optional(S.String),
+    tags: S.optional(TagsMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/policy-engines" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreatePolicyEngineRequest",
+}) as any as S.Schema<CreatePolicyEngineRequest>;
+export type PolicyEngineArn = string;
+export type PolicyEngineStatus =
+  | "CREATING"
+  | "ACTIVE"
+  | "UPDATING"
+  | "DELETING"
+  | "CREATE_FAILED"
+  | "UPDATE_FAILED"
+  | "DELETE_FAILED"
+  | (string & {});
+export const PolicyEngineStatus = /*@__PURE__*/ S.String;
+
+export interface CreatePolicyEngineResponse {
+  policyEngineId: string;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+  policyEngineArn: string;
+  status: PolicyEngineStatus;
+  encryptionKeyArn?: string;
+  description?: string | redacted.Redacted<string>;
+  statusReasons: string[];
+}
+export const CreatePolicyEngineResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String,
+    name: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    policyEngineArn: S.String,
+    status: PolicyEngineStatus,
+    encryptionKeyArn: S.optional(S.String),
+    description: S.optional(SensitiveString),
+    statusReasons: PolicyStatusReasons,
+  }),
+).annotate({
+  identifier: "CreatePolicyEngineResponse",
+}) as any as S.Schema<CreatePolicyEngineResponse>;
+export type RegistryName = string;
+export type RegistryAuthorizerType = "CUSTOM_JWT" | "AWS_IAM" | (string & {});
+export const RegistryAuthorizerType = /*@__PURE__*/ S.String;
+
+export interface ApprovalConfiguration {
+  autoApproval?: boolean;
+}
+export const ApprovalConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ autoApproval: S.optional(S.Boolean) }),
+).annotate({
+  identifier: "ApprovalConfiguration",
+}) as any as S.Schema<ApprovalConfiguration>;
+export interface CreateRegistryRequest {
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  authorizerType?: RegistryAuthorizerType;
+  authorizerConfiguration?: AuthorizerConfiguration;
+  clientToken?: string;
+  approvalConfiguration?: ApprovalConfiguration;
+}
+export const CreateRegistryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(SensitiveString),
+    authorizerType: S.optional(RegistryAuthorizerType),
+    authorizerConfiguration: S.optional(AuthorizerConfiguration),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    approvalConfiguration: S.optional(ApprovalConfiguration),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/registries" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateRegistryRequest",
+}) as any as S.Schema<CreateRegistryRequest>;
+export type RegistryArn = string;
+export interface CreateRegistryResponse {
+  registryArn: string;
+}
+export const CreateRegistryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ registryArn: S.String }),
+).annotate({
+  identifier: "CreateRegistryResponse",
+}) as any as S.Schema<CreateRegistryResponse>;
+export type RegistryIdentifier = string;
+export type RegistryRecordName = string;
+export type DescriptorType =
+  | "MCP"
+  | "A2A"
+  | "CUSTOM"
+  | "AGENT_SKILLS"
+  | (string & {});
+export const DescriptorType = /*@__PURE__*/ S.String;
+
+export type SchemaVersion = string;
+export type InlineContent = string;
+export interface ServerDefinition {
+  schemaVersion?: string;
+  inlineContent?: string;
+}
+export const ServerDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaVersion: S.optional(S.String),
+    inlineContent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServerDefinition",
+}) as any as S.Schema<ServerDefinition>;
+export interface ToolsDefinition {
+  protocolVersion?: string;
+  inlineContent?: string;
+}
+export const ToolsDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    protocolVersion: S.optional(S.String),
+    inlineContent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ToolsDefinition",
+}) as any as S.Schema<ToolsDefinition>;
+export interface McpDescriptor {
+  server?: ServerDefinition;
+  tools?: ToolsDefinition;
+}
+export const McpDescriptor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    server: S.optional(ServerDefinition),
+    tools: S.optional(ToolsDefinition),
+  }),
+).annotate({ identifier: "McpDescriptor" }) as any as S.Schema<McpDescriptor>;
+export interface AgentCardDefinition {
+  schemaVersion?: string;
+  inlineContent?: string;
+}
+export const AgentCardDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaVersion: S.optional(S.String),
+    inlineContent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AgentCardDefinition",
+}) as any as S.Schema<AgentCardDefinition>;
+export interface A2aDescriptor {
+  agentCard?: AgentCardDefinition;
+}
+export const A2aDescriptor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ agentCard: S.optional(AgentCardDefinition) }),
+).annotate({ identifier: "A2aDescriptor" }) as any as S.Schema<A2aDescriptor>;
+export interface CustomDescriptor {
+  inlineContent?: string;
+}
+export const CustomDescriptor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ inlineContent: S.optional(S.String) }),
+).annotate({
+  identifier: "CustomDescriptor",
+}) as any as S.Schema<CustomDescriptor>;
+export interface SkillMdDefinition {
+  inlineContent?: string;
+}
+export const SkillMdDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ inlineContent: S.optional(S.String) }),
+).annotate({
+  identifier: "SkillMdDefinition",
+}) as any as S.Schema<SkillMdDefinition>;
+export interface SkillDefinition {
+  schemaVersion?: string;
+  inlineContent?: string;
+}
+export const SkillDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaVersion: S.optional(S.String),
+    inlineContent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SkillDefinition",
+}) as any as S.Schema<SkillDefinition>;
+export interface AgentSkillsDescriptor {
+  skillMd?: SkillMdDefinition;
+  skillDefinition?: SkillDefinition;
+}
+export const AgentSkillsDescriptor = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    skillMd: S.optional(SkillMdDefinition),
+    skillDefinition: S.optional(SkillDefinition),
+  }),
+).annotate({
+  identifier: "AgentSkillsDescriptor",
+}) as any as S.Schema<AgentSkillsDescriptor>;
+export interface Descriptors {
+  mcp?: McpDescriptor;
+  a2a?: A2aDescriptor;
+  custom?: CustomDescriptor;
+  agentSkills?: AgentSkillsDescriptor;
+}
+export const Descriptors = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mcp: S.optional(McpDescriptor),
+    a2a: S.optional(A2aDescriptor),
+    custom: S.optional(CustomDescriptor),
+    agentSkills: S.optional(AgentSkillsDescriptor),
+  }),
+).annotate({ identifier: "Descriptors" }) as any as S.Schema<Descriptors>;
+export type RegistryRecordVersion = string;
+export type SynchronizationType = "URL" | (string & {});
+export const SynchronizationType = /*@__PURE__*/ S.String;
+
+export type McpServerUrl = string;
+export type RegistryRecordCredentialProviderType =
+  | "OAUTH"
+  | "IAM"
+  | (string & {});
+export const RegistryRecordCredentialProviderType = /*@__PURE__*/ S.String;
+
+export type CredentialProviderArn = string;
+export type RegistryRecordOAuthGrantType = "CLIENT_CREDENTIALS" | (string & {});
+export const RegistryRecordOAuthGrantType = /*@__PURE__*/ S.String;
+
+export type ScopeList = string[];
+export const ScopeList = /*@__PURE__*/ S.Array(S.String);
+export type CustomParameterMap = { [key: string]: string | undefined };
+export const CustomParameterMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String.pipe(S.optional),
+);
+export interface RegistryRecordOAuthCredentialProvider {
+  providerArn: string;
+  grantType?: RegistryRecordOAuthGrantType;
+  scopes?: string[];
+  customParameters?: { [key: string]: string | undefined };
+}
+export const RegistryRecordOAuthCredentialProvider = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      providerArn: S.String,
+      grantType: S.optional(RegistryRecordOAuthGrantType),
+      scopes: S.optional(ScopeList),
+      customParameters: S.optional(CustomParameterMap),
+    }),
+).annotate({
+  identifier: "RegistryRecordOAuthCredentialProvider",
+}) as any as S.Schema<RegistryRecordOAuthCredentialProvider>;
+export type IamRoleArn = string;
+export type IamSigningServiceName = string;
+export type IamSigningRegion = string;
+export interface RegistryRecordIamCredentialProvider {
+  roleArn?: string;
+  service?: string;
+  region?: string;
+}
+export const RegistryRecordIamCredentialProvider = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    roleArn: S.optional(S.String),
+    service: S.optional(S.String),
+    region: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RegistryRecordIamCredentialProvider",
+}) as any as S.Schema<RegistryRecordIamCredentialProvider>;
+export type RegistryRecordCredentialProviderUnion =
+  | {
+      oauthCredentialProvider: RegistryRecordOAuthCredentialProvider;
+      iamCredentialProvider?: never;
+    }
+  | {
+      oauthCredentialProvider?: never;
+      iamCredentialProvider: RegistryRecordIamCredentialProvider;
+    };
+export const RegistryRecordCredentialProviderUnion = /*@__PURE__*/ S.Union([
+  S.Struct({ oauthCredentialProvider: RegistryRecordOAuthCredentialProvider }),
+  S.Struct({ iamCredentialProvider: RegistryRecordIamCredentialProvider }),
+]);
+export interface RegistryRecordCredentialProviderConfiguration {
+  credentialProviderType: RegistryRecordCredentialProviderType;
+  credentialProvider: RegistryRecordCredentialProviderUnion;
+}
+export const RegistryRecordCredentialProviderConfiguration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      credentialProviderType: RegistryRecordCredentialProviderType,
+      credentialProvider: RegistryRecordCredentialProviderUnion,
+    }),
+  ).annotate({
+    identifier: "RegistryRecordCredentialProviderConfiguration",
+  }) as any as S.Schema<RegistryRecordCredentialProviderConfiguration>;
+export type RegistryRecordCredentialProviderConfigurationList =
+  RegistryRecordCredentialProviderConfiguration[];
+export const RegistryRecordCredentialProviderConfigurationList =
+  /*@__PURE__*/ S.Array(RegistryRecordCredentialProviderConfiguration);
+export interface FromUrlSynchronizationConfiguration {
+  url: string;
+  credentialProviderConfigurations?: RegistryRecordCredentialProviderConfiguration[];
+}
+export const FromUrlSynchronizationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    url: S.String,
+    credentialProviderConfigurations: S.optional(
+      RegistryRecordCredentialProviderConfigurationList,
+    ),
+  }),
+).annotate({
+  identifier: "FromUrlSynchronizationConfiguration",
+}) as any as S.Schema<FromUrlSynchronizationConfiguration>;
+export interface SynchronizationConfiguration {
+  fromUrl?: FromUrlSynchronizationConfiguration;
+}
+export const SynchronizationConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ fromUrl: S.optional(FromUrlSynchronizationConfiguration) }),
+).annotate({
+  identifier: "SynchronizationConfiguration",
+}) as any as S.Schema<SynchronizationConfiguration>;
+export interface CreateRegistryRecordRequest {
+  registryId: string;
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  descriptorType: DescriptorType;
+  descriptors?: Descriptors;
+  recordVersion?: string;
+  synchronizationType?: SynchronizationType;
+  synchronizationConfiguration?: SynchronizationConfiguration;
+  clientToken?: string;
+}
+export const CreateRegistryRecordRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registryId: S.String.pipe(T.HttpLabel("registryId")),
+    name: S.String,
+    description: S.optional(SensitiveString),
+    descriptorType: DescriptorType,
+    descriptors: S.optional(Descriptors),
+    recordVersion: S.optional(S.String),
+    synchronizationType: S.optional(SynchronizationType),
+    synchronizationConfiguration: S.optional(SynchronizationConfiguration),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/registries/{registryId}/records" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateRegistryRecordRequest",
+}) as any as S.Schema<CreateRegistryRecordRequest>;
+export type RegistryRecordArn = string;
+export type RegistryRecordStatus =
+  | "DRAFT"
+  | "PENDING_APPROVAL"
+  | "APPROVED"
+  | "REJECTED"
+  | "DEPRECATED"
+  | "CREATING"
+  | "UPDATING"
+  | "CREATE_FAILED"
+  | "UPDATE_FAILED"
+  | (string & {});
+export const RegistryRecordStatus = /*@__PURE__*/ S.String;
+
+export interface CreateRegistryRecordResponse {
+  recordArn: string;
+  status: RegistryRecordStatus;
+}
+export const CreateRegistryRecordResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ recordArn: S.String, status: RegistryRecordStatus }),
+).annotate({
+  identifier: "CreateRegistryRecordResponse",
+}) as any as S.Schema<CreateRegistryRecordResponse>;
+export type ResourceOauth2ReturnUrlType = string;
+export type ResourceOauth2ReturnUrlListType = string[];
+export const ResourceOauth2ReturnUrlListType = /*@__PURE__*/ S.Array(S.String);
+export interface CreateWorkloadIdentityRequest {
+  name: string;
+  allowedResourceOauth2ReturnUrls?: string[];
+  tags?: { [key: string]: string | undefined };
+}
+export const CreateWorkloadIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    allowedResourceOauth2ReturnUrls: S.optional(
+      ResourceOauth2ReturnUrlListType,
+    ),
+    tags: S.optional(TagsMap),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/identities/CreateWorkloadIdentity" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "CreateWorkloadIdentityRequest",
+}) as any as S.Schema<CreateWorkloadIdentityRequest>;
+export type WorkloadIdentityArnType = string;
+export interface CreateWorkloadIdentityResponse {
+  name: string;
+  workloadIdentityArn: string;
+  allowedResourceOauth2ReturnUrls?: string[];
+}
+export const CreateWorkloadIdentityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    workloadIdentityArn: S.String,
+    allowedResourceOauth2ReturnUrls: S.optional(
+      ResourceOauth2ReturnUrlListType,
+    ),
+  }),
+).annotate({
+  identifier: "CreateWorkloadIdentityResponse",
+}) as any as S.Schema<CreateWorkloadIdentityResponse>;
+export interface DeleteAgentRuntimeRequest {
+  agentRuntimeId: string;
+  clientToken?: string;
+}
+export const DeleteAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/runtimes/{agentRuntimeId}/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteAgentRuntimeRequest",
+}) as any as S.Schema<DeleteAgentRuntimeRequest>;
+export interface DeleteAgentRuntimeResponse {
+  status: AgentRuntimeStatus;
+  agentRuntimeId?: string;
+}
+export const DeleteAgentRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: AgentRuntimeStatus,
+    agentRuntimeId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteAgentRuntimeResponse",
+}) as any as S.Schema<DeleteAgentRuntimeResponse>;
+export interface DeleteAgentRuntimeEndpointRequest {
+  agentRuntimeId: string;
+  endpointName: string | redacted.Redacted<string>;
+  clientToken?: string;
+}
+export const DeleteAgentRuntimeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
+    endpointName: SensitiveString.pipe(T.HttpLabel("endpointName")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/runtimes/{agentRuntimeId}/runtime-endpoints/{endpointName}/",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteAgentRuntimeEndpointRequest",
+}) as any as S.Schema<DeleteAgentRuntimeEndpointRequest>;
+export interface DeleteAgentRuntimeEndpointResponse {
+  status: AgentRuntimeEndpointStatus;
+  agentRuntimeId?: string;
+  endpointName?: string | redacted.Redacted<string>;
+}
+export const DeleteAgentRuntimeEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: AgentRuntimeEndpointStatus,
+    agentRuntimeId: S.optional(S.String),
+    endpointName: S.optional(SensitiveString),
+  }),
+).annotate({
+  identifier: "DeleteAgentRuntimeEndpointResponse",
+}) as any as S.Schema<DeleteAgentRuntimeEndpointResponse>;
+export interface DeleteApiKeyCredentialProviderRequest {
+  name: string;
+}
+export const DeleteApiKeyCredentialProviderRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ name: S.String }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/identities/DeleteApiKeyCredentialProvider",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteApiKeyCredentialProviderRequest",
+}) as any as S.Schema<DeleteApiKeyCredentialProviderRequest>;
+export interface DeleteApiKeyCredentialProviderResponse {}
+export const DeleteApiKeyCredentialProviderResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteApiKeyCredentialProviderResponse",
+}) as any as S.Schema<DeleteApiKeyCredentialProviderResponse>;
+export interface DeleteBrowserRequest {
+  browserId: string;
+  clientToken?: string;
+}
+export const DeleteBrowserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    browserId: S.String.pipe(T.HttpLabel("browserId")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/browsers/{browserId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteBrowserRequest",
+}) as any as S.Schema<DeleteBrowserRequest>;
+export interface DeleteBrowserResponse {
+  browserId: string;
+  status: BrowserStatus;
+  lastUpdatedAt: Date;
+}
+export const DeleteBrowserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    browserId: S.String,
+    status: BrowserStatus,
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "DeleteBrowserResponse",
+}) as any as S.Schema<DeleteBrowserResponse>;
+export interface DeleteBrowserProfileRequest {
+  profileId: string;
+  clientToken?: string;
+}
+export const DeleteBrowserProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileId: S.String.pipe(T.HttpLabel("profileId")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/browser-profiles/{profileId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteBrowserProfileRequest",
+}) as any as S.Schema<DeleteBrowserProfileRequest>;
+export interface DeleteBrowserProfileResponse {
+  profileId: string;
+  profileArn: string;
+  status: BrowserProfileStatus;
+  lastUpdatedAt: Date;
+  lastSavedAt?: Date;
+}
+export const DeleteBrowserProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileId: S.String,
+    profileArn: S.String,
+    status: BrowserProfileStatus,
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastSavedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "DeleteBrowserProfileResponse",
+}) as any as S.Schema<DeleteBrowserProfileResponse>;
+export interface DeleteCodeInterpreterRequest {
+  codeInterpreterId: string;
+  clientToken?: string;
+}
+export const DeleteCodeInterpreterRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    codeInterpreterId: S.String.pipe(T.HttpLabel("codeInterpreterId")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/code-interpreters/{codeInterpreterId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteCodeInterpreterRequest",
+}) as any as S.Schema<DeleteCodeInterpreterRequest>;
+export interface DeleteCodeInterpreterResponse {
+  codeInterpreterId: string;
+  status: CodeInterpreterStatus;
+  lastUpdatedAt: Date;
+}
+export const DeleteCodeInterpreterResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    codeInterpreterId: S.String,
+    status: CodeInterpreterStatus,
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "DeleteCodeInterpreterResponse",
+}) as any as S.Schema<DeleteCodeInterpreterResponse>;
+export interface DeleteConfigurationBundleRequest {
+  bundleId: string;
+}
+export const DeleteConfigurationBundleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ bundleId: S.String.pipe(T.HttpLabel("bundleId")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/configuration-bundles/{bundleId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteConfigurationBundleRequest",
+}) as any as S.Schema<DeleteConfigurationBundleRequest>;
+export type ConfigurationBundleStatus =
+  | "ACTIVE"
+  | "CREATING"
+  | "CREATE_FAILED"
+  | "UPDATING"
+  | "UPDATE_FAILED"
+  | "DELETING"
+  | "DELETE_FAILED"
+  | (string & {});
+export const ConfigurationBundleStatus = /*@__PURE__*/ S.String;
+
+export interface DeleteConfigurationBundleResponse {
+  bundleId: string;
+  status: ConfigurationBundleStatus;
+}
+export const DeleteConfigurationBundleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ bundleId: S.String, status: ConfigurationBundleStatus }),
+).annotate({
+  identifier: "DeleteConfigurationBundleResponse",
+}) as any as S.Schema<DeleteConfigurationBundleResponse>;
+export interface DeleteDatasetRequest {
+  datasetId: string;
+  datasetVersion?: string;
+}
+export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
+    datasetVersion: S.optional(S.String).pipe(T.HttpQuery("datasetVersion")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/datasets/{datasetId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteDatasetRequest",
+}) as any as S.Schema<DeleteDatasetRequest>;
+export interface DeleteDatasetResponse {
+  datasetArn: string;
+  datasetId: string;
+  status: DatasetStatus;
+  datasetVersion: string;
+  updatedAt: Date;
+}
+export const DeleteDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetArn: S.String,
+    datasetId: S.String,
+    status: DatasetStatus,
+    datasetVersion: S.String,
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "DeleteDatasetResponse",
+}) as any as S.Schema<DeleteDatasetResponse>;
+export interface DeleteDatasetExamplesRequest {
+  datasetId: string;
+  clientToken?: string;
+  exampleIds: string[];
+}
+export const DeleteDatasetExamplesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    exampleIds: ExampleIdList,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/datasets/{datasetId}/examples/delete" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteDatasetExamplesRequest",
+}) as any as S.Schema<DeleteDatasetExamplesRequest>;
+export interface DeleteDatasetExamplesResponse {
+  datasetArn: string;
+  datasetId: string;
+  status: DatasetStatus;
+  deletedCount: number;
+  updatedAt: Date;
+}
+export const DeleteDatasetExamplesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetArn: S.String,
+    datasetId: S.String,
+    status: DatasetStatus,
+    deletedCount: S.Number,
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "DeleteDatasetExamplesResponse",
+}) as any as S.Schema<DeleteDatasetExamplesResponse>;
+export interface DeleteEvaluatorRequest {
+  evaluatorId: string;
+}
+export const DeleteEvaluatorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ evaluatorId: S.String.pipe(T.HttpLabel("evaluatorId")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/evaluators/{evaluatorId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteEvaluatorRequest",
+}) as any as S.Schema<DeleteEvaluatorRequest>;
+export type EvaluatorArn = string;
+export interface DeleteEvaluatorResponse {
+  evaluatorArn: string;
+  evaluatorId: string;
+  status: EvaluatorStatus;
+}
+export const DeleteEvaluatorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    evaluatorArn: S.String,
+    evaluatorId: S.String,
+    status: EvaluatorStatus,
+  }),
+).annotate({
+  identifier: "DeleteEvaluatorResponse",
+}) as any as S.Schema<DeleteEvaluatorResponse>;
+export interface DeleteGatewayRequest {
+  gatewayIdentifier: string;
+}
+export const DeleteGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/gateways/{gatewayIdentifier}/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteGatewayRequest",
+}) as any as S.Schema<DeleteGatewayRequest>;
+export interface DeleteGatewayResponse {
+  gatewayId: string;
+  status: GatewayStatus;
+  statusReasons?: string[];
+}
+export const DeleteGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayId: S.String,
+    status: GatewayStatus,
+    statusReasons: S.optional(StatusReasons),
+  }),
+).annotate({
+  identifier: "DeleteGatewayResponse",
+}) as any as S.Schema<DeleteGatewayResponse>;
+export interface DeleteGatewayRuleRequest {
+  gatewayIdentifier: string;
+  ruleId: string;
+}
+export const DeleteGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    ruleId: S.String.pipe(T.HttpLabel("ruleId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/gateways/{gatewayIdentifier}/rules/{ruleId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteGatewayRuleRequest",
+}) as any as S.Schema<DeleteGatewayRuleRequest>;
+export interface DeleteGatewayRuleResponse {
+  ruleId: string;
+  status: GatewayRuleStatus;
+}
+export const DeleteGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ruleId: S.String, status: GatewayRuleStatus }),
+).annotate({
+  identifier: "DeleteGatewayRuleResponse",
+}) as any as S.Schema<DeleteGatewayRuleResponse>;
+export interface DeleteGatewayTargetRequest {
+  gatewayIdentifier: string;
+  targetId: string;
+}
+export const DeleteGatewayTargetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    targetId: S.String.pipe(T.HttpLabel("targetId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/gateways/{gatewayIdentifier}/targets/{targetId}/",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteGatewayTargetRequest",
+}) as any as S.Schema<DeleteGatewayTargetRequest>;
+export interface DeleteGatewayTargetResponse {
+  gatewayArn: string;
+  targetId: string;
+  status: TargetStatus;
+  statusReasons?: string[];
+}
+export const DeleteGatewayTargetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayArn: S.String,
+    targetId: S.String,
+    status: TargetStatus,
+    statusReasons: S.optional(StatusReasons),
+  }),
+).annotate({
+  identifier: "DeleteGatewayTargetResponse",
+}) as any as S.Schema<DeleteGatewayTargetResponse>;
+export interface DeleteHarnessRequest {
+  harnessId: string;
+  clientToken?: string;
+  deleteManagedMemory?: boolean;
+}
+export const DeleteHarnessRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+    deleteManagedMemory: S.optional(S.Boolean).pipe(
+      T.HttpQuery("deleteManagedMemory"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/harnesses/{harnessId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteHarnessRequest",
+}) as any as S.Schema<DeleteHarnessRequest>;
+export interface DeleteHarnessResponse {
+  harness?: Harness;
+}
+export const DeleteHarnessResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ harness: S.optional(Harness) }),
+).annotate({
+  identifier: "DeleteHarnessResponse",
+}) as any as S.Schema<DeleteHarnessResponse>;
+export interface DeleteHarnessEndpointRequest {
+  harnessId: string;
+  endpointName: string;
+  clientToken?: string;
+}
+export const DeleteHarnessEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
+    endpointName: S.String.pipe(T.HttpLabel("endpointName")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/harnesses/{harnessId}/endpoints/{endpointName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteHarnessEndpointRequest",
+}) as any as S.Schema<DeleteHarnessEndpointRequest>;
+export interface DeleteHarnessEndpointResponse {
+  endpoint: HarnessEndpoint;
+}
+export const DeleteHarnessEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ endpoint: HarnessEndpoint }),
+).annotate({
+  identifier: "DeleteHarnessEndpointResponse",
+}) as any as S.Schema<DeleteHarnessEndpointResponse>;
+export interface DeleteMemoryInput {
+  clientToken?: string;
+  memoryId: string;
+}
+export const DeleteMemoryInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/memories/{memoryId}/delete" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteMemoryInput",
+}) as any as S.Schema<DeleteMemoryInput>;
+export interface DeleteMemoryOutput {
+  memoryId: string;
+  status?: MemoryStatus;
+}
+export const DeleteMemoryOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ memoryId: S.String, status: S.optional(MemoryStatus) }),
+).annotate({
+  identifier: "DeleteMemoryOutput",
+}) as any as S.Schema<DeleteMemoryOutput>;
+export interface DeleteOauth2CredentialProviderRequest {
+  name: string;
+}
+export const DeleteOauth2CredentialProviderRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ name: S.String }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/identities/DeleteOauth2CredentialProvider",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeleteOauth2CredentialProviderRequest",
+}) as any as S.Schema<DeleteOauth2CredentialProviderRequest>;
+export interface DeleteOauth2CredentialProviderResponse {}
+export const DeleteOauth2CredentialProviderResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteOauth2CredentialProviderResponse",
+}) as any as S.Schema<DeleteOauth2CredentialProviderResponse>;
+export interface DeleteOnlineEvaluationConfigRequest {
+  onlineEvaluationConfigId: string;
+}
+export const DeleteOnlineEvaluationConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    onlineEvaluationConfigId: S.String.pipe(
+      T.HttpLabel("onlineEvaluationConfigId"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/online-evaluation-configs/{onlineEvaluationConfigId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteOnlineEvaluationConfigRequest",
+}) as any as S.Schema<DeleteOnlineEvaluationConfigRequest>;
+export interface DeleteOnlineEvaluationConfigResponse {
+  onlineEvaluationConfigArn: string;
+  onlineEvaluationConfigId: string;
+  status: OnlineEvaluationConfigStatus;
+}
+export const DeleteOnlineEvaluationConfigResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      onlineEvaluationConfigArn: S.String,
+      onlineEvaluationConfigId: S.String,
+      status: OnlineEvaluationConfigStatus,
+    }),
+).annotate({
+  identifier: "DeleteOnlineEvaluationConfigResponse",
+}) as any as S.Schema<DeleteOnlineEvaluationConfigResponse>;
+export interface DeletePaymentConnectorRequest {
+  paymentManagerId: string;
+  paymentConnectorId: string;
+  clientToken?: string;
+}
+export const DeletePaymentConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentManagerId: S.String.pipe(T.HttpLabel("paymentManagerId")),
+    paymentConnectorId: S.String.pipe(T.HttpLabel("paymentConnectorId")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/payments/managers/{paymentManagerId}/connectors/{paymentConnectorId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeletePaymentConnectorRequest",
+}) as any as S.Schema<DeletePaymentConnectorRequest>;
+export interface DeletePaymentConnectorResponse {
+  status: PaymentConnectorStatus;
+  paymentConnectorId?: string;
+}
+export const DeletePaymentConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: PaymentConnectorStatus,
+    paymentConnectorId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeletePaymentConnectorResponse",
+}) as any as S.Schema<DeletePaymentConnectorResponse>;
+export interface DeletePaymentCredentialProviderRequest {
+  name: string;
+}
+export const DeletePaymentCredentialProviderRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({ name: S.String }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/identities/DeletePaymentCredentialProvider",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "DeletePaymentCredentialProviderRequest",
+}) as any as S.Schema<DeletePaymentCredentialProviderRequest>;
+export interface DeletePaymentCredentialProviderResponse {}
+export const DeletePaymentCredentialProviderResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeletePaymentCredentialProviderResponse",
+}) as any as S.Schema<DeletePaymentCredentialProviderResponse>;
+export interface DeletePaymentManagerRequest {
+  paymentManagerId: string;
+  clientToken?: string;
+}
+export const DeletePaymentManagerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentManagerId: S.String.pipe(T.HttpLabel("paymentManagerId")),
+    clientToken: S.optional(S.String).pipe(
+      T.HttpQuery("clientToken"),
+      T.IdempotencyToken(),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/payments/managers/{paymentManagerId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeletePaymentManagerRequest",
+}) as any as S.Schema<DeletePaymentManagerRequest>;
+export interface DeletePaymentManagerResponse {
+  status: PaymentManagerStatus;
+  paymentManagerId?: string;
+}
+export const DeletePaymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: PaymentManagerStatus,
+    paymentManagerId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeletePaymentManagerResponse",
+}) as any as S.Schema<DeletePaymentManagerResponse>;
+export interface DeletePolicyRequest {
+  policyEngineId: string;
+  policyId: string;
+}
+export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+    policyId: S.String.pipe(T.HttpLabel("policyId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/policy-engines/{policyEngineId}/policies/{policyId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeletePolicyRequest",
+}) as any as S.Schema<DeletePolicyRequest>;
+export interface DeletePolicyResponse {
+  policyId: string;
+  name: string;
+  policyEngineId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  policyArn: string;
+  status: PolicyStatus;
+  enforcementMode?: EnforcementMode;
+  definition: PolicyDefinition;
+  description?: string | redacted.Redacted<string>;
+  statusReasons: string[];
+}
+export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyId: S.String,
+    name: S.String,
+    policyEngineId: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    policyArn: S.String,
+    status: PolicyStatus,
+    enforcementMode: S.optional(EnforcementMode),
+    definition: PolicyDefinition,
+    description: S.optional(SensitiveString),
+    statusReasons: PolicyStatusReasons,
+  }),
+).annotate({
+  identifier: "DeletePolicyResponse",
+}) as any as S.Schema<DeletePolicyResponse>;
+export interface DeletePolicyEngineRequest {
+  policyEngineId: string;
+}
+export const DeletePolicyEngineRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/policy-engines/{policyEngineId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeletePolicyEngineRequest",
+}) as any as S.Schema<DeletePolicyEngineRequest>;
+export interface DeletePolicyEngineResponse {
+  policyEngineId: string;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+  policyEngineArn: string;
+  status: PolicyEngineStatus;
+  encryptionKeyArn?: string;
+  description?: string | redacted.Redacted<string>;
+  statusReasons: string[];
+}
+export const DeletePolicyEngineResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String,
+    name: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    policyEngineArn: S.String,
+    status: PolicyEngineStatus,
+    encryptionKeyArn: S.optional(S.String),
+    description: S.optional(SensitiveString),
+    statusReasons: PolicyStatusReasons,
+  }),
+).annotate({
+  identifier: "DeletePolicyEngineResponse",
+}) as any as S.Schema<DeletePolicyEngineResponse>;
+export interface DeleteRegistryRequest {
+  registryId: string;
+}
+export const DeleteRegistryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ registryId: S.String.pipe(T.HttpLabel("registryId")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/registries/{registryId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteRegistryRequest",
+}) as any as S.Schema<DeleteRegistryRequest>;
+export type RegistryStatus =
+  | "CREATING"
+  | "READY"
+  | "UPDATING"
+  | "CREATE_FAILED"
+  | "UPDATE_FAILED"
+  | "DELETING"
+  | "DELETE_FAILED"
+  | (string & {});
+export const RegistryStatus = /*@__PURE__*/ S.String;
+
+export interface DeleteRegistryResponse {
+  status: RegistryStatus;
+}
+export const DeleteRegistryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ status: RegistryStatus }),
+).annotate({
+  identifier: "DeleteRegistryResponse",
+}) as any as S.Schema<DeleteRegistryResponse>;
+export type RecordIdentifier = string;
+export interface DeleteRegistryRecordRequest {
+  registryId: string;
+  recordId: string;
+}
+export const DeleteRegistryRecordRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registryId: S.String.pipe(T.HttpLabel("registryId")),
+    recordId: S.String.pipe(T.HttpLabel("recordId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "DELETE",
+        uri: "/registries/{registryId}/records/{recordId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteRegistryRecordRequest",
+}) as any as S.Schema<DeleteRegistryRecordRequest>;
+export interface DeleteRegistryRecordResponse {}
+export const DeleteRegistryRecordResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteRegistryRecordResponse",
+}) as any as S.Schema<DeleteRegistryRecordResponse>;
+export interface DeleteResourcePolicyRequest {
+  resourceArn: string;
+}
+export const DeleteResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/resourcepolicy/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteResourcePolicyRequest",
+}) as any as S.Schema<DeleteResourcePolicyRequest>;
+export interface DeleteResourcePolicyResponse {}
+export const DeleteResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteResourcePolicyResponse",
+}) as any as S.Schema<DeleteResourcePolicyResponse>;
+export interface DeleteWorkloadIdentityRequest {
+  name: string;
+}
+export const DeleteWorkloadIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/identities/DeleteWorkloadIdentity" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "DeleteWorkloadIdentityRequest",
+}) as any as S.Schema<DeleteWorkloadIdentityRequest>;
+export interface DeleteWorkloadIdentityResponse {}
+export const DeleteWorkloadIdentityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteWorkloadIdentityResponse",
+}) as any as S.Schema<DeleteWorkloadIdentityResponse>;
+export interface GetAgentRuntimeRequest {
+  agentRuntimeId: string;
+  agentRuntimeVersion?: string;
+}
+export const GetAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
+    agentRuntimeVersion: S.optional(S.String).pipe(T.HttpQuery("version")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/runtimes/{agentRuntimeId}/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetAgentRuntimeRequest",
+}) as any as S.Schema<GetAgentRuntimeRequest>;
+export interface RuntimeMetadataConfiguration {
+  requireMMDSV2: boolean;
+}
+export const RuntimeMetadataConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ requireMMDSV2: S.Boolean }),
+).annotate({
+  identifier: "RuntimeMetadataConfiguration",
+}) as any as S.Schema<RuntimeMetadataConfiguration>;
+export interface GetAgentRuntimeResponse {
+  agentRuntimeArn: string;
+  agentRuntimeName: string;
+  agentRuntimeId: string;
+  agentRuntimeVersion: string;
+  createdAt: Date;
+  lastUpdatedAt: Date;
+  roleArn: string;
+  networkConfiguration: NetworkConfiguration;
+  status: AgentRuntimeStatus;
+  lifecycleConfiguration: LifecycleConfiguration;
+  failureReason?: string;
+  description?: string | redacted.Redacted<string>;
+  workloadIdentityDetails?: WorkloadIdentityDetails;
+  agentRuntimeArtifact?: AgentRuntimeArtifact;
+  protocolConfiguration?: ProtocolConfiguration;
+  environmentVariables?: { [key: string]: string | undefined };
+  authorizerConfiguration?: AuthorizerConfiguration;
+  requestHeaderConfiguration?: RequestHeaderConfiguration;
+  metadataConfiguration?: RuntimeMetadataConfiguration;
+  filesystemConfigurations?: FilesystemConfiguration[];
+}
+export const GetAgentRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentRuntimeArn: S.String,
+    agentRuntimeName: S.String,
+    agentRuntimeId: S.String,
+    agentRuntimeVersion: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    roleArn: S.String,
+    networkConfiguration: NetworkConfiguration,
+    status: AgentRuntimeStatus,
+    lifecycleConfiguration: LifecycleConfiguration,
+    failureReason: S.optional(S.String),
+    description: S.optional(SensitiveString),
+    workloadIdentityDetails: S.optional(WorkloadIdentityDetails),
+    agentRuntimeArtifact: S.optional(AgentRuntimeArtifact),
+    protocolConfiguration: S.optional(ProtocolConfiguration),
+    environmentVariables: S.optional(EnvironmentVariablesMap),
+    authorizerConfiguration: S.optional(AuthorizerConfiguration),
+    requestHeaderConfiguration: S.optional(RequestHeaderConfiguration),
+    metadataConfiguration: S.optional(RuntimeMetadataConfiguration),
+    filesystemConfigurations: S.optional(FilesystemConfigurations),
+  }),
+).annotate({
+  identifier: "GetAgentRuntimeResponse",
+}) as any as S.Schema<GetAgentRuntimeResponse>;
+export interface GetAgentRuntimeEndpointRequest {
+  agentRuntimeId: string;
+  endpointName: string | redacted.Redacted<string>;
+}
+export const GetAgentRuntimeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
+    endpointName: SensitiveString.pipe(T.HttpLabel("endpointName")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/runtimes/{agentRuntimeId}/runtime-endpoints/{endpointName}/",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetAgentRuntimeEndpointRequest",
+}) as any as S.Schema<GetAgentRuntimeEndpointRequest>;
+export type AgentRuntimeEndpointId = string;
+export interface GetAgentRuntimeEndpointResponse {
+  liveVersion?: string;
+  targetVersion?: string;
+  agentRuntimeEndpointArn: string;
+  agentRuntimeArn: string;
+  description?: string;
+  status: AgentRuntimeEndpointStatus;
+  createdAt: Date;
+  lastUpdatedAt: Date;
+  failureReason?: string;
+  name: string | redacted.Redacted<string>;
+  id: string;
+}
+export const GetAgentRuntimeEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    liveVersion: S.optional(S.String),
+    targetVersion: S.optional(S.String),
+    agentRuntimeEndpointArn: S.String,
+    agentRuntimeArn: S.String,
+    description: S.optional(S.String),
+    status: AgentRuntimeEndpointStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    failureReason: S.optional(S.String),
+    name: SensitiveString,
+    id: S.String,
+  }),
+).annotate({
+  identifier: "GetAgentRuntimeEndpointResponse",
+}) as any as S.Schema<GetAgentRuntimeEndpointResponse>;
+export interface GetApiKeyCredentialProviderRequest {
+  name: string;
+}
+export const GetApiKeyCredentialProviderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/identities/GetApiKeyCredentialProvider",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetApiKeyCredentialProviderRequest",
+}) as any as S.Schema<GetApiKeyCredentialProviderRequest>;
+export interface GetApiKeyCredentialProviderResponse {
+  apiKeySecretArn: Secret;
+  apiKeySecretJsonKey?: string;
+  apiKeySecretSource?: SecretSourceType;
+  name: string;
+  credentialProviderArn: string;
+  createdTime: Date;
+  lastUpdatedTime: Date;
+}
+export const GetApiKeyCredentialProviderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    apiKeySecretArn: Secret,
+    apiKeySecretJsonKey: S.optional(S.String),
+    apiKeySecretSource: S.optional(SecretSourceType),
+    name: S.String,
+    credentialProviderArn: S.String,
+    createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "GetApiKeyCredentialProviderResponse",
+}) as any as S.Schema<GetApiKeyCredentialProviderResponse>;
+export interface GetBrowserRequest {
+  browserId: string;
+}
+export const GetBrowserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ browserId: S.String.pipe(T.HttpLabel("browserId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/browsers/{browserId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetBrowserRequest",
+}) as any as S.Schema<GetBrowserRequest>;
+export interface BrowserSigningConfigOutput {
+  enabled: boolean;
+}
+export const BrowserSigningConfigOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ enabled: S.Boolean }),
+).annotate({
+  identifier: "BrowserSigningConfigOutput",
+}) as any as S.Schema<BrowserSigningConfigOutput>;
+export interface GetBrowserResponse {
+  browserId: string;
+  browserArn: string;
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  executionRoleArn?: string;
+  networkConfiguration: BrowserNetworkConfiguration;
+  recording?: RecordingConfig;
+  browserSigning?: BrowserSigningConfigOutput;
+  enterprisePolicies?: BrowserEnterprisePolicy[];
+  certificates?: Certificate[];
+  status: BrowserStatus;
+  failureReason?: string;
+  createdAt: Date;
+  lastUpdatedAt: Date;
+}
+export const GetBrowserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    browserId: S.String,
+    browserArn: S.String,
+    name: S.String,
+    description: S.optional(SensitiveString),
+    executionRoleArn: S.optional(S.String),
+    networkConfiguration: BrowserNetworkConfiguration,
+    recording: S.optional(RecordingConfig),
+    browserSigning: S.optional(BrowserSigningConfigOutput),
+    enterprisePolicies: S.optional(BrowserEnterprisePolicies),
+    certificates: S.optional(Certificates),
+    status: BrowserStatus,
+    failureReason: S.optional(S.String),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "GetBrowserResponse",
+}) as any as S.Schema<GetBrowserResponse>;
+export interface GetBrowserProfileRequest {
+  profileId: string;
+}
+export const GetBrowserProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ profileId: S.String.pipe(T.HttpLabel("profileId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/browser-profiles/{profileId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetBrowserProfileRequest",
+}) as any as S.Schema<GetBrowserProfileRequest>;
+export type BrowserSessionId = string;
+export interface GetBrowserProfileResponse {
+  profileId: string;
+  profileArn: string;
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  status: BrowserProfileStatus;
+  createdAt: Date;
+  lastUpdatedAt: Date;
+  lastSavedAt?: Date;
+  lastSavedBrowserSessionId?: string;
+  lastSavedBrowserId?: string;
+}
+export const GetBrowserProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileId: S.String,
+    profileArn: S.String,
+    name: S.String,
+    description: S.optional(SensitiveString),
+    status: BrowserProfileStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastSavedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    lastSavedBrowserSessionId: S.optional(S.String),
+    lastSavedBrowserId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetBrowserProfileResponse",
+}) as any as S.Schema<GetBrowserProfileResponse>;
+export interface GetCodeInterpreterRequest {
+  codeInterpreterId: string;
+}
+export const GetCodeInterpreterRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    codeInterpreterId: S.String.pipe(T.HttpLabel("codeInterpreterId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/code-interpreters/{codeInterpreterId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetCodeInterpreterRequest",
+}) as any as S.Schema<GetCodeInterpreterRequest>;
+export interface GetCodeInterpreterResponse {
+  codeInterpreterId: string;
+  codeInterpreterArn: string;
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  executionRoleArn?: string;
+  networkConfiguration: CodeInterpreterNetworkConfiguration;
+  status: CodeInterpreterStatus;
+  certificates?: Certificate[];
+  failureReason?: string;
+  createdAt: Date;
+  lastUpdatedAt: Date;
+}
+export const GetCodeInterpreterResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    codeInterpreterId: S.String,
+    codeInterpreterArn: S.String,
+    name: S.String,
+    description: S.optional(SensitiveString),
+    executionRoleArn: S.optional(S.String),
+    networkConfiguration: CodeInterpreterNetworkConfiguration,
+    status: CodeInterpreterStatus,
+    certificates: S.optional(Certificates),
+    failureReason: S.optional(S.String),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "GetCodeInterpreterResponse",
+}) as any as S.Schema<GetCodeInterpreterResponse>;
+export interface GetConfigurationBundleRequest {
+  bundleId: string;
+  branchName?: string;
+}
+export const GetConfigurationBundleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bundleId: S.String.pipe(T.HttpLabel("bundleId")),
+    branchName: S.optional(S.String).pipe(T.HttpQuery("branchName")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/configuration-bundles/{bundleId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetConfigurationBundleRequest",
+}) as any as S.Schema<GetConfigurationBundleRequest>;
+export type ConfigurationBundleVersionList = string[];
+export const ConfigurationBundleVersionList = /*@__PURE__*/ S.Array(S.String);
+export interface VersionLineageMetadata {
+  parentVersionIds?: string[];
+  branchName?: string;
+  createdBy?: VersionCreatedBySource;
+  commitMessage?: string;
+}
+export const VersionLineageMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parentVersionIds: S.optional(ConfigurationBundleVersionList),
+    branchName: S.optional(S.String),
+    createdBy: S.optional(VersionCreatedBySource),
+    commitMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "VersionLineageMetadata",
+}) as any as S.Schema<VersionLineageMetadata>;
+export interface GetConfigurationBundleResponse {
+  bundleArn: string;
+  bundleId: string;
+  bundleName: string;
+  description?: string | redacted.Redacted<string>;
+  versionId: string;
+  components: { [key: string]: ComponentConfiguration | undefined };
+  lineageMetadata?: VersionLineageMetadata;
+  createdAt: Date;
+  updatedAt: Date;
+  kmsKeyArn?: string;
+}
+export const GetConfigurationBundleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bundleArn: S.String,
+    bundleId: S.String,
+    bundleName: S.String,
+    description: S.optional(SensitiveString),
+    versionId: S.String,
+    components: ComponentConfigurationMap,
+    lineageMetadata: S.optional(VersionLineageMetadata),
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    kmsKeyArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetConfigurationBundleResponse",
+}) as any as S.Schema<GetConfigurationBundleResponse>;
+export interface GetConfigurationBundleVersionRequest {
+  bundleId: string;
+  versionId: string;
+}
+export const GetConfigurationBundleVersionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      bundleId: S.String.pipe(T.HttpLabel("bundleId")),
+      versionId: S.String.pipe(T.HttpLabel("versionId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/configuration-bundles/{bundleId}/versions/{versionId}",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "GetConfigurationBundleVersionRequest",
+}) as any as S.Schema<GetConfigurationBundleVersionRequest>;
+export interface GetConfigurationBundleVersionResponse {
+  bundleArn: string;
+  bundleId: string;
+  bundleName: string;
+  description?: string | redacted.Redacted<string>;
+  versionId: string;
+  components: { [key: string]: ComponentConfiguration | undefined };
+  lineageMetadata?: VersionLineageMetadata;
+  createdAt: Date;
+  versionCreatedAt: Date;
+  kmsKeyArn?: string;
+}
+export const GetConfigurationBundleVersionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      bundleArn: S.String,
+      bundleId: S.String,
+      bundleName: S.String,
+      description: S.optional(SensitiveString),
+      versionId: S.String,
+      components: ComponentConfigurationMap,
+      lineageMetadata: S.optional(VersionLineageMetadata),
+      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      versionCreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      kmsKeyArn: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GetConfigurationBundleVersionResponse",
+}) as any as S.Schema<GetConfigurationBundleVersionResponse>;
+export interface GetDatasetRequest {
+  datasetId: string;
+  datasetVersion?: string;
+}
+export const GetDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
+    datasetVersion: S.optional(S.String).pipe(T.HttpQuery("datasetVersion")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/datasets/{datasetId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetDatasetRequest",
+}) as any as S.Schema<GetDatasetRequest>;
+export type DraftStatus = "MODIFIED" | "UNMODIFIED" | (string & {});
+export const DraftStatus = /*@__PURE__*/ S.String;
+
+export type DownloadUrl = string | redacted.Redacted<string>;
+export interface GetDatasetResponse {
+  datasetArn: string;
+  datasetId: string;
+  datasetVersion: string;
+  datasetName: string;
+  description?: string;
+  status: DatasetStatus;
+  draftStatus?: DraftStatus;
+  failureReason?: string;
+  schemaType: DatasetSchemaType;
+  kmsKeyArn?: string;
+  exampleCount: number;
+  downloadUrl?: string | redacted.Redacted<string>;
+  downloadUrlExpiresAt?: Date;
+  createdAt: Date;
+  updatedAt: Date;
+  tags?: { [key: string]: string | undefined };
+}
+export const GetDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetArn: S.String,
+    datasetId: S.String,
+    datasetVersion: S.String,
+    datasetName: S.String,
+    description: S.optional(S.String),
+    status: DatasetStatus,
+    draftStatus: S.optional(DraftStatus),
+    failureReason: S.optional(S.String),
+    schemaType: DatasetSchemaType,
+    kmsKeyArn: S.optional(S.String),
+    exampleCount: S.Number,
+    downloadUrl: S.optional(SensitiveString),
+    downloadUrlExpiresAt: S.optional(
+      S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    ),
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    tags: S.optional(TagsMap),
+  }),
+).annotate({
+  identifier: "GetDatasetResponse",
+}) as any as S.Schema<GetDatasetResponse>;
+export type IncludedData = "ALL_DATA" | "METADATA_ONLY" | (string & {});
+export const IncludedData = /*@__PURE__*/ S.String;
+
+export interface GetEvaluatorRequest {
+  evaluatorId: string;
+  includedData?: IncludedData;
+}
+export const GetEvaluatorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    evaluatorId: S.String.pipe(T.HttpLabel("evaluatorId")),
+    includedData: S.optional(IncludedData).pipe(T.HttpQuery("includedData")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/evaluators/{evaluatorId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetEvaluatorRequest",
+}) as any as S.Schema<GetEvaluatorRequest>;
+export type EvaluatorName = string;
+export interface GetEvaluatorResponse {
+  evaluatorArn: string;
+  evaluatorId: string;
+  evaluatorName: string;
+  description?: string | redacted.Redacted<string>;
+  evaluatorConfig: EvaluatorConfig;
+  level: EvaluatorLevel;
+  status: EvaluatorStatus;
+  createdAt: Date;
+  updatedAt: Date;
+  lockedForModification?: boolean;
+  kmsKeyArn?: string;
+}
+export const GetEvaluatorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    evaluatorArn: S.String,
+    evaluatorId: S.String,
+    evaluatorName: S.String,
+    description: S.optional(SensitiveString),
+    evaluatorConfig: EvaluatorConfig,
+    level: EvaluatorLevel,
+    status: EvaluatorStatus,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    lockedForModification: S.optional(S.Boolean),
+    kmsKeyArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetEvaluatorResponse",
+}) as any as S.Schema<GetEvaluatorResponse>;
+export interface GetGatewayRequest {
+  gatewayIdentifier: string;
+}
+export const GetGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/gateways/{gatewayIdentifier}/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetGatewayRequest",
+}) as any as S.Schema<GetGatewayRequest>;
+export interface GetGatewayResponse {
+  gatewayArn: string;
+  gatewayId: string;
+  gatewayUrl?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  status: GatewayStatus;
+  statusReasons?: string[];
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  roleArn?: string;
+  protocolType?: GatewayProtocolType;
+  protocolConfiguration?: GatewayProtocolConfiguration;
+  authorizerType: AuthorizerType;
+  authorizerConfiguration?: AuthorizerConfiguration;
+  kmsKeyArn?: string;
+  customTransformConfiguration?: CustomTransformConfiguration;
+  interceptorConfigurations?: GatewayInterceptorConfiguration[];
+  policyEngineConfiguration?: GatewayPolicyEngineConfiguration;
+  workloadIdentityDetails?: WorkloadIdentityDetails;
+  exceptionLevel?: ExceptionLevel;
+  webAclArn?: string;
+  wafConfiguration?: WafConfiguration;
+}
+export const GetGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayArn: S.String,
+    gatewayId: S.String,
+    gatewayUrl: S.optional(S.String),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: GatewayStatus,
+    statusReasons: S.optional(StatusReasons),
+    name: S.String,
+    description: S.optional(SensitiveString),
+    roleArn: S.optional(S.String),
+    protocolType: S.optional(GatewayProtocolType),
+    protocolConfiguration: S.optional(GatewayProtocolConfiguration),
+    authorizerType: AuthorizerType,
+    authorizerConfiguration: S.optional(AuthorizerConfiguration),
+    kmsKeyArn: S.optional(S.String),
+    customTransformConfiguration: S.optional(CustomTransformConfiguration),
+    interceptorConfigurations: S.optional(GatewayInterceptorConfigurations),
+    policyEngineConfiguration: S.optional(GatewayPolicyEngineConfiguration),
+    workloadIdentityDetails: S.optional(WorkloadIdentityDetails),
+    exceptionLevel: S.optional(ExceptionLevel),
+    webAclArn: S.optional(S.String),
+    wafConfiguration: S.optional(WafConfiguration),
+  }),
+).annotate({
+  identifier: "GetGatewayResponse",
+}) as any as S.Schema<GetGatewayResponse>;
+export interface GetGatewayRuleRequest {
+  gatewayIdentifier: string;
+  ruleId: string;
+}
+export const GetGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    ruleId: S.String.pipe(T.HttpLabel("ruleId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/gateways/{gatewayIdentifier}/rules/{ruleId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetGatewayRuleRequest",
+}) as any as S.Schema<GetGatewayRuleRequest>;
+export interface GetGatewayRuleResponse {
+  ruleId: string;
+  gatewayArn: string;
+  priority: number;
+  conditions?: Condition[];
+  actions: Action[];
+  description?: string;
+  createdAt: Date;
+  status: GatewayRuleStatus;
+  system?: SystemManagedBlock;
+  updatedAt?: Date;
+}
+export const GetGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ruleId: S.String,
+    gatewayArn: S.String,
+    priority: S.Number,
+    conditions: S.optional(Conditions),
+    actions: Actions,
+    description: S.optional(S.String),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: GatewayRuleStatus,
+    system: S.optional(SystemManagedBlock),
+    updatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "GetGatewayRuleResponse",
+}) as any as S.Schema<GetGatewayRuleResponse>;
+export interface GetGatewayTargetRequest {
+  gatewayIdentifier: string;
+  targetId: string;
+}
+export const GetGatewayTargetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    targetId: S.String.pipe(T.HttpLabel("targetId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/gateways/{gatewayIdentifier}/targets/{targetId}/",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetGatewayTargetRequest",
+}) as any as S.Schema<GetGatewayTargetRequest>;
+export interface GetGatewayTargetResponse {
+  gatewayArn: string;
+  targetId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  status: TargetStatus;
+  statusReasons?: string[];
+  name: string | redacted.Redacted<string>;
+  description?: string | redacted.Redacted<string>;
+  targetConfiguration: TargetConfiguration;
+  credentialProviderConfigurations: CredentialProviderConfiguration[];
+  lastSynchronizedAt?: Date;
+  metadataConfiguration?: MetadataConfiguration;
+  privateEndpoint?: PrivateEndpoint;
+  privateEndpointManagedResources?: ManagedResourceDetails[];
+  authorizationData?: AuthorizationData;
+  protocolType?: TargetProtocolType;
+}
+export const GetGatewayTargetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayArn: S.String,
+    targetId: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: TargetStatus,
+    statusReasons: S.optional(StatusReasons),
+    name: SensitiveString,
+    description: S.optional(SensitiveString),
+    targetConfiguration: TargetConfiguration,
+    credentialProviderConfigurations: CredentialProviderConfigurations,
+    lastSynchronizedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    metadataConfiguration: S.optional(MetadataConfiguration),
+    privateEndpoint: S.optional(PrivateEndpoint),
+    privateEndpointManagedResources: S.optional(
+      PrivateEndpointManagedResources,
+    ),
+    authorizationData: S.optional(AuthorizationData),
+    protocolType: S.optional(TargetProtocolType),
+  }),
+).annotate({
+  identifier: "GetGatewayTargetResponse",
+}) as any as S.Schema<GetGatewayTargetResponse>;
+export interface GetHarnessRequest {
+  harnessId: string;
+  harnessVersion?: string;
+}
+export const GetHarnessRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
+    harnessVersion: S.optional(S.String).pipe(T.HttpQuery("harnessVersion")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/harnesses/{harnessId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetHarnessRequest",
+}) as any as S.Schema<GetHarnessRequest>;
+export interface GetHarnessResponse {
+  harness: Harness;
+}
+export const GetHarnessResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ harness: Harness }),
+).annotate({
+  identifier: "GetHarnessResponse",
+}) as any as S.Schema<GetHarnessResponse>;
+export interface GetHarnessEndpointRequest {
+  harnessId: string;
+  endpointName: string;
+}
+export const GetHarnessEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
+    endpointName: S.String.pipe(T.HttpLabel("endpointName")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/harnesses/{harnessId}/endpoints/{endpointName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetHarnessEndpointRequest",
+}) as any as S.Schema<GetHarnessEndpointRequest>;
+export interface GetHarnessEndpointResponse {
+  endpoint: HarnessEndpoint;
+}
+export const GetHarnessEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ endpoint: HarnessEndpoint }),
+).annotate({
+  identifier: "GetHarnessEndpointResponse",
+}) as any as S.Schema<GetHarnessEndpointResponse>;
 export type MemoryView = "full" | "without_decryption" | (string & {});
 export const MemoryView = /*@__PURE__*/ S.String;
+
 export interface GetMemoryInput {
   memoryId: string;
   view?: MemoryView;
@@ -8036,6 +8182,3950 @@ export const GetMemoryOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMemoryOutput",
 }) as any as S.Schema<GetMemoryOutput>;
+export interface GetOauth2CredentialProviderRequest {
+  name: string;
+}
+export const GetOauth2CredentialProviderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/identities/GetOauth2CredentialProvider",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetOauth2CredentialProviderRequest",
+}) as any as S.Schema<GetOauth2CredentialProviderRequest>;
+export interface GetOauth2CredentialProviderResponse {
+  clientSecretArn: Secret;
+  clientSecretJsonKey?: string;
+  clientSecretSource?: SecretSourceType;
+  name: string;
+  credentialProviderArn: string;
+  credentialProviderVendor: CredentialProviderVendorType;
+  callbackUrl?: string;
+  oauth2ProviderConfigOutput: Oauth2ProviderConfigOutput;
+  createdTime: Date;
+  lastUpdatedTime: Date;
+  status?: Status;
+  failureReason?: string;
+}
+export const GetOauth2CredentialProviderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientSecretArn: Secret,
+    clientSecretJsonKey: S.optional(S.String),
+    clientSecretSource: S.optional(SecretSourceType),
+    name: S.String,
+    credentialProviderArn: S.String,
+    credentialProviderVendor: CredentialProviderVendorType,
+    callbackUrl: S.optional(S.String),
+    oauth2ProviderConfigOutput: Oauth2ProviderConfigOutput,
+    createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    status: S.optional(Status),
+    failureReason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetOauth2CredentialProviderResponse",
+}) as any as S.Schema<GetOauth2CredentialProviderResponse>;
+export interface GetOnlineEvaluationConfigRequest {
+  onlineEvaluationConfigId: string;
+}
+export const GetOnlineEvaluationConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    onlineEvaluationConfigId: S.String.pipe(
+      T.HttpLabel("onlineEvaluationConfigId"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/online-evaluation-configs/{onlineEvaluationConfigId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetOnlineEvaluationConfigRequest",
+}) as any as S.Schema<GetOnlineEvaluationConfigRequest>;
+export interface GetOnlineEvaluationConfigResponse {
+  onlineEvaluationConfigArn: string;
+  onlineEvaluationConfigId: string;
+  onlineEvaluationConfigName: string;
+  description?: string | redacted.Redacted<string>;
+  rule: Rule;
+  dataSourceConfig: DataSourceConfig;
+  evaluators?: EvaluatorReference[];
+  insights?: Insight[];
+  clusteringConfig?: ClusteringConfig;
+  outputConfig?: OutputConfig;
+  evaluationExecutionRoleArn?: string;
+  status: OnlineEvaluationConfigStatus;
+  executionStatus: OnlineEvaluationExecutionStatus;
+  createdAt: Date;
+  updatedAt: Date;
+  failureReason?: string;
+}
+export const GetOnlineEvaluationConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    onlineEvaluationConfigArn: S.String,
+    onlineEvaluationConfigId: S.String,
+    onlineEvaluationConfigName: S.String,
+    description: S.optional(SensitiveString),
+    rule: Rule,
+    dataSourceConfig: DataSourceConfig,
+    evaluators: S.optional(EvaluatorList),
+    insights: S.optional(InsightList),
+    clusteringConfig: S.optional(ClusteringConfig),
+    outputConfig: S.optional(OutputConfig),
+    evaluationExecutionRoleArn: S.optional(S.String),
+    status: OnlineEvaluationConfigStatus,
+    executionStatus: OnlineEvaluationExecutionStatus,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    failureReason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetOnlineEvaluationConfigResponse",
+}) as any as S.Schema<GetOnlineEvaluationConfigResponse>;
+export interface GetPaymentConnectorRequest {
+  paymentManagerId: string;
+  paymentConnectorId: string;
+}
+export const GetPaymentConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentManagerId: S.String.pipe(T.HttpLabel("paymentManagerId")),
+    paymentConnectorId: S.String.pipe(T.HttpLabel("paymentConnectorId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/payments/managers/{paymentManagerId}/connectors/{paymentConnectorId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetPaymentConnectorRequest",
+}) as any as S.Schema<GetPaymentConnectorRequest>;
+export interface GetPaymentConnectorResponse {
+  paymentConnectorId: string;
+  name: string;
+  description?: string;
+  type: PaymentConnectorType;
+  credentialProviderConfigurations: CredentialsProviderConfiguration[];
+  createdAt: Date;
+  lastUpdatedAt: Date;
+  status: PaymentConnectorStatus;
+}
+export const GetPaymentConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentConnectorId: S.String,
+    name: S.String,
+    description: S.optional(S.String),
+    type: PaymentConnectorType,
+    credentialProviderConfigurations: CredentialsProviderConfigurations,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: PaymentConnectorStatus,
+  }),
+).annotate({
+  identifier: "GetPaymentConnectorResponse",
+}) as any as S.Schema<GetPaymentConnectorResponse>;
+export interface GetPaymentCredentialProviderRequest {
+  name: string;
+}
+export const GetPaymentCredentialProviderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/identities/GetPaymentCredentialProvider",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetPaymentCredentialProviderRequest",
+}) as any as S.Schema<GetPaymentCredentialProviderRequest>;
+export interface GetPaymentCredentialProviderResponse {
+  name: string;
+  credentialProviderArn: string;
+  credentialProviderVendor: PaymentCredentialProviderVendorType;
+  providerConfigurationOutput: PaymentProviderConfigurationOutput;
+  createdTime: Date;
+  lastUpdatedTime: Date;
+  tags?: { [key: string]: string | undefined };
+}
+export const GetPaymentCredentialProviderResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      credentialProviderArn: S.String,
+      credentialProviderVendor: PaymentCredentialProviderVendorType,
+      providerConfigurationOutput: PaymentProviderConfigurationOutput,
+      createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      tags: S.optional(TagsMap),
+    }),
+).annotate({
+  identifier: "GetPaymentCredentialProviderResponse",
+}) as any as S.Schema<GetPaymentCredentialProviderResponse>;
+export interface GetPaymentManagerRequest {
+  paymentManagerId: string;
+}
+export const GetPaymentManagerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentManagerId: S.String.pipe(T.HttpLabel("paymentManagerId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/payments/managers/{paymentManagerId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetPaymentManagerRequest",
+}) as any as S.Schema<GetPaymentManagerRequest>;
+export interface GetPaymentManagerResponse {
+  paymentManagerArn: string;
+  paymentManagerId: string;
+  name: string;
+  description?: string;
+  authorizerType: PaymentsAuthorizerType;
+  authorizerConfiguration?: AuthorizerConfiguration;
+  roleArn: string;
+  workloadIdentityDetails?: WorkloadIdentityDetails;
+  createdAt: Date;
+  lastUpdatedAt: Date;
+  status: PaymentManagerStatus;
+  tags?: { [key: string]: string | undefined };
+}
+export const GetPaymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentManagerArn: S.String,
+    paymentManagerId: S.String,
+    name: S.String,
+    description: S.optional(S.String),
+    authorizerType: PaymentsAuthorizerType,
+    authorizerConfiguration: S.optional(AuthorizerConfiguration),
+    roleArn: S.String,
+    workloadIdentityDetails: S.optional(WorkloadIdentityDetails),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: PaymentManagerStatus,
+    tags: S.optional(TagsMap),
+  }),
+).annotate({
+  identifier: "GetPaymentManagerResponse",
+}) as any as S.Schema<GetPaymentManagerResponse>;
+export interface GetPolicyRequest {
+  policyEngineId: string;
+  policyId: string;
+}
+export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+    policyId: S.String.pipe(T.HttpLabel("policyId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/policy-engines/{policyEngineId}/policies/{policyId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetPolicyRequest",
+}) as any as S.Schema<GetPolicyRequest>;
+export interface GetPolicyResponse {
+  policyId: string;
+  name: string;
+  policyEngineId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  policyArn: string;
+  status: PolicyStatus;
+  enforcementMode?: EnforcementMode;
+  definition: PolicyDefinition;
+  description?: string | redacted.Redacted<string>;
+  statusReasons: string[];
+}
+export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyId: S.String,
+    name: S.String,
+    policyEngineId: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    policyArn: S.String,
+    status: PolicyStatus,
+    enforcementMode: S.optional(EnforcementMode),
+    definition: PolicyDefinition,
+    description: S.optional(SensitiveString),
+    statusReasons: PolicyStatusReasons,
+  }),
+).annotate({
+  identifier: "GetPolicyResponse",
+}) as any as S.Schema<GetPolicyResponse>;
+export interface GetPolicyEngineRequest {
+  policyEngineId: string;
+}
+export const GetPolicyEngineRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/policy-engines/{policyEngineId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetPolicyEngineRequest",
+}) as any as S.Schema<GetPolicyEngineRequest>;
+export interface GetPolicyEngineResponse {
+  policyEngineId: string;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+  policyEngineArn: string;
+  status: PolicyEngineStatus;
+  encryptionKeyArn?: string;
+  description?: string | redacted.Redacted<string>;
+  statusReasons: string[];
+}
+export const GetPolicyEngineResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String,
+    name: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    policyEngineArn: S.String,
+    status: PolicyEngineStatus,
+    encryptionKeyArn: S.optional(S.String),
+    description: S.optional(SensitiveString),
+    statusReasons: PolicyStatusReasons,
+  }),
+).annotate({
+  identifier: "GetPolicyEngineResponse",
+}) as any as S.Schema<GetPolicyEngineResponse>;
+export interface GetPolicyEngineSummaryRequest {
+  policyEngineId: string;
+}
+export const GetPolicyEngineSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/policy-engine-summaries/{policyEngineId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetPolicyEngineSummaryRequest",
+}) as any as S.Schema<GetPolicyEngineSummaryRequest>;
+export interface GetPolicyEngineSummaryResponse {
+  policyEngineId: string;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+  policyEngineArn: string;
+  status: PolicyEngineStatus;
+  encryptionKeyArn?: string;
+}
+export const GetPolicyEngineSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String,
+    name: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    policyEngineArn: S.String,
+    status: PolicyEngineStatus,
+    encryptionKeyArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetPolicyEngineSummaryResponse",
+}) as any as S.Schema<GetPolicyEngineSummaryResponse>;
+export interface GetPolicyGenerationRequest {
+  policyGenerationId: string;
+  policyEngineId: string;
+}
+export const GetPolicyGenerationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyGenerationId: S.String.pipe(T.HttpLabel("policyGenerationId")),
+    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/policy-engines/{policyEngineId}/policy-generations/{policyGenerationId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetPolicyGenerationRequest",
+}) as any as S.Schema<GetPolicyGenerationRequest>;
+export type PolicyGenerationName = string;
+export type PolicyGenerationArn = string;
+export type Resource = { arn: string };
+export const Resource = /*@__PURE__*/ S.Union([S.Struct({ arn: S.String })]);
+export type PolicyGenerationStatus =
+  | "GENERATING"
+  | "GENERATED"
+  | "GENERATE_FAILED"
+  | "DELETE_FAILED"
+  | (string & {});
+export const PolicyGenerationStatus = /*@__PURE__*/ S.String;
+
+export interface GetPolicyGenerationResponse {
+  policyEngineId: string;
+  policyGenerationId: string;
+  name: string;
+  policyGenerationArn: string;
+  resource: Resource;
+  createdAt: Date;
+  updatedAt: Date;
+  status: PolicyGenerationStatus;
+  findings?: string;
+  statusReasons: string[];
+}
+export const GetPolicyGenerationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String,
+    policyGenerationId: S.String,
+    name: S.String,
+    policyGenerationArn: S.String,
+    resource: Resource,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: PolicyGenerationStatus,
+    findings: S.optional(S.String),
+    statusReasons: PolicyStatusReasons,
+  }),
+).annotate({
+  identifier: "GetPolicyGenerationResponse",
+}) as any as S.Schema<GetPolicyGenerationResponse>;
+export interface GetPolicyGenerationSummaryRequest {
+  policyGenerationId: string;
+  policyEngineId: string;
+}
+export const GetPolicyGenerationSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyGenerationId: S.String.pipe(T.HttpLabel("policyGenerationId")),
+    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/policy-engines/{policyEngineId}/policy-generation-summaries/{policyGenerationId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetPolicyGenerationSummaryRequest",
+}) as any as S.Schema<GetPolicyGenerationSummaryRequest>;
+export interface GetPolicyGenerationSummaryResponse {
+  policyEngineId: string;
+  policyGenerationId: string;
+  name: string;
+  policyGenerationArn: string;
+  resource: Resource;
+  createdAt: Date;
+  updatedAt: Date;
+  status: PolicyGenerationStatus;
+  findings?: string;
+}
+export const GetPolicyGenerationSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String,
+    policyGenerationId: S.String,
+    name: S.String,
+    policyGenerationArn: S.String,
+    resource: Resource,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: PolicyGenerationStatus,
+    findings: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetPolicyGenerationSummaryResponse",
+}) as any as S.Schema<GetPolicyGenerationSummaryResponse>;
+export interface GetPolicySummaryRequest {
+  policyEngineId: string;
+  policyId: string;
+}
+export const GetPolicySummaryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+    policyId: S.String.pipe(T.HttpLabel("policyId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/policy-engines/{policyEngineId}/policy-summaries/{policyId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetPolicySummaryRequest",
+}) as any as S.Schema<GetPolicySummaryRequest>;
+export interface GetPolicySummaryResponse {
+  policyId: string;
+  name: string;
+  policyEngineId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  policyArn: string;
+  status: PolicyStatus;
+  enforcementMode?: EnforcementMode;
+}
+export const GetPolicySummaryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyId: S.String,
+    name: S.String,
+    policyEngineId: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    policyArn: S.String,
+    status: PolicyStatus,
+    enforcementMode: S.optional(EnforcementMode),
+  }),
+).annotate({
+  identifier: "GetPolicySummaryResponse",
+}) as any as S.Schema<GetPolicySummaryResponse>;
+export interface GetRegistryRequest {
+  registryId: string;
+}
+export const GetRegistryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ registryId: S.String.pipe(T.HttpLabel("registryId")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/registries/{registryId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetRegistryRequest",
+}) as any as S.Schema<GetRegistryRequest>;
+export type RegistryId = string;
+export interface GetRegistryResponse {
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  registryId: string;
+  registryArn: string;
+  authorizerType?: RegistryAuthorizerType;
+  authorizerConfiguration?: AuthorizerConfiguration;
+  approvalConfiguration?: ApprovalConfiguration;
+  status: RegistryStatus;
+  statusReason?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const GetRegistryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(SensitiveString),
+    registryId: S.String,
+    registryArn: S.String,
+    authorizerType: S.optional(RegistryAuthorizerType),
+    authorizerConfiguration: S.optional(AuthorizerConfiguration),
+    approvalConfiguration: S.optional(ApprovalConfiguration),
+    status: RegistryStatus,
+    statusReason: S.optional(S.String),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "GetRegistryResponse",
+}) as any as S.Schema<GetRegistryResponse>;
+export interface GetRegistryRecordRequest {
+  registryId: string;
+  recordId: string;
+}
+export const GetRegistryRecordRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registryId: S.String.pipe(T.HttpLabel("registryId")),
+    recordId: S.String.pipe(T.HttpLabel("recordId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/registries/{registryId}/records/{recordId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetRegistryRecordRequest",
+}) as any as S.Schema<GetRegistryRecordRequest>;
+export type RegistryRecordId = string;
+export interface GetRegistryRecordResponse {
+  registryArn: string;
+  recordArn: string;
+  recordId: string;
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  descriptorType: DescriptorType;
+  descriptors: Descriptors;
+  recordVersion?: string;
+  status: RegistryRecordStatus;
+  createdAt: Date;
+  updatedAt: Date;
+  statusReason?: string;
+  synchronizationType?: SynchronizationType;
+  synchronizationConfiguration?: SynchronizationConfiguration;
+}
+export const GetRegistryRecordResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registryArn: S.String,
+    recordArn: S.String,
+    recordId: S.String,
+    name: S.String,
+    description: S.optional(SensitiveString),
+    descriptorType: DescriptorType,
+    descriptors: Descriptors,
+    recordVersion: S.optional(S.String),
+    status: RegistryRecordStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    statusReason: S.optional(S.String),
+    synchronizationType: S.optional(SynchronizationType),
+    synchronizationConfiguration: S.optional(SynchronizationConfiguration),
+  }),
+).annotate({
+  identifier: "GetRegistryRecordResponse",
+}) as any as S.Schema<GetRegistryRecordResponse>;
+export interface GetResourcePolicyRequest {
+  resourceArn: string;
+}
+export const GetResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/resourcepolicy/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetResourcePolicyRequest",
+}) as any as S.Schema<GetResourcePolicyRequest>;
+export type ResourcePolicyBody = string;
+export interface GetResourcePolicyResponse {
+  policy?: string;
+}
+export const GetResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ policy: S.optional(S.String) }),
+).annotate({
+  identifier: "GetResourcePolicyResponse",
+}) as any as S.Schema<GetResourcePolicyResponse>;
+export type TokenVaultIdType = string;
+export interface GetTokenVaultRequest {
+  tokenVaultId?: string;
+}
+export const GetTokenVaultRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tokenVaultId: S.optional(S.String) }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/identities/get-token-vault" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetTokenVaultRequest",
+}) as any as S.Schema<GetTokenVaultRequest>;
+export type KeyType =
+  | "CustomerManagedKey"
+  | "ServiceManagedKey"
+  | (string & {});
+export const KeyType = /*@__PURE__*/ S.String;
+
+export interface KmsConfiguration {
+  keyType: KeyType;
+  kmsKeyArn?: string;
+}
+export const KmsConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ keyType: KeyType, kmsKeyArn: S.optional(S.String) }),
+).annotate({
+  identifier: "KmsConfiguration",
+}) as any as S.Schema<KmsConfiguration>;
+export interface GetTokenVaultResponse {
+  tokenVaultId: string;
+  kmsConfiguration: KmsConfiguration;
+  lastModifiedDate: Date;
+}
+export const GetTokenVaultResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tokenVaultId: S.String,
+    kmsConfiguration: KmsConfiguration,
+    lastModifiedDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "GetTokenVaultResponse",
+}) as any as S.Schema<GetTokenVaultResponse>;
+export interface GetWorkloadIdentityRequest {
+  name: string;
+}
+export const GetWorkloadIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/identities/GetWorkloadIdentity" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "GetWorkloadIdentityRequest",
+}) as any as S.Schema<GetWorkloadIdentityRequest>;
+export interface GetWorkloadIdentityResponse {
+  name: string;
+  workloadIdentityArn: string;
+  allowedResourceOauth2ReturnUrls?: string[];
+  createdTime: Date;
+  lastUpdatedTime: Date;
+}
+export const GetWorkloadIdentityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    workloadIdentityArn: S.String,
+    allowedResourceOauth2ReturnUrls: S.optional(
+      ResourceOauth2ReturnUrlListType,
+    ),
+    createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "GetWorkloadIdentityResponse",
+}) as any as S.Schema<GetWorkloadIdentityResponse>;
+export type MaxResults = number;
+export type NextToken = string;
+export interface ListAgentRuntimeEndpointsRequest {
+  agentRuntimeId: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListAgentRuntimeEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/runtimes/{agentRuntimeId}/runtime-endpoints/",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListAgentRuntimeEndpointsRequest",
+}) as any as S.Schema<ListAgentRuntimeEndpointsRequest>;
+export interface AgentRuntimeEndpoint {
+  name: string | redacted.Redacted<string>;
+  liveVersion?: string;
+  targetVersion?: string;
+  agentRuntimeEndpointArn: string;
+  agentRuntimeArn: string;
+  status: AgentRuntimeEndpointStatus;
+  id: string;
+  description?: string;
+  createdAt: Date;
+  lastUpdatedAt: Date;
+}
+export const AgentRuntimeEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: SensitiveString,
+    liveVersion: S.optional(S.String),
+    targetVersion: S.optional(S.String),
+    agentRuntimeEndpointArn: S.String,
+    agentRuntimeArn: S.String,
+    status: AgentRuntimeEndpointStatus,
+    id: S.String,
+    description: S.optional(S.String),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "AgentRuntimeEndpoint",
+}) as any as S.Schema<AgentRuntimeEndpoint>;
+export type AgentRuntimeEndpoints = AgentRuntimeEndpoint[];
+export const AgentRuntimeEndpoints =
+  /*@__PURE__*/ S.Array(AgentRuntimeEndpoint);
+export interface ListAgentRuntimeEndpointsResponse {
+  runtimeEndpoints: AgentRuntimeEndpoint[];
+  nextToken?: string;
+}
+export const ListAgentRuntimeEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    runtimeEndpoints: AgentRuntimeEndpoints,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListAgentRuntimeEndpointsResponse",
+}) as any as S.Schema<ListAgentRuntimeEndpointsResponse>;
+export interface ListAgentRuntimesRequest {
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListAgentRuntimesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/runtimes/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListAgentRuntimesRequest",
+}) as any as S.Schema<ListAgentRuntimesRequest>;
+export interface AgentRuntime {
+  agentRuntimeArn: string;
+  agentRuntimeId: string;
+  agentRuntimeVersion: string;
+  agentRuntimeName: string;
+  description: string | redacted.Redacted<string>;
+  lastUpdatedAt: Date;
+  status: AgentRuntimeStatus;
+}
+export const AgentRuntime = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentRuntimeArn: S.String,
+    agentRuntimeId: S.String,
+    agentRuntimeVersion: S.String,
+    agentRuntimeName: S.String,
+    description: SensitiveString,
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: AgentRuntimeStatus,
+  }),
+).annotate({ identifier: "AgentRuntime" }) as any as S.Schema<AgentRuntime>;
+export type AgentRuntimes = AgentRuntime[];
+export const AgentRuntimes = /*@__PURE__*/ S.Array(AgentRuntime);
+export interface ListAgentRuntimesResponse {
+  agentRuntimes: AgentRuntime[];
+  nextToken?: string;
+}
+export const ListAgentRuntimesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ agentRuntimes: AgentRuntimes, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListAgentRuntimesResponse",
+}) as any as S.Schema<ListAgentRuntimesResponse>;
+export interface ListAgentRuntimeVersionsRequest {
+  agentRuntimeId: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListAgentRuntimeVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/runtimes/{agentRuntimeId}/versions/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListAgentRuntimeVersionsRequest",
+}) as any as S.Schema<ListAgentRuntimeVersionsRequest>;
+export interface ListAgentRuntimeVersionsResponse {
+  agentRuntimes: AgentRuntime[];
+  nextToken?: string;
+}
+export const ListAgentRuntimeVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ agentRuntimes: AgentRuntimes, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListAgentRuntimeVersionsResponse",
+}) as any as S.Schema<ListAgentRuntimeVersionsResponse>;
+export interface ListApiKeyCredentialProvidersRequest {
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListApiKeyCredentialProvidersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/identities/ListApiKeyCredentialProviders",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListApiKeyCredentialProvidersRequest",
+}) as any as S.Schema<ListApiKeyCredentialProvidersRequest>;
+export interface ApiKeyCredentialProviderItem {
+  name: string;
+  credentialProviderArn: string;
+  createdTime: Date;
+  lastUpdatedTime: Date;
+}
+export const ApiKeyCredentialProviderItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    credentialProviderArn: S.String,
+    createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "ApiKeyCredentialProviderItem",
+}) as any as S.Schema<ApiKeyCredentialProviderItem>;
+export type ApiKeyCredentialProviders = ApiKeyCredentialProviderItem[];
+export const ApiKeyCredentialProviders = /*@__PURE__*/ S.Array(
+  ApiKeyCredentialProviderItem,
+);
+export interface ListApiKeyCredentialProvidersResponse {
+  credentialProviders: ApiKeyCredentialProviderItem[];
+  nextToken?: string;
+}
+export const ListApiKeyCredentialProvidersResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      credentialProviders: ApiKeyCredentialProviders,
+      nextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListApiKeyCredentialProvidersResponse",
+}) as any as S.Schema<ListApiKeyCredentialProvidersResponse>;
+export interface ListBrowserProfilesRequest {
+  maxResults?: number;
+  nextToken?: string;
+  name?: string;
+}
+export const ListBrowserProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    name: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/browser-profiles" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListBrowserProfilesRequest",
+}) as any as S.Schema<ListBrowserProfilesRequest>;
+export interface BrowserProfileSummary {
+  profileId: string;
+  profileArn: string;
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  status: BrowserProfileStatus;
+  createdAt: Date;
+  lastUpdatedAt: Date;
+  lastSavedAt?: Date;
+  lastSavedBrowserSessionId?: string;
+  lastSavedBrowserId?: string;
+}
+export const BrowserProfileSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileId: S.String,
+    profileArn: S.String,
+    name: S.String,
+    description: S.optional(SensitiveString),
+    status: BrowserProfileStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastSavedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    lastSavedBrowserSessionId: S.optional(S.String),
+    lastSavedBrowserId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BrowserProfileSummary",
+}) as any as S.Schema<BrowserProfileSummary>;
+export type BrowserProfileSummaries = BrowserProfileSummary[];
+export const BrowserProfileSummaries = /*@__PURE__*/ S.Array(
+  BrowserProfileSummary,
+);
+export interface ListBrowserProfilesResponse {
+  profileSummaries: BrowserProfileSummary[];
+  nextToken?: string;
+}
+export const ListBrowserProfilesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileSummaries: BrowserProfileSummaries,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBrowserProfilesResponse",
+}) as any as S.Schema<ListBrowserProfilesResponse>;
+export type ResourceType = "SYSTEM" | "CUSTOM" | (string & {});
+export const ResourceType = /*@__PURE__*/ S.String;
+
+export interface ListBrowsersRequest {
+  maxResults?: number;
+  nextToken?: string;
+  type?: ResourceType;
+}
+export const ListBrowsersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    type: S.optional(ResourceType).pipe(T.HttpQuery("type")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/browsers" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListBrowsersRequest",
+}) as any as S.Schema<ListBrowsersRequest>;
+export interface BrowserSummary {
+  browserId: string;
+  browserArn: string;
+  name?: string;
+  description?: string | redacted.Redacted<string>;
+  status: BrowserStatus;
+  createdAt: Date;
+  lastUpdatedAt?: Date;
+}
+export const BrowserSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    browserId: S.String,
+    browserArn: S.String,
+    name: S.optional(S.String),
+    description: S.optional(SensitiveString),
+    status: BrowserStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({ identifier: "BrowserSummary" }) as any as S.Schema<BrowserSummary>;
+export type BrowserSummaries = BrowserSummary[];
+export const BrowserSummaries = /*@__PURE__*/ S.Array(BrowserSummary);
+export interface ListBrowsersResponse {
+  browserSummaries: BrowserSummary[];
+  nextToken?: string;
+}
+export const ListBrowsersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    browserSummaries: BrowserSummaries,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBrowsersResponse",
+}) as any as S.Schema<ListBrowsersResponse>;
+export interface ListCodeInterpretersRequest {
+  maxResults?: number;
+  nextToken?: string;
+  type?: ResourceType;
+}
+export const ListCodeInterpretersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    type: S.optional(ResourceType).pipe(T.HttpQuery("type")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/code-interpreters" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListCodeInterpretersRequest",
+}) as any as S.Schema<ListCodeInterpretersRequest>;
+export interface CodeInterpreterSummary {
+  codeInterpreterId: string;
+  codeInterpreterArn: string;
+  name?: string;
+  description?: string | redacted.Redacted<string>;
+  status: CodeInterpreterStatus;
+  createdAt: Date;
+  lastUpdatedAt?: Date;
+}
+export const CodeInterpreterSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    codeInterpreterId: S.String,
+    codeInterpreterArn: S.String,
+    name: S.optional(S.String),
+    description: S.optional(SensitiveString),
+    status: CodeInterpreterStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "CodeInterpreterSummary",
+}) as any as S.Schema<CodeInterpreterSummary>;
+export type CodeInterpreterSummaries = CodeInterpreterSummary[];
+export const CodeInterpreterSummaries = /*@__PURE__*/ S.Array(
+  CodeInterpreterSummary,
+);
+export interface ListCodeInterpretersResponse {
+  codeInterpreterSummaries: CodeInterpreterSummary[];
+  nextToken?: string;
+}
+export const ListCodeInterpretersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    codeInterpreterSummaries: CodeInterpreterSummaries,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListCodeInterpretersResponse",
+}) as any as S.Schema<ListCodeInterpretersResponse>;
+export interface ListConfigurationBundlesRequest {
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListConfigurationBundlesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/configuration-bundles" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListConfigurationBundlesRequest",
+}) as any as S.Schema<ListConfigurationBundlesRequest>;
+export interface ConfigurationBundleSummary {
+  bundleArn: string;
+  bundleId: string;
+  bundleName: string;
+  description?: string | redacted.Redacted<string>;
+  createdAt?: Date;
+}
+export const ConfigurationBundleSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bundleArn: S.String,
+    bundleId: S.String,
+    bundleName: S.String,
+    description: S.optional(SensitiveString),
+    createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
+  }),
+).annotate({
+  identifier: "ConfigurationBundleSummary",
+}) as any as S.Schema<ConfigurationBundleSummary>;
+export type ConfigurationBundleSummaryList = ConfigurationBundleSummary[];
+export const ConfigurationBundleSummaryList = /*@__PURE__*/ S.Array(
+  ConfigurationBundleSummary,
+);
+export interface ListConfigurationBundlesResponse {
+  bundles: ConfigurationBundleSummary[];
+  nextToken?: string;
+}
+export const ListConfigurationBundlesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bundles: ConfigurationBundleSummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListConfigurationBundlesResponse",
+}) as any as S.Schema<ListConfigurationBundlesResponse>;
+export interface VersionFilter {
+  branchName?: string;
+  createdByName?: string;
+  latestPerBranch?: boolean;
+}
+export const VersionFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    branchName: S.optional(S.String),
+    createdByName: S.optional(S.String),
+    latestPerBranch: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "VersionFilter" }) as any as S.Schema<VersionFilter>;
+export interface ListConfigurationBundleVersionsRequest {
+  bundleId: string;
+  nextToken?: string;
+  maxResults?: number;
+  filter?: VersionFilter;
+}
+export const ListConfigurationBundleVersionsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      bundleId: S.String.pipe(T.HttpLabel("bundleId")),
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      filter: S.optional(VersionFilter),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/configuration-bundles/{bundleId}/versions",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListConfigurationBundleVersionsRequest",
+}) as any as S.Schema<ListConfigurationBundleVersionsRequest>;
+export interface ConfigurationBundleVersionSummary {
+  bundleArn: string;
+  bundleId: string;
+  versionId: string;
+  lineageMetadata?: VersionLineageMetadata;
+  versionCreatedAt: Date;
+}
+export const ConfigurationBundleVersionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bundleArn: S.String,
+    bundleId: S.String,
+    versionId: S.String,
+    lineageMetadata: S.optional(VersionLineageMetadata),
+    versionCreatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "ConfigurationBundleVersionSummary",
+}) as any as S.Schema<ConfigurationBundleVersionSummary>;
+export type ConfigurationBundleVersionSummaryList =
+  ConfigurationBundleVersionSummary[];
+export const ConfigurationBundleVersionSummaryList = /*@__PURE__*/ S.Array(
+  ConfigurationBundleVersionSummary,
+);
+export interface ListConfigurationBundleVersionsResponse {
+  versions: ConfigurationBundleVersionSummary[];
+  nextToken?: string;
+}
+export const ListConfigurationBundleVersionsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      versions: ConfigurationBundleVersionSummaryList,
+      nextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListConfigurationBundleVersionsResponse",
+}) as any as S.Schema<ListConfigurationBundleVersionsResponse>;
+export interface ListDatasetExamplesRequest {
+  datasetId: string;
+  datasetVersion?: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListDatasetExamplesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
+    datasetVersion: S.optional(S.String).pipe(T.HttpQuery("datasetVersion")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/datasets/{datasetId}/examples" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListDatasetExamplesRequest",
+}) as any as S.Schema<ListDatasetExamplesRequest>;
+export interface ListDatasetExamplesResponse {
+  datasetArn: string;
+  datasetId: string;
+  datasetVersion: string;
+  examples: any[];
+  nextToken?: string;
+}
+export const ListDatasetExamplesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetArn: S.String,
+    datasetId: S.String,
+    datasetVersion: S.String,
+    examples: DatasetExampleList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDatasetExamplesResponse",
+}) as any as S.Schema<ListDatasetExamplesResponse>;
+export interface ListDatasetsRequest {
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/datasets" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListDatasetsRequest",
+}) as any as S.Schema<ListDatasetsRequest>;
+export interface DatasetSummary {
+  datasetArn: string;
+  datasetId: string;
+  datasetName: string;
+  description?: string;
+  status: DatasetStatus;
+  draftStatus?: DraftStatus;
+  schemaType: DatasetSchemaType;
+  exampleCount: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const DatasetSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetArn: S.String,
+    datasetId: S.String,
+    datasetName: S.String,
+    description: S.optional(S.String),
+    status: DatasetStatus,
+    draftStatus: S.optional(DraftStatus),
+    schemaType: DatasetSchemaType,
+    exampleCount: S.Number,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({ identifier: "DatasetSummary" }) as any as S.Schema<DatasetSummary>;
+export type DatasetSummaryList = DatasetSummary[];
+export const DatasetSummaryList = /*@__PURE__*/ S.Array(DatasetSummary);
+export interface ListDatasetsResponse {
+  datasets: DatasetSummary[];
+  nextToken?: string;
+}
+export const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ datasets: DatasetSummaryList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListDatasetsResponse",
+}) as any as S.Schema<ListDatasetsResponse>;
+export interface ListDatasetVersionsRequest {
+  datasetId: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListDatasetVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/datasets/{datasetId}/versions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListDatasetVersionsRequest",
+}) as any as S.Schema<ListDatasetVersionsRequest>;
+export interface DatasetVersionSummary {
+  datasetVersion: string;
+  exampleCount: number;
+  createdAt: Date;
+}
+export const DatasetVersionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetVersion: S.String,
+    exampleCount: S.Number,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "DatasetVersionSummary",
+}) as any as S.Schema<DatasetVersionSummary>;
+export type DatasetVersionSummaryList = DatasetVersionSummary[];
+export const DatasetVersionSummaryList = /*@__PURE__*/ S.Array(
+  DatasetVersionSummary,
+);
+export interface ListDatasetVersionsResponse {
+  versions: DatasetVersionSummary[];
+  nextToken?: string;
+}
+export const ListDatasetVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    versions: DatasetVersionSummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDatasetVersionsResponse",
+}) as any as S.Schema<ListDatasetVersionsResponse>;
+export interface ListEvaluatorsRequest {
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListEvaluatorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/evaluators" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListEvaluatorsRequest",
+}) as any as S.Schema<ListEvaluatorsRequest>;
+export type EvaluatorType = "Builtin" | "Custom" | "CustomCode" | (string & {});
+export const EvaluatorType = /*@__PURE__*/ S.String;
+
+export interface EvaluatorSummary {
+  evaluatorArn: string;
+  evaluatorId: string;
+  evaluatorName: string;
+  description?: string | redacted.Redacted<string>;
+  evaluatorType: EvaluatorType;
+  level?: EvaluatorLevel;
+  status: EvaluatorStatus;
+  createdAt: Date;
+  updatedAt: Date;
+  lockedForModification?: boolean;
+  kmsKeyArn?: string;
+}
+export const EvaluatorSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    evaluatorArn: S.String,
+    evaluatorId: S.String,
+    evaluatorName: S.String,
+    description: S.optional(SensitiveString),
+    evaluatorType: EvaluatorType,
+    level: S.optional(EvaluatorLevel),
+    status: EvaluatorStatus,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    lockedForModification: S.optional(S.Boolean),
+    kmsKeyArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EvaluatorSummary",
+}) as any as S.Schema<EvaluatorSummary>;
+export type EvaluatorSummaryList = EvaluatorSummary[];
+export const EvaluatorSummaryList = /*@__PURE__*/ S.Array(EvaluatorSummary);
+export interface ListEvaluatorsResponse {
+  evaluators: EvaluatorSummary[];
+  nextToken?: string;
+}
+export const ListEvaluatorsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    evaluators: EvaluatorSummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEvaluatorsResponse",
+}) as any as S.Schema<ListEvaluatorsResponse>;
+export type GatewayRuleMaxResults = number;
+export type GatewayRuleNextToken = string;
+export interface ListGatewayRulesRequest {
+  gatewayIdentifier: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListGatewayRulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/gateways/{gatewayIdentifier}/rules" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListGatewayRulesRequest",
+}) as any as S.Schema<ListGatewayRulesRequest>;
+export interface GatewayRuleDetail {
+  ruleId: string;
+  gatewayArn: string;
+  priority: number;
+  conditions?: Condition[];
+  actions: Action[];
+  description?: string;
+  createdAt: Date;
+  status: GatewayRuleStatus;
+  system?: SystemManagedBlock;
+  updatedAt?: Date;
+}
+export const GatewayRuleDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ruleId: S.String,
+    gatewayArn: S.String,
+    priority: S.Number,
+    conditions: S.optional(Conditions),
+    actions: Actions,
+    description: S.optional(S.String),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: GatewayRuleStatus,
+    system: S.optional(SystemManagedBlock),
+    updatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "GatewayRuleDetail",
+}) as any as S.Schema<GatewayRuleDetail>;
+export type GatewayRules = GatewayRuleDetail[];
+export const GatewayRules = /*@__PURE__*/ S.Array(GatewayRuleDetail);
+export interface ListGatewayRulesResponse {
+  gatewayRules: GatewayRuleDetail[];
+  nextToken?: string;
+}
+export const ListGatewayRulesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ gatewayRules: GatewayRules, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListGatewayRulesResponse",
+}) as any as S.Schema<ListGatewayRulesResponse>;
+export type GatewayMaxResults = number;
+export type GatewayNextToken = string;
+export interface ListGatewaysRequest {
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/gateways/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListGatewaysRequest",
+}) as any as S.Schema<ListGatewaysRequest>;
+export interface GatewaySummary {
+  gatewayId: string;
+  name: string;
+  status: GatewayStatus;
+  description?: string | redacted.Redacted<string>;
+  createdAt: Date;
+  updatedAt: Date;
+  authorizerType: AuthorizerType;
+  protocolType?: GatewayProtocolType;
+}
+export const GatewaySummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayId: S.String,
+    name: S.String,
+    status: GatewayStatus,
+    description: S.optional(SensitiveString),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    authorizerType: AuthorizerType,
+    protocolType: S.optional(GatewayProtocolType),
+  }),
+).annotate({ identifier: "GatewaySummary" }) as any as S.Schema<GatewaySummary>;
+export type GatewaySummaries = GatewaySummary[];
+export const GatewaySummaries = /*@__PURE__*/ S.Array(GatewaySummary);
+export interface ListGatewaysResponse {
+  items: GatewaySummary[];
+  nextToken?: string;
+}
+export const ListGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ items: GatewaySummaries, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListGatewaysResponse",
+}) as any as S.Schema<ListGatewaysResponse>;
+export type TargetMaxResults = number;
+export type TargetNextToken = string;
+export interface ListGatewayTargetsRequest {
+  gatewayIdentifier: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListGatewayTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/gateways/{gatewayIdentifier}/targets/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListGatewayTargetsRequest",
+}) as any as S.Schema<ListGatewayTargetsRequest>;
+export type TargetType =
+  | "OPEN_API_SCHEMA"
+  | "SMITHY_MODEL"
+  | "MCP_SERVER"
+  | "LAMBDA"
+  | "API_GATEWAY"
+  | "CONNECTOR"
+  | "AGENTCORE_RUNTIME"
+  | "PASSTHROUGH"
+  | "PROVIDER"
+  | (string & {});
+export const TargetType = /*@__PURE__*/ S.String;
+
+export interface TargetSummary {
+  targetId: string;
+  name: string | redacted.Redacted<string>;
+  status: TargetStatus;
+  description?: string | redacted.Redacted<string>;
+  createdAt: Date;
+  updatedAt: Date;
+  resourcePriority?: number;
+  lastSynchronizedAt?: Date;
+  authorizationData?: AuthorizationData;
+  targetType?: TargetType;
+  listingMode?: ListingMode;
+}
+export const TargetSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetId: S.String,
+    name: SensitiveString,
+    status: TargetStatus,
+    description: S.optional(SensitiveString),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    resourcePriority: S.optional(S.Number),
+    lastSynchronizedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    authorizationData: S.optional(AuthorizationData),
+    targetType: S.optional(TargetType),
+    listingMode: S.optional(ListingMode),
+  }),
+).annotate({ identifier: "TargetSummary" }) as any as S.Schema<TargetSummary>;
+export type TargetSummaries = TargetSummary[];
+export const TargetSummaries = /*@__PURE__*/ S.Array(TargetSummary);
+export interface ListGatewayTargetsResponse {
+  items: TargetSummary[];
+  nextToken?: string;
+}
+export const ListGatewayTargetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ items: TargetSummaries, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListGatewayTargetsResponse",
+}) as any as S.Schema<ListGatewayTargetsResponse>;
+export interface ListHarnessEndpointsRequest {
+  harnessId: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListHarnessEndpointsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/harnesses/{harnessId}/endpoints" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListHarnessEndpointsRequest",
+}) as any as S.Schema<ListHarnessEndpointsRequest>;
+export type HarnessEndpoints = HarnessEndpoint[];
+export const HarnessEndpoints = /*@__PURE__*/ S.Array(HarnessEndpoint);
+export interface ListHarnessEndpointsResponse {
+  endpoints: HarnessEndpoint[];
+  nextToken?: string;
+}
+export const ListHarnessEndpointsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ endpoints: HarnessEndpoints, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListHarnessEndpointsResponse",
+}) as any as S.Schema<ListHarnessEndpointsResponse>;
+export interface ListHarnessesRequest {
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListHarnessesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/harnesses" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListHarnessesRequest",
+}) as any as S.Schema<ListHarnessesRequest>;
+export interface HarnessSummary {
+  harnessId: string;
+  harnessName: string;
+  arn: string;
+  status: HarnessStatus;
+  createdAt: Date;
+  updatedAt: Date;
+  harnessVersion?: string;
+}
+export const HarnessSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    harnessId: S.String,
+    harnessName: S.String,
+    arn: S.String,
+    status: HarnessStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    harnessVersion: S.optional(S.String),
+  }),
+).annotate({ identifier: "HarnessSummary" }) as any as S.Schema<HarnessSummary>;
+export type HarnessSummaries = HarnessSummary[];
+export const HarnessSummaries = /*@__PURE__*/ S.Array(HarnessSummary);
+export interface ListHarnessesResponse {
+  harnesses: HarnessSummary[];
+  nextToken?: string;
+}
+export const ListHarnessesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ harnesses: HarnessSummaries, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListHarnessesResponse",
+}) as any as S.Schema<ListHarnessesResponse>;
+export interface ListHarnessVersionsRequest {
+  harnessId: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListHarnessVersionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/harnesses/{harnessId}/versions" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListHarnessVersionsRequest",
+}) as any as S.Schema<ListHarnessVersionsRequest>;
+export interface HarnessVersionSummary {
+  harnessId: string;
+  harnessName: string;
+  arn: string;
+  harnessVersion: string;
+  status: HarnessStatus;
+  createdAt: Date;
+  updatedAt: Date;
+  failureReason?: string;
+}
+export const HarnessVersionSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    harnessId: S.String,
+    harnessName: S.String,
+    arn: S.String,
+    harnessVersion: S.String,
+    status: HarnessStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    failureReason: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HarnessVersionSummary",
+}) as any as S.Schema<HarnessVersionSummary>;
+export type HarnessVersionSummaries = HarnessVersionSummary[];
+export const HarnessVersionSummaries = /*@__PURE__*/ S.Array(
+  HarnessVersionSummary,
+);
+export interface ListHarnessVersionsResponse {
+  harnessVersions: HarnessVersionSummary[];
+  nextToken?: string;
+}
+export const ListHarnessVersionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    harnessVersions: HarnessVersionSummaries,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListHarnessVersionsResponse",
+}) as any as S.Schema<ListHarnessVersionsResponse>;
+export interface ListMemoriesInput {
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListMemoriesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number),
+    nextToken: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/memories/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListMemoriesInput",
+}) as any as S.Schema<ListMemoriesInput>;
+export interface MemorySummary {
+  arn?: string;
+  id?: string;
+  status?: MemoryStatus;
+  createdAt: Date;
+  updatedAt: Date;
+  managedByResourceArn?: string;
+}
+export const MemorySummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    arn: S.optional(S.String),
+    id: S.optional(S.String),
+    status: S.optional(MemoryStatus),
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    managedByResourceArn: S.optional(S.String),
+  }),
+).annotate({ identifier: "MemorySummary" }) as any as S.Schema<MemorySummary>;
+export type MemorySummaryList = MemorySummary[];
+export const MemorySummaryList = /*@__PURE__*/ S.Array(MemorySummary);
+export interface ListMemoriesOutput {
+  memories: MemorySummary[];
+  nextToken?: string;
+}
+export const ListMemoriesOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ memories: MemorySummaryList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListMemoriesOutput",
+}) as any as S.Schema<ListMemoriesOutput>;
+export interface ListOauth2CredentialProvidersRequest {
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListOauth2CredentialProvidersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/identities/ListOauth2CredentialProviders",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListOauth2CredentialProvidersRequest",
+}) as any as S.Schema<ListOauth2CredentialProvidersRequest>;
+export interface Oauth2CredentialProviderItem {
+  name: string;
+  credentialProviderVendor: CredentialProviderVendorType;
+  credentialProviderArn: string;
+  createdTime: Date;
+  lastUpdatedTime: Date;
+}
+export const Oauth2CredentialProviderItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    credentialProviderVendor: CredentialProviderVendorType,
+    credentialProviderArn: S.String,
+    createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "Oauth2CredentialProviderItem",
+}) as any as S.Schema<Oauth2CredentialProviderItem>;
+export type Oauth2CredentialProviders = Oauth2CredentialProviderItem[];
+export const Oauth2CredentialProviders = /*@__PURE__*/ S.Array(
+  Oauth2CredentialProviderItem,
+);
+export interface ListOauth2CredentialProvidersResponse {
+  credentialProviders: Oauth2CredentialProviderItem[];
+  nextToken?: string;
+}
+export const ListOauth2CredentialProvidersResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      credentialProviders: Oauth2CredentialProviders,
+      nextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListOauth2CredentialProvidersResponse",
+}) as any as S.Schema<ListOauth2CredentialProvidersResponse>;
+export interface ListOnlineEvaluationConfigsRequest {
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListOnlineEvaluationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/online-evaluation-configs" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListOnlineEvaluationConfigsRequest",
+}) as any as S.Schema<ListOnlineEvaluationConfigsRequest>;
+export interface OnlineEvaluationConfigSummary {
+  onlineEvaluationConfigArn: string;
+  onlineEvaluationConfigId: string;
+  onlineEvaluationConfigName: string;
+  description?: string | redacted.Redacted<string>;
+  status: OnlineEvaluationConfigStatus;
+  executionStatus: OnlineEvaluationExecutionStatus;
+  createdAt: Date;
+  updatedAt: Date;
+  failureReason?: string;
+  insights?: Insight[];
+  clusteringConfig?: ClusteringConfig;
+}
+export const OnlineEvaluationConfigSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    onlineEvaluationConfigArn: S.String,
+    onlineEvaluationConfigId: S.String,
+    onlineEvaluationConfigName: S.String,
+    description: S.optional(SensitiveString),
+    status: OnlineEvaluationConfigStatus,
+    executionStatus: OnlineEvaluationExecutionStatus,
+    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    failureReason: S.optional(S.String),
+    insights: S.optional(InsightList),
+    clusteringConfig: S.optional(ClusteringConfig),
+  }),
+).annotate({
+  identifier: "OnlineEvaluationConfigSummary",
+}) as any as S.Schema<OnlineEvaluationConfigSummary>;
+export type OnlineEvaluationConfigSummaryList = OnlineEvaluationConfigSummary[];
+export const OnlineEvaluationConfigSummaryList = /*@__PURE__*/ S.Array(
+  OnlineEvaluationConfigSummary,
+);
+export interface ListOnlineEvaluationConfigsResponse {
+  onlineEvaluationConfigs: OnlineEvaluationConfigSummary[];
+  nextToken?: string;
+}
+export const ListOnlineEvaluationConfigsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    onlineEvaluationConfigs: OnlineEvaluationConfigSummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOnlineEvaluationConfigsResponse",
+}) as any as S.Schema<ListOnlineEvaluationConfigsResponse>;
+export interface ListPaymentConnectorsRequest {
+  paymentManagerId: string;
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListPaymentConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentManagerId: S.String.pipe(T.HttpLabel("paymentManagerId")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/payments/managers/{paymentManagerId}/connectors-list",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListPaymentConnectorsRequest",
+}) as any as S.Schema<ListPaymentConnectorsRequest>;
+export interface PaymentConnectorSummary {
+  paymentConnectorId: string;
+  name: string;
+  type: PaymentConnectorType;
+  status: PaymentConnectorStatus;
+  lastUpdatedAt: Date;
+}
+export const PaymentConnectorSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentConnectorId: S.String,
+    name: S.String,
+    type: PaymentConnectorType,
+    status: PaymentConnectorStatus,
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "PaymentConnectorSummary",
+}) as any as S.Schema<PaymentConnectorSummary>;
+export type PaymentConnectorSummaries = PaymentConnectorSummary[];
+export const PaymentConnectorSummaries = /*@__PURE__*/ S.Array(
+  PaymentConnectorSummary,
+);
+export interface ListPaymentConnectorsResponse {
+  paymentConnectors: PaymentConnectorSummary[];
+  nextToken?: string;
+}
+export const ListPaymentConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentConnectors: PaymentConnectorSummaries,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPaymentConnectorsResponse",
+}) as any as S.Schema<ListPaymentConnectorsResponse>;
+export interface ListPaymentCredentialProvidersRequest {
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListPaymentCredentialProvidersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextToken: S.optional(S.String),
+      maxResults: S.optional(S.Number),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/identities/ListPaymentCredentialProviders",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListPaymentCredentialProvidersRequest",
+}) as any as S.Schema<ListPaymentCredentialProvidersRequest>;
+export interface PaymentCredentialProviderItem {
+  name: string;
+  credentialProviderVendor: PaymentCredentialProviderVendorType;
+  credentialProviderArn: string;
+  createdTime: Date;
+  lastUpdatedTime: Date;
+}
+export const PaymentCredentialProviderItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    credentialProviderVendor: PaymentCredentialProviderVendorType,
+    credentialProviderArn: S.String,
+    createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "PaymentCredentialProviderItem",
+}) as any as S.Schema<PaymentCredentialProviderItem>;
+export type PaymentCredentialProviders = PaymentCredentialProviderItem[];
+export const PaymentCredentialProviders = /*@__PURE__*/ S.Array(
+  PaymentCredentialProviderItem,
+);
+export interface ListPaymentCredentialProvidersResponse {
+  credentialProviders: PaymentCredentialProviderItem[];
+  nextToken?: string;
+}
+export const ListPaymentCredentialProvidersResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      credentialProviders: PaymentCredentialProviders,
+      nextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListPaymentCredentialProvidersResponse",
+}) as any as S.Schema<ListPaymentCredentialProvidersResponse>;
+export interface ListPaymentManagersRequest {
+  maxResults?: number;
+  nextToken?: string;
+}
+export const ListPaymentManagersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/payments/managers-list" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListPaymentManagersRequest",
+}) as any as S.Schema<ListPaymentManagersRequest>;
+export interface PaymentManagerSummary {
+  paymentManagerArn: string;
+  paymentManagerId: string;
+  name: string;
+  description?: string;
+  authorizerType: PaymentsAuthorizerType;
+  roleArn: string;
+  status: PaymentManagerStatus;
+  createdAt?: Date;
+  lastUpdatedAt: Date;
+}
+export const PaymentManagerSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentManagerArn: S.String,
+    paymentManagerId: S.String,
+    name: S.String,
+    description: S.optional(S.String),
+    authorizerType: PaymentsAuthorizerType,
+    roleArn: S.String,
+    status: PaymentManagerStatus,
+    createdAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "PaymentManagerSummary",
+}) as any as S.Schema<PaymentManagerSummary>;
+export type PaymentManagerSummaries = PaymentManagerSummary[];
+export const PaymentManagerSummaries = /*@__PURE__*/ S.Array(
+  PaymentManagerSummary,
+);
+export interface ListPaymentManagersResponse {
+  paymentManagers: PaymentManagerSummary[];
+  nextToken?: string;
+}
+export const ListPaymentManagersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentManagers: PaymentManagerSummaries,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPaymentManagersResponse",
+}) as any as S.Schema<ListPaymentManagersResponse>;
+export interface ListPoliciesRequest {
+  nextToken?: string;
+  maxResults?: number;
+  policyEngineId: string;
+  targetResourceScope?: string;
+}
+export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+    targetResourceScope: S.optional(S.String).pipe(
+      T.HttpQuery("targetResourceScope"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/policy-engines/{policyEngineId}/policies",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListPoliciesRequest",
+}) as any as S.Schema<ListPoliciesRequest>;
+export interface Policy {
+  policyId: string;
+  name: string;
+  policyEngineId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  policyArn: string;
+  status: PolicyStatus;
+  enforcementMode?: EnforcementMode;
+  definition: PolicyDefinition;
+  description?: string | redacted.Redacted<string>;
+  statusReasons: string[];
+}
+export const Policy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyId: S.String,
+    name: S.String,
+    policyEngineId: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    policyArn: S.String,
+    status: PolicyStatus,
+    enforcementMode: S.optional(EnforcementMode),
+    definition: PolicyDefinition,
+    description: S.optional(SensitiveString),
+    statusReasons: PolicyStatusReasons,
+  }),
+).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
+export type Policies = Policy[];
+export const Policies = /*@__PURE__*/ S.Array(Policy);
+export interface ListPoliciesResponse {
+  policies: Policy[];
+  nextToken?: string;
+}
+export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ policies: Policies, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListPoliciesResponse",
+}) as any as S.Schema<ListPoliciesResponse>;
+export interface ListPolicyEnginesRequest {
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListPolicyEnginesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/policy-engines" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListPolicyEnginesRequest",
+}) as any as S.Schema<ListPolicyEnginesRequest>;
+export interface PolicyEngine {
+  policyEngineId: string;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+  policyEngineArn: string;
+  status: PolicyEngineStatus;
+  encryptionKeyArn?: string;
+  description?: string | redacted.Redacted<string>;
+  statusReasons: string[];
+}
+export const PolicyEngine = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String,
+    name: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    policyEngineArn: S.String,
+    status: PolicyEngineStatus,
+    encryptionKeyArn: S.optional(S.String),
+    description: S.optional(SensitiveString),
+    statusReasons: PolicyStatusReasons,
+  }),
+).annotate({ identifier: "PolicyEngine" }) as any as S.Schema<PolicyEngine>;
+export type PolicyEngines = PolicyEngine[];
+export const PolicyEngines = /*@__PURE__*/ S.Array(PolicyEngine);
+export interface ListPolicyEnginesResponse {
+  policyEngines: PolicyEngine[];
+  nextToken?: string;
+}
+export const ListPolicyEnginesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ policyEngines: PolicyEngines, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListPolicyEnginesResponse",
+}) as any as S.Schema<ListPolicyEnginesResponse>;
+export interface ListPolicyEngineSummariesRequest {
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListPolicyEngineSummariesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/policy-engine-summaries" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListPolicyEngineSummariesRequest",
+}) as any as S.Schema<ListPolicyEngineSummariesRequest>;
+export interface PolicyEngineSummary {
+  policyEngineId: string;
+  name: string;
+  createdAt: Date;
+  updatedAt: Date;
+  policyEngineArn: string;
+  status: PolicyEngineStatus;
+  encryptionKeyArn?: string;
+}
+export const PolicyEngineSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String,
+    name: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    policyEngineArn: S.String,
+    status: PolicyEngineStatus,
+    encryptionKeyArn: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PolicyEngineSummary",
+}) as any as S.Schema<PolicyEngineSummary>;
+export type PolicyEngineSummaryList = PolicyEngineSummary[];
+export const PolicyEngineSummaryList =
+  /*@__PURE__*/ S.Array(PolicyEngineSummary);
+export interface ListPolicyEngineSummariesResponse {
+  policyEngines: PolicyEngineSummary[];
+  nextToken?: string;
+}
+export const ListPolicyEngineSummariesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngines: PolicyEngineSummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPolicyEngineSummariesResponse",
+}) as any as S.Schema<ListPolicyEngineSummariesResponse>;
+export interface ListPolicyGenerationAssetsRequest {
+  policyGenerationId: string;
+  policyEngineId: string;
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListPolicyGenerationAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyGenerationId: S.String.pipe(T.HttpLabel("policyGenerationId")),
+    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/policy-engines/{policyEngineId}/policy-generations/{policyGenerationId}/assets",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListPolicyGenerationAssetsRequest",
+}) as any as S.Schema<ListPolicyGenerationAssetsRequest>;
+export type NaturalLanguage = string;
+export type FindingType =
+  | "VALID"
+  | "INVALID"
+  | "NOT_TRANSLATABLE"
+  | "ALLOW_ALL"
+  | "ALLOW_NONE"
+  | "DENY_ALL"
+  | "DENY_NONE"
+  | (string & {});
+export const FindingType = /*@__PURE__*/ S.String;
+
+export interface Finding {
+  type?: FindingType;
+  description?: string;
+}
+export const Finding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(FindingType),
+    description: S.optional(S.String),
+  }),
+).annotate({ identifier: "Finding" }) as any as S.Schema<Finding>;
+export type Findings = Finding[];
+export const Findings = /*@__PURE__*/ S.Array(Finding);
+export interface PolicyGenerationAsset {
+  policyGenerationAssetId: string;
+  definition?: PolicyDefinition;
+  rawTextFragment: string;
+  findings: Finding[];
+}
+export const PolicyGenerationAsset = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyGenerationAssetId: S.String,
+    definition: S.optional(PolicyDefinition),
+    rawTextFragment: S.String,
+    findings: Findings,
+  }),
+).annotate({
+  identifier: "PolicyGenerationAsset",
+}) as any as S.Schema<PolicyGenerationAsset>;
+export type PolicyGenerationAssets = PolicyGenerationAsset[];
+export const PolicyGenerationAssets = /*@__PURE__*/ S.Array(
+  PolicyGenerationAsset,
+);
+export interface ListPolicyGenerationAssetsResponse {
+  policyGenerationAssets?: PolicyGenerationAsset[];
+  nextToken?: string;
+}
+export const ListPolicyGenerationAssetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyGenerationAssets: S.optional(PolicyGenerationAssets),
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPolicyGenerationAssetsResponse",
+}) as any as S.Schema<ListPolicyGenerationAssetsResponse>;
+export interface ListPolicyGenerationsRequest {
+  nextToken?: string;
+  maxResults?: number;
+  policyEngineId: string;
+}
+export const ListPolicyGenerationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/policy-engines/{policyEngineId}/policy-generations",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListPolicyGenerationsRequest",
+}) as any as S.Schema<ListPolicyGenerationsRequest>;
+export interface PolicyGeneration {
+  policyEngineId: string;
+  policyGenerationId: string;
+  name: string;
+  policyGenerationArn: string;
+  resource: Resource;
+  createdAt: Date;
+  updatedAt: Date;
+  status: PolicyGenerationStatus;
+  findings?: string;
+  statusReasons: string[];
+}
+export const PolicyGeneration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String,
+    policyGenerationId: S.String,
+    name: S.String,
+    policyGenerationArn: S.String,
+    resource: Resource,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: PolicyGenerationStatus,
+    findings: S.optional(S.String),
+    statusReasons: PolicyStatusReasons,
+  }),
+).annotate({
+  identifier: "PolicyGeneration",
+}) as any as S.Schema<PolicyGeneration>;
+export type PolicyGenerations = PolicyGeneration[];
+export const PolicyGenerations = /*@__PURE__*/ S.Array(PolicyGeneration);
+export interface ListPolicyGenerationsResponse {
+  policyGenerations: PolicyGeneration[];
+  nextToken?: string;
+}
+export const ListPolicyGenerationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyGenerations: PolicyGenerations,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListPolicyGenerationsResponse",
+}) as any as S.Schema<ListPolicyGenerationsResponse>;
+export interface ListPolicyGenerationSummariesRequest {
+  nextToken?: string;
+  maxResults?: number;
+  policyEngineId: string;
+}
+export const ListPolicyGenerationSummariesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+      policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "GET",
+          uri: "/policy-engines/{policyEngineId}/policy-generation-summaries",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "ListPolicyGenerationSummariesRequest",
+}) as any as S.Schema<ListPolicyGenerationSummariesRequest>;
+export interface PolicyGenerationSummary {
+  policyEngineId: string;
+  policyGenerationId: string;
+  name: string;
+  policyGenerationArn: string;
+  resource: Resource;
+  createdAt: Date;
+  updatedAt: Date;
+  status: PolicyGenerationStatus;
+  findings?: string;
+}
+export const PolicyGenerationSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String,
+    policyGenerationId: S.String,
+    name: S.String,
+    policyGenerationArn: S.String,
+    resource: Resource,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: PolicyGenerationStatus,
+    findings: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PolicyGenerationSummary",
+}) as any as S.Schema<PolicyGenerationSummary>;
+export type PolicyGenerationSummaryList = PolicyGenerationSummary[];
+export const PolicyGenerationSummaryList = /*@__PURE__*/ S.Array(
+  PolicyGenerationSummary,
+);
+export interface ListPolicyGenerationSummariesResponse {
+  policyGenerations: PolicyGenerationSummary[];
+  nextToken?: string;
+}
+export const ListPolicyGenerationSummariesResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      policyGenerations: PolicyGenerationSummaryList,
+      nextToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListPolicyGenerationSummariesResponse",
+}) as any as S.Schema<ListPolicyGenerationSummariesResponse>;
+export interface ListPolicySummariesRequest {
+  nextToken?: string;
+  maxResults?: number;
+  policyEngineId: string;
+  targetResourceScope?: string;
+}
+export const ListPolicySummariesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+    targetResourceScope: S.optional(S.String).pipe(
+      T.HttpQuery("targetResourceScope"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "GET",
+        uri: "/policy-engines/{policyEngineId}/policy-summaries",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListPolicySummariesRequest",
+}) as any as S.Schema<ListPolicySummariesRequest>;
+export interface PolicySummary {
+  policyId: string;
+  name: string;
+  policyEngineId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  policyArn: string;
+  status: PolicyStatus;
+  enforcementMode?: EnforcementMode;
+}
+export const PolicySummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyId: S.String,
+    name: S.String,
+    policyEngineId: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    policyArn: S.String,
+    status: PolicyStatus,
+    enforcementMode: S.optional(EnforcementMode),
+  }),
+).annotate({ identifier: "PolicySummary" }) as any as S.Schema<PolicySummary>;
+export type PolicySummaryList = PolicySummary[];
+export const PolicySummaryList = /*@__PURE__*/ S.Array(PolicySummary);
+export interface ListPolicySummariesResponse {
+  policies: PolicySummary[];
+  nextToken?: string;
+}
+export const ListPolicySummariesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ policies: PolicySummaryList, nextToken: S.optional(S.String) }),
+).annotate({
+  identifier: "ListPolicySummariesResponse",
+}) as any as S.Schema<ListPolicySummariesResponse>;
+export interface ListRegistriesRequest {
+  maxResults?: number;
+  nextToken?: string;
+  status?: RegistryStatus;
+  authorizerType?: RegistryAuthorizerType;
+}
+export const ListRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    status: S.optional(RegistryStatus).pipe(T.HttpQuery("status")),
+    authorizerType: S.optional(RegistryAuthorizerType).pipe(
+      T.HttpQuery("authorizerType"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/registries" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListRegistriesRequest",
+}) as any as S.Schema<ListRegistriesRequest>;
+export interface RegistrySummary {
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  registryId: string;
+  registryArn: string;
+  authorizerType?: RegistryAuthorizerType;
+  status: RegistryStatus;
+  statusReason?: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const RegistrySummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    description: S.optional(SensitiveString),
+    registryId: S.String,
+    registryArn: S.String,
+    authorizerType: S.optional(RegistryAuthorizerType),
+    status: RegistryStatus,
+    statusReason: S.optional(S.String),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "RegistrySummary",
+}) as any as S.Schema<RegistrySummary>;
+export type RegistrySummaryList = RegistrySummary[];
+export const RegistrySummaryList = /*@__PURE__*/ S.Array(RegistrySummary);
+export interface ListRegistriesResponse {
+  registries: RegistrySummary[];
+  nextToken?: string;
+}
+export const ListRegistriesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registries: RegistrySummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRegistriesResponse",
+}) as any as S.Schema<ListRegistriesResponse>;
+export interface ListRegistryRecordsRequest {
+  registryId: string;
+  maxResults?: number;
+  nextToken?: string;
+  name?: string;
+  status?: RegistryRecordStatus;
+  descriptorType?: DescriptorType;
+}
+export const ListRegistryRecordsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registryId: S.String.pipe(T.HttpLabel("registryId")),
+    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
+    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
+    name: S.optional(S.String).pipe(T.HttpQuery("name")),
+    status: S.optional(RegistryRecordStatus).pipe(T.HttpQuery("status")),
+    descriptorType: S.optional(DescriptorType).pipe(
+      T.HttpQuery("descriptorType"),
+    ),
+  }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/registries/{registryId}/records" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListRegistryRecordsRequest",
+}) as any as S.Schema<ListRegistryRecordsRequest>;
+export interface RegistryRecordSummary {
+  registryArn: string;
+  recordArn: string;
+  recordId: string;
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  descriptorType: DescriptorType;
+  recordVersion: string;
+  status: RegistryRecordStatus;
+  createdAt: Date;
+  updatedAt: Date;
+}
+export const RegistryRecordSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registryArn: S.String,
+    recordArn: S.String,
+    recordId: S.String,
+    name: S.String,
+    description: S.optional(SensitiveString),
+    descriptorType: DescriptorType,
+    recordVersion: S.String,
+    status: RegistryRecordStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "RegistryRecordSummary",
+}) as any as S.Schema<RegistryRecordSummary>;
+export type RegistryRecordSummaryList = RegistryRecordSummary[];
+export const RegistryRecordSummaryList = /*@__PURE__*/ S.Array(
+  RegistryRecordSummary,
+);
+export interface ListRegistryRecordsResponse {
+  registryRecords: RegistryRecordSummary[];
+  nextToken?: string;
+}
+export const ListRegistryRecordsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    registryRecords: RegistryRecordSummaryList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListRegistryRecordsResponse",
+}) as any as S.Schema<ListRegistryRecordsResponse>;
+export type TaggableResourcesArn = string;
+export interface ListTagsForResourceRequest {
+  resourceArn: string;
+}
+export const ListTagsForResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")) }).pipe(
+    T.all(
+      T.Http({ method: "GET", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListTagsForResourceRequest",
+}) as any as S.Schema<ListTagsForResourceRequest>;
+export interface ListTagsForResourceResponse {
+  tags?: { [key: string]: string | undefined };
+}
+export const ListTagsForResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ tags: S.optional(TagsMap) }),
+).annotate({
+  identifier: "ListTagsForResourceResponse",
+}) as any as S.Schema<ListTagsForResourceResponse>;
+export interface ListWorkloadIdentitiesRequest {
+  nextToken?: string;
+  maxResults?: number;
+}
+export const ListWorkloadIdentitiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextToken: S.optional(S.String),
+    maxResults: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/identities/ListWorkloadIdentities" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "ListWorkloadIdentitiesRequest",
+}) as any as S.Schema<ListWorkloadIdentitiesRequest>;
+export interface WorkloadIdentityType {
+  name: string;
+  workloadIdentityArn: string;
+}
+export const WorkloadIdentityType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, workloadIdentityArn: S.String }),
+).annotate({
+  identifier: "WorkloadIdentityType",
+}) as any as S.Schema<WorkloadIdentityType>;
+export type WorkloadIdentityList = WorkloadIdentityType[];
+export const WorkloadIdentityList = /*@__PURE__*/ S.Array(WorkloadIdentityType);
+export interface ListWorkloadIdentitiesResponse {
+  workloadIdentities: WorkloadIdentityType[];
+  nextToken?: string;
+}
+export const ListWorkloadIdentitiesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workloadIdentities: WorkloadIdentityList,
+    nextToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListWorkloadIdentitiesResponse",
+}) as any as S.Schema<ListWorkloadIdentitiesResponse>;
+export interface PutResourcePolicyRequest {
+  resourceArn: string;
+  policy: string;
+}
+export const PutResourcePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+    policy: S.String,
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/resourcepolicy/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "PutResourcePolicyRequest",
+}) as any as S.Schema<PutResourcePolicyRequest>;
+export interface PutResourcePolicyResponse {
+  policy: string;
+}
+export const PutResourcePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ policy: S.String }),
+).annotate({
+  identifier: "PutResourcePolicyResponse",
+}) as any as S.Schema<PutResourcePolicyResponse>;
+export interface SetTokenVaultCMKRequest {
+  tokenVaultId?: string;
+  kmsConfiguration: KmsConfiguration;
+}
+export const SetTokenVaultCMKRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tokenVaultId: S.optional(S.String),
+    kmsConfiguration: KmsConfiguration,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/identities/set-token-vault-cmk" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "SetTokenVaultCMKRequest",
+}) as any as S.Schema<SetTokenVaultCMKRequest>;
+export interface SetTokenVaultCMKResponse {
+  tokenVaultId: string;
+  kmsConfiguration: KmsConfiguration;
+  lastModifiedDate: Date;
+}
+export const SetTokenVaultCMKResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tokenVaultId: S.String,
+    kmsConfiguration: KmsConfiguration,
+    lastModifiedDate: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "SetTokenVaultCMKResponse",
+}) as any as S.Schema<SetTokenVaultCMKResponse>;
+export type Content = { rawText: string };
+export const Content = /*@__PURE__*/ S.Union([S.Struct({ rawText: S.String })]);
+export interface StartPolicyGenerationRequest {
+  policyEngineId: string;
+  resource: Resource;
+  content: Content;
+  name: string;
+  clientToken?: string;
+}
+export const StartPolicyGenerationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+    resource: Resource,
+    content: Content,
+    name: S.String,
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "POST",
+        uri: "/policy-engines/{policyEngineId}/policy-generations",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "StartPolicyGenerationRequest",
+}) as any as S.Schema<StartPolicyGenerationRequest>;
+export interface StartPolicyGenerationResponse {
+  policyEngineId: string;
+  policyGenerationId: string;
+  name: string;
+  policyGenerationArn: string;
+  resource: Resource;
+  createdAt: Date;
+  updatedAt: Date;
+  status: PolicyGenerationStatus;
+  findings?: string;
+  statusReasons: string[];
+}
+export const StartPolicyGenerationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyEngineId: S.String,
+    policyGenerationId: S.String,
+    name: S.String,
+    policyGenerationArn: S.String,
+    resource: Resource,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: PolicyGenerationStatus,
+    findings: S.optional(S.String),
+    statusReasons: PolicyStatusReasons,
+  }),
+).annotate({
+  identifier: "StartPolicyGenerationResponse",
+}) as any as S.Schema<StartPolicyGenerationResponse>;
+export interface SubmitRegistryRecordForApprovalRequest {
+  registryId: string;
+  recordId: string;
+}
+export const SubmitRegistryRecordForApprovalRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      registryId: S.String.pipe(T.HttpLabel("registryId")),
+      recordId: S.String.pipe(T.HttpLabel("recordId")),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/registries/{registryId}/records/{recordId}/submit-for-approval",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "SubmitRegistryRecordForApprovalRequest",
+}) as any as S.Schema<SubmitRegistryRecordForApprovalRequest>;
+export interface SubmitRegistryRecordForApprovalResponse {
+  registryArn: string;
+  recordArn: string;
+  recordId: string;
+  status: RegistryRecordStatus;
+  updatedAt: Date;
+}
+export const SubmitRegistryRecordForApprovalResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      registryArn: S.String,
+      recordArn: S.String,
+      recordId: S.String,
+      status: RegistryRecordStatus,
+      updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    }),
+).annotate({
+  identifier: "SubmitRegistryRecordForApprovalResponse",
+}) as any as S.Schema<SubmitRegistryRecordForApprovalResponse>;
+export type TargetIdList = string[];
+export const TargetIdList = /*@__PURE__*/ S.Array(S.String);
+export interface SynchronizeGatewayTargetsRequest {
+  gatewayIdentifier: string;
+  targetIdList: string[];
+}
+export const SynchronizeGatewayTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    targetIdList: TargetIdList,
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/gateways/{gatewayIdentifier}/synchronizeTargets",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "SynchronizeGatewayTargetsRequest",
+}) as any as S.Schema<SynchronizeGatewayTargetsRequest>;
+export interface GatewayTarget {
+  gatewayArn: string;
+  targetId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  status: TargetStatus;
+  statusReasons?: string[];
+  name: string | redacted.Redacted<string>;
+  description?: string | redacted.Redacted<string>;
+  targetConfiguration: TargetConfiguration;
+  credentialProviderConfigurations: CredentialProviderConfiguration[];
+  lastSynchronizedAt?: Date;
+  metadataConfiguration?: MetadataConfiguration;
+  privateEndpoint?: PrivateEndpoint;
+  privateEndpointManagedResources?: ManagedResourceDetails[];
+  authorizationData?: AuthorizationData;
+  protocolType?: TargetProtocolType;
+}
+export const GatewayTarget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayArn: S.String,
+    targetId: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: TargetStatus,
+    statusReasons: S.optional(StatusReasons),
+    name: SensitiveString,
+    description: S.optional(SensitiveString),
+    targetConfiguration: TargetConfiguration,
+    credentialProviderConfigurations: CredentialProviderConfigurations,
+    lastSynchronizedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    metadataConfiguration: S.optional(MetadataConfiguration),
+    privateEndpoint: S.optional(PrivateEndpoint),
+    privateEndpointManagedResources: S.optional(
+      PrivateEndpointManagedResources,
+    ),
+    authorizationData: S.optional(AuthorizationData),
+    protocolType: S.optional(TargetProtocolType),
+  }),
+).annotate({ identifier: "GatewayTarget" }) as any as S.Schema<GatewayTarget>;
+export type GatewayTargetList = GatewayTarget[];
+export const GatewayTargetList = /*@__PURE__*/ S.Array(GatewayTarget);
+export interface SynchronizeGatewayTargetsResponse {
+  targets?: GatewayTarget[];
+}
+export const SynchronizeGatewayTargetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ targets: S.optional(GatewayTargetList) }),
+).annotate({
+  identifier: "SynchronizeGatewayTargetsResponse",
+}) as any as S.Schema<SynchronizeGatewayTargetsResponse>;
+export interface TagResourceRequest {
+  resourceArn: string;
+  tags: { [key: string]: string | undefined };
+}
+export const TagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+    tags: TagsMap,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "TagResourceRequest",
+}) as any as S.Schema<TagResourceRequest>;
+export interface TagResourceResponse {}
+export const TagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "TagResourceResponse",
+}) as any as S.Schema<TagResourceResponse>;
+export type TagKeyList = string[];
+export const TagKeyList = /*@__PURE__*/ S.Array(S.String);
+export interface UntagResourceRequest {
+  resourceArn: string;
+  tagKeys: string[];
+}
+export const UntagResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
+    tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+  }).pipe(
+    T.all(
+      T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UntagResourceRequest",
+}) as any as S.Schema<UntagResourceRequest>;
+export interface UntagResourceResponse {}
+export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UntagResourceResponse",
+}) as any as S.Schema<UntagResourceResponse>;
+export interface UpdateAgentRuntimeRequest {
+  agentRuntimeId: string;
+  agentRuntimeArtifact: AgentRuntimeArtifact;
+  roleArn: string;
+  networkConfiguration: NetworkConfiguration;
+  description?: string | redacted.Redacted<string>;
+  authorizerConfiguration?: AuthorizerConfiguration;
+  requestHeaderConfiguration?: RequestHeaderConfiguration;
+  protocolConfiguration?: ProtocolConfiguration;
+  lifecycleConfiguration?: LifecycleConfiguration;
+  metadataConfiguration?: RuntimeMetadataConfiguration;
+  environmentVariables?: { [key: string]: string | undefined };
+  filesystemConfigurations?: FilesystemConfiguration[];
+  clientToken?: string;
+}
+export const UpdateAgentRuntimeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
+    agentRuntimeArtifact: AgentRuntimeArtifact,
+    roleArn: S.String,
+    networkConfiguration: NetworkConfiguration,
+    description: S.optional(SensitiveString),
+    authorizerConfiguration: S.optional(AuthorizerConfiguration),
+    requestHeaderConfiguration: S.optional(RequestHeaderConfiguration),
+    protocolConfiguration: S.optional(ProtocolConfiguration),
+    lifecycleConfiguration: S.optional(LifecycleConfiguration),
+    metadataConfiguration: S.optional(RuntimeMetadataConfiguration),
+    environmentVariables: S.optional(EnvironmentVariablesMap),
+    filesystemConfigurations: S.optional(FilesystemConfigurations),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/runtimes/{agentRuntimeId}/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateAgentRuntimeRequest",
+}) as any as S.Schema<UpdateAgentRuntimeRequest>;
+export interface UpdateAgentRuntimeResponse {
+  agentRuntimeArn: string;
+  agentRuntimeId: string;
+  workloadIdentityDetails?: WorkloadIdentityDetails;
+  agentRuntimeVersion: string;
+  createdAt: Date;
+  lastUpdatedAt: Date;
+  status: AgentRuntimeStatus;
+}
+export const UpdateAgentRuntimeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentRuntimeArn: S.String,
+    agentRuntimeId: S.String,
+    workloadIdentityDetails: S.optional(WorkloadIdentityDetails),
+    agentRuntimeVersion: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: AgentRuntimeStatus,
+  }),
+).annotate({
+  identifier: "UpdateAgentRuntimeResponse",
+}) as any as S.Schema<UpdateAgentRuntimeResponse>;
+export interface UpdateAgentRuntimeEndpointRequest {
+  agentRuntimeId: string;
+  endpointName: string | redacted.Redacted<string>;
+  agentRuntimeVersion?: string;
+  description?: string;
+  clientToken?: string;
+}
+export const UpdateAgentRuntimeEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentRuntimeId: S.String.pipe(T.HttpLabel("agentRuntimeId")),
+    endpointName: SensitiveString.pipe(T.HttpLabel("endpointName")),
+    agentRuntimeVersion: S.optional(S.String),
+    description: S.optional(S.String),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/runtimes/{agentRuntimeId}/runtime-endpoints/{endpointName}/",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateAgentRuntimeEndpointRequest",
+}) as any as S.Schema<UpdateAgentRuntimeEndpointRequest>;
+export interface UpdateAgentRuntimeEndpointResponse {
+  liveVersion?: string;
+  targetVersion?: string;
+  agentRuntimeEndpointArn: string;
+  agentRuntimeArn: string;
+  status: AgentRuntimeEndpointStatus;
+  createdAt: Date;
+  lastUpdatedAt: Date;
+}
+export const UpdateAgentRuntimeEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    liveVersion: S.optional(S.String),
+    targetVersion: S.optional(S.String),
+    agentRuntimeEndpointArn: S.String,
+    agentRuntimeArn: S.String,
+    status: AgentRuntimeEndpointStatus,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+  }),
+).annotate({
+  identifier: "UpdateAgentRuntimeEndpointResponse",
+}) as any as S.Schema<UpdateAgentRuntimeEndpointResponse>;
+export interface UpdateApiKeyCredentialProviderRequest {
+  name: string;
+  apiKey?: string | redacted.Redacted<string>;
+  apiKeySecretConfig?: SecretReference;
+  apiKeySecretSource?: SecretSourceType;
+}
+export const UpdateApiKeyCredentialProviderRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String,
+      apiKey: S.optional(SensitiveString),
+      apiKeySecretConfig: S.optional(SecretReference),
+      apiKeySecretSource: S.optional(SecretSourceType),
+    }).pipe(
+      T.all(
+        T.Http({
+          method: "POST",
+          uri: "/identities/UpdateApiKeyCredentialProvider",
+        }),
+        svc,
+        auth,
+        proto,
+        ver,
+        rules,
+      ),
+    ),
+).annotate({
+  identifier: "UpdateApiKeyCredentialProviderRequest",
+}) as any as S.Schema<UpdateApiKeyCredentialProviderRequest>;
+export interface UpdateApiKeyCredentialProviderResponse {
+  apiKeySecretArn: Secret;
+  apiKeySecretJsonKey?: string;
+  apiKeySecretSource?: SecretSourceType;
+  name: string;
+  credentialProviderArn: string;
+  createdTime: Date;
+  lastUpdatedTime: Date;
+}
+export const UpdateApiKeyCredentialProviderResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      apiKeySecretArn: Secret,
+      apiKeySecretJsonKey: S.optional(S.String),
+      apiKeySecretSource: S.optional(SecretSourceType),
+      name: S.String,
+      credentialProviderArn: S.String,
+      createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    }),
+).annotate({
+  identifier: "UpdateApiKeyCredentialProviderResponse",
+}) as any as S.Schema<UpdateApiKeyCredentialProviderResponse>;
+export interface UpdateConfigurationBundleRequest {
+  clientToken?: string;
+  bundleId: string;
+  bundleName?: string;
+  description?: string | redacted.Redacted<string>;
+  components?: { [key: string]: ComponentConfiguration | undefined };
+  parentVersionIds?: string[];
+  branchName?: string;
+  commitMessage?: string;
+  createdBy?: VersionCreatedBySource;
+  kmsKeyArn?: string;
+}
+export const UpdateConfigurationBundleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    bundleId: S.String.pipe(T.HttpLabel("bundleId")),
+    bundleName: S.optional(S.String),
+    description: S.optional(SensitiveString),
+    components: S.optional(ComponentConfigurationMap),
+    parentVersionIds: S.optional(ConfigurationBundleVersionList),
+    branchName: S.optional(S.String),
+    commitMessage: S.optional(S.String),
+    createdBy: S.optional(VersionCreatedBySource),
+    kmsKeyArn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/configuration-bundles/{bundleId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateConfigurationBundleRequest",
+}) as any as S.Schema<UpdateConfigurationBundleRequest>;
+export interface UpdateConfigurationBundleResponse {
+  bundleArn: string;
+  bundleId: string;
+  versionId: string;
+  updatedAt: Date;
+}
+export const UpdateConfigurationBundleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bundleArn: S.String,
+    bundleId: S.String,
+    versionId: S.String,
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "UpdateConfigurationBundleResponse",
+}) as any as S.Schema<UpdateConfigurationBundleResponse>;
+export interface UpdateDatasetRequest {
+  datasetId: string;
+  clientToken?: string;
+  description?: string;
+}
+export const UpdateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    description: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/datasets/{datasetId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateDatasetRequest",
+}) as any as S.Schema<UpdateDatasetRequest>;
+export interface UpdateDatasetResponse {
+  datasetArn: string;
+  datasetId: string;
+  updatedAt: Date;
+}
+export const UpdateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetArn: S.String,
+    datasetId: S.String,
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "UpdateDatasetResponse",
+}) as any as S.Schema<UpdateDatasetResponse>;
+export interface UpdateDatasetExamplesRequest {
+  datasetId: string;
+  clientToken?: string;
+  examples: any[];
+}
+export const UpdateDatasetExamplesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetId: S.String.pipe(T.HttpLabel("datasetId")),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    examples: DatasetExampleList,
+  }).pipe(
+    T.all(
+      T.Http({ method: "POST", uri: "/datasets/{datasetId}/examples/update" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateDatasetExamplesRequest",
+}) as any as S.Schema<UpdateDatasetExamplesRequest>;
+export interface UpdateDatasetExamplesResponse {
+  datasetArn: string;
+  datasetId: string;
+  status: DatasetStatus;
+  updatedCount: number;
+  updatedAt: Date;
+}
+export const UpdateDatasetExamplesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    datasetArn: S.String,
+    datasetId: S.String,
+    status: DatasetStatus,
+    updatedCount: S.Number,
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+  }),
+).annotate({
+  identifier: "UpdateDatasetExamplesResponse",
+}) as any as S.Schema<UpdateDatasetExamplesResponse>;
+export interface UpdateEvaluatorRequest {
+  clientToken?: string;
+  evaluatorId: string;
+  description?: string | redacted.Redacted<string>;
+  evaluatorConfig?: EvaluatorConfig;
+  level?: EvaluatorLevel;
+  kmsKeyArn?: string;
+}
+export const UpdateEvaluatorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    evaluatorId: S.String.pipe(T.HttpLabel("evaluatorId")),
+    description: S.optional(SensitiveString),
+    evaluatorConfig: S.optional(EvaluatorConfig),
+    level: S.optional(EvaluatorLevel),
+    kmsKeyArn: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/evaluators/{evaluatorId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateEvaluatorRequest",
+}) as any as S.Schema<UpdateEvaluatorRequest>;
+export interface UpdateEvaluatorResponse {
+  evaluatorArn: string;
+  evaluatorId: string;
+  updatedAt: Date;
+  status: EvaluatorStatus;
+}
+export const UpdateEvaluatorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    evaluatorArn: S.String,
+    evaluatorId: S.String,
+    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    status: EvaluatorStatus,
+  }),
+).annotate({
+  identifier: "UpdateEvaluatorResponse",
+}) as any as S.Schema<UpdateEvaluatorResponse>;
+export interface UpdateGatewayRequest {
+  gatewayIdentifier: string;
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  roleArn: string;
+  protocolType?: GatewayProtocolType;
+  protocolConfiguration?: GatewayProtocolConfiguration;
+  authorizerType: AuthorizerType;
+  authorizerConfiguration?: AuthorizerConfiguration;
+  kmsKeyArn?: string;
+  customTransformConfiguration?: CustomTransformConfiguration;
+  interceptorConfigurations?: GatewayInterceptorConfiguration[];
+  policyEngineConfiguration?: GatewayPolicyEngineConfiguration;
+  exceptionLevel?: ExceptionLevel;
+  wafConfiguration?: WafConfiguration;
+}
+export const UpdateGatewayRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    name: S.String,
+    description: S.optional(SensitiveString),
+    roleArn: S.String,
+    protocolType: S.optional(GatewayProtocolType),
+    protocolConfiguration: S.optional(GatewayProtocolConfiguration),
+    authorizerType: AuthorizerType,
+    authorizerConfiguration: S.optional(AuthorizerConfiguration),
+    kmsKeyArn: S.optional(S.String),
+    customTransformConfiguration: S.optional(CustomTransformConfiguration),
+    interceptorConfigurations: S.optional(GatewayInterceptorConfigurations),
+    policyEngineConfiguration: S.optional(GatewayPolicyEngineConfiguration),
+    exceptionLevel: S.optional(ExceptionLevel),
+    wafConfiguration: S.optional(WafConfiguration),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PUT", uri: "/gateways/{gatewayIdentifier}/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateGatewayRequest",
+}) as any as S.Schema<UpdateGatewayRequest>;
+export interface UpdateGatewayResponse {
+  gatewayArn: string;
+  gatewayId: string;
+  gatewayUrl?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  status: GatewayStatus;
+  statusReasons?: string[];
+  name: string;
+  description?: string | redacted.Redacted<string>;
+  roleArn?: string;
+  protocolType?: GatewayProtocolType;
+  protocolConfiguration?: GatewayProtocolConfiguration;
+  authorizerType: AuthorizerType;
+  authorizerConfiguration?: AuthorizerConfiguration;
+  kmsKeyArn?: string;
+  customTransformConfiguration?: CustomTransformConfiguration;
+  interceptorConfigurations?: GatewayInterceptorConfiguration[];
+  policyEngineConfiguration?: GatewayPolicyEngineConfiguration;
+  workloadIdentityDetails?: WorkloadIdentityDetails;
+  exceptionLevel?: ExceptionLevel;
+  webAclArn?: string;
+  wafConfiguration?: WafConfiguration;
+}
+export const UpdateGatewayResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayArn: S.String,
+    gatewayId: S.String,
+    gatewayUrl: S.optional(S.String),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: GatewayStatus,
+    statusReasons: S.optional(StatusReasons),
+    name: S.String,
+    description: S.optional(SensitiveString),
+    roleArn: S.optional(S.String),
+    protocolType: S.optional(GatewayProtocolType),
+    protocolConfiguration: S.optional(GatewayProtocolConfiguration),
+    authorizerType: AuthorizerType,
+    authorizerConfiguration: S.optional(AuthorizerConfiguration),
+    kmsKeyArn: S.optional(S.String),
+    customTransformConfiguration: S.optional(CustomTransformConfiguration),
+    interceptorConfigurations: S.optional(GatewayInterceptorConfigurations),
+    policyEngineConfiguration: S.optional(GatewayPolicyEngineConfiguration),
+    workloadIdentityDetails: S.optional(WorkloadIdentityDetails),
+    exceptionLevel: S.optional(ExceptionLevel),
+    webAclArn: S.optional(S.String),
+    wafConfiguration: S.optional(WafConfiguration),
+  }),
+).annotate({
+  identifier: "UpdateGatewayResponse",
+}) as any as S.Schema<UpdateGatewayResponse>;
+export interface UpdateGatewayRuleRequest {
+  gatewayIdentifier: string;
+  ruleId: string;
+  priority?: number;
+  conditions?: Condition[];
+  actions?: Action[];
+  description?: string;
+}
+export const UpdateGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    ruleId: S.String.pipe(T.HttpLabel("ruleId")),
+    priority: S.optional(S.Number),
+    conditions: S.optional(Conditions),
+    actions: S.optional(Actions),
+    description: S.optional(S.String),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/gateways/{gatewayIdentifier}/rules/{ruleId}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateGatewayRuleRequest",
+}) as any as S.Schema<UpdateGatewayRuleRequest>;
+export interface UpdateGatewayRuleResponse {
+  ruleId: string;
+  gatewayArn: string;
+  priority: number;
+  conditions?: Condition[];
+  actions: Action[];
+  description?: string;
+  createdAt: Date;
+  status: GatewayRuleStatus;
+  system?: SystemManagedBlock;
+  updatedAt?: Date;
+}
+export const UpdateGatewayRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ruleId: S.String,
+    gatewayArn: S.String,
+    priority: S.Number,
+    conditions: S.optional(Conditions),
+    actions: Actions,
+    description: S.optional(S.String),
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: GatewayRuleStatus,
+    system: S.optional(SystemManagedBlock),
+    updatedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateGatewayRuleResponse",
+}) as any as S.Schema<UpdateGatewayRuleResponse>;
+export interface UpdateGatewayTargetRequest {
+  gatewayIdentifier: string;
+  targetId: string;
+  name?: string | redacted.Redacted<string>;
+  description?: string | redacted.Redacted<string>;
+  targetConfiguration: TargetConfiguration;
+  credentialProviderConfigurations?: CredentialProviderConfiguration[];
+  metadataConfiguration?: MetadataConfiguration;
+  privateEndpoint?: PrivateEndpoint;
+}
+export const UpdateGatewayTargetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayIdentifier: S.String.pipe(T.HttpLabel("gatewayIdentifier")),
+    targetId: S.String.pipe(T.HttpLabel("targetId")),
+    name: S.optional(SensitiveString),
+    description: S.optional(SensitiveString),
+    targetConfiguration: TargetConfiguration,
+    credentialProviderConfigurations: S.optional(
+      CredentialProviderConfigurations,
+    ),
+    metadataConfiguration: S.optional(MetadataConfiguration),
+    privateEndpoint: S.optional(PrivateEndpoint),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PUT",
+        uri: "/gateways/{gatewayIdentifier}/targets/{targetId}/",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateGatewayTargetRequest",
+}) as any as S.Schema<UpdateGatewayTargetRequest>;
+export interface UpdateGatewayTargetResponse {
+  gatewayArn: string;
+  targetId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  status: TargetStatus;
+  statusReasons?: string[];
+  name: string | redacted.Redacted<string>;
+  description?: string | redacted.Redacted<string>;
+  targetConfiguration: TargetConfiguration;
+  credentialProviderConfigurations: CredentialProviderConfiguration[];
+  lastSynchronizedAt?: Date;
+  metadataConfiguration?: MetadataConfiguration;
+  privateEndpoint?: PrivateEndpoint;
+  privateEndpointManagedResources?: ManagedResourceDetails[];
+  authorizationData?: AuthorizationData;
+  protocolType?: TargetProtocolType;
+}
+export const UpdateGatewayTargetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gatewayArn: S.String,
+    targetId: S.String,
+    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: TargetStatus,
+    statusReasons: S.optional(StatusReasons),
+    name: SensitiveString,
+    description: S.optional(SensitiveString),
+    targetConfiguration: TargetConfiguration,
+    credentialProviderConfigurations: CredentialProviderConfigurations,
+    lastSynchronizedAt: S.optional(
+      T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    ),
+    metadataConfiguration: S.optional(MetadataConfiguration),
+    privateEndpoint: S.optional(PrivateEndpoint),
+    privateEndpointManagedResources: S.optional(
+      PrivateEndpointManagedResources,
+    ),
+    authorizationData: S.optional(AuthorizationData),
+    protocolType: S.optional(TargetProtocolType),
+  }),
+).annotate({
+  identifier: "UpdateGatewayTargetResponse",
+}) as any as S.Schema<UpdateGatewayTargetResponse>;
+export interface UpdatedHarnessEnvironmentArtifact {
+  optionalValue?: HarnessEnvironmentArtifact;
+}
+export const UpdatedHarnessEnvironmentArtifact = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ optionalValue: S.optional(HarnessEnvironmentArtifact) }),
+).annotate({
+  identifier: "UpdatedHarnessEnvironmentArtifact",
+}) as any as S.Schema<UpdatedHarnessEnvironmentArtifact>;
+export interface UpdatedAuthorizerConfiguration {
+  optionalValue?: AuthorizerConfiguration;
+}
+export const UpdatedAuthorizerConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ optionalValue: S.optional(AuthorizerConfiguration) }),
+).annotate({
+  identifier: "UpdatedAuthorizerConfiguration",
+}) as any as S.Schema<UpdatedAuthorizerConfiguration>;
+export interface UpdatedHarnessMemoryConfiguration {
+  optionalValue?: HarnessMemoryConfiguration;
+}
+export const UpdatedHarnessMemoryConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ optionalValue: S.optional(HarnessMemoryConfiguration) }),
+).annotate({
+  identifier: "UpdatedHarnessMemoryConfiguration",
+}) as any as S.Schema<UpdatedHarnessMemoryConfiguration>;
+export interface UpdateHarnessRequest {
+  harnessId: string;
+  clientToken?: string;
+  executionRoleArn?: string;
+  environment?: HarnessEnvironmentProviderRequest;
+  environmentArtifact?: UpdatedHarnessEnvironmentArtifact;
+  environmentVariables?: { [key: string]: string | undefined };
+  authorizerConfiguration?: UpdatedAuthorizerConfiguration;
+  model?: HarnessModelConfiguration;
+  systemPrompt?: HarnessSystemContentBlock[];
+  tools?: HarnessTool[];
+  skills?: HarnessSkill[];
+  allowedTools?: string[];
+  memory?: UpdatedHarnessMemoryConfiguration;
+  truncation?: HarnessTruncationConfiguration;
+  maxIterations?: number;
+  maxTokens?: number;
+  timeoutSeconds?: number;
+}
+export const UpdateHarnessRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    executionRoleArn: S.optional(S.String),
+    environment: S.optional(HarnessEnvironmentProviderRequest),
+    environmentArtifact: S.optional(UpdatedHarnessEnvironmentArtifact),
+    environmentVariables: S.optional(EnvironmentVariablesMap),
+    authorizerConfiguration: S.optional(UpdatedAuthorizerConfiguration),
+    model: S.optional(HarnessModelConfiguration),
+    systemPrompt: S.optional(HarnessSystemPrompt),
+    tools: S.optional(HarnessTools),
+    skills: S.optional(HarnessSkills),
+    allowedTools: S.optional(HarnessAllowedTools),
+    memory: S.optional(UpdatedHarnessMemoryConfiguration),
+    truncation: S.optional(HarnessTruncationConfiguration),
+    maxIterations: S.optional(S.Number),
+    maxTokens: S.optional(S.Number),
+    timeoutSeconds: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      T.Http({ method: "PATCH", uri: "/harnesses/{harnessId}" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateHarnessRequest",
+}) as any as S.Schema<UpdateHarnessRequest>;
+export interface UpdateHarnessResponse {
+  harness: Harness;
+}
+export const UpdateHarnessResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ harness: Harness }),
+).annotate({
+  identifier: "UpdateHarnessResponse",
+}) as any as S.Schema<UpdateHarnessResponse>;
+export interface UpdateHarnessEndpointRequest {
+  harnessId: string;
+  endpointName: string;
+  targetVersion?: string;
+  description?: string;
+  clientToken?: string;
+}
+export const UpdateHarnessEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    harnessId: S.String.pipe(T.HttpLabel("harnessId")),
+    endpointName: S.String.pipe(T.HttpLabel("endpointName")),
+    targetVersion: S.optional(S.String),
+    description: S.optional(S.String),
+    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+  }).pipe(
+    T.all(
+      T.Http({
+        method: "PATCH",
+        uri: "/harnesses/{harnessId}/endpoints/{endpointName}",
+      }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
+    ),
+  ),
+).annotate({
+  identifier: "UpdateHarnessEndpointRequest",
+}) as any as S.Schema<UpdateHarnessEndpointRequest>;
+export interface UpdateHarnessEndpointResponse {
+  endpoint: HarnessEndpoint;
+}
+export const UpdateHarnessEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ endpoint: HarnessEndpoint }),
+).annotate({
+  identifier: "UpdateHarnessEndpointResponse",
+}) as any as S.Schema<UpdateHarnessEndpointResponse>;
 export type CustomExtractionConfigurationInput =
   | {
       semanticExtractionOverride: SemanticOverrideExtractionConfigurationInput;
@@ -8281,808 +12371,6 @@ export const UpdateMemoryOutput = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateMemoryOutput",
 }) as any as S.Schema<UpdateMemoryOutput>;
-export interface DeleteMemoryInput {
-  clientToken?: string;
-  memoryId: string;
-}
-export const DeleteMemoryInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(
-      T.HttpQuery("clientToken"),
-      T.IdempotencyToken(),
-    ),
-    memoryId: S.String.pipe(T.HttpLabel("memoryId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/memories/{memoryId}/delete" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteMemoryInput",
-}) as any as S.Schema<DeleteMemoryInput>;
-export interface DeleteMemoryOutput {
-  memoryId: string;
-  status?: MemoryStatus;
-}
-export const DeleteMemoryOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ memoryId: S.String, status: S.optional(MemoryStatus) }),
-).annotate({
-  identifier: "DeleteMemoryOutput",
-}) as any as S.Schema<DeleteMemoryOutput>;
-export interface ListMemoriesInput {
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListMemoriesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number),
-    nextToken: S.optional(S.String),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/memories/" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListMemoriesInput",
-}) as any as S.Schema<ListMemoriesInput>;
-export interface MemorySummary {
-  arn?: string;
-  id?: string;
-  status?: MemoryStatus;
-  createdAt: Date;
-  updatedAt: Date;
-  managedByResourceArn?: string;
-}
-export const MemorySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    arn: S.optional(S.String),
-    id: S.optional(S.String),
-    status: S.optional(MemoryStatus),
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    managedByResourceArn: S.optional(S.String),
-  }),
-).annotate({ identifier: "MemorySummary" }) as any as S.Schema<MemorySummary>;
-export type MemorySummaryList = MemorySummary[];
-export const MemorySummaryList = /*@__PURE__*/ S.Array(MemorySummary);
-export interface ListMemoriesOutput {
-  memories: MemorySummary[];
-  nextToken?: string;
-}
-export const ListMemoriesOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ memories: MemorySummaryList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListMemoriesOutput",
-}) as any as S.Schema<ListMemoriesOutput>;
-export type CredentialProviderVendorType =
-  | "GoogleOauth2"
-  | "GithubOauth2"
-  | "SlackOauth2"
-  | "SalesforceOauth2"
-  | "MicrosoftOauth2"
-  | "CustomOauth2"
-  | "AtlassianOauth2"
-  | "LinkedinOauth2"
-  | "XOauth2"
-  | "OktaOauth2"
-  | "OneLoginOauth2"
-  | "PingOneOauth2"
-  | "FacebookOauth2"
-  | "YandexOauth2"
-  | "RedditOauth2"
-  | "ZoomOauth2"
-  | "TwitchOauth2"
-  | "SpotifyOauth2"
-  | "DropboxOauth2"
-  | "NotionOauth2"
-  | "HubspotOauth2"
-  | "CyberArkOauth2"
-  | "FusionAuthOauth2"
-  | "Auth0Oauth2"
-  | "CognitoOauth2"
-  | (string & {});
-export const CredentialProviderVendorType = /*@__PURE__*/ S.String;
-export type ResponseListType = string[];
-export const ResponseListType = /*@__PURE__*/ S.Array(S.String);
-export type TokenEndpointAuthMethodsType = string[];
-export const TokenEndpointAuthMethodsType = /*@__PURE__*/ S.Array(S.String);
-export interface Oauth2AuthorizationServerMetadata {
-  issuer: string;
-  authorizationEndpoint: string;
-  tokenEndpoint: string;
-  responseTypes?: string[];
-  tokenEndpointAuthMethods?: string[];
-}
-export const Oauth2AuthorizationServerMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issuer: S.String,
-    authorizationEndpoint: S.String,
-    tokenEndpoint: S.String,
-    responseTypes: S.optional(ResponseListType),
-    tokenEndpointAuthMethods: S.optional(TokenEndpointAuthMethodsType),
-  }),
-).annotate({
-  identifier: "Oauth2AuthorizationServerMetadata",
-}) as any as S.Schema<Oauth2AuthorizationServerMetadata>;
-export type Oauth2Discovery =
-  | { discoveryUrl: string; authorizationServerMetadata?: never }
-  | {
-      discoveryUrl?: never;
-      authorizationServerMetadata: Oauth2AuthorizationServerMetadata;
-    };
-export const Oauth2Discovery = /*@__PURE__*/ S.Union([
-  S.Struct({ discoveryUrl: S.String }),
-  S.Struct({ authorizationServerMetadata: Oauth2AuthorizationServerMetadata }),
-]);
-export type OnBehalfOfTokenExchangeGrantTypeType =
-  | "TOKEN_EXCHANGE"
-  | "JWT_AUTHORIZATION_GRANT"
-  | (string & {});
-export const OnBehalfOfTokenExchangeGrantTypeType = /*@__PURE__*/ S.String;
-export type ActorTokenContentType =
-  | "NONE"
-  | "M2M"
-  | "AWS_IAM_ID_TOKEN_JWT"
-  | (string & {});
-export const ActorTokenContentType = /*@__PURE__*/ S.String;
-export type ScopesListType = string[];
-export const ScopesListType = /*@__PURE__*/ S.Array(S.String);
-export interface TokenExchangeGrantTypeConfigType {
-  actorTokenContent: ActorTokenContentType;
-  actorTokenScopes?: string[];
-}
-export const TokenExchangeGrantTypeConfigType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actorTokenContent: ActorTokenContentType,
-    actorTokenScopes: S.optional(ScopesListType),
-  }),
-).annotate({
-  identifier: "TokenExchangeGrantTypeConfigType",
-}) as any as S.Schema<TokenExchangeGrantTypeConfigType>;
-export interface OnBehalfOfTokenExchangeConfigType {
-  grantType: OnBehalfOfTokenExchangeGrantTypeType;
-  tokenExchangeGrantTypeConfig?: TokenExchangeGrantTypeConfigType;
-}
-export const OnBehalfOfTokenExchangeConfigType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    grantType: OnBehalfOfTokenExchangeGrantTypeType,
-    tokenExchangeGrantTypeConfig: S.optional(TokenExchangeGrantTypeConfigType),
-  }),
-).annotate({
-  identifier: "OnBehalfOfTokenExchangeConfigType",
-}) as any as S.Schema<OnBehalfOfTokenExchangeConfigType>;
-export type ClientAuthenticationMethodType =
-  | "CLIENT_SECRET_BASIC"
-  | "CLIENT_SECRET_POST"
-  | "AWS_IAM_ID_TOKEN_JWT"
-  | (string & {});
-export const ClientAuthenticationMethodType = /*@__PURE__*/ S.String;
-export interface CustomOauth2ProviderConfigInput {
-  oauthDiscovery: Oauth2Discovery;
-  clientId?: string;
-  clientSecret?: string | redacted.Redacted<string>;
-  clientSecretConfig?: SecretReference;
-  clientSecretSource?: SecretSourceType;
-  onBehalfOfTokenExchangeConfig?: OnBehalfOfTokenExchangeConfigType;
-  clientAuthenticationMethod?: ClientAuthenticationMethodType;
-  privateEndpoint?: PrivateEndpoint;
-  privateEndpointOverrides?: PrivateEndpointOverride[];
-}
-export const CustomOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oauthDiscovery: Oauth2Discovery,
-    clientId: S.optional(S.String),
-    clientSecret: S.optional(SensitiveString),
-    clientSecretConfig: S.optional(SecretReference),
-    clientSecretSource: S.optional(SecretSourceType),
-    onBehalfOfTokenExchangeConfig: S.optional(
-      OnBehalfOfTokenExchangeConfigType,
-    ),
-    clientAuthenticationMethod: S.optional(ClientAuthenticationMethodType),
-    privateEndpoint: S.optional(PrivateEndpoint),
-    privateEndpointOverrides: S.optional(PrivateEndpointOverrides),
-  }),
-).annotate({
-  identifier: "CustomOauth2ProviderConfigInput",
-}) as any as S.Schema<CustomOauth2ProviderConfigInput>;
-export interface GoogleOauth2ProviderConfigInput {
-  clientId: string;
-  clientSecret?: string | redacted.Redacted<string>;
-  clientSecretConfig?: SecretReference;
-  clientSecretSource?: SecretSourceType;
-}
-export const GoogleOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    clientSecret: S.optional(SensitiveString),
-    clientSecretConfig: S.optional(SecretReference),
-    clientSecretSource: S.optional(SecretSourceType),
-  }),
-).annotate({
-  identifier: "GoogleOauth2ProviderConfigInput",
-}) as any as S.Schema<GoogleOauth2ProviderConfigInput>;
-export interface GithubOauth2ProviderConfigInput {
-  clientId: string;
-  clientSecret?: string | redacted.Redacted<string>;
-  clientSecretConfig?: SecretReference;
-  clientSecretSource?: SecretSourceType;
-}
-export const GithubOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    clientSecret: S.optional(SensitiveString),
-    clientSecretConfig: S.optional(SecretReference),
-    clientSecretSource: S.optional(SecretSourceType),
-  }),
-).annotate({
-  identifier: "GithubOauth2ProviderConfigInput",
-}) as any as S.Schema<GithubOauth2ProviderConfigInput>;
-export interface SlackOauth2ProviderConfigInput {
-  clientId: string;
-  clientSecret?: string | redacted.Redacted<string>;
-  clientSecretConfig?: SecretReference;
-  clientSecretSource?: SecretSourceType;
-}
-export const SlackOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    clientSecret: S.optional(SensitiveString),
-    clientSecretConfig: S.optional(SecretReference),
-    clientSecretSource: S.optional(SecretSourceType),
-  }),
-).annotate({
-  identifier: "SlackOauth2ProviderConfigInput",
-}) as any as S.Schema<SlackOauth2ProviderConfigInput>;
-export interface SalesforceOauth2ProviderConfigInput {
-  clientId: string;
-  clientSecret?: string | redacted.Redacted<string>;
-  clientSecretConfig?: SecretReference;
-  clientSecretSource?: SecretSourceType;
-}
-export const SalesforceOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    clientSecret: S.optional(SensitiveString),
-    clientSecretConfig: S.optional(SecretReference),
-    clientSecretSource: S.optional(SecretSourceType),
-  }),
-).annotate({
-  identifier: "SalesforceOauth2ProviderConfigInput",
-}) as any as S.Schema<SalesforceOauth2ProviderConfigInput>;
-export interface MicrosoftOauth2ProviderConfigInput {
-  clientId: string;
-  clientSecret?: string | redacted.Redacted<string>;
-  clientSecretConfig?: SecretReference;
-  clientSecretSource?: SecretSourceType;
-  tenantId?: string;
-}
-export const MicrosoftOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    clientSecret: S.optional(SensitiveString),
-    clientSecretConfig: S.optional(SecretReference),
-    clientSecretSource: S.optional(SecretSourceType),
-    tenantId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MicrosoftOauth2ProviderConfigInput",
-}) as any as S.Schema<MicrosoftOauth2ProviderConfigInput>;
-export interface AtlassianOauth2ProviderConfigInput {
-  clientId: string;
-  clientSecret?: string | redacted.Redacted<string>;
-  clientSecretConfig?: SecretReference;
-  clientSecretSource?: SecretSourceType;
-}
-export const AtlassianOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    clientSecret: S.optional(SensitiveString),
-    clientSecretConfig: S.optional(SecretReference),
-    clientSecretSource: S.optional(SecretSourceType),
-  }),
-).annotate({
-  identifier: "AtlassianOauth2ProviderConfigInput",
-}) as any as S.Schema<AtlassianOauth2ProviderConfigInput>;
-export interface LinkedinOauth2ProviderConfigInput {
-  clientId: string;
-  clientSecret?: string | redacted.Redacted<string>;
-  clientSecretConfig?: SecretReference;
-  clientSecretSource?: SecretSourceType;
-}
-export const LinkedinOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    clientSecret: S.optional(SensitiveString),
-    clientSecretConfig: S.optional(SecretReference),
-    clientSecretSource: S.optional(SecretSourceType),
-  }),
-).annotate({
-  identifier: "LinkedinOauth2ProviderConfigInput",
-}) as any as S.Schema<LinkedinOauth2ProviderConfigInput>;
-export interface IncludedOauth2ProviderConfigInput {
-  clientId: string;
-  clientSecret?: string | redacted.Redacted<string>;
-  clientSecretConfig?: SecretReference;
-  clientSecretSource?: SecretSourceType;
-  issuer?: string;
-  authorizationEndpoint?: string;
-  tokenEndpoint?: string;
-}
-export const IncludedOauth2ProviderConfigInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientId: S.String,
-    clientSecret: S.optional(SensitiveString),
-    clientSecretConfig: S.optional(SecretReference),
-    clientSecretSource: S.optional(SecretSourceType),
-    issuer: S.optional(S.String),
-    authorizationEndpoint: S.optional(S.String),
-    tokenEndpoint: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "IncludedOauth2ProviderConfigInput",
-}) as any as S.Schema<IncludedOauth2ProviderConfigInput>;
-export type Oauth2ProviderConfigInput =
-  | {
-      customOauth2ProviderConfig: CustomOauth2ProviderConfigInput;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig: GoogleOauth2ProviderConfigInput;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig: GithubOauth2ProviderConfigInput;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig: SlackOauth2ProviderConfigInput;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig: SalesforceOauth2ProviderConfigInput;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig: MicrosoftOauth2ProviderConfigInput;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig: AtlassianOauth2ProviderConfigInput;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig: LinkedinOauth2ProviderConfigInput;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig: IncludedOauth2ProviderConfigInput;
-    };
-export const Oauth2ProviderConfigInput = /*@__PURE__*/ S.Union([
-  S.Struct({ customOauth2ProviderConfig: CustomOauth2ProviderConfigInput }),
-  S.Struct({ googleOauth2ProviderConfig: GoogleOauth2ProviderConfigInput }),
-  S.Struct({ githubOauth2ProviderConfig: GithubOauth2ProviderConfigInput }),
-  S.Struct({ slackOauth2ProviderConfig: SlackOauth2ProviderConfigInput }),
-  S.Struct({
-    salesforceOauth2ProviderConfig: SalesforceOauth2ProviderConfigInput,
-  }),
-  S.Struct({
-    microsoftOauth2ProviderConfig: MicrosoftOauth2ProviderConfigInput,
-  }),
-  S.Struct({
-    atlassianOauth2ProviderConfig: AtlassianOauth2ProviderConfigInput,
-  }),
-  S.Struct({ linkedinOauth2ProviderConfig: LinkedinOauth2ProviderConfigInput }),
-  S.Struct({ includedOauth2ProviderConfig: IncludedOauth2ProviderConfigInput }),
-]);
-export interface CreateOauth2CredentialProviderRequest {
-  name: string;
-  credentialProviderVendor: CredentialProviderVendorType;
-  oauth2ProviderConfigInput: Oauth2ProviderConfigInput;
-  tags?: { [key: string]: string | undefined };
-}
-export const CreateOauth2CredentialProviderRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      credentialProviderVendor: CredentialProviderVendorType,
-      oauth2ProviderConfigInput: Oauth2ProviderConfigInput,
-      tags: S.optional(TagsMap),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/identities/CreateOauth2CredentialProvider",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "CreateOauth2CredentialProviderRequest",
-}) as any as S.Schema<CreateOauth2CredentialProviderRequest>;
-export interface CustomOauth2ProviderConfigOutput {
-  oauthDiscovery: Oauth2Discovery;
-  clientId?: string;
-  privateEndpoint?: PrivateEndpoint;
-  privateEndpointOverrides?: PrivateEndpointOverride[];
-  onBehalfOfTokenExchangeConfig?: OnBehalfOfTokenExchangeConfigType;
-  clientAuthenticationMethod?: ClientAuthenticationMethodType;
-}
-export const CustomOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    oauthDiscovery: Oauth2Discovery,
-    clientId: S.optional(S.String),
-    privateEndpoint: S.optional(PrivateEndpoint),
-    privateEndpointOverrides: S.optional(PrivateEndpointOverrides),
-    onBehalfOfTokenExchangeConfig: S.optional(
-      OnBehalfOfTokenExchangeConfigType,
-    ),
-    clientAuthenticationMethod: S.optional(ClientAuthenticationMethodType),
-  }),
-).annotate({
-  identifier: "CustomOauth2ProviderConfigOutput",
-}) as any as S.Schema<CustomOauth2ProviderConfigOutput>;
-export interface GoogleOauth2ProviderConfigOutput {
-  oauthDiscovery: Oauth2Discovery;
-  clientId?: string;
-}
-export const GoogleOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ oauthDiscovery: Oauth2Discovery, clientId: S.optional(S.String) }),
-).annotate({
-  identifier: "GoogleOauth2ProviderConfigOutput",
-}) as any as S.Schema<GoogleOauth2ProviderConfigOutput>;
-export interface GithubOauth2ProviderConfigOutput {
-  oauthDiscovery: Oauth2Discovery;
-  clientId?: string;
-}
-export const GithubOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ oauthDiscovery: Oauth2Discovery, clientId: S.optional(S.String) }),
-).annotate({
-  identifier: "GithubOauth2ProviderConfigOutput",
-}) as any as S.Schema<GithubOauth2ProviderConfigOutput>;
-export interface SlackOauth2ProviderConfigOutput {
-  oauthDiscovery: Oauth2Discovery;
-  clientId?: string;
-}
-export const SlackOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ oauthDiscovery: Oauth2Discovery, clientId: S.optional(S.String) }),
-).annotate({
-  identifier: "SlackOauth2ProviderConfigOutput",
-}) as any as S.Schema<SlackOauth2ProviderConfigOutput>;
-export interface SalesforceOauth2ProviderConfigOutput {
-  oauthDiscovery: Oauth2Discovery;
-  clientId?: string;
-}
-export const SalesforceOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      oauthDiscovery: Oauth2Discovery,
-      clientId: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SalesforceOauth2ProviderConfigOutput",
-}) as any as S.Schema<SalesforceOauth2ProviderConfigOutput>;
-export interface MicrosoftOauth2ProviderConfigOutput {
-  oauthDiscovery: Oauth2Discovery;
-  clientId?: string;
-}
-export const MicrosoftOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ oauthDiscovery: Oauth2Discovery, clientId: S.optional(S.String) }),
-).annotate({
-  identifier: "MicrosoftOauth2ProviderConfigOutput",
-}) as any as S.Schema<MicrosoftOauth2ProviderConfigOutput>;
-export interface AtlassianOauth2ProviderConfigOutput {
-  oauthDiscovery: Oauth2Discovery;
-  clientId?: string;
-}
-export const AtlassianOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ oauthDiscovery: Oauth2Discovery, clientId: S.optional(S.String) }),
-).annotate({
-  identifier: "AtlassianOauth2ProviderConfigOutput",
-}) as any as S.Schema<AtlassianOauth2ProviderConfigOutput>;
-export interface LinkedinOauth2ProviderConfigOutput {
-  oauthDiscovery: Oauth2Discovery;
-  clientId?: string;
-}
-export const LinkedinOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ oauthDiscovery: Oauth2Discovery, clientId: S.optional(S.String) }),
-).annotate({
-  identifier: "LinkedinOauth2ProviderConfigOutput",
-}) as any as S.Schema<LinkedinOauth2ProviderConfigOutput>;
-export interface IncludedOauth2ProviderConfigOutput {
-  oauthDiscovery: Oauth2Discovery;
-  clientId?: string;
-}
-export const IncludedOauth2ProviderConfigOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ oauthDiscovery: Oauth2Discovery, clientId: S.optional(S.String) }),
-).annotate({
-  identifier: "IncludedOauth2ProviderConfigOutput",
-}) as any as S.Schema<IncludedOauth2ProviderConfigOutput>;
-export type Oauth2ProviderConfigOutput =
-  | {
-      customOauth2ProviderConfig: CustomOauth2ProviderConfigOutput;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig: GoogleOauth2ProviderConfigOutput;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig: GithubOauth2ProviderConfigOutput;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig: SlackOauth2ProviderConfigOutput;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig: SalesforceOauth2ProviderConfigOutput;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig: MicrosoftOauth2ProviderConfigOutput;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig: AtlassianOauth2ProviderConfigOutput;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig: LinkedinOauth2ProviderConfigOutput;
-      includedOauth2ProviderConfig?: never;
-    }
-  | {
-      customOauth2ProviderConfig?: never;
-      googleOauth2ProviderConfig?: never;
-      githubOauth2ProviderConfig?: never;
-      slackOauth2ProviderConfig?: never;
-      salesforceOauth2ProviderConfig?: never;
-      microsoftOauth2ProviderConfig?: never;
-      atlassianOauth2ProviderConfig?: never;
-      linkedinOauth2ProviderConfig?: never;
-      includedOauth2ProviderConfig: IncludedOauth2ProviderConfigOutput;
-    };
-export const Oauth2ProviderConfigOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ customOauth2ProviderConfig: CustomOauth2ProviderConfigOutput }),
-  S.Struct({ googleOauth2ProviderConfig: GoogleOauth2ProviderConfigOutput }),
-  S.Struct({ githubOauth2ProviderConfig: GithubOauth2ProviderConfigOutput }),
-  S.Struct({ slackOauth2ProviderConfig: SlackOauth2ProviderConfigOutput }),
-  S.Struct({
-    salesforceOauth2ProviderConfig: SalesforceOauth2ProviderConfigOutput,
-  }),
-  S.Struct({
-    microsoftOauth2ProviderConfig: MicrosoftOauth2ProviderConfigOutput,
-  }),
-  S.Struct({
-    atlassianOauth2ProviderConfig: AtlassianOauth2ProviderConfigOutput,
-  }),
-  S.Struct({
-    linkedinOauth2ProviderConfig: LinkedinOauth2ProviderConfigOutput,
-  }),
-  S.Struct({
-    includedOauth2ProviderConfig: IncludedOauth2ProviderConfigOutput,
-  }),
-]);
-export type Status =
-  | "CREATING"
-  | "CREATE_FAILED"
-  | "UPDATING"
-  | "UPDATE_FAILED"
-  | "READY"
-  | "DELETING"
-  | "DELETE_FAILED"
-  | (string & {});
-export const Status = /*@__PURE__*/ S.String;
-export interface CreateOauth2CredentialProviderResponse {
-  clientSecretArn: Secret;
-  clientSecretJsonKey?: string;
-  clientSecretSource?: SecretSourceType;
-  name: string;
-  credentialProviderArn: string;
-  callbackUrl?: string;
-  oauth2ProviderConfigOutput?: Oauth2ProviderConfigOutput;
-  status?: Status;
-}
-export const CreateOauth2CredentialProviderResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      clientSecretArn: Secret,
-      clientSecretJsonKey: S.optional(S.String),
-      clientSecretSource: S.optional(SecretSourceType),
-      name: S.String,
-      credentialProviderArn: S.String,
-      callbackUrl: S.optional(S.String),
-      oauth2ProviderConfigOutput: S.optional(Oauth2ProviderConfigOutput),
-      status: S.optional(Status),
-    }),
-).annotate({
-  identifier: "CreateOauth2CredentialProviderResponse",
-}) as any as S.Schema<CreateOauth2CredentialProviderResponse>;
-export interface GetOauth2CredentialProviderRequest {
-  name: string;
-}
-export const GetOauth2CredentialProviderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/identities/GetOauth2CredentialProvider",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetOauth2CredentialProviderRequest",
-}) as any as S.Schema<GetOauth2CredentialProviderRequest>;
-export interface GetOauth2CredentialProviderResponse {
-  clientSecretArn: Secret;
-  clientSecretJsonKey?: string;
-  clientSecretSource?: SecretSourceType;
-  name: string;
-  credentialProviderArn: string;
-  credentialProviderVendor: CredentialProviderVendorType;
-  callbackUrl?: string;
-  oauth2ProviderConfigOutput: Oauth2ProviderConfigOutput;
-  createdTime: Date;
-  lastUpdatedTime: Date;
-  status?: Status;
-  failureReason?: string;
-}
-export const GetOauth2CredentialProviderResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientSecretArn: Secret,
-    clientSecretJsonKey: S.optional(S.String),
-    clientSecretSource: S.optional(SecretSourceType),
-    name: S.String,
-    credentialProviderArn: S.String,
-    credentialProviderVendor: CredentialProviderVendorType,
-    callbackUrl: S.optional(S.String),
-    oauth2ProviderConfigOutput: Oauth2ProviderConfigOutput,
-    createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    status: S.optional(Status),
-    failureReason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetOauth2CredentialProviderResponse",
-}) as any as S.Schema<GetOauth2CredentialProviderResponse>;
 export interface UpdateOauth2CredentialProviderRequest {
   name: string;
   credentialProviderVendor: CredentialProviderVendorType;
@@ -9141,353 +12429,6 @@ export const UpdateOauth2CredentialProviderResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateOauth2CredentialProviderResponse",
 }) as any as S.Schema<UpdateOauth2CredentialProviderResponse>;
-export interface DeleteOauth2CredentialProviderRequest {
-  name: string;
-}
-export const DeleteOauth2CredentialProviderRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ name: S.String }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/identities/DeleteOauth2CredentialProvider",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "DeleteOauth2CredentialProviderRequest",
-}) as any as S.Schema<DeleteOauth2CredentialProviderRequest>;
-export interface DeleteOauth2CredentialProviderResponse {}
-export const DeleteOauth2CredentialProviderResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeleteOauth2CredentialProviderResponse",
-}) as any as S.Schema<DeleteOauth2CredentialProviderResponse>;
-export interface ListOauth2CredentialProvidersRequest {
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListOauth2CredentialProvidersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/identities/ListOauth2CredentialProviders",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "ListOauth2CredentialProvidersRequest",
-}) as any as S.Schema<ListOauth2CredentialProvidersRequest>;
-export interface Oauth2CredentialProviderItem {
-  name: string;
-  credentialProviderVendor: CredentialProviderVendorType;
-  credentialProviderArn: string;
-  createdTime: Date;
-  lastUpdatedTime: Date;
-}
-export const Oauth2CredentialProviderItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    credentialProviderVendor: CredentialProviderVendorType,
-    credentialProviderArn: S.String,
-    createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "Oauth2CredentialProviderItem",
-}) as any as S.Schema<Oauth2CredentialProviderItem>;
-export type Oauth2CredentialProviders = Oauth2CredentialProviderItem[];
-export const Oauth2CredentialProviders = /*@__PURE__*/ S.Array(
-  Oauth2CredentialProviderItem,
-);
-export interface ListOauth2CredentialProvidersResponse {
-  credentialProviders: Oauth2CredentialProviderItem[];
-  nextToken?: string;
-}
-export const ListOauth2CredentialProvidersResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      credentialProviders: Oauth2CredentialProviders,
-      nextToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListOauth2CredentialProvidersResponse",
-}) as any as S.Schema<ListOauth2CredentialProvidersResponse>;
-export interface SamplingConfig {
-  samplingPercentage: number;
-}
-export const SamplingConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ samplingPercentage: S.Number }),
-).annotate({ identifier: "SamplingConfig" }) as any as S.Schema<SamplingConfig>;
-export type FilterOperator =
-  | "Equals"
-  | "NotEquals"
-  | "GreaterThan"
-  | "LessThan"
-  | "GreaterThanOrEqual"
-  | "LessThanOrEqual"
-  | "Contains"
-  | "NotContains"
-  | (string & {});
-export const FilterOperator = /*@__PURE__*/ S.String;
-export type FilterValue =
-  | { stringValue: string; doubleValue?: never; booleanValue?: never }
-  | { stringValue?: never; doubleValue: number; booleanValue?: never }
-  | { stringValue?: never; doubleValue?: never; booleanValue: boolean };
-export const FilterValue = /*@__PURE__*/ S.Union([
-  S.Struct({ stringValue: S.String }),
-  S.Struct({ doubleValue: S.Number }),
-  S.Struct({ booleanValue: S.Boolean }),
-]);
-export interface Filter {
-  key: string;
-  operator: FilterOperator;
-  value: FilterValue;
-}
-export const Filter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ key: S.String, operator: FilterOperator, value: FilterValue }),
-).annotate({ identifier: "Filter" }) as any as S.Schema<Filter>;
-export type FilterList = Filter[];
-export const FilterList = /*@__PURE__*/ S.Array(Filter);
-export interface SessionConfig {
-  sessionTimeoutMinutes: number;
-}
-export const SessionConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ sessionTimeoutMinutes: S.Number }),
-).annotate({ identifier: "SessionConfig" }) as any as S.Schema<SessionConfig>;
-export interface Rule {
-  samplingConfig: SamplingConfig;
-  filters?: Filter[];
-  sessionConfig?: SessionConfig;
-}
-export const Rule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    samplingConfig: SamplingConfig,
-    filters: S.optional(FilterList),
-    sessionConfig: S.optional(SessionConfig),
-  }),
-).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
-export type LogGroupNamesList = string[];
-export const LogGroupNamesList = /*@__PURE__*/ S.Array(S.String);
-export type ServiceNamesList = string[];
-export const ServiceNamesList = /*@__PURE__*/ S.Array(S.String);
-export interface CloudWatchLogsInputConfig {
-  logGroupNames: string[];
-  serviceNames: string[];
-}
-export const CloudWatchLogsInputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logGroupNames: LogGroupNamesList,
-    serviceNames: ServiceNamesList,
-  }),
-).annotate({
-  identifier: "CloudWatchLogsInputConfig",
-}) as any as S.Schema<CloudWatchLogsInputConfig>;
-export type DataSourceConfig = { cloudWatchLogs: CloudWatchLogsInputConfig };
-export const DataSourceConfig = /*@__PURE__*/ S.Union([
-  S.Struct({ cloudWatchLogs: CloudWatchLogsInputConfig }),
-]);
-export type EvaluatorReference = { evaluatorId: string };
-export const EvaluatorReference = /*@__PURE__*/ S.Union([
-  S.Struct({ evaluatorId: S.String }),
-]);
-export type EvaluatorList = EvaluatorReference[];
-export const EvaluatorList = /*@__PURE__*/ S.Array(EvaluatorReference);
-export interface Insight {
-  insightId: string;
-}
-export const Insight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ insightId: S.String }),
-).annotate({ identifier: "Insight" }) as any as S.Schema<Insight>;
-export type InsightList = Insight[];
-export const InsightList = /*@__PURE__*/ S.Array(Insight);
-export type ClusteringFrequency =
-  | "DAILY"
-  | "WEEKLY"
-  | "MONTHLY"
-  | (string & {});
-export const ClusteringFrequency = /*@__PURE__*/ S.String;
-export type ClusteringFrequencyList = ClusteringFrequency[];
-export const ClusteringFrequencyList =
-  /*@__PURE__*/ S.Array(ClusteringFrequency);
-export interface ClusteringConfig {
-  frequencies: ClusteringFrequency[];
-}
-export const ClusteringConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ frequencies: ClusteringFrequencyList }),
-).annotate({
-  identifier: "ClusteringConfig",
-}) as any as S.Schema<ClusteringConfig>;
-export interface CreateOnlineEvaluationConfigRequest {
-  clientToken?: string;
-  onlineEvaluationConfigName: string;
-  description?: string | redacted.Redacted<string>;
-  rule: Rule;
-  dataSourceConfig: DataSourceConfig;
-  evaluators?: EvaluatorReference[];
-  insights?: Insight[];
-  clusteringConfig?: ClusteringConfig;
-  evaluationExecutionRoleArn: string;
-  enableOnCreate: boolean;
-  tags?: { [key: string]: string | undefined };
-}
-export const CreateOnlineEvaluationConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    onlineEvaluationConfigName: S.String,
-    description: S.optional(SensitiveString),
-    rule: Rule,
-    dataSourceConfig: DataSourceConfig,
-    evaluators: S.optional(EvaluatorList),
-    insights: S.optional(InsightList),
-    clusteringConfig: S.optional(ClusteringConfig),
-    evaluationExecutionRoleArn: S.String,
-    enableOnCreate: S.Boolean,
-    tags: S.optional(TagsMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/online-evaluation-configs/create" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateOnlineEvaluationConfigRequest",
-}) as any as S.Schema<CreateOnlineEvaluationConfigRequest>;
-export interface CloudWatchOutputConfig {
-  logGroupName: string;
-}
-export const CloudWatchOutputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ logGroupName: S.String }),
-).annotate({
-  identifier: "CloudWatchOutputConfig",
-}) as any as S.Schema<CloudWatchOutputConfig>;
-export interface OutputConfig {
-  cloudWatchConfig: CloudWatchOutputConfig;
-}
-export const OutputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ cloudWatchConfig: CloudWatchOutputConfig }),
-).annotate({ identifier: "OutputConfig" }) as any as S.Schema<OutputConfig>;
-export type OnlineEvaluationConfigStatus =
-  | "ACTIVE"
-  | "CREATING"
-  | "CREATE_FAILED"
-  | "UPDATING"
-  | "UPDATE_FAILED"
-  | "DELETING"
-  | "ERROR"
-  | (string & {});
-export const OnlineEvaluationConfigStatus = /*@__PURE__*/ S.String;
-export type OnlineEvaluationExecutionStatus =
-  | "ENABLED"
-  | "DISABLED"
-  | (string & {});
-export const OnlineEvaluationExecutionStatus = /*@__PURE__*/ S.String;
-export interface CreateOnlineEvaluationConfigResponse {
-  onlineEvaluationConfigArn: string;
-  onlineEvaluationConfigId: string;
-  createdAt: Date;
-  outputConfig?: OutputConfig;
-  status: OnlineEvaluationConfigStatus;
-  executionStatus: OnlineEvaluationExecutionStatus;
-  failureReason?: string;
-}
-export const CreateOnlineEvaluationConfigResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      onlineEvaluationConfigArn: S.String,
-      onlineEvaluationConfigId: S.String,
-      createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      outputConfig: S.optional(OutputConfig),
-      status: OnlineEvaluationConfigStatus,
-      executionStatus: OnlineEvaluationExecutionStatus,
-      failureReason: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "CreateOnlineEvaluationConfigResponse",
-}) as any as S.Schema<CreateOnlineEvaluationConfigResponse>;
-export interface GetOnlineEvaluationConfigRequest {
-  onlineEvaluationConfigId: string;
-}
-export const GetOnlineEvaluationConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    onlineEvaluationConfigId: S.String.pipe(
-      T.HttpLabel("onlineEvaluationConfigId"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/online-evaluation-configs/{onlineEvaluationConfigId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetOnlineEvaluationConfigRequest",
-}) as any as S.Schema<GetOnlineEvaluationConfigRequest>;
-export interface GetOnlineEvaluationConfigResponse {
-  onlineEvaluationConfigArn: string;
-  onlineEvaluationConfigId: string;
-  onlineEvaluationConfigName: string;
-  description?: string | redacted.Redacted<string>;
-  rule: Rule;
-  dataSourceConfig: DataSourceConfig;
-  evaluators?: EvaluatorReference[];
-  insights?: Insight[];
-  clusteringConfig?: ClusteringConfig;
-  outputConfig?: OutputConfig;
-  evaluationExecutionRoleArn?: string;
-  status: OnlineEvaluationConfigStatus;
-  executionStatus: OnlineEvaluationExecutionStatus;
-  createdAt: Date;
-  updatedAt: Date;
-  failureReason?: string;
-}
-export const GetOnlineEvaluationConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    onlineEvaluationConfigArn: S.String,
-    onlineEvaluationConfigId: S.String,
-    onlineEvaluationConfigName: S.String,
-    description: S.optional(SensitiveString),
-    rule: Rule,
-    dataSourceConfig: DataSourceConfig,
-    evaluators: S.optional(EvaluatorList),
-    insights: S.optional(InsightList),
-    clusteringConfig: S.optional(ClusteringConfig),
-    outputConfig: S.optional(OutputConfig),
-    evaluationExecutionRoleArn: S.optional(S.String),
-    status: OnlineEvaluationConfigStatus,
-    executionStatus: OnlineEvaluationExecutionStatus,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    failureReason: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetOnlineEvaluationConfigResponse",
-}) as any as S.Schema<GetOnlineEvaluationConfigResponse>;
 export interface UpdateOnlineEvaluationConfigRequest {
   clientToken?: string;
   onlineEvaluationConfigId: string;
@@ -9551,878 +12492,6 @@ export const UpdateOnlineEvaluationConfigResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateOnlineEvaluationConfigResponse",
 }) as any as S.Schema<UpdateOnlineEvaluationConfigResponse>;
-export interface DeleteOnlineEvaluationConfigRequest {
-  onlineEvaluationConfigId: string;
-}
-export const DeleteOnlineEvaluationConfigRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    onlineEvaluationConfigId: S.String.pipe(
-      T.HttpLabel("onlineEvaluationConfigId"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/online-evaluation-configs/{onlineEvaluationConfigId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteOnlineEvaluationConfigRequest",
-}) as any as S.Schema<DeleteOnlineEvaluationConfigRequest>;
-export interface DeleteOnlineEvaluationConfigResponse {
-  onlineEvaluationConfigArn: string;
-  onlineEvaluationConfigId: string;
-  status: OnlineEvaluationConfigStatus;
-}
-export const DeleteOnlineEvaluationConfigResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      onlineEvaluationConfigArn: S.String,
-      onlineEvaluationConfigId: S.String,
-      status: OnlineEvaluationConfigStatus,
-    }),
-).annotate({
-  identifier: "DeleteOnlineEvaluationConfigResponse",
-}) as any as S.Schema<DeleteOnlineEvaluationConfigResponse>;
-export interface ListOnlineEvaluationConfigsRequest {
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListOnlineEvaluationConfigsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/online-evaluation-configs" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListOnlineEvaluationConfigsRequest",
-}) as any as S.Schema<ListOnlineEvaluationConfigsRequest>;
-export interface OnlineEvaluationConfigSummary {
-  onlineEvaluationConfigArn: string;
-  onlineEvaluationConfigId: string;
-  onlineEvaluationConfigName: string;
-  description?: string | redacted.Redacted<string>;
-  status: OnlineEvaluationConfigStatus;
-  executionStatus: OnlineEvaluationExecutionStatus;
-  createdAt: Date;
-  updatedAt: Date;
-  failureReason?: string;
-  insights?: Insight[];
-  clusteringConfig?: ClusteringConfig;
-}
-export const OnlineEvaluationConfigSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    onlineEvaluationConfigArn: S.String,
-    onlineEvaluationConfigId: S.String,
-    onlineEvaluationConfigName: S.String,
-    description: S.optional(SensitiveString),
-    status: OnlineEvaluationConfigStatus,
-    executionStatus: OnlineEvaluationExecutionStatus,
-    createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    updatedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    failureReason: S.optional(S.String),
-    insights: S.optional(InsightList),
-    clusteringConfig: S.optional(ClusteringConfig),
-  }),
-).annotate({
-  identifier: "OnlineEvaluationConfigSummary",
-}) as any as S.Schema<OnlineEvaluationConfigSummary>;
-export type OnlineEvaluationConfigSummaryList = OnlineEvaluationConfigSummary[];
-export const OnlineEvaluationConfigSummaryList = /*@__PURE__*/ S.Array(
-  OnlineEvaluationConfigSummary,
-);
-export interface ListOnlineEvaluationConfigsResponse {
-  onlineEvaluationConfigs: OnlineEvaluationConfigSummary[];
-  nextToken?: string;
-}
-export const ListOnlineEvaluationConfigsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    onlineEvaluationConfigs: OnlineEvaluationConfigSummaryList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListOnlineEvaluationConfigsResponse",
-}) as any as S.Schema<ListOnlineEvaluationConfigsResponse>;
-export type PaymentCredentialProviderVendorType =
-  | "CoinbaseCDP"
-  | "StripePrivy"
-  | (string & {});
-export const PaymentCredentialProviderVendorType = /*@__PURE__*/ S.String;
-export interface CoinbaseCdpConfigurationInput {
-  apiKeyId: string;
-  apiKeySecret?: string | redacted.Redacted<string>;
-  apiKeySecretSource?: SecretSourceType;
-  apiKeySecretConfig?: SecretReference;
-  walletSecret?: string | redacted.Redacted<string>;
-  walletSecretSource?: SecretSourceType;
-  walletSecretConfig?: SecretReference;
-}
-export const CoinbaseCdpConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiKeyId: S.String,
-    apiKeySecret: S.optional(SensitiveString),
-    apiKeySecretSource: S.optional(SecretSourceType),
-    apiKeySecretConfig: S.optional(SecretReference),
-    walletSecret: S.optional(SensitiveString),
-    walletSecretSource: S.optional(SecretSourceType),
-    walletSecretConfig: S.optional(SecretReference),
-  }),
-).annotate({
-  identifier: "CoinbaseCdpConfigurationInput",
-}) as any as S.Schema<CoinbaseCdpConfigurationInput>;
-export interface StripePrivyConfigurationInput {
-  appId: string;
-  appSecret?: string | redacted.Redacted<string>;
-  appSecretSource?: SecretSourceType;
-  appSecretConfig?: SecretReference;
-  authorizationPrivateKey?: string | redacted.Redacted<string>;
-  authorizationPrivateKeySource?: SecretSourceType;
-  authorizationPrivateKeyConfig?: SecretReference;
-  authorizationId: string;
-}
-export const StripePrivyConfigurationInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String,
-    appSecret: S.optional(SensitiveString),
-    appSecretSource: S.optional(SecretSourceType),
-    appSecretConfig: S.optional(SecretReference),
-    authorizationPrivateKey: S.optional(SensitiveString),
-    authorizationPrivateKeySource: S.optional(SecretSourceType),
-    authorizationPrivateKeyConfig: S.optional(SecretReference),
-    authorizationId: S.String,
-  }),
-).annotate({
-  identifier: "StripePrivyConfigurationInput",
-}) as any as S.Schema<StripePrivyConfigurationInput>;
-export type PaymentProviderConfigurationInput =
-  | {
-      coinbaseCdpConfiguration: CoinbaseCdpConfigurationInput;
-      stripePrivyConfiguration?: never;
-    }
-  | {
-      coinbaseCdpConfiguration?: never;
-      stripePrivyConfiguration: StripePrivyConfigurationInput;
-    };
-export const PaymentProviderConfigurationInput = /*@__PURE__*/ S.Union([
-  S.Struct({ coinbaseCdpConfiguration: CoinbaseCdpConfigurationInput }),
-  S.Struct({ stripePrivyConfiguration: StripePrivyConfigurationInput }),
-]);
-export interface CreatePaymentCredentialProviderRequest {
-  name: string;
-  credentialProviderVendor: PaymentCredentialProviderVendorType;
-  providerConfigurationInput: PaymentProviderConfigurationInput;
-  tags?: { [key: string]: string | undefined };
-}
-export const CreatePaymentCredentialProviderRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      credentialProviderVendor: PaymentCredentialProviderVendorType,
-      providerConfigurationInput: PaymentProviderConfigurationInput,
-      tags: S.optional(TagsMap),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/identities/CreatePaymentCredentialProvider",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "CreatePaymentCredentialProviderRequest",
-}) as any as S.Schema<CreatePaymentCredentialProviderRequest>;
-export interface CoinbaseCdpConfigurationOutput {
-  apiKeyId: string;
-  apiKeySecretArn: Secret;
-  apiKeySecretJsonKey?: string;
-  apiKeySecretSource?: SecretSourceType;
-  walletSecretArn: Secret;
-  walletSecretJsonKey?: string;
-  walletSecretSource?: SecretSourceType;
-}
-export const CoinbaseCdpConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    apiKeyId: S.String,
-    apiKeySecretArn: Secret,
-    apiKeySecretJsonKey: S.optional(S.String),
-    apiKeySecretSource: S.optional(SecretSourceType),
-    walletSecretArn: Secret,
-    walletSecretJsonKey: S.optional(S.String),
-    walletSecretSource: S.optional(SecretSourceType),
-  }),
-).annotate({
-  identifier: "CoinbaseCdpConfigurationOutput",
-}) as any as S.Schema<CoinbaseCdpConfigurationOutput>;
-export interface StripePrivyConfigurationOutput {
-  appId: string;
-  appSecretArn: Secret;
-  appSecretJsonKey?: string;
-  appSecretSource?: SecretSourceType;
-  authorizationPrivateKeyArn: Secret;
-  authorizationPrivateKeyJsonKey?: string;
-  authorizationPrivateKeySource?: SecretSourceType;
-  authorizationId: string;
-}
-export const StripePrivyConfigurationOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appId: S.String,
-    appSecretArn: Secret,
-    appSecretJsonKey: S.optional(S.String),
-    appSecretSource: S.optional(SecretSourceType),
-    authorizationPrivateKeyArn: Secret,
-    authorizationPrivateKeyJsonKey: S.optional(S.String),
-    authorizationPrivateKeySource: S.optional(SecretSourceType),
-    authorizationId: S.String,
-  }),
-).annotate({
-  identifier: "StripePrivyConfigurationOutput",
-}) as any as S.Schema<StripePrivyConfigurationOutput>;
-export type PaymentProviderConfigurationOutput =
-  | {
-      coinbaseCdpConfiguration: CoinbaseCdpConfigurationOutput;
-      stripePrivyConfiguration?: never;
-    }
-  | {
-      coinbaseCdpConfiguration?: never;
-      stripePrivyConfiguration: StripePrivyConfigurationOutput;
-    };
-export const PaymentProviderConfigurationOutput = /*@__PURE__*/ S.Union([
-  S.Struct({ coinbaseCdpConfiguration: CoinbaseCdpConfigurationOutput }),
-  S.Struct({ stripePrivyConfiguration: StripePrivyConfigurationOutput }),
-]);
-export interface CreatePaymentCredentialProviderResponse {
-  name: string;
-  credentialProviderVendor: PaymentCredentialProviderVendorType;
-  credentialProviderArn: string;
-  providerConfigurationOutput: PaymentProviderConfigurationOutput;
-}
-export const CreatePaymentCredentialProviderResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      credentialProviderVendor: PaymentCredentialProviderVendorType,
-      credentialProviderArn: S.String,
-      providerConfigurationOutput: PaymentProviderConfigurationOutput,
-    }),
-).annotate({
-  identifier: "CreatePaymentCredentialProviderResponse",
-}) as any as S.Schema<CreatePaymentCredentialProviderResponse>;
-export interface GetPaymentCredentialProviderRequest {
-  name: string;
-}
-export const GetPaymentCredentialProviderRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/identities/GetPaymentCredentialProvider",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPaymentCredentialProviderRequest",
-}) as any as S.Schema<GetPaymentCredentialProviderRequest>;
-export interface GetPaymentCredentialProviderResponse {
-  name: string;
-  credentialProviderArn: string;
-  credentialProviderVendor: PaymentCredentialProviderVendorType;
-  providerConfigurationOutput: PaymentProviderConfigurationOutput;
-  createdTime: Date;
-  lastUpdatedTime: Date;
-  tags?: { [key: string]: string | undefined };
-}
-export const GetPaymentCredentialProviderResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      credentialProviderArn: S.String,
-      credentialProviderVendor: PaymentCredentialProviderVendorType,
-      providerConfigurationOutput: PaymentProviderConfigurationOutput,
-      createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      tags: S.optional(TagsMap),
-    }),
-).annotate({
-  identifier: "GetPaymentCredentialProviderResponse",
-}) as any as S.Schema<GetPaymentCredentialProviderResponse>;
-export interface UpdatePaymentCredentialProviderRequest {
-  name: string;
-  credentialProviderVendor: PaymentCredentialProviderVendorType;
-  providerConfigurationInput: PaymentProviderConfigurationInput;
-}
-export const UpdatePaymentCredentialProviderRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      credentialProviderVendor: PaymentCredentialProviderVendorType,
-      providerConfigurationInput: PaymentProviderConfigurationInput,
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/identities/UpdatePaymentCredentialProvider",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "UpdatePaymentCredentialProviderRequest",
-}) as any as S.Schema<UpdatePaymentCredentialProviderRequest>;
-export interface UpdatePaymentCredentialProviderResponse {
-  name: string;
-  credentialProviderVendor: PaymentCredentialProviderVendorType;
-  credentialProviderArn: string;
-  providerConfigurationOutput: PaymentProviderConfigurationOutput;
-  createdTime: Date;
-  lastUpdatedTime: Date;
-}
-export const UpdatePaymentCredentialProviderResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String,
-      credentialProviderVendor: PaymentCredentialProviderVendorType,
-      credentialProviderArn: S.String,
-      providerConfigurationOutput: PaymentProviderConfigurationOutput,
-      createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-      lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    }),
-).annotate({
-  identifier: "UpdatePaymentCredentialProviderResponse",
-}) as any as S.Schema<UpdatePaymentCredentialProviderResponse>;
-export interface DeletePaymentCredentialProviderRequest {
-  name: string;
-}
-export const DeletePaymentCredentialProviderRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({ name: S.String }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/identities/DeletePaymentCredentialProvider",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "DeletePaymentCredentialProviderRequest",
-}) as any as S.Schema<DeletePaymentCredentialProviderRequest>;
-export interface DeletePaymentCredentialProviderResponse {}
-export const DeletePaymentCredentialProviderResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DeletePaymentCredentialProviderResponse",
-}) as any as S.Schema<DeletePaymentCredentialProviderResponse>;
-export interface ListPaymentCredentialProvidersRequest {
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListPaymentCredentialProvidersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextToken: S.optional(S.String),
-      maxResults: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/identities/ListPaymentCredentialProviders",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "ListPaymentCredentialProvidersRequest",
-}) as any as S.Schema<ListPaymentCredentialProvidersRequest>;
-export interface PaymentCredentialProviderItem {
-  name: string;
-  credentialProviderVendor: PaymentCredentialProviderVendorType;
-  credentialProviderArn: string;
-  createdTime: Date;
-  lastUpdatedTime: Date;
-}
-export const PaymentCredentialProviderItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    credentialProviderVendor: PaymentCredentialProviderVendorType,
-    credentialProviderArn: S.String,
-    createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "PaymentCredentialProviderItem",
-}) as any as S.Schema<PaymentCredentialProviderItem>;
-export type PaymentCredentialProviders = PaymentCredentialProviderItem[];
-export const PaymentCredentialProviders = /*@__PURE__*/ S.Array(
-  PaymentCredentialProviderItem,
-);
-export interface ListPaymentCredentialProvidersResponse {
-  credentialProviders: PaymentCredentialProviderItem[];
-  nextToken?: string;
-}
-export const ListPaymentCredentialProvidersResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      credentialProviders: PaymentCredentialProviders,
-      nextToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListPaymentCredentialProvidersResponse",
-}) as any as S.Schema<ListPaymentCredentialProvidersResponse>;
-export type PaymentsAuthorizerType = "CUSTOM_JWT" | "AWS_IAM" | (string & {});
-export const PaymentsAuthorizerType = /*@__PURE__*/ S.String;
-export interface CreatePaymentManagerRequest {
-  name: string;
-  description?: string;
-  authorizerType: PaymentsAuthorizerType;
-  authorizerConfiguration?: AuthorizerConfiguration;
-  roleArn: string;
-  clientToken?: string;
-  tags?: { [key: string]: string | undefined };
-}
-export const CreatePaymentManagerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(S.String),
-    authorizerType: PaymentsAuthorizerType,
-    authorizerConfiguration: S.optional(AuthorizerConfiguration),
-    roleArn: S.String,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    tags: S.optional(TagsMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/payments/managers" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreatePaymentManagerRequest",
-}) as any as S.Schema<CreatePaymentManagerRequest>;
-export type PaymentManagerStatus =
-  | "CREATING"
-  | "UPDATING"
-  | "DELETING"
-  | "READY"
-  | "CREATE_FAILED"
-  | "UPDATE_FAILED"
-  | "DELETE_FAILED"
-  | (string & {});
-export const PaymentManagerStatus = /*@__PURE__*/ S.String;
-export interface CreatePaymentManagerResponse {
-  paymentManagerArn: string;
-  paymentManagerId: string;
-  name: string;
-  authorizerType: PaymentsAuthorizerType;
-  authorizerConfiguration?: AuthorizerConfiguration;
-  roleArn: string;
-  workloadIdentityDetails?: WorkloadIdentityDetails;
-  createdAt: Date;
-  status: PaymentManagerStatus;
-  tags?: { [key: string]: string | undefined };
-}
-export const CreatePaymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentManagerArn: S.String,
-    paymentManagerId: S.String,
-    name: S.String,
-    authorizerType: PaymentsAuthorizerType,
-    authorizerConfiguration: S.optional(AuthorizerConfiguration),
-    roleArn: S.String,
-    workloadIdentityDetails: S.optional(WorkloadIdentityDetails),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: PaymentManagerStatus,
-    tags: S.optional(TagsMap),
-  }),
-).annotate({
-  identifier: "CreatePaymentManagerResponse",
-}) as any as S.Schema<CreatePaymentManagerResponse>;
-export interface GetPaymentManagerRequest {
-  paymentManagerId: string;
-}
-export const GetPaymentManagerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentManagerId: S.String.pipe(T.HttpLabel("paymentManagerId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/payments/managers/{paymentManagerId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPaymentManagerRequest",
-}) as any as S.Schema<GetPaymentManagerRequest>;
-export interface GetPaymentManagerResponse {
-  paymentManagerArn: string;
-  paymentManagerId: string;
-  name: string;
-  description?: string;
-  authorizerType: PaymentsAuthorizerType;
-  authorizerConfiguration?: AuthorizerConfiguration;
-  roleArn: string;
-  workloadIdentityDetails?: WorkloadIdentityDetails;
-  createdAt: Date;
-  lastUpdatedAt: Date;
-  status: PaymentManagerStatus;
-  tags?: { [key: string]: string | undefined };
-}
-export const GetPaymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentManagerArn: S.String,
-    paymentManagerId: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    authorizerType: PaymentsAuthorizerType,
-    authorizerConfiguration: S.optional(AuthorizerConfiguration),
-    roleArn: S.String,
-    workloadIdentityDetails: S.optional(WorkloadIdentityDetails),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: PaymentManagerStatus,
-    tags: S.optional(TagsMap),
-  }),
-).annotate({
-  identifier: "GetPaymentManagerResponse",
-}) as any as S.Schema<GetPaymentManagerResponse>;
-export interface UpdatePaymentManagerRequest {
-  paymentManagerId: string;
-  description?: string;
-  authorizerType?: PaymentsAuthorizerType;
-  authorizerConfiguration?: AuthorizerConfiguration;
-  roleArn?: string;
-  clientToken?: string;
-}
-export const UpdatePaymentManagerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentManagerId: S.String.pipe(T.HttpLabel("paymentManagerId")),
-    description: S.optional(S.String),
-    authorizerType: S.optional(PaymentsAuthorizerType),
-    authorizerConfiguration: S.optional(AuthorizerConfiguration),
-    roleArn: S.optional(S.String),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/payments/managers/{paymentManagerId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdatePaymentManagerRequest",
-}) as any as S.Schema<UpdatePaymentManagerRequest>;
-export interface UpdatePaymentManagerResponse {
-  paymentManagerArn: string;
-  paymentManagerId: string;
-  name: string;
-  authorizerType: PaymentsAuthorizerType;
-  roleArn: string;
-  workloadIdentityDetails?: WorkloadIdentityDetails;
-  lastUpdatedAt: Date;
-  status: PaymentManagerStatus;
-}
-export const UpdatePaymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentManagerArn: S.String,
-    paymentManagerId: S.String,
-    name: S.String,
-    authorizerType: PaymentsAuthorizerType,
-    roleArn: S.String,
-    workloadIdentityDetails: S.optional(WorkloadIdentityDetails),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: PaymentManagerStatus,
-  }),
-).annotate({
-  identifier: "UpdatePaymentManagerResponse",
-}) as any as S.Schema<UpdatePaymentManagerResponse>;
-export interface DeletePaymentManagerRequest {
-  paymentManagerId: string;
-  clientToken?: string;
-}
-export const DeletePaymentManagerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentManagerId: S.String.pipe(T.HttpLabel("paymentManagerId")),
-    clientToken: S.optional(S.String).pipe(
-      T.HttpQuery("clientToken"),
-      T.IdempotencyToken(),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/payments/managers/{paymentManagerId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeletePaymentManagerRequest",
-}) as any as S.Schema<DeletePaymentManagerRequest>;
-export interface DeletePaymentManagerResponse {
-  status: PaymentManagerStatus;
-  paymentManagerId?: string;
-}
-export const DeletePaymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: PaymentManagerStatus,
-    paymentManagerId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeletePaymentManagerResponse",
-}) as any as S.Schema<DeletePaymentManagerResponse>;
-export interface ListPaymentManagersRequest {
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListPaymentManagersRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/payments/managers-list" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListPaymentManagersRequest",
-}) as any as S.Schema<ListPaymentManagersRequest>;
-export interface PaymentManagerSummary {
-  paymentManagerArn: string;
-  paymentManagerId: string;
-  name: string;
-  description?: string;
-  authorizerType: PaymentsAuthorizerType;
-  roleArn: string;
-  status: PaymentManagerStatus;
-  createdAt?: Date;
-  lastUpdatedAt: Date;
-}
-export const PaymentManagerSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentManagerArn: S.String,
-    paymentManagerId: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    authorizerType: PaymentsAuthorizerType,
-    roleArn: S.String,
-    status: PaymentManagerStatus,
-    createdAt: S.optional(
-      T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    ),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "PaymentManagerSummary",
-}) as any as S.Schema<PaymentManagerSummary>;
-export type PaymentManagerSummaries = PaymentManagerSummary[];
-export const PaymentManagerSummaries = /*@__PURE__*/ S.Array(
-  PaymentManagerSummary,
-);
-export interface ListPaymentManagersResponse {
-  paymentManagers: PaymentManagerSummary[];
-  nextToken?: string;
-}
-export const ListPaymentManagersResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentManagers: PaymentManagerSummaries,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPaymentManagersResponse",
-}) as any as S.Schema<ListPaymentManagersResponse>;
-export type PaymentConnectorType =
-  | "CoinbaseCDP"
-  | "StripePrivy"
-  | (string & {});
-export const PaymentConnectorType = /*@__PURE__*/ S.String;
-export interface PaymentCredentialProviderConfiguration {
-  credentialProviderArn: string;
-}
-export const PaymentCredentialProviderConfiguration = /*@__PURE__*/ S.suspend(
-  () => S.Struct({ credentialProviderArn: S.String }),
-).annotate({
-  identifier: "PaymentCredentialProviderConfiguration",
-}) as any as S.Schema<PaymentCredentialProviderConfiguration>;
-export type CredentialsProviderConfiguration =
-  | { coinbaseCDP: PaymentCredentialProviderConfiguration; stripePrivy?: never }
-  | {
-      coinbaseCDP?: never;
-      stripePrivy: PaymentCredentialProviderConfiguration;
-    };
-export const CredentialsProviderConfiguration = /*@__PURE__*/ S.Union([
-  S.Struct({ coinbaseCDP: PaymentCredentialProviderConfiguration }),
-  S.Struct({ stripePrivy: PaymentCredentialProviderConfiguration }),
-]);
-export type CredentialsProviderConfigurations =
-  CredentialsProviderConfiguration[];
-export const CredentialsProviderConfigurations = /*@__PURE__*/ S.Array(
-  CredentialsProviderConfiguration,
-);
-export interface CreatePaymentConnectorRequest {
-  paymentManagerId: string;
-  name: string;
-  description?: string;
-  type: PaymentConnectorType;
-  credentialProviderConfigurations: CredentialsProviderConfiguration[];
-  clientToken?: string;
-}
-export const CreatePaymentConnectorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentManagerId: S.String.pipe(T.HttpLabel("paymentManagerId")),
-    name: S.String,
-    description: S.optional(S.String),
-    type: PaymentConnectorType,
-    credentialProviderConfigurations: CredentialsProviderConfigurations,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/payments/managers/{paymentManagerId}/connectors",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreatePaymentConnectorRequest",
-}) as any as S.Schema<CreatePaymentConnectorRequest>;
-export type PaymentConnectorStatus =
-  | "CREATING"
-  | "UPDATING"
-  | "DELETING"
-  | "READY"
-  | "CREATE_FAILED"
-  | "UPDATE_FAILED"
-  | "DELETE_FAILED"
-  | (string & {});
-export const PaymentConnectorStatus = /*@__PURE__*/ S.String;
-export interface CreatePaymentConnectorResponse {
-  paymentConnectorId: string;
-  paymentManagerId: string;
-  name: string;
-  type: PaymentConnectorType;
-  credentialProviderConfigurations: CredentialsProviderConfiguration[];
-  createdAt: Date;
-  status: PaymentConnectorStatus;
-}
-export const CreatePaymentConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentConnectorId: S.String,
-    paymentManagerId: S.String,
-    name: S.String,
-    type: PaymentConnectorType,
-    credentialProviderConfigurations: CredentialsProviderConfigurations,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: PaymentConnectorStatus,
-  }),
-).annotate({
-  identifier: "CreatePaymentConnectorResponse",
-}) as any as S.Schema<CreatePaymentConnectorResponse>;
-export interface GetPaymentConnectorRequest {
-  paymentManagerId: string;
-  paymentConnectorId: string;
-}
-export const GetPaymentConnectorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentManagerId: S.String.pipe(T.HttpLabel("paymentManagerId")),
-    paymentConnectorId: S.String.pipe(T.HttpLabel("paymentConnectorId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/payments/managers/{paymentManagerId}/connectors/{paymentConnectorId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPaymentConnectorRequest",
-}) as any as S.Schema<GetPaymentConnectorRequest>;
-export interface GetPaymentConnectorResponse {
-  paymentConnectorId: string;
-  name: string;
-  description?: string;
-  type: PaymentConnectorType;
-  credentialProviderConfigurations: CredentialsProviderConfiguration[];
-  createdAt: Date;
-  lastUpdatedAt: Date;
-  status: PaymentConnectorStatus;
-}
-export const GetPaymentConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentConnectorId: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    type: PaymentConnectorType,
-    credentialProviderConfigurations: CredentialsProviderConfigurations,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: PaymentConnectorStatus,
-  }),
-).annotate({
-  identifier: "GetPaymentConnectorResponse",
-}) as any as S.Schema<GetPaymentConnectorResponse>;
 export interface UpdatePaymentConnectorRequest {
   paymentManagerId: string;
   paymentConnectorId: string;
@@ -10479,844 +12548,22 @@ export const UpdatePaymentConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdatePaymentConnectorResponse",
 }) as any as S.Schema<UpdatePaymentConnectorResponse>;
-export interface DeletePaymentConnectorRequest {
-  paymentManagerId: string;
-  paymentConnectorId: string;
-  clientToken?: string;
-}
-export const DeletePaymentConnectorRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentManagerId: S.String.pipe(T.HttpLabel("paymentManagerId")),
-    paymentConnectorId: S.String.pipe(T.HttpLabel("paymentConnectorId")),
-    clientToken: S.optional(S.String).pipe(
-      T.HttpQuery("clientToken"),
-      T.IdempotencyToken(),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/payments/managers/{paymentManagerId}/connectors/{paymentConnectorId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeletePaymentConnectorRequest",
-}) as any as S.Schema<DeletePaymentConnectorRequest>;
-export interface DeletePaymentConnectorResponse {
-  status: PaymentConnectorStatus;
-  paymentConnectorId?: string;
-}
-export const DeletePaymentConnectorResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: PaymentConnectorStatus,
-    paymentConnectorId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeletePaymentConnectorResponse",
-}) as any as S.Schema<DeletePaymentConnectorResponse>;
-export interface ListPaymentConnectorsRequest {
-  paymentManagerId: string;
-  maxResults?: number;
-  nextToken?: string;
-}
-export const ListPaymentConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentManagerId: S.String.pipe(T.HttpLabel("paymentManagerId")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/payments/managers/{paymentManagerId}/connectors-list",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListPaymentConnectorsRequest",
-}) as any as S.Schema<ListPaymentConnectorsRequest>;
-export interface PaymentConnectorSummary {
-  paymentConnectorId: string;
+export interface UpdatePaymentCredentialProviderRequest {
   name: string;
-  type: PaymentConnectorType;
-  status: PaymentConnectorStatus;
-  lastUpdatedAt: Date;
+  credentialProviderVendor: PaymentCredentialProviderVendorType;
+  providerConfigurationInput: PaymentProviderConfigurationInput;
 }
-export const PaymentConnectorSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentConnectorId: S.String,
-    name: S.String,
-    type: PaymentConnectorType,
-    status: PaymentConnectorStatus,
-    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "PaymentConnectorSummary",
-}) as any as S.Schema<PaymentConnectorSummary>;
-export type PaymentConnectorSummaries = PaymentConnectorSummary[];
-export const PaymentConnectorSummaries = /*@__PURE__*/ S.Array(
-  PaymentConnectorSummary,
-);
-export interface ListPaymentConnectorsResponse {
-  paymentConnectors: PaymentConnectorSummary[];
-  nextToken?: string;
-}
-export const ListPaymentConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentConnectors: PaymentConnectorSummaries,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPaymentConnectorsResponse",
-}) as any as S.Schema<ListPaymentConnectorsResponse>;
-export interface CreatePolicyEngineRequest {
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  clientToken?: string;
-  encryptionKeyArn?: string;
-  tags?: { [key: string]: string | undefined };
-}
-export const CreatePolicyEngineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    encryptionKeyArn: S.optional(S.String),
-    tags: S.optional(TagsMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/policy-engines" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreatePolicyEngineRequest",
-}) as any as S.Schema<CreatePolicyEngineRequest>;
-export type PolicyEngineStatus =
-  | "CREATING"
-  | "ACTIVE"
-  | "UPDATING"
-  | "DELETING"
-  | "CREATE_FAILED"
-  | "UPDATE_FAILED"
-  | "DELETE_FAILED"
-  | (string & {});
-export const PolicyEngineStatus = /*@__PURE__*/ S.String;
-export type PolicyStatusReasons = string[];
-export const PolicyStatusReasons = /*@__PURE__*/ S.Array(S.String);
-export interface CreatePolicyEngineResponse {
-  policyEngineId: string;
-  name: string;
-  createdAt: Date;
-  updatedAt: Date;
-  policyEngineArn: string;
-  status: PolicyEngineStatus;
-  encryptionKeyArn?: string;
-  description?: string | redacted.Redacted<string>;
-  statusReasons: string[];
-}
-export const CreatePolicyEngineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String,
-    name: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyEngineArn: S.String,
-    status: PolicyEngineStatus,
-    encryptionKeyArn: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    statusReasons: PolicyStatusReasons,
-  }),
-).annotate({
-  identifier: "CreatePolicyEngineResponse",
-}) as any as S.Schema<CreatePolicyEngineResponse>;
-export interface GetPolicyEngineRequest {
-  policyEngineId: string;
-}
-export const GetPolicyEngineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/policy-engines/{policyEngineId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPolicyEngineRequest",
-}) as any as S.Schema<GetPolicyEngineRequest>;
-export interface GetPolicyEngineResponse {
-  policyEngineId: string;
-  name: string;
-  createdAt: Date;
-  updatedAt: Date;
-  policyEngineArn: string;
-  status: PolicyEngineStatus;
-  encryptionKeyArn?: string;
-  description?: string | redacted.Redacted<string>;
-  statusReasons: string[];
-}
-export const GetPolicyEngineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String,
-    name: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyEngineArn: S.String,
-    status: PolicyEngineStatus,
-    encryptionKeyArn: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    statusReasons: PolicyStatusReasons,
-  }),
-).annotate({
-  identifier: "GetPolicyEngineResponse",
-}) as any as S.Schema<GetPolicyEngineResponse>;
-export interface UpdatedDescription {
-  optionalValue?: string | redacted.Redacted<string>;
-}
-export const UpdatedDescription = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ optionalValue: S.optional(SensitiveString) }),
-).annotate({
-  identifier: "UpdatedDescription",
-}) as any as S.Schema<UpdatedDescription>;
-export interface UpdatePolicyEngineRequest {
-  policyEngineId: string;
-  description?: UpdatedDescription;
-}
-export const UpdatePolicyEngineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
-    description: S.optional(UpdatedDescription),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/policy-engines/{policyEngineId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdatePolicyEngineRequest",
-}) as any as S.Schema<UpdatePolicyEngineRequest>;
-export interface UpdatePolicyEngineResponse {
-  policyEngineId: string;
-  name: string;
-  createdAt: Date;
-  updatedAt: Date;
-  policyEngineArn: string;
-  status: PolicyEngineStatus;
-  encryptionKeyArn?: string;
-  description?: string | redacted.Redacted<string>;
-  statusReasons: string[];
-}
-export const UpdatePolicyEngineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String,
-    name: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyEngineArn: S.String,
-    status: PolicyEngineStatus,
-    encryptionKeyArn: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    statusReasons: PolicyStatusReasons,
-  }),
-).annotate({
-  identifier: "UpdatePolicyEngineResponse",
-}) as any as S.Schema<UpdatePolicyEngineResponse>;
-export interface DeletePolicyEngineRequest {
-  policyEngineId: string;
-}
-export const DeletePolicyEngineRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/policy-engines/{policyEngineId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeletePolicyEngineRequest",
-}) as any as S.Schema<DeletePolicyEngineRequest>;
-export interface DeletePolicyEngineResponse {
-  policyEngineId: string;
-  name: string;
-  createdAt: Date;
-  updatedAt: Date;
-  policyEngineArn: string;
-  status: PolicyEngineStatus;
-  encryptionKeyArn?: string;
-  description?: string | redacted.Redacted<string>;
-  statusReasons: string[];
-}
-export const DeletePolicyEngineResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String,
-    name: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyEngineArn: S.String,
-    status: PolicyEngineStatus,
-    encryptionKeyArn: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    statusReasons: PolicyStatusReasons,
-  }),
-).annotate({
-  identifier: "DeletePolicyEngineResponse",
-}) as any as S.Schema<DeletePolicyEngineResponse>;
-export interface ListPolicyEnginesRequest {
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListPolicyEnginesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/policy-engines" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListPolicyEnginesRequest",
-}) as any as S.Schema<ListPolicyEnginesRequest>;
-export interface PolicyEngine {
-  policyEngineId: string;
-  name: string;
-  createdAt: Date;
-  updatedAt: Date;
-  policyEngineArn: string;
-  status: PolicyEngineStatus;
-  encryptionKeyArn?: string;
-  description?: string | redacted.Redacted<string>;
-  statusReasons: string[];
-}
-export const PolicyEngine = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String,
-    name: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyEngineArn: S.String,
-    status: PolicyEngineStatus,
-    encryptionKeyArn: S.optional(S.String),
-    description: S.optional(SensitiveString),
-    statusReasons: PolicyStatusReasons,
-  }),
-).annotate({ identifier: "PolicyEngine" }) as any as S.Schema<PolicyEngine>;
-export type PolicyEngines = PolicyEngine[];
-export const PolicyEngines = /*@__PURE__*/ S.Array(PolicyEngine);
-export interface ListPolicyEnginesResponse {
-  policyEngines: PolicyEngine[];
-  nextToken?: string;
-}
-export const ListPolicyEnginesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyEngines: PolicyEngines, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListPolicyEnginesResponse",
-}) as any as S.Schema<ListPolicyEnginesResponse>;
-export interface GetPolicyEngineSummaryRequest {
-  policyEngineId: string;
-}
-export const GetPolicyEngineSummaryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/policy-engine-summaries/{policyEngineId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPolicyEngineSummaryRequest",
-}) as any as S.Schema<GetPolicyEngineSummaryRequest>;
-export interface GetPolicyEngineSummaryResponse {
-  policyEngineId: string;
-  name: string;
-  createdAt: Date;
-  updatedAt: Date;
-  policyEngineArn: string;
-  status: PolicyEngineStatus;
-  encryptionKeyArn?: string;
-}
-export const GetPolicyEngineSummaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String,
-    name: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyEngineArn: S.String,
-    status: PolicyEngineStatus,
-    encryptionKeyArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPolicyEngineSummaryResponse",
-}) as any as S.Schema<GetPolicyEngineSummaryResponse>;
-export interface ListPolicyEngineSummariesRequest {
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListPolicyEngineSummariesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/policy-engine-summaries" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListPolicyEngineSummariesRequest",
-}) as any as S.Schema<ListPolicyEngineSummariesRequest>;
-export interface PolicyEngineSummary {
-  policyEngineId: string;
-  name: string;
-  createdAt: Date;
-  updatedAt: Date;
-  policyEngineArn: string;
-  status: PolicyEngineStatus;
-  encryptionKeyArn?: string;
-}
-export const PolicyEngineSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String,
-    name: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyEngineArn: S.String,
-    status: PolicyEngineStatus,
-    encryptionKeyArn: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PolicyEngineSummary",
-}) as any as S.Schema<PolicyEngineSummary>;
-export type PolicyEngineSummaryList = PolicyEngineSummary[];
-export const PolicyEngineSummaryList =
-  /*@__PURE__*/ S.Array(PolicyEngineSummary);
-export interface ListPolicyEngineSummariesResponse {
-  policyEngines: PolicyEngineSummary[];
-  nextToken?: string;
-}
-export const ListPolicyEngineSummariesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngines: PolicyEngineSummaryList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPolicyEngineSummariesResponse",
-}) as any as S.Schema<ListPolicyEngineSummariesResponse>;
-export type Resource = { arn: string };
-export const Resource = /*@__PURE__*/ S.Union([S.Struct({ arn: S.String })]);
-export type Content = { rawText: string };
-export const Content = /*@__PURE__*/ S.Union([S.Struct({ rawText: S.String })]);
-export interface StartPolicyGenerationRequest {
-  policyEngineId: string;
-  resource: Resource;
-  content: Content;
-  name: string;
-  clientToken?: string;
-}
-export const StartPolicyGenerationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
-    resource: Resource,
-    content: Content,
-    name: S.String,
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "POST",
-        uri: "/policy-engines/{policyEngineId}/policy-generations",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "StartPolicyGenerationRequest",
-}) as any as S.Schema<StartPolicyGenerationRequest>;
-export type PolicyGenerationStatus =
-  | "GENERATING"
-  | "GENERATED"
-  | "GENERATE_FAILED"
-  | "DELETE_FAILED"
-  | (string & {});
-export const PolicyGenerationStatus = /*@__PURE__*/ S.String;
-export interface StartPolicyGenerationResponse {
-  policyEngineId: string;
-  policyGenerationId: string;
-  name: string;
-  policyGenerationArn: string;
-  resource: Resource;
-  createdAt: Date;
-  updatedAt: Date;
-  status: PolicyGenerationStatus;
-  findings?: string;
-  statusReasons: string[];
-}
-export const StartPolicyGenerationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String,
-    policyGenerationId: S.String,
-    name: S.String,
-    policyGenerationArn: S.String,
-    resource: Resource,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: PolicyGenerationStatus,
-    findings: S.optional(S.String),
-    statusReasons: PolicyStatusReasons,
-  }),
-).annotate({
-  identifier: "StartPolicyGenerationResponse",
-}) as any as S.Schema<StartPolicyGenerationResponse>;
-export interface GetPolicyGenerationRequest {
-  policyGenerationId: string;
-  policyEngineId: string;
-}
-export const GetPolicyGenerationRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyGenerationId: S.String.pipe(T.HttpLabel("policyGenerationId")),
-    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/policy-engines/{policyEngineId}/policy-generations/{policyGenerationId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPolicyGenerationRequest",
-}) as any as S.Schema<GetPolicyGenerationRequest>;
-export interface GetPolicyGenerationResponse {
-  policyEngineId: string;
-  policyGenerationId: string;
-  name: string;
-  policyGenerationArn: string;
-  resource: Resource;
-  createdAt: Date;
-  updatedAt: Date;
-  status: PolicyGenerationStatus;
-  findings?: string;
-  statusReasons: string[];
-}
-export const GetPolicyGenerationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String,
-    policyGenerationId: S.String,
-    name: S.String,
-    policyGenerationArn: S.String,
-    resource: Resource,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: PolicyGenerationStatus,
-    findings: S.optional(S.String),
-    statusReasons: PolicyStatusReasons,
-  }),
-).annotate({
-  identifier: "GetPolicyGenerationResponse",
-}) as any as S.Schema<GetPolicyGenerationResponse>;
-export interface ListPolicyGenerationsRequest {
-  nextToken?: string;
-  maxResults?: number;
-  policyEngineId: string;
-}
-export const ListPolicyGenerationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/policy-engines/{policyEngineId}/policy-generations",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListPolicyGenerationsRequest",
-}) as any as S.Schema<ListPolicyGenerationsRequest>;
-export interface PolicyGeneration {
-  policyEngineId: string;
-  policyGenerationId: string;
-  name: string;
-  policyGenerationArn: string;
-  resource: Resource;
-  createdAt: Date;
-  updatedAt: Date;
-  status: PolicyGenerationStatus;
-  findings?: string;
-  statusReasons: string[];
-}
-export const PolicyGeneration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String,
-    policyGenerationId: S.String,
-    name: S.String,
-    policyGenerationArn: S.String,
-    resource: Resource,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: PolicyGenerationStatus,
-    findings: S.optional(S.String),
-    statusReasons: PolicyStatusReasons,
-  }),
-).annotate({
-  identifier: "PolicyGeneration",
-}) as any as S.Schema<PolicyGeneration>;
-export type PolicyGenerations = PolicyGeneration[];
-export const PolicyGenerations = /*@__PURE__*/ S.Array(PolicyGeneration);
-export interface ListPolicyGenerationsResponse {
-  policyGenerations: PolicyGeneration[];
-  nextToken?: string;
-}
-export const ListPolicyGenerationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyGenerations: PolicyGenerations,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPolicyGenerationsResponse",
-}) as any as S.Schema<ListPolicyGenerationsResponse>;
-export interface GetPolicyGenerationSummaryRequest {
-  policyGenerationId: string;
-  policyEngineId: string;
-}
-export const GetPolicyGenerationSummaryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyGenerationId: S.String.pipe(T.HttpLabel("policyGenerationId")),
-    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/policy-engines/{policyEngineId}/policy-generation-summaries/{policyGenerationId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPolicyGenerationSummaryRequest",
-}) as any as S.Schema<GetPolicyGenerationSummaryRequest>;
-export interface GetPolicyGenerationSummaryResponse {
-  policyEngineId: string;
-  policyGenerationId: string;
-  name: string;
-  policyGenerationArn: string;
-  resource: Resource;
-  createdAt: Date;
-  updatedAt: Date;
-  status: PolicyGenerationStatus;
-  findings?: string;
-}
-export const GetPolicyGenerationSummaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String,
-    policyGenerationId: S.String,
-    name: S.String,
-    policyGenerationArn: S.String,
-    resource: Resource,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: PolicyGenerationStatus,
-    findings: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetPolicyGenerationSummaryResponse",
-}) as any as S.Schema<GetPolicyGenerationSummaryResponse>;
-export interface ListPolicyGenerationAssetsRequest {
-  policyGenerationId: string;
-  policyEngineId: string;
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListPolicyGenerationAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyGenerationId: S.String.pipe(T.HttpLabel("policyGenerationId")),
-    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/policy-engines/{policyEngineId}/policy-generations/{policyGenerationId}/assets",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListPolicyGenerationAssetsRequest",
-}) as any as S.Schema<ListPolicyGenerationAssetsRequest>;
-export interface CedarPolicy {
-  statement: string;
-}
-export const CedarPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ statement: S.String }),
-).annotate({ identifier: "CedarPolicy" }) as any as S.Schema<CedarPolicy>;
-export interface PolicyGenerationDetails {
-  policyGenerationId: string;
-  policyGenerationAssetId: string;
-}
-export const PolicyGenerationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policyGenerationId: S.String, policyGenerationAssetId: S.String }),
-).annotate({
-  identifier: "PolicyGenerationDetails",
-}) as any as S.Schema<PolicyGenerationDetails>;
-export interface PolicyStatement {
-  statement: string;
-}
-export const PolicyStatement = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ statement: S.String }),
-).annotate({
-  identifier: "PolicyStatement",
-}) as any as S.Schema<PolicyStatement>;
-export type PolicyDefinition =
-  | { cedar: CedarPolicy; policyGeneration?: never; policy?: never }
-  | { cedar?: never; policyGeneration: PolicyGenerationDetails; policy?: never }
-  | { cedar?: never; policyGeneration?: never; policy: PolicyStatement };
-export const PolicyDefinition = /*@__PURE__*/ S.Union([
-  S.Struct({ cedar: CedarPolicy }),
-  S.Struct({ policyGeneration: PolicyGenerationDetails }),
-  S.Struct({ policy: PolicyStatement }),
-]);
-export type FindingType =
-  | "VALID"
-  | "INVALID"
-  | "NOT_TRANSLATABLE"
-  | "ALLOW_ALL"
-  | "ALLOW_NONE"
-  | "DENY_ALL"
-  | "DENY_NONE"
-  | (string & {});
-export const FindingType = /*@__PURE__*/ S.String;
-export interface Finding {
-  type?: FindingType;
-  description?: string;
-}
-export const Finding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(FindingType),
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "Finding" }) as any as S.Schema<Finding>;
-export type Findings = Finding[];
-export const Findings = /*@__PURE__*/ S.Array(Finding);
-export interface PolicyGenerationAsset {
-  policyGenerationAssetId: string;
-  definition?: PolicyDefinition;
-  rawTextFragment: string;
-  findings: Finding[];
-}
-export const PolicyGenerationAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyGenerationAssetId: S.String,
-    definition: S.optional(PolicyDefinition),
-    rawTextFragment: S.String,
-    findings: Findings,
-  }),
-).annotate({
-  identifier: "PolicyGenerationAsset",
-}) as any as S.Schema<PolicyGenerationAsset>;
-export type PolicyGenerationAssets = PolicyGenerationAsset[];
-export const PolicyGenerationAssets = /*@__PURE__*/ S.Array(
-  PolicyGenerationAsset,
-);
-export interface ListPolicyGenerationAssetsResponse {
-  policyGenerationAssets?: PolicyGenerationAsset[];
-  nextToken?: string;
-}
-export const ListPolicyGenerationAssetsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyGenerationAssets: S.optional(PolicyGenerationAssets),
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListPolicyGenerationAssetsResponse",
-}) as any as S.Schema<ListPolicyGenerationAssetsResponse>;
-export interface ListPolicyGenerationSummariesRequest {
-  nextToken?: string;
-  maxResults?: number;
-  policyEngineId: string;
-}
-export const ListPolicyGenerationSummariesRequest = /*@__PURE__*/ S.suspend(
+export const UpdatePaymentCredentialProviderRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-      maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-      policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+      name: S.String,
+      credentialProviderVendor: PaymentCredentialProviderVendorType,
+      providerConfigurationInput: PaymentProviderConfigurationInput,
     }).pipe(
       T.all(
         T.Http({
-          method: "GET",
-          uri: "/policy-engines/{policyEngineId}/policy-generation-summaries",
+          method: "POST",
+          uri: "/identities/UpdatePaymentCredentialProvider",
         }),
         svc,
         auth,
@@ -11326,82 +12573,48 @@ export const ListPolicyGenerationSummariesRequest = /*@__PURE__*/ S.suspend(
       ),
     ),
 ).annotate({
-  identifier: "ListPolicyGenerationSummariesRequest",
-}) as any as S.Schema<ListPolicyGenerationSummariesRequest>;
-export interface PolicyGenerationSummary {
-  policyEngineId: string;
-  policyGenerationId: string;
+  identifier: "UpdatePaymentCredentialProviderRequest",
+}) as any as S.Schema<UpdatePaymentCredentialProviderRequest>;
+export interface UpdatePaymentCredentialProviderResponse {
   name: string;
-  policyGenerationArn: string;
-  resource: Resource;
-  createdAt: Date;
-  updatedAt: Date;
-  status: PolicyGenerationStatus;
-  findings?: string;
+  credentialProviderVendor: PaymentCredentialProviderVendorType;
+  credentialProviderArn: string;
+  providerConfigurationOutput: PaymentProviderConfigurationOutput;
+  createdTime: Date;
+  lastUpdatedTime: Date;
 }
-export const PolicyGenerationSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String,
-    policyGenerationId: S.String,
-    name: S.String,
-    policyGenerationArn: S.String,
-    resource: Resource,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    status: PolicyGenerationStatus,
-    findings: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PolicyGenerationSummary",
-}) as any as S.Schema<PolicyGenerationSummary>;
-export type PolicyGenerationSummaryList = PolicyGenerationSummary[];
-export const PolicyGenerationSummaryList = /*@__PURE__*/ S.Array(
-  PolicyGenerationSummary,
-);
-export interface ListPolicyGenerationSummariesResponse {
-  policyGenerations: PolicyGenerationSummary[];
-  nextToken?: string;
-}
-export const ListPolicyGenerationSummariesResponse = /*@__PURE__*/ S.suspend(
+export const UpdatePaymentCredentialProviderResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      policyGenerations: PolicyGenerationSummaryList,
-      nextToken: S.optional(S.String),
+      name: S.String,
+      credentialProviderVendor: PaymentCredentialProviderVendorType,
+      credentialProviderArn: S.String,
+      providerConfigurationOutput: PaymentProviderConfigurationOutput,
+      createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+      lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     }),
 ).annotate({
-  identifier: "ListPolicyGenerationSummariesResponse",
-}) as any as S.Schema<ListPolicyGenerationSummariesResponse>;
-export type PolicyValidationMode =
-  | "FAIL_ON_ANY_FINDINGS"
-  | "IGNORE_ALL_FINDINGS"
-  | (string & {});
-export const PolicyValidationMode = /*@__PURE__*/ S.String;
-export type EnforcementMode = "ACTIVE" | "LOG_ONLY" | (string & {});
-export const EnforcementMode = /*@__PURE__*/ S.String;
-export interface CreatePolicyRequest {
-  name: string;
-  definition: PolicyDefinition;
-  description?: string | redacted.Redacted<string>;
-  validationMode?: PolicyValidationMode;
-  enforcementMode?: EnforcementMode;
-  policyEngineId: string;
+  identifier: "UpdatePaymentCredentialProviderResponse",
+}) as any as S.Schema<UpdatePaymentCredentialProviderResponse>;
+export interface UpdatePaymentManagerRequest {
+  paymentManagerId: string;
+  description?: string;
+  authorizerType?: PaymentsAuthorizerType;
+  authorizerConfiguration?: AuthorizerConfiguration;
+  roleArn?: string;
   clientToken?: string;
 }
-export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdatePaymentManagerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.String,
-    definition: PolicyDefinition,
-    description: S.optional(SensitiveString),
-    validationMode: S.optional(PolicyValidationMode),
-    enforcementMode: S.optional(EnforcementMode),
-    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
+    paymentManagerId: S.String.pipe(T.HttpLabel("paymentManagerId")),
+    description: S.optional(S.String),
+    authorizerType: S.optional(PaymentsAuthorizerType),
+    authorizerConfiguration: S.optional(AuthorizerConfiguration),
+    roleArn: S.optional(S.String),
     clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
   }).pipe(
     T.all(
-      T.Http({
-        method: "POST",
-        uri: "/policy-engines/{policyEngineId}/policies",
-      }),
+      T.Http({ method: "PATCH", uri: "/payments/managers/{paymentManagerId}" }),
       svc,
       auth,
       proto,
@@ -11410,102 +12623,40 @@ export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "CreatePolicyRequest",
-}) as any as S.Schema<CreatePolicyRequest>;
-export type PolicyStatus =
-  | "CREATING"
-  | "ACTIVE"
-  | "UPDATING"
-  | "DELETING"
-  | "CREATE_FAILED"
-  | "UPDATE_FAILED"
-  | "DELETE_FAILED"
-  | (string & {});
-export const PolicyStatus = /*@__PURE__*/ S.String;
-export interface CreatePolicyResponse {
-  policyId: string;
+  identifier: "UpdatePaymentManagerRequest",
+}) as any as S.Schema<UpdatePaymentManagerRequest>;
+export interface UpdatePaymentManagerResponse {
+  paymentManagerArn: string;
+  paymentManagerId: string;
   name: string;
-  policyEngineId: string;
-  createdAt: Date;
-  updatedAt: Date;
-  policyArn: string;
-  status: PolicyStatus;
-  enforcementMode?: EnforcementMode;
-  definition: PolicyDefinition;
-  description?: string | redacted.Redacted<string>;
-  statusReasons: string[];
+  authorizerType: PaymentsAuthorizerType;
+  roleArn: string;
+  workloadIdentityDetails?: WorkloadIdentityDetails;
+  lastUpdatedAt: Date;
+  status: PaymentManagerStatus;
 }
-export const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdatePaymentManagerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    policyId: S.String,
+    paymentManagerArn: S.String,
+    paymentManagerId: S.String,
     name: S.String,
-    policyEngineId: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyArn: S.String,
-    status: PolicyStatus,
-    enforcementMode: S.optional(EnforcementMode),
-    definition: PolicyDefinition,
-    description: S.optional(SensitiveString),
-    statusReasons: PolicyStatusReasons,
+    authorizerType: PaymentsAuthorizerType,
+    roleArn: S.String,
+    workloadIdentityDetails: S.optional(WorkloadIdentityDetails),
+    lastUpdatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
+    status: PaymentManagerStatus,
   }),
 ).annotate({
-  identifier: "CreatePolicyResponse",
-}) as any as S.Schema<CreatePolicyResponse>;
-export interface GetPolicyRequest {
-  policyEngineId: string;
-  policyId: string;
+  identifier: "UpdatePaymentManagerResponse",
+}) as any as S.Schema<UpdatePaymentManagerResponse>;
+export interface UpdatedDescription {
+  optionalValue?: string | redacted.Redacted<string>;
 }
-export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
-    policyId: S.String.pipe(T.HttpLabel("policyId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/policy-engines/{policyEngineId}/policies/{policyId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
+export const UpdatedDescription = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ optionalValue: S.optional(SensitiveString) }),
 ).annotate({
-  identifier: "GetPolicyRequest",
-}) as any as S.Schema<GetPolicyRequest>;
-export interface GetPolicyResponse {
-  policyId: string;
-  name: string;
-  policyEngineId: string;
-  createdAt: Date;
-  updatedAt: Date;
-  policyArn: string;
-  status: PolicyStatus;
-  enforcementMode?: EnforcementMode;
-  definition: PolicyDefinition;
-  description?: string | redacted.Redacted<string>;
-  statusReasons: string[];
-}
-export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyId: S.String,
-    name: S.String,
-    policyEngineId: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyArn: S.String,
-    status: PolicyStatus,
-    enforcementMode: S.optional(EnforcementMode),
-    definition: PolicyDefinition,
-    description: S.optional(SensitiveString),
-    statusReasons: PolicyStatusReasons,
-  }),
-).annotate({
-  identifier: "GetPolicyResponse",
-}) as any as S.Schema<GetPolicyResponse>;
+  identifier: "UpdatedDescription",
+}) as any as S.Schema<UpdatedDescription>;
 export interface UpdatePolicyRequest {
   policyEngineId: string;
   policyId: string;
@@ -11568,20 +12719,17 @@ export const UpdatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdatePolicyResponse",
 }) as any as S.Schema<UpdatePolicyResponse>;
-export interface DeletePolicyRequest {
+export interface UpdatePolicyEngineRequest {
   policyEngineId: string;
-  policyId: string;
+  description?: UpdatedDescription;
 }
-export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdatePolicyEngineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
-    policyId: S.String.pipe(T.HttpLabel("policyId")),
+    description: S.optional(UpdatedDescription),
   }).pipe(
     T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/policy-engines/{policyEngineId}/policies/{policyId}",
-      }),
+      T.Http({ method: "PATCH", uri: "/policy-engines/{policyEngineId}" }),
       svc,
       auth,
       proto,
@@ -11590,455 +12738,59 @@ export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "DeletePolicyRequest",
-}) as any as S.Schema<DeletePolicyRequest>;
-export interface DeletePolicyResponse {
-  policyId: string;
-  name: string;
+  identifier: "UpdatePolicyEngineRequest",
+}) as any as S.Schema<UpdatePolicyEngineRequest>;
+export interface UpdatePolicyEngineResponse {
   policyEngineId: string;
+  name: string;
   createdAt: Date;
   updatedAt: Date;
-  policyArn: string;
-  status: PolicyStatus;
-  enforcementMode?: EnforcementMode;
-  definition: PolicyDefinition;
+  policyEngineArn: string;
+  status: PolicyEngineStatus;
+  encryptionKeyArn?: string;
   description?: string | redacted.Redacted<string>;
   statusReasons: string[];
 }
-export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdatePolicyEngineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    policyId: S.String,
-    name: S.String,
     policyEngineId: S.String,
+    name: S.String,
     createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyArn: S.String,
-    status: PolicyStatus,
-    enforcementMode: S.optional(EnforcementMode),
-    definition: PolicyDefinition,
+    policyEngineArn: S.String,
+    status: PolicyEngineStatus,
+    encryptionKeyArn: S.optional(S.String),
     description: S.optional(SensitiveString),
     statusReasons: PolicyStatusReasons,
   }),
 ).annotate({
-  identifier: "DeletePolicyResponse",
-}) as any as S.Schema<DeletePolicyResponse>;
-export interface ListPoliciesRequest {
-  nextToken?: string;
-  maxResults?: number;
-  policyEngineId: string;
-  targetResourceScope?: string;
+  identifier: "UpdatePolicyEngineResponse",
+}) as any as S.Schema<UpdatePolicyEngineResponse>;
+export interface UpdatedApprovalConfiguration {
+  optionalValue?: ApprovalConfiguration;
 }
-export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
-    targetResourceScope: S.optional(S.String).pipe(
-      T.HttpQuery("targetResourceScope"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/policy-engines/{policyEngineId}/policies",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
+export const UpdatedApprovalConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ optionalValue: S.optional(ApprovalConfiguration) }),
 ).annotate({
-  identifier: "ListPoliciesRequest",
-}) as any as S.Schema<ListPoliciesRequest>;
-export interface Policy {
-  policyId: string;
-  name: string;
-  policyEngineId: string;
-  createdAt: Date;
-  updatedAt: Date;
-  policyArn: string;
-  status: PolicyStatus;
-  enforcementMode?: EnforcementMode;
-  definition: PolicyDefinition;
-  description?: string | redacted.Redacted<string>;
-  statusReasons: string[];
-}
-export const Policy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyId: S.String,
-    name: S.String,
-    policyEngineId: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyArn: S.String,
-    status: PolicyStatus,
-    enforcementMode: S.optional(EnforcementMode),
-    definition: PolicyDefinition,
-    description: S.optional(SensitiveString),
-    statusReasons: PolicyStatusReasons,
-  }),
-).annotate({ identifier: "Policy" }) as any as S.Schema<Policy>;
-export type Policies = Policy[];
-export const Policies = /*@__PURE__*/ S.Array(Policy);
-export interface ListPoliciesResponse {
-  policies: Policy[];
-  nextToken?: string;
-}
-export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policies: Policies, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListPoliciesResponse",
-}) as any as S.Schema<ListPoliciesResponse>;
-export interface GetPolicySummaryRequest {
-  policyEngineId: string;
-  policyId: string;
-}
-export const GetPolicySummaryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
-    policyId: S.String.pipe(T.HttpLabel("policyId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/policy-engines/{policyEngineId}/policy-summaries/{policyId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetPolicySummaryRequest",
-}) as any as S.Schema<GetPolicySummaryRequest>;
-export interface GetPolicySummaryResponse {
-  policyId: string;
-  name: string;
-  policyEngineId: string;
-  createdAt: Date;
-  updatedAt: Date;
-  policyArn: string;
-  status: PolicyStatus;
-  enforcementMode?: EnforcementMode;
-}
-export const GetPolicySummaryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyId: S.String,
-    name: S.String,
-    policyEngineId: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyArn: S.String,
-    status: PolicyStatus,
-    enforcementMode: S.optional(EnforcementMode),
-  }),
-).annotate({
-  identifier: "GetPolicySummaryResponse",
-}) as any as S.Schema<GetPolicySummaryResponse>;
-export interface ListPolicySummariesRequest {
-  nextToken?: string;
-  maxResults?: number;
-  policyEngineId: string;
-  targetResourceScope?: string;
-}
-export const ListPolicySummariesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    policyEngineId: S.String.pipe(T.HttpLabel("policyEngineId")),
-    targetResourceScope: S.optional(S.String).pipe(
-      T.HttpQuery("targetResourceScope"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/policy-engines/{policyEngineId}/policy-summaries",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListPolicySummariesRequest",
-}) as any as S.Schema<ListPolicySummariesRequest>;
-export interface PolicySummary {
-  policyId: string;
-  name: string;
-  policyEngineId: string;
-  createdAt: Date;
-  updatedAt: Date;
-  policyArn: string;
-  status: PolicyStatus;
-  enforcementMode?: EnforcementMode;
-}
-export const PolicySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyId: S.String,
-    name: S.String,
-    policyEngineId: S.String,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    policyArn: S.String,
-    status: PolicyStatus,
-    enforcementMode: S.optional(EnforcementMode),
-  }),
-).annotate({ identifier: "PolicySummary" }) as any as S.Schema<PolicySummary>;
-export type PolicySummaryList = PolicySummary[];
-export const PolicySummaryList = /*@__PURE__*/ S.Array(PolicySummary);
-export interface ListPolicySummariesResponse {
-  policies: PolicySummary[];
-  nextToken?: string;
-}
-export const ListPolicySummariesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ policies: PolicySummaryList, nextToken: S.optional(S.String) }),
-).annotate({
-  identifier: "ListPolicySummariesResponse",
-}) as any as S.Schema<ListPolicySummariesResponse>;
-export type DescriptorType =
-  | "MCP"
-  | "A2A"
-  | "CUSTOM"
-  | "AGENT_SKILLS"
-  | (string & {});
-export const DescriptorType = /*@__PURE__*/ S.String;
-export interface ServerDefinition {
-  schemaVersion?: string;
-  inlineContent?: string;
-}
-export const ServerDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaVersion: S.optional(S.String),
-    inlineContent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServerDefinition",
-}) as any as S.Schema<ServerDefinition>;
-export interface ToolsDefinition {
-  protocolVersion?: string;
-  inlineContent?: string;
-}
-export const ToolsDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protocolVersion: S.optional(S.String),
-    inlineContent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ToolsDefinition",
-}) as any as S.Schema<ToolsDefinition>;
-export interface McpDescriptor {
-  server?: ServerDefinition;
-  tools?: ToolsDefinition;
-}
-export const McpDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    server: S.optional(ServerDefinition),
-    tools: S.optional(ToolsDefinition),
-  }),
-).annotate({ identifier: "McpDescriptor" }) as any as S.Schema<McpDescriptor>;
-export interface AgentCardDefinition {
-  schemaVersion?: string;
-  inlineContent?: string;
-}
-export const AgentCardDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaVersion: S.optional(S.String),
-    inlineContent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AgentCardDefinition",
-}) as any as S.Schema<AgentCardDefinition>;
-export interface A2aDescriptor {
-  agentCard?: AgentCardDefinition;
-}
-export const A2aDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ agentCard: S.optional(AgentCardDefinition) }),
-).annotate({ identifier: "A2aDescriptor" }) as any as S.Schema<A2aDescriptor>;
-export interface CustomDescriptor {
-  inlineContent?: string;
-}
-export const CustomDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ inlineContent: S.optional(S.String) }),
-).annotate({
-  identifier: "CustomDescriptor",
-}) as any as S.Schema<CustomDescriptor>;
-export interface SkillMdDefinition {
-  inlineContent?: string;
-}
-export const SkillMdDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ inlineContent: S.optional(S.String) }),
-).annotate({
-  identifier: "SkillMdDefinition",
-}) as any as S.Schema<SkillMdDefinition>;
-export interface SkillDefinition {
-  schemaVersion?: string;
-  inlineContent?: string;
-}
-export const SkillDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaVersion: S.optional(S.String),
-    inlineContent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SkillDefinition",
-}) as any as S.Schema<SkillDefinition>;
-export interface AgentSkillsDescriptor {
-  skillMd?: SkillMdDefinition;
-  skillDefinition?: SkillDefinition;
-}
-export const AgentSkillsDescriptor = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    skillMd: S.optional(SkillMdDefinition),
-    skillDefinition: S.optional(SkillDefinition),
-  }),
-).annotate({
-  identifier: "AgentSkillsDescriptor",
-}) as any as S.Schema<AgentSkillsDescriptor>;
-export interface Descriptors {
-  mcp?: McpDescriptor;
-  a2a?: A2aDescriptor;
-  custom?: CustomDescriptor;
-  agentSkills?: AgentSkillsDescriptor;
-}
-export const Descriptors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mcp: S.optional(McpDescriptor),
-    a2a: S.optional(A2aDescriptor),
-    custom: S.optional(CustomDescriptor),
-    agentSkills: S.optional(AgentSkillsDescriptor),
-  }),
-).annotate({ identifier: "Descriptors" }) as any as S.Schema<Descriptors>;
-export type SynchronizationType = "URL" | (string & {});
-export const SynchronizationType = /*@__PURE__*/ S.String;
-export type RegistryRecordCredentialProviderType =
-  | "OAUTH"
-  | "IAM"
-  | (string & {});
-export const RegistryRecordCredentialProviderType = /*@__PURE__*/ S.String;
-export type RegistryRecordOAuthGrantType = "CLIENT_CREDENTIALS" | (string & {});
-export const RegistryRecordOAuthGrantType = /*@__PURE__*/ S.String;
-export type ScopeList = string[];
-export const ScopeList = /*@__PURE__*/ S.Array(S.String);
-export type CustomParameterMap = { [key: string]: string | undefined };
-export const CustomParameterMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String.pipe(S.optional),
-);
-export interface RegistryRecordOAuthCredentialProvider {
-  providerArn: string;
-  grantType?: RegistryRecordOAuthGrantType;
-  scopes?: string[];
-  customParameters?: { [key: string]: string | undefined };
-}
-export const RegistryRecordOAuthCredentialProvider = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      providerArn: S.String,
-      grantType: S.optional(RegistryRecordOAuthGrantType),
-      scopes: S.optional(ScopeList),
-      customParameters: S.optional(CustomParameterMap),
-    }),
-).annotate({
-  identifier: "RegistryRecordOAuthCredentialProvider",
-}) as any as S.Schema<RegistryRecordOAuthCredentialProvider>;
-export interface RegistryRecordIamCredentialProvider {
-  roleArn?: string;
-  service?: string;
-  region?: string;
-}
-export const RegistryRecordIamCredentialProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    roleArn: S.optional(S.String),
-    service: S.optional(S.String),
-    region: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegistryRecordIamCredentialProvider",
-}) as any as S.Schema<RegistryRecordIamCredentialProvider>;
-export type RegistryRecordCredentialProviderUnion =
-  | {
-      oauthCredentialProvider: RegistryRecordOAuthCredentialProvider;
-      iamCredentialProvider?: never;
-    }
-  | {
-      oauthCredentialProvider?: never;
-      iamCredentialProvider: RegistryRecordIamCredentialProvider;
-    };
-export const RegistryRecordCredentialProviderUnion = /*@__PURE__*/ S.Union([
-  S.Struct({ oauthCredentialProvider: RegistryRecordOAuthCredentialProvider }),
-  S.Struct({ iamCredentialProvider: RegistryRecordIamCredentialProvider }),
-]);
-export interface RegistryRecordCredentialProviderConfiguration {
-  credentialProviderType: RegistryRecordCredentialProviderType;
-  credentialProvider: RegistryRecordCredentialProviderUnion;
-}
-export const RegistryRecordCredentialProviderConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      credentialProviderType: RegistryRecordCredentialProviderType,
-      credentialProvider: RegistryRecordCredentialProviderUnion,
-    }),
-  ).annotate({
-    identifier: "RegistryRecordCredentialProviderConfiguration",
-  }) as any as S.Schema<RegistryRecordCredentialProviderConfiguration>;
-export type RegistryRecordCredentialProviderConfigurationList =
-  RegistryRecordCredentialProviderConfiguration[];
-export const RegistryRecordCredentialProviderConfigurationList =
-  /*@__PURE__*/ S.Array(RegistryRecordCredentialProviderConfiguration);
-export interface FromUrlSynchronizationConfiguration {
-  url: string;
-  credentialProviderConfigurations?: RegistryRecordCredentialProviderConfiguration[];
-}
-export const FromUrlSynchronizationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.String,
-    credentialProviderConfigurations: S.optional(
-      RegistryRecordCredentialProviderConfigurationList,
-    ),
-  }),
-).annotate({
-  identifier: "FromUrlSynchronizationConfiguration",
-}) as any as S.Schema<FromUrlSynchronizationConfiguration>;
-export interface SynchronizationConfiguration {
-  fromUrl?: FromUrlSynchronizationConfiguration;
-}
-export const SynchronizationConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ fromUrl: S.optional(FromUrlSynchronizationConfiguration) }),
-).annotate({
-  identifier: "SynchronizationConfiguration",
-}) as any as S.Schema<SynchronizationConfiguration>;
-export interface CreateRegistryRecordRequest {
+  identifier: "UpdatedApprovalConfiguration",
+}) as any as S.Schema<UpdatedApprovalConfiguration>;
+export interface UpdateRegistryRequest {
   registryId: string;
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  descriptorType: DescriptorType;
-  descriptors?: Descriptors;
-  recordVersion?: string;
-  synchronizationType?: SynchronizationType;
-  synchronizationConfiguration?: SynchronizationConfiguration;
-  clientToken?: string;
+  name?: string;
+  description?: UpdatedDescription;
+  authorizerConfiguration?: UpdatedAuthorizerConfiguration;
+  approvalConfiguration?: UpdatedApprovalConfiguration;
 }
-export const CreateRegistryRecordRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateRegistryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     registryId: S.String.pipe(T.HttpLabel("registryId")),
-    name: S.String,
-    description: S.optional(SensitiveString),
-    descriptorType: DescriptorType,
-    descriptors: S.optional(Descriptors),
-    recordVersion: S.optional(S.String),
-    synchronizationType: S.optional(SynchronizationType),
-    synchronizationConfiguration: S.optional(SynchronizationConfiguration),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
+    name: S.optional(S.String),
+    description: S.optional(UpdatedDescription),
+    authorizerConfiguration: S.optional(UpdatedAuthorizerConfiguration),
+    approvalConfiguration: S.optional(UpdatedApprovalConfiguration),
   }).pipe(
     T.all(
-      T.Http({ method: "POST", uri: "/registries/{registryId}/records" }),
+      T.Http({ method: "PATCH", uri: "/registries/{registryId}" }),
       svc,
       auth,
       proto,
@@ -12047,89 +12799,38 @@ export const CreateRegistryRecordRequest = /*@__PURE__*/ S.suspend(() =>
     ),
   ),
 ).annotate({
-  identifier: "CreateRegistryRecordRequest",
-}) as any as S.Schema<CreateRegistryRecordRequest>;
-export type RegistryRecordStatus =
-  | "DRAFT"
-  | "PENDING_APPROVAL"
-  | "APPROVED"
-  | "REJECTED"
-  | "DEPRECATED"
-  | "CREATING"
-  | "UPDATING"
-  | "CREATE_FAILED"
-  | "UPDATE_FAILED"
-  | (string & {});
-export const RegistryRecordStatus = /*@__PURE__*/ S.String;
-export interface CreateRegistryRecordResponse {
-  recordArn: string;
-  status: RegistryRecordStatus;
-}
-export const CreateRegistryRecordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ recordArn: S.String, status: RegistryRecordStatus }),
-).annotate({
-  identifier: "CreateRegistryRecordResponse",
-}) as any as S.Schema<CreateRegistryRecordResponse>;
-export interface GetRegistryRecordRequest {
+  identifier: "UpdateRegistryRequest",
+}) as any as S.Schema<UpdateRegistryRequest>;
+export interface UpdateRegistryResponse {
+  name: string;
+  description?: string | redacted.Redacted<string>;
   registryId: string;
-  recordId: string;
-}
-export const GetRegistryRecordRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryId: S.String.pipe(T.HttpLabel("registryId")),
-    recordId: S.String.pipe(T.HttpLabel("recordId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "GET",
-        uri: "/registries/{registryId}/records/{recordId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetRegistryRecordRequest",
-}) as any as S.Schema<GetRegistryRecordRequest>;
-export interface GetRegistryRecordResponse {
   registryArn: string;
-  recordArn: string;
-  recordId: string;
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  descriptorType: DescriptorType;
-  descriptors: Descriptors;
-  recordVersion?: string;
-  status: RegistryRecordStatus;
+  authorizerType?: RegistryAuthorizerType;
+  authorizerConfiguration?: AuthorizerConfiguration;
+  approvalConfiguration?: ApprovalConfiguration;
+  status: RegistryStatus;
+  statusReason?: string;
   createdAt: Date;
   updatedAt: Date;
-  statusReason?: string;
-  synchronizationType?: SynchronizationType;
-  synchronizationConfiguration?: SynchronizationConfiguration;
 }
-export const GetRegistryRecordResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateRegistryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    registryArn: S.String,
-    recordArn: S.String,
-    recordId: S.String,
     name: S.String,
     description: S.optional(SensitiveString),
-    descriptorType: DescriptorType,
-    descriptors: Descriptors,
-    recordVersion: S.optional(S.String),
-    status: RegistryRecordStatus,
+    registryId: S.String,
+    registryArn: S.String,
+    authorizerType: S.optional(RegistryAuthorizerType),
+    authorizerConfiguration: S.optional(AuthorizerConfiguration),
+    approvalConfiguration: S.optional(ApprovalConfiguration),
+    status: RegistryStatus,
+    statusReason: S.optional(S.String),
     createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
     updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    statusReason: S.optional(S.String),
-    synchronizationType: S.optional(SynchronizationType),
-    synchronizationConfiguration: S.optional(SynchronizationConfiguration),
   }),
 ).annotate({
-  identifier: "GetRegistryRecordResponse",
-}) as any as S.Schema<GetRegistryRecordResponse>;
+  identifier: "UpdateRegistryResponse",
+}) as any as S.Schema<UpdateRegistryResponse>;
 export interface UpdatedServerDefinition {
   optionalValue?: ServerDefinition;
 }
@@ -12336,155 +13037,6 @@ export const UpdateRegistryRecordResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRegistryRecordResponse",
 }) as any as S.Schema<UpdateRegistryRecordResponse>;
-export interface DeleteRegistryRecordRequest {
-  registryId: string;
-  recordId: string;
-}
-export const DeleteRegistryRecordRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryId: S.String.pipe(T.HttpLabel("registryId")),
-    recordId: S.String.pipe(T.HttpLabel("recordId")),
-  }).pipe(
-    T.all(
-      T.Http({
-        method: "DELETE",
-        uri: "/registries/{registryId}/records/{recordId}",
-      }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteRegistryRecordRequest",
-}) as any as S.Schema<DeleteRegistryRecordRequest>;
-export interface DeleteRegistryRecordResponse {}
-export const DeleteRegistryRecordResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteRegistryRecordResponse",
-}) as any as S.Schema<DeleteRegistryRecordResponse>;
-export interface ListRegistryRecordsRequest {
-  registryId: string;
-  maxResults?: number;
-  nextToken?: string;
-  name?: string;
-  status?: RegistryRecordStatus;
-  descriptorType?: DescriptorType;
-}
-export const ListRegistryRecordsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryId: S.String.pipe(T.HttpLabel("registryId")),
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    name: S.optional(S.String).pipe(T.HttpQuery("name")),
-    status: S.optional(RegistryRecordStatus).pipe(T.HttpQuery("status")),
-    descriptorType: S.optional(DescriptorType).pipe(
-      T.HttpQuery("descriptorType"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/registries/{registryId}/records" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListRegistryRecordsRequest",
-}) as any as S.Schema<ListRegistryRecordsRequest>;
-export interface RegistryRecordSummary {
-  registryArn: string;
-  recordArn: string;
-  recordId: string;
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  descriptorType: DescriptorType;
-  recordVersion: string;
-  status: RegistryRecordStatus;
-  createdAt: Date;
-  updatedAt: Date;
-}
-export const RegistryRecordSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryArn: S.String,
-    recordArn: S.String,
-    recordId: S.String,
-    name: S.String,
-    description: S.optional(SensitiveString),
-    descriptorType: DescriptorType,
-    recordVersion: S.String,
-    status: RegistryRecordStatus,
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "RegistryRecordSummary",
-}) as any as S.Schema<RegistryRecordSummary>;
-export type RegistryRecordSummaryList = RegistryRecordSummary[];
-export const RegistryRecordSummaryList = /*@__PURE__*/ S.Array(
-  RegistryRecordSummary,
-);
-export interface ListRegistryRecordsResponse {
-  registryRecords: RegistryRecordSummary[];
-  nextToken?: string;
-}
-export const ListRegistryRecordsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryRecords: RegistryRecordSummaryList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRegistryRecordsResponse",
-}) as any as S.Schema<ListRegistryRecordsResponse>;
-export interface SubmitRegistryRecordForApprovalRequest {
-  registryId: string;
-  recordId: string;
-}
-export const SubmitRegistryRecordForApprovalRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      registryId: S.String.pipe(T.HttpLabel("registryId")),
-      recordId: S.String.pipe(T.HttpLabel("recordId")),
-    }).pipe(
-      T.all(
-        T.Http({
-          method: "POST",
-          uri: "/registries/{registryId}/records/{recordId}/submit-for-approval",
-        }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
-    ),
-).annotate({
-  identifier: "SubmitRegistryRecordForApprovalRequest",
-}) as any as S.Schema<SubmitRegistryRecordForApprovalRequest>;
-export interface SubmitRegistryRecordForApprovalResponse {
-  registryArn: string;
-  recordArn: string;
-  recordId: string;
-  status: RegistryRecordStatus;
-  updatedAt: Date;
-}
-export const SubmitRegistryRecordForApprovalResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      registryArn: S.String,
-      recordArn: S.String,
-      recordId: S.String,
-      status: RegistryRecordStatus,
-      updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    }),
-).annotate({
-  identifier: "SubmitRegistryRecordForApprovalResponse",
-}) as any as S.Schema<SubmitRegistryRecordForApprovalResponse>;
 export interface UpdateRegistryRecordStatusRequest {
   registryId: string;
   recordId: string;
@@ -12533,347 +13085,6 @@ export const UpdateRegistryRecordStatusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateRegistryRecordStatusResponse",
 }) as any as S.Schema<UpdateRegistryRecordStatusResponse>;
-export type RegistryAuthorizerType = "CUSTOM_JWT" | "AWS_IAM" | (string & {});
-export const RegistryAuthorizerType = /*@__PURE__*/ S.String;
-export interface ApprovalConfiguration {
-  autoApproval?: boolean;
-}
-export const ApprovalConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ autoApproval: S.optional(S.Boolean) }),
-).annotate({
-  identifier: "ApprovalConfiguration",
-}) as any as S.Schema<ApprovalConfiguration>;
-export interface CreateRegistryRequest {
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  authorizerType?: RegistryAuthorizerType;
-  authorizerConfiguration?: AuthorizerConfiguration;
-  clientToken?: string;
-  approvalConfiguration?: ApprovalConfiguration;
-}
-export const CreateRegistryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    authorizerType: S.optional(RegistryAuthorizerType),
-    authorizerConfiguration: S.optional(AuthorizerConfiguration),
-    clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-    approvalConfiguration: S.optional(ApprovalConfiguration),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/registries" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateRegistryRequest",
-}) as any as S.Schema<CreateRegistryRequest>;
-export interface CreateRegistryResponse {
-  registryArn: string;
-}
-export const CreateRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ registryArn: S.String }),
-).annotate({
-  identifier: "CreateRegistryResponse",
-}) as any as S.Schema<CreateRegistryResponse>;
-export interface GetRegistryRequest {
-  registryId: string;
-}
-export const GetRegistryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ registryId: S.String.pipe(T.HttpLabel("registryId")) }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/registries/{registryId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetRegistryRequest",
-}) as any as S.Schema<GetRegistryRequest>;
-export type RegistryStatus =
-  | "CREATING"
-  | "READY"
-  | "UPDATING"
-  | "CREATE_FAILED"
-  | "UPDATE_FAILED"
-  | "DELETING"
-  | "DELETE_FAILED"
-  | (string & {});
-export const RegistryStatus = /*@__PURE__*/ S.String;
-export interface GetRegistryResponse {
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  registryId: string;
-  registryArn: string;
-  authorizerType?: RegistryAuthorizerType;
-  authorizerConfiguration?: AuthorizerConfiguration;
-  approvalConfiguration?: ApprovalConfiguration;
-  status: RegistryStatus;
-  statusReason?: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-export const GetRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    registryId: S.String,
-    registryArn: S.String,
-    authorizerType: S.optional(RegistryAuthorizerType),
-    authorizerConfiguration: S.optional(AuthorizerConfiguration),
-    approvalConfiguration: S.optional(ApprovalConfiguration),
-    status: RegistryStatus,
-    statusReason: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "GetRegistryResponse",
-}) as any as S.Schema<GetRegistryResponse>;
-export interface UpdatedApprovalConfiguration {
-  optionalValue?: ApprovalConfiguration;
-}
-export const UpdatedApprovalConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ optionalValue: S.optional(ApprovalConfiguration) }),
-).annotate({
-  identifier: "UpdatedApprovalConfiguration",
-}) as any as S.Schema<UpdatedApprovalConfiguration>;
-export interface UpdateRegistryRequest {
-  registryId: string;
-  name?: string;
-  description?: UpdatedDescription;
-  authorizerConfiguration?: UpdatedAuthorizerConfiguration;
-  approvalConfiguration?: UpdatedApprovalConfiguration;
-}
-export const UpdateRegistryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registryId: S.String.pipe(T.HttpLabel("registryId")),
-    name: S.optional(S.String),
-    description: S.optional(UpdatedDescription),
-    authorizerConfiguration: S.optional(UpdatedAuthorizerConfiguration),
-    approvalConfiguration: S.optional(UpdatedApprovalConfiguration),
-  }).pipe(
-    T.all(
-      T.Http({ method: "PATCH", uri: "/registries/{registryId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "UpdateRegistryRequest",
-}) as any as S.Schema<UpdateRegistryRequest>;
-export interface UpdateRegistryResponse {
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  registryId: string;
-  registryArn: string;
-  authorizerType?: RegistryAuthorizerType;
-  authorizerConfiguration?: AuthorizerConfiguration;
-  approvalConfiguration?: ApprovalConfiguration;
-  status: RegistryStatus;
-  statusReason?: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-export const UpdateRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    registryId: S.String,
-    registryArn: S.String,
-    authorizerType: S.optional(RegistryAuthorizerType),
-    authorizerConfiguration: S.optional(AuthorizerConfiguration),
-    approvalConfiguration: S.optional(ApprovalConfiguration),
-    status: RegistryStatus,
-    statusReason: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "UpdateRegistryResponse",
-}) as any as S.Schema<UpdateRegistryResponse>;
-export interface DeleteRegistryRequest {
-  registryId: string;
-}
-export const DeleteRegistryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ registryId: S.String.pipe(T.HttpLabel("registryId")) }).pipe(
-    T.all(
-      T.Http({ method: "DELETE", uri: "/registries/{registryId}" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteRegistryRequest",
-}) as any as S.Schema<DeleteRegistryRequest>;
-export interface DeleteRegistryResponse {
-  status: RegistryStatus;
-}
-export const DeleteRegistryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ status: RegistryStatus }),
-).annotate({
-  identifier: "DeleteRegistryResponse",
-}) as any as S.Schema<DeleteRegistryResponse>;
-export interface ListRegistriesRequest {
-  maxResults?: number;
-  nextToken?: string;
-  status?: RegistryStatus;
-  authorizerType?: RegistryAuthorizerType;
-}
-export const ListRegistriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-    nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
-    status: S.optional(RegistryStatus).pipe(T.HttpQuery("status")),
-    authorizerType: S.optional(RegistryAuthorizerType).pipe(
-      T.HttpQuery("authorizerType"),
-    ),
-  }).pipe(
-    T.all(
-      T.Http({ method: "GET", uri: "/registries" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListRegistriesRequest",
-}) as any as S.Schema<ListRegistriesRequest>;
-export interface RegistrySummary {
-  name: string;
-  description?: string | redacted.Redacted<string>;
-  registryId: string;
-  registryArn: string;
-  authorizerType?: RegistryAuthorizerType;
-  status: RegistryStatus;
-  statusReason?: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-export const RegistrySummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    description: S.optional(SensitiveString),
-    registryId: S.String,
-    registryArn: S.String,
-    authorizerType: S.optional(RegistryAuthorizerType),
-    status: RegistryStatus,
-    statusReason: S.optional(S.String),
-    createdAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-    updatedAt: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-  }),
-).annotate({
-  identifier: "RegistrySummary",
-}) as any as S.Schema<RegistrySummary>;
-export type RegistrySummaryList = RegistrySummary[];
-export const RegistrySummaryList = /*@__PURE__*/ S.Array(RegistrySummary);
-export interface ListRegistriesResponse {
-  registries: RegistrySummary[];
-  nextToken?: string;
-}
-export const ListRegistriesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    registries: RegistrySummaryList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListRegistriesResponse",
-}) as any as S.Schema<ListRegistriesResponse>;
-export type ResourceOauth2ReturnUrlListType = string[];
-export const ResourceOauth2ReturnUrlListType = /*@__PURE__*/ S.Array(S.String);
-export interface CreateWorkloadIdentityRequest {
-  name: string;
-  allowedResourceOauth2ReturnUrls?: string[];
-  tags?: { [key: string]: string | undefined };
-}
-export const CreateWorkloadIdentityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    allowedResourceOauth2ReturnUrls: S.optional(
-      ResourceOauth2ReturnUrlListType,
-    ),
-    tags: S.optional(TagsMap),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/identities/CreateWorkloadIdentity" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "CreateWorkloadIdentityRequest",
-}) as any as S.Schema<CreateWorkloadIdentityRequest>;
-export interface CreateWorkloadIdentityResponse {
-  name: string;
-  workloadIdentityArn: string;
-  allowedResourceOauth2ReturnUrls?: string[];
-}
-export const CreateWorkloadIdentityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    workloadIdentityArn: S.String,
-    allowedResourceOauth2ReturnUrls: S.optional(
-      ResourceOauth2ReturnUrlListType,
-    ),
-  }),
-).annotate({
-  identifier: "CreateWorkloadIdentityResponse",
-}) as any as S.Schema<CreateWorkloadIdentityResponse>;
-export interface GetWorkloadIdentityRequest {
-  name: string;
-}
-export const GetWorkloadIdentityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/identities/GetWorkloadIdentity" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "GetWorkloadIdentityRequest",
-}) as any as S.Schema<GetWorkloadIdentityRequest>;
-export interface GetWorkloadIdentityResponse {
-  name: string;
-  workloadIdentityArn: string;
-  allowedResourceOauth2ReturnUrls?: string[];
-  createdTime: Date;
-  lastUpdatedTime: Date;
-}
-export const GetWorkloadIdentityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    workloadIdentityArn: S.String,
-    allowedResourceOauth2ReturnUrls: S.optional(
-      ResourceOauth2ReturnUrlListType,
-    ),
-    createdTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-    lastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-  }),
-).annotate({
-  identifier: "GetWorkloadIdentityResponse",
-}) as any as S.Schema<GetWorkloadIdentityResponse>;
 export interface UpdateWorkloadIdentityRequest {
   name: string;
   allowedResourceOauth2ReturnUrls?: string[];
@@ -12917,341 +13128,32 @@ export const UpdateWorkloadIdentityResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateWorkloadIdentityResponse",
 }) as any as S.Schema<UpdateWorkloadIdentityResponse>;
-export interface DeleteWorkloadIdentityRequest {
-  name: string;
-}
-export const DeleteWorkloadIdentityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/identities/DeleteWorkloadIdentity" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "DeleteWorkloadIdentityRequest",
-}) as any as S.Schema<DeleteWorkloadIdentityRequest>;
-export interface DeleteWorkloadIdentityResponse {}
-export const DeleteWorkloadIdentityResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DeleteWorkloadIdentityResponse",
-}) as any as S.Schema<DeleteWorkloadIdentityResponse>;
-export interface ListWorkloadIdentitiesRequest {
-  nextToken?: string;
-  maxResults?: number;
-}
-export const ListWorkloadIdentitiesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextToken: S.optional(S.String),
-    maxResults: S.optional(S.Number),
-  }).pipe(
-    T.all(
-      T.Http({ method: "POST", uri: "/identities/ListWorkloadIdentities" }),
-      svc,
-      auth,
-      proto,
-      ver,
-      rules,
-    ),
-  ),
-).annotate({
-  identifier: "ListWorkloadIdentitiesRequest",
-}) as any as S.Schema<ListWorkloadIdentitiesRequest>;
-export interface WorkloadIdentityType {
-  name: string;
-  workloadIdentityArn: string;
-}
-export const WorkloadIdentityType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({ name: S.String, workloadIdentityArn: S.String }),
-).annotate({
-  identifier: "WorkloadIdentityType",
-}) as any as S.Schema<WorkloadIdentityType>;
-export type WorkloadIdentityList = WorkloadIdentityType[];
-export const WorkloadIdentityList = /*@__PURE__*/ S.Array(WorkloadIdentityType);
-export interface ListWorkloadIdentitiesResponse {
-  workloadIdentities: WorkloadIdentityType[];
-  nextToken?: string;
-}
-export const ListWorkloadIdentitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workloadIdentities: WorkloadIdentityList,
-    nextToken: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListWorkloadIdentitiesResponse",
-}) as any as S.Schema<ListWorkloadIdentitiesResponse>;
+export type NonBlankString = string;
+export type ValidationExceptionReason =
+  | "CannotParse"
+  | "FieldValidationFailed"
+  | "IdempotentParameterMismatchException"
+  | "EventInOtherSession"
+  | "ResourceConflict"
+  | (string & {});
+export const ValidationExceptionReason = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  {
-    message: S.String,
-    reason: ValidationExceptionReason,
-    fieldList: S.optional(ValidationExceptionFieldList),
-  },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class ConcurrentModificationException extends S.TaggedErrorClass<ConcurrentModificationException>()(
-  "ConcurrentModificationException",
-  { message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class DecryptionFailure extends S.TaggedErrorClass<DecryptionFailure>()(
-  "DecryptionFailure",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class EncryptionFailure extends S.TaggedErrorClass<EncryptionFailure>()(
-  "EncryptionFailure",
-  { message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
-  "ResourceLimitExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceException extends S.TaggedErrorClass<ServiceException>()(
-  "ServiceException",
-  { message: S.optional(S.String) },
-  T.all(T.HttpError(500), T.Retryable()),
-).pipe(C.withServerError, C.withRetryableError) {}
-export class ThrottledException extends S.TaggedErrorClass<ThrottledException>()(
-  "ThrottledException",
-  { message: S.optional(S.String) },
-  T.all(T.HttpError(429), T.Retryable()),
-).pipe(C.withThrottlingError, C.withRetryableError) {}
-
-//# Operations
-export type DeleteResourcePolicyError =
+export interface ValidationExceptionField {
+  name: string;
+  message: string;
+}
+export const ValidationExceptionField = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ name: S.String, message: S.String }),
+).annotate({
+  identifier: "ValidationExceptionField",
+}) as any as S.Schema<ValidationExceptionField>;
+export type ValidationExceptionFieldList = ValidationExceptionField[];
+export const ValidationExceptionFieldList = /*@__PURE__*/ S.Array(
+  ValidationExceptionField,
+);
+export type AddDatasetExamplesError =
   | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes the resource-based policy for a specified resource.
- *
- * This feature is currently available only for AgentCore Runtime and Gateway.
- */
-export const deleteResourcePolicy: API.OperationMethod<
-  DeleteResourcePolicyRequest,
-  DeleteResourcePolicyResponse,
-  DeleteResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteResourcePolicyRequest,
-  output: DeleteResourcePolicyResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteResourcePolicy",
-}));
-export type GetResourcePolicyError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves the resource-based policy for a specified resource.
- *
- * This feature is currently available only for AgentCore Runtime and Gateway.
- */
-export const getResourcePolicy: API.OperationMethod<
-  GetResourcePolicyRequest,
-  GetResourcePolicyResponse,
-  GetResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetResourcePolicyRequest,
-  output: GetResourcePolicyResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetResourcePolicy",
-}));
-export type GetTokenVaultError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about a token vault.
- */
-export const getTokenVault: API.OperationMethod<
-  GetTokenVaultRequest,
-  GetTokenVaultResponse,
-  GetTokenVaultError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetTokenVaultRequest,
-  output: GetTokenVaultResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetTokenVault",
-}));
-export type ListTagsForResourceError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Lists the tags associated with the specified resource.
- *
- * This feature is currently available only for AgentCore Runtime, Browser, Browser Profile, Code Interpreter tool, and Gateway.
- */
-export const listTagsForResource: API.OperationMethod<
-  ListTagsForResourceRequest,
-  ListTagsForResourceResponse,
-  ListTagsForResourceError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListTagsForResource",
-}));
-export type PutResourcePolicyError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates or updates a resource-based policy for a resource with the specified resourceArn.
- *
- * This feature is currently available only for AgentCore Runtime and Gateway.
- */
-export const putResourcePolicy: API.OperationMethod<
-  PutResourcePolicyRequest,
-  PutResourcePolicyResponse,
-  PutResourcePolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: PutResourcePolicyRequest,
-  output: PutResourcePolicyResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "PutResourcePolicy",
-}));
-export type SetTokenVaultCMKError =
-  | AccessDeniedException
-  | ConcurrentModificationException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Sets the customer master key (CMK) for a token vault.
- */
-export const setTokenVaultCMK: API.OperationMethod<
-  SetTokenVaultCMKRequest,
-  SetTokenVaultCMKResponse,
-  SetTokenVaultCMKError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: SetTokenVaultCMKRequest,
-  output: SetTokenVaultCMKResponse,
-  errors: [
-    AccessDeniedException,
-    ConcurrentModificationException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "SetTokenVaultCMK",
-}));
-export type TagResourceError =
-  | AccessDeniedException
+  | ConflictException
   | InternalServerException
   | ResourceNotFoundException
   | ServiceQuotaExceededException
@@ -13259,20 +13161,19 @@ export type TagResourceError =
   | ValidationException
   | CommonErrors;
 /**
- * Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are also deleted.
- *
- * This feature is currently available only for AgentCore Runtime, Browser, Browser Profile, Code Interpreter tool, and Gateway.
+ * Adds examples to the dataset's DRAFT. All examples are validated against the dataset's schema type before any writes occur. If any example fails validation, the entire batch is rejected (all-or-nothing semantics).
  */
-export const tagResource: API.OperationMethod<
-  TagResourceRequest,
-  TagResourceResponse,
-  TagResourceError,
+export const addDatasetExamples: API.OperationMethod<
+  AddDatasetExamplesRequest,
+  AddDatasetExamplesResponse,
+  AddDatasetExamplesError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: AddDatasetExamplesRequest,
+  output: AddDatasetExamplesResponse,
   errors: [
     AccessDeniedException,
+    ConflictException,
     InternalServerException,
     ResourceNotFoundException,
     ServiceQuotaExceededException,
@@ -13281,39 +13182,41 @@ export const tagResource: API.OperationMethod<
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "TagResource",
+  operationName: "AddDatasetExamples",
 }));
-export type UntagResourceError =
+
+export type CreateAgentRuntimeError =
   | AccessDeniedException
+  | ConflictException
   | InternalServerException
-  | ResourceNotFoundException
+  | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Removes the specified tags from the specified resource.
- *
- * This feature is currently available only for AgentCore Runtime, Browser, Browser Profile, Code Interpreter tool, and Gateway.
+ * Creates an Amazon Bedrock AgentCore Runtime.
  */
-export const untagResource: API.OperationMethod<
-  UntagResourceRequest,
-  UntagResourceResponse,
-  UntagResourceError,
+export const createAgentRuntime: API.OperationMethod<
+  CreateAgentRuntimeRequest,
+  CreateAgentRuntimeResponse,
+  CreateAgentRuntimeError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: CreateAgentRuntimeRequest,
+  output: CreateAgentRuntimeResponse,
   errors: [
     AccessDeniedException,
+    ConflictException,
     InternalServerException,
-    ResourceNotFoundException,
+    ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "UntagResource",
+  operationName: "CreateAgentRuntime",
 }));
+
 export type CreateAgentRuntimeEndpointError =
   | AccessDeniedException
   | ConflictException
@@ -13347,36 +13250,210 @@ export const createAgentRuntimeEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAgentRuntimeEndpoint",
 }));
-export type GetAgentRuntimeEndpointError =
+
+export type CreateApiKeyCredentialProviderError =
   | AccessDeniedException
+  | ConflictException
+  | DecryptionFailure
+  | EncryptionFailure
   | InternalServerException
+  | ResourceLimitExceededException
   | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new API key credential provider.
+ */
+export const createApiKeyCredentialProvider: API.OperationMethod<
+  CreateApiKeyCredentialProviderRequest,
+  CreateApiKeyCredentialProviderResponse,
+  CreateApiKeyCredentialProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateApiKeyCredentialProviderRequest,
+  output: CreateApiKeyCredentialProviderResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    DecryptionFailure,
+    EncryptionFailure,
+    InternalServerException,
+    ResourceLimitExceededException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateApiKeyCredentialProvider",
+}));
+
+export type CreateBrowserError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Gets information about an Amazon Secure AgentEndpoint.
+ * Creates a custom browser.
  */
-export const getAgentRuntimeEndpoint: API.OperationMethod<
-  GetAgentRuntimeEndpointRequest,
-  GetAgentRuntimeEndpointResponse,
-  GetAgentRuntimeEndpointError,
+export const createBrowser: API.OperationMethod<
+  CreateBrowserRequest,
+  CreateBrowserResponse,
+  CreateBrowserError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgentRuntimeEndpointRequest,
-  output: GetAgentRuntimeEndpointResponse,
+  input: CreateBrowserRequest,
+  output: CreateBrowserResponse,
   errors: [
     AccessDeniedException,
+    ConflictException,
     InternalServerException,
-    ResourceNotFoundException,
+    ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "GetAgentRuntimeEndpoint",
+  operationName: "CreateBrowser",
 }));
-export type UpdateAgentRuntimeEndpointError =
+
+export type CreateBrowserProfileError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a browser profile in Amazon Bedrock AgentCore. A browser profile stores persistent browser data such as cookies, local storage, session storage, and browsing history that can be saved from browser sessions and reused in subsequent sessions.
+ */
+export const createBrowserProfile: API.OperationMethod<
+  CreateBrowserProfileRequest,
+  CreateBrowserProfileResponse,
+  CreateBrowserProfileError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateBrowserProfileRequest,
+  output: CreateBrowserProfileResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateBrowserProfile",
+}));
+
+export type CreateCodeInterpreterError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a custom code interpreter.
+ */
+export const createCodeInterpreter: API.OperationMethod<
+  CreateCodeInterpreterRequest,
+  CreateCodeInterpreterResponse,
+  CreateCodeInterpreterError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCodeInterpreterRequest,
+  output: CreateCodeInterpreterResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateCodeInterpreter",
+}));
+
+export type CreateConfigurationBundleError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new configuration bundle resource. A configuration bundle stores versioned component configurations for agent evaluation workflows.
+ */
+export const createConfigurationBundle: API.OperationMethod<
+  CreateConfigurationBundleRequest,
+  CreateConfigurationBundleResponse,
+  CreateConfigurationBundleError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateConfigurationBundleRequest,
+  output: CreateConfigurationBundleResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateConfigurationBundle",
+}));
+
+export type CreateDatasetError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new dataset resource asynchronously. Returns immediately with status CREATING. Poll `GetDataset` until status transitions to ACTIVE or CREATE_FAILED.
+ */
+export const createDataset: API.OperationMethod<
+  CreateDatasetRequest,
+  CreateDatasetResponse,
+  CreateDatasetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateDatasetRequest,
+  output: CreateDatasetResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateDataset",
+}));
+
+export type CreateDatasetVersionError =
   | AccessDeniedException
   | ConflictException
   | InternalServerException
@@ -13386,16 +13463,16 @@ export type UpdateAgentRuntimeEndpointError =
   | ValidationException
   | CommonErrors;
 /**
- * Updates an existing Amazon Bedrock AgentCore Runtime endpoint.
+ * Publishes the current DRAFT as a new numbered version. The DRAFT is preserved and remains editable after publishing. Returns immediately with status UPDATING. Poll `GetDataset` until status transitions to ACTIVE or UPDATE_FAILED.
  */
-export const updateAgentRuntimeEndpoint: API.OperationMethod<
-  UpdateAgentRuntimeEndpointRequest,
-  UpdateAgentRuntimeEndpointResponse,
-  UpdateAgentRuntimeEndpointError,
+export const createDatasetVersion: API.OperationMethod<
+  CreateDatasetVersionRequest,
+  CreateDatasetVersionResponse,
+  CreateDatasetVersionError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAgentRuntimeEndpointRequest,
-  output: UpdateAgentRuntimeEndpointResponse,
+  input: CreateDatasetVersionRequest,
+  output: CreateDatasetVersionResponse,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -13407,8 +13484,625 @@ export const updateAgentRuntimeEndpoint: API.OperationMethod<
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "UpdateAgentRuntimeEndpoint",
+  operationName: "CreateDatasetVersion",
 }));
+
+export type CreateEvaluatorError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a custom evaluator for agent quality assessment. Custom evaluators can use either LLM-as-a-Judge configurations with user-defined prompts, rating scales, and model settings, or code-based configurations with customer-managed Lambda functions to evaluate agent performance at tool call, trace, or session levels.
+ */
+export const createEvaluator: API.OperationMethod<
+  CreateEvaluatorRequest,
+  CreateEvaluatorResponse,
+  CreateEvaluatorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateEvaluatorRequest,
+  output: CreateEvaluatorResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateEvaluator",
+}));
+
+export type CreateGatewayError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a gateway for Amazon Bedrock Agent. A gateway serves as an integration point between your agent and external services.
+ *
+ * If you specify `CUSTOM_JWT` as the `authorizerType`, you must provide an `authorizerConfiguration`.
+ */
+export const createGateway: API.OperationMethod<
+  CreateGatewayRequest,
+  CreateGatewayResponse,
+  CreateGatewayError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateGatewayRequest,
+  output: CreateGatewayResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateGateway",
+}));
+
+export type CreateGatewayRuleError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a rule for a gateway. Rules define conditions and actions that control how requests are routed and processed through the gateway, including principal-based access control and path-based routing.
+ */
+export const createGatewayRule: API.OperationMethod<
+  CreateGatewayRuleRequest,
+  CreateGatewayRuleResponse,
+  CreateGatewayRuleError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateGatewayRuleRequest,
+  output: CreateGatewayRuleResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateGatewayRule",
+}));
+
+export type CreateGatewayTargetError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a target for a gateway. A target defines an endpoint that the gateway can connect to.
+ */
+export const createGatewayTarget: API.OperationMethod<
+  CreateGatewayTargetRequest,
+  CreateGatewayTargetResponse,
+  CreateGatewayTargetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateGatewayTargetRequest,
+  output: CreateGatewayTargetResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateGatewayTarget",
+}));
+
+export type CreateHarnessError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Operation to create a harness.
+ */
+export const createHarness: API.OperationMethod<
+  CreateHarnessRequest,
+  CreateHarnessResponse,
+  CreateHarnessError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateHarnessRequest,
+  output: CreateHarnessResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateHarness",
+}));
+
+export type CreateHarnessEndpointError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Operation to create a harness endpoint.
+ */
+export const createHarnessEndpoint: API.OperationMethod<
+  CreateHarnessEndpointRequest,
+  CreateHarnessEndpointResponse,
+  CreateHarnessEndpointError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateHarnessEndpointRequest,
+  output: CreateHarnessEndpointResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateHarnessEndpoint",
+}));
+
+export type CreateMemoryError =
+  | AccessDeniedException
+  | ConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | ServiceQuotaExceededException
+  | ThrottledException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new Amazon Bedrock AgentCore Memory resource.
+ */
+export const createMemory: API.OperationMethod<
+  CreateMemoryInput,
+  CreateMemoryOutput,
+  CreateMemoryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMemoryInput,
+  output: CreateMemoryOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    ServiceQuotaExceededException,
+    ThrottledException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateMemory",
+}));
+
+export type CreateOauth2CredentialProviderError =
+  | AccessDeniedException
+  | ConflictException
+  | DecryptionFailure
+  | EncryptionFailure
+  | InternalServerException
+  | ResourceLimitExceededException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new OAuth2 credential provider.
+ */
+export const createOauth2CredentialProvider: API.OperationMethod<
+  CreateOauth2CredentialProviderRequest,
+  CreateOauth2CredentialProviderResponse,
+  CreateOauth2CredentialProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateOauth2CredentialProviderRequest,
+  output: CreateOauth2CredentialProviderResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    DecryptionFailure,
+    EncryptionFailure,
+    InternalServerException,
+    ResourceLimitExceededException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateOauth2CredentialProvider",
+}));
+
+export type CreateOnlineEvaluationConfigError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates an online evaluation configuration for continuous monitoring of agent performance. Online evaluation automatically samples live traffic from CloudWatch logs at specified rates and applies evaluators to assess agent quality in production.
+ */
+export const createOnlineEvaluationConfig: API.OperationMethod<
+  CreateOnlineEvaluationConfigRequest,
+  CreateOnlineEvaluationConfigResponse,
+  CreateOnlineEvaluationConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateOnlineEvaluationConfigRequest,
+  output: CreateOnlineEvaluationConfigResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateOnlineEvaluationConfig",
+}));
+
+export type CreatePaymentConnectorError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new payment connector for a payment manager. A payment connector integrates with a supported payment provider to enable payment processing capabilities.
+ */
+export const createPaymentConnector: API.OperationMethod<
+  CreatePaymentConnectorRequest,
+  CreatePaymentConnectorResponse,
+  CreatePaymentConnectorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreatePaymentConnectorRequest,
+  output: CreatePaymentConnectorResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreatePaymentConnector",
+}));
+
+export type CreatePaymentCredentialProviderError =
+  | AccessDeniedException
+  | ConflictException
+  | DecryptionFailure
+  | EncryptionFailure
+  | InternalServerException
+  | ResourceLimitExceededException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new payment credential provider for storing authentication credentials used by payment connectors to communicate with external payment providers.
+ */
+export const createPaymentCredentialProvider: API.OperationMethod<
+  CreatePaymentCredentialProviderRequest,
+  CreatePaymentCredentialProviderResponse,
+  CreatePaymentCredentialProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreatePaymentCredentialProviderRequest,
+  output: CreatePaymentCredentialProviderResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    DecryptionFailure,
+    EncryptionFailure,
+    InternalServerException,
+    ResourceLimitExceededException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreatePaymentCredentialProvider",
+}));
+
+export type CreatePaymentManagerError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new payment manager in your Amazon Web Services account. A payment manager serves as the top-level resource for managing payment processing capabilities, including payment connectors that integrate with supported payment providers.
+ *
+ * If you specify `CUSTOM_JWT` as the `authorizerType`, you must provide an `authorizerConfiguration`.
+ */
+export const createPaymentManager: API.OperationMethod<
+  CreatePaymentManagerRequest,
+  CreatePaymentManagerResponse,
+  CreatePaymentManagerError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreatePaymentManagerRequest,
+  output: CreatePaymentManagerResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreatePaymentManager",
+}));
+
+export type CreatePolicyError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a policy within the AgentCore Policy system. Policies provide real-time, deterministic control over agentic interactions with AgentCore Gateway. Using the Cedar policy language, you can define fine-grained policies that specify which interactions with Gateway tools are permitted based on input parameters and OAuth claims, ensuring agents operate within defined boundaries and business rules. The policy is validated during creation against the Cedar schema generated from the Gateway's tools' input schemas, which defines the available tools, their parameters, and expected data types. This is an asynchronous operation. Use the GetPolicy operation to poll the `status` field to track completion.
+ */
+export const createPolicy: API.OperationMethod<
+  CreatePolicyRequest,
+  CreatePolicyResponse,
+  CreatePolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreatePolicyRequest,
+  output: CreatePolicyResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreatePolicy",
+}));
+
+export type CreatePolicyEngineError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new policy engine within the AgentCore Policy system. A policy engine is a collection of policies that evaluates and authorizes agent tool calls. When associated with Gateways (each Gateway can be associated with at most one policy engine, but multiple Gateways can be associated with the same engine), the policy engine intercepts all agent requests and determines whether to allow or deny each action based on the defined policies. This is an asynchronous operation. Use the GetPolicyEngine operation to poll the `status` field to track completion.
+ */
+export const createPolicyEngine: API.OperationMethod<
+  CreatePolicyEngineRequest,
+  CreatePolicyEngineResponse,
+  CreatePolicyEngineError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreatePolicyEngineRequest,
+  output: CreatePolicyEngineResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreatePolicyEngine",
+}));
+
+export type CreateRegistryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new registry in your Amazon Web Services account. A registry serves as a centralized catalog for organizing and managing registry records, including MCP servers, A2A agents, agent skills, and custom resource types.
+ *
+ * If you specify `CUSTOM_JWT` as the `authorizerType`, you must provide an `authorizerConfiguration`.
+ */
+export const createRegistry: API.OperationMethod<
+  CreateRegistryRequest,
+  CreateRegistryResponse,
+  CreateRegistryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateRegistryRequest,
+  output: CreateRegistryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateRegistry",
+}));
+
+export type CreateRegistryRecordError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new registry record within the specified registry. A registry record represents an individual AI resource's metadata in the registry. This could be an MCP server (and associated tools), A2A agent, agent skill, or a custom resource with a custom schema.
+ *
+ * The record is processed asynchronously and returns HTTP 202 Accepted.
+ */
+export const createRegistryRecord: API.OperationMethod<
+  CreateRegistryRecordRequest,
+  CreateRegistryRecordResponse,
+  CreateRegistryRecordError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateRegistryRecordRequest,
+  output: CreateRegistryRecordResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateRegistryRecord",
+}));
+
+export type CreateWorkloadIdentityError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates a new workload identity.
+ */
+export const createWorkloadIdentity: API.OperationMethod<
+  CreateWorkloadIdentityRequest,
+  CreateWorkloadIdentityResponse,
+  CreateWorkloadIdentityError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateWorkloadIdentityRequest,
+  output: CreateWorkloadIdentityResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "CreateWorkloadIdentity",
+}));
+
+export type DeleteAgentRuntimeError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes an Amazon Bedrock AgentCore Runtime.
+ */
+export const deleteAgentRuntime: API.OperationMethod<
+  DeleteAgentRuntimeRequest,
+  DeleteAgentRuntimeResponse,
+  DeleteAgentRuntimeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAgentRuntimeRequest,
+  output: DeleteAgentRuntimeResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteAgentRuntime",
+}));
+
 export type DeleteAgentRuntimeEndpointError =
   | AccessDeniedException
   | ConflictException
@@ -13438,6 +14132,1793 @@ export const deleteAgentRuntimeEndpoint: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAgentRuntimeEndpoint",
 }));
+
+export type DeleteApiKeyCredentialProviderError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an API key credential provider.
+ */
+export const deleteApiKeyCredentialProvider: API.OperationMethod<
+  DeleteApiKeyCredentialProviderRequest,
+  DeleteApiKeyCredentialProviderResponse,
+  DeleteApiKeyCredentialProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteApiKeyCredentialProviderRequest,
+  output: DeleteApiKeyCredentialProviderResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteApiKeyCredentialProvider",
+}));
+
+export type DeleteBrowserError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a custom browser.
+ */
+export const deleteBrowser: API.OperationMethod<
+  DeleteBrowserRequest,
+  DeleteBrowserResponse,
+  DeleteBrowserError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBrowserRequest,
+  output: DeleteBrowserResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteBrowser",
+}));
+
+export type DeleteBrowserProfileError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a browser profile.
+ */
+export const deleteBrowserProfile: API.OperationMethod<
+  DeleteBrowserProfileRequest,
+  DeleteBrowserProfileResponse,
+  DeleteBrowserProfileError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBrowserProfileRequest,
+  output: DeleteBrowserProfileResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteBrowserProfile",
+}));
+
+export type DeleteCodeInterpreterError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a custom code interpreter.
+ */
+export const deleteCodeInterpreter: API.OperationMethod<
+  DeleteCodeInterpreterRequest,
+  DeleteCodeInterpreterResponse,
+  DeleteCodeInterpreterError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCodeInterpreterRequest,
+  output: DeleteCodeInterpreterResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteCodeInterpreter",
+}));
+
+export type DeleteConfigurationBundleError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a configuration bundle and all of its versions.
+ */
+export const deleteConfigurationBundle: API.OperationMethod<
+  DeleteConfigurationBundleRequest,
+  DeleteConfigurationBundleResponse,
+  DeleteConfigurationBundleError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConfigurationBundleRequest,
+  output: DeleteConfigurationBundleResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteConfigurationBundle",
+}));
+
+export type DeleteDatasetError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a dataset version or an entire dataset asynchronously. If `datasetVersion` is absent, deletes all versions and the dataset record itself. If provided, deletes only that specific version.
+ */
+export const deleteDataset: API.OperationMethod<
+  DeleteDatasetRequest,
+  DeleteDatasetResponse,
+  DeleteDatasetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDatasetRequest,
+  output: DeleteDatasetResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteDataset",
+}));
+
+export type DeleteDatasetExamplesError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes specific examples by ID from DRAFT. All example IDs are validated before any deletes occur. If any ID does not exist in DRAFT, the entire batch is rejected (all-or-nothing semantics).
+ */
+export const deleteDatasetExamples: API.OperationMethod<
+  DeleteDatasetExamplesRequest,
+  DeleteDatasetExamplesResponse,
+  DeleteDatasetExamplesError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDatasetExamplesRequest,
+  output: DeleteDatasetExamplesResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteDatasetExamples",
+}));
+
+export type DeleteEvaluatorError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a custom evaluator. Builtin evaluators cannot be deleted. The evaluator must not be referenced by any active online evaluation configurations.
+ */
+export const deleteEvaluator: API.OperationMethod<
+  DeleteEvaluatorRequest,
+  DeleteEvaluatorResponse,
+  DeleteEvaluatorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteEvaluatorRequest,
+  output: DeleteEvaluatorResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteEvaluator",
+}));
+
+export type DeleteGatewayError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a gateway.
+ */
+export const deleteGateway: API.OperationMethod<
+  DeleteGatewayRequest,
+  DeleteGatewayResponse,
+  DeleteGatewayError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteGatewayRequest,
+  output: DeleteGatewayResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteGateway",
+}));
+
+export type DeleteGatewayRuleError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a gateway rule.
+ */
+export const deleteGatewayRule: API.OperationMethod<
+  DeleteGatewayRuleRequest,
+  DeleteGatewayRuleResponse,
+  DeleteGatewayRuleError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteGatewayRuleRequest,
+  output: DeleteGatewayRuleResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteGatewayRule",
+}));
+
+export type DeleteGatewayTargetError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a gateway target.
+ *
+ * You cannot delete a target that is in a pending authorization state (`CREATE_PENDING_AUTH`, `UPDATE_PENDING_AUTH`, or `SYNCHRONIZE_PENDING_AUTH`). Wait for the authorization to complete or fail before deleting the target.
+ */
+export const deleteGatewayTarget: API.OperationMethod<
+  DeleteGatewayTargetRequest,
+  DeleteGatewayTargetResponse,
+  DeleteGatewayTargetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteGatewayTargetRequest,
+  output: DeleteGatewayTargetResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteGatewayTarget",
+}));
+
+export type DeleteHarnessError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Operation to delete a Harness.
+ */
+export const deleteHarness: API.OperationMethod<
+  DeleteHarnessRequest,
+  DeleteHarnessResponse,
+  DeleteHarnessError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteHarnessRequest,
+  output: DeleteHarnessResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteHarness",
+}));
+
+export type DeleteHarnessEndpointError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Operation to delete a harness endpoint.
+ */
+export const deleteHarnessEndpoint: API.OperationMethod<
+  DeleteHarnessEndpointRequest,
+  DeleteHarnessEndpointResponse,
+  DeleteHarnessEndpointError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteHarnessEndpointRequest,
+  output: DeleteHarnessEndpointResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteHarnessEndpoint",
+}));
+
+export type DeleteMemoryError =
+  | AccessDeniedException
+  | ConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | ThrottledException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an Amazon Bedrock AgentCore Memory resource.
+ */
+export const deleteMemory: API.OperationMethod<
+  DeleteMemoryInput,
+  DeleteMemoryOutput,
+  DeleteMemoryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteMemoryInput,
+  output: DeleteMemoryOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    ThrottledException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteMemory",
+}));
+
+export type DeleteOauth2CredentialProviderError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an OAuth2 credential provider.
+ */
+export const deleteOauth2CredentialProvider: API.OperationMethod<
+  DeleteOauth2CredentialProviderRequest,
+  DeleteOauth2CredentialProviderResponse,
+  DeleteOauth2CredentialProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteOauth2CredentialProviderRequest,
+  output: DeleteOauth2CredentialProviderResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteOauth2CredentialProvider",
+}));
+
+export type DeleteOnlineEvaluationConfigError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an online evaluation configuration and stops any ongoing evaluation processes associated with it.
+ */
+export const deleteOnlineEvaluationConfig: API.OperationMethod<
+  DeleteOnlineEvaluationConfigRequest,
+  DeleteOnlineEvaluationConfigResponse,
+  DeleteOnlineEvaluationConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteOnlineEvaluationConfigRequest,
+  output: DeleteOnlineEvaluationConfigResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteOnlineEvaluationConfig",
+}));
+
+export type DeletePaymentConnectorError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes a payment connector.
+ */
+export const deletePaymentConnector: API.OperationMethod<
+  DeletePaymentConnectorRequest,
+  DeletePaymentConnectorResponse,
+  DeletePaymentConnectorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePaymentConnectorRequest,
+  output: DeletePaymentConnectorResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeletePaymentConnector",
+}));
+
+export type DeletePaymentCredentialProviderError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a payment credential provider and its associated stored credentials.
+ */
+export const deletePaymentCredentialProvider: API.OperationMethod<
+  DeletePaymentCredentialProviderRequest,
+  DeletePaymentCredentialProviderResponse,
+  DeletePaymentCredentialProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePaymentCredentialProviderRequest,
+  output: DeletePaymentCredentialProviderResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeletePaymentCredentialProvider",
+}));
+
+export type DeletePaymentManagerError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Deletes a payment manager. All payment connectors associated with the payment manager must be deleted before the payment manager can be deleted. This operation initiates the deletion process asynchronously.
+ */
+export const deletePaymentManager: API.OperationMethod<
+  DeletePaymentManagerRequest,
+  DeletePaymentManagerResponse,
+  DeletePaymentManagerError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePaymentManagerRequest,
+  output: DeletePaymentManagerResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeletePaymentManager",
+}));
+
+export type DeletePolicyError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an existing policy from the AgentCore Policy system. Once deleted, the policy can no longer be used for agent behavior control and all references to it become invalid. This is an asynchronous operation. Use the `GetPolicy` operation to poll the `status` field to track completion.
+ */
+export const deletePolicy: API.OperationMethod<
+  DeletePolicyRequest,
+  DeletePolicyResponse,
+  DeletePolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePolicyRequest,
+  output: DeletePolicyResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeletePolicy",
+}));
+
+export type DeletePolicyEngineError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes an existing policy engine from the AgentCore Policy system. The policy engine must not have any associated policies before deletion. Once deleted, the policy engine and all its configurations become unavailable for policy management and evaluation. This is an asynchronous operation. Use the `GetPolicyEngine` operation to poll the `status` field to track completion.
+ */
+export const deletePolicyEngine: API.OperationMethod<
+  DeletePolicyEngineRequest,
+  DeletePolicyEngineResponse,
+  DeletePolicyEngineError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePolicyEngineRequest,
+  output: DeletePolicyEngineResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeletePolicyEngine",
+}));
+
+export type DeleteRegistryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a registry. The registry must contain zero records before it can be deleted. This operation initiates the deletion process asynchronously.
+ */
+export const deleteRegistry: API.OperationMethod<
+  DeleteRegistryRequest,
+  DeleteRegistryResponse,
+  DeleteRegistryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRegistryRequest,
+  output: DeleteRegistryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteRegistry",
+}));
+
+export type DeleteRegistryRecordError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a registry record. The record's status transitions to `DELETING` and the record is removed asynchronously.
+ */
+export const deleteRegistryRecord: API.OperationMethod<
+  DeleteRegistryRecordRequest,
+  DeleteRegistryRecordResponse,
+  DeleteRegistryRecordError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRegistryRecordRequest,
+  output: DeleteRegistryRecordResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteRegistryRecord",
+}));
+
+export type DeleteResourcePolicyError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes the resource-based policy for a specified resource.
+ *
+ * This feature is currently available only for AgentCore Runtime and Gateway.
+ */
+export const deleteResourcePolicy: API.OperationMethod<
+  DeleteResourcePolicyRequest,
+  DeleteResourcePolicyResponse,
+  DeleteResourcePolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteResourcePolicyRequest,
+  output: DeleteResourcePolicyResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteResourcePolicy",
+}));
+
+export type DeleteWorkloadIdentityError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Deletes a workload identity.
+ */
+export const deleteWorkloadIdentity: API.OperationMethod<
+  DeleteWorkloadIdentityRequest,
+  DeleteWorkloadIdentityResponse,
+  DeleteWorkloadIdentityError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteWorkloadIdentityRequest,
+  output: DeleteWorkloadIdentityResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "DeleteWorkloadIdentity",
+}));
+
+export type GetAgentRuntimeError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets an Amazon Bedrock AgentCore Runtime.
+ */
+export const getAgentRuntime: API.OperationMethod<
+  GetAgentRuntimeRequest,
+  GetAgentRuntimeResponse,
+  GetAgentRuntimeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAgentRuntimeRequest,
+  output: GetAgentRuntimeResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetAgentRuntime",
+}));
+
+export type GetAgentRuntimeEndpointError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets information about an Amazon Secure AgentEndpoint.
+ */
+export const getAgentRuntimeEndpoint: API.OperationMethod<
+  GetAgentRuntimeEndpointRequest,
+  GetAgentRuntimeEndpointResponse,
+  GetAgentRuntimeEndpointError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAgentRuntimeEndpointRequest,
+  output: GetAgentRuntimeEndpointResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetAgentRuntimeEndpoint",
+}));
+
+export type GetApiKeyCredentialProviderError =
+  | AccessDeniedException
+  | DecryptionFailure
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about an API key credential provider.
+ */
+export const getApiKeyCredentialProvider: API.OperationMethod<
+  GetApiKeyCredentialProviderRequest,
+  GetApiKeyCredentialProviderResponse,
+  GetApiKeyCredentialProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetApiKeyCredentialProviderRequest,
+  output: GetApiKeyCredentialProviderResponse,
+  errors: [
+    AccessDeniedException,
+    DecryptionFailure,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetApiKeyCredentialProvider",
+}));
+
+export type GetBrowserError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Gets information about a custom browser.
+ */
+export const getBrowser: API.OperationMethod<
+  GetBrowserRequest,
+  GetBrowserResponse,
+  GetBrowserError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBrowserRequest,
+  output: GetBrowserResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetBrowser",
+}));
+
+export type GetBrowserProfileError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets information about a browser profile.
+ */
+export const getBrowserProfile: API.OperationMethod<
+  GetBrowserProfileRequest,
+  GetBrowserProfileResponse,
+  GetBrowserProfileError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBrowserProfileRequest,
+  output: GetBrowserProfileResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetBrowserProfile",
+}));
+
+export type GetCodeInterpreterError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | CommonErrors;
+/**
+ * Gets information about a custom code interpreter.
+ */
+export const getCodeInterpreter: API.OperationMethod<
+  GetCodeInterpreterRequest,
+  GetCodeInterpreterResponse,
+  GetCodeInterpreterError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCodeInterpreterRequest,
+  output: GetCodeInterpreterResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetCodeInterpreter",
+}));
+
+export type GetConfigurationBundleError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets the latest version of a configuration bundle. By default, returns the latest version on the mainline branch. Use `GetConfigurationBundleVersion` to retrieve a specific historical version.
+ */
+export const getConfigurationBundle: API.OperationMethod<
+  GetConfigurationBundleRequest,
+  GetConfigurationBundleResponse,
+  GetConfigurationBundleError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConfigurationBundleRequest,
+  output: GetConfigurationBundleResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetConfigurationBundle",
+}));
+
+export type GetConfigurationBundleVersionError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Gets a specific version of a configuration bundle by its version identifier.
+ */
+export const getConfigurationBundleVersion: API.OperationMethod<
+  GetConfigurationBundleVersionRequest,
+  GetConfigurationBundleVersionResponse,
+  GetConfigurationBundleVersionError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConfigurationBundleVersionRequest,
+  output: GetConfigurationBundleVersionResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetConfigurationBundleVersion",
+}));
+
+export type GetDatasetError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves dataset metadata. Use the `datasetVersion` query parameter to retrieve a specific version's metadata. If absent, defaults to DRAFT. For paginated example content, use `ListDatasetExamples`.
+ */
+export const getDataset: API.OperationMethod<
+  GetDatasetRequest,
+  GetDatasetResponse,
+  GetDatasetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDatasetRequest,
+  output: GetDatasetResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetDataset",
+}));
+
+export type GetEvaluatorError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves detailed information about an evaluator, including its configuration, status, and metadata. Works with both built-in and custom evaluators.
+ */
+export const getEvaluator: API.OperationMethod<
+  GetEvaluatorRequest,
+  GetEvaluatorResponse,
+  GetEvaluatorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetEvaluatorRequest,
+  output: GetEvaluatorResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetEvaluator",
+}));
+
+export type GetGatewayError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a specific Gateway.
+ */
+export const getGateway: API.OperationMethod<
+  GetGatewayRequest,
+  GetGatewayResponse,
+  GetGatewayError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGatewayRequest,
+  output: GetGatewayResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetGateway",
+}));
+
+export type GetGatewayRuleError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves detailed information about a specific gateway rule.
+ */
+export const getGatewayRule: API.OperationMethod<
+  GetGatewayRuleRequest,
+  GetGatewayRuleResponse,
+  GetGatewayRuleError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGatewayRuleRequest,
+  output: GetGatewayRuleResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetGatewayRule",
+}));
+
+export type GetGatewayTargetError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a specific gateway target.
+ */
+export const getGatewayTarget: API.OperationMethod<
+  GetGatewayTargetRequest,
+  GetGatewayTargetResponse,
+  GetGatewayTargetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGatewayTargetRequest,
+  output: GetGatewayTargetResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetGatewayTarget",
+}));
+
+export type GetHarnessError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Operation to get a single harness.
+ */
+export const getHarness: API.OperationMethod<
+  GetHarnessRequest,
+  GetHarnessResponse,
+  GetHarnessError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetHarnessRequest,
+  output: GetHarnessResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetHarness",
+}));
+
+export type GetHarnessEndpointError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Operation to get a single harness endpoint.
+ */
+export const getHarnessEndpoint: API.OperationMethod<
+  GetHarnessEndpointRequest,
+  GetHarnessEndpointResponse,
+  GetHarnessEndpointError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetHarnessEndpointRequest,
+  output: GetHarnessEndpointResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetHarnessEndpoint",
+}));
+
+export type GetMemoryError =
+  | AccessDeniedException
+  | ResourceNotFoundException
+  | ServiceException
+  | ThrottledException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieve an existing Amazon Bedrock AgentCore Memory resource.
+ */
+export const getMemory: API.OperationMethod<
+  GetMemoryInput,
+  GetMemoryOutput,
+  GetMemoryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMemoryInput,
+  output: GetMemoryOutput,
+  errors: [
+    AccessDeniedException,
+    ResourceNotFoundException,
+    ServiceException,
+    ThrottledException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetMemory",
+}));
+
+export type GetOauth2CredentialProviderError =
+  | AccessDeniedException
+  | DecryptionFailure
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about an OAuth2 credential provider.
+ */
+export const getOauth2CredentialProvider: API.OperationMethod<
+  GetOauth2CredentialProviderRequest,
+  GetOauth2CredentialProviderResponse,
+  GetOauth2CredentialProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOauth2CredentialProviderRequest,
+  output: GetOauth2CredentialProviderResponse,
+  errors: [
+    AccessDeniedException,
+    DecryptionFailure,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetOauth2CredentialProvider",
+}));
+
+export type GetOnlineEvaluationConfigError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves detailed information about an online evaluation configuration, including its rules, data sources, evaluators, and execution status.
+ */
+export const getOnlineEvaluationConfig: API.OperationMethod<
+  GetOnlineEvaluationConfigRequest,
+  GetOnlineEvaluationConfigResponse,
+  GetOnlineEvaluationConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOnlineEvaluationConfigRequest,
+  output: GetOnlineEvaluationConfigResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetOnlineEvaluationConfig",
+}));
+
+export type GetPaymentConnectorError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a specific payment connector.
+ */
+export const getPaymentConnector: API.OperationMethod<
+  GetPaymentConnectorRequest,
+  GetPaymentConnectorResponse,
+  GetPaymentConnectorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPaymentConnectorRequest,
+  output: GetPaymentConnectorResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetPaymentConnector",
+}));
+
+export type GetPaymentCredentialProviderError =
+  | AccessDeniedException
+  | DecryptionFailure
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a specific payment credential provider.
+ */
+export const getPaymentCredentialProvider: API.OperationMethod<
+  GetPaymentCredentialProviderRequest,
+  GetPaymentCredentialProviderResponse,
+  GetPaymentCredentialProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPaymentCredentialProviderRequest,
+  output: GetPaymentCredentialProviderResponse,
+  errors: [
+    AccessDeniedException,
+    DecryptionFailure,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetPaymentCredentialProvider",
+}));
+
+export type GetPaymentManagerError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a specific payment manager.
+ */
+export const getPaymentManager: API.OperationMethod<
+  GetPaymentManagerRequest,
+  GetPaymentManagerResponse,
+  GetPaymentManagerError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPaymentManagerRequest,
+  output: GetPaymentManagerResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetPaymentManager",
+}));
+
+export type GetPolicyError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves detailed information about a specific policy within the AgentCore Policy system. This operation returns the complete policy definition, metadata, and current status, allowing administrators to review and manage policy configurations.
+ */
+export const getPolicy: API.OperationMethod<
+  GetPolicyRequest,
+  GetPolicyResponse,
+  GetPolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPolicyRequest,
+  output: GetPolicyResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetPolicy",
+}));
+
+export type GetPolicyEngineError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves detailed information about a specific policy engine within the AgentCore Policy system. This operation returns the complete policy engine configuration, metadata, and current status, allowing administrators to review and manage policy engine settings.
+ */
+export const getPolicyEngine: API.OperationMethod<
+  GetPolicyEngineRequest,
+  GetPolicyEngineResponse,
+  GetPolicyEngineError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPolicyEngineRequest,
+  output: GetPolicyEngineResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetPolicyEngine",
+}));
+
+export type GetPolicyEngineSummaryError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves a metadata-only summary of a specific policy engine without decrypting customer content. This lightweight read operation returns resource identifiers, status, timestamps, and the encryption key ARN, but does not include the description or status reasons. Because this operation does not require access to the customer's KMS key, it is suitable for resource discovery, inventory, and integration scenarios where only metadata is needed.
+ */
+export const getPolicyEngineSummary: API.OperationMethod<
+  GetPolicyEngineSummaryRequest,
+  GetPolicyEngineSummaryResponse,
+  GetPolicyEngineSummaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPolicyEngineSummaryRequest,
+  output: GetPolicyEngineSummaryResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetPolicyEngineSummary",
+}));
+
+export type GetPolicyGenerationError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a policy generation request within the AgentCore Policy system. Policy generation converts natural language descriptions into Cedar policy statements using AI-powered translation, enabling non-technical users to create policies.
+ */
+export const getPolicyGeneration: API.OperationMethod<
+  GetPolicyGenerationRequest,
+  GetPolicyGenerationResponse,
+  GetPolicyGenerationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPolicyGenerationRequest,
+  output: GetPolicyGenerationResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetPolicyGeneration",
+}));
+
+export type GetPolicyGenerationSummaryError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves a metadata-only summary of a specific policy generation request without decrypting customer content. This lightweight read operation returns resource identifiers, status, timestamps, and findings, but does not include status reasons. Because this operation does not require access to the customer's KMS key, it is suitable for resource discovery, inventory, and integration scenarios where only metadata is needed.
+ */
+export const getPolicyGenerationSummary: API.OperationMethod<
+  GetPolicyGenerationSummaryRequest,
+  GetPolicyGenerationSummaryResponse,
+  GetPolicyGenerationSummaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPolicyGenerationSummaryRequest,
+  output: GetPolicyGenerationSummaryResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetPolicyGenerationSummary",
+}));
+
+export type GetPolicySummaryError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves a metadata-only summary of a specific policy without decrypting customer content. This lightweight read operation returns resource identifiers, status, and timestamps, but does not include the policy definition, description, or status reasons. Because this operation does not require access to the customer's KMS key, it is suitable for resource discovery, inventory, and integration scenarios where only metadata is needed.
+ */
+export const getPolicySummary: API.OperationMethod<
+  GetPolicySummaryRequest,
+  GetPolicySummaryResponse,
+  GetPolicySummaryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPolicySummaryRequest,
+  output: GetPolicySummaryResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetPolicySummary",
+}));
+
+export type GetRegistryError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a specific registry.
+ */
+export const getRegistry: API.OperationMethod<
+  GetRegistryRequest,
+  GetRegistryResponse,
+  GetRegistryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRegistryRequest,
+  output: GetRegistryResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetRegistry",
+}));
+
+export type GetRegistryRecordError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a specific registry record.
+ */
+export const getRegistryRecord: API.OperationMethod<
+  GetRegistryRecordRequest,
+  GetRegistryRecordResponse,
+  GetRegistryRecordError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRegistryRecordRequest,
+  output: GetRegistryRecordResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetRegistryRecord",
+}));
+
+export type GetResourcePolicyError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves the resource-based policy for a specified resource.
+ *
+ * This feature is currently available only for AgentCore Runtime and Gateway.
+ */
+export const getResourcePolicy: API.OperationMethod<
+  GetResourcePolicyRequest,
+  GetResourcePolicyResponse,
+  GetResourcePolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetResourcePolicyRequest,
+  output: GetResourcePolicyResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetResourcePolicy",
+}));
+
+export type GetTokenVaultError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a token vault.
+ */
+export const getTokenVault: API.OperationMethod<
+  GetTokenVaultRequest,
+  GetTokenVaultResponse,
+  GetTokenVaultError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetTokenVaultRequest,
+  output: GetTokenVaultResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetTokenVault",
+}));
+
+export type GetWorkloadIdentityError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves information about a workload identity.
+ */
+export const getWorkloadIdentity: API.OperationMethod<
+  GetWorkloadIdentityRequest,
+  GetWorkloadIdentityResponse,
+  GetWorkloadIdentityError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetWorkloadIdentityRequest,
+  output: GetWorkloadIdentityResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "GetWorkloadIdentity",
+}));
+
 export type ListAgentRuntimeEndpointsError =
   | AccessDeniedException
   | InternalServerException
@@ -13486,128 +15967,7 @@ export const listAgentRuntimeEndpoints: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateAgentRuntimeError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates an Amazon Bedrock AgentCore Runtime.
- */
-export const createAgentRuntime: API.OperationMethod<
-  CreateAgentRuntimeRequest,
-  CreateAgentRuntimeResponse,
-  CreateAgentRuntimeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentRuntimeRequest,
-  output: CreateAgentRuntimeResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateAgentRuntime",
-}));
-export type GetAgentRuntimeError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Gets an Amazon Bedrock AgentCore Runtime.
- */
-export const getAgentRuntime: API.OperationMethod<
-  GetAgentRuntimeRequest,
-  GetAgentRuntimeResponse,
-  GetAgentRuntimeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetAgentRuntimeRequest,
-  output: GetAgentRuntimeResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetAgentRuntime",
-}));
-export type UpdateAgentRuntimeError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing Amazon Secure Agent.
- */
-export const updateAgentRuntime: API.OperationMethod<
-  UpdateAgentRuntimeRequest,
-  UpdateAgentRuntimeResponse,
-  UpdateAgentRuntimeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAgentRuntimeRequest,
-  output: UpdateAgentRuntimeResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateAgentRuntime",
-}));
-export type DeleteAgentRuntimeError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | CommonErrors;
-/**
- * Deletes an Amazon Bedrock AgentCore Runtime.
- */
-export const deleteAgentRuntime: API.OperationMethod<
-  DeleteAgentRuntimeRequest,
-  DeleteAgentRuntimeResponse,
-  DeleteAgentRuntimeError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAgentRuntimeRequest,
-  output: DeleteAgentRuntimeResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteAgentRuntime",
-}));
+
 export type ListAgentRuntimesError =
   | AccessDeniedException
   | InternalServerException
@@ -13656,6 +16016,7 @@ export const listAgentRuntimes: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListAgentRuntimeVersionsError =
   | AccessDeniedException
   | InternalServerException
@@ -13706,150 +16067,7 @@ export const listAgentRuntimeVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateApiKeyCredentialProviderError =
-  | AccessDeniedException
-  | ConflictException
-  | DecryptionFailure
-  | EncryptionFailure
-  | InternalServerException
-  | ResourceLimitExceededException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a new API key credential provider.
- */
-export const createApiKeyCredentialProvider: API.OperationMethod<
-  CreateApiKeyCredentialProviderRequest,
-  CreateApiKeyCredentialProviderResponse,
-  CreateApiKeyCredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateApiKeyCredentialProviderRequest,
-  output: CreateApiKeyCredentialProviderResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    DecryptionFailure,
-    EncryptionFailure,
-    InternalServerException,
-    ResourceLimitExceededException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateApiKeyCredentialProvider",
-}));
-export type GetApiKeyCredentialProviderError =
-  | AccessDeniedException
-  | DecryptionFailure
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about an API key credential provider.
- */
-export const getApiKeyCredentialProvider: API.OperationMethod<
-  GetApiKeyCredentialProviderRequest,
-  GetApiKeyCredentialProviderResponse,
-  GetApiKeyCredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetApiKeyCredentialProviderRequest,
-  output: GetApiKeyCredentialProviderResponse,
-  errors: [
-    AccessDeniedException,
-    DecryptionFailure,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetApiKeyCredentialProvider",
-}));
-export type UpdateApiKeyCredentialProviderError =
-  | AccessDeniedException
-  | ConflictException
-  | DecryptionFailure
-  | EncryptionFailure
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing API key credential provider.
- */
-export const updateApiKeyCredentialProvider: API.OperationMethod<
-  UpdateApiKeyCredentialProviderRequest,
-  UpdateApiKeyCredentialProviderResponse,
-  UpdateApiKeyCredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApiKeyCredentialProviderRequest,
-  output: UpdateApiKeyCredentialProviderResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    DecryptionFailure,
-    EncryptionFailure,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateApiKeyCredentialProvider",
-}));
-export type DeleteApiKeyCredentialProviderError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes an API key credential provider.
- */
-export const deleteApiKeyCredentialProvider: API.OperationMethod<
-  DeleteApiKeyCredentialProviderRequest,
-  DeleteApiKeyCredentialProviderResponse,
-  DeleteApiKeyCredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApiKeyCredentialProviderRequest,
-  output: DeleteApiKeyCredentialProviderResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteApiKeyCredentialProvider",
-}));
+
 export type ListApiKeyCredentialProvidersError =
   | AccessDeniedException
   | InternalServerException
@@ -13902,97 +16120,7 @@ export const listApiKeyCredentialProviders: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateBrowserProfileError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a browser profile in Amazon Bedrock AgentCore. A browser profile stores persistent browser data such as cookies, local storage, session storage, and browsing history that can be saved from browser sessions and reused in subsequent sessions.
- */
-export const createBrowserProfile: API.OperationMethod<
-  CreateBrowserProfileRequest,
-  CreateBrowserProfileResponse,
-  CreateBrowserProfileError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateBrowserProfileRequest,
-  output: CreateBrowserProfileResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateBrowserProfile",
-}));
-export type GetBrowserProfileError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Gets information about a browser profile.
- */
-export const getBrowserProfile: API.OperationMethod<
-  GetBrowserProfileRequest,
-  GetBrowserProfileResponse,
-  GetBrowserProfileError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetBrowserProfileRequest,
-  output: GetBrowserProfileResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetBrowserProfile",
-}));
-export type DeleteBrowserProfileError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a browser profile.
- */
-export const deleteBrowserProfile: API.OperationMethod<
-  DeleteBrowserProfileRequest,
-  DeleteBrowserProfileResponse,
-  DeleteBrowserProfileError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBrowserProfileRequest,
-  output: DeleteBrowserProfileResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteBrowserProfile",
-}));
+
 export type ListBrowserProfilesError =
   | AccessDeniedException
   | InternalServerException
@@ -14041,99 +16169,7 @@ export const listBrowserProfiles: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateBrowserError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a custom browser.
- */
-export const createBrowser: API.OperationMethod<
-  CreateBrowserRequest,
-  CreateBrowserResponse,
-  CreateBrowserError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateBrowserRequest,
-  output: CreateBrowserResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateBrowser",
-}));
-export type GetBrowserError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | CommonErrors;
-/**
- * Gets information about a custom browser.
- */
-export const getBrowser: API.OperationMethod<
-  GetBrowserRequest,
-  GetBrowserResponse,
-  GetBrowserError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetBrowserRequest,
-  output: GetBrowserResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetBrowser",
-}));
-export type DeleteBrowserError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a custom browser.
- */
-export const deleteBrowser: API.OperationMethod<
-  DeleteBrowserRequest,
-  DeleteBrowserResponse,
-  DeleteBrowserError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBrowserRequest,
-  output: DeleteBrowserResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteBrowser",
-}));
+
 export type ListBrowsersError =
   | AccessDeniedException
   | InternalServerException
@@ -14182,99 +16218,7 @@ export const listBrowsers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateCodeInterpreterError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a custom code interpreter.
- */
-export const createCodeInterpreter: API.OperationMethod<
-  CreateCodeInterpreterRequest,
-  CreateCodeInterpreterResponse,
-  CreateCodeInterpreterError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateCodeInterpreterRequest,
-  output: CreateCodeInterpreterResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateCodeInterpreter",
-}));
-export type GetCodeInterpreterError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | CommonErrors;
-/**
- * Gets information about a custom code interpreter.
- */
-export const getCodeInterpreter: API.OperationMethod<
-  GetCodeInterpreterRequest,
-  GetCodeInterpreterResponse,
-  GetCodeInterpreterError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetCodeInterpreterRequest,
-  output: GetCodeInterpreterResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetCodeInterpreter",
-}));
-export type DeleteCodeInterpreterError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a custom code interpreter.
- */
-export const deleteCodeInterpreter: API.OperationMethod<
-  DeleteCodeInterpreterRequest,
-  DeleteCodeInterpreterResponse,
-  DeleteCodeInterpreterError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCodeInterpreterRequest,
-  output: DeleteCodeInterpreterResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteCodeInterpreter",
-}));
+
 export type ListCodeInterpretersError =
   | AccessDeniedException
   | InternalServerException
@@ -14323,128 +16267,7 @@ export const listCodeInterpreters: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateConfigurationBundleError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a new configuration bundle resource. A configuration bundle stores versioned component configurations for agent evaluation workflows.
- */
-export const createConfigurationBundle: API.OperationMethod<
-  CreateConfigurationBundleRequest,
-  CreateConfigurationBundleResponse,
-  CreateConfigurationBundleError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateConfigurationBundleRequest,
-  output: CreateConfigurationBundleResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateConfigurationBundle",
-}));
-export type GetConfigurationBundleError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Gets the latest version of a configuration bundle. By default, returns the latest version on the mainline branch. Use `GetConfigurationBundleVersion` to retrieve a specific historical version.
- */
-export const getConfigurationBundle: API.OperationMethod<
-  GetConfigurationBundleRequest,
-  GetConfigurationBundleResponse,
-  GetConfigurationBundleError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationBundleRequest,
-  output: GetConfigurationBundleResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetConfigurationBundle",
-}));
-export type UpdateConfigurationBundleError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates a configuration bundle by creating a new version with the specified changes. Each update creates a new version in the version history.
- */
-export const updateConfigurationBundle: API.OperationMethod<
-  UpdateConfigurationBundleRequest,
-  UpdateConfigurationBundleResponse,
-  UpdateConfigurationBundleError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConfigurationBundleRequest,
-  output: UpdateConfigurationBundleResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateConfigurationBundle",
-}));
-export type DeleteConfigurationBundleError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a configuration bundle and all of its versions.
- */
-export const deleteConfigurationBundle: API.OperationMethod<
-  DeleteConfigurationBundleRequest,
-  DeleteConfigurationBundleResponse,
-  DeleteConfigurationBundleError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConfigurationBundleRequest,
-  output: DeleteConfigurationBundleResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteConfigurationBundle",
-}));
+
 export type ListConfigurationBundlesError =
   | AccessDeniedException
   | InternalServerException
@@ -14493,35 +16316,7 @@ export const listConfigurationBundles: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type GetConfigurationBundleVersionError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Gets a specific version of a configuration bundle by its version identifier.
- */
-export const getConfigurationBundleVersion: API.OperationMethod<
-  GetConfigurationBundleVersionRequest,
-  GetConfigurationBundleVersionResponse,
-  GetConfigurationBundleVersionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationBundleVersionRequest,
-  output: GetConfigurationBundleVersionResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetConfigurationBundleVersion",
-}));
+
 export type ListConfigurationBundleVersionsError =
   | AccessDeniedException
   | InternalServerException
@@ -14572,275 +16367,7 @@ export const listConfigurationBundleVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateDatasetError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a new dataset resource asynchronously. Returns immediately with status CREATING. Poll `GetDataset` until status transitions to ACTIVE or CREATE_FAILED.
- */
-export const createDataset: API.OperationMethod<
-  CreateDatasetRequest,
-  CreateDatasetResponse,
-  CreateDatasetError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetRequest,
-  output: CreateDatasetResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateDataset",
-}));
-export type GetDatasetError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves dataset metadata. Use the `datasetVersion` query parameter to retrieve a specific version's metadata. If absent, defaults to DRAFT. For paginated example content, use `ListDatasetExamples`.
- */
-export const getDataset: API.OperationMethod<
-  GetDatasetRequest,
-  GetDatasetResponse,
-  GetDatasetError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetRequest,
-  output: GetDatasetResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetDataset",
-}));
-export type UpdateDatasetError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates a dataset's metadata. Synchronous operation. Only provided fields are updated; omitted fields remain unchanged. To modify dataset content, use `AddDatasetExamples`, `UpdateDatasetExamples`, or `DeleteDatasetExamples`.
- */
-export const updateDataset: API.OperationMethod<
-  UpdateDatasetRequest,
-  UpdateDatasetResponse,
-  UpdateDatasetError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDatasetRequest,
-  output: UpdateDatasetResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateDataset",
-}));
-export type DeleteDatasetError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a dataset version or an entire dataset asynchronously. If `datasetVersion` is absent, deletes all versions and the dataset record itself. If provided, deletes only that specific version.
- */
-export const deleteDataset: API.OperationMethod<
-  DeleteDatasetRequest,
-  DeleteDatasetResponse,
-  DeleteDatasetError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatasetRequest,
-  output: DeleteDatasetResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteDataset",
-}));
-export type ListDatasetsError =
-  | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Lists all datasets in the caller's account, paginated.
- */
-export const listDatasets: API.OperationMethod<
-  ListDatasetsRequest,
-  ListDatasetsResponse,
-  ListDatasetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    ListDatasetsResponse,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListDatasetsRequest,
-  ) => stream.Stream<
-    DatasetSummary,
-    ListDatasetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDatasetsRequest,
-  output: ListDatasetsResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListDatasets",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "datasets",
-    pageSize: "maxResults",
-  } as const,
-}));
-export type AddDatasetExamplesError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Adds examples to the dataset's DRAFT. All examples are validated against the dataset's schema type before any writes occur. If any example fails validation, the entire batch is rejected (all-or-nothing semantics).
- */
-export const addDatasetExamples: API.OperationMethod<
-  AddDatasetExamplesRequest,
-  AddDatasetExamplesResponse,
-  AddDatasetExamplesError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddDatasetExamplesRequest,
-  output: AddDatasetExamplesResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "AddDatasetExamples",
-}));
-export type CreateDatasetVersionError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Publishes the current DRAFT as a new numbered version. The DRAFT is preserved and remains editable after publishing. Returns immediately with status UPDATING. Poll `GetDataset` until status transitions to ACTIVE or UPDATE_FAILED.
- */
-export const createDatasetVersion: API.OperationMethod<
-  CreateDatasetVersionRequest,
-  CreateDatasetVersionResponse,
-  CreateDatasetVersionError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetVersionRequest,
-  output: CreateDatasetVersionResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateDatasetVersion",
-}));
-export type DeleteDatasetExamplesError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes specific examples by ID from DRAFT. All example IDs are validated before any deletes occur. If any ID does not exist in DRAFT, the entire batch is rejected (all-or-nothing semantics).
- */
-export const deleteDatasetExamples: API.OperationMethod<
-  DeleteDatasetExamplesRequest,
-  DeleteDatasetExamplesResponse,
-  DeleteDatasetExamplesError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatasetExamplesRequest,
-  output: DeleteDatasetExamplesResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteDatasetExamples",
-}));
+
 export type ListDatasetExamplesError =
   | AccessDeniedException
   | ConflictException
@@ -14893,6 +16420,56 @@ export const listDatasetExamples: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
+export type ListDatasetsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Lists all datasets in the caller's account, paginated.
+ */
+export const listDatasets: API.OperationMethod<
+  ListDatasetsRequest,
+  ListDatasetsResponse,
+  ListDatasetsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListDatasetsRequest,
+  ) => stream.Stream<
+    ListDatasetsResponse,
+    ListDatasetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListDatasetsRequest,
+  ) => stream.Stream<
+    DatasetSummary,
+    ListDatasetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListDatasetsRequest,
+  output: ListDatasetsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListDatasets",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "datasets",
+    pageSize: "maxResults",
+  } as const,
+}));
+
 export type ListDatasetVersionsError =
   | AccessDeniedException
   | InternalServerException
@@ -14943,163 +16520,7 @@ export const listDatasetVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type UpdateDatasetExamplesError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates multiple existing examples in-place on DRAFT. All examples are validated against the dataset's schema type before any writes occur. If any example fails validation, the entire batch is rejected (all-or-nothing semantics).
- */
-export const updateDatasetExamples: API.OperationMethod<
-  UpdateDatasetExamplesRequest,
-  UpdateDatasetExamplesResponse,
-  UpdateDatasetExamplesError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDatasetExamplesRequest,
-  output: UpdateDatasetExamplesResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateDatasetExamples",
-}));
-export type CreateEvaluatorError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a custom evaluator for agent quality assessment. Custom evaluators can use either LLM-as-a-Judge configurations with user-defined prompts, rating scales, and model settings, or code-based configurations with customer-managed Lambda functions to evaluate agent performance at tool call, trace, or session levels.
- */
-export const createEvaluator: API.OperationMethod<
-  CreateEvaluatorRequest,
-  CreateEvaluatorResponse,
-  CreateEvaluatorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateEvaluatorRequest,
-  output: CreateEvaluatorResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateEvaluator",
-}));
-export type GetEvaluatorError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves detailed information about an evaluator, including its configuration, status, and metadata. Works with both built-in and custom evaluators.
- */
-export const getEvaluator: API.OperationMethod<
-  GetEvaluatorRequest,
-  GetEvaluatorResponse,
-  GetEvaluatorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetEvaluatorRequest,
-  output: GetEvaluatorResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetEvaluator",
-}));
-export type UpdateEvaluatorError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates a custom evaluator's configuration, description, or evaluation level. Built-in evaluators cannot be updated. The evaluator must not be locked for modification.
- */
-export const updateEvaluator: API.OperationMethod<
-  UpdateEvaluatorRequest,
-  UpdateEvaluatorResponse,
-  UpdateEvaluatorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEvaluatorRequest,
-  output: UpdateEvaluatorResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateEvaluator",
-}));
-export type DeleteEvaluatorError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a custom evaluator. Builtin evaluators cannot be deleted. The evaluator must not be referenced by any active online evaluation configurations.
- */
-export const deleteEvaluator: API.OperationMethod<
-  DeleteEvaluatorRequest,
-  DeleteEvaluatorResponse,
-  DeleteEvaluatorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEvaluatorRequest,
-  output: DeleteEvaluatorResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteEvaluator",
-}));
+
 export type ListEvaluatorsError =
   | AccessDeniedException
   | InternalServerException
@@ -15148,273 +16569,7 @@ export const listEvaluators: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateGatewayError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a gateway for Amazon Bedrock Agent. A gateway serves as an integration point between your agent and external services.
- *
- * If you specify `CUSTOM_JWT` as the `authorizerType`, you must provide an `authorizerConfiguration`.
- */
-export const createGateway: API.OperationMethod<
-  CreateGatewayRequest,
-  CreateGatewayResponse,
-  CreateGatewayError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateGatewayRequest,
-  output: CreateGatewayResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateGateway",
-}));
-export type DeleteGatewayError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a gateway.
- */
-export const deleteGateway: API.OperationMethod<
-  DeleteGatewayRequest,
-  DeleteGatewayResponse,
-  DeleteGatewayError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGatewayRequest,
-  output: DeleteGatewayResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteGateway",
-}));
-export type GetGatewayError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about a specific Gateway.
- */
-export const getGateway: API.OperationMethod<
-  GetGatewayRequest,
-  GetGatewayResponse,
-  GetGatewayError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetGatewayRequest,
-  output: GetGatewayResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetGateway",
-}));
-export type ListGatewaysError =
-  | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Lists all gateways in the account.
- */
-export const listGateways: API.OperationMethod<
-  ListGatewaysRequest,
-  ListGatewaysResponse,
-  ListGatewaysError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListGatewaysRequest,
-  ) => stream.Stream<
-    ListGatewaysResponse,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListGatewaysRequest,
-  ) => stream.Stream<
-    GatewaySummary,
-    ListGatewaysError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListGatewaysRequest,
-  output: ListGatewaysResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListGateways",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "items",
-    pageSize: "maxResults",
-  } as const,
-}));
-export type UpdateGatewayError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing gateway.
- */
-export const updateGateway: API.OperationMethod<
-  UpdateGatewayRequest,
-  UpdateGatewayResponse,
-  UpdateGatewayError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGatewayRequest,
-  output: UpdateGatewayResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateGateway",
-}));
-export type CreateGatewayRuleError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a rule for a gateway. Rules define conditions and actions that control how requests are routed and processed through the gateway, including principal-based access control and path-based routing.
- */
-export const createGatewayRule: API.OperationMethod<
-  CreateGatewayRuleRequest,
-  CreateGatewayRuleResponse,
-  CreateGatewayRuleError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateGatewayRuleRequest,
-  output: CreateGatewayRuleResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateGatewayRule",
-}));
-export type DeleteGatewayRuleError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a gateway rule.
- */
-export const deleteGatewayRule: API.OperationMethod<
-  DeleteGatewayRuleRequest,
-  DeleteGatewayRuleResponse,
-  DeleteGatewayRuleError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGatewayRuleRequest,
-  output: DeleteGatewayRuleResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteGatewayRule",
-}));
-export type GetGatewayRuleError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves detailed information about a specific gateway rule.
- */
-export const getGatewayRule: API.OperationMethod<
-  GetGatewayRuleRequest,
-  GetGatewayRuleResponse,
-  GetGatewayRuleError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetGatewayRuleRequest,
-  output: GetGatewayRuleResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetGatewayRule",
-}));
+
 export type ListGatewayRulesError =
   | AccessDeniedException
   | InternalServerException
@@ -15465,132 +16620,56 @@ export const listGatewayRules: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type UpdateGatewayRuleError =
+
+export type ListGatewaysError =
   | AccessDeniedException
-  | ConflictException
   | InternalServerException
-  | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Updates a gateway rule's priority, conditions, actions, or description.
+ * Lists all gateways in the account.
  */
-export const updateGatewayRule: API.OperationMethod<
-  UpdateGatewayRuleRequest,
-  UpdateGatewayRuleResponse,
-  UpdateGatewayRuleError,
+export const listGateways: API.OperationMethod<
+  ListGatewaysRequest,
+  ListGatewaysResponse,
+  ListGatewaysError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGatewayRuleRequest,
-  output: UpdateGatewayRuleResponse,
+> & {
+  pages: (
+    input: ListGatewaysRequest,
+  ) => stream.Stream<
+    ListGatewaysResponse,
+    ListGatewaysError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListGatewaysRequest,
+  ) => stream.Stream<
+    GatewaySummary,
+    ListGatewaysError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListGatewaysRequest,
+  output: ListGatewaysResponse,
   errors: [
     AccessDeniedException,
-    ConflictException,
     InternalServerException,
-    ResourceNotFoundException,
     ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "UpdateGatewayRule",
+  operationName: "ListGateways",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "items",
+    pageSize: "maxResults",
+  } as const,
 }));
-export type CreateGatewayTargetError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a target for a gateway. A target defines an endpoint that the gateway can connect to.
- */
-export const createGatewayTarget: API.OperationMethod<
-  CreateGatewayTargetRequest,
-  CreateGatewayTargetResponse,
-  CreateGatewayTargetError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateGatewayTargetRequest,
-  output: CreateGatewayTargetResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateGatewayTarget",
-}));
-export type DeleteGatewayTargetError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a gateway target.
- *
- * You cannot delete a target that is in a pending authorization state (`CREATE_PENDING_AUTH`, `UPDATE_PENDING_AUTH`, or `SYNCHRONIZE_PENDING_AUTH`). Wait for the authorization to complete or fail before deleting the target.
- */
-export const deleteGatewayTarget: API.OperationMethod<
-  DeleteGatewayTargetRequest,
-  DeleteGatewayTargetResponse,
-  DeleteGatewayTargetError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGatewayTargetRequest,
-  output: DeleteGatewayTargetResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteGatewayTarget",
-}));
-export type GetGatewayTargetError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about a specific gateway target.
- */
-export const getGatewayTarget: API.OperationMethod<
-  GetGatewayTargetRequest,
-  GetGatewayTargetResponse,
-  GetGatewayTargetError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetGatewayTargetRequest,
-  output: GetGatewayTargetResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetGatewayTarget",
-}));
+
 export type ListGatewayTargetsError =
   | AccessDeniedException
   | InternalServerException
@@ -15641,171 +16720,7 @@ export const listGatewayTargets: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type SynchronizeGatewayTargetsError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Synchronizes the gateway targets by fetching the latest tool definitions from the target endpoints.
- *
- * You cannot synchronize a target that is in a pending authorization state (`CREATE_PENDING_AUTH`, `UPDATE_PENDING_AUTH`, or `SYNCHRONIZE_PENDING_AUTH`). Wait for the authorization to complete or fail before synchronizing.
- *
- * You cannot synchronize a target that has a static tool schema (`mcpToolSchema`) configured. Remove the static schema through an `UpdateGatewayTarget` call to enable dynamic tool synchronization.
- */
-export const synchronizeGatewayTargets: API.OperationMethod<
-  SynchronizeGatewayTargetsRequest,
-  SynchronizeGatewayTargetsResponse,
-  SynchronizeGatewayTargetsError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: SynchronizeGatewayTargetsRequest,
-  output: SynchronizeGatewayTargetsResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "SynchronizeGatewayTargets",
-}));
-export type UpdateGatewayTargetError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing gateway target.
- *
- * You cannot update a target that is in a pending authorization state (`CREATE_PENDING_AUTH`, `UPDATE_PENDING_AUTH`, or `SYNCHRONIZE_PENDING_AUTH`). Wait for the authorization to complete or fail before updating the target.
- */
-export const updateGatewayTarget: API.OperationMethod<
-  UpdateGatewayTargetRequest,
-  UpdateGatewayTargetResponse,
-  UpdateGatewayTargetError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGatewayTargetRequest,
-  output: UpdateGatewayTargetResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateGatewayTarget",
-}));
-export type CreateHarnessEndpointError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Operation to create a harness endpoint.
- */
-export const createHarnessEndpoint: API.OperationMethod<
-  CreateHarnessEndpointRequest,
-  CreateHarnessEndpointResponse,
-  CreateHarnessEndpointError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateHarnessEndpointRequest,
-  output: CreateHarnessEndpointResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateHarnessEndpoint",
-}));
-export type DeleteHarnessEndpointError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Operation to delete a harness endpoint.
- */
-export const deleteHarnessEndpoint: API.OperationMethod<
-  DeleteHarnessEndpointRequest,
-  DeleteHarnessEndpointResponse,
-  DeleteHarnessEndpointError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHarnessEndpointRequest,
-  output: DeleteHarnessEndpointResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteHarnessEndpoint",
-}));
-export type GetHarnessEndpointError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Operation to get a single harness endpoint.
- */
-export const getHarnessEndpoint: API.OperationMethod<
-  GetHarnessEndpointRequest,
-  GetHarnessEndpointResponse,
-  GetHarnessEndpointError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetHarnessEndpointRequest,
-  output: GetHarnessEndpointResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetHarnessEndpoint",
-}));
+
 export type ListHarnessEndpointsError =
   | AccessDeniedException
   | InternalServerException
@@ -15856,130 +16771,7 @@ export const listHarnessEndpoints: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type UpdateHarnessEndpointError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Operation to update a harness endpoint.
- */
-export const updateHarnessEndpoint: API.OperationMethod<
-  UpdateHarnessEndpointRequest,
-  UpdateHarnessEndpointResponse,
-  UpdateHarnessEndpointError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateHarnessEndpointRequest,
-  output: UpdateHarnessEndpointResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateHarnessEndpoint",
-}));
-export type CreateHarnessError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Operation to create a harness.
- */
-export const createHarness: API.OperationMethod<
-  CreateHarnessRequest,
-  CreateHarnessResponse,
-  CreateHarnessError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateHarnessRequest,
-  output: CreateHarnessResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateHarness",
-}));
-export type DeleteHarnessError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Operation to delete a Harness.
- */
-export const deleteHarness: API.OperationMethod<
-  DeleteHarnessRequest,
-  DeleteHarnessResponse,
-  DeleteHarnessError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHarnessRequest,
-  output: DeleteHarnessResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteHarness",
-}));
-export type GetHarnessError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Operation to get a single harness.
- */
-export const getHarness: API.OperationMethod<
-  GetHarnessRequest,
-  GetHarnessResponse,
-  GetHarnessError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetHarnessRequest,
-  output: GetHarnessResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetHarness",
-}));
+
 export type ListHarnessesError =
   | AccessDeniedException
   | InternalServerException
@@ -16028,6 +16820,7 @@ export const listHarnesses: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type ListHarnessVersionsError =
   | AccessDeniedException
   | InternalServerException
@@ -16078,163 +16871,7 @@ export const listHarnessVersions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type UpdateHarnessError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Operation to update a harness.
- */
-export const updateHarness: API.OperationMethod<
-  UpdateHarnessRequest,
-  UpdateHarnessResponse,
-  UpdateHarnessError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateHarnessRequest,
-  output: UpdateHarnessResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateHarness",
-}));
-export type CreateMemoryError =
-  | AccessDeniedException
-  | ConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | ServiceQuotaExceededException
-  | ThrottledException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a new Amazon Bedrock AgentCore Memory resource.
- */
-export const createMemory: API.OperationMethod<
-  CreateMemoryInput,
-  CreateMemoryOutput,
-  CreateMemoryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateMemoryInput,
-  output: CreateMemoryOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    ServiceQuotaExceededException,
-    ThrottledException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateMemory",
-}));
-export type GetMemoryError =
-  | AccessDeniedException
-  | ResourceNotFoundException
-  | ServiceException
-  | ThrottledException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieve an existing Amazon Bedrock AgentCore Memory resource.
- */
-export const getMemory: API.OperationMethod<
-  GetMemoryInput,
-  GetMemoryOutput,
-  GetMemoryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetMemoryInput,
-  output: GetMemoryOutput,
-  errors: [
-    AccessDeniedException,
-    ResourceNotFoundException,
-    ServiceException,
-    ThrottledException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetMemory",
-}));
-export type UpdateMemoryError =
-  | AccessDeniedException
-  | ConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | ServiceQuotaExceededException
-  | ThrottledException
-  | ValidationException
-  | CommonErrors;
-/**
- * Update an Amazon Bedrock AgentCore Memory resource memory.
- */
-export const updateMemory: API.OperationMethod<
-  UpdateMemoryInput,
-  UpdateMemoryOutput,
-  UpdateMemoryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMemoryInput,
-  output: UpdateMemoryOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    ServiceQuotaExceededException,
-    ThrottledException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateMemory",
-}));
-export type DeleteMemoryError =
-  | AccessDeniedException
-  | ConflictException
-  | ResourceNotFoundException
-  | ServiceException
-  | ThrottledException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes an Amazon Bedrock AgentCore Memory resource.
- */
-export const deleteMemory: API.OperationMethod<
-  DeleteMemoryInput,
-  DeleteMemoryOutput,
-  DeleteMemoryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMemoryInput,
-  output: DeleteMemoryOutput,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    ResourceNotFoundException,
-    ServiceException,
-    ThrottledException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteMemory",
-}));
+
 export type ListMemoriesError =
   | AccessDeniedException
   | ResourceNotFoundException
@@ -16285,152 +16922,7 @@ export const listMemories: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateOauth2CredentialProviderError =
-  | AccessDeniedException
-  | ConflictException
-  | DecryptionFailure
-  | EncryptionFailure
-  | InternalServerException
-  | ResourceLimitExceededException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a new OAuth2 credential provider.
- */
-export const createOauth2CredentialProvider: API.OperationMethod<
-  CreateOauth2CredentialProviderRequest,
-  CreateOauth2CredentialProviderResponse,
-  CreateOauth2CredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateOauth2CredentialProviderRequest,
-  output: CreateOauth2CredentialProviderResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    DecryptionFailure,
-    EncryptionFailure,
-    InternalServerException,
-    ResourceLimitExceededException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateOauth2CredentialProvider",
-}));
-export type GetOauth2CredentialProviderError =
-  | AccessDeniedException
-  | DecryptionFailure
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about an OAuth2 credential provider.
- */
-export const getOauth2CredentialProvider: API.OperationMethod<
-  GetOauth2CredentialProviderRequest,
-  GetOauth2CredentialProviderResponse,
-  GetOauth2CredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetOauth2CredentialProviderRequest,
-  output: GetOauth2CredentialProviderResponse,
-  errors: [
-    AccessDeniedException,
-    DecryptionFailure,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetOauth2CredentialProvider",
-}));
-export type UpdateOauth2CredentialProviderError =
-  | AccessDeniedException
-  | ConflictException
-  | DecryptionFailure
-  | EncryptionFailure
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing OAuth2 credential provider.
- */
-export const updateOauth2CredentialProvider: API.OperationMethod<
-  UpdateOauth2CredentialProviderRequest,
-  UpdateOauth2CredentialProviderResponse,
-  UpdateOauth2CredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOauth2CredentialProviderRequest,
-  output: UpdateOauth2CredentialProviderResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    DecryptionFailure,
-    EncryptionFailure,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateOauth2CredentialProvider",
-}));
-export type DeleteOauth2CredentialProviderError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes an OAuth2 credential provider.
- */
-export const deleteOauth2CredentialProvider: API.OperationMethod<
-  DeleteOauth2CredentialProviderRequest,
-  DeleteOauth2CredentialProviderResponse,
-  DeleteOauth2CredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOauth2CredentialProviderRequest,
-  output: DeleteOauth2CredentialProviderResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteOauth2CredentialProvider",
-}));
+
 export type ListOauth2CredentialProvidersError =
   | AccessDeniedException
   | InternalServerException
@@ -16483,130 +16975,7 @@ export const listOauth2CredentialProviders: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateOnlineEvaluationConfigError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates an online evaluation configuration for continuous monitoring of agent performance. Online evaluation automatically samples live traffic from CloudWatch logs at specified rates and applies evaluators to assess agent quality in production.
- */
-export const createOnlineEvaluationConfig: API.OperationMethod<
-  CreateOnlineEvaluationConfigRequest,
-  CreateOnlineEvaluationConfigResponse,
-  CreateOnlineEvaluationConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateOnlineEvaluationConfigRequest,
-  output: CreateOnlineEvaluationConfigResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateOnlineEvaluationConfig",
-}));
-export type GetOnlineEvaluationConfigError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves detailed information about an online evaluation configuration, including its rules, data sources, evaluators, and execution status.
- */
-export const getOnlineEvaluationConfig: API.OperationMethod<
-  GetOnlineEvaluationConfigRequest,
-  GetOnlineEvaluationConfigResponse,
-  GetOnlineEvaluationConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetOnlineEvaluationConfigRequest,
-  output: GetOnlineEvaluationConfigResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetOnlineEvaluationConfig",
-}));
-export type UpdateOnlineEvaluationConfigError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an online evaluation configuration's settings, including rules, data sources, evaluators, and execution status. Changes take effect immediately for ongoing evaluations.
- */
-export const updateOnlineEvaluationConfig: API.OperationMethod<
-  UpdateOnlineEvaluationConfigRequest,
-  UpdateOnlineEvaluationConfigResponse,
-  UpdateOnlineEvaluationConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOnlineEvaluationConfigRequest,
-  output: UpdateOnlineEvaluationConfigResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateOnlineEvaluationConfig",
-}));
-export type DeleteOnlineEvaluationConfigError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes an online evaluation configuration and stops any ongoing evaluation processes associated with it.
- */
-export const deleteOnlineEvaluationConfig: API.OperationMethod<
-  DeleteOnlineEvaluationConfigRequest,
-  DeleteOnlineEvaluationConfigResponse,
-  DeleteOnlineEvaluationConfigError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOnlineEvaluationConfigRequest,
-  output: DeleteOnlineEvaluationConfigResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteOnlineEvaluationConfig",
-}));
+
 export type ListOnlineEvaluationConfigsError =
   | AccessDeniedException
   | InternalServerException
@@ -16655,150 +17024,56 @@ export const listOnlineEvaluationConfigs: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreatePaymentCredentialProviderError =
+
+export type ListPaymentConnectorsError =
   | AccessDeniedException
-  | ConflictException
-  | DecryptionFailure
-  | EncryptionFailure
   | InternalServerException
-  | ResourceLimitExceededException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
   | ThrottlingException
-  | UnauthorizedException
   | ValidationException
   | CommonErrors;
 /**
- * Creates a new payment credential provider for storing authentication credentials used by payment connectors to communicate with external payment providers.
+ * Lists all payment connectors for a specified payment manager.
  */
-export const createPaymentCredentialProvider: API.OperationMethod<
-  CreatePaymentCredentialProviderRequest,
-  CreatePaymentCredentialProviderResponse,
-  CreatePaymentCredentialProviderError,
+export const listPaymentConnectors: API.OperationMethod<
+  ListPaymentConnectorsRequest,
+  ListPaymentConnectorsResponse,
+  ListPaymentConnectorsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreatePaymentCredentialProviderRequest,
-  output: CreatePaymentCredentialProviderResponse,
+> & {
+  pages: (
+    input: ListPaymentConnectorsRequest,
+  ) => stream.Stream<
+    ListPaymentConnectorsResponse,
+    ListPaymentConnectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPaymentConnectorsRequest,
+  ) => stream.Stream<
+    PaymentConnectorSummary,
+    ListPaymentConnectorsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListPaymentConnectorsRequest,
+  output: ListPaymentConnectorsResponse,
   errors: [
     AccessDeniedException,
-    ConflictException,
-    DecryptionFailure,
-    EncryptionFailure,
     InternalServerException,
-    ResourceLimitExceededException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
     ThrottlingException,
-    UnauthorizedException,
     ValidationException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "CreatePaymentCredentialProvider",
+  operationName: "ListPaymentConnectors",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "paymentConnectors",
+    pageSize: "maxResults",
+  } as const,
 }));
-export type GetPaymentCredentialProviderError =
-  | AccessDeniedException
-  | DecryptionFailure
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about a specific payment credential provider.
- */
-export const getPaymentCredentialProvider: API.OperationMethod<
-  GetPaymentCredentialProviderRequest,
-  GetPaymentCredentialProviderResponse,
-  GetPaymentCredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetPaymentCredentialProviderRequest,
-  output: GetPaymentCredentialProviderResponse,
-  errors: [
-    AccessDeniedException,
-    DecryptionFailure,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetPaymentCredentialProvider",
-}));
-export type UpdatePaymentCredentialProviderError =
-  | AccessDeniedException
-  | ConflictException
-  | DecryptionFailure
-  | EncryptionFailure
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing payment credential provider with new authentication credentials.
- */
-export const updatePaymentCredentialProvider: API.OperationMethod<
-  UpdatePaymentCredentialProviderRequest,
-  UpdatePaymentCredentialProviderResponse,
-  UpdatePaymentCredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePaymentCredentialProviderRequest,
-  output: UpdatePaymentCredentialProviderResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    DecryptionFailure,
-    EncryptionFailure,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdatePaymentCredentialProvider",
-}));
-export type DeletePaymentCredentialProviderError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a payment credential provider and its associated stored credentials.
- */
-export const deletePaymentCredentialProvider: API.OperationMethod<
-  DeletePaymentCredentialProviderRequest,
-  DeletePaymentCredentialProviderResponse,
-  DeletePaymentCredentialProviderError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeletePaymentCredentialProviderRequest,
-  output: DeletePaymentCredentialProviderResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeletePaymentCredentialProvider",
-}));
+
 export type ListPaymentCredentialProvidersError =
   | AccessDeniedException
   | InternalServerException
@@ -16851,130 +17126,7 @@ export const listPaymentCredentialProviders: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreatePaymentManagerError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a new payment manager in your Amazon Web Services account. A payment manager serves as the top-level resource for managing payment processing capabilities, including payment connectors that integrate with supported payment providers.
- *
- * If you specify `CUSTOM_JWT` as the `authorizerType`, you must provide an `authorizerConfiguration`.
- */
-export const createPaymentManager: API.OperationMethod<
-  CreatePaymentManagerRequest,
-  CreatePaymentManagerResponse,
-  CreatePaymentManagerError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreatePaymentManagerRequest,
-  output: CreatePaymentManagerResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreatePaymentManager",
-}));
-export type GetPaymentManagerError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about a specific payment manager.
- */
-export const getPaymentManager: API.OperationMethod<
-  GetPaymentManagerRequest,
-  GetPaymentManagerResponse,
-  GetPaymentManagerError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetPaymentManagerRequest,
-  output: GetPaymentManagerResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetPaymentManager",
-}));
-export type UpdatePaymentManagerError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing payment manager. This operation uses PATCH semantics, so you only need to specify the fields you want to change.
- */
-export const updatePaymentManager: API.OperationMethod<
-  UpdatePaymentManagerRequest,
-  UpdatePaymentManagerResponse,
-  UpdatePaymentManagerError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePaymentManagerRequest,
-  output: UpdatePaymentManagerResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdatePaymentManager",
-}));
-export type DeletePaymentManagerError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | CommonErrors;
-/**
- * Deletes a payment manager. All payment connectors associated with the payment manager must be deleted before the payment manager can be deleted. This operation initiates the deletion process asynchronously.
- */
-export const deletePaymentManager: API.OperationMethod<
-  DeletePaymentManagerRequest,
-  DeletePaymentManagerResponse,
-  DeletePaymentManagerError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeletePaymentManagerRequest,
-  output: DeletePaymentManagerResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeletePaymentManager",
-}));
+
 export type ListPaymentManagersError =
   | AccessDeniedException
   | InternalServerException
@@ -17023,790 +17175,7 @@ export const listPaymentManagers: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreatePaymentConnectorError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a new payment connector for a payment manager. A payment connector integrates with a supported payment provider to enable payment processing capabilities.
- */
-export const createPaymentConnector: API.OperationMethod<
-  CreatePaymentConnectorRequest,
-  CreatePaymentConnectorResponse,
-  CreatePaymentConnectorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreatePaymentConnectorRequest,
-  output: CreatePaymentConnectorResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreatePaymentConnector",
-}));
-export type GetPaymentConnectorError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about a specific payment connector.
- */
-export const getPaymentConnector: API.OperationMethod<
-  GetPaymentConnectorRequest,
-  GetPaymentConnectorResponse,
-  GetPaymentConnectorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetPaymentConnectorRequest,
-  output: GetPaymentConnectorResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetPaymentConnector",
-}));
-export type UpdatePaymentConnectorError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing payment connector. This operation uses PATCH semantics, so you only need to specify the fields you want to change.
- */
-export const updatePaymentConnector: API.OperationMethod<
-  UpdatePaymentConnectorRequest,
-  UpdatePaymentConnectorResponse,
-  UpdatePaymentConnectorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePaymentConnectorRequest,
-  output: UpdatePaymentConnectorResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdatePaymentConnector",
-}));
-export type DeletePaymentConnectorError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | CommonErrors;
-/**
- * Deletes a payment connector.
- */
-export const deletePaymentConnector: API.OperationMethod<
-  DeletePaymentConnectorRequest,
-  DeletePaymentConnectorResponse,
-  DeletePaymentConnectorError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeletePaymentConnectorRequest,
-  output: DeletePaymentConnectorResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeletePaymentConnector",
-}));
-export type ListPaymentConnectorsError =
-  | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Lists all payment connectors for a specified payment manager.
- */
-export const listPaymentConnectors: API.OperationMethod<
-  ListPaymentConnectorsRequest,
-  ListPaymentConnectorsResponse,
-  ListPaymentConnectorsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPaymentConnectorsRequest,
-  ) => stream.Stream<
-    ListPaymentConnectorsResponse,
-    ListPaymentConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPaymentConnectorsRequest,
-  ) => stream.Stream<
-    PaymentConnectorSummary,
-    ListPaymentConnectorsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPaymentConnectorsRequest,
-  output: ListPaymentConnectorsResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListPaymentConnectors",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "paymentConnectors",
-    pageSize: "maxResults",
-  } as const,
-}));
-export type CreatePolicyEngineError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a new policy engine within the AgentCore Policy system. A policy engine is a collection of policies that evaluates and authorizes agent tool calls. When associated with Gateways (each Gateway can be associated with at most one policy engine, but multiple Gateways can be associated with the same engine), the policy engine intercepts all agent requests and determines whether to allow or deny each action based on the defined policies. This is an asynchronous operation. Use the GetPolicyEngine operation to poll the `status` field to track completion.
- */
-export const createPolicyEngine: API.OperationMethod<
-  CreatePolicyEngineRequest,
-  CreatePolicyEngineResponse,
-  CreatePolicyEngineError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreatePolicyEngineRequest,
-  output: CreatePolicyEngineResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreatePolicyEngine",
-}));
-export type GetPolicyEngineError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves detailed information about a specific policy engine within the AgentCore Policy system. This operation returns the complete policy engine configuration, metadata, and current status, allowing administrators to review and manage policy engine settings.
- */
-export const getPolicyEngine: API.OperationMethod<
-  GetPolicyEngineRequest,
-  GetPolicyEngineResponse,
-  GetPolicyEngineError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetPolicyEngineRequest,
-  output: GetPolicyEngineResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetPolicyEngine",
-}));
-export type UpdatePolicyEngineError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing policy engine within the AgentCore Policy system. This operation allows modification of the policy engine description while maintaining its identity. This is an asynchronous operation. Use the `GetPolicyEngine` operation to poll the `status` field to track completion.
- */
-export const updatePolicyEngine: API.OperationMethod<
-  UpdatePolicyEngineRequest,
-  UpdatePolicyEngineResponse,
-  UpdatePolicyEngineError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePolicyEngineRequest,
-  output: UpdatePolicyEngineResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdatePolicyEngine",
-}));
-export type DeletePolicyEngineError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes an existing policy engine from the AgentCore Policy system. The policy engine must not have any associated policies before deletion. Once deleted, the policy engine and all its configurations become unavailable for policy management and evaluation. This is an asynchronous operation. Use the `GetPolicyEngine` operation to poll the `status` field to track completion.
- */
-export const deletePolicyEngine: API.OperationMethod<
-  DeletePolicyEngineRequest,
-  DeletePolicyEngineResponse,
-  DeletePolicyEngineError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeletePolicyEngineRequest,
-  output: DeletePolicyEngineResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeletePolicyEngine",
-}));
-export type ListPolicyEnginesError =
-  | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves a list of policy engines within the AgentCore Policy system. This operation supports pagination to help administrators discover and manage policy engines across their account. Each policy engine serves as a container for related policies.
- */
-export const listPolicyEngines: API.OperationMethod<
-  ListPolicyEnginesRequest,
-  ListPolicyEnginesResponse,
-  ListPolicyEnginesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyEnginesRequest,
-  ) => stream.Stream<
-    ListPolicyEnginesResponse,
-    ListPolicyEnginesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyEnginesRequest,
-  ) => stream.Stream<
-    PolicyEngine,
-    ListPolicyEnginesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPolicyEnginesRequest,
-  output: ListPolicyEnginesResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListPolicyEngines",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "policyEngines",
-    pageSize: "maxResults",
-  } as const,
-}));
-export type GetPolicyEngineSummaryError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves a metadata-only summary of a specific policy engine without decrypting customer content. This lightweight read operation returns resource identifiers, status, timestamps, and the encryption key ARN, but does not include the description or status reasons. Because this operation does not require access to the customer's KMS key, it is suitable for resource discovery, inventory, and integration scenarios where only metadata is needed.
- */
-export const getPolicyEngineSummary: API.OperationMethod<
-  GetPolicyEngineSummaryRequest,
-  GetPolicyEngineSummaryResponse,
-  GetPolicyEngineSummaryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetPolicyEngineSummaryRequest,
-  output: GetPolicyEngineSummaryResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetPolicyEngineSummary",
-}));
-export type ListPolicyEngineSummariesError =
-  | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves a paginated list of metadata-only policy engine summaries without decrypting customer content. This lightweight read operation returns resource identifiers, status, and timestamps for each policy engine, but does not include descriptions or status reasons. Because this operation does not require access to the customer's KMS key, it is suitable for resource discovery, inventory, and integration scenarios where only metadata is needed.
- */
-export const listPolicyEngineSummaries: API.OperationMethod<
-  ListPolicyEngineSummariesRequest,
-  ListPolicyEngineSummariesResponse,
-  ListPolicyEngineSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyEngineSummariesRequest,
-  ) => stream.Stream<
-    ListPolicyEngineSummariesResponse,
-    ListPolicyEngineSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyEngineSummariesRequest,
-  ) => stream.Stream<
-    PolicyEngineSummary,
-    ListPolicyEngineSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPolicyEngineSummariesRequest,
-  output: ListPolicyEngineSummariesResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListPolicyEngineSummaries",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "policyEngines",
-    pageSize: "maxResults",
-  } as const,
-}));
-export type StartPolicyGenerationError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Initiates the AI-powered generation of Cedar policies from natural language descriptions within the AgentCore Policy system. This feature enables both technical and non-technical users to create policies by describing their authorization requirements in plain English, which is then automatically translated into formal Cedar policy statements. The generation process analyzes the natural language input along with the Gateway's tool context to produce validated policy options. Generated policy assets are automatically deleted after 7 days, so you should review and create policies from the generated assets within this timeframe. Once created, policies are permanent and not subject to this expiration. Generated policies should be reviewed and tested in log-only mode before deploying to production. Use this when you want to describe policy intent naturally rather than learning Cedar syntax, though generated policies may require refinement for complex scenarios.
- */
-export const startPolicyGeneration: API.OperationMethod<
-  StartPolicyGenerationRequest,
-  StartPolicyGenerationResponse,
-  StartPolicyGenerationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: StartPolicyGenerationRequest,
-  output: StartPolicyGenerationResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "StartPolicyGeneration",
-}));
-export type GetPolicyGenerationError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about a policy generation request within the AgentCore Policy system. Policy generation converts natural language descriptions into Cedar policy statements using AI-powered translation, enabling non-technical users to create policies.
- */
-export const getPolicyGeneration: API.OperationMethod<
-  GetPolicyGenerationRequest,
-  GetPolicyGenerationResponse,
-  GetPolicyGenerationError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetPolicyGenerationRequest,
-  output: GetPolicyGenerationResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetPolicyGeneration",
-}));
-export type ListPolicyGenerationsError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves a list of policy generation requests within the AgentCore Policy system. This operation supports pagination and filtering to help track and manage AI-powered policy generation operations.
- */
-export const listPolicyGenerations: API.OperationMethod<
-  ListPolicyGenerationsRequest,
-  ListPolicyGenerationsResponse,
-  ListPolicyGenerationsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyGenerationsRequest,
-  ) => stream.Stream<
-    ListPolicyGenerationsResponse,
-    ListPolicyGenerationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyGenerationsRequest,
-  ) => stream.Stream<
-    PolicyGeneration,
-    ListPolicyGenerationsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPolicyGenerationsRequest,
-  output: ListPolicyGenerationsResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListPolicyGenerations",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "policyGenerations",
-    pageSize: "maxResults",
-  } as const,
-}));
-export type GetPolicyGenerationSummaryError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves a metadata-only summary of a specific policy generation request without decrypting customer content. This lightweight read operation returns resource identifiers, status, timestamps, and findings, but does not include status reasons. Because this operation does not require access to the customer's KMS key, it is suitable for resource discovery, inventory, and integration scenarios where only metadata is needed.
- */
-export const getPolicyGenerationSummary: API.OperationMethod<
-  GetPolicyGenerationSummaryRequest,
-  GetPolicyGenerationSummaryResponse,
-  GetPolicyGenerationSummaryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetPolicyGenerationSummaryRequest,
-  output: GetPolicyGenerationSummaryResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetPolicyGenerationSummary",
-}));
-export type ListPolicyGenerationAssetsError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves a list of generated policy assets from a policy generation request within the AgentCore Policy system. This operation returns the actual Cedar policies and related artifacts produced by the AI-powered policy generation process, allowing users to review and select from multiple generated policy options.
- */
-export const listPolicyGenerationAssets: API.OperationMethod<
-  ListPolicyGenerationAssetsRequest,
-  ListPolicyGenerationAssetsResponse,
-  ListPolicyGenerationAssetsError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyGenerationAssetsRequest,
-  ) => stream.Stream<
-    ListPolicyGenerationAssetsResponse,
-    ListPolicyGenerationAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyGenerationAssetsRequest,
-  ) => stream.Stream<
-    PolicyGenerationAsset,
-    ListPolicyGenerationAssetsError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPolicyGenerationAssetsRequest,
-  output: ListPolicyGenerationAssetsResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListPolicyGenerationAssets",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "policyGenerationAssets",
-    pageSize: "maxResults",
-  } as const,
-}));
-export type ListPolicyGenerationSummariesError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves a paginated list of metadata-only policy generation summaries within a policy engine without decrypting customer content. This lightweight read operation returns resource identifiers, status, timestamps, and findings for each policy generation, but does not include status reasons. Because this operation does not require access to the customer's KMS key, it is suitable for resource discovery, inventory, and integration scenarios where only metadata is needed.
- */
-export const listPolicyGenerationSummaries: API.OperationMethod<
-  ListPolicyGenerationSummariesRequest,
-  ListPolicyGenerationSummariesResponse,
-  ListPolicyGenerationSummariesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListPolicyGenerationSummariesRequest,
-  ) => stream.Stream<
-    ListPolicyGenerationSummariesResponse,
-    ListPolicyGenerationSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListPolicyGenerationSummariesRequest,
-  ) => stream.Stream<
-    PolicyGenerationSummary,
-    ListPolicyGenerationSummariesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPolicyGenerationSummariesRequest,
-  output: ListPolicyGenerationSummariesResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListPolicyGenerationSummaries",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "policyGenerations",
-    pageSize: "maxResults",
-  } as const,
-}));
-export type CreatePolicyError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a policy within the AgentCore Policy system. Policies provide real-time, deterministic control over agentic interactions with AgentCore Gateway. Using the Cedar policy language, you can define fine-grained policies that specify which interactions with Gateway tools are permitted based on input parameters and OAuth claims, ensuring agents operate within defined boundaries and business rules. The policy is validated during creation against the Cedar schema generated from the Gateway's tools' input schemas, which defines the available tools, their parameters, and expected data types. This is an asynchronous operation. Use the GetPolicy operation to poll the `status` field to track completion.
- */
-export const createPolicy: API.OperationMethod<
-  CreatePolicyRequest,
-  CreatePolicyResponse,
-  CreatePolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreatePolicyRequest,
-  output: CreatePolicyResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreatePolicy",
-}));
-export type GetPolicyError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves detailed information about a specific policy within the AgentCore Policy system. This operation returns the complete policy definition, metadata, and current status, allowing administrators to review and manage policy configurations.
- */
-export const getPolicy: API.OperationMethod<
-  GetPolicyRequest,
-  GetPolicyResponse,
-  GetPolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetPolicyRequest,
-  output: GetPolicyResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetPolicy",
-}));
-export type UpdatePolicyError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing policy within the AgentCore Policy system. This operation allows modification of the policy description and definition while maintaining the policy's identity. The updated policy is validated against the Cedar schema before being applied. This is an asynchronous operation. Use the `GetPolicy` operation to poll the `status` field to track completion.
- */
-export const updatePolicy: API.OperationMethod<
-  UpdatePolicyRequest,
-  UpdatePolicyResponse,
-  UpdatePolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePolicyRequest,
-  output: UpdatePolicyResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdatePolicy",
-}));
-export type DeletePolicyError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes an existing policy from the AgentCore Policy system. Once deleted, the policy can no longer be used for agent behavior control and all references to it become invalid. This is an asynchronous operation. Use the `GetPolicy` operation to poll the `status` field to track completion.
- */
-export const deletePolicy: API.OperationMethod<
-  DeletePolicyRequest,
-  DeletePolicyResponse,
-  DeletePolicyError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeletePolicyRequest,
-  output: DeletePolicyResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeletePolicy",
-}));
+
 export type ListPoliciesError =
   | AccessDeniedException
   | InternalServerException
@@ -17857,7 +17226,106 @@ export const listPolicies: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type GetPolicySummaryError =
+
+export type ListPolicyEnginesError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves a list of policy engines within the AgentCore Policy system. This operation supports pagination to help administrators discover and manage policy engines across their account. Each policy engine serves as a container for related policies.
+ */
+export const listPolicyEngines: API.OperationMethod<
+  ListPolicyEnginesRequest,
+  ListPolicyEnginesResponse,
+  ListPolicyEnginesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPolicyEnginesRequest,
+  ) => stream.Stream<
+    ListPolicyEnginesResponse,
+    ListPolicyEnginesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPolicyEnginesRequest,
+  ) => stream.Stream<
+    PolicyEngine,
+    ListPolicyEnginesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListPolicyEnginesRequest,
+  output: ListPolicyEnginesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListPolicyEngines",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "policyEngines",
+    pageSize: "maxResults",
+  } as const,
+}));
+
+export type ListPolicyEngineSummariesError =
+  | AccessDeniedException
+  | InternalServerException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves a paginated list of metadata-only policy engine summaries without decrypting customer content. This lightweight read operation returns resource identifiers, status, and timestamps for each policy engine, but does not include descriptions or status reasons. Because this operation does not require access to the customer's KMS key, it is suitable for resource discovery, inventory, and integration scenarios where only metadata is needed.
+ */
+export const listPolicyEngineSummaries: API.OperationMethod<
+  ListPolicyEngineSummariesRequest,
+  ListPolicyEngineSummariesResponse,
+  ListPolicyEngineSummariesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPolicyEngineSummariesRequest,
+  ) => stream.Stream<
+    ListPolicyEngineSummariesResponse,
+    ListPolicyEngineSummariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPolicyEngineSummariesRequest,
+  ) => stream.Stream<
+    PolicyEngineSummary,
+    ListPolicyEngineSummariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListPolicyEngineSummariesRequest,
+  output: ListPolicyEngineSummariesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListPolicyEngineSummaries",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "policyEngines",
+    pageSize: "maxResults",
+  } as const,
+}));
+
+export type ListPolicyGenerationAssetsError =
   | AccessDeniedException
   | InternalServerException
   | ResourceNotFoundException
@@ -17865,16 +17333,31 @@ export type GetPolicySummaryError =
   | ValidationException
   | CommonErrors;
 /**
- * Retrieves a metadata-only summary of a specific policy without decrypting customer content. This lightweight read operation returns resource identifiers, status, and timestamps, but does not include the policy definition, description, or status reasons. Because this operation does not require access to the customer's KMS key, it is suitable for resource discovery, inventory, and integration scenarios where only metadata is needed.
+ * Retrieves a list of generated policy assets from a policy generation request within the AgentCore Policy system. This operation returns the actual Cedar policies and related artifacts produced by the AI-powered policy generation process, allowing users to review and select from multiple generated policy options.
  */
-export const getPolicySummary: API.OperationMethod<
-  GetPolicySummaryRequest,
-  GetPolicySummaryResponse,
-  GetPolicySummaryError,
+export const listPolicyGenerationAssets: API.OperationMethod<
+  ListPolicyGenerationAssetsRequest,
+  ListPolicyGenerationAssetsResponse,
+  ListPolicyGenerationAssetsError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetPolicySummaryRequest,
-  output: GetPolicySummaryResponse,
+> & {
+  pages: (
+    input: ListPolicyGenerationAssetsRequest,
+  ) => stream.Stream<
+    ListPolicyGenerationAssetsResponse,
+    ListPolicyGenerationAssetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPolicyGenerationAssetsRequest,
+  ) => stream.Stream<
+    PolicyGenerationAsset,
+    ListPolicyGenerationAssetsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListPolicyGenerationAssetsRequest,
+  output: ListPolicyGenerationAssetsResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -17884,8 +17367,117 @@ export const getPolicySummary: API.OperationMethod<
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "GetPolicySummary",
+  operationName: "ListPolicyGenerationAssets",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "policyGenerationAssets",
+    pageSize: "maxResults",
+  } as const,
 }));
+
+export type ListPolicyGenerationsError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves a list of policy generation requests within the AgentCore Policy system. This operation supports pagination and filtering to help track and manage AI-powered policy generation operations.
+ */
+export const listPolicyGenerations: API.OperationMethod<
+  ListPolicyGenerationsRequest,
+  ListPolicyGenerationsResponse,
+  ListPolicyGenerationsError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPolicyGenerationsRequest,
+  ) => stream.Stream<
+    ListPolicyGenerationsResponse,
+    ListPolicyGenerationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPolicyGenerationsRequest,
+  ) => stream.Stream<
+    PolicyGeneration,
+    ListPolicyGenerationsError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListPolicyGenerationsRequest,
+  output: ListPolicyGenerationsResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListPolicyGenerations",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "policyGenerations",
+    pageSize: "maxResults",
+  } as const,
+}));
+
+export type ListPolicyGenerationSummariesError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Retrieves a paginated list of metadata-only policy generation summaries within a policy engine without decrypting customer content. This lightweight read operation returns resource identifiers, status, timestamps, and findings for each policy generation, but does not include status reasons. Because this operation does not require access to the customer's KMS key, it is suitable for resource discovery, inventory, and integration scenarios where only metadata is needed.
+ */
+export const listPolicyGenerationSummaries: API.OperationMethod<
+  ListPolicyGenerationSummariesRequest,
+  ListPolicyGenerationSummariesResponse,
+  ListPolicyGenerationSummariesError,
+  Credentials | Region | HttpClient.HttpClient
+> & {
+  pages: (
+    input: ListPolicyGenerationSummariesRequest,
+  ) => stream.Stream<
+    ListPolicyGenerationSummariesResponse,
+    ListPolicyGenerationSummariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListPolicyGenerationSummariesRequest,
+  ) => stream.Stream<
+    PolicyGenerationSummary,
+    ListPolicyGenerationSummariesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListPolicyGenerationSummariesRequest,
+  output: ListPolicyGenerationSummariesResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "ListPolicyGenerationSummaries",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "policyGenerations",
+    pageSize: "maxResults",
+  } as const,
+}));
+
 export type ListPolicySummariesError =
   | AccessDeniedException
   | InternalServerException
@@ -17936,134 +17528,56 @@ export const listPolicySummaries: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type CreateRegistryRecordError =
+
+export type ListRegistriesError =
   | AccessDeniedException
-  | ConflictException
   | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Creates a new registry record within the specified registry. A registry record represents an individual AI resource's metadata in the registry. This could be an MCP server (and associated tools), A2A agent, agent skill, or a custom resource with a custom schema.
- *
- * The record is processed asynchronously and returns HTTP 202 Accepted.
+ * Lists all registries in the account. You can optionally filter results by status using the `status` parameter, or by authorizer type using the `authorizerType` parameter.
  */
-export const createRegistryRecord: API.OperationMethod<
-  CreateRegistryRecordRequest,
-  CreateRegistryRecordResponse,
-  CreateRegistryRecordError,
+export const listRegistries: API.OperationMethod<
+  ListRegistriesRequest,
+  ListRegistriesResponse,
+  ListRegistriesError,
   Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateRegistryRecordRequest,
-  output: CreateRegistryRecordResponse,
+> & {
+  pages: (
+    input: ListRegistriesRequest,
+  ) => stream.Stream<
+    ListRegistriesResponse,
+    ListRegistriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+  items: (
+    input: ListRegistriesRequest,
+  ) => stream.Stream<
+    RegistrySummary,
+    ListRegistriesError,
+    Credentials | Region | HttpClient.HttpClient
+  >;
+} = /*@__PURE__*/ API.makePaginated(() => ({
+  input: ListRegistriesRequest,
+  output: ListRegistriesResponse,
   errors: [
     AccessDeniedException,
-    ConflictException,
     InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
     ThrottlingException,
     ValidationException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "CreateRegistryRecord",
+  operationName: "ListRegistries",
+  pagination: {
+    inputToken: "nextToken",
+    outputToken: "nextToken",
+    items: "registries",
+    pageSize: "maxResults",
+  } as const,
 }));
-export type GetRegistryRecordError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about a specific registry record.
- */
-export const getRegistryRecord: API.OperationMethod<
-  GetRegistryRecordRequest,
-  GetRegistryRecordResponse,
-  GetRegistryRecordError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryRecordRequest,
-  output: GetRegistryRecordResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetRegistryRecord",
-}));
-export type UpdateRegistryRecordError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing registry record. This operation uses PATCH semantics, so you only need to specify the fields you want to change. The update is processed asynchronously and returns HTTP 202 Accepted.
- */
-export const updateRegistryRecord: API.OperationMethod<
-  UpdateRegistryRecordRequest,
-  UpdateRegistryRecordResponse,
-  UpdateRegistryRecordError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRegistryRecordRequest,
-  output: UpdateRegistryRecordResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateRegistryRecord",
-}));
-export type DeleteRegistryRecordError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a registry record. The record's status transitions to `DELETING` and the record is removed asynchronously.
- */
-export const deleteRegistryRecord: API.OperationMethod<
-  DeleteRegistryRecordRequest,
-  DeleteRegistryRecordResponse,
-  DeleteRegistryRecordError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegistryRecordRequest,
-  output: DeleteRegistryRecordResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteRegistryRecord",
-}));
+
 export type ListRegistryRecordsError =
   | AccessDeniedException
   | ConflictException
@@ -18116,119 +17630,27 @@ export const listRegistryRecords: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
-export type SubmitRegistryRecordForApprovalError =
+
+export type ListTagsForResourceError =
   | AccessDeniedException
-  | ConflictException
   | InternalServerException
   | ResourceNotFoundException
   | ThrottlingException
   | ValidationException
   | CommonErrors;
 /**
- * Submits a registry record for approval. This transitions the record from `DRAFT` status to `PENDING_APPROVAL` status. If the registry has auto-approval enabled, the record is automatically approved.
- */
-export const submitRegistryRecordForApproval: API.OperationMethod<
-  SubmitRegistryRecordForApprovalRequest,
-  SubmitRegistryRecordForApprovalResponse,
-  SubmitRegistryRecordForApprovalError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: SubmitRegistryRecordForApprovalRequest,
-  output: SubmitRegistryRecordForApprovalResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "SubmitRegistryRecordForApproval",
-}));
-export type UpdateRegistryRecordStatusError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates the status of a registry record. Use this operation to approve, reject, or deprecate a registry record.
- */
-export const updateRegistryRecordStatus: API.OperationMethod<
-  UpdateRegistryRecordStatusRequest,
-  UpdateRegistryRecordStatusResponse,
-  UpdateRegistryRecordStatusError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRegistryRecordStatusRequest,
-  output: UpdateRegistryRecordStatusResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateRegistryRecordStatus",
-}));
-export type CreateRegistryError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a new registry in your Amazon Web Services account. A registry serves as a centralized catalog for organizing and managing registry records, including MCP servers, A2A agents, agent skills, and custom resource types.
+ * Lists the tags associated with the specified resource.
  *
- * If you specify `CUSTOM_JWT` as the `authorizerType`, you must provide an `authorizerConfiguration`.
+ * This feature is currently available only for AgentCore Runtime, Browser, Browser Profile, Code Interpreter tool, and Gateway.
  */
-export const createRegistry: API.OperationMethod<
-  CreateRegistryRequest,
-  CreateRegistryResponse,
-  CreateRegistryError,
+export const listTagsForResource: API.OperationMethod<
+  ListTagsForResourceRequest,
+  ListTagsForResourceResponse,
+  ListTagsForResourceError,
   Credentials | Region | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRegistryRequest,
-  output: CreateRegistryResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateRegistry",
-}));
-export type GetRegistryError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about a specific registry.
- */
-export const getRegistry: API.OperationMethod<
-  GetRegistryRequest,
-  GetRegistryResponse,
-  GetRegistryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryRequest,
-  output: GetRegistryResponse,
+  input: ListTagsForResourceRequest,
+  output: ListTagsForResourceResponse,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -18238,244 +17660,9 @@ export const getRegistry: API.OperationMethod<
   ],
   protocol: AwsProtocol,
   retry: Retry,
-  operationName: "GetRegistry",
+  operationName: "ListTagsForResource",
 }));
-export type UpdateRegistryError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ServiceQuotaExceededException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing registry. This operation uses PATCH semantics, so you only need to specify the fields you want to change.
- */
-export const updateRegistry: API.OperationMethod<
-  UpdateRegistryRequest,
-  UpdateRegistryResponse,
-  UpdateRegistryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRegistryRequest,
-  output: UpdateRegistryResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ServiceQuotaExceededException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateRegistry",
-}));
-export type DeleteRegistryError =
-  | AccessDeniedException
-  | ConflictException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a registry. The registry must contain zero records before it can be deleted. This operation initiates the deletion process asynchronously.
- */
-export const deleteRegistry: API.OperationMethod<
-  DeleteRegistryRequest,
-  DeleteRegistryResponse,
-  DeleteRegistryError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegistryRequest,
-  output: DeleteRegistryResponse,
-  errors: [
-    AccessDeniedException,
-    ConflictException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteRegistry",
-}));
-export type ListRegistriesError =
-  | AccessDeniedException
-  | InternalServerException
-  | ThrottlingException
-  | ValidationException
-  | CommonErrors;
-/**
- * Lists all registries in the account. You can optionally filter results by status using the `status` parameter, or by authorizer type using the `authorizerType` parameter.
- */
-export const listRegistries: API.OperationMethod<
-  ListRegistriesRequest,
-  ListRegistriesResponse,
-  ListRegistriesError,
-  Credentials | Region | HttpClient.HttpClient
-> & {
-  pages: (
-    input: ListRegistriesRequest,
-  ) => stream.Stream<
-    ListRegistriesResponse,
-    ListRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-  items: (
-    input: ListRegistriesRequest,
-  ) => stream.Stream<
-    RegistrySummary,
-    ListRegistriesError,
-    Credentials | Region | HttpClient.HttpClient
-  >;
-} = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRegistriesRequest,
-  output: ListRegistriesResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ThrottlingException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "ListRegistries",
-  pagination: {
-    inputToken: "nextToken",
-    outputToken: "nextToken",
-    items: "registries",
-    pageSize: "maxResults",
-  } as const,
-}));
-export type CreateWorkloadIdentityError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Creates a new workload identity.
- */
-export const createWorkloadIdentity: API.OperationMethod<
-  CreateWorkloadIdentityRequest,
-  CreateWorkloadIdentityResponse,
-  CreateWorkloadIdentityError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateWorkloadIdentityRequest,
-  output: CreateWorkloadIdentityResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "CreateWorkloadIdentity",
-}));
-export type GetWorkloadIdentityError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Retrieves information about a workload identity.
- */
-export const getWorkloadIdentity: API.OperationMethod<
-  GetWorkloadIdentityRequest,
-  GetWorkloadIdentityResponse,
-  GetWorkloadIdentityError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkloadIdentityRequest,
-  output: GetWorkloadIdentityResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "GetWorkloadIdentity",
-}));
-export type UpdateWorkloadIdentityError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Updates an existing workload identity.
- */
-export const updateWorkloadIdentity: API.OperationMethod<
-  UpdateWorkloadIdentityRequest,
-  UpdateWorkloadIdentityResponse,
-  UpdateWorkloadIdentityError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWorkloadIdentityRequest,
-  output: UpdateWorkloadIdentityResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "UpdateWorkloadIdentity",
-}));
-export type DeleteWorkloadIdentityError =
-  | AccessDeniedException
-  | InternalServerException
-  | ResourceNotFoundException
-  | ThrottlingException
-  | UnauthorizedException
-  | ValidationException
-  | CommonErrors;
-/**
- * Deletes a workload identity.
- */
-export const deleteWorkloadIdentity: API.OperationMethod<
-  DeleteWorkloadIdentityRequest,
-  DeleteWorkloadIdentityResponse,
-  DeleteWorkloadIdentityError,
-  Credentials | Region | HttpClient.HttpClient
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWorkloadIdentityRequest,
-  output: DeleteWorkloadIdentityResponse,
-  errors: [
-    AccessDeniedException,
-    InternalServerException,
-    ResourceNotFoundException,
-    ThrottlingException,
-    UnauthorizedException,
-    ValidationException,
-  ],
-  protocol: AwsProtocol,
-  retry: Retry,
-  operationName: "DeleteWorkloadIdentity",
-}));
+
 export type ListWorkloadIdentitiesError =
   | AccessDeniedException
   | InternalServerException
@@ -18527,4 +17714,1058 @@ export const listWorkloadIdentities: API.OperationMethod<
     items: "workloadIdentities",
     pageSize: "maxResults",
   } as const,
+}));
+
+export type PutResourcePolicyError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Creates or updates a resource-based policy for a resource with the specified resourceArn.
+ *
+ * This feature is currently available only for AgentCore Runtime and Gateway.
+ */
+export const putResourcePolicy: API.OperationMethod<
+  PutResourcePolicyRequest,
+  PutResourcePolicyResponse,
+  PutResourcePolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutResourcePolicyRequest,
+  output: PutResourcePolicyResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "PutResourcePolicy",
+}));
+
+export type SetTokenVaultCMKError =
+  | AccessDeniedException
+  | ConcurrentModificationException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Sets the customer master key (CMK) for a token vault.
+ */
+export const setTokenVaultCMK: API.OperationMethod<
+  SetTokenVaultCMKRequest,
+  SetTokenVaultCMKResponse,
+  SetTokenVaultCMKError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetTokenVaultCMKRequest,
+  output: SetTokenVaultCMKResponse,
+  errors: [
+    AccessDeniedException,
+    ConcurrentModificationException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SetTokenVaultCMK",
+}));
+
+export type StartPolicyGenerationError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Initiates the AI-powered generation of Cedar policies from natural language descriptions within the AgentCore Policy system. This feature enables both technical and non-technical users to create policies by describing their authorization requirements in plain English, which is then automatically translated into formal Cedar policy statements. The generation process analyzes the natural language input along with the Gateway's tool context to produce validated policy options. Generated policy assets are automatically deleted after 7 days, so you should review and create policies from the generated assets within this timeframe. Once created, policies are permanent and not subject to this expiration. Generated policies should be reviewed and tested in log-only mode before deploying to production. Use this when you want to describe policy intent naturally rather than learning Cedar syntax, though generated policies may require refinement for complex scenarios.
+ */
+export const startPolicyGeneration: API.OperationMethod<
+  StartPolicyGenerationRequest,
+  StartPolicyGenerationResponse,
+  StartPolicyGenerationError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartPolicyGenerationRequest,
+  output: StartPolicyGenerationResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "StartPolicyGeneration",
+}));
+
+export type SubmitRegistryRecordForApprovalError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Submits a registry record for approval. This transitions the record from `DRAFT` status to `PENDING_APPROVAL` status. If the registry has auto-approval enabled, the record is automatically approved.
+ */
+export const submitRegistryRecordForApproval: API.OperationMethod<
+  SubmitRegistryRecordForApprovalRequest,
+  SubmitRegistryRecordForApprovalResponse,
+  SubmitRegistryRecordForApprovalError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: SubmitRegistryRecordForApprovalRequest,
+  output: SubmitRegistryRecordForApprovalResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SubmitRegistryRecordForApproval",
+}));
+
+export type SynchronizeGatewayTargetsError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Synchronizes the gateway targets by fetching the latest tool definitions from the target endpoints.
+ *
+ * You cannot synchronize a target that is in a pending authorization state (`CREATE_PENDING_AUTH`, `UPDATE_PENDING_AUTH`, or `SYNCHRONIZE_PENDING_AUTH`). Wait for the authorization to complete or fail before synchronizing.
+ *
+ * You cannot synchronize a target that has a static tool schema (`mcpToolSchema`) configured. Remove the static schema through an `UpdateGatewayTarget` call to enable dynamic tool synchronization.
+ */
+export const synchronizeGatewayTargets: API.OperationMethod<
+  SynchronizeGatewayTargetsRequest,
+  SynchronizeGatewayTargetsResponse,
+  SynchronizeGatewayTargetsError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: SynchronizeGatewayTargetsRequest,
+  output: SynchronizeGatewayTargetsResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "SynchronizeGatewayTargets",
+}));
+
+export type TagResourceError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are also deleted.
+ *
+ * This feature is currently available only for AgentCore Runtime, Browser, Browser Profile, Code Interpreter tool, and Gateway.
+ */
+export const tagResource: API.OperationMethod<
+  TagResourceRequest,
+  TagResourceResponse,
+  TagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: TagResourceRequest,
+  output: TagResourceResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "TagResource",
+}));
+
+export type UntagResourceError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Removes the specified tags from the specified resource.
+ *
+ * This feature is currently available only for AgentCore Runtime, Browser, Browser Profile, Code Interpreter tool, and Gateway.
+ */
+export const untagResource: API.OperationMethod<
+  UntagResourceRequest,
+  UntagResourceResponse,
+  UntagResourceError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UntagResourceRequest,
+  output: UntagResourceResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UntagResource",
+}));
+
+export type UpdateAgentRuntimeError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing Amazon Secure Agent.
+ */
+export const updateAgentRuntime: API.OperationMethod<
+  UpdateAgentRuntimeRequest,
+  UpdateAgentRuntimeResponse,
+  UpdateAgentRuntimeError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateAgentRuntimeRequest,
+  output: UpdateAgentRuntimeResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateAgentRuntime",
+}));
+
+export type UpdateAgentRuntimeEndpointError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing Amazon Bedrock AgentCore Runtime endpoint.
+ */
+export const updateAgentRuntimeEndpoint: API.OperationMethod<
+  UpdateAgentRuntimeEndpointRequest,
+  UpdateAgentRuntimeEndpointResponse,
+  UpdateAgentRuntimeEndpointError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateAgentRuntimeEndpointRequest,
+  output: UpdateAgentRuntimeEndpointResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateAgentRuntimeEndpoint",
+}));
+
+export type UpdateApiKeyCredentialProviderError =
+  | AccessDeniedException
+  | ConflictException
+  | DecryptionFailure
+  | EncryptionFailure
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing API key credential provider.
+ */
+export const updateApiKeyCredentialProvider: API.OperationMethod<
+  UpdateApiKeyCredentialProviderRequest,
+  UpdateApiKeyCredentialProviderResponse,
+  UpdateApiKeyCredentialProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateApiKeyCredentialProviderRequest,
+  output: UpdateApiKeyCredentialProviderResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    DecryptionFailure,
+    EncryptionFailure,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateApiKeyCredentialProvider",
+}));
+
+export type UpdateConfigurationBundleError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates a configuration bundle by creating a new version with the specified changes. Each update creates a new version in the version history.
+ */
+export const updateConfigurationBundle: API.OperationMethod<
+  UpdateConfigurationBundleRequest,
+  UpdateConfigurationBundleResponse,
+  UpdateConfigurationBundleError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateConfigurationBundleRequest,
+  output: UpdateConfigurationBundleResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateConfigurationBundle",
+}));
+
+export type UpdateDatasetError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates a dataset's metadata. Synchronous operation. Only provided fields are updated; omitted fields remain unchanged. To modify dataset content, use `AddDatasetExamples`, `UpdateDatasetExamples`, or `DeleteDatasetExamples`.
+ */
+export const updateDataset: API.OperationMethod<
+  UpdateDatasetRequest,
+  UpdateDatasetResponse,
+  UpdateDatasetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateDatasetRequest,
+  output: UpdateDatasetResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateDataset",
+}));
+
+export type UpdateDatasetExamplesError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates multiple existing examples in-place on DRAFT. All examples are validated against the dataset's schema type before any writes occur. If any example fails validation, the entire batch is rejected (all-or-nothing semantics).
+ */
+export const updateDatasetExamples: API.OperationMethod<
+  UpdateDatasetExamplesRequest,
+  UpdateDatasetExamplesResponse,
+  UpdateDatasetExamplesError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateDatasetExamplesRequest,
+  output: UpdateDatasetExamplesResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateDatasetExamples",
+}));
+
+export type UpdateEvaluatorError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates a custom evaluator's configuration, description, or evaluation level. Built-in evaluators cannot be updated. The evaluator must not be locked for modification.
+ */
+export const updateEvaluator: API.OperationMethod<
+  UpdateEvaluatorRequest,
+  UpdateEvaluatorResponse,
+  UpdateEvaluatorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateEvaluatorRequest,
+  output: UpdateEvaluatorResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateEvaluator",
+}));
+
+export type UpdateGatewayError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing gateway.
+ */
+export const updateGateway: API.OperationMethod<
+  UpdateGatewayRequest,
+  UpdateGatewayResponse,
+  UpdateGatewayError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateGatewayRequest,
+  output: UpdateGatewayResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateGateway",
+}));
+
+export type UpdateGatewayRuleError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates a gateway rule's priority, conditions, actions, or description.
+ */
+export const updateGatewayRule: API.OperationMethod<
+  UpdateGatewayRuleRequest,
+  UpdateGatewayRuleResponse,
+  UpdateGatewayRuleError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateGatewayRuleRequest,
+  output: UpdateGatewayRuleResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateGatewayRule",
+}));
+
+export type UpdateGatewayTargetError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing gateway target.
+ *
+ * You cannot update a target that is in a pending authorization state (`CREATE_PENDING_AUTH`, `UPDATE_PENDING_AUTH`, or `SYNCHRONIZE_PENDING_AUTH`). Wait for the authorization to complete or fail before updating the target.
+ */
+export const updateGatewayTarget: API.OperationMethod<
+  UpdateGatewayTargetRequest,
+  UpdateGatewayTargetResponse,
+  UpdateGatewayTargetError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateGatewayTargetRequest,
+  output: UpdateGatewayTargetResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateGatewayTarget",
+}));
+
+export type UpdateHarnessError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Operation to update a harness.
+ */
+export const updateHarness: API.OperationMethod<
+  UpdateHarnessRequest,
+  UpdateHarnessResponse,
+  UpdateHarnessError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateHarnessRequest,
+  output: UpdateHarnessResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateHarness",
+}));
+
+export type UpdateHarnessEndpointError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Operation to update a harness endpoint.
+ */
+export const updateHarnessEndpoint: API.OperationMethod<
+  UpdateHarnessEndpointRequest,
+  UpdateHarnessEndpointResponse,
+  UpdateHarnessEndpointError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateHarnessEndpointRequest,
+  output: UpdateHarnessEndpointResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateHarnessEndpoint",
+}));
+
+export type UpdateMemoryError =
+  | AccessDeniedException
+  | ConflictException
+  | ResourceNotFoundException
+  | ServiceException
+  | ServiceQuotaExceededException
+  | ThrottledException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Update an Amazon Bedrock AgentCore Memory resource memory.
+ */
+export const updateMemory: API.OperationMethod<
+  UpdateMemoryInput,
+  UpdateMemoryOutput,
+  UpdateMemoryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateMemoryInput,
+  output: UpdateMemoryOutput,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    ResourceNotFoundException,
+    ServiceException,
+    ServiceQuotaExceededException,
+    ThrottledException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateMemory",
+}));
+
+export type UpdateOauth2CredentialProviderError =
+  | AccessDeniedException
+  | ConflictException
+  | DecryptionFailure
+  | EncryptionFailure
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing OAuth2 credential provider.
+ */
+export const updateOauth2CredentialProvider: API.OperationMethod<
+  UpdateOauth2CredentialProviderRequest,
+  UpdateOauth2CredentialProviderResponse,
+  UpdateOauth2CredentialProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateOauth2CredentialProviderRequest,
+  output: UpdateOauth2CredentialProviderResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    DecryptionFailure,
+    EncryptionFailure,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateOauth2CredentialProvider",
+}));
+
+export type UpdateOnlineEvaluationConfigError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an online evaluation configuration's settings, including rules, data sources, evaluators, and execution status. Changes take effect immediately for ongoing evaluations.
+ */
+export const updateOnlineEvaluationConfig: API.OperationMethod<
+  UpdateOnlineEvaluationConfigRequest,
+  UpdateOnlineEvaluationConfigResponse,
+  UpdateOnlineEvaluationConfigError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateOnlineEvaluationConfigRequest,
+  output: UpdateOnlineEvaluationConfigResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateOnlineEvaluationConfig",
+}));
+
+export type UpdatePaymentConnectorError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing payment connector. This operation uses PATCH semantics, so you only need to specify the fields you want to change.
+ */
+export const updatePaymentConnector: API.OperationMethod<
+  UpdatePaymentConnectorRequest,
+  UpdatePaymentConnectorResponse,
+  UpdatePaymentConnectorError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePaymentConnectorRequest,
+  output: UpdatePaymentConnectorResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdatePaymentConnector",
+}));
+
+export type UpdatePaymentCredentialProviderError =
+  | AccessDeniedException
+  | ConflictException
+  | DecryptionFailure
+  | EncryptionFailure
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing payment credential provider with new authentication credentials.
+ */
+export const updatePaymentCredentialProvider: API.OperationMethod<
+  UpdatePaymentCredentialProviderRequest,
+  UpdatePaymentCredentialProviderResponse,
+  UpdatePaymentCredentialProviderError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePaymentCredentialProviderRequest,
+  output: UpdatePaymentCredentialProviderResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    DecryptionFailure,
+    EncryptionFailure,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdatePaymentCredentialProvider",
+}));
+
+export type UpdatePaymentManagerError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing payment manager. This operation uses PATCH semantics, so you only need to specify the fields you want to change.
+ */
+export const updatePaymentManager: API.OperationMethod<
+  UpdatePaymentManagerRequest,
+  UpdatePaymentManagerResponse,
+  UpdatePaymentManagerError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePaymentManagerRequest,
+  output: UpdatePaymentManagerResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdatePaymentManager",
+}));
+
+export type UpdatePolicyError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing policy within the AgentCore Policy system. This operation allows modification of the policy description and definition while maintaining the policy's identity. The updated policy is validated against the Cedar schema before being applied. This is an asynchronous operation. Use the `GetPolicy` operation to poll the `status` field to track completion.
+ */
+export const updatePolicy: API.OperationMethod<
+  UpdatePolicyRequest,
+  UpdatePolicyResponse,
+  UpdatePolicyError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePolicyRequest,
+  output: UpdatePolicyResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdatePolicy",
+}));
+
+export type UpdatePolicyEngineError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing policy engine within the AgentCore Policy system. This operation allows modification of the policy engine description while maintaining its identity. This is an asynchronous operation. Use the `GetPolicyEngine` operation to poll the `status` field to track completion.
+ */
+export const updatePolicyEngine: API.OperationMethod<
+  UpdatePolicyEngineRequest,
+  UpdatePolicyEngineResponse,
+  UpdatePolicyEngineError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePolicyEngineRequest,
+  output: UpdatePolicyEngineResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdatePolicyEngine",
+}));
+
+export type UpdateRegistryError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ServiceQuotaExceededException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing registry. This operation uses PATCH semantics, so you only need to specify the fields you want to change.
+ */
+export const updateRegistry: API.OperationMethod<
+  UpdateRegistryRequest,
+  UpdateRegistryResponse,
+  UpdateRegistryError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateRegistryRequest,
+  output: UpdateRegistryResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ServiceQuotaExceededException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateRegistry",
+}));
+
+export type UpdateRegistryRecordError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing registry record. This operation uses PATCH semantics, so you only need to specify the fields you want to change. The update is processed asynchronously and returns HTTP 202 Accepted.
+ */
+export const updateRegistryRecord: API.OperationMethod<
+  UpdateRegistryRecordRequest,
+  UpdateRegistryRecordResponse,
+  UpdateRegistryRecordError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateRegistryRecordRequest,
+  output: UpdateRegistryRecordResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateRegistryRecord",
+}));
+
+export type UpdateRegistryRecordStatusError =
+  | AccessDeniedException
+  | ConflictException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates the status of a registry record. Use this operation to approve, reject, or deprecate a registry record.
+ */
+export const updateRegistryRecordStatus: API.OperationMethod<
+  UpdateRegistryRecordStatusRequest,
+  UpdateRegistryRecordStatusResponse,
+  UpdateRegistryRecordStatusError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateRegistryRecordStatusRequest,
+  output: UpdateRegistryRecordStatusResponse,
+  errors: [
+    AccessDeniedException,
+    ConflictException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateRegistryRecordStatus",
+}));
+
+export type UpdateWorkloadIdentityError =
+  | AccessDeniedException
+  | InternalServerException
+  | ResourceNotFoundException
+  | ThrottlingException
+  | UnauthorizedException
+  | ValidationException
+  | CommonErrors;
+/**
+ * Updates an existing workload identity.
+ */
+export const updateWorkloadIdentity: API.OperationMethod<
+  UpdateWorkloadIdentityRequest,
+  UpdateWorkloadIdentityResponse,
+  UpdateWorkloadIdentityError,
+  Credentials | Region | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateWorkloadIdentityRequest,
+  output: UpdateWorkloadIdentityResponse,
+  errors: [
+    AccessDeniedException,
+    InternalServerException,
+    ResourceNotFoundException,
+    ThrottlingException,
+    UnauthorizedException,
+    ValidationException,
+  ],
+  protocol: AwsProtocol,
+  retry: Retry,
+  operationName: "UpdateWorkloadIdentity",
 }));

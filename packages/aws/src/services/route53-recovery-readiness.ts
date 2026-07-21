@@ -85,17 +85,36 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type __stringMax256 = string;
-export type __stringMax64PatternAAZAZ09Z = string;
-export type CrossAccountAuthorization = string;
-export type __stringPatternAWSAZaZ09AZaZ09 = string;
-export type MaxResults = number;
-export type LastAuditTimestamp = Date;
-export type ReadinessCheckTimestamp = Date;
-export type __stringMax64 = string;
-
-//# Schemas
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { Message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type __listOf__string = string[];
 export const __listOf__string = /*@__PURE__*/ S.Array(S.String);
 export type Tags = { [key: string]: string | undefined };
@@ -125,6 +144,8 @@ export const CreateCellRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCellRequest",
 }) as any as S.Schema<CreateCellRequest>;
+export type __stringMax256 = string;
+export type __stringMax64PatternAAZAZ09Z = string;
 export interface CreateCellResponse {
   CellArn?: string;
   CellName?: string;
@@ -151,6 +172,7 @@ export const CreateCellResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateCellResponse",
 }) as any as S.Schema<CreateCellResponse>;
+export type CrossAccountAuthorization = string;
 export interface CreateCrossAccountAuthorizationRequest {
   CrossAccountAuthorization?: string;
 }
@@ -294,6 +316,7 @@ export const CreateRecoveryGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRecoveryGroupResponse",
 }) as any as S.Schema<CreateRecoveryGroupResponse>;
+export type __stringPatternAWSAZaZ09AZaZ09 = string;
 export interface NLBResource {
   Arn?: string;
 }
@@ -567,6 +590,7 @@ export const DeleteResourceSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeleteResourceSetResponse",
 }) as any as S.Schema<DeleteResourceSetResponse>;
+export type MaxResults = number;
 export interface GetArchitectureRecommendationsRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -594,6 +618,7 @@ export const GetArchitectureRecommendationsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetArchitectureRecommendationsRequest",
 }) as any as S.Schema<GetArchitectureRecommendationsRequest>;
+export type LastAuditTimestamp = Date;
 export interface Recommendation {
   RecommendationText?: string;
 }
@@ -698,6 +723,7 @@ export type Readiness =
   | "NOT_AUTHORIZED"
   | (string & {});
 export const Readiness = /*@__PURE__*/ S.String;
+
 export interface ReadinessCheckSummary {
   Readiness?: Readiness;
   ReadinessCheckName?: string;
@@ -810,6 +836,7 @@ export const GetReadinessCheckResourceStatusRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GetReadinessCheckResourceStatusRequest",
 }) as any as S.Schema<GetReadinessCheckResourceStatusRequest>;
+export type ReadinessCheckTimestamp = Date;
 export interface Message {
   MessageText?: string;
 }
@@ -1415,6 +1442,7 @@ export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListRulesRequest",
 }) as any as S.Schema<ListRulesRequest>;
+export type __stringMax64 = string;
 export interface ListRulesOutput {
   ResourceType?: string;
   RuleDescription?: string;
@@ -1731,40 +1759,6 @@ export const UpdateResourceSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateResourceSetResponse",
 }) as any as S.Schema<UpdateResourceSetResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CreateCellError =
   | AccessDeniedException
   | ConflictException
@@ -1794,6 +1788,7 @@ export const createCell: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCell",
 }));
+
 export type CreateCrossAccountAuthorizationError =
   | AccessDeniedException
   | ConflictException
@@ -1823,6 +1818,7 @@ export const createCrossAccountAuthorization: API.OperationMethod<
   retry: Retry,
   operationName: "CreateCrossAccountAuthorization",
 }));
+
 export type CreateReadinessCheckError =
   | AccessDeniedException
   | ConflictException
@@ -1852,6 +1848,7 @@ export const createReadinessCheck: API.OperationMethod<
   retry: Retry,
   operationName: "CreateReadinessCheck",
 }));
+
 export type CreateRecoveryGroupError =
   | AccessDeniedException
   | ConflictException
@@ -1881,6 +1878,7 @@ export const createRecoveryGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRecoveryGroup",
 }));
+
 export type CreateResourceSetError =
   | AccessDeniedException
   | ConflictException
@@ -1910,6 +1908,7 @@ export const createResourceSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateResourceSet",
 }));
+
 export type DeleteCellError =
   | AccessDeniedException
   | InternalServerException
@@ -1939,6 +1938,7 @@ export const deleteCell: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCell",
 }));
+
 export type DeleteCrossAccountAuthorizationError =
   | AccessDeniedException
   | InternalServerException
@@ -1966,6 +1966,7 @@ export const deleteCrossAccountAuthorization: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteCrossAccountAuthorization",
 }));
+
 export type DeleteReadinessCheckError =
   | AccessDeniedException
   | InternalServerException
@@ -1995,6 +1996,7 @@ export const deleteReadinessCheck: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReadinessCheck",
 }));
+
 export type DeleteRecoveryGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -2024,6 +2026,7 @@ export const deleteRecoveryGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRecoveryGroup",
 }));
+
 export type DeleteResourceSetError =
   | AccessDeniedException
   | InternalServerException
@@ -2053,6 +2056,7 @@ export const deleteResourceSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResourceSet",
 }));
+
 export type GetArchitectureRecommendationsError =
   | AccessDeniedException
   | InternalServerException
@@ -2082,6 +2086,7 @@ export const getArchitectureRecommendations: API.OperationMethod<
   retry: Retry,
   operationName: "GetArchitectureRecommendations",
 }));
+
 export type GetCellError =
   | AccessDeniedException
   | InternalServerException
@@ -2111,6 +2116,7 @@ export const getCell: API.OperationMethod<
   retry: Retry,
   operationName: "GetCell",
 }));
+
 export type GetCellReadinessSummaryError =
   | AccessDeniedException
   | InternalServerException
@@ -2161,6 +2167,7 @@ export const getCellReadinessSummary: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetReadinessCheckError =
   | AccessDeniedException
   | InternalServerException
@@ -2190,6 +2197,7 @@ export const getReadinessCheck: API.OperationMethod<
   retry: Retry,
   operationName: "GetReadinessCheck",
 }));
+
 export type GetReadinessCheckResourceStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -2240,6 +2248,7 @@ export const getReadinessCheckResourceStatus: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetReadinessCheckStatusError =
   | AccessDeniedException
   | InternalServerException
@@ -2290,6 +2299,7 @@ export const getReadinessCheckStatus: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetRecoveryGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -2319,6 +2329,7 @@ export const getRecoveryGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetRecoveryGroup",
 }));
+
 export type GetRecoveryGroupReadinessSummaryError =
   | AccessDeniedException
   | InternalServerException
@@ -2369,6 +2380,7 @@ export const getRecoveryGroupReadinessSummary: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type GetResourceSetError =
   | AccessDeniedException
   | InternalServerException
@@ -2398,6 +2410,7 @@ export const getResourceSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetResourceSet",
 }));
+
 export type ListCellsError =
   | AccessDeniedException
   | InternalServerException
@@ -2446,6 +2459,7 @@ export const listCells: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListCrossAccountAuthorizationsError =
   | AccessDeniedException
   | InternalServerException
@@ -2494,6 +2508,7 @@ export const listCrossAccountAuthorizations: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListReadinessChecksError =
   | AccessDeniedException
   | InternalServerException
@@ -2542,6 +2557,7 @@ export const listReadinessChecks: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRecoveryGroupsError =
   | AccessDeniedException
   | InternalServerException
@@ -2590,6 +2606,7 @@ export const listRecoveryGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListResourceSetsError =
   | AccessDeniedException
   | InternalServerException
@@ -2638,6 +2655,7 @@ export const listResourceSets: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListRulesError =
   | AccessDeniedException
   | InternalServerException
@@ -2686,6 +2704,7 @@ export const listRules: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListTagsForResourcesError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2711,6 +2730,7 @@ export const listTagsForResources: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResources",
 }));
+
 export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2736,6 +2756,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
@@ -2761,6 +2782,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateCellError =
   | AccessDeniedException
   | InternalServerException
@@ -2790,6 +2812,7 @@ export const updateCell: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateCell",
 }));
+
 export type UpdateReadinessCheckError =
   | AccessDeniedException
   | InternalServerException
@@ -2819,6 +2842,7 @@ export const updateReadinessCheck: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateReadinessCheck",
 }));
+
 export type UpdateRecoveryGroupError =
   | AccessDeniedException
   | InternalServerException
@@ -2848,6 +2872,7 @@ export const updateRecoveryGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRecoveryGroup",
 }));
+
 export type UpdateResourceSetError =
   | AccessDeniedException
   | InternalServerException

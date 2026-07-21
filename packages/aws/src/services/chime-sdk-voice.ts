@@ -87,51 +87,128 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
+  "ForbiddenException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class GoneException extends S.TaggedErrorClass<GoneException>()(
+  "GoneException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(410),
+).pipe(C.withBadRequestError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
+  "ResourceLimitExceededException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ServiceFailureException extends S.TaggedErrorClass<ServiceFailureException>()(
+  "ServiceFailureException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class ThrottledClientException extends S.TaggedErrorClass<ThrottledClientException>()(
+  "ThrottledClientException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedClientException extends S.TaggedErrorClass<UnauthorizedClientException>()(
+  "UnauthorizedClientException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
+export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
+  "UnprocessableEntityException",
+  {
+    Code: S.optional(
+      S.suspend(() => ErrorCode).annotate({ identifier: "ErrorCode" }),
+    ),
+    Message: S.optional(S.String),
+  },
+  T.HttpError(422),
+).pipe(C.withBadRequestError) {}
 export type NonEmptyString = string;
 export type E164PhoneNumber = string | redacted.Redacted<string>;
-export type SensitiveNonEmptyString = string | redacted.Redacted<string>;
-export type CallingName = string | redacted.Redacted<string>;
-export type PhoneNumberName = string | redacted.Redacted<string>;
-export type GuidString = string;
-export type Iso8601Timestamp = Date;
-export type NonEmptyString128 = string;
-export type ProxySessionNameString = string | redacted.Redacted<string>;
-export type PositiveInteger = number;
-export type Country = string;
-export type AreaCode = string;
-export type String128 = string;
-export type SipMediaApplicationName = string;
-export type FunctionArn = string | redacted.Redacted<string>;
-export type TagKey = string | redacted.Redacted<string>;
-export type TagValue = string | redacted.Redacted<string>;
-export type SensitiveString = string | redacted.Redacted<string>;
-export type SipRuleName = string;
-export type SipApplicationPriority = number;
-export type VoiceConnectorName = string;
-export type VoiceConnectorGroupName = string;
-export type VoiceConnectorItemPriority = number;
-export type NonEmptyString256 = string;
-export type Arn = string | redacted.Redacted<string>;
-export type VoiceProfileDomainName = string;
-export type VoiceProfileDomainDescription = string;
-export type ClientRequestId = string;
-export type Alpha2CountryCode = string;
-export type AlexaSkillId = string | redacted.Redacted<string>;
-export type ConfidenceScore = number;
-export type Port = number;
-export type OriginationRoutePriority = number;
-export type OriginationRouteWeight = number;
-export type DataRetentionInHours = number;
-export type CpsLimit = number;
-export type CallingRegion = string;
-export type ResultMax = number;
-export type NextTokenString = string;
-export type TollFreePrefix = string;
-export type PhoneNumberMaxResults = number;
-export type ValidationResult = number;
-
-//# Schemas
 export type E164PhoneNumberList = (string | redacted.Redacted<string>)[];
 export const E164PhoneNumberList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface AssociatePhoneNumbersWithVoiceConnectorRequest {
@@ -161,6 +238,7 @@ export const AssociatePhoneNumbersWithVoiceConnectorRequest =
   ).annotate({
     identifier: "AssociatePhoneNumbersWithVoiceConnectorRequest",
   }) as any as S.Schema<AssociatePhoneNumbersWithVoiceConnectorRequest>;
+export type SensitiveNonEmptyString = string | redacted.Redacted<string>;
 export type ErrorCode =
   | "BadRequest"
   | "Conflict"
@@ -180,6 +258,7 @@ export type ErrorCode =
   | "Gone"
   | (string & {});
 export const ErrorCode = /*@__PURE__*/ S.String;
+
 export interface PhoneNumberError {
   PhoneNumberId?: string | redacted.Redacted<string>;
   ErrorCode?: ErrorCode;
@@ -275,6 +354,9 @@ export type PhoneNumberProductType =
   | "SipMediaApplicationDialIn"
   | (string & {});
 export const PhoneNumberProductType = /*@__PURE__*/ S.String;
+
+export type CallingName = string | redacted.Redacted<string>;
+export type PhoneNumberName = string | redacted.Redacted<string>;
 export interface UpdatePhoneNumberRequestItem {
   PhoneNumberId: string | redacted.Redacted<string>;
   ProductType?: PhoneNumberProductType;
@@ -345,6 +427,7 @@ export const CreatePhoneNumberOrderRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePhoneNumberOrderRequest",
 }) as any as S.Schema<CreatePhoneNumberOrderRequest>;
+export type GuidString = string;
 export type PhoneNumberOrderStatus =
   | "Processing"
   | "Successful"
@@ -359,14 +442,17 @@ export type PhoneNumberOrderStatus =
   | "Cancelled"
   | (string & {});
 export const PhoneNumberOrderStatus = /*@__PURE__*/ S.String;
+
 export type PhoneNumberOrderType = "New" | "Porting" | (string & {});
 export const PhoneNumberOrderType = /*@__PURE__*/ S.String;
+
 export type OrderedPhoneNumberStatus =
   | "Processing"
   | "Acquired"
   | "Failed"
   | (string & {});
 export const OrderedPhoneNumberStatus = /*@__PURE__*/ S.String;
+
 export interface OrderedPhoneNumber {
   E164PhoneNumber?: string | redacted.Redacted<string>;
   Status?: OrderedPhoneNumberStatus;
@@ -381,6 +467,7 @@ export const OrderedPhoneNumber = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<OrderedPhoneNumber>;
 export type OrderedPhoneNumberList = OrderedPhoneNumber[];
 export const OrderedPhoneNumberList = /*@__PURE__*/ S.Array(OrderedPhoneNumber);
+export type Iso8601Timestamp = Date;
 export interface PhoneNumberOrder {
   PhoneNumberOrderId?: string;
   ProductType?: PhoneNumberProductType;
@@ -417,11 +504,15 @@ export const CreatePhoneNumberOrderResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreatePhoneNumberOrderResponse",
 }) as any as S.Schema<CreatePhoneNumberOrderResponse>;
+export type NonEmptyString128 = string;
 export type ParticipantPhoneNumberList = (string | redacted.Redacted<string>)[];
 export const ParticipantPhoneNumberList =
   /*@__PURE__*/ S.Array(SensitiveString);
+export type ProxySessionNameString = string | redacted.Redacted<string>;
+export type PositiveInteger = number;
 export type Capability = "Voice" | "SMS" | (string & {});
 export const Capability = /*@__PURE__*/ S.String;
+
 export type CapabilityList = Capability[];
 export const CapabilityList = /*@__PURE__*/ S.Array(Capability);
 export type NumberSelectionBehavior =
@@ -429,8 +520,12 @@ export type NumberSelectionBehavior =
   | "AvoidSticky"
   | (string & {});
 export const NumberSelectionBehavior = /*@__PURE__*/ S.String;
+
 export type GeoMatchLevel = "Country" | "AreaCode" | (string & {});
 export const GeoMatchLevel = /*@__PURE__*/ S.String;
+
+export type Country = string;
+export type AreaCode = string;
 export interface GeoMatchParams {
   Country: string;
   AreaCode: string;
@@ -474,12 +569,14 @@ export const CreateProxySessionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProxySessionRequest",
 }) as any as S.Schema<CreateProxySessionRequest>;
+export type String128 = string;
 export type ProxySessionStatus =
   | "Open"
   | "InProgress"
   | "Closed"
   | (string & {});
 export const ProxySessionStatus = /*@__PURE__*/ S.String;
+
 export interface Participant {
   PhoneNumber?: string | redacted.Redacted<string>;
   ProxyPhoneNumber?: string | redacted.Redacted<string>;
@@ -538,6 +635,8 @@ export const CreateProxySessionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProxySessionResponse",
 }) as any as S.Schema<CreateProxySessionResponse>;
+export type SipMediaApplicationName = string;
+export type FunctionArn = string | redacted.Redacted<string>;
 export interface SipMediaApplicationEndpoint {
   LambdaArn?: string | redacted.Redacted<string>;
 }
@@ -550,6 +649,8 @@ export type SipMediaApplicationEndpointList = SipMediaApplicationEndpoint[];
 export const SipMediaApplicationEndpointList = /*@__PURE__*/ S.Array(
   SipMediaApplicationEndpoint,
 );
+export type TagKey = string | redacted.Redacted<string>;
+export type TagValue = string | redacted.Redacted<string>;
 export interface Tag {
   Key: string | redacted.Redacted<string>;
   Value: string | redacted.Redacted<string>;
@@ -618,6 +719,7 @@ export const CreateSipMediaApplicationResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSipMediaApplicationResponse",
 }) as any as S.Schema<CreateSipMediaApplicationResponse>;
+export type SensitiveString = string | redacted.Redacted<string>;
 export type SipHeadersMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
@@ -686,11 +788,14 @@ export const CreateSipMediaApplicationCallResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CreateSipMediaApplicationCallResponse",
 }) as any as S.Schema<CreateSipMediaApplicationCallResponse>;
+export type SipRuleName = string;
 export type SipRuleTriggerType =
   | "ToPhoneNumber"
   | "RequestUriHostname"
   | (string & {});
 export const SipRuleTriggerType = /*@__PURE__*/ S.String;
+
+export type SipApplicationPriority = number;
 export interface SipRuleTargetApplication {
   SipMediaApplicationId?: string;
   Priority?: number;
@@ -770,6 +875,7 @@ export const CreateSipRuleResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateSipRuleResponse",
 }) as any as S.Schema<CreateSipRuleResponse>;
+export type VoiceConnectorName = string;
 export type VoiceConnectorAwsRegion =
   | "us-east-1"
   | "us-west-2"
@@ -783,13 +889,16 @@ export type VoiceConnectorAwsRegion =
   | "ap-southeast-2"
   | (string & {});
 export const VoiceConnectorAwsRegion = /*@__PURE__*/ S.String;
+
 export type VoiceConnectorIntegrationType =
   | "CONNECT_CALL_TRANSFER_CONNECTOR"
   | "CONNECT_ANALYTICS_CONNECTOR"
   | (string & {});
 export const VoiceConnectorIntegrationType = /*@__PURE__*/ S.String;
+
 export type NetworkType = "IPV4_ONLY" | "DUAL_STACK" | (string & {});
 export const NetworkType = /*@__PURE__*/ S.String;
+
 export interface CreateVoiceConnectorRequest {
   Name: string;
   AwsRegion?: VoiceConnectorAwsRegion;
@@ -857,6 +966,8 @@ export const CreateVoiceConnectorResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVoiceConnectorResponse",
 }) as any as S.Schema<CreateVoiceConnectorResponse>;
+export type VoiceConnectorGroupName = string;
+export type VoiceConnectorItemPriority = number;
 export interface VoiceConnectorItem {
   VoiceConnectorId: string;
   Priority: number;
@@ -921,6 +1032,7 @@ export const CreateVoiceConnectorGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVoiceConnectorGroupResponse",
 }) as any as S.Schema<CreateVoiceConnectorGroupResponse>;
+export type NonEmptyString256 = string;
 export interface CreateVoiceProfileRequest {
   SpeakerSearchTaskId: string;
 }
@@ -938,6 +1050,7 @@ export const CreateVoiceProfileRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVoiceProfileRequest",
 }) as any as S.Schema<CreateVoiceProfileRequest>;
+export type Arn = string | redacted.Redacted<string>;
 export interface VoiceProfile {
   VoiceProfileId?: string;
   VoiceProfileArn?: string | redacted.Redacted<string>;
@@ -970,6 +1083,8 @@ export const CreateVoiceProfileResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateVoiceProfileResponse",
 }) as any as S.Schema<CreateVoiceProfileResponse>;
+export type VoiceProfileDomainName = string;
+export type VoiceProfileDomainDescription = string;
 export interface ServerSideEncryptionConfiguration {
   KmsKeyArn: string | redacted.Redacted<string>;
 }
@@ -978,6 +1093,7 @@ export const ServerSideEncryptionConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServerSideEncryptionConfiguration",
 }) as any as S.Schema<ServerSideEncryptionConfiguration>;
+export type ClientRequestId = string;
 export interface CreateVoiceProfileDomainRequest {
   Name: string;
   Description?: string;
@@ -1575,8 +1691,10 @@ export const GetPhoneNumberRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPhoneNumberRequest",
 }) as any as S.Schema<GetPhoneNumberRequest>;
+export type Alpha2CountryCode = string;
 export type PhoneNumberType = "Local" | "TollFree" | (string & {});
 export const PhoneNumberType = /*@__PURE__*/ S.String;
+
 export type PhoneNumberStatus =
   | "Cancelled"
   | "PortinCancelRequested"
@@ -1591,6 +1709,7 @@ export type PhoneNumberStatus =
   | "DeleteFailed"
   | (string & {});
 export const PhoneNumberStatus = /*@__PURE__*/ S.String;
+
 export interface PhoneNumberCapabilities {
   InboundCall?: boolean;
   OutboundCall?: boolean;
@@ -1617,6 +1736,7 @@ export type PhoneNumberAssociationName =
   | "SipRuleId"
   | (string & {});
 export const PhoneNumberAssociationName = /*@__PURE__*/ S.String;
+
 export interface PhoneNumberAssociation {
   Value?: string;
   Name?: PhoneNumberAssociationName;
@@ -1644,6 +1764,7 @@ export type CallingNameStatus =
   | "UpdateFailed"
   | (string & {});
 export const CallingNameStatus = /*@__PURE__*/ S.String;
+
 export interface PhoneNumber {
   PhoneNumberId?: string | redacted.Redacted<string>;
   E164PhoneNumber?: string | redacted.Redacted<string>;
@@ -1842,6 +1963,8 @@ export const GetSipMediaApplicationAlexaSkillConfigurationRequest =
   }) as any as S.Schema<GetSipMediaApplicationAlexaSkillConfigurationRequest>;
 export type AlexaSkillStatus = "ACTIVE" | "INACTIVE" | (string & {});
 export const AlexaSkillStatus = /*@__PURE__*/ S.String;
+
+export type AlexaSkillId = string | redacted.Redacted<string>;
 export type AlexaSkillIdList = (string | redacted.Redacted<string>)[];
 export const AlexaSkillIdList = /*@__PURE__*/ S.Array(SensitiveString);
 export interface SipMediaApplicationAlexaSkillConfiguration {
@@ -1978,6 +2101,7 @@ export const CallDetails = /*@__PURE__*/ S.suspend(() =>
     IsCaller: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "CallDetails" }) as any as S.Schema<CallDetails>;
+export type ConfidenceScore = number;
 export interface SpeakerSearchResult {
   ConfidenceScore?: number;
   VoiceProfileId?: string;
@@ -2162,6 +2286,7 @@ export type SessionBorderControllerType =
   | "AUDIOCODES_MEDIANT_SBC"
   | (string & {});
 export const SessionBorderControllerType = /*@__PURE__*/ S.String;
+
 export type SessionBorderControllerTypeList = SessionBorderControllerType[];
 export const SessionBorderControllerTypeList = /*@__PURE__*/ S.Array(
   SessionBorderControllerType,
@@ -2173,6 +2298,7 @@ export type ContactCenterSystemType =
   | "CISCO_UNIFIED_CONTACT_CENTER_ENTERPRISE"
   | (string & {});
 export const ContactCenterSystemType = /*@__PURE__*/ S.String;
+
 export type ContactCenterSystemTypeList = ContactCenterSystemType[];
 export const ContactCenterSystemTypeList = /*@__PURE__*/ S.Array(
   ContactCenterSystemType,
@@ -2296,8 +2422,12 @@ export const GetVoiceConnectorOriginationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetVoiceConnectorOriginationRequest",
 }) as any as S.Schema<GetVoiceConnectorOriginationRequest>;
+export type Port = number;
 export type OriginationRouteProtocol = "TCP" | "UDP" | (string & {});
 export const OriginationRouteProtocol = /*@__PURE__*/ S.String;
+
+export type OriginationRoutePriority = number;
+export type OriginationRouteWeight = number;
 export interface OriginationRoute {
   Host?: string;
   Port?: number;
@@ -2405,8 +2535,10 @@ export const GetVoiceConnectorStreamingConfigurationRequest =
   ).annotate({
     identifier: "GetVoiceConnectorStreamingConfigurationRequest",
   }) as any as S.Schema<GetVoiceConnectorStreamingConfigurationRequest>;
+export type DataRetentionInHours = number;
 export type NotificationTarget = "EventBridge" | "SNS" | "SQS" | (string & {});
 export const NotificationTarget = /*@__PURE__*/ S.String;
+
 export interface StreamingNotificationTarget {
   NotificationTarget?: NotificationTarget;
 }
@@ -2478,6 +2610,8 @@ export const GetVoiceConnectorTerminationRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetVoiceConnectorTerminationRequest",
 }) as any as S.Schema<GetVoiceConnectorTerminationRequest>;
+export type CpsLimit = number;
+export type CallingRegion = string;
 export type CallingRegionList = string[];
 export const CallingRegionList = /*@__PURE__*/ S.Array(S.String);
 export interface Termination {
@@ -2702,6 +2836,7 @@ export const ListAvailableVoiceConnectorRegionsResponse =
   ).annotate({
     identifier: "ListAvailableVoiceConnectorRegionsResponse",
   }) as any as S.Schema<ListAvailableVoiceConnectorRegionsResponse>;
+export type ResultMax = number;
 export interface ListPhoneNumberOrdersRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -2784,6 +2919,7 @@ export const ListPhoneNumbersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPhoneNumbersResponse",
 }) as any as S.Schema<ListPhoneNumbersResponse>;
+export type NextTokenString = string;
 export interface ListProxySessionsRequest {
   VoiceConnectorId: string;
   Status?: ProxySessionStatus;
@@ -3602,6 +3738,8 @@ export const RestorePhoneNumberResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RestorePhoneNumberResponse",
 }) as any as S.Schema<RestorePhoneNumberResponse>;
+export type TollFreePrefix = string;
+export type PhoneNumberMaxResults = number;
 export interface SearchAvailablePhoneNumbersRequest {
   AreaCode?: string;
   City?: string;
@@ -3651,6 +3789,7 @@ export const SearchAvailablePhoneNumbersResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SearchAvailablePhoneNumbersResponse>;
 export type CallLegType = "Caller" | "Callee" | (string & {});
 export const CallLegType = /*@__PURE__*/ S.String;
+
 export interface StartSpeakerSearchTaskRequest {
   VoiceConnectorId: string;
   TransactionId: string;
@@ -3691,6 +3830,7 @@ export const StartSpeakerSearchTaskResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StartSpeakerSearchTaskResponse>;
 export type LanguageCode = "en-US" | (string & {});
 export const LanguageCode = /*@__PURE__*/ S.String;
+
 export interface StartVoiceToneAnalysisTaskRequest {
   VoiceConnectorId: string;
   TransactionId: string;
@@ -4225,6 +4365,7 @@ export const ValidateE911AddressRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ValidateE911AddressRequest",
 }) as any as S.Schema<ValidateE911AddressRequest>;
+export type ValidationResult = number;
 export interface Address {
   streetName?: string | redacted.Redacted<string>;
   streetSuffix?: string | redacted.Redacted<string>;
@@ -4295,70 +4436,6 @@ export const ValidateE911AddressResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ValidateE911AddressResponse",
 }) as any as S.Schema<ValidateE911AddressResponse>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ForbiddenException extends S.TaggedErrorClass<ForbiddenException>()(
-  "ForbiddenException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class ServiceFailureException extends S.TaggedErrorClass<ServiceFailureException>()(
-  "ServiceFailureException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-export class ThrottledClientException extends S.TaggedErrorClass<ThrottledClientException>()(
-  "ThrottledClientException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedClientException extends S.TaggedErrorClass<UnauthorizedClientException>()(
-  "UnauthorizedClientException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class ResourceLimitExceededException extends S.TaggedErrorClass<ResourceLimitExceededException>()(
-  "ResourceLimitExceededException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class GoneException extends S.TaggedErrorClass<GoneException>()(
-  "GoneException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(410),
-).pipe(C.withBadRequestError) {}
-export class UnprocessableEntityException extends S.TaggedErrorClass<UnprocessableEntityException>()(
-  "UnprocessableEntityException",
-  { Code: S.optional(ErrorCode), Message: S.optional(S.String) },
-  T.HttpError(422),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type AssociatePhoneNumbersWithVoiceConnectorError =
   | AccessDeniedException
   | BadRequestException
@@ -4394,6 +4471,7 @@ export const associatePhoneNumbersWithVoiceConnector: API.OperationMethod<
   retry: Retry,
   operationName: "AssociatePhoneNumbersWithVoiceConnector",
 }));
+
 export type AssociatePhoneNumbersWithVoiceConnectorGroupError =
   | AccessDeniedException
   | BadRequestException
@@ -4429,6 +4507,7 @@ export const associatePhoneNumbersWithVoiceConnectorGroup: API.OperationMethod<
   retry: Retry,
   operationName: "AssociatePhoneNumbersWithVoiceConnectorGroup",
 }));
+
 export type BatchDeletePhoneNumberError =
   | BadRequestException
   | ForbiddenException
@@ -4466,6 +4545,7 @@ export const batchDeletePhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "BatchDeletePhoneNumber",
 }));
+
 export type BatchUpdatePhoneNumberError =
   | BadRequestException
   | ForbiddenException
@@ -4502,6 +4582,7 @@ export const batchUpdatePhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "BatchUpdatePhoneNumber",
 }));
+
 export type CreatePhoneNumberOrderError =
   | AccessDeniedException
   | BadRequestException
@@ -4537,6 +4618,7 @@ export const createPhoneNumberOrder: API.OperationMethod<
   retry: Retry,
   operationName: "CreatePhoneNumberOrder",
 }));
+
 export type CreateProxySessionError =
   | BadRequestException
   | ForbiddenException
@@ -4571,6 +4653,7 @@ export const createProxySession: API.OperationMethod<
   retry: Retry,
   operationName: "CreateProxySession",
 }));
+
 export type CreateSipMediaApplicationError =
   | AccessDeniedException
   | BadRequestException
@@ -4609,6 +4692,7 @@ export const createSipMediaApplication: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSipMediaApplication",
 }));
+
 export type CreateSipMediaApplicationCallError =
   | AccessDeniedException
   | BadRequestException
@@ -4646,6 +4730,7 @@ export const createSipMediaApplicationCall: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSipMediaApplicationCall",
 }));
+
 export type CreateSipRuleError =
   | AccessDeniedException
   | BadRequestException
@@ -4684,6 +4769,7 @@ export const createSipRule: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSipRule",
 }));
+
 export type CreateVoiceConnectorError =
   | AccessDeniedException
   | BadRequestException
@@ -4722,6 +4808,7 @@ export const createVoiceConnector: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVoiceConnector",
 }));
+
 export type CreateVoiceConnectorGroupError =
   | AccessDeniedException
   | BadRequestException
@@ -4763,6 +4850,7 @@ export const createVoiceConnectorGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVoiceConnectorGroup",
 }));
+
 export type CreateVoiceProfileError =
   | AccessDeniedException
   | BadRequestException
@@ -4810,6 +4898,7 @@ export const createVoiceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVoiceProfile",
 }));
+
 export type CreateVoiceProfileDomainError =
   | AccessDeniedException
   | BadRequestException
@@ -4853,6 +4942,7 @@ export const createVoiceProfileDomain: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVoiceProfileDomain",
 }));
+
 export type DeletePhoneNumberError =
   | BadRequestException
   | ForbiddenException
@@ -4893,6 +4983,7 @@ export const deletePhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePhoneNumber",
 }));
+
 export type DeleteProxySessionError =
   | BadRequestException
   | ForbiddenException
@@ -4927,6 +5018,7 @@ export const deleteProxySession: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteProxySession",
 }));
+
 export type DeleteSipMediaApplicationError =
   | BadRequestException
   | ConflictException
@@ -4962,6 +5054,7 @@ export const deleteSipMediaApplication: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSipMediaApplication",
 }));
+
 export type DeleteSipRuleError =
   | BadRequestException
   | ConflictException
@@ -4997,6 +5090,7 @@ export const deleteSipRule: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSipRule",
 }));
+
 export type DeleteVoiceConnectorError =
   | BadRequestException
   | ConflictException
@@ -5034,6 +5128,7 @@ export const deleteVoiceConnector: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVoiceConnector",
 }));
+
 export type DeleteVoiceConnectorEmergencyCallingConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -5068,6 +5163,7 @@ export const deleteVoiceConnectorEmergencyCallingConfiguration: API.OperationMet
   retry: Retry,
   operationName: "DeleteVoiceConnectorEmergencyCallingConfiguration",
 }));
+
 export type DeleteVoiceConnectorExternalSystemsConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -5101,6 +5197,7 @@ export const deleteVoiceConnectorExternalSystemsConfiguration: API.OperationMeth
   retry: Retry,
   operationName: "DeleteVoiceConnectorExternalSystemsConfiguration",
 }));
+
 export type DeleteVoiceConnectorGroupError =
   | BadRequestException
   | ConflictException
@@ -5138,6 +5235,7 @@ export const deleteVoiceConnectorGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVoiceConnectorGroup",
 }));
+
 export type DeleteVoiceConnectorOriginationError =
   | BadRequestException
   | ForbiddenException
@@ -5174,6 +5272,7 @@ export const deleteVoiceConnectorOrigination: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVoiceConnectorOrigination",
 }));
+
 export type DeleteVoiceConnectorProxyError =
   | BadRequestException
   | ForbiddenException
@@ -5207,6 +5306,7 @@ export const deleteVoiceConnectorProxy: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVoiceConnectorProxy",
 }));
+
 export type DeleteVoiceConnectorStreamingConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -5240,6 +5340,7 @@ export const deleteVoiceConnectorStreamingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVoiceConnectorStreamingConfiguration",
 }));
+
 export type DeleteVoiceConnectorTerminationError =
   | BadRequestException
   | ForbiddenException
@@ -5276,6 +5377,7 @@ export const deleteVoiceConnectorTermination: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVoiceConnectorTermination",
 }));
+
 export type DeleteVoiceConnectorTerminationCredentialsError =
   | BadRequestException
   | ForbiddenException
@@ -5310,6 +5412,7 @@ export const deleteVoiceConnectorTerminationCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVoiceConnectorTerminationCredentials",
 }));
+
 export type DeleteVoiceProfileError =
   | AccessDeniedException
   | BadRequestException
@@ -5347,6 +5450,7 @@ export const deleteVoiceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVoiceProfile",
 }));
+
 export type DeleteVoiceProfileDomainError =
   | AccessDeniedException
   | BadRequestException
@@ -5384,6 +5488,7 @@ export const deleteVoiceProfileDomain: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVoiceProfileDomain",
 }));
+
 export type DisassociatePhoneNumbersFromVoiceConnectorError =
   | BadRequestException
   | ForbiddenException
@@ -5418,6 +5523,7 @@ export const disassociatePhoneNumbersFromVoiceConnector: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociatePhoneNumbersFromVoiceConnector",
 }));
+
 export type DisassociatePhoneNumbersFromVoiceConnectorGroupError =
   | BadRequestException
   | ForbiddenException
@@ -5452,6 +5558,7 @@ export const disassociatePhoneNumbersFromVoiceConnectorGroup: API.OperationMetho
   retry: Retry,
   operationName: "DisassociatePhoneNumbersFromVoiceConnectorGroup",
 }));
+
 export type GetGlobalSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -5483,6 +5590,7 @@ export const getGlobalSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetGlobalSettings",
 }));
+
 export type GetPhoneNumberError =
   | BadRequestException
   | ForbiddenException
@@ -5517,6 +5625,7 @@ export const getPhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "GetPhoneNumber",
 }));
+
 export type GetPhoneNumberOrderError =
   | BadRequestException
   | ForbiddenException
@@ -5552,6 +5661,7 @@ export const getPhoneNumberOrder: API.OperationMethod<
   retry: Retry,
   operationName: "GetPhoneNumberOrder",
 }));
+
 export type GetPhoneNumberSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -5584,6 +5694,7 @@ export const getPhoneNumberSettings: API.OperationMethod<
   retry: Retry,
   operationName: "GetPhoneNumberSettings",
 }));
+
 export type GetProxySessionError =
   | BadRequestException
   | ForbiddenException
@@ -5617,6 +5728,7 @@ export const getProxySession: API.OperationMethod<
   retry: Retry,
   operationName: "GetProxySession",
 }));
+
 export type GetSipMediaApplicationError =
   | BadRequestException
   | ForbiddenException
@@ -5651,6 +5763,7 @@ export const getSipMediaApplication: API.OperationMethod<
   retry: Retry,
   operationName: "GetSipMediaApplication",
 }));
+
 export type GetSipMediaApplicationAlexaSkillConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -5687,6 +5800,7 @@ export const getSipMediaApplicationAlexaSkillConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetSipMediaApplicationAlexaSkillConfiguration",
 }));
+
 export type GetSipMediaApplicationLoggingConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -5720,6 +5834,7 @@ export const getSipMediaApplicationLoggingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetSipMediaApplicationLoggingConfiguration",
 }));
+
 export type GetSipRuleError =
   | BadRequestException
   | ForbiddenException
@@ -5754,6 +5869,7 @@ export const getSipRule: API.OperationMethod<
   retry: Retry,
   operationName: "GetSipRule",
 }));
+
 export type GetSpeakerSearchTaskError =
   | AccessDeniedException
   | BadRequestException
@@ -5791,6 +5907,7 @@ export const getSpeakerSearchTask: API.OperationMethod<
   retry: Retry,
   operationName: "GetSpeakerSearchTask",
 }));
+
 export type GetVoiceConnectorError =
   | BadRequestException
   | ForbiddenException
@@ -5825,6 +5942,7 @@ export const getVoiceConnector: API.OperationMethod<
   retry: Retry,
   operationName: "GetVoiceConnector",
 }));
+
 export type GetVoiceConnectorEmergencyCallingConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -5858,6 +5976,7 @@ export const getVoiceConnectorEmergencyCallingConfiguration: API.OperationMethod
   retry: Retry,
   operationName: "GetVoiceConnectorEmergencyCallingConfiguration",
 }));
+
 export type GetVoiceConnectorExternalSystemsConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -5892,6 +6011,7 @@ export const getVoiceConnectorExternalSystemsConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetVoiceConnectorExternalSystemsConfiguration",
 }));
+
 export type GetVoiceConnectorGroupError =
   | BadRequestException
   | ForbiddenException
@@ -5926,6 +6046,7 @@ export const getVoiceConnectorGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetVoiceConnectorGroup",
 }));
+
 export type GetVoiceConnectorLoggingConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -5960,6 +6081,7 @@ export const getVoiceConnectorLoggingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetVoiceConnectorLoggingConfiguration",
 }));
+
 export type GetVoiceConnectorOriginationError =
   | BadRequestException
   | ForbiddenException
@@ -5993,6 +6115,7 @@ export const getVoiceConnectorOrigination: API.OperationMethod<
   retry: Retry,
   operationName: "GetVoiceConnectorOrigination",
 }));
+
 export type GetVoiceConnectorProxyError =
   | BadRequestException
   | ForbiddenException
@@ -6027,6 +6150,7 @@ export const getVoiceConnectorProxy: API.OperationMethod<
   retry: Retry,
   operationName: "GetVoiceConnectorProxy",
 }));
+
 export type GetVoiceConnectorStreamingConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -6062,6 +6186,7 @@ export const getVoiceConnectorStreamingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetVoiceConnectorStreamingConfiguration",
 }));
+
 export type GetVoiceConnectorTerminationError =
   | BadRequestException
   | ForbiddenException
@@ -6095,6 +6220,7 @@ export const getVoiceConnectorTermination: API.OperationMethod<
   retry: Retry,
   operationName: "GetVoiceConnectorTermination",
 }));
+
 export type GetVoiceConnectorTerminationHealthError =
   | BadRequestException
   | ForbiddenException
@@ -6130,6 +6256,7 @@ export const getVoiceConnectorTerminationHealth: API.OperationMethod<
   retry: Retry,
   operationName: "GetVoiceConnectorTerminationHealth",
 }));
+
 export type GetVoiceProfileError =
   | AccessDeniedException
   | BadRequestException
@@ -6165,6 +6292,7 @@ export const getVoiceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "GetVoiceProfile",
 }));
+
 export type GetVoiceProfileDomainError =
   | AccessDeniedException
   | BadRequestException
@@ -6200,6 +6328,7 @@ export const getVoiceProfileDomain: API.OperationMethod<
   retry: Retry,
   operationName: "GetVoiceProfileDomain",
 }));
+
 export type GetVoiceToneAnalysisTaskError =
   | AccessDeniedException
   | BadRequestException
@@ -6237,6 +6366,7 @@ export const getVoiceToneAnalysisTask: API.OperationMethod<
   retry: Retry,
   operationName: "GetVoiceToneAnalysisTask",
 }));
+
 export type ListAvailableVoiceConnectorRegionsError =
   | BadRequestException
   | ForbiddenException
@@ -6268,6 +6398,7 @@ export const listAvailableVoiceConnectorRegions: API.OperationMethod<
   retry: Retry,
   operationName: "ListAvailableVoiceConnectorRegions",
 }));
+
 export type ListPhoneNumberOrdersError =
   | BadRequestException
   | ForbiddenException
@@ -6319,6 +6450,7 @@ export const listPhoneNumberOrders: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListPhoneNumbersError =
   | BadRequestException
   | ForbiddenException
@@ -6374,6 +6506,7 @@ export const listPhoneNumbers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListProxySessionsError =
   | BadRequestException
   | ForbiddenException
@@ -6427,6 +6560,7 @@ export const listProxySessions: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSipMediaApplicationsError =
   | BadRequestException
   | ForbiddenException
@@ -6479,6 +6613,7 @@ export const listSipMediaApplications: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSipRulesError =
   | BadRequestException
   | ForbiddenException
@@ -6531,6 +6666,7 @@ export const listSipRules: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListSupportedPhoneNumberCountriesError =
   | AccessDeniedException
   | BadRequestException
@@ -6564,6 +6700,7 @@ export const listSupportedPhoneNumberCountries: API.OperationMethod<
   retry: Retry,
   operationName: "ListSupportedPhoneNumberCountries",
 }));
+
 export type ListTagsForResourceError =
   | BadRequestException
   | ForbiddenException
@@ -6595,6 +6732,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListVoiceConnectorGroupsError =
   | BadRequestException
   | ForbiddenException
@@ -6647,6 +6785,7 @@ export const listVoiceConnectorGroups: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListVoiceConnectorsError =
   | BadRequestException
   | ForbiddenException
@@ -6699,6 +6838,7 @@ export const listVoiceConnectors: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListVoiceConnectorTerminationCredentialsError =
   | BadRequestException
   | ForbiddenException
@@ -6732,6 +6872,7 @@ export const listVoiceConnectorTerminationCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "ListVoiceConnectorTerminationCredentials",
 }));
+
 export type ListVoiceProfileDomainsError =
   | BadRequestException
   | ForbiddenException
@@ -6785,6 +6926,7 @@ export const listVoiceProfileDomains: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type ListVoiceProfilesError =
   | BadRequestException
   | ForbiddenException
@@ -6838,6 +6980,7 @@ export const listVoiceProfiles: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type PutSipMediaApplicationAlexaSkillConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -6874,6 +7017,7 @@ export const putSipMediaApplicationAlexaSkillConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutSipMediaApplicationAlexaSkillConfiguration",
 }));
+
 export type PutSipMediaApplicationLoggingConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -6907,6 +7051,7 @@ export const putSipMediaApplicationLoggingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutSipMediaApplicationLoggingConfiguration",
 }));
+
 export type PutVoiceConnectorEmergencyCallingConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -6940,6 +7085,7 @@ export const putVoiceConnectorEmergencyCallingConfiguration: API.OperationMethod
   retry: Retry,
   operationName: "PutVoiceConnectorEmergencyCallingConfiguration",
 }));
+
 export type PutVoiceConnectorExternalSystemsConfigurationError =
   | BadRequestException
   | ConflictException
@@ -6975,6 +7121,7 @@ export const putVoiceConnectorExternalSystemsConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutVoiceConnectorExternalSystemsConfiguration",
 }));
+
 export type PutVoiceConnectorLoggingConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -7008,6 +7155,7 @@ export const putVoiceConnectorLoggingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutVoiceConnectorLoggingConfiguration",
 }));
+
 export type PutVoiceConnectorOriginationError =
   | BadRequestException
   | ForbiddenException
@@ -7041,6 +7189,7 @@ export const putVoiceConnectorOrigination: API.OperationMethod<
   retry: Retry,
   operationName: "PutVoiceConnectorOrigination",
 }));
+
 export type PutVoiceConnectorProxyError =
   | AccessDeniedException
   | BadRequestException
@@ -7076,6 +7225,7 @@ export const putVoiceConnectorProxy: API.OperationMethod<
   retry: Retry,
   operationName: "PutVoiceConnectorProxy",
 }));
+
 export type PutVoiceConnectorStreamingConfigurationError =
   | BadRequestException
   | ForbiddenException
@@ -7109,6 +7259,7 @@ export const putVoiceConnectorStreamingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutVoiceConnectorStreamingConfiguration",
 }));
+
 export type PutVoiceConnectorTerminationError =
   | AccessDeniedException
   | BadRequestException
@@ -7144,6 +7295,7 @@ export const putVoiceConnectorTermination: API.OperationMethod<
   retry: Retry,
   operationName: "PutVoiceConnectorTermination",
 }));
+
 export type PutVoiceConnectorTerminationCredentialsError =
   | BadRequestException
   | ForbiddenException
@@ -7177,6 +7329,7 @@ export const putVoiceConnectorTerminationCredentials: API.OperationMethod<
   retry: Retry,
   operationName: "PutVoiceConnectorTerminationCredentials",
 }));
+
 export type RestorePhoneNumberError =
   | BadRequestException
   | ForbiddenException
@@ -7212,6 +7365,7 @@ export const restorePhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "RestorePhoneNumber",
 }));
+
 export type SearchAvailablePhoneNumbersError =
   | AccessDeniedException
   | BadRequestException
@@ -7265,6 +7419,7 @@ export const searchAvailablePhoneNumbers: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type StartSpeakerSearchTaskError =
   | AccessDeniedException
   | BadRequestException
@@ -7311,6 +7466,7 @@ export const startSpeakerSearchTask: API.OperationMethod<
   retry: Retry,
   operationName: "StartSpeakerSearchTask",
 }));
+
 export type StartVoiceToneAnalysisTaskError =
   | AccessDeniedException
   | BadRequestException
@@ -7359,6 +7515,7 @@ export const startVoiceToneAnalysisTask: API.OperationMethod<
   retry: Retry,
   operationName: "StartVoiceToneAnalysisTask",
 }));
+
 export type StopSpeakerSearchTaskError =
   | AccessDeniedException
   | BadRequestException
@@ -7398,6 +7555,7 @@ export const stopSpeakerSearchTask: API.OperationMethod<
   retry: Retry,
   operationName: "StopSpeakerSearchTask",
 }));
+
 export type StopVoiceToneAnalysisTaskError =
   | AccessDeniedException
   | BadRequestException
@@ -7437,6 +7595,7 @@ export const stopVoiceToneAnalysisTask: API.OperationMethod<
   retry: Retry,
   operationName: "StopVoiceToneAnalysisTask",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | ForbiddenException
@@ -7470,6 +7629,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | ForbiddenException
@@ -7501,6 +7661,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateGlobalSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -7532,6 +7693,7 @@ export const updateGlobalSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGlobalSettings",
 }));
+
 export type UpdatePhoneNumberError =
   | BadRequestException
   | ConflictException
@@ -7576,6 +7738,7 @@ export const updatePhoneNumber: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePhoneNumber",
 }));
+
 export type UpdatePhoneNumberSettingsError =
   | BadRequestException
   | ForbiddenException
@@ -7610,6 +7773,7 @@ export const updatePhoneNumberSettings: API.OperationMethod<
   retry: Retry,
   operationName: "UpdatePhoneNumberSettings",
 }));
+
 export type UpdateProxySessionError =
   | BadRequestException
   | ForbiddenException
@@ -7643,6 +7807,7 @@ export const updateProxySession: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateProxySession",
 }));
+
 export type UpdateSipMediaApplicationError =
   | BadRequestException
   | ConflictException
@@ -7678,6 +7843,7 @@ export const updateSipMediaApplication: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSipMediaApplication",
 }));
+
 export type UpdateSipMediaApplicationCallError =
   | BadRequestException
   | ForbiddenException
@@ -7715,6 +7881,7 @@ export const updateSipMediaApplicationCall: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSipMediaApplicationCall",
 }));
+
 export type UpdateSipRuleError =
   | BadRequestException
   | ConflictException
@@ -7752,6 +7919,7 @@ export const updateSipRule: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateSipRule",
 }));
+
 export type UpdateVoiceConnectorError =
   | BadRequestException
   | ForbiddenException
@@ -7785,6 +7953,7 @@ export const updateVoiceConnector: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateVoiceConnector",
 }));
+
 export type UpdateVoiceConnectorGroupError =
   | BadRequestException
   | ConflictException
@@ -7820,6 +7989,7 @@ export const updateVoiceConnectorGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateVoiceConnectorGroup",
 }));
+
 export type UpdateVoiceProfileError =
   | AccessDeniedException
   | BadRequestException
@@ -7868,6 +8038,7 @@ export const updateVoiceProfile: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateVoiceProfile",
 }));
+
 export type UpdateVoiceProfileDomainError =
   | AccessDeniedException
   | BadRequestException
@@ -7903,6 +8074,7 @@ export const updateVoiceProfileDomain: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateVoiceProfileDomain",
 }));
+
 export type ValidateE911AddressError =
   | AccessDeniedException
   | BadRequestException

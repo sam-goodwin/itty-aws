@@ -90,51 +90,49 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { Message: S.String },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { Message: S.String },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { Message: S.String },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  {
+    Message: S.optional(S.String),
+    ResourceId: S.optional(S.String),
+    ResourceType: S.optional(
+      S.suspend(() => ResourceType).annotate({ identifier: "ResourceType" }),
+    ),
+  },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { Message: S.String },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { Message: S.String },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { Message: S.String },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type SessionId = string;
 export type ParticipantToken = string;
-export type Message = string;
-export type Reason = string;
-export type ArtifactId = string;
-export type NonEmptyClientToken = string;
-export type PreSignedConnectionUrl = string;
-export type ISO8601Datetime = string;
-export type AttendeeId = string;
-export type JoinToken = string | redacted.Redacted<string>;
-export type URI = string;
-export type GuidString = string;
-export type ViewToken = string;
-export type ViewId = string;
-export type ARN = string;
-export type ViewName = string | redacted.Redacted<string>;
-export type ViewVersion = number;
-export type ViewInputSchema = string | redacted.Redacted<string>;
-export type ViewTemplate = string | redacted.Redacted<string>;
-export type ViewAction = string | redacted.Redacted<string>;
-export type ResourceId = string;
-export type ClientToken = string;
-export type URLExpiryInSeconds = number;
-export type PreSignedAttachmentUrl = string;
-export type AttachmentSizeInBytes = number;
-export type RedirectURI = string;
-export type AuthenticationUrl = string;
-export type ContactId = string;
-export type MaxResults = number;
-export type NextToken = string;
-export type ChatItemId = string;
-export type Instant = string;
-export type MostRecent = number;
-export type ChatContent = string;
-export type ChatContentType = string;
-export type ParticipantId = string;
-export type DisplayName = string;
-export type ContentType = string;
-export type AttachmentName = string;
-export type UploadMetadataUrl = string;
-export type UploadMetadataSignedHeadersKey = string;
-export type UploadMetadataSignedHeadersValue = string;
-
-//# Schemas
 export interface CancelParticipantAuthenticationRequest {
   SessionId: string;
   ConnectionToken: string;
@@ -163,8 +161,10 @@ export const CancelParticipantAuthenticationResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CancelParticipantAuthenticationResponse",
 }) as any as S.Schema<CancelParticipantAuthenticationResponse>;
+export type ArtifactId = string;
 export type AttachmentIdList = string[];
 export const AttachmentIdList = /*@__PURE__*/ S.Array(S.String);
+export type NonEmptyClientToken = string;
 export interface CompleteAttachmentUploadRequest {
   AttachmentIds: string[];
   ClientToken: string;
@@ -203,6 +203,7 @@ export type ConnectionType =
   | "WEBRTC_CONNECTION"
   | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
+
 export type ConnectionTypeList = ConnectionType[];
 export const ConnectionTypeList = /*@__PURE__*/ S.Array(ConnectionType);
 export interface CreateParticipantConnectionRequest {
@@ -228,6 +229,8 @@ export const CreateParticipantConnectionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateParticipantConnectionRequest",
 }) as any as S.Schema<CreateParticipantConnectionRequest>;
+export type PreSignedConnectionUrl = string;
+export type ISO8601Datetime = string;
 export interface Websocket {
   Url?: string;
   ConnectionExpiry?: string;
@@ -250,6 +253,8 @@ export const ConnectionCredentials = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ConnectionCredentials",
 }) as any as S.Schema<ConnectionCredentials>;
+export type AttendeeId = string;
+export type JoinToken = string | redacted.Redacted<string>;
 export interface Attendee {
   AttendeeId?: string;
   JoinToken?: string | redacted.Redacted<string>;
@@ -260,6 +265,7 @@ export const Attendee = /*@__PURE__*/ S.suspend(() =>
     JoinToken: S.optional(SensitiveString),
   }),
 ).annotate({ identifier: "Attendee" }) as any as S.Schema<Attendee>;
+export type URI = string;
 export interface WebRTCMediaPlacement {
   AudioHostUrl?: string;
   AudioFallbackUrl?: string;
@@ -278,6 +284,7 @@ export const WebRTCMediaPlacement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebRTCMediaPlacement>;
 export type MeetingFeatureStatus = "AVAILABLE" | "UNAVAILABLE" | (string & {});
 export const MeetingFeatureStatus = /*@__PURE__*/ S.String;
+
 export interface AudioFeatures {
   EchoReduction?: MeetingFeatureStatus;
 }
@@ -292,6 +299,7 @@ export const MeetingFeaturesConfiguration = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "MeetingFeaturesConfiguration",
 }) as any as S.Schema<MeetingFeaturesConfiguration>;
+export type GuidString = string;
 export interface WebRTCMeeting {
   MediaPlacement?: WebRTCMediaPlacement;
   MeetingFeatures?: MeetingFeaturesConfiguration;
@@ -330,6 +338,7 @@ export const CreateParticipantConnectionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateParticipantConnectionResponse",
 }) as any as S.Schema<CreateParticipantConnectionResponse>;
+export type ViewToken = string;
 export interface DescribeViewRequest {
   ViewToken: string;
   ConnectionToken: string;
@@ -351,6 +360,13 @@ export const DescribeViewRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeViewRequest",
 }) as any as S.Schema<DescribeViewRequest>;
+export type ViewId = string;
+export type ARN = string;
+export type ViewName = string | redacted.Redacted<string>;
+export type ViewVersion = number;
+export type ViewInputSchema = string | redacted.Redacted<string>;
+export type ViewTemplate = string | redacted.Redacted<string>;
+export type ViewAction = string | redacted.Redacted<string>;
 export type ViewActions = (string | redacted.Redacted<string>)[];
 export const ViewActions = /*@__PURE__*/ S.Array(SensitiveString);
 export interface ViewContent {
@@ -389,17 +405,7 @@ export const DescribeViewResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeViewResponse",
 }) as any as S.Schema<DescribeViewResponse>;
-export type ResourceType =
-  | "CONTACT"
-  | "CONTACT_FLOW"
-  | "INSTANCE"
-  | "PARTICIPANT"
-  | "HIERARCHY_LEVEL"
-  | "HIERARCHY_GROUP"
-  | "USER"
-  | "PHONE_NUMBER"
-  | (string & {});
-export const ResourceType = /*@__PURE__*/ S.String;
+export type ClientToken = string;
 export interface DisconnectParticipantRequest {
   ClientToken?: string;
   ConnectionToken: string;
@@ -427,6 +433,7 @@ export const DisconnectParticipantResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DisconnectParticipantResponse",
 }) as any as S.Schema<DisconnectParticipantResponse>;
+export type URLExpiryInSeconds = number;
 export interface GetAttachmentRequest {
   AttachmentId: string;
   ConnectionToken: string;
@@ -450,6 +457,8 @@ export const GetAttachmentRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAttachmentRequest",
 }) as any as S.Schema<GetAttachmentRequest>;
+export type PreSignedAttachmentUrl = string;
+export type AttachmentSizeInBytes = number;
 export interface GetAttachmentResponse {
   Url?: string;
   UrlExpiry?: string;
@@ -464,6 +473,7 @@ export const GetAttachmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAttachmentResponse",
 }) as any as S.Schema<GetAttachmentResponse>;
+export type RedirectURI = string;
 export interface GetAuthenticationUrlRequest {
   SessionId: string;
   RedirectUri: string;
@@ -487,6 +497,7 @@ export const GetAuthenticationUrlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAuthenticationUrlRequest",
 }) as any as S.Schema<GetAuthenticationUrlRequest>;
+export type AuthenticationUrl = string;
 export interface GetAuthenticationUrlResponse {
   AuthenticationUrl?: string;
 }
@@ -495,10 +506,18 @@ export const GetAuthenticationUrlResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAuthenticationUrlResponse",
 }) as any as S.Schema<GetAuthenticationUrlResponse>;
+export type ContactId = string;
+export type MaxResults = number;
+export type NextToken = string;
 export type ScanDirection = "FORWARD" | "BACKWARD" | (string & {});
 export const ScanDirection = /*@__PURE__*/ S.String;
+
 export type SortKey = "DESCENDING" | "ASCENDING" | (string & {});
 export const SortKey = /*@__PURE__*/ S.String;
+
+export type ChatItemId = string;
+export type Instant = string;
+export type MostRecent = number;
 export interface StartPosition {
   Id?: string;
   AbsoluteTime?: string;
@@ -542,6 +561,8 @@ export const GetTranscriptRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetTranscriptRequest",
 }) as any as S.Schema<GetTranscriptRequest>;
+export type ChatContent = string;
+export type ChatContentType = string;
 export type ChatItemType =
   | "TYPING"
   | "PARTICIPANT_JOINED"
@@ -557,6 +578,9 @@ export type ChatItemType =
   | "MESSAGE_READ"
   | (string & {});
 export const ChatItemType = /*@__PURE__*/ S.String;
+
+export type ParticipantId = string;
+export type DisplayName = string;
 export type ParticipantRole =
   | "AGENT"
   | "CUSTOMER"
@@ -565,12 +589,16 @@ export type ParticipantRole =
   | "SUPERVISOR"
   | (string & {});
 export const ParticipantRole = /*@__PURE__*/ S.String;
+
+export type ContentType = string;
+export type AttachmentName = string;
 export type ArtifactStatus =
   | "APPROVED"
   | "REJECTED"
   | "IN_PROGRESS"
   | (string & {});
 export const ArtifactStatus = /*@__PURE__*/ S.String;
+
 export interface AttachmentItem {
   ContentType?: string;
   AttachmentId?: string;
@@ -607,6 +635,7 @@ export type MessageProcessingStatus =
   | "REJECTED"
   | (string & {});
 export const MessageProcessingStatus = /*@__PURE__*/ S.String;
+
 export interface MessageMetadata {
   MessageId?: string;
   Receipts?: Receipt[];
@@ -775,6 +804,9 @@ export const StartAttachmentUploadRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartAttachmentUploadRequest",
 }) as any as S.Schema<StartAttachmentUploadRequest>;
+export type UploadMetadataUrl = string;
+export type UploadMetadataSignedHeadersKey = string;
+export type UploadMetadataSignedHeadersValue = string;
 export type UploadMetadataSignedHeaders = { [key: string]: string | undefined };
 export const UploadMetadataSignedHeaders = /*@__PURE__*/ S.Record(
   S.String,
@@ -804,49 +836,21 @@ export const StartAttachmentUploadResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StartAttachmentUploadResponse",
 }) as any as S.Schema<StartAttachmentUploadResponse>;
+export type Message = string;
+export type Reason = string;
+export type ResourceId = string;
+export type ResourceType =
+  | "CONTACT"
+  | "CONTACT_FLOW"
+  | "INSTANCE"
+  | "PARTICIPANT"
+  | "HIERARCHY_LEVEL"
+  | "HIERARCHY_GROUP"
+  | "USER"
+  | "PHONE_NUMBER"
+  | (string & {});
+export const ResourceType = /*@__PURE__*/ S.String;
 
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { Message: S.String },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { Message: S.String },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { Message: S.String },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { Message: S.String },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { Message: S.String },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { Message: S.String },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  {
-    Message: S.optional(S.String),
-    ResourceId: S.optional(S.String),
-    ResourceType: S.optional(ResourceType),
-  },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
 export type CancelParticipantAuthenticationError =
   | AccessDeniedException
   | InternalServerException
@@ -884,6 +888,7 @@ export const cancelParticipantAuthentication: API.OperationMethod<
   retry: Retry,
   operationName: "CancelParticipantAuthentication",
 }));
+
 export type CompleteAttachmentUploadError =
   | AccessDeniedException
   | ConflictException
@@ -925,6 +930,7 @@ export const completeAttachmentUpload: API.OperationMethod<
   retry: Retry,
   operationName: "CompleteAttachmentUpload",
 }));
+
 export type CreateParticipantConnectionError =
   | AccessDeniedException
   | InternalServerException
@@ -1015,6 +1021,7 @@ export const createParticipantConnection: API.OperationMethod<
   retry: Retry,
   operationName: "CreateParticipantConnection",
 }));
+
 export type DescribeViewError =
   | AccessDeniedException
   | InternalServerException
@@ -1046,6 +1053,7 @@ export const describeView: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeView",
 }));
+
 export type DisconnectParticipantError =
   | AccessDeniedException
   | InternalServerException
@@ -1081,6 +1089,7 @@ export const disconnectParticipant: API.OperationMethod<
   retry: Retry,
   operationName: "DisconnectParticipant",
 }));
+
 export type GetAttachmentError =
   | AccessDeniedException
   | InternalServerException
@@ -1122,6 +1131,7 @@ export const getAttachment: API.OperationMethod<
   retry: Retry,
   operationName: "GetAttachment",
 }));
+
 export type GetAuthenticationUrlError =
   | AccessDeniedException
   | InternalServerException
@@ -1164,6 +1174,7 @@ export const getAuthenticationUrl: API.OperationMethod<
   retry: Retry,
   operationName: "GetAuthenticationUrl",
 }));
+
 export type GetTranscriptError =
   | AccessDeniedException
   | InternalServerException
@@ -1237,6 +1248,7 @@ export const getTranscript: API.OperationMethod<
     pageSize: "MaxResults",
   } as const,
 }));
+
 export type SendEventError =
   | AccessDeniedException
   | ConflictException
@@ -1281,6 +1293,7 @@ export const sendEvent: API.OperationMethod<
   retry: Retry,
   operationName: "SendEvent",
 }));
+
 export type SendMessageError =
   | AccessDeniedException
   | InternalServerException
@@ -1316,6 +1329,7 @@ export const sendMessage: API.OperationMethod<
   retry: Retry,
   operationName: "SendMessage",
 }));
+
 export type StartAttachmentUploadError =
   | AccessDeniedException
   | InternalServerException

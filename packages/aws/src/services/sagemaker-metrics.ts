@@ -88,14 +88,8 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
 export type MetricName = string;
 export type SageMakerResourceArn = string;
-export type Message = string;
-export type ExperimentEntityName = string;
-export type Step = number;
-
-//# Schemas
 export type MetricStatistic =
   | "Min"
   | "Max"
@@ -105,6 +99,7 @@ export type MetricStatistic =
   | "Last"
   | (string & {});
 export const MetricStatistic = /*@__PURE__*/ S.String;
+
 export type Period =
   | "OneMinute"
   | "FiveMinute"
@@ -112,8 +107,10 @@ export type Period =
   | "IterationNumber"
   | (string & {});
 export const Period = /*@__PURE__*/ S.String;
+
 export type XAxisType = "IterationNumber" | "Timestamp" | (string & {});
 export const XAxisType = /*@__PURE__*/ S.String;
+
 export interface MetricQuery {
   MetricName?: string;
   ResourceArn?: string;
@@ -160,6 +157,8 @@ export type MetricQueryResultStatus =
   | "ValidationError"
   | (string & {});
 export const MetricQueryResultStatus = /*@__PURE__*/ S.String;
+
+export type Message = string;
 export type XAxisValues = number[];
 export const XAxisValues = /*@__PURE__*/ S.Array(S.Number);
 export type MetricValues = number[];
@@ -194,6 +193,8 @@ export const BatchGetMetricsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchGetMetricsResponse",
 }) as any as S.Schema<BatchGetMetricsResponse>;
+export type ExperimentEntityName = string;
+export type Step = number;
 export interface RawMetricData {
   MetricName?: string;
   Timestamp?: Date;
@@ -238,6 +239,7 @@ export type PutMetricsErrorCode =
   | "CONFLICT_ERROR"
   | (string & {});
 export const PutMetricsErrorCode = /*@__PURE__*/ S.String;
+
 export interface BatchPutMetricsError_ {
   Code?: PutMetricsErrorCode;
   MetricIndex?: number;
@@ -262,10 +264,6 @@ export const BatchPutMetricsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BatchPutMetricsResponse",
 }) as any as S.Schema<BatchPutMetricsResponse>;
-
-//# Errors
-
-//# Operations
 export type BatchGetMetricsError = CommonErrors;
 /**
  * Used to retrieve training metrics from SageMaker.
@@ -283,6 +281,7 @@ export const batchGetMetrics: API.OperationMethod<
   retry: Retry,
   operationName: "BatchGetMetrics",
 }));
+
 export type BatchPutMetricsError = CommonErrors;
 /**
  * Used to ingest training metrics into SageMaker. These metrics can be visualized in SageMaker Studio.

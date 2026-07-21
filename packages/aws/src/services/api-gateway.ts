@@ -87,12 +87,50 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
-export type ProviderARN = string;
-export type DocumentationPartLocationStatusCode = string;
-export type StatusCode = string;
-
-//# Schemas
+export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
+  "BadRequestException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
+  "LimitExceededException",
+  {
+    retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
+    message: S.optional(S.String),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
+  "NotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
+  "ServiceUnavailableException",
+  {
+    retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
+    message: S.optional(S.String),
+  },
+  T.HttpError(503),
+).pipe(C.withServerError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  {
+    retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
+    message: S.optional(S.String),
+  },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
+  "UnauthorizedException",
+  { message: S.optional(S.String) },
+  T.HttpError(401),
+).pipe(C.withAuthError) {}
 export interface StageKey {
   restApiId?: string;
   stageName?: string;
@@ -179,6 +217,8 @@ export type AuthorizerType =
   | "COGNITO_USER_POOLS"
   | (string & {});
 export const AuthorizerType = /*@__PURE__*/ S.String;
+
+export type ProviderARN = string;
 export type ListOfARNs = string[];
 export const ListOfARNs = /*@__PURE__*/ S.Array(S.String);
 export interface CreateAuthorizerRequest {
@@ -299,6 +339,7 @@ export type CacheClusterSize =
   | "237"
   | (string & {});
 export const CacheClusterSize = /*@__PURE__*/ S.String;
+
 export interface DeploymentCanarySettings {
   percentTraffic?: number;
   stageVariableOverrides?: { [key: string]: string | undefined };
@@ -401,6 +442,8 @@ export type DocumentationPartType =
   | "RESPONSE_BODY"
   | (string & {});
 export const DocumentationPartType = /*@__PURE__*/ S.String;
+
+export type DocumentationPartLocationStatusCode = string;
 export interface DocumentationPartLocation {
   type: DocumentationPartType;
   path?: string;
@@ -503,10 +546,12 @@ export const DocumentationVersion = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DocumentationVersion>;
 export type EndpointType = "REGIONAL" | "EDGE" | "PRIVATE" | (string & {});
 export const EndpointType = /*@__PURE__*/ S.String;
+
 export type ListOfEndpointType = EndpointType[];
 export const ListOfEndpointType = /*@__PURE__*/ S.Array(EndpointType);
 export type IpAddressType = "ipv4" | "dualstack" | (string & {});
 export const IpAddressType = /*@__PURE__*/ S.String;
+
 export interface EndpointConfiguration {
   types?: EndpointType[];
   ipAddressType?: IpAddressType;
@@ -536,8 +581,10 @@ export type SecurityPolicy =
   | "SecurityPolicy_TLS12_2018_EDGE"
   | (string & {});
 export const SecurityPolicy = /*@__PURE__*/ S.String;
+
 export type EndpointAccessMode = "BASIC" | "STRICT" | (string & {});
 export const EndpointAccessMode = /*@__PURE__*/ S.String;
+
 export interface MutualTlsAuthenticationInput {
   truststoreUri?: string;
   truststoreVersion?: string;
@@ -556,6 +603,7 @@ export type RoutingMode =
   | "ROUTING_RULE_THEN_BASE_PATH_MAPPING"
   | (string & {});
 export const RoutingMode = /*@__PURE__*/ S.String;
+
 export interface CreateDomainNameRequest {
   domainName: string;
   certificateName?: string;
@@ -614,6 +662,7 @@ export type DomainNameStatus =
   | "FAILED"
   | (string & {});
 export const DomainNameStatus = /*@__PURE__*/ S.String;
+
 export interface MutualTlsAuthentication {
   truststoreUri?: string;
   truststoreVersion?: string;
@@ -684,6 +733,7 @@ export const DomainName = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "DomainName" }) as any as S.Schema<DomainName>;
 export type AccessAssociationSourceType = "VPCE" | (string & {});
 export const AccessAssociationSourceType = /*@__PURE__*/ S.String;
+
 export interface CreateDomainNameAccessAssociationRequest {
   domainNameArn: string;
   accessAssociationSourceType: AccessAssociationSourceType;
@@ -846,6 +896,7 @@ export const MapOfStringToBoolean = /*@__PURE__*/ S.Record(
   S.String,
   S.Boolean.pipe(S.optional),
 );
+export type StatusCode = string;
 export interface MethodResponse {
   statusCode?: string;
   responseParameters?: { [key: string]: boolean | undefined };
@@ -871,13 +922,16 @@ export type IntegrationType =
   | "AWS_PROXY"
   | (string & {});
 export const IntegrationType = /*@__PURE__*/ S.String;
+
 export type ConnectionType = "INTERNET" | "VPC_LINK" | (string & {});
 export const ConnectionType = /*@__PURE__*/ S.String;
+
 export type ContentHandlingStrategy =
   | "CONVERT_TO_BINARY"
   | "CONVERT_TO_TEXT"
   | (string & {});
 export const ContentHandlingStrategy = /*@__PURE__*/ S.String;
+
 export interface IntegrationResponse {
   statusCode?: string;
   selectionPattern?: string;
@@ -911,6 +965,7 @@ export const TlsConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TlsConfig" }) as any as S.Schema<TlsConfig>;
 export type ResponseTransferMode = "BUFFERED" | "STREAM" | (string & {});
 export const ResponseTransferMode = /*@__PURE__*/ S.String;
+
 export interface Integration {
   type?: IntegrationType;
   httpMethod?: string;
@@ -1002,6 +1057,7 @@ export const Resource = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Resource" }) as any as S.Schema<Resource>;
 export type ApiKeySourceType = "HEADER" | "AUTHORIZER" | (string & {});
 export const ApiKeySourceType = /*@__PURE__*/ S.String;
+
 export interface CreateRestApiRequest {
   name: string;
   description?: string;
@@ -1052,6 +1108,7 @@ export type ApiStatus =
   | "FAILED"
   | (string & {});
 export const ApiStatus = /*@__PURE__*/ S.String;
+
 export interface RestApi {
   id?: string;
   name?: string;
@@ -1155,12 +1212,14 @@ export type CacheClusterStatus =
   | "FLUSH_IN_PROGRESS"
   | (string & {});
 export const CacheClusterStatus = /*@__PURE__*/ S.String;
+
 export type UnauthorizedCacheControlHeaderStrategy =
   | "FAIL_WITH_403"
   | "SUCCEED_WITH_RESPONSE_HEADER"
   | "SUCCEED_WITHOUT_RESPONSE_HEADER"
   | (string & {});
 export const UnauthorizedCacheControlHeaderStrategy = /*@__PURE__*/ S.String;
+
 export interface MethodSetting {
   metricsEnabled?: boolean;
   loggingLevel?: string;
@@ -1283,6 +1342,7 @@ export type ListOfApiStage = ApiStage[];
 export const ListOfApiStage = /*@__PURE__*/ S.Array(ApiStage);
 export type QuotaPeriodType = "DAY" | "WEEK" | "MONTH" | (string & {});
 export const QuotaPeriodType = /*@__PURE__*/ S.String;
+
 export interface QuotaSettings {
   limit?: number;
   offset?: number;
@@ -1415,6 +1475,7 @@ export type VpcLinkStatus =
   | "FAILED"
   | (string & {});
 export const VpcLinkStatus = /*@__PURE__*/ S.String;
+
 export interface VpcLink {
   id?: string;
   name?: string;
@@ -1719,6 +1780,7 @@ export type GatewayResponseType =
   | "WAF_FILTERED"
   | (string & {});
 export const GatewayResponseType = /*@__PURE__*/ S.String;
+
 export interface DeleteGatewayResponseRequest {
   restApiId: string;
   responseType: GatewayResponseType;
@@ -2563,6 +2625,7 @@ export const GetDocumentationPartRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDocumentationPartRequest>;
 export type LocationStatusType = "DOCUMENTED" | "UNDOCUMENTED" | (string & {});
 export const LocationStatusType = /*@__PURE__*/ S.String;
+
 export interface GetDocumentationPartsRequest {
   restApiId: string;
   type?: DocumentationPartType;
@@ -2701,6 +2764,7 @@ export const GetDomainNameRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetDomainNameRequest>;
 export type ResourceOwner = "SELF" | "OTHER_ACCOUNTS" | (string & {});
 export const ResourceOwner = /*@__PURE__*/ S.String;
+
 export interface GetDomainNameAccessAssociationsRequest {
   position?: string;
   limit?: number;
@@ -3694,6 +3758,7 @@ export const VpcLinks = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "VpcLinks" }) as any as S.Schema<VpcLinks>;
 export type ApiKeysFormat = "csv" | (string & {});
 export const ApiKeysFormat = /*@__PURE__*/ S.String;
+
 export interface ImportApiKeysRequest {
   body: T.StreamingInputBody;
   format: ApiKeysFormat;
@@ -3729,6 +3794,7 @@ export const ApiKeyIds = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ApiKeyIds" }) as any as S.Schema<ApiKeyIds>;
 export type PutMode = "merge" | "overwrite" | (string & {});
 export const PutMode = /*@__PURE__*/ S.String;
+
 export interface ImportDocumentationPartsRequest {
   restApiId: string;
   mode?: PutMode;
@@ -4237,6 +4303,7 @@ export type Op =
   | "test"
   | (string & {});
 export const Op = /*@__PURE__*/ S.String;
+
 export interface PatchOperation {
   op?: Op;
   path?: string;
@@ -4805,54 +4872,6 @@ export const UpdateVpcLinkRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateVpcLinkRequest",
 }) as any as S.Schema<UpdateVpcLinkRequest>;
-
-//# Errors
-export class BadRequestException extends S.TaggedErrorClass<BadRequestException>()(
-  "BadRequestException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
-  "LimitExceededException",
-  {
-    retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-    message: S.optional(S.String),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class NotFoundException extends S.TaggedErrorClass<NotFoundException>()(
-  "NotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
-  "TooManyRequestsException",
-  {
-    retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-    message: S.optional(S.String),
-  },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class UnauthorizedException extends S.TaggedErrorClass<UnauthorizedException>()(
-  "UnauthorizedException",
-  { message: S.optional(S.String) },
-  T.HttpError(401),
-).pipe(C.withAuthError) {}
-export class ServiceUnavailableException extends S.TaggedErrorClass<ServiceUnavailableException>()(
-  "ServiceUnavailableException",
-  {
-    retryAfterSeconds: S.optional(S.String).pipe(T.HttpHeader("Retry-After")),
-    message: S.optional(S.String),
-  },
-  T.HttpError(503),
-).pipe(C.withServerError) {}
-
-//# Operations
 export type CreateApiKeyError =
   | BadRequestException
   | ConflictException
@@ -4884,6 +4903,7 @@ export const createApiKey: API.OperationMethod<
   retry: Retry,
   operationName: "CreateApiKey",
 }));
+
 export type CreateAuthorizerError =
   | BadRequestException
   | ConflictException
@@ -4915,6 +4935,7 @@ export const createAuthorizer: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAuthorizer",
 }));
+
 export type CreateBasePathMappingError =
   | BadRequestException
   | ConflictException
@@ -4946,6 +4967,7 @@ export const createBasePathMapping: API.OperationMethod<
   retry: Retry,
   operationName: "CreateBasePathMapping",
 }));
+
 export type CreateDeploymentError =
   | BadRequestException
   | ConflictException
@@ -4979,6 +5001,7 @@ export const createDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDeployment",
 }));
+
 export type CreateDocumentationPartError =
   | BadRequestException
   | ConflictException
@@ -5010,6 +5033,7 @@ export const createDocumentationPart: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDocumentationPart",
 }));
+
 export type CreateDocumentationVersionError =
   | BadRequestException
   | ConflictException
@@ -5041,6 +5065,7 @@ export const createDocumentationVersion: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDocumentationVersion",
 }));
+
 export type CreateDomainNameError =
   | BadRequestException
   | ConflictException
@@ -5070,6 +5095,7 @@ export const createDomainName: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDomainName",
 }));
+
 export type CreateDomainNameAccessAssociationError =
   | BadRequestException
   | ConflictException
@@ -5100,6 +5126,7 @@ export const createDomainNameAccessAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "CreateDomainNameAccessAssociation",
 }));
+
 export type CreateModelError =
   | BadRequestException
   | ConflictException
@@ -5131,6 +5158,7 @@ export const createModel: API.OperationMethod<
   retry: Retry,
   operationName: "CreateModel",
 }));
+
 export type CreateRequestValidatorError =
   | BadRequestException
   | ConflictException
@@ -5162,6 +5190,7 @@ export const createRequestValidator: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRequestValidator",
 }));
+
 export type CreateResourceError =
   | BadRequestException
   | ConflictException
@@ -5193,6 +5222,7 @@ export const createResource: API.OperationMethod<
   retry: Retry,
   operationName: "CreateResource",
 }));
+
 export type CreateRestApiError =
   | BadRequestException
   | ConflictException
@@ -5222,6 +5252,7 @@ export const createRestApi: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRestApi",
 }));
+
 export type CreateStageError =
   | BadRequestException
   | ConflictException
@@ -5253,6 +5284,7 @@ export const createStage: API.OperationMethod<
   retry: Retry,
   operationName: "CreateStage",
 }));
+
 export type CreateUsagePlanError =
   | BadRequestException
   | ConflictException
@@ -5284,6 +5316,7 @@ export const createUsagePlan: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUsagePlan",
 }));
+
 export type CreateUsagePlanKeyError =
   | BadRequestException
   | ConflictException
@@ -5315,6 +5348,7 @@ export const createUsagePlanKey: API.OperationMethod<
   retry: Retry,
   operationName: "CreateUsagePlanKey",
 }));
+
 export type CreateVpcLinkError =
   | BadRequestException
   | ConflictException
@@ -5344,6 +5378,7 @@ export const createVpcLink: API.OperationMethod<
   retry: Retry,
   operationName: "CreateVpcLink",
 }));
+
 export type DeleteApiKeyError =
   | BadRequestException
   | ConflictException
@@ -5373,6 +5408,7 @@ export const deleteApiKey: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteApiKey",
 }));
+
 export type DeleteAuthorizerError =
   | BadRequestException
   | ConflictException
@@ -5402,6 +5438,7 @@ export const deleteAuthorizer: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAuthorizer",
 }));
+
 export type DeleteBasePathMappingError =
   | BadRequestException
   | ConflictException
@@ -5431,6 +5468,7 @@ export const deleteBasePathMapping: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteBasePathMapping",
 }));
+
 export type DeleteClientCertificateError =
   | BadRequestException
   | ConflictException
@@ -5460,6 +5498,7 @@ export const deleteClientCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteClientCertificate",
 }));
+
 export type DeleteDeploymentError =
   | BadRequestException
   | ConflictException
@@ -5491,6 +5530,7 @@ export const deleteDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDeployment",
 }));
+
 export type DeleteDocumentationPartError =
   | BadRequestException
   | ConflictException
@@ -5520,6 +5560,7 @@ export const deleteDocumentationPart: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDocumentationPart",
 }));
+
 export type DeleteDocumentationVersionError =
   | BadRequestException
   | ConflictException
@@ -5549,6 +5590,7 @@ export const deleteDocumentationVersion: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDocumentationVersion",
 }));
+
 export type DeleteDomainNameError =
   | BadRequestException
   | ConflictException
@@ -5578,6 +5620,7 @@ export const deleteDomainName: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDomainName",
 }));
+
 export type DeleteDomainNameAccessAssociationError =
   | BadRequestException
   | ConflictException
@@ -5609,6 +5652,7 @@ export const deleteDomainNameAccessAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteDomainNameAccessAssociation",
 }));
+
 export type DeleteGatewayResponseError =
   | BadRequestException
   | ConflictException
@@ -5638,6 +5682,7 @@ export const deleteGatewayResponse: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteGatewayResponse",
 }));
+
 export type DeleteIntegrationError =
   | BadRequestException
   | ConflictException
@@ -5667,6 +5712,7 @@ export const deleteIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIntegration",
 }));
+
 export type DeleteIntegrationResponseError =
   | BadRequestException
   | ConflictException
@@ -5696,6 +5742,7 @@ export const deleteIntegrationResponse: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIntegrationResponse",
 }));
+
 export type DeleteMethodError =
   | ConflictException
   | NotFoundException
@@ -5723,6 +5770,7 @@ export const deleteMethod: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMethod",
 }));
+
 export type DeleteMethodResponseError =
   | BadRequestException
   | ConflictException
@@ -5752,6 +5800,7 @@ export const deleteMethodResponse: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteMethodResponse",
 }));
+
 export type DeleteModelError =
   | BadRequestException
   | ConflictException
@@ -5781,6 +5830,7 @@ export const deleteModel: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteModel",
 }));
+
 export type DeleteRequestValidatorError =
   | BadRequestException
   | ConflictException
@@ -5810,6 +5860,7 @@ export const deleteRequestValidator: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRequestValidator",
 }));
+
 export type DeleteResourceError =
   | BadRequestException
   | ConflictException
@@ -5839,6 +5890,7 @@ export const deleteResource: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteResource",
 }));
+
 export type DeleteRestApiError =
   | BadRequestException
   | ConflictException
@@ -5868,6 +5920,7 @@ export const deleteRestApi: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRestApi",
 }));
+
 export type DeleteStageError =
   | BadRequestException
   | ConflictException
@@ -5899,6 +5952,7 @@ export const deleteStage: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteStage",
 }));
+
 export type DeleteUsagePlanError =
   | BadRequestException
   | ConflictException
@@ -5928,6 +5982,7 @@ export const deleteUsagePlan: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUsagePlan",
 }));
+
 export type DeleteUsagePlanKeyError =
   | BadRequestException
   | ConflictException
@@ -5957,6 +6012,7 @@ export const deleteUsagePlanKey: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteUsagePlanKey",
 }));
+
 export type DeleteVpcLinkError =
   | BadRequestException
   | ConflictException
@@ -5986,6 +6042,7 @@ export const deleteVpcLink: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteVpcLink",
 }));
+
 export type FlushStageAuthorizersCacheError =
   | BadRequestException
   | ConflictException
@@ -6017,6 +6074,7 @@ export const flushStageAuthorizersCache: API.OperationMethod<
   retry: Retry,
   operationName: "FlushStageAuthorizersCache",
 }));
+
 export type FlushStageCacheError =
   | BadRequestException
   | ConflictException
@@ -6048,6 +6106,7 @@ export const flushStageCache: API.OperationMethod<
   retry: Retry,
   operationName: "FlushStageCache",
 }));
+
 export type GenerateClientCertificateError =
   | BadRequestException
   | ConflictException
@@ -6077,6 +6136,7 @@ export const generateClientCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "GenerateClientCertificate",
 }));
+
 export type GetAccountError =
   | BadRequestException
   | NotFoundException
@@ -6104,6 +6164,7 @@ export const getAccount: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccount",
 }));
+
 export type GetApiKeyError =
   | BadRequestException
   | NotFoundException
@@ -6131,6 +6192,7 @@ export const getApiKey: API.OperationMethod<
   retry: Retry,
   operationName: "GetApiKey",
 }));
+
 export type GetApiKeysError =
   | BadRequestException
   | NotFoundException
@@ -6179,6 +6241,7 @@ export const getApiKeys: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type GetAuthorizerError =
   | BadRequestException
   | NotFoundException
@@ -6206,6 +6269,7 @@ export const getAuthorizer: API.OperationMethod<
   retry: Retry,
   operationName: "GetAuthorizer",
 }));
+
 export type GetAuthorizersError =
   | BadRequestException
   | NotFoundException
@@ -6233,6 +6297,7 @@ export const getAuthorizers: API.OperationMethod<
   retry: Retry,
   operationName: "GetAuthorizers",
 }));
+
 export type GetBasePathMappingError =
   | BadRequestException
   | NotFoundException
@@ -6260,6 +6325,7 @@ export const getBasePathMapping: API.OperationMethod<
   retry: Retry,
   operationName: "GetBasePathMapping",
 }));
+
 export type GetBasePathMappingsError =
   | BadRequestException
   | NotFoundException
@@ -6308,6 +6374,7 @@ export const getBasePathMappings: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type GetClientCertificateError =
   | BadRequestException
   | NotFoundException
@@ -6335,6 +6402,7 @@ export const getClientCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "GetClientCertificate",
 }));
+
 export type GetClientCertificatesError =
   | BadRequestException
   | NotFoundException
@@ -6383,6 +6451,7 @@ export const getClientCertificates: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type GetDeploymentError =
   | BadRequestException
   | NotFoundException
@@ -6412,6 +6481,7 @@ export const getDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "GetDeployment",
 }));
+
 export type GetDeploymentsError =
   | BadRequestException
   | NotFoundException
@@ -6462,6 +6532,7 @@ export const getDeployments: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type GetDocumentationPartError =
   | BadRequestException
   | NotFoundException
@@ -6489,6 +6560,7 @@ export const getDocumentationPart: API.OperationMethod<
   retry: Retry,
   operationName: "GetDocumentationPart",
 }));
+
 export type GetDocumentationPartsError =
   | BadRequestException
   | NotFoundException
@@ -6516,6 +6588,7 @@ export const getDocumentationParts: API.OperationMethod<
   retry: Retry,
   operationName: "GetDocumentationParts",
 }));
+
 export type GetDocumentationVersionError =
   | NotFoundException
   | TooManyRequestsException
@@ -6537,6 +6610,7 @@ export const getDocumentationVersion: API.OperationMethod<
   retry: Retry,
   operationName: "GetDocumentationVersion",
 }));
+
 export type GetDocumentationVersionsError =
   | BadRequestException
   | NotFoundException
@@ -6564,6 +6638,7 @@ export const getDocumentationVersions: API.OperationMethod<
   retry: Retry,
   operationName: "GetDocumentationVersions",
 }));
+
 export type GetDomainNameError =
   | BadRequestException
   | NotFoundException
@@ -6591,6 +6666,7 @@ export const getDomainName: API.OperationMethod<
   retry: Retry,
   operationName: "GetDomainName",
 }));
+
 export type GetDomainNameAccessAssociationsError =
   | BadRequestException
   | NotFoundException
@@ -6618,6 +6694,7 @@ export const getDomainNameAccessAssociations: API.OperationMethod<
   retry: Retry,
   operationName: "GetDomainNameAccessAssociations",
 }));
+
 export type GetDomainNamesError =
   | BadRequestException
   | NotFoundException
@@ -6666,6 +6743,7 @@ export const getDomainNames: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type GetExportError =
   | BadRequestException
   | ConflictException
@@ -6697,6 +6775,7 @@ export const getExport: API.OperationMethod<
   retry: Retry,
   operationName: "GetExport",
 }));
+
 export type GetGatewayResponseError =
   | BadRequestException
   | NotFoundException
@@ -6724,6 +6803,7 @@ export const getGatewayResponse: API.OperationMethod<
   retry: Retry,
   operationName: "GetGatewayResponse",
 }));
+
 export type GetGatewayResponsesError =
   | BadRequestException
   | NotFoundException
@@ -6751,6 +6831,7 @@ export const getGatewayResponses: API.OperationMethod<
   retry: Retry,
   operationName: "GetGatewayResponses",
 }));
+
 export type GetIntegrationError =
   | BadRequestException
   | NotFoundException
@@ -6778,6 +6859,7 @@ export const getIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "GetIntegration",
 }));
+
 export type GetIntegrationResponseError =
   | BadRequestException
   | NotFoundException
@@ -6805,6 +6887,7 @@ export const getIntegrationResponse: API.OperationMethod<
   retry: Retry,
   operationName: "GetIntegrationResponse",
 }));
+
 export type GetMethodError =
   | NotFoundException
   | TooManyRequestsException
@@ -6826,6 +6909,7 @@ export const getMethod: API.OperationMethod<
   retry: Retry,
   operationName: "GetMethod",
 }));
+
 export type GetMethodResponseError =
   | NotFoundException
   | TooManyRequestsException
@@ -6847,6 +6931,7 @@ export const getMethodResponse: API.OperationMethod<
   retry: Retry,
   operationName: "GetMethodResponse",
 }));
+
 export type GetModelError =
   | BadRequestException
   | NotFoundException
@@ -6874,6 +6959,7 @@ export const getModel: API.OperationMethod<
   retry: Retry,
   operationName: "GetModel",
 }));
+
 export type GetModelsError =
   | BadRequestException
   | NotFoundException
@@ -6922,6 +7008,7 @@ export const getModels: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type GetModelTemplateError =
   | BadRequestException
   | NotFoundException
@@ -6949,6 +7036,7 @@ export const getModelTemplate: API.OperationMethod<
   retry: Retry,
   operationName: "GetModelTemplate",
 }));
+
 export type GetRequestValidatorError =
   | BadRequestException
   | NotFoundException
@@ -6976,6 +7064,7 @@ export const getRequestValidator: API.OperationMethod<
   retry: Retry,
   operationName: "GetRequestValidator",
 }));
+
 export type GetRequestValidatorsError =
   | BadRequestException
   | NotFoundException
@@ -7003,6 +7092,7 @@ export const getRequestValidators: API.OperationMethod<
   retry: Retry,
   operationName: "GetRequestValidators",
 }));
+
 export type GetResourceError =
   | NotFoundException
   | TooManyRequestsException
@@ -7024,6 +7114,7 @@ export const getResource: API.OperationMethod<
   retry: Retry,
   operationName: "GetResource",
 }));
+
 export type GetResourcesError =
   | BadRequestException
   | NotFoundException
@@ -7072,6 +7163,7 @@ export const getResources: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type GetRestApiError =
   | BadRequestException
   | NotFoundException
@@ -7099,6 +7191,7 @@ export const getRestApi: API.OperationMethod<
   retry: Retry,
   operationName: "GetRestApi",
 }));
+
 export type GetRestApisError =
   | BadRequestException
   | NotFoundException
@@ -7147,6 +7240,7 @@ export const getRestApis: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type GetSdkError =
   | BadRequestException
   | ConflictException
@@ -7178,6 +7272,7 @@ export const getSdk: API.OperationMethod<
   retry: Retry,
   operationName: "GetSdk",
 }));
+
 export type GetSdkTypeError =
   | BadRequestException
   | NotFoundException
@@ -7205,6 +7300,7 @@ export const getSdkType: API.OperationMethod<
   retry: Retry,
   operationName: "GetSdkType",
 }));
+
 export type GetSdkTypesError =
   | BadRequestException
   | NotFoundException
@@ -7232,6 +7328,7 @@ export const getSdkTypes: API.OperationMethod<
   retry: Retry,
   operationName: "GetSdkTypes",
 }));
+
 export type GetStageError =
   | BadRequestException
   | ConflictException
@@ -7263,6 +7360,7 @@ export const getStage: API.OperationMethod<
   retry: Retry,
   operationName: "GetStage",
 }));
+
 export type GetStagesError =
   | BadRequestException
   | ConflictException
@@ -7294,6 +7392,7 @@ export const getStages: API.OperationMethod<
   retry: Retry,
   operationName: "GetStages",
 }));
+
 export type GetTagsError =
   | BadRequestException
   | NotFoundException
@@ -7321,6 +7420,7 @@ export const getTags: API.OperationMethod<
   retry: Retry,
   operationName: "GetTags",
 }));
+
 export type GetUsageError =
   | BadRequestException
   | NotFoundException
@@ -7369,6 +7469,7 @@ export const getUsage: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type GetUsagePlanError =
   | BadRequestException
   | NotFoundException
@@ -7396,6 +7497,7 @@ export const getUsagePlan: API.OperationMethod<
   retry: Retry,
   operationName: "GetUsagePlan",
 }));
+
 export type GetUsagePlanKeyError =
   | BadRequestException
   | NotFoundException
@@ -7423,6 +7525,7 @@ export const getUsagePlanKey: API.OperationMethod<
   retry: Retry,
   operationName: "GetUsagePlanKey",
 }));
+
 export type GetUsagePlanKeysError =
   | BadRequestException
   | NotFoundException
@@ -7471,6 +7574,7 @@ export const getUsagePlanKeys: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type GetUsagePlansError =
   | BadRequestException
   | NotFoundException
@@ -7519,6 +7623,7 @@ export const getUsagePlans: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type GetVpcLinkError =
   | BadRequestException
   | NotFoundException
@@ -7546,6 +7651,7 @@ export const getVpcLink: API.OperationMethod<
   retry: Retry,
   operationName: "GetVpcLink",
 }));
+
 export type GetVpcLinksError =
   | BadRequestException
   | NotFoundException
@@ -7594,6 +7700,7 @@ export const getVpcLinks: API.OperationMethod<
     pageSize: "limit",
   } as const,
 }));
+
 export type ImportApiKeysError =
   | BadRequestException
   | ConflictException
@@ -7625,6 +7732,7 @@ export const importApiKeys: API.OperationMethod<
   retry: Retry,
   operationName: "ImportApiKeys",
 }));
+
 export type ImportDocumentationPartsError =
   | BadRequestException
   | ConflictException
@@ -7656,6 +7764,7 @@ export const importDocumentationParts: API.OperationMethod<
   retry: Retry,
   operationName: "ImportDocumentationParts",
 }));
+
 export type ImportRestApiError =
   | BadRequestException
   | ConflictException
@@ -7687,6 +7796,7 @@ export const importRestApi: API.OperationMethod<
   retry: Retry,
   operationName: "ImportRestApi",
 }));
+
 export type PutGatewayResponseError =
   | BadRequestException
   | ConflictException
@@ -7718,6 +7828,7 @@ export const putGatewayResponse: API.OperationMethod<
   retry: Retry,
   operationName: "PutGatewayResponse",
 }));
+
 export type PutIntegrationError =
   | BadRequestException
   | ConflictException
@@ -7749,6 +7860,7 @@ export const putIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "PutIntegration",
 }));
+
 export type PutIntegrationResponseError =
   | BadRequestException
   | ConflictException
@@ -7780,6 +7892,7 @@ export const putIntegrationResponse: API.OperationMethod<
   retry: Retry,
   operationName: "PutIntegrationResponse",
 }));
+
 export type PutMethodError =
   | BadRequestException
   | ConflictException
@@ -7811,6 +7924,7 @@ export const putMethod: API.OperationMethod<
   retry: Retry,
   operationName: "PutMethod",
 }));
+
 export type PutMethodResponseError =
   | BadRequestException
   | ConflictException
@@ -7842,6 +7956,7 @@ export const putMethodResponse: API.OperationMethod<
   retry: Retry,
   operationName: "PutMethodResponse",
 }));
+
 export type PutRestApiError =
   | BadRequestException
   | ConflictException
@@ -7874,6 +7989,7 @@ export const putRestApi: API.OperationMethod<
   retry: Retry,
   operationName: "PutRestApi",
 }));
+
 export type RejectDomainNameAccessAssociationError =
   | BadRequestException
   | ConflictException
@@ -7905,6 +8021,7 @@ export const rejectDomainNameAccessAssociation: API.OperationMethod<
   retry: Retry,
   operationName: "RejectDomainNameAccessAssociation",
 }));
+
 export type TagResourceError =
   | BadRequestException
   | ConflictException
@@ -7936,6 +8053,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type TestInvokeAuthorizerError =
   | BadRequestException
   | NotFoundException
@@ -7963,6 +8081,7 @@ export const testInvokeAuthorizer: API.OperationMethod<
   retry: Retry,
   operationName: "TestInvokeAuthorizer",
 }));
+
 export type TestInvokeMethodError =
   | BadRequestException
   | NotFoundException
@@ -7990,6 +8109,7 @@ export const testInvokeMethod: API.OperationMethod<
   retry: Retry,
   operationName: "TestInvokeMethod",
 }));
+
 export type UntagResourceError =
   | BadRequestException
   | ConflictException
@@ -8021,6 +8141,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateAccountError =
   | BadRequestException
   | ConflictException
@@ -8052,6 +8173,7 @@ export const updateAccount: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAccount",
 }));
+
 export type UpdateApiKeyError =
   | BadRequestException
   | ConflictException
@@ -8083,6 +8205,7 @@ export const updateApiKey: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateApiKey",
 }));
+
 export type UpdateAuthorizerError =
   | BadRequestException
   | ConflictException
@@ -8114,6 +8237,7 @@ export const updateAuthorizer: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateAuthorizer",
 }));
+
 export type UpdateBasePathMappingError =
   | BadRequestException
   | ConflictException
@@ -8145,6 +8269,7 @@ export const updateBasePathMapping: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateBasePathMapping",
 }));
+
 export type UpdateClientCertificateError =
   | BadRequestException
   | ConflictException
@@ -8176,6 +8301,7 @@ export const updateClientCertificate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateClientCertificate",
 }));
+
 export type UpdateDeploymentError =
   | BadRequestException
   | ConflictException
@@ -8209,6 +8335,7 @@ export const updateDeployment: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDeployment",
 }));
+
 export type UpdateDocumentationPartError =
   | BadRequestException
   | ConflictException
@@ -8240,6 +8367,7 @@ export const updateDocumentationPart: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDocumentationPart",
 }));
+
 export type UpdateDocumentationVersionError =
   | BadRequestException
   | ConflictException
@@ -8271,6 +8399,7 @@ export const updateDocumentationVersion: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDocumentationVersion",
 }));
+
 export type UpdateDomainNameError =
   | BadRequestException
   | ConflictException
@@ -8302,6 +8431,7 @@ export const updateDomainName: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateDomainName",
 }));
+
 export type UpdateGatewayResponseError =
   | BadRequestException
   | ConflictException
@@ -8333,6 +8463,7 @@ export const updateGatewayResponse: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateGatewayResponse",
 }));
+
 export type UpdateIntegrationError =
   | BadRequestException
   | ConflictException
@@ -8364,6 +8495,7 @@ export const updateIntegration: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateIntegration",
 }));
+
 export type UpdateIntegrationResponseError =
   | BadRequestException
   | ConflictException
@@ -8395,6 +8527,7 @@ export const updateIntegrationResponse: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateIntegrationResponse",
 }));
+
 export type UpdateMethodError =
   | BadRequestException
   | ConflictException
@@ -8424,6 +8557,7 @@ export const updateMethod: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMethod",
 }));
+
 export type UpdateMethodResponseError =
   | BadRequestException
   | ConflictException
@@ -8455,6 +8589,7 @@ export const updateMethodResponse: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateMethodResponse",
 }));
+
 export type UpdateModelError =
   | BadRequestException
   | ConflictException
@@ -8486,6 +8621,7 @@ export const updateModel: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateModel",
 }));
+
 export type UpdateRequestValidatorError =
   | BadRequestException
   | ConflictException
@@ -8517,6 +8653,7 @@ export const updateRequestValidator: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRequestValidator",
 }));
+
 export type UpdateResourceError =
   | BadRequestException
   | ConflictException
@@ -8546,6 +8683,7 @@ export const updateResource: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateResource",
 }));
+
 export type UpdateRestApiError =
   | BadRequestException
   | ConflictException
@@ -8577,6 +8715,7 @@ export const updateRestApi: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRestApi",
 }));
+
 export type UpdateStageError =
   | BadRequestException
   | ConflictException
@@ -8608,6 +8747,7 @@ export const updateStage: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateStage",
 }));
+
 export type UpdateUsageError =
   | BadRequestException
   | ConflictException
@@ -8639,6 +8779,7 @@ export const updateUsage: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateUsage",
 }));
+
 export type UpdateUsagePlanError =
   | BadRequestException
   | ConflictException
@@ -8670,6 +8811,7 @@ export const updateUsagePlan: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateUsagePlan",
 }));
+
 export type UpdateVpcLinkError =
   | BadRequestException
   | ConflictException

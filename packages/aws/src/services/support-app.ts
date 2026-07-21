@@ -85,19 +85,41 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
+  "ConflictException",
+  { message: S.optional(S.String) },
+  T.HttpError(409),
+).pipe(C.withConflictError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
+  "ResourceNotFoundException",
+  { message: S.optional(S.String) },
+  T.HttpError(404),
+).pipe(C.withBadRequestError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type TeamId = string;
 export type ChannelId = string;
 export type ChannelName = string;
 export type NotificationSeverityLevel = string;
 export type RoleArn = string;
-export type ErrorMessage = string;
-export type AwsAccountAlias = string;
-export type PaginationToken = string;
-export type TeamName = string;
-export type AccountType = string;
-
-//# Schemas
 export interface CreateSlackChannelConfigurationRequest {
   teamId: string;
   channelId: string;
@@ -232,6 +254,7 @@ export const GetAccountAliasRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountAliasRequest",
 }) as any as S.Schema<GetAccountAliasRequest>;
+export type AwsAccountAlias = string;
 export interface GetAccountAliasResult {
   accountAlias?: string;
 }
@@ -240,6 +263,7 @@ export const GetAccountAliasResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAccountAliasResult",
 }) as any as S.Schema<GetAccountAliasResult>;
+export type PaginationToken = string;
 export interface ListSlackChannelConfigurationsRequest {
   nextToken?: string;
 }
@@ -323,6 +347,7 @@ export const ListSlackWorkspaceConfigurationsRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ListSlackWorkspaceConfigurationsRequest",
 }) as any as S.Schema<ListSlackWorkspaceConfigurationsRequest>;
+export type TeamName = string;
 export interface SlackWorkspaceConfiguration {
   teamId: string;
   teamName?: string;
@@ -398,6 +423,7 @@ export const RegisterSlackWorkspaceForOrganizationRequest =
   ).annotate({
     identifier: "RegisterSlackWorkspaceForOrganizationRequest",
   }) as any as S.Schema<RegisterSlackWorkspaceForOrganizationRequest>;
+export type AccountType = string;
 export interface RegisterSlackWorkspaceForOrganizationResult {
   teamId?: string;
   teamName?: string;
@@ -475,40 +501,7 @@ export const UpdateSlackChannelConfigurationResult = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "UpdateSlackChannelConfigurationResult",
 }) as any as S.Schema<UpdateSlackChannelConfigurationResult>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class ConflictException extends S.TaggedErrorClass<ConflictException>()(
-  "ConflictException",
-  { message: S.optional(S.String) },
-  T.HttpError(409),
-).pipe(C.withConflictError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFoundException>()(
-  "ResourceNotFoundException",
-  { message: S.optional(S.String) },
-  T.HttpError(404),
-).pipe(C.withBadRequestError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type CreateSlackChannelConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -552,6 +545,7 @@ export const createSlackChannelConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "CreateSlackChannelConfiguration",
 }));
+
 export type DeleteAccountAliasError =
   | AccessDeniedException
   | InternalServerException
@@ -578,6 +572,7 @@ export const deleteAccountAlias: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAccountAlias",
 }));
+
 export type DeleteSlackChannelConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -608,6 +603,7 @@ export const deleteSlackChannelConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSlackChannelConfiguration",
 }));
+
 export type DeleteSlackWorkspaceConfigurationError =
   | AccessDeniedException
   | ConflictException
@@ -638,6 +634,7 @@ export const deleteSlackWorkspaceConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteSlackWorkspaceConfiguration",
 }));
+
 export type GetAccountAliasError = InternalServerException | CommonErrors;
 /**
  * Retrieves the alias from an Amazon Web Services account ID. The alias appears in the Amazon Web Services Support App page of
@@ -656,6 +653,7 @@ export const getAccountAlias: API.OperationMethod<
   retry: Retry,
   operationName: "GetAccountAlias",
 }));
+
 export type ListSlackChannelConfigurationsError =
   | AccessDeniedException
   | InternalServerException
@@ -692,6 +690,7 @@ export const listSlackChannelConfigurations: API.OperationMethod<
   operationName: "ListSlackChannelConfigurations",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
+
 export type ListSlackWorkspaceConfigurationsError =
   | AccessDeniedException
   | InternalServerException
@@ -728,6 +727,7 @@ export const listSlackWorkspaceConfigurations: API.OperationMethod<
   operationName: "ListSlackWorkspaceConfigurations",
   pagination: { inputToken: "nextToken", outputToken: "nextToken" } as const,
 }));
+
 export type PutAccountAliasError =
   | AccessDeniedException
   | InternalServerException
@@ -751,6 +751,7 @@ export const putAccountAlias: API.OperationMethod<
   retry: Retry,
   operationName: "PutAccountAlias",
 }));
+
 export type RegisterSlackWorkspaceForOrganizationError =
   | AccessDeniedException
   | ConflictException
@@ -804,6 +805,7 @@ export const registerSlackWorkspaceForOrganization: API.OperationMethod<
   retry: Retry,
   operationName: "RegisterSlackWorkspaceForOrganization",
 }));
+
 export type UpdateSlackChannelConfigurationError =
   | AccessDeniedException
   | ConflictException

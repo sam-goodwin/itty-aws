@@ -85,17 +85,32 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
+  "AccessDeniedException",
+  { message: S.optional(S.String) },
+  T.HttpError(403),
+).pipe(C.withAuthError) {}
+export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
+  "InternalServerException",
+  { message: S.optional(S.String) },
+  T.HttpError(500),
+).pipe(C.withServerError) {}
+export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
+  "ServiceQuotaExceededException",
+  { message: S.optional(S.String) },
+  T.HttpError(402),
+).pipe(C.withQuotaError) {}
+export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
+  "ThrottlingException",
+  { message: S.optional(S.String) },
+  T.HttpError(429),
+).pipe(C.withThrottlingError) {}
+export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
+  "ValidationException",
+  { message: S.optional(S.String) },
+  T.HttpError(400),
+).pipe(C.withBadRequestError) {}
 export type ReportId = string;
-export type ErrorMessage = string;
-export type ReportDescription = string;
-export type S3Bucket = string;
-export type S3Prefix = string;
-export type S3Key = string;
-export type ImportId = string;
-export type Token = string;
-
-//# Schemas
 export interface DeleteReportDefinitionRequest {
   reportId: string;
 }
@@ -138,10 +153,15 @@ export const GetReportDefinitionRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetReportDefinitionRequest",
 }) as any as S.Schema<GetReportDefinitionRequest>;
+export type ReportDescription = string;
 export type ReportFrequency = "MONTHLY" | "DAILY" | "ALL" | (string & {});
 export const ReportFrequency = /*@__PURE__*/ S.String;
+
 export type Format = "CSV" | "PARQUET" | (string & {});
 export const Format = /*@__PURE__*/ S.String;
+
+export type S3Bucket = string;
+export type S3Prefix = string;
 export interface S3Location {
   bucket: string;
   prefix: string;
@@ -171,6 +191,7 @@ export const GetReportDefinitionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetReportDefinitionResult",
 }) as any as S.Schema<GetReportDefinitionResult>;
+export type S3Key = string;
 export type S3BucketRegion =
   | "ap-east-1"
   | "me-south-1"
@@ -178,6 +199,7 @@ export type S3BucketRegion =
   | "af-south-1"
   | (string & {});
 export const S3BucketRegion = /*@__PURE__*/ S.String;
+
 export interface SourceS3Location {
   bucket: string;
   key: string;
@@ -209,6 +231,7 @@ export const ImportApplicationUsageRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportApplicationUsageRequest",
 }) as any as S.Schema<ImportApplicationUsageRequest>;
+export type ImportId = string;
 export interface ImportApplicationUsageResult {
   importId: string;
 }
@@ -217,6 +240,7 @@ export const ImportApplicationUsageResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ImportApplicationUsageResult",
 }) as any as S.Schema<ImportApplicationUsageResult>;
+export type Token = string;
 export interface ListReportDefinitionsRequest {
   nextToken?: string;
   maxResults?: number;
@@ -344,35 +368,7 @@ export const UpdateReportDefinitionResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateReportDefinitionResult",
 }) as any as S.Schema<UpdateReportDefinitionResult>;
-
-//# Errors
-export class AccessDeniedException extends S.TaggedErrorClass<AccessDeniedException>()(
-  "AccessDeniedException",
-  { message: S.optional(S.String) },
-  T.HttpError(403),
-).pipe(C.withAuthError) {}
-export class InternalServerException extends S.TaggedErrorClass<InternalServerException>()(
-  "InternalServerException",
-  { message: S.optional(S.String) },
-  T.HttpError(500),
-).pipe(C.withServerError) {}
-export class ThrottlingException extends S.TaggedErrorClass<ThrottlingException>()(
-  "ThrottlingException",
-  { message: S.optional(S.String) },
-  T.HttpError(429),
-).pipe(C.withThrottlingError) {}
-export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
-  "ValidationException",
-  { message: S.optional(S.String) },
-  T.HttpError(400),
-).pipe(C.withBadRequestError) {}
-export class ServiceQuotaExceededException extends S.TaggedErrorClass<ServiceQuotaExceededException>()(
-  "ServiceQuotaExceededException",
-  { message: S.optional(S.String) },
-  T.HttpError(402),
-).pipe(C.withQuotaError) {}
-
-//# Operations
+export type ErrorMessage = string;
 export type DeleteReportDefinitionError =
   | AccessDeniedException
   | InternalServerException
@@ -401,6 +397,7 @@ export const deleteReportDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteReportDefinition",
 }));
+
 export type GetReportDefinitionError =
   | AccessDeniedException
   | InternalServerException
@@ -428,6 +425,7 @@ export const getReportDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "GetReportDefinition",
 }));
+
 export type ImportApplicationUsageError =
   | AccessDeniedException
   | InternalServerException
@@ -459,6 +457,7 @@ export const importApplicationUsage: API.OperationMethod<
   retry: Retry,
   operationName: "ImportApplicationUsage",
 }));
+
 export type ListReportDefinitionsError =
   | AccessDeniedException
   | InternalServerException
@@ -509,6 +508,7 @@ export const listReportDefinitions: API.OperationMethod<
     pageSize: "maxResults",
   } as const,
 }));
+
 export type PutReportDefinitionError =
   | AccessDeniedException
   | InternalServerException
@@ -538,6 +538,7 @@ export const putReportDefinition: API.OperationMethod<
   retry: Retry,
   operationName: "PutReportDefinition",
 }));
+
 export type UpdateReportDefinitionError =
   | AccessDeniedException
   | InternalServerException

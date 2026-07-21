@@ -85,106 +85,103 @@ const rules = T.EndpointResolver((p, _) => {
   return err("Invalid Configuration: Missing Region");
 });
 
-//# Newtypes
+export class WAFAssociatedItemException extends S.TaggedErrorClass<WAFAssociatedItemException>()(
+  "WAFAssociatedItemException",
+  { Message: S.optional(S.String) },
+) {}
+export class WAFConfigurationWarningException extends S.TaggedErrorClass<WAFConfigurationWarningException>()(
+  "WAFConfigurationWarningException",
+  { Message: S.optional(S.String) },
+) {}
+export class WAFDuplicateItemException extends S.TaggedErrorClass<WAFDuplicateItemException>()(
+  "WAFDuplicateItemException",
+  { Message: S.optional(S.String) },
+) {}
+export class WAFExpiredManagedRuleGroupVersionException extends S.TaggedErrorClass<WAFExpiredManagedRuleGroupVersionException>()(
+  "WAFExpiredManagedRuleGroupVersionException",
+  { Message: S.optional(S.String) },
+) {}
+export class WAFFeatureNotIncludedInPricingPlanException extends S.TaggedErrorClass<WAFFeatureNotIncludedInPricingPlanException>()(
+  "WAFFeatureNotIncludedInPricingPlanException",
+  {
+    Message: S.optional(S.String),
+    DisallowedFeatures: S.optional(
+      S.suspend(() => DisallowedFeatures).annotate({
+        identifier: "DisallowedFeatures",
+      }),
+    ),
+  },
+) {}
+export class WAFInternalErrorException extends S.TaggedErrorClass<WAFInternalErrorException>()(
+  "WAFInternalErrorException",
+  { Message: S.optional(S.String) },
+).pipe(C.withServerError) {}
+export class WAFInvalidOperationException extends S.TaggedErrorClass<WAFInvalidOperationException>()(
+  "WAFInvalidOperationException",
+  { Message: S.optional(S.String) },
+) {}
+export class WAFInvalidParameterException extends S.TaggedErrorClass<WAFInvalidParameterException>()(
+  "WAFInvalidParameterException",
+  {
+    message: S.optional(S.String),
+    Field: S.optional(
+      S.suspend(() => ParameterExceptionField).annotate({
+        identifier: "ParameterExceptionField",
+      }),
+    ),
+    Parameter: S.optional(S.String),
+    Reason: S.optional(S.String),
+  },
+) {}
+export class WAFInvalidPermissionPolicyException extends S.TaggedErrorClass<WAFInvalidPermissionPolicyException>()(
+  "WAFInvalidPermissionPolicyException",
+  { Message: S.optional(S.String) },
+) {}
+export class WAFInvalidResourceException extends S.TaggedErrorClass<WAFInvalidResourceException>()(
+  "WAFInvalidResourceException",
+  { Message: S.optional(S.String) },
+) {}
+export class WAFLimitsExceededException extends S.TaggedErrorClass<WAFLimitsExceededException>()(
+  "WAFLimitsExceededException",
+  { Message: S.optional(S.String), SourceType: S.optional(S.String) },
+) {}
+export class WAFLogDestinationPermissionIssueException extends S.TaggedErrorClass<WAFLogDestinationPermissionIssueException>()(
+  "WAFLogDestinationPermissionIssueException",
+  { Message: S.optional(S.String) },
+) {}
+export class WAFNonexistentItemException extends S.TaggedErrorClass<WAFNonexistentItemException>()(
+  "WAFNonexistentItemException",
+  { Message: S.optional(S.String) },
+) {}
+export class WAFOptimisticLockException extends S.TaggedErrorClass<WAFOptimisticLockException>()(
+  "WAFOptimisticLockException",
+  { Message: S.optional(S.String) },
+) {}
+export class WAFServiceLinkedRoleErrorException extends S.TaggedErrorClass<WAFServiceLinkedRoleErrorException>()(
+  "WAFServiceLinkedRoleErrorException",
+  { message: S.optional(S.String) },
+) {}
+export class WAFSubscriptionNotFoundException extends S.TaggedErrorClass<WAFSubscriptionNotFoundException>()(
+  "WAFSubscriptionNotFoundException",
+  { Message: S.optional(S.String) },
+) {}
+export class WAFTagOperationException extends S.TaggedErrorClass<WAFTagOperationException>()(
+  "WAFTagOperationException",
+  { Message: S.optional(S.String) },
+) {}
+export class WAFTagOperationInternalErrorException extends S.TaggedErrorClass<WAFTagOperationInternalErrorException>()(
+  "WAFTagOperationInternalErrorException",
+  { Message: S.optional(S.String) },
+).pipe(C.withServerError) {}
+export class WAFUnavailableEntityException extends S.TaggedErrorClass<WAFUnavailableEntityException>()(
+  "WAFUnavailableEntityException",
+  { Message: S.optional(S.String) },
+) {}
+export class WAFUnsupportedAggregateKeyTypeException extends S.TaggedErrorClass<WAFUnsupportedAggregateKeyTypeException>()(
+  "WAFUnsupportedAggregateKeyTypeException",
+  { Message: S.optional(S.String) },
+) {}
 export type ResourceArn = string;
-export type ErrorMessage = string;
-export type PricingPlanFeatureName = string;
-export type RequiredPricingPlanName = string;
-export type ParameterExceptionParameter = string;
-export type ErrorReason = string;
-export type SourceType = string;
-export type EntityName = string;
-export type RulePriority = number;
-export type SearchString = Uint8Array;
-export type FieldToMatchData = string;
-export type JsonPointerPath = string;
-export type SingleCookieName = string;
-export type TextTransformationPriority = number;
-export type Size = number;
-export type ForwardedIPHeaderName = string;
-export type ResponseStatusCode = number;
-export type CustomHTTPHeaderName = string;
-export type CustomHTTPHeaderValue = string;
-export type PriceMultiplier = string;
-export type RateLimit = number;
-export type EvaluationWindowSec = number;
-export type LabelNamespace = string;
-export type VendorName = string;
-export type VersionKeyString = string;
-export type LoginPathString = string;
-export type FieldIdentifier = string;
-export type EnableMachineLearning = boolean;
-export type SuccessCode = number;
-export type FailureCode = number;
-export type ResponseInspectionHeaderName = string;
-export type SuccessValue = string;
-export type FailureValue = string;
-export type CreationPathString = string;
-export type RegistrationPagePathString = string;
-export type RegexPatternString = string;
-export type LabelMatchKey = string;
-export type ASN = number;
-export type LabelName = string;
-export type MetricName = string;
-export type TimeWindowSecond = number;
-export type ConsumedCapacity = number;
-export type TokenDomain = string;
-export type APIKey = string;
-export type EntityDescription = string;
-export type IPAddress = string;
-export type TagKey = string;
-export type TagValue = string;
-export type EntityId = string;
-export type LockToken = string;
-export type CapacityUnit = number;
-export type ResponseContent = string;
-export type WalletAddress = string;
-export type PriceAmount = string;
-export type FieldToProtectKeyName = string;
-export type AttributeName = string;
-export type AttributeValue = string;
-export type ProductId = string;
-export type ProductLink = string;
-export type ProductTitle = string;
-export type ProductDescription = string;
-export type DownloadUrl = string;
-export type TimeWindowDay = number;
-export type ReleaseNotes = string;
-export type PolicyString = string;
-export type MonetizationFilterName = string;
-export type MonetizationFilterValue = string;
-export type NextMarker = string;
-export type PathStatisticsLimit = number;
-export type FilterString = string;
-export type PercentageValue = number;
-export type MonetizationAmountValue = string;
-export type RequestCount = number;
-export type VerifiedStatus = boolean;
-export type PathString = string;
-export type MaxDataPoints = number;
-export type ListMaxItems = number;
-export type IPString = string;
-export type Country = string;
-export type URIString = string;
-export type HTTPMethod = string;
-export type HTTPVersion = string;
-export type HeaderName = string;
-export type HeaderValue = string;
-export type SampleWeight = number;
-export type Action = string;
-export type ResponseCode = number;
-export type SolveTimestamp = number;
-export type PopulationSize = number;
-export type UriPathPrefixString = string;
-export type NumberOfTopTrafficBotsPerPath = number;
-export type OutputUrl = string;
-export type PaginationLimit = number;
-export type APIKeyVersion = number;
-export type SettlementRecordLimit = number;
-export type SettlementFilterString = string;
-export type SettlementIdString = string;
-
-//# Schemas
 export interface AssociateWebACLRequest {
   WebACLArn: string;
   ResourceArn: string;
@@ -210,101 +207,13 @@ export const AssociateWebACLResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AssociateWebACLResponse",
 }) as any as S.Schema<AssociateWebACLResponse>;
-export interface DisallowedFeature {
-  Feature?: string;
-  RequiredPricingPlan?: string;
-}
-export const DisallowedFeature = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Feature: S.optional(S.String),
-    RequiredPricingPlan: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DisallowedFeature",
-}) as any as S.Schema<DisallowedFeature>;
-export type DisallowedFeatures = DisallowedFeature[];
-export const DisallowedFeatures = /*@__PURE__*/ S.Array(DisallowedFeature);
-export type ParameterExceptionField =
-  | "WEB_ACL"
-  | "RULE_GROUP"
-  | "REGEX_PATTERN_SET"
-  | "IP_SET"
-  | "MANAGED_RULE_SET"
-  | "RULE"
-  | "EXCLUDED_RULE"
-  | "STATEMENT"
-  | "BYTE_MATCH_STATEMENT"
-  | "SQLI_MATCH_STATEMENT"
-  | "XSS_MATCH_STATEMENT"
-  | "SIZE_CONSTRAINT_STATEMENT"
-  | "GEO_MATCH_STATEMENT"
-  | "RATE_BASED_STATEMENT"
-  | "RULE_GROUP_REFERENCE_STATEMENT"
-  | "REGEX_PATTERN_REFERENCE_STATEMENT"
-  | "IP_SET_REFERENCE_STATEMENT"
-  | "MANAGED_RULE_SET_STATEMENT"
-  | "LABEL_MATCH_STATEMENT"
-  | "AND_STATEMENT"
-  | "OR_STATEMENT"
-  | "NOT_STATEMENT"
-  | "IP_ADDRESS"
-  | "IP_ADDRESS_VERSION"
-  | "FIELD_TO_MATCH"
-  | "TEXT_TRANSFORMATION"
-  | "SINGLE_QUERY_ARGUMENT"
-  | "SINGLE_HEADER"
-  | "DEFAULT_ACTION"
-  | "RULE_ACTION"
-  | "ENTITY_LIMIT"
-  | "OVERRIDE_ACTION"
-  | "SCOPE_VALUE"
-  | "RESOURCE_ARN"
-  | "RESOURCE_TYPE"
-  | "TAGS"
-  | "TAG_KEYS"
-  | "METRIC_NAME"
-  | "FIREWALL_MANAGER_STATEMENT"
-  | "FALLBACK_BEHAVIOR"
-  | "POSITION"
-  | "FORWARDED_IP_CONFIG"
-  | "IP_SET_FORWARDED_IP_CONFIG"
-  | "HEADER_NAME"
-  | "CUSTOM_REQUEST_HANDLING"
-  | "RESPONSE_CONTENT_TYPE"
-  | "CUSTOM_RESPONSE"
-  | "CUSTOM_RESPONSE_BODY"
-  | "JSON_MATCH_PATTERN"
-  | "JSON_MATCH_SCOPE"
-  | "BODY_PARSING_FALLBACK_BEHAVIOR"
-  | "LOGGING_FILTER"
-  | "FILTER_CONDITION"
-  | "EXPIRE_TIMESTAMP"
-  | "CHANGE_PROPAGATION_STATUS"
-  | "ASSOCIABLE_RESOURCE"
-  | "LOG_DESTINATION"
-  | "MANAGED_RULE_GROUP_CONFIG"
-  | "PAYLOAD_TYPE"
-  | "HEADER_MATCH_PATTERN"
-  | "COOKIE_MATCH_PATTERN"
-  | "MAP_MATCH_SCOPE"
-  | "OVERSIZE_HANDLING"
-  | "CHALLENGE_CONFIG"
-  | "TOKEN_DOMAIN"
-  | "ATP_RULE_SET_RESPONSE_INSPECTION"
-  | "ASSOCIATED_RESOURCE_TYPE"
-  | "SCOPE_DOWN"
-  | "CUSTOM_KEYS"
-  | "ACP_RULE_SET_RESPONSE_INSPECTION"
-  | "DATA_PROTECTION_CONFIG"
-  | "LOW_REPUTATION_MODE"
-  | "MONETIZATION_CONFIG"
-  | "WALLET_ADDRESS"
-  | "PRICE_AMOUNT"
-  | "PAYMENT_NETWORK"
-  | (string & {});
-export const ParameterExceptionField = /*@__PURE__*/ S.String;
 export type Scope = "CLOUDFRONT" | "REGIONAL" | (string & {});
 export const Scope = /*@__PURE__*/ S.String;
+
+export type EntityName = string;
+export type RulePriority = number;
+export type SearchString = Uint8Array;
+export type FieldToMatchData = string;
 export interface SingleHeader {
   Name: string;
 }
@@ -339,6 +248,7 @@ export type OversizeHandling =
   | "NO_MATCH"
   | (string & {});
 export const OversizeHandling = /*@__PURE__*/ S.String;
+
 export interface Body {
   OversizeHandling?: OversizeHandling;
 }
@@ -353,6 +263,7 @@ export interface All {}
 export const All = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "All",
 }) as any as S.Schema<All>;
+export type JsonPointerPath = string;
 export type JsonPointerPaths = string[];
 export const JsonPointerPaths = /*@__PURE__*/ S.Array(S.String);
 export interface JsonMatchPattern {
@@ -369,12 +280,14 @@ export const JsonMatchPattern = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<JsonMatchPattern>;
 export type JsonMatchScope = "ALL" | "KEY" | "VALUE" | (string & {});
 export const JsonMatchScope = /*@__PURE__*/ S.String;
+
 export type BodyParsingFallbackBehavior =
   | "MATCH"
   | "NO_MATCH"
   | "EVALUATE_AS_STRING"
   | (string & {});
 export const BodyParsingFallbackBehavior = /*@__PURE__*/ S.String;
+
 export interface JsonBody {
   MatchPattern: JsonMatchPattern;
   MatchScope: JsonMatchScope;
@@ -407,6 +320,7 @@ export const HeaderMatchPattern = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HeaderMatchPattern>;
 export type MapMatchScope = "ALL" | "KEY" | "VALUE" | (string & {});
 export const MapMatchScope = /*@__PURE__*/ S.String;
+
 export interface Headers {
   MatchPattern: HeaderMatchPattern;
   MatchScope: MapMatchScope;
@@ -419,6 +333,7 @@ export const Headers = /*@__PURE__*/ S.suspend(() =>
     OversizeHandling: OversizeHandling,
   }),
 ).annotate({ identifier: "Headers" }) as any as S.Schema<Headers>;
+export type SingleCookieName = string;
 export type CookieNames = string[];
 export const CookieNames = /*@__PURE__*/ S.Array(S.String);
 export interface CookieMatchPattern {
@@ -455,6 +370,7 @@ export const HeaderOrder = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "HeaderOrder" }) as any as S.Schema<HeaderOrder>;
 export type FallbackBehavior = "MATCH" | "NO_MATCH" | (string & {});
 export const FallbackBehavior = /*@__PURE__*/ S.String;
+
 export interface JA3Fingerprint {
   FallbackBehavior: FallbackBehavior;
 }
@@ -507,6 +423,7 @@ export const FieldToMatch = /*@__PURE__*/ S.suspend(() =>
     UriFragment: S.optional(UriFragment),
   }),
 ).annotate({ identifier: "FieldToMatch" }) as any as S.Schema<FieldToMatch>;
+export type TextTransformationPriority = number;
 export type TextTransformationType =
   | "NONE"
   | "COMPRESS_WHITE_SPACE"
@@ -531,6 +448,7 @@ export type TextTransformationType =
   | "UTF8_TO_UNICODE"
   | (string & {});
 export const TextTransformationType = /*@__PURE__*/ S.String;
+
 export interface TextTransformation {
   Priority: number;
   Type: TextTransformationType;
@@ -550,6 +468,7 @@ export type PositionalConstraint =
   | "CONTAINS_WORD"
   | (string & {});
 export const PositionalConstraint = /*@__PURE__*/ S.String;
+
 export interface ByteMatchStatement {
   SearchString: Uint8Array;
   FieldToMatch: FieldToMatch;
@@ -568,6 +487,7 @@ export const ByteMatchStatement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ByteMatchStatement>;
 export type SensitivityLevel = "LOW" | "HIGH" | (string & {});
 export const SensitivityLevel = /*@__PURE__*/ S.String;
+
 export interface SqliMatchStatement {
   FieldToMatch: FieldToMatch;
   TextTransformations: TextTransformation[];
@@ -603,6 +523,8 @@ export type ComparisonOperator =
   | "GT"
   | (string & {});
 export const ComparisonOperator = /*@__PURE__*/ S.String;
+
+export type Size = number;
 export interface SizeConstraintStatement {
   FieldToMatch: FieldToMatch;
   ComparisonOperator: ComparisonOperator;
@@ -872,8 +794,10 @@ export type CountryCode =
   | "XK"
   | (string & {});
 export const CountryCode = /*@__PURE__*/ S.String;
+
 export type CountryCodes = CountryCode[];
 export const CountryCodes = /*@__PURE__*/ S.Array(CountryCode);
+export type ForwardedIPHeaderName = string;
 export interface ForwardedIPConfig {
   HeaderName: string;
   FallbackBehavior: FallbackBehavior;
@@ -903,6 +827,9 @@ export const ExcludedRule = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "ExcludedRule" }) as any as S.Schema<ExcludedRule>;
 export type ExcludedRules = ExcludedRule[];
 export const ExcludedRules = /*@__PURE__*/ S.Array(ExcludedRule);
+export type ResponseStatusCode = number;
+export type CustomHTTPHeaderName = string;
+export type CustomHTTPHeaderValue = string;
 export interface CustomHTTPHeader {
   Name: string;
   Value: string;
@@ -966,6 +893,7 @@ export const ChallengeAction = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ChallengeAction",
 }) as any as S.Schema<ChallengeAction>;
+export type PriceMultiplier = string;
 export interface MonetizeAction {
   PriceMultiplier?: string;
 }
@@ -1017,6 +945,7 @@ export const RuleGroupReferenceStatement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RuleGroupReferenceStatement>;
 export type ForwardedIPPosition = "FIRST" | "LAST" | "ANY" | (string & {});
 export const ForwardedIPPosition = /*@__PURE__*/ S.String;
+
 export interface IPSetForwardedIPConfig {
   HeaderName: string;
   FallbackBehavior: FallbackBehavior;
@@ -1057,6 +986,8 @@ export const RegexPatternSetReferenceStatement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RegexPatternSetReferenceStatement",
 }) as any as S.Schema<RegexPatternSetReferenceStatement>;
+export type RateLimit = number;
+export type EvaluationWindowSec = number;
 export type RateBasedStatementAggregateKeyType =
   | "IP"
   | "FORWARDED_IP"
@@ -1064,6 +995,7 @@ export type RateBasedStatementAggregateKeyType =
   | "CONSTANT"
   | (string & {});
 export const RateBasedStatementAggregateKeyType = /*@__PURE__*/ S.String;
+
 export interface RateLimitHeader {
   Name: string;
   TextTransformations: TextTransformation[];
@@ -1115,6 +1047,7 @@ export interface RateLimitIP {}
 export const RateLimitIP = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate(
   { identifier: "RateLimitIP" },
 ) as any as S.Schema<RateLimitIP>;
+export type LabelNamespace = string;
 export interface RateLimitLabelNamespace {
   Namespace: string;
 }
@@ -1247,8 +1180,13 @@ export const NotStatement = /*@__PURE__*/ S.suspend(() =>
     }),
   }),
 ).annotate({ identifier: "NotStatement" }) as any as S.Schema<NotStatement>;
+export type VendorName = string;
+export type VersionKeyString = string;
+export type LoginPathString = string;
 export type PayloadType = "JSON" | "FORM_ENCODED" | (string & {});
 export const PayloadType = /*@__PURE__*/ S.String;
+
+export type FieldIdentifier = string;
 export interface UsernameField {
   Identifier: string;
 }
@@ -1263,6 +1201,8 @@ export const PasswordField = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "PasswordField" }) as any as S.Schema<PasswordField>;
 export type InspectionLevel = "COMMON" | "TARGETED" | (string & {});
 export const InspectionLevel = /*@__PURE__*/ S.String;
+
+export type EnableMachineLearning = boolean;
 export interface AWSManagedRulesBotControlRuleSet {
   InspectionLevel: InspectionLevel;
   EnableMachineLearning?: boolean;
@@ -1289,10 +1229,12 @@ export const RequestInspection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RequestInspection",
 }) as any as S.Schema<RequestInspection>;
+export type SuccessCode = number;
 export type ResponseInspectionStatusCodeSuccessCodes = number[];
 export const ResponseInspectionStatusCodeSuccessCodes = /*@__PURE__*/ S.Array(
   S.Number,
 );
+export type FailureCode = number;
 export type ResponseInspectionStatusCodeFailureCodes = number[];
 export const ResponseInspectionStatusCodeFailureCodes = /*@__PURE__*/ S.Array(
   S.Number,
@@ -1309,10 +1251,13 @@ export const ResponseInspectionStatusCode = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResponseInspectionStatusCode",
 }) as any as S.Schema<ResponseInspectionStatusCode>;
+export type ResponseInspectionHeaderName = string;
+export type SuccessValue = string;
 export type ResponseInspectionHeaderSuccessValues = string[];
 export const ResponseInspectionHeaderSuccessValues = /*@__PURE__*/ S.Array(
   S.String,
 );
+export type FailureValue = string;
 export type ResponseInspectionHeaderFailureValues = string[];
 export const ResponseInspectionHeaderFailureValues = /*@__PURE__*/ S.Array(
   S.String,
@@ -1403,6 +1348,8 @@ export const AWSManagedRulesATPRuleSet = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AWSManagedRulesATPRuleSet",
 }) as any as S.Schema<AWSManagedRulesATPRuleSet>;
+export type CreationPathString = string;
+export type RegistrationPagePathString = string;
 export interface EmailField {
   Identifier: string;
 }
@@ -1467,8 +1414,11 @@ export const AWSManagedRulesACFPRuleSet = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AWSManagedRulesACFPRuleSet>;
 export type UsageOfAction = "ENABLED" | "DISABLED" | (string & {});
 export const UsageOfAction = /*@__PURE__*/ S.String;
+
 export type SensitivityToAct = "LOW" | "MEDIUM" | "HIGH" | (string & {});
 export const SensitivityToAct = /*@__PURE__*/ S.String;
+
+export type RegexPatternString = string;
 export interface Regex {
   RegexString?: string;
 }
@@ -1569,6 +1519,8 @@ export const ManagedRuleGroupStatement = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ManagedRuleGroupStatement>;
 export type LabelMatchScope = "LABEL" | "NAMESPACE" | (string & {});
 export const LabelMatchScope = /*@__PURE__*/ S.String;
+
+export type LabelMatchKey = string;
 export interface LabelMatchStatement {
   Scope: LabelMatchScope;
   Key: string;
@@ -1592,6 +1544,7 @@ export const RegexMatchStatement = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RegexMatchStatement",
 }) as any as S.Schema<RegexMatchStatement>;
+export type ASN = number;
 export type AsnList = number[];
 export const AsnList = /*@__PURE__*/ S.Array(S.Number);
 export interface AsnMatchStatement {
@@ -1677,6 +1630,7 @@ export interface OverrideAction {
 export const OverrideAction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({ Count: S.optional(CountAction), None: S.optional(NoneAction) }),
 ).annotate({ identifier: "OverrideAction" }) as any as S.Schema<OverrideAction>;
+export type LabelName = string;
 export interface Label {
   Name: string;
 }
@@ -1685,6 +1639,7 @@ export const Label = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "Label" }) as any as S.Schema<Label>;
 export type Labels = Label[];
 export const Labels = /*@__PURE__*/ S.Array(Label);
+export type MetricName = string;
 export interface VisibilityConfig {
   SampledRequestsEnabled: boolean;
   CloudWatchMetricsEnabled: boolean;
@@ -1699,6 +1654,7 @@ export const VisibilityConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VisibilityConfig",
 }) as any as S.Schema<VisibilityConfig>;
+export type TimeWindowSecond = number;
 export interface ImmunityTimeProperty {
   ImmunityTime: number;
 }
@@ -1766,6 +1722,7 @@ export const CheckCapacityRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CheckCapacityRequest",
 }) as any as S.Schema<CheckCapacityRequest>;
+export type ConsumedCapacity = number;
 export interface CheckCapacityResponse {
   Capacity?: number;
 }
@@ -1774,6 +1731,7 @@ export const CheckCapacityResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CheckCapacityResponse",
 }) as any as S.Schema<CheckCapacityResponse>;
+export type TokenDomain = string;
 export type APIKeyTokenDomains = string[];
 export const APIKeyTokenDomains = /*@__PURE__*/ S.Array(S.String);
 export interface CreateAPIKeyRequest {
@@ -1795,6 +1753,7 @@ export const CreateAPIKeyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAPIKeyRequest",
 }) as any as S.Schema<CreateAPIKeyRequest>;
+export type APIKey = string;
 export interface CreateAPIKeyResponse {
   APIKey?: string;
 }
@@ -1803,10 +1762,15 @@ export const CreateAPIKeyResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateAPIKeyResponse",
 }) as any as S.Schema<CreateAPIKeyResponse>;
+export type EntityDescription = string;
 export type IPAddressVersion = "IPV4" | "IPV6" | (string & {});
 export const IPAddressVersion = /*@__PURE__*/ S.String;
+
+export type IPAddress = string;
 export type IPAddresses = string[];
 export const IPAddresses = /*@__PURE__*/ S.Array(S.String);
+export type TagKey = string;
+export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
@@ -1846,6 +1810,8 @@ export const CreateIPSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateIPSetRequest",
 }) as any as S.Schema<CreateIPSetRequest>;
+export type EntityId = string;
+export type LockToken = string;
 export interface IPSetSummary {
   Name?: string;
   Id?: string;
@@ -1924,12 +1890,15 @@ export const CreateRegexPatternSetResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateRegexPatternSetResponse",
 }) as any as S.Schema<CreateRegexPatternSetResponse>;
+export type CapacityUnit = number;
 export type ResponseContentType =
   | "TEXT_PLAIN"
   | "TEXT_HTML"
   | "APPLICATION_JSON"
   | (string & {});
 export const ResponseContentType = /*@__PURE__*/ S.String;
+
+export type ResponseContent = string;
 export interface CustomResponseBody {
   ContentType: ResponseContentType;
   Content: string;
@@ -1953,8 +1922,12 @@ export type BlockchainChain =
   | "SOLANA_DEVNET"
   | (string & {});
 export const BlockchainChain = /*@__PURE__*/ S.String;
+
+export type WalletAddress = string;
+export type PriceAmount = string;
 export type CryptoCurrency = "USDC" | (string & {});
 export const CryptoCurrency = /*@__PURE__*/ S.String;
+
 export interface Price {
   Amount: string;
   Currency: CryptoCurrency;
@@ -1982,6 +1955,7 @@ export const CryptoConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "CryptoConfig" }) as any as S.Schema<CryptoConfig>;
 export type CurrencyMode = "REAL" | "TEST" | (string & {});
 export const CurrencyMode = /*@__PURE__*/ S.String;
+
 export interface MonetizationConfig {
   CryptoConfig?: CryptoConfig;
   CurrencyMode?: CurrencyMode;
@@ -2071,6 +2045,8 @@ export type FieldToProtectType =
   | "BODY"
   | (string & {});
 export const FieldToProtectType = /*@__PURE__*/ S.String;
+
+export type FieldToProtectKeyName = string;
 export type FieldToProtectKeys = string[];
 export const FieldToProtectKeys = /*@__PURE__*/ S.Array(S.String);
 export interface FieldToProtect {
@@ -2085,6 +2061,7 @@ export const FieldToProtect = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "FieldToProtect" }) as any as S.Schema<FieldToProtect>;
 export type DataProtectionAction = "SUBSTITUTION" | "HASH" | (string & {});
 export const DataProtectionAction = /*@__PURE__*/ S.String;
+
 export interface DataProtection {
   Field: FieldToProtect;
   Action: DataProtectionAction;
@@ -2120,6 +2097,7 @@ export type AssociatedResourceType =
   | "AGENTCORE_GATEWAY"
   | (string & {});
 export const AssociatedResourceType = /*@__PURE__*/ S.String;
+
 export type SizeInspectionLimit =
   | "KB_16"
   | "KB_32"
@@ -2127,6 +2105,7 @@ export type SizeInspectionLimit =
   | "KB_64"
   | (string & {});
 export const SizeInspectionLimit = /*@__PURE__*/ S.String;
+
 export interface RequestBodyAssociatedResourceTypeConfig {
   DefaultSizeInspectionLimit: SizeInspectionLimit;
 }
@@ -2157,6 +2136,7 @@ export type LowReputationMode =
   | "ALWAYS_ON"
   | (string & {});
 export const LowReputationMode = /*@__PURE__*/ S.String;
+
 export interface OnSourceDDoSProtectionConfig {
   ALBLowReputationMode: LowReputationMode;
 }
@@ -2165,6 +2145,8 @@ export const OnSourceDDoSProtectionConfig = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OnSourceDDoSProtectionConfig",
 }) as any as S.Schema<OnSourceDDoSProtectionConfig>;
+export type AttributeName = string;
+export type AttributeValue = string;
 export type AttributeValues = string[];
 export const AttributeValues = /*@__PURE__*/ S.Array(S.String);
 export interface ApplicationAttribute {
@@ -2348,12 +2330,14 @@ export const DeleteIPSetResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteIPSetResponse>;
 export type LogType = "WAF_LOGS" | (string & {});
 export const LogType = /*@__PURE__*/ S.String;
+
 export type LogScope =
   | "CUSTOMER"
   | "SECURITY_LAKE"
   | "CLOUDWATCH_TELEMETRY_RULE_MANAGED"
   | (string & {});
 export const LogScope = /*@__PURE__*/ S.String;
+
 export interface DeleteLoggingConfigurationRequest {
   ResourceArn: string;
   LogType?: LogType;
@@ -2522,6 +2506,10 @@ export const DescribeAllManagedProductsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DescribeAllManagedProductsRequest",
 }) as any as S.Schema<DescribeAllManagedProductsRequest>;
+export type ProductId = string;
+export type ProductLink = string;
+export type ProductTitle = string;
+export type ProductDescription = string;
 export interface ManagedProductDescriptor {
   VendorName?: string;
   ManagedRuleSetName?: string;
@@ -2682,6 +2670,7 @@ export const DisassociateWebACLResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DisassociateWebACLResponse>;
 export type Platform = "IOS" | "ANDROID" | (string & {});
 export const Platform = /*@__PURE__*/ S.String;
+
 export interface GenerateMobileSdkReleaseUrlRequest {
   Platform: Platform;
   ReleaseVersion: string;
@@ -2701,6 +2690,7 @@ export const GenerateMobileSdkReleaseUrlRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GenerateMobileSdkReleaseUrlRequest",
 }) as any as S.Schema<GenerateMobileSdkReleaseUrlRequest>;
+export type DownloadUrl = string;
 export interface GenerateMobileSdkReleaseUrlResponse {
   Url?: string;
 }
@@ -2821,8 +2811,10 @@ export type RedactedFields = FieldToMatch[];
 export const RedactedFields = /*@__PURE__*/ S.Array(FieldToMatch);
 export type FilterBehavior = "KEEP" | "DROP" | (string & {});
 export const FilterBehavior = /*@__PURE__*/ S.String;
+
 export type FilterRequirement = "MEETS_ALL" | "MEETS_ANY" | (string & {});
 export const FilterRequirement = /*@__PURE__*/ S.String;
+
 export type ActionValue =
   | "ALLOW"
   | "BLOCK"
@@ -2833,6 +2825,7 @@ export type ActionValue =
   | "EXCLUDED_AS_COUNT"
   | (string & {});
 export const ActionValue = /*@__PURE__*/ S.String;
+
 export interface ActionCondition {
   Action: ActionValue;
 }
@@ -2932,6 +2925,7 @@ export const GetManagedRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetManagedRuleSetRequest",
 }) as any as S.Schema<GetManagedRuleSetRequest>;
+export type TimeWindowDay = number;
 export interface ManagedRuleSetVersion {
   AssociatedRuleGroupArn?: string;
   Capacity?: number;
@@ -3016,6 +3010,7 @@ export const GetMobileSdkReleaseRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetMobileSdkReleaseRequest",
 }) as any as S.Schema<GetMobileSdkReleaseRequest>;
+export type ReleaseNotes = string;
 export interface MobileSdkRelease {
   ReleaseVersion?: string;
   Timestamp?: Date;
@@ -3058,6 +3053,7 @@ export const GetPermissionPolicyRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetPermissionPolicyRequest",
 }) as any as S.Schema<GetPermissionPolicyRequest>;
+export type PolicyString = string;
 export interface GetPermissionPolicyResponse {
   Policy?: string;
 }
@@ -3175,6 +3171,7 @@ export type RankingStatisticType =
   | "TOP_PATHS_BY_REVENUE"
   | (string & {});
 export const RankingStatisticType = /*@__PURE__*/ S.String;
+
 export interface TimeWindow {
   StartTime: Date;
   EndTime: Date;
@@ -3187,6 +3184,7 @@ export const TimeWindow = /*@__PURE__*/ S.suspend(() =>
 ).annotate({ identifier: "TimeWindow" }) as any as S.Schema<TimeWindow>;
 export type Currency = "USDC" | (string & {});
 export const Currency = /*@__PURE__*/ S.String;
+
 export type GroupByType =
   | "NAME"
   | "CATEGORY"
@@ -3195,6 +3193,9 @@ export type GroupByType =
   | "WEBACL"
   | (string & {});
 export const GroupByType = /*@__PURE__*/ S.String;
+
+export type MonetizationFilterName = string;
+export type MonetizationFilterValue = string;
 export type MonetizationFilterValueList = string[];
 export const MonetizationFilterValueList = /*@__PURE__*/ S.Array(S.String);
 export interface MonetizationFilter {
@@ -3208,10 +3209,14 @@ export const MonetizationFilter = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MonetizationFilter>;
 export type MonetizationFilterList = MonetizationFilter[];
 export const MonetizationFilterList = /*@__PURE__*/ S.Array(MonetizationFilter);
+export type NextMarker = string;
+export type PathStatisticsLimit = number;
 export type RankingSortBy = "REVENUE" | "PERCENTAGE" | "NAME" | (string & {});
 export const RankingSortBy = /*@__PURE__*/ S.String;
+
 export type SortOrder = "ASC" | "DESC" | (string & {});
 export const SortOrder = /*@__PURE__*/ S.String;
+
 export interface GetRevenueStatisticsRequest {
   StatisticType: RankingStatisticType;
   TimeWindow: TimeWindow;
@@ -3250,6 +3255,11 @@ export const GetRevenueStatisticsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRevenueStatisticsRequest",
 }) as any as S.Schema<GetRevenueStatisticsRequest>;
+export type FilterString = string;
+export type PercentageValue = number;
+export type MonetizationAmountValue = string;
+export type RequestCount = number;
+export type VerifiedStatus = boolean;
 export interface SourceStatistics {
   SourceName: string;
   Percentage: number;
@@ -3278,6 +3288,7 @@ export const SourceStatistics = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SourceStatistics>;
 export type SourceStatisticsList = SourceStatistics[];
 export const SourceStatisticsList = /*@__PURE__*/ S.Array(SourceStatistics);
+export type PathString = string;
 export interface RevenuePathStatistics {
   Path: string;
   Percentage: number;
@@ -3371,6 +3382,7 @@ export type TimeSeriesStatisticType =
   | "PAYMENT_TRAFFIC"
   | (string & {});
 export const TimeSeriesStatisticType = /*@__PURE__*/ S.String;
+
 export type IntervalType =
   | "MINUTELY"
   | "FIVE_MINUTELY"
@@ -3378,6 +3390,8 @@ export type IntervalType =
   | "DAILY"
   | (string & {});
 export const IntervalType = /*@__PURE__*/ S.String;
+
+export type MaxDataPoints = number;
 export interface GetRevenueStatisticsTimeSeriesRequest {
   StatisticType: TimeSeriesStatisticType;
   TimeWindow: TimeWindow;
@@ -3518,6 +3532,7 @@ export const GetRuleGroupResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetRuleGroupResponse",
 }) as any as S.Schema<GetRuleGroupResponse>;
+export type ListMaxItems = number;
 export interface GetSampledRequestsRequest {
   WebAclArn: string;
   RuleMetricName: string;
@@ -3546,6 +3561,13 @@ export const GetSampledRequestsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSampledRequestsRequest",
 }) as any as S.Schema<GetSampledRequestsRequest>;
+export type IPString = string;
+export type Country = string;
+export type URIString = string;
+export type HTTPMethod = string;
+export type HTTPVersion = string;
+export type HeaderName = string;
+export type HeaderValue = string;
 export interface HTTPHeader {
   Name?: string;
   Value?: string;
@@ -3573,6 +3595,10 @@ export const HTTPRequest = /*@__PURE__*/ S.suspend(() =>
     Headers: S.optional(HTTPHeaders),
   }),
 ).annotate({ identifier: "HTTPRequest" }) as any as S.Schema<HTTPRequest>;
+export type SampleWeight = number;
+export type Action = string;
+export type ResponseCode = number;
+export type SolveTimestamp = number;
 export type FailureReason =
   | "TOKEN_MISSING"
   | "TOKEN_EXPIRED"
@@ -3580,6 +3606,7 @@ export type FailureReason =
   | "TOKEN_DOMAIN_MISMATCH"
   | (string & {});
 export const FailureReason = /*@__PURE__*/ S.String;
+
 export interface CaptchaResponse {
   ResponseCode?: number;
   SolveTimestamp?: number;
@@ -3640,6 +3667,7 @@ export const SampledHTTPRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SampledHTTPRequest>;
 export type SampledHTTPRequests = SampledHTTPRequest[];
 export const SampledHTTPRequests = /*@__PURE__*/ S.Array(SampledHTTPRequest);
+export type PopulationSize = number;
 export interface GetSampledRequestsResponse {
   SampledRequests?: SampledHTTPRequest[];
   PopulationSize?: number;
@@ -3654,6 +3682,8 @@ export const GetSampledRequestsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetSampledRequestsResponse",
 }) as any as S.Schema<GetSampledRequestsResponse>;
+export type UriPathPrefixString = string;
+export type NumberOfTopTrafficBotsPerPath = number;
 export interface GetTopPathStatisticsByTrafficRequest {
   WebAclArn: string;
   Scope: Scope;
@@ -3860,6 +3890,7 @@ export const WebACL = /*@__PURE__*/ S.suspend(() =>
     MonetizationConfig: S.optional(MonetizationConfig),
   }),
 ).annotate({ identifier: "WebACL" }) as any as S.Schema<WebACL>;
+export type OutputUrl = string;
 export interface GetWebACLResponse {
   WebACL?: WebACL;
   LockToken?: string;
@@ -3900,6 +3931,7 @@ export const GetWebACLForResourceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetWebACLForResourceResponse",
 }) as any as S.Schema<GetWebACLForResourceResponse>;
+export type PaginationLimit = number;
 export interface ListAPIKeysRequest {
   Scope: Scope;
   NextMarker?: string;
@@ -3924,6 +3956,7 @@ export const ListAPIKeysRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListAPIKeysRequest",
 }) as any as S.Schema<ListAPIKeysRequest>;
+export type APIKeyVersion = number;
 export interface APIKeySummary {
   TokenDomains?: string[];
   APIKey?: string;
@@ -4314,6 +4347,7 @@ export type ResourceType =
   | "AGENTCORE_GATEWAY"
   | (string & {});
 export const ResourceType = /*@__PURE__*/ S.String;
+
 export interface ListResourcesForWebACLRequest {
   WebACLArn: string;
   ResourceType?: ResourceType;
@@ -4391,6 +4425,8 @@ export type SettlementSortBy =
   | "STATUS"
   | (string & {});
 export const SettlementSortBy = /*@__PURE__*/ S.String;
+
+export type SettlementRecordLimit = number;
 export interface ListSettlementRecordsRequest {
   TimeWindow: TimeWindow;
   Scope: Scope;
@@ -4425,6 +4461,7 @@ export const ListSettlementRecordsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListSettlementRecordsRequest",
 }) as any as S.Schema<ListSettlementRecordsRequest>;
+export type SettlementFilterString = string;
 export type SettlementStatus =
   | "SETTLED"
   | "PENDING"
@@ -4434,6 +4471,8 @@ export type SettlementStatus =
   | "DUPLICATE"
   | (string & {});
 export const SettlementStatus = /*@__PURE__*/ S.String;
+
+export type SettlementIdString = string;
 export interface SettlementRecord {
   Timestamp: Date;
   PayerAddress?: string;
@@ -4961,98 +5000,106 @@ export const UpdateWebACLResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdateWebACLResponse",
 }) as any as S.Schema<UpdateWebACLResponse>;
+export type ErrorMessage = string;
+export type PricingPlanFeatureName = string;
+export type RequiredPricingPlanName = string;
+export interface DisallowedFeature {
+  Feature?: string;
+  RequiredPricingPlan?: string;
+}
+export const DisallowedFeature = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Feature: S.optional(S.String),
+    RequiredPricingPlan: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DisallowedFeature",
+}) as any as S.Schema<DisallowedFeature>;
+export type DisallowedFeatures = DisallowedFeature[];
+export const DisallowedFeatures = /*@__PURE__*/ S.Array(DisallowedFeature);
+export type ParameterExceptionField =
+  | "WEB_ACL"
+  | "RULE_GROUP"
+  | "REGEX_PATTERN_SET"
+  | "IP_SET"
+  | "MANAGED_RULE_SET"
+  | "RULE"
+  | "EXCLUDED_RULE"
+  | "STATEMENT"
+  | "BYTE_MATCH_STATEMENT"
+  | "SQLI_MATCH_STATEMENT"
+  | "XSS_MATCH_STATEMENT"
+  | "SIZE_CONSTRAINT_STATEMENT"
+  | "GEO_MATCH_STATEMENT"
+  | "RATE_BASED_STATEMENT"
+  | "RULE_GROUP_REFERENCE_STATEMENT"
+  | "REGEX_PATTERN_REFERENCE_STATEMENT"
+  | "IP_SET_REFERENCE_STATEMENT"
+  | "MANAGED_RULE_SET_STATEMENT"
+  | "LABEL_MATCH_STATEMENT"
+  | "AND_STATEMENT"
+  | "OR_STATEMENT"
+  | "NOT_STATEMENT"
+  | "IP_ADDRESS"
+  | "IP_ADDRESS_VERSION"
+  | "FIELD_TO_MATCH"
+  | "TEXT_TRANSFORMATION"
+  | "SINGLE_QUERY_ARGUMENT"
+  | "SINGLE_HEADER"
+  | "DEFAULT_ACTION"
+  | "RULE_ACTION"
+  | "ENTITY_LIMIT"
+  | "OVERRIDE_ACTION"
+  | "SCOPE_VALUE"
+  | "RESOURCE_ARN"
+  | "RESOURCE_TYPE"
+  | "TAGS"
+  | "TAG_KEYS"
+  | "METRIC_NAME"
+  | "FIREWALL_MANAGER_STATEMENT"
+  | "FALLBACK_BEHAVIOR"
+  | "POSITION"
+  | "FORWARDED_IP_CONFIG"
+  | "IP_SET_FORWARDED_IP_CONFIG"
+  | "HEADER_NAME"
+  | "CUSTOM_REQUEST_HANDLING"
+  | "RESPONSE_CONTENT_TYPE"
+  | "CUSTOM_RESPONSE"
+  | "CUSTOM_RESPONSE_BODY"
+  | "JSON_MATCH_PATTERN"
+  | "JSON_MATCH_SCOPE"
+  | "BODY_PARSING_FALLBACK_BEHAVIOR"
+  | "LOGGING_FILTER"
+  | "FILTER_CONDITION"
+  | "EXPIRE_TIMESTAMP"
+  | "CHANGE_PROPAGATION_STATUS"
+  | "ASSOCIABLE_RESOURCE"
+  | "LOG_DESTINATION"
+  | "MANAGED_RULE_GROUP_CONFIG"
+  | "PAYLOAD_TYPE"
+  | "HEADER_MATCH_PATTERN"
+  | "COOKIE_MATCH_PATTERN"
+  | "MAP_MATCH_SCOPE"
+  | "OVERSIZE_HANDLING"
+  | "CHALLENGE_CONFIG"
+  | "TOKEN_DOMAIN"
+  | "ATP_RULE_SET_RESPONSE_INSPECTION"
+  | "ASSOCIATED_RESOURCE_TYPE"
+  | "SCOPE_DOWN"
+  | "CUSTOM_KEYS"
+  | "ACP_RULE_SET_RESPONSE_INSPECTION"
+  | "DATA_PROTECTION_CONFIG"
+  | "LOW_REPUTATION_MODE"
+  | "MONETIZATION_CONFIG"
+  | "WALLET_ADDRESS"
+  | "PRICE_AMOUNT"
+  | "PAYMENT_NETWORK"
+  | (string & {});
+export const ParameterExceptionField = /*@__PURE__*/ S.String;
 
-//# Errors
-export class WAFFeatureNotIncludedInPricingPlanException extends S.TaggedErrorClass<WAFFeatureNotIncludedInPricingPlanException>()(
-  "WAFFeatureNotIncludedInPricingPlanException",
-  {
-    Message: S.optional(S.String),
-    DisallowedFeatures: S.optional(DisallowedFeatures),
-  },
-) {}
-export class WAFInternalErrorException extends S.TaggedErrorClass<WAFInternalErrorException>()(
-  "WAFInternalErrorException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class WAFInvalidOperationException extends S.TaggedErrorClass<WAFInvalidOperationException>()(
-  "WAFInvalidOperationException",
-  { Message: S.optional(S.String) },
-) {}
-export class WAFInvalidParameterException extends S.TaggedErrorClass<WAFInvalidParameterException>()(
-  "WAFInvalidParameterException",
-  {
-    message: S.optional(S.String),
-    Field: S.optional(ParameterExceptionField),
-    Parameter: S.optional(S.String),
-    Reason: S.optional(S.String),
-  },
-) {}
-export class WAFLimitsExceededException extends S.TaggedErrorClass<WAFLimitsExceededException>()(
-  "WAFLimitsExceededException",
-  { Message: S.optional(S.String), SourceType: S.optional(S.String) },
-) {}
-export class WAFNonexistentItemException extends S.TaggedErrorClass<WAFNonexistentItemException>()(
-  "WAFNonexistentItemException",
-  { Message: S.optional(S.String) },
-) {}
-export class WAFUnavailableEntityException extends S.TaggedErrorClass<WAFUnavailableEntityException>()(
-  "WAFUnavailableEntityException",
-  { Message: S.optional(S.String) },
-) {}
-export class WAFExpiredManagedRuleGroupVersionException extends S.TaggedErrorClass<WAFExpiredManagedRuleGroupVersionException>()(
-  "WAFExpiredManagedRuleGroupVersionException",
-  { Message: S.optional(S.String) },
-) {}
-export class WAFInvalidResourceException extends S.TaggedErrorClass<WAFInvalidResourceException>()(
-  "WAFInvalidResourceException",
-  { Message: S.optional(S.String) },
-) {}
-export class WAFSubscriptionNotFoundException extends S.TaggedErrorClass<WAFSubscriptionNotFoundException>()(
-  "WAFSubscriptionNotFoundException",
-  { Message: S.optional(S.String) },
-) {}
-export class WAFDuplicateItemException extends S.TaggedErrorClass<WAFDuplicateItemException>()(
-  "WAFDuplicateItemException",
-  { Message: S.optional(S.String) },
-) {}
-export class WAFOptimisticLockException extends S.TaggedErrorClass<WAFOptimisticLockException>()(
-  "WAFOptimisticLockException",
-  { Message: S.optional(S.String) },
-) {}
-export class WAFTagOperationException extends S.TaggedErrorClass<WAFTagOperationException>()(
-  "WAFTagOperationException",
-  { Message: S.optional(S.String) },
-) {}
-export class WAFTagOperationInternalErrorException extends S.TaggedErrorClass<WAFTagOperationInternalErrorException>()(
-  "WAFTagOperationInternalErrorException",
-  { Message: S.optional(S.String) },
-).pipe(C.withServerError) {}
-export class WAFConfigurationWarningException extends S.TaggedErrorClass<WAFConfigurationWarningException>()(
-  "WAFConfigurationWarningException",
-  { Message: S.optional(S.String) },
-) {}
-export class WAFAssociatedItemException extends S.TaggedErrorClass<WAFAssociatedItemException>()(
-  "WAFAssociatedItemException",
-  { Message: S.optional(S.String) },
-) {}
-export class WAFUnsupportedAggregateKeyTypeException extends S.TaggedErrorClass<WAFUnsupportedAggregateKeyTypeException>()(
-  "WAFUnsupportedAggregateKeyTypeException",
-  { Message: S.optional(S.String) },
-) {}
-export class WAFLogDestinationPermissionIssueException extends S.TaggedErrorClass<WAFLogDestinationPermissionIssueException>()(
-  "WAFLogDestinationPermissionIssueException",
-  { Message: S.optional(S.String) },
-) {}
-export class WAFServiceLinkedRoleErrorException extends S.TaggedErrorClass<WAFServiceLinkedRoleErrorException>()(
-  "WAFServiceLinkedRoleErrorException",
-  { message: S.optional(S.String) },
-) {}
-export class WAFInvalidPermissionPolicyException extends S.TaggedErrorClass<WAFInvalidPermissionPolicyException>()(
-  "WAFInvalidPermissionPolicyException",
-  { Message: S.optional(S.String) },
-) {}
-
-//# Operations
+export type ParameterExceptionParameter = string;
+export type ErrorReason = string;
+export type SourceType = string;
 export type AssociateWebACLError =
   | WAFFeatureNotIncludedInPricingPlanException
   | WAFInternalErrorException
@@ -5107,6 +5154,7 @@ export const associateWebACL: API.OperationMethod<
   retry: Retry,
   operationName: "AssociateWebACL",
 }));
+
 export type CheckCapacityError =
   | WAFExpiredManagedRuleGroupVersionException
   | WAFInternalErrorException
@@ -5155,6 +5203,7 @@ export const checkCapacity: API.OperationMethod<
   retry: Retry,
   operationName: "CheckCapacity",
 }));
+
 export type CreateAPIKeyError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -5189,6 +5238,7 @@ export const createAPIKey: API.OperationMethod<
   retry: Retry,
   operationName: "CreateAPIKey",
 }));
+
 export type CreateIPSetError =
   | WAFDuplicateItemException
   | WAFInternalErrorException
@@ -5227,6 +5277,7 @@ export const createIPSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateIPSet",
 }));
+
 export type CreateRegexPatternSetError =
   | WAFDuplicateItemException
   | WAFInternalErrorException
@@ -5263,6 +5314,7 @@ export const createRegexPatternSet: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRegexPatternSet",
 }));
+
 export type CreateRuleGroupError =
   | WAFDuplicateItemException
   | WAFInternalErrorException
@@ -5306,6 +5358,7 @@ export const createRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "CreateRuleGroup",
 }));
+
 export type CreateWebACLError =
   | WAFConfigurationWarningException
   | WAFDuplicateItemException
@@ -5355,6 +5408,7 @@ export const createWebACL: API.OperationMethod<
   retry: Retry,
   operationName: "CreateWebACL",
 }));
+
 export type DeleteAPIKeyError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -5386,6 +5440,7 @@ export const deleteAPIKey: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteAPIKey",
 }));
+
 export type DeleteFirewallManagerRuleGroupsError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -5417,6 +5472,7 @@ export const deleteFirewallManagerRuleGroups: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteFirewallManagerRuleGroups",
 }));
+
 export type DeleteIPSetError =
   | WAFAssociatedItemException
   | WAFInternalErrorException
@@ -5452,6 +5508,7 @@ export const deleteIPSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteIPSet",
 }));
+
 export type DeleteLoggingConfigurationError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -5481,6 +5538,7 @@ export const deleteLoggingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteLoggingConfiguration",
 }));
+
 export type DeletePermissionPolicyError =
   | WAFInternalErrorException
   | WAFInvalidParameterException
@@ -5508,6 +5566,7 @@ export const deletePermissionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "DeletePermissionPolicy",
 }));
+
 export type DeleteRegexPatternSetError =
   | WAFAssociatedItemException
   | WAFInternalErrorException
@@ -5543,6 +5602,7 @@ export const deleteRegexPatternSet: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRegexPatternSet",
 }));
+
 export type DeleteRuleGroupError =
   | WAFAssociatedItemException
   | WAFInternalErrorException
@@ -5578,6 +5638,7 @@ export const deleteRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteRuleGroup",
 }));
+
 export type DeleteWebACLError =
   | WAFAssociatedItemException
   | WAFInternalErrorException
@@ -5634,6 +5695,7 @@ export const deleteWebACL: API.OperationMethod<
   retry: Retry,
   operationName: "DeleteWebACL",
 }));
+
 export type DescribeAllManagedProductsError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -5659,6 +5721,7 @@ export const describeAllManagedProducts: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeAllManagedProducts",
 }));
+
 export type DescribeManagedProductsByVendorError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -5684,6 +5747,7 @@ export const describeManagedProductsByVendor: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeManagedProductsByVendor",
 }));
+
 export type DescribeManagedRuleGroupError =
   | WAFExpiredManagedRuleGroupVersionException
   | WAFInternalErrorException
@@ -5715,6 +5779,7 @@ export const describeManagedRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "DescribeManagedRuleGroup",
 }));
+
 export type DisassociateWebACLError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -5752,6 +5817,7 @@ export const disassociateWebACL: API.OperationMethod<
   retry: Retry,
   operationName: "DisassociateWebACL",
 }));
+
 export type GenerateMobileSdkReleaseUrlError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -5782,6 +5848,7 @@ export const generateMobileSdkReleaseUrl: API.OperationMethod<
   retry: Retry,
   operationName: "GenerateMobileSdkReleaseUrl",
 }));
+
 export type GetDecryptedAPIKeyError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -5815,6 +5882,7 @@ export const getDecryptedAPIKey: API.OperationMethod<
   retry: Retry,
   operationName: "GetDecryptedAPIKey",
 }));
+
 export type GetIPSetError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -5842,6 +5910,7 @@ export const getIPSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetIPSet",
 }));
+
 export type GetLoggingConfigurationError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -5869,6 +5938,7 @@ export const getLoggingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "GetLoggingConfiguration",
 }));
+
 export type GetManagedRuleSetError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -5900,6 +5970,7 @@ export const getManagedRuleSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetManagedRuleSet",
 }));
+
 export type GetMobileSdkReleaseError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -5931,6 +6002,7 @@ export const getMobileSdkRelease: API.OperationMethod<
   retry: Retry,
   operationName: "GetMobileSdkRelease",
 }));
+
 export type GetPermissionPolicyError =
   | WAFInternalErrorException
   | WAFInvalidParameterException
@@ -5958,6 +6030,7 @@ export const getPermissionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "GetPermissionPolicy",
 }));
+
 export type GetRateBasedStatementManagedKeysError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6006,6 +6079,7 @@ export const getRateBasedStatementManagedKeys: API.OperationMethod<
   retry: Retry,
   operationName: "GetRateBasedStatementManagedKeys",
 }));
+
 export type GetRegexPatternSetError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6033,6 +6107,7 @@ export const getRegexPatternSet: API.OperationMethod<
   retry: Retry,
   operationName: "GetRegexPatternSet",
 }));
+
 export type GetRevenueStatisticsError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6060,6 +6135,7 @@ export const getRevenueStatistics: API.OperationMethod<
   retry: Retry,
   operationName: "GetRevenueStatistics",
 }));
+
 export type GetRevenueStatisticsSummaryError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6087,6 +6163,7 @@ export const getRevenueStatisticsSummary: API.OperationMethod<
   retry: Retry,
   operationName: "GetRevenueStatisticsSummary",
 }));
+
 export type GetRevenueStatisticsTimeSeriesError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6114,6 +6191,7 @@ export const getRevenueStatisticsTimeSeries: API.OperationMethod<
   retry: Retry,
   operationName: "GetRevenueStatisticsTimeSeries",
 }));
+
 export type GetRuleGroupError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6141,6 +6219,7 @@ export const getRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "GetRuleGroup",
 }));
+
 export type GetSampledRequestsError =
   | WAFInternalErrorException
   | WAFInvalidParameterException
@@ -6175,6 +6254,7 @@ export const getSampledRequests: API.OperationMethod<
   retry: Retry,
   operationName: "GetSampledRequests",
 }));
+
 export type GetTopPathStatisticsByTrafficError =
   | WAFFeatureNotIncludedInPricingPlanException
   | WAFInternalErrorException
@@ -6206,6 +6286,7 @@ export const getTopPathStatisticsByTraffic: API.OperationMethod<
   retry: Retry,
   operationName: "GetTopPathStatisticsByTraffic",
 }));
+
 export type GetWebACLError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6233,6 +6314,7 @@ export const getWebACL: API.OperationMethod<
   retry: Retry,
   operationName: "GetWebACL",
 }));
+
 export type GetWebACLForResourceError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6274,6 +6356,7 @@ export const getWebACLForResource: API.OperationMethod<
   retry: Retry,
   operationName: "GetWebACLForResource",
 }));
+
 export type ListAPIKeysError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6305,6 +6388,7 @@ export const listAPIKeys: API.OperationMethod<
   retry: Retry,
   operationName: "ListAPIKeys",
 }));
+
 export type ListAvailableManagedRuleGroupsError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6332,6 +6416,7 @@ export const listAvailableManagedRuleGroups: API.OperationMethod<
   retry: Retry,
   operationName: "ListAvailableManagedRuleGroups",
 }));
+
 export type ListAvailableManagedRuleGroupVersionsError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6359,6 +6444,7 @@ export const listAvailableManagedRuleGroupVersions: API.OperationMethod<
   retry: Retry,
   operationName: "ListAvailableManagedRuleGroupVersions",
 }));
+
 export type ListIPSetsError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6385,6 +6471,7 @@ export const listIPSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListIPSets",
 }));
+
 export type ListLoggingConfigurationsError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6410,6 +6497,7 @@ export const listLoggingConfigurations: API.OperationMethod<
   retry: Retry,
   operationName: "ListLoggingConfigurations",
 }));
+
 export type ListManagedRuleSetsError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6439,6 +6527,7 @@ export const listManagedRuleSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListManagedRuleSets",
 }));
+
 export type ListMobileSdkReleasesError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6468,6 +6557,7 @@ export const listMobileSdkReleases: API.OperationMethod<
   retry: Retry,
   operationName: "ListMobileSdkReleases",
 }));
+
 export type ListRegexPatternSetsError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6494,6 +6584,7 @@ export const listRegexPatternSets: API.OperationMethod<
   retry: Retry,
   operationName: "ListRegexPatternSets",
 }));
+
 export type ListResourcesForWebACLError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6531,6 +6622,7 @@ export const listResourcesForWebACL: API.OperationMethod<
   retry: Retry,
   operationName: "ListResourcesForWebACL",
 }));
+
 export type ListRuleGroupsError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6557,6 +6649,7 @@ export const listRuleGroups: API.OperationMethod<
   retry: Retry,
   operationName: "ListRuleGroups",
 }));
+
 export type ListSettlementRecordsError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6584,6 +6677,7 @@ export const listSettlementRecords: API.OperationMethod<
   retry: Retry,
   operationName: "ListSettlementRecords",
 }));
+
 export type ListTagsForResourceError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6623,6 +6717,7 @@ export const listTagsForResource: API.OperationMethod<
   retry: Retry,
   operationName: "ListTagsForResource",
 }));
+
 export type ListWebACLsError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6649,6 +6744,7 @@ export const listWebACLs: API.OperationMethod<
   retry: Retry,
   operationName: "ListWebACLs",
 }));
+
 export type PutLoggingConfigurationError =
   | WAFFeatureNotIncludedInPricingPlanException
   | WAFInternalErrorException
@@ -6724,6 +6820,7 @@ export const putLoggingConfiguration: API.OperationMethod<
   retry: Retry,
   operationName: "PutLoggingConfiguration",
 }));
+
 export type PutManagedRuleSetVersionsError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6766,6 +6863,7 @@ export const putManagedRuleSetVersions: API.OperationMethod<
   retry: Retry,
   operationName: "PutManagedRuleSetVersions",
 }));
+
 export type PutPermissionPolicyError =
   | WAFInternalErrorException
   | WAFInvalidParameterException
@@ -6809,6 +6907,7 @@ export const putPermissionPolicy: API.OperationMethod<
   retry: Retry,
   operationName: "PutPermissionPolicy",
 }));
+
 export type TagResourceError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6850,6 +6949,7 @@ export const tagResource: API.OperationMethod<
   retry: Retry,
   operationName: "TagResource",
 }));
+
 export type UntagResourceError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6884,6 +6984,7 @@ export const untagResource: API.OperationMethod<
   retry: Retry,
   operationName: "UntagResource",
 }));
+
 export type UpdateIPSetError =
   | WAFDuplicateItemException
   | WAFInternalErrorException
@@ -6941,6 +7042,7 @@ export const updateIPSet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateIPSet",
 }));
+
 export type UpdateManagedRuleSetVersionExpiryDateError =
   | WAFInternalErrorException
   | WAFInvalidOperationException
@@ -6976,6 +7078,7 @@ export const updateManagedRuleSetVersionExpiryDate: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateManagedRuleSetVersionExpiryDate",
 }));
+
 export type UpdateRegexPatternSetError =
   | WAFDuplicateItemException
   | WAFInternalErrorException
@@ -7033,6 +7136,7 @@ export const updateRegexPatternSet: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRegexPatternSet",
 }));
+
 export type UpdateRuleGroupError =
   | WAFConfigurationWarningException
   | WAFDuplicateItemException
@@ -7098,6 +7202,7 @@ export const updateRuleGroup: API.OperationMethod<
   retry: Retry,
   operationName: "UpdateRuleGroup",
 }));
+
 export type UpdateWebACLError =
   | WAFConfigurationWarningException
   | WAFDuplicateItemException
