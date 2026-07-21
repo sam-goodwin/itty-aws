@@ -665,7 +665,7 @@ const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
   for (const b of parsed.bodyParams)
     inputFields.push({ ...b, binding: "body" });
 
-  let inputTarget = PRELUDE.Unit;
+  let inputTarget: string = PRELUDE.Unit;
   if (inputFields.length) {
     const members = buildMembers(bag, inputFields, `${opName}Request`, "input");
     // Docs convention for raw (non-object) request bodies: a single body
@@ -690,7 +690,7 @@ const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
   }
 
   // ---- Output: the UNWRAPPED `result` payload ----
-  let outputTarget = PRELUDE.Unit;
+  let outputTarget: string = PRELUDE.Unit;
   const resultNode = parsed.returns.find((n) => n.name === "result");
   if (resultNode) {
     const { core } = stripOptional(resultNode.typeStr);

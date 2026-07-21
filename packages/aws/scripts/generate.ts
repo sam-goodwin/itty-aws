@@ -3511,10 +3511,8 @@ const generateClient = Effect.fn(function* (
           }),
         );
       }
-      const members = shapeEntry[1].members as Record<
-        string,
-        { target: string }
-      >;
+      const members = (shapeEntry[1] as { members?: unknown })
+        .members as Record<string, { target: string }>;
       for (const [memberName, target] of Object.entries(override.add)) {
         members[memberName] ??= { target };
       }

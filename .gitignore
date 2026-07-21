@@ -17,3 +17,4 @@ lib/
 .tmp
 *.tgz
 pnpm-lock.yaml
+.scripts-types/

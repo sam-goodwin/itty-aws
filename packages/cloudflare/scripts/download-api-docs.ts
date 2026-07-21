@@ -108,10 +108,7 @@ interface PageEntry {
 // Download
 // ============================================================================
 
-const downloadPage = (
-  entry: PageEntry,
-  force: boolean,
-): Effect.Effect<boolean, never, FileSystem.FileSystem | Path.Path> =>
+const downloadPage = (entry: PageEntry, force: boolean) =>
   Effect.gen(function* () {
     const fs = yield* FileSystem.FileSystem;
     const path = yield* Path.Path;

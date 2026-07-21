@@ -333,8 +333,10 @@ const command = Command.make(
         : [];
       for (const m of manual) {
         if (generated.some((g) => g.file === m.file)) {
-          return yield* Effect.dieMessage(
-            `manual-specs/${m.file} shadows a generated model — rename or delete it`,
+          return yield* Effect.die(
+            new Error(
+              `manual-specs/${m.file} shadows a generated model — rename or delete it`,
+            ),
           );
         }
       }
@@ -442,8 +444,10 @@ const command = Command.make(
 
       if (badPatches.length) {
         for (const b of badPatches) yield* Console.error(`❌ bad patch: ${b}`);
-        return yield* Effect.dieMessage(
-          `${badPatches.length} malformed patch operation(s) — fix or remove them`,
+        return yield* Effect.die(
+          new Error(
+            `${badPatches.length} malformed patch operation(s) — fix or remove them`,
+          ),
         );
       }
 
