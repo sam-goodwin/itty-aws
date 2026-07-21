@@ -35,7 +35,7 @@ export interface ListBranchChangeRequestsOutput {
   prev_page_url: string | null;
   data: ReadonlyArray<{
     id: string;
-    restart: ReadonlyArray<number>;
+    restart?: ReadonlyArray<number>;
     state: "queued" | "pending" | "resizing" | "canceled" | "completed";
     started_at: string | null;
     completed_at?: string | null;
@@ -79,7 +79,7 @@ export const ListBranchChangeRequestsOutput =
     data: Schema.Array(
       Schema.Struct({
         id: Schema.String,
-        restart: Schema.Array(Schema.Number),
+        restart: Schema.optional(Schema.Array(Schema.Number)),
         state: Schema.Literals([
           "queued",
           "pending",

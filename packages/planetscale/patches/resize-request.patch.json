@@ -1,12 +1,11 @@
 {
-  "description": "Fix PostgresClusterResizeRequest and PaginatedPostgresClusterResizeRequest schema: completed_at can be null",
+  "description": "Fix PostgresClusterResizeRequest and PaginatedPostgresClusterResizeRequest schema: completed_at can be null, and restart is no longer returned (removed from PlanetScale's API and current spec)",
   "patches": [
     {
       "op": "replace",
       "path": "/definitions/PostgresClusterResizeRequest/required",
       "value": [
         "id",
-        "restart",
         "state",
         "started_at",
         "created_at",
@@ -48,7 +47,6 @@
       "path": "/definitions/PaginatedPostgresClusterResizeRequest/properties/data/items/required",
       "value": [
         "id",
-        "restart",
         "state",
         "started_at",
         "created_at",
