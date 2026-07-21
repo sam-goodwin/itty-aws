@@ -13,7 +13,6 @@
  */
 
 import { camel } from "@distilled.cloud/core/codegen/naming";
-import { PURE } from "@distilled.cloud/core/codegen/emit";
 import { type SdkSpec } from "@distilled.cloud/core/codegen/generator";
 import { runGeneratorCli } from "@distilled.cloud/core/codegen/cli";
 
@@ -86,14 +85,9 @@ const makeCfSpec = (
     },
   },
 
-  // Discriminated union of object cases. The TS type is the case union; the
-  // schema is opaque (S.Unknown) carrying each case's camelCase key set —
-  // Cloudflare returns every case's keys (null for inactive ones), so the
-  // protocol picks the active case by key-set.
-  union: ({ name, caseTargets, caseKeys, tsRef }) => [
-    `export type ${name} = ${caseTargets.map(tsRef).join(" | ") || "unknown"};`,
-    `export const ${name} = ${PURE}S.Unknown.pipe(T.UnionCases(${JSON.stringify(caseKeys)}));\n`,
-  ],
+  // Cloudflare returns every union case's keys (null for the inactive
+  // ones), so the protocol discriminates by key-set at decode time.
+  unionStyle: "opaque-cases",
 
   operationDecl: {
     contextType: "CloudflareOpContext",

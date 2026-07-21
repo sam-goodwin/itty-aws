@@ -228,8 +228,15 @@ export interface SdkSpec {
     readonly members: (d: any) => EmittedMember[];
   }) => string[] | undefined;
 
-  /** Union emission: TS alias union + opaque/structural schema const. */
-  readonly union: (ctx: {
+  /**
+   * Union emission style. `"opaque-cases"`: the TS type is the case union
+   * and the schema is `S.Unknown.pipe(T.UnionCases([...case key sets]))` —
+   * the protocol discriminates by key-set at decode time (for APIs that
+   * return every case's keys with nulls, like Cloudflare's).
+   */
+  readonly unionStyle?: "opaque-cases";
+  /** Full override of union emission. */
+  readonly union?: (ctx: {
     readonly name: string;
     readonly caseTargets: readonly string[];
     readonly caseKeys: readonly (readonly string[])[];
@@ -669,7 +676,18 @@ export const generateService = (
           ? memberInfos(cd).map((mi) => mi.tsName)
           : [];
       });
-      out.push(...spec.union({ name, caseTargets, caseKeys, tsRef }));
+      if (spec.union) {
+        out.push(...spec.union({ name, caseTargets, caseKeys, tsRef }));
+      } else if (spec.unionStyle === "opaque-cases") {
+        out.push(
+          `export type ${name} = ${caseTargets.map(tsRef).join(" | ") || "unknown"};`,
+          `export const ${name} = ${pure}S.Unknown.pipe(T.UnionCases(${JSON.stringify(caseKeys)}));\n`,
+        );
+      } else {
+        throw new Error(
+          `no union emission configured for shape ${id} — set unionStyle or union`,
+        );
+      }
     } else if (d.type === "enum") {
       const values = Object.values(d.members ?? {})
         .map((m: any) => m.traits?.["smithy.api#enumValue"])
