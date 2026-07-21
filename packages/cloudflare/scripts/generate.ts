@@ -67,11 +67,6 @@ const makeCfSpec = (
       }
     : {}),
 
-  barePayload: {
-    trait: ENVELOPE_PAYLOAD_TRAIT,
-    rootPipe: "T.EnvelopePayloadRoot()",
-  },
-
   // One pagination profile: the v4 envelope. Its protocol keeps the
   // envelope's `result_info` on the response (delivered as the injected
   // `resultInfo` member) so `.pages()`/`.items()` can advance.
