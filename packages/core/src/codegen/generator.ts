@@ -198,8 +198,27 @@ export interface SdkSpec {
     ) => ((cls: string) => string) | undefined;
   };
 
-  /** Operation const emission — the provider owns protocol/retry/type names. */
-  readonly operation: (ctx: OperationEmit) => string;
+  /**
+   * Declarative operation emission — the names the op consts are built
+   * from. `operation` overrides this entirely when a provider needs full
+   * control of the emitted shape.
+   */
+  readonly operationDecl?: {
+    /** Requirements type in the OperationMethod annotation. */
+    readonly contextType: string;
+    /** Base of the per-op error union alias (e.g. `CloudflareOpError`). */
+    readonly commonErrorType: string;
+    /** Error classes appended to every op's `errors: [...]` list. */
+    readonly commonErrorClasses: readonly string[];
+    readonly protocol: string;
+    readonly paginatedProtocol?: string;
+    /** Optional pagination strategy passed as makePaginated's 2nd arg. */
+    readonly paginateStrategy?: string;
+    /** The retry tag expression (e.g. `Retry.Retry`). */
+    readonly retry: string;
+  };
+  /** Full override of operation const emission. */
+  readonly operation?: (ctx: OperationEmit) => string;
 
   /** Module header (imports, shared consts). */
   readonly header: (ctx: { readonly hasPaginated: boolean }) => string;
@@ -526,14 +545,56 @@ export const generateService = (
     }
   });
 
-  // 6. Operations.
+  // 6. Operations — declarative emission from the names in operationDecl,
+  //    unless the provider overrides the whole shape.
+  const emitOperation =
+    spec.operation ??
+    ((ctx: OperationEmit): string => {
+      const decl = spec.operationDecl;
+      if (!decl) {
+        throw new Error("SdkSpec needs either operationDecl or operation");
+      }
+      const errList = [...ctx.errorNames, ...decl.commonErrorClasses];
+      const paginated = ctx.pagination !== undefined;
+      const typeAnnotation =
+        `API.${paginated ? "PaginatedOperationMethod" : "OperationMethod"}<\n` +
+        `  ${ctx.inputName},\n` +
+        `  ${ctx.outputName},\n` +
+        `  ${ctx.opName}Error,\n` +
+        `  ${decl.contextType}\n` +
+        `>`;
+      const config =
+        `{\n` +
+        `  input: ${ctx.inputName},\n` +
+        `  output: ${ctx.outputName},\n` +
+        `  errors: [${errList.join(", ")}],\n` +
+        `  protocol: ${paginated ? (decl.paginatedProtocol ?? decl.protocol) : decl.protocol},\n` +
+        `  retry: ${decl.retry},\n` +
+        (paginated
+          ? `  pagination: ${JSON.stringify(ctx.pagination)} as const,\n`
+          : "") +
+        `}`;
+      return [
+        errorUnionAlias(ctx.opName, ctx.errorNames, decl.commonErrorType),
+        ...(ctx.doc ? [`/** ${ctx.doc} */`] : []),
+        operationConst({
+          exportName: ctx.exportName,
+          typeAnnotation,
+          factory: paginated ? "API.makePaginated" : "API.make",
+          pure,
+          extraArg: paginated ? decl.paginateStrategy : undefined,
+          config,
+        }),
+      ].join("\n");
+    });
+
   for (const op of selected) {
     const opName = local(op.id);
     const errNames = ((op.def.errors ?? []) as Array<{ target: string }>)
       .map((e) => local(e.target))
       .filter((n) => errorNames.has(n));
     out.push(
-      spec.operation({
+      emitOperation({
         op,
         opName,
         exportName: opExportName(opName),

@@ -16,7 +16,7 @@
     },
     "packages/aws": {
       "name": "@distilled.cloud/aws",
-      "version": "0.28.1",
+      "version": "0.29.1",
       "dependencies": {
         "@aws-crypto/crc32": "catalog:",
         "@aws-crypto/util": "catalog:",
@@ -62,6 +62,7 @@
       "name": "@distilled.cloud/core",
       "version": "0.0.0",
       "devDependencies": {
+        "@effect/platform-bun": "catalog:",
         "@types/bun": "catalog:",
         "@types/node": "catalog:",
         "effect": "catalog:",
