@@ -5,34 +5,18 @@
  * Input:  .generated-specs/<resource>.json  (Smithy 2.0 models, one per resource)
  * Output: src/services/<resource>.ts  +  services/index.ts
  *
- * Each shape gets an explicit TypeScript type plus a schema const, and each
- * operation becomes an explicitly-annotated `API.make(...)` call:
- *
- *   export interface FinetunesCreateRequest { ... }        // hand-emitted type
- *   export const FinetunesCreateRequest = S.suspend(() =>  // lazy construction
- *     S.Struct({ ... }).pipe(T.Http({ ... })),
- *   ).annotate({ identifier: "FinetunesCreateRequest" })
- *     as any as S.Schema<FinetunesCreateRequest>;          // no inference needed
- *
- *   export const FinetunesCreate: API.OperationMethod<
- *     FinetunesCreateRequest, FinetunesCreateResponse,
- *     CloudflareOpError, CloudflareOpContext
- *   > = API.make(() => ({ input, output, errors, protocol }));
- *
- * The generic smithy→code machinery (naming, shape graph, emission idioms,
- * pagination validation) lives in `@distilled.cloud/core/codegen`; this
- * script supplies what is Cloudflare's own: the docs-pipeline scalar
- * prelude, envelope/key-dictionary/union-case traits, the RFC-6902 patch
- * pipeline, and route aliases.
+ * The smithy→SDK compiler is `@distilled.cloud/core/codegen/generator`; this
+ * script supplies Cloudflare's {@link SdkSpec} — the import header, the
+ * envelope / form-data / key-dictionary / nullable trait vocabulary, opaque
+ * union-cases, error matchers, protocol/retry names — plus Cloudflare's own
+ * model pipeline: docs-derived specs, the RFC-6902 patch chain, manual
+ * models, and route aliases.
  *
  * Compile-time performance (ported from distilled PR #360): the emitted
  * interfaces / type aliases and `as any as S.Schema<T>` casts carry the real
  * types, `S` is the `any`-collapsing `@distilled.cloud/core/schema` wrapper so
  * tsc never instantiates the heavy effect/Schema generics, and `S.suspend`
  * defers schema construction to the first call of an operation.
- *
- * The protocol, credentials, errors, and traits are hand-written (see ../src).
- * Only src/services is generated.
  *
  * Usage:
  *   bun scripts/generate.ts
@@ -55,169 +39,60 @@ import {
   camel,
   local,
   lowerFirst,
-  oneLine,
   q,
-  tsKey,
-  upperFirst,
 } from "@distilled.cloud/core/codegen/naming";
-import {
-  orderIndex,
-  reachableFrom,
-  shapeDeps,
-  topoOrder,
-} from "@distilled.cloud/core/codegen/graph";
-import {
-  barrel,
-  enumDecl,
-  errorClass,
-  errorUnionAlias,
-  interfaceDecl,
-  interfaceField,
-  operationConst,
-  suspendConst,
-} from "@distilled.cloud/core/codegen/emit";
+import { barrel } from "@distilled.cloud/core/codegen/emit";
 import {
   JSON_PRELUDE,
-  makeSchemaRef,
-  makeTsRef,
   TS_JSON_PRELUDE,
 } from "@distilled.cloud/core/codegen/prelude";
 import {
-  collectOperations,
-  collectOpErrorIds,
-  ensureNamedIo,
-  modelNamespace,
-} from "@distilled.cloud/core/codegen/operations";
-import {
-  memberBases,
-  smithyWireName,
-} from "@distilled.cloud/core/codegen/members";
-import { validatePaginated } from "@distilled.cloud/core/codegen/pagination";
+  errorUnionAlias,
+  generateService,
+  operationConst,
+  tsKey,
+  upperFirst,
+  type SdkSpec,
+} from "@distilled.cloud/core/codegen/generator";
 
 const ENVELOPE_PAYLOAD_TRAIT = "com.cloudflare.protocols#envelopePayload";
-
-const PURE = "/*@__PURE__*/ ";
-
 const NULLABLE_TRAIT = "com.cloudflare.protocols#nullable";
 const ERROR_MATCHERS_TRAIT = "com.cloudflare.protocols#errorMatchers";
 const FORM_DATA_FILE_TRAIT = "com.cloudflare.protocols#formDataFile";
 const KEY_DICTIONARY_TRAIT = "com.cloudflare.protocols#keyDictionary";
-const PAGINATED_TRAIT = "smithy.api#paginated";
 
-// ============================================================================
-// Per-model code generation
-// ============================================================================
+const PURE = "/*@__PURE__*/ ";
 
-interface Generated {
-  code: string;
-  operations: number;
-}
-
-const generateModel = (
-  model: any,
-  limitRef: { remaining: number },
+/** Cloudflare's provider spec for the shared smithy→SDK compiler. */
+const makeCfSpec = (
   keyDictionary?: Record<string, string>,
   opAliases?: Array<{ alias: string; target: string }>,
-): Generated => {
-  const shapes: Record<string, any> = model.shapes;
+): SdkSpec => ({
+  namespaceFallback: "com.cloudflare.unknown",
+  pure: PURE,
+  prelude: JSON_PRELUDE,
+  tsPrelude: TS_JSON_PRELUDE,
+  memberName: camel,
+  opExportName: lowerFirst,
+  nullableTrait: NULLABLE_TRAIT,
 
-  // 1. Split operations out; synthesize empty Request/Response for Unit I/O so
-  //    every operation has a named input shape to carry the Http() trait.
-  const operations = collectOperations(shapes);
-  const httpFor: Record<string, any> = {}; // input shape id → http trait
-  const ns = modelNamespace(operations, shapes, "com.cloudflare.unknown");
+  memberBinding: (traits) =>
+    "smithy.api#httpLabel" in traits
+      ? "label"
+      : "smithy.api#httpQuery" in traits
+        ? "query"
+        : "smithy.api#httpHeader" in traits
+          ? "header"
+          : ENVELOPE_PAYLOAD_TRAIT in traits
+            ? "payload"
+            : FORM_DATA_FILE_TRAIT in traits
+              ? "file"
+              : "smithy.api#httpPayload" in traits
+                ? "rawBody"
+                : "body",
 
-  const selected: { id: string; def: any }[] = [];
-  for (const op of operations) {
-    if (limitRef.remaining <= 0) break;
-    limitRef.remaining--;
-    selected.push(op);
-
-    const { input, output } = ensureNamedIo(shapes, op, ns);
-    op.def.__input = input;
-    op.def.__output = output;
-
-    const http = op.def.traits?.["smithy.api#http"];
-    if (http) httpFor[input] = http;
-  }
-
-  if (selected.length === 0) return { code: "", operations: 0 };
-
-  // 2. Collect every shape reachable from the selected operations' I/O, then
-  //    order dependencies-first (cycles handled with S.suspend at refs).
-  const roots = selected.flatMap((op) => [op.def.__input, op.def.__output]);
-  const reachable = reachableFrom(shapes, roots, shapeDeps);
-  const order = topoOrder(shapes, reachable, shapeDeps);
-  const indexOf = orderIndex(order);
-
-  // 3. Reference resolvers (shared): prelude scalars via the JSON baseline,
-  //    forward references wrapped in S.suspend.
-  const ref = makeSchemaRef(JSON_PRELUDE, indexOf);
-  const tsRef = makeTsRef(TS_JSON_PRELUDE);
-
-  /**
-   * Per-member emission metadata: the camelCase TS-facing name, the wire name
-   * it maps to, and its binding. The TS interface and the schema struct are
-   * emitted from the same computation so they can never drift.
-   */
-  interface MemberInfo {
-    tsName: string;
-    wire: string;
-    target: string;
-    binding:
-      | "label"
-      | "query"
-      | "header"
-      | "payload"
-      | "file"
-      | "rawBody"
-      | "body";
-    required: boolean;
-    nullable: boolean;
-    doc: string | undefined;
-    keyDictionary: Record<string, string> | undefined;
-  }
-
-  const memberInfos = (d: any): MemberInfo[] =>
-    memberBases(d, camel).map((base) => {
-      const traits = base.traits;
-      const binding: MemberInfo["binding"] =
-        "smithy.api#httpLabel" in traits
-          ? "label"
-          : "smithy.api#httpQuery" in traits
-            ? "query"
-            : "smithy.api#httpHeader" in traits
-              ? "header"
-              : ENVELOPE_PAYLOAD_TRAIT in traits
-                ? "payload"
-                : FORM_DATA_FILE_TRAIT in traits
-                  ? "file"
-                  : "smithy.api#httpPayload" in traits
-                    ? "rawBody"
-                    : "body";
-      return {
-        tsName: base.tsName,
-        wire: smithyWireName(
-          traits,
-          base.name,
-          binding === "label" || binding === "query" || binding === "header"
-            ? binding
-            : "other",
-        ),
-        target: base.target,
-        binding,
-        required: base.required,
-        nullable: NULLABLE_TRAIT in traits,
-        doc: base.doc,
-        keyDictionary: traits[KEY_DICTIONARY_TRAIT],
-      };
-    });
-
-  const emitMember = (info: MemberInfo, selfIdx: number): string => {
-    let expr = ref(info.target, selfIdx);
-    if (info.nullable) expr = `S.NullOr(${expr})`;
+  memberPipes: (info) => {
     const pipes: string[] = [];
-
     switch (info.binding) {
       case "label":
         pipes.push(
@@ -247,303 +122,144 @@ const generateModel = (
         break;
       case "body":
         if (info.wire !== info.tsName) pipes.push(`T.Body(${q(info.wire)})`);
-        if (info.keyDictionary) {
-          pipes.push(`T.KeyDictionary(${JSON.stringify(info.keyDictionary)})`);
+        if (info.traits[KEY_DICTIONARY_TRAIT]) {
+          pipes.push(
+            `T.KeyDictionary(${JSON.stringify(info.traits[KEY_DICTIONARY_TRAIT])})`,
+          );
         }
         break;
     }
+    return pipes;
+  },
 
-    if (pipes.length) expr = `${expr}.pipe(${pipes.join(", ")})`;
-    if (!info.required) expr = `S.optional(${expr})`;
-    return `  ${q(info.tsName)}: ${expr},`;
-  };
+  memberTsType: (info) =>
+    info.binding === "file" ? "(File | Blob)[]" : undefined,
 
-  // Operation input/output shape ids — these roots carry the service key
-  // dictionary annotation when one exists.
-  const opIoShapes = new Set<string>();
-  for (const op of selected) {
-    opIoShapes.add(op.def.__input);
-    opIoShapes.add(op.def.__output);
-  }
+  // Op I/O roots carry the service key dictionary (inside the suspend, so it
+  // survives core's Suspend resolution): the protocol reads it off the root
+  // AST as the fallback wire mapping for opaque content.
+  structPipes: ({ isOpIo, httpTrait }) => [
+    ...(httpTrait ? [`T.Http(${JSON.stringify(httpTrait)})`] : []),
+    ...(keyDictionary && isOpIo ? [`T.KeyDictionary(KEY_DICTIONARY)`] : []),
+  ],
 
-  // 4. Validate pagination traits (added via patches). A paginated op must
-  //    actually carry its page/cursor token on the input and its items member
-  //    on the output — otherwise `.pages()` would loop or yield nothing, so
-  //    the op degrades to a plain operation.
-  const paginatedOutputs = new Set<string>();
-  const paginatedItemsRoot = new Map<string, string>();
-  const syntheticOutputs = new Set(["resultInfo"]);
-  for (const op of selected) {
-    const pg = op.def.traits?.[PAGINATED_TRAIT];
-    if (!pg) continue;
-    const inNames = new Set(
-      memberInfos(shapes[op.def.__input] ?? {}).map((m) => m.tsName),
-    );
-    const outNames = new Set(
-      memberInfos(shapes[op.def.__output] ?? {}).map((m) => m.tsName),
-    );
-    const { ok, itemsRoot } = validatePaginated({
-      trait: pg,
-      inputNames: inNames,
-      outputNames: outNames,
-      itemsFallback: "result",
-      syntheticOutputs,
-    });
-    if (ok) {
-      op.def.__pagination = pg;
-      paginatedOutputs.add(op.def.__output);
-      paginatedItemsRoot.set(op.def.__output, itemsRoot);
-    }
-  }
+  barePayload: {
+    trait: ENVELOPE_PAYLOAD_TRAIT,
+    rootPipe: "T.EnvelopePayloadRoot()",
+  },
 
-  //    Emit typed error classes referenced by the operations' `errors` lists
-  //    (added to the smithy models via patches/<service>/<operation>.json).
-  const out: string[] = [];
-  const errorIds = collectOpErrorIds(selected, shapes);
-  const errorIdSet = new Set(errorIds);
-  const errorNames = new Set(errorIds.map(local));
+  pagination: {
+    itemsFallback: "result",
+    syntheticOutputs: ["resultInfo"],
+    // Paginated responses additionally carry the envelope's `result_info`
+    // (see CloudflarePaginatedProtocol / the shared ResultInfo schema).
+    injectOutputMember: {
+      tsName: "resultInfo",
+      interfaceLines: [
+        `  /** Pagination info from the envelope's \`result_info\`. */`,
+        `  resultInfo?: ResultInfo | null;`,
+      ],
+      structLine: `  "resultInfo": S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),`,
+    },
+  },
 
-  for (const id of errorIds) {
-    const d = shapes[id];
-    const name = local(id);
-    const doc = oneLine(d.traits?.["smithy.api#documentation"]);
-    if (doc) out.push(`/** ${doc} */`);
-    const memberEntries =
-      d.members && Object.keys(d.members).length
-        ? Object.entries(d.members)
-        : Object.entries({
-            code: { target: "smithy.api#Integer" },
-            message: { target: "smithy.api#String" },
-          });
-    const fields = memberEntries.map(
-      ([mn, m]: [string, any]) =>
-        `  ${tsKey(mn)}: ${JSON_PRELUDE[local(m.target)] ?? "S.Unknown"},`,
-    );
-    const matchers = d.traits?.[ERROR_MATCHERS_TRAIT];
-    out.push(
-      errorClass({
-        name,
-        fields,
-        wrap: matchers
-          ? (cls) =>
-              `T.applyErrorMatchers(\n${cls},\n${JSON.stringify(matchers)},\n)`
-          : undefined,
-      }),
-    );
-  }
+  // Discriminated union of object cases. The TS type is the case union; the
+  // schema is opaque (S.Unknown) carrying each case's camelCase key set —
+  // Cloudflare returns every case's keys (null for inactive ones), so the
+  // protocol picks the active case by key-set.
+  union: ({ name, caseTargets, caseKeys, tsRef }) => [
+    `export type ${name} = ${caseTargets.map(tsRef).join(" | ") || "unknown"};`,
+    `export const ${name} = ${PURE}S.Unknown.pipe(T.UnionCases(${JSON.stringify(caseKeys)}));\n`,
+  ],
 
-  //    Then every reachable shape in dependency order. Every shape gets an
-  //    explicit TypeScript type (interface / type alias) next to its schema
-  //    const; the const is cast to `S.Schema<T>` so the compiler never infers
-  //    types out of the schema generics (see the header comment).
-  order.forEach((id, i) => {
-    if (errorIdSet.has(id)) return; // emitted as an error class above
-    const d = shapes[id];
-    const name = local(id);
-    const doc = oneLine(d.traits?.["smithy.api#documentation"]);
-    if (doc) out.push(`/** ${doc} */`);
+  errors: {
+    field: (name, target) =>
+      `  ${tsKey(name)}: ${JSON_PRELUDE[local(target)] ?? "S.Unknown"},`,
+    defaultFields: () => [
+      `  ${tsKey("code")}: ${JSON_PRELUDE.Integer},`,
+      `  ${tsKey("message")}: ${JSON_PRELUDE.String},`,
+    ],
+    wrap: (traits) => {
+      const matchers = traits[ERROR_MATCHERS_TRAIT];
+      return matchers
+        ? (cls) =>
+            `T.applyErrorMatchers(\n${cls},\n${JSON.stringify(matchers)},\n)`
+        : undefined;
+    },
+  },
 
-    if (d.type === "structure") {
-      // Bare-payload response: a single member tagged EnvelopePayload means
-      // `result` is an array/scalar and the whole response IS that payload
-      // (e.g. worker script search → a bare array). Emit the member's type
-      // directly + a root marker the protocol honors, matching distilled.
-      const memberEntriesAll = Object.entries(d.members ?? {});
-      if (
-        !paginatedOutputs.has(id) &&
-        memberEntriesAll.length === 1 &&
-        ENVELOPE_PAYLOAD_TRAIT in
-          ((memberEntriesAll[0]![1] as any).traits ?? {})
-      ) {
-        const [, m] = memberEntriesAll[0]! as [string, any];
-        out.push(`export type ${name} = ${tsRef(m.target)};`);
-        out.push(
-          suspendConst({
-            name,
-            pure: PURE,
-            multiline: true,
-            annotateIdentifier: true,
-            expr: `${ref(m.target, i)}.pipe(T.EnvelopePayloadRoot())`,
-          }),
-        );
-        return;
-      }
-
-      // Paginated list responses always deliver their items member (the
-      // protocol maps the envelope's `result`), so type it required even
-      // though the docs mark `result` optional in the envelope.
-      const itemsRoot = paginatedItemsRoot.get(id);
-      const infos = memberInfos(d).map((info) =>
-        info.tsName === itemsRoot ? { ...info, required: true } : info,
-      );
-      const fields = infos.flatMap((info) =>
-        interfaceField({
-          name: info.tsName,
-          optional: !info.required,
-          doc: info.doc,
-          type:
-            info.binding === "file"
-              ? "(File | Blob)[]"
-              : `${tsRef(info.target)}${info.nullable ? " | null" : ""}`,
-        }),
-      );
-      const members = infos.map((info) => emitMember(info, i));
-      // Paginated responses additionally carry the envelope's `result_info`
-      // (see CloudflarePaginatedProtocol / the shared ResultInfo schema).
-      if (
-        paginatedOutputs.has(id) &&
-        !infos.some((m) => m.tsName === "resultInfo")
-      ) {
-        fields.push(
-          `  /** Pagination info from the envelope's \`result_info\`. */`,
-          `  resultInfo?: ResultInfo | null;`,
-        );
-        members.push(
-          `  "resultInfo": S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),`,
-        );
-      }
-      out.push(interfaceDecl(name, fields));
-      const struct = members.length
-        ? `S.Struct({\n${members.join("\n")}\n})`
-        : `S.Struct({})`;
-      const http = httpFor[id];
-      const tail = http ? `.pipe(T.Http(${JSON.stringify(http)}))` : "";
-      // Op I/O roots carry the service key dictionary (inside the suspend, so
-      // it survives core's Suspend resolution): the protocol reads it off the
-      // root AST as the fallback wire mapping for opaque content.
-      const dictPipe =
-        keyDictionary && opIoShapes.has(id)
-          ? `.pipe(T.KeyDictionary(KEY_DICTIONARY))`
-          : "";
-      out.push(
-        suspendConst({
-          name,
-          pure: PURE,
-          multiline: true,
-          annotateIdentifier: true,
-          expr: `${struct}${tail}${dictPipe}`,
-        }),
-      );
-    } else if (d.type === "list") {
-      out.push(`export type ${name} = ${tsRef(d.member.target)}[];`);
-      out.push(
-        `export const ${name} = ${PURE}S.Array(${ref(d.member.target, i)}) as any as S.Schema<${name}>;\n`,
-      );
-    } else if (d.type === "map") {
-      out.push(
-        `export type ${name} = { [key: string]: ${tsRef(d.value.target)} | undefined };`,
-      );
-      out.push(
-        `export const ${name} = ${PURE}S.Record(S.String, ${ref(d.value.target, i)}) as any as S.Schema<${name}>;\n`,
-      );
-    } else if (d.type === "union") {
-      // Discriminated union of object cases. The TS type is the case union;
-      // the schema is opaque (S.Unknown) carrying each case's camelCase key
-      // set. Cloudflare returns every case's keys (null for inactive ones),
-      // so the protocol picks the active case and drops the others — keeping
-      // each case's exact key set for `"key" in value` discrimination.
-      const caseTargets = Object.values(d.members ?? {}).map(
-        (m: any) => m.target,
-      );
-      const caseKeys = caseTargets.map((t: string) => {
-        const cd = shapes[t];
-        return cd?.type === "structure"
-          ? memberInfos(cd).map((mi) => mi.tsName)
-          : [];
-      });
-      out.push(
-        `export type ${name} = ${caseTargets.map(tsRef).join(" | ") || "unknown"};`,
-      );
-      out.push(
-        `export const ${name} = ${PURE}S.Unknown.pipe(T.UnionCases(${JSON.stringify(caseKeys)}));\n`,
-      );
-    } else if (d.type === "enum") {
-      // Open string union: literal members for autocomplete, `(string & {})`
-      // so unknown / future values still pass. The schema stays S.String —
-      // the protocol never validates enum membership.
-      const values = Object.values(d.members ?? {})
-        .map((m: any) => m.traits?.["smithy.api#enumValue"])
-        .filter((v: unknown): v is string => typeof v === "string");
-      out.push(...enumDecl({ name, values, pure: PURE }));
-    }
-  });
-
-  // 5. Emit operations with explicit OperationMethod annotations so the
-  //    call signature comes from the emitted interfaces, not inference. The
-  //    export is lowerFirst (`getNamespace`) while the shapes stay PascalCase.
-  //    Paginated ops get the pagination-specific protocol + `.pages/.items`.
-  for (const op of selected) {
-    const opName = local(op.id);
-    const errNames = ((op.def.errors ?? []) as Array<{ target: string }>)
-      .map((e) => local(e.target))
-      .filter((n) => errorNames.has(n));
-    const doc = oneLine(op.def.traits?.["smithy.api#documentation"]);
-    out.push(errorUnionAlias(opName, errNames, "CloudflareOpError"));
-    if (doc) out.push(`/** ${doc} */`);
-    const pg = op.def.__pagination;
-    const errList = [...errNames, "CloudflareRateLimited", "CloudflareError"];
+  operation: (ctx) => {
+    const errList = [
+      ...ctx.errorNames,
+      "CloudflareRateLimited",
+      "CloudflareError",
+    ];
     const typeAnnotation = (method: string) =>
       `API.${method}<\n` +
-      `  ${local(op.def.__input)},\n` +
-      `  ${local(op.def.__output)},\n` +
-      `  ${opName}Error,\n` +
+      `  ${ctx.inputName},\n` +
+      `  ${ctx.outputName},\n` +
+      `  ${ctx.opName}Error,\n` +
       `  CloudflareOpContext\n` +
       `>`;
-    out.push(
-      pg
+    const pieces = [
+      errorUnionAlias(ctx.opName, ctx.errorNames, "CloudflareOpError"),
+      ...(ctx.doc ? [`/** ${ctx.doc} */`] : []),
+      ctx.pagination
         ? operationConst({
-            exportName: lowerFirst(opName),
+            exportName: ctx.exportName,
             typeAnnotation: typeAnnotation("PaginatedOperationMethod"),
             factory: "API.makePaginated",
             pure: PURE,
             extraArg: "cloudflarePaginate",
             config:
               `{\n` +
-              `  input: ${local(op.def.__input)},\n` +
-              `  output: ${local(op.def.__output)},\n` +
+              `  input: ${ctx.inputName},\n` +
+              `  output: ${ctx.outputName},\n` +
               `  errors: [${errList.join(", ")}],\n` +
               `  protocol: CloudflarePaginatedProtocol,\n` +
               `  retry: Retry.Retry,\n` +
-              `  pagination: ${JSON.stringify(pg)} as const,\n` +
+              `  pagination: ${JSON.stringify(ctx.pagination)} as const,\n` +
               `}`,
           })
         : operationConst({
-            exportName: lowerFirst(opName),
+            exportName: ctx.exportName,
             typeAnnotation: typeAnnotation("OperationMethod"),
             factory: "API.make",
             pure: PURE,
             config:
               `{\n` +
-              `  input: ${local(op.def.__input)},\n` +
-              `  output: ${local(op.def.__output)},\n` +
+              `  input: ${ctx.inputName},\n` +
+              `  output: ${ctx.outputName},\n` +
               `  errors: [${errList.join(", ")}],\n` +
               `  protocol: CloudflareProtocol,\n` +
               `  retry: Retry.Retry,\n` +
               `}`,
           }),
-    );
-  }
+    ];
+    return pieces.join("\n");
+  },
 
-  // 6. Route-alias exports: some routes exist under several distilled export
-  //    names; re-export the canonical op (and its Request/Response/Error
-  //    types) under each alias.
-  const emittedOps = new Set(selected.map((op) => lowerFirst(local(op.id))));
-  for (const { alias, target } of opAliases ?? []) {
-    if (!emittedOps.has(target) || emittedOps.has(alias)) continue;
-    emittedOps.add(alias);
-    const A = upperFirst(alias);
-    const T2 = upperFirst(target);
-    out.push(
-      `// Alias of ${target} (same route, alternate export name upstream).\n` +
-        `export const ${alias} = ${target};\n` +
-        `export type ${A}Request = ${T2}Request;\n` +
-        `export type ${A}Response = ${T2}Response;\n` +
-        `export type ${A}Error = ${T2}Error;\n`,
-    );
-  }
+  // Route-alias exports: some routes exist under several distilled export
+  // names; re-export the canonical op (and its types) under each alias.
+  footer: ({ emittedOps }) => {
+    const out: string[] = [];
+    for (const { alias, target } of opAliases ?? []) {
+      if (!emittedOps.has(target) || emittedOps.has(alias)) continue;
+      emittedOps.add(alias);
+      const A = upperFirst(alias);
+      const T2 = upperFirst(target);
+      out.push(
+        `// Alias of ${target} (same route, alternate export name upstream).\n` +
+          `export const ${alias} = ${target};\n` +
+          `export type ${A}Request = ${T2}Request;\n` +
+          `export type ${A}Response = ${T2}Response;\n` +
+          `export type ${A}Error = ${T2}Error;\n`,
+      );
+    }
+    return out;
+  },
 
-  const hasPaginated = paginatedOutputs.size > 0;
-  const header =
+  header: ({ hasPaginated }) =>
     `// AUTO-GENERATED by scripts/generate.ts from .generated-specs. Do not edit.\n` +
     `import * as S from "@distilled.cloud/core/schema";\n` +
     `import * as API from "@distilled.cloud/core/api";\n` +
@@ -564,13 +280,11 @@ const generateModel = (
     (keyDictionary
       ? `/** Fallback camelCase→wire mapping for opaque content (mined from the distilled SDK). */\n` +
         `const KEY_DICTIONARY: Record<string, string> = ${JSON.stringify(keyDictionary)};\n\n`
-      : "");
-
-  return { code: header + out.join("\n") + "\n", operations: selected.length };
-};
+      : ""),
+});
 
 // ============================================================================
-// CLI
+// CLI — Cloudflare's model pipeline (docs specs + RFC-6902 patches)
 // ============================================================================
 
 const command = Command.make(
@@ -706,8 +420,7 @@ const command = Command.make(
 
         // Per-service fallback key dictionary and route aliases, patched
         // into the model's metadata by patches/<resource>/_metadata.json
-        // (written by import-distilled-patches.ts). The dictionary attaches
-        // to op I/O roots; the aliases become re-exports.
+        // (written by import-distilled-patches.ts).
         const keyDictionary = model.metadata?.keyDictionary as
           | Record<string, string>
           | undefined;
@@ -715,11 +428,10 @@ const command = Command.make(
           | Array<{ alias: string; target: string }>
           | undefined;
 
-        const { code, operations } = generateModel(
+        const { code, operations } = generateService(
           model,
+          makeCfSpec(keyDictionary, opAliases),
           limitRef,
-          keyDictionary,
-          opAliases,
         );
         if (operations === 0) continue;
 
