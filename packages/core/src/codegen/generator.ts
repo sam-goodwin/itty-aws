@@ -142,6 +142,13 @@ export interface SdkSpec {
     readonly binding: MemberBinding;
     readonly pipe: string;
     readonly tsType?: string;
+    /**
+     * Bare-payload form: when this binding is the sole member of a
+     * (non-paginated) output structure, the whole response IS that
+     * member's value — the driver emits the member's type directly and
+     * pipes the schema through this root marker for the protocol.
+     */
+    readonly rootPipe?: string;
   }>;
   /**
    * Which wire-name rule a binding follows. Defaults: the three generic
@@ -184,16 +191,6 @@ export interface SdkSpec {
     readonly isOpIo: boolean;
     readonly httpTrait: unknown | undefined;
   }) => string[];
-
-  /**
-   * Bare-payload detection: when an output structure has exactly one member
-   * carrying this trait, the whole response IS that member's value. The
-   * driver emits the member's type + schema piped through `rootPipe`.
-   */
-  readonly barePayload?: {
-    readonly trait: string;
-    readonly rootPipe: string;
-  };
 
   /**
    * Pagination profiles. A profile is the codegen-side description of one
@@ -621,13 +618,15 @@ export const generateService = (
       // Bare-payload response: single trait-marked member — the response IS
       // that member's value; emit its type + a root marker for the protocol.
       const memberEntriesAll = Object.entries(d.members ?? {});
-      if (
-        spec.barePayload &&
-        !paginatedOutputs.has(id) &&
-        memberEntriesAll.length === 1 &&
-        spec.barePayload.trait in
-          ((memberEntriesAll[0]![1] as any).traits ?? {})
-      ) {
+      const soleMemberRoot =
+        !paginatedOutputs.has(id) && memberEntriesAll.length === 1
+          ? (spec.extraBindings ?? []).find(
+              (b) =>
+                b.rootPipe !== undefined &&
+                b.trait in ((memberEntriesAll[0]![1] as any).traits ?? {}),
+            )
+          : undefined;
+      if (soleMemberRoot) {
         const [, m] = memberEntriesAll[0]! as [string, any];
         out.push(`export type ${name} = ${tsRef(m.target)};`);
         out.push(
@@ -636,7 +635,7 @@ export const generateService = (
             pure,
             multiline: true,
             annotateIdentifier: true,
-            expr: `${ref(m.target, i)}.pipe(${spec.barePayload.rootPipe})`,
+            expr: `${ref(m.target, i)}.pipe(${soleMemberRoot.rootPipe})`,
           }),
         );
         return;

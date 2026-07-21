@@ -34,9 +34,12 @@ const makeCfSpec = (
 
   extraBindings: [
     {
+      // A member holding the whole envelope `result`; as a response's sole
+      // member, the response IS the payload (bare arrays/scalars).
       trait: ENVELOPE_PAYLOAD_TRAIT,
       binding: "payload",
       pipe: "T.EnvelopePayload()",
+      rootPipe: "T.EnvelopePayloadRoot()",
     },
     {
       trait: FORM_DATA_FILE_TRAIT,
