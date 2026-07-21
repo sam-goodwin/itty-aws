@@ -35,22 +35,12 @@ import {
   isStaleTargetError,
   type PatchFile,
 } from "@distilled.cloud/core/json-patch";
-import {
-  camel,
-  local,
-  lowerFirst,
-  q,
-} from "@distilled.cloud/core/codegen/naming";
-import { barrel } from "@distilled.cloud/core/codegen/emit";
-import {
-  JSON_PRELUDE,
-  TS_JSON_PRELUDE,
-} from "@distilled.cloud/core/codegen/prelude";
+import { camel } from "@distilled.cloud/core/codegen/naming";
+import { barrel, PURE } from "@distilled.cloud/core/codegen/emit";
 import {
   errorUnionAlias,
   generateService,
   operationConst,
-  tsKey,
   upperFirst,
   type SdkSpec,
 } from "@distilled.cloud/core/codegen/generator";
@@ -61,75 +51,37 @@ const ERROR_MATCHERS_TRAIT = "com.cloudflare.protocols#errorMatchers";
 const FORM_DATA_FILE_TRAIT = "com.cloudflare.protocols#formDataFile";
 const KEY_DICTIONARY_TRAIT = "com.cloudflare.protocols#keyDictionary";
 
-const PURE = "/*@__PURE__*/ ";
-
 /** Cloudflare's provider spec for the shared smithy→SDK compiler. */
 const makeCfSpec = (
   keyDictionary?: Record<string, string>,
   opAliases?: Array<{ alias: string; target: string }>,
 ): SdkSpec => ({
-  namespaceFallback: "com.cloudflare.unknown",
-  pure: PURE,
-  prelude: JSON_PRELUDE,
-  tsPrelude: TS_JSON_PRELUDE,
+  // Docs wire names are snake_case; the TS surface is camelCase.
   memberName: camel,
-  opExportName: lowerFirst,
   nullableTrait: NULLABLE_TRAIT,
 
-  memberBinding: (traits) =>
-    "smithy.api#httpLabel" in traits
-      ? "label"
-      : "smithy.api#httpQuery" in traits
-        ? "query"
-        : "smithy.api#httpHeader" in traits
-          ? "header"
-          : ENVELOPE_PAYLOAD_TRAIT in traits
-            ? "payload"
-            : FORM_DATA_FILE_TRAIT in traits
-              ? "file"
-              : "smithy.api#httpPayload" in traits
-                ? "rawBody"
-                : "body",
+  extraBinding: (traits) =>
+    ENVELOPE_PAYLOAD_TRAIT in traits
+      ? "payload"
+      : FORM_DATA_FILE_TRAIT in traits
+        ? "file"
+        : undefined,
 
-  memberPipes: (info) => {
-    const pipes: string[] = [];
+  memberExtraPipes: (info) => {
     switch (info.binding) {
-      case "label":
-        pipes.push(
-          info.wire === info.tsName ? "T.Label()" : `T.Label(${q(info.wire)})`,
-        );
-        break;
-      case "query":
-        pipes.push(
-          info.wire === info.tsName ? "T.Query()" : `T.Query(${q(info.wire)})`,
-        );
-        break;
-      case "header":
-        pipes.push(
-          info.wire === info.tsName
-            ? "T.Header()"
-            : `T.Header(${q(info.wire)})`,
-        );
-        break;
       case "payload":
-        pipes.push("T.EnvelopePayload()");
-        break;
+        return ["T.EnvelopePayload()"];
       case "file":
-        pipes.push("T.FormDataFile()");
-        break;
-      case "rawBody":
-        pipes.push("T.HttpBody()");
-        break;
+        return ["T.FormDataFile()"];
       case "body":
-        if (info.wire !== info.tsName) pipes.push(`T.Body(${q(info.wire)})`);
-        if (info.traits[KEY_DICTIONARY_TRAIT]) {
-          pipes.push(
-            `T.KeyDictionary(${JSON.stringify(info.traits[KEY_DICTIONARY_TRAIT])})`,
-          );
-        }
-        break;
+        return info.traits[KEY_DICTIONARY_TRAIT]
+          ? [
+              `T.KeyDictionary(${JSON.stringify(info.traits[KEY_DICTIONARY_TRAIT])})`,
+            ]
+          : [];
+      default:
+        return [];
     }
-    return pipes;
   },
 
   memberTsType: (info) =>
@@ -173,12 +125,6 @@ const makeCfSpec = (
   ],
 
   errors: {
-    field: (name, target) =>
-      `  ${tsKey(name)}: ${JSON_PRELUDE[local(target)] ?? "S.Unknown"},`,
-    defaultFields: () => [
-      `  ${tsKey("code")}: ${JSON_PRELUDE.Integer},`,
-      `  ${tsKey("message")}: ${JSON_PRELUDE.String},`,
-    ],
     wrap: (traits) => {
       const matchers = traits[ERROR_MATCHERS_TRAIT];
       return matchers

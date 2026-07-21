@@ -18,6 +18,13 @@
  */
 import { q } from "./naming.ts";
 
+/**
+ * The PURE annotation emitted before generated schema consts. A single
+ * `/*@__PURE__*​/` — Rolldown 1.1+ warns on the `/*#__PURE__*​/` form
+ * (distilled #374).
+ */
+export const PURE = "/*@__PURE__*/ ";
+
 /** `export interface X { … }` (or the empty-body form). */
 export const interfaceDecl = (name: string, fields: string[]): string =>
   fields.length

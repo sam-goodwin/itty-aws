@@ -17,6 +17,7 @@
 import {
   camel as _camel,
   local,
+  lowerFirst,
   oneLine,
   q,
   tsKey,
@@ -36,9 +37,15 @@ import {
   interfaceDecl,
   interfaceField,
   operationConst,
+  PURE,
   suspendConst,
 } from "./emit.ts";
-import { makeSchemaRef, makeTsRef } from "./prelude.ts";
+import {
+  JSON_PRELUDE,
+  makeSchemaRef,
+  makeTsRef,
+  TS_JSON_PRELUDE,
+} from "./prelude.ts";
 import {
   collectOperations,
   collectOpErrorIds,
@@ -85,26 +92,28 @@ export interface OperationEmit {
 }
 
 export interface SdkSpec {
-  /** Namespace fallback for models with no operations. */
-  readonly namespaceFallback: string;
-  /** PURE marker emitted before schema consts (e.g. `"/*@__PURE__*​/ "`). */
-  readonly pure: string;
-  /** Prelude scalar → schema expression map. */
-  readonly prelude: Record<string, string>;
-  /** Prelude scalar → TS type map. */
-  readonly tsPrelude: Record<string, string>;
-  /** Wire member name → TS-facing name (e.g. camelCase). */
-  readonly memberName: (name: string) => string;
-  /** Operation shape name → exported const name (e.g. lowerFirst). */
-  readonly opExportName: (name: string) => string;
+  /** Namespace fallback for models with no operations. Default `"smithy.unknown"`. */
+  readonly namespaceFallback?: string;
+  /** PURE marker before schema consts. Default: the shared single marker. */
+  readonly pure?: string;
+  /** Prelude scalar → schema expression map. Default {@link JSON_PRELUDE}. */
+  readonly prelude?: Record<string, string>;
+  /** Prelude scalar → TS type map. Default {@link TS_JSON_PRELUDE}. */
+  readonly tsPrelude?: Record<string, string>;
+  /** Wire member name → TS-facing name. Default: identity. */
+  readonly memberName?: (name: string) => string;
+  /** Operation shape name → exported const name. Default: lowerFirst. */
+  readonly opExportName?: (name: string) => string;
 
   /**
-   * Classify a member's binding from its traits. The generic smithy
-   * bindings (label/query/header from `smithy.api#http*`) and the plain
-   * `body` default are still the provider's call so it can interleave its
-   * own trait cascade (envelope payloads, file uploads, raw bodies, …).
+   * Provider bindings checked between the generic header binding and
+   * `smithy.api#httpPayload` — e.g. cloudflare's envelope payloads and
+   * form-data files. The driver owns the generic cascade:
+   * label → query → header → extraBinding → rawBody (httpPayload) → body.
    */
-  readonly memberBinding: (traits: Record<string, any>) => MemberBinding;
+  readonly extraBinding?: (
+    traits: Record<string, any>,
+  ) => MemberBinding | undefined;
   /**
    * Which wire-name rule a binding follows. Defaults: the three generic
    * kinds map to themselves, everything else to `"other"` (jsonName).
@@ -114,8 +123,16 @@ export interface SdkSpec {
   ) => "label" | "query" | "header" | "other";
   /** Trait id marking a member nullable (`S.NullOr` + `| null`). */
   readonly nullableTrait?: string;
-  /** Schema pipes for a member (the `T.*` calls), in order. */
-  readonly memberPipes: (m: EmittedMember) => string[];
+  /**
+   * Extra schema pipes appended after the generic ones. The driver emits
+   * `T.Label/T.Query/T.Header` (wire-aware), `T.HttpBody()` for rawBody,
+   * and `T.Body(wire)` renames — the SDK's traits module must export those
+   * core builders under these names. Provider bindings and member traits
+   * (e.g. key dictionaries) add theirs here.
+   */
+  readonly memberExtraPipes?: (m: EmittedMember) => string[];
+  /** Full override of member pipe emission (rarely needed). */
+  readonly memberPipes?: (m: EmittedMember) => string[];
   /** Override the TS type of a member (e.g. file uploads → `(File | Blob)[]`). */
   readonly memberTsType?: (
     m: EmittedMember,
@@ -165,12 +182,16 @@ export interface SdkSpec {
     readonly tsRef: (target: string) => string;
   }) => string[];
 
-  /** Error-class emission details. */
-  readonly errors: {
-    /** Field lines used when the error shape declares no members. */
-    readonly defaultFields: (prelude: Record<string, string>) => string[];
-    /** Field line for a declared member. */
-    readonly field: (name: string, target: string) => string;
+  /** Error-class emission details. All optional. */
+  readonly errors?: {
+    /**
+     * Field lines used when the error shape declares no members.
+     * Default: `code` (integer) + `message` (string) — the common REST
+     * error envelope.
+     */
+    readonly defaultFields?: (prelude: Record<string, string>) => string[];
+    /** Field line for a declared member. Default: prelude-mapped schema. */
+    readonly field?: (name: string, target: string) => string;
     /** Optional wrapper (e.g. matcher application) from the shape's traits. */
     readonly wrap?: (
       traits: Record<string, any>,
@@ -206,12 +227,21 @@ export const generateService = (
   limitRef: { remaining: number } = { remaining: Infinity },
 ): GeneratedService => {
   const shapes: ShapeMap = model.shapes;
+  const pure = spec.pure ?? PURE;
+  const prelude = spec.prelude ?? JSON_PRELUDE;
+  const tsPrelude = spec.tsPrelude ?? TS_JSON_PRELUDE;
+  const memberName = spec.memberName ?? ((n: string) => n);
+  const opExportName = spec.opExportName ?? lowerFirst;
 
   // 1. Operations — synthesize named Request/Response for Unit I/O so every
   //    operation has an input shape that can carry operation-level traits.
   const operations = collectOperations(shapes);
   const httpFor: Record<string, any> = {}; // input shape id → http trait
-  const ns = modelNamespace(operations, shapes, spec.namespaceFallback);
+  const ns = modelNamespace(
+    operations,
+    shapes,
+    spec.namespaceFallback ?? "smithy.unknown",
+  );
 
   const selected: OpEntry[] = [];
   for (const op of operations) {
@@ -235,8 +265,8 @@ export const generateService = (
   const order = topoOrder(shapes, reachable, shapeDeps);
   const indexOf = orderIndex(order);
 
-  const ref = makeSchemaRef(spec.prelude, indexOf);
-  const tsRef = makeTsRef(spec.tsPrelude);
+  const ref = makeSchemaRef(prelude, indexOf);
+  const tsRef = makeTsRef(tsPrelude);
 
   const wireKind =
     spec.wireKind ??
@@ -249,10 +279,21 @@ export const generateService = (
             ? "header"
             : "other");
 
+  // The generic binding cascade; provider bindings slot in after headers.
+  const bindingOf = (traits: Record<string, any>): MemberBinding =>
+    "smithy.api#httpLabel" in traits
+      ? "label"
+      : "smithy.api#httpQuery" in traits
+        ? "query"
+        : "smithy.api#httpHeader" in traits
+          ? "header"
+          : (spec.extraBinding?.(traits) ??
+            ("smithy.api#httpPayload" in traits ? "rawBody" : "body"));
+
   const memberInfos = (d: any): EmittedMember[] =>
-    memberBases(d, spec.memberName).map((base) => {
+    memberBases(d, memberName).map((base) => {
       const traits = base.traits;
-      const binding = spec.memberBinding(traits);
+      const binding = bindingOf(traits);
       return {
         ...base,
         binding,
@@ -261,10 +302,45 @@ export const generateService = (
       };
     });
 
+  // Generic pipes for the smithy bindings (the SDK's traits module exports
+  // core's Label/Query/Header/HttpBody/Body builders under these names);
+  // provider bindings and member traits append theirs via memberExtraPipes.
+  const genericPipes = (info: EmittedMember): string[] => {
+    switch (info.binding) {
+      case "label":
+        return [
+          info.wire === info.tsName ? "T.Label()" : `T.Label(${q(info.wire)})`,
+        ];
+      case "query":
+        return [
+          info.wire === info.tsName ? "T.Query()" : `T.Query(${q(info.wire)})`,
+        ];
+      case "header":
+        return [
+          info.wire === info.tsName
+            ? "T.Header()"
+            : `T.Header(${q(info.wire)})`,
+        ];
+      case "rawBody":
+        return ["T.HttpBody()"];
+      case "body":
+        return info.wire !== info.tsName ? [`T.Body(${q(info.wire)})`] : [];
+      default:
+        return [];
+    }
+  };
+
+  const memberPipes =
+    spec.memberPipes ??
+    ((info: EmittedMember) => [
+      ...genericPipes(info),
+      ...(spec.memberExtraPipes?.(info) ?? []),
+    ]);
+
   const emitMember = (info: EmittedMember, selfIdx: number): string => {
     let expr = ref(info.target, selfIdx);
     if (info.nullable) expr = `S.NullOr(${expr})`;
-    const pipes = spec.memberPipes(info);
+    const pipes = memberPipes(info);
     if (pipes.length) expr = `${expr}.pipe(${pipes.join(", ")})`;
     if (!info.required) expr = `S.optional(${expr})`;
     return `  ${q(info.tsName)}: ${expr},`;
@@ -318,17 +394,24 @@ export const generateService = (
     const name = local(id);
     const doc = oneLine(d.traits?.["smithy.api#documentation"]);
     if (doc) out.push(`/** ${doc} */`);
+    const errorField =
+      spec.errors?.field ??
+      ((mn: string, target: string) =>
+        `  ${tsKey(mn)}: ${prelude[local(target)] ?? "S.Unknown"},`);
     const fields =
       d.members && Object.keys(d.members).length
         ? Object.entries(d.members).map(([mn, m]: [string, any]) =>
-            spec.errors.field(mn, m.target),
+            errorField(mn, m.target),
           )
-        : spec.errors.defaultFields(spec.prelude);
+        : (spec.errors?.defaultFields?.(prelude) ?? [
+            errorField("code", "smithy.api#Integer"),
+            errorField("message", "smithy.api#String"),
+          ]);
     out.push(
       errorClass({
         name,
         fields,
-        wrap: spec.errors.wrap?.(d.traits ?? {}),
+        wrap: spec.errors?.wrap?.(d.traits ?? {}),
       }),
     );
   }
@@ -358,7 +441,7 @@ export const generateService = (
         out.push(
           suspendConst({
             name,
-            pure: spec.pure,
+            pure,
             multiline: true,
             annotateIdentifier: true,
             expr: `${ref(m.target, i)}.pipe(${spec.barePayload.rootPipe})`,
@@ -406,7 +489,7 @@ export const generateService = (
       out.push(
         suspendConst({
           name,
-          pure: spec.pure,
+          pure,
           multiline: true,
           annotateIdentifier: true,
           expr: `${struct}${tail}`,
@@ -415,14 +498,14 @@ export const generateService = (
     } else if (d.type === "list") {
       out.push(`export type ${name} = ${tsRef(d.member.target)}[];`);
       out.push(
-        `export const ${name} = ${spec.pure}S.Array(${ref(d.member.target, i)}) as any as S.Schema<${name}>;\n`,
+        `export const ${name} = ${pure}S.Array(${ref(d.member.target, i)}) as any as S.Schema<${name}>;\n`,
       );
     } else if (d.type === "map") {
       out.push(
         `export type ${name} = { [key: string]: ${tsRef(d.value.target)} | undefined };`,
       );
       out.push(
-        `export const ${name} = ${spec.pure}S.Record(S.String, ${ref(d.value.target, i)}) as any as S.Schema<${name}>;\n`,
+        `export const ${name} = ${pure}S.Record(S.String, ${ref(d.value.target, i)}) as any as S.Schema<${name}>;\n`,
       );
     } else if (d.type === "union") {
       const caseTargets = Object.values(d.members ?? {}).map(
@@ -439,7 +522,7 @@ export const generateService = (
       const values = Object.values(d.members ?? {})
         .map((m: any) => m.traits?.["smithy.api#enumValue"])
         .filter((v: unknown): v is string => typeof v === "string");
-      out.push(...enumDecl({ name, values, pure: spec.pure }));
+      out.push(...enumDecl({ name, values, pure }));
     }
   });
 
@@ -453,7 +536,7 @@ export const generateService = (
       spec.operation({
         op,
         opName,
-        exportName: spec.opExportName(opName),
+        exportName: opExportName(opName),
         inputName: local(op.def.__input),
         outputName: local(op.def.__output),
         errorNames: errNames,
@@ -466,7 +549,7 @@ export const generateService = (
   // 7. Provider trailing sections (aliases etc.).
   if (spec.footer) {
     const emittedOps = new Set(
-      selected.map((op) => spec.opExportName(local(op.id))),
+      selected.map((op) => opExportName(local(op.id))),
     );
     out.push(...spec.footer({ emittedOps }));
   }

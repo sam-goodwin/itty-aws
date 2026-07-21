@@ -30,6 +30,7 @@ import {
   operationConst,
   suspendConst,
   suspendRef,
+  PURE,
 } from "@distilled.cloud/core/codegen/emit";
 import {
   GenericShape,
@@ -155,10 +156,6 @@ class UnableToTransformShapeToSchema extends Data.TaggedError(
 )<{
   message: string;
 }> {}
-
-// Rolldown 1.1+ treats `/*#__PURE__*/` as unknown and warns; a single
-// `/*@__PURE__*/` is understood by every bundler (distilled #374).
-const PURE = "/*@__PURE__*/ ";
 
 const annotatePureExportConst = (definition: string) =>
   definition.replace(
