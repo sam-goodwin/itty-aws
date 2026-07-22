@@ -121,6 +121,10 @@ export class ResourceNotFoundException extends S.TaggedErrorClass<ResourceNotFou
   { message: S.optional(S.String) },
   T.HttpError(400),
 ).pipe(C.withBadRequestError) {}
+export class TooManyRequestsException extends S.TaggedErrorClass<TooManyRequestsException>()(
+  "TooManyRequestsException",
+  {},
+).pipe(C.withThrottlingError, C.withRetryableError) {}
 export class ValidationException extends S.TaggedErrorClass<ValidationException>()(
   "ValidationException",
   { message: S.optional(S.String) },
@@ -1658,6 +1662,7 @@ export const UntagResourceResponse = /*@__PURE__*/ S.suspend(() =>
 export type CancelJobRunError =
   | InternalServerException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Cancels a job run. A job run is a unit of work, such as a Spark jar, PySpark script, or
@@ -1671,7 +1676,11 @@ export const cancelJobRun: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelJobRunRequest,
   output: CancelJobRunResponse,
-  errors: [InternalServerException, ValidationException],
+  errors: [
+    InternalServerException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CancelJobRun",
@@ -1681,6 +1690,7 @@ export type CreateJobTemplateError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates a job template. Job template stores values of StartJobRun API request in a
@@ -1700,6 +1710,7 @@ export const createJobTemplate: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1710,6 +1721,7 @@ export type CreateManagedEndpointError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates a managed endpoint. A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR Studio can
@@ -1727,6 +1739,7 @@ export const createManagedEndpoint: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1736,6 +1749,7 @@ export const createManagedEndpoint: API.OperationMethod<
 export type CreateSecurityConfigurationError =
   | InternalServerException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates a security configuration. Security configurations in Amazon EMR on EKS are
@@ -1751,7 +1765,11 @@ export const createSecurityConfiguration: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateSecurityConfigurationRequest,
   output: CreateSecurityConfigurationResponse,
-  errors: [InternalServerException, ValidationException],
+  errors: [
+    InternalServerException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "CreateSecurityConfiguration",
@@ -1762,6 +1780,7 @@ export type CreateVirtualClusterError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Creates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any
@@ -1782,6 +1801,7 @@ export const createVirtualCluster: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1791,6 +1811,7 @@ export const createVirtualCluster: API.OperationMethod<
 export type DeleteJobTemplateError =
   | InternalServerException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes a job template. Job template stores values of StartJobRun API request in a
@@ -1806,7 +1827,11 @@ export const deleteJobTemplate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteJobTemplateRequest,
   output: DeleteJobTemplateResponse,
-  errors: [InternalServerException, ValidationException],
+  errors: [
+    InternalServerException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteJobTemplate",
@@ -1815,6 +1840,7 @@ export const deleteJobTemplate: API.OperationMethod<
 export type DeleteManagedEndpointError =
   | InternalServerException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes a managed endpoint. A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR Studio can
@@ -1828,7 +1854,11 @@ export const deleteManagedEndpoint: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteManagedEndpointRequest,
   output: DeleteManagedEndpointResponse,
-  errors: [InternalServerException, ValidationException],
+  errors: [
+    InternalServerException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteManagedEndpoint",
@@ -1837,6 +1867,7 @@ export const deleteManagedEndpoint: API.OperationMethod<
 export type DeleteVirtualClusterError =
   | InternalServerException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Deletes a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any
@@ -1852,7 +1883,11 @@ export const deleteVirtualCluster: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DeleteVirtualClusterRequest,
   output: DeleteVirtualClusterResponse,
-  errors: [InternalServerException, ValidationException],
+  errors: [
+    InternalServerException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "DeleteVirtualCluster",
@@ -1862,6 +1897,7 @@ export type DescribeJobRunError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Displays detailed information about a job run. A job run is a unit of work, such as a
@@ -1879,6 +1915,7 @@ export const describeJobRun: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1889,6 +1926,7 @@ export type DescribeJobTemplateError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Displays detailed information about a specified job template. Job template stores values
@@ -1908,6 +1946,7 @@ export const describeJobTemplate: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1918,6 +1957,7 @@ export type DescribeManagedEndpointError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Displays detailed information about a managed endpoint. A managed endpoint is a gateway
@@ -1935,6 +1975,7 @@ export const describeManagedEndpoint: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1945,6 +1986,7 @@ export type DescribeSecurityConfigurationError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Displays detailed information about a specified security configuration. Security
@@ -1965,6 +2007,7 @@ export const describeSecurityConfiguration: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1975,6 +2018,7 @@ export type DescribeVirtualClusterError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Displays detailed information about a specified virtual cluster. Virtual cluster is a
@@ -1996,6 +2040,7 @@ export const describeVirtualCluster: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2007,6 +2052,7 @@ export type GetManagedEndpointSessionCredentialsError =
   | RequestThrottledException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Generate a session token to connect to a managed endpoint.
@@ -2024,6 +2070,7 @@ export const getManagedEndpointSessionCredentials: API.OperationMethod<
     RequestThrottledException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2033,6 +2080,7 @@ export const getManagedEndpointSessionCredentials: API.OperationMethod<
 export type ListJobRunsError =
   | InternalServerException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Lists job runs based on a set of parameters. A job run is a unit of work, such as a
@@ -2061,7 +2109,11 @@ export const listJobRuns: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobRunsRequest,
   output: ListJobRunsResponse,
-  errors: [InternalServerException, ValidationException],
+  errors: [
+    InternalServerException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ListJobRuns",
@@ -2076,6 +2128,7 @@ export const listJobRuns: API.OperationMethod<
 export type ListJobTemplatesError =
   | InternalServerException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Lists job templates based on a set of parameters. Job template stores values of
@@ -2106,7 +2159,11 @@ export const listJobTemplates: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListJobTemplatesRequest,
   output: ListJobTemplatesResponse,
-  errors: [InternalServerException, ValidationException],
+  errors: [
+    InternalServerException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ListJobTemplates",
@@ -2121,6 +2178,7 @@ export const listJobTemplates: API.OperationMethod<
 export type ListManagedEndpointsError =
   | InternalServerException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Lists managed endpoints based on a set of parameters. A managed endpoint is a gateway
@@ -2149,7 +2207,11 @@ export const listManagedEndpoints: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListManagedEndpointsRequest,
   output: ListManagedEndpointsResponse,
-  errors: [InternalServerException, ValidationException],
+  errors: [
+    InternalServerException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ListManagedEndpoints",
@@ -2164,6 +2226,7 @@ export const listManagedEndpoints: API.OperationMethod<
 export type ListSecurityConfigurationsError =
   | InternalServerException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Lists security configurations based on a set of parameters. Security configurations in
@@ -2195,7 +2258,11 @@ export const listSecurityConfigurations: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListSecurityConfigurationsRequest,
   output: ListSecurityConfigurationsResponse,
-  errors: [InternalServerException, ValidationException],
+  errors: [
+    InternalServerException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ListSecurityConfigurations",
@@ -2211,6 +2278,7 @@ export type ListTagsForResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Lists the tags assigned to the resources.
@@ -2227,6 +2295,7 @@ export const listTagsForResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2236,6 +2305,7 @@ export const listTagsForResource: API.OperationMethod<
 export type ListVirtualClustersError =
   | InternalServerException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Lists information about the specified virtual cluster. Virtual cluster is a managed
@@ -2268,7 +2338,11 @@ export const listVirtualClusters: API.OperationMethod<
 } = /*@__PURE__*/ API.makePaginated(() => ({
   input: ListVirtualClustersRequest,
   output: ListVirtualClustersResponse,
-  errors: [InternalServerException, ValidationException],
+  errors: [
+    InternalServerException,
+    ValidationException,
+    TooManyRequestsException,
+  ],
   protocol: AwsProtocol,
   retry: Retry,
   operationName: "ListVirtualClusters",
@@ -2284,6 +2358,7 @@ export type StartJobRunError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | CommonErrors;
 /**
  * Starts a job run. A job run is a unit of work, such as a Spark jar, PySpark script, or
@@ -2301,6 +2376,7 @@ export const startJobRun: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
   ],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2311,6 +2387,7 @@ export type TagResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | InvalidResourceArn
   | CommonErrors;
 /**
@@ -2336,6 +2413,7 @@ export const tagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
     InvalidResourceArn,
   ],
   protocol: AwsProtocol,
@@ -2347,6 +2425,7 @@ export type UntagResourceError =
   | InternalServerException
   | ResourceNotFoundException
   | ValidationException
+  | TooManyRequestsException
   | InvalidResourceArn
   | CommonErrors;
 /**
@@ -2364,6 +2443,7 @@ export const untagResource: API.OperationMethod<
     InternalServerException,
     ResourceNotFoundException,
     ValidationException,
+    TooManyRequestsException,
     InvalidResourceArn,
   ],
   protocol: AwsProtocol,
