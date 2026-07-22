@@ -46,7 +46,7 @@ export const UpdateBranchChangeRequestInput =
 // Output Schema
 export interface UpdateBranchChangeRequestOutput {
   id: string;
-  restart: ReadonlyArray<number>;
+  restart?: ReadonlyArray<number>;
   state: "queued" | "pending" | "resizing" | "canceled" | "completed";
   started_at: string | null;
   completed_at?: string | null;
@@ -81,7 +81,7 @@ export interface UpdateBranchChangeRequestOutput {
 export const UpdateBranchChangeRequestOutput =
   /*@__PURE__*/ Schema.Struct({
     id: Schema.String,
-    restart: Schema.Array(Schema.Number),
+    restart: Schema.optional(Schema.Array(Schema.Number)),
     state: Schema.Literals([
       "queued",
       "pending",
