@@ -23,7 +23,7 @@
     },
     "packages/aws": {
       "name": "@distilled.cloud/aws",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@aws-crypto/crc32": "catalog:",
         "@aws-crypto/util": "catalog:",
@@ -55,7 +55,7 @@
     },
     "packages/axiom": {
       "name": "@distilled.cloud/axiom",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -72,7 +72,7 @@
     },
     "packages/azure": {
       "name": "@distilled.cloud/azure",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -89,7 +89,7 @@
     },
     "packages/cloudflare": {
       "name": "@distilled.cloud/cloudflare",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -109,7 +109,7 @@
     },
     "packages/coinbase": {
       "name": "@distilled.cloud/coinbase",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -127,7 +127,7 @@
     },
     "packages/core": {
       "name": "@distilled.cloud/core",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "devDependencies": {
         "@types/bun": "catalog:",
         "@types/node": "catalog:",
@@ -140,7 +140,7 @@
     },
     "packages/expo-eas": {
       "name": "@distilled.cloud/expo-eas",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -157,7 +157,7 @@
     },
     "packages/fly-io": {
       "name": "@distilled.cloud/fly-io",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -174,7 +174,7 @@
     },
     "packages/gcp": {
       "name": "@distilled.cloud/gcp",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -191,7 +191,7 @@
     },
     "packages/kubernetes": {
       "name": "@distilled.cloud/kubernetes",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -208,7 +208,7 @@
     },
     "packages/mongodb-atlas": {
       "name": "@distilled.cloud/mongodb-atlas",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -225,7 +225,7 @@
     },
     "packages/neon": {
       "name": "@distilled.cloud/neon",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -242,7 +242,7 @@
     },
     "packages/planetscale": {
       "name": "@distilled.cloud/planetscale",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -259,7 +259,7 @@
     },
     "packages/posthog": {
       "name": "@distilled.cloud/posthog",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -278,7 +278,7 @@
     },
     "packages/prisma-postgres": {
       "name": "@distilled.cloud/prisma-postgres",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -295,7 +295,7 @@
     },
     "packages/stripe": {
       "name": "@distilled.cloud/stripe",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -312,7 +312,7 @@
     },
     "packages/supabase": {
       "name": "@distilled.cloud/supabase",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -329,7 +329,7 @@
     },
     "packages/turso": {
       "name": "@distilled.cloud/turso",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -346,7 +346,7 @@
     },
     "packages/typesense": {
       "name": "@distilled.cloud/typesense",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -364,7 +364,7 @@
     },
     "packages/workos": {
       "name": "@distilled.cloud/workos",
-      "version": "0.29.0",
+      "version": "0.30.0",
       "dependencies": {
         "@distilled.cloud/core": "workspace:*",
       },
@@ -400,9 +400,9 @@
     "@aws-crypto/util": "^5.2.0",
     "@aws-sdk/credential-providers": "^3.994.0",
     "@aws-sdk/types": "^3.973.1",
-    "@effect/platform-bun": ">=4.0.0-beta.97 || >=4.0.0",
-    "@effect/platform-node": ">=4.0.0-beta.97 || >=4.0.0",
-    "@effect/vitest": ">=4.0.0-beta.97 || >=4.0.0",
+    "@effect/platform-bun": ">=4.0.0-beta.100 || >=4.0.0",
+    "@effect/platform-node": ">=4.0.0-beta.100 || >=4.0.0",
+    "@effect/vitest": ">=4.0.0-beta.100 || >=4.0.0",
     "@smithy/shared-ini-file-loader": "^4.4.3",
     "@smithy/types": "^4.12.0",
     "@smithy/util-base64": "^4.3.0",
@@ -412,7 +412,7 @@
     "aws4fetch": "^1.0.20",
     "dedent": "^1.7.0",
     "dotenv": "^16.5.0",
-    "effect": ">=4.0.0-beta.97 || >=4.0.0",
+    "effect": ">=4.0.0-beta.100 || >=4.0.0",
     "fast-xml-parser": "^5.3.2",
     "oxfmt": "^0.36.0",
     "oxlint": "^1.51.0",
@@ -530,13 +530,13 @@
 
     "@distilled.cloud/workos": ["@distilled.cloud/workos@workspace:packages/workos"],
 
-    "@effect/platform-bun": ["@effect/platform-bun@4.0.0-beta.97", "", { "dependencies": { "@effect/platform-node-shared": "^4.0.0-beta.97" }, "peerDependencies": { "effect": "^4.0.0-beta.97" } }, "sha512-WYjC7nKiWfNywIz1zeBEXnrpuHJM86DOi3lSZSSBeHCPz8HYw7IT2FL7u+aaJHHsJCyFiZVAgg2KFS8aMFSJBQ=="],
+    "@effect/platform-bun": ["@effect/platform-bun@4.0.0-beta.100", "", { "dependencies": { "@effect/platform-node-shared": "^4.0.0-beta.100" }, "peerDependencies": { "effect": "^4.0.0-beta.100" } }, "sha512-UyH4bgzlV3aJOXbUr/3Zej3MBPe9TDrdkwStLDpVn9Yc6dKIKOJBd0G/8+OQhunGAuCL9a4SaNvwhkMJajahrg=="],
 
-    "@effect/platform-node": ["@effect/platform-node@4.0.0-beta.97", "", { "dependencies": { "@effect/platform-node-shared": "^4.0.0-beta.97", "mime": "^4.1.0", "undici": "^8.7.0" }, "peerDependencies": { "effect": "^4.0.0-beta.97", "ioredis": "^5.7.0" } }, "sha512-Vd40VLh+Y08Bs37KWtbe9AgO2+t3RKZKGX9YC6ZKAcswu4tXR3CwSI7V2MN+GgS+ez/GLmqH1WrzDDlaIAxKPA=="],
+    "@effect/platform-node": ["@effect/platform-node@4.0.0-beta.100", "", { "dependencies": { "@effect/platform-node-shared": "^4.0.0-beta.100", "mime": "^4.1.0", "undici": "^8.7.0" }, "peerDependencies": { "effect": "^4.0.0-beta.100", "ioredis": "^5.7.0" } }, "sha512-nH5xgxOLfPj5Bi0/o4OaDsR98Z59lHKGty+TDqckg7zRz6jry82hGW982NRPduzX0MJloDsGp/3rfeN4Hu7Keg=="],
 
-    "@effect/platform-node-shared": ["@effect/platform-node-shared@4.0.0-beta.97", "", { "dependencies": { "@types/ws": "^8.18.1", "ws": "^8.21.0" }, "peerDependencies": { "effect": "^4.0.0-beta.97" } }, "sha512-sAlygOlDLLERk7fC24f7Aa4G3wkEbGyyMEileHTHU2fThiPYSGMqNRK1LLnNr17m2+JR7BHbycwXkJkM18BAQw=="],
+    "@effect/platform-node-shared": ["@effect/platform-node-shared@4.0.0-beta.100", "", { "dependencies": { "@types/ws": "^8.18.1", "ws": "^8.21.0" }, "peerDependencies": { "effect": "^4.0.0-beta.100" } }, "sha512-PMsCXQeK2wnlmnqGCc79oqK9CX8ipZvoHxAy/CRojMF+zHIluxh61L3pzWAYEbMb19Be4Bxgqs7gK2hiV8H8Pg=="],
 
-    "@effect/vitest": ["@effect/vitest@4.0.0-beta.97", "", { "peerDependencies": { "effect": "^4.0.0-beta.97", "vitest": "^3.0.0 || ^4.0.0" } }, "sha512-1dH6LBWSZyqnTV7ZO+yIpPGPf/xd7RtFfvQ4ZpTy9elzFN+wr1YBFpHSCr8+BfXOml6b8g9Mtj5eDy1qjbizUA=="],
+    "@effect/vitest": ["@effect/vitest@4.0.0-beta.100", "", { "peerDependencies": { "effect": "^4.0.0-beta.100", "vitest": "^3.0.0 || ^4.0.0" } }, "sha512-WoxrzPuxc+4QXb+7D1j8PwaBb9zVxHM2yw0sDz7fXij1Sx7X7T6LkYJ7m2xzWbfskIXxIdXVA+NnDSF8qAOGsw=="],
 
     "@emnapi/core": ["@emnapi/core@1.11.2", "", { "dependencies": { "@emnapi/wasi-threads": "1.2.2", "tslib": "^2.4.0" } }, "sha512-TC8MkTuZUtcTSiFeuC0ksCh9QIJ5+F21MvZ4Wn4ORfYaFJ/0dsiudv5tVkejgwZlwQ39jL9WWDe2lz8x0WglOA=="],
 
@@ -1120,7 +1120,7 @@
 
     "eastasianwidth": ["eastasianwidth@0.2.0", "", {}, "sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA=="],
 
-    "effect": ["effect@4.0.0-beta.97", "", { "dependencies": { "@standard-schema/spec": "^1.1.0", "fast-check": "^4.9.0", "find-my-way-ts": "^0.1.6", "ini": "^7.0.0", "kubernetes-types": "^1.30.0", "msgpackr": "^2.0.4", "multipasta": "^0.2.8", "toml": "^4.1.2", "uuid": "^14.0.1", "yaml": "^2.9.0" } }, "sha512-pK03HpQVxGZOWdwDAy/iwvV8u3KYcUf2mOWyWqaut2zau8V2u6ejWP7b4BELjyUIiZWW1fl/s/VJpgZUcTjThg=="],
+    "effect": ["effect@4.0.0-beta.100", "", { "dependencies": { "@standard-schema/spec": "^1.1.0", "fast-check": "^4.9.0", "find-my-way-ts": "^0.1.6", "ini": "^7.0.0", "kubernetes-types": "^1.30.0", "msgpackr": "^2.0.4", "multipasta": "^0.2.8", "toml": "^4.1.2", "uuid": "^14.0.1", "yaml": "^2.9.0" } }, "sha512-K4ed+BS3HyE+NoAZ8pJss2DpuK41mb856IO7ZlPfnwBXbq8oTtAAurrsVnwe2hzPamIuaZp/Pq4/xp9qORYv8Q=="],
 
     "emoji-regex": ["emoji-regex@9.2.2", "", {}, "sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg=="],
 
