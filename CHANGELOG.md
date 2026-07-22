@@ -1,3 +1,17 @@
+## v0.30.1
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **aws**:
+  - **amplify**: Step.endTime is optional for in-progress job steps &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/387 [<samp>(c4244)</samp>](https://github.com/alchemy-run/distilled/commit/c4244c0bf)
+  - **emr-containers**: Type TooManyRequestsException as retryable throttling &nbsp;-&nbsp; by **sam** and **Cursor** in https://github.com/alchemy-run/distilled/issues/386 [<samp>(fd438)</samp>](https://github.com/alchemy-run/distilled/commit/fd438a741)
+- **planetscale**:
+  - Make resize-request restart optional &nbsp;-&nbsp; by **Alex** in https://github.com/alchemy-run/distilled/issues/385 [<samp>(3f689)</samp>](https://github.com/alchemy-run/distilled/commit/3f6898589)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.30.0...HEAD)
+
+---
+
 ## v0.30.0
 
 ### &nbsp;&nbsp;&nbsp;🚀 Features
