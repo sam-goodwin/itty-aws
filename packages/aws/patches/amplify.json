@@ -63,6 +63,11 @@
         "jobType": { "optional": true }
       }
     },
+    "Step": {
+      "members": {
+        "endTime": { "optional": true }
+      }
+    },
     "CreateDeploymentResult": {
       "members": {
         "fileUploadUrls": { "optional": true }

@@ -1332,7 +1332,7 @@ export interface Step {
   stepName: string;
   startTime: Date;
   status: JobStatus;
-  endTime: Date;
+  endTime?: Date;
   logUrl?: string;
   artifactsUrl?: string;
   testArtifactsUrl?: string;
@@ -1346,7 +1346,7 @@ export const Step = /*@__PURE__*/ S.suspend(() =>
     stepName: S.String,
     startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
     status: JobStatus,
-    endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
+    endTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
     logUrl: S.optional(S.String),
     artifactsUrl: S.optional(S.String),
     testArtifactsUrl: S.optional(S.String),
