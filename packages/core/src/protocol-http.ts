@@ -299,6 +299,45 @@ export interface BuildRequestOptions {
  * Throws when the input schema is missing the `Http()` trait — a codegen
  * bug, surfaced as a defect by the calling protocol's Effect context.
  */
+/**
+ * Flatten a nested object into Stripe-style bracket notation pairs for
+ * form-urlencoded bodies: nested objects become `a[b][c]`, arrays index as
+ * `a[0]`; null/undefined dropped, booleans as "true"/"false".
+ */
+const flattenToFormPairs = (
+  obj: Record<string, unknown>,
+  prefix = "",
+): Array<[string, string]> => {
+  const pairs: Array<[string, string]> = [];
+  for (const [key, value] of Object.entries(obj)) {
+    if (value === undefined || value === null) continue;
+    const fullKey = prefix ? `${prefix}[${key}]` : key;
+    if (Array.isArray(value)) {
+      for (let i = 0; i < value.length; i++) {
+        const item = value[i];
+        if (item === undefined || item === null) continue;
+        if (typeof item === "object" && !Array.isArray(item)) {
+          pairs.push(
+            ...flattenToFormPairs(
+              item as Record<string, unknown>,
+              `${fullKey}[${i}]`,
+            ),
+          );
+        } else {
+          pairs.push([`${fullKey}[${i}]`, String(item)]);
+        }
+      }
+    } else if (typeof value === "object") {
+      pairs.push(
+        ...flattenToFormPairs(value as Record<string, unknown>, fullKey),
+      );
+    } else {
+      pairs.push([fullKey, String(value)]);
+    }
+  }
+  return pairs;
+};
+
 export const buildRequest = ({
   input,
   inputAst,
@@ -434,6 +473,24 @@ export const buildRequest = ({
       form.append(filename, f, filename);
     }
     request = request.pipe(HttpClientRequest.bodyFormData(form));
+  } else if (
+    http.contentType === "form-urlencoded" &&
+    !BODYLESS.has(http.method)
+  ) {
+    // application/x-www-form-urlencoded with Stripe-style deepObject bracket
+    // notation: { shipping: { address: { city } } } → shipping[address][city],
+    // arrays indexed ({ expand: ["a"] } → expand[0]=a).
+    const source =
+      rawBody !== undefined && typeof rawBody === "object"
+        ? (rawBody as Record<string, unknown>)
+        : body;
+    const params = new URLSearchParams();
+    for (const [k, v] of flattenToFormPairs(source)) params.append(k, v);
+    request = request.pipe(
+      HttpClientRequest.setBody(
+        HttpBody.text(params.toString(), "application/x-www-form-urlencoded"),
+      ),
+    );
   } else if (rawBody !== undefined && !BODYLESS.has(http.method)) {
     // Whole-body member (raw arrays/scalars) — sent as the body itself.
     // With a bodyMediaType, the member is a preserialized payload (string /
