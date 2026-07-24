@@ -1,0 +1,58 @@
+{
+  "name": "@distilled.cloud/typesense",
+  "version": "0.31.0",
+  "license": "Apache-2.0",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "lib",
+    "src"
+  ],
+  "exports": {
+    "./Credentials": {
+      "types": "./lib/credentials.d.ts",
+      "bun": "./src/credentials.ts",
+      "default": "./lib/credentials.js"
+    },
+    "./Errors": {
+      "types": "./lib/errors.d.ts",
+      "bun": "./src/errors.ts",
+      "default": "./lib/errors.js"
+    },
+    "./Traits": {
+      "types": "./lib/traits.d.ts",
+      "bun": "./src/traits.ts",
+      "default": "./lib/traits.js"
+    },
+    "./typesense": {
+      "types": "./lib/services/typesense.d.ts",
+      "bun": "./src/services/typesense.ts",
+      "default": "./lib/services/typesense.js"
+    },
+    ".": {
+      "types": "./lib/index.d.ts",
+      "bun": "./src/index.ts",
+      "default": "./lib/index.js"
+    },
+    "./*": {
+      "types": "./lib/services/*.d.ts",
+      "bun": "./src/services/*.ts",
+      "default": "./lib/services/*.js"
+    }
+  },
+  "scripts": {
+    "convert": "bun scripts/convert.ts",
+    "generate": "bun scripts/generate.ts",
+    "typecheck": "tsgo -p tsconfig.json",
+    "typecheck:strict": "tsgo -p tsconfig.strict.json"
+  },
+  "dependencies": {
+    "@distilled.cloud/core": "workspace:*",
+    "@effect/platform-bun": "catalog:",
+    "effect": "catalog:"
+  },
+  "devDependencies": {
+    "@types/bun": "catalog:",
+    "@types/node": "catalog:"
+  }
+}

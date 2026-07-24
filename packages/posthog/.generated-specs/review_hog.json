@@ -1,0 +1,503 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.posthog.review_hog#ReviewHogBlindSpotsListRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.review_hog#ReviewBlindSpotsConfig": {
+      "type": "structure",
+      "members": {
+        "skill_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the `review-hog-blind-spots-*` skill this row represents (the sweep's identity).",
+            "smithy.api#required": {}
+          }
+        },
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this blind-spots skill runs the sweep on the requesting user's PR reviews on this project.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The blind-spots skill's description, for display in the config UI.",
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The blind-spots skill's SKILL.md body, for the read-only skill viewer.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.review_hog#ReviewHogBlindSpotsListResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.review_hog#ReviewBlindSpotsConfig"
+      },
+      "traits": {}
+    },
+    "com.posthog.review_hog#ReviewHogBlindSpotsListResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.posthog.review_hog#ReviewHogBlindSpotsListResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.posthog.review_hog#ReviewHogBlindSpotsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.review_hog#ReviewHogBlindSpotsListRequest"
+      },
+      "output": {
+        "target": "com.posthog.review_hog#ReviewHogBlindSpotsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/review_hog/blind_spots/",
+          "code": 200
+        },
+        "smithy.api#documentation": "List blind-spots skills and which one is active\n\nList the `review-hog-blind-spots-*` skills visible to the requesting user — the canonical skill plus the customs they authored — flagging the one active for them. The canonical skill is auto-seeded active on the first read; a custom skill the user has not selected shows as inactive."
+      }
+    },
+    "com.posthog.review_hog#ReviewHogBlindSpotsPartialUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "skill_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set true to make this the single blind-spots skill that runs on the user's PR reviews. Only true is accepted — the blind-spot check is single-active, so you switch by selecting a different skill, not by deactivating the current one."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.review_hog#ReviewHogBlindSpotsPartialUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.review_hog#ReviewHogBlindSpotsPartialUpdateRequest"
+      },
+      "output": {
+        "target": "com.posthog.review_hog#ReviewBlindSpotsConfig"
+      },
+      "errors": [
+        {
+          "target": "com.posthog.review_hog#BadRequest"
+        },
+        {
+          "target": "com.posthog.review_hog#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/api/projects/{project_id}/review_hog/blind_spots/{skill_name}/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Select the active blind-spots skill\n\nMake a `review-hog-blind-spots-*` skill the single sweep that runs on the requesting user's PR reviews, switching the user's other blind-spots skills off in the same call. Only skills visible to the user — the canonical plus the customs they authored — can be selected; anything else 404s. Upserts the per-user config row, so selecting a freshly authored custom skill works in one call."
+      }
+    },
+    "com.posthog.review_hog#ReviewHogPerspectivesListRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.review_hog#ReviewPerspectiveConfig": {
+      "type": "structure",
+      "members": {
+        "skill_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the `review-hog-perspective-*` skill this row toggles (the perspective's identity).",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this perspective runs on the acting user's PR reviews on this project.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The perspective skill's description, for display in the config UI.",
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The perspective skill's SKILL.md body, for the read-only skill viewer.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.review_hog#ReviewHogPerspectivesListResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.review_hog#ReviewPerspectiveConfig"
+      },
+      "traits": {}
+    },
+    "com.posthog.review_hog#ReviewHogPerspectivesListResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.posthog.review_hog#ReviewHogPerspectivesListResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.posthog.review_hog#ReviewHogPerspectivesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.review_hog#ReviewHogPerspectivesListRequest"
+      },
+      "output": {
+        "target": "com.posthog.review_hog#ReviewHogPerspectivesListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/review_hog/perspectives/",
+          "code": 200
+        },
+        "smithy.api#documentation": "List review perspectives and their enablement\n\nList the `review-hog-perspective-*` skills visible to the requesting user — the canonical perspectives plus the customs they authored — joined with their enable state. The 3 canonical perspectives are auto-seeded enabled on the first read; a custom perspective the user has not switched on shows as disabled."
+      }
+    },
+    "com.posthog.review_hog#ReviewHogPerspectivesPartialUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "skill_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set true to run this perspective on the user's PR reviews, false to stop running it."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.review_hog#ReviewHogPerspectivesPartialUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.review_hog#ReviewHogPerspectivesPartialUpdateRequest"
+      },
+      "output": {
+        "target": "com.posthog.review_hog#ReviewPerspectiveConfig"
+      },
+      "errors": [
+        {
+          "target": "com.posthog.review_hog#BadRequest"
+        },
+        {
+          "target": "com.posthog.review_hog#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/api/projects/{project_id}/review_hog/perspectives/{skill_name}/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Enable or disable a review perspective\n\nToggle whether a `review-hog-perspective-*` skill runs on the requesting user's PR reviews. Only skills visible to the user — the canonicals plus the customs they authored — can be toggled; anything else 404s. Upserts the per-user config row, so enabling a freshly authored custom perspective works in one call. Rejected if it would leave the user with no enabled perspective."
+      }
+    },
+    "com.posthog.review_hog#ReviewHogValidatorsListRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.review_hog#ReviewValidatorConfig": {
+      "type": "structure",
+      "members": {
+        "skill_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the `review-hog-validation-*` skill this row represents (the validator's identity).",
+            "smithy.api#required": {}
+          }
+        },
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this validator is the one that validates the requesting user's PR reviews on this project.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The validator skill's description, for display in the config UI.",
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The validator skill's SKILL.md body, for the read-only skill viewer.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {}
+    },
+    "com.posthog.review_hog#ReviewHogValidatorsListResponseBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.posthog.review_hog#ReviewValidatorConfig"
+      },
+      "traits": {}
+    },
+    "com.posthog.review_hog#ReviewHogValidatorsListResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "com.posthog.review_hog#ReviewHogValidatorsListResponseBodyList",
+          "traits": {
+            "com.distilled.openapi#rawResponse": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.posthog.review_hog#ReviewHogValidatorsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.review_hog#ReviewHogValidatorsListRequest"
+      },
+      "output": {
+        "target": "com.posthog.review_hog#ReviewHogValidatorsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/api/projects/{project_id}/review_hog/validators/",
+          "code": 200
+        },
+        "smithy.api#documentation": "List review validators and which one is active\n\nList the `review-hog-validation-*` skills visible to the requesting user — the canonical validator plus the customs they authored — flagging the one active for them. The canonical validator is auto-seeded active on the first read; a custom validator the user has not selected shows as inactive."
+      }
+    },
+    "com.posthog.review_hog#ReviewHogValidatorsPartialUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "project_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {},
+            "smithy.api#documentation": "Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/."
+          }
+        },
+        "skill_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "active": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Set true to make this the single validator that runs on the user's PR reviews. Only true is accepted — validators are single-active, so you switch by selecting a different one, not by deactivating the current one."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.posthog.review_hog#ReviewHogValidatorsPartialUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.posthog.review_hog#ReviewHogValidatorsPartialUpdateRequest"
+      },
+      "output": {
+        "target": "com.posthog.review_hog#ReviewValidatorConfig"
+      },
+      "errors": [
+        {
+          "target": "com.posthog.review_hog#BadRequest"
+        },
+        {
+          "target": "com.posthog.review_hog#NotFound"
+        }
+      ],
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/api/projects/{project_id}/review_hog/validators/{skill_name}/",
+          "code": 200
+        },
+        "smithy.api#documentation": "Select the active review validator\n\nMake a `review-hog-validation-*` skill the single validator that runs on the requesting user's PR reviews, switching the user's other validators off in the same call. Only skills visible to the user — the canonical plus the customs they authored — can be selected; anything else 404s. Upserts the per-user config row, so selecting a freshly authored custom validator works in one call."
+      }
+    },
+    "com.posthog.review_hog#BadRequest": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 400,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 400
+          }
+        ]
+      }
+    },
+    "com.posthog.review_hog#NotFound": {
+      "type": "structure",
+      "members": {},
+      "traits": {
+        "smithy.api#error": "client",
+        "smithy.api#httpError": 404,
+        "com.distilled.openapi#errorMatchers": [
+          {
+            "status": 404
+          }
+        ]
+      }
+    },
+    "com.posthog.review_hog#ReviewHog": {
+      "type": "service",
+      "version": "1.0.0",
+      "operations": [
+        {
+          "target": "com.posthog.review_hog#ReviewHogBlindSpotsList"
+        },
+        {
+          "target": "com.posthog.review_hog#ReviewHogBlindSpotsPartialUpdate"
+        },
+        {
+          "target": "com.posthog.review_hog#ReviewHogPerspectivesList"
+        },
+        {
+          "target": "com.posthog.review_hog#ReviewHogPerspectivesPartialUpdate"
+        },
+        {
+          "target": "com.posthog.review_hog#ReviewHogValidatorsList"
+        },
+        {
+          "target": "com.posthog.review_hog#ReviewHogValidatorsPartialUpdate"
+        }
+      ],
+      "traits": {
+        "smithy.api#title": "PostHog API"
+      }
+    }
+  }
+}

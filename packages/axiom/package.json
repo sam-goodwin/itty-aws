@@ -1,0 +1,74 @@
+{
+  "name": "@distilled.cloud/axiom",
+  "version": "0.31.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "bun": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./Credentials": {
+      "types": "./src/credentials.ts",
+      "bun": "./src/credentials.ts",
+      "default": "./src/credentials.ts"
+    },
+    "./Errors": {
+      "types": "./src/errors.ts",
+      "bun": "./src/errors.ts",
+      "default": "./src/errors.ts"
+    },
+    "./Traits": {
+      "types": "./src/traits.ts",
+      "bun": "./src/traits.ts",
+      "default": "./src/traits.ts"
+    },
+    "./Protocol": {
+      "types": "./src/protocol.ts",
+      "bun": "./src/protocol.ts",
+      "default": "./src/protocol.ts"
+    },
+    "./Retry": {
+      "types": "./src/retry.ts",
+      "bun": "./src/retry.ts",
+      "default": "./src/retry.ts"
+    },
+    "./edge-ingest": {
+      "types": "./src/edge-ingest.ts",
+      "bun": "./src/edge-ingest.ts",
+      "default": "./src/edge-ingest.ts"
+    },
+    "./edge-query": {
+      "types": "./src/edge-query.ts",
+      "bun": "./src/edge-query.ts",
+      "default": "./src/edge-query.ts"
+    },
+    "./*": {
+      "types": "./src/services/*.ts",
+      "bun": "./src/services/*.ts",
+      "default": "./src/services/*.ts"
+    }
+  },
+  "scripts": {
+    "convert": "bun scripts/convert.ts",
+    "generate": "bun scripts/convert.ts && bun scripts/generate.ts",
+    "typecheck": "tsgo -p tsconfig.json",
+    "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/docs && git -C specs/docs checkout -- .",
+    "specs:update": "git -C specs/docs fetch && git -C specs/docs checkout main && git -C specs/docs pull"
+  },
+  "dependencies": {
+    "@distilled.cloud/core": "workspace:*",
+    "@effect/platform-bun": "catalog:",
+    "effect": "catalog:"
+  },
+  "devDependencies": {
+    "@types/bun": "catalog:",
+    "@types/node": "catalog:"
+  }
+}
