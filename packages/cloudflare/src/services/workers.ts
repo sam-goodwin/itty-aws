@@ -332,13 +332,12 @@ interface ListBetaWorkersResponseResult {
   /** Name of the referencing Worker. */
   name: string;
 }
-const ListBetaWorkersResponseResult =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-    }),
-  ) as unknown as Schema.Codec<ListBetaWorkersResponseResult>;
+const ListBetaWorkersResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    name: Schema.String,
+  }),
+) as unknown as Schema.Codec<ListBetaWorkersResponseResult>;
 
 interface ListBetaWorkersResponseResultInfo {
   count?: number | null;
@@ -346,22 +345,21 @@ interface ListBetaWorkersResponseResultInfo {
   perPage?: number | null;
   totalCount?: number | null;
 }
-const ListBetaWorkersResponseResultInfo =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(
-      Schema.encodeKeys({
-        count: "count",
-        page: "page",
-        perPage: "per_page",
-        totalCount: "total_count",
-      }),
-    ),
-  ) as unknown as Schema.Codec<ListBetaWorkersResponseResultInfo>;
+const ListBetaWorkersResponseResultInfo = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    count: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    page: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    perPage: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    totalCount: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(
+    Schema.encodeKeys({
+      count: "count",
+      page: "page",
+      perPage: "per_page",
+      totalCount: "total_count",
+    }),
+  ),
+) as unknown as Schema.Codec<ListBetaWorkersResponseResultInfo>;
 
 interface Logs {
   /** A list of destinations where logs will be exported to. */
@@ -702,14 +700,13 @@ interface WorkersBindingKindAISearchNamespace {
   /** The kind of resource that the binding provides. */
   type: "ai_search_namespace";
 }
-const WorkersBindingKindAISearchNamespace =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.String,
-      namespace: Schema.String,
-      type: Schema.Literal("ai_search_namespace"),
-    }),
-  ) as unknown as Schema.Codec<WorkersBindingKindAISearchNamespace>;
+const WorkersBindingKindAISearchNamespace = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    namespace: Schema.String,
+    type: Schema.Literal("ai_search_namespace"),
+  }),
+) as unknown as Schema.Codec<WorkersBindingKindAISearchNamespace>;
 
 interface WorkersBindingKindAnalyticsEngine {
   /** The name of the dataset to bind to. */
@@ -719,14 +716,13 @@ interface WorkersBindingKindAnalyticsEngine {
   /** The kind of resource that the binding provides. */
   type: "analytics_engine";
 }
-const WorkersBindingKindAnalyticsEngine =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataset: Schema.String,
-      name: Schema.String,
-      type: Schema.Literal("analytics_engine"),
-    }),
-  ) as unknown as Schema.Codec<WorkersBindingKindAnalyticsEngine>;
+const WorkersBindingKindAnalyticsEngine = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    dataset: Schema.String,
+    name: Schema.String,
+    type: Schema.Literal("analytics_engine"),
+  }),
+) as unknown as Schema.Codec<WorkersBindingKindAnalyticsEngine>;
 
 interface WorkersBindingKindAssets {
   /** A JavaScript variable name for the binding. */
@@ -848,15 +844,14 @@ interface WorkersBindingKindDispatchNamespace {
     } | null;
   } | null;
 }
-const WorkersBindingKindDispatchNamespace =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.String,
-      namespace: Schema.String,
-      type: Schema.Literal("dispatch_namespace"),
-      outbound: Schema.optional(Schema.Union([Outbound, Schema.Null])),
-    }),
-  ) as unknown as Schema.Codec<WorkersBindingKindDispatchNamespace>;
+const WorkersBindingKindDispatchNamespace = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    namespace: Schema.String,
+    type: Schema.Literal("dispatch_namespace"),
+    outbound: Schema.optional(Schema.Union([Outbound, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<WorkersBindingKindDispatchNamespace>;
 
 interface WorkersBindingKindDurableObjectNamespace {
   /** A JavaScript variable name for the binding. */
@@ -874,8 +869,8 @@ interface WorkersBindingKindDurableObjectNamespace {
   /** The script where the Durable Object is defined, if it is external to this Worker. */
   scriptName?: string | null;
 }
-const WorkersBindingKindDurableObjectNamespace =
-  /*@__PURE__*/ Schema.suspend(() =>
+const WorkersBindingKindDurableObjectNamespace = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       name: Schema.String,
       type: Schema.Literal("durable_object_namespace"),
@@ -897,7 +892,7 @@ const WorkersBindingKindDurableObjectNamespace =
         scriptName: "script_name",
       }),
     ),
-  ) as unknown as Schema.Codec<WorkersBindingKindDurableObjectNamespace>;
+) as unknown as Schema.Codec<WorkersBindingKindDurableObjectNamespace>;
 
 interface WorkersBindingKindHyperdrive {
   /** Identifier of the Hyperdrive connection to bind to. */
@@ -978,20 +973,19 @@ interface WorkersBindingKindKVNamespace {
   /** The kind of resource that the binding provides. */
   type: "kv_namespace";
 }
-const WorkersBindingKindKVNamespace =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.String,
-      namespaceId: Schema.String,
-      type: Schema.Literal("kv_namespace"),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        namespaceId: "namespace_id",
-        type: "type",
-      }),
-    ),
-  ) as unknown as Schema.Codec<WorkersBindingKindKVNamespace>;
+const WorkersBindingKindKVNamespace = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    namespaceId: Schema.String,
+    type: Schema.Literal("kv_namespace"),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      namespaceId: "namespace_id",
+      type: "type",
+    }),
+  ),
+) as unknown as Schema.Codec<WorkersBindingKindKVNamespace>;
 
 interface WorkersBindingKindMedia {
   /** A JavaScript variable name for the binding. */
@@ -1014,20 +1008,19 @@ interface WorkersBindingKindMTLSCertificate {
   /** The kind of resource that the binding provides. */
   type: "mtls_certificate";
 }
-const WorkersBindingKindMTLSCertificate =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificateId: Schema.String,
-      name: Schema.String,
-      type: Schema.Literal("mtls_certificate"),
-    }).pipe(
-      Schema.encodeKeys({
-        certificateId: "certificate_id",
-        name: "name",
-        type: "type",
-      }),
-    ),
-  ) as unknown as Schema.Codec<WorkersBindingKindMTLSCertificate>;
+const WorkersBindingKindMTLSCertificate = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    certificateId: Schema.String,
+    name: Schema.String,
+    type: Schema.Literal("mtls_certificate"),
+  }).pipe(
+    Schema.encodeKeys({
+      certificateId: "certificate_id",
+      name: "name",
+      type: "type",
+    }),
+  ),
+) as unknown as Schema.Codec<WorkersBindingKindMTLSCertificate>;
 
 interface WorkersBindingKindPlainText {
   /** A JavaScript variable name for the binding. */
@@ -1264,11 +1257,7 @@ const WorkersBindingKindVectorize = /*@__PURE__*/ Schema.suspend(() =>
     name: Schema.String,
     type: Schema.Literal("vectorize"),
   }).pipe(
-    Schema.encodeKeys({
-      indexName: "index_name",
-      name: "name",
-      type: "type",
-    }),
+    Schema.encodeKeys({ indexName: "index_name", name: "name", type: "type" }),
   ),
 ) as unknown as Schema.Codec<WorkersBindingKindVectorize>;
 
@@ -1278,13 +1267,12 @@ interface WorkersBindingKindVersionMetadata {
   /** The kind of resource that the binding provides. */
   type: "version_metadata";
 }
-const WorkersBindingKindVersionMetadata =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.String,
-      type: Schema.Literal("version_metadata"),
-    }),
-  ) as unknown as Schema.Codec<WorkersBindingKindVersionMetadata>;
+const WorkersBindingKindVersionMetadata = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literal("version_metadata"),
+  }),
+) as unknown as Schema.Codec<WorkersBindingKindVersionMetadata>;
 
 interface WorkersBindingKindSecretsStoreSecret {
   /** A JavaScript variable name for the binding. */
@@ -1296,22 +1284,21 @@ interface WorkersBindingKindSecretsStoreSecret {
   /** The kind of resource that the binding provides. */
   type: "secrets_store_secret";
 }
-const WorkersBindingKindSecretsStoreSecret =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.String,
-      secretName: Schema.String,
-      storeId: Schema.String,
-      type: Schema.Literal("secrets_store_secret"),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        secretName: "secret_name",
-        storeId: "store_id",
-        type: "type",
-      }),
-    ),
-  ) as unknown as Schema.Codec<WorkersBindingKindSecretsStoreSecret>;
+const WorkersBindingKindSecretsStoreSecret = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    secretName: Schema.String,
+    storeId: Schema.String,
+    type: Schema.Literal("secrets_store_secret"),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      secretName: "secret_name",
+      storeId: "store_id",
+      type: "type",
+    }),
+  ),
+) as unknown as Schema.Codec<WorkersBindingKindSecretsStoreSecret>;
 
 interface WorkersBindingKindFlagship {
   /** ID of the Flagship app to bind to for feature flag evaluation. */
@@ -1438,11 +1425,7 @@ const WorkersBindingKindVPCService = /*@__PURE__*/ Schema.suspend(() =>
     serviceId: Schema.String,
     type: Schema.Literal("vpc_service"),
   }).pipe(
-    Schema.encodeKeys({
-      name: "name",
-      serviceId: "service_id",
-      type: "type",
-    }),
+    Schema.encodeKeys({ name: "name", serviceId: "service_id", type: "type" }),
   ),
 ) as unknown as Schema.Codec<WorkersBindingKindVPCService>;
 
@@ -1476,27 +1459,25 @@ interface GetBetaWorkerVersionResponseBinding35 {
   name: string;
   type: "worker_loader";
 }
-const GetBetaWorkerVersionResponseBinding35 =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.String,
-      type: Schema.Literal("worker_loader"),
-    }),
-  ) as unknown as Schema.Codec<GetBetaWorkerVersionResponseBinding35>;
+const GetBetaWorkerVersionResponseBinding35 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literal("worker_loader"),
+  }),
+) as unknown as Schema.Codec<GetBetaWorkerVersionResponseBinding35>;
 
 interface GetBetaWorkerVersionResponseBinding36 {
   name: string;
   type: "artifacts";
   namespace: string;
 }
-const GetBetaWorkerVersionResponseBinding36 =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.String,
-      type: Schema.Literal("artifacts"),
-      namespace: Schema.String,
-    }),
-  ) as unknown as Schema.Codec<GetBetaWorkerVersionResponseBinding36>;
+const GetBetaWorkerVersionResponseBinding36 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literal("artifacts"),
+    namespace: Schema.String,
+  }),
+) as unknown as Schema.Codec<GetBetaWorkerVersionResponseBinding36>;
 
 interface Container {
   /** Select which Durable Object class should get this container attached. */
@@ -1611,22 +1592,17 @@ interface WorkersMultipleStepMigrations {
       }[]
     | null;
 }
-const WorkersMultipleStepMigrations =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      oldTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      steps: Schema.optional(
-        Schema.Union([Schema.Array(MigrationStepParam), Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        newTag: "new_tag",
-        oldTag: "old_tag",
-        steps: "steps",
-      }),
+const WorkersMultipleStepMigrations = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    newTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    oldTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    steps: Schema.optional(
+      Schema.Union([Schema.Array(MigrationStepParam), Schema.Null]),
     ),
-  ) as unknown as Schema.Codec<WorkersMultipleStepMigrations>;
+  }).pipe(
+    Schema.encodeKeys({ newTag: "new_tag", oldTag: "old_tag", steps: "steps" }),
+  ),
+) as unknown as Schema.Codec<WorkersMultipleStepMigrations>;
 
 interface Module {
   /** The base64-encoded module content. */
@@ -1696,13 +1672,13 @@ interface GetBetaWorkerVersionResponsePlacement4 {
   /** Cloud region for targeted placement in format 'provider:region'. */
   region: string;
 }
-const GetBetaWorkerVersionResponsePlacement4 =
-  /*@__PURE__*/ Schema.suspend(() =>
+const GetBetaWorkerVersionResponsePlacement4 = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       mode: Schema.Literal("targeted"),
       region: Schema.String,
     }),
-  ) as unknown as Schema.Codec<GetBetaWorkerVersionResponsePlacement4>;
+) as unknown as Schema.Codec<GetBetaWorkerVersionResponsePlacement4>;
 
 interface GetBetaWorkerVersionResponsePlacement5 {
   /** HTTP hostname for targeted placement. */
@@ -1710,13 +1686,13 @@ interface GetBetaWorkerVersionResponsePlacement5 {
   /** Targeted placement mode. */
   mode: "targeted";
 }
-const GetBetaWorkerVersionResponsePlacement5 =
-  /*@__PURE__*/ Schema.suspend(() =>
+const GetBetaWorkerVersionResponsePlacement5 = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       hostname: Schema.String,
       mode: Schema.Literal("targeted"),
     }),
-  ) as unknown as Schema.Codec<GetBetaWorkerVersionResponsePlacement5>;
+) as unknown as Schema.Codec<GetBetaWorkerVersionResponsePlacement5>;
 
 interface GetBetaWorkerVersionResponsePlacement6 {
   /** TCP host and port for targeted placement. */
@@ -1724,13 +1700,13 @@ interface GetBetaWorkerVersionResponsePlacement6 {
   /** Targeted placement mode. */
   mode: "targeted";
 }
-const GetBetaWorkerVersionResponsePlacement6 =
-  /*@__PURE__*/ Schema.suspend(() =>
+const GetBetaWorkerVersionResponsePlacement6 = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       host: Schema.String,
       mode: Schema.Literal("targeted"),
     }),
-  ) as unknown as Schema.Codec<GetBetaWorkerVersionResponsePlacement6>;
+) as unknown as Schema.Codec<GetBetaWorkerVersionResponsePlacement6>;
 
 interface GetBetaWorkerVersionResponsePlacement7 {
   /** Targeted placement mode. */
@@ -1738,13 +1714,13 @@ interface GetBetaWorkerVersionResponsePlacement7 {
   /** Array of placement targets (currently limited to single target). */
   target: ({ region: string } | { hostname: string } | { host: string })[];
 }
-const GetBetaWorkerVersionResponsePlacement7 =
-  /*@__PURE__*/ Schema.suspend(() =>
+const GetBetaWorkerVersionResponsePlacement7 = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       mode: Schema.Literal("targeted"),
       target: Schema.Array(Schema.Union([Region, Hostname, Host])),
     }),
-  ) as unknown as Schema.Codec<GetBetaWorkerVersionResponsePlacement7>;
+) as unknown as Schema.Codec<GetBetaWorkerVersionResponsePlacement7>;
 
 interface ListBetaWorkerVersionsResponseResult {
   /** Version identifier. */
@@ -1982,134 +1958,129 @@ interface ListBetaWorkerVersionsResponseResult {
   /** @deprecated Usage model for the version. */
   usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
-const ListBetaWorkerVersionsResponseResult =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.String,
-      createdOn: Schema.String,
-      number: Schema.Number,
-      urls: Schema.Array(Schema.String),
-      annotations: Schema.optional(Schema.Union([Annotations, Schema.Null])),
-      assets: Schema.optional(Schema.Union([Assets, Schema.Null])),
-      bindings: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              WorkersBindingKindSecretKey,
-              WorkersBindingKindRatelimit,
-              WorkersBindingKindSecretsStoreSecret,
-              WorkersBindingKindAISearch,
-              WorkersBindingKindAISearchNamespace,
-              WorkersBindingKindAnalyticsEngine,
-              WorkersBindingKindD1,
-              WorkersBindingKindDataBlob,
-              WorkersBindingKindDispatchNamespace,
-              WorkersBindingKindHyperdrive,
-              WorkersBindingKindJson,
-              WorkersBindingKindKVNamespace,
-              WorkersBindingKindMTLSCertificate,
-              WorkersBindingKindPlainText,
-              WorkersBindingKindPipelines,
-              WorkersBindingKindQueue,
-              WorkersBindingKindR2Bucket,
-              WorkersBindingKindService,
-              WorkersBindingKindTextBlob,
-              WorkersBindingKindVectorize,
-              WorkersBindingKindFlagship,
-              WorkersBindingKindWorkflow,
-              WorkersBindingKindWasmModule,
-              WorkersBindingKindVPCService,
-              GetBetaWorkerVersionResponseBinding36,
-              WorkersBindingKindAI,
-              WorkersBindingKindAssets,
-              WorkersBindingKindBrowser,
-              WorkersBindingKindDurableObjectNamespace,
-              WorkersBindingKindInherit,
-              WorkersBindingKindImages,
-              WorkersBindingKindMedia,
-              WorkersBindingKindSecretText,
-              WorkersBindingKindSendEmail,
-              WorkersBindingKindVersionMetadata,
-              WorkersBindingKindVPCNetwork,
-              GetBetaWorkerVersionResponseBinding35,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      compatibilityDate: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      compatibilityFlags: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      containers: Schema.optional(
-        Schema.Union([Schema.Array(Container), Schema.Null]),
-      ),
-      limits: Schema.optional(Schema.Union([Limits, Schema.Null])),
-      mainModule: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      migrationTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      migrations: Schema.optional(
-        Schema.Union([
-          Schema.Union([Schema.Unknown, WorkersMultipleStepMigrations]),
-          Schema.Null,
-        ]),
-      ),
-      modules: Schema.optional(
-        Schema.Union([Schema.Array(Module), Schema.Null]),
-      ),
-      placement: Schema.optional(
-        Schema.Union([
+const ListBetaWorkerVersionsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    number: Schema.Number,
+    urls: Schema.Array(Schema.String),
+    annotations: Schema.optional(Schema.Union([Annotations, Schema.Null])),
+    assets: Schema.optional(Schema.Union([Assets, Schema.Null])),
+    bindings: Schema.optional(
+      Schema.Union([
+        Schema.Array(
           Schema.Union([
-            GetBetaWorkerVersionResponsePlacement4,
-            GetBetaWorkerVersionResponsePlacement5,
-            GetBetaWorkerVersionResponsePlacement6,
-            GetBetaWorkerVersionResponsePlacement7,
-            Mode,
-            Region,
-            Hostname,
-            Host,
+            WorkersBindingKindSecretKey,
+            WorkersBindingKindRatelimit,
+            WorkersBindingKindSecretsStoreSecret,
+            WorkersBindingKindAISearch,
+            WorkersBindingKindAISearchNamespace,
+            WorkersBindingKindAnalyticsEngine,
+            WorkersBindingKindD1,
+            WorkersBindingKindDataBlob,
+            WorkersBindingKindDispatchNamespace,
+            WorkersBindingKindHyperdrive,
+            WorkersBindingKindJson,
+            WorkersBindingKindKVNamespace,
+            WorkersBindingKindMTLSCertificate,
+            WorkersBindingKindPlainText,
+            WorkersBindingKindPipelines,
+            WorkersBindingKindQueue,
+            WorkersBindingKindR2Bucket,
+            WorkersBindingKindService,
+            WorkersBindingKindTextBlob,
+            WorkersBindingKindVectorize,
+            WorkersBindingKindFlagship,
+            WorkersBindingKindWorkflow,
+            WorkersBindingKindWasmModule,
+            WorkersBindingKindVPCService,
+            GetBetaWorkerVersionResponseBinding36,
+            WorkersBindingKindAI,
+            WorkersBindingKindAssets,
+            WorkersBindingKindBrowser,
+            WorkersBindingKindDurableObjectNamespace,
+            WorkersBindingKindInherit,
+            WorkersBindingKindImages,
+            WorkersBindingKindMedia,
+            WorkersBindingKindSecretText,
+            WorkersBindingKindSendEmail,
+            WorkersBindingKindVersionMetadata,
+            WorkersBindingKindVPCNetwork,
+            GetBetaWorkerVersionResponseBinding35,
           ]),
-          Schema.Null,
-        ]),
-      ),
-      source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      startupTimeMs: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      usageModel: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["standard", "bundled", "unbound"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        id: "id",
-        createdOn: "created_on",
-        number: "number",
-        urls: "urls",
-        annotations: "annotations",
-        assets: "assets",
-        bindings: "bindings",
-        compatibilityDate: "compatibility_date",
-        compatibilityFlags: "compatibility_flags",
-        containers: "containers",
-        limits: "limits",
-        mainModule: "main_module",
-        migrationTag: "migration_tag",
-        migrations: "migrations",
-        modules: "modules",
-        placement: "placement",
-        source: "source",
-        startupTimeMs: "startup_time_ms",
-        usageModel: "usage_model",
-      }),
+        ),
+        Schema.Null,
+      ]),
     ),
-  ) as unknown as Schema.Codec<ListBetaWorkerVersionsResponseResult>;
+    compatibilityDate: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    compatibilityFlags: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    containers: Schema.optional(
+      Schema.Union([Schema.Array(Container), Schema.Null]),
+    ),
+    limits: Schema.optional(Schema.Union([Limits, Schema.Null])),
+    mainModule: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    migrationTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    migrations: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Unknown, WorkersMultipleStepMigrations]),
+        Schema.Null,
+      ]),
+    ),
+    modules: Schema.optional(Schema.Union([Schema.Array(Module), Schema.Null])),
+    placement: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          GetBetaWorkerVersionResponsePlacement4,
+          GetBetaWorkerVersionResponsePlacement5,
+          GetBetaWorkerVersionResponsePlacement6,
+          GetBetaWorkerVersionResponsePlacement7,
+          Mode,
+          Region,
+          Hostname,
+          Host,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    startupTimeMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    usageModel: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      id: "id",
+      createdOn: "created_on",
+      number: "number",
+      urls: "urls",
+      annotations: "annotations",
+      assets: "assets",
+      bindings: "bindings",
+      compatibilityDate: "compatibility_date",
+      compatibilityFlags: "compatibility_flags",
+      containers: "containers",
+      limits: "limits",
+      mainModule: "main_module",
+      migrationTag: "migration_tag",
+      migrations: "migrations",
+      modules: "modules",
+      placement: "placement",
+      source: "source",
+      startupTimeMs: "startup_time_ms",
+      usageModel: "usage_model",
+    }),
+  ),
+) as unknown as Schema.Codec<ListBetaWorkerVersionsResponseResult>;
 
 interface Annotations2 {
   /** Human-readable message about the version. Truncated to 1000 bytes if longer. */
@@ -2145,8 +2116,8 @@ interface WorkersBindingKindDurableObjectNamespace2 {
   /** The script where the Durable Object is defined, if it is external to this Worker. */
   scriptName?: string | null;
 }
-const WorkersBindingKindDurableObjectNamespace2 =
-  /*@__PURE__*/ Schema.suspend(() =>
+const WorkersBindingKindDurableObjectNamespace2 = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       name: Schema.String,
       type: Schema.Literal("durable_object_namespace"),
@@ -2168,7 +2139,7 @@ const WorkersBindingKindDurableObjectNamespace2 =
         scriptName: "script_name",
       }),
     ),
-  ) as unknown as Schema.Codec<WorkersBindingKindDurableObjectNamespace2>;
+) as unknown as Schema.Codec<WorkersBindingKindDurableObjectNamespace2>;
 
 interface WorkersBindingKindSecretText2 {
   /** A JavaScript variable name for the binding. */
@@ -2178,14 +2149,13 @@ interface WorkersBindingKindSecretText2 {
   /** The kind of resource that the binding provides. */
   type: "secret_text";
 }
-const WorkersBindingKindSecretText2 =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.String,
-      text: Schema.String,
-      type: Schema.Literal("secret_text"),
-    }),
-  ) as unknown as Schema.Codec<WorkersBindingKindSecretText2>;
+const WorkersBindingKindSecretText2 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    text: Schema.String,
+    type: Schema.Literal("secret_text"),
+  }),
+) as unknown as Schema.Codec<WorkersBindingKindSecretText2>;
 
 interface WorkersBindingKindSecretKey2 {
   /** Algorithm-specific key parameters. [Learn more](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#algorithm). */
@@ -2700,60 +2670,59 @@ interface WorkersObservabilityFilterLeaf {
   /** Comparison value. Must match actual values in your data — verify with the values endpoint. Ensure the value type (string/number/boolean) matches the field type. String comparisons are case-sensitive.  */
   value?: string | number | boolean | null;
 }
-const WorkersObservabilityFilterLeaf =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.String,
-      operation: Schema.Union([
-        Schema.Literals([
-          "includes",
-          "not_includes",
-          "starts_with",
-          "ends_with",
-          "regex",
-          "exists",
-          "is_null",
-          "in",
-          "not_in",
-          "eq",
-          "neq",
-          "gt",
-          "gte",
-          "lt",
-          "lte",
-          "=",
-          "!=",
-          ">",
-          ">=",
-          "<",
-          "<=",
-          "INCLUDES",
-          "DOES_NOT_INCLUDE",
-          "MATCH_REGEX",
-          "EXISTS",
-          "DOES_NOT_EXIST",
-          "IN",
-          "NOT_IN",
-          "STARTS_WITH",
-          "ENDS_WITH",
-        ]),
-        Schema.String,
+const WorkersObservabilityFilterLeaf = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    key: Schema.String,
+    operation: Schema.Union([
+      Schema.Literals([
+        "includes",
+        "not_includes",
+        "starts_with",
+        "ends_with",
+        "regex",
+        "exists",
+        "is_null",
+        "in",
+        "not_in",
+        "eq",
+        "neq",
+        "gt",
+        "gte",
+        "lt",
+        "lte",
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "INCLUDES",
+        "DOES_NOT_INCLUDE",
+        "MATCH_REGEX",
+        "EXISTS",
+        "DOES_NOT_EXIST",
+        "IN",
+        "NOT_IN",
+        "STARTS_WITH",
+        "ENDS_WITH",
       ]),
-      type: Schema.Union([
-        Schema.Literals(["string", "number", "boolean"]),
-        Schema.String,
+      Schema.String,
+    ]),
+    type: Schema.Union([
+      Schema.Literals(["string", "number", "boolean"]),
+      Schema.String,
+    ]),
+    kind: Schema.optional(
+      Schema.Union([Schema.Literal("filter"), Schema.Null]),
+    ),
+    value: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
+        Schema.Null,
       ]),
-      kind: Schema.optional(
-        Schema.Union([Schema.Literal("filter"), Schema.Null]),
-      ),
-      value: Schema.optional(
-        Schema.Union([
-          Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
-          Schema.Null,
-        ]),
-      ),
-    }),
-  ) as unknown as Schema.Codec<WorkersObservabilityFilterLeaf>;
+    ),
+  }),
+) as unknown as Schema.Codec<WorkersObservabilityFilterLeaf>;
 
 interface GroupBy {
   type: "string" | "number" | "boolean" | (string & {});
@@ -3114,8 +3083,8 @@ interface ListObservabilityQueriesResponseResult {
   updated: string;
   updatedBy: string;
 }
-const ListObservabilityQueriesResponseResult =
-  /*@__PURE__*/ Schema.suspend(() =>
+const ListObservabilityQueriesResponseResult = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       id: Schema.String,
       adhoc: Schema.Boolean,
@@ -3127,7 +3096,7 @@ const ListObservabilityQueriesResponseResult =
       updated: Schema.String,
       updatedBy: Schema.String,
     }),
-  ) as unknown as Schema.Codec<ListObservabilityQueriesResponseResult>;
+) as unknown as Schema.Codec<ListObservabilityQueriesResponseResult>;
 
 interface Needle2 {
   value: unknown;
@@ -4863,8 +4832,8 @@ interface KeysObservabilityTelemetryResponseResult {
   lastSeenAt: number;
   type: "string" | "boolean" | "number" | (string & {});
 }
-const KeysObservabilityTelemetryResponseResult =
-  /*@__PURE__*/ Schema.suspend(() =>
+const KeysObservabilityTelemetryResponseResult = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       key: Schema.String,
       lastSeenAt: Schema.Number,
@@ -4873,7 +4842,7 @@ const KeysObservabilityTelemetryResponseResult =
         Schema.String,
       ]),
     }),
-  ) as unknown as Schema.Codec<KeysObservabilityTelemetryResponseResult>;
+) as unknown as Schema.Codec<KeysObservabilityTelemetryResponseResult>;
 
 interface Query2 {
   id: string;
@@ -5610,8 +5579,8 @@ interface ValuesObservabilityTelemetryResponseResult {
   type: "string" | "boolean" | "number" | (string & {});
   value: string | number | boolean;
 }
-const ValuesObservabilityTelemetryResponseResult =
-  /*@__PURE__*/ Schema.suspend(() =>
+const ValuesObservabilityTelemetryResponseResult = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       dataset: Schema.String,
       key: Schema.String,
@@ -5621,7 +5590,7 @@ const ValuesObservabilityTelemetryResponseResult =
       ]),
       value: Schema.Union([Schema.String, Schema.Number, Schema.Boolean]),
     }),
-  ) as unknown as Schema.Codec<ValuesObservabilityTelemetryResponseResult>;
+) as unknown as Schema.Codec<ValuesObservabilityTelemetryResponseResult>;
 
 interface ListRoutesResponseResult {
   /** Identifier. */
@@ -5783,34 +5752,31 @@ interface ListScriptsResponseResultPlacement {
     | (string & {})
     | null;
 }
-const ListScriptsResponseResultPlacement =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mode: Schema.Literal("smart"),
-      lastAnalyzedAt: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      status: Schema.optional(
+const ListScriptsResponseResultPlacement = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    mode: Schema.Literal("smart"),
+    lastAnalyzedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "SUCCESS",
-              "UNSUPPORTED_APPLICATION",
-              "INSUFFICIENT_INVOCATIONS",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "SUCCESS",
+            "UNSUPPORTED_APPLICATION",
+            "INSUFFICIENT_INVOCATIONS",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        mode: "mode",
-        lastAnalyzedAt: "last_analyzed_at",
-        status: "status",
-      }),
+        Schema.Null,
+      ]),
     ),
-  ) as unknown as Schema.Codec<ListScriptsResponseResultPlacement>;
+  }).pipe(
+    Schema.encodeKeys({
+      mode: "mode",
+      lastAnalyzedAt: "last_analyzed_at",
+      status: "status",
+    }),
+  ),
+) as unknown as Schema.Codec<ListScriptsResponseResultPlacement>;
 
 interface ListScriptsResponseResultPlacement1 {
   /** Cloud region for targeted placement in format 'provider:region'. */
@@ -5825,34 +5791,31 @@ interface ListScriptsResponseResultPlacement1 {
     | (string & {})
     | null;
 }
-const ListScriptsResponseResultPlacement1 =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      region: Schema.String,
-      lastAnalyzedAt: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      status: Schema.optional(
+const ListScriptsResponseResultPlacement1 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    region: Schema.String,
+    lastAnalyzedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "SUCCESS",
-              "UNSUPPORTED_APPLICATION",
-              "INSUFFICIENT_INVOCATIONS",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "SUCCESS",
+            "UNSUPPORTED_APPLICATION",
+            "INSUFFICIENT_INVOCATIONS",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        region: "region",
-        lastAnalyzedAt: "last_analyzed_at",
-        status: "status",
-      }),
+        Schema.Null,
+      ]),
     ),
-  ) as unknown as Schema.Codec<ListScriptsResponseResultPlacement1>;
+  }).pipe(
+    Schema.encodeKeys({
+      region: "region",
+      lastAnalyzedAt: "last_analyzed_at",
+      status: "status",
+    }),
+  ),
+) as unknown as Schema.Codec<ListScriptsResponseResultPlacement1>;
 
 interface ListScriptsResponseResultPlacement2 {
   /** HTTP hostname for targeted placement. */
@@ -5867,34 +5830,31 @@ interface ListScriptsResponseResultPlacement2 {
     | (string & {})
     | null;
 }
-const ListScriptsResponseResultPlacement2 =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostname: Schema.String,
-      lastAnalyzedAt: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      status: Schema.optional(
+const ListScriptsResponseResultPlacement2 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    hostname: Schema.String,
+    lastAnalyzedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "SUCCESS",
-              "UNSUPPORTED_APPLICATION",
-              "INSUFFICIENT_INVOCATIONS",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "SUCCESS",
+            "UNSUPPORTED_APPLICATION",
+            "INSUFFICIENT_INVOCATIONS",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        hostname: "hostname",
-        lastAnalyzedAt: "last_analyzed_at",
-        status: "status",
-      }),
+        Schema.Null,
+      ]),
     ),
-  ) as unknown as Schema.Codec<ListScriptsResponseResultPlacement2>;
+  }).pipe(
+    Schema.encodeKeys({
+      hostname: "hostname",
+      lastAnalyzedAt: "last_analyzed_at",
+      status: "status",
+    }),
+  ),
+) as unknown as Schema.Codec<ListScriptsResponseResultPlacement2>;
 
 interface ListScriptsResponseResultPlacement3 {
   /** TCP host and port for targeted placement. */
@@ -5909,34 +5869,31 @@ interface ListScriptsResponseResultPlacement3 {
     | (string & {})
     | null;
 }
-const ListScriptsResponseResultPlacement3 =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      host: Schema.String,
-      lastAnalyzedAt: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      status: Schema.optional(
+const ListScriptsResponseResultPlacement3 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    host: Schema.String,
+    lastAnalyzedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "SUCCESS",
-              "UNSUPPORTED_APPLICATION",
-              "INSUFFICIENT_INVOCATIONS",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "SUCCESS",
+            "UNSUPPORTED_APPLICATION",
+            "INSUFFICIENT_INVOCATIONS",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        host: "host",
-        lastAnalyzedAt: "last_analyzed_at",
-        status: "status",
-      }),
+        Schema.Null,
+      ]),
     ),
-  ) as unknown as Schema.Codec<ListScriptsResponseResultPlacement3>;
+  }).pipe(
+    Schema.encodeKeys({
+      host: "host",
+      lastAnalyzedAt: "last_analyzed_at",
+      status: "status",
+    }),
+  ),
+) as unknown as Schema.Codec<ListScriptsResponseResultPlacement3>;
 
 interface ListScriptsResponseResultPlacement4 {
   /** Targeted placement mode. */
@@ -5953,36 +5910,33 @@ interface ListScriptsResponseResultPlacement4 {
     | (string & {})
     | null;
 }
-const ListScriptsResponseResultPlacement4 =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mode: Schema.Literal("targeted"),
-      region: Schema.String,
-      lastAnalyzedAt: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      status: Schema.optional(
+const ListScriptsResponseResultPlacement4 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    mode: Schema.Literal("targeted"),
+    region: Schema.String,
+    lastAnalyzedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "SUCCESS",
-              "UNSUPPORTED_APPLICATION",
-              "INSUFFICIENT_INVOCATIONS",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "SUCCESS",
+            "UNSUPPORTED_APPLICATION",
+            "INSUFFICIENT_INVOCATIONS",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        mode: "mode",
-        region: "region",
-        lastAnalyzedAt: "last_analyzed_at",
-        status: "status",
-      }),
+        Schema.Null,
+      ]),
     ),
-  ) as unknown as Schema.Codec<ListScriptsResponseResultPlacement4>;
+  }).pipe(
+    Schema.encodeKeys({
+      mode: "mode",
+      region: "region",
+      lastAnalyzedAt: "last_analyzed_at",
+      status: "status",
+    }),
+  ),
+) as unknown as Schema.Codec<ListScriptsResponseResultPlacement4>;
 
 interface ListScriptsResponseResultPlacement5 {
   /** HTTP hostname for targeted placement. */
@@ -5999,36 +5953,33 @@ interface ListScriptsResponseResultPlacement5 {
     | (string & {})
     | null;
 }
-const ListScriptsResponseResultPlacement5 =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostname: Schema.String,
-      mode: Schema.Literal("targeted"),
-      lastAnalyzedAt: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      status: Schema.optional(
+const ListScriptsResponseResultPlacement5 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    hostname: Schema.String,
+    mode: Schema.Literal("targeted"),
+    lastAnalyzedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "SUCCESS",
-              "UNSUPPORTED_APPLICATION",
-              "INSUFFICIENT_INVOCATIONS",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "SUCCESS",
+            "UNSUPPORTED_APPLICATION",
+            "INSUFFICIENT_INVOCATIONS",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        hostname: "hostname",
-        mode: "mode",
-        lastAnalyzedAt: "last_analyzed_at",
-        status: "status",
-      }),
+        Schema.Null,
+      ]),
     ),
-  ) as unknown as Schema.Codec<ListScriptsResponseResultPlacement5>;
+  }).pipe(
+    Schema.encodeKeys({
+      hostname: "hostname",
+      mode: "mode",
+      lastAnalyzedAt: "last_analyzed_at",
+      status: "status",
+    }),
+  ),
+) as unknown as Schema.Codec<ListScriptsResponseResultPlacement5>;
 
 interface ListScriptsResponseResultPlacement6 {
   /** TCP host and port for targeted placement. */
@@ -6045,36 +5996,33 @@ interface ListScriptsResponseResultPlacement6 {
     | (string & {})
     | null;
 }
-const ListScriptsResponseResultPlacement6 =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      host: Schema.String,
-      mode: Schema.Literal("targeted"),
-      lastAnalyzedAt: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      status: Schema.optional(
+const ListScriptsResponseResultPlacement6 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    host: Schema.String,
+    mode: Schema.Literal("targeted"),
+    lastAnalyzedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "SUCCESS",
-              "UNSUPPORTED_APPLICATION",
-              "INSUFFICIENT_INVOCATIONS",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "SUCCESS",
+            "UNSUPPORTED_APPLICATION",
+            "INSUFFICIENT_INVOCATIONS",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        host: "host",
-        mode: "mode",
-        lastAnalyzedAt: "last_analyzed_at",
-        status: "status",
-      }),
+        Schema.Null,
+      ]),
     ),
-  ) as unknown as Schema.Codec<ListScriptsResponseResultPlacement6>;
+  }).pipe(
+    Schema.encodeKeys({
+      host: "host",
+      mode: "mode",
+      lastAnalyzedAt: "last_analyzed_at",
+      status: "status",
+    }),
+  ),
+) as unknown as Schema.Codec<ListScriptsResponseResultPlacement6>;
 
 interface ListScriptsResponseResultPlacement7 {
   /** Targeted placement mode. */
@@ -6091,36 +6039,33 @@ interface ListScriptsResponseResultPlacement7 {
     | (string & {})
     | null;
 }
-const ListScriptsResponseResultPlacement7 =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mode: Schema.Literal("targeted"),
-      target: Schema.Array(Schema.Union([Region, Hostname, Host])),
-      lastAnalyzedAt: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      status: Schema.optional(
+const ListScriptsResponseResultPlacement7 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    mode: Schema.Literal("targeted"),
+    target: Schema.Array(Schema.Union([Region, Hostname, Host])),
+    lastAnalyzedAt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    status: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "SUCCESS",
-              "UNSUPPORTED_APPLICATION",
-              "INSUFFICIENT_INVOCATIONS",
-            ]),
-            Schema.String,
+          Schema.Literals([
+            "SUCCESS",
+            "UNSUPPORTED_APPLICATION",
+            "INSUFFICIENT_INVOCATIONS",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        mode: "mode",
-        target: "target",
-        lastAnalyzedAt: "last_analyzed_at",
-        status: "status",
-      }),
+        Schema.Null,
+      ]),
     ),
-  ) as unknown as Schema.Codec<ListScriptsResponseResultPlacement7>;
+  }).pipe(
+    Schema.encodeKeys({
+      mode: "mode",
+      target: "target",
+      lastAnalyzedAt: "last_analyzed_at",
+      status: "status",
+    }),
+  ),
+) as unknown as Schema.Codec<ListScriptsResponseResultPlacement7>;
 
 interface ConsumerScript {
   /** Name of Worker that is to be the consumer. */
@@ -6514,13 +6459,13 @@ interface PutScriptRequestMetadataBinding37Simple {
   limit: number;
   period: number;
 }
-const PutScriptRequestMetadataBinding37Simple =
-  /*@__PURE__*/ Schema.suspend(() =>
+const PutScriptRequestMetadataBinding37Simple = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       limit: Schema.Number,
       period: Schema.Number,
     }),
-  ) as unknown as Schema.Codec<PutScriptRequestMetadataBinding37Simple>;
+) as unknown as Schema.Codec<PutScriptRequestMetadataBinding37Simple>;
 
 interface PutScriptRequestMetadataBinding37 {
   name: string;
@@ -6528,41 +6473,39 @@ interface PutScriptRequestMetadataBinding37 {
   namespaceId: string;
   simple: { limit: number; period: number };
 }
-const PutScriptRequestMetadataBinding37 =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.String,
-      type: Schema.Literal("ratelimit"),
-      namespaceId: Schema.String,
-      simple: PutScriptRequestMetadataBinding37Simple,
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        type: "type",
-        namespaceId: "namespace_id",
-        simple: "simple",
-      }),
-    ),
-  ) as unknown as Schema.Codec<PutScriptRequestMetadataBinding37>;
+const PutScriptRequestMetadataBinding37 = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    name: Schema.String,
+    type: Schema.Literal("ratelimit"),
+    namespaceId: Schema.String,
+    simple: PutScriptRequestMetadataBinding37Simple,
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      type: "type",
+      namespaceId: "namespace_id",
+      simple: "simple",
+    }),
+  ),
+) as unknown as Schema.Codec<PutScriptRequestMetadataBinding37>;
 
 interface PutScriptRequestMetadataCache {
   enabled?: boolean | null;
   crossVersionCache?: boolean | null;
 }
-const PutScriptRequestMetadataCache =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      crossVersionCache: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        enabled: "enabled",
-        crossVersionCache: "cross_version_cache",
-      }),
+const PutScriptRequestMetadataCache = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    crossVersionCache: Schema.optional(
+      Schema.Union([Schema.Boolean, Schema.Null]),
     ),
-  ) as unknown as Schema.Codec<PutScriptRequestMetadataCache>;
+  }).pipe(
+    Schema.encodeKeys({
+      enabled: "enabled",
+      crossVersionCache: "cross_version_cache",
+    }),
+  ),
+) as unknown as Schema.Codec<PutScriptRequestMetadataCache>;
 
 interface Metadata2 {
   /** Annotations for the version created by this upload. */
@@ -8014,8 +7957,8 @@ interface CreateScriptEdgePreviewRequestMetadata {
   keepAssets?: boolean | null;
   tags?: string[] | null;
 }
-const CreateScriptEdgePreviewRequestMetadata =
-  /*@__PURE__*/ Schema.suspend(() =>
+const CreateScriptEdgePreviewRequestMetadata = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       mainModule: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
       bodyPart: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -8161,7 +8104,7 @@ const CreateScriptEdgePreviewRequestMetadata =
         tags: "tags",
       }),
     ),
-  ) as unknown as Schema.Codec<CreateScriptEdgePreviewRequestMetadata>;
+) as unknown as Schema.Codec<CreateScriptEdgePreviewRequestMetadata>;
 
 interface CreateScriptEdgePreviewRequestWranglerSessionConfig {
   workersDev: true;
@@ -8961,14 +8904,13 @@ interface ListScriptVersionsResponseResultItem {
   /** Sequential version number. */
   number?: number | null;
 }
-const ListScriptVersionsResponseResultItem =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      metadata: Schema.optional(Schema.Union([Metadata4, Schema.Null])),
-      number: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }),
-  ) as unknown as Schema.Codec<ListScriptVersionsResponseResultItem>;
+const ListScriptVersionsResponseResultItem = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    metadata: Schema.optional(Schema.Union([Metadata4, Schema.Null])),
+    number: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }),
+) as unknown as Schema.Codec<ListScriptVersionsResponseResultItem>;
 
 interface ListScriptVersionsResponseResult {
   items?:
@@ -8998,17 +8940,16 @@ interface ListScriptVersionsResponseResult {
       }[]
     | null;
 }
-const ListScriptVersionsResponseResult =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(
-        Schema.Union([
-          Schema.Array(ListScriptVersionsResponseResultItem),
-          Schema.Null,
-        ]),
-      ),
-    }),
-  ) as unknown as Schema.Codec<ListScriptVersionsResponseResult>;
+const ListScriptVersionsResponseResult = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    items: Schema.optional(
+      Schema.Union([
+        Schema.Array(ListScriptVersionsResponseResultItem),
+        Schema.Null,
+      ]),
+    ),
+  }),
+) as unknown as Schema.Codec<ListScriptVersionsResponseResult>;
 
 interface Annotations5 {
   /** Associated alias for a version. */
@@ -9284,41 +9225,37 @@ export interface GetAccountSettingRequest {
   accountId: string;
 }
 
-export const GetAccountSettingRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workers/account-settings",
-      }),
-    ),
-  ) as unknown as Schema.Codec<GetAccountSettingRequest>;
+export const GetAccountSettingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workers/account-settings",
+    }),
+  ),
+) as unknown as Schema.Codec<GetAccountSettingRequest>;
 
 export interface GetAccountSettingResponse {
   defaultUsageModel?: string | null;
   greenCompute?: boolean | null;
 }
 
-export const GetAccountSettingResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultUsageModel: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      greenCompute: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          defaultUsageModel: "default_usage_model",
-          greenCompute: "green_compute",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<GetAccountSettingResponse>;
+export const GetAccountSettingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    defaultUsageModel: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    greenCompute: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        defaultUsageModel: "default_usage_model",
+        greenCompute: "green_compute",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<GetAccountSettingResponse>;
 
 export type GetAccountSettingError = DefaultErrors | InvalidRoute | Forbidden;
 
@@ -9342,47 +9279,43 @@ export interface PutAccountSettingRequest {
   greenCompute?: boolean;
 }
 
-export const PutAccountSettingRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      defaultUsageModel: Schema.optional(Schema.String),
-      greenCompute: Schema.optional(Schema.Boolean),
-    }).pipe(
-      Schema.encodeKeys({
-        defaultUsageModel: "default_usage_model",
-        greenCompute: "green_compute",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/workers/account-settings",
-      }),
-    ),
-  ) as unknown as Schema.Codec<PutAccountSettingRequest>;
+export const PutAccountSettingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    defaultUsageModel: Schema.optional(Schema.String),
+    greenCompute: Schema.optional(Schema.Boolean),
+  }).pipe(
+    Schema.encodeKeys({
+      defaultUsageModel: "default_usage_model",
+      greenCompute: "green_compute",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/workers/account-settings",
+    }),
+  ),
+) as unknown as Schema.Codec<PutAccountSettingRequest>;
 
 export interface PutAccountSettingResponse {
   defaultUsageModel?: string | null;
   greenCompute?: boolean | null;
 }
 
-export const PutAccountSettingResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultUsageModel: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      greenCompute: Schema.optional(
-        Schema.Union([Schema.Boolean, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          defaultUsageModel: "default_usage_model",
-          greenCompute: "green_compute",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<PutAccountSettingResponse>;
+export const PutAccountSettingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    defaultUsageModel: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    greenCompute: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        defaultUsageModel: "default_usage_model",
+        greenCompute: "green_compute",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<PutAccountSettingResponse>;
 
 export type PutAccountSettingError = DefaultErrors | InvalidRoute | Forbidden;
 
@@ -9412,35 +9345,33 @@ export interface CreateAssetUploadRequest {
   body: Record<string, unknown>;
 }
 
-export const CreateAssetUploadRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      base64: Schema.Literal(true).pipe(T.HttpQuery("base64")),
-      jwtToken: Schema.optional(Schema.String).pipe(
-        T.HttpHeader("Authorization"),
-      ),
-      body: Schema.Record(Schema.String, Schema.Unknown).pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/workers/assets/upload",
-        contentType: "multipart",
-      }),
+export const CreateAssetUploadRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    base64: Schema.Literal(true).pipe(T.HttpQuery("base64")),
+    jwtToken: Schema.optional(Schema.String).pipe(
+      T.HttpHeader("Authorization"),
     ),
-  ) as unknown as Schema.Codec<CreateAssetUploadRequest>;
+    body: Schema.Record(Schema.String, Schema.Unknown).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/workers/assets/upload",
+      contentType: "multipart",
+    }),
+  ),
+) as unknown as Schema.Codec<CreateAssetUploadRequest>;
 
 export interface CreateAssetUploadResponse {
   /** A "completion" JWT which can be redeemed when creating a Worker version. */
   jwt?: string | null;
 }
 
-export const CreateAssetUploadResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jwt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<CreateAssetUploadResponse>;
+export const CreateAssetUploadResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    jwt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<CreateAssetUploadResponse>;
 
 export type CreateAssetUploadError = DefaultErrors | InvalidRoute;
 
@@ -9520,25 +9451,24 @@ export interface ListBetaWorkersRequest {
     | (string & {});
 }
 
-export const ListBetaWorkersRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      order: Schema.optional(
-        Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
-      ).pipe(T.HttpQuery("order")),
-      orderBy: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["deployed_on", "updated_on", "created_on", "name"]),
-          Schema.String,
-        ]),
-      ).pipe(T.HttpQuery("order_by")),
-    }).pipe(
-      T.Http({ method: "GET", path: "/accounts/{account_id}/workers/workers" }),
-    ),
-  ) as unknown as Schema.Codec<ListBetaWorkersRequest>;
+export const ListBetaWorkersRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    order: Schema.optional(
+      Schema.Union([Schema.Literals(["asc", "desc"]), Schema.String]),
+    ).pipe(T.HttpQuery("order")),
+    orderBy: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["deployed_on", "updated_on", "created_on", "name"]),
+        Schema.String,
+      ]),
+    ).pipe(T.HttpQuery("order_by")),
+  }).pipe(
+    T.Http({ method: "GET", path: "/accounts/{account_id}/workers/workers" }),
+  ),
+) as unknown as Schema.Codec<ListBetaWorkersRequest>;
 
 export interface ListBetaWorkersResponse {
   result: { id: string; name: string }[];
@@ -9550,15 +9480,14 @@ export interface ListBetaWorkersResponse {
   } | null;
 }
 
-export const ListBetaWorkersResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.Array(ListBetaWorkersResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListBetaWorkersResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Codec<ListBetaWorkersResponse>;
+export const ListBetaWorkersResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListBetaWorkersResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListBetaWorkersResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+) as unknown as Schema.Codec<ListBetaWorkersResponse>;
 
 export type ListBetaWorkersError = DefaultErrors | InvalidRoute;
 
@@ -9614,31 +9543,27 @@ export interface CreateBetaWorkerRequest {
   tailConsumers?: { name: string }[];
 }
 
-export const CreateBetaWorkerRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.String,
-      logpush: Schema.optional(Schema.Boolean),
-      observability: Schema.optional(Observability),
-      subdomain: Schema.optional(Subdomain),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      tailConsumers: Schema.optional(Schema.Array(TailConsumer)),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        logpush: "logpush",
-        observability: "observability",
-        subdomain: "subdomain",
-        tags: "tags",
-        tailConsumers: "tail_consumers",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/workers/workers",
-      }),
-    ),
-  ) as unknown as Schema.Codec<CreateBetaWorkerRequest>;
+export const CreateBetaWorkerRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.String,
+    logpush: Schema.optional(Schema.Boolean),
+    observability: Schema.optional(Observability),
+    subdomain: Schema.optional(Subdomain),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    tailConsumers: Schema.optional(Schema.Array(TailConsumer)),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      logpush: "logpush",
+      observability: "observability",
+      subdomain: "subdomain",
+      tags: "tags",
+      tailConsumers: "tail_consumers",
+    }),
+    T.Http({ method: "POST", path: "/accounts/{account_id}/workers/workers" }),
+  ),
+) as unknown as Schema.Codec<CreateBetaWorkerRequest>;
 
 export interface CreateBetaWorkerResponse {
   /** ID of the referencing Worker. */
@@ -9647,13 +9572,12 @@ export interface CreateBetaWorkerResponse {
   name: string;
 }
 
-export const CreateBetaWorkerResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-    }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<CreateBetaWorkerResponse>;
+export const CreateBetaWorkerResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    name: Schema.String,
+  }).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<CreateBetaWorkerResponse>;
 
 export type CreateBetaWorkerError = DefaultErrors | InvalidRoute;
 
@@ -9703,32 +9627,31 @@ export interface UpdateBetaWorkerRequest {
   tailConsumers?: { name: string }[];
 }
 
-export const UpdateBetaWorkerRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerId: Schema.String.pipe(T.HttpPath("workerId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.String,
-      logpush: Schema.optional(Schema.Boolean),
-      observability: Schema.optional(Observability),
-      subdomain: Schema.optional(Subdomain),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      tailConsumers: Schema.optional(Schema.Array(TailConsumer)),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        logpush: "logpush",
-        observability: "observability",
-        subdomain: "subdomain",
-        tags: "tags",
-        tailConsumers: "tail_consumers",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/workers/workers/{workerId}",
-      }),
-    ),
-  ) as unknown as Schema.Codec<UpdateBetaWorkerRequest>;
+export const UpdateBetaWorkerRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workerId: Schema.String.pipe(T.HttpPath("workerId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.String,
+    logpush: Schema.optional(Schema.Boolean),
+    observability: Schema.optional(Observability),
+    subdomain: Schema.optional(Subdomain),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    tailConsumers: Schema.optional(Schema.Array(TailConsumer)),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      logpush: "logpush",
+      observability: "observability",
+      subdomain: "subdomain",
+      tags: "tags",
+      tailConsumers: "tail_consumers",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/workers/workers/{workerId}",
+    }),
+  ),
+) as unknown as Schema.Codec<UpdateBetaWorkerRequest>;
 
 export interface UpdateBetaWorkerResponse {
   /** ID of the referencing Worker. */
@@ -9737,13 +9660,12 @@ export interface UpdateBetaWorkerResponse {
   name: string;
 }
 
-export const UpdateBetaWorkerResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-    }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<UpdateBetaWorkerResponse>;
+export const UpdateBetaWorkerResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    name: Schema.String,
+  }).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<UpdateBetaWorkerResponse>;
 
 export type UpdateBetaWorkerError = DefaultErrors | WorkerNotFound;
 
@@ -9793,32 +9715,31 @@ export interface PatchBetaWorkerRequest {
   tailConsumers: { name: string }[];
 }
 
-export const PatchBetaWorkerRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerId: Schema.String.pipe(T.HttpPath("workerId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      logpush: Schema.Boolean,
-      name: Schema.String,
-      observability: Observability,
-      subdomain: Subdomain,
-      tags: Schema.Array(Schema.String),
-      tailConsumers: Schema.Array(TailConsumer),
-    }).pipe(
-      Schema.encodeKeys({
-        logpush: "logpush",
-        name: "name",
-        observability: "observability",
-        subdomain: "subdomain",
-        tags: "tags",
-        tailConsumers: "tail_consumers",
-      }),
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/workers/workers/{workerId}",
-      }),
-    ),
-  ) as unknown as Schema.Codec<PatchBetaWorkerRequest>;
+export const PatchBetaWorkerRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workerId: Schema.String.pipe(T.HttpPath("workerId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    logpush: Schema.Boolean,
+    name: Schema.String,
+    observability: Observability,
+    subdomain: Subdomain,
+    tags: Schema.Array(Schema.String),
+    tailConsumers: Schema.Array(TailConsumer),
+  }).pipe(
+    Schema.encodeKeys({
+      logpush: "logpush",
+      name: "name",
+      observability: "observability",
+      subdomain: "subdomain",
+      tags: "tags",
+      tailConsumers: "tail_consumers",
+    }),
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/workers/workers/{workerId}",
+    }),
+  ),
+) as unknown as Schema.Codec<PatchBetaWorkerRequest>;
 
 export interface PatchBetaWorkerResponse {
   /** ID of the referencing Worker. */
@@ -9827,13 +9748,12 @@ export interface PatchBetaWorkerResponse {
   name: string;
 }
 
-export const PatchBetaWorkerResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.String,
-      name: Schema.String,
-    }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<PatchBetaWorkerResponse>;
+export const PatchBetaWorkerResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    name: Schema.String,
+  }).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<PatchBetaWorkerResponse>;
 
 export type PatchBetaWorkerError = DefaultErrors | WorkerNotFound;
 
@@ -9854,18 +9774,17 @@ export interface DeleteBetaWorkerRequest {
   accountId: string;
 }
 
-export const DeleteBetaWorkerRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerId: Schema.String.pipe(T.HttpPath("workerId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/workers/workers/{workerId}",
-      }),
-    ),
-  ) as unknown as Schema.Codec<DeleteBetaWorkerRequest>;
+export const DeleteBetaWorkerRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workerId: Schema.String.pipe(T.HttpPath("workerId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/workers/workers/{workerId}",
+    }),
+  ),
+) as unknown as Schema.Codec<DeleteBetaWorkerRequest>;
 
 export interface DeleteBetaWorkerResponse {
   errors: {
@@ -9884,14 +9803,13 @@ export interface DeleteBetaWorkerResponse {
   success: true;
 }
 
-export const DeleteBetaWorkerResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.Array(Error2),
-      messages: Schema.Array(Error2),
-      success: Schema.Literal(true),
-    }),
-  ) as unknown as Schema.Codec<DeleteBetaWorkerResponse>;
+export const DeleteBetaWorkerResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    errors: Schema.Array(Error2),
+    messages: Schema.Array(Error2),
+    success: Schema.Literal(true),
+  }),
+) as unknown as Schema.Codec<DeleteBetaWorkerResponse>;
 
 export type DeleteBetaWorkerError = DefaultErrors | WorkerNotFound;
 
@@ -9919,22 +9837,21 @@ export interface GetBetaWorkerVersionRequest {
   include?: "modules";
 }
 
-export const GetBetaWorkerVersionRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerId: Schema.String.pipe(T.HttpPath("workerId")),
-      versionId: Schema.String.pipe(T.HttpPath("versionId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      include: Schema.optional(Schema.Literal("modules")).pipe(
-        T.HttpQuery("include"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workers/workers/{workerId}/versions/{versionId}",
-      }),
+export const GetBetaWorkerVersionRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workerId: Schema.String.pipe(T.HttpPath("workerId")),
+    versionId: Schema.String.pipe(T.HttpPath("versionId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    include: Schema.optional(Schema.Literal("modules")).pipe(
+      T.HttpQuery("include"),
     ),
-  ) as unknown as Schema.Codec<GetBetaWorkerVersionRequest>;
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workers/workers/{workerId}/versions/{versionId}",
+    }),
+  ),
+) as unknown as Schema.Codec<GetBetaWorkerVersionRequest>;
 
 export interface GetBetaWorkerVersionResponse {
   /** Version identifier. */
@@ -10173,136 +10090,131 @@ export interface GetBetaWorkerVersionResponse {
   usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
 
-export const GetBetaWorkerVersionResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.String,
-      createdOn: Schema.String,
-      number: Schema.Number,
-      urls: Schema.Array(Schema.String),
-      annotations: Schema.optional(Schema.Union([Annotations, Schema.Null])),
-      assets: Schema.optional(Schema.Union([Assets, Schema.Null])),
-      bindings: Schema.optional(
-        Schema.Union([
-          Schema.Array(
-            Schema.Union([
-              WorkersBindingKindSecretKey,
-              WorkersBindingKindRatelimit,
-              WorkersBindingKindSecretsStoreSecret,
-              WorkersBindingKindAISearch,
-              WorkersBindingKindAISearchNamespace,
-              WorkersBindingKindAnalyticsEngine,
-              WorkersBindingKindD1,
-              WorkersBindingKindDataBlob,
-              WorkersBindingKindDispatchNamespace,
-              WorkersBindingKindHyperdrive,
-              WorkersBindingKindJson,
-              WorkersBindingKindKVNamespace,
-              WorkersBindingKindMTLSCertificate,
-              WorkersBindingKindPlainText,
-              WorkersBindingKindPipelines,
-              WorkersBindingKindQueue,
-              WorkersBindingKindR2Bucket,
-              WorkersBindingKindService,
-              WorkersBindingKindTextBlob,
-              WorkersBindingKindVectorize,
-              WorkersBindingKindFlagship,
-              WorkersBindingKindWorkflow,
-              WorkersBindingKindWasmModule,
-              WorkersBindingKindVPCService,
-              GetBetaWorkerVersionResponseBinding36,
-              WorkersBindingKindAI,
-              WorkersBindingKindAssets,
-              WorkersBindingKindBrowser,
-              WorkersBindingKindDurableObjectNamespace,
-              WorkersBindingKindInherit,
-              WorkersBindingKindImages,
-              WorkersBindingKindMedia,
-              WorkersBindingKindSecretText,
-              WorkersBindingKindSendEmail,
-              WorkersBindingKindVersionMetadata,
-              WorkersBindingKindVPCNetwork,
-              GetBetaWorkerVersionResponseBinding35,
-            ]),
-          ),
-          Schema.Null,
-        ]),
-      ),
-      compatibilityDate: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      compatibilityFlags: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      containers: Schema.optional(
-        Schema.Union([Schema.Array(Container), Schema.Null]),
-      ),
-      limits: Schema.optional(Schema.Union([Limits, Schema.Null])),
-      mainModule: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      migrationTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      migrations: Schema.optional(
-        Schema.Union([
-          Schema.Union([Schema.Unknown, WorkersMultipleStepMigrations]),
-          Schema.Null,
-        ]),
-      ),
-      modules: Schema.optional(
-        Schema.Union([Schema.Array(Module), Schema.Null]),
-      ),
-      placement: Schema.optional(
-        Schema.Union([
+export const GetBetaWorkerVersionResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    number: Schema.Number,
+    urls: Schema.Array(Schema.String),
+    annotations: Schema.optional(Schema.Union([Annotations, Schema.Null])),
+    assets: Schema.optional(Schema.Union([Assets, Schema.Null])),
+    bindings: Schema.optional(
+      Schema.Union([
+        Schema.Array(
           Schema.Union([
-            GetBetaWorkerVersionResponsePlacement4,
-            GetBetaWorkerVersionResponsePlacement5,
-            GetBetaWorkerVersionResponsePlacement6,
-            GetBetaWorkerVersionResponsePlacement7,
-            Mode,
-            Region,
-            Hostname,
-            Host,
+            WorkersBindingKindSecretKey,
+            WorkersBindingKindRatelimit,
+            WorkersBindingKindSecretsStoreSecret,
+            WorkersBindingKindAISearch,
+            WorkersBindingKindAISearchNamespace,
+            WorkersBindingKindAnalyticsEngine,
+            WorkersBindingKindD1,
+            WorkersBindingKindDataBlob,
+            WorkersBindingKindDispatchNamespace,
+            WorkersBindingKindHyperdrive,
+            WorkersBindingKindJson,
+            WorkersBindingKindKVNamespace,
+            WorkersBindingKindMTLSCertificate,
+            WorkersBindingKindPlainText,
+            WorkersBindingKindPipelines,
+            WorkersBindingKindQueue,
+            WorkersBindingKindR2Bucket,
+            WorkersBindingKindService,
+            WorkersBindingKindTextBlob,
+            WorkersBindingKindVectorize,
+            WorkersBindingKindFlagship,
+            WorkersBindingKindWorkflow,
+            WorkersBindingKindWasmModule,
+            WorkersBindingKindVPCService,
+            GetBetaWorkerVersionResponseBinding36,
+            WorkersBindingKindAI,
+            WorkersBindingKindAssets,
+            WorkersBindingKindBrowser,
+            WorkersBindingKindDurableObjectNamespace,
+            WorkersBindingKindInherit,
+            WorkersBindingKindImages,
+            WorkersBindingKindMedia,
+            WorkersBindingKindSecretText,
+            WorkersBindingKindSendEmail,
+            WorkersBindingKindVersionMetadata,
+            WorkersBindingKindVPCNetwork,
+            GetBetaWorkerVersionResponseBinding35,
           ]),
-          Schema.Null,
-        ]),
-      ),
-      source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      startupTimeMs: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-      usageModel: Schema.optional(
+        ),
+        Schema.Null,
+      ]),
+    ),
+    compatibilityDate: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    compatibilityFlags: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    containers: Schema.optional(
+      Schema.Union([Schema.Array(Container), Schema.Null]),
+    ),
+    limits: Schema.optional(Schema.Union([Limits, Schema.Null])),
+    mainModule: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    migrationTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    migrations: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Unknown, WorkersMultipleStepMigrations]),
+        Schema.Null,
+      ]),
+    ),
+    modules: Schema.optional(Schema.Union([Schema.Array(Module), Schema.Null])),
+    placement: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            Schema.Literals(["standard", "bundled", "unbound"]),
-            Schema.String,
-          ]),
-          Schema.Null,
+          GetBetaWorkerVersionResponsePlacement4,
+          GetBetaWorkerVersionResponsePlacement5,
+          GetBetaWorkerVersionResponsePlacement6,
+          GetBetaWorkerVersionResponsePlacement7,
+          Mode,
+          Region,
+          Hostname,
+          Host,
         ]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          number: "number",
-          urls: "urls",
-          annotations: "annotations",
-          assets: "assets",
-          bindings: "bindings",
-          compatibilityDate: "compatibility_date",
-          compatibilityFlags: "compatibility_flags",
-          containers: "containers",
-          limits: "limits",
-          mainModule: "main_module",
-          migrationTag: "migration_tag",
-          migrations: "migrations",
-          modules: "modules",
-          placement: "placement",
-          source: "source",
-          startupTimeMs: "startup_time_ms",
-          usageModel: "usage_model",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<GetBetaWorkerVersionResponse>;
+        Schema.Null,
+      ]),
+    ),
+    source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    startupTimeMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    usageModel: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.String,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        number: "number",
+        urls: "urls",
+        annotations: "annotations",
+        assets: "assets",
+        bindings: "bindings",
+        compatibilityDate: "compatibility_date",
+        compatibilityFlags: "compatibility_flags",
+        containers: "containers",
+        limits: "limits",
+        mainModule: "main_module",
+        migrationTag: "migration_tag",
+        migrations: "migrations",
+        modules: "modules",
+        placement: "placement",
+        source: "source",
+        startupTimeMs: "startup_time_ms",
+        usageModel: "usage_model",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<GetBetaWorkerVersionResponse>;
 
 export type GetBetaWorkerVersionError =
   | DefaultErrors
@@ -10328,20 +10240,19 @@ export interface ListBetaWorkerVersionsRequest {
   perPage?: number;
 }
 
-export const ListBetaWorkerVersionsRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerId: Schema.String.pipe(T.HttpPath("workerId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workers/workers/{workerId}/versions",
-      }),
-    ),
-  ) as unknown as Schema.Codec<ListBetaWorkerVersionsRequest>;
+export const ListBetaWorkerVersionsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workerId: Schema.String.pipe(T.HttpPath("workerId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workers/workers/{workerId}/versions",
+    }),
+  ),
+) as unknown as Schema.Codec<ListBetaWorkerVersionsRequest>;
 
 export interface ListBetaWorkerVersionsResponse {
   result: {
@@ -10569,15 +10480,14 @@ export interface ListBetaWorkerVersionsResponse {
   } | null;
 }
 
-export const ListBetaWorkerVersionsResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.Array(ListBetaWorkerVersionsResponseResult),
-      resultInfo: Schema.optional(
-        Schema.Union([ListBetaWorkersResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Codec<ListBetaWorkerVersionsResponse>;
+export const ListBetaWorkerVersionsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(ListBetaWorkerVersionsResponseResult),
+    resultInfo: Schema.optional(
+      Schema.Union([ListBetaWorkersResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+) as unknown as Schema.Codec<ListBetaWorkerVersionsResponse>;
 
 export type ListBetaWorkerVersionsError = DefaultErrors | WorkerNotFound;
 
@@ -10809,105 +10719,104 @@ export interface CreateBetaWorkerVersionRequest {
   usageModel?: "standard" | "bundled" | "unbound" | (string & {});
 }
 
-export const CreateBetaWorkerVersionRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerId: Schema.String.pipe(T.HttpPath("workerId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      deploy: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deploy")),
-      annotations: Schema.optional(Annotations2),
-      assets: Schema.optional(Assets),
-      bindings: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            WorkersBindingKindSecretKey2,
-            WorkersBindingKindRatelimit,
-            WorkersBindingKindSecretsStoreSecret,
-            WorkersBindingKindWorkflow2,
-            WorkersBindingKindAISearch,
-            WorkersBindingKindAISearchNamespace,
-            WorkersBindingKindAnalyticsEngine,
-            WorkersBindingKindD1,
-            WorkersBindingKindDataBlob,
-            WorkersBindingKindDispatchNamespace,
-            WorkersBindingKindDurableObjectNamespace2,
-            WorkersBindingKindHyperdrive,
-            WorkersBindingKindJson,
-            WorkersBindingKindKVNamespace,
-            WorkersBindingKindMTLSCertificate,
-            WorkersBindingKindPlainText,
-            WorkersBindingKindPipelines,
-            WorkersBindingKindQueue,
-            WorkersBindingKindR2Bucket,
-            WorkersBindingKindSecretText2,
-            WorkersBindingKindService,
-            WorkersBindingKindTextBlob,
-            WorkersBindingKindVectorize,
-            WorkersBindingKindFlagship,
-            WorkersBindingKindWasmModule,
-            WorkersBindingKindVPCService,
-            GetBetaWorkerVersionResponseBinding36,
-            WorkersBindingKindAI,
-            WorkersBindingKindAssets,
-            WorkersBindingKindBrowser,
-            WorkersBindingKindInherit,
-            WorkersBindingKindImages,
-            WorkersBindingKindMedia,
-            WorkersBindingKindSendEmail,
-            WorkersBindingKindVersionMetadata,
-            WorkersBindingKindVPCNetwork,
-            GetBetaWorkerVersionResponseBinding35,
-          ]),
-        ),
-      ),
-      compatibilityDate: Schema.optional(Schema.String),
-      compatibilityFlags: Schema.optional(Schema.Array(Schema.String)),
-      containers: Schema.optional(Schema.Array(Container)),
-      limits: Schema.optional(Limits),
-      mainModule: Schema.optional(Schema.String),
-      migrations: Schema.optional(
-        Schema.Union([SingleStepMigrationParam, WorkersMultipleStepMigrations]),
-      ),
-      modules: Schema.optional(Schema.Array(Module)),
-      placement: Schema.optional(
+export const CreateBetaWorkerVersionRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workerId: Schema.String.pipe(T.HttpPath("workerId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    deploy: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deploy")),
+    annotations: Schema.optional(Annotations2),
+    assets: Schema.optional(Assets),
+    bindings: Schema.optional(
+      Schema.Array(
         Schema.Union([
-          GetBetaWorkerVersionResponsePlacement4,
-          GetBetaWorkerVersionResponsePlacement5,
-          GetBetaWorkerVersionResponsePlacement6,
-          GetBetaWorkerVersionResponsePlacement7,
-          Mode,
-          Region,
-          Hostname,
-          Host,
+          WorkersBindingKindSecretKey2,
+          WorkersBindingKindRatelimit,
+          WorkersBindingKindSecretsStoreSecret,
+          WorkersBindingKindWorkflow2,
+          WorkersBindingKindAISearch,
+          WorkersBindingKindAISearchNamespace,
+          WorkersBindingKindAnalyticsEngine,
+          WorkersBindingKindD1,
+          WorkersBindingKindDataBlob,
+          WorkersBindingKindDispatchNamespace,
+          WorkersBindingKindDurableObjectNamespace2,
+          WorkersBindingKindHyperdrive,
+          WorkersBindingKindJson,
+          WorkersBindingKindKVNamespace,
+          WorkersBindingKindMTLSCertificate,
+          WorkersBindingKindPlainText,
+          WorkersBindingKindPipelines,
+          WorkersBindingKindQueue,
+          WorkersBindingKindR2Bucket,
+          WorkersBindingKindSecretText2,
+          WorkersBindingKindService,
+          WorkersBindingKindTextBlob,
+          WorkersBindingKindVectorize,
+          WorkersBindingKindFlagship,
+          WorkersBindingKindWasmModule,
+          WorkersBindingKindVPCService,
+          GetBetaWorkerVersionResponseBinding36,
+          WorkersBindingKindAI,
+          WorkersBindingKindAssets,
+          WorkersBindingKindBrowser,
+          WorkersBindingKindInherit,
+          WorkersBindingKindImages,
+          WorkersBindingKindMedia,
+          WorkersBindingKindSendEmail,
+          WorkersBindingKindVersionMetadata,
+          WorkersBindingKindVPCNetwork,
+          GetBetaWorkerVersionResponseBinding35,
         ]),
       ),
-      usageModel: Schema.optional(
-        Schema.Union([
-          Schema.Literals(["standard", "bundled", "unbound"]),
-          Schema.String,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        annotations: "annotations",
-        assets: "assets",
-        bindings: "bindings",
-        compatibilityDate: "compatibility_date",
-        compatibilityFlags: "compatibility_flags",
-        containers: "containers",
-        limits: "limits",
-        mainModule: "main_module",
-        migrations: "migrations",
-        modules: "modules",
-        placement: "placement",
-        usageModel: "usage_model",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/workers/workers/{workerId}/versions",
-      }),
     ),
-  ) as unknown as Schema.Codec<CreateBetaWorkerVersionRequest>;
+    compatibilityDate: Schema.optional(Schema.String),
+    compatibilityFlags: Schema.optional(Schema.Array(Schema.String)),
+    containers: Schema.optional(Schema.Array(Container)),
+    limits: Schema.optional(Limits),
+    mainModule: Schema.optional(Schema.String),
+    migrations: Schema.optional(
+      Schema.Union([SingleStepMigrationParam, WorkersMultipleStepMigrations]),
+    ),
+    modules: Schema.optional(Schema.Array(Module)),
+    placement: Schema.optional(
+      Schema.Union([
+        GetBetaWorkerVersionResponsePlacement4,
+        GetBetaWorkerVersionResponsePlacement5,
+        GetBetaWorkerVersionResponsePlacement6,
+        GetBetaWorkerVersionResponsePlacement7,
+        Mode,
+        Region,
+        Hostname,
+        Host,
+      ]),
+    ),
+    usageModel: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["standard", "bundled", "unbound"]),
+        Schema.String,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      annotations: "annotations",
+      assets: "assets",
+      bindings: "bindings",
+      compatibilityDate: "compatibility_date",
+      compatibilityFlags: "compatibility_flags",
+      containers: "containers",
+      limits: "limits",
+      mainModule: "main_module",
+      migrations: "migrations",
+      modules: "modules",
+      placement: "placement",
+      usageModel: "usage_model",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/workers/workers/{workerId}/versions",
+    }),
+  ),
+) as unknown as Schema.Codec<CreateBetaWorkerVersionRequest>;
 
 export interface CreateBetaWorkerVersionResponse {
   /** Version identifier. */
@@ -11146,8 +11055,8 @@ export interface CreateBetaWorkerVersionResponse {
   usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
 
-export const CreateBetaWorkerVersionResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const CreateBetaWorkerVersionResponse = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       id: Schema.String,
       createdOn: Schema.String,
@@ -11275,7 +11184,7 @@ export const CreateBetaWorkerVersionResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<CreateBetaWorkerVersionResponse>;
+) as unknown as Schema.Codec<CreateBetaWorkerVersionResponse>;
 
 export type CreateBetaWorkerVersionError = DefaultErrors | WorkerNotFound;
 
@@ -11297,19 +11206,18 @@ export interface DeleteBetaWorkerVersionRequest {
   accountId: string;
 }
 
-export const DeleteBetaWorkerVersionRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerId: Schema.String.pipe(T.HttpPath("workerId")),
-      versionId: Schema.String.pipe(T.HttpPath("versionId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/workers/workers/{workerId}/versions/{versionId}",
-      }),
-    ),
-  ) as unknown as Schema.Codec<DeleteBetaWorkerVersionRequest>;
+export const DeleteBetaWorkerVersionRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    workerId: Schema.String.pipe(T.HttpPath("workerId")),
+    versionId: Schema.String.pipe(T.HttpPath("versionId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/workers/workers/{workerId}/versions/{versionId}",
+    }),
+  ),
+) as unknown as Schema.Codec<DeleteBetaWorkerVersionRequest>;
 
 export interface DeleteBetaWorkerVersionResponse {
   errors: {
@@ -11328,14 +11236,14 @@ export interface DeleteBetaWorkerVersionResponse {
   success: true;
 }
 
-export const DeleteBetaWorkerVersionResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const DeleteBetaWorkerVersionResponse = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       errors: Schema.Array(Error2),
       messages: Schema.Array(Error2),
       success: Schema.Literal(true),
     }),
-  ) as unknown as Schema.Codec<DeleteBetaWorkerVersionResponse>;
+) as unknown as Schema.Codec<DeleteBetaWorkerVersionResponse>;
 
 export type DeleteBetaWorkerVersionError =
   | DefaultErrors
@@ -11972,8 +11880,8 @@ export interface ListObservabilityQueriesRequest {
   perPage?: number;
 }
 
-export const ListObservabilityQueriesRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const ListObservabilityQueriesRequest = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       order: Schema.optional(
@@ -11990,7 +11898,7 @@ export const ListObservabilityQueriesRequest =
         path: "/accounts/{account_id}/workers/observability/queries",
       }),
     ),
-  ) as unknown as Schema.Codec<ListObservabilityQueriesRequest>;
+) as unknown as Schema.Codec<ListObservabilityQueriesRequest>;
 
 export interface ListObservabilityQueriesResponse {
   result: {
@@ -12133,12 +12041,12 @@ export interface ListObservabilityQueriesResponse {
   }[];
 }
 
-export const ListObservabilityQueriesResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const ListObservabilityQueriesResponse = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       result: Schema.Array(ListObservabilityQueriesResponseResult),
     }),
-  ) as unknown as Schema.Codec<ListObservabilityQueriesResponse>;
+) as unknown as Schema.Codec<ListObservabilityQueriesResponse>;
 
 export type ListObservabilityQueriesError = DefaultErrors;
 
@@ -12277,8 +12185,8 @@ export interface CreateObservabilityQueryRequest {
   };
 }
 
-export const CreateObservabilityQueryRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const CreateObservabilityQueryRequest = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       description: Schema.Union([Schema.String, Schema.Null]),
@@ -12290,7 +12198,7 @@ export const CreateObservabilityQueryRequest =
         path: "/accounts/{account_id}/workers/observability/queries",
       }),
     ),
-  ) as unknown as Schema.Codec<CreateObservabilityQueryRequest>;
+) as unknown as Schema.Codec<CreateObservabilityQueryRequest>;
 
 export interface CreateObservabilityQueryResponse {
   id: string;
@@ -12426,8 +12334,8 @@ export interface CreateObservabilityQueryResponse {
   updatedBy: string;
 }
 
-export const CreateObservabilityQueryResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const CreateObservabilityQueryResponse = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       id: Schema.String,
       adhoc: Schema.Boolean,
@@ -12439,7 +12347,7 @@ export const CreateObservabilityQueryResponse =
       updated: Schema.String,
       updatedBy: Schema.String,
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<CreateObservabilityQueryResponse>;
+) as unknown as Schema.Codec<CreateObservabilityQueryResponse>;
 
 export type CreateObservabilityQueryError = DefaultErrors;
 
@@ -12466,8 +12374,8 @@ export interface GetObservabilitySharedQueryRequest {
   view?: "events" | "invocations" | "calculations" | (string & {});
 }
 
-export const GetObservabilitySharedQueryRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const GetObservabilitySharedQueryRequest = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       id: Schema.String.pipe(T.HttpPath("id")),
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
@@ -12483,7 +12391,7 @@ export const GetObservabilitySharedQueryRequest =
         path: "/accounts/{account_id}/workers/observability/shared/query/{id}",
       }),
     ),
-  ) as unknown as Schema.Codec<GetObservabilitySharedQueryRequest>;
+) as unknown as Schema.Codec<GetObservabilitySharedQueryRequest>;
 
 export interface GetObservabilitySharedQueryResponse {
   /** Represents a single execution of a query against Workers Observability data, including the query definition, execution status, and performance statistics. */
@@ -12888,8 +12796,8 @@ export interface GetObservabilitySharedQueryResponse {
     | null;
 }
 
-export const GetObservabilitySharedQueryResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const GetObservabilitySharedQueryResponse = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       run: Run,
       statistics: Statistics,
@@ -12909,7 +12817,7 @@ export const GetObservabilitySharedQueryResponse =
       ),
       traces: Schema.optional(Schema.Union([Schema.Array(Trace), Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<GetObservabilitySharedQueryResponse>;
+) as unknown as Schema.Codec<GetObservabilitySharedQueryResponse>;
 
 export type GetObservabilitySharedQueryError = DefaultErrors;
 
@@ -13296,8 +13204,8 @@ export interface KeysObservabilityTelemetryRequest {
   to?: number;
 }
 
-export const KeysObservabilityTelemetryRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const KeysObservabilityTelemetryRequest = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       datasets: Schema.optional(Schema.Array(Schema.String)),
@@ -13320,7 +13228,7 @@ export const KeysObservabilityTelemetryRequest =
         path: "/accounts/{account_id}/workers/observability/telemetry/keys",
       }),
     ),
-  ) as unknown as Schema.Codec<KeysObservabilityTelemetryRequest>;
+) as unknown as Schema.Codec<KeysObservabilityTelemetryRequest>;
 
 export interface KeysObservabilityTelemetryResponse {
   result: {
@@ -13330,12 +13238,12 @@ export interface KeysObservabilityTelemetryResponse {
   }[];
 }
 
-export const KeysObservabilityTelemetryResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const KeysObservabilityTelemetryResponse = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       result: Schema.Array(KeysObservabilityTelemetryResponseResult),
     }),
-  ) as unknown as Schema.Codec<KeysObservabilityTelemetryResponse>;
+) as unknown as Schema.Codec<KeysObservabilityTelemetryResponse>;
 
 export type KeysObservabilityTelemetryError = DefaultErrors | InvalidRoute;
 
@@ -13545,8 +13453,8 @@ export interface QueryObservabilityTelemetryRequest {
     | (string & {});
 }
 
-export const QueryObservabilityTelemetryRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const QueryObservabilityTelemetryRequest = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       queryId: Schema.String,
@@ -13580,7 +13488,7 @@ export const QueryObservabilityTelemetryRequest =
         path: "/accounts/{account_id}/workers/observability/telemetry/query",
       }),
     ),
-  ) as unknown as Schema.Codec<QueryObservabilityTelemetryRequest>;
+) as unknown as Schema.Codec<QueryObservabilityTelemetryRequest>;
 
 export interface QueryObservabilityTelemetryResponse {
   /** Represents a single execution of a query against Workers Observability data, including the query definition, execution status, and performance statistics. */
@@ -13987,8 +13895,8 @@ export interface QueryObservabilityTelemetryResponse {
     | null;
 }
 
-export const QueryObservabilityTelemetryResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const QueryObservabilityTelemetryResponse = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       run: Run2,
       statistics: Statistics,
@@ -14003,7 +13911,7 @@ export const QueryObservabilityTelemetryResponse =
       invocations: Schema.optional(Schema.Union([Schema.Unknown, Schema.Null])),
       traces: Schema.optional(Schema.Union([Schema.Array(Trace), Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<QueryObservabilityTelemetryResponse>;
+) as unknown as Schema.Codec<QueryObservabilityTelemetryResponse>;
 
 export type QueryObservabilityTelemetryError = DefaultErrors | InvalidRoute;
 
@@ -14129,8 +14037,8 @@ export interface ValuesObservabilityTelemetryRequest {
   };
 }
 
-export const ValuesObservabilityTelemetryRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const ValuesObservabilityTelemetryRequest = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       datasets: Schema.Array(Schema.String),
@@ -14156,7 +14064,7 @@ export const ValuesObservabilityTelemetryRequest =
         path: "/accounts/{account_id}/workers/observability/telemetry/values",
       }),
     ),
-  ) as unknown as Schema.Codec<ValuesObservabilityTelemetryRequest>;
+) as unknown as Schema.Codec<ValuesObservabilityTelemetryRequest>;
 
 export interface ValuesObservabilityTelemetryResponse {
   result: {
@@ -15365,19 +15273,18 @@ export interface CreateScriptAssetUploadRequest {
   manifest: Record<string, unknown>;
 }
 
-export const CreateScriptAssetUploadRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      manifest: Schema.Record(Schema.String, Schema.Unknown),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/assets-upload-session",
-      }),
-    ),
-  ) as unknown as Schema.Codec<CreateScriptAssetUploadRequest>;
+export const CreateScriptAssetUploadRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    manifest: Schema.Record(Schema.String, Schema.Unknown),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/assets-upload-session",
+    }),
+  ),
+) as unknown as Schema.Codec<CreateScriptAssetUploadRequest>;
 
 export interface CreateScriptAssetUploadResponse {
   /** The requests to make to upload assets. */
@@ -15386,15 +15293,15 @@ export interface CreateScriptAssetUploadResponse {
   jwt?: string | null;
 }
 
-export const CreateScriptAssetUploadResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const CreateScriptAssetUploadResponse = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       buckets: Schema.optional(
         Schema.Union([Schema.Array(Schema.Array(Schema.String)), Schema.Null]),
       ),
       jwt: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
     }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<CreateScriptAssetUploadResponse>;
+) as unknown as Schema.Codec<CreateScriptAssetUploadResponse>;
 
 export type CreateScriptAssetUploadError = DefaultErrors;
 
@@ -15419,25 +15326,23 @@ export interface GetScriptContentRequest {
   accountId: string;
 }
 
-export const GetScriptContentRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/content/v2",
-      }),
-    ),
-  ) as unknown as Schema.Codec<GetScriptContentRequest>;
+export const GetScriptContentRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/content/v2",
+    }),
+  ),
+) as unknown as Schema.Codec<GetScriptContentRequest>;
 
 export type GetScriptContentResponse = unknown;
 
-export const GetScriptContentResponse =
-  /*@__PURE__*/ Schema.suspend(
-    () => Schema.Unknown,
-  ) as unknown as Schema.Codec<GetScriptContentResponse>;
+export const GetScriptContentResponse = /*@__PURE__*/ Schema.suspend(
+  () => Schema.Unknown,
+) as unknown as Schema.Codec<GetScriptContentResponse>;
 
 export type GetScriptContentError = DefaultErrors | WorkerNotFound;
 
@@ -15466,29 +15371,28 @@ export interface PutScriptContentRequest {
   files?: (File | Blob)[];
 }
 
-export const PutScriptContentRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      cfworkerbodypart: Schema.optional(Schema.String).pipe(
-        T.HttpHeader("CF-WORKER-BODY-PART"),
-      ),
-      cfworkermainmodulepart: Schema.optional(Schema.String).pipe(
-        T.HttpHeader("CF-WORKER-MAIN-MODULE-PART"),
-      ),
-      metadata: Metadata3,
-      files: Schema.optional(
-        Schema.Array(UploadableSchema.pipe(T.HttpFormDataFile())),
-      ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/content",
-        contentType: "multipart",
-      }),
+export const PutScriptContentRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    cfworkerbodypart: Schema.optional(Schema.String).pipe(
+      T.HttpHeader("CF-WORKER-BODY-PART"),
     ),
-  ) as unknown as Schema.Codec<PutScriptContentRequest>;
+    cfworkermainmodulepart: Schema.optional(Schema.String).pipe(
+      T.HttpHeader("CF-WORKER-MAIN-MODULE-PART"),
+    ),
+    metadata: Metadata3,
+    files: Schema.optional(
+      Schema.Array(UploadableSchema.pipe(T.HttpFormDataFile())),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/content",
+      contentType: "multipart",
+    }),
+  ),
+) as unknown as Schema.Codec<PutScriptContentRequest>;
 
 export interface PutScriptContentResponse {
   /** The name used to identify the script. */
@@ -15652,113 +15556,110 @@ export interface PutScriptContentResponse {
   usageModel?: "standard" | "bundled" | "unbound" | (string & {}) | null;
 }
 
-export const PutScriptContentResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      compatibilityDate: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      compatibilityFlags: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      etag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      handlers: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      hasAssets: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      hasModules: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      lastDeployedFrom: Schema.optional(
-        Schema.Union([Schema.String, Schema.Null]),
-      ),
-      logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      migrationTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      namedHandlers: Schema.optional(
-        Schema.Union([Schema.Array(NamedHandler), Schema.Null]),
-      ),
-      observability: Schema.optional(
-        Schema.Union([Observability2, Schema.Null]),
-      ),
-      placement: Schema.optional(
+export const PutScriptContentResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    compatibilityDate: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    compatibilityFlags: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    etag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    handlers: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    hasAssets: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    hasModules: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    lastDeployedFrom: Schema.optional(
+      Schema.Union([Schema.String, Schema.Null]),
+    ),
+    logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    migrationTag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    modifiedOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    namedHandlers: Schema.optional(
+      Schema.Union([Schema.Array(NamedHandler), Schema.Null]),
+    ),
+    observability: Schema.optional(Schema.Union([Observability2, Schema.Null])),
+    placement: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([
-            ListScriptsResponseResultPlacement4,
-            ListScriptsResponseResultPlacement5,
-            ListScriptsResponseResultPlacement6,
-            ListScriptsResponseResultPlacement7,
-            ListScriptsResponseResultPlacement,
-            ListScriptsResponseResultPlacement1,
-            ListScriptsResponseResultPlacement2,
-            ListScriptsResponseResultPlacement3,
+          ListScriptsResponseResultPlacement4,
+          ListScriptsResponseResultPlacement5,
+          ListScriptsResponseResultPlacement6,
+          ListScriptsResponseResultPlacement7,
+          ListScriptsResponseResultPlacement,
+          ListScriptsResponseResultPlacement1,
+          ListScriptsResponseResultPlacement2,
+          ListScriptsResponseResultPlacement3,
+        ]),
+        Schema.Null,
+      ]),
+    ),
+    placementMode: Schema.optional(
+      Schema.Union([
+        Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.String]),
+        Schema.Null,
+      ]),
+    ),
+    placementStatus: Schema.optional(
+      Schema.Union([
+        Schema.Union([
+          Schema.Literals([
+            "SUCCESS",
+            "UNSUPPORTED_APPLICATION",
+            "INSUFFICIENT_INVOCATIONS",
           ]),
-          Schema.Null,
+          Schema.String,
         ]),
-      ),
-      placementMode: Schema.optional(
+        Schema.Null,
+      ]),
+    ),
+    tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    tags: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    tailConsumers: Schema.optional(
+      Schema.Union([Schema.Array(ConsumerScript), Schema.Null]),
+    ),
+    usageModel: Schema.optional(
+      Schema.Union([
         Schema.Union([
-          Schema.Union([Schema.Literals(["smart", "targeted"]), Schema.String]),
-          Schema.Null,
+          Schema.Literals(["standard", "bundled", "unbound"]),
+          Schema.String,
         ]),
-      ),
-      placementStatus: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals([
-              "SUCCESS",
-              "UNSUPPORTED_APPLICATION",
-              "INSUFFICIENT_INVOCATIONS",
-            ]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-      tag: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      tags: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      tailConsumers: Schema.optional(
-        Schema.Union([Schema.Array(ConsumerScript), Schema.Null]),
-      ),
-      usageModel: Schema.optional(
-        Schema.Union([
-          Schema.Union([
-            Schema.Literals(["standard", "bundled", "unbound"]),
-            Schema.String,
-          ]),
-          Schema.Null,
-        ]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          compatibilityDate: "compatibility_date",
-          compatibilityFlags: "compatibility_flags",
-          createdOn: "created_on",
-          etag: "etag",
-          handlers: "handlers",
-          hasAssets: "has_assets",
-          hasModules: "has_modules",
-          lastDeployedFrom: "last_deployed_from",
-          logpush: "logpush",
-          migrationTag: "migration_tag",
-          modifiedOn: "modified_on",
-          namedHandlers: "named_handlers",
-          observability: "observability",
-          placement: "placement",
-          placementMode: "placement_mode",
-          placementStatus: "placement_status",
-          tag: "tag",
-          tags: "tags",
-          tailConsumers: "tail_consumers",
-          usageModel: "usage_model",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<PutScriptContentResponse>;
+        Schema.Null,
+      ]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        compatibilityDate: "compatibility_date",
+        compatibilityFlags: "compatibility_flags",
+        createdOn: "created_on",
+        etag: "etag",
+        handlers: "handlers",
+        hasAssets: "has_assets",
+        hasModules: "has_modules",
+        lastDeployedFrom: "last_deployed_from",
+        logpush: "logpush",
+        migrationTag: "migration_tag",
+        modifiedOn: "modified_on",
+        namedHandlers: "named_handlers",
+        observability: "observability",
+        placement: "placement",
+        placementMode: "placement_mode",
+        placementStatus: "placement_status",
+        tag: "tag",
+        tags: "tags",
+        tailConsumers: "tail_consumers",
+        usageModel: "usage_model",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<PutScriptContentResponse>;
 
 export type PutScriptContentError =
   | DefaultErrors
@@ -15794,19 +15695,18 @@ export interface GetScriptDeploymentRequest {
   accountId: string;
 }
 
-export const GetScriptDeploymentRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      deploymentId: Schema.String.pipe(T.HttpPath("deploymentId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/deployments/{deploymentId}",
-      }),
-    ),
-  ) as unknown as Schema.Codec<GetScriptDeploymentRequest>;
+export const GetScriptDeploymentRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    deploymentId: Schema.String.pipe(T.HttpPath("deploymentId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/deployments/{deploymentId}",
+    }),
+  ),
+) as unknown as Schema.Codec<GetScriptDeploymentRequest>;
 
 export interface GetScriptDeploymentResponse {
   id: string;
@@ -15821,30 +15721,29 @@ export interface GetScriptDeploymentResponse {
   authorEmail?: string | null;
 }
 
-export const GetScriptDeploymentResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.String,
-      createdOn: Schema.String,
-      source: Schema.String,
-      strategy: Schema.Literal("percentage"),
-      versions: Schema.Array(Version),
-      annotations: Schema.optional(Schema.Union([Annotations3, Schema.Null])),
-      authorEmail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          source: "source",
-          strategy: "strategy",
-          versions: "versions",
-          annotations: "annotations",
-          authorEmail: "author_email",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<GetScriptDeploymentResponse>;
+export const GetScriptDeploymentResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.String,
+    source: Schema.String,
+    strategy: Schema.Literal("percentage"),
+    versions: Schema.Array(Version),
+    annotations: Schema.optional(Schema.Union([Annotations3, Schema.Null])),
+    authorEmail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        source: "source",
+        strategy: "strategy",
+        versions: "versions",
+        annotations: "annotations",
+        authorEmail: "author_email",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<GetScriptDeploymentResponse>;
 
 export type GetScriptDeploymentError =
   | DefaultErrors
@@ -15868,18 +15767,17 @@ export interface ListScriptDeploymentsRequest {
   accountId: string;
 }
 
-export const ListScriptDeploymentsRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/deployments",
-      }),
-    ),
-  ) as unknown as Schema.Codec<ListScriptDeploymentsRequest>;
+export const ListScriptDeploymentsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/deployments",
+    }),
+  ),
+) as unknown as Schema.Codec<ListScriptDeploymentsRequest>;
 
 export interface ListScriptDeploymentsResponse {
   deployments: {
@@ -15896,12 +15794,11 @@ export interface ListScriptDeploymentsResponse {
   }[];
 }
 
-export const ListScriptDeploymentsResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployments: Schema.Array(Deployment),
-    }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<ListScriptDeploymentsResponse>;
+export const ListScriptDeploymentsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    deployments: Schema.Array(Deployment),
+  }).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<ListScriptDeploymentsResponse>;
 
 export type ListScriptDeploymentsError = DefaultErrors | WorkerNotFound;
 
@@ -15930,22 +15827,21 @@ export interface CreateScriptDeploymentRequest {
   annotations?: { workersMessage?: string };
 }
 
-export const CreateScriptDeploymentRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
-      strategy: Schema.Literal("percentage"),
-      versions: Schema.Array(Version),
-      annotations: Schema.optional(Annotations4),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/deployments",
-      }),
-    ),
-  ) as unknown as Schema.Codec<CreateScriptDeploymentRequest>;
+export const CreateScriptDeploymentRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    force: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("force")),
+    strategy: Schema.Literal("percentage"),
+    versions: Schema.Array(Version),
+    annotations: Schema.optional(Annotations4),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/deployments",
+    }),
+  ),
+) as unknown as Schema.Codec<CreateScriptDeploymentRequest>;
 
 export interface CreateScriptDeploymentResponse {
   id: string;
@@ -15960,34 +15856,33 @@ export interface CreateScriptDeploymentResponse {
   authorEmail?: string | null;
 }
 
-export const CreateScriptDeploymentResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.String,
-      createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      strategy: Schema.optional(
-        Schema.Union([Schema.Literal("percentage"), Schema.Null]),
-      ),
-      versions: Schema.optional(
-        Schema.Union([Schema.Array(Version), Schema.Null]),
-      ),
-      annotations: Schema.optional(Schema.Union([Annotations3, Schema.Null])),
-      authorEmail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          id: "id",
-          createdOn: "created_on",
-          source: "source",
-          strategy: "strategy",
-          versions: "versions",
-          annotations: "annotations",
-          authorEmail: "author_email",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<CreateScriptDeploymentResponse>;
+export const CreateScriptDeploymentResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    createdOn: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    source: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    strategy: Schema.optional(
+      Schema.Union([Schema.Literal("percentage"), Schema.Null]),
+    ),
+    versions: Schema.optional(
+      Schema.Union([Schema.Array(Version), Schema.Null]),
+    ),
+    annotations: Schema.optional(Schema.Union([Annotations3, Schema.Null])),
+    authorEmail: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        id: "id",
+        createdOn: "created_on",
+        source: "source",
+        strategy: "strategy",
+        versions: "versions",
+        annotations: "annotations",
+        authorEmail: "author_email",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<CreateScriptDeploymentResponse>;
 
 export type CreateScriptDeploymentError = DefaultErrors | WorkerNotFound;
 
@@ -16009,19 +15904,18 @@ export interface DeleteScriptDeploymentRequest {
   accountId: string;
 }
 
-export const DeleteScriptDeploymentRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      deploymentId: Schema.String.pipe(T.HttpPath("deploymentId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/deployments/{deploymentId}",
-      }),
-    ),
-  ) as unknown as Schema.Codec<DeleteScriptDeploymentRequest>;
+export const DeleteScriptDeploymentRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    deploymentId: Schema.String.pipe(T.HttpPath("deploymentId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/deployments/{deploymentId}",
+    }),
+  ),
+) as unknown as Schema.Codec<DeleteScriptDeploymentRequest>;
 
 export interface DeleteScriptDeploymentResponse {
   errors: {
@@ -16040,14 +15934,13 @@ export interface DeleteScriptDeploymentResponse {
   success: true;
 }
 
-export const DeleteScriptDeploymentResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.Array(Error2),
-      messages: Schema.Array(Error2),
-      success: Schema.Literal(true),
-    }),
-  ) as unknown as Schema.Codec<DeleteScriptDeploymentResponse>;
+export const DeleteScriptDeploymentResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    errors: Schema.Array(Error2),
+    messages: Schema.Array(Error2),
+    success: Schema.Literal(true),
+  }),
+) as unknown as Schema.Codec<DeleteScriptDeploymentResponse>;
 
 export type DeleteScriptDeploymentError =
   | DefaultErrors
@@ -16269,37 +16162,36 @@ export interface CreateScriptEdgePreviewRequest {
     | { routes: string[]; minimalMode?: boolean };
 }
 
-export const CreateScriptEdgePreviewRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      scriptName: Schema.String.pipe(T.HttpPath("script_name")),
-      cfPreviewUploadConfigToken: Schema.String.pipe(
-        T.HttpHeader("cf-preview-upload-config-token"),
-      ),
-      metadata: Schema.optional(CreateScriptEdgePreviewRequestMetadata),
-      files: Schema.optional(
-        Schema.Array(UploadableSchema.pipe(T.HttpFormDataFile())),
-      ),
-      wranglerSessionConfig: Schema.optional(
-        Schema.Union([
-          CreateScriptEdgePreviewRequestWranglerSessionConfig,
-          CreateScriptEdgePreviewRequestWranglerSessionConfig1,
-        ]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        metadata: "metadata",
-        files: "files",
-        wranglerSessionConfig: "wrangler-session-config",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/workers/scripts/{script_name}/edge-preview",
-        contentType: "multipart",
-      }),
+export const CreateScriptEdgePreviewRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    scriptName: Schema.String.pipe(T.HttpPath("script_name")),
+    cfPreviewUploadConfigToken: Schema.String.pipe(
+      T.HttpHeader("cf-preview-upload-config-token"),
     ),
-  ) as unknown as Schema.Codec<CreateScriptEdgePreviewRequest>;
+    metadata: Schema.optional(CreateScriptEdgePreviewRequestMetadata),
+    files: Schema.optional(
+      Schema.Array(UploadableSchema.pipe(T.HttpFormDataFile())),
+    ),
+    wranglerSessionConfig: Schema.optional(
+      Schema.Union([
+        CreateScriptEdgePreviewRequestWranglerSessionConfig,
+        CreateScriptEdgePreviewRequestWranglerSessionConfig1,
+      ]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      metadata: "metadata",
+      files: "files",
+      wranglerSessionConfig: "wrangler-session-config",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/workers/scripts/{script_name}/edge-preview",
+      contentType: "multipart",
+    }),
+  ),
+) as unknown as Schema.Codec<CreateScriptEdgePreviewRequest>;
 
 export interface CreateScriptEdgePreviewResponse {
   /** Token to send as cf-workers-preview-token header when making requests to the preview host. */
@@ -16308,8 +16200,8 @@ export interface CreateScriptEdgePreviewResponse {
   tailUrl?: string | null;
 }
 
-export const CreateScriptEdgePreviewResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const CreateScriptEdgePreviewResponse = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       previewToken: Schema.String,
       tailUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -16321,7 +16213,7 @@ export const CreateScriptEdgePreviewResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<CreateScriptEdgePreviewResponse>;
+) as unknown as Schema.Codec<CreateScriptEdgePreviewResponse>;
 
 export type CreateScriptEdgePreviewError = DefaultErrors | InvalidRoute;
 
@@ -16346,18 +16238,17 @@ export interface GetScriptScheduleRequest {
   accountId: string;
 }
 
-export const GetScriptScheduleRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/schedules",
-      }),
-    ),
-  ) as unknown as Schema.Codec<GetScriptScheduleRequest>;
+export const GetScriptScheduleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/schedules",
+    }),
+  ),
+) as unknown as Schema.Codec<GetScriptScheduleRequest>;
 
 export interface GetScriptScheduleResponse {
   schedules: {
@@ -16367,12 +16258,11 @@ export interface GetScriptScheduleResponse {
   }[];
 }
 
-export const GetScriptScheduleResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schedules: Schema.Array(Schedule),
-    }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<GetScriptScheduleResponse>;
+export const GetScriptScheduleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    schedules: Schema.Array(Schedule),
+  }).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<GetScriptScheduleResponse>;
 
 export type GetScriptScheduleError = DefaultErrors | WorkerNotFound;
 
@@ -16395,19 +16285,18 @@ export interface PutScriptScheduleRequest {
   body: { cron: string }[];
 }
 
-export const PutScriptScheduleRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      body: Schema.Array(Body).pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/schedules",
-      }),
-    ),
-  ) as unknown as Schema.Codec<PutScriptScheduleRequest>;
+export const PutScriptScheduleRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    body: Schema.Array(Body).pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/schedules",
+    }),
+  ),
+) as unknown as Schema.Codec<PutScriptScheduleRequest>;
 
 export interface PutScriptScheduleResponse {
   schedules: {
@@ -16417,12 +16306,11 @@ export interface PutScriptScheduleResponse {
   }[];
 }
 
-export const PutScriptScheduleResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schedules: Schema.Array(Schedule),
-    }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<PutScriptScheduleResponse>;
+export const PutScriptScheduleResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    schedules: Schema.Array(Schedule),
+  }).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<PutScriptScheduleResponse>;
 
 export type PutScriptScheduleError = DefaultErrors | WorkerNotFound;
 
@@ -17284,22 +17172,21 @@ export interface GetScriptSecretRequest {
   urlEncoded?: boolean;
 }
 
-export const GetScriptSecretRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      secretName: Schema.String.pipe(T.HttpPath("secretName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      urlEncoded: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("url_encoded"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/secrets/{secretName}",
-      }),
+export const GetScriptSecretRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    secretName: Schema.String.pipe(T.HttpPath("secretName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    urlEncoded: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("url_encoded"),
     ),
-  ) as unknown as Schema.Codec<GetScriptSecretRequest>;
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/secrets/{secretName}",
+    }),
+  ),
+) as unknown as Schema.Codec<GetScriptSecretRequest>;
 
 export type GetScriptSecretResponse =
   | { name: string; type: "secret_text" }
@@ -17321,13 +17208,12 @@ export type GetScriptSecretResponse =
       )[];
     };
 
-export const GetScriptSecretResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Union([
-      WorkersBindingKindSecretKey,
-      WorkersBindingKindSecretText,
-    ]).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<GetScriptSecretResponse>;
+export const GetScriptSecretResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    WorkersBindingKindSecretKey,
+    WorkersBindingKindSecretText,
+  ]).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<GetScriptSecretResponse>;
 
 export type GetScriptSecretError =
   | DefaultErrors
@@ -17351,18 +17237,17 @@ export interface ListScriptSecretsRequest {
   accountId: string;
 }
 
-export const ListScriptSecretsRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/secrets",
-      }),
-    ),
-  ) as unknown as Schema.Codec<ListScriptSecretsRequest>;
+export const ListScriptSecretsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/secrets",
+    }),
+  ),
+) as unknown as Schema.Codec<ListScriptSecretsRequest>;
 
 export interface ListScriptSecretsResponse {
   result: (
@@ -17387,17 +17272,13 @@ export interface ListScriptSecretsResponse {
   )[];
 }
 
-export const ListScriptSecretsResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.Array(
-        Schema.Union([
-          WorkersBindingKindSecretKey,
-          WorkersBindingKindSecretText,
-        ]),
-      ),
-    }),
-  ) as unknown as Schema.Codec<ListScriptSecretsResponse>;
+export const ListScriptSecretsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: Schema.Array(
+      Schema.Union([WorkersBindingKindSecretKey, WorkersBindingKindSecretText]),
+    ),
+  }),
+) as unknown as Schema.Codec<ListScriptSecretsResponse>;
 
 export type ListScriptSecretsError = DefaultErrors | WorkerNotFound;
 
@@ -17448,60 +17329,59 @@ export interface PutScriptSecretRequest {
   keyJwk?: unknown;
 }
 
-export const PutScriptSecretRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      name: Schema.String,
-      text: Schema.optional(Schema.String),
-      type: Schema.Union([
-        Schema.Literals(["secret_text", "secret_key"]),
+export const PutScriptSecretRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    name: Schema.String,
+    text: Schema.optional(Schema.String),
+    type: Schema.Union([
+      Schema.Literals(["secret_text", "secret_key"]),
+      Schema.String,
+    ]),
+    algorithm: Schema.optional(Schema.Unknown),
+    format: Schema.optional(
+      Schema.Union([
+        Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
         Schema.String,
       ]),
-      algorithm: Schema.optional(Schema.Unknown),
-      format: Schema.optional(
+    ),
+    usages: Schema.optional(
+      Schema.Array(
         Schema.Union([
-          Schema.Literals(["raw", "pkcs8", "spki", "jwk"]),
+          Schema.Literals([
+            "encrypt",
+            "decrypt",
+            "sign",
+            "verify",
+            "deriveKey",
+            "deriveBits",
+            "wrapKey",
+            "unwrapKey",
+          ]),
           Schema.String,
         ]),
       ),
-      usages: Schema.optional(
-        Schema.Array(
-          Schema.Union([
-            Schema.Literals([
-              "encrypt",
-              "decrypt",
-              "sign",
-              "verify",
-              "deriveKey",
-              "deriveBits",
-              "wrapKey",
-              "unwrapKey",
-            ]),
-            Schema.String,
-          ]),
-        ),
-      ),
-      keyBase64: Schema.optional(Schema.String),
-      keyJwk: Schema.optional(Schema.Unknown),
-    }).pipe(
-      Schema.encodeKeys({
-        name: "name",
-        text: "text",
-        type: "type",
-        algorithm: "algorithm",
-        format: "format",
-        usages: "usages",
-        keyBase64: "key_base64",
-        keyJwk: "key_jwk",
-      }),
-      T.Http({
-        method: "PUT",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/secrets",
-      }),
     ),
-  ) as unknown as Schema.Codec<PutScriptSecretRequest>;
+    keyBase64: Schema.optional(Schema.String),
+    keyJwk: Schema.optional(Schema.Unknown),
+  }).pipe(
+    Schema.encodeKeys({
+      name: "name",
+      text: "text",
+      type: "type",
+      algorithm: "algorithm",
+      format: "format",
+      usages: "usages",
+      keyBase64: "key_base64",
+      keyJwk: "key_jwk",
+    }),
+    T.Http({
+      method: "PUT",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/secrets",
+    }),
+  ),
+) as unknown as Schema.Codec<PutScriptSecretRequest>;
 
 export type PutScriptSecretResponse =
   | { name: string; type: "secret_text" }
@@ -17523,13 +17403,12 @@ export type PutScriptSecretResponse =
       )[];
     };
 
-export const PutScriptSecretResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Union([
-      WorkersBindingKindSecretKey,
-      WorkersBindingKindSecretText,
-    ]).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<PutScriptSecretResponse>;
+export const PutScriptSecretResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Union([
+    WorkersBindingKindSecretKey,
+    WorkersBindingKindSecretText,
+  ]).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<PutScriptSecretResponse>;
 
 export type PutScriptSecretError = DefaultErrors | WorkerNotFound;
 
@@ -17553,29 +17432,27 @@ export interface DeleteScriptSecretRequest {
   urlEncoded?: boolean;
 }
 
-export const DeleteScriptSecretRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      secretName: Schema.String.pipe(T.HttpPath("secretName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      urlEncoded: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("url_encoded"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/secrets/{secretName}",
-      }),
+export const DeleteScriptSecretRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    secretName: Schema.String.pipe(T.HttpPath("secretName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    urlEncoded: Schema.optional(Schema.Boolean).pipe(
+      T.HttpQuery("url_encoded"),
     ),
-  ) as unknown as Schema.Codec<DeleteScriptSecretRequest>;
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/secrets/{secretName}",
+    }),
+  ),
+) as unknown as Schema.Codec<DeleteScriptSecretRequest>;
 
 export type DeleteScriptSecretResponse = unknown;
 
-export const DeleteScriptSecretResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Unknown.pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<DeleteScriptSecretResponse>;
+export const DeleteScriptSecretResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Unknown.pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<DeleteScriptSecretResponse>;
 
 export type DeleteScriptSecretError =
   | DefaultErrors
@@ -17603,30 +17480,27 @@ export interface BulkUpdateScriptSecretsRequest {
   versionTags?: Record<string, unknown>;
 }
 
-export const BulkUpdateScriptSecretsRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      secrets: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      versionTags: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }).pipe(
-      Schema.encodeKeys({ secrets: "secrets", versionTags: "version_tags" }),
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/secrets-bulk",
-      }),
-    ),
-  ) as unknown as Schema.Codec<BulkUpdateScriptSecretsRequest>;
+export const BulkUpdateScriptSecretsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    secrets: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    versionTags: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).pipe(
+    Schema.encodeKeys({ secrets: "secrets", versionTags: "version_tags" }),
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/secrets-bulk",
+    }),
+  ),
+) as unknown as Schema.Codec<BulkUpdateScriptSecretsRequest>;
 
 export type BulkUpdateScriptSecretsResponse = Record<string, unknown>;
 
-export const BulkUpdateScriptSecretsResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const BulkUpdateScriptSecretsResponse = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Record(Schema.String, Schema.Unknown).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<BulkUpdateScriptSecretsResponse>;
+) as unknown as Schema.Codec<BulkUpdateScriptSecretsResponse>;
 
 export type BulkUpdateScriptSecretsError = DefaultErrors;
 
@@ -17651,18 +17525,17 @@ export interface GetScriptSettingRequest {
   accountId: string;
 }
 
-export const GetScriptSettingRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/script-settings",
-      }),
-    ),
-  ) as unknown as Schema.Codec<GetScriptSettingRequest>;
+export const GetScriptSettingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/script-settings",
+    }),
+  ),
+) as unknown as Schema.Codec<GetScriptSettingRequest>;
 
 export interface GetScriptSettingResponse {
   /** Whether Logpush is turned on for the Worker. */
@@ -17698,30 +17571,27 @@ export interface GetScriptSettingResponse {
     | null;
 }
 
-export const GetScriptSettingResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      observability: Schema.optional(
-        Schema.Union([Observability2, Schema.Null]),
-      ),
-      tags: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      tailConsumers: Schema.optional(
-        Schema.Union([Schema.Array(ConsumerScript), Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          logpush: "logpush",
-          observability: "observability",
-          tags: "tags",
-          tailConsumers: "tail_consumers",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<GetScriptSettingResponse>;
+export const GetScriptSettingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    observability: Schema.optional(Schema.Union([Observability2, Schema.Null])),
+    tags: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    tailConsumers: Schema.optional(
+      Schema.Union([Schema.Array(ConsumerScript), Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        logpush: "logpush",
+        observability: "observability",
+        tags: "tags",
+        tailConsumers: "tail_consumers",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<GetScriptSettingResponse>;
 
 export type GetScriptSettingError =
   | DefaultErrors
@@ -17772,34 +17642,31 @@ export interface PatchScriptSettingRequest {
     | null;
 }
 
-export const PatchScriptSettingRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      logpush: Schema.optional(Schema.Boolean),
-      observability: Schema.optional(
-        Schema.Union([Observability2, Schema.Null]),
-      ),
-      tags: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      tailConsumers: Schema.optional(
-        Schema.Union([Schema.Array(ConsumerScript), Schema.Null]),
-      ),
-    }).pipe(
-      Schema.encodeKeys({
-        logpush: "logpush",
-        observability: "observability",
-        tags: "tags",
-        tailConsumers: "tail_consumers",
-      }),
-      T.Http({
-        method: "PATCH",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/script-settings",
-      }),
+export const PatchScriptSettingRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    logpush: Schema.optional(Schema.Boolean),
+    observability: Schema.optional(Schema.Union([Observability2, Schema.Null])),
+    tags: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
     ),
-  ) as unknown as Schema.Codec<PatchScriptSettingRequest>;
+    tailConsumers: Schema.optional(
+      Schema.Union([Schema.Array(ConsumerScript), Schema.Null]),
+    ),
+  }).pipe(
+    Schema.encodeKeys({
+      logpush: "logpush",
+      observability: "observability",
+      tags: "tags",
+      tailConsumers: "tail_consumers",
+    }),
+    T.Http({
+      method: "PATCH",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/script-settings",
+    }),
+  ),
+) as unknown as Schema.Codec<PatchScriptSettingRequest>;
 
 export interface PatchScriptSettingResponse {
   /** Whether Logpush is turned on for the Worker. */
@@ -17835,30 +17702,27 @@ export interface PatchScriptSettingResponse {
     | null;
 }
 
-export const PatchScriptSettingResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
-      observability: Schema.optional(
-        Schema.Union([Observability2, Schema.Null]),
-      ),
-      tags: Schema.optional(
-        Schema.Union([Schema.Array(Schema.String), Schema.Null]),
-      ),
-      tailConsumers: Schema.optional(
-        Schema.Union([Schema.Array(ConsumerScript), Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          logpush: "logpush",
-          observability: "observability",
-          tags: "tags",
-          tailConsumers: "tail_consumers",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<PatchScriptSettingResponse>;
+export const PatchScriptSettingResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    logpush: Schema.optional(Schema.Union([Schema.Boolean, Schema.Null])),
+    observability: Schema.optional(Schema.Union([Observability2, Schema.Null])),
+    tags: Schema.optional(
+      Schema.Union([Schema.Array(Schema.String), Schema.Null]),
+    ),
+    tailConsumers: Schema.optional(
+      Schema.Union([Schema.Array(ConsumerScript), Schema.Null]),
+    ),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        logpush: "logpush",
+        observability: "observability",
+        tags: "tags",
+        tailConsumers: "tail_consumers",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<PatchScriptSettingResponse>;
 
 export type PatchScriptSettingError = DefaultErrors | WorkerNotFound;
 
@@ -17883,18 +17747,17 @@ export interface GetScriptSubdomainRequest {
   accountId: string;
 }
 
-export const GetScriptSubdomainRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/subdomain",
-      }),
-    ),
-  ) as unknown as Schema.Codec<GetScriptSubdomainRequest>;
+export const GetScriptSubdomainRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/subdomain",
+    }),
+  ),
+) as unknown as Schema.Codec<GetScriptSubdomainRequest>;
 
 export interface GetScriptSubdomainResponse {
   /** Whether the Worker is available on the workers.dev subdomain. */
@@ -17903,20 +17766,19 @@ export interface GetScriptSubdomainResponse {
   previewsEnabled: boolean;
 }
 
-export const GetScriptSubdomainResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.Boolean,
-      previewsEnabled: Schema.Boolean,
-    })
-      .pipe(
-        Schema.encodeKeys({
-          enabled: "enabled",
-          previewsEnabled: "previews_enabled",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<GetScriptSubdomainResponse>;
+export const GetScriptSubdomainResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.Boolean,
+    previewsEnabled: Schema.Boolean,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        enabled: "enabled",
+        previewsEnabled: "previews_enabled",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<GetScriptSubdomainResponse>;
 
 export type GetScriptSubdomainError = DefaultErrors | WorkerNotFound;
 
@@ -17941,24 +17803,23 @@ export interface CreateScriptSubdomainRequest {
   previewsEnabled?: boolean;
 }
 
-export const CreateScriptSubdomainRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      enabled: Schema.Boolean,
-      previewsEnabled: Schema.optional(Schema.Boolean),
-    }).pipe(
-      Schema.encodeKeys({
-        enabled: "enabled",
-        previewsEnabled: "previews_enabled",
-      }),
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/subdomain",
-      }),
-    ),
-  ) as unknown as Schema.Codec<CreateScriptSubdomainRequest>;
+export const CreateScriptSubdomainRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    enabled: Schema.Boolean,
+    previewsEnabled: Schema.optional(Schema.Boolean),
+  }).pipe(
+    Schema.encodeKeys({
+      enabled: "enabled",
+      previewsEnabled: "previews_enabled",
+    }),
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/subdomain",
+    }),
+  ),
+) as unknown as Schema.Codec<CreateScriptSubdomainRequest>;
 
 export interface CreateScriptSubdomainResponse {
   /** Whether the Worker is available on the workers.dev subdomain. */
@@ -17967,20 +17828,19 @@ export interface CreateScriptSubdomainResponse {
   previewsEnabled: boolean;
 }
 
-export const CreateScriptSubdomainResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.Boolean,
-      previewsEnabled: Schema.Boolean,
-    })
-      .pipe(
-        Schema.encodeKeys({
-          enabled: "enabled",
-          previewsEnabled: "previews_enabled",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<CreateScriptSubdomainResponse>;
+export const CreateScriptSubdomainResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.Boolean,
+    previewsEnabled: Schema.Boolean,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        enabled: "enabled",
+        previewsEnabled: "previews_enabled",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<CreateScriptSubdomainResponse>;
 
 export type CreateScriptSubdomainError = DefaultErrors | WorkerNotFound;
 
@@ -18001,18 +17861,17 @@ export interface DeleteScriptSubdomainRequest {
   accountId: string;
 }
 
-export const DeleteScriptSubdomainRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/subdomain",
-      }),
-    ),
-  ) as unknown as Schema.Codec<DeleteScriptSubdomainRequest>;
+export const DeleteScriptSubdomainRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/subdomain",
+    }),
+  ),
+) as unknown as Schema.Codec<DeleteScriptSubdomainRequest>;
 
 export interface DeleteScriptSubdomainResponse {
   /** Whether the Worker is available on the workers.dev subdomain. */
@@ -18021,20 +17880,19 @@ export interface DeleteScriptSubdomainResponse {
   previewsEnabled: boolean;
 }
 
-export const DeleteScriptSubdomainResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.Boolean,
-      previewsEnabled: Schema.Boolean,
-    })
-      .pipe(
-        Schema.encodeKeys({
-          enabled: "enabled",
-          previewsEnabled: "previews_enabled",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<DeleteScriptSubdomainResponse>;
+export const DeleteScriptSubdomainResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    enabled: Schema.Boolean,
+    previewsEnabled: Schema.Boolean,
+  })
+    .pipe(
+      Schema.encodeKeys({
+        enabled: "enabled",
+        previewsEnabled: "previews_enabled",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<DeleteScriptSubdomainResponse>;
 
 export type DeleteScriptSubdomainError = DefaultErrors | WorkerNotFound;
 
@@ -18109,19 +17967,18 @@ export interface CreateScriptTailRequest {
   body: unknown;
 }
 
-export const CreateScriptTailRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      body: Schema.Unknown.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/tails",
-      }),
-    ),
-  ) as unknown as Schema.Codec<CreateScriptTailRequest>;
+export const CreateScriptTailRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    body: Schema.Unknown.pipe(T.HttpBody()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/tails",
+    }),
+  ),
+) as unknown as Schema.Codec<CreateScriptTailRequest>;
 
 export interface CreateScriptTailResponse {
   /** Identifier. */
@@ -18130,18 +17987,15 @@ export interface CreateScriptTailResponse {
   url: string;
 }
 
-export const CreateScriptTailResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.String,
-      expiresAt: Schema.String,
-      url: Schema.String,
-    })
-      .pipe(
-        Schema.encodeKeys({ id: "id", expiresAt: "expires_at", url: "url" }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<CreateScriptTailResponse>;
+export const CreateScriptTailResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    id: Schema.String,
+    expiresAt: Schema.String,
+    url: Schema.String,
+  })
+    .pipe(Schema.encodeKeys({ id: "id", expiresAt: "expires_at", url: "url" }))
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<CreateScriptTailResponse>;
 
 export type CreateScriptTailError = DefaultErrors | WorkerNotFound;
 
@@ -18163,19 +18017,18 @@ export interface DeleteScriptTailRequest {
   accountId: string;
 }
 
-export const DeleteScriptTailRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      id: Schema.String.pipe(T.HttpPath("id")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/tails/{id}",
-      }),
-    ),
-  ) as unknown as Schema.Codec<DeleteScriptTailRequest>;
+export const DeleteScriptTailRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    id: Schema.String.pipe(T.HttpPath("id")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/tails/{id}",
+    }),
+  ),
+) as unknown as Schema.Codec<DeleteScriptTailRequest>;
 
 export interface DeleteScriptTailResponse {
   errors: {
@@ -18194,14 +18047,13 @@ export interface DeleteScriptTailResponse {
   success: true;
 }
 
-export const DeleteScriptTailResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.Array(Error2),
-      messages: Schema.Array(Error2),
-      success: Schema.Literal(true),
-    }),
-  ) as unknown as Schema.Codec<DeleteScriptTailResponse>;
+export const DeleteScriptTailResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    errors: Schema.Array(Error2),
+    messages: Schema.Array(Error2),
+    success: Schema.Literal(true),
+  }),
+) as unknown as Schema.Codec<DeleteScriptTailResponse>;
 
 export type DeleteScriptTailError = DefaultErrors | WorkerNotFound;
 
@@ -18227,19 +18079,18 @@ export interface GetScriptVersionRequest {
   accountId: string;
 }
 
-export const GetScriptVersionRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      versionId: Schema.String.pipe(T.HttpPath("versionId")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/versions/{versionId}",
-      }),
-    ),
-  ) as unknown as Schema.Codec<GetScriptVersionRequest>;
+export const GetScriptVersionRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    versionId: Schema.String.pipe(T.HttpPath("versionId")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/versions/{versionId}",
+    }),
+  ),
+) as unknown as Schema.Codec<GetScriptVersionRequest>;
 
 export interface GetScriptVersionResponse {
   resources: {
@@ -18419,15 +18270,14 @@ export interface GetScriptVersionResponse {
   number?: number | null;
 }
 
-export const GetScriptVersionResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Resources,
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      metadata: Schema.optional(Schema.Union([Metadata4, Schema.Null])),
-      number: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-    }).pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<GetScriptVersionResponse>;
+export const GetScriptVersionResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    resources: Resources,
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    metadata: Schema.optional(Schema.Union([Metadata4, Schema.Null])),
+    number: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  }).pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<GetScriptVersionResponse>;
 
 export type GetScriptVersionError =
   | DefaultErrors
@@ -18455,23 +18305,20 @@ export interface ListScriptVersionsRequest {
   deployable?: boolean;
 }
 
-export const ListScriptVersionsRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
-      perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
-      deployable: Schema.optional(Schema.Boolean).pipe(
-        T.HttpQuery("deployable"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/versions",
-      }),
-    ),
-  ) as unknown as Schema.Codec<ListScriptVersionsRequest>;
+export const ListScriptVersionsRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    page: Schema.optional(Schema.Number).pipe(T.HttpQuery("page")),
+    perPage: Schema.optional(Schema.Number).pipe(T.HttpQuery("per_page")),
+    deployable: Schema.optional(Schema.Boolean).pipe(T.HttpQuery("deployable")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/versions",
+    }),
+  ),
+) as unknown as Schema.Codec<ListScriptVersionsRequest>;
 
 export interface ListScriptVersionsResponse {
   result: {
@@ -18510,15 +18357,14 @@ export interface ListScriptVersionsResponse {
   } | null;
 }
 
-export const ListScriptVersionsResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: ListScriptVersionsResponseResult,
-      resultInfo: Schema.optional(
-        Schema.Union([ListBetaWorkersResponseResultInfo, Schema.Null]),
-      ),
-    }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
-  ) as unknown as Schema.Codec<ListScriptVersionsResponse>;
+export const ListScriptVersionsResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    result: ListScriptVersionsResponseResult,
+    resultInfo: Schema.optional(
+      Schema.Union([ListBetaWorkersResponseResultInfo, Schema.Null]),
+    ),
+  }).pipe(Schema.encodeKeys({ result: "result", resultInfo: "result_info" })),
+) as unknown as Schema.Codec<ListScriptVersionsResponse>;
 
 export type ListScriptVersionsError = DefaultErrors | WorkerNotFound;
 
@@ -18684,26 +18530,25 @@ export interface CreateScriptVersionRequest {
   files?: (File | Blob)[];
 }
 
-export const CreateScriptVersionRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-      bindingsInherit: Schema.optional(Schema.Literal("strict")).pipe(
-        T.HttpQuery("bindings_inherit"),
-      ),
-      metadata: Metadata5,
-      files: Schema.optional(
-        Schema.Array(UploadableSchema.pipe(T.HttpFormDataFile())),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        path: "/accounts/{account_id}/workers/scripts/{scriptName}/versions",
-        contentType: "multipart",
-      }),
+export const CreateScriptVersionRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    scriptName: Schema.String.pipe(T.HttpPath("scriptName")),
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+    bindingsInherit: Schema.optional(Schema.Literal("strict")).pipe(
+      T.HttpQuery("bindings_inherit"),
     ),
-  ) as unknown as Schema.Codec<CreateScriptVersionRequest>;
+    metadata: Metadata5,
+    files: Schema.optional(
+      Schema.Array(UploadableSchema.pipe(T.HttpFormDataFile())),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      path: "/accounts/{account_id}/workers/scripts/{scriptName}/versions",
+      contentType: "multipart",
+    }),
+  ),
+) as unknown as Schema.Codec<CreateScriptVersionRequest>;
 
 export interface CreateScriptVersionResponse {
   resources: {
@@ -18885,30 +18730,44 @@ export interface CreateScriptVersionResponse {
   startupTimeMs?: number | null;
 }
 
-export const CreateScriptVersionResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Resources,
-      id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
-      metadata: Schema.optional(Schema.Union([Metadata4, Schema.Null])),
-      number: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
-      startupTimeMs: Schema.optional(
-        Schema.Union([Schema.Number, Schema.Null]),
-      ),
-    })
-      .pipe(
-        Schema.encodeKeys({
-          resources: "resources",
-          id: "id",
-          metadata: "metadata",
-          number: "number",
-          startupTimeMs: "startup_time_ms",
-        }),
-      )
-      .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<CreateScriptVersionResponse>;
+export const CreateScriptVersionResponse = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    resources: Resources,
+    id: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
+    metadata: Schema.optional(Schema.Union([Metadata4, Schema.Null])),
+    number: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+    startupTimeMs: Schema.optional(Schema.Union([Schema.Number, Schema.Null])),
+  })
+    .pipe(
+      Schema.encodeKeys({
+        resources: "resources",
+        id: "id",
+        metadata: "metadata",
+        number: "number",
+        startupTimeMs: "startup_time_ms",
+      }),
+    )
+    .pipe(T.ResponsePath("result")),
+) as unknown as Schema.Codec<CreateScriptVersionResponse>;
 
-export type CreateScriptVersionError = DefaultErrors | WorkerNotFound;
+export type CreateScriptVersionError =
+  | DefaultErrors
+  | WorkerNotFound
+  | InvalidWorkerScript
+  | InternalServerError
+  | ScriptStartupError
+  | ScriptModuleNotFound
+  | SecretsStoreBindingNotFound
+  | KVNamespaceNotFound
+  | R2BucketNotFound
+  | D1DatabaseNotFound
+  | QueueNotFound
+  | ServiceBindingNotFound
+  | DurableObjectClassNotFound
+  | HyperdriveConfigNotFound
+  | VectorizeIndexNotFound
+  | DispatchNamespaceNotFound
+  | MtlsCertificateNotFound;
 
 export const createScriptVersion: API.OperationMethod<
   CreateScriptVersionRequest,
@@ -18918,7 +18777,24 @@ export const createScriptVersion: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateScriptVersionRequest,
   output: CreateScriptVersionResponse,
-  errors: [WorkerNotFound],
+  errors: [
+    WorkerNotFound,
+    InvalidWorkerScript,
+    InternalServerError,
+    ScriptStartupError,
+    ScriptModuleNotFound,
+    SecretsStoreBindingNotFound,
+    KVNamespaceNotFound,
+    R2BucketNotFound,
+    D1DatabaseNotFound,
+    QueueNotFound,
+    ServiceBindingNotFound,
+    DurableObjectClassNotFound,
+    HyperdriveConfigNotFound,
+    VectorizeIndexNotFound,
+    DispatchNamespaceNotFound,
+    MtlsCertificateNotFound,
+  ],
 }));
 
 // =============================================================================
@@ -19126,8 +19002,8 @@ export interface CreateServiceEdgePreviewRequest {
     | { routes: string[]; minimalMode?: boolean };
 }
 
-export const CreateServiceEdgePreviewRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const CreateServiceEdgePreviewRequest = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       accountId: Schema.String.pipe(T.HttpPath("account_id")),
       serviceName: Schema.String.pipe(T.HttpPath("service_name")),
@@ -19157,7 +19033,7 @@ export const CreateServiceEdgePreviewRequest =
         contentType: "multipart",
       }),
     ),
-  ) as unknown as Schema.Codec<CreateServiceEdgePreviewRequest>;
+) as unknown as Schema.Codec<CreateServiceEdgePreviewRequest>;
 
 export interface CreateServiceEdgePreviewResponse {
   /** Token to send as cf-workers-preview-token header when making requests to the preview host. */
@@ -19166,8 +19042,8 @@ export interface CreateServiceEdgePreviewResponse {
   tailUrl?: string | null;
 }
 
-export const CreateServiceEdgePreviewResponse =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const CreateServiceEdgePreviewResponse = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       previewToken: Schema.String,
       tailUrl: Schema.optional(Schema.Union([Schema.String, Schema.Null])),
@@ -19179,7 +19055,7 @@ export const CreateServiceEdgePreviewResponse =
         }),
       )
       .pipe(T.ResponsePath("result")),
-  ) as unknown as Schema.Codec<CreateServiceEdgePreviewResponse>;
+) as unknown as Schema.Codec<CreateServiceEdgePreviewResponse>;
 
 export type CreateServiceEdgePreviewError = DefaultErrors | InvalidRoute;
 
@@ -19207,10 +19083,7 @@ export const GetSubdomainRequest = /*@__PURE__*/ Schema.suspend(() =>
   Schema.Struct({
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
   }).pipe(
-    T.Http({
-      method: "GET",
-      path: "/accounts/{account_id}/workers/subdomain",
-    }),
+    T.Http({ method: "GET", path: "/accounts/{account_id}/workers/subdomain" }),
   ),
 ) as unknown as Schema.Codec<GetSubdomainRequest>;
 
@@ -19253,10 +19126,7 @@ export const PutSubdomainRequest = /*@__PURE__*/ Schema.suspend(() =>
     accountId: Schema.String.pipe(T.HttpPath("account_id")),
     subdomain: Schema.String,
   }).pipe(
-    T.Http({
-      method: "PUT",
-      path: "/accounts/{account_id}/workers/subdomain",
-    }),
+    T.Http({ method: "PUT", path: "/accounts/{account_id}/workers/subdomain" }),
   ),
 ) as unknown as Schema.Codec<PutSubdomainRequest>;
 
@@ -19292,24 +19162,22 @@ export interface DeleteSubdomainRequest {
   accountId: string;
 }
 
-export const DeleteSubdomainRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.String.pipe(T.HttpPath("account_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        path: "/accounts/{account_id}/workers/subdomain",
-      }),
-    ),
-  ) as unknown as Schema.Codec<DeleteSubdomainRequest>;
+export const DeleteSubdomainRequest = /*@__PURE__*/ Schema.suspend(() =>
+  Schema.Struct({
+    accountId: Schema.String.pipe(T.HttpPath("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      path: "/accounts/{account_id}/workers/subdomain",
+    }),
+  ),
+) as unknown as Schema.Codec<DeleteSubdomainRequest>;
 
 export type DeleteSubdomainResponse = unknown;
 
-export const DeleteSubdomainResponse =
-  /*@__PURE__*/ Schema.suspend(
-    () => Schema.Unknown,
-  ) as unknown as Schema.Codec<DeleteSubdomainResponse>;
+export const DeleteSubdomainResponse = /*@__PURE__*/ Schema.suspend(
+  () => Schema.Unknown,
+) as unknown as Schema.Codec<DeleteSubdomainResponse>;
 
 export type DeleteSubdomainError =
   | DefaultErrors
@@ -19587,14 +19455,14 @@ export interface CreateZoneEdgePreviewSessionRequest {
   zoneId: string;
 }
 
-export const CreateZoneEdgePreviewSessionRequest =
-  /*@__PURE__*/ Schema.suspend(() =>
+export const CreateZoneEdgePreviewSessionRequest = /*@__PURE__*/ Schema.suspend(
+  () =>
     Schema.Struct({
       zoneId: Schema.String.pipe(T.HttpPath("zone_id")),
     }).pipe(
       T.Http({ method: "GET", path: "/zones/{zone_id}/workers/edge-preview" }),
     ),
-  ) as unknown as Schema.Codec<CreateZoneEdgePreviewSessionRequest>;
+) as unknown as Schema.Codec<CreateZoneEdgePreviewSessionRequest>;
 
 export interface CreateZoneEdgePreviewSessionResponse {
   /** Session token used as cf-preview-upload-config-token when uploading a preview worker. */
