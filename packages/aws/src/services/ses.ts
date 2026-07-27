@@ -172,10 +172,11 @@ export const CloneReceiptRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CloneReceiptRuleSetRequest",
 }) as any as S.Schema<CloneReceiptRuleSetRequest>;
 export interface CloneReceiptRuleSetResponse {}
-export const CloneReceiptRuleSetResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "CloneReceiptRuleSetResponse",
-  }) as any as S.Schema<CloneReceiptRuleSetResponse>;
+export const CloneReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "CloneReceiptRuleSetResponse",
+}) as any as S.Schema<CloneReceiptRuleSetResponse>;
 export interface ConfigurationSet {
   Name: string;
 }
@@ -187,27 +188,27 @@ export const ConfigurationSet = /*@__PURE__*/ S.suspend(() =>
 export interface CreateConfigurationSetRequest {
   ConfigurationSet: ConfigurationSet;
 }
-export const CreateConfigurationSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ConfigurationSet: ConfigurationSet }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateConfigurationSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ConfigurationSet: ConfigurationSet }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateConfigurationSetRequest",
-  }) as any as S.Schema<CreateConfigurationSetRequest>;
+  ),
+).annotate({
+  identifier: "CreateConfigurationSetRequest",
+}) as any as S.Schema<CreateConfigurationSetRequest>;
 export interface CreateConfigurationSetResponse {}
-export const CreateConfigurationSetResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "CreateConfigurationSetResponse",
-  }) as any as S.Schema<CreateConfigurationSetResponse>;
+export const CreateConfigurationSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "CreateConfigurationSetResponse",
+}) as any as S.Schema<CreateConfigurationSetResponse>;
 export type EventType =
   | "send"
   | "reject"
@@ -241,20 +242,20 @@ export interface CloudWatchDimensionConfiguration {
   DimensionValueSource: DimensionValueSource;
   DefaultDimensionValue: string;
 }
-export const CloudWatchDimensionConfiguration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      DimensionName: S.String,
-      DimensionValueSource: DimensionValueSource,
-      DefaultDimensionValue: S.String,
-    }),
-  ).annotate({
-    identifier: "CloudWatchDimensionConfiguration",
-  }) as any as S.Schema<CloudWatchDimensionConfiguration>;
+export const CloudWatchDimensionConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    DimensionName: S.String,
+    DimensionValueSource: DimensionValueSource,
+    DefaultDimensionValue: S.String,
+  }),
+).annotate({
+  identifier: "CloudWatchDimensionConfiguration",
+}) as any as S.Schema<CloudWatchDimensionConfiguration>;
 export type CloudWatchDimensionConfigurations =
   CloudWatchDimensionConfiguration[];
-export const CloudWatchDimensionConfigurations =
-  /*@__PURE__*/ S.Array(CloudWatchDimensionConfiguration);
+export const CloudWatchDimensionConfigurations = /*@__PURE__*/ S.Array(
+  CloudWatchDimensionConfiguration,
+);
 export interface CloudWatchDestination {
   DimensionConfigurations: CloudWatchDimensionConfiguration[];
 }
@@ -426,10 +427,11 @@ export const CreateReceiptFilterRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateReceiptFilterRequest",
 }) as any as S.Schema<CreateReceiptFilterRequest>;
 export interface CreateReceiptFilterResponse {}
-export const CreateReceiptFilterResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "CreateReceiptFilterResponse",
-  }) as any as S.Schema<CreateReceiptFilterResponse>;
+export const CreateReceiptFilterResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "CreateReceiptFilterResponse",
+}) as any as S.Schema<CreateReceiptFilterResponse>;
 export type TlsPolicy = "Require" | "Optional" | (string & {});
 export const TlsPolicy = /*@__PURE__*/ S.String;
 export type RecipientsList = string[];
@@ -596,27 +598,27 @@ export const CreateReceiptRuleResponse = /*@__PURE__*/ S.suspend(() =>
 export interface CreateReceiptRuleSetRequest {
   RuleSetName: string;
 }
-export const CreateReceiptRuleSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RuleSetName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const CreateReceiptRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RuleSetName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "CreateReceiptRuleSetRequest",
-  }) as any as S.Schema<CreateReceiptRuleSetRequest>;
+  ),
+).annotate({
+  identifier: "CreateReceiptRuleSetRequest",
+}) as any as S.Schema<CreateReceiptRuleSetRequest>;
 export interface CreateReceiptRuleSetResponse {}
-export const CreateReceiptRuleSetResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "CreateReceiptRuleSetResponse",
-  }) as any as S.Schema<CreateReceiptRuleSetResponse>;
+export const CreateReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "CreateReceiptRuleSetResponse",
+}) as any as S.Schema<CreateReceiptRuleSetResponse>;
 export interface Template {
   TemplateName: string;
   SubjectPart?: string;
@@ -658,27 +660,27 @@ export const CreateTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteConfigurationSetRequest {
   ConfigurationSetName: string;
 }
-export const DeleteConfigurationSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ ConfigurationSetName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteConfigurationSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ ConfigurationSetName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteConfigurationSetRequest",
-  }) as any as S.Schema<DeleteConfigurationSetRequest>;
+  ),
+).annotate({
+  identifier: "DeleteConfigurationSetRequest",
+}) as any as S.Schema<DeleteConfigurationSetRequest>;
 export interface DeleteConfigurationSetResponse {}
-export const DeleteConfigurationSetResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteConfigurationSetResponse",
-  }) as any as S.Schema<DeleteConfigurationSetResponse>;
+export const DeleteConfigurationSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteConfigurationSetResponse",
+}) as any as S.Schema<DeleteConfigurationSetResponse>;
 export interface DeleteConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestinationName: string;
@@ -783,27 +785,27 @@ export interface DeleteIdentityPolicyRequest {
   Identity: string;
   PolicyName: string;
 }
-export const DeleteIdentityPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Identity: S.String, PolicyName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteIdentityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identity: S.String, PolicyName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteIdentityPolicyRequest",
-  }) as any as S.Schema<DeleteIdentityPolicyRequest>;
+  ),
+).annotate({
+  identifier: "DeleteIdentityPolicyRequest",
+}) as any as S.Schema<DeleteIdentityPolicyRequest>;
 export interface DeleteIdentityPolicyResponse {}
-export const DeleteIdentityPolicyResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteIdentityPolicyResponse",
-  }) as any as S.Schema<DeleteIdentityPolicyResponse>;
+export const DeleteIdentityPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteIdentityPolicyResponse",
+}) as any as S.Schema<DeleteIdentityPolicyResponse>;
 export interface DeleteReceiptFilterRequest {
   FilterName: string;
 }
@@ -823,10 +825,11 @@ export const DeleteReceiptFilterRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteReceiptFilterRequest",
 }) as any as S.Schema<DeleteReceiptFilterRequest>;
 export interface DeleteReceiptFilterResponse {}
-export const DeleteReceiptFilterResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteReceiptFilterResponse",
-  }) as any as S.Schema<DeleteReceiptFilterResponse>;
+export const DeleteReceiptFilterResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteReceiptFilterResponse",
+}) as any as S.Schema<DeleteReceiptFilterResponse>;
 export interface DeleteReceiptRuleRequest {
   RuleSetName: string;
   RuleName: string;
@@ -855,27 +858,27 @@ export const DeleteReceiptRuleResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteReceiptRuleSetRequest {
   RuleSetName: string;
 }
-export const DeleteReceiptRuleSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RuleSetName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteReceiptRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RuleSetName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteReceiptRuleSetRequest",
-  }) as any as S.Schema<DeleteReceiptRuleSetRequest>;
+  ),
+).annotate({
+  identifier: "DeleteReceiptRuleSetRequest",
+}) as any as S.Schema<DeleteReceiptRuleSetRequest>;
 export interface DeleteReceiptRuleSetResponse {}
-export const DeleteReceiptRuleSetResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteReceiptRuleSetResponse",
-  }) as any as S.Schema<DeleteReceiptRuleSetResponse>;
+export const DeleteReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteReceiptRuleSetResponse",
+}) as any as S.Schema<DeleteReceiptRuleSetResponse>;
 export interface DeleteTemplateRequest {
   TemplateName: string;
 }
@@ -903,44 +906,43 @@ export const DeleteTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DeleteVerifiedEmailAddressRequest {
   EmailAddress: string;
 }
-export const DeleteVerifiedEmailAddressRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ EmailAddress: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DeleteVerifiedEmailAddressRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ EmailAddress: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DeleteVerifiedEmailAddressRequest",
-  }) as any as S.Schema<DeleteVerifiedEmailAddressRequest>;
+  ),
+).annotate({
+  identifier: "DeleteVerifiedEmailAddressRequest",
+}) as any as S.Schema<DeleteVerifiedEmailAddressRequest>;
 export interface DeleteVerifiedEmailAddressResponse {}
-export const DeleteVerifiedEmailAddressResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "DeleteVerifiedEmailAddressResponse",
-  }) as any as S.Schema<DeleteVerifiedEmailAddressResponse>;
+export const DeleteVerifiedEmailAddressResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "DeleteVerifiedEmailAddressResponse",
+}) as any as S.Schema<DeleteVerifiedEmailAddressResponse>;
 export interface DescribeActiveReceiptRuleSetRequest {}
-export const DescribeActiveReceiptRuleSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeActiveReceiptRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeActiveReceiptRuleSetRequest",
-  }) as any as S.Schema<DescribeActiveReceiptRuleSetRequest>;
+  ),
+).annotate({
+  identifier: "DescribeActiveReceiptRuleSetRequest",
+}) as any as S.Schema<DescribeActiveReceiptRuleSetRequest>;
 export interface ReceiptRuleSetMetadata {
   Name?: string;
   CreatedTimestamp?: Date;
@@ -961,15 +963,15 @@ export interface DescribeActiveReceiptRuleSetResponse {
   Metadata?: ReceiptRuleSetMetadata;
   Rules?: ReceiptRule[];
 }
-export const DescribeActiveReceiptRuleSetResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const DescribeActiveReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       Metadata: S.optional(ReceiptRuleSetMetadata),
       Rules: S.optional(ReceiptRulesList),
     }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeActiveReceiptRuleSetResponse",
-  }) as any as S.Schema<DescribeActiveReceiptRuleSetResponse>;
+).annotate({
+  identifier: "DescribeActiveReceiptRuleSetResponse",
+}) as any as S.Schema<DescribeActiveReceiptRuleSetResponse>;
 export type ConfigurationSetAttribute =
   | "eventDestinations"
   | "trackingOptions"
@@ -978,31 +980,31 @@ export type ConfigurationSetAttribute =
   | (string & {});
 export const ConfigurationSetAttribute = /*@__PURE__*/ S.String;
 export type ConfigurationSetAttributeList = ConfigurationSetAttribute[];
-export const ConfigurationSetAttributeList =
-  /*@__PURE__*/ S.Array(ConfigurationSetAttribute);
+export const ConfigurationSetAttributeList = /*@__PURE__*/ S.Array(
+  ConfigurationSetAttribute,
+);
 export interface DescribeConfigurationSetRequest {
   ConfigurationSetName: string;
   ConfigurationSetAttributeNames?: ConfigurationSetAttribute[];
 }
-export const DescribeConfigurationSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ConfigurationSetName: S.String,
-      ConfigurationSetAttributeNames: S.optional(ConfigurationSetAttributeList),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeConfigurationSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConfigurationSetName: S.String,
+    ConfigurationSetAttributeNames: S.optional(ConfigurationSetAttributeList),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeConfigurationSetRequest",
-  }) as any as S.Schema<DescribeConfigurationSetRequest>;
+  ),
+).annotate({
+  identifier: "DescribeConfigurationSetRequest",
+}) as any as S.Schema<DescribeConfigurationSetRequest>;
 export type EventDestinations = EventDestination[];
 export const EventDestinations = /*@__PURE__*/ S.Array(EventDestination);
 export interface DeliveryOptions {
@@ -1036,18 +1038,17 @@ export interface DescribeConfigurationSetResponse {
   DeliveryOptions?: DeliveryOptions;
   ReputationOptions?: ReputationOptions;
 }
-export const DescribeConfigurationSetResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ConfigurationSet: S.optional(ConfigurationSet),
-      EventDestinations: S.optional(EventDestinations),
-      TrackingOptions: S.optional(TrackingOptions),
-      DeliveryOptions: S.optional(DeliveryOptions),
-      ReputationOptions: S.optional(ReputationOptions),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeConfigurationSetResponse",
-  }) as any as S.Schema<DescribeConfigurationSetResponse>;
+export const DescribeConfigurationSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConfigurationSet: S.optional(ConfigurationSet),
+    EventDestinations: S.optional(EventDestinations),
+    TrackingOptions: S.optional(TrackingOptions),
+    DeliveryOptions: S.optional(DeliveryOptions),
+    ReputationOptions: S.optional(ReputationOptions),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeConfigurationSetResponse",
+}) as any as S.Schema<DescribeConfigurationSetResponse>;
 export interface DescribeReceiptRuleRequest {
   RuleSetName: string;
   RuleName: string;
@@ -1070,70 +1071,65 @@ export const DescribeReceiptRuleRequest = /*@__PURE__*/ S.suspend(() =>
 export interface DescribeReceiptRuleResponse {
   Rule?: ReceiptRule;
 }
-export const DescribeReceiptRuleResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Rule: S.optional(ReceiptRule) }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeReceiptRuleResponse",
-  }) as any as S.Schema<DescribeReceiptRuleResponse>;
+export const DescribeReceiptRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Rule: S.optional(ReceiptRule) }).pipe(ns),
+).annotate({
+  identifier: "DescribeReceiptRuleResponse",
+}) as any as S.Schema<DescribeReceiptRuleResponse>;
 export interface DescribeReceiptRuleSetRequest {
   RuleSetName: string;
 }
-export const DescribeReceiptRuleSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RuleSetName: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const DescribeReceiptRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RuleSetName: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "DescribeReceiptRuleSetRequest",
-  }) as any as S.Schema<DescribeReceiptRuleSetRequest>;
+  ),
+).annotate({
+  identifier: "DescribeReceiptRuleSetRequest",
+}) as any as S.Schema<DescribeReceiptRuleSetRequest>;
 export interface DescribeReceiptRuleSetResponse {
   Metadata?: ReceiptRuleSetMetadata;
   Rules?: ReceiptRule[];
 }
-export const DescribeReceiptRuleSetResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Metadata: S.optional(ReceiptRuleSetMetadata),
-      Rules: S.optional(ReceiptRulesList),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "DescribeReceiptRuleSetResponse",
-  }) as any as S.Schema<DescribeReceiptRuleSetResponse>;
+export const DescribeReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Metadata: S.optional(ReceiptRuleSetMetadata),
+    Rules: S.optional(ReceiptRulesList),
+  }).pipe(ns),
+).annotate({
+  identifier: "DescribeReceiptRuleSetResponse",
+}) as any as S.Schema<DescribeReceiptRuleSetResponse>;
 export interface GetAccountSendingEnabledRequest {}
-export const GetAccountSendingEnabledRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetAccountSendingEnabledRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetAccountSendingEnabledRequest",
-  }) as any as S.Schema<GetAccountSendingEnabledRequest>;
+  ),
+).annotate({
+  identifier: "GetAccountSendingEnabledRequest",
+}) as any as S.Schema<GetAccountSendingEnabledRequest>;
 export interface GetAccountSendingEnabledResponse {
   Enabled?: boolean;
 }
-export const GetAccountSendingEnabledResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Enabled: S.optional(S.Boolean) }).pipe(ns),
-  ).annotate({
-    identifier: "GetAccountSendingEnabledResponse",
-  }) as any as S.Schema<GetAccountSendingEnabledResponse>;
+export const GetAccountSendingEnabledResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Enabled: S.optional(S.Boolean) }).pipe(ns),
+).annotate({
+  identifier: "GetAccountSendingEnabledResponse",
+}) as any as S.Schema<GetAccountSendingEnabledResponse>;
 export interface GetCustomVerificationEmailTemplateRequest {
   TemplateName: string;
 }
@@ -1179,22 +1175,21 @@ export const IdentityList = /*@__PURE__*/ S.Array(S.String);
 export interface GetIdentityDkimAttributesRequest {
   Identities: string[];
 }
-export const GetIdentityDkimAttributesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Identities: IdentityList }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const GetIdentityDkimAttributesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identities: IdentityList }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "GetIdentityDkimAttributesRequest",
-  }) as any as S.Schema<GetIdentityDkimAttributesRequest>;
+  ),
+).annotate({
+  identifier: "GetIdentityDkimAttributesRequest",
+}) as any as S.Schema<GetIdentityDkimAttributesRequest>;
 export type VerificationStatus =
   | "Pending"
   | "Success"
@@ -1229,12 +1224,11 @@ export const DkimAttributes = /*@__PURE__*/ S.Record(
 export interface GetIdentityDkimAttributesResponse {
   DkimAttributes: { [key: string]: IdentityDkimAttributes | undefined };
 }
-export const GetIdentityDkimAttributesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ DkimAttributes: DkimAttributes }).pipe(ns),
-  ).annotate({
-    identifier: "GetIdentityDkimAttributesResponse",
-  }) as any as S.Schema<GetIdentityDkimAttributesResponse>;
+export const GetIdentityDkimAttributesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ DkimAttributes: DkimAttributes }).pipe(ns),
+).annotate({
+  identifier: "GetIdentityDkimAttributesResponse",
+}) as any as S.Schema<GetIdentityDkimAttributesResponse>;
 export interface GetIdentityMailFromDomainAttributesRequest {
   Identities: string[];
 }
@@ -1271,16 +1265,15 @@ export interface IdentityMailFromDomainAttributes {
   MailFromDomainStatus: CustomMailFromStatus;
   BehaviorOnMXFailure: BehaviorOnMXFailure;
 }
-export const IdentityMailFromDomainAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MailFromDomain: S.String,
-      MailFromDomainStatus: CustomMailFromStatus,
-      BehaviorOnMXFailure: BehaviorOnMXFailure,
-    }),
-  ).annotate({
-    identifier: "IdentityMailFromDomainAttributes",
-  }) as any as S.Schema<IdentityMailFromDomainAttributes>;
+export const IdentityMailFromDomainAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MailFromDomain: S.String,
+    MailFromDomainStatus: CustomMailFromStatus,
+    BehaviorOnMXFailure: BehaviorOnMXFailure,
+  }),
+).annotate({
+  identifier: "IdentityMailFromDomainAttributes",
+}) as any as S.Schema<IdentityMailFromDomainAttributes>;
 export type MailFromDomainAttributes = {
   [key: string]: IdentityMailFromDomainAttributes | undefined;
 };
@@ -1302,8 +1295,8 @@ export const GetIdentityMailFromDomainAttributesResponse =
 export interface GetIdentityNotificationAttributesRequest {
   Identities: string[];
 }
-export const GetIdentityNotificationAttributesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetIdentityNotificationAttributesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ Identities: IdentityList }).pipe(
       T.all(
         ns,
@@ -1315,9 +1308,9 @@ export const GetIdentityNotificationAttributesRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetIdentityNotificationAttributesRequest",
-  }) as any as S.Schema<GetIdentityNotificationAttributesRequest>;
+).annotate({
+  identifier: "GetIdentityNotificationAttributesRequest",
+}) as any as S.Schema<GetIdentityNotificationAttributesRequest>;
 export interface IdentityNotificationAttributes {
   BounceTopic: string;
   ComplaintTopic: string;
@@ -1327,20 +1320,19 @@ export interface IdentityNotificationAttributes {
   HeadersInComplaintNotificationsEnabled?: boolean;
   HeadersInDeliveryNotificationsEnabled?: boolean;
 }
-export const IdentityNotificationAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      BounceTopic: S.String,
-      ComplaintTopic: S.String,
-      DeliveryTopic: S.String,
-      ForwardingEnabled: S.Boolean,
-      HeadersInBounceNotificationsEnabled: S.optional(S.Boolean),
-      HeadersInComplaintNotificationsEnabled: S.optional(S.Boolean),
-      HeadersInDeliveryNotificationsEnabled: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "IdentityNotificationAttributes",
-  }) as any as S.Schema<IdentityNotificationAttributes>;
+export const IdentityNotificationAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    BounceTopic: S.String,
+    ComplaintTopic: S.String,
+    DeliveryTopic: S.String,
+    ForwardingEnabled: S.Boolean,
+    HeadersInBounceNotificationsEnabled: S.optional(S.Boolean),
+    HeadersInComplaintNotificationsEnabled: S.optional(S.Boolean),
+    HeadersInDeliveryNotificationsEnabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "IdentityNotificationAttributes",
+}) as any as S.Schema<IdentityNotificationAttributes>;
 export type NotificationAttributes = {
   [key: string]: IdentityNotificationAttributes | undefined;
 };
@@ -1388,17 +1380,16 @@ export const PolicyMap = /*@__PURE__*/ S.Record(
 export interface GetIdentityPoliciesResponse {
   Policies: { [key: string]: string | undefined };
 }
-export const GetIdentityPoliciesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Policies: PolicyMap }).pipe(ns),
-  ).annotate({
-    identifier: "GetIdentityPoliciesResponse",
-  }) as any as S.Schema<GetIdentityPoliciesResponse>;
+export const GetIdentityPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Policies: PolicyMap }).pipe(ns),
+).annotate({
+  identifier: "GetIdentityPoliciesResponse",
+}) as any as S.Schema<GetIdentityPoliciesResponse>;
 export interface GetIdentityVerificationAttributesRequest {
   Identities: string[];
 }
-export const GetIdentityVerificationAttributesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetIdentityVerificationAttributesRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({ Identities: IdentityList }).pipe(
       T.all(
         ns,
@@ -1410,22 +1401,21 @@ export const GetIdentityVerificationAttributesRequest =
         rules,
       ),
     ),
-  ).annotate({
-    identifier: "GetIdentityVerificationAttributesRequest",
-  }) as any as S.Schema<GetIdentityVerificationAttributesRequest>;
+).annotate({
+  identifier: "GetIdentityVerificationAttributesRequest",
+}) as any as S.Schema<GetIdentityVerificationAttributesRequest>;
 export interface IdentityVerificationAttributes {
   VerificationStatus: VerificationStatus;
   VerificationToken?: string;
 }
-export const IdentityVerificationAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      VerificationStatus: VerificationStatus,
-      VerificationToken: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "IdentityVerificationAttributes",
-  }) as any as S.Schema<IdentityVerificationAttributes>;
+export const IdentityVerificationAttributes = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    VerificationStatus: VerificationStatus,
+    VerificationToken: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "IdentityVerificationAttributes",
+}) as any as S.Schema<IdentityVerificationAttributes>;
 export type VerificationAttributes = {
   [key: string]: IdentityVerificationAttributes | undefined;
 };
@@ -1548,40 +1538,38 @@ export interface ListConfigurationSetsRequest {
   NextToken?: string;
   MaxItems?: number;
 }
-export const ListConfigurationSetsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      NextToken: S.optional(S.String),
-      MaxItems: S.optional(S.Number),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListConfigurationSetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    NextToken: S.optional(S.String),
+    MaxItems: S.optional(S.Number),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListConfigurationSetsRequest",
-  }) as any as S.Schema<ListConfigurationSetsRequest>;
+  ),
+).annotate({
+  identifier: "ListConfigurationSetsRequest",
+}) as any as S.Schema<ListConfigurationSetsRequest>;
 export type ConfigurationSets = ConfigurationSet[];
 export const ConfigurationSets = /*@__PURE__*/ S.Array(ConfigurationSet);
 export interface ListConfigurationSetsResponse {
   ConfigurationSets?: ConfigurationSet[];
   NextToken?: string;
 }
-export const ListConfigurationSetsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ConfigurationSets: S.optional(ConfigurationSets),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListConfigurationSetsResponse",
-  }) as any as S.Schema<ListConfigurationSetsResponse>;
+export const ListConfigurationSetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConfigurationSets: S.optional(ConfigurationSets),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListConfigurationSetsResponse",
+}) as any as S.Schema<ListConfigurationSetsResponse>;
 export interface ListCustomVerificationEmailTemplatesRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -1612,22 +1600,22 @@ export interface CustomVerificationEmailTemplate {
   SuccessRedirectionURL?: string;
   FailureRedirectionURL?: string;
 }
-export const CustomVerificationEmailTemplate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      TemplateName: S.optional(S.String),
-      FromEmailAddress: S.optional(S.String),
-      TemplateSubject: S.optional(S.String),
-      SuccessRedirectionURL: S.optional(S.String),
-      FailureRedirectionURL: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CustomVerificationEmailTemplate",
-  }) as any as S.Schema<CustomVerificationEmailTemplate>;
+export const CustomVerificationEmailTemplate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    TemplateName: S.optional(S.String),
+    FromEmailAddress: S.optional(S.String),
+    TemplateSubject: S.optional(S.String),
+    SuccessRedirectionURL: S.optional(S.String),
+    FailureRedirectionURL: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CustomVerificationEmailTemplate",
+}) as any as S.Schema<CustomVerificationEmailTemplate>;
 export type CustomVerificationEmailTemplates =
   CustomVerificationEmailTemplate[];
-export const CustomVerificationEmailTemplates =
-  /*@__PURE__*/ S.Array(CustomVerificationEmailTemplate);
+export const CustomVerificationEmailTemplates = /*@__PURE__*/ S.Array(
+  CustomVerificationEmailTemplate,
+);
 export interface ListCustomVerificationEmailTemplatesResponse {
   CustomVerificationEmailTemplates?: CustomVerificationEmailTemplate[];
   NextToken?: string;
@@ -1674,41 +1662,38 @@ export interface ListIdentitiesResponse {
   NextToken?: string;
 }
 export const ListIdentitiesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identities: IdentityList,
-    NextToken: S.optional(S.String),
-  }).pipe(ns),
+  S.Struct({ Identities: IdentityList, NextToken: S.optional(S.String) }).pipe(
+    ns,
+  ),
 ).annotate({
   identifier: "ListIdentitiesResponse",
 }) as any as S.Schema<ListIdentitiesResponse>;
 export interface ListIdentityPoliciesRequest {
   Identity: string;
 }
-export const ListIdentityPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Identity: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListIdentityPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identity: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListIdentityPoliciesRequest",
-  }) as any as S.Schema<ListIdentityPoliciesRequest>;
+  ),
+).annotate({
+  identifier: "ListIdentityPoliciesRequest",
+}) as any as S.Schema<ListIdentityPoliciesRequest>;
 export interface ListIdentityPoliciesResponse {
   PolicyNames: string[];
 }
-export const ListIdentityPoliciesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ PolicyNames: PolicyNameList }).pipe(ns),
-  ).annotate({
-    identifier: "ListIdentityPoliciesResponse",
-  }) as any as S.Schema<ListIdentityPoliciesResponse>;
+export const ListIdentityPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ PolicyNames: PolicyNameList }).pipe(ns),
+).annotate({
+  identifier: "ListIdentityPoliciesResponse",
+}) as any as S.Schema<ListIdentityPoliciesResponse>;
 export interface ListReceiptFiltersRequest {}
 export const ListReceiptFiltersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
@@ -1761,15 +1746,14 @@ export interface ListReceiptRuleSetsResponse {
   RuleSets?: ReceiptRuleSetMetadata[];
   NextToken?: string;
 }
-export const ListReceiptRuleSetsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RuleSets: S.optional(ReceiptRuleSetsLists),
-      NextToken: S.optional(S.String),
-    }).pipe(ns),
-  ).annotate({
-    identifier: "ListReceiptRuleSetsResponse",
-  }) as any as S.Schema<ListReceiptRuleSetsResponse>;
+export const ListReceiptRuleSetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RuleSets: S.optional(ReceiptRuleSetsLists),
+    NextToken: S.optional(S.String),
+  }).pipe(ns),
+).annotate({
+  identifier: "ListReceiptRuleSetsResponse",
+}) as any as S.Schema<ListReceiptRuleSetsResponse>;
 export interface ListTemplatesRequest {
   NextToken?: string;
   MaxItems?: number;
@@ -1821,33 +1805,31 @@ export const ListTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTemplatesResponse",
 }) as any as S.Schema<ListTemplatesResponse>;
 export interface ListVerifiedEmailAddressesRequest {}
-export const ListVerifiedEmailAddressesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ListVerifiedEmailAddressesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ListVerifiedEmailAddressesRequest",
-  }) as any as S.Schema<ListVerifiedEmailAddressesRequest>;
+  ),
+).annotate({
+  identifier: "ListVerifiedEmailAddressesRequest",
+}) as any as S.Schema<ListVerifiedEmailAddressesRequest>;
 export type AddressList = string[];
 export const AddressList = /*@__PURE__*/ S.Array(S.String);
 export interface ListVerifiedEmailAddressesResponse {
   VerifiedEmailAddresses?: string[];
 }
-export const ListVerifiedEmailAddressesResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ VerifiedEmailAddresses: S.optional(AddressList) }).pipe(ns),
-  ).annotate({
-    identifier: "ListVerifiedEmailAddressesResponse",
-  }) as any as S.Schema<ListVerifiedEmailAddressesResponse>;
+export const ListVerifiedEmailAddressesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VerifiedEmailAddresses: S.optional(AddressList) }).pipe(ns),
+).annotate({
+  identifier: "ListVerifiedEmailAddressesResponse",
+}) as any as S.Schema<ListVerifiedEmailAddressesResponse>;
 export interface PutConfigurationSetDeliveryOptionsRequest {
   ConfigurationSetName: string;
   DeliveryOptions?: DeliveryOptions;
@@ -1882,11 +1864,7 @@ export interface PutIdentityPolicyRequest {
   Policy: string;
 }
 export const PutIdentityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Identity: S.String,
-    PolicyName: S.String,
-    Policy: S.String,
-  }).pipe(
+  S.Struct({ Identity: S.String, PolicyName: S.String, Policy: S.String }).pipe(
     T.all(
       ns,
       T.Http({ method: "POST", uri: "/" }),
@@ -1912,27 +1890,27 @@ export interface ReorderReceiptRuleSetRequest {
   RuleSetName: string;
   RuleNames: string[];
 }
-export const ReorderReceiptRuleSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RuleSetName: S.String, RuleNames: ReceiptRuleNamesList }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const ReorderReceiptRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RuleSetName: S.String, RuleNames: ReceiptRuleNamesList }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "ReorderReceiptRuleSetRequest",
-  }) as any as S.Schema<ReorderReceiptRuleSetRequest>;
+  ),
+).annotate({
+  identifier: "ReorderReceiptRuleSetRequest",
+}) as any as S.Schema<ReorderReceiptRuleSetRequest>;
 export interface ReorderReceiptRuleSetResponse {}
-export const ReorderReceiptRuleSetResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "ReorderReceiptRuleSetResponse",
-  }) as any as S.Schema<ReorderReceiptRuleSetResponse>;
+export const ReorderReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "ReorderReceiptRuleSetResponse",
+}) as any as S.Schema<ReorderReceiptRuleSetResponse>;
 export interface ExtensionField {
   Name: string;
   Value: string;
@@ -2105,34 +2083,33 @@ export interface SendBulkTemplatedEmailRequest {
   DefaultTemplateData: string;
   Destinations: BulkEmailDestination[];
 }
-export const SendBulkTemplatedEmailRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Source: S.String,
-      SourceArn: S.optional(S.String),
-      ReplyToAddresses: S.optional(AddressList),
-      ReturnPath: S.optional(S.String),
-      ReturnPathArn: S.optional(S.String),
-      ConfigurationSetName: S.optional(S.String),
-      DefaultTags: S.optional(MessageTagList),
-      Template: S.String,
-      TemplateArn: S.optional(S.String),
-      DefaultTemplateData: S.String,
-      Destinations: BulkEmailDestinationList,
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SendBulkTemplatedEmailRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Source: S.String,
+    SourceArn: S.optional(S.String),
+    ReplyToAddresses: S.optional(AddressList),
+    ReturnPath: S.optional(S.String),
+    ReturnPathArn: S.optional(S.String),
+    ConfigurationSetName: S.optional(S.String),
+    DefaultTags: S.optional(MessageTagList),
+    Template: S.String,
+    TemplateArn: S.optional(S.String),
+    DefaultTemplateData: S.String,
+    Destinations: BulkEmailDestinationList,
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "SendBulkTemplatedEmailRequest",
-  }) as any as S.Schema<SendBulkTemplatedEmailRequest>;
+  ),
+).annotate({
+  identifier: "SendBulkTemplatedEmailRequest",
+}) as any as S.Schema<SendBulkTemplatedEmailRequest>;
 export type BulkEmailStatus =
   | "Success"
   | "MessageRejected"
@@ -2165,51 +2142,49 @@ export const BulkEmailDestinationStatus = /*@__PURE__*/ S.suspend(() =>
   identifier: "BulkEmailDestinationStatus",
 }) as any as S.Schema<BulkEmailDestinationStatus>;
 export type BulkEmailDestinationStatusList = BulkEmailDestinationStatus[];
-export const BulkEmailDestinationStatusList =
-  /*@__PURE__*/ S.Array(BulkEmailDestinationStatus);
+export const BulkEmailDestinationStatusList = /*@__PURE__*/ S.Array(
+  BulkEmailDestinationStatus,
+);
 export interface SendBulkTemplatedEmailResponse {
   Status: BulkEmailDestinationStatus[];
 }
-export const SendBulkTemplatedEmailResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Status: BulkEmailDestinationStatusList }).pipe(ns),
-  ).annotate({
-    identifier: "SendBulkTemplatedEmailResponse",
-  }) as any as S.Schema<SendBulkTemplatedEmailResponse>;
+export const SendBulkTemplatedEmailResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Status: BulkEmailDestinationStatusList }).pipe(ns),
+).annotate({
+  identifier: "SendBulkTemplatedEmailResponse",
+}) as any as S.Schema<SendBulkTemplatedEmailResponse>;
 export interface SendCustomVerificationEmailRequest {
   EmailAddress: string;
   TemplateName: string;
   ConfigurationSetName?: string;
 }
-export const SendCustomVerificationEmailRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      EmailAddress: S.String,
-      TemplateName: S.String,
-      ConfigurationSetName: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SendCustomVerificationEmailRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    EmailAddress: S.String,
+    TemplateName: S.String,
+    ConfigurationSetName: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "SendCustomVerificationEmailRequest",
-  }) as any as S.Schema<SendCustomVerificationEmailRequest>;
+  ),
+).annotate({
+  identifier: "SendCustomVerificationEmailRequest",
+}) as any as S.Schema<SendCustomVerificationEmailRequest>;
 export interface SendCustomVerificationEmailResponse {
   MessageId?: string;
 }
-export const SendCustomVerificationEmailResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ MessageId: S.optional(S.String) }).pipe(ns),
-  ).annotate({
-    identifier: "SendCustomVerificationEmailResponse",
-  }) as any as S.Schema<SendCustomVerificationEmailResponse>;
+export const SendCustomVerificationEmailResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ MessageId: S.optional(S.String) }).pipe(ns),
+).annotate({
+  identifier: "SendCustomVerificationEmailResponse",
+}) as any as S.Schema<SendCustomVerificationEmailResponse>;
 export interface Content {
   Data: string;
   Charset?: string;
@@ -2374,52 +2349,52 @@ export const SendTemplatedEmailResponse = /*@__PURE__*/ S.suspend(() =>
 export interface SetActiveReceiptRuleSetRequest {
   RuleSetName?: string;
 }
-export const SetActiveReceiptRuleSetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ RuleSetName: S.optional(S.String) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SetActiveReceiptRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ RuleSetName: S.optional(S.String) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "SetActiveReceiptRuleSetRequest",
-  }) as any as S.Schema<SetActiveReceiptRuleSetRequest>;
+  ),
+).annotate({
+  identifier: "SetActiveReceiptRuleSetRequest",
+}) as any as S.Schema<SetActiveReceiptRuleSetRequest>;
 export interface SetActiveReceiptRuleSetResponse {}
-export const SetActiveReceiptRuleSetResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "SetActiveReceiptRuleSetResponse",
-  }) as any as S.Schema<SetActiveReceiptRuleSetResponse>;
+export const SetActiveReceiptRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "SetActiveReceiptRuleSetResponse",
+}) as any as S.Schema<SetActiveReceiptRuleSetResponse>;
 export interface SetIdentityDkimEnabledRequest {
   Identity: string;
   DkimEnabled: boolean;
 }
-export const SetIdentityDkimEnabledRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Identity: S.String, DkimEnabled: S.Boolean }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SetIdentityDkimEnabledRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Identity: S.String, DkimEnabled: S.Boolean }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "SetIdentityDkimEnabledRequest",
-  }) as any as S.Schema<SetIdentityDkimEnabledRequest>;
+  ),
+).annotate({
+  identifier: "SetIdentityDkimEnabledRequest",
+}) as any as S.Schema<SetIdentityDkimEnabledRequest>;
 export interface SetIdentityDkimEnabledResponse {}
-export const SetIdentityDkimEnabledResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "SetIdentityDkimEnabledResponse",
-  }) as any as S.Schema<SetIdentityDkimEnabledResponse>;
+export const SetIdentityDkimEnabledResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "SetIdentityDkimEnabledResponse",
+}) as any as S.Schema<SetIdentityDkimEnabledResponse>;
 export interface SetIdentityFeedbackForwardingEnabledRequest {
   Identity: string;
   ForwardingEnabled: boolean;
@@ -2486,91 +2461,91 @@ export interface SetIdentityMailFromDomainRequest {
   MailFromDomain?: string;
   BehaviorOnMXFailure?: BehaviorOnMXFailure;
 }
-export const SetIdentityMailFromDomainRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Identity: S.String,
-      MailFromDomain: S.optional(S.String),
-      BehaviorOnMXFailure: S.optional(BehaviorOnMXFailure),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SetIdentityMailFromDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Identity: S.String,
+    MailFromDomain: S.optional(S.String),
+    BehaviorOnMXFailure: S.optional(BehaviorOnMXFailure),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "SetIdentityMailFromDomainRequest",
-  }) as any as S.Schema<SetIdentityMailFromDomainRequest>;
+  ),
+).annotate({
+  identifier: "SetIdentityMailFromDomainRequest",
+}) as any as S.Schema<SetIdentityMailFromDomainRequest>;
 export interface SetIdentityMailFromDomainResponse {}
-export const SetIdentityMailFromDomainResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "SetIdentityMailFromDomainResponse",
-  }) as any as S.Schema<SetIdentityMailFromDomainResponse>;
+export const SetIdentityMailFromDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "SetIdentityMailFromDomainResponse",
+}) as any as S.Schema<SetIdentityMailFromDomainResponse>;
 export interface SetIdentityNotificationTopicRequest {
   Identity: string;
   NotificationType: NotificationType;
   SnsTopic?: string;
 }
-export const SetIdentityNotificationTopicRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      Identity: S.String,
-      NotificationType: NotificationType,
-      SnsTopic: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SetIdentityNotificationTopicRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Identity: S.String,
+    NotificationType: NotificationType,
+    SnsTopic: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "SetIdentityNotificationTopicRequest",
-  }) as any as S.Schema<SetIdentityNotificationTopicRequest>;
+  ),
+).annotate({
+  identifier: "SetIdentityNotificationTopicRequest",
+}) as any as S.Schema<SetIdentityNotificationTopicRequest>;
 export interface SetIdentityNotificationTopicResponse {}
-export const SetIdentityNotificationTopicResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "SetIdentityNotificationTopicResponse",
-  }) as any as S.Schema<SetIdentityNotificationTopicResponse>;
+export const SetIdentityNotificationTopicResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "SetIdentityNotificationTopicResponse",
+}) as any as S.Schema<SetIdentityNotificationTopicResponse>;
 export interface SetReceiptRulePositionRequest {
   RuleSetName: string;
   RuleName: string;
   After?: string;
 }
-export const SetReceiptRulePositionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      RuleSetName: S.String,
-      RuleName: S.String,
-      After: S.optional(S.String),
-    }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const SetReceiptRulePositionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    RuleSetName: S.String,
+    RuleName: S.String,
+    After: S.optional(S.String),
+  }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "SetReceiptRulePositionRequest",
-  }) as any as S.Schema<SetReceiptRulePositionRequest>;
+  ),
+).annotate({
+  identifier: "SetReceiptRulePositionRequest",
+}) as any as S.Schema<SetReceiptRulePositionRequest>;
 export interface SetReceiptRulePositionResponse {}
-export const SetReceiptRulePositionResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "SetReceiptRulePositionResponse",
-  }) as any as S.Schema<SetReceiptRulePositionResponse>;
+export const SetReceiptRulePositionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "SetReceiptRulePositionResponse",
+}) as any as S.Schema<SetReceiptRulePositionResponse>;
 export interface TestRenderTemplateRequest {
   TemplateName: string;
   TemplateData: string;
@@ -2601,27 +2576,27 @@ export const TestRenderTemplateResponse = /*@__PURE__*/ S.suspend(() =>
 export interface UpdateAccountSendingEnabledRequest {
   Enabled?: boolean;
 }
-export const UpdateAccountSendingEnabledRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Enabled: S.optional(S.Boolean) }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const UpdateAccountSendingEnabledRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Enabled: S.optional(S.Boolean) }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "UpdateAccountSendingEnabledRequest",
-  }) as any as S.Schema<UpdateAccountSendingEnabledRequest>;
+  ),
+).annotate({
+  identifier: "UpdateAccountSendingEnabledRequest",
+}) as any as S.Schema<UpdateAccountSendingEnabledRequest>;
 export interface UpdateAccountSendingEnabledResponse {}
-export const UpdateAccountSendingEnabledResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "UpdateAccountSendingEnabledResponse",
-  }) as any as S.Schema<UpdateAccountSendingEnabledResponse>;
+export const UpdateAccountSendingEnabledResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "UpdateAccountSendingEnabledResponse",
+}) as any as S.Schema<UpdateAccountSendingEnabledResponse>;
 export interface UpdateConfigurationSetEventDestinationRequest {
   ConfigurationSetName: string;
   EventDestination: EventDestination;
@@ -2842,31 +2817,29 @@ export const VerifyDomainDkimResponse = /*@__PURE__*/ S.suspend(() =>
 export interface VerifyDomainIdentityRequest {
   Domain: string;
 }
-export const VerifyDomainIdentityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ Domain: S.String }).pipe(
-      T.all(
-        ns,
-        T.Http({ method: "POST", uri: "/" }),
-        svc,
-        auth,
-        proto,
-        ver,
-        rules,
-      ),
+export const VerifyDomainIdentityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ Domain: S.String }).pipe(
+    T.all(
+      ns,
+      T.Http({ method: "POST", uri: "/" }),
+      svc,
+      auth,
+      proto,
+      ver,
+      rules,
     ),
-  ).annotate({
-    identifier: "VerifyDomainIdentityRequest",
-  }) as any as S.Schema<VerifyDomainIdentityRequest>;
+  ),
+).annotate({
+  identifier: "VerifyDomainIdentityRequest",
+}) as any as S.Schema<VerifyDomainIdentityRequest>;
 export interface VerifyDomainIdentityResponse {
   VerificationToken: string;
 }
-export const VerifyDomainIdentityResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({ VerificationToken: S.String }).pipe(ns),
-  ).annotate({
-    identifier: "VerifyDomainIdentityResponse",
-  }) as any as S.Schema<VerifyDomainIdentityResponse>;
+export const VerifyDomainIdentityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({ VerificationToken: S.String }).pipe(ns),
+).annotate({
+  identifier: "VerifyDomainIdentityResponse",
+}) as any as S.Schema<VerifyDomainIdentityResponse>;
 export interface VerifyEmailAddressRequest {
   EmailAddress: string;
 }
@@ -2910,47 +2883,66 @@ export const VerifyEmailIdentityRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerifyEmailIdentityRequest",
 }) as any as S.Schema<VerifyEmailIdentityRequest>;
 export interface VerifyEmailIdentityResponse {}
-export const VerifyEmailIdentityResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({}).pipe(ns)).annotate({
-    identifier: "VerifyEmailIdentityResponse",
-  }) as any as S.Schema<VerifyEmailIdentityResponse>;
+export const VerifyEmailIdentityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(ns),
+).annotate({
+  identifier: "VerifyEmailIdentityResponse",
+}) as any as S.Schema<VerifyEmailIdentityResponse>;
 
 //# Errors
 export class AlreadyExistsException extends S.TaggedErrorClass<AlreadyExistsException>()(
   "AlreadyExistsException",
   { Name: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "AlreadyExists", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class LimitExceededException extends S.TaggedErrorClass<LimitExceededException>()(
   "LimitExceededException",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "LimitExceeded", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class RuleSetDoesNotExistException extends S.TaggedErrorClass<RuleSetDoesNotExistException>()(
   "RuleSetDoesNotExistException",
   { Name: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({ code: "RuleSetDoesNotExist", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "RuleSetDoesNotExist", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ConfigurationSetAlreadyExistsException extends S.TaggedErrorClass<ConfigurationSetAlreadyExistsException>()(
   "ConfigurationSetAlreadyExistsException",
   { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ConfigurationSetAlreadyExists",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "ConfigurationSetAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class InvalidConfigurationSetException extends S.TaggedErrorClass<InvalidConfigurationSetException>()(
   "InvalidConfigurationSetException",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidConfigurationSet", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidConfigurationSet", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ConfigurationSetDoesNotExistException extends S.TaggedErrorClass<ConfigurationSetDoesNotExistException>()(
   "ConfigurationSetDoesNotExistException",
   { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ConfigurationSetDoesNotExist",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "ConfigurationSetDoesNotExist",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class EventDestinationAlreadyExistsException extends S.TaggedErrorClass<EventDestinationAlreadyExistsException>()(
   "EventDestinationAlreadyExistsException",
@@ -2959,10 +2951,13 @@ export class EventDestinationAlreadyExistsException extends S.TaggedErrorClass<E
     EventDestinationName: S.optional(S.String),
     message: S.optional(S.String),
   },
-  T.AwsQueryError({
-    code: "EventDestinationAlreadyExists",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "EventDestinationAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class InvalidCloudWatchDestinationException extends S.TaggedErrorClass<InvalidCloudWatchDestinationException>()(
   "InvalidCloudWatchDestinationException",
@@ -2971,10 +2966,13 @@ export class InvalidCloudWatchDestinationException extends S.TaggedErrorClass<In
     EventDestinationName: S.optional(S.String),
     message: S.optional(S.String),
   },
-  T.AwsQueryError({
-    code: "InvalidCloudWatchDestination",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidCloudWatchDestination",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidFirehoseDestinationException extends S.TaggedErrorClass<InvalidFirehoseDestinationException>()(
   "InvalidFirehoseDestinationException",
@@ -2983,10 +2981,13 @@ export class InvalidFirehoseDestinationException extends S.TaggedErrorClass<Inva
     EventDestinationName: S.optional(S.String),
     message: S.optional(S.String),
   },
-  T.AwsQueryError({
-    code: "InvalidFirehoseDestination",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidFirehoseDestination",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidSNSDestinationException extends S.TaggedErrorClass<InvalidSNSDestinationException>()(
   "InvalidSNSDestinationException",
@@ -2995,28 +2996,40 @@ export class InvalidSNSDestinationException extends S.TaggedErrorClass<InvalidSN
     EventDestinationName: S.optional(S.String),
     message: S.optional(S.String),
   },
-  T.AwsQueryError({ code: "InvalidSNSDestination", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidSNSDestination", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidTrackingOptionsException extends S.TaggedErrorClass<InvalidTrackingOptionsException>()(
   "InvalidTrackingOptionsException",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidTrackingOptions", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidTrackingOptions", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class TrackingOptionsAlreadyExistsException extends S.TaggedErrorClass<TrackingOptionsAlreadyExistsException>()(
   "TrackingOptionsAlreadyExistsException",
   { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "TrackingOptionsAlreadyExistsException",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "TrackingOptionsAlreadyExistsException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class CustomVerificationEmailInvalidContentException extends S.TaggedErrorClass<CustomVerificationEmailInvalidContentException>()(
   "CustomVerificationEmailInvalidContentException",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "CustomVerificationEmailInvalidContent",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "CustomVerificationEmailInvalidContent",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class CustomVerificationEmailTemplateAlreadyExistsException extends S.TaggedErrorClass<CustomVerificationEmailTemplateAlreadyExistsException>()(
   "CustomVerificationEmailTemplateAlreadyExistsException",
@@ -3024,43 +3037,76 @@ export class CustomVerificationEmailTemplateAlreadyExistsException extends S.Tag
     CustomVerificationEmailTemplateName: S.optional(S.String),
     message: S.optional(S.String),
   },
-  T.AwsQueryError({
-    code: "CustomVerificationEmailTemplateAlreadyExists",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "CustomVerificationEmailTemplateAlreadyExists",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError, C.withAlreadyExistsError) {}
 export class FromEmailAddressNotVerifiedException extends S.TaggedErrorClass<FromEmailAddressNotVerifiedException>()(
   "FromEmailAddressNotVerifiedException",
   { FromEmailAddress: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "FromEmailAddressNotVerified",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "FromEmailAddressNotVerified",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidLambdaFunctionException extends S.TaggedErrorClass<InvalidLambdaFunctionException>()(
   "InvalidLambdaFunctionException",
   { FunctionArn: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidLambdaFunction", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidLambdaFunction", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidS3ConfigurationException extends S.TaggedErrorClass<InvalidS3ConfigurationException>()(
   "InvalidS3ConfigurationException",
   { Bucket: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidS3Configuration", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidS3Configuration", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidSnsTopicException extends S.TaggedErrorClass<InvalidSnsTopicException>()(
   "InvalidSnsTopicException",
   { Topic: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidSnsTopic", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidSnsTopic", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class RuleDoesNotExistException extends S.TaggedErrorClass<RuleDoesNotExistException>()(
   "RuleDoesNotExistException",
   { Name: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({ code: "RuleDoesNotExist", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "RuleDoesNotExist", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
+export class InvalidParameterValue extends S.TaggedErrorClass<InvalidParameterValue>()(
+  "InvalidParameterValue",
+  {},
+) {}
+export class IdentityNotVerified extends S.TaggedErrorClass<IdentityNotVerified>()(
+  "IdentityNotVerified",
+  {},
+  T.SyntheticError({
+    from: "InvalidParameterValue",
+    message: { includes: "Identity is not verified" },
+  }),
+) {}
 export class InvalidTemplateException extends S.TaggedErrorClass<InvalidTemplateException>()(
   "InvalidTemplateException",
   { TemplateName: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidTemplate", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidTemplate", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class EventDestinationDoesNotExistException extends S.TaggedErrorClass<EventDestinationDoesNotExistException>()(
   "EventDestinationDoesNotExistException",
@@ -3069,23 +3115,32 @@ export class EventDestinationDoesNotExistException extends S.TaggedErrorClass<Ev
     EventDestinationName: S.optional(S.String),
     message: S.optional(S.String),
   },
-  T.AwsQueryError({
-    code: "EventDestinationDoesNotExist",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "EventDestinationDoesNotExist",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class TrackingOptionsDoesNotExistException extends S.TaggedErrorClass<TrackingOptionsDoesNotExistException>()(
   "TrackingOptionsDoesNotExistException",
   { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "TrackingOptionsDoesNotExistException",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "TrackingOptionsDoesNotExistException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class CannotDeleteException extends S.TaggedErrorClass<CannotDeleteException>()(
   "CannotDeleteException",
   { Name: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({ code: "CannotDelete", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "CannotDelete", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class CustomVerificationEmailTemplateDoesNotExistException extends S.TaggedErrorClass<CustomVerificationEmailTemplateDoesNotExistException>()(
   "CustomVerificationEmailTemplateDoesNotExistException",
@@ -3093,72 +3148,111 @@ export class CustomVerificationEmailTemplateDoesNotExistException extends S.Tagg
     CustomVerificationEmailTemplateName: S.optional(S.String),
     message: S.optional(S.String),
   },
-  T.AwsQueryError({
-    code: "CustomVerificationEmailTemplateDoesNotExist",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "CustomVerificationEmailTemplateDoesNotExist",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class TemplateDoesNotExistException extends S.TaggedErrorClass<TemplateDoesNotExistException>()(
   "TemplateDoesNotExistException",
   { TemplateName: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({ code: "TemplateDoesNotExist", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "TemplateDoesNotExist", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidDeliveryOptionsException extends S.TaggedErrorClass<InvalidDeliveryOptionsException>()(
   "InvalidDeliveryOptionsException",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidDeliveryOptions", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidDeliveryOptions", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidPolicyException extends S.TaggedErrorClass<InvalidPolicyException>()(
   "InvalidPolicyException",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidPolicy", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "InvalidPolicy", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class MessageRejected extends S.TaggedErrorClass<MessageRejected>()(
   "MessageRejected",
   { message: S.optional(S.String) },
-  T.AwsQueryError({ code: "MessageRejected", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({ code: "MessageRejected", httpResponseCode: 400 }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class AccountSendingPausedException extends S.TaggedErrorClass<AccountSendingPausedException>()(
   "AccountSendingPausedException",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "AccountSendingPausedException",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "AccountSendingPausedException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ConfigurationSetSendingPausedException extends S.TaggedErrorClass<ConfigurationSetSendingPausedException>()(
   "ConfigurationSetSendingPausedException",
   { ConfigurationSetName: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ConfigurationSetSendingPausedException",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "ConfigurationSetSendingPausedException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class MailFromDomainNotVerifiedException extends S.TaggedErrorClass<MailFromDomainNotVerifiedException>()(
   "MailFromDomainNotVerifiedException",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "MailFromDomainNotVerifiedException",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "MailFromDomainNotVerifiedException",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class ProductionAccessNotGrantedException extends S.TaggedErrorClass<ProductionAccessNotGrantedException>()(
   "ProductionAccessNotGrantedException",
   { message: S.optional(S.String) },
-  T.AwsQueryError({
-    code: "ProductionAccessNotGranted",
-    httpResponseCode: 400,
-  }),
+  T.all(
+    T.AwsQueryError({
+      code: "ProductionAccessNotGranted",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class InvalidRenderingParameterException extends S.TaggedErrorClass<InvalidRenderingParameterException>()(
   "InvalidRenderingParameterException",
   { TemplateName: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({ code: "InvalidRenderingParameter", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({
+      code: "InvalidRenderingParameter",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 export class MissingRenderingAttributeException extends S.TaggedErrorClass<MissingRenderingAttributeException>()(
   "MissingRenderingAttributeException",
   { TemplateName: S.optional(S.String), message: S.optional(S.String) },
-  T.AwsQueryError({ code: "MissingRenderingAttribute", httpResponseCode: 400 }),
+  T.all(
+    T.AwsQueryError({
+      code: "MissingRenderingAttribute",
+      httpResponseCode: 400,
+    }),
+    T.HttpError(400),
+  ),
 ).pipe(C.withBadRequestError) {}
 
 //# Operations
@@ -3349,6 +3443,8 @@ export type CreateReceiptRuleError =
   | LimitExceededException
   | RuleDoesNotExistException
   | RuleSetDoesNotExistException
+  | InvalidParameterValue
+  | IdentityNotVerified
   | CommonErrors;
 /**
  * Creates a receipt rule.
@@ -3374,6 +3470,8 @@ export const createReceiptRule: API.OperationMethod<
     LimitExceededException,
     RuleDoesNotExistException,
     RuleSetDoesNotExistException,
+    InvalidParameterValue,
+    IdentityNotVerified,
   ],
   operationName: "CreateReceiptRule",
 }));
@@ -5001,6 +5099,8 @@ export type UpdateReceiptRuleError =
   | LimitExceededException
   | RuleDoesNotExistException
   | RuleSetDoesNotExistException
+  | InvalidParameterValue
+  | IdentityNotVerified
   | CommonErrors;
 /**
  * Updates a receipt rule.
@@ -5025,6 +5125,8 @@ export const updateReceiptRule: API.OperationMethod<
     LimitExceededException,
     RuleDoesNotExistException,
     RuleSetDoesNotExistException,
+    InvalidParameterValue,
+    IdentityNotVerified,
   ],
   operationName: "UpdateReceiptRule",
 }));
