@@ -59,7 +59,7 @@
   "scripts": {
     "convert": "bun scripts/convert.ts",
     "generate": "bun scripts/generate.ts",
-    "typecheck": "tsgo -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json",
     "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/turso-docs && git -C specs/turso-docs checkout -- .",
     "specs:update": "git -C specs/turso-docs fetch && git -C specs/turso-docs checkout main && git -C specs/turso-docs pull"
   },

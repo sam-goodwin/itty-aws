@@ -59,7 +59,7 @@
   "scripts": {
     "convert": "bun scripts/convert.ts",
     "generate": "bun scripts/generate.ts",
-    "typecheck": "tsgo -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json",
     "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/distilled-spec-posthog"
   },
   "dependencies": {

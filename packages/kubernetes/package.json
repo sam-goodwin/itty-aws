@@ -63,7 +63,7 @@
   "scripts": {
     "convert": "bun scripts/convert.ts",
     "generate": "bun scripts/convert.ts && bun scripts/generate.ts",
-    "typecheck": "tsgo -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json",
     "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/kubernetes && git -C specs/kubernetes checkout -- .",
     "specs:update": "git -C specs/kubernetes fetch && git -C specs/kubernetes checkout master && git -C specs/kubernetes pull"
   },

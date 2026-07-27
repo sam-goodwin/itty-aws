@@ -59,8 +59,8 @@
   "scripts": {
     "convert": "bun scripts/convert.ts",
     "generate": "bun scripts/generate.ts",
-    "typecheck": "tsgo -p tsconfig.json",
-    "typecheck:strict": "tsgo -p tsconfig.strict.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "typecheck:strict": "tsc -p tsconfig.strict.json",
     "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/distilled-spec-prisma-postgres && git -C specs/distilled-spec-prisma-postgres checkout -- .",
     "specs:update": "git -C specs/distilled-spec-prisma-postgres fetch && git -C specs/distilled-spec-prisma-postgres checkout main && git -C specs/distilled-spec-prisma-postgres pull"
   },

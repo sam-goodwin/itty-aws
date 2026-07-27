@@ -49,7 +49,7 @@
   "scripts": {
     "convert": "bun scripts/convert.ts",
     "generate": "bun scripts/generate.ts",
-    "typecheck": "tsgo -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
     "@distilled.cloud/core": "workspace:*",

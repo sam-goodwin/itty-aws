@@ -59,7 +59,7 @@
   "scripts": {
     "convert": "bun scripts/convert.ts",
     "generate": "bun scripts/generate.ts && oxfmt src/services",
-    "typecheck": "tsgo -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json",
     "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/eas-cli && git -C specs/eas-cli checkout -- .",
     "specs:update": "git -C specs/eas-cli fetch && git -C specs/eas-cli checkout main && git -C specs/eas-cli pull"
   },

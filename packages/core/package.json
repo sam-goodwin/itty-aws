@@ -23,7 +23,7 @@
     }
   },
   "scripts": {
-    "build": "tsgo -b"
+    "build": "tsc -b"
   },
   "devDependencies": {
     "@effect/platform-bun": "catalog:",

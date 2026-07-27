@@ -58,7 +58,7 @@
   "scripts": {
     "convert": "bun scripts/convert.ts",
     "generate": "bun scripts/convert.ts && bun scripts/generate.ts",
-    "typecheck": "tsgo -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json",
     "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/stripe-openapi && git -C specs/stripe-openapi checkout -- .",
     "specs:update": "git -C specs/stripe-openapi fetch && git -C specs/stripe-openapi checkout master && git -C specs/stripe-openapi pull"
   },

@@ -59,8 +59,8 @@
   "scripts": {
     "convert": "bun scripts/convert.ts",
     "generate": "bun scripts/generate.ts",
-    "typecheck": "tsgo -p tsconfig.json",
-    "build": "tsgo -b",
+    "typecheck": "tsc -p tsconfig.json",
+    "build": "tsc -b",
     "specs:fetch": "git submodule update --force --init --recursive --depth=1 specs/distilled-spec-fly-io && git -C specs/distilled-spec-fly-io checkout -- .",
     "specs:update": "git -C specs/distilled-spec-fly-io fetch && git -C specs/distilled-spec-fly-io checkout main && git -C specs/distilled-spec-fly-io pull"
   },
